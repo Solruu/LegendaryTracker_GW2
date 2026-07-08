@@ -1,0 +1,14 @@
+# Secrets
+.env
+*.env
+api_key*
+
+# Build / exe
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+
+# Local
+*.log

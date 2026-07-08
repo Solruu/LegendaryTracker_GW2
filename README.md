@@ -1,13 +1,19 @@
 # LegendaryTracker_GW2
-Legendary tracker to organize and optimize farming for legendaries, in the GW2 game.
 
-This project started with a need to organize the humongous amount of data needed to understand "what to do next" while trying to farm legendaries. The wiki (https://wiki.guildwars2.com/wiki/Main_Page), the already existing sites (gw2efficiency and alike) and all other resources I came across where definitely a huge source of intel on "what is required", but not really on "how to efficiently farm it".
-I hope this tracker fulfill this need, by proposing some options to streamline the efforts and efficiently track the player's current state, against one or many legendaries.
-It was built with some constraints in mind : The average estimate is 2h worth of effort per farming session, to calculate most of the "efficiency" displayed in the tracker. Meaning for instance that metas have been "chained" based on how easy it would be to get them done, as well as how many would "fit" in a 2h window, to get some farming done (with synergies of zones / ressources and rewards, depending on which legendary is the goal for this session).
+Tracker personnel de craft d'objets légendaires Guild Wars 2 (Aurora, Vision, Conflux, Warbringer, Coalescence, Prismatic Champion's Regalia, Obsidian Armor, Grand Total).
 
-This is by no mean a "perfect farming legendary" guide, and any and all improvements shared would most likely help improving this tool.
+## Architecture
+- `gw2_flask_server_v3.py` — backend Flask, pont vers l'API officielle GW2 (clé API via `.env`, jamais committée)
+- `gw2_legendary_tracker_v4.jsx` — frontend React (Babel standalone), i18n EN/FR
+- `gw2_sources_v2.json` — base de données éditoriale (SOURCES_DB)
+- `gw2_build_html.py` — génère le HTML standalone (injection SOURCES_DB via `// __SOURCES_DB_INJECT__`)
+- `gw2_*_ref.json` — références canoniques (currencies, materials, achievements)
 
-It uses a mix of "hard coded" recipes, as well as dynamic API calls for tracking purposes, and requires a valid API key from the ANET account (stored on a local file), as well as a Flask server to host the API requests.
+## GitHub Pages
+Le rendu statique est publié depuis `/docs` (`docs/index.html`, buildé depuis le JSX).
+⚠️ Pages est statique : les données live nécessitent le serveur Flask en local (`http://localhost:5000`).
 
-This is a work in progress, and the code is AI generated. While I am not trying to get a "good code", I do care about giving the best experience possible for this tracker to be helpful. I do not have the time to code it "by hand" and heavily relied on Claude.ai to generate the code, HTML/jsx UI and python/.exe generators. 
-I spent however a lot of time testing and enriching it data-wise.
+## Build local
+```
+python gw2_build_html.py --jsx gw2_legendary_tracker_v4.jsx --out docs/index.html
+```
