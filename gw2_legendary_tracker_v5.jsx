@@ -1981,7 +1981,7 @@ export default function GW2LegendaryTracker() {
                   {expanded === m.id && (
                     <div className="tip-box">
                       <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px", fontStyle: "normal" }}>
-                        <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>>> {m.waypoint}</span>
+                        <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>{">> "}{m.waypoint}</span>
                         <button className={`wp-btn ${copied === m.id ? "copied" : ""}`}
                           onClick={e => { e.stopPropagation(); copyCode(m.wpCode, m.id); }}>
                           {copied === m.id ? t("btn_copied") : `${m.wpCode} [c]`}
@@ -2044,7 +2044,7 @@ export default function GW2LegendaryTracker() {
                   {expanded === m.id && (
                     <div className="tip-box">
                       <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px", fontStyle: "normal" }}>
-                        <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>>> {m.waypoint}</span>
+                        <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>{">> "}{m.waypoint}</span>
                         <button className={`wp-btn ${copied === m.id ? "copied" : ""}`}
                           onClick={e => { e.stopPropagation(); copyCode(m.wpCode, m.id); }}>
                           {copied === m.id ? t("btn_copied") : `${m.wpCode} [c]`}
@@ -2306,7 +2306,7 @@ export default function GW2LegendaryTracker() {
               {expanded === b.id && (
                 <div className="tip-box">
                   <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "5px", fontStyle: "normal" }}>
-                    <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>>> {b.waypoint}</span>
+                    <span style={{ color: "#e2c97e", fontWeight: 600, fontSize: "12px" }}>{">> "}{b.waypoint}</span>
                     <button className={`wp-btn ${copied === b.id ? "copied" : ""}`}
                       onClick={e => { e.stopPropagation(); copyCode(b.wpCode, b.id); }}>
                       {copied === b.id ? t("btn_copied") : `${b.wpCode} [c]`}
