@@ -80,7 +80,7 @@ window.onerror = function(msg, src, line, col) {
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useEffect, useCallback, useRef } = React;
+const { useState, useEffect, useCallback, useRef, useContext, createContext, useMemo } = React;
 """
 
 HTML_STORAGE_SHIM = """\
