@@ -67,7 +67,7 @@ async function storeSet(key, val) { lsSet(key, val); }
 // ═══════════════════════════════════════════════════════════════
 // I18N — libellés de l'interface (chrome). Les libellés issus des
 // données (LEGENDARIES.description/type/notes, SOURCES_DB.tip…) relèvent
-// de la couche données et seront localisés via fichiers de locale séparés.
+// de la couche données : format { fr, en } résolu par L() au rendu.
 // ═══════════════════════════════════════════════════════════════
 
 const LANGS = { en: "EN", fr: "FR" };
@@ -104,6 +104,7 @@ const I18N = {
     gt_filter_all: "All",
     gt_uncountable: "⚠ {n} uncountable component{s} {arrow}",
     // Daily / metas
+    word_in: "in",
     farm_perchar: "×char (×{n} active)",
     farm_perchar_hearts: "×char (hearts required)",
     farm_account: "×account",
@@ -216,6 +217,7 @@ const I18N = {
     gt_no_resources: "Aucune ressource pour ce filtre.",
     gt_filter_all: "Tout",
     gt_uncountable: "⚠ {n} composant{s} non chiffrable{s} {arrow}",
+    word_in: "dans",
     farm_perchar: "×perso (×{n} actif)",
     farm_perchar_hearts: "×perso (hearts requis)",
     farm_account: "×compte",
@@ -298,6 +300,10 @@ const I18N = {
 };
 
 const LangContext = createContext("en");
+// Résolveur i18n des champs de données : { fr, en } → chaîne selon la langue courante.
+// CUR_LANG est synchronisé pendant le render du composant racine (avant les enfants).
+let CUR_LANG = "en";
+const L = (v) => (v && typeof v === "object" && !Array.isArray(v) && (v.fr !== undefined || v.en !== undefined)) ? (v[CUR_LANG] ?? v.en ?? v.fr) : v;
 
 function translate(key, lang, vars) {
   const dict = I18N[lang] || I18N.en;
@@ -322,7 +328,10 @@ const SOURCES_DB = {
     "last_updated": "2026-05-28",
     "notes": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop.",
     "qty_schema_version": 2,
-    "qty_schema_note": "v13+: toutes les clés qty sont des legendary_ids explicites. Armors: suffixe __per_piece (x6 pour full set) ou __full_set. Gen weapons: prefixe gen1_/gen2_/gen3_ + slugify(name).",
+    "qty_schema_note": {
+      "fr": "v13+: toutes les clés qty sont des legendary_ids explicites. Armors: suffixe __per_piece (x6 pour full set) ou __full_set. Gen weapons: prefixe gen1_/gen2_/gen3_ + slugify(name).",
+      "en": "v13+: all qty keys are explicit legendary_ids. Armors: __per_piece suffix (x6 for full set) or __full_set. Gen weapons: gen1_/gen2_/gen3_ prefix + slugify(name)."
+    },
     "legendary_ids": [
       "ad_infinitum",
       "aetheric_anchor",
@@ -593,7 +602,11 @@ const SOURCES_DB = {
         "gen3_aurenes_tenderness"
       ]
     },
-    "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API."
+    "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
+    "i18n_note": {
+      "fr": "Champs éditoriaux au format {fr, en} ; les chaînes simples sont neutres/EN.",
+      "en": "Editorial fields use {fr, en} format; plain strings are language-neutral/EN."
+    }
   },
   "meta_events": {
     "vb": {
@@ -630,7 +643,10 @@ const SOURCES_DB = {
       "population": "LFG",
       "waypoint": "Ley-Line Confluence Waypoint",
       "wpCode": "[&BPUHAAA=]",
-      "tip": "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant.",
+      "tip": {
+        "fr": "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant.",
+        "en": "Central hub of the 4 lanes. LFG taxi, arrive 20 min early."
+      },
       "next": [
         "ab"
       ],
@@ -652,7 +668,10 @@ const SOURCES_DB = {
       "population": "LFG",
       "waypoint": "Forgotten City Waypoint",
       "wpCode": "[&BNcHAAA=]",
-      "tip": "Stack sur la lane la plus peuplée.",
+      "tip": {
+        "fr": "Stack sur la lane la plus peuplée.",
+        "en": "Stack on the most populated lane."
+      },
       "next": [
         "ds"
       ],
@@ -674,7 +693,10 @@ const SOURCES_DB = {
       "population": "LFG",
       "waypoint": "Mordremoth's Bane Waypoint",
       "wpCode": "[&BNMHAAA=]",
-      "tip": "Longue (~1h) mais bien peuplée. Bonne source de drops en parallèle. Pas enchaînable facilement après.",
+      "tip": {
+        "fr": "Longue (~1h) mais bien peuplée. Bonne source de drops en parallèle. Pas enchaînable facilement après.",
+        "en": "Long (~1h) but well populated. Good source of drops in parallel. Not easily chainable afterwards."
+      },
       "next": [],
       "nextDelayMin": null,
       "rewards": [
@@ -694,7 +716,10 @@ const SOURCES_DB = {
       "population": "moyen",
       "waypoint": "Amnoon Waypoint",
       "wpCode": "[&BLIGAAA=]",
-      "tip": "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.",
+      "tip": {
+        "fr": "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.",
+        "en": "~10 min, do not miss the start. The most efficient of all - absolute priority."
+      },
       "next": [
         "er"
       ],
@@ -716,7 +741,10 @@ const SOURCES_DB = {
       "population": "moyen",
       "waypoint": "Augury's Shadow Waypoint",
       "wpCode": "[&BLIKAAAA=]",
-      "tip": "Faire les pré-events 'Disperse wild magic' pour ouvrir la voie.",
+      "tip": {
+        "fr": "Faire les pré-events 'Disperse wild magic' pour ouvrir la voie.",
+        "en": "Do the 'Disperse wild magic' pre-events to open the path."
+      },
       "next": [
         "de"
       ],
@@ -856,7 +884,10 @@ const SOURCES_DB = {
         "amalgamated_gemstone"
       ],
       "needs_verification": false,
-      "timer_notes": "Heures impaires : 01:00 / 03:00 / 05:00... UTC. Jade Maw (event distinct) peut polluer le timer wiki."
+      "timer_notes": {
+        "fr": "Heures impaires : 01:00 / 03:00 / 05:00... UTC. Jade Maw (event distinct) peut polluer le timer wiki.",
+        "en": "Odd hours: 01:00 / 03:00 / 05:00... UTC. Jade Maw (separate event) can pollute the wiki timer."
+      }
     },
     "gy": {
       "name": "Ravenous Wanderer",
@@ -877,7 +908,10 @@ const SOURCES_DB = {
         "amalgamated_gemstone"
       ],
       "needs_verification": true,
-      "timer_notes": "Timer UTC exact non confirmé — needs_verification"
+      "timer_notes": {
+        "fr": "Timer UTC exact non confirmé — needs_verification",
+        "en": "Exact UTC timer not confirmed - needs_verification"
+      }
     },
     "sw": {
       "name": "Unlocking the Wizard's Tower",
@@ -935,7 +969,10 @@ const SOURCES_DB = {
       "population": "très peuplé",
       "waypoint": "Bastion of the Natural Waypoint",
       "wpCode": "[&BDQOAAA=]",
-      "tip": "Pas de timer fixe — déclenchement par Map Readiness. Très peuplé quand actif. Permet l'accès à Citadel of Zakiros ensuite.",
+      "tip": {
+        "fr": "Pas de timer fixe — déclenchement par Map Readiness. Très peuplé quand actif. Permet l'accès à Citadel of Zakiros ensuite.",
+        "en": "No fixed timer - triggered by Map Readiness. Very populated when active. Grants access to Citadel of Zakiros afterwards."
+      },
       "next": [
         "zak"
       ],
@@ -945,7 +982,10 @@ const SOURCES_DB = {
         "amalgamated_gemstone"
       ],
       "needs_verification": false,
-      "timer_notes": "Event-based — surveiller le LFG ou la progression de map"
+      "timer_notes": {
+        "fr": "Event-based — surveiller le LFG ou la progression de map",
+        "en": "Event-based - watch LFG or map progression"
+      }
     },
     "zak": {
       "name": "Into the Spider's Lair",
@@ -966,7 +1006,10 @@ const SOURCES_DB = {
         "amalgamated_gemstone"
       ],
       "needs_verification": true,
-      "timer_notes": "Event-based — conditionnel aux deux metas précédentes d'Inner Nayos"
+      "timer_notes": {
+        "fr": "Event-based — conditionnel aux deux metas précédentes d'Inner Nayos",
+        "en": "Event-based - conditional on the two previous Inner Nayos metas"
+      }
     },
     "conv": {
       "name": "Convergence Outer Nayos",
@@ -1037,7 +1080,10 @@ const SOURCES_DB = {
       "icon": "AG",
       "apiId": 68063,
       "cap_daily": 20,
-      "cap_notes": "20 max/jour via Hero's Choice Chests. Citadel of Zakiros conditionnel peut en donner 3 supplémentaires (Inner Nayos ×2 + Zakiros ×1).",
+      "cap_notes": {
+        "fr": "20 max/jour via Hero's Choice Chests. Citadel of Zakiros conditionnel peut en donner 3 supplémentaires (Inner Nayos ×2 + Zakiros ×1).",
+        "en": "20 max/day via Hero's Choice Chests. Conditional Citadel of Zakiros can grant 3 extra (Inner Nayos x2 + Zakiros x1)."
+      },
       "sources_meta": [
         "vb",
         "td",
@@ -1064,7 +1110,10 @@ const SOURCES_DB = {
         {
           "type": "craft_mystic_forge",
           "name": "Mystic Forge — recette bulk",
-          "tip": "3×25 crests/orbs/doubloons T6 + 5 Ectos → 10 gemstones garanties (rare: 25). Coût ≈ prix TP — pas de marge significative.",
+          "tip": {
+            "fr": "3×25 crests/orbs/doubloons T6 + 5 Ectos → 10 gemstones garanties (rare: 25). Coût ≈ prix TP — pas de marge significative.",
+            "en": "3x25 T6 crests/orbs/doubloons + 5 Ectos -> 10 guaranteed gemstones (rare: 25). Cost is roughly TP price - no significant margin."
+          },
           "cost_gold": true,
           "efficience": "C"
         },
@@ -1095,13 +1144,19 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "name": "Upgrade T5 → T6",
-          "tip": "50× Vial of Potent Blood + 1× Powerful + 5× Crystalline Dust + 5× Philosopher's Stone → 5-12× T6. Meilleure conversion si surplus de T5.",
+          "tip": {
+            "fr": "50× Vial of Potent Blood + 1× Powerful + 5× Crystalline Dust + 5× Philosopher's Stone → 5-12× T6. Meilleure conversion si surplus de T5.",
+            "en": "50x Vial of Potent Blood + 1x Powerful + 5x Crystalline Dust + 5x Philosopher's Stone -> 5-12x T6. Best conversion if you have surplus T5."
+          },
           "efficience": "A"
         },
         {
           "type": "drop",
           "name": "Mobs niveau 80",
-          "tip": "Drop générique — pas de farm dédié efficace.",
+          "tip": {
+            "fr": "Drop générique — pas de farm dédié efficace.",
+            "en": "Generic drop - no efficient dedicated farm."
+          },
           "efficience": "C"
         }
       ],
@@ -1235,7 +1290,10 @@ const SOURCES_DB = {
           "type": "node_farm",
           "name": "Brandstone nodes",
           "map": "Domain of Istan / Dragonfall",
-          "tip": "50 nodes/compte/jour max. Soft-reset à 01h UTC+1.",
+          "tip": {
+            "fr": "50 nodes/compte/jour max. Soft-reset à 01h UTC+1.",
+            "en": "50 nodes/account/day max. Soft-reset at 01:00 UTC+1."
+          },
           "efficience": "A"
         }
       ],
@@ -1245,7 +1303,10 @@ const SOURCES_DB = {
         "cost_vm": 300,
         "cost_gold": 0,
         "vendor_map": "LW4 maps",
-        "vendor_notes": "Marchands LW4 sur chaque map. Trophy Shipment = mix aléatoire T5/T6 tous types.",
+        "vendor_notes": {
+          "fr": "Marchands LW4 sur chaque map. Trophy Shipment = mix aléatoire T5/T6 tous types.",
+          "en": "LW4 vendors on each map. Trophy Shipment = random T5/T6 mix of all types."
+        },
         "vendors": [
           {
             "map": "Domain of Istan",
@@ -1301,7 +1362,10 @@ const SOURCES_DB = {
         {
           "type": "meta_loot",
           "name": "Metas LW3",
-          "tip": "Events LW3 donnent de l'UM. Moins efficace que les Winterberries.",
+          "tip": {
+            "fr": "Events LW3 donnent de l'UM. Moins efficace que les Winterberries.",
+            "en": "LW3 events grant UM. Less efficient than Winterberries."
+          },
           "efficience": "B"
         }
       ],
@@ -1369,7 +1433,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "drop",
-          "tip": "Drop générique sur mobs lvl80 — all maps."
+          "tip": {
+            "fr": "Drop générique sur mobs lvl80 — all maps.",
+            "en": "Generic drop from lvl80 mobs - all maps."
+          }
         },
         {
           "type": "tp",
@@ -1388,7 +1455,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "drop",
-          "tip": "Drop générique sur mobs lvl80 — all maps."
+          "tip": {
+            "fr": "Drop générique sur mobs lvl80 — all maps.",
+            "en": "Generic drop from lvl80 mobs - all maps."
+          }
         },
         {
           "type": "tp",
@@ -1407,7 +1477,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "drop",
-          "tip": "Drop générique sur mobs lvl80 — all maps."
+          "tip": {
+            "fr": "Drop générique sur mobs lvl80 — all maps.",
+            "en": "Generic drop from lvl80 mobs - all maps."
+          }
         },
         {
           "type": "tp",
@@ -1426,7 +1499,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "drop",
-          "tip": "Drop sur mobs lvl80 — plus rare que les autres tiers."
+          "tip": {
+            "fr": "Drop sur mobs lvl80 — plus rare que les autres tiers.",
+            "en": "Drops from lvl80 mobs - rarer than the other tiers."
+          }
         },
         {
           "type": "tp",
@@ -1587,7 +1663,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_reward_track",
-          "tip": "Activer le reward track PvP 'Ascension'. ~5-6 soirées de PvP."
+          "tip": {
+            "fr": "Activer le reward track PvP 'Ascension'. ~5-6 soirées de PvP.",
+            "en": "Activate the 'Ascension' PvP reward track. ~5-6 evenings of PvP."
+          }
         }
       ],
       "qty": {}
@@ -1737,7 +1816,10 @@ const SOURCES_DB = {
         {
           "type": "map_currency",
           "map": "Domain of Istan",
-          "tip": "Nodes, events et metas — Domain of Istan. Déjà farmé en parallèle du Vision I."
+          "tip": {
+            "fr": "Nodes, events et metas — Domain of Istan. Déjà farmé en parallèle du Vision I.",
+            "en": "Nodes, events and metas - Domain of Istan. Already farmed alongside Vision I."
+          }
         }
       ],
       "conversion_options": [
@@ -2114,7 +2196,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "wvw_drop",
-          "tip": "Drop aléatoire sur ennemis et NPCs en WvW. Pas de farm ciblé possible — peut prendre du temps."
+          "tip": {
+            "fr": "Drop aléatoire sur ennemis et NPCs en WvW. Pas de farm ciblé possible — peut prendre du temps.",
+            "en": "Random drop from enemies and NPCs in WvW. No targeted farm possible - can take a while."
+          }
         }
       ]
     },
@@ -2138,7 +2223,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "wvw",
-          "tip": "Drop sur ennemis WvW, récompenses skirmish, reward tracks WvW."
+          "tip": {
+            "fr": "Drop sur ennemis WvW, récompenses skirmish, reward tracks WvW.",
+            "en": "Drops from WvW enemies, skirmish rewards, WvW reward tracks."
+          }
         },
         {
           "type": "tp",
@@ -2158,7 +2246,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "craft",
-          "tip": "Craft 500 (ascended) — automatiquement appris. 1× Ecto + matériaux ascended tier 7. Demande Artificer/Weaponsmith/etc. 500."
+          "tip": {
+            "fr": "Craft 500 (ascended) — automatiquement appris. 1× Ecto + matériaux ascended tier 7. Demande Artificer/Weaponsmith/etc. 500.",
+            "en": "Craft 500 (ascended) - learned automatically. 1x Ecto + ascended tier 7 materials. Requires Artificer/Weaponsmith/etc. 500."
+          }
         },
         {
           "type": "tp",
@@ -2366,7 +2457,10 @@ const SOURCES_DB = {
           "type": "fractals_vendor",
           "npc": "BUY-2046 PFR",
           "map": "Mistlock Observatory / Mistlock Sanctuary",
-          "tip": "Disponible chez le vendor fractal si tu fais des fractales."
+          "tip": {
+            "fr": "Disponible chez le vendor fractal si tu fais des fractales.",
+            "en": "Available from the fractal vendor if you run fractals."
+          }
         }
       ]
     },
@@ -2383,15 +2477,24 @@ const SOURCES_DB = {
       "qty": {},
       "farmable": true,
       "timegate": true,
-      "timegate_note": "Max 365/sem (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Si les deux : ~4300 tickets cumulés (~12 sem). Armor WvW=7880 tickets (~22 semaines cumul).",
+      "timegate_note": {
+        "fr": "Max 365/sem (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Si les deux : ~4300 tickets cumulés (~12 sem). Armor WvW=7880 tickets (~22 semaines cumul).",
+        "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Both: ~4300 cumulative tickets (~12 wks). WvW Armor=7880 tickets (~22 cumulative weeks)."
+      },
       "sources": [
         {
           "type": "wvw_skirmish",
-          "tip": "Skirmish Reward Track passif (toujours actif en WvW). Max 365/sem en atteignant le Diamond tier."
+          "tip": {
+            "fr": "Skirmish Reward Track passif (toujours actif en WvW). Max 365/sem en atteignant le Diamond tier.",
+            "en": "Passive Skirmish Reward Track (always active in WvW). Max 365/wk by reaching Diamond tier."
+          }
         },
         {
           "type": "wvw_weeklies",
-          "tip": "Weeklies WvW — jusqu'à ~90 tickets bonus/semaine."
+          "tip": {
+            "fr": "Weeklies WvW — jusqu'à ~90 tickets bonus/semaine.",
+            "en": "WvW weeklies - up to ~90 bonus tickets/week."
+          }
         },
         {
           "type": "wvw_objectives",
@@ -2434,11 +2537,17 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "wvw",
-          "tip": "Drop sur ennemis et objectifs WvW. S'accumule passivement."
+          "tip": {
+            "fr": "Drop sur ennemis et objectifs WvW. S'accumule passivement.",
+            "en": "Drops from WvW enemies and objectives. Accumulates passively."
+          }
         },
         {
           "type": "achievement_rewards",
-          "tip": "Récompenses de jalons d'achievements."
+          "tip": {
+            "fr": "Récompenses de jalons d'achievements.",
+            "en": "Achievement milestone rewards."
+          }
         }
       ]
     },
@@ -2458,7 +2567,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp",
-          "tip": "Récompenses PvP ranked — chests de saison, placements. Source principale pour joueurs PvP."
+          "tip": {
+            "fr": "Récompenses PvP ranked — chests de saison, placements. Source principale pour joueurs PvP.",
+            "en": "PvP ranked rewards - season chests, placements. Main source for PvP players."
+          }
         }
       ]
     },
@@ -2502,11 +2614,17 @@ const SOURCES_DB = {
         },
         {
           "type": "raid_quickplay",
-          "tip": "Quickplay raids — jusqu'à 10 LI supplémentaires/semaine (1/run, cap 10). Boss aléatoire assigné."
+          "tip": {
+            "fr": "Quickplay raids — jusqu'à 10 LI supplémentaires/semaine (1/run, cap 10). Boss aléatoire assigné.",
+            "en": "Quickplay raids - up to 10 extra LI/week (1/run, cap 10). Random boss assigned."
+          }
         },
         {
           "type": "raid_bounty",
-          "tip": "Daily raid bounty — 1 LI/jour × 7 = 7/semaine si complété chaque jour."
+          "tip": {
+            "fr": "Daily raid bounty — 1 LI/jour × 7 = 7/semaine si complété chaque jour.",
+            "en": "Daily raid bounty - 1 LI/day x 7 = 7/week if completed every day."
+          }
         }
       ]
     },
@@ -2558,7 +2676,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor_mf",
-          "tip": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
+          "tip": {
+            "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
+            "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Trade Contracts. No limit."
+          },
           "cost_trade_contracts": 300
         }
       ]
@@ -2577,7 +2698,10 @@ const SOURCES_DB = {
         {
           "type": "map_events",
           "map": "Path of Fire maps",
-          "tip": "Events et renown hearts PoF. S'accumule passivement en farmant les maps PoF."
+          "tip": {
+            "fr": "Events et renown hearts PoF. S'accumule passivement en farmant les maps PoF.",
+            "en": "PoF events and renown hearts. Accumulates passively while farming PoF maps."
+          }
         },
         {
           "type": "tp",
@@ -2774,7 +2898,10 @@ const SOURCES_DB = {
         {
           "type": "map_completion",
           "tip": "Reward for 100% map completion of Central Tyria (core, no expansions) on a character. Gives 2× Gifts of Exploration. Unique per character — alt-swapping possible for more.",
-          "note": "Prend plusieurs dizaines d'heures. Fortement recommandé de le faire en parallèle d'autres objectifs."
+          "note": {
+            "fr": "Prend plusieurs dizaines d'heures. Fortement recommandé de le faire en parallèle d'autres objectifs.",
+            "en": "Takes several dozen hours. Strongly recommended to do it alongside other goals."
+          }
         }
       ]
     },
@@ -2810,7 +2937,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "rift_t1",
-          "tip": "T1 rifts (sans motivation) — 6-14 par rift. Avec Rift Mastery + motivation T1 : 25-55. Source la plus accessible.",
+          "tip": {
+            "fr": "T1 rifts (sans motivation) — 6-14 par rift. Avec Rift Mastery + motivation T1 : 25-55. Source la plus accessible.",
+            "en": "T1 rifts (no motivation) - 6-14 per rift. With Rift Mastery + T1 motivation: 25-55. Most accessible source."
+          },
           "maps": [
             "Skywatch Archipelago",
             "Amnytas",
@@ -2842,7 +2972,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "rift_t2",
-          "tip": "T2 rifts — requiert Masterwork Rift Motivation (coûte 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drop 6-42 Masterwork selon mastery + motivation."
+          "tip": {
+            "fr": "T2 rifts — requiert Masterwork Rift Motivation (coûte 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drop 6-42 Masterwork selon mastery + motivation.",
+            "en": "T2 rifts - requires Masterwork Rift Motivation (costs 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drops 6-42 Masterwork depending on mastery + motivation."
+          }
         }
       ]
     },
@@ -2980,7 +3113,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "craft_500",
-          "tip": "Craft 500 automatiquement appris. Ingrédients : Bloodstone Brick + Dragonite Ingot + Empyreal Star + Augur's Stone."
+          "tip": {
+            "fr": "Craft 500 automatiquement appris. Ingrédients : Bloodstone Brick + Dragonite Ingot + Empyreal Star + Augur's Stone.",
+            "en": "Craft 500, learned automatically. Ingredients: Bloodstone Brick + Dragonite Ingot + Empyreal Star + Augur's Stone."
+          }
         },
         {
           "type": "lyhr_assisted",
@@ -3005,7 +3141,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_ranked",
-          "tip": "Récompenses des chests de saison PvP ranked. Cap de 120 par saison — impossible d'accélérer."
+          "tip": {
+            "fr": "Récompenses des chests de saison PvP ranked. Cap de 120 par saison — impossible d'accélérer.",
+            "en": "Rewards from PvP ranked season chests. Cap of 120 per season - cannot be accelerated."
+          }
         }
       ]
     },
@@ -3103,11 +3242,17 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "Mystic Forge : 1× Mystic Coin + 1× Glob of Ectoplasm + 1× Obsidian Shard + 1× Philosopher's Stone → 10 tentatives, ~33% chance par tentative (résultat : 1 Clover ou matériaux). Moyenne ~3.33 Clovers pour 10 tentatives."
+          "tip": {
+            "fr": "Mystic Forge : 1× Mystic Coin + 1× Glob of Ectoplasm + 1× Obsidian Shard + 1× Philosopher's Stone → 10 tentatives, ~33% chance par tentative (résultat : 1 Clover ou matériaux). Moyenne ~3.33 Clovers pour 10 tentatives.",
+            "en": "Mystic Forge: 1x Mystic Coin + 1x Glob of Ectoplasm + 1x Obsidian Shard + 1x Philosopher's Stone -> 10 attempts, ~33% chance per attempt (result: 1 Clover or materials). Average ~3.33 Clovers per 10 attempts."
+          }
         },
         {
           "type": "daily_mystic_forge",
-          "tip": "Daily Mystic Forge : 2× Philosopher's Stone + 1× Obsidian Shard → garanti 1 Clover/jour. Limité à 1 par jour."
+          "tip": {
+            "fr": "Daily Mystic Forge : 2× Philosopher's Stone + 1× Obsidian Shard → garanti 1 Clover/jour. Limité à 1 par jour.",
+            "en": "Daily Mystic Forge: 2x Philosopher's Stone + 1x Obsidian Shard -> guaranteed 1 Clover/day. Limited to 1 per day."
+          }
         },
         {
           "type": "wvw_pvp_reward_track",
@@ -3596,7 +3741,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "craft_500",
-          "tip": "Craft 500 : 1× Crystalline Ore + 1× Bottle of Airship Oil + 1× Pile of Auric Dust + 1× Ley Line Spark. Composants drop post-metas HoT (déjà dans craft_components)."
+          "tip": {
+            "fr": "Craft 500 : 1× Crystalline Ore + 1× Bottle of Airship Oil + 1× Pile of Auric Dust + 1× Ley Line Spark. Composants drop post-metas HoT (déjà dans craft_components).",
+            "en": "Craft 500: 1x Crystalline Ore + 1x Bottle of Airship Oil + 1x Pile of Auric Dust + 1x Ley Line Spark. Components drop from HoT metas (already in craft_components)."
+          }
         },
         {
           "type": "tp",
@@ -3652,7 +3800,10 @@ const SOURCES_DB = {
         }
       ],
       "interchangeable_with": "gift_of_desert_mastery",
-      "interchangeable_note": "Gift of Desert Mastery utilisable à la place pour toutes les armes gen2 SAUF Astralaria, HOPE, Nevermore et Chuka and Champawat.",
+      "interchangeable_note": {
+        "fr": "Gift of Desert Mastery utilisable à la place pour toutes les armes gen2 SAUF Astralaria, HOPE, Nevermore et Chuka and Champawat.",
+        "en": "Gift of Desert Mastery can be used instead for all gen2 weapons EXCEPT Astralaria, HOPE, Nevermore and Chuka and Champawat."
+      },
       "qty": {
         "gen2_astralaria": 1,
         "gen2_hope": 1,
@@ -3682,7 +3833,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 1× Gift of the Desert + 1× Gift of the Rider + 1× Bloodstone Shard + 250× Crystalline Ingot. Alternative à Gift of Maguuma Mastery (sauf 4 armes HoT à collection)."
+          "tip": {
+            "fr": "MF : 1× Gift of the Desert + 1× Gift of the Rider + 1× Bloodstone Shard + 250× Crystalline Ingot. Alternative à Gift of Maguuma Mastery (sauf 4 armes HoT à collection).",
+            "en": "MF: 1x Gift of the Desert + 1x Gift of the Rider + 1x Bloodstone Shard + 250x Crystalline Ingot. Alternative to Gift of Maguuma Mastery (except the 4 HoT collection weapons)."
+          }
         }
       ],
       "qty": {}
@@ -3698,7 +3852,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77× Mystic Clover + 250× Mystic Coin. Équivalent gen2 du Gift of Fortune gen1."
+          "tip": {
+            "fr": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77× Mystic Clover + 250× Mystic Coin. Équivalent gen2 du Gift of Fortune gen1.",
+            "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77x Mystic Clover + 250x Mystic Coin. Gen2 equivalent of the gen1 Gift of Fortune."
+          }
         }
       ],
       "qty": {
@@ -3721,7 +3878,10 @@ const SOURCES_DB = {
         "transcendence": 1,
         "stella_radians": 1
       },
-      "note": "Partage Mystic Clovers/Coins avec Gift of Fortune gen1. Mystic Coin farmable via login rewards (1/j) ou TP."
+      "note": {
+        "fr": "Partage Mystic Clovers/Coins avec Gift of Fortune gen1. Mystic Coin farmable via login rewards (1/j) ou TP.",
+        "en": "Shares Mystic Clovers/Coins with the gen1 Gift of Fortune. Mystic Coin farmable via login rewards (1/day) or TP."
+      }
     },
     "mystic_coin": {
       "name": "Mystic Coin",
@@ -3833,7 +3993,10 @@ const SOURCES_DB = {
         },
         {
           "type": "chest_conversion",
-          "tip": "Conversion via Enormous Chest of Legendary Shards — utile pour convertir des shards off-hand en main-hand."
+          "tip": {
+            "fr": "Conversion via Enormous Chest of Legendary Shards — utile pour convertir des shards off-hand en main-hand.",
+            "en": "Conversion via Enormous Chest of Legendary Shards - useful for converting off-hand shards into main-hand."
+          }
         }
       ],
       "qty": {},
@@ -3925,7 +4088,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "chest",
-          "tip": "Drop dans les chests spéciaux EoD (Jade Maw, Strike Missions CM reward chest)."
+          "tip": {
+            "fr": "Drop dans les chests spéciaux EoD (Jade Maw, Strike Missions CM reward chest).",
+            "en": "Drops from special EoD chests (Jade Maw, Strike Missions CM reward chest)."
+          }
         },
         {
           "type": "tp",
@@ -3961,7 +4127,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 100× Jade Runestone + 100× Antique Summoning Stone + 1× Bloodstone Shard + 250× Jade Bot Component. Voir wiki pour détail des 4 composants."
+          "tip": {
+            "fr": "MF : 100× Jade Runestone + 100× Antique Summoning Stone + 1× Bloodstone Shard + 250× Jade Bot Component. Voir wiki pour détail des 4 composants.",
+            "en": "MF: 100x Jade Runestone + 100x Antique Summoning Stone + 1x Bloodstone Shard + 250x Jade Bot Component. See wiki for details of the 4 components."
+          }
         }
       ],
       "qty": {}
@@ -3976,7 +4145,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 1× Gift of Cantha + 1× Gift of the Dragon Empire + 1× Bloodstone Shard + 250× Crystalline Ingot. Équivalent EoD du Gift of Maguuma Mastery."
+          "tip": {
+            "fr": "MF : 1× Gift of Cantha + 1× Gift of the Dragon Empire + 1× Bloodstone Shard + 250× Crystalline Ingot. Équivalent EoD du Gift of Maguuma Mastery.",
+            "en": "MF: 1x Gift of Cantha + 1x Gift of the Dragon Empire + 1x Bloodstone Shard + 250x Crystalline Ingot. EoD equivalent of Gift of Maguuma Mastery."
+          }
         }
       ],
       "qty": {
@@ -4008,7 +4180,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77× Mystic Clover + 250× Mystic Coin. Équivalent gen3 du Mystic Tribute. Structure identique."
+          "tip": {
+            "fr": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77× Mystic Clover + 250× Mystic Coin. Équivalent gen3 du Mystic Tribute. Structure identique.",
+            "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77x Mystic Clover + 250x Mystic Coin. Gen3 equivalent of the Mystic Tribute. Identical structure."
+          }
         }
       ],
       "qty": {
@@ -4029,7 +4204,10 @@ const SOURCES_DB = {
         "gen3_aurenes_breath": 1,
         "gen3_aurenes_tenderness": 1
       },
-      "note": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent."
+      "note": {
+        "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
+        "en": "Structurally identical to Mystic Tribute (gen2). Same sub-components, different EoD tag."
+      }
     },
     "memories_of_aurene": {
       "name": "Memories of Aurene",
@@ -4041,7 +4219,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "meta_drop",
-          "tip": "Drop dans les chests finaux de Dragonstorm, Dragon's End meta, Dragonfall meta."
+          "tip": {
+            "fr": "Drop dans les chests finaux de Dragonstorm, Dragon's End meta, Dragonfall meta.",
+            "en": "Drops from the final chests of Dragonstorm, Dragon's End meta, Dragonfall meta."
+          }
         },
         {
           "type": "tp",
@@ -4068,7 +4249,10 @@ const SOURCES_DB = {
         }
       ],
       "qty": {},
-      "note": "Precurseur gen3 craftable (pas TP-able raw) mais vendable une fois crafté. 1 précurseur gratuit via Seasons of the Dragons ou Codex of Dragon's Weapons."
+      "note": {
+        "fr": "Precurseur gen3 craftable (pas TP-able raw) mais vendable une fois crafté. 1 précurseur gratuit via Seasons of the Dragons ou Codex of Dragon's Weapons.",
+        "en": "Gen3 precursor craftable (not TP-able raw) but sellable once crafted. 1 free precursor via Seasons of the Dragons or Codex of Dragon's Weapons."
+      }
     },
     "salt_forged_mist_diamond": {
       "name": "Salt-Forged Mist Diamond",
@@ -4145,7 +4329,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 4× Mist Core Fragment + 250× Shard of Glory + 250× Ascended Shard of Glory + 1× Gift of Battle. Mist Core Fragments = fin du Glorious Reward Track PvP (1 par completion, option d'en prendre 2)."
+          "tip": {
+            "fr": "MF : 4× Mist Core Fragment + 250× Shard of Glory + 250× Ascended Shard of Glory + 1× Gift of Battle. Mist Core Fragments = fin du Glorious Reward Track PvP (1 par completion, option d'en prendre 2).",
+            "en": "MF: 4x Mist Core Fragment + 250x Shard of Glory + 250x Ascended Shard of Glory + 1x Gift of Battle. Mist Core Fragments = end of the Glorious PvP Reward Track (1 per completion, option to take 2)."
+          }
         }
       ],
       "qty": {
@@ -4198,7 +4385,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_league",
-          "tip": "Récompense PvP League Season — Tier Bronze. S'accumule en jouant des ranked games."
+          "tip": {
+            "fr": "Récompense PvP League Season — Tier Bronze. S'accumule en jouant des ranked games.",
+            "en": "PvP League Season reward - Bronze tier. Accumulates by playing ranked games."
+          }
         }
       ],
       "qty": {}
@@ -4213,7 +4403,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_league",
-          "tip": "Récompense PvP League Season — Tier Silver. Complète le chemin Path of the Ascension."
+          "tip": {
+            "fr": "Récompense PvP League Season — Tier Silver. Complète le chemin Path of the Ascension.",
+            "en": "PvP League Season reward - Silver tier. Completes the Path of the Ascension."
+          }
         }
       ],
       "qty": {}
@@ -4228,7 +4421,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_league",
-          "tip": "Récompense PvP League Season — Tier Gold."
+          "tip": {
+            "fr": "Récompense PvP League Season — Tier Gold.",
+            "en": "PvP League Season reward - Gold tier."
+          }
         }
       ],
       "qty": {}
@@ -4243,7 +4439,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "pvp_league",
-          "tip": "Récompense PvP League Season — Tier Legendary/Platinum."
+          "tip": {
+            "fr": "Récompense PvP League Season — Tier Legendary/Platinum.",
+            "en": "PvP League Season reward - Legendary/Platinum tier."
+          }
         }
       ],
       "qty": {}
@@ -4258,7 +4457,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 1× Recruit's + 1× Veteran's + 1× Champion's + 1× Elite's Wings of Glory. Précurseur de The Ascension."
+          "tip": {
+            "fr": "MF : 1× Recruit's + 1× Veteran's + 1× Champion's + 1× Elite's Wings of Glory. Précurseur de The Ascension.",
+            "en": "MF: 1x Recruit's + 1x Veteran's + 1x Champion's + 1x Elite's Wings of Glory. Precursor of The Ascension."
+          }
         }
       ],
       "qty": {
@@ -4276,7 +4478,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "fractals",
-          "tip": "Drop dans tous les fractales (daily/recommended/challenge). Principal revenu fractal."
+          "tip": {
+            "fr": "Drop dans tous les fractales (daily/recommended/challenge). Principal revenu fractal.",
+            "en": "Drops in all fractals (daily/recommended/challenge). Main fractal income."
+          }
         },
         {
           "type": "daily_reward",
@@ -4325,7 +4530,10 @@ const SOURCES_DB = {
         "ad_infinitum": 120
       },
       "timegate": true,
-      "timegate_note": "~13-14 jours par collection (4 collections = ~40-56 jours total). CM raccourcit à ~5 jours/collection.",
+      "timegate_note": {
+        "fr": "~13-14 jours par collection (4 collections = ~40-56 jours total). CM raccourcit à ~5 jours/collection.",
+        "en": "~13-14 days per collection (4 collections = ~40-56 days total). CM shortens to ~5 days/collection."
+      },
       "note": " apiId to confirm — conflict with Fresh Winterberry (79899)."
     },
     "gift_of_ascension_fractal": {
@@ -4374,14 +4582,20 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "achievement_collection",
-          "tip": "Crafté après avoir complété les 3 premières collections Ad Infinitum I-III. Chaque collection requiert ~40 Fractal Research Pages + items fractal spécifiques (environ 10-14 jours/collection)."
+          "tip": {
+            "fr": "Crafté après avoir complété les 3 premières collections Ad Infinitum I-III. Chaque collection requiert ~40 Fractal Research Pages + items fractal spécifiques (environ 10-14 jours/collection).",
+            "en": "Crafted after completing the first 3 Ad Infinitum I-III collections. Each collection requires ~40 Fractal Research Pages + specific fractal items (about 10-14 days/collection)."
+          }
         }
       ],
       "qty": {
         "ad_infinitum": 1
       },
       "timegate": true,
-      "timegate_note": "Min ~40 jours sans CM (3 collections × ~13-14 jours). Avec CM sur Sunqua/Nightmare/Shattered Obs : ~15-21 jours."
+      "timegate_note": {
+        "fr": "Min ~40 jours sans CM (3 collections × ~13-14 jours). Avec CM sur Sunqua/Nightmare/Shattered Obs : ~15-21 jours.",
+        "en": "Min ~40 days without CM (3 collections x ~13-14 days). With CM on Sunqua/Nightmare/Shattered Obs: ~15-21 days."
+      }
     },
     "purified_rift_essence": {
       "name": "Purified Rift Essence",
@@ -4448,7 +4662,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : Amalgamated Gemstones + Purified Rift Essence + autres matériaux. Voir wiki Endless Summer."
+          "tip": {
+            "fr": "MF : Amalgamated Gemstones + Purified Rift Essence + autres matériaux. Voir wiki Endless Summer.",
+            "en": "MF: Amalgamated Gemstones + Purified Rift Essence + other materials. See the Endless Summer wiki."
+          }
         }
       ],
       "qty": {
@@ -4611,7 +4828,10 @@ const SOURCES_DB = {
         {
           "type": "map_currency",
           "map": "Mistburned Barrens (JW)",
-          "tip": "Currency Mistburned Barrens — events, chests, meta. Échangeable 5:1 avec Shards of Bava Nisos."
+          "tip": {
+            "fr": "Currency Mistburned Barrens — events, chests, meta. Échangeable 5:1 avec Shards of Bava Nisos.",
+            "en": "Mistburned Barrens currency - events, chests, meta. Exchangeable 5:1 with Shards of Bava Nisos."
+          }
         }
       ],
       "qty": {
@@ -4629,7 +4849,10 @@ const SOURCES_DB = {
         {
           "type": "map_currency",
           "map": "Bava Nisos (JW)",
-          "tip": "Currency Bava Nisos — events, chests, meta A Titanic Voyage. Échangeable 5:1 avec Shards of Mistburned Barrens chez vendors JW."
+          "tip": {
+            "fr": "Currency Bava Nisos — events, chests, meta A Titanic Voyage. Échangeable 5:1 avec Shards of Mistburned Barrens chez vendors JW.",
+            "en": "Bava Nisos currency - events, chests, A Titanic Voyage meta. Exchangeable 5:1 with Shards of Mistburned Barrens at JW vendors."
+          }
         }
       ],
       "qty": {
@@ -4646,7 +4869,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "craft_400",
-          "tip": "Craft lvl 400 discipline. Matériaux : Mursaat Obsidian Chunks + Titan Heatstones + Globs of Ectoplasm + Ancient Wood Planks."
+          "tip": {
+            "fr": "Craft lvl 400 discipline. Matériaux : Mursaat Obsidian Chunks + Titan Heatstones + Globs of Ectoplasm + Ancient Wood Planks.",
+            "en": "Craft lvl 400 discipline. Materials: Mursaat Obsidian Chunks + Titan Heatstones + Globs of Ectoplasm + Ancient Wood Planks."
+          }
         },
         {
           "type": "vendor",
@@ -4686,7 +4912,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF (collection Unknown Nightmares) : Gift of Darkness (Armorsmith 400) + Gift of Scales (Artificer 400) + Gift of Titan Understanding (vendor JW) + autres items collection JW. Débloqué via Jorvik Jorundsson à Bava Nisos après Salvation's Cost."
+          "tip": {
+            "fr": "MF (collection Unknown Nightmares) : Gift of Darkness (Armorsmith 400) + Gift of Scales (Artificer 400) + Gift of Titan Understanding (vendor JW) + autres items collection JW. Débloqué via Jorvik Jorundsson à Bava Nisos après Salvation's Cost.",
+            "en": "MF (Unknown Nightmares collection): Gift of Darkness (Armorsmith 400) + Gift of Scales (Artificer 400) + Gift of Titan Understanding (JW vendor) + other JW collection items. Unlocked via Jorvik Jorundsson at Bava Nisos after Salvation's Cost."
+          }
         }
       ],
       "sub_components": {
@@ -4723,7 +4952,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF (collection) : plats cuisinés depuis Fruits of the Shadow (node homestead Deft Lahar) + autres ingrédients cooking JW. Voir wiki Orrax Manifested pour liste complète des plats."
+          "tip": {
+            "fr": "MF (collection) : plats cuisinés depuis Fruits of the Shadow (node homestead Deft Lahar) + autres ingrédients cooking JW. Voir wiki Orrax Manifested pour liste complète des plats.",
+            "en": "MF (collection): dishes cooked from Fruits of the Shadow (Deft Lahar homestead node) + other JW cooking ingredients. See the Orrax Manifested wiki for the full dish list."
+          }
         }
       ],
       "qty": {
@@ -4802,7 +5034,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : Shards of Lowland Shore + Amalgamated Gemstone + autres matériaux JW. Voir wiki Gift of Gatherer of the Hunt. Potentiellement time-gateable (achetable TP à coût supplémentaire)."
+          "tip": {
+            "fr": "MF : Shards of Lowland Shore + Amalgamated Gemstone + autres matériaux JW. Voir wiki Gift of Gatherer of the Hunt. Potentiellement time-gateable (achetable TP à coût supplémentaire).",
+            "en": "MF: Shards of Lowland Shore + Amalgamated Gemstone + other JW materials. See the Gift of Gatherer of the Hunt wiki. Potentially time-gateable (buyable on TP at extra cost)."
+          }
         }
       ],
       "qty": {}
@@ -4817,7 +5052,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : Shards of Janthir Syntri + Amalgamated Gemstone + autres matériaux JW. Map completion Janthir Syntri."
+          "tip": {
+            "fr": "MF : Shards of Janthir Syntri + Amalgamated Gemstone + autres matériaux JW. Map completion Janthir Syntri.",
+            "en": "MF: Shards of Janthir Syntri + Amalgamated Gemstone + other JW materials. Janthir Syntri map completion."
+          }
         }
       ],
       "qty": {}
@@ -4864,7 +5102,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : Gift of Metal (déjà présent) + Gift of Recollector of Memories (achievement Recollection JW) + 250 Amalgamated Gemstone + Mystic Runestone ×100."
+          "tip": {
+            "fr": "MF : Gift of Metal (déjà présent) + Gift of Recollector of Memories (achievement Recollection JW) + 250 Amalgamated Gemstone + Mystic Runestone ×100.",
+            "en": "MF: Gift of Metal (already listed) + Gift of Recollector of Memories (Recollection JW achievement) + 250 Amalgamated Gemstone + Mystic Runestone x100."
+          }
         }
       ],
       "qty": {
@@ -4915,7 +5156,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "story_reward",
-          "tip": "Récompense one-time du story step 'Path of Divinity' (VoE). Copies supplémentaires achetables chez vendors heart VoE."
+          "tip": {
+            "fr": "Récompense one-time du story step 'Path of Divinity' (VoE). Copies supplémentaires achetables chez vendors heart VoE.",
+            "en": "One-time reward from the 'Path of Divinity' story step (VoE). Extra copies buyable from VoE heart vendors."
+          }
         }
       ],
       "qty": {}
@@ -4990,7 +5234,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : map completion VoE (Shipwreck Strand + Starlit Weald exploration gifts) + autres matériaux VoE. Similaire au Gift of Exploration gen1 mais pour VoE."
+          "tip": {
+            "fr": "MF : map completion VoE (Shipwreck Strand + Starlit Weald exploration gifts) + autres matériaux VoE. Similaire au Gift of Exploration gen1 mais pour VoE.",
+            "en": "MF: VoE map completion (Shipwreck Strand + Starlit Weald exploration gifts) + other VoE materials. Similar to the gen1 Gift of Exploration but for VoE."
+          }
         }
       ],
       "qty": {}
@@ -5119,7 +5366,10 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "auto_refine",
-          "tip": "Raffinement automatique depuis Lucent Motes (10:1) dans le material storage. Sources : salvage équipements rares+ lvl68+, Wizard's Vault, events SotO."
+          "tip": {
+            "fr": "Raffinement automatique depuis Lucent Motes (10:1) dans le material storage. Sources : salvage équipements rares+ lvl68+, Wizard's Vault, events SotO.",
+            "en": "Automatic refinement from Lucent Motes (10:1) in material storage. Sources: salvaging rare+ lvl68+ gear, Wizard's Vault, SotO events."
+          }
         },
         {
           "type": "tp",
@@ -5292,7 +5542,10 @@ const SOURCES_DB = {
   "enchaînements_recommandés": {
     "gemstone_hot_pof": {
       "name": "Train HoT → PoF",
-      "description": "Enchaînement classique autour du reset ou de XX:30",
+      "description": {
+        "fr": "Enchaînement classique autour du reset ou de XX:30",
+        "en": "Classic chain around reset or XX:30"
+      },
       "sequence": [
         "td",
         "ab",
@@ -5304,11 +5557,17 @@ const SOURCES_DB = {
       ],
       "total_durationMin": 150,
       "total_gemstones": 7,
-      "note": "TD + AB s'enchaînent parfaitement. DS optionnel (long). PoF ensuite sans attente significative."
+      "note": {
+        "fr": "TD + AB s'enchaînent parfaitement. DS optionnel (long). PoF ensuite sans attente significative.",
+        "en": "TD + AB chain perfectly. DS optional (long). PoF afterwards with no significant wait."
+      }
     },
     "gemstone_pof_loop": {
       "name": "Boucle PoF",
-      "description": "4 metas PoF en rotation 2h — idéal pour sessions courtes",
+      "description": {
+        "fr": "4 metas PoF en rotation 2h — idéal pour sessions courtes",
+        "en": "4 PoF metas on a 2h rotation - ideal for short sessions"
+      },
       "sequence": [
         "co",
         "er",
@@ -5317,18 +5576,27 @@ const SOURCES_DB = {
       ],
       "total_durationMin": 65,
       "total_gemstones": 4,
-      "note": "La boucle PoF complète tient en ~65 min actives sur 2h de cycle. Casino Blitz en premier (S-tier)."
+      "note": {
+        "fr": "La boucle PoF complète tient en ~65 min actives sur 2h de cycle. Casino Blitz en premier (S-tier).",
+        "en": "The full PoF loop fits in ~65 active min over a 2h cycle. Casino Blitz first (S-tier)."
+      }
     },
     "gemstone_convergences": {
       "name": "Double Convergence",
-      "description": "Mount Balrior → Outer Nayos — cycle 3h, écart fixe 90 min",
+      "description": {
+        "fr": "Mount Balrior → Outer Nayos — cycle 3h, écart fixe 90 min",
+        "en": "Mount Balrior -> Outer Nayos - 3h cycle, fixed 90 min gap"
+      },
       "sequence": [
         "mb",
         "conv"
       ],
       "total_durationMin": 40,
       "total_gemstones": 2,
-      "note": "Écart fixe de 90 min entre les deux. Idéal pour remplir le temps entre d'autres metas."
+      "note": {
+        "fr": "Écart fixe de 90 min entre les deux. Idéal pour remplir le temps entre d'autres metas.",
+        "en": "Fixed 90 min gap between the two. Ideal to fill time between other metas."
+      }
     },
     "gemstone_soto": {
       "name": "Train SotO",
@@ -5339,7 +5607,10 @@ const SOURCES_DB = {
       ],
       "total_durationMin": 50,
       "total_gemstones": 2,
-      "note": "Skywatch à XX:00, Amnytas 60 min après. Bien peuplés, contenu récent."
+      "note": {
+        "fr": "Skywatch à XX:00, Amnytas 60 min après. Bien peuplés, contenu récent.",
+        "en": "Skywatch at XX:00, Amnytas 60 min later. Well populated, recent content."
+      }
     },
     "gemstone_eod_light": {
       "name": "Train EoD léger",
@@ -5350,7 +5621,10 @@ const SOURCES_DB = {
       ],
       "total_durationMin": 65,
       "total_gemstones": 2,
-      "note": "Kaineng ignoré (pop morte). Seitung démarre à XX:30 heures impaires, Echovald ~10 min après."
+      "note": {
+        "fr": "Kaineng ignoré (pop morte). Seitung démarre à XX:30 heures impaires, Echovald ~10 min après.",
+        "en": "Kaineng skipped (dead pop). Seitung starts at XX:30 odd hours UTC, Echovald ~10 min later."
+      }
     }
   },
   "gen1_weapons": [
@@ -5512,7 +5786,10 @@ const SOURCES_DB = {
     "gift_of_fortune": "Mystic Tribute (= 77 Clovers + 250 Ectos + Gift of Magic + Gift of Might) — identical for all gen1 legendaries",
     "gift_of_mastery": "Bloodstone Shard + 250 Obsidian Shards + Gift of Exploration + Gift of Battle — identical for all gen1 legendaries",
     "precursor_sources": "TP (achetable directement) ou craft via collections Legendary Crafting mastery. Voir wiki par arme.",
-    "gift_unique_tip": "Chaque Gift of [Weapon] a sa propre recette — voir wiki:Gift_of_[Weapon]. Contient généralement Gift of Metal + Icy Runestones + sigil + gift de map spécifique."
+    "gift_unique_tip": {
+      "fr": "Chaque Gift of [Weapon] a sa propre recette — voir wiki:Gift_of_[Weapon]. Contient généralement Gift of Metal + Icy Runestones + sigil + gift de map spécifique.",
+      "en": "Each Gift of [Weapon] has its own recipe - see wiki:Gift_of_[Weapon]. Generally contains Gift of Metal + Icy Runestones + sigil + a map-specific gift."
+    }
   },
   "armor_sets": {
     "perfected_envoy": {
@@ -5521,7 +5798,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "pieces": 6,
       "unique_skin": true,
-      "skin_note": "Skins morphants uniques en combat — le plus visuel. 3 poids disponibles.",
+      "skin_note": {
+        "fr": "Skins morphants uniques en combat — le plus visuel. 3 poids disponibles.",
+        "en": "Unique morphing skins in combat - the most visual. 3 weights available."
+      },
       "timegate_note": "Min 5 weeks for first set (5 Gorseval kills required). Subsequent sets: min 4 weeks for 300 LI.",
       "per_piece_components": [
         {
@@ -5564,8 +5844,14 @@ const SOURCES_DB = {
       "expansion": "SotO",
       "pieces": 6,
       "unique_skin": true,
-      "skin_note": "Skin unique upgradeable en Suffused Obsidian (purement cosmétique).",
-      "timegate_note": "Pas de timegate strict — limité par le farm d'Amalgamated Rift Essence et les Convergences.",
+      "skin_note": {
+        "fr": "Skin unique upgradeable en Suffused Obsidian (purement cosmétique).",
+        "en": "Unique skin upgradeable to Suffused Obsidian (purely cosmetic)."
+      },
+      "timegate_note": {
+        "fr": "Pas de timegate strict — limité par le farm d'Amalgamated Rift Essence et les Convergences.",
+        "en": "No strict timegate - limited by Amalgamated Rift Essence farm and Convergences."
+      },
       "per_piece_common": [
         {
           "id": "amalgamated_rift_essence",
@@ -5594,7 +5880,10 @@ const SOURCES_DB = {
         "gloves_legs_boots": "Gift of Mighty Prosperity"
       },
       "crafting_note": "Recipe purchased from Lyhr (50s, requires Obsidian Armor Crafting mastery). Crafted at Wizard's Tower only.",
-      "skin_unlock_note": "Requiert Astral Ward + Oneiros-Spun skins débloquées pour le slot — one-time per type, toutes les poids partagent le même unlock.",
+      "skin_unlock_note": {
+        "fr": "Requiert Astral Ward + Oneiros-Spun skins débloquées pour le slot — one-time per type, toutes les poids partagent le même unlock.",
+        "en": "Requires Astral Ward + Oneiros-Spun skins unlocked for the slot - one-time per type, all weights share the same unlock."
+      },
       "wiki": "Obsidian_armor"
     },
     "triumphant_hero": {
@@ -5603,8 +5892,14 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "pieces": 6,
       "unique_skin": false,
-      "skin_note": "Skin identique à l'ascended WvW. Mistforged version (rang 500) a des effets visuels supplémentaires.",
-      "timegate_note": "~22 semaines pour un set complet (7880 tickets totaux à 365/sem max).",
+      "skin_note": {
+        "fr": "Skin identique à l'ascended WvW. Mistforged version (rang 500) a des effets visuels supplémentaires.",
+        "en": "Skin identical to the ascended WvW one. Mistforged version (rank 500) has extra visual effects."
+      },
+      "timegate_note": {
+        "fr": "~22 semaines pour un set complet (7880 tickets totaux à 365/sem max).",
+        "en": "~22 weeks for a full set (7880 total tickets at 365/wk max)."
+      },
       "upgrade_note": "No complex MF craft — direct upgrade of Triumphant Hero's ascended armor via MF with: Legendary War Insight (1,095 tickets) + Gift of War Dedication + Gift of War Prowess + Gift of War Prosperity.",
       "per_piece_tickets": {
         "triumphant_hero_ascended": "175-350 tickets",
@@ -5620,8 +5915,14 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "pieces": 6,
       "unique_skin": false,
-      "skin_note": "Skin identique à l'ascended PvP. Mistforged (rang PvP 100) a des effets visuels supplémentaires.",
-      "timegate_note": "~3 saisons PvP pour 300 Legendary PvP Insights (cap 120/saison). Ascended Shards of Glory : 3600 total.",
+      "skin_note": {
+        "fr": "Skin identique à l'ascended PvP. Mistforged (rang PvP 100) a des effets visuels supplémentaires.",
+        "en": "Skin identical to the ascended PvP one. Mistforged (PvP rank 100) has extra visual effects."
+      },
+      "timegate_note": {
+        "fr": "~3 saisons PvP pour 300 Legendary PvP Insights (cap 120/saison). Ascended Shards of Glory : 3600 total.",
+        "en": "~3 PvP seasons for 300 Legendary PvP Insights (cap 120/season). Ascended Shards of Glory: 3600 total."
+      },
       "upgrade_note": "No complex MF craft — direct upgrade of Ardent Glorious ascended armor via MF with: Star of Glory + Gift of Competitive Devotion + Gift of Glory + Mist Core Fragment.",
       "per_piece_pvp_insights": 50,
       "full_set_pvp_insights": 300,
@@ -5640,9 +5941,15 @@ const SOURCES_DB = {
     "gift_of_maguuma_mastery": "MF : Gift of Maguuma (HoT map compl.) + Gift of Insights (800× chaque currency HoT) + Bloodstone Shard + 250× Crystalline Ingot",
     "gift_of_desert_mastery": "PoF alternative: Gift of the Desert + Gift of the Rider + Bloodstone Shard + 250× Crystalline Ingot. *Not usable for Astralaria, HOPE, Nevermore, Chuka and Champawat.",
     "mystic_tribute": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77× Mystic Clover + 250× Mystic Coin",
-    "precursor_sources": "Craft obligatoire (craft 500 discipline) via recettes chez Grandmaster Craftsman Hobbs (Lion's Arch). 4 armes ont des collections dédiées (Astralaria, HOPE, Nevermore, Chuka). Autres : craft tiers via Hobbs.",
+    "precursor_sources": {
+      "fr": "Craft obligatoire (craft 500 discipline) via recettes chez Grandmaster Craftsman Hobbs (Lion's Arch). 4 armes ont des collections dédiées (Astralaria, HOPE, Nevermore, Chuka). Autres : craft tiers via Hobbs.",
+      "en": "Crafting required (500 discipline) via recipes from Grandmaster Craftsman Hobbs (Lion's Arch). 4 weapons have dedicated collections (Astralaria, HOPE, Nevermore, Chuka). Others: craft tiers via Hobbs."
+    },
     "gift_unique_tip": "Each Gift of [Weapon] generally contains: Gift of Metal + Mystic Runestones (×100) + specific Tribute + a HoT/PoF map item. See wiki per weapon.",
-    "mystic_runestone_note": "Gen2 utilise Mystic Runestone (1g chez Miyani) au lieu des Icy Runestone gen1.",
+    "mystic_runestone_note": {
+      "fr": "Gen2 utilise Mystic Runestone (1g chez Miyani) au lieu des Icy Runestone gen1.",
+      "en": "Gen2 uses Mystic Runestone (1g from Miyani) instead of gen1 Icy Runestones."
+    },
     "expansion_required": "HoT (ou PoF pour Gift of Desert Mastery)"
   },
   "gen2_weapons": [
@@ -5964,7 +6271,10 @@ const SOURCES_DB = {
         "mystic_tribute",
         "gift_of_skirmishing"
       ],
-      "note": "PvP pur. Gift of Skirmishing partagé avec The Ascension. Mystic Tribute partagé avec gen2. Précurseur = Mist Pendant (ascended PvP amulet).",
+      "note": {
+        "fr": "PvP pur. Gift of Skirmishing partagé avec The Ascension. Mystic Tribute partagé avec gen2. Précurseur = Mist Pendant (ascended PvP amulet).",
+        "en": "Pure PvP. Gift of Skirmishing shared with The Ascension. Mystic Tribute shared with gen2. Precursor = Mist Pendant (ascended PvP amulet)."
+      },
       "armory_api_id": 93105,
       "armory_max_count": 1
     },
@@ -5981,7 +6291,10 @@ const SOURCES_DB = {
         "gift_of_skirmishing",
         "gift_of_the_competitor"
       ],
-      "note": "One-time uniquement (Gift of the Competitor non répétable). Gift of Skirmishing partagé avec Transcendence. Gift of Fortune = gen1 (partagé).",
+      "note": {
+        "fr": "One-time uniquement (Gift of the Competitor non répétable). Gift of Skirmishing partagé avec Transcendence. Gift of Fortune = gen1 (partagé).",
+        "en": "One-time only (Gift of the Competitor not repeatable). Gift of Skirmishing shared with Transcendence. Gift of Fortune = gen1 (shared)."
+      },
       "unlock_also": "glider skin",
       "armory_api_id": 77474,
       "armory_max_count": 1
@@ -6036,7 +6349,10 @@ const SOURCES_DB = {
         "gift_of_galdra",
         "mystic_tribute"
       ],
-      "note": "Première accessory 100% PvE sans Gift of Battle. Mystic Tribute partagé avec gen2/Transcendence. 2 copies craftables. Patch 12 mai 2026.",
+      "note": {
+        "fr": "Première accessory 100% PvE sans Gift of Battle. Mystic Tribute partagé avec gen2/Transcendence. 2 copies craftables. Patch 12 mai 2026.",
+        "en": "First 100% PvE accessory without Gift of Battle. Mystic Tribute shared with gen2/Transcendence. 2 craftable copies. Patch May 12, 2026."
+      },
       "armory_api_id": null,
       "armory_max_count": 1,
       "armory_note": "Added May 2026 — apiId to confirm via API."
@@ -6054,7 +6370,10 @@ const SOURCES_DB = {
         "type": "vendor",
         "npc": "Dugan",
         "map": "WvW (Eternal Battlegrounds / Borderlands)",
-        "requirement": "Achievement 'Mists Research: Strife Unending' complété"
+        "requirement": {
+          "fr": "Achievement 'Mists Research: Strife Unending' complété",
+          "en": "Achievement 'Mists Research: Strife Unending' completed"
+        }
       },
       "armory_api_id": null,
       "armory_max_count": 1,
@@ -6074,7 +6393,10 @@ const SOURCES_DB = {
         "gift_of_the_feast"
       ],
       "note": "Story gate: Salvation's Cost (JW) required. Orrax Contained precursor via 'Unknown Nightmares' collection. Gift of the Feast requires the Fruits of the Shadow homestead node (Deft Lahar). Glider skin unlocked automatically.",
-      "unlock_also": "glider skin + homestead decoration (précurseur)",
+      "unlock_also": {
+        "fr": "glider skin + homestead decoration (précurseur)",
+        "en": "glider skin + homestead decoration (precursor)"
+      },
       "armory_api_id": 104857,
       "armory_max_count": 1
     },
@@ -6091,7 +6413,10 @@ const SOURCES_DB = {
         "gift_of_the_homesteader",
         "gift_of_klobjarne_geirr"
       ],
-      "note": "6 skins variantes auto-débloqués à la liaison. Gift of Janthir Wilds = équivalent JW du Gift of Maguuma/Desert Mastery. Gift of the Homesteader inclut Gift of Metal (déjà présent) + Recollector achievement.",
+      "note": {
+        "fr": "6 skins variantes auto-débloqués à la liaison. Gift of Janthir Wilds = équivalent JW du Gift of Maguuma/Desert Mastery. Gift of the Homesteader inclut Gift of Metal (déjà présent) + Recollector achievement.",
+        "en": "6 variant skins auto-unlocked on binding. Gift of Janthir Wilds = JW equivalent of Gift of Maguuma/Desert Mastery. Gift of the Homesteader includes Gift of Metal (already listed) + Recollector achievement."
+      },
       "unlock_also": "6 skin variants",
       "armory_api_id": 103815,
       "armory_max_count": 4
@@ -6114,7 +6439,10 @@ const SOURCES_DB = {
       "unlock_also": "Ancora Pax (staff) + Ancora Bellum (spear)",
       "armory_api_id": 105497,
       "armory_max_count": null,
-      "armory_note": "Container — unlock Ancora Pax (106712?) + Ancora Bellum. Vérifier apiIds Ancora."
+      "armory_note": {
+        "fr": "Container — unlock Ancora Pax (106712?) + Ancora Bellum. Vérifier apiIds Ancora.",
+        "en": "Container - unlocks Ancora Pax (106712?) + Ancora Bellum. Verify Ancora apiIds."
+      }
     },
     "selachimorpha": {
       "name": "Selachimorpha",
@@ -6129,7 +6457,10 @@ const SOURCES_DB = {
         "gift_of_castoran_mastery",
         "agaleus"
       ],
-      "note": "Précurseur Agaleus via collection 'Acquiring Agaleus' (24 étapes, VoE maps). Partage Gift of the Survivors/People avec Aetheric Anchor et Endless Summer.",
+      "note": {
+        "fr": "Précurseur Agaleus via collection 'Acquiring Agaleus' (24 étapes, VoE maps). Partage Gift of the Survivors/People avec Aetheric Anchor et Endless Summer.",
+        "en": "Agaleus precursor via the 'Acquiring Agaleus' collection (24 steps, VoE maps). Shares Gift of the Survivors/People with Aetheric Anchor and Endless Summer."
+      },
       "armory_api_id": null,
       "armory_max_count": 1,
       "armory_note": "Aquabreather — apiId to confirm."
@@ -6137,7 +6468,10 @@ const SOURCES_DB = {
     "legendary_rune": {
       "name": "Legendary Rune",
       "slot": "rune (upgrade)",
-      "farm": "PvE mixte (EoD + SotO/JW pour shortcuts)",
+      "farm": {
+        "fr": "PvE mixte (EoD + SotO/JW pour shortcuts)",
+        "en": "Mixed PvE (EoD + SotO/JW for shortcuts)"
+      },
       "expansion": "EoD (craft 400) — accès shortcut SotO/JW",
       "wiki": "Legendary_Rune",
       "recipe": "MF : Gift of Runes + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
@@ -6155,7 +6489,10 @@ const SOURCES_DB = {
     "legendary_sigil": {
       "name": "Legendary Sigil",
       "slot": "sigil (upgrade)",
-      "farm": "PvE mixte (EoD + SotO/JW pour shortcuts)",
+      "farm": {
+        "fr": "PvE mixte (EoD + SotO/JW pour shortcuts)",
+        "en": "Mixed PvE (EoD + SotO/JW for shortcuts)"
+      },
       "expansion": "EoD (craft 400)",
       "wiki": "Legendary_Sigil",
       "recipe": "MF : Gift of Sigils + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
@@ -6214,7 +6551,10 @@ const SOURCES_DB = {
       "armory_note": "6 pieces — apiId per piece (head/shoulders/chest/gloves/legs/boots) × 3 types (light/medium/heavy). Not straightforward to map. Detected via armory: count ≥ 6 pieces of the correct type.",
       "armory_slot_ids": {
         "detection": "slot_count",
-        "note": "Détecter via /v2/account/legendaryarmory : chercher items avec type=Armor de rarity=Legendary. Compter par armor_type (Light/Medium/Heavy). 6 pièces = set complet.",
+        "note": {
+          "fr": "Détecter via /v2/account/legendaryarmory : chercher items avec type=Armor de rarity=Legendary. Compter par armor_type (Light/Medium/Heavy). 6 pièces = set complet.",
+          "en": "Detect via /v2/account/legendaryarmory: look for items with type=Armor and rarity=Legendary. Count by armor_type (Light/Medium/Heavy). 6 pieces = full set."
+        },
         "light_ids": {
           "head": 80578,
           "shoulders": 80435,
@@ -6259,7 +6599,10 @@ const SOURCES_DB = {
         "ball_dark_energy"
       ],
       "pieces": 6,
-      "note": "Arcanum (tête) requiert Amalgamated Rift Essence supplémentaire.",
+      "note": {
+        "fr": "Arcanum (tête) requiert Amalgamated Rift Essence supplémentaire.",
+        "en": "Arcanum (head) requires additional Amalgamated Rift Essence."
+      },
       "armory_api_id": null,
       "armory_max_count": 1,
       "armory_note": "6 pieces × 3 armor types. Same pattern as Perfected Envoy.",
@@ -6294,7 +6637,10 @@ const SOURCES_DB = {
       "note": "1,095 Skirmish Tickets per piece.",
       "armory_api_id": null,
       "armory_max_count": 1,
-      "armory_note": "6 pièces × 3 types.",
+      "armory_note": {
+        "fr": "6 pièces × 3 types.",
+        "en": "6 pieces x 3 types."
+      },
       "armory_slot_ids": {
         "detection": "slot_count",
         "note": "WvW legendary armor. apiIds to confirm via API.",
@@ -6318,7 +6664,10 @@ const SOURCES_DB = {
       "note": "Upgrade direct depuis ascended PvP armor.",
       "armory_api_id": null,
       "armory_max_count": 1,
-      "armory_note": "6 pièces × 3 types.",
+      "armory_note": {
+        "fr": "6 pièces × 3 types.",
+        "en": "6 pieces x 3 types."
+      },
       "armory_slot_ids": {
         "detection": "slot_count",
         "note": "PvP legendary armor. apiIds to confirm via API.",
@@ -6368,7 +6717,10 @@ const SOURCES_DB = {
         "The Predator"
       ],
       "armory_api_id": null,
-      "armory_note": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*."
+      "armory_note": {
+        "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
+        "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
+      }
     },
     "gen2_weapon_generic": {
       "name": "Gen2 Weapon (générique)",
@@ -6415,7 +6767,10 @@ const SOURCES_DB = {
         "Reaver of the Mists"
       ],
       "armory_api_id": null,
-      "armory_note": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*."
+      "armory_note": {
+        "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
+        "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
+      }
     },
     "gen3_weapon_generic": {
       "name": "Gen3 Weapon / Aurene (générique)",
@@ -6455,7 +6810,10 @@ const SOURCES_DB = {
         "Aurene's Tenderness"
       ],
       "armory_api_id": null,
-      "armory_note": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*."
+      "armory_note": {
+        "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
+        "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
+      }
     },
     "gen1_frostfang": {
       "name": "Frostfang",
@@ -7878,7 +8236,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "Bloodstone Crown",
-                  "how": "Compléter Out of the Shadows Mastery (ou Reward Track LW3)",
+                  "how": {
+                    "fr": "Compléter Out of the Shadows Mastery (ou Reward Track LW3)",
+                    "en": "Complete Out of the Shadows Mastery (or LW3 Reward Track)"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3050,
                   "mastery_label": "\"Out of the Shadows\" Mastery",
@@ -7887,7 +8248,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Bloodstone Chip",
-                  "how": "Miner les Bloodstone Crystals en Bloodstone Fen",
+                  "how": {
+                    "fr": "Miner les Bloodstone Crystals en Bloodstone Fen",
+                    "en": "Mine the Bloodstone Crystals in Bloodstone Fen"
+                  },
                   "bit": 1
                 },
                 {
@@ -7897,22 +8261,34 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "White Mantle Crest",
-                  "how": "Drop des ennemis White Mantle en Bloodstone Fen",
+                  "how": {
+                    "fr": "Drop des ennemis White Mantle en Bloodstone Fen",
+                    "en": "Drops from White Mantle enemies in Bloodstone Fen"
+                  },
                   "bit": 3
                 },
                 {
                   "name": "Jade Core",
-                  "how": "Drop des Jade Constructs en Bloodstone Fen",
+                  "how": {
+                    "fr": "Drop des Jade Constructs en Bloodstone Fen",
+                    "en": "Drops from Jade Constructs in Bloodstone Fen"
+                  },
                   "bit": 4
                 },
                 {
                   "name": "Aged Ectoplasm",
-                  "how": "Drop des Ghosts en Bloodstone Fen",
+                  "how": {
+                    "fr": "Drop des Ghosts en Bloodstone Fen",
+                    "en": "Drops from Ghosts in Bloodstone Fen"
+                  },
                   "bit": 5
                 },
                 {
                   "name": "Living Bloodstone",
-                  "how": "Drop des Bloodstone Elementals en Bloodstone Fen",
+                  "how": {
+                    "fr": "Drop des Bloodstone Elementals en Bloodstone Fen",
+                    "en": "Drops from Bloodstone Elementals in Bloodstone Fen"
+                  },
                   "bit": 6
                 },
                 {
@@ -7932,7 +8308,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Rift Residue",
-                  "how": "Drop d'ennemis près des Unstable Rifts",
+                  "how": {
+                    "fr": "Drop d'ennemis près des Unstable Rifts",
+                    "en": "Drops from enemies near Unstable Rifts"
+                  },
                   "bit": 10
                 },
                 {
@@ -7949,7 +8328,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "Heavy Dragonscale Epaulets",
-                  "how": "Compléter Rising Flames Mastery (ou Reward Track LW3)",
+                  "how": {
+                    "fr": "Compléter Rising Flames Mastery (ou Reward Track LW3)",
+                    "en": "Complete Rising Flames Mastery (or LW3 Reward Track)"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3123,
                   "mastery_label": "\"Rising Flames\" Mastery",
@@ -8013,12 +8395,18 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Bottle of Skritt Spirits",
-                  "how": "Obtenir lors de la chasse au trésor Skritt",
+                  "how": {
+                    "fr": "Obtenir lors de la chasse au trésor Skritt",
+                    "en": "Obtain during the Skritt treasure hunt"
+                  },
                   "bit": 12
                 },
                 {
                   "name": "Slubling Tail",
-                  "how": "Drop des Slublings en Ember Bay",
+                  "how": {
+                    "fr": "Drop des Slublings en Ember Bay",
+                    "en": "Drops from Slublings in Ember Bay"
+                  },
                   "bit": 13
                 },
                 {
@@ -8036,7 +8424,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "Heavy Glacial Gauntlets",
-                  "how": "Compléter A Crack in the Ice Mastery",
+                  "how": {
+                    "fr": "Compléter A Crack in the Ice Mastery",
+                    "en": "Complete A Crack in the Ice Mastery"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3171,
                   "mastery_label": "\"A Crack in the Ice\" Mastery",
@@ -8050,7 +8441,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Frozen Winterberry",
-                  "how": "Ouvrir les Icebound Chests en Bitterfrost Frontier",
+                  "how": {
+                    "fr": "Ouvrir les Icebound Chests en Bitterfrost Frontier",
+                    "en": "Open the Icebound Chests in Bitterfrost Frontier"
+                  },
                   "bit": 2
                 },
                 {
@@ -8075,7 +8469,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Mini Aurene",
-                  "how": "Compléter la collection Gift of Aurene",
+                  "how": {
+                    "fr": "Compléter la collection Gift of Aurene",
+                    "en": "Complete the Gift of Aurene collection"
+                  },
                   "bit": 7
                 },
                 {
@@ -8117,7 +8514,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "White Mantle Elite Guard Mask",
-                  "how": "Compléter Head of the Snake Mastery (ou Reward Track LW3)",
+                  "how": {
+                    "fr": "Compléter Head of the Snake Mastery (ou Reward Track LW3)",
+                    "en": "Complete Head of the Snake Mastery (or LW3 Reward Track)"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3348,
                   "mastery_label": "\"The Head of the Snake\" Mastery",
@@ -8161,7 +8561,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Bloodstone-Warped Hoof",
-                  "how": "Drop des centaures bloodstone-crazed en Lake Doric",
+                  "how": {
+                    "fr": "Drop des centaures bloodstone-crazed en Lake Doric",
+                    "en": "Drops from bloodstone-crazed centaurs in Lake Doric"
+                  },
                   "bit": 8
                 },
                 {
@@ -8171,32 +8574,50 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Noran's Survival Kit",
-                  "how": "Obtenir dans Noran's Safe Room en Lake Doric",
+                  "how": {
+                    "fr": "Obtenir dans Noran's Safe Room en Lake Doric",
+                    "en": "Obtain in Noran's Safe Room in Lake Doric"
+                  },
                   "bit": 10
                 },
                 {
                   "name": "Jade Cannon Controller",
-                  "how": "Drop des White Mantle défendant les Jade Cannons",
+                  "how": {
+                    "fr": "Drop des White Mantle défendant les Jade Cannons",
+                    "en": "Drops from White Mantle defending the Jade Cannons"
+                  },
                   "bit": 11
                 },
                 {
                   "name": "Pristine White Mantle",
-                  "how": "Drop des ennemis White Mantle en Lake Doric",
+                  "how": {
+                    "fr": "Drop des ennemis White Mantle en Lake Doric",
+                    "en": "Drops from White Mantle enemies in Lake Doric"
+                  },
                   "bit": 12
                 },
                 {
                   "name": "Seraph Protector",
-                  "how": "Acheter à Lieutenant Bran à Doric's Landing",
+                  "how": {
+                    "fr": "Acheter à Lieutenant Bran à Doric's Landing",
+                    "en": "Buy from Lieutenant Bran at Doric's Landing"
+                  },
                   "bit": 13
                 },
                 {
                   "name": "Bloodstone Savant's Staff",
-                  "how": "Acheter à Exemplar Ylan à Fort Evennia",
+                  "how": {
+                    "fr": "Acheter à Exemplar Ylan à Fort Evennia",
+                    "en": "Buy from Exemplar Ylan at Fort Evennia"
+                  },
                   "bit": 14
                 },
                 {
                   "name": "Ebon Vanguard Badge",
-                  "how": "Trouver près des tombes des soldats Ebon Vanguard (Melandru's Refuge)",
+                  "how": {
+                    "fr": "Trouver près des tombes des soldats Ebon Vanguard (Melandru's Refuge)",
+                    "en": "Find near the graves of Ebon Vanguard soldiers (Melandru's Refuge)"
+                  },
                   "bit": 15
                 }
               ]
@@ -8209,7 +8630,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "Heavy Houndskin Mantle",
-                  "how": "Compléter Flashpoint Mastery (ou Reward Track LW3)",
+                  "how": {
+                    "fr": "Compléter Flashpoint Mastery (ou Reward Track LW3)",
+                    "en": "Complete Flashpoint Mastery (or LW3 Reward Track)"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3442,
                   "mastery_label": "\"Flashpoint\" Mastery",
@@ -8218,7 +8642,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "The Wayfarer's Henge",
-                  "how": "⚠️ Compléter 'A Henge Away from Home' (16 Druid Runestones, 1/jour — commencer tôt !)",
+                  "how": {
+                    "fr": "⚠️ Compléter 'A Henge Away from Home' (16 Druid Runestones, 1/jour — commencer tôt !)",
+                    "en": "Warning: complete 'A Henge Away from Home' (16 Druid Runestones, 1/day - start early!)"
+                  },
                   "bit": 1
                 },
                 {
@@ -8243,7 +8670,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Searing Ascender",
-                  "how": "JP Searing Ascent — atteindre la fin du jumping puzzle",
+                  "how": {
+                    "fr": "JP Searing Ascent — atteindre la fin du jumping puzzle",
+                    "en": "JP Searing Ascent - reach the end of the jumping puzzle"
+                  },
                   "bit": 6
                 },
                 {
@@ -8253,7 +8683,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Depleted Power Source",
-                  "how": "Trouver dans les Zinn's Stashes en Draconis Mons",
+                  "how": {
+                    "fr": "Trouver dans les Zinn's Stashes en Draconis Mons",
+                    "en": "Find in Zinn's Stashes in Draconis Mons"
+                  },
                   "bit": 8
                 },
                 {
@@ -8291,7 +8724,10 @@ const SOURCES_DB = {
               "items": [
                 {
                   "name": "Heavy Mursaat Brogans",
-                  "how": "Compléter One Path Ends Mastery (ou Reward Track LW3)",
+                  "how": {
+                    "fr": "Compléter One Path Ends Mastery (ou Reward Track LW3)",
+                    "en": "Complete One Path Ends Mastery (or LW3 Reward Track)"
+                  },
                   "bit": 0,
                   "mastery_achi_id": 3516,
                   "mastery_label": "\"One Path Ends\" Mastery",
@@ -8300,7 +8736,10 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Supporter of the Gods",
-                  "how": "Acheter un god's relic backpack à un vendeur en Siren's Landing",
+                  "how": {
+                    "fr": "Acheter un god's relic backpack à un vendeur en Siren's Landing",
+                    "en": "Buy a god's relic backpack from a vendor in Siren's Landing"
+                  },
                   "bit": 1
                 },
                 {
@@ -8614,12 +9053,12 @@ const LEGENDARIES = {
   vision: {
     id: "vision",
     name: "Vision",
-    type: "Accessory",
+    type: { fr: "Accessoire", en: "Accessory" },
     expansion: "LW4",
     color: "#a78bfa",
     colorDim: "rgba(167,139,250,0.15)",
     icon: "V",
-    description: "Legendary Accessory — Crystal Desert",
+    description: { fr: "Accessoire légendaire — Désert de Cristal", en: "Legendary Accessory — Crystal Desert" },
     resetType: "daily",
     currencies: [
       { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: null },
@@ -8631,148 +9070,148 @@ const LEGENDARIES = {
         offsetUTC: 105, intervalMin: 120, durationMin: 15,
         efficience: "A", population: "LFG", next: "td", nextDelayMin: 45,
         waypoint: "Pact Encampment Waypoint", wpCode: "[&BAgIAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Prendre le Pact Chopper → Wyvern Matriarch uniquement. Coffre : hard-reset à 01h (reset fixe, pas de timer 24h tournant)." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Prendre le Pact Chopper → Wyvern Matriarch uniquement. Coffre : hard-reset à 01h (reset fixe, pas de timer 24h tournant).", en: "Take the Pact Chopper → Wyvern Matriarch only. Chest: hard-reset at 01h (fixed reset, no rolling 24h timer)." } },
       { id: "td", name: "Tangled Depths", subname: "Chak Gerent", expansion: "HoT", icon: "TD",
         offsetUTC: 30, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: "ab", nextDelayMin: 15,
         waypoint: "Ley-Line Confluence Waypoint", wpCode: "[&BPUHAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant. Coffre : hard-reset à 01h." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant. Coffre : hard-reset à 01h.", en: "Central hub of the 4 lanes. LFG taxi, arrive 20 min early. Chest: hard-reset at 01h." } },
       { id: "ab", name: "Auric Basin", subname: "Octovine", expansion: "HoT", icon: "AB",
         offsetUTC: 45, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: "ds", nextDelayMin: 0,
         waypoint: "Forgotten City Waypoint", wpCode: "[&BNcHAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "4 lanes simultanées, stack sur la lane la plus peuplée. Coffre : hard-reset à 01h." },
-      { id: "ds", name: "Dragon's Stand", subname: "Meta complète", expansion: "HoT", icon: "DS",
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "4 lanes simultanées, stack sur la lane la plus peuplée. Coffre : hard-reset à 01h.", en: "4 simultaneous lanes, stack on the most populated one. Chest: hard-reset at 01h." } },
+      { id: "ds", name: "Dragon's Stand", subname: { fr: "Meta complète", en: "Full meta" }, expansion: "HoT", icon: "DS",
         offsetUTC: 30, intervalMin: 120, durationMin: 60,
         efficience: "B", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Mordremoth's Bane Waypoint", wpCode: "[&BNMHAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Longue (~1h). Bonne source de drops en parallèle. Difficile d'enchaîner après." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Longue (~1h). Bonne source de drops en parallèle. Difficile d'enchaîner après.", en: "Long (~1h). Good source of drops in parallel. Hard to chain afterwards." } },
       { id: "co", name: "Crystal Oasis", subname: "Casino Blitz", expansion: "PoF", icon: "CO",
         offsetUTC: 21, intervalMin: 120, durationMin: 10,
         efficience: "S", population: "moyen", next: "er", nextDelayMin: 39,
         waypoint: "Amnoon Waypoint", wpCode: "[&BLIGAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.", en: "~10 min, do not miss the start. The most efficient of all — absolute priority." } },
       { id: "er", name: "Elon Riverlands", subname: "Doppelganger", expansion: "PoF", icon: "ER",
         offsetUTC: 60, intervalMin: 120, durationMin: 15,
         efficience: "A", population: "moyen", next: "de", nextDelayMin: 30,
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Faire les pré-events 'Disperse wild magic'. Coffre : hard-reset à 01h." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Faire les pré-events 'Disperse wild magic'. Coffre : hard-reset à 01h.", en: "Do the 'Disperse wild magic' pre-events. Chest: hard-reset at 01h." } },
       { id: "de", name: "The Desolation", subname: "Junundu Rising", expansion: "PoF", icon: "DE",
         offsetUTC: 30, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "moyen", next: "dv", nextDelayMin: 30,
         waypoint: "Shattered Ravines Waypoint", wpCode: "[&BLMKAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Junundu mount required. Skimmer useful for sulfur areas. Chest: hard-reset at 01h." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Monture Junundu requise. Skimmer utile pour les zones de soufre. Coffre : hard-reset à 01h.", en: "Junundu mount required. Skimmer useful for sulfur areas. Chest: hard-reset at 01h." } },
       { id: "dv", name: "Domain of Vabbi", subname: "Forged with Fire", expansion: "PoF", icon: "FW",
         offsetUTC: 60, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "moyen", next: "co", nextDelayMin: 21,
         waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Easiest PoF meta, little coordination required. Chest: hard-reset at 01h." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "La meta PoF la plus simple, peu de coordination requise. Coffre : hard-reset à 01h.", en: "Easiest PoF meta, little coordination required. Chest: hard-reset at 01h." } },
       { id: "di", name: "Domain of Istan", subname: "Palawadan", expansion: "LW4", icon: "DI",
         offsetUTC: 0, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h.", en: "Very popular, easy LFG taxi. Chest: hard-reset at 01h." } },
       { id: "sw", name: "Skywatch Archipelago", subname: "Unlocking the Wizard's Tower", expansion: "SotO", icon: "SW",
         offsetUTC: 60, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: "am", nextDelayMin: 60,
         waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "1h after reset. Flying mount required. Well-populated." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "1h après le reset. Monture volante requise. Bien peuplé.", en: "1h after reset. Flying mount required. Well-populated." } },
       { id: "am", name: "Amnytas", subname: "Defense of Amnytas", expansion: "SotO", icon: "AM",
         offsetUTC: 0, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: "sw", nextDelayMin: 60,
         waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Au reset. Bien peuplé. S'enchaîne avec Skywatch 60 min après." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Au reset. Bien peuplé. S'enchaîne avec Skywatch 60 min après.", en: "At reset. Well populated. Chains with Skywatch 60 min later." } },
       { id: "sp", name: "Seitung Province", subname: "Aetherblade Assault", expansion: "EoD", icon: "SP",
         offsetUTC: 90, intervalMin: 120, durationMin: 30,
         efficience: "B", population: "moyen", next: "ew", nextDelayMin: 10,
         waypoint: "Shing Jea Monastery Waypoint", wpCode: "[&BNMMAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures impaires uniquement : 01:30 / 03:30...",
-        tip: "Démarre à XX:30 heures impaires UTC. S'enchaîne naturellement avec Echovald." },
+        tip: { fr: "Démarre à XX:30 heures impaires UTC. S'enchaîne naturellement avec Echovald.", en: "Starts at XX:30 odd hours UTC. Chains naturally with Echovald." } },
       { id: "nk", name: "New Kaineng City", subname: "Kaineng Blackout", expansion: "EoD", icon: "NK",
         offsetUTC: 0, intervalMin: 120, durationMin: 40,
         efficience: "C", population: "morte", next: null, nextDelayMin: null,
         waypoint: "Lutgardis Conservatory Waypoint", wpCode: "[&BNQMAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures paires : 00:00 / 02:00...",
-        tip: "⚠ Population quasi-inexistante hors Wizard's Vault. Opportuniste uniquement." },
+        tip: { fr: "⚠ Population quasi-inexistante hors Wizard's Vault. Opportuniste uniquement.", en: "⚠ Nearly nonexistent population outside Wizard's Vault. Opportunistic only." } },
       { id: "ew", name: "Echovald Wilds", subname: "Gang War", expansion: "EoD", icon: "EW",
         offsetUTC: 100, intervalMin: 120, durationMin: 35,
         efficience: "B", population: "moyen", next: null, nextDelayMin: null,
         waypoint: "Arborstone Waypoint", wpCode: "[&BLsNAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures paires : 01:40 / 03:40...",
-        tip: "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung." },
+        tip: { fr: "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung.", en: "2 phases: Gang War then Junkyard. Chains from Seitung." } },
       { id: "de2", name: "Dragon's End", subname: "Battle for Jade Sea", expansion: "EoD", icon: "DE2",
         offsetUTC: 60, intervalMin: 120, durationMin: 45,
         efficience: "C", population: "variable", next: null, nextDelayMin: null,
         waypoint: "The Jade Flats Waypoint", wpCode: "[&BNMMAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures impaires : 01:00 / 03:00...",
-        tip: "Prépa (14 min) → bataille (~30 min). Prépa ne garantit pas la bataille. Long + coordination + risque d'échec." },
+        tip: { fr: "Prépa (14 min) → bataille (~30 min). Prépa ne garantit pas la bataille. Long + coordination + risque d'échec.", en: "Prep (14 min) → battle (~30 min). Prep does not guarantee the battle. Long + coordination + failure risk." } },
       { id: "conv", name: "Convergence Outer Nayos", subname: "Public Instance", expansion: "SotO", icon: "CV",
         offsetUTC: 90, intervalMin: 180, durationMin: 20,
         efficience: "S", population: "public", next: null, nextDelayMin: null,
         waypoint: "Rift Hunter Lounge", wpCode: "[&BOgNAAA=]",
-        resetNote: "Commander's Choice Chest : hard-reset daily 01h UTC+1",
-        tip: "Toutes les 3h à XX:30 UTC. Fenêtre de 10 min. Portail dans Rift Hunter Lounge au Wizard's Tower." },
+        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
+        tip: { fr: "Toutes les 3h à XX:30 UTC. Fenêtre de 10 min. Portail dans Rift Hunter Lounge au Wizard's Tower.", en: "Every 3h at XX:30 UTC. 10 min window. Portal in the Rift Hunter Lounge at the Wizard's Tower." } },
       { id: "mb", name: "Convergence Mount Balrior", subname: "Public Instance", expansion: "JW", icon: "MB",
         offsetUTC: 0, intervalMin: 180, durationMin: 20,
         efficience: "S", population: "public", next: "conv", nextDelayMin: 90,
         waypoint: "Harvest Den Waypoint", wpCode: "[&BK4OAAA=]",
-        resetNote: "Commander's Choice Chest : hard-reset daily 01h UTC+1",
-        tip: "Toutes les 3h à XX:00 UTC. Fenêtre de 10 min. Portail dans Harvest Den, Lowland Shore. → Outer Nayos 90 min après." },
+        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
+        tip: { fr: "Toutes les 3h à XX:00 UTC. Fenêtre de 10 min. Portail dans Harvest Den, Lowland Shore. → Outer Nayos 90 min après.", en: "Every 3h at XX:00 UTC. 10 min window. Portal in Harvest Den, Lowland Shore. → Outer Nayos 90 min later." } },
       { id: "bn", name: "Bava Nisos", subname: "A Titanic Voyage", expansion: "JW", icon: "BN",
         offsetUTC: 80, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: null, nextDelayMin: null,
         waypoint: "Mantle's Arrival Waypoint", wpCode: "[&BGEPAAA=]",
-        resetNote: "Commander's Choice Chest : hard-reset daily 01h UTC+1",
-        tip: "Every 2h at XX:20 UTC. Talk to Livia to start. CC required on the boss." },
+        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
+        tip: { fr: "Toutes les 2h à XX:20 UTC. Parler à Livia pour lancer. CC requis sur le boss.", en: "Every 2h at XX:20 UTC. Talk to Livia to start. CC required on the boss." } },
       // ── Nodes LW4 — Vision (Volatile Magic + Mistborn Mote)
       { id: "lw4_istan", name: "Domain of Istan", subname: "Nodes Brandstones + VM", expansion: "LW4", icon: "OP",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
         farmType: "per_account",
-        resetNote: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)",
+        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
         vendor: "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM",
         vendorWp: "Pact Command Waypoint [&BOAKAAA=] — Dragonfall",
-        tip: "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM." },
+        tip: { fr: "Nodes de Brandstone → Volatile Magic. Soft-reset à 01h (attendre 5-15h après récolte). Cap 50 nodes/compte/jour. Vendeur Dragonfall : 5 Kralkatite/jour contre VM.", en: "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM." } },
       { id: "lw4_dragonfall", name: "Dragonfall", subname: "Nodes Mistborn Mote", expansion: "LW4", icon: "DF",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Pact Command Waypoint", wpCode: "[&BOAKAAA=]",
         farmType: "per_account",
-        resetNote: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)",
+        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
         vendor: "Crystal Bloom Quartermaster — Mistborn Mote contre karma (Dragonfall)",
         vendorWp: "Pact Command Waypoint [&BOAKAAA=]",
-        tip: "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)." },
+        tip: { fr: "Max 50 nodes de Mistborn Mote/compte/jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place vend des Mistborn Motes contre karma (5/jour — léger potentiel alt-swap).", en: "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)." } },
     ],
     bounties: [
       { id: "bt_co", map: "Crystal Oasis", target: "Corrupted Facet", icon: "BT",
         waypoint: "Destiny's Gorge Waypoint", wpCode: "[&BLsKAAA=]",
-        tip: "RDV habituel des bounty trains en LFG.", elegy: "4–50" },
+        tip: { fr: "RDV habituel des bounty trains en LFG.", en: "Usual meeting point of LFG bounty trains." }, elegy: "4–50" },
       { id: "bt_dh", map: "Desert Highlands", target: "Ellutherius Wintergust", icon: "BF",
         waypoint: "Fortune's Vale Waypoint", wpCode: "[&BNQKAAA=]",
-        tip: "Springer High Vault required for Palace of Aban.", elegy: "4–50" },
+        tip: { fr: "Springer High Vault requis pour le Palace of Aban.", en: "Springer High Vault required for Palace of Aban." }, elegy: "4–50" },
       { id: "bt_er", map: "Elon Riverlands", target: "Aetherblaze", icon: "EL",
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
-        tip: "Board de bounty à côté du WP meta.", elegy: "4–50" },
+        tip: { fr: "Board de bounty à côté du WP meta.", en: "Bounty board next to the meta WP." }, elegy: "4–50" },
       { id: "bt_de", map: "The Desolation", target: "Plaguelands", icon: "DS",
         waypoint: "Bonestrand Waypoint", wpCode: "[&BKMKAAA=]",
-        tip: "Skimmer recommandé pour les zones de soufre.", elegy: "4–50" },
+        tip: { fr: "Skimmer recommandé pour les zones de soufre.", en: "Skimmer recommended for the sulfur areas." }, elegy: "4–50" },
       { id: "bt_dv", map: "Domain of Vabbi", target: "Forged Rampager", icon: "FW",
         waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
-        tip: "Souvent la plus peuplée grâce aux metas Forged.", elegy: "4–50" },
+        tip: { fr: "Souvent la plus peuplée grâce aux metas Forged.", en: "Often the most populated thanks to the Forged metas." }, elegy: "4–50" },
     ],
     // ── Collections / achievements de progression ─────────────
     collections: {
@@ -8780,37 +9219,37 @@ const LEGENDARIES = {
         id: 4762,
         name: "Vision I: Awakening",
         reward: "Gift of Insight",
-        note: "Compléter les 6 Visions of [map] LW4 — une par zone Crystal Desert + Dragonfall.",
+        note: { fr: "Compléter les 6 Visions of [map] LW4 — une par zone Crystal Desert + Dragonfall.", en: "Complete the 6 Visions of [map] LW4 — one per Crystal Desert zone + Dragonfall." },
         subcollections: [
-          { id: 4765, name: "Visions of Istan",             map: "Domain of Istan",        how: "Compléter des events + hearts en Domain of Istan" },
-          { id: 4760, name: "Visions of Kourna",            map: "Domain of Kourna",       how: "Compléter des events + hearts en Domain of Kourna" },
-          { id: 4770, name: "Visions of Jahai",             map: "Jahai Bluffs",           how: "Compléter des events + hearts en Jahai Bluffs" },
-          { id: 4774, name: "Visions of Sandswept Isles",   map: "Sandswept Isles",        how: "Compléter des events + hearts en Sandswept Isles" },
-          { id: 4764, name: "Visions of Thunderhead Peaks", map: "Thunderhead Peaks",      how: "Compléter des events + hearts en Thunderhead Peaks" },
-          { id: 4757, name: "Visions of Dragonfall",        map: "Dragonfall",             how: "Compléter des events + hearts en Dragonfall" },
+          { id: 4765, name: "Visions of Istan",             map: "Domain of Istan",        how: { fr: "Compléter des events + hearts en Domain of Istan", en: "Complete events + hearts in Domain of Istan" } },
+          { id: 4760, name: "Visions of Kourna",            map: "Domain of Kourna",       how: { fr: "Compléter des events + hearts en Domain of Kourna", en: "Complete events + hearts in Domain of Kourna" } },
+          { id: 4770, name: "Visions of Jahai",             map: "Jahai Bluffs",           how: { fr: "Compléter des events + hearts en Jahai Bluffs", en: "Complete events + hearts in Jahai Bluffs" } },
+          { id: 4774, name: "Visions of Sandswept Isles",   map: "Sandswept Isles",        how: { fr: "Compléter des events + hearts en Sandswept Isles", en: "Complete events + hearts in Sandswept Isles" } },
+          { id: 4764, name: "Visions of Thunderhead Peaks", map: "Thunderhead Peaks",      how: { fr: "Compléter des events + hearts en Thunderhead Peaks", en: "Complete events + hearts in Thunderhead Peaks" } },
+          { id: 4757, name: "Visions of Dragonfall",        map: "Dragonfall",             how: { fr: "Compléter des events + hearts en Dragonfall", en: "Complete events + hearts in Dragonfall" } },
         ],
       },
       vision_2: {
         id: 4771,
         name: "Vision II: Farsight",
         reward: "Gift of Prescience",
-        note: "Compléter les 3 Requiem collections (Convergence of Sorrow I+II + Requiem Experiments 1–6).",
+        note: { fr: "Compléter les 3 Requiem collections (Convergence of Sorrow I+II + Requiem Experiments 1–6).", en: "Complete the 3 Requiem collections (Convergence of Sorrow I+II + Requiem Experiments 1–6)." },
         subcollections: [
-          { id: 4376, name: "The Convergence of Sorrow I: Elegy",   map: "Jahai Bluffs",  how: "Collecter les 6 Elegy items — liés aux Requiem Armor collections" },
-          { id: 4362, name: "The Convergence of Sorrow II: Requiem", map: "Jahai Bluffs", how: "Collecter les 6 Requiem items — suite de Elegy" },
+          { id: 4376, name: "The Convergence of Sorrow I: Elegy",   map: "Jahai Bluffs",  how: { fr: "Collecter les 6 Elegy items — liés aux Requiem Armor collections", en: "Collect the 6 Elegy items — tied to the Requiem Armor collections" } },
+          { id: 4362, name: "The Convergence of Sorrow II: Requiem", map: "Jahai Bluffs", how: { fr: "Collecter les 6 Requiem items — suite de Elegy", en: "Collect the 6 Requiem items — follow-up to Elegy" } },
         ],
       },
     },
     // ── Requiem collections (source d'Elegy Mosaic) ───────────
     requiem: {
-      note: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète en Jahai Bluffs via Requiem Armor sets (drop + craft).",
+      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète en Jahai Bluffs via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
       experiments: [
-        { id: 4344, name: "Requiem: Experiment 1", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 1 (drop Branded, craft)" },
-        { id: 4432, name: "Requiem: Experiment 2", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 2" },
-        { id: 4420, name: "Requiem: Experiment 3", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 3" },
-        { id: 4354, name: "Requiem: Experiment 4", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 4" },
-        { id: 4356, name: "Requiem: Experiment 5", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 5" },
-        { id: 4357, name: "Requiem: Experiment 6", elegy: 50, how: "Collecter les pièces d'armure Requiem tier 6 — complète la série" },
+        { id: 4344, name: "Requiem: Experiment 1", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 1 (drop Branded, craft)", en: "Collect the Requiem armor pieces tier 1 (Branded drops, craft)" } },
+        { id: 4432, name: "Requiem: Experiment 2", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 2", en: "Collect the Requiem armor pieces tier 2" } },
+        { id: 4420, name: "Requiem: Experiment 3", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 3", en: "Collect the Requiem armor pieces tier 3" } },
+        { id: 4354, name: "Requiem: Experiment 4", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 4", en: "Collect the Requiem armor pieces tier 4" } },
+        { id: 4356, name: "Requiem: Experiment 5", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 5", en: "Collect the Requiem armor pieces tier 5" } },
+        { id: 4357, name: "Requiem: Experiment 6", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 6 — complète la série", en: "Collect the Requiem armor pieces tier 6 — completes the series" } },
       ],
     },
   },
@@ -8818,12 +9257,12 @@ const LEGENDARIES = {
   aurora: {
     id: "aurora",
     name: "Aurora",
-    type: "Accessory",
+    type: { fr: "Accessoire", en: "Accessory" },
     expansion: "LW3",
     color: "#34d399",
     colorDim: "rgba(52,211,153,0.15)",
     icon: "*",
-    description: "Legendary Accessory — Living World Season 3",
+    description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899,
@@ -8843,44 +9282,44 @@ const LEGENDARIES = {
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
         farmType: "per_char",
-        resetNote: "soft-reset daily 01h UTC+1 (min. 5-15h après dernière récolte)",
-        tip: "~50-80 Winterberries per character per day — 21 nodes on the map. Thaw Elixir required for the cold zone. Reset: soft-reset at 01h, but wait 5-15h after your last harvest before returning." },
+        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après dernière récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after last harvest)" },
+        tip: { fr: "~50-80 Winterberries par perso et par jour — 21 nodes sur la map. Thaw Elixir requis pour la zone froide. Reset : soft-reset à 01h, mais attendre 5-15h après la dernière récolte avant d'y retourner.", en: "~50-80 Winterberries per character per day — 21 nodes on the map. Thaw Elixir required for the cold zone. Reset: soft-reset at 01h, but wait 5-15h after your last harvest before returning." } },
       { id: "eb", name: "Ember Bay", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "EB",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Savage Rise Waypoint", wpCode: "[&BNMJAAA=]",
         farmType: "per_account",
-        resetNote: "soft-reset daily 01h UTC+1",
+        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
         vendor: "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma",
         vendorWp: "Savage Rise Waypoint [&BNMJAAA=]",
-        tip: "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)." },
+        tip: { fr: "~40 Lava Drops + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Le vendeur Seimur Oxbone sur place vend la currency contre karma (5/jour/perso — léger potentiel alt-swap).", en: "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)." } },
       { id: "dm", name: "Draconis Mons", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "DM",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Heathen's Hold Waypoint", wpCode: "[&BOMJAAA=]",
         farmType: "per_account",
-        resetNote: "soft-reset daily 01h UTC+1",
+        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
         vendor: "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma",
         vendorWp: "Heathen's Hold Waypoint [&BOMJAAA=]",
-        tip: "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)." },
+        tip: { fr: "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Vendeuse Nesa sur place (5/jour/perso — léger potentiel alt-swap).", en: "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)." } },
       { id: "ld", name: "Lake Doric", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "LD",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Noran's Homestead Waypoint", wpCode: "[&BNQJAAA=]",
         farmType: "per_account",
-        resetNote: "soft-reset daily 01h UTC+1",
+        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
         vendor: "Noran — vend Jade Shard contre karma",
         vendorWp: "Noran's Homestead Waypoint [&BNQJAAA=]",
-        tip: "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor." },
+        tip: { fr: "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Vendeur Noran sur place (5/jour/perso). Alt-swap minimal possible via le vendeur.", en: "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor." } },
       { id: "sl", name: "Siren's Landing", subname: "Hidden Reliquary Chests", expansion: "LW3", icon: "SL",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Camp Reclamation Waypoint", wpCode: "[&BO8JAAA=]",
         farmType: "per_char_hearts",
-        resetNote: "soft-reset daily 01h UTC+1",
-        tip: "1 free chest + 1 paid (1.5g) per character/day. The 5 hearts must be redone per character before access (~20-30 min). Soft-reset at 01h. Alt-swap possible but time-costly." },
+        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
+        tip: { fr: "1 coffre gratuit + 1 payant (1,5po) par perso/jour. Les 5 hearts sont à refaire par perso avant l'accès (~20-30 min). Soft-reset à 01h. Alt-swap possible mais coûteux en temps.", en: "1 free chest + 1 paid (1.5g) per character/day. The 5 hearts must be redone per character before access (~20-30 min). Soft-reset at 01h. Alt-swap possible but time-costly." } },
       { id: "bf_meta", name: "Bitterfrost Frontier", subname: "Frozen Maw Meta", expansion: "LW3", icon: "BM",
         offsetUTC: 0, intervalMin: 120, durationMin: 20,
         waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
         farmType: "per_account",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Meta every 2h — Hero's Choice Chest (1/account/day, hard-reset at 01h) + bonus Winterberries post-meta. Good loot density." },
+        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
+        tip: { fr: "Meta toutes les 2h — Hero's Choice Chest (1/compte/jour, hard-reset à 01h) + Winterberries bonus post-meta. Bonne densité de loot.", en: "Meta every 2h — Hero's Choice Chest (1/account/day, hard-reset at 01h) + bonus Winterberries post-meta. Good loot density." } },
     ],
     bounties: [],
   },
@@ -8888,12 +9327,12 @@ const LEGENDARIES = {
   conflux: {
     id: "conflux",
     name: "Conflux",
-    type: "Ring",
+    type: { fr: "Anneau", en: "Ring" },
     expansion: "HoT",
     color: "#fb923c",
     colorDim: "rgba(251,146,60,0.15)",
     icon: "DI",
-    description: "Legendary Ring — World vs World exclusive",
+    description: { fr: "Anneau légendaire — exclusif Monde contre Monde", en: "Legendary Ring — World vs World exclusive" },
     resetType: "weekly",
     currencies: [
       { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 },
@@ -8904,17 +9343,17 @@ const LEGENDARIES = {
     metas: [],
     wvwActivities: [
       { id: "skirmish", name: "Skirmish Reward Track", icon: "SR",
-        limit: "365 tickets/semaine", resetDay: "Lundi",
-        tip: "Main ticket source. Maintain Gold+ participation to maximize pips." },
+        limit: { fr: "365 tickets/semaine", en: "365 tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Source principale de tickets. Maintenir une participation Gold+ pour maximiser les pips.", en: "Main ticket source. Maintain Gold+ participation to maximize pips." } },
       { id: "weeklies", name: "WvW Weeklies", icon: "WK",
-        limit: "~150 tickets bonus/semaine", resetDay: "Lundi",
-        tip: "Complete WvW weekly objectives. Check in the Achievements → WvW menu." },
+        limit: { fr: "~150 tickets bonus/semaine", en: "~150 bonus tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Compléter les objectifs hebdomadaires WvW. À vérifier dans le menu Achievements → WvW.", en: "Complete WvW weekly objectives. Check in the Achievements → WvW menu." } },
       { id: "osr", name: "Objective Scaling Rewards", icon: "LD",
-        limit: "Variable selon activité", resetDay: "Continu",
-        tip: "Rewards bonus pour capturer/défendre des objectifs à forte valeur. Rejoindre un commander actif." },
+        limit: { fr: "Variable selon activité", en: "Varies with activity" }, resetDay: "Continu",
+        tip: { fr: "Rewards bonus pour capturer/défendre des objectifs à forte valeur. Rejoindre un commander actif.", en: "Bonus rewards for capturing/defending high-value objectives. Join an active commander." } },
       { id: "reward_track", name: "Gift of Battle Track", icon: "RT",
-        limit: "1 completion suffit", resetDay: "Unique",
-        tip: "Complete the 'Gift of Battle' reward track — required for all legendaries. ~5-6 evenings." },
+        limit: { fr: "1 completion suffit", en: "1 completion is enough" }, resetDay: "Unique",
+        tip: { fr: "Compléter le reward track 'Gift of Battle' — requis pour tous les légendaires. ~5-6 soirées.", en: "Complete the 'Gift of Battle' reward track — required for all legendaries. ~5-6 evenings." } },
     ],
     bounties: [],
   },
@@ -8922,12 +9361,12 @@ const LEGENDARIES = {
   prismatic: {
     id: "prismatic",
     name: "Prismatic",
-    type: "Amulet",
+    type: { fr: "Amulette", en: "Amulet" },
     expansion: "LW",
     color: "#a855f7",
     colorDim: "rgba(168,85,247,0.15)",
     icon: "❆",
-    description: "Prismatic Champion's Regalia — Seasons of the Dragons",
+    description: { fr: "Prismatic Champion's Regalia — Saisons des dragons", en: "Prismatic Champion's Regalia — Seasons of the Dragons" },
     resetType: "daily",
     currencies: [],
     metas: [],
@@ -8943,7 +9382,7 @@ const LEGENDARIES = {
           { bit: 4,  name: "Return to Tangled Paths" },
           { bit: 5,  name: "Return to Seeds of Truth" },
         ],
-        tip: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." },
+        tip: { fr: "6 épisodes LW S2. Dry Top + Silverwastes. Aucun or requis — progression pure par achievements.", en: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." } },
       { id: "tier2", name: "Tier 2 — Living World S3", icon: "◆", color: "#34d399",
         episodes: [
           { bit: 6,  name: "Return to Out of the Shadows" },
@@ -8953,7 +9392,7 @@ const LEGENDARIES = {
           { bit: 10, name: "Return to Flashpoint" },
           { bit: 11, name: "Return to One Path Ends" },
         ],
-        tip: "6 épisodes LW S3 — synergique avec Aurora. One Path Ends = accès Siren's Landing." },
+        tip: { fr: "6 épisodes LW S3 — synergique avec Aurora. One Path Ends = accès Siren's Landing.", en: "6 LW S3 episodes — synergizes with Aurora. One Path Ends = access to Siren's Landing." } },
       { id: "tier3", name: "Tier 3 — Living World S4", icon: "◆", color: "#fbbf24",
         episodes: [
           { bit: 12, name: "Return to Daybreak" },
@@ -8963,7 +9402,7 @@ const LEGENDARIES = {
           { bit: 16, name: "Return to All or Nothing" },
           { bit: 17, name: "Return to War Eternal" },
         ],
-        tip: "6 épisodes LW S4 — synergique avec Vision." },
+        tip: { fr: "6 épisodes LW S4 — synergique avec Vision.", en: "6 LW S4 episodes — synergizes with Vision." } },
       { id: "tier4", name: "Tier 4 — Icebrood Saga", icon: "◆", color: "#fb923c",
         episodes: [
           { bit: 18, name: "Return to Prologue: Bound by Blood" },
@@ -8973,7 +9412,7 @@ const LEGENDARIES = {
           { bit: 22, name: "Return to Jormag Rising" },
           { bit: 23, name: "Return to Champions" },
         ],
-        tip: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." },
+        tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
   },
 };
@@ -8984,13 +9423,13 @@ const LEGENDARIES = {
 
 const COMMON_MATS = [
   { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
-    tip: "Login rewards (7/mois via Chest of Loyalty), PvP/WvW reward tracks" },
+    tip: { fr: "Login rewards (7/mois via Chest of Loyalty), PvP/WvW reward tracks", en: "Login rewards (7/month via Chest of Loyalty), PvP/WvW reward tracks" } },
   { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
-    tip: "Login quotidien principalement. ~30/mois de base." },
+    tip: { fr: "Login quotidien principalement. ~30/mois de base.", en: "Mostly daily login. ~30/month baseline." } },
   { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
-    tip: "Salvage de rares niveau 68+. Drop abondant pendant les metas." },
+    tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
   { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
-    tip: "Karma — merchants de maps LW ou Temples de Orr." },
+    tip: { fr: "Karma — merchants de maps LW ou Temples de Orr.", en: "Karma — LW map merchants or Temples of Orr." } },
 ];
 
 // ═══════════════════════════════════════════════════════════════
@@ -9224,7 +9663,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
         src.type?.includes("fractal") ? "Fractals" :
         src.type ? "PvE" : "Mixte";
       return { compId, name: comp.name ?? compId, qty, owned, missing, pct, apiId, hasStock,
-               farm: farmColor(src), farmLabel, tip: src.tip ?? "" };
+               farm: farmColor(src), farmLabel, tip: L(src.tip) ?? "" };
     })
     .filter(r => filterFarm === "all" || r.farmLabel === filterFarm)
     .sort((a, b) => {
@@ -9527,7 +9966,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                       {tip && (
                         <div style={{ fontSize: 9, color: D+"0.3)", fontFamily: "'Crimson Text', serif",
                           fontStyle: "italic", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
-                          {tip.slice(0, 70)}{tip.length > 70 ? "…" : ""}
+                          {String(tip).slice(0, 70)}{String(tip).length > 70 ? "…" : ""}
                         </div>
                       )}
                       {missing !== null && missing > 0 && (
@@ -9603,7 +10042,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                     <div key={v.compId} style={{ fontSize: 10, color: "rgba(251,146,60,0.6)",
                       fontFamily: "'Crimson Text', serif", padding: "2px 0" }}>
                       <span style={{ fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{v.name}</span>
-                      {v.note && <span style={{ opacity: 0.6 }}> — {v.note}</span>}
+                      {v.note && <span style={{ opacity: 0.6 }}> — {L(v.note)}</span>}
                     </div>
                   ))}
                 </div>
@@ -9618,13 +10057,16 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 
 
 function GW2LegendaryTracker() {
-  const t = useT();
-  const [now, setNow] = useState(new Date());
-  const [selectedLeg, setSelectedLeg] = useState("vision");
-  const [activeTab, setActiveTab] = useState("metas");
   const [lang, setLang] = useState(() => {
     try { return localStorage.getItem("gw2_lang") || "en"; } catch (_) { return "en"; }
   });
+  // ⚠ Ne pas utiliser useT() ici : le Provider est défini PAR ce composant,
+  // useContext y renverrait la valeur par défaut ("en") en permanence.
+  const t = useCallback((key, vars) => translate(key, lang, vars), [lang]);
+  const [now, setNow] = useState(new Date());
+  const [selectedLeg, setSelectedLeg] = useState("vision");
+  const [activeTab, setActiveTab] = useState("metas");
+  CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
   const setLangPersist = useCallback((l) => {
     setLang(l);
     try { localStorage.setItem("gw2_lang", l); } catch (_) {}
@@ -10110,7 +10552,7 @@ function GW2LegendaryTracker() {
               {leg?.name}
             </div>
             <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
-              {leg?.description}
+              {L(leg?.description)}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
@@ -10154,7 +10596,7 @@ function GW2LegendaryTracker() {
             onClick={() => setSelectedLeg(l.id)}
           >
             {l.icon} {l.name}
-            <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>({l.type})</span>
+            <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>({L(l.type)})</span>
           </button>
         ))}
         <div style={{ width: "1px", background: "rgba(226,201,126,0.12)", margin: "2px 4px", flexShrink: 0 }} />
@@ -10263,10 +10705,10 @@ function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{m.subname}</div>
+                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
                       {m.bestNext && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
-                          → {m.bestNext.meta.name} dans {formatCountdown(m.bestNext.ms)}
+                          → {m.bestNext.meta.name} {t("word_in")} {formatCountdown(m.bestNext.ms)}
                         </div>
                       )}
                     </div>
@@ -10306,10 +10748,10 @@ function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{m.subname}</div>
+                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
-                          → {m.bestNext.meta.name} dans {formatCountdown(m.bestNext.ms)}
+                          → {m.bestNext.meta.name} {t("word_in")} {formatCountdown(m.bestNext.ms)}
                         </div>
                       )}
                     </div>
@@ -10340,7 +10782,7 @@ function GW2LegendaryTracker() {
                       )}
                       {m.resetNote && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(251,146,60,0.8)", marginBottom: "5px" }}>
-                          [R] {m.resetNote}
+                          [R] {L(m.resetNote)}
                         </div>
                       )}
                       {m.bestNext && (
@@ -10348,7 +10790,7 @@ function GW2LegendaryTracker() {
                           {t("next_meta", { meta: m.bestNext.meta.name, sub: m.bestNext.meta.subname, time: formatLocalTime(m.bestNext.date) })}
                         </div>
                       )}
-                      ⏱ ~{m.durationMin} min · {m.tip}
+                      ⏱ ~{m.durationMin} min · {L(m.tip)}
                     </div>
                   )}
                 </div>
@@ -10374,7 +10816,7 @@ function GW2LegendaryTracker() {
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: "12px", fontWeight: 600 }}>{m.name}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px", marginTop: "2px" }}>
-                        <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{m.subname}</span>
+                        <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</span>
                         {m.farmType && (
                           <span style={{ fontSize: "9px", color: farmLabel.color, background: `${farmLabel.color}18`, border: `1px solid ${farmLabel.color}30`, padding: "1px 5px", borderRadius: "2px", fontFamily: "'Crimson Text', serif" }}>
                             {farmLabel.text}
@@ -10398,7 +10840,7 @@ function GW2LegendaryTracker() {
                       </div>
                       {m.resetNote && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(251,146,60,0.8)", marginBottom: "5px" }}>
-                          [R] {m.resetNote}
+                          [R] {L(m.resetNote)}
                         </div>
                       )}
                       {m.vendor && (
@@ -10406,7 +10848,7 @@ function GW2LegendaryTracker() {
                           [V] {m.vendor}
                         </div>
                       )}
-                      {m.tip}
+                      {L(m.tip)}
                     </div>
                   )}
                 </div>
@@ -10517,8 +10959,8 @@ function GW2LegendaryTracker() {
                 <span style={{ fontSize: "18px", width: "26px" }}>{a.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: "12px", fontWeight: 600 }}>{a.name}</div>
-                  <div style={{ fontSize: "10px", color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>{a.limit}</div>
-                  <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>{a.tip}</div>
+                  <div style={{ fontSize: "10px", color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>{L(a.limit)}</div>
+                  <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>{L(a.tip)}</div>
                 </div>
                 <button className={`check-btn ${weeklyChecked[a.id] ? "done" : ""}`}
                   onClick={() => toggleWeekly(a.id)}>
@@ -10586,7 +11028,7 @@ function GW2LegendaryTracker() {
                   <div style={{ padding: "4px 12px 10px" }}>
                     {tier.tip && (
                       <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 8, lineHeight: 1.5 }}>
-                        {tier.tip}
+                        {L(tier.tip)}
                       </div>
                     )}
                     {tier.episodes.map(ep => {
@@ -10658,7 +11100,7 @@ function GW2LegendaryTracker() {
                       {copied === b.id ? t("btn_copied") : `${b.wpCode} [c]`}
                     </button>
                   </div>
-                  {b.tip}
+                  {L(b.tip)}
                 </div>
               )}
             </div>
@@ -10860,7 +11302,7 @@ function GW2LegendaryTracker() {
                       <div style={{ background: "rgba(255,255,255,0.01)", padding: "4px 13px 10px 36px", borderTop: "1px solid rgba(226,201,126,0.04)" }}>
                         {timegate && (
                           <div style={{ margin: "6px 0 8px", padding: "7px 10px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5, fontSize: 11, color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>
-                            ⚠ {timegate}
+                            ⚠ {L(timegate)}
                           </div>
                         )}
                         {items.map((item, i) => {
@@ -10895,7 +11337,7 @@ function GW2LegendaryTracker() {
                             </div>
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{item.name}</div>
-                              {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{item.how}</div>}
+                              {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{L(item.how)}</div>}
                               {/* Bloc Mastery story inline — bit 0 uniquement */}
                               {missing && masteryId && (
                                 <div style={{ marginTop: 5, padding: "6px 8px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5 }}>
@@ -11000,7 +11442,7 @@ function GW2LegendaryTracker() {
                             <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{item.name}</span>
                             <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{item.map}</span>
                           </div>
-                          <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{item.how}</div>
+                          <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(item.how)}</div>
                         </div>
                       </div>
                     );
@@ -11040,8 +11482,8 @@ function GW2LegendaryTracker() {
         const v1Count = VISIONS_OF.filter(v => vc[v.key]?.done).length;
 
         const CONVERGENCE = [
-          { key: "vision_convergence_1", label: "The Convergence of Sorrow I: Elegy",   note: "6 items Elegy — liés aux Requiem Armor collections" },
-          { key: "vision_convergence_2", label: "The Convergence of Sorrow II: Requiem", note: "6 items Requiem — suite de Elegy" },
+          { key: "vision_convergence_1", label: "The Convergence of Sorrow I: Elegy",   note: { fr: "6 items Elegy — liés aux Requiem Armor collections", en: "6 Elegy items — tied to the Requiem Armor collections" } },
+          { key: "vision_convergence_2", label: "The Convergence of Sorrow II: Requiem", note: { fr: "6 items Requiem — suite de Elegy", en: "6 Requiem items — follow-up to Elegy" } },
         ];
         const convCount = CONVERGENCE.filter(c => vc[c.key]?.done).length;
 
@@ -11170,7 +11612,7 @@ function GW2LegendaryTracker() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{c.label}</div>
-                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{c.note}</div>
+                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(c.note)}</div>
                     </div>
                   </div>
                 );
@@ -11307,7 +11749,7 @@ function GW2LegendaryTracker() {
                       ))}
                     </div>
                     <div style={{ fontFamily: "'Crimson Text', serif", fontStyle: "italic", fontSize: "12px", color: "rgba(226,201,126,0.5)", textAlign: "center" }}>
-                      {m.tip}
+                      {L(m.tip)}
                     </div>
                   </div>
                 )}
