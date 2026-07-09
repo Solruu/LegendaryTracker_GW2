@@ -241,6 +241,35 @@ const LangContext = createContext("en");
 let CUR_LANG = "en";
 const L = (v) => (v && typeof v === "object" && !Array.isArray(v) && (v.fr !== undefined || v.en !== undefined)) ? (v[CUR_LANG] ?? v.en ?? v.fr) : v;
 
+// Noms FR officiels des légendaires — API GW2 (?lang=fr), cache localStorage.
+// Résolution : NL(legId, fallbackEN). Fallback EN si hors-ligne / nom absent (ex. Prismatic).
+let FR_LEG_NAMES = {};
+try { FR_LEG_NAMES = JSON.parse(localStorage.getItem("gw2_names_fr") || "{}"); } catch (_) {}
+const NL = (legId, fallback) => (CUR_LANG === "fr" && legId && FR_LEG_NAMES[legId]) || fallback;
+async function fetchFrLegNames() {
+  // Fusion : reverse-map armory + armory_api_id de chaque entrée legendaries
+  const map = {};
+  for (const [apiId, legIds] of Object.entries(SOURCES_DB?._meta?.armory_apiid_to_legid ?? {})) {
+    map[apiId] = [...(map[apiId] ?? []), ...legIds];
+  }
+  for (const [legId, e] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
+    if (e?.armory_api_id) map[String(e.armory_api_id)] = [...(map[String(e.armory_api_id)] ?? []), legId];
+  }
+  const ids = Object.keys(map);
+  const out = {};
+  for (let i = 0; i < ids.length; i += 200) {
+    const chunk = ids.slice(i, i + 200);
+    const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=fr`);
+    if (!res.ok) continue;
+    for (const it of await res.json()) {
+      for (const legId of (map[String(it.id)] ?? [])) out[legId] = it.name;
+    }
+  }
+  // Alias : l'onglet "prismatic" pointe sur l'entrée DB prismatic_champions_regalia
+  if (out.prismatic_champions_regalia && !out.prismatic) out.prismatic = out.prismatic_champions_regalia;
+  return out;
+}
+
 function translate(key, lang, vars) {
   const dict = I18N[lang] || I18N.en;
   let s = dict[key] ?? I18N.en[key] ?? key;
@@ -1039,7 +1068,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                     const isOwnedManual = manualOwnedIds.has(id);
                     const isOwned = isOwnedApi || isOwnedManual;
                     const isOn = !!selected[id];
-                    const label = leg.name ?? id;
+                    const label = NL(id, leg.name ?? id);
                     // Raccourcir les noms gen3 "Aurene's X"
                     const shortLabel = label.replace("Aurene's ", "").replace("Gen1 ", "").replace("Gen2 ", "");
 
@@ -1288,6 +1317,18 @@ export default function GW2LegendaryTracker() {
   const [selectedLeg, setSelectedLeg] = useState("vision");
   const [activeTab, setActiveTab] = useState("metas");
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
+  const [frNames, setFrNames] = useState(FR_LEG_NAMES);
+  FR_LEG_NAMES = frNames; // sync du résolveur NL()
+  useEffect(() => {
+    if (lang !== "fr" || Object.keys(frNames).length > 0) return;
+    let dead = false;
+    fetchFrLegNames().then(m => {
+      if (dead || !Object.keys(m).length) return;
+      try { localStorage.setItem("gw2_names_fr", JSON.stringify(m)); } catch (_) {}
+      setFrNames(m);
+    }).catch(() => {});
+    return () => { dead = true; };
+  }, [lang]);
   const setLangPersist = useCallback((l) => {
     setLang(l);
     try { localStorage.setItem("gw2_lang", l); } catch (_) {}
@@ -1770,7 +1811,7 @@ export default function GW2LegendaryTracker() {
           <span style={{ fontSize: "22px" }}>{leg?.icon}</span>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: "15px", fontWeight: 700, color: legColor, letterSpacing: "0.08em" }}>
-              {leg?.name}
+              {NL(leg?.id, leg?.name)}
             </div>
             <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
               {L(leg?.description)}
@@ -1816,7 +1857,7 @@ export default function GW2LegendaryTracker() {
             style={{ "--leg-color": l.color, "--leg-bg": l.colorDim }}
             onClick={() => setSelectedLeg(l.id)}
           >
-            {l.icon} {l.name}
+            {l.icon} {NL(l.id, l.name)}
             <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>({L(l.type)})</span>
           </button>
         ))}

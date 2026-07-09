@@ -92,7 +92,7 @@
   ],
   "armory_apiid_to_legid": {
    "93105": [
-    "transcendence"
+    "conflux"
    ],
    "77474": [
     "the_ascension"
@@ -276,12 +276,22 @@
    ],
    "96952": [
     "gen3_aurenes_tenderness"
+   ],
+   "92991": [
+    "transcendence"
+   ],
+   "81462": [
+    "warbringer"
    ]
   },
   "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
   "i18n_note": {
    "fr": "Champs éditoriaux au format {fr, en} ; les chaînes simples sont neutres/EN.",
    "en": "Editorial fields use {fr, en} format; plain strings are language-neutral/EN."
+  },
+  "armory_map_fix_note": {
+   "fr": "Correctif 2026-07: 93105=Conflux (etait attribue a tort a Transcendence=92991). Warbringer=81462 ajoute. Source: wiki officiel.",
+   "en": "Fix 2026-07: 93105=Conflux (was wrongly mapped to Transcendence=92991). Warbringer=81462 added. Source: official wiki."
   }
  },
  "meta_events": {
@@ -5951,7 +5961,7 @@
     "fr": "PvP pur. Gift of Skirmishing partagé avec The Ascension. Mystic Tribute partagé avec gen2. Précurseur = Mist Pendant (ascended PvP amulet).",
     "en": "Pure PvP. Gift of Skirmishing shared with The Ascension. Mystic Tribute shared with gen2. Precursor = Mist Pendant (ascended PvP amulet)."
    },
-   "armory_api_id": 93105,
+   "armory_api_id": 92991,
    "armory_max_count": 1
   },
   "the_ascension": {
