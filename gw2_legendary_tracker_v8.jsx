@@ -65,7 +65,7 @@ const I18N = {
     days_left: "~{n}d left",
     status_completed: "✓ Completed",
     // Chars selector
-    chars_title: "Eligible Characters — Aurora",
+    chars_title: "Eligible Characters — {name}",
     chars_criteria_pre: "Criteria: ",
     chars_criteria_lvl: "level 80",
     chars_criteria_mid: " + ",
@@ -177,7 +177,7 @@ const I18N = {
     per_day: "~{n}/jour",
     days_left: "~{n}j restants",
     status_completed: "✓ Complété",
-    chars_title: "Personnages éligibles — Aurora",
+    chars_title: "Personnages éligibles — {name}",
     chars_criteria_pre: "Critères : ",
     chars_criteria_lvl: "niveau 80",
     chars_criteria_mid: " + ",
@@ -241,13 +241,38 @@ const LangContext = createContext("en");
 let CUR_LANG = "en";
 const L = (v) => (v && typeof v === "object" && !Array.isArray(v) && (v.fr !== undefined || v.en !== undefined)) ? (v[CUR_LANG] ?? v.en ?? v.fr) : v;
 
-// Noms FR officiels des légendaires — API GW2 (?lang=fr), cache localStorage.
-// Résolution : NL(legId, fallbackEN). Fallback EN si hors-ligne / nom absent (ex. Prismatic).
+// Noms FR officiels — légendaires (armory), items & currencies (API GW2 ?lang=fr), cache localStorage.
 let FR_LEG_NAMES = {};
-try { FR_LEG_NAMES = JSON.parse(localStorage.getItem("gw2_names_fr") || "{}"); } catch (_) {}
+let FR_TERM_MAP = {};
+try {
+  const c = JSON.parse(localStorage.getItem("gw2_names_fr2") || "{}");
+  FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {};
+} catch (_) {}
 const NL = (legId, fallback) => (CUR_LANG === "fr" && legId && FR_LEG_NAMES[legId]) || fallback;
+// Alias : libellés des données ≠ nom API exact
+const NX_ALIAS = { "Winterberry": "Fresh Winterberry", "Skirmish Claim Tickets": "WvW Skirmish Claim Ticket" };
+// NX : résout objets { fr, en } (via L) et noms propres EN → FR API
+const NX = (v) => {
+  if (v && typeof v === "object") return L(v);
+  if (CUR_LANG === "fr" && typeof v === "string") return FR_TERM_MAP[v] || FR_TERM_MAP[NX_ALIAS[v]] || v;
+  return v;
+};
+// IDs à traduire (items + currencies vérifiés)
+const NAME_FETCH_IDS = {
+  items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581],
+  currencies: [35, 45, 15, 26, 82, 70, 28, 2],
+};
+async function fetchPairs(endpoint, ids) {
+  const [en, fr] = await Promise.all(["en", "fr"].map(async (lg) => {
+    const res = await fetch(`https://api.guildwars2.com/v2/${endpoint}?ids=${ids.join(",")}&lang=${lg}`);
+    return res.ok ? res.json() : [];
+  }));
+  const enById = Object.fromEntries(en.map(it => [it.id, it.name]));
+  const out = {};
+  for (const it of fr) { if (enById[it.id] && it.name) out[enById[it.id]] = it.name; }
+  return out;
+}
 async function fetchFrLegNames() {
-  // Fusion : reverse-map armory + armory_api_id de chaque entrée legendaries
   const map = {};
   for (const [apiId, legIds] of Object.entries(SOURCES_DB?._meta?.armory_apiid_to_legid ?? {})) {
     map[apiId] = [...(map[apiId] ?? []), ...legIds];
@@ -256,18 +281,21 @@ async function fetchFrLegNames() {
     if (e?.armory_api_id) map[String(e.armory_api_id)] = [...(map[String(e.armory_api_id)] ?? []), legId];
   }
   const ids = Object.keys(map);
-  const out = {};
+  const legs = {};
   for (let i = 0; i < ids.length; i += 200) {
     const chunk = ids.slice(i, i + 200);
     const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=fr`);
     if (!res.ok) continue;
     for (const it of await res.json()) {
-      for (const legId of (map[String(it.id)] ?? [])) out[legId] = it.name;
+      for (const legId of (map[String(it.id)] ?? [])) legs[legId] = it.name;
     }
   }
-  // Alias : l'onglet "prismatic" pointe sur l'entrée DB prismatic_champions_regalia
-  if (out.prismatic_champions_regalia && !out.prismatic) out.prismatic = out.prismatic_champions_regalia;
-  return out;
+  if (legs.prismatic_champions_regalia && !legs.prismatic) legs.prismatic = legs.prismatic_champions_regalia;
+  const terms = {
+    ...(await fetchPairs("items", NAME_FETCH_IDS.items).catch(() => ({}))),
+    ...(await fetchPairs("currencies", NAME_FETCH_IDS.currencies).catch(() => ({}))),
+  };
+  return { legs, terms };
 }
 
 function translate(key, lang, vars) {
@@ -310,120 +338,120 @@ const LEGENDARIES = {
       { id: "vm", name: "Volatile Magic", required: 1000, icon: "EL", apiId: 45 },
     ],
     metas: [
-      { id: "vb", name: "Verdant Brink", subname: "Night and the Enemy", expansion: "HoT", icon: "VB",
+      { id: "vb", name: { fr: "Orée d'émeraude", en: "Verdant Brink" }, subname: { fr: "La nuit et l'ennemi", en: "Night and the Enemy" }, expansion: "HoT", icon: "VB",
         offsetUTC: 105, intervalMin: 120, durationMin: 15,
         efficience: "A", population: "LFG", next: "td", nextDelayMin: 45,
         waypoint: "Pact Encampment Waypoint", wpCode: "[&BAgIAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Prendre le Pact Chopper → Wyvern Matriarch uniquement. Coffre : hard-reset à 01h (reset fixe, pas de timer 24h tournant).", en: "Take the Pact Chopper → Wyvern Matriarch only. Chest: hard-reset at 01h (fixed reset, no rolling 24h timer)." } },
-      { id: "td", name: "Tangled Depths", subname: "Chak Gerent", expansion: "HoT", icon: "TD",
+      { id: "td", name: { fr: "Profondeurs verdoyantes", en: "Tangled Depths" }, subname: { fr: "Roi de la jungle", en: "Chak Gerent" }, expansion: "HoT", icon: "TD",
         offsetUTC: 30, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: "ab", nextDelayMin: 15,
         waypoint: "Ley-Line Confluence Waypoint", wpCode: "[&BPUHAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant. Coffre : hard-reset à 01h.", en: "Central hub of the 4 lanes. LFG taxi, arrive 20 min early. Chest: hard-reset at 01h." } },
-      { id: "ab", name: "Auric Basin", subname: "Octovine", expansion: "HoT", icon: "AB",
+      { id: "ab", name: { fr: "Bassin aurique", en: "Auric Basin" }, subname: { fr: "Bataille de Tarir", en: "Octovine" }, expansion: "HoT", icon: "AB",
         offsetUTC: 45, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: "ds", nextDelayMin: 0,
         waypoint: "Forgotten City Waypoint", wpCode: "[&BNcHAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "4 lanes simultanées, stack sur la lane la plus peuplée. Coffre : hard-reset à 01h.", en: "4 simultaneous lanes, stack on the most populated one. Chest: hard-reset at 01h." } },
-      { id: "ds", name: "Dragon's Stand", subname: { fr: "Meta complète", en: "Full meta" }, expansion: "HoT", icon: "DS",
+      { id: "ds", name: { fr: "Repli du dragon", en: "Dragon's Stand" }, subname: { fr: "Meta complète", en: "Full meta" }, expansion: "HoT", icon: "DS",
         offsetUTC: 30, intervalMin: 120, durationMin: 60,
         efficience: "B", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Mordremoth's Bane Waypoint", wpCode: "[&BNMHAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Longue (~1h). Bonne source de drops en parallèle. Difficile d'enchaîner après.", en: "Long (~1h). Good source of drops in parallel. Hard to chain afterwards." } },
-      { id: "co", name: "Crystal Oasis", subname: "Casino Blitz", expansion: "PoF", icon: "CO",
+      { id: "co", name: { fr: "Oasis de cristal", en: "Crystal Oasis" }, subname: { fr: "Casino express", en: "Casino Blitz" }, expansion: "PoF", icon: "CO",
         offsetUTC: 21, intervalMin: 120, durationMin: 10,
         efficience: "S", population: "moyen", next: "er", nextDelayMin: 39,
         waypoint: "Amnoon Waypoint", wpCode: "[&BLIGAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.", en: "~10 min, do not miss the start. The most efficient of all — absolute priority." } },
-      { id: "er", name: "Elon Riverlands", subname: "Doppelganger", expansion: "PoF", icon: "ER",
+      { id: "er", name: { fr: "Rives de l'Elon", en: "Elon Riverlands" }, subname: { fr: "Le chemin de l'Ascension", en: "Doppelganger" }, expansion: "PoF", icon: "ER",
         offsetUTC: 60, intervalMin: 120, durationMin: 15,
         efficience: "A", population: "moyen", next: "de", nextDelayMin: 30,
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Faire les pré-events 'Disperse wild magic'. Coffre : hard-reset à 01h.", en: "Do the 'Disperse wild magic' pre-events. Chest: hard-reset at 01h." } },
-      { id: "de", name: "The Desolation", subname: "Junundu Rising", expansion: "PoF", icon: "DE",
+      { id: "de", name: { fr: "La Désolation", en: "The Desolation" }, subname: { fr: "Le soulèvement des junundus", en: "Junundu Rising" }, expansion: "PoF", icon: "DE",
         offsetUTC: 30, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "moyen", next: "dv", nextDelayMin: 30,
         waypoint: "Shattered Ravines Waypoint", wpCode: "[&BLMKAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Monture Junundu requise. Skimmer utile pour les zones de soufre. Coffre : hard-reset à 01h.", en: "Junundu mount required. Skimmer useful for sulfur areas. Chest: hard-reset at 01h." } },
-      { id: "dv", name: "Domain of Vabbi", subname: "Forged with Fire", expansion: "PoF", icon: "FW",
+      { id: "dv", name: { fr: "Domaine de Vabbi", en: "Domain of Vabbi" }, subname: { fr: "Forgé par le feu", en: "Forged with Fire" }, expansion: "PoF", icon: "FW",
         offsetUTC: 60, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "moyen", next: "co", nextDelayMin: 21,
         waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "La meta PoF la plus simple, peu de coordination requise. Coffre : hard-reset à 01h.", en: "Easiest PoF meta, little coordination required. Chest: hard-reset at 01h." } },
-      { id: "di", name: "Domain of Istan", subname: "Palawadan", expansion: "LW4", icon: "DI",
+      { id: "di", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: "Palawadan", expansion: "LW4", icon: "DI",
         offsetUTC: 0, intervalMin: 120, durationMin: 20,
         efficience: "A", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h.", en: "Very popular, easy LFG taxi. Chest: hard-reset at 01h." } },
-      { id: "sw", name: "Skywatch Archipelago", subname: "Unlocking the Wizard's Tower", expansion: "SotO", icon: "SW",
+      { id: "sw", name: { fr: "Archipel de l'observatoire céleste", en: "Skywatch Archipelago" }, subname: { fr: "Déverrouiller la Tour du sorcier", en: "Unlocking the Wizard's Tower" }, expansion: "SotO", icon: "SW",
         offsetUTC: 60, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: "am", nextDelayMin: 60,
         waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "1h après le reset. Monture volante requise. Bien peuplé.", en: "1h after reset. Flying mount required. Well-populated." } },
-      { id: "am", name: "Amnytas", subname: "Defense of Amnytas", expansion: "SotO", icon: "AM",
+      { id: "am", name: "Amnytas", subname: { fr: "La défense d'Amnytas", en: "Defense of Amnytas" }, expansion: "SotO", icon: "AM",
         offsetUTC: 0, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: "sw", nextDelayMin: 60,
         waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Au reset. Bien peuplé. S'enchaîne avec Skywatch 60 min après.", en: "At reset. Well populated. Chains with Skywatch 60 min later." } },
-      { id: "sp", name: "Seitung Province", subname: "Aetherblade Assault", expansion: "EoD", icon: "SP",
+      { id: "sp", name: { fr: "Province de Seitung", en: "Seitung Province" }, subname: { fr: "Assaut étherlame", en: "Aetherblade Assault" }, expansion: "EoD", icon: "SP",
         offsetUTC: 90, intervalMin: 120, durationMin: 30,
         efficience: "B", population: "moyen", next: "ew", nextDelayMin: 10,
         waypoint: "Shing Jea Monastery Waypoint", wpCode: "[&BNMMAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures impaires uniquement : 01:30 / 03:30...",
         tip: { fr: "Démarre à XX:30 heures impaires UTC. S'enchaîne naturellement avec Echovald.", en: "Starts at XX:30 odd hours UTC. Chains naturally with Echovald." } },
-      { id: "nk", name: "New Kaineng City", subname: "Kaineng Blackout", expansion: "EoD", icon: "NK",
+      { id: "nk", name: { fr: "Néo-Kaineng", en: "New Kaineng City" }, subname: "Kaineng Blackout", expansion: "EoD", icon: "NK",
         offsetUTC: 0, intervalMin: 120, durationMin: 40,
         efficience: "C", population: "morte", next: null, nextDelayMin: null,
         waypoint: "Lutgardis Conservatory Waypoint", wpCode: "[&BNQMAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures paires : 00:00 / 02:00...",
         tip: { fr: "⚠ Population quasi-inexistante hors Wizard's Vault. Opportuniste uniquement.", en: "⚠ Nearly nonexistent population outside Wizard's Vault. Opportunistic only." } },
-      { id: "ew", name: "Echovald Wilds", subname: "Gang War", expansion: "EoD", icon: "EW",
+      { id: "ew", name: { fr: "Terres sauvages d'Echovald", en: "Echovald Wilds" }, subname: { fr: "La guerre des gangs d'Echovald", en: "Gang War" }, expansion: "EoD", icon: "EW",
         offsetUTC: 100, intervalMin: 120, durationMin: 35,
         efficience: "B", population: "moyen", next: null, nextDelayMin: null,
         waypoint: "Arborstone Waypoint", wpCode: "[&BLsNAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures paires : 01:40 / 03:40...",
         tip: { fr: "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung.", en: "2 phases: Gang War then Junkyard. Chains from Seitung." } },
-      { id: "de2", name: "Dragon's End", subname: "Battle for Jade Sea", expansion: "EoD", icon: "DE2",
+      { id: "de2", name: { fr: "Trépas du dragon", en: "Dragon's End" }, subname: { fr: "La Bataille de la Mer de Jade", en: "Battle for Jade Sea" }, expansion: "EoD", icon: "DE2",
         offsetUTC: 60, intervalMin: 120, durationMin: 45,
         efficience: "C", population: "variable", next: null, nextDelayMin: null,
         waypoint: "The Jade Flats Waypoint", wpCode: "[&BNMMAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures impaires : 01:00 / 03:00...",
         tip: { fr: "Prépa (14 min) → bataille (~30 min). Prépa ne garantit pas la bataille. Long + coordination + risque d'échec.", en: "Prep (14 min) → battle (~30 min). Prep does not guarantee the battle. Long + coordination + failure risk." } },
-      { id: "conv", name: "Convergence Outer Nayos", subname: "Public Instance", expansion: "SotO", icon: "CV",
+      { id: "conv", name: { fr: "Convergence : Nayos extérieur", en: "Convergence Outer Nayos" }, subname: "Public Instance", expansion: "SotO", icon: "CV",
         offsetUTC: 90, intervalMin: 180, durationMin: 20,
         efficience: "S", population: "public", next: null, nextDelayMin: null,
         waypoint: "Rift Hunter Lounge", wpCode: "[&BOgNAAA=]",
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
         tip: { fr: "Toutes les 3h à XX:30 UTC. Fenêtre de 10 min. Portail dans Rift Hunter Lounge au Wizard's Tower.", en: "Every 3h at XX:30 UTC. 10 min window. Portal in the Rift Hunter Lounge at the Wizard's Tower." } },
-      { id: "mb", name: "Convergence Mount Balrior", subname: "Public Instance", expansion: "JW", icon: "MB",
+      { id: "mb", name: { fr: "Convergence : Mont Balrior", en: "Convergence Mount Balrior" }, subname: "Public Instance", expansion: "JW", icon: "MB",
         offsetUTC: 0, intervalMin: 180, durationMin: 20,
         efficience: "S", population: "public", next: "conv", nextDelayMin: 90,
         waypoint: "Harvest Den Waypoint", wpCode: "[&BK4OAAA=]",
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
         tip: { fr: "Toutes les 3h à XX:00 UTC. Fenêtre de 10 min. Portail dans Harvest Den, Lowland Shore. → Outer Nayos 90 min après.", en: "Every 3h at XX:00 UTC. 10 min window. Portal in Harvest Den, Lowland Shore. → Outer Nayos 90 min later." } },
-      { id: "bn", name: "Bava Nisos", subname: "A Titanic Voyage", expansion: "JW", icon: "BN",
+      { id: "bn", name: "Bava Nisos", subname: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, expansion: "JW", icon: "BN",
         offsetUTC: 80, intervalMin: 120, durationMin: 25,
         efficience: "A", population: "bon", next: null, nextDelayMin: null,
         waypoint: "Mantle's Arrival Waypoint", wpCode: "[&BGEPAAA=]",
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
         tip: { fr: "Toutes les 2h à XX:20 UTC. Parler à Livia pour lancer. CC requis sur le boss.", en: "Every 2h at XX:20 UTC. Talk to Livia to start. CC required on the boss." } },
       // ── Nodes LW4 — Vision (Volatile Magic + Mistborn Mote)
-      { id: "lw4_istan", name: "Domain of Istan", subname: "Nodes Brandstones + VM", expansion: "LW4", icon: "OP",
+      { id: "lw4_istan", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: "Nodes Brandstones + VM", expansion: "LW4", icon: "OP",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
         farmType: "per_account",
@@ -431,7 +459,7 @@ const LEGENDARIES = {
         vendor: "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM",
         vendorWp: "Pact Command Waypoint [&BOAKAAA=] — Dragonfall",
         tip: { fr: "Nodes de Brandstone → Volatile Magic. Soft-reset à 01h (attendre 5-15h après récolte). Cap 50 nodes/compte/jour. Vendeur Dragonfall : 5 Kralkatite/jour contre VM.", en: "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM." } },
-      { id: "lw4_dragonfall", name: "Dragonfall", subname: "Nodes Mistborn Mote", expansion: "LW4", icon: "DF",
+      { id: "lw4_dragonfall", name: { fr: "Chute draconique", en: "Dragonfall" }, subname: "Nodes Mistborn Mote", expansion: "LW4", icon: "DF",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Pact Command Waypoint", wpCode: "[&BOAKAAA=]",
         farmType: "per_account",
@@ -441,19 +469,19 @@ const LEGENDARIES = {
         tip: { fr: "Max 50 nodes de Mistborn Mote/compte/jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place vend des Mistborn Motes contre karma (5/jour — léger potentiel alt-swap).", en: "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)." } },
     ],
     bounties: [
-      { id: "bt_co", map: "Crystal Oasis", target: "Corrupted Facet", icon: "BT",
+      { id: "bt_co", map: { fr: "Oasis de cristal", en: "Crystal Oasis" }, target: "Corrupted Facet", icon: "BT",
         waypoint: "Destiny's Gorge Waypoint", wpCode: "[&BLsKAAA=]",
         tip: { fr: "RDV habituel des bounty trains en LFG.", en: "Usual meeting point of LFG bounty trains." }, elegy: "4–50" },
-      { id: "bt_dh", map: "Desert Highlands", target: "Ellutherius Wintergust", icon: "BF",
+      { id: "bt_dh", map: { fr: "Hautes-terres du désert", en: "Desert Highlands" }, target: "Ellutherius Wintergust", icon: "BF",
         waypoint: "Fortune's Vale Waypoint", wpCode: "[&BNQKAAA=]",
         tip: { fr: "Springer High Vault requis pour le Palace of Aban.", en: "Springer High Vault required for Palace of Aban." }, elegy: "4–50" },
-      { id: "bt_er", map: "Elon Riverlands", target: "Aetherblaze", icon: "EL",
+      { id: "bt_er", map: { fr: "Rives de l'Elon", en: "Elon Riverlands" }, target: "Aetherblaze", icon: "EL",
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
         tip: { fr: "Board de bounty à côté du WP meta.", en: "Bounty board next to the meta WP." }, elegy: "4–50" },
-      { id: "bt_de", map: "The Desolation", target: "Plaguelands", icon: "DS",
+      { id: "bt_de", map: { fr: "La Désolation", en: "The Desolation" }, target: "Plaguelands", icon: "DS",
         waypoint: "Bonestrand Waypoint", wpCode: "[&BKMKAAA=]",
         tip: { fr: "Skimmer recommandé pour les zones de soufre.", en: "Skimmer recommended for the sulfur areas." }, elegy: "4–50" },
-      { id: "bt_dv", map: "Domain of Vabbi", target: "Forged Rampager", icon: "FW",
+      { id: "bt_dv", map: { fr: "Domaine de Vabbi", en: "Domain of Vabbi" }, target: "Forged Rampager", icon: "FW",
         waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
         tip: { fr: "Souvent la plus peuplée grâce aux metas Forged.", en: "Often the most populated thanks to the Forged metas." }, elegy: "4–50" },
     ],
@@ -465,12 +493,12 @@ const LEGENDARIES = {
         reward: "Gift of Insight",
         note: { fr: "Compléter les 6 Visions of [map] LW4 — une par zone Crystal Desert + Dragonfall.", en: "Complete the 6 Visions of [map] LW4 — one per Crystal Desert zone + Dragonfall." },
         subcollections: [
-          { id: 4765, name: "Visions of Istan",             map: "Domain of Istan",        how: { fr: "Compléter des events + hearts en Domain of Istan", en: "Complete events + hearts in Domain of Istan" } },
-          { id: 4760, name: "Visions of Kourna",            map: "Domain of Kourna",       how: { fr: "Compléter des events + hearts en Domain of Kourna", en: "Complete events + hearts in Domain of Kourna" } },
-          { id: 4770, name: "Visions of Jahai",             map: "Jahai Bluffs",           how: { fr: "Compléter des events + hearts en Jahai Bluffs", en: "Complete events + hearts in Jahai Bluffs" } },
-          { id: 4774, name: "Visions of Sandswept Isles",   map: "Sandswept Isles",        how: { fr: "Compléter des events + hearts en Sandswept Isles", en: "Complete events + hearts in Sandswept Isles" } },
-          { id: 4764, name: "Visions of Thunderhead Peaks", map: "Thunderhead Peaks",      how: { fr: "Compléter des events + hearts en Thunderhead Peaks", en: "Complete events + hearts in Thunderhead Peaks" } },
-          { id: 4757, name: "Visions of Dragonfall",        map: "Dragonfall",             how: { fr: "Compléter des events + hearts en Dragonfall", en: "Complete events + hearts in Dragonfall" } },
+          { id: 4765, name: "Visions of Istan",             map: { fr: "Domaine d'Istan", en: "Domain of Istan" },        how: { fr: "Compléter des events + hearts en Domain of Istan", en: "Complete events + hearts in Domain of Istan" } },
+          { id: 4760, name: "Visions of Kourna",            map: { fr: "Domaine de Kourna", en: "Domain of Kourna" },       how: { fr: "Compléter des events + hearts en Domain of Kourna", en: "Complete events + hearts in Domain of Kourna" } },
+          { id: 4770, name: "Visions of Jahai",             map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" },           how: { fr: "Compléter des events + hearts en Jahai Bluffs", en: "Complete events + hearts in Jahai Bluffs" } },
+          { id: 4774, name: "Visions of Sandswept Isles",   map: { fr: "Îles de Ventesable", en: "Sandswept Isles" },        how: { fr: "Compléter des events + hearts en Sandswept Isles", en: "Complete events + hearts in Sandswept Isles" } },
+          { id: 4764, name: "Visions of Thunderhead Peaks", map: { fr: "Pics de Chef-Tonnerre", en: "Thunderhead Peaks" },      how: { fr: "Compléter des events + hearts en Thunderhead Peaks", en: "Complete events + hearts in Thunderhead Peaks" } },
+          { id: 4757, name: "Visions of Dragonfall",        map: { fr: "Chute draconique", en: "Dragonfall" },             how: { fr: "Compléter des events + hearts en Dragonfall", en: "Complete events + hearts in Dragonfall" } },
         ],
       },
       vision_2: {
@@ -479,8 +507,8 @@ const LEGENDARIES = {
         reward: "Gift of Prescience",
         note: { fr: "Compléter les 3 Requiem collections (Convergence of Sorrow I+II + Requiem Experiments 1–6).", en: "Complete the 3 Requiem collections (Convergence of Sorrow I+II + Requiem Experiments 1–6)." },
         subcollections: [
-          { id: 4376, name: "The Convergence of Sorrow I: Elegy",   map: "Jahai Bluffs",  how: { fr: "Collecter les 6 Elegy items — liés aux Requiem Armor collections", en: "Collect the 6 Elegy items — tied to the Requiem Armor collections" } },
-          { id: 4362, name: "The Convergence of Sorrow II: Requiem", map: "Jahai Bluffs", how: { fr: "Collecter les 6 Requiem items — suite de Elegy", en: "Collect the 6 Requiem items — follow-up to Elegy" } },
+          { id: 4376, name: "The Convergence of Sorrow I: Elegy",   map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" },  how: { fr: "Collecter les 6 Elegy items — liés aux Requiem Armor collections", en: "Collect the 6 Elegy items — tied to the Requiem Armor collections" } },
+          { id: 4362, name: "The Convergence of Sorrow II: Requiem", map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" }, how: { fr: "Collecter les 6 Requiem items — suite de Elegy", en: "Collect the 6 Requiem items — follow-up to Elegy" } },
         ],
       },
     },
@@ -522,13 +550,13 @@ const LEGENDARIES = {
         heartNote: "5 hearts required per character per day before chest access (~20 min)" },
     ],
     metas: [
-      { id: "bf", name: "Bitterfrost Frontier", subname: "Nodes Winterberries", expansion: "LW3", icon: "BF",
+      { id: "bf", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: "Nodes Winterberries", expansion: "LW3", icon: "BF",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
         farmType: "per_char",
         resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après dernière récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after last harvest)" },
         tip: { fr: "~50-80 Winterberries par perso et par jour — 21 nodes sur la map. Thaw Elixir requis pour la zone froide. Reset : soft-reset à 01h, mais attendre 5-15h après la dernière récolte avant d'y retourner.", en: "~50-80 Winterberries per character per day — 21 nodes on the map. Thaw Elixir required for the cold zone. Reset: soft-reset at 01h, but wait 5-15h after your last harvest before returning." } },
-      { id: "eb", name: "Ember Bay", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "EB",
+      { id: "eb", name: { fr: "Baie des braises", en: "Ember Bay" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "EB",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Savage Rise Waypoint", wpCode: "[&BNMJAAA=]",
         farmType: "per_account",
@@ -536,7 +564,7 @@ const LEGENDARIES = {
         vendor: "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma",
         vendorWp: "Savage Rise Waypoint [&BNMJAAA=]",
         tip: { fr: "~40 Lava Drops + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Le vendeur Seimur Oxbone sur place vend la currency contre karma (5/jour/perso — léger potentiel alt-swap).", en: "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)." } },
-      { id: "dm", name: "Draconis Mons", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "DM",
+      { id: "dm", name: { fr: "Mont Draconis", en: "Draconis Mons" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "DM",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Heathen's Hold Waypoint", wpCode: "[&BOMJAAA=]",
         farmType: "per_account",
@@ -544,7 +572,7 @@ const LEGENDARIES = {
         vendor: "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma",
         vendorWp: "Heathen's Hold Waypoint [&BOMJAAA=]",
         tip: { fr: "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Vendeuse Nesa sur place (5/jour/perso — léger potentiel alt-swap).", en: "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)." } },
-      { id: "ld", name: "Lake Doric", subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "LD",
+      { id: "ld", name: { fr: "Lac Doric", en: "Lake Doric" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "LD",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Noran's Homestead Waypoint", wpCode: "[&BNQJAAA=]",
         farmType: "per_account",
@@ -552,13 +580,13 @@ const LEGENDARIES = {
         vendor: "Noran — vend Jade Shard contre karma",
         vendorWp: "Noran's Homestead Waypoint [&BNQJAAA=]",
         tip: { fr: "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Vendeur Noran sur place (5/jour/perso). Alt-swap minimal possible via le vendeur.", en: "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor." } },
-      { id: "sl", name: "Siren's Landing", subname: "Hidden Reliquary Chests", expansion: "LW3", icon: "SL",
+      { id: "sl", name: { fr: "Plage des sirènes", en: "Siren's Landing" }, subname: "Hidden Reliquary Chests", expansion: "LW3", icon: "SL",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Camp Reclamation Waypoint", wpCode: "[&BO8JAAA=]",
         farmType: "per_char_hearts",
         resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
         tip: { fr: "1 coffre gratuit + 1 payant (1,5po) par perso/jour. Les 5 hearts sont à refaire par perso avant l'accès (~20-30 min). Soft-reset à 01h. Alt-swap possible mais coûteux en temps.", en: "1 free chest + 1 paid (1.5g) per character/day. The 5 hearts must be redone per character before access (~20-30 min). Soft-reset at 01h. Alt-swap possible but time-costly." } },
-      { id: "bf_meta", name: "Bitterfrost Frontier", subname: "Frozen Maw Meta", expansion: "LW3", icon: "BM",
+      { id: "bf_meta", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: "Frozen Maw Meta", expansion: "LW3", icon: "BM",
         offsetUTC: 0, intervalMin: 120, durationMin: 20,
         waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
         farmType: "per_account",
@@ -1291,7 +1319,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                   {variable.map(v => (
                     <div key={v.compId} style={{ fontSize: 10, color: "rgba(251,146,60,0.6)",
                       fontFamily: "'Crimson Text', serif", padding: "2px 0" }}>
-                      <span style={{ fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{v.name}</span>
+                      <span style={{ fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{NX(v.name)}</span>
                       {v.note && <span style={{ opacity: 0.6 }}> — {L(v.note)}</span>}
                     </div>
                   ))}
@@ -1317,14 +1345,14 @@ export default function GW2LegendaryTracker() {
   const [selectedLeg, setSelectedLeg] = useState("vision");
   const [activeTab, setActiveTab] = useState("metas");
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
-  const [frNames, setFrNames] = useState(FR_LEG_NAMES);
-  FR_LEG_NAMES = frNames; // sync du résolveur NL()
+  const [frNames, setFrNames] = useState({ legs: FR_LEG_NAMES, terms: FR_TERM_MAP });
+  FR_LEG_NAMES = frNames.legs; FR_TERM_MAP = frNames.terms; // sync des résolveurs NL()/NX()
   useEffect(() => {
-    if (lang !== "fr" || Object.keys(frNames).length > 0) return;
+    if (lang !== "fr" || Object.keys(frNames.legs).length > 0) return;
     let dead = false;
     fetchFrLegNames().then(m => {
-      if (dead || !Object.keys(m).length) return;
-      try { localStorage.setItem("gw2_names_fr", JSON.stringify(m)); } catch (_) {}
+      if (dead || !Object.keys(m.legs).length) return;
+      try { localStorage.setItem("gw2_names_fr2", JSON.stringify(m)); } catch (_) {}
       setFrNames(m);
     }).catch(() => {});
     return () => { dead = true; };
@@ -1960,7 +1988,7 @@ export default function GW2LegendaryTracker() {
                     <span style={{ fontSize: "15px", width: "22px" }}>{m.icon}</span>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                        <span style={{ fontSize: "12px", fontWeight: 600 }}>{m.name}</span>
+                        <span style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</span>
                         {m.efficience && (
                           <span style={{ fontSize: "9px", color: EFFICIENCE_COLORS[m.efficience], background: `${EFFICIENCE_COLORS[m.efficience]}18`, border: `1px solid ${EFFICIENCE_COLORS[m.efficience]}30`, padding: "1px 5px", borderRadius: "2px" }}>
                             {m.efficience}
@@ -1970,7 +1998,7 @@ export default function GW2LegendaryTracker() {
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
                       {m.bestNext && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
-                          → {m.bestNext.meta.name} {t("word_in")} {formatCountdown(m.bestNext.ms)}
+                          → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
                         </div>
                       )}
                     </div>
@@ -1997,7 +2025,7 @@ export default function GW2LegendaryTracker() {
                     <span style={{ fontSize: "17px", width: "26px" }}>{m.icon}</span>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px", flexWrap: "wrap" }}>
-                        <span style={{ fontSize: "12px", fontWeight: 600 }}>{m.name}</span>
+                        <span style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</span>
                         <span style={{ fontSize: "9px", color: "rgba(226,201,126,0.35)", background: "rgba(226,201,126,0.06)", padding: "1px 5px", borderRadius: "2px" }}>{m.expansion}</span>
                         {m.efficience && (
                           <span style={{ fontSize: "9px", color: EFFICIENCE_COLORS[m.efficience], background: `${EFFICIENCE_COLORS[m.efficience]}18`, border: `1px solid ${EFFICIENCE_COLORS[m.efficience]}30`, padding: "1px 5px", borderRadius: "2px" }}>
@@ -2013,7 +2041,7 @@ export default function GW2LegendaryTracker() {
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
-                          → {m.bestNext.meta.name} {t("word_in")} {formatCountdown(m.bestNext.ms)}
+                          → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
                         </div>
                       )}
                     </div>
@@ -2076,7 +2104,7 @@ export default function GW2LegendaryTracker() {
                   <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
                     <span style={{ fontSize: "17px", width: "26px" }}>{m.icon}</span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: "12px", fontWeight: 600 }}>{m.name}</div>
+                      <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px", marginTop: "2px" }}>
                         <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</span>
                         {m.farmType && (
@@ -2132,7 +2160,7 @@ export default function GW2LegendaryTracker() {
       {activeTab === "chars" && selectedLeg === "aurora" && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(52,211,153,0.04)", border: "1px solid rgba(52,211,153,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif" }}>
-            <div style={{ fontSize: "12px", fontWeight: 600, color: "#34d399", marginBottom: "5px" }}>{t("chars_title")}</div>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: "#34d399", marginBottom: "5px" }}>{t("chars_title", { name: NL("aurora", "Aurora") })}</div>
             <div style={{ fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.6 }}>
               {t("chars_criteria_pre")}<strong>{t("chars_criteria_lvl")}</strong>{t("chars_criteria_mid")}<strong>{t("chars_criteria_ep")}</strong>{t("chars_criteria_post")}
             </div>
@@ -2177,7 +2205,7 @@ export default function GW2LegendaryTracker() {
                   <div key={cur.id} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "5px 0", borderBottom: "1px solid rgba(226,201,126,0.05)" }}>
                     <span style={{ fontSize: "14px", width: "22px" }}>{cur.icon}</span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: "11px", fontWeight: 600 }}>{cur.name}</div>
+                      <div style={{ fontSize: "11px", fontWeight: 600 }}>{NX(cur.name)}</div>
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>{note}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
@@ -2220,7 +2248,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <span style={{ fontSize: "18px", width: "26px" }}>{a.icon}</span>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: "12px", fontWeight: 600 }}>{a.name}</div>
+                  <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(a.name)}</div>
                   <div style={{ fontSize: "10px", color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>{L(a.limit)}</div>
                   <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>{L(a.tip)}</div>
                 </div>
@@ -2279,7 +2307,7 @@ export default function GW2LegendaryTracker() {
                     <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${tierDone ? "#4ade80" : tier.color}`, background: tierDone ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       {tierDone && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
                     </div>
-                    <span style={{ fontSize: 11, color: tierDone ? "#4ade80" : tier.color, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>{tier.name}</span>
+                    <span style={{ fontSize: 11, color: tierDone ? "#4ade80" : tier.color, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>{NX(tier.name)}</span>
                     <span style={{ fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>({tierCount}/{tier.episodes.length})</span>
                   </div>
                   <span style={{ fontSize: 10, color: "rgba(226,201,126,0.3)" }}>{expanded === tier.id ? "▲" : "▼"}</span>
@@ -2312,7 +2340,7 @@ export default function GW2LegendaryTracker() {
                             {isDone && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
                           </div>
                           <span style={{ fontSize: 11, color: isDone ? "#4ade80" : "rgba(226,201,126,0.55)", fontFamily: "'Crimson Text', serif", textDecoration: isDone ? "line-through" : "none", flex: 1 }}>
-                            {ep.name}
+                            {NX(ep.name)}
                           </span>
                           <span style={{ fontSize: 9, color: "rgba(226,201,126,0.2)", fontFamily: "monospace" }}>bit {ep.bit}</span>
                         </div>
@@ -2345,7 +2373,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
                 <span style={{ fontSize: "18px", width: "26px" }}>{b.icon}</span>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: "12px", fontWeight: 600 }}>{b.map}</div>
+                  <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(b.map)}</div>
                   <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{b.target} · ~{b.elegy} Elegy</div>
                 </div>
                 <button className={`check-btn ${bountyDone[b.id] ? "done" : ""}`}
@@ -2445,10 +2473,10 @@ export default function GW2LegendaryTracker() {
               {/* Sentient Seed */}
               {(() => {
                 const preReqs = [
-                  { key: "aurora_pre_conspiracy", label: "Conspiracy of Dunces", map: "Bloodstone Fen", item: "Sentient Anomaly",    obj: "3 journaux White Mantle" },
-                  { key: "aurora_pre_token",      label: "Token Collector",       map: "Ember Bay",       item: "Sentient Aberration", obj: "40 Mursaat tokens" },
-                  { key: "aurora_pre_cin",        label: "Cin Business",           map: "Lake Doric",      item: "Sentient Oddity",     obj: "objets de Cin" },
-                  { key: "aurora_pre_lessons",    label: "Lessons Learned",        map: "Draconis Mons",   item: "Sentient Singularity",obj: "14 recordings de Zinn" },
+                  { key: "aurora_pre_conspiracy", label: "Conspiracy of Dunces", map: { fr: "Marais de la pierre de sang", en: "Bloodstone Fen" }, item: "Sentient Anomaly",    obj: "3 journaux White Mantle" },
+                  { key: "aurora_pre_token",      label: "Token Collector",       map: { fr: "Baie des braises", en: "Ember Bay" },       item: "Sentient Aberration", obj: "40 Mursaat tokens" },
+                  { key: "aurora_pre_cin",        label: "Cin Business",           map: { fr: "Lac Doric", en: "Lake Doric" },      item: "Sentient Oddity",     obj: "objets de Cin" },
+                  { key: "aurora_pre_lessons",    label: "Lessons Learned",        map: { fr: "Mont Draconis", en: "Draconis Mons" },   item: "Sentient Singularity",obj: "14 recordings de Zinn" },
                 ];
                 const allPreDone = preReqs.every(p => (ac[p.key]?.done ?? false));
                 const preReqCount = preReqs.filter(p => ac[p.key]?.done).length;
@@ -2497,7 +2525,7 @@ export default function GW2LegendaryTracker() {
                               <div style={{ flex: 1 }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                                   <span style={{ fontSize: 11, fontWeight: 600, color: pDone ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{p.label}</span>
-                                  <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{p.map}</span>
+                                  <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(p.map)}</span>
                                   {!pDone && pMax > 0 && (
                                     <span style={{ fontSize: 9, color: "rgba(226,201,126,0.4)" }}>{pCurrent}/{pMax}</span>
                                   )}
@@ -2598,7 +2626,7 @@ export default function GW2LegendaryTracker() {
                               {itemDone ? <span style={{ fontSize: 8, color: "#4ade80" }}>✓</span> : <span style={{ fontSize: 8, color: "rgba(251,146,60,0.7)" }}>✗</span>}
                             </div>
                             <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{item.name}</div>
+                              <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{L(item.how)}</div>}
                               {/* Bloc Mastery story inline — bit 0 uniquement */}
                               {missing && masteryId && (
@@ -2701,8 +2729,8 @@ export default function GW2LegendaryTracker() {
                         </div>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                            <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{item.name}</span>
-                            <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{item.map}</span>
+                            <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
+                            <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
                           </div>
                           <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(item.how)}</div>
                         </div>
@@ -2734,12 +2762,12 @@ export default function GW2LegendaryTracker() {
         const v2Done = vc.vision_2?.done ?? false;
 
         const VISIONS_OF = [
-          { key: "vision_istan",       label: "Visions of Istan",             map: "Domain of Istan" },
-          { key: "vision_kourna",      label: "Visions of Kourna",            map: "Domain of Kourna" },
-          { key: "vision_jahai",       label: "Visions of Jahai",             map: "Jahai Bluffs" },
-          { key: "vision_sandswept",   label: "Visions of Sandswept Isles",   map: "Sandswept Isles" },
-          { key: "vision_thunderhead", label: "Visions of Thunderhead Peaks", map: "Thunderhead Peaks" },
-          { key: "vision_dragonfall",  label: "Visions of Dragonfall",        map: "Dragonfall" },
+          { key: "vision_istan",       label: "Visions of Istan",             map: { fr: "Domaine d'Istan", en: "Domain of Istan" } },
+          { key: "vision_kourna",      label: "Visions of Kourna",            map: { fr: "Domaine de Kourna", en: "Domain of Kourna" } },
+          { key: "vision_jahai",       label: "Visions of Jahai",             map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" } },
+          { key: "vision_sandswept",   label: "Visions of Sandswept Isles",   map: { fr: "Îles de Ventesable", en: "Sandswept Isles" } },
+          { key: "vision_thunderhead", label: "Visions of Thunderhead Peaks", map: { fr: "Pics de Chef-Tonnerre", en: "Thunderhead Peaks" } },
+          { key: "vision_dragonfall",  label: "Visions of Dragonfall",        map: { fr: "Chute draconique", en: "Dragonfall" } },
         ];
         const v1Count = VISIONS_OF.filter(v => vc[v.key]?.done).length;
 
@@ -2803,7 +2831,7 @@ export default function GW2LegendaryTracker() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{v.label}</span>
-                      <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", marginLeft: 7, background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{v.map}</span>
+                      <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", marginLeft: 7, background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(v.map)}</span>
                     </div>
                     {hasData && !done && max > 0 && (
                       <span style={{ fontSize: 10, color: "rgba(226,201,126,0.4)" }}>{cur}/{max}</span>
@@ -2833,7 +2861,7 @@ export default function GW2LegendaryTracker() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
                       {mee.craft?.ingredients?.map(ing => (
                         <div key={ing.apiId} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>
-                          <span>{ing.name}</span>
+                          <span>{NX(ing.name)}</span>
                           <span style={{ color: "rgba(226,201,126,0.35)" }}>×{ing.qty * 6}</span>
                         </div>
                       ))}
@@ -2943,7 +2971,7 @@ export default function GW2LegendaryTracker() {
                 <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
                   <span style={{ fontSize: "16px" }}>{cur.icon}</span>
                   <div>
-                    <div style={{ fontSize: "12px", fontWeight: 600 }}>{cur.name}</div>
+                    <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(cur.name)}</div>
                     <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>
                       {t("req_missing", { req: cur.required.toLocaleString(), miss: Math.max(0, cur.required - cur.owned).toLocaleString() })}
                     </div>
@@ -2988,7 +3016,7 @@ export default function GW2LegendaryTracker() {
                   <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
                     <span style={{ fontSize: "16px" }}>{m.icon}</span>
                     <div>
-                      <div style={{ fontSize: "12px", fontWeight: 600 }}>{m.name}</div>
+                      <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</div>
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>
                         {t("req_missing", { req: m.required, miss: Math.max(0, m.required - owned) })}
                       </div>

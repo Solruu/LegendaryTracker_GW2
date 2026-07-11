@@ -292,13 +292,26 @@
   "armory_map_fix_note": {
    "fr": "Correctif 2026-07: 93105=Conflux (etait attribue a tort a Transcendence=92991). Warbringer=81462 ajoute. Source: wiki officiel.",
    "en": "Fix 2026-07: 93105=Conflux (was wrongly mapped to Transcendence=92991). Warbringer=81462 added. Source: official wiki."
+  },
+  "i18n_zones_note": {
+   "fr": "Zones/metas: noms FR officiels (wiki-fr). Kaineng Blackout, Into the Spider's Lair, Lowland Shore: EN, needs_verification.",
+   "en": "Zones/metas: official FR names (wiki-fr). Kaineng Blackout, Into the Spider's Lair, Lowland Shore: EN kept, needs_verification."
   }
  },
  "meta_events": {
   "vb": {
-   "name": "Night and the Enemy",
-   "subname": "Wyvern Matriarch",
-   "map": "Verdant Brink",
+   "name": {
+    "fr": "La nuit et l'ennemi",
+    "en": "Night and the Enemy"
+   },
+   "subname": {
+    "fr": "Matriarche vouivre",
+    "en": "Wyvern Matriarch"
+   },
+   "map": {
+    "fr": "Orée d'émeraude",
+    "en": "Verdant Brink"
+   },
    "expansion": "HoT",
    "offsetUTC": 105,
    "intervalMin": 120,
@@ -318,9 +331,15 @@
    "needs_verification": false
   },
   "td": {
-   "name": "Chak Gerent",
+   "name": {
+    "fr": "Roi de la jungle",
+    "en": "Chak Gerent"
+   },
    "subname": "4 lanes",
-   "map": "Tangled Depths",
+   "map": {
+    "fr": "Profondeurs verdoyantes",
+    "en": "Tangled Depths"
+   },
    "expansion": "HoT",
    "offsetUTC": 30,
    "intervalMin": 120,
@@ -343,9 +362,15 @@
    "needs_verification": false
   },
   "ab": {
-   "name": "Octovine",
+   "name": {
+    "fr": "Bataille de Tarir",
+    "en": "Octovine"
+   },
    "subname": "4 lanes simultanées",
-   "map": "Auric Basin",
+   "map": {
+    "fr": "Bassin aurique",
+    "en": "Auric Basin"
+   },
    "expansion": "HoT",
    "offsetUTC": 45,
    "intervalMin": 120,
@@ -368,9 +393,15 @@
    "needs_verification": false
   },
   "ds": {
-   "name": "Dragon's Stand",
+   "name": {
+    "fr": "Repli du dragon",
+    "en": "Dragon's Stand"
+   },
    "subname": "Meta complète",
-   "map": "Dragon's Stand",
+   "map": {
+    "fr": "Repli du dragon",
+    "en": "Dragon's Stand"
+   },
    "expansion": "HoT",
    "offsetUTC": 30,
    "intervalMin": 120,
@@ -391,9 +422,15 @@
    "needs_verification": false
   },
   "co": {
-   "name": "Casino Blitz",
+   "name": {
+    "fr": "Casino express",
+    "en": "Casino Blitz"
+   },
    "subname": "Grand Sahil Casino",
-   "map": "Crystal Oasis",
+   "map": {
+    "fr": "Oasis de cristal",
+    "en": "Crystal Oasis"
+   },
    "expansion": "PoF",
    "offsetUTC": 21,
    "intervalMin": 120,
@@ -416,9 +453,15 @@
    "needs_verification": false
   },
   "er": {
-   "name": "Doppelganger",
+   "name": {
+    "fr": "Le chemin de l'Ascension",
+    "en": "Doppelganger"
+   },
    "subname": "Augury Rock",
-   "map": "Elon Riverlands",
+   "map": {
+    "fr": "Rives de l'Elon",
+    "en": "Elon Riverlands"
+   },
    "expansion": "PoF",
    "offsetUTC": 60,
    "intervalMin": 120,
@@ -441,9 +484,15 @@
    "needs_verification": false
   },
   "de": {
-   "name": "Junundu Rising",
+   "name": {
+    "fr": "Le soulèvement des junundus",
+    "en": "Junundu Rising"
+   },
    "subname": "Shattered Ravines",
-   "map": "The Desolation",
+   "map": {
+    "fr": "La Désolation",
+    "en": "The Desolation"
+   },
    "expansion": "PoF",
    "offsetUTC": 30,
    "intervalMin": 120,
@@ -463,9 +512,15 @@
    "needs_verification": false
   },
   "dv": {
-   "name": "Forged with Fire",
+   "name": {
+    "fr": "Forgé par le feu",
+    "en": "Forged with Fire"
+   },
    "subname": "Vehjin Palace",
-   "map": "Domain of Vabbi",
+   "map": {
+    "fr": "Domaine de Vabbi",
+    "en": "Domain of Vabbi"
+   },
    "expansion": "PoF",
    "offsetUTC": 60,
    "intervalMin": 120,
@@ -485,9 +540,18 @@
    "needs_verification": false
   },
   "sp": {
-   "name": "Aetherblade Assault",
-   "subname": "Shing Jea Monastery",
-   "map": "Seitung Province",
+   "name": {
+    "fr": "Assaut étherlame",
+    "en": "Aetherblade Assault"
+   },
+   "subname": {
+    "fr": "Monastère de Shing Jea",
+    "en": "Shing Jea Monastery"
+   },
+   "map": {
+    "fr": "Province de Seitung",
+    "en": "Seitung Province"
+   },
    "expansion": "EoD",
    "offsetUTC": 90,
    "intervalMin": 120,
@@ -509,8 +573,14 @@
   },
   "nk": {
    "name": "Kaineng Blackout",
-   "subname": "New Kaineng City",
-   "map": "New Kaineng City",
+   "subname": {
+    "fr": "Néo-Kaineng",
+    "en": "New Kaineng City"
+   },
+   "map": {
+    "fr": "Néo-Kaineng",
+    "en": "New Kaineng City"
+   },
    "expansion": "EoD",
    "offsetUTC": 0,
    "intervalMin": 120,
@@ -531,9 +601,15 @@
    "timer_notes": "Heures paires : 00:00 / 02:00 / 04:00... UTC"
   },
   "ew": {
-   "name": "Gang War",
+   "name": {
+    "fr": "La guerre des gangs d'Echovald",
+    "en": "Gang War"
+   },
    "subname": "Echovald Wilds + Junkyard",
-   "map": "Echovald Wilds",
+   "map": {
+    "fr": "Terres sauvages d'Echovald",
+    "en": "Echovald Wilds"
+   },
    "expansion": "EoD",
    "offsetUTC": 100,
    "intervalMin": 120,
@@ -552,9 +628,15 @@
    "timer_notes": "Heures paires : 01:40 / 03:40 / 05:40... UTC"
   },
   "de2": {
-   "name": "Battle for Jade Sea",
+   "name": {
+    "fr": "La Bataille de la Mer de Jade",
+    "en": "Battle for Jade Sea"
+   },
    "subname": "Dragon's End — prépa + bataille",
-   "map": "Dragon's End",
+   "map": {
+    "fr": "Trépas du dragon",
+    "en": "Dragon's End"
+   },
    "expansion": "EoD",
    "offsetUTC": 60,
    "intervalMin": 120,
@@ -576,9 +658,18 @@
    }
   },
   "gy": {
-   "name": "Ravenous Wanderer",
-   "subname": "Gyala Delve",
-   "map": "Gyala Delve",
+   "name": {
+    "fr": "Détruire le voyageur vorace",
+    "en": "Ravenous Wanderer"
+   },
+   "subname": {
+    "fr": "Fosse de Gyala",
+    "en": "Gyala Delve"
+   },
+   "map": {
+    "fr": "Fosse de Gyala",
+    "en": "Gyala Delve"
+   },
    "expansion": "EoD",
    "offsetUTC": null,
    "intervalMin": 120,
@@ -600,9 +691,15 @@
    }
   },
   "sw": {
-   "name": "Unlocking the Wizard's Tower",
+   "name": {
+    "fr": "Déverrouiller la Tour du sorcier",
+    "en": "Unlocking the Wizard's Tower"
+   },
    "subname": "Droknar's Light",
-   "map": "Skywatch Archipelago",
+   "map": {
+    "fr": "Archipel de l'observatoire céleste",
+    "en": "Skywatch Archipelago"
+   },
    "expansion": "SotO",
    "offsetUTC": 60,
    "intervalMin": 120,
@@ -622,7 +719,10 @@
    "needs_verification": false
   },
   "am": {
-   "name": "Defense of Amnytas",
+   "name": {
+    "fr": "La défense d'Amnytas",
+    "en": "Defense of Amnytas"
+   },
    "subname": "Bastion of the Natural",
    "map": "Amnytas",
    "expansion": "SotO",
@@ -644,9 +744,15 @@
    "needs_verification": false
   },
   "in": {
-   "name": "Road to Heitor + Fangs That Gnash",
+   "name": {
+    "fr": "Chemin vers Heitor + Les crocs qui grincent",
+    "en": "Road to Heitor + Fangs That Gnash"
+   },
    "subname": "Inner Nayos — Map Readiness",
-   "map": "Inner Nayos",
+   "map": {
+    "fr": "Nayos intérieur",
+    "en": "Inner Nayos"
+   },
    "expansion": "SotO",
    "offsetUTC": null,
    "intervalMin": null,
@@ -676,7 +782,10 @@
   "zak": {
    "name": "Into the Spider's Lair",
    "subname": "Citadel of Zakiros",
-   "map": "Inner Nayos",
+   "map": {
+    "fr": "Nayos intérieur",
+    "en": "Inner Nayos"
+   },
    "expansion": "SotO",
    "offsetUTC": null,
    "intervalMin": null,
@@ -698,9 +807,15 @@
    }
   },
   "conv": {
-   "name": "Convergence Outer Nayos",
+   "name": {
+    "fr": "Convergence : Nayos extérieur",
+    "en": "Convergence Outer Nayos"
+   },
    "subname": "Public Instance — SotO",
-   "map": "The Wizard's Tower",
+   "map": {
+    "fr": "La Tour du sorcier",
+    "en": "The Wizard's Tower"
+   },
    "expansion": "SotO",
    "offsetUTC": 90,
    "intervalMin": 180,
@@ -718,7 +833,10 @@
    "needs_verification": false
   },
   "mb": {
-   "name": "Convergence Mount Balrior",
+   "name": {
+    "fr": "Convergence : Mont Balrior",
+    "en": "Convergence Mount Balrior"
+   },
    "subname": "Public Instance — JW",
    "map": "Lowland Shore",
    "expansion": "JW",
@@ -740,7 +858,10 @@
    "needs_verification": false
   },
   "bn": {
-   "name": "A Titanic Voyage",
+   "name": {
+    "fr": "Un voyage titanesque",
+    "en": "A Titanic Voyage"
+   },
    "subname": "Lextalion the Merciless",
    "map": "Bava Nisos",
    "expansion": "JW",
@@ -995,32 +1116,50 @@
     },
     "vendors": [
      {
-      "map": "Domain of Istan",
+      "map": {
+       "fr": "Domaine d'Istan",
+       "en": "Domain of Istan"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BAkLAAA=]"
      },
      {
-      "map": "Sandswept Isles",
+      "map": {
+       "fr": "Îles de Ventesable",
+       "en": "Sandswept Isles"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BNQLAAA=]"
      },
      {
-      "map": "Domain of Kourna",
+      "map": {
+       "fr": "Domaine de Kourna",
+       "en": "Domain of Kourna"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BNAMAAA=]"
      },
      {
-      "map": "Jahai Bluffs",
+      "map": {
+       "fr": "Promontoire de Jahai",
+       "en": "Jahai Bluffs"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BLsLAAA=]"
      },
      {
-      "map": "Thunderhead Peaks",
+      "map": {
+       "fr": "Pics de Chef-Tonnerre",
+       "en": "Thunderhead Peaks"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BK8LAAA=]"
      },
      {
-      "map": "Dragonfall",
+      "map": {
+       "fr": "Chute draconique",
+       "en": "Dragonfall"
+      },
       "npc": "Volatile Magic Merchant",
       "wpCode": "[&BOAKAAA=]"
      }
@@ -1040,7 +1179,10 @@
     {
      "type": "node_farm",
      "name": "Winterberries — Bitterfrost Frontier",
-     "map": "Bitterfrost Frontier",
+     "map": {
+      "fr": "Confins de Givramer",
+      "en": "Bitterfrost Frontier"
+     },
      "tip": "Meilleure source d'UM. Synergique Aurora (Orrian Pearls). Soft-reset daily.",
      "efficience": "A",
      "wpCode": "[&BH0JAAA=]"
@@ -1066,7 +1208,10 @@
     "tip": "Ember Bay = best gold ratio. Access required: LW3 episode 2 (Rising Flames).",
     "vendors": [
      {
-      "map": "Ember Bay",
+      "map": {
+       "fr": "Baie des braises",
+       "en": "Ember Bay"
+      },
       "npc": "Unbound Magic Vendor",
       "wpCode": "[&BOIJAAA=]",
       "cost_um": 1250,
@@ -1074,28 +1219,40 @@
       "priority": "best"
      },
      {
-      "map": "Bitterfrost Frontier",
+      "map": {
+       "fr": "Confins de Givramer",
+       "en": "Bitterfrost Frontier"
+      },
       "npc": "Unbound Magic Vendor",
       "wpCode": "[&BH0JAAA=]",
       "cost_um": 500,
       "cost_gold": 1.0
      },
      {
-      "map": "Lake Doric",
+      "map": {
+       "fr": "Lac Doric",
+       "en": "Lake Doric"
+      },
       "npc": "Unbound Magic Vendor",
       "wpCode": "[&BPMJAAA=]",
       "cost_um": 500,
       "cost_gold": 1.0
      },
      {
-      "map": "Draconis Mons",
+      "map": {
+       "fr": "Mont Draconis",
+       "en": "Draconis Mons"
+      },
       "npc": "Unbound Magic Vendor",
       "wpCode": "[&BAgKAAA=]",
       "cost_um": 500,
       "cost_gold": 1.0
      },
      {
-      "map": "Siren's Landing",
+      "map": {
+       "fr": "Plage des sirènes",
+       "en": "Siren's Landing"
+      },
       "npc": "Unbound Magic Vendor",
       "wpCode": "[&BNMJAAA=]",
       "cost_um": 500,
@@ -1501,7 +1658,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Domain of Istan",
+     "map": {
+      "fr": "Domaine d'Istan",
+      "en": "Domain of Istan"
+     },
      "tip": {
       "fr": "Nodes, events et metas — Domain of Istan. Déjà farmé en parallèle du Vision I.",
       "en": "Nodes, events and metas - Domain of Istan. Already farmed alongside Vision I."
@@ -1529,7 +1689,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Sandswept Isles",
+     "map": {
+      "fr": "Îles de Ventesable",
+      "en": "Sandswept Isles"
+     },
      "tip": "Nodes, events et metas — Sandswept Isles."
     }
    ],
@@ -1554,7 +1717,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Domain of Kourna",
+     "map": {
+      "fr": "Domaine de Kourna",
+      "en": "Domain of Kourna"
+     },
      "tip": "Nodes, events et metas — Domain of Kourna."
     }
    ],
@@ -1579,7 +1745,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Jahai Bluffs",
+     "map": {
+      "fr": "Promontoire de Jahai",
+      "en": "Jahai Bluffs"
+     },
      "tip": "Nodes, events et metas — Jahai Bluffs."
     }
    ],
@@ -1602,7 +1771,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Thunderhead Peaks",
+     "map": {
+      "fr": "Pics de Chef-Tonnerre",
+      "en": "Thunderhead Peaks"
+     },
      "tip": "Nodes, events et metas — Thunderhead Peaks."
     }
    ],
@@ -1627,7 +1799,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Dragonfall",
+     "map": {
+      "fr": "Chute draconique",
+      "en": "Dragonfall"
+     },
      "tip": "Nodes, events et metas — Dragonfall."
     }
    ],
@@ -1675,7 +1850,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Ember Bay",
+     "map": {
+      "fr": "Baie des braises",
+      "en": "Ember Bay"
+     },
      "tip": "Nodes, events et metas — Ember Bay. Source principale LW3 ep1."
     }
    ],
@@ -1698,7 +1876,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Bitterfrost Frontier",
+     "map": {
+      "fr": "Confins de Givramer",
+      "en": "Bitterfrost Frontier"
+     },
      "tip": "Nodes, events — Bitterfrost Frontier. LW3 ep2."
     }
    ],
@@ -1721,7 +1902,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Siren's Landing",
+     "map": {
+      "fr": "Plage des sirènes",
+      "en": "Siren's Landing"
+     },
      "tip": "Nodes, events — Siren's Landing. LW3 ep5."
     }
    ],
@@ -1744,7 +1928,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Draconis Mons",
+     "map": {
+      "fr": "Mont Draconis",
+      "en": "Draconis Mons"
+     },
      "tip": "Nodes, events — Draconis Mons. LW3 ep4."
     }
    ],
@@ -1769,7 +1956,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Bitterfrost Frontier",
+     "map": {
+      "fr": "Confins de Givramer",
+      "en": "Bitterfrost Frontier"
+     },
      "tip": "Daily nodes — Bitterfrost Frontier. Synergizes with Jade Shard farming."
     }
    ],
@@ -1792,7 +1982,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Lake Doric",
+     "map": {
+      "fr": "Lac Doric",
+      "en": "Lake Doric"
+     },
      "tip": "Nodes, events — Lake Doric. LW3 ep3."
     }
    ],
@@ -1815,7 +2008,10 @@
    "sources": [
     {
      "type": "chest",
-     "map": "Dragon's Stand",
+     "map": {
+      "fr": "Repli du dragon",
+      "en": "Dragon's Stand"
+     },
      "tip": "Noxious Pods (chests) — Dragon's Stand. Drop en fin de meta."
     }
    ]
@@ -1831,7 +2027,10 @@
    "sources": [
     {
      "type": "chest",
-     "map": "Verdant Brink",
+     "map": {
+      "fr": "Orée d'émeraude",
+      "en": "Verdant Brink"
+     },
      "tip": "Airship Cargo chests — Verdant Brink. Post-meta Night and the Enemy drop."
     }
    ]
@@ -1847,7 +2046,10 @@
    "sources": [
     {
      "type": "chest",
-     "map": "Auric Basin",
+     "map": {
+      "fr": "Bassin aurique",
+      "en": "Auric Basin"
+     },
      "tip": "Exalted Chests — Auric Basin. Drop post-meta Octovine."
     }
    ]
@@ -1863,7 +2065,10 @@
    "sources": [
     {
      "type": "chest",
-     "map": "Tangled Depths",
+     "map": {
+      "fr": "Profondeurs verdoyantes",
+      "en": "Tangled Depths"
+     },
      "tip": "Crystallized Supply Caches — Tangled Depths. Drop post-meta Chak Gerent."
     }
    ]
@@ -2628,9 +2833,15 @@
       "en": "T1 rifts (no motivation) - 6-14 per rift. With Rift Mastery + T1 motivation: 25-55. Most accessible source."
      },
      "maps": [
-      "Skywatch Archipelago",
+      {
+       "fr": "Archipel de l'observatoire céleste",
+       "en": "Skywatch Archipelago"
+      },
       "Amnytas",
-      "Inner Nayos",
+      {
+       "fr": "Nayos intérieur",
+       "en": "Inner Nayos"
+      },
       "Lowland Shore",
       "Janthir Syntri",
       "Mistburned Barrens",
@@ -3209,7 +3420,10 @@
    "sources": [
     {
      "type": "meta_drop",
-     "map": "Tangled Depths",
+     "map": {
+      "fr": "Profondeurs verdoyantes",
+      "en": "Tangled Depths"
+     },
      "tip": "Post-meta Chak Gerent drop — Crystallized Supply Caches. Also rare drop from Chak mobs."
     },
     {
@@ -3231,7 +3445,10 @@
    "sources": [
     {
      "type": "craft_or_vendor",
-     "map": "Auric Basin",
+     "map": {
+      "fr": "Bassin aurique",
+      "en": "Auric Basin"
+     },
      "tip": "Artificer/Jeweler craft or purchase from Exalted vendors (Auric Basin) for Aurillium. Also drops post-meta Octovine."
     },
     {
@@ -3253,7 +3470,10 @@
    "sources": [
     {
      "type": "meta_drop",
-     "map": "Verdant Brink",
+     "map": {
+      "fr": "Orée d'émeraude",
+      "en": "Verdant Brink"
+     },
      "tip": "Drop post-meta Night and the Enemy — Airship Cargo chests."
     },
     {
@@ -3276,7 +3496,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Verdant Brink",
+     "map": {
+      "fr": "Orée d'émeraude",
+      "en": "Verdant Brink"
+     },
      "tip": "Events and Airship Cargo chests — Verdant Brink. Requires Itzel Language mastery."
     }
    ],
@@ -3294,7 +3517,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Tangled Depths",
+     "map": {
+      "fr": "Profondeurs verdoyantes",
+      "en": "Tangled Depths"
+     },
      "tip": "Events and Nuhoch chests — Tangled Depths. Requires Nuhoch Language mastery."
     }
    ],
@@ -3312,7 +3538,10 @@
    "sources": [
     {
      "type": "map_currency",
-     "map": "Auric Basin",
+     "map": {
+      "fr": "Bassin aurique",
+      "en": "Auric Basin"
+     },
      "tip": "Events and Exalted Chests — Auric Basin. Requires Exalted Acceptance mastery."
     }
    ],
@@ -3330,7 +3559,10 @@
     {
      "type": "vendor",
      "npc": "Itzel Mastery Vendor",
-     "map": "Verdant Brink",
+     "map": {
+      "fr": "Orée d'émeraude",
+      "en": "Verdant Brink"
+     },
      "tip": "150 Airship Parts + 3g. Requires Itzel Language mastery."
     }
    ],
@@ -3347,7 +3579,10 @@
     {
      "type": "vendor",
      "npc": "Nuhoch Mastery Vendor",
-     "map": "Tangled Depths",
+     "map": {
+      "fr": "Profondeurs verdoyantes",
+      "en": "Tangled Depths"
+     },
      "tip": "150 Ley Line Crystals + 3g. Requires Nuhoch Language mastery."
     }
    ],
@@ -3364,7 +3599,10 @@
     {
      "type": "vendor",
      "npc": "Exalted Mastery Vendor",
-     "map": "Auric Basin",
+     "map": {
+      "fr": "Bassin aurique",
+      "en": "Auric Basin"
+     },
      "tip": "150 Lumps of Aurillium + 3g. Requires Exalted Acceptance mastery."
     }
    ],
@@ -8581,37 +8819,58 @@
       },
       {
        "name": "Covert Electrum",
-       "map": "Bloodstone Fen",
+       "map": {
+        "fr": "Marais de la pierre de sang",
+        "en": "Bloodstone Fen"
+       },
        "how": "Mastery Insight in Bloodstone Fen"
       },
       {
        "name": "Bloodstone-Infused Electrum",
-       "map": "Bloodstone Fen",
+       "map": {
+        "fr": "Marais de la pierre de sang",
+        "en": "Bloodstone Fen"
+       },
        "how": "Mastery Insight in Bloodstone Fen"
       },
       {
        "name": "Pyroclastic Electrum",
-       "map": "Ember Bay",
+       "map": {
+        "fr": "Baie des braises",
+        "en": "Ember Bay"
+       },
        "how": "Mastery Insight in Ember Bay"
       },
       {
        "name": "Frosted Electrum",
-       "map": "Bitterfrost Frontier",
+       "map": {
+        "fr": "Confins de Givramer",
+        "en": "Bitterfrost Frontier"
+       },
        "how": "Mastery Insight in Bitterfrost Frontier"
       },
       {
        "name": "Misty Electrum",
-       "map": "Lake Doric",
+       "map": {
+        "fr": "Lac Doric",
+        "en": "Lake Doric"
+       },
        "how": "Mastery Insight in Lake Doric"
       },
       {
        "name": "Sulfuric Electrum",
-       "map": "Draconis Mons",
+       "map": {
+        "fr": "Mont Draconis",
+        "en": "Draconis Mons"
+       },
        "how": "Mastery Insight in Draconis Mons"
       },
       {
        "name": "Scorched Electrum",
-       "map": "Siren's Landing",
+       "map": {
+        "fr": "Plage des sirènes",
+        "en": "Siren's Landing"
+       },
        "how": "Mastery Insight in Siren's Landing"
       }
      ]
@@ -8646,32 +8905,50 @@
       {
        "id": 4765,
        "name": "Visions of Istan",
-       "map": "Domain of Istan"
+       "map": {
+        "fr": "Domaine d'Istan",
+        "en": "Domain of Istan"
+       }
       },
       {
        "id": 4760,
        "name": "Visions of Kourna",
-       "map": "Domain of Kourna"
+       "map": {
+        "fr": "Domaine de Kourna",
+        "en": "Domain of Kourna"
+       }
       },
       {
        "id": 4770,
        "name": "Visions of Jahai",
-       "map": "Jahai Bluffs"
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       }
       },
       {
        "id": 4774,
        "name": "Visions of Sandswept Isles",
-       "map": "Sandswept Isles"
+       "map": {
+        "fr": "Îles de Ventesable",
+        "en": "Sandswept Isles"
+       }
       },
       {
        "id": 4764,
        "name": "Visions of Thunderhead Peaks",
-       "map": "Thunderhead Peaks"
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       }
       },
       {
        "id": 4757,
        "name": "Visions of Dragonfall",
-       "map": "Dragonfall"
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       }
       }
      ]
     }
