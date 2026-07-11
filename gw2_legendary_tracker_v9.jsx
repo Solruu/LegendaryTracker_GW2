@@ -66,6 +66,9 @@ const I18N = {
     status_completed: "✓ Completed",
     // Chars selector
     chars_title: "Eligible Characters — {name}",
+    wvw_label: "World vs World",
+    bounty_train_title: "[M] Bounty Train",
+    btn_kill: "Kill",
     chars_criteria_pre: "Criteria: ",
     chars_criteria_lvl: "level 80",
     chars_criteria_mid: " + ",
@@ -165,12 +168,12 @@ const I18N = {
     sec_scheduled: "[>] Metas programmées",
     sec_daily: "[J] Activités quotidiennes",
     sec_weekly: "[c] Activités de la semaine",
-    sec_bounties: "Primes — 5 Bounties légendaires",
+    sec_bounties: "Primes — 5 primes légendaires",
     sec_currency: "Progression — {name}",
     sec_common: "Matériaux communs — tous légendaires",
     reset_info_daily: "Sauvegardé · Reset auto à 01h00 UTC+1",
     reset_info_weekly: "Reset auto lundi 07h30 UTC+1",
-    reset_info_bounties: "Reset manuel · Elegy sauvegardé dans Progression",
+    reset_info_bounties: "Reset manuel · Élégies sauvegardées dans Progression",
     reset_info_chars: "Nombre de persos sauvegardé entre sessions",
     reset_info_progress: "Progression sauvegardée entre sessions",
     reset_info_common: "Stock commun partagé · Pré-remplissage via API Flask à venir",
@@ -178,6 +181,9 @@ const I18N = {
     days_left: "~{n}j restants",
     status_completed: "✓ Complété",
     chars_title: "Personnages éligibles — {name}",
+    wvw_label: "Monde contre Monde",
+    bounty_train_title: "[M] Train de primes",
+    btn_kill: "Tuer",
     chars_criteria_pre: "Critères : ",
     chars_criteria_lvl: "niveau 80",
     chars_criteria_mid: " + ",
@@ -257,11 +263,25 @@ const NX = (v) => {
   if (CUR_LANG === "fr" && typeof v === "string") return FR_TERM_MAP[v] || FR_TERM_MAP[NX_ALIAS[v]] || v;
   return v;
 };
-// IDs à traduire (items + currencies vérifiés)
+// IDs à traduire — graine statique + récolte automatique dans SOURCES_DB et LEGENDARIES
 const NAME_FETCH_IDS = {
   items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581],
   currencies: [35, 45, 15, 26, 82, 70, 28, 2],
 };
+function harvestIds() {
+  const items = new Set(NAME_FETCH_IDS.items), curs = new Set(NAME_FETCH_IDS.currencies), achs = new Set();
+  const walk = (o) => {
+    if (Array.isArray(o)) { o.forEach(walk); return; }
+    if (!o || typeof o !== "object") return;
+    if (typeof o.apiId === "number") (o.apiId < 100 ? curs : items).add(o.apiId);
+    if (typeof o.achievementId === "number") achs.add(o.achievementId);
+    if (typeof o.armory_api_id === "number") items.add(o.armory_api_id);
+    if (typeof o.id === "number" && typeof o.name === "string" && o.id > 100) achs.add(o.id); // collections
+    for (const v of Object.values(o)) walk(v);
+  };
+  walk(SOURCES_DB); walk(LEGENDARIES);
+  return { items: [...items], currencies: [...curs], achievements: [...achs] };
+}
 async function fetchPairs(endpoint, ids) {
   const [en, fr] = await Promise.all(["en", "fr"].map(async (lg) => {
     const res = await fetch(`https://api.guildwars2.com/v2/${endpoint}?ids=${ids.join(",")}&lang=${lg}`);
@@ -291,10 +311,15 @@ async function fetchFrLegNames() {
     }
   }
   if (legs.prismatic_champions_regalia && !legs.prismatic) legs.prismatic = legs.prismatic_champions_regalia;
-  const terms = {
-    ...(await fetchPairs("items", NAME_FETCH_IDS.items).catch(() => ({}))),
-    ...(await fetchPairs("currencies", NAME_FETCH_IDS.currencies).catch(() => ({}))),
-  };
+  const h = harvestIds();
+  const terms = {};
+  for (let i = 0; i < h.items.length; i += 200) {
+    Object.assign(terms, await fetchPairs("items", h.items.slice(i, i + 200)).catch(() => ({})));
+  }
+  Object.assign(terms, await fetchPairs("currencies", h.currencies).catch(() => ({})));
+  for (let i = 0; i < h.achievements.length; i += 200) {
+    Object.assign(terms, await fetchPairs("achievements", h.achievements.slice(i, i + 200)).catch(() => ({})));
+  }
   return { legs, terms };
 }
 
@@ -614,16 +639,16 @@ const LEGENDARIES = {
     ],
     metas: [],
     wvwActivities: [
-      { id: "skirmish", name: "Skirmish Reward Track", icon: "SR",
+      { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
         limit: { fr: "365 tickets/semaine", en: "365 tickets/week" }, resetDay: "Lundi",
         tip: { fr: "Source principale de tickets. Maintenir une participation Gold+ pour maximiser les pips.", en: "Main ticket source. Maintain Gold+ participation to maximize pips." } },
-      { id: "weeklies", name: "WvW Weeklies", icon: "WK",
+      { id: "weeklies", name: { fr: "Hebdomadaires McM", en: "WvW Weeklies" }, icon: "WK",
         limit: { fr: "~150 tickets bonus/semaine", en: "~150 bonus tickets/week" }, resetDay: "Lundi",
-        tip: { fr: "Compléter les objectifs hebdomadaires WvW. À vérifier dans le menu Achievements → WvW.", en: "Complete WvW weekly objectives. Check in the Achievements → WvW menu." } },
-      { id: "osr", name: "Objective Scaling Rewards", icon: "LD",
+        tip: { fr: "Compléter les objectifs hebdomadaires McM. À vérifier dans le menu Succès → McM.", en: "Complete WvW weekly objectives. Check in the Achievements → WvW menu." } },
+      { id: "osr", name: { fr: "Récompenses d'objectifs évolutives", en: "Objective Scaling Rewards" }, icon: "LD",
         limit: { fr: "Variable selon activité", en: "Varies with activity" }, resetDay: "Continu",
         tip: { fr: "Rewards bonus pour capturer/défendre des objectifs à forte valeur. Rejoindre un commander actif.", en: "Bonus rewards for capturing/defending high-value objectives. Join an active commander." } },
-      { id: "reward_track", name: "Gift of Battle Track", icon: "RT",
+      { id: "reward_track", name: { fr: "Piste « Don de bataille »", en: "Gift of Battle Track" }, icon: "RT",
         limit: { fr: "1 completion suffit", en: "1 completion is enough" }, resetDay: "Unique",
         tip: { fr: "Compléter le reward track 'Gift of Battle' — requis pour tous les légendaires. ~5-6 soirées.", en: "Complete the 'Gift of Battle' reward track — required for all legendaries. ~5-6 evenings." } },
     ],
@@ -2237,7 +2262,7 @@ export default function GW2LegendaryTracker() {
       {activeTab === "wvw" && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.12)", borderRadius: "8px", fontFamily: "'Crimson Text', serif" }}>
-            <div style={{ fontSize: "12px", fontWeight: 600, color: "#fb923c", marginBottom: "5px" }}>⚔ Conflux — World vs World</div>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: "#fb923c", marginBottom: "5px" }}>⚔ {NL("conflux", "Conflux")} — {t("wvw_label")}</div>
             <div style={{ fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
               {t("wvw_reset_note_pre")}<strong>{t("wvw_reset_note_day")}</strong>{t("wvw_reset_note_post")}
             </div>
@@ -2360,7 +2385,7 @@ export default function GW2LegendaryTracker() {
       {activeTab === "bounties" && leg.bounties?.length > 0 && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: legColorDim, border: `1px solid ${legColor}25`, borderRadius: "8px", fontFamily: "'Crimson Text', serif" }}>
-            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>[M] Bounty Train</div>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>{t("bounty_train_title")}</div>
             <div style={{ fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
               {t("bounty_train_desc")}
             </div>
@@ -2378,7 +2403,7 @@ export default function GW2LegendaryTracker() {
                 </div>
                 <button className={`check-btn ${bountyDone[b.id] ? "done" : ""}`}
                   onClick={e => { e.stopPropagation(); toggleBounty(b.id); }}>
-                  {bountyDone[b.id] ? "✓" : "Kill"}
+                  {bountyDone[b.id] ? "✓" : t("btn_kill")}
                 </button>
               </div>
               {expanded === b.id && (
@@ -2453,7 +2478,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ padding: "10px 13px", background: ach1Done ? "rgba(74,222,128,0.06)" : "rgba(52,211,153,0.05)", border: `1px solid ${ach1Done ? "rgba(74,222,128,0.3)" : "rgba(52,211,153,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: ach1Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {ach1Done ? "✓ " : ""}Aurora: Awakening
+                    {ach1Done ? "✓ " : ""}{NX("Aurora: Awakening")}
                   </div>
                   <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
                     {t("aurora_reward")}
@@ -2683,7 +2708,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ padding: "10px 13px", background: ach2Done ? "rgba(74,222,128,0.06)" : "rgba(52,211,153,0.05)", border: `1px solid ${ach2Done ? "rgba(74,222,128,0.3)" : "rgba(52,211,153,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: ach2Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {ach2Done ? "✓ " : ""}Aurora II: Empowering
+                    {ach2Done ? "✓ " : ""}{NX("Aurora II: Empowering")}
                   </div>
                   <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
                     {t("aurora2_reward")}
@@ -2806,7 +2831,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ padding: "10px 13px", background: v1Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v1Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: v1Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v1Done ? "✓ " : ""}Vision I: Awakening
+                    {v1Done ? "✓ " : ""}{NX("Vision I: Awakening")}
                   </div>
                   <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
                     {t("vision_reward_1")}
@@ -2830,7 +2855,7 @@ export default function GW2LegendaryTracker() {
                       {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
                     </div>
                     <div style={{ flex: 1 }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{v.label}</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(v.label)}</span>
                       <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", marginLeft: 7, background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(v.map)}</span>
                     </div>
                     {hasData && !done && max > 0 && (
@@ -2847,7 +2872,7 @@ export default function GW2LegendaryTracker() {
                   <div style={{ margin: "6px 0 0", padding: "9px 13px", background: "rgba(167,139,250,0.03)", border: "1px solid rgba(167,139,250,0.15)", borderRadius: 6 }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 5 }}>
                       <div>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: C, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>Memory Essence Encapsulator</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: C, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{NX("Memory Essence Encapsulator")}</span>
                         <span style={{ fontSize: 9, color: "rgba(167,139,250,0.5)", marginLeft: 7 }}>{t("x6_required")}</span>
                       </div>
                       <a href={`https://wiki.guildwars2.com/wiki/${mee.wiki}`} target="_blank" rel="noreferrer"
@@ -2879,7 +2904,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ padding: "10px 13px", background: v2Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v2Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: v2Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v2Done ? "✓ " : ""}Vision II: Farsight
+                    {v2Done ? "✓ " : ""}{NX("Vision II: Farsight")}
                   </div>
                   <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
                     {t("vision_reward_2")}
@@ -2901,7 +2926,7 @@ export default function GW2LegendaryTracker() {
                       {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
                     </div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{c.label}</div>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(c.label)}</div>
                       <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(c.note)}</div>
                     </div>
                   </div>
