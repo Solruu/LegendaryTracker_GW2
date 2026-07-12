@@ -257,10 +257,30 @@ try {
 const NL = (legId, fallback) => (CUR_LANG === "fr" && legId && FR_LEG_NAMES[legId]) || fallback;
 // Alias : libellés des données ≠ nom API exact
 const NX_ALIAS = { "Winterberry": "Fresh Winterberry", "Skirmish Claim Tickets": "WvW Skirmish Claim Ticket" };
-// NX : résout objets { fr, en } (via L) et noms propres EN → FR API
+// ── NXS : remplacement terme-à-terme À L'INTÉRIEUR des chaînes (recettes, tips…) ──
+// Regex à frontières de mots, reconstruite quand le dictionnaire API change.
+let NXS_RE = null, NXS_KEYCOUNT = -1;
+function nxsRegex() {
+  const keys = Object.keys(FR_TERM_MAP).filter(k => k.length >= 5);
+  if (keys.length !== NXS_KEYCOUNT) {
+    NXS_KEYCOUNT = keys.length;
+    NXS_RE = keys.length
+      ? new RegExp("\\b(" + keys.sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "g")
+      : null;
+  }
+  return NXS_RE;
+}
+function NXS(s) {
+  if (CUR_LANG !== "fr" || typeof s !== "string") return s;
+  const re = nxsRegex();
+  // Remplacement par dictionnaire uniquement — pas de motif générique
+  // (« Don de <nom EN> » produirait des hybrides pires que l'anglais).
+  return re ? s.replace(re, (m) => FR_TERM_MAP[m] || m) : s;
+}
+// NX : résout objets { fr, en } (via L) puis applique NXS ; chaînes → match exact puis NXS
 const NX = (v) => {
-  if (v && typeof v === "object") return L(v);
-  if (CUR_LANG === "fr" && typeof v === "string") return FR_TERM_MAP[v] || FR_TERM_MAP[NX_ALIAS[v]] || v;
+  if (v && typeof v === "object") return NXS(L(v));
+  if (CUR_LANG === "fr" && typeof v === "string") return FR_TERM_MAP[v] || FR_TERM_MAP[NX_ALIAS[v]] || NXS(v);
   return v;
 };
 // IDs à traduire — graine statique + récolte automatique dans SOURCES_DB et LEGENDARIES
@@ -327,7 +347,7 @@ function translate(key, lang, vars) {
   const dict = I18N[lang] || I18N.en;
   let s = dict[key] ?? I18N.en[key] ?? key;
   if (vars) for (const k of Object.keys(vars)) s = s.split(`{${k}}`).join(String(vars[k]));
-  return s;
+  return lang === "fr" ? NXS(s) : s;
 }
 
 function useT() {
@@ -1345,7 +1365,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                     <div key={v.compId} style={{ fontSize: 10, color: "rgba(251,146,60,0.6)",
                       fontFamily: "'Crimson Text', serif", padding: "2px 0" }}>
                       <span style={{ fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{NX(v.name)}</span>
-                      {v.note && <span style={{ opacity: 0.6 }}> — {L(v.note)}</span>}
+                      {v.note && <span style={{ opacity: 0.6 }}> — {NX(v.note)}</span>}
                     </div>
                   ))}
                 </div>
@@ -1867,7 +1887,7 @@ export default function GW2LegendaryTracker() {
               {NL(leg?.id, leg?.name)}
             </div>
             <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
-              {L(leg?.description)}
+              {NX(leg?.description)}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
@@ -1911,7 +1931,7 @@ export default function GW2LegendaryTracker() {
             onClick={() => setSelectedLeg(l.id)}
           >
             {l.icon} {NL(l.id, l.name)}
-            <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>({L(l.type)})</span>
+            <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>({NX(l.type)})</span>
           </button>
         ))}
         <div style={{ width: "1px", background: "rgba(226,201,126,0.12)", margin: "2px 4px", flexShrink: 0 }} />
@@ -2020,7 +2040,7 @@ export default function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
+                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</div>
                       {m.bestNext && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
                           → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
@@ -2063,7 +2083,7 @@ export default function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</div>
+                      <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</div>
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
                           → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
@@ -2097,7 +2117,7 @@ export default function GW2LegendaryTracker() {
                       )}
                       {m.resetNote && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(251,146,60,0.8)", marginBottom: "5px" }}>
-                          [R] {L(m.resetNote)}
+                          [R] {NX(m.resetNote)}
                         </div>
                       )}
                       {m.bestNext && (
@@ -2105,7 +2125,7 @@ export default function GW2LegendaryTracker() {
                           {t("next_meta", { meta: m.bestNext.meta.name, sub: m.bestNext.meta.subname, time: formatLocalTime(m.bestNext.date) })}
                         </div>
                       )}
-                      ⏱ ~{m.durationMin} min · {L(m.tip)}
+                      ⏱ ~{m.durationMin} min · {NX(m.tip)}
                     </div>
                   )}
                 </div>
@@ -2131,7 +2151,7 @@ export default function GW2LegendaryTracker() {
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: "5px", marginTop: "2px" }}>
-                        <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(m.subname)}</span>
+                        <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</span>
                         {m.farmType && (
                           <span style={{ fontSize: "9px", color: farmLabel.color, background: `${farmLabel.color}18`, border: `1px solid ${farmLabel.color}30`, padding: "1px 5px", borderRadius: "2px", fontFamily: "'Crimson Text', serif" }}>
                             {farmLabel.text}
@@ -2155,7 +2175,7 @@ export default function GW2LegendaryTracker() {
                       </div>
                       {m.resetNote && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(251,146,60,0.8)", marginBottom: "5px" }}>
-                          [R] {L(m.resetNote)}
+                          [R] {NX(m.resetNote)}
                         </div>
                       )}
                       {m.vendor && (
@@ -2163,7 +2183,7 @@ export default function GW2LegendaryTracker() {
                           [V] {m.vendor}
                         </div>
                       )}
-                      {L(m.tip)}
+                      {NX(m.tip)}
                     </div>
                   )}
                 </div>
@@ -2274,8 +2294,8 @@ export default function GW2LegendaryTracker() {
                 <span style={{ fontSize: "18px", width: "26px" }}>{a.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(a.name)}</div>
-                  <div style={{ fontSize: "10px", color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>{L(a.limit)}</div>
-                  <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>{L(a.tip)}</div>
+                  <div style={{ fontSize: "10px", color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>{NX(a.limit)}</div>
+                  <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>{NX(a.tip)}</div>
                 </div>
                 <button className={`check-btn ${weeklyChecked[a.id] ? "done" : ""}`}
                   onClick={() => toggleWeekly(a.id)}>
@@ -2343,7 +2363,7 @@ export default function GW2LegendaryTracker() {
                   <div style={{ padding: "4px 12px 10px" }}>
                     {tier.tip && (
                       <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 8, lineHeight: 1.5 }}>
-                        {L(tier.tip)}
+                        {NX(tier.tip)}
                       </div>
                     )}
                     {tier.episodes.map(ep => {
@@ -2415,7 +2435,7 @@ export default function GW2LegendaryTracker() {
                       {copied === b.id ? t("btn_copied") : `${b.wpCode} [c]`}
                     </button>
                   </div>
-                  {L(b.tip)}
+                  {NX(b.tip)}
                 </div>
               )}
             </div>
@@ -2617,7 +2637,7 @@ export default function GW2LegendaryTracker() {
                       <div style={{ background: "rgba(255,255,255,0.01)", padding: "4px 13px 10px 36px", borderTop: "1px solid rgba(226,201,126,0.04)" }}>
                         {timegate && (
                           <div style={{ margin: "6px 0 8px", padding: "7px 10px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5, fontSize: 11, color: "#fb923c", fontFamily: "'Crimson Text', serif" }}>
-                            ⚠ {L(timegate)}
+                            ⚠ {NX(timegate)}
                           </div>
                         )}
                         {items.map((item, i) => {
@@ -2652,7 +2672,7 @@ export default function GW2LegendaryTracker() {
                             </div>
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
-                              {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{L(item.how)}</div>}
+                              {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
                               {/* Bloc Mastery story inline — bit 0 uniquement */}
                               {missing && masteryId && (
                                 <div style={{ marginTop: 5, padding: "6px 8px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5 }}>
@@ -2757,7 +2777,7 @@ export default function GW2LegendaryTracker() {
                             <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
                             <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
                           </div>
-                          <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(item.how)}</div>
+                          <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(item.how)}</div>
                         </div>
                       </div>
                     );
@@ -2927,7 +2947,7 @@ export default function GW2LegendaryTracker() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(c.label)}</div>
-                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{L(c.note)}</div>
+                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(c.note)}</div>
                     </div>
                   </div>
                 );
@@ -3064,7 +3084,7 @@ export default function GW2LegendaryTracker() {
                       ))}
                     </div>
                     <div style={{ fontFamily: "'Crimson Text', serif", fontStyle: "italic", fontSize: "12px", color: "rgba(226,201,126,0.5)", textAlign: "center" }}>
-                      {L(m.tip)}
+                      {NX(m.tip)}
                     </div>
                   </div>
                 )}
