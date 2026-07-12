@@ -253,7 +253,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 4;
+const NAMES_CACHE_VER = 5;
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -290,7 +290,8 @@ const NX = (v) => {
 };
 // IDs à traduire — graine statique + récolte automatique dans SOURCES_DB et LEGENDARIES
 const NAME_FETCH_IDS = {
-  items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581, 90985],
+  items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581,
+    90985 /* Gift of Prescience */, 82008 /* Gift of Valor */, 81729 /* Spark of Sentience */],
   currencies: [35, 45, 15, 26, 82, 70, 28, 2],
 };
 function harvestIds() {
