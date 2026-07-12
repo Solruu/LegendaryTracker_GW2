@@ -299,6 +299,10 @@
   "i18n_zones_note": {
    "fr": "Zones/metas: noms FR officiels (wiki-fr). Kaineng Blackout, Into the Spider's Lair, Lowland Shore: EN, needs_verification.",
    "en": "Zones/metas: official FR names (wiki-fr). Kaineng Blackout, Into the Spider's Lair, Lowland Shore: EN kept, needs_verification."
+  },
+  "apiid_fix_note": {
+   "fr": "Correctif 2026-07: MEE=91024 (etait 97783), Orichalcum Filigree=12834 (etait 19703), Lesser Vision Crystal=49523 (etait 46744). Verifies gw2treasures/wiki.",
+   "en": "Fix 2026-07: MEE=91024 (was 97783), Orichalcum Filigree=12834 (was 19703), Lesser Vision Crystal=49523 (was 46744). Verified via gw2treasures/wiki."
   }
  },
  "meta_events": {
@@ -3221,7 +3225,7 @@
   },
   "lesser_vision_crystal": {
    "name": "Lesser Vision Crystal",
-   "apiId": 46744,
+   "apiId": 49523,
    "needed_for": [
     "armor_obsidian_per_piece"
    ],
@@ -4254,7 +4258,7 @@
   },
   "antique_summoning_stone": {
    "name": "Antique Summoning Stone",
-   "apiId": 97783,
+   "apiId": 91024,
    "needed_for": [
     "gift_of_the_dragon_empire"
    ],
@@ -5775,7 +5779,7 @@
   },
   "orichalcum_filigree": {
    "name": "Orichalcum Filigree",
-   "apiId": 19703,
+   "apiId": 12834,
    "needed_for": [
     "memory_essence_encapsulator"
    ],
@@ -5856,7 +5860,7 @@
   },
   "memory_essence_encapsulator": {
    "name": "Memory Essence Encapsulator",
-   "apiId": 97783,
+   "apiId": 91024,
    "needed_for": [
     "vision_1_subcollections"
    ],
@@ -5877,12 +5881,12 @@
      {
       "name": "Orichalcum Filigree",
       "qty": 10,
-      "apiId": 19703
+      "apiId": 12834
      },
      {
       "name": "Lesser Vision Crystal",
       "qty": 1,
-      "apiId": 46744
+      "apiId": 49523
      },
      {
       "name": "Xunlai Electrum Ingot",

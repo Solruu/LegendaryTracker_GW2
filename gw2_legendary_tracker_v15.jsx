@@ -215,16 +215,16 @@ const I18N = {
     aurora_prereq_help: "Compléter ces 4 achievements (une fois par compte) pour obtenir les 4 Sentient* à forger.",
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
-    aurora2_reward: "Récompense : Spark of Sentience · 21 Xunlai Electrum Ingots à infuser",
-    aurora2_help: "Aucun RNG ni time-gate. Avoir 21 Xunlai Electrum Ingots en inventaire, puis communier avec chaque Mastery Insight listé ci-dessous.",
+    aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
+    aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
     aurora2_prereq: "Prérequis : Aurora: Awakening complété · Synchronise via API pour voir les cases cochées",
     vision_col_title: "Collections Vision — prérequis au craft",
     vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     x6_required: "×6 requis",
-    vision_mee_craft: "⚠ Artificer 400 · Recette à acheter (Arborstone / Juno vendors)",
-    vision_mee_note: "Xunlai Electrum Ingot : recette vendor EoD (Arborstone) · Electrum Ingot + Jade Sliver ×10",
+    vision_mee_craft: "⚠ Artificier 400 · Recette à acheter (vendeurs Arborstone / Juno)",
+    vision_mee_note: "Xunlai Electrum Ingot : recette de vendeur EoD (Arborstone) · Electrum Ingot + 10× Jade Sliver",
     vision_elegy_label: "Requiem Experiments — Elegy Mosaics",
     vision_elegy_note: "6 experiments × 50 Elegy · Accumulé : {n}/300 Elegy Mosaics",
     pop_LFG: "LFG actif", pop_public: "Instance publique", pop_bon: "Bien peuplé",
@@ -233,7 +233,7 @@ const I18N = {
     bounty_train_desc: `LFG → "Crystal Desert" → "bounty train" ou "BT". ~40 min pour les 5 maps. Pas besoin de prendre le contrat — participer au kill suffit.`,
     bounty_train_elegy: "~40–60 Elegy Mosaic par train complet",
     aurora_col_intro: "Deux collections obligatoires avant de pouvoir forger Aurora.",
-    sentient_seed_desc: "Achat unique 1000 UM au Gleam of Sentience · forge les 4 Sentient* en Mystic Forge",
+    sentient_seed_desc: "Achat unique 1000 UM au Gleam of Sentience · forger les 4 Sentient* en Forge mystique",
     aurora2_show_insights: "Voir les 21 Mastery Insights",
     vision_col_intro: "Vision I: Awakening → Gift of Insight · Vision II: Farsight → Gift of Prescience.",
     common_intro: "Ces matériaux font partie du Mystic Tribute requis pour tous les légendaires. Le stock est partagé entre tous tes légendaires actifs.",
@@ -253,7 +253,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 6;
+const NAMES_CACHE_VER = 7;
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -294,19 +294,29 @@ const NAME_FETCH_IDS = {
     90985 /* Gift of Prescience */, 82008 /* Gift of Valor */, 81729 /* Spark of Sentience */],
   currencies: [35, 45, 15, 26, 82, 70, 28, 2],
 };
+// Succès vérifiés (Aurora/Vision/Coalescence/Prismatic + masters + pré-collections)
+const ACHIEVEMENT_SEED = [3522, 3489, 4762, 4771, 4035, 4412, 4805, 5790,
+  3053, 3129, 3383, 3429, 3500, 3529, 3499, 3491, 3547, 3495];
 function harvestIds() {
-  const items = new Set(NAME_FETCH_IDS.items), curs = new Set(NAME_FETCH_IDS.currencies), achs = new Set();
+  const items = new Set(NAME_FETCH_IDS.items), curs = new Set(NAME_FETCH_IDS.currencies);
+  const achs = new Set(ACHIEVEMENT_SEED);
+  const labelToId = {}; // libellé des données → apiId (résiste aux libellés ≠ nom API exact)
   const walk = (o) => {
     if (Array.isArray(o)) { o.forEach(walk); return; }
     if (!o || typeof o !== "object") return;
-    if (typeof o.apiId === "number") (o.apiId < 100 ? curs : items).add(o.apiId);
+    if (typeof o.apiId === "number") {
+      (o.apiId < 100 ? curs : items).add(o.apiId);
+      const label = typeof o.name === "string" ? o.name : (o.name && typeof o.name.en === "string" ? o.name.en : null);
+      if (label) labelToId[label] = { id: o.apiId, kind: o.apiId < 100 ? "currencies" : "items" };
+    }
     if (typeof o.achievementId === "number") achs.add(o.achievementId);
+    if (typeof o.mastery_achi_id === "number") achs.add(o.mastery_achi_id);
     if (typeof o.armory_api_id === "number") items.add(o.armory_api_id);
     if (typeof o.id === "number" && typeof o.name === "string" && o.id > 100) achs.add(o.id); // collections
     for (const v of Object.values(o)) walk(v);
   };
   walk(SOURCES_DB); walk(LEGENDARIES);
-  return { items: [...items], currencies: [...curs], achievements: [...achs] };
+  return { items: [...items], currencies: [...curs], achievements: [...achs], labelToId };
 }
 async function fetchPairs(endpoint, ids) {
   // 2 tentatives — l'API GW2 peut renvoyer des erreurs transitoires
@@ -320,8 +330,12 @@ async function fetchPairs(endpoint, ids) {
         return data;
       }));
       const enById = Object.fromEntries(en.map(it => [it.id, it.name]));
-      const out = {};
-      for (const it of fr) { if (enById[it.id] && it.name) out[enById[it.id]] = it.name; }
+      const out = {}, byId = {};
+      for (const it of fr) {
+        if (it.name) byId[it.id] = it.name;
+        if (enById[it.id] && it.name) out[enById[it.id]] = it.name;
+      }
+      out.__byId = byId;
       return out;
     } catch (e) {
       if (attempt === 1) { console.warn("[i18n]", e.message); throw e; }
@@ -341,18 +355,25 @@ async function fetchFrLegNames(onPartial) {
   }
   const ids = Object.keys(map);
   const legs = {};
+  const legTermBlocklist = new Set(["Vision"]); // « Vision » = substring de noms d'items (Lesser Vision Crystal…)
+  const legTerms = {};
   for (let i = 0; i < ids.length; i += 150) {
     try {
-      const chunk = ids.slice(i, i + 150);
-      const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=fr`);
-      if (!res.ok) throw new Error("legs HTTP " + res.status);
-      for (const it of await res.json()) {
-        for (const legId of (map[String(it.id)] ?? [])) { legs[legId] = it.name; stats.legs++; }
+      const got = await fetchPairs("items", ids.slice(i, i + 150));
+      const byId = got.__byId || {};
+      delete got.__byId;
+      for (const [apiId, legIds] of Object.entries(map)) {
+        if (byId[apiId]) for (const legId of legIds) { legs[legId] = byId[apiId]; stats.legs++; }
       }
-    } catch (e) { stats.fails.push("legs"); console.warn("[i18n]", e.message); }
+      // noms EN des légendaires → dictionnaire NXS (traduit « Aurora » dans les descriptions)
+      for (const [enName, frName] of Object.entries(got)) {
+        if (!legTermBlocklist.has(enName)) legTerms[enName] = frName;
+      }
+    } catch (e) { stats.fails.push("legs@" + i); console.warn("[i18n]", e.message); }
   }
+  Object.assign(legTerms, {});
   if (legs.prismatic_champions_regalia && !legs.prismatic) legs.prismatic = legs.prismatic_champions_regalia;
-  const terms = {};
+  const terms = { ...legTerms };
   if (onPartial) onPartial({ legs, terms, stats });
   const h = harvestIds();
   const phases = [
@@ -365,7 +386,13 @@ async function fetchFrLegNames(onPartial) {
     for (let i = 0; i < all.length; i += size) {
       try {
         const got = await fetchPairs(endpoint, all.slice(i, i + size));
+        const byId = got.__byId || {};
+        delete got.__byId;
         Object.assign(terms, got);
+        // alias : libellés des données → nom FR de LEUR apiId (même si libellé ≠ nom API)
+        for (const [label, ref] of Object.entries(h.labelToId)) {
+          if (ref.kind === endpoint && byId[ref.id] && !terms[label]) terms[label] = byId[ref.id];
+        }
         stats[endpoint] += Object.keys(got).length;
       } catch (_) { stats.fails.push(endpoint + "@" + i); }
     }
