@@ -109,7 +109,7 @@ const I18N = {
     vision_col_title: "Vision Collections — crafting prerequisites",
     vision_reqnote: "The Requiem Experiments provide the necessary Elegy Mosaics.",
     vision_reward_1: "Reward: Gift of Insight · 6 Visions of [map] LW4",
-    vision_reward_2: "Reward: Gift of Prescience · Convergence of Sorrow I+II",
+    vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I & II",
     x6_required: "×6 required",
     vision_mee_craft: "⚠ Artificer 400 · Recipe must be purchased (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot: EoD vendor recipe (Arborstone) · Electrum Ingot + Jade Sliver ×10",
@@ -125,7 +125,7 @@ const I18N = {
     aurora_col_intro: "Two mandatory collections before forging Aurora.",
     sentient_seed_desc: "One-time purchase 1000 UM from Gleam of Sentience · forge the 4 Sentient* in Mystic Forge",
     aurora2_show_insights: "Show 21 Mastery Insights",
-    vision_col_intro: "Vision I (Awakening) → Gift of Insight · Vision II (Farsight) → Gift of Prescience.",
+    vision_col_intro: "Vision I: Awakening → Gift of Insight · Vision II: Farsight → Gift of Prescience.",
     common_intro: "These materials are part of the Mystic Tribute required for all legendaries. Stock is shared across all your active legendaries.",
     btn_reset_daily: "Reset day",
   },
@@ -219,9 +219,9 @@ const I18N = {
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21 Xunlai Electrum Ingots en inventaire, puis communier avec chaque Mastery Insight listé ci-dessous.",
     aurora2_prereq: "Prérequis : Aurora: Awakening complété · Synchronise via API pour voir les cases cochées",
     vision_col_title: "Collections Vision — prérequis au craft",
-    vision_reqnote: "Les Requiem Experiments fournissent les Elegy Mosaics nécessaires.",
+    vision_reqnote: "Les succès Requiem: Experiment fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
-    vision_reward_2: "Récompense : Gift of Prescience · Convergence of Sorrow I+II",
+    vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I & II",
     x6_required: "×6 requis",
     vision_mee_craft: "⚠ Artificer 400 · Recette à acheter (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot : recette vendor EoD (Arborstone) · Electrum Ingot + Jade Sliver ×10",
@@ -235,7 +235,7 @@ const I18N = {
     aurora_col_intro: "Deux collections obligatoires avant de pouvoir forger Aurora.",
     sentient_seed_desc: "Achat unique 1000 UM au Gleam of Sentience · forge les 4 Sentient* en Mystic Forge",
     aurora2_show_insights: "Voir les 21 Mastery Insights",
-    vision_col_intro: "Vision I (Awakening) → Gift of Insight · Vision II (Farsight) → Gift of Prescience.",
+    vision_col_intro: "Vision I: Awakening → Gift of Insight · Vision II: Farsight → Gift of Prescience.",
     common_intro: "Ces matériaux font partie du Mystic Tribute requis pour tous les légendaires. Le stock est partagé entre tous tes légendaires actifs.",
     btn_reset_daily: "Reset du jour",
   },
@@ -253,7 +253,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 3;
+const NAMES_CACHE_VER = 4;
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -290,7 +290,7 @@ const NX = (v) => {
 };
 // IDs à traduire — graine statique + récolte automatique dans SOURCES_DB et LEGENDARIES
 const NAME_FETCH_IDS = {
-  items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581],
+  items: [79899, 79469, 80332, 81127, 81706, 68063, 19675, 19976, 19721, 19925, 71581, 90985],
   currencies: [35, 45, 15, 26, 82, 70, 28, 2],
 };
 function harvestIds() {
