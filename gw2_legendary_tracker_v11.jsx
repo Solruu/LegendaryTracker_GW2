@@ -250,9 +250,14 @@ const L = (v) => (v && typeof v === "object" && !Array.isArray(v) && (v.fr !== u
 // Noms FR officiels — légendaires (armory), items & currencies (API GW2 ?lang=fr), cache localStorage.
 let FR_LEG_NAMES = {};
 let FR_TERM_MAP = {};
+// Cache versionné : toute évolution de la récolte (items/currencies/achievements)
+// doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
+const NAMES_CACHE_KEY = "gw2_names_fr3";
+const NAMES_CACHE_VER = 3;
 try {
-  const c = JSON.parse(localStorage.getItem("gw2_names_fr2") || "{}");
-  FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {};
+  const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
+  if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
+  localStorage.removeItem("gw2_names_fr"); localStorage.removeItem("gw2_names_fr2"); // purge anciens caches
 } catch (_) {}
 const NL = (legId, fallback) => (CUR_LANG === "fr" && legId && FR_LEG_NAMES[legId]) || fallback;
 // Alias : libellés des données ≠ nom API exact
@@ -1397,7 +1402,7 @@ export default function GW2LegendaryTracker() {
     let dead = false;
     fetchFrLegNames().then(m => {
       if (dead || !Object.keys(m.legs).length) return;
-      try { localStorage.setItem("gw2_names_fr2", JSON.stringify(m)); } catch (_) {}
+      try { localStorage.setItem(NAMES_CACHE_KEY, JSON.stringify({ v: NAMES_CACHE_VER, ...m })); } catch (_) {}
       setFrNames(m);
     }).catch(() => {});
     return () => { dead = true; };
