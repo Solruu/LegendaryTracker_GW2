@@ -109,7 +109,7 @@ const I18N = {
     vision_col_title: "Vision Collections — crafting prerequisites",
     vision_reqnote: "The Requiem Experiments provide the necessary Elegy Mosaics.",
     vision_reward_1: "Reward: Gift of Insight · 6 Visions of [map] LW4",
-    vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I & II",
+    vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     x6_required: "×6 required",
     vision_mee_craft: "⚠ Artificer 400 · Recipe must be purchased (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot: EoD vendor recipe (Arborstone) · Electrum Ingot + Jade Sliver ×10",
@@ -188,19 +188,19 @@ const I18N = {
     chars_criteria_lvl: "niveau 80",
     chars_criteria_mid: " + ",
     chars_criteria_ep: "LW3 épisode 3",
-    chars_criteria_post: " débloqué sur le compte (A Crack in the Ice). Le Portal Scroll du Grimoire suffit pour amener les alts — pas besoin de refaire la story.",
+    chars_criteria_post: " débloqué sur le compte (A Crack in the Ice). Le parchemin de portail du tome de saison suffit pour amener les personnages secondaires — inutile de refaire l'histoire.",
     chars_active_label: "Persos Bitterfrost actifs",
-    chars_active_help: "Ceux que tu amènes réellement farmer chaque jour",
+    chars_active_help: "Ceux que tu emmènes réellement farmer chaque jour",
     chars_yield: "Rendement quotidien estimé",
     chars_note_perchar: "{n} perso{s} × ~{per}/perso",
-    chars_note_chests: "{n} perso{s} × 2 coffres (5 hearts/perso requis)",
-    chars_note_cap: "plafond compte — alts inutiles",
+    chars_note_chests: "{n} perso{s} × 2 coffres (5 cœurs/perso requis)",
+    chars_note_cap: "plafond compte — persos secondaires inutiles",
     chars_siren_title: "⚠ Siren's Landing — spécificité",
-    chars_altswap_pre: "Altswap possible mais coûteux : chaque perso doit compléter les ",
-    chars_altswap_hearts: "5 hearts",
+    chars_altswap_pre: "Rotation de persos possible mais coûteuse : chaque personnage doit compléter les ",
+    chars_altswap_hearts: "5 cœurs",
     chars_altswap_mid: " avant d'accéder aux coffres (~20-30 min/perso). Le 2e coffre coûte ",
-    chars_altswap_cost: "1,5g",
-    chars_altswap_post: ". Rentable uniquement si tu as du temps ou manques spécifiquement d'Orrian Pearls.",
+    chars_altswap_cost: "1,5 po",
+    chars_altswap_post: ". Rentable uniquement si tu as du temps ou manques spécifiquement d'Orrian Pearl.",
     prismatic_done: "✓ Prismatic Champion's Regalia — Complété !",
     prismatic_title: "✦ Seasons of the Dragons",
     prismatic_synchint: "Synchro via le bouton API en haut · Ou cochez manuellement ci-dessous",
@@ -219,9 +219,9 @@ const I18N = {
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21 Xunlai Electrum Ingots en inventaire, puis communier avec chaque Mastery Insight listé ci-dessous.",
     aurora2_prereq: "Prérequis : Aurora: Awakening complété · Synchronise via API pour voir les cases cochées",
     vision_col_title: "Collections Vision — prérequis au craft",
-    vision_reqnote: "Les succès Requiem: Experiment fournissent les Elegy Mosaic nécessaires.",
+    vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
-    vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I & II",
+    vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     x6_required: "×6 requis",
     vision_mee_craft: "⚠ Artificer 400 · Recette à acheter (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot : recette vendor EoD (Arborstone) · Electrum Ingot + Jade Sliver ×10",
@@ -253,7 +253,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 5;
+const NAMES_CACHE_VER = 6;
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -309,16 +309,29 @@ function harvestIds() {
   return { items: [...items], currencies: [...curs], achievements: [...achs] };
 }
 async function fetchPairs(endpoint, ids) {
-  const [en, fr] = await Promise.all(["en", "fr"].map(async (lg) => {
-    const res = await fetch(`https://api.guildwars2.com/v2/${endpoint}?ids=${ids.join(",")}&lang=${lg}`);
-    return res.ok ? res.json() : [];
-  }));
-  const enById = Object.fromEntries(en.map(it => [it.id, it.name]));
-  const out = {};
-  for (const it of fr) { if (enById[it.id] && it.name) out[enById[it.id]] = it.name; }
-  return out;
+  // 2 tentatives — l'API GW2 peut renvoyer des erreurs transitoires
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const [en, fr] = await Promise.all(["en", "fr"].map(async (lg) => {
+        const res = await fetch(`https://api.guildwars2.com/v2/${endpoint}?ids=${ids.join(",")}&lang=${lg}`);
+        if (!res.ok) throw new Error(endpoint + " HTTP " + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error(endpoint + " non-array");
+        return data;
+      }));
+      const enById = Object.fromEntries(en.map(it => [it.id, it.name]));
+      const out = {};
+      for (const it of fr) { if (enById[it.id] && it.name) out[enById[it.id]] = it.name; }
+      return out;
+    } catch (e) {
+      if (attempt === 1) { console.warn("[i18n]", e.message); throw e; }
+      await new Promise(r => setTimeout(r, 800));
+    }
+  }
 }
-async function fetchFrLegNames() {
+// onPartial(m) : appelé après chaque phase — persistance progressive (tolérance aux pannes partielles)
+async function fetchFrLegNames(onPartial) {
+  const stats = { legs: 0, items: 0, currencies: 0, achievements: 0, fails: [] };
   const map = {};
   for (const [apiId, legIds] of Object.entries(SOURCES_DB?._meta?.armory_apiid_to_legid ?? {})) {
     map[apiId] = [...(map[apiId] ?? []), ...legIds];
@@ -328,25 +341,38 @@ async function fetchFrLegNames() {
   }
   const ids = Object.keys(map);
   const legs = {};
-  for (let i = 0; i < ids.length; i += 200) {
-    const chunk = ids.slice(i, i + 200);
-    const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=fr`);
-    if (!res.ok) continue;
-    for (const it of await res.json()) {
-      for (const legId of (map[String(it.id)] ?? [])) legs[legId] = it.name;
-    }
+  for (let i = 0; i < ids.length; i += 150) {
+    try {
+      const chunk = ids.slice(i, i + 150);
+      const res = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=fr`);
+      if (!res.ok) throw new Error("legs HTTP " + res.status);
+      for (const it of await res.json()) {
+        for (const legId of (map[String(it.id)] ?? [])) { legs[legId] = it.name; stats.legs++; }
+      }
+    } catch (e) { stats.fails.push("legs"); console.warn("[i18n]", e.message); }
   }
   if (legs.prismatic_champions_regalia && !legs.prismatic) legs.prismatic = legs.prismatic_champions_regalia;
-  const h = harvestIds();
   const terms = {};
-  for (let i = 0; i < h.items.length; i += 200) {
-    Object.assign(terms, await fetchPairs("items", h.items.slice(i, i + 200)).catch(() => ({})));
+  if (onPartial) onPartial({ legs, terms, stats });
+  const h = harvestIds();
+  const phases = [
+    ["items", () => h.items, 150],
+    ["currencies", () => h.currencies, 150],
+    ["achievements", () => h.achievements, 150],
+  ];
+  for (const [endpoint, getIds, size] of phases) {
+    const all = getIds();
+    for (let i = 0; i < all.length; i += size) {
+      try {
+        const got = await fetchPairs(endpoint, all.slice(i, i + size));
+        Object.assign(terms, got);
+        stats[endpoint] += Object.keys(got).length;
+      } catch (_) { stats.fails.push(endpoint + "@" + i); }
+    }
+    if (onPartial) onPartial({ legs, terms, stats });
   }
-  Object.assign(terms, await fetchPairs("currencies", h.currencies).catch(() => ({})));
-  for (let i = 0; i < h.achievements.length; i += 200) {
-    Object.assign(terms, await fetchPairs("achievements", h.achievements.slice(i, i + 200)).catch(() => ({})));
-  }
-  return { legs, terms };
+  console.info("[i18n] stats:", JSON.stringify(stats));
+  return { legs, terms, stats };
 }
 
 function translate(key, lang, vars) {
@@ -502,20 +528,20 @@ const LEGENDARIES = {
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
         tip: { fr: "Toutes les 2h à XX:20 UTC. Parler à Livia pour lancer. CC requis sur le boss.", en: "Every 2h at XX:20 UTC. Talk to Livia to start. CC required on the boss." } },
       // ── Nodes LW4 — Vision (Volatile Magic + Mistborn Mote)
-      { id: "lw4_istan", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: "Nodes Brandstones + VM", expansion: "LW4", icon: "OP",
+      { id: "lw4_istan", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: { fr: "Nodes de Brandstone + VM", en: "Brandstone nodes + VM" }, expansion: "LW4", icon: "OP",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
         farmType: "per_account",
         resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
-        vendor: "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM",
+        vendor: { fr: "Traveling Elonian Trader (Chute draconique) — 5 Kralkatite/jour/compte contre VM", en: "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM" },
         vendorWp: "Pact Command Waypoint [&BOAKAAA=] — Dragonfall",
         tip: { fr: "Nodes de Brandstone → Volatile Magic. Soft-reset à 01h (attendre 5-15h après récolte). Cap 50 nodes/compte/jour. Vendeur Dragonfall : 5 Kralkatite/jour contre VM.", en: "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM." } },
-      { id: "lw4_dragonfall", name: { fr: "Chute draconique", en: "Dragonfall" }, subname: "Nodes Mistborn Mote", expansion: "LW4", icon: "DF",
+      { id: "lw4_dragonfall", name: { fr: "Chute draconique", en: "Dragonfall" }, subname: { fr: "Nodes de Mistborn Mote", en: "Mistborn Mote nodes" }, expansion: "LW4", icon: "DF",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Pact Command Waypoint", wpCode: "[&BOAKAAA=]",
         farmType: "per_account",
         resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
-        vendor: "Crystal Bloom Quartermaster — Mistborn Mote contre karma (Dragonfall)",
+        vendor: { fr: "Crystal Bloom Quartermaster — Mistborn Mote contre karma (Chute draconique)", en: "Crystal Bloom Quartermaster — Mistborn Mote for karma (Dragonfall)" },
         vendorWp: "Pact Command Waypoint [&BOAKAAA=]",
         tip: { fr: "Max 50 nodes de Mistborn Mote/compte/jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place vend des Mistborn Motes contre karma (5/jour — léger potentiel alt-swap).", en: "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)." } },
     ],
@@ -598,10 +624,10 @@ const LEGENDARIES = {
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
-        heartNote: "5 hearts required per character per day before chest access (~20 min)" },
+        heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
     ],
     metas: [
-      { id: "bf", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: "Nodes Winterberries", expansion: "LW3", icon: "BF",
+      { id: "bf", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: { fr: "Nodes de Fresh Winterberry", en: "Fresh Winterberry nodes" }, expansion: "LW3", icon: "BF",
         offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
         waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
         farmType: "per_char",
@@ -612,7 +638,7 @@ const LEGENDARIES = {
         waypoint: "Savage Rise Waypoint", wpCode: "[&BNMJAAA=]",
         farmType: "per_account",
         resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma",
+        vendor: { fr: "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma", en: "Seimur Oxbone — sells Fire Orchid Blossom and Petrified Wood for karma" },
         vendorWp: "Savage Rise Waypoint [&BNMJAAA=]",
         tip: { fr: "~40 Lava Drops + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Le vendeur Seimur Oxbone sur place vend la currency contre karma (5/jour/perso — léger potentiel alt-swap).", en: "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)." } },
       { id: "dm", name: { fr: "Mont Draconis", en: "Draconis Mons" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "DM",
@@ -620,7 +646,7 @@ const LEGENDARIES = {
         waypoint: "Heathen's Hold Waypoint", wpCode: "[&BOMJAAA=]",
         farmType: "per_account",
         resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma",
+        vendor: { fr: "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma", en: "Nesa — sells Fire Orchid Blossom and Petrified Wood for karma" },
         vendorWp: "Heathen's Hold Waypoint [&BOMJAAA=]",
         tip: { fr: "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Vendeuse Nesa sur place (5/jour/perso — léger potentiel alt-swap).", en: "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)." } },
       { id: "ld", name: { fr: "Lac Doric", en: "Lake Doric" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "LD",
@@ -628,7 +654,7 @@ const LEGENDARIES = {
         waypoint: "Noran's Homestead Waypoint", wpCode: "[&BNQJAAA=]",
         farmType: "per_account",
         resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: "Noran — vend Jade Shard contre karma",
+        vendor: { fr: "Noran — vend Jade Shard contre karma", en: "Noran — sells Jade Shard for karma" },
         vendorWp: "Noran's Homestead Waypoint [&BNQJAAA=]",
         tip: { fr: "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Vendeur Noran sur place (5/jour/perso). Alt-swap minimal possible via le vendeur.", en: "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor." } },
       { id: "sl", name: { fr: "Plage des sirènes", en: "Siren's Landing" }, subname: "Hidden Reliquary Chests", expansion: "LW3", icon: "SL",
@@ -1396,16 +1422,17 @@ export default function GW2LegendaryTracker() {
   const [selectedLeg, setSelectedLeg] = useState("vision");
   const [activeTab, setActiveTab] = useState("metas");
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
-  const [frNames, setFrNames] = useState({ legs: FR_LEG_NAMES, terms: FR_TERM_MAP });
+  const [frNames, setFrNames] = useState({ legs: FR_LEG_NAMES, terms: FR_TERM_MAP, stats: null });
   FR_LEG_NAMES = frNames.legs; FR_TERM_MAP = frNames.terms; // sync des résolveurs NL()/NX()
   useEffect(() => {
     if (lang !== "fr" || Object.keys(frNames.legs).length > 0) return;
     let dead = false;
-    fetchFrLegNames().then(m => {
-      if (dead || !Object.keys(m.legs).length) return;
-      try { localStorage.setItem(NAMES_CACHE_KEY, JSON.stringify({ v: NAMES_CACHE_VER, ...m })); } catch (_) {}
-      setFrNames(m);
-    }).catch(() => {});
+    const commit = (m) => {
+      if (dead) return;
+      try { localStorage.setItem(NAMES_CACHE_KEY, JSON.stringify({ v: NAMES_CACHE_VER, legs: m.legs, terms: m.terms, stats: m.stats })); } catch (_) {}
+      setFrNames({ legs: { ...m.legs }, terms: { ...m.terms }, stats: m.stats });
+    };
+    fetchFrLegNames(commit).then(commit).catch(() => {});
     return () => { dead = true; };
   }, [lang]);
   const setLangPersist = useCallback((l) => {
@@ -1965,6 +1992,9 @@ export default function GW2LegendaryTracker() {
               {LANGS[l]}
             </button>
           ))}
+            {lang === "fr" && frNames.stats && frNames.stats.fails && frNames.stats.fails.length > 0 && (
+              <span title={"Échecs i18n API: " + frNames.stats.fails.join(", ")} style={{ fontSize: 9, color: "#fb923c", marginLeft: 6 }}>⚠ i18n</span>
+            )}
         </div>
       </div>
 
@@ -2186,7 +2216,7 @@ export default function GW2LegendaryTracker() {
                       )}
                       {m.vendor && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(52,211,153,0.8)", marginBottom: "5px" }}>
-                          [V] {m.vendor}
+                          [V] {NX(m.vendor)}
                         </div>
                       )}
                       {NX(m.tip)}
