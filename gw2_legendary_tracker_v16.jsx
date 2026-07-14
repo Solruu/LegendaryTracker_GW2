@@ -18,6 +18,19 @@ const I18N = {
     tab_bounties: "Bounties ({n}/5)",
     tab_common: "Materials",
     tab_currencies: "Progress",
+    tab_pieces: "⬡ Pieces ({n}/18)",
+    obs_target_hint: "Tap a piece to add/remove it from your goal. ✓ = owned (armory). Default goal: 1 full set (6 pieces).",
+    obs_goal: "Goal: {n} piece(s) targeted — {o} owned, {r} remaining",
+    obs_goal_default: "No piece selected — costs shown for 1 full set ({r} remaining).",
+    obs_sync: "⟳ Sync armory",
+    obs_resolving: "Resolving piece names via GW2 API…",
+    obs_arcanum_title: "Arcanum achievements — Legendary Armor: Astral X",
+    obs_arcanum_note: "Each Arcanum is bought from Lyhr for 1 Lesser Vision Crystal once its achievement is done (Astral Ward + Oneiros-Spun skins of the slot + boss kill). One-time account cost for the skins: 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), shared across weights.",
+    obs_per_piece_note: "Costs computed for {n} targeted piece(s) remaining. Fine/Masterwork/Rare shown assuming all 12 Amalgamated per piece are crafted.",
+    obs_gift_magical: "Gift of Magical Prosperity",
+    obs_gift_mighty: "Gift of Mighty Prosperity",
+    obs_boss: "Boss: {b}",
+
     // Grand Total
     gt_detecting: "⟳ Detecting…",
     gt_autodetect: "🔑 Auto-detect via GW2 API key",
@@ -136,6 +149,19 @@ const I18N = {
     tab_bounties: "Primes ({n}/5)",
     tab_common: "Matériaux",
     tab_currencies: "Progression",
+    tab_pieces: "⬡ Pièces ({n}/18)",
+    obs_target_hint: "Touche une pièce pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Objectif par défaut : 1 set complet (6 pièces).",
+    obs_goal: "Objectif : {n} pièce(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
+    obs_goal_default: "Aucune pièce sélectionnée — coûts affichés pour 1 set complet ({r} restantes).",
+    obs_sync: "⟳ Sync armurerie",
+    obs_resolving: "Résolution des noms de pièces via l'API GW2…",
+    obs_arcanum_title: "Achievements Arcanum — Legendary Armor: Astral X",
+    obs_arcanum_note: "Chaque Arcanum s'achète chez Lyhr contre 1 Lesser Vision Crystal une fois son achievement complété (skins Astral Ward + Oneiros-Spun du slot + kill de boss). Coût one-time compte pour les skins : 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), partagé entre les poids.",
+    obs_per_piece_note: "Coûts calculés pour {n} pièce(s) ciblée(s) restante(s). Fine/Masterwork/Rare affichées en supposant les 12 Amalgamated par pièce craftées.",
+    obs_gift_magical: "Don de prospérité magique",
+    obs_gift_mighty: "Don de prospérité puissante",
+    obs_boss: "Boss : {b}",
+
     gt_detecting: "⟳ Détection en cours…",
     gt_autodetect: "🔑 Détection automatique via clé API GW2",
     gt_detected: "✓ {n} en armory + {m} manuel(s)",
@@ -734,6 +760,75 @@ const LEGENDARIES = {
     bounties: [],
   },
 
+  obsidian: {
+    id: "obsidian",
+    name: "Obsidian Armor",
+    type: "Armor set",
+    expansion: "SotO",
+    color: "#818cf8",
+    colorDim: "rgba(129,140,248,0.15)",
+    icon: "⬡",
+    description: "Legendary Armor — Secrets of the Obscure (Open World)",
+    resetType: "daily",
+    isArmorSet: true,
+    pieces: 6,
+    armoryApiIds: [101516, 101462, 101499, 101536, 101501, 101535, 101614, 101645, 101556, 101570, 101579, 101602, 101544, 101551, 101521, 101609, 101568, 101460],
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    arcanum: {
+      head:      { achId: 7214, name: "Astral Thought",    boss: "Ignaxious",                   gift: "magical" },
+      shoulders: { achId: 7098, name: "Astral Bearing",    boss: "Galene the Seething",         gift: "magical" },
+      chest:     { achId: 7096, name: "Astral Heartbeat",  boss: "Nourys, Eyes of the Abyss",   gift: "magical" },
+      gloves:    { achId: 7219, name: "Astral Grasp",      boss: "Pherus the Subjugator",       gift: "mighty" },
+      legs:      { achId: 7240, name: "Astral Stride",     boss: "Knaebelag the Terror",        gift: "mighty" },
+      boots:     { achId: 7051, name: "Astral Footprints", boss: "Myros the Spiteful",          gift: "mighty" },
+    },
+    // Coûts par pièce — "required" calculé dynamiquement selon l'objectif
+    currenciesPerPiece: [
+      { id: "amalgamated", name: "Amalgamated Rift Essence", perPiece: 12,   icon: "AR", apiId: 100081 },
+      { id: "fine",        name: "Fine Rift Essence",        perPiece: 3000, icon: "F1", apiId: 78 },
+      { id: "masterwork",  name: "Masterwork Rift Essence",  perPiece: 1200, icon: "M2", apiId: 80 },
+      { id: "rare",        name: "Rare Rift Essence",        perPiece: 600,  icon: "R3", apiId: 79 },
+      { id: "provisioner", name: "Provisioner Token",        perPiece: 50,   icon: "PT", apiId: 29 },
+      { id: "clovers",     name: "Mystic Clover",            perPiece: 9,    icon: "MC", apiId: 19675 },
+      { id: "shards",      name: "Obsidian Shard",           perPiece: 50,   icon: "OS", apiId: 19925 },
+      { id: "ectos",       name: "Glob of Ectoplasm",        perPiece: 600,  icon: "EC", apiId: 19721 },
+    ],
+    currencies: [],
+    metas: [
+      { id: "obs_sw", name: "Skywatch Archipelago", subname: "Unlocking the Wizard's Tower", expansion: "SotO", icon: "SW",
+        offsetUTC: 60, intervalMin: 120, durationMin: 25,
+        efficience: "A", population: "bon", next: "obs_am", nextDelayMin: 60,
+        waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
+        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        tip: "Hero's Choice Chest → Case of Captured Lightning. Complétion de carte → Gift of Skywatch (repeatable)." },
+      { id: "obs_am", name: "Amnytas", subname: "The Defense of Amnytas", expansion: "SotO", icon: "AM",
+        offsetUTC: 0, intervalMin: 120, durationMin: 25,
+        efficience: "A", population: "bon", next: "obs_sw", nextDelayMin: 60,
+        waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
+        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        tip: "Hero's Choice Chest → Pouch of Stardust. Complétion de carte → Gift of Amnytas (repeatable)." },
+      { id: "obs_spider", name: "Inner Nayos", subname: "Into the Spider's Lair", expansion: "SotO", icon: "SL",
+        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
+        waypoint: "Citadel of Zakiros — Forward Bivouac Waypoint", wpCode: "[&BHYOAAA=]",
+        resetNote: "Conditionnel — pas de timer fixe",
+        tip: "Meta conditionnelle : Road to Heitor + Fangs That Gnash doivent être complétées sur la map. Citadel of Zakiros: Hero's Choice Chest → Case/Clot/Pouch au choix." },
+      { id: "obs_conv_mb", name: "Convergence", subname: "Mount Balrior (public)", expansion: "JW", icon: "CV",
+        offsetUTC: 0, intervalMin: 180, durationMin: 20,
+        efficience: "S", population: "bon", next: "obs_conv_on", nextDelayMin: 30,
+        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
+        resetNote: "Coffre daily par type d'instance",
+        tip: "Toutes les 3h à XX:00 UTC. Grosse source d'essences Rift gratuites (12-25/run)." },
+      { id: "obs_conv_on", name: "Convergence", subname: "Outer Nayos (public)", expansion: "SotO", icon: "CV",
+        offsetUTC: 30, intervalMin: 180, durationMin: 20,
+        efficience: "S", population: "bon", next: "obs_conv_mb", nextDelayMin: 150,
+        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
+        resetNote: "Coffre daily par type d'instance",
+        tip: "Toutes les 3h à XX:30 UTC (90 min après Balrior). Essences Rift gratuites + progression Suffused T2." },
+    ],
+    bounties: [],
+  },
+
   prismatic: {
     id: "prismatic",
     name: "Prismatic",
@@ -791,6 +886,16 @@ const LEGENDARIES = {
         tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
   },
+};
+
+// ── Obsidian Armor : libellés slots / poids (i18n locale) ──
+const OBS_SLOT_LABELS = {
+  en: { head: "Head", shoulders: "Shoulders", chest: "Chest", gloves: "Gloves", legs: "Legs", boots: "Boots" },
+  fr: { head: "Tête", shoulders: "Épaules", chest: "Torse", gloves: "Gants", legs: "Jambes", boots: "Bottes" },
+};
+const OBS_WEIGHT_LABELS = {
+  en: { Light: "Light", Medium: "Medium", Heavy: "Heavy" },
+  fr: { Light: "Léger", Medium: "Intermédiaire", Heavy: "Lourd" },
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -1477,6 +1582,36 @@ export default function GW2LegendaryTracker() {
   }, []);
   const langRef = useRef(lang);
   useEffect(() => { langRef.current = lang; }, [lang]);
+
+  // ── Obsidian : résolution nom/poids/slot des 18 pièces via /v2/items (public, cache par langue) ──
+  useEffect(() => {
+    if (selectedLeg !== "obsidian") return;
+    const ids = LEGENDARIES.obsidian.armoryApiIds;
+    const cacheKey = `gw2_obsidian_items_${lang}_v1`;
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
+      if (cached && Object.keys(cached).length === ids.length) { setObsItems(cached); return; }
+    } catch (_) {}
+    fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(list => {
+        if (!Array.isArray(list)) return;
+        const SLOT_MAP = { Helm: "head", Shoulders: "shoulders", Coat: "chest", Gloves: "gloves", Leggings: "legs", Boots: "boots" };
+        const map = {};
+        for (const it of list) {
+          const dt = (it && it.details) ? it.details : {};
+          map[String(it.id)] = {
+            name: it.name,
+            weight: dt.weight_class ?? "?",
+            slot: SLOT_MAP[dt.type] ?? (dt.type ?? "?"),
+          };
+        }
+        setObsItems(map);
+        try { localStorage.setItem(cacheKey, JSON.stringify(map)); } catch (_) {}
+      })
+      .catch(() => {});
+  }, [selectedLeg, lang]);
+
   const [expanded, setExpanded] = useState(null);
   const [copied, setCopied] = useState(null);
 
@@ -1508,6 +1643,27 @@ export default function GW2LegendaryTracker() {
     try { return JSON.parse(localStorage.getItem("gw2_vision_collections") ?? "null") ?? {}; } catch { return {}; }
   });
   const [visionSubExpanded, setVisionSubExpanded] = useState(null);
+
+  // ── Obsidian Armor : objectif par pièce, items résolus, armory brut, achievements ──
+  const [obsTarget, setObsTarget] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("gw2_obsidian_target_v1") ?? "[]")); } catch { return new Set(); }
+  });
+  const toggleObsTarget = useCallback((id) => {
+    setObsTarget(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) { next.delete(id); } else { next.add(id); }
+      try { localStorage.setItem("gw2_obsidian_target_v1", JSON.stringify([...next])); } catch (_) {}
+      return next;
+    });
+  }, []);
+  const [obsItems, setObsItems] = useState(null);
+  const [armoryRaw, setArmoryRaw] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
+  });
+  const [obsAch, setObsAch] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_obsidian_achievements") ?? "null") ?? {}); } catch { return {}; }
+  });
+
 
   // Grand Total
   const [gtApiKey, setGtApiKey] = useState(() => {
@@ -1589,6 +1745,19 @@ export default function GW2LegendaryTracker() {
           setVisionCollections(vData);
         }
       } catch (_) { /* Flask absent ou endpoint non dispo */ }
+      // Fetch Obsidian achievements en parallèle
+      try {
+        const oKey = (gtApiKey ?? "").trim();
+        const oUrl = oKey
+          ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
+          : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
+        const oResp = await fetch(oUrl);
+        if (oResp.ok) {
+          const oData = await oResp.json();
+          localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));
+          setObsAch(oData);
+        }
+      } catch (_) { /* Flask absent ou endpoint non dispo */ }
       const freshCurr = await storeGet(getCurrencyKey(selectedLeg)) ?? {};
       setCurrencies(freshCurr);
       setApiStatus("ok");
@@ -1639,6 +1808,9 @@ export default function GW2LegendaryTracker() {
       for (const lid of legIds) ownedSet.add(lid);
     }
     setGtOwnedIds(ownedSet);
+    const rawSet = new Set((Array.isArray(data) ? data : []).map(it => Number(it.id)));
+    setArmoryRaw(rawSet);
+    try { localStorage.setItem("gw2_armory_raw_v1", JSON.stringify([...rawSet])); } catch (_) {}
     setGtApiStatus("ok");
     // Persister la clé
     try { localStorage.setItem("gw2_gt_apikey", key.trim()); } catch (_) {}
@@ -1741,7 +1913,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab(selectedLeg === "conflux" ? "wvw" : selectedLeg === "prismatic" ? "achievements" : "metas");
+    setActiveTab(selectedLeg === "conflux" ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : "metas")));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -1858,11 +2030,24 @@ export default function GW2LegendaryTracker() {
   const dailyCount = Object.keys(dailyChecked).length;
   const weeklyCount = Object.keys(weeklyChecked).length;
 
-  // ── Calcul progression currencies
-  const mainProgress = isGrandTotal ? [] : (leg?.currencies ?? []).map(cur => ({
+  // ── Obsidian : pièces possédées / ciblées / restantes ──
+  const isObsidian = selectedLeg === "obsidian";
+  const obsIds = LEGENDARIES.obsidian.armoryApiIds;
+  const obsOwnedSet = new Set(obsIds.filter(id => armoryRaw.has(id)));
+  const obsHasTarget = obsTarget.size > 0;
+  const obsTargetOwned = obsHasTarget ? [...obsTarget].filter(id => obsOwnedSet.has(id)).length : 0;
+  const obsRemainingCount = obsHasTarget
+    ? Math.max(0, obsTarget.size - obsTargetOwned)
+    : Math.max(0, 6 - obsOwnedSet.size);
+
+  // ── Calcul progression currencies (Obsidian : requis = coût/pièce × pièces restantes) ──
+  const legCurrencies = isGrandTotal ? [] : (isObsidian
+    ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
+    : (leg?.currencies ?? []));
+  const mainProgress = isGrandTotal ? [] : legCurrencies.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
-    pct: Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100),
+    pct: cur.required > 0 ? Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100) : 100,
   }));
 
   const legColor = isGrandTotal ? "#f472b6" : (leg?.color ?? "#e2c97e");
@@ -1876,6 +2061,7 @@ export default function GW2LegendaryTracker() {
 
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
+    ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(!isPrismatic && selectedLeg !== "conflux" ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
@@ -3070,9 +3256,107 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET PROGRESSION (currencies)   */}
       {/* ══════════════════════════════════ */}
+      {/* ══════════════════════════════════ */}
+      {/* ONGLET PIÈCES (Obsidian Armor)     */}
+      {/* ══════════════════════════════════ */}
+      {activeTab === "pieces" && isObsidian && (() => {
+        const slotL = OBS_SLOT_LABELS[lang] ?? OBS_SLOT_LABELS.en;
+        const weightL = OBS_WEIGHT_LABELS[lang] ?? OBS_WEIGHT_LABELS.en;
+        // matrice poids → slot → { id, name } depuis obsItems
+        const matrix = {};
+        if (obsItems) {
+          for (const [idStr, info] of Object.entries(obsItems)) {
+            if (!matrix[info.weight]) matrix[info.weight] = {};
+            matrix[info.weight][info.slot] = { id: Number(idStr), name: info.name };
+          }
+        }
+        const goalLabel = obsHasTarget
+          ? t("obs_goal", { n: obsTarget.size, o: obsTargetOwned, r: obsRemainingCount })
+          : t("obs_goal_default", { r: obsRemainingCount });
+        return (
+          <div>
+            <div className="section-label">{t("tab_pieces", { n: obsOwnedSet.size })}</div>
+            <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
+              {t("obs_target_hint")}
+            </div>
+            <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
+              <div style={{ fontSize: "12px", fontWeight: 600, color: legColor }}>{goalLabel}</div>
+              <button className="adj-btn" onClick={() => detectGtArmory()}>{t("obs_sync")}</button>
+            </div>
+            {!obsItems && (
+              <div style={{ margin: "10px 14px", fontFamily: "'Crimson Text', serif", fontStyle: "italic", fontSize: "12px", color: "rgba(226,201,126,0.45)" }}>
+                {t("obs_resolving")}
+              </div>
+            )}
+            {obsItems && LEGENDARIES.obsidian.weights.map(w => (
+              <div key={w} style={{ margin: "10px 14px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "rgba(226,201,126,0.5)", marginBottom: "6px" }}>
+                  {weightL[w] ?? w}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px" }}>
+                  {LEGENDARIES.obsidian.slots.map(s => {
+                    const cell = matrix[w] ? matrix[w][s] : null;
+                    if (!cell) return <div key={s} />;
+                    const owned = obsOwnedSet.has(cell.id);
+                    const targeted = obsTarget.has(cell.id);
+                    const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
+                    const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(129,140,248,0.10)" : "rgba(255,255,255,0.02)");
+                    return (
+                      <div key={s}
+                        onClick={() => { if (!owned) toggleObsTarget(cell.id); }}
+                        title={cell.name}
+                        style={{ padding: "8px 6px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
+                        <div style={{ fontSize: "11px", fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
+                          {owned ? "✓ " : ""}{slotL[s] ?? s}
+                        </div>
+                        <div style={{ fontSize: "9px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {cell.name}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+            <div className="section-label" style={{ marginTop: "14px" }}>{t("obs_arcanum_title")}</div>
+            {LEGENDARIES.obsidian.slots.map(s => {
+              const a = LEGENDARIES.obsidian.arcanum[s];
+              const st = obsAch[`arcanum_${s}`] ?? {};
+              const done = st.done === true;
+              const cur = st.current ?? 0;
+              const mx = st.max ?? 3;
+              const slotL2 = (OBS_SLOT_LABELS[lang] ?? OBS_SLOT_LABELS.en)[s] ?? s;
+              return (
+                <div key={s} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
+                      {done ? "✓ " : ""}{a.name} — {slotL2}
+                    </div>
+                    <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("obs_boss", { b: a.boss })} · {a.gift === "magical" ? t("obs_gift_magical") : t("obs_gift_mighty")}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
+                    {done ? "✓" : `${cur}/${mx}`}
+                  </div>
+                </div>
+              );
+            })}
+            <div style={{ margin: "10px 14px", padding: "10px 13px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.5)" }}>
+              {t("obs_arcanum_note")}
+            </div>
+          </div>
+        );
+      })()}
+
       {activeTab === "currencies" && (
         <div>
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
+          {isObsidian && (
+            <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
+              {t("obs_per_piece_note", { n: obsRemainingCount })}
+            </div>
+          )}
           {mainProgress.map(cur => (
             <div key={cur.id} style={{ margin: "6px 14px", padding: "12px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>

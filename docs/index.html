@@ -82,6 +82,19 @@ const I18N = {
     tab_bounties: "Bounties ({n}/5)",
     tab_common: "Materials",
     tab_currencies: "Progress",
+    tab_pieces: "⬡ Pieces ({n}/18)",
+    obs_target_hint: "Tap a piece to add/remove it from your goal. ✓ = owned (armory). Default goal: 1 full set (6 pieces).",
+    obs_goal: "Goal: {n} piece(s) targeted — {o} owned, {r} remaining",
+    obs_goal_default: "No piece selected — costs shown for 1 full set ({r} remaining).",
+    obs_sync: "⟳ Sync armory",
+    obs_resolving: "Resolving piece names via GW2 API…",
+    obs_arcanum_title: "Arcanum achievements — Legendary Armor: Astral X",
+    obs_arcanum_note: "Each Arcanum is bought from Lyhr for 1 Lesser Vision Crystal once its achievement is done (Astral Ward + Oneiros-Spun skins of the slot + boss kill). One-time account cost for the skins: 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), shared across weights.",
+    obs_per_piece_note: "Costs computed for {n} targeted piece(s) remaining. Fine/Masterwork/Rare shown assuming all 12 Amalgamated per piece are crafted.",
+    obs_gift_magical: "Gift of Magical Prosperity",
+    obs_gift_mighty: "Gift of Mighty Prosperity",
+    obs_boss: "Boss: {b}",
+
     // Grand Total
     gt_detecting: "⟳ Detecting…",
     gt_autodetect: "🔑 Auto-detect via GW2 API key",
@@ -200,6 +213,19 @@ const I18N = {
     tab_bounties: "Primes ({n}/5)",
     tab_common: "Matériaux",
     tab_currencies: "Progression",
+    tab_pieces: "⬡ Pièces ({n}/18)",
+    obs_target_hint: "Touche une pièce pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Objectif par défaut : 1 set complet (6 pièces).",
+    obs_goal: "Objectif : {n} pièce(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
+    obs_goal_default: "Aucune pièce sélectionnée — coûts affichés pour 1 set complet ({r} restantes).",
+    obs_sync: "⟳ Sync armurerie",
+    obs_resolving: "Résolution des noms de pièces via l'API GW2…",
+    obs_arcanum_title: "Achievements Arcanum — Legendary Armor: Astral X",
+    obs_arcanum_note: "Chaque Arcanum s'achète chez Lyhr contre 1 Lesser Vision Crystal une fois son achievement complété (skins Astral Ward + Oneiros-Spun du slot + kill de boss). Coût one-time compte pour les skins : 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), partagé entre les poids.",
+    obs_per_piece_note: "Coûts calculés pour {n} pièce(s) ciblée(s) restante(s). Fine/Masterwork/Rare affichées en supposant les 12 Amalgamated par pièce craftées.",
+    obs_gift_magical: "Don de prospérité magique",
+    obs_gift_mighty: "Don de prospérité puissante",
+    obs_boss: "Boss : {b}",
+
     gt_detecting: "⟳ Détection en cours…",
     gt_autodetect: "🔑 Détection automatique via clé API GW2",
     gt_detected: "✓ {n} en armory + {m} manuel(s)",
@@ -485,8 +511,8 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "1.1",
-    "last_updated": "2026-05-28",
+    "version": "1.2",
+    "last_updated": "2026-07-14",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -770,6 +796,60 @@ const SOURCES_DB = {
       ],
       "81462": [
         "warbringer"
+      ],
+      "101516": [
+        "obsidian"
+      ],
+      "101462": [
+        "obsidian"
+      ],
+      "101499": [
+        "obsidian"
+      ],
+      "101536": [
+        "obsidian"
+      ],
+      "101501": [
+        "obsidian"
+      ],
+      "101535": [
+        "obsidian"
+      ],
+      "101614": [
+        "obsidian"
+      ],
+      "101645": [
+        "obsidian"
+      ],
+      "101556": [
+        "obsidian"
+      ],
+      "101570": [
+        "obsidian"
+      ],
+      "101579": [
+        "obsidian"
+      ],
+      "101602": [
+        "obsidian"
+      ],
+      "101544": [
+        "obsidian"
+      ],
+      "101551": [
+        "obsidian"
+      ],
+      "101521": [
+        "obsidian"
+      ],
+      "101609": [
+        "obsidian"
+      ],
+      "101568": [
+        "obsidian"
+      ],
+      "101460": [
+        "obsidian"
       ]
     },
     "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -1963,33 +2043,25 @@ const SOURCES_DB = {
         "aurora": 50,
         "vision": 50,
         "coalescence": 100
-      }
+      },
+      "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices)."
     },
     "stabilizing_matrix": {
       "name": "Stabilizing Matrix",
-      "apiId": 73248,
+      "apiId": 79230,
       "needed_for": [
         "cube_stabilized_dark_energy"
       ],
+      "qty": {
+        "obsidian__per_piece": 75
+      },
       "farmable": true,
       "sources": [
         {
           "type": "fractals",
-          "tip": {
-            "fr": "Chests of the Mists (fractales) — source principale.",
-            "en": "Chests of the Mists (fractales) — source principale."
-          }
-        },
-        {
-          "type": "salvage",
-          "tip": "Salvage ascended rings (infused/attuned yield more)."
-        },
-        {
-          "type": "tp",
-          "tip": "Buy on TP."
+          "tip": "Fractales (extraction des encryptions) ou TP — peu cher."
         }
-      ],
-      "qty": {}
+      ]
     },
     "gift_of_battle": {
       "name": "Gift of Battle",
@@ -3377,8 +3449,9 @@ const SOURCES_DB = {
       "name": "Obsidian Shard",
       "apiId": 19925,
       "needed_for": [
-        "gift_of_mastery",
-        "armor_perfected_envoy"
+        "armor_perfected_envoy",
+        "gift_of_expertise",
+        "gift_of_mastery"
       ],
       "qty": {
         "gen1_frostfang": 250,
@@ -3405,7 +3478,8 @@ const SOURCES_DB = {
         "perfected_envoy__per_piece": 50,
         "the_ascension": 250,
         "ad_infinitum": 250,
-        "selachimorpha": 250
+        "selachimorpha": 250,
+        "obsidian__per_piece": 50
       },
       "farmable": true,
       "sources": [
@@ -3497,13 +3571,13 @@ const SOURCES_DB = {
     },
     "fine_rift_essence": {
       "name": "Fine Rift Essence",
-      "apiId": 100078,
+      "apiId": 78,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
       ],
       "qty": {
-        "obsidian__per_piece": 75
+        "obsidian__per_piece": 3000
       },
       "farmable": true,
       "sources": [
@@ -3537,17 +3611,19 @@ const SOURCES_DB = {
       "note": {
         "fr": "Tous les tiers de rifts droppent des Fine Rift Essences sur le pré-event. C'est la ressource de base.",
         "en": "All rift tiers drop Fine Rift Essences on the pre-event. This is the base resource."
-      }
+      },
+      "apiId_note": "Wallet currency ID 78 (l'item legacy 100078 a été converti en monnaie wallet en juin 2025)",
+      "qty_note": "3000/pièce = 12 Amalgamated × 250 (si tout crafté)"
     },
     "masterwork_rift_essence": {
       "name": "Masterwork Rift Essence",
-      "apiId": 100079,
+      "apiId": 80,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
       ],
       "qty": {
-        "obsidian__per_piece": 10
+        "obsidian__per_piece": 1200
       },
       "farmable": true,
       "sources": [
@@ -3558,17 +3634,19 @@ const SOURCES_DB = {
             "en": "T2 rifts - requires Masterwork Rift Motivation (costs 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drops 6-42 Masterwork depending on mastery + motivation."
           }
         }
-      ]
+      ],
+      "apiId_note": "Wallet ID 80 — attention : 79 = Rare, 80 = Masterwork (inversés vs ordre intuitif)",
+      "qty_note": "1200/pièce = 12 Amalgamated × 100"
     },
     "rare_rift_essence": {
       "name": "Rare Rift Essence",
-      "apiId": 100080,
+      "apiId": 79,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
       ],
       "qty": {
-        "obsidian__per_piece": 3
+        "obsidian__per_piece": 600
       },
       "farmable": true,
       "sources": [
@@ -3579,16 +3657,18 @@ const SOURCES_DB = {
             "en": "T3 rifts — requires Rare Rift Motivation. Drops 3-64 Rare depending on mastery + motivation. 1-2 T3 rifts are enough for the 50 Rare per Amalgamated."
           }
         }
-      ]
+      ],
+      "apiId_note": "Wallet ID 79",
+      "qty_note": "600/pièce = 12 Amalgamated × 50"
     },
     "amalgamated_rift_essence": {
       "name": "Amalgamated Rift Essence",
       "apiId": 100081,
       "needed_for": [
-        "armor_obsidian_per_piece"
+        "gift_of_expertise"
       ],
       "qty": {
-        "obsidian__per_piece": 1
+        "obsidian__per_piece": 12
       },
       "farmable": true,
       "recipe": "Craft 400 : 250× Fine + 100× Masterwork + 50× Rare + 50× Ecto",
@@ -3608,10 +3688,7 @@ const SOURCES_DB = {
           }
         }
       ],
-      "cap_note": {
-        "fr": "72 requis pour un set complet + 12 pour l'Arcanum (déblocage du skin). Total = 84.",
-        "en": "72 required for a full set + 12 for the Arcanum (skin unlock). Total = 84."
-      },
+      "cap_note": "12/pièce × 6 = 72 pour un set + 12 Purified (skins Astral Ward/Oneiros-Spun, one-time compte). Total 1er set = 84.",
       "roi_note": {
         "fr": "Le goulot principal pour Obsidian. Suivre les 3 essences brutes dans le wallet suffit — inutile de planifier des metas précises. Farmer les T1 librement + convergences pour le buff post-convergence (+10-20 essences/rift pendant 6h).",
         "en": "The main bottleneck for Obsidian. Tracking the 3 raw essences in wallet is enough — no need to time specific metas. Farm T1 freely + convergences for the post-convergence buff (+10-20 essences/rift for 6h)."
@@ -3712,6 +3789,7 @@ const SOURCES_DB = {
       "name": "Lesser Vision Crystal",
       "apiId": 49523,
       "needed_for": [
+        "arcanum_astral",
         "armor_obsidian_per_piece"
       ],
       "qty": {
@@ -3733,7 +3811,8 @@ const SOURCES_DB = {
             "en": "Lyhr can craft for you for extra Ectos."
           }
         }
-      ]
+      ],
+      "note_obsidian": "1/pièce — coût d'achat de l'Arcanum of Astral X chez Lyhr."
     },
     "pvp_league_ticket": {
       "name": "PvP League Ticket",
@@ -3806,8 +3885,8 @@ const SOURCES_DB = {
       "name": "Glob of Ectoplasm",
       "apiId": 19721,
       "needed_for": [
-        "gift_of_fortune",
         "amalgamated_rift_essence",
+        "gift_of_fortune",
         "gift_of_research"
       ],
       "farmable": true,
@@ -3846,7 +3925,7 @@ const SOURCES_DB = {
         "gen1_the_bifrost": 250,
         "gen1_kraitkin": 250,
         "gen1_the_predator": 250,
-        "obsidian__per_piece": 50,
+        "obsidian__per_piece": 600,
         "the_ascension": 250,
         "ad_infinitum": 250
       }
@@ -3855,8 +3934,9 @@ const SOURCES_DB = {
       "name": "Mystic Clover",
       "apiId": 19675,
       "needed_for": [
+        "armor_perfected_envoy",
         "gift_of_fortune",
-        "armor_perfected_envoy"
+        "gift_of_prosperity"
       ],
       "farmable": true,
       "sources": [
@@ -3941,7 +4021,8 @@ const SOURCES_DB = {
         "the_ascension": 77,
         "ad_infinitum": 77,
         "stella_radians": 77,
-        "aetheric_anchor": 100
+        "aetheric_anchor": 100,
+        "obsidian__per_piece": 9
       }
     },
     "gift_of_fortune": {
@@ -4016,7 +4097,8 @@ const SOURCES_DB = {
       "name": "Gift of Craftsmanship",
       "apiId": 68551,
       "needed_for": [
-        "armor_perfected_envoy"
+        "armor_perfected_envoy",
+        "gift_of_prosperity"
       ],
       "farmable": true,
       "sources": [
@@ -4032,7 +4114,8 @@ const SOURCES_DB = {
         "perfected_envoy__per_piece": 1,
         "legendary_rune": 1,
         "legendary_sigil": 1,
-        "legendary_relic": 1
+        "legendary_relic": 1,
+        "obsidian__per_piece": 1
       }
     },
     "gift_of_condensed_magic": {
@@ -5363,24 +5446,23 @@ const SOURCES_DB = {
     },
     "purified_rift_essence": {
       "name": "Purified Rift Essence",
-      "apiId": 107050,
+      "apiId": 100569,
       "needed_for": [
-        "gift_of_rays"
-      ],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "rift_voe",
-          "tip": "Farm rifts VoE (Shipwreck Strand, Starlit Weald, Eternity's Garden). Similaire aux Rift Essences SotO."
-        },
-        {
-          "type": "convergence_voe",
-          "tip": "Convergences VoE — bonne source passive."
-        }
+        "astral_ward_armor",
+        "oneiros_spun_armor"
       ],
       "qty": {
-        "endless_summer": 10
-      }
+        "obsidian_skins_onetime": 12
+      },
+      "farmable": true,
+      "recipe": "Craft 400 : 1× Amalgamated Rift Essence + 1× Mystic Clover",
+      "note": "Monnaie d'achat des skins Astral Ward + Oneiros-Spun (prérequis Arcanum). One-time compte, partagé entre poids. Réversible via Box of Purified Rift Essence Components (Rift Researcher Adam).",
+      "sources": [
+        {
+          "type": "craft_400",
+          "tip": "Ne pas raffiner plus que nécessaire — 12 suffisent pour les 12 skins prérequis."
+        }
+      ]
     },
     "gift_of_the_sun": {
       "name": "Gift of the Sun",
@@ -6394,6 +6476,177 @@ const SOURCES_DB = {
         "fr": "1 Memory Essence Encapsulator par sous-collection de Vision I (6 zones). Recette non apprise automatiquement — voir les vendeurs Arborstone/Juno.",
         "en": "1 Memory Essence Encapsulator per Vision I sub-collection (6 zones). Recipe not learned automatically — check Arborstone/Juno vendors."
       }
+    },
+    "provisioner_token": {
+      "name": "Provisioner Token",
+      "apiId": 29,
+      "type": "wallet_currency",
+      "needed_for": [
+        "gift_of_craftsmanship_purchase"
+      ],
+      "farmable": true,
+      "qty": {
+        "obsidian__per_piece": 50
+      },
+      "sources": [
+        {
+          "type": "vendor_daily",
+          "tip": "Faction Provisioners (1 item craftable/jour/vendor) ou raids CM hebdo. 300 au total pour un set."
+        }
+      ]
+    },
+    "gift_of_expertise": {
+      "name": "Gift of Expertise",
+      "apiId": null,
+      "needed_for": [
+        "armor_obsidian_per_piece"
+      ],
+      "qty": {
+        "obsidian__per_piece": 1
+      },
+      "farmable": true,
+      "recipe": "MF : 12× Amalgamated Rift Essence + 1× Eldritch Scroll (50 Spirit Shards) + 50× Obsidian Shard + 1× Cube of Stabilized Dark Energy",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": "Ou craft assisté Lyhr (+10 Ectos)."
+        }
+      ]
+    },
+    "cube_stabilized_dark_energy": {
+      "name": "Cube of Stabilized Dark Energy",
+      "apiId": 71994,
+      "needed_for": [
+        "gift_of_expertise"
+      ],
+      "qty": {
+        "obsidian__per_piece": 1
+      },
+      "farmable": true,
+      "recipe": "Craft 500 (toutes disciplines) : 1× Ball of Dark Energy + 75× Stabilizing Matrix",
+      "sources": [
+        {
+          "type": "craft_500",
+          "tip": "1 Ball of Dark Energy (salvage ascended) + 75 Stabilizing Matrices (TP/fractales)."
+        }
+      ]
+    },
+    "gift_of_stormy_skies": {
+      "name": "Gift of Stormy Skies",
+      "apiId": 100288,
+      "needed_for": [
+        "armor_obsidian_per_piece"
+      ],
+      "qty": {
+        "obsidian__per_piece": 1
+      },
+      "farmable": true,
+      "recipe": "MF : 1× Gift of the Astral Ward + 5× Case of Captured Lightning + 5× Clot of Congealed Screams + 5× Pouch of Stardust",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": "Ou craft assisté Lyhr (+10 Ectos)."
+        }
+      ]
+    },
+    "gift_of_the_astral_ward": {
+      "name": "Gift of the Astral Ward",
+      "apiId": null,
+      "needed_for": [
+        "gift_of_stormy_skies"
+      ],
+      "qty": {
+        "obsidian__per_piece": 1
+      },
+      "farmable": true,
+      "recipe": "MF : Gift of Skywatch Archipelago + Gift of Amnytas + Gift of Inner Nayos + Gift of Persistence",
+      "sources": [
+        {
+          "type": "map_completion",
+          "tip": "Gift of Skywatch / Gift of Amnytas : complétion de carte (repeatable) ou Chest of the Obscure."
+        },
+        {
+          "type": "achievements",
+          "tip": "Gift of Inner Nayos : Chest of the Obscure, achievements story/map Inner Nayos."
+        },
+        {
+          "type": "vendor",
+          "npc": "Lyhr",
+          "tip": "Gift of Persistence : 250 Ancient Coins + 250 Static Charges + 250 Pinches of Stardust + 250 Calcified Gasps."
+        }
+      ]
+    },
+    "case_of_captured_lightning": {
+      "name": "Case of Captured Lightning",
+      "apiId": null,
+      "needed_for": [
+        "gift_of_stormy_skies"
+      ],
+      "qty": {
+        "obsidian__per_piece": 5
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "vendor",
+          "npc": "Faction Provisioner (Skywatch Archipelago)",
+          "tip": "250 Static Charges pièce (1250/pièce d'armure) ou Hero's Choice Chest (meta Skywatch / Spider's Lair)."
+        }
+      ]
+    },
+    "pouch_of_stardust": {
+      "name": "Pouch of Stardust",
+      "apiId": null,
+      "needed_for": [
+        "gift_of_stormy_skies"
+      ],
+      "qty": {
+        "obsidian__per_piece": 5
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "vendor",
+          "npc": "Faction Provisioner (Amnytas)",
+          "tip": "250 Pinches of Stardust pièce (1250/pièce d'armure) ou Hero's Choice Chest (Defense of Amnytas / Spider's Lair)."
+        }
+      ]
+    },
+    "clot_of_congealed_screams": {
+      "name": "Clot of Congealed Screams",
+      "apiId": null,
+      "needed_for": [
+        "gift_of_stormy_skies"
+      ],
+      "qty": {
+        "obsidian__per_piece": 5
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "vendor",
+          "npc": "Faction Provisioner (Inner Nayos)",
+          "tip": "250 Calcified Gasps pièce (1250/pièce d'armure) ou Hero's Choice Chest (Into the Spider's Lair)."
+        }
+      ]
+    },
+    "gift_of_prosperity": {
+      "name": "Gift of Magical / Mighty Prosperity",
+      "apiId": null,
+      "needed_for": [
+        "armor_obsidian_per_piece"
+      ],
+      "qty": {
+        "obsidian__per_piece": 1
+      },
+      "farmable": true,
+      "recipe": "MF : 1× Gift of Craftsmanship + 9× Mystic Clover + 1× Gift of Condensed Magic (tête/épaules/torse) ou Might (gants/jambes/bottes) + 1× Gift of Research",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": "Magical → Headgear/Shoulders/Chest · Mighty → Gloves/Leggings/Boots. Ou craft assisté Lyhr (+10 Ectos)."
+        }
+      ]
     }
   },
   "enchaînements_recommandés": {
@@ -6726,28 +6979,22 @@ const SOURCES_DB = {
       },
       "per_piece_common": [
         {
-          "id": "amalgamated_rift_essence",
-          "qty": 12,
-          "note": {
-            "fr": "12 par pièce × 6 = 72 au total + 12 pour l'Arcanum",
-            "en": "12 per piece × 6 = 72 total + 12 for Arcanum"
-          }
+          "id": "arcanum_astral",
+          "qty": 1,
+          "note": "Arcanum of Astral X (par slot) — acheté à Lyhr contre 1 Lesser Vision Crystal après l'achievement 'Legendary Armor: Astral X'"
         },
         {
-          "id": "amalgamated_gemstone",
+          "id": "gift_of_expertise",
           "qty": 1
         },
         {
-          "id": "gift_of_research",
+          "id": "gift_of_stormy_skies",
           "qty": 1
         },
         {
-          "id": "lesser_vision_crystal",
-          "qty": 1
-        },
-        {
-          "id": "ball_dark_energy",
-          "qty": 1
+          "id": "gift_of_prosperity",
+          "qty": 1,
+          "note": "Magical (tête/épaules/torse) ou Mighty (gants/jambes/bottes)"
         }
       ],
       "slot_variants": {
@@ -6762,7 +7009,73 @@ const SOURCES_DB = {
         "fr": "Requiert Astral Ward + Oneiros-Spun skins débloquées pour le slot — one-time per type, toutes les poids partagent le même unlock.",
         "en": "Requires Astral Ward + Oneiros-Spun skins unlocked for the slot - one-time per type, all weights share the same unlock."
       },
-      "wiki": "Obsidian_armor"
+      "wiki": "Obsidian_armor",
+      "recipe_note": "Recette Craft 500 (Tailor=Light / Leatherworker=Medium / Armorsmith=Heavy), uniquement à la Wizard's Tower. Lyhr peut crafter chaque étape pour +10 Ectos.",
+      "skin_prereq": "Skins Astral Ward + Oneiros-Spun du slot requis (12 Purified Rift Essence one-time, partagé entre poids).",
+      "arcanum_achievements": {
+        "head": {
+          "achId": 7214,
+          "name": "Astral Thought",
+          "boss": "Ignaxious",
+          "gift": "magical"
+        },
+        "shoulders": {
+          "achId": 7098,
+          "name": "Astral Bearing",
+          "boss": "Galene the Seething",
+          "gift": "magical"
+        },
+        "chest": {
+          "achId": 7096,
+          "name": "Astral Heartbeat",
+          "boss": "Nourys, Eyes of the Abyss",
+          "gift": "magical"
+        },
+        "gloves": {
+          "achId": 7219,
+          "name": "Astral Grasp",
+          "boss": "Pherus the Subjugator",
+          "gift": "mighty"
+        },
+        "legs": {
+          "achId": 7240,
+          "name": "Astral Stride",
+          "boss": "Knaebelag the Terror",
+          "gift": "mighty"
+        },
+        "boots": {
+          "achId": 7051,
+          "name": "Astral Footprints",
+          "boss": "Myros the Spiteful",
+          "gift": "mighty"
+        }
+      },
+      "collection_achievements": {
+        "astral_gifts": 7128,
+        "quality_armor": 7802,
+        "suffused_t2": 8064
+      },
+      "armory_api_ids": [
+        101516,
+        101462,
+        101499,
+        101536,
+        101501,
+        101535,
+        101614,
+        101645,
+        101556,
+        101570,
+        101579,
+        101602,
+        101544,
+        101551,
+        101521,
+        101609,
+        101568,
+        101460
+      ],
+      "armory_ids_note": "18 items (6 slots × 3 poids). Résolution nom/poids/slot au runtime via /v2/items (weight_class + details.type), lang fr/en."
     },
     "triumphant_hero": {
       "name": "Triumphant Hero's Armor",
@@ -7516,39 +7829,54 @@ const SOURCES_DB = {
       "farm": "PvE Open World (SotO)",
       "expansion": "SotO",
       "wiki": "Obsidian_armor",
-      "recipe_per_piece": "MF : Rift Essences + Amalgamated Rift Essence + Gift of Research + Exotic Luck",
+      "recipe_per_piece": "Craft 500 : 1 Arcanum of Astral X + 1 Gift of Expertise + 1 Gift of Stormy Skies + 1 Gift of Magical/Mighty Prosperity",
       "components_per_piece": [
+        "arcanum_astral",
+        "gift_of_expertise",
+        "gift_of_stormy_skies",
+        "gift_of_prosperity",
+        "amalgamated_rift_essence",
         "fine_rift_essence",
         "masterwork_rift_essence",
         "rare_rift_essence",
-        "amalgamated_rift_essence",
-        "gift_of_research",
         "glob_of_ectoplasm",
+        "obsidian_shard",
+        "mystic_clover",
+        "gift_of_craftsmanship",
+        "gift_of_research",
         "lesser_vision_crystal",
-        "ball_dark_energy"
+        "ball_dark_energy",
+        "provisioner_token"
       ],
       "pieces": 6,
-      "note": {
-        "fr": "Arcanum (tête) requiert Amalgamated Rift Essence supplémentaire.",
-        "en": "Arcanum (head) requires additional Amalgamated Rift Essence."
-      },
+      "note": "Arcanum (par slot) requiert skins Astral Ward + Oneiros-Spun (12 Purified one-time) + kill de boss + 1 Lesser Vision Crystal.",
       "armory_api_id": null,
       "armory_max_count": 1,
       "armory_note": "6 pieces × 3 armor types. Same pattern as Perfected Envoy.",
       "armory_slot_ids": {
-        "detection": "slot_count",
-        "note": "Same pattern. SotO legendary armor apiIds — to be completed.",
-        "light_ids": {
-          "head": 97956,
-          "shoulders": null,
-          "chest": null,
-          "gloves": null,
-          "legs": null,
-          "boots": null
-        },
-        "medium_ids": {},
-        "heavy_ids": {}
-      }
+        "detection": "runtime_items_api",
+        "note": "Mapping id→(poids,slot) résolu au runtime via /v2/items?ids=…&lang=xx (weight_class + details.type). Seul mapping confirmé statiquement : 101516 = Obsidian Light Crown."
+      },
+      "armory_api_ids": [
+        101516,
+        101462,
+        101499,
+        101536,
+        101501,
+        101535,
+        101614,
+        101645,
+        101556,
+        101570,
+        101579,
+        101602,
+        101544,
+        101551,
+        101521,
+        101609,
+        101568,
+        101460
+      ]
     },
     "triumphant_hero": {
       "name": "Triumphant Hero's Armor",
@@ -10518,6 +10846,75 @@ const LEGENDARIES = {
     bounties: [],
   },
 
+  obsidian: {
+    id: "obsidian",
+    name: "Obsidian Armor",
+    type: "Armor set",
+    expansion: "SotO",
+    color: "#818cf8",
+    colorDim: "rgba(129,140,248,0.15)",
+    icon: "⬡",
+    description: "Legendary Armor — Secrets of the Obscure (Open World)",
+    resetType: "daily",
+    isArmorSet: true,
+    pieces: 6,
+    armoryApiIds: [101516, 101462, 101499, 101536, 101501, 101535, 101614, 101645, 101556, 101570, 101579, 101602, 101544, 101551, 101521, 101609, 101568, 101460],
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    arcanum: {
+      head:      { achId: 7214, name: "Astral Thought",    boss: "Ignaxious",                   gift: "magical" },
+      shoulders: { achId: 7098, name: "Astral Bearing",    boss: "Galene the Seething",         gift: "magical" },
+      chest:     { achId: 7096, name: "Astral Heartbeat",  boss: "Nourys, Eyes of the Abyss",   gift: "magical" },
+      gloves:    { achId: 7219, name: "Astral Grasp",      boss: "Pherus the Subjugator",       gift: "mighty" },
+      legs:      { achId: 7240, name: "Astral Stride",     boss: "Knaebelag the Terror",        gift: "mighty" },
+      boots:     { achId: 7051, name: "Astral Footprints", boss: "Myros the Spiteful",          gift: "mighty" },
+    },
+    // Coûts par pièce — "required" calculé dynamiquement selon l'objectif
+    currenciesPerPiece: [
+      { id: "amalgamated", name: "Amalgamated Rift Essence", perPiece: 12,   icon: "AR", apiId: 100081 },
+      { id: "fine",        name: "Fine Rift Essence",        perPiece: 3000, icon: "F1", apiId: 78 },
+      { id: "masterwork",  name: "Masterwork Rift Essence",  perPiece: 1200, icon: "M2", apiId: 80 },
+      { id: "rare",        name: "Rare Rift Essence",        perPiece: 600,  icon: "R3", apiId: 79 },
+      { id: "provisioner", name: "Provisioner Token",        perPiece: 50,   icon: "PT", apiId: 29 },
+      { id: "clovers",     name: "Mystic Clover",            perPiece: 9,    icon: "MC", apiId: 19675 },
+      { id: "shards",      name: "Obsidian Shard",           perPiece: 50,   icon: "OS", apiId: 19925 },
+      { id: "ectos",       name: "Glob of Ectoplasm",        perPiece: 600,  icon: "EC", apiId: 19721 },
+    ],
+    currencies: [],
+    metas: [
+      { id: "obs_sw", name: "Skywatch Archipelago", subname: "Unlocking the Wizard's Tower", expansion: "SotO", icon: "SW",
+        offsetUTC: 60, intervalMin: 120, durationMin: 25,
+        efficience: "A", population: "bon", next: "obs_am", nextDelayMin: 60,
+        waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
+        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        tip: "Hero's Choice Chest → Case of Captured Lightning. Complétion de carte → Gift of Skywatch (repeatable)." },
+      { id: "obs_am", name: "Amnytas", subname: "The Defense of Amnytas", expansion: "SotO", icon: "AM",
+        offsetUTC: 0, intervalMin: 120, durationMin: 25,
+        efficience: "A", population: "bon", next: "obs_sw", nextDelayMin: 60,
+        waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
+        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
+        tip: "Hero's Choice Chest → Pouch of Stardust. Complétion de carte → Gift of Amnytas (repeatable)." },
+      { id: "obs_spider", name: "Inner Nayos", subname: "Into the Spider's Lair", expansion: "SotO", icon: "SL",
+        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
+        waypoint: "Citadel of Zakiros — Forward Bivouac Waypoint", wpCode: "[&BHYOAAA=]",
+        resetNote: "Conditionnel — pas de timer fixe",
+        tip: "Meta conditionnelle : Road to Heitor + Fangs That Gnash doivent être complétées sur la map. Citadel of Zakiros: Hero's Choice Chest → Case/Clot/Pouch au choix." },
+      { id: "obs_conv_mb", name: "Convergence", subname: "Mount Balrior (public)", expansion: "JW", icon: "CV",
+        offsetUTC: 0, intervalMin: 180, durationMin: 20,
+        efficience: "S", population: "bon", next: "obs_conv_on", nextDelayMin: 30,
+        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
+        resetNote: "Coffre daily par type d'instance",
+        tip: "Toutes les 3h à XX:00 UTC. Grosse source d'essences Rift gratuites (12-25/run)." },
+      { id: "obs_conv_on", name: "Convergence", subname: "Outer Nayos (public)", expansion: "SotO", icon: "CV",
+        offsetUTC: 30, intervalMin: 180, durationMin: 20,
+        efficience: "S", population: "bon", next: "obs_conv_mb", nextDelayMin: 150,
+        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
+        resetNote: "Coffre daily par type d'instance",
+        tip: "Toutes les 3h à XX:30 UTC (90 min après Balrior). Essences Rift gratuites + progression Suffused T2." },
+    ],
+    bounties: [],
+  },
+
   prismatic: {
     id: "prismatic",
     name: "Prismatic",
@@ -10575,6 +10972,16 @@ const LEGENDARIES = {
         tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
   },
+};
+
+// ── Obsidian Armor : libellés slots / poids (i18n locale) ──
+const OBS_SLOT_LABELS = {
+  en: { head: "Head", shoulders: "Shoulders", chest: "Chest", gloves: "Gloves", legs: "Legs", boots: "Boots" },
+  fr: { head: "Tête", shoulders: "Épaules", chest: "Torse", gloves: "Gants", legs: "Jambes", boots: "Bottes" },
+};
+const OBS_WEIGHT_LABELS = {
+  en: { Light: "Light", Medium: "Medium", Heavy: "Heavy" },
+  fr: { Light: "Léger", Medium: "Intermédiaire", Heavy: "Lourd" },
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -11255,6 +11662,36 @@ function GW2LegendaryTracker() {
   }, []);
   const langRef = useRef(lang);
   useEffect(() => { langRef.current = lang; }, [lang]);
+
+  // ── Obsidian : résolution nom/poids/slot des 18 pièces via /v2/items (public, cache par langue) ──
+  useEffect(() => {
+    if (selectedLeg !== "obsidian") return;
+    const ids = LEGENDARIES.obsidian.armoryApiIds;
+    const cacheKey = `gw2_obsidian_items_${lang}_v1`;
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
+      if (cached && Object.keys(cached).length === ids.length) { setObsItems(cached); return; }
+    } catch (_) {}
+    fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(list => {
+        if (!Array.isArray(list)) return;
+        const SLOT_MAP = { Helm: "head", Shoulders: "shoulders", Coat: "chest", Gloves: "gloves", Leggings: "legs", Boots: "boots" };
+        const map = {};
+        for (const it of list) {
+          const dt = (it && it.details) ? it.details : {};
+          map[String(it.id)] = {
+            name: it.name,
+            weight: dt.weight_class ?? "?",
+            slot: SLOT_MAP[dt.type] ?? (dt.type ?? "?"),
+          };
+        }
+        setObsItems(map);
+        try { localStorage.setItem(cacheKey, JSON.stringify(map)); } catch (_) {}
+      })
+      .catch(() => {});
+  }, [selectedLeg, lang]);
+
   const [expanded, setExpanded] = useState(null);
   const [copied, setCopied] = useState(null);
 
@@ -11286,6 +11723,27 @@ function GW2LegendaryTracker() {
     try { return JSON.parse(localStorage.getItem("gw2_vision_collections") ?? "null") ?? {}; } catch { return {}; }
   });
   const [visionSubExpanded, setVisionSubExpanded] = useState(null);
+
+  // ── Obsidian Armor : objectif par pièce, items résolus, armory brut, achievements ──
+  const [obsTarget, setObsTarget] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("gw2_obsidian_target_v1") ?? "[]")); } catch { return new Set(); }
+  });
+  const toggleObsTarget = useCallback((id) => {
+    setObsTarget(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) { next.delete(id); } else { next.add(id); }
+      try { localStorage.setItem("gw2_obsidian_target_v1", JSON.stringify([...next])); } catch (_) {}
+      return next;
+    });
+  }, []);
+  const [obsItems, setObsItems] = useState(null);
+  const [armoryRaw, setArmoryRaw] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
+  });
+  const [obsAch, setObsAch] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_obsidian_achievements") ?? "null") ?? {}); } catch { return {}; }
+  });
+
 
   // Grand Total
   const [gtApiKey, setGtApiKey] = useState(() => {
@@ -11367,6 +11825,19 @@ function GW2LegendaryTracker() {
           setVisionCollections(vData);
         }
       } catch (_) { /* Flask absent ou endpoint non dispo */ }
+      // Fetch Obsidian achievements en parallèle
+      try {
+        const oKey = (gtApiKey ?? "").trim();
+        const oUrl = oKey
+          ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
+          : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
+        const oResp = await fetch(oUrl);
+        if (oResp.ok) {
+          const oData = await oResp.json();
+          localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));
+          setObsAch(oData);
+        }
+      } catch (_) { /* Flask absent ou endpoint non dispo */ }
       const freshCurr = await storeGet(getCurrencyKey(selectedLeg)) ?? {};
       setCurrencies(freshCurr);
       setApiStatus("ok");
@@ -11417,6 +11888,9 @@ function GW2LegendaryTracker() {
       for (const lid of legIds) ownedSet.add(lid);
     }
     setGtOwnedIds(ownedSet);
+    const rawSet = new Set((Array.isArray(data) ? data : []).map(it => Number(it.id)));
+    setArmoryRaw(rawSet);
+    try { localStorage.setItem("gw2_armory_raw_v1", JSON.stringify([...rawSet])); } catch (_) {}
     setGtApiStatus("ok");
     // Persister la clé
     try { localStorage.setItem("gw2_gt_apikey", key.trim()); } catch (_) {}
@@ -11519,7 +11993,7 @@ function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab(selectedLeg === "conflux" ? "wvw" : selectedLeg === "prismatic" ? "achievements" : "metas");
+    setActiveTab(selectedLeg === "conflux" ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : "metas")));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -11636,11 +12110,24 @@ function GW2LegendaryTracker() {
   const dailyCount = Object.keys(dailyChecked).length;
   const weeklyCount = Object.keys(weeklyChecked).length;
 
-  // ── Calcul progression currencies
-  const mainProgress = isGrandTotal ? [] : (leg?.currencies ?? []).map(cur => ({
+  // ── Obsidian : pièces possédées / ciblées / restantes ──
+  const isObsidian = selectedLeg === "obsidian";
+  const obsIds = LEGENDARIES.obsidian.armoryApiIds;
+  const obsOwnedSet = new Set(obsIds.filter(id => armoryRaw.has(id)));
+  const obsHasTarget = obsTarget.size > 0;
+  const obsTargetOwned = obsHasTarget ? [...obsTarget].filter(id => obsOwnedSet.has(id)).length : 0;
+  const obsRemainingCount = obsHasTarget
+    ? Math.max(0, obsTarget.size - obsTargetOwned)
+    : Math.max(0, 6 - obsOwnedSet.size);
+
+  // ── Calcul progression currencies (Obsidian : requis = coût/pièce × pièces restantes) ──
+  const legCurrencies = isGrandTotal ? [] : (isObsidian
+    ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
+    : (leg?.currencies ?? []));
+  const mainProgress = isGrandTotal ? [] : legCurrencies.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
-    pct: Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100),
+    pct: cur.required > 0 ? Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100) : 100,
   }));
 
   const legColor = isGrandTotal ? "#f472b6" : (leg?.color ?? "#e2c97e");
@@ -11654,6 +12141,7 @@ function GW2LegendaryTracker() {
 
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
+    ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(!isPrismatic && selectedLeg !== "conflux" ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
@@ -12848,9 +13336,107 @@ function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET PROGRESSION (currencies)   */}
       {/* ══════════════════════════════════ */}
+      {/* ══════════════════════════════════ */}
+      {/* ONGLET PIÈCES (Obsidian Armor)     */}
+      {/* ══════════════════════════════════ */}
+      {activeTab === "pieces" && isObsidian && (() => {
+        const slotL = OBS_SLOT_LABELS[lang] ?? OBS_SLOT_LABELS.en;
+        const weightL = OBS_WEIGHT_LABELS[lang] ?? OBS_WEIGHT_LABELS.en;
+        // matrice poids → slot → { id, name } depuis obsItems
+        const matrix = {};
+        if (obsItems) {
+          for (const [idStr, info] of Object.entries(obsItems)) {
+            if (!matrix[info.weight]) matrix[info.weight] = {};
+            matrix[info.weight][info.slot] = { id: Number(idStr), name: info.name };
+          }
+        }
+        const goalLabel = obsHasTarget
+          ? t("obs_goal", { n: obsTarget.size, o: obsTargetOwned, r: obsRemainingCount })
+          : t("obs_goal_default", { r: obsRemainingCount });
+        return (
+          <div>
+            <div className="section-label">{t("tab_pieces", { n: obsOwnedSet.size })}</div>
+            <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
+              {t("obs_target_hint")}
+            </div>
+            <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
+              <div style={{ fontSize: "12px", fontWeight: 600, color: legColor }}>{goalLabel}</div>
+              <button className="adj-btn" onClick={() => detectGtArmory()}>{t("obs_sync")}</button>
+            </div>
+            {!obsItems && (
+              <div style={{ margin: "10px 14px", fontFamily: "'Crimson Text', serif", fontStyle: "italic", fontSize: "12px", color: "rgba(226,201,126,0.45)" }}>
+                {t("obs_resolving")}
+              </div>
+            )}
+            {obsItems && LEGENDARIES.obsidian.weights.map(w => (
+              <div key={w} style={{ margin: "10px 14px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "rgba(226,201,126,0.5)", marginBottom: "6px" }}>
+                  {weightL[w] ?? w}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px" }}>
+                  {LEGENDARIES.obsidian.slots.map(s => {
+                    const cell = matrix[w] ? matrix[w][s] : null;
+                    if (!cell) return <div key={s} />;
+                    const owned = obsOwnedSet.has(cell.id);
+                    const targeted = obsTarget.has(cell.id);
+                    const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
+                    const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(129,140,248,0.10)" : "rgba(255,255,255,0.02)");
+                    return (
+                      <div key={s}
+                        onClick={() => { if (!owned) toggleObsTarget(cell.id); }}
+                        title={cell.name}
+                        style={{ padding: "8px 6px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
+                        <div style={{ fontSize: "11px", fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
+                          {owned ? "✓ " : ""}{slotL[s] ?? s}
+                        </div>
+                        <div style={{ fontSize: "9px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {cell.name}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+            <div className="section-label" style={{ marginTop: "14px" }}>{t("obs_arcanum_title")}</div>
+            {LEGENDARIES.obsidian.slots.map(s => {
+              const a = LEGENDARIES.obsidian.arcanum[s];
+              const st = obsAch[`arcanum_${s}`] ?? {};
+              const done = st.done === true;
+              const cur = st.current ?? 0;
+              const mx = st.max ?? 3;
+              const slotL2 = (OBS_SLOT_LABELS[lang] ?? OBS_SLOT_LABELS.en)[s] ?? s;
+              return (
+                <div key={s} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
+                      {done ? "✓ " : ""}{a.name} — {slotL2}
+                    </div>
+                    <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("obs_boss", { b: a.boss })} · {a.gift === "magical" ? t("obs_gift_magical") : t("obs_gift_mighty")}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
+                    {done ? "✓" : `${cur}/${mx}`}
+                  </div>
+                </div>
+              );
+            })}
+            <div style={{ margin: "10px 14px", padding: "10px 13px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.5)" }}>
+              {t("obs_arcanum_note")}
+            </div>
+          </div>
+        );
+      })()}
+
       {activeTab === "currencies" && (
         <div>
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
+          {isObsidian && (
+            <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
+              {t("obs_per_piece_note", { n: obsRemainingCount })}
+            </div>
+          )}
           {mainProgress.map(cur => (
             <div key={cur.id} style={{ margin: "6px 14px", padding: "12px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>

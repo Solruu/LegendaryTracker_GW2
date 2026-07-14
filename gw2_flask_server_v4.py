@@ -131,6 +131,21 @@ VISION_ACHIEVEMENT_IDS = {
     "requiem_6":                4357,   # Requiem: Experiment 6
 }
 
+OBSIDIAN_ACHIEVEMENT_IDS = {
+    # Achievements "Legendary Armor: Astral X" — débloquent l'achat de l'Arcanum du slot chez Lyhr
+    "arcanum_head":      7214,   # Astral Thought (boss: Ignaxious)
+    "arcanum_shoulders": 7098,   # Astral Bearing (boss: Galene the Seething)
+    "arcanum_chest":     7096,   # Astral Heartbeat (boss: Nourys)
+    "arcanum_gloves":    7219,   # Astral Grasp (boss: Pherus the Subjugator)
+    "arcanum_legs":      7240,   # Astral Stride (boss: Knaebelag the Terror)
+    "arcanum_boots":     7051,   # Astral Footprints (boss: Myros the Spiteful)
+    # Meta / collections
+    "astral_gifts":      7128,   # A Legendary Path: Astral Gifts
+    "quality_armor":     7802,   # That's Quality Armor (18 skins)
+    "suffused_t2":       8064,   # Tier 2 Legendary Armor: Suffused Obsidian
+}
+
+
 # ─── App Flask ────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
@@ -852,6 +867,18 @@ def progression():
         "provisioner": wallet_dict.get(29, 0),   # Provisioner Token
     }
 
+    # Currencies Obsidian Armor (SotO — essences Rift converties wallet juin 2025)
+    obsidian_armor = {
+        "fine":        wallet_dict.get(78, 0),   # Fine Rift Essence — wallet ID 78
+        "masterwork":  wallet_dict.get(80, 0),   # Masterwork Rift Essence — wallet ID 80 (79=Rare !)
+        "rare":        wallet_dict.get(79, 0),   # Rare Rift Essence — wallet ID 79
+        "amalgamated": mat_dict.get(100081, 0),
+        "provisioner": wallet_dict.get(29, 0),
+        "clovers":     mat_dict.get(19675, 0),
+        "shards":      mat_dict.get(19925, 0) + obsidian_bank,
+        "ectos":       mat_dict.get(19721, 0),
+    }
+
     # Prismatic — progression achievement Seasons of the Dragons
     # Mapping exact : bit → achievement ID de la map correspondante
     PRISMATIC_BIT_MAP = [
@@ -949,6 +976,7 @@ def progression():
             "conflux":      conflux,
             "warbringer":   warbringer,
             "coalescence":  coalescence,
+            "obsidian":     obsidian_armor,
         },
         "common": common,
         "achievements": achievements,
@@ -1112,6 +1140,40 @@ def vision_achievements():
 
     result = {}
     for key, ach_id in VISION_ACHIEVEMENT_IDS.items():
+        entry = ach_index.get(ach_id)
+        if entry:
+            result[key] = {
+                "done":    entry.get("done", False),
+                "current": entry.get("current", 0),
+                "max":     entry.get("max", 0),
+                "bits":    entry.get("bits", []),
+            }
+        else:
+            result[key] = {"done": False, "current": 0, "max": 0, "bits": []}
+
+    return jsonify(result)
+
+
+@app.route("/api/achievements/obsidian")
+def obsidian_achievements():
+    """
+    Progression des achievements Obsidian Armor (6 Arcanum "Astral X" + collections).
+    Retourne { key: { done, current, max, bits } } pour chaque entrée dans OBSIDIAN_ACHIEVEMENT_IDS.
+    """
+    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    if not api_key:
+        return jsonify({"error": "Cle API manquante"}), 400
+
+    ach_raw, err = gw2_get("account/achievements", api_key)
+    if err:
+        return jsonify({"error": err}), 500
+
+    ach_index = {}
+    for entry in (ach_raw or []):
+        ach_index[entry["id"]] = entry
+
+    result = {}
+    for key, ach_id in OBSIDIAN_ACHIEVEMENT_IDS.items():
         entry = ach_index.get(ach_id)
         if entry:
             result[key] = {
