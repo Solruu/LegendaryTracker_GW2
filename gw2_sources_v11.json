@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.4",
+  "version": "1.5",
   "last_updated": "2026-07-14",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -345,6 +345,12 @@
    ],
    "105921": [
     "selachimorpha"
+   ],
+   "105293": [
+    "eikasia"
+   ],
+   "105317": [
+    "eikasia"
    ]
   },
   "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -8970,17 +8976,32 @@
    "armory_max_count": 2
   },
   "eikasia": {
-   "name": "Eikasia",
-   "slot": "armor_set",
-   "farm": "PvE Achievements",
-   "expansion": "EoD",
-   "wiki": "Eikasia_armor",
-   "note": {
-    "fr": "Armure légendaire obtenue via la collection de succès « Recursive Investigation » (EoD). Chaque pièce via Eikasia, Mists-Grasper Choice (id 105311). Non craftable en Forge mystique.",
-    "en": "Legendary armor obtained via the \"Recursive Investigation\" achievement collection (EoD). Each piece via Eikasia, Mists-Grasper Choice (id 105311). Not craftable via Mystic Forge."
+   "name": "Eikasia, Mists-Grasper",
+   "slot": "gloves",
+   "farm": "PvE Fractals (quickplay)",
+   "expansion": "Core (gratuit — événement Fractal Incursion, sept 2025, contenu permanent)",
+   "wiki": "Eikasia,_Mists-Grasper",
+   "acquisition": "Meta-achievement 'Incursive Investigation' (8826) → Eikasia, Mists-Grasper Choice (105311, choix d'UN poids). Poids supplémentaires achetés au vendor : Fractalline Dust (Infinite Recursion, 150) + 8 Gifts craft 400 (recettes 10 po × 8, one-time compte) ou craft assisté Lyhr (+10 Ectos/Gift, 80/poids).",
+   "achievements": {
+    "eikasia_meta": 8826,
+    "eikasia_relic": 8823,
+    "eikasia_r1": 8840,
+    "eikasia_r2": 8841,
+    "eikasia_r3": 8835,
+    "eikasia_working": 8830,
+    "eikasia_infinite": 8814
    },
-   "armory_api_id": null,
-   "armory_max_count": 6,
+   "note": {
+    "fr": "Gants légendaires uniquement (pas un set). Collection via le mode quickplay fractales (échelle 1, LFG). La progression Fractalline Dust est lisible via current/max des achievements Recursion — pas de monnaie wallet.",
+    "en": "Legendary gloves only (not a set). Collection via fractal quickplay mode (scale 1, LFG). Fractalline Dust progress is readable via current/max on the Recursion achievements — no wallet currency."
+   },
+   "choice_api_id": 105311,
+   "armory_api_ids": [
+    105293,
+    105317
+   ],
+   "armory_note": "2 des 3 poids vérifiés (gw2treasures). 3e ID à compléter au premier unlock — si le poids choisi est le 3e, la détection Grand Total ne le verra pas d'ici là.",
+   "armory_max_count": 1,
    "achievement_locked": true
   },
   "prismatic_champions_regalia": {

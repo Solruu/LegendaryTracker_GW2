@@ -84,9 +84,13 @@ const I18N = {
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
     tab_collections: "✦ Collections",
+    eik_note1: "Legendary GLOVES only (not a full set). Earned via the fractal quickplay mode (scale 1, LFG panel) — free content, no expansion needed.",
+    eik_note2: "Fractalline Dust progress shows in the Recursion achievements below (current/max). Extra weights: Infinite Recursion (150 Dust) + 8 Gifts (craft 400, recipes 10g each) or Lyhr assisted crafting (+80 Ectos/weight).",
     sel_note1: "Precursor Agaleus via the 24-step 'Acquiring Agaleus' collection (VoE maps + old Tyria dive spots).",
     sel_note2: "Gift of Castoran Mastery requires Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sub-achievements each) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_collections: "✦ Collections",
+    eik_note1: "GANTS légendaires uniquement (pas un set complet). Obtenus via le mode quickplay fractales (échelle 1, panneau LFG) — contenu gratuit, aucune extension requise.",
+    eik_note2: "La progression Fractalline Dust se lit dans les achievements Recursion ci-dessous (current/max). Poids supplémentaires : Infinite Recursion (150 Dust) + 8 Gifts (craft 400, recettes 10 po pièce) ou craft assisté Lyhr (+80 Ectos/poids).",
     sel_note1: "Précurseur Agaleus via la collection 'Acquiring Agaleus' en 24 étapes (cartes VoE + spots de plongée de la vieille Tyrie).",
     sel_note2: "Gift of Castoran Mastery requiert Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sous-achievements chacun) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_raids: "⚔ Raids",
@@ -527,7 +531,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "1.4",
+    "version": "1.5",
     "last_updated": "2026-07-14",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -872,6 +876,12 @@ const SOURCES_DB = {
       ],
       "105921": [
         "selachimorpha"
+      ],
+      "105293": [
+        "eikasia"
+      ],
+      "105317": [
+        "eikasia"
       ]
     },
     "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -9497,17 +9507,32 @@ const SOURCES_DB = {
       "armory_max_count": 2
     },
     "eikasia": {
-      "name": "Eikasia",
-      "slot": "armor_set",
-      "farm": "PvE Achievements",
-      "expansion": "EoD",
-      "wiki": "Eikasia_armor",
-      "note": {
-        "fr": "Armure légendaire obtenue via la collection de succès « Recursive Investigation » (EoD). Chaque pièce via Eikasia, Mists-Grasper Choice (id 105311). Non craftable en Forge mystique.",
-        "en": "Legendary armor obtained via the \"Recursive Investigation\" achievement collection (EoD). Each piece via Eikasia, Mists-Grasper Choice (id 105311). Not craftable via Mystic Forge."
+      "name": "Eikasia, Mists-Grasper",
+      "slot": "gloves",
+      "farm": "PvE Fractals (quickplay)",
+      "expansion": "Core (gratuit — événement Fractal Incursion, sept 2025, contenu permanent)",
+      "wiki": "Eikasia,_Mists-Grasper",
+      "acquisition": "Meta-achievement 'Incursive Investigation' (8826) → Eikasia, Mists-Grasper Choice (105311, choix d'UN poids). Poids supplémentaires achetés au vendor : Fractalline Dust (Infinite Recursion, 150) + 8 Gifts craft 400 (recettes 10 po × 8, one-time compte) ou craft assisté Lyhr (+10 Ectos/Gift, 80/poids).",
+      "achievements": {
+        "eikasia_meta": 8826,
+        "eikasia_relic": 8823,
+        "eikasia_r1": 8840,
+        "eikasia_r2": 8841,
+        "eikasia_r3": 8835,
+        "eikasia_working": 8830,
+        "eikasia_infinite": 8814
       },
-      "armory_api_id": null,
-      "armory_max_count": 6,
+      "note": {
+        "fr": "Gants légendaires uniquement (pas un set). Collection via le mode quickplay fractales (échelle 1, LFG). La progression Fractalline Dust est lisible via current/max des achievements Recursion — pas de monnaie wallet.",
+        "en": "Legendary gloves only (not a set). Collection via fractal quickplay mode (scale 1, LFG). Fractalline Dust progress is readable via current/max on the Recursion achievements — no wallet currency."
+      },
+      "choice_api_id": 105311,
+      "armory_api_ids": [
+        105293,
+        105317
+      ],
+      "armory_note": "2 des 3 poids vérifiés (gw2treasures). 3e ID à compléter au premier unlock — si le poids choisi est le 3e, la détection Grand Total ne le verra pas d'ici là.",
+      "armory_max_count": 1,
       "achievement_locked": true
     },
     "prismatic_champions_regalia": {
@@ -11038,6 +11063,38 @@ const LEGENDARIES = {
     bounties: [],
   },
 
+  eikasia: {
+    id: "eikasia",
+    name: "Eikasia, Mists-Grasper",
+    type: { fr: "Gants", en: "Gloves" },
+    expansion: "Core",
+    color: "#c084fc",
+    colorDim: "rgba(192,132,252,0.15)",
+    icon: "EK",
+    description: { fr: "Gants légendaires — Fractales quickplay (contenu gratuit)", en: "Legendary Gloves — Fractal quickplay (free content)" },
+    resetType: "daily",
+    currencies: [],
+    raidAchievements: [
+      { key: "eikasia_meta", achievementId: 8826, name: "Incursive Investigation",
+        tip: { fr: "Meta-achievement — récompense : Eikasia, Mists-Grasper Choice (choix d'UN poids parmi les 3).", en: "Meta-achievement — reward: Eikasia, Mists-Grasper Choice (pick ONE of the 3 weights)." } },
+      { key: "eikasia_relic", achievementId: 8823, name: "Incursive Investigation: Relic in the Mists",
+        tip: { fr: "Étape 1 : compléter une fractale en quickplay et looter le coffre final, puis rapporter les Agony-Torn Gloves au Mist Stranger (Fort Marriner, Arche du Lion).", en: "Step 1: complete a quickplay fractal and loot the final chest, then bring the Agony-Torn Gloves to the Mist Stranger (Fort Marriner, Lion's Arch)." } },
+      { key: "eikasia_working", achievementId: 8830, name: "Incursive Investigation: Working Together",
+        tip: { fr: "Fil conducteur de la Fractalline Dust — quickplay + achievements annexes (la plupart donnent 10+ Dust).", en: "Fractalline Dust through-line — quickplay + side achievements (most grant 10+ Dust)." } },
+      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion",
+        tip: { fr: "150 Fractalline Dust.", en: "150 Fractalline Dust." } },
+      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion",
+        tip: { fr: "300 Fractalline Dust cumulées.", en: "300 Fractalline Dust total." } },
+      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion",
+        tip: { fr: "Dernière récursion avant la meta.", en: "Final recursion before the meta." } },
+      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion",
+        tip: { fr: "150 Dust — requis pour acheter les paires des 2 autres poids au vendor.", en: "150 Dust — required to buy the other 2 weight pairs from the vendor." } },
+    ],
+    collectionNoteKeys: ["eik_note1", "eik_note2"],
+    metas: [],
+    bounties: [],
+  },
+
   obsidian: {
     id: "obsidian",
     name: "Obsidian Armor",
@@ -12192,7 +12249,7 @@ function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : ((selectedLeg === "coalescence" || selectedLeg === "selachimorpha") ? "raids" : "metas"))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (leg?.raidAchievements ? "raids" : "metas"))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -12341,14 +12398,14 @@ function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
     ...((leg?.bounties?.length > 0) ? [{ id: "bounties", label: t("tab_bounties", { n: Object.keys(bountyDone).length }) }] : []),
-    ...(!isPrismatic ? [{ id: "currencies", label: t("tab_currencies") }] : []),
+    ...(!isPrismatic && (isObsidian || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
     ...(!isPrismatic ? [{ id: "common", label: t("tab_common") }] : []),
   ];
 

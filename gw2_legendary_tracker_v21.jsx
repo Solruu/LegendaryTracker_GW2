@@ -20,9 +20,13 @@ const I18N = {
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
     tab_collections: "✦ Collections",
+    eik_note1: "Legendary GLOVES only (not a full set). Earned via the fractal quickplay mode (scale 1, LFG panel) — free content, no expansion needed.",
+    eik_note2: "Fractalline Dust progress shows in the Recursion achievements below (current/max). Extra weights: Infinite Recursion (150 Dust) + 8 Gifts (craft 400, recipes 10g each) or Lyhr assisted crafting (+80 Ectos/weight).",
     sel_note1: "Precursor Agaleus via the 24-step 'Acquiring Agaleus' collection (VoE maps + old Tyria dive spots).",
     sel_note2: "Gift of Castoran Mastery requires Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sub-achievements each) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_collections: "✦ Collections",
+    eik_note1: "GANTS légendaires uniquement (pas un set complet). Obtenus via le mode quickplay fractales (échelle 1, panneau LFG) — contenu gratuit, aucune extension requise.",
+    eik_note2: "La progression Fractalline Dust se lit dans les achievements Recursion ci-dessous (current/max). Poids supplémentaires : Infinite Recursion (150 Dust) + 8 Gifts (craft 400, recettes 10 po pièce) ou craft assisté Lyhr (+80 Ectos/poids).",
     sel_note1: "Précurseur Agaleus via la collection 'Acquiring Agaleus' en 24 étapes (cartes VoE + spots de plongée de la vieille Tyrie).",
     sel_note2: "Gift of Castoran Mastery requiert Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sous-achievements chacun) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_raids: "⚔ Raids",
@@ -866,6 +870,38 @@ const LEGENDARIES = {
         tip: { fr: "Requis pour le Gift of Castoran Mastery — 30+ sous-achievements sur Starlit Weald.", en: "Required for the Gift of Castoran Mastery — 30+ sub-achievements on Starlit Weald." } },
     ],
     collectionNoteKeys: ["sel_note1", "sel_note2"],
+    metas: [],
+    bounties: [],
+  },
+
+  eikasia: {
+    id: "eikasia",
+    name: "Eikasia, Mists-Grasper",
+    type: { fr: "Gants", en: "Gloves" },
+    expansion: "Core",
+    color: "#c084fc",
+    colorDim: "rgba(192,132,252,0.15)",
+    icon: "EK",
+    description: { fr: "Gants légendaires — Fractales quickplay (contenu gratuit)", en: "Legendary Gloves — Fractal quickplay (free content)" },
+    resetType: "daily",
+    currencies: [],
+    raidAchievements: [
+      { key: "eikasia_meta", achievementId: 8826, name: "Incursive Investigation",
+        tip: { fr: "Meta-achievement — récompense : Eikasia, Mists-Grasper Choice (choix d'UN poids parmi les 3).", en: "Meta-achievement — reward: Eikasia, Mists-Grasper Choice (pick ONE of the 3 weights)." } },
+      { key: "eikasia_relic", achievementId: 8823, name: "Incursive Investigation: Relic in the Mists",
+        tip: { fr: "Étape 1 : compléter une fractale en quickplay et looter le coffre final, puis rapporter les Agony-Torn Gloves au Mist Stranger (Fort Marriner, Arche du Lion).", en: "Step 1: complete a quickplay fractal and loot the final chest, then bring the Agony-Torn Gloves to the Mist Stranger (Fort Marriner, Lion's Arch)." } },
+      { key: "eikasia_working", achievementId: 8830, name: "Incursive Investigation: Working Together",
+        tip: { fr: "Fil conducteur de la Fractalline Dust — quickplay + achievements annexes (la plupart donnent 10+ Dust).", en: "Fractalline Dust through-line — quickplay + side achievements (most grant 10+ Dust)." } },
+      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion",
+        tip: { fr: "150 Fractalline Dust.", en: "150 Fractalline Dust." } },
+      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion",
+        tip: { fr: "300 Fractalline Dust cumulées.", en: "300 Fractalline Dust total." } },
+      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion",
+        tip: { fr: "Dernière récursion avant la meta.", en: "Final recursion before the meta." } },
+      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion",
+        tip: { fr: "150 Dust — requis pour acheter les paires des 2 autres poids au vendor.", en: "150 Dust — required to buy the other 2 weight pairs from the vendor." } },
+    ],
+    collectionNoteKeys: ["eik_note1", "eik_note2"],
     metas: [],
     bounties: [],
   },
@@ -2030,7 +2066,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : ((selectedLeg === "coalescence" || selectedLeg === "selachimorpha") ? "raids" : "metas"))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (leg?.raidAchievements ? "raids" : "metas"))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2179,14 +2215,14 @@ export default function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
     ...((leg?.bounties?.length > 0) ? [{ id: "bounties", label: t("tab_bounties", { n: Object.keys(bountyDone).length }) }] : []),
-    ...(!isPrismatic ? [{ id: "currencies", label: t("tab_currencies") }] : []),
+    ...(!isPrismatic && (isObsidian || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
     ...(!isPrismatic ? [{ id: "common", label: t("tab_common") }] : []),
   ];
 

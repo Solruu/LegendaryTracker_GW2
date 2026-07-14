@@ -73,6 +73,13 @@ ACHIEVEMENT_IDS = {
     "selachi_shipwreck": 8880,   # Shipwreck Strand Mastery (requis Gift of Castoran Mastery)
     "selachi_starlit":   9057,   # Starlit Weald Mastery (requis Gift of Castoran Mastery)
     "selachi_diver":     4177,   # Master Diver (étape 4 de la collection Agaleus)
+    "eikasia_meta":     8826,   # Incursive Investigation (meta → gants, choix du poids)
+    "eikasia_relic":    8823,   # Relic in the Mists (étape 1)
+    "eikasia_r1":       8840,   # First Recursion (150 Fractalline Dust)
+    "eikasia_r2":       8841,   # Second Recursion (300 Dust cumulés)
+    "eikasia_r3":       8835,   # Third Recursion
+    "eikasia_working":  8830,   # Working Together (fil conducteur Dust)
+    "eikasia_infinite": 8814,   # Infinite Recursion (150 Dust — poids supplémentaires)
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
