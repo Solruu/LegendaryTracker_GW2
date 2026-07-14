@@ -824,15 +824,18 @@ def progression():
         "badges":    wallet_dict.get(15, 0),
     }
 
-    # Mats communs — Obsidian Shards dans bank + materials
-    obsidian_bank = sum(
-        slot["count"] for slot in (bank_raw or [])
-        if slot and slot.get("id") == 19925
-    )
+    # Mats communs — banque + material storage pour les 4
+    # (les inventaires de personnages ne sont pas comptés : 1 appel API/perso, hors périmètre)
+    def bank_count(item_id):
+        return sum(
+            slot["count"] for slot in (bank_raw or [])
+            if slot and slot.get("id") == item_id
+        )
+    obsidian_bank = bank_count(19925)  # conservé pour les currencies Obsidian Armor
     common = {
-        "clovers":   mat_dict.get(19675, 0),
-        "coins":     mat_dict.get(19976, 0),
-        "ectos":     mat_dict.get(19721, 0),
+        "clovers":   mat_dict.get(19675, 0) + bank_count(19675),
+        "coins":     mat_dict.get(19976, 0) + bank_count(19976),
+        "ectos":     mat_dict.get(19721, 0) + bank_count(19721),
         "obsidian":  mat_dict.get(19925, 0) + obsidian_bank,
     }
 
