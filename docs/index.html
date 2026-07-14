@@ -353,7 +353,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 7;
+const NAMES_CACHE_VER = 8;
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -10969,11 +10969,11 @@ const LEGENDARIES = {
       { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
     ],
     raidAchievements: [
-      { key: "coalescence_1", achId: 4035, name: "Coalescence I: Unbridled",
+      { key: "coalescence_1", achievementId: 4035, name: "Coalescence I: Unbridled",
         tip: { fr: "Débloqué au premier kill de boss de raid. Collection de 10 objets (W5 Hall of Chains).", en: "Unlocked on first raid boss kill. 10-item collection (W5 Hall of Chains)." } },
-      { key: "coalescence_2", achId: 4412, name: "Coalescence II: The Gift",
+      { key: "coalescence_2", achievementId: 4412, name: "Coalescence II: The Gift",
         tip: { fr: "Requiert Coalescence I. Alembic Apparatus : 100 Gaeting Crystals + 10 po chez Glenna (W6).", en: "Requires Coalescence I. Alembic Apparatus: 100 Gaeting Crystals + 10g from Glenna (W6)." } },
-      { key: "coalescence_3", achId: 4805, name: "Coalescence III: Culmination",
+      { key: "coalescence_3", achievementId: 4805, name: "Coalescence III: Culmination",
         tip: { fr: "Requiert Coalescence II. Essences des 3 boss de W7 (Adina, Sabir, Qadim the Peerless).", en: "Requires Coalescence II. Essences from the 3 W7 bosses (Adina, Sabir, Qadim the Peerless)." } },
     ],
     metas: [],
@@ -10996,12 +10996,12 @@ const LEGENDARIES = {
     slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
     weights: ["Light", "Medium", "Heavy"],
     arcanum: {
-      head:      { achId: 7214, name: "Astral Thought",    boss: "Ignaxious",                   gift: "magical" },
-      shoulders: { achId: 7098, name: "Astral Bearing",    boss: "Galene the Seething",         gift: "magical" },
-      chest:     { achId: 7096, name: "Astral Heartbeat",  boss: "Nourys, Eyes of the Abyss",   gift: "magical" },
-      gloves:    { achId: 7219, name: "Astral Grasp",      boss: "Pherus the Subjugator",       gift: "mighty" },
-      legs:      { achId: 7240, name: "Astral Stride",     boss: "Knaebelag the Terror",        gift: "mighty" },
-      boots:     { achId: 7051, name: "Astral Footprints", boss: "Myros the Spiteful",          gift: "mighty" },
+      head:      { achievementId: 7214, name: "Astral Thought",    boss: "Ignaxious",                   gift: "magical" },
+      shoulders: { achievementId: 7098, name: "Astral Bearing",    boss: "Galene the Seething",         gift: "magical" },
+      chest:     { achievementId: 7096, name: "Astral Heartbeat",  boss: "Nourys, Eyes of the Abyss",   gift: "magical" },
+      gloves:    { achievementId: 7219, name: "Astral Grasp",      boss: "Pherus the Subjugator",       gift: "mighty" },
+      legs:      { achievementId: 7240, name: "Astral Stride",     boss: "Knaebelag the Terror",        gift: "mighty" },
+      boots:     { achievementId: 7051, name: "Astral Footprints", boss: "Myros the Spiteful",          gift: "mighty" },
     },
     // Coûts par pièce — "required" calculé dynamiquement selon l'objectif
     currenciesPerPiece: [
@@ -13557,7 +13557,7 @@ function GW2LegendaryTracker() {
                 <div key={s} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div>
                     <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
-                      {done ? "✓ " : ""}{a.name} — {slotL2}
+                      {done ? "✓ " : ""}{NX(a.name)} — {slotL2}
                     </div>
                     <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>
                       {t("obs_boss", { b: a.boss })} · {a.gift === "magical" ? t("obs_gift_magical") : t("obs_gift_mighty")}
@@ -13596,7 +13596,7 @@ function GW2LegendaryTracker() {
               <div key={a.key} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
-                    {done ? "✓ " : ""}{NX(a.achId, a.name)}
+                    {done ? "✓ " : ""}{NX(a.name)}
                   </div>
                   <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
                     {done ? "✓" : (locked ? t("ach_locked") : `${cur}/${mx}`)}
