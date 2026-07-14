@@ -19,6 +19,12 @@ const I18N = {
     tab_common: "Materials",
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
+    tab_collections: "✦ Collections",
+    sel_note1: "Precursor Agaleus via the 24-step 'Acquiring Agaleus' collection (VoE maps + old Tyria dive spots).",
+    sel_note2: "Gift of Castoran Mastery requires Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sub-achievements each) + 250 Obsidian Shards + 1 Bloodstone Shard.",
+    tab_collections: "✦ Collections",
+    sel_note1: "Précurseur Agaleus via la collection 'Acquiring Agaleus' en 24 étapes (cartes VoE + spots de plongée de la vieille Tyrie).",
+    sel_note2: "Gift of Castoran Mastery requiert Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sous-achievements chacun) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_raids: "⚔ Raids",
     raids_li_note: "Cap: 77 Legendary Insights/week (43 weekly clears + encounters + daily bounties + quickplay). 150 needed — minimum 2 weeks.",
     raids_wings_note: "Wings 5–6–7 (PoF) required for the 3 collections. Gift of Compassion sold by Scholar Glenna in any wing.",
@@ -821,6 +827,7 @@ const LEGENDARIES = {
       { id: "clovers",   name: "Mystic Clover",     required: 77,  icon: "MC", apiId: 19675 },
       { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
     ],
+    collectionNoteKeys: ["raids_li_note", "raids_wings_note"],
     raidAchievements: [
       { key: "coalescence_1", achievementId: 4035, name: "Coalescence I: Unbridled",
         tip: { fr: "Débloqué au premier kill de boss de raid. Collection de 10 objets (W5 Hall of Chains).", en: "Unlocked on first raid boss kill. 10-item collection (W5 Hall of Chains)." } },
@@ -829,6 +836,36 @@ const LEGENDARIES = {
       { key: "coalescence_3", achievementId: 4805, name: "Coalescence III: Culmination",
         tip: { fr: "Requiert Coalescence II. Essences des 3 boss de W7 (Adina, Sabir, Qadim the Peerless).", en: "Requires Coalescence II. Essences from the 3 W7 bosses (Adina, Sabir, Qadim the Peerless)." } },
     ],
+    metas: [],
+    bounties: [],
+  },
+
+  selachimorpha: {
+    id: "selachimorpha",
+    name: "Selachimorpha",
+    type: { fr: "Respirateur aquatique", en: "Aquabreather" },
+    expansion: "VoE",
+    color: "#2dd4bf",
+    colorDim: "rgba(45,212,191,0.15)",
+    icon: "SE",
+    description: { fr: "Respirateur légendaire — Visions of Eternity (les 3 poids en un craft)", en: "Legendary Aquabreather — Visions of Eternity (all 3 weights in one craft)" },
+    resetType: "daily",
+    currencies: [
+      { id: "notes",   name: "Research Note",  required: 5000, icon: "RN", apiId: 61 },
+      { id: "clovers", name: "Mystic Clover",  required: 55,   icon: "MC", apiId: 19675 },
+      { id: "shards",  name: "Obsidian Shard", required: 250,  icon: "OS", apiId: 19925 },
+    ],
+    raidAchievements: [
+      { key: "selachi_agaleus", achievementId: 8869, name: "Acquiring Agaleus",
+        tip: { fr: "Collection du précurseur en 24 étapes — démarre auprès de « Captain » Lakes au Pub Canach (Breezy Cay).", en: "24-step precursor collection — starts with \"Captain\" Lakes at Pub Canach (Breezy Cay)." } },
+      { key: "selachi_diver", achievementId: 4177, name: "Master Diver",
+        tip: { fr: "Étape 4 de la collection : 10 coffres immergés (Ornate Rusted Keys chez Dive Master Astora, Arche du Lion).", en: "Collection step 4: 10 sunken chests (Ornate Rusted Keys from Dive Master Astora, Lion's Arch)." } },
+      { key: "selachi_shipwreck", achievementId: 8880, name: "Shipwreck Strand Mastery",
+        tip: { fr: "Requis pour le Gift of Castoran Mastery — 30+ sous-achievements sur Shipwreck Strand.", en: "Required for the Gift of Castoran Mastery — 30+ sub-achievements on Shipwreck Strand." } },
+      { key: "selachi_starlit", achievementId: 9057, name: "Starlit Weald Mastery",
+        tip: { fr: "Requis pour le Gift of Castoran Mastery — 30+ sous-achievements sur Starlit Weald.", en: "Required for the Gift of Castoran Mastery — 30+ sub-achievements on Starlit Weald." } },
+    ],
+    collectionNoteKeys: ["sel_note1", "sel_note2"],
     metas: [],
     bounties: [],
   },
@@ -1993,7 +2030,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "coalescence" ? "raids" : "metas"))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : ((selectedLeg === "coalescence" || selectedLeg === "selachimorpha") ? "raids" : "metas"))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2142,9 +2179,9 @@ export default function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(!isPrismatic && selectedLeg !== "conflux" && selectedLeg !== "warbringer" && selectedLeg !== "coalescence" ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
-    ...(selectedLeg === "coalescence" ? [{ id: "raids", label: t("tab_raids") }] : []),
+    ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
@@ -3438,11 +3475,11 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET RAIDS (Coalescence)         */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "raids" && selectedLeg === "coalescence" && (
+      {activeTab === "raids" && leg?.raidAchievements && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
-            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL("coalescence", "Coalescence")} — Raids</div>
-            {t("raids_li_note")}<br />{t("raids_wings_note")}
+            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
+            {(leg?.collectionNoteKeys ?? []).map((k, i) => <div key={k} style={{ marginTop: i > 0 ? 4 : 0 }}>{t(k)}</div>)}
           </div>
           <div className="section-label">Collections</div>
           {(leg?.raidAchievements ?? []).map(a => {

@@ -69,6 +69,10 @@ ACHIEVEMENT_IDS = {
     "coalescence_1":   4035,   # Coalescence I: Unbridled — vérifié API
     "coalescence_2":   4412,   # Coalescence II: The Gift — vérifié API
     "coalescence_3":   4805,   # Coalescence III: Culmination — vérifié API
+    "selachi_agaleus":   8869,   # Acquiring Agaleus (24 étapes, précurseur) — vérifié refs
+    "selachi_shipwreck": 8880,   # Shipwreck Strand Mastery (requis Gift of Castoran Mastery)
+    "selachi_starlit":   9057,   # Starlit Weald Mastery (requis Gift of Castoran Mastery)
+    "selachi_diver":     4177,   # Master Diver (étape 4 de la collection Agaleus)
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
@@ -870,6 +874,14 @@ def progression():
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     }
 
+    # Currencies Selachimorpha (VoE)
+    selachimorpha = {
+        "notes":   wallet_dict.get(61, 0),   # Research Note (wallet)
+        "unusual": wallet_dict.get(62, 0),   # Unusual Coin (monnaie maps VoE)
+        "clovers": mat_dict.get(19675, 0),
+        "shards":  mat_dict.get(19925, 0) + obsidian_bank,
+    }
+
     # Currencies Obsidian Armor (SotO — essences Rift converties wallet juin 2025)
     obsidian_armor = {
         "fine":        wallet_dict.get(78, 0),   # Fine Rift Essence — wallet ID 78
@@ -980,6 +992,7 @@ def progression():
             "warbringer":   warbringer,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
+            "selachimorpha": selachimorpha,
         },
         "common": common,
         "achievements": achievements,

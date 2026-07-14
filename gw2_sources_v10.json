@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.3",
+  "version": "1.4",
   "last_updated": "2026-07-14",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -342,6 +342,9 @@
    ],
    "91234": [
     "coalescence"
+   ],
+   "105921": [
+    "selachimorpha"
    ]
   },
   "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -5664,7 +5667,9 @@
    ],
    "qty": {
     "selachimorpha": 1
-   }
+   },
+   "recipe": "MF : 1× Gift of Adventure (VoE) + 1× Gift of the Seas + 1× Bloodstone Shard + 250× Obsidian Shard",
+   "prereq": "Achievements Shipwreck Strand Mastery (8880) + Starlit Weald Mastery (9057) — 30+ sous-achievements chacun"
   },
   "agaleus": {
    "name": "Agaleus",
@@ -7180,9 +7185,25 @@
     "fr": "Précurseur Agaleus via collection 'Acquiring Agaleus' (24 étapes, VoE maps). Partage Gift of the Survivors/People avec Aetheric Anchor et Endless Summer.",
     "en": "Agaleus precursor via the 'Acquiring Agaleus' collection (24 steps, VoE maps). Shares Gift of the Survivors/People with Aetheric Anchor and Endless Summer."
    },
-   "armory_api_id": null,
+   "armory_api_id": 105921,
    "armory_max_count": 1,
-   "armory_note": "Aquabreather — apiId to confirm."
+   "armory_note": "105921 vérifié (calculateur gw2efficiency) — 1 des 3 poids. Les 2 autres IDs (light/medium/heavy) à compléter au premier craft ; le container 105743 délivre les 3, donc la détection fonctionne dès l'obtention.",
+   "container_api_id": 105743,
+   "achievements": {
+    "acquiring_agaleus": 8869,
+    "shipwreck_strand_mastery": 8880,
+    "starlit_weald_mastery": 9057,
+    "master_diver": 4177
+   },
+   "totals": {
+    "mystic_clovers": 55,
+    "research_notes": 5000,
+    "research_notes_wallet_id": 61,
+    "obsidian_shards": 250,
+    "bloodstone_shard": 1,
+    "unusual_coin_wallet_id": 62,
+    "note": "Chiffres GuildJen (nov 2025) : 55 clovers, 5000 Research Notes. Obsidian Shards + Bloodstone Shard via Gift of Castoran Mastery (wiki). Unusual Coins = monnaie map VoE (coffres Mirror, metas Castora), montant total variable selon achats."
+   }
   },
   "legendary_rune": {
    "name": "Legendary Rune",
