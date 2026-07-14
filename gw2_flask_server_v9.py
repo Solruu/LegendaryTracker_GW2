@@ -80,6 +80,9 @@ ACHIEVEMENT_IDS = {
     "eikasia_r3":       8835,   # Third Recursion
     "eikasia_working":  8830,   # Working Together (fil conducteur Dust)
     "eikasia_infinite": 8814,   # Infinite Recursion (150 Dust — poids supplémentaires)
+    "rune_collector":   7796,   # Legendary Rune Collector (bind 7)
+    "sigil_collector":  7788,   # Legendary Sigil Collector (bind 8)
+    "relic_components": 7829,   # Legendary Relics: Components (guide des gifts)
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
@@ -881,6 +884,15 @@ def progression():
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     }
 
+    # Currencies Upgrades légendaires (runes/sigils/relique)
+    upgrades = {
+        "provisioner": wallet_dict.get(29, 0),
+        "lucent":      mat_dict.get(89140, 0),   # Lucent Mote
+        "lucent_pile": mat_dict.get(89271, 0),   # Pile of Lucent Crystal
+        "clovers":     mat_dict.get(19675, 0),
+        "ectos":       mat_dict.get(19721, 0),
+    }
+
     # Currencies Selachimorpha (VoE)
     selachimorpha = {
         "notes":   wallet_dict.get(61, 0),   # Research Note (wallet)
@@ -1000,6 +1012,7 @@ def progression():
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,
+            "upgrades":     upgrades,
         },
         "common": common,
         "achievements": achievements,

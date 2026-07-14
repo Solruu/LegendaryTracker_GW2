@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.5",
+  "version": "1.6",
   "last_updated": "2026-07-14",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -351,6 +351,9 @@
    ],
    "105317": [
     "eikasia"
+   ],
+   "101582": [
+    "legendary_relic"
    ]
   },
   "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -3218,7 +3221,8 @@
       "en": "Purchase for 500 Hydrocatalytic + 250 Thermocatalytic + 250 Exotic Essence of Luck + 10 Ecto from Lyhr (5 Ecto from Lucirae — better price)."
      }
     }
-   ]
+   ],
+   "recipe": "MF : 250× Thermocatalytic Reagent + 500× Hydrocatalytic Reagent + 250× Exotic Essence of Luck"
   },
   "hydrocatalytic_reagent": {
    "name": "Hydrocatalytic Reagent",
@@ -7233,7 +7237,8 @@
    },
    "qty_needed": 6,
    "armory_api_id": 91536,
-   "armory_max_count": 1
+   "armory_max_count": 7,
+   "achievement_collector": 7796
   },
   "legendary_sigil": {
    "name": "Legendary Sigil",
@@ -7257,7 +7262,8 @@
    },
    "qty_needed": 8,
    "armory_api_id": 91505,
-   "armory_max_count": 1
+   "armory_max_count": 8,
+   "achievement_collector": 7788
   },
   "legendary_relic": {
    "name": "Legendary Relic",
@@ -7276,8 +7282,18 @@
     "fr": "Gift of Relics = 25 Mystic Facets (750 Piles of Lucent Crystal + 1 Relic élevée chacun, MF) + Gift of the Obscure + Gift of Condensed Magic/Might. ~18 750 Piles of Lucent Crystal au total (187 500 Lucent Motes).",
     "en": "Gift of Relics = 25 Mystic Facets (750 Piles of Lucent Crystal + 1 Relic ascended chacun, MF) + Gift of the Obscure + Gift of Condensed Magic/Might. ~18 750 Piles of Lucent Crystal total (187 500 Lucent Motes)."
    },
-   "armory_api_id": 100916,
-   "armory_max_count": 1
+   "armory_api_id": 101582,
+   "armory_max_count": 1,
+   "achievement_components": 7829,
+   "totals": {
+    "mystic_facets": 25,
+    "lucent_motes": 187500,
+    "piles_lucent_crystal": 18750,
+    "mystic_clovers": 25,
+    "ectos": 150,
+    "gift_of_research": 1,
+    "gift_of_research_apiId": 97655
+   }
   },
   "perfected_envoy": {
    "name": "Perfected Envoy Armor",
@@ -10121,6 +10137,32 @@
    },
    "armory_api_id": 81462,
    "armory_max_count": 1
+  },
+  "upgrades_combined": {
+   "name": "Legendary Upgrades",
+   "note": {
+    "fr": "Vue combinée runes/sigils/relique pour l'onglet Upgrades du tracker. Objectif confort : 6 runes + 2-4 sigils + 1 relique. Chaque unité = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens). Shortcuts : Lyhr (SotO, +10 Ectos/gift) ou Ward Crafter Lucirae (JW).",
+    "en": "Combined runes/sigils/relic view for the tracker's Upgrades tab. Comfort goal: 6 runes + 2-4 sigils + 1 relic. Each unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens). Shortcuts: Lyhr (SotO, +10 Ectos/gift) or Ward Crafter Lucirae (JW)."
+   },
+   "armory": {
+    "rune": {
+     "apiId": 91536,
+     "max": 7
+    },
+    "sigil": {
+     "apiId": 91505,
+     "max": 8
+    },
+    "relic": {
+     "apiId": 101582,
+     "max": 1
+    }
+   },
+   "achievements": {
+    "rune_collector": 7796,
+    "sigil_collector": 7788,
+    "relic_components": 7829
+   }
   }
  }
 }
