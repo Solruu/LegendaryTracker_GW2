@@ -19,6 +19,11 @@ const I18N = {
     tab_common: "Materials",
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
+    tab_raids: "⚔ Raids",
+    raids_li_note: "Cap: 77 Legendary Insights/week (43 weekly clears + encounters + daily bounties + quickplay). 150 needed — minimum 2 weeks.",
+    raids_wings_note: "Wings 5–6–7 (PoF) required for the 3 collections. Gift of Compassion sold by Scholar Glenna in any wing.",
+    wb_req_note: "Requires WvW rank 350 + Commander's Compendium (300g + 250 Badges) for the last Warcry tier. Minimum 7 weeks (2800 tickets at 365+90/week).",
+    ach_locked: "Locked",
     obs_target_hint: "Tap a piece to add/remove it from your goal. ✓ = owned (armory). Default goal: 1 full set (6 pieces).",
     obs_goal: "Goal: {n} piece(s) targeted — {o} owned, {r} remaining",
     obs_goal_default: "No piece selected — costs shown for 1 full set ({r} remaining).",
@@ -150,6 +155,11 @@ const I18N = {
     tab_common: "Matériaux",
     tab_currencies: "Progression",
     tab_pieces: "⬡ Pièces ({n}/18)",
+    tab_raids: "⚔ Raids",
+    raids_li_note: "Cap : 77 Legendary Insights/semaine (43 clears hebdo + encounters + primes daily + quickplay). 150 requis — minimum 2 semaines.",
+    raids_wings_note: "Wings 5–6–7 (PoF) obligatoires pour les 3 collections. Gift of Compassion vendu par Scholar Glenna dans n'importe quelle wing.",
+    wb_req_note: "Requiert rang McM 350 + Commander's Compendium (300 po + 250 Badges) pour le dernier palier de Warcry. Minimum 7 semaines (2800 tickets à 365+90/sem).",
+    ach_locked: "Verrouillé",
     obs_target_hint: "Touche une pièce pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Objectif par défaut : 1 set complet (6 pièces).",
     obs_goal: "Objectif : {n} pièce(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     obs_goal_default: "Aucune pièce sélectionnée — coûts affichés pour 1 set complet ({r} restantes).",
@@ -757,6 +767,69 @@ const LEGENDARIES = {
         limit: { fr: "1 completion suffit", en: "1 completion is enough" }, resetDay: "Unique",
         tip: { fr: "Compléter le reward track 'Gift of Battle' — requis pour tous les légendaires. ~5-6 soirées.", en: "Complete the 'Gift of Battle' reward track — required for all legendaries. ~5-6 evenings." } },
     ],
+    bounties: [],
+  },
+
+  warbringer: {
+    id: "warbringer",
+    name: "Warbringer",
+    type: { fr: "Objet de dos", en: "Back item" },
+    expansion: "Core",
+    color: "#f87171",
+    colorDim: "rgba(248,113,113,0.15)",
+    icon: "WB",
+    description: { fr: "Dos légendaire — exclusif Monde contre Monde (+ skin de planeur)", en: "Legendary Back item — World vs World exclusive (+ glider skin)" },
+    resetType: "weekly",
+    requirementNoteKey: "wb_req_note",
+    currencies: [
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 2800, icon: "SK", apiId: 26 },
+      { id: "memory",  name: "Memory of Battle",       required: 750,  icon: "MB", apiId: 71581 },
+      { id: "badges",  name: "Badge of Honor",         required: 1250, icon: "BH", apiId: 15 },
+      { id: "jade",    name: "Testimony of Jade Heroics", required: 500, icon: "JH", apiId: 65 },
+    ],
+    metas: [],
+    wvwActivities: [
+      { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
+        limit: { fr: "365 tickets/semaine", en: "365 tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Source principale de tickets. Maintenir une participation Gold+ pour maximiser les pips.", en: "Main ticket source. Maintain Gold+ participation to maximize pips." } },
+      { id: "weeklies", name: { fr: "Hebdomadaires McM", en: "WvW Weeklies" }, icon: "WK",
+        limit: { fr: "~90 tickets bonus/semaine", en: "~90 bonus tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Compléter les objectifs hebdomadaires McM. À vérifier dans le menu Succès → McM.", en: "Complete WvW weekly objectives. Check in the Achievements → WvW menu." } },
+      { id: "war_razor", name: { fr: "Wings of War (War Razor)", en: "Wings of War (War Razor)" }, icon: "WR",
+        limit: { fr: "4 paliers : 350/525/700/875 tickets", en: "4 tiers: 350/525/700/875 tickets" }, resetDay: "Unique",
+        tip: { fr: "Précurseur Warcry : 4 objets de dos chez Legendary Commander War Razor (rangs 50/100/200/350). 2450 tickets au total.", en: "Warcry precursor: 4 back items from Legendary Commander War Razor (ranks 50/100/200/350). 2450 tickets total." } },
+      { id: "reward_track", name: { fr: "Piste « Don de bataille » ×4", en: "Gift of Battle Track ×4" }, icon: "RT",
+        limit: { fr: "4 completions requises", en: "4 completions required" }, resetDay: "Unique",
+        tip: { fr: "4 Gifts of Battle nécessaires — 4 passages du reward track (~20-24 soirées au total).", en: "4 Gifts of Battle needed — 4 runs of the reward track (~20-24 evenings total)." } },
+    ],
+    bounties: [],
+  },
+
+  coalescence: {
+    id: "coalescence",
+    name: "Coalescence",
+    type: { fr: "Anneau", en: "Ring" },
+    expansion: "PoF",
+    color: "#38bdf8",
+    colorDim: "rgba(56,189,248,0.15)",
+    icon: "CO",
+    description: { fr: "Anneau légendaire — Raids (Wings 5-7 requis)", en: "Legendary Ring — Raids (Wings 5-7 required)" },
+    resetType: "weekly",
+    currencies: [
+      { id: "insights",  name: "Legendary Insight", required: 150, icon: "LI", apiId: 70 },
+      { id: "gaeting",   name: "Gaeting Crystal",   required: 100, icon: "GC", apiId: 39 },
+      { id: "clovers",   name: "Mystic Clover",     required: 77,  icon: "MC", apiId: 19675 },
+      { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
+    ],
+    raidAchievements: [
+      { key: "coalescence_1", achId: 4035, name: "Coalescence I: Unbridled",
+        tip: { fr: "Débloqué au premier kill de boss de raid. Collection de 10 objets (W5 Hall of Chains).", en: "Unlocked on first raid boss kill. 10-item collection (W5 Hall of Chains)." } },
+      { key: "coalescence_2", achId: 4412, name: "Coalescence II: The Gift",
+        tip: { fr: "Requiert Coalescence I. Alembic Apparatus : 100 Gaeting Crystals + 10 po chez Glenna (W6).", en: "Requires Coalescence I. Alembic Apparatus: 100 Gaeting Crystals + 10g from Glenna (W6)." } },
+      { key: "coalescence_3", achId: 4805, name: "Coalescence III: Culmination",
+        tip: { fr: "Requiert Coalescence II. Essences des 3 boss de W7 (Adina, Sabir, Qadim the Peerless).", en: "Requires Coalescence II. Essences from the 3 W7 bosses (Adina, Sabir, Qadim the Peerless)." } },
+    ],
+    metas: [],
     bounties: [],
   },
 
@@ -1660,6 +1733,9 @@ export default function GW2LegendaryTracker() {
   const [armoryRaw, setArmoryRaw] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
   });
+  const [apiAch, setApiAch] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_api_achievements") ?? "null") ?? {}); } catch { return {}; }
+  });
   const [obsAch, setObsAch] = useState(() => {
     try { return (JSON.parse(localStorage.getItem("gw2_obsidian_achievements") ?? "null") ?? {}); } catch { return {}; }
   });
@@ -1709,6 +1785,10 @@ export default function GW2LegendaryTracker() {
       for (const [legId, vals] of Object.entries(data.currencies ?? {})) {
         const cur = await storeGet(getCurrencyKey(legId)) ?? {};
         await storeSet(getCurrencyKey(legId), { ...cur, ...vals });
+      }
+      if (data.achievements) {
+        try { localStorage.setItem("gw2_api_achievements", JSON.stringify(data.achievements)); } catch (_) {}
+        setApiAch(data.achievements);
       }
       if (data.common) {
         await storeSet(getCommonKey(), data.common);
@@ -1913,7 +1993,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab(selectedLeg === "conflux" ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : "metas")));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "coalescence" ? "raids" : "metas"))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2062,8 +2142,9 @@ export default function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(!isPrismatic && selectedLeg !== "conflux" ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
-    ...(selectedLeg === "conflux" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
+    ...(!isPrismatic && selectedLeg !== "conflux" && selectedLeg !== "warbringer" && selectedLeg !== "coalescence" ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
+    ...(selectedLeg === "coalescence" ? [{ id: "raids", label: t("tab_raids") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
@@ -2531,11 +2612,16 @@ export default function GW2LegendaryTracker() {
       {activeTab === "wvw" && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.12)", borderRadius: "8px", fontFamily: "'Crimson Text', serif" }}>
-            <div style={{ fontSize: "12px", fontWeight: 600, color: "#fb923c", marginBottom: "5px" }}>⚔ {NL("conflux", "Conflux")} — {t("wvw_label")}</div>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)} — {t("wvw_label")}</div>
             <div style={{ fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
               {t("wvw_reset_note_pre")}<strong>{t("wvw_reset_note_day")}</strong>{t("wvw_reset_note_post")}
             </div>
           </div>
+          {leg?.requirementNoteKey && (
+            <div style={{ margin: "6px 14px", padding: "9px 12px", background: "rgba(248,113,113,0.05)", border: "1px solid rgba(248,113,113,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
+              {t(leg.requirementNoteKey)}
+            </div>
+          )}
           <div className="section-label">{t("sec_weekly")}</div>
           {(leg?.wvwActivities ?? []).map(a => (
             <div key={a.id} className="wvw-card" style={{ "--leg-color": legColor }}>
@@ -3348,6 +3434,41 @@ export default function GW2LegendaryTracker() {
           </div>
         );
       })()}
+
+      {/* ══════════════════════════════════ */}
+      {/* ONGLET RAIDS (Coalescence)         */}
+      {/* ══════════════════════════════════ */}
+      {activeTab === "raids" && selectedLeg === "coalescence" && (
+        <div>
+          <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL("coalescence", "Coalescence")} — Raids</div>
+            {t("raids_li_note")}<br />{t("raids_wings_note")}
+          </div>
+          <div className="section-label">Collections</div>
+          {(leg?.raidAchievements ?? []).map(a => {
+            const st = apiAch[a.key] ?? {};
+            const done = st.done === true;
+            const cur = st.current ?? 0;
+            const mx = st.max ?? 0;
+            const locked = !done && mx === 0;
+            return (
+              <div key={a.key} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
+                    {done ? "✓ " : ""}{NX(a.achId, a.name)}
+                  </div>
+                  <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
+                    {done ? "✓" : (locked ? t("ach_locked") : `${cur}/${mx}`)}
+                  </div>
+                </div>
+                <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
+                  {L(a.tip)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       {activeTab === "currencies" && (
         <div>

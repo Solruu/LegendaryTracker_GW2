@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.2",
+  "version": "1.3",
   "last_updated": "2026-07-14",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -339,6 +339,9 @@
    ],
    "101460": [
     "obsidian"
+   ],
+   "91234": [
+    "coalescence"
    ]
   },
   "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -9976,8 +9979,24 @@
     "fr": "Anneau légendaire (LW4), obtenu principalement via les Raids (Wing 1–5). Composant requis pour Vision. Synergie visuelle avec Aurora et Vision. Farm : Raid Proofs + Ball of Dark Energy.",
     "en": "Legendary ring (LW4), obtained mainly via Raids (Wing 1–5). Required component for Vision. Visually synergizes with Aurora and Vision. Farm: Raid Proofs + Ball of Dark Energy."
    },
-   "armory_api_id": 88499,
-   "armory_max_count": 2
+   "armory_api_id": 91234,
+   "armory_max_count": 2,
+   "armory_id_note": "91234 vérifié wiki (l'ancien 88499 était erroné)",
+   "achievements": {
+    "coalescence_1": 4035,
+    "coalescence_2": 4412,
+    "coalescence_3": 4805
+   },
+   "totals": {
+    "legendary_insights": 150,
+    "li_weekly_cap": 77,
+    "li_note": "Cap 77/semaine (43 weekly + encounters + daily bounties + quickplay) → minimum 2 semaines",
+    "gaeting_alembic": 100,
+    "gaeting_note": "Alembic Apparatus (Coalescence II) : 100 Gaeting Crystals + 10 po chez Glenna (W6). Wallet ID 39 (PoF) — PAS 20 (Ley Line Crystal) ni 77 (Gaeting Janthir).",
+    "mystic_clovers": 77,
+    "mystic_coins": 250,
+    "raids_required": "Wings 5-6-7 (PoF) obligatoires pour les 3 collections"
+   }
   },
   "fractal_capacitor": {
    "name": "Fractal Capacitor",
@@ -10018,6 +10037,48 @@
    },
    "armory_api_id": 91048,
    "armory_max_count": 2
+  },
+  "warbringer": {
+   "name": "Warbringer",
+   "slot": "back",
+   "farm": "WvW",
+   "expansion": "Core",
+   "wiki": "Warbringer",
+   "recipe": "MF : Warcry + Gift of Warfare + Gift of Fortune + Gift of Conquering",
+   "components": [
+    "warcry",
+    "gift_of_warfare",
+    "gift_of_fortune",
+    "gift_of_conquering"
+   ],
+   "requirements": {
+    "wvw_rank": 350,
+    "commander_tag": "Commander's Compendium — 300 po + 250 Badges of Honor",
+    "note": {
+     "fr": "Rang 350 requis pour Commander's Wings of War (dernier palier du précurseur Warcry).",
+     "en": "Rank 350 required for Commander's Wings of War (last tier of the Warcry precursor)."
+    }
+   },
+   "totals": {
+    "skirmish_tickets": 2800,
+    "tickets_breakdown": "Warcry (4 Wings of War chez War Razor) = 2450 + Essence of Annihilation = 350",
+    "memory_of_battle": 750,
+    "memory_breakdown": "250 (Gift of Conquering) + 500 (Essence of Carnage)",
+    "badges_of_honor": 1250,
+    "badges_breakdown": "1000 (Essence of Strategy) + 250 (Commander's Compendium)",
+    "testimony_jade_heroics": 500,
+    "jade_note": "Essence of Animosity — wallet ID 65 (Testimony of Jade Heroics, PAS 82=Castoran ni 36=Desert)",
+    "gift_of_battle": 4,
+    "mystic_clovers": 77,
+    "vision_crystals": 2,
+    "ectos_gift_of_fortune": 250
+   },
+   "time_gate": {
+    "fr": "2800 tickets à 365+90/semaine max → minimum 7 semaines.",
+    "en": "2800 tickets at max 365+90/week → minimum 7 weeks."
+   },
+   "armory_api_id": 81462,
+   "armory_max_count": 1
   }
  }
 }

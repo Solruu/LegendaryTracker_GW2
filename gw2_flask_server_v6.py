@@ -856,18 +856,18 @@ def progression():
 
     # Currencies Warbringer (WvW — mêmes sources que Conflux)
     warbringer = {
-        "tickets":   wallet_dict.get(26, 0),
-        "memory":    mat_dict.get(71581, 0),
-        "badges":    wallet_dict.get(15, 0),
-        "testimony": wallet_dict.get(82, 0),
+        "tickets": wallet_dict.get(26, 0),
+        "memory":  mat_dict.get(71581, 0),
+        "badges":  wallet_dict.get(15, 0),
+        "jade":    wallet_dict.get(65, 0),   # Testimony of Jade Heroics (recette actuelle) — 82=Castoran, 36=Desert
     }
 
     # Currencies Coalescence (Raids)
     coalescence = {
-        "insights":    wallet_dict.get(70, 0),   # Legendary Insight
-        "magnetite":   wallet_dict.get(28, 0),   # Magnetite Shard
-        "gaeting":     wallet_dict.get(20, 0),   # Gaeting Crystal (wallet ID 20)
-        "provisioner": wallet_dict.get(29, 0),   # Provisioner Token
+        "insights":  wallet_dict.get(70, 0),   # Legendary Insight
+        "magnetite": wallet_dict.get(28, 0),   # Magnetite Shard (W1-4)
+        "gaeting":   wallet_dict.get(39, 0),   # Gaeting Crystal PoF (W5-7) — 20=Ley Line Crystal était FAUX, 77=Gaeting Janthir
+        "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     }
 
     # Currencies Obsidian Armor (SotO — essences Rift converties wallet juin 2025)
