@@ -89,6 +89,8 @@ const I18N = {
     wpn_goal: "Goal: {n} weapon(s) targeted — {o} owned, {r} remaining",
     wpn_goal_default: "No weapon selected — pick your first targets (axe, mace, hammer?).",
     wpn_resolving: "Resolving weapon names via GW2 API…",
+    bits_meta_note: "Meta-achievement — its steps are the map achievements below (completion states sync via Flask).",
+    bits_meta_nostatus: "Connect the Flask API to see per-achievement completion.",
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_loading: "Loading step definitions…",
@@ -249,6 +251,8 @@ const I18N = {
     wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
+    bits_meta_note: "Méta-achievement — ses étapes sont les achievements de carte ci-dessous (statuts synchronisés via Flask).",
+    bits_meta_nostatus: "Connecte l'API Flask pour voir la complétion par achievement.",
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_loading: "Chargement des définitions d'étapes…",
@@ -12097,7 +12101,7 @@ function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v1`;
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v2`;
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -12120,11 +12124,64 @@ function GW2LegendaryTracker() {
         }
         const out = {};
         for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names };
+        // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
+        const metas = defs.filter(d => (d.bits ?? []).length === 0);
+        if (metas.length > 0) {
+          let cats = null;
+          try { cats = JSON.parse(localStorage.getItem("gw2_ach_categories_v1") ?? "null"); } catch (_) {}
+          if (!cats) {
+            const rc = await fetch("https://api.guildwars2.com/v2/achievements/categories?ids=all");
+            if (rc.ok) {
+              const full = await rc.json();
+              cats = full.map(c => ({ id: c.id, achievements: (c.achievements ?? []).map(x => (typeof x === "object" ? x.id : x)) }));
+              try { localStorage.setItem("gw2_ach_categories_v1", JSON.stringify(cats)); } catch (_) {}
+            }
+          }
+          if (cats) {
+            for (const m of metas) {
+              const cat = cats.find(c => c.achievements.includes(m.id));
+              if (!cat) continue;
+              const subIds = cat.achievements.filter(x => x !== m.id).slice(0, 60);
+              const subs = [];
+              for (let k = 0; k < subIds.length; k += 150) {
+                const chunk = subIds.slice(k, k + 150);
+                const rs = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
+                if (rs.ok) for (const s of await rs.json()) subs.push({ id: s.id, name: s.name });
+              }
+              out[String(m.id)].subs = subs;
+            }
+          }
+        }
         setAchBitsDefs(out);
         try { localStorage.setItem(cacheKey, JSON.stringify(out)); } catch (_) {}
       } catch (_) {}
     })();
   }, [selectedLeg, lang]);
+
+  // ── Statuts des sous-achievements (métas) via Flask ──
+  useEffect(() => {
+    const allSubs = [];
+    for (const d of Object.values(achBitsDefs)) {
+      for (const s of (d.subs ?? [])) allSubs.push(s.id);
+    }
+    if (allSubs.length === 0) return;
+    const missing = allSubs.filter(id => achSubStatus[String(id)] === undefined);
+    if (missing.length === 0) return;
+    (async () => {
+      try {
+        const oKey = (gtApiKey ?? "").trim();
+        const url = `http://127.0.0.1:5000/api/achievements/status?ids=${missing.slice(0, 200).join(",")}` + (oKey ? `&key=${encodeURIComponent(oKey)}` : "");
+        const r = await fetch(url);
+        if (!r.ok) return;
+        const data = await r.json();
+        setAchSubStatus(prev => {
+          const next = { ...prev, ...data };
+          try { localStorage.setItem("gw2_ach_substatus", JSON.stringify(next)); } catch (_) {}
+          return next;
+        });
+      } catch (_) { /* Flask absent */ }
+    })();
+  }, [achBitsDefs]);
 
   // ── Armes : découverte runtime via /v2/legendaryarmory + /v2/items (zéro ID hardcodé) ──
   useEffect(() => {
@@ -12232,6 +12289,9 @@ function GW2LegendaryTracker() {
   }, []);
   const [wpnItems, setWpnItems] = useState(null);
   const [achBitsDefs, setAchBitsDefs] = useState({});
+  const [achSubStatus, setAchSubStatus] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_ach_substatus") ?? "null") ?? {}); } catch { return {}; }
+  });
   const [expandedAch, setExpandedAch] = useState(null);
   const [armoryRaw, setArmoryRaw] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
@@ -13993,7 +14053,25 @@ function GW2LegendaryTracker() {
                       <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>{t("bits_loading")}</div>
                     )}
                     {def && (def.bits.length === 0 ? (
-                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>—</div>
+                      (def.subs && def.subs.length > 0) ? (
+                        <div>
+                          <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", marginBottom: "4px" }}>
+                            {t("bits_meta_note")}{Object.keys(achSubStatus).length === 0 ? " " + t("bits_meta_nostatus") : ""}
+                          </div>
+                          {def.subs.map(s => {
+                            const ss = achSubStatus[String(s.id)] ?? {};
+                            const sDone = ss.done === true;
+                            return (
+                              <div key={s.id} style={{ display: "flex", alignItems: "baseline", gap: "6px", padding: "2px 0", fontSize: "11px", color: sDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
+                                <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{sDone ? "✓" : "○"}</span>
+                                <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 0 ? ` (${ss.current}/${ss.max})` : ""}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>—</div>
+                      )
                     ) : def.bits.map((b, i) => {
                       const stepDone = done || doneBits.has(i);
                       let label = t("bits_step", { n: i + 1 });

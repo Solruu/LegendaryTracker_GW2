@@ -1234,6 +1234,39 @@ def obsidian_achievements():
     return jsonify(result)
 
 
+@app.route("/api/achievements/status")
+def achievements_status():
+    """
+    Statut de complétion pour une liste arbitraire d'IDs d'achievements.
+    Params : ids=1,2,3 (max 200). Retourne { id: { done, current, max } }.
+    Sert aux méta-achievements (masteries de cartes) dont les étapes sont
+    d'autres achievements et non des bits.
+    """
+    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    if not api_key:
+        return jsonify({"error": "Cle API manquante"}), 400
+    ids_param = request.args.get("ids", "")
+    try:
+        wanted = [int(x) for x in ids_param.split(",") if x.strip()][:200]
+    except ValueError:
+        return jsonify({"error": "ids invalides"}), 400
+    if not wanted:
+        return jsonify({})
+    ach_raw, err = gw2_get("account/achievements", api_key)
+    if err:
+        return jsonify({"error": err}), 500
+    idx = {e["id"]: e for e in (ach_raw or [])}
+    result = {}
+    for i in wanted:
+        e = idx.get(i)
+        result[str(i)] = {
+            "done":    e.get("done", False) if e else False,
+            "current": e.get("current", 0) if e else 0,
+            "max":     e.get("max", 0) if e else 0,
+        }
+    return jsonify(result)
+
+
 @app.route("/api/legendaryarmory")
 def legendary_armory():
     """Proxy vers /v2/account/legendaryarmory — clé reste côté machine."""
