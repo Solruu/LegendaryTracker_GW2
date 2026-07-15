@@ -946,19 +946,51 @@ const LEGENDARIES = {
     icon: "UP",
     description: { fr: "Améliorations légendaires — swap libre de runes, sigils et relique sur tous les personnages", en: "Legendary upgrades — free rune, sigil and relic swapping across all characters" },
     resetType: "daily",
+    // Totaux pour l'objectif confort 6 runes + 2 sigils + 1 relique (recettes wiki vérifiées)
     currencies: [
-      { id: "provisioner", name: "Provisioner Token",       required: 450,    icon: "PT", apiId: 29 },
-      { id: "lucent",      name: "Lucent Mote",             required: 187500, icon: "LM", apiId: 89140 },
-      { id: "clovers",     name: "Mystic Clover",           required: 25,     icon: "MC", apiId: 19675 },
-      { id: "ectos",       name: "Glob of Ectoplasm",       required: 150,    icon: "EC", apiId: 19721 },
+      { id: "provisioner", name: "Provisioner Token",        required: 450,   icon: "PT", apiId: 29 },
+      { id: "lucent_pile", name: "Pile of Lucent Crystal",   required: 23250, icon: "LP", apiId: 89271 },
+      { id: "clovers",     name: "Mystic Clover",            required: 205,   icon: "MC", apiId: 19675 },
+      { id: "ectos",       name: "Glob of Ectoplasm",        required: 1050,  icon: "EC", apiId: 19721 },
+      { id: "shards",      name: "Obsidian Shard",           required: 450,   icon: "OS", apiId: 19925 },
     ],
     raidAchievements: [
       { key: "rune_collector", achievementId: 7796, name: "Legendary Rune Collector",
-        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." } },
+        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
+        recipe: {
+          fr: ["1 Rune = MF : Gift of Runes + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Runes = 50× Mystic Aspect + 20× Mystic Clover + 100× Ectos + 50× Obsidian Shard",
+               "1 Mystic Aspect (craft 75, Armorsmith/LW/Tailor) = 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
+               "→ Par rune : 500 Piles Lucent + 50 charms de CHAQUE type + 20 Clovers + 100 Ectos + 50 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"],
+          en: ["1 Rune = MF: Gift of Runes + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Runes = 50× Mystic Aspect + 20× Mystic Clover + 100× Ectos + 50× Obsidian Shard",
+               "1 Mystic Aspect (craft 75, Armorsmith/LW/Tailor) = 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
+               "→ Per rune: 500 Lucent Piles + 50 charms of EACH type + 20 Clovers + 100 Ectos + 50 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"]
+        } },
       { key: "sigil_collector", achievementId: 7788, name: "Legendary Sigil Collector",
-        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2-4 couvrent l'essentiel.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." } },
+        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2-4 couvrent l'essentiel.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." },
+        recipe: {
+          fr: ["1 Sigil = MF : Gift of Sigils + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Sigils = 75× Mystic Mote + 30× Mystic Clover + 150× Ectos + 75× Obsidian Shard",
+               "1 Mystic Mote (craft 75, Artificer/Huntsman/Weaponsmith) = 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
+               "→ Par sigil : 750 Piles Lucent + 75 symbols de CHAQUE type + 30 Clovers + 150 Ectos + 75 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"],
+          en: ["1 Sigil = MF: Gift of Sigils + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Sigils = 75× Mystic Mote + 30× Mystic Clover + 150× Ectos + 75× Obsidian Shard",
+               "1 Mystic Mote (craft 75, Artificer/Huntsman/Weaponsmith) = 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
+               "→ Per sigil: 750 Lucent Piles + 75 symbols of EACH type + 30 Clovers + 150 Ectos + 75 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"]
+        } },
       { key: "relic_components", achievementId: 7829, name: "Legendary Relics: Components",
-        tip: { fr: "Guide des composants de la relique (une seule requise). Lyhr peut assister le craft à la Wizard's Tower.", en: "Relic component guide (only one needed). Lyhr can assist crafting at the Wizard's Tower." } },
+        tip: { fr: "Guide des composants de la relique (une seule requise). Lyhr peut assister le craft à la Wizard's Tower.", en: "Relic component guide (only one needed). Lyhr can assist crafting at the Wizard's Tower." },
+        recipe: {
+          fr: ["1 Relique = MF : Gift of Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Relics = 25× Mystic Facet + 25× Mystic Clover + 150× Ectos + 1× Gift of Research",
+               "1 Mystic Facet = MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — chance rare d'en produire 5 d'un coup !",
+               "→ Pour la relique : 18 750 Piles Lucent (moins avec les procs ×5) + 25 reliques exotiques + 25 Clovers + 150 Ectos + Gift of Research + 50 Provisioner Tokens + T6"],
+          en: ["1 Relic = MF: Gift of Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
+               "Gift of Relics = 25× Mystic Facet + 25× Mystic Clover + 150× Ectos + 1× Gift of Research",
+               "1 Mystic Facet = MF: 1× Relic (any exotic) + 750× Pile of Lucent Crystal — rare chance to output 5 at once!",
+               "→ For the relic: 18,750 Lucent Piles (less with ×5 procs) + 25 exotic relics + 25 Clovers + 150 Ectos + Gift of Research + 50 Provisioner Tokens + T6"]
+        } },
     ],
     collectionNoteKeys: ["up_note1", "up_note2"],
     metas: [],
@@ -3797,10 +3829,19 @@ export default function GW2LegendaryTracker() {
                     {locked && (
                       <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.6)", marginBottom: "5px" }}>{t("bits_locked_note")}</div>
                     )}
-                    {!def && (
+                    {!a.recipe && !def && (
                       <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>{t("bits_loading")}</div>
                     )}
-                    {def && (def.bits.length === 0 ? (
+                    {a.recipe && (
+                      <div style={{ marginBottom: "6px" }}>
+                        {(L(a.recipe) ?? []).map((line, li) => (
+                          <div key={li} style={{ fontSize: "11px", color: "rgba(226,201,126,0.65)", fontFamily: "'Crimson Text', serif", padding: "2px 0", lineHeight: 1.45 }}>
+                            {line}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {!a.recipe && def && (def.bits.length === 0 ? (
                       (def.subs && def.subs.length > 0) ? (
                         <div>
                           <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", marginBottom: "4px" }}>
