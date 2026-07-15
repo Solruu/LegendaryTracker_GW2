@@ -20,7 +20,7 @@ const I18N = {
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
     tab_collections: "✦ Collections",
-    tab_weapons: "⚔ Weapons ({n}/16)",
+    tab_weapons: "⚔ Weapons ({n}/{m})",
     wpn_target_hint: "Tap a weapon to add/remove it from your goal. ✓ = owned (armory). Gen 3 (Aurene) — gen 1/2 coming later.",
     wpn_goal: "Goal: {n} weapon(s) targeted — {o} owned, {r} remaining",
     wpn_goal_default: "No weapon selected — pick your first targets (axe, mace, hammer?).",
@@ -180,7 +180,7 @@ const I18N = {
     eik_note2: "La progression Fractalline Dust se lit dans les achievements Recursion ci-dessous (current/max). Poids supplémentaires : Infinite Recursion (150 Dust) + 8 Gifts (craft 400, recettes 10 po pièce) ou craft assisté Lyhr (+80 Ectos/poids).",
     up_note1: "Une unité = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens chacun). Tokens : Rend Scorchmaul (Wizard's Tower) échange des matériaux bruts SANS limite — meilleure source de volume. Provisioners de carte SotO/JW : 1/jour chacun ; Tyrie centrale/HoT : 7/semaine (patch juin 2025).",
     up_note2: "Relique (1 seule requise) : Gift of Relics = 25 Mystic Facets (187 500 Lucent Motes !) + 25 Clovers + 150 Ectos + 1 Gift of Research. Objectif confort global : 6 runes + 2-4 sigils + 1 relique — pure QoL, aucun timer, aucun verrou d'achievement.",
-    tab_weapons: "⚔ Armes ({n}/16)",
+    tab_weapons: "⚔ Armes ({n}/{m})",
     wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Gen 3 (Aurene) — gen 1/2 plus tard.",
     wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
@@ -972,7 +972,7 @@ const LEGENDARIES = {
     description: { fr: "Armes légendaires génération 3 — matrice de ciblage (16 armes)", en: "Generation 3 legendary weapons — targeting matrix (16 weapons)" },
     resetType: "weekly",
     isWeaponTracker: true,
-    gen3Ids: [96937, 96938, 96939, 96940, 96941, 96942, 96943, 96944, 96945, 96946, 96947, 96948, 96949, 96950, 96951, 96952],
+    // IDs découverts au runtime via /v2/legendaryarmory (les 96937-96952 "consécutifs" étaient faux — seul 96937 existait)
     currenciesPerWeapon: [
       { id: "antique",    name: "Antique Summoning Stone",         perUnit: 100,  icon: "AS", apiId: 96978 },
       { id: "runestones", name: "Jade Runestone",                  perUnit: 100,  icon: "JR", apiId: 96722 },
@@ -1872,28 +1872,52 @@ export default function GW2LegendaryTracker() {
     })();
   }, [selectedLeg, lang]);
 
-  // ── Armes gen3 : résolution nom/type des 16 armes via /v2/items (public, cache par langue) ──
+  // ── Armes : découverte runtime via /v2/legendaryarmory + /v2/items (zéro ID hardcodé) ──
   useEffect(() => {
     if (selectedLeg !== "weapons") return;
-    const ids = LEGENDARIES.weapons.gen3Ids;
-    const cacheKey = `gw2_weapons_items_${lang}_v1`;
+    const cacheKey = `gw2_weapons_items_${lang}_v2`;
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
-      if (cached && Object.keys(cached).length === ids.length) { setWpnItems(cached); return; }
+      if (cached && Object.keys(cached).length > 0) { setWpnItems(cached); return; }
     } catch (_) {}
-    fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`)
-      .then(r => (r.ok ? r.json() : null))
-      .then(list => {
-        if (!Array.isArray(list)) return;
+    (async () => {
+      try {
+        const ra = await fetch("https://api.guildwars2.com/v2/legendaryarmory?ids=all");
+        if (!ra.ok) return;
+        const armory = await ra.json();
+        const allIds = armory.map(e => e.id);
         const map = {};
-        for (const it of list) {
-          const dt = (it && it.details) ? it.details : {};
-          map[String(it.id)] = { name: it.name, wtype: dt.type ?? "?" };
+        for (let k = 0; k < allIds.length; k += 150) {
+          const chunk = allIds.slice(k, k + 150);
+          const ri = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=${lang}`);
+          if (!ri.ok) continue;
+          for (const it of await ri.json()) {
+            if (it.type !== "Weapon") continue;
+            // Phase 1 : gen3 (armes d'Aurene). La langue change le nom affiché mais
+            // le filtre doit rester stable → on refetche le nom EN si lang ≠ en.
+            map[String(it.id)] = { name: it.name, wtype: (it.details ?? {}).type ?? "?" };
+          }
         }
-        setWpnItems(map);
-        try { localStorage.setItem(cacheKey, JSON.stringify(map)); } catch (_) {}
-      })
-      .catch(() => {});
+        // Filtre gen3 : noms EN pour la stabilité du filtre
+        let enNames = {};
+        if (lang !== "en") {
+          const wIds = Object.keys(map);
+          for (let k = 0; k < wIds.length; k += 150) {
+            const chunk = wIds.slice(k, k + 150);
+            const re = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=en`);
+            if (re.ok) for (const it of await re.json()) enNames[String(it.id)] = it.name;
+          }
+        } else {
+          for (const [id, v] of Object.entries(map)) enNames[id] = v.name;
+        }
+        const gen3 = {};
+        for (const [id, v] of Object.entries(map)) {
+          if ((enNames[id] ?? "").startsWith("Aurene's")) gen3[id] = v;
+        }
+        setWpnItems(gen3);
+        try { localStorage.setItem(cacheKey, JSON.stringify(gen3)); } catch (_) {}
+      } catch (_) {}
+    })();
   }, [selectedLeg, lang]);
 
   const [expanded, setExpanded] = useState(null);
@@ -2347,7 +2371,7 @@ export default function GW2LegendaryTracker() {
 
   // ── Armes gen3 : ciblées / possédées / restantes ──
   const isWeapons = selectedLeg === "weapons";
-  const wpnIds = LEGENDARIES.weapons.gen3Ids;
+  const wpnIds = wpnItems ? Object.keys(wpnItems).map(Number) : [];
   const wpnOwnedSet = new Set(wpnIds.filter(id => armoryRaw.has(id)));
   const wpnHasTarget = wpnTarget.size > 0;
   const wpnTargetOwned = wpnHasTarget ? [...wpnTarget].filter(id => wpnOwnedSet.has(id)).length : 0;
@@ -2377,7 +2401,7 @@ export default function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size }) }] : []),
+    ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
@@ -3747,7 +3771,7 @@ export default function GW2LegendaryTracker() {
           : t("wpn_goal_default");
         return (
           <div>
-            <div className="section-label">{t("tab_weapons", { n: wpnOwnedSet.size })}</div>
+            <div className="section-label">{t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 })}</div>
             <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
               {t("wpn_target_hint")}
             </div>
@@ -3762,7 +3786,7 @@ export default function GW2LegendaryTracker() {
             )}
             {wpnItems && (
               <div style={{ margin: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
-                {LEGENDARIES.weapons.gen3Ids.map(id => {
+                {[...wpnIds].sort((x, y) => ((wpnItems[String(x)] ?? {}).wtype ?? "").localeCompare((wpnItems[String(y)] ?? {}).wtype ?? "")).map(id => {
                   const cell = wpnItems[String(id)];
                   if (!cell) return <div key={id} />;
                   const owned = wpnOwnedSet.has(id);

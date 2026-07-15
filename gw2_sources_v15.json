@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.8",
+  "version": "1.9",
   "last_updated": "2026-07-15",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -234,51 +234,6 @@
    ],
    "96937": [
     "gen3_aurenes_fang"
-   ],
-   "96938": [
-    "gen3_aurenes_claw"
-   ],
-   "96939": [
-    "gen3_aurenes_bite"
-   ],
-   "96940": [
-    "gen3_aurenes_weight"
-   ],
-   "96941": [
-    "gen3_aurenes_gaze"
-   ],
-   "96942": [
-    "gen3_aurenes_insight"
-   ],
-   "96943": [
-    "gen3_aurenes_argument"
-   ],
-   "96944": [
-    "gen3_aurenes_guard"
-   ],
-   "96945": [
-    "gen3_aurenes_persuasion"
-   ],
-   "96946": [
-    "gen3_aurenes_voice"
-   ],
-   "96947": [
-    "gen3_aurenes_wrath"
-   ],
-   "96948": [
-    "gen3_aurenes_reckoning"
-   ],
-   "96949": [
-    "gen3_aurenes_scale"
-   ],
-   "96950": [
-    "gen3_aurenes_wisdom"
-   ],
-   "96951": [
-    "gen3_aurenes_breath"
-   ],
-   "96952": [
-    "gen3_aurenes_tenderness"
    ],
    "92991": [
     "transcendence"
@@ -8640,8 +8595,9 @@
    "precursor": "Axe of Aurene's Rending",
    "gift_unique": "Gift of Aurene's Rending",
    "gen": "gen3",
-   "armory_api_id": 96937,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_claw": {
    "name": "Aurene's Claw",
@@ -8664,8 +8620,9 @@
    "precursor": "Dagger of Aurene's Rending",
    "gift_unique": "Gift of Aurene's Rending",
    "gen": "gen3",
-   "armory_api_id": 96938,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_bite": {
    "name": "Aurene's Bite",
@@ -8688,8 +8645,9 @@
    "precursor": "Sword of Aurene's Rending",
    "gift_unique": "Gift of Aurene's Rending",
    "gen": "gen3",
-   "armory_api_id": 96939,
-   "armory_max_count": 4
+   "armory_api_id": null,
+   "armory_max_count": 4,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_weight": {
    "name": "Aurene's Weight",
@@ -8712,8 +8670,9 @@
    "precursor": "Mace of Aurene's Resolve",
    "gift_unique": "Gift of Aurene's Resolve",
    "gen": "gen3",
-   "armory_api_id": 96940,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_gaze": {
    "name": "Aurene's Gaze",
@@ -8736,8 +8695,9 @@
    "precursor": "Pistol of Aurene's Resolve",
    "gift_unique": "Gift of Aurene's Resolve",
    "gen": "gen3",
-   "armory_api_id": 96941,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_insight": {
    "name": "Aurene's Insight",
@@ -8760,8 +8720,9 @@
    "precursor": "Scepter of Aurene's Resolve",
    "gift_unique": "Gift of Aurene's Resolve",
    "gen": "gen3",
-   "armory_api_id": 96942,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_argument": {
    "name": "Aurene's Argument",
@@ -8784,8 +8745,9 @@
    "precursor": "Focus of Aurene's Wisdom",
    "gift_unique": "Gift of Aurene's Wisdom",
    "gen": "gen3",
-   "armory_api_id": 96943,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_guard": {
    "name": "Aurene's Guard",
@@ -8808,8 +8770,9 @@
    "precursor": "Shield of Aurene's Wisdom",
    "gift_unique": "Gift of Aurene's Wisdom",
    "gen": "gen3",
-   "armory_api_id": 96944,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_persuasion": {
    "name": "Aurene's Persuasion",
@@ -8832,8 +8795,9 @@
    "precursor": "Torch of Aurene's Wisdom",
    "gift_unique": "Gift of Aurene's Wisdom",
    "gen": "gen3",
-   "armory_api_id": 96945,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_voice": {
    "name": "Aurene's Voice",
@@ -8856,8 +8820,9 @@
    "precursor": "Warhorn of Aurene's Wisdom",
    "gift_unique": "Gift of Aurene's Wisdom",
    "gen": "gen3",
-   "armory_api_id": 96946,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_wrath": {
    "name": "Aurene's Wrath",
@@ -8880,8 +8845,9 @@
    "precursor": "Greatsword of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96947,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_reckoning": {
    "name": "Aurene's Reckoning",
@@ -8904,8 +8870,9 @@
    "precursor": "Hammer of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96948,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_scale": {
    "name": "Aurene's Scale",
@@ -8928,8 +8895,9 @@
    "precursor": "Longbow of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96949,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_wisdom": {
    "name": "Aurene's Wisdom",
@@ -8952,8 +8920,9 @@
    "precursor": "Rifle of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96950,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_breath": {
    "name": "Aurene's Breath",
@@ -8976,8 +8945,9 @@
    "precursor": "Shortbow of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96951,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "gen3_aurenes_tenderness": {
    "name": "Aurene's Tenderness",
@@ -9000,8 +8970,9 @@
    "precursor": "Staff of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
-   "armory_api_id": 96952,
-   "armory_max_count": 2
+   "armory_api_id": null,
+   "armory_max_count": 2,
+   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
   },
   "eikasia": {
    "name": "Eikasia, Mists-Grasper",
@@ -10179,8 +10150,8 @@
   "weapons_tracker": {
    "name": "Legendary Weapons (tracker)",
    "note": {
-    "fr": "Vue matrice de l'onglet Armes. Phase 1 : gen3 (16 armes Aurene, IDs 96937-96952). Currencies par arme : 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 en liste complète à venir.",
-    "en": "Matrix view for the Weapons tab. Phase 1: gen3 (16 Aurene weapons, IDs 96937-96952). Per-weapon currencies: 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 full list to come."
+    "fr": "Vue matrice de l'onglet Armes. Phase 1 : gen3 (16 armes Aurene — IDs découverts au runtime via /v2/legendaryarmory). Currencies par arme : 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 en liste complète à venir.",
+    "en": "Matrix view for the Weapons tab. Phase 1: gen3 (16 Aurene weapons — IDs discovered at runtime via /v2/legendaryarmory). Per-weapon currencies: 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 full list to come."
    },
    "per_weapon_gen3": {
     "antique_summoning_stone": 100,
