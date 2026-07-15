@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "1.6",
-  "last_updated": "2026-07-14",
+  "version": "1.7",
+  "last_updated": "2026-07-15",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -5997,10 +5997,26 @@
    },
    "sources": [
     {
+     "type": "vendor_unlimited",
+     "npc": "Rend Scorchmaul (Wizard's Tower, SotO)",
+     "tip": "SANS LIMITE d'échanges. Matériaux bruts (rotation quotidienne, ex. stack de Mithril/Elder Wood) = 1 token. La meilleure source pour du volume."
+    },
+    {
      "type": "vendor_daily",
-     "tip": "Faction Provisioners (1 item craftable/jour/vendor) ou raids CM hebdo. 300 au total pour un set."
+     "npc": "Faction Provisioners SotO/JW (5 sur Skywatch, Amnytas, Inner Nayos, Lowland Shore…)",
+     "tip": "1 échange/jour/vendor. Matériaux bruts = 1 token, armes Stormforged/Saryx = 5 tokens. 3 choix rotatifs par jour."
+    },
+    {
+     "type": "vendor_weekly",
+     "npc": "Faction Provisioners Tyrie centrale + HoT",
+     "tip": "7 échanges/semaine par vendor (patch 03/06/2025, anciennement 1/jour)."
+    },
+    {
+     "type": "no_cap_mats",
+     "tip": "Échangeables SANS limite hebdo : Charged Quartz Crystal, Lump of Mithrillium, Glob of Elder Spirit Residue, Spool of Thick Elonian Cord, Research Notes."
     }
-   ]
+   ],
+   "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids."
   },
   "gift_of_expertise": {
    "name": "Gift of Expertise",
