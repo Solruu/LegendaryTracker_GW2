@@ -25,6 +25,10 @@ const I18N = {
     wpn_goal: "Goal: {n} weapon(s) targeted — {o} owned, {r} remaining",
     wpn_goal_default: "No weapon selected — pick your first targets (axe, mace, hammer?).",
     wpn_resolving: "Resolving weapon names via GW2 API…",
+    bits_tap_hint: "Tap a collection to expand its steps.",
+    bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
+    bits_loading: "Loading step definitions…",
+    bits_step: "Step {n}",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -181,6 +185,10 @@ const I18N = {
     wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
+    bits_tap_hint: "Touche une collection pour déplier ses étapes.",
+    bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
+    bits_loading: "Chargement des définitions d'étapes…",
+    bits_step: "Étape {n}",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -1830,6 +1838,40 @@ export default function GW2LegendaryTracker() {
       .catch(() => {});
   }, [selectedLeg, lang]);
 
+  // ── Collections : définitions des étapes (bits) via /v2/achievements + résolution items ──
+  useEffect(() => {
+    const list = LEGENDARIES[selectedLeg]?.raidAchievements;
+    if (!list || list.length === 0) return;
+    const ids = list.map(a => a.achievementId);
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v1`;
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
+      if (cached) { setAchBitsDefs(cached); return; }
+    } catch (_) {}
+    (async () => {
+      try {
+        const r = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${ids.join(",")}&lang=${lang}`);
+        if (!r.ok) return;
+        const defs = await r.json();
+        const itemIds = new Set();
+        for (const d of defs) for (const b of (d.bits ?? [])) {
+          if (b.type === "Item" && b.id) itemIds.add(b.id);
+        }
+        const names = {};
+        const arr = [...itemIds];
+        for (let k = 0; k < arr.length; k += 150) {
+          const chunk = arr.slice(k, k + 150);
+          const ri = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=${lang}`);
+          if (ri.ok) for (const it of await ri.json()) names[String(it.id)] = it.name;
+        }
+        const out = {};
+        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names };
+        setAchBitsDefs(out);
+        try { localStorage.setItem(cacheKey, JSON.stringify(out)); } catch (_) {}
+      } catch (_) {}
+    })();
+  }, [selectedLeg, lang]);
+
   // ── Armes gen3 : résolution nom/type des 16 armes via /v2/items (public, cache par langue) ──
   useEffect(() => {
     if (selectedLeg !== "weapons") return;
@@ -1911,6 +1953,8 @@ export default function GW2LegendaryTracker() {
     });
   }, []);
   const [wpnItems, setWpnItems] = useState(null);
+  const [achBitsDefs, setAchBitsDefs] = useState({});
+  const [expandedAch, setExpandedAch] = useState(null);
   const [armoryRaw, setArmoryRaw] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
   });
@@ -3637,17 +3681,23 @@ export default function GW2LegendaryTracker() {
             {(leg?.collectionNoteKeys ?? []).map((k, i) => <div key={k} style={{ marginTop: i > 0 ? 4 : 0 }}>{t(k)}</div>)}
           </div>
           <div className="section-label">Collections</div>
+          <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {(leg?.raidAchievements ?? []).map(a => {
             const st = apiAch[a.key] ?? {};
             const done = st.done === true;
             const cur = st.current ?? 0;
             const mx = st.max ?? 0;
             const locked = !done && mx === 0;
+            const isOpen = expandedAch === a.key;
+            const def = achBitsDefs[String(a.achievementId)];
+            const doneBits = new Set(st.bits ?? []);
             return (
-              <div key={a.key} style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px" }}>
+              <div key={a.key}
+                onClick={() => setExpandedAch(isOpen ? null : a.key)}
+                style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(255,255,255,0.02)", border: `1px solid ${done ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.08)"}`, borderRadius: "8px", cursor: "pointer" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
-                    {done ? "✓ " : ""}{NX(a.name)}
+                    <span style={{ opacity: 0.5, marginRight: 5 }}>{isOpen ? "▾" : "▸"}</span>{done ? "✓ " : ""}{NX(a.name)}
                   </div>
                   <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
                     {done ? "✓" : (locked ? t("ach_locked") : `${cur}/${mx}`)}
@@ -3656,6 +3706,32 @@ export default function GW2LegendaryTracker() {
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
                   {L(a.tip)}
                 </div>
+                {isOpen && (
+                  <div style={{ marginTop: "8px", borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: "7px" }} onClick={e => e.stopPropagation()}>
+                    {locked && (
+                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.6)", marginBottom: "5px" }}>{t("bits_locked_note")}</div>
+                    )}
+                    {!def && (
+                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>{t("bits_loading")}</div>
+                    )}
+                    {def && (def.bits.length === 0 ? (
+                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>—</div>
+                    ) : def.bits.map((b, i) => {
+                      const stepDone = done || doneBits.has(i);
+                      let label = t("bits_step", { n: i + 1 });
+                      if (b.type === "Item" && b.id) { label = def.names[String(b.id)] ?? label; }
+                      else if (b.type === "Text" && b.text) { label = b.text; }
+                      else if (b.type === "Skin") { label = label + " (skin)"; }
+                      else if (b.type === "Minipet") { label = label + " (mini)"; }
+                      return (
+                        <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "6px", padding: "2px 0", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
+                          <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
+                          <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
+                        </div>
+                      );
+                    }))}
+                  </div>
+                )}
               </div>
             );
           })}
