@@ -884,6 +884,15 @@ def progression():
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     }
 
+    # Currencies Armes gen3 (tracker Armes)
+    weapons_gen3 = {
+        "antique":    mat_dict.get(96978, 0),   # Antique Summoning Stone (vérifié ref — pas 91024)
+        "runestones": mat_dict.get(96722, 0),   # Jade Runestone (vérifié ref — pas 97264)
+        "lodestones": mat_dict.get(92687, 0),   # Amalgamated Draconic Lodestone
+        "clovers":    mat_dict.get(19675, 0),
+        "notes":      wallet_dict.get(61, 0),   # Research Note
+    }
+
     # Currencies Upgrades légendaires (runes/sigils/relique)
     upgrades = {
         "provisioner": wallet_dict.get(29, 0),
@@ -1013,6 +1022,7 @@ def progression():
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,
             "upgrades":     upgrades,
+            "weapons":      weapons_gen3,
         },
         "common": common,
         "achievements": achievements,

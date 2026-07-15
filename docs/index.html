@@ -84,6 +84,13 @@ const I18N = {
     tab_currencies: "Progress",
     tab_pieces: "⬡ Pieces ({n}/18)",
     tab_collections: "✦ Collections",
+    tab_weapons: "⚔ Weapons ({n}/16)",
+    wpn_target_hint: "Tap a weapon to add/remove it from your goal. ✓ = owned (armory). Gen 3 (Aurene) — gen 1/2 coming later.",
+    wpn_goal: "Goal: {n} weapon(s) targeted — {o} owned, {r} remaining",
+    wpn_goal_default: "No weapon selected — pick your first targets (axe, mace, hammer?).",
+    wpn_resolving: "Resolving weapon names via GW2 API…",
+    wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
+    wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
     up_note2: "Relic (1 needed): Gift of Relics = 25 Mystic Facets (187,500 Lucent Motes!) + 25 Clovers + 150 Ectos + 1 Gift of Research. Comfort goal overall: 6 runes + 2-4 sigils + 1 relic — pure QoL, no timers, no achievement locks.",
     eik_note1: "Legendary GLOVES only (not a full set). Earned via the fractal quickplay mode (scale 1, LFG panel) — free content, no expansion needed.",
@@ -91,6 +98,13 @@ const I18N = {
     sel_note1: "Precursor Agaleus via the 24-step 'Acquiring Agaleus' collection (VoE maps + old Tyria dive spots).",
     sel_note2: "Gift of Castoran Mastery requires Shipwreck Strand Mastery + Starlit Weald Mastery (30+ sub-achievements each) + 250 Obsidian Shards + 1 Bloodstone Shard.",
     tab_collections: "✦ Collections",
+    tab_weapons: "⚔ Armes ({n}/16)",
+    wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Gen 3 (Aurene) — gen 1/2 plus tard.",
+    wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
+    wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
+    wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
+    wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
+    wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     up_note1: "Une unité = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens chacun). Tokens : Rend Scorchmaul (Wizard's Tower) échange des matériaux bruts SANS limite — meilleure source de volume. Provisioners de carte SotO/JW : 1/jour chacun ; Tyrie centrale/HoT : 7/semaine (patch juin 2025).",
     up_note2: "Relique (1 seule requise) : Gift of Relics = 25 Mystic Facets (187 500 Lucent Motes !) + 25 Clovers + 150 Ectos + 1 Gift of Research. Objectif confort global : 6 runes + 2-4 sigils + 1 relique — pure QoL, aucun timer, aucun verrou d'achievement.",
     eik_note1: "GANTS légendaires uniquement (pas un set complet). Obtenus via le mode quickplay fractales (échelle 1, panneau LFG) — contenu gratuit, aucune extension requise.",
@@ -535,7 +549,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "1.7",
+    "version": "1.8",
     "last_updated": "2026-07-15",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4866,7 +4880,7 @@ const SOURCES_DB = {
     },
     "antique_summoning_stone": {
       "name": "Antique Summoning Stone",
-      "apiId": 91024,
+      "apiId": 96978,
       "needed_for": [
         "gift_of_the_dragon_empire"
       ],
@@ -4918,11 +4932,12 @@ const SOURCES_DB = {
       "timegate_note": {
         "fr": "Cap ~5/semaine chez Leivas + drop quotidien Trépas du dragon. ~9 semaines minimum sans achats au TP.",
         "en": "Cap ~5/week Leivas + daily Dragon's End drop. ~9 weeks minimum without TP purchases."
-      }
+      },
+      "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Time-gate ~5/sem via vendors EoD, achetable TP."
     },
     "jade_runestone": {
       "name": "Jade Runestone",
-      "apiId": 97264,
+      "apiId": 96722,
       "needed_for": [
         "gift_of_the_dragon_empire"
       ],
@@ -4957,7 +4972,8 @@ const SOURCES_DB = {
         "gen3_aurenes_wisdom": 100,
         "gen3_aurenes_breath": 100,
         "gen3_aurenes_tenderness": 100
-      }
+      },
+      "apiId_note": "96722 vérifié gw2_materials_ref (97264 était faux). Achetable TP ou vendors EoD."
     },
     "gift_of_the_dragon_empire": {
       "name": "Gift of the Dragon Empire",
@@ -5049,7 +5065,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
         "en": "Structurally identical to Mystic Tribute (gen2). Same sub-components, different EoD tag."
-      }
+      },
+      "recipe": "MF : 38× Mystic Clover + 1× Gift of Condensed Magic + 1× Gift of Condensed Might + 5× Amalgamated Draconic Lodestone"
     },
     "memories_of_aurene": {
       "name": "Memories of Aurene",
@@ -6097,27 +6114,20 @@ const SOURCES_DB = {
     },
     "amalgamated_draconic_lodestone": {
       "name": "Amalgamated Draconic Lodestone",
-      "apiId": 106501,
+      "apiId": 92687,
       "needed_for": [
-        "gift_of_insight_voe"
+        "draconic_tribute"
       ],
+      "qty": {
+        "gen3__per_weapon": 5
+      },
       "farmable": true,
       "sources": [
         {
-          "type": "map_events",
-          "tip": {
-            "fr": "Drop des rifts/convergences VoE et EoD. Aussi au TP.",
-            "en": "Drops from VoE and EoD rifts/convergences. Also on TP."
-          }
-        },
-        {
-          "type": "tp",
-          "tip": "Buy on TP."
+          "type": "boss",
+          "tip": "Coffre final Dragonstorm / Drakkar (chance de drop), ou TP (recommandé)."
         }
-      ],
-      "qty": {
-        "aetheric_anchor": 55
-      }
+      ]
     },
     "gift_of_insight_voe": {
       "name": "Gift of Insight (VoE)",
@@ -10714,6 +10724,22 @@ const SOURCES_DB = {
         "sigil_collector": 7788,
         "relic_components": 7829
       }
+    },
+    "weapons_tracker": {
+      "name": "Legendary Weapons (tracker)",
+      "note": {
+        "fr": "Vue matrice de l'onglet Armes. Phase 1 : gen3 (16 armes Aurene, IDs 96937-96952). Currencies par arme : 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 en liste complète à venir.",
+        "en": "Matrix view for the Weapons tab. Phase 1: gen3 (16 Aurene weapons, IDs 96937-96952). Per-weapon currencies: 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 full list to come."
+      },
+      "per_weapon_gen3": {
+        "antique_summoning_stone": 100,
+        "jade_runestone": 100,
+        "mystic_clover": 38,
+        "amalgamated_draconic_lodestone": 5,
+        "research_notes": 3000,
+        "gift_of_research": 1,
+        "ball_dark_energy": 1
+      }
     }
   }
 };
@@ -11182,6 +11208,31 @@ const LEGENDARIES = {
         tip: { fr: "Guide des composants de la relique (une seule requise). Lyhr peut assister le craft à la Wizard's Tower.", en: "Relic component guide (only one needed). Lyhr can assist crafting at the Wizard's Tower." } },
     ],
     collectionNoteKeys: ["up_note1", "up_note2"],
+    metas: [],
+    bounties: [],
+  },
+
+  weapons: {
+    id: "weapons",
+    name: "Legendary Weapons",
+    type: { fr: "Armes (Gen 3 — Aurene)", en: "Weapons (Gen 3 — Aurene)" },
+    expansion: "EoD",
+    color: "#60a5fa",
+    colorDim: "rgba(96,165,250,0.15)",
+    icon: "⚔",
+    description: { fr: "Armes légendaires génération 3 — matrice de ciblage (16 armes)", en: "Generation 3 legendary weapons — targeting matrix (16 weapons)" },
+    resetType: "weekly",
+    isWeaponTracker: true,
+    gen3Ids: [96937, 96938, 96939, 96940, 96941, 96942, 96943, 96944, 96945, 96946, 96947, 96948, 96949, 96950, 96951, 96952],
+    currenciesPerWeapon: [
+      { id: "antique",    name: "Antique Summoning Stone",         perUnit: 100,  icon: "AS", apiId: 96978 },
+      { id: "runestones", name: "Jade Runestone",                  perUnit: 100,  icon: "JR", apiId: 96722 },
+      { id: "clovers",    name: "Mystic Clover",                   perUnit: 38,   icon: "MC", apiId: 19675 },
+      { id: "lodestones", name: "Amalgamated Draconic Lodestone",  perUnit: 5,    icon: "DL", apiId: 92687 },
+      { id: "notes",      name: "Research Note",                   perUnit: 3000, icon: "RN", apiId: 61 },
+    ],
+    currencies: [],
+    collectionNoteKeys: ["wpn_note1", "wpn_note2"],
     metas: [],
     bounties: [],
   },
@@ -12032,6 +12083,30 @@ function GW2LegendaryTracker() {
       .catch(() => {});
   }, [selectedLeg, lang]);
 
+  // ── Armes gen3 : résolution nom/type des 16 armes via /v2/items (public, cache par langue) ──
+  useEffect(() => {
+    if (selectedLeg !== "weapons") return;
+    const ids = LEGENDARIES.weapons.gen3Ids;
+    const cacheKey = `gw2_weapons_items_${lang}_v1`;
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
+      if (cached && Object.keys(cached).length === ids.length) { setWpnItems(cached); return; }
+    } catch (_) {}
+    fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(list => {
+        if (!Array.isArray(list)) return;
+        const map = {};
+        for (const it of list) {
+          const dt = (it && it.details) ? it.details : {};
+          map[String(it.id)] = { name: it.name, wtype: dt.type ?? "?" };
+        }
+        setWpnItems(map);
+        try { localStorage.setItem(cacheKey, JSON.stringify(map)); } catch (_) {}
+      })
+      .catch(() => {});
+  }, [selectedLeg, lang]);
+
   const [expanded, setExpanded] = useState(null);
   const [copied, setCopied] = useState(null);
 
@@ -12077,6 +12152,18 @@ function GW2LegendaryTracker() {
     });
   }, []);
   const [obsItems, setObsItems] = useState(null);
+  const [wpnTarget, setWpnTarget] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("gw2_weapons_target_v1") ?? "[]")); } catch { return new Set(); }
+  });
+  const toggleWpnTarget = useCallback((id) => {
+    setWpnTarget(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) { next.delete(id); } else { next.add(id); }
+      try { localStorage.setItem("gw2_weapons_target_v1", JSON.stringify([...next])); } catch (_) {}
+      return next;
+    });
+  }, []);
+  const [wpnItems, setWpnItems] = useState(null);
   const [armoryRaw, setArmoryRaw] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]")); } catch { return new Set(); }
   });
@@ -12340,7 +12427,7 @@ function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (leg?.raidAchievements ? "raids" : "metas"))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (leg?.raidAchievements ? "raids" : "metas")))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -12467,10 +12554,20 @@ function GW2LegendaryTracker() {
     ? Math.max(0, obsTarget.size - obsTargetOwned)
     : Math.max(0, 6 - obsOwnedSet.size);
 
-  // ── Calcul progression currencies (Obsidian : requis = coût/pièce × pièces restantes) ──
+  // ── Armes gen3 : ciblées / possédées / restantes ──
+  const isWeapons = selectedLeg === "weapons";
+  const wpnIds = LEGENDARIES.weapons.gen3Ids;
+  const wpnOwnedSet = new Set(wpnIds.filter(id => armoryRaw.has(id)));
+  const wpnHasTarget = wpnTarget.size > 0;
+  const wpnTargetOwned = wpnHasTarget ? [...wpnTarget].filter(id => wpnOwnedSet.has(id)).length : 0;
+  const wpnRemainingCount = wpnHasTarget ? Math.max(0, wpnTarget.size - wpnTargetOwned) : 0;
+
+  // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
   const legCurrencies = isGrandTotal ? [] : (isObsidian
     ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
-    : (leg?.currencies ?? []));
+    : (isWeapons
+      ? (leg?.currenciesPerWeapon ?? []).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
+      : (leg?.currencies ?? [])));
   const mainProgress = isGrandTotal ? [] : legCurrencies.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
@@ -12489,14 +12586,15 @@ function GW2LegendaryTracker() {
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size }) }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
     ...((leg?.bounties?.length > 0) ? [{ id: "bounties", label: t("tab_bounties", { n: Object.keys(bountyDone).length }) }] : []),
-    ...(!isPrismatic && (isObsidian || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
+    ...(!isPrismatic && (isObsidian || isWeapons || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
     ...(!isPrismatic ? [{ id: "common", label: t("tab_common") }] : []),
   ];
 
@@ -13817,10 +13915,71 @@ function GW2LegendaryTracker() {
         </div>
       )}
 
+      {/* ══════════════════════════════════ */}
+      {/* ONGLET ARMES (Gen 3)               */}
+      {/* ══════════════════════════════════ */}
+      {activeTab === "weapons" && isWeapons && (() => {
+        const goalLabel = wpnHasTarget
+          ? t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })
+          : t("wpn_goal_default");
+        return (
+          <div>
+            <div className="section-label">{t("tab_weapons", { n: wpnOwnedSet.size })}</div>
+            <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
+              {t("wpn_target_hint")}
+            </div>
+            <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
+              <div style={{ fontSize: "12px", fontWeight: 600, color: legColor }}>{goalLabel}</div>
+              <button className="adj-btn" onClick={() => detectGtArmory()}>{t("obs_sync")}</button>
+            </div>
+            {!wpnItems && (
+              <div style={{ margin: "10px 14px", fontFamily: "'Crimson Text', serif", fontStyle: "italic", fontSize: "12px", color: "rgba(226,201,126,0.45)" }}>
+                {t("wpn_resolving")}
+              </div>
+            )}
+            {wpnItems && (
+              <div style={{ margin: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
+                {LEGENDARIES.weapons.gen3Ids.map(id => {
+                  const cell = wpnItems[String(id)];
+                  if (!cell) return <div key={id} />;
+                  const owned = wpnOwnedSet.has(id);
+                  const targeted = wpnTarget.has(id);
+                  const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
+                  const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(96,165,250,0.10)" : "rgba(255,255,255,0.02)");
+                  return (
+                    <div key={id}
+                      onClick={() => { if (!owned) toggleWpnTarget(id); }}
+                      title={cell.name}
+                      style={{ padding: "8px 5px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
+                      <div style={{ fontSize: "11px", fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
+                        {owned ? "✓ " : ""}{NX(cell.wtype)}
+                      </div>
+                      <div style={{ fontSize: "9px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        {cell.name}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {(leg?.collectionNoteKeys ?? []).map(k => (
+              <div key={k} style={{ margin: "8px 14px", padding: "10px 13px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.5)" }}>
+                {t(k)}
+              </div>
+            ))}
+          </div>
+        );
+      })()}
+
       {activeTab === "currencies" && (
         <div>
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
-          {isObsidian && (
+          {isWeapons && (
+            <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
+              {t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })}
+            </div>
+          )}
+                    {isObsidian && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
             </div>

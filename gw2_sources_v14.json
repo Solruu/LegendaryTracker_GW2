@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "1.7",
+  "version": "1.8",
   "last_updated": "2026-07-15",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4331,7 +4331,7 @@
   },
   "antique_summoning_stone": {
    "name": "Antique Summoning Stone",
-   "apiId": 91024,
+   "apiId": 96978,
    "needed_for": [
     "gift_of_the_dragon_empire"
    ],
@@ -4383,11 +4383,12 @@
    "timegate_note": {
     "fr": "Cap ~5/semaine chez Leivas + drop quotidien Trépas du dragon. ~9 semaines minimum sans achats au TP.",
     "en": "Cap ~5/week Leivas + daily Dragon's End drop. ~9 weeks minimum without TP purchases."
-   }
+   },
+   "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Time-gate ~5/sem via vendors EoD, achetable TP."
   },
   "jade_runestone": {
    "name": "Jade Runestone",
-   "apiId": 97264,
+   "apiId": 96722,
    "needed_for": [
     "gift_of_the_dragon_empire"
    ],
@@ -4422,7 +4423,8 @@
     "gen3_aurenes_wisdom": 100,
     "gen3_aurenes_breath": 100,
     "gen3_aurenes_tenderness": 100
-   }
+   },
+   "apiId_note": "96722 vérifié gw2_materials_ref (97264 était faux). Achetable TP ou vendors EoD."
   },
   "gift_of_the_dragon_empire": {
    "name": "Gift of the Dragon Empire",
@@ -4514,7 +4516,8 @@
    "note": {
     "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
     "en": "Structurally identical to Mystic Tribute (gen2). Same sub-components, different EoD tag."
-   }
+   },
+   "recipe": "MF : 38× Mystic Clover + 1× Gift of Condensed Magic + 1× Gift of Condensed Might + 5× Amalgamated Draconic Lodestone"
   },
   "memories_of_aurene": {
    "name": "Memories of Aurene",
@@ -5562,27 +5565,20 @@
   },
   "amalgamated_draconic_lodestone": {
    "name": "Amalgamated Draconic Lodestone",
-   "apiId": 106501,
+   "apiId": 92687,
    "needed_for": [
-    "gift_of_insight_voe"
+    "draconic_tribute"
    ],
+   "qty": {
+    "gen3__per_weapon": 5
+   },
    "farmable": true,
    "sources": [
     {
-     "type": "map_events",
-     "tip": {
-      "fr": "Drop des rifts/convergences VoE et EoD. Aussi au TP.",
-      "en": "Drops from VoE and EoD rifts/convergences. Also on TP."
-     }
-    },
-    {
-     "type": "tp",
-     "tip": "Buy on TP."
+     "type": "boss",
+     "tip": "Coffre final Dragonstorm / Drakkar (chance de drop), ou TP (recommandé)."
     }
-   ],
-   "qty": {
-    "aetheric_anchor": 55
-   }
+   ]
   },
   "gift_of_insight_voe": {
    "name": "Gift of Insight (VoE)",
@@ -10178,6 +10174,22 @@
     "rune_collector": 7796,
     "sigil_collector": 7788,
     "relic_components": 7829
+   }
+  },
+  "weapons_tracker": {
+   "name": "Legendary Weapons (tracker)",
+   "note": {
+    "fr": "Vue matrice de l'onglet Armes. Phase 1 : gen3 (16 armes Aurene, IDs 96937-96952). Currencies par arme : 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 en liste complète à venir.",
+    "en": "Matrix view for the Weapons tab. Phase 1: gen3 (16 Aurene weapons, IDs 96937-96952). Per-weapon currencies: 100 Antique Summoning Stones + 100 Jade Runestones + 38 Clovers + 5 Lodestones + 3000 Research Notes. Gen1/gen2 full list to come."
+   },
+   "per_weapon_gen3": {
+    "antique_summoning_stone": 100,
+    "jade_runestone": 100,
+    "mystic_clover": 38,
+    "amalgamated_draconic_lodestone": 5,
+    "research_notes": 3000,
+    "gift_of_research": 1,
+    "ball_dark_energy": 1
    }
   }
  }
