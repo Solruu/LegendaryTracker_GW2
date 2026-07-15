@@ -557,7 +557,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "1.9",
+    "version": "2.0",
     "last_updated": "2026-07-15",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -790,7 +790,7 @@ const SOURCES_DB = {
         "gen2_reaver_of_the_mists"
       ],
       "96937": [
-        "gen3_aurenes_fang"
+        "gen3_aurenes_rending"
       ],
       "92991": [
         "transcendence"
@@ -9131,31 +9131,6 @@ const SOURCES_DB = {
       "armory_api_id": 84537,
       "armory_max_count": 2
     },
-    "gen3_aurenes_fang": {
-      "name": "Aurene's Fang",
-      "slot": "weapon (Axe)",
-      "farm": "PvE mixte (EoD)",
-      "expansion": "EoD",
-      "wiki": "Aurene%27s_Fang",
-      "recipe": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
-      "precursor": "Axe of Aurene's Rending",
-      "gift_unique": "Gift of Aurene's Rending",
-      "gen": "gen3",
-      "armory_api_id": null,
-      "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
-    },
     "gen3_aurenes_claw": {
       "name": "Aurene's Claw",
       "slot": "weapon (Dagger)",
@@ -9179,7 +9154,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_bite": {
       "name": "Aurene's Bite",
@@ -9204,7 +9181,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 4,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_weight": {
       "name": "Aurene's Weight",
@@ -9229,7 +9208,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_gaze": {
       "name": "Aurene's Gaze",
@@ -9254,7 +9235,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_insight": {
       "name": "Aurene's Insight",
@@ -9279,7 +9262,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_argument": {
       "name": "Aurene's Argument",
@@ -9304,7 +9289,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_guard": {
       "name": "Aurene's Guard",
@@ -9329,7 +9316,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_persuasion": {
       "name": "Aurene's Persuasion",
@@ -9354,7 +9343,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_voice": {
       "name": "Aurene's Voice",
@@ -9379,7 +9370,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_wrath": {
       "name": "Aurene's Wrath",
@@ -9404,7 +9397,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_reckoning": {
       "name": "Aurene's Reckoning",
@@ -9429,7 +9424,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_scale": {
       "name": "Aurene's Scale",
@@ -9454,7 +9451,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_wisdom": {
       "name": "Aurene's Wisdom",
@@ -9479,7 +9478,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_breath": {
       "name": "Aurene's Breath",
@@ -9504,7 +9505,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "gen3_aurenes_tenderness": {
       "name": "Aurene's Tenderness",
@@ -9529,7 +9532,9 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker."
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
     },
     "eikasia": {
       "name": "Eikasia, Mists-Grasper",
@@ -10719,6 +10724,31 @@ const SOURCES_DB = {
         "gift_of_research": 1,
         "ball_dark_energy": 1
       }
+    },
+    "gen3_aurenes_rending": {
+      "name": "Aurene's Rending",
+      "slot": "Axe",
+      "farm": "PvE mixte (EoD)",
+      "expansion": "EoD",
+      "wiki": "Aurene%27s_Fang",
+      "recipe": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+      "shared_components": [
+        "mystic_coin",
+        "gift_of_cantha",
+        "antique_summoning_stone",
+        "jade_runestone",
+        "gift_of_the_dragon_empire",
+        "gift_of_jade_mastery",
+        "draconic_tribute",
+        "memories_of_aurene",
+        "legendary_shard_gen3"
+      ],
+      "precursor": "Axe of Aurene's Rending",
+      "gift_unique": "Gift of Aurene's Rending",
+      "gen": "gen3",
+      "armory_api_id": 96937,
+      "armory_max_count": 2,
+      "armory_note": "96937 vérifié wiki — la hache gen3 s'appelle Aurene's Rending (l'ancienne entrée la nommait Fang à tort ; Fang = épée)."
     }
   }
 };
