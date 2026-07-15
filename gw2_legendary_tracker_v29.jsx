@@ -894,9 +894,9 @@ const LEGENDARIES = {
         tip: { fr: "Collection du précurseur en 24 étapes — démarre auprès de « Captain » Lakes au Pub Canach (Breezy Cay).", en: "24-step precursor collection — starts with \"Captain\" Lakes at Pub Canach (Breezy Cay)." } },
       { key: "selachi_diver", achievementId: 4177, name: "Master Diver",
         tip: { fr: "Étape 4 de la collection : 10 coffres immergés (Ornate Rusted Keys chez Dive Master Astora, Arche du Lion).", en: "Collection step 4: 10 sunken chests (Ornate Rusted Keys from Dive Master Astora, Lion's Arch)." } },
-      { key: "selachi_shipwreck", achievementId: 8880, name: "Shipwreck Strand Mastery",
+      { key: "selachi_shipwreck", achievementId: 8880, metaSubs: true, name: "Shipwreck Strand Mastery",
         tip: { fr: "Requis pour le Gift of Castoran Mastery — 30+ sous-achievements sur Shipwreck Strand.", en: "Required for the Gift of Castoran Mastery — 30+ sub-achievements on Shipwreck Strand." } },
-      { key: "selachi_starlit", achievementId: 9057, name: "Starlit Weald Mastery",
+      { key: "selachi_starlit", achievementId: 9057, metaSubs: true, name: "Starlit Weald Mastery",
         tip: { fr: "Requis pour le Gift of Castoran Mastery — 30+ sous-achievements sur Starlit Weald.", en: "Required for the Gift of Castoran Mastery — 30+ sub-achievements on Starlit Weald." } },
     ],
     collectionNoteKeys: ["sel_note1", "sel_note2"],
@@ -1847,7 +1847,7 @@ export default function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v2`;
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v3`;
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -1871,7 +1871,9 @@ export default function GW2LegendaryTracker() {
         const out = {};
         for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names };
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
-        const metas = defs.filter(d => (d.bits ?? []).length === 0);
+        // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
+        const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
+        const metas = defs.filter(d => (d.bits ?? []).length === 0 && metaIds.has(d.id));
         if (metas.length > 0) {
           let cats = null;
           try { cats = JSON.parse(localStorage.getItem("gw2_ach_categories_v1") ?? "null"); } catch (_) {}
