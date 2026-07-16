@@ -401,7 +401,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 8;
+const NAMES_CACHE_VER = 9; // v9 : trinkets (Stella Radians 109070, Endless Summer 107022…)
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "2.3",
+    "version": "v20",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -896,7 +896,8 @@ const SOURCES_DB = {
     "apiid_fix_note": {
       "fr": "Correctif 2026-07: MEE=91024 (etait 97783), Orichalcum Filigree=12834 (etait 19703), Lesser Vision Crystal=49523 (etait 46744). Verifies gw2treasures/wiki.",
       "en": "Fix 2026-07: MEE=91024 (was 97783), Orichalcum Filigree=12834 (was 19703), Lesser Vision Crystal=49523 (was 46744). Verified via gw2treasures/wiki."
-    }
+    },
+    "changelog_v20": "Trinkets: achievements+guide pour transcendence/the_ascension/ad_infinitum/endless_summer/stella_radians/strife_unending/orrax_manifested. Corrections: Transcendence (Gift of Battle WvW requis), Strife Unending (composants réels), Stella Radians apiId=109070."
   },
   "meta_events": {
     "vb": {
@@ -7498,11 +7499,41 @@ const SOURCES_DB = {
         "gift_of_skirmishing"
       ],
       "note": {
-        "fr": "PvP pur. Gift of Skirmishing partagé avec The Ascension. Mystic Tribute partagé avec gen2. Précurseur = Mist Pendant (ascended PvP amulet).",
-        "en": "Pure PvP. Gift of Skirmishing shared with The Ascension. Mystic Tribute shared with gen2. Precursor = Mist Pendant (ascended PvP amulet)."
+        "fr": "Amulette PvP — mais PAS 100% PvP : Gift of Battle (reward track WvW) requis dans Gift of the Champion. Mist Pendant = 4 Mystic Essences (Challenge/Determination/Discipline/Success) achetées au League Vendor + forge. Mystic Tribute partagé gen2/Stella Radians.",
+        "en": "PvP amulet — but NOT 100% PvP: Gift of Battle (WvW reward track) required inside Gift of the Champion. Mist Pendant = 4 Mystic Essences (Challenge/Determination/Discipline/Success) from the League Vendor + forge. Mystic Tribute shared with gen2/Stella Radians."
       },
       "armory_api_id": 92991,
-      "armory_max_count": 1
+      "armory_max_count": 1,
+      "guide": [
+        {
+          "fr": "League Vendor (Heart of the Mists, [&BNgJAAA=]) : acheter les 4 Mystic Essences dans l'ordre (Challenge → Determination → Discipline → Success — chaque achat débloque la suivante).",
+          "en": "League Vendor (Heart of the Mists, [&BNgJAAA=]): buy the 4 Mystic Essences in order (Challenge → Determination → Discipline → Success — each purchase unlocks the next)."
+        },
+        {
+          "fr": "Forger chaque Essence avec ses matériaux T5/T6 + monnaie de compte (ex. Determination + 20 Powerful Blood + 50 Potent Blood + 250 Bloodstone Dust) → 4 Mystic Essences complètes.",
+          "en": "Forge each Essence with its T5/T6 mats + account currency (e.g. Determination + 20 Powerful Blood + 50 Potent Blood + 250 Bloodstone Dust) → 4 completed Mystic Essences."
+        },
+        {
+          "fr": "MF : combiner les 4 Essences → Mist Pendant (amulette élevée, précurseur).",
+          "en": "MF: combine the 4 Essences → Mist Pendant (ascended amulet, precursor)."
+        },
+        {
+          "fr": "Gift of the Champion : forger Salt-Forged Mist Diamond + Gift of the Mists + Gift of Competitive Dedication. Nécessite Gift of Battle (track WvW) et Gift of War (250 Memories of Battle).",
+          "en": "Gift of the Champion: forge Salt-Forged Mist Diamond + Gift of the Mists + Gift of Competitive Dedication. Requires Gift of Battle (WvW track) and Gift of War (250 Memories of Battle)."
+        },
+        {
+          "fr": "Gift of Skirmishing : 4 Mist Core Fragments (coffre final du Glorious Reward Track PvP, ~2 tracks).",
+          "en": "Gift of Skirmishing: 4 Mist Core Fragments (final chest of the PvP Glorious Reward Track, ~2 tracks)."
+        },
+        {
+          "fr": "Mystic Tribute : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins.",
+          "en": "Mystic Tribute: 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins."
+        },
+        {
+          "fr": "MF final : Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence.",
+          "en": "Final MF: Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence."
+        }
+      ]
     },
     "the_ascension": {
       "name": "The Ascension",
@@ -7523,7 +7554,75 @@ const SOURCES_DB = {
       },
       "unlock_also": "glider skin",
       "armory_api_id": 77474,
-      "armory_max_count": 1
+      "armory_max_count": 1,
+      "achievements": [
+        {
+          "key": "ascension_path_1",
+          "id": 2738,
+          "name": "Path of the Ascension I: The Thrill of Battle",
+          "note": {
+            "fr": "Part I — ~15 jours (Daily League Participation ×15). Récompense : Recruit's Wings of Glory débloquées.",
+            "en": "Part I — ~15 days (Daily League Participation ×15). Reward: unlocks Recruit's Wings of Glory."
+          }
+        },
+        {
+          "key": "ascension_path_2",
+          "id": 2752,
+          "name": "Path of the Ascension II: Tapestry of Sacrifice",
+          "note": {
+            "fr": "Part II — mêmes succès, quotas augmentés (~15 jours).",
+            "en": "Part II — same achievements, higher quotas (~15 days)."
+          }
+        },
+        {
+          "key": "ascension_path_3",
+          "id": 2725,
+          "name": "Path of the Ascension III: Monument of Legends",
+          "note": {
+            "fr": "Part III — multi-classes requis (League Professional ×3).",
+            "en": "Part III — multiclassing required (League Professional ×3)."
+          }
+        },
+        {
+          "key": "ascension_path_4",
+          "id": 2715,
+          "name": "Path of the Ascension IV: Hymn of Glory",
+          "note": {
+            "fr": "Part IV — dernière étape du grind ranked.",
+            "en": "Part IV — final ranked grind step."
+          }
+        }
+      ],
+      "guide": [
+        {
+          "fr": "Compléter Year of the Ascension Parts I→IV en ranked PvP (≥60 jours de timegate : 3 matchs classés/jour ×15 jours par part).",
+          "en": "Complete Year of the Ascension Parts I→IV in ranked PvP (≥60 days timegate: 3 ranked matches/day ×15 days per part)."
+        },
+        {
+          "fr": "À chaque part : acheter la Wings of Glory correspondante au League Vendor (PvP League Tickets : Recruit 20 → Elite).",
+          "en": "Each part: buy the matching Wings of Glory from the League Vendor (PvP League Tickets: Recruit 20 → Elite)."
+        },
+        {
+          "fr": "MF : 4× Wings of Glory (Recruit + Veteran + Champion + Elite) → Wings of Ascension (précurseur).",
+          "en": "MF: 4× Wings of Glory (Recruit + Veteran + Champion + Elite) → Wings of Ascension (precursor)."
+        },
+        {
+          "fr": "Gift of the Competitor : récompenses one-time des 4 Parts — c'est pourquoi The Ascension n'est craftable qu'une fois.",
+          "en": "Gift of the Competitor: one-time rewards from the 4 Parts — this is why The Ascension can only be crafted once."
+        },
+        {
+          "fr": "Gift of Skirmishing : 4 Mist Core Fragments (Glorious Reward Track). Gift of Fortune : gen1 partagé (T6 + 77 clovers).",
+          "en": "Gift of Skirmishing: 4 Mist Core Fragments (Glorious Reward Track). Gift of Fortune: shared gen1 (T6 + 77 clovers)."
+        },
+        {
+          "fr": "MF final : Wings of Ascension + Gift of Fortune + Gift of Skirmishing + Gift of the Competitor → The Ascension.",
+          "en": "Final MF: Wings of Ascension + Gift of Fortune + Gift of Skirmishing + Gift of the Competitor → The Ascension."
+        }
+      ],
+      "timegate": {
+        "fr": "≥60 jours (4 parts × ~15 jours de Daily League Participation)",
+        "en": "≥60 days (4 parts × ~15 days of Daily League Participation)"
+      }
     },
     "ad_infinitum": {
       "name": "Ad Infinitum",
@@ -7545,7 +7644,71 @@ const SOURCES_DB = {
       "unlock_also": "glider skin",
       "armory_api_id": 80225,
       "armory_max_count": 1,
-      "armory_note": "Probable apiId 80225 — to confirm live (74155 = Astralaria gen2 axe, conflict avoided)"
+      "armory_note": "Probable apiId 80225 — to confirm live (74155 = Astralaria gen2 axe, conflict avoided)",
+      "achievements": [
+        {
+          "key": "adinf_1",
+          "id": 2351,
+          "name": "Ad Infinitum I: Finite Result",
+          "total": 11,
+          "note": {
+            "fr": "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).",
+            "en": "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)."
+          }
+        },
+        {
+          "key": "adinf_2",
+          "id": 2557,
+          "name": "Ad Infinitum II: Upper Bound",
+          "total": 11,
+          "note": {
+            "fr": "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.",
+            "en": "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta."
+          }
+        },
+        {
+          "key": "adinf_3",
+          "id": 2368,
+          "name": "Ad Infinitum III: Unbound",
+          "total": 11,
+          "note": {
+            "fr": "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.",
+            "en": "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage."
+          }
+        },
+        {
+          "key": "adinf_4",
+          "id": 2295,
+          "name": "Legendary Backpack: Ad Infinitum",
+          "total": 13,
+          "note": {
+            "fr": "13 composants T3/T4 (CM 80% heal réduit : Underground Facility 51+, Aetherblade 51+…). Craftez Unbound puis parlez à Kelvei pour débloquer.",
+            "en": "13 T3/T4 components (80% reduced-healing CMs: Underground Facility 51+, Aetherblade 51+…). Craft Unbound then talk to Kelvei to unlock."
+          }
+        }
+      ],
+      "guide": [
+        {
+          "fr": "Timegate central : chaque collection consomme 1 Fractal Journal = 28 Fractal Research Pages (~3/jour via dailies recommandées, +1 par CM Sunqua/Nightmare/Shattered) → ~10 j/collection sans CM, ~5 j avec.",
+          "en": "Core timegate: each collection consumes 1 Fractal Journal = 28 Fractal Research Pages (~3/day via recommended dailies, +1 per Sunqua/Nightmare/Shattered CM) → ~10 days/collection without CMs, ~5 with."
+        },
+        {
+          "fr": "Économie Balls of Dark Energy : seulement 2 à sourcer soi-même (recyclages de Finite Result/Upper Bound/Fractal Capacitor Infused couvrent le reste).",
+          "en": "Balls of Dark Energy economy: only 2 to source yourself (salvaging Finite Result/Upper Bound/Infused Fractal Capacitor covers the rest)."
+        },
+        {
+          "fr": "Prototype Fractal Capacitor : à conserver et upgrader (Ascended puis Beta Infused) pour la collection II.",
+          "en": "Prototype Fractal Capacitor: keep and upgrade it (Ascended then Beta Infused) for collection II."
+        },
+        {
+          "fr": "MF final : Unbound + Gift of Fortune + Gift of Infinity + Gift of Ascension → Ad Infinitum (+ skin de deltaplane).",
+          "en": "Final MF: Unbound + Gift of Fortune + Gift of Infinity + Gift of Ascension → Ad Infinitum (+ glider skin)."
+        }
+      ],
+      "timegate": {
+        "fr": "~40 jours min sans CM (4 × 28 Research Pages), ~20 j avec CM quotidiens",
+        "en": "~40 days min without CMs (4 × 28 Research Pages), ~20 days with daily CMs"
+      }
     },
     "endless_summer": {
       "name": "Endless Summer",
@@ -7566,7 +7729,72 @@ const SOURCES_DB = {
         "en": "Entirely open-world PvE VoE. No Gift of Battle required — first purely PvE legendary ring farmable solo. 2 copies possible (armory)."
       },
       "armory_api_id": 107022,
-      "armory_max_count": 1
+      "armory_max_count": 1,
+      "achievements": [
+        {
+          "key": "summer_krait",
+          "id": 9180,
+          "name": "Helping Hylek: Kill Krait",
+          "note": {
+            "fr": "Prérequis : parler à Hylek Amini (NE d'Eztlitl Grounds [&BEoCAAA=]), puis tuer 25 kraits à Nonmoa Lake ou compléter l'event Krait Witch.",
+            "en": "Prereq: talk to Hylek Amini (NE of Eztlitl Grounds [&BEoCAAA=]), then kill 25 krait at Nonmoa Lake or complete the Krait Witch event."
+          }
+        },
+        {
+          "key": "summer_sungod",
+          "id": 9183,
+          "name": "Radiance of the Sun God",
+          "total": 20,
+          "note": {
+            "fr": "Chaîne ~20 étapes avec Shaman Palak (falaise NE de Hullgarden Pier [&BMwPAAA=]) : shards à travers Tyrie (mini-donjon Tears of Itlaocol, puzzle Infinite Coil Reactor, JP Hidden Garden…). Récompense : Gift of the Hylek (rachetable chez Palak pour un 2e anneau).",
+            "en": "~20-step chain with Shaman Palak (cliff NE of Hullgarden Pier [&BMwPAAA=]): shards across Tyria (Tears of Itlaocol mini-dungeon, Infinite Coil Reactor puzzle, Hidden Garden JP…). Reward: Gift of the Hylek (re-purchasable from Palak for a 2nd ring)."
+          }
+        },
+        {
+          "key": "selachi_shipwreck",
+          "id": 8880,
+          "name": "Shipwreck Strand Mastery",
+          "note": {
+            "fr": "36 succès requis (sur ~53). Débloque l'achat du composant clé chez le vendeur (500 monnaie de carte + 250 po + 300k karma) + récompense mastery. Partagé avec Selachimorpha.",
+            "en": "36 achievements required (of ~53). Unlocks the key component purchase from the vendor (500 map currency + 250 g + 300k karma) + mastery reward. Shared with Selachimorpha."
+          }
+        },
+        {
+          "key": "selachi_starlit",
+          "id": 9057,
+          "name": "Starlit Weald Mastery",
+          "note": {
+            "fr": "36 succès requis (sur ~55). Même logique pour le Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Partagé avec Selachimorpha.",
+            "en": "36 achievements required (of ~55). Same logic for the Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Shared with Selachimorpha."
+          }
+        }
+      ],
+      "guide": [
+        {
+          "fr": "Maîtriser Wild Castoran Magic à fond avant de farmer (boost des monnaies de carte).",
+          "en": "Max the Wild Castoran Magic mastery before farming (boosts map currency gains)."
+        },
+        {
+          "fr": "Gift of the Hylek : chaîne Radiance of the Sun God (Shaman Palak) — le cœur « quête » de l'anneau.",
+          "en": "Gift of the Hylek: Radiance of the Sun God chain (Shaman Palak) — the quest heart of the ring."
+        },
+        {
+          "fr": "Gift of the Survivors : Castaway Agnes à Hullgarden [&BMwPAAA=] — requiert map completion Shipwreck Strand + Mastery + 500 monnaie de carte.",
+          "en": "Gift of the Survivors: Castaway Agnes at Hullgarden [&BMwPAAA=] — requires Shipwreck Strand map completion + Mastery + 500 map currency."
+        },
+        {
+          "fr": "Gift of the People : Canach à Breezy Cay [&BJEPAAA=] — même structure côté Starlit Weald.",
+          "en": "Gift of the People: Canach at Breezy Cay [&BJEPAAA=] — same structure on the Starlit Weald side."
+        },
+        {
+          "fr": "Gift of Rays : MF = Gift of the Sun + Gift of the Beach + Gift of Infused Gems (250 Obsi Shards + 250 Amalgamated Gemstones + Bloodstone Shard + 100 Mystic Runestones) + 10 Purified Rift Essences (10 Amalgamated Rift Essences + 10 Mystic Clovers). Achetable chez Palak avec surcoût en ectos — la forge est plus rentable.",
+          "en": "Gift of Rays: MF = Gift of the Sun + Gift of the Beach + Gift of Infused Gems (250 Obsi Shards + 250 Amalgamated Gemstones + Bloodstone Shard + 100 Mystic Runestones) + 10 Purified Rift Essences (10 Amalgamated Rift Essences + 10 Mystic Clovers). Buyable from Palak at extra ecto cost — forging is cheaper."
+        },
+        {
+          "fr": "MF final : Gift of Rays + Gift of the Survivors + Gift of the People + Gift of the Hylek → Endless Summer.",
+          "en": "Final MF: Gift of Rays + Gift of the Survivors + Gift of the People + Gift of the Hylek → Endless Summer."
+        }
+      ]
     },
     "stella_radians": {
       "name": "Stella Radians",
@@ -7585,12 +7813,39 @@ const SOURCES_DB = {
         "fr": "Première accessory 100% PvE sans Gift of Battle. Mystic Tribute partagé avec gen2/Transcendence. 2 copies craftables. Patch 12 mai 2026.",
         "en": "First 100% PvE accessory without Gift of Battle. Mystic Tribute shared with gen2/Transcendence. 2 craftable copies. Patch May 12, 2026."
       },
-      "armory_api_id": null,
+      "armory_api_id": 109070,
       "armory_max_count": 1,
       "armory_note": {
-        "fr": "Ajouté en mai 2026 — apiId à confirmer via l'API.",
-        "en": "Added May 2026 — apiId to confirm via API."
-      }
+        "fr": "apiId 109070 confirmé (wiki/gw2treasures).",
+        "en": "apiId 109070 confirmed (wiki/gw2treasures)."
+      },
+      "apiId": 109070,
+      "guide": [
+        {
+          "fr": "Précurseur Vial of Liquid Shadowstone : récompense du chapitre d'histoire « So It Is Written » (VoE, The Only Way).",
+          "en": "Vial of Liquid Shadowstone precursor: reward from the story chapter 'So It Is Written' (VoE, The Only Way)."
+        },
+        {
+          "fr": "2 collections préalables (catégorie Rare Collections) : Forge Guard's Armor (set 6 pièces — drops ou Alliance Field Quartermaster) et les 17 skins d'armes Glimmering Resin (recettes à débloquer ou achat).",
+          "en": "2 prerequisite collections (Rare Collections category): Forge Guard's Armor (6-piece set — drops or Alliance Field Quartermaster) and the 17 Glimmering Resin weapon skins (unlock recipes or purchase)."
+        },
+        {
+          "fr": "Gift of Galdra : Historian Meliza, cœur de Pilgrim's Rest [&BPwPAAA=] — contre Gift of Research + Preserved Eidolon Hide + Gift of Eternity's Garden Exploration + Gift of Regrowth.",
+          "en": "Gift of Galdra: Historian Meliza, Pilgrim's Rest heart vendor [&BPwPAAA=] — for Gift of Research + Preserved Eidolon Hide + Gift of Eternity's Garden Exploration + Gift of Regrowth."
+        },
+        {
+          "fr": "Gift of Shadowstones : Steward Brizio, NE du POI The Forge [&BP8PAAA=] — contre Shadowstone Orb + Shadowstone Containment Frame + Gift of Restoration + 200 Seer Runestones.",
+          "en": "Gift of Shadowstones: Steward Brizio, NE of The Forge POI [&BP8PAAA=] — for Shadowstone Orb + Shadowstone Containment Frame + Gift of Restoration + 200 Seer Runestones."
+        },
+        {
+          "fr": "Budget : ~7M de karma au total (dailies LW3/LW4/IBS ≈ 54k karma/jour) + ~300-400 po. Eternity's Garden Map Completion permet de racheter certains composants (50 po + 300k karma).",
+          "en": "Budget: ~7M karma total (LW3/LW4/IBS dailies ≈ 54k karma/day) + ~300-400 g. Eternity's Garden Map Completion lets you re-buy some components (50 g + 300k karma)."
+        },
+        {
+          "fr": "MF final : Vial of Liquid Shadowstone + Gift of Shadowstones + Gift of Galdra + Mystic Tribute → Stella Radians.",
+          "en": "Final MF: Vial of Liquid Shadowstone + Gift of Shadowstones + Gift of Galdra + Mystic Tribute → Stella Radians."
+        }
+      ]
     },
     "strife_unending": {
       "name": "Strife Unending",
@@ -7598,11 +7853,11 @@ const SOURCES_DB = {
       "farm": "WvW",
       "expansion": "VoE patch The Only Way (mai 2026)",
       "wiki": "Strife_Unending",
-      "recipe": "Direct purchase from Dugan (WvW) after completing Mists Research: Strife Unending achievement.",
+      "recipe": "Échange chez Dugan (WvW) : Gift of the Mistwalker + composants WvW (pas de MF classique).",
       "components": [],
       "note": {
-        "fr": "Pas de craft MF. Obtenue chez Dugan en McM après le succès dédié. Le visuel évolue avec les kills McM. 2 exemplaires obtenus. Patch du 12 mai 2026.",
-        "en": "No MF craft. Obtained from Dugan in WvW after completing the dedicated achievement. Visual evolves with WvW kills. 2 copies obtained. Patch May 12, 2026."
+        "fr": "Correction v20 : il y a bien des composants à réunir (pas un simple achat). Requiert Mistwalker Infusion (équipée pour le succès ET consommée), 3 000 Skirmish Claim Tickets (~8 semaines au cap 365/sem), 45 Mystic Clovers, 2× Gift of the Warclaw (succès 9244), emblèmes (Conqueror : 200 objectifs / Avenger : 4 000 kills), 2 Balls of Dark Energy. Le visuel évolue avec le killstreak WvW.",
+        "en": "v20 correction: components must be gathered (not a simple purchase). Requires a Mistwalker Infusion (equipped for the achievement AND consumed), 3,000 Skirmish Claim Tickets (~8 weeks at 365/wk cap), 45 Mystic Clovers, 2× Gift of the Warclaw (achievement 9244), emblems (Conqueror: 200 objectives / Avenger: 4,000 kills), 2 Balls of Dark Energy. Visual evolves with WvW killstreak."
       },
       "acquisition": {
         "type": "vendor",
@@ -7615,7 +7870,80 @@ const SOURCES_DB = {
       },
       "armory_api_id": null,
       "armory_max_count": 1,
-      "armory_note": "Added May 2026 — apiId to confirm."
+      "armory_note": "Added May 2026 — apiId to confirm.",
+      "requirements": [
+        {
+          "name": "Mistwalker Infusion",
+          "note": {
+            "fr": "Débloquée par Mists Research (6933) chez Dugan, ou achat TP (variante lootable).",
+            "en": "Unlocked via Mists Research (6933) at Dugan, or TP purchase (lootable variant)."
+          }
+        },
+        {
+          "name": "Skirmish Claim Tickets ×3000",
+          "wallet_id": 26,
+          "amount": 3000,
+          "note": {
+            "fr": "Cap 365/semaine → ~8 semaines.",
+            "en": "365/week cap → ~8 weeks."
+          }
+        },
+        {
+          "name": "Mystic Clovers ×45",
+          "item_id": 19675,
+          "amount": 45
+        },
+        {
+          "name": "Gift of the Warclaw ×2",
+          "note": {
+            "fr": "Récompense du succès Mists Research: Strife Unending (9244).",
+            "en": "Reward from the Mists Research: Strife Unending achievement (9244)."
+          }
+        },
+        {
+          "name": "Emblem of the Conqueror ×4",
+          "note": {
+            "fr": "Défendre/capturer 400 objectifs au total.",
+            "en": "Defend/capture 400 objectives total."
+          }
+        },
+        {
+          "name": "Emblem of the Avenger ×40",
+          "note": {
+            "fr": "4 000 kills de joueurs ennemis.",
+            "en": "4,000 enemy player kills."
+          }
+        },
+        {
+          "name": "Balls of Dark Energy ×2",
+          "note": {
+            "fr": "Recyclage d'équipement élevé (outil Ascended Salvage Tool).",
+            "en": "Salvage ascended gear (Ascended Salvage Tool)."
+          }
+        }
+      ],
+      "achievements": [
+        {
+          "key": "strife_mists_research",
+          "id": 6933,
+          "name": "Mists Research",
+          "total": 3,
+          "note": {
+            "fr": "Prérequis. Parler à Dugan (« Hey, what's that strange glow… »), puis communier aux Hero Points WvW indiqués (les compléter d'abord). Débloque l'achat de la Mistwalker Infusion.",
+            "en": "Prereq. Talk to Dugan ('Hey, what's that strange glow…'), then commune at the listed WvW Hero Points (complete them first). Unlocks the Mistwalker Infusion purchase."
+          }
+        },
+        {
+          "key": "strife_unending",
+          "id": 9244,
+          "name": "Mists Research: Strife Unending",
+          "total": 10,
+          "note": {
+            "fr": "10 étapes : 100 kills avec l'infusion équipée, JP Obsidian Sanctum (Phongluamthan), Forge/Altar/Workshop en Edge of the Mists (contrôlés par votre équipe), capture d'un fort ennemi en EBG, Stoic Rampart + Dreadfall Bay + Askalion Hills. Récompense : 2× Gift of the Warclaw.",
+            "en": "10 steps: 100 kills with the infusion equipped, Obsidian Sanctum JP (Phongluamthan), Forge/Altar/Workshop in Edge of the Mists (team-controlled), capture an enemy keep in EBG, Stoic Rampart + Dreadfall Bay + Askalion Hills. Reward: 2× Gift of the Warclaw."
+          }
+        }
+      ]
     },
     "orrax_manifested": {
       "name": "Orrax Manifested",
@@ -7639,7 +7967,82 @@ const SOURCES_DB = {
         "en": "glider skin + homestead decoration (precursor)"
       },
       "armory_api_id": 104857,
-      "armory_max_count": 1
+      "armory_max_count": 1,
+      "achievements": [
+        {
+          "key": "orrax_experiments",
+          "id": 8761,
+          "name": "Unknown Nightmares: Experiments in the Shadows",
+          "total": 10,
+          "note": {
+            "fr": "LA collection active (10 étapes — batterie d'éclairs, portail Godslost Swamp…). Récompense : Binding of the Dragon (composant du précurseur) + titre Transcends Perceptions.",
+            "en": "THE active collection (10 steps — lightning battery, Godslost Swamp portal…). Reward: Binding of the Dragon (precursor component) + Transcends Perceptions title."
+          }
+        },
+        {
+          "key": "orrax_contained",
+          "id": 8730,
+          "name": "Unknown Nightmares: Orrax Contained",
+          "note": {
+            "fr": "Se complète en forgeant le précurseur Orrax Contained (Binding of the Dragon + Draconic Tribute + …). Bonus : décoration de homestead.",
+            "en": "Auto-completes when forging the Orrax Contained precursor (Binding of the Dragon + Draconic Tribute + …). Bonus: homestead decoration."
+          }
+        },
+        {
+          "key": "orrax_isles",
+          "id": 8743,
+          "name": "Unknown Nightmares: Gift of the Mistburned Isles",
+          "note": {
+            "fr": "Checklist de référence — se complète en réunissant le gift (monnaies/coffres Mistburned Barrens, Gift of Titan Understanding…).",
+            "en": "Reference checklist — completes while assembling the gift (Mistburned Barrens currencies/chests, Gift of Titan Understanding…)."
+          }
+        },
+        {
+          "key": "orrax_shadows",
+          "id": 8723,
+          "name": "Unknown Nightmares: Gift of Shadows",
+          "note": {
+            "fr": "Gift of Shadows = Gift of Darkness (Armorsmith 400, recette 10 po) + Gift of Scales + Gift of Titan Understanding + Bloodstone Shard.",
+            "en": "Gift of Shadows = Gift of Darkness (Armorsmith 400, 10 g recipe) + Gift of Scales + Gift of Titan Understanding + Bloodstone Shard."
+          }
+        },
+        {
+          "key": "orrax_feast",
+          "id": 8750,
+          "name": "Unknown Nightmares: Gift of the Feast",
+          "note": {
+            "fr": "Cuisine + node homestead Fruits of the Shadow (Deft Lahar, à racheter après chaque récolte, 2-4/récolte).",
+            "en": "Cooking + Fruits of the Shadow homestead node (Deft Lahar, re-purchase after each harvest, 2-4/harvest)."
+          }
+        },
+        {
+          "key": "orrax_final",
+          "id": 8714,
+          "name": "Legendary Backpack and Glider: Orrax",
+          "note": {
+            "fr": "Méta finale (catégorie Collections) — validée au craft du légendaire.",
+            "en": "Final meta (Collections category) — validated when crafting the legendary."
+          }
+        }
+      ],
+      "guide": [
+        {
+          "fr": "Après le chapitre Salvation's Cost : parler à Jorvik Jorundsson (Alliance Camp, Bava Nisos, NO de Mantle's Arrival [&BGEPAAA=]) → débloque les 5 collections.",
+          "en": "After the Salvation's Cost chapter: talk to Jorvik Jorundsson (Alliance Camp, Bava Nisos, NW of Mantle's Arrival [&BGEPAAA=]) → unlocks the 5 collections."
+        },
+        {
+          "fr": "Seule « Experiments in the Shadows » se joue activement ; les 4 autres se valident en réunissant les composants.",
+          "en": "Only 'Experiments in the Shadows' is actively played; the other 4 validate while gathering components."
+        },
+        {
+          "fr": "Ward Crafter Lucirae (Astral Ward Moon Camp, Lowland Shore) peut forger les gifts de craft 400 contre surcoût si discipline manquante.",
+          "en": "Ward Crafter Lucirae (Astral Ward Moon Camp, Lowland Shore) can craft the 400-level gifts for extra cost if you lack the discipline."
+        },
+        {
+          "fr": "MF final : Orrax Contained + Gift of the Mistburned Isles + Gift of Shadows + Gift of the Feast → Orrax Manifested (+ skin deltaplane, 4 canaux de teinture).",
+          "en": "Final MF: Orrax Contained + Gift of the Mistburned Isles + Gift of Shadows + Gift of the Feast → Orrax Manifested (+ glider skin, 4 dye channels)."
+        }
+      ]
     },
     "klobjarne_geirr": {
       "name": "Klobjarne Geirr",
@@ -11456,6 +11859,19 @@ const LEGENDARIES = {
         tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
   },
+  trinkets: {
+    id: "trinkets",
+    name: "Trinkets",
+    type: { fr: "Colifichets ×7", en: "Trinkets ×7" },
+    expansion: "Multi",
+    color: "#5eead4",
+    colorDim: "rgba(94,234,212,0.15)",
+    icon: "◈",
+    description: { fr: "Colifichets légendaires restants — guide détaillé par item", en: "Remaining legendary trinkets — detailed per-item guide" },
+    resetType: "daily",
+    isTrinketTracker: true,
+    trinketKeys: ["endless_summer", "stella_radians", "strife_unending", "orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"],
+  },
 };
 
 // ── Obsidian Armor : libellés slots / poids (i18n locale) ──
@@ -12117,6 +12533,10 @@ function GW2LegendaryTracker() {
   const [now, setNow] = useState(new Date());
   const [selectedLeg, setSelectedLeg] = useState("vision");
   const [activeTab, setActiveTab] = useState("metas");
+  const [selTrinket, setSelTrinket] = useState("endless_summer");
+  const [trinketSteps, setTrinketSteps] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_trinket_steps") ?? "null") ?? {}); } catch { return {}; }
+  });
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
   const [frNames, setFrNames] = useState({ legs: FR_LEG_NAMES, terms: FR_TERM_MAP, stats: null });
   FR_LEG_NAMES = frNames.legs; FR_TERM_MAP = frNames.terms; // sync des résolveurs NL()/NX()
@@ -12638,7 +13058,7 @@ function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas"))))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -12790,6 +13210,7 @@ function GW2LegendaryTracker() {
 
   // ── Onglets disponibles selon légendaire
   const isPrismatic = selectedLeg === "prismatic";
+  const isTrinkets = selectedLeg === "trinkets";
   const prismaticDone = prismaticProgress?.done === true;
   const prismaticBits = new Set(prismaticProgress?.bits ?? []);
   const prismaticCount = prismaticDone ? 24 : prismaticBits.size;
@@ -12798,7 +13219,8 @@ function GW2LegendaryTracker() {
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
@@ -14294,6 +14716,129 @@ function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET MATÉRIAUX COMMUNS          */}
       {/* ══════════════════════════════════ */}
+      {activeTab === "trinkets" && isTrinkets && (() => {
+        const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
+        const keys = (leg.trinketKeys ?? []).filter(k => DB[k]);
+        const curKey = keys.includes(selTrinket) ? selTrinket : keys[0];
+        const T = DB[curKey];
+        if (!T) return <div style={{ padding: 20, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>SOURCES_DB indisponible — rebuild requis.</div>;
+        const armoryId = T.armory_api_id;
+        const owned = !!armoryId && (gtOwnedIds.has(armoryId) || gtManualOwnedIds.has(armoryId));
+        const toggleStep = (sk) => {
+          const nx = { ...trinketSteps, [sk]: !trinketSteps[sk] };
+          setTrinketSteps(nx);
+          try { localStorage.setItem("gw2_trinket_steps", JSON.stringify(nx)); } catch (_) {}
+        };
+        const achOf = (k) => ((apiAch ?? {})[k] ?? null);
+        const badge = (txt, color) => (
+          <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, border: `1px solid ${color}`, color, letterSpacing: "0.05em", fontFamily: "'Cinzel', serif", whiteSpace: "nowrap" }}>{txt}</span>
+        );
+        return (
+          <div>
+            {/* Sous-sélecteur des 7 colifichets */}
+            <div style={{ display: "flex", gap: 6, padding: "12px 14px 4px", overflowX: "auto" }}>
+              {keys.map(k => {
+                const e = DB[k];
+                const kOwned = !!e.armory_api_id && (gtOwnedIds.has(e.armory_api_id) || gtManualOwnedIds.has(e.armory_api_id));
+                return (
+                  <button key={k}
+                    onClick={() => setSelTrinket(k)}
+                    className={`leg-btn ${curKey === k ? "active" : ""}`}
+                    style={{ "--leg-color": "#5eead4", "--leg-bg": "rgba(94,234,212,0.12)", fontSize: 10 }}>
+                    {kOwned ? "✓ " : ""}{NL(k, e.name)}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* En-tête */}
+            <div className="card" style={{ cursor: "default" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                <div style={{ fontFamily: "'Cinzel', serif", fontSize: 15, color: "#5eead4", fontWeight: 600 }}>{NL(curKey, T.name)}</div>
+                {badge(NX({ fr: ({ ring: "Anneau", accessory: "Accessoire", amulet: "Amulette", back: "Dos" })[T.slot] ?? T.slot, en: T.slot }), "rgba(226,201,126,0.55)")}
+                {badge(T.expansion, "rgba(226,201,126,0.4)")}
+                {badge(NXS(T.farm), "rgba(167,139,250,0.7)")}
+                {armoryId
+                  ? badge(owned ? NX({ fr: "✓ Possédé (armory)", en: "✓ Owned (armory)" }) : NX({ fr: "Non possédé", en: "Not owned" }), owned ? "#4ade80" : "rgba(226,201,126,0.35)")
+                  : badge(NX({ fr: "apiId inconnu", en: "apiId unknown" }), "rgba(248,113,113,0.6)")}
+              </div>
+              <div style={{ marginTop: 8, fontFamily: "'Crimson Text', serif", fontSize: 13, color: "rgba(226,201,126,0.75)" }}>{NXS(NX(T.recipe))}</div>
+              {T.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)", fontStyle: "italic" }}>{NX(T.note)}</div>}
+              {T.timegate && <div style={{ marginTop: 6, fontSize: 11, color: "#fbbf24", fontFamily: "'Crimson Text', serif" }}>⏳ {NX(T.timegate)}</div>}
+            </div>
+
+            {/* Prérequis chiffrés (ex. Strife Unending) */}
+            {(T.requirements ?? []).length > 0 && (
+              <>
+                <div className="section-label">{NX({ fr: "Composants requis", en: "Required components" })}</div>
+                {T.requirements.map((r, i) => (
+                  <div key={i} className="card" style={{ cursor: "default", padding: "9px 15px" }}>
+                    <div style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: "rgba(226,201,126,0.8)" }}>{NXS(r.name)}</div>
+                    {r.note && <div style={{ marginTop: 3, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(r.note)}</div>}
+                  </div>
+                ))}
+              </>
+            )}
+
+            {/* Collections / succès — progression API */}
+            {(T.achievements ?? []).length > 0 && (
+              <>
+                <div className="section-label">{NX({ fr: "Collections & succès", en: "Collections & achievements" })}</div>
+                {T.achievements.map((a) => {
+                  const p = achOf(a.key);
+                  const done = !!(p && p.done);
+                  const hasProg = !!(p && p.max > 0);
+                  const pct = hasProg ? Math.min(100, Math.round((p.current / p.max) * 100)) : 0;
+                  return (
+                    <div key={a.id} className="card" style={{ cursor: "default" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                        <span style={{ color: done ? "#4ade80" : "rgba(226,201,126,0.35)", fontSize: 13 }}>{done ? "✓" : "○"}</span>
+                        <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11.5, color: done ? "#4ade80" : "rgba(226,201,126,0.85)" }}>{NXS(a.name)}</span>
+                        <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>#{a.id}</span>
+                        {!done && hasProg && <span style={{ fontSize: 10, color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{p.current}/{p.max}</span>}
+                        {!done && !hasProg && <span style={{ fontSize: 10, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>{NX({ fr: "— (sync API pour la progression)", en: "— (sync API for progress)" })}</span>}
+                      </div>
+                      {!done && hasProg && (
+                        <div style={{ marginTop: 6, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
+                          <div style={{ width: `${pct}%`, height: "100%", background: "#5eead4", borderRadius: 2, transition: "width 0.3s" }} />
+                        </div>
+                      )}
+                      {a.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(a.note)}</div>}
+                    </div>
+                  );
+                })}
+              </>
+            )}
+
+            {/* Guide pas-à-pas (coche manuelle) */}
+            {(T.guide ?? []).length > 0 && (
+              <>
+                <div className="section-label">{NX({ fr: "Guide pas-à-pas", en: "Step-by-step guide" })}</div>
+                {T.guide.map((g, i) => {
+                  const sk = `${curKey}:${i}`;
+                  const ck = !!trinketSteps[sk];
+                  return (
+                    <div key={i} className={`card ${ck ? "checked" : ""}`} onClick={() => toggleStep(sk)} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: ck ? "#4ade80" : "#5eead4", minWidth: 18 }}>{ck ? "✓" : (i + 1) + "."}</span>
+                      <span style={{ fontFamily: "'Crimson Text', serif", fontSize: 12.5, color: "rgba(226,201,126,0.75)", lineHeight: 1.45 }}>{NXS(NX(g))}</span>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+
+            {/* Lien wiki */}
+            {T.wiki && (
+              <div style={{ margin: "10px 14px 18px", fontSize: 11, fontFamily: "'Crimson Text', serif" }}>
+                <a href={`https://wiki.guildwars2.com/wiki/${T.wiki}`} target="_blank" rel="noreferrer" style={{ color: "rgba(94,234,212,0.7)" }}>
+                  {NX({ fr: "→ Fiche wiki complète", en: "→ Full wiki page" })}
+                </a>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
       {activeTab === "common" && (
         <div>
           <div className="section-label">{t("sec_common")}</div>

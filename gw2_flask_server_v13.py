@@ -83,6 +83,25 @@ ACHIEVEMENT_IDS = {
     "rune_collector":   7796,   # Legendary Rune Collector (bind 7)
     "sigil_collector":  7788,   # Legendary Sigil Collector (bind 8)
     "relic_components": 7829,   # Legendary Relics: Components (guide des gifts)
+    # ── Trinkets (onglet Trinkets, tracker v33) ──
+    "ascension_path_1":   2738,   # Path of the Ascension I: The Thrill of Battle — vérifié refs
+    "ascension_path_2":   2752,   # Path of the Ascension II: Tapestry of Sacrifice — vérifié refs
+    "ascension_path_3":   2725,   # Path of the Ascension III: Monument of Legends — vérifié refs
+    "ascension_path_4":   2715,   # Path of the Ascension IV: Hymn of Glory — vérifié refs
+    "adinf_1":            2351,   # Ad Infinitum I: Finite Result — vérifié refs
+    "adinf_2":            2557,   # Ad Infinitum II: Upper Bound — vérifié refs
+    "adinf_3":            2368,   # Ad Infinitum III: Unbound — vérifié refs
+    "adinf_4":            2295,   # Legendary Backpack: Ad Infinitum — vérifié refs
+    "orrax_experiments":  8761,   # Unknown Nightmares: Experiments in the Shadows — vérifié refs
+    "orrax_shadows":      8723,   # Unknown Nightmares: Gift of Shadows — vérifié refs
+    "orrax_feast":        8750,   # Unknown Nightmares: Gift of the Feast — vérifié refs
+    "orrax_isles":        8743,   # Unknown Nightmares: Gift of the Mistburned Isles — vérifié refs
+    "orrax_contained":    8730,   # Unknown Nightmares: Orrax Contained — vérifié refs
+    "orrax_final":        8714,   # Legendary Backpack and Glider: Orrax — vérifié refs
+    "strife_mists_research": 6933, # Mists Research (prérequis Mistwalker Infusion) — vérifié refs
+    "strife_unending":    9244,   # Mists Research: Strife Unending (10 étapes) — vérifié wiki/gw2treasures
+    "summer_krait":       9180,   # Helping Hylek: Kill Krait (prérequis Gift of the Hylek) — vérifié refs
+    "summer_sungod":      9183,   # Radiance of the Sun God (chaîne Gift of the Hylek) — vérifié refs
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
