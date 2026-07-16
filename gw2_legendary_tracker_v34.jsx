@@ -509,6 +509,113 @@ function useT() {
 // BASE DE DONNÉES LÉGENDAIRES
 // ═══════════════════════════════════════════════════════════════
 
+// ── TrinketGuide : fiche guide détaillée d'un colifichet (données SOURCES_DB) ──
+function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSteps, toggleStep }) {
+  const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
+  const T = DB[curKey];
+  if (!T) return <div style={{ padding: 20, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>SOURCES_DB indisponible — rebuild requis.</div>;
+  const armoryId = T.armory_api_id;
+  const owned = !!armoryId && (gtOwnedIds.has(armoryId) || gtManualOwnedIds.has(armoryId));
+  const achOf = (k) => ((apiAch ?? {})[k] ?? null);
+  const badge = (txt, color) => (
+    <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, border: `1px solid ${color}`, color, letterSpacing: "0.05em", fontFamily: "'Cinzel', serif", whiteSpace: "nowrap" }}>{txt}</span>
+  );
+  return (
+    <div>
+      {/* En-tête */}
+      <div className="card" style={{ cursor: "default" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ fontFamily: "'Cinzel', serif", fontSize: 15, color: "#5eead4", fontWeight: 600 }}>{NL(curKey, T.name)}</div>
+          {badge(NX({ fr: ({ ring: "Anneau", accessory: "Accessoire", amulet: "Amulette", back: "Dos" })[T.slot] ?? T.slot, en: T.slot }), "rgba(226,201,126,0.55)")}
+          {badge(T.expansion, "rgba(226,201,126,0.4)")}
+          {badge(NXS(T.farm), "rgba(167,139,250,0.7)")}
+          {armoryId
+            ? badge(owned ? NX({ fr: "✓ Possédé (armory)", en: "✓ Owned (armory)" }) : NX({ fr: "Non possédé", en: "Not owned" }), owned ? "#4ade80" : "rgba(226,201,126,0.35)")
+            : badge(NX({ fr: "apiId inconnu", en: "apiId unknown" }), "rgba(248,113,113,0.6)")}
+        </div>
+        <div style={{ marginTop: 8, fontFamily: "'Crimson Text', serif", fontSize: 13, color: "rgba(226,201,126,0.75)" }}>{NXS(NX(T.recipe))}</div>
+        {T.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)", fontStyle: "italic" }}>{NX(T.note)}</div>}
+        {T.timegate && <div style={{ marginTop: 6, fontSize: 11, color: "#fbbf24", fontFamily: "'Crimson Text', serif" }}>⏳ {NX(T.timegate)}</div>}
+      </div>
+
+      {/* Prérequis chiffrés */}
+      {(T.requirements ?? []).length > 0 && (
+        <>
+          <div className="section-label">{NX({ fr: "Composants requis", en: "Required components" })}</div>
+          {T.requirements.map((r, i) => (
+            <div key={i} className="card" style={{ cursor: "default", padding: "9px 15px" }}>
+              <div style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: "rgba(226,201,126,0.8)" }}>{NXS(r.name)}</div>
+              {r.note && <div style={{ marginTop: 3, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(r.note)}</div>}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* Collections / succès — progression API */}
+      {(T.achievements ?? []).length > 0 && (
+        <>
+          <div className="section-label">{NX({ fr: "Collections & succès", en: "Collections & achievements" })}</div>
+          {T.achievements.map((a) => {
+            const p = achOf(a.key);
+            const done = !!(p && p.done);
+            const hasProg = !!(p && p.max > 0);
+            const pct = hasProg ? Math.min(100, Math.round((p.current / p.max) * 100)) : 0;
+            return (
+              <div key={a.id} className="card" style={{ cursor: "default" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                  <span style={{ color: done ? "#4ade80" : "rgba(226,201,126,0.35)", fontSize: 13 }}>{done ? "✓" : "○"}</span>
+                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11.5, color: done ? "#4ade80" : "rgba(226,201,126,0.85)" }}>{NXS(a.name)}</span>
+                  <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>#{a.id}</span>
+                  {!done && hasProg && <span style={{ fontSize: 10, color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{p.current}/{p.max}</span>}
+                  {!done && !hasProg && <span style={{ fontSize: 10, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>{NX({ fr: "— (sync API pour la progression)", en: "— (sync API for progress)" })}</span>}
+                </div>
+                {!done && hasProg && (
+                  <div style={{ marginTop: 6, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
+                    <div style={{ width: `${pct}%`, height: "100%", background: "#5eead4", borderRadius: 2, transition: "width 0.3s" }} />
+                  </div>
+                )}
+                {a.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(a.note)}</div>}
+              </div>
+            );
+          })}
+        </>
+      )}
+
+      {/* Guide pas-à-pas (coche manuelle) */}
+      {(T.guide ?? []).length > 0 && (
+        <>
+          <div className="section-label">{NX({ fr: "Guide pas-à-pas", en: "Step-by-step guide" })}</div>
+          {T.guide.map((g, i) => {
+            const sk = `${curKey}:${i}`;
+            const ck = !!trinketSteps[sk];
+            return (
+              <div key={i} className={`card ${ck ? "checked" : ""}`} onClick={() => toggleStep(sk)} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: ck ? "#4ade80" : "#5eead4", minWidth: 18 }}>{ck ? "✓" : (i + 1) + "."}</span>
+                <span style={{ fontFamily: "'Crimson Text', serif", fontSize: 12.5, color: "rgba(226,201,126,0.75)", lineHeight: 1.45 }}>{NXS(NX(g))}</span>
+              </div>
+            );
+          })}
+        </>
+      )}
+
+      {/* Lien wiki */}
+      {T.wiki && (
+        <div style={{ margin: "10px 14px 18px", fontSize: 11, fontFamily: "'Crimson Text', serif" }}>
+          <a href={`https://wiki.guildwars2.com/wiki/${T.wiki}`} target="_blank" rel="noreferrer" style={{ color: "rgba(94,234,212,0.7)" }}>
+            {NX({ fr: "→ Fiche wiki complète", en: "→ Full wiki page" })}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Groupe Trinkets : navigation à 2 niveaux (v34) ──
+const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending"];
+const TRINKET_GUIDE_KEYS = ["endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"];
+const TRINKET_GROUP_ORDER = [...TRINKET_RICH.slice(0, 7), "strife_unending", ...TRINKET_GUIDE_KEYS];
+const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "weapons", "upgrades", "t6"];
+
 const LEGENDARIES = {
   vision: {
     id: "vision",
@@ -1182,10 +1289,46 @@ const LEGENDARIES = {
         tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
   },
+  strife_unending: {
+    id: "strife_unending",
+    name: "Strife Unending",
+    type: { fr: "Accessoire", en: "Accessory" },
+    expansion: "VoE",
+    color: "#60a5fa",
+    colorDim: "rgba(96,165,250,0.15)",
+    icon: "SU",
+    description: { fr: "Accessoire légendaire — exclusif McM (mai 2026). Visuel évolutif selon le killstreak.", en: "Legendary accessory — WvW exclusive (May 2026). Visual evolves with killstreak." },
+    resetType: "weekly",
+    isGuideTrinket: true,
+    currencies: [
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 3000, icon: "SK", apiId: 26 },
+      { id: "clovers", name: "Mystic Clover",          required: 45,   icon: "MC", apiId: 19675 },
+      { id: "memory",  name: "Memory of Battle",       required: 250,  icon: "MB", apiId: 71581 },
+    ],
+    metas: [],
+    wvwActivities: [
+      { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
+        limit: { fr: "365 tickets/semaine → ~8 semaines pour 3000", en: "365 tickets/week → ~8 weeks for 3000" }, resetDay: "Lundi",
+        tip: { fr: "Le goulot principal. Participation Gold+ pour maximiser les pips ; mêmes tickets que Conflux/Warbringer — prioriser.", en: "The main bottleneck. Gold+ participation to maximize pips; same tickets as Conflux/Warbringer — prioritize." } },
+      { id: "weeklies", name: { fr: "Hebdomadaires McM", en: "WvW Weeklies" }, icon: "WK",
+        limit: { fr: "~90 tickets bonus/semaine", en: "~90 bonus tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Compléter les objectifs hebdomadaires McM (menu Succès → McM).", en: "Complete WvW weekly objectives (Achievements → WvW menu)." } },
+      { id: "mists_research", name: { fr: "Succès « Mists Research » (prérequis)", en: "'Mists Research' achievement (prereq)" }, icon: "MR",
+        limit: { fr: "Unique — débloque la Mistwalker Infusion", en: "One-time — unlocks the Mistwalker Infusion" }, resetDay: "Unique",
+        tip: { fr: "Parler à Dugan, puis communier aux Hero Points McM indiqués (les compléter d'abord). Voir onglet Guide.", en: "Talk to Dugan, then commune at the listed WvW Hero Points (complete them first). See Guide tab." } },
+      { id: "strife_steps", name: { fr: "Succès « Strife Unending » (10 étapes)", en: "'Strife Unending' achievement (10 steps)" }, icon: "ST",
+        limit: { fr: "Unique — récompense 2× Gift of the Warclaw", en: "One-time — rewards 2× Gift of the Warclaw" }, resetDay: "Unique",
+        tip: { fr: "100 kills avec l'infusion équipée, JP Obsidian Sanctum, structures EotM, fort ennemi en EBG… Détail dans l'onglet Guide.", en: "100 kills with the infusion equipped, Obsidian Sanctum JP, EotM structures, enemy keep in EBG… Details in the Guide tab." } },
+      { id: "emblems", name: { fr: "Emblèmes (long terme)", en: "Emblems (long-term)" }, icon: "EM",
+        limit: { fr: "Conqueror ×4 (400 objectifs) / Avenger ×40 (4000 kills)", en: "Conqueror ×4 (400 objectives) / Avenger ×40 (4,000 kills)" }, resetDay: "Passif",
+        tip: { fr: "Progresse naturellement en jouant — pas de farm dédié nécessaire si le grind tickets est actif.", en: "Progresses naturally through play — no dedicated farm needed while grinding tickets." } },
+    ],
+    bounties: [],
+  },
   trinkets: {
     id: "trinkets",
     name: "Trinkets",
-    type: { fr: "Colifichets ×7", en: "Trinkets ×7" },
+    type: { fr: "Guides ×6", en: "Guides ×6" },
     expansion: "Multi",
     color: "#5eead4",
     colorDim: "rgba(94,234,212,0.15)",
@@ -1193,7 +1336,7 @@ const LEGENDARIES = {
     description: { fr: "Colifichets légendaires restants — guide détaillé par item", en: "Remaining legendary trinkets — detailed per-item guide" },
     resetType: "daily",
     isTrinketTracker: true,
-    trinketKeys: ["endless_summer", "stella_radians", "strife_unending", "orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"],
+    trinketKeys: TRINKET_GUIDE_KEYS,
   },
 };
 
@@ -1862,10 +2005,28 @@ export default function GW2LegendaryTracker() {
   const [now, setNow] = useState(new Date());
   const [selectedLeg, setSelectedLeg] = useState("vision");
   const [activeTab, setActiveTab] = useState("metas");
-  const [selTrinket, setSelTrinket] = useState("endless_summer");
+  const [selTrinket, setSelTrinket] = useState(() => {
+    try {
+      const last = localStorage.getItem("gw2_last_trinket") ?? "";
+      if (last.startsWith("guide:") && TRINKET_GUIDE_KEYS.includes(last.slice(6))) return last.slice(6);
+    } catch (_) {}
+    return "endless_summer";
+  });
   const [trinketSteps, setTrinketSteps] = useState(() => {
     try { return (JSON.parse(localStorage.getItem("gw2_trinket_steps") ?? "null") ?? {}); } catch { return {}; }
   });
+  const toggleTrinketStep = (sk) => {
+    const nx = { ...trinketSteps, [sk]: !trinketSteps[sk] };
+    setTrinketSteps(nx);
+    try { localStorage.setItem("gw2_trinket_steps", JSON.stringify(nx)); } catch (_) {}
+  };
+  // Persistance du dernier colifichet consulté (QoL : réouverture du groupe)
+  useEffect(() => {
+    try {
+      if (TRINKET_RICH.includes(selectedLeg)) localStorage.setItem("gw2_last_trinket", selectedLeg);
+      else if (selectedLeg === "trinkets") localStorage.setItem("gw2_last_trinket", "guide:" + selTrinket);
+    } catch (_) {}
+  }, [selectedLeg, selTrinket]);
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
   const [frNames, setFrNames] = useState({ legs: FR_LEG_NAMES, terms: FR_TERM_MAP, stats: null });
   FR_LEG_NAMES = frNames.legs; FR_TERM_MAP = frNames.terms; // sync des résolveurs NL()/NX()
@@ -2387,7 +2548,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2549,8 +2710,9 @@ export default function GW2LegendaryTracker() {
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
-    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
+    ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
@@ -2657,7 +2819,21 @@ export default function GW2LegendaryTracker() {
 
       {/* ── SÉLECTEUR LÉGENDAIRE ── */}
       <div className="leg-selector">
-        {Object.values(LEGENDARIES).map(l => (
+        <button
+          className={`leg-btn ${(TRINKET_GROUP_ORDER.includes(selectedLeg) || selectedLeg === "trinkets") ? "active" : ""}`}
+          style={{ "--leg-color": "#5eead4", "--leg-bg": "rgba(94,234,212,0.12)" }}
+          onClick={() => {
+            let last = null;
+            try { last = localStorage.getItem("gw2_last_trinket"); } catch (_) {}
+            if (last && last.startsWith("guide:") && TRINKET_GUIDE_KEYS.includes(last.slice(6))) { setSelTrinket(last.slice(6)); setSelectedLeg("trinkets"); }
+            else if (last && TRINKET_RICH.includes(last)) { setSelectedLeg(last); }
+            else { setSelectedLeg("vision"); }
+          }}
+        >
+          ◈ Trinkets
+          <span style={{ fontSize: "9px", opacity: 0.6, marginLeft: "4px" }}>(14)</span>
+        </button>
+        {MAIN_SELECTOR_ORDER.map(id => LEGENDARIES[id]).filter(Boolean).map(l => (
           <button
             key={l.id}
             className={`leg-btn ${selectedLeg === l.id ? "active" : ""}`}
@@ -2746,6 +2922,28 @@ export default function GW2LegendaryTracker() {
       )}
 
       {/* ── TABS + CONTENU (masqués en mode Grand Total) ── */}
+      {/* ── SOUS-SÉLECTEUR TRINKETS (14 colifichets) ── */}
+      {(TRINKET_GROUP_ORDER.includes(selectedLeg) || selectedLeg === "trinkets") && (
+        <div className="leg-selector" style={{ padding: "8px 16px", background: "rgba(94,234,212,0.02)" }}>
+          {TRINKET_GROUP_ORDER.map(k => {
+            const rich = TRINKET_RICH.includes(k);
+            const e = rich ? LEGENDARIES[k] : null;
+            const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB.legendaries?.[k] : null);
+            const aid = S?.armory_api_id;
+            const kOwned = !!aid && (gtOwnedIds.has(aid) || gtManualOwnedIds.has(aid));
+            const active = rich ? (selectedLeg === k) : (selectedLeg === "trinkets" && selTrinket === k);
+            return (
+              <button key={k}
+                className={`leg-btn ${active ? "active" : ""}`}
+                style={{ "--leg-color": (e?.color ?? "#5eead4"), "--leg-bg": (e?.colorDim ?? "rgba(94,234,212,0.12)"), fontSize: 10, padding: "6px 10px" }}
+                onClick={() => { if (rich) { setSelectedLeg(k); } else { setSelTrinket(k); setSelectedLeg("trinkets"); } }}>
+                {kOwned ? "✓ " : ""}{NL(k, (e?.name ?? (S?.name ?? k)))}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {!isGrandTotal && <>
       <div className="tabs" style={{ "--leg-color": legColor }}>
         {tabs.map(t => (
@@ -4045,128 +4243,19 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET MATÉRIAUX COMMUNS          */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "trinkets" && isTrinkets && (() => {
-        const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
-        const keys = (leg.trinketKeys ?? []).filter(k => DB[k]);
-        const curKey = keys.includes(selTrinket) ? selTrinket : keys[0];
-        const T = DB[curKey];
-        if (!T) return <div style={{ padding: 20, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>SOURCES_DB indisponible — rebuild requis.</div>;
-        const armoryId = T.armory_api_id;
-        const owned = !!armoryId && (gtOwnedIds.has(armoryId) || gtManualOwnedIds.has(armoryId));
-        const toggleStep = (sk) => {
-          const nx = { ...trinketSteps, [sk]: !trinketSteps[sk] };
-          setTrinketSteps(nx);
-          try { localStorage.setItem("gw2_trinket_steps", JSON.stringify(nx)); } catch (_) {}
-        };
-        const achOf = (k) => ((apiAch ?? {})[k] ?? null);
-        const badge = (txt, color) => (
-          <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, border: `1px solid ${color}`, color, letterSpacing: "0.05em", fontFamily: "'Cinzel', serif", whiteSpace: "nowrap" }}>{txt}</span>
-        );
-        return (
-          <div>
-            {/* Sous-sélecteur des 7 colifichets */}
-            <div style={{ display: "flex", gap: 6, padding: "12px 14px 4px", overflowX: "auto" }}>
-              {keys.map(k => {
-                const e = DB[k];
-                const kOwned = !!e.armory_api_id && (gtOwnedIds.has(e.armory_api_id) || gtManualOwnedIds.has(e.armory_api_id));
-                return (
-                  <button key={k}
-                    onClick={() => setSelTrinket(k)}
-                    className={`leg-btn ${curKey === k ? "active" : ""}`}
-                    style={{ "--leg-color": "#5eead4", "--leg-bg": "rgba(94,234,212,0.12)", fontSize: 10 }}>
-                    {kOwned ? "✓ " : ""}{NL(k, e.name)}
-                  </button>
-                );
-              })}
-            </div>
+      {activeTab === "trinkets" && isTrinkets && (
+        <TrinketGuide
+          curKey={(leg.trinketKeys ?? []).includes(selTrinket) ? selTrinket : (leg.trinketKeys ?? [])[0]}
+          apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
+      )}
 
-            {/* En-tête */}
-            <div className="card" style={{ cursor: "default" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                <div style={{ fontFamily: "'Cinzel', serif", fontSize: 15, color: "#5eead4", fontWeight: 600 }}>{NL(curKey, T.name)}</div>
-                {badge(NX({ fr: ({ ring: "Anneau", accessory: "Accessoire", amulet: "Amulette", back: "Dos" })[T.slot] ?? T.slot, en: T.slot }), "rgba(226,201,126,0.55)")}
-                {badge(T.expansion, "rgba(226,201,126,0.4)")}
-                {badge(NXS(T.farm), "rgba(167,139,250,0.7)")}
-                {armoryId
-                  ? badge(owned ? NX({ fr: "✓ Possédé (armory)", en: "✓ Owned (armory)" }) : NX({ fr: "Non possédé", en: "Not owned" }), owned ? "#4ade80" : "rgba(226,201,126,0.35)")
-                  : badge(NX({ fr: "apiId inconnu", en: "apiId unknown" }), "rgba(248,113,113,0.6)")}
-              </div>
-              <div style={{ marginTop: 8, fontFamily: "'Crimson Text', serif", fontSize: 13, color: "rgba(226,201,126,0.75)" }}>{NXS(NX(T.recipe))}</div>
-              {T.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)", fontStyle: "italic" }}>{NX(T.note)}</div>}
-              {T.timegate && <div style={{ marginTop: 6, fontSize: 11, color: "#fbbf24", fontFamily: "'Crimson Text', serif" }}>⏳ {NX(T.timegate)}</div>}
-            </div>
-
-            {/* Prérequis chiffrés (ex. Strife Unending) */}
-            {(T.requirements ?? []).length > 0 && (
-              <>
-                <div className="section-label">{NX({ fr: "Composants requis", en: "Required components" })}</div>
-                {T.requirements.map((r, i) => (
-                  <div key={i} className="card" style={{ cursor: "default", padding: "9px 15px" }}>
-                    <div style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: "rgba(226,201,126,0.8)" }}>{NXS(r.name)}</div>
-                    {r.note && <div style={{ marginTop: 3, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(r.note)}</div>}
-                  </div>
-                ))}
-              </>
-            )}
-
-            {/* Collections / succès — progression API */}
-            {(T.achievements ?? []).length > 0 && (
-              <>
-                <div className="section-label">{NX({ fr: "Collections & succès", en: "Collections & achievements" })}</div>
-                {T.achievements.map((a) => {
-                  const p = achOf(a.key);
-                  const done = !!(p && p.done);
-                  const hasProg = !!(p && p.max > 0);
-                  const pct = hasProg ? Math.min(100, Math.round((p.current / p.max) * 100)) : 0;
-                  return (
-                    <div key={a.id} className="card" style={{ cursor: "default" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <span style={{ color: done ? "#4ade80" : "rgba(226,201,126,0.35)", fontSize: 13 }}>{done ? "✓" : "○"}</span>
-                        <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11.5, color: done ? "#4ade80" : "rgba(226,201,126,0.85)" }}>{NXS(a.name)}</span>
-                        <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>#{a.id}</span>
-                        {!done && hasProg && <span style={{ fontSize: 10, color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{p.current}/{p.max}</span>}
-                        {!done && !hasProg && <span style={{ fontSize: 10, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>{NX({ fr: "— (sync API pour la progression)", en: "— (sync API for progress)" })}</span>}
-                      </div>
-                      {!done && hasProg && (
-                        <div style={{ marginTop: 6, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
-                          <div style={{ width: `${pct}%`, height: "100%", background: "#5eead4", borderRadius: 2, transition: "width 0.3s" }} />
-                        </div>
-                      )}
-                      {a.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)" }}>{NX(a.note)}</div>}
-                    </div>
-                  );
-                })}
-              </>
-            )}
-
-            {/* Guide pas-à-pas (coche manuelle) */}
-            {(T.guide ?? []).length > 0 && (
-              <>
-                <div className="section-label">{NX({ fr: "Guide pas-à-pas", en: "Step-by-step guide" })}</div>
-                {T.guide.map((g, i) => {
-                  const sk = `${curKey}:${i}`;
-                  const ck = !!trinketSteps[sk];
-                  return (
-                    <div key={i} className={`card ${ck ? "checked" : ""}`} onClick={() => toggleStep(sk)} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: ck ? "#4ade80" : "#5eead4", minWidth: 18 }}>{ck ? "✓" : (i + 1) + "."}</span>
-                      <span style={{ fontFamily: "'Crimson Text', serif", fontSize: 12.5, color: "rgba(226,201,126,0.75)", lineHeight: 1.45 }}>{NXS(NX(g))}</span>
-                    </div>
-                  );
-                })}
-              </>
-            )}
-
-            {/* Lien wiki */}
-            {T.wiki && (
-              <div style={{ margin: "10px 14px 18px", fontSize: 11, fontFamily: "'Crimson Text', serif" }}>
-                <a href={`https://wiki.guildwars2.com/wiki/${T.wiki}`} target="_blank" rel="noreferrer" style={{ color: "rgba(94,234,212,0.7)" }}>
-                  {NX({ fr: "→ Fiche wiki complète", en: "→ Full wiki page" })}
-                </a>
-              </div>
-            )}
-          </div>
-        );
-      })()}
+      {activeTab === "guide" && leg?.isGuideTrinket && (
+        <TrinketGuide
+          curKey={selectedLeg}
+          apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
+      )}
 
       {activeTab === "common" && (
         <div>

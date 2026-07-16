@@ -895,6 +895,13 @@ def progression():
         "jade":    wallet_dict.get(65, 0),   # Testimony of Jade Heroics (recette actuelle) — 82=Castoran, 36=Desert
     }
 
+    # Currencies Strife Unending (WvW — accessoire VoE)
+    strife_unending = {
+        "tickets": wallet_dict.get(26, 0),     # Skirmish Claim Tickets (objectif 3000)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (objectif 45)
+        "memory":  mat_dict.get(71581, 0),     # Memory of Battle
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1051,6 +1058,7 @@ def progression():
             "aurora":       aurora,
             "conflux":      conflux,
             "warbringer":   warbringer,
+            "strife_unending": strife_unending,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,

@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v21",
+  "version": "v22",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -329,7 +329,8 @@
    "en": "Fix 2026-07: MEE=91024 (was 97783), Orichalcum Filigree=12834 (was 19703), Lesser Vision Crystal=49523 (was 46744). Verified via gw2treasures/wiki."
   },
   "changelog_v20": "Trinkets: achievements+guide pour transcendence/the_ascension/ad_infinitum/endless_summer/stella_radians/strife_unending/orrax_manifested. Corrections: Transcendence (Gift of Battle WvW requis), Strife Unending (composants réels), Stella Radians apiId=109070.",
-  "changelog_v21": "Fix armory IDs : Ad Infinitum = 74155 (était 80225), Astralaria = 76158 (la map liait 74155 à gen2_astralaria par erreur)."
+  "changelog_v21": "Fix armory IDs : Ad Infinitum = 74155 (était 80225), Astralaria = 76158 (la map liait 74155 à gen2_astralaria par erreur).",
+  "changelog_v22": "Transcendence: timegate saisons ranked + note croisée T6. The Ascension: note croisée T6 (Gift of Fortune)."
  },
  "meta_events": {
   "vb": {
@@ -6938,6 +6939,10 @@
    "armory_max_count": 1,
    "guide": [
     {
+     "fr": "⚑ Grind matériaux : le Mystic Tribute consomme les 8 T6 (suivi → onglet T6) et chaque Mystic Essence ajoute 20 T6 + 50 T5 ciblés + 250 matériaux de compte (Bloodstone/Empyreal/Dragonite/Dark Matter). Tribute partagé avec gen2/Stella Radians — attention au double-comptage.",
+     "en": "⚑ Material grind: the Mystic Tribute consumes all 8 T6 mats (tracking → T6 tab) and each Mystic Essence adds 20 T6 + 50 targeted T5 + 250 account mats (Bloodstone/Empyreal/Dragonite/Dark Matter). Tribute shared with gen2/Stella Radians — beware double-counting."
+    },
+    {
      "fr": "League Vendor (Heart of the Mists, [&BNgJAAA=]) : acheter les 4 Mystic Essences dans l'ordre (Challenge → Determination → Discipline → Success — chaque achat débloque la suivante).",
      "en": "League Vendor (Heart of the Mists, [&BNgJAAA=]): buy the 4 Mystic Essences in order (Challenge → Determination → Discipline → Success — each purchase unlocks the next)."
     },
@@ -6965,7 +6970,11 @@
      "fr": "MF final : Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence.",
      "en": "Final MF: Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence."
     }
-   ]
+   ],
+   "timegate": {
+    "fr": "Saisons PvP classées (Ascended Shards of Glory via coffres de ligue — off-seasons = pause) + Gift of Battle (track WvW ~6-8h) + 2× Glorious Reward Track (Mist Core Fragments).",
+    "en": "Ranked PvP seasons (Ascended Shards of Glory via league chests — off-seasons = downtime) + Gift of Battle (WvW track ~6-8h) + 2× Glorious Reward Track (Mist Core Fragments)."
+   }
   },
   "the_ascension": {
    "name": "The Ascension",
@@ -7026,6 +7035,10 @@
     }
    ],
    "guide": [
+    {
+     "fr": "⚑ Gift of Fortune = 2× Gift of Magic + 2× Gift of Might (les 8 T6 ×250 — suivi → onglet T6) + 77 Mystic Clovers + 250 Mystic Coins.",
+     "en": "⚑ Gift of Fortune = 2× Gift of Magic + 2× Gift of Might (all 8 T6 ×250 — tracking → T6 tab) + 77 Mystic Clovers + 250 Mystic Coins."
+    },
     {
      "fr": "Compléter Year of the Ascension Parts I→IV en ranked PvP (≥60 jours de timegate : 3 matchs classés/jour ×15 jours par part).",
      "en": "Complete Year of the Ascension Parts I→IV in ranked PvP (≥60 days timegate: 3 ranked matches/day ×15 days per part)."
