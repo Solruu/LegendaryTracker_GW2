@@ -337,7 +337,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 9; // v9 : trinkets (Stella Radians 109070, Endless Summer 107022…)
+const NAMES_CACHE_VER = 10; // v10 : monnaies VoE (Aether-Rich Sap 83, Antiquated Ducat 81) + karma
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -611,9 +611,9 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 }
 
 // ── Groupe Trinkets : navigation à 2 niveaux (v34) ──
-const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending"];
-const TRINKET_GUIDE_KEYS = ["endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"];
-const TRINKET_GROUP_ORDER = [...TRINKET_RICH.slice(0, 7), "strife_unending", ...TRINKET_GUIDE_KEYS];
+const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians"];
+const TRINKET_GUIDE_KEYS = ["orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"];
+const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "strife_unending", ...TRINKET_GUIDE_KEYS];
 const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
@@ -1288,6 +1288,62 @@ const LEGENDARIES = {
         ],
         tip: { fr: "6 épisodes Icebrood Saga. Récompense finale : Prismatic Champion's Regalia.", en: "6 Icebrood Saga episodes. Final reward: Prismatic Champion's Regalia." } },
     ],
+  },
+  endless_summer: {
+    id: "endless_summer",
+    name: "Endless Summer",
+    type: { fr: "Anneau", en: "Ring" },
+    expansion: "VoE",
+    color: "#fbbf24",
+    colorDim: "rgba(251,191,36,0.15)",
+    icon: "ES",
+    description: { fr: "Anneau légendaire — Castora (thème Zintl/dieu-soleil). Rachetable chez Palak pour un 2e exemplaire.", en: "Legendary ring — Castora (Zintl/sun-god theme). Re-purchasable from Palak for a 2nd copy." },
+    resetType: "daily",
+    isGuideTrinket: true,
+    currencies: [
+      { id: "sap",      name: "Aether-Rich Sap",      required: 500, icon: "AS", apiId: 83 },
+      { id: "ducat",    name: "Antiquated Ducat",     required: 500, icon: "AD", apiId: 81 },
+      { id: "obsidian", name: "Obsidian Shard",       required: 250, icon: "OS", apiId: 19925 },
+      { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
+      { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
+    ],
+    metas: [
+      { id: "hammerhart", name: { fr: "Rixe des Hammerhart !", en: "Hammerhart Rumble!" }, subname: { fr: "Shipwreck Strand", en: "Shipwreck Strand" }, expansion: "VoE", icon: "HR",
+        offsetUTC: 40, intervalMin: 120, durationMin: 20,
+        efficience: "A", population: "LFG",
+        waypoint: "Hammerhart Battery", wpCode: "[&BHUPAAA=]",
+        tip: { fr: "World boss de Shipwreck Strand (Twisting Hollows). Accès rapide : téléporteur « Found » au Pub Canach. CC obligatoire pour percer le dôme initial ; boss jumeaux à barre de vie partagée. Source d'Aether-Rich Sap.", en: "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source." } },
+      { id: "weald", name: { fr: "Secrets de la sylve", en: "Secrets of the Weald" }, subname: { fr: "Starlit Weald", en: "Starlit Weald" }, expansion: "VoE", icon: "SW",
+        offsetUTC: 100, intervalMin: 120, durationMin: 25,
+        efficience: "A", population: "LFG",
+        waypoint: "Consecrated Piazza", wpCode: "[&BG8PAAA=]",
+        tip: { fr: "Méta de Starlit Weald (Cloister of Stars) : 3 excavateurs simultanés puis Gwyllian. Maîtrise des lignes de force requise (planeur/monture). Source d'Antiquated Ducats.", en: "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source." } },
+    ],
+    bounties: [],
+  },
+  stella_radians: {
+    id: "stella_radians",
+    name: "Stella Radians",
+    type: { fr: "Accessoire", en: "Accessory" },
+    expansion: "VoE",
+    color: "#c084fc",
+    colorDim: "rgba(192,132,252,0.15)",
+    icon: "SR",
+    description: { fr: "Accessoire légendaire — Eternity's Garden (mai 2026). Budget ~7M de karma.", en: "Legendary accessory — Eternity's Garden (May 2026). ~7M karma budget." },
+    resetType: "daily",
+    isGuideTrinket: true,
+    currencies: [
+      { id: "karma",   name: "Karma",         required: 7000000, icon: "KA", apiId: 2 },
+      { id: "coins",   name: "Mystic Coin",   required: 250,     icon: "MO", apiId: 19976 },
+      { id: "clovers", name: "Mystic Clover", required: 77,      icon: "MC", apiId: 19675 },
+    ],
+    metas: [
+      { id: "shackles", name: { fr: "Entraves des Anciens", en: "Shackles of the Ancients" }, subname: { fr: "Eternity's Garden", en: "Eternity's Garden" }, expansion: "VoE", icon: "SA",
+        isTimeless: true,
+        waypoint: "The Forge", wpCode: "[&BP8PAAA=]",
+        tip: { fr: "Méta d'Eternity's Garden, toutes les 2h à The Forge — décalage UTC pas encore consolidé sur les timers publics : vérifier /wiki et in-game. Multi-phases : reprendre la Forge, la relancer, puis l'All Seer. Boucle de farm principale de la carte.", en: "Eternity's Garden meta, every 2h at The Forge — UTC offset not yet consolidated on public timers: check /wiki et in-game. Multi-phase: retake the Forge, restart it, then the All Seer. The map's main farm loop." } },
+    ],
+    bounties: [],
   },
   strife_unending: {
     id: "strife_unending",
@@ -2010,7 +2066,7 @@ export default function GW2LegendaryTracker() {
       const last = localStorage.getItem("gw2_last_trinket") ?? "";
       if (last.startsWith("guide:") && TRINKET_GUIDE_KEYS.includes(last.slice(6))) return last.slice(6);
     } catch (_) {}
-    return "endless_summer";
+    return TRINKET_GUIDE_KEYS[0];
   });
   const [trinketSteps, setTrinketSteps] = useState(() => {
     try { return (JSON.parse(localStorage.getItem("gw2_trinket_steps") ?? "null") ?? {}); } catch { return {}; }

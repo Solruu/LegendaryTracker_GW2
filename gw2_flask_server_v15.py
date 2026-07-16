@@ -102,6 +102,8 @@ ACHIEVEMENT_IDS = {
     "strife_unending":    9244,   # Mists Research: Strife Unending (10 étapes) — vérifié wiki/gw2treasures
     "summer_krait":       9180,   # Helping Hylek: Kill Krait (prérequis Gift of the Hylek) — vérifié refs
     "summer_sungod":      9183,   # Radiance of the Sun God (chaîne Gift of the Hylek) — vérifié refs
+    "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
+    "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
@@ -902,6 +904,22 @@ def progression():
         "memory":  mat_dict.get(71581, 0),     # Memory of Battle
     }
 
+    # Currencies Endless Summer (anneau VoE — monnaies de carte Castora)
+    endless_summer = {
+        "sap":     wallet_dict.get(83, 0),     # Aether-Rich Sap (Shipwreck Strand) — objectif 500
+        "ducat":   wallet_dict.get(81, 0),     # Antiquated Ducat (Starlit Weald) — objectif 500
+        "obsidian": mat_dict.get(19925, 0),    # Obsidian Shard (Gift of Infused Gems ×250)
+        "gems":    mat_dict.get(68063, 0),     # Amalgamated Gemstone (×250)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Purified Rift Essences ×10)
+    }
+
+    # Currencies Stella Radians (accessoire VoE — karma-intensif)
+    stella_radians = {
+        "karma":   wallet_dict.get(2, 0),      # Karma — budget ~7M
+        "coins":   mat_dict.get(19976, 0),     # Mystic Coin (Mystic Tribute ×250)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Mystic Tribute ×77)
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1059,6 +1077,8 @@ def progression():
             "conflux":      conflux,
             "warbringer":   warbringer,
             "strife_unending": strife_unending,
+            "endless_summer": endless_summer,
+            "stella_radians": stella_radians,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,
