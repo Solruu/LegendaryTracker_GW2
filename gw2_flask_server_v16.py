@@ -104,6 +104,8 @@ ACHIEVEMENT_IDS = {
     "summer_sungod":      9183,   # Radiance of the Sun God (chaîne Gift of the Hylek) — vérifié refs
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
+    "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs
+    "orrax_bava_mastery":       8769,  # Bava Nisos Mastery (→ Askur Camping Cookout) — vérifié refs
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
@@ -920,6 +922,21 @@ def progression():
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Mystic Tribute ×77)
     }
 
+    # Currencies Orrax Manifested (dos JW)
+    orrax_manifested = {
+        "tales":   wallet_dict.get(69, 0),     # Tales of Dungeon Delving (Gift of Ascalon ×500)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Draconic Tribute ×38)
+        "oblige":  wallet_dict.get(76, 0),     # Ursus Oblige (achats vendeurs JW — indicatif)
+    }
+
+    # Currencies Ad Infinitum (dos fractales)
+    ad_infinitum = {
+        "relics":   wallet_dict.get(7, 0),     # Fractal Relic (Gift of Ascension ×500 + achats collections)
+        "pristine": wallet_dict.get(24, 0),    # Pristine Fractal Relic (achats BUY-2046 ×50)
+        "clovers":  mat_dict.get(19675, 0),    # Mystic Clover (Gift of Fortune ×77)
+        "coins":    mat_dict.get(19976, 0),    # Mystic Coin (Gift of Fortune ×250)
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1079,6 +1096,8 @@ def progression():
             "strife_unending": strife_unending,
             "endless_summer": endless_summer,
             "stella_radians": stella_radians,
+            "orrax_manifested": orrax_manifested,
+            "ad_infinitum": ad_infinitum,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,

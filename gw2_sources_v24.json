@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v23",
+  "version": "v24",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -331,7 +331,8 @@
   "changelog_v20": "Trinkets: achievements+guide pour transcendence/the_ascension/ad_infinitum/endless_summer/stella_radians/strife_unending/orrax_manifested. Corrections: Transcendence (Gift of Battle WvW requis), Strife Unending (composants réels), Stella Radians apiId=109070.",
   "changelog_v21": "Fix armory IDs : Ad Infinitum = 74155 (était 80225), Astralaria = 76158 (la map liait 74155 à gen2_astralaria par erreur).",
   "changelog_v22": "Transcendence: timegate saisons ranked + note croisée T6. The Ascension: note croisée T6 (Gift of Fortune).",
-  "changelog_v23": "Stella Radians: collections 9330 (Forge Guard) + 9344 (Glimmering Resin) confirmées, note Seer Runestones/Shackles."
+  "changelog_v23": "Stella Radians: collections 9330 (Forge Guard) + 9344 (Glimmering Resin) confirmées, note Seer Runestones/Shackles.",
+  "changelog_v24": "Orrax: masteries 8582/8769 + chiffres clés recette (Mursaat Ruins, Draconic Tribute, Gift of Darkness)."
  },
  "meta_events": {
   "vb": {
@@ -7445,6 +7446,24 @@
    "armory_max_count": 1,
    "achievements": [
     {
+     "key": "orrax_mistburned_mastery",
+     "id": 8582,
+     "name": "Mistburned Barrens Mastery",
+     "note": {
+      "fr": "Récompense : Salmon of Knowledge (composant du précurseur Orrax Contained). Rachetable au vendeur de cœur si détruit.",
+      "en": "Reward: Salmon of Knowledge (Orrax Contained precursor component). Re-purchasable from the heart vendor if destroyed."
+     }
+    },
+    {
+     "key": "orrax_bava_mastery",
+     "id": 8769,
+     "name": "Bava Nisos Mastery",
+     "note": {
+      "fr": "Récompense : Askur Camping Cookout (composant du précurseur). Rachetable au vendeur de cœur si détruit.",
+      "en": "Reward: Askur Camping Cookout (precursor component). Re-purchasable from the heart vendor if destroyed."
+     }
+    },
+    {
      "key": "orrax_experiments",
      "id": 8761,
      "name": "Unknown Nightmares: Experiments in the Shadows",
@@ -7512,6 +7531,10 @@
     {
      "fr": "Ward Crafter Lucirae (Astral Ward Moon Camp, Lowland Shore) peut forger les gifts de craft 400 contre surcoût si discipline manquante.",
      "en": "Ward Crafter Lucirae (Astral Ward Moon Camp, Lowland Shore) can craft the 400-level gifts for extra cost if you lack the discipline."
+    },
+    {
+     "fr": "⚑ Chiffres clés : Orrax Contained = Binding of the Dragon + Draconic Tribute (38 clovers + Gift of Condensed Magic + Might + 5 Amalgamated Draconic Lodestones) + les 2 dos de mastery. Gift of the Mursaat Ruins = 100 Vials of Titan Melted Liquid Obsidian + 50 Mist Gate Residues + 100 Shards Mistburned + 100 Shards Bava Nisos. Gift of the Mistburned Isles = Mursaat Ruins + Janthir Wanderlust (4 map completions JW) + 250 Mursaat Runestones (1 po pièce chez Miyani) + 250 Mystic Runestones. Gift of Darkness = Gift of Ascalon (500 Tales of Dungeon Delving) + 250 Ori Ingots + 250 Cured Hardened Leather + 100 Onyx Lodestones. T6 via Condensed Magic/Might → onglet T6.",
+     "en": "⚑ Key numbers: Orrax Contained = Binding of the Dragon + Draconic Tribute (38 clovers + Gift of Condensed Magic + Might + 5 Amalgamated Draconic Lodestones) + the 2 mastery backpacks. Gift of the Mursaat Ruins = 100 Vials of Titan Melted Liquid Obsidian + 50 Mist Gate Residues + 100 Mistburned Shards + 100 Bava Nisos Shards. Gift of the Mistburned Isles = Mursaat Ruins + Janthir Wanderlust (4 JW map completions) + 250 Mursaat Runestones (1 g each at Miyani) + 250 Mystic Runestones. Gift of Darkness = Gift of Ascalon (500 Tales of Dungeon Delving) + 250 Ori Ingots + 250 Cured Hardened Leather + 100 Onyx Lodestones. T6 via Condensed Magic/Might → T6 tab."
     },
     {
      "fr": "MF final : Orrax Contained + Gift of the Mistburned Isles + Gift of Shadows + Gift of the Feast → Orrax Manifested (+ skin deltaplane, 4 canaux de teinture).",

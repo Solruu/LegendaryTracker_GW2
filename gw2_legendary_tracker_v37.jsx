@@ -337,7 +337,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 10; // v10 : monnaies VoE (Aether-Rich Sap 83, Antiquated Ducat 81) + karma
+const NAMES_CACHE_VER = 11; // v11 : monnaies JW/fractales (Ursus Oblige 76, Tales 69, Fractal Relics 7/24)
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -611,9 +611,9 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 }
 
 // ── Groupe Trinkets : navigation à 2 niveaux (v34) ──
-const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians"];
-const TRINKET_GUIDE_KEYS = ["orrax_manifested", "ad_infinitum", "the_ascension", "transcendence"];
-const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "strife_unending", ...TRINKET_GUIDE_KEYS];
+const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
+const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
+const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
 const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
@@ -1343,6 +1343,68 @@ const LEGENDARIES = {
         efficience: "A", population: "LFG",
         waypoint: "Pilgrim's Rest", wpCode: "[&BPwPAAA=]",
         tip: { fr: "Méta d'Eternity's Garden (heures impaires UTC) : rassemblement à Pilgrim's Rest dès xx:00, lancement xx:10. 3 phases ~15 min : capturer les 3 chambres de la Forge, réparer les conduits, puis Kela et l'All Seer (~xx:35). Boucle de farm principale de la carte (horaire confirmé wiki).", en: "Eternity's Garden meta (odd UTC hours): gather at Pilgrim's Rest from xx:00, starts xx:10. 3 ~15-min phases: capture the 3 Forge chambers, repair the conduits, then Kela and the All Seer (~xx:35). The map's main farm loop (schedule confirmed via wiki)." } },
+    ],
+    bounties: [],
+  },
+  orrax_manifested: {
+    id: "orrax_manifested",
+    name: "Orrax Manifested",
+    type: { fr: "Objet de dos", en: "Back item" },
+    expansion: "JW",
+    color: "#818cf8",
+    colorDim: "rgba(129,140,248,0.15)",
+    icon: "OM",
+    description: { fr: "Dos légendaire — Janthir Wilds (+ skin de planeur, 4 canaux de teinture)", en: "Legendary back item — Janthir Wilds (+ glider skin, 4 dye channels)" },
+    resetType: "daily",
+    isGuideTrinket: true,
+    currencies: [
+      { id: "tales",   name: "Tales of Dungeon Delving", required: 500, icon: "TD", apiId: 69 },
+      { id: "clovers", name: "Mystic Clover",            required: 38,  icon: "MC", apiId: 19675 },
+      { id: "oblige",  name: "Ursus Oblige",             required: 300, icon: "UO", apiId: 76 },
+    ],
+    metas: [
+      { id: "titanic", name: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, subname: { fr: "Bava Nisos", en: "Bava Nisos" }, expansion: "JW", icon: "TV",
+        offsetUTC: 80, intervalMin: 120, durationMin: 25,
+        efficience: "B", population: "LFG",
+        waypoint: "Mantle's Arrival", wpCode: "[&BGEPAAA=]",
+        tip: { fr: "Méta de Bava Nisos (heures impaires UTC + 20 min). Source de Bava Nisos Shards et progression de la Bava Nisos Mastery. Jorvik Jorundsson (départ des collections Orrax) est au camp de l'Alliance, au NO du waypoint.", en: "Bava Nisos meta (odd UTC hours + 20 min). Bava Nisos Shards source and Bava Nisos Mastery progression. Jorvik Jorundsson (Orrax collections start) is at the Alliance camp, NW of the waypoint." } },
+      { id: "mistburned", name: { fr: "Événements Mistburned Barrens", en: "Mistburned Barrens events" }, subname: { fr: "Shards & coffres Mursaat", en: "Shards & Mursaat caches" }, expansion: "JW", icon: "MB",
+        isTimeless: true,
+        waypoint: "Alliance Staging Ground", wpCode: "[&BFAPAAA=]",
+        tip: { fr: "Boucle libre : événements éclair (batterie de la collection, très fréquents au NE du waypoint), coffres Mursaat Ruins (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 Shards de carte. Progresse aussi la Mistburned Mastery.", en: "Free loop: lightning events (collection battery, very frequent NE of the waypoint), Mursaat Ruins caches (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 map Shards. Also progresses the Mistburned Mastery." } },
+    ],
+    bounties: [],
+  },
+  ad_infinitum: {
+    id: "ad_infinitum",
+    name: "Ad Infinitum",
+    type: { fr: "Objet de dos", en: "Back item" },
+    expansion: "Core",
+    color: "#7dd3fc",
+    colorDim: "rgba(125,211,252,0.15)",
+    icon: "AI",
+    description: { fr: "Dos légendaire — Fractales des Brumes (+ skin de planeur). Timegate : ~40 jours de Research Pages.", en: "Legendary back item — Fractals of the Mists (+ glider skin). Timegate: ~40 days of Research Pages." },
+    resetType: "daily",
+    isGuideTrinket: true,
+    currencies: [
+      { id: "relics",   name: "Fractal Relic",          required: 500, icon: "FR", apiId: 7 },
+      { id: "pristine", name: "Pristine Fractal Relic", required: 50,  icon: "PF", apiId: 24 },
+      { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
+      { id: "coins",    name: "Mystic Coin",            required: 250, icon: "MO", apiId: 19976 },
+    ],
+    metas: [
+      { id: "adinf_dailies", name: { fr: "Dailies fractales recommandées", en: "Recommended fractal dailies" }, subname: { fr: "~3 Research Pages/jour", en: "~3 Research Pages/day" }, expansion: "Core", icon: "FD",
+        isTimeless: true,
+        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
+        tip: { fr: "Le timegate central : chaque Fractal Journal = 28 Research Pages, 4 journaux requis. ~3 pages/jour via les dailies recommandées → ~10 jours par collection.", en: "The core timegate: each Fractal Journal = 28 Research Pages, 4 journals required. ~3 pages/day via recommended dailies → ~10 days per collection." } },
+      { id: "adinf_cms", name: { fr: "CM Sunqua / Nightmare / Shattered", en: "Sunqua / Nightmare / Shattered CMs" }, subname: { fr: "+1 page chacun", en: "+1 page each" }, expansion: "Core", icon: "CM",
+        isTimeless: true,
+        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
+        tip: { fr: "Chaque Challenge Mote quotidien rapporte +1 Research Page → jusqu'à 6 pages/jour au total, soit ~5 jours par collection au lieu de 10.", en: "Each daily Challenge Mote grants +1 Research Page → up to 6 pages/day total, i.e. ~5 days per collection instead of 10." } },
+      { id: "adinf_kelvei", name: { fr: "Kelvei — débloquer la collection suivante", en: "Kelvei — unlock the next collection" }, subname: { fr: "Mistlock Observatory", en: "Mistlock Observatory" }, expansion: "Core", icon: "KV",
+        isTimeless: true,
+        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
+        tip: { fr: "Après chaque craft de dos (Finite Result → Upper Bound → Unbound), parler à Kelvei pour recevoir la « Theory of… » suivante. Recycler l'ancien dos pour les Balls of Dark Energy (5 puis 9).", en: "After each back craft (Finite Result → Upper Bound → Unbound), talk to Kelvei to receive the next 'Theory of…'. Salvage the old back for Balls of Dark Energy (5 then 9)." } },
     ],
     bounties: [],
   },
