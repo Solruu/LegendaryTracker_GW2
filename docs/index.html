@@ -12060,9 +12060,10 @@ const LEGENDARIES = {
     ],
     metas: [
       { id: "shackles", name: { fr: "Entraves des Anciens", en: "Shackles of the Ancients" }, subname: { fr: "Eternity's Garden", en: "Eternity's Garden" }, expansion: "VoE", icon: "SA",
-        isTimeless: true,
-        waypoint: "The Forge", wpCode: "[&BP8PAAA=]",
-        tip: { fr: "Méta d'Eternity's Garden, toutes les 2h à The Forge — décalage UTC pas encore consolidé sur les timers publics : vérifier /wiki et in-game. Multi-phases : reprendre la Forge, la relancer, puis l'All Seer. Boucle de farm principale de la carte.", en: "Eternity's Garden meta, every 2h at The Forge — UTC offset not yet consolidated on public timers: check /wiki et in-game. Multi-phase: retake the Forge, restart it, then the All Seer. The map's main farm loop." } },
+        offsetUTC: 70, intervalMin: 120, durationMin: 50,
+        efficience: "A", population: "LFG",
+        waypoint: "Pilgrim's Rest", wpCode: "[&BPwPAAA=]",
+        tip: { fr: "Méta d'Eternity's Garden (heures impaires UTC) : rassemblement à Pilgrim's Rest dès xx:00, lancement xx:10. 3 phases ~15 min : capturer les 3 chambres de la Forge, réparer les conduits, puis Kela et l'All Seer (~xx:35). Boucle de farm principale de la carte (horaire confirmé wiki).", en: "Eternity's Garden meta (odd UTC hours): gather at Pilgrim's Rest from xx:00, starts xx:10. 3 ~15-min phases: capture the 3 Forge chambers, repair the conduits, then Kela and the All Seer (~xx:35). The map's main farm loop (schedule confirmed via wiki)." } },
     ],
     bounties: [],
   },
