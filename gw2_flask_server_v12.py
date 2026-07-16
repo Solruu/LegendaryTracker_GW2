@@ -884,6 +884,20 @@ def progression():
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     }
 
+    # Currencies T6 (onglet Matériaux T6)
+    t6 = {
+        "blood":   mat_dict.get(24295, 0),   # Vial of Powerful Blood
+        "venom":   mat_dict.get(24283, 0),   # Powerful Venom Sac
+        "totem":   mat_dict.get(24300, 0),   # Elaborate Totem
+        "dust":    mat_dict.get(24277, 0),   # Pile of Crystalline Dust
+        "claw":    mat_dict.get(24351, 0),   # Vicious Claw
+        "bone":    mat_dict.get(24358, 0),   # Ancient Bone
+        "fang":    mat_dict.get(24357, 0),   # Vicious Fang
+        "scale":   mat_dict.get(24289, 0),   # Armored Scale
+        "volatile": wallet_dict.get(45, 0),  # Volatile Magic
+        "ice":     mat_dict.get(92272, 0),   # Eternal Ice Shard (item, pas wallet)
+    }
+
     # Currencies Armes gen3 (tracker Armes)
     weapons_gen3 = {
         "antique":    mat_dict.get(96978, 0),   # Antique Summoning Stone (vérifié ref — pas 91024)
@@ -1023,6 +1037,7 @@ def progression():
             "selachimorpha": selachimorpha,
             "upgrades":     upgrades,
             "weapons":      weapons_gen3,
+            "t6":           t6,
         },
         "common": common,
         "achievements": achievements,

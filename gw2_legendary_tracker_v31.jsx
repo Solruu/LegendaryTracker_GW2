@@ -27,6 +27,10 @@ const I18N = {
     wpn_resolving: "Resolving weapon names via GW2 API…",
     bits_meta_note: "Meta-achievement — its steps are the map achievements below (completion states sync via Flask).",
     bits_meta_nostatus: "Connect the Flask API to see per-achievement completion.",
+    t6_demand: "1 Condensed pair (Magic+Might) = 200 of EACH T6. Demands: Obsidian piece = 1 pair · rune/sigil/relic = 1 pair · Coalescence = 2 pairs · gen3 weapon = 1 pair. Bars below = 1 pair; multiply by your planned crafts.",
+    t6_src1: "Eternal Ice loop (IBS): daily strikes (~90-100 shards/day, 30-45 min) or Drakkar + Bjora chests → Eye of the North conversion (75 shards → LW4 currency → Volatile Magic, unlimited).",
+    t6_src2: "Trophy Shipments: 250 Volatile Magic + 1g at LW4 vendors — T5/T6 trophies worth ~2-5g each; THE volume source. Extra VM: Dragonfall meta, daily LW4 train.",
+    t6_src3: "T5→T6 Mystic Forge promotion: 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Profitability varies — check gw2efficiency (venom sacs and claws are often not worth it). Buy remaining deficits on the TP at the end.",
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_loading: "Loading step definitions…",
@@ -189,6 +193,10 @@ const I18N = {
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
     bits_meta_note: "Méta-achievement — ses étapes sont les achievements de carte ci-dessous (statuts synchronisés via Flask).",
     bits_meta_nostatus: "Connecte l'API Flask pour voir la complétion par achievement.",
+    t6_demand: "1 paire Condensed (Magic+Might) = 200 de CHAQUE T6. Demandes : pièce Obsidienne = 1 paire · rune/sigil/relique = 1 paire · Coalescence = 2 paires · arme gen3 = 1 paire. Barres ci-dessous = 1 paire ; multiplie par tes crafts prévus.",
+    t6_src1: "Circuit Eternal Ice (IBS) : strikes quotidiennes (~90-100 shards/j, 30-45 min) ou Drakkar + coffres Bjora → conversion Eye of the North (75 shards → monnaie LW4 → Volatile Magic, sans limite).",
+    t6_src2: "Trophy Shipments : 250 Volatile Magic + 1 po chez les vendors LW4 — trophées T5/T6 valant ~2-5 po pièce ; LA source de volume. VM en plus : meta Dragonfall, train LW4 quotidien.",
+    t6_src3: "Promotion T5→T6 en Forge : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Rentabilité variable — vérifier gw2efficiency (venom sacs et claws souvent non rentables). Acheter les déficits restants au TP en fin de parcours.",
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_loading: "Chargement des définitions d'étapes…",
@@ -1018,6 +1026,32 @@ const LEGENDARIES = {
     ],
     currencies: [],
     collectionNoteKeys: ["wpn_note1", "wpn_note2"],
+    metas: [],
+    bounties: [],
+  },
+
+  t6: {
+    id: "t6",
+    name: "Matériaux T6",
+    type: { fr: "Trophées T6 — Condensed Magic & Might", en: "T6 Trophies — Condensed Magic & Might" },
+    expansion: "Global",
+    color: "#fb7185",
+    colorDim: "rgba(251,113,133,0.15)",
+    icon: "T6",
+    description: { fr: "Les 8 trophées T6 — demande transverse de presque tous les légendaires", en: "The 8 T6 trophies — cross-cutting demand from almost every legendary" },
+    resetType: "daily",
+    // Barres = 1 paire Condensed (200 de chaque) ; voir t6_demand pour les multiplicateurs
+    currencies: [
+      { id: "blood", name: "Vial of Powerful Blood", required: 200, icon: "BL", apiId: 24295 },
+      { id: "venom", name: "Powerful Venom Sac",     required: 200, icon: "VE", apiId: 24283 },
+      { id: "totem", name: "Elaborate Totem",        required: 200, icon: "TO", apiId: 24300 },
+      { id: "dust",  name: "Pile of Crystalline Dust", required: 200, icon: "DU", apiId: 24277 },
+      { id: "claw",  name: "Vicious Claw",           required: 200, icon: "CL", apiId: 24351 },
+      { id: "bone",  name: "Ancient Bone",           required: 200, icon: "BO", apiId: 24358 },
+      { id: "fang",  name: "Vicious Fang",           required: 200, icon: "FA", apiId: 24357 },
+      { id: "scale", name: "Armored Scale",          required: 200, icon: "SC", apiId: 24289 },
+    ],
+    currencyNoteKeys: ["t6_demand", "t6_src1", "t6_src2", "t6_src3"],
     metas: [],
     bounties: [],
   },
@@ -2336,7 +2370,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (leg?.raidAchievements ? "raids" : "metas")))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas"))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2496,7 +2530,7 @@ export default function GW2LegendaryTracker() {
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
     ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" ? [{ id: "wvw", label: `WvW (${weeklyCount}/4)` }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
@@ -3942,6 +3976,11 @@ export default function GW2LegendaryTracker() {
       {activeTab === "currencies" && (
         <div>
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
+          {(leg?.currencyNoteKeys ?? []).map(k => (
+            <div key={k} style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
+              {t(k)}
+            </div>
+          ))}
           {isWeapons && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })}
