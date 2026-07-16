@@ -92,8 +92,8 @@ const I18N = {
     bits_meta_note: "Meta-achievement — its steps are the map achievements below (completion states sync via Flask).",
     bits_meta_nostatus: "Connect the Flask API to see per-achievement completion.",
     t6_demand: "1 Condensed pair (Magic+Might) = 200 of EACH T6. Demands: Obsidian piece = 1 pair · rune/sigil/relic = 1 pair · Coalescence = 2 pairs · gen3 weapon = 1 pair. Bars below = 1 pair; multiply by your planned crafts.",
-    t6_src1: "Eternal Ice loop (IBS): daily strikes (~90-100 shards/day, 30-45 min) or Drakkar + Bjora chests → Eye of the North conversion (75 shards → LW4 currency → Volatile Magic, unlimited).",
-    t6_src2: "Trophy Shipments: 250 Volatile Magic + 1g at LW4 vendors — T5/T6 trophies worth ~2-5g each; THE volume source. Extra VM: Dragonfall meta, daily LW4 train.",
+    t6_src1: "Eternal Ice loop (IBS): daily strikes (~90-100 shards/day, 30-45 min) or Drakkar + Bjora chests. Conversion at Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — UNLOCK REQUIRED: buy 'Unlock Eternal Ice Trader' from Lady Camilla (hub upgrade vendor). 75 shards → pouch of 25 LW4 map currency, unlimited; also trades directly against Volatile Magic. Note: the Eternal Ice vendor works even without PoF (rare exception in the hub).",
+    t6_src2: "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on each LW4 map (near the main waypoints) — T5/T6 trophies worth ~2-5g each; THE volume source. Skip Material Shipments (lower tiers). Extra VM: Dragonfall meta, daily LW4 train.",
     t6_src3: "T5→T6 Mystic Forge promotion: 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Profitability varies — check gw2efficiency (venom sacs and claws are often not worth it). Buy remaining deficits on the TP at the end.",
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
@@ -258,8 +258,8 @@ const I18N = {
     bits_meta_note: "Méta-achievement — ses étapes sont les achievements de carte ci-dessous (statuts synchronisés via Flask).",
     bits_meta_nostatus: "Connecte l'API Flask pour voir la complétion par achievement.",
     t6_demand: "1 paire Condensed (Magic+Might) = 200 de CHAQUE T6. Demandes : pièce Obsidienne = 1 paire · rune/sigil/relique = 1 paire · Coalescence = 2 paires · arme gen3 = 1 paire. Barres ci-dessous = 1 paire ; multiplie par tes crafts prévus.",
-    t6_src1: "Circuit Eternal Ice (IBS) : strikes quotidiennes (~90-100 shards/j, 30-45 min) ou Drakkar + coffres Bjora → conversion Eye of the North (75 shards → monnaie LW4 → Volatile Magic, sans limite).",
-    t6_src2: "Trophy Shipments : 250 Volatile Magic + 1 po chez les vendors LW4 — trophées T5/T6 valant ~2-5 po pièce ; LA source de volume. VM en plus : meta Dragonfall, train LW4 quotidien.",
+    t6_src1: "Circuit Eternal Ice (IBS) : strikes quotidiennes (~90-100 shards/j, 30-45 min) ou Drakkar + coffres Bjora. Conversion à l'Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — DÉBLOCAGE REQUIS : acheter 'Unlock Eternal Ice Trader' chez Lady Camilla (le PNJ d'améliorations du hub). 75 shards → sachet de 25 monnaies de carte LW4, sans limite ; échange aussi directement contre de la Volatile Magic. Note : le vendor Eternal Ice fonctionne même sans PoF (exception rare du hub).",
+    t6_src2: "Trophy Shipments : 250 Volatile Magic + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux) — trophées T5/T6 valant ~2-5 po pièce ; LA source de volume. Éviter les Material Shipments (tiers inférieurs). VM en plus : meta Dragonfall, train LW4 quotidien.",
     t6_src3: "Promotion T5→T6 en Forge : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Rentabilité variable — vérifier gw2efficiency (venom sacs et claws souvent non rentables). Acheter les déficits restants au TP en fin de parcours.",
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "2.2",
+    "version": "2.3",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -10767,7 +10767,14 @@ const SOURCES_DB = {
         "Volatile Magic direct : Dragonfall meta (~meilleure carte VM), train LW4 quotidien",
         "Promotion T5→T6 en Forge Mystique : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack) ; rentabilité variable, vérifier gw2efficiency (venom sacs et claws souvent non rentables)",
         "TP : acheter directement les T6 déficitaires en fin de parcours plutôt que sur-farmer"
-      ]
+      ],
+      "eotn_details": {
+        "hub": "Eye of the North — hub améliorable IBS, WP [&BBsDAAA=] (débloqué automatiquement avec un perso 80)",
+        "unlock": "Acheter 'Unlock Eternal Ice Trader' chez Lady Camilla (PNJ des améliorations du hub) → fait apparaître Kjep Corrson",
+        "vendor": "Kjep Corrson : 75 Eternal Ice Shards → sachet de 25 monnaies de carte LW4 (au choix), sans limite ; échanges aussi contre Volatile Magic",
+        "pof_note": "Exception du hub : les vendors Eternal Ice et Hatched Chili fonctionnent même sans PoF (les autres services de Lady Camilla requièrent PoF+IBS)",
+        "shipments": "Trophy Shipments : 250 VM + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux). Éviter les Material Shipments."
+      }
     }
   }
 };

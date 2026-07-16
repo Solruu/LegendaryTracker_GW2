@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "2.2",
+  "version": "2.3",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -10198,7 +10198,14 @@
     "Volatile Magic direct : Dragonfall meta (~meilleure carte VM), train LW4 quotidien",
     "Promotion T5→T6 en Forge Mystique : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack) ; rentabilité variable, vérifier gw2efficiency (venom sacs et claws souvent non rentables)",
     "TP : acheter directement les T6 déficitaires en fin de parcours plutôt que sur-farmer"
-   ]
+   ],
+   "eotn_details": {
+    "hub": "Eye of the North — hub améliorable IBS, WP [&BBsDAAA=] (débloqué automatiquement avec un perso 80)",
+    "unlock": "Acheter 'Unlock Eternal Ice Trader' chez Lady Camilla (PNJ des améliorations du hub) → fait apparaître Kjep Corrson",
+    "vendor": "Kjep Corrson : 75 Eternal Ice Shards → sachet de 25 monnaies de carte LW4 (au choix), sans limite ; échanges aussi contre Volatile Magic",
+    "pof_note": "Exception du hub : les vendors Eternal Ice et Hatched Chili fonctionnent même sans PoF (les autres services de Lady Camilla requièrent PoF+IBS)",
+    "shipments": "Trophy Shipments : 250 VM + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux). Éviter les Material Shipments."
+   }
   }
  }
 }
