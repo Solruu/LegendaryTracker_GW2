@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v20",
+    "version": "v21",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -669,9 +669,6 @@ const SOURCES_DB = {
       "77474": [
         "the_ascension"
       ],
-      "80225": [
-        "ad_infinitum"
-      ],
       "107022": [
         "endless_summer"
       ],
@@ -757,7 +754,7 @@ const SOURCES_DB = {
         "gen1_the_predator"
       ],
       "74155": [
-        "gen2_astralaria"
+        "ad_infinitum"
       ],
       "74329": [
         "gen2_hope"
@@ -878,6 +875,9 @@ const SOURCES_DB = {
       ],
       "101582": [
         "legendary_relic"
+      ],
+      "76158": [
+        "gen2_astralaria"
       ]
     },
     "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -897,7 +897,8 @@ const SOURCES_DB = {
       "fr": "Correctif 2026-07: MEE=91024 (etait 97783), Orichalcum Filigree=12834 (etait 19703), Lesser Vision Crystal=49523 (etait 46744). Verifies gw2treasures/wiki.",
       "en": "Fix 2026-07: MEE=91024 (was 97783), Orichalcum Filigree=12834 (was 19703), Lesser Vision Crystal=49523 (was 46744). Verified via gw2treasures/wiki."
     },
-    "changelog_v20": "Trinkets: achievements+guide pour transcendence/the_ascension/ad_infinitum/endless_summer/stella_radians/strife_unending/orrax_manifested. Corrections: Transcendence (Gift of Battle WvW requis), Strife Unending (composants réels), Stella Radians apiId=109070."
+    "changelog_v20": "Trinkets: achievements+guide pour transcendence/the_ascension/ad_infinitum/endless_summer/stella_radians/strife_unending/orrax_manifested. Corrections: Transcendence (Gift of Battle WvW requis), Strife Unending (composants réels), Stella Radians apiId=109070.",
+    "changelog_v21": "Fix armory IDs : Ad Infinitum = 74155 (était 80225), Astralaria = 76158 (la map liait 74155 à gen2_astralaria par erreur)."
   },
   "meta_events": {
     "vb": {
@@ -7642,9 +7643,12 @@ const SOURCES_DB = {
         "en": "4 fractal collections required (Ad Infinitum I→III for Unbound, then IV for Gift of Infinity). ~40-56 days minimum without CM. Gift of Fortune = gen1 (shared)."
       },
       "unlock_also": "glider skin",
-      "armory_api_id": 80225,
+      "armory_api_id": 74155,
       "armory_max_count": 1,
-      "armory_note": "Probable apiId 80225 — to confirm live (74155 = Astralaria gen2 axe, conflict avoided)",
+      "armory_note": {
+        "fr": "apiId 74155 confirmé (wiki EN/FR + gw2efficiency). L'ancienne note « 74155 = Astralaria » était erronée : Astralaria = 76158.",
+        "en": "apiId 74155 confirmed (EN/FR wiki + gw2efficiency). The old '74155 = Astralaria' note was wrong: Astralaria = 76158."
+      },
       "achievements": [
         {
           "key": "adinf_1",
