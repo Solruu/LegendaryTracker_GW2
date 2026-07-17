@@ -4029,7 +4029,7 @@ export default function GW2LegendaryTracker() {
                                 <div style={{ marginTop: 5, padding: "6px 8px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5 }}>
                                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
                                     <span style={{ fontSize: 9, fontWeight: 600, color: mDone ? "#4ade80" : "#fb923c", fontFamily: "'Cinzel', serif", letterSpacing: "0.03em" }}>
-                                      {mDone ? "✓ " : ""}{item.mastery_label}
+                                      {mDone ? "✓ " : ""}{NX(item.mastery_label)}
                                     </span>
                                     <span style={{ fontSize: 9, color: mDone ? "rgba(74,222,128,0.7)" : "rgba(251,146,60,0.6)" }}>
                                       {mCur}<span style={{ opacity: 0.5 }}>/{mMax}</span>
