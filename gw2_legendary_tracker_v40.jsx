@@ -337,7 +337,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 12; // v12 : Perfected Envoy (Legendary Insight 70, Provisioner Token 29)
+const NAMES_CACHE_VER = 13; // v13 : Ardent Glorious (Ascended Shards 33, League Tickets 30)
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -614,7 +614,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
 const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
 const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
-const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "weapons", "upgrades", "t6"];
+const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "ardent_glorious", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
   vision: {
@@ -1233,6 +1233,32 @@ const LEGENDARIES = {
         limit: { fr: "Coffres d'escarmouche + TP", en: "Skirmish chests + TP" }, resetDay: "Passif",
         tip: { fr: "250/précurseur + 250/Gift of War Dedication. Complément achetable au TP si pressé.", en: "250/precursor + 250/Gift of War Dedication. Top up on the TP if in a hurry." } },
     ],
+    metas: [],
+    bounties: [],
+  },
+  ardent_glorious: {
+    id: "ardent_glorious",
+    name: "Ardent Glorious Armor",
+    type: { fr: "Set d'armure", en: "Armor set" },
+    expansion: "HoT",
+    color: "#38bdf8",
+    colorDim: "rgba(56,189,248,0.15)",
+    icon: "⬠",
+    description: { fr: "Armure légendaire — PvP (ligues classées). Timegate saisonnier : ~3 saisons au cap.", en: "Legendary Armor — PvP (ranked leagues). Seasonal timegate: ~3 seasons at cap." },
+    resetType: "weekly",
+    isArmorSet: true,
+    isGuideTrinket: true,
+    pieces: 6,
+    armoryNamePrefix: "Ardent Glorious", // 18 IDs découverts au runtime (/v2/legendaryarmory + /v2/items)
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    // Coûts par pièce — set : 3200 Shards (2400 Stars of Glory + 800 précurseurs) + 300 League Tickets
+    currenciesPerPiece: [
+      { id: "shards",  name: "Ascended Shards of Glory", perPiece: 534, icon: "SG", apiId: 33 },
+      { id: "tickets", name: "PvP League Ticket",        perPiece: 50,  icon: "LT", apiId: 30 },
+      { id: "clovers", name: "Mystic Clover",            perPiece: 15,  icon: "MC", apiId: 19675 },
+    ],
+    currencies: [],
     metas: [],
     bounties: [],
   },
@@ -2261,29 +2287,54 @@ export default function GW2LegendaryTracker() {
     if (!LEGENDARIES[selectedLeg]?.isArmorSet) return;
     setObsItems(null); // purge du set précédent (matrice re-résolue par set)
     const ids = LEGENDARIES[selectedLeg].armoryApiIds;
+    const namePrefix = LEGENDARIES[selectedLeg].armoryNamePrefix; // découverte runtime si pas d'IDs hardcodés
     const cacheKey = `gw2_${selectedLeg}_items_${lang}_v1`;
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
-      if (cached && Object.keys(cached).length === ids.length) { setObsItems(cached); return; }
+      if (cached && Object.keys(cached).length > 0 && (!ids || Object.keys(cached).length === ids.length)) { setObsItems(cached); return; }
     } catch (_) {}
-    fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`)
-      .then(r => (r.ok ? r.json() : null))
-      .then(list => {
-        if (!Array.isArray(list)) return;
-        const SLOT_MAP = { Helm: "head", Shoulders: "shoulders", Coat: "chest", Gloves: "gloves", Leggings: "legs", Boots: "boots" };
+    const SLOT_MAP = { Helm: "head", Shoulders: "shoulders", Coat: "chest", Gloves: "gloves", Leggings: "legs", Boots: "boots" };
+    const toEntry = (it) => {
+      const dt = (it && it.details) ? it.details : {};
+      return { name: it.name, weight: dt.weight_class ?? "?", slot: SLOT_MAP[dt.type] ?? (dt.type ?? "?") };
+    };
+    (async () => {
+      try {
         const map = {};
-        for (const it of list) {
-          const dt = (it && it.details) ? it.details : {};
-          map[String(it.id)] = {
-            name: it.name,
-            weight: dt.weight_class ?? "?",
-            slot: SLOT_MAP[dt.type] ?? (dt.type ?? "?"),
-          };
-        }
+        if (ids && ids.length > 0) {
+          const r = await fetch(`https://api.guildwars2.com/v2/items?ids=${ids.join(",")}&lang=${lang}`);
+          if (!r.ok) return;
+          for (const it of await r.json()) map[String(it.id)] = toEntry(it);
+        } else if (namePrefix) {
+          // Découverte : /v2/legendaryarmory → /v2/items, filtre Armor + préfixe EN
+          const ra = await fetch("https://api.guildwars2.com/v2/legendaryarmory?ids=all");
+          if (!ra.ok) return;
+          const allIds = (await ra.json()).map(e => e.id);
+          const armors = {};
+          for (let k = 0; k < allIds.length; k += 150) {
+            const chunk = allIds.slice(k, k + 150);
+            const ri = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=en`);
+            if (!ri.ok) continue;
+            for (const it of await ri.json()) {
+              if (it.type === "Armor" && (it.name ?? "").startsWith(namePrefix)) armors[String(it.id)] = it;
+            }
+          }
+          if (lang !== "en") {
+            const dIds = Object.keys(armors);
+            for (let k = 0; k < dIds.length; k += 150) {
+              const chunk = dIds.slice(k, k + 150);
+              const rl = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=${lang}`);
+              if (rl.ok) for (const it of await rl.json()) map[String(it.id)] = toEntry(it);
+            }
+          } else {
+            for (const [id, it] of Object.entries(armors)) map[id] = toEntry(it);
+          }
+        } else { return; }
+        if (Object.keys(map).length === 0) return;
         setObsItems(map);
         try { localStorage.setItem(cacheKey, JSON.stringify(map)); } catch (_) {}
-      })
-      .catch(() => {});
+      } catch (_) {}
+    })();
   }, [selectedLeg, lang]);
 
   // ── Collections : définitions des étapes (bits) via /v2/achievements + résolution items ──
@@ -2868,7 +2919,9 @@ export default function GW2LegendaryTracker() {
   // ── Obsidian : pièces possédées / ciblées / restantes ──
   const isObsidian = selectedLeg === "obsidian";
   const isArmorSet = LEGENDARIES[selectedLeg]?.isArmorSet === true;
-  const obsIds = (LEGENDARIES[selectedLeg]?.isArmorSet ? LEGENDARIES[selectedLeg].armoryApiIds : LEGENDARIES.obsidian.armoryApiIds);
+  const obsIds = (LEGENDARIES[selectedLeg]?.isArmorSet
+    ? (LEGENDARIES[selectedLeg].armoryApiIds ?? (obsItems ? Object.keys(obsItems).map(Number) : []))
+    : LEGENDARIES.obsidian.armoryApiIds);
   const obsOwnedSet = new Set(obsIds.filter(id => armoryRaw.has(id)));
   const obsHasTarget = obsTarget.size > 0;
   const obsTargetOwned = obsHasTarget ? [...obsTarget].filter(id => obsOwnedSet.has(id)).length : 0;
@@ -2911,7 +2964,7 @@ export default function GW2LegendaryTracker() {
     ...(isArmorSet ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy", "triumphant_hero"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy", "triumphant_hero", "ardent_glorious"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" || selectedLeg === "triumphant_hero" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
     ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),

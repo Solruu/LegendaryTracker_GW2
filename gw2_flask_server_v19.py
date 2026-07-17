@@ -954,6 +954,13 @@ def progression():
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (15/pièce)
     }
 
+    # Currencies Ardent Glorious (armure PvP — coûts par pièce dynamiques côté front)
+    ardent_glorious = {
+        "shards":  wallet_dict.get(33, 0),     # Ascended Shards of Glory (3200/set)
+        "tickets": wallet_dict.get(30, 0),     # PvP League Ticket (300/set, cap ~120/saison)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (15/pièce)
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1117,6 +1124,7 @@ def progression():
             "ad_infinitum": ad_infinitum,
             "perfected_envoy": perfected_envoy,
             "triumphant_hero": triumphant_hero,
+            "ardent_glorious": ardent_glorious,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,
