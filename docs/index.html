@@ -11910,7 +11910,7 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [],
     raidAchievements: [
-      { key: "eikasia_meta", achievementId: 8826, name: "Incursive Investigation",
+      { key: "eikasia_meta", achievementId: 8826, name: "Incursive Investigation", metaSubs: true,
         tip: { fr: "Meta-achievement — récompense : Eikasia, Mists-Grasper Choice (choix d'UN poids parmi les 3).", en: "Meta-achievement — reward: Eikasia, Mists-Grasper Choice (pick ONE of the 3 weights)." } },
       { key: "eikasia_relic", achievementId: 8823, name: "Incursive Investigation: Relic in the Mists",
         tip: { fr: "Étape 1 : compléter une fractale en quickplay et looter le coffre final, puis rapporter les Agony-Torn Gloves au Mist Stranger (Fort Marriner, Arche du Lion).", en: "Step 1: complete a quickplay fractal and loot the final chest, then bring the Agony-Torn Gloves to the Mist Stranger (Fort Marriner, Lion's Arch)." } },
@@ -13231,7 +13231,7 @@ function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v3`;
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v4`; // v4 : subs de la meta Eikasia
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -13432,6 +13432,15 @@ function GW2LegendaryTracker() {
   }, []);
   const [wpnItems, setWpnItems] = useState(null);
   const [achBitsDefs, setAchBitsDefs] = useState({});
+  const [achManualDone, setAchManualDone] = useState(() => {
+    try { return (JSON.parse(localStorage.getItem("gw2_ach_manual_done_v1") ?? "null") ?? {}); } catch { return {}; }
+  });
+  const toggleAchManual = (k) => {
+    const nx = { ...achManualDone, [k]: !achManualDone[k] };
+    if (!nx[k]) delete nx[k];
+    setAchManualDone(nx);
+    try { localStorage.setItem("gw2_ach_manual_done_v1", JSON.stringify(nx)); } catch (_) {}
+  };
   const [achSubStatus, setAchSubStatus] = useState(() => {
     try { return (JSON.parse(localStorage.getItem("gw2_ach_substatus") ?? "null") ?? {}); } catch { return {}; }
   });
@@ -15211,7 +15220,8 @@ function GW2LegendaryTracker() {
           {selectedLeg === "eikasia" && (() => {
             const tier = (k) => {
               const s = apiAch[k] ?? {};
-              return s.done ? ((s.max > 0 ? s.max : null) ?? 150) : (s.current ?? 0);
+              if (s.done === true || achManualDone[k] === true) return (s.max > 0 ? s.max : 150);
+              return s.current ?? 0;
             };
             const dust = tier("eikasia_r1") + tier("eikasia_r2") + tier("eikasia_r3");
             const pct = Math.min(100, Math.round((dust / 450) * 100));
@@ -15236,7 +15246,8 @@ function GW2LegendaryTracker() {
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {(leg?.raidAchievements ?? []).map(a => {
             const st = apiAch[a.key] ?? {};
-            const done = st.done === true;
+            const manual = achManualDone[a.key] === true;
+            const done = st.done === true || manual;
             const cur = st.current ?? 0;
             const mx = st.max ?? 0;
             const locked = !done && mx === 0;
@@ -15251,8 +15262,18 @@ function GW2LegendaryTracker() {
                   <div style={{ fontSize: "12px", fontWeight: 600, color: done ? "#4ade80" : "#e2c97e" }}>
                     <span style={{ opacity: 0.5, marginRight: 5 }}>{isOpen ? "▾" : "▸"}</span>{done ? "✓ " : ""}{NX(a.name)}
                   </div>
-                  <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
-                    {done ? "✓" : (locked ? (a.target ? `${cur}/${a.target} 🔒` : t("ach_locked")) : `${cur}/${mx || a.target || "?"}`)}
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
+                      {done ? (st.done === true ? "✓" : NX({ fr: "✓ manuel", en: "✓ manual" })) : (locked ? (a.target ? `${cur}/${a.target} 🔒` : t("ach_locked")) : `${cur}/${mx || a.target || "?"}`)}
+                    </div>
+                    {st.done !== true && (
+                      <button className="adj-btn"
+                        title={NX({ fr: "Marquer fait manuellement (utile sans synchro Flask, ex. mobile)", en: "Mark done manually (useful without Flask sync, e.g. mobile)" })}
+                        style={{ fontSize: "10px", padding: "2px 7px", opacity: manual ? 1 : 0.55 }}
+                        onClick={(e) => { e.stopPropagation(); toggleAchManual(a.key); }}>
+                        {manual ? NX({ fr: "annuler", en: "undo" }) : "☑"}
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
