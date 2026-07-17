@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v27",
+  "version": "v28",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -335,7 +335,217 @@
   "changelog_v24": "Orrax: masteries 8582/8769 + chiffres clés recette (Mursaat Ruins, Draconic Tribute, Gift of Darkness).",
   "changelog_v25": "Perfected Envoy: achievements 2646/3012, guide craft complet, timegate, recipe (préparation onglet riche v38).",
   "changelog_v26": "Triumphant Hero: 18 apiIds légendaires confirmés, coûts complets (7880 tickets/3000 memories/20 marks), guide, timegate 22 sem.",
-  "changelog_v27": "Ardent Glorious: coûts complets (3200 Shards/300 Tickets), guide, timegate saisonnier, découverte apiIds runtime."
+  "changelog_v27": "Ardent Glorious: coûts complets (3200 Shards/300 Tickets), guide, timegate saisonnier, découverte apiIds runtime.",
+  "direct_sync": {
+   "note": "Extrait de gw2_flask_server (ACHIEVEMENT_IDS / PRISMATIC_BIT_MAP) — synchro CORS directe sans Flask (mobile).",
+   "achievement_key_ids": {
+    "vision_1": 4762,
+    "vision_2": 4771,
+    "aurora_1": 3522,
+    "aurora_2": 3489,
+    "prismatic": 5790,
+    "coalescence_1": 4035,
+    "coalescence_2": 4412,
+    "coalescence_3": 4805,
+    "selachi_agaleus": 8869,
+    "selachi_shipwreck": 8880,
+    "selachi_starlit": 9057,
+    "selachi_diver": 4177,
+    "eikasia_meta": 8826,
+    "eikasia_relic": 8823,
+    "eikasia_r1": 8840,
+    "eikasia_r2": 8841,
+    "eikasia_r3": 8835,
+    "eikasia_working": 8830,
+    "eikasia_infinite": 8814,
+    "rune_collector": 7796,
+    "sigil_collector": 7788,
+    "relic_components": 7829,
+    "ascension_path_1": 2738,
+    "ascension_path_2": 2752,
+    "ascension_path_3": 2725,
+    "ascension_path_4": 2715,
+    "adinf_1": 2351,
+    "adinf_2": 2557,
+    "adinf_3": 2368,
+    "adinf_4": 2295,
+    "orrax_experiments": 8761,
+    "orrax_shadows": 8723,
+    "orrax_feast": 8750,
+    "orrax_isles": 8743,
+    "orrax_contained": 8730,
+    "orrax_final": 8714,
+    "strife_mists_research": 6933,
+    "strife_unending": 9244,
+    "summer_krait": 9180,
+    "summer_sungod": 9183,
+    "stella_forge_guard": 9330,
+    "stella_resin": 9344,
+    "orrax_mistburned_mastery": 8582,
+    "orrax_bava_mastery": 8769,
+    "envoy_1": 2646,
+    "envoy_2": 3012
+   },
+   "prismatic": {
+    "tier_ranges": {
+     "tier1": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "tier2": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "tier3": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "tier4": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+     ]
+    },
+    "bit_map": [
+     [
+      0,
+      5773,
+      "Return to Dry Top 1"
+     ],
+     [
+      1,
+      5804,
+      "Return to Dry Top 2"
+     ],
+     [
+      2,
+      5829,
+      "Return to Silverwastes 1"
+     ],
+     [
+      3,
+      5758,
+      "Return to Silverwastes 2"
+     ],
+     [
+      4,
+      5742,
+      "Return to Bloodstone Fen"
+     ],
+     [
+      5,
+      5743,
+      "Return to Ember Bay"
+     ],
+     [
+      6,
+      5779,
+      "Return to Bitterfrost Frontier"
+     ],
+     [
+      7,
+      5756,
+      "Return to Lake Doric"
+     ],
+     [
+      8,
+      5751,
+      "Return to Draconis Mons"
+     ],
+     [
+      9,
+      5748,
+      "Return to Siren's Landing"
+     ],
+     [
+      10,
+      5948,
+      "Return to the Domain of Istan"
+     ],
+     [
+      11,
+      5884,
+      "Return to the Sandswept Isles"
+     ],
+     [
+      12,
+      6005,
+      "Return to the Domain of Kourna"
+     ],
+     [
+      13,
+      5901,
+      "Return to Jahai Bluffs"
+     ],
+     [
+      14,
+      6023,
+      "Return to Thunderhead Peaks"
+     ],
+     [
+      15,
+      5995,
+      "Return to Dragonfall"
+     ],
+     [
+      16,
+      5888,
+      "Return to Grothmar Valley"
+     ],
+     [
+      17,
+      5991,
+      "Return to Bjora Marches 1"
+     ],
+     [
+      18,
+      6024,
+      "Return to Bjora Marches 2"
+     ],
+     [
+      19,
+      5886,
+      "Return to the Eye of the North"
+     ],
+     [
+      20,
+      5869,
+      "Return to Drizzlewood Coast 1"
+     ],
+     [
+      21,
+      5926,
+      "Return to Drizzlewood Coast 2"
+     ],
+     [
+      22,
+      5861,
+      "Return to the Dragonstorm"
+     ],
+     [
+      23,
+      null,
+      "Return to Champions"
+     ]
+    ]
+   }
+  },
+  "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask)."
  },
  "meta_events": {
   "vb": {

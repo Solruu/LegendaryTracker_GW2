@@ -2584,9 +2584,9 @@ export default function GW2LegendaryTracker() {
 
 
   // Grand Total
-  const [gtApiKey, setGtApiKey] = useState(() => {
-    try { return localStorage.getItem("gw2_gt_apikey") ?? ""; } catch { return ""; }
-  });
+  // Clé API : conservée en mémoire uniquement (jamais persistée — à ressaisir par session)
+  const [gtApiKey, setGtApiKey] = useState("");
+  useEffect(() => { try { localStorage.removeItem("gw2_gt_apikey"); } catch (_) {} }, []); // purge de l'ancien stockage
   const [gtOwnedIds, setGtOwnedIds] = useState(new Set());
   const [gtManualOwnedIds, setGtManualOwnedIds] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_gt_manual_owned") ?? "[]")); } catch { return new Set(); }
@@ -2613,17 +2613,90 @@ export default function GW2LegendaryTracker() {
   const leg = isGrandTotal ? null : LEGENDARIES[selectedLeg];
   const isWeekly = leg?.resetType === "weekly";
 
-  // ── Fetch depuis le serveur Flask local
+  // ── Synchro directe GW2 API (CORS) — reconstruit la réponse /api/progression sans Flask ──
+  const buildDirectProgressionData = useCallback(async (key) => {
+    const H = { headers: { Authorization: `Bearer ${key}` } };
+    const [ra, rw, rm, rb] = await Promise.all([
+      fetch("https://api.guildwars2.com/v2/account/achievements", H),
+      fetch("https://api.guildwars2.com/v2/account/wallet", H),
+      fetch("https://api.guildwars2.com/v2/account/materials", H),
+      fetch("https://api.guildwars2.com/v2/account/bank", H),
+    ]);
+    if (!ra.ok) throw new Error(`achievements HTTP ${ra.status}${ra.status === 401 || ra.status === 403 ? " (clé invalide ou permission 'progression' manquante)" : ""}`);
+    if (!rw.ok) throw new Error(`wallet HTTP ${rw.status}`);
+    const achList = await ra.json();
+    const wallet = await rw.json();
+    const mats = rm.ok ? await rm.json() : [];
+    const bank = rb.ok ? await rb.json() : [];
+    const byId = {}; for (const a of achList) byId[a.id] = a;
+    const walletD = {}; for (const w of (wallet ?? [])) walletD[w.id] = w.value;
+    const matD = {};
+    for (const mm of (mats ?? [])) if (mm && mm.id) matD[mm.id] = (matD[mm.id] ?? 0) + (mm.count ?? 0);
+    for (const bb of (bank ?? [])) if (bb && bb.id) matD[bb.id] = (matD[bb.id] ?? 0) + (bb.count ?? 0);
+    const val = (apiId) => (apiId < 1000 ? (walletD[apiId] ?? 0) : (matD[apiId] ?? 0));
+    const meta = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?._meta ?? {}).direct_sync ?? {};
+    const keyIds = meta.achievement_key_ids ?? {};
+    const norm = (a) => ({ done: a?.done === true, current: a?.current ?? 0, max: a?.max ?? 0, bits: a?.bits ?? [] });
+    const achievements = {};
+    for (const [k2, id2] of Object.entries(keyIds)) achievements[k2] = norm(byId[id2]);
+    const currencies = {};
+    for (const l of Object.values(LEGENDARIES)) {
+      const descs = [
+        ...(l.currencies ?? []),
+        ...(l.currenciesPerPiece ?? []),
+        ...(l.currenciesPerWeapon ?? []),
+        ...Object.values(l.currenciesPerWeaponByGen ?? {}).flat(),
+      ];
+      if (descs.length === 0) continue;
+      const d2 = {};
+      for (const c of descs) if (c.apiId) d2[c.id] = val(c.apiId);
+      currencies[l.id] = d2;
+    }
+    const common = {};
+    for (const c of COMMON_MATS) if (c.apiId) common[c.id] = val(c.apiId);
+    // Prismatic : reconstruction (bit_map + tier_ranges extraits de Flask dans SOURCES_DB)
+    let prismatic = null;
+    const pm = meta.prismatic;
+    const pa = byId[keyIds.prismatic ?? 5790];
+    if (pm) {
+      const bits = pa?.bits ?? [];
+      const maps = {};
+      for (const [bit, achId, name] of (pm.bit_map ?? [])) {
+        const a2 = achId ? byId[achId] : null;
+        maps[bit] = a2
+          ? { name, done: a2.done === true, current: a2.current ?? 0, max: a2.max ?? 0 }
+          : { name, done: bits.includes(bit), current: bits.includes(bit) ? 1 : 0, max: 1 };
+      }
+      const tiers = {};
+      for (const [tn, bl] of Object.entries(pm.tier_ranges ?? {})) {
+        const completed = bl.filter(b => bits.includes(b)).length;
+        tiers[tn] = { completed, total: bl.length, done: completed === bl.length };
+      }
+      prismatic = { return_completed: bits.length, return_max: 24, done: pa?.done === true, bits_raw: bits, tiers, maps };
+    }
+    // Statuts compacts de tous les achievements du compte (metas / sous-collections)
+    const sub = {};
+    for (const a of achList) sub[String(a.id)] = { done: a.done === true, current: a.current ?? 0, max: a.max ?? 0 };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _direct: true };
+  }, []);
+
+  // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
   const fetchFromFlask = useCallback(async () => {
     setApiStatus("loading");
     setApiError("");
     try {
-      const resp = await fetch(`http://127.0.0.1:5000/api/progression?lang=${langRef.current}`);
-      if (!resp.ok) {
-        const j = await resp.json().catch(() => ({}));
-        throw new Error(j.error ?? `HTTP ${resp.status}`);
+      let data = null;
+      let flaskErr = null;
+      try {
+        const resp = await fetch(`http://127.0.0.1:5000/api/progression?lang=${langRef.current}`, { signal: AbortSignal.timeout(4000) });
+        if (resp.ok) data = await resp.json();
+        else { const j = await resp.json().catch(() => ({})); flaskErr = j.error ?? `HTTP ${resp.status}`; }
+      } catch (e) { flaskErr = "Flask injoignable"; }
+      if (!data) {
+        const dKey = (gtApiKey ?? "").trim();
+        if (!dKey) throw new Error(`${flaskErr} — saisis ta clé API GW2 (champ 🔑) pour la synchro directe sans Flask`);
+        data = await buildDirectProgressionData(dKey);
       }
-      const data = await resp.json();
       for (const [legId, vals] of Object.entries(data.currencies ?? {})) {
         const cur = await storeGet(getCurrencyKey(legId)) ?? {};
         await storeSet(getCurrencyKey(legId), { ...cur, ...vals });
@@ -2640,6 +2713,10 @@ export default function GW2LegendaryTracker() {
         const pp = data.prismatic;
         localStorage.setItem("gw2_prismatic_progress", JSON.stringify(pp));
         setPrismaticProgress(pp);
+      }
+      if (data._sub_status) {
+        try { localStorage.setItem("gw2_ach_substatus", JSON.stringify(data._sub_status)); } catch (_) {}
+        setAchSubStatus(data._sub_status);
       }
       // Fetch Aurora collections en parallèle
       try {
@@ -2688,7 +2765,7 @@ export default function GW2LegendaryTracker() {
       setApiStatus("error");
       setApiError(e.message);
     }
-  }, [selectedLeg]);
+  }, [selectedLeg, gtApiKey, buildDirectProgressionData]);
 
   // ── Grand Total : détection armory via Flask puis fallback direct ──────────
   const detectGtArmory = useCallback(async (keyOverride) => {
@@ -2735,7 +2812,7 @@ export default function GW2LegendaryTracker() {
     try { localStorage.setItem("gw2_armory_raw_v1", JSON.stringify([...rawSet])); } catch (_) {}
     setGtApiStatus("ok");
     // Persister la clé
-    try { localStorage.setItem("gw2_gt_apikey", key.trim()); } catch (_) {}
+    // (clé volontairement non persistée)
   }, [gtApiKey]);
 
   // ── Grand Total : fetch stocks bulk ─────────────────────────────────────────
@@ -3083,6 +3160,13 @@ export default function GW2LegendaryTracker() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              {(apiStatus === "error" || gtApiKey !== "") && (
+                <input type="password" autoComplete="off" value={gtApiKey}
+                  onChange={(e) => setGtApiKey(e.target.value)}
+                  placeholder={NX({ fr: "🔑 clé API GW2 (session)", en: "🔑 GW2 API key (session)" })}
+                  title={NX({ fr: "Synchro directe sans Flask (mobile). Clé gardée en mémoire uniquement — jamais enregistrée.", en: "Direct sync without Flask (mobile). Key kept in memory only — never stored." })}
+                  style={{ width: 150, fontSize: 10, padding: "4px 7px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(226,201,126,0.2)", borderRadius: 6, color: "#e2c97e" }} />
+              )}
               <button
                 onClick={() => fetchFromFlask()}
                 disabled={apiStatus === "loading"}
