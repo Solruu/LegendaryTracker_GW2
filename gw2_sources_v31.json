@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v30",
+  "version": "v31",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -560,14 +560,16 @@
     "conflux": {
      "tickets": 26,
      "memory": 71581,
-     "testimony": 82,
+     "jade": 65,
+     "castoran": 82,
      "badges": 15
     },
     "warbringer": {
      "tickets": 26,
      "memory": 71581,
      "badges": 15,
-     "jade": 65
+     "jade": 65,
+     "castoran": 82
     },
     "coalescence": {
      "insights": 70,
@@ -709,7 +711,8 @@
   },
   "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask).",
   "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe.",
-  "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile)."
+  "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile).",
+  "changelog_v31": "Testimonies : conflux corrigé 82→jade 65 (recette actuelle), double compteur jade+castoran sur conflux/warbringer (Jade plus obtenables depuis VoE)."
  },
  "meta_events": {
   "vb": {

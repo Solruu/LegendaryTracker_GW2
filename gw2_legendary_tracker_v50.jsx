@@ -904,9 +904,11 @@ const LEGENDARIES = {
     currencies: [
       { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 },
       { id: "memory", name: "Memory of Battle", required: 1500, icon: "MB", apiId: 71581 },
-      { id: "testimony", name: "Testimony of Heroics", required: 250, icon: "TH", apiId: 82 },
+      { id: "jade",     name: "Testimony of Jade Heroics",     required: 250, icon: "JH", apiId: 65 },
+      { id: "castoran", name: "Testimony of Castoran Heroics", required: 250, icon: "CH", apiId: 82 },
       { id: "badges", name: "Badge of Honor", required: 750, icon: "BH", apiId: 15 },
     ],
+    currencyNote: { fr: "⚠ Correction v50 : la recette actuelle exige des Testimonies of JADE Heroics (le compteur pointait sur les Castoran). Les Jade ne sont plus obtenables depuis VoE — voir la note détaillée côté Warbringer ; les deux variantes sont suivies en attendant l'alignement d'ArenaNet.", en: "⚠ v50 fix: the current recipe requires Testimonies of JADE Heroics (the counter was pointing at Castoran). Jade can no longer be obtained since VoE — see the detailed note on Warbringer; both variants are tracked pending ArenaNet's alignment." },
     metas: [],
     wvwActivities: [
       { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
@@ -940,8 +942,10 @@ const LEGENDARIES = {
       { id: "tickets", name: "Skirmish Claim Tickets", required: 2800, icon: "SK", apiId: 26 },
       { id: "memory",  name: "Memory of Battle",       required: 750,  icon: "MB", apiId: 71581 },
       { id: "badges",  name: "Badge of Honor",         required: 1250, icon: "BH", apiId: 15 },
-      { id: "jade",    name: "Testimony of Jade Heroics", required: 500, icon: "JH", apiId: 65 },
+      { id: "jade",     name: "Testimony of Jade Heroics",     required: 500, icon: "JH", apiId: 65 },
+      { id: "castoran", name: "Testimony of Castoran Heroics", required: 500, icon: "CH", apiId: 82 },
     ],
+    currencyNote: { fr: "⚠ Testimonies : les Jade (ère EoD) ne sont PLUS obtenables depuis VoE — les rank-ups McM donnent des Castoran, mais les vendeurs (Dugan, War Razor) exigent encore des Jade (incohérence signalée aux forums depuis fév. 2026, non corrigée en avril). Les deux compteurs sont suivis : si ArenaNet aligne la recette sur Castoran, le second prend le relais.", en: "⚠ Testimonies: Jade (EoD era) can NO LONGER be obtained since VoE — WvW rank-ups grant Castoran, but vendors (Dugan, War Razor) still demand Jade (inconsistency reported on the forums since Feb 2026, unfixed as of April). Both counters are tracked: if ArenaNet aligns the recipe to Castoran, the second one takes over." },
     metas: [],
     wvwActivities: [
       { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
@@ -4666,6 +4670,11 @@ export default function GW2LegendaryTracker() {
               {t(k)}
             </div>
           ))}
+          {leg?.currencyNote && (
+            <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(251,146,60,0.8)", lineHeight: 1.5 }}>
+              {NX(leg.currencyNote)}
+            </div>
+          )}
           {isWeapons && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })}

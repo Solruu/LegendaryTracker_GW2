@@ -859,7 +859,8 @@ def progression():
     conflux = {
         "tickets":   wallet_dict.get(26, 0),
         "memory":    mat_dict.get(71581, 0),   # Memory of Battle — material ID 71581
-        "testimony": wallet_dict.get(82, 0),   # Testimony of Heroics — wallet ID 82
+        "jade":      wallet_dict.get(65, 0),   # Testimony of Jade Heroics — recette actuelle (v50 : était 82 par erreur)
+        "castoran":  wallet_dict.get(82, 0),   # Testimony of Castoran Heroics — veille patch d'alignement
         "badges":    wallet_dict.get(15, 0),
     }
 
@@ -898,7 +899,8 @@ def progression():
         "tickets": wallet_dict.get(26, 0),
         "memory":  mat_dict.get(71581, 0),
         "badges":  wallet_dict.get(15, 0),
-        "jade":    wallet_dict.get(65, 0),   # Testimony of Jade Heroics (recette actuelle) — 82=Castoran, 36=Desert
+        "jade":     wallet_dict.get(65, 0),   # Testimony of Jade Heroics (recette actuelle) — plus obtenable depuis VoE
+        "castoran": wallet_dict.get(82, 0),   # Testimony of Castoran Heroics — veille patch d'alignement
     }
 
     # Currencies Strife Unending (WvW — accessoire VoE)
