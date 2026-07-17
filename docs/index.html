@@ -13441,7 +13441,7 @@ function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v4`; // v4 : subs de la meta Eikasia
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v5`; // v5 : requirement/description + retry subs
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -13463,7 +13463,7 @@ function GW2LegendaryTracker() {
           if (ri.ok) for (const it of await ri.json()) names[String(it.id)] = it.name;
         }
         const out = {};
-        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names };
+        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "" };
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
         const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
@@ -13495,7 +13495,9 @@ function GW2LegendaryTracker() {
           }
         }
         setAchBitsDefs(out);
-        try { localStorage.setItem(cacheKey, JSON.stringify(out)); } catch (_) {}
+        // Ne pas figer le cache si une meta attendait ses subs et ne les a pas (retry au prochain montage)
+        const subsPending = list.some(a2 => a2.metaSubs && !(out[String(a2.achievementId)]?.subs?.length));
+        if (!subsPending) { try { localStorage.setItem(cacheKey, JSON.stringify(out)); } catch (_) {} }
       } catch (_) {}
     })();
   }, [selectedLeg, lang]);
@@ -13682,6 +13684,7 @@ function GW2LegendaryTracker() {
       return next;
     });
   }, []);
+  const [showKeyInput, setShowKeyInput] = useState(false);
   const [gtApiStatus, setGtApiStatus] = useState("idle");
   const [gtApiError, setGtApiError] = useState("");
 
@@ -14243,7 +14246,11 @@ function GW2LegendaryTracker() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-              {(apiStatus === "error" || gtApiKey !== "") && (
+              <button className="adj-btn"
+                title={NX({ fr: "Clé API GW2 — synchro directe sans Flask (mémoire de session uniquement)", en: "GW2 API key — direct sync without Flask (session memory only)" })}
+                style={{ fontSize: "11px", padding: "3px 7px", opacity: (showKeyInput || gtApiKey) ? 1 : 0.55 }}
+                onClick={() => setShowKeyInput(v => !v)}>🔑</button>
+              {(showKeyInput || apiStatus === "error" || gtApiKey !== "") && (
                 <input type="password" autoComplete="off" value={gtApiKey}
                   onChange={(e) => setGtApiKey(e.target.value)}
                   placeholder={NX({ fr: "🔑 clé API GW2 (session)", en: "🔑 GW2 API key (session)" })}
@@ -15608,7 +15615,12 @@ function GW2LegendaryTracker() {
                           })}
                         </div>
                       ) : (
-                        <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>—</div>
+                        <div style={{ fontSize: "11px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.55)", lineHeight: 1.5 }}>
+                          {def.req ? <div>🎯 {def.req}</div> : null}
+                          {def.desc ? <div style={{ marginTop: 3, fontStyle: "italic", opacity: 0.8 }}>{def.desc}</div> : null}
+                          {locked && def.lockedTxt ? <div style={{ marginTop: 3, color: "rgba(251,146,60,0.7)" }}>🔒 {def.lockedTxt}</div> : null}
+                          {!def.req && !def.desc && <div style={{ fontStyle: "italic", opacity: 0.6 }}>—</div>}
+                        </div>
                       )
                     ) : def.bits.map((b, i) => {
                       const stepDone = done || doneBits.has(i);
