@@ -12239,11 +12239,23 @@ const LEGENDARIES = {
     collectionNoteKeys: ["raids_li_note", "raids_wings_note"],
     raidAchievements: [
       { key: "coalescence_1", achievementId: 4035, name: "Coalescence I: Unbridled",
-        tip: { fr: "Débloqué au premier kill de boss de raid. Collection de 10 objets (W5 Hall of Chains).", en: "Unlocked on first raid boss kill. 10-item collection (W5 Hall of Chains)." } },
+        tip: { fr: "Débloqué au premier kill de boss de raid. Collection de 10 objets (W5 Hall of Chains).", en: "Unlocked on first raid boss kill. 10-item collection (W5 Hall of Chains)." },
+        bitTips: {
+          0: { fr: "Coffre en face de celui de Soulless Horror (W5), après le kill.", en: "Chest across from Soulless Horror's chest (W5), after the kill." },
+          1: { fr: "Sous le pont menant à Dhuum, après les 3 premiers encounters de W5.", en: "Under the bridge leading to Dhuum, after clearing the first 3 W5 encounters." },
+          2: { fr: "Derrière le trône de Dhuum, après l'avoir tué.", en: "Behind Dhuum's throne, after killing him." },
+          3: { fr: "MF : Binding + Ink + Parchment + 100 Pulsing Brandsparks.", en: "MF: Binding + Ink + Parchment + 100 Pulsing Brandsparks." },
+          4: { fr: "Temple of Kormir wp → NO jusqu'au perchoir à griffons, /sit 1 min (attendre l'expiration du buff).", en: "Temple of Kormir wp → NW to the griffon roost, /sit 1 min (wait for the buff to expire)." },
+          5: { fr: "Salle cachée de la falaise à la cascade : tunnel des ruines naines (destroyers) ou trou dans la cascade aux Enchanted Bluffs, /sit 1 min.", en: "Hidden room at the waterfall cliff: dwarven-ruins tunnel (destroyers) or hole in the waterfall by Enchanted Bluffs, /sit 1 min." },
+          6: { fr: "Derrière la cascade (en face du spot visible), /sit 1 min.", en: "Behind the waterfall (across from the visible spot), /sit 1 min." },
+          7: { fr: "Est de Bonestrand wp [&BNwKAAA=] : portail chacal derrière la cascade → grotte d'Abaddon, /sit auprès d'Hasara.", en: "East of Bonestrand wp [&BNwKAAA=]: jackal portal behind the waterfall → Abaddon's cave, /sit by Hasara." },
+          8: { fr: "Spot de méditation du Domain of Vabbi, /sit 1 min (voir wiki pour l'emplacement exact).", en: "Domain of Vabbi meditation spot, /sit 1 min (see wiki for the exact location)." },
+          9: { fr: "Se valide automatiquement une fois les 5 méditations terminées.", en: "Completes automatically once all 5 meditations are done." },
+        } },
       { key: "coalescence_2", achievementId: 4412, name: "Coalescence II: The Gift",
-        tip: { fr: "Requiert Coalescence I. Alembic Apparatus : 100 Gaeting Crystals + 10 po chez Glenna (W6).", en: "Requires Coalescence I. Alembic Apparatus: 100 Gaeting Crystals + 10g from Glenna (W6)." } },
+        tip: { fr: "Requiert Coalescence I. Alembic Apparatus : 100 Gaeting Crystals + 10 po chez Glenna (W6), puis remplir les fioles lors des kills de W6 et double-cliquer sur l'Alembic dans l'inventaire.", en: "Requires Coalescence I. Alembic Apparatus: 100 Gaeting Crystals + 10g from Glenna (W6), then fill the vials during W6 kills and double-click the Alembic in your inventory." } },
       { key: "coalescence_3", achievementId: 4805, name: "Coalescence III: Culmination",
-        tip: { fr: "Requiert Coalescence II. Essences des 3 boss de W7 (Adina, Sabir, Qadim the Peerless).", en: "Requires Coalescence II. Essences from the 3 W7 bosses (Adina, Sabir, Qadim the Peerless)." } },
+        tip: { fr: "Requiert Coalescence II. ⚠ Activer la collection AVANT le clear hebdo : les 3 Twisted Essences tombent du coffre bonus hebdomadaire (Adina, Sabir, Qadim the Peerless). Ensuite : Worn Logbook chez Hasara (grotte d'Abaddon), puis purifier les 3 essences au Strange Energy (Sunspear Sanctuary, Vabbi, statue de Kormir).", en: "Requires Coalescence II. ⚠ Enable the collection BEFORE your weekly clear: the 3 Twisted Essences drop from the weekly bonus chest (Adina, Sabir, Qadim the Peerless). Then: Worn Logbook from Hasara (Abaddon's cave), and purify the 3 essences at the Strange Energy (Sunspear Sanctuary, Vabbi, Kormir statue)." } },
     ],
     metas: [],
     bounties: [],
@@ -15826,9 +15838,14 @@ function GW2LegendaryTracker() {
                       else if (b.type === "Skin") { label = label + " (skin)"; }
                       else if (b.type === "Minipet") { label = label + " (mini)"; }
                       return (
-                        <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "6px", padding: "2px 0", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
-                          <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
-                          <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
+                        <div key={i} style={{ padding: "2px 0" }}>
+                          <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
+                            <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
+                            <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
+                          </div>
+                          {!stepDone && a.bitTips?.[i] && (
+                            <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(a.bitTips[i])}</div>
+                          )}
                         </div>
                       );
                     }))}
