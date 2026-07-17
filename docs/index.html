@@ -11916,14 +11916,14 @@ const LEGENDARIES = {
         tip: { fr: "Étape 1 : compléter une fractale en quickplay et looter le coffre final, puis rapporter les Agony-Torn Gloves au Mist Stranger (Fort Marriner, Arche du Lion).", en: "Step 1: complete a quickplay fractal and loot the final chest, then bring the Agony-Torn Gloves to the Mist Stranger (Fort Marriner, Lion's Arch)." } },
       { key: "eikasia_working", achievementId: 8830, name: "Incursive Investigation: Working Together",
         tip: { fr: "Fil conducteur de la Fractalline Dust — quickplay + achievements annexes (la plupart donnent 10+ Dust).", en: "Fractalline Dust through-line — quickplay + side achievements (most grant 10+ Dust)." } },
-      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion",
-        tip: { fr: "150 Fractalline Dust.", en: "150 Fractalline Dust." } },
-      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion",
-        tip: { fr: "300 Fractalline Dust cumulées.", en: "300 Fractalline Dust total." } },
-      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion",
-        tip: { fr: "Dernière récursion avant la meta.", en: "Final recursion before the meta." } },
-      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion",
-        tip: { fr: "150 Dust — requis pour acheter les paires des 2 autres poids au vendor.", en: "150 Dust — required to buy the other 2 weight pairs from the vendor." } },
+      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion", target: 150,
+        tip: { fr: "1er palier : 150 Fractalline Dust (4-6 par run quickplay, +25 via l'hebdo Weekly Fractal Quickplay).", en: "1st tier: 150 Fractalline Dust (4-6 per quickplay run, +25 via the Weekly Fractal Quickplay)." } },
+      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion", target: 150,
+        tip: { fr: "2e palier : 150 Dust (300 cumulées). S'active à la fin du 1er palier.", en: "2nd tier: 150 Dust (300 total). Activates when the 1st tier completes." } },
+      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion", target: 150,
+        tip: { fr: "3e palier : 150 Dust (450 au total) — dernière récursion avant la meta.", en: "3rd tier: 150 Dust (450 total) — final recursion before the meta." } },
+      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion", target: 150,
+        tip: { fr: "🔒 Débloquée seulement après la meta (les 3 récursions terminées). Répétable : 150 Dust = 1 paire d'un autre poids au vendor. ⚠ La Dust excédentaire est perdue à chaque répétition — viser 150 pile.", en: "🔒 Unlocked only after the meta (all 3 recursions done). Repeatable: 150 Dust = 1 pair of another weight from the vendor. ⚠ Excess Dust is lost each repetition — aim for exactly 150." } },
     ],
     collectionNoteKeys: ["eik_note1", "eik_note2"],
     metas: [],
@@ -15208,6 +15208,30 @@ function GW2LegendaryTracker() {
             <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
             {(leg?.collectionNoteKeys ?? []).map((k, i) => <div key={k} style={{ marginTop: i > 0 ? 4 : 0 }}>{t(k)}</div>)}
           </div>
+          {selectedLeg === "eikasia" && (() => {
+            const tier = (k) => {
+              const s = apiAch[k] ?? {};
+              return s.done ? ((s.max > 0 ? s.max : null) ?? 150) : (s.current ?? 0);
+            };
+            const dust = tier("eikasia_r1") + tier("eikasia_r2") + tier("eikasia_r3");
+            const pct = Math.min(100, Math.round((dust / 450) * 100));
+            return (
+              <div style={{ margin: "6px 14px", padding: "11px 13px", background: "rgba(192,132,252,0.05)", border: "1px solid rgba(192,132,252,0.18)", borderRadius: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div style={{ fontSize: "12px", fontWeight: 600, color: "#c084fc", fontFamily: "'Cinzel', serif" }}>
+                    {NX({ fr: "Fractalline Dust (vers les gants)", en: "Fractalline Dust (toward the gloves)" })}
+                  </div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: dust >= 450 ? "#4ade80" : "#c084fc" }}>{dust} / 450</div>
+                </div>
+                <div style={{ marginTop: 6, height: 5, background: "rgba(255,255,255,0.06)", borderRadius: 3 }}>
+                  <div style={{ width: `${pct}%`, height: "100%", background: dust >= 450 ? "#4ade80" : "#c084fc", borderRadius: 3, transition: "width 0.3s" }} />
+                </div>
+                <div style={{ marginTop: 6, fontSize: "11px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.5)" }}>
+                  {NX({ fr: "+4-6 par run quickplay · +25/semaine (Weekly Fractal Quickplay) · progression conservée en local entre les refresh, resynchronisée via Flask.", en: "+4-6 per quickplay run · +25/week (Weekly Fractal Quickplay) · progress kept locally across refreshes, re-synced via Flask." })}
+                </div>
+              </div>
+            );
+          })()}
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {(leg?.raidAchievements ?? []).map(a => {
@@ -15228,7 +15252,7 @@ function GW2LegendaryTracker() {
                     <span style={{ opacity: 0.5, marginRight: 5 }}>{isOpen ? "▾" : "▸"}</span>{done ? "✓ " : ""}{NX(a.name)}
                   </div>
                   <div style={{ fontSize: "13px", fontWeight: 700, color: done ? "#4ade80" : legColor }}>
-                    {done ? "✓" : (locked ? t("ach_locked") : `${cur}/${mx}`)}
+                    {done ? "✓" : (locked ? (a.target ? `${cur}/${a.target} 🔒` : t("ach_locked")) : `${cur}/${mx || a.target || "?"}`)}
                   </div>
                 </div>
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
