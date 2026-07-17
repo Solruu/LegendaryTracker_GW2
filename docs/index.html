@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v29",
+    "version": "v30",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1223,10 +1223,62 @@ const SOURCES_DB = {
           "tickets": 30,
           "clovers": 19675
         }
+      },
+      "collection_key_ids": {
+        "aurora": {
+          "aurora_pre_conspiracy": 3053,
+          "aurora_pre_token": 3129,
+          "aurora_pre_cin": 3383,
+          "aurora_pre_lessons": 3429,
+          "aurora_bf": 3500,
+          "aurora_eb": 3529,
+          "aurora_bfr": 3499,
+          "aurora_ld": 3491,
+          "aurora_dm": 3547,
+          "aurora_sl": 3495,
+          "aurora_1": 3522,
+          "aurora_2": 3489,
+          "mastery_bf": 3050,
+          "mastery_eb": 3123,
+          "mastery_bfr": 3171,
+          "mastery_ld": 3348,
+          "mastery_dm": 3442,
+          "mastery_sl": 3516
+        },
+        "vision": {
+          "vision_istan": 4765,
+          "vision_kourna": 4760,
+          "vision_jahai": 4770,
+          "vision_sandswept": 4774,
+          "vision_thunderhead": 4764,
+          "vision_dragonfall": 4757,
+          "vision_1": 4762,
+          "vision_convergence_1": 4376,
+          "vision_convergence_2": 4362,
+          "vision_2": 4771,
+          "requiem_1": 4344,
+          "requiem_2": 4432,
+          "requiem_3": 4420,
+          "requiem_4": 4354,
+          "requiem_5": 4356,
+          "requiem_6": 4357
+        },
+        "obsidian": {
+          "arcanum_head": 7214,
+          "arcanum_shoulders": 7098,
+          "arcanum_chest": 7096,
+          "arcanum_gloves": 7219,
+          "arcanum_legs": 7240,
+          "arcanum_boots": 7051,
+          "astral_gifts": 7128,
+          "quality_armor": 7802,
+          "suffused_t2": 8064
+        }
       }
     },
     "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask).",
-    "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe."
+    "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe.",
+    "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile)."
   },
   "meta_events": {
     "vb": {
@@ -13878,7 +13930,14 @@ function GW2LegendaryTracker() {
     // Statuts compacts de tous les achievements du compte (metas / sous-collections)
     const sub = {};
     for (const a of achList) sub[String(a.id)] = { done: a.done === true, current: a.current ?? 0, max: a.max ?? 0 };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _direct: true };
+    // Collections Aurora/Vision/Obsidian : même format que les endpoints Flask dédiés
+    const colls = {};
+    for (const [grp, kmap] of Object.entries(meta.collection_key_ids ?? {})) {
+      const out = {};
+      for (const [k3, id3] of Object.entries(kmap)) out[k3] = norm(byId[id3]);
+      colls[grp] = out;
+    }
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -13925,39 +13984,54 @@ function GW2LegendaryTracker() {
         const aUrl = aKey
           ? `http://127.0.0.1:5000/api/achievements/aurora?key=${encodeURIComponent(aKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
-        const aResp = await fetch(aUrl);
+        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(3000) });
         if (aResp.ok) {
           const aData = await aResp.json();
           localStorage.setItem("gw2_aurora_collections", JSON.stringify(aData));
           setAuroraCollections(aData);
+        } else { throw new Error("flask ko"); }
+      } catch (_) {
+        if (data._collections?.aurora) {
+          localStorage.setItem("gw2_aurora_collections", JSON.stringify(data._collections.aurora));
+          setAuroraCollections(data._collections.aurora);
         }
-      } catch (_) { /* Flask absent ou endpoint non dispo */ }
+      }
       // Fetch Vision collections en parallèle
       try {
         const vKey = (gtApiKey ?? "").trim();
         const vUrl = vKey
           ? `http://127.0.0.1:5000/api/achievements/vision?key=${encodeURIComponent(vKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
-        const vResp = await fetch(vUrl);
+        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(3000) });
         if (vResp.ok) {
           const vData = await vResp.json();
           localStorage.setItem("gw2_vision_collections", JSON.stringify(vData));
           setVisionCollections(vData);
+        } else { throw new Error("flask ko"); }
+      } catch (_) {
+        if (data._collections?.vision) {
+          localStorage.setItem("gw2_vision_collections", JSON.stringify(data._collections.vision));
+          setVisionCollections(data._collections.vision);
         }
-      } catch (_) { /* Flask absent ou endpoint non dispo */ }
+      }
       // Fetch Obsidian achievements en parallèle
       try {
         const oKey = (gtApiKey ?? "").trim();
         const oUrl = oKey
           ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
-        const oResp = await fetch(oUrl);
+        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(3000) });
         if (oResp.ok) {
           const oData = await oResp.json();
           localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));
           setObsAch(oData);
+        } else { throw new Error("flask ko"); }
+      } catch (_) {
+        if (data._collections?.obsidian) {
+          localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(data._collections.obsidian));
+          setObsAch(data._collections.obsidian);
         }
-      } catch (_) { /* Flask absent ou endpoint non dispo */ }
+      }
       const freshCurr = await storeGet(getCurrencyKey(selectedLeg)) ?? {};
       setCurrencies(freshCurr);
       setApiStatus("ok");
