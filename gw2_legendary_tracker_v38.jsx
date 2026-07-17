@@ -337,7 +337,7 @@ let FR_TERM_MAP = {};
 // Cache versionné : toute évolution de la récolte (items/currencies/achievements)
 // doit incrémenter NAMES_CACHE_VER pour invalider les caches des versions précédentes.
 const NAMES_CACHE_KEY = "gw2_names_fr3";
-const NAMES_CACHE_VER = 11; // v11 : monnaies JW/fractales (Ursus Oblige 76, Tales 69, Fractal Relics 7/24)
+const NAMES_CACHE_VER = 12; // v12 : Perfected Envoy (Legendary Insight 70, Provisioner Token 29)
 try {
   const c = JSON.parse(localStorage.getItem(NAMES_CACHE_KEY) || "{}");
   if (c.v === NAMES_CACHE_VER) { FR_LEG_NAMES = c.legs || {}; FR_TERM_MAP = c.terms || {}; }
@@ -614,7 +614,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
 const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
 const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
-const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "weapons", "upgrades", "t6"];
+const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
   vision: {
@@ -1163,6 +1163,39 @@ const LEGENDARIES = {
     bounties: [],
   },
 
+  perfected_envoy: {
+    id: "perfected_envoy",
+    name: "Perfected Envoy Armor",
+    type: { fr: "Set d'armure", en: "Armor set" },
+    expansion: "HoT",
+    color: "#f87171",
+    colorDim: "rgba(248,113,113,0.15)",
+    icon: "⬢",
+    description: { fr: "Armure légendaire — Raids (Forsaken Thicket). Skins animés uniques par poids.", en: "Legendary Armor — Raids (Forsaken Thicket). Unique animated skins per weight." },
+    resetType: "weekly",
+    isArmorSet: true,
+    isGuideTrinket: true,
+    pieces: 6,
+    armoryApiIds: [80578, 80435, 80254, 80205, 80277, 80296, 80701, 80248, 80825, 80161, 80458, 80190, 80356, 80557, 80243, 80111, 80145, 80512],
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    // Coûts par pièce — "required" calculé dynamiquement selon l'objectif (1er set ; +25 LI/pièce via Insignia pour les suivants)
+    currenciesPerPiece: [
+      { id: "li",          name: "Legendary Insight", perPiece: 25, icon: "LI", apiId: 70 },
+      { id: "shards",      name: "Obsidian Shard",    perPiece: 50, icon: "OS", apiId: 19925 },
+      { id: "clovers",     name: "Mystic Clover",     perPiece: 15, icon: "MC", apiId: 19675 },
+      { id: "provisioner", name: "Provisioner Token", perPiece: 50, icon: "PT", apiId: 29 },
+    ],
+    currencies: [],
+    raidAchievements: [
+      { key: "envoy_1", achievementId: 2646, name: "Envoy Armor I: Experimental Armor",
+        tip: { fr: "Débloquée au premier kill de boss de raid (W1–W4). Récompense : set Experimental (exotique).", en: "Unlocked on your first raid boss kill (W1–W4). Reward: Experimental set (exotic)." } },
+      { key: "envoy_2", achievementId: 3012, name: "Envoy Armor II: Refined Armor",
+        tip: { fr: "Récompense : set Refined (élevé) = les 6 précurseurs. Recettes rachetables pour les autres poids ensuite.", en: "Reward: Refined set (ascended) = the 6 precursors. Recipes re-purchasable for other weights afterwards." } },
+    ],
+    metas: [],
+    bounties: [],
+  },
   obsidian: {
     id: "obsidian",
     name: "Obsidian Armor",
@@ -2176,11 +2209,19 @@ export default function GW2LegendaryTracker() {
   const langRef = useRef(lang);
   useEffect(() => { langRef.current = lang; }, [lang]);
 
-  // ── Obsidian : résolution nom/poids/slot des 18 pièces via /v2/items (public, cache par langue) ──
+  // ── Armor sets : rechargement de l'objectif ciblé au changement de set ──
   useEffect(() => {
-    if (selectedLeg !== "obsidian") return;
-    const ids = LEGENDARIES.obsidian.armoryApiIds;
-    const cacheKey = `gw2_obsidian_items_${lang}_v1`;
+    if (!LEGENDARIES[selectedLeg]?.isArmorSet) return;
+    try { setObsTarget(new Set(JSON.parse(localStorage.getItem(`gw2_${selectedLeg}_target_v1`) ?? "[]"))); }
+    catch (_) { setObsTarget(new Set()); }
+  }, [selectedLeg]);
+
+  // ── Armor sets : résolution nom/poids/slot des 18 pièces via /v2/items (public, cache par langue) ──
+  useEffect(() => {
+    if (!LEGENDARIES[selectedLeg]?.isArmorSet) return;
+    setObsItems(null); // purge du set précédent (matrice re-résolue par set)
+    const ids = LEGENDARIES[selectedLeg].armoryApiIds;
+    const cacheKey = `gw2_${selectedLeg}_items_${lang}_v1`;
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached && Object.keys(cached).length === ids.length) { setObsItems(cached); return; }
@@ -2382,7 +2423,7 @@ export default function GW2LegendaryTracker() {
     setObsTarget(prev => {
       const next = new Set(prev);
       if (next.has(id)) { next.delete(id); } else { next.add(id); }
-      try { localStorage.setItem("gw2_obsidian_target_v1", JSON.stringify([...next])); } catch (_) {}
+      try { localStorage.setItem(`gw2_${selectedLeg}_target_v1`, JSON.stringify([...next])); } catch (_) {}
       return next;
     });
   }, []);
@@ -2667,7 +2708,7 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (selectedLeg === "obsidian" ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
+    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (newLeg?.isArmorSet ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -2786,7 +2827,8 @@ export default function GW2LegendaryTracker() {
 
   // ── Obsidian : pièces possédées / ciblées / restantes ──
   const isObsidian = selectedLeg === "obsidian";
-  const obsIds = LEGENDARIES.obsidian.armoryApiIds;
+  const isArmorSet = LEGENDARIES[selectedLeg]?.isArmorSet === true;
+  const obsIds = (LEGENDARIES[selectedLeg]?.isArmorSet ? LEGENDARIES[selectedLeg].armoryApiIds : LEGENDARIES.obsidian.armoryApiIds);
   const obsOwnedSet = new Set(obsIds.filter(id => armoryRaw.has(id)));
   const obsHasTarget = obsTarget.size > 0;
   const obsTargetOwned = obsHasTarget ? [...obsTarget].filter(id => obsOwnedSet.has(id)).length : 0;
@@ -2803,7 +2845,7 @@ export default function GW2LegendaryTracker() {
   const wpnRemainingCount = wpnHasTarget ? Math.max(0, wpnTarget.size - wpnTargetOwned) : 0;
 
   // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
-  const legCurrencies = isGrandTotal ? [] : (isObsidian
+  const legCurrencies = isGrandTotal ? [] : (isArmorSet
     ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
     : (isWeapons
       ? (leg?.currenciesPerWeapon ?? []).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
@@ -2826,10 +2868,10 @@ export default function GW2LegendaryTracker() {
 
   const tabs = [
     ...(isPrismatic ? [{ id: "achievements", label: `✦ Achievements (${prismaticCount}/24)` }] : []),
-    ...(isObsidian ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
+    ...(isArmorSet ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
     ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
@@ -2837,7 +2879,7 @@ export default function GW2LegendaryTracker() {
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
     ...((leg?.bounties?.length > 0) ? [{ id: "bounties", label: t("tab_bounties", { n: Object.keys(bountyDone).length }) }] : []),
-    ...(!isPrismatic && (isObsidian || isWeapons || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
+    ...(!isPrismatic && (isArmorSet || isWeapons || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
     ...(!isPrismatic ? [{ id: "common", label: t("tab_common") }] : []),
   ];
 
@@ -4069,7 +4111,7 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET PIÈCES (Obsidian Armor)     */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "pieces" && isObsidian && (() => {
+      {activeTab === "pieces" && isArmorSet && (() => {
         const slotL = OBS_SLOT_LABELS[lang] ?? OBS_SLOT_LABELS.en;
         const weightL = OBS_WEIGHT_LABELS[lang] ?? OBS_WEIGHT_LABELS.en;
         // matrice poids → slot → { id, name } depuis obsItems
@@ -4098,13 +4140,13 @@ export default function GW2LegendaryTracker() {
                 {t("obs_resolving")}
               </div>
             )}
-            {obsItems && LEGENDARIES.obsidian.weights.map(w => (
+            {obsItems && LEGENDARIES[selectedLeg].weights.map(w => (
               <div key={w} style={{ margin: "10px 14px" }}>
                 <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "rgba(226,201,126,0.5)", marginBottom: "6px" }}>
                   {weightL[w] ?? w}
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px" }}>
-                  {LEGENDARIES.obsidian.slots.map(s => {
+                  {LEGENDARIES[selectedLeg].slots.map(s => {
                     const cell = matrix[w] ? matrix[w][s] : null;
                     if (!cell) return <div key={s} />;
                     const owned = obsOwnedSet.has(cell.id);
@@ -4129,8 +4171,8 @@ export default function GW2LegendaryTracker() {
               </div>
             ))}
             <div className="section-label" style={{ marginTop: "14px" }}>{t("obs_arcanum_title")}</div>
-            {LEGENDARIES.obsidian.slots.map(s => {
-              const a = LEGENDARIES.obsidian.arcanum[s];
+            {LEGENDARIES[selectedLeg].slots.map(s => {
+              const a = (LEGENDARIES[selectedLeg].arcanum ?? {})[s]; if (!a) return null;
               const st = obsAch[`arcanum_${s}`] ?? {};
               const done = st.done === true;
               const cur = st.current ?? 0;
@@ -4322,7 +4364,7 @@ export default function GW2LegendaryTracker() {
               {t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })}
             </div>
           )}
-                    {isObsidian && (
+                    {isArmorSet && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
             </div>

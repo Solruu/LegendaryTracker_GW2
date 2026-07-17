@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v24",
+  "version": "v25",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -332,7 +332,8 @@
   "changelog_v21": "Fix armory IDs : Ad Infinitum = 74155 (était 80225), Astralaria = 76158 (la map liait 74155 à gen2_astralaria par erreur).",
   "changelog_v22": "Transcendence: timegate saisons ranked + note croisée T6. The Ascension: note croisée T6 (Gift of Fortune).",
   "changelog_v23": "Stella Radians: collections 9330 (Forge Guard) + 9344 (Glimmering Resin) confirmées, note Seer Runestones/Shackles.",
-  "changelog_v24": "Orrax: masteries 8582/8769 + chiffres clés recette (Mursaat Ruins, Draconic Tribute, Gift of Darkness)."
+  "changelog_v24": "Orrax: masteries 8582/8769 + chiffres clés recette (Mursaat Ruins, Draconic Tribute, Gift of Darkness).",
+  "changelog_v25": "Perfected Envoy: achievements 2646/3012, guide craft complet, timegate, recipe (préparation onglet riche v38)."
  },
  "meta_events": {
   "vb": {
@@ -7709,7 +7710,7 @@
   "perfected_envoy": {
    "name": "Perfected Envoy Armor",
    "slot": "armor_set",
-   "farm": "PvE Raids",
+   "farm": "Raids",
    "expansion": "HoT",
    "wiki": "Perfected_Envoy_armor",
    "recipe_per_piece": "MF : Refined Envoy piece + Gift of Prosperity + Gift of Prowess + Gift of Dedication",
@@ -7767,7 +7768,54 @@
      "legs": 80145,
      "boots": 80512
     }
-   }
+   },
+   "recipe": "Par pièce (MF) : Refined Envoy piece + Gift of Prosperity + Gift of Prowess + Gift of Dedication.",
+   "timegate": {
+    "fr": "1er set : ~5 semaines min (150 LI + collections). Sets suivants : 300 LI (50/pièce, Insignia comprise). Gift of Craftsmanship : 50 Provisioner Tokens/pièce (achats quotidiens limités).",
+    "en": "1st set: ~5 weeks min (150 LI + collections). Subsequent sets: 300 LI (50/piece, Insignia included). Gift of Craftsmanship: 50 Provisioner Tokens/piece (daily-capped purchases)."
+   },
+   "achievements": [
+    {
+     "key": "envoy_1",
+     "id": 2646,
+     "name": "Envoy Armor I: Experimental Armor",
+     "note": {
+      "fr": "Débloquée au premier kill de boss de raid. Récompense : le set Experimental (exotique) + accès à la collection II.",
+      "en": "Unlocked on your first raid boss kill. Reward: the Experimental set (exotic) + access to collection II."
+     }
+    },
+    {
+     "key": "envoy_2",
+     "id": 3012,
+     "name": "Envoy Armor II: Refined Armor",
+     "note": {
+      "fr": "Récompense : le set Refined (élevé) = les 6 précurseurs. Recettes rachetables ensuite pour les autres poids.",
+      "en": "Reward: the Refined set (ascended) = the 6 precursors. Recipes re-purchasable afterwards for other weights."
+     }
+    }
+   ],
+   "guide": [
+    {
+     "fr": "Collections Envoy I puis II (kills de boss W1–W4 + objets à collecter) → les 6 précurseurs Refined. Compter ~5 semaines pour un 1er set.",
+     "en": "Envoy collections I then II (W1–W4 boss kills + items to collect) → the 6 Refined precursors. Allow ~5 weeks for a 1st set."
+    },
+    {
+     "fr": "Gift of Prowess : 25 Legendary Insights + 25 ectos + 1 Eldritch Scroll + 5 po (recette Miyani). LI : raids, ou conversion Legendary Divinations/strikes.",
+     "en": "Gift of Prowess: 25 Legendary Insights + 25 ectos + 1 Eldritch Scroll + 5 g (Miyani recipe). LI: raids, or Legendary Divinations/strikes conversion."
+    },
+    {
+     "fr": "Gift of Prosperity : Gift of Condensed Might + Condensed Magic (les 8 T6 → onglet T6) + Gift of Craftsmanship (50 Provisioner Tokens) + 15 Mystic Clovers.",
+     "en": "Gift of Prosperity: Gift of Condensed Might + Condensed Magic (all 8 T6 → T6 tab) + Gift of Craftsmanship (50 Provisioner Tokens) + 15 Mystic Clovers."
+    },
+    {
+     "fr": "Gift of Dedication : 50 Obsidian Shards + composants HoT (Chak Egg, Auric Ingots, Reclaimed Metal Plates — monnaies de cartes HoT).",
+     "en": "Gift of Dedication: 50 Obsidian Shards + HoT components (Chak Egg, Auric Ingots, Reclaimed Metal Plates — HoT map currencies)."
+    },
+    {
+     "fr": "Sets suivants : Envoy Insignia chez Glenna (25 LI + 5 po) par pièce Refined → 50 LI/pièce au total.",
+     "en": "Subsequent sets: Envoy Insignia from Glenna (25 LI + 5 g) per Refined piece → 50 LI/piece total."
+    }
+   ]
   },
   "obsidian": {
    "name": "Obsidian Armor",

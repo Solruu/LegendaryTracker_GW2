@@ -106,6 +106,8 @@ ACHIEVEMENT_IDS = {
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs
     "orrax_bava_mastery":       8769,  # Bava Nisos Mastery (→ Askur Camping Cookout) — vérifié refs
+    "envoy_1":            2646,   # Envoy Armor I: Experimental Armor — vérifié refs
+    "envoy_2":            3012,   # Envoy Armor II: Refined Armor — vérifié refs
 }
 
 # IDs des 4 pré-collections Aurora + 6 sous-collections Master
@@ -937,6 +939,14 @@ def progression():
         "coins":    mat_dict.get(19976, 0),    # Mystic Coin (Gift of Fortune ×250)
     }
 
+    # Currencies Perfected Envoy (armure raids — coûts par pièce dynamiques côté front)
+    perfected_envoy = {
+        "li":          wallet_dict.get(70, 0),   # Legendary Insight (25/pièce, +25 Insignia sets suivants)
+        "shards":      mat_dict.get(19925, 0),   # Obsidian Shard (50/pièce)
+        "clovers":     mat_dict.get(19675, 0),   # Mystic Clover (15/pièce)
+        "provisioner": wallet_dict.get(29, 0),   # Provisioner Token (50/pièce)
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1098,6 +1108,7 @@ def progression():
             "stella_radians": stella_radians,
             "orrax_manifested": orrax_manifested,
             "ad_infinitum": ad_infinitum,
+            "perfected_envoy": perfected_envoy,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,
