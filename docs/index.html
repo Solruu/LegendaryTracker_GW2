@@ -13701,12 +13701,14 @@ function GW2LegendaryTracker() {
 
   // ── Synchro directe GW2 API (CORS) — reconstruit la réponse /api/progression sans Flask ──
   const buildDirectProgressionData = useCallback(async (key) => {
-    const H = { headers: { Authorization: `Bearer ${key}` } };
+    // access_token en paramètre : le header Authorization fait échouer le preflight CORS
+    // sur certains navigateurs (NetworkError) — même mécanisme que le fallback armory.
+    const tk = `access_token=${encodeURIComponent(key)}`;
     const [ra, rw, rm, rb] = await Promise.all([
-      fetch("https://api.guildwars2.com/v2/account/achievements", H),
-      fetch("https://api.guildwars2.com/v2/account/wallet", H),
-      fetch("https://api.guildwars2.com/v2/account/materials", H),
-      fetch("https://api.guildwars2.com/v2/account/bank", H),
+      fetch(`https://api.guildwars2.com/v2/account/achievements?${tk}`),
+      fetch(`https://api.guildwars2.com/v2/account/wallet?${tk}`),
+      fetch(`https://api.guildwars2.com/v2/account/materials?${tk}`),
+      fetch(`https://api.guildwars2.com/v2/account/bank?${tk}`),
     ]);
     if (!ra.ok) throw new Error(`achievements HTTP ${ra.status}${ra.status === 401 || ra.status === 403 ? " (clé invalide ou permission 'progression' manquante)" : ""}`);
     if (!rw.ok) throw new Error(`wallet HTTP ${rw.status}`);
