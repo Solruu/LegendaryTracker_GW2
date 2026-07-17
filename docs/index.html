@@ -11994,12 +11994,12 @@ const LEGENDARIES = {
   weapons: {
     id: "weapons",
     name: "Legendary Weapons",
-    type: { fr: "Armes (Gen 3 — Aurene)", en: "Weapons (Gen 3 — Aurene)" },
-    expansion: "EoD",
+    type: { fr: "Armes (Gen 1/2/3 + Divers)", en: "Weapons (Gen 1/2/3 + Misc)" },
+    expansion: "Multi",
     color: "#60a5fa",
     colorDim: "rgba(96,165,250,0.15)",
     icon: "⚔",
-    description: { fr: "Armes légendaires génération 3 — matrice de ciblage (16 armes)", en: "Generation 3 legendary weapons — targeting matrix (16 weapons)" },
+    description: { fr: "Armes légendaires — matrice de ciblage par génération (découverte runtime)", en: "Legendary weapons — per-generation targeting matrix (runtime discovery)" },
     resetType: "weekly",
     isWeaponTracker: true,
     // IDs découverts au runtime via /v2/legendaryarmory (les 96937-96952 "consécutifs" étaient faux — seul 96937 existait)
@@ -12010,6 +12010,22 @@ const LEGENDARIES = {
       { id: "lodestones", name: "Amalgamated Draconic Lodestone",  perUnit: 5,    icon: "DL", apiId: 92687 },
       { id: "notes",      name: "Research Note",                   perUnit: 3000, icon: "RN", apiId: 61 },
     ],
+    // Coûts unitaires par génération (Gift of Fortune gen1 / Mystic Tribute gen2 / gen3 = currenciesPerWeapon)
+    currenciesPerWeaponByGen: {
+      gen1: [
+        { id: "clovers",  name: "Mystic Clover",     perUnit: 77,  icon: "MC", apiId: 19675 },
+        { id: "ectos",    name: "Glob of Ectoplasm", perUnit: 250, icon: "EC", apiId: 19721 },
+        { id: "obsidian", name: "Obsidian Shard",    perUnit: 250, icon: "OS", apiId: 19925 },
+      ],
+      gen2: [
+        { id: "clovers",  name: "Mystic Clover",     perUnit: 77,  icon: "MC", apiId: 19675 },
+        { id: "coins",    name: "Mystic Coin",       perUnit: 250, icon: "MO", apiId: 19976 },
+        { id: "obsidian", name: "Obsidian Shard",    perUnit: 250, icon: "OS", apiId: 19925 },
+      ],
+      other: [
+        { id: "clovers",  name: "Mystic Clover",     perUnit: 38,  icon: "MC", apiId: 19675 },
+      ],
+    },
     currencies: [],
     collectionNoteKeys: ["wpn_note1", "wpn_note2"],
     metas: [],
@@ -13302,7 +13318,7 @@ function GW2LegendaryTracker() {
   // ── Armes : découverte runtime via /v2/legendaryarmory + /v2/items (zéro ID hardcodé) ──
   useEffect(() => {
     if (selectedLeg !== "weapons") return;
-    const cacheKey = `gw2_weapons_items_${lang}_v2`;
+    const cacheKey = `gw2_weapons_items_${lang}_v3`; // v3 : toutes générations (gen1/gen2/gen3/divers)
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached && Object.keys(cached).length > 0) { setWpnItems(cached); return; }
@@ -13337,12 +13353,20 @@ function GW2LegendaryTracker() {
         } else {
           for (const [id, v] of Object.entries(map)) enNames[id] = v.name;
         }
-        const gen3 = {};
+        // Classification par génération : nom EN (stable) + plage d'ID
+        const genOf = (idStr, enName) => {
+          const n = Number(idStr);
+          if ((enName ?? "").startsWith("Aurene's")) return "gen3";
+          if (n >= 30684 && n <= 30704) return "gen1";        // les 20 originales + Eternity
+          if (n < 95000) return "gen2";                        // HoT→PoF (Astralaria 76158 … Exordium 90551)
+          return "other";                                      // Klobjarne Geirr, Aetheric Anchor, futurs
+        };
+        const all = {};
         for (const [id, v] of Object.entries(map)) {
-          if ((enNames[id] ?? "").startsWith("Aurene's")) gen3[id] = v;
+          all[id] = { ...v, gen: genOf(id, enNames[id]) };
         }
-        setWpnItems(gen3);
-        try { localStorage.setItem(cacheKey, JSON.stringify(gen3)); } catch (_) {}
+        setWpnItems(all);
+        try { localStorage.setItem(cacheKey, JSON.stringify(all)); } catch (_) {}
       } catch (_) {}
     })();
   }, [selectedLeg, lang]);
@@ -13392,6 +13416,9 @@ function GW2LegendaryTracker() {
     });
   }, []);
   const [obsItems, setObsItems] = useState(null);
+  const [wpnGen, setWpnGen] = useState(() => {
+    try { return localStorage.getItem("gw2_weapons_gen") ?? "gen3"; } catch { return "gen3"; }
+  });
   const [wpnTarget, setWpnTarget] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_weapons_target_v1") ?? "[]")); } catch { return new Set(); }
   });
@@ -13804,17 +13831,22 @@ function GW2LegendaryTracker() {
 
   // ── Armes gen3 : ciblées / possédées / restantes ──
   const isWeapons = selectedLeg === "weapons";
-  const wpnIds = wpnItems ? Object.keys(wpnItems).map(Number) : [];
+  const wpnIdsAll = wpnItems ? Object.keys(wpnItems).map(Number) : [];
+  const wpnIds = wpnIdsAll.filter(id => (((wpnItems ?? {})[String(id)] ?? {}).gen ?? "gen3") === wpnGen);
+  const wpnGenSet = new Set(wpnIds);
   const wpnOwnedSet = new Set(wpnIds.filter(id => armoryRaw.has(id)));
-  const wpnHasTarget = wpnTarget.size > 0;
-  const wpnTargetOwned = wpnHasTarget ? [...wpnTarget].filter(id => wpnOwnedSet.has(id)).length : 0;
-  const wpnRemainingCount = wpnHasTarget ? Math.max(0, wpnTarget.size - wpnTargetOwned) : 0;
+  const wpnTargetGen = [...wpnTarget].filter(id => wpnGenSet.has(id));
+  const wpnHasTarget = wpnTargetGen.length > 0;
+  const wpnTargetOwned = wpnHasTarget ? wpnTargetGen.filter(id => wpnOwnedSet.has(id)).length : 0;
+  const wpnRemainingCount = wpnHasTarget ? Math.max(0, wpnTargetGen.length - wpnTargetOwned) : 0;
+  const wpnGenCount = (g) => wpnIdsAll.filter(id => (((wpnItems ?? {})[String(id)] ?? {}).gen ?? "") === g).length;
+  const wpnGenOwned = (g) => wpnIdsAll.filter(id => (((wpnItems ?? {})[String(id)] ?? {}).gen ?? "") === g && armoryRaw.has(id)).length;
 
   // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
   const legCurrencies = isGrandTotal ? [] : (isArmorSet
     ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
     : (isWeapons
-      ? (leg?.currenciesPerWeapon ?? []).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
+      ? ((((leg?.currenciesPerWeaponByGen ?? {})[wpnGen]) ?? (leg?.currenciesPerWeapon ?? []))).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
       : (leg?.currencies ?? [])));
   const mainProgress = isGrandTotal ? [] : legCurrencies.map(cur => ({
     ...cur,
@@ -15274,6 +15306,22 @@ function GW2LegendaryTracker() {
             <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.6)" }}>
               {t("wpn_target_hint")}
             </div>
+            <div style={{ margin: "6px 14px", display: "flex", gap: "6px", flexWrap: "wrap" }}>
+              {[["gen1", "Gen 1"], ["gen2", "Gen 2"], ["gen3", NX({ fr: "Gen 3 — Aurene", en: "Gen 3 — Aurene" })], ["other", NX({ fr: "Divers", en: "Misc" })]].map(([g, lbl]) => (
+                <button key={g}
+                  className={`leg-btn ${wpnGen === g ? "active" : ""}`}
+                  style={{ "--leg-color": "#60a5fa", "--leg-bg": "rgba(96,165,250,0.12)", fontSize: 10, padding: "6px 10px" }}
+                  onClick={() => { setWpnGen(g); try { localStorage.setItem("gw2_weapons_gen", g); } catch (_) {} }}>
+                  {lbl}{wpnItems ? ` (${wpnGenOwned(g)}/${wpnGenCount(g)})` : ""}
+                </button>
+              ))}
+            </div>
+            <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(96,165,250,0.04)", border: "1px solid rgba(96,165,250,0.12)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
+              {wpnGen === "gen1" && NX({ fr: "Gen 1 : précurseur via CP, forge ou craft. Par arme : Gift of Fortune (77 clovers + 250 ectos + T6 → onglet T6) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 monnaie de donjon).", en: "Gen 1: precursor via TP, forge or crafting. Per weapon: Gift of Fortune (77 clovers + 250 ectos + T6 → T6 tab) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 dungeon currency)." })}
+              {wpnGen === "gen2" && NX({ fr: "Gen 2 : précurseur par collections (3 tiers). Par arme : Mystic Tribute (77 clovers + 250 coins + T6 ×2 → onglet T6) + Gift of Maguuma/Desert Mastery + gift spécifique. Pas d'achat CP possible.", en: "Gen 2: precursor via collections (3 tiers). Per weapon: Mystic Tribute (77 clovers + 250 coins + 2× T6 gifts → T6 tab) + Gift of Maguuma/Desert Mastery + weapon-specific gift. Not purchasable on TP." })}
+              {wpnGen === "gen3" && NX({ fr: "Gen 3 (Aurene) : précurseur craft 500 + Gift of Jade Mastery + Draconic Tribute (38 clovers). Variantes de dragons débloquées après liaison. Totaux dans l'onglet Devises.", en: "Gen 3 (Aurene): crafted 500 precursor + Gift of Jade Mastery + Draconic Tribute (38 clovers). Elder Dragon variants unlock after binding. Totals in the Currencies tab." })}
+              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE). Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (JW spear — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE). Weapon-specific costs — check each wiki page." })}
+            </div>
             <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
               <div style={{ fontSize: "12px", fontWeight: 600, color: legColor }}>{goalLabel}</div>
               <button className="adj-btn" onClick={() => detectGtArmory()}>{t("obs_sync")}</button>
@@ -15308,7 +15356,7 @@ function GW2LegendaryTracker() {
                 })}
               </div>
             )}
-            {(leg?.collectionNoteKeys ?? []).map(k => (
+            {wpnGen === "gen3" && (leg?.collectionNoteKeys ?? []).map(k => (
               <div key={k} style={{ margin: "8px 14px", padding: "10px 13px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.5)" }}>
                 {t(k)}
               </div>
