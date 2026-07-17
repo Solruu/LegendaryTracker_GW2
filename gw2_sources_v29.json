@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v28",
+  "version": "v29",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -543,9 +543,121 @@
       "Return to Champions"
      ]
     ]
+   },
+   "leg_currency_ids": {
+    "vision": {
+     "elegy": 35,
+     "gems": 68063,
+     "vm": 45
+    },
+    "aurora": {
+     "winterberry": 79899,
+     "petrified": 79469,
+     "jade": 80332,
+     "fire_orchid": 81127,
+     "orrian": 81706
+    },
+    "conflux": {
+     "tickets": 26,
+     "memory": 71581,
+     "testimony": 82,
+     "badges": 15
+    },
+    "warbringer": {
+     "tickets": 26,
+     "memory": 71581,
+     "badges": 15,
+     "jade": 65
+    },
+    "coalescence": {
+     "insights": 70,
+     "magnetite": 28,
+     "gaeting": 39,
+     "coins": 19976
+    },
+    "selachimorpha": {
+     "notes": 61,
+     "unusual": 62,
+     "clovers": 19675,
+     "shards": 19925
+    },
+    "upgrades": {
+     "provisioner": 29,
+     "lucent": 89140,
+     "lucent_pile": 89271,
+     "clovers": 19675,
+     "ectos": 19721
+    },
+    "t6": {
+     "blood": 24295,
+     "venom": 24283,
+     "totem": 24300,
+     "dust": 24277,
+     "claw": 24351,
+     "bone": 24358,
+     "fang": 24357,
+     "scale": 24289,
+     "volatile": 45,
+     "ice": 92272
+    },
+    "obsidian": {
+     "fine": 78,
+     "masterwork": 80,
+     "rare": 79,
+     "amalgamated": 100081,
+     "provisioner": 29,
+     "clovers": 19675,
+     "shards": 19925,
+     "ectos": 19721
+    },
+    "strife_unending": {
+     "tickets": 26,
+     "clovers": 19675,
+     "memory": 71581
+    },
+    "endless_summer": {
+     "sap": 83,
+     "ducat": 81,
+     "obsidian": 19925,
+     "gems": 68063,
+     "clovers": 19675
+    },
+    "stella_radians": {
+     "karma": 2,
+     "coins": 19976,
+     "clovers": 19675
+    },
+    "orrax_manifested": {
+     "tales": 69,
+     "clovers": 19675,
+     "oblige": 76
+    },
+    "ad_infinitum": {
+     "relics": 7,
+     "pristine": 24,
+     "clovers": 19675,
+     "coins": 19976
+    },
+    "perfected_envoy": {
+     "li": 70,
+     "shards": 19925,
+     "clovers": 19675,
+     "provisioner": 29
+    },
+    "triumphant_hero": {
+     "tickets": 26,
+     "memory": 71581,
+     "clovers": 19675
+    },
+    "ardent_glorious": {
+     "shards": 33,
+     "tickets": 30,
+     "clovers": 19675
+    }
    }
   },
-  "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask)."
+  "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask).",
+  "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe."
  },
  "meta_events": {
   "vb": {

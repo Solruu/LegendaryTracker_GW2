@@ -628,8 +628,8 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Désert de Cristal", en: "Legendary Accessory — Crystal Desert" },
     resetType: "daily",
     currencies: [
-      { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: null },
-      { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: null },
+      { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35 },
+      { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: 68063 },
       { id: "vm", name: "Volatile Magic", required: 1000, icon: "EL", apiId: 45 },
     ],
     metas: [
@@ -2645,17 +2645,18 @@ export default function GW2LegendaryTracker() {
     const achievements = {};
     for (const [k2, id2] of Object.entries(keyIds)) achievements[k2] = norm(byId[id2]);
     const currencies = {};
+    const legIdsMap = meta.leg_currency_ids ?? {}; // mapping extrait de Flask — source de vérité
     for (const l of Object.values(LEGENDARIES)) {
+      const d2 = {};
+      for (const [ck, apiId] of Object.entries(legIdsMap[l.id] ?? {})) d2[ck] = val(apiId);
       const descs = [
         ...(l.currencies ?? []),
         ...(l.currenciesPerPiece ?? []),
         ...(l.currenciesPerWeapon ?? []),
         ...Object.values(l.currenciesPerWeaponByGen ?? {}).flat(),
       ];
-      if (descs.length === 0) continue;
-      const d2 = {};
-      for (const c of descs) if (c.apiId) d2[c.id] = val(c.apiId);
-      currencies[l.id] = d2;
+      for (const c of descs) if (c.apiId && !(c.id in d2)) d2[c.id] = val(c.apiId);
+      if (Object.keys(d2).length > 0) currencies[l.id] = d2;
     }
     const common = {};
     for (const c of COMMON_MATS) if (c.apiId) common[c.id] = val(c.apiId);
