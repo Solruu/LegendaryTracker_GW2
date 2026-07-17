@@ -947,6 +947,13 @@ def progression():
         "provisioner": wallet_dict.get(29, 0),   # Provisioner Token (50/pièce)
     }
 
+    # Currencies Triumphant Hero (armure McM — coûts par pièce dynamiques côté front)
+    triumphant_hero = {
+        "tickets": wallet_dict.get(26, 0),     # Skirmish Claim Tickets (~1313/pièce, 7880/set)
+        "memory":  mat_dict.get(71581, 0),     # Memory of Battle (500/pièce, 3000/set)
+        "clovers": mat_dict.get(19675, 0),     # Mystic Clover (15/pièce)
+    }
+
     # Currencies Coalescence (Raids)
     coalescence = {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
@@ -1109,6 +1116,7 @@ def progression():
             "orrax_manifested": orrax_manifested,
             "ad_infinitum": ad_infinitum,
             "perfected_envoy": perfected_envoy,
+            "triumphant_hero": triumphant_hero,
             "coalescence":  coalescence,
             "obsidian":     obsidian_armor,
             "selachimorpha": selachimorpha,

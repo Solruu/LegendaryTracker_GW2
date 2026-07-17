@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v25",
+    "version": "v26",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -902,7 +902,8 @@ const SOURCES_DB = {
     "changelog_v22": "Transcendence: timegate saisons ranked + note croisée T6. The Ascension: note croisée T6 (Gift of Fortune).",
     "changelog_v23": "Stella Radians: collections 9330 (Forge Guard) + 9344 (Glimmering Resin) confirmées, note Seer Runestones/Shackles.",
     "changelog_v24": "Orrax: masteries 8582/8769 + chiffres clés recette (Mursaat Ruins, Draconic Tribute, Gift of Darkness).",
-    "changelog_v25": "Perfected Envoy: achievements 2646/3012, guide craft complet, timegate, recipe (préparation onglet riche v38)."
+    "changelog_v25": "Perfected Envoy: achievements 2646/3012, guide craft complet, timegate, recipe (préparation onglet riche v38).",
+    "changelog_v26": "Triumphant Hero: 18 apiIds légendaires confirmés, coûts complets (7880 tickets/3000 memories/20 marks), guide, timegate 22 sem."
   },
   "meta_events": {
     "vb": {
@@ -8455,8 +8456,8 @@ const SOURCES_DB = {
       ],
       "pieces": 6,
       "note": {
-        "fr": "1 095 Skirmish Tickets par pièce.",
-        "en": "1,095 Skirmish Tickets per piece."
+        "fr": "Set complet : 7 880 Skirmish Tickets (1 310 précurseurs + 6×1 095 Prowess) ≈ 22 semaines au cap 365/sem. + 3 000 Memories + ~20 Grandmaster Marks + 13 po. Variante Mistforged : 9 190 tickets + rang McM requis (skins bleus lumineux).",
+        "en": "Full set: 7,880 Skirmish Tickets (1,310 precursors + 6×1,095 Prowess) ≈ 22 weeks at 365/wk cap. + 3,000 Memories + ~20 Grandmaster Marks + 13 g. Mistforged variant: 9,190 tickets + WvW rank required (blue glowing skins)."
       },
       "armory_api_id": null,
       "armory_max_count": 1,
@@ -8467,13 +8468,64 @@ const SOURCES_DB = {
       "armory_slot_ids": {
         "detection": "slot_count",
         "note": {
-          "fr": "Armure légendaire McM. apiIds à confirmer via l'API.",
-          "en": "WvW legendary armor. apiIds to confirm via API."
+          "fr": "18 apiIds légendaires confirmés (wiki/gw2efficiency). Mapping slot/poids résolu au runtime via /v2/items.",
+          "en": "18 legendary apiIds confirmed (wiki/gw2efficiency). Slot/weight mapping resolved at runtime via /v2/items."
         },
         "light_ids": {},
         "medium_ids": {},
-        "heavy_ids": {}
-      }
+        "heavy_ids": {},
+        "all_ids": [
+          82902,
+          82173,
+          83036,
+          84629,
+          83497,
+          83289,
+          82437,
+          82994,
+          84578,
+          84110,
+          82903,
+          82093,
+          84176,
+          82963,
+          83394,
+          82456,
+          82196,
+          82801
+        ]
+      },
+      "recipe": "Par pièce (MF) : précurseur Triumphant Hero's (élevé, Skirmish Supervisor) + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication.",
+      "timegate": {
+        "fr": "~22 semaines au cap tickets (365/sem) pour un set — le plus long timegate du tracker.",
+        "en": "~22 weeks at ticket cap (365/wk) for one set — the longest timegate in the tracker."
+      },
+      "guide": [
+        {
+          "fr": "Débloquer d'abord le skin Triumphant (T1, exotique) via les reward tracks Triumphant Armor puis WvW Exclusives — condition d'achat des précurseurs.",
+          "en": "First unlock the Triumphant skin (T1, exotic) via the Triumphant Armor then WvW Exclusives reward tracks — purchase condition for the precursors."
+        },
+        {
+          "fr": "Précurseurs élevés chez le Skirmish Supervisor : 175 tickets (tête/épaules/gants/bottes), 260 (jambes), 350 (torse) + 250 Memories + 2-3 po + 3-4 Grandmaster Marks par pièce. ⚠ Ne JAMAIS stat-swap un précurseur (il devient inutilisable pour le légendaire).",
+          "en": "Ascended precursors from the Skirmish Supervisor: 175 tickets (head/shoulders/gloves/boots), 260 (legs), 350 (chest) + 250 Memories + 2-3 g + 3-4 Grandmaster Marks per piece. ⚠ NEVER stat-swap a precursor (it becomes unusable for the legendary)."
+        },
+        {
+          "fr": "Gift of War Prowess : 1 095 tickets/pièce — LE timegate. Gift of War Prosperity : Condensed Might + Magic (T6 → onglet T6) + Gift of Craftsmanship + 15 clovers.",
+          "en": "Gift of War Prowess: 1,095 tickets/piece — THE timegate. Gift of War Prosperity: Condensed Might + Magic (T6 → T6 tab) + Gift of Craftsmanship + 15 clovers."
+        },
+        {
+          "fr": "Gift of War Dedication : monnaies McM (250 Memories, achetables chez Legendary Commander War Razor sauf memories — TP possible).",
+          "en": "Gift of War Dedication: WvW currencies (250 Memories, buyable from Legendary Commander War Razor except memories — TP possible)."
+        },
+        {
+          "fr": "Grandmaster Marks selon le poids : Tailor (léger) / Leatherworker (inter.) / Armorsmith (lourd) — ou Box of Grandmaster Marks au Skirmish Supervisor.",
+          "en": "Grandmaster Marks per weight: Tailor (light) / Leatherworker (medium) / Armorsmith (heavy) — or Box of Grandmaster Marks at the Skirmish Supervisor."
+        },
+        {
+          "fr": "Synergie Strife Unending : mêmes tickets, même cap hebdo — planifier l'ordre (Strife 3 000 vs 1 set 7 880).",
+          "en": "Strife Unending synergy: same tickets, same weekly cap — plan the order (Strife 3,000 vs 1 set 7,880)."
+        }
+      ]
     },
     "ardent_glorious": {
       "name": "Ardent Glorious Armor",
@@ -11406,7 +11458,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
 const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
 const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
-const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "weapons", "upgrades", "t6"];
+const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
   vision: {
@@ -11984,6 +12036,46 @@ const LEGENDARIES = {
         tip: { fr: "Débloquée au premier kill de boss de raid (W1–W4). Récompense : set Experimental (exotique).", en: "Unlocked on your first raid boss kill (W1–W4). Reward: Experimental set (exotic)." } },
       { key: "envoy_2", achievementId: 3012, name: "Envoy Armor II: Refined Armor",
         tip: { fr: "Récompense : set Refined (élevé) = les 6 précurseurs. Recettes rachetables pour les autres poids ensuite.", en: "Reward: Refined set (ascended) = the 6 precursors. Recipes re-purchasable for other weights afterwards." } },
+    ],
+    metas: [],
+    bounties: [],
+  },
+  triumphant_hero: {
+    id: "triumphant_hero",
+    name: "Triumphant Hero's Armor",
+    type: { fr: "Set d'armure", en: "Armor set" },
+    expansion: "HoT",
+    color: "#fb923c",
+    colorDim: "rgba(251,146,60,0.15)",
+    icon: "⬟",
+    description: { fr: "Armure légendaire — McM. Le plus long timegate : 7 880 tickets (~22 semaines au cap).", en: "Legendary Armor — WvW. The longest timegate: 7,880 tickets (~22 weeks at cap)." },
+    resetType: "weekly",
+    isArmorSet: true,
+    isGuideTrinket: true,
+    pieces: 6,
+    armoryApiIds: [82902, 82173, 83036, 84629, 83497, 83289, 82437, 82994, 84578, 84110, 82903, 82093, 84176, 82963, 83394, 82456, 82196, 82801],
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    // Coûts par pièce — moyenne tickets (précurseurs 175–350 + 1095 Prowess = 7880/set)
+    currenciesPerPiece: [
+      { id: "tickets", name: "Skirmish Claim Tickets", perPiece: 1313, icon: "SK", apiId: 26 },
+      { id: "memory",  name: "Memory of Battle",       perPiece: 500,  icon: "MB", apiId: 71581 },
+      { id: "clovers", name: "Mystic Clover",          perPiece: 15,   icon: "MC", apiId: 19675 },
+    ],
+    currencies: [],
+    wvwActivities: [
+      { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
+        limit: { fr: "365 tickets/semaine → ~22 semaines pour un set", en: "365 tickets/week → ~22 weeks for one set" }, resetDay: "Lundi",
+        tip: { fr: "LE goulot. Participation Gold+ pour maximiser les pips. Mêmes tickets que Strife Unending — planifier l'ordre.", en: "THE bottleneck. Gold+ participation to maximize pips. Same tickets as Strife Unending — plan the order." } },
+      { id: "weeklies", name: { fr: "Hebdomadaires McM", en: "WvW Weeklies" }, icon: "WK",
+        limit: { fr: "~90 tickets bonus/semaine", en: "~90 bonus tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Compléter les objectifs hebdomadaires McM (menu Succès → McM).", en: "Complete WvW weekly objectives (Achievements → WvW menu)." } },
+      { id: "reward_tracks", name: { fr: "Reward tracks : Triumphant → WvW Exclusives", en: "Reward tracks: Triumphant → WvW Exclusives" }, icon: "RT",
+        limit: { fr: "Prérequis skins T1 avant achat des précurseurs", en: "T1 skin prereq before buying precursors" }, resetDay: "Passif",
+        tip: { fr: "Débloquer chaque skin Triumphant (T1) via les tracks — condition d'achat du précurseur élevé correspondant.", en: "Unlock each Triumphant (T1) skin via the tracks — purchase condition for the matching ascended precursor." } },
+      { id: "memories", name: { fr: "Memories of Battle (3 000/set)", en: "Memories of Battle (3,000/set)" }, icon: "MB",
+        limit: { fr: "Coffres d'escarmouche + TP", en: "Skirmish chests + TP" }, resetDay: "Passif",
+        tip: { fr: "250/précurseur + 250/Gift of War Dedication. Complément achetable au TP si pressé.", en: "250/precursor + 250/Gift of War Dedication. Top up on the TP if in a hurry." } },
     ],
     metas: [],
     bounties: [],
@@ -13657,8 +13749,8 @@ function GW2LegendaryTracker() {
     ...(isArmorSet ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
-    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy", "triumphant_hero"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" || selectedLeg === "triumphant_hero" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
     ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),

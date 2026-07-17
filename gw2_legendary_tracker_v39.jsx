@@ -614,7 +614,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
 const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
 const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
 const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
-const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "weapons", "upgrades", "t6"];
+const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
   vision: {
@@ -1192,6 +1192,46 @@ const LEGENDARIES = {
         tip: { fr: "Débloquée au premier kill de boss de raid (W1–W4). Récompense : set Experimental (exotique).", en: "Unlocked on your first raid boss kill (W1–W4). Reward: Experimental set (exotic)." } },
       { key: "envoy_2", achievementId: 3012, name: "Envoy Armor II: Refined Armor",
         tip: { fr: "Récompense : set Refined (élevé) = les 6 précurseurs. Recettes rachetables pour les autres poids ensuite.", en: "Reward: Refined set (ascended) = the 6 precursors. Recipes re-purchasable for other weights afterwards." } },
+    ],
+    metas: [],
+    bounties: [],
+  },
+  triumphant_hero: {
+    id: "triumphant_hero",
+    name: "Triumphant Hero's Armor",
+    type: { fr: "Set d'armure", en: "Armor set" },
+    expansion: "HoT",
+    color: "#fb923c",
+    colorDim: "rgba(251,146,60,0.15)",
+    icon: "⬟",
+    description: { fr: "Armure légendaire — McM. Le plus long timegate : 7 880 tickets (~22 semaines au cap).", en: "Legendary Armor — WvW. The longest timegate: 7,880 tickets (~22 weeks at cap)." },
+    resetType: "weekly",
+    isArmorSet: true,
+    isGuideTrinket: true,
+    pieces: 6,
+    armoryApiIds: [82902, 82173, 83036, 84629, 83497, 83289, 82437, 82994, 84578, 84110, 82903, 82093, 84176, 82963, 83394, 82456, 82196, 82801],
+    slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
+    weights: ["Light", "Medium", "Heavy"],
+    // Coûts par pièce — moyenne tickets (précurseurs 175–350 + 1095 Prowess = 7880/set)
+    currenciesPerPiece: [
+      { id: "tickets", name: "Skirmish Claim Tickets", perPiece: 1313, icon: "SK", apiId: 26 },
+      { id: "memory",  name: "Memory of Battle",       perPiece: 500,  icon: "MB", apiId: 71581 },
+      { id: "clovers", name: "Mystic Clover",          perPiece: 15,   icon: "MC", apiId: 19675 },
+    ],
+    currencies: [],
+    wvwActivities: [
+      { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
+        limit: { fr: "365 tickets/semaine → ~22 semaines pour un set", en: "365 tickets/week → ~22 weeks for one set" }, resetDay: "Lundi",
+        tip: { fr: "LE goulot. Participation Gold+ pour maximiser les pips. Mêmes tickets que Strife Unending — planifier l'ordre.", en: "THE bottleneck. Gold+ participation to maximize pips. Same tickets as Strife Unending — plan the order." } },
+      { id: "weeklies", name: { fr: "Hebdomadaires McM", en: "WvW Weeklies" }, icon: "WK",
+        limit: { fr: "~90 tickets bonus/semaine", en: "~90 bonus tickets/week" }, resetDay: "Lundi",
+        tip: { fr: "Compléter les objectifs hebdomadaires McM (menu Succès → McM).", en: "Complete WvW weekly objectives (Achievements → WvW menu)." } },
+      { id: "reward_tracks", name: { fr: "Reward tracks : Triumphant → WvW Exclusives", en: "Reward tracks: Triumphant → WvW Exclusives" }, icon: "RT",
+        limit: { fr: "Prérequis skins T1 avant achat des précurseurs", en: "T1 skin prereq before buying precursors" }, resetDay: "Passif",
+        tip: { fr: "Débloquer chaque skin Triumphant (T1) via les tracks — condition d'achat du précurseur élevé correspondant.", en: "Unlock each Triumphant (T1) skin via the tracks — purchase condition for the matching ascended precursor." } },
+      { id: "memories", name: { fr: "Memories of Battle (3 000/set)", en: "Memories of Battle (3,000/set)" }, icon: "MB",
+        limit: { fr: "Coffres d'escarmouche + TP", en: "Skirmish chests + TP" }, resetDay: "Passif",
+        tip: { fr: "250/précurseur + 250/Gift of War Dedication. Complément achetable au TP si pressé.", en: "250/precursor + 250/Gift of War Dedication. Top up on the TP if in a hurry." } },
     ],
     metas: [],
     bounties: [],
@@ -2871,8 +2911,8 @@ export default function GW2LegendaryTracker() {
     ...(isArmorSet ? [{ id: "pieces", label: t("tab_pieces", { n: obsOwnedSet.size }) }] : []),
     ...(isWeapons ? [{ id: "weapons", label: t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 }) }] : []),
     ...(isTrinkets ? [{ id: "trinkets", label: NX({ fr: "◈ Colifichets", en: "◈ Trinkets" }) }] : []),
-    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
-    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
+    ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy", "triumphant_hero"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
+    ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" || selectedLeg === "triumphant_hero" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
     ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
     ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
