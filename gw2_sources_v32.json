@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v31",
+  "version": "v32",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -712,7 +712,8 @@
   "changelog_v28": "direct_sync : mapping achievements + prismatic extraits de Flask pour la synchro CORS directe (mobile sans Flask).",
   "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe.",
   "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile).",
-  "changelog_v31": "Testimonies : conflux corrigé 82→jade 65 (recette actuelle), double compteur jade+castoran sur conflux/warbringer (Jade plus obtenables depuis VoE)."
+  "changelog_v31": "Testimonies : conflux corrigé 82→jade 65 (recette actuelle), double compteur jade+castoran sur conflux/warbringer (Jade plus obtenables depuis VoE).",
+  "changelog_v32": "i18n : recipes bilinguées (armures par pièce, strife, ~70 armes gen1/2/3) — le label « Par pièce » n'apparaît plus en FR côté EN."
  },
  "meta_events": {
   "vb": {
@@ -7709,7 +7710,10 @@
    "farm": "WvW",
    "expansion": "VoE patch The Only Way (mai 2026)",
    "wiki": "Strife_Unending",
-   "recipe": "Échange chez Dugan (WvW) : Gift of the Mistwalker + composants WvW (pas de MF classique).",
+   "recipe": {
+    "fr": "Échange chez Dugan (McM) : Gift of the Mistwalker + composants McM (pas de MF classique).",
+    "en": "Exchange at Dugan (WvW): Gift of the Mistwalker + WvW components (no classic MF)."
+   },
    "components": [],
    "note": {
     "fr": "Correction v20 : il y a bien des composants à réunir (pas un simple achat). Requiert Mistwalker Infusion (équipée pour le succès ET consommée), 3 000 Skirmish Claim Tickets (~8 semaines au cap 365/sem), 45 Mystic Clovers, 2× Gift of the Warclaw (succès 9244), emblèmes (Conqueror : 200 objectifs / Avenger : 4 000 kills), 2 Balls of Dark Energy. Le visuel évolue avec le killstreak WvW.",
@@ -8148,7 +8152,10 @@
      "boots": 80512
     }
    },
-   "recipe": "Par pièce (MF) : Refined Envoy piece + Gift of Prosperity + Gift of Prowess + Gift of Dedication.",
+   "recipe": {
+    "fr": "Par pièce (MF) : pièce Refined Envoy + Gift of Prosperity + Gift of Prowess + Gift of Dedication.",
+    "en": "Per piece (MF): Refined Envoy piece + Gift of Prosperity + Gift of Prowess + Gift of Dedication."
+   },
    "timegate": {
     "fr": "1er set : ~5 semaines min (150 LI + collections). Sets suivants : 300 LI (50/pièce, Insignia comprise). Gift of Craftsmanship : 50 Provisioner Tokens/pièce (achats quotidiens limités).",
     "en": "1st set: ~5 weeks min (150 LI + collections). Subsequent sets: 300 LI (50/piece, Insignia included). Gift of Craftsmanship: 50 Provisioner Tokens/piece (daily-capped purchases)."
@@ -8304,7 +8311,10 @@
      82801
     ]
    },
-   "recipe": "Par pièce (MF) : précurseur Triumphant Hero's (élevé, Skirmish Supervisor) + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication.",
+   "recipe": {
+    "fr": "Par pièce (MF) : précurseur Triumphant Hero's (élevé, Skirmish Supervisor) + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication.",
+    "en": "Per piece (MF): Triumphant Hero's precursor (ascended, Skirmish Supervisor) + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication."
+   },
    "timegate": {
     "fr": "~22 semaines au cap tickets (365/sem) pour un set — le plus long timegate du tracker.",
     "en": "~22 weeks at ticket cap (365/wk) for one set — the longest timegate in the tracker."
@@ -8368,7 +8378,10 @@
     "medium_ids": {},
     "heavy_ids": {}
    },
-   "recipe": "Par pièce (MF) : précurseur Ardent Glorious (élevé, Ascended Armor League Vendor) + Gift of Competitive Prosperity + Gift of Competitive Prowess + Gift of Competitive Dedication.",
+   "recipe": {
+    "fr": "Par pièce (MF) : précurseur Ardent Glorious (élevé, Ascended Armor League Vendor) + Gift of Competitive Prosperity + Gift of Competitive Prowess + Gift of Competitive Dedication.",
+    "en": "Per piece (MF): Ardent Glorious precursor (ascended, Ascended Armor League Vendor) + Gift of Competitive Prosperity + Gift of Competitive Prowess + Gift of Competitive Dedication."
+   },
    "timegate": {
     "fr": "Saisonnier : cap ~120 League Tickets/saison (100 coffres + 10 succès + 10 Llama box) → ~3 saisons de ligue classée au minimum. Les off-seasons ne produisent rien.",
     "en": "Seasonal: ~120 League Tickets/season cap (100 chests + 10 achievement + 10 Llama box) → ~3 ranked league seasons minimum. Off-seasons produce nothing."
@@ -8406,7 +8419,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Legendary_weapon",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of [Weapon]",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of [Weapon]",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of [Weapon]"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8452,7 +8468,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT/PoF",
    "wiki": "Legendary_weapon",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -8502,7 +8521,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Legendary_weapon",
-   "recipe": "MF : Précurseur + Gift of Aurene's Weapon + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Weapon + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Weapon + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -8545,7 +8567,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Frostfang",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Frostfang",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Frostfang",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Frostfang"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8567,7 +8592,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Incinerator",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Incinerator",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Incinerator",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Incinerator"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8589,7 +8617,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Moot",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Moot",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Moot",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Moot"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8611,7 +8642,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Quip",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Quip",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Quip",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Quip"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8633,7 +8667,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Meteorlogicus",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Meteorlogicus",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Meteorlogicus",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Meteorlogicus"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8655,7 +8692,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Bolt",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Bolt",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Bolt",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Bolt"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8677,7 +8717,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Minstrel",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Minstrel",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Minstrel",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Minstrel"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8699,7 +8742,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Flameseeker_Prophecies",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Flameseeker Prophecies",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Flameseeker Prophecies",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Flameseeker Prophecies"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8721,7 +8767,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Rodgort",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Rodgort",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Rodgort",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Rodgort"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8743,7 +8792,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Howler",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Howler",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Howler",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Howler"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8765,7 +8817,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Sunrise",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Sunrise",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Sunrise",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Sunrise"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8787,7 +8842,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Twilight",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Twilight",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Twilight",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Twilight"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8809,7 +8867,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Eternity",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Eternity",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Eternity",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Eternity"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8831,7 +8892,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Juggernaut",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Juggernaut",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Juggernaut",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Juggernaut"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8853,7 +8917,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Frenzy",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Frenzy",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Frenzy",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Frenzy"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8875,7 +8942,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Kamohoali%27i_Kotaki",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Kamohoali'i Kotaki",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kamohoali'i Kotaki",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kamohoali'i Kotaki"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8897,7 +8967,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Kudzu",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Kudzu",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kudzu",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kudzu"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8919,7 +8992,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Dreamer",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Dreamer",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Dreamer",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Dreamer"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8941,7 +9017,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Bifrost",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Bifrost",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Bifrost",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Bifrost"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8963,7 +9042,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "Kraitkin",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de Kraitkin",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kraitkin",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kraitkin"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -8985,7 +9067,10 @@
    "farm": "PvE mixte (Core)",
    "expansion": "Core",
    "wiki": "The_Predator",
-   "recipe": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift de The Predator",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Predator",
+    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Predator"
+   },
    "shared_components": [
     "gift_of_battle",
     "bloodstone_shard",
@@ -9007,7 +9092,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Astralaria",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9040,7 +9128,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "HOPE",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9073,7 +9164,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Nevermore",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9106,7 +9200,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Chuka_and_Champawat",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9139,7 +9236,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Tigris",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9172,7 +9272,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Caladbolg",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9205,7 +9308,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Eureka",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9238,7 +9344,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Shooshadoo",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9271,7 +9380,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Eordas_Grip",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9304,7 +9416,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Itzel%27s_Boon",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9337,7 +9452,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "Exordium",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9370,7 +9488,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "HoT",
    "wiki": "The_Radiant",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9404,7 +9525,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "PoF",
    "wiki": "Lorekeeper",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9437,7 +9561,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "PoF",
    "wiki": "Elegy",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9470,7 +9597,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "PoF",
    "wiki": "Xiuquatl",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9503,7 +9633,10 @@
    "farm": "PvE mixte (HoT/PoF)",
    "expansion": "PoF",
    "wiki": "Reaver_of_the_Mists",
-   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
    "shared_components": [
     "airship_part",
     "ley_line_crystal",
@@ -9536,7 +9669,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Claw",
-   "recipe": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9563,7 +9699,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Bite",
-   "recipe": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9590,7 +9729,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Weight",
-   "recipe": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9617,7 +9759,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Gaze",
-   "recipe": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9644,7 +9789,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Insight",
-   "recipe": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9671,7 +9819,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Argument",
-   "recipe": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9698,7 +9849,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Guard",
-   "recipe": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9725,7 +9879,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Persuasion",
-   "recipe": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9752,7 +9909,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Voice",
-   "recipe": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9779,7 +9939,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Wrath",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9806,7 +9969,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Reckoning",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9833,7 +9999,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Scale",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9860,7 +10029,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Wisdom",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9887,7 +10059,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Breath",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -9914,7 +10089,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Tenderness",
-   "recipe": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
@@ -11141,7 +11319,10 @@
    "farm": "PvE mixte (EoD)",
    "expansion": "EoD",
    "wiki": "Aurene%27s_Fang",
-   "recipe": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
+    "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+   },
    "shared_components": [
     "mystic_coin",
     "gift_of_cantha",
