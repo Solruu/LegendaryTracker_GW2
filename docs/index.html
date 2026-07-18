@@ -12278,7 +12278,7 @@ const LEGENDARIES = {
     ],
     raidAchievements: [
       { key: "selachi_agaleus", achievementId: 8869, name: "Acquiring Agaleus",
-        tip: { fr: "Collection du précurseur en 24 étapes — démarre auprès de « Captain » Lakes au Pub Canach (Breezy Cay).", en: "24-step precursor collection — starts with \"Captain\" Lakes at Pub Canach (Breezy Cay)." } },
+        tip: { fr: "Collection du précurseur en 24 étapes — démarre auprès de « Captain » Lakes au Pub Canach (Breezy Cay). Clés : JP Weyandt's Revenge (Sharkmaw Caverns, LA) → Tattered Note, puis 11 pièces de masque dans l'ordre libre (Shipwreck Strand, Siren's Reef, Southsun, Bloodtide, Cursed Shore, Wiley, Taidha Covington…). Maîtrise Castoran Intuition requise pour les trésors d'aetherlocation (skimmer). Finale : aider Shark dans le donjon Honor of the Waves.", en: "24-step precursor collection — starts with \"Captain\" Lakes at Pub Canach (Breezy Cay). Keys: Weyandt's Revenge JP (Sharkmaw Caverns, LA) → Tattered Note, then 11 mask pieces in any order (Shipwreck Strand, Siren's Reef, Southsun, Bloodtide, Cursed Shore, Wiley, Taidha Covington…). Castoran Intuition mastery required for aetherlocation treasures (skimmer). Finale: help Shark in the Honor of the Waves dungeon." } },
       { key: "selachi_diver", achievementId: 4177, name: "Master Diver",
         tip: { fr: "Étape 4 de la collection : 10 coffres immergés (Ornate Rusted Keys chez Dive Master Astora, Arche du Lion).", en: "Collection step 4: 10 sunken chests (Ornate Rusted Keys from Dive Master Astora, Lion's Arch)." } },
       { key: "selachi_shipwreck", achievementId: 8880, metaSubs: true, name: "Shipwreck Strand Mastery",
@@ -12477,9 +12477,45 @@ const LEGENDARIES = {
     currencies: [],
     raidAchievements: [
       { key: "envoy_1", achievementId: 2646, name: "Envoy Armor I: Experimental Armor",
-        tip: { fr: "Débloquée au premier kill de boss de raid (W1–W4). Récompense : set Experimental (exotique).", en: "Unlocked on your first raid boss kill (W1–W4). Reward: Experimental set (exotic)." } },
+        tip: { fr: "Débloquée au premier coffer de boss (W1–W4). ⏳ Lancer les Spirit Threads (Gorseval, 1/sem) dès la semaine 1. Récompense : set Experimental — prendre un poids DIFFÉRENT de ton futur légendaire (l'Armory rendrait le même poids obsolète).", en: "Unlocked on your first boss coffer (W1–W4). ⏳ Start the Spirit Threads (Gorseval, 1/wk) on week 1. Reward: Experimental set — pick a DIFFERENT weight than your planned legendary (the Armory would make the same weight obsolete)." },
+        bitTips: {
+          "Infused Living Crystal": { fr: "Living Crystal : élémentaires de terre dans la grotte à l'est de Nuhoch Lane (Ley-Line Confluence wp, TD) — tuer le groupe, puis celui derrière le mur. Infuser sur un pilier de l'arène APRÈS le kill du Vale Guardian (W1).", en: "Living Crystal: earth elementals in the cave east of Nuhoch Lane (Ley-Line Confluence wp, TD) — kill the group, then the one behind the wall. Infuse on an arena pillar AFTER killing Vale Guardian (W1)." },
+          "Infused Soul Mirror": { fr: "Soul Mirror : Burnisher Kengo (temple au nord de Northwatch wp, AB — indisponible pendant certaines phases du méta). Infuser au brasier avant Gorseval (W1) : un porteur garde la torche spectrale sur TOUT le cimetière (down/swap = raté, +1 semaine), puis INTERAGIR avec le brasier (le coffre ne suffit pas).", en: "Soul Mirror: Burnisher Kengo (temple north of Northwatch wp, AB — unavailable during some meta phases). Infuse at the brazier before Gorseval (W1): one carrier keeps the spectral torch through the WHOLE cemetery (down/swap = fail, +1 week), then INTERACT with the brazier (the chest is not enough)." },
+          "Tormented Aurillium": { fr: "Acheter Polished Aurillium (Faction Provisioner), puis atteindre 18 stacks de Madness pendant Twisted Castle (W3) avec l'objet utilisé.", en: "Buy Polished Aurillium (any Faction Provisioner), then reach 18 stacks of Madness during Twisted Castle (W3) with the item consumed." },
+          "Auric Energy Crystal": { fr: "Energy Crystal : drop du Vale Guardian (W1). L'apporter à l'œuf de Glint (chambre intérieure de Tarir, AB) — transformation automatique.", en: "Energy Crystal: Vale Guardian drop (W1). Bring it to Glint's Egg (Tarir inner chamber, AB) — auto-transforms." },
+          "Spirit Weave": { fr: "⏳ 5 Spirit Threads : 1/semaine sur Gorseval (min. 5 semaines — à lancer EN PREMIER). Énergiser au Chak Gerent (méta TD) : taguer les 4 lanes énergise jusqu'à 4 threads en un cycle. 5 énergisés → double-clic.", en: "⏳ 5 Spirit Threads: 1/week from Gorseval (min. 5 weeks — start this FIRST). Energize at Chak Gerent (TD meta): tagging all 4 lanes energizes up to 4 threads in one cycle. 5 energized → double-click." },
+          "Coagulated Ectoplasm": { fr: "10 Ectoplasmic Residues → double-clic. Résidus dans les coffres cachés de W1/W2/W3 (spots fixes, cartes sur Hardstuck).", en: "10 Ectoplasmic Residues → double-click. Residues from the hidden chests in W1/W2/W3 (fixed spots, maps on Hardstuck)." },
+          "Core of Flame": { fr: "Coffre de Sabetha (W1) après le kill.", en: "Sabetha's chest (W1) after the kill." },
+          "Arcane Dust": { fr: "Bloodstone Powder (coffre de Matthias, W2) + Powdered Aurillium (coffre au sommet de la chambre intérieure de Tarir, fin du Sanctum Scramble — accessible en monture sans faire l'aventure). Consommer l'un des deux.", en: "Bloodstone Powder (Matthias coffer, W2) + Powdered Aurillium (chest atop Tarir's inner chamber, Sanctum Scramble end — reachable by mount without the adventure). Consume either." },
+          "Mushroom Medley": { fr: "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (CP/stock). Les 4 en inventaire → consommer Gills ou Cap.", en: "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (TP/storage). All 4 in inventory → consume Gills or Cap." },
+          "Giant Beehive": { fr: "W2 : ruche en haut d'un arbre au sud du plan d'eau près du Prison Camp — mini-JP depuis l'arbre au chemin de bois (SO), tir à distance pour la faire tomber, looter dans l'eau.", en: "W2: hive high in a tree south of the water by the Prison Camp — mini-JP from the wooden-path tree (SW), shoot it down with a ranged attack, loot in the water below." },
+          "Vial of Forsaken Thicket Waters": { fr: "Après le kill de Matthias (W2), marcher dans une des 4 fontaines du temple — DANS l'instance du kill (rejoindre une autre instance ne compte pas).", en: "After killing Matthias (W2), walk into one of the temple's 4 fountains — IN the kill instance (joining another instance doesn't count)." },
+          "Spirit Quest Tonic": { fr: "Se crée en consommant l'un de : Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (les 4 en inventaire).", en: "Created by consuming any of: Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (all 4 in inventory)." },
+          "Bloodstone Fragment": { fr: "Loot direct sur Matthias (W2).", en: "Direct loot from Matthias (W2)." },
+          "Bloodstone Battery (Charged)": { fr: "Batterie vide : coffre de McLeod (Escort, W3). La charger au socket du 2e étage du Command Center de Rata Novus (TD) — tourelles mortelles si le centre n'est pas repris : traverser vite en monture ou faire l'event chain.", en: "Empty battery: McLeod's chest (Escort, W3). Charge it at the 2nd-floor socket of the Rata Novus Command Center (TD) — deadly turrets if not retaken: rush through on a mount or do the event chain." },
+          "Soul of the Keep": { fr: "Stone Soul : Keep Construct (W3). Puis se faire toucher par le Goop d'un Veteran Chak Lobber/Slinger et consommer le Stone Soul SOUS l'effet Goop.", en: "Stone Soul: Keep Construct (W3). Then get hit by a Veteran Chak Lobber/Slinger Goop and consume the Stone Soul WHILE under the Goop effect." },
+          "Spirit Strings": { fr: "⚠ Acheter Itzel Spirit Poison (vendeur de maîtrise Itzel/Xochitl : 100 Airship Parts + 1 po) et l'avoir ACTIF en ouvrant le coffer de Keep Construct (pas le coffre d'environnement). Oubli = +1 semaine.", en: "⚠ Buy Itzel Spirit Poison (Itzel mastery vendor/Xochitl: 100 Airship Parts + 1 g) and have it ACTIVE when opening Keep Construct's coffer (not the environmental chest). Miss it = +1 week." },
+          "Blood-Stone Infused Ectoplasm": { fr: "Un des 3 coffres cachés du Twisted Castle (W3) — lootable même instance clear ; plus simple en planant après l'encounter.", en: "Any of the 3 hidden chests in Twisted Castle (W3) — lootable even in a cleared instance; easier gliding after the encounter." },
+          "White Mantle Ritual Goblet": { fr: "Coffre de Xera (W3) après le kill.", en: "Xera's chest (W3) after the kill." },
+        }, },
       { key: "envoy_2", achievementId: 3012, name: "Envoy Armor II: Refined Armor",
-        tip: { fr: "Récompense : set Refined (élevé) = les 6 précurseurs. Recettes rachetables pour les autres poids ensuite.", en: "Reward: Refined set (ascended) = the 6 precursors. Recipes re-purchasable for other weights afterwards." } },
+        tip: { fr: "Un seul Crystalline Heart réutilisé partout — l'activer AVANT chaque boss W4 (et après chaque wipe). Récompense : set Refined = les précurseurs — choisir le poids de TON légendaire, et ⚠ ne jamais stat-swap. Autres poids craftables ensuite (500).", en: "One Crystalline Heart reused everywhere — activate it BEFORE each W4 boss (and after every wipe). Reward: Refined set = the precursors — pick YOUR legendary's weight, and ⚠ never stat-swap. Other weights craftable afterwards (500)." },
+        bitTips: {
+          "Crystalline Heart": { fr: "100 Crystalline Ingots (craft 500 : 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore des Noxious Pods de Dragon's Stand) → Master Craftsman d'armure à l'Arche du Lion. UN SEUL cœur sert pour toutes les étapes (réutilisable).", en: "100 Crystalline Ingots (craft 500: 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore from Dragon's Stand Noxious Pods) → Armor Master Craftsman in Lion's Arch. ONE heart is reused for every step." },
+          "Vine Heart": { fr: "Utiliser le Cœur après avoir participé au méta Battle for Tarir (AB) — la réussite n'est pas requise.", en: "Use the Heart after participating in the Battle for Tarir meta (AB) — success not required." },
+          "Burning Heart": { fr: "Utiliser le Cœur après la fractale Volcanic.", en: "Use the Heart after the Volcanic Fractal." },
+          "Frozen Heart": { fr: "Utiliser le Cœur après la fractale Snowblind.", en: "Use the Heart after the Snowblind Fractal." },
+          "Windy Heart": { fr: "Se faire toucher par le Wing Buffet d'une wyverne (Patriarche/Legendary en canopée de VB, event Wyvern Cliffs, ou la Matriarche du combat Qadim) puis utiliser le Cœur.", en: "Get hit by a Wyvern's Wing Buffet (Patriarch/Legendary in VB canopy, Wyvern Cliffs event, or the Matriarch during the Qadim fight) then use the Heart." },
+          "Sodden Heart": { fr: "Utiliser le Cœur après la fractale Aquatic Ruins.", en: "Use the Heart after the Aquatic Ruins Fractal." },
+          "Ley-Infused Heart": { fr: "Dragon's Stand : sous la plateforme n°5 du combat final Mordremoth, utiliser le Cœur depuis le rocher le plus bas.", en: "Dragon's Stand: under platform #5 of the final Mordremoth fight, use the Heart from the lowest rock." },
+          "Cultivated Heart": { fr: "Utiliser le Cœur à la Flax Node Farm de The Great Tree (TD, depuis Ogre Camp wp).", en: "Use the Heart at the Flax Node Farm in The Great Tree (TD, from Ogre Camp wp)." },
+          "Penitent Heart": { fr: "Utiliser le Cœur simplement dans le Bastion of the Penitent (W4).", en: "Simply use the Heart while inside Bastion of the Penitent (W4)." },
+          "Jade Heart": { fr: "⚠ Activer le Cœur AVANT Cairn (W4) et tuer le boss sans être touché par Spatial Manipulation (faire les cercles verts ; down = raté). Le CM force les verts — parfois plus simple. Réactiver après chaque wipe.", en: "⚠ Activate the Heart BEFORE Cairn (W4) and kill the boss without being hit by Spatial Manipulation (do the green circles; going down = fail). The CM forces greens — sometimes easier. Reactivate after each wipe." },
+          "Protected Heart": { fr: "Activer le Cœur AVANT Mursaat Overseer (W4) et recevoir le buff Protect au moins une fois — prévenir le joueur Protect, rester près de lui.", en: "Activate the Heart BEFORE Mursaat Overseer (W4) and receive the Protect buff at least once — tell the Protect player, stick with them." },
+          "Tormented Heart": { fr: "Activer le Cœur AVANT Samarog (W4) et se faire toucher par l'explosion de Rigom à 1% — demander au groupe de laisser détoner avant de pousser Rigom sous Samarog.", en: "Activate the Heart BEFORE Samarog (W4) and get hit by Rigom's 1% explosion — ask the squad to let him detonate before pushing Rigom under Samarog." },
+          "Demonic Heart": { fr: "Activer le Cœur AVANT Deimos (W4) et survivre à tout l'encounter.", en: "Activate the Heart BEFORE Deimos (W4) and survive the whole encounter." },
+          "Redeemed Heart": { fr: "Tous les autres cœurs faits : /kneel devant le Tree of Solitude (instance clear acceptée).", en: "All other hearts done: /kneel at the Tree of Solitude (cleared instance is fine)." },
+        }, },
     ],
     metas: [],
     bounties: [],
@@ -13624,7 +13660,7 @@ function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v5`; // v5 : requirement/description + retry subs
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v6`; // v6 : noms EN (clés bitTips stables)
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -13639,14 +13675,21 @@ function GW2LegendaryTracker() {
           if (b.type === "Item" && b.id) itemIds.add(b.id);
         }
         const names = {};
+        const namesEn = {};
         const arr = [...itemIds];
         for (let k = 0; k < arr.length; k += 150) {
           const chunk = arr.slice(k, k + 150);
           const ri = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=${lang}`);
           if (ri.ok) for (const it of await ri.json()) names[String(it.id)] = it.name;
+          if (lang !== "en") {
+            const re = await fetch(`https://api.guildwars2.com/v2/items?ids=${chunk.join(",")}&lang=en`);
+            if (re.ok) for (const it of await re.json()) namesEn[String(it.id)] = it.name;
+          } else {
+            for (const id2 of chunk) namesEn[String(id2)] = names[String(id2)];
+          }
         }
         const out = {};
-        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "" };
+        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "" };
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
         const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
@@ -15843,9 +15886,13 @@ function GW2LegendaryTracker() {
                             <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
                             <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
                           </div>
-                          {!stepDone && a.bitTips?.[i] && (
-                            <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(a.bitTips[i])}</div>
-                          )}
+                          {!stepDone && (() => {
+                            const enKey = (b.type === "Item" && b.id) ? (def.namesEn?.[String(b.id)] ?? null) : (b.type === "Text" ? (b.text ?? null) : null);
+                            const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i];
+                            return btip ? (
+                              <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
+                            ) : null;
+                          })()}
                         </div>
                       );
                     }))}
