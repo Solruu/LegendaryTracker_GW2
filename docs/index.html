@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v34",
+    "version": "v35",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1428,7 +1428,8 @@ const SOURCES_DB = {
       "best": "type de source recommandé par défaut — règle : voie garantie sans coût marginal (méta/reward track déjà jouée) > karma/vendeur > craft > TP",
       "tradeoff": "seuil de rentabilité calculé en direct via /v2/commerce/prices : coût des ingrédients / rendement espéré vs prix d'achat"
     },
-    "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery)."
+    "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery).",
+    "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified."
   },
   "meta_events": {
     "vb": {
@@ -7684,6 +7685,78 @@ const SOURCES_DB = {
         }
       ],
       "qty": {}
+    },
+    "spark_of_sentience": {
+      "name": "Spark of Sentience",
+      "kind": "precursor",
+      "needed_for": [
+        "aurora"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "achievement_collection",
+          "tip": {
+            "fr": "Récompense de la collection Aurora II: Empowering — infuser 21 Xunlai Electrum Ingots à 21 Mastery Insights (Lump of Mithrillium : 1/jour → timegate ~21 jours).",
+            "en": "Reward from the Aurora II: Empowering collection — infuse 21 Xunlai Electrum Ingots at 21 Mastery Insights (Lump of Mithrillium: 1/day → ~21-day timegate)."
+          }
+        }
+      ],
+      "qty": {}
+    },
+    "gift_of_draconic_mastery": {
+      "name": "Gift of Draconic Mastery",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "aurora"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "MF : 250 de CHAQUE monnaie de carte de la LS3 (Winterberries, Petrified Wood, Jade Shards, Fire Orchid Blossoms, Orrian Pearls…). Les succès « Return to » de la LS3 aident à les accumuler.",
+            "en": "MF: 250 of EACH LWS3 map currency (Winterberries, Petrified Wood, Jade Shards, Fire Orchid Blossoms, Orrian Pearls…). The LWS3 'Return to' achievements help stockpile them."
+          }
+        }
+      ],
+      "qty": {}
+    },
+    "hateful_sworl": {
+      "name": "Hateful Sworl",
+      "kind": "precursor",
+      "needed_for": [
+        "coalescence"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "achievement_collection",
+          "tip": {
+            "fr": "Récompense de la collection Coalescence I: Unbridled (10 objets, W5).",
+            "en": "Reward from the Coalescence I: Unbridled collection (10 items, W5)."
+          }
+        }
+      ],
+      "qty": {}
+    },
+    "gift_of_patience": {
+      "name": "Gift of Patience",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "coalescence"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "MF : assemblé après Coalescence III (essences purifiées) — voir l'onglet Collections.",
+            "en": "MF: assembled after Coalescence III (purified essences) — see the Collections tab."
+          }
+        }
+      ],
+      "qty": {}
     }
   },
   "enchaînements_recommandés": {
@@ -11364,7 +11437,10 @@ const SOURCES_DB = {
       "slot": "accessory",
       "expansion": "LW3",
       "wiki": "Aurora",
-      "recipe": "MF : Gift of Sentience + Gift of Maguuma Mastery + Sentient Anomaly + Glob of Coagulated Mists Essence",
+      "recipe": {
+        "fr": "MF : Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery + Spark of Sentience",
+        "en": "MF: Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery + Spark of Sentience"
+      },
       "armory_api_id": 79980,
       "armory_max_count": 2,
       "note": {
@@ -12257,7 +12333,14 @@ const SOURCES_DB = {
             }
           ]
         }
-      }
+      },
+      "components": [
+        "mystic_tribute",
+        "gift_of_sentience",
+        "gift_of_draconic_mastery",
+        "spark_of_sentience"
+      ],
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "vision": {
       "name": "Vision",
@@ -12346,7 +12429,8 @@ const SOURCES_DB = {
             }
           ]
         }
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "coalescence": {
       "name": "Coalescence",
@@ -12354,12 +12438,15 @@ const SOURCES_DB = {
       "farm": "PvE (Raids)",
       "expansion": "LW4",
       "wiki": "Coalescence",
-      "recipe": "MF : Glimpse + Gift of Compassion + Mystic Tribute + Amalgamated Gemstone",
+      "recipe": {
+        "fr": "MF : Mystic Tribute + Gift of Compassion + Gift of Patience + Hateful Sworl",
+        "en": "MF: Mystic Tribute + Gift of Compassion + Gift of Patience + Hateful Sworl"
+      },
       "components": [
-        "glimpse",
-        "gift_of_compassion",
         "mystic_tribute",
-        "amalgamated_gemstone"
+        "gift_of_compassion",
+        "gift_of_patience",
+        "hateful_sworl"
       ],
       "note": {
         "fr": "Anneau légendaire (LW4), obtenu principalement via les Raids (Wing 1–5). Composant requis pour Vision. Synergie visuelle avec Aurora et Vision. Farm : Raid Proofs + Ball of Dark Energy.",
@@ -12382,7 +12469,8 @@ const SOURCES_DB = {
         "mystic_clovers": 77,
         "mystic_coins": 250,
         "raids_required": "Wings 5-6-7 (PoF) obligatoires pour les 3 collections"
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "fractal_capacitor": {
       "name": "Fractal Capacitor",
@@ -12575,6 +12663,29 @@ const SOURCES_DB = {
         "pof_note": "Exception du hub : les vendors Eternal Ice et Hatched Chili fonctionnent même sans PoF (les autres services de Lady Camilla requièrent PoF+IBS)",
         "shipments": "Trophy Shipments : 250 VM + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux). Éviter les Material Shipments."
       }
+    },
+    "conflux": {
+      "name": "Conflux",
+      "slot": "ring",
+      "farm": "WvW",
+      "expansion": "Core",
+      "wiki": "Conflux",
+      "recipe": {
+        "fr": "MF : Gift of the World + Mist Band (Infused) + Mystic Tribute + Gift of Conquering",
+        "en": "MF: Gift of the World + Mist Band (Infused) + Mystic Tribute + Gift of Conquering"
+      },
+      "components": [
+        "gift_of_the_world",
+        "mist_band_infused",
+        "mystic_tribute",
+        "gift_of_conquering"
+      ],
+      "armory_api_id": 93190,
+      "note": {
+        "fr": "Anneau légendaire McM. ~1 850 Skirmish Tickets minimum (cap 365/sem → ~5-6 semaines). 100 Icy Runestones chez Rojan the Penitent (Frostgorge Sound, 1 po pièce — indisponible pendant Breaking the Claw of Jormag).",
+        "en": "WvW legendary ring. ~1,850 Skirmish Tickets minimum (365/wk cap → ~5-6 weeks). 100 Icy Runestones from Rojan the Penitent (Frostgorge Sound, 1 g each — unavailable during Breaking the Claw of Jormag)."
+      },
+      "recipe_verified": "2026-07-25 (wiki)"
     }
   }
 };
