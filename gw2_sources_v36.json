@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v35",
+  "version": "v36",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -860,7 +860,8 @@
    "tradeoff": "seuil de rentabilité calculé en direct via /v2/commerce/prices : coût des ingrédients / rendement espéré vs prix d'achat"
   },
   "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery).",
-  "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified."
+  "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified.",
+  "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant)."
  },
  "meta_events": {
   "vb": {
@@ -8246,7 +8247,8 @@
    "timegate": {
     "fr": "~40 jours min sans CM (4 × 28 Research Pages), ~20 j avec CM quotidiens",
     "en": "~40 days min without CMs (4 × 28 Research Pages), ~20 days with daily CMs"
-   }
+   },
+   "recipe_verified": "2026-07-25 (wiki) — conforme"
   },
   "endless_summer": {
    "name": "Endless Summer",
@@ -8332,7 +8334,8 @@
      "fr": "MF final : Gift of Rays + Gift of the Survivors + Gift of the People + Gift of the Hylek → Endless Summer.",
      "en": "Final MF: Gift of Rays + Gift of the Survivors + Gift of the People + Gift of the Hylek → Endless Summer."
     }
-   ]
+   ],
+   "recipe_verified": "2026-07-25 (wiki) — conforme"
   },
   "stella_radians": {
    "name": "Stella Radians",
@@ -8661,7 +8664,10 @@
    "expansion": "VoE (oct 2025)",
    "wiki": "Aetheric_Anchor",
    "apiId": 105497,
-   "recipe": "MF : Gift of the Survivors + Gift of the People + Gift of Insight (VoE) + Gift of the Elders",
+   "recipe": {
+    "fr": "MF : Gift of the Survivors + Gift of the People + Gift of Insight + Gift of the Elders",
+    "en": "MF: Gift of the Survivors + Gift of the People + Gift of Insight + Gift of the Elders"
+   },
    "components": [
     "gift_of_the_survivors",
     "gift_of_the_people",
@@ -8678,7 +8684,8 @@
    "armory_note": {
     "fr": "Container — unlock Ancora Pax (106712?) + Ancora Bellum. Vérifier apiIds Ancora.",
     "en": "Container - unlocks Ancora Pax (106712?) + Ancora Bellum. Verify Ancora apiIds."
-   }
+   },
+   "recipe_verified": "2026-07-25 (wiki)"
   },
   "selachimorpha": {
    "name": "Selachimorpha",
@@ -8715,7 +8722,8 @@
     "bloodstone_shard": 1,
     "unusual_coin_wallet_id": 62,
     "note": "Chiffres GuildJen (nov 2025) : 55 clovers, 5000 Research Notes. Obsidian Shards + Bloodstone Shard via Gift of Castoran Mastery (wiki). Unusual Coins = monnaie map VoE (coffres Mirror, metas Castora), montant total variable selon achats."
-   }
+   },
+   "recipe_verified": "2026-07-25 (wiki) — conforme"
   },
   "legendary_rune": {
    "name": "Legendary Rune",
@@ -11983,7 +11991,12 @@
     "en": "2800 tickets at max 365+90/week → minimum 7 weeks."
    },
    "armory_api_id": 81462,
-   "armory_max_count": 1
+   "armory_max_count": 1,
+   "recipe_verified": "2026-07-25 (wiki) — conforme",
+   "note": {
+    "fr": "2 800 Skirmish Tickets au total (~7-8 semaines au cap 365+90/sem). ⚠ Prérequis : rang McM 350 et tag de commandant (300 po) pour le dernier Wings of War. Warcry = les 4 Wings of War forgés ensemble (2 450 tickets).",
+    "en": "2,800 Skirmish Tickets total (~7-8 weeks at the 365+90/wk cap). ⚠ Prerequisites: WvW rank 350 and a commander tag (300 g) for the last Wings of War. Warcry = the 4 Wings of War forged together (2,450 tickets)."
+   }
   },
   "upgrades_combined": {
    "name": "Legendary Upgrades",
