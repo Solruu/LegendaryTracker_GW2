@@ -2357,6 +2357,29 @@ export default function GW2LegendaryTracker() {
   const langRef = useRef(lang);
   useEffect(() => { langRef.current = lang; }, [lang]);
 
+  // ── Prix TP (public) pour les seuils de rentabilité des composants ──
+  useEffect(() => {
+    const cc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
+    const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries?.[selectedLeg] ?? {};
+    const ids = new Set();
+    for (const g of (S.components ?? [])) {
+      const t = cc[g]?.tradeoff;
+      if (!t) continue;
+      if (t.target_api_id) ids.add(t.target_api_id);
+      for (const ing of (t.ingredients ?? [])) if (ing.apiId) ids.add(ing.apiId);
+    }
+    if (ids.size === 0) return;
+    fetch(`https://api.guildwars2.com/v2/commerce/prices?ids=${[...ids].join(",")}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(list => {
+        if (!Array.isArray(list)) return;
+        const m = {};
+        for (const p of list) m[String(p.id)] = { buy: p.buys?.unit_price ?? 0, sell: p.sells?.unit_price ?? 0 };
+        setTpPrices(prev => ({ ...prev, ...m }));
+      })
+      .catch(() => {});
+  }, [selectedLeg]);
+
   // ── Armor sets : rechargement de l'objectif ciblé au changement de set ──
   useEffect(() => {
     if (!LEGENDARIES[selectedLeg]?.isArmorSet) return;
@@ -2675,6 +2698,7 @@ export default function GW2LegendaryTracker() {
     });
   }, []);
   const [showKeyInput, setShowKeyInput] = useState(false);
+  const [tpPrices, setTpPrices] = useState({}); // /v2/commerce/prices — public, CORS ok
   const [gtApiStatus, setGtApiStatus] = useState("idle");
   const [gtApiError, setGtApiError] = useState("");
 
@@ -4870,46 +4894,112 @@ export default function GW2LegendaryTracker() {
               </>
             )}
 
-            {tops.length > 0 && (
-              <>
+            {tops.length > 0 && (() => {
+              const KINDS = [
+                ["advanced_craft", { fr: "◆ Crafts avancés (gifts)", en: "◆ Advanced crafts (gifts)" }],
+                ["craftable",      { fr: "⚒ Craftables", en: "⚒ Craftable" }],
+                ["acquire",        { fr: "🗺 À récupérer", en: "🗺 To acquire" }],
+                ["precursor",      { fr: "★ Précurseurs (collections)", en: "★ Precursors (collections)" }],
+              ];
+              const coin = (c) => {
+                const g = Math.floor(c / 10000), s = Math.floor((c % 10000) / 100);
+                return g > 0 ? `${g},${String(s).padStart(2, "0")} po` : `${s} pa`;
+              };
+              const renderTradeoff = (t) => {
+                const px = (id) => tpPrices[String(id)]?.sell ?? 0;
+                const cost = (t.ingredients ?? []).reduce((s, i) => s + px(i.apiId) * i.qty, 0);
+                const unit = cost / (t.yield || 1);
+                const direct = px(t.target_api_id);
+                if (!cost || !direct) return null;
+                const craftWins = unit < direct;
+                return (
+                  <div style={{ marginTop: 7, padding: "7px 9px", background: "rgba(94,234,212,0.05)", border: "1px solid rgba(94,234,212,0.15)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                    <div style={{ color: craftWins ? "#4ade80" : "#fbbf24", fontWeight: 600 }}>
+                      {craftWins
+                        ? NX({ fr: `⭐ Craft rentable — ${coin(unit)}/unité contre ${coin(direct)} à l'achat`, en: `⭐ Crafting pays off — ${coin(unit)}/unit vs ${coin(direct)} to buy` })
+                        : NX({ fr: `Acheter — ${coin(direct)}/unité contre ${coin(unit)} en craft`, en: `Buy — ${coin(direct)}/unit vs ${coin(unit)} crafted` })}
+                    </div>
+                    <div style={{ color: "rgba(226,201,126,0.45)", marginTop: 2 }}>
+                      {NX({ fr: `Rendement retenu : ${t.yield}/forge. Prix de vente immédiate, hors coffres de méta (gratuits).`, en: `Assumed yield: ${t.yield}/forge. Instant-buy prices, excluding meta chests (free).` })}
+                    </div>
+                  </div>
+                );
+              };
+              const byKind = {};
+              for (const g of tops) {
+                const k = cc[g]?.kind ?? "acquire";
+                (byKind[k] = byKind[k] ?? []).push(g);
+              }
+              return (
+                <>
                 <div className="section-label">{NX({ fr: "Arbre des composants", en: "Component tree" })}</div>
                 <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>
                   {NX({ fr: "Toucher un composant pour voir ses matériaux et leurs sources.", en: "Tap a component to see its materials and their sources." })}
                 </div>
-                {tops.map(g => {
-                  const subs = subsOf(g);
-                  const open = expanded === `gift_${g}`;
-                  return (
-                    <div key={g} style={{ margin: "6px 14px", padding: "11px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}
-                      onClick={() => setExpanded(open ? null : `gift_${g}`)}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                        <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, fontFamily: "'Cinzel', serif" }}>{open ? "▾ " : "▸ "}{label(g)}</div>
-                        <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", whiteSpace: "nowrap" }}>
-                          {subs.length > 0 ? NX({ fr: `${subs.length} matériaux`, en: `${subs.length} materials` }) : NX({ fr: "voir Guide", en: "see Guide" })}
-                        </div>
-                      </div>
-                      {open && subs.length > 0 && (
-                        <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }}>
-                          {subs.map(([sk, sv]) => {
-                            const stock = sv.apiId ? (gtStocks?.[String(sv.apiId)] ?? null) : null;
-                            const src0 = (sv.sources ?? [])[0];
-                            return (
-                              <div key={sk} style={{ padding: "3px 0" }}>
-                                <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: "11px" }}>
-                                  <span style={{ color: "rgba(226,201,126,0.75)" }}>{NXS(sv.name ?? sk)}</span>
-                                  {stock != null && <span style={{ color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{stock}</span>}
+                {KINDS.filter(([k]) => (byKind[k] ?? []).length > 0).map(([k, klabel]) => (
+                  <div key={k}>
+                    <div style={{ margin: "10px 14px 4px", fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif", color: "rgba(226,201,126,0.45)" }}>{NX(klabel)}</div>
+                    {byKind[k].map(g => {
+                      const C = cc[g] ?? {};
+                      const subs = subsOf(g);
+                      const srcs = C.sources ?? [];
+                      const open = expanded === `gift_${g}`;
+                      const bestSrc = C.best ? srcs.find(s => s.type === C.best) : null;
+                      const stock = C.apiId ? (gtStocks?.[String(C.apiId)] ?? null) : null;
+                      return (
+                        <div key={g} style={{ margin: "6px 14px", padding: "11px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}
+                          onClick={() => setExpanded(open ? null : `gift_${g}`)}>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, fontFamily: "'Cinzel', serif" }}>{open ? "▾ " : "▸ "}{label(g)}</div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 7, whiteSpace: "nowrap" }}>
+                              {stock != null && <span style={{ fontSize: "11px", color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{stock}</span>}
+                              <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
+                                {subs.length > 0 ? NX({ fr: `${subs.length} mat.`, en: `${subs.length} mat.` }) : (srcs.length > 1 ? NX({ fr: `${srcs.length} voies`, en: `${srcs.length} routes` }) : "")}
+                              </span>
+                            </div>
+                          </div>
+                          {bestSrc && (
+                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(74,222,128,0.85)", lineHeight: 1.45 }}>
+                              ⭐ {NX(bestSrc.tip)}{C.best_reason ? <span style={{ opacity: 0.65 }}> — {NX(C.best_reason)}</span> : null}
+                            </div>
+                          )}
+                          {!bestSrc && srcs[0]?.tip && (
+                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.45)", lineHeight: 1.45 }}>{NX(srcs[0].tip)}</div>
+                          )}
+                          {C.tradeoff && renderTradeoff(C.tradeoff)}
+                          {open && (
+                            <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }}>
+                              {subs.map(([sk, sv]) => {
+                                const st = sv.apiId ? (gtStocks?.[String(sv.apiId)] ?? null) : null;
+                                const s0 = (sv.sources ?? [])[0];
+                                return (
+                                  <div key={sk} style={{ padding: "3px 0" }}>
+                                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: "11px" }}>
+                                      <span style={{ color: "rgba(226,201,126,0.75)" }}>{NXS(sv.name ?? sk)}</span>
+                                      {st != null && <span style={{ color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{st}</span>}
+                                    </div>
+                                    {s0?.tip && <div style={{ fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.4 }}>{NX(s0.tip)}</div>}
+                                  </div>
+                                );
+                              })}
+                              {srcs.filter(s => s !== bestSrc).map((s, si) => (
+                                <div key={si} style={{ padding: "3px 0", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.45 }}>
+                                  ○ {NX(s.tip)}
                                 </div>
-                                {src0?.tip && <div style={{ fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.4 }}>{NX(src0.tip)}</div>}
-                              </div>
-                            );
-                          })}
+                              ))}
+                              {subs.length === 0 && srcs.length === 0 && (
+                                <div style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Détail dans l'onglet Guide.", en: "Details in the Guide tab." })}</div>
+                              )}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </>
-            )}
+                      );
+                    })}
+                  </div>
+                ))}
+                </>
+              );
+            })()}
           </div>
         );
       })()}

@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v33",
+  "version": "v34",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -853,7 +853,13 @@
    }
   },
   "common_required_note": "Quantités de matériaux communs par légendaire (null = non requis ; perPiece = coût par pièce d'armure). Remplace les valeurs génériques figées de COMMON_MATS.",
-  "changelog_v33": "Onglet Composants unifié : common_required par légendaire (fin des objectifs génériques 77/250/250/100)."
+  "changelog_v33": "Onglet Composants unifié : common_required par légendaire (fin des objectifs génériques 77/250/250/100).",
+  "component_schema": {
+   "kind": "advanced_craft (gifts / crafts ≥2 niveaux) | craftable (craft direct) | acquire (drop/méta/vendeur) | precursor (récompense de collection)",
+   "best": "type de source recommandé par défaut — règle : voie garantie sans coût marginal (méta/reward track déjà jouée) > karma/vendeur > craft > TP",
+   "tradeoff": "seuil de rentabilité calculé en direct via /v2/commerce/prices : coût des ingrédients / rendement espéré vs prix d'achat"
+  },
+  "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery)."
  },
  "meta_events": {
   "vb": {
@@ -1903,7 +1909,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "drop"
   },
   "dust_luminous": {
    "name": "Pile of Luminous Dust",
@@ -1928,7 +1936,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "drop"
   },
   "dust_incandescent": {
    "name": "Pile of Incandescent Dust",
@@ -1953,7 +1963,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "drop"
   },
   "dust_crystalline": {
    "name": "Pile of Crystalline Dust",
@@ -1978,7 +1990,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "drop"
   },
   "icy_runestone": {
    "name": "Icy Runestone",
@@ -2002,7 +2016,8 @@
      "cost_silver": 2
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "ball_dark_energy": {
    "name": "Ball of Dark Energy",
@@ -2029,7 +2044,8 @@
     "vision": 50,
     "coalescence": 100
    },
-   "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices)."
+   "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices).",
+   "kind": "acquire"
   },
   "stabilizing_matrix": {
    "name": "Stabilizing Matrix",
@@ -2046,7 +2062,8 @@
      "type": "fractals",
      "tip": "Fractales (extraction des encryptions) ou TP — peu cher."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "gift_of_battle": {
    "name": "Gift of Battle",
@@ -2124,7 +2141,8 @@
     "transcendence": 1,
     "the_ascension": 1,
     "ad_infinitum": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_glory": {
    "name": "Gift of Glory",
@@ -2142,7 +2160,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_war": {
    "name": "Gift of War",
@@ -2163,7 +2182,8 @@
      "cost_memory_of_battle": 250
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "bloodstone_shard": {
    "name": "Bloodstone Shard",
@@ -2247,7 +2267,8 @@
     "ad_infinitum": 1,
     "klobjarne_geirr": 1,
     "selachimorpha": 1
-   }
+   },
+   "kind": "acquire"
   },
   "funerary_incense": {
    "name": "Funerary Incense",
@@ -2294,7 +2315,8 @@
    ],
    "qty": {
     "coalescence": 300
-   }
+   },
+   "kind": "acquire"
   },
   "kralkatite_ore": {
    "name": "Kralkatite Ore",
@@ -2325,7 +2347,8 @@
    ],
    "qty": {
     "vision": 300
-   }
+   },
+   "kind": "acquire"
   },
   "difluorite_crystal": {
    "name": "Difluorite Crystal",
@@ -2353,7 +2376,8 @@
    ],
    "qty": {
     "vision": 300
-   }
+   },
+   "kind": "acquire"
   },
   "inscribed_shard": {
    "name": "Inscribed Shard",
@@ -2381,7 +2405,8 @@
    ],
    "qty": {
     "vision": 300
-   }
+   },
+   "kind": "acquire"
   },
   "lump_of_mistonium": {
    "name": "Lump of Mistonium",
@@ -2407,7 +2432,8 @@
      "tip": "Sans limite : 10× Lump of Mistonium contre 75 Eternal Ice Shards + 2688 karma."
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "branded_mass": {
    "name": "Branded Mass",
@@ -2435,7 +2461,8 @@
    ],
    "qty": {
     "vision": 300
-   }
+   },
+   "kind": "acquire"
   },
   "mistborn_mote": {
    "name": "Mistborn Mote",
@@ -2463,7 +2490,8 @@
    ],
    "qty": {
     "vision": 300
-   }
+   },
+   "kind": "acquire"
   },
   "bottle_elonian_wine": {
    "name": "Bottle of Elonian Wine",
@@ -2486,7 +2514,9 @@
      "tip": "Vendors PoF (Crystal Oasis, etc.)."
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "vendor"
   },
   "blood_ruby": {
    "name": "Blood Ruby",
@@ -2514,7 +2544,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "jade_shard_lw3": {
    "name": "Jade Shard",
@@ -2540,7 +2571,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "orrian_pearl_lw3": {
    "name": "Orrian Pearl",
@@ -2566,7 +2598,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "fire_orchid_blossom": {
    "name": "Fire Orchid Blossom",
@@ -2592,7 +2625,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "fresh_winterberry": {
    "name": "Fresh Winterberry",
@@ -2623,7 +2657,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "petrified_wood_lw3": {
    "name": "Petrified Wood",
@@ -2649,7 +2684,8 @@
      "map": "Bjora Marches",
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "crystalline_ore": {
    "name": "Crystalline Ore",
@@ -2671,7 +2707,8 @@
       "en": "Noxious Pods (chests) — Dragon's Stand. Drop en fin de meta."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "bottle_airship_oil": {
    "name": "Bottle of Airship Oil",
@@ -2693,7 +2730,8 @@
       "en": "Airship Cargo chests — Verdant Brink. Post-meta Night and the Enemy drop."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "pile_auric_dust": {
    "name": "Pile of Auric Dust",
@@ -2715,7 +2753,8 @@
       "en": "Exalted Chests — Auric Basin. Drop post-meta Octovine."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "ley_line_spark": {
    "name": "Ley Line Spark",
@@ -2737,7 +2776,8 @@
       "en": "Crystallized Supply Caches — Tangled Depths. Drop post-meta Chak Gerent."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "legendary_spike": {
    "name": "Legendary Spike",
@@ -2758,7 +2798,8 @@
       "en": "Random drop from enemies and NPCs in WvW. No targeted farm possible - can take a while."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "memory_of_battle": {
    "name": "Memory of Battle",
@@ -2792,7 +2833,13 @@
       "en": "Buy on TP — cheap."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "tp",
+   "best_reason": {
+    "fr": "achat direct (pas d'alternative gratuite)",
+    "en": "direct purchase (no free alternative)"
+   }
   },
   "vision_crystal": {
    "name": "Vision Crystal",
@@ -2818,7 +2865,9 @@
       "en": "Buy on TP if crafting is too time-consuming."
      }
     }
-   ]
+   ],
+   "kind": "craftable",
+   "best": "craft"
   },
   "essence_of_strategy": {
    "name": "Essence of Strategy",
@@ -2838,7 +2887,8 @@
       "en": "Purchase for 1,000 Badges of Honor from Heroics Notary on WvW maps."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "essence_of_animosity": {
    "name": "Essence of Animosity",
@@ -2858,7 +2908,8 @@
       "en": "Purchase for 500 Testimony of Heroics."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "essence_of_carnage": {
    "name": "Essence of Carnage",
@@ -2878,7 +2929,8 @@
       "en": "Purchase for 500 Memory of Battle."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "essence_of_annihilation": {
    "name": "Essence of Annihilation",
@@ -2895,7 +2947,8 @@
      "npc": "Skirmish Supervisor (WvW maps)",
      "tip": "Purchase for 350 WvW Skirmish Claim Tickets."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "emblem_of_the_conqueror": {
    "name": "Emblem of the Conqueror",
@@ -2917,7 +2970,8 @@
       "en": "Reward for WvW achievement 'Emblem of the Conqueror' — capture 100 WvW objectives (towers, keeps, castles). Camps and ruins don't count."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "mist_pearl": {
    "name": "Mist Pearl",
@@ -2939,7 +2993,8 @@
       "en": "Purchase for 750 WvW Skirmish Claim Tickets + 250 Memory of Battle."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "mist_enhanced_mithril": {
    "name": "Mist-Enhanced Mithril",
@@ -2959,7 +3014,8 @@
       "en": "Purchase for 750 WvW Skirmish Claim Tickets + 250 Memory of Battle."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "certificate_of_honor": {
    "name": "Certificate of Honor",
@@ -2976,7 +3032,8 @@
      "npc": "Legendary Commander War Razor (WvW maps spawn)",
      "tip": "Purchase for WvW tickets + badges. Check wiki for exact cost."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "certificate_of_heroics": {
    "name": "Certificate of Heroics",
@@ -2998,7 +3055,8 @@
       "en": "Purchase for 250 Testimony of Heroics."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "glob_condensed_spirit_energy": {
    "name": "Glob of Condensed Spirit Energy",
@@ -3021,7 +3079,9 @@
       "en": "Drop WvW (rare)."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "drop"
   },
   "mist_band_infused": {
    "name": "Mist Band (Infused)",
@@ -3052,7 +3112,9 @@
       "en": "Available from the fractal vendor if you run fractals."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "pvp_vendor"
   },
   "skirmish_claim_tickets": {
    "name": "WvW Skirmish Claim Ticket",
@@ -3093,7 +3155,9 @@
       "en": "Bonus tickets via capturing/defending objectives (towers/keeps/castles)."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "wvw_skirmish"
   },
   "testimony_of_heroics": {
    "name": "Testimony of Heroics",
@@ -3113,7 +3177,8 @@
      "type": "wvw_rank",
      "tip": "Obtained by ranking up in WvW. Also found in some Skirmish chests."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "badge_of_honor": {
    "name": "Badge of Honor",
@@ -3142,7 +3207,9 @@
       "en": "Achievement milestone rewards."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "achievement_rewards"
   },
   "ascended_shard_of_glory": {
    "name": "Ascended Shard of Glory",
@@ -3165,7 +3232,8 @@
       "en": "PvP ranked rewards - season chests, placements. Main source for PvP players."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "shard_of_glory": {
    "name": "Shard of Glory",
@@ -3184,7 +3252,13 @@
      "type": "tp",
      "tip": "Buy on TP."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "tp",
+   "best_reason": {
+    "fr": "achat direct (pas d'alternative gratuite)",
+    "en": "direct purchase (no free alternative)"
+   }
   },
   "legendary_insight": {
    "name": "Legendary Insight",
@@ -3225,7 +3299,9 @@
       "en": "Daily raid bounty - 1 LI/day x 7 = 7/week if completed every day."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "raid_weekly"
   },
   "magnetite_shard": {
    "name": "Magnetite Shard",
@@ -3252,7 +3328,9 @@
       "en": "Drop en quickplay raids."
      }
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "raid_weekly"
   },
   "gift_of_the_desert": {
    "name": "Gift of the Desert",
@@ -3271,7 +3349,8 @@
      },
      "cost_karma": 93324
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "gift_of_the_rider": {
    "name": "Gift of the Rider",
@@ -3290,7 +3369,8 @@
      },
      "cost_trade_contracts": 300
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "trade_contract": {
    "name": "Trade Contract",
@@ -3315,7 +3395,9 @@
      "type": "tp",
      "tip": "Buy on TP."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "map_events"
   },
   "recruits_wings_of_war": {
    "name": "Recruit's Wings of War",
@@ -3334,7 +3416,8 @@
       "en": "350 WvW Skirmish Claim Tickets. WvW rank 50 required."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "soldiers_wings_of_war": {
    "name": "Soldier's Wings of War",
@@ -3353,7 +3436,8 @@
       "en": "525 WvW Skirmish Claim Tickets. WvW rank 100 required."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "generals_wings_of_war": {
    "name": "General's Wings of War",
@@ -3372,7 +3456,8 @@
       "en": "700 WvW Skirmish Claim Tickets. WvW rank 200 required."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "commanders_wings_of_war": {
    "name": "Commander's Wings of War",
@@ -3391,7 +3476,8 @@
       "en": "875 WvW Skirmish Claim Tickets. WvW rank 350 required + Commander Tag (300g + 250 Badges of Honor)."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "gift_of_mastery": {
    "name": "Gift of Mastery",
@@ -3428,7 +3514,8 @@
      "type": "mystic_forge",
      "tip": "MF : 1× Bloodstone Shard + 250× Obsidian Shard + 1× Gift of Exploration + 1× Gift of Battle."
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "obsidian_shard": {
    "name": "Obsidian Shard",
@@ -3485,7 +3572,13 @@
      "type": "node",
      "tip": "Nodes en instances d'histoire (quelques-uns par run)."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "reward_track",
+   "best_reason": {
+    "fr": "reward track — progresse en jouant",
+    "en": "reward track — progresses as you play"
+   }
   },
   "gift_of_exploration": {
    "name": "Gift of Exploration",
@@ -3531,7 +3624,8 @@
       "en": "Takes several dozen hours. Strongly recommended to do it alongside other goals."
      }
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "gift_of_metal": {
    "name": "Gift of Metal",
@@ -3552,7 +3646,8 @@
       "en": "Recipe purchased from Miyani for 10g. Craft: 250× Orichalcum Ingot + 250× Darksteel Ingot + 50× Mithril Ingot + 100× Iron Ingot."
      }
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "fine_rift_essence": {
    "name": "Fine Rift Essence",
@@ -3598,7 +3693,9 @@
     "en": "All rift tiers drop Fine Rift Essences on the pre-event. This is the base resource."
    },
    "apiId_note": "Wallet currency ID 78 (l'item legacy 100078 a été converti en monnaie wallet en juin 2025)",
-   "qty_note": "3000/pièce = 12 Amalgamated × 250 (si tout crafté)"
+   "qty_note": "3000/pièce = 12 Amalgamated × 250 (si tout crafté)",
+   "kind": "acquire",
+   "best": "rift_t1"
   },
   "masterwork_rift_essence": {
    "name": "Masterwork Rift Essence",
@@ -3621,7 +3718,8 @@
     }
    ],
    "apiId_note": "Wallet ID 80 — attention : 79 = Rare, 80 = Masterwork (inversés vs ordre intuitif)",
-   "qty_note": "1200/pièce = 12 Amalgamated × 100"
+   "qty_note": "1200/pièce = 12 Amalgamated × 100",
+   "kind": "acquire"
   },
   "rare_rift_essence": {
    "name": "Rare Rift Essence",
@@ -3644,7 +3742,8 @@
     }
    ],
    "apiId_note": "Wallet ID 79",
-   "qty_note": "600/pièce = 12 Amalgamated × 50"
+   "qty_note": "600/pièce = 12 Amalgamated × 50",
+   "kind": "acquire"
   },
   "amalgamated_rift_essence": {
    "name": "Amalgamated Rift Essence",
@@ -3677,7 +3776,9 @@
    "roi_note": {
     "fr": "Le goulot principal pour Obsidian. Suivre les 3 essences brutes dans le wallet suffit — inutile de planifier des metas précises. Farmer les T1 librement + convergences pour le buff post-convergence (+10-20 essences/rift pendant 6h).",
     "en": "The main bottleneck for Obsidian. Tracking the 3 raw essences in wallet is enough — no need to time specific metas. Farm T1 freely + convergences for the post-convergence buff (+10-20 essences/rift for 6h)."
-   }
+   },
+   "kind": "craftable",
+   "best": "craft"
   },
   "gift_of_research": {
    "name": "Gift of Research",
@@ -3703,7 +3804,9 @@
      }
     }
    ],
-   "recipe": "MF : 250× Thermocatalytic Reagent + 500× Hydrocatalytic Reagent + 250× Exotic Essence of Luck"
+   "recipe": "MF : 250× Thermocatalytic Reagent + 500× Hydrocatalytic Reagent + 250× Exotic Essence of Luck",
+   "kind": "advanced_craft",
+   "best": "vendor"
   },
   "hydrocatalytic_reagent": {
    "name": "Hydrocatalytic Reagent",
@@ -3725,7 +3828,9 @@
      "type": "tp",
      "tip": "Buy on TP."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "map_currency_soto"
   },
   "thermocatalytic_reagent": {
    "name": "Thermocatalytic Reagent",
@@ -3747,7 +3852,9 @@
      "type": "salvage",
      "tip": "Obtained by salvaging gear."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "salvage"
   },
   "exotic_essence_of_luck": {
    "name": "Exotic Essence of Luck",
@@ -3769,7 +3876,9 @@
      "type": "tp",
      "tip": "Buy on TP."
     }
-   ]
+   ],
+   "kind": "acquire",
+   "best": "salvage"
   },
   "lesser_vision_crystal": {
    "name": "Lesser Vision Crystal",
@@ -3798,7 +3907,9 @@
      }
     }
    ],
-   "note_obsidian": "1/pièce — coût d'achat de l'Arcanum of Astral X chez Lyhr."
+   "note_obsidian": "1/pièce — coût d'achat de l'Arcanum of Astral X chez Lyhr.",
+   "kind": "craftable",
+   "best": "craft_500"
   },
   "pvp_league_ticket": {
    "name": "PvP League Ticket",
@@ -3822,7 +3933,8 @@
       "en": "Rewards from PvP ranked season chests. Cap of 120 per season - cannot be accelerated."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "mist_core_fragment": {
    "name": "Mist Core Fragment",
@@ -3844,7 +3956,8 @@
       "en": "Final reward of the Glorious PvP Reward Track. 1 per completion, with option to take a second. Need 6 completions for a full set = 6 tracks."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "legendary_war_insight": {
    "name": "Legendary War Insight",
@@ -3865,7 +3978,8 @@
       "en": "Purchase for 1,095 WvW Skirmish Claim Tickets. Required for each WvW legendary armor piece."
      }
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "glob_of_ectoplasm": {
    "name": "Glob of Ectoplasm",
@@ -3914,7 +4028,9 @@
     "obsidian__per_piece": 600,
     "the_ascension": 250,
     "ad_infinitum": 250
-   }
+   },
+   "kind": "acquire",
+   "best": "salvage"
   },
   "mystic_clover": {
    "name": "Mystic Clover",
@@ -4009,7 +4125,9 @@
     "stella_radians": 77,
     "aetheric_anchor": 100,
     "obsidian__per_piece": 9
-   }
+   },
+   "kind": "acquire",
+   "best": "wvw_pvp_reward_track"
   },
   "gift_of_fortune": {
    "name": "Gift of Fortune",
@@ -4055,7 +4173,8 @@
     "gen1_the_predator": 1,
     "the_ascension": 1,
     "ad_infinitum": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "eldritch_scroll": {
    "name": "Eldritch Scroll",
@@ -4077,7 +4196,8 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 1
-   }
+   },
+   "kind": "acquire"
   },
   "gift_of_craftsmanship": {
    "name": "Gift of Craftsmanship",
@@ -4102,7 +4222,8 @@
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "obsidian__per_piece": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_condensed_magic": {
    "name": "Gift of Condensed Magic",
@@ -4157,7 +4278,8 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_condensed_might": {
    "name": "Gift of Condensed Might",
@@ -4212,7 +4334,8 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "chak_egg": {
    "name": "Chak Egg",
@@ -4240,6 +4363,12 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 5
+   },
+   "kind": "acquire",
+   "best": "meta_drop",
+   "best_reason": {
+    "fr": "garanti en méta quotidienne — coût marginal nul",
+    "en": "guaranteed daily meta reward — zero marginal cost"
    }
   },
   "auric_ingot": {
@@ -4268,6 +4397,12 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 5
+   },
+   "kind": "acquire",
+   "best": "tp",
+   "best_reason": {
+    "fr": "achat direct (pas d'alternative gratuite)",
+    "en": "direct purchase (no free alternative)"
    }
   },
   "reclaimed_metal_plate": {
@@ -4296,6 +4431,12 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 5
+   },
+   "kind": "acquire",
+   "best": "meta_drop",
+   "best_reason": {
+    "fr": "garanti en méta quotidienne — coût marginal nul",
+    "en": "guaranteed daily meta reward — zero marginal cost"
    }
   },
   "airship_part": {
@@ -4320,7 +4461,8 @@
     }
    ],
    "qty": {},
-   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only."
+   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
+   "kind": "acquire"
   },
   "ley_line_crystal": {
    "name": "Ley Line Crystal",
@@ -4344,7 +4486,8 @@
     }
    ],
    "qty": {},
-   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only."
+   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
+   "kind": "acquire"
   },
   "lump_of_aurillium": {
    "name": "Lump of Aurillium",
@@ -4368,7 +4511,8 @@
     }
    ],
    "qty": {},
-   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only."
+   "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
+   "kind": "acquire"
   },
   "gift_of_the_itzel": {
    "name": "Gift of the Itzel",
@@ -4388,7 +4532,8 @@
      "tip": "150 Airship Parts + 3g. Requires Itzel Language mastery."
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_the_nuhoch": {
    "name": "Gift of the Nuhoch",
@@ -4408,7 +4553,8 @@
      "tip": "150 Ley Line Crystals + 3g. Requires Nuhoch Language mastery."
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_the_exalted": {
    "name": "Gift of the Exalted",
@@ -4431,7 +4577,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_gliding": {
    "name": "Gift of Gliding",
@@ -4451,7 +4598,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_insights": {
    "name": "Gift of Insights",
@@ -4469,7 +4617,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_maguuma": {
    "name": "Gift of Maguuma",
@@ -4487,7 +4636,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "crystalline_ingot_gen2": {
    "name": "Crystalline Ingot",
@@ -4542,7 +4692,9 @@
     "gen3_aurenes_wisdom": 250,
     "gen3_aurenes_breath": 250,
     "gen3_aurenes_tenderness": 250
-   }
+   },
+   "kind": "craftable",
+   "best": "craft_500"
   },
   "gift_of_maguuma_mastery": {
    "name": "Gift of Maguuma Mastery",
@@ -4579,7 +4731,8 @@
     "gen2_elegy": 1,
     "gen2_xiuquatl": 1,
     "gen2_reaver_of_the_mists": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_desert_mastery": {
    "name": "Gift of Desert Mastery",
@@ -4597,7 +4750,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "mystic_tribute": {
    "name": "Mystic Tribute",
@@ -4639,7 +4793,8 @@
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec Gift of Fortune gen1. Mystic Coin farmable via login rewards (1/j) ou TP.",
     "en": "Shares Mystic Clovers/Coins with the gen1 Gift of Fortune. Mystic Coin farmable via login rewards (1/day) or TP."
-   }
+   },
+   "kind": "advanced_craft"
   },
   "mystic_coin": {
    "name": "Mystic Coin",
@@ -4722,7 +4877,9 @@
     "the_ascension": 250,
     "ad_infinitum": 250,
     "stella_radians": 250
-   }
+   },
+   "kind": "acquire",
+   "best": "login_reward"
   },
   "mystic_runestone": {
    "name": "Mystic Runestone",
@@ -4744,7 +4901,8 @@
    ],
    "qty": {
     "klobjarne_geirr": 100
-   }
+   },
+   "kind": "acquire"
   },
   "legendary_shard_gen2": {
    "name": "Legendary Shards (Gen2)",
@@ -4773,7 +4931,9 @@
    "note": {
     "fr": "Chaque type d'arme a ses propres shards (ex. Shard of Resolution pour Astralaria). Recettes achetées chez Hobbs pour 10 po.",
     "en": "Each weapon type has its own shards (e.g. Shard of Resolution for Astralaria). Recipes purchased from Hobbs for 10g."
-   }
+   },
+   "kind": "craftable",
+   "best": "craft_500"
   },
   "gift_of_cantha": {
    "name": "Gift of Cantha",
@@ -4808,7 +4968,8 @@
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
     "gen3_aurenes_tenderness": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "antique_summoning_stone": {
    "name": "Antique Summoning Stone",
@@ -4865,7 +5026,13 @@
     "fr": "Cap ~5/semaine chez Leivas + drop quotidien Trépas du dragon. ~9 semaines minimum sans achats au TP.",
     "en": "Cap ~5/week Leivas + daily Dragon's End drop. ~9 weeks minimum without TP purchases."
    },
-   "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Time-gate ~5/sem via vendors EoD, achetable TP."
+   "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Time-gate ~5/sem via vendors EoD, achetable TP.",
+   "kind": "acquire",
+   "best": "meta_drop",
+   "best_reason": {
+    "fr": "garanti en méta quotidienne — coût marginal nul",
+    "en": "guaranteed daily meta reward — zero marginal cost"
+   }
   },
   "jade_runestone": {
    "name": "Jade Runestone",
@@ -4905,7 +5072,9 @@
     "gen3_aurenes_breath": 100,
     "gen3_aurenes_tenderness": 100
    },
-   "apiId_note": "96722 vérifié gw2_materials_ref (97264 était faux). Achetable TP ou vendors EoD."
+   "apiId_note": "96722 vérifié gw2_materials_ref (97264 était faux). Achetable TP ou vendors EoD.",
+   "kind": "acquire",
+   "best": "chest"
   },
   "gift_of_the_dragon_empire": {
    "name": "Gift of the Dragon Empire",
@@ -4923,7 +5092,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_jade_mastery": {
    "name": "Gift of Jade Mastery",
@@ -4958,7 +5128,8 @@
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
     "gen3_aurenes_tenderness": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "draconic_tribute": {
    "name": "Draconic Tribute",
@@ -4998,7 +5169,8 @@
     "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
     "en": "Structurally identical to Mystic Tribute (gen2). Same sub-components, different EoD tag."
    },
-   "recipe": "MF : 38× Mystic Clover + 1× Gift of Condensed Magic + 1× Gift of Condensed Might + 5× Amalgamated Draconic Lodestone"
+   "recipe": "MF : 38× Mystic Clover + 1× Gift of Condensed Magic + 1× Gift of Condensed Might + 5× Amalgamated Draconic Lodestone",
+   "kind": "advanced_craft"
   },
   "memories_of_aurene": {
    "name": "Memories of Aurene",
@@ -5023,7 +5195,13 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire",
+   "best": "meta_drop",
+   "best_reason": {
+    "fr": "garanti en méta quotidienne — coût marginal nul",
+    "en": "guaranteed daily meta reward — zero marginal cost"
+   }
   },
   "legendary_shard_gen3": {
    "name": "Legendary Shards (Gen3 / Aurene)",
@@ -5052,7 +5230,9 @@
    "note": {
     "fr": "Precurseur gen3 craftable (pas TP-able raw) mais vendable une fois crafté. 1 précurseur gratuit via Seasons of the Dragons ou Codex of Dragon's Weapons.",
     "en": "Gen3 precursor craftable (not TP-able raw) but sellable once crafted. 1 free precursor via Seasons of the Dragons or Codex of Dragon's Weapons."
-   }
+   },
+   "kind": "craftable",
+   "best": "craft_500"
   },
   "salt_forged_mist_diamond": {
    "name": "Salt-Forged Mist Diamond",
@@ -5067,7 +5247,8 @@
      "tip": "MF : 5× Mist Diamond + 2× Pile of Crystalline Dust + 250× Shard of Glory. Mist Diamonds = TP ou drop PvP."
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "tome_of_the_mists": {
    "name": "Tome of the Mists",
@@ -5085,7 +5266,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "gift_of_competitive_dedication": {
    "name": "Gift of Competitive Dedication",
@@ -5103,7 +5285,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "mist_pendant": {
    "name": "Mist Pendant",
@@ -5125,7 +5308,8 @@
    ],
    "qty": {
     "transcendence": 1
-   }
+   },
+   "kind": "precursor"
   },
   "gift_of_skirmishing": {
    "name": "Gift of Skirmishing",
@@ -5147,7 +5331,8 @@
    "qty": {
     "transcendence": 1,
     "the_ascension": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_champion": {
    "name": "Gift of the Champion",
@@ -5164,7 +5349,8 @@
    ],
    "qty": {
     "transcendence": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_competitor": {
    "name": "Gift of the Competitor",
@@ -5188,7 +5374,8 @@
    "unique_note": {
     "fr": "Unique — The Ascension ne peut être craftée qu'une fois par compte.",
     "en": "One-time only — The Ascension can only be crafted once per account."
-   }
+   },
+   "kind": "advanced_craft"
   },
   "wings_of_glory_recruit": {
    "name": "Recruit's Wings of Glory",
@@ -5206,7 +5393,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "wings_of_glory_veteran": {
    "name": "Veteran's Wings of Glory",
@@ -5224,7 +5412,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "wings_of_glory_champion": {
    "name": "Champion's Wings of Glory",
@@ -5242,7 +5431,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "wings_of_glory_elite": {
    "name": "Elite's Wings of Glory",
@@ -5260,7 +5450,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "wings_of_ascension": {
    "name": "Wings of Ascension",
@@ -5280,7 +5471,8 @@
    ],
    "qty": {
     "the_ascension": 1
-   }
+   },
+   "kind": "precursor"
   },
   "fractal_relic": {
    "name": "Fractal Relic",
@@ -5308,7 +5500,9 @@
    ],
    "qty": {
     "ad_infinitum": 5000
-   }
+   },
+   "kind": "acquire",
+   "best": "daily_reward"
   },
   "pristine_fractal_relic": {
    "name": "Pristine Fractal Relic",
@@ -5335,7 +5529,9 @@
    ],
    "qty": {
     "ad_infinitum": 120
-   }
+   },
+   "kind": "acquire",
+   "best": "fractals_daily"
   },
   "fractal_research_page": {
    "name": "Fractal Research Page",
@@ -5364,7 +5560,8 @@
    "note": {
     "fr": " apiId à confirmer — conflit avec Fresh Winterberry (79899).",
     "en": " apiId to confirm — conflict with Fresh Winterberry (79899)."
-   }
+   },
+   "kind": "acquire"
   },
   "gift_of_ascension_fractal": {
    "name": "Gift of Ascension",
@@ -5386,7 +5583,8 @@
    ],
    "qty": {
     "ad_infinitum": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_infinity": {
    "name": "Gift of Infinity",
@@ -5406,7 +5604,8 @@
    ],
    "qty": {
     "ad_infinitum": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "unbound_precursor": {
    "name": "Unbound (précurseur Ad Infinitum)",
@@ -5431,7 +5630,8 @@
    "timegate_note": {
     "fr": "Min ~40 jours sans CM (3 collections × ~13-14 jours). Avec CM sur Sunqua/Nightmare/Shattered Obs : ~15-21 jours.",
     "en": "Min ~40 days without CM (3 collections x ~13-14 days). With CM on Sunqua/Nightmare/Shattered Obs: ~15-21 days."
-   }
+   },
+   "kind": "precursor"
   },
   "purified_rift_essence": {
    "name": "Purified Rift Essence",
@@ -5451,7 +5651,8 @@
      "type": "craft_400",
      "tip": "Ne pas raffiner plus que nécessaire — 12 suffisent pour les 12 skins prérequis."
     }
-   ]
+   ],
+   "kind": "craftable"
   },
   "gift_of_the_sun": {
    "name": "Gift of the Sun",
@@ -5471,7 +5672,8 @@
    ],
    "qty": {
     "endless_summer": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_beach": {
    "name": "Gift of the Beach",
@@ -5491,7 +5693,8 @@
    ],
    "qty": {
     "endless_summer": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_infused_gems": {
    "name": "Gift of Infused Gems",
@@ -5511,7 +5714,8 @@
    ],
    "qty": {
     "endless_summer": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_rays": {
    "name": "Gift of Rays",
@@ -5528,7 +5732,8 @@
    ],
    "qty": {
     "endless_summer": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_survivors": {
    "name": "Gift of the Survivors",
@@ -5551,7 +5756,8 @@
     "endless_summer": 1,
     "aetheric_anchor": 1,
     "selachimorpha": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_people": {
    "name": "Gift of the People",
@@ -5574,7 +5780,8 @@
     "endless_summer": 1,
     "aetheric_anchor": 1,
     "selachimorpha": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_hylek": {
    "name": "Gift of the Hylek",
@@ -5594,7 +5801,8 @@
    ],
    "qty": {
     "endless_summer": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "vial_of_liquid_shadowstone": {
    "name": "Vial of Liquid Shadowstone",
@@ -5614,7 +5822,8 @@
    ],
    "qty": {
     "stella_radians": 1
-   }
+   },
+   "kind": "precursor"
   },
   "gift_of_shadowstones": {
    "name": "Gift of Shadowstones",
@@ -5636,7 +5845,8 @@
    ],
    "qty": {
     "stella_radians": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_galdra": {
    "name": "Gift of Galdra",
@@ -5658,7 +5868,8 @@
    ],
    "qty": {
     "stella_radians": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "curious_mursaat_remnant": {
    "name": "Curious Mursaat Remnant",
@@ -5677,7 +5888,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "shards_of_mistburned_barrens": {
    "name": "Shards of Mistburned Barrens",
@@ -5698,7 +5910,8 @@
    ],
    "qty": {
     "orrax_manifested": 100
-   }
+   },
+   "kind": "acquire"
   },
   "shards_of_bava_nisos": {
    "name": "Shards of Bava Nisos",
@@ -5719,7 +5932,8 @@
    ],
    "qty": {
     "orrax_manifested": 100
-   }
+   },
+   "kind": "acquire"
   },
   "vial_of_titan_melted_obsidian": {
    "name": "Vial of Titan Melted Liquid Obsidian",
@@ -5748,7 +5962,9 @@
    ],
    "qty": {
     "orrax_manifested": 100
-   }
+   },
+   "kind": "craftable",
+   "best": "vendor"
   },
   "gift_of_the_mistburned_isles": {
    "name": "Gift of the Mistburned Isles",
@@ -5765,7 +5981,8 @@
    ],
    "qty": {
     "orrax_manifested": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_shadows_orrax": {
    "name": "Gift of Shadows",
@@ -5790,7 +6007,8 @@
    },
    "qty": {
     "orrax_manifested": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "fruits_of_the_shadow": {
    "name": "Fruits of the Shadow",
@@ -5808,7 +6026,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "acquire"
   },
   "gift_of_the_feast": {
    "name": "Gift of the Feast",
@@ -5828,7 +6047,8 @@
    ],
    "qty": {
     "orrax_manifested": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "orrax_contained": {
    "name": "Orrax Contained",
@@ -5849,7 +6069,8 @@
    "qty": {
     "orrax_manifested": 1
    },
-   "story_gate": "Salvation's Cost (JW story step)"
+   "story_gate": "Salvation's Cost (JW story step)",
+   "kind": "precursor"
   },
   "shards_of_lowland_shore": {
    "name": "Shards of Lowland Shore",
@@ -5874,7 +6095,9 @@
    ],
    "qty": {
     "klobjarne_geirr": 500
-   }
+   },
+   "kind": "acquire",
+   "best": "map_currency"
   },
   "shards_of_janthir_syntri": {
    "name": "Shards of Janthir Syntri",
@@ -5896,7 +6119,9 @@
    ],
    "qty": {
     "klobjarne_geirr": 500
-   }
+   },
+   "kind": "acquire",
+   "best": "map_currency"
   },
   "gift_of_gatherer_of_the_hunt": {
    "name": "Gift of Gatherer of the Hunt",
@@ -5914,7 +6139,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_uncovered_grounds": {
    "name": "Gift of Uncovered Grounds",
@@ -5932,7 +6158,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_expertise_jw": {
    "name": "Gift of Expertise",
@@ -5950,7 +6177,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_janthir_wilds": {
    "name": "Gift of Janthir Wilds",
@@ -5967,7 +6195,8 @@
    ],
    "qty": {
     "klobjarne_geirr": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_the_homesteader": {
    "name": "Gift of the Homesteader",
@@ -5987,7 +6216,8 @@
    ],
    "qty": {
     "klobjarne_geirr": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_klobjarne_geirr": {
    "name": "Gift of Klobjarne Geirr",
@@ -6004,7 +6234,8 @@
    ],
    "qty": {
     "klobjarne_geirr": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "nyr_hrammr": {
    "name": "Nyr Hrammr",
@@ -6024,7 +6255,8 @@
    ],
    "qty": {
     "klobjarne_geirr": 1
-   }
+   },
+   "kind": "precursor"
   },
   "gift_of_the_tides": {
    "name": "Gift of the Tides",
@@ -6042,7 +6274,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "amalgamated_draconic_lodestone": {
    "name": "Amalgamated Draconic Lodestone",
@@ -6059,7 +6292,8 @@
      "type": "boss",
      "tip": "Coffre final Dragonstorm / Drakkar (chance de drop), ou TP (recommandé)."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "gift_of_insight_voe": {
    "name": "Gift of Insight (VoE)",
@@ -6082,7 +6316,8 @@
    "qty": {
     "aetheric_anchor": 1
    },
-   "warning": "DO NOT put in Mystic Forge — vendor purchase only."
+   "warning": "DO NOT put in Mystic Forge — vendor purchase only.",
+   "kind": "advanced_craft"
   },
   "gift_of_the_elders": {
    "name": "Gift of the Elders",
@@ -6101,7 +6336,8 @@
    ],
    "qty": {
     "aetheric_anchor": 1
-   }
+   },
+   "kind": "advanced_craft"
   },
   "gift_of_adventure_voe": {
    "name": "Gift of Adventure (VoE)",
@@ -6119,7 +6355,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_the_seas": {
    "name": "Gift of the Seas",
@@ -6137,7 +6374,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "kind": "advanced_craft"
   },
   "gift_of_castoran_mastery": {
    "name": "Gift of Castoran Mastery",
@@ -6156,7 +6394,8 @@
     "selachimorpha": 1
    },
    "recipe": "MF : 1× Gift of Adventure (VoE) + 1× Gift of the Seas + 1× Bloodstone Shard + 250× Obsidian Shard",
-   "prereq": "Achievements Shipwreck Strand Mastery (8880) + Starlit Weald Mastery (9057) — 30+ sous-achievements chacun"
+   "prereq": "Achievements Shipwreck Strand Mastery (8880) + Starlit Weald Mastery (9057) — 30+ sous-achievements chacun",
+   "kind": "advanced_craft"
   },
   "agaleus": {
    "name": "Agaleus",
@@ -6173,7 +6412,8 @@
    ],
    "qty": {
     "selachimorpha": 1
-   }
+   },
+   "kind": "precursor"
   },
   "gift_of_runes": {
    "name": "Gift of Runes",
@@ -6185,7 +6425,8 @@
     "rune__per_unit": 1
    },
    "farmable": true,
-   "recipe": "MF : 50× Mystic Aspect + 20× Mystic Clover + 100× Glob of Ectoplasm + 50× Obsidian Shard"
+   "recipe": "MF : 50× Mystic Aspect + 20× Mystic Clover + 100× Glob of Ectoplasm + 50× Obsidian Shard",
+   "kind": "advanced_craft"
   },
   "gift_of_sigils": {
    "name": "Gift of Sigils",
@@ -6197,7 +6438,8 @@
     "sigil__per_unit": 1
    },
    "farmable": true,
-   "recipe": "MF : 75× Mystic Mote + 30× Mystic Clover + 150× Glob of Ectoplasm + 75× Obsidian Shard"
+   "recipe": "MF : 75× Mystic Mote + 30× Mystic Clover + 150× Glob of Ectoplasm + 75× Obsidian Shard",
+   "kind": "advanced_craft"
   },
   "gift_of_the_obscure": {
    "name": "Gift of the Obscure",
@@ -6222,7 +6464,8 @@
    "note": {
     "fr": "Sous-composant du Gift of Relics. Achat chez Lyhr (SotO, +10 Ectos) ou Ward Crafter Lucirae (JW, +1 Ecto). Contient des matériaux spécifiques SotO.",
     "en": "Sub-component of Gift of Relics. Purchase from Lyhr (SotO, +10 Ectos) or Ward Crafter Lucirae (JW, +1 Ecto). Contains SotO-specific materials."
-   }
+   },
+   "kind": "advanced_craft"
   },
   "pile_of_lucent_crystal": {
    "name": "Pile of Lucent Crystal",
@@ -6251,6 +6494,12 @@
    ],
    "qty": {
     "legendary_relic": 18750
+   },
+   "kind": "acquire",
+   "best": "tp",
+   "best_reason": {
+    "fr": "achat direct (pas d'alternative gratuite)",
+    "en": "direct purchase (no free alternative)"
    }
   },
   "mystic_facet": {
@@ -6264,7 +6513,8 @@
    },
    "farmable": true,
    "recipe": "MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — output 1-5 (chance rare ×5)",
-   "efficiency_note": "Les procs ×5 réduisent significativement le coût moyen — crafter les Facets une par une."
+   "efficiency_note": "Les procs ×5 réduisent significativement le coût moyen — crafter les Facets une par une.",
+   "kind": "acquire"
   },
   "gift_of_relics": {
    "name": "Gift of Relics",
@@ -6276,7 +6526,8 @@
     "relic__per_unit": 1
    },
    "farmable": true,
-   "recipe": "MF : 25× Mystic Facet + 25× Mystic Clover + 150× Glob of Ectoplasm + 1× Gift of Research"
+   "recipe": "MF : 25× Mystic Facet + 25× Mystic Clover + 150× Glob of Ectoplasm + 1× Gift of Research",
+   "kind": "advanced_craft"
   },
   "orichalcum_filigree": {
    "name": "Orichalcum Filigree",
@@ -6312,7 +6563,9 @@
       "en": "Buy on TP (inexpensive)."
      }
     }
-   ]
+   ],
+   "kind": "craftable",
+   "best": "craft"
   },
   "xunlai_electrum_ingot": {
    "name": "Xunlai Electrum Ingot",
@@ -6357,7 +6610,9 @@
      }
     }
    ],
-   "wiki": "Xunlai_Electrum_Ingot"
+   "wiki": "Xunlai_Electrum_Ingot",
+   "kind": "craftable",
+   "best": "craft"
   },
   "memory_essence_encapsulator": {
    "name": "Memory Essence Encapsulator",
@@ -6409,7 +6664,8 @@
    "note": {
     "fr": "1 Memory Essence Encapsulator par sous-collection de Vision I (6 zones). Recette non apprise automatiquement — voir les vendeurs Arborstone/Juno.",
     "en": "1 Memory Essence Encapsulator per Vision I sub-collection (6 zones). Recipe not learned automatically — check Arborstone/Juno vendors."
-   }
+   },
+   "kind": "craftable"
   },
   "provisioner_token": {
    "name": "Provisioner Token",
@@ -6443,7 +6699,9 @@
      "tip": "Échangeables SANS limite hebdo : Charged Quartz Crystal, Lump of Mithrillium, Glob of Elder Spirit Residue, Spool of Thick Elonian Cord, Research Notes."
     }
    ],
-   "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids."
+   "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids.",
+   "kind": "acquire",
+   "best": "vendor_weekly"
   },
   "gift_of_expertise": {
    "name": "Gift of Expertise",
@@ -6461,7 +6719,8 @@
      "type": "mystic_forge",
      "tip": "Ou craft assisté Lyhr (+10 Ectos)."
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "cube_stabilized_dark_energy": {
    "name": "Cube of Stabilized Dark Energy",
@@ -6479,7 +6738,8 @@
      "type": "craft_500",
      "tip": "1 Ball of Dark Energy (salvage ascended) + 75 Stabilizing Matrices (TP/fractales)."
     }
-   ]
+   ],
+   "kind": "craftable"
   },
   "gift_of_stormy_skies": {
    "name": "Gift of Stormy Skies",
@@ -6497,7 +6757,8 @@
      "type": "mystic_forge",
      "tip": "Ou craft assisté Lyhr (+10 Ectos)."
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "gift_of_the_astral_ward": {
    "name": "Gift of the Astral Ward",
@@ -6524,7 +6785,9 @@
      "npc": "Lyhr",
      "tip": "Gift of Persistence : 250 Ancient Coins + 250 Static Charges + 250 Pinches of Stardust + 250 Calcified Gasps."
     }
-   ]
+   ],
+   "kind": "advanced_craft",
+   "best": "achievements"
   },
   "case_of_captured_lightning": {
    "name": "Case of Captured Lightning",
@@ -6542,7 +6805,8 @@
      "npc": "Faction Provisioner (Skywatch Archipelago)",
      "tip": "250 Static Charges pièce (1250/pièce d'armure) ou Hero's Choice Chest (meta Skywatch / Spider's Lair)."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "pouch_of_stardust": {
    "name": "Pouch of Stardust",
@@ -6560,7 +6824,8 @@
      "npc": "Faction Provisioner (Amnytas)",
      "tip": "250 Pinches of Stardust pièce (1250/pièce d'armure) ou Hero's Choice Chest (Defense of Amnytas / Spider's Lair)."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "clot_of_congealed_screams": {
    "name": "Clot of Congealed Screams",
@@ -6578,7 +6843,8 @@
      "npc": "Faction Provisioner (Inner Nayos)",
      "tip": "250 Calcified Gasps pièce (1250/pièce d'armure) ou Hero's Choice Chest (Into the Spider's Lair)."
     }
-   ]
+   ],
+   "kind": "acquire"
   },
   "gift_of_prosperity": {
    "name": "Gift of Magical / Mighty Prosperity",
@@ -6596,7 +6862,8 @@
      "type": "mystic_forge",
      "tip": "Magical → Headgear/Shoulders/Chest · Mighty → Gloves/Leggings/Boots. Ou craft assisté Lyhr (+10 Ectos)."
     }
-   ]
+   ],
+   "kind": "advanced_craft"
   },
   "mystic_aspect": {
    "name": "Mystic Aspect",
@@ -6608,7 +6875,8 @@
     "rune__per_unit": 50
    },
    "farmable": true,
-   "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill"
+   "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
+   "kind": "acquire"
   },
   "mystic_mote": {
    "name": "Mystic Mote",
@@ -6620,7 +6888,233 @@
     "sigil__per_unit": 75
    },
    "farmable": true,
-   "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain"
+   "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
+   "kind": "acquire"
+  },
+  "glimpse": {
+   "name": "Glimpse",
+   "apiId": 90112,
+   "kind": "precursor",
+   "needed_for": [
+    "vision"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "achievement_collection",
+     "tip": {
+      "fr": "Récompense de la collection Vision II: Farsight — /kneel à 20 Mastery Insights de la LS4.",
+      "en": "Reward from the Vision II: Farsight collection — /kneel at 20 LWS4 Mastery Insights."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "gift_of_arid_mastery": {
+   "name": "Gift of Arid Mastery",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "vision"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : Gift of the Desert + Gift of the Rider + Bloodstone Shard + 250 Funerary Incense (achat quotidien limité aux cœurs, illimité chez le Primeval Steward contre Elegy Mosaics).",
+      "en": "MF: Gift of the Desert + Gift of the Rider + Bloodstone Shard + 250 Funerary Incense (daily-capped at hearts, unlimited from the Primeval Steward for Elegy Mosaics)."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "amalgamated_gemstone": {
+   "name": "Amalgamated Gemstone",
+   "apiId": 68063,
+   "kind": "acquire",
+   "needed_for": [
+    "coalescence",
+    "gift_of_infused_gems"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "meta_drop",
+     "tip": {
+      "fr": "⭐ Coffres au choix du héros : récompense quotidienne garantie des métas de la plupart des cartes d'extension. Coût marginal nul si tu fais déjà la méta.",
+      "en": "⭐ Hero's Choice Chests: guaranteed daily reward from metas on most expansion maps. Zero marginal cost if you already run the meta."
+     }
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF (recette en gros) : 5 Globs of Ectoplasm + 3×25 orbes/crests/doublons → 10 gemmes garanties, ~10 % de chance d'en avoir 25 (rendement moyen relevé : 11,55).",
+      "en": "MF (bulk recipe): 5 Globs of Ectoplasm + 3×25 orbs/crests/doubloons → 10 guaranteed gems, ~10% chance of 25 (measured average yield: 11.55)."
+     }
+    },
+    {
+     "type": "tp",
+     "tip": {
+      "fr": "Achat direct au comptoir — souvent équivalent au craft, les prix des ingrédients se sont ajustés.",
+      "en": "Direct TP purchase — often on par with crafting, ingredient prices have adjusted."
+     }
+    }
+   ],
+   "best": "meta_drop",
+   "tradeoff": {
+    "note": {
+     "fr": "Seuil de rentabilité du craft en gros.",
+     "en": "Break-even threshold for the bulk recipe."
+    },
+    "target_api_id": 68063,
+    "yield": 11.55,
+    "yield_source": "Relevé wiki (Talk:Amalgamated Gemstone) : 3 598 forges → 41 560 gemmes.",
+    "ingredients": [
+     {
+      "apiId": 19721,
+      "qty": 5
+     },
+     {
+      "apiId": 24510,
+      "qty": 25
+     },
+     {
+      "apiId": 24515,
+      "qty": 25
+     },
+     {
+      "apiId": 24522,
+      "qty": 25
+     }
+    ]
+   },
+   "qty": {}
+  },
+  "gift_of_warfare": {
+   "name": "Gift of Warfare",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "warbringer"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : Gift of Battle + Gift of War + Gift of Glory + Gift of Competitive Maintenance (composants McM/PvP).",
+      "en": "MF: Gift of Battle + Gift of War + Gift of Glory + Gift of Competitive Maintenance (WvW/PvP components)."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "gift_of_fractals": {
+   "name": "Gift of Fractals",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "fractal_capacitor"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "fractals_vendor",
+     "tip": {
+      "fr": "Achat chez BUY-2046 PFR (Mistlock Observatory) contre Fractal Relics / Pristine Relics.",
+      "en": "Purchase from BUY-2046 PFR (Mistlock Observatory) for Fractal Relics / Pristine Relics."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "glob_of_coagulated_mists_essence": {
+   "name": "Glob of Coagulated Mists Essence",
+   "kind": "craftable",
+   "needed_for": [
+    "aurora",
+    "fractal_capacitor"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "fractals",
+     "tip": {
+      "fr": "Fractales : recycler des Globs of Mists Essence / récompenses fractales — nécessite l'Ascended Salvage.",
+      "en": "Fractals: salvage Globs of Mists Essence / fractal rewards — needs Ascended Salvage."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "spinal_blade_perfected": {
+   "name": "Spinal Blade Back Pack (Perfected)",
+   "kind": "precursor",
+   "needed_for": [
+    "fractal_capacitor"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "achievement_collection",
+     "tip": {
+      "fr": "Récompense de la chaîne de collections Spinal Blades (fractales).",
+      "en": "Reward from the Spinal Blades collection chain (fractals)."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "gift_of_the_desolation": {
+   "name": "Gift of the Desolation",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "the_binding_of_ipos"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : composants de la Désolation (Sand Blasted Antiquity, Branded Mass…) — voir la fiche wiki.",
+      "en": "MF: Desolation components (Sand Blasted Antiquity, Branded Mass…) — see the wiki page."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "gift_of_souls": {
+   "name": "Gift of Souls",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "the_binding_of_ipos"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : composants liés aux âmes de la Désolation — voir la fiche wiki.",
+      "en": "MF: Desolation soul-related components — see the wiki page."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "coalescence": {
+   "name": "Coalescence",
+   "apiId": 91234,
+   "kind": "precursor",
+   "needed_for": [],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "achievement_collection",
+     "tip": {
+      "fr": "Anneau légendaire de raid — voir l'onglet Coalescence (3 collections + Gift of Compassion).",
+      "en": "Raid legendary ring — see the Coalescence tab (3 collections + Gift of Compassion)."
+     }
+    }
+   ],
+   "qty": {}
   }
  },
  "enchaînements_recommandés": {
@@ -11202,12 +11696,15 @@
    "farm": "PvE (HoT metas + Crystal Desert)",
    "expansion": "LW4",
    "wiki": "Vision",
-   "recipe": "MF : Gift of Prescience + Gift of Desert Mastery + Gift of Energy + Coalescence",
+   "recipe": {
+    "fr": "MF : Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery",
+    "en": "MF: Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery"
+   },
    "components": [
+    "glimpse",
+    "mystic_tribute",
     "gift_of_prescience",
-    "gift_of_desert_mastery",
-    "gift_of_energy",
-    "coalescence"
+    "gift_of_arid_mastery"
    ],
    "note": {
     "fr": "Accessoire légendaire (LW4). Requiert Coalescence comme composant. Synergie visuelle avec Aurora et Coalescence. Farm principal : metas HoT (Elegy Mosaic via collections Requiem) + Désert de Cristal (Kralkatite Ore, Difluorite Crystal, Inscribed Shard).",
