@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v36",
+    "version": "v37",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1430,7 +1430,8 @@ const SOURCES_DB = {
     },
     "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery).",
     "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified.",
-    "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant)."
+    "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant).",
+    "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki)."
   },
   "meta_events": {
     "vb": {
@@ -9219,12 +9220,13 @@ const SOURCES_DB = {
         "gift_of_klobjarne_geirr"
       ],
       "note": {
-        "fr": "6 skins variantes auto-débloqués à la liaison. Gift of Janthir Wilds = équivalent JW du Gift of Maguuma/Desert Mastery. Gift of the Homesteader inclut Gift of Metal (déjà présent) + Recollector achievement.",
-        "en": "6 variant skins auto-unlocked on binding. Gift of Janthir Wilds = JW equivalent of Gift of Maguuma/Desert Mastery. Gift of the Homesteader includes Gift of Metal (already listed) + Recollector achievement."
+        "fr": "⚠ Weaponsmith 500 requis sur le compte (Deldrimor Steel Spear Head + Large Spiritwood Haft). Les skins variantes (Atgeir, Darr, Kesja, Frakka, Hler) se débloquent toutes à la liaison.",
+        "en": "⚠ Weaponsmith 500 required on the account (Deldrimor Steel Spear Head + Large Spiritwood Haft). All variant skins (Atgeir, Darr, Kesja, Frakka, Hler) unlock on binding."
       },
       "unlock_also": "6 skin variants",
       "armory_api_id": 103815,
-      "armory_max_count": 4
+      "armory_max_count": 4,
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "aetheric_anchor": {
       "name": "Aetheric Anchor (→ Ancora Pax + Ancora Bellum)",
@@ -9244,8 +9246,8 @@ const SOURCES_DB = {
         "gift_of_the_elders"
       ],
       "note": {
-        "fr": "Produit un conteneur qui débloque Ancora Pax (bâton) ET Ancora Bellum (lance) simultanément. ⚠️ Gift of Insight (VoE) s'achète chez un vendeur (Magister Sirkk) — NE PAS mettre en MF (produit un Draconic Tribute). Pas de précurseur séparé.",
-        "en": "Produces a container that unlocks Ancora Pax (staff) AND Ancora Bellum (spear) simultaneously. ⚠️ Gift of Insight (VoE) is a vendor purchase (Magister Sirkk) — DO NOT put in MF (produces Draconic Tribute). No separate precursor."
+        "fr": "⚠ Particularité : donne DEUX armes légendaires d'un coup — la lance Ancora Bellum ET le bâton Ancora Pax. Ne requiert ni précurseur ni gift d'arme légendaire, mais les gifts majeurs de complétion de carte.",
+        "en": "⚠ Special case: grants TWO legendary weapons at once — the Ancora Bellum spear AND the Ancora Pax staff. Requires neither a precursor nor a legendary weapon gift, but does need the major map-completion gifts."
       },
       "unlock_also": "Ancora Pax (staff) + Ancora Bellum (spear)",
       "armory_api_id": 105497,
@@ -9311,13 +9313,14 @@ const SOURCES_DB = {
         "gift_of_craftsmanship"
       ],
       "note": {
-        "fr": "6 runes requises pour un set d'armure complet (7 max dans l'armory). Craft standard 400. Gift of Condensed Magic/Might déjà dans craft_components. Lyhr (SotO) ou Ward Crafter Lucirae (JW) permettent l'achat direct des sous-gifts contre des Ectos.",
-        "en": "6 runes required for a full armor set (7 max in armory). Standard crafting 400. Gift of Condensed Magic/Might already in craft_components. Lyhr (SotO) or Ward Crafter Lucirae (JW) allow direct purchase of sub-gifts for Ectos."
+        "fr": "Cap utile : 7 runes (6 armure + 1 respirateur) — au-delà, aucun bénéfice. Le processus complet est à répéter 6 fois par rune.",
+        "en": "Useful cap: 7 runes (6 armor + 1 aquabreather) — beyond that, no benefit. The full process must be repeated 6 times per rune."
       },
       "qty_needed": 6,
       "armory_api_id": 91536,
       "armory_max_count": 7,
-      "achievement_collector": 7796
+      "achievement_collector": 7796,
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "legendary_sigil": {
       "name": "Legendary Sigil",
@@ -9336,13 +9339,14 @@ const SOURCES_DB = {
         "gift_of_craftsmanship"
       ],
       "note": {
-        "fr": "8 sigils max dans l'armory (emplacements d'arme terrestre + aquatique). Même structure que la Legendary Rune, avec Gift of Sigils (T6 Might) au lieu de Gift of Runes (T6 Magic). Partagent Gift of Condensed Magic/Might/Craftsmanship.",
-        "en": "8 sigils max in armory (land + aquatic weapon slots). Same structure as Legendary Rune except Gift of Sigils (T6 Might) vs Gift of Runes (T6 Magic). Share Gift of Condensed Magic/Might/Craftsmanship."
+        "fr": "Cap utile : 8 sigils (toutes les armes terrestres et aquatiques). Processus à répéter 4 fois par sigil.",
+        "en": "Useful cap: 8 sigils (all land and aquatic weapon sets). Process repeated 4 times per sigil."
       },
       "qty_needed": 8,
       "armory_api_id": 91505,
       "armory_max_count": 8,
-      "achievement_collector": 7788
+      "achievement_collector": 7788,
+      "recipe_verified": "2026-07-25 (wiki)"
     },
     "legendary_relic": {
       "name": "Legendary Relic",
@@ -9470,22 +9474,23 @@ const SOURCES_DB = {
           "en": "Envoy collections I then II (W1–W4 boss kills + items to collect) → the 6 Refined precursors. Allow ~5 weeks for a 1st set."
         },
         {
-          "fr": "Gift of Prowess : 25 Legendary Insights + 25 ectos + 1 Eldritch Scroll + 5 po (recette Miyani). LI : raids, ou conversion Legendary Divinations/strikes.",
-          "en": "Gift of Prowess: 25 Legendary Insights + 25 ectos + 1 Eldritch Scroll + 5 g (Miyani recipe). LI: raids, or Legendary Divinations/strikes conversion."
+          "fr": "Gift of Prowess : 25 Legendary Insights + 50 Obsidian Shards + 1 Cube of Stabilized Dark Energy + 1 Eldritch Scroll. ⚠ Correction : ce n'est PAS 25 ectos.",
+          "en": "Gift of Prowess: 25 Legendary Insights + 50 Obsidian Shards + 1 Cube of Stabilized Dark Energy + 1 Eldritch Scroll. ⚠ Correction: it is NOT 25 ectos."
         },
         {
           "fr": "Gift of Prosperity : Gift of Condensed Might + Condensed Magic (les 8 T6 → onglet T6) + Gift of Craftsmanship (50 Provisioner Tokens) + 15 Mystic Clovers.",
           "en": "Gift of Prosperity: Gift of Condensed Might + Condensed Magic (all 8 T6 → T6 tab) + Gift of Craftsmanship (50 Provisioner Tokens) + 15 Mystic Clovers."
         },
         {
-          "fr": "Gift of Dedication : 50 Obsidian Shards + composants HoT (Chak Egg, Auric Ingots, Reclaimed Metal Plates — monnaies de cartes HoT).",
-          "en": "Gift of Dedication: 50 Obsidian Shards + HoT components (Chak Egg, Auric Ingots, Reclaimed Metal Plates — HoT map currencies)."
+          "fr": "Gift of Dedication : 5 Chak Eggs + 5 Auric Ingots + 5 Reclaimed Metal Plates + 1 Gift of the Pact (monnaies de cartes HoT).",
+          "en": "Gift of Dedication: 5 Chak Eggs + 5 Auric Ingots + 5 Reclaimed Metal Plates + 1 Gift of the Pact (HoT map currencies)."
         },
         {
           "fr": "Sets suivants : Envoy Insignia chez Glenna (25 LI + 5 po) par pièce Refined → 50 LI/pièce au total.",
           "en": "Subsequent sets: Envoy Insignia from Glenna (25 LI + 5 g) per Refined piece → 50 LI/piece total."
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "obsidian": {
       "name": "Obsidian Armor",
@@ -9628,7 +9633,8 @@ const SOURCES_DB = {
           "fr": "Synergie Strife Unending : mêmes tickets, même cap hebdo — planifier l'ordre (Strife 3 000 vs 1 set 7 880).",
           "en": "Strife Unending synergy: same tickets, same weekly cap — plan the order (Strife 3,000 vs 1 set 7,880)."
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "ardent_glorious": {
       "name": "Ardent Glorious Armor",
@@ -9695,7 +9701,8 @@ const SOURCES_DB = {
           "fr": "Synergies : Shards/Tickets partagés avec The Ascension et Transcendence — les 3 saisons servent triple si tu vises aussi les trinkets PvP.",
           "en": "Synergies: Shards/Tickets shared with The Ascension and Transcendence — the 3 seasons triple-dip if you also target the PvP trinkets."
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "gen1_weapon_generic": {
       "name": "Gen1 Weapon (générique)",
@@ -9744,7 +9751,8 @@ const SOURCES_DB = {
       "armory_note": {
         "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
         "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_weapon_generic": {
       "name": "Gen2 Weapon (générique)",
@@ -9797,7 +9805,8 @@ const SOURCES_DB = {
       "armory_note": {
         "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
         "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_weapon_generic": {
       "name": "Gen3 Weapon / Aurene (générique)",
@@ -9843,7 +9852,8 @@ const SOURCES_DB = {
       "armory_note": {
         "fr": "Groupe — pas un item armory. Voir entrées individuelles gen1_*/gen2_*/gen3_*.",
         "en": "Group - not an armory item. See individual gen1_*/gen2_*/gen3_* entries."
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_frostfang": {
       "name": "Frostfang",
@@ -9868,7 +9878,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Frostfang",
       "gen": "gen1",
       "armory_api_id": 30686,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_incinerator": {
       "name": "Incinerator",
@@ -9893,7 +9904,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Incinerator",
       "gen": "gen1",
       "armory_api_id": 30687,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_moot": {
       "name": "The Moot",
@@ -9918,7 +9930,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Moot",
       "gen": "gen1",
       "armory_api_id": 30688,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_quip": {
       "name": "Quip",
@@ -9943,7 +9956,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Quip",
       "gen": "gen1",
       "armory_api_id": 30689,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_meteorlogicus": {
       "name": "Meteorlogicus",
@@ -9968,7 +9982,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Meteorlogicus",
       "gen": "gen1",
       "armory_api_id": 30690,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_bolt": {
       "name": "Bolt",
@@ -9993,7 +10008,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Bolt",
       "gen": "gen1",
       "armory_api_id": 30691,
-      "armory_max_count": 4
+      "armory_max_count": 4,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_minstrel": {
       "name": "The Minstrel",
@@ -10018,7 +10034,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Minstrel",
       "gen": "gen1",
       "armory_api_id": 30692,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_flameseeker_prophecies": {
       "name": "The Flameseeker Prophecies",
@@ -10043,7 +10060,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Flameseeker Prophecies",
       "gen": "gen1",
       "armory_api_id": 30693,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_rodgort": {
       "name": "Rodgort",
@@ -10068,7 +10086,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Rodgort",
       "gen": "gen1",
       "armory_api_id": 30694,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_howler": {
       "name": "Howler",
@@ -10093,7 +10112,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Howler",
       "gen": "gen1",
       "armory_api_id": 30695,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_sunrise": {
       "name": "Sunrise",
@@ -10118,7 +10138,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Sunrise",
       "gen": "gen1",
       "armory_api_id": 30704,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_twilight": {
       "name": "Twilight",
@@ -10143,7 +10164,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Twilight",
       "gen": "gen1",
       "armory_api_id": 30705,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_eternity": {
       "name": "Eternity",
@@ -10168,7 +10190,8 @@ const SOURCES_DB = {
       "gift_unique": "N/A — MF direct",
       "gen": "gen1",
       "armory_api_id": 30706,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_juggernaut": {
       "name": "The Juggernaut",
@@ -10193,7 +10216,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Juggernaut",
       "gen": "gen1",
       "armory_api_id": 30696,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_frenzy": {
       "name": "Frenzy",
@@ -10218,7 +10242,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Frenzy",
       "gen": "gen1",
       "armory_api_id": 30697,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_kamohoalii_kotaki": {
       "name": "Kamohoali'i Kotaki",
@@ -10243,7 +10268,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Kamohoali'i Kotaki",
       "gen": "gen1",
       "armory_api_id": 30698,
-      "armory_max_count": 4
+      "armory_max_count": 4,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_kudzu": {
       "name": "Kudzu",
@@ -10268,7 +10294,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Kudzu",
       "gen": "gen1",
       "armory_api_id": 30699,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_dreamer": {
       "name": "The Dreamer",
@@ -10293,7 +10320,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Dreamer",
       "gen": "gen1",
       "armory_api_id": 30700,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_bifrost": {
       "name": "The Bifrost",
@@ -10318,7 +10346,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Bifrost",
       "gen": "gen1",
       "armory_api_id": 30701,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_kraitkin": {
       "name": "Kraitkin",
@@ -10343,7 +10372,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of Kraitkin",
       "gen": "gen1",
       "armory_api_id": 30702,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen1_the_predator": {
       "name": "The Predator",
@@ -10368,7 +10398,8 @@ const SOURCES_DB = {
       "gift_unique": "Gift of The Predator",
       "gen": "gen1",
       "armory_api_id": 30703,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_astralaria": {
       "name": "Astralaria",
@@ -10404,7 +10435,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74155,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_hope": {
       "name": "HOPE",
@@ -10440,7 +10472,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74329,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_nevermore": {
       "name": "Nevermore",
@@ -10476,7 +10509,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74333,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_chuka_and_champawat": {
       "name": "Chuka and Champawat",
@@ -10512,7 +10546,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74332,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_tigris": {
       "name": "Tigris",
@@ -10548,7 +10583,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74326,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_caladbolg": {
       "name": "Caladbolg",
@@ -10584,7 +10620,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74408,
-      "armory_max_count": 4
+      "armory_max_count": 4,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_eureka": {
       "name": "Eureka",
@@ -10620,7 +10657,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74328,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_shooshadoo": {
       "name": "Shooshadoo",
@@ -10656,7 +10694,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74330,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_eordas_grip": {
       "name": "Eordas Grip",
@@ -10692,7 +10731,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74331,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_itzels_boon": {
       "name": "Itzel's Boon",
@@ -10728,7 +10768,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74411,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_exordium": {
       "name": "Exordium",
@@ -10764,7 +10805,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74334,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_hope_scepter": {
       "name": "H.O.P.E. (Scepter)",
@@ -10801,7 +10843,8 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": null,
       "armory_note": "The Radiant (scepter PoF) — apiId to confirm",
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_lorekeeper": {
       "name": "Lorekeeper",
@@ -10837,7 +10880,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
       "armory_api_id": 84634,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_elegy": {
       "name": "Elegy",
@@ -10873,7 +10917,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
       "armory_api_id": 84535,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_xiuquatl": {
       "name": "Xiuquatl",
@@ -10909,7 +10954,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
       "armory_api_id": 84536,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen2_reaver_of_the_mists": {
       "name": "Reaver of the Mists",
@@ -10945,7 +10991,8 @@ const SOURCES_DB = {
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
       "armory_api_id": 84537,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_claw": {
       "name": "Aurene's Claw",
@@ -10975,7 +11022,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_bite": {
       "name": "Aurene's Bite",
@@ -11005,7 +11053,8 @@ const SOURCES_DB = {
       "armory_max_count": 4,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_weight": {
       "name": "Aurene's Weight",
@@ -11035,7 +11084,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_gaze": {
       "name": "Aurene's Gaze",
@@ -11065,7 +11115,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_insight": {
       "name": "Aurene's Insight",
@@ -11095,7 +11146,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_argument": {
       "name": "Aurene's Argument",
@@ -11125,7 +11177,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_guard": {
       "name": "Aurene's Guard",
@@ -11155,7 +11208,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_persuasion": {
       "name": "Aurene's Persuasion",
@@ -11185,7 +11239,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_voice": {
       "name": "Aurene's Voice",
@@ -11215,7 +11270,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_wrath": {
       "name": "Aurene's Wrath",
@@ -11245,7 +11301,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_reckoning": {
       "name": "Aurene's Reckoning",
@@ -11275,7 +11332,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_scale": {
       "name": "Aurene's Scale",
@@ -11305,7 +11363,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_wisdom": {
       "name": "Aurene's Wisdom",
@@ -11335,7 +11394,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_breath": {
       "name": "Aurene's Breath",
@@ -11365,7 +11425,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "gen3_aurenes_tenderness": {
       "name": "Aurene's Tenderness",
@@ -11395,7 +11456,8 @@ const SOURCES_DB = {
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki."
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "eikasia": {
       "name": "Eikasia, Mists-Grasper",
@@ -12646,7 +12708,8 @@ const SOURCES_DB = {
       "gen": "gen3",
       "armory_api_id": 96937,
       "armory_max_count": 2,
-      "armory_note": "96937 vérifié wiki — la hache gen3 s'appelle Aurene's Rending (l'ancienne entrée la nommait Fang à tort ; Fang = épée)."
+      "armory_note": "96937 vérifié wiki — la hache gen3 s'appelle Aurene's Rending (l'ancienne entrée la nommait Fang à tort ; Fang = épée).",
+      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
     },
     "t6_tracker": {
       "name": "Matériaux T6",
