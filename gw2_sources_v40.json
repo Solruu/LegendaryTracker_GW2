@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v39",
+  "version": "v40",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -864,7 +864,8 @@
   "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant).",
   "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki).",
   "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma.",
-  "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum)."
+  "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum).",
+  "changelog_v40": "Audit 100% clos. Binding of Ipos corrigé (focus gen2, précurseur Ars Goetia + Gift of Ipos — était classé accessoire avec 2 gifts erronés). Legendary Relic conforme (+ volumes Lucent). fractal_capacitor identifié comme entrée fantôme → renvoi Ad Infinitum."
  },
  "meta_events": {
   "vb": {
@@ -7192,6 +7193,43 @@
     }
    ],
    "qty": {}
+  },
+  "ars_goetia": {
+   "name": "Ars Goetia",
+   "kind": "precursor",
+   "needed_for": [
+    "the_binding_of_ipos"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Précurseur du Binding of Ipos — collections/matériaux puis forge (recette Mark of the Unnamed pour Shard of the Dark Arts et Mystic Curio).",
+      "en": "The Binding of Ipos precursor — collections/materials then forge (Mark of the Unnamed recipe covers Shard of the Dark Arts and Mystic Curio)."
+     }
+    }
+   ],
+   "qty": {}
+  },
+  "gift_of_ipos": {
+   "name": "Gift of Ipos",
+   "apiId": 85744,
+   "kind": "advanced_craft",
+   "needed_for": [
+    "the_binding_of_ipos"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : Gift of the Mists + 100 Mystic Runestones + 100 Shards of the Dark Arts + Gift of Energy.",
+      "en": "MF: Gift of the Mists + 100 Mystic Runestones + 100 Shards of the Dark Arts + Gift of Energy."
+     }
+    }
+   ],
+   "qty": {}
   }
  },
  "enchaînements_recommandés": {
@@ -8820,8 +8858,8 @@
     "gift_of_craftsmanship"
    ],
    "note": {
-    "fr": "Gift of Relics = 25 Mystic Facets (750 Piles of Lucent Crystal + 1 Relic élevée chacun, MF) + Gift of the Obscure + Gift of Condensed Magic/Might. ~18 750 Piles of Lucent Crystal au total (187 500 Lucent Motes).",
-    "en": "Gift of Relics = 25 Mystic Facets (750 Piles of Lucent Crystal + 1 Relic ascended chacun, MF) + Gift of the Obscure + Gift of Condensed Magic/Might. ~18 750 Piles of Lucent Crystal total (187 500 Lucent Motes)."
+    "fr": "Gift of Relics = 25 Mystic Facets → 18 750 Piles of Lucent Crystal (187 500 Lucent Motes) + 25 reliques. ⚠ Volume énorme : si tu achètes au comptoir, calcule plusieurs paliers d'ordres à l'avance. Lyhr (Wizard's Tower [&BOwNAAA=]) peut forger les gifts contre 10 ectos de surcoût. Pas d'effet visuel — utilitaire pur.",
+    "en": "Gift of Relics = 25 Mystic Facets → 18,750 Piles of Lucent Crystal (187,500 Lucent Motes) + 25 relics. ⚠ Huge volume: if buying on the TP, price several listing tiers ahead. Lyhr (Wizard's Tower [&BOwNAAA=]) can forge the gifts for 10 extra ectos. No visual effect — pure utility."
    },
    "armory_api_id": 101582,
    "armory_max_count": 1,
@@ -8834,7 +8872,8 @@
     "ectos": 150,
     "gift_of_research": 1,
     "gift_of_research_apiId": 97655
-   }
+   },
+   "recipe_verified": "2026-07-25 (wiki) — conforme"
   },
   "perfected_envoy": {
    "name": "Perfected Envoy Armor",
@@ -12014,31 +12053,36 @@
     "mystic_tribute"
    ],
    "note": {
-    "fr": "Dos légendaire obtenu via les Fractales. Requiert le Spinal Blade Back Pack (Perfected) — craft progressif en 4 étapes — et le Gift of Fractals (Fractal Relics + Pristine Fractal Relics). Alternative à Ad Infinitum pour les joueurs de Fractales.",
-    "en": "Legendary back obtained via Fractals. Requires Spinal Blade Back Pack (Perfected) — progressive 4-step craft — and Gift of Fractals (Fractal Relics + Pristine Fractal Relics). Alternative to Ad Infinitum for Fractal players."
+    "fr": "⚠ Entrée non confirmée : aucun légendaire « Fractal Capacitor » n'existe — le dos légendaire des fractales est Ad Infinitum. Les Fractal Capacitors (Prototype/Beta/Ad Infinitum) sont les ÉTAPES de sa chaîne. Conservé comme renvoi ; voir l'onglet Ad Infinitum.",
+    "en": "⚠ Unconfirmed entry: no 'Fractal Capacitor' legendary exists — the fractal legendary back is Ad Infinitum. The Fractal Capacitors (Prototype/Beta/Ad Infinitum) are STEPS in its chain. Kept as a pointer; see the Ad Infinitum tab."
    },
    "armory_api_id": 74155,
-   "armory_max_count": 1
+   "armory_max_count": 1,
+   "recipe_verified": "2026-07-25 (wiki) — entrée fantôme, renvoi vers Ad Infinitum"
   },
   "the_binding_of_ipos": {
    "name": "The Binding of Ipos",
-   "slot": "accessory",
+   "slot": "focus",
    "farm": "PvE (PoF)",
    "expansion": "PoF",
    "wiki": "The_Binding_of_Ipos",
-   "recipe": "MF : Gift of the Desolation + Gift of Desert Mastery + Gift of Souls + Mystic Tribute",
+   "recipe": {
+    "fr": "MF : Ars Goetia (précurseur) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute",
+    "en": "MF: Ars Goetia (precursor) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute"
+   },
    "components": [
-    "gift_of_the_desolation",
+    "ars_goetia",
+    "gift_of_ipos",
     "gift_of_desert_mastery",
-    "gift_of_souls",
     "mystic_tribute"
    ],
    "note": {
-    "fr": "Accessoire légendaire (PoF). Farm : Desolation (Primeval Essence, Forged Scraps), events du Désert de Cristal. Gift of Souls requiert des Spiritwood Planks et des Deldrimor Steel Ingots.",
-    "en": "Legendary accessory (PoF). Farm: Desolation (Primeval Essence, Forged Scraps), Crystal Desert events. Gift of Souls requires Spiritwood Planks and Deldrimor Steel Ingots."
+    "fr": "⚠ Correction v40 : c'est un FOCUS légendaire gen2 (LS4 ép.1 Daybreak), pas un accessoire. Précurseur : Ars Goetia. ⚠ Ne jamais stat-swap le précurseur — il deviendrait un objet élevé générique inutilisable.",
+    "en": "⚠ v40 fix: this is a gen2 legendary FOCUS (LWS4 ep.1 Daybreak), not an accessory. Precursor: Ars Goetia. ⚠ Never stat-swap the precursor — it would turn into a generic ascended item, unusable."
    },
    "armory_api_id": 91048,
-   "armory_max_count": 2
+   "armory_max_count": 2,
+   "recipe_verified": "2026-07-25 (wiki) — corrigé"
   },
   "warbringer": {
    "name": "Warbringer",
