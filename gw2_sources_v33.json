@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v32",
+  "version": "v33",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -713,7 +713,147 @@
   "changelog_v29": "direct_sync.leg_currency_ids : mapping devises par légendaire extrait de Flask — parité exacte de la synchro directe.",
   "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile).",
   "changelog_v31": "Testimonies : conflux corrigé 82→jade 65 (recette actuelle), double compteur jade+castoran sur conflux/warbringer (Jade plus obtenables depuis VoE).",
-  "changelog_v32": "i18n : recipes bilinguées (armures par pièce, strife, ~70 armes gen1/2/3) — le label « Par pièce » n'apparaît plus en FR côté EN."
+  "changelog_v32": "i18n : recipes bilinguées (armures par pièce, strife, ~70 armes gen1/2/3) — le label « Par pièce » n'apparaît plus en FR côté EN.",
+  "common_required": {
+   "vision": {
+    "clovers": 77,
+    "coins": null,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "aurora": {
+    "clovers": 77,
+    "coins": null,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "conflux": {
+    "clovers": 77,
+    "coins": null,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "warbringer": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "coalescence": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "selachimorpha": {
+    "clovers": 10,
+    "coins": null,
+    "ectos": null,
+    "obsidian": 250
+   },
+   "endless_summer": {
+    "clovers": 10,
+    "coins": null,
+    "ectos": null,
+    "obsidian": 250
+   },
+   "stella_radians": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": null,
+    "obsidian": null
+   },
+   "strife_unending": {
+    "clovers": 45,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null
+   },
+   "orrax_manifested": {
+    "clovers": 38,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null
+   },
+   "ad_infinitum": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "the_ascension": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": null
+   },
+   "transcendence": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": null
+   },
+   "eikasia": {
+    "clovers": null,
+    "coins": null,
+    "ectos": 80,
+    "obsidian": null
+   },
+   "prismatic": {
+    "clovers": null,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null
+   },
+   "perfected_envoy": {
+    "clovers": 15,
+    "coins": null,
+    "ectos": null,
+    "obsidian": 50,
+    "perPiece": true
+   },
+   "triumphant_hero": {
+    "clovers": 15,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null,
+    "perPiece": true
+   },
+   "ardent_glorious": {
+    "clovers": 15,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null,
+    "perPiece": true
+   },
+   "obsidian": {
+    "clovers": 15,
+    "coins": null,
+    "ectos": 250,
+    "obsidian": null,
+    "perPiece": true
+   },
+   "upgrades": {
+    "clovers": 77,
+    "coins": null,
+    "ectos": 250,
+    "obsidian": null
+   },
+   "weapons": {
+    "clovers": 77,
+    "coins": 250,
+    "ectos": 250,
+    "obsidian": 250
+   },
+   "t6": {
+    "clovers": null,
+    "coins": null,
+    "ectos": null,
+    "obsidian": null
+   }
+  },
+  "common_required_note": "Quantités de matériaux communs par légendaire (null = non requis ; perPiece = coût par pièce d'armure). Remplace les valeurs génériques figées de COMMON_MATS.",
+  "changelog_v33": "Onglet Composants unifié : common_required par légendaire (fin des objectifs génériques 77/250/250/100)."
  },
  "meta_events": {
   "vb": {

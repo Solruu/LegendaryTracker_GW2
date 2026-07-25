@@ -3191,8 +3191,8 @@ export default function GW2LegendaryTracker() {
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
     ...((leg?.bounties?.length > 0) ? [{ id: "bounties", label: t("tab_bounties", { n: Object.keys(bountyDone).length }) }] : []),
-    ...(!isPrismatic && (isArmorSet || isWeapons || (leg?.currencies ?? []).length > 0) ? [{ id: "currencies", label: t("tab_currencies") }] : []),
-    ...(!isPrismatic ? [{ id: "common", label: t("tab_common") }] : []),
+    ...(!isPrismatic && selectedLeg !== "trinkets" ? [{ id: "currencies", label: NX({ fr: "◆ Composants", en: "◆ Components" }) }] : []),
+
   ];
 
   // Guard — évite le render pendant la transition de légendaire
@@ -4812,7 +4812,109 @@ export default function GW2LegendaryTracker() {
           trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
       )}
 
-      {activeTab === "common" && (
+      {activeTab === "currencies" && (() => {
+        const meta = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?._meta ?? {};
+        const cc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
+        const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries?.[selectedLeg] ?? {};
+        const reqMap = (meta.common_required ?? {})[selectedLeg] ?? null;
+        const perPiece = !!(reqMap && reqMap.perPiece);
+        const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
+        const mats = COMMON_MATS
+          .map(m => ({ ...m, req: reqMap ? reqMap[m.id] : m.required }))
+          .filter(m => m.req != null)
+          .map(m => ({ ...m, req: m.req * mult }));
+        // Arbre des gifts : composants de tête + matériaux rattachés (index inverse needed_for)
+        const tops = (S.components ?? []);
+        const subsOf = (g) => Object.entries(cc).filter(([, v]) => (v.needed_for ?? []).includes(g));
+        const label = (k) => (cc[k]?.name ? NXS(cc[k].name) : k.replace(/_/g, " "));
+        return (
+          <div>
+            {mats.length > 0 && (
+              <>
+                <div className="section-label">{NX({ fr: "Matériaux communs", en: "Common materials" })}</div>
+                {perPiece && (
+                  <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>
+                    {NX({ fr: `Coût par pièce × ${mult} pièce(s) restante(s).`, en: `Per-piece cost × ${mult} remaining piece(s).` })}
+                  </div>
+                )}
+                {mats.map(m => {
+                  const owned = commonMats[m.id] ?? 0;
+                  const pct = Math.min(100, (owned / m.req) * 100);
+                  const open = expanded === `cm_${m.id}`;
+                  return (
+                    <div key={m.id} style={{ margin: "6px 14px", padding: "12px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}
+                      onClick={() => setExpanded(open ? null : `cm_${m.id}`)}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+                          <span style={{ fontSize: "16px" }}>{m.icon}</span>
+                          <div>
+                            <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(m.name)}</div>
+                            <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>
+                              {t("req_missing", { req: m.req, miss: Math.max(0, m.req - owned) })}
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ fontSize: "18px", fontWeight: 700, color: pct >= 100 ? "#4ade80" : "#e2c97e" }}>
+                          {owned}<span style={{ fontSize: "11px", opacity: 0.4 }}>/{m.req}</span>
+                        </div>
+                      </div>
+                      <div style={{ marginTop: 7, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
+                        <div style={{ width: `${pct}%`, height: "100%", background: pct >= 100 ? "#4ade80" : legColor, borderRadius: 2 }} />
+                      </div>
+                      {open && m.tip && (
+                        <div style={{ marginTop: 7, fontSize: "11px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.5)" }}>{NX(m.tip)}</div>
+                      )}
+                    </div>
+                  );
+                })}
+              </>
+            )}
+
+            {tops.length > 0 && (
+              <>
+                <div className="section-label">{NX({ fr: "Arbre des composants", en: "Component tree" })}</div>
+                <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>
+                  {NX({ fr: "Toucher un composant pour voir ses matériaux et leurs sources.", en: "Tap a component to see its materials and their sources." })}
+                </div>
+                {tops.map(g => {
+                  const subs = subsOf(g);
+                  const open = expanded === `gift_${g}`;
+                  return (
+                    <div key={g} style={{ margin: "6px 14px", padding: "11px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}
+                      onClick={() => setExpanded(open ? null : `gift_${g}`)}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                        <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, fontFamily: "'Cinzel', serif" }}>{open ? "▾ " : "▸ "}{label(g)}</div>
+                        <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", whiteSpace: "nowrap" }}>
+                          {subs.length > 0 ? NX({ fr: `${subs.length} matériaux`, en: `${subs.length} materials` }) : NX({ fr: "voir Guide", en: "see Guide" })}
+                        </div>
+                      </div>
+                      {open && subs.length > 0 && (
+                        <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }}>
+                          {subs.map(([sk, sv]) => {
+                            const stock = sv.apiId ? (gtStocks?.[String(sv.apiId)] ?? null) : null;
+                            const src0 = (sv.sources ?? [])[0];
+                            return (
+                              <div key={sk} style={{ padding: "3px 0" }}>
+                                <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: "11px" }}>
+                                  <span style={{ color: "rgba(226,201,126,0.75)" }}>{NXS(sv.name ?? sk)}</span>
+                                  {stock != null && <span style={{ color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{stock}</span>}
+                                </div>
+                                {src0?.tip && <div style={{ fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.4 }}>{NX(src0.tip)}</div>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </div>
+        );
+      })()}
+
+      {false && activeTab === "common" && (
         <div>
           <div className="section-label">{t("sec_common")}</div>
           <div style={{ margin: "6px 14px", padding: "10px 13px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.5)" }}>
