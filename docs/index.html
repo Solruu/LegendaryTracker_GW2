@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v38",
+    "version": "v39",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1432,7 +1432,8 @@ const SOURCES_DB = {
     "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified.",
     "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant).",
     "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki).",
-    "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma."
+    "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma.",
+    "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum)."
   },
   "meta_events": {
     "vb": {
@@ -8631,12 +8632,17 @@ const SOURCES_DB = {
         {
           "fr": "MF final : Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence.",
           "en": "Final MF: Mist Pendant + Gift of the Champion + Mystic Tribute + Gift of Skirmishing → Transcendence."
+        },
+        {
+          "fr": "⚑ L'amulette élevée de base n'est pas réservée au PvP : achetable en McM (260 + 250 Skirmish Tickets chez le Skirmish Supervisor) ou en PvE (100 Pristine Fractal Relics + 2 chez BUY-2046 PFR). Gift of Skirmishing = 2 Vision Crystals + 250 Shards of Glory + 5 Certificates of Support + 1 Perfect Mist Core (issu des 4 Mist Core Fragments).",
+          "en": "⚑ The base ascended amulet isn't PvP-only: buyable in WvW (260 + 250 Skirmish Tickets from the Skirmish Supervisor) or PvE (100 Pristine Fractal Relics + 2 from BUY-2046 PFR). Gift of Skirmishing = 2 Vision Crystals + 250 Shards of Glory + 5 Certificates of Support + 1 Perfect Mist Core (from the 4 Mist Core Fragments)."
         }
       ],
       "timegate": {
         "fr": "Saisons PvP classées (Ascended Shards of Glory via coffres de ligue — off-seasons = pause) + Gift of Battle (track WvW ~6-8h) + 2× Glorious Reward Track (Mist Core Fragments).",
         "en": "Ranked PvP seasons (Ascended Shards of Glory via league chests — off-seasons = downtime) + Gift of Battle (WvW track ~6-8h) + 2× Glorious Reward Track (Mist Core Fragments)."
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "the_ascension": {
       "name": "The Ascension",
@@ -8724,12 +8730,17 @@ const SOURCES_DB = {
         {
           "fr": "MF final : Wings of Ascension + Gift of Fortune + Gift of Skirmishing + Gift of the Competitor → The Ascension.",
           "en": "Final MF: Wings of Ascension + Gift of Fortune + Gift of Skirmishing + Gift of the Competitor → The Ascension."
+        },
+        {
+          "fr": "⚑ Gift of Skirmishing détaillé : 2 Vision Crystals + 250 Shards of Glory + 5 Certificates of Support + 1 Perfect Mist Core (4 Mist Core Fragments du coffre final du Glorious Reward Track).",
+          "en": "⚑ Gift of Skirmishing detailed: 2 Vision Crystals + 250 Shards of Glory + 5 Certificates of Support + 1 Perfect Mist Core (4 Mist Core Fragments from the Glorious Reward Track's final chest)."
         }
       ],
       "timegate": {
         "fr": "≥60 jours (4 parts × ~15 jours de Daily League Participation)",
         "en": "≥60 days (4 parts × ~15 days of Daily League Participation)"
-      }
+      },
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "ad_infinitum": {
       "name": "Ad Infinitum",
@@ -8805,6 +8816,10 @@ const SOURCES_DB = {
         {
           "fr": "Économie Balls of Dark Energy : seulement 2 à sourcer soi-même (recyclages de Finite Result/Upper Bound/Fractal Capacitor Infused couvrent le reste).",
           "en": "Balls of Dark Energy economy: only 2 to source yourself (salvaging Finite Result/Upper Bound/Infused Fractal Capacitor covers the rest)."
+        },
+        {
+          "fr": "⚑ Prototype Fractal Capacitor : 1 350 Fractal Relics chez BUY-4373 (Mistlock Observatory). ⚠ NE PAS le recycler ni le détruire — il sert en version améliorée à la collection suivante.",
+          "en": "⚑ Prototype Fractal Capacitor: 1,350 Fractal Relics from BUY-4373 (Mistlock Observatory). ⚠ Do NOT salvage or destroy it — an upgraded version is needed for the next collection."
         },
         {
           "fr": "Prototype Fractal Capacitor : à conserver et upgrader (Ascended puis Beta Infused) pour la collection II.",
@@ -8960,6 +8975,10 @@ const SOURCES_DB = {
         {
           "fr": "MF final : Vial of Liquid Shadowstone + Gift of Shadowstones + Gift of Galdra + Mystic Tribute → Stella Radians.",
           "en": "Final MF: Vial of Liquid Shadowstone + Gift of Shadowstones + Gift of Galdra + Mystic Tribute → Stella Radians."
+        },
+        {
+          "fr": "⚑ Chiffre oublié : ~56 750 Research Notes au total (57 600 si tout est acheté chez les PNJ). Les produire directement aux stations de craft (option de conversion automatique) évite les kits.",
+          "en": "⚑ Missing figure: ~56,750 Research Notes total (57,600 if buying everything from NPCs). Produce them straight from crafting stations (auto-convert option) to avoid kits."
         }
       ],
       "achievements": [
@@ -8983,7 +9002,8 @@ const SOURCES_DB = {
             "en": "Rare Collections — 17 weapon skins. Recipes/weapons from Eternity's Garden heart vendors (base: Rare weapon from TP). Crafting saves map currency + Research Notes vs direct purchase. Alternative: VoE reward track (PvP/WvW)."
           }
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "strife_unending": {
       "name": "Strife Unending",
@@ -9084,7 +9104,8 @@ const SOURCES_DB = {
             "en": "10 steps: 100 kills with the infusion equipped, Obsidian Sanctum JP (Phongluamthan), Forge/Altar/Workshop in Edge of the Mists (team-controlled), capture an enemy keep in EBG, Stoic Rampart + Dreadfall Bay + Askalion Hills. Reward: 2× Gift of the Warclaw."
           }
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — échange vendeur, pas de recette MF"
     },
     "orrax_manifested": {
       "name": "Orrax Manifested",
@@ -9205,7 +9226,8 @@ const SOURCES_DB = {
           "fr": "MF final : Orrax Contained + Gift of the Mistburned Isles + Gift of Shadows + Gift of the Feast → Orrax Manifested (+ skin deltaplane, 4 canaux de teinture).",
           "en": "Final MF: Orrax Contained + Gift of the Mistburned Isles + Gift of Shadows + Gift of the Feast → Orrax Manifested (+ glider skin, 4 dye channels)."
         }
-      ]
+      ],
+      "recipe_verified": "2026-07-25 (wiki) — conforme"
     },
     "klobjarne_geirr": {
       "name": "Klobjarne Geirr",
