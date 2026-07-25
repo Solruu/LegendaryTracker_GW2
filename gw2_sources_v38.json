@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v37",
+  "version": "v38",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -862,7 +862,8 @@
   "changelog_v34": "Composants : classification kind (4 familles), meilleure voie `best` par défaut (coût marginal nul), tradeoff Amalgamated Gemstone, 10 entrées créées, recette Vision corrigée (Glimpse + Mystic Tribute + Gift of Prescience + Gift of Arid Mastery).",
   "changelog_v35": "Audit recettes (wiki 25/07/2026) : Aurora et Coalescence corrigées, Conflux créé (absent des sources), Vision corrigée en v34. 5 composants ajoutés. Champ recipe_verified.",
   "changelog_v36": "Audit lot 2 : Warbringer, Ad Infinitum, Endless Summer, Selachimorpha confirmés conformes ; Aetheric Anchor corrigé (Gift of Insight + Gift of the Elders) ; prérequis Warbringer ajoutés (rang 350 + tag commandant).",
-  "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki)."
+  "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki).",
+  "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma."
  },
  "meta_events": {
   "vb": {
@@ -8677,8 +8678,8 @@
     "gift_of_the_elders"
    ],
    "note": {
-    "fr": "⚠ Particularité : donne DEUX armes légendaires d'un coup — la lance Ancora Bellum ET le bâton Ancora Pax. Ne requiert ni précurseur ni gift d'arme légendaire, mais les gifts majeurs de complétion de carte.",
-    "en": "⚠ Special case: grants TWO legendary weapons at once — the Ancora Bellum spear AND the Ancora Pax staff. Requires neither a precursor nor a legendary weapon gift, but does need the major map-completion gifts."
+    "fr": "Conteneur légendaire (pas une arme) : l'ouvrir débloque D'UN COUP le bâton Ancora Pax et la lance Ancora Bellum. ⚠ Le conteneur n'est PAS lié au compte — il est vendable au comptoir tant qu'il reste fermé ; à l'ouverture, les deux armes se lient définitivement. Ni précurseur ni gift d'arme légendaire requis, mais les gifts d'exploration de VoE. Chaque arme ne peut être ajoutée qu'une seule fois à l'Armory.",
+    "en": "Legendary container (not a weapon): opening it unlocks BOTH the Ancora Pax staff and the Ancora Bellum spear at once. ⚠ The container is NOT account-bound — it can be sold on the TP while sealed; once opened, both weapons bind permanently. No precursor or legendary weapon gift required, but VoE exploration gifts are. Each weapon can only be added to the Armory once."
    },
    "unlock_also": "Ancora Pax (staff) + Ancora Bellum (spear)",
    "armory_api_id": 105497,
@@ -8687,7 +8688,11 @@
     "fr": "Container — unlock Ancora Pax (106712?) + Ancora Bellum. Vérifier apiIds Ancora.",
     "en": "Container - unlocks Ancora Pax (106712?) + Ancora Bellum. Verify Ancora apiIds."
    },
-   "recipe_verified": "2026-07-25 (wiki)"
+   "recipe_verified": "2026-07-25 (wiki + guildjen) — disponible depuis le lancement VoE",
+   "timegate": {
+    "fr": "Composants d'exploration rachetables 50 po + 300 000 karma pièce après la première acquisition (Gift of Shipwreck Strand Exploration, Survivor's Enchanted Compass, Gift of Starlit Weald Exploration, Seer Wreath of Service, Gift of the Tides).",
+    "en": "Exploration components re-purchasable for 50 g + 300,000 karma each after first acquisition (Gift of Shipwreck Strand Exploration, Survivor's Enchanted Compass, Gift of Starlit Weald Exploration, Seer Wreath of Service, Gift of the Tides)."
+   }
   },
   "selachimorpha": {
    "name": "Selachimorpha",
