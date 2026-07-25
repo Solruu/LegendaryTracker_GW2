@@ -11963,12 +11963,26 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
       <div className="card" style={{ cursor: "default" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <div style={{ fontFamily: "'Cinzel', serif", fontSize: 15, color: "#5eead4", fontWeight: 600 }}>{NL(curKey, T.name)}</div>
-          {badge(NX({ fr: ({ ring: "Anneau", accessory: "Accessoire", amulet: "Amulette", back: "Dos" })[T.slot] ?? T.slot, en: T.slot }), "rgba(226,201,126,0.55)")}
+          {badge(NX({
+            fr: ({ ring: "Anneau", accessory: "Accessoire", amulet: "Amulette", back: "Dos", armor_set: "Set d'armure (18 pièces)", aquabreather: "Respirateur" })[T.slot] ?? T.slot,
+            en: ({ armor_set: "Armor set (18 pieces)", aquabreather: "Aquabreather" })[T.slot] ?? T.slot,
+          }), "rgba(226,201,126,0.55)")}
           {badge(T.expansion, "rgba(226,201,126,0.4)")}
           {badge(NXS(T.farm), "rgba(167,139,250,0.7)")}
-          {armoryId
-            ? badge(owned ? NX({ fr: "✓ Possédé (armory)", en: "✓ Owned (armory)" }) : NX({ fr: "Non possédé", en: "Not owned" }), owned ? "#4ade80" : "rgba(226,201,126,0.35)")
-            : badge(NX({ fr: "apiId inconnu", en: "apiId unknown" }), "rgba(248,113,113,0.6)")}
+          {(() => {
+            const LE = (typeof LEGENDARIES !== "undefined" ? LEGENDARIES[curKey] : null);
+            if (LE?.isArmorSet || T.slot === "armor_set") {
+              const sIds = LE?.armoryApiIds ?? null;
+              if (sIds) {
+                const nOwned = sIds.filter(x => gtOwnedIds.has(x) || gtManualOwnedIds.has(x)).length;
+                return badge(NX({ fr: `${nOwned}/${sIds.length} pièces — onglet Pièces`, en: `${nOwned}/${sIds.length} pieces — Pieces tab` }), nOwned > 0 ? "#4ade80" : "rgba(226,201,126,0.35)");
+              }
+              return badge(NX({ fr: "Détection par nom — onglet Pièces", en: "Name-based detection — Pieces tab" }), "rgba(94,234,212,0.55)");
+            }
+            return armoryId
+              ? badge(owned ? NX({ fr: "✓ Possédé (armory)", en: "✓ Owned (armory)" }) : NX({ fr: "Non possédé", en: "Not owned" }), owned ? "#4ade80" : "rgba(226,201,126,0.35)")
+              : badge(NX({ fr: "apiId inconnu", en: "apiId unknown" }), "rgba(248,113,113,0.6)");
+          })()}
         </div>
         <div style={{ marginTop: 8, fontFamily: "'Crimson Text', serif", fontSize: 13, color: "rgba(226,201,126,0.75)" }}>{NXS(NX(T.recipe))}</div>
         {T.note && <div style={{ marginTop: 6, fontFamily: "'Crimson Text', serif", fontSize: 12, color: "rgba(226,201,126,0.5)", fontStyle: "italic" }}>{NX(T.note)}</div>}
