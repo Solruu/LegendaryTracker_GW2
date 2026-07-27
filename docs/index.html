@@ -12897,8 +12897,8 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
         </>
       )}
 
-      {/* Collections / succès — progression API */}
-      {(T.achievements ?? []).length > 0 && (
+      {/* Collections / succès — progression API (masqué si l'onglet Collections à bits existe) */}
+      {(T.achievements ?? []).length > 0 && !(typeof LEGENDARIES !== "undefined" && LEGENDARIES[curKey]?.raidAchievements) && (
         <>
           <div className="section-label">{NX({ fr: "Collections & succès", en: "Collections & achievements" })}</div>
           {T.achievements.map((a) => {
@@ -13820,6 +13820,16 @@ const LEGENDARIES = {
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
       { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
     ],
+    raidAchievements: [
+      { key: "summer_krait", achievementId: 9180, name: "Helping Hylek: Kill Krait",
+        tip: { fr: "Prérequis : parler à Hylek Amini (NE d'Eztlitl Grounds [&BEoCAAA=]), puis tuer 25 kraits à Nonmoa Lake ou compléter l'event Krait Witch.", en: "Prereq: talk to Hylek Amini (NE of Eztlitl Grounds [&BEoCAAA=]), then kill 25 krait at Nonmoa Lake or complete the Krait Witch event." } },
+      { key: "summer_sungod", achievementId: 9183, name: "Radiance of the Sun God", total: 20,
+        tip: { fr: "Chaîne ~20 étapes avec Shaman Palak (falaise NE de Hullgarden Pier [&BMwPAAA=]) : shards à travers Tyrie (mini-donjon Tears of Itlaocol, puzzle Infinite Coil Reactor, JP Hidden Garden…). Récompense : Gift of the Hylek (rachetable chez Palak pour un 2e anneau).", en: "~20-step chain with Shaman Palak (cliff NE of Hullgarden Pier [&BMwPAAA=]): shards across Tyria (Tears of Itlaocol mini-dungeon, Infinite Coil Reactor puzzle, Hidden Garden JP…). Reward: Gift of the Hylek (re-purchasable from Palak for a 2nd ring)." } },
+      { key: "selachi_shipwreck", achievementId: 8880, name: "Shipwreck Strand Mastery",
+        tip: { fr: "36 succès requis (sur ~53). Débloque l'achat du composant clé chez le vendeur (500 monnaie de carte + 250 po + 300k karma) + récompense mastery. Partagé avec Selachimorpha.", en: "36 achievements required (of ~53). Unlocks the key component purchase from the vendor (500 map currency + 250 g + 300k karma) + mastery reward. Shared with Selachimorpha." } },
+      { key: "selachi_starlit", achievementId: 9057, name: "Starlit Weald Mastery",
+        tip: { fr: "36 succès requis (sur ~55). Même logique pour le Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Partagé avec Selachimorpha.", en: "36 achievements required (of ~55). Same logic for the Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Shared with Selachimorpha." } },
+    ],
     metas: [
       { id: "hammerhart", name: { fr: "Rixe des Hammerhart !", en: "Hammerhart Rumble!" }, subname: { fr: "Shipwreck Strand", en: "Shipwreck Strand" }, expansion: "VoE", icon: "HR",
         offsetUTC: 40, intervalMin: 120, durationMin: 20,
@@ -13850,6 +13860,12 @@ const LEGENDARIES = {
       { id: "coins",   name: "Mystic Coin",   required: 250,     icon: "MO", apiId: 19976 },
       { id: "clovers", name: "Mystic Clover", required: 77,      icon: "MC", apiId: 19675 },
     ],
+    raidAchievements: [
+      { key: "stella_forge_guard", achievementId: 9330, name: "Forge Guard's Armor Collection", total: 6,
+        tip: { fr: "Rare Collections — débloquer les 6 skins Forge Guard (n'importe quel poids : 1 pièce débloquée = les 3 poids). Sources : drops VoE, Alliance Field Quartermaster, boîtes du méta-succès de carte.", en: "Rare Collections — unlock all 6 Forge Guard skins (any weight: 1 piece unlocked = all 3 weights). Sources: VoE drops, Alliance Field Quartermaster, map meta-achievement boxes." } },
+      { key: "stella_resin", achievementId: 9344, name: "Glimmering Resin Weapon Collector", total: 17,
+        tip: { fr: "Rare Collections — 17 skins d'armes. Recettes/armes chez les vendeurs de cœurs d'Eternity's Garden (base : arme Rare du TP). Le craft économise monnaie de carte + Research Notes vs achat direct. Alternative : reward track VoE (PvP/McM).", en: "Rare Collections — 17 weapon skins. Recipes/weapons from Eternity's Garden heart vendors (base: Rare weapon from TP). Crafting saves map currency + Research Notes vs direct purchase. Alternative: VoE reward track (PvP/WvW)." } },
+    ],
     metas: [
       { id: "shackles", name: { fr: "Entraves des Anciens", en: "Shackles of the Ancients" }, subname: { fr: "Eternity's Garden", en: "Eternity's Garden" }, expansion: "VoE", icon: "SA",
         offsetUTC: 70, intervalMin: 120, durationMin: 50,
@@ -13874,6 +13890,24 @@ const LEGENDARIES = {
       { id: "tales",   name: "Tales of Dungeon Delving", required: 500, icon: "TD", apiId: 69 },
       { id: "clovers", name: "Mystic Clover",            required: 38,  icon: "MC", apiId: 19675 },
       { id: "oblige",  name: "Ursus Oblige",             required: 300, icon: "UO", apiId: 76 },
+    ],
+    raidAchievements: [
+      { key: "orrax_mistburned_mastery", achievementId: 8582, name: "Mistburned Barrens Mastery",
+        tip: { fr: "Récompense : Salmon of Knowledge (composant du précurseur Orrax Contained). Rachetable au vendeur de cœur si détruit.", en: "Reward: Salmon of Knowledge (Orrax Contained precursor component). Re-purchasable from the heart vendor if destroyed." } },
+      { key: "orrax_bava_mastery", achievementId: 8769, name: "Bava Nisos Mastery",
+        tip: { fr: "Récompense : Askur Camping Cookout (composant du précurseur). Rachetable au vendeur de cœur si détruit.", en: "Reward: Askur Camping Cookout (precursor component). Re-purchasable from the heart vendor if destroyed." } },
+      { key: "orrax_experiments", achievementId: 8761, name: "Unknown Nightmares: Experiments in the Shadows", total: 10,
+        tip: { fr: "LA collection active (10 étapes — batterie d'éclairs, portail Godslost Swamp…). Récompense : Binding of the Dragon (composant du précurseur) + titre Transcends Perceptions.", en: "THE active collection (10 steps — lightning battery, Godslost Swamp portal…). Reward: Binding of the Dragon (precursor component) + Transcends Perceptions title." } },
+      { key: "orrax_contained", achievementId: 8730, name: "Unknown Nightmares: Orrax Contained",
+        tip: { fr: "Se complète en forgeant le précurseur Orrax Contained (Binding of the Dragon + Draconic Tribute + …). Bonus : décoration de homestead.", en: "Auto-completes when forging the Orrax Contained precursor (Binding of the Dragon + Draconic Tribute + …). Bonus: homestead decoration." } },
+      { key: "orrax_isles", achievementId: 8743, name: "Unknown Nightmares: Gift of the Mistburned Isles",
+        tip: { fr: "Checklist de référence — se complète en réunissant le gift (monnaies/coffres Mistburned Barrens, Gift of Titan Understanding…).", en: "Reference checklist — completes while assembling the gift (Mistburned Barrens currencies/chests, Gift of Titan Understanding…)." } },
+      { key: "orrax_shadows", achievementId: 8723, name: "Unknown Nightmares: Gift of Shadows",
+        tip: { fr: "Gift of Shadows = Gift of Darkness (Armorsmith 400, recette 10 po) + Gift of Scales + Gift of Titan Understanding + Bloodstone Shard.", en: "Gift of Shadows = Gift of Darkness (Armorsmith 400, 10 g recipe) + Gift of Scales + Gift of Titan Understanding + Bloodstone Shard." } },
+      { key: "orrax_feast", achievementId: 8750, name: "Unknown Nightmares: Gift of the Feast",
+        tip: { fr: "Cuisine + node homestead Fruits of the Shadow (Deft Lahar, à racheter après chaque récolte, 2-4/récolte).", en: "Cooking + Fruits of the Shadow homestead node (Deft Lahar, re-purchase after each harvest, 2-4/harvest)." } },
+      { key: "orrax_final", achievementId: 8714, name: "Legendary Backpack and Glider: Orrax",
+        tip: { fr: "Méta finale (catégorie Collections) — validée au craft du légendaire.", en: "Final meta (Collections category) — validated when crafting the legendary." } },
     ],
     metas: [
       { id: "titanic", name: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, subname: { fr: "Bava Nisos", en: "Bava Nisos" }, expansion: "JW", icon: "TV",
@@ -13904,6 +13938,16 @@ const LEGENDARIES = {
       { id: "pristine", name: "Pristine Fractal Relic", required: 50,  icon: "PF", apiId: 24 },
       { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
       { id: "coins",    name: "Mystic Coin",            required: 250, icon: "MO", apiId: 19976 },
+    ],
+    raidAchievements: [
+      { key: "adinf_1", achievementId: 2351, name: "Ad Infinitum I: Finite Result", total: 11,
+        tip: { fr: "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).", en: "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)." } },
+      { key: "adinf_2", achievementId: 2557, name: "Ad Infinitum II: Upper Bound", total: 11,
+        tip: { fr: "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.", en: "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta." } },
+      { key: "adinf_3", achievementId: 2368, name: "Ad Infinitum III: Unbound", total: 11,
+        tip: { fr: "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.", en: "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage." } },
+      { key: "adinf_4", achievementId: 2295, name: "Legendary Backpack: Ad Infinitum", total: 13,
+        tip: { fr: "13 composants T3/T4 (CM 80% heal réduit : Underground Facility 51+, Aetherblade 51+…). Craftez Unbound puis parlez à Kelvei pour débloquer.", en: "13 T3/T4 components (80% reduced-healing CMs: Underground Facility 51+, Aetherblade 51+…). Craft Unbound then talk to Kelvei to unlock." } },
     ],
     metas: [
       { id: "adinf_dailies", name: { fr: "Dailies fractales recommandées", en: "Recommended fractal dailies" }, subname: { fr: "~3 Research Pages/jour", en: "~3 Research Pages/day" }, expansion: "Core", icon: "FD",
@@ -13936,6 +13980,12 @@ const LEGENDARIES = {
       { id: "tickets", name: "Skirmish Claim Tickets", required: 3000, icon: "SK", apiId: 26 },
       { id: "clovers", name: "Mystic Clover",          required: 45,   icon: "MC", apiId: 19675 },
       { id: "memory",  name: "Memory of Battle",       required: 250,  icon: "MB", apiId: 71581 },
+    ],
+    raidAchievements: [
+      { key: "strife_mists_research", achievementId: 6933, name: "Mists Research", total: 3,
+        tip: { fr: "Prérequis. Parler à Dugan (« Hey, what's that strange glow… »), puis communier aux Hero Points WvW indiqués (les compléter d'abord). Débloque l'achat de la Mistwalker Infusion.", en: "Prereq. Talk to Dugan ('Hey, what's that strange glow…'), then commune at the listed WvW Hero Points (complete them first). Unlocks the Mistwalker Infusion purchase." } },
+      { key: "strife_unending", achievementId: 9244, name: "Mists Research: Strife Unending", total: 10,
+        tip: { fr: "10 étapes : 100 kills avec l'infusion équipée, JP Obsidian Sanctum (Phongluamthan), Forge/Altar/Workshop en Edge of the Mists (contrôlés par votre équipe), capture d'un fort ennemi en EBG, Stoic Rampart + Dreadfall Bay + Askalion Hills. Récompense : 2× Gift of the Warclaw.", en: "10 steps: 100 kills with the infusion equipped, Obsidian Sanctum JP (Phongluamthan), Forge/Altar/Workshop in Edge of the Mists (team-controlled), capture an enemy keep in EBG, Stoic Rampart + Dreadfall Bay + Askalion Hills. Reward: 2× Gift of the Warclaw." } },
     ],
     metas: [],
     wvwActivities: [
