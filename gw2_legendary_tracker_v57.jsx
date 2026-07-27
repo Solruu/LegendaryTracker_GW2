@@ -1493,9 +1493,9 @@ const LEGENDARIES = {
         tip: { fr: "Prérequis : parler à Hylek Amini (NE d'Eztlitl Grounds [&BEoCAAA=]), puis tuer 25 kraits à Nonmoa Lake ou compléter l'event Krait Witch.", en: "Prereq: talk to Hylek Amini (NE of Eztlitl Grounds [&BEoCAAA=]), then kill 25 krait at Nonmoa Lake or complete the Krait Witch event." } },
       { key: "summer_sungod", achievementId: 9183, name: "Radiance of the Sun God", total: 20,
         tip: { fr: "Chaîne ~20 étapes avec Shaman Palak (falaise NE de Hullgarden Pier [&BMwPAAA=]) : shards à travers Tyrie (mini-donjon Tears of Itlaocol, puzzle Infinite Coil Reactor, JP Hidden Garden…). Récompense : Gift of the Hylek (rachetable chez Palak pour un 2e anneau).", en: "~20-step chain with Shaman Palak (cliff NE of Hullgarden Pier [&BMwPAAA=]): shards across Tyria (Tears of Itlaocol mini-dungeon, Infinite Coil Reactor puzzle, Hidden Garden JP…). Reward: Gift of the Hylek (re-purchasable from Palak for a 2nd ring)." } },
-      { key: "selachi_shipwreck", achievementId: 8880, name: "Shipwreck Strand Mastery",
+      { key: "selachi_shipwreck", achievementId: 8880, metaSubs: true, name: "Shipwreck Strand Mastery",
         tip: { fr: "36 succès requis (sur ~53). Débloque l'achat du composant clé chez le vendeur (500 monnaie de carte + 250 po + 300k karma) + récompense mastery. Partagé avec Selachimorpha.", en: "36 achievements required (of ~53). Unlocks the key component purchase from the vendor (500 map currency + 250 g + 300k karma) + mastery reward. Shared with Selachimorpha." } },
-      { key: "selachi_starlit", achievementId: 9057, name: "Starlit Weald Mastery",
+      { key: "selachi_starlit", achievementId: 9057, metaSubs: true, name: "Starlit Weald Mastery",
         tip: { fr: "36 succès requis (sur ~55). Même logique pour le Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Partagé avec Selachimorpha.", en: "36 achievements required (of ~55). Same logic for the Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Shared with Selachimorpha." } },
     ],
     metas: [
@@ -1560,9 +1560,9 @@ const LEGENDARIES = {
       { id: "oblige",  name: "Ursus Oblige",             required: 300, icon: "UO", apiId: 76 },
     ],
     raidAchievements: [
-      { key: "orrax_mistburned_mastery", achievementId: 8582, name: "Mistburned Barrens Mastery",
+      { key: "orrax_mistburned_mastery", achievementId: 8582, metaSubs: true, name: "Mistburned Barrens Mastery",
         tip: { fr: "Récompense : Salmon of Knowledge (composant du précurseur Orrax Contained). Rachetable au vendeur de cœur si détruit.", en: "Reward: Salmon of Knowledge (Orrax Contained precursor component). Re-purchasable from the heart vendor if destroyed." } },
-      { key: "orrax_bava_mastery", achievementId: 8769, name: "Bava Nisos Mastery",
+      { key: "orrax_bava_mastery", achievementId: 8769, metaSubs: true, name: "Bava Nisos Mastery",
         tip: { fr: "Récompense : Askur Camping Cookout (composant du précurseur). Rachetable au vendeur de cœur si détruit.", en: "Reward: Askur Camping Cookout (precursor component). Re-purchasable from the heart vendor if destroyed." } },
       { key: "orrax_experiments", achievementId: 8761, name: "Unknown Nightmares: Experiments in the Shadows", total: 10,
         tip: { fr: "LA collection active (10 étapes — batterie d'éclairs, portail Godslost Swamp…). Récompense : Binding of the Dragon (composant du précurseur) + titre Transcends Perceptions.", en: "THE active collection (10 steps — lightning battery, Godslost Swamp portal…). Reward: Binding of the Dragon (precursor component) + Transcends Perceptions title." } },
@@ -2497,7 +2497,7 @@ export default function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v6`; // v6 : noms EN (clés bitTips stables)
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v7`; // v7 : metaSubs sur les Mastery
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
