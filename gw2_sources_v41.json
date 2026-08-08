@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v40",
+  "version": "v41",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -865,7 +865,8 @@
   "changelog_v37": "Audit complet clos. Corrigé : Gift of Prowess (25 LI + 50 Obsi + Cube of Stabilized Dark Energy + Eldritch Scroll, pas 25 ectos) et Gift of Dedication (Chak Eggs/Auric Ingots/Reclaimed Plates/Gift of the Pact). Ajouts : Aetheric Anchor donne 2 armes sans précurseur, Klobjarne exige Weaponsmith 500, caps runes 7 / sigils 8. 56 armes validées par patron générationnel (wiki).",
   "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma.",
   "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum).",
-  "changelog_v40": "Audit 100% clos. Binding of Ipos corrigé (focus gen2, précurseur Ars Goetia + Gift of Ipos — était classé accessoire avec 2 gifts erronés). Legendary Relic conforme (+ volumes Lucent). fractal_capacitor identifié comme entrée fantôme → renvoi Ad Infinitum."
+  "changelog_v40": "Audit 100% clos. Binding of Ipos corrigé (focus gen2, précurseur Ars Goetia + Gift of Ipos — était classé accessoire avec 2 gifts erronés). Legendary Relic conforme (+ volumes Lucent). fractal_capacitor identifié comme entrée fantôme → renvoi Ad Infinitum.",
+  "changelog_v41": "Audit Vision : note « requiert Coalescence » fausse supprimée, apiId 88485→91048, récompense Vision I (Shattered Gift of Prescience), Vision II refait (20 /kneel Mastery Insights, pas Requiem), prérequis Skyscale + Rift Repair + Trance Stone, Gift of Arid Mastery corrigé (100 incenses, pas la recette Desert Mastery)."
  },
  "meta_events": {
   "vb": {
@@ -6927,12 +6928,13 @@
     {
      "type": "mystic_forge",
      "tip": {
-      "fr": "MF : Gift of the Desert + Gift of the Rider + Bloodstone Shard + 250 Funerary Incense (achat quotidien limité aux cœurs, illimité chez le Primeval Steward contre Elegy Mosaics).",
-      "en": "MF: Gift of the Desert + Gift of the Rider + Bloodstone Shard + 250 Funerary Incense (daily-capped at hearts, unlimited from the Primeval Steward for Elegy Mosaics)."
+      "fr": "MF : 100 Funerary Incense + 1 Bloodstone Shard + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic. ⚠ Correction : ce n'est PAS la recette du Gift of Desert Mastery (250 incenses). Chaque Funerary Incense = 1 Amalgamated Gemstone + 1 Obsidian Shard + 1 Glob of Ectoplasm + 3 Elegy Mosaics (Primeval Steward, illimité) OU 5 Trade Contracts chez un vendeur de cœur (1/jour/PNJ, 8 PNJ) OU 1 Crystalline Ingot (5/jour).",
+      "en": "MF: 100 Funerary Incense + 1 Bloodstone Shard + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic. ⚠ Fix: this is NOT the Gift of Desert Mastery recipe (250 incenses). Each Funerary Incense = 1 Amalgamated Gemstone + 1 Obsidian Shard + 1 Glob of Ectoplasm + 3 Elegy Mosaics (Primeval Steward, unlimited) OR 5 Trade Contracts from a heart vendor (1/day/NPC, 8 NPCs) OR 1 Crystalline Ingot (5/day)."
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "best": "mystic_forge"
   },
   "amalgamated_gemstone": {
    "name": "Amalgamated Gemstone",
@@ -11926,24 +11928,24 @@
     "gift_of_arid_mastery"
    ],
    "note": {
-    "fr": "Accessoire légendaire (LW4). Requiert Coalescence comme composant. Synergie visuelle avec Aurora et Coalescence. Farm principal : metas HoT (Elegy Mosaic via collections Requiem) + Désert de Cristal (Kralkatite Ore, Difluorite Crystal, Inscribed Shard).",
-    "en": "Legendary accessory (LW4). Requires Coalescence as a component. Visually synergizes with Aurora and Coalescence. Main farm: HoT metas (Elegy Mosaic via Requiem collections) + Crystal Desert (Kralkatite Ore, Difluorite Crystal, Inscribed Shard)."
+    "fr": "Accessoire légendaire (LW4) — les 6 épisodes doivent être débloqués. ⚠ Prérequis compte : Skyscale + maîtrise Rift Repair. Départ : Trance Stone chez un Volatile Magic Collector. Synergie visuelle avec Aurora et Coalescence (effet cumulatif selon le nombre porté), mais AUCUN des deux n'est un composant. Farm principal : monnaies des 6 cartes LW4 + Elegy Mosaics (trains de primes légendaires à Jahai).",
+    "en": "Legendary accessory (LWS4) — all 6 episodes must be unlocked. ⚠ Account prerequisites: Skyscale + Rift Repair mastery. Start: Trance Stone from a Volatile Magic Collector. Visual synergy with Aurora and Coalescence (cumulative effect based on how many are worn), but NEITHER is a component. Main farm: the 6 LWS4 map currencies + Elegy Mosaics (legendary bounty trains in Jahai)."
    },
-   "armory_api_id": 88485,
+   "armory_api_id": 91048,
    "armory_max_count": 2,
    "collections": {
     "vision_1": {
      "id": 4762,
      "name": "Vision I: Awakening",
      "reward": {
-      "fr": "Gift of Insight",
-      "en": "Gift of Insight"
+      "fr": "Shattered Gift of Prescience",
+      "en": "Shattered Gift of Prescience"
      },
      "key_item": "memory_essence_encapsulator",
      "key_item_qty": 6,
      "note": {
-      "fr": "1 Memory Essence Encapsulator par sous-collection (6 zones LW4). Craft Artificer 400 — la recette doit être achetée.",
-      "en": "1 Memory Essence Encapsulator per sub-collection (6 LW4 zones). Artificer 400 craft — recipe must be purchased."
+      "fr": "6 sous-collections (1 par carte LW4), 3 étapes chacune. 1 Memory Essence Encapsulator par sous-collection à garder en inventaire (achat Volatile Magic). Recette Artificer 400 à acheter si tu les crafts.",
+      "en": "6 sub-collections (1 per LWS4 map), 3 steps each. 1 Memory Essence Encapsulator per sub-collection, kept in inventory (Volatile Magic purchase). Artificer 400 recipe to buy if crafting them."
      },
      "subcollections": [
       {
@@ -11995,9 +11997,26 @@
        }
       }
      ]
+    },
+    "vision_2": {
+     "id": 4771,
+     "name": "Vision II: Farsight",
+     "reward": {
+      "fr": "Glimpse (précurseur)",
+      "en": "Glimpse (precursor)"
+     },
+     "note": {
+      "fr": "/kneel à 20 Mastery Insights de la LS4, en restant à genoux 15 s (Meditative Rest). 24 existent, 4 inaccessibles.",
+      "en": "/kneel at 20 LWS4 Mastery Insights, staying kneeled for 15 s (Meditative Rest). 24 exist, 4 unreachable."
+     },
+     "subcollections": []
     }
    },
-   "recipe_verified": "2026-07-25 (wiki)"
+   "recipe_verified": "2026-07-26 (wiki) — recette + collections + prérequis",
+   "armory_note": {
+    "fr": "apiId 91048 (fiche wiki Vision). L'ancienne valeur 88485 ne correspondait pas.",
+    "en": "apiId 91048 (Vision wiki page). The previous value 88485 did not match."
+   }
   },
   "coalescence": {
    "name": "Coalescence",
