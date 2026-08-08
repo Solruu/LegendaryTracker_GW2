@@ -4168,6 +4168,24 @@ export default function GW2LegendaryTracker() {
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
+                              {/* Chaîne de sous-collections détaillée (ex. Wayfarer's Henge) */}
+                              {missing && (item.chain ?? []).length > 0 && (
+                                <div style={{ marginTop: 6, borderLeft: "2px solid rgba(251,146,60,0.25)", paddingLeft: 8 }}>
+                                  {item.chain.map(st => (
+                                    <div key={st.n} style={{ marginBottom: 6 }}>
+                                      <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(251,146,60,0.8)", fontFamily: "'Cinzel', serif" }}>{st.n}. {st.name}</div>
+                                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.5)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(st)}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                              {missing && (item.tips ?? []).length > 0 && (
+                                <div style={{ marginTop: 4 }}>
+                                  {item.tips.map((tp, ti) => (
+                                    <div key={ti} style={{ fontSize: 10, color: "rgba(94,234,212,0.6)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, marginTop: 2 }}>{NX(tp)}</div>
+                                  ))}
+                                </div>
+                              )}
                               {/* Bloc Mastery story inline — bit 0 uniquement */}
                               {missing && masteryId && (
                                 <div style={{ marginTop: 5, padding: "6px 8px", background: "rgba(251,146,60,0.04)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 5 }}>

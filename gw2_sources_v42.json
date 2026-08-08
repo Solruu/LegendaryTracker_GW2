@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v41",
+  "version": "v42",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -866,7 +866,8 @@
   "changelog_v38": "Aetheric Anchor : conteneur légendaire vendable tant que fermé (2 armes à l'ouverture), composants d'exploration rachetables 50 po + 300k karma.",
   "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum).",
   "changelog_v40": "Audit 100% clos. Binding of Ipos corrigé (focus gen2, précurseur Ars Goetia + Gift of Ipos — était classé accessoire avec 2 gifts erronés). Legendary Relic conforme (+ volumes Lucent). fractal_capacitor identifié comme entrée fantôme → renvoi Ad Infinitum.",
-  "changelog_v41": "Audit Vision : note « requiert Coalescence » fausse supprimée, apiId 88485→91048, récompense Vision I (Shattered Gift of Prescience), Vision II refait (20 /kneel Mastery Insights, pas Requiem), prérequis Skyscale + Rift Repair + Trance Stone, Gift of Arid Mastery corrigé (100 incenses, pas la recette Desert Mastery)."
+  "changelog_v41": "Audit Vision : note « requiert Coalescence » fausse supprimée, apiId 88485→91048, récompense Vision I (Shattered Gift of Prescience), Vision II refait (20 /kneel Mastery Insights, pas Requiem), prérequis Skyscale + Rift Repair + Trance Stone, Gift of Arid Mastery corrigé (100 incenses, pas la recette Desert Mastery).",
+  "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle."
  },
  "meta_events": {
   "vb": {
@@ -11518,8 +11519,8 @@
        "name": "Draconis Mons Master",
        "total": 14,
        "timegate": {
-        "fr": "Le Wayfarer's Henge requiert la collection « A Henge Away from Home » : 16 Druid Runestones (max 1/jour) → 16 jours minimum",
-        "en": "Wayfarer's Henge requires the 'A Henge Away from Home' collection: 16 Druid Runestones (max 1/day) → 16 days minimum"
+        "fr": "The Wayfarer's Henge : chaîne de 4 collections, ~16 Druid Runestones à 1/jour → 16 jours minimum. À lancer en tout premier.",
+        "en": "The Wayfarer's Henge: 4-collection chain, ~16 Druid Runestones at 1/day → 16 days minimum. Start this first."
        },
        "items": [
         {
@@ -11537,10 +11538,54 @@
         {
          "name": "The Wayfarer's Henge",
          "how": {
-          "fr": "⚠️ Compléter 'A Henge Away from Home' (16 Druid Runestones, 1/jour — commencer tôt !)",
-          "en": "Warning: complete 'A Henge Away from Home' (16 Druid Runestones, 1/day - start early!)"
+          "fr": "⚠️ Chaîne de 4 collections (~16 jours). Voir le détail ci-dessous.",
+          "en": "Warning: 4-collection chain (~16 days). See the breakdown below."
          },
-         "bit": 1
+         "bit": 1,
+         "chain": [
+          {
+           "n": 1,
+           "name": "The Druid Stone",
+           "fr": "Débloquée en consommant le Volcano's Heart (récompense de l'instance finale « Heart of the Volcano », LS3 ép.5). Fabriquer un Druid Runestone = 5 Runestone Fragments : 4 chez les vendeurs de cœurs de Draconis Mons (1 050 karma pièce, après avoir fait le cœur — ils sont répétables quotidiennement) + 1 chez le vendeur Unbound Magic (1 000 UM + 1 po). ⏳ C'est LA limite : ~1 Druid Runestone par jour.",
+           "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM + 1 g). ⏳ This is THE bottleneck: ~1 Druid Runestone per day."
+          },
+          {
+           "n": 2,
+           "name": "Awakening the Druid Stone",
+           "fr": "Tuer les champions destroyers de Draconis Mons pour les Elements (dont l'Element of the Desecrator : Champion Molten Desecrator, event « Neutralize the destroyer champions and all destroyer burrows », plusieurs spawns — le plus simple est à l'est du volcan). Combiner chaque Element avec un Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ PIÈGE : Kodama refuse les runestones un par un — il faut avoir LES TROIS avant de lui parler.",
+           "en": "Kill the Draconis Mons destroyer champions for the Elements (incl. Element of the Desecrator: Champion Molten Desecrator, 'Neutralize the destroyer champions and all destroyer burrows' event, several spawns — easiest east of the volcano). Combine each Element with a Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ TRAP: Kodama refuses runestones one at a time — you need ALL THREE before talking to her."
+          },
+          {
+           "n": 3,
+           "name": "Sprouting the Druid Stone",
+           "fr": "5 Druid Runestones de plus. Étape « Propagation of the Fire Orchid » : planter la Fire Orchid Seed dans la Fertile Soil près de Kodama (Savage Rise) — ensuite une Primordial Orchid y est récoltable quotidiennement.",
+           "en": "5 more Druid Runestones. 'Propagation of the Fire Orchid' step: plant the Fire Orchid Seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid becomes a daily harvest there afterwards."
+          },
+          {
+           "n": 4,
+           "name": "A Henge Away from Home",
+           "fr": "7 Druid Runestones de plus + les 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, à rendre TOUS ENSEMBLE à Kodama. Puis 3 bouquets à porter aux Maguuma Druid Spirits de Draconis Mons. Récompense : The Wayfarer's Henge (dos élevé).",
+           "en": "7 more Druid Runestones + the 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, handed in ALL AT ONCE to Kodama. Then 3 bouquets to bring to the Maguuma Druid Spirits in Draconis Mons. Reward: The Wayfarer's Henge (ascended back)."
+          }
+         ],
+         "tips": [
+          {
+           "fr": "📍 Kodama : PoI Druid's Grotto — depuis Heathen's Hold wp, aller à l'ouest et descendre jusqu'à voir l'ouverture de la grotte (elle est au fond).",
+           "en": "📍 Kodama: Druid's Grotto PoI — from Heathen's Hold wp, head west and drop until you spot the cave opening (she's at the back)."
+          },
+          {
+           "fr": "⚡ Les 4 Elements d'un coup : les élémentaires de feu/eau/air/terre spawnent tous autour de la Cathedral of Eternal Radiance (Malchor's Leap), ou au temple de Lyssa quand il est sous contrôle du Pacte. Sinon en bas niveau : Feu = Wildflame Caverns [&BH4FAAA=], Air = The Hinterlabs [&BPcEAAA=] (Metrica), Eau = Grekvelnn Burrows [&BGcBAAA=] (Wayfarer Foothills), Terre = Western Divinity Dam [&BFEFAAA=] (Queensdale).",
+           "en": "⚡ All 4 Elements in one trip: fire/water/air/earth elementals all spawn around the Cathedral of Eternal Radiance (Malchor's Leap), or at Lyssa's temple while Pact-controlled. Low-level alternative: Fire = Wildflame Caverns [&BH4FAAA=], Air = The Hinterlabs [&BPcEAAA=] (Metrica), Water = Grekvelnn Burrows [&BGcBAAA=] (Wayfarer Foothills), Earth = Western Divinity Dam [&BFEFAAA=] (Queensdale)."
+          },
+          {
+           "fr": "✅ Le Heavy Houndskin Mantle (récompense de la maîtrise Flashpoint) compte RÉTROACTIVEMENT : pas besoin d'attendre la collection pour ouvrir le coffre.",
+           "en": "✅ The Heavy Houndskin Mantle (Flashpoint mastery reward) counts RETROACTIVELY: no need to wait for the collection before opening the box."
+          },
+          {
+           "fr": "⏳ Acheter les 5 fragments CHAQUE jour même sans jouer la suite : c'est le seul goulot réel (~16 jours au total).",
+           "en": "⏳ Buy the 5 fragments EVERY day even if you do nothing else: it's the only real bottleneck (~16 days total)."
+          }
+         ]
         },
         {
          "name": "Scouting Party Supporter",
