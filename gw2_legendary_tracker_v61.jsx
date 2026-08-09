@@ -1604,6 +1604,21 @@ const LEGENDARIES = {
       { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
       { id: "coins",    name: "Mystic Coin",            required: 250, icon: "MO", apiId: 19976 },
     ],
+    requirements: {
+      unit: { fr: "collection", en: "collection" },
+      unitTotal: 4,
+      perStep: [{ key: "adinf_1", units: 1 }, { key: "adinf_2", units: 1 }, { key: "adinf_3", units: 1 }, { key: "adinf_4", units: 1 }],
+      lines: [
+        { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, perUnit: 28, curKey: "pages",
+          detail: { fr: "1 Fractal Journal (28 pages) consommé par collection · ~3/jour via les dailies recommandées, +1 par CM quotidien (Sunqua, Nightmare, Shattered)", en: "1 Fractal Journal (28 pages) consumed per collection · ~3/day from recommended dailies, +1 per daily CM (Sunqua, Nightmare, Shattered)" } },
+        { icon: "⏳", label: { fr: "Jours (sans CM)", en: "Days (no CMs)" }, perUnit: 10,
+          detail: { fr: "~28 pages ÷ 3/jour. Avec les 3 CM quotidiens : ~5 jours par collection", en: "~28 pages ÷ 3/day. With all 3 daily CMs: ~5 days per collection" } },
+        { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
+          detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
+        { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, fixed: 1350, curKey: "relics", oneShot: "adinf_1",
+          detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
+      ],
+    },
     raidAchievements: [
       { key: "adinf_1", achievementId: 2351, name: "Ad Infinitum I: Finite Result", total: 11,
         tip: { fr: "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).", en: "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)." } },
@@ -4698,6 +4713,46 @@ export default function GW2LegendaryTracker() {
                 <div style={{ marginTop: 6, fontSize: "11px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.5)" }}>
                   {NX({ fr: "+4-6 par run quickplay · +25/semaine (Weekly Fractal Quickplay) · progression conservée en local entre les refresh, resynchronisée via Flask.", en: "+4-6 per quickplay run · +25/week (Weekly Fractal Quickplay) · progress kept locally across refreshes, re-synced via Flask." })}
                 </div>
+              </div>
+            );
+          })()}
+          {leg?.requirements && (() => {
+            const RQ = leg.requirements;
+            const total = RQ.unitTotal ?? 0;
+            const doneU = (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
+            const known = (RQ.perStep ?? []).some(st => apiAch[st.key]);
+            const left = Math.max(0, total - doneU);
+            const nf = (v) => v.toLocaleString("fr-FR");
+            return (
+              <div style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>{NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}</span>
+                  <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
+                    {known ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}(s)`, en: `${left} / ${total} ${NXS(RQ.unit)}(s) left` })
+                           : NX({ fr: `${total} ${NXS(RQ.unit)}(s) au total`, en: `${total} ${NXS(RQ.unit)}(s) total` })}
+                  </span>
+                </div>
+                {(RQ.lines ?? []).map((ln, li) => {
+                  const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
+                  const totalV = ln.fixed != null ? ln.fixed : (ln.perUnit ?? 0) * total;
+                  const leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : (ln.perUnit ?? 0) * left;
+                  const stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : null;
+                  const ok = leftV === 0 || (stock != null && stock >= leftV);
+                  return (
+                    <div key={li} style={{ padding: "3px 0", borderTop: li ? "1px solid rgba(226,201,126,0.06)" : "none" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11 }}>
+                        <span style={{ color: "rgba(226,201,126,0.8)" }}>{ln.icon} {NX(ln.label)}</span>
+                        <span style={{ whiteSpace: "nowrap", fontFamily: "'Crimson Text', serif" }}>
+                          <span style={{ color: ok ? "#4ade80" : "#5eead4", fontWeight: 600 }}>{nf(leftV)}</span>
+                          {leftV !== totalV && <span style={{ color: "rgba(226,201,126,0.3)" }}> / {nf(totalV)}</span>}
+                          {stock != null && <span style={{ color: ok ? "#4ade80" : "rgba(226,201,126,0.45)" }}> · {NX({ fr: "en stock", en: "held" })} {nf(stock)}</span>}
+                        </span>
+                      </div>
+                      {ln.detail && <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.4 }}>{NX(ln.detail)}</div>}
+                    </div>
+                  );
+                })}
+                {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
               </div>
             );
           })()}

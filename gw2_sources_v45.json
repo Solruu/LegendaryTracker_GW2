@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v44",
+  "version": "v45",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -638,6 +638,8 @@
      "oblige": 76
     },
     "ad_infinitum": {
+     "pages": 73834,
+     "energy": 71994,
      "relics": 7,
      "pristine": 24,
      "clovers": 19675,
@@ -872,7 +874,8 @@
   "changelog_v41": "Audit Vision : note « requiert Coalescence » fausse supprimée, apiId 88485→91048, récompense Vision I (Shattered Gift of Prescience), Vision II refait (20 /kneel Mastery Insights, pas Requiem), prérequis Skyscale + Rift Repair + Trance Stone, Gift of Arid Mastery corrigé (100 incenses, pas la recette Desert Mastery).",
   "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle.",
   "changelog_v43": "Wayfarer's Henge : bloc requirements chiffré (16 pierres = 80 fragments, 67 200 karma / 16 000 UM / 16 po / 16 jours), unités par étape avec achievementId pour le calcul du restant.",
-  "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge)."
+  "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge).",
+  "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis."
  },
  "meta_events": {
   "vb": {

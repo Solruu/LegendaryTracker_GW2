@@ -938,6 +938,8 @@ def progression():
 
     # Currencies Ad Infinitum (dos fractales)
     ad_infinitum = {
+        "pages":    mat_dict.get(73834, 0),    # Fractal Research Page (28/collection, 112 au total)
+        "energy":   mat_dict.get(71994, 0),    # Ball of Dark Energy
         "relics":   wallet_dict.get(7, 0),     # Fractal Relic (Gift of Ascension ×500 + achats collections)
         "pristine": wallet_dict.get(24, 0),    # Pristine Fractal Relic (achats BUY-2046 ×50)
         "clovers":  mat_dict.get(19675, 0),    # Mystic Clover (Gift of Fortune ×77)
