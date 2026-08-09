@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v45",
+  "version": "v46",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -591,7 +591,13 @@
      "lucent": 89140,
      "lucent_pile": 89271,
      "clovers": 19675,
-     "ectos": 19721
+     "ectos": 19721,
+     "charm_bril": 89103,
+     "charm_pot": 89258,
+     "charm_skill": 89216,
+     "sym_ctrl": 89098,
+     "sym_enh": 89141,
+     "sym_pain": 89182
     },
     "t6": {
      "blood": 24295,
@@ -875,7 +881,8 @@
   "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle.",
   "changelog_v43": "Wayfarer's Henge : bloc requirements chiffré (16 pierres = 80 fragments, 67 200 karma / 16 000 UM / 16 po / 16 jours), unités par étape avec achievementId pour le calcul du restant.",
   "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge).",
-  "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis."
+  "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
+  "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils."
  },
  "meta_events": {
   "vb": {

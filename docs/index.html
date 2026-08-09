@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v45",
+    "version": "v46",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1160,7 +1160,13 @@ const SOURCES_DB = {
           "lucent": 89140,
           "lucent_pile": 89271,
           "clovers": 19675,
-          "ectos": 19721
+          "ectos": 19721,
+          "charm_bril": 89103,
+          "charm_pot": 89258,
+          "charm_skill": 89216,
+          "sym_ctrl": 89098,
+          "sym_enh": 89141,
+          "sym_pain": 89182
         },
         "t6": {
           "blood": 24295,
@@ -1444,7 +1450,8 @@ const SOURCES_DB = {
     "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle.",
     "changelog_v43": "Wayfarer's Henge : bloc requirements chiffré (16 pierres = 80 fragments, 67 200 karma / 16 000 UM / 16 po / 16 jours), unités par étape avec achievementId pour le calcul du restant.",
     "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge).",
-    "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis."
+    "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
+    "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils."
   },
   "meta_events": {
     "vb": {
@@ -13592,6 +13599,49 @@ const LEGENDARIES = {
       { id: "ectos",       name: "Glob of Ectoplasm",        required: 1050,  icon: "EC", apiId: 19721 },
       { id: "shards",      name: "Obsidian Shard",           required: 450,   icon: "OS", apiId: 19925 },
     ],
+    requirements: [
+      { title: { fr: "📋 Runes légendaires", en: "📋 Legendary Runes" },
+        unit: { fr: "rune", en: "rune" }, unitTotal: 7, unitsFrom: { key: "rune_collector" },
+        note: { fr: "Cible : 7 (6 armure + 1 respirateur) — 6 suffisent pour un set terrestre. Les quantités ci-dessus sont recalculées d'après les runes déjà liées au compte.", en: "Target: 7 (6 armor + 1 aquabreather) — 6 cover a land set. Amounts above are recalculated from the runes already bound to your account." },
+        lines: [
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 500, curKey: "lucent_pile",
+            detail: { fr: "50 Mystic Aspects × 10 piles · 1 pile = 10 Lucent Motes (recyclage d'objets rares/exotiques)", en: "50 Mystic Aspects × 10 piles · 1 pile = 10 Lucent Motes (salvaging rare/exotic gear)" } },
+          { icon: "✨", label: { fr: "Charm of Brilliance", en: "Charm of Brilliance" }, perUnit: 50, curKey: "charm_bril" },
+          { icon: "✨", label: { fr: "Charm of Potence", en: "Charm of Potence" }, perUnit: 50, curKey: "charm_pot" },
+          { icon: "✨", label: { fr: "Charm of Skill", en: "Charm of Skill" }, perUnit: 50, curKey: "charm_skill" },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner",
+            detail: { fr: "Gift of Craftsmanship · achat plafonné quotidiennement chez les Provisioners (échange d'objets crafts)", en: "Gift of Craftsmanship · daily-capped purchase from Provisioners (trade in crafted items)" } },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 20, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 100, curKey: "ectos" },
+          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 50, curKey: "shards" },
+        ] },
+      { title: { fr: "📋 Sigils légendaires", en: "📋 Legendary Sigils" },
+        unit: { fr: "sigil", en: "sigil" }, unitTotal: 8, unitsFrom: { key: "sigil_collector" },
+        note: { fr: "Cible : 8 (2 sets d'armes terrestres + aquatique) — 2 à 4 couvrent l'essentiel au quotidien.", en: "Target: 8 (2 land weapon sets + aquatic) — 2 to 4 cover most day-to-day needs." },
+        lines: [
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 750, curKey: "lucent_pile",
+            detail: { fr: "75 Mystic Motes × 10 piles", en: "75 Mystic Motes × 10 piles" } },
+          { icon: "✨", label: { fr: "Symbol of Control", en: "Symbol of Control" }, perUnit: 75, curKey: "sym_ctrl" },
+          { icon: "✨", label: { fr: "Symbol of Enhancement", en: "Symbol of Enhancement" }, perUnit: 75, curKey: "sym_enh" },
+          { icon: "✨", label: { fr: "Symbol of Pain", en: "Symbol of Pain" }, perUnit: 75, curKey: "sym_pain" },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner" },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 30, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 150, curKey: "ectos" },
+          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 75, curKey: "shards" },
+        ] },
+      { title: { fr: "📋 Relique légendaire", en: "📋 Legendary Relic" },
+        unit: { fr: "relique", en: "relic" }, unitTotal: 1,
+        note: { fr: "Une seule est utile. ⚠ Volume : 18 750 Piles Lucent (moins avec les procs ×5 du Mystic Facet) — étaler les ordres d'achat au comptoir. Lyhr (Wizard's Tower) peut forger les gifts contre 10 ectos de surcoût.", en: "Only one is useful. ⚠ Volume: 18,750 Lucent Piles (fewer with Mystic Facet ×5 procs) — spread your TP buy orders. Lyhr (Wizard's Tower) can forge the gifts for 10 extra ectos." },
+        lines: [
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 18750, curKey: "lucent_pile",
+            detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
+          { icon: "🗿", label: { fr: "Reliques exotiques", en: "Exotic relics" }, perUnit: 25,
+            detail: { fr: "N'importe lesquelles — les moins chères au comptoir", en: "Any of them — cheapest on the TP" } },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner" },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 25, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 150, curKey: "ectos" },
+        ] },
+    ],
     raidAchievements: [
       { key: "rune_collector", achievementId: 7796, name: "Legendary Rune Collector",
         tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
@@ -17210,17 +17260,18 @@ function GW2LegendaryTracker() {
               </div>
             );
           })()}
-          {leg?.requirements && (() => {
-            const RQ = leg.requirements;
+          {leg?.requirements && [].concat(leg.requirements).map((RQ, rqi) => (() => {
             const total = RQ.unitTotal ?? 0;
-            const doneU = (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
-            const known = (RQ.perStep ?? []).some(st => apiAch[st.key]);
+            // Mode A : unités déduites des collections terminées · Mode B : compteur d'un succès (runes/sigils possédés)
+            const cnt = RQ.unitsFrom ? (apiAch[RQ.unitsFrom.key]?.current ?? null) : null;
+            const doneU = RQ.unitsFrom ? (cnt ?? 0) : (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
+            const known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
             const left = Math.max(0, total - doneU);
             const nf = (v) => v.toLocaleString("fr-FR");
             return (
-              <div style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
+              <div key={rqi} style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
-                  <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>{NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}</span>
+                  <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>{RQ.title ? NX(RQ.title) : NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}</span>
                   <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
                     {known ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}(s)`, en: `${left} / ${total} ${NXS(RQ.unit)}(s) left` })
                            : NX({ fr: `${total} ${NXS(RQ.unit)}(s) au total`, en: `${total} ${NXS(RQ.unit)}(s) total` })}
@@ -17246,10 +17297,11 @@ function GW2LegendaryTracker() {
                     </div>
                   );
                 })}
+                {RQ.note && <div style={{ marginTop: 5, fontSize: 9.5, color: "rgba(251,146,60,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>{NX(RQ.note)}</div>}
                 {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
               </div>
             );
-          })()}
+          })())}
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {(leg?.raidAchievements ?? []).map(a => {

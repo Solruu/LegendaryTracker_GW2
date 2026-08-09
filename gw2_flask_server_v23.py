@@ -1006,6 +1006,12 @@ def progression():
         "lucent_pile": mat_dict.get(89271, 0),   # Pile of Lucent Crystal
         "clovers":     mat_dict.get(19675, 0),
         "ectos":       mat_dict.get(19721, 0),
+        "charm_bril":  mat_dict.get(89103, 0),   # Charm of Brilliance (50/rune)
+        "charm_pot":   mat_dict.get(89258, 0),   # Charm of Potence (50/rune)
+        "charm_skill": mat_dict.get(89216, 0),   # Charm of Skill (50/rune)
+        "sym_ctrl":    mat_dict.get(89098, 0),   # Symbol of Control (75/sigil)
+        "sym_enh":     mat_dict.get(89141, 0),   # Symbol of Enhancement (75/sigil)
+        "sym_pain":    mat_dict.get(89182, 0),   # Symbol of Pain (75/sigil)
     }
 
     # Currencies Selachimorpha (VoE)
