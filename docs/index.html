@@ -13012,6 +13012,61 @@ const SOURCES_DB = {
 // BASE DE DONNÉES LÉGENDAIRES
 // ═══════════════════════════════════════════════════════════════
 
+// ── RequirementsBlocks : prérequis chiffrés (total + restant + stock live) ──
+function RequirementsBlocks({ requirements, apiAch, currencies }) {
+  if (!requirements) return null;
+  return [].concat(requirements).map((RQ, rqi) => {
+    const total = RQ.unitTotal ?? 0;
+    const cnt = RQ.unitsFrom ? (apiAch[RQ.unitsFrom.key]?.current ?? null) : null;
+    const doneU = RQ.unitsFrom ? (cnt ?? 0) : (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
+    const known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
+    const left = Math.max(0, total - doneU);
+    const nf = (v) => v.toLocaleString("fr-FR");
+    return (
+      <div key={rqi} style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
+          <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>{RQ.title ? NX(RQ.title) : NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}</span>
+          <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
+            {known ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}(s)`, en: `${left} / ${total} ${NXS(RQ.unit)}(s) left` })
+                   : NX({ fr: `${total} ${NXS(RQ.unit)}(s) au total`, en: `${total} ${NXS(RQ.unit)}(s) total` })}
+          </span>
+        </div>
+        {(RQ.lines ?? []).map((ln, li) => {
+          const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
+          let totalV = ln.fixed != null ? ln.fixed : (ln.perUnit ?? 0) * total;
+          let leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : (ln.perUnit ?? 0) * left;
+          let stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : null;
+          if (ln.derivedFrom) {
+            const srcLn = (RQ.lines ?? []).find(x => x.curKey === ln.derivedFrom);
+            const srcTotal = srcLn ? (srcLn.fixed != null ? srcLn.fixed : (srcLn.perUnit ?? 0) * total) : 0;
+            const srcLeft = srcLn ? (srcLn.fixed != null ? srcLn.fixed : (srcLn.perUnit ?? 0) * left) : 0;
+            const held = srcLn?.curKey ? (currencies?.[srcLn.curKey] ?? 0) : 0;
+            totalV = Math.ceil(srcTotal / (ln.rate || 1));
+            leftV = Math.ceil(Math.max(0, srcLeft - held) / (ln.rate || 1));
+            stock = null;
+          }
+          const ok = leftV === 0 || (stock != null && stock >= leftV);
+          return (
+            <div key={li} style={{ padding: "3px 0", borderTop: li ? "1px solid rgba(226,201,126,0.06)" : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11 }}>
+                <span style={{ color: "rgba(226,201,126,0.8)" }}>{ln.icon} {NX(ln.label)}</span>
+                <span style={{ whiteSpace: "nowrap", fontFamily: "'Crimson Text', serif" }}>
+                  <span style={{ color: ok ? "#4ade80" : "#5eead4", fontWeight: 600 }}>{nf(leftV)}</span>
+                  {leftV !== totalV && <span style={{ color: "rgba(226,201,126,0.3)" }}> / {nf(totalV)}</span>}
+                  {stock != null && <span style={{ color: ok ? "#4ade80" : "rgba(226,201,126,0.45)" }}> · {NX({ fr: "en stock", en: "held" })} {nf(stock)}</span>}
+                </span>
+              </div>
+              {ln.detail && <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.4 }}>{NX(ln.detail)}</div>}
+            </div>
+          );
+        })}
+        {RQ.note && <div style={{ marginTop: 5, fontSize: 9.5, color: "rgba(251,146,60,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>{NX(RQ.note)}</div>}
+        {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
+      </div>
+    );
+  });
+}
+
 // ── TrinketGuide : fiche guide détaillée d'un colifichet (données SOURCES_DB) ──
 function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSteps, toggleStep }) {
   const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
@@ -13461,6 +13516,18 @@ const LEGENDARIES = {
     ],
     currencyNote: { fr: "⚠ Testimonies : les Jade (ère EoD) ne sont PLUS obtenables depuis VoE — les rank-ups McM donnent des Castoran, mais les vendeurs (Dugan, War Razor) exigent encore des Jade (incohérence signalée aux forums depuis fév. 2026, non corrigée en avril). Les deux compteurs sont suivis : si ArenaNet aligne la recette sur Castoran, le second prend le relais.", en: "⚠ Testimonies: Jade (EoD era) can NO LONGER be obtained since VoE — WvW rank-ups grant Castoran, but vendors (Dugan, War Razor) still demand Jade (inconsistency reported on the forums since Feb 2026, unfixed as of April). Both counters are tracked: if ArenaNet aligns the recipe to Castoran, the second one takes over." },
     metas: [],
+    requirements: {
+      unit: { fr: "dos", en: "back" }, unitTotal: 1,
+      note: { fr: "⚠ Prérequis bloquants : rang McM 350 et tag de commandant (300 po) pour acheter le 4e Wings of War.", en: "⚠ Hard prerequisites: WvW rank 350 and a commander tag (300 g) to buy the 4th Wings of War." },
+      lines: [
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 2800, curKey: "tickets",
+          detail: { fr: "4 Wings of War (2 450) + composants · plafond 365/semaine + ~90 via les hebdos McM", en: "4 Wings of War (2,450) + components · 365/week cap + ~90 from WvW weeklies" } },
+        { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
+          detail: { fr: "455 tickets/semaine hebdos comprises · tickets partagés avec Conflux, Strife et Triumphant Hero — les enchaîner du moins cher au plus cher", en: "455 tickets/week including weeklies · tickets shared with Conflux, Strife and Triumphant Hero — chain them cheapest first" } },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 750, curKey: "memory" },
+        { icon: "🛡", label: { fr: "Badges of Honor", en: "Badges of Honor" }, perUnit: 1250, curKey: "badges" },
+      ],
+    },
     wvwActivities: [
       { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
         limit: { fr: "365 tickets/semaine", en: "365 tickets/week" }, resetDay: "Lundi",
@@ -13776,6 +13843,21 @@ const LEGENDARIES = {
       { id: "provisioner", name: "Provisioner Token", perPiece: 50, icon: "PT", apiId: 29 },
     ],
     currencies: [],
+    requirements: {
+      unit: { fr: "pièce", en: "piece" }, unitTotal: 6,
+      perStep: [{ key: "envoy_1", units: 0 }],
+      note: { fr: "⏳ Le vrai timegate est le Spirit Weave d'Envoy I : 5 Spirit Threads à 1/semaine sur Gorseval — à lancer dès la première semaine, avant tout le reste.", en: "⏳ The real timegate is Envoy I's Spirit Weave: 5 Spirit Threads at 1/week from Gorseval — start it on week 1, before anything else." },
+      lines: [
+        { icon: "🧵", label: { fr: "Semaines de Spirit Threads", en: "Spirit Thread weeks" }, fixed: 5, oneShot: "envoy_1",
+          detail: { fr: "1 thread/semaine sur Gorseval (W1) · énergiser les 5 au Chak Gerent (méta TD) — taguer les 4 lanes en énergise jusqu'à 4 d'un coup", en: "1 thread/week from Gorseval (W1) · energize all 5 at the Chak Gerent (TD meta) — tagging the 4 lanes energizes up to 4 at once" } },
+        { icon: "💡", label: { fr: "Legendary Insights", en: "Legendary Insights" }, perUnit: 25, curKey: "li",
+          detail: { fr: "25/pièce · +25 par Envoy Insignia (Glenna) pour les sets suivants", en: "25/piece · +25 per Envoy Insignia (Glenna) for later sets" } },
+        { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner",
+          detail: { fr: "Gift of Craftsmanship · achat plafonné quotidiennement", en: "Gift of Craftsmanship · daily-capped purchase" } },
+        { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 50, curKey: "shards" },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 15, curKey: "clovers" },
+      ],
+    },
     raidAchievements: [
       { key: "envoy_1", achievementId: 2646, name: "Envoy Armor I: Experimental Armor",
         tip: { fr: "Débloquée au premier coffer de boss (W1–W4). ⏳ Lancer les Spirit Threads (Gorseval, 1/sem) dès la semaine 1. Récompense : set Experimental — prendre un poids DIFFÉRENT de ton futur légendaire (l'Armory rendrait le même poids obsolète).", en: "Unlocked on your first boss coffer (W1–W4). ⏳ Start the Spirit Threads (Gorseval, 1/wk) on week 1. Reward: Experimental set — pick a DIFFERENT weight than your planned legendary (the Armory would make the same weight obsolete)." },
@@ -13844,6 +13926,18 @@ const LEGENDARIES = {
       { id: "clovers", name: "Mystic Clover",          perPiece: 15,   icon: "MC", apiId: 19675 },
     ],
     currencies: [],
+    requirements: {
+      unit: { fr: "pièce", en: "piece" }, unitTotal: 6,
+      note: { fr: "⚠ Ne jamais stat-swap un précurseur. Variante Mistforged : 9 190 tickets + rang McM requis.", en: "⚠ Never stat-swap a precursor. Mistforged variant: 9,190 tickets + WvW rank required." },
+      lines: [
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 1313, curKey: "tickets",
+          detail: { fr: "Précurseur (175 à 350 selon la pièce) + 1 095 pour le Gift of War Prowess", en: "Precursor (175 to 350 depending on the piece) + 1,095 for the Gift of War Prowess" } },
+        { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
+          detail: { fr: "455/semaine hebdos comprises · l'objectif le plus long du tracker", en: "455/week including weeklies · the longest goal in the tracker" } },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 500, curKey: "memory" },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 15, curKey: "clovers" },
+      ],
+    },
     wvwActivities: [
       { id: "skirmish", name: { fr: "Piste de récompenses d'escarmouche", en: "Skirmish Reward Track" }, icon: "SR",
         limit: { fr: "365 tickets/semaine → ~22 semaines pour un set", en: "365 tickets/week → ~22 weeks for one set" }, resetDay: "Lundi",
@@ -14211,6 +14305,17 @@ const LEGENDARIES = {
       { id: "clovers", name: "Mystic Clover",          required: 45,   icon: "MC", apiId: 19675 },
       { id: "memory",  name: "Memory of Battle",       required: 250,  icon: "MB", apiId: 71581 },
     ],
+    requirements: {
+      unit: { fr: "accessoire", en: "accessory" }, unitTotal: 1,
+      note: { fr: "Emblèmes (4 Conqueror / 40 Avenger) acquis passivement en jouant — pas de farm dédié.", en: "Emblems (4 Conqueror / 40 Avenger) accrue passively as you play — no dedicated farm." },
+      lines: [
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 3000, curKey: "tickets" },
+        { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
+          detail: { fr: "455/semaine hebdos comprises · l'objectif McM le moins cher : le faire avant Triumphant Hero", en: "455/week including weeklies · the cheapest WvW goal: do it before Triumphant Hero" } },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 45, curKey: "clovers" },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 250, curKey: "memory" },
+      ],
+    },
     raidAchievements: [
       { key: "strife_mists_research", achievementId: 6933, name: "Mists Research", total: 3,
         tip: { fr: "Prérequis. Parler à Dugan (« Hey, what's that strange glow… »), puis communier aux Hero Points WvW indiqués (les compléter d'abord). Débloque l'achat de la Mistwalker Infusion.", en: "Prereq. Talk to Dugan ('Hey, what's that strange glow…'), then commune at the listed WvW Hero Points (complete them first). Unlocks the Mistwalker Infusion purchase." } },
@@ -17260,48 +17365,7 @@ function GW2LegendaryTracker() {
               </div>
             );
           })()}
-          {leg?.requirements && [].concat(leg.requirements).map((RQ, rqi) => (() => {
-            const total = RQ.unitTotal ?? 0;
-            // Mode A : unités déduites des collections terminées · Mode B : compteur d'un succès (runes/sigils possédés)
-            const cnt = RQ.unitsFrom ? (apiAch[RQ.unitsFrom.key]?.current ?? null) : null;
-            const doneU = RQ.unitsFrom ? (cnt ?? 0) : (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
-            const known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
-            const left = Math.max(0, total - doneU);
-            const nf = (v) => v.toLocaleString("fr-FR");
-            return (
-              <div key={rqi} style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
-                  <span style={{ fontSize: 11, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>{RQ.title ? NX(RQ.title) : NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}</span>
-                  <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
-                    {known ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}(s)`, en: `${left} / ${total} ${NXS(RQ.unit)}(s) left` })
-                           : NX({ fr: `${total} ${NXS(RQ.unit)}(s) au total`, en: `${total} ${NXS(RQ.unit)}(s) total` })}
-                  </span>
-                </div>
-                {(RQ.lines ?? []).map((ln, li) => {
-                  const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
-                  const totalV = ln.fixed != null ? ln.fixed : (ln.perUnit ?? 0) * total;
-                  const leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : (ln.perUnit ?? 0) * left;
-                  const stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : null;
-                  const ok = leftV === 0 || (stock != null && stock >= leftV);
-                  return (
-                    <div key={li} style={{ padding: "3px 0", borderTop: li ? "1px solid rgba(226,201,126,0.06)" : "none" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11 }}>
-                        <span style={{ color: "rgba(226,201,126,0.8)" }}>{ln.icon} {NX(ln.label)}</span>
-                        <span style={{ whiteSpace: "nowrap", fontFamily: "'Crimson Text', serif" }}>
-                          <span style={{ color: ok ? "#4ade80" : "#5eead4", fontWeight: 600 }}>{nf(leftV)}</span>
-                          {leftV !== totalV && <span style={{ color: "rgba(226,201,126,0.3)" }}> / {nf(totalV)}</span>}
-                          {stock != null && <span style={{ color: ok ? "#4ade80" : "rgba(226,201,126,0.45)" }}> · {NX({ fr: "en stock", en: "held" })} {nf(stock)}</span>}
-                        </span>
-                      </div>
-                      {ln.detail && <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.4 }}>{NX(ln.detail)}</div>}
-                    </div>
-                  );
-                })}
-                {RQ.note && <div style={{ marginTop: 5, fontSize: 9.5, color: "rgba(251,146,60,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>{NX(RQ.note)}</div>}
-                {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
-              </div>
-            );
-          })())}
+          <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {(leg?.raidAchievements ?? []).map(a => {
@@ -17491,6 +17555,7 @@ function GW2LegendaryTracker() {
 
       {activeTab === "currencies" && (
         <div>
+          {!leg?.raidAchievements && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
           {(leg?.currencyNoteKeys ?? []).map(k => (
             <div key={k} style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
