@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v42",
+    "version": "v44",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1120,6 +1120,9 @@ const SOURCES_DB = {
           "vm": 45
         },
         "aurora": {
+          "karma": 2,
+          "unbound": 32,
+          "gold": 1,
           "winterberry": 79899,
           "petrified": 79469,
           "jade": 80332,
@@ -1436,7 +1439,9 @@ const SOURCES_DB = {
     "changelog_v39": "Audit clos : Stella, Transcendence, Ascension, Orrax confirmés conformes. Compléments : 56 750 Research Notes (Stella), amulette achetable McM/PvE + détail Gift of Skirmishing (Transcendence/Ascension), Prototype Fractal Capacitor 1 350 relics + avertissement anti-recyclage (Ad Infinitum).",
     "changelog_v40": "Audit 100% clos. Binding of Ipos corrigé (focus gen2, précurseur Ars Goetia + Gift of Ipos — était classé accessoire avec 2 gifts erronés). Legendary Relic conforme (+ volumes Lucent). fractal_capacitor identifié comme entrée fantôme → renvoi Ad Infinitum.",
     "changelog_v41": "Audit Vision : note « requiert Coalescence » fausse supprimée, apiId 88485→91048, récompense Vision I (Shattered Gift of Prescience), Vision II refait (20 /kneel Mastery Insights, pas Requiem), prérequis Skyscale + Rift Repair + Trance Stone, Gift of Arid Mastery corrigé (100 incenses, pas la recette Desert Mastery).",
-    "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle."
+    "changelog_v42": "Wayfarer's Henge : chaîne complète des 4 collections détaillée (Druid Stone → Awakening → Sprouting → A Henge Away from Home), pièges Kodama, spots d'élémentaires, rétroactivité du Houndskin Mantle.",
+    "changelog_v43": "Wayfarer's Henge : bloc requirements chiffré (16 pierres = 80 fragments, 67 200 karma / 16 000 UM / 16 po / 16 jours), unités par étape avec achievementId pour le calcul du restant.",
+    "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge)."
   },
   "meta_events": {
     "vb": {
@@ -12116,25 +12121,33 @@ const SOURCES_DB = {
                       "n": 1,
                       "name": "The Druid Stone",
                       "fr": "Débloquée en consommant le Volcano's Heart (récompense de l'instance finale « Heart of the Volcano », LS3 ép.5). Fabriquer un Druid Runestone = 5 Runestone Fragments : 4 chez les vendeurs de cœurs de Draconis Mons (1 050 karma pièce, après avoir fait le cœur — ils sont répétables quotidiennement) + 1 chez le vendeur Unbound Magic (1 000 UM + 1 po). ⏳ C'est LA limite : ~1 Druid Runestone par jour.",
-                      "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM + 1 g). ⏳ This is THE bottleneck: ~1 Druid Runestone per day."
+                      "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM + 1 g). ⏳ This is THE bottleneck: ~1 Druid Runestone per day.",
+                      "achievementId": 3402,
+                      "units": 1
                     },
                     {
                       "n": 2,
                       "name": "Awakening the Druid Stone",
                       "fr": "Tuer les champions destroyers de Draconis Mons pour les Elements (dont l'Element of the Desecrator : Champion Molten Desecrator, event « Neutralize the destroyer champions and all destroyer burrows », plusieurs spawns — le plus simple est à l'est du volcan). Combiner chaque Element avec un Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ PIÈGE : Kodama refuse les runestones un par un — il faut avoir LES TROIS avant de lui parler.",
-                      "en": "Kill the Draconis Mons destroyer champions for the Elements (incl. Element of the Desecrator: Champion Molten Desecrator, 'Neutralize the destroyer champions and all destroyer burrows' event, several spawns — easiest east of the volcano). Combine each Element with a Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ TRAP: Kodama refuses runestones one at a time — you need ALL THREE before talking to her."
+                      "en": "Kill the Draconis Mons destroyer champions for the Elements (incl. Element of the Desecrator: Champion Molten Desecrator, 'Neutralize the destroyer champions and all destroyer burrows' event, several spawns — easiest east of the volcano). Combine each Element with a Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ TRAP: Kodama refuses runestones one at a time — you need ALL THREE before talking to her.",
+                      "achievementId": 3445,
+                      "units": 3
                     },
                     {
                       "n": 3,
                       "name": "Sprouting the Druid Stone",
                       "fr": "5 Druid Runestones de plus. Étape « Propagation of the Fire Orchid » : planter la Fire Orchid Seed dans la Fertile Soil près de Kodama (Savage Rise) — ensuite une Primordial Orchid y est récoltable quotidiennement.",
-                      "en": "5 more Druid Runestones. 'Propagation of the Fire Orchid' step: plant the Fire Orchid Seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid becomes a daily harvest there afterwards."
+                      "en": "5 more Druid Runestones. 'Propagation of the Fire Orchid' step: plant the Fire Orchid Seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid becomes a daily harvest there afterwards.",
+                      "achievementId": 3447,
+                      "units": 5
                     },
                     {
                       "n": 4,
                       "name": "A Henge Away from Home",
                       "fr": "7 Druid Runestones de plus + les 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, à rendre TOUS ENSEMBLE à Kodama. Puis 3 bouquets à porter aux Maguuma Druid Spirits de Draconis Mons. Récompense : The Wayfarer's Henge (dos élevé).",
-                      "en": "7 more Druid Runestones + the 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, handed in ALL AT ONCE to Kodama. Then 3 bouquets to bring to the Maguuma Druid Spirits in Draconis Mons. Reward: The Wayfarer's Henge (ascended back)."
+                      "en": "7 more Druid Runestones + the 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, handed in ALL AT ONCE to Kodama. Then 3 bouquets to bring to the Maguuma Druid Spirits in Draconis Mons. Reward: The Wayfarer's Henge (ascended back).",
+                      "achievementId": 3436,
+                      "units": 7
                     }
                   ],
                   "tips": [
@@ -12154,7 +12167,91 @@ const SOURCES_DB = {
                       "fr": "⏳ Acheter les 5 fragments CHAQUE jour même sans jouer la suite : c'est le seul goulot réel (~16 jours au total).",
                       "en": "⏳ Buy the 5 fragments EVERY day even if you do nothing else: it's the only real bottleneck (~16 days total)."
                     }
-                  ]
+                  ],
+                  "requirements": {
+                    "unit": {
+                      "fr": "Druid Runestone",
+                      "en": "Druid Runestone"
+                    },
+                    "unit_total": 16,
+                    "unit_note": {
+                      "fr": "1 pierre = 5 Druid Runestone Fragments · plafond 5 fragments/jour/compte (1 par vendeur) → 1 pierre/jour. Non achetables une fois « A Henge Away from Home » terminée.",
+                      "en": "1 stone = 5 Druid Runestone Fragments · cap 5 fragments/day/account (1 per vendor) → 1 stone/day. No longer purchasable once 'A Henge Away from Home' is complete."
+                    },
+                    "lines": [
+                      {
+                        "label": {
+                          "fr": "Karma",
+                          "en": "Karma"
+                        },
+                        "icon": "🪙",
+                        "perUnit": 4200,
+                        "apiId": 2,
+                        "kind": "wallet",
+                        "detail": {
+                          "fr": "4 fragments × 1 050 karma chez les vendeurs des 4 cœurs (à refaire chaque jour)",
+                          "en": "4 fragments × 1,050 karma from the 4 heart vendors (redo the hearts daily)"
+                        },
+                        "curKey": "karma"
+                      },
+                      {
+                        "label": {
+                          "fr": "Magie non liée",
+                          "en": "Unbound Magic"
+                        },
+                        "icon": "🔮",
+                        "perUnit": 1000,
+                        "apiId": 32,
+                        "kind": "wallet",
+                        "detail": {
+                          "fr": "1 fragment chez le vendeur de Magie non liée",
+                          "en": "1 fragment from the Unbound Magic vendor"
+                        },
+                        "curKey": "unbound"
+                      },
+                      {
+                        "label": {
+                          "fr": "Or",
+                          "en": "Gold"
+                        },
+                        "icon": "💰",
+                        "perUnit": 10000,
+                        "apiId": 1,
+                        "kind": "wallet",
+                        "detail": {
+                          "fr": "1 po accompagne le fragment du vendeur de Magie non liée",
+                          "en": "1 g goes with the Unbound Magic vendor fragment"
+                        },
+                        "curKey": "gold"
+                      },
+                      {
+                        "label": {
+                          "fr": "Jours (plafond quotidien)",
+                          "en": "Days (daily cap)"
+                        },
+                        "icon": "⏳",
+                        "perUnit": 1,
+                        "kind": "days",
+                        "detail": {
+                          "fr": "Les 4 cœurs de Draconis Mons sont répétables quotidiennement — les refaire pour débloquer les vendeurs",
+                          "en": "The 4 Draconis Mons hearts are daily-repeatable — redo them to unlock the vendors"
+                        }
+                      },
+                      {
+                        "label": {
+                          "fr": "Fragments",
+                          "en": "Fragments"
+                        },
+                        "icon": "🧩",
+                        "perUnit": 5,
+                        "kind": "count",
+                        "detail": {
+                          "fr": "5 par pierre, à combiner par double-clic",
+                          "en": "5 per stone, combined by double-click"
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
                   "name": "Scouting Party Supporter",
@@ -16558,12 +16655,66 @@ function GW2LegendaryTracker() {
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
+                              {/* Prérequis chiffrés : total + restant selon les étapes déjà validées */}
+                              {missing && item.requirements && (() => {
+                                const RQ = item.requirements;
+                                const sub = achSubStatus ?? {};
+                                const chain = item.chain ?? [];
+                                const doneUnits = chain.reduce((s, st) => s + ((st.achievementId && sub[String(st.achievementId)]?.done) ? (st.units ?? 0) : 0), 0);
+                                const known = chain.some(st => st.achievementId && sub[String(st.achievementId)]);
+                                const total = RQ.unit_total ?? 0;
+                                const left = Math.max(0, total - doneUnits);
+                                const fmt = (v, kind) => kind === "wallet" && v >= 10000 && RQ.lines.find(l => l.kind === "wallet" && l.apiId === 1)
+                                  ? v : v;
+                                const coin = (c) => `${Math.floor(c / 10000)} po`;
+                                return (
+                                  <div style={{ marginTop: 7, padding: "8px 10px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 6 }}>
+                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 5 }}>
+                                      <span style={{ fontSize: 10, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>
+                                        {NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}
+                                      </span>
+                                      <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
+                                        {known
+                                          ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}`, en: `${left} / ${total} ${NXS(RQ.unit)} left` })
+                                          : NX({ fr: `${total} ${NXS(RQ.unit)} au total`, en: `${total} ${NXS(RQ.unit)} total` })}
+                                      </span>
+                                    </div>
+                                    {(RQ.lines ?? []).map((ln, li) => {
+                                      const isGold = ln.kind === "wallet" && ln.apiId === 1;
+                                      const totalV = (ln.perUnit ?? 0) * total;
+                                      const leftV = (ln.perUnit ?? 0) * left;
+                                      const stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : ((ln.kind === "wallet" && ln.apiId) ? (gtStocks?.[String(ln.apiId)] ?? null) : null);
+                                      const show = (v) => isGold ? coin(v) : v.toLocaleString("fr-FR");
+                                      const ok = stock != null && stock >= leftV;
+                                      return (
+                                        <div key={li} style={{ padding: "3px 0", borderTop: li ? "1px solid rgba(226,201,126,0.06)" : "none" }}>
+                                          <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11 }}>
+                                            <span style={{ color: "rgba(226,201,126,0.8)" }}>{ln.icon} {NX(ln.label)}</span>
+                                            <span style={{ whiteSpace: "nowrap", fontFamily: "'Crimson Text', serif" }}>
+                                              <span style={{ color: ok ? "#4ade80" : "#5eead4", fontWeight: 600 }}>{show(leftV)}</span>
+                                              {left !== total && <span style={{ color: "rgba(226,201,126,0.3)" }}> / {show(totalV)}</span>}
+                                              {stock != null && <span style={{ color: ok ? "#4ade80" : "rgba(226,201,126,0.45)" }}> · {NX({ fr: "en stock", en: "held" })} {show(stock)}</span>}
+                                            </span>
+                                          </div>
+                                          {ln.detail && <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.4 }}>{NX(ln.detail)}</div>}
+                                        </div>
+                                      );
+                                    })}
+                                    {RQ.unit_note && <div style={{ marginTop: 5, fontSize: 9.5, color: "rgba(251,146,60,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>{NX(RQ.unit_note)}</div>}
+                                    {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
+                                  </div>
+                                );
+                              })()}
+
                               {/* Chaîne de sous-collections détaillée (ex. Wayfarer's Henge) */}
                               {missing && (item.chain ?? []).length > 0 && (
                                 <div style={{ marginTop: 6, borderLeft: "2px solid rgba(251,146,60,0.25)", paddingLeft: 8 }}>
                                   {item.chain.map(st => (
-                                    <div key={st.n} style={{ marginBottom: 6 }}>
-                                      <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(251,146,60,0.8)", fontFamily: "'Cinzel', serif" }}>{st.n}. {st.name}</div>
+                                    <div key={st.n} style={{ marginBottom: 6, opacity: (st.achievementId && (achSubStatus ?? {})[String(st.achievementId)]?.done) ? 0.45 : 1 }}>
+                                      <div style={{ fontSize: 10, fontWeight: 600, color: (st.achievementId && (achSubStatus ?? {})[String(st.achievementId)]?.done) ? "#4ade80" : "rgba(251,146,60,0.8)", fontFamily: "'Cinzel', serif" }}>
+                                        {(st.achievementId && (achSubStatus ?? {})[String(st.achievementId)]?.done) ? "✓" : st.n + "."} {st.name}
+                                        {st.units ? <span style={{ opacity: 0.6, fontWeight: 400 }}> · {st.units} 🧩</span> : null}
+                                      </div>
                                       <div style={{ fontSize: 10, color: "rgba(226,201,126,0.5)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(st)}</div>
                                     </div>
                                   ))}
