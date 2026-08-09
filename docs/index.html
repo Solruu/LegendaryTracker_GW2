@@ -14106,9 +14106,9 @@ const LEGENDARIES = {
       perStep: [{ key: "adinf_1", units: 1 }, { key: "adinf_2", units: 1 }, { key: "adinf_3", units: 1 }, { key: "adinf_4", units: 1 }],
       lines: [
         { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, perUnit: 28, curKey: "pages",
-          detail: { fr: "1 Fractal Journal (28 pages) consommé par collection · ~3/jour via les dailies recommandées, +1 par CM quotidien (Sunqua, Nightmare, Shattered)", en: "1 Fractal Journal (28 pages) consumed per collection · ~3/day from recommended dailies, +1 per daily CM (Sunqua, Nightmare, Shattered)" } },
-        { icon: "⏳", label: { fr: "Jours (sans CM)", en: "Days (no CMs)" }, perUnit: 10,
-          detail: { fr: "~28 pages ÷ 3/jour. Avec les 3 CM quotidiens : ~5 jours par collection", en: "~28 pages ÷ 3/day. With all 3 daily CMs: ~5 days per collection" } },
+          detail: { fr: "1 Fractal Journal (28 pages, double-clic sur la pile) par collection · 3/jour aux dailies recommandées (T3+), +1 par CM parmi 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → jusqu'à 9/jour en T4, +8/semaine via la Weekly Fractal Fighter's Cache", en: "1 Fractal Journal (28 pages, double-click the stack) per collection · 3/day from recommended dailies (T3+), +1 per CM out of 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → up to 9/day at T4, +8/week from the Weekly Fractal Fighter's Cache" } },
+        { icon: "⏳", label: { fr: "Jours (dailies seules)", en: "Days (dailies only)" }, perUnit: 10,
+          detail: { fr: "28 pages ÷ 3/jour ≈ 10 j par collection. En T4 avec les CM + la cache hebdo : 4-5 j par collection, soit ~16-20 jours au total", en: "28 pages ÷ 3/day ≈ 10 d per collection. At T4 with CMs + the weekly cache: 4-5 d per collection, i.e. ~16-20 days total" } },
         { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
           detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
         { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, fixed: 1350, curKey: "relics", oneShot: "adinf_1",
@@ -14117,12 +14117,16 @@ const LEGENDARIES = {
     },
     raidAchievements: [
       { key: "adinf_1", achievementId: 2351, name: "Ad Infinitum I: Finite Result", total: 11,
+        unlock: { fr: "🔓 Parler à Kelvei, the Legendary Observer (Mistlock Observatory) → elle donne « Theory of the Finite Result » → DOUBLE-CLIQUER l'item dans l'inventaire pour activer la collection. ⚠ Maîtrise Fractal Attunement requise (donc une extension) pour acheter plusieurs composants.", en: "🔓 Talk to Kelvei, the Legendary Observer (Mistlock Observatory) → she hands 'Theory of the Finite Result' → DOUBLE-CLICK the item in your inventory to activate the collection. ⚠ Fractal Attunement mastery required (so an expansion) to buy several components." },
         tip: { fr: "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).", en: "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)." } },
       { key: "adinf_2", achievementId: 2557, name: "Ad Infinitum II: Upper Bound", total: 11,
+        unlock: { fr: "🔓 Finir la collection I ne suffit PAS : acheter d'abord la recette du dos Tier 1 chez BUY-4373 et CRAFTER Finite Result. Ensuite seulement, retourner voir Kelvei → « Theory of the Upper Bound » → double-clic.", en: "🔓 Finishing collection I is NOT enough: first buy the Tier 1 back recipe from BUY-4373 and CRAFT Finite Result. Only then return to Kelvei → 'Theory of the Upper Bound' → double-click." },
         tip: { fr: "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.", en: "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta." } },
       { key: "adinf_3", achievementId: 2368, name: "Ad Infinitum III: Unbound", total: 11,
+        unlock: { fr: "🔓 Crafter Upper Bound (dos Tier 2), puis retourner voir Kelvei → « Theory of the Unbound » → double-clic. Recycler Finite Result une fois Upper Bound crafté (5 Balls of Dark Energy).", en: "🔓 Craft Upper Bound (Tier 2 back), then return to Kelvei → 'Theory of the Unbound' → double-click. Salvage Finite Result once Upper Bound is crafted (5 Balls of Dark Energy)." },
         tip: { fr: "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.", en: "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage." } },
       { key: "adinf_4", achievementId: 2295, name: "Legendary Backpack: Ad Infinitum", total: 13,
+        unlock: { fr: "🔓 Crafter Unbound (dos élevé — discipline 500 : Armorsmith / Leatherworker / Tailor / Weaponsmith / Huntsman / Artificer), puis Kelvei → « Theory of Ad Infinitum » → double-clic. ⚠ NE PAS recycler Unbound : c'est le précurseur final.", en: "🔓 Craft Unbound (ascended back — 500 discipline: Armorsmith / Leatherworker / Tailor / Weaponsmith / Huntsman / Artificer), then Kelvei → 'Theory of Ad Infinitum' → double-click. ⚠ Do NOT salvage Unbound: it's the final precursor." },
         tip: { fr: "13 composants T3/T4 (CM 80% heal réduit : Underground Facility 51+, Aetherblade 51+…). Craftez Unbound puis parlez à Kelvei pour débloquer.", en: "13 T3/T4 components (80% reduced-healing CMs: Underground Facility 51+, Aetherblade 51+…). Craft Unbound then talk to Kelvei to unlock." } },
     ],
     metas: [
@@ -17283,6 +17287,11 @@ function GW2LegendaryTracker() {
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
                   {L(a.tip)}
                 </div>
+                {a.unlock && !done && (
+                  <div style={{ marginTop: 6, padding: "6px 8px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.85)", lineHeight: 1.5 }}>
+                    {NX(a.unlock)}
+                  </div>
+                )}
                 {isOpen && (
                   <div style={{ marginTop: "8px", borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: "7px" }} onClick={e => e.stopPropagation()}>
                     {locked && (
