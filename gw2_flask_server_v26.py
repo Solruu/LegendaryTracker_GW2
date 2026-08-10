@@ -107,6 +107,15 @@ ACHIEVEMENT_IDS = {
     "henge_3445":         3445,   # Awakening the Druid Stone — vérifié refs
     "henge_3447":         3447,   # Sprouting the Druid Stone — vérifié refs
     "henge_3436":         3436,   # A Henge Away from Home — vérifié refs
+    # ── Vision : les 6 sous-collections « Visions of… » + les 2 metas ──
+    "vis_meta_1":         4762,   # Vision I: Awakening
+    "vis_meta_2":         4771,   # Vision II: Farsight
+    "vis_istan":          4765,   # Visions of Istan
+    "vis_kourna":         4760,   # Visions of Kourna
+    "vis_jahai":          4770,   # Visions of Jahai
+    "vis_sandswept":      4774,   # Visions of Sandswept Isles
+    "vis_thunderhead":    4764,   # Visions of Thunderhead Peaks
+    "vis_dragonfall":     4757,   # Visions of Dragonfall
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs
