@@ -118,6 +118,13 @@ ACHIEVEMENT_IDS = {
     "vis_dragonfall":     4757,   # Visions of Dragonfall
     "vis_brandstone":     4000,   # Brandstone Research (timegate 7 j — prérequis Astral Weapons)
     "vis_astral_purif":   3964,   # Astral Purification (débloque les armes Stellar)
+    "vis_ep_lich":        4195,   # « Long Live the Lich » Mastery (Kourna)
+    "vis_ep_bug":         4093,   # « A Bug in the System » Mastery (Sandswept)
+    "vis_ep_star":        4359,   # « A Star to Guide Us » Mastery (Jahai)
+    "vis_ep_allornothing":4544,   # « All or Nothing » Mastery (Thunderhead)
+    "vis_ep_wareternal":  4689,   # « War Eternal » Mastery (Dragonfall)
+    "vis_elegy":          4376,   # The Convergence of Sorrow I: Elegy (armure Elegy)
+    "vis_forge":          4577,   # Journeyman of the Forge (armes Dragonsblood)
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs
