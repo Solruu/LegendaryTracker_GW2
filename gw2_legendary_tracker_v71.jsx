@@ -2744,7 +2744,7 @@ export default function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v7`; // v7 : metaSubs sur les Mastery
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v8`; // v8 : résolution des bits Skin et Minipet
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
@@ -2754,9 +2754,12 @@ export default function GW2LegendaryTracker() {
         const r = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${ids.join(",")}&lang=${lang}`);
         if (!r.ok) return;
         const defs = await r.json();
-        const itemIds = new Set();
+        const itemIds = new Set(), skinIds = new Set(), miniIds = new Set();
         for (const d of defs) for (const b of (d.bits ?? [])) {
-          if (b.type === "Item" && b.id) itemIds.add(b.id);
+          if (!b.id) continue;
+          if (b.type === "Item") itemIds.add(b.id);
+          else if (b.type === "Skin") skinIds.add(b.id);
+          else if (b.type === "Minipet") miniIds.add(b.id);
         }
         const names = {};
         const namesEn = {};
@@ -2770,6 +2773,20 @@ export default function GW2LegendaryTracker() {
             if (re.ok) for (const it of await re.json()) namesEn[String(it.id)] = it.name;
           } else {
             for (const id2 of chunk) namesEn[String(id2)] = names[String(id2)];
+          }
+        }
+        for (const [set, ep, pfx] of [[skinIds, "skins", "s"], [miniIds, "minis", "m"]]) {
+          const list = [...set];
+          for (let k = 0; k < list.length; k += 150) {
+            const chunk = list.slice(k, k + 150);
+            const rr = await fetch(`https://api.guildwars2.com/v2/${ep}?ids=${chunk.join(",")}&lang=${lang}`);
+            if (rr.ok) for (const o of await rr.json()) names[pfx + String(o.id)] = o.name;
+            if (lang !== "en") {
+              const re2 = await fetch(`https://api.guildwars2.com/v2/${ep}?ids=${chunk.join(",")}&lang=en`);
+              if (re2.ok) for (const o of await re2.json()) namesEn[pfx + String(o.id)] = o.name;
+            } else {
+              for (const id2 of chunk) namesEn[pfx + String(id2)] = names[pfx + String(id2)];
+            }
           }
         }
         const out = {};
@@ -5050,12 +5067,13 @@ export default function GW2LegendaryTracker() {
                       )
                     ) : def.bits.map((b, i) => {
                       const stepDone = done || doneBits.has(i);
-                      let label = t("bits_step", { n: i + 1 });
-                      if (b.type === "Item" && b.id) { label = def.names[String(b.id)] ?? label; }
-                      else if (b.type === "Text" && b.text) { label = b.text; }
-                      if (a.bitNames && a.bitNames[i]) { label = NX(a.bitNames[i]); }
-                      else if (b.type === "Skin") { label = label + " (skin)"; }
-                      else if (b.type === "Minipet") { label = label + " (mini)"; }
+                      let label = null;
+                      if (b.type === "Item" && b.id) label = def.names?.[String(b.id)] ?? null;
+                      else if (b.type === "Text" && b.text) label = b.text;
+                      else if (b.type === "Skin" && b.id) { const s = def.names?.["s" + String(b.id)]; label = s ? `${s} (skin)` : null; }
+                      else if (b.type === "Minipet" && b.id) { const m = def.names?.["m" + String(b.id)]; label = m ? `${m} (mini)` : null; }
+                      if (!label && a.bitNames && a.bitNames[i]) label = NX(a.bitNames[i]);
+                      if (!label) label = t("bits_step", { n: i + 1 });
                       return (
                         <div key={i} style={{ padding: "2px 0" }}>
                           <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
@@ -5063,7 +5081,10 @@ export default function GW2LegendaryTracker() {
                             <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
                           </div>
                           {!stepDone && (() => {
-                            const enKey = (b.type === "Item" && b.id) ? (def.namesEn?.[String(b.id)] ?? null) : (b.type === "Text" ? (b.text ?? null) : null);
+                            const enKey = (b.type === "Item" && b.id) ? (def.namesEn?.[String(b.id)] ?? null)
+                              : (b.type === "Skin" && b.id) ? (def.namesEn?.["s" + String(b.id)] ?? null)
+                              : (b.type === "Minipet" && b.id) ? (def.namesEn?.["m" + String(b.id)] ?? null)
+                              : (b.type === "Text" ? (b.text ?? null) : null);
                             const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i];
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
