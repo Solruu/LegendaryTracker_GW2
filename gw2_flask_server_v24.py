@@ -189,23 +189,27 @@ OBSIDIAN_ACHIEVEMENT_IDS = {
 
 app = Flask(__name__)
 
-# CORS : autoriser file://, localhost et claude.ai
-CORS(app, origins=[
-    "https://claude.ai",
-    "http://localhost:5000",
-    "http://127.0.0.1:5000",
-    "null",  # origine file:// vue par le navigateur
-], supports_credentials=False)
+# CORS : le serveur n'ecoute que sur la boucle locale (127.0.0.1) et n'est donc
+# joignable que depuis cette machine — autoriser toutes les origines ne cree pas
+# de surface d'attaque, et evite de maintenir une liste (file://, claude.ai,
+# GitHub Pages, serveur local de test...).
+CORS(app, origins="*", supports_credentials=False)
 
-# Header CORS manuel pour les requêtes file:// (origine "null")
+
 @app.after_request
 def add_cors_headers(response):
-    origin = request.headers.get("Origin", "")
-    if origin in ("null", "") or origin.startswith("http://localhost") or origin.startswith("http://127.0.0.1"):
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-API-Key, X-Lang"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-API-Key, X-Lang"
+    response.headers["Access-Control-Max-Age"] = "86400"
     return response
+
+
+@app.route("/<path:_any>", methods=["OPTIONS"])
+@app.route("/", methods=["OPTIONS"])
+def cors_preflight(_any=None):
+    """Reponse explicite aux requetes preflight (certains navigateurs les exigent)."""
+    return ("", 204)
 
 
 # ─── Helpers API GW2 ─────────────────────────────────────────────────────────
