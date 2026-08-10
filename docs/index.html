@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v46",
+    "version": "v47",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1451,7 +1451,8 @@ const SOURCES_DB = {
     "changelog_v43": "Wayfarer's Henge : bloc requirements chiffré (16 pierres = 80 fragments, 67 200 karma / 16 000 UM / 16 po / 16 jours), unités par étape avec achievementId pour le calcul du restant.",
     "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge).",
     "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
-    "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils."
+    "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils.",
+    "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis."
   },
   "meta_events": {
     "vb": {
@@ -12130,8 +12131,8 @@ const SOURCES_DB = {
                     {
                       "n": 1,
                       "name": "The Druid Stone",
-                      "fr": "Débloquée en consommant le Volcano's Heart (récompense de l'instance finale « Heart of the Volcano », LS3 ép.5). Fabriquer un Druid Runestone = 5 Runestone Fragments : 4 chez les vendeurs de cœurs de Draconis Mons (1 050 karma pièce, après avoir fait le cœur — ils sont répétables quotidiennement) + 1 chez le vendeur Unbound Magic (1 000 UM + 1 po). ⏳ C'est LA limite : ~1 Druid Runestone par jour.",
-                      "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM + 1 g). ⏳ This is THE bottleneck: ~1 Druid Runestone per day.",
+                      "fr": "Débloquée en consommant le Volcano's Heart (récompense de l'instance finale « Heart of the Volcano », LS3 ép.5). Fabriquer un Druid Runestone = 5 Runestone Fragments : 4 chez les vendeurs de cœurs de Draconis Mons (1 050 karma pièce, après avoir fait le cœur — ils sont répétables quotidiennement) + 1 chez le vendeur de Magie non liée (1 000 UM, sans or). ⏳ C'est LA limite : ~1 Druid Runestone par jour.",
+                      "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM, no gold). ⏳ This is THE bottleneck: ~1 Druid Runestone per day.",
                       "achievementId": 3402,
                       "units": 1
                     },
@@ -12214,25 +12215,10 @@ const SOURCES_DB = {
                         "apiId": 32,
                         "kind": "wallet",
                         "detail": {
-                          "fr": "1 fragment chez le vendeur de Magie non liée",
-                          "en": "1 fragment from the Unbound Magic vendor"
+                          "fr": "1 fragment chez le vendeur de Magie non liée — sans coût en or (ne pas confondre avec les Magic-Warped Bundles du même PNJ, eux payants)",
+                          "en": "1 fragment from the Unbound Magic vendor — no gold cost (not to be confused with the same NPC's Magic-Warped Bundles, which do cost gold)"
                         },
                         "curKey": "unbound"
-                      },
-                      {
-                        "label": {
-                          "fr": "Or",
-                          "en": "Gold"
-                        },
-                        "icon": "💰",
-                        "perUnit": 10000,
-                        "apiId": 1,
-                        "kind": "wallet",
-                        "detail": {
-                          "fr": "1 po accompagne le fragment du vendeur de Magie non liée",
-                          "en": "1 g goes with the Unbound Magic vendor fragment"
-                        },
-                        "curKey": "gold"
                       },
                       {
                         "label": {
