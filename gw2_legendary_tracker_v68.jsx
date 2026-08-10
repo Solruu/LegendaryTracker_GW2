@@ -3072,11 +3072,23 @@ export default function GW2LegendaryTracker() {
     try {
       let data = null;
       let flaskErr = null;
+      // Sonde /health courte : détecte l'absence de serveur sans pénaliser un serveur lent.
+      let flaskUp = false;
       try {
-        const resp = await fetch(`http://127.0.0.1:5000/api/progression?lang=${langRef.current}`, { signal: AbortSignal.timeout(4000) });
-        if (resp.ok) data = await resp.json();
-        else { const j = await resp.json().catch(() => ({})); flaskErr = j.error ?? `HTTP ${resp.status}`; }
-      } catch (e) { flaskErr = "Flask injoignable"; }
+        const h = await fetch("http://127.0.0.1:5000/health", { signal: AbortSignal.timeout(2500) });
+        flaskUp = h.ok;
+      } catch (_) { flaskUp = false; }
+      if (flaskUp) {
+        try {
+          // Pas de timeout serré ici : /api/progression enchaîne plusieurs appels
+          // à l'API GW2 et dépasse couramment 10 s selon la taille du compte.
+          const resp = await fetch(`http://127.0.0.1:5000/api/progression?lang=${langRef.current}`, { signal: AbortSignal.timeout(120000) });
+          if (resp.ok) data = await resp.json();
+          else { const j = await resp.json().catch(() => ({})); flaskErr = j.error ?? `HTTP ${resp.status}`; }
+        } catch (e) { flaskErr = (e && e.name === "TimeoutError") ? "Flask n'a pas répondu en 2 min" : "Flask a échoué en cours de requête"; }
+      } else {
+        flaskErr = "Flask injoignable";
+      }
       if (!data) {
         const dKey = (gtApiKey ?? "").trim();
         if (!dKey) throw new Error(`${flaskErr} — saisis ta clé API GW2 (champ 🔑) pour la synchro directe sans Flask`);
@@ -3109,7 +3121,7 @@ export default function GW2LegendaryTracker() {
         const aUrl = aKey
           ? `http://127.0.0.1:5000/api/achievements/aurora?key=${encodeURIComponent(aKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
-        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(3000) });
+        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(60000) });
         if (aResp.ok) {
           const aData = await aResp.json();
           localStorage.setItem("gw2_aurora_collections", JSON.stringify(aData));
@@ -3127,7 +3139,7 @@ export default function GW2LegendaryTracker() {
         const vUrl = vKey
           ? `http://127.0.0.1:5000/api/achievements/vision?key=${encodeURIComponent(vKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
-        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(3000) });
+        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(60000) });
         if (vResp.ok) {
           const vData = await vResp.json();
           localStorage.setItem("gw2_vision_collections", JSON.stringify(vData));
@@ -3145,7 +3157,7 @@ export default function GW2LegendaryTracker() {
         const oUrl = oKey
           ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
           : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
-        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(3000) });
+        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(60000) });
         if (oResp.ok) {
           const oData = await oResp.json();
           localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));
