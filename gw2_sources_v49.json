@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v48",
+  "version": "v49",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -379,6 +379,10 @@
     "strife_unending": 9244,
     "summer_krait": 9180,
     "summer_sungod": 9183,
+    "henge_3402": 3402,
+    "henge_3445": 3445,
+    "henge_3447": 3447,
+    "henge_3436": 3436,
     "stella_forge_guard": 9330,
     "stella_resin": 9344,
     "orrax_mistburned_mastery": 8582,
@@ -884,7 +888,8 @@
   "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
   "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils.",
   "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis.",
-  "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178)."
+  "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178).",
+  "changelog_v49": "Chaîne du Henge : les 4 succès (3402/3445/3447/3436) ajoutés au mapping de synchro — ils s'affichaient « verrouillés » faute de clé côté serveur."
  },
  "meta_events": {
   "vb": {

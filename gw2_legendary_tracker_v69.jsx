@@ -930,6 +930,13 @@ const LEGENDARIES = {
     },
     raidAchievements: [
       { key: "henge_3402", achievementId: 3402, name: "The Druid Stone",
+        bitTips: {
+          2: { fr: "Donner la pierre de druide complète à Kodama — PoI Druid's Grotto, sur le niveau sous Savage Rise (planer depuis Heathen's Hold wp, chercher l'ouverture de grotte).", en: "Hand the completed Druid Runestone to Kodama — Druid's Grotto PoI, on the level below Savage Rise (glide from Heathen's Hold wp, look for the cave opening)." },
+          3: { fr: "Apporter une Fire Orchid à Kodama. ⚠ Une orchidée déposée en banque ne compte pas : la garder en inventaire.", en: "Bring a Fire Orchid to Kodama. ⚠ An orchid deposited to storage doesn't count: keep it in your inventory." },
+          4: { fr: "Apporter une Fire Orchid à Liriodendron — PoI Peace Grounds, à l'extrémité est de la carte.", en: "Bring a Fire Orchid to Liriodendron — Peace Grounds PoI, on the far east of the map." },
+          5: { fr: "Apporter une Fire Orchid à Broadleaf — sud-ouest de la carte, sur une corniche en hauteur.", en: "Bring a Fire Orchid to Broadleaf — southwest of the map, high on a ledge." },
+          6: { fr: "Dernière remise d'orchidée de la collection — l'esprit restant indiqué dans le panneau de succès.", en: "Final orchid hand-in of the collection — the remaining spirit is named in the achievement panel." },
+        },
         unlock: { fr: "🔓 Se débloque en consommant le Volcano's Heart, récompense de l'instance finale « Heart of the Volcano » (LS3 ép.5 Flashpoint).", en: "🔓 Unlocked by consuming the Volcano's Heart, reward from the final 'Heart of the Volcano' instance (LWS3 ep.5 Flashpoint)." },
         tip: { fr: "1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
       { key: "henge_3445", achievementId: 3445, name: "Awakening the Druid Stone",

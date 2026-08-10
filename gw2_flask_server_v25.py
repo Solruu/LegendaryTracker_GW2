@@ -102,6 +102,11 @@ ACHIEVEMENT_IDS = {
     "strife_unending":    9244,   # Mists Research: Strife Unending (10 étapes) — vérifié wiki/gw2treasures
     "summer_krait":       9180,   # Helping Hylek: Kill Krait (prérequis Gift of the Hylek) — vérifié refs
     "summer_sungod":      9183,   # Radiance of the Sun God (chaîne Gift of the Hylek) — vérifié refs
+    # ── Chaîne du Wayfarer's Henge (Aurora / Draconis Mons) ──
+    "henge_3402":         3402,   # The Druid Stone — vérifié refs
+    "henge_3445":         3445,   # Awakening the Druid Stone — vérifié refs
+    "henge_3447":         3447,   # Sprouting the Druid Stone — vérifié refs
+    "henge_3436":         3436,   # A Henge Away from Home — vérifié refs
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs

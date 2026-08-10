@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v48",
+    "version": "v49",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -948,6 +948,10 @@ const SOURCES_DB = {
         "strife_unending": 9244,
         "summer_krait": 9180,
         "summer_sungod": 9183,
+        "henge_3402": 3402,
+        "henge_3445": 3445,
+        "henge_3447": 3447,
+        "henge_3436": 3436,
         "stella_forge_guard": 9330,
         "stella_resin": 9344,
         "orrax_mistburned_mastery": 8582,
@@ -1453,7 +1457,8 @@ const SOURCES_DB = {
     "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
     "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils.",
     "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis.",
-    "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178)."
+    "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178).",
+    "changelog_v49": "Chaîne du Henge : les 4 succès (3402/3445/3447/3436) ajoutés au mapping de synchro — ils s'affichaient « verrouillés » faute de clé côté serveur."
   },
   "meta_events": {
     "vb": {
@@ -13299,6 +13304,13 @@ const LEGENDARIES = {
     },
     raidAchievements: [
       { key: "henge_3402", achievementId: 3402, name: "The Druid Stone",
+        bitTips: {
+          2: { fr: "Donner la pierre de druide complète à Kodama — PoI Druid's Grotto, sur le niveau sous Savage Rise (planer depuis Heathen's Hold wp, chercher l'ouverture de grotte).", en: "Hand the completed Druid Runestone to Kodama — Druid's Grotto PoI, on the level below Savage Rise (glide from Heathen's Hold wp, look for the cave opening)." },
+          3: { fr: "Apporter une Fire Orchid à Kodama. ⚠ Une orchidée déposée en banque ne compte pas : la garder en inventaire.", en: "Bring a Fire Orchid to Kodama. ⚠ An orchid deposited to storage doesn't count: keep it in your inventory." },
+          4: { fr: "Apporter une Fire Orchid à Liriodendron — PoI Peace Grounds, à l'extrémité est de la carte.", en: "Bring a Fire Orchid to Liriodendron — Peace Grounds PoI, on the far east of the map." },
+          5: { fr: "Apporter une Fire Orchid à Broadleaf — sud-ouest de la carte, sur une corniche en hauteur.", en: "Bring a Fire Orchid to Broadleaf — southwest of the map, high on a ledge." },
+          6: { fr: "Dernière remise d'orchidée de la collection — l'esprit restant indiqué dans le panneau de succès.", en: "Final orchid hand-in of the collection — the remaining spirit is named in the achievement panel." },
+        },
         unlock: { fr: "🔓 Se débloque en consommant le Volcano's Heart, récompense de l'instance finale « Heart of the Volcano » (LS3 ép.5 Flashpoint).", en: "🔓 Unlocked by consuming the Volcano's Heart, reward from the final 'Heart of the Volcano' instance (LWS3 ep.5 Flashpoint)." },
         tip: { fr: "1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
       { key: "henge_3445", achievementId: 3445, name: "Awakening the Druid Stone",
