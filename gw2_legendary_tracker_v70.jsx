@@ -930,6 +930,15 @@ const LEGENDARIES = {
     },
     raidAchievements: [
       { key: "henge_3402", achievementId: 3402, name: "The Druid Stone",
+        bitNames: {
+          0: { fr: "Instance d'histoire « Heart of the Volcano »", en: "'Heart of the Volcano' story instance" },
+          1: { fr: "Créer une pierre de druide (5 fragments)", en: "Create a Druid Runestone (5 fragments)" },
+          2: { fr: "Remettre la pierre à Kodama", en: "Hand the stone to Kodama" },
+          3: { fr: "Fire Orchid à Kodama", en: "Fire Orchid to Kodama" },
+          4: { fr: "Fire Orchid à Liriodendron (Peace Grounds)", en: "Fire Orchid to Liriodendron (Peace Grounds)" },
+          5: { fr: "Fire Orchid à Broadleaf (SO, corniche)", en: "Fire Orchid to Broadleaf (SW ledge)" },
+          6: { fr: "Dernière remise d'orchidée", en: "Final orchid hand-in" },
+        },
         bitTips: {
           2: { fr: "Donner la pierre de druide complète à Kodama — PoI Druid's Grotto, sur le niveau sous Savage Rise (planer depuis Heathen's Hold wp, chercher l'ouverture de grotte).", en: "Hand the completed Druid Runestone to Kodama — Druid's Grotto PoI, on the level below Savage Rise (glide from Heathen's Hold wp, look for the cave opening)." },
           3: { fr: "Apporter une Fire Orchid à Kodama. ⚠ Une orchidée déposée en banque ne compte pas : la garder en inventaire.", en: "Bring a Fire Orchid to Kodama. ⚠ An orchid deposited to storage doesn't count: keep it in your inventory." },
@@ -938,7 +947,7 @@ const LEGENDARIES = {
           6: { fr: "Dernière remise d'orchidée de la collection — l'esprit restant indiqué dans le panneau de succès.", en: "Final orchid hand-in of the collection — the remaining spirit is named in the achievement panel." },
         },
         unlock: { fr: "🔓 Se débloque en consommant le Volcano's Heart, récompense de l'instance finale « Heart of the Volcano » (LS3 ép.5 Flashpoint).", en: "🔓 Unlocked by consuming the Volcano's Heart, reward from the final 'Heart of the Volcano' instance (LWS3 ep.5 Flashpoint)." },
-        tip: { fr: "1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
+        tip: { fr: "⚠ NE RIEN DONNER À KODAMA AVANT d'avoir débloqué cette collection : l'option d'offrir 5 Charged Lodestones et 10 Fire Orchid Blossoms apparaît plus tôt et CONSOMME les objets sans progression. 1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "⚠ DON'T GIVE ANYTHING TO KODAMA BEFORE unlocking this collection: the option to hand over 5 Charged Lodestones and 10 Fire Orchid Blossoms appears earlier and CONSUMES the items without progress. 1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
       { key: "henge_3445", achievementId: 3445, name: "Awakening the Druid Stone",
         unlock: { fr: "🔓 Automatique à la fin de « The Druid Stone ». Succès caché : il n'apparaît dans le panneau qu'une fois débloqué.", en: "🔓 Automatic once 'The Druid Stone' completes. Hidden achievement: it only shows in the panel once unlocked." },
         tip: { fr: "3 pierres (≈3 jours). Tuer les champions de Draconis Mons pour leurs Elements, combiner chacun avec une pierre → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama les refuse une par une : avoir LES TROIS avant de lui parler.", en: "3 stones (≈3 days). Kill the Draconis Mons champions for their Elements, combine each with a stone → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama refuses them one at a time: have ALL THREE before talking to her." } },
@@ -946,6 +955,12 @@ const LEGENDARIES = {
         unlock: { fr: "🔓 Automatique à la fin d'« Awakening ». Succès caché.", en: "🔓 Automatic once 'Awakening' completes. Hidden achievement." },
         tip: { fr: "5 pierres (≈5 jours), 21 étapes en 7 sections. Étape « Propagation of the Fire Orchid » : planter la graine dans la Fertile Soil près de Kodama (Savage Rise) — ensuite une Primordial Orchid y pousse quotidiennement.", en: "5 stones (≈5 days), 21 steps across 7 sections. 'Propagation of the Fire Orchid' step: plant the seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid then grows there daily." } },
       { key: "henge_3436", achievementId: 3436, name: "A Henge Away from Home",
+        bitNames: {
+          0: { fr: "Bouquet de tempête : 10 Fire Orchids + 5 Charged Lodestones", en: "A Storm Bouquet: 10 Fire Orchids + 5 Charged Lodestones" },
+          1: { fr: "Repos du destructeur : Aestus + Ignis + Desecrator ensemble", en: "Destroyer's Rest: Aestus + Ignis + Desecrator together" },
+          2: { fr: "Vision du druide : apporter un Vision Crystal", en: "Druid's Vision: bring a Vision Crystal" },
+          3: { fr: "Repos élémentaire : Volcanic + Glacial + Charged + Earthen ensemble", en: "Elemental Rest: Volcanic + Glacial + Charged + Earthen together" },
+        },
         unlock: { fr: "🔓 Automatique à la fin de « Sprouting » — les trois étapes précédentes sont obligatoires.", en: "🔓 Automatic once 'Sprouting' completes — all three previous steps are mandatory." },
         tip: { fr: "7 pierres (≈7 jours) + les 4 Elements élémentaires → Elemental Runestones à rendre TOUS ENSEMBLE à Kodama, puis 3 bouquets aux Maguuma Druid Spirits. ⚡ Les 4 élémentaires spawnent au même endroit à la Cathedral of Eternal Radiance (Malchor's Leap). Récompense : The Wayfarer's Henge.", en: "7 stones (≈7 days) + the 4 elemental Elements → Elemental Runestones handed to Kodama ALL AT ONCE, then 3 bouquets to the Maguuma Druid Spirits. ⚡ All 4 elementals spawn together at the Cathedral of Eternal Radiance (Malchor's Leap). Reward: The Wayfarer's Henge." } },
     ],
@@ -5038,6 +5053,7 @@ export default function GW2LegendaryTracker() {
                       let label = t("bits_step", { n: i + 1 });
                       if (b.type === "Item" && b.id) { label = def.names[String(b.id)] ?? label; }
                       else if (b.type === "Text" && b.text) { label = b.text; }
+                      if (a.bitNames && a.bitNames[i]) { label = NX(a.bitNames[i]); }
                       else if (b.type === "Skin") { label = label + " (skin)"; }
                       else if (b.type === "Minipet") { label = label + " (mini)"; }
                       return (
