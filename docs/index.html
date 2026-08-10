@@ -569,7 +569,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v47",
+    "version": "v48",
     "last_updated": "2026-07-16",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1452,7 +1452,8 @@ const SOURCES_DB = {
     "changelog_v44": "Aurora : karma/unbound/gold ajoutés à la synchro (stock live du bloc Prérequis du Wayfarer's Henge).",
     "changelog_v45": "Ad Infinitum : Fractal Research Page (73834) et Ball of Dark Energy (71994) ajoutés à la synchro pour le bloc Prérequis.",
     "changelog_v46": "Upgrades : charms (89103/89258/89216) et symbols (89098/89141/89182) ajoutés à la synchro pour les blocs Prérequis runes/sigils.",
-    "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis."
+    "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis.",
+    "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178)."
   },
   "meta_events": {
     "vb": {
@@ -11917,8 +11918,8 @@ const SOURCES_DB = {
                 {
                   "name": "Mini Aurene",
                   "how": {
-                    "fr": "Compléter la collection Gift of Aurene",
-                    "en": "Complete the Gift of Aurene collection"
+                    "fr": "Récompense de la collection « Gift of Aurene » (succès 3178, A Crack in the Ice) : nourrir Aurene dans Bitterfrost Frontier avec les objets de la collection.",
+                    "en": "Reward from the 'Gift of Aurene' collection (achievement 3178, A Crack in the Ice): feed Aurene in Bitterfrost Frontier with the collection items."
                   },
                   "bit": 7
                 },
@@ -12123,131 +12124,10 @@ const SOURCES_DB = {
                 {
                   "name": "The Wayfarer's Henge",
                   "how": {
-                    "fr": "⚠️ Chaîne de 4 collections (~16 jours). Voir le détail ci-dessous.",
-                    "en": "Warning: 4-collection chain (~16 days). See the breakdown below."
+                    "fr": "⚠ Chaîne de 4 collections imbriquées (16 pierres de druide, ~16 jours) → voir l'onglet « ⛏ Chaîne du Henge » pour le détail, les prérequis chiffrés et la progression.",
+                    "en": "⚠ Chain of 4 nested collections (16 druid stones, ~16 days) → see the '⛏ Henge chain' tab for the breakdown, costed requirements and progress."
                   },
-                  "bit": 1,
-                  "chain": [
-                    {
-                      "n": 1,
-                      "name": "The Druid Stone",
-                      "fr": "Débloquée en consommant le Volcano's Heart (récompense de l'instance finale « Heart of the Volcano », LS3 ép.5). Fabriquer un Druid Runestone = 5 Runestone Fragments : 4 chez les vendeurs de cœurs de Draconis Mons (1 050 karma pièce, après avoir fait le cœur — ils sont répétables quotidiennement) + 1 chez le vendeur de Magie non liée (1 000 UM, sans or). ⏳ C'est LA limite : ~1 Druid Runestone par jour.",
-                      "en": "Unlocked by consuming the Volcano's Heart (reward from the final 'Heart of the Volcano' instance, LWS3 ep.5). Craft a Druid Runestone = 5 Runestone Fragments: 4 from the Draconis Mons heart vendors (1,050 karma each, after doing the heart — they're daily-repeatable) + 1 from the Unbound Magic vendor (1,000 UM, no gold). ⏳ This is THE bottleneck: ~1 Druid Runestone per day.",
-                      "achievementId": 3402,
-                      "units": 1
-                    },
-                    {
-                      "n": 2,
-                      "name": "Awakening the Druid Stone",
-                      "fr": "Tuer les champions destroyers de Draconis Mons pour les Elements (dont l'Element of the Desecrator : Champion Molten Desecrator, event « Neutralize the destroyer champions and all destroyer burrows », plusieurs spawns — le plus simple est à l'est du volcan). Combiner chaque Element avec un Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ PIÈGE : Kodama refuse les runestones un par un — il faut avoir LES TROIS avant de lui parler.",
-                      "en": "Kill the Draconis Mons destroyer champions for the Elements (incl. Element of the Desecrator: Champion Molten Desecrator, 'Neutralize the destroyer champions and all destroyer burrows' event, several spawns — easiest east of the volcano). Combine each Element with a Druid Runestone → Aestus / Ignis / Desecrator Runestones. ⚠ TRAP: Kodama refuses runestones one at a time — you need ALL THREE before talking to her.",
-                      "achievementId": 3445,
-                      "units": 3
-                    },
-                    {
-                      "n": 3,
-                      "name": "Sprouting the Druid Stone",
-                      "fr": "5 Druid Runestones de plus. Étape « Propagation of the Fire Orchid » : planter la Fire Orchid Seed dans la Fertile Soil près de Kodama (Savage Rise) — ensuite une Primordial Orchid y est récoltable quotidiennement.",
-                      "en": "5 more Druid Runestones. 'Propagation of the Fire Orchid' step: plant the Fire Orchid Seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid becomes a daily harvest there afterwards.",
-                      "achievementId": 3447,
-                      "units": 5
-                    },
-                    {
-                      "n": 4,
-                      "name": "A Henge Away from Home",
-                      "fr": "7 Druid Runestones de plus + les 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, à rendre TOUS ENSEMBLE à Kodama. Puis 3 bouquets à porter aux Maguuma Druid Spirits de Draconis Mons. Récompense : The Wayfarer's Henge (dos élevé).",
-                      "en": "7 more Druid Runestones + the 4 Elements (Fire/Water/Air/Earth) → Elemental Runestones, handed in ALL AT ONCE to Kodama. Then 3 bouquets to bring to the Maguuma Druid Spirits in Draconis Mons. Reward: The Wayfarer's Henge (ascended back).",
-                      "achievementId": 3436,
-                      "units": 7
-                    }
-                  ],
-                  "tips": [
-                    {
-                      "fr": "📍 Kodama : PoI Druid's Grotto — depuis Heathen's Hold wp, aller à l'ouest et descendre jusqu'à voir l'ouverture de la grotte (elle est au fond).",
-                      "en": "📍 Kodama: Druid's Grotto PoI — from Heathen's Hold wp, head west and drop until you spot the cave opening (she's at the back)."
-                    },
-                    {
-                      "fr": "⚡ Les 4 Elements d'un coup : les élémentaires de feu/eau/air/terre spawnent tous autour de la Cathedral of Eternal Radiance (Malchor's Leap), ou au temple de Lyssa quand il est sous contrôle du Pacte. Sinon en bas niveau : Feu = Wildflame Caverns [&BH4FAAA=], Air = The Hinterlabs [&BPcEAAA=] (Metrica), Eau = Grekvelnn Burrows [&BGcBAAA=] (Wayfarer Foothills), Terre = Western Divinity Dam [&BFEFAAA=] (Queensdale).",
-                      "en": "⚡ All 4 Elements in one trip: fire/water/air/earth elementals all spawn around the Cathedral of Eternal Radiance (Malchor's Leap), or at Lyssa's temple while Pact-controlled. Low-level alternative: Fire = Wildflame Caverns [&BH4FAAA=], Air = The Hinterlabs [&BPcEAAA=] (Metrica), Water = Grekvelnn Burrows [&BGcBAAA=] (Wayfarer Foothills), Earth = Western Divinity Dam [&BFEFAAA=] (Queensdale)."
-                    },
-                    {
-                      "fr": "✅ Le Heavy Houndskin Mantle (récompense de la maîtrise Flashpoint) compte RÉTROACTIVEMENT : pas besoin d'attendre la collection pour ouvrir le coffre.",
-                      "en": "✅ The Heavy Houndskin Mantle (Flashpoint mastery reward) counts RETROACTIVELY: no need to wait for the collection before opening the box."
-                    },
-                    {
-                      "fr": "⏳ Acheter les 5 fragments CHAQUE jour même sans jouer la suite : c'est le seul goulot réel (~16 jours au total).",
-                      "en": "⏳ Buy the 5 fragments EVERY day even if you do nothing else: it's the only real bottleneck (~16 days total)."
-                    }
-                  ],
-                  "requirements": {
-                    "unit": {
-                      "fr": "Druid Runestone",
-                      "en": "Druid Runestone"
-                    },
-                    "unit_total": 16,
-                    "unit_note": {
-                      "fr": "1 pierre = 5 Druid Runestone Fragments · plafond 5 fragments/jour/compte (1 par vendeur) → 1 pierre/jour. Non achetables une fois « A Henge Away from Home » terminée.",
-                      "en": "1 stone = 5 Druid Runestone Fragments · cap 5 fragments/day/account (1 per vendor) → 1 stone/day. No longer purchasable once 'A Henge Away from Home' is complete."
-                    },
-                    "lines": [
-                      {
-                        "label": {
-                          "fr": "Karma",
-                          "en": "Karma"
-                        },
-                        "icon": "🪙",
-                        "perUnit": 4200,
-                        "apiId": 2,
-                        "kind": "wallet",
-                        "detail": {
-                          "fr": "4 fragments × 1 050 karma chez les vendeurs des 4 cœurs (à refaire chaque jour)",
-                          "en": "4 fragments × 1,050 karma from the 4 heart vendors (redo the hearts daily)"
-                        },
-                        "curKey": "karma"
-                      },
-                      {
-                        "label": {
-                          "fr": "Magie non liée",
-                          "en": "Unbound Magic"
-                        },
-                        "icon": "🔮",
-                        "perUnit": 1000,
-                        "apiId": 32,
-                        "kind": "wallet",
-                        "detail": {
-                          "fr": "1 fragment chez le vendeur de Magie non liée — sans coût en or (ne pas confondre avec les Magic-Warped Bundles du même PNJ, eux payants)",
-                          "en": "1 fragment from the Unbound Magic vendor — no gold cost (not to be confused with the same NPC's Magic-Warped Bundles, which do cost gold)"
-                        },
-                        "curKey": "unbound"
-                      },
-                      {
-                        "label": {
-                          "fr": "Jours (plafond quotidien)",
-                          "en": "Days (daily cap)"
-                        },
-                        "icon": "⏳",
-                        "perUnit": 1,
-                        "kind": "days",
-                        "detail": {
-                          "fr": "Les 4 cœurs de Draconis Mons sont répétables quotidiennement — les refaire pour débloquer les vendeurs",
-                          "en": "The 4 Draconis Mons hearts are daily-repeatable — redo them to unlock the vendors"
-                        }
-                      },
-                      {
-                        "label": {
-                          "fr": "Fragments",
-                          "en": "Fragments"
-                        },
-                        "icon": "🧩",
-                        "perUnit": 5,
-                        "kind": "count",
-                        "detail": {
-                          "fr": "5 par pierre, à combiner par double-clic",
-                          "en": "5 per stone, combined by double-click"
-                        }
-                      }
-                    ]
-                  }
+                  "bit": 1
                 },
                 {
                   "name": "Scouting Party Supporter",
@@ -13398,6 +13278,35 @@ const LEGENDARIES = {
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
         heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
+    ],
+    raidTabLabel: { fr: "⛏ Chaîne du Henge", en: "⛏ Henge chain" },
+    requirements: {
+      unit: { fr: "pierre de druide", en: "druid stone" }, unitTotal: 16,
+      perStep: [{ key: "henge_3402", units: 1 }, { key: "henge_3445", units: 3 }, { key: "henge_3447", units: 5 }, { key: "henge_3436", units: 7 }],
+      note: { fr: "⏳ Plafond strict : 5 fragments/jour/compte = 1 pierre/jour, donc 16 jours minimum. Acheter les 5 fragments CHAQUE jour même sans jouer la suite. Répartition : 1 → 3 → 5 → 7 selon l'étape. Les fragments ne sont plus vendus une fois la chaîne terminée.", en: "⏳ Hard cap: 5 fragments/day/account = 1 stone/day, so 16 days minimum. Buy the 5 fragments EVERY day even if you do nothing else. Split: 1 → 3 → 5 → 7 per step. Fragments are no longer sold once the chain is complete." },
+      lines: [
+        { icon: "🪙", label: { fr: "Karma", en: "Karma" }, perUnit: 4200, curKey: "karma",
+          detail: { fr: "4 fragments × 1 050 karma chez les vendeurs des 4 cœurs — cœurs à refaire chaque jour", en: "4 fragments × 1,050 karma from the 4 heart vendors — hearts must be redone daily" } },
+        { icon: "🔮", label: { fr: "Magie non liée", en: "Unbound Magic" }, perUnit: 1000, curKey: "unbound",
+          detail: { fr: "1 fragment au vendeur de Magie non liée — sans coût en or (ne pas confondre avec ses Magic-Warped Bundles)", en: "1 fragment from the Unbound Magic vendor — no gold cost (don't confuse it with his Magic-Warped Bundles)" } },
+        { icon: "🧩", label: { fr: "Fragments", en: "Fragments" }, perUnit: 5,
+          detail: { fr: "5 par pierre, à combiner par double-clic", en: "5 per stone, combined by double-click" } },
+        { icon: "⏳", label: { fr: "Jours (plafond quotidien)", en: "Days (daily cap)" }, perUnit: 1 },
+      ],
+    },
+    raidAchievements: [
+      { key: "henge_3402", achievementId: 3402, name: "The Druid Stone",
+        unlock: { fr: "🔓 Se débloque en consommant le Volcano's Heart, récompense de l'instance finale « Heart of the Volcano » (LS3 ép.5 Flashpoint).", en: "🔓 Unlocked by consuming the Volcano's Heart, reward from the final 'Heart of the Volcano' instance (LWS3 ep.5 Flashpoint)." },
+        tip: { fr: "1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
+      { key: "henge_3445", achievementId: 3445, name: "Awakening the Druid Stone",
+        unlock: { fr: "🔓 Automatique à la fin de « The Druid Stone ». Succès caché : il n'apparaît dans le panneau qu'une fois débloqué.", en: "🔓 Automatic once 'The Druid Stone' completes. Hidden achievement: it only shows in the panel once unlocked." },
+        tip: { fr: "3 pierres (≈3 jours). Tuer les champions de Draconis Mons pour leurs Elements, combiner chacun avec une pierre → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama les refuse une par une : avoir LES TROIS avant de lui parler.", en: "3 stones (≈3 days). Kill the Draconis Mons champions for their Elements, combine each with a stone → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama refuses them one at a time: have ALL THREE before talking to her." } },
+      { key: "henge_3447", achievementId: 3447, name: "Sprouting the Druid Stone",
+        unlock: { fr: "🔓 Automatique à la fin d'« Awakening ». Succès caché.", en: "🔓 Automatic once 'Awakening' completes. Hidden achievement." },
+        tip: { fr: "5 pierres (≈5 jours), 21 étapes en 7 sections. Étape « Propagation of the Fire Orchid » : planter la graine dans la Fertile Soil près de Kodama (Savage Rise) — ensuite une Primordial Orchid y pousse quotidiennement.", en: "5 stones (≈5 days), 21 steps across 7 sections. 'Propagation of the Fire Orchid' step: plant the seed in the Fertile Soil near Kodama (Savage Rise) — a Primordial Orchid then grows there daily." } },
+      { key: "henge_3436", achievementId: 3436, name: "A Henge Away from Home",
+        unlock: { fr: "🔓 Automatique à la fin de « Sprouting » — les trois étapes précédentes sont obligatoires.", en: "🔓 Automatic once 'Sprouting' completes — all three previous steps are mandatory." },
+        tip: { fr: "7 pierres (≈7 jours) + les 4 Elements élémentaires → Elemental Runestones à rendre TOUS ENSEMBLE à Kodama, puis 3 bouquets aux Maguuma Druid Spirits. ⚡ Les 4 élémentaires spawnent au même endroit à la Cathedral of Eternal Radiance (Malchor's Leap). Récompense : The Wayfarer's Henge.", en: "7 stones (≈7 days) + the 4 elemental Elements → Elemental Runestones handed to Kodama ALL AT ONCE, then 3 bouquets to the Maguuma Druid Spirits. ⚡ All 4 elementals spawn together at the Cathedral of Eternal Radiance (Malchor's Leap). Reward: The Wayfarer's Henge." } },
     ],
     metas: [
       { id: "bf", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: { fr: "Nodes de Fresh Winterberry", en: "Fresh Winterberry nodes" }, expansion: "LW3", icon: "BF",
@@ -15936,7 +15845,7 @@ function GW2LegendaryTracker() {
     ...(!isPrismatic && !["conflux", "warbringer", "coalescence", "selachimorpha", "eikasia", "upgrades", "weapons", "t6", "trinkets", "strife_unending", "perfected_envoy", "triumphant_hero", "ardent_glorious"].includes(selectedLeg) ? [{ id: "metas", label: `⏱ Metas (${dailyCount})` }] : []),
     ...(selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending" || selectedLeg === "triumphant_hero" ? [{ id: "wvw", label: `WvW (${weeklyCount}/${(leg?.wvwActivities ?? []).length})` }] : []),
     ...(leg?.isGuideTrinket ? [{ id: "guide", label: NX({ fr: "📖 Guide", en: "📖 Guide" }) }] : []),
-    ...(leg?.raidAchievements ? [{ id: "raids", label: selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections") }] : []),
+    ...(leg?.raidAchievements ? [{ id: "raids", label: leg.raidTabLabel ? NX(leg.raidTabLabel) : (selectedLeg === "coalescence" ? t("tab_raids") : t("tab_collections")) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "chars", label: t("tab_chars", { n: numChars }) }] : []),
     ...(selectedLeg === "aurora" ? [{ id: "collections", label: `Collections` }] : []),
     ...(selectedLeg === "vision" ? [{ id: "collections", label: `Collections` }] : []),
