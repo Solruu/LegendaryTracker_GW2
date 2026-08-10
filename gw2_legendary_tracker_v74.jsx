@@ -515,7 +515,15 @@ function RequirementsBlocks({ requirements, apiAch, currencies }) {
   return [].concat(requirements).map((RQ, rqi) => {
     const total = RQ.unitTotal ?? 0;
     const cnt = RQ.unitsFrom ? (apiAch[RQ.unitsFrom.key]?.current ?? null) : null;
-    const doneU = RQ.unitsFrom ? (cnt ?? 0) : (RQ.perStep ?? []).reduce((s, st) => s + ((apiAch[st.key]?.done) ? (st.units ?? 0) : 0), 0);
+    // Une collection en cours peut déjà avoir consommé des unités : si l'étape
+    // déclare quels bits les consomment (unitBits), on compte ces bits.
+    const doneU = RQ.unitsFrom ? (cnt ?? 0) : (RQ.perStep ?? []).reduce((s, st) => {
+      const A = apiAch[st.key];
+      if (!A) return s;
+      if (A.done) return s + (st.units ?? 0);
+      if (st.unitBits && Array.isArray(A.bits)) return s + st.unitBits.filter(b => A.bits.includes(b)).length;
+      return s;
+    }, 0);
     const known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
     const left = Math.max(0, total - doneU);
     const nf = (v) => v.toLocaleString("fr-FR");
@@ -916,7 +924,12 @@ const LEGENDARIES = {
     raidTabLabel: { fr: "⛏ Chaîne du Henge", en: "⛏ Henge chain" },
     requirements: {
       unit: { fr: "pierre de druide", en: "druid stone" }, unitTotal: 16,
-      perStep: [{ key: "henge_3402", units: 1 }, { key: "henge_3445", units: 3 }, { key: "henge_3447", units: 5 }, { key: "henge_3436", units: 7 }],
+      perStep: [
+        { key: "henge_3402", units: 1, unitBits: [1] },
+        { key: "henge_3445", units: 3, unitBits: [2, 5, 8] },
+        { key: "henge_3447", units: 5, unitBits: [2, 5, 8, 11, 14] },
+        { key: "henge_3436", units: 7, unitBits: [3, 5, 7, 10, 12, 14, 16] },
+      ],
       note: { fr: "⏳ Plafond strict : 5 fragments/jour/compte = 1 pierre/jour, donc 16 jours minimum. Acheter les 5 fragments CHAQUE jour même sans jouer la suite. Répartition : 1 → 3 → 5 → 7 selon l'étape. Les fragments ne sont plus vendus une fois la chaîne terminée.", en: "⏳ Hard cap: 5 fragments/day/account = 1 stone/day, so 16 days minimum. Buy the 5 fragments EVERY day even if you do nothing else. Split: 1 → 3 → 5 → 7 per step. Fragments are no longer sold once the chain is complete." },
       lines: [
         { icon: "🪙", label: { fr: "Karma", en: "Karma" }, perUnit: 4200, curKey: "karma",
