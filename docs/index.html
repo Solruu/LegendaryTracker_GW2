@@ -13321,8 +13321,18 @@ const LEGENDARIES = {
           6: { fr: "Dernière remise d'orchidée de la collection — l'esprit restant indiqué dans le panneau de succès.", en: "Final orchid hand-in of the collection — the remaining spirit is named in the achievement panel." },
         },
         unlock: { fr: "🔓 Se débloque en consommant le Volcano's Heart, récompense de l'instance finale « Heart of the Volcano » (LS3 ép.5 Flashpoint).", en: "🔓 Unlocked by consuming the Volcano's Heart, reward from the final 'Heart of the Volcano' instance (LWS3 ep.5 Flashpoint)." },
-        tip: { fr: "⚠ NE RIEN DONNER À KODAMA AVANT d'avoir débloqué cette collection : l'option d'offrir 5 Charged Lodestones et 10 Fire Orchid Blossoms apparaît plus tôt et CONSOMME les objets sans progression. 1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "⚠ DON'T GIVE ANYTHING TO KODAMA BEFORE unlocking this collection: the option to hand over 5 Charged Lodestones and 10 Fire Orchid Blossoms appears earlier and CONSUMES the items without progress. 1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
+        tip: { fr: "Sections connues (fiche wiki de Kodama) : Saurian Rest, Imperial Rest, Webby Rest, Wurm Rest, Arcanum Rest, et « A Charged Bouquet » (5 Fire Orchids + 1 Charged Lodestone). ⚠ NE RIEN DONNER À KODAMA AVANT d'avoir débloqué cette collection : l'option d'offrir 5 Charged Lodestones et 10 Fire Orchid Blossoms apparaît plus tôt et CONSOMME les objets sans progression. 1 pierre. Acheter les 5 fragments du jour (4 aux cœurs à 1 050 karma + 1 à 1 000 Magie non liée), double-clic pour former la pierre, puis la donner à Kodama avec une Fire Orchid en inventaire (non déposée en banque).", en: "Known sections (Kodama wiki page): Saurian Rest, Imperial Rest, Webby Rest, Wurm Rest, Arcanum Rest, and 'A Charged Bouquet' (5 Fire Orchids + 1 Charged Lodestone). ⚠ DON'T GIVE ANYTHING TO KODAMA BEFORE unlocking this collection: the option to hand over 5 Charged Lodestones and 10 Fire Orchid Blossoms appears earlier and CONSUMES the items without progress. 1 stone. Buy the day's 5 fragments (4 from hearts at 1,050 karma + 1 for 1,000 Unbound Magic), double-click to form the stone, then hand it to Kodama with a Fire Orchid in your inventory (not deposited)." } },
       { key: "henge_3445", achievementId: 3445, name: "Awakening the Druid Stone",
+        bitNames: {
+          3: { fr: "Wardbough's Rest — remettre à Kodama", en: "Wardbough's Rest — hand to Kodama" },
+          6: { fr: "Arboreal Rest — remettre à Kodama", en: "Arboreal Rest — hand to Kodama" },
+          9: { fr: "Oakheart's Rest — remettre à Kodama", en: "Oakheart's Rest — hand to Kodama" },
+        },
+        bitTips: {
+          "Element of the Wardbough": { fr: "Greater Wardbough : event d'escorte partant du PoI Scout's Clearing vers le PoI Eternal Pool (Savage Rise).", en: "Greater Wardbough: escort event from Scout's Clearing PoI to Eternal Pool PoI (Savage Rise)." },
+          "Element of the Arbor": { fr: "Restless Arboreal Spirit (défi de héros), Hidden Lake — au sud de Seraph Observers wp [&BGIAAAA=], Brisban Wildlands. Lui demander l'objet.", en: "Restless Arboreal Spirit (hero challenge), Hidden Lake — south of Seraph Observers wp [&BGIAAAA=], Brisban Wildlands. Ask him for the item." },
+          "Element of the Oakhearts": { fr: "Rotting Ancient Oakheart, event du Greatheart Weald en Queensdale [&BIoGAAA=] — respawn toutes les ~10 min.", en: "Rotting Ancient Oakheart, Greatheart Weald event in Queensdale [&BIoGAAA=] — respawns roughly every 10 min." },
+        },
         unlock: { fr: "🔓 Automatique à la fin de « The Druid Stone ». Succès caché : il n'apparaît dans le panneau qu'une fois débloqué.", en: "🔓 Automatic once 'The Druid Stone' completes. Hidden achievement: it only shows in the panel once unlocked." },
         tip: { fr: "3 pierres (≈3 jours). Tuer les champions de Draconis Mons pour leurs Elements, combiner chacun avec une pierre → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama les refuse une par une : avoir LES TROIS avant de lui parler.", en: "3 stones (≈3 days). Kill the Draconis Mons champions for their Elements, combine each with a stone → Aestus / Ignis / Desecrator Runestones. ⚠ Kodama refuses them one at a time: have ALL THREE before talking to her." } },
       { key: "henge_3447", achievementId: 3447, name: "Sprouting the Druid Stone",
@@ -17441,7 +17451,8 @@ function GW2LegendaryTracker() {
                       else if (b.type === "Skin" && b.id) { const s = def.names?.["s" + String(b.id)]; label = s ? `${s} (skin)` : null; }
                       else if (b.type === "Minipet" && b.id) { const m = def.names?.["m" + String(b.id)]; label = m ? `${m} (mini)` : null; }
                       if (!label && a.bitNames && a.bitNames[i]) label = NX(a.bitNames[i]);
-                      if (!label) label = t("bits_step", { n: i + 1 });
+                      let unnamed = false;
+                      if (!label) { label = t("bits_step", { n: i + 1 }); unnamed = true; }
                       return (
                         <div key={i} style={{ padding: "2px 0" }}>
                           <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
@@ -17453,7 +17464,8 @@ function GW2LegendaryTracker() {
                               : (b.type === "Skin" && b.id) ? (def.namesEn?.["s" + String(b.id)] ?? null)
                               : (b.type === "Minipet" && b.id) ? (def.namesEn?.["m" + String(b.id)] ?? null)
                               : (b.type === "Text" ? (b.text ?? null) : null);
-                            const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i];
+                            const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i]
+                              ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
                             ) : null;
