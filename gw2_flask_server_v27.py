@@ -116,6 +116,8 @@ ACHIEVEMENT_IDS = {
     "vis_sandswept":      4774,   # Visions of Sandswept Isles
     "vis_thunderhead":    4764,   # Visions of Thunderhead Peaks
     "vis_dragonfall":     4757,   # Visions of Dragonfall
+    "vis_brandstone":     4000,   # Brandstone Research (timegate 7 j — prérequis Astral Weapons)
+    "vis_astral_purif":   3964,   # Astral Purification (débloque les armes Stellar)
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs

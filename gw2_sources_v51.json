@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v50",
+  "version": "v51",
   "last_updated": "2026-07-16",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -391,6 +391,8 @@
     "vis_sandswept": 4774,
     "vis_thunderhead": 4764,
     "vis_dragonfall": 4757,
+    "vis_brandstone": 4000,
+    "vis_astral_purif": 3964,
     "stella_forge_guard": 9330,
     "stella_resin": 9344,
     "orrax_mistburned_mastery": 8582,
@@ -898,7 +900,8 @@
   "changelog_v47": "Correction Wayfarer's Henge : le fragment acheté en Magie non liée ne coûte pas d'or (contrairement aux Magic-Warped Bundles du même PNJ) — ligne Or retirée du bloc Prérequis.",
   "changelog_v48": "Henge : chain[]/requirements/tips retirés de l'item (déplacés dans l'onglet dédié à bits). Mini Aurene : renvoi vers la collection Gift of Aurene (3178).",
   "changelog_v49": "Chaîne du Henge : les 4 succès (3402/3445/3447/3436) ajoutés au mapping de synchro — ils s'affichaient « verrouillés » faute de clé côté serveur.",
-  "changelog_v50": "Vision : les 6 sous-collections « Visions of… » et les 2 metas ajoutées au mapping de synchro (bits désormais traçables)."
+  "changelog_v50": "Vision : les 6 sous-collections « Visions of… » et les 2 metas ajoutées au mapping de synchro (bits désormais traçables).",
+  "changelog_v51": "Vision : Brandstone Research (4000) et Astral Purification (3964) ajoutés au mapping — la chaîne des armes Astral devient traçable."
  },
  "meta_events": {
   "vb": {
