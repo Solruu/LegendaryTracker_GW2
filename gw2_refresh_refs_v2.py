@@ -63,7 +63,7 @@ def get_many(endpoint: str, ids, lang: str):
     return out
 
 
-def build_currencies(lang: str) -> dict:
+def build_currencies(lang: str, previous: dict | None = None) -> dict:
     cur = get_many("/currencies", get("/currencies"), lang)
     return {
         "_meta": {
@@ -72,14 +72,16 @@ def build_currencies(lang: str) -> dict:
             "lang": lang,
             "generated": time.strftime("%Y-%m-%d"),
         },
-        "currencies": {
-            str(c["id"]): {"name": c["name"], "description": c.get("description", "")}
+        # Structure historique : liste 'all', et bloc editorial 'legendary_tracker'.
+        "legendary_tracker": (previous or {}).get("legendary_tracker", {}),
+        "all": [
+            {"id": c["id"], "name": c["name"], "description": c.get("description", "")}
             for c in sorted(cur, key=lambda x: x["id"])
-        },
+        ],
     }
 
 
-def build_materials(lang: str) -> dict:
+def build_materials(lang: str, previous: dict | None = None) -> dict:
     # /v2/materials sans paramètre ne renvoie que les IDs de catégories.
     cats = get_many("/materials", get("/materials"), lang)
     item_ids = sorted({i for c in cats for i in c.get("items", [])})
@@ -90,9 +92,13 @@ def build_materials(lang: str) -> dict:
             {"id": i, "name": items[i]["name"]}
             for i in c.get("items", []) if i in items
         ]
+    # Blocs editoriaux et index derives : preserves, sinon chaque regeneration
+    # les detruit en silence (constate le 11/08/2026).
+    flat = {str(i["id"]): i["name"] for rows in out.values() for i in rows}
     return {
         "_meta": {
             "source": "/v2/materials + /v2/items",
+            "preserved": "flat + legendary_tracker_ids",
             "categories": len(out),
             "count": sum(len(v) for v in out.values()),
             "lang": lang,
@@ -101,6 +107,8 @@ def build_materials(lang: str) -> dict:
                     "fetch en deux temps obligatoire.",
         },
         "by_category": out,
+        "legendary_tracker_ids": (previous or {}).get("legendary_tracker_ids", {}),
+        "flat": flat,
     }
 
 
@@ -214,10 +222,10 @@ def main():
 
     if "currencies" in jobs:
         print("Devises…")
-        results["gw2_currencies_ref.json"] = build_currencies(args.lang)
+        results["gw2_currencies_ref.json"] = build_currencies(args.lang, load("gw2_currencies_ref.json"))
     if "materials" in jobs:
         print("Matériaux…")
-        results["gw2_materials_ref.json"] = build_materials(args.lang)
+        results["gw2_materials_ref.json"] = build_materials(args.lang, load("gw2_materials_ref.json"))
     if "achievements" in jobs:
         print("Achievements…")
         prev = load("gw2_achievements_ref.json")
@@ -225,12 +233,21 @@ def main():
 
     print("\nRésultat :")
     counters = {
-        "gw2_currencies_ref.json": lambda d: len(d.get("currencies", {})),
+        "gw2_currencies_ref.json": lambda d: len(d.get("all", [])),
         "gw2_materials_ref.json": lambda d: d.get("_meta", {}).get("count", 0),
         "gw2_achievements_ref.json": lambda d: d.get("_meta", {}).get("count", 0),
     }
     for name, data in results.items():
         report(name, load(name), data, counters[name])
+
+    # Garde-fou : une regeneration ne doit jamais faire disparaitre un bloc.
+    for name, data in results.items():
+        prev = load(name)
+        if prev:
+            lost = set(prev) - set(data)
+            if lost:
+                print(f"\n\u26a0 {name} : blocs perdus {sorted(lost)} \u2014 ecriture annulee.")
+                sys.exit(1)
 
     if missing:
         print("\n⚠ Suivis par le tracker mais absents de l'API "
