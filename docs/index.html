@@ -629,7 +629,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v67",
+    "version": "v68",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1553,7 +1553,8 @@ const SOURCES_DB = {
     "changelog_v64": "Audit des cadences, 2e passe. Magnetite Shard : 800/semaine CONFIRME (wiki + blog ArenaNet du 03/02/2026, plafond releve de 300 a 800) ; ajout de la source hors plafond (CM, minis, salvage, succes) qui n'entame pas les 800. Legendary Insight : source 'quickplay 10 LI/semaine' RETIREE, contredite par Talk:Legendary Insight (fevrier 2026) — le quickplay ne donne pas de LI. Le total de 43/semaine reste non verifie, il depend du nombre de rencontres modifie par la fusion des Strikes.",
     "changelog_v65": "Legendary Insight verifie sur capture de la section Acquisition : 77/semaine au total. Le 43/semaine des completions hebdomadaires etait EXACT. Deux corrections : les Daily Raid Bounties donnent 28/semaine (4 par jour) et non 7, et le quickplay rapporte bien 6 LI/semaine via le succes Weekly Quickplay Raid Encounters — mon retrait complet de la source quickplay en v64 etait une sur-correction, la page de discussion ne parlait que des coffres. Ajout : les Challenge Modes ne rapportent plus de LI supplementaires.",
     "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee.",
-    "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu."
+    "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu.",
+    "changelog_v68": "Antique Summoning Stone verifie : audit des cadences termine, 31 sources sur 31. Le tracker retenait 5/semaine chez Leivas et 1/jour sur la meta Trepas du dragon. En realite 10/semaine plafonnes — 5 chez Leivas (5 contreparties a 1/semaine chacune, maitrise Globalization) et 5 via les Challenge Modes EoD (1 par CM et par semaine, 5 CM). La meta n'a pas de cadence documentee : reclassee en source hors plafond avec les coffres. Ajout des 5 succes Revenge de Return to End of Dragons, obtention unique."
   },
   "meta_events": {
     "vb": {
@@ -6059,31 +6060,69 @@ const SOURCES_DB = {
         "sources": [
           {
             "label": {
-              "fr": "Leivas",
-              "en": "Leivas"
+              "fr": "Leivas (Arborstone)",
+              "en": "Leivas (Arborstone)"
             },
             "period": "week",
             "cap": 5,
             "cost": {
-              "fr": "maîtrise Globalization",
-              "en": "Globalization mastery"
+              "fr": "5 contreparties distinctes, chacune limitée à 1/semaine. Requiert la maîtrise Globalization.",
+              "en": "5 distinct cost options, each capped at 1/week. Requires the Globalization mastery."
             },
-            "verified": false
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
           },
           {
             "label": {
-              "fr": "Meta Trépas du dragon",
-              "en": "Dragon's End meta"
+              "fr": "Raids EoD en Challenge Mode",
+              "en": "EoD raids in Challenge Mode"
             },
-            "period": "day",
-            "cap": 1,
+            "period": "week",
+            "cap": 5,
             "cost": {
-              "fr": "coffre final",
-              "en": "final chest"
+              "fr": "1 par CM et par semaine : Aetherblade Hideout, Harvest Temple, Kaineng Overlook, Xunlai Jade Junkyard, Old Lion's Court.",
+              "en": "1 per CM per week: Aetherblade Hideout, Harvest Temple, Kaineng Overlook, Xunlai Jade Junkyard, Old Lion's Court."
             },
-            "verified": false
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
+          },
+          {
+            "label": {
+              "fr": "Coffres et échanges",
+              "en": "Chests and exchanges"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "Dragon's End: Hero's Choice Chest, End of Dragons Reward Coffer (5, répétable), Gharr Leadclaw, Wizard's Gobbler, Portable Wizard's Tower Exchange. Boîtes Zephyrite au hasard. ⚠ Cadence non précisée par la page.",
+              "en": "Dragon's End: Hero's Choice Chest, End of Dragons Reward Coffer (5, repeatable), Gharr Leadclaw, Wizard's Gobbler, Portable Wizard's Tower Exchange. Zephyrite boxes by chance. ⚠ Frequency not stated on the page."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
+          },
+          {
+            "label": {
+              "fr": "Succès Return to End of Dragons",
+              "en": "Return to End of Dragons achievements"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "5 succès Revenge (Prototype XJ-1, Renyak, Jade Behemoth, Ravenous Wanderer, Void) — obtention unique, pas une cadence.",
+              "en": "5 Revenge achievements (Prototype XJ-1, Renyak, Jade Behemoth, Ravenous Wanderer, Void) — one-off, not a cadence."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
           }
         ]
+      },
+      "note": {
+        "fr": "10 pierres/semaine plafonnées : 5 chez Leivas (maîtrise Globalization requise) + 5 via les Challenge Modes EoD. Une arme gen3 en demande 100, soit 10 semaines minimum par le seul plafond — c'est le principal timegate des gen3. Les coffres et les 5 succès Revenge s'y ajoutent hors plafond, mais les succès ne sont obtenables qu'une fois.",
+        "en": "10 capped stones/week: 5 from Leivas (Globalization mastery required) + 5 from EoD Challenge Modes. A gen3 weapon needs 100, so 10 weeks minimum on caps alone — the main gen3 timegate. Chests and the 5 Revenge achievements add to that off-cap, but the achievements are one-off."
       }
     },
     "jade_runestone": {
