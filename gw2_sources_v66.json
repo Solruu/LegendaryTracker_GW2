@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v65",
+    "version": "v66",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -922,7 +922,8 @@
     "changelog_v62": "Renommage cadence.faucets -> cadence.sources. Le drapeau 'verified' descend du composant vers chaque source : un composant peut porter une source sure et une douteuse, un verdict global serait trompeur.",
     "changelog_v63": "Audit des cadences, 1re passe. spark_of_sentience n'est PAS une cadence : c'est la recompense unique d'Aurora II: Empowering — cadence retiree. Le verrou quotidien reel est le Lump of Mithrillium (1/jour/compte) consomme par le Xunlai Electrum Ingot, soit 21 jours minimum pour la collection : cadence posee la, verifiee. Au passage, xunlai_electrum_ingot portait l'apiId 77316, absent du referentiel (reel : 46743), et un tip decrivant des vendeurs Xunlai Jade d'EoD sans rapport avec cet objet de LWS3.",
     "changelog_v64": "Audit des cadences, 2e passe. Magnetite Shard : 800/semaine CONFIRME (wiki + blog ArenaNet du 03/02/2026, plafond releve de 300 a 800) ; ajout de la source hors plafond (CM, minis, salvage, succes) qui n'entame pas les 800. Legendary Insight : source 'quickplay 10 LI/semaine' RETIREE, contredite par Talk:Legendary Insight (fevrier 2026) — le quickplay ne donne pas de LI. Le total de 43/semaine reste non verifie, il depend du nombre de rencontres modifie par la fusion des Strikes.",
-    "changelog_v65": "Legendary Insight verifie sur capture de la section Acquisition : 77/semaine au total. Le 43/semaine des completions hebdomadaires etait EXACT. Deux corrections : les Daily Raid Bounties donnent 28/semaine (4 par jour) et non 7, et le quickplay rapporte bien 6 LI/semaine via le succes Weekly Quickplay Raid Encounters — mon retrait complet de la source quickplay en v64 etait une sur-correction, la page de discussion ne parlait que des coffres. Ajout : les Challenge Modes ne rapportent plus de LI supplementaires."
+    "changelog_v65": "Legendary Insight verifie sur capture de la section Acquisition : 77/semaine au total. Le 43/semaine des completions hebdomadaires etait EXACT. Deux corrections : les Daily Raid Bounties donnent 28/semaine (4 par jour) et non 7, et le quickplay rapporte bien 6 LI/semaine via le succes Weekly Quickplay Raid Encounters — mon retrait complet de la source quickplay en v64 etait une sur-correction, la page de discussion ne parlait que des coffres. Ajout : les Challenge Modes ne rapportent plus de LI supplementaires.",
+    "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee."
   },
   "meta_events": {
     "vb": {
@@ -7199,44 +7200,84 @@
         "sources": [
           {
             "label": {
+              "fr": "Faction Provisioners (9 vendeurs recensés)",
+              "en": "Faction Provisioners (9 vendors listed)"
+            },
+            "period": "week",
+            "cap": 63,
+            "cost": {
+              "fr": "7/semaine par vendeur. Black Citadel, Hoelbrak, Lion's Arch, Divinity's Reach, The Grove, Rata Sum, Verdant Brink, Auric Basin, Tangled Depths. Contrepartie variable selon le vendeur.",
+              "en": "7/week per vendor. Black Citadel, Hoelbrak, Lion's Arch, Divinity's Reach, The Grove, Rata Sum, Verdant Brink, Auric Basin, Tangled Depths. Cost varies by vendor."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Provisioner_Token#Acquisition"
+          },
+          {
+            "label": {
+              "fr": "Dugan (McM)",
+              "en": "Dugan (WvW)"
+            },
+            "period": "week",
+            "cap": 25,
+            "cost": {
+              "fr": "5 Memory of Battle + 5 Testimony of Castoran + 5 Skirmish Claim Ticket + 10 Badge of Honor",
+              "en": "5 Memory of Battle + 5 Testimony of Castoran + 5 Skirmish Claim Ticket + 10 Badge of Honor"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Provisioner_Token#Acquisition"
+          },
+          {
+            "label": {
+              "fr": "League Vendor (PvP)",
+              "en": "League Vendor (PvP)"
+            },
+            "period": "week",
+            "cap": 15,
+            "cost": {
+              "fr": "5 PvP League Ticket + 100 Shard of Glory",
+              "en": "5 PvP League Ticket + 100 Shard of Glory"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Provisioner_Token#Acquisition"
+          },
+          {
+            "label": {
+              "fr": "League Vendor — Emblem of Tournament Victory",
+              "en": "League Vendor — Emblem of Tournament Victory"
+            },
+            "period": "week",
+            "cap": 2,
+            "cost": {
+              "fr": "5 tokens pour 1 Emblem",
+              "en": "5 tokens for 1 Emblem"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Provisioner_Token#Acquisition"
+          },
+          {
+            "label": {
               "fr": "Rend Scorchmaul (Tour du Sorcier)",
               "en": "Rend Scorchmaul (Wizard's Tower)"
             },
             "period": "week",
             "cap": null,
             "cost": {
-              "fr": "sans limite — matériaux bruts",
-              "en": "no cap — raw materials"
+              "fr": "AUCUN plafond hebdo. 300 Research Notes, ou 1 Lump of Mithrillium / Glob of Elder Spirit Residue / Spool of Thick Elonian Cord / Charged Quartz Crystal. ⚠ Ces quatre matériaux sont eux-mêmes limités à 1/jour au craft : seule la voie Research Notes est réellement sans limite.",
+              "en": "NO weekly cap. 300 Research Notes, or 1 Lump of Mithrillium / Glob of Elder Spirit Residue / Spool of Thick Elonian Cord / Charged Quartz Crystal. ⚠ Those four materials are themselves capped at 1/day to craft: only the Research Notes route is genuinely uncapped."
             },
-            "verified": false
-          },
-          {
-            "label": {
-              "fr": "Faction Provisioners SotO/JW (×5)",
-              "en": "Faction Provisioners SotO/JW (x5)"
-            },
-            "period": "day",
-            "cap": 5,
-            "cost": {
-              "fr": "1 échange/jour/vendeur",
-              "en": "1 trade/day/vendor"
-            },
-            "verified": false
-          },
-          {
-            "label": {
-              "fr": "Faction Provisioners Tyrie + HoT",
-              "en": "Faction Provisioners Tyria + HoT"
-            },
-            "period": "week",
-            "cap": 7,
-            "cost": {
-              "fr": "7/semaine par vendeur",
-              "en": "7/week per vendor"
-            },
-            "verified": false
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Provisioner_Token#Acquisition"
           }
         ]
+      },
+      "note": {
+        "fr": "105 tokens/semaine plafonnés (63 Faction + 25 Dugan + 15 + 2 PvP), plus Rend Scorchmaul sans plafond. ⚠ Aucune source quotidienne : la table d'acquisition ne mentionne que des limites hebdomadaires. La mention « 1 échange/jour/vendeur » précédemment portée ici était fausse.",
+        "en": "105 capped tokens/week (63 Faction + 25 Dugan + 15 + 2 PvP), plus uncapped Rend Scorchmaul. ⚠ No daily source: the acquisition table lists weekly limits only. The '1 trade/day/vendor' claim previously carried here was wrong."
       }
     },
     "gift_of_expertise": {
