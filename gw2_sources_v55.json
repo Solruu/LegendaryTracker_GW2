@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v54",
+    "version": "v55",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -911,7 +911,8 @@
     "changelog_v51": "Vision : Brandstone Research (4000) et Astral Purification (3964) ajoutés au mapping — la chaîne des armes Astral devient traçable.",
     "changelog_v52": "Vision : metas d episode (Kourna/Sandswept/Jahai/Thunderhead/Dragonfall) + Elegy + Journeyman of the Forge ajoutes au mapping.",
     "changelog_v53": "meta_eligible : listes officielles des succes eligibles des metas d'episode, relevees sur le wiki (l'API ne publie ni bits ni liste d'enfants pour ces metas) et validees ID par ID contre gw2_achievements_ref.json. 2/5 faites (Kourna, Thunderhead).",
-    "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite."
+    "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite.",
+    "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher."
   },
   "meta_events": {
     "vb": {
@@ -12331,8 +12332,8 @@
     }
   },
   "meta_eligible_note": {
-    "fr": "Listes des succes qui comptent reellement pour un meta d'episode. L'API ne les publie pas : /v2/achievements ne renvoie ni bits ni liste d'enfants pour ces metas, et la categorie contient plus de succes que le meta n'en exige. Source : wiki GW2, bloc « Objectives » de la ligne du meta. Chaque ID est valide contre le referentiel API. En l'absence d'entree ici, l'UI retombe sur la categorie complete (moins precis).",
-    "en": "Achievements that actually count toward an episode meta. The API does not publish them: /v2/achievements returns neither bits nor a child list for these metas, and the category holds more achievements than the meta requires. Source: GW2 wiki, 'Objectives' block of the meta row. Every ID is validated against the API reference. Without an entry here, the UI falls back to the full category (less accurate)."
+    "fr": "Listes des succes qui comptent reellement pour un meta d'episode. L'API ne les publie pas : /v2/achievements ne renvoie ni bits ni liste d'enfants pour ces metas, et la categorie contient plus de succes que le meta n'en exige. Source : wiki GW2, bloc « Objectives » de la ligne du meta. Chaque ID est valide contre le referentiel API. En l'absence d'entree ici, l'UI retombe sur la categorie complete (moins precis). Cas confirme le 11/08/2026 : un meta peut compter des succes ranges dans une AUTRE categorie (4 cas entre Bava Nisos/Mistburned Barrens et Janthir Side Stories) — le repli par categorie est donc incomplet, pas seulement imprecis.",
+    "en": "Achievements that actually count toward an episode meta. The API does not publish them: /v2/achievements returns neither bits nor a child list for these metas, and the category holds more achievements than the meta requires. Source: GW2 wiki, 'Objectives' block of the meta row. Every ID is validated against the API reference. Without an entry here, the UI falls back to the full category (less accurate). Confirmed 2026-08-11: a meta can count achievements filed under a DIFFERENT category (4 cases across Bava Nisos/Mistburned Barrens and Janthir Side Stories) — so the category fallback is incomplete, not merely imprecise."
   },
   "meta_eligible": {
     "4195": {
@@ -13196,6 +13197,202 @@
         [
           4705,
           "Hat Trick"
+        ]
+      ]
+    },
+    "8769": {
+      "name": "Bava Nisos Mastery",
+      "threshold": 10,
+      "source": "wiki:Bava_Nisos_(achievements)",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          8752,
+          "Traversing the Titan"
+        ],
+        [
+          8785,
+          "For Old Times' Sake"
+        ],
+        [
+          8718,
+          "Demolition Expert"
+        ],
+        [
+          8740,
+          "Assorted Chaos"
+        ],
+        [
+          8706,
+          "Case 382: Titan Organ Smuggling"
+        ],
+        [
+          8755,
+          "Close the Door"
+        ],
+        [
+          8721,
+          "Sweet Relief"
+        ],
+        [
+          8767,
+          "Separation Anxiety"
+        ],
+        [
+          8708,
+          "Two Birds"
+        ],
+        [
+          8713,
+          "A Titanic Voyage"
+        ],
+        [
+          8735,
+          "Vengeance Denied"
+        ],
+        [
+          8781,
+          "Pure Soul"
+        ],
+        [
+          8705,
+          "Echo Evader"
+        ],
+        [
+          8747,
+          "Spirit Nutritionist"
+        ],
+        [
+          8751,
+          "Artillery Annihilator"
+        ]
+      ]
+    },
+    "8582": {
+      "name": "Mistburned Barrens Mastery",
+      "threshold": 17,
+      "source": "wiki:Mistburned_Barrens_(achievements)",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          8592,
+          "Into the Corridor"
+        ],
+        [
+          8638,
+          "Hollow Shards"
+        ],
+        [
+          8566,
+          "Thousandfold Mercy"
+        ],
+        [
+          8577,
+          "Demise of the Blood Phenom"
+        ],
+        [
+          8585,
+          "Scan and Soothe"
+        ],
+        [
+          8624,
+          "Restless No More"
+        ],
+        [
+          8569,
+          "Down in the Valley"
+        ],
+        [
+          8620,
+          "Silence the Screaming"
+        ],
+        [
+          8595,
+          "Boom!"
+        ],
+        [
+          8555,
+          "We Are the Champions"
+        ],
+        [
+          8593,
+          "More Than a Little Bit"
+        ],
+        [
+          8591,
+          "Pro Scavenger"
+        ],
+        [
+          8623,
+          "Respectable Researcher"
+        ],
+        [
+          8574,
+          "Search and Destroy"
+        ],
+        [
+          8562,
+          "Hazardous Research: Gold"
+        ],
+        [
+          8579,
+          "Hazardous Research: Silver"
+        ],
+        [
+          8637,
+          "Search-and-Rescue Challenge: Gold"
+        ],
+        [
+          8640,
+          "Search-and-Rescue Challenge: Silver"
+        ],
+        [
+          8634,
+          "A Job for Warclaws"
+        ],
+        [
+          8564,
+          "Scouring the Archive"
+        ],
+        [
+          8610,
+          "Reading Between the Lines"
+        ],
+        [
+          8552,
+          "Missing Scout"
+        ],
+        [
+          8584,
+          "Mursaat's Game"
+        ]
+      ]
+    },
+    "8826": {
+      "name": "Incursive Investigation",
+      "threshold": 5,
+      "source": "wiki:Incursive_Investigation",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          8830,
+          "Incursive Investigation: Working Together"
+        ],
+        [
+          8823,
+          "Incursive Investigation: Relic in the Mists"
+        ],
+        [
+          8840,
+          "Incursive Investigation: First Recursion"
+        ],
+        [
+          8841,
+          "Incursive Investigation: Second Recursion"
+        ],
+        [
+          8835,
+          "Incursive Investigation: Third Recursion"
         ]
       ]
     }
