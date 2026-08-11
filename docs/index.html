@@ -587,7 +587,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v55",
+    "version": "v56",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1499,7 +1499,8 @@ const SOURCES_DB = {
     "changelog_v52": "Vision : metas d episode (Kourna/Sandswept/Jahai/Thunderhead/Dragonfall) + Elegy + Journeyman of the Forge ajoutes au mapping.",
     "changelog_v53": "meta_eligible : listes officielles des succes eligibles des metas d'episode, relevees sur le wiki (l'API ne publie ni bits ni liste d'enfants pour ces metas) et validees ID par ID contre gw2_achievements_ref.json. 2/5 faites (Kourna, Thunderhead).",
     "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite.",
-    "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher."
+    "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher.",
+    "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation."
   },
   "meta_events": {
     "vb": {
@@ -5431,8 +5432,8 @@ const SOURCES_DB = {
         "stella_radians": 1
       },
       "note": {
-        "fr": "Partage Mystic Clovers/Coins avec Gift of Fortune gen1. Mystic Coin farmable via login rewards (1/j) ou TP.",
-        "en": "Shares Mystic Clovers/Coins with the gen1 Gift of Fortune. Mystic Coin farmable via login rewards (1/day) or TP."
+        "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
+        "en": "Shares Mystic Clovers/Coins with the gen1 Gift of Fortune. ⚠ Mystic Coins no longer come from login rewards (system retired in 2023, replaced by the Wizard's Vault)."
       },
       "kind": "advanced_craft"
     },
@@ -5445,17 +5446,50 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "login_reward",
+          "type": "vendor",
+          "npc": "Wizard's Vault",
           "tip": {
-            "fr": "1/jour via les récompenses de connexion.",
-            "en": "1/day via daily login rewards."
+            "fr": "9 Astral Acclaim pièce, plafond 60 par saison. La source régulière la plus rentable.",
+            "en": "9 Astral Acclaim each, capped at 60 per season. The most cost-effective steady source."
+          }
+        },
+        {
+          "type": "vendor",
+          "npc": "Nikki the Lost",
+          "map": "Outer Sanctorium (Wizard's Tower)",
+          "tip": {
+            "fr": "Plafond 10 par semaine. ⚠ Coût mixte à vérifier en jeu (icônes non extractibles depuis le wiki).",
+            "en": "Capped at 10 per week. ⚠ Mixed cost to confirm in game (icons not extractable from the wiki)."
+          }
+        },
+        {
+          "type": "vendor",
+          "npc": "Super Adventure Box Weekly Trader",
+          "map": "Rata Sum",
+          "tip": {
+            "fr": "Plafond 3 par semaine, uniquement pendant le Super Adventure Festival.",
+            "en": "Capped at 3 per week, only during the Super Adventure Festival."
+          }
+        },
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Chance dans les coffres de fractales (Adept/Expert/Master) et les Black Lion Material Bags. Bag of Mystic Coins = 6 garantis.",
+            "en": "Chance from fractal chests (Adept/Expert/Master) and Black Lion Material Bags. Bag of Mystic Coins = 6 guaranteed."
+          }
+        },
+        {
+          "type": "event",
+          "tip": {
+            "fr": "Ley-Line Anomaly (event de groupe). Tournois automatisés PvP : 1–5 en quotidien, 1–100 en mensuel.",
+            "en": "Ley-Line Anomaly (group event). Automated PvP tournaments: 1–5 daily, 1–100 monthly."
           }
         },
         {
           "type": "tp",
           "tip": {
-            "fr": "Achat au TP — prix fluctuant selon les patchs.",
-            "en": "Buy on TP — price fluctuates with patches."
+            "fr": "Achat au comptoir — prix historiquement volatil, sensible aux annonces de contenu.",
+            "en": "Buy on the TP — historically volatile, sensitive to content announcements."
           }
         }
       ],
@@ -5519,7 +5553,11 @@ const SOURCES_DB = {
         "stella_radians": 250
       },
       "kind": "acquire",
-      "best": "login_reward"
+      "best": "vendor",
+      "note": {
+        "fr": "⚠ Plus AUCUNE source de connexion quotidienne depuis 2023. Offre volontairement limitée par ArenaNet : tout passe par des plafonds (60/saison au Coffre, 10/sem chez Nikki, 3/sem au SAB) ou le comptoir. À anticiper très en amont. Coût indirect via les Mystic Clovers, en PLUS des 250 directs : ≈231 pour un gen1, ≈481 pour un gen2, ≈114 pour un gen3, ≈273 pour un set d'armure.",
+        "en": "⚠ NO daily-login source since 2023. Supply is deliberately constrained by ArenaNet: everything runs through caps (60/season in the Vault, 10/wk from Nikki, 3/wk at SAB) or the TP. Plan far ahead. Indirect cost through Mystic Clovers, ON TOP of the 250 direct: ~231 for a gen1, ~481 for a gen2, ~114 for a gen3, ~273 for an armor set."
+      }
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
@@ -15632,9 +15670,9 @@ const OBS_WEIGHT_LABELS = {
 
 const COMMON_MATS = [
   { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
-    tip: { fr: "Login rewards (7/mois via Chest of Loyalty), PvP/WvW reward tracks", en: "Login rewards (7/month via Chest of Loyalty), PvP/WvW reward tracks" } },
+    tip: { fr: "Coffre du Sorcier (60 Astral Acclaim pièce, 20/saison), Mystic Forge, reward tracks PvP/WvW. \u26a0 Plus de Chest of Loyalty : le système de connexion a été retiré en 2023.", en: "Wizard's Vault (60 Astral Acclaim each, 20/season), Mystic Forge, PvP/WvW reward tracks. \u26a0 No more Chest of Loyalty: the login system was retired in 2023." } },
   { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
-    tip: { fr: "Login quotidien principalement. ~30/mois de base.", en: "Mostly daily login. ~30/month baseline." } },
+    tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Nikki the Lost (10/sem), SAB (3/sem), coffres de fractales, comptoir. \u26a0 Aucune source de connexion quotidienne depuis 2023.", en: "Wizard's Vault (9 AA, 60/season), Nikki the Lost (10/wk), SAB (3/wk), fractal chests, TP. \u26a0 No daily-login source since 2023." } },
   { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
     tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
   { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
