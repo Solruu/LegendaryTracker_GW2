@@ -3900,12 +3900,15 @@ export default function GW2LegendaryTracker() {
     // 2. Fallback direct GW2 API — uniquement si clé disponible
     if (!data && key) {
       try {
-        const headers = { "Authorization": `Bearer ${key.trim()}` };
+        // access_token en paramètre : le header Authorization fait échouer le
+        // preflight CORS sur mobile — c'est pourquoi la synchro des stocks ne
+        // passait pas alors que celle des succès fonctionnait.
+        const tk = `access_token=${encodeURIComponent(key.trim())}`;
         const [wResp, mResp, bResp, sResp] = await Promise.all([
-          fetch("https://api.guildwars2.com/v2/account/wallet", { headers }),
-          fetch("https://api.guildwars2.com/v2/account/materials", { headers }),
-          fetch("https://api.guildwars2.com/v2/account/bank", { headers }),
-          fetch("https://api.guildwars2.com/v2/account/inventory", { headers }),
+          fetch(`https://api.guildwars2.com/v2/account/wallet?${tk}`),
+          fetch(`https://api.guildwars2.com/v2/account/materials?${tk}`),
+          fetch(`https://api.guildwars2.com/v2/account/bank?${tk}`),
+          fetch(`https://api.guildwars2.com/v2/account/inventory?${tk}`),
         ]);
         const [wallet, mats, bank, shared] = await Promise.all([
           wResp.ok ? wResp.json() : [],
@@ -4220,10 +4223,13 @@ export default function GW2LegendaryTracker() {
               }}>
               {apiStatus === "loading" ? "⟳ …" : apiStatus === "ok" ? "✓ API" : apiStatus === "error" ? "✗ Err" : "⟳ API"}
             </button>
-            <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
-              {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+            <div style={{ fontSize: 9, color: gtStockStatus === "ok" ? "#4ade80" : gtStockStatus === "error" ? "#f87171" : "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
+              {gtStockStatus === "loading" ? "⟳" : gtStockStatus === "ok" ? `✓ ${Object.keys(gtStocks).filter(k => !k.startsWith("_")).length} stocks` : gtStockStatus === "error" ? "✗ stocks" : now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </div>
           </div>
+          {gtStockStatus === "error" && gtStockError && (
+            <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>stocks : {gtStockError}</div>
+          )}
           {apiStatus === "error" && apiError && (
             <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>{apiError}</div>
           )}
