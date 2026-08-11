@@ -629,7 +629,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v63",
+    "version": "v64",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1549,7 +1549,8 @@ const SOURCES_DB = {
     "changelog_v60": "apiId ajoutes : fractal_research_page 73834 et spark_of_sentience 81729 (fournis par Antoine, recoupes — 73834 figure dans gw2_materials_ref sous Advanced Crafting Materials, 81729 etait deja declare dans NAME_FETCH_IDS du JSX). Sans apiId, ces deux ressources restaient en 'stock inconnu' dans l'onglet Cadences quelle que soit la synchro. Correction d'ID : magnetite_shard passait par 70820, qui est Shard of Glory et non Magnetite Shard — remplace par la devise de portefeuille 28 (confirmee dans gw2_currencies_ref). legendary_insight reste sur 77302 : verifie present en stockage materiaux, l'ID est valide. pristine_fractal_relic passe de 49370 (objet) a la devise 24 ; fractal_relic aligne sur la devise 7. spark_of_sentience 81729 est un objet d'inventaire hors stockage materiaux : resolvable via bank/inventory, c'est normal qu'il n'apparaisse pas dans gw2_materials_ref. AUDIT apiId : 10 identifiants corriges apres detection d'une divergence entre le nom declare et le nom renvoye par le referentiel. Cascade decalee d'un cran (inscribed_shard portait l'ID de Lump of Mistonium, qui portait celui de Branded Mass, qui portait celui de Mistborn Mote) et deux paires inversees (Orrian Pearl / Fire Orchid Blossom, Vision Crystal / Crystalline Ingot). gift_of_metal (19680 = Copper Ingot) et eldritch_scroll (19686 = Platinum Ingot) restent faux : absents du stockage materiaux, non resolvables en local.",
     "changelog_v61": "Derniers apiId errones corriges : gift_of_metal 19680 (Copper Ingot) -> 19621 et eldritch_scroll 19686 (Platinum Ingot) -> 20852. Confirmes par le wiki GW2 et gw2treasures. Ces deux objets sont des trophees de Mystic Forge, absents du stockage materiaux : non resolvables contre les referentiels locaux, d'ou la verification externe. Famille Dust : nouvelle cascade decalee corrigee — dust_radiant portait l'ID de Crystalline Dust, dust_luminous celui d'Incandescent, dust_incandescent celui de Luminous. Resolus par nom exact (24274 / 24275 / 24276).",
     "changelog_v62": "Renommage cadence.faucets -> cadence.sources. Le drapeau 'verified' descend du composant vers chaque source : un composant peut porter une source sure et une douteuse, un verdict global serait trompeur.",
-    "changelog_v63": "Audit des cadences, 1re passe. spark_of_sentience n'est PAS une cadence : c'est la recompense unique d'Aurora II: Empowering — cadence retiree. Le verrou quotidien reel est le Lump of Mithrillium (1/jour/compte) consomme par le Xunlai Electrum Ingot, soit 21 jours minimum pour la collection : cadence posee la, verifiee. Au passage, xunlai_electrum_ingot portait l'apiId 77316, absent du referentiel (reel : 46743), et un tip decrivant des vendeurs Xunlai Jade d'EoD sans rapport avec cet objet de LWS3."
+    "changelog_v63": "Audit des cadences, 1re passe. spark_of_sentience n'est PAS une cadence : c'est la recompense unique d'Aurora II: Empowering — cadence retiree. Le verrou quotidien reel est le Lump of Mithrillium (1/jour/compte) consomme par le Xunlai Electrum Ingot, soit 21 jours minimum pour la collection : cadence posee la, verifiee. Au passage, xunlai_electrum_ingot portait l'apiId 77316, absent du referentiel (reel : 46743), et un tip decrivant des vendeurs Xunlai Jade d'EoD sans rapport avec cet objet de LWS3.",
+    "changelog_v64": "Audit des cadences, 2e passe. Magnetite Shard : 800/semaine CONFIRME (wiki + blog ArenaNet du 03/02/2026, plafond releve de 300 a 800) ; ajout de la source hors plafond (CM, minis, salvage, succes) qui n'entame pas les 800. Legendary Insight : source 'quickplay 10 LI/semaine' RETIREE, contredite par Talk:Legendary Insight (fevrier 2026) — le quickplay ne donne pas de LI. Le total de 43/semaine reste non verifie, il depend du nombre de rencontres modifie par la fusion des Strikes."
   },
   "meta_events": {
     "vb": {
@@ -4009,19 +4010,6 @@ const SOURCES_DB = {
           },
           {
             "label": {
-              "fr": "Quickplay raids",
-              "en": "Quickplay raids"
-            },
-            "period": "week",
-            "cap": 10,
-            "cost": {
-              "fr": "1 par run",
-              "en": "1 per run"
-            },
-            "verified": false
-          },
-          {
-            "label": {
               "fr": "Daily raid bounty",
               "en": "Daily raid bounty"
             },
@@ -4034,6 +4022,10 @@ const SOURCES_DB = {
             "verified": false
           }
         ]
+      },
+      "note": {
+        "fr": "⚠ La source « quickplay raids, jusqu'à 10 LI/semaine » précédemment listée ici a été retirée : le wiki (Talk:Legendary Insight, février 2026) indique explicitement que les LI ne s'obtiennent PAS en quickplay — les LI sont hebdomadaires par boss, plus les Daily Raid Bounties. Le total de 43/semaine reste à confirmer : il dépend du nombre de rencontres, qui a changé avec la fusion des Strikes du 3 février 2026.",
+        "en": "⚠ The 'quickplay raids, up to 10 LI/week' source previously listed here has been removed: the wiki (Talk:Legendary Insight, February 2026) states explicitly that LI cannot be obtained from quickplay — LI are weekly per boss, plus Daily Raid Bounties. The 43/week total still needs confirming: it depends on the encounter count, which changed with the 3 February 2026 Strike merge."
       }
     },
     "magnetite_shard": {
@@ -4068,22 +4060,43 @@ const SOURCES_DB = {
         "sources": [
           {
             "label": {
-              "fr": "Boss de raid HoT",
-              "en": "HoT raid bosses"
+              "fr": "Rencontres de raid",
+              "en": "Raid encounters"
             },
             "period": "week",
             "cap": 800,
             "cost": {
-              "fr": "clear hebdomadaire",
-              "en": "weekly clear"
+              "fr": "8 à 16 par rencontre selon difficulté",
+              "en": "8 to 16 per encounter by difficulty"
             },
-            "verified": false
+            "ref": "wiki:Magnetite_Shard + blog ArenaNet 03/02/2026",
+            "verified": true,
+            "checked": "2026-08-11"
+          },
+          {
+            "label": {
+              "fr": "Hors plafond : CM, minis, salvage, succès",
+              "en": "Off-cap: CM, minis, salvage, achievements"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "Challenge Mode, revente de minis aux vendeurs raid, salvage d'ascendés, succès (dont Return to) — n'entament pas les 800",
+              "en": "Challenge Mode, trading minis to raid vendors, salvaging ascended drops, achievements (incl. Return to) — do not count against the 800"
+            },
+            "ref": "wiki:Magnetite_Shard",
+            "verified": true,
+            "checked": "2026-08-11"
           }
         ]
       },
       "apiIdNote": {
         "fr": "Devise de portefeuille (id 28). L'ancien 70820 pointait sur Shard of Glory — objet sans rapport.",
         "en": "Wallet currency (id 28). The former 70820 pointed at Shard of Glory — an unrelated item."
+      },
+      "note": {
+        "fr": "Plafond relevé de 300 à 800 le 3 février 2026, en même temps que la fusion des Strikes dans les raids et la conversion des Prophet Shards. ⚠ Les sources hors plafond (CM, minis, salvage, succès) sont le vrai levier une fois les 800 atteints. Les rencontres de Visions of Eternity donnent du Gaeting Crystal, pas du Magnetite.",
+        "en": "Cap raised from 300 to 800 on 3 February 2026, alongside the Strike/raid merge and the Prophet Shard conversion. ⚠ Off-cap sources (CM, minis, salvage, achievements) are the real lever once the 800 are reached. Visions of Eternity encounters award Gaeting Crystal, not Magnetite."
       }
     },
     "gift_of_the_desert": {
