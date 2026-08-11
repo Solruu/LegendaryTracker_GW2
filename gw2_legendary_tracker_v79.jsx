@@ -35,6 +35,8 @@ const I18N = {
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_loading: "Loading step definitions…",
     bits_step: "Step {n}",
+    bits_meta_req: "Meta-achievement — {n} required out of {m} eligible objectives.",
+    bits_meta_left: "{n} left to reach the threshold.",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -201,6 +203,8 @@ const I18N = {
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_loading: "Chargement des définitions d'étapes…",
     bits_step: "Étape {n}",
+    bits_meta_req: "Méta-achievement — {n} requis sur {m} objectifs éligibles.",
+    bits_meta_left: "Encore {n} pour atteindre le seuil.",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -2942,11 +2946,34 @@ export default function GW2LegendaryTracker() {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
     const ids = list.map(a => a.achievementId);
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v8`; // v8 : résolution des bits Skin et Minipet
+    // v9 : la clé intègre une empreinte de la liste d'IDs. Sans cela, tout ajout de
+    // collection restait invisible derrière un cache créé avant elle (bug v78).
+    let sig = 0;
+    for (const c of ids.join(",")) sig = ((sig << 5) - sig + c.charCodeAt(0)) | 0;
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v9_${(sig >>> 0).toString(36)}`;
+    try {
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(`gw2_ach_bits_${selectedLeg}_`) && k !== cacheKey) localStorage.removeItem(k);
+      }
+    } catch (_) {}
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
       if (cached) { setAchBitsDefs(cached); return; }
     } catch (_) {}
+    // Catégories d'achievements : volumineux et stable, mis en cache une fois pour toutes.
+    const loadAchCategories = async () => {
+      try {
+        const c = JSON.parse(localStorage.getItem("gw2_ach_categories_v1") ?? "null");
+        if (c) return c;
+      } catch (_) {}
+      const rc = await fetch("https://api.guildwars2.com/v2/achievements/categories?ids=all");
+      if (!rc.ok) return null;
+      const full = await rc.json();
+      const cats = full.map(c => ({ id: c.id, achievements: (c.achievements ?? []).map(x => (typeof x === "object" ? x.id : x)) }));
+      try { localStorage.setItem("gw2_ach_categories_v1", JSON.stringify(cats)); } catch (_) {}
+      return cats;
+    };
     (async () => {
       try {
         const r = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${ids.join(",")}&lang=${lang}`);
@@ -2989,21 +3016,39 @@ export default function GW2LegendaryTracker() {
         }
         const out = {};
         for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "" };
+        // Métas AVEC bits Text (metas d'épisode : « Long Live the Lich », « All or Nothing »…) :
+        // chaque bit porte le NOM d'un succès enfant. On le résout vers son ID via la catégorie
+        // qui contient le méta, afin d'afficher la sous-progression (ex. « 12/24 coffres »).
+        // La liste des bits est la liste officielle des objectifs éligibles — pas la catégorie
+        // entière, qui contient aussi des succès ne comptant pas pour le méta.
+        const textMetas = defs.filter(d => (d.bits ?? []).length > 0 && d.bits.every(b => b.type === "Text" && b.text));
+        if (textMetas.length > 0) {
+          const cats = await loadAchCategories();
+          if (cats) {
+            for (const m of textMetas) {
+              const cat = cats.find(c => c.achievements.includes(m.id));
+              if (!cat) continue;
+              const sibIds = cat.achievements.filter(x => x !== m.id);
+              const byName = {};
+              for (let k = 0; k < sibIds.length; k += 150) {
+                const chunk = sibIds.slice(k, k + 150);
+                const rs = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
+                if (rs.ok) for (const s of await rs.json()) byName[s.name] = s.id;
+              }
+              // Un méta d'épisode a beaucoup d'objectifs ; s'il n'en résout aucun,
+              // c'est que ses bits ne désignent pas des succès (collection classique).
+              const bitAch = {};
+              m.bits.forEach((b, i) => { if (byName[b.text] !== undefined) bitAch[i] = byName[b.text]; });
+              if (Object.keys(bitAch).length > 0) out[String(m.id)].bitAch = bitAch;
+            }
+          }
+        }
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
         const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
         const metas = defs.filter(d => (d.bits ?? []).length === 0 && metaIds.has(d.id));
         if (metas.length > 0) {
-          let cats = null;
-          try { cats = JSON.parse(localStorage.getItem("gw2_ach_categories_v1") ?? "null"); } catch (_) {}
-          if (!cats) {
-            const rc = await fetch("https://api.guildwars2.com/v2/achievements/categories?ids=all");
-            if (rc.ok) {
-              const full = await rc.json();
-              cats = full.map(c => ({ id: c.id, achievements: (c.achievements ?? []).map(x => (typeof x === "object" ? x.id : x)) }));
-              try { localStorage.setItem("gw2_ach_categories_v1", JSON.stringify(cats)); } catch (_) {}
-            }
-          }
+          const cats = await loadAchCategories();
           if (cats) {
             for (const m of metas) {
               const cat = cats.find(c => c.achievements.includes(m.id));
@@ -3032,6 +3077,7 @@ export default function GW2LegendaryTracker() {
     const allSubs = [];
     for (const d of Object.values(achBitsDefs)) {
       for (const s of (d.subs ?? [])) allSubs.push(s.id);
+      for (const id of Object.values(d.bitAch ?? {})) allSubs.push(id);
     }
     if (allSubs.length === 0) return;
     const missing = allSubs.filter(id => achSubStatus[String(id)] === undefined);
@@ -5263,8 +5309,17 @@ export default function GW2LegendaryTracker() {
                           {!def.req && !def.desc && <div style={{ fontStyle: "italic", opacity: 0.6 }}>—</div>}
                         </div>
                       )
-                    ) : def.bits.map((b, i) => {
+                    ) : <React.Fragment>
+                    {mx > 0 && def.bits.length > mx && (
+                      <div style={{ marginBottom: 6, padding: "5px 8px", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.15)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.7)", lineHeight: 1.5 }}>
+                        {t("bits_meta_req", { n: mx, m: def.bits.length })}
+                        {!done && cur < mx ? " " + t("bits_meta_left", { n: mx - cur }) : ""}
+                      </div>
+                    )}
+                    {def.bits.map((b, i) => {
                       const stepDone = done || doneBits.has(i);
+                      const childId = def.bitAch?.[i];
+                      const childSt = childId !== undefined ? (achSubStatus[String(childId)] ?? {}) : null;
                       let label = null;
                       if (b.type === "Item" && b.id) label = def.names?.[String(b.id)] ?? null;
                       else if (b.type === "Text" && b.text) label = b.text;
@@ -5278,6 +5333,9 @@ export default function GW2LegendaryTracker() {
                           <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
                             <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
                             <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
+                            {!stepDone && childSt && childSt.max > 1 && (
+                              <span style={{ fontSize: "10px", color: legColor, opacity: 0.75, flexShrink: 0 }}>{childSt.current ?? 0}/{childSt.max}</span>
+                            )}
                           </div>
                           {!stepDone && (() => {
                             const enKey = (b.type === "Item" && b.id) ? (def.namesEn?.[String(b.id)] ?? null)
@@ -5292,7 +5350,8 @@ export default function GW2LegendaryTracker() {
                           })()}
                         </div>
                       );
-                    }))}
+                    })}
+                    </React.Fragment>)}
                   </div>
                 )}
               </div>

@@ -112,7 +112,8 @@ def inject_sources_db(src: str, sources_path: Path) -> str:
     if "// __SOURCES_DB_INJECT__" not in src:
         return src
     if not sources_path.exists():
-        print(f"[WARN] {sources_path} introuvable — SOURCES_DB non injectée")
+        print(f"[ERREUR] {sources_path} introuvable — un HTML sans SOURCES_DB est inutilisable.")
+        sys.exit(1)
         return src.replace("// __SOURCES_DB_INJECT__", "const SOURCES_DB = {};")
     data = json.loads(sources_path.read_text(encoding="utf-8"))
     json_str = json.dumps(data, ensure_ascii=False, indent=2)
@@ -146,13 +147,26 @@ def transform_jsx(src: str) -> str:
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
-def build(jsx_path: Path, out_path: Path):
+def resolve_sources(explicit, folder: Path) -> Path:
+    """Resolut le JSON de sources : explicite, sinon la version _vN la plus haute."""
+    if explicit:
+        return Path(explicit) if Path(explicit).is_absolute() else folder / explicit
+    versioned = sorted(
+        folder.glob("gw2_sources_v*.json"),
+        key=lambda f: int(re.search(r"_v(\d+)\.json$", f.name).group(1)),
+    )
+    if versioned:
+        return versioned[-1]
+    return folder / "gw2_sources.json"
+
+
+def build(jsx_path: Path, out_path: Path, sources_path: Path):
     if not jsx_path.exists():
         print(f"[ERREUR] Fichier JSX introuvable : {jsx_path}")
         sys.exit(1)
 
     src = jsx_path.read_text(encoding="utf-8")
-    sources_path = jsx_path.parent / "gw2_sources.json"
+    print(f"Sources : {sources_path}")
     src = inject_sources_db(src, sources_path)
     transformed = transform_jsx(src)
 
@@ -168,6 +182,7 @@ def main():
     parser = argparse.ArgumentParser(description="JSX → HTML standalone pour GW2 Legendary Tracker")
     parser.add_argument("--jsx", default=DEFAULT_JSX, help="Fichier JSX source")
     parser.add_argument("--out", default=DEFAULT_OUT, help="Fichier HTML de sortie")
+    parser.add_argument("--json", default=None, help="Base editoriale (defaut : gw2_sources_vN.json le plus recent)")
     args = parser.parse_args()
 
     script_dir = Path(__file__).parent
@@ -176,7 +191,7 @@ def main():
 
     print(f"Source : {jsx_path}")
     print(f"Sortie : {out_path}")
-    build(jsx_path, out_path)
+    build(jsx_path, out_path, resolve_sources(args.json, script_dir))
 
 
 if __name__ == "__main__":
