@@ -629,7 +629,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v66",
+    "version": "v67",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1552,7 +1552,8 @@ const SOURCES_DB = {
     "changelog_v63": "Audit des cadences, 1re passe. spark_of_sentience n'est PAS une cadence : c'est la recompense unique d'Aurora II: Empowering — cadence retiree. Le verrou quotidien reel est le Lump of Mithrillium (1/jour/compte) consomme par le Xunlai Electrum Ingot, soit 21 jours minimum pour la collection : cadence posee la, verifiee. Au passage, xunlai_electrum_ingot portait l'apiId 77316, absent du referentiel (reel : 46743), et un tip decrivant des vendeurs Xunlai Jade d'EoD sans rapport avec cet objet de LWS3.",
     "changelog_v64": "Audit des cadences, 2e passe. Magnetite Shard : 800/semaine CONFIRME (wiki + blog ArenaNet du 03/02/2026, plafond releve de 300 a 800) ; ajout de la source hors plafond (CM, minis, salvage, succes) qui n'entame pas les 800. Legendary Insight : source 'quickplay 10 LI/semaine' RETIREE, contredite par Talk:Legendary Insight (fevrier 2026) — le quickplay ne donne pas de LI. Le total de 43/semaine reste non verifie, il depend du nombre de rencontres modifie par la fusion des Strikes.",
     "changelog_v65": "Legendary Insight verifie sur capture de la section Acquisition : 77/semaine au total. Le 43/semaine des completions hebdomadaires etait EXACT. Deux corrections : les Daily Raid Bounties donnent 28/semaine (4 par jour) et non 7, et le quickplay rapporte bien 6 LI/semaine via le succes Weekly Quickplay Raid Encounters — mon retrait complet de la source quickplay en v64 etait une sur-correction, la page de discussion ne parlait que des coffres. Ajout : les Challenge Modes ne rapportent plus de LI supplementaires.",
-    "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee."
+    "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee.",
+    "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu."
   },
   "meta_events": {
     "vb": {
@@ -6587,16 +6588,33 @@ const SOURCES_DB = {
         "sources": [
           {
             "label": {
-              "fr": "Fractales quotidiennes T4",
-              "en": "Daily T4 fractals"
+              "fr": "Quotidiennes + recommandées",
+              "en": "Dailies + recommended"
             },
             "period": "day",
-            "cap": 5,
+            "cap": 15,
             "cost": {
-              "fr": "recommandées + quotidiennes",
-              "en": "recommended + dailies"
+              "fr": "3×4 coffres quotidiens + 3×1 recommandées",
+              "en": "3x4 daily chests + 3x1 recommended"
             },
-            "verified": false
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Pristine_Fractal_Relic"
+          },
+          {
+            "label": {
+              "fr": "Challenge Modes",
+              "en": "Challenge Modes"
+            },
+            "period": "day",
+            "cap": 12,
+            "cost": {
+              "fr": "⚠ Plafond haut : une autre page du wiki retient ~23/jour au total plutôt que 27.",
+              "en": "⚠ Upper bound: another wiki page uses ~23/day in total rather than 27."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Pristine_Fractal_Relic"
           }
         ]
       },
@@ -6630,24 +6648,56 @@ const SOURCES_DB = {
         "en": "~13-14 days per collection (4 collections = ~40-56 days total). CM shortens to ~5 days/collection."
       },
       "note": {
-        "fr": " apiId à confirmer — conflit avec Fresh Winterberry (79899).",
-        "en": " apiId to confirm — conflict with Fresh Winterberry (79899)."
+        "fr": "29 pages/semaine sans Challenge Mode, 57 avec. Un Fractal Journal coûte 28 pages ; Ad Infinitum en demande 4, soit 112 pages. ⚠ Le wiki liste 6 fractales CM mais son calcul de délai retient 4 pages/jour : chiffre retenu ici, à considérer comme un plancher.",
+        "en": "29 pages/week without Challenge Mode, 57 with. A Fractal Journal costs 28 pages; Ad Infinitum needs 4, so 112 pages. ⚠ The wiki lists 6 CM fractals but its own time-gate maths uses 4 pages/day: that figure is used here and should be treated as a floor."
       },
       "kind": "acquire",
       "cadence": {
         "sources": [
           {
             "label": {
-              "fr": "Fractales recommandées",
-              "en": "Recommended fractals"
+              "fr": "Fractales recommandées quotidiennes",
+              "en": "Daily recommended fractals"
             },
             "period": "day",
             "cap": 3,
             "cost": {
-              "fr": "+ bonus par fractale",
-              "en": "+ per-fractal bonus"
+              "fr": "1 par fractale recommandée, 3 accessibles/jour en T3+",
+              "en": "1 per recommended fractal, 3 available/day at T3+"
             },
-            "verified": false
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Fractal_Journal + wiki:Account_Augmentation (14/06/2026)"
+          },
+          {
+            "label": {
+              "fr": "Weekly Fractal Fighter's Cache",
+              "en": "Weekly Fractal Fighter's Cache"
+            },
+            "period": "week",
+            "cap": 8,
+            "cost": {
+              "fr": "2 par cache. 8/semaine en T4, 6 en T3.",
+              "en": "2 per cache. 8/week at T4, 6 at T3."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Fractal_Journal + wiki:Account_Augmentation (14/06/2026)"
+          },
+          {
+            "label": {
+              "fr": "Fractales Challenge Mode",
+              "en": "Challenge Mode fractals"
+            },
+            "period": "day",
+            "cap": 4,
+            "cost": {
+              "fr": "1 par CM. Kinfall, Nightmare, Shattered Observatory, Sunqua Peak, Silent Surf, Lonely Tower.",
+              "en": "1 per CM. Kinfall, Nightmare, Shattered Observatory, Sunqua Peak, Silent Surf, Lonely Tower."
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Fractal_Journal + wiki:Account_Augmentation (14/06/2026)"
           }
         ]
       }
