@@ -627,7 +627,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v60",
+    "version": "v61",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1544,7 +1544,8 @@ const SOURCES_DB = {
     "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour).",
     "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine.",
     "changelog_v59": "Ajout du bloc 'cadence' structure (robinets, periode, plafond, cout) sur les composants plafonnes, pour alimenter l'onglet Cadences. Seuls mystic_coin et mystic_clover portent verified:true (croises avec le wiki le 11/08/2026) ; les autres sont derives des tips existants et restent a auditer. Deux mauvaises lectures corrigees a la main : provisioner_token Tyrie/HoT est bien 7/semaine et non 1/jour, et gift_of_arid_mastery etait un faux positif.",
-    "changelog_v60": "apiId ajoutes : fractal_research_page 73834 et spark_of_sentience 81729 (fournis par Antoine, recoupes — 73834 figure dans gw2_materials_ref sous Advanced Crafting Materials, 81729 etait deja declare dans NAME_FETCH_IDS du JSX). Sans apiId, ces deux ressources restaient en 'stock inconnu' dans l'onglet Cadences quelle que soit la synchro. Correction d'ID : magnetite_shard passait par 70820, qui est Shard of Glory et non Magnetite Shard — remplace par la devise de portefeuille 28 (confirmee dans gw2_currencies_ref). legendary_insight reste sur 77302 : verifie present en stockage materiaux, l'ID est valide. pristine_fractal_relic passe de 49370 (objet) a la devise 24 ; fractal_relic aligne sur la devise 7. spark_of_sentience 81729 est un objet d'inventaire hors stockage materiaux : resolvable via bank/inventory, c'est normal qu'il n'apparaisse pas dans gw2_materials_ref. AUDIT apiId : 10 identifiants corriges apres detection d'une divergence entre le nom declare et le nom renvoye par le referentiel. Cascade decalee d'un cran (inscribed_shard portait l'ID de Lump of Mistonium, qui portait celui de Branded Mass, qui portait celui de Mistborn Mote) et deux paires inversees (Orrian Pearl / Fire Orchid Blossom, Vision Crystal / Crystalline Ingot). gift_of_metal (19680 = Copper Ingot) et eldritch_scroll (19686 = Platinum Ingot) restent faux : absents du stockage materiaux, non resolvables en local."
+    "changelog_v60": "apiId ajoutes : fractal_research_page 73834 et spark_of_sentience 81729 (fournis par Antoine, recoupes — 73834 figure dans gw2_materials_ref sous Advanced Crafting Materials, 81729 etait deja declare dans NAME_FETCH_IDS du JSX). Sans apiId, ces deux ressources restaient en 'stock inconnu' dans l'onglet Cadences quelle que soit la synchro. Correction d'ID : magnetite_shard passait par 70820, qui est Shard of Glory et non Magnetite Shard — remplace par la devise de portefeuille 28 (confirmee dans gw2_currencies_ref). legendary_insight reste sur 77302 : verifie present en stockage materiaux, l'ID est valide. pristine_fractal_relic passe de 49370 (objet) a la devise 24 ; fractal_relic aligne sur la devise 7. spark_of_sentience 81729 est un objet d'inventaire hors stockage materiaux : resolvable via bank/inventory, c'est normal qu'il n'apparaisse pas dans gw2_materials_ref. AUDIT apiId : 10 identifiants corriges apres detection d'une divergence entre le nom declare et le nom renvoye par le referentiel. Cascade decalee d'un cran (inscribed_shard portait l'ID de Lump of Mistonium, qui portait celui de Branded Mass, qui portait celui de Mistborn Mote) et deux paires inversees (Orrian Pearl / Fire Orchid Blossom, Vision Crystal / Crystalline Ingot). gift_of_metal (19680 = Copper Ingot) et eldritch_scroll (19686 = Platinum Ingot) restent faux : absents du stockage materiaux, non resolvables en local.",
+    "changelog_v61": "Derniers apiId errones corriges : gift_of_metal 19680 (Copper Ingot) -> 19621 et eldritch_scroll 19686 (Platinum Ingot) -> 20852. Confirmes par le wiki GW2 et gw2treasures. Ces deux objets sont des trophees de Mystic Forge, absents du stockage materiaux : non resolvables contre les referentiels locaux, d'ou la verification externe. Famille Dust : nouvelle cascade decalee corrigee — dust_radiant portait l'ID de Crystalline Dust, dust_luminous celui d'Incandescent, dust_incandescent celui de Luminous. Resolus par nom exact (24274 / 24275 / 24276)."
   },
   "meta_events": {
     "vb": {
@@ -2573,7 +2574,7 @@ const SOURCES_DB = {
   "craft_components": {
     "dust_radiant": {
       "name": "Pile of Radiant Dust",
-      "apiId": 24277,
+      "apiId": 24274,
       "needed_for": [
         "gift_of_energy"
       ],
@@ -2600,7 +2601,7 @@ const SOURCES_DB = {
     },
     "dust_luminous": {
       "name": "Pile of Luminous Dust",
-      "apiId": 24276,
+      "apiId": 24275,
       "needed_for": [
         "gift_of_energy"
       ],
@@ -2627,7 +2628,7 @@ const SOURCES_DB = {
     },
     "dust_incandescent": {
       "name": "Pile of Incandescent Dust",
-      "apiId": 24275,
+      "apiId": 24276,
       "needed_for": [
         "gift_of_energy"
       ],
@@ -4376,7 +4377,7 @@ const SOURCES_DB = {
     },
     "gift_of_metal": {
       "name": "Gift of Metal",
-      "apiId": 19680,
+      "apiId": 19621,
       "needed_for": [
         "gen1_weapon_gifts"
       ],
@@ -5023,7 +5024,7 @@ const SOURCES_DB = {
     },
     "eldritch_scroll": {
       "name": "Eldritch Scroll",
-      "apiId": 19686,
+      "apiId": 20852,
       "needed_for": [
         "armor_perfected_envoy"
       ],
