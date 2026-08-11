@@ -15403,7 +15403,12 @@ function GW2LegendaryTracker() {
           }
         }
         const out = {};
-        for (const d of defs) out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "" };
+        for (const d of defs) {
+          // Le seuil d'un meta n'est pas dans "requirement" (l'API en retire le nombre,
+          // d'ou le double espace de "Complete all  X achievements") : c'est le dernier palier.
+          const tierMax = (d.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
+          out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "", tierMax };
+        }
         // Métas AVEC bits Text (metas d'épisode : « Long Live the Lich », « All or Nothing »…) :
         // chaque bit porte le NOM d'un succès enfant. On le résout vers son ID via la catégorie
         // qui contient le méta, afin d'afficher la sous-progression (ex. « 12/24 coffres »).
@@ -17677,7 +17682,7 @@ function GW2LegendaryTracker() {
                       (def.subs && def.subs.length > 0) ? (
                         <div>
                           <div style={{ marginBottom: 6, padding: "5px 8px", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.15)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.7)", lineHeight: 1.5 }}>
-                            {mx > 0 ? t("bits_meta_req", { n: mx, m: def.subs.length }) : t("bits_meta_note")}
+                            {(mx || def.tierMax) > 0 ? t("bits_meta_req", { n: mx || def.tierMax, m: def.subs.length }) : t("bits_meta_note")}
                             {mx > 0 && !done && cur < mx ? " " + t("bits_meta_left", { n: mx - cur }) : ""}
                             {Object.keys(achSubStatus).length === 0 ? " " + t("bits_meta_nostatus") : ""}
                           </div>
@@ -17697,7 +17702,7 @@ function GW2LegendaryTracker() {
                         </div>
                       ) : (
                         <div style={{ fontSize: "11px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.55)", lineHeight: 1.5 }}>
-                          {def.req ? <div>🎯 {def.req}</div> : null}
+                          {def.req ? <div>🎯 {def.tierMax > 0 ? def.req.replace(/\s{2,}/, ` ${def.tierMax} `) : def.req}</div> : null}
                           {def.desc ? <div style={{ marginTop: 3, fontStyle: "italic", opacity: 0.8 }}>{def.desc}</div> : null}
                           {locked && def.lockedTxt ? <div style={{ marginTop: 3, color: "rgba(251,146,60,0.7)" }}>🔒 {def.lockedTxt}</div> : null}
                           {!def.req && !def.desc && <div style={{ fontStyle: "italic", opacity: 0.6 }}>—</div>}
