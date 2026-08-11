@@ -2424,6 +2424,26 @@ const QTY_LEG_IDS = (() => {
   return out;
 })();
 
+// Un objet rendu comme enfant React fait tomber TOUT l'arbre (page noire).
+// Cette barrière contient la casse à l'onglet et affiche la raison, plutôt
+// que de laisser l'utilisateur face à un écran vide sans console.
+class TabErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { err: null }; }
+  static getDerivedStateFromError(err) { return { err }; }
+  render() {
+    if (!this.state.err) return this.props.children;
+    return (
+      <div style={{ margin: 14, padding: 12, background: "rgba(251,146,60,0.08)", border: "1px solid rgba(251,146,60,0.35)", borderRadius: 8, color: "rgba(251,146,60,0.95)", fontSize: "12px" }}>
+        <div style={{ fontWeight: 600, marginBottom: 5 }}>⚠ Cet onglet n'a pas pu s'afficher.</div>
+        <div style={{ fontSize: "10.5px", opacity: 0.85, fontFamily: "monospace", wordBreak: "break-word" }}>
+          {String(this.state.err?.message ?? this.state.err)}
+        </div>
+        <div style={{ fontSize: "10.5px", marginTop: 6, opacity: 0.7 }}>Le reste du tracker reste utilisable.</div>
+      </div>
+    );
+  }
+}
+
 function CadencesTab({ stocks = {} }) {
   const t = useT();
   const [selected, setSelected] = useState(() => {
@@ -2506,14 +2526,16 @@ function CadencesTab({ stocks = {} }) {
                 l'identifiant EST la clé du dictionnaire. */}
             {Object.entries(legs)
               .filter(([lid]) => QTY_LEG_IDS.has(lid))
-              .sort((a, b) => String(a[1].farm ?? "").localeCompare(String(b[1].farm ?? "")) ||
+              // `farm` est tantôt une chaîne, tantôt un objet { fr, en } (legendary_rune,
+              // legendary_sigil) : sans L() React reçoit un objet en enfant et démonte l'arbre.
+              .sort((a, b) => String(L(a[1].farm) ?? "").localeCompare(String(L(b[1].farm) ?? "")) ||
                               String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
               .map(([lid, l]) => (
               <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selected[lid] ? C : `${D}0.55)`, cursor: "pointer" }}>
                 <input type="checkbox" checked={!!selected[lid]}
                   onChange={() => setSelected(prev => { const n = { ...prev }; if (n[lid]) delete n[lid]; else n[lid] = true; return n; })} />
                 <span style={{ flex: 1 }}>{NX(l.name ?? lid)}</span>
-                {l.farm && <span style={{ fontSize: "9px", opacity: 0.5, flexShrink: 0 }}>{l.farm}</span>}
+                {l.farm && <span style={{ fontSize: "9px", opacity: 0.5, flexShrink: 0 }}>{String(L(l.farm)).slice(0, 18)}</span>}
               </label>
             ))}
           </div>
@@ -4309,7 +4331,7 @@ export default function GW2LegendaryTracker() {
       )}
 
       {/* ── CADENCES (mode plein écran) ── */}
-      {isCadences && <CadencesTab stocks={gtStocks} />}
+      {isCadences && <TabErrorBoundary><CadencesTab stocks={gtStocks} /></TabErrorBoundary>}
 
       {/* ── TABS + CONTENU (masqués en mode Grand Total) ── */}
       {/* ── SOUS-SÉLECTEUR TRINKETS (14 colifichets) ── */}
