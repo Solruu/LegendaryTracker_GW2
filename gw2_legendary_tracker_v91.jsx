@@ -4284,15 +4284,27 @@ export default function GW2LegendaryTracker() {
         </div>
       </div>
 
-      {/* ── HEADER GRAND TOTAL ── */}
+      {/* ── HEADER PLEIN ÉCRAN (Grand Total / Cadences) ── */}
       {isGrandTotal && (
-        <div style={{ padding: "12px 14px", borderBottom: "1px solid rgba(226,201,126,0.1)", background: "rgba(226,201,126,0.02)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#f472b6", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif" }}>
-            ⚔ Grand Total
+        <div style={{ padding: "12px 14px", borderBottom: "1px solid rgba(226,201,126,0.1)", background: "rgba(226,201,126,0.02)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" }}>
+          <div style={{ fontSize: 14, fontWeight: 700, color: isCadences ? "#38bdf8" : "#f472b6", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif" }}>
+            {isCadences ? `⏳ ${t("tab_cadences")}` : "⚔ Grand Total"}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            {/* Sans Flask (mobile), la clé API est le seul moyen de synchroniser :
+                elle doit rester accessible depuis ces onglets aussi. */}
+            <button className="adj-btn"
+              title={NX({ fr: "Clé API GW2 — synchro directe sans Flask (mémoire de session uniquement)", en: "GW2 API key — direct sync without Flask (session memory only)" })}
+              style={{ fontSize: "11px", padding: "3px 7px", opacity: (showKeyInput || gtApiKey) ? 1 : 0.55 }}
+              onClick={() => setShowKeyInput(v => !v)}>🔑</button>
+            {(showKeyInput || gtApiKey !== "") && (
+              <input type="password" autoComplete="off" value={gtApiKey}
+                onChange={(e) => setGtApiKey(e.target.value)}
+                placeholder={NX({ fr: "🔑 clé API GW2 (session)", en: "🔑 GW2 API key (session)" })}
+                style={{ width: 140, fontSize: 10, padding: "4px 7px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(226,201,126,0.2)", borderRadius: 6, color: "#e2c97e" }} />
+            )}
             <button
-              onClick={() => fetchFromFlask()}
+              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); }}
               disabled={apiStatus === "loading"}
               style={{
                 background: apiStatus === "ok" ? "rgba(74,222,128,0.1)" : apiStatus === "error" ? "rgba(248,113,113,0.1)" : "rgba(226,201,126,0.06)",
@@ -4304,10 +4316,13 @@ export default function GW2LegendaryTracker() {
               }}>
               {apiStatus === "loading" ? "⟳ …" : apiStatus === "ok" ? "✓ API" : apiStatus === "error" ? "✗ Err" : "⟳ API"}
             </button>
-            <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif", textAlign: "right" }}>
+            <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
               {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </div>
           </div>
+          {apiStatus === "error" && apiError && (
+            <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>{apiError}</div>
+          )}
         </div>
       )}
 
