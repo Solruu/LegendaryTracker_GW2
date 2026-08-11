@@ -37,6 +37,9 @@ const I18N = {
     bits_step: "Step {n}",
     bits_meta_req: "Meta-achievement — {n} required out of {m} eligible objectives.",
     bits_meta_left: "{n} left to reach the threshold.",
+    bits_src_wiki: "✓ List curated from the wiki (checked {d}) — exact.",
+    bits_src_api: "⚙ List derived from the category — it holds more achievements than the meta requires.",
+    bits_src_mismatch: "⚠ {a} eligible done vs {b} counted by the game: this list is out of date.",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -205,6 +208,9 @@ const I18N = {
     bits_step: "Étape {n}",
     bits_meta_req: "Méta-achievement — {n} requis sur {m} objectifs éligibles.",
     bits_meta_left: "Encore {n} pour atteindre le seuil.",
+    bits_src_wiki: "✓ Liste curée depuis le wiki (vérifiée le {d}) — exacte.",
+    bits_src_api: "⚙ Liste dérivée de la catégorie — elle contient plus de succès que le méta n’en exige.",
+    bits_src_mismatch: "⚠ {a} éligibles faits contre {b} comptés par le jeu : cette liste est périmée.",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -3048,6 +3054,18 @@ export default function GW2LegendaryTracker() {
             }
           }
         }
+        // Liste curée (wiki) quand elle existe : c'est la SEULE source exacte des succès
+        // éligibles — l'API ne publie ni bits ni liste d'enfants pour ces métas, et la
+        // catégorie en contient davantage que le méta n'en exige.
+        const curated = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible) ?? {};
+        for (const d of defs) {
+          const cu = curated[String(d.id)];
+          if (!cu || !(cu.achievements ?? []).length) continue;
+          out[String(d.id)].subs = cu.achievements.map(([id2, n2]) => ({ id: id2, name: n2 }));
+          out[String(d.id)].subsSource = "wiki";
+          out[String(d.id)].subsVerified = cu.verified ?? "";
+          if (cu.threshold) out[String(d.id)].tierMax = cu.threshold;
+        }
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
         const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
@@ -3060,13 +3078,14 @@ export default function GW2LegendaryTracker() {
               if (!cat) continue;
               // Une catégorie d'épisode LW4 monte à ~112 entrées : plafond à 150.
               const subIds = cat.achievements.filter(x => x !== m.id).slice(0, 150);
+              void subIds;
               const subs = [];
               for (let k = 0; k < subIds.length; k += 150) {
                 const chunk = subIds.slice(k, k + 150);
                 const rs = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
                 if (rs.ok) for (const s of await rs.json()) subs.push({ id: s.id, name: s.name });
               }
-              out[String(m.id)].subs = subs;
+              if (out[String(m.id)].subsSource !== "wiki") { out[String(m.id)].subs = subs; out[String(m.id)].subsSource = "category"; }
             }
           }
         }
@@ -5297,6 +5316,22 @@ export default function GW2LegendaryTracker() {
                             {(mx || def.tierMax) > 0 ? t("bits_meta_req", { n: mx || def.tierMax, m: def.subs.length }) : t("bits_meta_note")}
                             {mx > 0 && !done && cur < mx ? " " + t("bits_meta_left", { n: mx - cur }) : ""}
                             {Object.keys(achSubStatus).length === 0 ? " " + t("bits_meta_nostatus") : ""}
+                            <div style={{ marginTop: 3, fontSize: "9.5px", opacity: 0.75 }}>
+                              {def.subsSource === "wiki" ? t("bits_src_wiki", { d: def.subsVerified || "?" }) : t("bits_src_api")}
+                            </div>
+                            {(() => {
+                              // Auto-diagnostic : si le nombre d'eligibles completes diverge du
+                              // compteur officiel, la liste curee est fausse — mieux vaut le dire.
+                              if (def.subsSource !== "wiki" || mx === 0 || done) return null;
+                              if (Object.keys(achSubStatus).length === 0) return null;
+                              const hit = def.subs.filter(s2 => achSubStatus[String(s2.id)]?.done === true).length;
+                              if (hit === cur) return null;
+                              return (
+                                <div style={{ marginTop: 3, fontSize: "9.5px", color: "rgba(251,146,60,0.85)" }}>
+                                  {t("bits_src_mismatch", { a: hit, b: cur })}
+                                </div>
+                              );
+                            })()}
                           </div>
                           {[...def.subs]
                             .map((s, idx) => ({ s, idx, d: achSubStatus[String(s.id)]?.done === true }))
