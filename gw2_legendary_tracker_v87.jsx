@@ -2169,9 +2169,9 @@ const OBS_WEIGHT_LABELS = {
 
 const COMMON_MATS = [
   { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
-    tip: { fr: "Coffre du Sorcier (60 Astral Acclaim pièce, 20/saison), Mystic Forge, reward tracks PvP/WvW. \u26a0 Plus de Chest of Loyalty : le système de connexion a été retiré en 2023.", en: "Wizard's Vault (60 Astral Acclaim each, 20/season), Mystic Forge, PvP/WvW reward tracks. \u26a0 No more Chest of Loyalty: the login system was retired in 2023." } },
+    tip: { fr: "Coffre du Sorcier (60 AA, 20/saison), Manfred Njallson (30 Magnetite, 15/sem), Dugan McM (5/sem), vendeur de ligue PvP (5/sem), Mystic Forge (~31% de réussite). \u26a0 Plus de Chest of Loyalty depuis 2023.", en: "Wizard's Vault (60 AA, 20/season), Manfred Njallson (30 Magnetite, 15/wk), WvW Dugan (5/wk), PvP league vendor (5/wk), Mystic Forge (~31% success). \u26a0 No Chest of Loyalty since 2023." } },
   { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
-    tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Nikki the Lost (10/sem), SAB (3/sem), coffres de fractales, comptoir. \u26a0 Aucune source de connexion quotidienne depuis 2023.", en: "Wizard's Vault (9 AA, 60/season), Nikki the Lost (10/wk), SAB (3/wk), fractal chests, TP. \u26a0 No daily-login source since 2023." } },
+    tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Manfred Njallson (10/sem), Skirmish McM (2 Gold / 4 Diamond, sans plafond), Ley-Line Anomaly (1/j), SAB (3/sem), comptoir. \u26a0 Aucune source de connexion depuis 2023 ; Nikki, Vorri et Zazzl n'en vendent plus.", en: "Wizard's Vault (9 AA, 60/season), Manfred Njallson (10/wk), WvW Skirmish (2 Gold / 4 Diamond, no cap), Ley-Line Anomaly (1/day), SAB (3/wk), TP. \u26a0 No login source since 2023; Nikki, Vorri and Zazzl no longer stock it." } },
   { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
     tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
   { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,

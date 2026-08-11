@@ -587,7 +587,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v56",
+    "version": "v57",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1500,7 +1500,8 @@ const SOURCES_DB = {
     "changelog_v53": "meta_eligible : listes officielles des succes eligibles des metas d'episode, relevees sur le wiki (l'API ne publie ni bits ni liste d'enfants pour ces metas) et validees ID par ID contre gw2_achievements_ref.json. 2/5 faites (Kourna, Thunderhead).",
     "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite.",
     "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher.",
-    "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation."
+    "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation.",
+    "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour)."
   },
   "meta_events": {
     "vb": {
@@ -5447,19 +5448,19 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Wizard's Vault",
+          "npc": "Coffre du Sorcier",
           "tip": {
-            "fr": "9 Astral Acclaim pièce, plafond 60 par saison. La source régulière la plus rentable.",
-            "en": "9 Astral Acclaim each, capped at 60 per season. The most cost-effective steady source."
+            "fr": "9 Astral Acclaim pièce, plafond 60 par saison. Meilleur rendement régulier.",
+            "en": "9 Astral Acclaim each, capped 60 per season. Best steady value."
           }
         },
         {
           "type": "vendor",
-          "npc": "Nikki the Lost",
-          "map": "Outer Sanctorium (Wizard's Tower)",
+          "npc": "Manfred Njallson",
+          "map": "Lion's Arch Aerodrome",
           "tip": {
-            "fr": "Plafond 10 par semaine. ⚠ Coût mixte à vérifier en jeu (icônes non extractibles depuis le wiki).",
-            "en": "Capped at 10 per week. ⚠ Mixed cost to confirm in game (icons not extractable from the wiki)."
+            "fr": "1 Laurier + 10 (devise de raid — probablement Magnetite Shard, à confirmer en jeu), plafond 10/semaine. Marchand raid, renommé en avril 2026 (ex-« Merchant »). ⚠ Si c'est bien du Magnetite, arbitrage direct avec le Gift of Patience de Coalescence.",
+            "en": "1 Laurel + 10 (raid currency — likely Magnetite Shard, confirm in game), capped 10/week. Raid vendor, renamed April 2026 (formerly 'Merchant'). ⚠ If it is Magnetite, that trades off directly against Coalescence's Gift of Patience."
           }
         },
         {
@@ -5467,29 +5468,36 @@ const SOURCES_DB = {
           "npc": "Super Adventure Box Weekly Trader",
           "map": "Rata Sum",
           "tip": {
-            "fr": "Plafond 3 par semaine, uniquement pendant le Super Adventure Festival.",
-            "en": "Capped at 3 per week, only during the Super Adventure Festival."
+            "fr": "Plafond 3/semaine, uniquement pendant le Super Adventure Festival.",
+            "en": "Capped 3/week, only during the Super Adventure Festival."
           }
         },
         {
-          "type": "drop",
+          "type": "reward_track",
           "tip": {
-            "fr": "Chance dans les coffres de fractales (Adept/Expert/Master) et les Black Lion Material Bags. Bag of Mystic Coins = 6 garantis.",
-            "en": "Chance from fractal chests (Adept/Expert/Master) and Black Lion Material Bags. Bag of Mystic Coins = 6 guaranteed."
+            "fr": "Skirmish McM : 2 au palier final Gold, 4 au palier final Diamond. Répétable — la seule source vraiment scalable sans plafond hebdo.",
+            "en": "WvW Skirmish track: 2 at the final Gold tier, 4 at the final Diamond tier. Repeatable — the only genuinely scalable source with no weekly cap."
           }
         },
         {
           "type": "event",
           "tip": {
-            "fr": "Ley-Line Anomaly (event de groupe). Tournois automatisés PvP : 1–5 en quotidien, 1–100 en mensuel.",
-            "en": "Ley-Line Anomaly (group event). Automated PvP tournaments: 1–5 daily, 1–100 monthly."
+            "fr": "Ley-Line Anomaly : 1 fois par jour. Tournois automatisés PvP : 1–5 (quotidien), 1–100 (mensuel).",
+            "en": "Ley-Line Anomaly: once per day. Automated PvP tournaments: 1–5 (daily), 1–100 (monthly)."
+          }
+        },
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Bag of Mystic Coins = 6 garantis. Chance dans les coffres de fractales et les Black Lion Material Bags.",
+            "en": "Bag of Mystic Coins = 6 guaranteed. Chance from fractal chests and Black Lion Material Bags."
           }
         },
         {
           "type": "tp",
           "tip": {
-            "fr": "Achat au comptoir — prix historiquement volatil, sensible aux annonces de contenu.",
-            "en": "Buy on the TP — historically volatile, sensitive to content announcements."
+            "fr": "Comptoir — ≈2 po pièce (relevé du 11/08/2026). Prix volatil, sensible aux annonces de contenu.",
+            "en": "TP — ~2 g each (checked 2026-08-11). Volatile, sensitive to content announcements."
           }
         }
       ],
@@ -5555,8 +5563,8 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "vendor",
       "note": {
-        "fr": "⚠ Plus AUCUNE source de connexion quotidienne depuis 2023. Offre volontairement limitée par ArenaNet : tout passe par des plafonds (60/saison au Coffre, 10/sem chez Nikki, 3/sem au SAB) ou le comptoir. À anticiper très en amont. Coût indirect via les Mystic Clovers, en PLUS des 250 directs : ≈231 pour un gen1, ≈481 pour un gen2, ≈114 pour un gen3, ≈273 pour un set d'armure.",
-        "en": "⚠ NO daily-login source since 2023. Supply is deliberately constrained by ArenaNet: everything runs through caps (60/season in the Vault, 10/wk from Nikki, 3/wk at SAB) or the TP. Plan far ahead. Indirect cost through Mystic Clovers, ON TOP of the 250 direct: ~231 for a gen1, ~481 for a gen2, ~114 for a gen3, ~273 for an armor set."
+        "fr": "⚠ Aucune source de connexion quotidienne depuis 2023. Nikki the Lost, Archaeologist Vorri et Zazzl ne vendent PLUS de Mystic Coins (item retiré de leur stock). L'offre est bornée par des plafonds : 60/saison au Coffre, 10/sem chez Manfred, 3/sem au SAB. Seule la piste Skirmish McM échappe au plafond. Coût indirect via les Mystic Clovers, en PLUS des 250 directes : ≈231 gen1, ≈481 gen2, ≈114 gen3, ≈273 pour un set d'armure.",
+        "en": "⚠ No daily-login source since 2023. Nikki the Lost, Archaeologist Vorri and Zazzl no longer sell Mystic Coins (item pulled from their stock). Supply is cap-bound: 60/season in the Vault, 10/wk from Manfred, 3/wk at SAB. Only the WvW Skirmish track escapes a cap. Indirect cost through Mystic Clovers, ON TOP of the 250 direct: ~231 gen1, ~481 gen2, ~114 gen3, ~273 for an armor set."
       }
     },
     "mystic_runestone": {
@@ -15670,9 +15678,9 @@ const OBS_WEIGHT_LABELS = {
 
 const COMMON_MATS = [
   { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
-    tip: { fr: "Coffre du Sorcier (60 Astral Acclaim pièce, 20/saison), Mystic Forge, reward tracks PvP/WvW. \u26a0 Plus de Chest of Loyalty : le système de connexion a été retiré en 2023.", en: "Wizard's Vault (60 Astral Acclaim each, 20/season), Mystic Forge, PvP/WvW reward tracks. \u26a0 No more Chest of Loyalty: the login system was retired in 2023." } },
+    tip: { fr: "Coffre du Sorcier (60 AA, 20/saison), Manfred Njallson (30 Magnetite, 15/sem), Dugan McM (5/sem), vendeur de ligue PvP (5/sem), Mystic Forge (~31% de réussite). \u26a0 Plus de Chest of Loyalty depuis 2023.", en: "Wizard's Vault (60 AA, 20/season), Manfred Njallson (30 Magnetite, 15/wk), WvW Dugan (5/wk), PvP league vendor (5/wk), Mystic Forge (~31% success). \u26a0 No Chest of Loyalty since 2023." } },
   { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
-    tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Nikki the Lost (10/sem), SAB (3/sem), coffres de fractales, comptoir. \u26a0 Aucune source de connexion quotidienne depuis 2023.", en: "Wizard's Vault (9 AA, 60/season), Nikki the Lost (10/wk), SAB (3/wk), fractal chests, TP. \u26a0 No daily-login source since 2023." } },
+    tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Manfred Njallson (10/sem), Skirmish McM (2 Gold / 4 Diamond, sans plafond), Ley-Line Anomaly (1/j), SAB (3/sem), comptoir. \u26a0 Aucune source de connexion depuis 2023 ; Nikki, Vorri et Zazzl n'en vendent plus.", en: "Wizard's Vault (9 AA, 60/season), Manfred Njallson (10/wk), WvW Skirmish (2 Gold / 4 Diamond, no cap), Ley-Line Anomaly (1/day), SAB (3/wk), TP. \u26a0 No login source since 2023; Nikki, Vorri and Zazzl no longer stock it." } },
   { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
     tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
   { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
