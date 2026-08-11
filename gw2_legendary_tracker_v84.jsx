@@ -40,6 +40,9 @@ const I18N = {
     bits_src_wiki: "✓ List curated from the wiki (checked {d}) — exact.",
     bits_src_api: "⚙ List derived from the category — it holds more achievements than the meta requires.",
     bits_src_mismatch: "⚠ {a} eligible done vs {b} counted by the game: this list is out of date.",
+    bits_path: "⚡ Shortest path — the {n} cheapest remaining ({s} you can skip):",
+    bits_why: "volume {v} · prerequisites {p} · {a} AP",
+    bits_has_prereq: "— gated behind a prerequisite.",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -211,6 +214,9 @@ const I18N = {
     bits_src_wiki: "✓ Liste curée depuis le wiki (vérifiée le {d}) — exacte.",
     bits_src_api: "⚙ Liste dérivée de la catégorie — elle contient plus de succès que le méta n’en exige.",
     bits_src_mismatch: "⚠ {a} éligibles faits contre {b} comptés par le jeu : cette liste est périmée.",
+    bits_path: "⚡ Chemin le plus court — les {n} restants les moins coûteux ({s} à ignorer) :",
+    bits_why: "volume {v} · prérequis {p} · {a} AP",
+    bits_has_prereq: "— verrouillé derrière un prérequis.",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -2958,7 +2964,7 @@ export default function GW2LegendaryTracker() {
     for (const c of ids.join(",")) sig = ((sig << 5) - sig + c.charCodeAt(0)) | 0;
     // ACH_DEFS_SCHEMA : à incrémenter dès que la FORME de `out` change (tierMax, subs curées…).
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 12;
+    const ACH_DEFS_SCHEMA = 13;
     const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}`;
     try {
       for (let i = localStorage.length - 1; i >= 0; i--) {
@@ -3068,6 +3074,42 @@ export default function GW2LegendaryTracker() {
           out[String(d.id)].subsSource = "wiki";
           out[String(d.id)].subsVerified = cu.verified ?? "";
           if (cu.threshold) out[String(d.id)].tierMax = cu.threshold;
+        }
+        // Détails des succès éligibles : description, volume, prérequis, AP.
+        // Tout vient de l'API — aucune saisie éditoriale, donc jamais périmé.
+        const curatedSubIds = [...new Set(Object.values(out)
+          .filter(d => d.subsSource === "wiki")
+          .flatMap(d => d.subs.map(s2 => s2.id)))];
+        if (curatedSubIds.length > 0) {
+          const info = {};
+          for (let k = 0; k < curatedSubIds.length; k += 150) {
+            const chunk = curatedSubIds.slice(k, k + 150);
+            const rd = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
+            if (!rd.ok) continue;
+            for (const a2 of await rd.json()) {
+              const tiers = a2.tiers ?? [];
+              const ap = tiers.reduce((m2, t2) => m2 + (t2.points ?? 0), 0);
+              const finalCount = tiers.reduce((m2, t2) => Math.max(m2, t2.count ?? 0), 0);
+              // Volume réel = le plus grand des deux : nombre d'items à collecter
+              // ou palier final du compteur. Les deux se recouvrent souvent.
+              const vol = Math.max(finalCount, (a2.bits ?? []).length);
+              const prereq = (a2.prerequisites ?? []).length;
+              // Score d'effort explicable — volume, verrou de prérequis, et les AP
+              // comme approximation de la difficulté (ArenaNet paie cher ce qui est dur).
+              const vPts = vol >= 100 ? 3 : vol >= 25 ? 2 : vol >= 8 ? 1 : 0;
+              const pPts = prereq > 0 ? 2 : 0;
+              const aPts = ap >= 10 ? 3 : ap >= 5 ? 1 : 0;
+              const score = vPts + pPts + aPts;
+              info[String(a2.id)] = {
+                req: a2.requirement ?? "", desc: a2.description ?? "",
+                ap, vol, prereq, score, tier: score <= 1 ? "easy" : score <= 3 ? "med" : "hard",
+              };
+            }
+          }
+          for (const d of Object.values(out)) {
+            if (d.subsSource !== "wiki") continue;
+            d.subs = d.subs.map(s2 => ({ ...s2, ...(info[String(s2.id)] ?? {}) }));
+          }
         }
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
@@ -5338,16 +5380,50 @@ export default function GW2LegendaryTracker() {
                               );
                             })()}
                           </div>
+                          {(() => {
+                            // Chemin le plus court : parmi les restants, les N moins couteux
+                            // ou N = ce qu'il manque pour atteindre le seuil.
+                            const need = (mx || def.tierMax || 0) - cur;
+                            if (need <= 0 || done) return null;
+                            const rest = def.subs.filter(s2 => achSubStatus[String(s2.id)]?.done !== true);
+                            if (rest.length === 0 || rest.length <= need) return null;
+                            const pick = [...rest].sort((a2, b2) => (a2.score ?? 9) - (b2.score ?? 9)).slice(0, need);
+                            const spare = rest.length - need;
+                            return (
+                              <div style={{ marginBottom: 7, padding: "6px 9px", background: "rgba(74,222,128,0.06)", border: "1px solid rgba(74,222,128,0.22)", borderRadius: 6 }}>
+                                <div style={{ fontSize: "10.5px", fontWeight: 600, color: "#4ade80", marginBottom: 3 }}>
+                                  {t("bits_path", { n: need, s: spare })}
+                                </div>
+                                <div style={{ fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.8)", lineHeight: 1.55 }}>
+                                  {pick.map(s2 => s2.name).join(" · ")}
+                                </div>
+                              </div>
+                            );
+                          })()}
                           {[...def.subs]
                             .map((s, idx) => ({ s, idx, d: achSubStatus[String(s.id)]?.done === true }))
-                            .sort((a, b) => (a.d === b.d ? a.idx - b.idx : (a.d ? 1 : -1)))
+                            .sort((a, b) => (a.d === b.d ? ((a.s.score ?? 9) - (b.s.score ?? 9)) || a.idx - b.idx : (a.d ? 1 : -1)))
                             .map(({ s }) => {
                             const ss = achSubStatus[String(s.id)] ?? {};
                             const sDone = ss.done === true;
                             return (
-                              <div key={s.id} style={{ display: "flex", alignItems: "baseline", gap: "6px", padding: "2px 0", fontSize: "11px", color: sDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
-                                <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{sDone ? "✓" : "○"}</span>
-                                <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 0 ? ` (${ss.current}/${ss.max})` : ""}</span>
+                              <div key={s.id} style={{ padding: "3px 0" }}>
+                                <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: sDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
+                                  <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{sDone ? "✓" : "○"}</span>
+                                  {!sDone && s.tier && (
+                                    <span title={t("bits_why", { v: s.vol ?? 0, p: s.prereq ?? 0, a: s.ap ?? 0 })}
+                                      style={{ fontSize: "9.5px", flexShrink: 0, color: s.tier === "easy" ? "#4ade80" : s.tier === "med" ? "#e2c97e" : "rgba(251,146,60,0.9)" }}>
+                                      {s.tier === "easy" ? "⚡" : s.tier === "med" ? "◐" : "▲"}
+                                    </span>
+                                  )}
+                                  <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 1 ? ` (${ss.current ?? 0}/${ss.max})` : ""}</span>
+                                </div>
+                                {!sDone && (s.req || s.desc) && (
+                                  <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>
+                                    {s.req || s.desc}
+                                    {(s.prereq ?? 0) > 0 ? " " + t("bits_has_prereq") : ""}
+                                  </div>
+                                )}
                               </div>
                             );
                           })}
