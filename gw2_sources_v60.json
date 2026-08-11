@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v59",
+    "version": "v60",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -916,7 +916,8 @@
     "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation.",
     "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour).",
     "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine.",
-    "changelog_v59": "Ajout du bloc 'cadence' structure (robinets, periode, plafond, cout) sur les composants plafonnes, pour alimenter l'onglet Cadences. Seuls mystic_coin et mystic_clover portent verified:true (croises avec le wiki le 11/08/2026) ; les autres sont derives des tips existants et restent a auditer. Deux mauvaises lectures corrigees a la main : provisioner_token Tyrie/HoT est bien 7/semaine et non 1/jour, et gift_of_arid_mastery etait un faux positif."
+    "changelog_v59": "Ajout du bloc 'cadence' structure (robinets, periode, plafond, cout) sur les composants plafonnes, pour alimenter l'onglet Cadences. Seuls mystic_coin et mystic_clover portent verified:true (croises avec le wiki le 11/08/2026) ; les autres sont derives des tips existants et restent a auditer. Deux mauvaises lectures corrigees a la main : provisioner_token Tyrie/HoT est bien 7/semaine et non 1/jour, et gift_of_arid_mastery etait un faux positif.",
+    "changelog_v60": "apiId ajoutes : fractal_research_page 73834 et spark_of_sentience 81729 (fournis par Antoine, recoupes — 73834 figure dans gw2_materials_ref sous Advanced Crafting Materials, 81729 etait deja declare dans NAME_FETCH_IDS du JSX). Sans apiId, ces deux ressources restaient en 'stock inconnu' dans l'onglet Cadences quelle que soit la synchro. Correction d'ID : magnetite_shard passait par 70820, qui est Shard of Glory et non Magnetite Shard — remplace par la devise de portefeuille 28 (confirmee dans gw2_currencies_ref). legendary_insight reste sur 77302 : verifie present en stockage materiaux, l'ID est valide. pristine_fractal_relic passe de 49370 (objet) a la devise 24 ; fractal_relic aligne sur la devise 7. spark_of_sentience 81729 est un objet d'inventaire hors stockage materiaux : resolvable via bank/inventory, c'est normal qu'il n'apparaisse pas dans gw2_materials_ref. AUDIT apiId : 10 identifiants corriges apres detection d'une divergence entre le nom declare et le nom renvoye par le referentiel. Cascade decalee d'un cran (inscribed_shard portait l'ID de Lump of Mistonium, qui portait celui de Branded Mass, qui portait celui de Mistborn Mote) et deux paires inversees (Orrian Pearl / Fire Orchid Blossom, Vision Crystal / Crystalline Ingot). gift_of_metal (19680 = Copper Ingot) et eldritch_scroll (19686 = Platinum Ingot) restent faux : absents du stockage materiaux, non resolvables en local."
   },
   "meta_events": {
     "vb": {
@@ -2026,7 +2027,7 @@
     },
     "dust_crystalline": {
       "name": "Pile of Crystalline Dust",
-      "apiId": 24278,
+      "apiId": 24277,
       "needed_for": [
         "gift_of_energy"
       ],
@@ -2106,7 +2107,7 @@
     },
     "stabilizing_matrix": {
       "name": "Stabilizing Matrix",
-      "apiId": 79230,
+      "apiId": 73248,
       "needed_for": [
         "cube_stabilized_dark_energy"
       ],
@@ -2438,7 +2439,7 @@
     },
     "inscribed_shard": {
       "name": "Inscribed Shard",
-      "apiId": 88955,
+      "apiId": 87645,
       "needed_for": [
         "gift_of_crystalline_magic"
       ],
@@ -2467,7 +2468,7 @@
     },
     "lump_of_mistonium": {
       "name": "Lump of Mistonium",
-      "apiId": 89537,
+      "apiId": 88955,
       "needed_for": [
         "gift_of_ephemeral_magic"
       ],
@@ -2494,7 +2495,7 @@
     },
     "branded_mass": {
       "name": "Branded Mass",
-      "apiId": 90783,
+      "apiId": 89537,
       "needed_for": [
         "gift_of_ephemeral_magic"
       ],
@@ -2633,7 +2634,7 @@
     },
     "orrian_pearl_lw3": {
       "name": "Orrian Pearl",
-      "apiId": 81127,
+      "apiId": 81706,
       "needed_for": [
         "gift_of_bloodstone_magic"
       ],
@@ -2660,7 +2661,7 @@
     },
     "fire_orchid_blossom": {
       "name": "Fire Orchid Blossom",
-      "apiId": 81706,
+      "apiId": 81127,
       "needed_for": [
         "gift_of_dragon_magic"
       ],
@@ -2900,7 +2901,7 @@
     },
     "vision_crystal": {
       "name": "Vision Crystal",
-      "apiId": 46743,
+      "apiId": 46746,
       "needed_for": [
         "gift_of_conquering",
         "warbringer"
@@ -3403,7 +3404,7 @@
     },
     "magnetite_shard": {
       "name": "Magnetite Shard",
-      "apiId": 70820,
+      "apiId": 28,
       "needed_for": [
         "gift_of_patience"
       ],
@@ -3445,6 +3446,10 @@
             }
           }
         ]
+      },
+      "apiIdNote": {
+        "fr": "Devise de portefeuille (id 28). L'ancien 70820 pointait sur Shard of Glory — objet sans rapport.",
+        "en": "Wallet currency (id 28). The former 70820 pointed at Shard of Glory — an unrelated item."
       }
     },
     "gift_of_the_desert": {
@@ -4854,7 +4859,7 @@
     },
     "crystalline_ingot_gen2": {
       "name": "Crystalline Ingot",
-      "apiId": 46742,
+      "apiId": 46683,
       "needed_for": [
         "gift_of_maguuma_mastery"
       ],
@@ -5829,7 +5834,7 @@
     },
     "fractal_relic": {
       "name": "Fractal Relic",
-      "apiId": 7065,
+      "apiId": 7,
       "needed_for": [
         "ad_infinitum",
         "gift_of_ascension_fractal"
@@ -5859,7 +5864,7 @@
     },
     "pristine_fractal_relic": {
       "name": "Pristine Fractal Relic",
-      "apiId": 49370,
+      "apiId": 24,
       "needed_for": [
         "ad_infinitum"
       ],
@@ -5901,11 +5906,15 @@
             }
           }
         ]
+      },
+      "apiIdNote": {
+        "fr": "Devise de portefeuille (id 24). L'ancien 49370 etait un identifiant d'objet, non resolvable via le portefeuille.",
+        "en": "Wallet currency (id 24). The former 49370 was an item id, not resolvable through the wallet."
       }
     },
     "fractal_research_page": {
       "name": "Fractal Research Page",
-      "apiId": null,
+      "apiId": 73834,
       "needed_for": [
         "ad_infinitum_collection"
       ],
@@ -7152,7 +7161,7 @@
     },
     "cube_stabilized_dark_energy": {
       "name": "Cube of Stabilized Dark Energy",
-      "apiId": 71994,
+      "apiId": 73137,
       "needed_for": [
         "gift_of_expertise"
       ],
@@ -7578,7 +7587,8 @@
             }
           }
         ]
-      }
+      },
+      "apiId": 81729
     },
     "gift_of_draconic_mastery": {
       "name": "Gift of Draconic Mastery",
