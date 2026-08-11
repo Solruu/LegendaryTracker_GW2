@@ -16301,8 +16301,16 @@ class TabErrorBoundary extends React.Component {
 
 function CadencesTab({ stocks = {} }) {
   const t = useT();
+  // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
+  // survit dans localStorage, compte pour 1 et ne produit aucun calcul.
+  // On ne conserve que des identifiants réellement chiffrables.
   const [selected, setSelected] = useState(() => {
-    try { return JSON.parse(localStorage.getItem("gw2_cad_sel_v1") ?? "{}"); } catch (_) { return {}; }
+    try {
+      const raw = JSON.parse(localStorage.getItem("gw2_cad_sel_v1") ?? "{}");
+      const clean = {};
+      for (const [k, v] of Object.entries(raw)) if (v && QTY_LEG_IDS.has(k)) clean[k] = true;
+      return clean;
+    } catch (_) { return {}; }
   });
   const [ticks, setTicks] = useState(0);
   const [checks, setChecks] = useState(() => {
@@ -16319,7 +16327,7 @@ function CadencesTab({ stocks = {} }) {
   const legs = SOURCES_DB?.legendaries ?? {};
   const C = "#e2c97e", D = "rgba(226,201,126,";
 
-  const selectedIds = Object.keys(selected).filter(k => selected[k]);
+  const selectedIds = Object.keys(selected).filter(k => selected[k] && QTY_LEG_IDS.has(k));
   const totals = selectedIds.length ? (computeGrandTotal(selectedIds).totals ?? {}) : {};
 
   // Une case cochée est valable pour sa période : la clé porte l'identifiant
@@ -16375,6 +16383,12 @@ function CadencesTab({ stocks = {} }) {
           style={{ width: "100%", padding: "9px 12px", background: `${D}0.06)`, border: `1px solid ${D}0.22)`, borderRadius: 8, color: C, fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
           🎯 {t("cad_pick")} — <b>{selectedIds.length}</b> {showPicker ? "▾" : "▸"}
         </button>
+        {selectedIds.length > 0 && (
+          <button onClick={() => setSelected({})}
+            style={{ marginTop: 5, padding: "4px 9px", background: "none", border: `1px solid ${D}0.18)`, borderRadius: 6, color: `${D}0.55)`, fontSize: "10px", cursor: "pointer" }}>
+            ✕ {t("cad_clear")}
+          </button>
+        )}
         {showPicker && (
           <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: `1px solid ${D}0.14)`, borderRadius: 8, maxHeight: 260, overflowY: "auto" }}>
             {/* Les entrées de SOURCES_DB.legendaries n'ont pas de champ `id` :
@@ -16406,10 +16420,13 @@ function CadencesTab({ stocks = {} }) {
             </div>
           </div>
 
+          {r.need === 0 && selectedIds.length > 0 && (
+            <div style={{ marginTop: 4, fontSize: "10.5px", color: `${D}0.4)`, fontStyle: "italic" }}>{t("cad_not_needed")}</div>
+          )}
           {r.need > 0 && (
             <div style={{ marginTop: 4, fontSize: "11px", color: `${D}0.75)` }}>
               {t("cad_need", { n: r.need })}
-              {r.owned !== null ? ` · ${t("cad_owned", { n: r.owned })}` : ""}
+              {r.owned !== null ? ` · ${t("cad_owned", { n: r.owned })}` : ` · ${t("cad_nostock")}`}
               {r.missing !== null ? ` · ${t("cad_missing", { n: r.missing })}` : ""}
             </div>
           )}
@@ -18020,6 +18037,48 @@ function GW2LegendaryTracker() {
         .reset-info { font-size: 10px; color: rgba(226,201,126,0.2); font-family: 'Crimson Text', serif; text-align: center; padding: 6px; }
       `}</style>
 
+      {/* ── HEADER PLEIN ÉCRAN (Grand Total / Cadences) ── */}
+      {isGrandTotal && (
+        <div style={{ padding: "12px 14px", borderBottom: "1px solid rgba(226,201,126,0.1)", background: "rgba(226,201,126,0.02)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" }}>
+          <div style={{ fontSize: 14, fontWeight: 700, color: isCadences ? "#38bdf8" : "#f472b6", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif" }}>
+            {isCadences ? `⏳ ${t("tab_cadences")}` : "⚔ Grand Total"}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            {/* Sans Flask (mobile), la clé API est le seul moyen de synchroniser :
+                elle doit rester accessible depuis ces onglets aussi. */}
+            <button className="adj-btn"
+              title={NX({ fr: "Clé API GW2 — synchro directe sans Flask (mémoire de session uniquement)", en: "GW2 API key — direct sync without Flask (session memory only)" })}
+              style={{ fontSize: "11px", padding: "3px 7px", opacity: (showKeyInput || gtApiKey) ? 1 : 0.55 }}
+              onClick={() => setShowKeyInput(v => !v)}>🔑</button>
+            {(showKeyInput || gtApiKey !== "") && (
+              <input type="password" autoComplete="off" value={gtApiKey}
+                onChange={(e) => setGtApiKey(e.target.value)}
+                placeholder={NX({ fr: "🔑 clé API GW2 (session)", en: "🔑 GW2 API key (session)" })}
+                style={{ width: 140, fontSize: 10, padding: "4px 7px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(226,201,126,0.2)", borderRadius: 6, color: "#e2c97e" }} />
+            )}
+            <button
+              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); }}
+              disabled={apiStatus === "loading"}
+              style={{
+                background: apiStatus === "ok" ? "rgba(74,222,128,0.1)" : apiStatus === "error" ? "rgba(248,113,113,0.1)" : "rgba(226,201,126,0.06)",
+                border: `1px solid ${apiStatus === "ok" ? "rgba(74,222,128,0.35)" : apiStatus === "error" ? "rgba(248,113,113,0.35)" : "rgba(226,201,126,0.2)"}`,
+                color: apiStatus === "ok" ? "#4ade80" : apiStatus === "error" ? "#f87171" : "rgba(226,201,126,0.7)",
+                borderRadius: "4px", padding: "3px 8px", fontSize: "10px",
+                fontFamily: "'Cinzel', serif", cursor: apiStatus === "loading" ? "wait" : "pointer",
+                letterSpacing: "0.05em",
+              }}>
+              {apiStatus === "loading" ? "⟳ …" : apiStatus === "ok" ? "✓ API" : apiStatus === "error" ? "✗ Err" : "⟳ API"}
+            </button>
+            <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
+              {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+            </div>
+          </div>
+          {apiStatus === "error" && apiError && (
+            <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>{apiError}</div>
+          )}
+        </div>
+      )}
+
       {/* ── HEADER (masqué en mode Grand Total) ── */}
       {!isGrandTotal && <div style={{ padding: "16px 14px 12px", borderBottom: "1px solid rgba(226,201,126,0.1)", background: "rgba(226,201,126,0.02)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -18138,48 +18197,6 @@ function GW2LegendaryTracker() {
             )}
         </div>
       </div>
-
-      {/* ── HEADER PLEIN ÉCRAN (Grand Total / Cadences) ── */}
-      {isGrandTotal && (
-        <div style={{ padding: "12px 14px", borderBottom: "1px solid rgba(226,201,126,0.1)", background: "rgba(226,201,126,0.02)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: isCadences ? "#38bdf8" : "#f472b6", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif" }}>
-            {isCadences ? `⏳ ${t("tab_cadences")}` : "⚔ Grand Total"}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-            {/* Sans Flask (mobile), la clé API est le seul moyen de synchroniser :
-                elle doit rester accessible depuis ces onglets aussi. */}
-            <button className="adj-btn"
-              title={NX({ fr: "Clé API GW2 — synchro directe sans Flask (mémoire de session uniquement)", en: "GW2 API key — direct sync without Flask (session memory only)" })}
-              style={{ fontSize: "11px", padding: "3px 7px", opacity: (showKeyInput || gtApiKey) ? 1 : 0.55 }}
-              onClick={() => setShowKeyInput(v => !v)}>🔑</button>
-            {(showKeyInput || gtApiKey !== "") && (
-              <input type="password" autoComplete="off" value={gtApiKey}
-                onChange={(e) => setGtApiKey(e.target.value)}
-                placeholder={NX({ fr: "🔑 clé API GW2 (session)", en: "🔑 GW2 API key (session)" })}
-                style={{ width: 140, fontSize: 10, padding: "4px 7px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(226,201,126,0.2)", borderRadius: 6, color: "#e2c97e" }} />
-            )}
-            <button
-              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); }}
-              disabled={apiStatus === "loading"}
-              style={{
-                background: apiStatus === "ok" ? "rgba(74,222,128,0.1)" : apiStatus === "error" ? "rgba(248,113,113,0.1)" : "rgba(226,201,126,0.06)",
-                border: `1px solid ${apiStatus === "ok" ? "rgba(74,222,128,0.35)" : apiStatus === "error" ? "rgba(248,113,113,0.35)" : "rgba(226,201,126,0.2)"}`,
-                color: apiStatus === "ok" ? "#4ade80" : apiStatus === "error" ? "#f87171" : "rgba(226,201,126,0.7)",
-                borderRadius: "4px", padding: "3px 8px", fontSize: "10px",
-                fontFamily: "'Cinzel', serif", cursor: apiStatus === "loading" ? "wait" : "pointer",
-                letterSpacing: "0.05em",
-              }}>
-              {apiStatus === "loading" ? "⟳ …" : apiStatus === "ok" ? "✓ API" : apiStatus === "error" ? "✗ Err" : "⟳ API"}
-            </button>
-            <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
-              {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-            </div>
-          </div>
-          {apiStatus === "error" && apiError && (
-            <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>{apiError}</div>
-          )}
-        </div>
-      )}
 
       {/* ── GRAND TOTAL (mode plein écran) ── */}
       {isGrandTotal && !isCadences && (
