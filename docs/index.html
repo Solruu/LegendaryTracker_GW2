@@ -105,6 +105,7 @@ const I18N = {
     cad_pick: "Legendaries targeted",
     cad_verified: "✓ caps checked {d}",
     cad_unverified: "⚙ caps not verified",
+    cad_partial: "◐ {a}/{b} sources checked",
     cad_need: "Needed: {n}",
     cad_owned: "held {n}",
     cad_missing: "short {n}",
@@ -300,6 +301,7 @@ const I18N = {
     cad_pick: "Légendaires visés",
     cad_verified: "✓ plafonds vérifiés le {d}",
     cad_unverified: "⚙ plafonds non vérifiés",
+    cad_partial: "◐ {a}/{b} sources vérifiées",
     cad_need: "Besoin : {n}",
     cad_owned: "possédé {n}",
     cad_missing: "manque {n}",
@@ -627,7 +629,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v61",
+    "version": "v63",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1545,7 +1547,9 @@ const SOURCES_DB = {
     "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine.",
     "changelog_v59": "Ajout du bloc 'cadence' structure (robinets, periode, plafond, cout) sur les composants plafonnes, pour alimenter l'onglet Cadences. Seuls mystic_coin et mystic_clover portent verified:true (croises avec le wiki le 11/08/2026) ; les autres sont derives des tips existants et restent a auditer. Deux mauvaises lectures corrigees a la main : provisioner_token Tyrie/HoT est bien 7/semaine et non 1/jour, et gift_of_arid_mastery etait un faux positif.",
     "changelog_v60": "apiId ajoutes : fractal_research_page 73834 et spark_of_sentience 81729 (fournis par Antoine, recoupes — 73834 figure dans gw2_materials_ref sous Advanced Crafting Materials, 81729 etait deja declare dans NAME_FETCH_IDS du JSX). Sans apiId, ces deux ressources restaient en 'stock inconnu' dans l'onglet Cadences quelle que soit la synchro. Correction d'ID : magnetite_shard passait par 70820, qui est Shard of Glory et non Magnetite Shard — remplace par la devise de portefeuille 28 (confirmee dans gw2_currencies_ref). legendary_insight reste sur 77302 : verifie present en stockage materiaux, l'ID est valide. pristine_fractal_relic passe de 49370 (objet) a la devise 24 ; fractal_relic aligne sur la devise 7. spark_of_sentience 81729 est un objet d'inventaire hors stockage materiaux : resolvable via bank/inventory, c'est normal qu'il n'apparaisse pas dans gw2_materials_ref. AUDIT apiId : 10 identifiants corriges apres detection d'une divergence entre le nom declare et le nom renvoye par le referentiel. Cascade decalee d'un cran (inscribed_shard portait l'ID de Lump of Mistonium, qui portait celui de Branded Mass, qui portait celui de Mistborn Mote) et deux paires inversees (Orrian Pearl / Fire Orchid Blossom, Vision Crystal / Crystalline Ingot). gift_of_metal (19680 = Copper Ingot) et eldritch_scroll (19686 = Platinum Ingot) restent faux : absents du stockage materiaux, non resolvables en local.",
-    "changelog_v61": "Derniers apiId errones corriges : gift_of_metal 19680 (Copper Ingot) -> 19621 et eldritch_scroll 19686 (Platinum Ingot) -> 20852. Confirmes par le wiki GW2 et gw2treasures. Ces deux objets sont des trophees de Mystic Forge, absents du stockage materiaux : non resolvables contre les referentiels locaux, d'ou la verification externe. Famille Dust : nouvelle cascade decalee corrigee — dust_radiant portait l'ID de Crystalline Dust, dust_luminous celui d'Incandescent, dust_incandescent celui de Luminous. Resolus par nom exact (24274 / 24275 / 24276)."
+    "changelog_v61": "Derniers apiId errones corriges : gift_of_metal 19680 (Copper Ingot) -> 19621 et eldritch_scroll 19686 (Platinum Ingot) -> 20852. Confirmes par le wiki GW2 et gw2treasures. Ces deux objets sont des trophees de Mystic Forge, absents du stockage materiaux : non resolvables contre les referentiels locaux, d'ou la verification externe. Famille Dust : nouvelle cascade decalee corrigee — dust_radiant portait l'ID de Crystalline Dust, dust_luminous celui d'Incandescent, dust_incandescent celui de Luminous. Resolus par nom exact (24274 / 24275 / 24276).",
+    "changelog_v62": "Renommage cadence.faucets -> cadence.sources. Le drapeau 'verified' descend du composant vers chaque source : un composant peut porter une source sure et une douteuse, un verdict global serait trompeur.",
+    "changelog_v63": "Audit des cadences, 1re passe. spark_of_sentience n'est PAS une cadence : c'est la recompense unique d'Aurora II: Empowering — cadence retiree. Le verrou quotidien reel est le Lump of Mithrillium (1/jour/compte) consomme par le Xunlai Electrum Ingot, soit 21 jours minimum pour la collection : cadence posee la, verifiee. Au passage, xunlai_electrum_ingot portait l'apiId 77316, absent du referentiel (reel : 46743), et un tip decrivant des vendeurs Xunlai Jade d'EoD sans rapport avec cet objet de LWS3."
   },
   "meta_events": {
     "vb": {
@@ -3989,8 +3993,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "raid_weekly",
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Boss de raid (1 LI chacun)",
@@ -4001,7 +4004,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "HoT + PoF + EoD",
               "en": "HoT + PoF + EoD"
-            }
+            },
+            "verified": false
           },
           {
             "label": {
@@ -4013,7 +4017,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "1 par run",
               "en": "1 per run"
-            }
+            },
+            "verified": false
           },
           {
             "label": {
@@ -4025,7 +4030,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "1/jour",
               "en": "1/day"
-            }
+            },
+            "verified": false
           }
         ]
       }
@@ -4059,8 +4065,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "raid_weekly",
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Boss de raid HoT",
@@ -4071,7 +4076,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "clear hebdomadaire",
               "en": "weekly clear"
-            }
+            },
+            "verified": false
           }
         ]
       },
@@ -4908,10 +4914,7 @@ const SOURCES_DB = {
         "en": "⚠ The 'Daily Mystic Forge, guaranteed 1/day' source previously listed here was wrong: no Clover recipe is guaranteed, all sit around ~31% success. No Chest of Loyalty either (login system retired in 2023). Capped total excluding the Mystic Forge: 15 (Manfred) + 5 (Dugan) + 5 (PvP) = 25/week, plus 20/season in the Vault."
       },
       "cadence": {
-        "verified": true,
-        "checked": "2026-08-11",
-        "source": "wiki:Mystic_Clover",
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Coffre du Sorcier",
@@ -4922,7 +4925,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "60 AA",
               "en": "60 AA"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
           },
           {
             "label": {
@@ -4934,7 +4940,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "30 Magnetite",
               "en": "30 Magnetite"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
           },
           {
             "label": {
@@ -4946,7 +4955,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "10 + 20 devise McM",
               "en": "10 + 20 WvW currency"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
           },
           {
             "label": {
@@ -4958,7 +4970,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "cumulé avec Emblem",
               "en": "combined with Emblem"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
           },
           {
             "label": {
@@ -4970,7 +4985,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "~31 % de réussite",
               "en": "~31% success"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
           }
         ]
       }
@@ -5771,10 +5789,7 @@ const SOURCES_DB = {
         "en": "⚠ No daily-login source since 2023. Nikki the Lost, Archaeologist Vorri and Zazzl no longer sell Mystic Coins (item pulled from their stock). Supply is cap-bound: 60/season in the Vault, 10/wk from Manfred, 3/wk at SAB. Only the WvW Skirmish track escapes a cap. Indirect cost through Mystic Clovers, ON TOP of the 250 direct: ~231 gen1, ~481 gen2, ~114 gen3, ~273 for an armor set."
       },
       "cadence": {
-        "verified": true,
-        "checked": "2026-08-11",
-        "source": "wiki:Mystic_Coin",
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Coffre du Sorcier",
@@ -5785,7 +5800,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "9 AA",
               "en": "9 AA"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Coin"
           },
           {
             "label": {
@@ -5797,7 +5815,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "1 Laurier + 10 Magnetite",
               "en": "1 Laurel + 10 Magnetite"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Coin"
           },
           {
             "label": {
@@ -5809,7 +5830,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "festival uniquement",
               "en": "festival only"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Coin"
           },
           {
             "label": {
@@ -5821,7 +5845,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "event de groupe",
               "en": "group event"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Coin"
           },
           {
             "label": {
@@ -5833,7 +5860,10 @@ const SOURCES_DB = {
             "cost": {
               "fr": "2 Gold / 4 Diamond, répétable",
               "en": "2 Gold / 4 Diamond, repeatable"
-            }
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Coin"
           }
         ]
       }
@@ -5991,8 +6021,7 @@ const SOURCES_DB = {
         "en": "guaranteed daily meta reward — zero marginal cost"
       },
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Leivas",
@@ -6003,7 +6032,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "maîtrise Globalization",
               "en": "Globalization mastery"
-            }
+            },
+            "verified": false
           },
           {
             "label": {
@@ -6015,7 +6045,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "coffre final",
               "en": "final chest"
-            }
+            },
+            "verified": false
           }
         ]
       }
@@ -6519,8 +6550,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "fractals_daily",
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Fractales quotidiennes T4",
@@ -6531,7 +6561,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "recommandées + quotidiennes",
               "en": "recommended + dailies"
-            }
+            },
+            "verified": false
           }
         ]
       },
@@ -6570,8 +6601,7 @@ const SOURCES_DB = {
       },
       "kind": "acquire",
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Fractales recommandées",
@@ -6582,7 +6612,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "+ bonus par fractale",
               "en": "+ per-fractal bonus"
-            }
+            },
+            "verified": false
           }
         ]
       }
@@ -7593,7 +7624,7 @@ const SOURCES_DB = {
     },
     "xunlai_electrum_ingot": {
       "name": "Xunlai Electrum Ingot",
-      "apiId": 77316,
+      "apiId": 46743,
       "needed_for": [
         "memory_essence_encapsulator"
       ],
@@ -7622,21 +7653,55 @@ const SOURCES_DB = {
         {
           "type": "craft",
           "tip": {
-            "fr": "Recette achetée aux vendeurs Xunlai Jade (EoD). Requiert Electrum Ingot + Jade Sliver.",
-            "en": "Recipe purchased from Xunlai Jade vendors (EoD). Requires Electrum Ingot + Jade Sliver."
+            "fr": "Joaillerie 400. Consomme 1 Lump of Mithrillium, dont le craft est limité à 1 par jour et par compte — d'où 21 jours minimum pour la collection Aurora II.",
+            "en": "Jeweler 400. Consumes 1 Lump of Mithrillium, whose craft is capped at 1 per day per account — hence 21 days minimum for the Aurora II collection."
           }
         },
         {
           "type": "tp",
           "tip": {
-            "fr": "Achat au TP si la recette n'est pas débloquée.",
-            "en": "Buy on TP if recipe not unlocked."
+            "fr": "Achat au comptoir pour contourner entièrement le timegate.",
+            "en": "Buy on the TP to bypass the timegate entirely."
           }
         }
       ],
       "wiki": "Xunlai_Electrum_Ingot",
       "kind": "craftable",
-      "best": "craft"
+      "best": "craft",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Craft via Lump of Mithrillium",
+              "en": "Craft via Lump of Mithrillium"
+            },
+            "period": "day",
+            "cap": 1,
+            "cost": {
+              "fr": "joaillerie 400 — 21 jours pour Aurora II",
+              "en": "Jeweler 400 — 21 days for Aurora II"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Aurora + guildjen"
+          },
+          {
+            "label": {
+              "fr": "Comptoir",
+              "en": "Trading Post"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "contourne le timegate",
+              "en": "bypasses the timegate"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Aurora"
+          }
+        ]
+      }
     },
     "memory_essence_encapsulator": {
       "name": "Memory Essence Encapsulator",
@@ -7727,8 +7792,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "vendor_weekly",
       "cadence": {
-        "verified": false,
-        "faucets": [
+        "sources": [
           {
             "label": {
               "fr": "Rend Scorchmaul (Tour du Sorcier)",
@@ -7739,7 +7803,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "sans limite — matériaux bruts",
               "en": "no cap — raw materials"
-            }
+            },
+            "verified": false
           },
           {
             "label": {
@@ -7751,7 +7816,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "1 échange/jour/vendeur",
               "en": "1 trade/day/vendor"
-            }
+            },
+            "verified": false
           },
           {
             "label": {
@@ -7763,7 +7829,8 @@ const SOURCES_DB = {
             "cost": {
               "fr": "7/semaine par vendeur",
               "en": "7/week per vendor"
-            }
+            },
+            "verified": false
           }
         ]
       }
@@ -8199,24 +8266,11 @@ const SOURCES_DB = {
         }
       ],
       "qty": {},
-      "cadence": {
-        "verified": false,
-        "faucets": [
-          {
-            "label": {
-              "fr": "Collection Aurora II",
-              "en": "Aurora II collection"
-            },
-            "period": "day",
-            "cap": 1,
-            "cost": {
-              "fr": "infusion Xunlai",
-              "en": "Xunlai infusion"
-            }
-          }
-        ]
-      },
-      "apiId": 81729
+      "apiId": 81729,
+      "note": {
+        "fr": "Récompense unique de la collection Aurora II: Empowering — pas une ressource récurrente. Le vrai verrou quotidien est le Lump of Mithrillium nécessaire aux 21 Xunlai Electrum Ingots.",
+        "en": "One-off reward from the Aurora II: Empowering collection — not a recurring resource. The real daily gate is the Lump of Mithrillium needed for the 21 Xunlai Electrum Ingots."
+      }
     },
     "gift_of_draconic_mastery": {
       "name": "Gift of Draconic Mastery",
@@ -16353,22 +16407,23 @@ function CadencesTab({ stocks = {} }) {
   });
 
   const rows = Object.entries(cc)
-    .filter(([, c]) => c && c.cadence && (c.cadence.faucets ?? []).length > 0)
+    .filter(([, c]) => c && c.cadence && (c.cadence.sources ?? []).length > 0)
     .map(([id, c]) => {
       const cad = c.cadence;
       const need = totals[id] ?? 0;
       const owned = c.apiId ? (stocks[String(c.apiId)] ?? null) : null;
       const missing = need > 0 && owned !== null ? Math.max(0, need - owned) : null;
-      // Débit hebdomadaire plafonné : les robinets sans plafond sont exclus
+      // Débit hebdomadaire plafonné : les sources sans plafond sont exclus
       // du calcul (ils fausseraient une projection de délai).
       let perWeek = 0, hasUncapped = false;
-      for (const f of cad.faucets) {
+      for (const f of cad.sources) {
         if (f.cap == null) { hasUncapped = true; continue; }
         if (f.period === "week") perWeek += f.cap;
         else if (f.period === "day") perWeek += f.cap * 7;
       }
       const weeks = missing !== null && perWeek > 0 ? Math.ceil(missing / perWeek) : null;
-      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, weeks };
+      const nSrc = cad.sources.length, nVer = cad.sources.filter(f => f.verified).length;
+      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, weeks, nSrc, nVer };
     })
     .sort((a, b) => (b.missing ?? -1) - (a.missing ?? -1));
 
@@ -16426,8 +16481,10 @@ function CadencesTab({ stocks = {} }) {
         <div key={r.id} style={{ margin: "0 14px 10px", padding: "10px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8 }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 8 }}>
             <div style={{ fontSize: "12.5px", fontWeight: 600, color: C }}>{r.comp.name}</div>
-            <div style={{ fontSize: "10px", color: r.cad.verified ? "#4ade80" : "rgba(251,146,60,0.85)", flexShrink: 0 }}>
-              {r.cad.verified ? t("cad_verified", { d: r.cad.checked ?? "" }) : t("cad_unverified")}
+            <div style={{ fontSize: "10px", color: r.nVer === r.nSrc ? "#4ade80" : r.nVer === 0 ? "rgba(251,146,60,0.85)" : "#e2c97e", flexShrink: 0 }}>
+              {r.nVer === r.nSrc ? t("cad_verified", { d: r.cad.sources.find(f => f.checked)?.checked ?? "" })
+                : r.nVer === 0 ? t("cad_unverified")
+                : t("cad_partial", { a: r.nVer, b: r.nSrc })}
             </div>
           </div>
 
@@ -16449,13 +16506,17 @@ function CadencesTab({ stocks = {} }) {
           )}
 
           <div style={{ marginTop: 7, borderTop: `1px solid ${D}0.08)`, paddingTop: 6 }}>
-            {r.cad.faucets.map((f, i) => {
+            {r.cad.sources.map((f, i) => {
               const per = f.period, done = isChecked(r.id, i, per);
               return (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "2px 0", fontSize: "11px" }}>
                   <input type="checkbox" checked={done} onChange={() => toggleCheck(r.id, i, per)} style={{ marginTop: 2, flexShrink: 0 }} />
                   <div style={{ flex: 1, color: done ? "#4ade80" : `${D}0.7)`, textDecoration: done ? "line-through" : "none" }}>
                     <b>{L(f.label)}</b>
+                    <span title={f.verified ? `${t("cad_verified", { d: f.checked ?? "" })}` : t("cad_unverified")}
+                      style={{ fontSize: "9px", marginLeft: 4, color: f.verified ? "#4ade80" : "rgba(251,146,60,0.8)" }}>
+                      {f.verified ? "✓" : "⚙"}
+                    </span>
                     <span style={{ opacity: 0.75 }}> — {f.cap == null ? t("cad_nocap") : `${f.cap}/${t("cad_per_" + per)}`}{f.cost ? ` · ${L(f.cost)}` : ""}</span>
                   </div>
                 </div>

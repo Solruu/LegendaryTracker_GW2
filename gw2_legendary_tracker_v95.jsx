@@ -41,6 +41,7 @@ const I18N = {
     cad_pick: "Legendaries targeted",
     cad_verified: "✓ caps checked {d}",
     cad_unverified: "⚙ caps not verified",
+    cad_partial: "◐ {a}/{b} sources checked",
     cad_need: "Needed: {n}",
     cad_owned: "held {n}",
     cad_missing: "short {n}",
@@ -236,6 +237,7 @@ const I18N = {
     cad_pick: "Légendaires visés",
     cad_verified: "✓ plafonds vérifiés le {d}",
     cad_unverified: "⚙ plafonds non vérifiés",
+    cad_partial: "◐ {a}/{b} sources vérifiées",
     cad_need: "Besoin : {n}",
     cad_owned: "possédé {n}",
     cad_missing: "manque {n}",
@@ -2493,22 +2495,23 @@ function CadencesTab({ stocks = {} }) {
   });
 
   const rows = Object.entries(cc)
-    .filter(([, c]) => c && c.cadence && (c.cadence.faucets ?? []).length > 0)
+    .filter(([, c]) => c && c.cadence && (c.cadence.sources ?? []).length > 0)
     .map(([id, c]) => {
       const cad = c.cadence;
       const need = totals[id] ?? 0;
       const owned = c.apiId ? (stocks[String(c.apiId)] ?? null) : null;
       const missing = need > 0 && owned !== null ? Math.max(0, need - owned) : null;
-      // Débit hebdomadaire plafonné : les robinets sans plafond sont exclus
+      // Débit hebdomadaire plafonné : les sources sans plafond sont exclus
       // du calcul (ils fausseraient une projection de délai).
       let perWeek = 0, hasUncapped = false;
-      for (const f of cad.faucets) {
+      for (const f of cad.sources) {
         if (f.cap == null) { hasUncapped = true; continue; }
         if (f.period === "week") perWeek += f.cap;
         else if (f.period === "day") perWeek += f.cap * 7;
       }
       const weeks = missing !== null && perWeek > 0 ? Math.ceil(missing / perWeek) : null;
-      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, weeks };
+      const nSrc = cad.sources.length, nVer = cad.sources.filter(f => f.verified).length;
+      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, weeks, nSrc, nVer };
     })
     .sort((a, b) => (b.missing ?? -1) - (a.missing ?? -1));
 
@@ -2566,8 +2569,10 @@ function CadencesTab({ stocks = {} }) {
         <div key={r.id} style={{ margin: "0 14px 10px", padding: "10px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8 }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 8 }}>
             <div style={{ fontSize: "12.5px", fontWeight: 600, color: C }}>{r.comp.name}</div>
-            <div style={{ fontSize: "10px", color: r.cad.verified ? "#4ade80" : "rgba(251,146,60,0.85)", flexShrink: 0 }}>
-              {r.cad.verified ? t("cad_verified", { d: r.cad.checked ?? "" }) : t("cad_unverified")}
+            <div style={{ fontSize: "10px", color: r.nVer === r.nSrc ? "#4ade80" : r.nVer === 0 ? "rgba(251,146,60,0.85)" : "#e2c97e", flexShrink: 0 }}>
+              {r.nVer === r.nSrc ? t("cad_verified", { d: r.cad.sources.find(f => f.checked)?.checked ?? "" })
+                : r.nVer === 0 ? t("cad_unverified")
+                : t("cad_partial", { a: r.nVer, b: r.nSrc })}
             </div>
           </div>
 
@@ -2589,13 +2594,17 @@ function CadencesTab({ stocks = {} }) {
           )}
 
           <div style={{ marginTop: 7, borderTop: `1px solid ${D}0.08)`, paddingTop: 6 }}>
-            {r.cad.faucets.map((f, i) => {
+            {r.cad.sources.map((f, i) => {
               const per = f.period, done = isChecked(r.id, i, per);
               return (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "2px 0", fontSize: "11px" }}>
                   <input type="checkbox" checked={done} onChange={() => toggleCheck(r.id, i, per)} style={{ marginTop: 2, flexShrink: 0 }} />
                   <div style={{ flex: 1, color: done ? "#4ade80" : `${D}0.7)`, textDecoration: done ? "line-through" : "none" }}>
                     <b>{L(f.label)}</b>
+                    <span title={f.verified ? `${t("cad_verified", { d: f.checked ?? "" })}` : t("cad_unverified")}
+                      style={{ fontSize: "9px", marginLeft: 4, color: f.verified ? "#4ade80" : "rgba(251,146,60,0.8)" }}>
+                      {f.verified ? "✓" : "⚙"}
+                    </span>
                     <span style={{ opacity: 0.75 }}> — {f.cap == null ? t("cad_nocap") : `${f.cap}/${t("cad_per_" + per)}`}{f.cost ? ` · ${L(f.cost)}` : ""}</span>
                   </div>
                 </div>
