@@ -16262,6 +16262,17 @@ function fmtDelay(ms) {
   return h >= 24 ? `${Math.floor(h / 24)}j ${h % 24}h` : `${h}h ${String(m).padStart(2, "0")}m`;
 }
 
+// Tous les légendaires ne portent pas de données `qty` (sets d'armure et
+// runes/sigils passent par des pseudo-clés « __per_piece »). Les proposer au
+// choix donnerait un calcul vide, donc une fausse impression de bug.
+const QTY_LEG_IDS = (() => {
+  const out = new Set();
+  for (const c of Object.values(SOURCES_DB?.craft_components ?? {})) {
+    if (c && typeof c === "object") for (const k of Object.keys(c.qty ?? {})) out.add(k);
+  }
+  return out;
+})();
+
 function CadencesTab({ stocks = {} }) {
   const t = useT();
   const [selected, setSelected] = useState(() => {
@@ -16340,11 +16351,18 @@ function CadencesTab({ stocks = {} }) {
         </button>
         {showPicker && (
           <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: `1px solid ${D}0.14)`, borderRadius: 8, maxHeight: 260, overflowY: "auto" }}>
-            {Object.values(legs).map(l => (
-              <label key={l.id} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selected[l.id] ? C : `${D}0.55)`, cursor: "pointer" }}>
-                <input type="checkbox" checked={!!selected[l.id]}
-                  onChange={() => setSelected(p => { const n = { ...p }; if (n[l.id]) delete n[l.id]; else n[l.id] = true; return n; })} />
-                {l.name}
+            {/* Les entrées de SOURCES_DB.legendaries n'ont pas de champ `id` :
+                l'identifiant EST la clé du dictionnaire. */}
+            {Object.entries(legs)
+              .filter(([lid]) => QTY_LEG_IDS.has(lid))
+              .sort((a, b) => String(a[1].farm ?? "").localeCompare(String(b[1].farm ?? "")) ||
+                              String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
+              .map(([lid, l]) => (
+              <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selected[lid] ? C : `${D}0.55)`, cursor: "pointer" }}>
+                <input type="checkbox" checked={!!selected[lid]}
+                  onChange={() => setSelected(prev => { const n = { ...prev }; if (n[lid]) delete n[lid]; else n[lid] = true; return n; })} />
+                <span style={{ flex: 1 }}>{NX(l.name ?? lid)}</span>
+                {l.farm && <span style={{ fontSize: "9px", opacity: 0.5, flexShrink: 0 }}>{l.farm}</span>}
               </label>
             ))}
           </div>
