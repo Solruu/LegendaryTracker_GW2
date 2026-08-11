@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v53",
+    "version": "v54",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -910,7 +910,8 @@
     "changelog_v50": "Vision : les 6 sous-collections « Visions of… » et les 2 metas ajoutées au mapping de synchro (bits désormais traçables).",
     "changelog_v51": "Vision : Brandstone Research (4000) et Astral Purification (3964) ajoutés au mapping — la chaîne des armes Astral devient traçable.",
     "changelog_v52": "Vision : metas d episode (Kourna/Sandswept/Jahai/Thunderhead/Dragonfall) + Elegy + Journeyman of the Forge ajoutes au mapping.",
-    "changelog_v53": "meta_eligible : listes officielles des succes eligibles des metas d'episode, relevees sur le wiki (l'API ne publie ni bits ni liste d'enfants pour ces metas) et validees ID par ID contre gw2_achievements_ref.json. 2/5 faites (Kourna, Thunderhead)."
+    "changelog_v53": "meta_eligible : listes officielles des succes eligibles des metas d'episode, relevees sur le wiki (l'API ne publie ni bits ni liste d'enfants pour ces metas) et validees ID par ID contre gw2_achievements_ref.json. 2/5 faites (Kourna, Thunderhead).",
+    "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite."
   },
   "meta_events": {
     "vb": {
@@ -12695,6 +12696,506 @@
         [
           4539,
           "Underworld's Angels"
+        ]
+      ]
+    },
+    "4093": {
+      "name": "\"A Bug in the System\" Mastery",
+      "threshold": 35,
+      "source": "wiki:A_Bug_in_the_System_(achievements)",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          4146,
+          "Tracking the Scientist"
+        ],
+        [
+          4115,
+          "The Test Subject"
+        ],
+        [
+          4092,
+          "A Kindness Repaid"
+        ],
+        [
+          4091,
+          "The Charge"
+        ],
+        [
+          4098,
+          "Sandswept Isles Bounty Hunter"
+        ],
+        [
+          4148,
+          "Sandswept Isles Champion Hunter"
+        ],
+        [
+          4133,
+          "Sandswept Isles Legendary Hunter"
+        ],
+        [
+          4105,
+          "Track Record"
+        ],
+        [
+          4121,
+          "Race to the Finish: Olmakhan Docks"
+        ],
+        [
+          4136,
+          "Race to the Finish: Inquest Facility"
+        ],
+        [
+          4143,
+          "Rescue Ranger"
+        ],
+        [
+          4095,
+          "Crystal Corral: Silver"
+        ],
+        [
+          4124,
+          "Crystal Corral: Gold"
+        ],
+        [
+          4147,
+          "Sandswept Isles Griffon Expert: Silver"
+        ],
+        [
+          4135,
+          "Sandswept Isles Griffon Expert: Gold"
+        ],
+        [
+          4139,
+          "The Specimen Chamber"
+        ],
+        [
+          4114,
+          "The Road to Rata Primus"
+        ],
+        [
+          4122,
+          "Stormbreak"
+        ],
+        [
+          4149,
+          "Three Golem Monte"
+        ],
+        [
+          4142,
+          "The Queen and I"
+        ],
+        [
+          4132,
+          "Insuppressible"
+        ],
+        [
+          4127,
+          "Wyvern Whacker"
+        ],
+        [
+          4100,
+          "Magnetic Attraction"
+        ],
+        [
+          4117,
+          "Honorary Olmakhan"
+        ],
+        [
+          4130,
+          "Talk to the Fist"
+        ],
+        [
+          4126,
+          "I Make This Golem Look Good"
+        ],
+        [
+          4137,
+          "Gate-Crasher"
+        ],
+        [
+          4120,
+          "X-T3R-M1N-8"
+        ],
+        [
+          4140,
+          "Cabbage Shredder"
+        ],
+        [
+          4145,
+          "Impressionable Youth"
+        ],
+        [
+          4101,
+          "Stimulus and Response"
+        ],
+        [
+          4119,
+          "A Branded Blast"
+        ],
+        [
+          4110,
+          "Light Speed"
+        ],
+        [
+          4129,
+          "Inquest.Info"
+        ],
+        [
+          4090,
+          "Saving Skritt"
+        ],
+        [
+          4131,
+          "Awake End"
+        ],
+        [
+          4102,
+          "Tales of Elona"
+        ],
+        [
+          4144,
+          "Lasting Bonds: Where We Come From"
+        ],
+        [
+          4106,
+          "Lasting Bonds: What We Do Here"
+        ],
+        [
+          4112,
+          "Lasting Bonds: What Comes Next"
+        ],
+        [
+          4103,
+          "Repairing IG-6417"
+        ],
+        [
+          4141,
+          "Rebooting IG-6417"
+        ],
+        [
+          4108,
+          "Redeeming IG-6417"
+        ],
+        [
+          4125,
+          "Sandswept Isles Insight: Atholma"
+        ],
+        [
+          4096,
+          "Sandswept Isles Insight: The Hunting Grounds"
+        ],
+        [
+          4134,
+          "Sandswept Isles Insight: Rata Primus"
+        ],
+        [
+          4150,
+          "Sandswept Isles Insight: Invariant Enclave"
+        ]
+      ]
+    },
+    "4359": {
+      "name": "\"A Star to Guide Us\" Mastery",
+      "threshold": 38,
+      "source": "wiki:A_Star_to_Guide_Us_(achievements)",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          4342,
+          "A Shattered Nation"
+        ],
+        [
+          4346,
+          "Chaos Theory"
+        ],
+        [
+          4392,
+          "Legacy"
+        ],
+        [
+          4372,
+          "From the Ashes"
+        ],
+        [
+          4358,
+          "Storm Tracking"
+        ],
+        [
+          4347,
+          "Splat!"
+        ],
+        [
+          4378,
+          "In Tatters; Not Shattered"
+        ],
+        [
+          4424,
+          "Claws to the Wall"
+        ],
+        [
+          4389,
+          "Historical Ambition"
+        ],
+        [
+          4401,
+          "No More Mr. Fungi"
+        ],
+        [
+          4384,
+          "Not Today"
+        ],
+        [
+          4369,
+          "Is It Over Yet?"
+        ],
+        [
+          4400,
+          "Unbranded"
+        ],
+        [
+          4393,
+          "Pod Smasher"
+        ],
+        [
+          4365,
+          "Sniper, No Sniping!"
+        ],
+        [
+          4343,
+          "I Brought a Friend"
+        ],
+        [
+          4370,
+          "Faster than a Speeding Bullet"
+        ],
+        [
+          4353,
+          "Right On Track"
+        ],
+        [
+          4428,
+          "Raptor Out"
+        ],
+        [
+          4418,
+          "Garrison Historian"
+        ],
+        [
+          4360,
+          "Jahai Bounty Hunter"
+        ],
+        [
+          4381,
+          "Hunted"
+        ],
+        [
+          4414,
+          "Ethereal Exchange"
+        ],
+        [
+          4377,
+          "Dive Master: Rilohn Falls"
+        ],
+        [
+          4430,
+          "Making Cents of Jahai"
+        ],
+        [
+          4349,
+          "Matchmaker, Matchmaker"
+        ],
+        [
+          4363,
+          "If I May Interrupt"
+        ],
+        [
+          4427,
+          "Finders Inner Keepers"
+        ],
+        [
+          4434,
+          "Big Bluffs Hunter"
+        ],
+        [
+          4413,
+          "You Can Certainly Try"
+        ],
+        [
+          4421,
+          "Bottled No More"
+        ],
+        [
+          4371,
+          "Making History"
+        ],
+        [
+          4425,
+          "Run Around for No Reason: Silver"
+        ],
+        [
+          4390,
+          "Run Around for No Reason: Gold"
+        ],
+        [
+          4394,
+          "Jahai Bluffs Griffon Expert: Gold"
+        ],
+        [
+          4352,
+          "Jahai Bluffs Griffon Expert: Silver"
+        ],
+        [
+          4350,
+          "Jahai Bluffs Griffon Master: Silver"
+        ],
+        [
+          4385,
+          "Jahai Bluffs Griffon Master: Gold"
+        ],
+        [
+          4403,
+          "Exhibit Aye"
+        ],
+        [
+          4417,
+          "Memorabilia"
+        ],
+        [
+          4351,
+          "Swan Dive"
+        ],
+        [
+          4375,
+          "Gentle Hearts"
+        ],
+        [
+          4374,
+          "Philanthropist"
+        ],
+        [
+          4373,
+          "Fragments I Have Shored"
+        ],
+        [
+          4366,
+          "Gotchu!"
+        ],
+        [
+          4387,
+          "Readathon"
+        ],
+        [
+          4419,
+          "Fishy Business"
+        ],
+        [
+          4348,
+          "Door to the Past"
+        ],
+        [
+          4433,
+          "Crystal Attunement"
+        ],
+        [
+          4426,
+          "Good, Better, Nest"
+        ],
+        [
+          4398,
+          "Poster Child"
+        ],
+        [
+          4406,
+          "In a Grain of Sand"
+        ],
+        [
+          4376,
+          "The Convergence of Sorrow I: Elegy"
+        ],
+        [
+          4362,
+          "The Convergence of Sorrow II: Requiem"
+        ]
+      ]
+    },
+    "4689": {
+      "name": "\"War Eternal\" Mastery",
+      "threshold": 18,
+      "source": "wiki:War_Eternal_(achievements)",
+      "verified": "2026-08-11",
+      "achievements": [
+        [
+          4673,
+          "The End"
+        ],
+        [
+          4753,
+          "Landfall"
+        ],
+        [
+          4744,
+          "Glory of Dragons"
+        ],
+        [
+          4700,
+          "Bleed"
+        ],
+        [
+          4747,
+          "Heart to Heart"
+        ],
+        [
+          4740,
+          "Putting Out Fires"
+        ],
+        [
+          4723,
+          "Life in the Underworld"
+        ],
+        [
+          4715,
+          "Cutting Weeds"
+        ],
+        [
+          4669,
+          "Salt on the Wound"
+        ],
+        [
+          4731,
+          "Dexterous Dodger"
+        ],
+        [
+          4721,
+          "Scissors of Fate"
+        ],
+        [
+          4697,
+          "Show Some Restraint"
+        ],
+        [
+          4687,
+          "My Beautiful Infrastructure"
+        ],
+        [
+          4708,
+          "Championship Bout"
+        ],
+        [
+          4722,
+          "Eternally Yours"
+        ],
+        [
+          4663,
+          "Friends in High Places"
+        ],
+        [
+          4737,
+          "Sniper's Nest"
+        ],
+        [
+          4705,
+          "Hat Trick"
         ]
       ]
     }
