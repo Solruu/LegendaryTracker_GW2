@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v69",
+    "version": "v70",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -926,7 +926,8 @@
     "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee.",
     "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu.",
     "changelog_v68": "Antique Summoning Stone verifie : audit des cadences termine, 31 sources sur 31. Le tracker retenait 5/semaine chez Leivas et 1/jour sur la meta Trepas du dragon. En realite 10/semaine plafonnes — 5 chez Leivas (5 contreparties a 1/semaine chacune, maitrise Globalization) et 5 via les Challenge Modes EoD (1 par CM et par semaine, 5 CM). La meta n'a pas de cadence documentee : reclassee en source hors plafond avec les coffres. Ajout des 5 succes Revenge de Return to End of Dragons, obtention unique.",
-    "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie."
+    "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie.",
+    "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX."
   },
   "meta_events": {
     "vb": {
@@ -3466,7 +3467,8 @@
             },
             "ref": "wiki:Magnetite_Shard + blog ArenaNet 03/02/2026",
             "verified": true,
-            "checked": "2026-08-11"
+            "checked": "2026-08-11",
+            "isBudget": true
           },
           {
             "label": {
@@ -4351,7 +4353,8 @@
             },
             "verified": true,
             "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Clover"
+            "ref": "wiki:Mystic_Clover",
+            "magnetite": 30
           },
           {
             "label": {
@@ -5226,7 +5229,8 @@
             },
             "verified": true,
             "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Coin"
+            "ref": "wiki:Mystic_Coin",
+            "magnetite": 10
           },
           {
             "label": {

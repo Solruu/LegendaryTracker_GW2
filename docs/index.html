@@ -117,6 +117,17 @@ const I18N = {
     cad_per_season: "season",
     cad_empty: "Pick your target legendaries above to compute needs and delays.",
     cad_clear: "Clear selection",
+    arb_title: "Magnetite arbitration",
+    arb_intro: "Manfred sells Coins and Clovers for the same currency Coalescence consumes. Weekly budget: {b}.",
+    arb_coins: "Mystic Coins bought",
+    arb_clovers: "Mystic Clovers bought",
+    arb_spent: "{s} of {b} spent",
+    arb_left: "{n} left for Coalescence",
+    arb_over: "— over budget by {n}!",
+    arb_need: "Coalescence needs {n}",
+    arb_weeks: "≈ {w} week(s) at this split",
+    arb_never: "nothing left — Coalescence never progresses",
+    arb_offcap: "Off-cap sources (Challenge Mode, trading minis to raid vendors, salvaging ascended drops, achievements) do not count against the budget — that is the real way out of the trade-off.",
     cad_not_needed: "Not required by your selection.",
     cad_nostock: "stock unknown — sync with your API key",
     bits_step: "Step {n}",
@@ -313,6 +324,17 @@ const I18N = {
     cad_per_season: "saison",
     cad_empty: "Sélectionne tes légendaires cibles ci-dessus pour calculer besoins et délais.",
     cad_clear: "Vider la sélection",
+    arb_title: "Arbitrage Magnetite",
+    arb_intro: "Manfred vend Coins et Clovers contre la devise que consomme Coalescence. Budget hebdo : {b}.",
+    arb_coins: "Mystic Coins achetés",
+    arb_clovers: "Mystic Clovers achetés",
+    arb_spent: "{s} dépensés sur {b}",
+    arb_left: "{n} restants pour Coalescence",
+    arb_over: "— dépassement de {n} !",
+    arb_need: "Coalescence demande {n}",
+    arb_weeks: "≈ {w} semaine(s) à cette répartition",
+    arb_never: "plus rien — Coalescence n'avance jamais",
+    arb_offcap: "Les sources hors plafond (Challenge Mode, revente de minis aux vendeurs raid, salvage d'ascendés, succès) n'entament pas le budget — c'est la vraie sortie du dilemme.",
     cad_not_needed: "Non requis par ta sélection.",
     cad_nostock: "stock inconnu — synchronise avec ta clé API",
     bits_step: "Étape {n}",
@@ -629,7 +651,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v69",
+    "version": "v70",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1555,7 +1577,8 @@ const SOURCES_DB = {
     "changelog_v66": "Provisioner Token verifie sur capture de la section Acquisition. Les trois sources precedentes etaient fausses : aucune limite quotidienne n'existe, tout est hebdomadaire. 9 Faction Provisioners a 7/semaine chacun (63), Dugan McM 25/semaine, League Vendor PvP 15 + 2, et Rend Scorchmaul sans plafond. Nuance ajoutee : les quatre materiaux acceptes par Rend Scorchmaul sont eux-memes limites a 1/jour au craft, donc seule la voie 300 Research Notes est vraiment illimitee.",
     "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu.",
     "changelog_v68": "Antique Summoning Stone verifie : audit des cadences termine, 31 sources sur 31. Le tracker retenait 5/semaine chez Leivas et 1/jour sur la meta Trepas du dragon. En realite 10/semaine plafonnes — 5 chez Leivas (5 contreparties a 1/semaine chacune, maitrise Globalization) et 5 via les Challenge Modes EoD (1 par CM et par semaine, 5 CM). La meta n'a pas de cadence documentee : reclassee en source hors plafond avec les coffres. Ajout des 5 succes Revenge de Return to End of Dragons, obtention unique.",
-    "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie."
+    "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie.",
+    "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX."
   },
   "meta_events": {
     "vb": {
@@ -4095,7 +4118,8 @@ const SOURCES_DB = {
             },
             "ref": "wiki:Magnetite_Shard + blog ArenaNet 03/02/2026",
             "verified": true,
-            "checked": "2026-08-11"
+            "checked": "2026-08-11",
+            "isBudget": true
           },
           {
             "label": {
@@ -4980,7 +5004,8 @@ const SOURCES_DB = {
             },
             "verified": true,
             "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Clover"
+            "ref": "wiki:Mystic_Clover",
+            "magnetite": 30
           },
           {
             "label": {
@@ -5855,7 +5880,8 @@ const SOURCES_DB = {
             },
             "verified": true,
             "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Coin"
+            "ref": "wiki:Mystic_Coin",
+            "magnetite": 10
           },
           {
             "label": {
@@ -16546,10 +16572,15 @@ function CadencesTab({ stocks = {} }) {
     try { return JSON.parse(localStorage.getItem("gw2_cad_checks_v1") ?? "{}"); } catch (_) { return {}; }
   });
   const [showPicker, setShowPicker] = useState(false);
+  const [arb, setArb] = useState(() => {
+    try { const a = JSON.parse(localStorage.getItem("gw2_cad_arb_v1") ?? "null"); if (a) return a; } catch (_) {}
+    return { coins: 10, clovers: 15 };
+  });
 
   useEffect(() => { const i = setInterval(() => setTicks(x => x + 1), 30000); return () => clearInterval(i); }, []);
   useEffect(() => { try { localStorage.setItem("gw2_cad_sel_v1", JSON.stringify(selected)); } catch (_) {} }, [selected]);
   useEffect(() => { try { localStorage.setItem("gw2_cad_checks_v1", JSON.stringify(checks)); } catch (_) {} }, [checks]);
+  useEffect(() => { try { localStorage.setItem("gw2_cad_arb_v1", JSON.stringify(arb)); } catch (_) {} }, [arb]);
 
   const P = resetPeriods(new Date());
   const cc = SOURCES_DB?.craft_components ?? {};
@@ -16640,6 +16671,60 @@ function CadencesTab({ stocks = {} }) {
           </div>
         )}
       </div>
+
+      {(() => {
+        // ── ARBITRAGE MAGNETITE ──
+        // Manfred vend Coins et Clovers contre la même devise que consomme
+        // Coalescence : le plafond hebdomadaire ne permet pas de tout prendre.
+        const mag = cc.magnetite_shard?.cadence?.sources ?? [];
+        const budget = mag.find(f => f.isBudget)?.cap ?? 0;
+        const coinSrc = (cc.mystic_coin?.cadence?.sources ?? []).find(f => f.magnetite);
+        const cloverSrc = (cc.mystic_clover?.cadence?.sources ?? []).find(f => f.magnetite);
+        if (!budget || !coinSrc || !cloverSrc) return null;
+
+        const spent = arb.coins * coinSrc.magnetite + arb.clovers * cloverSrc.magnetite;
+        const left = budget - spent;
+        const magNeed = totals.magnetite_shard ?? 0;
+        const magOwned = stocks["28"] ?? null;
+        const magLeft = magNeed > 0 && magOwned !== null ? Math.max(0, magNeed - magOwned) : magNeed;
+        const weeks = magLeft > 0 && left > 0 ? Math.ceil(magLeft / left) : null;
+        const over = spent > budget;
+
+        const Row = ({ label, val, max, cost, onCh }) => (
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "3px 0", fontSize: "11px", color: `${D}0.8)` }}>
+            <span style={{ flex: 1 }}>{label}</span>
+            <input type="range" min={0} max={max} value={val} onChange={e => onCh(Number(e.target.value))} style={{ flex: 1.4, accentColor: "#38bdf8" }} />
+            <span style={{ width: 74, textAlign: "right", flexShrink: 0, fontVariantNumeric: "tabular-nums" }}>
+              <b>{val}</b>/{max} · {val * cost}
+            </span>
+          </div>
+        );
+
+        return (
+          <div style={{ margin: "0 14px 12px", padding: "10px 12px", background: "rgba(56,189,248,0.05)", border: "1px solid rgba(56,189,248,0.25)", borderRadius: 8 }}>
+            <div style={{ fontSize: "12.5px", fontWeight: 600, color: "#38bdf8", marginBottom: 2 }}>⚖ {t("arb_title")}</div>
+            <div style={{ fontSize: "10px", color: `${D}0.5)`, fontFamily: "'Crimson Text', serif", marginBottom: 7 }}>
+              {t("arb_intro", { b: budget })}
+            </div>
+            <Row label={t("arb_coins")} val={arb.coins} max={coinSrc.cap ?? 10} cost={coinSrc.magnetite} onCh={v => setArb(a => ({ ...a, coins: v }))} />
+            <Row label={t("arb_clovers")} val={arb.clovers} max={cloverSrc.cap ?? 15} cost={cloverSrc.magnetite} onCh={v => setArb(a => ({ ...a, clovers: v }))} />
+            <div style={{ marginTop: 7, paddingTop: 6, borderTop: `1px solid ${D}0.1)`, fontSize: "11.5px", color: over ? "#f87171" : "#4ade80" }}>
+              {t("arb_spent", { s: spent, b: budget })} — <b>{t("arb_left", { n: Math.max(0, left) })}</b>
+              {over ? " " + t("arb_over", { n: spent - budget }) : ""}
+            </div>
+            {magNeed > 0 && (
+              <div style={{ marginTop: 4, fontSize: "11px", color: `${D}0.75)` }}>
+                {t("arb_need", { n: magNeed })}
+                {magOwned !== null ? ` · ${t("cad_owned", { n: magOwned })}` : ` · ${t("cad_nostock")}`}
+                {weeks !== null ? ` · ${t("arb_weeks", { w: weeks })}` : left <= 0 ? " · " + t("arb_never") : ""}
+              </div>
+            )}
+            <div style={{ marginTop: 5, fontSize: "10px", color: "rgba(74,222,128,0.75)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+              💡 {t("arb_offcap")}
+            </div>
+          </div>
+        );
+      })()}
 
       {rows.map(r => (
         <div key={r.id} style={{ margin: "0 14px 10px", padding: "10px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8 }}>
