@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v58",
+    "version": "v59",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -915,7 +915,8 @@
     "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher.",
     "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation.",
     "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour).",
-    "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine."
+    "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine.",
+    "changelog_v59": "Ajout du bloc 'cadence' structure (robinets, periode, plafond, cout) sur les composants plafonnes, pour alimenter l'onglet Cadences. Seuls mystic_coin et mystic_clover portent verified:true (croises avec le wiki le 11/08/2026) ; les autres sont derives des tips existants et restent a auditer. Deux mauvaises lectures corrigees a la main : provisioner_token Tyrie/HoT est bien 7/semaine et non 1/jour, et gift_of_arid_mastery etait un faux positif."
   },
   "meta_events": {
     "vb": {
@@ -3357,7 +3358,48 @@
         }
       ],
       "kind": "acquire",
-      "best": "raid_weekly"
+      "best": "raid_weekly",
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Boss de raid (1 LI chacun)",
+              "en": "Raid bosses (1 LI each)"
+            },
+            "period": "week",
+            "cap": 43,
+            "cost": {
+              "fr": "HoT + PoF + EoD",
+              "en": "HoT + PoF + EoD"
+            }
+          },
+          {
+            "label": {
+              "fr": "Quickplay raids",
+              "en": "Quickplay raids"
+            },
+            "period": "week",
+            "cap": 10,
+            "cost": {
+              "fr": "1 par run",
+              "en": "1 per run"
+            }
+          },
+          {
+            "label": {
+              "fr": "Daily raid bounty",
+              "en": "Daily raid bounty"
+            },
+            "period": "week",
+            "cap": 7,
+            "cost": {
+              "fr": "1/jour",
+              "en": "1/day"
+            }
+          }
+        ]
+      }
     },
     "magnetite_shard": {
       "name": "Magnetite Shard",
@@ -3386,7 +3428,24 @@
         }
       ],
       "kind": "acquire",
-      "best": "raid_weekly"
+      "best": "raid_weekly",
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Boss de raid HoT",
+              "en": "HoT raid bosses"
+            },
+            "period": "week",
+            "cap": 800,
+            "cost": {
+              "fr": "clear hebdomadaire",
+              "en": "weekly clear"
+            }
+          }
+        ]
+      }
     },
     "gift_of_the_desert": {
       "name": "Gift of the Desert",
@@ -4214,6 +4273,73 @@
       "note": {
         "fr": "⚠ La source « Daily Mystic Forge garanti 1/jour » précédemment listée ici était erronée : aucune recette de Clover n'est garantie, toutes tournent autour de ~31 % de réussite. Plus de Chest of Loyalty non plus (système de connexion retiré en 2023). Total plafonné hors Mystic Forge : 15 (Manfred) + 5 (Dugan) + 5 (PvP) = 25/semaine, plus 20/saison au Coffre.",
         "en": "⚠ The 'Daily Mystic Forge, guaranteed 1/day' source previously listed here was wrong: no Clover recipe is guaranteed, all sit around ~31% success. No Chest of Loyalty either (login system retired in 2023). Capped total excluding the Mystic Forge: 15 (Manfred) + 5 (Dugan) + 5 (PvP) = 25/week, plus 20/season in the Vault."
+      },
+      "cadence": {
+        "verified": true,
+        "checked": "2026-08-11",
+        "source": "wiki:Mystic_Clover",
+        "faucets": [
+          {
+            "label": {
+              "fr": "Coffre du Sorcier",
+              "en": "Wizard's Vault"
+            },
+            "period": "season",
+            "cap": 20,
+            "cost": {
+              "fr": "60 AA",
+              "en": "60 AA"
+            }
+          },
+          {
+            "label": {
+              "fr": "Manfred Njallson",
+              "en": "Manfred Njallson"
+            },
+            "period": "week",
+            "cap": 15,
+            "cost": {
+              "fr": "30 Magnetite",
+              "en": "30 Magnetite"
+            }
+          },
+          {
+            "label": {
+              "fr": "Dugan (McM)",
+              "en": "Dugan (WvW)"
+            },
+            "period": "week",
+            "cap": 5,
+            "cost": {
+              "fr": "10 + 20 devise McM",
+              "en": "10 + 20 WvW currency"
+            }
+          },
+          {
+            "label": {
+              "fr": "Vendeur de ligue PvP",
+              "en": "PvP league vendor"
+            },
+            "period": "week",
+            "cap": 5,
+            "cost": {
+              "fr": "cumulé avec Emblem",
+              "en": "combined with Emblem"
+            }
+          },
+          {
+            "label": {
+              "fr": "Mystic Forge",
+              "en": "Mystic Forge"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "~31 % de réussite",
+              "en": "~31% success"
+            }
+          }
+        ]
       }
     },
     "gift_of_fortune": {
@@ -5010,6 +5136,73 @@
       "note": {
         "fr": "⚠ Aucune source de connexion quotidienne depuis 2023. Nikki the Lost, Archaeologist Vorri et Zazzl ne vendent PLUS de Mystic Coins (item retiré de leur stock). L'offre est bornée par des plafonds : 60/saison au Coffre, 10/sem chez Manfred, 3/sem au SAB. Seule la piste Skirmish McM échappe au plafond. Coût indirect via les Mystic Clovers, en PLUS des 250 directes : ≈231 gen1, ≈481 gen2, ≈114 gen3, ≈273 pour un set d'armure.",
         "en": "⚠ No daily-login source since 2023. Nikki the Lost, Archaeologist Vorri and Zazzl no longer sell Mystic Coins (item pulled from their stock). Supply is cap-bound: 60/season in the Vault, 10/wk from Manfred, 3/wk at SAB. Only the WvW Skirmish track escapes a cap. Indirect cost through Mystic Clovers, ON TOP of the 250 direct: ~231 gen1, ~481 gen2, ~114 gen3, ~273 for an armor set."
+      },
+      "cadence": {
+        "verified": true,
+        "checked": "2026-08-11",
+        "source": "wiki:Mystic_Coin",
+        "faucets": [
+          {
+            "label": {
+              "fr": "Coffre du Sorcier",
+              "en": "Wizard's Vault"
+            },
+            "period": "season",
+            "cap": 60,
+            "cost": {
+              "fr": "9 AA",
+              "en": "9 AA"
+            }
+          },
+          {
+            "label": {
+              "fr": "Manfred Njallson",
+              "en": "Manfred Njallson"
+            },
+            "period": "week",
+            "cap": 10,
+            "cost": {
+              "fr": "1 Laurier + 10 Magnetite",
+              "en": "1 Laurel + 10 Magnetite"
+            }
+          },
+          {
+            "label": {
+              "fr": "SAB Weekly Trader",
+              "en": "SAB Weekly Trader"
+            },
+            "period": "week",
+            "cap": 3,
+            "cost": {
+              "fr": "festival uniquement",
+              "en": "festival only"
+            }
+          },
+          {
+            "label": {
+              "fr": "Ley-Line Anomaly",
+              "en": "Ley-Line Anomaly"
+            },
+            "period": "day",
+            "cap": 1,
+            "cost": {
+              "fr": "event de groupe",
+              "en": "group event"
+            }
+          },
+          {
+            "label": {
+              "fr": "Skirmish McM",
+              "en": "WvW Skirmish"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "2 Gold / 4 Diamond, répétable",
+              "en": "2 Gold / 4 Diamond, repeatable"
+            }
+          }
+        ]
       }
     },
     "mystic_runestone": {
@@ -5163,6 +5356,35 @@
       "best_reason": {
         "fr": "garanti en méta quotidienne — coût marginal nul",
         "en": "guaranteed daily meta reward — zero marginal cost"
+      },
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Leivas",
+              "en": "Leivas"
+            },
+            "period": "week",
+            "cap": 5,
+            "cost": {
+              "fr": "maîtrise Globalization",
+              "en": "Globalization mastery"
+            }
+          },
+          {
+            "label": {
+              "fr": "Meta Trépas du dragon",
+              "en": "Dragon's End meta"
+            },
+            "period": "day",
+            "cap": 1,
+            "cost": {
+              "fr": "coffre final",
+              "en": "final chest"
+            }
+          }
+        ]
       }
     },
     "jade_runestone": {
@@ -5662,7 +5884,24 @@
         "ad_infinitum": 120
       },
       "kind": "acquire",
-      "best": "fractals_daily"
+      "best": "fractals_daily",
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Fractales quotidiennes T4",
+              "en": "Daily T4 fractals"
+            },
+            "period": "day",
+            "cap": 5,
+            "cost": {
+              "fr": "recommandées + quotidiennes",
+              "en": "recommended + dailies"
+            }
+          }
+        ]
+      }
     },
     "fractal_research_page": {
       "name": "Fractal Research Page",
@@ -5692,7 +5931,24 @@
         "fr": " apiId à confirmer — conflit avec Fresh Winterberry (79899).",
         "en": " apiId to confirm — conflict with Fresh Winterberry (79899)."
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Fractales recommandées",
+              "en": "Recommended fractals"
+            },
+            "period": "day",
+            "cap": 3,
+            "cost": {
+              "fr": "+ bonus par fractale",
+              "en": "+ per-fractal bonus"
+            }
+          }
+        ]
+      }
     },
     "gift_of_ascension_fractal": {
       "name": "Gift of Ascension",
@@ -6832,7 +7088,48 @@
       ],
       "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids.",
       "kind": "acquire",
-      "best": "vendor_weekly"
+      "best": "vendor_weekly",
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Rend Scorchmaul (Tour du Sorcier)",
+              "en": "Rend Scorchmaul (Wizard's Tower)"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "sans limite — matériaux bruts",
+              "en": "no cap — raw materials"
+            }
+          },
+          {
+            "label": {
+              "fr": "Faction Provisioners SotO/JW (×5)",
+              "en": "Faction Provisioners SotO/JW (x5)"
+            },
+            "period": "day",
+            "cap": 5,
+            "cost": {
+              "fr": "1 échange/jour/vendeur",
+              "en": "1 trade/day/vendor"
+            }
+          },
+          {
+            "label": {
+              "fr": "Faction Provisioners Tyrie + HoT",
+              "en": "Faction Provisioners Tyria + HoT"
+            },
+            "period": "week",
+            "cap": 7,
+            "cost": {
+              "fr": "7/semaine par vendeur",
+              "en": "7/week per vendor"
+            }
+          }
+        ]
+      }
     },
     "gift_of_expertise": {
       "name": "Gift of Expertise",
@@ -7264,7 +7561,24 @@
           }
         }
       ],
-      "qty": {}
+      "qty": {},
+      "cadence": {
+        "verified": false,
+        "faucets": [
+          {
+            "label": {
+              "fr": "Collection Aurora II",
+              "en": "Aurora II collection"
+            },
+            "period": "day",
+            "cap": 1,
+            "cost": {
+              "fr": "infusion Xunlai",
+              "en": "Xunlai infusion"
+            }
+          }
+        ]
+      }
     },
     "gift_of_draconic_mastery": {
       "name": "Gift of Draconic Mastery",

@@ -34,6 +34,23 @@ const I18N = {
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_loading: "Loading step definitions…",
+    tab_cadences: "Cadences",
+    cad_daily_reset: "Daily reset in",
+    cad_weekly_reset: "Weekly reset in",
+    cad_reset_note: "Boxes clear themselves at reset — the storage key carries the period.",
+    cad_pick: "Legendaries targeted",
+    cad_verified: "✓ caps checked {d}",
+    cad_unverified: "⚙ caps not verified",
+    cad_need: "Needed: {n}",
+    cad_owned: "held {n}",
+    cad_missing: "short {n}",
+    cad_eta: "≈ {w} week(s) at {p}/week — around {d}",
+    cad_uncapped_note: "(uncapped sources excluded from the estimate)",
+    cad_nocap: "no cap",
+    cad_per_day: "day",
+    cad_per_week: "week",
+    cad_per_season: "season",
+    cad_empty: "Pick your target legendaries above to compute needs and delays.",
     bits_step: "Step {n}",
     bits_meta_req: "Meta-achievement — {n} required out of {m} eligible objectives.",
     bits_meta_left: "{n} left to reach the threshold.",
@@ -209,6 +226,23 @@ const I18N = {
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_loading: "Chargement des définitions d'étapes…",
+    tab_cadences: "Cadences",
+    cad_daily_reset: "Reset quotidien dans",
+    cad_weekly_reset: "Reset hebdo dans",
+    cad_reset_note: "Les cases se vident seules au reset — la clé de stockage porte la période.",
+    cad_pick: "Légendaires visés",
+    cad_verified: "✓ plafonds vérifiés le {d}",
+    cad_unverified: "⚙ plafonds non vérifiés",
+    cad_need: "Besoin : {n}",
+    cad_owned: "possédé {n}",
+    cad_missing: "manque {n}",
+    cad_eta: "≈ {w} semaine(s) à {p}/sem — vers le {d}",
+    cad_uncapped_note: "(sources sans plafond exclues de l'estimation)",
+    cad_nocap: "sans plafond",
+    cad_per_day: "jour",
+    cad_per_week: "sem",
+    cad_per_season: "saison",
+    cad_empty: "Sélectionne tes légendaires cibles ci-dessus pour calculer besoins et délais.",
     bits_step: "Étape {n}",
     bits_meta_req: "Méta-achievement — {n} requis sur {m} objectifs éligibles.",
     bits_meta_left: "Encore {n} pour atteindre le seuil.",
@@ -2350,6 +2384,173 @@ function computeGrandTotal(selectedIds) {
 }
 
 // ── Composant principal Grand Total ──────────────────────────
+// ═══════════════════════════════════════════════════════════════
+//  ONGLET CADENCES — ressources plafonnées, cases à cocher qui se
+//  réinitialisent seules au reset, et projection de délai.
+// ═══════════════════════════════════════════════════════════════
+
+// Reset quotidien 00:00 UTC, reset hebdomadaire lundi 07:30 UTC.
+// L'identifiant de période sert de clé de stockage : quand la période
+// change, la clé change et les cases repartent à zéro d'elles-mêmes.
+function resetPeriods(now = new Date()) {
+  const nextDaily = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
+  const dayId = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()))
+    .toISOString().slice(0, 10);
+  const dow = now.getUTCDay();                 // 0 = dimanche
+  const sinceMonday = (dow + 6) % 7;
+  let anchor = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - sinceMonday, 7, 30);
+  if (now.getTime() < anchor) anchor -= 7 * 86400000;
+  const nextWeekly = anchor + 7 * 86400000;
+  return {
+    dayId, weekId: new Date(anchor).toISOString().slice(0, 10),
+    msToDaily: nextDaily - now.getTime(), msToWeekly: nextWeekly - now.getTime(),
+  };
+}
+
+function fmtDelay(ms) {
+  if (ms <= 0) return "—";
+  const h = Math.floor(ms / 3600000), m = Math.floor((ms % 3600000) / 60000);
+  return h >= 24 ? `${Math.floor(h / 24)}j ${h % 24}h` : `${h}h ${String(m).padStart(2, "0")}m`;
+}
+
+function CadencesTab({ stocks = {} }) {
+  const t = useT();
+  const [selected, setSelected] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_cad_sel_v1") ?? "{}"); } catch (_) { return {}; }
+  });
+  const [ticks, setTicks] = useState(0);
+  const [checks, setChecks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_cad_checks_v1") ?? "{}"); } catch (_) { return {}; }
+  });
+  const [showPicker, setShowPicker] = useState(false);
+
+  useEffect(() => { const i = setInterval(() => setTicks(x => x + 1), 30000); return () => clearInterval(i); }, []);
+  useEffect(() => { try { localStorage.setItem("gw2_cad_sel_v1", JSON.stringify(selected)); } catch (_) {} }, [selected]);
+  useEffect(() => { try { localStorage.setItem("gw2_cad_checks_v1", JSON.stringify(checks)); } catch (_) {} }, [checks]);
+
+  const P = resetPeriods(new Date());
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const legs = SOURCES_DB?.legendaries ?? {};
+  const C = "#e2c97e", D = "rgba(226,201,126,";
+
+  const selectedIds = Object.keys(selected).filter(k => selected[k]);
+  const totals = selectedIds.length ? (computeGrandTotal(selectedIds).totals ?? {}) : {};
+
+  // Une case cochée est valable pour sa période : la clé porte l'identifiant
+  // de période, donc une case d'hier n'est plus lue aujourd'hui.
+  const ckey = (compId, idx, period) =>
+    `${compId}|${idx}|${period === "day" ? P.dayId : period === "week" ? P.weekId : "season"}`;
+  const isChecked = (compId, idx, period) => !!checks[ckey(compId, idx, period)];
+  const toggleCheck = (compId, idx, period) => setChecks(prev => {
+    const k = ckey(compId, idx, period), next = { ...prev };
+    if (next[k]) delete next[k]; else next[k] = true;
+    return next;
+  });
+
+  const rows = Object.entries(cc)
+    .filter(([, c]) => c && c.cadence && (c.cadence.faucets ?? []).length > 0)
+    .map(([id, c]) => {
+      const cad = c.cadence;
+      const need = totals[id] ?? 0;
+      const owned = c.apiId ? (stocks[String(c.apiId)] ?? null) : null;
+      const missing = need > 0 && owned !== null ? Math.max(0, need - owned) : null;
+      // Débit hebdomadaire plafonné : les robinets sans plafond sont exclus
+      // du calcul (ils fausseraient une projection de délai).
+      let perWeek = 0, hasUncapped = false;
+      for (const f of cad.faucets) {
+        if (f.cap == null) { hasUncapped = true; continue; }
+        if (f.period === "week") perWeek += f.cap;
+        else if (f.period === "day") perWeek += f.cap * 7;
+      }
+      const weeks = missing !== null && perWeek > 0 ? Math.ceil(missing / perWeek) : null;
+      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, weeks };
+    })
+    .sort((a, b) => (b.missing ?? -1) - (a.missing ?? -1));
+
+  const eta = (w) => {
+    const d = new Date(Date.now() + w * 7 * 86400000);
+    return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  };
+
+  return (
+    <div style={{ paddingBottom: 40 }}>
+      <div style={{ margin: "12px 14px", padding: "10px 12px", background: `${D}0.04)`, border: `1px solid ${D}0.16)`, borderRadius: 8 }}>
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: "11px", color: C }}>
+          <div>🌅 {t("cad_daily_reset")} <b>{fmtDelay(P.msToDaily)}</b></div>
+          <div>📅 {t("cad_weekly_reset")} <b>{fmtDelay(P.msToWeekly)}</b></div>
+        </div>
+        <div style={{ marginTop: 6, fontSize: "10px", color: `${D}0.5)`, fontFamily: "'Crimson Text', serif" }}>
+          {t("cad_reset_note")}
+        </div>
+      </div>
+
+      <div style={{ margin: "0 14px 12px" }}>
+        <button onClick={() => setShowPicker(!showPicker)}
+          style={{ width: "100%", padding: "9px 12px", background: `${D}0.06)`, border: `1px solid ${D}0.22)`, borderRadius: 8, color: C, fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
+          🎯 {t("cad_pick")} — <b>{selectedIds.length}</b> {showPicker ? "▾" : "▸"}
+        </button>
+        {showPicker && (
+          <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: `1px solid ${D}0.14)`, borderRadius: 8, maxHeight: 260, overflowY: "auto" }}>
+            {Object.values(legs).map(l => (
+              <label key={l.id} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selected[l.id] ? C : `${D}0.55)`, cursor: "pointer" }}>
+                <input type="checkbox" checked={!!selected[l.id]}
+                  onChange={() => setSelected(p => { const n = { ...p }; if (n[l.id]) delete n[l.id]; else n[l.id] = true; return n; })} />
+                {l.name}
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {rows.map(r => (
+        <div key={r.id} style={{ margin: "0 14px 10px", padding: "10px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8 }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 8 }}>
+            <div style={{ fontSize: "12.5px", fontWeight: 600, color: C }}>{r.comp.name}</div>
+            <div style={{ fontSize: "10px", color: r.cad.verified ? "#4ade80" : "rgba(251,146,60,0.85)", flexShrink: 0 }}>
+              {r.cad.verified ? t("cad_verified", { d: r.cad.checked ?? "" }) : t("cad_unverified")}
+            </div>
+          </div>
+
+          {r.need > 0 && (
+            <div style={{ marginTop: 4, fontSize: "11px", color: `${D}0.75)` }}>
+              {t("cad_need", { n: r.need })}
+              {r.owned !== null ? ` · ${t("cad_owned", { n: r.owned })}` : ""}
+              {r.missing !== null ? ` · ${t("cad_missing", { n: r.missing })}` : ""}
+            </div>
+          )}
+          {r.missing !== null && r.missing > 0 && r.perWeek > 0 && (
+            <div style={{ marginTop: 3, fontSize: "11px", color: r.cad.verified ? "#4ade80" : `${D}0.45)`, fontStyle: r.cad.verified ? "normal" : "italic" }}>
+              {t("cad_eta", { w: r.weeks, p: r.perWeek, d: eta(r.weeks) })}
+              {r.hasUncapped ? " " + t("cad_uncapped_note") : ""}
+            </div>
+          )}
+
+          <div style={{ marginTop: 7, borderTop: `1px solid ${D}0.08)`, paddingTop: 6 }}>
+            {r.cad.faucets.map((f, i) => {
+              const per = f.period, done = isChecked(r.id, i, per);
+              return (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 7, padding: "2px 0", fontSize: "11px" }}>
+                  <input type="checkbox" checked={done} onChange={() => toggleCheck(r.id, i, per)} style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div style={{ flex: 1, color: done ? "#4ade80" : `${D}0.7)`, textDecoration: done ? "line-through" : "none" }}>
+                    <b>{L(f.label)}</b>
+                    <span style={{ opacity: 0.75 }}> — {f.cap == null ? t("cad_nocap") : `${f.cap}/${t("cad_per_" + per)}`}{f.cost ? ` · ${L(f.cost)}` : ""}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      {selectedIds.length === 0 && (
+        <div style={{ margin: "0 14px", padding: "12px", fontSize: "11px", color: `${D}0.5)`, fontStyle: "italic", fontFamily: "'Crimson Text', serif" }}>
+          {t("cad_empty")}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, apiKey = "", setApiKey, apiStatus = "idle", apiError = "", onDetect, stocks = {}, stockStatus = "idle", stockError = "", onFetchStocks, onSetStockManual }) {
   const t = useT();
   const [selected, setSelected] = useState({});        // legId → bool
@@ -3349,7 +3550,8 @@ export default function GW2LegendaryTracker() {
   const [gtStockStatus, setGtStockStatus] = useState("idle"); // idle|loading|ok|error
   const [gtStockError, setGtStockError] = useState("");
 
-  const isGrandTotal = selectedLeg === "grand_total";
+  const isCadences = selectedLeg === "cadences";
+  const isGrandTotal = selectedLeg === "grand_total" || isCadences;
   const leg = isGrandTotal ? null : LEGENDARIES[selectedLeg];
   const isWeekly = leg?.resetType === "weekly";
 
@@ -4012,6 +4214,13 @@ export default function GW2LegendaryTracker() {
         >
           ⚔ Grand Total
         </button>
+        <button
+          className={`leg-btn ${selectedLeg === "cadences" ? "active" : ""}`}
+          style={{ "--leg-color": "#38bdf8", "--leg-bg": "rgba(56,189,248,0.12)", fontWeight: selectedLeg === "cadences" ? 700 : 400 }}
+          onClick={() => setSelectedLeg("cadences")}
+        >
+          ⏳ {t("tab_cadences")}
+        </button>
         <div style={{ width: "1px", background: "rgba(226,201,126,0.12)", margin: "2px 4px", flexShrink: 0 }} />
         <div style={{ display: "flex", gap: 2, flexShrink: 0, alignItems: "center" }}>
           {Object.keys(LANGS).map(l => (
@@ -4063,7 +4272,7 @@ export default function GW2LegendaryTracker() {
       )}
 
       {/* ── GRAND TOTAL (mode plein écran) ── */}
-      {isGrandTotal && (
+      {isGrandTotal && !isCadences && (
         <GrandTotalTab
           ownedIds={gtOwnedIds}
           manualOwnedIds={gtManualOwnedIds}
@@ -4080,6 +4289,9 @@ export default function GW2LegendaryTracker() {
           onSetStockManual={setGtStockManual}
         />
       )}
+
+      {/* ── CADENCES (mode plein écran) ── */}
+      {isCadences && <CadencesTab stocks={gtStocks} />}
 
       {/* ── TABS + CONTENU (masqués en mode Grand Total) ── */}
       {/* ── SOUS-SÉLECTEUR TRINKETS (14 colifichets) ── */}
