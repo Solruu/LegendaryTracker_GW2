@@ -587,7 +587,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v57",
+    "version": "v58",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1501,7 +1501,8 @@ const SOURCES_DB = {
     "changelog_v54": "meta_eligible complet pour les 5 metas d'episode de Vision : ajout de 4093 Sandswept (47 eligibles/35), 4359 Jahai (54/38), 4689 Dragonfall (18/18). Listes relevees sur le wiki, noms resolus vers leurs IDs via gw2_achievements_ref.json, 119 noms resolus sans ambiguite.",
     "changelog_v55": "meta_eligible etendu hors Vision : 8769 Bava Nisos (15 eligibles/10), 8582 Mistburned Barrens (23/17), 8826 Incursive Investigation (5/5, croise avec le mapping Flask eikasia_* : identique). Constat majeur : 4 succes eligibles de Bava Nisos et Mistburned sont ranges dans la categorie 'Janthir Side Stories' et non celle de leur carte — le repli par categorie ne pouvait structurellement pas les afficher.",
     "changelog_v56": "Correction Mystic Coin : la source 'login_reward 1/jour' etait fausse — le systeme de recompenses de connexion a ete retire en 2023 et remplace par le Coffre du Sorcier. La page wiki Mystic Coin (verifiee le 11/08/2026) n'en fait aucune mention. Sources reelles substituees, avec leurs plafonds. Ajout des couts indirects via Mystic Clovers par generation.",
-    "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour)."
+    "changelog_v57": "Mystic Coin, 2e passe apres capture d'ecran d'Antoine : ma lecture du wiki via web_fetch avait perdu une ligne du tableau (Manfred Njallson, le seul vendeur actif) et les mentions 'item currently unavailable' de Nikki/Vorri/Zazzl. Vendeurs retires, Manfred ajoute, plus le Skirmish McM (2 Gold / 4 Diamond, sans plafond) et la cadence Ley-Line (1/jour).",
+    "changelog_v58": "Mystic Clover : retrait de la source 'Daily Mystic Forge garanti 1 Clover/jour', non verifiable et contredite par le taux de ~31% documente. Substitution des vraies sources avec leurs plafonds (Manfred 30 Magnetite 15/sem, Dugan McM 5/sem, ligue PvP 5/sem, Coffre 60 AA 20/saison). Magnetite confirme comme devise de Manfred par Antoine."
   },
   "meta_events": {
     "vb": {
@@ -4685,24 +4686,51 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
+          "type": "vendor",
+          "npc": "Coffre du Sorcier",
+          "tip": {
+            "fr": "60 Astral Acclaim pièce, plafond 20 par saison.",
+            "en": "60 Astral Acclaim each, capped 20 per season."
+          }
+        },
+        {
+          "type": "vendor",
+          "npc": "Manfred Njallson",
+          "map": "Lion's Arch Aerodrome",
+          "tip": {
+            "fr": "30 Magnetite Shards pièce, plafond 15/semaine. ⚠ Arbitrage : les mêmes Magnetite servent au Gift of Patience (Coalescence) et aux Mystic Coins chez le même PNJ.",
+            "en": "30 Magnetite Shards each, capped 15/week. ⚠ Trade-off: the same Magnetite feeds Gift of Patience (Coalescence) and Mystic Coins from the same NPC."
+          }
+        },
+        {
+          "type": "vendor",
+          "npc": "Dugan",
+          "map": "McM",
+          "tip": {
+            "fr": "10 + 20 devise McM, plafond 5/semaine. Ne consomme pas de Spirit Shard.",
+            "en": "10 + 20 WvW currency, capped 5/week. Does not consume a Spirit Shard."
+          }
+        },
+        {
+          "type": "vendor",
+          "npc": "Vendeur de ligue PvP",
+          "tip": {
+            "fr": "5 pièce, plafond 5/semaine cumulé avec l'Emblem of Tournament Victory.",
+            "en": "5 each, capped 5/week combined with the Emblem of Tournament Victory."
+          }
+        },
+        {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Mystic Forge : 1× Mystic Coin + 1× Glob of Ectoplasm + 1× Obsidian Shard + 1× Philosopher's Stone → 10 tentatives, ~33% chance par tentative (résultat : 1 Clover ou matériaux). Moyenne ~3.33 Clovers pour 10 tentatives.",
-            "en": "Mystic Forge: 1x Mystic Coin + 1x Glob of Ectoplasm + 1x Obsidian Shard + 1x Philosopher's Stone -> 10 attempts, ~33% chance per attempt (result: 1 Clover or materials). Average ~3.33 Clovers per 10 attempts."
+            "fr": "Recette Mystic Forge : ~31 % de réussite par tentative (mesure communautaire). Sans plafond, mais consomme des Mystic Coins — donc coûteuse indirectement.",
+            "en": "Mystic Forge recipe: ~31% success per attempt (community drop research). No cap, but it burns Mystic Coins — indirectly expensive."
           }
         },
         {
-          "type": "daily_mystic_forge",
+          "type": "reward_track",
           "tip": {
-            "fr": "Daily Mystic Forge : 2× Philosopher's Stone + 1× Obsidian Shard → garanti 1 Clover/jour. Limité à 1 par jour.",
-            "en": "Daily Mystic Forge: 2x Philosopher's Stone + 1x Obsidian Shard -> guaranteed 1 Clover/day. Limited to 1 per day."
-          }
-        },
-        {
-          "type": "wvw_pvp_reward_track",
-          "tip": {
-            "fr": "Certains reward tracks McM/PvP incluent quelques Clovers.",
-            "en": "Some WvW/PvP reward tracks include a few Clovers."
+            "fr": "Certains reward tracks McM/PvP en incluent. Glory to the Legions : 2 au palier 20.",
+            "en": "Some WvW/PvP reward tracks include them. Glory to the Legions: 2 at reward tier 20."
           }
         }
       ],
@@ -4769,7 +4797,11 @@ const SOURCES_DB = {
         "obsidian__per_piece": 9
       },
       "kind": "acquire",
-      "best": "wvw_pvp_reward_track"
+      "best": "vendor",
+      "note": {
+        "fr": "⚠ La source « Daily Mystic Forge garanti 1/jour » précédemment listée ici était erronée : aucune recette de Clover n'est garantie, toutes tournent autour de ~31 % de réussite. Plus de Chest of Loyalty non plus (système de connexion retiré en 2023). Total plafonné hors Mystic Forge : 15 (Manfred) + 5 (Dugan) + 5 (PvP) = 25/semaine, plus 20/saison au Coffre.",
+        "en": "⚠ The 'Daily Mystic Forge, guaranteed 1/day' source previously listed here was wrong: no Clover recipe is guaranteed, all sit around ~31% success. No Chest of Loyalty either (login system retired in 2023). Capped total excluding the Mystic Forge: 15 (Manfred) + 5 (Dugan) + 5 (PvP) = 25/week, plus 20/season in the Vault."
+      }
     },
     "gift_of_fortune": {
       "name": "Gift of Fortune",
@@ -5459,8 +5491,8 @@ const SOURCES_DB = {
           "npc": "Manfred Njallson",
           "map": "Lion's Arch Aerodrome",
           "tip": {
-            "fr": "1 Laurier + 10 (devise de raid — probablement Magnetite Shard, à confirmer en jeu), plafond 10/semaine. Marchand raid, renommé en avril 2026 (ex-« Merchant »). ⚠ Si c'est bien du Magnetite, arbitrage direct avec le Gift of Patience de Coalescence.",
-            "en": "1 Laurel + 10 (raid currency — likely Magnetite Shard, confirm in game), capped 10/week. Raid vendor, renamed April 2026 (formerly 'Merchant'). ⚠ If it is Magnetite, that trades off directly against Coalescence's Gift of Patience."
+            "fr": "1 Laurier + 10 Magnetite Shards (confirmé), plafond 10/semaine. Marchand raid, renommé en avril 2026 (ex-« Merchant »). ⚠ Si c'est bien du Magnetite, arbitrage direct avec le Gift of Patience de Coalescence.",
+            "en": "1 Laurel + 10 Magnetite Shards (confirmed), capped 10/week. Raid vendor, renamed April 2026 (formerly 'Merchant'). ⚠ If it is Magnetite, that trades off directly against Coalescence's Gift of Patience."
           }
         },
         {
