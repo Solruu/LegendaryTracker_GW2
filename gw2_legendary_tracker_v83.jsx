@@ -2956,7 +2956,10 @@ export default function GW2LegendaryTracker() {
     // collection restait invisible derrière un cache créé avant elle (bug v78).
     let sig = 0;
     for (const c of ids.join(",")) sig = ((sig << 5) - sig + c.charCodeAt(0)) | 0;
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_v9_${(sig >>> 0).toString(36)}`;
+    // ACH_DEFS_SCHEMA : à incrémenter dès que la FORME de `out` change (tierMax, subs curées…).
+    // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
+    const ACH_DEFS_SCHEMA = 12;
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}`;
     try {
       for (let i = localStorage.length - 1; i >= 0; i--) {
         const k = localStorage.key(i);
@@ -2965,7 +2968,7 @@ export default function GW2LegendaryTracker() {
     } catch (_) {}
     try {
       const cached = JSON.parse(localStorage.getItem(cacheKey) ?? "null");
-      if (cached) { setAchBitsDefs(cached); return; }
+      if (cached && cached.__schema === ACH_DEFS_SCHEMA && cached.defs) { setAchBitsDefs(cached.defs); return; }
     } catch (_) {}
     // Catégories d'achievements : volumineux et stable, mis en cache une fois pour toutes.
     const loadAchCategories = async () => {
@@ -3068,8 +3071,10 @@ export default function GW2LegendaryTracker() {
         }
         // Métas sans bits (masteries de cartes) : lister les achievements de leur catégorie
         // — uniquement pour les entrées marquées metaSubs (les Collectors n'ont pas d'étapes listables)
+        // Les métas déjà curées sont exclues : inutile de télécharger toute leur catégorie.
+        const curatedIds = new Set(Object.keys(((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible) ?? {}));
         const metaIds = new Set(list.filter(a => a.metaSubs).map(a => a.achievementId));
-        const metas = defs.filter(d => (d.bits ?? []).length === 0 && metaIds.has(d.id));
+        const metas = defs.filter(d => (d.bits ?? []).length === 0 && metaIds.has(d.id) && !curatedIds.has(String(d.id)));
         if (metas.length > 0) {
           const cats = await loadAchCategories();
           if (cats) {
@@ -3092,7 +3097,7 @@ export default function GW2LegendaryTracker() {
         setAchBitsDefs(out);
         // Ne pas figer le cache si une meta attendait ses subs et ne les a pas (retry au prochain montage)
         const subsPending = list.some(a2 => a2.metaSubs && !(out[String(a2.achievementId)]?.subs?.length));
-        if (!subsPending) { try { localStorage.setItem(cacheKey, JSON.stringify(out)); } catch (_) {} }
+        if (!subsPending) { try { localStorage.setItem(cacheKey, JSON.stringify({ __schema: ACH_DEFS_SCHEMA, defs: out })); } catch (_) {} }
       } catch (_) {}
     })();
   }, [selectedLeg, lang]);
