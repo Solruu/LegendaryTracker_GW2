@@ -76,6 +76,7 @@ const I18N = {
     bits_why: "volume {v} · prerequisites {p} · {a} AP",
     bits_has_prereq: "— gated behind a prerequisite.",
     bits_counter_gap: "⚙ Counter of {n} with no step list available — flag it so Claude can source it.",
+    bits_no_api: "exists in game but not exposed by the API — status cannot be tracked",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -283,6 +284,7 @@ const I18N = {
     bits_why: "volume {v} · prérequis {p} · {a} AP",
     bits_has_prereq: "— verrouillé derrière un prérequis.",
     bits_counter_gap: "⚙ Compteur de {n} sans liste d’étapes — à signaler pour sourcer le détail.",
+    bits_no_api: "existe en jeu mais non exposé par l’API — statut non traçable",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -5802,10 +5804,12 @@ export default function GW2LegendaryTracker() {
                             .map(({ s }) => {
                             const ss = achSubStatus[String(s.id)] ?? {};
                             const sDone = ss.done === true;
+                            // Un succès curé sans id n'est pas exposé par l'API : pas de statut possible.
+                            const noApi = typeof s.id !== "number";
                             return (
-                              <div key={s.id} style={{ padding: "3px 0" }}>
+                              <div key={s.id ?? s.name} style={{ padding: "3px 0" }}>
                                 <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: sDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
-                                  <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{sDone ? "✓" : "○"}</span>
+                                  <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{noApi ? "◌" : sDone ? "✓" : "○"}</span>
                                   {!sDone && s.tier && (
                                     <span title={t("bits_why", { v: s.vol ?? 0, p: s.prereq ?? 0, a: s.ap ?? 0 })}
                                       style={{ fontSize: "9.5px", flexShrink: 0, color: s.tier === "easy" ? "#4ade80" : s.tier === "med" ? "#e2c97e" : "rgba(251,146,60,0.9)" }}>
@@ -5814,6 +5818,9 @@ export default function GW2LegendaryTracker() {
                                   )}
                                   <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 1 ? ` (${ss.current ?? 0}/${ss.max})` : ""}</span>
                                 </div>
+                                {noApi && (
+                                  <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", color: "rgba(251,146,60,0.6)", fontStyle: "italic" }}>{t("bits_no_api")}</div>
+                                )}
                                 {!sDone && (s.req || s.desc) && (
                                   <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>
                                     {s.req || s.desc}

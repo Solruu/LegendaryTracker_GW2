@@ -140,6 +140,7 @@ const I18N = {
     bits_why: "volume {v} · prerequisites {p} · {a} AP",
     bits_has_prereq: "— gated behind a prerequisite.",
     bits_counter_gap: "⚙ Counter of {n} with no step list available — flag it so Claude can source it.",
+    bits_no_api: "exists in game but not exposed by the API — status cannot be tracked",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (time-gated ~5/week from EoD vendors, or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
     up_note1: "One unit = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens each). Tokens: Rend Scorchmaul (Wizard's Tower) trades raw materials with NO limit — best volume source. SotO/JW map provisioners: 1/day each; Core/HoT: 7/week (June 2025 patch).",
@@ -347,6 +348,7 @@ const I18N = {
     bits_why: "volume {v} · prérequis {p} · {a} AP",
     bits_has_prereq: "— verrouillé derrière un prérequis.",
     bits_counter_gap: "⚙ Compteur de {n} sans liste d’étapes — à signaler pour sourcer le détail.",
+    bits_no_api: "existe en jeu mais non exposé par l’API — statut non traçable",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (time-gate ~5/sem chez les vendors EoD, ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
     tab_raids: "⚔ Raids",
@@ -651,7 +653,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v70",
+    "version": "v71",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1578,7 +1580,8 @@ const SOURCES_DB = {
     "changelog_v67": "Fractal Research Page et Pristine Fractal Relic verifies. La cadence de la page etait tres sous-estimee : 3/jour retenus, alors que s'y ajoutent 8/semaine via le Weekly Fractal Fighter's Cache et 4/jour via les Challenge Modes, soit 29/semaine sans CM et 57 avec. Pristine Fractal Relic passe de 5/jour a 15/jour (3x4 coffres quotidiens + 3x1 recommandees) plus 12/jour en CM. Divergence signalee entre pages du wiki sur le total CM, chiffre bas retenu.",
     "changelog_v68": "Antique Summoning Stone verifie : audit des cadences termine, 31 sources sur 31. Le tracker retenait 5/semaine chez Leivas et 1/jour sur la meta Trepas du dragon. En realite 10/semaine plafonnes — 5 chez Leivas (5 contreparties a 1/semaine chacune, maitrise Globalization) et 5 via les Challenge Modes EoD (1 par CM et par semaine, 5 CM). La meta n'a pas de cadence documentee : reclassee en source hors plafond avec les coffres. Ajout des 5 succes Revenge de Return to End of Dragons, obtention unique.",
     "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie.",
-    "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX."
+    "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX.",
+    "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet."
   },
   "meta_events": {
     "vb": {
@@ -14669,6 +14672,454 @@ const SOURCES_DB = {
           "Incursive Investigation: Third Recursion"
         ]
       ]
+    },
+    "8880": {
+      "name": "Shipwreck Strand Mastery",
+      "threshold": 36,
+      "source": "wiki:Shipwreck_Strand_(achievements)",
+      "verified": "2026-08-12",
+      "achievements": [
+        [
+          8998,
+          "King Crab of Castora"
+        ],
+        [
+          9058,
+          "Soaring Sands Fireworks: Gold"
+        ],
+        [
+          8921,
+          "Glimmering Arches Grand Prix: Gold"
+        ],
+        [
+          8860,
+          "Skimmer-Net Scramble: Gold"
+        ],
+        [
+          9020,
+          "Skimmer-Net Scramble: Silver"
+        ],
+        [
+          8983,
+          "Skimmer-Net Scramble Master"
+        ],
+        [
+          8957,
+          "Do Feed the Wavehawks"
+        ],
+        [
+          9054,
+          "Converse with Samantha"
+        ],
+        [
+          9001,
+          "Dog Trainer"
+        ],
+        [
+          9021,
+          "Captain Leo the Relentless"
+        ],
+        [
+          8961,
+          "Lost Loved Ones"
+        ],
+        [
+          8854,
+          "Memories of Another Time"
+        ],
+        [
+          9016,
+          "Swearing Off the Poison"
+        ],
+        [
+          9046,
+          "Brave Drinker"
+        ],
+        [
+          8875,
+          "Aquatic Prison Break"
+        ],
+        [
+          8968,
+          "Minimum Liability"
+        ],
+        [
+          9059,
+          "Seafood Connoisseur"
+        ],
+        [
+          8971,
+          "Ghosts Need Friends Too"
+        ],
+        [
+          8951,
+          "Attendant of the Month"
+        ],
+        [
+          8992,
+          "Not Even a Scratch"
+        ],
+        [
+          8963,
+          "Plague Doctor"
+        ],
+        [
+          9010,
+          "Await the Offgoing!"
+        ],
+        [
+          9032,
+          "Cover the Castaway Crew"
+        ],
+        [
+          8898,
+          "Juke Jessica"
+        ],
+        [
+          8914,
+          "Juke Jimmy"
+        ],
+        [
+          9071,
+          "Hammered the Hammerharts"
+        ],
+        [
+          8964,
+          "Teleporting Isn't Sporting"
+        ],
+        [
+          9051,
+          "Shipwreck Strand's Freshest Water"
+        ],
+        [
+          9037,
+          "Dedicated Diver"
+        ],
+        [
+          9011,
+          "Inquest Pest"
+        ],
+        [
+          8935,
+          "Give 'Em the Boot"
+        ],
+        [
+          8873,
+          "Grotto Aficionado"
+        ],
+        [
+          8893,
+          "Hobbies of the Hullgardeners"
+        ],
+        [
+          8926,
+          "In Loving Memory"
+        ],
+        [
+          9082,
+          "As Above, So Below"
+        ],
+        [
+          8950,
+          "Ponder the Pools"
+        ],
+        [
+          8991,
+          "Feeling Loopy"
+        ],
+        [
+          8861,
+          "The Lesser-Known Leaders of Shipwreck Strand"
+        ],
+        [
+          8981,
+          "Wavehawk Scritcher"
+        ],
+        [
+          8894,
+          "Tropical Tomes"
+        ],
+        [
+          9081,
+          "Help the Thirsty Old Captain"
+        ],
+        [
+          8934,
+          "In a Pinch"
+        ],
+        [
+          8882,
+          "Freebooter Initiate"
+        ],
+        [
+          8953,
+          "Hidden Quiggles"
+        ],
+        [
+          9052,
+          "Paxx's Favorite Patron"
+        ],
+        [
+          8903,
+          "Bar Bouncer"
+        ],
+        [
+          8989,
+          "Proper Mixologist"
+        ],
+        [
+          9026,
+          "Salty Sous-Chef"
+        ],
+        [
+          8995,
+          "Hullgarden Renown Mastery"
+        ],
+        [
+          8969,
+          "Glimmering Arches Renown Mastery"
+        ],
+        [
+          8923,
+          "Breezy Cay Renown Mastery"
+        ],
+        [
+          8932,
+          "Orb Cavern Jumping Puzzle"
+        ],
+        [
+          8976,
+          "Soaring Copse Jumping Puzzle"
+        ]
+      ]
+    },
+    "9057": {
+      "name": "Starlit Weald Mastery",
+      "threshold": 36,
+      "source": "wiki:Starlit_Weald_(achievements)",
+      "verified": "2026-08-12",
+      "achievements": [
+        [
+          8904,
+          "Great Choya Race: Bronze"
+        ],
+        [
+          9049,
+          "Great Choya Race: Gold"
+        ],
+        [
+          9027,
+          "Great Choya Race: Silver"
+        ],
+        [
+          9040,
+          "Starlit Weald Ley Line Adventure: Bronze"
+        ],
+        [
+          9039,
+          "Starlit Weald Ley Line Adventure: Gold"
+        ],
+        [
+          8884,
+          "Starlit Weald Ley Line Adventure: Silver"
+        ],
+        [
+          8919,
+          "Gwyl Rings"
+        ],
+        [
+          9022,
+          "Emergent Metamorphosis"
+        ],
+        [
+          9048,
+          "A Magical Journey"
+        ],
+        [
+          8967,
+          "Choya Language Expert"
+        ],
+        [
+          9045,
+          "Grilling Buddies"
+        ],
+        [
+          9069,
+          "Dubious Dancing"
+        ],
+        [
+          9062,
+          "Choya Momentum"
+        ],
+        [
+          9000,
+          "Choya Champion"
+        ],
+        [
+          8909,
+          "Sylvan Shapeshifter"
+        ],
+        [
+          9074,
+          "Egg Protector"
+        ],
+        [
+          9078,
+          "On Second Thought..."
+        ],
+        [
+          8986,
+          "Sebb Subverter"
+        ],
+        [
+          9061,
+          "Skimming off the Top"
+        ],
+        [
+          8867,
+          "Read the Room"
+        ],
+        [
+          8922,
+          "No-Hit Run"
+        ],
+        [
+          9077,
+          "Project Bodyguard"
+        ],
+        [
+          8902,
+          "Rampage Router"
+        ],
+        [
+          8933,
+          "Leading from the Front"
+        ],
+        [
+          null,
+          "A Hunt for the Ages"
+        ],
+        [
+          8918,
+          "Secret Spelunker"
+        ],
+        [
+          9007,
+          "Backdoor Exploit"
+        ],
+        [
+          9083,
+          "Inquest Saboteur"
+        ],
+        [
+          8866,
+          "Inquest Training Speed Runner"
+        ],
+        [
+          9072,
+          "Forest Caretaker"
+        ],
+        [
+          9033,
+          "Soup's On"
+        ],
+        [
+          8938,
+          "Huntmaster of Castora"
+        ],
+        [
+          8856,
+          "Wavehawk Savior"
+        ],
+        [
+          8917,
+          "Ancient Investigator"
+        ],
+        [
+          8862,
+          "Lost No Longer"
+        ],
+        [
+          8937,
+          "Starlit Tourist"
+        ],
+        [
+          8996,
+          "Treasures of the Last Vault"
+        ],
+        [
+          8886,
+          "Escape Artist: Defense Systems"
+        ],
+        [
+          8982,
+          "Dubious Exit"
+        ],
+        [
+          8920,
+          "Wavehawk Delivery"
+        ],
+        [
+          9047,
+          "Cuckoo Clock"
+        ],
+        [
+          9025,
+          "Sidony's Revenge"
+        ],
+        [
+          9018,
+          "Old Magic: Gold"
+        ],
+        [
+          9035,
+          "Old Magic: Silver"
+        ],
+        [
+          9003,
+          "Orb Hopper"
+        ],
+        [
+          9042,
+          "Can't Fool Me"
+        ],
+        [
+          8941,
+          "Tread Lightly"
+        ],
+        [
+          8942,
+          "Back to Sleep"
+        ],
+        [
+          8881,
+          "Sketch Artist"
+        ],
+        [
+          8857,
+          "Foothold Bivouac Renown Mastery"
+        ],
+        [
+          9065,
+          "Untamed Crags Renown Mastery"
+        ],
+        [
+          8915,
+          "Priory Expedition Renown Mastery"
+        ],
+        [
+          9028,
+          "Birdie Benefactor"
+        ],
+        [
+          8952,
+          "Meandering Magic"
+        ],
+        [
+          9008,
+          "Inquest Hologram"
+        ]
+      ]
     }
   }
 };
@@ -19882,10 +20333,12 @@ function GW2LegendaryTracker() {
                             .map(({ s }) => {
                             const ss = achSubStatus[String(s.id)] ?? {};
                             const sDone = ss.done === true;
+                            // Un succès curé sans id n'est pas exposé par l'API : pas de statut possible.
+                            const noApi = typeof s.id !== "number";
                             return (
-                              <div key={s.id} style={{ padding: "3px 0" }}>
+                              <div key={s.id ?? s.name} style={{ padding: "3px 0" }}>
                                 <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: sDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
-                                  <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{sDone ? "✓" : "○"}</span>
+                                  <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{noApi ? "◌" : sDone ? "✓" : "○"}</span>
                                   {!sDone && s.tier && (
                                     <span title={t("bits_why", { v: s.vol ?? 0, p: s.prereq ?? 0, a: s.ap ?? 0 })}
                                       style={{ fontSize: "9.5px", flexShrink: 0, color: s.tier === "easy" ? "#4ade80" : s.tier === "med" ? "#e2c97e" : "rgba(251,146,60,0.9)" }}>
@@ -19894,6 +20347,9 @@ function GW2LegendaryTracker() {
                                   )}
                                   <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 1 ? ` (${ss.current ?? 0}/${ss.max})` : ""}</span>
                                 </div>
+                                {noApi && (
+                                  <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", color: "rgba(251,146,60,0.6)", fontStyle: "italic" }}>{t("bits_no_api")}</div>
+                                )}
                                 {!sDone && (s.req || s.desc) && (
                                   <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>
                                     {s.req || s.desc}
