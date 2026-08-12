@@ -1,7 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# =============================================================================
+#  FONCTION : outil de collecte de données, à lancer EN LOCAL uniquement.
+#
+#  Rôle    : interroge l'API GW2 et produit `gw2_bits_dump.json`, le dump des
+#            définitions d'achievements (bits ordonnés, tiers, points).
+#  Sert à  : rédiger les `bitTips` du tracker avec le bon index de bit, et
+#            repérer hors ligne les achievements-compteurs sans étapes.
+#  Ne fait PAS partie du build : n'écrit ni dans le JSX, ni dans les sources,
+#            ni dans docs/index.html. Aucune clé API requise (endpoint public).
+#
+#  À ne pas confondre avec :
+#    · gw2_refresh_refs_v2.py  → régénère les 3 gw2_*_ref.json (référentiels)
+#    · gw2_build_html_v2.py    → génère docs/index.html (build de publication)
+# =============================================================================
 """
-gw2_dump_bits_v1.py — Dump des définitions d'achievements du tracker.
+gw2_dump_bits_v2.py — Dump des définitions d'achievements du tracker.
 
 Contexte : les `bitTips` du tracker sont indexés par NUMÉRO DE BIT. Rédiger un
 conseil sans connaître l'ordre exact des bits revient à l'accrocher à la
@@ -12,8 +26,8 @@ Il extrait automatiquement TOUS les `achievementId` du JSX (aucune liste à
 maintenir à la main), interroge /v2/achievements et écrit un dump JSON.
 
 Usage :
-    python3 gw2_dump_bits_v1.py
-    python3 gw2_dump_bits_v1.py --jsx gw2_legendary_tracker_v98.jsx --lang fr
+    python3 gw2_dump_bits_v2.py
+    python3 gw2_dump_bits_v2.py --jsx gw2_legendary_tracker_v98.jsx --lang fr
 
 Sortie : gw2_bits_dump.json  (à committer ou à coller dans le chat)
 
