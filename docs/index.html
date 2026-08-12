@@ -653,7 +653,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v71",
+    "version": "v72",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5746,8 +5746,8 @@ const SOURCES_DB = {
           "npc": "Manfred Njallson",
           "map": "Lion's Arch Aerodrome",
           "tip": {
-            "fr": "1 Laurier + 10 Magnetite Shards (confirmé), plafond 10/semaine. Marchand raid, renommé en avril 2026 (ex-« Merchant »). ⚠ Si c'est bien du Magnetite, arbitrage direct avec le Gift of Patience de Coalescence.",
-            "en": "1 Laurel + 10 Magnetite Shards (confirmed), capped 10/week. Raid vendor, renamed April 2026 (formerly 'Merchant'). ⚠ If it is Magnetite, that trades off directly against Coalescence's Gift of Patience."
+            "fr": "1 Éclat spirituel + 10 Magnetite Shards, plafond 10/semaine. Marchand raid, renommé en avril 2026 (ex-« Merchant »). ⚠ Arbitrage direct avec le Gift of Patience de Coalescence, qui consomme les mêmes Magnetite.",
+            "en": "1 Spirit Shard + 10 Magnetite Shards, capped 10/week. Raid vendor, renamed April 2026 (formerly 'Merchant'). ⚠ Direct trade-off against Coalescence's Gift of Patience, which consumes the same Magnetite."
           }
         },
         {
@@ -5755,8 +5755,17 @@ const SOURCES_DB = {
           "npc": "Super Adventure Box Weekly Trader",
           "map": "Rata Sum",
           "tip": {
-            "fr": "Plafond 3/semaine, uniquement pendant le Super Adventure Festival.",
-            "en": "Capped 3/week, only during the Super Adventure Festival."
+            "fr": "5 Bauble Bubbles pièce, plafond 3/semaine. Uniquement pendant le Super Adventure Festival.",
+            "en": "5 Bauble Bubbles each, capped 3 per week. Super Adventure Festival only."
+          }
+        },
+        {
+          "type": "achievement",
+          "npc": "Four Winds Zephyr",
+          "map": "Falaises du labyrinthe / Pavillon de la Reine",
+          "tip": {
+            "fr": "1 Mystic Coin par jour. Terminer 3 des quotidiens du Festival des Quatre Vents (onglet « Quotidien : Festival des Quatre Vents »). 0 PS, répétable chaque jour du festival, et alimente aussi le succès « Four Winds Gale » (onglet Coutumes des Quatre Vents). Uniquement pendant le festival.",
+            "en": "1 Mystic Coin per day. Complete 3 of the Festival of the Four Winds dailies (the 'Daily Festival of the Four Winds' tab). 0 AP, repeatable every day of the festival, and it also feeds the 'Four Winds Gale' achievement (Four Winds Customs tab). Festival only."
           }
         },
         {

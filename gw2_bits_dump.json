@@ -1,0 +1,4034 @@
+{
+  "_meta": {
+    "source": "https://api.guildwars2.com/v2/achievements",
+    "lang": "fr",
+    "jsx": "FALLBACK_IDS",
+    "count": 64,
+    "with_bits": 44,
+    "counters_without_bits": [
+      "4093 — Maîtrise de \"Un bug dans le système\"",
+      "4195 — Maîtrise \"Longue vie à la liche\"",
+      "4359 — Maîtrise de \"Guidés par une étoile\"",
+      "4544 — Maîtrise de Quitte ou double",
+      "4689 — Maîtrise de l'épisode \"Guerre éternelle\"",
+      "4771 — Vision II : Prévoyance",
+      "5790 — Saisons des dragons",
+      "7788 — Collectionneur de cachets légendaires",
+      "7796 — Collectionneur de runes légendaires",
+      "8582 — Maîtrise des Landes de Feu-de-Brume",
+      "8769 — Maîtrise de Bava Nisos",
+      "8814 — Enquête invasive : récursion infinie",
+      "8826 — Enquête invasive",
+      "8835 — Enquête invasive : troisième récursion",
+      "8840 — Enquête invasive : première récursion",
+      "8841 — Enquête invasive : deuxième récursion",
+      "8880 — Maîtrise de la Rive aux épaves",
+      "9057 — Maîtrise du Bois étoilé",
+      "9180 — Assistance aux Hyleks : tuer les Kraits"
+    ],
+    "not_returned": [
+      9330
+    ]
+  },
+  "achievements": {
+    "2295": {
+      "name": "Sac à dos légendaire : Ad Infinitum",
+      "requirement": "Trouver les  composants fractal de niveau 4.",
+      "description": "Déverrouiller les 13 composants fractals de niveau 4 pour constituer le sac à dos fractal légendaire.",
+      "locked_text": "Terminer Ad Infinitum III puis parler à Kelvei dans les Fractales des Brumes.",
+      "points": 6,
+      "tier_max": 13,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 73681
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 72794
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 71082
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 75268
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "",
+          "id": 70910
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 71444
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "",
+          "id": 74065
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 71533
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "",
+          "id": 76030
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "",
+          "id": 77141
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 72757
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "",
+          "id": 71597
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "",
+          "id": 75962
+        }
+      ]
+    },
+    "2351": {
+      "name": "Ad Infinitum I : Limite finie",
+      "requirement": "Trouver les  composant fractal.",
+      "description": "Déverrouiller les 11 composants fractals pour constituer le sac à dos fractal légendaire.",
+      "locked_text": "Parler à Kelvei dans les Fractales des Brumes.",
+      "points": 6,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 70580
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 76329
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 75039
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 76918
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "",
+          "id": 70523
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 75871
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "",
+          "id": 71165
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 71158
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "",
+          "id": 2377
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "",
+          "id": 76172
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 71281
+        }
+      ]
+    },
+    "2368": {
+      "name": "Ad Infinitum III : Sans limite",
+      "requirement": "Trouver les  composants fractal de niveau 3.",
+      "description": "Déverrouiller les 11 composants fractals de niveau 3 pour constituer le sac à dos fractal légendaire.",
+      "locked_text": "Terminer Ad Infinitum II puis parler à Kelvei dans les Fractales des Brumes.",
+      "points": 6,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 74878
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 70980
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 74889
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 71427
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "",
+          "id": 72120
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 73929
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "",
+          "id": 72521
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 74474
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "",
+          "id": 2379
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "",
+          "id": 77266
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 75018
+        }
+      ]
+    },
+    "2557": {
+      "name": "Ad Infinitum II : Limite supérieure",
+      "requirement": "Trouver les  composants fractal de niveau 2.",
+      "description": "Déverrouiller les 11 composants fractals de niveau 2 pour constituer le sac à dos fractal légendaire.",
+      "locked_text": "Terminer Ad Infinitum I puis parler à Kelvei dans les Fractales des Brumes.",
+      "points": 6,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 75816
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 76417
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 72905
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 75477
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "",
+          "id": 77109
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 76623
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "",
+          "id": 76964
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 75164
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "",
+          "id": 2378
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "",
+          "id": 73755
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 75887
+        }
+      ]
+    },
+    "2646": {
+      "name": "Armure d'émissaire I : armure expérimentale",
+      "requirement": "",
+      "description": "Les émissaires mènent les âmes des morts vers leur lieu de repos dans l'Outre-monde. En étudiant l'énergie spirituelle, apprenez leurs secrets et commencez votre voyage vers la création d'un ensemble d'armure légendaire.",
+      "locked_text": "Vaincre un boss de raid. (Disponible uniquement pour les joueurs possédant Guild Wars 2: Heart of Thorns.)",
+      "points": 9,
+      "tier_max": 18,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Acquérir un cristal vivant auprès de l'élémentaire de terre des Profondeurs verdoyantes et l'utiliser pour capturer l'énergie résiduelle des piliers après avoir vaincu le Gardien de la Vallée dans la Vallée des esprits.",
+          "id": 77467
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Acquérir un miroir des âmes auprès de l'aviveuse Kengo du Bassin aurique et l'utiliser pour capturer l'énergie spectrale des fantômes illuminés une fois arrivé à la sortie du Bois des esprits dans la Vallée des esprits.",
+          "id": 77348
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Utiliser un cristal d'énergie du Gardien de la Vallée dans la Vallée des esprits pour capturer l'énergie aurique de la Chambre intérieure de Tarir, la Cité des Oubliés.",
+          "id": 77290
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Infuser des fils spirituels de Gorseval le Disparate dans la Vallée des esprits avec l'énergie des lignes de force libérée à la mort d'un régent chak près de la Confluence des lignes de force dans les Profondeurs verdoyantes. Combiner 5 fils spirituels alimentés pour créer un tissage spirituel.",
+          "id": 77343
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Récupérer du résidu ectoplasmique dans le Bois des esprits et l'utiliser pour créer un ectoplasme coagulé.",
+          "id": 77398
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Récupérer un noyau de Flamme du coffre obtenu après avoir vaincu Sabetha la saboteuse.",
+          "id": 77452
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Collecter de l'aurillium en poudre au-dessus du cœur de Tarir et le combiner avec de la poudre de pierre de sang du Passage de la rédemption dans le Taillis abandonné.",
+          "id": 77433
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Créer une salade de champignons en combinant une tête de champignon nocif, des lamelles de l'empereur champignon, une truffe orrienne et une morille.",
+          "id": 77431
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Collecter une ruche géante dans les arbres situés au-dessus du Passage de la rédemption.",
+          "id": 77460
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Collecter une fiole d'eaux des fontaines du Temple de la rédemption.",
+          "id": 77416
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Créer un tonique de la quête spirituelle en combinant de la poussière des arcanes, une salade de champignons, une ruche géante et une fiole d'eaux du Taillis abandonné.",
+          "id": 77402
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Récupérer un fragment de pierre de sang du coffre obtenu après avoir vaincu Matthias Gabrel.",
+          "id": 77445
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Récupérer une batterie de pierre de sang dans la Forteresse des Fidèles et la charger d'énergie en utilisant les machines de Rata Novus.",
+          "id": 77305
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Récupérer une âme de pierre après avoir vaincu le Titan du fort et utiliser du gel chak pour libérer l'âme qu'elle renferme.",
+          "id": 77421
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Échanger avec le Charognard Rakatin au Bassin aurique pour acquérir un morceau d'aurillium poli, puis utiliser celui-ci pour capturer les énergies tourmentées du Château corrompu.",
+          "id": 77336
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Acheter du poison spirituel itzel à Jaka Itzel et l'utiliser en battant le Titan du fort.",
+          "id": 77384
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "À trouver dans le Château corrompu.",
+          "id": 77439
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Récupérer une coupe rituelle du Blanc-Manteau dans le coffre après avoir vaincu Xera.",
+          "id": 77369
+        }
+      ]
+    },
+    "3012": {
+      "name": "Armure d'émissaire II : armure raffinée",
+      "requirement": "",
+      "description": "Pour améliorer votre armure d'émissaire, il vous faudra collecter une grande quantité d'énergie magique matérialisée à travers la Tyrie et les Brumes.",
+      "locked_text": "Terminer la collection Armure d'émissaire I.",
+      "points": 9,
+      "tier_max": 14,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "À créer avec 100 lingots cristallins chez un maître artisan.",
+          "id": 78797
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin avec de l'essence d'octoliane au Bassin aurique.",
+          "id": 78882
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin dans la fractale volcanique.",
+          "id": 78891
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin dans la fractale d'Aveugleneige.",
+          "id": 78851
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin après avoir été ballotté par une vouivre dans l'Orée d'émeraude.",
+          "id": 78998
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin dans la fractale des ruines aquatiques.",
+          "id": 78825
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin dans les lignes de force sous le Repli du dragon.",
+          "id": 78962
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin haut dans le Grand arbre des Profondeurs verdoyantes.",
+          "id": 78937
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "À créer en imprégnant le cœur cristallin dans le Bastion du pénitent.",
+          "id": 78947
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Activer le cœur cristallin et survivre à la rencontre avec Cairn l'Indomptable sans être touché par la Manipulation spatiale.",
+          "id": 78982
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Activer le cœur cristallin et survivre dans le Secteur de divertissement du Bastion du pénitent après avoir bénéficié de la protection de ses défenses.",
+          "id": 78899
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Activer le cœur cristallin et l'utiliser pour absorber l'énergie de Rigom dans le Bastion du pénitent.",
+          "id": 78933
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Activer le cœur cristallin et survivre à la rencontre avec Deimos dans le Bastion du pénitent.",
+          "id": 78898
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Faire preuve de pénitence à l'Arbre de la Solitude.",
+          "id": 78836
+        }
+      ]
+    },
+    "3402": {
+      "name": "La pierre druidique",
+      "requirement": "",
+      "description": "La bénédiction accordée par Melandru aux plus dévots de ses disciples devait les unir à la nature en leur faisant abandonner leur enveloppe physique. Rendez hommage aux esprits des druides du Mont Draconis pour parfaire votre relation avec la nature au travers de la pierre druidique.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "À gagner en terminant l'instance Cœur du volcan.",
+          "id": 81102
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 81140
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Apporter une pierre de rune druidique à Kodama, au Cap sauvage du Mont Draconis, en témoignage de votre amitié.",
+          "id": 81073
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Apporter une orchidée de feu à Kodama, au Cap sauvage.",
+          "id": 81087
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Apporter une orchidée de feu à Liriodendron, au point d'eau du Cap sauvage.",
+          "id": 81178
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Apporter une orchidée de feu à Grand-feuille sur une corniche surplombant le Cap sauvage.",
+          "id": 81053
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Apporter une orchidée de feu à Bois de rose sur une corniche surplombant la Grotte ancienne.",
+          "id": 80996
+        }
+      ]
+    },
+    "3436": {
+      "name": "À quelques pierres de la maison",
+      "requirement": "",
+      "description": "Votre dévouement envers la nature commence à porter ses fruits, mais il vous reste encore beaucoup à faire. Continuez à témoigner votre respect aux druides de Melandru en les aidant à ramener leur magie dans ce monde.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 32,
+      "prerequisites": [
+        3447
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "",
+          "id": 7214
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": "",
+          "id": 7210
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "À récupérer sur le destructeur Aestus au Mont Draconis.",
+          "id": 81058
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 81047
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "À récupérer sur le destructeur Ignis au Mont Draconis.",
+          "id": 81110
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 81165
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "À récupérer sur le profanateur de la Fusion au Mont Draconis.",
+          "id": 81041
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 81066
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Apporter les pierres de rune d'Aestus, d'Ignis et de profanateur à Kodama, au Mont Draconis.",
+          "id": 81185
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "À récupérer sur les élémentaires de feu.",
+          "id": 81118
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 81023
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "À récupérer sur les élémentaires de glace.",
+          "id": 81094
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "",
+          "id": 81195
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "À récupérer sur les élémentaires d'air.",
+          "id": 80999
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "",
+          "id": 81086
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "À récupérer sur les élémentaires de terre.",
+          "id": 81105
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "",
+          "id": 81160
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Apporter une pierre de rune volcanique, une pierre de rune glaciale, une pierre de rune chargée et une pierre de rune de terre à Kodama, au Mont Draconis.",
+          "id": 81187
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Apporter un cristal de vision à Kodama dans la Grotte druidique du Mont Draconis.",
+          "id": 81099
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "Apporter 10 orchidées de feu et 5 magnétites chargées à Kodama, au Cap sauvage.",
+          "id": 80994
+        },
+        {
+          "index": 20,
+          "type": "Item",
+          "text": "Apporter 10 orchidées de feu et 5 magnétites de glace à Liriodendron, au point d'eau du Cap sauvage.",
+          "id": 81080
+        },
+        {
+          "index": 21,
+          "type": "Item",
+          "text": "Apporter 10 orchidées de feu et 5 magnétites d'onyx à Grand-feuille sur une corniche surplombant le Cap sauvage.",
+          "id": 81004
+        },
+        {
+          "index": 22,
+          "type": "Item",
+          "text": "Apporter 10 orchidées de feu et 5 magnétites en fusion à Bois de rose sur une corniche surplombant la Grotte ancienne.",
+          "id": 81054
+        },
+        {
+          "index": 23,
+          "type": "Item",
+          "text": "Planter 3 graines d'orchidées de feu dans le jardin des Marches de Dierdre, au Mont Maelström.",
+          "id": 81180
+        },
+        {
+          "index": 24,
+          "type": "Item",
+          "text": "Planter 3 graines d'orchidées de feu dans le jardin de l'oasis de Cimesèche.",
+          "id": 81148
+        },
+        {
+          "index": 25,
+          "type": "Item",
+          "text": "Planter 3 graines d'orchidées de feu à la Cathédrale de Verdance, au Rivage maudit.",
+          "id": 81029
+        },
+        {
+          "index": 26,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile d'une des îles de la Mer bouillonnante orientale, au Mont Draconis.",
+          "id": 81171
+        },
+        {
+          "index": 27,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile surplombant la Corniche des chevaucheurs de vent, au Mont Draconis.",
+          "id": 81164
+        },
+        {
+          "index": 28,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile de la grotte bioluminescente au-dessus de Rata Arcanum, au Mont Draconis.",
+          "id": 81170
+        },
+        {
+          "index": 29,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile sur la corniche surplombant le Piédestal écumant, au Mont Draconis.",
+          "id": 81081
+        },
+        {
+          "index": 30,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile du Coffre nu II, au Mont Draconis.",
+          "id": 80995
+        },
+        {
+          "index": 31,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile au-dessus de la Grotte ancienne, au Mont Draconis.",
+          "id": 81150
+        }
+      ]
+    },
+    "3445": {
+      "name": "L'éveil de la pierre druidique",
+      "requirement": "",
+      "description": "Continuer à parfaire votre relation avec la nature en faisant des offrandes aux esprits des druides du Mont Draconis.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 14,
+      "prerequisites": [
+        3402
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "",
+          "id": 7209
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "À récupérer sur la ramille supérieure au Mont Draconis.",
+          "id": 81052
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 81168
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Apporter la pierre de rune de ramille à Kodama, au Mont Draconis.",
+          "id": 81153
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Don de l'esprit d'arbre agité des Terres sauvages de Brisban.",
+          "id": 81114
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 81062
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Apporter la pierre de rune arborifère à Kodama, au Mont Draconis.",
+          "id": 81020
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "À récupérer sur le cœur-de-chêne ancien pourrissant dans la Vallée de la reine.",
+          "id": 81050
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "",
+          "id": 81064
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Apporter la pierre de rune de cœur-de-chêne à Kodama, au Mont Draconis.",
+          "id": 80998
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Apporter 3 orchidées de feu à Kodama, au Cap sauvage.",
+          "id": 81201
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Apporter 3 orchidées de feu à Liriodendron, au point d'eau du Cap sauvage.",
+          "id": 81006
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Apporter 3 orchidées de feu à Grand-feuille sur une corniche surplombant le Cap sauvage.",
+          "id": 81200
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Apporter 3 orchidées de feu à Bois de rose sur une corniche surplombant la Grotte ancienne.",
+          "id": 81035
+        }
+      ]
+    },
+    "3447": {
+      "name": "La pousse de la pierre druidique",
+      "requirement": "",
+      "description": "Continuer à parfaire votre relation avec la nature en faisant des offrandes aux esprits des druides du Mont Draconis.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 21,
+      "prerequisites": [
+        3445
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "",
+          "id": 7216
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "À récupérer sur le roi têtenpierre au Mont Draconis.",
+          "id": 81010
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 81033
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Apporter la pierre de rune saurienne à Kodama, au Mont Draconis.",
+          "id": 81134
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "À récupérer sur l'empereur Mattake au Mont Draconis.",
+          "id": 81174
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 81032
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Apporter la pierre de rune impériale à Kodama, au Mont Draconis.",
+          "id": 81088
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "À récupérer sur la mère tricotine au Mont Draconis.",
+          "id": 81043
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "",
+          "id": 81146
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Apporter la pierre de rune tricotine à Kodama, au Mont Draconis.",
+          "id": 81131
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "À récupérer sur la guivre de lave chargée de pierre de sang au Mont Draconis.",
+          "id": 81015
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "",
+          "id": 81059
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Apporter la pierre de rune de guivre à Kodama, au Mont Draconis.",
+          "id": 81069
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "À récupérer sur la combinaison de l'Enqueste au Mont Draconis.",
+          "id": 81083
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "",
+          "id": 81196
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Apporter la pierre de rune d'arcanum à Kodama, au Mont Draconis.",
+          "id": 81137
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Apporter 5 orchidées de feu et une magnétite chargée à Kodama, au Cap sauvage.",
+          "id": 81084
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Apporter 5 orchidées de feu et une magnétite de glace à Liriodendron, au point d'eau du Cap sauvage.",
+          "id": 81048
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Apporter 5 orchidées de feu et une magnétite d'onyx à Grand-feuille sur une corniche surplombant le Cap sauvage.",
+          "id": 81021
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "Apporter 5 orchidées de feu et une magnétite en fusion à Bois de rose sur une corniche surplombant la Grotte ancienne.",
+          "id": 81125
+        },
+        {
+          "index": 20,
+          "type": "Item",
+          "text": "Planter une graine d'orchidée de feu dans le sol fertile près de Kodama, au Cap sauvage du Mont Draconis.",
+          "id": 81149
+        }
+      ]
+    },
+    "3964": {
+      "name": "Purification astrale",
+      "requirement": "",
+      "description": "Vous pensez pouvoir purifier la kralkatite en faisant converger correctement de l'énergie astrale.",
+      "locked_text": "Fabriquer une arme astrale.",
+      "points": 8,
+      "tier_max": 15,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir chargé.",
+          "id": 85895
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir corrompu.",
+          "id": 85868
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir de cristal.",
+          "id": 85812
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir glacial.",
+          "id": 86318
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir du destructeur.",
+          "id": 86306
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir fondu.",
+          "id": 86169
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir d'onyx.",
+          "id": 86059
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Placer le miroir chargé au-dessus du Champ de l'espoir.",
+          "id": 86207
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Placer le miroir corrompu dans les falaises dominant Palawadan.",
+          "id": 86299
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Placer le miroir de cristal en surplomb de l'Aube du Champion.",
+          "id": 85910
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Placer le miroir glacial loin au-dessus des Cavernes de Modri.",
+          "id": 85898
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Placer le miroir du destructeur dans les Falaises de Churrhir.",
+          "id": 86322
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Placer le miroir fondu au-dessus de l'Héritage de Jakumba.",
+          "id": 85864
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Placer le miroir d'onyx au sommet de la Grand-salle du Croissant mordant.",
+          "id": 86280
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Apporter les notes de Yasna à la forgeronne du soleil Ouissal, à la base des Lanciers du soleil.",
+          "id": 86199
+        }
+      ]
+    },
+    "4000": {
+      "name": "Recherche de pierres stigmatisées",
+      "requirement": "",
+      "description": "Istan est bombardée de pierres stigmatisées, qui pourraient avoir des propriétés uniques et utiles.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 85639
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 85663
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 86126
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 85851
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 86386
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 86078
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Aider Yasna dans ses recherches à l'Astralarium.",
+          "id": 85973
+        }
+      ]
+    },
+    "4035": {
+      "name": "Coalescence I : illimitée",
+      "requirement": "",
+      "description": "Votre prédilection pour la violence a attiré l'attention d'une énergie malveillante. Vous trouverez peut-être un moyen de calmer sa soif de sang.",
+      "locked_text": "Vaincre un boss de raid. (Disponible uniquement pour les joueurs possédant Path of Fire.)",
+      "points": 9,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": null,
+          "id": 85852
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 86383
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 85855
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 85731
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 86381
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 86339
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 85937
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": null,
+          "id": 85787
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": null,
+          "id": 85953
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": null,
+          "id": 85869
+        }
+      ]
+    },
+    "4093": {
+      "name": "Maîtrise de \"Un bug dans le système\"",
+      "requirement": "Terminer les  succès d'\"Un bug dans le système\".",
+      "description": "",
+      "locked_text": "",
+      "points": 21,
+      "tier_max": 35,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4177": {
+      "name": "Maître de la plongée",
+      "requirement": "Trouver et ouvrir dix coffres engloutis.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "Repeatable",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Coffre englouti des Champs de Gendarran récupéré",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Coffre englouti des Hinterlands harathis récupéré",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Coffre englouti de la Côte de la marée sanglante récupéré",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Coffre englouti des Collines de Kessex récupéré",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Coffre englouti du Marais de fer récupéré",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Coffre englouti des Congères d'Antreneige récupéré",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Coffre englouti du Détroit des gorges glacées récupéré",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Coffre englouti du Passage de Lornar récupéré",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Coffre englouti des Chutes de la canopée récupéré",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Coffre englouti du Mont Maelström récupéré",
+          "id": null
+        }
+      ]
+    },
+    "4195": {
+      "name": "Maîtrise \"Longue vie à la liche\"",
+      "requirement": "Terminer les  succès de \"Longue vie à la liche\".",
+      "description": "",
+      "locked_text": "",
+      "points": 28,
+      "tier_max": 38,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4359": {
+      "name": "Maîtrise de \"Guidés par une étoile\"",
+      "requirement": "Terminer les  succès de \"Guidés par une étoile\".",
+      "description": "",
+      "locked_text": "",
+      "points": 30,
+      "tier_max": 38,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4376": {
+      "name": "Convergence des lamentations I : Élégie",
+      "requirement": "Consoler une forgeronne d'armures éveillée et convaincre un Lancier du soleil de changer d'avis.",
+      "description": "<c=@Flavor>Cela peut prendre toute une vie d'apprendre à vivre.</c>",
+      "locked_text": "Terminer le chapitre 5 de l'épisode 4 pour déverrouiller cette collection.",
+      "points": 5,
+      "tier_max": 20,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Trouver la forgeronne d'armures éveillée au Refuge du soleil.",
+          "id": 88490
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Trouver l'un des monuments du forgeron d'armures à Jahai.",
+          "id": 88892
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Enquêter sur la destruction des monuments.",
+          "id": 88482
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Retourner auprès de la forgeronne d'armures.",
+          "id": 88821
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Trouver le second lancier Riyid.",
+          "id": 88488
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Écouter les camarades du Lancier du soleil.",
+          "id": 88932
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Trouver un objet oublié dans une vieille ferme.",
+          "id": 88782
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Trouver un autre objet oublié dans une vieille ferme.",
+          "id": 88960
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Trouver l'ancien Lancier du soleil.",
+          "id": 88524
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Apporter une idée et deux souvenirs à la forgeronne d'armures.",
+          "id": 88945
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Un mémorial parmi les guivres et les ossements.",
+          "id": 88593
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Un mémorial surplombant les cours d'eau et la flore.",
+          "id": 88659
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Un mémorial précédant la prospérité.",
+          "id": 88542
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Un mémorial de secrets à côté d'une ancienne arche.",
+          "id": 88639
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Un mémorial où un général retrouve un vieil ennemi.",
+          "id": 88950
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Un mémorial qui a vu un tyran s'élever.",
+          "id": 88486
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Deux mémoriaux dont l'un fut détruit.",
+          "id": 88548
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Trouver le destructeur.",
+          "id": 88787
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Là où tout se rassemble.",
+          "id": 88870
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "",
+          "id": 88931
+        }
+      ]
+    },
+    "4412": {
+      "name": "Coalescence II : Le cadeau",
+      "requirement": "",
+      "description": "Sa soif de sang étant quelque peu apaisée, votre ami énergétique souhaite à présent en savoir plus sur l'existence... et voudrait qu'on lui trouve un nom.",
+      "locked_text": "Vaincre un boss de raid. (Disponible uniquement pour les joueurs possédant Path of Fire.)",
+      "points": 10,
+      "tier_max": 18,
+      "prerequisites": [
+        4035
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": null,
+          "id": 88975
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 88797
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 88972
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 88718
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 88741
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 88662
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 88772
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": null,
+          "id": 88533
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": null,
+          "id": 88697
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": null,
+          "id": 88925
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": null,
+          "id": 88861
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": null,
+          "id": 88832
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": null,
+          "id": 88769
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": null,
+          "id": 88785
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": null,
+          "id": 88584
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": null,
+          "id": 88835
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": null,
+          "id": 88887
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": null,
+          "id": 88879
+        }
+      ]
+    },
+    "4544": {
+      "name": "Maîtrise de Quitte ou double",
+      "requirement": "Terminer les  succès de \"Quitte ou double\".",
+      "description": "",
+      "locked_text": "",
+      "points": 21,
+      "tier_max": 30,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4577": {
+      "name": "Compagnon de la forge",
+      "requirement": "Vous avez obtenu un ensemble complet d'armes de sang de dragon avec Aurene.",
+      "description": "Ces armes vont changer le monde.",
+      "locked_text": "",
+      "points": 16,
+      "tier_max": 16,
+      "prerequisites": [
+        4513
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Vous avez obtenu une hache de sang de dragon.",
+          "id": 8596
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": "Vous avez obtenu une dague de sang de dragon.",
+          "id": 8597
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": "Vous avez obtenu un focus de sang de dragon.",
+          "id": 8601
+        },
+        {
+          "index": 3,
+          "type": "Skin",
+          "text": "Vous avez obtenu un espadon de sang de dragon.",
+          "id": 8615
+        },
+        {
+          "index": 4,
+          "type": "Skin",
+          "text": "Vous avez obtenu un marteau de sang de dragon.",
+          "id": 8593
+        },
+        {
+          "index": 5,
+          "type": "Skin",
+          "text": "Vous avez obtenu un arc long de sang de dragon.",
+          "id": 8583
+        },
+        {
+          "index": 6,
+          "type": "Skin",
+          "text": "Vous avez obtenu une masse de sang de dragon.",
+          "id": 8613
+        },
+        {
+          "index": 7,
+          "type": "Skin",
+          "text": "Vous avez obtenu un pistolet de sang de dragon.",
+          "id": 8611
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "Vous avez obtenu un fusil de sang de dragon.",
+          "id": 8614
+        },
+        {
+          "index": 9,
+          "type": "Skin",
+          "text": "Vous avez obtenu un sceptre de sang de dragon.",
+          "id": 8555
+        },
+        {
+          "index": 10,
+          "type": "Skin",
+          "text": "Vous avez obtenu un bouclier de sang de dragon.",
+          "id": 8568
+        },
+        {
+          "index": 11,
+          "type": "Skin",
+          "text": "Vous avez obtenu un arc court de sang de dragon.",
+          "id": 8610
+        },
+        {
+          "index": 12,
+          "type": "Skin",
+          "text": "Vous avez obtenu un bâton de sang de dragon.",
+          "id": 8564
+        },
+        {
+          "index": 13,
+          "type": "Skin",
+          "text": "Vous avez obtenu une épée de sang de dragon.",
+          "id": 8554
+        },
+        {
+          "index": 14,
+          "type": "Skin",
+          "text": "Vous avez obtenu une torche de sang de dragon.",
+          "id": 8605
+        },
+        {
+          "index": 15,
+          "type": "Skin",
+          "text": "Vous avez obtenu un cor de guerre de sang de dragon.",
+          "id": 8572
+        }
+      ]
+    },
+    "4689": {
+      "name": "Maîtrise de l'épisode \"Guerre éternelle\"",
+      "requirement": "Terminer les  succès de \"Guerre éternelle\".",
+      "description": "",
+      "locked_text": "",
+      "points": 25,
+      "tier_max": 18,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4757": {
+      "name": "Visions de la Chute draconique",
+      "requirement": "Explorer la Chute draconique afin d'en avoir une meilleure connaissance.",
+      "description": "Percutant la terre, fendant les Brumes...\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 8752
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91070
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 91020
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91071
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91093
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 91092
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91009
+        }
+      ]
+    },
+    "4760": {
+      "name": "Visions de Kourna",
+      "requirement": "Explorer le Domaine de Kourna afin d'en avoir une meilleure connaissance.",
+      "description": "Qu'elle soit une bénédiction ou une malédiction, la vie éternelle est gâchée par l'avarice et la soif de pouvoir.\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 8181
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91023
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 91049
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91068
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91076
+        },
+        {
+          "index": 5,
+          "type": "Skin",
+          "text": null,
+          "id": 8149
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91105
+        }
+      ]
+    },
+    "4762": {
+      "name": "Vision I : Éveil",
+      "requirement": "Redécouvrir l'ancien à travers de nouveaux yeux.",
+      "description": "Respirer profondément et ouvrir vos trois yeux.",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour terminer ce succès.",
+      "points": 60,
+      "tier_max": 6,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions d'Istan\".",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions des Îles de Ventesable\".",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions de Kourna\".",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions de Jahai\".",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions des Pics de Chef-Tonnerre\".",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Terminer la collection \"Visions de la Chute draconique\".",
+          "id": null
+        }
+      ]
+    },
+    "4764": {
+      "name": "Visions des Pics de Chef-Tonnerre",
+      "requirement": "Explorer les Pics de Chef-Tonnerre afin d'en avoir une meilleure connaissance.",
+      "description": "Vision et les visions, rassemblées dans le temps...\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 8349
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91134
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 91021
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91132
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91106
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 90955
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91036
+        }
+      ]
+    },
+    "4765": {
+      "name": "Visions d'Istan",
+      "requirement": "Explorer le Domaine d'Istan afin d'en avoir une meilleure connaissance.",
+      "description": "Istan n'est une terre de mort et de trahison que pour ceux qui refusent d'ouvrir les yeux...\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 7844
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91000
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 90972
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91052
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91030
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 90975
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91042
+        }
+      ]
+    },
+    "4770": {
+      "name": "Visions de Jahai",
+      "requirement": "Explorer le Promontoire de Jahai afin d'en avoir une meilleure connaissance.",
+      "description": "Qu'est-ce que le temps pour celui qui le transcende ?\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": null,
+          "id": 91013
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91064
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 90965
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91126
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91069
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 91082
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 90973
+        }
+      ]
+    },
+    "4771": {
+      "name": "Vision II : Prévoyance",
+      "requirement": "Vous agenouiller et contempler votre maîtrise du voile à des sources de connaissance de toute la Tyrie.",
+      "description": "Pouvez-vous voir au-delà du vide ?\n\n\n\nRemarque : seules les sources de connaissance de maîtrise de la saison 4 du Monde vivant sont requises pour ce succès.",
+      "locked_text": "Terminer le succès \"Vision I : Éveil\" pour terminer celui-ci.",
+      "points": 10,
+      "tier_max": 20,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "4774": {
+      "name": "Visions des Îles de Ventesable",
+      "requirement": "Explorer les Îles de Ventesable afin d'en avoir une meilleure connaissance.",
+      "description": "Les Îles de Ventesable sont le lieu où les imbéciles espèrent obtenir rapidement pouvoir et savoir.\n\nRemarque : pour terminer ce succès, vous devez avoir terminé le succès \"À dos de dracaille\".",
+      "locked_text": "Acheter une pierre de transe auprès de n'importe quel vendeur de magie volatile pour déverrouiller cette collection.",
+      "points": 10,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 8032
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91097
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 91114
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91003
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91040
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 91025
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91072
+        }
+      ]
+    },
+    "4805": {
+      "name": "Coalescence III : Apogée",
+      "requirement": "",
+      "description": "Votre ami énergétique s'intéresse de très près à vos décisions...",
+      "locked_text": "Disponible une fois le succès \"Coalescence II : Le cadeau\" terminé.",
+      "points": 10,
+      "tier_max": 8,
+      "prerequisites": [
+        4412
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": null,
+          "id": 91242
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": null,
+          "id": 91258
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": null,
+          "id": 91256
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 91213
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": null,
+          "id": 91161
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": null,
+          "id": 91268
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": null,
+          "id": 91188
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": null,
+          "id": 91214
+        }
+      ]
+    },
+    "5790": {
+      "name": "Saisons des dragons",
+      "requirement": "Terminer  méta-succès de retour, qui deviendront disponibles progressivement et le resteront de façon permanente après leur ajout.",
+      "description": "",
+      "locked_text": "",
+      "points": 100,
+      "tier_max": 24,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "6933": {
+      "name": "Recherche des Brumes",
+      "requirement": "Examiner des lieux de pouvoir dans les Brumes.",
+      "description": "Découvrir une mystérieuse puissance constituée d'énergie des Brumes.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 8,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Parler à Dugan.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Examiner le reliquaire krait dans la crique Sombrait.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Examiner le Fourneau draguerre dans l'Antre de Molevekian.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Examiner les Nids de Harpies dans les Hauteurs d'Orgath.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Examiner le Cœur de pierre à l'intérieur du Château Brumepierre.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Examiner le Totem de Centaure dans le Heaume spirituel.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Examiner le Qui-brille des Skritts dans le Bras du Titan.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Examiner l'énergie mystérieuse dans le Labyrinthe de Darra.",
+          "id": null
+        }
+      ]
+    },
+    "7051": {
+      "name": "Empreintes astrales",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Myros le malveillant pour déverrouiller l'acquisition d'arcane d'empreintes astrales dans la Tour du sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11692
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11789
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11888
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101459
+        }
+      ]
+    },
+    "7096": {
+      "name": "Pulsation astrale",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Nourys, les Yeux de l'Abysse, pour déverrouiller l'acquisition d'arcane de pulsation astrale dans la Tour du sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11742
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11586
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11914
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101438
+        }
+      ]
+    },
+    "7098": {
+      "name": "Allure astrale",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Galène la bouillonnante pour déverrouiller l'acquisition d'arcane d'allure astrale auprès de Lyhr, le forgeron sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11637
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11812
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11877
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101502
+        }
+      ]
+    },
+    "7214": {
+      "name": "Pensée astrale",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Ignaxious pour déverrouiller l'acquisition d'arcane de pensée astrale dans la Tour du sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11755
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11653
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11905
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101585
+        }
+      ]
+    },
+    "7219": {
+      "name": "Étreinte astrale",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Pherus l'asservisseur pour déverrouiller l'acquisition d'arcane d'étreinte astrale dans la Tour du sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11722
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11759
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11885
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101490
+        }
+      ]
+    },
+    "7240": {
+      "name": "Foulée astrale",
+      "requirement": "Rassembler les apparences d'armure nécessaires et vaincre Knaebelag la terreur pour déverrouiller l'acquisition d'arcane de foulée astrale auprès de Lyhr, le forgeron sorcier.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 4,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 11694
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 11806
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 11906
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": null,
+          "id": 101471
+        }
+      ]
+    },
+    "7788": {
+      "name": "Collectionneur de cachets légendaires",
+      "requirement": "Lier  cachet légendaire.\n(Les joueurs qui possèdent déjà des cachets légendaires peuvent mettre à jour ce succès en se rendant à l'Arche du Lion ou à la Tour du sorcier).",
+      "description": "Les vrais commandants ont un cachet pour chaque jour de la semaine.",
+      "locked_text": "",
+      "points": 15,
+      "tier_max": 8,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "7796": {
+      "name": "Collectionneur de runes légendaires",
+      "requirement": "Lier  rune légendaire.\n(Les joueurs qui possèdent déjà des runes légendaires peuvent mettre à jour ce succès en se rendant à l'Arche du Lion ou à la Tour du sorcier).",
+      "description": "Votre pas est désormais plus léger, maintenant que vous n'avez plus besoin de porter autant de runes.",
+      "locked_text": "",
+      "points": 15,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "7829": {
+      "name": "Reliques légendaires : composants",
+      "requirement": "Rassembler les composants et les dons nécessaires pour fabriquer une relique légendaire. Le forgeron sorcier, Lyhr, pourra vous aider à les fabriquer dans la Tour du sorcier.",
+      "description": "Cette collection peut représenter une référence pratique pour savoir ce que chaque don requiert. Il vous faudra peut-être plusieurs exemplaires de certains de ces objets.",
+      "locked_text": "",
+      "points": 0,
+      "tier_max": 20,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 fioles de sang, 50 fioles de sang épais, 250 fioles de sang absolu et 100 fioles de sang puissant.",
+          "id": 71655
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 os, 50 os lourds, 250 os longs et 100 os anciens.",
+          "id": 71123
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 griffes, 50 griffes acérées, 250 grandes griffes et 100 griffes sauvages.",
+          "id": 70801
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 tas de poussière rayonnante, 50 tas de poussière lumineuse, 250 tas de poussière incandescente et 100 tas de poussière cristalline.",
+          "id": 73196
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 crocs, 50 crocs acérés, 250 grands crocs et 100 crocs sauvages.",
+          "id": 75744
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 écailles, 50 écailles lisses, 250 grandes écailles et 100 écailles renforcées.",
+          "id": 75299
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 totems, 50 totems gravés, 250 totems travaillés et 100 totems ouvragés.",
+          "id": 73236
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "À raffiner à partir de 50 sacs à venins, 50 sacs à venin pleins, 250 sacs à venin absolu et 100 sacs à venin puissant.",
+          "id": 71787
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Lyhr, dans la Tour du sorcier, peut vous aider à créer ceci.",
+          "id": 19675
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Lyhr, dans la Tour du sorcier, peut vous aider à créer ceci.",
+          "id": 97655
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 46747
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "À acheter auprès des maîtres artisans contre des notes de recherche.\nLes notes de recherche sont obtenues en décomposant des objets fabriqués à l'aide de kits de recherche.\nLes kits de recherche sont vendus par les maîtres artisans.",
+          "id": 95813
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Les essences de chance peuvent être obtenues en recyclant de l'équipement de qualité raffinée ou chef-d'œuvre et en recyclant des boules d'ectoplasme. Les artificiers peuvent fabriquer de l'essence de chance de meilleure qualité.\nLyhr, dans la Tour du sorcier, peut vous aider à créer ceci.",
+          "id": 45178
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "À recycler à partir de certaines pièces d'équipement rare ou exotique. Lyhr, dans la Tour du sorcier, semble en avoir besoin en grandes quantités.",
+          "id": 19721
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "",
+          "id": 101540
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Les particules luisantes sont à obtenir en recyclant des runes, des cachets et des reliques.",
+          "id": 89271
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "",
+          "id": 101519
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "",
+          "id": 76530
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "",
+          "id": 70867
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "À acheter auprès des fournisseurs de faction.",
+          "id": 77451
+        }
+      ]
+    },
+    "8582": {
+      "name": "Maîtrise des Landes de Feu-de-Brume",
+      "requirement": "Terminer  succès de carte des Landes de Feu-de-Brume.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 17,
+      "prerequisites": [],
+      "flags": [
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8714": {
+      "name": "Sac à dos et deltaplane légendaires : Orrax",
+      "requirement": "Lier à votre compte le sac à dos et le deltaplane légendaires Orrax conjuré.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 1,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": null,
+          "id": 104857
+        }
+      ]
+    },
+    "8723": {
+      "name": "Cauchemars innommés : don des ombres",
+      "requirement": "Cette collection peut représenter une référence pratique pour savoir ce que chaque don requiert pour créer Orrax conjuré.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 7,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 104846
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 19631
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 75299
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "À acheter auprès des vendeurs de pièces inhabituelles des Landes de Feu-de-Brume et de Bava Nisos.",
+          "id": 104791
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "À acheter auprès d'un vendeur de la forge mystique contre des éclats d'esprit.",
+          "id": 20797
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "À remporter en terminant des événements dans les Landes de Feu-de-Brume.",
+          "id": 104331
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "À remporter en terminant des événements dans Bava Nisos.",
+          "id": 104829
+        }
+      ]
+    },
+    "8730": {
+      "name": "Cauchemars innommés : Orrax réprimé",
+      "requirement": "Cette collection peut représenter une référence pratique pour fabriquer le sac à dos précurseur, Orrax réprimé.\n\nLe fait de terminer ce succès confère également une décoration de pavillon.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 5,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 104690
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "À recevoir en terminant le succès \"Cauchemars innommés : expériences dans les ombres\"",
+          "id": 104777
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 96137
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Si besoin, il est possible d'acheter des restes de cet objet auprès du vendeur de cœur de renommée des Landes de Feu-de-Brume.",
+          "id": 102367
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Si besoin, il est possible d'acheter des restes de cet objet auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos.",
+          "id": 104704
+        }
+      ]
+    },
+    "8743": {
+      "name": "Cauchemars innommés : don des Îles de Feu-de-Brume",
+      "requirement": "Cette collection peut représenter une référence pratique pour savoir ce que chaque don requiert pour créer Orrax conjuré.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 13,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 104962
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 104763
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 104699
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "À trouver dans des coffres des terres sauvages de Janthir, ou à acheter sur le comptoir.",
+          "id": 103351
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Il est nécessaire d'avoir la maîtrise Érudit des secrets pour pouvoir acheter ceci auprès d'un vendeur de la forge mystique.",
+          "id": 79418
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "À fabriquer à l'aide de morceaux d'obsidienne mursaat, de pierres de chaleur de Titan, de boules d'ectoplasme et de planches de bois ancien.",
+          "id": 104229
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "À acheter auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos.",
+          "id": 105004
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 104282
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "",
+          "id": 104855
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "À remporter dans la Côte des basses terres en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès des vendeurs de cœur de renommée de la Côte des basses terres.",
+          "id": 102929
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "À remporter dans la Syntri de Janthir en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès des vendeurs de cœur de renommée de la Syntri de Janthir.",
+          "id": 102958
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "À remporter dans les Landes de Feu-de-Brume en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès du vendeur de cœur de renommée des Landes de Feu-de-Brume.",
+          "id": 104313
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "À remporter dans Bava Nisos en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos.",
+          "id": 104896
+        }
+      ]
+    },
+    "8750": {
+      "name": "Cauchemars innommés : don du festin",
+      "requirement": "Cette collection peut représenter une référence pratique pour savoir ce que chaque don requiert pour créer Orrax conjuré.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 18,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "",
+          "id": 104872
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "",
+          "id": 104965
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "",
+          "id": 104932
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "",
+          "id": 104839
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "",
+          "id": 104717
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "",
+          "id": 87076
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "",
+          "id": 41563
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "",
+          "id": 84550
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "",
+          "id": 41567
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "",
+          "id": 12468
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "",
+          "id": 12467
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "",
+          "id": 95942
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "",
+          "id": 66529
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Parfois obtenu en combinant des pièces mystiques, des éclats d'obsidienne, des boules d'ectoplasme et soit des pierres philosophales, soit des cristaux mystiques dans la forge mystique. Peut également être acheté auprès des vendeurs des missions d'attaque, des raids ou des fractales.",
+          "id": 19675
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "",
+          "id": 66539
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "",
+          "id": 71826
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "À raffiner à partir de 250 essences de brèche raffinées, 100 essences de brèche prodigieuses et 50 essences de brèche rares. Vous pouvez trouver des essences en chassant les brèches.",
+          "id": 100930
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Acheter une graine à Lahar habile dans votre pavillon, puis la récolter après l'avoir laissée pousser pendant 24 heures.",
+          "id": 104844
+        }
+      ]
+    },
+    "8761": {
+      "name": "Cauchemars innommés : expériences dans les ombres",
+      "requirement": "Aider un scientifique à contacter les Brumes, en espérant que les Brumes ne répondent pas.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 10,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Parler à Jorvik Jorundsson dans Bava Nisos pour savoir comment vous pourriez participer à ses recherches.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Terminer l'événement \"Rassembler de la foudre pour maintenir chargées les tourelles asuras\" dans les Landes de Feu-de-Brume ou l'événement \"Récupérer des jarres, les remplir de foudre et les laisser aux points de dépôt\" dans la Syntri de Janthir pour charger la batterie.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Retourner voir Jorvik Jorundsson dans Bava Nisos pour lui donner la batterie.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Se rendre au Marais d'Anathema et trouver le portail suspect pour calibrer le capteur de Jorvik Jorundsson.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Parler à Jorvik Jorundsson dans Bava Nisos pour lui rendre son capteur.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Terminer le puzzle de saut \"Grotte du cristal du chaos\" dans les Marais de fer pour y trouver un cristal adéquat.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Parler à Jorvik Jorundsson dans Bava Nisos pour vérifier que le cristal corresponde à ses besoins.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Utiliser le bassin de divination dans le Panthéon des Hauts Faits pour mettre le cristal en affinité et en faire un réceptacle.",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Parler à Jorvik Jorundsson dans Bava Nisos pour lui donner le cristal en affinité.",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Parler à l'être des ombres par le biais de son miroir de cristal dans Bava Nisos pour obtenir sa bénédiction.",
+          "id": null
+        }
+      ]
+    },
+    "8769": {
+      "name": "Maîtrise de Bava Nisos",
+      "requirement": "Terminer  succès de carte à travers Bava Nisos.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8814": {
+      "name": "Enquête invasive : récursion infinie",
+      "requirement": "Remporter de la poussière fractale en terminant des fractales en session rapide et des succès d'invasion des fractales associés.",
+      "description": "",
+      "locked_text": "",
+      "points": 0,
+      "tier_max": 150,
+      "prerequisites": [
+        8835
+      ],
+      "flags": [
+        "Repeatable",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8823": {
+      "name": "Enquête invasive : relique dans les Brumes",
+      "requirement": "En progressant dans le succès \"Enquête invasive : collaboration\", découvrir les gants déchirés par l'agonie dans une fractale en session rapide.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 1,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8826": {
+      "name": "Enquête invasive",
+      "requirement": "Terminer  succès d'invasion des fractales majeur.",
+      "description": "",
+      "locked_text": "",
+      "points": 30,
+      "tier_max": 5,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8830": {
+      "name": "Enquête invasive : collaboration",
+      "requirement": "Collaborer avec l'Étranger des Brumes pour corriger un problème dans les fractales et remporter une récompense légendaire.",
+      "description": "Ce succès déverrouillera d'autres succès \"Enquête invasive\" lorsque certaines conditions auront été remplies.\nLors de l'événement Invasion des fractales, certaines étapes de ce succès seront déverrouillées chaque semaine. Après cela, elles ne seront plus limitées.",
+      "locked_text": "",
+      "points": 6,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "1. Parler à l'Étranger des Brumes pour en savoir plus sur les perturbations dans les fractales.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "3. Terminer une fractale des Brumes en mode session rapide et ouvrir le coffre au trésor final.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "4. Apporter les gants déchirés par l'agonie à l'Étranger des Brumes.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "5. Terminer le succès \"Enquête invasive : première récursion\" et attendre que prenne fin la première semaine de l'invasion des fractales.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "6. Parler à l'Étranger des Brumes et à vos alliés.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "7. Terminer le succès \"Enquête invasive : deuxième récursion\" et attendre que prenne fin la deuxième semaine de l'invasion des fractales.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "8. Parler à l'Étranger des Brumes et à vos alliés.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "9. Terminer le succès \"Enquête invasive : troisième récursion\".",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "10. Consulter l'Étranger des Brumes au sujet de la fin de la crise.",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "2. Parler aux alliés présents pour découvrir le plan.",
+          "id": null
+        }
+      ]
+    },
+    "8835": {
+      "name": "Enquête invasive : troisième récursion",
+      "requirement": "Remporter de la poussière fractale en terminant des fractales en session rapide et des succès d'invasion des fractales associés.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 450,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8840": {
+      "name": "Enquête invasive : première récursion",
+      "requirement": "Remporter de la poussière fractale en terminant des fractales en session rapide et des succès d'invasion des fractales associés.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 150,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8841": {
+      "name": "Enquête invasive : deuxième récursion",
+      "requirement": "Remporter de la poussière fractale en terminant des fractales en session rapide et des succès d'invasion des fractales associés.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 300,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "8869": {
+      "name": "Obtention d'Agaleus",
+      "requirement": "Terminer  étapes pour obtenir le précurseur légendaire Agaleus.",
+      "description": "Ce n'est pas seulement concernant l'histoire du \"capitaine\" qu'il y a anguille sous roche...",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 24,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Parler au \"capitaine\" naufragé au Pub Canach.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Servir un verre au capitaine.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Écouter le reste de l'histoire du capitaine Lacs.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Trouver la plongeuse.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Terminer le succès \"Maître de la plongée\", puis retourner voir la maîtresse de la plongée Astora.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Trouver le trésor dans les Cavernes de Gueule-au-squale.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Trouver le trésor englouti dans la fractale du Récif de la sirène ou dans celle des Ruines aquatiques.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Chercher des trésors à l'aide de la compétence Étherlocalisation de votre voldécume à Castora.",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Vaincre Taidha Covington pour récupérer un fragment de masque dans son coffre de récompense.",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Trouver le fragment de masque dans \"La voie des flibustiers\" à Castora.",
+          "id": null
+        },
+        {
+          "index": 10,
+          "type": "Text",
+          "text": "Trouver le fragment de masque dans la base des boucaniers de Wiley.",
+          "id": null
+        },
+        {
+          "index": 11,
+          "type": "Text",
+          "text": "Découvrir où Wiley a caché son fragment de masque.",
+          "id": null
+        },
+        {
+          "index": 12,
+          "type": "Text",
+          "text": "Trouver le fragment de masque à Castora.",
+          "id": null
+        },
+        {
+          "index": 13,
+          "type": "Text",
+          "text": "Trouver le fragment de masque sur l'un des flibustiers de Castora.",
+          "id": null
+        },
+        {
+          "index": 14,
+          "type": "Text",
+          "text": "Trouver le fragment de masque à la Crique de Sud-Soleil.",
+          "id": null
+        },
+        {
+          "index": 15,
+          "type": "Text",
+          "text": "Trouver le fragment de masque à l'Arche du Lion.",
+          "id": null
+        },
+        {
+          "index": 16,
+          "type": "Text",
+          "text": "Trouver le fragment de masque caché en Orr.",
+          "id": null
+        },
+        {
+          "index": 17,
+          "type": "Text",
+          "text": "Retrouver le capitaine Lacs pour déterminer comment rassembler les fragments.",
+          "id": null
+        },
+        {
+          "index": 18,
+          "type": "Text",
+          "text": "Parler à Cecil Bras-fort.",
+          "id": null
+        },
+        {
+          "index": 19,
+          "type": "Text",
+          "text": "Trouver le membre solitaire de l'équipage de Weyandt.",
+          "id": null
+        },
+        {
+          "index": 20,
+          "type": "Text",
+          "text": "Trouver l'Esprit du Requin près du sanctuaire de l'Honneur des vagues.",
+          "id": null
+        },
+        {
+          "index": 21,
+          "type": "Text",
+          "text": "Terminer un des chemins de l'Honneur des vagues en mode Exploration pour pouvoir aider l'Esprit du Requin.",
+          "id": null
+        },
+        {
+          "index": 22,
+          "type": "Text",
+          "text": "Retourner voir l'Esprit du Requin.",
+          "id": null
+        },
+        {
+          "index": 23,
+          "type": "Text",
+          "text": "Retourner voir le chamane.",
+          "id": null
+        }
+      ]
+    },
+    "8880": {
+      "name": "Maîtrise de la Rive aux épaves",
+      "requirement": "Terminer  succès de carte à travers la Rive aux épaves.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 36,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "9057": {
+      "name": "Maîtrise du Bois étoilé",
+      "requirement": "Terminer  succès de carte à travers le Bois étoilé.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 36,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "9180": {
+      "name": "Assistance aux Hyleks : tuer les Kraits",
+      "requirement": "Tuer  Krait au Lac Nonmoa ou terminer l'événement \"Tuer la sorcière krait\" pour aider les Hyleks d'Eztlitl.",
+      "description": "Les Eztlitl subissent le fléau des Kraits depuis bien trop longtemps.",
+      "locked_text": "",
+      "points": 1,
+      "tier_max": 25,
+      "prerequisites": [],
+      "flags": [
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": []
+    },
+    "9183": {
+      "name": "Rayonnement du dieu soleil",
+      "requirement": "Aider le chamane Palak à honorer les Hyleks et leur dieu soleil, Zintl.",
+      "description": "\"C'est alors que Zintl a fait don aux Hyleks d'étés infinis, emplis de chaleur et d'une lumière exemplaire. Puisse le soleil ne jamais se coucher.\"",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 20,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Parler au chamane hylek dans la Rive aux épaves.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Vaincre Tequatl le Sans-soleil.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Trouver l'éclat de Zintl au Marais de Wychmire.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Trouver l'acolyte de Palak à la Pointe de Jelako.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Participer à la consolidation des défenses hyleks à la Pointe de Jelako.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Parler au chef Lapatl.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Localiser les Hyleks des terres lorantls.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Récupérer l'éclat volé par les trolls dans les Collines de Montesauvage.",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Trouver l'acolyte de Palak au Bras de Viathan.",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Acheter un ensemble de steaks de libellule auprès du cuisinier hylek au Marais michéen.",
+          "id": null
+        },
+        {
+          "index": 10,
+          "type": "Text",
+          "text": "Rapporter les steaks de libellule au chef des Togatl.",
+          "id": null
+        },
+        {
+          "index": 11,
+          "type": "Text",
+          "text": "Trouver l'acolyte de Palak sur les Rives du chasseur.",
+          "id": null
+        },
+        {
+          "index": 12,
+          "type": "Text",
+          "text": "Vaincre des Kraits ou la sorcière krait au Lac Nonmoa.",
+          "id": null
+        },
+        {
+          "index": 13,
+          "type": "Text",
+          "text": "Trouver l'acolyte de Palak dans les Plaines de Whitland.",
+          "id": null
+        },
+        {
+          "index": 14,
+          "type": "Text",
+          "text": "Découvrir l'éclat dans le réacteur de l'Enqueste en résolvant l'énigme des zones.",
+          "id": null
+        },
+        {
+          "index": 15,
+          "type": "Text",
+          "text": "Récupérer l'éclat dérobé par les Gardiens des éléments.",
+          "id": null
+        },
+        {
+          "index": 16,
+          "type": "Text",
+          "text": "Chercher le chamane au Cap d'Astrozintli.",
+          "id": null
+        },
+        {
+          "index": 17,
+          "type": "Text",
+          "text": "Méditer devant le site sacré des Hyleks.",
+          "id": null
+        },
+        {
+          "index": 18,
+          "type": "Text",
+          "text": "Retourner voir le chamane Huelec.",
+          "id": null
+        },
+        {
+          "index": 19,
+          "type": "Text",
+          "text": "Retourner voir Palak.",
+          "id": null
+        }
+      ]
+    },
+    "9244": {
+      "name": "Recherche des Brumes : Discorde infinie",
+      "requirement": "Aider Dugan à mener davantage de recherches sur les Brumes.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 11,
+      "prerequisites": [
+        6933
+      ],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Parler à Dugan.",
+          "id": null
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Après avoir équipé une infusion d'arpenteur des Brumes, tuer 100 joueurs ennemis.",
+          "id": null
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Trouver le dresseur de razziafelis à la Balise de Zraith.",
+          "id": null
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Capturer la forge à la lisière des Brumes et parler au forgeron qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Capturer l'autel à la lisière des Brumes et y communier.",
+          "id": null
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Capturer l'atelier à la lisière des Brumes et parler au mécanicien qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Capturer le fort d'une équipe ennemie dans les Champs de bataille éternels et parler à l'esprit de razziafelis qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Capturer les Collines d'Askalion dans les Territoires frontaliers alpins et parler à l'esprit de razziafelis qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Capturer la Baie du Noir déclin dans les Territoires frontaliers alpins et parler à l'esprit de razziafelis qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Capturer le Rempart stoïque dans les Territoires frontaliers du désert et parler à l'esprit de razziafelis qui s'y trouve.",
+          "id": null
+        },
+        {
+          "index": 10,
+          "type": "Text",
+          "text": "Retourner voir Dugan.",
+          "id": null
+        }
+      ]
+    },
+    "9344": {
+      "name": "Collectionneur d'armes en résine scintillante",
+      "requirement": "Déverrouiller les apparences d'arme en résine scintillante en les fabriquant après avoir déverrouillé leur recette ou en les achetant auprès des vendeurs des cœurs de renommée terminés au Jardin de l'éternité.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 17,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": null,
+          "id": 13959
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": null,
+          "id": 13861
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": null,
+          "id": 13971
+        },
+        {
+          "index": 3,
+          "type": "Skin",
+          "text": null,
+          "id": 13986
+        },
+        {
+          "index": 4,
+          "type": "Skin",
+          "text": null,
+          "id": 13985
+        },
+        {
+          "index": 5,
+          "type": "Skin",
+          "text": null,
+          "id": 13945
+        },
+        {
+          "index": 6,
+          "type": "Skin",
+          "text": null,
+          "id": 13856
+        },
+        {
+          "index": 7,
+          "type": "Skin",
+          "text": null,
+          "id": 13978
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": null,
+          "id": 13866
+        },
+        {
+          "index": 9,
+          "type": "Skin",
+          "text": null,
+          "id": 13934
+        },
+        {
+          "index": 10,
+          "type": "Skin",
+          "text": null,
+          "id": 13850
+        },
+        {
+          "index": 11,
+          "type": "Skin",
+          "text": null,
+          "id": 13990
+        },
+        {
+          "index": 12,
+          "type": "Skin",
+          "text": null,
+          "id": 13982
+        },
+        {
+          "index": 13,
+          "type": "Skin",
+          "text": null,
+          "id": 13964
+        },
+        {
+          "index": 14,
+          "type": "Skin",
+          "text": null,
+          "id": 13933
+        },
+        {
+          "index": 15,
+          "type": "Skin",
+          "text": null,
+          "id": 13865
+        },
+        {
+          "index": 16,
+          "type": "Skin",
+          "text": null,
+          "id": 13917
+        }
+      ]
+    }
+  }
+}
