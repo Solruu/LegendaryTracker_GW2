@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v72",
+    "version": "v73",
     "last_updated": "2026-08-11",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5286,6 +5286,30 @@
             "verified": true,
             "checked": "2026-08-11",
             "ref": "wiki:Mystic_Coin"
+          }
+        ]
+      },
+      "festival_windows": {
+        "note": {
+          "fr": "⚠ Deux des sources ci-dessus ne sont ouvertes que quelques semaines par an. Ne bâtis pas ton plan dessus : hors festival, les seules sources régulières sont le Coffre du Sorcier (60/saison), Manfred Njallson (10/semaine), les pistes McM (sans plafond) et le comptoir.",
+          "en": "⚠ Two of the sources above are only open a few weeks a year. Don't build your plan around them: outside festivals, the only steady sources are the Wizard's Vault (60/season), Manfred Njallson (10/week), WvW tracks (uncapped) and the trading post."
+        },
+        "windows": [
+          {
+            "festival": "Super Adventure Festival",
+            "source": "Super Adventure Box Weekly Trader",
+            "cadence": {
+              "fr": "3/semaine pendant le festival",
+              "en": "3/week during the festival"
+            }
+          },
+          {
+            "festival": "Festival des Quatre Vents",
+            "source": "Four Winds Zephyr",
+            "cadence": {
+              "fr": "1/jour pendant le festival",
+              "en": "1/day during the festival"
+            }
           }
         ]
       }
