@@ -15,7 +15,7 @@ Tracker personnel de craft d'objets légendaires Guild Wars 2 — 13 onglets cou
 |---|---|---|
 | `gw2_build_html_v2.py` | **Build de publication** : injecte JSX + SOURCES_DB dans le template | `docs/index.html` |
 | `gw2_refresh_refs_v2.py` | **Régénération des référentiels** depuis l'API publique | `gw2_currencies_ref.json`, `gw2_materials_ref.json`, `gw2_achievements_ref.json` |
-| `gw2_dump_bits_v2.py` | **Collecte de données éditoriales** : dump des bits ordonnés / tiers / points des achievements, pour rédiger les `bitTips` au bon index et repérer les compteurs sans étapes | `gw2_bits_dump.json` (jetable, non consommé par l'app) |
+| `gw2_dump_bits_v3.py` | **Collecte de données éditoriales** : dump des bits ordonnés / tiers / points des achievements, pour rédiger les `bitTips` au bon index et repérer les compteurs sans étapes | `gw2_bits_dump.json` (jetable, non consommé par l'app) |
 
 Les trois s'exécutent **en local** : `api.guildwars2.com` n'est pas joignable depuis l'environnement de développement assisté.
 

@@ -15,7 +15,7 @@
 #    · gw2_build_html_v2.py    → génère docs/index.html (build de publication)
 # =============================================================================
 """
-gw2_dump_bits_v2.py — Dump des définitions d'achievements du tracker.
+gw2_dump_bits_v3.py — Dump des définitions d'achievements du tracker.
 
 Contexte : les `bitTips` du tracker sont indexés par NUMÉRO DE BIT. Rédiger un
 conseil sans connaître l'ordre exact des bits revient à l'accrocher à la
@@ -26,8 +26,8 @@ Il extrait automatiquement TOUS les `achievementId` du JSX (aucune liste à
 maintenir à la main), interroge /v2/achievements et écrit un dump JSON.
 
 Usage :
-    python3 gw2_dump_bits_v2.py
-    python3 gw2_dump_bits_v2.py --jsx gw2_legendary_tracker_v98.jsx --lang fr
+    python3 gw2_dump_bits_v3.py
+    python3 gw2_dump_bits_v3.py --jsx gw2_legendary_tracker_v98.jsx --lang fr
 
 Sortie : gw2_bits_dump.json  (à committer ou à coller dans le chat)
 
@@ -39,21 +39,54 @@ Le dump répond à trois questions d'un coup :
 """
 
 import argparse
+import glob
 import json
+import os
 import re
 import sys
 import urllib.request
 
 API = "https://api.guildwars2.com/v2/achievements"
 
+# Filet de sécurité : liste gelée des achievementId du tracker v98. Utilisée
+# seulement si aucun JSX n'est trouvable, pour que le script reste utilisable
+# depuis n'importe quel dossier. Le JSX reste la source de vérité.
+FALLBACK_IDS = [
+    2295, 2351, 2368, 2557, 2646, 3012, 3402, 3436, 3445, 3447, 3964, 4000,
+    4035, 4093, 4177, 4195, 4359, 4376, 4412, 4544, 4577, 4689, 4757, 4760,
+    4762, 4764, 4765, 4770, 4771, 4774, 4805, 5790, 6933, 7051, 7096, 7098,
+    7214, 7219, 7240, 7788, 7796, 7829, 8582, 8714, 8723, 8730, 8743, 8750,
+    8761, 8769, 8814, 8823, 8826, 8830, 8835, 8840, 8841, 8869, 8880, 9057,
+    9180, 9183, 9244, 9330, 9344,
+]
+
+
+def find_jsx(explicit):
+    """Localise le JSX : chemin explicite, sinon version la plus haute trouvée
+    dans le dossier courant puis dans celui du script."""
+    if explicit:
+        if os.path.isfile(explicit):
+            return explicit
+        print(f"[!] JSX introuvable au chemin fourni : {explicit}", file=sys.stderr)
+        return None
+
+    seen = []
+    for folder in (os.getcwd(), os.path.dirname(os.path.abspath(__file__))):
+        seen.extend(glob.glob(os.path.join(folder, "gw2_legendary_tracker_v*.jsx")))
+    if not seen:
+        return None
+
+    def version(path):
+        m = re.search(r"_v(\d+)\.jsx$", os.path.basename(path))
+        return int(m.group(1)) if m else -1
+
+    return max(seen, key=version)
+
 
 def extract_ids(jsx_path):
     """Récupère tous les achievementId littéraux du JSX, dédupliqués."""
     src = open(jsx_path, encoding="utf-8").read()
-    ids = {int(m) for m in re.findall(r"achievementId:\s*(\d+)", src)}
-    ids |= {int(m) for m in re.findall(r"ACHIEVEMENT_SEED\s*=\s*\[([^\]]*)\]", src)
-            for m in re.findall(r"\d+", m)}
-    return sorted(ids)
+    return sorted({int(m) for m in re.findall(r"achievementId:\s*(\d+)", src)})
 
 
 def fetch(ids, lang):
@@ -72,13 +105,22 @@ def fetch(ids, lang):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--jsx", default="gw2_legendary_tracker_v98.jsx")
+    ap.add_argument("--jsx", default=None,
+                    help="chemin du JSX ; par défaut, détection automatique "
+                         "de la version la plus haute")
     ap.add_argument("--lang", default="fr", choices=["fr", "en"])
     ap.add_argument("--out", default="gw2_bits_dump.json")
     args = ap.parse_args()
 
-    ids = extract_ids(args.jsx)
-    print(f"{len(ids)} achievements référencés dans {args.jsx}")
+    jsx = find_jsx(args.jsx)
+    if jsx:
+        ids = extract_ids(jsx)
+        print(f"{len(ids)} achievements référencés dans {os.path.basename(jsx)}")
+    else:
+        ids = FALLBACK_IDS
+        print("[!] Aucun gw2_legendary_tracker_v*.jsx trouvé dans ce dossier.")
+        print(f"    Repli sur la liste gelée : {len(ids)} achievements (tracker v98).")
+        print("    Pour repartir du JSX : --jsx \"chemin\\vers\\le_fichier.jsx\"")
 
     defs = fetch(ids, args.lang)
     print(f"{len(defs)} définitions récupérées")
@@ -114,7 +156,7 @@ def main():
     missing = [i for i in ids if i not in got]
 
     json.dump(
-        {"_meta": {"source": API, "lang": args.lang, "jsx": args.jsx,
+        {"_meta": {"source": API, "lang": args.lang, "jsx": os.path.basename(jsx) if jsx else "FALLBACK_IDS",
                    "count": len(payload), "with_bits": with_bits,
                    "counters_without_bits": counters, "not_returned": missing},
          "achievements": payload},
