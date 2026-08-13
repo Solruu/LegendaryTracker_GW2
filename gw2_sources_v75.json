@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "v73",
-    "last_updated": "2026-08-11",
+    "version": "v75",
+    "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -929,7 +929,8 @@
     "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie.",
     "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX.",
     "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet.",
-    "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort."
+    "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort.",
+    "changelog_v75": "Seuils des metas d'episode LW3 (bit 0 de chaque Master d'Aurora) recalcules. Les valeurs 20/26 etaient un copier-coller applique a cinq episodes sur six. Verifie : One Path Ends demande 36 succes sur 36 eligibles (paliers 1/5/10/15/25/36 — le 26 affiche correspondait a l'avant-dernier palier, pas au seuil) ; Out of the Shadows 18 sur 19 ; Rising Flames 23 sur 30 ; A Crack in the Ice 21 ; Flashpoint 20. Head of the Snake (28/32) reste non verifie et est marque comme tel. Les pools inconnus passent a null : le JSX les lit desormais dans l'API. Ajout d'un champ alt par piece : la piste de recompense de la carte en McM ou PvP rend la meme boite d'armure, sauf pour Plage des sirenes ou l'existence de la piste n'est pas confirmee."
   },
   "meta_events": {
     "vb": {
@@ -11773,8 +11774,15 @@
                     "fr": "Maîtrise « Out of the Shadows »",
                     "en": "\"Out of the Shadows\" Mastery"
                   },
-                  "mastery_required": 20,
-                  "mastery_max": 26
+                  "mastery_required": 18,
+                  "mastery_max": 19,
+                  "mastery_verified": true,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "guildjen+dulfy 2026-08-13",
+                  "alt": {
+                    "fr": "Alternative sans succès : terminer la piste de récompense « Marais de la pierre de sang » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
+                    "en": "Achievement-free alternative: complete the 'Bloodstone Fen' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
+                  }
                 },
                 {
                   "name": "Bloodstone Chip",
@@ -11871,8 +11879,15 @@
                   "bit": 0,
                   "mastery_achi_id": 3123,
                   "mastery_label": "\"Rising Flames\" Mastery",
-                  "mastery_required": 20,
-                  "mastery_max": 26
+                  "mastery_required": 23,
+                  "mastery_max": 30,
+                  "mastery_verified": false,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "guildjen 2026-08-13 (dulfy annonce 29 eligibles — ecart non tranche)",
+                  "alt": {
+                    "fr": "Alternative sans succès : terminer la piste de récompense « Baie des braises » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
+                    "en": "Achievement-free alternative: complete the 'Ember Bay' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
+                  }
                 },
                 {
                   "name": "Petrified Burl",
@@ -12003,8 +12018,15 @@
                     "fr": "Maîtrise « A Crack in the Ice »",
                     "en": "\"A Crack in the Ice\" Mastery"
                   },
-                  "mastery_required": 20,
-                  "mastery_max": 26
+                  "mastery_required": 21,
+                  "mastery_max": null,
+                  "mastery_verified": false,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
+                  "alt": {
+                    "fr": "Alternative sans succès : terminer la piste de récompense « Bordefrisque » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
+                    "en": "Achievement-free alternative: complete the 'Bitterfrost Frontier' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
+                  }
                 },
                 {
                   "name": "Plump Winterberry",
@@ -12130,7 +12152,14 @@
                     "en": "\"The Head of the Snake\" Mastery"
                   },
                   "mastery_required": 28,
-                  "mastery_max": 32
+                  "mastery_max": 32,
+                  "mastery_verified": false,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "non verifie — valeurs heritees, a confirmer",
+                  "alt": {
+                    "fr": "Alternative sans succès : terminer la piste de récompense « Lac Doric » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
+                    "en": "Achievement-free alternative: complete the 'Lake Doric' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
+                  }
                 },
                 {
                   "name": "Sparking Jade Shard",
@@ -12258,7 +12287,14 @@
                   "mastery_achi_id": 3442,
                   "mastery_label": "\"Flashpoint\" Mastery",
                   "mastery_required": 20,
-                  "mastery_max": 26
+                  "mastery_max": null,
+                  "mastery_verified": false,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
+                  "alt": {
+                    "fr": "Alternative sans succès : terminer la piste de récompense « Mont Draconis » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
+                    "en": "Achievement-free alternative: complete the 'Draconis Mons' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
+                  }
                 },
                 {
                   "name": "The Wayfarer's Henge",
@@ -12381,8 +12417,15 @@
                   "bit": 0,
                   "mastery_achi_id": 3516,
                   "mastery_label": "\"One Path Ends\" Mastery",
-                  "mastery_required": 20,
-                  "mastery_max": 26
+                  "mastery_required": 36,
+                  "mastery_max": 36,
+                  "mastery_verified": true,
+                  "mastery_checked": "2026-08-13",
+                  "mastery_ref": "API (miroir gw2treasures) 2026-08-13 : paliers 1/5/10/15/25/36",
+                  "alt": {
+                    "fr": "⚠ Piste de récompense « Plage des sirènes » non confirmée pour cette pièce — à vérifier avant de miser dessus. Sinon, le méta (36 succès) est la seule voie.",
+                    "en": "⚠ A 'Siren's Landing' reward track is not confirmed for this piece — verify before relying on it. Otherwise the meta (36 achievements) is the only route."
+                  }
                 },
                 {
                   "name": "Supporter of the Gods",

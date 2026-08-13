@@ -185,6 +185,10 @@ const I18N = {
     prereq_count: "{n}/4 prerequisites",
     aurora_prereq_help: "Complete these 4 achievements (once per account) to obtain the 4 Sentient* items to forge.",
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
+    aurora_alt: "↔ Alternative",
+    aurora_src_api: "threshold read live from the API",
+    aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
+    aurora_src_wait: "threshold not yet loaded from the API",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -382,6 +386,10 @@ const I18N = {
     prereq_count: "{n}/4 prérequis",
     aurora_prereq_help: "Compléter ces 4 achievements (une fois par compte) pour obtenir les 4 Sentient* à forger.",
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
+    aurora_alt: "↔ Alternative",
+    aurora_src_api: "seuil lu en direct dans l'API",
+    aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
+    aurora_src_wait: "seuil pas encore chargé depuis l'API",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -3351,14 +3359,23 @@ export default function GW2LegendaryTracker() {
   useEffect(() => {
     const list = LEGENDARIES[selectedLeg]?.raidAchievements;
     if (!list || list.length === 0) return;
-    const ids = list.map(a => a.achievementId);
+    // v106 : on ajoute les métas d'épisode (bit 0 des Masters) pour lire leur seuil
+    // réel — dernier palier de tiers[] — au lieu de se fier aux valeurs stockées.
+    const masteryIds = [];
+    (function collect(o) {
+      if (Array.isArray(o)) { o.forEach(collect); return; }
+      if (!o || typeof o !== "object") return;
+      if (typeof o.mastery_achi_id === "number") masteryIds.push(o.mastery_achi_id);
+      for (const v of Object.values(o)) collect(v);
+    })((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries?.[selectedLeg] ?? {});
+    const ids = [...new Set([...list.map(a => a.achievementId), ...masteryIds])];
     // v9 : la clé intègre une empreinte de la liste d'IDs. Sans cela, tout ajout de
     // collection restait invisible derrière un cache créé avant elle (bug v78).
     let sig = 0;
     for (const c of ids.join(",")) sig = ((sig << 5) - sig + c.charCodeAt(0)) | 0;
     // ACH_DEFS_SCHEMA : à incrémenter dès que la FORME de `out` change (tierMax, subs curées…).
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 14;
+    const ACH_DEFS_SCHEMA = 15;
     const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}`;
     try {
       for (let i = localStorage.length - 1; i >= 0; i--) {
@@ -5183,8 +5200,16 @@ export default function GW2LegendaryTracker() {
                           const subSuffix   = key.replace('aurora_', '');
                           const masteryAchi = ac[`mastery_${subSuffix}`] ?? null;
                           const mCur = masteryAchi?.current ?? 0;
-                          const mMax = item.mastery_max ?? masteryAchi?.max ?? 0;
-                          const mReq = item.mastery_required ?? mMax;
+                          // L'API fait foi : tierMax = dernier palier (le seuil réel),
+                          // bits.length = nombre de succès éligibles. Les valeurs stockées
+                          // ne servent que de repli, et tout écart est signalé.
+                          const mDef    = masteryId ? achBitsDefs?.[String(masteryId)] : null;
+                          const apiReq  = mDef?.tierMax ?? 0;
+                          const apiPool = (mDef?.bits ?? []).length;
+                          const mReq = apiReq || item.mastery_required || 0;
+                          const mMax = apiPool || item.mastery_max || masteryAchi?.max || mReq || 0;
+                          const mGap = apiReq > 0 && typeof item.mastery_required === "number" && item.mastery_required !== apiReq
+                                       ? item.mastery_required : null;
                           const mDone = masteryAchi?.done ?? false;
                           const mPct  = mMax > 0 ? Math.min(100, (mCur / mMax) * 100) : 0;
                           const mReqPct = mMax > 0 ? (mReq / mMax) * 100 : 0;
@@ -5298,6 +5323,15 @@ export default function GW2LegendaryTracker() {
                                       {t("aurora_threshold")}
                                     </div>
                                   )}
+                                  <div style={{ fontSize: 8, marginTop: 3, fontFamily: "'Crimson Text', serif", color: mGap ? "rgba(248,113,113,0.85)" : "rgba(226,201,126,0.28)" }}>
+                                    {mGap ? t("aurora_src_gap", { j: mGap, a: apiReq }) : (apiReq > 0 ? t("aurora_src_api") : t("aurora_src_wait"))}
+                                  </div>
+                                </div>
+                              )}
+                              {missing && item.alt && (
+                                <div style={{ marginTop: 5, padding: "6px 8px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.2)", borderRadius: 5 }}>
+                                  <div style={{ fontSize: 9, fontWeight: 600, color: "rgba(94,234,212,0.9)", fontFamily: "'Cinzel', serif", letterSpacing: "0.03em", marginBottom: 3 }}>{t("aurora_alt")}</div>
+                                  <div style={{ fontSize: 10, color: "rgba(94,234,212,0.65)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.alt)}</div>
                                 </div>
                               )}
                             </div>
