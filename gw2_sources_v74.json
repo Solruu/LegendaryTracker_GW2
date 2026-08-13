@@ -928,7 +928,8 @@
     "changelog_v68": "Antique Summoning Stone verifie : audit des cadences termine, 31 sources sur 31. Le tracker retenait 5/semaine chez Leivas et 1/jour sur la meta Trepas du dragon. En realite 10/semaine plafonnes — 5 chez Leivas (5 contreparties a 1/semaine chacune, maitrise Globalization) et 5 via les Challenge Modes EoD (1 par CM et par semaine, 5 CM). La meta n'a pas de cadence documentee : reclassee en source hors plafond avec les coffres. Ajout des 5 succes Revenge de Return to End of Dragons, obtention unique.",
     "changelog_v69": "Antique Summoning Stone : la source 'coffres et echanges' repasse en non verifiee. Antoine observe en jeu 1 pierre par coffre et par jour, sans certitude que la limite soit par meta distincte ou partagee entre les metas EoD. Le wiki ne documente aucune cadence : l'observation est consignee comme telle, non promue en fait verifie.",
     "changelog_v70": "Champs lisibles par le code ajoutes pour le bloc d'arbitrage Magnetite : 'magnetite' (cout unitaire) sur les sources Manfred de mystic_coin et mystic_clover, et 'isBudget' sur la source plafonnee de magnetite_shard. Evite de coder les couts en dur dans le JSX.",
-    "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet."
+    "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet.",
+    "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort."
   },
   "meta_events": {
     "vb": {
@@ -5417,22 +5418,29 @@
           "npc": "Leivas",
           "map": "Arborstone",
           "tip": {
-            "fr": "Max 5/semaine chez Leivas (maîtrise Globalization requise) — 1 po ou 10 Green Prophet Shards ou 10 Unusual Coins ou 100 Imperial Favors ou 7 000 karma.",
-            "en": "Max 5/week from Leivas (Globalization mastery required) — 1g or 10 Green Prophet Shards or 10 Unusual Coins or 100 Imperial Favours or 7,000 karma."
+            "fr": "Max 5/semaine chez Leivas (maîtrise Globalization requise) — 5 contreparties distinctes, 1/semaine chacune : 1 po, 10 Green Prophet Shards, 10 Unusual Coins, 100 Imperial Favors, 7 000 karma.",
+            "en": "Max 5/week from Leivas (Globalization mastery required) — 5 distinct cost options, 1/week each: 1g, 10 Green Prophet Shards, 10 Unusual Coins, 100 Imperial Favours, 7,000 karma."
           }
         },
         {
           "type": "meta_drop",
           "tip": {
-            "fr": "Drop du coffre final de la meta Trépas du dragon (1/jour/compte). Aussi Dragonstorm et Drakkar (rare).",
-            "en": "Drops from the final Dragon's End meta chest (1/day/account). Also Dragonstorm and Drakkar (rare)."
+            "fr": "Coffre du héros de Trépas du dragon (choix), 1/jour. ⚠ C'est la SEULE méta qui en donne : aucun autre coffre de méta EoD, ni Dragonstorm, ni Drakkar.",
+            "en": "Dragon's End: Hero's Choice Chest (choice), 1/day. ⚠ It is the ONLY meta that grants them: no other EoD meta chest, not Dragonstorm, not Drakkar."
+          }
+        },
+        {
+          "type": "strike_cm",
+          "tip": {
+            "fr": "1/semaine par strike EoD en Challenge Mode (5 strikes) : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion.",
+            "en": "1/week per EoD strike mission in Challenge Mode (5 strikes): Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court."
           }
         },
         {
           "type": "tp",
           "tip": {
-            "fr": "Achat au TP — recommandé pour accélérer (cap naturel ~9 semaines sans achat).",
-            "en": "Buy on TP — recommended to speed up (natural cap ~9 weeks without purchase)."
+            "fr": "Achat au TP — le seul moyen de casser le plafond de 17/semaine.",
+            "en": "Buy on TP — the only way to break the 17/week ceiling."
           }
         }
       ],
@@ -5456,18 +5464,33 @@
       },
       "timegate": true,
       "timegate_note": {
-        "fr": "Cap ~5/semaine chez Leivas + drop quotidien Trépas du dragon. ~9 semaines minimum sans achats au TP.",
-        "en": "Cap ~5/week Leivas + daily Dragon's End drop. ~9 weeks minimum without TP purchases."
+        "fr": "17/semaine au maximum : 7 via Trépas du dragon (1/jour) + 5 chez Leivas + 5 en strikes CM. 100 pierres par arme gen3 → ~6 semaines en cumulant tout, 20 semaines chez Leivas seul.",
+        "en": "17/week maximum: 7 from Dragon's End (1/day) + 5 from Leivas + 5 from strike CMs. 100 stones per gen3 weapon → ~6 weeks stacking everything, 20 weeks from Leivas alone."
       },
-      "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Time-gate ~5/sem via vendors EoD, achetable TP.",
+      "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Plafond 17/semaine, achetable TP.",
       "kind": "acquire",
       "best": "meta_drop",
       "best_reason": {
-        "fr": "garanti en méta quotidienne — coût marginal nul",
-        "en": "guaranteed daily meta reward — zero marginal cost"
+        "fr": "seule méta qui en donne, 1/jour garanti au choix du coffre — coût marginal nul",
+        "en": "the only meta granting them, guaranteed 1/day as a chest choice — zero marginal cost"
       },
       "cadence": {
         "sources": [
+          {
+            "label": {
+              "fr": "Trépas du dragon (Coffre du héros)",
+              "en": "Dragon's End (Hero's Choice Chest)"
+            },
+            "period": "day",
+            "cap": 1,
+            "cost": {
+              "fr": "Choix du coffre final de la méta. Confirmé en jeu par Antoine (13/08/2026) : aucune autre méta EoD ne propose la pierre — la limite n'est donc pas partagée entre métas, elle n'existe que pour celle-ci. Soit 7/semaine.",
+              "en": "Chosen from the meta's final chest. Confirmed in game by Antoine (2026-08-13): no other EoD meta offers the stone — the limit is not shared across metas, it exists only for this one. So 7/week."
+            },
+            "verified": true,
+            "checked": "2026-08-13",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition + observation en jeu"
+          },
           {
             "label": {
               "fr": "Leivas (Arborstone)",
@@ -5480,38 +5503,38 @@
               "en": "5 distinct cost options, each capped at 1/week. Requires the Globalization mastery."
             },
             "verified": true,
-            "checked": "2026-08-11",
+            "checked": "2026-08-13",
             "ref": "wiki:Antique_Summoning_Stone#Acquisition"
           },
           {
             "label": {
-              "fr": "Raids EoD en Challenge Mode",
-              "en": "EoD raids in Challenge Mode"
+              "fr": "Strikes EoD en Challenge Mode",
+              "en": "EoD strike missions in Challenge Mode"
             },
             "period": "week",
             "cap": 5,
             "cost": {
-              "fr": "1 par CM et par semaine : Aetherblade Hideout, Harvest Temple, Kaineng Overlook, Xunlai Jade Junkyard, Old Lion's Court.",
-              "en": "1 per CM per week: Aetherblade Hideout, Harvest Temple, Kaineng Overlook, Xunlai Jade Junkyard, Old Lion's Court."
+              "fr": "1 par strike CM et par semaine : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. (Ce sont des strikes, pas des raids.)",
+              "en": "1 per strike CM per week: Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. (These are strikes, not raids.)"
             },
             "verified": true,
-            "checked": "2026-08-11",
+            "checked": "2026-08-13",
             "ref": "wiki:Antique_Summoning_Stone#Acquisition"
           },
           {
             "label": {
-              "fr": "Coffres et échanges",
-              "en": "Chests and exchanges"
+              "fr": "Appoints hors cadence",
+              "en": "Off-cadence extras"
             },
             "period": "week",
             "cap": null,
             "cost": {
-              "fr": "Dragon's End: Hero's Choice Chest, End of Dragons Reward Coffer (5, répétable), Gharr Leadclaw, Wizard's Gobbler, Portable Wizard's Tower Exchange. Boîtes Zephyrite au hasard. ⚠ Observation d'Antoine (11/08/2026), NON confirmée par le wiki : 1 pierre par coffre et par jour, sans certitude que la limite soit par méta distincte ou partagée entre les métas EoD.",
-              "en": "Dragon's End: Hero's Choice Chest, End of Dragons Reward Coffer (5, repeatable), Gharr Leadclaw, Wizard's Gobbler, Portable Wizard's Tower Exchange. Zephyrite boxes by chance. ⚠ Antoine's in-game observation (2026-08-11), NOT confirmed by the wiki: 1 stone per chest per day, unclear whether the limit is per distinct meta or shared across EoD metas."
+              "fr": "Gharr Leadclaw et l'Échange de la Tour du sorcier portable (1 pièce l'unité) ; coffres Zéphyrite au hasard, uniquement pendant le Festival des Quatre Vents. Anecdotique, ne pas budgéter dessus.",
+              "en": "Gharr Leadclaw and the Portable Wizard's Tower Exchange (1 apiece); Zephyrite boxes by chance, Festival of the Four Winds only. Anecdotal, do not budget on it."
             },
-            "verified": false,
-            "checked": "2026-08-11",
-            "ref": "observation en jeu — à confirmer"
+            "verified": true,
+            "checked": "2026-08-13",
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
           },
           {
             "label": {
@@ -5531,8 +5554,8 @@
         ]
       },
       "note": {
-        "fr": "10 pierres/semaine plafonnées : 5 chez Leivas (maîtrise Globalization requise) + 5 via les Challenge Modes EoD. Une arme gen3 en demande 100, soit 10 semaines minimum par le seul plafond — c'est le principal timegate des gen3. Les coffres et les 5 succès Revenge s'y ajoutent hors plafond, mais les succès ne sont obtenables qu'une fois.",
-        "en": "10 capped stones/week: 5 from Leivas (Globalization mastery required) + 5 from EoD Challenge Modes. A gen3 weapon needs 100, so 10 weeks minimum on caps alone — the main gen3 timegate. Chests and the 5 Revenge achievements add to that off-cap, but the achievements are one-off."
+        "fr": "17 pierres/semaine au plafond : 7 via Trépas du dragon (1/jour, seule méta concernée), 5 chez Leivas (maîtrise Globalization) et 5 via les strikes EoD en Challenge Mode. Une arme gen3 en demande 100 : ~6 semaines en cumulant les trois, 20 semaines chez Leivas seul. C'est le principal timegate des gen3. Les 5 succès Revenge s'y ajoutent une seule fois.",
+        "en": "17 stones/week at cap: 7 from Dragon's End (1/day, the only meta involved), 5 from Leivas (Globalization mastery) and 5 from EoD strike missions in Challenge Mode. A gen3 weapon needs 100: ~6 weeks stacking all three, 20 weeks from Leivas alone. This is the main gen3 timegate. The 5 Revenge achievements add to it once."
       }
     },
     "jade_runestone": {
