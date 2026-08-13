@@ -31,6 +31,15 @@ FORBIDDEN_KEYS = {
 
 SCHEMA = {"name", "threshold", "source", "verified", "achievements", "notes"}
 
+# Champs dont la valeur est deja fournie par l'API ou par meta_eligible. Les
+# stocker cree une seconde source de verite qui derive en silence.
+DUPLICATED_KEYS = {
+    "mastery_required": "seuil — dernier palier de tiers[] cote API",
+    "mastery_max": "pool — longueur de meta_eligible[<id>].achievements",
+    "tier_max": "seuil — dernier palier de tiers[] cote API",
+    "bits_count": "nombre de bits — longueur de bits[] cote API",
+}
+
 
 def latest_sources() -> Path:
     files = sorted(
@@ -53,6 +62,80 @@ def load_ref():
             for a in arr:
                 names[a["id"]] = a["name"]
     return names
+
+
+def walk_dupes(node, path, hits):
+    """Champs qui redupliquent une donnee disponible ailleurs."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k in DUPLICATED_KEYS:
+                hits.append((f"{path}/{k}", DUPLICATED_KEYS[k]))
+            walk_dupes(v, f"{path}/{k}", hits)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            walk_dupes(v, f"{path}[{i}]", hits)
+
+
+def walk_provenance(node, path, hits):
+    """Toute valeur portant ref ou verified doit porter les trois champs."""
+    if isinstance(node, dict):
+        marks = {k for k in ("verified", "checked", "ref") if k in node}
+        if marks and marks != {"verified", "checked", "ref"}:
+            # verified seul est tolere dans meta_eligible, ou il porte la date.
+            if not (marks == {"verified"} and isinstance(node.get("verified"), str)):
+                hits.append((path, sorted(marks), sorted({"verified", "checked", "ref"} - marks)))
+        if node.get("verified") is False and not node.get("ref"):
+            hits.append((path, ["verified:false"], ["ref expliquant pourquoi"]))
+        for k, v in node.items():
+            walk_provenance(v, f"{path}/{k}", hits)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            walk_provenance(v, f"{path}[{i}]", hits)
+
+
+def check_karma_budgets(data, errors, warnings):
+    """Somme des lignes = total, et chaque sub/bit reference doit exister."""
+    def visit(node, path):
+        if isinstance(node, dict):
+            if "karma_budget" in node:
+                kb = node["karma_budget"]
+                lines = kb.get("lines") or []
+                total = sum(l.get("amount", 0) for l in lines)
+                if kb.get("total") != total:
+                    errors.append(
+                        f"{path}/karma_budget : total annonce {kb.get('total')} "
+                        f"contre {total} en sommant les lignes"
+                    )
+                for l in lines:
+                    per, bits = l.get("per"), l.get("bits")
+                    if per and bits and l.get("amount") != per * len(bits):
+                        errors.append(
+                            f"{path}/karma_budget : ligne '{_lbl(l)}' annonce {l.get('amount')} "
+                            f"contre {per} x {len(bits)}"
+                        )
+                    subs = node.get("subcollections") or {}
+                    sub = l.get("sub")
+                    if sub and subs and sub not in subs:
+                        errors.append(f"{path}/karma_budget : sous-collection inconnue '{sub}'")
+                    elif sub and subs:
+                        known = {i.get("bit") for i in subs[sub].get("items", [])}
+                        for b in ([l["bit"]] if "bit" in l else (bits or [])):
+                            if known and b not in known:
+                                errors.append(
+                                    f"{path}/karma_budget : ligne '{_lbl(l)}' vise le bit {b} "
+                                    f"absent de {sub}"
+                                )
+            for k, v in node.items():
+                visit(v, f"{path}/{k}")
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                visit(v, f"{path}[{i}]")
+    visit(data, "")
+
+
+def _lbl(line):
+    lab = line.get("label")
+    return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
 
 
 def walk(node, path, hits):
@@ -81,7 +164,22 @@ def main() -> int:
     for h in hits:
         errors.append(f"liste curee hors de meta_eligible : {h}")
 
-    # 2. Integrite de chaque entree de meta_eligible
+    # 2. Champs qui redupliquent une donnee disponible ailleurs
+    dupes = []
+    walk_dupes(data, "", dupes)
+    for where, why in dupes:
+        errors.append(f"donnee dupliquee : {where} ({why})")
+
+    # 3. Provenance : verified / checked / ref vont ensemble
+    prov = []
+    walk_provenance(data, "", prov)
+    for where, has, miss in prov:
+        warnings.append(f"provenance incomplete : {where} porte {has}, il manque {miss}")
+
+    # 4. Coherence des budgets karma
+    check_karma_budgets(data, errors, warnings)
+
+    # 5. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
@@ -126,6 +224,7 @@ def main() -> int:
             )
 
     print(f"Fichier   : {path.name}")
+    print(f"Duplications : {len(dupes)} · provenance incomplete : {len(prov)}")
     print(f"Metas     : {len(metas)} / {total} objectifs cures")
     print(f"Referentiel : {'charge' if names else 'ABSENT — validation des ids sautee'}")
 

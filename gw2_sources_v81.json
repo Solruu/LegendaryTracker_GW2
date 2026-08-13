@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v80",
+    "version": "v81",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -939,7 +939,12 @@
       "en": "Eligible-objective lists for counter-type metas. The API publishes neither bits nor a child list for these: the wiki 'Objectives' block is the only exact source. The API category is NOT a substitute — it holds non-eligible achievements and misses eligible ones filed elsewhere."
     },
     "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee.",
-    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans."
+    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans.",
+    "achievement_notes_note": {
+      "fr": "Pièges éditoriaux, indexés par id de succès. Réservé à ce que le score d'effort ne peut pas calculer : coût en or, exclusions mutuelles, population morte. Affiché sous l'étape concernée.",
+      "en": "Editorial traps, keyed by achievement id. Reserved for what the effort score cannot compute: gold cost, mutual exclusions, dead population. Rendered under the relevant step."
+    },
+    "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40."
   },
   "meta_events": {
     "vb": {
@@ -11861,7 +11866,8 @@
                     "amount": 50,
                     "unbound_magic": 5000,
                     "ref": "guildjen + gamergalexe",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12269,7 +12275,8 @@
                     "amount": 50,
                     "karma": 210000,
                     "ref": "wiki:Jade_Shard#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12284,7 +12291,8 @@
                     "amount": 50,
                     "karma": 210000,
                     "ref": "wiki:Jade_Shard#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12458,7 +12466,8 @@
                     "amount": 200,
                     "karma": 315000,
                     "ref": "wiki:Orrian_Pearl#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12574,7 +12583,8 @@
                 "sub": "aurora_sl",
                 "bit": 1,
                 "verified": true,
-                "ref": "wiki:Orrian_Pearl#Currency_for"
+                "ref": "wiki:Orrian_Pearl#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12592,7 +12602,8 @@
                   6
                 ],
                 "verified": true,
-                "ref": "guildjen + gamergalexe"
+                "ref": "guildjen + gamergalexe",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12603,7 +12614,8 @@
                 "sub": "aurora_ld",
                 "bit": 13,
                 "verified": true,
-                "ref": "wiki:Jade_Shard#Currency_for"
+                "ref": "wiki:Jade_Shard#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12614,7 +12626,8 @@
                 "sub": "aurora_ld",
                 "bit": 14,
                 "verified": true,
-                "ref": "wiki:Jade_Shard#Currency_for"
+                "ref": "wiki:Jade_Shard#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12633,7 +12646,8 @@
                   7
                 ],
                 "verified": true,
-                "ref": "gamergalexe:lake-doric-master"
+                "ref": "gamergalexe:lake-doric-master",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12651,7 +12665,8 @@
                   8
                 ],
                 "verified": true,
-                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)"
+                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12668,7 +12683,8 @@
                   6
                 ],
                 "verified": true,
-                "ref": "gamergalexe:bitterfrost-frontier-master"
+                "ref": "gamergalexe:bitterfrost-frontier-master",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12679,7 +12695,8 @@
                 "sub": "aurora_bfr",
                 "bit": 13,
                 "verified": true,
-                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir"
+                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -12696,7 +12713,8 @@
                   5
                 ],
                 "verified": false,
-                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif"
+                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif",
+                "checked": "2026-08-13"
               }
             ],
             "gaps": {
@@ -15126,7 +15144,8 @@
         ]
       ],
       "notes": [
-        "Patron (3127) est classe dans la categorie « Tradesman » et non « Rising Flames »"
+        "Patron (3127) est classe dans la categorie « Tradesman » et non « Rising Flames »",
+        "Patron (3127) est classe sous Tradesman et compte pourtant pour le meta — note confirmee sur la page wiki. Il coute ~1 000 po, voir achievement_notes."
       ]
     },
     "3171": {
@@ -15520,6 +15539,16 @@
           "Rock Collector"
         ]
       ]
+    }
+  },
+  "achievement_notes": {
+    "3127": {
+      "label": "Patron",
+      "fr": "⚠ Piège : exige un contrat de mécénat acheté au maître de piste pour ~1 000 po. Le score d'effort ne voit pas l'or. Rising Flames n'en demande que 23 sur 30 — laisse-le de côté, c'est le plus cher des 30 et de loin.",
+      "en": "⚠ Trap: requires a patronage contract bought from the ringmaster for ~1,000 gold. The effort score cannot see gold. Rising Flames only needs 23 of 30 — skip it, it is by far the most expensive of the 30.",
+      "verified": "2026-08-13",
+      "ref": "wiki:Rising_Flames_(achievements) + dulfyreborn",
+      "checked": "2026-08-13"
     }
   }
 }

@@ -691,7 +691,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v80",
+    "version": "v81",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1630,7 +1630,12 @@ const SOURCES_DB = {
       "en": "Eligible-objective lists for counter-type metas. The API publishes neither bits nor a child list for these: the wiki 'Objectives' block is the only exact source. The API category is NOT a substitute — it holds non-eligible achievements and misses eligible ones filed elsewhere."
     },
     "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee.",
-    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans."
+    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans.",
+    "achievement_notes_note": {
+      "fr": "Pièges éditoriaux, indexés par id de succès. Réservé à ce que le score d'effort ne peut pas calculer : coût en or, exclusions mutuelles, population morte. Affiché sous l'étape concernée.",
+      "en": "Editorial traps, keyed by achievement id. Reserved for what the effort score cannot compute: gold cost, mutual exclusions, dead population. Rendered under the relevant step."
+    },
+    "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40."
   },
   "meta_events": {
     "vb": {
@@ -12552,7 +12557,8 @@ const SOURCES_DB = {
                     "amount": 50,
                     "unbound_magic": 5000,
                     "ref": "guildjen + gamergalexe",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12960,7 +12966,8 @@ const SOURCES_DB = {
                     "amount": 50,
                     "karma": 210000,
                     "ref": "wiki:Jade_Shard#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -12975,7 +12982,8 @@ const SOURCES_DB = {
                     "amount": 50,
                     "karma": 210000,
                     "ref": "wiki:Jade_Shard#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -13149,7 +13157,8 @@ const SOURCES_DB = {
                     "amount": 200,
                     "karma": 315000,
                     "ref": "wiki:Orrian_Pearl#Currency_for",
-                    "checked": "2026-08-13"
+                    "checked": "2026-08-13",
+                    "verified": true
                   }
                 },
                 {
@@ -13265,7 +13274,8 @@ const SOURCES_DB = {
                 "sub": "aurora_sl",
                 "bit": 1,
                 "verified": true,
-                "ref": "wiki:Orrian_Pearl#Currency_for"
+                "ref": "wiki:Orrian_Pearl#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13283,7 +13293,8 @@ const SOURCES_DB = {
                   6
                 ],
                 "verified": true,
-                "ref": "guildjen + gamergalexe"
+                "ref": "guildjen + gamergalexe",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13294,7 +13305,8 @@ const SOURCES_DB = {
                 "sub": "aurora_ld",
                 "bit": 13,
                 "verified": true,
-                "ref": "wiki:Jade_Shard#Currency_for"
+                "ref": "wiki:Jade_Shard#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13305,7 +13317,8 @@ const SOURCES_DB = {
                 "sub": "aurora_ld",
                 "bit": 14,
                 "verified": true,
-                "ref": "wiki:Jade_Shard#Currency_for"
+                "ref": "wiki:Jade_Shard#Currency_for",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13324,7 +13337,8 @@ const SOURCES_DB = {
                   7
                 ],
                 "verified": true,
-                "ref": "gamergalexe:lake-doric-master"
+                "ref": "gamergalexe:lake-doric-master",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13342,7 +13356,8 @@ const SOURCES_DB = {
                   8
                 ],
                 "verified": true,
-                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)"
+                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13359,7 +13374,8 @@ const SOURCES_DB = {
                   6
                 ],
                 "verified": true,
-                "ref": "gamergalexe:bitterfrost-frontier-master"
+                "ref": "gamergalexe:bitterfrost-frontier-master",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13370,7 +13386,8 @@ const SOURCES_DB = {
                 "sub": "aurora_bfr",
                 "bit": 13,
                 "verified": true,
-                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir"
+                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir",
+                "checked": "2026-08-13"
               },
               {
                 "label": {
@@ -13387,7 +13404,8 @@ const SOURCES_DB = {
                   5
                 ],
                 "verified": false,
-                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif"
+                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif",
+                "checked": "2026-08-13"
               }
             ],
             "gaps": {
@@ -15817,7 +15835,8 @@ const SOURCES_DB = {
         ]
       ],
       "notes": [
-        "Patron (3127) est classe dans la categorie « Tradesman » et non « Rising Flames »"
+        "Patron (3127) est classe dans la categorie « Tradesman » et non « Rising Flames »",
+        "Patron (3127) est classe sous Tradesman et compte pourtant pour le meta — note confirmee sur la page wiki. Il coute ~1 000 po, voir achievement_notes."
       ]
     },
     "3171": {
@@ -16211,6 +16230,16 @@ const SOURCES_DB = {
           "Rock Collector"
         ]
       ]
+    }
+  },
+  "achievement_notes": {
+    "3127": {
+      "label": "Patron",
+      "fr": "⚠ Piège : exige un contrat de mécénat acheté au maître de piste pour ~1 000 po. Le score d'effort ne voit pas l'or. Rising Flames n'en demande que 23 sur 30 — laisse-le de côté, c'est le plus cher des 30 et de loin.",
+      "en": "⚠ Trap: requires a patronage contract bought from the ringmaster for ~1,000 gold. The effort score cannot see gold. Rising Flames only needs 23 of 30 — skip it, it is by far the most expensive of the 30.",
+      "verified": "2026-08-13",
+      "ref": "wiki:Rising_Flames_(achievements) + dulfyreborn",
+      "checked": "2026-08-13"
     }
   }
 };
@@ -16740,7 +16769,8 @@ const LEGENDARIES = {
           { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
         ] },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
-        farmType: "per_account", perAccountPerDay: 40, mapNote: "Bloodstone Fen",
+        farmType: "per_account", perAccountPerDay: 12, mapNote: "Bloodstone Fen",
+        aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
         extras: [{ amount: 50, sub: "aurora_bf", bit: 7, label: { fr: "Rubis de sang immaculé (Natto) — 50 rubis + 5 000 magie déchaînée", en: "Pristine Blood Ruby (Natto) — 50 rubies + 5,000 Unbound Magic" } }] },
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899,
         farmType: "per_char", perCharPerDay: 60, mapNote: "Bitterfrost Frontier" },
@@ -17806,7 +17836,7 @@ const LEGENDARIES = {
         unlock: { fr: "🔓 Finir la collection I ne suffit PAS : acheter d'abord la recette du dos Tier 1 chez BUY-4373 et CRAFTER Finite Result. Ensuite seulement, retourner voir Kelvei → « Theory of the Upper Bound » → double-clic.", en: "🔓 Finishing collection I is NOT enough: first buy the Tier 1 back recipe from BUY-4373 and CRAFT Finite Result. Only then return to Kelvei → 'Theory of the Upper Bound' → double-click." },
         tip: { fr: "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.", en: "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta." } },
       { key: "adinf_3", achievementId: 2368,
-        bitTips: {"0": {"fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 40 Reliques fractales immaculées.", "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."}, "1": {"fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.", "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."}, "2": {"fr": "Particule de défi volcanique : activer le mote et finir la fractale Volcanique ÉCHELLE 28, avec -80 % de soins.", "en": "Volcanic Challenge Mote: activate the mote and clear the Volcanic fractal at SCALE 28, with an 80% healing reduction."}, "3": {"fr": "Particule de défi de Flanc de falaise : mote activé, Flanc de falaise ÉCHELLE 21, -80 % de soins. ⚠ Des joueurs rapportent que l'occurrence valide est en réalité à l'échelle 46 — si le mote ne valide rien en 21, refais-le en 46.", "en": "Cliffside Challenge Mote: mote activated, Cliffside at SCALE 21, 80% healing reduction. ⚠ Players report the valid instance is actually scale 46 — if scale 21 doesn't credit, redo it at 46."}, "4": {"fr": "Particule de défi du boss de la Fusion : finir la fractale Boss en fusion ÉCHELLE 10 en moins de 5 minutes.", "en": "Molten Boss Timed Mote: clear the Molten Boss fractal at SCALE 10 in under 5 minutes."}, "5": {"fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.", "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."}, "6": {"fr": "Rapport de bug du Gros Tom (Il est mort) : interagir avec les Restes du golem d'essai de Vexa, dans le puzzle de saut du Labo de Vexa (Rive d'Ardentcœur), sur la plateforme au sud-est → tu reçois le Lecteur de diagnostic. Ni Vexa ni son golem n'ont besoin d'être tués. Ensuite, analyser les restes du Gros Tom en fin de fractale Non répertorié.", "en": "Old Tom's Vital Reading (He's Dead): interact with Vexa's Test-Golem Remains in the Vexa's Lab jumping puzzle (Fireheart Rise), on the platform to the southeast → you get Vexa's Golem Diagnostic Reader. Neither Vexa nor her golem needs to be killed. Then analyse Old Tom's remains at the end of the Uncategorized fractal."}, "7": {"fr": "Trésor perdu de Rabsovich : tuer le champion Rabsovich dans le Complexe souterrain → Clé du casier ; puis ouvrir le Casier de Rabsovich au sud-ouest des Falaises de Bourreloup, zone d'excavation Dociu [&BFgCAAA=].", "en": "Rabsovich's Lost Treasure: kill Champion Rabsovich in the Underground Facility fractal → Rabsovich's Locker Key; then open Rabsovich's Locker southwest of Dredgehaunt Cliffs, Dociu Excavation area [&BFgCAAA=]."}, "8": {"fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).", "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."}, "9": {"fr": "Échantillon d'infusion chargé en magie : charger une infusion d'agonie +8 au Geyser des Brumes d'Aveugle-neige. ⚠ Ne saute pas le combat de la Source élémentaire, sinon le geyser n'apparaît pas ; au lieu d'entrer dans la grotte du boss final, pars vers l'ouest.", "en": "Magically Charged Infusion Sample: charge a +8 Agony Infusion at the Mist Geyser in the Snowblind fractal. ⚠ Don't skip the Elemental Source fight or the geyser won't spawn; instead of entering the final boss cave, head west."}, "10": {"fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.", "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."}},
+        bitTips: {"0": {"fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 40 Reliques fractales immaculées.", "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."}, "1": {"fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.", "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."}, "2": {"fr": "Particule de défi volcanique : activer le mote et finir la fractale Volcanique ÉCHELLE 28, avec -80 % de soins.", "en": "Volcanic Challenge Mote: activate the mote and clear the Volcanic fractal at SCALE 28, with an 80% healing reduction."}, "3": {"fr": "Particule de défi de Flanc de falaise : mote activé, Flanc de falaise ÉCHELLE 46, -80 % de soins. La description de l'objet annonce le palier core (21-50), mais la fractale ne tourne qu'aux échelles 6, 46, 68 et 94 : une seule tombe dans l'intervalle.", "en": "Cliffside Challenge Mote: mote activated, Cliffside at SCALE 46, 80% healing reduction. The item description says core tier (21-50), but the fractal only runs at scales 6, 46, 68 and 94: only one falls in range."}, "4": {"fr": "Particule de défi du boss de la Fusion : finir la fractale Boss en fusion ÉCHELLE 10 en moins de 5 minutes.", "en": "Molten Boss Timed Mote: clear the Molten Boss fractal at SCALE 10 in under 5 minutes."}, "5": {"fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.", "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."}, "6": {"fr": "Rapport de bug du Gros Tom (Il est mort) : interagir avec les Restes du golem d'essai de Vexa, dans le puzzle de saut du Labo de Vexa (Rive d'Ardentcœur), sur la plateforme au sud-est → tu reçois le Lecteur de diagnostic. Ni Vexa ni son golem n'ont besoin d'être tués. Ensuite, analyser les restes du Gros Tom en fin de fractale Non répertorié.", "en": "Old Tom's Vital Reading (He's Dead): interact with Vexa's Test-Golem Remains in the Vexa's Lab jumping puzzle (Fireheart Rise), on the platform to the southeast → you get Vexa's Golem Diagnostic Reader. Neither Vexa nor her golem needs to be killed. Then analyse Old Tom's remains at the end of the Uncategorized fractal."}, "7": {"fr": "Trésor perdu de Rabsovich : tuer le champion Rabsovich dans le Complexe souterrain → Clé du casier ; puis ouvrir le Casier de Rabsovich au sud-ouest des Falaises de Bourreloup, zone d'excavation Dociu [&BFgCAAA=].", "en": "Rabsovich's Lost Treasure: kill Champion Rabsovich in the Underground Facility fractal → Rabsovich's Locker Key; then open Rabsovich's Locker southwest of Dredgehaunt Cliffs, Dociu Excavation area [&BFgCAAA=]."}, "8": {"fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).", "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."}, "9": {"fr": "Échantillon d'infusion chargé en magie : charger une infusion d'agonie +8 au Geyser des Brumes d'Aveugle-neige. ⚠ Ne saute pas le combat de la Source élémentaire, sinon le geyser n'apparaît pas ; au lieu d'entrer dans la grotte du boss final, pars vers l'ouest.", "en": "Magically Charged Infusion Sample: charge a +8 Agony Infusion at the Mist Geyser in the Snowblind fractal. ⚠ Don't skip the Elemental Source fight or the geyser won't spawn; instead of entering the final boss cave, head west."}, "10": {"fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.", "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."}},
         unlock: { fr: "🔓 Crafter Upper Bound (dos Tier 2), puis retourner voir Kelvei → « Theory of the Unbound » → double-clic. Recycler Finite Result une fois Upper Bound crafté (5 Balls of Dark Energy).", en: "🔓 Craft Upper Bound (Tier 2 back), then return to Kelvei → 'Theory of the Unbound' → double-click. Salvage Finite Result once Upper Bound is crafted (5 Balls of Dark Energy)." },
         tip: { fr: "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.", en: "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage." } },
       { key: "adinf_4", achievementId: 2295,
@@ -21100,6 +21130,18 @@ function GW2LegendaryTracker() {
                                                 </div>
                                               );
                                             })}
+                                            {(() => {
+                                              // Pièges que le score d'effort ne peut pas calculer : coût en or,
+                                              // exclusions mutuelles, population morte. Saisie éditoriale.
+                                              const notes = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.achievement_notes ?? {};
+                                              const hits = rest.map(x => notes[String(x.id)]).filter(Boolean);
+                                              if (hits.length === 0) return null;
+                                              return hits.map((n, ni) => (
+                                                <div key={ni} style={{ marginTop: 4, fontSize: 9, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                                                  {NX(n)}
+                                                </div>
+                                              ));
+                                            })()}
                                           </div>
                                         )}
                                       </div>

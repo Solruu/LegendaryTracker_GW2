@@ -157,6 +157,15 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
 - **Toute fonctionnalité transversale** (scoring, détecteurs, i18n) doit être
   vérifiée comme s'appliquant au nouveau cas — pas seulement son affichage.
 - **Avant tout push** : `python3 gw2_audit_v1.py`. Un échec bloque le push.
+  Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
+  aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,
+  `mastery_max`, `tier_max`, `bits_count`), provenance complète (`verified`,
+  `checked` et `ref` vont ensemble ; un `verified: false` sans `ref` est une
+  erreur), et cohérence des budgets karma (somme des lignes = total, `per` ×
+  `bits` = `amount`, chaque `sub`/`bit` référencé existe réellement).
+- **Les pièges non calculables** (coût en or, exclusions mutuelles, population
+  morte) vont dans `achievement_notes`, indexés par id de succès. Le score
+  d'effort ne voit que le volume, les prérequis et les AP.
 - **Préférer un détecteur runtime à un inventaire écrit.** Le nom d'un succès ne
   dit pas sa nature : `Master Diver` ressemble à un méta compteur et porte en
   fait dix bits. Seule l'exécution sait.
