@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v79",
+    "version": "v80",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -938,7 +938,8 @@
       "fr": "Listes d'objectifs eligibles des metas de type compteur. L'API ne publie ni bits ni liste d'enfants pour ces metas : le bloc « Objectives » du wiki est la seule source exacte. La categorie API n'est PAS un substitut — elle contient a la fois des succes non eligibles et il lui manque des succes eligibles classes ailleurs.",
       "en": "Eligible-objective lists for counter-type metas. The API publishes neither bits nor a child list for these: the wiki 'Objectives' block is the only exact source. The API category is NOT a substitute — it holds non-eligible achievements and misses eligible ones filed elsewhere."
     },
-    "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee."
+    "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee.",
+    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans."
   },
   "meta_events": {
     "vb": {
@@ -5441,8 +5442,16 @@
         {
           "type": "strike_cm",
           "tip": {
-            "fr": "1/semaine par strike EoD en Challenge Mode (5 strikes) : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion.",
-            "en": "1/week per EoD strike mission in Challenge Mode (5 strikes): Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court."
+            "fr": "1/semaine par strike EoD en Challenge Mode (5 strikes) : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. ⚠ Contenu de groupe haut niveau : suppose une guilde ou un Discord actif proposant des events réguliers. À la fois complexe et coûteux en temps — ne pas budgéter dessus par défaut.",
+            "en": "1/week per EoD strike mission in Challenge Mode (5 strikes): Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. ⚠ High-end group content: assumes an active guild or Discord running regular events. Both complex and time-expensive — don't budget on it by default."
+          },
+          "tier": {
+            "fr": "contenu de groupe haut niveau / end-game intense",
+            "en": "high-end group content / intense end-game"
+          },
+          "weight": {
+            "complexity": "high",
+            "time_cost": "high"
           }
         },
         {
@@ -5473,8 +5482,8 @@
       },
       "timegate": true,
       "timegate_note": {
-        "fr": "17/semaine au maximum : 7 via Trépas du dragon (1/jour) + 5 chez Leivas + 5 en strikes CM. 100 pierres par arme gen3 → ~6 semaines en cumulant tout, 20 semaines chez Leivas seul.",
-        "en": "17/week maximum: 7 from Dragon's End (1/day) + 5 from Leivas + 5 from strike CMs. 100 stones per gen3 weapon → ~6 weeks stacking everything, 20 weeks from Leivas alone."
+        "fr": "17/semaine au maximum, mais seulement 12 sans les strikes CM — ceux-ci relèvent du contenu de groupe haut niveau. 100 pierres par arme gen3 : ~6 semaines tout cumulé, ~8,5 semaines sans les CM, 20 semaines chez Leivas seul.",
+        "en": "17/week at most, but only 12 without strike CMs — those are high-end group content. 100 stones per gen3 weapon: ~6 weeks stacking everything, ~8.5 weeks without CMs, 20 weeks from Leivas alone."
       },
       "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Plafond 17/semaine, achetable TP.",
       "kind": "acquire",
@@ -5523,12 +5532,20 @@
             "period": "week",
             "cap": 5,
             "cost": {
-              "fr": "1 par strike CM et par semaine : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. (Ce sont des strikes, pas des raids.)",
-              "en": "1 per strike CM per week: Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. (These are strikes, not raids.)"
+              "fr": "1 par strike CM et par semaine : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. (Ce sont des strikes, pas des raids.) ⚠ Haut niveau : nécessite une guilde ou un Discord actif. Complexe ET coûteux en temps.",
+              "en": "1 per strike CM per week: Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. (These are strikes, not raids.) ⚠ High-end: requires an active guild or Discord. Both complex AND time-expensive."
             },
             "verified": true,
             "checked": "2026-08-13",
-            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition",
+            "tier": {
+              "fr": "contenu de groupe haut niveau / end-game intense",
+              "en": "high-end group content / intense end-game"
+            },
+            "weight": {
+              "complexity": "high",
+              "time_cost": "high"
+            }
           },
           {
             "label": {
@@ -11782,11 +11799,6 @@
                     "fr": "Maîtrise « Out of the Shadows »",
                     "en": "\"Out of the Shadows\" Mastery"
                   },
-                  "mastery_required": 18,
-                  "mastery_max": 19,
-                  "mastery_verified": true,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen+dulfy 2026-08-13",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Marais de la pierre de sang » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Bloodstone Fen' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -11897,11 +11909,6 @@
                   "bit": 0,
                   "mastery_achi_id": 3123,
                   "mastery_label": "\"Rising Flames\" Mastery",
-                  "mastery_required": 23,
-                  "mastery_max": 30,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 (dulfy annonce 29 eligibles — ecart non tranche)",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Baie des braises » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Ember Bay' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12036,11 +12043,6 @@
                     "fr": "Maîtrise « A Crack in the Ice »",
                     "en": "\"A Crack in the Ice\" Mastery"
                   },
-                  "mastery_required": 21,
-                  "mastery_max": null,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Bordefrisque » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Bitterfrost Frontier' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12169,11 +12171,6 @@
                     "fr": "Maîtrise « The Head of the Snake »",
                     "en": "\"The Head of the Snake\" Mastery"
                   },
-                  "mastery_required": 28,
-                  "mastery_max": 32,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "non verifie — valeurs heritees, a confirmer",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Lac Doric » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Lake Doric' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12318,11 +12315,6 @@
                   "bit": 0,
                   "mastery_achi_id": 3442,
                   "mastery_label": "\"Flashpoint\" Mastery",
-                  "mastery_required": 20,
-                  "mastery_max": null,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Mont Draconis » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Draconis Mons' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12449,11 +12441,6 @@
                   "bit": 0,
                   "mastery_achi_id": 3516,
                   "mastery_label": "\"One Path Ends\" Mastery",
-                  "mastery_required": 36,
-                  "mastery_max": 36,
-                  "mastery_verified": true,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "API (miroir gw2treasures) 2026-08-13 : paliers 1/5/10/15/25/36",
                   "alt": {
                     "fr": "Alternative sans succès : la piste de récompense « Plage des sirènes » (McM ou PvP) rend au choix la Boîte de brogans mursaat ou un coffre-fort de 50 perles orriennes. ⚠ Non répétable depuis mars 2025 — ses récompenses passent désormais par la piste répétable Monde vivant Saison 3.",
                     "en": "Achievement-free alternative: the 'Siren's Landing' reward track (WvW or PvP) grants either the Mursaat Brogan Box or a strongbox of 50 Orrian Pearls. ⚠ Non-repeatable since March 2025 — its rewards now come from the repeatable Living World Season 3 track."
@@ -12575,13 +12562,13 @@
             }
           },
           "karma_budget": {
-            "total": 840000,
+            "total": 904050,
             "threshold_display": 100000,
             "lines": [
               {
                 "label": {
-                  "fr": "Relique d'un dieu (Plage des sirènes)",
-                  "en": "God's Relic backpack (Siren's Landing)"
+                  "fr": "Relique d'un dieu — Plage des sirènes",
+                  "en": "God's Relic backpack — Siren's Landing"
                 },
                 "amount": 315000,
                 "sub": "aurora_sl",
@@ -12591,8 +12578,8 @@
               },
               {
                 "label": {
-                  "fr": "Faveurs des cinq dieux",
-                  "en": "Favors of the five gods"
+                  "fr": "Faveurs des cinq dieux — Plage des sirènes",
+                  "en": "Favors of the five gods — Siren's Landing"
                 },
                 "amount": 35000,
                 "per": 7000,
@@ -12605,12 +12592,12 @@
                   6
                 ],
                 "verified": true,
-                "ref": "guildjen:sirens-landing-master-guide"
+                "ref": "guildjen + gamergalexe"
               },
               {
                 "label": {
-                  "fr": "Protecteur seraph (Lac Doric)",
-                  "en": "Seraph Protector (Lake Doric)"
+                  "fr": "Protecteur seraph — Lac Doric",
+                  "en": "Seraph Protector — Lake Doric"
                 },
                 "amount": 210000,
                 "sub": "aurora_ld",
@@ -12620,8 +12607,8 @@
               },
               {
                 "label": {
-                  "fr": "Bâton du savant (Lac Doric)",
-                  "en": "Bloodstone Savant's Staff (Lake Doric)"
+                  "fr": "Bâton du savant — Lac Doric",
+                  "en": "Bloodstone Savant's Staff — Lake Doric"
                 },
                 "amount": 210000,
                 "sub": "aurora_ld",
@@ -12631,8 +12618,8 @@
               },
               {
                 "label": {
-                  "fr": "Objets de cœur du Lac Doric",
-                  "en": "Lake Doric heart items"
+                  "fr": "Objets de cœur — Lac Doric",
+                  "en": "Heart items — Lake Doric"
                 },
                 "amount": 42000,
                 "per": 7000,
@@ -12646,12 +12633,58 @@
                   7
                 ],
                 "verified": true,
-                "ref": "guildjen:lake-doric-master-guide"
+                "ref": "gamergalexe:lake-doric-master"
               },
               {
                 "label": {
-                  "fr": "Objets de cœur du Mont Draconis",
-                  "en": "Draconis Mons heart items"
+                  "fr": "Objets de cœur — Baie des braises",
+                  "en": "Heart items — Ember Bay"
+                },
+                "amount": 35000,
+                "per": 7000,
+                "sub": "aurora_eb",
+                "bits": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "verified": true,
+                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur — Confins de Givramer",
+                  "en": "Heart items — Bitterfrost Frontier"
+                },
+                "amount": 28000,
+                "per": 7000,
+                "sub": "aurora_bfr",
+                "bits": [
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "verified": true,
+                "ref": "gamergalexe:bitterfrost-frontier-master"
+              },
+              {
+                "label": {
+                  "fr": "Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer",
+                  "en": "Grawl Firestone (Bitter Cold elixir) — Bitterfrost Frontier"
+                },
+                "amount": 1050,
+                "sub": "aurora_bfr",
+                "bit": 13,
+                "verified": true,
+                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur — Mont Draconis",
+                  "en": "Heart items — Draconis Mons"
                 },
                 "amount": 28000,
                 "per": 7000,
@@ -12663,12 +12696,12 @@
                   5
                 ],
                 "verified": false,
-                "ref": "estimation par analogie — prix unitaire non confirme"
+                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif"
               }
             ],
             "gaps": {
-              "fr": "Les objets de cœur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffrés.",
-              "en": "Heart items for Bloodstone Fen, Ember Bay and Bitterfrost Frontier are not costed yet."
+              "fr": "Marais de la pierre de sang ne coûte aucun karma : tous ses objets sont des drops, de la récolte ou l'achat chez Natto (rubis + magie déchaînée). Seule incertitude restante : 3 des 4 objets du Mont Draconis, supposés à 7 000 comme ailleurs.",
+              "en": "Bloodstone Fen costs no karma: all its items are drops, gathering, or the Natto purchase (rubies + Unbound Magic). Only remaining uncertainty: 3 of the 4 Draconis Mons items, assumed at 7,000 like elsewhere."
             }
           }
         },

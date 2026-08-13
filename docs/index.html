@@ -264,6 +264,10 @@ const I18N = {
     diag_counts: "{w} curated from the wiki · {c} falling back to their API category",
     diag_none: "Every downloaded counter-meta resolves to a step list.",
     diag_threshold: "threshold {n}",
+    diag_scope: "This panel only covers the legendary currently open.",
+    diag_scan: "⟳ Scan every legendary (one-off)",
+    diag_scanning: "Scanning…",
+    diag_all_done: "Global scan: {n} achievements checked, {g} without a step list.",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -476,6 +480,10 @@ const I18N = {
     diag_counts: "{w} curés depuis le wiki · {c} repliés sur leur catégorie API",
     diag_none: "Tous les métas compteurs téléchargés ont une liste d'étapes.",
     diag_threshold: "seuil {n}",
+    diag_scope: "Ce panneau ne couvre que le légendaire actuellement ouvert.",
+    diag_scan: "⟳ Balayer tous les légendaires (ponctuel)",
+    diag_scanning: "Balayage en cours…",
+    diag_all_done: "Balayage global : {n} succès contrôlés, {g} sans liste d'étapes.",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -683,7 +691,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v79",
+    "version": "v80",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1621,7 +1629,8 @@ const SOURCES_DB = {
       "fr": "Listes d'objectifs eligibles des metas de type compteur. L'API ne publie ni bits ni liste d'enfants pour ces metas : le bloc « Objectives » du wiki est la seule source exacte. La categorie API n'est PAS un substitut — elle contient a la fois des succes non eligibles et il lui manque des succes eligibles classes ailleurs.",
       "en": "Eligible-objective lists for counter-type metas. The API publishes neither bits nor a child list for these: the wiki 'Objectives' block is the only exact source. The API category is NOT a substitute — it holds non-eligible achievements and misses eligible ones filed elsewhere."
     },
-    "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee."
+    "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee.",
+    "changelog_v80": "Deux corrections et un chiffrage. D'abord, suppression des champs mastery_required et mastery_max des six sous-collections d'Aurora : depuis que le seuil est lu dans l'API et le pool dans meta_eligible, ces valeurs etaient une seconde source de verite, et elles avaient deja derive — le pool du Lac Doric annoncait 32 contre 39 reels, One Path Ends 36 contre 42. Ensuite, budget karma complete par les trois cartes manquantes : Baie des braises 35 000 (cinq objets de coeur a 7 000, vendeurs nommes un par un), Confins de Givramer 28 000 plus 1 050 pour la Pierre de feu grawl — un cout jamais compte, prerequis de l'elixir qui ouvre The Bitter Cold. Marais de la pierre de sang ne coute aucun karma, tous ses objets etant des drops, de la recolte ou l'achat chez Natto. Total porte de 840 000 a 904 050. Seule incertitude restante : trois des quatre objets du Mont Draconis, dont un seul est confirme comme achat de vendeur de coeur. Les strikes EoD en Challenge Mode sont desormais ponderes comme contenu de groupe haut niveau, complexes et couteux en temps, et le timegate affiche les deux scenarios : ~6 semaines avec les CM, ~8,5 sans."
   },
   "meta_events": {
     "vb": {
@@ -6124,8 +6133,16 @@ const SOURCES_DB = {
         {
           "type": "strike_cm",
           "tip": {
-            "fr": "1/semaine par strike EoD en Challenge Mode (5 strikes) : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion.",
-            "en": "1/week per EoD strike mission in Challenge Mode (5 strikes): Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court."
+            "fr": "1/semaine par strike EoD en Challenge Mode (5 strikes) : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. ⚠ Contenu de groupe haut niveau : suppose une guilde ou un Discord actif proposant des events réguliers. À la fois complexe et coûteux en temps — ne pas budgéter dessus par défaut.",
+            "en": "1/week per EoD strike mission in Challenge Mode (5 strikes): Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. ⚠ High-end group content: assumes an active guild or Discord running regular events. Both complex and time-expensive — don't budget on it by default."
+          },
+          "tier": {
+            "fr": "contenu de groupe haut niveau / end-game intense",
+            "en": "high-end group content / intense end-game"
+          },
+          "weight": {
+            "complexity": "high",
+            "time_cost": "high"
           }
         },
         {
@@ -6156,8 +6173,8 @@ const SOURCES_DB = {
       },
       "timegate": true,
       "timegate_note": {
-        "fr": "17/semaine au maximum : 7 via Trépas du dragon (1/jour) + 5 chez Leivas + 5 en strikes CM. 100 pierres par arme gen3 → ~6 semaines en cumulant tout, 20 semaines chez Leivas seul.",
-        "en": "17/week maximum: 7 from Dragon's End (1/day) + 5 from Leivas + 5 from strike CMs. 100 stones per gen3 weapon → ~6 weeks stacking everything, 20 weeks from Leivas alone."
+        "fr": "17/semaine au maximum, mais seulement 12 sans les strikes CM — ceux-ci relèvent du contenu de groupe haut niveau. 100 pierres par arme gen3 : ~6 semaines tout cumulé, ~8,5 semaines sans les CM, 20 semaines chez Leivas seul.",
+        "en": "17/week at most, but only 12 without strike CMs — those are high-end group content. 100 stones per gen3 weapon: ~6 weeks stacking everything, ~8.5 weeks without CMs, 20 weeks from Leivas alone."
       },
       "apiId_note": "96978 vérifié gw2_materials_ref (91024 était faux). Plafond 17/semaine, achetable TP.",
       "kind": "acquire",
@@ -6206,12 +6223,20 @@ const SOURCES_DB = {
             "period": "week",
             "cap": 5,
             "cost": {
-              "fr": "1 par strike CM et par semaine : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. (Ce sont des strikes, pas des raids.)",
-              "en": "1 per strike CM per week: Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. (These are strikes, not raids.)"
+              "fr": "1 par strike CM et par semaine : Repaire étherlame, Décharge de jade Xunlai, Belvédère de Kaineng, Temple des moissons, Vieille Cour du lion. (Ce sont des strikes, pas des raids.) ⚠ Haut niveau : nécessite une guilde ou un Discord actif. Complexe ET coûteux en temps.",
+              "en": "1 per strike CM per week: Aetherblade Hideout, Xunlai Jade Junkyard, Kaineng Overlook, Harvest Temple, Old Lion's Court. (These are strikes, not raids.) ⚠ High-end: requires an active guild or Discord. Both complex AND time-expensive."
             },
             "verified": true,
             "checked": "2026-08-13",
-            "ref": "wiki:Antique_Summoning_Stone#Acquisition"
+            "ref": "wiki:Antique_Summoning_Stone#Acquisition",
+            "tier": {
+              "fr": "contenu de groupe haut niveau / end-game intense",
+              "en": "high-end group content / intense end-game"
+            },
+            "weight": {
+              "complexity": "high",
+              "time_cost": "high"
+            }
           },
           {
             "label": {
@@ -12465,11 +12490,6 @@ const SOURCES_DB = {
                     "fr": "Maîtrise « Out of the Shadows »",
                     "en": "\"Out of the Shadows\" Mastery"
                   },
-                  "mastery_required": 18,
-                  "mastery_max": 19,
-                  "mastery_verified": true,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen+dulfy 2026-08-13",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Marais de la pierre de sang » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Bloodstone Fen' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12580,11 +12600,6 @@ const SOURCES_DB = {
                   "bit": 0,
                   "mastery_achi_id": 3123,
                   "mastery_label": "\"Rising Flames\" Mastery",
-                  "mastery_required": 23,
-                  "mastery_max": 30,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 (dulfy annonce 29 eligibles — ecart non tranche)",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Baie des braises » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Ember Bay' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12719,11 +12734,6 @@ const SOURCES_DB = {
                     "fr": "Maîtrise « A Crack in the Ice »",
                     "en": "\"A Crack in the Ice\" Mastery"
                   },
-                  "mastery_required": 21,
-                  "mastery_max": null,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Bordefrisque » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Bitterfrost Frontier' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -12852,11 +12862,6 @@ const SOURCES_DB = {
                     "fr": "Maîtrise « The Head of the Snake »",
                     "en": "\"The Head of the Snake\" Mastery"
                   },
-                  "mastery_required": 28,
-                  "mastery_max": 32,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "non verifie — valeurs heritees, a confirmer",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Lac Doric » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Lake Doric' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -13001,11 +13006,6 @@ const SOURCES_DB = {
                   "bit": 0,
                   "mastery_achi_id": 3442,
                   "mastery_label": "\"Flashpoint\" Mastery",
-                  "mastery_required": 20,
-                  "mastery_max": null,
-                  "mastery_verified": false,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "guildjen 2026-08-13 — pool eligible non documente, laisse a l API",
                   "alt": {
                     "fr": "Alternative sans succès : terminer la piste de récompense « Mont Draconis » en McM ou en PvP — elle rend la même boîte d'armure. À privilégier si le méta est loin du seuil.",
                     "en": "Achievement-free alternative: complete the 'Draconis Mons' reward track in WvW or PvP — it drops the same armour box. Prefer it when the meta is far from its threshold."
@@ -13132,11 +13132,6 @@ const SOURCES_DB = {
                   "bit": 0,
                   "mastery_achi_id": 3516,
                   "mastery_label": "\"One Path Ends\" Mastery",
-                  "mastery_required": 36,
-                  "mastery_max": 36,
-                  "mastery_verified": true,
-                  "mastery_checked": "2026-08-13",
-                  "mastery_ref": "API (miroir gw2treasures) 2026-08-13 : paliers 1/5/10/15/25/36",
                   "alt": {
                     "fr": "Alternative sans succès : la piste de récompense « Plage des sirènes » (McM ou PvP) rend au choix la Boîte de brogans mursaat ou un coffre-fort de 50 perles orriennes. ⚠ Non répétable depuis mars 2025 — ses récompenses passent désormais par la piste répétable Monde vivant Saison 3.",
                     "en": "Achievement-free alternative: the 'Siren's Landing' reward track (WvW or PvP) grants either the Mursaat Brogan Box or a strongbox of 50 Orrian Pearls. ⚠ Non-repeatable since March 2025 — its rewards now come from the repeatable Living World Season 3 track."
@@ -13258,13 +13253,13 @@ const SOURCES_DB = {
             }
           },
           "karma_budget": {
-            "total": 840000,
+            "total": 904050,
             "threshold_display": 100000,
             "lines": [
               {
                 "label": {
-                  "fr": "Relique d'un dieu (Plage des sirènes)",
-                  "en": "God's Relic backpack (Siren's Landing)"
+                  "fr": "Relique d'un dieu — Plage des sirènes",
+                  "en": "God's Relic backpack — Siren's Landing"
                 },
                 "amount": 315000,
                 "sub": "aurora_sl",
@@ -13274,8 +13269,8 @@ const SOURCES_DB = {
               },
               {
                 "label": {
-                  "fr": "Faveurs des cinq dieux",
-                  "en": "Favors of the five gods"
+                  "fr": "Faveurs des cinq dieux — Plage des sirènes",
+                  "en": "Favors of the five gods — Siren's Landing"
                 },
                 "amount": 35000,
                 "per": 7000,
@@ -13288,12 +13283,12 @@ const SOURCES_DB = {
                   6
                 ],
                 "verified": true,
-                "ref": "guildjen:sirens-landing-master-guide"
+                "ref": "guildjen + gamergalexe"
               },
               {
                 "label": {
-                  "fr": "Protecteur seraph (Lac Doric)",
-                  "en": "Seraph Protector (Lake Doric)"
+                  "fr": "Protecteur seraph — Lac Doric",
+                  "en": "Seraph Protector — Lake Doric"
                 },
                 "amount": 210000,
                 "sub": "aurora_ld",
@@ -13303,8 +13298,8 @@ const SOURCES_DB = {
               },
               {
                 "label": {
-                  "fr": "Bâton du savant (Lac Doric)",
-                  "en": "Bloodstone Savant's Staff (Lake Doric)"
+                  "fr": "Bâton du savant — Lac Doric",
+                  "en": "Bloodstone Savant's Staff — Lake Doric"
                 },
                 "amount": 210000,
                 "sub": "aurora_ld",
@@ -13314,8 +13309,8 @@ const SOURCES_DB = {
               },
               {
                 "label": {
-                  "fr": "Objets de cœur du Lac Doric",
-                  "en": "Lake Doric heart items"
+                  "fr": "Objets de cœur — Lac Doric",
+                  "en": "Heart items — Lake Doric"
                 },
                 "amount": 42000,
                 "per": 7000,
@@ -13329,12 +13324,58 @@ const SOURCES_DB = {
                   7
                 ],
                 "verified": true,
-                "ref": "guildjen:lake-doric-master-guide"
+                "ref": "gamergalexe:lake-doric-master"
               },
               {
                 "label": {
-                  "fr": "Objets de cœur du Mont Draconis",
-                  "en": "Draconis Mons heart items"
+                  "fr": "Objets de cœur — Baie des braises",
+                  "en": "Heart items — Ember Bay"
+                },
+                "amount": 35000,
+                "per": 7000,
+                "sub": "aurora_eb",
+                "bits": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "verified": true,
+                "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur — Confins de Givramer",
+                  "en": "Heart items — Bitterfrost Frontier"
+                },
+                "amount": 28000,
+                "per": 7000,
+                "sub": "aurora_bfr",
+                "bits": [
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "verified": true,
+                "ref": "gamergalexe:bitterfrost-frontier-master"
+              },
+              {
+                "label": {
+                  "fr": "Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer",
+                  "en": "Grawl Firestone (Bitter Cold elixir) — Bitterfrost Frontier"
+                },
+                "amount": 1050,
+                "sub": "aurora_bfr",
+                "bit": 13,
+                "verified": true,
+                "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur — Mont Draconis",
+                  "en": "Heart items — Draconis Mons"
                 },
                 "amount": 28000,
                 "per": 7000,
@@ -13346,12 +13387,12 @@ const SOURCES_DB = {
                   5
                 ],
                 "verified": false,
-                "ref": "estimation par analogie — prix unitaire non confirme"
+                "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif"
               }
             ],
             "gaps": {
-              "fr": "Les objets de cœur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffrés.",
-              "en": "Heart items for Bloodstone Fen, Ember Bay and Bitterfrost Frontier are not costed yet."
+              "fr": "Marais de la pierre de sang ne coûte aucun karma : tous ses objets sont des drops, de la récolte ou l'achat chez Natto (rubis + magie déchaînée). Seule incertitude restante : 3 des 4 objets du Mont Draconis, supposés à 7 000 comme ailleurs.",
+              "en": "Bloodstone Fen costs no karma: all its items are drops, gathering, or the Natto purchase (rubies + Unbound Magic). Only remaining uncertainty: 3 of the 4 Draconis Mons items, assumed at 7,000 like elsewhere."
             }
           }
         },
@@ -16693,6 +16734,9 @@ const LEGENDARIES = {
           { amount: 210000, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph — Lac Doric", en: "Seraph Protector — Lake Doric" } },
           { amount: 210000, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant — Lac Doric", en: "Bloodstone Savant's Staff — Lake Doric" } },
           { amountPer: 7000, sub: "aurora_ld", bits: [2, 3, 4, 5, 6, 7], label: { fr: "Objets de cœur du Lac Doric — 7 000 pièce", en: "Lake Doric heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_eb", bits: [4, 5, 6, 7, 8], label: { fr: "Objets de cœur de la Baie des braises — 7 000 pièce", en: "Ember Bay heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_bfr", bits: [3, 4, 5, 6], label: { fr: "Objets de cœur des Confins de Givramer — 7 000 pièce", en: "Bitterfrost Frontier heart items — 7,000 each" } },
+          { amount: 1050, sub: "aurora_bfr", bit: 13, label: { fr: "Pierre de feu grawl — élixir d'accès à The Bitter Cold", en: "Grawl Firestone — elixir granting access to The Bitter Cold" } },
           { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
         ] },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
@@ -16711,6 +16755,7 @@ const LEGENDARIES = {
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
+        aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. Prévois-en quelques-unes de côté, ça ne se calcule pas.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. Keep a few spare, it isn't worth computing." },
         extras: [{ amount: 200, sub: "aurora_sl", bit: 1, label: { fr: "Relique d'un dieu (dos) — 200 perles + 315 000 karma", en: "God's Relic backpack — 200 pearls + 315,000 karma" } }],
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
         heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
@@ -19260,6 +19305,8 @@ function GW2LegendaryTracker() {
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
   const [diagOpen, setDiagOpen] = useState(false);
+  const [diagAll, setDiagAll] = useState(null);
+  const [diagScanning, setDiagScanning] = useState(false);
 
   // Vision — progression collections
   const [visionCollections, setVisionCollections] = useState(() => {
@@ -19857,6 +19904,44 @@ function GW2LegendaryTracker() {
     const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
     return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
   });
+  // Scan global a la demande : le panneau ne voit que l'onglet courant, car
+  // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
+  // interroge une fois tous les metas de tous les legendaires. Volontairement
+  // manuel : au demarrage il couterait un appel par onglet a chaque session.
+  const scanAllMetas = useCallback(async () => {
+    const curated = new Set(Object.keys((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible ?? {}));
+    const targets = [];
+    for (const l of Object.values(LEGENDARIES)) {
+      for (const a of (l.raidAchievements ?? [])) {
+        if (typeof a.achievementId === "number") targets.push([a.achievementId, l.name ?? l.id]);
+      }
+    }
+    (function collectMastery(o, legName) {
+      if (Array.isArray(o)) { o.forEach(x => collectMastery(x, legName)); return; }
+      if (!o || typeof o !== "object") return;
+      if (typeof o.mastery_achi_id === "number") targets.push([o.mastery_achi_id, legName]);
+      for (const v of Object.values(o)) collectMastery(v, legName);
+    })((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries ?? {}, "sources");
+    const byId = new Map();
+    for (const [id, leg] of targets) if (!byId.has(id)) byId.set(id, leg);
+    const ids = [...byId.keys()];
+    const gaps = [];
+    for (let k = 0; k < ids.length; k += 150) {
+      const chunk = ids.slice(k, k + 150);
+      try {
+        const r = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
+        if (!r.ok) continue;
+        for (const a of await r.json()) {
+          const tierMax = (a.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
+          if (tierMax > 1 && (a.bits ?? []).length === 0 && !curated.has(String(a.id))) {
+            gaps.push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?" });
+          }
+        }
+      } catch (_) { /* reseau : on rend ce qu'on a */ }
+    }
+    return { checked: ids.length, gaps };
+  }, [lang]);
+
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
@@ -20812,10 +20897,13 @@ function GW2LegendaryTracker() {
                           const mDef    = masteryId ? achBitsDefs?.[String(masteryId)] : null;
                           const apiReq  = mDef?.tierMax ?? 0;
                           const apiPool = (mDef?.bits ?? []).length;
-                          const mReq = apiReq || item.mastery_required || 0;
-                          const mMax = apiPool || item.mastery_max || masteryAchi?.max || mReq || 0;
-                          const mGap = apiReq > 0 && typeof item.mastery_required === "number" && item.mastery_required !== apiReq
-                                       ? item.mastery_required : null;
+                          // v112 : plus aucune valeur stockee. Le seuil vient du dernier palier
+                          // de l'API, le pool de la liste curee. Les champs mastery_required /
+                          // mastery_max ont ete supprimes des sources : ils avaient derive.
+                          const curatedPool = (mDef?.subs ?? []).length;
+                          const mReq = apiReq || 0;
+                          const mMax = curatedPool || apiPool || masteryAchi?.max || mReq || 0;
+                          const mGap = null;
                           const mDone = masteryAchi?.done ?? false;
                           const mPct  = mMax > 0 ? Math.min(100, (mCur / mMax) * 100) : 0;
                           const mReqPct = mMax > 0 ? (mReq / mMax) * 100 : 0;
@@ -21768,6 +21856,11 @@ function GW2LegendaryTracker() {
                           ))}
                         </div>
                       )}
+                      {cur.aside && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
+                          {NX(cur.aside)}
+                        </div>
+                      )}
                       {cur.kind === "karma" && (cur.extrasPending ?? []).length > 0 && (
                         <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
                           {t("karma_note")}
@@ -22059,6 +22152,27 @@ function GW2LegendaryTracker() {
             </div>
             {diagOpen && (
               <div style={{ marginTop: 5 }}>
+                <div style={{ fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
+                  {t("diag_scope")}
+                </div>
+                <button
+                  onClick={() => { setDiagScanning(true); setDiagAll(null); scanAllMetas().then(r => { setDiagAll(r); setDiagScanning(false); }); }}
+                  disabled={diagScanning}
+                  style={{ fontSize: 9, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em", padding: "3px 9px", marginBottom: 6, cursor: diagScanning ? "wait" : "pointer", background: "rgba(226,201,126,0.07)", border: "1px solid rgba(226,201,126,0.25)", borderRadius: 4, color: "rgba(226,201,126,0.8)" }}>
+                  {diagScanning ? t("diag_scanning") : t("diag_scan")}
+                </button>
+                {diagAll && (
+                  <div style={{ marginBottom: 6, paddingBottom: 5, borderBottom: "1px solid rgba(226,201,126,0.1)" }}>
+                    <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.55)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("diag_all_done", { n: diagAll.checked, g: diagAll.gaps.length })}
+                    </div>
+                    {diagAll.gaps.map(g => (
+                      <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
+                        · <span style={{ color: "rgba(248,113,113,0.8)" }}>{g.id}</span> — {g.name} ({t("diag_threshold", { n: g.tierMax })}) · {g.leg}
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
                   {t("diag_counts", { w: curatedN, c: catN })}
                 </div>

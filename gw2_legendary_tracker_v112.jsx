@@ -200,6 +200,10 @@ const I18N = {
     diag_counts: "{w} curated from the wiki · {c} falling back to their API category",
     diag_none: "Every downloaded counter-meta resolves to a step list.",
     diag_threshold: "threshold {n}",
+    diag_scope: "This panel only covers the legendary currently open.",
+    diag_scan: "⟳ Scan every legendary (one-off)",
+    diag_scanning: "Scanning…",
+    diag_all_done: "Global scan: {n} achievements checked, {g} without a step list.",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -412,6 +416,10 @@ const I18N = {
     diag_counts: "{w} curés depuis le wiki · {c} repliés sur leur catégorie API",
     diag_none: "Tous les métas compteurs téléchargés ont une liste d'étapes.",
     diag_threshold: "seuil {n}",
+    diag_scope: "Ce panneau ne couvre que le légendaire actuellement ouvert.",
+    diag_scan: "⟳ Balayer tous les légendaires (ponctuel)",
+    diag_scanning: "Balayage en cours…",
+    diag_all_done: "Balayage global : {n} succès contrôlés, {g} sans liste d'étapes.",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -1138,6 +1146,9 @@ const LEGENDARIES = {
           { amount: 210000, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph — Lac Doric", en: "Seraph Protector — Lake Doric" } },
           { amount: 210000, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant — Lac Doric", en: "Bloodstone Savant's Staff — Lake Doric" } },
           { amountPer: 7000, sub: "aurora_ld", bits: [2, 3, 4, 5, 6, 7], label: { fr: "Objets de cœur du Lac Doric — 7 000 pièce", en: "Lake Doric heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_eb", bits: [4, 5, 6, 7, 8], label: { fr: "Objets de cœur de la Baie des braises — 7 000 pièce", en: "Ember Bay heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_bfr", bits: [3, 4, 5, 6], label: { fr: "Objets de cœur des Confins de Givramer — 7 000 pièce", en: "Bitterfrost Frontier heart items — 7,000 each" } },
+          { amount: 1050, sub: "aurora_bfr", bit: 13, label: { fr: "Pierre de feu grawl — élixir d'accès à The Bitter Cold", en: "Grawl Firestone — elixir granting access to The Bitter Cold" } },
           { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
         ] },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
@@ -1156,6 +1167,7 @@ const LEGENDARIES = {
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
+        aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. Prévois-en quelques-unes de côté, ça ne se calcule pas.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. Keep a few spare, it isn't worth computing." },
         extras: [{ amount: 200, sub: "aurora_sl", bit: 1, label: { fr: "Relique d'un dieu (dos) — 200 perles + 315 000 karma", en: "God's Relic backpack — 200 pearls + 315,000 karma" } }],
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
         heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
@@ -3711,6 +3723,8 @@ export default function GW2LegendaryTracker() {
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
   const [diagOpen, setDiagOpen] = useState(false);
+  const [diagAll, setDiagAll] = useState(null);
+  const [diagScanning, setDiagScanning] = useState(false);
 
   // Vision — progression collections
   const [visionCollections, setVisionCollections] = useState(() => {
@@ -4308,6 +4322,44 @@ export default function GW2LegendaryTracker() {
     const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
     return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
   });
+  // Scan global a la demande : le panneau ne voit que l'onglet courant, car
+  // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
+  // interroge une fois tous les metas de tous les legendaires. Volontairement
+  // manuel : au demarrage il couterait un appel par onglet a chaque session.
+  const scanAllMetas = useCallback(async () => {
+    const curated = new Set(Object.keys((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible ?? {}));
+    const targets = [];
+    for (const l of Object.values(LEGENDARIES)) {
+      for (const a of (l.raidAchievements ?? [])) {
+        if (typeof a.achievementId === "number") targets.push([a.achievementId, l.name ?? l.id]);
+      }
+    }
+    (function collectMastery(o, legName) {
+      if (Array.isArray(o)) { o.forEach(x => collectMastery(x, legName)); return; }
+      if (!o || typeof o !== "object") return;
+      if (typeof o.mastery_achi_id === "number") targets.push([o.mastery_achi_id, legName]);
+      for (const v of Object.values(o)) collectMastery(v, legName);
+    })((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries ?? {}, "sources");
+    const byId = new Map();
+    for (const [id, leg] of targets) if (!byId.has(id)) byId.set(id, leg);
+    const ids = [...byId.keys()];
+    const gaps = [];
+    for (let k = 0; k < ids.length; k += 150) {
+      const chunk = ids.slice(k, k + 150);
+      try {
+        const r = await fetch(`https://api.guildwars2.com/v2/achievements?ids=${chunk.join(",")}&lang=${lang}`);
+        if (!r.ok) continue;
+        for (const a of await r.json()) {
+          const tierMax = (a.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
+          if (tierMax > 1 && (a.bits ?? []).length === 0 && !curated.has(String(a.id))) {
+            gaps.push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?" });
+          }
+        }
+      } catch (_) { /* reseau : on rend ce qu'on a */ }
+    }
+    return { checked: ids.length, gaps };
+  }, [lang]);
+
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
@@ -5263,10 +5315,13 @@ export default function GW2LegendaryTracker() {
                           const mDef    = masteryId ? achBitsDefs?.[String(masteryId)] : null;
                           const apiReq  = mDef?.tierMax ?? 0;
                           const apiPool = (mDef?.bits ?? []).length;
-                          const mReq = apiReq || item.mastery_required || 0;
-                          const mMax = apiPool || item.mastery_max || masteryAchi?.max || mReq || 0;
-                          const mGap = apiReq > 0 && typeof item.mastery_required === "number" && item.mastery_required !== apiReq
-                                       ? item.mastery_required : null;
+                          // v112 : plus aucune valeur stockee. Le seuil vient du dernier palier
+                          // de l'API, le pool de la liste curee. Les champs mastery_required /
+                          // mastery_max ont ete supprimes des sources : ils avaient derive.
+                          const curatedPool = (mDef?.subs ?? []).length;
+                          const mReq = apiReq || 0;
+                          const mMax = curatedPool || apiPool || masteryAchi?.max || mReq || 0;
+                          const mGap = null;
                           const mDone = masteryAchi?.done ?? false;
                           const mPct  = mMax > 0 ? Math.min(100, (mCur / mMax) * 100) : 0;
                           const mReqPct = mMax > 0 ? (mReq / mMax) * 100 : 0;
@@ -6219,6 +6274,11 @@ export default function GW2LegendaryTracker() {
                           ))}
                         </div>
                       )}
+                      {cur.aside && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
+                          {NX(cur.aside)}
+                        </div>
+                      )}
                       {cur.kind === "karma" && (cur.extrasPending ?? []).length > 0 && (
                         <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
                           {t("karma_note")}
@@ -6510,6 +6570,27 @@ export default function GW2LegendaryTracker() {
             </div>
             {diagOpen && (
               <div style={{ marginTop: 5 }}>
+                <div style={{ fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
+                  {t("diag_scope")}
+                </div>
+                <button
+                  onClick={() => { setDiagScanning(true); setDiagAll(null); scanAllMetas().then(r => { setDiagAll(r); setDiagScanning(false); }); }}
+                  disabled={diagScanning}
+                  style={{ fontSize: 9, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em", padding: "3px 9px", marginBottom: 6, cursor: diagScanning ? "wait" : "pointer", background: "rgba(226,201,126,0.07)", border: "1px solid rgba(226,201,126,0.25)", borderRadius: 4, color: "rgba(226,201,126,0.8)" }}>
+                  {diagScanning ? t("diag_scanning") : t("diag_scan")}
+                </button>
+                {diagAll && (
+                  <div style={{ marginBottom: 6, paddingBottom: 5, borderBottom: "1px solid rgba(226,201,126,0.1)" }}>
+                    <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.55)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("diag_all_done", { n: diagAll.checked, g: diagAll.gaps.length })}
+                    </div>
+                    {diagAll.gaps.map(g => (
+                      <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
+                        · <span style={{ color: "rgba(248,113,113,0.8)" }}>{g.id}</span> — {g.name} ({t("diag_threshold", { n: g.tierMax })}) · {g.leg}
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
                   {t("diag_counts", { w: curatedN, c: catN })}
                 </div>
