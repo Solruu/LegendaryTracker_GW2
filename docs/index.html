@@ -260,6 +260,10 @@ const I18N = {
     mastery_nosteps: "⚠ no step list resolved for this meta — report it",
     mastery_nostatus: "Sync with your API key to see which ones are done.",
     mastery_src_wiki: "curated wiki list ({d}) — {o} of them are optional",
+    diag_title: "⚕ Data check — {n} meta(s) without a step list",
+    diag_counts: "{w} curated from the wiki · {c} falling back to their API category",
+    diag_none: "Every downloaded counter-meta resolves to a step list.",
+    diag_threshold: "threshold {n}",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -468,6 +472,10 @@ const I18N = {
     mastery_nosteps: "⚠ aucune liste d'étapes résolue pour ce méta — à signaler",
     mastery_nostatus: "Synchronise avec ta clé API pour voir lesquels sont faits.",
     mastery_src_wiki: "liste curée du wiki ({d}) — dont {o} facultatifs",
+    diag_title: "⚕ Contrôle des données — {n} méta(s) sans liste d'étapes",
+    diag_counts: "{w} curés depuis le wiki · {c} repliés sur leur catégorie API",
+    diag_none: "Tous les métas compteurs téléchargés ont une liste d'étapes.",
+    diag_threshold: "seuil {n}",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -675,7 +683,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v78",
+    "version": "v79",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1608,7 +1616,12 @@ const SOURCES_DB = {
     "changelog_v75": "Seuils des metas d'episode LW3 (bit 0 de chaque Master d'Aurora) recalcules. Les valeurs 20/26 etaient un copier-coller applique a cinq episodes sur six. Verifie : One Path Ends demande 36 succes sur 36 eligibles (paliers 1/5/10/15/25/36 — le 26 affiche correspondait a l'avant-dernier palier, pas au seuil) ; Out of the Shadows 18 sur 19 ; Rising Flames 23 sur 30 ; A Crack in the Ice 21 ; Flashpoint 20. Head of the Snake (28/32) reste non verifie et est marque comme tel. Les pools inconnus passent a null : le JSX les lit desormais dans l'API. Ajout d'un champ alt par piece : la piste de recompense de la carte en McM ou PvP rend la meme boite d'armure, sauf pour Plage des sirenes ou l'existence de la piste n'est pas confirmee.",
     "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025.",
     "changelog_v77": "Budget karma d'Aurora chiffre et suivi. Total 840 000 : 315 000 pour la Relique d'un dieu, 210 000 x2 pour le Protecteur seraph et le Baton du savant, 35 000 pour les cinq Faveurs et 42 000 pour les objets de coeur du Lac Doric. Les 28 000 du Mont Draconis sont une estimation par analogie, marquees comme telles. Le karma s'affiche comme une monnaie a part entiere (devise de portefeuille 2) mais seulement si le total du legendaire depasse 100 000, et il est exclu des projections de farm journalier faute de cadence. Meme mecanique conditionnelle que les monnaies de carte : chaque ligne disparait du total des que l'etape correspondante est validee, les lots au meme prix fondant etape par etape. Lacune assumee et consignee : les objets de coeur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffres.",
-    "changelog_v78": "Liste des succes eligibles de One Path Ends Mastery ajoutee, tiree du bloc Objectives du wiki et validee id par id contre le referentiel : 42 objectifs pour un seuil de 36, donc 6 facultatifs. La categorie API en compte 43 et n'etait donc pas utilisable telle quelle — With Friends Like These... (3515) y figure sans compter dans le meta. Les cinq autres metas d'episode restent sans liste curee et continuent d'afficher le detecteur."
+    "changelog_v78": "Liste des succes eligibles de One Path Ends Mastery ajoutee, tiree du bloc Objectives du wiki et validee id par id contre le referentiel : 42 objectifs pour un seuil de 36, donc 6 facultatifs. La categorie API en compte 43 et n'etait donc pas utilisable telle quelle — With Friends Like These... (3515) y figure sans compter dans le meta. Les cinq autres metas d'episode restent sans liste curee et continuent d'afficher le detecteur.",
+    "meta_eligible_note": {
+      "fr": "Listes d'objectifs eligibles des metas de type compteur. L'API ne publie ni bits ni liste d'enfants pour ces metas : le bloc « Objectives » du wiki est la seule source exacte. La categorie API n'est PAS un substitut — elle contient a la fois des succes non eligibles et il lui manque des succes eligibles classes ailleurs.",
+      "en": "Eligible-objective lists for counter-type metas. The API publishes neither bits nor a child list for these: the wiki 'Objectives' block is the only exact source. The API category is NOT a substitute — it holds non-eligible achievements and misses eligible ones filed elsewhere."
+    },
+    "changelog_v79": "Les cinq metas d'episode LW3 restants sont cures depuis les captures wiki d'Antoine, et One Path Ends migre du chemin parallele mastery_eligible vers le bloc meta_eligible commun. Les six listes passent donc par le meme pipeline que les dix metas de Vision, Janthir et Visions of Eternity : scoring d'effort, descriptions et chemin le plus court s'appliquent sans code specifique. Objectifs et seuils : Out of the Shadows 19/18, Rising Flames 30/23, A Crack in the Ice 21/21, The Head of the Snake 39/28, Flashpoint 32/20, One Path Ends 42/36 — 179 objectifs, tous resolus contre le referentiel. Deux confirmations du caractere non substituable de la categorie : Patron (3127) est eligible a Rising Flames tout en etant classe sous Tradesman, et les deux Ember Bay Insight sont dans la categorie sans compter pour le meta. Defaut latent corrige au passage, remonte par le nouveau script d'audit : la liste de Starlit Weald contenait une entree a id null (« A Hunt for the Ages », absent de /v2/achievements). Elle est retiree et documentee."
   },
   "meta_events": {
     "vb": {
@@ -13127,182 +13140,6 @@ const SOURCES_DB = {
                   "alt": {
                     "fr": "Alternative sans succès : la piste de récompense « Plage des sirènes » (McM ou PvP) rend au choix la Boîte de brogans mursaat ou un coffre-fort de 50 perles orriennes. ⚠ Non répétable depuis mars 2025 — ses récompenses passent désormais par la piste répétable Monde vivant Saison 3.",
                     "en": "Achievement-free alternative: the 'Siren's Landing' reward track (WvW or PvP) grants either the Mursaat Brogan Box or a strongbox of 50 Orrian Pearls. ⚠ Non-repeatable since March 2025 — its rewards now come from the repeatable Living World Season 3 track."
-                  },
-                  "mastery_eligible": [
-                    {
-                      "id": 3537,
-                      "name": "Art Critic"
-                    },
-                    {
-                      "id": 3493,
-                      "name": "Graffiti Artist"
-                    },
-                    {
-                      "id": 3533,
-                      "name": "Block the Shock"
-                    },
-                    {
-                      "id": 3503,
-                      "name": "Not on My Watch"
-                    },
-                    {
-                      "id": 3454,
-                      "name": "Lightfoot"
-                    },
-                    {
-                      "id": 3456,
-                      "name": "A Quick Death"
-                    },
-                    {
-                      "id": 3524,
-                      "name": "Dodger Danger"
-                    },
-                    {
-                      "id": 3507,
-                      "name": "\"Where's Balthazar?\""
-                    },
-                    {
-                      "id": 3485,
-                      "name": "Shining Blade Secrets"
-                    },
-                    {
-                      "id": 3511,
-                      "name": "On Orrian Shores"
-                    },
-                    {
-                      "id": 3472,
-                      "name": "The Flow of Magic"
-                    },
-                    {
-                      "id": 3470,
-                      "name": "The Last Chance"
-                    },
-                    {
-                      "id": 3462,
-                      "name": "Precision Blade"
-                    },
-                    {
-                      "id": 3467,
-                      "name": "Hold the Line"
-                    },
-                    {
-                      "id": 3484,
-                      "name": "Fearless"
-                    },
-                    {
-                      "id": 3510,
-                      "name": "Fearful"
-                    },
-                    {
-                      "id": 3517,
-                      "name": "Two Sides, Same Coin"
-                    },
-                    {
-                      "id": 3497,
-                      "name": "Cleaning Up the Mess"
-                    },
-                    {
-                      "id": 3498,
-                      "name": "Risen Research"
-                    },
-                    {
-                      "id": 3546,
-                      "name": "The Withered Rose"
-                    },
-                    {
-                      "id": 3486,
-                      "name": "Pruning the Weed"
-                    },
-                    {
-                      "id": 3460,
-                      "name": "Roll for Greed"
-                    },
-                    {
-                      "id": 3502,
-                      "name": "Battle Orr"
-                    },
-                    {
-                      "id": 3496,
-                      "name": "Feeling Beastly"
-                    },
-                    {
-                      "id": 3521,
-                      "name": "Echolocation"
-                    },
-                    {
-                      "id": 3480,
-                      "name": "King Crab"
-                    },
-                    {
-                      "id": 3519,
-                      "name": "Student of Bartholos"
-                    },
-                    {
-                      "id": 3473,
-                      "name": "Abaddon's Ascent"
-                    },
-                    {
-                      "id": 3548,
-                      "name": "Into the Mind of Madness"
-                    },
-                    {
-                      "id": 3482,
-                      "name": "Dive Master: Masted"
-                    },
-                    {
-                      "id": 3520,
-                      "name": "Storyteller: Abaddon"
-                    },
-                    {
-                      "id": 3518,
-                      "name": "Storyteller: Balthazar"
-                    },
-                    {
-                      "id": 3542,
-                      "name": "Storyteller: Dwayna"
-                    },
-                    {
-                      "id": 3527,
-                      "name": "Storyteller: Grenth"
-                    },
-                    {
-                      "id": 3536,
-                      "name": "Storyteller: Lyssa"
-                    },
-                    {
-                      "id": 3481,
-                      "name": "Storyteller: Melandru"
-                    },
-                    {
-                      "id": 3487,
-                      "name": "Master Storyteller"
-                    },
-                    {
-                      "id": 3506,
-                      "name": "Siren's Landing Insight: Cliff's Edge"
-                    },
-                    {
-                      "id": 3490,
-                      "name": "Siren's Landing Insight: Buoyant Bough"
-                    },
-                    {
-                      "id": 3475,
-                      "name": "Siren's Landing Insight: Lava Leap"
-                    },
-                    {
-                      "id": 3508,
-                      "name": "Siren's Landing Insight: Dwayna's Tears"
-                    },
-                    {
-                      "id": 3477,
-                      "name": "Siren's Landing Insight: Kelp Rock"
-                    }
-                  ],
-                  "mastery_eligible_source": "wiki:One_Path_Ends_Mastery (bloc Objectives)",
-                  "mastery_eligible_checked": "2026-08-13",
-                  "mastery_eligible_note": {
-                    "fr": "42 objectifs éligibles pour un seuil de 36 : 6 sont facultatifs. La catégorie API en contient 43 — « With Friends Like These... » (3515) y figure mais ne compte PAS.",
-                    "en": "42 eligible objectives for a threshold of 36: 6 are optional. The API category holds 43 — 'With Friends Like These...' (3515) is listed there but does NOT count."
                   }
                 },
                 {
@@ -15424,10 +15261,6 @@ const SOURCES_DB = {
           "Leading from the Front"
         ],
         [
-          null,
-          "A Hunt for the Ages"
-        ],
-        [
           8918,
           "Secret Spelunker"
         ],
@@ -15546,6 +15379,795 @@ const SOURCES_DB = {
         [
           9008,
           "Inquest Hologram"
+        ]
+      ],
+      "notes": [
+        "« A Hunt for the Ages » est un objectif eligible de Starlit Weald mais n'est pas expose par /v2/achievements : aucun id, donc impossible a suivre. Retire de la liste plutot que laisse a null. Le seuil de 36 reste atteignable avec les 54 objectifs restants."
+      ]
+    },
+    "3516": {
+      "name": "\"One Path Ends\" Mastery",
+      "threshold": 36,
+      "source": "wiki:One_Path_Ends_Mastery (bloc Objectives)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3537,
+          "Art Critic"
+        ],
+        [
+          3493,
+          "Graffiti Artist"
+        ],
+        [
+          3533,
+          "Block the Shock"
+        ],
+        [
+          3503,
+          "Not on My Watch"
+        ],
+        [
+          3454,
+          "Lightfoot"
+        ],
+        [
+          3456,
+          "A Quick Death"
+        ],
+        [
+          3524,
+          "Dodger Danger"
+        ],
+        [
+          3507,
+          "\"Where's Balthazar?\""
+        ],
+        [
+          3485,
+          "Shining Blade Secrets"
+        ],
+        [
+          3511,
+          "On Orrian Shores"
+        ],
+        [
+          3472,
+          "The Flow of Magic"
+        ],
+        [
+          3470,
+          "The Last Chance"
+        ],
+        [
+          3462,
+          "Precision Blade"
+        ],
+        [
+          3467,
+          "Hold the Line"
+        ],
+        [
+          3484,
+          "Fearless"
+        ],
+        [
+          3510,
+          "Fearful"
+        ],
+        [
+          3517,
+          "Two Sides, Same Coin"
+        ],
+        [
+          3497,
+          "Cleaning Up the Mess"
+        ],
+        [
+          3498,
+          "Risen Research"
+        ],
+        [
+          3546,
+          "The Withered Rose"
+        ],
+        [
+          3486,
+          "Pruning the Weed"
+        ],
+        [
+          3460,
+          "Roll for Greed"
+        ],
+        [
+          3502,
+          "Battle Orr"
+        ],
+        [
+          3496,
+          "Feeling Beastly"
+        ],
+        [
+          3521,
+          "Echolocation"
+        ],
+        [
+          3480,
+          "King Crab"
+        ],
+        [
+          3519,
+          "Student of Bartholos"
+        ],
+        [
+          3473,
+          "Abaddon's Ascent"
+        ],
+        [
+          3548,
+          "Into the Mind of Madness"
+        ],
+        [
+          3482,
+          "Dive Master: Masted"
+        ],
+        [
+          3520,
+          "Storyteller: Abaddon"
+        ],
+        [
+          3518,
+          "Storyteller: Balthazar"
+        ],
+        [
+          3542,
+          "Storyteller: Dwayna"
+        ],
+        [
+          3527,
+          "Storyteller: Grenth"
+        ],
+        [
+          3536,
+          "Storyteller: Lyssa"
+        ],
+        [
+          3481,
+          "Storyteller: Melandru"
+        ],
+        [
+          3487,
+          "Master Storyteller"
+        ],
+        [
+          3506,
+          "Siren's Landing Insight: Cliff's Edge"
+        ],
+        [
+          3490,
+          "Siren's Landing Insight: Buoyant Bough"
+        ],
+        [
+          3475,
+          "Siren's Landing Insight: Lava Leap"
+        ],
+        [
+          3508,
+          "Siren's Landing Insight: Dwayna's Tears"
+        ],
+        [
+          3477,
+          "Siren's Landing Insight: Kelp Rock"
+        ]
+      ],
+      "notes": [
+        "« With Friends Like These... » (3515) figure dans la categorie mais ne compte PAS pour le meta"
+      ]
+    },
+    "3050": {
+      "name": "\"Out of the Shadows\" Mastery",
+      "threshold": 18,
+      "source": "wiki:Out_of_the_Shadows_(achievements)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3042,
+          "Eir's Memorial in Hoelbrak"
+        ],
+        [
+          3054,
+          "Research in Rata Novus"
+        ],
+        [
+          3056,
+          "Blood and Stone"
+        ],
+        [
+          3059,
+          "Reaper of Magic"
+        ],
+        [
+          3074,
+          "A Shadow's Deeds"
+        ],
+        [
+          3065,
+          "Confessor's Stronghold"
+        ],
+        [
+          3082,
+          "The Sky Is Falling"
+        ],
+        [
+          3064,
+          "Ain't Got Time for This"
+        ],
+        [
+          3077,
+          "Was It Blue or Red?"
+        ],
+        [
+          3062,
+          "Dive Master: Just Dropping By"
+        ],
+        [
+          3049,
+          "Grief Counseling"
+        ],
+        [
+          3081,
+          "Magic Unbound: The Gathering"
+        ],
+        [
+          3040,
+          "Reversal of Fortune"
+        ],
+        [
+          3070,
+          "Lost Souls"
+        ],
+        [
+          3073,
+          "This Time, Stay Dead"
+        ],
+        [
+          3072,
+          "Mantle Pieces"
+        ],
+        [
+          3053,
+          "Conspiracy of Dunces"
+        ],
+        [
+          3076,
+          "Jade Carving"
+        ],
+        [
+          3088,
+          "Available Guardian"
+        ]
+      ]
+    },
+    "3123": {
+      "name": "\"Rising Flames\" Mastery",
+      "threshold": 23,
+      "source": "wiki:Rising_Flames_(achievements)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3137,
+          "Cami's Final Voyage"
+        ],
+        [
+          3129,
+          "Token Collector"
+        ],
+        [
+          3113,
+          "Tablets of the Unseen"
+        ],
+        [
+          3139,
+          "Dominating the Dominator"
+        ],
+        [
+          3124,
+          "Broodmother Down by the Bay"
+        ],
+        [
+          3148,
+          "Return of the Jade Construct"
+        ],
+        [
+          3120,
+          "Krackin' Karka"
+        ],
+        [
+          3126,
+          "Queen of the Fire Islands"
+        ],
+        [
+          3121,
+          "Verm the Burnin' Wurm"
+        ],
+        [
+          3110,
+          "The Friendly Ghost"
+        ],
+        [
+          3104,
+          "Hungry Hal"
+        ],
+        [
+          3128,
+          "Task Master"
+        ],
+        [
+          3133,
+          "Metal Mountain"
+        ],
+        [
+          3119,
+          "Skip up the Volcano"
+        ],
+        [
+          3127,
+          "Patron"
+        ],
+        [
+          3131,
+          "Collecting Coalescence"
+        ],
+        [
+          3150,
+          "Skrilla's Benefactor"
+        ],
+        [
+          3145,
+          "Taimi's Game"
+        ],
+        [
+          3105,
+          "Destroying Destroyers"
+        ],
+        [
+          3138,
+          "Igneous Breach"
+        ],
+        [
+          3130,
+          "Trip to the Circus"
+        ],
+        [
+          3115,
+          "The Machine in the Flame"
+        ],
+        [
+          3107,
+          "Old Foes, Old Ghosts"
+        ],
+        [
+          3136,
+          "Dragon Vigil"
+        ],
+        [
+          3112,
+          "Maintain Aurene's Shield"
+        ],
+        [
+          3134,
+          "I'm Rubber; You're Destroyer"
+        ],
+        [
+          3142,
+          "No Bombs Allowed"
+        ],
+        [
+          3147,
+          "Walking on Fire"
+        ],
+        [
+          3122,
+          "Dragon Duty"
+        ],
+        [
+          3109,
+          "Simulation Top Ten"
+        ]
+      ],
+      "notes": [
+        "Patron (3127) est classe dans la categorie « Tradesman » et non « Rising Flames »"
+      ]
+    },
+    "3171": {
+      "name": "\"A Crack in the Ice\" Mastery",
+      "threshold": 21,
+      "source": "wiki:A_Crack_in_the_Ice_(achievements)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3221,
+          "Playing Chicken"
+        ],
+        [
+          3191,
+          "Delicious Desserts"
+        ],
+        [
+          3206,
+          "Codex: Kodan"
+        ],
+        [
+          3173,
+          "Dive Master: Cold Feet"
+        ],
+        [
+          3212,
+          "Thorough Sampling"
+        ],
+        [
+          3214,
+          "Quirky Quaggan Quest"
+        ],
+        [
+          3240,
+          "Bitterfrost Frontier Insight: Griffin Old Growth"
+        ],
+        [
+          3174,
+          "Bitterfrost Frontier Insight: The Bitter Cold"
+        ],
+        [
+          3217,
+          "Bitterfrost Frontier Insight: The Svanir Hive"
+        ],
+        [
+          3188,
+          "Stay Unfrosty"
+        ],
+        [
+          3179,
+          "Larva Conservationist"
+        ],
+        [
+          3186,
+          "Vigilant"
+        ],
+        [
+          3231,
+          "New in Box"
+        ],
+        [
+          3195,
+          "Beasts Slain Quick"
+        ],
+        [
+          3216,
+          "Precocious Aurene"
+        ],
+        [
+          3193,
+          "Frozen in Ice"
+        ],
+        [
+          3224,
+          "Frozen Out"
+        ],
+        [
+          3210,
+          "The Bitter Cold"
+        ],
+        [
+          3227,
+          "Journey to Bitterfrost Frontier"
+        ],
+        [
+          3182,
+          "Elixir Recipe"
+        ],
+        [
+          3207,
+          "Elixir Cookin'"
+        ]
+      ]
+    },
+    "3348": {
+      "name": "\"The Head of the Snake\" Mastery",
+      "threshold": 28,
+      "source": "wiki:The_Head_of_the_Snake_(achievements)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3294,
+          "A Meeting of Ministers"
+        ],
+        [
+          3285,
+          "Eyes on Lake Doric"
+        ],
+        [
+          3301,
+          "Sabotage Fort Evennia"
+        ],
+        [
+          3372,
+          "Breaking the Siege"
+        ],
+        [
+          3317,
+          "Regrouping with the Queen"
+        ],
+        [
+          3340,
+          "Confessor's End"
+        ],
+        [
+          3333,
+          "Those Giant Hands"
+        ],
+        [
+          3343,
+          "Chum Chucker"
+        ],
+        [
+          3282,
+          "Tree-Hugger Hugger"
+        ],
+        [
+          3286,
+          "Moonlighting"
+        ],
+        [
+          3351,
+          "Not All Who Wander Are Lost"
+        ],
+        [
+          3365,
+          "Holding Back the Tide"
+        ],
+        [
+          3306,
+          "Fire Brigade"
+        ],
+        [
+          3361,
+          "A Good Use"
+        ],
+        [
+          3311,
+          "A Fish, A Fishy"
+        ],
+        [
+          3323,
+          "Honorary Crew Member"
+        ],
+        [
+          3326,
+          "Perfect Execution"
+        ],
+        [
+          3379,
+          "It's a Sabotage"
+        ],
+        [
+          3344,
+          "A Fly in the Ointment"
+        ],
+        [
+          3322,
+          "Paying Respects"
+        ],
+        [
+          3367,
+          "Friend of the Forest"
+        ],
+        [
+          3288,
+          "It's a Trap"
+        ],
+        [
+          3320,
+          "Dance Club"
+        ],
+        [
+          3315,
+          "Well Fare"
+        ],
+        [
+          3314,
+          "Gems of the Beach City"
+        ],
+        [
+          3329,
+          "Upper City Security Chief"
+        ],
+        [
+          3330,
+          "Sacrificial Lambs"
+        ],
+        [
+          3338,
+          "Shadow in the Shadows"
+        ],
+        [
+          3380,
+          "Courtly Discourtesy"
+        ],
+        [
+          3354,
+          "Illuminating"
+        ],
+        [
+          3309,
+          "Master of Puppets"
+        ],
+        [
+          3381,
+          "Riddle Me This"
+        ],
+        [
+          3374,
+          "The Whispers Way"
+        ],
+        [
+          3308,
+          "The Vigil Way"
+        ],
+        [
+          3377,
+          "Lake Doric Insight: Melandru's Flourish"
+        ],
+        [
+          3350,
+          "Lake Doric Insight: Watcher's Hollow"
+        ],
+        [
+          3358,
+          "Lake Doric Insight: Lakeside Bazaar"
+        ],
+        [
+          3284,
+          "Lake Doric Insight: Melandru's Refuge"
+        ],
+        [
+          3383,
+          "Cin Business"
+        ]
+      ]
+    },
+    "3442": {
+      "name": "\"Flashpoint\" Mastery",
+      "threshold": 20,
+      "source": "wiki:Flashpoint_(achievements)",
+      "verified": "2026-08-13",
+      "achievements": [
+        [
+          3423,
+          "Desecration Prevention"
+        ],
+        [
+          3428,
+          "Terror of the Boiling Sea"
+        ],
+        [
+          3398,
+          "Dinosaur King Ascension"
+        ],
+        [
+          3437,
+          "Expensive Taste"
+        ],
+        [
+          3410,
+          "Powerless Suit"
+        ],
+        [
+          3407,
+          "Arachnogenesis"
+        ],
+        [
+          3421,
+          "Nature's Wrath"
+        ],
+        [
+          3424,
+          "Wurm Slurper"
+        ],
+        [
+          3412,
+          "Searing Ascent"
+        ],
+        [
+          3395,
+          "Golemancer's Treasure"
+        ],
+        [
+          3435,
+          "Taimi's Pet Project"
+        ],
+        [
+          3401,
+          "Arrival and Survival"
+        ],
+        [
+          3446,
+          "In Pursuit of a God"
+        ],
+        [
+          3396,
+          "Elder Druid Protection"
+        ],
+        [
+          3422,
+          "Heart of the Volcano"
+        ],
+        [
+          3433,
+          "Ring of Fire"
+        ],
+        [
+          3406,
+          "Born for Battle"
+        ],
+        [
+          3441,
+          "Fire Fighter"
+        ],
+        [
+          3403,
+          "Hot Splashes"
+        ],
+        [
+          3439,
+          "White Hat"
+        ],
+        [
+          3405,
+          "Burnin' Down the House"
+        ],
+        [
+          3420,
+          "People Watching"
+        ],
+        [
+          3427,
+          "Crypt Keeper"
+        ],
+        [
+          3430,
+          "Fancy Flying"
+        ],
+        [
+          3408,
+          "Excess Energy"
+        ],
+        [
+          3400,
+          "Go Nuts with the Scanning"
+        ],
+        [
+          3429,
+          "Lessons Learned"
+        ],
+        [
+          3402,
+          "The Druid Stone"
+        ],
+        [
+          3445,
+          "Awakening the Druid Stone"
+        ],
+        [
+          3447,
+          "Sprouting the Druid Stone"
+        ],
+        [
+          3436,
+          "A Henge Away from Home"
+        ],
+        [
+          3440,
+          "Rock Collector"
         ]
       ]
     }
@@ -18637,6 +19259,7 @@ function GW2LegendaryTracker() {
   // Aurora — expanded sous-collection dans l'onglet collections
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
+  const [diagOpen, setDiagOpen] = useState(false);
 
   // Vision — progression collections
   const [visionCollections, setVisionCollections] = useState(() => {
@@ -20312,15 +20935,17 @@ function GW2LegendaryTracker() {
                                   {(() => {
                                     // Détail au bit près du méta d'épisode : les bits sont des
                                     // libellés de succès, résolus en ids via la catégorie.
-                                    // Priorité à la liste curée du wiki : ces métas de type
-                                    // compteur n'exposent aucun bits[] côté API, et leur catégorie
-                                    // contient plus de succès que le seuil n'en exige.
-                                    const curated = Array.isArray(item.mastery_eligible) ? item.mastery_eligible : [];
+                                    // Une seule source d'étapes : def.subs, alimenté par le bloc
+                                    // meta_eligible des sources et enrichi (volume, prérequis, AP)
+                                    // par le même pipeline que les métas de Vision. Aucun chemin
+                                    // parallèle ici — c'est ce qui avait fait perdre le scoring.
+                                    const subs = mDef?.subs ?? [];
                                     const bits = mDef?.bits ?? [];
                                     const bitAch = mDef?.bitAch ?? {};
-                                    const steps = curated.length > 0
-                                      ? curated.map((c, ci) => ({ i: ci, name: c.name, id: c.id }))
+                                    const steps = subs.length > 0
+                                      ? subs.map((c, ci) => ({ i: ci, ...c }))
                                       : bits.map((b, bi) => ({ i: bi, name: b.text ?? "", id: bitAch[bi] ?? null })).filter(st => st.name);
+                                    const curated = mDef?.subsSource === "wiki" ? subs : [];
                                     if (steps.length === 0) {
                                       return apiReq > 1 ? (
                                         <div style={{ marginTop: 4, fontSize: 9, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif" }}>
@@ -20345,7 +20970,7 @@ function GW2LegendaryTracker() {
                                         </div>
                                         {curated.length > 0 && (
                                           <div style={{ fontSize: 8, color: "rgba(226,201,126,0.28)", fontFamily: "'Crimson Text', serif", marginTop: 1 }}>
-                                            {t("mastery_src_wiki", { d: item.mastery_eligible_checked || "?", o: Math.max(0, steps.length - mReq) })}
+                                            {t("mastery_src_wiki", { d: mDef?.subsVerified || "?", o: Math.max(0, steps.length - mReq) })}
                                           </div>
                                         )}
                                         {open && (
@@ -20355,23 +20980,38 @@ function GW2LegendaryTracker() {
                                                 {t("mastery_nostatus")}
                                               </div>
                                             )}
-                                            {[...steps].sort((a2, b2) => (isDone(a2) === isDone(b2) ? 0 : isDone(a2) ? 1 : -1)).map(x => {
+                                            {need > 0 && rest.length > need && (
+                                              <div style={{ marginBottom: 5, padding: "5px 8px", background: "rgba(74,222,128,0.06)", border: "1px solid rgba(74,222,128,0.22)", borderRadius: 5 }}>
+                                                <div style={{ fontSize: 9, fontWeight: 600, color: "#4ade80", marginBottom: 2, fontFamily: "'Cinzel', serif" }}>
+                                                  {t("bits_path", { n: need, s: rest.length - need })}
+                                                </div>
+                                                <div style={{ fontSize: 9.5, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.8)", lineHeight: 1.5 }}>
+                                                  {[...rest].sort((a2, b2) => (a2.score ?? 9) - (b2.score ?? 9)).slice(0, need).map(x => x.name).join(" · ")}
+                                                </div>
+                                              </div>
+                                            )}
+                                            {[...steps]
+                                              .sort((a2, b2) => (isDone(a2) === isDone(b2) ? ((a2.score ?? 9) - (b2.score ?? 9)) || a2.i - b2.i : (isDone(a2) ? 1 : -1)))
+                                              .map(x => {
                                               const d2 = isDone(x);
                                               const pr = st(x);
                                               return (
                                                 <div key={x.i} style={{ display: "flex", justifyContent: "space-between", gap: 6, fontSize: 9, lineHeight: 1.55, fontFamily: "'Crimson Text', serif", color: d2 ? "rgba(74,222,128,0.55)" : "rgba(226,201,126,0.7)" }}>
-                                                  <span>{d2 ? "✓" : "○"} {x.name}</span>
+                                                  <span>
+                                                    {d2 ? "✓" : "○"}{" "}
+                                                    {!d2 && x.tier && (
+                                                      <span style={{ color: x.tier === "easy" ? "#4ade80" : x.tier === "med" ? "#e2c97e" : "rgba(251,146,60,0.9)" }}>
+                                                        {x.tier === "easy" ? "⚡" : x.tier === "med" ? "◐" : "▲"}{" "}
+                                                      </span>
+                                                    )}
+                                                    {x.name}
+                                                  </span>
                                                   {!d2 && pr && (pr.max ?? 0) > 1 && (
                                                     <span style={{ color: "rgba(251,146,60,0.55)", flexShrink: 0 }}>{pr.current}/{pr.max}</span>
                                                   )}
                                                 </div>
                                               );
                                             })}
-                                            {rest.length > 0 && need > 0 && (
-                                              <div style={{ marginTop: 4, fontSize: 9, color: "rgba(251,220,80,0.6)", fontFamily: "'Crimson Text', serif" }}>
-                                                {t("mastery_shortest", { r: need, s: rest.length })}
-                                              </div>
-                                            )}
                                           </div>
                                         )}
                                       </div>
@@ -21397,6 +22037,43 @@ function GW2LegendaryTracker() {
       )}
 
       </>}
+
+      {/* ── Diagnostic : métas sans liste d'étapes ──────────────────
+          Auto-entretenu : tout méta de type compteur téléchargé qui
+          n'expose ni bits ni liste curée apparaît ici. C'est la seule
+          source exhaustive — le nom d'un succès ne dit pas sa nature. */}
+      {(() => {
+        const gaps = Object.entries(achBitsDefs)
+          .filter(([, d]) => (d.tierMax ?? 0) > 1 && (d.subs ?? []).length === 0 && (d.bits ?? []).length === 0)
+          .map(([id, d]) => ({ id, name: d.names?.[id] ?? d.req ?? id, tierMax: d.tierMax }));
+        const curatedN = Object.values(achBitsDefs).filter(d => d.subsSource === "wiki").length;
+        const catN = Object.values(achBitsDefs).filter(d => d.subsSource === "category").length;
+        if (Object.keys(achBitsDefs).length === 0) return null;
+        return (
+          <div style={{ margin: "14px", padding: "9px 12px", background: gaps.length > 0 ? "rgba(248,113,113,0.05)" : "rgba(74,222,128,0.04)", border: `1px solid ${gaps.length > 0 ? "rgba(248,113,113,0.25)" : "rgba(74,222,128,0.18)"}`, borderRadius: 7 }}>
+            <div onClick={() => setDiagOpen(v => !v)} style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em", color: gaps.length > 0 ? "rgba(248,113,113,0.9)" : "rgba(74,222,128,0.8)" }}>
+                {t("diag_title", { n: gaps.length })}
+              </span>
+              <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>{diagOpen ? "▲" : "▼"}</span>
+            </div>
+            {diagOpen && (
+              <div style={{ marginTop: 5 }}>
+                <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
+                  {t("diag_counts", { w: curatedN, c: catN })}
+                </div>
+                {gaps.length === 0
+                  ? <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif" }}>{t("diag_none")}</div>
+                  : gaps.map(g => (
+                      <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
+                        · <span style={{ color: "rgba(248,113,113,0.8)" }}>{g.id}</span> — {g.name} ({t("diag_threshold", { n: g.tierMax })})
+                      </div>
+                    ))}
+              </div>
+            )}
+          </div>
+        );
+      })()}
     </div>
     </LangContext.Provider>
   );

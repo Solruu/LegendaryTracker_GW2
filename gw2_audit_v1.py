@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""
+Audit structurel de gw2_sources_*.json — a lancer avant chaque push.
+
+Ce script existe a cause d'une erreur reelle : une liste de succes eligibles
+avait ete rangee dans un champ ad hoc (mastery_eligible, porte par un item de
+collection) au lieu du bloc commun meta_eligible. Elle s'affichait, mais elle
+contournait le pipeline d'enrichissement — donc plus de score d'effort, plus de
+descriptions, plus de chemin le plus court. Le rendu paraissait correct.
+
+Regle : une liste de succes eligibles ne vit QUE dans meta_eligible, indexee par
+l'id du meta. Aucun autre emplacement. Ce script echoue si la regle est violee.
+
+Usage :
+    python3 gw2_audit_v1.py gw2_sources_v79.json
+    python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+
+# Champs qui ressemblent a une liste curee et n'ont pas le droit d'exister
+# ailleurs que dans meta_eligible.
+FORBIDDEN_KEYS = {
+    "mastery_eligible", "eligible", "eligibles", "meta_subs",
+    "mastery_eligible_source", "mastery_eligible_checked", "mastery_eligible_note",
+}
+
+SCHEMA = {"name", "threshold", "source", "verified", "achievements", "notes"}
+
+
+def latest_sources() -> Path:
+    files = sorted(
+        HERE.glob("gw2_sources_v*.json"),
+        key=lambda p: int(re.search(r"_v(\d+)\.json$", p.name).group(1)),
+    )
+    if not files:
+        sys.exit("aucun gw2_sources_v*.json trouve")
+    return files[-1]
+
+
+def load_ref():
+    ref_path = HERE / "gw2_achievements_ref.json"
+    if not ref_path.exists():
+        return None
+    ref = json.loads(ref_path.read_text(encoding="utf-8"))
+    names = {}
+    for group in ref.get("by_group", {}).values():
+        for arr in group.values():
+            for a in arr:
+                names[a["id"]] = a["name"]
+    return names
+
+
+def walk(node, path, hits):
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k in FORBIDDEN_KEYS:
+                hits.append(f"{path}/{k}")
+            walk(v, f"{path}/{k}", hits)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            walk(v, f"{path}[{i}]", hits)
+
+
+def main() -> int:
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else latest_sources()
+    data = json.loads(path.read_text(encoding="utf-8"))
+    names = load_ref()
+    errors, warnings = [], []
+
+    # 1. Aucune liste curee hors de meta_eligible
+    hits = []
+    for key, value in data.items():
+        if key == "meta_eligible":
+            continue
+        walk(value, f"/{key}", hits)
+    for h in hits:
+        errors.append(f"liste curee hors de meta_eligible : {h}")
+
+    # 2. Integrite de chaque entree de meta_eligible
+    metas = data.get("meta_eligible", {})
+    if not metas:
+        warnings.append("meta_eligible est vide ou absent")
+
+    total = 0
+    for mid, entry in metas.items():
+        label = f"meta_eligible[{mid}]"
+        if not mid.isdigit():
+            errors.append(f"{label} : la cle doit etre l'id numerique du meta")
+        unknown = set(entry) - SCHEMA
+        if unknown:
+            warnings.append(f"{label} : champs inattendus {sorted(unknown)}")
+        for field in ("name", "threshold", "source", "verified", "achievements"):
+            if field not in entry:
+                errors.append(f"{label} : champ obligatoire manquant '{field}'")
+        achievements = entry.get("achievements") or []
+        total += len(achievements)
+
+        ids = []
+        for row in achievements:
+            if not (isinstance(row, list) and len(row) == 2 and isinstance(row[0], int)):
+                errors.append(f"{label} : entree mal formee {row!r}, attendu [id, nom]")
+                continue
+            ids.append(row[0])
+            if names is not None and row[0] not in names:
+                errors.append(f"{label} : id {row[0]} ({row[1]}) absent du referentiel")
+            elif names is not None and names[row[0]] != row[1]:
+                warnings.append(
+                    f"{label} : id {row[0]} nomme '{row[1]}' ici, "
+                    f"'{names[row[0]]}' dans le referentiel"
+                )
+
+        if len(ids) != len(set(ids)):
+            dupes = sorted({i for i in ids if ids.count(i) > 1})
+            errors.append(f"{label} : ids en double {dupes}")
+
+        threshold = entry.get("threshold")
+        if isinstance(threshold, int) and ids and threshold > len(ids):
+            errors.append(
+                f"{label} : seuil {threshold} superieur aux {len(ids)} objectifs listes — "
+                "la liste est incomplete"
+            )
+
+    print(f"Fichier   : {path.name}")
+    print(f"Metas     : {len(metas)} / {total} objectifs cures")
+    print(f"Referentiel : {'charge' if names else 'ABSENT — validation des ids sautee'}")
+
+    for w in warnings:
+        print(f"  ATTENTION  {w}")
+    for e in errors:
+        print(f"  ERREUR     {e}")
+
+    if errors:
+        print(f"\nEchec : {len(errors)} erreur(s). Ne pas pousser en l'etat.")
+        return 1
+    print(f"\nOK{f' — {len(warnings)} avertissement(s)' if warnings else ''}.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

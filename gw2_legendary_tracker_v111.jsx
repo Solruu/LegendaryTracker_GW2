@@ -196,6 +196,10 @@ const I18N = {
     mastery_nosteps: "⚠ no step list resolved for this meta — report it",
     mastery_nostatus: "Sync with your API key to see which ones are done.",
     mastery_src_wiki: "curated wiki list ({d}) — {o} of them are optional",
+    diag_title: "⚕ Data check — {n} meta(s) without a step list",
+    diag_counts: "{w} curated from the wiki · {c} falling back to their API category",
+    diag_none: "Every downloaded counter-meta resolves to a step list.",
+    diag_threshold: "threshold {n}",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -404,6 +408,10 @@ const I18N = {
     mastery_nosteps: "⚠ aucune liste d'étapes résolue pour ce méta — à signaler",
     mastery_nostatus: "Synchronise avec ta clé API pour voir lesquels sont faits.",
     mastery_src_wiki: "liste curée du wiki ({d}) — dont {o} facultatifs",
+    diag_title: "⚕ Contrôle des données — {n} méta(s) sans liste d'étapes",
+    diag_counts: "{w} curés depuis le wiki · {c} repliés sur leur catégorie API",
+    diag_none: "Tous les métas compteurs téléchargés ont une liste d'étapes.",
+    diag_threshold: "seuil {n}",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -3702,6 +3710,7 @@ export default function GW2LegendaryTracker() {
   // Aurora — expanded sous-collection dans l'onglet collections
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
+  const [diagOpen, setDiagOpen] = useState(false);
 
   // Vision — progression collections
   const [visionCollections, setVisionCollections] = useState(() => {
@@ -5377,15 +5386,17 @@ export default function GW2LegendaryTracker() {
                                   {(() => {
                                     // Détail au bit près du méta d'épisode : les bits sont des
                                     // libellés de succès, résolus en ids via la catégorie.
-                                    // Priorité à la liste curée du wiki : ces métas de type
-                                    // compteur n'exposent aucun bits[] côté API, et leur catégorie
-                                    // contient plus de succès que le seuil n'en exige.
-                                    const curated = Array.isArray(item.mastery_eligible) ? item.mastery_eligible : [];
+                                    // Une seule source d'étapes : def.subs, alimenté par le bloc
+                                    // meta_eligible des sources et enrichi (volume, prérequis, AP)
+                                    // par le même pipeline que les métas de Vision. Aucun chemin
+                                    // parallèle ici — c'est ce qui avait fait perdre le scoring.
+                                    const subs = mDef?.subs ?? [];
                                     const bits = mDef?.bits ?? [];
                                     const bitAch = mDef?.bitAch ?? {};
-                                    const steps = curated.length > 0
-                                      ? curated.map((c, ci) => ({ i: ci, name: c.name, id: c.id }))
+                                    const steps = subs.length > 0
+                                      ? subs.map((c, ci) => ({ i: ci, ...c }))
                                       : bits.map((b, bi) => ({ i: bi, name: b.text ?? "", id: bitAch[bi] ?? null })).filter(st => st.name);
+                                    const curated = mDef?.subsSource === "wiki" ? subs : [];
                                     if (steps.length === 0) {
                                       return apiReq > 1 ? (
                                         <div style={{ marginTop: 4, fontSize: 9, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif" }}>
@@ -5410,7 +5421,7 @@ export default function GW2LegendaryTracker() {
                                         </div>
                                         {curated.length > 0 && (
                                           <div style={{ fontSize: 8, color: "rgba(226,201,126,0.28)", fontFamily: "'Crimson Text', serif", marginTop: 1 }}>
-                                            {t("mastery_src_wiki", { d: item.mastery_eligible_checked || "?", o: Math.max(0, steps.length - mReq) })}
+                                            {t("mastery_src_wiki", { d: mDef?.subsVerified || "?", o: Math.max(0, steps.length - mReq) })}
                                           </div>
                                         )}
                                         {open && (
@@ -5420,23 +5431,38 @@ export default function GW2LegendaryTracker() {
                                                 {t("mastery_nostatus")}
                                               </div>
                                             )}
-                                            {[...steps].sort((a2, b2) => (isDone(a2) === isDone(b2) ? 0 : isDone(a2) ? 1 : -1)).map(x => {
+                                            {need > 0 && rest.length > need && (
+                                              <div style={{ marginBottom: 5, padding: "5px 8px", background: "rgba(74,222,128,0.06)", border: "1px solid rgba(74,222,128,0.22)", borderRadius: 5 }}>
+                                                <div style={{ fontSize: 9, fontWeight: 600, color: "#4ade80", marginBottom: 2, fontFamily: "'Cinzel', serif" }}>
+                                                  {t("bits_path", { n: need, s: rest.length - need })}
+                                                </div>
+                                                <div style={{ fontSize: 9.5, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.8)", lineHeight: 1.5 }}>
+                                                  {[...rest].sort((a2, b2) => (a2.score ?? 9) - (b2.score ?? 9)).slice(0, need).map(x => x.name).join(" · ")}
+                                                </div>
+                                              </div>
+                                            )}
+                                            {[...steps]
+                                              .sort((a2, b2) => (isDone(a2) === isDone(b2) ? ((a2.score ?? 9) - (b2.score ?? 9)) || a2.i - b2.i : (isDone(a2) ? 1 : -1)))
+                                              .map(x => {
                                               const d2 = isDone(x);
                                               const pr = st(x);
                                               return (
                                                 <div key={x.i} style={{ display: "flex", justifyContent: "space-between", gap: 6, fontSize: 9, lineHeight: 1.55, fontFamily: "'Crimson Text', serif", color: d2 ? "rgba(74,222,128,0.55)" : "rgba(226,201,126,0.7)" }}>
-                                                  <span>{d2 ? "✓" : "○"} {x.name}</span>
+                                                  <span>
+                                                    {d2 ? "✓" : "○"}{" "}
+                                                    {!d2 && x.tier && (
+                                                      <span style={{ color: x.tier === "easy" ? "#4ade80" : x.tier === "med" ? "#e2c97e" : "rgba(251,146,60,0.9)" }}>
+                                                        {x.tier === "easy" ? "⚡" : x.tier === "med" ? "◐" : "▲"}{" "}
+                                                      </span>
+                                                    )}
+                                                    {x.name}
+                                                  </span>
                                                   {!d2 && pr && (pr.max ?? 0) > 1 && (
                                                     <span style={{ color: "rgba(251,146,60,0.55)", flexShrink: 0 }}>{pr.current}/{pr.max}</span>
                                                   )}
                                                 </div>
                                               );
                                             })}
-                                            {rest.length > 0 && need > 0 && (
-                                              <div style={{ marginTop: 4, fontSize: 9, color: "rgba(251,220,80,0.6)", fontFamily: "'Crimson Text', serif" }}>
-                                                {t("mastery_shortest", { r: need, s: rest.length })}
-                                              </div>
-                                            )}
                                           </div>
                                         )}
                                       </div>
@@ -6462,6 +6488,43 @@ export default function GW2LegendaryTracker() {
       )}
 
       </>}
+
+      {/* ── Diagnostic : métas sans liste d'étapes ──────────────────
+          Auto-entretenu : tout méta de type compteur téléchargé qui
+          n'expose ni bits ni liste curée apparaît ici. C'est la seule
+          source exhaustive — le nom d'un succès ne dit pas sa nature. */}
+      {(() => {
+        const gaps = Object.entries(achBitsDefs)
+          .filter(([, d]) => (d.tierMax ?? 0) > 1 && (d.subs ?? []).length === 0 && (d.bits ?? []).length === 0)
+          .map(([id, d]) => ({ id, name: d.names?.[id] ?? d.req ?? id, tierMax: d.tierMax }));
+        const curatedN = Object.values(achBitsDefs).filter(d => d.subsSource === "wiki").length;
+        const catN = Object.values(achBitsDefs).filter(d => d.subsSource === "category").length;
+        if (Object.keys(achBitsDefs).length === 0) return null;
+        return (
+          <div style={{ margin: "14px", padding: "9px 12px", background: gaps.length > 0 ? "rgba(248,113,113,0.05)" : "rgba(74,222,128,0.04)", border: `1px solid ${gaps.length > 0 ? "rgba(248,113,113,0.25)" : "rgba(74,222,128,0.18)"}`, borderRadius: 7 }}>
+            <div onClick={() => setDiagOpen(v => !v)} style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em", color: gaps.length > 0 ? "rgba(248,113,113,0.9)" : "rgba(74,222,128,0.8)" }}>
+                {t("diag_title", { n: gaps.length })}
+              </span>
+              <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>{diagOpen ? "▲" : "▼"}</span>
+            </div>
+            {diagOpen && (
+              <div style={{ marginTop: 5 }}>
+                <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
+                  {t("diag_counts", { w: curatedN, c: catN })}
+                </div>
+                {gaps.length === 0
+                  ? <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif" }}>{t("diag_none")}</div>
+                  : gaps.map(g => (
+                      <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
+                        · <span style={{ color: "rgba(248,113,113,0.8)" }}>{g.id}</span> — {g.name} ({t("diag_threshold", { n: g.tierMax })})
+                      </div>
+                    ))}
+              </div>
+            )}
+          </div>
+        );
+      })()}
     </div>
     </LangContext.Provider>
   );
