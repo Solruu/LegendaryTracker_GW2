@@ -186,6 +186,7 @@ const I18N = {
     aurora_prereq_help: "Complete these 4 achievements (once per account) to obtain the 4 Sentient* items to forge.",
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
+    cur_extras_done: "✓ collection purchases already made — base requirement only",
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
     aurora_src_wait: "threshold not yet loaded from the API",
@@ -387,6 +388,7 @@ const I18N = {
     aurora_prereq_help: "Compléter ces 4 achievements (une fois par compte) pour obtenir les 4 Sentient* à forger.",
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
+    cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
     aurora_src_wait: "seuil pas encore chargé depuis l'API",
@@ -1109,15 +1111,23 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
+      { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
+        farmType: "per_account", perAccountPerDay: 40, mapNote: "Bloodstone Fen",
+        extras: [{ amount: 50, sub: "aurora_bf", bit: 7, label: { fr: "Rubis de sang immaculé (Natto) — 50 rubis + 5 000 magie déchaînée", en: "Pristine Blood Ruby (Natto) — 50 rubies + 5,000 Unbound Magic" } }] },
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899,
         farmType: "per_char", perCharPerDay: 60, mapNote: "Bitterfrost Frontier" },
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469,
         farmType: "per_account", perAccountPerDay: 45, mapNote: "Ember Bay + Draconis Mons" },
       { id: "jade", name: "Jade Shard", required: 250, icon: "JS", apiId: 80332,
-        farmType: "per_account", perAccountPerDay: 40, mapNote: "Lake Doric" },
+        farmType: "per_account", perAccountPerDay: 40, mapNote: "Lake Doric",
+        extras: [
+          { amount: 50, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph (Lieutenant Bran) — 50 éclats + 210 000 karma", en: "Seraph Protector (Lieutenant Bran) — 50 shards + 210,000 karma" } },
+          { amount: 50, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant de la pierre de sang (Exemplar Ylan) — 50 éclats + 210 000 karma", en: "Bloodstone Savant's Staff (Exemplar Ylan) — 50 shards + 210,000 karma" } },
+        ] },
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
+        extras: [{ amount: 200, sub: "aurora_sl", bit: 1, label: { fr: "Relique d'un dieu (dos) — 200 perles + 315 000 karma", en: "God's Relic backpack — 200 pearls + 315,000 karma" } }],
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
         heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
     ],
@@ -4251,7 +4261,20 @@ export default function GW2LegendaryTracker() {
     : (isWeapons
       ? ((((leg?.currenciesPerWeaponByGen ?? {})[wpnGen]) ?? (leg?.currenciesPerWeapon ?? []))).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
       : (leg?.currencies ?? [])));
-  const mainProgress = isGrandTotal ? [] : legCurrencies.map(cur => ({
+  // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
+  // que tant que l'étape correspondante n'est pas validée (v107).
+  const extraStepDone = (x) => {
+    const sc = auroraCollections?.[x.sub];
+    if (!sc) return false;
+    return (sc.done ?? false) || (sc.bits ?? []).includes(x.bit);
+  };
+  const withExtras = legCurrencies.map(cur => {
+    const ex = Array.isArray(cur.extras) ? cur.extras : [];
+    if (ex.length === 0) return cur;
+    const pending = ex.filter(x => !extraStepDone(x));
+    return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
+  });
+  const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
     ...cur,
     owned: currencies[cur.id] ?? 0,
     pct: cur.required > 0 ? Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100) : 100,
@@ -6068,6 +6091,20 @@ export default function GW2LegendaryTracker() {
                     <div style={{ fontSize: "12px", fontWeight: 600 }}>{NX(cur.name)}</div>
                     <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif" }}>
                       {t("req_missing", { req: cur.required.toLocaleString(), miss: Math.max(0, cur.required - cur.owned).toLocaleString() })}
+                      {(cur.extrasPending ?? []).length > 0 && (
+                        <div style={{ marginTop: 3 }}>
+                          {cur.extrasPending.map((x, xi) => (
+                            <div key={xi} style={{ fontSize: 9, color: "rgba(251,146,60,0.65)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
+                              + {x.amount} — {NX(x.label)}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {cur.extrasTotal > 0 && (cur.extrasPending ?? []).length === 0 && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(74,222,128,0.6)", fontFamily: "'Crimson Text', serif" }}>
+                          {t("cur_extras_done")}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
