@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v77",
+    "version": "v78",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -932,7 +932,8 @@
     "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort.",
     "changelog_v75": "Seuils des metas d'episode LW3 (bit 0 de chaque Master d'Aurora) recalcules. Les valeurs 20/26 etaient un copier-coller applique a cinq episodes sur six. Verifie : One Path Ends demande 36 succes sur 36 eligibles (paliers 1/5/10/15/25/36 — le 26 affiche correspondait a l'avant-dernier palier, pas au seuil) ; Out of the Shadows 18 sur 19 ; Rising Flames 23 sur 30 ; A Crack in the Ice 21 ; Flashpoint 20. Head of the Snake (28/32) reste non verifie et est marque comme tel. Les pools inconnus passent a null : le JSX les lit desormais dans l'API. Ajout d'un champ alt par piece : la piste de recompense de la carte en McM ou PvP rend la meme boite d'armure, sauf pour Plage des sirenes ou l'existence de la piste n'est pas confirmee.",
     "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025.",
-    "changelog_v77": "Budget karma d'Aurora chiffre et suivi. Total 840 000 : 315 000 pour la Relique d'un dieu, 210 000 x2 pour le Protecteur seraph et le Baton du savant, 35 000 pour les cinq Faveurs et 42 000 pour les objets de coeur du Lac Doric. Les 28 000 du Mont Draconis sont une estimation par analogie, marquees comme telles. Le karma s'affiche comme une monnaie a part entiere (devise de portefeuille 2) mais seulement si le total du legendaire depasse 100 000, et il est exclu des projections de farm journalier faute de cadence. Meme mecanique conditionnelle que les monnaies de carte : chaque ligne disparait du total des que l'etape correspondante est validee, les lots au meme prix fondant etape par etape. Lacune assumee et consignee : les objets de coeur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffres."
+    "changelog_v77": "Budget karma d'Aurora chiffre et suivi. Total 840 000 : 315 000 pour la Relique d'un dieu, 210 000 x2 pour le Protecteur seraph et le Baton du savant, 35 000 pour les cinq Faveurs et 42 000 pour les objets de coeur du Lac Doric. Les 28 000 du Mont Draconis sont une estimation par analogie, marquees comme telles. Le karma s'affiche comme une monnaie a part entiere (devise de portefeuille 2) mais seulement si le total du legendaire depasse 100 000, et il est exclu des projections de farm journalier faute de cadence. Meme mecanique conditionnelle que les monnaies de carte : chaque ligne disparait du total des que l'etape correspondante est validee, les lots au meme prix fondant etape par etape. Lacune assumee et consignee : les objets de coeur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffres.",
+    "changelog_v78": "Liste des succes eligibles de One Path Ends Mastery ajoutee, tiree du bloc Objectives du wiki et validee id par id contre le referentiel : 42 objectifs pour un seuil de 36, donc 6 facultatifs. La categorie API en compte 43 et n'etait donc pas utilisable telle quelle — With Friends Like These... (3515) y figure sans compter dans le meta. Les cinq autres metas d'episode restent sans liste curee et continuent d'afficher le detecteur."
   },
   "meta_events": {
     "vb": {
@@ -12451,6 +12452,182 @@
                   "alt": {
                     "fr": "Alternative sans succès : la piste de récompense « Plage des sirènes » (McM ou PvP) rend au choix la Boîte de brogans mursaat ou un coffre-fort de 50 perles orriennes. ⚠ Non répétable depuis mars 2025 — ses récompenses passent désormais par la piste répétable Monde vivant Saison 3.",
                     "en": "Achievement-free alternative: the 'Siren's Landing' reward track (WvW or PvP) grants either the Mursaat Brogan Box or a strongbox of 50 Orrian Pearls. ⚠ Non-repeatable since March 2025 — its rewards now come from the repeatable Living World Season 3 track."
+                  },
+                  "mastery_eligible": [
+                    {
+                      "id": 3537,
+                      "name": "Art Critic"
+                    },
+                    {
+                      "id": 3493,
+                      "name": "Graffiti Artist"
+                    },
+                    {
+                      "id": 3533,
+                      "name": "Block the Shock"
+                    },
+                    {
+                      "id": 3503,
+                      "name": "Not on My Watch"
+                    },
+                    {
+                      "id": 3454,
+                      "name": "Lightfoot"
+                    },
+                    {
+                      "id": 3456,
+                      "name": "A Quick Death"
+                    },
+                    {
+                      "id": 3524,
+                      "name": "Dodger Danger"
+                    },
+                    {
+                      "id": 3507,
+                      "name": "\"Where's Balthazar?\""
+                    },
+                    {
+                      "id": 3485,
+                      "name": "Shining Blade Secrets"
+                    },
+                    {
+                      "id": 3511,
+                      "name": "On Orrian Shores"
+                    },
+                    {
+                      "id": 3472,
+                      "name": "The Flow of Magic"
+                    },
+                    {
+                      "id": 3470,
+                      "name": "The Last Chance"
+                    },
+                    {
+                      "id": 3462,
+                      "name": "Precision Blade"
+                    },
+                    {
+                      "id": 3467,
+                      "name": "Hold the Line"
+                    },
+                    {
+                      "id": 3484,
+                      "name": "Fearless"
+                    },
+                    {
+                      "id": 3510,
+                      "name": "Fearful"
+                    },
+                    {
+                      "id": 3517,
+                      "name": "Two Sides, Same Coin"
+                    },
+                    {
+                      "id": 3497,
+                      "name": "Cleaning Up the Mess"
+                    },
+                    {
+                      "id": 3498,
+                      "name": "Risen Research"
+                    },
+                    {
+                      "id": 3546,
+                      "name": "The Withered Rose"
+                    },
+                    {
+                      "id": 3486,
+                      "name": "Pruning the Weed"
+                    },
+                    {
+                      "id": 3460,
+                      "name": "Roll for Greed"
+                    },
+                    {
+                      "id": 3502,
+                      "name": "Battle Orr"
+                    },
+                    {
+                      "id": 3496,
+                      "name": "Feeling Beastly"
+                    },
+                    {
+                      "id": 3521,
+                      "name": "Echolocation"
+                    },
+                    {
+                      "id": 3480,
+                      "name": "King Crab"
+                    },
+                    {
+                      "id": 3519,
+                      "name": "Student of Bartholos"
+                    },
+                    {
+                      "id": 3473,
+                      "name": "Abaddon's Ascent"
+                    },
+                    {
+                      "id": 3548,
+                      "name": "Into the Mind of Madness"
+                    },
+                    {
+                      "id": 3482,
+                      "name": "Dive Master: Masted"
+                    },
+                    {
+                      "id": 3520,
+                      "name": "Storyteller: Abaddon"
+                    },
+                    {
+                      "id": 3518,
+                      "name": "Storyteller: Balthazar"
+                    },
+                    {
+                      "id": 3542,
+                      "name": "Storyteller: Dwayna"
+                    },
+                    {
+                      "id": 3527,
+                      "name": "Storyteller: Grenth"
+                    },
+                    {
+                      "id": 3536,
+                      "name": "Storyteller: Lyssa"
+                    },
+                    {
+                      "id": 3481,
+                      "name": "Storyteller: Melandru"
+                    },
+                    {
+                      "id": 3487,
+                      "name": "Master Storyteller"
+                    },
+                    {
+                      "id": 3506,
+                      "name": "Siren's Landing Insight: Cliff's Edge"
+                    },
+                    {
+                      "id": 3490,
+                      "name": "Siren's Landing Insight: Buoyant Bough"
+                    },
+                    {
+                      "id": 3475,
+                      "name": "Siren's Landing Insight: Lava Leap"
+                    },
+                    {
+                      "id": 3508,
+                      "name": "Siren's Landing Insight: Dwayna's Tears"
+                    },
+                    {
+                      "id": 3477,
+                      "name": "Siren's Landing Insight: Kelp Rock"
+                    }
+                  ],
+                  "mastery_eligible_source": "wiki:One_Path_Ends_Mastery (bloc Objectives)",
+                  "mastery_eligible_checked": "2026-08-13",
+                  "mastery_eligible_note": {
+                    "fr": "42 objectifs éligibles pour un seuil de 36 : 6 sont facultatifs. La catégorie API en contient 43 — « With Friends Like These... » (3515) y figure mais ne compte PAS.",
+                    "en": "42 eligible objectives for a threshold of 36: 6 are optional. The API category holds 43 — 'With Friends Like These...' (3515) is listed there but does NOT count."
                   }
                 },
                 {

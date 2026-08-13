@@ -195,6 +195,7 @@ const I18N = {
     mastery_shortest: "Pick any {r} of the {s} remaining — the rest can be skipped.",
     mastery_nosteps: "⚠ no step list resolved for this meta — report it",
     mastery_nostatus: "Sync with your API key to see which ones are done.",
+    mastery_src_wiki: "curated wiki list ({d}) — {o} of them are optional",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -402,6 +403,7 @@ const I18N = {
     mastery_shortest: "N'importe lesquels {r} parmi les {s} restants — le reste est facultatif.",
     mastery_nosteps: "⚠ aucune liste d'étapes résolue pour ce méta — à signaler",
     mastery_nostatus: "Synchronise avec ta clé API pour voir lesquels sont faits.",
+    mastery_src_wiki: "liste curée du wiki ({d}) — dont {o} facultatifs",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -5375,13 +5377,15 @@ export default function GW2LegendaryTracker() {
                                   {(() => {
                                     // Détail au bit près du méta d'épisode : les bits sont des
                                     // libellés de succès, résolus en ids via la catégorie.
+                                    // Priorité à la liste curée du wiki : ces métas de type
+                                    // compteur n'exposent aucun bits[] côté API, et leur catégorie
+                                    // contient plus de succès que le seuil n'en exige.
+                                    const curated = Array.isArray(item.mastery_eligible) ? item.mastery_eligible : [];
                                     const bits = mDef?.bits ?? [];
                                     const bitAch = mDef?.bitAch ?? {};
-                                    const steps = bits.map((b, bi) => ({
-                                      i: bi,
-                                      name: (lang === "en" ? (b.text ?? "") : (b.text ?? "")),
-                                      id: bitAch[bi] ?? null,
-                                    })).filter(st => st.name);
+                                    const steps = curated.length > 0
+                                      ? curated.map((c, ci) => ({ i: ci, name: c.name, id: c.id }))
+                                      : bits.map((b, bi) => ({ i: bi, name: b.text ?? "", id: bitAch[bi] ?? null })).filter(st => st.name);
                                     if (steps.length === 0) {
                                       return apiReq > 1 ? (
                                         <div style={{ marginTop: 4, fontSize: 9, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif" }}>
@@ -5404,6 +5408,11 @@ export default function GW2LegendaryTracker() {
                                           </span>
                                           <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>{open ? "▲" : "▼"}</span>
                                         </div>
+                                        {curated.length > 0 && (
+                                          <div style={{ fontSize: 8, color: "rgba(226,201,126,0.28)", fontFamily: "'Crimson Text', serif", marginTop: 1 }}>
+                                            {t("mastery_src_wiki", { d: item.mastery_eligible_checked || "?", o: Math.max(0, steps.length - mReq) })}
+                                          </div>
+                                        )}
                                         {open && (
                                           <div style={{ marginTop: 4 }}>
                                             {Object.keys(achSubStatus ?? {}).length === 0 && (
