@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v76",
+    "version": "v77",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -931,7 +931,8 @@
     "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet.",
     "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort.",
     "changelog_v75": "Seuils des metas d'episode LW3 (bit 0 de chaque Master d'Aurora) recalcules. Les valeurs 20/26 etaient un copier-coller applique a cinq episodes sur six. Verifie : One Path Ends demande 36 succes sur 36 eligibles (paliers 1/5/10/15/25/36 — le 26 affiche correspondait a l'avant-dernier palier, pas au seuil) ; Out of the Shadows 18 sur 19 ; Rising Flames 23 sur 30 ; A Crack in the Ice 21 ; Flashpoint 20. Head of the Snake (28/32) reste non verifie et est marque comme tel. Les pools inconnus passent a null : le JSX les lit desormais dans l'API. Ajout d'un champ alt par piece : la piste de recompense de la carte en McM ou PvP rend la meme boite d'armure, sauf pour Plage des sirenes ou l'existence de la piste n'est pas confirmee.",
-    "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025."
+    "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025.",
+    "changelog_v77": "Budget karma d'Aurora chiffre et suivi. Total 840 000 : 315 000 pour la Relique d'un dieu, 210 000 x2 pour le Protecteur seraph et le Baton du savant, 35 000 pour les cinq Faveurs et 42 000 pour les objets de coeur du Lac Doric. Les 28 000 du Mont Draconis sont une estimation par analogie, marquees comme telles. Le karma s'affiche comme une monnaie a part entiere (devise de portefeuille 2) mais seulement si le total du legendaire depasse 100 000, et il est exclu des projections de farm journalier faute de cadence. Meme mecanique conditionnelle que les monnaies de carte : chaque ligne disparait du total des que l'etape correspondante est validee, les lots au meme prix fondant etape par etape. Lacune assumee et consignee : les objets de coeur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffres."
   },
   "meta_events": {
     "vb": {
@@ -12565,6 +12566,103 @@
                   "bit": 15
                 }
               ]
+            }
+          },
+          "karma_budget": {
+            "total": 840000,
+            "threshold_display": 100000,
+            "lines": [
+              {
+                "label": {
+                  "fr": "Relique d'un dieu (Plage des sirènes)",
+                  "en": "God's Relic backpack (Siren's Landing)"
+                },
+                "amount": 315000,
+                "sub": "aurora_sl",
+                "bit": 1,
+                "verified": true,
+                "ref": "wiki:Orrian_Pearl#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Faveurs des cinq dieux",
+                  "en": "Favors of the five gods"
+                },
+                "amount": 35000,
+                "per": 7000,
+                "sub": "aurora_sl",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "verified": true,
+                "ref": "guildjen:sirens-landing-master-guide"
+              },
+              {
+                "label": {
+                  "fr": "Protecteur seraph (Lac Doric)",
+                  "en": "Seraph Protector (Lake Doric)"
+                },
+                "amount": 210000,
+                "sub": "aurora_ld",
+                "bit": 13,
+                "verified": true,
+                "ref": "wiki:Jade_Shard#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Bâton du savant (Lac Doric)",
+                  "en": "Bloodstone Savant's Staff (Lake Doric)"
+                },
+                "amount": 210000,
+                "sub": "aurora_ld",
+                "bit": 14,
+                "verified": true,
+                "ref": "wiki:Jade_Shard#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur du Lac Doric",
+                  "en": "Lake Doric heart items"
+                },
+                "amount": 42000,
+                "per": 7000,
+                "sub": "aurora_ld",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "verified": true,
+                "ref": "guildjen:lake-doric-master-guide"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur du Mont Draconis",
+                  "en": "Draconis Mons heart items"
+                },
+                "amount": 28000,
+                "per": 7000,
+                "sub": "aurora_dm",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "verified": false,
+                "ref": "estimation par analogie — prix unitaire non confirme"
+              }
+            ],
+            "gaps": {
+              "fr": "Les objets de cœur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffrés.",
+              "en": "Heart items for Bloodstone Fen, Ember Bay and Bitterfrost Frontier are not costed yet."
             }
           }
         },

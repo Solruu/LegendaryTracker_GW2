@@ -187,6 +187,7 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
+    karma_note: "Shown because the total exceeds 100,000. ⚠ marks an unverified estimate.",
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
     aurora_src_wait: "threshold not yet loaded from the API",
@@ -389,6 +390,7 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
+    karma_note: "Affiché car le total dépasse 100 000. ⚠ signale une estimation non vérifiée.",
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
     aurora_src_wait: "seuil pas encore chargé depuis l'API",
@@ -1111,6 +1113,15 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
+      { id: "karma", name: "Karma", required: 0, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
+        extras: [
+          { amount: 315000, sub: "aurora_sl", bit: 1,  label: { fr: "Relique d'un dieu — Plage des sirènes", en: "God's Relic backpack — Siren's Landing" } },
+          { amountPer: 7000, sub: "aurora_sl", bits: [2, 3, 4, 5, 6], label: { fr: "Faveurs des cinq dieux — 7 000 pièce", en: "Favors of the five gods — 7,000 each" } },
+          { amount: 210000, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph — Lac Doric", en: "Seraph Protector — Lake Doric" } },
+          { amount: 210000, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant — Lac Doric", en: "Bloodstone Savant's Staff — Lake Doric" } },
+          { amountPer: 7000, sub: "aurora_ld", bits: [2, 3, 4, 5, 6, 7], label: { fr: "Objets de cœur du Lac Doric — 7 000 pièce", en: "Lake Doric heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
+        ] },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Bloodstone Fen",
         extras: [{ amount: 50, sub: "aurora_bf", bit: 7, label: { fr: "Rubis de sang immaculé (Natto) — 50 rubis + 5 000 magie déchaînée", en: "Pristine Blood Ruby (Natto) — 50 rubies + 5,000 Unbound Magic" } }] },
@@ -4263,15 +4274,18 @@ export default function GW2LegendaryTracker() {
       : (leg?.currencies ?? [])));
   // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
   // que tant que l'étape correspondante n'est pas validée (v107).
-  const extraStepDone = (x) => {
+  // Un extra peut viser une étape unique (bit + amount) ou un lot d'étapes
+  // de même prix (bits[] + amountPer) : le reste dû fond au fur et à mesure.
+  const extraRemaining = (x) => {
     const sc = auroraCollections?.[x.sub];
-    if (!sc) return false;
-    return (sc.done ?? false) || (sc.bits ?? []).includes(x.bit);
+    const stepDone = (b) => sc ? ((sc.done ?? false) || (sc.bits ?? []).includes(b)) : false;
+    if (Array.isArray(x.bits)) return x.bits.filter(b => !stepDone(b)).length * (x.amountPer ?? 0);
+    return stepDone(x.bit) ? 0 : (x.amount ?? 0);
   };
   const withExtras = legCurrencies.map(cur => {
     const ex = Array.isArray(cur.extras) ? cur.extras : [];
     if (ex.length === 0) return cur;
-    const pending = ex.filter(x => !extraStepDone(x));
+    const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
     return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
   });
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
@@ -4789,7 +4803,7 @@ export default function GW2LegendaryTracker() {
               <div style={{ fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(226,201,126,0.3)", marginBottom: "8px", fontFamily: "'Crimson Text', serif" }}>
                 {t("chars_yield")}
               </div>
-              {(leg?.currencies ?? []).map(cur => {
+              {(leg?.currencies ?? []).filter(cur => cur.kind !== "karma").map(cur => {
                 let perDay, note, color;
                 if (cur.farmType === "per_char") {
                   perDay = numChars * cur.perCharPerDay;
@@ -6082,7 +6096,7 @@ export default function GW2LegendaryTracker() {
               {t("obs_per_piece_note", { n: obsRemainingCount })}
             </div>
           )}
-          {mainProgress.map(cur => (
+          {mainProgress.filter(cur => !(cur.kind === "karma" && cur.required < (cur.showAbove ?? 0))).map(cur => (
             <div key={cur.id} style={{ margin: "6px 14px", padding: "12px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
@@ -6095,9 +6109,14 @@ export default function GW2LegendaryTracker() {
                         <div style={{ marginTop: 3 }}>
                           {cur.extrasPending.map((x, xi) => (
                             <div key={xi} style={{ fontSize: 9, color: "rgba(251,146,60,0.65)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
-                              + {x.amount} — {NX(x.label)}
+                              + {x.amount.toLocaleString()} — {NX(x.label)}{x.estimated ? " ⚠" : ""}
                             </div>
                           ))}
+                        </div>
+                      )}
+                      {cur.kind === "karma" && (cur.extrasPending ?? []).length > 0 && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
+                          {t("karma_note")}
                         </div>
                       )}
                       {cur.extrasTotal > 0 && (cur.extrasPending ?? []).length === 0 && (

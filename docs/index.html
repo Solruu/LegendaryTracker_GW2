@@ -251,6 +251,7 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
+    karma_note: "Shown because the total exceeds 100,000. ⚠ marks an unverified estimate.",
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
     aurora_src_wait: "threshold not yet loaded from the API",
@@ -453,6 +454,7 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
+    karma_note: "Affiché car le total dépasse 100 000. ⚠ signale une estimation non vérifiée.",
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
     aurora_src_wait: "seuil pas encore chargé depuis l'API",
@@ -663,7 +665,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v76",
+    "version": "v77",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1594,7 +1596,8 @@ const SOURCES_DB = {
     "changelog_v71": "meta_eligible : ajout de 8880 Shipwreck Strand (53 eligibles / seuil 36) et 9057 Starlit Weald (55 / 36). Les comptes correspondent exactement aux totaux annonces par le wiki. 'A Hunt for the Ages' (Starlit Weald) est conserve avec un id null : il existe en jeu, sa fiche figure sur la page, mais l'API ne l'expose pas — meme cas que 9330. 11 eligibles sont ranges hors de la categorie de leur carte (Castoran Culture, Renown Hearts), ce qui confirme a nouveau que le repli par categorie est structurellement incomplet.",
     "changelog_v74": "Antique Summoning Stone : l'observation laissee ouverte en v69 est tranchee. Seule la meta Trepas du dragon donne la pierre (Coffre du heros, 1/jour) — aucun autre coffre de meta EoD, ni Dragonstorm, ni Drakkar : ces deux dernieres etaient une erreur, supprimees. L'End of Dragons Reward Coffer n'est plus liste par le wiki, supprime. Les 5 sources hebdomadaires en Challenge Mode sont des strikes et non des raids, renommees. Plafond corrige de 10 a 17/semaine (7 + 5 + 5) et timegate recalcule : ~6 semaines en cumulant tout, 20 semaines chez Leivas seul, contre les 9 semaines annoncees a tort.",
     "changelog_v75": "Seuils des metas d'episode LW3 (bit 0 de chaque Master d'Aurora) recalcules. Les valeurs 20/26 etaient un copier-coller applique a cinq episodes sur six. Verifie : One Path Ends demande 36 succes sur 36 eligibles (paliers 1/5/10/15/25/36 — le 26 affiche correspondait a l'avant-dernier palier, pas au seuil) ; Out of the Shadows 18 sur 19 ; Rising Flames 23 sur 30 ; A Crack in the Ice 21 ; Flashpoint 20. Head of the Snake (28/32) reste non verifie et est marque comme tel. Les pools inconnus passent a null : le JSX les lit desormais dans l'API. Ajout d'un champ alt par piece : la piste de recompense de la carte en McM ou PvP rend la meme boite d'armure, sauf pour Plage des sirenes ou l'existence de la piste n'est pas confirmee.",
-    "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025."
+    "changelog_v76": "Achats en monnaie de carte comptabilises. Le tracker n'additionnait que les 250 exiges par le Don de magie de pierre de sang et ignorait les objets de collection payes dans la meme monnaie. Ajouts verifies au wiki : Relique d'un dieu 200 perles orriennes + 315 000 karma (Plage des sirenes), Protecteur seraph et Baton du savant de la pierre de sang 50 eclats de jade + 210 000 karma chacun (Lac Doric), Rubis de sang immacule 50 rubis + 5 000 magie dechainee (Marais de la pierre de sang). Totaux reels par monnaie : perles 450, eclats de jade 350, rubis de sang 300, les trois autres restent a 250. Correction de fond : le Don de magie de pierre de sang coute 250 rubis de sang + 250 eclats de jade + 250 perles orriennes — le rubis de sang, sixieme monnaie LW3, etait totalement absent du tracker. Piste de recompense Plage des sirenes confirmee : elle rend la boite de brogans OU 50 perles, non repetable depuis mars 2025.",
+    "changelog_v77": "Budget karma d'Aurora chiffre et suivi. Total 840 000 : 315 000 pour la Relique d'un dieu, 210 000 x2 pour le Protecteur seraph et le Baton du savant, 35 000 pour les cinq Faveurs et 42 000 pour les objets de coeur du Lac Doric. Les 28 000 du Mont Draconis sont une estimation par analogie, marquees comme telles. Le karma s'affiche comme une monnaie a part entiere (devise de portefeuille 2) mais seulement si le total du legendaire depasse 100 000, et il est exclu des projections de farm journalier faute de cadence. Meme mecanique conditionnelle que les monnaies de carte : chaque ligne disparait du total des que l'etape correspondante est validee, les lots au meme prix fondant etape par etape. Lacune assumee et consignee : les objets de coeur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffres."
   },
   "meta_events": {
     "vb": {
@@ -13229,6 +13232,103 @@ const SOURCES_DB = {
                 }
               ]
             }
+          },
+          "karma_budget": {
+            "total": 840000,
+            "threshold_display": 100000,
+            "lines": [
+              {
+                "label": {
+                  "fr": "Relique d'un dieu (Plage des sirènes)",
+                  "en": "God's Relic backpack (Siren's Landing)"
+                },
+                "amount": 315000,
+                "sub": "aurora_sl",
+                "bit": 1,
+                "verified": true,
+                "ref": "wiki:Orrian_Pearl#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Faveurs des cinq dieux",
+                  "en": "Favors of the five gods"
+                },
+                "amount": 35000,
+                "per": 7000,
+                "sub": "aurora_sl",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "verified": true,
+                "ref": "guildjen:sirens-landing-master-guide"
+              },
+              {
+                "label": {
+                  "fr": "Protecteur seraph (Lac Doric)",
+                  "en": "Seraph Protector (Lake Doric)"
+                },
+                "amount": 210000,
+                "sub": "aurora_ld",
+                "bit": 13,
+                "verified": true,
+                "ref": "wiki:Jade_Shard#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Bâton du savant (Lac Doric)",
+                  "en": "Bloodstone Savant's Staff (Lake Doric)"
+                },
+                "amount": 210000,
+                "sub": "aurora_ld",
+                "bit": 14,
+                "verified": true,
+                "ref": "wiki:Jade_Shard#Currency_for"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur du Lac Doric",
+                  "en": "Lake Doric heart items"
+                },
+                "amount": 42000,
+                "per": 7000,
+                "sub": "aurora_ld",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "verified": true,
+                "ref": "guildjen:lake-doric-master-guide"
+              },
+              {
+                "label": {
+                  "fr": "Objets de cœur du Mont Draconis",
+                  "en": "Draconis Mons heart items"
+                },
+                "amount": 28000,
+                "per": 7000,
+                "sub": "aurora_dm",
+                "bits": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "verified": false,
+                "ref": "estimation par analogie — prix unitaire non confirme"
+              }
+            ],
+            "gaps": {
+              "fr": "Les objets de cœur de Marais de la pierre de sang, Baie des braises et Confins de Givramer ne sont pas encore chiffrés.",
+              "en": "Heart items for Bloodstone Fen, Ember Bay and Bitterfrost Frontier are not costed yet."
+            }
           }
         },
         "aurora_2": {
@@ -15777,6 +15877,15 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
+      { id: "karma", name: "Karma", required: 0, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
+        extras: [
+          { amount: 315000, sub: "aurora_sl", bit: 1,  label: { fr: "Relique d'un dieu — Plage des sirènes", en: "God's Relic backpack — Siren's Landing" } },
+          { amountPer: 7000, sub: "aurora_sl", bits: [2, 3, 4, 5, 6], label: { fr: "Faveurs des cinq dieux — 7 000 pièce", en: "Favors of the five gods — 7,000 each" } },
+          { amount: 210000, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph — Lac Doric", en: "Seraph Protector — Lake Doric" } },
+          { amount: 210000, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant — Lac Doric", en: "Bloodstone Savant's Staff — Lake Doric" } },
+          { amountPer: 7000, sub: "aurora_ld", bits: [2, 3, 4, 5, 6, 7], label: { fr: "Objets de cœur du Lac Doric — 7 000 pièce", en: "Lake Doric heart items — 7,000 each" } },
+          { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
+        ] },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Bloodstone Fen",
         extras: [{ amount: 50, sub: "aurora_bf", bit: 7, label: { fr: "Rubis de sang immaculé (Natto) — 50 rubis + 5 000 magie déchaînée", en: "Pristine Blood Ruby (Natto) — 50 rubies + 5,000 Unbound Magic" } }] },
@@ -18923,15 +19032,18 @@ function GW2LegendaryTracker() {
       : (leg?.currencies ?? [])));
   // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
   // que tant que l'étape correspondante n'est pas validée (v107).
-  const extraStepDone = (x) => {
+  // Un extra peut viser une étape unique (bit + amount) ou un lot d'étapes
+  // de même prix (bits[] + amountPer) : le reste dû fond au fur et à mesure.
+  const extraRemaining = (x) => {
     const sc = auroraCollections?.[x.sub];
-    if (!sc) return false;
-    return (sc.done ?? false) || (sc.bits ?? []).includes(x.bit);
+    const stepDone = (b) => sc ? ((sc.done ?? false) || (sc.bits ?? []).includes(b)) : false;
+    if (Array.isArray(x.bits)) return x.bits.filter(b => !stepDone(b)).length * (x.amountPer ?? 0);
+    return stepDone(x.bit) ? 0 : (x.amount ?? 0);
   };
   const withExtras = legCurrencies.map(cur => {
     const ex = Array.isArray(cur.extras) ? cur.extras : [];
     if (ex.length === 0) return cur;
-    const pending = ex.filter(x => !extraStepDone(x));
+    const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
     return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
   });
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
@@ -19449,7 +19561,7 @@ function GW2LegendaryTracker() {
               <div style={{ fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(226,201,126,0.3)", marginBottom: "8px", fontFamily: "'Crimson Text', serif" }}>
                 {t("chars_yield")}
               </div>
-              {(leg?.currencies ?? []).map(cur => {
+              {(leg?.currencies ?? []).filter(cur => cur.kind !== "karma").map(cur => {
                 let perDay, note, color;
                 if (cur.farmType === "per_char") {
                   perDay = numChars * cur.perCharPerDay;
@@ -20742,7 +20854,7 @@ function GW2LegendaryTracker() {
               {t("obs_per_piece_note", { n: obsRemainingCount })}
             </div>
           )}
-          {mainProgress.map(cur => (
+          {mainProgress.filter(cur => !(cur.kind === "karma" && cur.required < (cur.showAbove ?? 0))).map(cur => (
             <div key={cur.id} style={{ margin: "6px 14px", padding: "12px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
@@ -20755,9 +20867,14 @@ function GW2LegendaryTracker() {
                         <div style={{ marginTop: 3 }}>
                           {cur.extrasPending.map((x, xi) => (
                             <div key={xi} style={{ fontSize: 9, color: "rgba(251,146,60,0.65)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
-                              + {x.amount} — {NX(x.label)}
+                              + {x.amount.toLocaleString()} — {NX(x.label)}{x.estimated ? " ⚠" : ""}
                             </div>
                           ))}
+                        </div>
+                      )}
+                      {cur.kind === "karma" && (cur.extrasPending ?? []).length > 0 && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
+                          {t("karma_note")}
                         </div>
                       )}
                       {cur.extrasTotal > 0 && (cur.extrasPending ?? []).length === 0 && (
