@@ -1,0 +1,208 @@
+# ROUTES.md — comment aller chercher l'information dans ce projet
+
+Ce fichier existe parce que les contournements trouvés au fil des sessions ne
+survivaient pas d'une conversation à l'autre. Résultat concret : plusieurs
+semaines avant de retrouver que `web_fetch` contourne les limites CORS du
+conteneur, et des seuils faux publiés parce qu'un blocage réseau avait fait
+basculer silencieusement sur un guide communautaire.
+
+À lire au démarrage de chaque conversation, en même temps que les fichiers du
+projet.
+
+---
+
+## 1. Taxonomie des erreurs
+
+La règle « insister avant d'abandonner » ne vaut rien sans distinguer ce qui est
+définitif de ce qui ne l'est pas. Réessayer un 404 est une perte de temps ;
+abandonner sur une troncature est une faute.
+
+### 1.a — Définitif : ne pas réessayer à l'identique, changer de route
+
+| Symptôme | Signification |
+|---|---|
+| HTTP 404 | La ressource n'existe pas à cette URL. Ne pas deviner une URL voisine. |
+| HTTP 401 / 403 « bot detection » | Le site refuse les clients automatisés. Il refusera toujours. |
+| HTTP 403 `Host not in allowlist` | Le domaine n'est pas autorisé en sortie **depuis bash**. Ce n'est PAS un blocage global — voir 2.a. |
+| `PERMISSIONS_ERROR` sur `web_fetch` | L'URL n'a jamais été vue. Définitif **pour cette URL telle quelle**, pas pour la question — voir 2.b. |
+| HTTP 410 | Ressource supprimée. |
+
+Un échec définitif tue **une URL**, jamais **une question**. Le réflexe correct
+n'est pas de conclure, c'est de descendre l'échelle des routes (§3).
+
+### 1.b — À réessayer, avec des paramètres différents
+
+| Symptôme | Ce qu'il faut changer |
+|---|---|
+| Contenu tronqué, la donnée cherchée est « après » | `text_content_token_limit` à 3000–6000. Les pages wiki denses dépassent largement le défaut. |
+| Extraction vide alors que la page a du contenu | Basculer `html_extraction_method` sur `traf`, puis retenter en `markdown`. |
+| HTTP 429 | Attendre, réessayer. Espacer les appels. |
+| HTTP 500 / 502 / 503 / 504 | Panne passagère : 2 à 3 tentatives espacées avant de conclure. |
+| Timeout | Réessayer une fois, puis réduire la charge (lots plus petits). |
+| Recherche sans résultat utile | Reformuler avec d'autres **mots de contenu** — jamais les mêmes termes. Une requête qui échoue deux fois à l'identique n'a été essayée qu'une fois. |
+
+### 1.c — Le piège des tableaux rendus côté client
+
+Le wiki GW2 répond correctement en HTTP 200 tout en livrant une page dont les
+blocs utiles sont vides : les tableaux « Collection items », les widgets liés à
+une clé API, certaines listes d'objectifs. **Un 200 n'est pas une réussite.**
+Vérifier que la donnée cherchée est réellement présente avant de conclure quoi
+que ce soit. Si le bloc est vide, ce n'est pas une absence de donnée, c'est un
+échec de route : descendre l'échelle.
+
+---
+
+## 2. Blocages connus et leur contournement
+
+### 2.a — `bash` n'a pas accès à l'API GW2
+
+L'allowlist de sortie couvre GitHub, npm, PyPI, crates.io et les dépôts Ubuntu.
+`api.guildwars2.com` n'y est pas : tout `curl` renvoie
+`403 Host not in allowlist`.
+
+- **Contournement** : `web_fetch` sur l'URL de l'API, qui n'est pas soumis à la
+  même allowlist. C'est le contournement qui avait mis des semaines à être
+  retrouvé.
+- **Repli hors ligne** : `gw2_achievements_ref.json` (6 876 succès),
+  `gw2_materials_ref.json` (680 objets), `gw2_currencies_ref.json` (79 devises)
+  sont dans le dépôt et suffisent pour toute résolution id ↔ nom.
+- **Dernier recours** : demander à Antoine de lancer `gw2_refresh_refs_v2.py` ou
+  `gw2_dump_bits_v3.py` en local.
+
+### 2.b — `web_fetch` n'accepte que les URL déjà vues
+
+Une URL construite de tête est refusée, même parfaitement valide.
+
+- **Contournement** : `web_search` d'abord, puis `web_fetch` sur le lien
+  retourné. Fonctionne aussi pour les URL d'API : chercher l'URL elle-même
+  comme requête.
+- La permission est **par URL exacte**, pas par domaine : avoir chargé
+  `/achievement/3516` n'autorise pas `/achievement/3442`.
+
+### 2.c — gw2treasures bloque les robots
+
+`en.gw2treasures.com` renvoie une détection de bot.
+
+- **Contournement** : le miroir `gw2.dvg.cn/en/achievement/<id>` (et `/fr/`)
+  expose les mêmes données brutes de l'API : paliers (`tiers`), objectifs
+  (`bits`), points. C'est la meilleure source pour un seuil exact quand
+  `web_fetch` sur l'API échoue.
+
+### 2.d — Le wiki bloque parfois, et masque toujours ses tableaux dynamiques
+
+Voir 1.c. Quand le bloc voulu n'est pas extractible :
+
+- guides communautaires (§3, niveau 4), en **signalant le changement de source** ;
+- ou demander une capture à Antoine. C'est rapide, fiable, et il le fait
+  volontiers. **Demander une capture n'est pas un aveu d'échec** : c'est la
+  route prévue pour ce cas précis. Elle a résolu la chaîne du Wayfarer's Henge,
+  les 6 métas LW3 et les listes d'objectifs de Vision.
+
+---
+
+## 3. L'échelle des routes pour une donnée de jeu
+
+À parcourir **dans l'ordre**. Ne jamais sauter un niveau sans dire pourquoi.
+
+1. **Fichiers de référence du dépôt** — hors ligne, autoritaires pour id ↔ nom,
+   et à utiliser **systématiquement** pour valider tout id avant de le publier.
+2. **API GW2 via `web_fetch`** — autoritaire pour paliers, bits, prérequis, AP.
+3. **wiki.guildwars2.com** — autoritaire pour tout ce que l'API n'expose pas :
+   listes d'objectifs éligibles des métas, coûts en monnaie, recettes.
+4. **Miroir `gw2.dvg.cn`** — équivalent au niveau 2 quand celui-ci échoue.
+5. **Guides communautaires** (GuildJen, Ayinmaiden, Dulfy) — pratiques et
+   souvent justes, mais **non autoritaires** et parfois périmés. Les chiffres
+   qui en viennent doivent être marqués `verified: false` et signalés.
+6. **Captures d'Antoine** — pour les blocs wiki rendus côté client.
+
+---
+
+## 4. Règle d'annonce — obligatoire
+
+> **Changement de source, changement de niveau, ou abandon d'une route :
+> le dire explicitement dans la réponse.**
+
+Sans cette règle, un repli silencieux produit une réponse qui a l'air complète.
+C'est exactement ce qui a fait publier des seuils de métas faux : les chiffres
+venaient d'un guide, la réponse ne le disait pas, et l'écart n'est apparu que
+lorsque Antoine l'a vu en jeu.
+
+Formulations attendues, en une ligne, pas un paragraphe :
+
+- « Wiki inaccessible sur ce bloc, chiffres pris chez GuildJen — non vérifiés. »
+- « API injoignable en bash, passé par le miroir dvg.cn. »
+- « Trois routes essayées (wiki, miroir, guides), aucune ne donne le pool
+  d'éligibles — il me faut une capture. »
+
+Corollaire : une donnée obtenue au niveau 5 ou 6 porte toujours `verified`,
+`checked` et `ref` dans les sources. Une donnée sans provenance est une dette.
+
+---
+
+## 5. Règles de structure
+
+Reprises ici parce qu'elles relèvent du même réflexe que le contournement
+réseau : céder à la résistance et livrer quelque chose qui marche en apparence.
+
+- **Une donnée d'un type déjà existant rejoint la structure existante.** Créer un
+  champ ou un chemin de rendu parallèle est interdit. Si la structure ne
+  convient pas, le dire et proposer de la modifier.
+  *Cas réel : une liste d'éligibles rangée dans `mastery_eligible` au lieu de
+  `meta_eligible` s'affichait correctement mais contournait tout le pipeline
+  d'enrichissement — plus de score d'effort, plus de descriptions, plus de
+  chemin le plus court.*
+- **Les listes de succès éligibles vivent uniquement dans `meta_eligible`**,
+  indexées par l'id du méta, au schéma
+  `{name, threshold, source, verified, achievements: [[id, nom]], notes?}`.
+- **Toute fonctionnalité transversale** (scoring, détecteurs, i18n) doit être
+  vérifiée comme s'appliquant au nouveau cas — pas seulement son affichage.
+- **Avant tout push** : `python3 gw2_audit_v1.py`. Un échec bloque le push.
+- **Préférer un détecteur runtime à un inventaire écrit.** Le nom d'un succès ne
+  dit pas sa nature : `Master Diver` ressemble à un méta compteur et porte en
+  fait dix bits. Seule l'exécution sait.
+
+---
+
+## 6. Pièges de la chaîne de build
+
+- **Babel standalone** : un `>>` littéral dans du JSX casse le parse ; `??`
+  combiné à `||` exige un parenthésage explicite.
+- **Jekyll** consomme la syntaxe `{{ }}` sur GitHub Pages — le fichier
+  `.nojekyll` est indispensable.
+- **Validation JSX** :
+  `npx --prefix /home/claude esbuild fichier.jsx --loader:.jsx=jsx --outfile=/tmp/out.js`
+- **Validation Python** : `python3 -m py_compile`.
+- **Build** : `python3 gw2_build_html_v2.py --jsx <jsx> --json <sources> --out docs/index.html`,
+  à relancer à chaque push.
+- **Comptage d'accolades** : le déséquilibre de parenthèses (−44) est **normal**
+  sur ce fichier, il vient des chaînes de caractères. Comparer avec la version
+  précédente plutôt que de lire la valeur absolue.
+
+---
+
+## 7. Pièges de l'API GW2
+
+- **CORS** : utiliser `?access_token=` en paramètre. L'en-tête
+  `Authorization: Bearer` échoue au préflight sur mobile.
+- **Cache** de 3 à 4 minutes : l'inventaire en temps réel n'est pas fiable.
+- **`account/achievements`** ne renvoie que les succès à progression non nulle
+  ou terminés. L'absence d'un id ne signifie pas zéro, elle signifie « rien à
+  signaler ». Il renvoie **tout le compte** : filtrer sur une liste d'ids
+  connus, c'est jeter la donnée dont on aura besoin ailleurs.
+- **Métas de type compteur** : aucun champ `bits`. Le seuil est le **dernier
+  palier de `tiers[]`**, jamais le texte de `requirement` (l'API en retire le
+  nombre). La liste des éligibles vient du wiki, exclusivement.
+- **La catégorie API n'est pas un substitut** à la liste d'éligibles, dans les
+  deux sens : elle contient des succès qui ne comptent pas (`With Friends Like
+  These...` pour One Path Ends, les deux `Ember Bay Insight` pour Rising
+  Flames) et il lui manque des succès éligibles classés ailleurs (`Patron`
+  (3127), éligible à Rising Flames mais rangé sous *Tradesman* ; les éligibles
+  de Bava Nisos rangés sous *Janthir Side Stories*).
+- **Certains succès n'existent pas dans l'API** bien qu'éligibles en jeu
+  (`A Hunt for the Ages`, Starlit Weald). Les retirer et documenter, jamais
+  laisser un id `null`.
+- **Certains succès n'ont pas de catégorie publique** et ne se synchronisent
+  donc pas (`Forge Guard's Armor`, id 9330).
+- **Caches localStorage** : toute modification de la forme d'un objet mis en
+  cache exige un numéro de schéma dans **la clé et la charge utile**, sinon les
+  utilisateurs existants gardent l'ancienne forme sans le savoir.
