@@ -255,6 +255,10 @@ const I18N = {
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
     aurora_src_wait: "threshold not yet loaded from the API",
+    mastery_steps: "Eligible achievements: {d}/{n} done · {r} still needed",
+    mastery_shortest: "Pick any {r} of the {s} remaining — the rest can be skipped.",
+    mastery_nosteps: "⚠ no step list resolved for this meta — report it",
+    mastery_nostatus: "Sync with your API key to see which ones are done.",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -458,6 +462,10 @@ const I18N = {
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
     aurora_src_wait: "seuil pas encore chargé depuis l'API",
+    mastery_steps: "Succès éligibles : {d}/{n} faits · encore {r}",
+    mastery_shortest: "N'importe lesquels {r} parmi les {s} restants — le reste est facultatif.",
+    mastery_nosteps: "⚠ aucune liste d'étapes résolue pour ce méta — à signaler",
+    mastery_nostatus: "Synchronise avec ta clé API pour voir lesquels sont faits.",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -18449,6 +18457,7 @@ function GW2LegendaryTracker() {
   });
   // Aurora — expanded sous-collection dans l'onglet collections
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
+  const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
 
   // Vision — progression collections
   const [visionCollections, setVisionCollections] = useState(() => {
@@ -20121,6 +20130,67 @@ function GW2LegendaryTracker() {
                                   <div style={{ fontSize: 8, marginTop: 3, fontFamily: "'Crimson Text', serif", color: mGap ? "rgba(248,113,113,0.85)" : "rgba(226,201,126,0.28)" }}>
                                     {mGap ? t("aurora_src_gap", { j: mGap, a: apiReq }) : (apiReq > 0 ? t("aurora_src_api") : t("aurora_src_wait"))}
                                   </div>
+                                  {(() => {
+                                    // Détail au bit près du méta d'épisode : les bits sont des
+                                    // libellés de succès, résolus en ids via la catégorie.
+                                    const bits = mDef?.bits ?? [];
+                                    const bitAch = mDef?.bitAch ?? {};
+                                    const steps = bits.map((b, bi) => ({
+                                      i: bi,
+                                      name: (lang === "en" ? (b.text ?? "") : (b.text ?? "")),
+                                      id: bitAch[bi] ?? null,
+                                    })).filter(st => st.name);
+                                    if (steps.length === 0) {
+                                      return apiReq > 1 ? (
+                                        <div style={{ marginTop: 4, fontSize: 9, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif" }}>
+                                          {t("mastery_nosteps")}
+                                        </div>
+                                      ) : null;
+                                    }
+                                    const st = (x) => (achSubStatus ?? {})[String(x.id)] ?? null;
+                                    const isDone = (x) => x.id != null && st(x)?.done === true;
+                                    const doneN = steps.filter(isDone).length;
+                                    const rest = steps.filter(x => !isDone(x));
+                                    const need = Math.max(0, mReq - Math.max(mCur, doneN));
+                                    const open = masteryStepsOpen === masteryId;
+                                    return (
+                                      <div style={{ marginTop: 5, borderTop: "1px solid rgba(251,146,60,0.12)", paddingTop: 4 }}>
+                                        <div onClick={() => setMasteryStepsOpen(open ? null : masteryId)}
+                                          style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                          <span style={{ fontSize: 9, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif" }}>
+                                            {t("mastery_steps", { d: doneN, n: steps.length, r: need })}
+                                          </span>
+                                          <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>{open ? "▲" : "▼"}</span>
+                                        </div>
+                                        {open && (
+                                          <div style={{ marginTop: 4 }}>
+                                            {Object.keys(achSubStatus ?? {}).length === 0 && (
+                                              <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif", marginBottom: 3 }}>
+                                                {t("mastery_nostatus")}
+                                              </div>
+                                            )}
+                                            {[...steps].sort((a2, b2) => (isDone(a2) === isDone(b2) ? 0 : isDone(a2) ? 1 : -1)).map(x => {
+                                              const d2 = isDone(x);
+                                              const pr = st(x);
+                                              return (
+                                                <div key={x.i} style={{ display: "flex", justifyContent: "space-between", gap: 6, fontSize: 9, lineHeight: 1.55, fontFamily: "'Crimson Text', serif", color: d2 ? "rgba(74,222,128,0.55)" : "rgba(226,201,126,0.7)" }}>
+                                                  <span>{d2 ? "✓" : "○"} {x.name}</span>
+                                                  {!d2 && pr && (pr.max ?? 0) > 1 && (
+                                                    <span style={{ color: "rgba(251,146,60,0.55)", flexShrink: 0 }}>{pr.current}/{pr.max}</span>
+                                                  )}
+                                                </div>
+                                              );
+                                            })}
+                                            {rest.length > 0 && need > 0 && (
+                                              <div style={{ marginTop: 4, fontSize: 9, color: "rgba(251,220,80,0.6)", fontFamily: "'Crimson Text', serif" }}>
+                                                {t("mastery_shortest", { r: need, s: rest.length })}
+                                              </div>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  })()}
                                 </div>
                               )}
                               {missing && item.alt && (
