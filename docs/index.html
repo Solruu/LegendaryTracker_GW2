@@ -19037,9 +19037,20 @@ function GW2LegendaryTracker() {
     let sig = 0;
     for (const c of ids.join(",")) sig = ((sig << 5) - sig + c.charCodeAt(0)) | 0;
     // ACH_DEFS_SCHEMA : à incrémenter dès que la FORME de `out` change (tierMax, subs curées…).
+    // ⚠ Ne couvre PAS les changements de CONTENU éditorial : ajouter une liste dans
+    // meta_eligible ne change pas la forme, et la v113 est restée invisible derrière
+    // un cache d'avant la curation. D'où la signature de données ci-dessous, qui rend
+    // l'oubli impossible : toute retouche des blocs éditoriaux change la clé.
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 15;
-    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}`;
+    const ACH_DEFS_SCHEMA = 16;
+    // Signature des données éditoriales injectées dans `out` : listes curées et
+    // pièges. Toute modification invalide le cache sans intervention manuelle.
+    const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+    let dsig = 0;
+    for (const c of JSON.stringify([SDB?.meta_eligible ?? {}, SDB?.achievement_notes ?? {}])) {
+      dsig = ((dsig << 5) - dsig + c.charCodeAt(0)) | 0;
+    }
+    const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}_${(dsig >>> 0).toString(36)}`;
     try {
       for (let i = localStorage.length - 1; i >= 0; i--) {
         const k = localStorage.key(i);

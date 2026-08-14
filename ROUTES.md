@@ -215,3 +215,10 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
 - **Caches localStorage** : toute modification de la forme d'un objet mis en
   cache exige un numéro de schéma dans **la clé et la charge utile**, sinon les
   utilisateurs existants gardent l'ancienne forme sans le savoir.
+- **Le numéro de schéma ne suffit pas.** Il couvre la forme, pas le contenu :
+  ajouter une liste dans `meta_eligible` ne change aucune structure, et le cache
+  d'avant la curation continue d'être servi. Un travail de données peut donc être
+  correct, poussé, et parfaitement invisible. Toute donnée éditoriale injectée
+  dans un objet mis en cache doit être **hachée dans la clé de cache**, jamais
+  laissée à un numéro qu'on pense à incrémenter. Vérification : après une passe
+  de données, la clé de cache doit avoir changé.
