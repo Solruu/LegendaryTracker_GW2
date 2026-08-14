@@ -261,6 +261,7 @@ const I18N = {
     mastery_nosteps: "⚠ no step list resolved for this meta — report it",
     mastery_nostatus: "Sync with your API key to see which ones are done.",
     mastery_src_wiki: "curated wiki list ({d}) — {o} of them are optional",
+    mastery_stale: "⚠ the official counter says {c} done, this list only knows {d} — press the API button to refresh the snapshot",
     diag_title: "⚕ Data check — {n} meta(s) without a step list",
     diag_counts: "{w} curated from the wiki · {c} falling back to their API category",
     diag_none: "Every downloaded counter-meta resolves to a step list.",
@@ -478,6 +479,7 @@ const I18N = {
     mastery_nosteps: "⚠ aucune liste d'étapes résolue pour ce méta — à signaler",
     mastery_nostatus: "Synchronise avec ta clé API pour voir lesquels sont faits.",
     mastery_src_wiki: "liste curée du wiki ({d}) — dont {o} facultatifs",
+    mastery_stale: "⚠ le compteur officiel annonce {c} faits, cette liste n'en connaît que {d} — appuie sur le bouton API pour rafraîchir l'instantané",
     diag_title: "⚕ Contrôle des données — {n} méta(s) sans liste d'étapes",
     diag_counts: "{w} curés depuis le wiki · {c} repliés sur leur catégorie API",
     diag_none: "Tous les métas compteurs téléchargés ont une liste d'étapes.",
@@ -19585,9 +19587,29 @@ function GW2LegendaryTracker() {
         localStorage.setItem("gw2_prismatic_progress", JSON.stringify(pp));
         setPrismaticProgress(pp);
       }
-      if (data._sub_status) {
-        try { localStorage.setItem("gw2_ach_substatus", JSON.stringify(data._sub_status)); } catch (_) {}
-        setAchSubStatus(data._sub_status);
+      // Flask ne renvoie pas _sub_status : sans ce rattrapage, l'instantane des
+      // sous-succes n'etait jamais rafraichi. L'effet de complement ne va chercher
+      // que les ids INCONNUS, donc un succes enregistre comme non fait le restait
+      // indefiniment, meme une fois termine en jeu.
+      let subSnap = data._sub_status;
+      if (!subSnap) {
+        const dKey2 = (gtApiKey ?? "").trim();
+        if (dKey2) {
+          try {
+            const rs = await fetch(`https://api.guildwars2.com/v2/account/achievements?access_token=${encodeURIComponent(dKey2)}`);
+            if (rs.ok) {
+              const list2 = await rs.json();
+              subSnap = {};
+              for (const a of list2) subSnap[String(a.id)] = { done: a?.done === true, current: a?.current ?? 0, max: a?.max ?? 0 };
+            }
+          } catch (_) { /* on garde l'instantane precedent */ }
+        }
+      }
+      if (subSnap) {
+        // Instantane COMPLET du compte : on remplace au lieu de fusionner, sinon
+        // une valeur perimee survit a toutes les synchros suivantes.
+        try { localStorage.setItem("gw2_ach_substatus", JSON.stringify(subSnap)); } catch (_) {}
+        setAchSubStatus(subSnap);
       }
       // Fetch Aurora collections en parallèle
       try {
@@ -21118,6 +21140,11 @@ function GW2LegendaryTracker() {
                                           </span>
                                           <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)" }}>{open ? "▲" : "▼"}</span>
                                         </div>
+                                        {mCur > doneN && (
+                                          <div style={{ fontSize: 8.5, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif", marginTop: 1 }}>
+                                            {t("mastery_stale", { c: mCur, d: doneN })}
+                                          </div>
+                                        )}
                                         {curated.length > 0 && (
                                           <div style={{ fontSize: 8, color: "rgba(226,201,126,0.28)", fontFamily: "'Crimson Text', serif", marginTop: 1 }}>
                                             {t("mastery_src_wiki", { d: mDef?.subsVerified || "?", o: Math.max(0, steps.length - mReq) })}

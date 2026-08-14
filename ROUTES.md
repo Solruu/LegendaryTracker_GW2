@@ -168,6 +168,16 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   stock s'affiche alors à zéro selon le chemin emprunté, ce qui ressemble à une
   perte de données plutôt qu'à un oubli de déclaration. Le script d'audit
   contrôle désormais la correspondance.
+- **Un instantané ne se fusionne pas, il se remplace.** Le statut des
+  sous-succès était mis à jour par `{...prev, ...data}`, et l'effet de
+  complément n'allait chercher que les ids *inconnus*. Un succès enregistré
+  comme non fait le restait donc indéfiniment, même terminé en jeu. Dès qu'une
+  charge couvre l'intégralité d'un domaine — `account/achievements` renvoie tout
+  le compte — elle doit **écraser** l'état, pas s'y ajouter.
+- **Un bouton doit rafraîchir ce qu'il prétend rafraîchir.** Flask ne renvoie pas
+  `_sub_status` ; la synchro directe si. Selon le chemin emprunté, le même bouton
+  faisait donc deux choses différentes, sans le dire. Vérifier qu'un chemin de
+  repli couvre le même périmètre que le chemin principal.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score
   d'effort ne voit que le volume, les prérequis et les AP.
