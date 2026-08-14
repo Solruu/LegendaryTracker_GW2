@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v81",
+    "version": "v82",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -566,20 +566,35 @@
         ]
       },
       "leg_currency_ids": {
-        "vision": {
-          "elegy": 35,
-          "gems": 68063,
-          "vm": 45
+        "ad_infinitum": {
+          "pages": 73834,
+          "energy": 71994,
+          "relics": 7,
+          "pristine": 24,
+          "clovers": 19675,
+          "coins": 19976
+        },
+        "ardent_glorious": {
+          "shards": 33,
+          "tickets": 30,
+          "clovers": 19675
         },
         "aurora": {
-          "karma": 2,
-          "unbound": 32,
-          "gold": 1,
-          "winterberry": 79899,
-          "petrified": 79469,
-          "jade": 80332,
+          "blood_ruby": 79280,
           "fire_orchid": 81127,
-          "orrian": 81706
+          "gold": 1,
+          "jade": 80332,
+          "karma": 2,
+          "orrian": 81706,
+          "petrified": 79469,
+          "unbound": 32,
+          "winterberry": 79899
+        },
+        "coalescence": {
+          "insights": 70,
+          "magnetite": 28,
+          "gaeting": 39,
+          "coins": 19976
         },
         "conflux": {
           "tickets": 26,
@@ -588,24 +603,66 @@
           "castoran": 82,
           "badges": 15
         },
-        "warbringer": {
-          "tickets": 26,
-          "memory": 71581,
-          "badges": 15,
-          "jade": 65,
-          "castoran": 82
+        "endless_summer": {
+          "sap": 83,
+          "ducat": 81,
+          "obsidian": 19925,
+          "gems": 68063,
+          "clovers": 19675
         },
-        "coalescence": {
-          "insights": 70,
-          "magnetite": 28,
-          "gaeting": 39,
-          "coins": 19976
+        "obsidian": {
+          "fine": 78,
+          "masterwork": 80,
+          "rare": 79,
+          "amalgamated": 100081,
+          "provisioner": 29,
+          "clovers": 19675,
+          "shards": 19925,
+          "ectos": 19721
+        },
+        "orrax_manifested": {
+          "tales": 69,
+          "clovers": 19675,
+          "oblige": 76
+        },
+        "perfected_envoy": {
+          "li": 70,
+          "shards": 19925,
+          "clovers": 19675,
+          "provisioner": 29
         },
         "selachimorpha": {
           "notes": 61,
           "unusual": 62,
           "clovers": 19675,
           "shards": 19925
+        },
+        "stella_radians": {
+          "karma": 2,
+          "coins": 19976,
+          "clovers": 19675
+        },
+        "strife_unending": {
+          "tickets": 26,
+          "clovers": 19675,
+          "memory": 71581
+        },
+        "t6": {
+          "blood": 24295,
+          "venom": 24283,
+          "totem": 24300,
+          "dust": 24277,
+          "claw": 24351,
+          "bone": 24358,
+          "fang": 24357,
+          "scale": 24289,
+          "volatile": 45,
+          "ice": 92272
+        },
+        "triumphant_hero": {
+          "tickets": 26,
+          "memory": 71581,
+          "clovers": 19675
         },
         "upgrades": {
           "provisioner": 29,
@@ -620,73 +677,24 @@
           "sym_enh": 89141,
           "sym_pain": 89182
         },
-        "t6": {
-          "blood": 24295,
-          "venom": 24283,
-          "totem": 24300,
-          "dust": 24277,
-          "claw": 24351,
-          "bone": 24358,
-          "fang": 24357,
-          "scale": 24289,
-          "volatile": 45,
-          "ice": 92272
-        },
-        "obsidian": {
-          "fine": 78,
-          "masterwork": 80,
-          "rare": 79,
-          "amalgamated": 100081,
-          "provisioner": 29,
-          "clovers": 19675,
-          "shards": 19925,
-          "ectos": 19721
-        },
-        "strife_unending": {
-          "tickets": 26,
-          "clovers": 19675,
-          "memory": 71581
-        },
-        "endless_summer": {
-          "sap": 83,
-          "ducat": 81,
-          "obsidian": 19925,
+        "vision": {
+          "elegy": 35,
           "gems": 68063,
-          "clovers": 19675
+          "vm": 45
         },
-        "stella_radians": {
-          "karma": 2,
-          "coins": 19976,
-          "clovers": 19675
-        },
-        "orrax_manifested": {
-          "tales": 69,
-          "clovers": 19675,
-          "oblige": 76
-        },
-        "ad_infinitum": {
-          "pages": 73834,
-          "energy": 71994,
-          "relics": 7,
-          "pristine": 24,
-          "clovers": 19675,
-          "coins": 19976
-        },
-        "perfected_envoy": {
-          "li": 70,
-          "shards": 19925,
-          "clovers": 19675,
-          "provisioner": 29
-        },
-        "triumphant_hero": {
+        "warbringer": {
           "tickets": 26,
           "memory": 71581,
-          "clovers": 19675
+          "badges": 15,
+          "jade": 65,
+          "castoran": 82
         },
-        "ardent_glorious": {
-          "shards": 33,
-          "tickets": 30,
-          "clovers": 19675
+        "weapons": {
+          "antique": 96978,
+          "clovers": 19675,
+          "lodestones": 92687,
+          "notes": 61,
+          "runestones": 96722
         }
       },
       "collection_key_ids": {
@@ -944,7 +952,8 @@
       "fr": "Pièges éditoriaux, indexés par id de succès. Réservé à ce que le score d'effort ne peut pas calculer : coût en or, exclusions mutuelles, population morte. Affiché sous l'étape concernée.",
       "en": "Editorial traps, keyed by achievement id. Reserved for what the effort score cannot compute: gold cost, mutual exclusions, dead population. Rendered under the relevant step."
     },
-    "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40."
+    "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40.",
+    "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel."
   },
   "meta_events": {
     "vb": {

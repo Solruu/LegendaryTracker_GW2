@@ -93,6 +93,36 @@ def walk_provenance(node, path, hits):
             walk_provenance(v, f"{path}[{i}]", hits)
 
 
+def check_currency_mapping(data, errors, warnings):
+    """Toute monnaie declaree dans le JSX doit exister dans leg_currency_ids.
+
+    Ce controle existe parce que le Rubis de sang avait ete declare dans la
+    liste du JSX sans etre ajoute au mapping de synchro : la synchro directe le
+    rattrapait par un repli, le serveur Flask non, et le stock s'affichait a
+    zero selon le chemin emprunte.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        warnings.append("aucun JSX trouve : controle des monnaies saute")
+        return
+    src = jsx[-1].read_text(encoding="utf-8")
+    mapping = (data.get("_meta", {}).get("direct_sync", {}) or {}).get("leg_currency_ids", {})
+    known = {api for legmap in mapping.values() for api in legmap.values()}
+    declared = {
+        int(m.group(2)): m.group(1)
+        for m in re.finditer(r'\{\s*id:\s*"([a-z_0-9]+)"[^}]*?apiId:\s*(\d+)', src, re.S)
+    }
+    for api, cid in sorted(declared.items()):
+        if api not in known:
+            errors.append(
+                f"monnaie '{cid}' (apiId {api}) declaree dans {jsx[-1].name} "
+                f"mais absente de _meta.direct_sync.leg_currency_ids"
+            )
+
+
 def check_karma_budgets(data, errors, warnings):
     """Somme des lignes = total, et chaque sub/bit reference doit exister."""
     def visit(node, path):
@@ -179,7 +209,10 @@ def main() -> int:
     # 4. Coherence des budgets karma
     check_karma_budgets(data, errors, warnings)
 
-    # 5. Integrite de chaque entree de meta_eligible
+    # 5. Monnaies du JSX presentes dans le mapping de synchro
+    check_currency_mapping(data, errors, warnings)
+
+    # 6. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

@@ -163,6 +163,11 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `checked` et `ref` vont ensemble ; un `verified: false` sans `ref` est une
   erreur), et cohérence des budgets karma (somme des lignes = total, `per` ×
   `bits` = `amount`, chaque `sub`/`bit` référencé existe réellement).
+- **Une monnaie se déclare à trois endroits** : la liste du JSX, `_meta.direct_sync.leg_currency_ids` et le serveur Flask. La synchro directe
+  rattrape une entrée manquante par un repli sur `apiId`, mais pas Flask — le
+  stock s'affiche alors à zéro selon le chemin emprunté, ce qui ressemble à une
+  perte de données plutôt qu'à un oubli de déclaration. Le script d'audit
+  contrôle désormais la correspondance.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score
   d'effort ne voit que le volume, les prérequis et les AP.

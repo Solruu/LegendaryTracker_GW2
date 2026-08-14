@@ -37,6 +37,7 @@ CURRENCY_IDS = {
     "amalgamated_gemstone": None,   # item, pas currency — dans materials
     "volatile_magic":      45,      # vérifié API
     "mystic_coin":         19976,   # material
+    "blood_ruby":          79280,   # Blood Ruby — vérifié /v2/items
     "winterberry":         79899,   # Fresh Winterberry — vérifié materials
     "petrified_wood":      79469,   # Petrified Wood — vérifié materials
     "jade_shard":          80332,   # Jade Shard — vérifié materials
@@ -878,6 +879,7 @@ def progression():
         "karma":        wallet_dict.get(2, 0),      # Wayfarer's Henge : 4 200/pierre
         "unbound":      wallet_dict.get(32, 0),     # Unbound Magic : 1 000/pierre
         "gold":         wallet_dict.get(1, 0),      # 1 po/pierre
+        "blood_ruby":   mat_dict.get(79280, 0),
         "winterberry":  mat_dict.get(79899, 0),
         "petrified":    mat_dict.get(79469, 0),
         "jade":         mat_dict.get(80332, 0),
