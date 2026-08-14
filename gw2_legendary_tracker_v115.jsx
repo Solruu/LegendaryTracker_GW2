@@ -187,6 +187,7 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
+    cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
     karma_note: "Shown because the total exceeds 100,000. ⚠ marks an unverified estimate.",
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
@@ -403,6 +404,7 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
+    cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
     karma_note: "Affiché car le total dépasse 100 000. ⚠ signale une estimation non vérifiée.",
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
@@ -3938,7 +3940,17 @@ export default function GW2LegendaryTracker() {
       }
       for (const [legId, vals] of Object.entries(data.currencies ?? {})) {
         const cur = await storeGet(getCurrencyKey(legId)) ?? {};
-        await storeSet(getCurrencyKey(legId), { ...cur, ...vals });
+        // Une monnaie declaree mais absente de la charge synchronisee affichait 0,
+        // indiscernable d'un stock reellement vide. On note l'ecart pour le dire.
+        const L = LEGENDARIES[legId];
+        const declared = [
+          ...(L?.currencies ?? []),
+          ...(L?.currenciesPerPiece ?? []),
+          ...(L?.currenciesPerWeapon ?? []),
+          ...Object.values(L?.currenciesPerWeaponByGen ?? {}).flat(),
+        ].map(c => c.id);
+        const notSent = declared.filter(cid => !(cid in vals));
+        await storeSet(getCurrencyKey(legId), { ...cur, ...vals, __notSent: notSent, __syncedAt: Date.now() });
       }
       if (data.achievements) {
         try { localStorage.setItem("gw2_api_achievements", JSON.stringify(data.achievements)); } catch (_) {}
@@ -6296,6 +6308,11 @@ export default function GW2LegendaryTracker() {
                               + {x.amount.toLocaleString()} — {NX(x.label)}{x.estimated ? " ⚠" : ""}
                             </div>
                           ))}
+                        </div>
+                      )}
+                      {(currencies.__notSent ?? []).includes(cur.id) && (
+                        <div style={{ marginTop: 3, fontSize: 9, color: "rgba(248,113,113,0.8)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
+                          {t("cur_not_sent")}
                         </div>
                       )}
                       {cur.aside && (
