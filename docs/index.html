@@ -699,7 +699,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v85",
+    "version": "v86",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1655,7 +1655,8 @@ const SOURCES_DB = {
     "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel.",
     "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul.",
     "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts.",
-    "changelog_v85": "Les surcouts conditionnels quittent le JSX pour rejoindre les sources, dans un champ qty_extras porte par le composant. Ils y etaient codes en dur, donc invisibles du grand total et de l'audit : le rubis de sang affichait 250 dans l'onglet Aurora, qui sait decompter l'etape faite, et 300 dans le grand total, qui lisait un nombre fige. Un meme fait ecrit a deux endroits, dont un incapable de se mettre a jour. Les deux vues calculent desormais base plus surcouts en attente a partir de la meme declaration. Quatre des six monnaies LW3 n'avaient aucune quantite et etaient donc absentes du grand total : eclats de jade, orchidee ignee, bois petrifie et perles orriennes sont declares a 250. Les baies d'hiver reviennent de 300 a 250, aucun objet de Bitterfrost ne s'achetant en baies — les Coffres glaces s'ouvrent a la Flamme de Koda. Le surcout reel est ailleurs et n'est pas budgetable : l'Elixir de degel consomme 12 baies par preparation, a refaire chaque jour tant que le Suif cristallise n'est pas tombe, ce que dit une note. Enfin la correspondance carte-monnaie etait fausse pour quatre des six : le bois petrifie annonçait le Lac Doric, les eclats de jade les Confins de Givramer, l'orchidee et les perles se trompaient d'episode. Les six sont refaites, verifiees episode par episode. Le controle qty ajoute a l'audit a immediatement trouve quatre divergences non liees a ce chantier : memoires de bataille pour Conflux et Warbringer, reliques fractales et reliques immaculees pour Ad Infinitum. Aucune n'est tranchee, faute d'avoir consulte le wiki : elles sont declarees dans qty_conflict, ce qui les fait passer en avertissement plutot qu'en blocage, mais les rend visibles a chaque audit au lieu de dormir."
+    "changelog_v85": "Les surcouts conditionnels quittent le JSX pour rejoindre les sources, dans un champ qty_extras porte par le composant. Ils y etaient codes en dur, donc invisibles du grand total et de l'audit : le rubis de sang affichait 250 dans l'onglet Aurora, qui sait decompter l'etape faite, et 300 dans le grand total, qui lisait un nombre fige. Un meme fait ecrit a deux endroits, dont un incapable de se mettre a jour. Les deux vues calculent desormais base plus surcouts en attente a partir de la meme declaration. Quatre des six monnaies LW3 n'avaient aucune quantite et etaient donc absentes du grand total : eclats de jade, orchidee ignee, bois petrifie et perles orriennes sont declares a 250. Les baies d'hiver reviennent de 300 a 250, aucun objet de Bitterfrost ne s'achetant en baies — les Coffres glaces s'ouvrent a la Flamme de Koda. Le surcout reel est ailleurs et n'est pas budgetable : l'Elixir de degel consomme 12 baies par preparation, a refaire chaque jour tant que le Suif cristallise n'est pas tombe, ce que dit une note. Enfin la correspondance carte-monnaie etait fausse pour quatre des six : le bois petrifie annonçait le Lac Doric, les eclats de jade les Confins de Givramer, l'orchidee et les perles se trompaient d'episode. Les six sont refaites, verifiees episode par episode. Le controle qty ajoute a l'audit a immediatement trouve quatre divergences non liees a ce chantier : memoires de bataille pour Conflux et Warbringer, reliques fractales et reliques immaculees pour Ad Infinitum. Aucune n'est tranchee, faute d'avoir consulte le wiki : elles sont declarees dans qty_conflict, ce qui les fait passer en avertissement plutot qu'en blocage, mais les rend visibles a chaque audit au lieu de dormir.",
+    "changelog_v86": "Arbitrage des ecarts qty. Conflux tranche a 1500 memoires de bataille, chiffre reconstitue etape par etape depuis le guide GuildJen mis a jour en mai 2026 : 500 pour l'achat de la War Commendation, deux fois 250 pour les composants supplementaires du meme vendeur, 250 pour l'objet du Don des Brumes et 250 pour le Don de devotion guerriere. Le detail est consigne dans un bloc breakdown pour que le chiffre soit reverifiable sans refaire la recherche. Une question reste ouverte et est notee comme telle : le Pieu legendaire, prerequis du Don de conquete, passerait par une Essence de carnage a 500 memoires, ce qui porterait le total a 2000 — source de 2017 non recoupee, donc non integree. Les trois autres ecarts restent ouverts, avec l'etat exact de la recherche et la raison du blocage : la section Full material list des pages wiki est rendue cote client et n'est pas extractible."
   },
   "meta_events": {
     "vb": {
@@ -3731,7 +3732,7 @@ const SOURCES_DB = {
       ],
       "qty": {
         "triumphant_hero__per_piece": 200,
-        "conflux": 500,
+        "conflux": 1500,
         "warbringer": 500
       },
       "farmable": true,
@@ -3758,19 +3759,27 @@ const SOURCES_DB = {
         "en": "direct purchase (no free alternative)"
       },
       "qty_conflict": {
-        "conflux": {
-          "jsx": 1500,
-          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
-          "checked": "2026-08-13",
-          "verified": false,
-          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
-        },
         "warbringer": {
           "jsx": 750,
-          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "note": "non tranche. Les composants de Warbringer passent par quatre Essences mystiques dont une seule, l'Essence de carnage, coute 500 memoires selon une source de 2017 ; les autres se paient en tickets, badges ou temoignages. Le total dependra aussi du Don de conquete. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
           "checked": "2026-08-13",
           "verified": false,
           "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+        }
+      },
+      "breakdown": {
+        "conflux": {
+          "total": 1500,
+          "lines": [
+            "500 — achat War Commendation chez Commandant légendaire Rasoir de guerre",
+            "2 × 250 — les deux composants supplémentaires du même vendeur (750 tickets chacun)",
+            "250 — objet acheté chez Miyani pour le Don des Brumes",
+            "250 — Don de dévotion guerrière"
+          ],
+          "open_question": "Le Pieu légendaire, prérequis du Don de conquête, passe par une Essence de carnage qui coûterait 500 mémoires supplémentaires. Source de 2017 non recoupée : si elle est exacte, le total réel est 2000. Non intégré tant que ce n'est pas confirmé.",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "guildjen:legendary-ring-conflux-guide (maj 30/05/2026), etape par etape"
         }
       }
     },
@@ -6957,7 +6966,7 @@ const SOURCES_DB = {
       "qty_conflict": {
         "ad_infinitum": {
           "jsx": 500,
-          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "note": "non tranche. Les couts vendeur sont connus collection par collection (40 et 400 en III, 50 et 600 en IV) mais les deux premieres collections et le nombre de Dons d'ascension a 500 reliques chacun n'ont pas ete additionnes. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
           "checked": "2026-08-13",
           "verified": false,
           "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
@@ -7033,7 +7042,7 @@ const SOURCES_DB = {
       "qty_conflict": {
         "ad_infinitum": {
           "jsx": 50,
-          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "note": "non tranche. Les couts vendeur sont connus collection par collection (40 et 400 en III, 50 et 600 en IV) mais les deux premieres collections et le nombre de Dons d'ascension a 500 reliques chacun n'ont pas ete additionnes. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
           "checked": "2026-08-13",
           "verified": false,
           "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
