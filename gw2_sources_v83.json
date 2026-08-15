@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v82",
+    "version": "v83",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -953,7 +953,8 @@
       "en": "Editorial traps, keyed by achievement id. Reserved for what the effort score cannot compute: gold cost, mutual exclusions, dead population. Rendered under the relevant step."
     },
     "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40.",
-    "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel."
+    "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel.",
+    "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul."
   },
   "meta_events": {
     "vb": {
@@ -1701,7 +1702,7 @@
     "t6_fangs": {
       "name": "Large Fang",
       "icon": "FA",
-      "apiId": 24357,
+      "apiId": 24356,
       "sources_magic": [
         "volatile_magic",
         "unbound_magic"
@@ -1720,7 +1721,13 @@
       "priority": "high",
       "needed_for": [
         "gift_of_fortune"
-      ]
+      ],
+      "apiId_fix": {
+        "was": 24357,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "t6_totems": {
       "name": "Elaborate Totem",
@@ -2115,7 +2122,7 @@
     },
     "ball_dark_energy": {
       "name": "Ball of Dark Energy",
-      "apiId": 72905,
+      "apiId": 71994,
       "needed_for": [
         "cube_stabilized_dark_energy",
         "gift_of_compassion",
@@ -2139,7 +2146,13 @@
         "coalescence": 100
       },
       "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices).",
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 72905,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "stabilizing_matrix": {
       "name": "Stabilizing Matrix",
@@ -2560,7 +2573,7 @@
     },
     "mistborn_mote": {
       "name": "Mistborn Mote",
-      "apiId": 91246,
+      "apiId": 90783,
       "needed_for": [
         "gift_of_ephemeral_magic"
       ],
@@ -2589,7 +2602,7 @@
     },
     "bottle_elonian_wine": {
       "name": "Bottle of Elonian Wine",
-      "apiId": 68624,
+      "apiId": 19663,
       "needed_for": [
         "gift_of_crystalline_magic",
         "gift_of_ephemeral_magic"
@@ -2610,7 +2623,13 @@
       ],
       "qty": {},
       "kind": "acquire",
-      "best": "vendor"
+      "best": "vendor",
+      "apiId_fix": {
+        "was": 68624,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "blood_ruby": {
       "name": "Blood Ruby",
@@ -2626,10 +2645,16 @@
         {
           "type": "map_currency",
           "map": {
-            "fr": "Baie des braises",
-            "en": "Ember Bay"
+            "fr": "Marais de la pierre de sang",
+            "en": "Bloodstone Fen"
           },
-          "tip": "Nodes, events et metas — Ember Bay. Source principale LW3 ep1."
+          "tip": {
+            "fr": "Nœuds, events et métas — Marais de la pierre de sang (LW3 ép. 1). 35 nœuds/jour/compte, rendement ~29 %.",
+            "en": "Nodes, events and metas — Bloodstone Fen (LW3 ep. 1). 35 nodes/day/account, ~29% yield."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Blood_Ruby + wiki:Bloodstone_Crystals"
         }
       ],
       "conversion_options": [
@@ -2756,7 +2781,7 @@
     },
     "petrified_wood_lw3": {
       "name": "Petrified Wood",
-      "apiId": 79294,
+      "apiId": 79469,
       "needed_for": [
         "gift_of_dragon_magic"
       ],
@@ -2806,7 +2831,7 @@
     },
     "bottle_airship_oil": {
       "name": "Bottle of Airship Oil",
-      "apiId": 69109,
+      "apiId": 69434,
       "needed_for": [
         "fulgurite"
       ],
@@ -2825,11 +2850,17 @@
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 69109,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "pile_auric_dust": {
       "name": "Pile of Auric Dust",
-      "apiId": 69110,
+      "apiId": 69432,
       "needed_for": [
         "fulgurite"
       ],
@@ -2848,7 +2879,13 @@
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 69110,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "ley_line_spark": {
       "name": "Ley Line Spark",
@@ -3331,7 +3368,7 @@
     },
     "shard_of_glory": {
       "name": "Shard of Glory",
-      "apiId": 19672,
+      "apiId": 70820,
       "needed_for": [
         "mist_band_infused"
       ],
@@ -3352,6 +3389,12 @@
       "best_reason": {
         "fr": "achat direct (pas d'alternative gratuite)",
         "en": "direct purchase (no free alternative)"
+      },
+      "apiId_fix": {
+        "was": 19672,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
       }
     },
     "legendary_insight": {
@@ -3841,7 +3884,7 @@
     },
     "fine_rift_essence": {
       "name": "Fine Rift Essence",
-      "apiId": 78,
+      "apiId": 100078,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
@@ -3885,11 +3928,17 @@
       "apiId_note": "Wallet currency ID 78 (l'item legacy 100078 a été converti en monnaie wallet en juin 2025)",
       "qty_note": "3000/pièce = 12 Amalgamated × 250 (si tout crafté)",
       "kind": "acquire",
-      "best": "rift_t1"
+      "best": "rift_t1",
+      "apiId_fix": {
+        "was": 78,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "masterwork_rift_essence": {
       "name": "Masterwork Rift Essence",
-      "apiId": 80,
+      "apiId": 100414,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
@@ -3909,11 +3958,17 @@
       ],
       "apiId_note": "Wallet ID 80 — attention : 79 = Rare, 80 = Masterwork (inversés vs ordre intuitif)",
       "qty_note": "1200/pièce = 12 Amalgamated × 100",
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 80,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "rare_rift_essence": {
       "name": "Rare Rift Essence",
-      "apiId": 79,
+      "apiId": 100055,
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence"
@@ -3933,11 +3988,17 @@
       ],
       "apiId_note": "Wallet ID 79",
       "qty_note": "600/pièce = 12 Amalgamated × 50",
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 79,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "amalgamated_rift_essence": {
       "name": "Amalgamated Rift Essence",
-      "apiId": 100081,
+      "apiId": 100930,
       "needed_for": [
         "gift_of_expertise"
       ],
@@ -3968,7 +4029,13 @@
         "en": "The main bottleneck for Obsidian. Tracking the 3 raw essences in wallet is enough — no need to time specific metas. Farm T1 freely + convergences for the post-convergence buff (+10-20 essences/rift for 6h)."
       },
       "kind": "craftable",
-      "best": "craft"
+      "best": "craft",
+      "apiId_fix": {
+        "was": 100081,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "gift_of_research": {
       "name": "Gift of Research",
@@ -4000,7 +4067,7 @@
     },
     "hydrocatalytic_reagent": {
       "name": "Hydrocatalytic Reagent",
-      "apiId": 97793,
+      "apiId": 95813,
       "needed_for": [
         "gift_of_research"
       ],
@@ -4020,11 +4087,17 @@
         }
       ],
       "kind": "acquire",
-      "best": "map_currency_soto"
+      "best": "map_currency_soto",
+      "apiId_fix": {
+        "was": 97793,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "thermocatalytic_reagent": {
       "name": "Thermocatalytic Reagent",
-      "apiId": 97794,
+      "apiId": 46747,
       "needed_for": [
         "gift_of_research"
       ],
@@ -4044,7 +4117,13 @@
         }
       ],
       "kind": "acquire",
-      "best": "salvage"
+      "best": "salvage",
+      "apiId_fix": {
+        "was": 97794,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "exotic_essence_of_luck": {
       "name": "Exotic Essence of Luck",
@@ -5341,7 +5420,7 @@
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
-      "apiId": 71580,
+      "apiId": 79418,
       "needed_for": [
         "gen2_gift_unique"
       ],
@@ -5360,7 +5439,13 @@
       "qty": {
         "klobjarne_geirr": 100
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 71580,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "legendary_shard_gen2": {
       "name": "Legendary Shards (Gen2)",
@@ -6588,7 +6673,7 @@
     },
     "vial_of_titan_melted_obsidian": {
       "name": "Vial of Titan Melted Liquid Obsidian",
-      "apiId": 104802,
+      "apiId": 104229,
       "needed_for": [
         "gift_of_the_mistburned_isles"
       ],
@@ -6615,7 +6700,13 @@
         "orrax_manifested": 100
       },
       "kind": "craftable",
-      "best": "vendor"
+      "best": "vendor",
+      "apiId_fix": {
+        "was": 104802,
+        "checked": "2026-08-13",
+        "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+        "verified": true
+      }
     },
     "gift_of_the_mistburned_isles": {
       "name": "Gift of the Mistburned Isles",
@@ -7198,7 +7289,13 @@
           {
             "name": "Orichalcum Ingot",
             "qty": 1,
-            "apiId": 19701
+            "apiId": 19685,
+            "apiId_fix": {
+              "was": 19701,
+              "checked": "2026-08-13",
+              "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+              "verified": true
+            }
           }
         ]
       },
@@ -7332,7 +7429,13 @@
           {
             "name": "Xunlai Electrum Ingot",
             "qty": 1,
-            "apiId": 77316
+            "apiId": 46743,
+            "apiId_fix": {
+              "was": 77316,
+              "checked": "2026-08-13",
+              "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
+              "verified": true
+            }
           }
         ]
       },

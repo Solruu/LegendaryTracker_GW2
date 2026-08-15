@@ -168,6 +168,11 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   stock s'affiche alors à zéro selon le chemin emprunté, ce qui ressemble à une
   perte de données plutôt qu'à un oubli de déclaration. Le script d'audit
   contrôle désormais la correspondance.
+- **Un identifiant faux ne provoque jamais d'erreur.** Il renvoie un stock nul,
+  indiscernable d'un inventaire vide. Le contrôle se fait par le **nom**, pas par
+  l'id : un id absent du référentiel signifie seulement que l'objet n'est pas en
+  stockage matériaux, ce qui est courant et légitime ; en revanche un nom connu
+  portant un autre id est faux à coup sûr. `gw2_audit_v1.py` applique cette règle.
 - **Un instantané ne se fusionne pas, il se remplace.** Le statut des
   sous-succès était mis à jour par `{...prev, ...data}`, et l'effet de
   complément n'allait chercher que les ids *inconnus*. Un succès enregistré

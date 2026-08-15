@@ -93,6 +93,44 @@ def walk_provenance(node, path, hits):
             walk_provenance(v, f"{path}[{i}]", hits)
 
 
+def check_api_ids(data, errors, warnings):
+    """Un nom connu du referentiel doit porter l'id du referentiel.
+
+    Controle par le NOM et non par l'id : un id absent du referentiel signifie
+    seulement que l'objet n'est pas en stockage materiaux, ce qui est courant et
+    legitime. En revanche, si le nom declare existe au referentiel sous un AUTRE
+    id, la declaration est fausse a coup sur. C'est ce qu'il s'est passe pour
+    Mistborn Mote (91246 au lieu de 90783) et Petrified Wood (79294 au lieu de
+    79469) : aucune erreur a l'ecran, juste un stock eternellement a zero.
+    """
+    ref_path = HERE / "gw2_materials_ref.json"
+    if not ref_path.exists():
+        warnings.append("gw2_materials_ref.json absent : controle des apiId saute")
+        return
+    flat = json.loads(ref_path.read_text(encoding="utf-8")).get("flat", {})
+    by_name = {}
+    for sid, name in flat.items():
+        by_name.setdefault(name.lower(), int(sid))
+
+    def visit(node, path):
+        if isinstance(node, dict):
+            name, api = node.get("name"), node.get("apiId")
+            if isinstance(name, str) and isinstance(api, int):
+                real = by_name.get(name.lower())
+                if real is not None and real != api:
+                    errors.append(
+                        f"{path} : « {name} » declare apiId {api}, "
+                        f"le referentiel donne {real}"
+                    )
+            for k, v in node.items():
+                visit(v, f"{path}/{k}")
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                visit(v, f"{path}[{i}]")
+
+    visit(data, "")
+
+
 def check_currency_mapping(data, errors, warnings):
     """Toute monnaie declaree dans le JSX doit exister dans leg_currency_ids.
 
@@ -212,7 +250,10 @@ def main() -> int:
     # 5. Monnaies du JSX presentes dans le mapping de synchro
     check_currency_mapping(data, errors, warnings)
 
-    # 6. Integrite de chaque entree de meta_eligible
+    # 6. Concordance nom <-> apiId contre le referentiel materiaux
+    check_api_ids(data, errors, warnings)
+
+    # 7. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
