@@ -168,6 +168,12 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   stock s'affiche alors à zéro selon le chemin emprunté, ce qui ressemble à une
   perte de données plutôt qu'à un oubli de déclaration. Le script d'audit
   contrôle désormais la correspondance.
+- **Un stock se lit à cinq endroits** : portefeuille, stockage matériaux,
+  banque, inventaire partagé et **sacs des personnages** (`/v2/characters`,
+  portées `characters` + `inventories`). Les deux chemins de synchro en
+  oubliaient au moins un : tout ce qui n'est pas encore déposé était sous-compté
+  sans le moindre signal. Une portée manquante doit être annoncée, jamais
+  transformée en zéro silencieux.
 - **Un identifiant faux ne provoque jamais d'erreur.** Il renvoie un stock nul,
   indiscernable d'un inventaire vide. Le contrôle se fait par le **nom**, pas par
   l'id : un id absent du référentiel signifie seulement que l'objet n'est pas en

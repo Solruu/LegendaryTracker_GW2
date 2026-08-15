@@ -252,6 +252,7 @@ const I18N = {
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
     cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
+    bags_missing: "⚠ Character bags could not be read — your API key is missing the 'characters' or 'inventories' scope. Anything not yet deposited is undercounted.",
     karma_note: "Shown because the total exceeds 100,000. ⚠ marks an unverified estimate.",
     aurora_src_api: "threshold read live from the API",
     aurora_src_gap: "⚠ stored threshold ({j}) differs from the API ({a}) — the API wins",
@@ -471,6 +472,7 @@ const I18N = {
     aurora_alt: "↔ Alternative",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
     cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
+    bags_missing: "⚠ Les sacs des personnages n'ont pas pu être lus — il manque la portée 'characters' ou 'inventories' à ta clé API. Tout ce qui n'est pas déposé est sous-compté.",
     karma_note: "Affiché car le total dépasse 100 000. ⚠ signale une estimation non vérifiée.",
     aurora_src_api: "seuil lu en direct dans l'API",
     aurora_src_gap: "⚠ seuil stocké ({j}) différent de l'API ({a}) — l'API fait foi",
@@ -19627,23 +19629,28 @@ function GW2LegendaryTracker() {
     // access_token en paramètre : le header Authorization fait échouer le preflight CORS
     // sur certains navigateurs (NetworkError) — même mécanisme que le fallback armory.
     const tk = `access_token=${encodeURIComponent(key)}`;
-    const [ra, rw, rm, rb] = await Promise.all([
+    const [ra, rw, rm, rb, ri] = await Promise.all([
       fetch(`https://api.guildwars2.com/v2/account/achievements?${tk}`),
       fetch(`https://api.guildwars2.com/v2/account/wallet?${tk}`),
       fetch(`https://api.guildwars2.com/v2/account/materials?${tk}`),
       fetch(`https://api.guildwars2.com/v2/account/bank?${tk}`),
+      fetch(`https://api.guildwars2.com/v2/account/inventory?${tk}`),
     ]);
+    const bags = await readCharacterBags(tk);
     if (!ra.ok) throw new Error(`achievements HTTP ${ra.status}${ra.status === 401 || ra.status === 403 ? " (clé invalide ou permission 'progression' manquante)" : ""}`);
     if (!rw.ok) throw new Error(`wallet HTTP ${rw.status}`);
     const achList = await ra.json();
     const wallet = await rw.json();
     const mats = rm.ok ? await rm.json() : [];
     const bank = rb.ok ? await rb.json() : [];
+    const shared = ri.ok ? await ri.json() : [];
     const byId = {}; for (const a of achList) byId[a.id] = a;
     const walletD = {}; for (const w of (wallet ?? [])) walletD[w.id] = w.value;
     const matD = {};
     for (const mm of (mats ?? [])) if (mm && mm.id) matD[mm.id] = (matD[mm.id] ?? 0) + (mm.count ?? 0);
     for (const bb of (bank ?? [])) if (bb && bb.id) matD[bb.id] = (matD[bb.id] ?? 0) + (bb.count ?? 0);
+    for (const sh of (shared ?? [])) if (sh && sh.id) matD[sh.id] = (matD[sh.id] ?? 0) + (sh.count ?? 0);
+    for (const [id3, n3] of Object.entries(bags.counts)) matD[id3] = (matD[id3] ?? 0) + n3;
     const val = (apiId) => (apiId < 1000 ? (walletD[apiId] ?? 0) : (matD[apiId] ?? 0));
     const meta = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?._meta ?? {}).direct_sync ?? {};
     const keyIds = meta.achievement_key_ids ?? {};
@@ -19696,7 +19703,7 @@ function GW2LegendaryTracker() {
       for (const [k3, id3] of Object.entries(kmap)) out[k3] = norm(byId[id3]);
       colls[grp] = out;
     }
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -19950,13 +19957,15 @@ function GW2LegendaryTracker() {
           bResp.ok ? bResp.json() : [],
           sResp.ok ? sResp.json() : [],
         ]);
+        const bags2 = await readCharacterBags(tk);
         const reqSet = new Set(apiIds);
         const stocks = {};
         for (const e of (wallet ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.value ?? 0);
         for (const e of (mats ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
         for (const e of (bank ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
         for (const e of (shared ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
-        data = { stocks, synced_at: Math.floor(Date.now() / 1000), errors: [] };
+        for (const [id3, n3] of Object.entries(bags2.counts)) if (reqSet.has(Number(id3))) stocks[id3] = (stocks[id3] ?? 0) + n3;
+        data = { stocks, synced_at: Math.floor(Date.now() / 1000), errors: [], bags_ok: bags2.ok };
       } catch (e) {
         setGtStockStatus("error");
         setGtStockError(e.message);
@@ -19970,7 +19979,7 @@ function GW2LegendaryTracker() {
       return;
     }
 
-    const merged = { ...data.stocks, _synced_at: data.synced_at, _sync_source: "api" };
+    const merged = { ...data.stocks, _synced_at: data.synced_at, _sync_source: "api", _bags_ok: data.bags_ok !== false };
     setGtStocks(merged);
     try { localStorage.setItem("gw2_gt_stocks", JSON.stringify(merged)); } catch (_) {}
     setGtStockStatus("ok");
@@ -20165,6 +20174,26 @@ function GW2LegendaryTracker() {
   // distingue par le texte du requirement, avec une liste editoriale d'exceptions.
   const isAchievementMeta = (req) => /achievement|succ[eè]s|haut[- ]fait/i.test(req ?? "");
   const noStepsDeclared = (id) => Boolean((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_no_steps?.[String(id)]);
+
+  // Les sacs des personnages ne sont lus par aucun des deux chemins de stock :
+  // une Boule d'energie sombre fraichement recyclee y reste jusqu'au depot, et
+  // s'affichait donc a zero. /v2/characters exige les portees characters ET
+  // inventories : si elles manquent, on le dit au lieu de sous-compter en silence.
+  const readCharacterBags = async (tk) => {
+    try {
+      const rc = await fetch(`https://api.guildwars2.com/v2/characters?ids=all&${tk}`);
+      if (!rc.ok) return { counts: {}, ok: false };
+      const counts = {};
+      for (const c of await rc.json()) {
+        for (const bag of (c?.bags ?? [])) {
+          for (const it of (bag?.inventory ?? [])) {
+            if (it && it.id) counts[it.id] = (counts[it.id] ?? 0) + (it.count ?? 1);
+          }
+        }
+      }
+      return { counts, ok: true };
+    } catch (_) { return { counts: {}, ok: false }; }
+  };
 
   const scanAllMetas = useCallback(async () => {
     const curated = new Set(Object.keys((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible ?? {}));
@@ -22113,6 +22142,11 @@ function GW2LegendaryTracker() {
                     {isArmorSet && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
+            </div>
+          )}
+          {gtStocks?._bags_ok === false && (
+            <div style={{ margin: "6px 14px", padding: "7px 11px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.25)", borderRadius: 7, fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.8)" }}>
+              {t("bags_missing")}
             </div>
           )}
           {mainProgress.filter(cur => !(cur.kind === "karma" && cur.required < (cur.showAbove ?? 0))).map(cur => (
