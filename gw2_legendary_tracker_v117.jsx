@@ -206,6 +206,7 @@ const I18N = {
     diag_scan: "⟳ Scan every legendary (one-off)",
     diag_scanning: "Scanning…",
     diag_all_done: "Global scan: {n} achievements checked, {g} without a step list.",
+    diag_counters: "{n} tiered counters (actions, kills, items owned) — nothing to curate.",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -424,6 +425,7 @@ const I18N = {
     diag_scan: "⟳ Balayer tous les légendaires (ponctuel)",
     diag_scanning: "Balayage en cours…",
     diag_all_done: "Balayage global : {n} succès contrôlés, {g} sans liste d'étapes.",
+    diag_counters: "{n} compteurs à paliers (actions, kills, objets détenus) — rien à curer.",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -3435,7 +3437,7 @@ export default function GW2LegendaryTracker() {
     // un cache d'avant la curation. D'où la signature de données ci-dessous, qui rend
     // l'oubli impossible : toute retouche des blocs éditoriaux change la clé.
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 16;
+    const ACH_DEFS_SCHEMA = 17; // 17 : `name` ajouté à la charge (le diagnostic affichait le requirement)
     // Signature des données éditoriales injectées dans `out` : listes curées et
     // pièges. Toute modification invalide le cache sans intervention manuelle.
     const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
@@ -3512,7 +3514,7 @@ export default function GW2LegendaryTracker() {
           // Le seuil d'un meta n'est pas dans "requirement" (l'API en retire le nombre,
           // d'ou le double espace de "Complete all  X achievements") : c'est le dernier palier.
           const tierMax = (d.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
-          out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "", tierMax };
+          out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, name: d.name ?? "", req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "", tierMax };
         }
         // Métas AVEC bits Text (metas d'épisode : « Long Live the Lich », « All or Nothing »…) :
         // chaque bit porte le NOM d'un succès enfant. On le résout vers son ID via la catégorie
@@ -4372,6 +4374,12 @@ export default function GW2LegendaryTracker() {
   // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
   // interroge une fois tous les metas de tous les legendaires. Volontairement
   // manuel : au demarrage il couterait un appel par onglet a chaque session.
+  // Un palier sans bits n'est pas forcement un trou : beaucoup de succes comptent
+  // des actions, des kills ou des objets possedes, et n'ont rien a curer. On les
+  // distingue par le texte du requirement, avec une liste editoriale d'exceptions.
+  const isAchievementMeta = (req) => /achievement|succ[eè]s|haut[- ]fait/i.test(req ?? "");
+  const noStepsDeclared = (id) => Boolean((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_no_steps?.[String(id)]);
+
   const scanAllMetas = useCallback(async () => {
     const curated = new Set(Object.keys((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible ?? {}));
     const targets = [];
@@ -4390,6 +4398,7 @@ export default function GW2LegendaryTracker() {
     for (const [id, leg] of targets) if (!byId.has(id)) byId.set(id, leg);
     const ids = [...byId.keys()];
     const gaps = [];
+    const counters = [];
     for (let k = 0; k < ids.length; k += 150) {
       const chunk = ids.slice(k, k + 150);
       try {
@@ -4398,12 +4407,13 @@ export default function GW2LegendaryTracker() {
         for (const a of await r.json()) {
           const tierMax = (a.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
           if (tierMax > 1 && (a.bits ?? []).length === 0 && !curated.has(String(a.id))) {
-            gaps.push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?" });
+            const counter = noStepsDeclared(a.id) || !isAchievementMeta(a.requirement);
+            (counter ? counters : gaps).push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?", req: a.requirement });
           }
         }
       } catch (_) { /* reseau : on rend ce qu'on a */ }
     }
-    return { checked: ids.length, gaps };
+    return { checked: ids.length, gaps, counters };
   }, [lang]);
 
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
@@ -6622,9 +6632,11 @@ export default function GW2LegendaryTracker() {
           n'expose ni bits ni liste curée apparaît ici. C'est la seule
           source exhaustive — le nom d'un succès ne dit pas sa nature. */}
       {(() => {
-        const gaps = Object.entries(achBitsDefs)
+        const listless = Object.entries(achBitsDefs)
           .filter(([, d]) => (d.tierMax ?? 0) > 1 && (d.subs ?? []).length === 0 && (d.bits ?? []).length === 0)
-          .map(([id, d]) => ({ id, name: d.names?.[id] ?? d.req ?? id, tierMax: d.tierMax }));
+          .map(([id, d]) => ({ id, name: d.name ?? d.req ?? id, tierMax: d.tierMax, req: d.req }));
+        const gaps = listless.filter(g => !noStepsDeclared(g.id) && isAchievementMeta(g.req));
+        const counters = listless.filter(g => noStepsDeclared(g.id) || !isAchievementMeta(g.req));
         const curatedN = Object.values(achBitsDefs).filter(d => d.subsSource === "wiki").length;
         const catN = Object.values(achBitsDefs).filter(d => d.subsSource === "category").length;
         if (Object.keys(achBitsDefs).length === 0) return null;
@@ -6651,6 +6663,7 @@ export default function GW2LegendaryTracker() {
                   <div style={{ marginBottom: 6, paddingBottom: 5, borderBottom: "1px solid rgba(226,201,126,0.1)" }}>
                     <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.55)", fontFamily: "'Crimson Text', serif" }}>
                       {t("diag_all_done", { n: diagAll.checked, g: diagAll.gaps.length })}
+                      {(diagAll.counters ?? []).length > 0 && <> {t("diag_counters", { n: diagAll.counters.length })}</>}
                     </div>
                     {diagAll.gaps.map(g => (
                       <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
@@ -6661,6 +6674,7 @@ export default function GW2LegendaryTracker() {
                 )}
                 <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
                   {t("diag_counts", { w: curatedN, c: catN })}
+                  {counters.length > 0 && <> · {t("diag_counters", { n: counters.length })}</>}
                 </div>
                 {gaps.length === 0
                   ? <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif" }}>{t("diag_none")}</div>

@@ -270,6 +270,7 @@ const I18N = {
     diag_scan: "⟳ Scan every legendary (one-off)",
     diag_scanning: "Scanning…",
     diag_all_done: "Global scan: {n} achievements checked, {g} without a step list.",
+    diag_counters: "{n} tiered counters (actions, kills, items owned) — nothing to curate.",
     aurora_threshold: "Threshold reached — claim the reward in the Achievements panel",
     aurora2_reward: "Reward: Spark of Sentience · 21 Xunlai Electrum Ingots to infuse",
     aurora2_help: "No RNG or time-gate. Have 21 Xunlai Electrum Ingots in your inventory, then commune with each listed Mastery Insight.",
@@ -488,6 +489,7 @@ const I18N = {
     diag_scan: "⟳ Balayer tous les légendaires (ponctuel)",
     diag_scanning: "Balayage en cours…",
     diag_all_done: "Balayage global : {n} succès contrôlés, {g} sans liste d'étapes.",
+    diag_counters: "{n} compteurs à paliers (actions, kills, objets détenus) — rien à curer.",
     aurora_threshold: "Seuil atteint — réclame la récompense dans le panneau Achievements",
     aurora2_reward: "Récompense : Spark of Sentience · 21× Xunlai Electrum Ingot à infuser",
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
@@ -695,7 +697,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v83",
+    "version": "v84",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1649,7 +1651,8 @@ const SOURCES_DB = {
     },
     "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40.",
     "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel.",
-    "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul."
+    "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul.",
+    "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts."
   },
   "meta_events": {
     "vb": {
@@ -16357,6 +16360,68 @@ const SOURCES_DB = {
       "ref": "wiki:Rising_Flames_(achievements) + dulfyreborn",
       "checked": "2026-08-13"
     }
+  },
+  "meta_no_steps": {
+    "_note": {
+      "fr": "Succès à paliers qui n'exposent pas de bits et n'ont RIEN à curer : ce sont des compteurs d'actions ou d'objets, pas des métas comptant d'autres succès. Sans cette liste, le détecteur les signale à tort comme des trous de données.",
+      "en": "Tiered achievements with no bits and NOTHING to curate: they count actions or items, not other achievements. Without this list the detector flags them as false data gaps."
+    },
+    "7796": {
+      "name": "Legendary Rune Collector",
+      "reason": {
+        "fr": "compte 7 runes légendaires possédées",
+        "en": "counts 7 legendary runes owned"
+      }
+    },
+    "7788": {
+      "name": "Legendary Sigil Collector",
+      "reason": {
+        "fr": "compte 8 cachets légendaires possédés",
+        "en": "counts 8 legendary sigils owned"
+      }
+    },
+    "8840": {
+      "name": "Incursive Investigation: First Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (150)",
+        "en": "repeated-action counter (150)"
+      }
+    },
+    "8841": {
+      "name": "Incursive Investigation: Second Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (300)",
+        "en": "repeated-action counter (300)"
+      }
+    },
+    "8835": {
+      "name": "Incursive Investigation: Third Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (450)",
+        "en": "repeated-action counter (450)"
+      }
+    },
+    "8814": {
+      "name": "Incursive Investigation: Infinite Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (150)",
+        "en": "repeated-action counter (150)"
+      }
+    },
+    "9180": {
+      "name": "Helping Hylek: Kill Krait",
+      "reason": {
+        "fr": "compteur de kills (25)",
+        "en": "kill counter (25)"
+      }
+    },
+    "4771": {
+      "name": "Vision II: Farsight",
+      "reason": {
+        "fr": "compteur d'Insights visitées à travers la Tyrie (20)",
+        "en": "counter of Insights knelt at across Tyria (20)"
+      }
+    }
   }
 };
 
@@ -19158,7 +19223,7 @@ function GW2LegendaryTracker() {
     // un cache d'avant la curation. D'où la signature de données ci-dessous, qui rend
     // l'oubli impossible : toute retouche des blocs éditoriaux change la clé.
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 16;
+    const ACH_DEFS_SCHEMA = 17; // 17 : `name` ajouté à la charge (le diagnostic affichait le requirement)
     // Signature des données éditoriales injectées dans `out` : listes curées et
     // pièges. Toute modification invalide le cache sans intervention manuelle.
     const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
@@ -19235,7 +19300,7 @@ function GW2LegendaryTracker() {
           // Le seuil d'un meta n'est pas dans "requirement" (l'API en retire le nombre,
           // d'ou le double espace de "Complete all  X achievements") : c'est le dernier palier.
           const tierMax = (d.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
-          out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "", tierMax };
+          out[String(d.id)] = { bits: d.bits ?? [], names, namesEn, name: d.name ?? "", req: d.requirement ?? "", desc: d.description ?? "", lockedTxt: d.locked_text ?? "", tierMax };
         }
         // Métas AVEC bits Text (metas d'épisode : « Long Live the Lich », « All or Nothing »…) :
         // chaque bit porte le NOM d'un succès enfant. On le résout vers son ID via la catégorie
@@ -20095,6 +20160,12 @@ function GW2LegendaryTracker() {
   // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
   // interroge une fois tous les metas de tous les legendaires. Volontairement
   // manuel : au demarrage il couterait un appel par onglet a chaque session.
+  // Un palier sans bits n'est pas forcement un trou : beaucoup de succes comptent
+  // des actions, des kills ou des objets possedes, et n'ont rien a curer. On les
+  // distingue par le texte du requirement, avec une liste editoriale d'exceptions.
+  const isAchievementMeta = (req) => /achievement|succ[eè]s|haut[- ]fait/i.test(req ?? "");
+  const noStepsDeclared = (id) => Boolean((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_no_steps?.[String(id)]);
+
   const scanAllMetas = useCallback(async () => {
     const curated = new Set(Object.keys((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.meta_eligible ?? {}));
     const targets = [];
@@ -20113,6 +20184,7 @@ function GW2LegendaryTracker() {
     for (const [id, leg] of targets) if (!byId.has(id)) byId.set(id, leg);
     const ids = [...byId.keys()];
     const gaps = [];
+    const counters = [];
     for (let k = 0; k < ids.length; k += 150) {
       const chunk = ids.slice(k, k + 150);
       try {
@@ -20121,12 +20193,13 @@ function GW2LegendaryTracker() {
         for (const a of await r.json()) {
           const tierMax = (a.tiers ?? []).reduce((m, t) => Math.max(m, t.count ?? 0), 0);
           if (tierMax > 1 && (a.bits ?? []).length === 0 && !curated.has(String(a.id))) {
-            gaps.push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?" });
+            const counter = noStepsDeclared(a.id) || !isAchievementMeta(a.requirement);
+            (counter ? counters : gaps).push({ id: a.id, name: a.name, tierMax, leg: byId.get(a.id) ?? "?", req: a.requirement });
           }
         }
       } catch (_) { /* reseau : on rend ce qu'on a */ }
     }
-    return { checked: ids.length, gaps };
+    return { checked: ids.length, gaps, counters };
   }, [lang]);
 
   const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
@@ -22345,9 +22418,11 @@ function GW2LegendaryTracker() {
           n'expose ni bits ni liste curée apparaît ici. C'est la seule
           source exhaustive — le nom d'un succès ne dit pas sa nature. */}
       {(() => {
-        const gaps = Object.entries(achBitsDefs)
+        const listless = Object.entries(achBitsDefs)
           .filter(([, d]) => (d.tierMax ?? 0) > 1 && (d.subs ?? []).length === 0 && (d.bits ?? []).length === 0)
-          .map(([id, d]) => ({ id, name: d.names?.[id] ?? d.req ?? id, tierMax: d.tierMax }));
+          .map(([id, d]) => ({ id, name: d.name ?? d.req ?? id, tierMax: d.tierMax, req: d.req }));
+        const gaps = listless.filter(g => !noStepsDeclared(g.id) && isAchievementMeta(g.req));
+        const counters = listless.filter(g => noStepsDeclared(g.id) || !isAchievementMeta(g.req));
         const curatedN = Object.values(achBitsDefs).filter(d => d.subsSource === "wiki").length;
         const catN = Object.values(achBitsDefs).filter(d => d.subsSource === "category").length;
         if (Object.keys(achBitsDefs).length === 0) return null;
@@ -22374,6 +22449,7 @@ function GW2LegendaryTracker() {
                   <div style={{ marginBottom: 6, paddingBottom: 5, borderBottom: "1px solid rgba(226,201,126,0.1)" }}>
                     <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.55)", fontFamily: "'Crimson Text', serif" }}>
                       {t("diag_all_done", { n: diagAll.checked, g: diagAll.gaps.length })}
+                      {(diagAll.counters ?? []).length > 0 && <> {t("diag_counters", { n: diagAll.counters.length })}</>}
                     </div>
                     {diagAll.gaps.map(g => (
                       <div key={g.id} style={{ fontSize: 10, color: "rgba(226,201,126,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.6 }}>
@@ -22384,6 +22460,7 @@ function GW2LegendaryTracker() {
                 )}
                 <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 4 }}>
                   {t("diag_counts", { w: curatedN, c: catN })}
+                  {counters.length > 0 && <> · {t("diag_counters", { n: counters.length })}</>}
                 </div>
                 {gaps.length === 0
                   ? <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif" }}>{t("diag_none")}</div>

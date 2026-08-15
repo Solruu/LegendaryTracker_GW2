@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v83",
+    "version": "v84",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -954,7 +954,8 @@
     },
     "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40.",
     "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel.",
-    "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul."
+    "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul.",
+    "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts."
   },
   "meta_events": {
     "vb": {
@@ -15661,6 +15662,68 @@
       "verified": "2026-08-13",
       "ref": "wiki:Rising_Flames_(achievements) + dulfyreborn",
       "checked": "2026-08-13"
+    }
+  },
+  "meta_no_steps": {
+    "_note": {
+      "fr": "Succès à paliers qui n'exposent pas de bits et n'ont RIEN à curer : ce sont des compteurs d'actions ou d'objets, pas des métas comptant d'autres succès. Sans cette liste, le détecteur les signale à tort comme des trous de données.",
+      "en": "Tiered achievements with no bits and NOTHING to curate: they count actions or items, not other achievements. Without this list the detector flags them as false data gaps."
+    },
+    "7796": {
+      "name": "Legendary Rune Collector",
+      "reason": {
+        "fr": "compte 7 runes légendaires possédées",
+        "en": "counts 7 legendary runes owned"
+      }
+    },
+    "7788": {
+      "name": "Legendary Sigil Collector",
+      "reason": {
+        "fr": "compte 8 cachets légendaires possédés",
+        "en": "counts 8 legendary sigils owned"
+      }
+    },
+    "8840": {
+      "name": "Incursive Investigation: First Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (150)",
+        "en": "repeated-action counter (150)"
+      }
+    },
+    "8841": {
+      "name": "Incursive Investigation: Second Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (300)",
+        "en": "repeated-action counter (300)"
+      }
+    },
+    "8835": {
+      "name": "Incursive Investigation: Third Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (450)",
+        "en": "repeated-action counter (450)"
+      }
+    },
+    "8814": {
+      "name": "Incursive Investigation: Infinite Recursion",
+      "reason": {
+        "fr": "compteur d'actions répétées (150)",
+        "en": "repeated-action counter (150)"
+      }
+    },
+    "9180": {
+      "name": "Helping Hylek: Kill Krait",
+      "reason": {
+        "fr": "compteur de kills (25)",
+        "en": "kill counter (25)"
+      }
+    },
+    "4771": {
+      "name": "Vision II: Farsight",
+      "reason": {
+        "fr": "compteur d'Insights visitées à travers la Tyrie (20)",
+        "en": "counter of Insights knelt at across Tyria (20)"
+      }
     }
   }
 }
