@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v90",
+    "version": "v91",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -961,7 +961,8 @@
     "changelog_v87": "La capture de la liste complete des materiaux de Warbringer tranche les deux ecarts sur les memoires de bataille, et corrige au passage le chiffre pose en v86. Warbringer demande 750 memoires : 500 pour l'Essence de carnage du Don de guerre et 250 pour le Don de conquete — le JSX avait raison, les sources annoncaient 500. Conflux demande 1750 et non 1500 : j'avais oublie les 250 du Don de conquete, commun aux deux legendaires. Les deux totaux sont confirmes par un controle croise sur les tickets, qui retombe exactement sur les valeurs publiees — 2 800 pour Warbringer, 1 850 pour Conflux. La question laissee ouverte en v86 est close et etait mal posee : le Pieu legendaire est un drop aleatoire en McM, pas un achat, et les 500 memoires de carnage etaient deja comptees.",
     "changelog_v88": "Reliques fractales d'Ad Infinitum chiffrees. La liste complete des materiaux ne donne que l'assemblage final, les couts des quatre collections vivant dans une section repliee : le total est donc reconstitue en additionnant les achats vendeur deja cures dans les conseils par objet — 2 650 reliques et 140 immaculees — et en y ajoutant deux Dons d'ascension a 500 reliques, 25 immaculees et 20 po piece. Soit 3 650 et 190, contre 5 000 et 120 cote sources et 500 et 50 cote JSX : les deux etaient faux, le JSX d'un facteur sept. Le nombre de Dons d'ascension reste la seule inconnue et est ecrit comme telle : si les montees du Condensateur en collections I et II en exigent chacune un, les totaux montent a 4 650 et 240. Les valeurs retenues sont un plancher.",
     "changelog_v89": "L'inconnue laissee en v88 est levee. La section « Used in » de la page du Don d'ascension etablit quatre usages dans la chaine d'Ad Infinitum : montee du Condensateur prototype en Elevé, puis en Beta infusé, puis en Condensateur fractal infusé, et enfin la recette du legendaire. Le plancher de 3 650 reliques et 190 immaculees devient donc un total ferme de 4 650 et 240, plus 80 po. Le prix unitaire du Don est confirme par la meme page : 500 reliques, 25 immaculees et 20 po chez BUY-4373. La recette de la montee en Elevé est aussi precisee — Fiole d'essence des Brumes condensee, un Don, et 240 Pierres philosophales ou 40 Cristaux mystiques.",
-    "changelog_v90": "Le Reliquaire fractal et le Gobelet du sorcier echangent 25 reliques contre un objet du jour, avec une limite quotidienne commune aux deux, et le Don d'ascension figure parfois dans la rotation — 25 reliques au lieu de 500. L'ecart est enorme mais l'occurrence est rare et aleatoire : la remise est consignee comme une opportunite a saisir, pas comme une ligne de budget. Les 4 800 reliques des quatre Dons restent donc chiffrees au prix vendeur, ce qui fait du total un plafond de ce cote la et non un plancher."
+    "changelog_v90": "Le Reliquaire fractal et le Gobelet du sorcier echangent 25 reliques contre un objet du jour, avec une limite quotidienne commune aux deux, et le Don d'ascension figure parfois dans la rotation — 25 reliques au lieu de 500. L'ecart est enorme mais l'occurrence est rare et aleatoire : la remise est consignee comme une opportunite a saisir, pas comme une ligne de budget. Les 4 800 reliques des quatre Dons restent donc chiffrees au prix vendeur, ce qui fait du total un plafond de ce cote la et non un plancher.",
+    "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement."
   },
   "meta_events": {
     "vb": {
@@ -6291,11 +6292,23 @@
         }
       },
       "opportunistic": {
-        "fr": "Le Reliquaire fractal et le Gobelet du sorcier échangent 25 reliques fractales contre un objet, une fois par jour — la limite quotidienne est COMMUNE aux deux. Le Don d'ascension y apparaît parfois : 25 reliques au lieu de 500, soit 95 % d'économie. Mais l'objet proposé change chaque jour et le Don est rare dans la rotation : à saisir si tu le vois, jamais à budgéter.",
-        "en": "The Fractal Reliquary and the Wizard's Gobbler trade 25 Fractal Relics for one item, once per day — the daily limit is SHARED between them. The Gift of Ascension shows up occasionally: 25 relics instead of 500, a 95% saving. But the offer rotates daily and the Gift is rare in the rotation: grab it when you see it, never budget on it.",
+        "fr": "Le Reliquaire fractal échange 25 reliques fractales contre un objet du jour, une seule fois par jour. Le Don d'ascension fait partie des 21 objets de la rotation : 25 reliques au lieu de 500. Quatre emplacements sont proposés chaque jour, dont le premier est toujours la Clé de chiffrement fractale — il reste donc 3 tirages sur 20, soit environ une chance sur sept par jour. Sur un mois de consultations quotidiennes, tu devrais le voir passer plusieurs fois.",
+        "en": "The Fractal Reliquary trades 25 Fractal Relics for one item of the day, once per day. The Gift of Ascension is one of the 21 items in the rotation: 25 relics instead of 500. Four slots are offered daily, the first always being the Fractal Encryption Key — so 3 draws out of 20, roughly a one-in-seven chance per day. Over a month of daily checks you should see it several times.",
+        "prerequisites": {
+          "fr": [
+            "Reliquaire fractal : récompense du succès « Recyclage élevé » (Rare Collections) — consommer 6 objets puissants issus du recyclage d'équipement élevé. Synergie directe : ces mêmes recyclages produisent les Boules d'énergie sombre exigées par les collections Ad Infinitum.",
+            "Gobelet du sorcier : acheté chez Gharr Leadclaw, Voie du Voyou, Arche du Lion. Ce n'est qu'un contenant — il ne donne accès au Reliquaire que si tu possèdes déjà celui-ci et que le succès « Rare Collections: Gobblers and Exchanges Collector » (8780) l'a enregistré. Il faut avoir l'objet en inventaire et passer par l'Arche du Lion pour mettre la progression à jour.",
+            "La limite quotidienne est commune aux deux, et on ne peut pas utiliser les deux le même jour : le Gobelet fait gagner de la place, pas des achats."
+          ],
+          "en": [
+            "Fractal Reliquary: reward from the 'Ascended Recycling' achievement (Rare Collections) — collect and consume 6 powerful items from salvaging ascended gear. Direct synergy: those same salvages produce the Balls of Dark Energy required by the Ad Infinitum collections.",
+            "Wizard's Gobbler: bought from Gharr Leadclaw, Hooligan's Route, Lion's Arch. It is only a container — it grants Reliquary access only if you already own one and the 'Rare Collections: Gobblers and Exchanges Collector' achievement (8780) has registered it. Keep the item in your inventory and visit Lion's Arch to refresh progress.",
+            "The daily limit is shared between both, and you cannot use both on the same day: the Gobbler saves bag space, not purchases."
+          ]
+        },
         "verified": true,
         "checked": "2026-08-13",
-        "ref": "wiki:Fractal_Reliquary + wiki:Wizard's_Gobbler/Fractal_Reliquary (limite quotidienne partagee)"
+        "ref": "wiki:Fractal_Reliquary (acquisition + les 21 objets de la rotation) + wiki:Wizard's_Gobbler + wiki:Portable_exchanger"
       }
     },
     "pristine_fractal_relic": {
