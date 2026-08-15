@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v84",
+    "version": "v85",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -955,7 +955,8 @@
     "changelog_v81": "Trois incertitudes levees au wiki. Le mote de defi de Flanc de falaise est bien en echelle 46 et non 21 : la description de l'objet annonce le palier core, 21 a 50, mais la fractale Flanc de falaise ne tourne qu'aux echelles 6, 46, 68 et 94 — une seule tombe dans l'intervalle. Patron (3127) est confirme comme comptant pour Rising Flames malgre son classement sous Tradesman, avec une note wiki explicite ; il exige un contrat de mecenat a environ 1 000 po, ce que le score d'effort ne peut pas voir, d'ou le nouveau bloc achievement_notes reserve aux pieges non calculables. Enfin la cadence du rubis de sang etait inventee : le plafond reel porte sur les noeuds, 35 par jour et par compte, avec un rendement releve a 29 %, soit une dizaine de rubis par jour et non 40.",
     "changelog_v82": "Rubis de sang ajoute a leg_currency_ids pour Aurora (79280, verifie sur /v2/items). La monnaie avait ete declaree dans la liste du JSX en v107 mais pas dans le mapping de synchro, presente pourtant comme source de verite : la synchro directe la rattrapait par un repli sur apiId, le serveur Flask non — d'ou un stock affiche a zero selon le chemin emprunte. Le serveur Flask passe en v29 avec la meme entree, dans la table des ids et dans le bloc aurora. Le controle ajoute au script d'audit a immediatement trouve trois autres cas du meme defaut : les monnaies gen3 du tracker d'armes (Pierre d'invocation antique 96978, Runestone de jade 96722, Pierre magnetique draconique amalgamee 92687, plus les trefles et les notes de recherche) n'avaient aucune entree dans leg_currency_ids, le tracker d'armes n'y figurant pas du tout. L'entree weapons est creee avec les cinq ids, extraits du JSX et verifies au referentiel.",
     "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul.",
-    "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts."
+    "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts.",
+    "changelog_v85": "Les surcouts conditionnels quittent le JSX pour rejoindre les sources, dans un champ qty_extras porte par le composant. Ils y etaient codes en dur, donc invisibles du grand total et de l'audit : le rubis de sang affichait 250 dans l'onglet Aurora, qui sait decompter l'etape faite, et 300 dans le grand total, qui lisait un nombre fige. Un meme fait ecrit a deux endroits, dont un incapable de se mettre a jour. Les deux vues calculent desormais base plus surcouts en attente a partir de la meme declaration. Quatre des six monnaies LW3 n'avaient aucune quantite et etaient donc absentes du grand total : eclats de jade, orchidee ignee, bois petrifie et perles orriennes sont declares a 250. Les baies d'hiver reviennent de 300 a 250, aucun objet de Bitterfrost ne s'achetant en baies — les Coffres glaces s'ouvrent a la Flamme de Koda. Le surcout reel est ailleurs et n'est pas budgetable : l'Elixir de degel consomme 12 baies par preparation, a refaire chaque jour tant que le Suif cristallise n'est pas tombe, ce que dit une note. Enfin la correspondance carte-monnaie etait fausse pour quatre des six : le bois petrifie annonçait le Lac Doric, les eclats de jade les Confins de Givramer, l'orchidee et les perles se trompaient d'episode. Les six sont refaites, verifiees episode par episode. Le controle qty ajoute a l'audit a immediatement trouve quatre divergences non liees a ce chantier : memoires de bataille pour Conflux et Warbringer, reliques fractales et reliques immaculees pour Ad Infinitum. Aucune n'est tranchee, faute d'avoir consulte le wiki : elles sont declarees dans qty_conflict, ce qui les fait passer en avertissement plutot qu'en blocage, mais les rend visibles a chaque audit au lieu de dormir."
   },
   "meta_events": {
     "vb": {
@@ -2639,7 +2640,7 @@
         "gift_of_bloodstone_magic"
       ],
       "qty": {
-        "aurora": 300
+        "aurora": 250
       },
       "farmable": true,
       "sources": [
@@ -2650,12 +2651,12 @@
             "en": "Bloodstone Fen"
           },
           "tip": {
-            "fr": "Nœuds, events et métas — Marais de la pierre de sang (LW3 ép. 1). 35 nœuds/jour/compte, rendement ~29 %.",
-            "en": "Nodes, events and metas — Bloodstone Fen (LW3 ep. 1). 35 nodes/day/account, ~29% yield."
+            "fr": "Nœuds, events et métas — Marais de la pierre de sang (Monde vivant S3, épisode 1).",
+            "en": "Nodes, events and metas — Bloodstone Fen (Living World S3, episode 1)."
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Blood_Ruby + wiki:Bloodstone_Crystals"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2665,7 +2666,19 @@
           "tip": "Sans limite : contre Eternal Ice Shards + karma."
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "qty_extras": [
+        {
+          "legendary": "aurora",
+          "amount": 50,
+          "sub": "aurora_bf",
+          "bit": 7,
+          "label": {
+            "fr": "Rubis de sang immaculé (Natto)",
+            "en": "Pristine Blood Ruby (Natto)"
+          }
+        }
+      ]
     },
     "jade_shard_lw3": {
       "name": "Jade Shard",
@@ -2673,16 +2686,24 @@
       "needed_for": [
         "gift_of_bloodstone_magic"
       ],
-      "qty": {},
+      "qty": {
+        "aurora": 250
+      },
       "farmable": true,
       "sources": [
         {
           "type": "map_currency",
           "map": {
-            "fr": "Confins de Givramer",
-            "en": "Bitterfrost Frontier"
+            "fr": "Lac Doric",
+            "en": "Lake Doric"
           },
-          "tip": "Nodes, events — Bitterfrost Frontier. LW3 ep2."
+          "tip": {
+            "fr": "Nœuds, events et métas — Lac Doric (Monde vivant S3, épisode 4).",
+            "en": "Nodes, events and metas — Lake Doric (Living World S3, episode 4)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2692,7 +2713,29 @@
           "tip": "Sans limite : contre Eternal Ice Shards + karma."
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "qty_extras": [
+        {
+          "legendary": "aurora",
+          "amount": 50,
+          "sub": "aurora_ld",
+          "bit": 13,
+          "label": {
+            "fr": "Protecteur seraph",
+            "en": "Seraph Protector"
+          }
+        },
+        {
+          "legendary": "aurora",
+          "amount": 50,
+          "sub": "aurora_ld",
+          "bit": 14,
+          "label": {
+            "fr": "Bâton du savant",
+            "en": "Bloodstone Savant's Staff"
+          }
+        }
+      ]
     },
     "orrian_pearl_lw3": {
       "name": "Orrian Pearl",
@@ -2700,7 +2743,9 @@
       "needed_for": [
         "gift_of_bloodstone_magic"
       ],
-      "qty": {},
+      "qty": {
+        "aurora": 250
+      },
       "farmable": true,
       "sources": [
         {
@@ -2709,7 +2754,13 @@
             "fr": "Plage des sirènes",
             "en": "Siren's Landing"
           },
-          "tip": "Nodes, events — Siren's Landing. LW3 ep5."
+          "tip": {
+            "fr": "Nœuds, events et métas — Plage des sirènes (Monde vivant S3, épisode 6).",
+            "en": "Nodes, events and metas — Siren's Landing (Living World S3, episode 6)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2719,7 +2770,19 @@
           "tip": "Sans limite : contre Eternal Ice Shards + karma."
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "qty_extras": [
+        {
+          "legendary": "aurora",
+          "amount": 200,
+          "sub": "aurora_sl",
+          "bit": 1,
+          "label": {
+            "fr": "Relique d'un dieu (dos)",
+            "en": "God's Relic backpack"
+          }
+        }
+      ]
     },
     "fire_orchid_blossom": {
       "name": "Fire Orchid Blossom",
@@ -2727,7 +2790,9 @@
       "needed_for": [
         "gift_of_dragon_magic"
       ],
-      "qty": {},
+      "qty": {
+        "aurora": 250
+      },
       "farmable": true,
       "sources": [
         {
@@ -2736,7 +2801,13 @@
             "fr": "Mont Draconis",
             "en": "Draconis Mons"
           },
-          "tip": "Nodes, events — Draconis Mons. LW3 ep4."
+          "tip": {
+            "fr": "Nœuds, events et métas — Mont Draconis (Monde vivant S3, épisode 5).",
+            "en": "Nodes, events and metas — Draconis Mons (Living World S3, episode 5)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2755,7 +2826,7 @@
         "gift_of_dragon_magic"
       ],
       "qty": {
-        "aurora": 300
+        "aurora": 250
       },
       "farmable": true,
       "sources": [
@@ -2766,9 +2837,12 @@
             "en": "Bitterfrost Frontier"
           },
           "tip": {
-            "fr": "Nodes quotidiens — Confins de Givramer. Synergie avec le farm de Jade Shards.",
-            "en": "Daily nodes — Bitterfrost Frontier. Synergizes with Jade Shard farming."
-          }
+            "fr": "Nœuds, events et métas — Confins de Givramer (Monde vivant S3, épisode 3).",
+            "en": "Nodes, events and metas — Bitterfrost Frontier (Living World S3, episode 3)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2778,7 +2852,11 @@
           "tip": "Sans limite : contre Eternal Ice Shards + karma."
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "aside": {
+        "fr": "Hors budget : l'Élixir de dégel consomme 12 baies fraîches par préparation, et il faut le refaire chaque jour tant que le Suif cristallisé n'est pas tombé. Compte quelques dizaines de baies en plus, ça ne se calcule pas.",
+        "en": "Off-budget: the Thaw Elixir consumes 12 fresh berries per brew, and it must be redone daily until the Crystallized Suet drops. Budget a few dozen extra berries; it isn't worth computing."
+      }
     },
     "petrified_wood_lw3": {
       "name": "Petrified Wood",
@@ -2786,16 +2864,24 @@
       "needed_for": [
         "gift_of_dragon_magic"
       ],
-      "qty": {},
+      "qty": {
+        "aurora": 250
+      },
       "farmable": true,
       "sources": [
         {
           "type": "map_currency",
           "map": {
-            "fr": "Lac Doric",
-            "en": "Lake Doric"
+            "fr": "Baie des braises",
+            "en": "Ember Bay"
           },
-          "tip": "Nodes, events — Lake Doric. LW3 ep3."
+          "tip": {
+            "fr": "Nœuds, events et métas — Baie des braises (Monde vivant S3, épisode 2).",
+            "en": "Nodes, events and metas — Ember Bay (Living World S3, episode 2)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
         }
       ],
       "conversion_options": [
@@ -2971,6 +3057,22 @@
       "best_reason": {
         "fr": "achat direct (pas d'alternative gratuite)",
         "en": "direct purchase (no free alternative)"
+      },
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 1500,
+          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "checked": "2026-08-13",
+          "verified": false,
+          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+        },
+        "warbringer": {
+          "jsx": 750,
+          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "checked": "2026-08-13",
+          "verified": false,
+          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+        }
       }
     },
     "vision_crystal": {
@@ -6152,7 +6254,16 @@
         "ad_infinitum": 5000
       },
       "kind": "acquire",
-      "best": "daily_reward"
+      "best": "daily_reward",
+      "qty_conflict": {
+        "ad_infinitum": {
+          "jsx": 500,
+          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "checked": "2026-08-13",
+          "verified": false,
+          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+        }
+      }
     },
     "pristine_fractal_relic": {
       "name": "Pristine Fractal Relic",
@@ -6219,6 +6330,15 @@
       "apiIdNote": {
         "fr": "Devise de portefeuille (id 24). L'ancien 49370 etait un identifiant d'objet, non resolvable via le portefeuille.",
         "en": "Wallet currency (id 24). The former 49370 was an item id, not resolvable through the wallet."
+      },
+      "qty_conflict": {
+        "ad_infinitum": {
+          "jsx": 50,
+          "note": "valeur non tranchee : ni le wiki ni le referentiel n'ont ete consultes sur ce point. Le grand total utilise le chiffre des sources, l'onglet du legendaire celui du JSX. A verifier.",
+          "checked": "2026-08-13",
+          "verified": false,
+          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+        }
       }
     },
     "fractal_research_page": {

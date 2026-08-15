@@ -168,6 +168,15 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   stock s'affiche alors à zéro selon le chemin emprunté, ce qui ressemble à une
   perte de données plutôt qu'à un oubli de déclaration. Le script d'audit
   contrôle désormais la correspondance.
+- **Une quantité ne s'écrit qu'une fois.** Le requis d'une ressource vivait à la
+  fois dans le JSX et dans `craft_components[*].qty` : le rubis de sang affichait
+  250 dans l'onglet du légendaire, qui sait décompter une étape faite, et 300
+  dans le grand total, qui lisait un nombre figé. Un surcoût conditionnel se
+  déclare dans `qty_extras`, jamais fondu dans le nombre de base, et jamais codé
+  en dur dans le JSX — sinon il est invisible du grand total et de l'audit.
+- **Un écart non tranché se déclare.** `qty_conflict` accepte une divergence
+  connue, mais seulement datée et motivée : elle passe alors en avertissement au
+  lieu de bloquer, et reste visible à chaque audit au lieu de dormir.
 - **Un stock se lit à cinq endroits** : portefeuille, stockage matériaux,
   banque, inventaire partagé et **sacs des personnages** (`/v2/characters`,
   portées `characters` + `inventories`). Les deux chemins de synchro en

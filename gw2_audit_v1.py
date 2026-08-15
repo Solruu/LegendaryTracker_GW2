@@ -93,6 +93,76 @@ def walk_provenance(node, path, hits):
             walk_provenance(v, f"{path}[{i}]", hits)
 
 
+def _jsx_currency_blocks(src):
+    """Extrait, par legendaire, les monnaies declarees dans son bloc currencies.
+
+    Une meme ressource a des requis differents selon le legendaire — 250 eclats
+    d'obsidienne pour une gen1, 100 pour Ad Infinitum. Comparer tous legendaires
+    confondus produirait des dizaines de fausses alertes.
+    """
+    out = {}
+    for m in re.finditer(r'currencies(?:PerPiece|PerWeapon)?:\s*\[', src):
+        depth, i = 1, m.end()
+        while i < len(src) and depth:
+            if src[i] == "[":
+                depth += 1
+            elif src[i] == "]":
+                depth -= 1
+            i += 1
+        block = src[m.end():i - 1]
+        head = src[:m.start()]
+        leg = None
+        for hm in re.finditer(r'\n  (?:"([a-z_0-9]+)"|([a-z_0-9]+)):\s*\{', head):
+            leg = hm.group(1) or hm.group(2)
+        if not leg:
+            continue
+        for c in re.finditer(r'required:\s*(\d+)[^{}]*?apiId:\s*(\d+)|apiId:\s*(\d+)[^{}]*?required:\s*(\d+)', block):
+            req = int(c.group(1) or c.group(4))
+            api = int(c.group(2) or c.group(3))
+            out.setdefault(leg, {})[api] = req
+    return out
+
+
+def check_qty_vs_jsx(data, errors, warnings):
+    """Le qty de base d'un composant doit egaler le required du meme legendaire.
+
+    Le rubis de sang portait 300 dans les sources et 250 dans le JSX : le meme
+    fait ecrit a deux endroits, dont un incapable de decompter une etape faite.
+    Un surcout appartient a qty_extras, jamais au nombre de base.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    per_leg = _jsx_currency_blocks(jsx[-1].read_text(encoding="utf-8"))
+    for cid, comp in data.get("craft_components", {}).items():
+        api, qty = comp.get("apiId"), comp.get("qty")
+        if not isinstance(api, int) or not isinstance(qty, dict):
+            continue
+        for legid, val in qty.items():
+            if not isinstance(val, int) or "__" in legid:
+                continue
+            req = per_leg.get(legid, {}).get(api)
+            if req is not None and req != val:
+                # Une divergence peut etre connue et non tranchee : on l'accepte
+                # UNIQUEMENT si elle est declaree, datee et motivee. Sinon elle
+                # bloque. Un ecart tolere en silence redeviendrait invisible.
+                ack = (comp.get("qty_conflict") or {}).get(legid)
+                if isinstance(ack, dict) and ack.get("jsx") == req and ack.get("note"):
+                    warnings.append(
+                        f"craft_components/{cid} : ecart connu sur {legid}, "
+                        f"sources {val} contre JSX {req} — {ack['note']}"
+                    )
+                    continue
+                errors.append(
+                    f"craft_components/{cid} : qty[{legid}] = {val} alors que le JSX "
+                    f"declare required = {req} pour {legid} — un surcout se declare "
+                    "dans qty_extras, pas dans le nombre de base"
+                )
+
+
 def check_api_ids(data, errors, warnings):
     """Un nom connu du referentiel doit porter l'id du referentiel.
 
@@ -253,7 +323,10 @@ def main() -> int:
     # 6. Concordance nom <-> apiId contre le referentiel materiaux
     check_api_ids(data, errors, warnings)
 
-    # 7. Integrite de chaque entree de meta_eligible
+    # 7. Quantites des composants alignees sur les requis du JSX
+    check_qty_vs_jsx(data, errors, warnings)
+
+    # 8. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

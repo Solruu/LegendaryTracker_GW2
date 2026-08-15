@@ -1162,22 +1162,17 @@ const LEGENDARIES = {
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
         farmType: "per_account", perAccountPerDay: 12, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
-        extras: [{ amount: 50, sub: "aurora_bf", bit: 7, label: { fr: "Rubis de sang immaculé (Natto) — 50 rubis + 5 000 magie déchaînée", en: "Pristine Blood Ruby (Natto) — 50 rubies + 5,000 Unbound Magic" } }] },
+        }, // surcoût déclaré dans SOURCES_DB.craft_components.blood_ruby.qty_extras
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899,
         farmType: "per_char", perCharPerDay: 60, mapNote: "Bitterfrost Frontier" },
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469,
         farmType: "per_account", perAccountPerDay: 45, mapNote: "Ember Bay + Draconis Mons" },
       { id: "jade", name: "Jade Shard", required: 250, icon: "JS", apiId: 80332,
-        farmType: "per_account", perAccountPerDay: 40, mapNote: "Lake Doric",
-        extras: [
-          { amount: 50, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph (Lieutenant Bran) — 50 éclats + 210 000 karma", en: "Seraph Protector (Lieutenant Bran) — 50 shards + 210,000 karma" } },
-          { amount: 50, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant de la pierre de sang (Exemplar Ylan) — 50 éclats + 210 000 karma", en: "Bloodstone Savant's Staff (Exemplar Ylan) — 50 shards + 210,000 karma" } },
-        ] },
+        farmType: "per_account", perAccountPerDay: 40, mapNote: "Lake Doric", },
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. Prévois-en quelques-unes de côté, ça ne se calcule pas.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. Keep a few spare, it isn't worth computing." },
-        extras: [{ amount: 200, sub: "aurora_sl", bit: 1, label: { fr: "Relique d'un dieu (dos) — 200 perles + 315 000 karma", en: "God's Relic backpack — 200 pearls + 315,000 karma" } }],
         farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
         heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
     ],
@@ -2478,8 +2473,30 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
-function computeGrandTotal(selectedIds) {
+function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
+  // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
+  // legendaire. Sans cet appel, le grand total affichait un nombre fige qui
+  // ignorait les etapes deja validees.
+  // Les onglets grand total et cadences sont des composants a part, sans acces a
+  // l'etat des collections : on relit l'instantane persiste plutot que de faire
+  // descendre la donnee par props sur deux niveaux.
+  const colls = collectionsByLeg ?? (() => {
+    try { return JSON.parse(localStorage.getItem("gw2_aurora_collections") ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  })();
+  const pendingExtra = (comp, legId) => {
+    let add = 0;
+    for (const x of (comp.qty_extras ?? [])) {
+      if (x.legendary !== legId) continue;
+      const sc = colls[x.sub];
+      const done = (b) => sc ? ((sc.done ?? false) || (sc.bits ?? []).includes(b)) : false;
+      add += Array.isArray(x.bits)
+        ? x.bits.filter(b => !done(b)).length * (x.amountPer ?? 0)
+        : (done(x.bit) ? 0 : (x.amount ?? 0));
+    }
+    return add;
+  };
   const legs = SOURCES_DB?.legendaries ?? {};
   const totals = {};   // compId → qty
   const variable = []; // composants non chiffrables
@@ -2491,7 +2508,7 @@ function computeGrandTotal(selectedIds) {
       if (qty[legId] !== undefined) {
         const val = qty[legId];
         if (typeof val === "number") {
-          totals[compId] = (totals[compId] ?? 0) + val;
+          totals[compId] = (totals[compId] ?? 0) + val + pendingExtra(comp, legId);
         } else if (typeof val === "string") {
           if (!variable.find(v => v.compId === compId)) {
             variable.push({ compId, name: comp.name, note: val });
@@ -4373,11 +4390,27 @@ export default function GW2LegendaryTracker() {
     if (Array.isArray(x.bits)) return x.bits.filter(b => !stepDone(b)).length * (x.amountPer ?? 0);
     return stepDone(x.bit) ? 0 : (x.amount ?? 0);
   };
+  // Les surcoûts vivent dans SOURCES_DB.craft_components[*].qty_extras : une seule
+  // déclaration, lue à la fois par l'onglet du légendaire et par le grand total.
+  const extrasFromSources = (legId, apiId) => {
+    const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
+    for (const c of Object.values(comps)) {
+      if (c?.apiId === apiId && Array.isArray(c.qty_extras)) {
+        return c.qty_extras.filter(x => x.legendary === legId);
+      }
+    }
+    return [];
+  };
+  const asideFromSources = (apiId) => {
+    const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
+    for (const c of Object.values(comps)) if (c?.apiId === apiId && c.aside) return c.aside;
+    return null;
+  };
   const withExtras = legCurrencies.map(cur => {
-    const ex = Array.isArray(cur.extras) ? cur.extras : [];
-    if (ex.length === 0) return cur;
+    const ex = [...(Array.isArray(cur.extras) ? cur.extras : []), ...extrasFromSources(selectedLeg, cur.apiId)];
+    if (ex.length === 0) return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId) };
     const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
-    return { ...cur, required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
+    return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId), required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
   });
   // Scan global a la demande : le panneau ne voit que l'onglet courant, car
   // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
