@@ -2192,8 +2192,8 @@ const LEGENDARIES = {
     resetType: "daily",
     isGuideTrinket: true,
     currencies: [
-      { id: "relics",   name: "Fractal Relic",          required: 500, icon: "FR", apiId: 7 },
-      { id: "pristine", name: "Pristine Fractal Relic", required: 50,  icon: "PF", apiId: 24 },
+      { id: "relics",   name: "Fractal Relic",          required: 3650, icon: "FR", apiId: 7 },
+      { id: "pristine", name: "Pristine Fractal Relic", required: 190, icon: "PF", apiId: 24 },
       { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
       { id: "coins",    name: "Mystic Coin",            required: 250, icon: "MO", apiId: 19976 },
     ],

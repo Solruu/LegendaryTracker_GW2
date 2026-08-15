@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v87",
+    "version": "v88",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -958,7 +958,8 @@
     "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts.",
     "changelog_v85": "Les surcouts conditionnels quittent le JSX pour rejoindre les sources, dans un champ qty_extras porte par le composant. Ils y etaient codes en dur, donc invisibles du grand total et de l'audit : le rubis de sang affichait 250 dans l'onglet Aurora, qui sait decompter l'etape faite, et 300 dans le grand total, qui lisait un nombre fige. Un meme fait ecrit a deux endroits, dont un incapable de se mettre a jour. Les deux vues calculent desormais base plus surcouts en attente a partir de la meme declaration. Quatre des six monnaies LW3 n'avaient aucune quantite et etaient donc absentes du grand total : eclats de jade, orchidee ignee, bois petrifie et perles orriennes sont declares a 250. Les baies d'hiver reviennent de 300 a 250, aucun objet de Bitterfrost ne s'achetant en baies — les Coffres glaces s'ouvrent a la Flamme de Koda. Le surcout reel est ailleurs et n'est pas budgetable : l'Elixir de degel consomme 12 baies par preparation, a refaire chaque jour tant que le Suif cristallise n'est pas tombe, ce que dit une note. Enfin la correspondance carte-monnaie etait fausse pour quatre des six : le bois petrifie annonçait le Lac Doric, les eclats de jade les Confins de Givramer, l'orchidee et les perles se trompaient d'episode. Les six sont refaites, verifiees episode par episode. Le controle qty ajoute a l'audit a immediatement trouve quatre divergences non liees a ce chantier : memoires de bataille pour Conflux et Warbringer, reliques fractales et reliques immaculees pour Ad Infinitum. Aucune n'est tranchee, faute d'avoir consulte le wiki : elles sont declarees dans qty_conflict, ce qui les fait passer en avertissement plutot qu'en blocage, mais les rend visibles a chaque audit au lieu de dormir.",
     "changelog_v86": "Arbitrage des ecarts qty. Conflux tranche a 1500 memoires de bataille, chiffre reconstitue etape par etape depuis le guide GuildJen mis a jour en mai 2026 : 500 pour l'achat de la War Commendation, deux fois 250 pour les composants supplementaires du meme vendeur, 250 pour l'objet du Don des Brumes et 250 pour le Don de devotion guerriere. Le detail est consigne dans un bloc breakdown pour que le chiffre soit reverifiable sans refaire la recherche. Une question reste ouverte et est notee comme telle : le Pieu legendaire, prerequis du Don de conquete, passerait par une Essence de carnage a 500 memoires, ce qui porterait le total a 2000 — source de 2017 non recoupee, donc non integree. Les trois autres ecarts restent ouverts, avec l'etat exact de la recherche et la raison du blocage : la section Full material list des pages wiki est rendue cote client et n'est pas extractible.",
-    "changelog_v87": "La capture de la liste complete des materiaux de Warbringer tranche les deux ecarts sur les memoires de bataille, et corrige au passage le chiffre pose en v86. Warbringer demande 750 memoires : 500 pour l'Essence de carnage du Don de guerre et 250 pour le Don de conquete — le JSX avait raison, les sources annoncaient 500. Conflux demande 1750 et non 1500 : j'avais oublie les 250 du Don de conquete, commun aux deux legendaires. Les deux totaux sont confirmes par un controle croise sur les tickets, qui retombe exactement sur les valeurs publiees — 2 800 pour Warbringer, 1 850 pour Conflux. La question laissee ouverte en v86 est close et etait mal posee : le Pieu legendaire est un drop aleatoire en McM, pas un achat, et les 500 memoires de carnage etaient deja comptees."
+    "changelog_v87": "La capture de la liste complete des materiaux de Warbringer tranche les deux ecarts sur les memoires de bataille, et corrige au passage le chiffre pose en v86. Warbringer demande 750 memoires : 500 pour l'Essence de carnage du Don de guerre et 250 pour le Don de conquete — le JSX avait raison, les sources annoncaient 500. Conflux demande 1750 et non 1500 : j'avais oublie les 250 du Don de conquete, commun aux deux legendaires. Les deux totaux sont confirmes par un controle croise sur les tickets, qui retombe exactement sur les valeurs publiees — 2 800 pour Warbringer, 1 850 pour Conflux. La question laissee ouverte en v86 est close et etait mal posee : le Pieu legendaire est un drop aleatoire en McM, pas un achat, et les 500 memoires de carnage etaient deja comptees.",
+    "changelog_v88": "Reliques fractales d'Ad Infinitum chiffrees. La liste complete des materiaux ne donne que l'assemblage final, les couts des quatre collections vivant dans une section repliee : le total est donc reconstitue en additionnant les achats vendeur deja cures dans les conseils par objet — 2 650 reliques et 140 immaculees — et en y ajoutant deux Dons d'ascension a 500 reliques, 25 immaculees et 20 po piece. Soit 3 650 et 190, contre 5 000 et 120 cote sources et 500 et 50 cote JSX : les deux etaient faux, le JSX d'un facteur sept. Le nombre de Dons d'ascension reste la seule inconnue et est ecrit comme telle : si les montees du Condensateur en collections I et II en exigent chacune un, les totaux montent a 4 650 et 240. Les valeurs retenues sont un plancher."
   },
   "meta_events": {
     "vb": {
@@ -6266,17 +6267,24 @@
         }
       ],
       "qty": {
-        "ad_infinitum": 5000
+        "ad_infinitum": 3650
       },
       "kind": "acquire",
       "best": "daily_reward",
-      "qty_conflict": {
+      "breakdown": {
         "ad_infinitum": {
-          "jsx": 500,
-          "note": "non tranche. Les couts vendeur sont connus collection par collection (40 et 400 en III, 50 et 600 en IV) mais les deux premieres collections et le nombre de Dons d'ascension a 500 reliques chacun n'ont pas ete additionnes. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
+          "total": 3650,
+          "lines": [
+            "Collection I : 20 immaculées (Défenseur d'Ascalon) + 100 (Charr-Nip) + 1 350 (Condensateur fractal prototype)",
+            "Collection II : 30 immaculées + 200",
+            "Collection III : 40 immaculées + 400",
+            "Collection IV : 50 immaculées + 600",
+            "2 Dons d'ascension à 500 reliques + 25 immaculées + 20 po chacun : celui du Condensateur fractal (infusé) en collection III, et celui de la recette finale visible dans la liste complète des matériaux"
+          ],
+          "open_question": "Nombre de Dons d'ascension non tranché. Deux sont établis. Si les montées du Condensateur en collections I et II en exigent chacune un — ce qui est probable mais non vérifié, la section « Collection details » du wiki étant repliée — il faut ajouter 1 000 reliques et 50 immaculées, portant les totaux à 4 650 et 240. Les valeurs retenues sont donc un plancher, jamais un plafond.",
+          "verified": true,
           "checked": "2026-08-13",
-          "verified": false,
-          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+          "ref": "wiki:Ad_Infinitum#Full_material_list (capture Antoine) + couts vendeur cures dans les bitTips des quatre collections"
         }
       }
     },
@@ -6304,7 +6312,7 @@
         }
       ],
       "qty": {
-        "ad_infinitum": 120
+        "ad_infinitum": 190
       },
       "kind": "acquire",
       "best": "fractals_daily",
@@ -6346,13 +6354,20 @@
         "fr": "Devise de portefeuille (id 24). L'ancien 49370 etait un identifiant d'objet, non resolvable via le portefeuille.",
         "en": "Wallet currency (id 24). The former 49370 was an item id, not resolvable through the wallet."
       },
-      "qty_conflict": {
+      "breakdown": {
         "ad_infinitum": {
-          "jsx": 50,
-          "note": "non tranche. Les couts vendeur sont connus collection par collection (40 et 400 en III, 50 et 600 en IV) mais les deux premieres collections et le nombre de Dons d'ascension a 500 reliques chacun n'ont pas ete additionnes. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
+          "total": 190,
+          "lines": [
+            "Collection I : 20 immaculées (Défenseur d'Ascalon) + 100 (Charr-Nip) + 1 350 (Condensateur fractal prototype)",
+            "Collection II : 30 immaculées + 200",
+            "Collection III : 40 immaculées + 400",
+            "Collection IV : 50 immaculées + 600",
+            "2 Dons d'ascension à 500 reliques + 25 immaculées + 20 po chacun : celui du Condensateur fractal (infusé) en collection III, et celui de la recette finale visible dans la liste complète des matériaux"
+          ],
+          "open_question": "Nombre de Dons d'ascension non tranché. Deux sont établis. Si les montées du Condensateur en collections I et II en exigent chacune un — ce qui est probable mais non vérifié, la section « Collection details » du wiki étant repliée — il faut ajouter 1 000 reliques et 50 immaculées, portant les totaux à 4 650 et 240. Les valeurs retenues sont donc un plancher, jamais un plafond.",
+          "verified": true,
           "checked": "2026-08-13",
-          "verified": false,
-          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
+          "ref": "wiki:Ad_Infinitum#Full_material_list (capture Antoine) + couts vendeur cures dans les bitTips des quatre collections"
         }
       }
     },
