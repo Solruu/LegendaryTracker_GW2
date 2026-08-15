@@ -163,6 +163,7 @@ const I18N = {
     chars_yield: "Estimated daily yield",
     chars_note_perchar: "{n} char{s} × ~{per}/char",
     chars_note_chests: "{n} char{s} × 2 chests (5 hearts/char required)",
+    chars_note_hearts: "{n} char{s} × 5 heart vendors × 3 pearls — oyster nodes on top",
     chars_note_cap: "account cap — alts useless",
     chars_siren_title: "⚠ Siren's Landing — note",
     chars_altswap_pre: "Alt-swap possible but costly: each character must complete the ",
@@ -385,6 +386,7 @@ const I18N = {
     chars_yield: "Rendement quotidien estimé",
     chars_note_perchar: "{n} perso{s} × ~{per}/perso",
     chars_note_chests: "{n} perso{s} × 2 coffres (5 cœurs/perso requis)",
+    chars_note_hearts: "{n} perso{s} × 5 vendeurs de cœur × 3 perles — nœuds d'huîtres en plus",
     chars_note_cap: "plafond compte — persos secondaires inutiles",
     chars_siren_title: "⚠ Siren's Landing — spécificité",
     chars_altswap_pre: "Rotation de persos possible mais coûteuse : chaque personnage doit compléter les ",
@@ -1172,9 +1174,9 @@ const LEGENDARIES = {
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127,
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
-        aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. Prévois-en quelques-unes de côté, ça ne se calcule pas.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. Keep a few spare, it isn't worth computing." },
-        farmType: "per_char_hearts", chestPerCharPerDay: 2, mapNote: "Siren's Landing",
-        heartNote: { fr: "5 cœurs requis par personnage et par jour avant l'accès au coffre (~20 min)", en: "5 hearts required per character per day before chest access (~20 min)" } },
+        aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." },
+        farmType: "per_char_hearts", perCharPerDay: 15, heartBundle: true, mapNote: "Siren's Landing",
+        heartNote: { fr: "Les 5 vendeurs de cœur vendent chacun un lot de 3 perles contre 2 688 karma, une fois par jour et par personnage — soit 15 perles pour 13 440 karma. Les nœuds d'huîtres orriennes, les events et les récompenses de bonus de carte s'y ajoutent sans plafond connu et ne sont pas comptés ici.", en: "Each of the 5 heart vendors sells a bundle of 3 pearls for 2,688 karma, once per day per character — 15 pearls for 13,440 karma. Orrian Oyster nodes, events and map bonus rewards come on top with no known cap and are not counted here." } },
     ],
     raidTabLabel: { fr: "⛏ Chaîne du Henge", en: "⛏ Henge chain" },
     requirements: {
@@ -5000,8 +5002,11 @@ export default function GW2LegendaryTracker() {
                   note = t("chars_note_perchar", { n: numChars, s: numChars > 1 ? "s" : "", per: cur.perCharPerDay });
                   color = "#34d399";
                 } else if (cur.farmType === "per_char_hearts") {
-                  perDay = numChars * 2;
-                  note = t("chars_note_chests", { n: numChars, s: numChars > 1 ? "s" : "" });
+                  // Ne pas confondre deux plafonds distincts : les coffres du Reliquaire
+                  // sont limites a 2/perso/jour et donnent le Chiffre ancien, pas les
+                  // perles. Les perles viennent des 5 vendeurs de coeur, 3 chacun.
+                  perDay = numChars * (cur.perCharPerDay ?? 2);
+                  note = t(cur.heartBundle ? "chars_note_hearts" : "chars_note_chests", { n: numChars, s: numChars > 1 ? "s" : "" });
                   color = "#fb923c";
                 } else {
                   perDay = cur.perAccountPerDay ?? 0;

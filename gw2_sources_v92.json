@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v91",
+    "version": "v92",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -962,7 +962,8 @@
     "changelog_v88": "Reliques fractales d'Ad Infinitum chiffrees. La liste complete des materiaux ne donne que l'assemblage final, les couts des quatre collections vivant dans une section repliee : le total est donc reconstitue en additionnant les achats vendeur deja cures dans les conseils par objet — 2 650 reliques et 140 immaculees — et en y ajoutant deux Dons d'ascension a 500 reliques, 25 immaculees et 20 po piece. Soit 3 650 et 190, contre 5 000 et 120 cote sources et 500 et 50 cote JSX : les deux etaient faux, le JSX d'un facteur sept. Le nombre de Dons d'ascension reste la seule inconnue et est ecrit comme telle : si les montees du Condensateur en collections I et II en exigent chacune un, les totaux montent a 4 650 et 240. Les valeurs retenues sont un plancher.",
     "changelog_v89": "L'inconnue laissee en v88 est levee. La section « Used in » de la page du Don d'ascension etablit quatre usages dans la chaine d'Ad Infinitum : montee du Condensateur prototype en Elevé, puis en Beta infusé, puis en Condensateur fractal infusé, et enfin la recette du legendaire. Le plancher de 3 650 reliques et 190 immaculees devient donc un total ferme de 4 650 et 240, plus 80 po. Le prix unitaire du Don est confirme par la meme page : 500 reliques, 25 immaculees et 20 po chez BUY-4373. La recette de la montee en Elevé est aussi precisee — Fiole d'essence des Brumes condensee, un Don, et 240 Pierres philosophales ou 40 Cristaux mystiques.",
     "changelog_v90": "Le Reliquaire fractal et le Gobelet du sorcier echangent 25 reliques contre un objet du jour, avec une limite quotidienne commune aux deux, et le Don d'ascension figure parfois dans la rotation — 25 reliques au lieu de 500. L'ecart est enorme mais l'occurrence est rare et aleatoire : la remise est consignee comme une opportunite a saisir, pas comme une ligne de budget. Les 4 800 reliques des quatre Dons restent donc chiffrees au prix vendeur, ce qui fait du total un plafond de ce cote la et non un plancher.",
-    "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement."
+    "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement.",
+    "changelog_v92": "Antoine signale une confusion dans l'onglet Personnages : la perle orrienne y etait cadencee a 2 par personnage et par jour. Ce chiffre est en realite la limite des coffres caches du Reliquaire, qui donnent le Chiffre ancien de la collection Siren's Landing Master et non des perles. Deux notions distinctes reduites a un seul nombre. La cadence reelle est refaite : 15 perles par personnage et par jour via les 5 vendeurs de coeur, qui vendent chacun un lot de 3 contre 2 688 karma soit 13 440 karma par personnage, auxquelles s'ajoutent sans plafond documente les noeuds d'huitres orriennes repartis sur la carte, les events, les metas et les recompenses de bonus de carte. Le noeud d'huitre pour l'instance personnelle est aussi consigne. Le taux affiche est donc multiplie par sept et demi, et un bloc not_a_source garde la trace de la confusion pour qu'elle ne soit pas refaite."
   },
   "meta_events": {
     "vb": {
@@ -2755,18 +2756,56 @@
       "farmable": true,
       "sources": [
         {
-          "type": "map_currency",
+          "type": "gathering",
           "map": {
             "fr": "Plage des sirènes",
             "en": "Siren's Landing"
           },
           "tip": {
-            "fr": "Nœuds, events et métas — Plage des sirènes (Monde vivant S3, épisode 6).",
-            "en": "Nodes, events and metas — Siren's Landing (Living World S3, episode 6)."
+            "fr": "Nœuds d'huîtres orriennes répartis sur toute la carte. Visibles sur la mini-carte tant qu'ils ne sont pas récoltés, mais absents de la carte plein écran. Aucun plafond quotidien documenté.",
+            "en": "Orrian Oyster nodes across the whole map. Visible on the mini-map until gathered, but absent from the full-screen map. No documented daily cap."
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Orrian_Oyster + wiki:Siren's_Landing"
+        },
+        {
+          "type": "heart_vendor",
+          "map": {
+            "fr": "Plage des sirènes",
+            "en": "Siren's Landing"
+          },
+          "tip": {
+            "fr": "Les 5 vendeurs de cœur vendent chacun un lot de 3 perles contre 2 688 karma, une fois par jour et par personnage — 15 perles pour 13 440 karma. Les cœurs sont répétables quotidiennement.",
+            "en": "Each of the 5 heart vendors sells a bundle of 3 pearls for 2,688 karma, once per day per character — 15 pearls for 13,440 karma. The hearts are repeatable daily."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Siren's_Landing + scoutwarband (cout en karma du lot)"
+        },
+        {
+          "type": "event_drop",
+          "map": {
+            "fr": "Plage des sirènes",
+            "en": "Siren's Landing"
+          },
+          "tip": {
+            "fr": "Events, métas, coffres de la carte et récompenses de bonus de carte (3).",
+            "en": "Events, metas, map chests and map bonus rewards (3)."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Orrian_Pearl#Acquisition"
+        },
+        {
+          "type": "home_instance",
+          "tip": {
+            "fr": "Nœud d'huître orrienne pour l'instance personnelle et la propriété : 10 000 magie déchaînée + 50 po chez le marchand de magie déchaînée. Rentabilité longue, à envisager seulement si tu vises d'autres légendaires de la saison 3.",
+            "en": "Orrian Oyster Node for home instance and homestead: 10,000 Unbound Magic + 50 g from the Unbound Magic merchant. Slow payback, worth it only if you target other Season 3 legendaries."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Orrian_Oyster_Node + scoutwarband"
         }
       ],
       "conversion_options": [
@@ -2788,7 +2827,14 @@
             "en": "God's Relic backpack"
           }
         }
-      ]
+      ],
+      "not_a_source": {
+        "fr": "Les coffres cachés du Reliquaire, limités à 2 par personnage et par jour et conditionnés par les 5 cœurs, ne sont PAS la cadence des perles : ils servent au Chiffre ancien de la collection Siren's Landing Master. Les deux plafonds avaient été confondus.",
+        "en": "The hidden Reliquary chests, capped at 2 per character per day and gated behind the 5 hearts, are NOT the pearl cadence: they feed the Ancient Cipher of the Siren's Landing Master collection. The two caps had been conflated.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Siren's_Landing + observation Antoine"
+      }
     },
     "fire_orchid_blossom": {
       "name": "Fire Orchid Blossom",
