@@ -227,7 +227,7 @@ const I18N = {
     chars_yield: "Estimated daily yield",
     chars_note_perchar: "{n} char{s} × ~{per}/char",
     chars_note_chests: "{n} char{s} × 2 chests (5 hearts/char required)",
-    chars_note_hearts: "{n} char{s} × 5 heart vendors × 3 pearls — oyster nodes on top",
+    chars_note_hearts: "{n} char{s} × (~20 oyster nodes + 3 daily named foes) — karma vendors on top",
     chars_note_cap: "account cap — alts useless",
     chars_siren_title: "⚠ Siren's Landing — note",
     chars_altswap_pre: "Alt-swap possible but costly: each character must complete the ",
@@ -450,7 +450,7 @@ const I18N = {
     chars_yield: "Rendement quotidien estimé",
     chars_note_perchar: "{n} perso{s} × ~{per}/perso",
     chars_note_chests: "{n} perso{s} × 2 coffres (5 cœurs/perso requis)",
-    chars_note_hearts: "{n} perso{s} × 5 vendeurs de cœur × 3 perles — nœuds d'huîtres en plus",
+    chars_note_hearts: "{n} perso{s} × (~20 nœuds d'huîtres + 3 nommés quotidiens) — vendeurs karma en plus",
     chars_note_cap: "plafond compte — persos secondaires inutiles",
     chars_siren_title: "⚠ Siren's Landing — spécificité",
     chars_altswap_pre: "Rotation de persos possible mais coûteuse : chaque personnage doit compléter les ",
@@ -701,7 +701,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v92",
+    "version": "v93",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1664,7 +1664,8 @@ const SOURCES_DB = {
     "changelog_v89": "L'inconnue laissee en v88 est levee. La section « Used in » de la page du Don d'ascension etablit quatre usages dans la chaine d'Ad Infinitum : montee du Condensateur prototype en Elevé, puis en Beta infusé, puis en Condensateur fractal infusé, et enfin la recette du legendaire. Le plancher de 3 650 reliques et 190 immaculees devient donc un total ferme de 4 650 et 240, plus 80 po. Le prix unitaire du Don est confirme par la meme page : 500 reliques, 25 immaculees et 20 po chez BUY-4373. La recette de la montee en Elevé est aussi precisee — Fiole d'essence des Brumes condensee, un Don, et 240 Pierres philosophales ou 40 Cristaux mystiques.",
     "changelog_v90": "Le Reliquaire fractal et le Gobelet du sorcier echangent 25 reliques contre un objet du jour, avec une limite quotidienne commune aux deux, et le Don d'ascension figure parfois dans la rotation — 25 reliques au lieu de 500. L'ecart est enorme mais l'occurrence est rare et aleatoire : la remise est consignee comme une opportunite a saisir, pas comme une ligne de budget. Les 4 800 reliques des quatre Dons restent donc chiffrees au prix vendeur, ce qui fait du total un plafond de ce cote la et non un plancher.",
     "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement.",
-    "changelog_v92": "Antoine signale une confusion dans l'onglet Personnages : la perle orrienne y etait cadencee a 2 par personnage et par jour. Ce chiffre est en realite la limite des coffres caches du Reliquaire, qui donnent le Chiffre ancien de la collection Siren's Landing Master et non des perles. Deux notions distinctes reduites a un seul nombre. La cadence reelle est refaite : 15 perles par personnage et par jour via les 5 vendeurs de coeur, qui vendent chacun un lot de 3 contre 2 688 karma soit 13 440 karma par personnage, auxquelles s'ajoutent sans plafond documente les noeuds d'huitres orriennes repartis sur la carte, les events, les metas et les recompenses de bonus de carte. Le noeud d'huitre pour l'instance personnelle est aussi consigne. Le taux affiche est donc multiplie par sept et demi, et un bloc not_a_source garde la trace de la confusion pour qu'elle ne soit pas refaite."
+    "changelog_v92": "Antoine signale une confusion dans l'onglet Personnages : la perle orrienne y etait cadencee a 2 par personnage et par jour. Ce chiffre est en realite la limite des coffres caches du Reliquaire, qui donnent le Chiffre ancien de la collection Siren's Landing Master et non des perles. Deux notions distinctes reduites a un seul nombre. La cadence reelle est refaite : 15 perles par personnage et par jour via les 5 vendeurs de coeur, qui vendent chacun un lot de 3 contre 2 688 karma soit 13 440 karma par personnage, auxquelles s'ajoutent sans plafond documente les noeuds d'huitres orriennes repartis sur la carte, les events, les metas et les recompenses de bonus de carte. Le noeud d'huitre pour l'instance personnelle est aussi consigne. Le taux affiche est donc multiplie par sept et demi, et un bloc not_a_source garde la trace de la confusion pour qu'elle ne soit pas refaite.",
+    "changelog_v93": "Cadence des perles orriennes refaite a partir du releve par zone. Chaque noeud d'huitre donne une perle GARANTIE, et 23 a 25 emplacements fixes sont recenses — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflee 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1 a 3, Profondeurs etouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent reellement sur une instance. S'y ajoutent trois ennemis nommes quotidiens qui rendent 7 perles a eux trois, et les coffres engloutis, distincts des coffres du Reliquaire, qui donnent 1 a 2 perles au hasard sans taux documente. Le circuit gratuit rapporte donc environ 27 perles par personnage et par jour, contre les 2 annoncees avant-hier et les 15 de la v92 qui ne comptaient que la voie karma. Les 15 perles des vendeurs de coeur restent disponibles en plus, a 13 440 karma. Deux precisions de terrain : une faucille d'orichalque est necessaire sous peine de voir la dragonite remplacee par une motte de boue, et ces noeuds ne produisent aucune recolte bonus, ce qui rend le Glyphe d'abondance inutile ici."
   },
   "meta_events": {
     "vb": {
@@ -3463,12 +3464,48 @@ const SOURCES_DB = {
             "en": "Siren's Landing"
           },
           "tip": {
-            "fr": "Nœuds d'huîtres orriennes répartis sur toute la carte. Visibles sur la mini-carte tant qu'ils ne sont pas récoltés, mais absents de la carte plein écran. Aucun plafond quotidien documenté.",
-            "en": "Orrian Oyster nodes across the whole map. Visible on the mini-map until gathered, but absent from the full-screen map. No documented daily cap."
+            "fr": "Nœuds d'huîtres orriennes : 1 perle GARANTIE par nœud, plus 1-3 minerai de dragonite et 4-10 magie déchaînée. 23 à 25 emplacements fixes recensés — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflée 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1-3, Profondeurs étouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent réellement sur une instance donnée.",
+            "en": "Orrian Oyster nodes: 1 GUARANTEED pearl per node, plus 1-3 Dragonite Ore and 4-10 Unbound Magic. 23 to 25 fixed spawn points recorded — Merciless Shore 6, Abaddon's Reliquary 5, Pilaster Rock 3, Bloated Beach 3, Lyssa's Reliquary 3, Balthazar's Reliquary 1-3, Choking Depths 1, Grenth's Reliquary 1 — of which about twenty actually spawn in a given instance."
+          },
+          "requires": {
+            "fr": "Faucille d'orichalque : avec un outil inférieur, la perle tombe quand même mais la dragonite devient une Motte de boue.",
+            "en": "Orichalcum sickle: a lesser tool still yields the pearl, but Dragonite Ore becomes a Wad of Mud."
+          },
+          "note": {
+            "fr": "Ces nœuds ne produisent pas de récolte bonus : le Glyphe d'abondance n'y sert à rien. La Nacre orrienne, objet de collection, ne tombe que si Siren's Landing Master est déjà déverrouillée.",
+            "en": "These nodes produce no bonus gathering: the Glyph of Bounty is useless here. Orrian Nacre, a collection item, only drops once Siren's Landing Master is unlocked."
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Orrian_Oyster + wiki:Siren's_Landing"
+          "ref": "wiki:Orrian_Oyster + releve communautaire par zone (oathoftheexiled, 2017) recoupe par l'observation d'Antoine"
+        },
+        {
+          "type": "named_mob",
+          "map": {
+            "fr": "Plage des sirènes",
+            "en": "Siren's Landing"
+          },
+          "tip": {
+            "fr": "Trois ennemis nommés, une fois par jour et par personnage : Wyverne libérée au Reliquaire de Dwayna (3 perles), Illusion horrible au Reliquaire de Lyssa (2), Larve gargantuesque à la Rive impitoyable (2). Soit 7 perles pour un détour court.",
+            "en": "Three named foes, once per day per character: Unchained Wyvern at Dwayna's Reliquary (3 pearls), Horrid Illusion at Lyssa's Reliquary (2), Gargantuan Grub at Merciless Shore (2). 7 pearls for a short detour."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "releve communautaire oathoftheexiled — non recoupe au wiki"
+        },
+        {
+          "type": "chest",
+          "map": {
+            "fr": "Plage des sirènes",
+            "en": "Siren's Landing"
+          },
+          "tip": {
+            "fr": "Coffres engloutis (Waterlogged Chests), dispersés sur la carte, une fois par jour et par personnage : équipement fin ou majeur, un peu de magie déchaînée et de fragments éthérés, et une CHANCE de 1-2 perles. Probabilité non documentée — appoint, pas cadence.",
+            "en": "Waterlogged Chests, scattered across the map, once per day per character: fine or masterwork gear, some Unbound Magic and Empyreal Fragments, and a CHANCE of 1-2 pearls. Probability undocumented — a bonus, not a cadence."
+          },
+          "verified": false,
+          "checked": "2026-08-13",
+          "ref": "releve communautaire oathoftheexiled — ni le taux ni le nombre de coffres ne sont documentes"
         },
         {
           "type": "heart_vendor",
@@ -3530,8 +3567,8 @@ const SOURCES_DB = {
         }
       ],
       "not_a_source": {
-        "fr": "Les coffres cachés du Reliquaire, limités à 2 par personnage et par jour et conditionnés par les 5 cœurs, ne sont PAS la cadence des perles : ils servent au Chiffre ancien de la collection Siren's Landing Master. Les deux plafonds avaient été confondus.",
-        "en": "The hidden Reliquary chests, capped at 2 per character per day and gated behind the 5 hearts, are NOT the pearl cadence: they feed the Ancient Cipher of the Siren's Landing Master collection. The two caps had been conflated.",
+        "fr": "Les coffres cachés du Reliquaire, limités à 2 par personnage et par jour et conditionnés par les 5 cœurs, ne sont PAS la cadence des perles : ils servent au Chiffre ancien de la collection Siren's Landing Master. Les deux plafonds avaient été confondus. Attention, trois types de coffres coexistent sur cette carte : les coffres cachés du Reliquaire (2/perso/jour, Chiffre ancien), les coffres engloutis (perles au hasard) et les coffres de fin d'event. Seuls les deuxièmes donnent des perles régulièrement.",
+        "en": "The hidden Reliquary chests, capped at 2 per character per day and gated behind the 5 hearts, are NOT the pearl cadence: they feed the Ancient Cipher of the Siren's Landing Master collection. The two caps had been conflated. Note that three chest types coexist on this map: hidden Reliquary chests (2/char/day, Ancient Cipher), Waterlogged Chests (random pearls) and event end chests. Only the second yields pearls with any regularity.",
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Siren's_Landing + observation Antoine"
@@ -17186,8 +17223,8 @@ const LEGENDARIES = {
         farmType: "per_account", perAccountPerDay: 40, mapNote: "Draconis Mons" },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." },
-        farmType: "per_char_hearts", perCharPerDay: 15, heartBundle: true, mapNote: "Siren's Landing",
-        heartNote: { fr: "Les 5 vendeurs de cœur vendent chacun un lot de 3 perles contre 2 688 karma, une fois par jour et par personnage — soit 15 perles pour 13 440 karma. Les nœuds d'huîtres orriennes, les events et les récompenses de bonus de carte s'y ajoutent sans plafond connu et ne sont pas comptés ici.", en: "Each of the 5 heart vendors sells a bundle of 3 pearls for 2,688 karma, once per day per character — 15 pearls for 13,440 karma. Orrian Oyster nodes, events and map bonus rewards come on top with no known cap and are not counted here." } },
+        farmType: "per_char_hearts", perCharPerDay: 27, heartBundle: true, mapNote: "Siren's Landing",
+        heartNote: { fr: "Circuit gratuit, par personnage et par jour : ~20 nœuds d'huîtres qui apparaissent sur les 23-25 emplacements fixes, 1 perle garantie chacun, plus 7 perles sur trois nommés quotidiens (Wyverne libérée 3, Illusion horrible 2, Larve gargantuesque 2). Les coffres engloutis ajoutent 1-2 perles au hasard. Faucille d'orichalque conseillée. En option payante : les 5 vendeurs de cœur, 3 perles chacun pour 13 440 karma au total.", en: "Free route, per character per day: ~20 oyster nodes spawning across the 23-25 fixed spots, 1 guaranteed pearl each, plus 7 pearls from three daily named foes (Unchained Wyvern 3, Horrid Illusion 2, Gargantuan Grub 2). Waterlogged Chests add a random 1-2. Orichalcum sickle recommended. Paid option: the 5 heart vendors, 3 pearls each for 13,440 karma total." } },
     ],
     raidTabLabel: { fr: "⛏ Chaîne du Henge", en: "⛏ Henge chain" },
     requirements: {
