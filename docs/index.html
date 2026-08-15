@@ -699,7 +699,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v86",
+    "version": "v87",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1656,7 +1656,8 @@ const SOURCES_DB = {
     "changelog_v83": "Deux identifiants faux corriges, tous deux invisibles jusqu'ici parce qu'un ID errone ne provoque aucune erreur : il renvoie simplement un stock nul. Mistborn Mote passe de 91246 a 90783 et Petrified Wood de 79294 a 79469, les deux valeurs fautives ne correspondant a aucun objet du stockage materiaux. L'audit d'IDs de la v60 avait rattrape une cascade decalee sans aller jusqu'a ces deux-la. Corrige aussi la carte du rubis de sang, annoncee en Baie des braises alors que c'est la monnaie du Marais de la pierre de sang, premier episode de la saison 3 — la Baie des braises est le deuxieme et produit le bois petrifie. Le controle ajoute a l'audit a immediatement trouve 16 identifiants errones de plus, tous corriges depuis le referentiel : trois essences de faille declarees avec des numeros de devise au lieu d'identifiants d'objet, les deux reactifs catalytiques, la pierre runique mystique, le tesson de gloire, la boule d'energie sombre, deux consommables de Coeur de Maguuma, le croc, le flacon d'obsidienne titanesque et deux ingredients de recette. Aucun ne provoquait d'erreur : chacun affichait simplement un stock nul.",
     "changelog_v84": "Le balayage global a signale huit metas sans liste d'etapes. Verification faite, aucun n'est un trou de donnees : ce sont des compteurs d'actions, de kills ou d'objets possedes — Incursive Investigation compte des actions repetees, Helping Hylek des kills, Vision II des Insights visitees, les collecteurs de runes et de cachets des objets detenus. Aucun ne denombre d'autres succes, il n'y a donc rien a curer. Ils sont declares dans un nouveau bloc meta_no_steps avec leur raison, et le detecteur les compte a part au lieu de les presenter comme des defauts.",
     "changelog_v85": "Les surcouts conditionnels quittent le JSX pour rejoindre les sources, dans un champ qty_extras porte par le composant. Ils y etaient codes en dur, donc invisibles du grand total et de l'audit : le rubis de sang affichait 250 dans l'onglet Aurora, qui sait decompter l'etape faite, et 300 dans le grand total, qui lisait un nombre fige. Un meme fait ecrit a deux endroits, dont un incapable de se mettre a jour. Les deux vues calculent desormais base plus surcouts en attente a partir de la meme declaration. Quatre des six monnaies LW3 n'avaient aucune quantite et etaient donc absentes du grand total : eclats de jade, orchidee ignee, bois petrifie et perles orriennes sont declares a 250. Les baies d'hiver reviennent de 300 a 250, aucun objet de Bitterfrost ne s'achetant en baies — les Coffres glaces s'ouvrent a la Flamme de Koda. Le surcout reel est ailleurs et n'est pas budgetable : l'Elixir de degel consomme 12 baies par preparation, a refaire chaque jour tant que le Suif cristallise n'est pas tombe, ce que dit une note. Enfin la correspondance carte-monnaie etait fausse pour quatre des six : le bois petrifie annonçait le Lac Doric, les eclats de jade les Confins de Givramer, l'orchidee et les perles se trompaient d'episode. Les six sont refaites, verifiees episode par episode. Le controle qty ajoute a l'audit a immediatement trouve quatre divergences non liees a ce chantier : memoires de bataille pour Conflux et Warbringer, reliques fractales et reliques immaculees pour Ad Infinitum. Aucune n'est tranchee, faute d'avoir consulte le wiki : elles sont declarees dans qty_conflict, ce qui les fait passer en avertissement plutot qu'en blocage, mais les rend visibles a chaque audit au lieu de dormir.",
-    "changelog_v86": "Arbitrage des ecarts qty. Conflux tranche a 1500 memoires de bataille, chiffre reconstitue etape par etape depuis le guide GuildJen mis a jour en mai 2026 : 500 pour l'achat de la War Commendation, deux fois 250 pour les composants supplementaires du meme vendeur, 250 pour l'objet du Don des Brumes et 250 pour le Don de devotion guerriere. Le detail est consigne dans un bloc breakdown pour que le chiffre soit reverifiable sans refaire la recherche. Une question reste ouverte et est notee comme telle : le Pieu legendaire, prerequis du Don de conquete, passerait par une Essence de carnage a 500 memoires, ce qui porterait le total a 2000 — source de 2017 non recoupee, donc non integree. Les trois autres ecarts restent ouverts, avec l'etat exact de la recherche et la raison du blocage : la section Full material list des pages wiki est rendue cote client et n'est pas extractible."
+    "changelog_v86": "Arbitrage des ecarts qty. Conflux tranche a 1500 memoires de bataille, chiffre reconstitue etape par etape depuis le guide GuildJen mis a jour en mai 2026 : 500 pour l'achat de la War Commendation, deux fois 250 pour les composants supplementaires du meme vendeur, 250 pour l'objet du Don des Brumes et 250 pour le Don de devotion guerriere. Le detail est consigne dans un bloc breakdown pour que le chiffre soit reverifiable sans refaire la recherche. Une question reste ouverte et est notee comme telle : le Pieu legendaire, prerequis du Don de conquete, passerait par une Essence de carnage a 500 memoires, ce qui porterait le total a 2000 — source de 2017 non recoupee, donc non integree. Les trois autres ecarts restent ouverts, avec l'etat exact de la recherche et la raison du blocage : la section Full material list des pages wiki est rendue cote client et n'est pas extractible.",
+    "changelog_v87": "La capture de la liste complete des materiaux de Warbringer tranche les deux ecarts sur les memoires de bataille, et corrige au passage le chiffre pose en v86. Warbringer demande 750 memoires : 500 pour l'Essence de carnage du Don de guerre et 250 pour le Don de conquete — le JSX avait raison, les sources annoncaient 500. Conflux demande 1750 et non 1500 : j'avais oublie les 250 du Don de conquete, commun aux deux legendaires. Les deux totaux sont confirmes par un controle croise sur les tickets, qui retombe exactement sur les valeurs publiees — 2 800 pour Warbringer, 1 850 pour Conflux. La question laissee ouverte en v86 est close et etait mal posee : le Pieu legendaire est un drop aleatoire en McM, pas un achat, et les 500 memoires de carnage etaient deja comptees."
   },
   "meta_events": {
     "vb": {
@@ -3732,8 +3733,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "triumphant_hero__per_piece": 200,
-        "conflux": 1500,
-        "warbringer": 500
+        "conflux": 1750,
+        "warbringer": 750
       },
       "farmable": true,
       "sources": [
@@ -3758,28 +3759,33 @@ const SOURCES_DB = {
         "fr": "achat direct (pas d'alternative gratuite)",
         "en": "direct purchase (no free alternative)"
       },
-      "qty_conflict": {
-        "warbringer": {
-          "jsx": 750,
-          "note": "non tranche. Les composants de Warbringer passent par quatre Essences mystiques dont une seule, l'Essence de carnage, coute 500 memoires selon une source de 2017 ; les autres se paient en tickets, badges ou temoignages. Le total dependra aussi du Don de conquete. Il faut la section « Full material list » de la page wiki, rendue cote client donc non extractible.",
-          "checked": "2026-08-13",
-          "verified": false,
-          "ref": "ecart non tranche — aucune source consultee, a arbitrer au wiki"
-        }
-      },
       "breakdown": {
-        "conflux": {
-          "total": 1500,
+        "warbringer": {
+          "total": 750,
           "lines": [
-            "500 — achat War Commendation chez Commandant légendaire Rasoir de guerre",
-            "2 × 250 — les deux composants supplémentaires du même vendeur (750 tickets chacun)",
-            "250 — objet acheté chez Miyani pour le Don des Brumes",
-            "250 — Don de dévotion guerrière"
+            "500 — Essence de carnage, dans le Don de guerre (Mystic Essence of Carnage)",
+            "250 — Don de conquête"
           ],
-          "open_question": "Le Pieu légendaire, prérequis du Don de conquête, passe par une Essence de carnage qui coûterait 500 mémoires supplémentaires. Source de 2017 non recoupée : si elle est exacte, le total réel est 2000. Non intégré tant que ce n'est pas confirmé.",
+          "cross_check": "Contrôle croisé des tickets : 350 + 525 + 700 + 875 pour les quatre Ailes de guerre, plus 350 pour l'Essence d'annihilation = 2 800, exactement le total annoncé par la note du wiki. La lecture du tableau est donc bonne.",
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "guildjen:legendary-ring-conflux-guide (maj 30/05/2026), etape par etape"
+          "ref": "wiki:Warbringer#Full_material_list (capture Antoine, 13/08/2026)"
+        },
+        "conflux": {
+          "total": 1750,
+          "lines": [
+            "500 — Essence de carnage, dans le Don de guerre",
+            "2 × 250 — les deux composants supplémentaires chez Rasoir de guerre (750 tickets chacun)",
+            "250 — objet acheté chez Miyani pour le Don des Brumes",
+            "250 — Don de dévotion guerrière",
+            "250 — Don de conquête"
+          ],
+          "cross_check": "Contrôle croisé des tickets : 350 pour l'Essence d'annihilation plus 2 × 750 pour les composants = 1 850, exactement le total annoncé par le guide. La structure est donc bien celle-là.",
+          "note": "Le Don de conquête est commun aux deux légendaires : le Pieu légendaire qu'il contient est un drop aléatoire en McM, pas un objet acheté. L'hypothèse d'une Essence de carnage cachée derrière lui, retenue en v86, était fausse — les 500 mémoires de carnage étaient déjà comptées dans le Don de guerre.",
+          "excluded": "La Bande des Brumes achetée en McM coûterait 250 mémoires de plus, mais c'est la plus chère des trois routes du précurseur : la voie fractale (100 reliques immaculées) n'en coûte aucune.",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Warbringer#Full_material_list + guildjen:legendary-ring-conflux-guide, recoupes"
         }
       }
     },
@@ -17299,7 +17305,7 @@ const LEGENDARIES = {
     resetType: "weekly",
     currencies: [
       { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 },
-      { id: "memory", name: "Memory of Battle", required: 1500, icon: "MB", apiId: 71581 },
+      { id: "memory", name: "Memory of Battle", required: 1750, icon: "MB", apiId: 71581 },
       { id: "jade",     name: "Testimony of Jade Heroics",     required: 250, icon: "JH", apiId: 65 },
       { id: "castoran", name: "Testimony of Castoran Heroics", required: 250, icon: "CH", apiId: 82 },
       { id: "badges", name: "Badge of Honor", required: 750, icon: "BH", apiId: 15 },

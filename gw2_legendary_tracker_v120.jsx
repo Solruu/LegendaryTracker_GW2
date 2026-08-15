@@ -1378,7 +1378,7 @@ const LEGENDARIES = {
     resetType: "weekly",
     currencies: [
       { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 },
-      { id: "memory", name: "Memory of Battle", required: 1500, icon: "MB", apiId: 71581 },
+      { id: "memory", name: "Memory of Battle", required: 1750, icon: "MB", apiId: 71581 },
       { id: "jade",     name: "Testimony of Jade Heroics",     required: 250, icon: "JH", apiId: 65 },
       { id: "castoran", name: "Testimony of Castoran Heroics", required: 250, icon: "CH", apiId: 82 },
       { id: "badges", name: "Badge of Honor", required: 750, icon: "BH", apiId: 15 },
