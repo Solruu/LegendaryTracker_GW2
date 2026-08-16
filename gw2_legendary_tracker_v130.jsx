@@ -2544,7 +2544,10 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   // bornant la profondeur pour qu'une reference circulaire ne boucle pas.
   // L'etat reste LOCAL : l'ecrire sur les objets de SOURCES_DB survivrait d'un
   // appel a l'autre et le second calcul n'ajouterait plus rien.
-  for (let pass = 0; pass < 4; pass++) {
+  // 6 passes : la chaine Vision fait 4 niveaux (encapsulateur, cristal,
+  // raffinement, materiau de base) et il faut une passe de plus pour constater
+  // la stabilite.
+  for (let pass = 0; pass < 6; pass++) {
     const add = {};
     for (const [compId, comp] of Object.entries(cc)) {
       for (const [key, val] of Object.entries(comp?.qty ?? {})) {

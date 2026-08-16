@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v94",
+    "version": "v95",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -965,7 +965,8 @@
     "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement.",
     "changelog_v92": "Antoine signale une confusion dans l'onglet Personnages : la perle orrienne y etait cadencee a 2 par personnage et par jour. Ce chiffre est en realite la limite des coffres caches du Reliquaire, qui donnent le Chiffre ancien de la collection Siren's Landing Master et non des perles. Deux notions distinctes reduites a un seul nombre. La cadence reelle est refaite : 15 perles par personnage et par jour via les 5 vendeurs de coeur, qui vendent chacun un lot de 3 contre 2 688 karma soit 13 440 karma par personnage, auxquelles s'ajoutent sans plafond documente les noeuds d'huitres orriennes repartis sur la carte, les events, les metas et les recompenses de bonus de carte. Le noeud d'huitre pour l'instance personnelle est aussi consigne. Le taux affiche est donc multiplie par sept et demi, et un bloc not_a_source garde la trace de la confusion pour qu'elle ne soit pas refaite.",
     "changelog_v93": "Cadence des perles orriennes refaite a partir du releve par zone. Chaque noeud d'huitre donne une perle GARANTIE, et 23 a 25 emplacements fixes sont recenses — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflee 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1 a 3, Profondeurs etouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent reellement sur une instance. S'y ajoutent trois ennemis nommes quotidiens qui rendent 7 perles a eux trois, et les coffres engloutis, distincts des coffres du Reliquaire, qui donnent 1 a 2 perles au hasard sans taux documente. Le circuit gratuit rapporte donc environ 27 perles par personnage et par jour, contre les 2 annoncees avant-hier et les 15 de la v92 qui ne comptaient que la voie karma. Les 15 perles des vendeurs de coeur restent disponibles en plus, a 13 440 karma. Deux precisions de terrain : une faucille d'orichalque est necessaire sous peine de voir la dragonite remplacee par une motte de boue, et ces noeuds ne produisent aucune recolte bonus, ce qui rend le Glyphe d'abondance inutile ici.",
-    "changelog_v94": "Le cout des Encapsulateurs d'essence memorielle n'etait compte nulle part. Les composants existaient bien, mais leur quantite etait indexee sur des cles qui ne sont pas des identifiants de legendaire — memory_essence_encapsulator et vision_i_awakening — donc invisibles du grand total, qui ne lit que qty[legendaire]. L'encapsulateur passe sur la cle vision avec 6 exemplaires, et le grand total sait desormais developper un intermediaire : tout composant dont la quantite est indexee sur un autre composant est multiplie par la quantite de celui-ci. Cout unitaire corrige et complete : 50 ectoplasmes, 10 filigranes d'orichalque, 1 cristal de vision mineur et 3 lingots d'electrum Xunlai — ce dernier etait a 1 au lieu de 3, et les ectoplasmes n'etaient pas declares du tout. Pour six exemplaires cela fait 300 ectoplasmes, 60 filigranes, 6 cristaux et 18 lingots. Documente aussi ce que le tracker ne disait pas : l'objet est a usage unique et consomme au kill, les six suffisent pour toutes les cartes puisque c'est le meme objet chez tous les vendeurs, retuer un boss deja valide n'en consomme pas un second, et un exemplaire inutilise se recycle en rendant l'integralite de ses composants."
+    "changelog_v94": "Le cout des Encapsulateurs d'essence memorielle n'etait compte nulle part. Les composants existaient bien, mais leur quantite etait indexee sur des cles qui ne sont pas des identifiants de legendaire — memory_essence_encapsulator et vision_i_awakening — donc invisibles du grand total, qui ne lit que qty[legendaire]. L'encapsulateur passe sur la cle vision avec 6 exemplaires, et le grand total sait desormais developper un intermediaire : tout composant dont la quantite est indexee sur un autre composant est multiplie par la quantite de celui-ci. Cout unitaire corrige et complete : 50 ectoplasmes, 10 filigranes d'orichalque, 1 cristal de vision mineur et 3 lingots d'electrum Xunlai — ce dernier etait a 1 au lieu de 3, et les ectoplasmes n'etaient pas declares du tout. Pour six exemplaires cela fait 300 ectoplasmes, 60 filigranes, 6 cristaux et 18 lingots. Documente aussi ce que le tracker ne disait pas : l'objet est a usage unique et consomme au kill, les six suffisent pour toutes les cartes puisque c'est le meme objet chez tous les vendeurs, retuer un boss deja valide n'en consomme pas un second, et un exemplaire inutilise se recycle en rendant l'integralite de ses composants.",
+    "changelog_v95": "Le cristal de vision mineur etait une feuille : ses propres ingredients n'existaient meme pas comme composants, donc le poste le plus lourd de la chaine Vision n'etait chiffre nulle part. Sept composants ajoutes avec leurs identifiants verifies au referentiel — pierre de l'augure, lingot de dragonite, etoile etheree, brique de pierre de sang, et les trois materiaux de base sous elles. La recette est 2 lingots, 2 etoiles, 2 briques et 1 pierre, et chaque raffinement consomme 100 unites de son materiau de base. Le developpement en cascade ajoute en v130 propage tout seul : six encapsulateurs demandent donc six cristaux, soit douze de chaque raffinement et 1 200 unites de chacun des trois materiaux de base. Seul le prix de la pierre de l'augure en eclats spirituels reste non recoupe et est marque comme tel."
   },
   "meta_events": {
     "vb": {
@@ -4385,7 +4386,14 @@
       ],
       "note_obsidian": "1/pièce — coût d'achat de l'Arcanum of Astral X chez Lyhr.",
       "kind": "craftable",
-      "best": "craft_500"
+      "best": "craft_500",
+      "recipe": {
+        "fr": "2 lingots de dragonite + 2 étoiles éthérées + 2 briques de pierre de sang + 1 pierre de l'augure. Armurier, travailleur du cuir ou tailleur niveau 500, appris d'office. Chaque raffinement consomme 100 unités de son matériau de base.",
+        "en": "2 Dragonite Ingots + 2 Empyreal Stars + 2 Bloodstone Bricks + 1 Augur's Stone. Armorsmith, Leatherworker or Tailor 500, auto-learned. Each refinement consumes 100 units of its base material.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      }
     },
     "pvp_league_ticket": {
       "name": "PvP League Ticket",
@@ -8370,6 +8378,94 @@
         }
       ],
       "qty": {}
+    },
+    "augurs_stone": {
+      "name": "Augur's Stone",
+      "apiId": 46752,
+      "qty": {
+        "lesser_vision_crystal": 1
+      },
+      "kind": "purchase",
+      "farmable": true,
+      "verified": false,
+      "checked": "2026-08-13",
+      "ref": "prix en eclats spirituels non recoupe",
+      "note": {
+        "fr": "Achetée chez Miyani et les préposés à la Forge mystique, contre des éclats spirituels. Prix exact non vérifié.",
+        "en": "Bought from Miyani and Mystic Forge attendants for Spirit Shards. Exact price unverified."
+      }
+    },
+    "dragonite_ingot": {
+      "name": "Dragonite Ingot",
+      "apiId": 46732,
+      "qty": {
+        "lesser_vision_crystal": 2
+      },
+      "kind": "refined",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+    },
+    "empyreal_star": {
+      "name": "Empyreal Star",
+      "apiId": 46734,
+      "qty": {
+        "lesser_vision_crystal": 2
+      },
+      "kind": "refined",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+    },
+    "bloodstone_brick": {
+      "name": "Bloodstone Brick",
+      "apiId": 46730,
+      "qty": {
+        "lesser_vision_crystal": 2
+      },
+      "kind": "refined",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+    },
+    "dragonite_ore": {
+      "name": "Dragonite Ore",
+      "apiId": 46733,
+      "qty": {
+        "dragonite_ingot": 100
+      },
+      "kind": "base",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+    },
+    "empyreal_fragment": {
+      "name": "Empyreal Fragment",
+      "apiId": 46735,
+      "qty": {
+        "empyreal_star": 100
+      },
+      "kind": "base",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+    },
+    "bloodstone_dust": {
+      "name": "Pile of Bloodstone Dust",
+      "apiId": 46731,
+      "qty": {
+        "bloodstone_brick": 100
+      },
+      "kind": "base",
+      "farmable": true,
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
     }
   },
   "enchaînements_recommandés": {
