@@ -3944,7 +3944,12 @@ export default function GW2LegendaryTracker() {
       for (const [k3, id3] of Object.entries(kmap)) out[k3] = norm(byId[id3]);
       colls[grp] = out;
     }
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok };
+    // Meme inventaire agrege que celui renvoye par Flask, pour que les deux
+    // chemins alimentent le grand total a l'identique.
+    const stocksAll = {};
+    for (const [k4, v4] of Object.entries(walletD)) stocksAll[String(k4)] = (stocksAll[String(k4)] ?? 0) + v4;
+    for (const [k4, v4] of Object.entries(matD)) stocksAll[String(k4)] = (stocksAll[String(k4)] ?? 0) + v4;
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -3989,6 +3994,23 @@ export default function GW2LegendaryTracker() {
         ].map(c => c.id);
         const notSent = declared.filter(cid => !(cid in vals));
         await storeSet(getCurrencyKey(legId), { ...cur, ...vals, __notSent: notSent, __syncedAt: Date.now() });
+      }
+      // L'inventaire agrege renvoye par la meme requete alimente directement le
+      // grand total. Il n'existe plus de synchro separee : le bouton API remplit
+      // les deux, comme il aurait toujours du.
+      if (data.stocks && Object.keys(data.stocks).length > 0) {
+        const merged = {
+          ...data.stocks,
+          _synced_at: Math.floor(Date.now() / 1000),
+          _sync_source: data._direct ? "api" : "flask",
+          _errors: Array.isArray(data.errors) ? data.errors : [],
+          _found: Object.keys(data.stocks).length,
+          _asked: Object.keys(data.stocks).length,
+          _bags_ok: data._bags_ok !== false,
+        };
+        setGtStocks(merged);
+        try { localStorage.setItem("gw2_gt_stocks", JSON.stringify(merged)); } catch (_) {}
+        setGtStockStatus("ok");
       }
       if (data.achievements) {
         try { localStorage.setItem("gw2_api_achievements", JSON.stringify(data.achievements)); } catch (_) {}
