@@ -703,7 +703,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v98",
+    "version": "v99",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1672,7 +1672,8 @@ const SOURCES_DB = {
     "changelog_v95": "Le cristal de vision mineur etait une feuille : ses propres ingredients n'existaient meme pas comme composants, donc le poste le plus lourd de la chaine Vision n'etait chiffre nulle part. Sept composants ajoutes avec leurs identifiants verifies au referentiel — pierre de l'augure, lingot de dragonite, etoile etheree, brique de pierre de sang, et les trois materiaux de base sous elles. La recette est 2 lingots, 2 etoiles, 2 briques et 1 pierre, et chaque raffinement consomme 100 unites de son materiau de base. Le developpement en cascade ajoute en v130 propage tout seul : six encapsulateurs demandent donc six cristaux, soit douze de chaque raffinement et 1 200 unites de chacun des trois materiaux de base. Seul le prix de la pierre de l'augure en eclats spirituels reste non recoupe et est marque comme tel.",
     "changelog_v96": "Prix de la pierre de l'augure tranche par observation en jeu d'Antoine : 20 eclats spirituels piece, la ou la v95 laissait le champ non verifie. L'eclat spirituel devient un composant a part entiere, devise de portefeuille 23, donc synchronisable comme les autres. Il est rattache a ses deux consommateurs connus : 20 par pierre de l'augure et 200 par eclat de pierre de sang. La cascade en tire les totaux d'elle-meme — six pierres pour les six cristaux de Vision font 120 eclats spirituels, auxquels s'ajoutent 400 pour les deux eclats de pierre de sang d'Aurora.",
     "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn.",
-    "changelog_v98": "Lot 2, premiere collection : les 14 items de la Baie des braises passent au detail d'execution. Trois apports notables. Le Calice des larmes impose trois conditions strictes que rien n'indiquait — collection deverrouillee, tous les points de controle declenches, et interdiction de se garer au coffre, de se teleporter a un ami ou de quitter l'instance, les portails restant autorises. Vaincre le Construct de jade pyroclastique fait monter la plateforme qui ouvre le sanctuaire de maitrise des Marches du Calife, necessaire a l'Electrum pyroclastique d'Aurora II : les deux objectifs s'enchainent. Et la Reine paresseuse n'apparait pas seule, elle conclut une chaine d'evenements partant des Piliers du balbuzard. Le Caillou brillant reste en verified false : les Caches skritt semblent demander un achat prealable chez un marchand skritt, sans que j'aie pu le confirmer."
+    "changelog_v98": "Lot 2, premiere collection : les 14 items de la Baie des braises passent au detail d'execution. Trois apports notables. Le Calice des larmes impose trois conditions strictes que rien n'indiquait — collection deverrouillee, tous les points de controle declenches, et interdiction de se garer au coffre, de se teleporter a un ami ou de quitter l'instance, les portails restant autorises. Vaincre le Construct de jade pyroclastique fait monter la plateforme qui ouvre le sanctuaire de maitrise des Marches du Calife, necessaire a l'Electrum pyroclastique d'Aurora II : les deux objectifs s'enchainent. Et la Reine paresseuse n'apparait pas seule, elle conclut une chaine d'evenements partant des Piliers du balbuzard. Le Caillou brillant reste en verified false : les Caches skritt semblent demander un achat prealable chez un marchand skritt, sans que j'aie pu le confirmer.",
+    "changelog_v99": "Fin du lot 2 : Confins de Givramer, Lac Doric et Marais de la pierre de sang. Trois pieges majeurs mis au jour. Le Badge de l'Avant-garde d'ebene du Lac Doric depend d'un succes cache de NUIT, Not All Who Wander Are Lost — de jour il n'y a rien a trouver, ce que rien n'indiquait. Les cinq objets de type Icebrood des Confins viennent tous du meme evenement, la phase finale du meta des Balises de Koda, uniquement de nuit, et les cinq champions apparaissent au hasard sur les braseros sans que la carte dise lequel est lequel. Et le Suif cristallise est le timegate reel de sa collection : cinq coffres du Froid mordant, un par jour et par personnage, dont l'acces exige l'Elixir de degel prepare au Chaudron des cloques. Ajouts utiles au passage : la Flamme de Koda ne se porte que depuis un brasero ALLUME, le Kit de survie de Noran dependait d'une cle achetable une seule fois par jour, l'Ami de Noran est un achat unique qui exige la collection deja demarree, et deux paires d'objets partagent le meme vendeur, ce qui evite deux allers-retours."
   },
   "meta_events": {
     "vb": {
@@ -13023,47 +13024,68 @@ const SOURCES_DB = {
                 {
                   "name": "Bloodstone Chip",
                   "how": {
-                    "fr": "Miner les Bloodstone Crystals en Bloodstone Fen",
-                    "en": "Mine the Bloodstone Crystals in Bloodstone Fen"
+                    "fr": "Miner les cristaux de pierre de sang du Marais. 35 nœuds par jour et par compte, rendement d'environ 29 %.",
+                    "en": "Mine the Bloodstone Crystals in the Fen. 35 nodes per day per account, roughly a 29% yield."
                   },
-                  "bit": 1
+                  "bit": 1,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Hablion's Dignity",
-                  "how": "Kill Ghostly Justiciar Hablion",
-                  "bit": 2
+                  "how": {
+                    "fr": "Vaincre le Justicier fantomatique Hablion.",
+                    "en": "Defeat Ghostly Justiciar Hablion."
+                  },
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "White Mantle Crest",
                   "how": {
-                    "fr": "Drop des ennemis White Mantle en Bloodstone Fen",
-                    "en": "Drops from White Mantle enemies in Bloodstone Fen"
+                    "fr": "Drop des ennemis du Manteau blanc du Marais.",
+                    "en": "Drops from the White Mantle enemies in the Fen."
                   },
-                  "bit": 3
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Jade Core",
                   "how": {
-                    "fr": "Drop des Jade Constructs en Bloodstone Fen",
-                    "en": "Drops from Jade Constructs in Bloodstone Fen"
+                    "fr": "Drop des Constructs de jade du Marais.",
+                    "en": "Drops from the Jade Constructs in the Fen."
                   },
-                  "bit": 4
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Aged Ectoplasm",
                   "how": {
-                    "fr": "Drop des Ghosts en Bloodstone Fen",
-                    "en": "Drops from Ghosts in Bloodstone Fen"
+                    "fr": "Drop des fantômes du Marais.",
+                    "en": "Drops from the ghosts in the Fen."
                   },
-                  "bit": 5
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Living Bloodstone",
                   "how": {
-                    "fr": "Drop des Bloodstone Elementals en Bloodstone Fen",
-                    "en": "Drops from Bloodstone Elementals in Bloodstone Fen"
+                    "fr": "Drop des Élémentaires de pierre de sang du Marais.",
+                    "en": "Drops from the Bloodstone Elementals in the Fen."
                   },
-                  "bit": 6
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Pristine Blood Ruby",
@@ -13083,32 +13105,47 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Strange Residue",
-                  "how": "Gather Unbound Magic nodes in Bloodstone Fen",
-                  "bit": 8
+                  "how": {
+                    "fr": "Récolter les nœuds de magie déchaînée du Marais.",
+                    "en": "Gather the Unbound Magic nodes in the Fen."
+                  },
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Aerial Assault",
                   "how": {
-                    "fr": "Tuer des ennemis avec les compétences de vol au Marais de la pierre de sang",
-                    "en": "Kill enemies with flight skills in Bloodstone Fen"
+                    "fr": "Tuer des ennemis avec les compétences de vol à voile — pas au sol. Le Marais étant vertical, c'est plus simple qu'ailleurs.",
+                    "en": "Kill enemies using gliding skills — not from the ground. The Fen being vertical, it is easier here than elsewhere."
                   },
-                  "bit": 9
+                  "bit": 9,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Rift Residue",
                   "how": {
-                    "fr": "Drop d'ennemis près des Unstable Rifts",
-                    "en": "Drops from enemies near Unstable Rifts"
+                    "fr": "Drop des ennemis situés près des Failles instables.",
+                    "en": "Drops from enemies near the Unstable Rifts."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 },
                 {
                   "name": "Shattered Guardian Binding",
                   "how": {
-                    "fr": "Tuer le Legendary Unbound Guardian (boss)",
-                    "en": "Kill the Legendary Unbound Guardian (boss)"
+                    "fr": "Vaincre le Gardien libéré légendaire.",
+                    "en": "Defeat the Legendary Unbound Guardian."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "ayinmaiden:aurora + wiki:Bloodstone_Fen_Master"
                 }
               ]
             },
@@ -13316,50 +13353,68 @@ const SOURCES_DB = {
                 {
                   "name": "Plump Winterberry",
                   "how": {
-                    "fr": "Récolter les nodes de Winterberry (disponibles chaque jour)",
-                    "en": "Gather Winterberry nodes (available daily)"
+                    "fr": "Drop aléatoire en récoltant les nœuds de baies d'hiver, répartis sur la carte. Visibles sur la mini-carte tant qu'ils ne sont pas récoltés, jamais sur la carte plein écran.",
+                    "en": "Random drop when gathering Winterberry nodes across the map. Visible on the mini-map until gathered, never on the full-screen map."
                   },
-                  "bit": 1
+                  "bit": 1,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Frozen Winterberry",
                   "how": {
-                    "fr": "Ouvrir les Icebound Chests en Bitterfrost Frontier",
-                    "en": "Open the Icebound Chests in Bitterfrost Frontier"
+                    "fr": "Drop aléatoire des Coffres glacés. Il faut la Flamme de Koda pour faire fondre la glace : on la prend sur les braseros de la carte, qui doivent être ALLUMÉS pour qu'on puisse la porter. 💡 Si un autre joueur a déjà fait fondre un coffre, tu peux l'ouvrir sans flamme — mais l'effet est bref.",
+                    "en": "Random drop from Icebound Chests. Koda's Flame is needed to melt the ice: take it from the map's braziers, which must be LIT for the flame to be carried. 💡 If another player already melted a chest, you can open it without a flame — but the effect is short-lived."
                   },
-                  "bit": 2
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Friend of the Grawl",
                   "how": {
-                    "fr": "Event « Keep the grawl busy » aux Confins de Givramer",
-                    "en": "Event 'Keep the grawl busy' en Bitterfrost Frontier"
+                    "fr": "Acheter chez Sun Warming pour 7 000 karma, une fois le cœur de la Morsure de glace de Brakbrak terminé.",
+                    "en": "Buy from Sun Warming for 7,000 karma, once the Brakbrak Ice Snarl heart is complete."
                   },
-                  "bit": 3
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Protector of Griffons",
                   "how": {
-                    "fr": "Event « Protect the snow griffons » aux Confins de Givramer",
-                    "en": "Event 'Protect the snow griffons' en Bitterfrost Frontier"
+                    "fr": "Acheter chez Woomulla pour 7 000 karma, une fois le cœur de la Vieille Forêt du griffon terminé.",
+                    "en": "Buy from Woomulla for 7,000 karma, once the Griffon Old Growth heart is complete."
                   },
-                  "bit": 4
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Friend of Quaggans",
                   "how": {
-                    "fr": "Event « Help the quaggan farmers harvest » aux Confins de Givramer",
-                    "en": "Event 'Help the quaggan farmers harvest' en Bitterfrost Frontier"
+                    "fr": "Acheter chez le Fermier Simooba pour 7 000 karma, une fois le cœur des Sources chaudes de la Dent du dragon terminé.",
+                    "en": "Buy from Farmer Simooba for 7,000 karma, once the Dragon's Teeth Hot Springs heart is complete."
                   },
-                  "bit": 5
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Enemy of the Svanir",
                   "how": {
-                    "fr": "Event « Disrupt the Svanir » aux Confins de Givramer",
-                    "en": "Event 'Disrupt the Svanir' en Bitterfrost Frontier"
+                    "fr": "Acheter chez le Voyant svanir pour 7 000 karma, une fois le cœur de la Ruche svanir terminé.",
+                    "en": "Buy from the Svanir Seer for 7,000 karma, once The Svanir Hive heart is complete."
                   },
-                  "bit": 6
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Mini Aurene",
@@ -13372,50 +13427,68 @@ const SOURCES_DB = {
                 {
                   "name": "Corrupted Griffon Talon",
                   "how": {
-                    "fr": "Tuer le Corrupted Griffon (boss) aux Confins de Givramer",
-                    "en": "Kill the Corrupted Griffon (boss) in Bitterfrost Frontier"
+                    "fr": "Drop du Griffon corrompu, un des 5 champions de l'événement « Tuer le champion de Jormag », phase finale du méta des Balises de Koda — uniquement de NUIT. ⚠ Les cinq champions apparaissent au hasard sur les braseros et la carte ne dit pas lequel est lequel avant d'y être. Prévois plusieurs cycles.",
+                    "en": "Drops from the Corrupted Griffon, one of the 5 champions in the 'Kill Jormag's Champion' event, final phase of the Beacons of Koda meta — at NIGHT only. ⚠ The five champions spawn randomly at braziers and the map does not say which is which until you arrive. Expect several cycles."
                   },
-                  "bit": 8
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Corrupted Wolfmaster Whistle",
                   "how": {
-                    "fr": "Tuer le Corrupted Wolfmaster (boss) aux Confins de Givramer",
-                    "en": "Kill the Corrupted Wolfmaster (boss) in Bitterfrost Frontier"
+                    "fr": "Même source que le talon de griffon : un des 5 champions de « Tuer le champion de Jormag », de nuit, méta des Balises de Koda.",
+                    "en": "Same source as the griffon talon: one of the 5 champions of 'Kill Jormag's Champion', at night, Beacons of Koda meta."
                   },
-                  "bit": 9
+                  "bit": 9,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Icebrood Goliath Sinew",
                   "how": {
-                    "fr": "Tuer le Champion Icebrood Goliath aux Confins de Givramer",
-                    "en": "Kill the Champion Icebrood Goliath in Bitterfrost Frontier"
+                    "fr": "Un des 5 champions de « Tuer le champion de Jormag », de nuit, méta des Balises de Koda.",
+                    "en": "One of the 5 champions of 'Kill Jormag's Champion', at night, Beacons of Koda meta."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Icebrood Norn Pauldrons",
                   "how": {
-                    "fr": "Tuer le Champion Icebrood Norn aux Confins de Givramer",
-                    "en": "Kill the Champion Icebrood Norn in Bitterfrost Frontier"
+                    "fr": "Un des 5 champions de « Tuer le champion de Jormag », de nuit, méta des Balises de Koda.",
+                    "en": "One of the 5 champions of 'Kill Jormag's Champion', at night, Beacons of Koda meta."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Icebrood Troll Tooth",
                   "how": {
-                    "fr": "Tuer le Champion Icebrood Troll aux Confins de Givramer",
-                    "en": "Kill the Champion Icebrood Troll in Bitterfrost Frontier"
+                    "fr": "Un des 5 champions de « Tuer le champion de Jormag », de nuit, méta des Balises de Koda.",
+                    "en": "One of the 5 champions of 'Kill Jormag's Champion', at night, Beacons of Koda meta."
                   },
-                  "bit": 12
+                  "bit": 12,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 },
                 {
                   "name": "Crystallized Suet",
                   "how": {
-                    "fr": "⚠️ Drop RNG — 5 coffres de The Bitter Cold (1/jour/perso, peut prendre plusieurs jours)",
-                    "en": "⚠️ RNG drop — 5 chests in The Bitter Cold (1/day/character, may take several days)"
+                    "fr": "Drop aléatoire des 5 coffres du Froid mordant, chacun ouvrable une seule fois par jour et par personnage — c'est le timegate de la collection. Emplacements : 3 sur des plateformes, 1 derrière la cascade gelée, 1 dans le trou de plongée. ⚠ L'accès exige l'Élixir de dégel, préparé au Chaudron des cloques avec 12 baies fraîches, 3 coquilles résistantes au froid, 8 grumeaux de suif gelé et 1 Pierre de feu grawl.",
+                    "en": "Random drop from the 5 chests in The Bitter Cold, each openable once per day per character — this is the collection's timegate. Locations: 3 on platforms, 1 behind the frozen waterfall, 1 in the diving hole. ⚠ Access requires the Thaw Elixir, brewed at the Blister Cauldron with 12 fresh winterberries, 3 cold-resistant eggshells, 8 clumps of frostbitten suet and 1 Grawl Firestone."
                   },
-                  "bit": 13
+                  "bit": 13,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
                 }
               ]
             },
@@ -13443,84 +13516,135 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Sparking Jade Shard",
-                  "how": "Gather Jade Fragments in Lake Doric",
-                  "bit": 1
+                  "how": {
+                    "fr": "Drop aléatoire en récoltant les Fragments de jade. On les trouve surtout près des canons de jade et au Refuge de Melandru ; ils tombent aussi de certains boss.",
+                    "en": "Random drop when gathering Jade Fragments. Mostly found near the jade cannons and at Melandru's Refuge; they also drop from some bosses."
+                  },
+                  "bit": 1,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Frontline Defender",
                   "how": {
-                    "fr": "Event « Aid the front-line defense of Doric's Landing »",
-                    "en": "Event 'Aid the front-line defense of Doric's Landing'"
+                    "fr": "Acheter chez le vendeur du Débarcadère de Doric pour 7 000 karma, cœur « Aider la défense de première ligne » terminé. 💡 C'est le même vendeur, le Lieutenant Bran, qui vend le Protecteur seraph.",
+                    "en": "Buy from the Doric's Landing vendor for 7,000 karma, with the 'Aid the front-line defence' heart done. 💡 Same vendor, Lieutenant Bran, also sells the Seraph Protector."
                   },
-                  "bit": 2
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Fort Evennia Infiltrator",
-                  "how": "Event 'Disrupt White Mantle at Fort Evennia'",
-                  "bit": 3
+                  "how": {
+                    "fr": "Acheter chez le vendeur au sud du Fort Evennia pour 7 000 karma, cœur « Perturber les forces du Manteau blanc » terminé. 💡 Même vendeur, Exemplar Ylan, que pour le Bâton du savant.",
+                    "en": "Buy from the vendor south of Fort Evennia for 7,000 karma, with the 'Disrupt White Mantle forces' heart done. 💡 Same vendor, Exemplar Ylan, as for the Savant's Staff."
+                  },
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Friend of Noran",
                   "how": {
-                    "fr": "Event « Help Noran around the Harvest Cascades »",
-                    "en": "Event 'Help Noran around the Harvest Cascades'"
+                    "fr": "Acheter chez Noran pour 7 000 karma, cœur des Cascades de la moisson terminé. ⚠ Achat unique, et il exige que la collection Lake Doric Master soit déjà démarrée.",
+                    "en": "Buy from Noran for 7,000 karma, with the Harvest Cascades heart done. ⚠ One-time purchase, and it requires the Lake Doric Master collection to be already started."
                   },
-                  "bit": 4
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Friend of Cin Fursarai",
                   "how": {
-                    "fr": "Event « Help Cin Fursarai at the Lakeside Bazaar »",
-                    "en": "Event 'Help Cin Fursarai at the Lakeside Bazaar'"
+                    "fr": "Acheter chez le vendeur du Bazar du lac pour 7 000 karma, cœur de Cin Fursarai terminé.",
+                    "en": "Buy from the Lakeside Bazaar vendor for 7,000 karma, with the Cin Fursarai heart done."
                   },
-                  "bit": 5
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Friend of New Loamhurst",
-                  "how": "Event 'Restore normalcy in New Loamhurst'",
-                  "bit": 6
+                  "how": {
+                    "fr": "Acheter chez le vendeur de la Nouvelle-Loamhurst pour 7 000 karma, cœur terminé.",
+                    "en": "Buy from the New Loamhurst vendor for 7,000 karma, heart done."
+                  },
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Friend of Saidra's Haven",
-                  "how": "Event 'Help restore life to Saidra's Haven'",
-                  "bit": 7
+                  "how": {
+                    "fr": "Acheter chez le vendeur du Refuge de Saidra pour 7 000 karma, cœur terminé.",
+                    "en": "Buy from the Saidra's Haven vendor for 7,000 karma, heart done."
+                  },
+                  "bit": 7,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Bloodstone-Warped Hoof",
                   "how": {
-                    "fr": "Drop des centaures bloodstone-crazed en Lake Doric",
-                    "en": "Drops from bloodstone-crazed centaurs in Lake Doric"
+                    "fr": "Drop des centaures rendus fous par la pierre de sang.",
+                    "en": "Drops from bloodstone-crazed centaurs."
                   },
-                  "bit": 8
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Immelhoof's Heart",
-                  "how": "Kill Siegemaster Immelhoof (boss) in Lake Doric",
-                  "bit": 9
+                  "how": {
+                    "fr": "Vaincre Immelhoof. ⚠ Il n'apparaît pas librement : il surgit quelques minutes après l'annonce de l'attaque imminente du Manteau blanc sur la Ferme de Noran.",
+                    "en": "Defeat Immelhoof. ⚠ He does not spawn freely: he appears a few minutes after the imminent White Mantle attack on Noran's Homestead is announced."
+                  },
+                  "bit": 9,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Noran's Survival Kit",
                   "how": {
-                    "fr": "Obtenir dans Noran's Safe Room en Lake Doric",
-                    "en": "Obtain in Noran's Safe Room in Lake Doric"
+                    "fr": "Se trouve dans la Chambre forte de Noran. ⚠ La Clé du coffre secret de Noran ne s'achète qu'une fois par jour.",
+                    "en": "Found in Noran's Safe Room. ⚠ The Key to Noran's Secret Chest can only be bought once per day."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Jade Cannon Controller",
                   "how": {
-                    "fr": "Drop des White Mantle défendant les Jade Cannons",
-                    "en": "Drops from White Mantle defending the Jade Cannons"
+                    "fr": "Drop des membres du Manteau blanc qui défendent les canons de jade — participe aux événements « Détruire le canon de jade » jusqu'au drop.",
+                    "en": "Drops from White Mantle defending the jade cannons — join the 'Destroy the Jade Cannon' events until it drops."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Pristine White Mantle",
                   "how": {
-                    "fr": "Drop des ennemis White Mantle en Lake Doric",
-                    "en": "Drops from White Mantle enemies in Lake Doric"
+                    "fr": "Drop de n'importe quel ennemi du Manteau blanc sur la carte. Le plus simple des seize.",
+                    "en": "Drops from any White Mantle enemy on the map. The easiest of the sixteen."
                   },
-                  "bit": 12
+                  "bit": 12,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 },
                 {
                   "name": "Seraph Protector",
@@ -13557,10 +13681,13 @@ const SOURCES_DB = {
                 {
                   "name": "Ebon Vanguard Badge",
                   "how": {
-                    "fr": "Trouver près des tombes des soldats Ebon Vanguard (Melandru's Refuge)",
-                    "en": "Find near the graves of Ebon Vanguard soldiers (Melandru's Refuge)"
+                    "fr": "Près des tombes des soldats de l'Avant-garde d'ébène. ⚠ Le vrai piège de la collection : c'est un succès caché de NUIT, « Not All Who Wander Are Lost ». De jour, il n'y a rien à trouver.",
+                    "en": "Near the graves of the Ebon Vanguard soldiers. ⚠ The collection's real trap: this is a hidden NIGHT-time achievement, 'Not All Who Wander Are Lost'. During the day there is nothing to find."
                   },
-                  "bit": 15
+                  "bit": 15,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
                 }
               ]
             },
