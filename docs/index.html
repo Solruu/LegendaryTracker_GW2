@@ -703,7 +703,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v97",
+    "version": "v98",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1671,7 +1671,8 @@ const SOURCES_DB = {
     "changelog_v94": "Le cout des Encapsulateurs d'essence memorielle n'etait compte nulle part. Les composants existaient bien, mais leur quantite etait indexee sur des cles qui ne sont pas des identifiants de legendaire — memory_essence_encapsulator et vision_i_awakening — donc invisibles du grand total, qui ne lit que qty[legendaire]. L'encapsulateur passe sur la cle vision avec 6 exemplaires, et le grand total sait desormais developper un intermediaire : tout composant dont la quantite est indexee sur un autre composant est multiplie par la quantite de celui-ci. Cout unitaire corrige et complete : 50 ectoplasmes, 10 filigranes d'orichalque, 1 cristal de vision mineur et 3 lingots d'electrum Xunlai — ce dernier etait a 1 au lieu de 3, et les ectoplasmes n'etaient pas declares du tout. Pour six exemplaires cela fait 300 ectoplasmes, 60 filigranes, 6 cristaux et 18 lingots. Documente aussi ce que le tracker ne disait pas : l'objet est a usage unique et consomme au kill, les six suffisent pour toutes les cartes puisque c'est le meme objet chez tous les vendeurs, retuer un boss deja valide n'en consomme pas un second, et un exemplaire inutilise se recycle en rendant l'integralite de ses composants.",
     "changelog_v95": "Le cristal de vision mineur etait une feuille : ses propres ingredients n'existaient meme pas comme composants, donc le poste le plus lourd de la chaine Vision n'etait chiffre nulle part. Sept composants ajoutes avec leurs identifiants verifies au referentiel — pierre de l'augure, lingot de dragonite, etoile etheree, brique de pierre de sang, et les trois materiaux de base sous elles. La recette est 2 lingots, 2 etoiles, 2 briques et 1 pierre, et chaque raffinement consomme 100 unites de son materiau de base. Le developpement en cascade ajoute en v130 propage tout seul : six encapsulateurs demandent donc six cristaux, soit douze de chaque raffinement et 1 200 unites de chacun des trois materiaux de base. Seul le prix de la pierre de l'augure en eclats spirituels reste non recoupe et est marque comme tel.",
     "changelog_v96": "Prix de la pierre de l'augure tranche par observation en jeu d'Antoine : 20 eclats spirituels piece, la ou la v95 laissait le champ non verifie. L'eclat spirituel devient un composant a part entiere, devise de portefeuille 23, donc synchronisable comme les autres. Il est rattache a ses deux consommateurs connus : 20 par pierre de l'augure et 200 par eclat de pierre de sang. La cascade en tire les totaux d'elle-meme — six pierres pour les six cristaux de Vision font 120 eclats spirituels, auxquels s'ajoutent 400 pour les deux eclats de pierre de sang d'Aurora.",
-    "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn."
+    "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn.",
+    "changelog_v98": "Lot 2, premiere collection : les 14 items de la Baie des braises passent au detail d'execution. Trois apports notables. Le Calice des larmes impose trois conditions strictes que rien n'indiquait — collection deverrouillee, tous les points de controle declenches, et interdiction de se garer au coffre, de se teleporter a un ami ou de quitter l'instance, les portails restant autorises. Vaincre le Construct de jade pyroclastique fait monter la plateforme qui ouvre le sanctuaire de maitrise des Marches du Calife, necessaire a l'Electrum pyroclastique d'Aurora II : les deux objectifs s'enchainent. Et la Reine paresseuse n'apparait pas seule, elle conclut une chaine d'evenements partant des Piliers du balbuzard. Le Caillou brillant reste en verified false : les Caches skritt semblent demander un achat prealable chez un marchand skritt, sans que j'aie pu le confirmer."
   },
   "meta_events": {
     "vb": {
@@ -13132,109 +13133,157 @@ const SOURCES_DB = {
                 },
                 {
                   "name": "Petrified Burl",
-                  "how": "Gather Petrified Stumps in Ember Bay",
-                  "bit": 1
+                  "how": {
+                    "fr": "Drop aléatoire en récoltant les Souches pétrifiées, réparties sur la carte. Patience : le taux est faible.",
+                    "en": "Random drop when gathering Petrified Stumps across the map. Be patient: the rate is low."
+                  },
+                  "bit": 1,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Pyroclastic Core",
                   "how": {
-                    "fr": "Tuer le Champion Pyroclastic Jade Construct",
-                    "en": "Kill the Champion Pyroclastic Jade Construct"
+                    "fr": "Événement de groupe « Vaincre le Construct de jade pyroclastique », aux Marches du Calife. 💡 Le terminer fait aussi monter la plateforme du lac de lave qui donne accès au sanctuaire de maîtrise des Marches du Calife — dont tu auras besoin pour l'Electrum pyroclastique d'Aurora II. À enchaîner.",
+                    "en": "Group event 'Defeat the Pyroclastic Jade Construct' at Caliph's Steps. 💡 Completing it also raises the lava-pit platform granting access to the Caliph's Steps mastery insight — needed for Aurora II's Pyroclastic Electrum. Chain the two."
                   },
-                  "bit": 2
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Flask of Tears",
                   "how": {
-                    "fr": "JP Chalice of Tears (Skip up the Volcano)",
-                    "en": "JP Chalice of Tears (Skip up the Volcano)"
+                    "fr": "Coffre final du puzzle de saut « Calice des larmes », dans le volcan Sopor Titanum. ⚠ Trois conditions strictes : la collection Ember Bay Master doit être déverrouillée, TOUS les points de contrôle doivent être déclenchés, et tu ne dois ni te garer au coffre, ni te téléporter à un ami, ni quitter l'instance en route. Les portails de mesmer restent autorisés.",
+                    "en": "Final chest of the Chalice of Tears jumping puzzle, inside the Sopor Titanum volcano. ⚠ Three strict conditions: the Ember Bay Master collection must be unlocked, ALL checkpoints must be triggered, and you must not park at the chest, teleport to a friend, or leave the instance along the way. Mesmer portals are still allowed."
                   },
-                  "bit": 3
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Friend of the Circus",
                   "how": {
-                    "fr": "Event « Win the favor of the circus » dans la Baie des braises",
-                    "en": "Event 'Win the favor of the circus' en Ember Bay"
+                    "fr": "Acheter chez le vendeur du cœur « Gagner la faveur du cirque » pour 7 000 karma, cœur terminé d'abord.",
+                    "en": "Buy from the 'Win the favor of the circus' heart vendor for 7,000 karma, heart completed first."
                   },
-                  "bit": 4
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Friend of the Researchers",
                   "how": {
-                    "fr": "Event « Assist the asuran researchers » dans la Baie des braises",
-                    "en": "Event 'Assist the asuran researchers' en Ember Bay"
+                    "fr": "Acheter chez le vendeur du cœur « Aider les chercheurs asura » pour 7 000 karma, cœur terminé d'abord.",
+                    "en": "Buy from the 'Assist the asuran researchers' heart vendor for 7,000 karma, heart completed first."
                   },
-                  "bit": 5
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Friend of the Skritt",
                   "how": {
-                    "fr": "Event « Help the skritt encampment » dans la Baie des braises",
-                    "en": "Event 'Help the skritt encampment' en Ember Bay"
+                    "fr": "Acheter chez le vendeur de cœur du Mouillage skritt pour 7 000 karma, une fois le cœur « Aider le campement skritt » terminé.",
+                    "en": "Buy from the Skritt Anchorage heart vendor for 7,000 karma, once the 'Help the skritt encampment' heart is done."
                   },
-                  "bit": 6
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Friend of Science",
-                  "how": "Event 'Assist Scientist Vratt' en Ember Bay",
-                  "bit": 7
+                  "how": {
+                    "fr": "Acheter chez le vendeur de cœur de la Caldeira fracturée pour 7 000 karma, une fois le cœur « Assister la scientifique Vratt » terminé.",
+                    "en": "Buy from the Fractured Caldera heart vendor for 7,000 karma, once the 'Assist Scientist Vratt' heart is done."
+                  },
+                  "bit": 7,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Mursaat Investigator",
                   "how": {
-                    "fr": "Event « Investigate the mursaat fortress » dans la Baie des braises",
-                    "en": "Event 'Investigate the mursaat fortress' en Ember Bay"
+                    "fr": "Acheter chez le vendeur de cœur des Marches du Calife pour 7 000 karma, une fois le cœur « Enquêter sur la forteresse mursaat » terminé.",
+                    "en": "Buy from the Caliph's Steps heart vendor for 7,000 karma, once the 'Investigate the mursaat fortress' heart is done."
                   },
-                  "bit": 8
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Shiny Rock",
                   "how": {
-                    "fr": "Fouiller les Skritt Stashes",
-                    "en": "Search in the Skritt Stashes"
+                    "fr": "Trouvé dans les Caches skritt. ⚠ Un achat préalable chez un marchand de karma skritt semble nécessaire pour les repérer, mais je n'ai pas pu le confirmer — à vérifier sur place.",
+                    "en": "Found in Skritt Stashes. ⚠ A prior purchase from a skritt karma merchant appears to be needed to locate them, but I could not confirm it — check on site."
                   },
-                  "bit": 9
+                  "bit": 9,
+                  "how_verified": false,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Tarnished Coin",
                   "how": {
-                    "fr": "Aider Skrilla dans la chasse au trésor",
-                    "en": "Help Skrilla with the treasure hunt"
+                    "fr": "Événement « Défendre Skrilla pendant qu'elle cherche un trésor ». L'objet vient du coffre de fin d'événement, pas du kill.",
+                    "en": "Event 'Defend Skrilla while she searches for treasure'. The item comes from the end-of-event chest, not from a kill."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Volcanic Scale",
                   "how": {
-                    "fr": "Drop d'ennemis volcaniques dans la Baie des braises",
-                    "en": "Drop d'ennemis volcaniques en Ember Bay"
+                    "fr": "Vaincre Vermingus, via l'événement « Protéger les relais d'énergie pour aider Swoosh-a-Tron à vaincre Vermingus ».",
+                    "en": "Defeat Vermingus, through the event 'Protect the energy relays to help Swoosh-a-Tron defeat Vermingus'."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Bottle of Skritt Spirits",
                   "how": {
-                    "fr": "Obtenir lors de la chasse au trésor Skritt",
-                    "en": "Obtain during the Skritt treasure hunt"
+                    "fr": "Drop du Capitaine pirate Huuhes, événement « Vaincre le capitaine pirate enragé », au Butin redouté, dans le Mouillage skritt.",
+                    "en": "Drops from Pirate Captain Huuhes, event 'Defeat the rampaging pirate captain' at The Dread Shiny, in Skritt Anchorage."
                   },
-                  "bit": 12
+                  "bit": 12,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Slubling Tail",
                   "how": {
-                    "fr": "Drop des Slublings en Ember Bay",
-                    "en": "Drops from Slublings in Ember Bay"
+                    "fr": "Vaincre la Reine paresseuse. ⚠ Elle n'apparaît pas seule : c'est une chaîne d'événements qui démarre aux Piliers du balbuzard, et la reine ne surgit au Terrain de spectacle qu'après un événement d'escorte.",
+                    "en": "Defeat the Sloth Queen. ⚠ She does not spawn on her own: it is an event chain starting at Osprey Pillars, and the queen only appears at the Performance Field after an escort event."
                   },
-                  "bit": 13
+                  "bit": 13,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 },
                 {
                   "name": "Molten Domination",
                   "how": {
-                    "fr": "Tuer le boss Molten dans la Baie des braises",
-                    "en": "Kill the Molten boss in Ember Bay"
+                    "fr": "Vaincre le Dominateur en fusion.",
+                    "en": "Defeat the Molten Dominator."
                   },
-                  "bit": 14
+                  "bit": 14,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
                 }
               ]
             },
