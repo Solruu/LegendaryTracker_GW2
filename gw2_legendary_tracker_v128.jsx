@@ -4158,24 +4158,33 @@ export default function GW2LegendaryTracker() {
     let data = null;
     let flaskErr = null;
 
-    // 1. Essayer Flask via POST (évite limite URL GET)
+    // 1. Flask, via la MEME route que tout le reste. L'ancienne route dediee était
+    // un POST JSON avec en-tête personnalisé, donc soumise à un preflight CORS, et
+    // surtout elle constituait un second système de stock pour un même joueur et
+    // une même clé. /api/progression agrège désormais les cinq emplacements et
+    // renvoie un inventaire unique : un GET simple, aucun preflight.
     try {
       const resp = await fetch(
-        `http://127.0.0.1:5000/api/materials/bulk?lang=${langRef.current}`,
-        {
-          method: "POST",
-          headers: { "X-API-Key": key, "Content-Type": "application/json" },
-          body: JSON.stringify({ ids: apiIds }),
-          signal: AbortSignal.timeout(8000)
-        }
+        `http://127.0.0.1:5000/api/progression?lang=${langRef.current}`,
+        { signal: AbortSignal.timeout(120000) }
       );
       if (resp.ok) {
-        data = await resp.json();
+        const prog = await resp.json();
+        if (prog.stocks && Object.keys(prog.stocks).length > 0) {
+          const stocks = {};
+          for (const id of apiIds) {
+            const v = prog.stocks[String(id)];
+            if (v !== undefined) stocks[String(id)] = v;
+          }
+          data = { stocks, synced_at: Math.floor(Date.now() / 1000), errors: prog.errors ?? [] };
+        } else {
+          flaskErr = "Flask ne renvoie pas d'inventaire agrégé — serveur antérieur à la v32";
+        }
       } else {
         const errBody = await resp.json().catch(() => ({}));
         flaskErr = `Flask HTTP ${resp.status}: ${errBody.error ?? ""}`;
       }
-    } catch (e) { flaskErr = `Flask unreachable: ${e.message}`; }
+    } catch (e) { flaskErr = `Flask injoignable : ${e.message}`; }
 
     if (flaskErr) console.warn("[GT Stocks]", flaskErr);
 

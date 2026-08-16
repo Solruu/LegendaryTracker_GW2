@@ -285,6 +285,41 @@ def gw2_get(endpoint, api_key, params=None, lang=None):
         return None, f"{type(e).__name__} sur {endpoint} : {e}"
 
 
+def _aggregate_stocks(wallet_dict, mat_dict, bank_raw, shared_raw, characters_raw):
+    """id -> quantite, sur les cinq emplacements ou un stock peut se trouver.
+
+    Portefeuille, stockage materiaux, banque, inventaire partage et sacs des
+    personnages. Les monnaies de portefeuille et les objets ne partagent pas
+    d'espace d'identifiants, les melanger dans un seul dict est donc sans risque.
+    """
+    stocks = {}
+
+    def add(item_id, qty):
+        if item_id is None or not qty:
+            return
+        k = str(item_id)
+        stocks[k] = stocks.get(k, 0) + qty
+
+    for cid, val in (wallet_dict or {}).items():
+        add(cid, val)
+    for mid, val in (mat_dict or {}).items():
+        add(mid, val)
+    for slot in (bank_raw or []):
+        if slot:
+            add(slot.get("id"), slot.get("count", 0))
+    for slot in (shared_raw or []):
+        if slot:
+            add(slot.get("id"), slot.get("count", 0))
+    for char in (characters_raw or []):
+        for bag in (char.get("bags") or []):
+            if not bag:
+                continue
+            for slot in (bag.get("inventory") or []):
+                if slot:
+                    add(slot.get("id"), slot.get("count", 1))
+    return stocks
+
+
 def parse_wallet(wallet_data):
     """Transforme la liste de wallet en dict id→value, en sommant les doublons."""
     result = {}
@@ -869,6 +904,12 @@ def progression():
         errors.append(f"bank: {err}")
         bank_raw = []
 
+    # ── Inventaire partage
+    shared_raw, err = gw2_get("account/inventory", api_key)
+    if err:
+        errors.append(f"shared: {err}")
+        shared_raw = []
+
     # ── Personnages
     characters_raw, err = gw2_get("characters", api_key, params={"ids": "all"})
     if err:
@@ -1189,6 +1230,11 @@ def progression():
         "prismatic":    prismatic_progress,
         "characters_80": chars_80,
         "errors": errors,
+        # Inventaire brut agrege, id -> quantite, tous emplacements confondus.
+        # Il existe parce que l'onglet Grand total maintenait son propre stock via
+        # une seconde route : deux systemes pour un meme joueur et une meme cle.
+        # Une seule requete, une seule verite.
+        "stocks": _aggregate_stocks(wallet_dict, mat_dict, bank_raw, shared_raw, characters_raw),
     }
 
     return jsonify(result)
