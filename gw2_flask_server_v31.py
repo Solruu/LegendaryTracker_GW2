@@ -223,7 +223,12 @@ CORS(app, origins="*", supports_credentials=False)
 @app.after_request
 def add_cors_headers(response):
     response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+    # POST est indispensable : /api/materials/bulk envoie la liste d'ids dans le
+    # corps pour ne pas exploser la limite de longueur d'URL. Sans POST ici, le
+    # navigateur refuse la requete AU PREFLIGHT — la route Flask n'est jamais
+    # atteinte, aucune ligne n'apparait dans le log, et le client ne voit qu'un
+    # « Failed to fetch » indistinct d'un serveur eteint.
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-API-Key, X-Lang"
     response.headers["Access-Control-Max-Age"] = "86400"
     return response
@@ -1551,7 +1556,9 @@ def diag():
     if err:
         return jsonify({"ok": False, "error": err}), 500
     have = set(info.get("permissions", []))
-    needed = {"account", "progression", "inventories", "characters", "wallet", "unlocks"}
+    # Portees reellement utilisees par le tracker. unlocks ne sert a aucun appel :
+    # l'exiger faisait passer une cle parfaitement valide pour incomplete.
+    needed = {"account", "progression", "inventories", "characters", "wallet"}
     return jsonify({
         "ok": not (needed - have),
         "name": info.get("name"),

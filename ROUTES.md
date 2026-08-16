@@ -177,6 +177,13 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
 - **Un écart non tranché se déclare.** `qty_conflict` accepte une divergence
   connue, mais seulement datée et motivée : elle passe alors en avertissement au
   lieu de bloquer, et reste visible à chaque audit au lieu de dormir.
+- **Un preflight refusé ne laisse aucune trace.** `/api/materials/bulk` est un
+  POST JSON avec en-tête personnalisé : le navigateur envoie donc un `OPTIONS`
+  préalable. `Access-Control-Allow-Methods` n'annonçait que `GET, OPTIONS`, donc
+  la requête était bloquée **avant** d'atteindre Flask — aucune ligne dans le log
+  d'accès, et côté client un « Failed to fetch » indistinct d'un serveur éteint.
+  Quand une route Flask ne répond pas alors que d'autres marchent, comparer les
+  méthodes : un GET simple passe sans preflight, un POST non.
 - **Un code HTTP n'est pas un diagnostic.** Le serveur Flask renvoyait `500`
   avec la raison dans le corps de la réponse — invisible dans le log d'accès, qui
   est pourtant le seul endroit qu'on regarde. Toute erreur renvoyée doit aussi
