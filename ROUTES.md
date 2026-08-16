@@ -177,6 +177,12 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
 - **Un écart non tranché se déclare.** `qty_conflict` accepte une divergence
   connue, mais seulement datée et motivée : elle passe alors en avertissement au
   lieu de bloquer, et reste visible à chaque audit au lieu de dormir.
+- **Un code HTTP n'est pas un diagnostic.** Le serveur Flask renvoyait `500`
+  avec la raison dans le corps de la réponse — invisible dans le log d'accès, qui
+  est pourtant le seul endroit qu'on regarde. Toute erreur renvoyée doit aussi
+  être écrite dans le terminal, et toute exception non prévue attrapée pour ne
+  pas produire un 500 nu. `GET /api/diag` vérifie la clé et ses portées, ce qui
+  sépare un problème de clé d'un bug de code.
 - **Un stock se lit à cinq endroits** : portefeuille, stockage matériaux,
   banque, inventaire partagé et **sacs des personnages** (`/v2/characters`,
   portées `characters` + `inventories`). Les deux chemins de synchro en

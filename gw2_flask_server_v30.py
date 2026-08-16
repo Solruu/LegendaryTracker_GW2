@@ -270,9 +270,14 @@ def gw2_get(endpoint, api_key, params=None, lang=None):
             return None, "Cle API invalide ou permissions insuffisantes"
         if e.response.status_code == 403:
             return None, "Permissions manquantes sur la cle API"
-        return None, f"Erreur HTTP {e.response.status_code}"
+        body = ""
+        try:
+            body = (e.response.text or "")[:200]
+        except Exception:
+            pass
+        return None, f"Erreur HTTP {e.response.status_code} sur {endpoint}" + (f" — {body}" if body else "")
     except Exception as e:
-        return None, str(e)
+        return None, f"{type(e).__name__} sur {endpoint} : {e}"
 
 
 def parse_wallet(wallet_data):
@@ -1293,7 +1298,10 @@ def aurora_achievements():
 
     ach_raw, err = gw2_get("account/achievements", api_key)
     if err:
-        return jsonify({"error": err}), 500
+        # Sans cette ligne, le terminal n'affiche qu'un « 500 » muet et la raison
+        # reste dans un corps de reponse que personne ne lit.
+        app.logger.error("achievements/aurora -> %s", err)
+        return jsonify({"error": err, "endpoint": "account/achievements"}), 500
 
     # Index par ID
     ach_index = {}
@@ -1328,7 +1336,10 @@ def vision_achievements():
 
     ach_raw, err = gw2_get("account/achievements", api_key)
     if err:
-        return jsonify({"error": err}), 500
+        # Sans cette ligne, le terminal n'affiche qu'un « 500 » muet et la raison
+        # reste dans un corps de reponse que personne ne lit.
+        app.logger.error("achievements/aurora -> %s", err)
+        return jsonify({"error": err, "endpoint": "account/achievements"}), 500
 
     ach_index = {}
     for entry in (ach_raw or []):
@@ -1362,7 +1373,10 @@ def obsidian_achievements():
 
     ach_raw, err = gw2_get("account/achievements", api_key)
     if err:
-        return jsonify({"error": err}), 500
+        # Sans cette ligne, le terminal n'affiche qu'un « 500 » muet et la raison
+        # reste dans un corps de reponse que personne ne lit.
+        app.logger.error("achievements/aurora -> %s", err)
+        return jsonify({"error": err, "endpoint": "account/achievements"}), 500
 
     ach_index = {}
     for entry in (ach_raw or []):
@@ -1404,7 +1418,10 @@ def achievements_status():
         return jsonify({})
     ach_raw, err = gw2_get("account/achievements", api_key)
     if err:
-        return jsonify({"error": err}), 500
+        # Sans cette ligne, le terminal n'affiche qu'un « 500 » muet et la raison
+        # reste dans un corps de reponse que personne ne lit.
+        app.logger.error("achievements/aurora -> %s", err)
+        return jsonify({"error": err, "endpoint": "account/achievements"}), 500
     idx = {e["id"]: e for e in (ach_raw or [])}
     result = {}
     for i in wanted:
@@ -1504,6 +1521,43 @@ def main():
     print("=" * 50)
 
     app.run(host="127.0.0.1", port=args.port, debug=False)
+
+
+@app.errorhandler(Exception)
+def _unhandled(exc):
+    """Convertit toute exception non geree en JSON lisible, et la trace.
+
+    Un 500 nu dans le log d'acces ne dit ni ou ni pourquoi. Ici le terminal
+    recoit la trace complete et le client recoit le type et le message.
+    """
+    from werkzeug.exceptions import HTTPException
+    if isinstance(exc, HTTPException):
+        return exc
+    import traceback
+    app.logger.error("Exception non geree :\n%s", traceback.format_exc())
+    return jsonify({
+        "error": f"{type(exc).__name__} : {exc}",
+        "hint": "Trace complete dans le terminal du serveur Flask.",
+    }), 500
+
+
+@app.route("/api/diag")
+def diag():
+    """Verifie la cle et ses portees, pour distinguer un probleme de cle d'un bug."""
+    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    if not api_key:
+        return jsonify({"ok": False, "error": "Aucune cle : ni parametre, ni en-tete, ni GW2_API_KEY"}), 400
+    info, err = gw2_get("tokeninfo", api_key)
+    if err:
+        return jsonify({"ok": False, "error": err}), 500
+    have = set(info.get("permissions", []))
+    needed = {"account", "progression", "inventories", "characters", "wallet", "unlocks"}
+    return jsonify({
+        "ok": not (needed - have),
+        "name": info.get("name"),
+        "permissions": sorted(have),
+        "missing": sorted(needed - have),
+    })
 
 
 if __name__ == "__main__":
