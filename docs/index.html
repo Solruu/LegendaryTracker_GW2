@@ -703,7 +703,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v93",
+    "version": "v94",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1667,7 +1667,8 @@ const SOURCES_DB = {
     "changelog_v90": "Le Reliquaire fractal et le Gobelet du sorcier echangent 25 reliques contre un objet du jour, avec une limite quotidienne commune aux deux, et le Don d'ascension figure parfois dans la rotation — 25 reliques au lieu de 500. L'ecart est enorme mais l'occurrence est rare et aleatoire : la remise est consignee comme une opportunite a saisir, pas comme une ligne de budget. Les 4 800 reliques des quatre Dons restent donc chiffrees au prix vendeur, ce qui fait du total un plafond de ce cote la et non un plancher.",
     "changelog_v91": "Prerequis de la remise a 25 reliques etablis, et correction d'une exageration de la v90. Le Reliquaire fractal n'est pas un achat mais la recompense du succes « Recyclage eleve », qui demande de consommer six objets puissants issus du recyclage d'equipement eleve — les memes recyclages qui produisent les Boules d'energie sombre d'Ad Infinitum, d'ou une synergie directe avec la chaine en cours. Le Gobelet du sorcier, achete chez Gharr Leadclaw a l'Arche du Lion, n'est qu'un contenant : il n'ouvre le Reliquaire que si celui-ci est deja possede et enregistre par le succes 8780, ce qui suppose d'avoir l'objet en inventaire et de repasser par l'Arche du Lion. La v90 annonçait le Don comme rare dans la rotation ; c'est faux. Elle compte 21 objets, quatre sont proposes chaque jour et le premier est toujours la Cle de chiffrement, soit trois tirages sur vingt — environ une chance sur sept par jour, et non un evenement.",
     "changelog_v92": "Antoine signale une confusion dans l'onglet Personnages : la perle orrienne y etait cadencee a 2 par personnage et par jour. Ce chiffre est en realite la limite des coffres caches du Reliquaire, qui donnent le Chiffre ancien de la collection Siren's Landing Master et non des perles. Deux notions distinctes reduites a un seul nombre. La cadence reelle est refaite : 15 perles par personnage et par jour via les 5 vendeurs de coeur, qui vendent chacun un lot de 3 contre 2 688 karma soit 13 440 karma par personnage, auxquelles s'ajoutent sans plafond documente les noeuds d'huitres orriennes repartis sur la carte, les events, les metas et les recompenses de bonus de carte. Le noeud d'huitre pour l'instance personnelle est aussi consigne. Le taux affiche est donc multiplie par sept et demi, et un bloc not_a_source garde la trace de la confusion pour qu'elle ne soit pas refaite.",
-    "changelog_v93": "Cadence des perles orriennes refaite a partir du releve par zone. Chaque noeud d'huitre donne une perle GARANTIE, et 23 a 25 emplacements fixes sont recenses — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflee 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1 a 3, Profondeurs etouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent reellement sur une instance. S'y ajoutent trois ennemis nommes quotidiens qui rendent 7 perles a eux trois, et les coffres engloutis, distincts des coffres du Reliquaire, qui donnent 1 a 2 perles au hasard sans taux documente. Le circuit gratuit rapporte donc environ 27 perles par personnage et par jour, contre les 2 annoncees avant-hier et les 15 de la v92 qui ne comptaient que la voie karma. Les 15 perles des vendeurs de coeur restent disponibles en plus, a 13 440 karma. Deux precisions de terrain : une faucille d'orichalque est necessaire sous peine de voir la dragonite remplacee par une motte de boue, et ces noeuds ne produisent aucune recolte bonus, ce qui rend le Glyphe d'abondance inutile ici."
+    "changelog_v93": "Cadence des perles orriennes refaite a partir du releve par zone. Chaque noeud d'huitre donne une perle GARANTIE, et 23 a 25 emplacements fixes sont recenses — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflee 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1 a 3, Profondeurs etouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent reellement sur une instance. S'y ajoutent trois ennemis nommes quotidiens qui rendent 7 perles a eux trois, et les coffres engloutis, distincts des coffres du Reliquaire, qui donnent 1 a 2 perles au hasard sans taux documente. Le circuit gratuit rapporte donc environ 27 perles par personnage et par jour, contre les 2 annoncees avant-hier et les 15 de la v92 qui ne comptaient que la voie karma. Les 15 perles des vendeurs de coeur restent disponibles en plus, a 13 440 karma. Deux precisions de terrain : une faucille d'orichalque est necessaire sous peine de voir la dragonite remplacee par une motte de boue, et ces noeuds ne produisent aucune recolte bonus, ce qui rend le Glyphe d'abondance inutile ici.",
+    "changelog_v94": "Le cout des Encapsulateurs d'essence memorielle n'etait compte nulle part. Les composants existaient bien, mais leur quantite etait indexee sur des cles qui ne sont pas des identifiants de legendaire — memory_essence_encapsulator et vision_i_awakening — donc invisibles du grand total, qui ne lit que qty[legendaire]. L'encapsulateur passe sur la cle vision avec 6 exemplaires, et le grand total sait desormais developper un intermediaire : tout composant dont la quantite est indexee sur un autre composant est multiplie par la quantite de celui-ci. Cout unitaire corrige et complete : 50 ectoplasmes, 10 filigranes d'orichalque, 1 cristal de vision mineur et 3 lingots d'electrum Xunlai — ce dernier etait a 1 au lieu de 3, et les ectoplasmes n'etaient pas declares du tout. Pour six exemplaires cela fait 300 ectoplasmes, 60 filigranes, 6 cristaux et 18 lingots. Documente aussi ce que le tracker ne disait pas : l'objet est a usage unique et consomme au kill, les six suffisent pour toutes les cartes puisque c'est le meme objet chez tous les vendeurs, retuer un boss deja valide n'en consomme pas un second, et un exemplaire inutilise se recycle en rendant l'integralite de ses composants."
   },
   "meta_events": {
     "vb": {
@@ -5065,7 +5066,8 @@ const SOURCES_DB = {
         "armor_obsidian_per_piece"
       ],
       "qty": {
-        "obsidian__per_piece": 1
+        "obsidian__per_piece": 1,
+        "memory_essence_encapsulator": 1
       },
       "farmable": true,
       "sources": [
@@ -5204,7 +5206,8 @@ const SOURCES_DB = {
         "gen1_the_predator": 250,
         "obsidian__per_piece": 600,
         "the_ascension": 250,
-        "ad_infinitum": 250
+        "ad_infinitum": 250,
+        "memory_essence_encapsulator": 50
       },
       "kind": "acquire",
       "best": "salvage"
@@ -8282,7 +8285,7 @@ const SOURCES_DB = {
         "memory_essence_encapsulator"
       ],
       "qty": {
-        "memory_essence_encapsulator": 1
+        "memory_essence_encapsulator": 3
       },
       "farmable": true,
       "craft": {
@@ -8363,7 +8366,7 @@ const SOURCES_DB = {
         "vision_1_subcollections"
       ],
       "qty": {
-        "vision_i_awakening": 6
+        "vision": 6
       },
       "farmable": false,
       "craft": {
@@ -8410,10 +8413,19 @@ const SOURCES_DB = {
       ],
       "wiki": "Memory_Essence_Encapsulator",
       "note": {
-        "fr": "1 Memory Essence Encapsulator par sous-collection de Vision I (6 zones). Recette non apprise automatiquement — voir les vendeurs Arborstone/Juno.",
-        "en": "1 Memory Essence Encapsulator per Vision I sub-collection (6 zones). Recipe not learned automatically — check Arborstone/Juno vendors."
+        "fr": "Objet à usage unique, consommé au kill du boss. Il en faut 6 au total, pas un par vendeur : c'est le même objet chez tous les Collecteurs de magie volatile. Trois choses rassurantes — tuer à nouveau un boss dont l'étape est déjà validée n'en consomme pas un second, il fonctionne depuis un emplacement partagé ou un sac invisible, et un exemplaire non utilisé se RECYCLE en rendant l'intégralité des composants d'achat. Acheter les 6 d'un coup est donc sans risque.",
+        "en": "One-time use item, consumed on the boss kill. You need 6 in total, not one per vendor: it is the same item from every Volatile Magic Collector. Three reassurances — killing a boss whose step is already unlocked does not consume a second one, it works from a shared slot or an invisible bag, and an unused copy can be SALVAGED to return every item spent buying it. Buying all 6 at once is therefore risk-free."
       },
-      "kind": "craftable"
+      "kind": "intermediate",
+      "unit_cost": {
+        "glob_of_ectoplasm": 50,
+        "orichalcum_filigree": 10,
+        "lesser_vision_crystal": 1,
+        "xunlai_electrum_ingot": 3
+      },
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Memory_Essence_Encapsulator + ayinmaiden (18 lingots pour 6) — verifie 2026-08-13"
     },
     "provisioner_token": {
       "name": "Provisioner Token",
@@ -18544,7 +18556,8 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     return add;
   };
   const legs = SOURCES_DB?.legendaries ?? {};
-  const totals = {};   // compId → qty
+  const totals = {};
+  const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
 
   for (const [compId, comp] of Object.entries(cc)) {
@@ -18579,6 +18592,32 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       }
     }
   }
+  // Developpement des intermediaires : un composant dont la quantite est indexee
+  // sur un AUTRE composant (10 filigranes par encapsulateur) n'etait compte nulle
+  // part, faute d'etre rattache a un legendaire. On propage en cascade, en
+  // bornant la profondeur pour qu'une reference circulaire ne boucle pas.
+  // L'etat reste LOCAL : l'ecrire sur les objets de SOURCES_DB survivrait d'un
+  // appel a l'autre et le second calcul n'ajouterait plus rien.
+  for (let pass = 0; pass < 4; pass++) {
+    const add = {};
+    for (const [compId, comp] of Object.entries(cc)) {
+      for (const [key, val] of Object.entries(comp?.qty ?? {})) {
+        if (typeof val !== "number" || !cc[key]) continue;
+        const parent = totals[key] ?? 0;
+        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
+      }
+    }
+    let changed = false;
+    for (const [compId, v] of Object.entries(add)) {
+      if ((expanded[compId] ?? 0) !== v) {
+        totals[compId] = (totals[compId] ?? 0) - (expanded[compId] ?? 0) + v;
+        expanded[compId] = v;
+        changed = true;
+      }
+    }
+    if (!changed) break;
+  }
+
   return { totals, variable };
 }
 

@@ -2502,7 +2502,8 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     return add;
   };
   const legs = SOURCES_DB?.legendaries ?? {};
-  const totals = {};   // compId → qty
+  const totals = {};
+  const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
 
   for (const [compId, comp] of Object.entries(cc)) {
@@ -2537,6 +2538,32 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       }
     }
   }
+  // Developpement des intermediaires : un composant dont la quantite est indexee
+  // sur un AUTRE composant (10 filigranes par encapsulateur) n'etait compte nulle
+  // part, faute d'etre rattache a un legendaire. On propage en cascade, en
+  // bornant la profondeur pour qu'une reference circulaire ne boucle pas.
+  // L'etat reste LOCAL : l'ecrire sur les objets de SOURCES_DB survivrait d'un
+  // appel a l'autre et le second calcul n'ajouterait plus rien.
+  for (let pass = 0; pass < 4; pass++) {
+    const add = {};
+    for (const [compId, comp] of Object.entries(cc)) {
+      for (const [key, val] of Object.entries(comp?.qty ?? {})) {
+        if (typeof val !== "number" || !cc[key]) continue;
+        const parent = totals[key] ?? 0;
+        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
+      }
+    }
+    let changed = false;
+    for (const [compId, v] of Object.entries(add)) {
+      if ((expanded[compId] ?? 0) !== v) {
+        totals[compId] = (totals[compId] ?? 0) - (expanded[compId] ?? 0) + v;
+        expanded[compId] = v;
+        changed = true;
+      }
+    }
+    if (!changed) break;
+  }
+
   return { totals, variable };
 }
 
