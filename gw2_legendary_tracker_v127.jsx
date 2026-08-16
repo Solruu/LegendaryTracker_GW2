@@ -112,6 +112,7 @@ const I18N = {
     gt_detect_btn: "Detect",
     gt_syncing: "⟳ Syncing…",
     gt_synced: "✓ {n} items synced",
+    gt_stock_diag: "Stock sync returned {f} of {a} resources (source: {s}). A zero here is not an empty inventory.",
     gt_sync_btn: "⟳ Sync stocks",
     gt_legs_to_craft: "Legendaries to craft — {n} selected",
     gt_owned_hint_pre: "· Right-click or ",
@@ -337,6 +338,7 @@ const I18N = {
     gt_detect_btn: "Détecter",
     gt_syncing: "⟳ Synchro en cours…",
     gt_synced: "✓ {n} items synchronisés",
+    gt_stock_diag: "La synchro a renvoyé {f} ressources sur {a} demandées (source : {s}). Un zéro ici n'est pas un inventaire vide.",
     gt_sync_btn: "⟳ Synchroniser les stocks",
     gt_legs_to_craft: "Légendaires à crafter — {n} sélectionné(s)",
     gt_owned_hint_pre: "· Clic droit ou ",
@@ -2985,6 +2987,12 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
            stockStatus === "error" ? `✗ ${stockError}` :
            t("gt_sync_btn")}
         </button>
+        {(stocks._errors?.length > 0 || stocks._found === 0) && (
+          <div style={{ margin: "6px 0", padding: "7px 10px", background: "rgba(248,113,113,0.06)", border: "1px solid rgba(248,113,113,0.25)", borderRadius: 6, fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(248,113,113,0.85)", lineHeight: 1.5 }}>
+            {t("gt_stock_diag", { f: stocks._found ?? 0, a: stocks._asked ?? 0, s: stocks._sync_source ?? "?" })}
+            {(stocks._errors ?? []).map((e, i) => <div key={i} style={{ marginTop: 2 }}>· {e}</div>)}
+          </div>
+        )}
         {stocks._synced_at && (
           <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif", flexShrink: 0, textAlign: "right" }}>
             {stocks._sync_source === "manual" ? "📦 Local" : "🔗 API"}<br/>
@@ -4212,7 +4220,23 @@ export default function GW2LegendaryTracker() {
       return;
     }
 
-    const merged = { ...data.stocks, _synced_at: data.synced_at, _sync_source: "api", _bags_ok: data.bags_ok !== false };
+    // Flask renvoie deja une liste d'erreurs par source et un compte de trouves ;
+    // tout etait jete. Un stock a zero pouvait donc signifier « inventaire vide »
+    // ou « les quatre appels ont echoue », sans moyen de distinguer.
+    const found = Object.keys(data.stocks ?? {}).length;
+    const merged = {
+      ...data.stocks,
+      _synced_at: data.synced_at,
+      _sync_source: data._direct ? "api" : "flask",
+      _bags_ok: data.bags_ok !== false,
+      _errors: Array.isArray(data.errors) ? data.errors : [],
+      _found: found,
+      _asked: apiIds.length,
+    };
+    if (found === 0) {
+      setGtStockStatus("error");
+      setGtStockError((data.errors ?? []).join(" · ") || "0 ressource retournée sur " + apiIds.length + " demandées");
+    }
     setGtStocks(merged);
     try { localStorage.setItem("gw2_gt_stocks", JSON.stringify(merged)); } catch (_) {}
     setGtStockStatus("ok");
