@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v96",
+    "version": "v97",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -967,7 +967,8 @@
     "changelog_v93": "Cadence des perles orriennes refaite a partir du releve par zone. Chaque noeud d'huitre donne une perle GARANTIE, et 23 a 25 emplacements fixes sont recenses — Rive impitoyable 6, Reliquaire d'Abaddon 5, Roc du Pilastre 3, Plage boursouflee 3, Reliquaire de Lyssa 3, Reliquaire de Balthazar 1 a 3, Profondeurs etouffantes 1, Reliquaire de Grenth 1 — dont une vingtaine apparaissent reellement sur une instance. S'y ajoutent trois ennemis nommes quotidiens qui rendent 7 perles a eux trois, et les coffres engloutis, distincts des coffres du Reliquaire, qui donnent 1 a 2 perles au hasard sans taux documente. Le circuit gratuit rapporte donc environ 27 perles par personnage et par jour, contre les 2 annoncees avant-hier et les 15 de la v92 qui ne comptaient que la voie karma. Les 15 perles des vendeurs de coeur restent disponibles en plus, a 13 440 karma. Deux precisions de terrain : une faucille d'orichalque est necessaire sous peine de voir la dragonite remplacee par une motte de boue, et ces noeuds ne produisent aucune recolte bonus, ce qui rend le Glyphe d'abondance inutile ici.",
     "changelog_v94": "Le cout des Encapsulateurs d'essence memorielle n'etait compte nulle part. Les composants existaient bien, mais leur quantite etait indexee sur des cles qui ne sont pas des identifiants de legendaire — memory_essence_encapsulator et vision_i_awakening — donc invisibles du grand total, qui ne lit que qty[legendaire]. L'encapsulateur passe sur la cle vision avec 6 exemplaires, et le grand total sait desormais developper un intermediaire : tout composant dont la quantite est indexee sur un autre composant est multiplie par la quantite de celui-ci. Cout unitaire corrige et complete : 50 ectoplasmes, 10 filigranes d'orichalque, 1 cristal de vision mineur et 3 lingots d'electrum Xunlai — ce dernier etait a 1 au lieu de 3, et les ectoplasmes n'etaient pas declares du tout. Pour six exemplaires cela fait 300 ectoplasmes, 60 filigranes, 6 cristaux et 18 lingots. Documente aussi ce que le tracker ne disait pas : l'objet est a usage unique et consomme au kill, les six suffisent pour toutes les cartes puisque c'est le meme objet chez tous les vendeurs, retuer un boss deja valide n'en consomme pas un second, et un exemplaire inutilise se recycle en rendant l'integralite de ses composants.",
     "changelog_v95": "Le cristal de vision mineur etait une feuille : ses propres ingredients n'existaient meme pas comme composants, donc le poste le plus lourd de la chaine Vision n'etait chiffre nulle part. Sept composants ajoutes avec leurs identifiants verifies au referentiel — pierre de l'augure, lingot de dragonite, etoile etheree, brique de pierre de sang, et les trois materiaux de base sous elles. La recette est 2 lingots, 2 etoiles, 2 briques et 1 pierre, et chaque raffinement consomme 100 unites de son materiau de base. Le developpement en cascade ajoute en v130 propage tout seul : six encapsulateurs demandent donc six cristaux, soit douze de chaque raffinement et 1 200 unites de chacun des trois materiaux de base. Seul le prix de la pierre de l'augure en eclats spirituels reste non recoupe et est marque comme tel.",
-    "changelog_v96": "Prix de la pierre de l'augure tranche par observation en jeu d'Antoine : 20 eclats spirituels piece, la ou la v95 laissait le champ non verifie. L'eclat spirituel devient un composant a part entiere, devise de portefeuille 23, donc synchronisable comme les autres. Il est rattache a ses deux consommateurs connus : 20 par pierre de l'augure et 200 par eclat de pierre de sang. La cascade en tire les totaux d'elle-meme — six pierres pour les six cristaux de Vision font 120 eclats spirituels, auxquels s'ajoutent 400 pour les deux eclats de pierre de sang d'Aurora."
+    "changelog_v96": "Prix de la pierre de l'augure tranche par observation en jeu d'Antoine : 20 eclats spirituels piece, la ou la v95 laissait le champ non verifie. L'eclat spirituel devient un composant a part entiere, devise de portefeuille 23, donc synchronisable comme les autres. Il est rattache a ses deux consommateurs connus : 20 par pierre de l'augure et 200 par eclat de pierre de sang. La cascade en tire les totaux d'elle-meme — six pierres pour les six cristaux de Vision font 120 eclats spirituels, auxquels s'ajoutent 400 pour les deux eclats de pierre de sang d'Aurora.",
+    "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn."
   },
   "meta_events": {
     "vb": {
@@ -12837,103 +12838,145 @@
                 {
                   "name": "The Wayfarer's Henge",
                   "how": {
-                    "fr": "⚠ Chaîne de 4 collections imbriquées (16 pierres de druide, ~16 jours) → voir l'onglet « ⛏ Chaîne du Henge » pour le détail, les prérequis chiffrés et la progression.",
-                    "en": "⚠ Chain of 4 nested collections (16 druid stones, ~16 days) → see the '⛏ Henge chain' tab for the breakdown, costed requirements and progress."
+                    "fr": "Dos obtenu via 4 collections imbriquées et timegatées : 16 jours minimum, incompressibles. À lancer le plus tôt possible, c'est le vrai chemin critique de cette collection.",
+                    "en": "Backpiece obtained through 4 nested, time-gated collections: 16 days minimum, incompressible. Start it as early as possible — it is the real critical path of this collection."
                   },
-                  "bit": 1
+                  "bit": 1,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Scouting Party Supporter",
                   "how": {
-                    "fr": "Event « Help the scouting party » au Mont Draconis",
-                    "en": "Event 'Help the scouting party' en Draconis Mons"
+                    "fr": "Acheter chez la Tacticienne Tunelle, à l'Ascension sauvage, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy from Tactician Tunelle at Savage Rise for 7,000 karma — heart completed first."
                   },
-                  "bit": 2
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Fiery Liberator",
                   "how": {
-                    "fr": "Event « Help the prisoners » au Mont Draconis",
-                    "en": "Event 'Help the prisoners' en Draconis Mons"
+                    "fr": "Acheter chez la Prisonnière évadée Arissea, au Repaire des Hérétiques, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy from Escaped Prisoner Arissea at Heathen's Hold for 7,000 karma — heart completed first."
                   },
-                  "bit": 3
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Enemy of the Inquest",
                   "how": {
-                    "fr": "Event « Infiltrate the Inquest » au Mont Draconis",
-                    "en": "Event 'Infiltrate the Inquest' en Draconis Mons"
+                    "fr": "Acheter chez Golémite Mark I, à Rata Arcanum, pour 7 000 karma — cœur terminé d'abord. ⚠ Accès non évident : partir du point de passage du Repaire des Hérétiques [&BM0JAAA=], emprunter les tubes thermiques puis planer.",
+                    "en": "Buy from Mark I Golemite at Rata Arcanum for 7,000 karma — heart completed first. ⚠ Non-obvious access: start from Heathen's Hold Waypoint [&BM0JAAA=], take the Thermal Tubes, then glide."
                   },
-                  "bit": 4
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Friend of Golems",
                   "how": {
-                    "fr": "Event « Assist the ancient golems » au Mont Draconis (vendeur de heart)",
-                    "en": "Event 'Assist the ancient golems' en Draconis Mons (heart vendor)"
+                    "fr": "Acheter chez Z.O.X., au Creux ancien, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy from Z.O.X. at Ancient Hollow for 7,000 karma — heart completed first."
                   },
-                  "bit": 5
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Searing Ascender",
                   "how": {
-                    "fr": "JP Searing Ascent — atteindre la fin du jumping puzzle",
-                    "en": "JP Searing Ascent - reach the end of the jumping puzzle"
+                    "fr": "Dans le coffre final du puzzle de saut « Ascension embrasée ».",
+                    "en": "In the final chest of the Searing Ascent jumping puzzle."
                   },
-                  "bit": 6
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Ancient Asuran Wrench",
                   "how": {
-                    "fr": "Tuer le Champion Dévoreur dans la Burial Chamber",
-                    "en": "Kill the Devourer Champion in the Burial Chamber"
+                    "fr": "⚠ Correction : vaincre le Dévoreur champion à la Tombe du golémancien, et non dans la Chambre funéraire.",
+                    "en": "⚠ Correction: defeat the Champion Devourer at the Golemancer's Tomb, not the Burial Chamber."
                   },
-                  "bit": 7
+                  "bit": 7,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Depleted Power Source",
                   "how": {
-                    "fr": "Trouver dans les Zinn's Stashes en Draconis Mons",
-                    "en": "Find in Zinn's Stashes in Draconis Mons"
+                    "fr": "⚠ Chaîne de prérequis entière, absente jusqu'ici. Acheter d'abord le Détecteur technomagique chez le Maître d'approvisionnement Hanjo, au Débarcadère du marin : il débloque la vente des Sources d'énergie asura anciennes chez les vendeurs de cœur de la carte. Ces sources servent à localiser les Caches de Zinn, où l'objet tombe au hasard.",
+                    "en": "⚠ A whole prerequisite chain, missing until now. First buy the Technomagical Detector from Supplymaster Hanjo at Mariner's Landing: it unlocks Ancient Asuran Power Sources for sale from the map's heart vendors. Those sources are used to locate Zinn's Stashes, where the item drops at random."
                   },
-                  "bit": 8
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Ignis Heart",
                   "how": {
-                    "fr": "Tuer le destructeur légendaire Ignis au Mont Draconis",
-                    "en": "Kill the legendary destroyer Ignis in Draconis Mons"
+                    "fr": "Vaincre le Destructeur légendaire Ignis, mer Bouillonnante occidentale, au niveau inférieur de la carte.",
+                    "en": "Defeat the Legendary Destroyer Ignis in the Western Boiling Sea, on the map's lower level."
                   },
-                  "bit": 9
+                  "bit": 9,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Aestus Heart",
                   "how": {
-                    "fr": "Tuer le destructeur légendaire Aestus au Mont Draconis",
-                    "en": "Kill the legendary destroyer Aestus in Draconis Mons"
+                    "fr": "Vaincre le Destructeur légendaire Aestus, mer Bouillonnante orientale, au niveau inférieur de la carte.",
+                    "en": "Defeat the Legendary Destroyer Aestus in the Eastern Boiling Sea, on the map's lower level."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Bloodstone-Charged Lava Wurm Scale",
                   "how": {
-                    "fr": "Tuer le champion Lava Wurm au Mont Draconis",
-                    "en": "Kill the Lava Wurm champion in Draconis Mons"
+                    "fr": "Vaincre la Guivre de lave chargée en pierre de sang, au Repaire des Hérétiques.",
+                    "en": "Defeat the Bloodstone-Charged Lava Wurm at Heathen's Hold."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Spirit Bough",
-                  "how": "Gather Spirit Wood nodes in Draconis Mons",
-                  "bit": 12
+                  "how": {
+                    "fr": "⚠ Correction : ce n'est pas une récolte. Vaincre le Grand Rameau-garde, à l'Ascension sauvage.",
+                    "en": "⚠ Correction: this is not a gathering item. Defeat the Greater Wardbough at Savage Rise."
+                  },
+                  "bit": 12,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 },
                 {
                   "name": "Albino Orchid Blossom",
                   "how": {
-                    "fr": "Récolter les nodes d'Albino Orchid au Mont Draconis (drop variable)",
-                    "en": "Gather Albino Orchid nodes in Draconis Mons (variable drop)"
+                    "fr": "Drop aléatoire en récoltant les Orchidées primordiales, réparties sur toute la carte. Visibles sur la mini-carte tant qu'elles ne sont pas récoltées, jamais sur la carte plein écran.",
+                    "en": "Random drop when gathering Primordial Orchids, spread across the whole map. Visible on the mini-map until gathered, never on the full-screen map."
                   },
-                  "bit": 13
+                  "bit": 13,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
                 }
               ]
             },
@@ -12978,100 +13021,157 @@
                 },
                 {
                   "name": "Favor of Dwayna",
-                  "how": "Event 'Reclaim Dwayna's reliquary' en Siren's Landing",
-                  "bit": 2
+                  "how": {
+                    "fr": "Acheter la Faveur de Dwayna chez le Roi Zoran, au Reliquaire de Dwayna, pour 7 000 karma — le cœur doit être terminé d'abord.",
+                    "en": "Buy the Favor of Dwayna from King Zoran at Dwayna's Reliquary for 7,000 karma — the heart must be completed first."
+                  },
+                  "bit": 2,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Favor of Balthazar",
-                  "how": "Event 'Reclaim Balthazar's reliquary' en Siren's Landing",
-                  "bit": 3
+                  "how": {
+                    "fr": "Acheter la Faveur de Balthazar chez la Reine Yasamin, au Reliquaire de Balthazar, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy the Favor of Balthazar from Queen Yasamin at Balthazar's Reliquary for 7,000 karma — heart completed first."
+                  },
+                  "bit": 3,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Favor of Grenth",
-                  "how": "Event 'Reclaim Grenth's reliquary' en Siren's Landing",
-                  "bit": 4
+                  "how": {
+                    "fr": "Acheter la Faveur de Grenth chez la Reine Mahtab, au Reliquaire de Grenth, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy the Favor of Grenth from Queen Mahtab at Grenth's Reliquary for 7,000 karma — heart completed first."
+                  },
+                  "bit": 4,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Favor of Melandru",
-                  "how": "Event 'Reclaim Melandru's reliquary' en Siren's Landing",
-                  "bit": 5
+                  "how": {
+                    "fr": "Acheter la Faveur de Melandru chez le Roi Reza, au Reliquaire de Melandru, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy the Favor of Melandru from King Reza at Melandru's Reliquary for 7,000 karma — heart completed first."
+                  },
+                  "bit": 5,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Favor of Lyssa",
-                  "how": "Event 'Reclaim Lyssa's reliquary' en Siren's Landing",
-                  "bit": 6
+                  "how": {
+                    "fr": "Acheter la Faveur de Lyssa chez la Reine Bahar, au Reliquaire de Lyssa, pour 7 000 karma — cœur terminé d'abord.",
+                    "en": "Buy the Favor of Lyssa from Queen Bahar at Lyssa's Reliquary for 7,000 karma — heart completed first."
+                  },
+                  "bit": 6,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Ancient Cipher",
                   "how": {
-                    "fr": "⚠️ Drop RNG — coffres d'Abaddon's Reliquary (max 2/jour/perso)",
-                    "en": "⚠️ RNG drop — Abaddon's Reliquary chests (max 2/day/character)"
+                    "fr": "Drop aléatoire des coffres du Reliquaire d'Abaddon. ⚠ Prérequis souvent oublié : l'accès n'ouvre qu'après avoir purifié TOUS les autres reliquaires, c'est-à-dire terminé les 5 cœurs. Ensuite, 2 coffres par jour et par personnage — compte plusieurs jours.",
+                    "en": "Random drop from the chests inside Abaddon's Reliquary. ⚠ Commonly missed prerequisite: access only opens after cleansing ALL the other reliquaries, i.e. completing the 5 hearts. Then 2 chests per day per character — expect several days."
                   },
-                  "bit": 7
+                  "bit": 7,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Unchained Heart",
                   "how": {
-                    "fr": "Tuer la Unchained Wyvern à la Plage des sirènes",
-                    "en": "Kill the Unchained Wyvern in Siren's Landing"
+                    "fr": "Vaincre la Wyverne libérée, au Reliquaire de Dwayna. Une fois par jour et par personnage, elle rend aussi 3 perles orriennes.",
+                    "en": "Defeat the Unchained Wyvern at Dwayna's Reliquary. Once per day per character, it also yields 3 Orrian Pearls."
                   },
-                  "bit": 8
+                  "bit": 8,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Horrid Residue",
                   "how": {
-                    "fr": "Drop des ennemis Horrid à la Plage des sirènes",
-                    "en": "Drop from Horrid enemies in Siren's Landing"
+                    "fr": "Vaincre l'Illusion horrible, au Reliquaire de Lyssa. Une fois par jour et par personnage, elle rend aussi 2 perles orriennes.",
+                    "en": "Defeat the Horrid Illusion at Lyssa's Reliquary. Once per day per character, it also yields 2 Orrian Pearls."
                   },
-                  "bit": 9
+                  "bit": 9,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Colossal Brazier",
                   "how": {
-                    "fr": "Interagir avec le Colossal Brazier à la Plage des sirènes",
-                    "en": "Interact with the Colossal Brazier in Siren's Landing"
+                    "fr": "⚠ Correction : ce n'est pas une simple interaction. L'objet se trouve dans le coffre final du puzzle de saut « Ascension d'Abaddon », réputé difficile. Se faire téléporter au coffre suffit pour l'objet, mais pas pour le succès du puzzle.",
+                    "en": "⚠ Correction: this is not a simple interaction. The item is in the final chest of the Abaddon's Ascent jumping puzzle, which is notoriously hard. Being ported to the chest is enough for the item, but not for the puzzle achievement."
                   },
-                  "bit": 10
+                  "bit": 10,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Orrian Nacre",
                   "how": {
-                    "fr": "Récolter les nodes orriens à la Plage des sirènes (drop variable)",
-                    "en": "Gather Orrian nodes in Siren's Landing (variable drop)"
+                    "fr": "Drop aléatoire en récoltant les nœuds d'huîtres orriennes. ⚠ Ne tombe qu'une fois la collection Siren's Landing Master déverrouillée — inutile de chercher avant. Les nœuds apparaissent sur la mini-carte tant qu'ils ne sont pas récoltés, mais jamais sur la carte plein écran.",
+                    "en": "Random drop when gathering Orrian Oyster nodes. ⚠ Only drops once the Siren's Landing Master collection is unlocked — no point looking before. Nodes show on the mini-map until gathered, never on the full-screen map."
                   },
-                  "bit": 11
+                  "bit": 11,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Orrian Gorilla Sinew",
                   "how": {
-                    "fr": "Tuer les champions Gorilles orriens à la Plage des sirènes",
-                    "en": "Kill the Orrian Gorilla champions in Siren's Landing"
+                    "fr": "Vaincre le Gorille ressuscité champion, au Reliquaire de Balthazar.",
+                    "en": "Defeat the Champion Risen Gorilla at Balthazar's Reliquary."
                   },
-                  "bit": 12
+                  "bit": 12,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Orrian Venom Glands",
                   "how": {
-                    "fr": "Tuer les ennemis Orrian Venom à la Plage des sirènes",
-                    "en": "Kill the Orrian Venom enemies in Siren's Landing"
+                    "fr": "Vaincre l'Araignée ressuscitée championne, au Reliquaire de Lyssa.",
+                    "en": "Defeat the Champion Risen Spider at Lyssa's Reliquary."
                   },
-                  "bit": 13
+                  "bit": 13,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Orrian Wraith Bindings",
                   "how": {
-                    "fr": "Tuer les Spectres orriens à la Plage des sirènes",
-                    "en": "Kill the Orrian Wraiths in Siren's Landing"
+                    "fr": "Vaincre le Spectre ressuscité champion, au Reliquaire de Grenth.",
+                    "en": "Defeat the Champion Risen Wraith at Grenth's Reliquary."
                   },
-                  "bit": 14
+                  "bit": 14,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 },
                 {
                   "name": "Orrian Drake Scale",
                   "how": {
-                    "fr": "Tuer la Risen Drake Broodmother à la Plage des sirènes",
-                    "en": "Kill the Risen Drake Broodmother in Siren's Landing"
+                    "fr": "⚠ Correction : c'est le Draconnier ressuscité champion, au Reliquaire de Melandru — et non une matriarche.",
+                    "en": "⚠ Correction: it is the Champion Risen Drake at Melandru's Reliquary — not a broodmother."
                   },
-                  "bit": 15
+                  "bit": 15,
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
                 }
               ]
             }
