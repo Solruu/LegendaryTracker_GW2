@@ -1684,7 +1684,7 @@ const LEGENDARIES = {
     raidAchievements: [
       { key: "rune_collector", achievementId: 7796, name: "Legendary Rune Collector",
         unlock: { fr: "🔓 Aucune action de déblocage : le compteur s'incrémente à chaque rune légendaire liée au compte. ⚠ Si tu possèdes déjà des runes légendaires et que le compteur reste à 0, passe à l'Arche du Lion ou à la Wizard's Tower — la visite force la mise à jour rétroactive.", en: "🔓 No unlock step: the counter increments each time a legendary rune binds to your account. ⚠ If you already own legendary runes and the counter stays at 0, visit Lion's Arch or the Wizard's Tower — the visit forces a retroactive update." },
-        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
+        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet. ⚠ Le vrai mur n'est pas l'or mais deux plafonds hebdomadaires : 20 trèfles mystiques et 50 jetons de fournisseur PAR rune. Six runes, c'est 120 trèfles — environ 5 semaines au plafond de 25/sem. — et 300 jetons, environ 3 semaines à 105/sem. 💡 Rien dans le tracker n'exige ces runes : c'est du confort. Mais si tu les veux un jour, les trèfles et les jetons se cumulent en fond dès maintenant, sans rien décider.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
         recipe: {
           fr: ["1 Rune = MF : Gift of Runes + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
                "Gift of Runes = 50× Mystic Aspect + 20× Mystic Clover + 100× Ectos + 50× Obsidian Shard",
@@ -1697,7 +1697,7 @@ const LEGENDARIES = {
         } },
       { key: "sigil_collector", achievementId: 7788, name: "Legendary Sigil Collector",
         unlock: { fr: "🔓 Aucune action de déblocage : même logique que les runes, le compteur suit les sigils légendaires liés au compte. ⚠ Même correctif rétroactif en passant à l'Arche du Lion ou à la Wizard's Tower si le compteur ne bouge pas.", en: "🔓 No unlock step: same as runes, the counter tracks account-bound legendary sigils. ⚠ Same retroactive fix by visiting Lion's Arch or the Wizard's Tower if the counter doesn't move." },
-        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2-4 couvrent l'essentiel.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." },
+        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2 à 4 couvrent l'essentiel. ⚠ Plus cher que les runes : 30 trèfles mystiques et 50 jetons de fournisseur PAR sigil, contre 20 trèfles pour une rune. Quatre sigils, c'est 120 trèfles à eux seuls. 💡 Aucun légendaire du tracker n'en dépend — c'est du confort pur, à faire passer après tout le reste, mais dont les ingrédients s'accumulent en fond.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." },
         recipe: {
           fr: ["1 Sigil = MF : Gift of Sigils + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
                "Gift of Sigils = 75× Mystic Mote + 30× Mystic Clover + 150× Ectos + 75× Obsidian Shard",
