@@ -238,6 +238,12 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `_sub_status` ; la synchro directe si. Selon le chemin emprunté, le même bouton
   faisait donc deux choses différentes, sans le dire. Vérifier qu'un chemin de
   repli couvre le même périmètre que le chemin principal.
+- **Une donnée écrite n'est pas une donnée affichée.** Trois fois de suite, une
+  information exacte a dormi dans les sources sans jamais atteindre l'écran :
+  l'écart de catégorie de Bava Nisos, le cas de `A Hunt for the Ages`, les seuils
+  réels des métas de maîtrise. Après toute passe de données, vérifier que le
+  champ est réellement lu par un chemin de rendu. `gw2_audit_v1.py` liste
+  désormais les champs bilingues dont le nom n'apparaît nulle part dans le JSX.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score
   d'effort ne voit que le volume, les prérequis et les AP.

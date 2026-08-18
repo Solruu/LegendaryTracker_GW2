@@ -123,6 +123,50 @@ def _jsx_currency_blocks(src):
     return out
 
 
+# Champs bilingues qui sont de la donnee de reference, non destinee au rendu.
+NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
+                   "editorial_principle", "meta_eligible_note", "achievement_notes_note"}
+
+
+def check_unrendered_fields(data, errors, warnings):
+    """Un champ editorial que le JSX ne lit nulle part est du travail invisible.
+
+    Trois fois de suite, une information exacte a dormi dans les sources sans
+    jamais atteindre l'ecran : l'ecart de categorie de Bava Nisos, le cas de
+    A Hunt for the Ages, les seuils reels des metas de maitrise. Le controle
+    reste heuristique — il verifie que le NOM du champ apparait quelque part
+    dans le JSX — mais un nom totalement absent est une certitude, pas un doute.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    src = jsx[-1].read_text(encoding="utf-8")
+    bilingual = {}
+
+    def visit(node, path):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if isinstance(v, dict) and "fr" in v and "en" in v:
+                    bilingual.setdefault(k, []).append(path + "/" + k)
+                visit(v, path + "/" + k)
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                visit(v, f"{path}[{i}]")
+
+    visit(data, "")
+    for key, paths in sorted(bilingual.items()):
+        if key in NOT_FOR_DISPLAY:
+            continue
+        if key not in src:
+            warnings.append(
+                f"champ editorial jamais rendu : '{key}' ({len(paths)} occurrence(s), "
+                f"ex. {paths[0][:70]}) — ecrit dans les sources, absent du JSX"
+            )
+
+
 def check_qty_vs_jsx(data, errors, warnings):
     """Le qty de base d'un composant doit egaler le required du meme legendaire.
 
@@ -326,7 +370,10 @@ def main() -> int:
     # 7. Quantites des composants alignees sur les requis du JSX
     check_qty_vs_jsx(data, errors, warnings)
 
-    # 8. Integrite de chaque entree de meta_eligible
+    # 8. Champs editoriaux effectivement rendus
+    check_unrendered_fields(data, errors, warnings)
+
+    # 9. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
