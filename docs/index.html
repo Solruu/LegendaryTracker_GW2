@@ -715,7 +715,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v102",
+    "version": "v103",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1692,7 +1692,8 @@ const SOURCES_DB = {
       "en": "Efficient does not mean fast. The criterion is the time-spent to result ratio over weeks, not session length. Two consequences for how tips are written. First, ORDER beats duration: 'unlock before playing this content' matters more than an execution time, because redoing the same content three times is the real cost. Second, a timegate is not an obstacle to route around but a queue to start early and let run in the background — Spool of Silk Weaving Thread, Xunlai Electrum Ingots, Fractal Journals, Wayfarer's Henge."
     },
     "changelog_v101": "Antoine reformule le critere du projet : efficient ne veut pas dire rapide, et refaire trois fois le meme contenu est le vrai cout. Le principe est inscrit dans _meta.editorial_principle et gouverne desormais la redaction des conseils. Premiere application concrete, un champ unlock_first sur les cinq objets qui n'apparaissent qu'une fois leur collection ouverte : Nacre orrienne, Fiole de larmes, Noeud petrifie, Ami de Noran et Suif cristallise. Jouer ces contenus avant d'avoir deverrouille la collection oblige a les refaire, ce qui explique exactement ce qu'Antoine a vecu sur les collections LW3 commencees apres l'histoire. Le Suif est le pire des cinq puisque ses coffres sont limites a un par jour et par personnage. Enfin les couts en or ne sont plus figes : la chaine du Mini Aurene et l'Encapsulateur portent un lien vers le calculateur gw2efficiency, qui compare achat et fabrication a partir du stock reel du joueur — un prix ecrit en dur serait faux des le lendemain.",
-    "changelog_v102": "Aurora II est entierement documentee grace au tableau capture par Antoine. Identifiant de succes corrige au passage : les sources declaraient 4218, qui est « Daily Tier 2 Deepstone » ; le bon est 3489, celui que le JSX utilisait deja, si bien que l'erreur ne se voyait pas. Les 21 items recoivent enfin un numero de bit, sans lequel aucun conseil ne pouvait leur etre rattache, ainsi que le nom du sanctuaire, la carte, le point de passage le plus proche et son code de chat. Une correction de fond : l'Electrum secret etait annonce au Marais de la pierre de sang, il est en Profondeurs embrouillees. L'ordre de trajet le moins couteux est conserve tel quel, du Lac Sanguinaire au Temple du renouveau : c'est exactement le genre d'information que le critere editorial privilegie, puisqu'il evite de payer deux fois la meme traversee. Trois synergies signalees : le sanctuaire des Marches du Calife s'ouvre avec l'evenement qui donne le Coeur pyroclastique, celui du Froid mordant partage son elixir avec le Suif cristallise, et le sanctuaire de la mer Bouillonnante occidentale est dans la zone d'Ignis. Enfin le cas particulier de l'Electrum atmospherique est note : son point de passage change entre le jour et la nuit."
+    "changelog_v102": "Aurora II est entierement documentee grace au tableau capture par Antoine. Identifiant de succes corrige au passage : les sources declaraient 4218, qui est « Daily Tier 2 Deepstone » ; le bon est 3489, celui que le JSX utilisait deja, si bien que l'erreur ne se voyait pas. Les 21 items recoivent enfin un numero de bit, sans lequel aucun conseil ne pouvait leur etre rattache, ainsi que le nom du sanctuaire, la carte, le point de passage le plus proche et son code de chat. Une correction de fond : l'Electrum secret etait annonce au Marais de la pierre de sang, il est en Profondeurs embrouillees. L'ordre de trajet le moins couteux est conserve tel quel, du Lac Sanguinaire au Temple du renouveau : c'est exactement le genre d'information que le critere editorial privilegie, puisqu'il evite de payer deux fois la meme traversee. Trois synergies signalees : le sanctuaire des Marches du Calife s'ouvre avec l'evenement qui donne le Coeur pyroclastique, celui du Froid mordant partage son elixir avec le Suif cristallise, et le sanctuaire de la mer Bouillonnante occidentale est dans la zone d'Ignis. Enfin le cas particulier de l'Electrum atmospherique est note : son point de passage change entre le jour et la nuit.",
+    "changelog_v103": "Lot 3, premiere passe : Vision II Farsight, jumeau d'Aurora II, etait la seule collection Vision sans donnee. Les 24 sanctuaires de maitrise de la saison 4 sont consignes avec leur carte, leur point de passage, son code de chat et la route d'acces detaillee. Le point qui change la planification : 24 existent mais 20 suffisent, donc quatre peuvent etre ecartes. Deux sont explicitement signales comme candidats a l'abandon parce qu'ils dependent du meta de leur carte — Dragon's Snare, dont la crevasse reste muree tant que l'assaut final n'est pas termine, et The Hunting Grounds. Un cas unique est documente a part : Niles ne se valide pas en s'agenouillant mais en jouant les notes 325-324 apres avoir parle du rituel, la page de discussion du wiki signalant que l'ancienne methode ne fonctionne plus. Enfin les prerequis de montures sont regroupes, avec le seul verrou dur de la collection : sans la maitrise Brise-barriere du Scarabee, les Ruines de la prison de Bokoss sont inaccessibles."
   },
   "meta_events": {
     "vb": {
@@ -14837,10 +14838,428 @@ const SOURCES_DB = {
             "en": "Glimpse (precursor)"
           },
           "note": {
-            "fr": "/kneel à 20 Mastery Insights de la LS4, en restant à genoux 15 s (Meditative Rest). 24 existent, 4 inaccessibles.",
-            "en": "/kneel at 20 LWS4 Mastery Insights, staying kneeled for 15 s (Meditative Rest). 24 exist, 4 unreachable."
+            "fr": "24 sanctuaires existent, 20 suffisent. Tu peux donc écarter les 4 plus pénibles — Dragon's Snare en priorité, puis The Hunting Grounds : les deux dépendent du méta de leur carte. /kneel applique Repos méditatif pendant 15 secondes : il faut rester agenouillé jusqu'à la fin de l'effet, sinon rien n'est validé.",
+            "en": "24 insights exist, 20 are enough. You can therefore drop the 4 most annoying — Dragon's Snare first, then The Hunting Grounds: both depend on their map meta. /kneel applies Meditative Rest for 15 seconds: you must stay kneeling until the effect expires or nothing counts."
           },
-          "subcollections": []
+          "subcollections": [],
+          "items": [
+            {
+              "bit": 0,
+              "name": "Istan Insight: Colossus of Palawadan",
+              "map": "Domaine d'Istan",
+              "waypoint": {
+                "name": "Aube du champion",
+                "chat_code": "[&BBoLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Aube du champion. Rejoindre les falaises de Churrhir, monter au sommet en Sauteur puis planer jusqu'au sanctuaire.",
+                "en": "/kneel at the insight, in Domaine d'Istan. Waypoint: Aube du champion. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 1,
+              "name": "Istan Insight: Pillar of the Faithless",
+              "map": "Domaine d'Istan",
+              "waypoint": {
+                "name": "Aube du champion",
+                "chat_code": "[&BBoLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Aube du champion. Suivre la rivière vers le sud, puis escalader en monture le pilier rocheux au centre du village.",
+                "en": "/kneel at the insight, in Domaine d'Istan. Waypoint: Aube du champion. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 2,
+              "name": "Istan Insight: The Wobbling Skies",
+              "map": "Domaine d'Istan",
+              "waypoint": {
+                "name": "Astrarium",
+                "chat_code": "[&BPoKAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Astrarium. Voler vers la Flottille corsaire : le sanctuaire est à l'intérieur de l'aéronef des Alehounds.",
+                "en": "/kneel at the insight, in Domaine d'Istan. Waypoint: Astrarium. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 3,
+              "name": "Sandswept Isles Insight: Atholma",
+              "map": "Îles Balayées",
+              "waypoint": {
+                "name": "Atholma",
+                "chat_code": "[&BEMLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Îles Balayées. Point de passage : Atholma. Grimper au sommet du rocher, côté ouest d'Atholma.",
+                "en": "/kneel at the insight, in Îles Balayées. Waypoint: Atholma. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 4,
+              "name": "Sandswept Isles Insight: Invariant Enclave",
+              "map": "Îles Balayées",
+              "waypoint": {
+                "name": "Campement d'Anniogel",
+                "chat_code": "[&BCULAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Îles Balayées. Point de passage : Campement d'Anniogel. Au sud du Labo magnétique [&BC0LAAA=]. Atteindre la plateforme flottante en sautant au Chacal depuis le sommet de la pyramide, sur la plateforme à l'ouest.",
+                "en": "/kneel at the insight, in Îles Balayées. Waypoint: Campement d'Anniogel. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 5,
+              "name": "Sandswept Isles Insight: The Hunting Grounds",
+              "map": "Îles Balayées",
+              "waypoint": {
+                "name": "Atholma",
+                "chat_code": "[&BEMLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Îles Balayées. Point de passage : Atholma. Monter au sommet de la statue de l'Héritage d'Olma [&BD0LAAA=] en Sauteur. ⚠ Signalé comme pénible car dépendant du méta de la carte. Si tu ne vises que 20 sanctuaires sur 24, c'est un bon candidat à sauter.",
+                "en": "/kneel at the insight, in Îles Balayées. Waypoint: Atholma.  ⚠ Flagged as troublesome because it depends on the map meta. If you only need 20 of the 24, this is a good one to skip."
+              },
+              "skip_candidate": true,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 6,
+              "name": "Domain of Kourna Insight: Allied Encampment",
+              "map": "Domaine de Kourna",
+              "waypoint": {
+                "name": "Campement allié",
+                "chat_code": "[&BFcLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Partir au sud-ouest et monter l'échafaudage extérieur en Sauteur. Le sanctuaire est en haut de la tour, sous l'auvent.",
+                "en": "/kneel at the insight, in Domaine de Kourna. Waypoint: Campement allié. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 7,
+              "name": "Domain of Kourna Insight: Bokoss Prison Ruins",
+              "map": "Domaine de Kourna",
+              "waypoint": {
+                "name": "Campement allié",
+                "chat_code": "[&BFcLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Prendre le portail vers les Ruines de la prison de Bokoss [&BFYLAAA=] et défoncer le mur avec la maîtrise Brise-barrière du Scarabée. ⚠ Exige la maîtrise Brise-barrière du Scarabée : sans elle, le sanctuaire est inaccessible.",
+                "en": "/kneel at the insight, in Domaine de Kourna. Waypoint: Campement allié.  ⚠ Requires the Roller Beetle's Barrier Smash mastery: without it the insight is unreachable."
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 8,
+              "name": "Domain of Kourna Insight: Dabiji Hollows",
+              "map": "Domaine de Kourna",
+              "waypoint": {
+                "name": "Campement allié",
+                "chat_code": "[&BFcLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Aller à l'est par le pont, puis passer sous le second pont pour entrer dans la grotte. L'escalade au Sauteur est délicate : le Griffon passe mieux.",
+                "en": "/kneel at the insight, in Domaine de Kourna. Waypoint: Campement allié. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 9,
+              "name": "Jahai Insight: Crescent's Prosperity",
+              "map": "Falaises de Jahai",
+              "waypoint": {
+                "name": "Chancellerie récupérée",
+                "chat_code": "[&BJkLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Falaises de Jahai. Point de passage : Chancellerie récupérée. Monter la bordure nord du bâtiment en Sauteur.",
+                "en": "/kneel at the insight, in Falaises de Jahai. Waypoint: Chancellerie récupérée. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 10,
+              "name": "Jahai Insight: Fang of the Dragon",
+              "map": "Falaises de Jahai",
+              "waypoint": {
+                "name": "Vendetta de l'âme",
+                "chat_code": "[&BIMLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Falaises de Jahai. Point de passage : Vendetta de l'âme. Le sanctuaire est au sommet d'une stalagmite marquée. Sauter dans l'encoche sud en Sauteur, puis rebondir plus haut.",
+                "en": "/kneel at the insight, in Falaises de Jahai. Waypoint: Vendetta de l'âme. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 11,
+              "name": "Jahai Insight: Harpy Rock",
+              "map": "Falaises de Jahai",
+              "waypoint": {
+                "name": "Chancellerie récupérée",
+                "chat_code": "[&BJkLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Falaises de Jahai. Point de passage : Chancellerie récupérée. Monter en Sauteur sur le bâtiment situé à l'ouest du sanctuaire.",
+                "en": "/kneel at the insight, in Falaises de Jahai. Waypoint: Chancellerie récupérée. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 12,
+              "name": "Jahai Insight: Scar Overlook",
+              "map": "Falaises de Jahai",
+              "waypoint": {
+                "name": "Col de Venta",
+                "chat_code": "[&BJMLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Falaises de Jahai. Point de passage : Col de Venta. Passer le portail de sable au Chacal depuis la Caverne de cristal [&BJQLAAA=], continuer en Griffon ou Raptor, finir l'ascension au Sauteur.",
+                "en": "/kneel at the insight, in Falaises de Jahai. Waypoint: Col de Venta. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 13,
+              "name": "Jahai Insight: Talon of the Dragon",
+              "map": "Falaises de Jahai",
+              "waypoint": {
+                "name": "Village de Yatendi",
+                "chat_code": "[&BH4LAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Falaises de Jahai. Point de passage : Village de Yatendi. Approcher l'arche par l'est en Griffon, ou monter en Sauteur sur l'arche opposée.",
+                "en": "/kneel at the insight, in Falaises de Jahai. Waypoint: Village de Yatendi. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 14,
+              "name": "Thunderhead Peaks Insight: Niles — Honored Ritual",
+              "map": "Pics de Tonnerre",
+              "waypoint": {
+                "name": "Cœur de la révolution",
+                "chat_code": "[&BKYLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Pics de Tonnerre. Point de passage : Cœur de la révolution. ⚠ Ce n'est pas un sanctuaire à escalader : parler à Niles du rituel, puis jouer les notes 325 – 324. ⚠ Cas unique : aucune escalade, mais une énigme musicale. La page de discussion du wiki signale que s'agenouiller à côté du point de maîtrise ne valide plus — il faut bien passer par le rituel.",
+                "en": "/kneel at the insight, in Pics de Tonnerre. Waypoint: Cœur de la révolution.  ⚠ Unique case: no climbing, a musical puzzle instead. The wiki talk page reports that kneeling next to the mastery point no longer credits — the ritual is required."
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 15,
+              "name": "Thunderhead Peaks Insight: Brechnar's Gauntlet",
+              "map": "Pics de Tonnerre",
+              "waypoint": {
+                "name": "Fin de l'histoire",
+                "chat_code": "[&BLsLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Pics de Tonnerre. Point de passage : Fin de l'histoire. Traverser les Catacombes naines : depuis la salle principale, monter l'escalier et suivre le tunnel jusqu'au Gantelet de Brechnar [&BKALAAA=].",
+                "en": "/kneel at the insight, in Pics de Tonnerre. Waypoint: Fin de l'histoire. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 16,
+              "name": "Thunderhead Peaks Insight: Ironhammer Crossing",
+              "map": "Pics de Tonnerre",
+              "waypoint": {
+                "name": "Pont d'observation",
+                "chat_code": "[&BLkLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Pics de Tonnerre. Point de passage : Pont d'observation. Depuis le Chemin des Exaltés [&BLYLAAA=], aller à l'ouest jusqu'aux trois hauts piliers de pierre, puis enchaîner Raptor et Sauteur.",
+                "en": "/kneel at the insight, in Pics de Tonnerre. Waypoint: Pont d'observation. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 17,
+              "name": "Thunderhead Peaks Insight: Sorrow's Cave",
+              "map": "Pics de Tonnerre",
+              "waypoint": {
+                "name": "Mouillage",
+                "chat_code": "[&BLoLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Pics de Tonnerre. Point de passage : Mouillage. Aller à l'ouest vers la Pique de Hundar, puis au nord pour trouver l'entrée de la grotte. Suivre la magie volatile en montant au Sauteur.",
+                "en": "/kneel at the insight, in Pics de Tonnerre. Waypoint: Mouillage. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 18,
+              "name": "Thunderhead Peaks Insight: Shattered Bay",
+              "map": "Pics de Tonnerre",
+              "waypoint": {
+                "name": "Cœur de la révolution",
+                "chat_code": "[&BKYLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Pics de Tonnerre. Point de passage : Cœur de la révolution. Se placer sur le bord ouest de la banquise, sous l'ouverture, et sauter dedans au Sauteur.",
+                "en": "/kneel at the insight, in Pics de Tonnerre. Waypoint: Cœur de la révolution. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 19,
+              "name": "Dragonfall Insight: Dragon's Snare",
+              "map": "Chute draconique",
+              "waypoint": {
+                "name": "Commandement du Pacte",
+                "chat_code": "[&BN4LAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Commandement du Pacte. Suivre l'eau du canyon le long du corps de Kralkatorrik et entrer dans une crevasse. ⚠ Le plus contraignant des 24 : la crevasse est murée tant que l'assaut final du méta de carte n'est pas terminé. À sauter en priorité si tu n'en fais que 20.",
+                "en": "/kneel at the insight, in Chute draconique. Waypoint: Commandement du Pacte.  ⚠ The most constrained of the 24: the crevice is walled off until the map meta's final assault is complete. Skip this one first if you only do 20."
+              },
+              "skip_candidate": true,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 20,
+              "name": "Dragonfall Insight: Gnarlgrove Overlook",
+              "map": "Chute draconique",
+              "waypoint": {
+                "name": "Commandement du Pacte",
+                "chat_code": "[&BN4LAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Commandement du Pacte. Monter au sommet des montagnes, au nord-ouest de la région de Melandru.",
+                "en": "/kneel at the insight, in Chute draconique. Waypoint: Commandement du Pacte. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 21,
+              "name": "Dragonfall Insight: Grenth's Teeth Coastline",
+              "map": "Chute draconique",
+              "waypoint": {
+                "name": "Les Enfers",
+                "chat_code": "[&BNELAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Les Enfers. Angle sud-ouest de la région des Enfers de Grenth.",
+                "en": "/kneel at the insight, in Chute draconique. Waypoint: Les Enfers. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 22,
+              "name": "Dragonfall Insight: Scorched Cliffs Treetop",
+              "map": "Chute draconique",
+              "waypoint": {
+                "name": "Forêt en flammes",
+                "chat_code": "[&BOYLAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Forêt en flammes. Escalader les falaises à l'ouest du camp de la Floraison de cristal, dans la Forêt en flammes de Balthazar.",
+                "en": "/kneel at the insight, in Chute draconique. Waypoint: Forêt en flammes. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            },
+            {
+              "bit": 23,
+              "name": "Dragonfall Insight: Skyscale Eyrie",
+              "map": "Chute draconique",
+              "waypoint": {
+                "name": "Les Enfers",
+                "chat_code": "[&BNELAAA=]"
+              },
+              "how": {
+                "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Les Enfers. Sur un plateau de la côte sud de la région des Enfers de Grenth.",
+                "en": "/kneel at the insight, in Chute draconique. Waypoint: Les Enfers. "
+              },
+              "skip_candidate": false,
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+            }
+          ],
+          "total": 20,
+          "requirements": {
+            "fr": "Montures et maîtrises exigées par les accès : Sauteur (la plupart), Chacal (Enclave invariante, Belvédère de la balafre), Scarabée avec Brise-barrière (Ruines de Bokoss), Griffon ou Raptor en appoint. Le Scarabée est le seul verrou dur : sans Brise-barrière, ce sanctuaire est inaccessible.",
+            "en": "Mounts and masteries required by the routes: Springer (most), Jackal (Invariant Enclave, Scar Overlook), Roller Beetle with Barrier Smash (Bokoss Prison Ruins), Griffon or Raptor as backup. The Beetle is the only hard lock: without Barrier Smash that insight is unreachable."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
         }
       },
       "recipe_verified": "2026-07-26 (wiki) — recette + collections + prérequis",
@@ -19322,6 +19741,45 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
+// Liste de lieux a visiter, partagee par Aurora II et Vision II : meme forme de
+// donnees (name, map, waypoint.chat_code, how), donc un seul rendu.
+function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
+  return (
+    <div>
+      {items.map((item, i) => {
+        const done = isDone ? isDone(i) : false;
+        return (
+          <div key={i} style={{ padding: "5px 0", borderBottom: "1px solid rgba(226,201,126,0.04)", display: "flex", gap: 8, alignItems: "flex-start" }}>
+            <div style={{ width: 12, height: 12, borderRadius: 2, border: `1px solid ${done ? "#4ade80" : "rgba(52,211,153,0.4)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+              {done && <span style={{ fontSize: 8, color: "#4ade80" }}>✓</span>}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
+                <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
+                {item.wp_order && orderLabel && (
+                  <span style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
+                    {orderLabel(item.wp_order)}
+                  </span>
+                )}
+                {item.skip_candidate && (
+                  <span style={{ fontSize: 9, color: "rgba(248,113,113,0.8)", background: "rgba(248,113,113,0.07)", border: "1px solid rgba(248,113,113,0.25)", borderRadius: 3, padding: "1px 5px" }}>
+                    ✂
+                  </span>
+                )}
+                {item.waypoint?.chat_code && (
+                  <ChatCode code={item.waypoint.chat_code} copied={copied} onCopy={onCopy} />
+                )}
+              </div>
+              <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // Code de chat d'un point de passage, copiable en un clic — comme sur le wiki.
 // La cible de clic doit rester large sur mobile, d'ou le padding.
 function ChatCode({ code, copied, onCopy }) {
@@ -23138,6 +23596,29 @@ function GW2LegendaryTracker() {
                     {NX(a.unlock)}
                   </div>
                 )}
+                {isOpen && (() => {
+                  // Une collection peut porter, cote sources, une liste de lieux a
+                  // visiter indexee par son achievementId. Meme rendu qu'Aurora II.
+                  const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+                  let wl = null;
+                  for (const leg of Object.values(SDB?.legendaries ?? {})) {
+                    for (const col of Object.values(leg?.collections ?? {})) {
+                      if (col?.id === a.achievementId && Array.isArray(col.items) && col.items.some(x => x.waypoint)) wl = col;
+                    }
+                  }
+                  if (!wl) return null;
+                  return (
+                    <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }} onClick={e => e.stopPropagation()}>
+                      {wl.note && (
+                        <div style={{ fontSize: 10, color: "rgba(251,220,80,0.7)", fontFamily: "'Crimson Text', serif", marginBottom: 5, lineHeight: 1.5 }}>{NX(wl.note)}</div>
+                      )}
+                      {wl.requirements && (
+                        <div style={{ fontSize: 10, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif", marginBottom: 6, lineHeight: 1.5 }}>{NX(wl.requirements)}</div>
+                      )}
+                      <WaypointList items={wl.items} copied={copiedCode} onCopy={setCopiedCode} />
+                    </div>
+                  );
+                })()}
                 {isOpen && (
                   <div style={{ marginTop: "8px", borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: "7px" }} onClick={e => e.stopPropagation()}>
                     {locked && (

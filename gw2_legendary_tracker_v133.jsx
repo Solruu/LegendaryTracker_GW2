@@ -2489,6 +2489,45 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
+// Liste de lieux a visiter, partagee par Aurora II et Vision II : meme forme de
+// donnees (name, map, waypoint.chat_code, how), donc un seul rendu.
+function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
+  return (
+    <div>
+      {items.map((item, i) => {
+        const done = isDone ? isDone(i) : false;
+        return (
+          <div key={i} style={{ padding: "5px 0", borderBottom: "1px solid rgba(226,201,126,0.04)", display: "flex", gap: 8, alignItems: "flex-start" }}>
+            <div style={{ width: 12, height: 12, borderRadius: 2, border: `1px solid ${done ? "#4ade80" : "rgba(52,211,153,0.4)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+              {done && <span style={{ fontSize: 8, color: "#4ade80" }}>✓</span>}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
+                <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
+                {item.wp_order && orderLabel && (
+                  <span style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
+                    {orderLabel(item.wp_order)}
+                  </span>
+                )}
+                {item.skip_candidate && (
+                  <span style={{ fontSize: 9, color: "rgba(248,113,113,0.8)", background: "rgba(248,113,113,0.07)", border: "1px solid rgba(248,113,113,0.25)", borderRadius: 3, padding: "1px 5px" }}>
+                    ✂
+                  </span>
+                )}
+                {item.waypoint?.chat_code && (
+                  <ChatCode code={item.waypoint.chat_code} copied={copied} onCopy={onCopy} />
+                )}
+              </div>
+              <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // Code de chat d'un point de passage, copiable en un clic — comme sur le wiki.
 // La cible de clic doit rester large sur mobile, d'ou le padding.
 function ChatCode({ code, copied, onCopy }) {
@@ -6305,6 +6344,29 @@ export default function GW2LegendaryTracker() {
                     {NX(a.unlock)}
                   </div>
                 )}
+                {isOpen && (() => {
+                  // Une collection peut porter, cote sources, une liste de lieux a
+                  // visiter indexee par son achievementId. Meme rendu qu'Aurora II.
+                  const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+                  let wl = null;
+                  for (const leg of Object.values(SDB?.legendaries ?? {})) {
+                    for (const col of Object.values(leg?.collections ?? {})) {
+                      if (col?.id === a.achievementId && Array.isArray(col.items) && col.items.some(x => x.waypoint)) wl = col;
+                    }
+                  }
+                  if (!wl) return null;
+                  return (
+                    <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }} onClick={e => e.stopPropagation()}>
+                      {wl.note && (
+                        <div style={{ fontSize: 10, color: "rgba(251,220,80,0.7)", fontFamily: "'Crimson Text', serif", marginBottom: 5, lineHeight: 1.5 }}>{NX(wl.note)}</div>
+                      )}
+                      {wl.requirements && (
+                        <div style={{ fontSize: 10, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif", marginBottom: 6, lineHeight: 1.5 }}>{NX(wl.requirements)}</div>
+                      )}
+                      <WaypointList items={wl.items} copied={copiedCode} onCopy={setCopiedCode} />
+                    </div>
+                  );
+                })()}
                 {isOpen && (
                   <div style={{ marginTop: "8px", borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: "7px" }} onClick={e => e.stopPropagation()}>
                     {locked && (
