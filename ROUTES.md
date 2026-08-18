@@ -238,6 +238,12 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `_sub_status` ; la synchro directe si. Selon le chemin emprunté, le même bouton
   faisait donc deux choses différentes, sans le dire. Vérifier qu'un chemin de
   repli couvre le même périmètre que le chemin principal.
+- **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
+  compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
+  500 Ducats antiques et 660 masses marquées sont ainsi restés hors du grand
+  total. Un second contrôle vérifie donc que toute monnaie déclarée pour un
+  légendaire côté JSX possède bien une `qty` pour lui. Règle générale : un
+  contrôle d'égalité doit être doublé d'un contrôle d'existence.
 - **Une donnée écrite n'est pas une donnée affichée.** Trois fois de suite, une
   information exacte a dormi dans les sources sans jamais atteindre l'écran :
   l'écart de catégorie de Bava Nisos, le cas de `A Hunt for the Ages`, les seuils

@@ -128,6 +128,44 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "editorial_principle", "meta_eligible_note", "achievement_notes_note"}
 
 
+def check_missing_qty(data, errors, warnings):
+    """Une monnaie declaree pour un legendaire doit avoir une qty pour lui.
+
+    Le controle qty_vs_jsx compare les valeurs PRESENTES des deux cotes : une
+    monnaie declaree dans le JSX sans quantite correspondante lui echappe
+    entierement. C'est ainsi que 500 Ducats antiques et 660 masses marquees sont
+    restes hors du grand total sans que rien ne le signale.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    per_leg = _jsx_currency_blocks(jsx[-1].read_text(encoding="utf-8"))
+    comps = data.get("craft_components", {})
+    by_api = {}
+    for cid, comp in comps.items():
+        if isinstance(comp.get("apiId"), int):
+            by_api.setdefault(comp["apiId"], cid)
+
+    for legid, currencies in sorted(per_leg.items()):
+        for api in sorted(currencies):
+            cid = by_api.get(api)
+            if cid is None:
+                warnings.append(
+                    f"monnaie apiId {api} declaree pour '{legid}' cote JSX : "
+                    "aucun composant ne la porte, elle est donc hors du grand total"
+                )
+                continue
+            qty = comps[cid].get("qty")
+            if not isinstance(qty, dict) or legid not in qty:
+                warnings.append(
+                    f"craft_components/{cid} : declare pour '{legid}' cote JSX "
+                    "mais sans qty pour ce legendaire — invisible du grand total"
+                )
+
+
 def check_unrendered_fields(data, errors, warnings):
     """Un champ editorial que le JSX ne lit nulle part est du travail invisible.
 
@@ -370,10 +408,13 @@ def main() -> int:
     # 7. Quantites des composants alignees sur les requis du JSX
     check_qty_vs_jsx(data, errors, warnings)
 
-    # 8. Champs editoriaux effectivement rendus
+    # 8. Monnaies declarees mais sans quantite rattachee
+    check_missing_qty(data, errors, warnings)
+
+    # 9. Champs editoriaux effectivement rendus
     check_unrendered_fields(data, errors, warnings)
 
-    # 9. Integrite de chaque entree de meta_eligible
+    # 10. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
