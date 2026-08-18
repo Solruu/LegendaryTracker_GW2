@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v103",
+    "version": "v104",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -978,7 +978,8 @@
     },
     "changelog_v101": "Antoine reformule le critere du projet : efficient ne veut pas dire rapide, et refaire trois fois le meme contenu est le vrai cout. Le principe est inscrit dans _meta.editorial_principle et gouverne desormais la redaction des conseils. Premiere application concrete, un champ unlock_first sur les cinq objets qui n'apparaissent qu'une fois leur collection ouverte : Nacre orrienne, Fiole de larmes, Noeud petrifie, Ami de Noran et Suif cristallise. Jouer ces contenus avant d'avoir deverrouille la collection oblige a les refaire, ce qui explique exactement ce qu'Antoine a vecu sur les collections LW3 commencees apres l'histoire. Le Suif est le pire des cinq puisque ses coffres sont limites a un par jour et par personnage. Enfin les couts en or ne sont plus figes : la chaine du Mini Aurene et l'Encapsulateur portent un lien vers le calculateur gw2efficiency, qui compare achat et fabrication a partir du stock reel du joueur — un prix ecrit en dur serait faux des le lendemain.",
     "changelog_v102": "Aurora II est entierement documentee grace au tableau capture par Antoine. Identifiant de succes corrige au passage : les sources declaraient 4218, qui est « Daily Tier 2 Deepstone » ; le bon est 3489, celui que le JSX utilisait deja, si bien que l'erreur ne se voyait pas. Les 21 items recoivent enfin un numero de bit, sans lequel aucun conseil ne pouvait leur etre rattache, ainsi que le nom du sanctuaire, la carte, le point de passage le plus proche et son code de chat. Une correction de fond : l'Electrum secret etait annonce au Marais de la pierre de sang, il est en Profondeurs embrouillees. L'ordre de trajet le moins couteux est conserve tel quel, du Lac Sanguinaire au Temple du renouveau : c'est exactement le genre d'information que le critere editorial privilegie, puisqu'il evite de payer deux fois la meme traversee. Trois synergies signalees : le sanctuaire des Marches du Calife s'ouvre avec l'evenement qui donne le Coeur pyroclastique, celui du Froid mordant partage son elixir avec le Suif cristallise, et le sanctuaire de la mer Bouillonnante occidentale est dans la zone d'Ignis. Enfin le cas particulier de l'Electrum atmospherique est note : son point de passage change entre le jour et la nuit.",
-    "changelog_v103": "Lot 3, premiere passe : Vision II Farsight, jumeau d'Aurora II, etait la seule collection Vision sans donnee. Les 24 sanctuaires de maitrise de la saison 4 sont consignes avec leur carte, leur point de passage, son code de chat et la route d'acces detaillee. Le point qui change la planification : 24 existent mais 20 suffisent, donc quatre peuvent etre ecartes. Deux sont explicitement signales comme candidats a l'abandon parce qu'ils dependent du meta de leur carte — Dragon's Snare, dont la crevasse reste muree tant que l'assaut final n'est pas termine, et The Hunting Grounds. Un cas unique est documente a part : Niles ne se valide pas en s'agenouillant mais en jouant les notes 325-324 apres avoir parle du rituel, la page de discussion du wiki signalant que l'ancienne methode ne fonctionne plus. Enfin les prerequis de montures sont regroupes, avec le seul verrou dur de la collection : sans la maitrise Brise-barriere du Scarabee, les Ruines de la prison de Bokoss sont inaccessibles."
+    "changelog_v103": "Lot 3, premiere passe : Vision II Farsight, jumeau d'Aurora II, etait la seule collection Vision sans donnee. Les 24 sanctuaires de maitrise de la saison 4 sont consignes avec leur carte, leur point de passage, son code de chat et la route d'acces detaillee. Le point qui change la planification : 24 existent mais 20 suffisent, donc quatre peuvent etre ecartes. Deux sont explicitement signales comme candidats a l'abandon parce qu'ils dependent du meta de leur carte — Dragon's Snare, dont la crevasse reste muree tant que l'assaut final n'est pas termine, et The Hunting Grounds. Un cas unique est documente a part : Niles ne se valide pas en s'agenouillant mais en jouant les notes 325-324 apres avoir parle du rituel, la page de discussion du wiki signalant que l'ancienne methode ne fonctionne plus. Enfin les prerequis de montures sont regroupes, avec le seul verrou dur de la collection : sans la maitrise Brise-barriere du Scarabee, les Ruines de la prison de Bokoss sont inaccessibles.",
+    "changelog_v104": "Cout des armes de sang de dragon integre. La capture de Visions of Thunderhead Peaks annonce 360 masses marquees et 18 joyaux de serpentite exquis pour fabriquer les six armes exigees par l'etape Vision of Equipment. Or les sources ne comptaient que 300 masses marquees, et pour un tout autre poste — le Don de magie ephemere. Les 360 n'etaient donc comptes nulle part, et le joyau de serpentite n'existait meme pas comme composant. Les armes deviennent un intermediaire a six exemplaires, et la cascade ajoutee en v130 fait le reste : 300 plus six fois 60 donnent 660 masses marquees pour Vision, soit plus du double de ce qui etait affiche, et 18 joyaux."
   },
   "meta_events": {
     "vb": {
@@ -2591,7 +2592,8 @@
         }
       ],
       "qty": {
-        "vision": 300
+        "vision": 300,
+        "dragonsblood_weapons": 60
       },
       "kind": "acquire"
     },
@@ -8507,6 +8509,34 @@
       "verified": true,
       "checked": "2026-08-13",
       "ref": "gw2_currencies_ref : devise 23"
+    },
+    "dragonsblood_weapons": {
+      "name": "Dragonsblood Weapons",
+      "kind": "intermediate",
+      "qty": {
+        "vision": 6
+      },
+      "note": {
+        "fr": "Six armes de sang de dragon différentes, exigées par l'étape « Vision of Equipment » de Visions of Thunderhead Peaks. L'objet de collection s'achète ensuite chez la Maître forgeronne Hilina, une fois les six terminées.",
+        "en": "Six different Dragonsblood weapons, required by the 'Vision of Equipment' step of Visions of Thunderhead Peaks. The collection item is then bought from Forge Master Hilina once all six are done."
+      },
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)"
+    },
+    "exquisite_serpentite_jewel": {
+      "name": "Exquisite Serpentite Jewel",
+      "kind": "craftable",
+      "qty": {
+        "dragonsblood_weapons": 3
+      },
+      "note": {
+        "fr": "18 au total pour les six armes de sang de dragon.",
+        "en": "18 in total for the six Dragonsblood weapons."
+      },
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)"
     }
   },
   "enchaînements_recommandés": {
