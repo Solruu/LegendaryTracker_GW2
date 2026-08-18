@@ -152,6 +152,11 @@ Deux conséquences directes sur la rédaction des conseils :
   contenu est le vrai coût — c'est exactement ce qui rend les collections LW3
   pénibles quand on les démarre après avoir terminé l'histoire. Le champ
   `unlock_first` porte ces cas et s'affiche en rouge.
+- **Séquence n'est pas synergie.** Deux collections qui passent par le même lieu
+  ne se cumulent pas si l'une est prérequis de l'autre : Vision II n'existe qu'une
+  fois Vision I terminée, donc le trajet sera fait deux fois quoi qu'il arrive.
+  Avant d'annoncer une synergie, vérifier que les deux objectifs sont ouverts EN
+  MÊME TEMPS. Sinon, c'est un simple repérage à mentionner comme tel.
 - **Un timegate n'est pas un obstacle à contourner, c'est une file à lancer tôt**
   et à laisser courir en fond : bobine de fil de soie, lingots d'electrum Xunlai,
   journaux fractals, Sanctuaire du voyageur. Un conseil doit dire « lance ça
