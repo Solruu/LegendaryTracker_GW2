@@ -190,6 +190,10 @@ const I18N = {
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
     wp_order: "route {n}/21",
+    proj_left: "{n} {u} left",
+    proj_runs: "~{n} quickplay runs",
+    proj_weeks3: "{n} weeks at 3 runs/week + weekly",
+    proj_weeks_passive: "{n} weeks on the weekly alone",
     wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
@@ -416,6 +420,10 @@ const I18N = {
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ À DÉVERROUILLER AVANT DE JOUER CE CONTENU",
     wp_order: "trajet {n}/21",
+    proj_left: "reste {n} {u}",
+    proj_runs: "~{n} runs quickplay",
+    proj_weeks3: "{n} sem. à 3 runs/sem. + hebdo",
+    proj_weeks_passive: "{n} sem. avec le seul hebdo",
     wp_order_title: "Position dans le trajet le moins coûteux en points de passage",
     calc_link: "↗ Calculateur de coût (gw2efficiency, sur ton stock réel)",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
@@ -1594,16 +1602,16 @@ const LEGENDARIES = {
         bitTips: {"0": {"fr": "Étape 1. L'Étranger des Brumes t'attend à l'entrée des fractales, à l'Aérodrome de l'Arche du Lion.", "en": "Step 1. The Mist Stranger waits at the fractal entrance, in the Lion's Arch Aerodrome."}, "9": {"fr": "⚠ Étape 2 malgré son rang dans la liste : l'API renvoie ce bit en dernier alors qu'il se joue en deuxième. Parle aux alliés juste après l'Étranger.", "en": "⚠ Step 2 despite its rank in the list: the API returns this bit last although it is played second. Talk to your allies right after the Stranger."}, "1": {"fr": "Étape 3. Session rapide uniquement — échelle 1, aucune RA ni niveau fractale requis. C'est la seule source de Poussière fractalline.", "en": "Step 3. Quickplay only - scale 1, no AR or fractal level required. It is the only source of Fractalline Dust."}, "3": {"fr": "Étape 5. Double verrou : le succès de récursion ET la fin de la semaine d'invasion. Impossible à accélérer.", "en": "Step 5. Double gate: the recursion achievement AND the end of the invasion week. Cannot be rushed."}, "5": {"fr": "Étape 6. Même schéma : deuxième récursion puis fin de la deuxième semaine. Trois semaines minimum au total.", "en": "Step 6. Same pattern: second recursion then the end of the second week. Three weeks minimum overall."}, "7": {"fr": "Étape 9. Troisième récursion, sans attente de semaine cette fois.", "en": "Step 9. Third recursion, with no week wait this time."}},
         unlock: { fr: "🔓 S'active avec « Relic in the Mists ». C'est le fil conducteur de la Fractalline Dust : la plupart des succès annexes de quickplay en rapportent 10+.", en: "🔓 Activates alongside 'Relic in the Mists'. It's the Fractalline Dust through-line: most quickplay side achievements grant 10+." },
         tip: { fr: "Fil conducteur de la Fractalline Dust — quickplay + achievements annexes (la plupart donnent 10+ Dust).", en: "Fractalline Dust through-line — quickplay + side achievements (most grant 10+ Dust)." } },
-      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion", target: 150,
+      { key: "eikasia_r1", achievementId: 8840, name: "Incursive Investigation: First Recursion", target: 150, cumulative: 150, rate: { perRun: 5, weekly: 25, unit: "Fractalline Dust" },
         unlock: { fr: "🔓 S'active après « Working Together ». Palier de 150 Fractalline Dust — la Dust se cumule automatiquement, aucun objet à rapporter.", en: "🔓 Activates after 'Working Together'. 150 Fractalline Dust tier — Dust accrues automatically, nothing to hand in." },
         tip: { fr: "1er palier : 150 Fractalline Dust (4-6 par run quickplay, +25 via l'hebdo Weekly Fractal Quickplay).", en: "1st tier: 150 Fractalline Dust (4-6 per quickplay run, +25 via the Weekly Fractal Quickplay)." } },
-      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion", target: 150,
+      { key: "eikasia_r2", achievementId: 8841, name: "Incursive Investigation: Second Recursion", target: 150, cumulative: 300, rate: { perRun: 5, weekly: 25, unit: "Fractalline Dust" },
         unlock: { fr: "🔓 S'active à la fin du 1er palier. 150 Dust de plus (300 cumulées).", en: "🔓 Activates when tier 1 completes. 150 more Dust (300 total)." },
         tip: { fr: "2e palier : 150 Dust (300 cumulées). S'active à la fin du 1er palier.", en: "2nd tier: 150 Dust (300 total). Activates when the 1st tier completes." } },
-      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion", target: 150,
+      { key: "eikasia_r3", achievementId: 8835, name: "Incursive Investigation: Third Recursion", target: 150, cumulative: 450, rate: { perRun: 5, weekly: 25, unit: "Fractalline Dust" },
         unlock: { fr: "🔓 S'active à la fin du 2e palier. 150 Dust de plus (450 cumulées) — dernier palier avant la meta.", en: "🔓 Activates when tier 2 completes. 150 more Dust (450 total) — last tier before the meta." },
         tip: { fr: "3e palier : 150 Dust (450 au total) — dernière récursion avant la meta.", en: "3rd tier: 150 Dust (450 total) — final recursion before the meta." } },
-      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion", target: 150,
+      { key: "eikasia_infinite", achievementId: 8814, name: "Incursive Investigation: Infinite Recursion", target: 150, cumulative: 150, rate: { perRun: 5, weekly: 25, unit: "Fractalline Dust" },
         unlock: { fr: "🔓 Verrouillée jusqu'à la meta. Ensuite répétable : 150 Dust = 1 paire d'un autre poids chez le vendeur. ⚠ La Dust excédentaire est perdue à chaque répétition — viser 150 pile.", en: "🔓 Locked until the meta is done. Then repeatable: 150 Dust = 1 pair of another weight from the vendor. ⚠ Excess Dust is lost on each repetition — aim for exactly 150." },
         tip: { fr: "🔒 Débloquée seulement après la meta (les 3 récursions terminées). Répétable : 150 Dust = 1 paire d'un autre poids au vendor. ⚠ La Dust excédentaire est perdue à chaque répétition — viser 150 pile.", en: "🔒 Unlocked only after the meta (all 3 recursions done). Repeatable: 150 Dust = 1 pair of another weight from the vendor. ⚠ Excess Dust is lost each repetition — aim for exactly 150." } },
     ],
@@ -6359,6 +6367,25 @@ export default function GW2LegendaryTracker() {
                     )}
                   </div>
                 </div>
+                {!done && a.rate && a.target && (() => {
+                  // Un compteur muet ne dit pas quand il finira. On traduit le reste
+                  // en runs et en semaines, a partir de la cadence declaree sur
+                  // l'entree — jamais codee en dur ici.
+                  const left = Math.max(0, (a.target ?? 0) - cur);
+                  if (left <= 0) return null;
+                  const wkly = a.rate.weekly ?? 0;
+                  const runs = a.rate.perRun ? Math.ceil(left / a.rate.perRun) : null;
+                  const wkPassive = wkly ? Math.ceil(left / wkly) : null;
+                  const wk3 = (a.rate.perRun && wkly) ? Math.ceil(left / (a.rate.perRun * 3 + wkly)) : null;
+                  return (
+                    <div style={{ marginTop: 4, fontSize: 9.5, color: "rgba(251,220,80,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                      {t("proj_left", { n: left, u: a.rate.unit })}
+                      {runs !== null && <> · {t("proj_runs", { n: runs })}</>}
+                      {wk3 !== null && <> · {t("proj_weeks3", { n: wk3 })}</>}
+                      {wkPassive !== null && <> · {t("proj_weeks_passive", { n: wkPassive })}</>}
+                    </div>
+                  );
+                })()}
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
                   {L(a.tip)}
                 </div>
