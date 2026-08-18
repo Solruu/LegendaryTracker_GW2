@@ -253,6 +253,8 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    wp_order: "route {n}/21",
+    wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
     cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
@@ -477,8 +479,12 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ À DÉVERROUILLER AVANT DE JOUER CE CONTENU",
+    wp_order: "trajet {n}/21",
+    wp_order_title: "Position dans le trajet le moins coûteux en points de passage",
     calc_link: "↗ Calculateur de coût (gw2efficiency, sur ton stock réel)",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    wp_order: "route {n}/21",
+    wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
     cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
@@ -709,7 +715,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v101",
+    "version": "v102",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1685,7 +1691,8 @@ const SOURCES_DB = {
       "fr": "Efficient ne veut pas dire rapide. Le critère est le ratio temps passé sur résultat, sur des semaines, pas la durée d'une session. Deux conséquences de rédaction. D'abord, l'ORDRE prime sur la durée : « déverrouille avant de jouer ce contenu » vaut plus qu'un temps d'exécution, parce que refaire trois fois le même contenu est le vrai coût. Ensuite, un timegate n'est pas un obstacle à contourner mais une file à lancer tôt et à laisser courir en fond — bobine de fil de soie, lingots d'electrum Xunlai, journaux fractals, Sanctuaire du voyageur.",
       "en": "Efficient does not mean fast. The criterion is the time-spent to result ratio over weeks, not session length. Two consequences for how tips are written. First, ORDER beats duration: 'unlock before playing this content' matters more than an execution time, because redoing the same content three times is the real cost. Second, a timegate is not an obstacle to route around but a queue to start early and let run in the background — Spool of Silk Weaving Thread, Xunlai Electrum Ingots, Fractal Journals, Wayfarer's Henge."
     },
-    "changelog_v101": "Antoine reformule le critere du projet : efficient ne veut pas dire rapide, et refaire trois fois le meme contenu est le vrai cout. Le principe est inscrit dans _meta.editorial_principle et gouverne desormais la redaction des conseils. Premiere application concrete, un champ unlock_first sur les cinq objets qui n'apparaissent qu'une fois leur collection ouverte : Nacre orrienne, Fiole de larmes, Noeud petrifie, Ami de Noran et Suif cristallise. Jouer ces contenus avant d'avoir deverrouille la collection oblige a les refaire, ce qui explique exactement ce qu'Antoine a vecu sur les collections LW3 commencees apres l'histoire. Le Suif est le pire des cinq puisque ses coffres sont limites a un par jour et par personnage. Enfin les couts en or ne sont plus figes : la chaine du Mini Aurene et l'Encapsulateur portent un lien vers le calculateur gw2efficiency, qui compare achat et fabrication a partir du stock reel du joueur — un prix ecrit en dur serait faux des le lendemain."
+    "changelog_v101": "Antoine reformule le critere du projet : efficient ne veut pas dire rapide, et refaire trois fois le meme contenu est le vrai cout. Le principe est inscrit dans _meta.editorial_principle et gouverne desormais la redaction des conseils. Premiere application concrete, un champ unlock_first sur les cinq objets qui n'apparaissent qu'une fois leur collection ouverte : Nacre orrienne, Fiole de larmes, Noeud petrifie, Ami de Noran et Suif cristallise. Jouer ces contenus avant d'avoir deverrouille la collection oblige a les refaire, ce qui explique exactement ce qu'Antoine a vecu sur les collections LW3 commencees apres l'histoire. Le Suif est le pire des cinq puisque ses coffres sont limites a un par jour et par personnage. Enfin les couts en or ne sont plus figes : la chaine du Mini Aurene et l'Encapsulateur portent un lien vers le calculateur gw2efficiency, qui compare achat et fabrication a partir du stock reel du joueur — un prix ecrit en dur serait faux des le lendemain.",
+    "changelog_v102": "Aurora II est entierement documentee grace au tableau capture par Antoine. Identifiant de succes corrige au passage : les sources declaraient 4218, qui est « Daily Tier 2 Deepstone » ; le bon est 3489, celui que le JSX utilisait deja, si bien que l'erreur ne se voyait pas. Les 21 items recoivent enfin un numero de bit, sans lequel aucun conseil ne pouvait leur etre rattache, ainsi que le nom du sanctuaire, la carte, le point de passage le plus proche et son code de chat. Une correction de fond : l'Electrum secret etait annonce au Marais de la pierre de sang, il est en Profondeurs embrouillees. L'ordre de trajet le moins couteux est conserve tel quel, du Lac Sanguinaire au Temple du renouveau : c'est exactement le genre d'information que le critere editorial privilegie, puisqu'il evite de payer deux fois la meme traversee. Trois synergies signalees : le sanctuaire des Marches du Calife s'ouvre avec l'evenement qui donne le Coeur pyroclastique, celui du Froid mordant partage son elixir avec le Suif cristallise, et le sanctuaire de la mer Bouillonnante occidentale est dans la zone d'Ignis. Enfin le cas particulier de l'Electrum atmospherique est note : son point de passage change entre le jour et la nuit."
   },
   "meta_events": {
     "vb": {
@@ -14329,139 +14336,402 @@ const SOURCES_DB = {
           }
         },
         "aurora_2": {
-          "id": 4218,
+          "id": 3489,
           "name": "Aurora II: Empowering",
           "reward": "Spark of Sentience",
           "total": 21,
-          "note": "21 Xunlai Electrum Ingots to infuse at Mastery Insights across Tyria. No RNG or time-gate — just travel.",
+          "note": "21 lingots d'electrum Xunlai à infuser sur des sanctuaires de maîtrise. Aucun aléatoire, aucun timegate — uniquement du déplacement. Le vrai coût est en amont : les lingots dépendent des Grumeaux de mithrillium, limités à un par jour et par compte.",
           "items": [
             {
+              "bit": 0,
               "name": "Hidden Electrum",
-              "map": "Harathi Hinterlands",
-              "how": "Mastery Insight near Barricade Camp Waypoint"
+              "insight": "Hidden Ourobon",
+              "map": "Hautes-terres harathies",
+              "waypoint": {
+                "name": "Camp de la barricade",
+                "chat_code": "[&BK0AAAA=]"
+              },
+              "wp_order": 4,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Hidden Ourobon », en Hautes-terres harathies. Point de passage le plus proche : Camp de la barricade.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Hidden Ourobon' mastery insight, in Hautes-terres harathies. Nearest waypoint: Camp de la barricade."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 1,
               "name": "Plundered Electrum",
-              "map": "Bloodtide Coast",
-              "how": "Mastery Insight at Bloody Bill's Base (Remanda Waypoint)"
+              "insight": "Bloody Bill's Base",
+              "map": "Côte de Sanguinis",
+              "waypoint": {
+                "name": "Remanda",
+                "chat_code": "[&BKcBAAA=]"
+              },
+              "wp_order": 6,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Bloody Bill's Base », en Côte de Sanguinis. Point de passage le plus proche : Remanda.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Bloody Bill's Base' mastery insight, in Côte de Sanguinis. Nearest waypoint: Remanda."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 2,
               "name": "Sonic Electrum",
-              "map": "Timberline Falls",
-              "how": "Mastery Insight at Copperhammer Mines (White Paper Waypoint)"
+              "insight": "Copperhammer Mines",
+              "map": "Chutes de Cimebois",
+              "waypoint": {
+                "name": "Papier blanc",
+                "chat_code": "[&BE8CAAA=]"
+              },
+              "wp_order": 8,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Copperhammer Mines », en Chutes de Cimebois. Point de passage le plus proche : Papier blanc.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Copperhammer Mines' mastery insight, in Chutes de Cimebois. Nearest waypoint: Papier blanc."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 3,
               "name": "Stony Electrum",
-              "map": "Dredgehaunt Cliffs",
-              "how": "Mastery Insight at Dostoev Sky Peak (Grey Road Waypoint)"
+              "insight": "Dostoev Sky Peak",
+              "map": "Falaises de Bourreloup",
+              "waypoint": {
+                "name": "Route grise",
+                "chat_code": "[&BFoCAAA=]"
+              },
+              "wp_order": 7,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Dostoev Sky Peak », en Falaises de Bourreloup. Point de passage le plus proche : Route grise.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Dostoev Sky Peak' mastery insight, in Falaises de Bourreloup. Nearest waypoint: Route grise."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 4,
               "name": "Seared Electrum",
-              "map": "Fireheart Rise",
-              "how": "Mastery Insight at Cozen Desolation (Pig Iron Waypoint)"
+              "insight": "Cozen Desolation",
+              "map": "Rive d'Ardentcœur",
+              "waypoint": {
+                "name": "Fonte de fer",
+                "chat_code": "[&BBcCAAA=]"
+              },
+              "wp_order": 2,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Cozen Desolation », en Rive d'Ardentcœur. Point de passage le plus proche : Fonte de fer.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Cozen Desolation' mastery insight, in Rive d'Ardentcœur. Nearest waypoint: Fonte de fer."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 5,
               "name": "Graven Electrum",
-              "map": "Frostgorge Sound",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Sunken Halls of Clarent",
+              "map": "Marches de Fer",
+              "waypoint": {
+                "name": "Lac Sanguinaire",
+                "chat_code": "[&BOMBAAA=]"
+              },
+              "wp_order": 1,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Sunken Halls of Clarent », en Marches de Fer. Point de passage le plus proche : Lac Sanguinaire.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Sunken Halls of Clarent' mastery insight, in Marches de Fer. Nearest waypoint: Lac Sanguinaire."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 6,
               "name": "Volcanic Electrum",
-              "map": "Mount Maelstrom",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Volcanic Rim",
+              "map": "Mont Maelstrom",
+              "waypoint": {
+                "name": "Magmatique",
+                "chat_code": "[&BNYCAAA=]"
+              },
+              "wp_order": 9,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Volcanic Rim », en Mont Maelstrom. Point de passage le plus proche : Magmatique.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Volcanic Rim' mastery insight, in Mont Maelstrom. Nearest waypoint: Magmatique."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 7,
               "name": "Envenomed Electrum",
-              "map": "Sparkfly Fen",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Shattercliff Hills",
+              "map": "Marais d'Etincelys",
+              "waypoint": {
+                "name": "Caer Brier",
+                "chat_code": "[&BLMDAAA=]"
+              },
+              "wp_order": 10,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Shattercliff Hills », en Marais d'Etincelys. Point de passage le plus proche : Caer Brier.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Shattercliff Hills' mastery insight, in Marais d'Etincelys. Nearest waypoint: Caer Brier."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 8,
               "name": "Scavenged Electrum",
-              "map": "Straits of Devastation",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Scavenger's Chasm",
+              "map": "Saut de Malchor",
+              "waypoint": {
+                "name": "Pagga",
+                "chat_code": "[&BKYCAAA=]"
+              },
+              "wp_order": 12,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Scavenger's Chasm », en Saut de Malchor. Point de passage le plus proche : Pagga.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Scavenger's Chasm' mastery insight, in Saut de Malchor. Nearest waypoint: Pagga."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 9,
               "name": "Blighted Electrum",
-              "map": "Cursed Shore",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "the Corpse Grove",
+              "map": "Bord de Verdoyance",
+              "waypoint": {
+                "name": "Bravoure de Mellaggan",
+                "chat_code": "[&BNUHAAA=]"
+              },
+              "wp_order": 20,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « the Corpse Grove », en Bord de Verdoyance. Point de passage le plus proche : Bravoure de Mellaggan.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'the Corpse Grove' mastery insight, in Bord de Verdoyance. Nearest waypoint: Bravoure de Mellaggan."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 10,
               "name": "Atmospheric Electrum",
-              "map": "Lornar's Pass",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Holdfast Hollow",
+              "map": "Bord de Verdoyance",
+              "waypoint": {
+                "name": "Ruines voilées (jour)",
+                "chat_code": "[&BAEIAAA=]"
+              },
+              "wp_order": 19,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Holdfast Hollow », en Bord de Verdoyance. Point de passage le plus proche : Ruines voilées (jour). ⚠ Point de passage différent selon l'heure : Ruines voilées de jour, Campement du Pacte [&BAgIAAA=] de nuit.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Holdfast Hollow' mastery insight, in Bord de Verdoyance. Nearest waypoint: Ruines voilées (jour). ⚠ Different waypoint depending on time of day: Shrouded Ruins by day, Pact Encampment [&BAgIAAA=] by night."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 11,
               "name": "Luminous Electrum",
-              "map": "Blazeridge Steppes",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Luminate's Throne",
+              "map": "Bassin auric",
+              "waypoint": {
+                "name": "Guet occidental",
+                "chat_code": "[&BAYIAAA=]"
+              },
+              "wp_order": 17,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Luminate's Throne », en Bassin auric. Point de passage le plus proche : Guet occidental.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Luminate's Throne' mastery insight, in Bassin auric. Nearest waypoint: Guet occidental."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 12,
               "name": "Poisoned Electrum",
-              "map": "Iron Marches",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Burnisher Quarry",
+              "map": "Bassin auric",
+              "waypoint": {
+                "name": "Guet septentrional",
+                "chat_code": "[&BN0HAAA=]"
+              },
+              "wp_order": 18,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Burnisher Quarry », en Bassin auric. Point de passage le plus proche : Guet septentrional.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Burnisher Quarry' mastery insight, in Bassin auric. Nearest waypoint: Guet septentrional."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 13,
               "name": "Goopy Electrum",
-              "map": "Southsun Cove",
-              "how": "Mastery Insight (check WP on wiki)"
+              "insight": "Nuhoch Lane",
+              "map": "Profondeurs embrouillées",
+              "waypoint": {
+                "name": "Confluence de la ligne de faille",
+                "chat_code": "[&BPUHAAA=]"
+              },
+              "wp_order": 16,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Nuhoch Lane », en Profondeurs embrouillées. Point de passage le plus proche : Confluence de la ligne de faille.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Nuhoch Lane' mastery insight, in Profondeurs embrouillées. Nearest waypoint: Confluence de la ligne de faille."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 14,
               "name": "Covert Electrum",
-              "map": {
-                "fr": "Marais de la pierre de sang",
-                "en": "Bloodstone Fen"
+              "insight": "Order of Whispers Outpost",
+              "map": "Profondeurs embrouillées",
+              "waypoint": {
+                "name": "Camp de l'Ordre des Murmures",
+                "chat_code": "[&BA4IAAA=]"
               },
-              "how": "Mastery Insight in Bloodstone Fen"
+              "wp_order": 15,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Order of Whispers Outpost », en Profondeurs embrouillées. Point de passage le plus proche : Camp de l'Ordre des Murmures. ⚠ Correction : cet objet était annoncé au Marais de la pierre de sang. Il est en Profondeurs embrouillées.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Order of Whispers Outpost' mastery insight, in Profondeurs embrouillées. Nearest waypoint: Camp de l'Ordre des Murmures. ⚠ Correction: this item was listed as Bloodstone Fen. It is in Tangled Depths."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 15,
               "name": "Bloodstone-Infused Electrum",
-              "map": {
-                "fr": "Marais de la pierre de sang",
-                "en": "Bloodstone Fen"
+              "insight": "Temple of Renewal",
+              "map": "Marais de la pierre de sang",
+              "waypoint": {
+                "name": "Profondeurs du Gouffre",
+                "chat_code": "[&BD8JAAA=]"
               },
-              "how": "Mastery Insight in Bloodstone Fen"
+              "wp_order": 21,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Temple of Renewal », en Marais de la pierre de sang. Point de passage le plus proche : Profondeurs du Gouffre.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Temple of Renewal' mastery insight, in Marais de la pierre de sang. Nearest waypoint: Profondeurs du Gouffre."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 16,
               "name": "Pyroclastic Electrum",
-              "map": {
-                "fr": "Baie des braises",
-                "en": "Ember Bay"
+              "insight": "Caliph's Steps",
+              "map": "Baie des braises",
+              "waypoint": {
+                "name": "Cirque des naufragés",
+                "chat_code": "[&BHgJAAA=]"
               },
-              "how": "Mastery Insight in Ember Bay"
+              "wp_order": 13,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Caliph's Steps », en Baie des braises. Point de passage le plus proche : Cirque des naufragés. 💡 La plateforme d'accès ne monte qu'après l'événement « Vaincre le Construct de jade pyroclastique » — le même qui donne le Cœur pyroclastique de la collection Baie des braises. Enchaîne les deux.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Caliph's Steps' mastery insight, in Baie des braises. Nearest waypoint: Cirque des naufragés. 💡 The access platform only rises after the 'Defeat the Pyroclastic Jade Construct' event — the same one granting the Pyroclastic Core of the Ember Bay collection. Chain both."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 17,
               "name": "Frosted Electrum",
-              "map": {
-                "fr": "Confins de Givramer",
-                "en": "Bitterfrost Frontier"
+              "insight": "the Bitter Cold",
+              "map": "Confins de Givramer",
+              "waypoint": {
+                "name": "Éclipse du chagrin",
+                "chat_code": "[&BH0JAAA=]"
               },
-              "how": "Mastery Insight in Bitterfrost Frontier"
+              "wp_order": 3,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « the Bitter Cold », en Confins de Givramer. Point de passage le plus proche : Éclipse du chagrin. ⚠ Accès conditionné par l'Élixir de dégel, préparé au Chaudron des cloques. 💡 Même zone que le Suif cristallisé : une seule préparation d'élixir sert aux deux collections.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'the Bitter Cold' mastery insight, in Confins de Givramer. Nearest waypoint: Éclipse du chagrin. ⚠ Access requires the Thaw Elixir, brewed at the Blister Cauldron. 💡 Same area as the Crystallized Suet: one elixir brew serves both collections."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 18,
               "name": "Misty Electrum",
-              "map": {
-                "fr": "Lac Doric",
-                "en": "Lake Doric"
+              "insight": "Melandru's Flourish",
+              "map": "Lac Doric",
+              "waypoint": {
+                "name": "Bazar du lac",
+                "chat_code": "[&BLQJAAA=]"
               },
-              "how": "Mastery Insight in Lake Doric"
+              "wp_order": 5,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Melandru's Flourish », en Lac Doric. Point de passage le plus proche : Bazar du lac.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Melandru's Flourish' mastery insight, in Lac Doric. Nearest waypoint: Bazar du lac."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 19,
               "name": "Sulfuric Electrum",
-              "map": {
-                "fr": "Mont Draconis",
-                "en": "Draconis Mons"
+              "insight": "Western Boiling Sea",
+              "map": "Mont Draconis",
+              "waypoint": {
+                "name": "Creux ancien",
+                "chat_code": "[&BNUJAAA=]"
               },
-              "how": "Mastery Insight in Draconis Mons"
+              "wp_order": 14,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Western Boiling Sea », en Mont Draconis. Point de passage le plus proche : Creux ancien. 💡 Même zone qu'Ignis, le Destructeur légendaire de la collection Mont Draconis.",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Western Boiling Sea' mastery insight, in Mont Draconis. Nearest waypoint: Creux ancien. 💡 Same area as Ignis, the Legendary Destroyer of the Draconis Mons collection."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             },
             {
+              "bit": 20,
               "name": "Scorched Electrum",
-              "map": {
-                "fr": "Plage des sirènes",
-                "en": "Siren's Landing"
+              "insight": "Lava Leap",
+              "map": "Plage des sirènes",
+              "waypoint": {
+                "name": "Récupération du camp",
+                "chat_code": "[&BO8JAAA=]"
               },
-              "how": "Mastery Insight in Siren's Landing"
+              "wp_order": 11,
+              "how": {
+                "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Lava Leap », en Plage des sirènes. Point de passage le plus proche : Récupération du camp. Depuis le point de passage, rejoindre le sanctuaire près du Cœur de Balthazar [&BO4JAAA=].",
+                "en": "Infuse a Xunlai Electrum Ingot at the 'Lava Leap' mastery insight, in Plage des sirènes. Nearest waypoint: Récupération du camp. From the waypoint, head to the insight near Balthazar's Heart [&BO4JAAA=]."
+              },
+              "how_verified": true,
+              "how_checked": "2026-08-13",
+              "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)"
             }
-          ]
+          ],
+          "route_note": {
+            "fr": "La colonne « ordre » donne le trajet le moins coûteux en points de passage, du 1 au 21. Le suivre évite de payer deux fois la même traversée. Il commence au Lac Sanguinaire (Marches de Fer) et finit au Temple du renouveau (Marais de la pierre de sang).",
+            "en": "The 'order' column gives the cheapest waypoint route, from 1 to 21. Following it avoids paying twice for the same crossing. It starts at Bloodfin Lake (Iron Marches) and ends at the Temple of Renewal (Bloodstone Fen).",
+            "verified": true,
+            "checked": "2026-08-13",
+            "ref": "wiki:Aurora_II:_Empowering, colonne Cheapest WP Order"
+          },
+          "chat_code_warning": {
+            "fr": "Les codes de chat sont transcrits depuis une capture d'écran. S'il y en a un qui ne fonctionne pas en jeu, signale-le : c'est une erreur de transcription, pas de source.",
+            "en": "Chat codes are transcribed from a screenshot. If one does not work in game, report it: that is a transcription error, not a source error."
+          }
         }
       },
       "components": [
@@ -19052,6 +19322,38 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
+// Code de chat d'un point de passage, copiable en un clic — comme sur le wiki.
+// La cible de clic doit rester large sur mobile, d'ou le padding.
+function ChatCode({ code, copied, onCopy }) {
+  if (!code) return null;
+  const isMe = copied === code;
+  const copy = (e) => {
+    e.stopPropagation();
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = code; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta);
+    };
+    try {
+      if (navigator?.clipboard?.writeText) navigator.clipboard.writeText(code).catch(fallback);
+      else fallback();
+    } catch (_) { fallback(); }
+    onCopy(code);
+  };
+  return (
+    <span onClick={copy} title={code}
+      style={{ cursor: "pointer", userSelect: "all", fontFamily: "monospace", fontSize: 10,
+               padding: "2px 6px", borderRadius: 3, whiteSpace: "nowrap",
+               background: isMe ? "rgba(74,222,128,0.15)" : "rgba(94,234,212,0.07)",
+               border: `1px solid ${isMe ? "rgba(74,222,128,0.5)" : "rgba(94,234,212,0.28)"}`,
+               color: isMe ? "#4ade80" : "rgba(94,234,212,0.9)" }}>
+      {isMe ? "✓ copié" : code}
+    </span>
+  );
+}
+
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
@@ -20374,6 +20676,7 @@ function GW2LegendaryTracker() {
   // Aurora — expanded sous-collection dans l'onglet collections
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
+  const [copiedCode, setCopiedCode] = useState(null);
   const [diagOpen, setDiagOpen] = useState(false);
   const [diagAll, setDiagAll] = useState(null);
   const [diagScanning, setDiagScanning] = useState(false);
@@ -22426,6 +22729,14 @@ function GW2LegendaryTracker() {
                           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                             <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
                             <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
+                            {item.wp_order && (
+                              <span title={t("wp_order_title")} style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
+                                {t("wp_order", { n: item.wp_order })}
+                              </span>
+                            )}
+                            {item.waypoint?.chat_code && (
+                              <ChatCode code={item.waypoint.chat_code} copied={copiedCode} onCopy={setCopiedCode} />
+                            )}
                           </div>
                           <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(item.how)}</div>
                         </div>

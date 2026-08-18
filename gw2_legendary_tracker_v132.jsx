@@ -189,6 +189,8 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    wp_order: "route {n}/21",
+    wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
     cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
@@ -413,8 +415,12 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ À DÉVERROUILLER AVANT DE JOUER CE CONTENU",
+    wp_order: "trajet {n}/21",
+    wp_order_title: "Position dans le trajet le moins coûteux en points de passage",
     calc_link: "↗ Calculateur de coût (gw2efficiency, sur ton stock réel)",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    wp_order: "route {n}/21",
+    wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
     cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
@@ -2483,6 +2489,38 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
+// Code de chat d'un point de passage, copiable en un clic — comme sur le wiki.
+// La cible de clic doit rester large sur mobile, d'ou le padding.
+function ChatCode({ code, copied, onCopy }) {
+  if (!code) return null;
+  const isMe = copied === code;
+  const copy = (e) => {
+    e.stopPropagation();
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = code; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta);
+    };
+    try {
+      if (navigator?.clipboard?.writeText) navigator.clipboard.writeText(code).catch(fallback);
+      else fallback();
+    } catch (_) { fallback(); }
+    onCopy(code);
+  };
+  return (
+    <span onClick={copy} title={code}
+      style={{ cursor: "pointer", userSelect: "all", fontFamily: "monospace", fontSize: 10,
+               padding: "2px 6px", borderRadius: 3, whiteSpace: "nowrap",
+               background: isMe ? "rgba(74,222,128,0.15)" : "rgba(94,234,212,0.07)",
+               border: `1px solid ${isMe ? "rgba(74,222,128,0.5)" : "rgba(94,234,212,0.28)"}`,
+               color: isMe ? "#4ade80" : "rgba(94,234,212,0.9)" }}>
+      {isMe ? "✓ copié" : code}
+    </span>
+  );
+}
+
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
@@ -3805,6 +3843,7 @@ export default function GW2LegendaryTracker() {
   // Aurora — expanded sous-collection dans l'onglet collections
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
+  const [copiedCode, setCopiedCode] = useState(null);
   const [diagOpen, setDiagOpen] = useState(false);
   const [diagAll, setDiagAll] = useState(null);
   const [diagScanning, setDiagScanning] = useState(false);
@@ -5857,6 +5896,14 @@ export default function GW2LegendaryTracker() {
                           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                             <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
                             <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
+                            {item.wp_order && (
+                              <span title={t("wp_order_title")} style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
+                                {t("wp_order", { n: item.wp_order })}
+                              </span>
+                            )}
+                            {item.waypoint?.chat_code && (
+                              <ChatCode code={item.waypoint.chat_code} copied={copiedCode} onCopy={setCopiedCode} />
+                            )}
                           </div>
                           <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(item.how)}</div>
                         </div>
