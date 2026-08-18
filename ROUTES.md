@@ -238,6 +238,12 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `_sub_status` ; la synchro directe si. Selon le chemin emprunté, le même bouton
   faisait donc deux choses différentes, sans le dire. Vérifier qu'un chemin de
   repli couvre le même périmètre que le chemin principal.
+- **`py_compile` non plus.** Il valide la syntaxe, pas la portée : réutiliser un
+  nom de variable vu dans une AUTRE fonction du même fichier compile
+  parfaitement et lève un `NameError` à l'exécution. Avant de patcher une
+  fonction longue, vérifier le nom réel de la variable **dans cette fonction**,
+  pas ailleurs dans le fichier. Contrôle rapide : parcourir l'AST et lister les
+  identifiants chargés mais jamais assignés dans la fonction.
 - **esbuild ne détecte pas une variable inexistante.** Référencer un identifiant
   absent de la portée compile sans erreur et échoue seulement à l'exécution.
   Avant d'utiliser une variable dans un patch, vérifier qu'elle est bien

@@ -1245,7 +1245,8 @@ def progression():
                 "current": e.get("current", 0),
                 "max": e.get("max", 0),
             }
-            for e in (ach_raw or [])
+            # ach_list, et non ach_raw : ce dernier appartient a une autre route.
+            for e in (ach_list or [])
         },
     }
 
