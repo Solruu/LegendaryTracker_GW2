@@ -703,7 +703,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v99",
+    "version": "v100",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1673,7 +1673,8 @@ const SOURCES_DB = {
     "changelog_v96": "Prix de la pierre de l'augure tranche par observation en jeu d'Antoine : 20 eclats spirituels piece, la ou la v95 laissait le champ non verifie. L'eclat spirituel devient un composant a part entiere, devise de portefeuille 23, donc synchronisable comme les autres. Il est rattache a ses deux consommateurs connus : 20 par pierre de l'augure et 200 par eclat de pierre de sang. La cascade en tire les totaux d'elle-meme — six pierres pour les six cristaux de Vision font 120 eclats spirituels, auxquels s'ajoutent 400 pour les deux eclats de pierre de sang d'Aurora.",
     "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn.",
     "changelog_v98": "Lot 2, premiere collection : les 14 items de la Baie des braises passent au detail d'execution. Trois apports notables. Le Calice des larmes impose trois conditions strictes que rien n'indiquait — collection deverrouillee, tous les points de controle declenches, et interdiction de se garer au coffre, de se teleporter a un ami ou de quitter l'instance, les portails restant autorises. Vaincre le Construct de jade pyroclastique fait monter la plateforme qui ouvre le sanctuaire de maitrise des Marches du Calife, necessaire a l'Electrum pyroclastique d'Aurora II : les deux objectifs s'enchainent. Et la Reine paresseuse n'apparait pas seule, elle conclut une chaine d'evenements partant des Piliers du balbuzard. Le Caillou brillant reste en verified false : les Caches skritt semblent demander un achat prealable chez un marchand skritt, sans que j'aie pu le confirmer.",
-    "changelog_v99": "Fin du lot 2 : Confins de Givramer, Lac Doric et Marais de la pierre de sang. Trois pieges majeurs mis au jour. Le Badge de l'Avant-garde d'ebene du Lac Doric depend d'un succes cache de NUIT, Not All Who Wander Are Lost — de jour il n'y a rien a trouver, ce que rien n'indiquait. Les cinq objets de type Icebrood des Confins viennent tous du meme evenement, la phase finale du meta des Balises de Koda, uniquement de nuit, et les cinq champions apparaissent au hasard sur les braseros sans que la carte dise lequel est lequel. Et le Suif cristallise est le timegate reel de sa collection : cinq coffres du Froid mordant, un par jour et par personnage, dont l'acces exige l'Elixir de degel prepare au Chaudron des cloques. Ajouts utiles au passage : la Flamme de Koda ne se porte que depuis un brasero ALLUME, le Kit de survie de Noran dependait d'une cle achetable une seule fois par jour, l'Ami de Noran est un achat unique qui exige la collection deja demarree, et deux paires d'objets partagent le meme vendeur, ce qui evite deux allers-retours."
+    "changelog_v99": "Fin du lot 2 : Confins de Givramer, Lac Doric et Marais de la pierre de sang. Trois pieges majeurs mis au jour. Le Badge de l'Avant-garde d'ebene du Lac Doric depend d'un succes cache de NUIT, Not All Who Wander Are Lost — de jour il n'y a rien a trouver, ce que rien n'indiquait. Les cinq objets de type Icebrood des Confins viennent tous du meme evenement, la phase finale du meta des Balises de Koda, uniquement de nuit, et les cinq champions apparaissent au hasard sur les braseros sans que la carte dise lequel est lequel. Et le Suif cristallise est le timegate reel de sa collection : cinq coffres du Froid mordant, un par jour et par personnage, dont l'acces exige l'Elixir de degel prepare au Chaudron des cloques. Ajouts utiles au passage : la Flamme de Koda ne se porte que depuis un brasero ALLUME, le Kit de survie de Noran dependait d'une cle achetable une seule fois par jour, l'Ami de Noran est un achat unique qui exige la collection deja demarree, et deux paires d'objets partagent le meme vendeur, ce qui evite deux allers-retours.",
+    "changelog_v100": "Mini Aurene, dernier item non documente des six Master, est comble grace aux captures d'Antoine qui a termine la chaine. Ce n'est pas un objet mais une collection entiere de 8 parties, le Don d'Aurene, ce que la description d'une ligne ne laissait pas soupconner. La sequence complete est consignee : etape d'histoire Aurene precoce pour obtenir le Gage d'affection et la Pierre de portail exalte, achat des cinq recettes chez Slooshoo a 5 po piece, fabrication des cinq pieces dans cinq metiers differents a 400 ou 450, ajout de chacune a la collection par clic droit, assemblage de la Poupee dragonneau, puis teleportation a la chambre de l'oeuf de Tarir pour la presenter a Aurene. Les cinq recettes figurent avec leurs materiaux. Trois avertissements en decoulent : 25 pierres magnetiques de cristal au total qui font le gros du cout, cinq metiers a monter ou contourner en achetant les pieces au comptoir, et la bobine de fil de soie tissee limitee a une par jour qu'il faut lancer en premier."
   },
   "meta_events": {
     "vb": {
@@ -13419,10 +13420,77 @@ const SOURCES_DB = {
                 {
                   "name": "Mini Aurene",
                   "how": {
-                    "fr": "Récompense de la collection « Gift of Aurene » (succès 3178, A Crack in the Ice) : nourrir Aurene dans Bitterfrost Frontier avec les objets de la collection.",
-                    "en": "Reward from the 'Gift of Aurene' collection (achievement 3178, A Crack in the Ice): feed Aurene in Bitterfrost Frontier with the collection items."
+                    "fr": "⚠ Ce n'est pas un objet mais une collection entière : « Don d'Aurène », 8 parties, récompensée par le Mini Aurène. Compter environ 46 po d'achats au comptoir, plus 25 po rien qu'en recettes.",
+                    "en": "⚠ This is not an item but a whole collection: 'Gift of Aurene', 8 parts, rewarded with the Mini Aurene. Budget roughly 46 g of trading post purchases, plus 25 g in recipes alone."
                   },
-                  "bit": 7
+                  "bit": 7,
+                  "sub_chain": {
+                    "name": {
+                      "fr": "Don d'Aurène — 8 parties",
+                      "en": "Gift of Aurene — 8 parts"
+                    },
+                    "steps": {
+                      "fr": [
+                        "Terminer l'étape d'histoire « Aurène précoce » : Aurène donne le Gage d'affection et la Pierre de portail exalté.",
+                        "Acheter les 5 recettes chez Slooshoo, aux Confins de Givramer — 5 po chacune, 25 po au total. Les pièces déjà craftées s'achètent aussi au comptoir si tu n'as pas les métiers.",
+                        "Fabriquer les 5 pièces (voir les recettes ci-dessous), puis clic droit sur chacune et « Ajouter à la collection ».",
+                        "Une fois les 5 pièces en inventaire, cliquer sur l'une d'elles pour assembler la Poupée dragonneau.",
+                        "Utiliser la Pierre de portail exalté pour se téléporter à la chambre de l'œuf, à Tarir, et présenter la poupée à Aurène → Essence aurénique."
+                      ],
+                      "en": [
+                        "Complete the 'Precocious Aurene' story step: Aurene gives the Token of Affection and the Exalted Portal Stone.",
+                        "Buy the 5 recipes from Slooshoo in Bitterfrost Frontier — 5 g each, 25 g total. Pre-crafted pieces can also be bought on the trading post if you lack the disciplines.",
+                        "Craft the 5 pieces (recipes below), then right-click each and choose 'Add to Collection'.",
+                        "With all 5 pieces in your inventory, click one of them to assemble the Dragon Hatchling Doll.",
+                        "Use the Exalted Portal Stone to teleport to the egg chamber in Tarir and present the doll to Aurene → Aurenic Essence."
+                      ]
+                    },
+                    "recipes": [
+                      {
+                        "piece": "Dragon Hatchling Doll Adornments",
+                        "discipline": "Joaillier 400",
+                        "mats": "15 crocs vicieux, 15 griffes vicieuses, 15 tas de poussière cristalline, 5 pierres magnétiques de cristal"
+                      },
+                      {
+                        "piece": "Dragon Hatchling Doll Eye",
+                        "discipline": "Artificier 450",
+                        "mats": "20 cristaux de quartz, 25 ectoplasmes, 50 réactifs thermocatalytiques, 5 pierres magnétiques de cristal"
+                      },
+                      {
+                        "piece": "Dragon Hatchling Doll Frame",
+                        "discipline": "Chasseur 450",
+                        "mats": "40 planches de bois ancien, 20 lingots d'orichalque, 50 réactifs thermocatalytiques, 5 pierres magnétiques de cristal"
+                      },
+                      {
+                        "piece": "Dragon Hatchling Doll Hide",
+                        "discipline": "Travailleur du cuir 450",
+                        "mats": "15 carrés de cuir durci traité, 15 écailles blindées, 50 réactifs thermocatalytiques, 5 pierres magnétiques de cristal"
+                      },
+                      {
+                        "piece": "Gossamer Stuffing",
+                        "discipline": "Tailleur 450",
+                        "mats": "50 rouleaux de soie fine, 25 ectoplasmes, 1 bobine de fil de soie tissé, 5 pierres magnétiques de cristal"
+                      }
+                    ],
+                    "warnings": {
+                      "fr": [
+                        "25 pierres magnétiques de cristal au total, 5 par pièce : c'est le poste le plus cher de la chaîne.",
+                        "Cinq métiers différents à 400 ou 450. Sans les niveaux, acheter les pièces au comptoir revient souvent moins cher que monter un métier.",
+                        "La bobine de fil de soie tissé est limitée à une par jour et par compte : à lancer avant le reste."
+                      ],
+                      "en": [
+                        "25 Crystal Lodestones in total, 5 per piece: the most expensive line of the chain.",
+                        "Five different disciplines at 400 or 450. Without the levels, buying the pieces on the trading post is often cheaper than levelling a craft.",
+                        "The Spool of Silk Weaving Thread is limited to one per day per account: start it before anything else."
+                      ]
+                    },
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki:Gift_of_Aurene (captures Antoine, 13/08/2026) — collection terminee en jeu par lui"
+                  },
+                  "how_verified": true,
+                  "how_checked": "2026-08-13",
+                  "how_ref": "wiki:Gift_of_Aurene (captures Antoine)"
                 },
                 {
                   "name": "Corrupted Griffon Talon",
