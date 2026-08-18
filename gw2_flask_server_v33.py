@@ -1235,6 +1235,18 @@ def progression():
         # une seconde route : deux systemes pour un meme joueur et une meme cle.
         # Une seule requete, une seule verite.
         "stocks": _aggregate_stocks(wallet_dict, mat_dict, bank_raw, shared_raw, characters_raw),
+        # Instantane complet des succes du compte, id -> etat. Il manquait :
+        # le client ne pouvait donc rafraichir l'etat des sous-succes d'un meta
+        # qu'en repassant par l'API directe, ce qui exige une cle saisie dans
+        # l'interface. Avec Flask et sa cle .env, la liste restait figee.
+        "_sub_status": {
+            str(e["id"]): {
+                "done": e.get("done") is True,
+                "current": e.get("current", 0),
+                "max": e.get("max", 0),
+            }
+            for e in (ach_raw or [])
+        },
     }
 
     return jsonify(result)

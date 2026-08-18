@@ -238,6 +238,10 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `_sub_status` ; la synchro directe si. Selon le chemin emprunté, le même bouton
   faisait donc deux choses différentes, sans le dire. Vérifier qu'un chemin de
   repli couvre le même périmètre que le chemin principal.
+- **esbuild ne détecte pas une variable inexistante.** Référencer un identifiant
+  absent de la portée compile sans erreur et échoue seulement à l'exécution.
+  Avant d'utiliser une variable dans un patch, vérifier qu'elle est bien
+  déclarée — `grep 'const \\[nom'` — plutôt que de se fier au build.
 - **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
   compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
   500 Ducats antiques et 660 masses marquées sont ainsi restés hors du grand

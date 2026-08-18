@@ -4176,6 +4176,9 @@ export default function GW2LegendaryTracker() {
       // indefiniment, meme une fois termine en jeu.
       let subSnap = data._sub_status;
       if (!subSnap) {
+        // gtApiKey est la seule cle detenue par le client, et elle est vide chez
+        // qui passe par Flask. Ce repli ne peut donc pas sauver ce cas — c'est
+        // Flask qui doit renvoyer _sub_status, ce qu'il fait depuis la v33.
         const dKey2 = (gtApiKey ?? "").trim();
         if (dKey2) {
           try {
