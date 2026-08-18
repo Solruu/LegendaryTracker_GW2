@@ -253,6 +253,14 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   combiné à `||` exige un parenthésage explicite.
 - **Jekyll** consomme la syntaxe `{{ }}` sur GitHub Pages — le fichier
   `.nojekyll` est indispensable.
+- **Un guillemet droit dans un texte de conseil casse le parse.** Les noms
+  d'événements en contiennent souvent (`Stop "Joko" from recruiting…`). Utiliser
+  des guillemets typographiques échappés (`\\u201C` / `\\u201D`) plutôt que des
+  guillemets droits à l'intérieur d'une chaîne.
+- **Lire la SORTIE d'esbuild, pas seulement son code retour.** Il affiche
+  `1 error` tout en rendant 0 : un `| tail -1` peut donc masquer l'échec, et le
+  build HTML réussit quand même en produisant un fichier cassé. Vérifier que la
+  sortie contient `Done in`, jamais `error`.
 - **Validation JSX** :
   `npx --prefix /home/claude esbuild fichier.jsx --loader:.jsx=jsx --outfile=/tmp/out.js`
 - **Validation Python** : `python3 -m py_compile`.
