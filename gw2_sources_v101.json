@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v100",
+    "version": "v101",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -971,7 +971,12 @@
     "changelog_v97": "Lot 1 de l'enrichissement Aurora : les 30 items des deux collections qu'Antoine n'a pas terminees, Plage des sirenes et Mont Draconis, passent de descriptions d'une ligne en franglais a des consignes d'execution completes — PNJ nomme, lieu, prerequis, cout. Quatre corrections de fond au passage. Le Brasier colossal n'est pas une interaction mais le coffre final du puzzle de saut Ascension d'Abaddon. L'Ecaille de draconnier vient du Draconnier ressuscite champion au Reliquaire de Melandru, et non d'une matriarche. La Cle a molette asura ancienne se prend a la Tombe du golemancien et non dans la Chambre funeraire. Le Rameau spirituel n'est pas une recolte mais le Grand Rameau-garde a l'Ascension sauvage. Deux chaines de prerequis absentes sont ajoutees : le Chiffre ancien exige d'avoir purifie les cinq reliquaires avant que celui d'Abaddon n'ouvre, et la Source d'energie epuisee passe par le Detecteur technomagique achete chez Hanjo, qui seul debloque la vente des Sources d'energie asura anciennes servant a localiser les Caches de Zinn.",
     "changelog_v98": "Lot 2, premiere collection : les 14 items de la Baie des braises passent au detail d'execution. Trois apports notables. Le Calice des larmes impose trois conditions strictes que rien n'indiquait — collection deverrouillee, tous les points de controle declenches, et interdiction de se garer au coffre, de se teleporter a un ami ou de quitter l'instance, les portails restant autorises. Vaincre le Construct de jade pyroclastique fait monter la plateforme qui ouvre le sanctuaire de maitrise des Marches du Calife, necessaire a l'Electrum pyroclastique d'Aurora II : les deux objectifs s'enchainent. Et la Reine paresseuse n'apparait pas seule, elle conclut une chaine d'evenements partant des Piliers du balbuzard. Le Caillou brillant reste en verified false : les Caches skritt semblent demander un achat prealable chez un marchand skritt, sans que j'aie pu le confirmer.",
     "changelog_v99": "Fin du lot 2 : Confins de Givramer, Lac Doric et Marais de la pierre de sang. Trois pieges majeurs mis au jour. Le Badge de l'Avant-garde d'ebene du Lac Doric depend d'un succes cache de NUIT, Not All Who Wander Are Lost — de jour il n'y a rien a trouver, ce que rien n'indiquait. Les cinq objets de type Icebrood des Confins viennent tous du meme evenement, la phase finale du meta des Balises de Koda, uniquement de nuit, et les cinq champions apparaissent au hasard sur les braseros sans que la carte dise lequel est lequel. Et le Suif cristallise est le timegate reel de sa collection : cinq coffres du Froid mordant, un par jour et par personnage, dont l'acces exige l'Elixir de degel prepare au Chaudron des cloques. Ajouts utiles au passage : la Flamme de Koda ne se porte que depuis un brasero ALLUME, le Kit de survie de Noran dependait d'une cle achetable une seule fois par jour, l'Ami de Noran est un achat unique qui exige la collection deja demarree, et deux paires d'objets partagent le meme vendeur, ce qui evite deux allers-retours.",
-    "changelog_v100": "Mini Aurene, dernier item non documente des six Master, est comble grace aux captures d'Antoine qui a termine la chaine. Ce n'est pas un objet mais une collection entiere de 8 parties, le Don d'Aurene, ce que la description d'une ligne ne laissait pas soupconner. La sequence complete est consignee : etape d'histoire Aurene precoce pour obtenir le Gage d'affection et la Pierre de portail exalte, achat des cinq recettes chez Slooshoo a 5 po piece, fabrication des cinq pieces dans cinq metiers differents a 400 ou 450, ajout de chacune a la collection par clic droit, assemblage de la Poupee dragonneau, puis teleportation a la chambre de l'oeuf de Tarir pour la presenter a Aurene. Les cinq recettes figurent avec leurs materiaux. Trois avertissements en decoulent : 25 pierres magnetiques de cristal au total qui font le gros du cout, cinq metiers a monter ou contourner en achetant les pieces au comptoir, et la bobine de fil de soie tissee limitee a une par jour qu'il faut lancer en premier."
+    "changelog_v100": "Mini Aurene, dernier item non documente des six Master, est comble grace aux captures d'Antoine qui a termine la chaine. Ce n'est pas un objet mais une collection entiere de 8 parties, le Don d'Aurene, ce que la description d'une ligne ne laissait pas soupconner. La sequence complete est consignee : etape d'histoire Aurene precoce pour obtenir le Gage d'affection et la Pierre de portail exalte, achat des cinq recettes chez Slooshoo a 5 po piece, fabrication des cinq pieces dans cinq metiers differents a 400 ou 450, ajout de chacune a la collection par clic droit, assemblage de la Poupee dragonneau, puis teleportation a la chambre de l'oeuf de Tarir pour la presenter a Aurene. Les cinq recettes figurent avec leurs materiaux. Trois avertissements en decoulent : 25 pierres magnetiques de cristal au total qui font le gros du cout, cinq metiers a monter ou contourner en achetant les pieces au comptoir, et la bobine de fil de soie tissee limitee a une par jour qu'il faut lancer en premier.",
+    "editorial_principle": {
+      "fr": "Efficient ne veut pas dire rapide. Le critère est le ratio temps passé sur résultat, sur des semaines, pas la durée d'une session. Deux conséquences de rédaction. D'abord, l'ORDRE prime sur la durée : « déverrouille avant de jouer ce contenu » vaut plus qu'un temps d'exécution, parce que refaire trois fois le même contenu est le vrai coût. Ensuite, un timegate n'est pas un obstacle à contourner mais une file à lancer tôt et à laisser courir en fond — bobine de fil de soie, lingots d'electrum Xunlai, journaux fractals, Sanctuaire du voyageur.",
+      "en": "Efficient does not mean fast. The criterion is the time-spent to result ratio over weeks, not session length. Two consequences for how tips are written. First, ORDER beats duration: 'unlock before playing this content' matters more than an execution time, because redoing the same content three times is the real cost. Second, a timegate is not an obstacle to route around but a queue to start early and let run in the background — Spool of Silk Weaving Thread, Xunlai Electrum Ingots, Fractal Journals, Wayfarer's Henge."
+    },
+    "changelog_v101": "Antoine reformule le critere du projet : efficient ne veut pas dire rapide, et refaire trois fois le meme contenu est le vrai cout. Le principe est inscrit dans _meta.editorial_principle et gouverne desormais la redaction des conseils. Premiere application concrete, un champ unlock_first sur les cinq objets qui n'apparaissent qu'une fois leur collection ouverte : Nacre orrienne, Fiole de larmes, Noeud petrifie, Ami de Noran et Suif cristallise. Jouer ces contenus avant d'avoir deverrouille la collection oblige a les refaire, ce qui explique exactement ce qu'Antoine a vecu sur les collections LW3 commencees apres l'histoire. Le Suif est le pire des cinq puisque ses coffres sont limites a un par jour et par personnage. Enfin les couts en or ne sont plus figes : la chaine du Mini Aurene et l'Encapsulateur portent un lien vers le calculateur gw2efficiency, qui compare achat et fabrication a partir du stock reel du joueur — un prix ecrit en dur serait faux des le lendemain."
   },
   "meta_events": {
     "vb": {
@@ -7735,7 +7740,8 @@
       },
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Memory_Essence_Encapsulator + ayinmaiden (18 lingots pour 6) — verifie 2026-08-13"
+      "ref": "wiki:Memory_Essence_Encapsulator + ayinmaiden (18 lingots pour 6) — verifie 2026-08-13",
+      "calculator_url": "https://gw2efficiency.com/crafting/calculator/a~0!b~1!c~0!d~1-88485"
     },
     "provisioner_token": {
       "name": "Provisioner Token",
@@ -12475,7 +12481,14 @@
                   "bit": 1,
                   "how_verified": true,
                   "how_checked": "2026-08-13",
-                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+                  "unlock_first": {
+                    "fr": "La Souche pétrifiée ne rend le Nœud qu'une fois la collection ouverte.",
+                    "en": "Petrified Stumps only yield the Burl once the collection is open.",
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki + guides — comportement confirme collection par collection"
+                  }
                 },
                 {
                   "name": "Pyroclastic Core",
@@ -12497,7 +12510,14 @@
                   "bit": 3,
                   "how_verified": true,
                   "how_checked": "2026-08-13",
-                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+                  "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+                  "unlock_first": {
+                    "fr": "Le coffre du Calice des larmes ne donne la Fiole que si la collection est déjà ouverte. Faire le puzzle avant, c'est le refaire après.",
+                    "en": "The Chalice of Tears chest only grants the Flask if the collection is already open. Doing the puzzle before means doing it twice.",
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki + guides — comportement confirme collection par collection"
+                  }
                 },
                 {
                   "name": "Friend of the Circus",
@@ -12783,7 +12803,12 @@
                     },
                     "verified": true,
                     "checked": "2026-08-13",
-                    "ref": "wiki:Gift_of_Aurene (captures Antoine, 13/08/2026) — collection terminee en jeu par lui"
+                    "ref": "wiki:Gift_of_Aurene (captures Antoine, 13/08/2026) — collection terminee en jeu par lui",
+                    "calculator_url": "https://gw2efficiency.com/crafting/calculator/a~0!b~1!c~0!d~1-79947",
+                    "calculator_note": {
+                      "fr": "Le coût réel dépend entièrement de ton stock au moment du craft : le calculateur gw2efficiency compare achat et fabrication à partir de TES matériaux. Aucun prix n'est figé ici, il serait faux dès demain.",
+                      "en": "The real cost depends entirely on your stock at crafting time: the gw2efficiency calculator compares buying and crafting from YOUR materials. No price is frozen here — it would be wrong by tomorrow."
+                    }
                   },
                   "how_verified": true,
                   "how_checked": "2026-08-13",
@@ -12853,7 +12878,14 @@
                   "bit": 13,
                   "how_verified": true,
                   "how_checked": "2026-08-13",
-                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
+                  "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)",
+                  "unlock_first": {
+                    "fr": "Les coffres du Froid mordant ne rendent le Suif qu'une fois la collection ouverte — et ils sont limités à un par jour et par personnage. Chaque jour perdu avant l'ouverture est un jour perdu tout court.",
+                    "en": "The Bitter Cold chests only yield the Suet once the collection is open — and they are capped at one per day per character. Every day spent before unlocking is a day lost outright.",
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki + guides — comportement confirme collection par collection"
+                  }
                 }
               ]
             },
@@ -12921,7 +12953,14 @@
                   "bit": 4,
                   "how_verified": true,
                   "how_checked": "2026-08-13",
-                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+                  "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+                  "unlock_first": {
+                    "fr": "Achat impossible tant que la collection n'est pas démarrée, et achat unique. Terminer le cœur avant sert à quelque chose, mais pas acheter.",
+                    "en": "Cannot be purchased until the collection is started, and it is a one-time purchase. Completing the heart beforehand is useful; buying is not possible.",
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki + guides — comportement confirme collection par collection"
+                  }
                 },
                 {
                   "name": "Friend of Cin Fursarai",
@@ -13371,7 +13410,14 @@
                   "bit": 11,
                   "how_verified": true,
                   "how_checked": "2026-08-13",
-                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+                  "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+                  "unlock_first": {
+                    "fr": "Les nœuds d'huîtres ne rendent la Nacre qu'une fois la collection déverrouillée. Récolter avant, c'est récolter pour rien.",
+                    "en": "Oyster nodes only yield the Nacre once the collection is unlocked. Gathering before that is gathering for nothing.",
+                    "verified": true,
+                    "checked": "2026-08-13",
+                    "ref": "wiki + guides — comportement confirme collection par collection"
+                  }
                 },
                 {
                   "name": "Orrian Gorilla Sinew",

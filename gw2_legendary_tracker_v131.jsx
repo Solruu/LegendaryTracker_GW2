@@ -188,6 +188,8 @@ const I18N = {
     aurora_prereq_help: "Complete these 4 achievements (once per account) to obtain the 4 Sentient* items to forge.",
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
+    unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
     cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
     bags_missing: "⚠ Character bags could not be read — your API key is missing the 'characters' or 'inventories' scope. Anything not yet deposited is undercounted.",
@@ -410,6 +412,10 @@ const I18N = {
     aurora_prereq_help: "Compléter ces 4 achievements (une fois par compte) pour obtenir les 4 Sentient* à forger.",
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
+    unlock_first_title: "⚠ À DÉVERROUILLER AVANT DE JOUER CE CONTENU",
+    calc_link: "↗ Calculateur de coût (gw2efficiency, sur ton stock réel)",
+    unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
     cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
     bags_missing: "⚠ Les sacs des personnages n'ont pas pu être lus — il manque la portée 'characters' ou 'inventories' à ta clé API. Tout ce qui n'est pas déposé est sous-compté.",
@@ -5748,6 +5754,29 @@ export default function GW2LegendaryTracker() {
                                       </div>
                                     );
                                   })()}
+                                </div>
+                              )}
+                              {item.unlock_first && (
+                                <div style={{ marginTop: 4, padding: "6px 9px", background: "rgba(248,113,113,0.07)", border: "1px solid rgba(248,113,113,0.3)", borderRadius: 5 }}>
+                                  <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(248,113,113,0.95)", fontFamily: "'Cinzel', serif", letterSpacing: "0.03em", marginBottom: 2 }}>
+                                    {t("unlock_first_title")}
+                                  </div>
+                                  <div style={{ fontSize: 10, color: "rgba(248,113,113,0.75)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                                    {NX(item.unlock_first)}
+                                  </div>
+                                </div>
+                              )}
+                              {item.sub_chain?.calculator_url && (
+                                <div style={{ marginTop: 4, fontSize: 10, fontFamily: "'Crimson Text', serif" }}>
+                                  <a href={item.sub_chain.calculator_url} target="_blank" rel="noopener noreferrer"
+                                     style={{ color: "rgba(94,234,212,0.9)", textDecoration: "underline" }}>
+                                    {t("calc_link")}
+                                  </a>
+                                  {item.sub_chain.calculator_note && (
+                                    <div style={{ fontSize: 9, color: "rgba(226,201,126,0.35)", marginTop: 2, lineHeight: 1.45 }}>
+                                      {NX(item.sub_chain.calculator_note)}
+                                    </div>
+                                  )}
                                 </div>
                               )}
                               {missing && item.alt && (

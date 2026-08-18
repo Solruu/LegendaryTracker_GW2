@@ -139,6 +139,28 @@ Corollaire : une donnée obtenue au niveau 5 ou 6 porte toujours `verified`,
 
 ---
 
+## 4 bis. Critère éditorial — efficient ≠ rapide
+
+Le projet n'optimise pas la durée d'une session, mais le **ratio temps passé sur
+résultat, sur des semaines**. C'est compatible avec une vie active ; « le plus
+vite possible » ne l'est pas, et produit des conseils inutilisables.
+
+Deux conséquences directes sur la rédaction des conseils :
+
+- **L'ordre prime sur la durée.** « Déverrouille cette collection avant de jouer
+  ce contenu » vaut plus qu'un temps d'exécution. Refaire trois fois le même
+  contenu est le vrai coût — c'est exactement ce qui rend les collections LW3
+  pénibles quand on les démarre après avoir terminé l'histoire. Le champ
+  `unlock_first` porte ces cas et s'affiche en rouge.
+- **Un timegate n'est pas un obstacle à contourner, c'est une file à lancer tôt**
+  et à laisser courir en fond : bobine de fil de soie, lingots d'electrum Xunlai,
+  journaux fractals, Sanctuaire du voyageur. Un conseil doit dire « lance ça
+  aujourd'hui », pas « ça prend 16 jours ».
+
+Corollaire sur les coûts en or : ne jamais figer un prix. Le coût réel dépend du
+stock du joueur au moment du craft. Un lien vers le calculateur gw2efficiency
+reste juste, un chiffre écrit en dur est faux le lendemain.
+
 ## 5. Règles de structure
 
 Reprises ici parce qu'elles relèvent du même réflexe que le contournement
