@@ -723,7 +723,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v105",
+    "version": "v106",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1703,7 +1703,8 @@ const SOURCES_DB = {
     "changelog_v102": "Aurora II est entierement documentee grace au tableau capture par Antoine. Identifiant de succes corrige au passage : les sources declaraient 4218, qui est « Daily Tier 2 Deepstone » ; le bon est 3489, celui que le JSX utilisait deja, si bien que l'erreur ne se voyait pas. Les 21 items recoivent enfin un numero de bit, sans lequel aucun conseil ne pouvait leur etre rattache, ainsi que le nom du sanctuaire, la carte, le point de passage le plus proche et son code de chat. Une correction de fond : l'Electrum secret etait annonce au Marais de la pierre de sang, il est en Profondeurs embrouillees. L'ordre de trajet le moins couteux est conserve tel quel, du Lac Sanguinaire au Temple du renouveau : c'est exactement le genre d'information que le critere editorial privilegie, puisqu'il evite de payer deux fois la meme traversee. Trois synergies signalees : le sanctuaire des Marches du Calife s'ouvre avec l'evenement qui donne le Coeur pyroclastique, celui du Froid mordant partage son elixir avec le Suif cristallise, et le sanctuaire de la mer Bouillonnante occidentale est dans la zone d'Ignis. Enfin le cas particulier de l'Electrum atmospherique est note : son point de passage change entre le jour et la nuit.",
     "changelog_v103": "Lot 3, premiere passe : Vision II Farsight, jumeau d'Aurora II, etait la seule collection Vision sans donnee. Les 24 sanctuaires de maitrise de la saison 4 sont consignes avec leur carte, leur point de passage, son code de chat et la route d'acces detaillee. Le point qui change la planification : 24 existent mais 20 suffisent, donc quatre peuvent etre ecartes. Deux sont explicitement signales comme candidats a l'abandon parce qu'ils dependent du meta de leur carte — Dragon's Snare, dont la crevasse reste muree tant que l'assaut final n'est pas termine, et The Hunting Grounds. Un cas unique est documente a part : Niles ne se valide pas en s'agenouillant mais en jouant les notes 325-324 apres avoir parle du rituel, la page de discussion du wiki signalant que l'ancienne methode ne fonctionne plus. Enfin les prerequis de montures sont regroupes, avec le seul verrou dur de la collection : sans la maitrise Brise-barriere du Scarabee, les Ruines de la prison de Bokoss sont inaccessibles.",
     "changelog_v104": "Cout des armes de sang de dragon integre. La capture de Visions of Thunderhead Peaks annonce 360 masses marquees et 18 joyaux de serpentite exquis pour fabriquer les six armes exigees par l'etape Vision of Equipment. Or les sources ne comptaient que 300 masses marquees, et pour un tout autre poste — le Don de magie ephemere. Les 360 n'etaient donc comptes nulle part, et le joyau de serpentite n'existait meme pas comme composant. Les armes deviennent un intermediaire a six exemplaires, et la cascade ajoutee en v130 fait le reste : 300 plus six fois 60 donnent 660 masses marquees pour Vision, soit plus du double de ce qui etait affiche, et 18 joyaux.",
-    "changelog_v105": "Quatre composants d'Endless Summer n'etaient comptes dans aucun total. Le Ducat antique n'existait meme pas comme composant — 500 unites de la devise 81, invisible du grand total — et les eclats d'obsidienne, gemmes amalgamees et trefles mystiques etaient bien declares cote JSX mais sans quantite rattachee a endless_summer. Les quatre sont ajoutes : 500 ducats, 250 eclats, 250 gemmes, 10 trefles. Le ducat tombe en participant aux evenements de Castora et n'a aucun plafond documente : c'est du volume, pas une file d'attente, ce qui le distingue des monnaies a cadence."
+    "changelog_v105": "Quatre composants d'Endless Summer n'etaient comptes dans aucun total. Le Ducat antique n'existait meme pas comme composant — 500 unites de la devise 81, invisible du grand total — et les eclats d'obsidienne, gemmes amalgamees et trefles mystiques etaient bien declares cote JSX mais sans quantite rattachee a endless_summer. Les quatre sont ajoutes : 500 ducats, 250 eclats, 250 gemmes, 10 trefles. Le ducat tombe en participant aux evenements de Castora et n'a aucun plafond documente : c'est du volume, pas une file d'attente, ce qui le distingue des monnaies a cadence.",
+    "changelog_v106": "Correction d'une erreur que j'ai propagee hier encore : le tracker annonçait un plafond de 25 trefles mystiques par semaine. Ce plafond n'existe pas. Les vendeurs plafonnes totalisent 45 par semaine — 15 chez Manfred Njallson, 10 chez BUY-4373, 10 cumules chez Miyani et les preposes, 5 chez Dugan, 5 cote PvP — et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au prix de Miyani, sans consommer son quota. Le trefle n'est donc pas un timegate mais un cout, paye en ecus mystiques, eclats spirituels, obsidienne et ectoplasmes. Les neuf sources sont reecrites avec leur cout exact et leur plafond, et les arbitrages sont signales la ou ils existent : la magnetite de Manfred alimente aussi le Don de patience de Coalescence, les reliques immaculees de BUY-4373 alimentent les Dons d'ascension d'Ad Infinitum. Note de lecture ajoutee, signalee par Antoine : les lignes grisees des tableaux du wiki sont des vendeurs retires, que ce soit ecrit ou non."
   },
   "meta_events": {
     "vb": {
@@ -5268,51 +5269,115 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Coffre du Sorcier",
+          "npc": "Lyhr / Tisseuse de garde Lucirae",
+          "map": "Tour du sorcier / Rive des basses-terres",
           "tip": {
-            "fr": "60 Astral Acclaim pièce, plafond 20 par saison.",
-            "en": "60 Astral Acclaim each, capped 20 per season."
-          }
+            "fr": "3 écus mystiques + 3 éclats d'obsidienne + 3 éclats spirituels + 5 ectoplasmes. ⚠⚠ AUCUN PLAFOND — et ces achats ne comptent PAS dans la limite de Miyani, malgré un coût identique. C'est la source décisive : le trèfle mystique n'est pas plafonné, il est limité par l'or et par les écus mystiques.",
+            "en": "3 Mystic Coins + 3 Obsidian Shards + 3 Spirit Shards + 5 Globs of Ectoplasm. ⚠⚠ NO CAP — and these purchases do NOT count against Miyani's limit, despite an identical cost. This is the decisive source: Mystic Clovers are not time-capped, they are limited by gold and Mystic Coins."
+          },
+          "weekly_cap": null,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
           "type": "vendor",
           "npc": "Manfred Njallson",
-          "map": "Lion's Arch Aerodrome",
+          "map": "Aérodrome de l'Arche du Lion",
           "tip": {
-            "fr": "30 Magnetite Shards pièce, plafond 15/semaine. ⚠ Arbitrage : les mêmes Magnetite servent au Gift of Patience (Coalescence) et aux Mystic Coins chez le même PNJ.",
-            "en": "30 Magnetite Shards each, capped 15/week. ⚠ Trade-off: the same Magnetite feeds Gift of Patience (Coalescence) and Mystic Coins from the same NPC."
-          }
+            "fr": "30 éclats de magnétite + 2 écus + 2 ectoplasmes + 2 éclats spirituels, 15/semaine. Le plafond hebdomadaire le plus généreux. ⚠ Arbitrage : la même magnétite alimente le Don de patience de Coalescence.",
+            "en": "30 Magnetite Shards + 2 Coins + 2 Ectos + 2 Spirit Shards, 15/week. The most generous weekly cap. ⚠ Trade-off: the same Magnetite feeds Coalescence's Gift of Patience."
+          },
+          "weekly_cap": 15,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+        },
+        {
+          "type": "vendor",
+          "npc": "BUY-4373",
+          "map": "Observatoire / Sanctuaire de la Serrure des Brumes",
+          "tip": {
+            "fr": "150 reliques fractales immaculées + 2 écus + 2 ectoplasmes + 2 éclats spirituels, 10/semaine. ⚠ Arbitrage direct avec les Dons d'ascension d'Ad Infinitum, qui consomment les mêmes immaculées.",
+            "en": "150 Pristine Fractal Relics + 2 Coins + 2 Ectos + 2 Spirit Shards, 10/week. ⚠ Direct trade-off with Ad Infinitum's Gifts of Ascension, which consume the same pristines."
+          },
+          "weekly_cap": 10,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+        },
+        {
+          "type": "vendor",
+          "npc": "Miyani / Préposés à la Forge mystique / Gardien de la Forge",
+          "map": "Arche du Lion et Cœur des Brumes",
+          "tip": {
+            "fr": "3 écus + 3 éclats d'obsidienne + 3 éclats spirituels + 5 ectoplasmes, 10/semaine CUMULÉS entre tous ces PNJ. Même prix que chez Lyhr, mais plafonné : passe par Lyhr en priorité.",
+            "en": "3 Coins + 3 Obsidian Shards + 3 Spirit Shards + 5 Ectos, 10/week COMBINED across all these NPCs. Same price as Lyhr but capped: go to Lyhr first."
+          },
+          "weekly_cap": 10,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
           "type": "vendor",
           "npc": "Dugan",
           "map": "McM",
           "tip": {
-            "fr": "10 + 20 devise McM, plafond 5/semaine. Ne consomme pas de Spirit Shard.",
-            "en": "10 + 20 WvW currency, capped 5/week. Does not consume a Spirit Shard."
-          }
+            "fr": "10 insignes d'honneur + 20 tickets d'escarmouche + 2 écus + 2 ectoplasmes, 5/semaine. Seule source qui ne consomme AUCUN éclat spirituel.",
+            "en": "10 Badges of Honor + 20 Skirmish Tickets + 2 Coins + 2 Ectos, 5/week. The only source consuming NO Spirit Shards."
+          },
+          "weekly_cap": 5,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
           "type": "vendor",
           "npc": "Vendeur de ligue PvP",
+          "map": "Cœur des Brumes",
           "tip": {
-            "fr": "5 pièce, plafond 5/semaine cumulé avec l'Emblem of Tournament Victory.",
-            "en": "5 each, capped 5/week combined with the Emblem of Tournament Victory."
-          }
+            "fr": "1 emblème de victoire de tournoi, ou 5 pièces de ligue, + 2 écus + 2 ectoplasmes + 2 éclats spirituels. 5/semaine cumulés entre les deux offres.",
+            "en": "1 Emblem of Tournament Victory, or 5 League tokens, + 2 Coins + 2 Ectos + 2 Spirit Shards. 5/week combined across both offers."
+          },
+          "weekly_cap": 5,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+        },
+        {
+          "type": "vendor",
+          "npc": "Coffre du Sorcier",
+          "tip": {
+            "fr": "60 acclamations astrales pièce, 20 par SAISON — pas par semaine.",
+            "en": "60 Astral Acclaim each, 20 per SEASON — not per week."
+          },
+          "weekly_cap": null,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Recette Mystic Forge : ~31 % de réussite par tentative (mesure communautaire). Sans plafond, mais consomme des Mystic Coins — donc coûteuse indirectement.",
-            "en": "Mystic Forge recipe: ~31% success per attempt (community drop research). No cap, but it burns Mystic Coins — indirectly expensive."
-          }
+            "fr": "Recette Forge mystique, sans plafond : ~31 % de chance par tentative selon les relevés communautaires. Le reste du temps elle rend des matériaux T5/T6. Rentable seulement si tu as des écus mystiques à revendre.",
+            "en": "Mystic Forge recipe, uncapped: ~31% chance per attempt per community measurements. The rest of the time it yields T5/T6 materials. Only worth it if you have Mystic Coins to spare."
+          },
+          "weekly_cap": null,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
           "type": "reward_track",
           "tip": {
-            "fr": "Certains reward tracks McM/PvP en incluent. Glory to the Legions : 2 au palier 20.",
-            "en": "Some WvW/PvP reward tracks include them. Glory to the Legions: 2 at reward tier 20."
-          }
+            "fr": "Pistes de récompense PvP et McM : 2 trèfles pour une piste répétable, 7 pour la plupart des pistes non répétables de Monde vivant et d'extension. Sans plafond autre que le temps de jeu.",
+            "en": "PvP and WvW reward tracks: 2 clovers for a repeatable track, 7 for most non-repeatable Living World and expansion tracks. No cap beyond playtime."
+          },
+          "weekly_cap": null,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         }
       ],
       "qty": {
@@ -5463,6 +5528,20 @@ const SOURCES_DB = {
             "ref": "wiki:Mystic_Clover"
           }
         ]
+      },
+      "cap_note": {
+        "fr": "⚠ Correction d'une erreur du tracker : il n'existe PAS de plafond global de 25 trèfles par semaine. Les vendeurs plafonnés totalisent 45/semaine (15 Manfred + 10 BUY-4373 + 10 Miyani + 5 Dugan + 5 PvP), et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au même prix que Miyani, sans consommer son quota. Le trèfle mystique n'est donc pas un timegate : c'est un coût, payé en écus mystiques, éclats spirituels, obsidienne et ectoplasmes.",
+        "en": "⚠ Correcting a tracker error: there is NO global cap of 25 clovers per week. Capped vendors total 45/week (15 Manfred + 10 BUY-4373 + 10 Miyani + 5 Dugan + 5 PvP), and above all Lyhr and Ward Crafter Lucirae sell with NO LIMIT at Miyani's price, without consuming her quota. Mystic Clovers are therefore not a timegate: they are a cost, paid in Mystic Coins, Spirit Shards, Obsidian and Ectoplasm.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+      },
+      "discontinued_note": {
+        "fr": "Les lignes grisées du tableau wiki sont des vendeurs retirés, que la mention soit explicite ou non : Archéologue Vorri, Nikki la Perdue, Scholar Glenna, Titan Specialist Tante, Zazzl, Gobelet du sorcier et les échanges de magnétite portables. Ne pas les compter.",
+        "en": "Greyed rows in the wiki table are removed vendors, whether or not it is stated: Archaeologist Vorri, Nikki the Lost, Scholar Glenna, Titan Specialist Tante, Zazzl, Wizard's Gobbler and the portable Magnetite exchanges. Do not count them.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "convention de lecture du wiki signalee par Antoine"
       }
     },
     "gift_of_fortune": {
@@ -19005,7 +19084,7 @@ const LEGENDARIES = {
     raidAchievements: [
       { key: "rune_collector", achievementId: 7796, name: "Legendary Rune Collector",
         unlock: { fr: "🔓 Aucune action de déblocage : le compteur s'incrémente à chaque rune légendaire liée au compte. ⚠ Si tu possèdes déjà des runes légendaires et que le compteur reste à 0, passe à l'Arche du Lion ou à la Wizard's Tower — la visite force la mise à jour rétroactive.", en: "🔓 No unlock step: the counter increments each time a legendary rune binds to your account. ⚠ If you already own legendary runes and the counter stays at 0, visit Lion's Arch or the Wizard's Tower — the visit forces a retroactive update." },
-        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet. ⚠ Le vrai mur n'est pas l'or mais deux plafonds hebdomadaires : 20 trèfles mystiques et 50 jetons de fournisseur PAR rune. Six runes, c'est 120 trèfles — environ 5 semaines au plafond de 25/sem. — et 300 jetons, environ 3 semaines à 105/sem. 💡 Rien dans le tracker n'exige ces runes : c'est du confort. Mais si tu les veux un jour, les trèfles et les jetons se cumulent en fond dès maintenant, sans rien décider.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
+        tip: { fr: "Compteur de runes liées au compte (max 7 : 6 armure + 1 respirateur). 6 suffisent pour un set terrestre complet. ⚠ Le vrai mur n'est pas l'or mais deux plafonds hebdomadaires : 20 trèfles mystiques et 50 jetons de fournisseur PAR rune. Six runes, c'est 120 trèfles — un coût, pas une attente : Lyhr et la Tisseuse de garde Lucirae en vendent sans aucune limite — et 300 jetons, environ 3 semaines à 105/sem. 💡 Rien dans le tracker n'exige ces runes : c'est du confort. Mais si tu les veux un jour, les trèfles et les jetons se cumulent en fond dès maintenant, sans rien décider.", en: "Account-bound rune counter (max 7: 6 armor + 1 aquabreather). 6 cover a full land set." },
         recipe: {
           fr: ["1 Rune = MF : Gift of Runes + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
                "Gift of Runes = 50× Mystic Aspect + 20× Mystic Clover + 100× Ectos + 50× Obsidian Shard",
@@ -19018,7 +19097,7 @@ const LEGENDARIES = {
         } },
       { key: "sigil_collector", achievementId: 7788, name: "Legendary Sigil Collector",
         unlock: { fr: "🔓 Aucune action de déblocage : même logique que les runes, le compteur suit les sigils légendaires liés au compte. ⚠ Même correctif rétroactif en passant à l'Arche du Lion ou à la Wizard's Tower si le compteur ne bouge pas.", en: "🔓 No unlock step: same as runes, the counter tracks account-bound legendary sigils. ⚠ Same retroactive fix by visiting Lion's Arch or the Wizard's Tower if the counter doesn't move." },
-        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2 à 4 couvrent l'essentiel. ⚠ Plus cher que les runes : 30 trèfles mystiques et 50 jetons de fournisseur PAR sigil, contre 20 trèfles pour une rune. Quatre sigils, c'est 120 trèfles à eux seuls. 💡 Aucun légendaire du tracker n'en dépend — c'est du confort pur, à faire passer après tout le reste, mais dont les ingrédients s'accumulent en fond.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." },
+        tip: { fr: "Compteur de sigils liés au compte (max 8 : 2 sets d'armes terrestres + aquatique). 2 à 4 couvrent l'essentiel. ⚠ Plus cher que les runes : 30 trèfles mystiques et 50 jetons de fournisseur PAR sigil, contre 20 trèfles pour une rune. Quatre sigils, c'est 120 trèfles à eux seuls — sans plafond hebdomadaire, mais 360 écus mystiques et 360 éclats spirituels derrière. 💡 Aucun légendaire du tracker n'en dépend — c'est du confort pur, à faire passer après tout le reste, mais dont les ingrédients s'accumulent en fond.", en: "Account-bound sigil counter (max 8: 2 land weapon sets + aquatic). 2-4 cover most needs." },
         recipe: {
           fr: ["1 Sigil = MF : Gift of Sigils + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship",
                "Gift of Sigils = 75× Mystic Mote + 30× Mystic Clover + 150× Ectos + 75× Obsidian Shard",
