@@ -189,6 +189,7 @@ const I18N = {
     aurora_req: "Required: {cur}/{max} achievements · {left} remaining",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ UNLOCK BEFORE PLAYING THIS CONTENT",
+    free_sources: "◈ FREE AND REPEATABLE",
     wp_order: "route {n}/21",
     proj_left: "{n} {u} left",
     proj_runs: "~{n} quickplay runs",
@@ -419,6 +420,7 @@ const I18N = {
     aurora_req: "Requis : {cur}/{max} achievements · encore {left} à compléter",
     aurora_alt: "↔ Alternative",
     unlock_first_title: "⚠ À DÉVERROUILLER AVANT DE JOUER CE CONTENU",
+    free_sources: "◈ GRATUIT ET RÉPÉTABLE",
     wp_order: "trajet {n}/21",
     proj_left: "reste {n} {u}",
     proj_runs: "~{n} runs quickplay",
@@ -6700,6 +6702,24 @@ export default function GW2LegendaryTracker() {
                           {t("cur_not_sent")}
                         </div>
                       )}
+                      {(() => {
+                        // Sources sans depense d'or, et repetables : l'information la
+                        // plus utile a qui demarre sans stock. Elle vit dans les
+                        // sources, elle n'etait affichee nulle part.
+                        const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
+                        const comp = Object.values(comps).find(c => c?.apiId === cur.apiId);
+                        if (!comp?.free_sources_note) return null;
+                        return (
+                          <div style={{ marginTop: 4, padding: "6px 9px", background: "rgba(74,222,128,0.05)", border: "1px solid rgba(74,222,128,0.22)", borderRadius: 5 }}>
+                            <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(74,222,128,0.9)", fontFamily: "'Cinzel', serif", letterSpacing: "0.03em", marginBottom: 2 }}>
+                              {t("free_sources")}
+                            </div>
+                            <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                              {NX(comp.free_sources_note)}
+                            </div>
+                          </div>
+                        );
+                      })()}
                       {cur.aside && (
                         <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>
                           {NX(cur.aside)}

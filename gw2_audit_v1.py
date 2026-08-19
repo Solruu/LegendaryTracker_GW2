@@ -128,6 +128,27 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "editorial_principle", "meta_eligible_note", "achievement_notes_note"}
 
 
+def check_free_sources(data, errors, warnings):
+    """Un composant reellement exige devrait avoir une source gratuite repetable.
+
+    Un joueur qui se lance n'a pas de stock a echanger. Savoir qu'une ressource
+    s'obtient sans or, en repetable, vaut plus qu'un prix au comptoir — et c'est
+    l'information la plus souvent absente des guides.
+    """
+    for cid, comp in data.get("craft_components", {}).items():
+        qty = comp.get("qty")
+        if not isinstance(qty, dict) or not any(
+            isinstance(v, int) and v >= 100 for v in qty.values()
+        ):
+            continue
+        srcs = comp.get("sources") or []
+        if not any(isinstance(s, dict) and s.get("free_repeatable") for s in srcs):
+            warnings.append(
+                f"craft_components/{cid} : exige au moins 100 unites mais aucune "
+                "source marquee free_repeatable — le joueur sans stock n'a aucune piste"
+            )
+
+
 def check_missing_qty(data, errors, warnings):
     """Une monnaie declaree pour un legendaire doit avoir une qty pour lui.
 
@@ -411,10 +432,13 @@ def main() -> int:
     # 8. Monnaies declarees mais sans quantite rattachee
     check_missing_qty(data, errors, warnings)
 
-    # 9. Champs editoriaux effectivement rendus
+    # 9. Sources gratuites et repetables sur les gros postes
+    check_free_sources(data, errors, warnings)
+
+    # 10. Champs editoriaux effectivement rendus
     check_unrendered_fields(data, errors, warnings)
 
-    # 10. Integrite de chaque entree de meta_eligible
+    # 11. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

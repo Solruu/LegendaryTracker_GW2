@@ -248,6 +248,13 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   absent de la portée compile sans erreur et échoue seulement à l'exécution.
   Avant d'utiliser une variable dans un patch, vérifier qu'elle est bien
   déclarée — `grep 'const \\[nom'` — plutôt que de se fier au build.
+- **La question qui manque presque toujours : est-ce gratuit et répétable ?** Un
+  joueur qui démarre n'a pas de stock à échanger. Pour tout poste dépassant 100
+  unités, chercher et marquer les sources sans dépense d'or, timegate compris —
+  méta quotidienne, quotidiens de festival, pistes de récompense, vendeur karma,
+  coffres de carte. Champ `free_repeatable` sur la source, `free_sources_note`
+  sur le composant, et `gw2_audit_v1.py` signale les gros postes qui n'en ont
+  aucune.
 - **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
   compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
   500 Ducats antiques et 660 masses marquées sont ainsi restés hors du grand

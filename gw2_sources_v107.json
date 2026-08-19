@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v106",
+    "version": "v107",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -981,7 +981,8 @@
     "changelog_v103": "Lot 3, premiere passe : Vision II Farsight, jumeau d'Aurora II, etait la seule collection Vision sans donnee. Les 24 sanctuaires de maitrise de la saison 4 sont consignes avec leur carte, leur point de passage, son code de chat et la route d'acces detaillee. Le point qui change la planification : 24 existent mais 20 suffisent, donc quatre peuvent etre ecartes. Deux sont explicitement signales comme candidats a l'abandon parce qu'ils dependent du meta de leur carte — Dragon's Snare, dont la crevasse reste muree tant que l'assaut final n'est pas termine, et The Hunting Grounds. Un cas unique est documente a part : Niles ne se valide pas en s'agenouillant mais en jouant les notes 325-324 apres avoir parle du rituel, la page de discussion du wiki signalant que l'ancienne methode ne fonctionne plus. Enfin les prerequis de montures sont regroupes, avec le seul verrou dur de la collection : sans la maitrise Brise-barriere du Scarabee, les Ruines de la prison de Bokoss sont inaccessibles.",
     "changelog_v104": "Cout des armes de sang de dragon integre. La capture de Visions of Thunderhead Peaks annonce 360 masses marquees et 18 joyaux de serpentite exquis pour fabriquer les six armes exigees par l'etape Vision of Equipment. Or les sources ne comptaient que 300 masses marquees, et pour un tout autre poste — le Don de magie ephemere. Les 360 n'etaient donc comptes nulle part, et le joyau de serpentite n'existait meme pas comme composant. Les armes deviennent un intermediaire a six exemplaires, et la cascade ajoutee en v130 fait le reste : 300 plus six fois 60 donnent 660 masses marquees pour Vision, soit plus du double de ce qui etait affiche, et 18 joyaux.",
     "changelog_v105": "Quatre composants d'Endless Summer n'etaient comptes dans aucun total. Le Ducat antique n'existait meme pas comme composant — 500 unites de la devise 81, invisible du grand total — et les eclats d'obsidienne, gemmes amalgamees et trefles mystiques etaient bien declares cote JSX mais sans quantite rattachee a endless_summer. Les quatre sont ajoutes : 500 ducats, 250 eclats, 250 gemmes, 10 trefles. Le ducat tombe en participant aux evenements de Castora et n'a aucun plafond documente : c'est du volume, pas une file d'attente, ce qui le distingue des monnaies a cadence.",
-    "changelog_v106": "Correction d'une erreur que j'ai propagee hier encore : le tracker annonçait un plafond de 25 trefles mystiques par semaine. Ce plafond n'existe pas. Les vendeurs plafonnes totalisent 45 par semaine — 15 chez Manfred Njallson, 10 chez BUY-4373, 10 cumules chez Miyani et les preposes, 5 chez Dugan, 5 cote PvP — et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au prix de Miyani, sans consommer son quota. Le trefle n'est donc pas un timegate mais un cout, paye en ecus mystiques, eclats spirituels, obsidienne et ectoplasmes. Les neuf sources sont reecrites avec leur cout exact et leur plafond, et les arbitrages sont signales la ou ils existent : la magnetite de Manfred alimente aussi le Don de patience de Coalescence, les reliques immaculees de BUY-4373 alimentent les Dons d'ascension d'Ad Infinitum. Note de lecture ajoutee, signalee par Antoine : les lignes grisees des tableaux du wiki sont des vendeurs retires, que ce soit ecrit ou non."
+    "changelog_v106": "Correction d'une erreur que j'ai propagee hier encore : le tracker annonçait un plafond de 25 trefles mystiques par semaine. Ce plafond n'existe pas. Les vendeurs plafonnes totalisent 45 par semaine — 15 chez Manfred Njallson, 10 chez BUY-4373, 10 cumules chez Miyani et les preposes, 5 chez Dugan, 5 cote PvP — et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au prix de Miyani, sans consommer son quota. Le trefle n'est donc pas un timegate mais un cout, paye en ecus mystiques, eclats spirituels, obsidienne et ectoplasmes. Les neuf sources sont reecrites avec leur cout exact et leur plafond, et les arbitrages sont signales la ou ils existent : la magnetite de Manfred alimente aussi le Don de patience de Coalescence, les reliques immaculees de BUY-4373 alimentent les Dons d'ascension d'Ad Infinitum. Note de lecture ajoutee, signalee par Antoine : les lignes grisees des tableaux du wiki sont des vendeurs retires, que ce soit ecrit ou non.",
+    "changelog_v107": "Antoine demande ou sont les sources GRATUITES et REPETABLES, hors Coffre du Sorcier. Ses deux exemples pour l'ecu mystique — l'Anomalie de ligne de faille et les quotidiens des Quatre Vents — figuraient deja dans les sources, mais noyes parmi les vendeurs payants sans rien qui les distingue. Un champ free_repeatable et une cadence marquent desormais ces sources, et chaque composant concerne porte une synthese. L'obsidienne avait la liste la plus indigente, trois sources gratuites y manquaient : les coffres de bandits perdus de la Desolation d'argent, que le wiki presente comme le moyen le plus simple, les vendeurs de monnaie de carte du Monde vivant, et les pistes de recompense McM et PvP. Le vendeur karma du Temple de Balthazar gagne son avertissement : l'evenement est peu joue, il faut verifier l'etat de la carte avant de s'y rendre. Pour le trefle mystique, le constat est sec et confirme l'intuition d'Antoine : une seule source vraiment gratuite, les pistes de recompense. Tous les vendeurs, meme sans plafond, exigent ecus, eclats spirituels, obsidienne et ectoplasmes — la difficulte n'est pas le temps mais la chaine de materiaux."
   },
   "meta_events": {
     "vb": {
@@ -4013,21 +4014,68 @@
       "farmable": true,
       "sources": [
         {
-          "type": "vendor_karma",
-          "npc": "Tactician Deathstrider",
-          "map": "Straits of Devastation",
+          "type": "chest",
+          "map": {
+            "fr": "Désolation d'argent",
+            "en": "The Silverwastes"
+          },
           "tip": {
-            "fr": "2 100 karma/shard — disponible quand le Temple of Balthazar est sous contrôle du Pacte (waypoint non contesté). Source principale recommandée.",
-            "en": "2,100 karma/shard — available when the Temple of Balthazar is under Pact control (uncontested waypoint). Recommended primary source."
-          }
+            "fr": "Coffres de bandits perdus, ouverts avec les clés obtenues en jouant le méta. Le wiki les présente comme le moyen le plus simple d'en obtenir. Gratuit et répétable autant que tu joues la carte.",
+            "en": "Lost Bandit Chests, opened with keys earned by playing the meta. The wiki calls this the easiest way to get them. Free and repeatable as long as you play the map."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Obsidian_Shard#Acquisition"
+        },
+        {
+          "type": "vendor_map_currency",
+          "tip": {
+            "fr": "Vendeurs de monnaie de carte du Monde vivant : ils vendent l'obsidienne à l'unité et par lots de 5, contre la monnaie de la carte et du karma. Gratuit au sens où la monnaie se ramasse en jouant.",
+            "en": "Living World map-currency vendors sell Obsidian Shards singly and in bundles of 5, for map currency plus karma. Free in the sense that the currency is gathered by playing."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": false,
+          "checked": "2026-08-13",
+          "ref": "fandomspot 2022, non recoupe au wiki — cartes exactes et prix a confirmer"
         },
         {
           "type": "reward_track",
-          "tip": "WvW/PvP reward tracks — s'accumulent passivement."
+          "tip": {
+            "fr": "Pistes de récompense McM et PvP, notamment le Don de bataille et la piste Guildrider Warclaw. S'accumulent en jouant, sans dépense.",
+            "en": "WvW and PvP reward tracks, notably Gift of Battle and the Guildrider Warclaw track. Accumulate while playing, with no spending."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Obsidian_Shard#Acquisition"
+        },
+        {
+          "type": "vendor_karma",
+          "npc": "Tacticien Fauchemort",
+          "map": "Détroit de la Dévastation",
+          "tip": {
+            "fr": "2 100 karma pièce, sans plafond. ⚠ Disponible seulement quand le Temple de Balthazar est sous contrôle du Pacte — point de passage non contesté. La page de discussion du wiki signale que l'événement est peu joué : vérifie l'état de la carte avant de t'y rendre.",
+            "en": "2,100 karma each, uncapped. ⚠ Only available while the Temple of Balthazar is under Pact control — uncontested waypoint. The wiki talk page notes the event is rarely run: check the map state before travelling."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Obsidian_Shard + guildjen:legendary-armor-guide-open-world"
         },
         {
           "type": "node",
-          "tip": "Nodes en instances d'histoire (quelques-uns par run)."
+          "tip": {
+            "fr": "Quelques nœuds dans les instances d'histoire — appoint, pas une source.",
+            "en": "A few nodes in story instances — a bonus, not a source."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Obsidian_Shard#Acquisition"
         }
       ],
       "kind": "acquire",
@@ -4035,6 +4083,13 @@
       "best_reason": {
         "fr": "reward track — progresse en jouant",
         "en": "reward track — progresses as you play"
+      },
+      "free_sources_note": {
+        "fr": "Quatre sources gratuites et répétables, sans une pièce d'or : coffres de bandits en Désolation d'argent, vendeurs de monnaie de carte du Monde vivant, pistes de récompense McM et PvP, et le vendeur karma du Temple de Balthazar. Aucune n'est plafonnée.",
+        "en": "Four free repeatable sources, without a single coin: Lost Bandit Chests in the Silverwastes, Living World map-currency vendors, WvW and PvP reward tracks, and the Temple of Balthazar karma vendor. None is capped.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Obsidian_Shard#Acquisition"
       }
     },
     "gift_of_exploration": {
@@ -4654,7 +4709,9 @@
           "weekly_cap": null,
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "qty": {
@@ -4819,6 +4876,13 @@
         "verified": true,
         "checked": "2026-08-13",
         "ref": "convention de lecture du wiki signalee par Antoine"
+      },
+      "free_sources_note": {
+        "fr": "⚠ Une seule source vraiment gratuite et répétable : les pistes de récompense PvP et McM — 2 trèfles pour une piste répétable, 7 pour la plupart des non répétables. Tous les vendeurs, y compris ceux sans plafond, exigent des écus mystiques, des éclats spirituels, de l'obsidienne et des ectoplasmes. C'est ce qui rend le trèfle difficile : pas le temps, mais la chaîne de matériaux derrière.",
+        "en": "⚠ Only one genuinely free repeatable source: PvP and WvW reward tracks — 2 clovers for a repeatable track, 7 for most non-repeatable ones. Every vendor, including the uncapped ones, demands Mystic Coins, Spirit Shards, Obsidian and Ectoplasm. That is what makes clovers hard: not time, but the material chain behind them.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Mystic_Clover#Acquisition"
       }
     },
     "gift_of_fortune": {
@@ -5529,21 +5593,27 @@
           "tip": {
             "fr": "1 Mystic Coin par jour. Terminer 3 des quotidiens du Festival des Quatre Vents (onglet « Quotidien : Festival des Quatre Vents »). 0 PS, répétable chaque jour du festival, et alimente aussi le succès « Four Winds Gale » (onglet Coutumes des Quatre Vents). Uniquement pendant le festival.",
             "en": "1 Mystic Coin per day. Complete 3 of the Festival of the Four Winds dailies (the 'Daily Festival of the Four Winds' tab). 0 AP, repeatable every day of the festival, and it also feeds the 'Four Winds Gale' achievement (Four Winds Customs tab). Festival only."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne (pendant le festival)"
         },
         {
           "type": "reward_track",
           "tip": {
             "fr": "Skirmish McM : 2 au palier final Gold, 4 au palier final Diamond. Répétable — la seule source vraiment scalable sans plafond hebdo.",
             "en": "WvW Skirmish track: 2 at the final Gold tier, 4 at the final Diamond tier. Repeatable — the only genuinely scalable source with no weekly cap."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         },
         {
           "type": "event",
           "tip": {
             "fr": "Ley-Line Anomaly : 1 fois par jour. Tournois automatisés PvP : 1–5 (quotidien), 1–100 (mensuel).",
             "en": "Ley-Line Anomaly: once per day. Automated PvP tournaments: 1–5 (daily), 1–100 (monthly)."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         },
         {
           "type": "drop",
@@ -5728,6 +5798,13 @@
             }
           }
         ]
+      },
+      "free_sources_note": {
+        "fr": "Sources gratuites et répétables, hors Coffre du Sorcier : récompenses de connexion quotidiennes (le cycle mensuel en rend une vingtaine), méta de l'Anomalie de ligne de faille une fois par jour, quotidiens du Festival des Quatre Vents pendant le festival, et coffre d'escarmouche McM chaque semaine. Aucune ne coûte d'or.",
+        "en": "Free repeatable sources, excluding the Wizard's Vault: daily login rewards (the monthly cycle yields about twenty), the Ley-Line Anomaly meta once per day, Festival of the Four Winds dailies during the festival, and the weekly WvW skirmish chest. None costs gold.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Mystic_Coin#Acquisition"
       }
     },
     "mystic_runestone": {
