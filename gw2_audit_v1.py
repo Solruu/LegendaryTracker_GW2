@@ -124,8 +124,12 @@ def _jsx_currency_blocks(src):
 
 
 # Champs bilingues qui sont de la donnee de reference, non destinee au rendu.
+# Champs de documentation interne : ils decrivent une convention du fichier, pas
+# une information de jeu. Les rendre n'aurait aucun sens.
 NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
-                   "editorial_principle", "meta_eligible_note", "achievement_notes_note"}
+                   "editorial_principle", "meta_eligible_note", "achievement_notes_note",
+                   "i18n_note", "i18n_zones_note", "apiid_fix_note", "armory_map_fix_note",
+                   "free_repeatable_note", "apiId_fix", "how"}
 
 
 def check_free_sources(data, errors, warnings):
@@ -223,7 +227,9 @@ def check_unrendered_fields(data, errors, warnings):
 
     visit(data, "")
     for key, paths in sorted(bilingual.items()):
-        if key in NOT_FOR_DISPLAY:
+        # achievement_notes est indexe par id de succes : la cle est une donnee,
+        # pas un nom de champ, et le rendu se fait par lookup.
+        if key in NOT_FOR_DISPLAY or key.isdigit():
             continue
         if key not in src:
             warnings.append(

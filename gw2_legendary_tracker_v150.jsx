@@ -2513,6 +2513,50 @@ function farmColor(src) {
 }
 
 // ── Moteur grand total ────────────────────────────────────────
+// Notes editoriales : un objet des sources peut porter une douzaine de champs de
+// remarques. Les brancher un par un a la main garantit d'en oublier — l'audit en
+// avait 31 jamais rendus. Ce composant les rend tous, avec un ton par famille.
+const NOTE_FIELDS = [
+  ["not_a_source", "warn"], ["cap_note", "warn"], ["cap_notes", "warn"],
+  ["daily_cap_note", "warn"], ["timegate_note", "warn"], ["time_gate", "warn"],
+  ["discontinued_note", "warn"], ["chat_code_warning", "warn"],
+  ["opportunistic", "good"], ["roi_note", "good"], ["route_note", "good"],
+  ["interchangeable_note", "good"], ["unlock_also", "good"],
+  ["qty_note", "dim"], ["apiIdNote", "dim"], ["apiId_note", "dim"],
+  ["unique_note", "dim"], ["armory_note", "dim"], ["skin_note", "dim"],
+  ["skin_unlock_note", "dim"], ["upgrade_note", "dim"], ["crafting_note", "dim"],
+  ["full_set_li_note", "dim"], ["vendor_notes", "dim"], ["variants_note", "dim"],
+  ["precursor_sources", "dim"], ["gift_unique_tip", "dim"],
+  ["mystic_runestone_note", "dim"], ["timer_notes", "dim"], ["warnings", "warn"],
+];
+const NOTE_TONE = {
+  warn: { c: "rgba(251,146,60,0.8)", b: "rgba(251,146,60,0.05)", d: "rgba(251,146,60,0.2)" },
+  good: { c: "rgba(94,234,212,0.8)", b: "rgba(94,234,212,0.05)", d: "rgba(94,234,212,0.2)" },
+  dim:  { c: "rgba(226,201,126,0.5)", b: "rgba(226,201,126,0.03)", d: "rgba(226,201,126,0.12)" },
+};
+
+function EditorialNotes({ obj, compact }) {
+  if (!obj) return null;
+  const found = NOTE_FIELDS.filter(([k]) => obj[k]);
+  if (found.length === 0) return null;
+  return (
+    <div style={{ marginTop: 4 }}>
+      {found.map(([k, tone]) => {
+        const v = obj[k];
+        const t = NOTE_TONE[tone] ?? NOTE_TONE.dim;
+        const body = Array.isArray(v?.fr ?? v)
+          ? (NX(v) ?? []).map((x, i) => <div key={i}>· {x}</div>)
+          : NX(v);
+        return (
+          <div key={k} style={{ marginTop: 3, padding: compact ? "4px 7px" : "6px 9px", background: t.b, border: `1px solid ${t.d}`, borderRadius: 5, fontSize: compact ? 9.5 : 10, fontFamily: "'Crimson Text', serif", color: t.c, lineHeight: 1.5 }}>
+            {body}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // Liste de lieux a visiter, partagee par Aurora II et Vision II : meme forme de
 // donnees (name, map, waypoint.chat_code, how), donc un seul rendu.
 function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
@@ -6409,6 +6453,7 @@ export default function GW2LegendaryTracker() {
                       {wl.requirements && (
                         <div style={{ fontSize: 10, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif", marginBottom: 6, lineHeight: 1.5 }}>{NX(wl.requirements)}</div>
                       )}
+                      <EditorialNotes obj={wl} compact />
                       <WaypointList items={wl.items} copied={copiedCode} onCopy={setCopiedCode} />
                     </div>
                   );
@@ -6699,7 +6744,8 @@ export default function GW2LegendaryTracker() {
                         // sources, elle n'etait affichee nulle part.
                         const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
                         const comp = Object.values(comps).find(c => c?.apiId === cur.apiId);
-                        if (!comp?.free_sources_note) return null;
+                        if (!comp) return null;
+                        if (!comp.free_sources_note) return <EditorialNotes obj={comp} compact />;
                         return (
                           <div style={{ marginTop: 4, padding: "6px 9px", background: "rgba(74,222,128,0.05)", border: "1px solid rgba(74,222,128,0.22)", borderRadius: 5 }}>
                             <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(74,222,128,0.9)", fontFamily: "'Cinzel', serif", letterSpacing: "0.03em", marginBottom: 2 }}>
@@ -6708,6 +6754,7 @@ export default function GW2LegendaryTracker() {
                             <div style={{ fontSize: 10, color: "rgba(74,222,128,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
                               {NX(comp.free_sources_note)}
                             </div>
+                            <EditorialNotes obj={comp} compact />
                           </div>
                         );
                       })()}
@@ -6783,6 +6830,7 @@ export default function GW2LegendaryTracker() {
         const label = (k) => (cc[k]?.name ? NXS(cc[k].name) : k.replace(/_/g, " "));
         return (
           <div>
+            <div style={{ margin: "0 14px" }}><EditorialNotes obj={S} /></div>
             {mats.length > 0 && (
               <>
                 <div className="section-label">{NX({ fr: "Matériaux communs", en: "Common materials" })}</div>

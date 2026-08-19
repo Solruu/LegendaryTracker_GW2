@@ -8043,6 +8043,18 @@
         {
           "type": "no_cap_mats",
           "tip": "Échangeables SANS limite hebdo : Charged Quartz Crystal, Lump of Mithrillium, Glob of Elder Spirit Residue, Spool of Thick Elonian Cord, Research Notes."
+        },
+        {
+          "type": "vendor_daily",
+          "tip": {
+            "fr": "Échange quotidien chez les marchands de fournitures (Provisioner) : 1 jeton contre un objet d'artisanat de ton choix, une fois par jour et par personnage. Gratuit au sens où l'objet donné se fabrique ou se récolte. 💡 Le plafond est PAR PERSONNAGE : avec plusieurs personnages, les 450 jetons des améliorations légendaires tombent bien plus vite.",
+            "en": "Daily exchange at Provisioner merchants: 1 token for a crafting item of your choice, once per day per character. Free in that the item handed over is crafted or gathered. 💡 The cap is PER CHARACTER: with several characters the 450 tokens for legendary upgrades come in far faster."
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne (par personnage)",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Provisioner_Token — echange quotidien par personnage"
         }
       ],
       "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids.",
