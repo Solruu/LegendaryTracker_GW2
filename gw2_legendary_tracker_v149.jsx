@@ -1197,17 +1197,8 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [
       { id: "karma", name: "Karma", required: 0, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
-        extras: [
-          { amount: 315000, sub: "aurora_sl", bit: 1,  label: { fr: "Relique d'un dieu — Plage des sirènes", en: "God's Relic backpack — Siren's Landing" } },
-          { amountPer: 7000, sub: "aurora_sl", bits: [2, 3, 4, 5, 6], label: { fr: "Faveurs des cinq dieux — 7 000 pièce", en: "Favors of the five gods — 7,000 each" } },
-          { amount: 210000, sub: "aurora_ld", bit: 13, label: { fr: "Protecteur seraph — Lac Doric", en: "Seraph Protector — Lake Doric" } },
-          { amount: 210000, sub: "aurora_ld", bit: 14, label: { fr: "Bâton du savant — Lac Doric", en: "Bloodstone Savant's Staff — Lake Doric" } },
-          { amountPer: 7000, sub: "aurora_ld", bits: [2, 3, 4, 5, 6, 7], label: { fr: "Objets de cœur du Lac Doric — 7 000 pièce", en: "Lake Doric heart items — 7,000 each" } },
-          { amountPer: 7000, sub: "aurora_eb", bits: [4, 5, 6, 7, 8], label: { fr: "Objets de cœur de la Baie des braises — 7 000 pièce", en: "Ember Bay heart items — 7,000 each" } },
-          { amountPer: 7000, sub: "aurora_bfr", bits: [3, 4, 5, 6], label: { fr: "Objets de cœur des Confins de Givramer — 7 000 pièce", en: "Bitterfrost Frontier heart items — 7,000 each" } },
-          { amount: 1050, sub: "aurora_bfr", bit: 13, label: { fr: "Pierre de feu grawl — élixir d'accès à The Bitter Cold", en: "Grawl Firestone — elixir granting access to The Bitter Cold" } },
-          { amountPer: 7000, sub: "aurora_dm", bits: [2, 3, 4, 5], label: { fr: "Objets de cœur du Mont Draconis — 7 000 pièce", en: "Draconis Mons heart items — 7,000 each" }, estimated: true },
-        ] },
+        // surcoûts déclarés dans SOURCES_DB.craft_components.karma.qty_extras
+        },
       { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280,
         farmType: "per_account", perAccountPerDay: 12, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },

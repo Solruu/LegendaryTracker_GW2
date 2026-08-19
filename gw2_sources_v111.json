@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v110",
+    "version": "v111",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -989,7 +989,8 @@
     },
     "changelog_v108": "Marquage systematique des sources gratuites et repetables sur les gros postes. Le controle ajoute en v107 signalait 45 composants exigeant plus de 100 unites sans aucune piste gratuite ; l'essentiel n'etait pas un manque de donnee mais un manque de qualification — 14 sources de monnaie de carte, des coffres, des coeurs, des pistes de recompense, des quotidiens de fractale, toutes deja decrites mais jamais categorisees. Les types intrinsequement gratuits sont marques avec une cadence, et les types payants par construction — comptoir, vendeurs, Forge mystique, crafts — restent exclus. La convention est ecrite dans _meta pour que le prochain composant ajoute suive la meme regle. Restaient six composants sans piste gratuite. Trois sont des materiaux de recompense d'activite dont les sources n'etaient tout simplement pas ecrites — minerai de dragonite, fragment ethere et poussiere de pierre de sang tombent en jouant, sans plafond, et la plupart des joueurs les jettent. Les trois autres n'ont effectivement aucune source gratuite, et c'est desormais ecrit noir sur blanc plutot que laisse au doute : lingot cristallin, pierre runique mystique et fiole d'obsidienne fondue par les titans sont des postes en or, pas des postes de temps.",
     "changelog_v109": "Antoine corrige une erreur de raisonnement, pas seulement de donnee : declarer qu'un composant fabrique n'a aucune source gratuite est faux des lors que sa recette part de materiaux farmables. Le lingot cristallin en est l'exemple — il se fabrique a partir de Crystalline Ore, Bottle of Airship Oil, Pile of Auric Dust et Ley Line Spar, quatre materiaux de Coeur de Maguuma que les metas HoT font monter simultanement. C'est long, ce n'est pas payant. Meme correction pour la fiole d'obsidienne fondue par les titans, dont les composants se ramassent sur les cartes SotO, et pour la poussiere cristalline, qui tombe sur les ennemis niveau 80 — l'achat au comptoir y etait presente comme la voie normale alors que c'est un raccourci. Un champ free_via_ingredients porte ce verdict herite. Reste un seul poste reellement sans issue gratuite dans tout le tracker : la pierre runique mystique, a 1 po piece chez Miyani, soit 100 po incompressibles pour Klobjarne Geirr.",
-    "changelog_v110": "Pierre runique mystique (Mystic Runestone) : la v109 la declarait sans issue a 1 po piece. La capture d'Antoine montre que le prix a une seconde forme, 1 pierre runique glacee (Icy Runestone), chez les memes PNJ. L'echange est neutre puisque la glacee coute elle aussi 1 po chez Rojan le Penitent — mais il ouvre une source gratuite : le Coffret du defenseur de Jormag (Jormag Defender's Kit) rend 10 pierres glacees garanties, plus 5 eclats d'obsidienne et une Essence de chance legendaire. C'est la recompense du succes Jormag Defense Guide, qui demande de deverrouiller toutes les armes corrompues dans la garde-robe. Dix po economises sur cent, une seule fois. Deux precisions au passage : les vendeurs de la Forge mystique exigent la maitrise Erudit des secrets, alors qu'Historian Meliza et Steward Brizio au Jardin de l'Eternite ne demandent que leur coeur de renom, et Rojan disparait de toute carte ayant rate le dernier meta Breaking the Claw of Jormag."
+    "changelog_v110": "Pierre runique mystique (Mystic Runestone) : la v109 la declarait sans issue a 1 po piece. La capture d'Antoine montre que le prix a une seconde forme, 1 pierre runique glacee (Icy Runestone), chez les memes PNJ. L'echange est neutre puisque la glacee coute elle aussi 1 po chez Rojan le Penitent — mais il ouvre une source gratuite : le Coffret du defenseur de Jormag (Jormag Defender's Kit) rend 10 pierres glacees garanties, plus 5 eclats d'obsidienne et une Essence de chance legendaire. C'est la recompense du succes Jormag Defense Guide, qui demande de deverrouiller toutes les armes corrompues dans la garde-robe. Dix po economises sur cent, une seule fois. Deux precisions au passage : les vendeurs de la Forge mystique exigent la maitrise Erudit des secrets, alors qu'Historian Meliza et Steward Brizio au Jardin de l'Eternite ne demandent que leur coeur de renom, et Rojan disparait de toute carte ayant rate le dernier meta Breaking the Claw of Jormag.",
+    "changelog_v111": "Comblement des trous du grand total. 13 quantites manquaient sur des composants existants — les trefles mystiques pour six legendaires, les ecus mystiques pour Coalescence, les memoires de bataille pour Strife Unending, l'obsidienne, les ectoplasmes, les jetons de fournisseur et les Piles of Lucent Crystal pour les ameliorations legendaires. Et 20 devises n'avaient aucun composant pour les porter : insignes d'honneur, tickets d'escarmouche, temoignages de jade et castoreens, cristaux gaeting, Legendary Insights, Tales of Dungeon Delving, Ursus Oblige, notes de recherche, mosaiques d'elegie, magie volatile, seve riche en ether, karma, et les sept materiaux T6. Toutes portent desormais leur source, marquee gratuite et repetable la ou elle l'est — ce qui est le cas de toutes sauf le karma, gagne en jouant lui aussi. Les quantites sont reprises telles quelles du descripteur de monnaie du JSX, seule source de verite pour le requis. Deux cas particuliers regles a part. Le Legendary Insight porte l'identifiant de devise 70 et non l'objet 77302 du referentiel materiaux : il a ete converti en devise de portefeuille, l'objet historique n'est plus ce que renvoie le compte, et le tracker lit correctement les identifiants inferieurs a 1000 dans le portefeuille. Le karma recoit enfin ses quantites : 904 050 pour Aurora, reprises du bloc karma_budget ligne par ligne, et 7 000 000 pour Stella Radians, valeur de backlog explicitement marquee non verifiee. Le karma d'Aurora rejoint la mecanique des surcouts conditionnels : requis de base nul et neuf lignes dans qty_extras, reprises du bloc karma_budget, chacune liee a son etape de collection. Le total plein de 904 050 fond donc au fur et a mesure des achats, exactement comme les perles orriennes et les eclats de jade."
   },
   "meta_events": {
     "vb": {
@@ -2126,7 +2127,9 @@
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "t6": 200
+      },
       "kind": "acquire",
       "best": "drop",
       "free_sources_note": {
@@ -3191,7 +3194,8 @@
       "qty": {
         "triumphant_hero__per_piece": 200,
         "conflux": 1750,
-        "warbringer": 750
+        "warbringer": 750,
+        "strife_unending": 250
       },
       "farmable": true,
       "sources": [
@@ -3593,38 +3597,30 @@
     },
     "badge_of_honor": {
       "name": "Badge of Honor",
-      "apiId": 26462,
-      "needed_for": [
-        "essence_of_strategy",
-        "warbringer"
-      ],
+      "apiId": 15,
+      "kind": "currency",
       "qty": {
-        "conflux": 1000,
-        "warbringer": 1000
+        "conflux": 750,
+        "warbringer": 1250
       },
       "farmable": true,
       "sources": [
         {
           "type": "wvw",
           "tip": {
-            "fr": "Drop sur ennemis et objectifs WvW. S'accumule passivement.",
-            "en": "Drops from WvW enemies and objectives. Accumulates passively."
+            "fr": "Se gagne en jouant le McM : événements, captures et coffres d'escarmouche. Aucune dépense d'or.",
+            "en": "Earned by playing WvW: events, captures and skirmish chests. No gold spent."
           },
           "free_repeatable": true,
-          "cadence": "à volonté"
-        },
-        {
-          "type": "achievement_rewards",
-          "tip": {
-            "fr": "Récompenses de jalons d'achievements.",
-            "en": "Achievement milestone rewards."
-          },
-          "free_repeatable": true,
-          "cadence": "unique"
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
         }
       ],
-      "kind": "acquire",
-      "best": "achievement_rewards"
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
     },
     "ascended_shard_of_glory": {
       "name": "Ascended Shard of Glory",
@@ -3685,105 +3681,30 @@
     },
     "legendary_insight": {
       "name": "Legendary Insight",
-      "apiId": 77302,
-      "needed_for": [
-        "gift_of_compassion",
-        "armor_perfected_envoy"
-      ],
+      "apiId": 70,
+      "kind": "currency",
       "qty": {
-        "perfected_envoy__per_piece": 25,
         "coalescence": 150
       },
       "farmable": true,
-      "timegate": true,
-      "timegate_note": {
-        "fr": "Max ~77/semaine (43 hebdo raids + quickplay + primes quotidiennes). ~2-4 semaines selon participation.",
-        "en": "Max ~77/semaine (43 hebdo raids + quickplay + daily bounties). ~2-4 semaines selon participation."
-      },
       "sources": [
         {
-          "type": "raid_weekly",
+          "type": "raid",
           "tip": {
-            "fr": "43 garantis/semaine en tuant chaque boss de raid HoT+PoF+EoD une fois. Chaque boss = 1 LI.",
-            "en": "43 guaranteed/week by killing all HoT+PoF+EoD raid bosses once. Each boss = 1 LI."
+            "fr": "Tombe en terminant les rencontres de raid. Hebdomadaire par rencontre.",
+            "en": "Drops from clearing raid encounters. Weekly per encounter."
           },
           "free_repeatable": true,
-          "cadence": "hebdomadaire"
-        },
-        {
-          "type": "raid_quickplay",
-          "tip": {
-            "fr": "Quickplay raids — jusqu'à 10 LI supplémentaires/semaine (1/run, cap 10). Boss aléatoire assigné.",
-            "en": "Quickplay raids - up to 10 extra LI/week (1/run, cap 10). Random boss assigned."
-          },
-          "free_repeatable": true,
-          "cadence": "à volonté"
-        },
-        {
-          "type": "raid_bounty",
-          "tip": {
-            "fr": "Daily raid bounty — 1 LI/jour × 7 = 7/semaine si complété chaque jour.",
-            "en": "Daily raid bounty - 1 LI/day x 7 = 7/week if completed every day."
-          },
-          "free_repeatable": true,
-          "cadence": "hebdomadaire"
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
         }
       ],
-      "kind": "acquire",
-      "best": "raid_weekly",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Complétions hebdomadaires (1 par rencontre)",
-              "en": "Weekly completions (1 per encounter)"
-            },
-            "period": "week",
-            "cap": 43,
-            "cost": {
-              "fr": "15 HoT (ailes 1-4) + 10 PoF (5-7) + 3 Janthir (8) + 15 rencontres (1 Core, 7 Icebrood, 4 EoD, 2 SotO, 1 VoE)",
-              "en": "15 HoT (wings 1-4) + 10 PoF (5-7) + 3 Janthir (8) + 15 encounters (1 Core, 7 Icebrood, 4 EoD, 2 SotO, 1 VoE)"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Legendary_Insight#Acquisition"
-          },
-          {
-            "label": {
-              "fr": "Daily Raid Bounties",
-              "en": "Daily Raid Bounties"
-            },
-            "period": "week",
-            "cap": 28,
-            "cost": {
-              "fr": "4 bounties par jour × 7 jours. Le quickplay ne compte pas pour un bounty.",
-              "en": "4 bounties per day x 7 days. Quickplay does not count toward a bounty."
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Legendary_Insight#Acquisition"
-          },
-          {
-            "label": {
-              "fr": "Succès Weekly Quickplay Raid Encounters",
-              "en": "Weekly Quickplay Raid Encounters achievement"
-            },
-            "period": "week",
-            "cap": 6,
-            "cost": {
-              "fr": "Seule voie par laquelle le quickplay rapporte des LI : il ne donne ni coffre ni bounty.",
-              "en": "The only route by which quickplay yields LI: it grants neither coffers nor bounties."
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Legendary_Insight#Acquisition"
-          }
-        ]
-      },
-      "note": {
-        "fr": "Maximum 77 LI/semaine : 43 (complétions) + 28 (bounties quotidiens) + 6 (succès quickplay). ⚠ Les Challenge Modes ne rapportent PLUS de LI supplémentaires. Le quickplay ne donne ni coffre ni bounty, mais compte pour le succès hebdomadaire — c'est sa seule contribution.",
-        "en": "Maximum 77 LI/week: 43 (completions) + 28 (daily bounties) + 6 (quickplay achievement). ⚠ Challenge Modes NO LONGER award extra LI. Quickplay grants neither coffers nor bounties, but counts toward the weekly achievement — its only contribution."
-      }
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "gw2_currencies_ref : devise 70",
+      "apiId_note": "Devise de portefeuille 70, et non l'objet 77302 que donne le referentiel materiaux. Le Legendary Insight a ete converti en devise de portefeuille : l'objet historique existe encore mais n'est plus ce que renvoie le compte. Le tracker lit les identifiants inferieurs a 1000 dans le portefeuille, 70 est donc correct."
     },
     "magnetite_shard": {
       "name": "Magnetite Shard",
@@ -4083,7 +4004,8 @@
         "ad_infinitum": 250,
         "selachimorpha": 250,
         "obsidian__per_piece": 50,
-        "endless_summer": 250
+        "endless_summer": 250,
+        "upgrades": 450
       },
       "farmable": true,
       "sources": [
@@ -4672,7 +4594,8 @@
         "obsidian__per_piece": 600,
         "the_ascension": 250,
         "ad_infinitum": 250,
-        "memory_essence_encapsulator": 50
+        "memory_essence_encapsulator": 50,
+        "upgrades": 1050
       },
       "kind": "acquire",
       "best": "salvage"
@@ -4863,7 +4786,12 @@
         "stella_radians": 77,
         "aetheric_anchor": 100,
         "obsidian__per_piece": 9,
-        "endless_summer": 10
+        "endless_summer": 10,
+        "coalescence": 77,
+        "orrax_manifested": 38,
+        "selachimorpha": 55,
+        "strife_unending": 45,
+        "upgrades": 205
       },
       "kind": "acquire",
       "best": "vendor",
@@ -5783,7 +5711,8 @@
         "transcendence": 250,
         "the_ascension": 250,
         "ad_infinitum": 250,
-        "stella_radians": 250
+        "stella_radians": 250,
+        "coalescence": 250
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7852,7 +7781,8 @@
         }
       ],
       "qty": {
-        "legendary_relic": 18750
+        "legendary_relic": 18750,
+        "upgrades": 23250
       },
       "kind": "acquire",
       "best": "tp",
@@ -8091,7 +8021,8 @@
       ],
       "farmable": true,
       "qty": {
-        "obsidian__per_piece": 50
+        "obsidian__per_piece": 50,
+        "upgrades": 450
       },
       "sources": [
         {
@@ -8490,7 +8421,8 @@
         ]
       },
       "qty": {
-        "endless_summer": 250
+        "endless_summer": 250,
+        "vision": 100
       }
     },
     "gift_of_warfare": {
@@ -8971,6 +8903,609 @@
       "verified": true,
       "checked": "2026-08-13",
       "ref": "gw2_currencies_ref : devise 81"
+    },
+    "skirmish_claim_ticket": {
+      "name": "WvW Skirmish Claim Ticket",
+      "apiId": 26,
+      "kind": "currency",
+      "qty": {
+        "conflux": 1850,
+        "warbringer": 2800,
+        "strife_unending": 3000
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "wvw",
+          "tip": {
+            "fr": "Se gagne en jouant le McM : événements, captures et coffres d'escarmouche. Aucune dépense d'or.",
+            "en": "Earned by playing WvW: events, captures and skirmish chests. No gold spent."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "testimony_of_jade_heroics": {
+      "name": "Testimony of Jade Heroics",
+      "apiId": 65,
+      "kind": "currency",
+      "qty": {
+        "conflux": 250,
+        "warbringer": 500
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "wvw",
+          "tip": {
+            "fr": "Se gagne en jouant le McM : événements, captures et coffres d'escarmouche. Aucune dépense d'or.",
+            "en": "Earned by playing WvW: events, captures and skirmish chests. No gold spent."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "testimony_of_castoran_heroics": {
+      "name": "Testimony of Castoran Heroics",
+      "apiId": 82,
+      "kind": "currency",
+      "qty": {
+        "conflux": 250,
+        "warbringer": 500
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "wvw",
+          "tip": {
+            "fr": "Se gagne en jouant le McM : événements, captures et coffres d'escarmouche. Aucune dépense d'or.",
+            "en": "Earned by playing WvW: events, captures and skirmish chests. No gold spent."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "gaeting_crystal": {
+      "name": "Gaeting Crystal",
+      "apiId": 39,
+      "kind": "currency",
+      "qty": {
+        "coalescence": 100
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "raid",
+          "tip": {
+            "fr": "Tombe en terminant les rencontres de raid. Hebdomadaire par rencontre.",
+            "en": "Drops from clearing raid encounters. Weekly per encounter."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "tales_of_dungeon_delving": {
+      "name": "Tales of Dungeon Delving",
+      "apiId": 69,
+      "kind": "currency",
+      "qty": {
+        "orrax_manifested": 500
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "dungeon",
+          "tip": {
+            "fr": "Tombe en terminant les chemins de donjon. Répétable sans plafond.",
+            "en": "Drops from completing dungeon paths. Repeatable with no cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "ursus_oblige": {
+      "name": "Ursus Oblige",
+      "apiId": 76,
+      "kind": "currency",
+      "qty": {
+        "orrax_manifested": 300
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "map_currency",
+          "tip": {
+            "fr": "Monnaie de carte : nœuds, événements et métas de la carte concernée.",
+            "en": "Map currency: nodes, events and metas on the relevant map."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "research_note": {
+      "name": "Research Note",
+      "apiId": 61,
+      "kind": "currency",
+      "qty": {
+        "selachimorpha": 5000
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "salvage",
+          "tip": {
+            "fr": "Obtenue en recyclant de l'équipement avec un kit de recherche. Sans plafond.",
+            "en": "Obtained by salvaging gear with a research kit. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "elegy_mosaic": {
+      "name": "Elegy Mosaic",
+      "apiId": 35,
+      "kind": "currency",
+      "qty": {
+        "vision": 300
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "map_currency",
+          "tip": {
+            "fr": "Monnaie de carte : nœuds, événements et métas de la carte concernée.",
+            "en": "Map currency: nodes, events and metas on the relevant map."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "volatile_magic": {
+      "name": "Volatile Magic",
+      "apiId": 45,
+      "kind": "currency",
+      "qty": {
+        "vision": 1000
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "map_currency",
+          "tip": {
+            "fr": "Monnaie de carte : nœuds, événements et métas de la carte concernée.",
+            "en": "Map currency: nodes, events and metas on the relevant map."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "aether_rich_sap": {
+      "name": "Aether-Rich Sap",
+      "apiId": 83,
+      "kind": "currency",
+      "qty": {
+        "endless_summer": 500
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "map_currency",
+          "tip": {
+            "fr": "Monnaie de carte : nœuds, événements et métas de la carte concernée.",
+            "en": "Map currency: nodes, events and metas on the relevant map."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "karma": {
+      "name": "Karma",
+      "apiId": 2,
+      "kind": "currency",
+      "qty": {
+        "aurora": 0,
+        "stella_radians": 7000000
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "account",
+          "tip": {
+            "fr": "Gagné en jouant : événements, cœurs, récompenses quotidiennes.",
+            "en": "Earned by playing: events, hearts, daily rewards."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "qty_note": {
+        "fr": "Le karma d'Aurora est entièrement conditionnel : chaque ligne disparaît du total dès que l'étape correspondante est validée, d'où un requis de base nul et neuf surcoûts déclarés dans qty_extras. Total plein : 904 050. Celui de Stella Radians est une valeur de backlog non recoupée.",
+        "en": "Aurora's karma is entirely conditional: each line drops out of the total as soon as its step is done, hence a zero base requirement and nine extras declared in qty_extras. Full total: 904,050. Stella Radians' figure is an unverified backlog value."
+      },
+      "qty_verified": {
+        "aurora": true,
+        "stella_radians": false
+      },
+      "qty_extras": [
+        {
+          "legendary": "aurora",
+          "sub": "aurora_sl",
+          "label": {
+            "fr": "Relique d'un dieu — Plage des sirènes",
+            "en": "God's Relic backpack — Siren's Landing"
+          },
+          "bit": 1,
+          "amount": 315000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_sl",
+          "label": {
+            "fr": "Faveurs des cinq dieux — Plage des sirènes",
+            "en": "Favors of the five gods — Siren's Landing"
+          },
+          "bits": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "amountPer": 7000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_ld",
+          "label": {
+            "fr": "Protecteur seraph — Lac Doric",
+            "en": "Seraph Protector — Lake Doric"
+          },
+          "bit": 13,
+          "amount": 210000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_ld",
+          "label": {
+            "fr": "Bâton du savant — Lac Doric",
+            "en": "Bloodstone Savant's Staff — Lake Doric"
+          },
+          "bit": 14,
+          "amount": 210000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_ld",
+          "label": {
+            "fr": "Objets de cœur — Lac Doric",
+            "en": "Heart items — Lake Doric"
+          },
+          "bits": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "amountPer": 7000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_eb",
+          "label": {
+            "fr": "Objets de cœur — Baie des braises",
+            "en": "Heart items — Ember Bay"
+          },
+          "bits": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "amountPer": 7000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_bfr",
+          "label": {
+            "fr": "Objets de cœur — Confins de Givramer",
+            "en": "Heart items — Bitterfrost Frontier"
+          },
+          "bits": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "amountPer": 7000
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_bfr",
+          "label": {
+            "fr": "Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer",
+            "en": "Grawl Firestone (Bitter Cold elixir) — Bitterfrost Frontier"
+          },
+          "bit": 13,
+          "amount": 1050
+        },
+        {
+          "legendary": "aurora",
+          "sub": "aurora_dm",
+          "label": {
+            "fr": "Objets de cœur — Mont Draconis",
+            "en": "Heart items — Draconis Mons"
+          },
+          "bits": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "amountPer": 7000,
+          "estimated": true
+        }
+      ]
+    },
+    "powerful_venom_sac": {
+      "name": "Powerful Venom Sac",
+      "apiId": 24283,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "armored_scale": {
+      "name": "Armored Scale",
+      "apiId": 24289,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "vial_of_powerful_blood": {
+      "name": "Vial of Powerful Blood",
+      "apiId": 24295,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "elaborate_totem": {
+      "name": "Elaborate Totem",
+      "apiId": 24300,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "vicious_claw": {
+      "name": "Vicious Claw",
+      "apiId": 24351,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "vicious_fang": {
+      "name": "Vicious Fang",
+      "apiId": 24357,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+    },
+    "ancient_bone": {
+      "name": "Ancient Bone",
+      "apiId": 24358,
+      "kind": "material",
+      "qty": {
+        "t6": 200
+      },
+      "farmable": true,
+      "sources": [
+        {
+          "type": "drop",
+          "tip": {
+            "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
+            "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-13",
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
     }
   },
   "enchaînements_recommandés": {

@@ -294,7 +294,9 @@ def check_api_ids(data, errors, warnings):
     def visit(node, path):
         if isinstance(node, dict):
             name, api = node.get("name"), node.get("apiId")
-            if isinstance(name, str) and isinstance(api, int):
+            # Les devises de portefeuille (id < 1000) ne sont pas dans le
+            # referentiel materiaux : un homonyme d'objet n'y prouve rien.
+            if isinstance(name, str) and isinstance(api, int) and api >= 1000:
                 real = by_name.get(name.lower())
                 if real is not None and real != api:
                     errors.append(
