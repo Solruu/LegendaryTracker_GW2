@@ -141,6 +141,10 @@ def check_free_sources(data, errors, warnings):
             isinstance(v, int) and v >= 100 for v in qty.values()
         ):
             continue
+        # Un constat d'absence explicite vaut reponse : certains postes n'ont
+        # reellement aucune source gratuite, et le dire est l'information utile.
+        if comp.get("free_sources_note"):
+            continue
         srcs = comp.get("sources") or []
         if not any(isinstance(s, dict) and s.get("free_repeatable") for s in srcs):
             warnings.append(

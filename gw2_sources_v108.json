@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v107",
+    "version": "v108",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -982,7 +982,12 @@
     "changelog_v104": "Cout des armes de sang de dragon integre. La capture de Visions of Thunderhead Peaks annonce 360 masses marquees et 18 joyaux de serpentite exquis pour fabriquer les six armes exigees par l'etape Vision of Equipment. Or les sources ne comptaient que 300 masses marquees, et pour un tout autre poste — le Don de magie ephemere. Les 360 n'etaient donc comptes nulle part, et le joyau de serpentite n'existait meme pas comme composant. Les armes deviennent un intermediaire a six exemplaires, et la cascade ajoutee en v130 fait le reste : 300 plus six fois 60 donnent 660 masses marquees pour Vision, soit plus du double de ce qui etait affiche, et 18 joyaux.",
     "changelog_v105": "Quatre composants d'Endless Summer n'etaient comptes dans aucun total. Le Ducat antique n'existait meme pas comme composant — 500 unites de la devise 81, invisible du grand total — et les eclats d'obsidienne, gemmes amalgamees et trefles mystiques etaient bien declares cote JSX mais sans quantite rattachee a endless_summer. Les quatre sont ajoutes : 500 ducats, 250 eclats, 250 gemmes, 10 trefles. Le ducat tombe en participant aux evenements de Castora et n'a aucun plafond documente : c'est du volume, pas une file d'attente, ce qui le distingue des monnaies a cadence.",
     "changelog_v106": "Correction d'une erreur que j'ai propagee hier encore : le tracker annonçait un plafond de 25 trefles mystiques par semaine. Ce plafond n'existe pas. Les vendeurs plafonnes totalisent 45 par semaine — 15 chez Manfred Njallson, 10 chez BUY-4373, 10 cumules chez Miyani et les preposes, 5 chez Dugan, 5 cote PvP — et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au prix de Miyani, sans consommer son quota. Le trefle n'est donc pas un timegate mais un cout, paye en ecus mystiques, eclats spirituels, obsidienne et ectoplasmes. Les neuf sources sont reecrites avec leur cout exact et leur plafond, et les arbitrages sont signales la ou ils existent : la magnetite de Manfred alimente aussi le Don de patience de Coalescence, les reliques immaculees de BUY-4373 alimentent les Dons d'ascension d'Ad Infinitum. Note de lecture ajoutee, signalee par Antoine : les lignes grisees des tableaux du wiki sont des vendeurs retires, que ce soit ecrit ou non.",
-    "changelog_v107": "Antoine demande ou sont les sources GRATUITES et REPETABLES, hors Coffre du Sorcier. Ses deux exemples pour l'ecu mystique — l'Anomalie de ligne de faille et les quotidiens des Quatre Vents — figuraient deja dans les sources, mais noyes parmi les vendeurs payants sans rien qui les distingue. Un champ free_repeatable et une cadence marquent desormais ces sources, et chaque composant concerne porte une synthese. L'obsidienne avait la liste la plus indigente, trois sources gratuites y manquaient : les coffres de bandits perdus de la Desolation d'argent, que le wiki presente comme le moyen le plus simple, les vendeurs de monnaie de carte du Monde vivant, et les pistes de recompense McM et PvP. Le vendeur karma du Temple de Balthazar gagne son avertissement : l'evenement est peu joue, il faut verifier l'etat de la carte avant de s'y rendre. Pour le trefle mystique, le constat est sec et confirme l'intuition d'Antoine : une seule source vraiment gratuite, les pistes de recompense. Tous les vendeurs, meme sans plafond, exigent ecus, eclats spirituels, obsidienne et ectoplasmes — la difficulte n'est pas le temps mais la chaine de materiaux."
+    "changelog_v107": "Antoine demande ou sont les sources GRATUITES et REPETABLES, hors Coffre du Sorcier. Ses deux exemples pour l'ecu mystique — l'Anomalie de ligne de faille et les quotidiens des Quatre Vents — figuraient deja dans les sources, mais noyes parmi les vendeurs payants sans rien qui les distingue. Un champ free_repeatable et une cadence marquent desormais ces sources, et chaque composant concerne porte une synthese. L'obsidienne avait la liste la plus indigente, trois sources gratuites y manquaient : les coffres de bandits perdus de la Desolation d'argent, que le wiki presente comme le moyen le plus simple, les vendeurs de monnaie de carte du Monde vivant, et les pistes de recompense McM et PvP. Le vendeur karma du Temple de Balthazar gagne son avertissement : l'evenement est peu joue, il faut verifier l'etat de la carte avant de s'y rendre. Pour le trefle mystique, le constat est sec et confirme l'intuition d'Antoine : une seule source vraiment gratuite, les pistes de recompense. Tous les vendeurs, meme sans plafond, exigent ecus, eclats spirituels, obsidienne et ectoplasmes — la difficulte n'est pas le temps mais la chaine de materiaux.",
+    "free_repeatable_note": {
+      "fr": "free_repeatable marque une source qui ne coûte aucune pièce d'or et se répète : contenu joué, récolte, coffres, cœurs, pistes de récompense, quotidiens et hebdomadaires. Le comptoir, les vendeurs payants, la Forge mystique et les crafts en sont exclus par construction. Le champ cadence dit à quelle fréquence on peut y revenir.",
+      "en": "free_repeatable marks a source that costs no gold and repeats: content played, gathering, chests, hearts, reward tracks, dailies and weeklies. The trading post, paying vendors, the Mystic Forge and crafts are excluded by construction. The cadence field says how often you can come back."
+    },
+    "changelog_v108": "Marquage systematique des sources gratuites et repetables sur les gros postes. Le controle ajoute en v107 signalait 45 composants exigeant plus de 100 unites sans aucune piste gratuite ; l'essentiel n'etait pas un manque de donnee mais un manque de qualification — 14 sources de monnaie de carte, des coffres, des coeurs, des pistes de recompense, des quotidiens de fractale, toutes deja decrites mais jamais categorisees. Les types intrinsequement gratuits sont marques avec une cadence, et les types payants par construction — comptoir, vendeurs, Forge mystique, crafts — restent exclus. La convention est ecrite dans _meta pour que le prochain composant ajoute suive la meme regle. Restaient six composants sans piste gratuite. Trois sont des materiaux de recompense d'activite dont les sources n'etaient tout simplement pas ecrites — minerai de dragonite, fragment ethere et poussiere de pierre de sang tombent en jouant, sans plafond, et la plupart des joueurs les jettent. Les trois autres n'ont effectivement aucune source gratuite, et c'est desormais ecrit noir sur blanc plutot que laisse au doute : lingot cristallin, pierre runique mystique et fiole d'obsidienne fondue par les titans sont des postes en or, pas des postes de temps."
   },
   "meta_events": {
     "vb": {
@@ -2163,7 +2168,9 @@
           "tip": {
             "fr": "Recycler une pièce élevée avec un Ascended Salvage Tool. Option rapide : acheter une pièce élevée chez Smoxxi (vendeur Raid) pour 250 Magnetite Shards + 15 po puis la recycler.",
             "en": "Salvage an ascended piece with an Ascended Salvage Tool. Quick option: buy an ascended piece from Smoxxi (Raid vendor) for 250 Magnetite Shards + 15g then salvage."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "qty": {
@@ -2426,7 +2433,9 @@
             "fr": "1/compte/jour chez les vendeurs de hearts PoF (Desert Highlands, Crystal Oasis, etc.).",
             "en": "1/account/day from PoF Renown Heart vendors (Desert Highlands, Crystal Oasis, etc.)."
           },
-          "daily_cap": 1
+          "daily_cap": 1,
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         }
       ],
       "conversion_options": [
@@ -2470,7 +2479,9 @@
           "tip": {
             "fr": "Nodes, events et metas — Domain of Istan. Déjà farmé en parallèle du Vision I.",
             "en": "Nodes, events and metas - Domain of Istan. Already farmed alongside Vision I."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2499,7 +2510,9 @@
             "fr": "Îles de Ventesable",
             "en": "Sandswept Isles"
           },
-          "tip": "Nodes, events et metas — Sandswept Isles."
+          "tip": "Nodes, events et metas — Sandswept Isles.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2528,7 +2541,9 @@
             "fr": "Domaine de Kourna",
             "en": "Domain of Kourna"
           },
-          "tip": "Nodes, events et metas — Domain of Kourna."
+          "tip": "Nodes, events et metas — Domain of Kourna.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2584,7 +2599,9 @@
             "fr": "Pics de Chef-Tonnerre",
             "en": "Thunderhead Peaks"
           },
-          "tip": "Nodes, events et metas — Thunderhead Peaks."
+          "tip": "Nodes, events et metas — Thunderhead Peaks.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2614,7 +2631,9 @@
             "fr": "Chute draconique",
             "en": "Dragonfall"
           },
-          "tip": "Nodes, events et metas — Dragonfall."
+          "tip": "Nodes, events et metas — Dragonfall.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2683,7 +2702,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2730,7 +2751,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2795,7 +2818,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Orrian_Oyster + releve communautaire par zone (oathoftheexiled, 2017) recoupe par l'observation d'Antoine"
+          "ref": "wiki:Orrian_Oyster + releve communautaire par zone (oathoftheexiled, 2017) recoupe par l'observation d'Antoine",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "named_mob",
@@ -2809,7 +2834,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "releve communautaire oathoftheexiled — non recoupe au wiki"
+          "ref": "releve communautaire oathoftheexiled — non recoupe au wiki",
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         },
         {
           "type": "chest",
@@ -2823,7 +2850,9 @@
           },
           "verified": false,
           "checked": "2026-08-13",
-          "ref": "releve communautaire oathoftheexiled — ni le taux ni le nombre de coffres ne sont documentes"
+          "ref": "releve communautaire oathoftheexiled — ni le taux ni le nombre de coffres ne sont documentes",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "heart_vendor",
@@ -2837,7 +2866,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Siren's_Landing + scoutwarband (cout en karma du lot)"
+          "ref": "wiki:Siren's_Landing + scoutwarband (cout en karma du lot)",
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         },
         {
           "type": "event_drop",
@@ -2851,7 +2882,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Orrian_Pearl#Acquisition"
+          "ref": "wiki:Orrian_Pearl#Acquisition",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "home_instance",
@@ -2861,7 +2894,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Orrian_Oyster_Node + scoutwarband"
+          "ref": "wiki:Orrian_Oyster_Node + scoutwarband",
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         }
       ],
       "conversion_options": [
@@ -2915,7 +2950,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2950,7 +2987,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -2989,7 +3028,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode"
+          "ref": "wiki:Living_World_Season_3 — carte ↔ monnaie recoupee episode par episode",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "conversion_options": [
@@ -3150,7 +3191,9 @@
           "tip": {
             "fr": "Drop sur ennemis WvW, récompenses skirmish, reward tracks WvW.",
             "en": "Drops from WvW enemies, skirmish rewards, WvW reward tracks."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -3323,7 +3366,9 @@
           "tip": {
             "fr": "Récompense du succès McM « Emblem of the Conqueror » — capturer 100 objectifs McM (tours, forts, châteaux). Camps et ruines ne comptent pas.",
             "en": "Reward for WvW achievement 'Emblem of the Conqueror' — capture 100 WvW objectives (towers, keeps, castles). Camps and ruins don't count."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "unique"
         }
       ],
       "kind": "acquire"
@@ -3530,7 +3575,9 @@
       "sources": [
         {
           "type": "wvw_rank",
-          "tip": "Obtained by ranking up in WvW. Also found in some Skirmish chests."
+          "tip": "Obtained by ranking up in WvW. Also found in some Skirmish chests.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "kind": "acquire"
@@ -3553,14 +3600,18 @@
           "tip": {
             "fr": "Drop sur ennemis et objectifs WvW. S'accumule passivement.",
             "en": "Drops from WvW enemies and objectives. Accumulates passively."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "achievement_rewards",
           "tip": {
             "fr": "Récompenses de jalons d'achievements.",
             "en": "Achievement milestone rewards."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "unique"
         }
       ],
       "kind": "acquire",
@@ -3585,7 +3636,9 @@
           "tip": {
             "fr": "Récompenses PvP ranked — chests de saison, placements. Source principale pour joueurs PvP.",
             "en": "PvP ranked rewards - season chests, placements. Main source for PvP players."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "kind": "acquire"
@@ -3644,21 +3697,27 @@
           "tip": {
             "fr": "43 garantis/semaine en tuant chaque boss de raid HoT+PoF+EoD une fois. Chaque boss = 1 LI.",
             "en": "43 guaranteed/week by killing all HoT+PoF+EoD raid bosses once. Each boss = 1 LI."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         },
         {
           "type": "raid_quickplay",
           "tip": {
             "fr": "Quickplay raids — jusqu'à 10 LI supplémentaires/semaine (1/run, cap 10). Boss aléatoire assigné.",
             "en": "Quickplay raids - up to 10 extra LI/week (1/run, cap 10). Random boss assigned."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "raid_bounty",
           "tip": {
             "fr": "Daily raid bounty — 1 LI/jour × 7 = 7/semaine si complété chaque jour.",
             "en": "Daily raid bounty - 1 LI/day x 7 = 7/week if completed every day."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         }
       ],
       "kind": "acquire",
@@ -3733,14 +3792,18 @@
           "tip": {
             "fr": "Drop de tous les boss de raid HoT. Cap 800/semaine. Aussi échangeables contre des LI chez Scholar Glenna.",
             "en": "Drops from all HoT raid bosses. Cap 800/week. Also exchangeable for LI from Scholar Glenna."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         },
         {
           "type": "raid_quickplay",
           "tip": {
             "fr": "Drop en quickplay raids.",
             "en": "Drop en quickplay raids."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "kind": "acquire",
@@ -3846,7 +3909,9 @@
           "tip": {
             "fr": "Events et renown hearts PoF. S'accumule passivement en farmant les maps PoF.",
             "en": "PoF events and renown hearts. Accumulates passively while farming PoF maps."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -4075,7 +4140,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Obsidian_Shard#Acquisition"
+          "ref": "wiki:Obsidian_Shard#Acquisition",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "kind": "acquire",
@@ -4193,11 +4260,15 @@
             "Janthir Syntri",
             "Mistburned Barrens",
             "Bava Nisos"
-          ]
+          ],
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "convergence",
-          "tip": "Convergences Outer Nayos / Mount Balrior — 12-25 par run (gratuit)."
+          "tip": "Convergences Outer Nayos / Mount Balrior — 12-25 par run (gratuit).",
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         }
       ],
       "note": {
@@ -4232,7 +4303,9 @@
           "tip": {
             "fr": "T2 rifts — requiert Masterwork Rift Motivation (coûte 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drop 6-42 Masterwork selon mastery + motivation.",
             "en": "T2 rifts - requires Masterwork Rift Motivation (costs 25 Fine Rift Essence + 25 Large Claw + 25 Research Notes + 1 Fine Motivation). Drops 6-42 Masterwork depending on mastery + motivation."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "apiId_note": "Wallet ID 80 — attention : 79 = Rare, 80 = Masterwork (inversés vs ordre intuitif)",
@@ -4262,7 +4335,9 @@
           "tip": {
             "fr": "Rifts T3 — requiert une Rare Rift Motivation. Droppe 3-64 Rare selon maîtrise + motivation. 1-2 rifts T3 suffisent pour les 50 Rare par Amalgamated.",
             "en": "T3 rifts — requires Rare Rift Motivation. Drops 3-64 Rare depending on mastery + motivation. 1-2 T3 rifts are enough for the 50 Rare per Amalgamated."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "apiId_note": "Wallet ID 79",
@@ -4487,7 +4562,9 @@
           "tip": {
             "fr": "Récompenses des chests de saison PvP ranked. Cap de 120 par saison — impossible d'accélérer.",
             "en": "Rewards from PvP ranked season chests. Cap of 120 per season - cannot be accelerated."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "kind": "acquire"
@@ -4552,7 +4629,9 @@
           "tip": {
             "fr": "Recycler des items rares (jaunes) lvl 68+. Source principale — synergie avec n'importe quel farm open-world.",
             "en": "Salvage rare (yellow) items lvl 68+. Primary source — synergizes with any open-world farm."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -5450,7 +5529,14 @@
         "gen3_aurenes_tenderness": 250
       },
       "kind": "craftable",
-      "best": "craft_500"
+      "best": "craft_500",
+      "free_sources_note": {
+        "fr": "⚠ Aucune source gratuite : le lingot cristallin se fabrique. Le poste gratuit est en amont — poussière cristalline et minerai de dragonite tombent en jouant.",
+        "en": "⚠ No free source: the Crystalline Ingot is crafted. The free part is upstream — Crystalline Dust and Dragonite Ore drop from playing.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "constat d'absence — verifie contre les sources declarees"
+      }
     },
     "gift_of_maguuma_mastery": {
       "name": "Gift of Maguuma Mastery",
@@ -5834,6 +5920,13 @@
         "checked": "2026-08-13",
         "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
         "verified": true
+      },
+      "free_sources_note": {
+        "fr": "⚠ Aucune source gratuite et répétable. La pierre runique mystique s'obtient à la Forge mystique ou au comptoir : c'est un poste en or, pas un poste de temps.",
+        "en": "⚠ No free repeatable source. Mystic Runestones come from the Mystic Forge or the trading post: a gold cost, not a time cost.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "constat d'absence — verifie contre les sources declarees"
       }
     },
     "legendary_shard_gen2": {
@@ -5925,7 +6018,9 @@
           "tip": {
             "fr": "Coffre du héros de Trépas du dragon (choix), 1/jour. ⚠ C'est la SEULE méta qui en donne : aucun autre coffre de méta EoD, ni Dragonstorm, ni Drakkar.",
             "en": "Dragon's End: Hero's Choice Chest (choice), 1/day. ⚠ It is the ONLY meta that grants them: no other EoD meta chest, not Dragonstorm, not Drakkar."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "strike_cm",
@@ -5940,7 +6035,9 @@
           "weight": {
             "complexity": "high",
             "time_cost": "high"
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         },
         {
           "type": "tp",
@@ -6085,7 +6182,9 @@
           "tip": {
             "fr": "Drop dans les chests spéciaux EoD (Jade Maw, Strike Missions CM reward chest).",
             "en": "Drops from special EoD chests (Jade Maw, Strike Missions CM reward chest)."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -6526,14 +6625,18 @@
           "tip": {
             "fr": "Drop dans tous les fractales (daily/recommended/challenge). Principal revenu fractal.",
             "en": "Drops in all fractals (daily/recommended/challenge). Main fractal income."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "daily_reward",
           "tip": {
             "fr": "Coffre de fractale quotidien — 15-40 relics par jour selon le tier.",
             "en": "Daily fractal chest — 15-40 relics par jour selon tier."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         }
       ],
       "qty": {
@@ -6591,14 +6694,18 @@
           "tip": {
             "fr": "1 par fractale T4 quotidienne. Max 4-5/jour via recommandées + quotidiennes T4.",
             "en": "1 per daily T4 fractal. Max 4-5/day via recommended + T4 dailies."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         },
         {
           "type": "challenge_mode",
           "tip": {
             "fr": "Pristine Relics bonus via les fractales en Challenge Mode.",
             "en": "Bonus Pristine Relics from Challenge Mode fractals."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "hebdomadaire"
         }
       ],
       "qty": {
@@ -6674,7 +6781,9 @@
           "tip": {
             "fr": "3 par jour via les fractales recommandées quotidiennes. +1 bonus par fractale CM terminée (Sunqua Peak, Nightmare, Shattered Observatory).",
             "en": "3 per day via recommended fractal dailies. +1 bonus per completed fractal CM (Sunqua Peak, Nightmare, Shattered Observatory)."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "quotidienne"
         }
       ],
       "qty": {
@@ -7082,7 +7191,9 @@
           "tip": {
             "fr": "Currency Mistburned Barrens — events, chests, meta. Échangeable 5:1 avec Shards of Bava Nisos.",
             "en": "Mistburned Barrens currency - events, chests, meta. Exchangeable 5:1 with Shards of Bava Nisos."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "qty": {
@@ -7104,7 +7215,9 @@
           "tip": {
             "fr": "Currency Bava Nisos — events, chests, meta A Titanic Voyage. Échangeable 5:1 avec Shards of Mistburned Barrens chez vendors JW.",
             "en": "Bava Nisos currency - events, chests, A Titanic Voyage meta. Exchangeable 5:1 with Shards of Mistburned Barrens at JW vendors."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "qty": {
@@ -7147,6 +7260,13 @@
         "checked": "2026-08-13",
         "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
         "verified": true
+      },
+      "free_sources_note": {
+        "fr": "⚠ Aucune source gratuite : fabrication uniquement. À budgéter en or et en matériaux, pas en semaines.",
+        "en": "⚠ No free source: crafting only. Budget it in gold and materials, not in weeks.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "constat d'absence — verifie contre les sources declarees"
       }
     },
     "gift_of_the_mistburned_isles": {
@@ -7269,7 +7389,9 @@
           "tip": {
             "fr": "Events, coffres, hearts. 7/heart/semaine chez les vendeurs de hearts de Lowland Shore (prix réduit après complétion).",
             "en": "Events, chests, hearts. 7/heart/week from Lowland Shore heart vendors (reduced price after completion)."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -7293,7 +7415,9 @@
         {
           "type": "map_currency",
           "map": "Janthir Syntri (JW)",
-          "tip": "Events, chests, hearts. 7/heart/semaine chez vendors heart Janthir Syntri."
+          "tip": "Events, chests, hearts. 7/heart/semaine chez vendors heart Janthir Syntri.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -7665,7 +7789,9 @@
           "tip": {
             "fr": "Raffinement automatique depuis Lucent Motes (10:1) dans le material storage. Sources : salvage équipements rares+ lvl68+, Wizard's Vault, events SotO.",
             "en": "Automatic refinement from Lucent Motes (10:1) in material storage. Sources: salvaging rare+ lvl68+ gear, Wizard's Vault, SotO events."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "tp",
@@ -8266,7 +8392,9 @@
           "tip": {
             "fr": "⭐ Coffres au choix du héros : récompense quotidienne garantie des métas de la plupart des cartes d'extension. Coût marginal nul si tu fais déjà la méta.",
             "en": "⭐ Hero's Choice Chests: guaranteed daily reward from metas on most expansion maps. Zero marginal cost if you already run the meta."
-          }
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "mystic_forge",
@@ -8620,7 +8748,28 @@
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "sources": [
+        {
+          "type": "activity_reward",
+          "tip": {
+            "fr": "Tombe en jouant : métas de carte, boss de monde, coffres de fin d'événement et donjons. Aucune dépense, aucun plafond — le stock se constitue tout seul.",
+            "en": "Drops from playing: map metas, world bosses, event end chests and dungeons. No spending, no cap — the stock builds itself."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+        }
+      ],
+      "free_sources_note": {
+        "fr": "Matériau de récompense d'activité : il tombe en jouant, sans dépense ni plafond. La plupart des joueurs en jettent — vérifie ton stockage avant de t'en inquiéter. Source principale : métas de carte, boss de monde, coffres de fin d'événement et donjons.",
+        "en": "Activity reward material: it drops from playing, with no spending and no cap. Most players delete it — check your storage before worrying. Main source: map metas, world bosses, event end chests and dungeons.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+      }
     },
     "empyreal_fragment": {
       "name": "Empyreal Fragment",
@@ -8632,7 +8781,28 @@
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "sources": [
+        {
+          "type": "activity_reward",
+          "tip": {
+            "fr": "Tombe en jouant : coffres des puzzles de saut, coffres de fractales et donjons. Aucune dépense, aucun plafond — le stock se constitue tout seul.",
+            "en": "Drops from playing: jumping puzzle chests, fractal and dungeon chests. No spending, no cap — the stock builds itself."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+        }
+      ],
+      "free_sources_note": {
+        "fr": "Matériau de récompense d'activité : il tombe en jouant, sans dépense ni plafond. La plupart des joueurs en jettent — vérifie ton stockage avant de t'en inquiéter. Source principale : coffres des puzzles de saut, coffres de fractales et donjons.",
+        "en": "Activity reward material: it drops from playing, with no spending and no cap. Most players delete it — check your storage before worrying. Main source: jumping puzzle chests, fractal and dungeon chests.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+      }
     },
     "bloodstone_dust": {
       "name": "Pile of Bloodstone Dust",
@@ -8644,7 +8814,28 @@
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "sources": [
+        {
+          "type": "activity_reward",
+          "tip": {
+            "fr": "Tombe en jouant : n'importe quel contenu de niveau 80 : c'est le plus abondant des trois. Aucune dépense, aucun plafond — le stock se constitue tout seul.",
+            "en": "Drops from playing: any level-80 content: it is the most abundant of the three. No spending, no cap — the stock builds itself."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+        }
+      ],
+      "free_sources_note": {
+        "fr": "Matériau de récompense d'activité : il tombe en jouant, sans dépense ni plafond. La plupart des joueurs en jettent — vérifie ton stockage avant de t'en inquiéter. Source principale : n'importe quel contenu de niveau 80 : c'est le plus abondant des trois.",
+        "en": "Activity reward material: it drops from playing, with no spending and no cap. Most players delete it — check your storage before worrying. Main source: any level-80 content: it is the most abundant of the three.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
+      }
     },
     "spirit_shard": {
       "name": "Spirit Shard",
@@ -8664,7 +8855,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Spirit_Shard"
+          "ref": "wiki:Spirit_Shard",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "verified": true,
@@ -8720,7 +8913,9 @@
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "gw2_currencies_ref : devise 81, description officielle"
+          "ref": "gw2_currencies_ref : devise 81, description officielle",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "verified": true,
