@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v109",
+    "version": "v110",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -988,7 +988,8 @@
       "en": "free_repeatable marks a source that costs no gold and repeats: content played, gathering, chests, hearts, reward tracks, dailies and weeklies. The trading post, paying vendors, the Mystic Forge and crafts are excluded by construction. The cadence field says how often you can come back. A crafted component is not 'paid': if it is crafted from farmable materials it carries free_via_ingredients and the note says where to farm. The verdict is inherited from the chain, not read off the component alone."
     },
     "changelog_v108": "Marquage systematique des sources gratuites et repetables sur les gros postes. Le controle ajoute en v107 signalait 45 composants exigeant plus de 100 unites sans aucune piste gratuite ; l'essentiel n'etait pas un manque de donnee mais un manque de qualification — 14 sources de monnaie de carte, des coffres, des coeurs, des pistes de recompense, des quotidiens de fractale, toutes deja decrites mais jamais categorisees. Les types intrinsequement gratuits sont marques avec une cadence, et les types payants par construction — comptoir, vendeurs, Forge mystique, crafts — restent exclus. La convention est ecrite dans _meta pour que le prochain composant ajoute suive la meme regle. Restaient six composants sans piste gratuite. Trois sont des materiaux de recompense d'activite dont les sources n'etaient tout simplement pas ecrites — minerai de dragonite, fragment ethere et poussiere de pierre de sang tombent en jouant, sans plafond, et la plupart des joueurs les jettent. Les trois autres n'ont effectivement aucune source gratuite, et c'est desormais ecrit noir sur blanc plutot que laisse au doute : lingot cristallin, pierre runique mystique et fiole d'obsidienne fondue par les titans sont des postes en or, pas des postes de temps.",
-    "changelog_v109": "Antoine corrige une erreur de raisonnement, pas seulement de donnee : declarer qu'un composant fabrique n'a aucune source gratuite est faux des lors que sa recette part de materiaux farmables. Le lingot cristallin en est l'exemple — il se fabrique a partir de Crystalline Ore, Bottle of Airship Oil, Pile of Auric Dust et Ley Line Spar, quatre materiaux de Coeur de Maguuma que les metas HoT font monter simultanement. C'est long, ce n'est pas payant. Meme correction pour la fiole d'obsidienne fondue par les titans, dont les composants se ramassent sur les cartes SotO, et pour la poussiere cristalline, qui tombe sur les ennemis niveau 80 — l'achat au comptoir y etait presente comme la voie normale alors que c'est un raccourci. Un champ free_via_ingredients porte ce verdict herite. Reste un seul poste reellement sans issue gratuite dans tout le tracker : la pierre runique mystique, a 1 po piece chez Miyani, soit 100 po incompressibles pour Klobjarne Geirr."
+    "changelog_v109": "Antoine corrige une erreur de raisonnement, pas seulement de donnee : declarer qu'un composant fabrique n'a aucune source gratuite est faux des lors que sa recette part de materiaux farmables. Le lingot cristallin en est l'exemple — il se fabrique a partir de Crystalline Ore, Bottle of Airship Oil, Pile of Auric Dust et Ley Line Spar, quatre materiaux de Coeur de Maguuma que les metas HoT font monter simultanement. C'est long, ce n'est pas payant. Meme correction pour la fiole d'obsidienne fondue par les titans, dont les composants se ramassent sur les cartes SotO, et pour la poussiere cristalline, qui tombe sur les ennemis niveau 80 — l'achat au comptoir y etait presente comme la voie normale alors que c'est un raccourci. Un champ free_via_ingredients porte ce verdict herite. Reste un seul poste reellement sans issue gratuite dans tout le tracker : la pierre runique mystique, a 1 po piece chez Miyani, soit 100 po incompressibles pour Klobjarne Geirr.",
+    "changelog_v110": "Pierre runique mystique (Mystic Runestone) : la v109 la declarait sans issue a 1 po piece. La capture d'Antoine montre que le prix a une seconde forme, 1 pierre runique glacee (Icy Runestone), chez les memes PNJ. L'echange est neutre puisque la glacee coute elle aussi 1 po chez Rojan le Penitent — mais il ouvre une source gratuite : le Coffret du defenseur de Jormag (Jormag Defender's Kit) rend 10 pierres glacees garanties, plus 5 eclats d'obsidienne et une Essence de chance legendaire. C'est la recompense du succes Jormag Defense Guide, qui demande de deverrouiller toutes les armes corrompues dans la garde-robe. Dix po economises sur cent, une seule fois. Deux precisions au passage : les vendeurs de la Forge mystique exigent la maitrise Erudit des secrets, alors qu'Historian Meliza et Steward Brizio au Jardin de l'Eternite ne demandent que leur coeur de renom, et Rojan disparait de toute carte ayant rate le dernier meta Breaking the Claw of Jormag."
   },
   "meta_events": {
     "vb": {
@@ -5912,12 +5913,51 @@
       "sources": [
         {
           "type": "vendor",
-          "npc": "Miyani (Mystic Forge Keeper)",
-          "map": "Lion's Arch",
+          "npc": "Miyani / Mystic Forge Attendant / Mystic Forge Keeper",
           "tip": {
-            "fr": "1 po pièce chez Miyani. Requis dans le Gift unique de chaque arme gen2 (remplace l'Icy Runestone).",
-            "en": "1g each from Miyani. Required in the unique Gift of each gen2 weapon (replaces Icy Runestone)."
-          }
+            "fr": "1 po pièce, OU 1 pierre runique glacée (Icy Runestone) — les deux prix coexistent chez le même PNJ. ⚠ Exige la maîtrise Érudit des secrets (Scholar of Secrets).",
+            "en": "1 gold each, OR 1 Icy Runestone — both prices coexist at the same NPC. ⚠ Requires the Scholar of Secrets mastery."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
+        },
+        {
+          "type": "vendor",
+          "npc": "Historian Meliza (Pilgrim's Rest) / Steward Brizio (Artificer's Islet)",
+          "map": "Eternity's Garden",
+          "tip": {
+            "fr": "1 po pièce. 💡 Ces deux-là n'exigent PAS la maîtrise Érudit des secrets, seulement d'avoir terminé leur cœur de renom. C'est la porte d'entrée si la maîtrise n'est pas montée.",
+            "en": "1 gold each. 💡 These two do NOT require the Scholar of Secrets mastery, only their renown heart completed. That is the way in if the mastery is not levelled."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
+        },
+        {
+          "type": "achievement_rewards",
+          "npc": "Jormag Defender's Kit",
+          "tip": {
+            "fr": "10 pierres runiques glacées GARANTIES, plus 5 éclats d'obsidienne et une Essence de chance légendaire. Récompense du succès « Jormag Defense Guide » (Rare Collections) : déverrouiller toutes les armes corrompues dans la garde-robe. Ces 10 pierres glacées s'échangent une contre une en pierres runiques mystiques — soit 10 po économisés, gratuitement, une seule fois.",
+            "en": "10 Icy Runestones GUARANTEED, plus 5 Obsidian Shards and a Legendary Essence of Luck. Reward from the 'Jormag Defense Guide' achievement (Rare Collections): unlock all corrupted weapons in your wardrobe. Those 10 Icy Runestones trade one-for-one into Mystic Runestones — 10 gold saved, for free, once."
+          },
+          "free_repeatable": false,
+          "cadence": "unique",
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
+        },
+        {
+          "type": "vendor",
+          "npc": "Rojan the Penitent",
+          "map": "Earthshake Basin, Frostgorge Sound",
+          "tip": {
+            "fr": "Vend les pierres runiques glacées à 1 po pièce. ⚠ Absent de toute carte qui a raté le dernier méta « Breaking the Claw of Jormag ». Sans intérêt pour économiser : glacée et mystique coûtent le même prix, l'échange est neutre.",
+            "en": "Sells Icy Runestones for 1 gold each. ⚠ Absent from any map that failed the last 'Breaking the Claw of Jormag' meta. Pointless as a saving: Icy and Mystic cost the same, the trade is neutral."
+          },
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
         }
       ],
       "qty": {
@@ -5931,11 +5971,11 @@
         "verified": true
       },
       "free_sources_note": {
-        "fr": "⚠ Réellement sans source gratuite : 1 po pièce chez Miyani, sans alternative farmable. Pour 100 unités, c'est 100 po incompressibles — le seul poste du tracker qui ne se contourne pas en jouant.",
-        "en": "⚠ Genuinely no free source: 1 gold each from Miyani, with no farmable alternative. For 100 units that is a flat 100 gold — the only line in the tracker that cannot be worked around by playing.",
+        "fr": "⚠ Quasiment aucune issue gratuite, mais ce n'est pas un mur : 1 po pièce, ou 1 pierre runique glacée (Icy Runestone) — qui coûte elle-même 1 po chez Rojan le Pénitent, l'échange est donc neutre. La seule vraie économie est le Coffret du défenseur de Jormag (Jormag Defender's Kit), qui rend 10 pierres glacées gratuitement, une seule fois : 10 po sur les 100. Pour Klobjarne Geirr, compte donc ~90 po incompressibles. 💡 Si la maîtrise Érudit des secrets (Scholar of Secrets) n'est pas montée, passe par Historian Meliza ou Steward Brizio au Jardin de l'Éternité : ils ne demandent que leur cœur de renom.",
+        "en": "⚠ Almost no free route, but it is not a wall: 1 gold each, or 1 Icy Runestone — which itself costs 1 gold from Rojan the Penitent, so the trade is neutral. The only real saving is the Jormag Defender's Kit, granting 10 Icy Runestones for free, once: 10 gold off the 100. For Klobjarne Geirr, budget roughly 90 gold that cannot be avoided. 💡 If the Scholar of Secrets mastery is not levelled, go through Historian Meliza or Steward Brizio in Eternity's Garden: they only require their renown heart.",
         "verified": true,
         "checked": "2026-08-13",
-        "ref": "sources declarees : vendeur uniquement"
+        "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
       }
     },
     "legendary_shard_gen2": {
