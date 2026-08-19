@@ -248,6 +248,14 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   absent de la portée compile sans erreur et échoue seulement à l'exécution.
   Avant d'utiliser une variable dans un patch, vérifier qu'elle est bien
   déclarée — `grep 'const \\[nom'` — plutôt que de se fier au build.
+- **Toujours donner le nom anglais entre parenthèses.** Le wiki est en anglais :
+  une note qui ne cite que « fiole d'obsidienne fondue par les titans » oblige à
+  deviner la page. Nommer l'objet en français puis en anglais, au moins à la
+  première occurrence d'un conseil.
+- **Un composant fabriqué hérite du verdict de ses ingrédients.** Dire qu'il n'a
+  aucune source gratuite parce qu'il ne tombe pas tel quel est faux : si la
+  recette part de matériaux farmables, il est gratuit et long, pas payant.
+  Dérouler la chaîne jusqu'au bout avant de conclure — `free_via_ingredients`.
 - **La question qui manque presque toujours : est-ce gratuit et répétable ?** Un
   joueur qui démarre n'a pas de stock à échanger. Pour tout poste dépassant 100
   unités, chercher et marquer les sources sans dépense d'or, timegate compris —

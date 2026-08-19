@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "v108",
+    "version": "v109",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -984,10 +984,11 @@
     "changelog_v106": "Correction d'une erreur que j'ai propagee hier encore : le tracker annonçait un plafond de 25 trefles mystiques par semaine. Ce plafond n'existe pas. Les vendeurs plafonnes totalisent 45 par semaine — 15 chez Manfred Njallson, 10 chez BUY-4373, 10 cumules chez Miyani et les preposes, 5 chez Dugan, 5 cote PvP — et surtout Lyhr et la Tisseuse de garde Lucirae vendent SANS AUCUNE LIMITE, au prix de Miyani, sans consommer son quota. Le trefle n'est donc pas un timegate mais un cout, paye en ecus mystiques, eclats spirituels, obsidienne et ectoplasmes. Les neuf sources sont reecrites avec leur cout exact et leur plafond, et les arbitrages sont signales la ou ils existent : la magnetite de Manfred alimente aussi le Don de patience de Coalescence, les reliques immaculees de BUY-4373 alimentent les Dons d'ascension d'Ad Infinitum. Note de lecture ajoutee, signalee par Antoine : les lignes grisees des tableaux du wiki sont des vendeurs retires, que ce soit ecrit ou non.",
     "changelog_v107": "Antoine demande ou sont les sources GRATUITES et REPETABLES, hors Coffre du Sorcier. Ses deux exemples pour l'ecu mystique — l'Anomalie de ligne de faille et les quotidiens des Quatre Vents — figuraient deja dans les sources, mais noyes parmi les vendeurs payants sans rien qui les distingue. Un champ free_repeatable et une cadence marquent desormais ces sources, et chaque composant concerne porte une synthese. L'obsidienne avait la liste la plus indigente, trois sources gratuites y manquaient : les coffres de bandits perdus de la Desolation d'argent, que le wiki presente comme le moyen le plus simple, les vendeurs de monnaie de carte du Monde vivant, et les pistes de recompense McM et PvP. Le vendeur karma du Temple de Balthazar gagne son avertissement : l'evenement est peu joue, il faut verifier l'etat de la carte avant de s'y rendre. Pour le trefle mystique, le constat est sec et confirme l'intuition d'Antoine : une seule source vraiment gratuite, les pistes de recompense. Tous les vendeurs, meme sans plafond, exigent ecus, eclats spirituels, obsidienne et ectoplasmes — la difficulte n'est pas le temps mais la chaine de materiaux.",
     "free_repeatable_note": {
-      "fr": "free_repeatable marque une source qui ne coûte aucune pièce d'or et se répète : contenu joué, récolte, coffres, cœurs, pistes de récompense, quotidiens et hebdomadaires. Le comptoir, les vendeurs payants, la Forge mystique et les crafts en sont exclus par construction. Le champ cadence dit à quelle fréquence on peut y revenir.",
-      "en": "free_repeatable marks a source that costs no gold and repeats: content played, gathering, chests, hearts, reward tracks, dailies and weeklies. The trading post, paying vendors, the Mystic Forge and crafts are excluded by construction. The cadence field says how often you can come back."
+      "fr": "free_repeatable marque une source qui ne coûte aucune pièce d'or et se répète : contenu joué, récolte, coffres, cœurs, pistes de récompense, quotidiens et hebdomadaires. Le comptoir, les vendeurs payants, la Forge mystique et les crafts en sont exclus par construction. Le champ cadence dit à quelle fréquence on peut y revenir. Un composant fabriqué n'est pas « payant » : s'il se fabrique à partir de matériaux farmables, il porte free_via_ingredients et la note explique où farmer. Le verdict s'hérite de la chaîne, il ne se lit pas sur le composant seul.",
+      "en": "free_repeatable marks a source that costs no gold and repeats: content played, gathering, chests, hearts, reward tracks, dailies and weeklies. The trading post, paying vendors, the Mystic Forge and crafts are excluded by construction. The cadence field says how often you can come back. A crafted component is not 'paid': if it is crafted from farmable materials it carries free_via_ingredients and the note says where to farm. The verdict is inherited from the chain, not read off the component alone."
     },
-    "changelog_v108": "Marquage systematique des sources gratuites et repetables sur les gros postes. Le controle ajoute en v107 signalait 45 composants exigeant plus de 100 unites sans aucune piste gratuite ; l'essentiel n'etait pas un manque de donnee mais un manque de qualification — 14 sources de monnaie de carte, des coffres, des coeurs, des pistes de recompense, des quotidiens de fractale, toutes deja decrites mais jamais categorisees. Les types intrinsequement gratuits sont marques avec une cadence, et les types payants par construction — comptoir, vendeurs, Forge mystique, crafts — restent exclus. La convention est ecrite dans _meta pour que le prochain composant ajoute suive la meme regle. Restaient six composants sans piste gratuite. Trois sont des materiaux de recompense d'activite dont les sources n'etaient tout simplement pas ecrites — minerai de dragonite, fragment ethere et poussiere de pierre de sang tombent en jouant, sans plafond, et la plupart des joueurs les jettent. Les trois autres n'ont effectivement aucune source gratuite, et c'est desormais ecrit noir sur blanc plutot que laisse au doute : lingot cristallin, pierre runique mystique et fiole d'obsidienne fondue par les titans sont des postes en or, pas des postes de temps."
+    "changelog_v108": "Marquage systematique des sources gratuites et repetables sur les gros postes. Le controle ajoute en v107 signalait 45 composants exigeant plus de 100 unites sans aucune piste gratuite ; l'essentiel n'etait pas un manque de donnee mais un manque de qualification — 14 sources de monnaie de carte, des coffres, des coeurs, des pistes de recompense, des quotidiens de fractale, toutes deja decrites mais jamais categorisees. Les types intrinsequement gratuits sont marques avec une cadence, et les types payants par construction — comptoir, vendeurs, Forge mystique, crafts — restent exclus. La convention est ecrite dans _meta pour que le prochain composant ajoute suive la meme regle. Restaient six composants sans piste gratuite. Trois sont des materiaux de recompense d'activite dont les sources n'etaient tout simplement pas ecrites — minerai de dragonite, fragment ethere et poussiere de pierre de sang tombent en jouant, sans plafond, et la plupart des joueurs les jettent. Les trois autres n'ont effectivement aucune source gratuite, et c'est desormais ecrit noir sur blanc plutot que laisse au doute : lingot cristallin, pierre runique mystique et fiole d'obsidienne fondue par les titans sont des postes en or, pas des postes de temps.",
+    "changelog_v109": "Antoine corrige une erreur de raisonnement, pas seulement de donnee : declarer qu'un composant fabrique n'a aucune source gratuite est faux des lors que sa recette part de materiaux farmables. Le lingot cristallin en est l'exemple — il se fabrique a partir de Crystalline Ore, Bottle of Airship Oil, Pile of Auric Dust et Ley Line Spar, quatre materiaux de Coeur de Maguuma que les metas HoT font monter simultanement. C'est long, ce n'est pas payant. Meme correction pour la fiole d'obsidienne fondue par les titans, dont les composants se ramassent sur les cartes SotO, et pour la poussiere cristalline, qui tombe sur les ennemis niveau 80 — l'achat au comptoir y etait presente comme la voie normale alors que c'est un raccourci. Un champ free_via_ingredients porte ce verdict herite. Reste un seul poste reellement sans issue gratuite dans tout le tracker : la pierre runique mystique, a 1 po piece chez Miyani, soit 100 po incompressibles pour Klobjarne Geirr."
   },
   "meta_events": {
     "vb": {
@@ -2126,7 +2127,14 @@
       ],
       "qty": {},
       "kind": "acquire",
-      "best": "drop"
+      "best": "drop",
+      "free_sources_note": {
+        "fr": "Drop sur les ennemis niveau 80, sans plafond. Plus rare que les autres tiers, d'où la recommandation d'achat — mais elle tombe en jouant, l'achat est un raccourci, pas une nécessité.",
+        "en": "Drops from level-80 enemies, uncapped. Rarer than other tiers, hence the buy recommendation — but it does drop from playing; buying is a shortcut, not a requirement.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "sources declarees du composant"
+      }
     },
     "icy_runestone": {
       "name": "Icy Runestone",
@@ -5531,12 +5539,13 @@
       "kind": "craftable",
       "best": "craft_500",
       "free_sources_note": {
-        "fr": "⚠ Aucune source gratuite : le lingot cristallin se fabrique. Le poste gratuit est en amont — poussière cristalline et minerai de dragonite tombent en jouant.",
-        "en": "⚠ No free source: the Crystalline Ingot is crafted. The free part is upstream — Crystalline Dust and Dragonite Ore drop from playing.",
+        "fr": "Gratuit par ses ingrédients, pas par lui-même. Le lingot se fabrique (craft 500) à partir de quatre matériaux de Cœur de Maguuma, tous farmables en jouant les métas HoT : Crystalline Ore (Bastion du Pénitent / Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) et Ley Line Spar (Tangled Depths). Jouer les quatre métas HoT en boucle fait monter les quatre compteurs simultanément — long, mais sans une pièce d'or.",
+        "en": "Free through its ingredients, not by itself. The ingot is crafted (500) from four Heart of Maguuma materials, all farmable by playing the HoT metas: Crystalline Ore (Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) and Ley Line Spar (Tangled Depths). Running the four HoT metas in a loop raises all four counters at once — slow, but without a single coin.",
         "verified": true,
         "checked": "2026-08-13",
-        "ref": "constat d'absence — verifie contre les sources declarees"
-      }
+        "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
+      },
+      "free_via_ingredients": true
     },
     "gift_of_maguuma_mastery": {
       "name": "Gift of Maguuma Mastery",
@@ -5922,11 +5931,11 @@
         "verified": true
       },
       "free_sources_note": {
-        "fr": "⚠ Aucune source gratuite et répétable. La pierre runique mystique s'obtient à la Forge mystique ou au comptoir : c'est un poste en or, pas un poste de temps.",
-        "en": "⚠ No free repeatable source. Mystic Runestones come from the Mystic Forge or the trading post: a gold cost, not a time cost.",
+        "fr": "⚠ Réellement sans source gratuite : 1 po pièce chez Miyani, sans alternative farmable. Pour 100 unités, c'est 100 po incompressibles — le seul poste du tracker qui ne se contourne pas en jouant.",
+        "en": "⚠ Genuinely no free source: 1 gold each from Miyani, with no farmable alternative. For 100 units that is a flat 100 gold — the only line in the tracker that cannot be worked around by playing.",
         "verified": true,
         "checked": "2026-08-13",
-        "ref": "constat d'absence — verifie contre les sources declarees"
+        "ref": "sources declarees : vendeur uniquement"
       }
     },
     "legendary_shard_gen2": {
@@ -7262,12 +7271,13 @@
         "verified": true
       },
       "free_sources_note": {
-        "fr": "⚠ Aucune source gratuite : fabrication uniquement. À budgéter en or et en matériaux, pas en semaines.",
-        "en": "⚠ No free source: crafting only. Budget it in gold and materials, not in weeks.",
+        "fr": "Gratuit par ses ingrédients : Mursaat Obsidian Chunks et Titan Heatstones se ramassent en jouant les cartes SotO, les ectoplasmes tombent du recyclage. Ward Trader Sampaguita (Bava Nisos) en vend aussi, mais plus cher — la fabrication reste la voie sans or.",
+        "en": "Free through its ingredients: Mursaat Obsidian Chunks and Titan Heatstones are gathered by playing the SotO maps, and Globs of Ectoplasm come from salvaging. Ward Trader Sampaguita (Bava Nisos) also sells it, at a premium — crafting stays the gold-free route.",
         "verified": true,
         "checked": "2026-08-13",
-        "ref": "constat d'absence — verifie contre les sources declarees"
-      }
+        "ref": "sources declarees du composant, recoupees"
+      },
+      "free_via_ingredients": true
     },
     "gift_of_the_mistburned_isles": {
       "name": "Gift of the Mistburned Isles",

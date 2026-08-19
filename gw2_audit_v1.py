@@ -143,7 +143,9 @@ def check_free_sources(data, errors, warnings):
             continue
         # Un constat d'absence explicite vaut reponse : certains postes n'ont
         # reellement aucune source gratuite, et le dire est l'information utile.
-        if comp.get("free_sources_note"):
+        # Un composant fabrique herite du verdict de ses ingredients : le declarer
+        # payant parce qu'il ne tombe pas tel quel serait faux.
+        if comp.get("free_sources_note") or comp.get("free_via_ingredients"):
             continue
         srcs = comp.get("sources") or []
         if not any(isinstance(s, dict) and s.get("free_repeatable") for s in srcs):
