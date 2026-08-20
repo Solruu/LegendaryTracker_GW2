@@ -33,7 +33,7 @@ const I18N = {
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_loading: "Loading step definitions…",
-    tab_cadences: "Cadences",
+    tab_cadences: "Timegates",
     cad_daily_reset: "Daily reset in",
     cad_weekly_reset: "Weekly reset in",
     cad_reset_note: "Boxes clear themselves at reset — the storage key carries the period.",
@@ -50,6 +50,11 @@ const I18N = {
     cad_season_note: "Seasonal cap: no weekly rate. Off-seasons produce nothing — count in seasons, not weeks.",
     cad_rng_note: "Random drop: the cap bounds attempts, not gains. No end date can be given.",
     cad_uncapped_only_note: "No capped source: the pace depends only on how much you play.",
+    cad_onlyopen: "Only show what I can progress now",
+    cad_bucket_open: "ready now",
+    cad_bucket_done: "done for the period",
+    cad_bucket_locked: "gated",
+    cad_all_done: "Everything capped is taken for this period — nothing more until the next reset.",
     cad_nocap: "no cap",
     cad_tag_perchar: "per character",
     cad_tag_rng: "· random drop",
@@ -260,7 +265,7 @@ const I18N = {
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_loading: "Chargement des définitions d'étapes…",
-    tab_cadences: "Cadences",
+    tab_cadences: "Timegates",
     cad_daily_reset: "Reset quotidien dans",
     cad_weekly_reset: "Reset hebdo dans",
     cad_reset_note: "Les cases se vident seules au reset — la clé de stockage porte la période.",
@@ -277,6 +282,11 @@ const I18N = {
     cad_season_note: "Plafond saisonnier : pas de débit hebdomadaire. Les intersaisons ne produisent rien — compter en saisons, pas en semaines.",
     cad_rng_note: "Drop aléatoire : le plafond borne les tentatives, pas les gains. Aucune date de fin ne peut être donnée.",
     cad_uncapped_only_note: "Aucune source plafonnée : le rythme ne dépend que du temps de jeu.",
+    cad_onlyopen: "N'afficher que ce que je peux faire avancer maintenant",
+    cad_bucket_open: "à lancer",
+    cad_bucket_done: "fait pour la période",
+    cad_bucket_locked: "verrouillé",
+    cad_all_done: "Tout ce qui est plafonné est pris pour la période — rien de plus avant le prochain reset.",
     cad_nocap: "sans plafond",
     cad_tag_perchar: "par personnage",
     cad_tag_rng: "· drop aléatoire",
@@ -2745,7 +2755,7 @@ class TabErrorBoundary extends React.Component {
   }
 }
 
-function CadencesTab({ stocks = {} }) {
+function CadencesTab({ stocks = {}, acctGates = null }) {
   const t = useT();
   // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
   // survit dans localStorage, compte pour 1 et ne produit aucun calcul.
@@ -2763,6 +2773,12 @@ function CadencesTab({ stocks = {} }) {
     try { return JSON.parse(localStorage.getItem("gw2_cad_checks_v1") ?? "{}"); } catch (_) { return {}; }
   });
   const [showPicker, setShowPicker] = useState(false);
+  // « Ne montrer que ce que je peux lancer ». Par defaut actif : c'est la
+  // question que l'onglet doit repondre. Desactivable, parce qu'une porte
+  // indecidable ne doit jamais enfermer le joueur dans une liste vide.
+  const [onlyOpen, setOnlyOpen] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_cad_onlyopen") ?? "true"); } catch (_) { return true; }
+  });
   const [arb, setArb] = useState(() => {
     try { const a = JSON.parse(localStorage.getItem("gw2_cad_arb_v1") ?? "null"); if (a) return a; } catch (_) {}
     return { coins: 10, clovers: 15 };
@@ -2772,6 +2788,7 @@ function CadencesTab({ stocks = {} }) {
   useEffect(() => { try { localStorage.setItem("gw2_cad_sel_v1", JSON.stringify(selected)); } catch (_) {} }, [selected]);
   useEffect(() => { try { localStorage.setItem("gw2_cad_checks_v1", JSON.stringify(checks)); } catch (_) {} }, [checks]);
   useEffect(() => { try { localStorage.setItem("gw2_cad_arb_v1", JSON.stringify(arb)); } catch (_) {} }, [arb]);
+  useEffect(() => { try { localStorage.setItem("gw2_cad_onlyopen", JSON.stringify(onlyOpen)); } catch (_) {} }, [onlyOpen]);
 
   const P = resetPeriods(new Date());
   const cc = SOURCES_DB?.craft_components ?? {};
@@ -2791,6 +2808,38 @@ function CadencesTab({ stocks = {} }) {
     if (next[k]) delete next[k]; else next[k] = true;
     return next;
   });
+
+  // Index inverse : composant -> collections qui declarent dependre de lui.
+  // collection_unlocks porte les portes, cadence_ref porte le lien.
+  const unlocks = SOURCES_DB?.collection_unlocks ?? {};
+  const gateFor = makeGateStatus(acctGates);
+  const refsOf = (o) => Array.isArray(o?.cadence_ref) ? o.cadence_ref
+                      : typeof o?.cadence_ref === "string" ? [o.cadence_ref] : [];
+  // Un composant n'est verrouille que si TOUTES les collections qui en dependent
+  // le sont. Ad Infinitum est le cas d'ecole : ses collections II a IV exigent
+  // les echelles 36, 53 et 65, mais la I tourne des l'echelle 20. Bloquer les
+  // Pages de recherche parce que la IV est hors de portee reviendrait a cacher
+  // des semaines de farm parfaitement faisable — exactement ce qu'on veut eviter.
+  const gatesBlocking = (compId) => {
+    const dependantes = [];
+    for (const [aid, u] of Object.entries(unlocks)) {
+      if (refsOf(u).includes(compId)) { dependantes.push([aid, u]); continue; }
+      // Le legendaire peut porter le lien a la place de la collection.
+      for (const lid of (u?.legendary ?? [])) {
+        if (refsOf(legs[lid]).includes(compId)) { dependantes.push([aid, u]); break; }
+      }
+    }
+    if (dependantes.length === 0) return [];
+    const fermees = [];
+    for (const [aid, u] of dependantes) {
+      // Seul un false ferme. null reste ouvert : on n'enferme jamais le joueur
+      // sur une porte qu'on ne sait pas trancher.
+      const bloquantes = gateFor(u.gate).filter(g => g.open === false);
+      if (bloquantes.length === 0) return [];   // au moins une voie ouverte
+      fermees.push({ aid, label: bloquantes[0].label });
+    }
+    return fermees;
+  };
 
   const rows = Object.entries(cc)
     .filter(([, c]) => c && c.cadence && (c.cadence.sources ?? []).length > 0)
@@ -2820,7 +2869,18 @@ function CadencesTab({ stocks = {} }) {
       }
       const weeks = missing !== null && perWeek > 0 ? Math.ceil(missing / perWeek) : null;
       const nSrc = cad.sources.length, nVer = cad.sources.filter(f => f.verified).length;
-      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, hasRng, hasSeason, hasPerChar, weeks, nSrc, nVer };
+      // ── Peut-on la faire avancer MAINTENANT ? ──
+      // Une cadence est portee par un composant, mais les portes vivent sur les
+      // collections. Le lien est cadence_ref : une collection declare que son
+      // plafond est porte ailleurs. On remonte donc ce lien a l'envers.
+      const bloquees = gatesBlocking(id);
+      // Toutes les sources plafonnees deja cochees pour leur periode : il n'y a
+      // plus rien a prendre avant le prochain reset.
+      const capped = cad.sources.filter(f => f.cap != null && !f.rng);
+      const doneNow = capped.length > 0 && capped.every((f, i) =>
+        isChecked(id, cad.sources.indexOf(f), f.period));
+      return { id, comp: c, cad, need, owned, missing, perWeek, hasUncapped, hasRng, hasSeason, hasPerChar,
+               weeks, nSrc, nVer, bloquees, doneNow };
     })
     .sort((a, b) => (b.missing ?? -1) - (a.missing ?? -1));
 
@@ -2928,10 +2988,43 @@ function CadencesTab({ stocks = {} }) {
         );
       })()}
 
-      {rows.map(r => (
+      {(() => {
+        // ── Trois seaux, une seule question par seau ──
+        // Lancable : il reste quelque chose a prendre AVANT le prochain reset.
+        // C'est la liste que le joueur ouvre le matin, et tout y est
+        // parallelisable par construction — des plafonds independants ne se
+        // gênent pas entre eux.
+        const utiles = rows.filter(r => selectedIds.length === 0 || r.need > 0);
+        const bloque = utiles.filter(r => r.bloquees.length > 0);
+        const fait = utiles.filter(r => r.bloquees.length === 0 && r.doneNow);
+        const lancable = utiles.filter(r => r.bloquees.length === 0 && !r.doneNow);
+        return (
+          <div style={{ margin: "0 14px 10px", padding: "9px 12px", background: "rgba(56,189,248,0.05)", border: "1px solid rgba(56,189,248,0.2)", borderRadius: 8 }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "11.5px", color: C, cursor: "pointer" }}>
+              <input type="checkbox" checked={onlyOpen} onChange={() => setOnlyOpen(v => !v)} />
+              <span style={{ flex: 1 }}>{t("cad_onlyopen")}</span>
+            </label>
+            <div style={{ marginTop: 5, fontSize: "10.5px", color: `${D}0.6)`, fontVariantNumeric: "tabular-nums" }}>
+              ▶ <b style={{ color: "#38bdf8" }}>{lancable.length}</b> {t("cad_bucket_open")}
+              {fait.length > 0 && <> · ✓ {fait.length} {t("cad_bucket_done")}</>}
+              {bloque.length > 0 && <> · 🔒 {bloque.length} {t("cad_bucket_locked")}</>}
+            </div>
+            {lancable.length === 0 && utiles.length > 0 && (
+              <div style={{ marginTop: 5, fontSize: "10.5px", color: "rgba(74,222,128,0.85)" }}>{t("cad_all_done")}</div>
+            )}
+          </div>
+        );
+      })()}
+
+      {rows
+        .filter(r => selectedIds.length === 0 || r.need > 0)
+        .filter(r => !onlyOpen || (r.bloquees.length === 0 && !r.doneNow))
+        .map(r => (
         <div key={r.id} style={{ margin: "0 14px 10px", padding: "10px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8 }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 8 }}>
-            <div style={{ fontSize: "12.5px", fontWeight: 600, color: C }}>{r.comp.name}</div>
+            <div style={{ fontSize: "12.5px", fontWeight: 600, color: r.bloquees.length ? `${D}0.45)` : C }}>
+              {r.doneNow && !r.bloquees.length ? "✓ " : ""}{r.bloquees.length ? "🔒 " : ""}{r.comp.name}
+            </div>
             <div style={{ fontSize: "10px", color: r.nVer === r.nSrc ? "#4ade80" : r.nVer === 0 ? "rgba(251,146,60,0.85)" : "#e2c97e", flexShrink: 0 }}>
               {r.nVer === r.nSrc ? t("cad_verified", { d: r.cad.sources.find(f => f.checked)?.checked ?? "" })
                 : r.nVer === 0 ? t("cad_unverified")
@@ -2939,6 +3032,11 @@ function CadencesTab({ stocks = {} }) {
             </div>
           </div>
 
+          {r.bloquees.map((b, bi) => (
+            <div key={bi} style={{ marginTop: 4, fontSize: "10.5px", color: "rgba(248,113,113,0.85)" }}>
+              🔒 {b.label}
+            </div>
+          ))}
           {r.need === 0 && selectedIds.length > 0 && (
             <div style={{ marginTop: 4, fontSize: "10.5px", color: `${D}0.4)`, fontStyle: "italic" }}>{t("cad_not_needed")}</div>
           )}
@@ -5062,7 +5160,7 @@ export default function GW2LegendaryTracker() {
       )}
 
       {/* ── CADENCES (mode plein écran) ── */}
-      {isCadences && <TabErrorBoundary><CadencesTab stocks={gtStocks} /></TabErrorBoundary>}
+      {isCadences && <TabErrorBoundary><CadencesTab stocks={gtStocks} acctGates={acctGates} /></TabErrorBoundary>}
 
       {/* ── TABS + CONTENU (masqués en mode Grand Total) ── */}
       {/* ── SOUS-SÉLECTEUR TRINKETS (14 colifichets) ── */}
