@@ -11,6 +11,13 @@ descriptions, plus de chemin le plus court. Le rendu paraissait correct.
 Regle : une liste de succes eligibles ne vit QUE dans meta_eligible, indexee par
 l'id du meta. Aucun autre emplacement. Ce script echoue si la regle est violee.
 
+Seconde regle, meme raisonnement applique aux plafonds. Un plafond ecrit en
+prose ("25 noeuds/jour", "365/sem") s'affiche mais ne se filtre pas : il est
+invisible du calcul de cadence, donc absent des projections de delai et de tout
+futur regroupement des timegates lancables en parallele. Tout plafond chiffre
+doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
+l'entite qui la porte via cadence_ref. Ce script echoue sinon.
+
 Usage :
     python3 gw2_audit_v1.py gw2_sources_v79.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
@@ -388,6 +395,219 @@ def check_karma_budgets(data, errors, warnings):
     visit(data, "")
 
 
+CAP_PATTERNS = [
+    r"(\d[\d\s\u00a0\u202f]*)\s*(?:/|par\s+)\s*(?:jour|j\b|day)\b",
+    r"(\d[\d\s\u00a0\u202f]*)\s*(?:/|par\s+)\s*(?:semaine|sem\b|week|wk)\b",
+    r"(?:plafonn\w+|\bcapp?\b|\bcapp\w+|limit\w+)\s*(?:a|\u00e0|de|of)?\s*(\d[\d\s\u00a0\u202f]*)",
+    r"(\d[\d\s\u00a0\u202f]*)\s*(?:par|/)\s*(?:saison|season)\b",
+]
+CAP_RX = [re.compile(p, re.I) for p in CAP_PATTERNS]
+
+# Le changelog decrit l'histoire du fichier, il n'exprime aucun plafond de jeu.
+CAP_IGNORED_ROOTS = {"_meta"}
+
+# Champs dont la raison d'etre est de dire qu'un plafond n'est PAS la cadence de
+# l'entite. Y exiger une cadence structuree reviendrait a demander de modeliser
+# une cadence qu'on vient justement d'ecarter.
+CAP_DISCLAIMER_FIELDS = {"not_a_source", "aside", "discontinued_note"}
+
+
+def _cap_hit(text):
+    """Renvoie le premier plafond chiffre trouve dans un texte, sinon None."""
+    for rx in CAP_RX:
+        m = rx.search(text)
+        if m:
+            return m.group(0).strip()
+    return None
+
+
+# Familles ou une prose appartient a une entite identifiable, qui peut donc
+# porter une cadence ou un cadence_ref.
+CAP_FAMILIES = ("craft_components", "legendaries", "armor_sets")
+
+
+def _cap_owner(path):
+    """Entite responsable d'une prose : le composant, le legendaire ou le set."""
+    parts = path.strip("/").split("/")
+    if parts[0] in CAP_FAMILIES and len(parts) > 1:
+        return f"{parts[0]}/{parts[1]}"
+    return parts[0]
+
+
+def _walk_caps(node, path, hits):
+    if isinstance(node, dict):
+        for k, v in node.items():
+            _walk_caps(v, f"{path}/{k}", hits)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            _walk_caps(v, f"{path}[{i}]", hits)
+    elif isinstance(node, str):
+        if any(f"/{field}" in path for field in CAP_DISCLAIMER_FIELDS):
+            return
+        found = _cap_hit(node)
+        if found:
+            hits.append((path, found))
+
+
+def check_orphan_caps(data, errors, warnings):
+    """Un plafond chiffre en prose doit exister en cadence structuree.
+
+    Une phrase comme "plafonnes a 25 noeuds/jour" se lit mais ne se calcule pas.
+    Elle reste donc hors des projections de delai et hors de tout regroupement
+    des timegates lancables a un instant donne : le joueur voit le texte et
+    refait le calcul de tete, ce qui est exactement le travail qu'on veut
+    supprimer. La donnee doit vivre dans cadence.sources[] (period, cap, cost),
+    la ou le calcul la lit deja.
+
+    Echappatoire legitime et verifiable : cadence_ref, qui declare que la
+    cadence structuree est portee par une autre entite. Le pointeur est
+    resolu ici, et pointer vers une entite sans cadence reste une erreur.
+    """
+    def entity(owner):
+        family, _, ident = owner.partition("/")
+        if family not in CAP_FAMILIES:
+            return None
+        node = data.get(family, {}).get(ident)
+        return node if isinstance(node, dict) else None
+
+    def structured(owner, seen=()):
+        """Vrai si l'entite porte une cadence, directement ou par pointeur."""
+        node = entity(owner)
+        if not isinstance(node, dict):
+            return False
+        cadence = node.get("cadence")
+        if isinstance(cadence, dict) and cadence.get("sources"):
+            return True
+        # Une entite peut dependre de plusieurs plafonds distincts : Aurora est
+        # bornee a la fois par la pierre runique druidique et par le lingot
+        # d'electrum. cadence_ref accepte donc une liste, et il suffit qu'un
+        # pointeur resolve pour que la prose ne soit plus orpheline.
+        refs = node.get("cadence_ref")
+        if isinstance(refs, str):
+            refs = [refs]
+        if not isinstance(refs, list):
+            return False
+        ok = False
+        for ref in refs:
+            if not isinstance(ref, str) or ref in seen:
+                continue
+            target = ref if "/" in ref else f"craft_components/{ref}"
+            if entity(target) is None:
+                errors.append(
+                    f"{owner} : cadence_ref pointe vers '{ref}', qui n'existe pas"
+                )
+                continue
+            if structured(target, seen + (ref,)):
+                ok = True
+            else:
+                errors.append(
+                    f"{owner} : cadence_ref pointe vers '{ref}', qui ne porte "
+                    "aucune cadence structuree"
+                )
+        return ok
+
+    hits = []
+    for key, value in data.items():
+        if key in CAP_IGNORED_ROOTS:
+            continue
+        _walk_caps(value, f"/{key}", hits)
+
+    by_owner = {}
+    for path, found in hits:
+        by_owner.setdefault(_cap_owner(path), []).append((path, found))
+
+    for owner in sorted(by_owner):
+        if structured(owner):
+            continue
+        path, found = by_owner[owner][0]
+        n = len(by_owner[owner])
+        errors.append(
+            f"{owner} : plafond '{found}' ecrit en prose ({path}) sans cadence "
+            f"structuree ni cadence_ref"
+            + (f" — {n} occurrences au total" if n > 1 else "")
+        )
+
+    # Cote JSX, meme defaut mais contenu editorial en cours de migration : on le
+    # signale sans bloquer, la ou le JSON fait autorite et bloque.
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+    lines = []
+    for num, line in enumerate(text.split("\n"), 1):
+        found = _cap_hit(line)
+        if found:
+            lines.append((num, found))
+    if lines:
+        apercu = ", ".join(f"L{n} '{f}'" for n, f in lines[:5])
+        warnings.append(
+            f"{jsx[-1].name} : {len(lines)} ligne(s) portent un plafond en prose "
+            f"cote JSX ({apercu}...) — a remonter en cadence lors de la migration "
+            "editoriale"
+        )
+
+
+# Drapeaux portes par cadence.sources[] : ce sont des booleens, donc invisibles
+# du controle des champs bilingues. Un drapeau que le JSX ne lit pas modifie une
+# projection sans que rien ne le montre — le pire des silences.
+CADENCE_SOURCE_FIELDS = {
+    "label", "period", "cap", "cost", "verified", "checked", "ref",
+    "rng", "per_character",
+    # Lus par l'arbitrage Magnetite de l'onglet des cadences.
+    "isBudget", "magnetite",
+}
+
+
+def check_cadence_flags(data, errors, warnings):
+    """Chaque champ de cadence.sources[] doit exister et etre lu par le JSX.
+
+    cap et period pilotent la projection de delai ; rng et per_character la
+    corrigent. Ajouter un drapeau sans le brancher laisse une estimation fausse
+    et d'apparence normale, ce qui est plus dangereux qu'une estimation absente.
+    """
+    seen = {}
+    for cid, comp in data.get("craft_components", {}).items():
+        cadence = comp.get("cadence")
+        if not isinstance(cadence, dict):
+            continue
+        for i, src_ in enumerate(cadence.get("sources") or []):
+            if not isinstance(src_, dict):
+                errors.append(f"craft_components/{cid} : cadence.sources[{i}] n'est pas un objet")
+                continue
+            if "period" not in src_ or "cap" not in src_:
+                errors.append(
+                    f"craft_components/{cid} : cadence.sources[{i}] sans period ou sans cap — "
+                    "illisible par la projection de delai"
+                )
+            for field in src_:
+                seen.setdefault(field, []).append(f"{cid}[{i}]")
+
+    unknown = sorted(set(seen) - CADENCE_SOURCE_FIELDS)
+    for field in unknown:
+        errors.append(
+            f"cadence.sources[] : champ '{field}' non declare "
+            f"(ex. {seen[field][0]}) — a ajouter a CADENCE_SOURCE_FIELDS ou a supprimer"
+        )
+
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+    for field in sorted(seen):
+        if field in CADENCE_SOURCE_FIELDS and field not in text:
+            warnings.append(
+                f"cadence.sources[].{field} : {len(seen[field])} occurrence(s) dans les "
+                f"sources (ex. {seen[field][0]}), aucune lecture dans {jsx[-1].name} — "
+                "la projection l'ignore silencieusement"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -452,7 +672,13 @@ def main() -> int:
     # 10. Champs editoriaux effectivement rendus
     check_unrendered_fields(data, errors, warnings)
 
-    # 11. Integrite de chaque entree de meta_eligible
+    # 11. Plafonds chiffres ecrits en prose sans cadence structuree
+    check_orphan_caps(data, errors, warnings)
+
+    # 12. Drapeaux de cadence declares et effectivement lus
+    check_cadence_flags(data, errors, warnings)
+
+    # 13. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
