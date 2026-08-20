@@ -1005,7 +1005,8 @@
   "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer.",
   "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait.",
   "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee.",
-  "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus."
+  "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus.",
+  "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles."
  },
  "meta_events": {
   "vb": {
@@ -5391,7 +5392,9 @@
    "name": "Gift of Condensed Magic",
    "apiId": 68553,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "mystic_tribute",
+    "draconic_tribute"
    ],
    "farmable": true,
    "sources": [
@@ -5407,47 +5410,15 @@
     }
    ],
    "qty": {
-    "gen2_astralaria": 2,
-    "gen2_hope": 2,
-    "gen2_nevermore": 2,
-    "gen2_chuka_and_champawat": 2,
-    "gen2_tigris": 2,
-    "gen2_caladbolg": 2,
-    "gen2_eureka": 2,
-    "gen2_shooshadoo": 2,
-    "gen2_eordas_grip": 2,
-    "gen2_itzels_boon": 2,
-    "gen2_exordium": 2,
-    "gen2_hope_scepter": 2,
-    "gen2_lorekeeper": 2,
-    "gen2_elegy": 2,
-    "gen2_xiuquatl": 2,
-    "gen2_reaver_of_the_mists": 2,
-    "gen3_aurenes_fang": 1,
-    "gen3_aurenes_claw": 1,
-    "gen3_aurenes_bite": 1,
-    "gen3_aurenes_weight": 1,
-    "gen3_aurenes_gaze": 1,
-    "gen3_aurenes_insight": 1,
-    "gen3_aurenes_argument": 1,
-    "gen3_aurenes_guard": 1,
-    "gen3_aurenes_persuasion": 1,
-    "gen3_aurenes_voice": 1,
-    "gen3_aurenes_wrath": 1,
-    "gen3_aurenes_reckoning": 1,
-    "gen3_aurenes_scale": 1,
-    "gen3_aurenes_wisdom": 1,
-    "gen3_aurenes_breath": 1,
-    "gen3_aurenes_tenderness": 1,
     "perfected_envoy__per_piece": 1,
-    "transcendence": 2,
-    "stella_radians": 2,
     "aetheric_anchor": 4,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__full_set": 3
+    "obsidian__full_set": 3,
+    "mystic_tribute": 2,
+    "draconic_tribute": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -5459,7 +5430,7 @@
     "en": "Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
    },
    "checked": "2026-08-20",
-   "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
+   "ref": "wiki:Mystic_Tribute + wiki:Draconic_Tribute (captures Antoine 20/08/2026)",
    "verified": true,
    "note": {
     "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire.",
@@ -5470,7 +5441,9 @@
    "name": "Gift of Condensed Might",
    "apiId": 68552,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "mystic_tribute",
+    "draconic_tribute"
    ],
    "farmable": true,
    "sources": [
@@ -5486,47 +5459,15 @@
     }
    ],
    "qty": {
-    "gen2_astralaria": 2,
-    "gen2_hope": 2,
-    "gen2_nevermore": 2,
-    "gen2_chuka_and_champawat": 2,
-    "gen2_tigris": 2,
-    "gen2_caladbolg": 2,
-    "gen2_eureka": 2,
-    "gen2_shooshadoo": 2,
-    "gen2_eordas_grip": 2,
-    "gen2_itzels_boon": 2,
-    "gen2_exordium": 2,
-    "gen2_hope_scepter": 2,
-    "gen2_lorekeeper": 2,
-    "gen2_elegy": 2,
-    "gen2_xiuquatl": 2,
-    "gen2_reaver_of_the_mists": 2,
-    "gen3_aurenes_fang": 1,
-    "gen3_aurenes_claw": 1,
-    "gen3_aurenes_bite": 1,
-    "gen3_aurenes_weight": 1,
-    "gen3_aurenes_gaze": 1,
-    "gen3_aurenes_insight": 1,
-    "gen3_aurenes_argument": 1,
-    "gen3_aurenes_guard": 1,
-    "gen3_aurenes_persuasion": 1,
-    "gen3_aurenes_voice": 1,
-    "gen3_aurenes_wrath": 1,
-    "gen3_aurenes_reckoning": 1,
-    "gen3_aurenes_scale": 1,
-    "gen3_aurenes_wisdom": 1,
-    "gen3_aurenes_breath": 1,
-    "gen3_aurenes_tenderness": 1,
     "perfected_envoy__per_piece": 1,
-    "transcendence": 2,
-    "stella_radians": 2,
     "aetheric_anchor": 4,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__full_set": 3
+    "obsidian__full_set": 3,
+    "mystic_tribute": 2,
+    "draconic_tribute": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -5534,7 +5475,7 @@
     "en": "MF: 1x of each of the 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
    },
    "checked": "2026-08-20",
-   "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
+   "ref": "wiki:Mystic_Tribute + wiki:Draconic_Tribute (captures Antoine 20/08/2026)",
    "verified": true,
    "note": {
     "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur gants, jambières et bottes. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire.",
