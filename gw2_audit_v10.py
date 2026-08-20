@@ -950,16 +950,19 @@ def check_qty_levels(data, errors, warnings):
     # cle comme un composant, la boucle de depart la lit comme un legendaire. Tant
     # que le composant homonyme reste a zero, rien ne se voit ; le jour ou il
     # recoit une quantite, chaque exigence est comptee deux fois.
+    # Regle durcie le 20/08/2026, une fois le dernier homonyme desamorce : ce
+    # n'est plus une dette a surveiller mais une faute a refuser. Un identifiant
+    # partage rend TOUTE reference ambigue, et l'ambiguite ne se voit qu'au jour
+    # ou elle double une exigence.
     for cid in sorted(set(comps) & legs):
         citants = sorted(c for c, comp in comps.items()
                          if isinstance(comp.get("qty"), dict) and cid in comp["qty"])
-        if citants:
-            warnings.append(
-                f"'{cid}' existe a la fois comme composant et comme legendaire, et {len(citants)} "
-                f"composant(s) le citent dans qty ({', '.join(citants[:3])}) — la valeur est lue "
-                "comme un total aplati aujourd'hui, mais la cascade la relira comme une quantite "
-                "par parent des que le composant homonyme portera un total"
-            )
+        errors.append(
+            f"'{cid}' existe a la fois comme composant et comme legendaire"
+            + (f", et {len(citants)} composant(s) le citent dans qty "
+               f"({', '.join(citants[:3])})" if citants else "")
+            + " — renommer l'un des deux ; une cle de qty ne peut pas designer les deux a la fois"
+        )
 
     # Une chaine doit se refermer : tout parent cite doit exister, et needed_for
     # doit refleter le meme lien que qty, sans quoi l'arbre des gifts affiche un

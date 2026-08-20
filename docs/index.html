@@ -1757,7 +1757,8 @@ const SOURCES_DB = {
     "changelog_v114": "Etape 3 : les 60 blocs unlock quittent le JSX pour collection_unlocks, indexe par achievementId sur le modele d'achievement_notes. Les 7 entrees manquantes sont comblees (6 Arcanum d'Obsidienne + Prismatic). Nouveau champ gate : condition testable contre l'API, attachee a 11 collections, la ou la prose seule ne permettait aucun filtrage.",
     "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide.",
     "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement.",
-    "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale."
+    "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale.",
+    "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas."
   },
   "meta_events": {
     "vb": {
@@ -3510,7 +3511,8 @@ const SOURCES_DB = {
       "name": "Branded Mass",
       "apiId": 89537,
       "needed_for": [
-        "gift_of_ephemeral_magic"
+        "gift_of_ephemeral_magic",
+        "dragonsblood_weapons"
       ],
       "farmable": true,
       "sources": [
@@ -5532,7 +5534,8 @@ const SOURCES_DB = {
       "apiId": 49523,
       "needed_for": [
         "arcanum_astral",
-        "armor_obsidian_per_piece"
+        "armor_obsidian_per_piece",
+        "memory_essence_encapsulator"
       ],
       "qty": {
         "obsidian__per_piece": 1,
@@ -5663,7 +5666,8 @@ const SOURCES_DB = {
       "needed_for": [
         "amalgamated_rift_essence",
         "gift_of_fortune",
-        "gift_of_research"
+        "gift_of_research",
+        "memory_essence_encapsulator"
       ],
       "farmable": true,
       "sources": [
@@ -9676,23 +9680,6 @@ const SOURCES_DB = {
       ],
       "qty": {}
     },
-    "coalescence": {
-      "name": "Coalescence",
-      "apiId": 91234,
-      "kind": "precursor",
-      "needed_for": [],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "achievement_collection",
-          "tip": {
-            "fr": "Anneau légendaire de raid — voir l'onglet Coalescence (3 collections + Gift of Compassion).",
-            "en": "Raid legendary ring — see the Coalescence tab (3 collections + Gift of Compassion)."
-          }
-        }
-      ],
-      "qty": {}
-    },
     "spark_of_sentience": {
       "name": "Spark of Sentience",
       "kind": "precursor",
@@ -9825,7 +9812,10 @@ const SOURCES_DB = {
       },
       "unit_cost": {
         "spirit_shard": 20
-      }
+      },
+      "needed_for": [
+        "lesser_vision_crystal"
+      ]
     },
     "dragonite_ingot": {
       "name": "Dragonite Ingot",
@@ -9837,7 +9827,10 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "needed_for": [
+        "lesser_vision_crystal"
+      ]
     },
     "empyreal_star": {
       "name": "Empyreal Star",
@@ -9849,7 +9842,10 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "needed_for": [
+        "lesser_vision_crystal"
+      ]
     },
     "bloodstone_brick": {
       "name": "Bloodstone Brick",
@@ -9861,7 +9857,10 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13"
+      "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+      "needed_for": [
+        "lesser_vision_crystal"
+      ]
     },
     "dragonite_ore": {
       "name": "Dragonite Ore",
@@ -9894,7 +9893,10 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
-      }
+      },
+      "needed_for": [
+        "dragonite_ingot"
+      ]
     },
     "empyreal_fragment": {
       "name": "Empyreal Fragment",
@@ -9927,7 +9929,10 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
-      }
+      },
+      "needed_for": [
+        "empyreal_star"
+      ]
     },
     "bloodstone_dust": {
       "name": "Pile of Bloodstone Dust",
@@ -9960,7 +9965,10 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
-      }
+      },
+      "needed_for": [
+        "bloodstone_brick"
+      ]
     },
     "spirit_shard": {
       "name": "Spirit Shard",
@@ -9987,7 +9995,11 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "gw2_currencies_ref : devise 23"
+      "ref": "gw2_currencies_ref : devise 23",
+      "needed_for": [
+        "augurs_stone",
+        "bloodstone_shard"
+      ]
     },
     "dragonsblood_weapons": {
       "name": "Dragonsblood Weapons",
@@ -10015,7 +10027,10 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)"
+      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
+      "needed_for": [
+        "dragonsblood_weapons"
+      ]
     },
     "antiquated_ducat": {
       "name": "Antiquated Ducat",
@@ -12266,6 +12281,27 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+    },
+    "coalescence_ring": {
+      "name": "Coalescence",
+      "apiId": 91234,
+      "kind": "precursor",
+      "needed_for": [],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "achievement_collection",
+          "tip": {
+            "fr": "Anneau légendaire de raid — voir l'onglet Coalescence (3 collections + Gift of Compassion).",
+            "en": "Raid legendary ring — see the Coalescence tab (3 collections + Gift of Compassion)."
+          }
+        }
+      ],
+      "qty": {},
+      "note_id": {
+        "fr": "Identifiant renomme le 20/08/2026 : 'coalescence' entrait en collision avec l'identifiant du legendaire. Une cle de qty se lit comme un composant si elle en designe un, et comme un legendaire sinon — l'homonyme rendait les neuf references ambigues.",
+        "en": "Id renamed on 2026-08-20: 'coalescence' collided with the legendary's id. A qty key reads as a component when it names one, and as a legendary otherwise - the homonym made all nine references ambiguous."
+      }
     }
   },
   "enchaînements_recommandés": {
