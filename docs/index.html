@@ -1628,10 +1628,10 @@ const SOURCES_DB = {
         "perPiece": true
       },
       "obsidian": {
-        "clovers": 15,
+        "clovers": 9,
         "coins": null,
-        "ectos": 250,
-        "obsidian": null,
+        "ectos": 600,
+        "obsidian": 50,
         "perPiece": true
       },
       "upgrades": {
@@ -1764,7 +1764,8 @@ const SOURCES_DB = {
     "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale.",
     "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas.",
     "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer.",
-    "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait."
+    "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait.",
+    "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee."
   },
   "meta_events": {
     "vb": {
@@ -5194,7 +5195,10 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Obsidian_Shard#Acquisition"
-      }
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
     },
     "gift_of_exploration": {
       "name": "Gift of Exploration",
@@ -5732,7 +5736,10 @@ const SOURCES_DB = {
         "eikasia": 80
       },
       "kind": "acquire",
-      "best": "salvage"
+      "best": "salvage",
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
     },
     "mystic_clover": {
       "name": "Mystic Clover",
@@ -6039,7 +6046,10 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Mystic_Clover#Acquisition"
-      }
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
     },
     "gift_of_fortune": {
       "name": "Gift of Fortune",
@@ -6196,7 +6206,8 @@ const SOURCES_DB = {
         "legendary_rune": 1,
         "legendary_sigil": 1,
         "legendary_relic": 1,
-        "selachimorpha": 2
+        "selachimorpha": 2,
+        "obsidian__per_piece": 1
       },
       "kind": "advanced_craft",
       "recipe": {
@@ -6208,7 +6219,12 @@ const SOURCES_DB = {
         "en": "Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
       },
       "checked": "2026-08-20",
-      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
+      "verified": true,
+      "note": {
+        "fr": "1 par piece d'Obsidienne, sur trois des six emplacements (coiffe, epaulieres, plastron). Un set complet demande donc 3 de ce gift et 3 de l'autre, pas 6 de chacun. ⚠ Le calcul par piece multiplie par 6 : la valeur affichee pour un set entier est donc surevaluee du double tant que la repartition par emplacement n'est pas modelisee.",
+        "en": "1 per Obsidian piece, on three of the six slots (coiffe, epaulieres, plastron). A full set therefore needs 3 of this gift and 3 of the other, not 6 of each. ⚠ The per-piece calculation multiplies by 6, so the figure shown for a full set is double the truth until slot distribution is modelled."
+      }
     },
     "gift_of_condensed_might": {
       "name": "Gift of Condensed Might",
@@ -6269,7 +6285,8 @@ const SOURCES_DB = {
         "legendary_rune": 1,
         "legendary_sigil": 1,
         "legendary_relic": 1,
-        "selachimorpha": 2
+        "selachimorpha": 2,
+        "obsidian__per_piece": 1
       },
       "kind": "advanced_craft",
       "recipe": {
@@ -6277,7 +6294,12 @@ const SOURCES_DB = {
         "en": "MF: 1x of each of the 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
       },
       "checked": "2026-08-20",
-      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
+      "verified": true,
+      "note": {
+        "fr": "1 par piece d'Obsidienne, sur trois des six emplacements (gants, jambieres, bottes). Un set complet demande donc 3 de ce gift et 3 de l'autre, pas 6 de chacun. ⚠ Le calcul par piece multiplie par 6 : la valeur affichee pour un set entier est donc surevaluee du double tant que la repartition par emplacement n'est pas modelisee.",
+        "en": "1 per Obsidian piece, on three of the six slots (gants, jambieres, bottes). A full set therefore needs 3 of this gift and 3 of the other, not 6 of each. ⚠ The per-piece calculation multiplies by 6, so the figure shown for a full set is double the truth until slot distribution is modelled."
+      }
     },
     "chak_egg": {
       "name": "Chak Egg",
