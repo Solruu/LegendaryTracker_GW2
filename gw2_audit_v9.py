@@ -699,17 +699,20 @@ def check_collection_unlocks(data, errors, warnings):
 
 
 def check_guide_coverage(data, errors, warnings):
-    """Le champ guide des sources et le drapeau isGuideTrinket du JSX doivent
-    designer le meme ensemble.
+    """L'onglet Guide doit s'ouvrir sur la donnee, pas sur un drapeau.
 
-    L'onglet Guide ne contient aucune donnee : il rend legendaries[].guide. Mais
-    l'ouverture de l'onglet depend d'un drapeau ecrit a la main dans le JSX. Les
-    deux listes peuvent donc diverger en silence, et une divergence coute cher
-    dans les deux sens : un guide redige et jamais affiche, ou un onglet ouvert
-    sur du vide.
+    Il ne contient rien : il rend legendaries[].guide. Tant que son ouverture
+    dependait d'un isGuideTrinket ecrit a la main, les deux ensembles ont
+    derive — deux guides rediges que rien n'affichait, un onglet ouvert sur du
+    vide. La condition doit donc etre la presence du guide lui-meme.
     """
-    legs = data.get("legendaries", {})
-    with_guide = {k for k, v in legs.items() if isinstance(v, dict) and v.get("guide")}
+    tabs = (data.get("tab_contract") or {}).get("tabs") or {}
+    when = (tabs.get("guide") or {}).get("when") or {}
+    if when.get("present") != "guide" or when.get("from") != "sources":
+        errors.append(
+            "tab_contract.tabs[guide].when doit etre {present: 'guide', from: 'sources'} — "
+            "toute autre condition reintroduit la derive entre guides ecrits et guides affiches"
+        )
 
     jsx = sorted(
         HERE.glob("gw2_legendary_tracker_v*.jsx"),
@@ -718,27 +721,11 @@ def check_guide_coverage(data, errors, warnings):
     if not jsx:
         return
     text = jsx[-1].read_text(encoding="utf-8")
-
-    # Chaque bloc "id: { ... isGuideTrinket: true" du JSX, id pris en tete de bloc.
-    flagged = set()
-    for m in re.finditer(r"isGuideTrinket:\s*true", text):
-        head = text[:m.start()]
-        ids = re.findall(r"\n  ([a-z0-9_]+):\s*\{", head)
-        if ids:
-            flagged.add(ids[-1])
-
-    ALIAS = {"prismatic": "prismatic_champions_regalia", "upgrades": "upgrades_combined"}
-    flagged = {ALIAS.get(f, f) for f in flagged}
-
-    for lid in sorted(with_guide - flagged):
+    n = text.count("isGuideTrinket")
+    if n:
         warnings.append(
-            f"legendaries/{lid} : porte un guide dans les sources, mais aucun isGuideTrinket "
-            f"dans {jsx[-1].name} — le guide est ecrit et jamais affiche"
-        )
-    for lid in sorted(flagged - with_guide):
-        warnings.append(
-            f"legendaries/{lid} : isGuideTrinket dans {jsx[-1].name}, mais aucun guide dans les "
-            "sources — l'onglet s'ouvre sur du vide"
+            f"{jsx[-1].name} : isGuideTrinket apparait {n} fois alors que le contrat pilote "
+            "desormais l'onglet Guide — drapeau residuel"
         )
 
 

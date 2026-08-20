@@ -916,6 +916,37 @@ def progression():
         errors.append(f"characters: {err}")
         characters_raw = []
 
+    # ── Portes d'eligibilite : maitrises, palier de fractale, extensions
+    # Ces trois appels repondent a une seule question : le joueur peut-il
+    # LANCER cette collection maintenant ? Sans eux, l'onglet des timegates
+    # affiche des collections verrouillees et noie celles qui sont jouables.
+    # /v2/account/masteries exige le scope "progression" ; s'il manque, on
+    # renvoie None plutot que zero. Un zero se lirait comme "aucune maitrise",
+    # et fermerait des portes ouvertes.
+    account_raw, err = gw2_get("account", api_key)
+    if err:
+        errors.append(f"account: {err}")
+        account_raw = {}
+
+    masteries_raw, err = gw2_get("account/masteries", api_key)
+    mastery_levels = None
+    if err:
+        errors.append(f"masteries: {err} (scope 'progression' requis)")
+    else:
+        mastery_levels = {
+            str(m.get("id")): m.get("level")
+            for m in (masteries_raw or []) if isinstance(m, dict) and m.get("id") is not None
+        }
+
+    gates = {
+        # None signifie "indecidable", jamais "zero". La distinction decide si
+        # une collection est masquee ou seulement signalee.
+        "fractal_level": account_raw.get("fractal_level") if isinstance(account_raw, dict) else None,
+        "access": account_raw.get("access") if isinstance(account_raw, dict) else None,
+        "masteries": mastery_levels,
+        "masteries_scope_ok": mastery_levels is not None,
+    }
+
     # ── Construction de la reponse normalisee
 
     # Currencies Vision
@@ -1248,6 +1279,9 @@ def progression():
             # ach_list, et non ach_raw : ce dernier appartient a une autre route.
             for e in (ach_list or [])
         },
+        # Portes lisibles par le front : il compare gate.value au palier de
+        # fractale, gate.name aux maitrises, gate.name aux extensions.
+        "_gates": gates,
     }
 
     return jsonify(result)
