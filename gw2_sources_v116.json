@@ -994,7 +994,8 @@
   "changelog_v112": "Etape 2 de la restructuration des onglets : les plafonds chiffres qui n'existaient qu'en prose sont remontes en cadence.sources[] (skirmish_claim_tickets, pvp_league_ticket, funerary_incense, legendary_insight) ou pointes via cadence_ref vers l'entite qui les porte. Nouveau composant druid_runestone (1/jour, timegate d'entree d'Aurora). Correction : l'encens funeraire est plafonne a 1 par compte et par jour chez les vendeurs de coeurs, et non 1 par PNJ sur 8 PNJ.",
   "changelog_v113": "Identifiants Druid Runestone (81140) et fragment (81111) confirmes via /v2/items. Ancient Cipher ajoute avec deux drapeaux nouveaux sur cadence.sources[] : rng, qui exclut la source de la projection de delai sans masquer son plafond, et per_character, qui signale un plafond par personnage la ou le schema est implicitement par compte. Les deux restent a lire cote JSX (passe finale). Nettoyage : tier et weight supprimes de antique_summoning_stone, ils repetaient cost sans etre lus.",
   "changelog_v114": "Etape 3 : les 60 blocs unlock quittent le JSX pour collection_unlocks, indexe par achievementId sur le modele d'achievement_notes. Les 7 entrees manquantes sont comblees (6 Arcanum d'Obsidienne + Prismatic). Nouveau champ gate : condition testable contre l'API, attachee a 11 collections, la ou la prose seule ne permettait aucun filtrage.",
-  "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide."
+  "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide.",
+  "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement."
  },
  "meta_events": {
   "vb": {
@@ -13694,7 +13695,28 @@
    },
    "armory_api_id": 95380,
    "armory_max_count": 1,
-   "achievement_locked": true
+   "achievement_locked": true,
+   "collections": {
+    "prismatic_returns": {
+     "id": 5790,
+     "name": {
+      "fr": "Retour dans la Saison vivante",
+      "en": "Return to Living World"
+     },
+     "reward": {
+      "fr": "Prismatic Champion's Regalia",
+      "en": "Prismatic Champion's Regalia"
+     },
+     "total": 24,
+     "note": {
+      "fr": "24 succes « Return to... », un par episode. Aucun deblocage : ils sont ouverts d'office pour qui possede les episodes. C'est la seule collection dont le compteur API se lit directement, sans passer par les bits.",
+      "en": "24 'Return to...' achievements, one per episode. Nothing to unlock: they are open by default to anyone who owns the episodes. This is the only collection whose API counter reads directly, without going through bits."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 bloc prismaticProgress (succes 5790)"
+    }
+   }
   },
   "aurora": {
    "name": "Aurora",
@@ -19420,5 +19442,151 @@
  "collection_unlocks_note": {
   "fr": "Déblocage des collections, indexé par identifiant de succès, sur le modèle d'achievement_notes. `text` explique COMMENT débloquer (prose bilingue, encadré orange sous chaque collection non terminée). `gate` dit SI c'est débloqué, sous une forme testable contre l'API : types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Les deux coexistent — le texte reste utile même quand la porte est ouverte. Une collection sans `gate` est traitée comme éligible : mieux vaut en afficher une de trop que d'en masquer une jouable.",
   "en": "Collection unlocks, indexed by achievement id, following achievement_notes. `text` explains HOW to unlock (bilingual prose, orange block under each unfinished collection). `gate` states WHETHER it is unlocked, in a form testable against the API: types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Both coexist - the text stays useful once the gate is open. A collection with no `gate` is treated as eligible: better to show one too many than to hide a playable one."
+ },
+ "tab_contract": {
+  "note": {
+   "fr": "Contrat d'onglets. L'ouverture d'un onglet se deduit de la donnee portee par le legendaire, jamais d'une liste d'identifiants ecrite dans le JSX. Ajouter un legendaire ne doit demander aucune modification de condition. Predicats admis : `count` (un champ de tableau ou d'objet atteint `min`), `flag` (un booleen du JSX), `present` (un champ existe cote sources), `any_of` (au moins un sous-predicat), `computed` (une regle nommee, listee ci-dessous, pour les rares cas non exprimables par un simple test de champ).",
+   "en": "Tab contract. Whether a tab opens follows from the data the legendary carries, never from a list of ids written in the JSX. Adding a legendary must require no change to any condition. Allowed predicates: `count` (an array or object field reaches `min`), `flag` (a JSX boolean), `present` (a field exists on the sources side), `any_of` (at least one sub-predicate), `computed` (a named rule, listed below, for the rare cases a plain field test cannot express)."
+  },
+  "computed_rules": {
+   "has_material_requirement": {
+    "fr": "Vrai si le legendaire apparait dans au moins un `qty` de craft_components, ou porte dans _meta.common_required au moins une valeur non nulle. Remplace exactement l'ancienne condition « ni Prismatic ni le hub Colifichets » : Prismatic est le seul legendaire sans aucun besoin materiel, et c'est cette absence, non son nom, qui doit fermer l'onglet.",
+    "en": "True if the legendary appears in at least one craft_components `qty`, or carries at least one non-null value in _meta.common_required. Exactly replaces the former 'neither Prismatic nor the Trinkets hub' condition: Prismatic is the only legendary with no material need at all, and it is that absence, not its name, that should close the tab."
+   }
+  },
+  "order": [
+   "collections",
+   "activities",
+   "pieces",
+   "weapons",
+   "trinkets",
+   "guide",
+   "bounties",
+   "components"
+  ],
+  "tabs": {
+   "collections": {
+    "label": {
+     "fr": "Collections",
+     "en": "Collections"
+    },
+    "when": {
+     "any_of": [
+      {
+       "count": "raidAchievements",
+       "min": 1
+      },
+      {
+       "count": "collections",
+       "min": 1,
+       "from": "sources"
+      }
+     ]
+    },
+    "replaces": [
+     "achievements",
+     "raids"
+    ],
+    "rationale": {
+     "fr": "Un seul nom quel que soit le mode de jeu. Les succes de Prismatic, les collections de raid de Coalescence et les collections de carte d'Aurora nommaient trois fois la meme chose et empruntaient trois chemins de rendu distincts. Aurora et Vision ouvraient meme DEUX onglets de collections a la fois.",
+     "en": "One name whatever the game mode. Prismatic's achievements, Coalescence's raid collections and Aurora's map collections named the same thing three times over three separate render paths. Aurora and Vision even opened TWO collection tabs at once."
+    }
+   },
+   "activities": {
+    "label": {
+     "fr": "Activités",
+     "en": "Activities"
+    },
+    "when": {
+     "any_of": [
+      {
+       "count": "metas",
+       "min": 1
+      },
+      {
+       "count": "wvwActivities",
+       "min": 1
+      }
+     ]
+    },
+    "replaces": [
+     "metas",
+     "wvw"
+    ],
+    "rationale": {
+     "fr": "Metas et McM repondent a la meme question — quelle activite recurrente fait tomber la matiere — et se distinguaient seulement par le mode de jeu. La condition remplace une liste noire de 13 identifiants et une liste blanche de 4, verifiees equivalentes sur les 21 legendaires.",
+     "en": "Metas and WvW answer the same question - which recurring activity yields the material - and differed only by game mode. The condition replaces a 13-id blacklist and a 4-id whitelist, verified equivalent across all 21 legendaries."
+    }
+   },
+   "pieces": {
+    "label": {
+     "fr": "Pièces",
+     "en": "Pieces"
+    },
+    "when": {
+     "flag": "isArmorSet"
+    }
+   },
+   "weapons": {
+    "label": {
+     "fr": "Armes",
+     "en": "Weapons"
+    },
+    "when": {
+     "flag": "isWeapons"
+    }
+   },
+   "trinkets": {
+    "label": {
+     "fr": "Colifichets",
+     "en": "Trinkets"
+    },
+    "when": {
+     "flag": "isTrinkets"
+    }
+   },
+   "bounties": {
+    "label": {
+     "fr": "Primes",
+     "en": "Bounties"
+    },
+    "when": {
+     "count": "bounties",
+     "min": 1
+    }
+   },
+   "guide": {
+    "label": {
+     "fr": "Guide",
+     "en": "Guide"
+    },
+    "when": {
+     "present": "guide",
+     "from": "sources"
+    },
+    "rationale": {
+     "fr": "La condition remplace le drapeau isGuideTrinket, ecrit a la main et desynchronise : the_ascension et transcendence avaient un guide que rien n'affichait, strife_unending un onglet vide. Piloter l'onglet par la presence du guide reconcilie les deux ensembles.",
+     "en": "The condition replaces the hand-written isGuideTrinket flag, which had drifted: the_ascension and transcendence had a guide nothing displayed, strife_unending an empty tab. Driving the tab from the guide's presence reconciles both sets."
+    }
+   },
+   "components": {
+    "label": {
+     "fr": "Composants",
+     "en": "Components"
+    },
+    "when": {
+     "computed": "has_material_requirement"
+    },
+    "replaces": [
+     "currencies"
+    ]
+   }
+  },
+  "removed": {
+   "chars": {
+    "fr": "Supprime a l'etape 4 : son rendement quotidien vit desormais en cadence, avec per_character sur les baies de houx et les perles orriennes.",
+    "en": "Removed at step 4: its daily yield now lives in cadence, with per_character on winterberries and Orrian pearls."
+   }
+  }
  }
 }

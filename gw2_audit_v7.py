@@ -766,6 +766,119 @@ def check_chars_tab_duplication(data, errors, warnings):
             )
 
 
+TAB_PREDICATES = {"count", "flag", "present", "any_of", "computed"}
+TAB_FIELDS = {"label", "when", "replaces", "rationale"}
+
+
+def _tab_predicate_errors(pred, label, rules, out):
+    if not isinstance(pred, dict):
+        out.append(f"{label} : le predicat n'est pas un objet")
+        return
+    kinds = sorted(set(pred) & TAB_PREDICATES)
+    if len(kinds) != 1:
+        out.append(
+            f"{label} : un predicat porte exactement un type parmi "
+            f"{', '.join(sorted(TAB_PREDICATES))} (trouve : {kinds or 'aucun'})"
+        )
+        return
+    kind = kinds[0]
+    if kind == "any_of":
+        subs = pred["any_of"]
+        if not isinstance(subs, list) or not subs:
+            out.append(f"{label} : any_of doit etre une liste non vide")
+            return
+        for i, sub in enumerate(subs):
+            _tab_predicate_errors(sub, f"{label}.any_of[{i}]", rules, out)
+        return
+    if kind == "count" and not isinstance(pred.get("min"), int):
+        out.append(f"{label} : un predicat count exige un min entier")
+    if kind == "computed" and pred["computed"] not in rules:
+        out.append(
+            f"{label} : regle calculee '{pred['computed']}' non declaree dans "
+            "tab_contract.computed_rules — une regle non nommee est une liste noire deguisee"
+        )
+    for extra in set(pred) - {kind, "min", "from"}:
+        out.append(f"{label} : champ '{extra}' hors schema pour un predicat {kind}")
+
+
+def check_tab_contract(data, errors, warnings):
+    """L'ouverture d'un onglet se deduit de la donnee, jamais d'une liste d'ids.
+
+    Une condition ecrite en dur dans le JSX oblige a modifier du code a chaque
+    legendaire ajoute, et la regle n'existe alors nulle part : elle est
+    eparpillee dans une negation. Le contrat la rend lisible et verifiable.
+    """
+    contract = data.get("tab_contract")
+    if not isinstance(contract, dict):
+        warnings.append("tab_contract absent : l'ouverture des onglets reste codee dans le JSX")
+        return
+
+    tabs = contract.get("tabs")
+    order = contract.get("order")
+    rules = contract.get("computed_rules") or {}
+    if not isinstance(tabs, dict) or not tabs:
+        errors.append("tab_contract.tabs doit etre un objet non vide")
+        return
+    if not isinstance(order, list):
+        errors.append("tab_contract.order doit etre une liste")
+        order = []
+
+    missing = sorted(set(tabs) - set(order))
+    extra = sorted(set(order) - set(tabs))
+    if missing:
+        errors.append(f"tab_contract.order : onglets definis mais jamais ordonnes {missing}")
+    if extra:
+        errors.append(f"tab_contract.order : onglets ordonnes mais jamais definis {extra}")
+    if len(order) != len(set(order)):
+        errors.append("tab_contract.order : un onglet apparait deux fois")
+
+    for tid, spec in sorted(tabs.items()):
+        label = f"tab_contract.tabs[{tid}]"
+        if not isinstance(spec, dict):
+            errors.append(f"{label} : n'est pas un objet")
+            continue
+        for unknown in sorted(set(spec) - TAB_FIELDS):
+            errors.append(f"{label} : champ inattendu '{unknown}'")
+        lab = spec.get("label")
+        if not (isinstance(lab, dict) and lab.get("fr") and lab.get("en")):
+            errors.append(f"{label} : label doit porter fr et en")
+        if "when" not in spec:
+            errors.append(f"{label} : aucun predicat when — l'onglet s'ouvrirait toujours")
+        else:
+            _tab_predicate_errors(spec["when"], f"{label}.when", rules, errors)
+
+    for name in sorted(rules):
+        if not isinstance(rules[name], dict) or not rules[name].get("fr"):
+            errors.append(f"tab_contract.computed_rules[{name}] : doit etre decrite en fr et en en")
+
+    # Un onglet remplace ne doit pas subsister sous son ancien nom.
+    replaced = {old for spec in tabs.values() if isinstance(spec, dict)
+                for old in (spec.get("replaces") or [])}
+    for old in sorted(replaced & set(tabs)):
+        errors.append(
+            f"tab_contract : '{old}' est declare remplace et existe pourtant toujours comme onglet"
+        )
+
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+    if "tab_contract" not in text:
+        warnings.append(
+            "tab_contract n'est lu nulle part dans le JSX — les onglets restent construits par "
+            "les listes d'identifiants tant que la passe finale n'est pas faite"
+        )
+    for old in sorted(replaced | {"chars"}):
+        if f'id: "{old}"' in text:
+            warnings.append(
+                f'{jsx[-1].name} : l\'onglet "{old}" est encore construit en dur alors que le '
+                "contrat le remplace"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -845,7 +958,10 @@ def main() -> int:
     # 15. Rendement des monnaies de carte : une seule source de verite
     check_chars_tab_duplication(data, errors, warnings)
 
-    # 16. Integrite de chaque entree de meta_eligible
+    # 16. Contrat d'onglets : conditions lisibles, ordre complet
+    check_tab_contract(data, errors, warnings)
+
+    # 17. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

@@ -211,7 +211,18 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   Le drapeau `isGuideTrinket` du JSX doit donc désigner exactement l'ensemble
   des légendaires porteurs d'un `guide` — un guide rédigé sans drapeau ne
   s'affiche jamais, un drapeau sans guide ouvre un onglet vide.
-- **Avant tout push** : `python3 gw2_audit_v6.py`. Un échec bloque le push.
+- **L'ouverture d'un onglet se déduit de la donnée, jamais d'une liste d'ids.**
+  `tab_contract` déclare 8 onglets, leur ordre et leur condition. Prédicats
+  admis : `count`, `flag`, `present`, `any_of`, et `computed` pour les rares cas
+  non exprimables par un test de champ — toute règle `computed` doit être
+  nommée et décrite dans `computed_rules`, faute de quoi c'est une liste noire
+  déguisée. Ajouter un légendaire ne doit demander **aucune** modification de
+  condition.
+- **Un seul nom par concept, quel que soit le mode de jeu.** `achievements` et
+  `raids` deviennent `collections` ; `metas` et `wvw` deviennent `activities` ;
+  `currencies` devient `components` ; `chars` disparaît. Un onglet déclaré dans
+  `replaces` ne doit plus exister sous son ancien nom.
+- **Avant tout push** : `python3 gw2_audit_v7.py`. Un échec bloque le push.
   Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
   aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,
   `mastery_max`, `tier_max`, `bits_count`), provenance complète (`verified`,
@@ -255,7 +266,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   indiscernable d'un inventaire vide. Le contrôle se fait par le **nom**, pas par
   l'id : un id absent du référentiel signifie seulement que l'objet n'est pas en
   stockage matériaux, ce qui est courant et légitime ; en revanche un nom connu
-  portant un autre id est faux à coup sûr. `gw2_audit_v6.py` applique cette règle.
+  portant un autre id est faux à coup sûr. `gw2_audit_v7.py` applique cette règle.
 - **Un instantané ne se fusionne pas, il se remplace.** Le statut des
   sous-succès était mis à jour par `{...prev, ...data}`, et l'effet de
   complément n'allait chercher que les ids *inconnus*. Un succès enregistré
@@ -289,7 +300,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   unités, chercher et marquer les sources sans dépense d'or, timegate compris —
   méta quotidienne, quotidiens de festival, pistes de récompense, vendeur karma,
   coffres de carte. Champ `free_repeatable` sur la source, `free_sources_note`
-  sur le composant, et `gw2_audit_v6.py` signale les gros postes qui n'en ont
+  sur le composant, et `gw2_audit_v7.py` signale les gros postes qui n'en ont
   aucune.
 - **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
   compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
@@ -301,7 +312,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   information exacte a dormi dans les sources sans jamais atteindre l'écran :
   l'écart de catégorie de Bava Nisos, le cas de `A Hunt for the Ages`, les seuils
   réels des métas de maîtrise. Après toute passe de données, vérifier que le
-  champ est réellement lu par un chemin de rendu. `gw2_audit_v6.py` liste
+  champ est réellement lu par un chemin de rendu. `gw2_audit_v7.py` liste
   désormais les champs bilingues dont le nom n'apparaît nulle part dans le JSX.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score
