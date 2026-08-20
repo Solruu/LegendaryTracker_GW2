@@ -255,7 +255,13 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   `/v2/account/masteries`, `level` est un index **0-base dans le tableau
   `levels` de la piste**, pas un rang absolu — et une porte nomme presque
   toujours un **palier**, pas une piste.
-- **Avant tout push** : `python3 gw2_audit_v10.py`. Un échec bloque le push.
+- **Une exigence de matériau transverse ne vit que dans `qty`.** `computeGrandTotal`
+  ne lit que `craft_components[].qty` ; une valeur écrite seulement dans
+  `_meta.common_required` s'affiche en référence et **compte pour zéro**. C'est
+  ainsi que Vision et Aurora ont annoncé 0 trèfle et 0 ectoplasme, et que les
+  cadences correspondantes ne remontaient pas dans Timegates. `common_required`
+  reste comme affichage de référence, plus comme source de vérité.
+- **Avant tout push** : `python3 gw2_audit_v11.py`. Un échec bloque le push.
   Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
   aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,
   `mastery_max`, `tier_max`, `bits_count`), provenance complète (`verified`,
@@ -299,7 +305,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   indiscernable d'un inventaire vide. Le contrôle se fait par le **nom**, pas par
   l'id : un id absent du référentiel signifie seulement que l'objet n'est pas en
   stockage matériaux, ce qui est courant et légitime ; en revanche un nom connu
-  portant un autre id est faux à coup sûr. `gw2_audit_v10.py` applique cette règle.
+  portant un autre id est faux à coup sûr. `gw2_audit_v11.py` applique cette règle.
 - **Un instantané ne se fusionne pas, il se remplace.** Le statut des
   sous-succès était mis à jour par `{...prev, ...data}`, et l'effet de
   complément n'allait chercher que les ids *inconnus*. Un succès enregistré
@@ -333,7 +339,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   unités, chercher et marquer les sources sans dépense d'or, timegate compris —
   méta quotidienne, quotidiens de festival, pistes de récompense, vendeur karma,
   coffres de carte. Champ `free_repeatable` sur la source, `free_sources_note`
-  sur le composant, et `gw2_audit_v10.py` signale les gros postes qui n'en ont
+  sur le composant, et `gw2_audit_v11.py` signale les gros postes qui n'en ont
   aucune.
 - **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
   compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
@@ -345,7 +351,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   information exacte a dormi dans les sources sans jamais atteindre l'écran :
   l'écart de catégorie de Bava Nisos, le cas de `A Hunt for the Ages`, les seuils
   réels des métas de maîtrise. Après toute passe de données, vérifier que le
-  champ est réellement lu par un chemin de rendu. `gw2_audit_v10.py` liste
+  champ est réellement lu par un chemin de rendu. `gw2_audit_v11.py` liste
   désormais les champs bilingues dont le nom n'apparaît nulle part dans le JSX.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score

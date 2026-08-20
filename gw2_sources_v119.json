@@ -757,13 +757,13 @@
   "common_required": {
    "vision": {
     "clovers": 77,
-    "coins": null,
+    "coins": 250,
     "ectos": 250,
     "obsidian": 250
    },
    "aurora": {
     "clovers": 77,
-    "coins": null,
+    "coins": 250,
     "ectos": 250,
     "obsidian": 250
    },
@@ -771,7 +771,11 @@
     "clovers": 77,
     "coins": null,
     "ectos": 250,
-    "obsidian": 250
+    "obsidian": 250,
+    "coins_note": {
+     "fr": "⚠ A verifier : les colifichets batis sur un Mystic Tribute consomment 250 Mystic Coins. La recette de Conflux n'a pas ete confirmee, la valeur reste donc a null plutot qu'estimee.",
+     "en": "⚠ To verify: trinkets built on a Mystic Tribute consume 250 Mystic Coins. Conflux's recipe has not been confirmed, so the value stays null rather than guessed."
+    }
    },
    "warbringer": {
     "clovers": 77,
@@ -890,6 +894,10 @@
     "coins": null,
     "ectos": null,
     "obsidian": null
+   },
+   "_deprecated": {
+    "fr": "⚠ common_required n'est plus la source de verite : les exigences de materiaux transverses vivent dans craft_components[].qty, seul emplacement que computeGrandTotal lit. Ce bloc est conserve pour l'affichage de reference, mais toute valeur qui ne s'y retrouve pas en qty est invisible du calcul. L'audit refuse desormais une exigence presente ici et absente de qty.",
+    "en": "⚠ common_required is no longer the source of truth: cross-cutting material requirements live in craft_components[].qty, the only place computeGrandTotal reads. This block is kept as a display reference, but any value missing from qty is invisible to the calculation. The audit now refuses a requirement present here and absent from qty."
    }
   },
   "common_required_note": "Quantités de matériaux communs par légendaire (null = non requis ; perPiece = coût par pièce d'armure). Remplace les valeurs génériques figées de COMMON_MATS.",
@@ -997,7 +1005,8 @@
   "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide.",
   "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement.",
   "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale.",
-  "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas."
+  "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas.",
+  "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer."
  },
  "meta_events": {
   "vb": {
@@ -4339,7 +4348,12 @@
     "selachimorpha": 250,
     "obsidian__per_piece": 50,
     "endless_summer": 250,
-    "upgrades": 450
+    "upgrades": 450,
+    "vision": 250,
+    "aurora": 250,
+    "conflux": 250,
+    "warbringer": 250,
+    "coalescence": 250
    },
    "farmable": true,
    "sources": [
@@ -4950,7 +4964,14 @@
     "the_ascension": 250,
     "ad_infinitum": 250,
     "memory_essence_encapsulator": 50,
-    "upgrades": 1050
+    "upgrades": 1050,
+    "vision": 250,
+    "aurora": 250,
+    "conflux": 250,
+    "warbringer": 250,
+    "coalescence": 250,
+    "transcendence": 250,
+    "eikasia": 80
    },
    "kind": "acquire",
    "best": "salvage"
@@ -5146,7 +5167,13 @@
     "orrax_manifested": 38,
     "selachimorpha": 55,
     "strife_unending": 45,
-    "upgrades": 205
+    "upgrades": 205,
+    "vision": 77,
+    "aurora": 77,
+    "conflux": 77,
+    "warbringer": 77,
+    "triumphant_hero__per_piece": 15,
+    "ardent_glorious__per_piece": 15
    },
    "kind": "acquire",
    "best": "vendor",
@@ -5944,7 +5971,8 @@
     "gen2_reaver_of_the_mists": 1,
     "transcendence": 1,
     "stella_radians": 1,
-    "aurora": 1
+    "aurora": 1,
+    "vision": 1
    },
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -6092,7 +6120,10 @@
     "the_ascension": 250,
     "ad_infinitum": 250,
     "stella_radians": 250,
-    "coalescence": 250
+    "coalescence": 250,
+    "warbringer": 250,
+    "aurora": 250,
+    "vision": 250
    },
    "kind": "acquire",
    "best": "vendor",

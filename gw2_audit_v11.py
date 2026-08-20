@@ -978,6 +978,52 @@ def check_qty_levels(data, errors, warnings):
                     )
 
 
+COMMON_TO_COMPONENT = {
+    "clovers": "mystic_clover", "coins": "mystic_coin",
+    "ectos": "glob_of_ectoplasm", "obsidian": "obsidian_shard",
+}
+# Hubs : leurs membres portent deja leur propre qty, et leurs valeurs dans
+# common_required sont une reference PAR UNITE, pas un total.
+COMMON_HUBS = {"weapons", "upgrades", "t6", "prismatic"}
+
+
+def check_common_required_merged(data, errors, warnings):
+    """Une exigence de materiau transverse ne vit que dans qty.
+
+    computeGrandTotal ne lit que craft_components[].qty. Une valeur ecrite
+    seulement dans _meta.common_required s'affiche en reference et compte pour
+    zero — c'est ainsi que Vision et Aurora ont annonce 0 trefle et 0
+    ectoplasme pendant des mois, et que les cadences correspondantes
+    disparaissaient de l'onglet Timegates.
+    """
+    cc = data.get("craft_components", {})
+    cr = (data.get("_meta") or {}).get("common_required") or {}
+    for lid, req in sorted(cr.items()):
+        if lid in COMMON_HUBS or not isinstance(req, dict):
+            continue
+        key = f"{lid}__per_piece" if req.get("perPiece") else lid
+        for champ, cid in COMMON_TO_COMPONENT.items():
+            val = req.get(champ)
+            if val is None:
+                continue
+            comp = cc.get(cid)
+            if not isinstance(comp, dict):
+                errors.append(f"common_required : composant '{cid}' introuvable")
+                continue
+            actuel = (comp.get("qty") or {}).get(key)
+            if actuel is None:
+                errors.append(
+                    f"_meta.common_required[{lid}].{champ} = {val} n'existe pas dans "
+                    f"craft_components/{cid}.qty['{key}'] — invisible du calcul"
+                )
+            elif actuel != val:
+                warnings.append(
+                    f"_meta.common_required[{lid}].{champ} = {val} diverge de "
+                    f"craft_components/{cid}.qty['{key}'] = {actuel} — deux nombres pour une "
+                    "meme exigence, a arbitrer"
+                )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1063,7 +1109,10 @@ def main() -> int:
     # 17. Niveaux de quantite : par parent ou total aplati
     check_qty_levels(data, errors, warnings)
 
-    # 18. Integrite de chaque entree de meta_eligible
+    # 18. Exigences transverses : un seul emplacement, celui que le calcul lit
+    check_common_required_merged(data, errors, warnings)
+
+    # 19. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
