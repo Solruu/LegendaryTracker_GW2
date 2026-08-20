@@ -1767,7 +1767,8 @@ const SOURCES_DB = {
     "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait.",
     "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee.",
     "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus.",
-    "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles."
+    "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles.",
+    "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres."
   },
   "meta_events": {
     "vb": {
@@ -2835,7 +2836,8 @@ const SOURCES_DB = {
         "gift_of_dust": 50
       },
       "kind": "acquire",
-      "best": "drop"
+      "best": "drop",
+      "tier": "T3"
     },
     "dust_luminous": {
       "name": "Pile of Luminous Dust",
@@ -2882,7 +2884,8 @@ const SOURCES_DB = {
         "gift_of_dust": 50
       },
       "kind": "acquire",
-      "best": "drop"
+      "best": "drop",
+      "tier": "T4"
     },
     "dust_incandescent": {
       "name": "Pile of Incandescent Dust",
@@ -2941,7 +2944,8 @@ const SOURCES_DB = {
         "gift_of_dust": 250
       },
       "kind": "acquire",
-      "best": "drop"
+      "best": "drop",
+      "tier": "T5"
     },
     "dust_crystalline": {
       "name": "Pile of Crystalline Dust",
@@ -3008,7 +3012,8 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "sources declarees du composant"
-      }
+      },
+      "tier": "T6"
     },
     "icy_runestone": {
       "name": "Icy Runestone",
@@ -10550,7 +10555,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_venom"
-      ]
+      ],
+      "tier": "T6"
     },
     "armored_scale": {
       "name": "Armored Scale",
@@ -10611,7 +10617,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_scales"
-      ]
+      ],
+      "tier": "T6"
     },
     "vial_of_powerful_blood": {
       "name": "Vial of Powerful Blood",
@@ -10672,7 +10679,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_blood"
-      ]
+      ],
+      "tier": "T6"
     },
     "elaborate_totem": {
       "name": "Elaborate Totem",
@@ -10733,7 +10741,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_totems"
-      ]
+      ],
+      "tier": "T6"
     },
     "vicious_claw": {
       "name": "Vicious Claw",
@@ -10794,7 +10803,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_claws"
-      ]
+      ],
+      "tier": "T6"
     },
     "vicious_fang": {
       "name": "Vicious Fang",
@@ -10855,7 +10865,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_fangs"
-      ]
+      ],
+      "tier": "T6"
     },
     "ancient_bone": {
       "name": "Ancient Bone",
@@ -10916,7 +10927,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_bones"
-      ]
+      ],
+      "tier": "T6"
     },
     "druid_runestone": {
       "name": "Druid Runestone",
@@ -21976,6 +21988,136 @@ const SOURCES_DB = {
         "en": "Removed at step 4: its daily yield now lives in cadence, with per_character on winterberries and Orrian pearls."
       }
     }
+  },
+  "trophy_matrix": {
+    "note": {
+      "fr": "Les 8 lignes de trophées fins et leurs 4 paliers, dans l'ordre de la recette (T6, T5, T4, T3). Sert à la matrice de l'onglet T6. Cette table vit ici et non dans le JSX : une liste d'identifiants écrite dans le rendu est exactement ce que tab_contract a supprimé.",
+      "en": "The 8 fine trophy lines and their 4 tiers, in recipe order (T6, T5, T4, T3). Feeds the T6 tab matrix. This table lives here rather than in the JSX: a list of ids written into the render is exactly what tab_contract removed."
+    },
+    "tier_labels": [
+      {
+        "fr": "T6",
+        "en": "T6"
+      },
+      {
+        "fr": "T5",
+        "en": "T5"
+      },
+      {
+        "fr": "T4",
+        "en": "T4"
+      },
+      {
+        "fr": "T3",
+        "en": "T3"
+      }
+    ],
+    "lines": [
+      {
+        "gift": "gift_of_blood",
+        "label": {
+          "fr": "Sang",
+          "en": "Blood"
+        },
+        "tiers": [
+          "vial_of_powerful_blood",
+          "vial_of_potent_blood",
+          "vial_of_thick_blood",
+          "vial_of_blood"
+        ]
+      },
+      {
+        "gift": "gift_of_venom",
+        "label": {
+          "fr": "Venin",
+          "en": "Venom"
+        },
+        "tiers": [
+          "powerful_venom_sac",
+          "potent_venom_sac",
+          "full_venom_sac",
+          "venom_sac"
+        ]
+      },
+      {
+        "gift": "gift_of_totems",
+        "label": {
+          "fr": "Totems",
+          "en": "Totems"
+        },
+        "tiers": [
+          "elaborate_totem",
+          "intricate_totem",
+          "engraved_totem",
+          "totem"
+        ]
+      },
+      {
+        "gift": "gift_of_dust",
+        "label": {
+          "fr": "Poussière",
+          "en": "Dust"
+        },
+        "tiers": [
+          "dust_crystalline",
+          "dust_incandescent",
+          "dust_luminous",
+          "dust_radiant"
+        ]
+      },
+      {
+        "gift": "gift_of_claws",
+        "label": {
+          "fr": "Griffes",
+          "en": "Claws"
+        },
+        "tiers": [
+          "vicious_claw",
+          "large_claw",
+          "sharp_claw",
+          "claw"
+        ]
+      },
+      {
+        "gift": "gift_of_scales",
+        "label": {
+          "fr": "Écailles",
+          "en": "Scales"
+        },
+        "tiers": [
+          "armored_scale",
+          "large_scale",
+          "smooth_scale",
+          "scale"
+        ]
+      },
+      {
+        "gift": "gift_of_bones",
+        "label": {
+          "fr": "Os",
+          "en": "Bones"
+        },
+        "tiers": [
+          "ancient_bone",
+          "large_bone",
+          "heavy_bone",
+          "bone"
+        ]
+      },
+      {
+        "gift": "gift_of_fangs",
+        "label": {
+          "fr": "Crocs",
+          "en": "Fangs"
+        },
+        "tiers": [
+          "vicious_fang",
+          "large_fang",
+          "sharp_fang",
+          "fang"
+        ]
+      }
+    ]
   }
 };
 
@@ -24031,6 +24173,152 @@ class TabErrorBoundary extends React.Component {
   }
 }
 
+// ── Matrice des trophées ─────────────────────────────────────
+// L'onglet T6 n'est plus un pseudo-légendaire avec des cibles figées à 200 :
+// c'est une projection de la sélection du joueur. Les 8 lignes sont
+// rigoureusement symétriques dans le BESOIN (chaque gift demande 100/250/50/50) ;
+// ce qui les différencie, c'est le stock et le prix. La matrice montre donc
+// l'état, et le dépliement d'une ligne montre l'action : quel gift est
+// forgeable ce soir.
+function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
+  const [open, setOpen] = useState(null);
+  const [picker, setPicker] = useState(false);
+  const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+  const cc = DB.craft_components ?? {};
+  const legs = DB.legendaries ?? {};
+  const matrix = DB.trophy_matrix;
+  const ids = Object.keys(selectedIds).filter(k => selectedIds[k]);
+  const totals = ids.length ? (computeGrandTotal(ids).totals ?? {}) : {};
+
+  if (!matrix?.lines?.length) return null;
+  const stockOf = (cid) => {
+    const api = cc[cid]?.apiId;
+    return api != null && stocks[String(api)] != null ? stocks[String(api)] : null;
+  };
+  const cell = (cid) => {
+    const need = totals[cid] ?? 0;
+    const owned = stockOf(cid);
+    const missing = owned === null ? null : Math.max(0, need - owned);
+    return { need, owned, missing, pct: need > 0 && owned !== null ? Math.min(1, owned / need) : null };
+  };
+
+  return (
+    <div>
+      <div className="section-label">{NX({ fr: "Trophées fins", en: "Fine trophies" })}</div>
+      <div style={{ margin: "2px 14px 8px", fontSize: "10.5px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>
+        {NX({ fr: "Chaque gift demande 100 T6, 250 T5, 50 T4 et 50 T3. Le T6 ne pèse que 100 unités sur 450 : l'essentiel du volume, et l'essentiel de l'économie possible, est en T5.",
+              en: "Each gift needs 100 T6, 250 T5, 50 T4 and 50 T3. T6 is only 100 units out of 450: most of the volume, and most of the possible savings, sit in T5." })}
+      </div>
+
+      <div style={{ margin: "0 14px 10px" }}>
+        <button onClick={() => setPicker(!picker)}
+          style={{ width: "100%", padding: "9px 12px", background: "rgba(226,201,126,0.06)", border: "1px solid rgba(226,201,126,0.22)", borderRadius: 8, color: "#e2c97e", fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
+          🎯 {NX({ fr: "Légendaires visés", en: "Targeted legendaries" })} — <b>{ids.length}</b> {picker ? "▾" : "▸"}
+        </button>
+        {picker && (
+          <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: "1px solid rgba(226,201,126,0.14)", borderRadius: 8, maxHeight: 240, overflowY: "auto" }}>
+            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid))
+              .sort((a, b) => String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
+              .map(([lid, l]) => (
+              <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selectedIds[lid] ? "#e2c97e" : "rgba(226,201,126,0.55)", cursor: "pointer" }}>
+                <input type="checkbox" checked={!!selectedIds[lid]}
+                  onChange={() => onTargets(prev => { const n = { ...prev }; if (n[lid]) delete n[lid]; else n[lid] = true; return n; })} />
+                <span style={{ flex: 1 }}>{NX(l.name ?? lid)}</span>
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {ids.length === 0 && (
+        <div style={{ margin: "0 14px 10px", padding: "9px 12px", background: "rgba(226,201,126,0.04)", border: "1px solid rgba(226,201,126,0.15)", borderRadius: 8, fontSize: "11.5px", color: "rgba(226,201,126,0.6)" }}>
+          {NX({ fr: "Aucun légendaire visé : la matrice affiche ton stock, sans objectif. Sélectionne au moins un légendaire pour voir ce qu'il te manque.",
+                en: "No legendary targeted: the matrix shows your stock, with no goal. Pick at least one legendary to see what you are missing." })}
+        </div>
+      )}
+
+      {/* ① La matrice 8 × 4 */}
+      <div style={{ margin: "0 14px", overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "11px", fontVariantNumeric: "tabular-nums" }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: "left", padding: "4px 6px", color: "rgba(226,201,126,0.45)", fontWeight: 400, fontSize: "10px" }}></th>
+              {(matrix.tier_labels ?? []).map((lb, i) => (
+                <th key={i} style={{ padding: "4px 6px", color: "rgba(226,201,126,0.45)", fontWeight: 400, fontSize: "10px" }}>{NX(lb)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {matrix.lines.map(line => (
+              <React.Fragment key={line.gift}>
+                <tr onClick={() => setOpen(open === line.gift ? null : line.gift)}
+                    style={{ cursor: "pointer", borderTop: "1px solid rgba(226,201,126,0.08)" }}>
+                  <td style={{ padding: "5px 6px", color: "#e2c97e", whiteSpace: "nowrap" }}>
+                    {open === line.gift ? "▾ " : "▸ "}{NX(line.label)}
+                  </td>
+                  {line.tiers.map(cid => {
+                    const c = cell(cid);
+                    const bg = c.pct === null ? "transparent"
+                      : c.pct >= 1 ? "rgba(74,222,128,0.16)"
+                      : `rgba(251,146,60,${0.05 + 0.18 * (1 - c.pct)})`;
+                    return (
+                      <td key={cid} style={{ padding: "5px 6px", textAlign: "center", background: bg, color: c.missing === 0 && c.need > 0 ? "#4ade80" : "rgba(226,201,126,0.8)" }}>
+                        {c.need === 0 ? "—" : c.missing === null ? c.need : c.missing === 0 ? "✓" : c.missing}
+                      </td>
+                    );
+                  })}
+                </tr>
+                {/* ③ Le dépliement : la ligne devient son gift */}
+                {open === line.gift && (
+                  <tr>
+                    <td colSpan={5} style={{ padding: "6px 8px 10px", background: "rgba(0,0,0,0.18)" }}>
+                      {line.tiers.map((cid, i) => {
+                        const c = cell(cid);
+                        const par = cc[cid]?.qty?.[line.gift] ?? 0;
+                        return (
+                          <div key={cid} style={{ display: "flex", gap: 8, alignItems: "baseline", padding: "2px 0", fontSize: "10.5px" }}>
+                            <span style={{ width: 22, color: "rgba(226,201,126,0.4)" }}>{NX((matrix.tier_labels ?? [])[i])}</span>
+                            <span style={{ flex: 1, color: "rgba(226,201,126,0.75)" }}>{cc[cid]?.name ?? cid}</span>
+                            <span style={{ color: "rgba(226,201,126,0.4)" }}>{par}/gift</span>
+                            <span style={{ width: 108, textAlign: "right", color: c.missing === 0 && c.need > 0 ? "#4ade80" : "rgba(226,201,126,0.8)" }}>
+                              {c.owned === null ? NX({ fr: "stock inconnu", en: "stock unknown" })
+                                : `${c.owned} / ${c.need}`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                      {(() => {
+                        // Combien de gifts sont forgeables MAINTENANT : le
+                        // minimum sur les quatre paliers. C'est la seule
+                        // question qui compte le soir venu.
+                        const forgeables = Math.min(...line.tiers.map(cid => {
+                          const owned = stockOf(cid);
+                          const par = cc[cid]?.qty?.[line.gift] ?? 0;
+                          return owned === null || par === 0 ? Infinity : Math.floor(owned / par);
+                        }));
+                        if (!isFinite(forgeables)) return null;
+                        return (
+                          <div style={{ marginTop: 5, fontSize: "11px", color: forgeables > 0 ? "#4ade80" : "rgba(226,201,126,0.45)" }}>
+                            {forgeables > 0
+                              ? NX({ fr: `🔨 ${forgeables} ${cc[line.gift]?.name ?? line.gift} forgeable(s) maintenant`,
+                                     en: `🔨 ${forgeables} ${cc[line.gift]?.name ?? line.gift} craftable now` })
+                              : NX({ fr: "Pas encore forgeable — le palier le plus court commande.",
+                                     en: "Not craftable yet — the shortest tier is the binding one." })}
+                          </div>
+                        );
+                      })()}
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function CadencesTab({ stocks = {}, acctGates = null }) {
   const t = useT();
   // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
@@ -25361,6 +25649,13 @@ function GW2LegendaryTracker() {
   // null partout tant qu'aucune synchro n'a eu lieu — et null veut dire
   // "indecidable", jamais "non". La nuance decide si une collection est
   // signalee ou masquee.
+  // Cibles de la matrice des trophees. Independantes de la selection de
+  // l'onglet Timegates : on peut viser Vision au quotidien et chiffrer un set
+  // d'Obsidienne en parallele.
+  const [t6Targets, setT6Targets] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_t6_targets") ?? "{}") ?? {}; } catch (_) { return {}; }
+  });
+  useEffect(() => { try { localStorage.setItem("gw2_t6_targets", JSON.stringify(t6Targets)); } catch (_) {} }, [t6Targets]);
   const [acctGates, setAcctGates] = useState(() => {
     try { return JSON.parse(localStorage.getItem("gw2_gates") ?? "null"); } catch { return null; }
   });
@@ -25891,7 +26186,6 @@ function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (newLeg?.isArmorSet ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -26199,6 +26493,18 @@ function GW2LegendaryTracker() {
         return { id, label: NX(contract.tabs[id].label) + (n ? ` (${n})` : "") };
       });
   })();
+
+  // L'onglet actif doit toujours exister dans le contrat. La chaine de
+  // conditions qui posait l'onglet par defaut visait encore wvw, achievements,
+  // raids, currencies et metas — cinq identifiants supprimes a la passe
+  // finale. Selectionner un legendaire posait donc un onglet inexistant, et la
+  // zone de contenu restait vide jusqu'a ce que le joueur clique lui-meme.
+  // Cet effet retombe sur le premier onglet ouvert, et couvre aussi le cas ou
+  // un onglet disparait sans changement de legendaire.
+  useEffect(() => {
+    if (tabs.length === 0) return;
+    if (!tabs.some(t => t.id === activeTab)) setActiveTab(tabs[0].id);
+  }, [tabs.map(t => t.id).join("|"), activeTab]);
 
   // Guard — évite le render pendant la transition de légendaire
   if (!leg && !isGrandTotal) return (
@@ -28067,7 +28373,13 @@ function GW2LegendaryTracker() {
         );
       })()}
 
-      {activeTab === "components" && (
+      {activeTab === "components" && selectedLeg === "t6" && (
+        <TabErrorBoundary>
+          <TrophyMatrix stocks={gtStocks} selectedIds={t6Targets} onTargets={setT6Targets} />
+        </TabErrorBoundary>
+      )}
+
+      {activeTab === "components" && selectedLeg !== "t6" && (
         <div>
           {!leg?.raidAchievements && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>

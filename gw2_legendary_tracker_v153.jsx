@@ -2755,6 +2755,152 @@ class TabErrorBoundary extends React.Component {
   }
 }
 
+// ── Matrice des trophées ─────────────────────────────────────
+// L'onglet T6 n'est plus un pseudo-légendaire avec des cibles figées à 200 :
+// c'est une projection de la sélection du joueur. Les 8 lignes sont
+// rigoureusement symétriques dans le BESOIN (chaque gift demande 100/250/50/50) ;
+// ce qui les différencie, c'est le stock et le prix. La matrice montre donc
+// l'état, et le dépliement d'une ligne montre l'action : quel gift est
+// forgeable ce soir.
+function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
+  const [open, setOpen] = useState(null);
+  const [picker, setPicker] = useState(false);
+  const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+  const cc = DB.craft_components ?? {};
+  const legs = DB.legendaries ?? {};
+  const matrix = DB.trophy_matrix;
+  const ids = Object.keys(selectedIds).filter(k => selectedIds[k]);
+  const totals = ids.length ? (computeGrandTotal(ids).totals ?? {}) : {};
+
+  if (!matrix?.lines?.length) return null;
+  const stockOf = (cid) => {
+    const api = cc[cid]?.apiId;
+    return api != null && stocks[String(api)] != null ? stocks[String(api)] : null;
+  };
+  const cell = (cid) => {
+    const need = totals[cid] ?? 0;
+    const owned = stockOf(cid);
+    const missing = owned === null ? null : Math.max(0, need - owned);
+    return { need, owned, missing, pct: need > 0 && owned !== null ? Math.min(1, owned / need) : null };
+  };
+
+  return (
+    <div>
+      <div className="section-label">{NX({ fr: "Trophées fins", en: "Fine trophies" })}</div>
+      <div style={{ margin: "2px 14px 8px", fontSize: "10.5px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>
+        {NX({ fr: "Chaque gift demande 100 T6, 250 T5, 50 T4 et 50 T3. Le T6 ne pèse que 100 unités sur 450 : l'essentiel du volume, et l'essentiel de l'économie possible, est en T5.",
+              en: "Each gift needs 100 T6, 250 T5, 50 T4 and 50 T3. T6 is only 100 units out of 450: most of the volume, and most of the possible savings, sit in T5." })}
+      </div>
+
+      <div style={{ margin: "0 14px 10px" }}>
+        <button onClick={() => setPicker(!picker)}
+          style={{ width: "100%", padding: "9px 12px", background: "rgba(226,201,126,0.06)", border: "1px solid rgba(226,201,126,0.22)", borderRadius: 8, color: "#e2c97e", fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
+          🎯 {NX({ fr: "Légendaires visés", en: "Targeted legendaries" })} — <b>{ids.length}</b> {picker ? "▾" : "▸"}
+        </button>
+        {picker && (
+          <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: "1px solid rgba(226,201,126,0.14)", borderRadius: 8, maxHeight: 240, overflowY: "auto" }}>
+            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid))
+              .sort((a, b) => String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
+              .map(([lid, l]) => (
+              <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selectedIds[lid] ? "#e2c97e" : "rgba(226,201,126,0.55)", cursor: "pointer" }}>
+                <input type="checkbox" checked={!!selectedIds[lid]}
+                  onChange={() => onTargets(prev => { const n = { ...prev }; if (n[lid]) delete n[lid]; else n[lid] = true; return n; })} />
+                <span style={{ flex: 1 }}>{NX(l.name ?? lid)}</span>
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {ids.length === 0 && (
+        <div style={{ margin: "0 14px 10px", padding: "9px 12px", background: "rgba(226,201,126,0.04)", border: "1px solid rgba(226,201,126,0.15)", borderRadius: 8, fontSize: "11.5px", color: "rgba(226,201,126,0.6)" }}>
+          {NX({ fr: "Aucun légendaire visé : la matrice affiche ton stock, sans objectif. Sélectionne au moins un légendaire pour voir ce qu'il te manque.",
+                en: "No legendary targeted: the matrix shows your stock, with no goal. Pick at least one legendary to see what you are missing." })}
+        </div>
+      )}
+
+      {/* ① La matrice 8 × 4 */}
+      <div style={{ margin: "0 14px", overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "11px", fontVariantNumeric: "tabular-nums" }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: "left", padding: "4px 6px", color: "rgba(226,201,126,0.45)", fontWeight: 400, fontSize: "10px" }}></th>
+              {(matrix.tier_labels ?? []).map((lb, i) => (
+                <th key={i} style={{ padding: "4px 6px", color: "rgba(226,201,126,0.45)", fontWeight: 400, fontSize: "10px" }}>{NX(lb)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {matrix.lines.map(line => (
+              <React.Fragment key={line.gift}>
+                <tr onClick={() => setOpen(open === line.gift ? null : line.gift)}
+                    style={{ cursor: "pointer", borderTop: "1px solid rgba(226,201,126,0.08)" }}>
+                  <td style={{ padding: "5px 6px", color: "#e2c97e", whiteSpace: "nowrap" }}>
+                    {open === line.gift ? "▾ " : "▸ "}{NX(line.label)}
+                  </td>
+                  {line.tiers.map(cid => {
+                    const c = cell(cid);
+                    const bg = c.pct === null ? "transparent"
+                      : c.pct >= 1 ? "rgba(74,222,128,0.16)"
+                      : `rgba(251,146,60,${0.05 + 0.18 * (1 - c.pct)})`;
+                    return (
+                      <td key={cid} style={{ padding: "5px 6px", textAlign: "center", background: bg, color: c.missing === 0 && c.need > 0 ? "#4ade80" : "rgba(226,201,126,0.8)" }}>
+                        {c.need === 0 ? "—" : c.missing === null ? c.need : c.missing === 0 ? "✓" : c.missing}
+                      </td>
+                    );
+                  })}
+                </tr>
+                {/* ③ Le dépliement : la ligne devient son gift */}
+                {open === line.gift && (
+                  <tr>
+                    <td colSpan={5} style={{ padding: "6px 8px 10px", background: "rgba(0,0,0,0.18)" }}>
+                      {line.tiers.map((cid, i) => {
+                        const c = cell(cid);
+                        const par = cc[cid]?.qty?.[line.gift] ?? 0;
+                        return (
+                          <div key={cid} style={{ display: "flex", gap: 8, alignItems: "baseline", padding: "2px 0", fontSize: "10.5px" }}>
+                            <span style={{ width: 22, color: "rgba(226,201,126,0.4)" }}>{NX((matrix.tier_labels ?? [])[i])}</span>
+                            <span style={{ flex: 1, color: "rgba(226,201,126,0.75)" }}>{cc[cid]?.name ?? cid}</span>
+                            <span style={{ color: "rgba(226,201,126,0.4)" }}>{par}/gift</span>
+                            <span style={{ width: 108, textAlign: "right", color: c.missing === 0 && c.need > 0 ? "#4ade80" : "rgba(226,201,126,0.8)" }}>
+                              {c.owned === null ? NX({ fr: "stock inconnu", en: "stock unknown" })
+                                : `${c.owned} / ${c.need}`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                      {(() => {
+                        // Combien de gifts sont forgeables MAINTENANT : le
+                        // minimum sur les quatre paliers. C'est la seule
+                        // question qui compte le soir venu.
+                        const forgeables = Math.min(...line.tiers.map(cid => {
+                          const owned = stockOf(cid);
+                          const par = cc[cid]?.qty?.[line.gift] ?? 0;
+                          return owned === null || par === 0 ? Infinity : Math.floor(owned / par);
+                        }));
+                        if (!isFinite(forgeables)) return null;
+                        return (
+                          <div style={{ marginTop: 5, fontSize: "11px", color: forgeables > 0 ? "#4ade80" : "rgba(226,201,126,0.45)" }}>
+                            {forgeables > 0
+                              ? NX({ fr: `🔨 ${forgeables} ${cc[line.gift]?.name ?? line.gift} forgeable(s) maintenant`,
+                                     en: `🔨 ${forgeables} ${cc[line.gift]?.name ?? line.gift} craftable now` })
+                              : NX({ fr: "Pas encore forgeable — le palier le plus court commande.",
+                                     en: "Not craftable yet — the shortest tier is the binding one." })}
+                          </div>
+                        );
+                      })()}
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function CadencesTab({ stocks = {}, acctGates = null }) {
   const t = useT();
   // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
@@ -4085,6 +4231,13 @@ export default function GW2LegendaryTracker() {
   // null partout tant qu'aucune synchro n'a eu lieu — et null veut dire
   // "indecidable", jamais "non". La nuance decide si une collection est
   // signalee ou masquee.
+  // Cibles de la matrice des trophees. Independantes de la selection de
+  // l'onglet Timegates : on peut viser Vision au quotidien et chiffrer un set
+  // d'Obsidienne en parallele.
+  const [t6Targets, setT6Targets] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_t6_targets") ?? "{}") ?? {}; } catch (_) { return {}; }
+  });
+  useEffect(() => { try { localStorage.setItem("gw2_t6_targets", JSON.stringify(t6Targets)); } catch (_) {} }, [t6Targets]);
   const [acctGates, setAcctGates] = useState(() => {
     try { return JSON.parse(localStorage.getItem("gw2_gates") ?? "null"); } catch { return null; }
   });
@@ -4615,7 +4768,6 @@ export default function GW2LegendaryTracker() {
     const newLeg = LEGENDARIES[selectedLeg];
     const newIsWeekly = newLeg?.resetType === "weekly";
 
-    setActiveTab((selectedLeg === "conflux" || selectedLeg === "warbringer" || selectedLeg === "strife_unending") ? "wvw" : (selectedLeg === "prismatic" ? "achievements" : (newLeg?.isArmorSet ? "pieces" : (selectedLeg === "weapons" ? "weapons" : (selectedLeg === "trinkets" ? "trinkets" : (leg?.raidAchievements ? "raids" : (selectedLeg === "t6" ? "currencies" : "metas")))))));
     setCurrencies({});
     setDailyChecked({});
     setWeeklyChecked({});
@@ -4923,6 +5075,18 @@ export default function GW2LegendaryTracker() {
         return { id, label: NX(contract.tabs[id].label) + (n ? ` (${n})` : "") };
       });
   })();
+
+  // L'onglet actif doit toujours exister dans le contrat. La chaine de
+  // conditions qui posait l'onglet par defaut visait encore wvw, achievements,
+  // raids, currencies et metas — cinq identifiants supprimes a la passe
+  // finale. Selectionner un legendaire posait donc un onglet inexistant, et la
+  // zone de contenu restait vide jusqu'a ce que le joueur clique lui-meme.
+  // Cet effet retombe sur le premier onglet ouvert, et couvre aussi le cas ou
+  // un onglet disparait sans changement de legendaire.
+  useEffect(() => {
+    if (tabs.length === 0) return;
+    if (!tabs.some(t => t.id === activeTab)) setActiveTab(tabs[0].id);
+  }, [tabs.map(t => t.id).join("|"), activeTab]);
 
   // Guard — évite le render pendant la transition de légendaire
   if (!leg && !isGrandTotal) return (
@@ -6791,7 +6955,13 @@ export default function GW2LegendaryTracker() {
         );
       })()}
 
-      {activeTab === "components" && (
+      {activeTab === "components" && selectedLeg === "t6" && (
+        <TabErrorBoundary>
+          <TrophyMatrix stocks={gtStocks} selectedIds={t6Targets} onTargets={setT6Targets} />
+        </TabErrorBoundary>
+      )}
+
+      {activeTab === "components" && selectedLeg !== "t6" && (
         <div>
           {!leg?.raidAchievements && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>

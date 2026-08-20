@@ -1006,7 +1006,8 @@
   "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait.",
   "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee.",
   "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus.",
-  "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles."
+  "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles.",
+  "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres."
  },
  "meta_events": {
   "vb": {
@@ -2074,7 +2075,8 @@
     "gift_of_dust": 50
    },
    "kind": "acquire",
-   "best": "drop"
+   "best": "drop",
+   "tier": "T3"
   },
   "dust_luminous": {
    "name": "Pile of Luminous Dust",
@@ -2121,7 +2123,8 @@
     "gift_of_dust": 50
    },
    "kind": "acquire",
-   "best": "drop"
+   "best": "drop",
+   "tier": "T4"
   },
   "dust_incandescent": {
    "name": "Pile of Incandescent Dust",
@@ -2180,7 +2183,8 @@
     "gift_of_dust": 250
    },
    "kind": "acquire",
-   "best": "drop"
+   "best": "drop",
+   "tier": "T5"
   },
   "dust_crystalline": {
    "name": "Pile of Crystalline Dust",
@@ -2247,7 +2251,8 @@
     "verified": true,
     "checked": "2026-08-13",
     "ref": "sources declarees du composant"
-   }
+   },
+   "tier": "T6"
   },
   "icy_runestone": {
    "name": "Icy Runestone",
@@ -9789,7 +9794,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_venom"
-   ]
+   ],
+   "tier": "T6"
   },
   "armored_scale": {
    "name": "Armored Scale",
@@ -9850,7 +9856,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_scales"
-   ]
+   ],
+   "tier": "T6"
   },
   "vial_of_powerful_blood": {
    "name": "Vial of Powerful Blood",
@@ -9911,7 +9918,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_blood"
-   ]
+   ],
+   "tier": "T6"
   },
   "elaborate_totem": {
    "name": "Elaborate Totem",
@@ -9972,7 +9980,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_totems"
-   ]
+   ],
+   "tier": "T6"
   },
   "vicious_claw": {
    "name": "Vicious Claw",
@@ -10033,7 +10042,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_claws"
-   ]
+   ],
+   "tier": "T6"
   },
   "vicious_fang": {
    "name": "Vicious Fang",
@@ -10094,7 +10104,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_fangs"
-   ]
+   ],
+   "tier": "T6"
   },
   "ancient_bone": {
    "name": "Ancient Bone",
@@ -10155,7 +10166,8 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "gift_of_bones"
-   ]
+   ],
+   "tier": "T6"
   },
   "druid_runestone": {
    "name": "Druid Runestone",
@@ -21215,5 +21227,135 @@
     "en": "Removed at step 4: its daily yield now lives in cadence, with per_character on winterberries and Orrian pearls."
    }
   }
+ },
+ "trophy_matrix": {
+  "note": {
+   "fr": "Les 8 lignes de trophées fins et leurs 4 paliers, dans l'ordre de la recette (T6, T5, T4, T3). Sert à la matrice de l'onglet T6. Cette table vit ici et non dans le JSX : une liste d'identifiants écrite dans le rendu est exactement ce que tab_contract a supprimé.",
+   "en": "The 8 fine trophy lines and their 4 tiers, in recipe order (T6, T5, T4, T3). Feeds the T6 tab matrix. This table lives here rather than in the JSX: a list of ids written into the render is exactly what tab_contract removed."
+  },
+  "tier_labels": [
+   {
+    "fr": "T6",
+    "en": "T6"
+   },
+   {
+    "fr": "T5",
+    "en": "T5"
+   },
+   {
+    "fr": "T4",
+    "en": "T4"
+   },
+   {
+    "fr": "T3",
+    "en": "T3"
+   }
+  ],
+  "lines": [
+   {
+    "gift": "gift_of_blood",
+    "label": {
+     "fr": "Sang",
+     "en": "Blood"
+    },
+    "tiers": [
+     "vial_of_powerful_blood",
+     "vial_of_potent_blood",
+     "vial_of_thick_blood",
+     "vial_of_blood"
+    ]
+   },
+   {
+    "gift": "gift_of_venom",
+    "label": {
+     "fr": "Venin",
+     "en": "Venom"
+    },
+    "tiers": [
+     "powerful_venom_sac",
+     "potent_venom_sac",
+     "full_venom_sac",
+     "venom_sac"
+    ]
+   },
+   {
+    "gift": "gift_of_totems",
+    "label": {
+     "fr": "Totems",
+     "en": "Totems"
+    },
+    "tiers": [
+     "elaborate_totem",
+     "intricate_totem",
+     "engraved_totem",
+     "totem"
+    ]
+   },
+   {
+    "gift": "gift_of_dust",
+    "label": {
+     "fr": "Poussière",
+     "en": "Dust"
+    },
+    "tiers": [
+     "dust_crystalline",
+     "dust_incandescent",
+     "dust_luminous",
+     "dust_radiant"
+    ]
+   },
+   {
+    "gift": "gift_of_claws",
+    "label": {
+     "fr": "Griffes",
+     "en": "Claws"
+    },
+    "tiers": [
+     "vicious_claw",
+     "large_claw",
+     "sharp_claw",
+     "claw"
+    ]
+   },
+   {
+    "gift": "gift_of_scales",
+    "label": {
+     "fr": "Écailles",
+     "en": "Scales"
+    },
+    "tiers": [
+     "armored_scale",
+     "large_scale",
+     "smooth_scale",
+     "scale"
+    ]
+   },
+   {
+    "gift": "gift_of_bones",
+    "label": {
+     "fr": "Os",
+     "en": "Bones"
+    },
+    "tiers": [
+     "ancient_bone",
+     "large_bone",
+     "heavy_bone",
+     "bone"
+    ]
+   },
+   {
+    "gift": "gift_of_fangs",
+    "label": {
+     "fr": "Crocs",
+     "en": "Fangs"
+    },
+    "tiers": [
+     "vicious_fang",
+     "large_fang",
+     "sharp_fang",
+     "fang"
+    ]
+   }
+  ]
  }
 }
