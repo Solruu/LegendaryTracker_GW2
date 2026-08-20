@@ -1530,13 +1530,9 @@ const SOURCES_DB = {
       },
       "conflux": {
         "clovers": 77,
-        "coins": null,
+        "coins": 250,
         "ectos": 250,
-        "obsidian": 250,
-        "coins_note": {
-          "fr": "⚠ A verifier : les colifichets batis sur un Mystic Tribute consomment 250 Mystic Coins. La recette de Conflux n'a pas ete confirmee, la valeur reste donc a null plutot qu'estimee.",
-          "en": "⚠ To verify: trinkets built on a Mystic Tribute consume 250 Mystic Coins. Conflux's recipe has not been confirmed, so the value stays null rather than guessed."
-        }
+        "obsidian": 250
       },
       "warbringer": {
         "clovers": 77,
@@ -1551,7 +1547,7 @@ const SOURCES_DB = {
         "obsidian": 250
       },
       "selachimorpha": {
-        "clovers": 10,
+        "clovers": 55,
         "coins": null,
         "ectos": null,
         "obsidian": 250
@@ -1767,7 +1763,8 @@ const SOURCES_DB = {
     "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement.",
     "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale.",
     "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas.",
-    "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer."
+    "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer.",
+    "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait."
   },
   "meta_events": {
     "vb": {
@@ -6198,13 +6195,20 @@ const SOURCES_DB = {
         "aetheric_anchor": 4,
         "legendary_rune": 1,
         "legendary_sigil": 1,
-        "legendary_relic": 1
+        "legendary_relic": 1,
+        "selachimorpha": 2
       },
       "kind": "advanced_craft",
       "recipe": {
         "fr": "MF : 1× de chacun des 4 gifts (Blood, Venom, Totems, Dust). Lyhr, a la Tour du sorcier, propose aussi de l'assembler contre un surcout.",
         "en": "MF: 1x of each of the 4 gifts (Blood, Venom, Totems, Dust). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
-      }
+      },
+      "note_selachimorpha": {
+        "fr": "Selachimorpha consomme 2 gifts condenses de chaque via son Gift of the Seas, mais AUCUN Mystic Tribute : elle demande donc 200 de chacun des 8 trophees T6 sans les 250 Mystic Coins. Seul colifichet du fichier dans ce cas.",
+        "en": "Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
+      },
+      "checked": "2026-08-20",
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
     },
     "gift_of_condensed_might": {
       "name": "Gift of Condensed Might",
@@ -6264,13 +6268,16 @@ const SOURCES_DB = {
         "aetheric_anchor": 4,
         "legendary_rune": 1,
         "legendary_sigil": 1,
-        "legendary_relic": 1
+        "legendary_relic": 1,
+        "selachimorpha": 2
       },
       "kind": "advanced_craft",
       "recipe": {
         "fr": "MF : 1× de chacun des 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, a la Tour du sorcier, propose aussi de l'assembler contre un surcout.",
         "en": "MF: 1x of each of the 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
-      }
+      },
+      "checked": "2026-08-20",
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
     },
     "chak_egg": {
       "name": "Chak Egg",
@@ -6733,7 +6740,8 @@ const SOURCES_DB = {
         "transcendence": 1,
         "stella_radians": 1,
         "aurora": 1,
-        "vision": 1
+        "vision": 1,
+        "conflux": 1
       },
       "note": {
         "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -6743,7 +6751,9 @@ const SOURCES_DB = {
       "recipe": {
         "fr": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ Les 77 trefles rapportent eux-memes 249 Mystic Coins de plus : compter ~499 pieces au total, alors que les recompenses de connexion n'en donnent plus depuis 2023.",
         "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ The 77 clovers themselves pull in another 249 Mystic Coins: budget ~499 total, while login rewards have granted none since 2023."
-      }
+      },
+      "checked": "2026-08-20",
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
     },
     "mystic_coin": {
       "name": "Mystic Coin",
@@ -6884,7 +6894,8 @@ const SOURCES_DB = {
         "coalescence": 250,
         "warbringer": 250,
         "aurora": 250,
-        "vision": 250
+        "vision": 250,
+        "conflux": 250
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7002,7 +7013,9 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-13",
         "ref": "wiki:Mystic_Coin#Acquisition"
-      }
+      },
+      "checked": "2026-08-20",
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
