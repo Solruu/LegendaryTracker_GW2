@@ -879,6 +879,115 @@ def check_tab_contract(data, errors, warnings):
             )
 
 
+# Suffixes de cle admis dans qty. Les deux premiers sont lus par le JSX ; les
+# deux suivants sont declares mais pas encore branches, et l'audit le rappelle.
+QTY_SUFFIXES = ("__per_piece", "__full_set", "__per_unit", "__onetime")
+QTY_SUFFIXES_RENDUS = ("__per_piece", "__full_set")
+
+
+def check_qty_levels(data, errors, warnings):
+    """Une quantite ne veut pas dire la meme chose selon sa cle.
+
+    Dans qty, une cle qui designe un COMPOSANT est une quantite PAR PARENT, que
+    la cascade multiplie. Une cle qui designe un LEGENDAIRE est un total deja
+    aplati, lu tel quel. Meme syntaxe, deux sens : c'est la source des erreurs
+    de facteur constatees sur ce projet (Dragonite 250 au lieu de 100,
+    reliques d'Ad Infinitum a un facteur 7, Branded Mass 300 au lieu de 660).
+    Le nom d'une cle inconnue des deux mondes est une faute de frappe qui fait
+    disparaitre une exigence en silence.
+    """
+    comps = data.get("craft_components", {})
+    legs = set(data.get("legendaries", {}))
+    for family in ("gen1_weapons", "gen2_weapons", "gen3_weapons", "armor_sets"):
+        node = data.get(family)
+        if isinstance(node, dict):
+            legs |= set(node)
+    # Pseudo-legendaires du selecteur, sans entree propre cote sources.
+    legs |= {"t6", "weapons", "trinkets", "upgrades", "prismatic", "obsidian",
+             "gen1_all", "gen2_all", "gen3_all", "legendary_trinkets"}
+
+    for cid, comp in sorted(comps.items()):
+        qty = comp.get("qty")
+        if not isinstance(qty, dict):
+            continue
+        par_parent, aplatis, inconnues = [], [], []
+        for key, val in qty.items():
+            if isinstance(val, str):
+                continue  # quantite variable, affichee telle quelle
+            if not isinstance(val, (int, float)):
+                errors.append(f"craft_components/{cid} : qty['{key}'] n'est pas un nombre")
+                continue
+            # Suffixes du calcul des sets d'armure, resolus avant de trancher.
+            base = key
+            for suffix in QTY_SUFFIXES:
+                if base.endswith(suffix):
+                    base = base[: -len(suffix)]
+            key = base
+            if key in comps:
+                par_parent.append(key)
+            elif key in legs or key.startswith(("gen1_", "gen2_", "gen3_", "armor_")):
+                aplatis.append(key)
+            else:
+                inconnues.append(key)
+        for key in sorted(inconnues):
+            errors.append(
+                f"craft_components/{cid} : qty['{key}'] ne designe ni un composant ni un "
+                "legendaire connu — l'exigence ne sera comptee nulle part"
+            )
+        if par_parent and aplatis:
+            warnings.append(
+                f"craft_components/{cid} : qty melange {len(par_parent)} cle(s) par parent "
+                f"({', '.join(sorted(par_parent)[:3])}) et {len(aplatis)} total(aux) aplati(s) "
+                f"({', '.join(sorted(aplatis)[:3])}) — deux sens sous une seule syntaxe, a "
+                "trancher a la passe finale"
+            )
+
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if jsx:
+        text = jsx[-1].read_text(encoding="utf-8")
+        for suffix in QTY_SUFFIXES:
+            porteurs = [c for c, comp in comps.items()
+                        if isinstance(comp.get("qty"), dict)
+                        and any(k.endswith(suffix) for k in comp["qty"])]
+            if porteurs and suffix not in text:
+                warnings.append(
+                    f"suffixe de qty '{suffix}' : {len(porteurs)} composant(s) l'utilisent "
+                    f"(ex. {porteurs[0]}), aucune lecture dans {jsx[-1].name} — ces exigences "
+                    "ne sont comptees nulle part"
+                )
+
+    # Un identifiant present des deux cotes est un piege arme : la cascade lit la
+    # cle comme un composant, la boucle de depart la lit comme un legendaire. Tant
+    # que le composant homonyme reste a zero, rien ne se voit ; le jour ou il
+    # recoit une quantite, chaque exigence est comptee deux fois.
+    for cid in sorted(set(comps) & legs):
+        citants = sorted(c for c, comp in comps.items()
+                         if isinstance(comp.get("qty"), dict) and cid in comp["qty"])
+        if citants:
+            warnings.append(
+                f"'{cid}' existe a la fois comme composant et comme legendaire, et {len(citants)} "
+                f"composant(s) le citent dans qty ({', '.join(citants[:3])}) — la valeur est lue "
+                "comme un total aplati aujourd'hui, mais la cascade la relira comme une quantite "
+                "par parent des que le composant homonyme portera un total"
+            )
+
+    # Une chaine doit se refermer : tout parent cite doit exister, et needed_for
+    # doit refleter le meme lien que qty, sans quoi l'arbre des gifts affiche un
+    # composant que le calcul ignore, ou l'inverse.
+    for cid, comp in sorted(comps.items()):
+        for key in (comp.get("qty") or {}):
+            if key in comps and key not in legs:
+                nf = comp.get("needed_for") or []
+                if key not in nf:
+                    warnings.append(
+                        f"craft_components/{cid} : qty pointe vers '{key}' mais needed_for ne le "
+                        "cite pas — l'arbre des gifts et le calcul divergent"
+                    )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -961,7 +1070,10 @@ def main() -> int:
     # 16. Contrat d'onglets : conditions lisibles, ordre complet
     check_tab_contract(data, errors, warnings)
 
-    # 17. Integrite de chaque entree de meta_eligible
+    # 17. Niveaux de quantite : par parent ou total aplati
+    check_qty_levels(data, errors, warnings)
+
+    # 18. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

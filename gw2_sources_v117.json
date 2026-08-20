@@ -995,7 +995,8 @@
   "changelog_v113": "Identifiants Druid Runestone (81140) et fragment (81111) confirmes via /v2/items. Ancient Cipher ajoute avec deux drapeaux nouveaux sur cadence.sources[] : rng, qui exclut la source de la projection de delai sans masquer son plafond, et per_character, qui signale un plafond par personnage la ou le schema est implicitement par compte. Les deux restent a lire cote JSX (passe finale). Nettoyage : tier et weight supprimes de antique_summoning_stone, ils repetaient cost sans etre lus.",
   "changelog_v114": "Etape 3 : les 60 blocs unlock quittent le JSX pour collection_unlocks, indexe par achievementId sur le modele d'achievement_notes. Les 7 entrees manquantes sont comblees (6 Arcanum d'Obsidienne + Prismatic). Nouveau champ gate : condition testable contre l'API, attachee a 11 collections, la ou la prose seule ne permettait aucun filtrage.",
   "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide.",
-  "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement."
+  "changelog_v116": "Etape 5 : tab_contract declare l'ouverture de chaque onglet a partir de la donnee portee par le legendaire, au lieu des listes d'identifiants du JSX. Douze onglets deviennent huit : achievements, raids et collections fusionnent en collections ; metas et wvw en activities ; currencies devient components ; chars disparait. Les conditions ont ete verifiees equivalentes aux regles actuelles sur les 21 legendaires, sauf guide, corrige volontairement.",
+  "changelog_v117": "Etape 5b : la chaine T6 est complete, des trophees bruts au Mystic Tribute. 8 gifts intermediaires et 21 paliers inferieurs crees, rattaches par la cascade existante. Trois corrections : gift_of_condensed_magic/might portaient la recette du Gift of Magic (250 T6 bruts au lieu de 100 T6 + 250 T5 + 50 T4 + 50 T3 via les gifts) ; les 32 armes gen3 demandaient 2 gifts condenses au lieu d'un seul ; Aurora ne figurait pas parmi les consommateurs de Mystic Tribute. Normalisation : les cles relic__per_unit, rune__per_unit, sigil__per_unit et obsidian_skins_onetime designaient des legendaires sous un nom inexistant et n'etaient lues par aucun chemin de rendu ; renommees sur la convention <legendaire>__<suffixe>. Le JSX ne sait toujours pas lire __per_unit ni __onetime : l'audit le signale jusqu'a la passe finale."
  },
  "meta_events": {
   "vb": {
@@ -2032,26 +2033,36 @@
    "name": "Pile of Radiant Dust",
    "apiId": 24274,
    "needed_for": [
-    "gift_of_energy"
+    "gift_of_energy",
+    "gift_of_dust"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Drop générique sur mobs lvl80 — all maps.",
-      "en": "Generic drop from lvl80 mobs - all maps."
-     }
+      "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
     },
     {
-     "type": "tp",
+     "type": "trading_post",
      "tip": {
-      "fr": "Achat au TP — prix très bas.",
-      "en": "Buy on TP — very low price."
-     }
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_dust": 50
+   },
    "kind": "acquire",
    "best": "drop"
   },
@@ -2059,26 +2070,46 @@
    "name": "Pile of Luminous Dust",
    "apiId": 24275,
    "needed_for": [
-    "gift_of_energy"
+    "gift_of_energy",
+    "gift_of_dust"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Drop générique sur mobs lvl80 — all maps.",
-      "en": "Generic drop from lvl80 mobs - all maps."
-     }
+      "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
     },
     {
-     "type": "tp",
+     "type": "trading_post",
      "tip": {
-      "fr": "Achat au TP — prix bas.",
-      "en": "Buy on TP — low price."
-     }
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_dust": 50
+   },
    "kind": "acquire",
    "best": "drop"
   },
@@ -2086,26 +2117,58 @@
    "name": "Pile of Incandescent Dust",
    "apiId": 24276,
    "needed_for": [
-    "gift_of_energy"
+    "gift_of_energy",
+    "gift_of_dust"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Drop générique sur mobs lvl80 — all maps.",
-      "en": "Generic drop from lvl80 mobs - all maps."
-     }
+      "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
     },
     {
-     "type": "tp",
+     "type": "vendor",
+     "map": "LW4",
      "tip": {
-      "fr": "Achat au TP — prix modéré.",
-      "en": "Buy on TP — moderate price."
-     }
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_dust": 250
+   },
    "kind": "acquire",
    "best": "drop"
   },
@@ -2113,27 +2176,58 @@
    "name": "Pile of Crystalline Dust",
    "apiId": 24277,
    "needed_for": [
-    "gift_of_energy"
+    "gift_of_energy",
+    "gift_of_dust"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Drop sur mobs lvl80 — plus rare que les autres tiers.",
-      "en": "Drops from lvl80 mobs - rarer than the other tiers."
-     }
+      "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
     },
     {
-     "type": "tp",
+     "type": "vendor",
+     "map": "LW4",
      "tip": {
-      "fr": "Achat au TP recommandé — meilleur ratio temps/or.",
-      "en": "Buy on TP recommended — best time/gold ratio."
-     }
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_dust": 100
    },
    "kind": "acquire",
    "best": "drop",
@@ -5264,7 +5358,13 @@
    "sources": [
     {
      "type": "mystic_forge",
-     "tip": "MF : 250× Vial of Powerful Blood + 250× Powerful Venom Sac + 250× Elaborate Totem + 250× Pile of Crystalline Dust."
+     "tip": {
+      "fr": "Forge mystique : 1 de chacun des 4 gifts (Blood, Venom, Totems, Dust). ⚠ Corrige le 20/08/2026 : cette entree portait la recette du Gift of Magic (250 trophees T6 bruts), soit 2,5 fois trop de T6 et aucune trace des T5, T4 et T3.",
+      "en": "Mystic Forge: 1 of each of the 4 gifts (Blood, Venom, Totems, Dust). ⚠ Fixed on 2026-08-20: this entry carried the Gift of Magic recipe (250 raw T6 trophies), i.e. 2.5 times too much T6 and no trace of T5, T4 or T3."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Gift_of_Condensed_Magic + capture Antoine 20/08/2026"
     }
    ],
    "qty": {
@@ -5284,22 +5384,22 @@
     "gen2_elegy": 2,
     "gen2_xiuquatl": 2,
     "gen2_reaver_of_the_mists": 2,
-    "gen3_aurenes_fang": 2,
-    "gen3_aurenes_claw": 2,
-    "gen3_aurenes_bite": 2,
-    "gen3_aurenes_weight": 2,
-    "gen3_aurenes_gaze": 2,
-    "gen3_aurenes_insight": 2,
-    "gen3_aurenes_argument": 2,
-    "gen3_aurenes_guard": 2,
-    "gen3_aurenes_persuasion": 2,
-    "gen3_aurenes_voice": 2,
-    "gen3_aurenes_wrath": 2,
-    "gen3_aurenes_reckoning": 2,
-    "gen3_aurenes_scale": 2,
-    "gen3_aurenes_wisdom": 2,
-    "gen3_aurenes_breath": 2,
-    "gen3_aurenes_tenderness": 2,
+    "gen3_aurenes_fang": 1,
+    "gen3_aurenes_claw": 1,
+    "gen3_aurenes_bite": 1,
+    "gen3_aurenes_weight": 1,
+    "gen3_aurenes_gaze": 1,
+    "gen3_aurenes_insight": 1,
+    "gen3_aurenes_argument": 1,
+    "gen3_aurenes_guard": 1,
+    "gen3_aurenes_persuasion": 1,
+    "gen3_aurenes_voice": 1,
+    "gen3_aurenes_wrath": 1,
+    "gen3_aurenes_reckoning": 1,
+    "gen3_aurenes_scale": 1,
+    "gen3_aurenes_wisdom": 1,
+    "gen3_aurenes_breath": 1,
+    "gen3_aurenes_tenderness": 1,
     "perfected_envoy__per_piece": 1,
     "transcendence": 2,
     "stella_radians": 2,
@@ -5308,7 +5408,11 @@
     "legendary_sigil": 1,
     "legendary_relic": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF : 1× de chacun des 4 gifts (Blood, Venom, Totems, Dust). Lyhr, a la Tour du sorcier, propose aussi de l'assembler contre un surcout.",
+    "en": "MF: 1x of each of the 4 gifts (Blood, Venom, Totems, Dust). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
+   }
   },
   "gift_of_condensed_might": {
    "name": "Gift of Condensed Might",
@@ -5320,7 +5424,13 @@
    "sources": [
     {
      "type": "mystic_forge",
-     "tip": "MF : 250× Vicious Claw + 250× Large Fang + 250× Ancient Bone + 250× Armored Scale."
+     "tip": {
+      "fr": "Forge mystique : 1 de chacun des 4 gifts (Claws, Scales, Bones, Fangs). ⚠ Corrige le 20/08/2026 : cette entree portait la recette du Gift of Magic (250 trophees T6 bruts), soit 2,5 fois trop de T6 et aucune trace des T5, T4 et T3.",
+      "en": "Mystic Forge: 1 of each of the 4 gifts (Claws, Scales, Bones, Fangs). ⚠ Fixed on 2026-08-20: this entry carried the Gift of Magic recipe (250 raw T6 trophies), i.e. 2.5 times too much T6 and no trace of T5, T4 or T3."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Gift_of_Condensed_Magic + capture Antoine 20/08/2026"
     }
    ],
    "qty": {
@@ -5340,22 +5450,22 @@
     "gen2_elegy": 2,
     "gen2_xiuquatl": 2,
     "gen2_reaver_of_the_mists": 2,
-    "gen3_aurenes_fang": 2,
-    "gen3_aurenes_claw": 2,
-    "gen3_aurenes_bite": 2,
-    "gen3_aurenes_weight": 2,
-    "gen3_aurenes_gaze": 2,
-    "gen3_aurenes_insight": 2,
-    "gen3_aurenes_argument": 2,
-    "gen3_aurenes_guard": 2,
-    "gen3_aurenes_persuasion": 2,
-    "gen3_aurenes_voice": 2,
-    "gen3_aurenes_wrath": 2,
-    "gen3_aurenes_reckoning": 2,
-    "gen3_aurenes_scale": 2,
-    "gen3_aurenes_wisdom": 2,
-    "gen3_aurenes_breath": 2,
-    "gen3_aurenes_tenderness": 2,
+    "gen3_aurenes_fang": 1,
+    "gen3_aurenes_claw": 1,
+    "gen3_aurenes_bite": 1,
+    "gen3_aurenes_weight": 1,
+    "gen3_aurenes_gaze": 1,
+    "gen3_aurenes_insight": 1,
+    "gen3_aurenes_argument": 1,
+    "gen3_aurenes_guard": 1,
+    "gen3_aurenes_persuasion": 1,
+    "gen3_aurenes_voice": 1,
+    "gen3_aurenes_wrath": 1,
+    "gen3_aurenes_reckoning": 1,
+    "gen3_aurenes_scale": 1,
+    "gen3_aurenes_wisdom": 1,
+    "gen3_aurenes_breath": 1,
+    "gen3_aurenes_tenderness": 1,
     "perfected_envoy__per_piece": 1,
     "transcendence": 2,
     "stella_radians": 2,
@@ -5364,7 +5474,11 @@
     "legendary_sigil": 1,
     "legendary_relic": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF : 1× de chacun des 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, a la Tour du sorcier, propose aussi de l'assembler contre un surcout.",
+    "en": "MF: 1x of each of the 4 gifts (Claws, Scales, Bones, Fangs). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
+   }
   },
   "chak_egg": {
    "name": "Chak Egg",
@@ -5825,13 +5939,18 @@
     "gen2_xiuquatl": 1,
     "gen2_reaver_of_the_mists": 1,
     "transcendence": 1,
-    "stella_radians": 1
+    "stella_radians": 1,
+    "aurora": 1
    },
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
     "en": "Shares Mystic Clovers/Coins with the gen1 Gift of Fortune. ⚠ Mystic Coins no longer come from login rewards (system retired in 2023, replaced by the Wizard's Vault)."
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ Les 77 trefles rapportent eux-memes 249 Mystic Coins de plus : compter ~499 pieces au total, alors que les recompenses de connexion n'en donnent plus depuis 2023.",
+    "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ The 77 clovers themselves pull in another 249 Mystic Coins: budget ~499 total, while login rewards have granted none since 2023."
+   }
   },
   "mystic_coin": {
    "name": "Mystic Coin",
@@ -7154,7 +7273,7 @@
     "oneiros_spun_armor"
    ],
    "qty": {
-    "obsidian_skins_onetime": 12
+    "obsidian__onetime": 12
    },
    "farmable": true,
    "recipe": "Craft 400 : 1× Amalgamated Rift Essence + 1× Mystic Clover",
@@ -7957,7 +8076,7 @@
     "legendary_rune"
    ],
    "qty": {
-    "rune__per_unit": 1
+    "legendary_rune__per_unit": 1
    },
    "farmable": true,
    "recipe": "MF : 50× Mystic Aspect + 20× Mystic Clover + 100× Glob of Ectoplasm + 50× Obsidian Shard",
@@ -7970,7 +8089,7 @@
     "legendary_sigil"
    ],
    "qty": {
-    "sigil__per_unit": 1
+    "legendary_sigil__per_unit": 1
    },
    "farmable": true,
    "recipe": "MF : 75× Mystic Mote + 30× Mystic Clover + 150× Glob of Ectoplasm + 75× Obsidian Shard",
@@ -8047,7 +8166,7 @@
     "gift_of_relics"
    ],
    "qty": {
-    "relic__per_unit": 25
+    "legendary_relic__per_unit": 25
    },
    "farmable": true,
    "recipe": "MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — output 1-5 (chance rare ×5)",
@@ -8061,7 +8180,7 @@
     "legendary_relic"
    ],
    "qty": {
-    "relic__per_unit": 1
+    "legendary_relic__per_unit": 1
    },
    "farmable": true,
    "recipe": "MF : 25× Mystic Facet + 25× Mystic Clover + 150× Glob of Ectoplasm + 1× Gift of Research",
@@ -8562,7 +8681,7 @@
     "gift_of_runes"
    ],
    "qty": {
-    "rune__per_unit": 50
+    "legendary_rune__per_unit": 50
    },
    "farmable": true,
    "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
@@ -8575,7 +8694,7 @@
     "gift_of_sigils"
    ],
    "qty": {
-    "sigil__per_unit": 75
+    "legendary_sigil__per_unit": 75
    },
    "farmable": true,
    "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
@@ -9593,182 +9712,427 @@
    "apiId": 24283,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_venom": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_venom"
+   ]
   },
   "armored_scale": {
    "name": "Armored Scale",
    "apiId": 24289,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_scales": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_scales"
+   ]
   },
   "vial_of_powerful_blood": {
    "name": "Vial of Powerful Blood",
    "apiId": 24295,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_blood": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_blood"
+   ]
   },
   "elaborate_totem": {
    "name": "Elaborate Totem",
    "apiId": 24300,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_totems": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_totems"
+   ]
   },
   "vicious_claw": {
    "name": "Vicious Claw",
    "apiId": 24351,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_claws": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_claws"
+   ]
   },
   "vicious_fang": {
    "name": "Vicious Fang",
    "apiId": 24357,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_fangs": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_fangs"
+   ]
   },
   "ancient_bone": {
    "name": "Ancient Bone",
    "apiId": 24358,
    "kind": "material",
    "qty": {
-    "t6": 200
+    "t6": 200,
+    "gift_of_bones": 100
    },
    "farmable": true,
    "sources": [
     {
      "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Matériau T6 : tombe sur les ennemis niveau 80 et se raffine depuis le T5. Sans plafond.",
-      "en": "T6 material: drops from level-80 enemies and refines up from T5. No cap."
+      "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
+      "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
      },
      "free_repeatable": true,
-     "cadence": "à volonté",
      "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
     }
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "gift_of_bones"
+   ]
   },
   "druid_runestone": {
    "name": "Druid Runestone",
@@ -9922,6 +10286,1225 @@
    "verified": true,
    "checked": "2026-08-20",
    "ref": "gw2_legendary_tracker_v150 note perfected_envoy"
+  },
+  "gift_of_blood": {
+   "name": "Gift of Blood",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_magic": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_magic"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Vial of Powerful Blood + 250× Vial of Potent Blood + 50× Vial of Thick Blood + 50× Vial of Blood.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Vial of Powerful Blood + 250x Vial of Potent Blood + 50x Vial of Thick Blood + 50x Vial of Blood."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "vial_of_potent_blood": {
+   "name": "Vial of Potent Blood",
+   "apiId": 24294,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_blood": 250
+   },
+   "needed_for": [
+    "gift_of_blood"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "vial_of_thick_blood": {
+   "name": "Vial of Thick Blood",
+   "apiId": 24293,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_blood": 50
+   },
+   "needed_for": [
+    "gift_of_blood"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "vial_of_blood": {
+   "name": "Vial of Blood",
+   "apiId": 24292,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_blood": 50
+   },
+   "needed_for": [
+    "gift_of_blood"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_venom": {
+   "name": "Gift of Venom",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_magic": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_magic"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Powerful Venom Sac + 250× Potent Venom Sac + 50× Full Venom Sac + 50× Venom Sac.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Powerful Venom Sac + 250x Potent Venom Sac + 50x Full Venom Sac + 50x Venom Sac."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "potent_venom_sac": {
+   "name": "Potent Venom Sac",
+   "apiId": 24282,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_venom": 250
+   },
+   "needed_for": [
+    "gift_of_venom"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "full_venom_sac": {
+   "name": "Full Venom Sac",
+   "apiId": 24281,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_venom": 50
+   },
+   "needed_for": [
+    "gift_of_venom"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "venom_sac": {
+   "name": "Venom Sac",
+   "apiId": 24280,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_venom": 50
+   },
+   "needed_for": [
+    "gift_of_venom"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_totems": {
+   "name": "Gift of Totems",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_magic": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_magic"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Elaborate Totem + 250× Intricate Totem + 50× Engraved Totem + 50× Totem.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Elaborate Totem + 250x Intricate Totem + 50x Engraved Totem + 50x Totem."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "intricate_totem": {
+   "name": "Intricate Totem",
+   "apiId": 24299,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_totems": 250
+   },
+   "needed_for": [
+    "gift_of_totems"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "engraved_totem": {
+   "name": "Engraved Totem",
+   "apiId": 24363,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_totems": 50
+   },
+   "needed_for": [
+    "gift_of_totems"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "totem": {
+   "name": "Totem",
+   "apiId": 24298,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_totems": 50
+   },
+   "needed_for": [
+    "gift_of_totems"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_dust": {
+   "name": "Gift of Dust",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_magic": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_magic"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Pile of Crystalline Dust + 250× Pile of Incandescent Dust + 50× Pile of Luminous Dust + 50× Pile of Radiant Dust.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Pile of Crystalline Dust + 250x Pile of Incandescent Dust + 50x Pile of Luminous Dust + 50x Pile of Radiant Dust."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "gift_of_claws": {
+   "name": "Gift of Claws",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_might": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_might"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Vicious Claw + 250× Large Claw + 50× Sharp Claw + 50× Claw.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Vicious Claw + 250x Large Claw + 50x Sharp Claw + 50x Claw."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "large_claw": {
+   "name": "Large Claw",
+   "apiId": 24350,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_claws": 250
+   },
+   "needed_for": [
+    "gift_of_claws"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "sharp_claw": {
+   "name": "Sharp Claw",
+   "apiId": 24349,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_claws": 50
+   },
+   "needed_for": [
+    "gift_of_claws"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "claw": {
+   "name": "Claw",
+   "apiId": 24348,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_claws": 50
+   },
+   "needed_for": [
+    "gift_of_claws"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_scales": {
+   "name": "Gift of Scales",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_might": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_might"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Armored Scale + 250× Large Scale + 50× Smooth Scale + 50× Scale.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Armored Scale + 250x Large Scale + 50x Smooth Scale + 50x Scale."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "large_scale": {
+   "name": "Large Scale",
+   "apiId": 24288,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_scales": 250
+   },
+   "needed_for": [
+    "gift_of_scales"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "smooth_scale": {
+   "name": "Smooth Scale",
+   "apiId": 24287,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_scales": 50
+   },
+   "needed_for": [
+    "gift_of_scales"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "scale": {
+   "name": "Scale",
+   "apiId": 24286,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_scales": 50
+   },
+   "needed_for": [
+    "gift_of_scales"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_bones": {
+   "name": "Gift of Bones",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_might": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_might"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Ancient Bone + 250× Large Bone + 50× Heavy Bone + 50× Bone.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Ancient Bone + 250x Large Bone + 50x Heavy Bone + 50x Bone."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "large_bone": {
+   "name": "Large Bone",
+   "apiId": 24341,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_bones": 250
+   },
+   "needed_for": [
+    "gift_of_bones"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "heavy_bone": {
+   "name": "Heavy Bone",
+   "apiId": 24345,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_bones": 50
+   },
+   "needed_for": [
+    "gift_of_bones"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "bone": {
+   "name": "Bone",
+   "apiId": 24344,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_bones": 50
+   },
+   "needed_for": [
+    "gift_of_bones"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "gift_of_fangs": {
+   "name": "Gift of Fangs",
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "gift_of_condensed_might": 1
+   },
+   "needed_for": [
+    "gift_of_condensed_might"
+   ],
+   "recipe": {
+    "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Vicious Fang + 250× Large Fang + 50× Sharp Fang + 50× Fang.",
+    "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman), recipe bought from Miyani: 100x Vicious Fang + 250x Large Fang + 50x Sharp Fang + 50x Fang."
+   },
+   "note": {
+    "fr": "⚠ Le T6 n'est que 100 sur 450 unites : l'essentiel du volume est en T5, et le T5 coute une fraction du T6. Raisonner en T6 seuls fait rater les trois quarts de la facture.",
+    "en": "⚠ T6 is only 100 units out of 450: most of the volume sits in T5, and T5 costs a fraction of T6. Thinking in T6 alone misses three quarters of the bill."
+   },
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+  },
+  "large_fang": {
+   "name": "Large Fang",
+   "apiId": 24356,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T5",
+   "qty": {
+    "gift_of_fangs": 250
+   },
+   "needed_for": [
+    "gift_of_fangs"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
+      "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "vendor",
+     "map": "LW4",
+     "tip": {
+      "fr": "Trophy Shipments : 250 Magie volatile + 1 po chez les Volatile Magic Collectors de chaque carte LW4. LA source de volume pour les T5 et T6. Eviter les Material Shipments, qui rendent des paliers inferieurs.",
+      "en": "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on every LWS4 map. THE volume source for T5 and T6. Avoid Material Shipments, which yield lower tiers."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "gw2_legendary_tracker_v150 t6_src2"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "sharp_fang": {
+   "name": "Sharp Fang",
+   "apiId": 24355,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T4",
+   "qty": {
+    "gift_of_fangs": 50
+   },
+   "needed_for": [
+    "gift_of_fangs"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
+      "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge depuis le palier inferieur : 250 unites + poussieres + Pierres philosophales. ⚠ Rendement moyen 5 a 12 vers le T6, 7 a 40 vers les paliers 2 a 5 : on met 250 pour en sortir une poignee. A ne faire que si le palier inferieur dort deja dans la banque.",
+      "en": "Forge promotion from the tier below: 250 units + dust + Philosopher's Stones. ⚠ Average yield 5 to 12 toward T6, 7 to 40 toward tiers 2-5: you put in 250 to get a handful out. Only worth it if the lower tier is already idle in the bank."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "wiki:Mystic_Forge/Material_Promotion"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+  },
+  "fang": {
+   "name": "Fang",
+   "apiId": 24354,
+   "kind": "acquire",
+   "farmable": true,
+   "tier": "T3",
+   "qty": {
+    "gift_of_fangs": 50
+   },
+   "needed_for": [
+    "gift_of_fangs"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
+      "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+     },
+     "verified": false,
+     "checked": "2026-08-20",
+     "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir. Les paliers T3 et T4 valent quelques piecettes : les acheter est presque toujours plus rapide que les farmer. Le T6 est l'inverse, et le sang y est le plus cher des huit.",
+      "en": "Trading Post. T3 and T4 are worth coppers: buying them is almost always faster than farming. T6 is the opposite, and blood is the priciest of the eight."
+     },
+     "verified": true,
+     "checked": "2026-08-20",
+     "ref": "structure de prix stable depuis 2015"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-08-20",
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
   }
  },
  "enchaînements_recommandés": {
