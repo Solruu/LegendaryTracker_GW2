@@ -1004,7 +1004,8 @@
   "changelog_v118": "Correctif A : le composant 'coalescence' devient 'coalescence_ring'. Il portait le meme identifiant que le legendaire, ce qui rendait ambigues les neuf references qty['coalescence'] — lues comme un total aplati aujourd'hui, elles auraient ete relues comme des quantites par parent des que le composant homonyme aurait porte un total, doublant chaque exigence. Correctif B : les composants dont un qty pointe vers un parent le citent enfin dans needed_for. Le lien est deduit de qty, pas invente : il existait cote calcul et manquait cote arbre, si bien que la cascade multipliait des quantites que l'affichage ne montrait pas.",
   "changelog_v119": "Les exigences de materiaux transverses (trefles, pieces mystiques, ectoplasmes, eclats d'obsidienne) sont rapatriees de _meta.common_required vers craft_components[].qty : 19 entrees. computeGrandTotal ne lit que qty, si bien que ces exigences etaient comptees a zero — Vision et Aurora affichaient 0 trefle et 0 ecto. Correction confirmee : Aurora consomme un Mystic Tribute, donc 250 Mystic Coins, la ou common_required disait null. 3 conflits de valeur laisses en l'etat, a arbitrer.",
   "changelog_v120": "Conflux consomme un Mystic Tribute (Gift of the World + Mist Band infusee + Mystic Tribute + Gift of Conquering), donc 250 Mystic Coins : la valeur etait laissee a null faute de verification, elle est confirmee. Selachimorpha : 55 trefles confirmes, c'est common_required qui avait tort avec 10 et non qty. Elle consomme en outre 2 Gifts of Condensed Magic et 2 of Condensed Might via son Gift of the Seas, sans Mystic Tribute — 200 de chacun des 8 T6 sans les 250 pieces mystiques, seul cas du fichier. Rien ne le portait.",
-  "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee."
+  "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee.",
+  "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus."
  },
  "meta_events": {
   "vb": {
@@ -5446,7 +5447,7 @@
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__per_piece": 1
+    "obsidian__full_set": 3
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -5461,8 +5462,8 @@
    "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
    "verified": true,
    "note": {
-    "fr": "1 par piece d'Obsidienne, sur trois des six emplacements (coiffe, epaulieres, plastron). Un set complet demande donc 3 de ce gift et 3 de l'autre, pas 6 de chacun. ⚠ Le calcul par piece multiplie par 6 : la valeur affichee pour un set entier est donc surevaluee du double tant que la repartition par emplacement n'est pas modelisee.",
-    "en": "1 per Obsidian piece, on three of the six slots (coiffe, epaulieres, plastron). A full set therefore needs 3 of this gift and 3 of the other, not 6 of each. ⚠ The per-piece calculation multiplies by 6, so the figure shown for a full set is double the truth until slot distribution is modelled."
+    "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire.",
+    "en": "Obsidian armor: 3 per full set, one per piece on headgear, shoulders and chest. ⚠ Counted as __full_set rather than __per_piece: the latter multiplies by 6 and would announce 6 gifts of each type, twice what is needed."
    }
   },
   "gift_of_condensed_might": {
@@ -5525,7 +5526,7 @@
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__per_piece": 1
+    "obsidian__full_set": 3
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -5536,8 +5537,8 @@
    "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
    "verified": true,
    "note": {
-    "fr": "1 par piece d'Obsidienne, sur trois des six emplacements (gants, jambieres, bottes). Un set complet demande donc 3 de ce gift et 3 de l'autre, pas 6 de chacun. ⚠ Le calcul par piece multiplie par 6 : la valeur affichee pour un set entier est donc surevaluee du double tant que la repartition par emplacement n'est pas modelisee.",
-    "en": "1 per Obsidian piece, on three of the six slots (gants, jambieres, bottes). A full set therefore needs 3 of this gift and 3 of the other, not 6 of each. ⚠ The per-piece calculation multiplies by 6, so the figure shown for a full set is double the truth until slot distribution is modelled."
+    "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur gants, jambières et bottes. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire.",
+    "en": "Obsidian armor: 3 per full set, one per piece on gloves, leggings and boots. ⚠ Counted as __full_set rather than __per_piece: the latter multiplies by 6 and would announce 6 gifts of each type, twice what is needed."
    }
   },
   "chak_egg": {
