@@ -423,7 +423,7 @@ def _cap_hit(text):
 
 # Familles ou une prose appartient a une entite identifiable, qui peut donc
 # porter une cadence ou un cadence_ref.
-CAP_FAMILIES = ("craft_components", "legendaries", "armor_sets")
+CAP_FAMILIES = ("craft_components", "legendaries", "armor_sets", "collection_unlocks")
 
 
 def _cap_owner(path):
@@ -608,6 +608,96 @@ def check_cadence_flags(data, errors, warnings):
             )
 
 
+# Types de porte lisibles par machine. Chacun doit correspondre a une donnee que
+# l'API du compte expose reellement, sinon le filtre d'eligibilite ne peut pas
+# trancher et se met a masquer des collections jouables.
+GATE_TYPES = {
+    "mastery": "name",        # /v2/account/masteries (scope progression)
+    "fractal_scale": "value",  # /v2/account.fractal_level
+    "expansion": "name",       # /v2/account.access
+    "achievement": "id",       # /v2/account/achievements
+    "item": "id",              # stock agrege (banque, sacs, partage)
+    "currency": "id",          # /v2/account/wallet
+}
+UNLOCK_FIELDS = {"legendary", "key", "text", "gate", "cadence_ref",
+                 "verified", "checked", "ref"}
+
+
+def check_collection_unlocks(data, errors, warnings):
+    """Le deblocage des collections : prose exacte, porte testable.
+
+    text dit COMMENT debloquer, gate dit SI c'est debloque. Seul gate se filtre.
+    Une porte mal formee est pire qu'une porte absente : l'absence laisse la
+    collection visible, une porte cassee peut la faire disparaitre de l'onglet
+    alors que le joueur pouvait la lancer.
+    """
+    unlocks = data.get("collection_unlocks")
+    if not isinstance(unlocks, dict):
+        warnings.append("collection_unlocks absent : aucun bloc de deblocage cote sources")
+        return
+
+    legs = data.get("legendaries", {})
+    for aid, entry in sorted(unlocks.items()):
+        label = f"collection_unlocks[{aid}]"
+        if not aid.isdigit():
+            errors.append(f"{label} : la cle doit etre l'id numerique du succes")
+        unknown = sorted(set(entry) - UNLOCK_FIELDS)
+        if unknown:
+            errors.append(f"{label} : champs inattendus {unknown}")
+
+        text = entry.get("text")
+        if not (isinstance(text, dict) and text.get("fr") and text.get("en")):
+            errors.append(f"{label} : text doit porter fr et en")
+
+        # legendary est une liste : un succes partage entre deux legendaires ne
+        # doit exister qu'une fois, sous peine de deux textes qui divergent.
+        owners = entry.get("legendary")
+        if not (isinstance(owners, list) and owners):
+            errors.append(f"{label} : legendary doit etre une liste non vide")
+        else:
+            for lid in owners:
+                if lid not in legs:
+                    errors.append(f"{label} : legendary '{lid}' absent de legendaries")
+
+        for i, gate in enumerate(entry.get("gate") or []):
+            glabel = f"{label}.gate[{i}]"
+            if not isinstance(gate, dict):
+                errors.append(f"{glabel} : n'est pas un objet")
+                continue
+            gtype = gate.get("type")
+            if gtype not in GATE_TYPES:
+                errors.append(
+                    f"{glabel} : type '{gtype}' inconnu — l'API du compte ne sait pas "
+                    f"le trancher (attendus : {', '.join(sorted(GATE_TYPES))})"
+                )
+                continue
+            required = GATE_TYPES[gtype]
+            if gate.get(required) in (None, ""):
+                errors.append(f"{glabel} : type '{gtype}' exige le champ '{required}'")
+            for extra in set(gate) - {"type", required, "note"}:
+                errors.append(f"{glabel} : champ '{extra}' hors schema pour le type '{gtype}'")
+
+    # Un unlock reste-t-il en dur dans le JSX ? Deux sources de verite pour la
+    # meme phrase, c'est la derive garantie.
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if jsx:
+        text = jsx[-1].read_text(encoding="utf-8")
+        left = text.count("unlock: {")
+        if left:
+            warnings.append(
+                f"{jsx[-1].name} : {left} bloc(s) unlock encore ecrits en dur dans le JSX — "
+                "ils font doublon avec collection_unlocks depuis la migration"
+            )
+        if "collection_unlocks" not in text:
+            warnings.append(
+                "collection_unlocks n'est lu nulle part dans le JSX — les blocs de "
+                "deblocage ne s'afficheront pas tant que la passe finale n'est pas faite"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -678,7 +768,10 @@ def main() -> int:
     # 12. Drapeaux de cadence declares et effectivement lus
     check_cadence_flags(data, errors, warnings)
 
-    # 13. Integrite de chaque entree de meta_eligible
+    # 13. Deblocage des collections : prose complete, portes testables
+    check_collection_unlocks(data, errors, warnings)
+
+    # 14. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

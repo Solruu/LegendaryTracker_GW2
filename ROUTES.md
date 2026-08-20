@@ -193,7 +193,17 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   plafond borne les *tentatives* et non les gains (Ancient Cipher), et
   `per_character: true` là où le plafond n'est pas par compte (baies de houx).
   Les familles résolues sont `craft_components`, `legendaries` et `armor_sets`.
-- **Avant tout push** : `python3 gw2_audit_v4.py`. Un échec bloque le push.
+- **Le déblocage des collections vit dans `collection_unlocks`**, à la racine des
+  sources, indexé par identifiant de succès comme `achievement_notes`. Deux
+  champs, deux rôles : `text` (`{fr, en}`) dit **comment** débloquer et s'affiche
+  en encadré orange sous chaque collection non terminée ; `gate` dit **si** c'est
+  débloqué, sous une forme testable contre l'API — types `mastery`,
+  `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Seul `gate` se
+  filtre : une prose ne se calcule pas. Une collection **sans `gate` est traitée
+  comme éligible** — mieux vaut en afficher une de trop que d'en masquer une
+  jouable. `legendary` est une **liste** : un succès partagé (Shipwreck Strand,
+  Starlit Weald) n'a qu'une entrée, jamais deux textes qui divergent.
+- **Avant tout push** : `python3 gw2_audit_v5.py`. Un échec bloque le push.
   Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
   aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,
   `mastery_max`, `tier_max`, `bits_count`), provenance complète (`verified`,
@@ -237,7 +247,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   indiscernable d'un inventaire vide. Le contrôle se fait par le **nom**, pas par
   l'id : un id absent du référentiel signifie seulement que l'objet n'est pas en
   stockage matériaux, ce qui est courant et légitime ; en revanche un nom connu
-  portant un autre id est faux à coup sûr. `gw2_audit_v4.py` applique cette règle.
+  portant un autre id est faux à coup sûr. `gw2_audit_v5.py` applique cette règle.
 - **Un instantané ne se fusionne pas, il se remplace.** Le statut des
   sous-succès était mis à jour par `{...prev, ...data}`, et l'effet de
   complément n'allait chercher que les ids *inconnus*. Un succès enregistré
@@ -271,7 +281,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   unités, chercher et marquer les sources sans dépense d'or, timegate compris —
   méta quotidienne, quotidiens de festival, pistes de récompense, vendeur karma,
   coffres de carte. Champ `free_repeatable` sur la source, `free_sources_note`
-  sur le composant, et `gw2_audit_v4.py` signale les gros postes qui n'en ont
+  sur le composant, et `gw2_audit_v5.py` signale les gros postes qui n'en ont
   aucune.
 - **Comparer les valeurs présentes ne détecte pas les absences.** Le contrôle qui
   compare `qty` au `required` du JSX ne voit rien quand la `qty` n'existe pas :
@@ -283,7 +293,7 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   information exacte a dormi dans les sources sans jamais atteindre l'écran :
   l'écart de catégorie de Bava Nisos, le cas de `A Hunt for the Ages`, les seuils
   réels des métas de maîtrise. Après toute passe de données, vérifier que le
-  champ est réellement lu par un chemin de rendu. `gw2_audit_v4.py` liste
+  champ est réellement lu par un chemin de rendu. `gw2_audit_v5.py` liste
   désormais les champs bilingues dont le nom n'apparaît nulle part dans le JSX.
 - **Les pièges non calculables** (coût en or, exclusions mutuelles, population
   morte) vont dans `achievement_notes`, indexés par id de succès. Le score
