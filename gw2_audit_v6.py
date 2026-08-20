@@ -698,6 +698,74 @@ def check_collection_unlocks(data, errors, warnings):
             )
 
 
+def check_guide_coverage(data, errors, warnings):
+    """Le champ guide des sources et le drapeau isGuideTrinket du JSX doivent
+    designer le meme ensemble.
+
+    L'onglet Guide ne contient aucune donnee : il rend legendaries[].guide. Mais
+    l'ouverture de l'onglet depend d'un drapeau ecrit a la main dans le JSX. Les
+    deux listes peuvent donc diverger en silence, et une divergence coute cher
+    dans les deux sens : un guide redige et jamais affiche, ou un onglet ouvert
+    sur du vide.
+    """
+    legs = data.get("legendaries", {})
+    with_guide = {k for k, v in legs.items() if isinstance(v, dict) and v.get("guide")}
+
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+
+    # Chaque bloc "id: { ... isGuideTrinket: true" du JSX, id pris en tete de bloc.
+    flagged = set()
+    for m in re.finditer(r"isGuideTrinket:\s*true", text):
+        head = text[:m.start()]
+        ids = re.findall(r"\n  ([a-z0-9_]+):\s*\{", head)
+        if ids:
+            flagged.add(ids[-1])
+
+    ALIAS = {"prismatic": "prismatic_champions_regalia", "upgrades": "upgrades_combined"}
+    flagged = {ALIAS.get(f, f) for f in flagged}
+
+    for lid in sorted(with_guide - flagged):
+        warnings.append(
+            f"legendaries/{lid} : porte un guide dans les sources, mais aucun isGuideTrinket "
+            f"dans {jsx[-1].name} — le guide est ecrit et jamais affiche"
+        )
+    for lid in sorted(flagged - with_guide):
+        warnings.append(
+            f"legendaries/{lid} : isGuideTrinket dans {jsx[-1].name}, mais aucun guide dans les "
+            "sources — l'onglet s'ouvre sur du vide"
+        )
+
+
+def check_chars_tab_duplication(data, errors, warnings):
+    """Le rendement des monnaies de carte ne doit exister qu'en cadence.
+
+    L'onglet Persos derivait un rendement quotidien de champs propres
+    (farmType, perCharPerDay, perAccountPerDay) tenus dans le JSX. Depuis que
+    ces plafonds sont en cadence, les garder ferait deux chiffres pour une
+    seule realite, et rien ne garantirait qu'ils bougent ensemble.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+    for field in ("perCharPerDay", "perAccountPerDay", "farmType"):
+        n = text.count(field)
+        if n:
+            warnings.append(
+                f"{jsx[-1].name} : {field} apparait {n} fois — le rendement des monnaies de "
+                "carte vit desormais en cadence, ce champ fait doublon"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -771,7 +839,13 @@ def main() -> int:
     # 13. Deblocage des collections : prose complete, portes testables
     check_collection_unlocks(data, errors, warnings)
 
-    # 14. Integrite de chaque entree de meta_eligible
+    # 14. Guides ecrits et guides affiches : meme ensemble
+    check_guide_coverage(data, errors, warnings)
+
+    # 15. Rendement des monnaies de carte : une seule source de verite
+    check_chars_tab_duplication(data, errors, warnings)
+
+    # 16. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

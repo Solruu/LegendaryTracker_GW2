@@ -993,7 +993,8 @@
   "changelog_v111": "Comblement des trous du grand total. 13 quantites manquaient sur des composants existants — les trefles mystiques pour six legendaires, les ecus mystiques pour Coalescence, les memoires de bataille pour Strife Unending, l'obsidienne, les ectoplasmes, les jetons de fournisseur et les Piles of Lucent Crystal pour les ameliorations legendaires. Et 20 devises n'avaient aucun composant pour les porter : insignes d'honneur, tickets d'escarmouche, temoignages de jade et castoreens, cristaux gaeting, Legendary Insights, Tales of Dungeon Delving, Ursus Oblige, notes de recherche, mosaiques d'elegie, magie volatile, seve riche en ether, karma, et les sept materiaux T6. Toutes portent desormais leur source, marquee gratuite et repetable la ou elle l'est — ce qui est le cas de toutes sauf le karma, gagne en jouant lui aussi. Les quantites sont reprises telles quelles du descripteur de monnaie du JSX, seule source de verite pour le requis. Deux cas particuliers regles a part. Le Legendary Insight porte l'identifiant de devise 70 et non l'objet 77302 du referentiel materiaux : il a ete converti en devise de portefeuille, l'objet historique n'est plus ce que renvoie le compte, et le tracker lit correctement les identifiants inferieurs a 1000 dans le portefeuille. Le karma recoit enfin ses quantites : 904 050 pour Aurora, reprises du bloc karma_budget ligne par ligne, et 7 000 000 pour Stella Radians, valeur de backlog explicitement marquee non verifiee. Le karma d'Aurora rejoint la mecanique des surcouts conditionnels : requis de base nul et neuf lignes dans qty_extras, reprises du bloc karma_budget, chacune liee a son etape de collection. Le total plein de 904 050 fond donc au fur et a mesure des achats, exactement comme les perles orriennes et les eclats de jade.",
   "changelog_v112": "Etape 2 de la restructuration des onglets : les plafonds chiffres qui n'existaient qu'en prose sont remontes en cadence.sources[] (skirmish_claim_tickets, pvp_league_ticket, funerary_incense, legendary_insight) ou pointes via cadence_ref vers l'entite qui les porte. Nouveau composant druid_runestone (1/jour, timegate d'entree d'Aurora). Correction : l'encens funeraire est plafonne a 1 par compte et par jour chez les vendeurs de coeurs, et non 1 par PNJ sur 8 PNJ.",
   "changelog_v113": "Identifiants Druid Runestone (81140) et fragment (81111) confirmes via /v2/items. Ancient Cipher ajoute avec deux drapeaux nouveaux sur cadence.sources[] : rng, qui exclut la source de la projection de delai sans masquer son plafond, et per_character, qui signale un plafond par personnage la ou le schema est implicitement par compte. Les deux restent a lire cote JSX (passe finale). Nettoyage : tier et weight supprimes de antique_summoning_stone, ils repetaient cost sans etre lus.",
-  "changelog_v114": "Etape 3 : les 60 blocs unlock quittent le JSX pour collection_unlocks, indexe par achievementId sur le modele d'achievement_notes. Les 7 entrees manquantes sont comblees (6 Arcanum d'Obsidienne + Prismatic). Nouveau champ gate : condition testable contre l'API, attachee a 11 collections, la ou la prose seule ne permettait aucun filtrage."
+  "changelog_v114": "Etape 3 : les 60 blocs unlock quittent le JSX pour collection_unlocks, indexe par achievementId sur le modele d'achievement_notes. Les 7 entrees manquantes sont comblees (6 Arcanum d'Obsidienne + Prismatic). Nouveau champ gate : condition testable contre l'API, attachee a 11 collections, la ou la prose seule ne permettait aucun filtrage.",
+  "changelog_v115": "Etape 4 : les 6 monnaies de carte d'Aurora portent desormais une cadence, avec per_character sur les baies de houx et les perles orriennes. L'onglet Persos calculait ce rendement dans son coin, a partir d'un compteur saisi a la main ; la donnee rejoint la structure des cadences et l'onglet peut disparaitre a la passe finale. L'onglet Guide, lui, est conserve : contrairement au diagnostic initial, il ne contient aucune donnee en dur, il rend deja legendaries[].guide."
  },
  "meta_events": {
   "vb": {
@@ -2790,7 +2791,26 @@
       "en": "Pristine Blood Ruby (Natto)"
      }
     }
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Bloodstone Fen",
+       "en": "Daily harvest — Bloodstone Fen"
+      },
+      "period": "day",
+      "cap": 12,
+      "cost": {
+       "fr": "Le plafond porte sur les nœuds : 35 par jour et par compte, rendement relevé à ~29 %, soit une douzaine de rubis quotidiens. La piste de récompense du Marais rend un coffre de 50 d'un coup, hors plafond.",
+       "en": "The cap is on nodes: 35 per day per account, measured yield ~29%, so about a dozen rubies a day. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go, off-cap."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     }
+    ]
+   }
   },
   "jade_shard_lw3": {
    "name": "Jade Shard",
@@ -2849,7 +2869,26 @@
       "en": "Bloodstone Savant's Staff"
      }
     }
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Lake Doric",
+       "en": "Daily harvest — Lake Doric"
+      },
+      "period": "day",
+      "cap": 40,
+      "cost": {
+       "fr": "40 par jour et par compte.",
+       "en": "40 per day per account."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     }
+    ]
+   }
   },
   "orrian_pearl_lw3": {
    "name": "Orrian Pearl",
@@ -2989,6 +3028,26 @@
     "verified": true,
     "checked": "2026-08-13",
     "ref": "wiki:Siren's_Landing + observation Antoine"
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Siren's Landing",
+       "en": "Daily harvest — Siren's Landing"
+      },
+      "period": "day",
+      "cap": 27,
+      "cost": {
+       "fr": "Circuit gratuit, par personnage et par jour : ~20 nœuds d'huîtres sur les 23-25 emplacements fixes, 1 perle garantie chacun, plus 7 perles sur trois nommés quotidiens (Wyverne libérée 3, Illusion horrible 2, Larve gargantuesque 2). Faucille d'orichalque conseillée. Option payante : les 5 vendeurs de cœur, 3 perles chacun, 13 440 karma au total.",
+       "en": "Free route, per character per day: ~20 oyster nodes across the 23-25 fixed spots, 1 guaranteed pearl each, plus 7 pearls from three daily named foes (Unchained Wyvern 3, Horrid Illusion 2, Gargantuan Grub 2). Orichalcum sickle recommended. Paid option: the 5 heart vendors, 3 pearls each, 13,440 karma total."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)",
+      "per_character": true
+     }
+    ]
    }
   },
   "fire_orchid_blossom": {
@@ -3026,7 +3085,26 @@
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
    ],
-   "kind": "acquire"
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Draconis Mons",
+       "en": "Daily harvest — Draconis Mons"
+      },
+      "period": "day",
+      "cap": 40,
+      "cost": {
+       "fr": "40 par jour et par compte. ⚠ Les Fire Orchids servent aussi à Kodama : n'en dépense aucune avant d'avoir ouvert la collection concernée.",
+       "en": "40 per day per account. ⚠ Fire Orchids are also needed by Kodama: spend none before the relevant collection is open."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     }
+    ]
+   }
   },
   "fresh_winterberry": {
    "name": "Fresh Winterberry",
@@ -3067,6 +3145,26 @@
    "aside": {
     "fr": "Hors budget : l'Élixir de dégel consomme 12 baies fraîches par préparation, et il faut le refaire chaque jour tant que le Suif cristallisé n'est pas tombé. Compte quelques dizaines de baies en plus, ça ne se calcule pas.",
     "en": "Off-budget: the Thaw Elixir consumes 12 fresh berries per brew, and it must be redone daily until the Crystallized Suet drops. Budget a few dozen extra berries; it isn't worth computing."
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Bitterfrost Frontier",
+       "en": "Daily harvest — Bitterfrost Frontier"
+      },
+      "period": "day",
+      "cap": 60,
+      "cost": {
+       "fr": "60 par personnage et par jour. C'est la seule monnaie de carte d'Aurora qui se démultiplie vraiment par personnage : 4 persos suffisent à couvrir les 250 en un jour.",
+       "en": "60 per character per day. This is the one Aurora map currency that genuinely multiplies per character: 4 characters cover the full 250 in a single day."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)",
+      "per_character": true
+     }
+    ]
    }
   },
   "petrified_wood_lw3": {
@@ -3104,7 +3202,26 @@
      "tip": "Sans limite : contre Eternal Ice Shards + karma."
     }
    ],
-   "kind": "acquire"
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récolte quotidienne — Ember Bay + Draconis Mons",
+       "en": "Daily harvest — Ember Bay + Draconis Mons"
+      },
+      "period": "day",
+      "cap": 45,
+      "cost": {
+       "fr": "45 par jour et par compte, réparti sur deux cartes.",
+       "en": "45 per day per account, spread across two maps."
+      },
+      "verified": true,
+      "checked": "2026-08-20",
+      "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     }
+    ]
+   }
   },
   "crystalline_ore": {
    "name": "Crystalline Ore",
@@ -15333,7 +15450,13 @@
    "cadence_ref": [
     "druid_runestone",
     "xunlai_electrum_ingot",
-    "ancient_cipher"
+    "ancient_cipher",
+    "blood_ruby",
+    "fresh_winterberry",
+    "petrified_wood_lw3",
+    "jade_shard_lw3",
+    "fire_orchid_blossom",
+    "orrian_pearl_lw3"
    ]
   },
   "vision": {
