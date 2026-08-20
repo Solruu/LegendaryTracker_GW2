@@ -240,6 +240,17 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   (`/api/progression`) et la synchro directe navigateur construisent tous deux
   `_gates` au même format ; toute donnée ajoutée à l'un doit l'être à l'autre,
   sinon les deux synchros répondent différemment.
+- **Trois états pour une porte, jamais deux.** `open` vaut `true`, `false` ou
+  `null`. `null` couvre le scope absent, la table publique injoignable **et**
+  le nom introuvable dans la table des maîtrises — ce dernier cas est une
+  erreur de saisie, pas un verrou, et s'affiche comme tel. Un tableau vide de
+  maîtrises est en revanche une vraie réponse (« aucune »), à ne pas confondre
+  avec `null`.
+- **Les noms de maîtrise ne sont pas figés dans le code.** `/v2/masteries` est
+  récupéré à l'exécution et mis en cache. Attention : dans
+  `/v2/account/masteries`, `level` est un index **0-base dans le tableau
+  `levels` de la piste**, pas un rang absolu — et une porte nomme presque
+  toujours un **palier**, pas une piste.
 - **Avant tout push** : `python3 gw2_audit_v9.py`. Un échec bloque le push.
   Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
   aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,

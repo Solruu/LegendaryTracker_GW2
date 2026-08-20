@@ -589,15 +589,23 @@ const makeGateStatus = (acct) => (gate) => {
       };
     }
     if (g?.type === "mastery") {
-      // L'API rend des identifiants numeriques, pas des noms. Sans table de
-      // correspondance, on sait seulement si le scope repond : on ne pretend
-      // pas trancher une maitrise qu'on ne sait pas nommer.
+      const eq = (a, b) => String(a).toLowerCase() === String(b).toLowerCase();
+      const noms = acct?.masteries_unlocked;
+      const tous = acct?.masteries_all;
+      // Un nom absent de TOUTE la table n'est pas une porte fermée, c'est une
+      // erreur de saisie. Le signaler plutôt que d'afficher un verrou : un faux
+      // verrou masquerait une collection que le joueur peut lancer.
+      const inconnu = Array.isArray(tous) && !tous.some(n => eq(n, g.name));
+      // null = indécidable (scope absent, ou table publique injoignable).
+      // Un tableau vide, lui, est une vraie réponse : aucune maîtrise.
+      const open = inconnu ? null
+        : Array.isArray(noms) ? noms.some(n => eq(n, g.name)) : null;
+      const manque = acct && acct.masteries_scope_ok === false;
       return {
-        open: acct?.masteries_scope_ok ? null : null,
+        open,
         label: NX({ fr: `Maîtrise « ${g.name} »`, en: `'${g.name}' mastery` })
-          + (acct && acct.masteries_scope_ok === false
-             ? NX({ fr: " — scope « progression » absent de la clé", en: " — key lacks the 'progression' scope" })
-             : ""),
+          + (inconnu ? NX({ fr: " — ⚠ nom introuvable dans la table des maîtrises", en: " — ⚠ name not found in the mastery table" }) : "")
+          + (manque ? NX({ fr: " — scope « progression » absent de la clé", en: " — key lacks the 'progression' scope" }) : ""),
       };
     }
     if (g?.type === "expansion") {
@@ -25351,14 +25359,46 @@ function GW2LegendaryTracker() {
     // "progression" — on renvoie alors null, ce que le front lit comme
     // "indecidable" et non comme "aucune maitrise".
     const acct = rac.ok ? await rac.json().catch(() => ({})) : {};
-    const msOk = rms.ok;
-    const msList = msOk ? await rms.json().catch(() => null) : null;
+    const msList = rms.ok ? await rms.json().catch(() => null) : null;
+    // /v2/account/masteries ne rend que des ids et un niveau. La table publique
+    // /v2/masteries donne les noms — et `level` y est un index 0-base dans le
+    // tableau `levels` de la piste, pas un rang absolu. Une porte nomme presque
+    // toujours un PALIER, parce que c'est ce que le jeu affiche au joueur.
+    let msNames = null, msAll = null;
+    if (Array.isArray(msList)) {
+      try {
+        const rt = await fetch("https://api.guildwars2.com/v2/masteries?ids=all&lang=en");
+        if (rt.ok) {
+          const table = await rt.json();
+          const byId = new Map(table.map(t => [t.id, t]));
+          const set = new Set();
+          for (const e of msList) {
+            const tr = byId.get(e?.id);
+            if (!tr || typeof e?.level !== "number") continue;
+            if (tr.name) set.add(tr.name);
+            (tr.levels ?? []).forEach((lv, i) => { if (i <= e.level && lv?.name) set.add(lv.name); });
+          }
+          msNames = [...set].sort();
+          // Tous les noms connus de la table, pistes et paliers confondus. Sert
+          // a distinguer « porte fermee » de « nom introuvable » : sans cette
+          // liste, une faute de frappe dans gate.name se lirait comme un verrou.
+          const tous = new Set();
+          for (const tr of table) {
+            if (tr?.name) tous.add(tr.name);
+            for (const lv of tr?.levels ?? []) if (lv?.name) tous.add(lv.name);
+          }
+          msAll = [...tous];
+        }
+      } catch (_) { /* table indisponible : on reste sur null, pas sur vide */ }
+    }
     const _gates = {
       fractal_level: typeof acct?.fractal_level === "number" ? acct.fractal_level : null,
       access: Array.isArray(acct?.access) ? acct.access : null,
       masteries: Array.isArray(msList)
         ? Object.fromEntries(msList.filter(m => m?.id != null).map(m => [String(m.id), m.level]))
         : null,
+      masteries_unlocked: msNames,
+      masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
     return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, errors: [] };

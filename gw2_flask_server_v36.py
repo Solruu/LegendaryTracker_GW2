@@ -260,7 +260,9 @@ def gw2_get(endpoint, api_key, params=None, lang=None):
     pour les endpoints renvoyant du texte localisé (items, currencies, achievements) ;
     ignoré sans effet par l'API sur les endpoints de données de compte.
     """
-    headers = {"Authorization": f"Bearer {api_key}"}
+    # /v2/masteries et consorts sont publics : envoyer un "Bearer None" les fait
+    # echouer. Le header n'est pose que si une cle existe reellement.
+    headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
     url = f"{GW2_API_BASE}/{endpoint}"
     if lang:
         params = {**(params or {}), "lang": lang}
@@ -853,6 +855,83 @@ def health():
     })
 
 
+# ── Table des maitrises ───────────────────────────────────────
+# /v2/account/masteries ne rend que des identifiants numeriques et un niveau.
+# Les portes du tracker, elles, nomment ce qu'elles exigent ("Rift Repair",
+# "Astral Craft"). Il faut donc la table publique /v2/masteries pour relier les
+# deux — et elle se recupere a l'execution plutot que d'etre figee dans le
+# fichier, sinon la moindre extension la perime en silence.
+#
+# Point non evident : dans /v2/account/masteries, `level` est un index 0-base
+# DANS le tableau `levels` de la piste, pas un rang absolu. Une porte peut donc
+# viser soit le nom de la piste, soit le nom d'un de ses paliers — et c'est
+# presque toujours un palier, parce que c'est ce que le jeu affiche au joueur.
+_MASTERY_TABLE = {"data": None}
+
+
+def mastery_table():
+    """Table publique des maitrises, en anglais, mise en cache pour la session."""
+    if _MASTERY_TABLE["data"] is not None:
+        return _MASTERY_TABLE["data"]
+    raw, err = gw2_get("masteries", None, params={"ids": "all", "lang": "en"})
+    if err or not isinstance(raw, list):
+        return None
+    _MASTERY_TABLE["data"] = raw
+    return raw
+
+
+def unlocked_mastery_names(account_masteries):
+    """Noms de maitrises et de paliers effectivement atteints par le compte.
+
+    Renvoie None si la table publique ou les donnees du compte manquent : un
+    ensemble vide voudrait dire "aucune maitrise" et fermerait des portes que
+    le joueur a en realite franchies.
+    """
+    table = mastery_table()
+    if table is None or not isinstance(account_masteries, list):
+        return None
+    by_id = {m.get("id"): m for m in table if isinstance(m, dict)}
+    names = set()
+    for entry in account_masteries:
+        if not isinstance(entry, dict):
+            continue
+        track = by_id.get(entry.get("id"))
+        if not track:
+            continue
+        level = entry.get("level")
+        if not isinstance(level, int):
+            continue
+        # Une piste entamee compte comme debloquee ; chaque palier jusqu'au
+        # niveau atteint compte aussi, index 0-base inclus.
+        names.add(track.get("name"))
+        for i, lv in enumerate(track.get("levels") or []):
+            if i <= level and isinstance(lv, dict) and lv.get("name"):
+                names.add(lv["name"])
+    return sorted(n for n in names if n)
+
+
+def all_mastery_names():
+    """Tous les noms connus, pistes et paliers confondus.
+
+    Sert a distinguer « porte fermee » de « nom introuvable » : sans cette
+    liste, une faute de frappe dans gate.name se lirait comme un verrou, et
+    masquerait une collection que le joueur peut lancer.
+    """
+    table = mastery_table()
+    if table is None:
+        return None
+    names = set()
+    for track in table:
+        if not isinstance(track, dict):
+            continue
+        if track.get("name"):
+            names.add(track["name"])
+        for lv in track.get("levels") or []:
+            if isinstance(lv, dict) and lv.get("name"):
+                names.add(lv["name"])
+    return sorted(names)
+
+
 @app.route("/api/progression")
 def progression():
     """
@@ -929,7 +1008,7 @@ def progression():
         account_raw = {}
 
     masteries_raw, err = gw2_get("account/masteries", api_key)
-    mastery_levels = None
+    mastery_levels, mastery_names = None, None
     if err:
         errors.append(f"masteries: {err} (scope 'progression' requis)")
     else:
@@ -937,6 +1016,9 @@ def progression():
             str(m.get("id")): m.get("level")
             for m in (masteries_raw or []) if isinstance(m, dict) and m.get("id") is not None
         }
+        mastery_names = unlocked_mastery_names(masteries_raw)
+        if mastery_names is None:
+            errors.append("masteries: table publique /v2/masteries indisponible")
 
     gates = {
         # None signifie "indecidable", jamais "zero". La distinction decide si
@@ -944,6 +1026,9 @@ def progression():
         "fractal_level": account_raw.get("fractal_level") if isinstance(account_raw, dict) else None,
         "access": account_raw.get("access") if isinstance(account_raw, dict) else None,
         "masteries": mastery_levels,
+        # Noms resolus : c'est ce que le front compare a gate.name.
+        "masteries_unlocked": mastery_names,
+        "masteries_all": all_mastery_names(),
         "masteries_scope_ok": mastery_levels is not None,
     }
 
