@@ -261,6 +261,11 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   ainsi que Vision et Aurora ont annoncé 0 trèfle et 0 ectoplasme, et que les
   cadences correspondantes ne remontaient pas dans Timegates. `common_required`
   reste comme affichage de référence, plus comme source de vérité.
+- **Ce qui attend une vérification vit dans `BACKLOG.md`**, pas dans un
+  commentaire perdu. Chaque point y est localisé et chiffré, et la donnée reste
+  **en l'état** tant qu'il y figure : on ne devine pas à la place d'une source.
+  Les trois derniers conflits de valeur tranchés au jugé auraient donné trois
+  erreurs.
 - **Avant tout push** : `python3 gw2_audit_v12.py`. Un échec bloque le push.
   Le script contrôle quatre choses : aucune liste curée hors de `meta_eligible`,
   aucun champ redupliquant une donnée fournie par l'API (`mastery_required`,
