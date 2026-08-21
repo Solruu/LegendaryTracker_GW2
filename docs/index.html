@@ -1768,7 +1768,8 @@ const SOURCES_DB = {
     "changelog_v121": "Obsidienne par piece : les deux conflits de valeur sont tranches, et qty avait raison les deux fois — 9 trefles et non 15, 600 ectoplasmes et non 250 (720 si les essences de faille sont achetees chez Lyhr plutot que craftees). Troisieme conflit d'affilee ou common_required est la source perimee. Comble : 50 eclats d'obsidienne par piece, absents de common_required, et 1 gift condense par piece — Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et plastron. ⚠ Signale : le calcul par piece multiplie par 6, donc un set complet est affiche au double de la verite sur ces deux gifts tant que la repartition par emplacement n'est pas modelisee.",
     "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus.",
     "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles.",
-    "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres."
+    "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres.",
+    "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart."
   },
   "meta_events": {
     "vb": {
@@ -3001,7 +3002,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "t6": 200,
         "gift_of_dust": 100
       },
       "kind": "acquire",
@@ -3552,7 +3552,47 @@ const SOURCES_DB = {
         "vision": 300,
         "dragonsblood_weapons": 60
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Nœuds de Brandstone — Thunderhead Peaks",
+              "en": "Brandstone nodes — Thunderhead Peaks"
+            },
+            "period": "day",
+            "cap": 25,
+            "cost": {
+              "fr": "25 nœuds par jour et par COMPTE. Soft-reset à 01h : attendre 5 à 15 h après la récolte.",
+              "en": "25 nodes per day per ACCOUNT. Soft reset at 01:00: wait 5 to 15 hours after harvesting."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          },
+          {
+            "label": {
+              "fr": "Coffre quotidien, par personnage",
+              "en": "Daily chest, per character"
+            },
+            "period": "day",
+            "cap": 5,
+            "per_character": true,
+            "cost": {
+              "fr": "5 de plus par personnage et par jour. C'est le seul levier pour raccourcir le délai : le plafond de nœuds, lui, est par compte.",
+              "en": "5 more per character per day. This is the only lever to shorten the wait: the node cap itself is account-wide."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          }
+        ]
+      },
+      "timegate": true,
+      "qty_note": {
+        "fr": "⚠ Divergence a arbitrer : la prose editoriale annonce 960 Branded Mass minimum pour Vision I (le vrai timegate, via Journeyman of the Forge), alors que qty['vision'] en declare 300. À 25 par jour, l'ecart vaut 26 jours de farm. Non tranche faute de verification de la decomposition.",
+        "en": "⚠ Divergence to arbitrate: the editorial prose states 960 Branded Mass minimum for Vision I (the real timegate, via Journeyman of the Forge), while qty['vision'] declares 300. At 25 a day, the gap is 26 days of farming. Left unresolved pending verification of the breakdown."
+      }
     },
     "mistborn_mote": {
       "name": "Mistborn Mote",
@@ -3583,7 +3623,27 @@ const SOURCES_DB = {
       "qty": {
         "vision": 300
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Nœuds de Mistborn Mote — Dragonfall",
+              "en": "Mistborn Mote nodes — Dragonfall"
+            },
+            "period": "day",
+            "cap": 50,
+            "cost": {
+              "fr": "50 nœuds par compte et par jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place en vend également.",
+              "en": "50 nodes per account per day. Soft reset at 01:00. The on-site Crystal Bloom Quartermaster also sells them."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          }
+        ]
+      },
+      "timegate": true
     },
     "bottle_elonian_wine": {
       "name": "Bottle of Elonian Wine",
@@ -6722,7 +6782,8 @@ const SOURCES_DB = {
         "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ The 77 clovers themselves pull in another 249 Mystic Coins: budget ~499 total, while login rewards have granted none since 2023."
       },
       "checked": "2026-08-20",
-      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)",
+      "verified": true
     },
     "mystic_coin": {
       "name": "Mystic Coin",
@@ -6984,7 +7045,8 @@ const SOURCES_DB = {
         "ref": "wiki:Mystic_Coin#Acquisition"
       },
       "checked": "2026-08-20",
-      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)"
+      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)",
+      "verified": true
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
@@ -10311,7 +10373,42 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Nœuds de Magie volatile",
+              "en": "Volatile Magic nodes"
+            },
+            "period": "day",
+            "cap": 50,
+            "cost": {
+              "fr": "50 nœuds par compte et par jour, toutes cartes LW4 confondues. Soft-reset à 01h.",
+              "en": "50 nodes per account per day, across all LWS4 maps. Soft reset at 01:00."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          },
+          {
+            "label": {
+              "fr": "Événements et métas",
+              "en": "Events and metas"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "Sans plafond, mais irrégulier : hors projection de délai.",
+              "en": "Uncapped but irregular: excluded from the delay projection."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          }
+        ]
+      },
+      "timegate": true
     },
     "aether_rich_sap": {
       "name": "Aether-Rich Sap",
@@ -10501,7 +10598,6 @@ const SOURCES_DB = {
       "apiId": 24283,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_venom": 100
       },
       "farmable": true,
@@ -10563,7 +10659,6 @@ const SOURCES_DB = {
       "apiId": 24289,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_scales": 100
       },
       "farmable": true,
@@ -10625,7 +10720,6 @@ const SOURCES_DB = {
       "apiId": 24295,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_blood": 100
       },
       "farmable": true,
@@ -10687,7 +10781,6 @@ const SOURCES_DB = {
       "apiId": 24300,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_totems": 100
       },
       "farmable": true,
@@ -10749,7 +10842,6 @@ const SOURCES_DB = {
       "apiId": 24351,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_claws": 100
       },
       "farmable": true,
@@ -10811,7 +10903,6 @@ const SOURCES_DB = {
       "apiId": 24357,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_fangs": 100
       },
       "farmable": true,
@@ -10873,7 +10964,6 @@ const SOURCES_DB = {
       "apiId": 24358,
       "kind": "material",
       "qty": {
-        "t6": 200,
         "gift_of_bones": 100
       },
       "farmable": true,
@@ -21852,6 +21942,10 @@ const SOURCES_DB = {
       "has_material_requirement": {
         "fr": "Vrai si le legendaire apparait dans au moins un `qty` de craft_components, ou porte dans _meta.common_required au moins une valeur non nulle. Remplace exactement l'ancienne condition « ni Prismatic ni le hub Colifichets » : Prismatic est le seul legendaire sans aucun besoin materiel, et c'est cette absence, non son nom, qui doit fermer l'onglet.",
         "en": "True if the legendary appears in at least one craft_components `qty`, or carries at least one non-null value in _meta.common_required. Exactly replaces the former 'neither Prismatic nor the Trinkets hub' condition: Prismatic is the only legendary with no material need at all, and it is that absence, not its name, that should close the tab."
+      },
+      "is_trophy_matrix": {
+        "fr": "Vrai pour le seul selecteur t6, qui n'est pas un legendaire mais une projection : la matrice des trophees fins, chiffree sur la selection propre du joueur. Il ne porte donc aucune exigence materielle, et has_material_requirement s'eteint pour lui — sans cette regle, l'onglet Composants se fermerait et la matrice deviendrait inatteignable.",
+        "en": "True for the t6 selector alone, which is not a legendary but a projection: the fine trophy matrix, computed from the player's own selection. It carries no material requirement, so has_material_requirement goes false for it - without this rule the Components tab would close and the matrix become unreachable."
       }
     },
     "order": [
@@ -21975,7 +22069,14 @@ const SOURCES_DB = {
           "en": "Components"
         },
         "when": {
-          "computed": "has_material_requirement"
+          "any_of": [
+            {
+              "computed": "has_material_requirement"
+            },
+            {
+              "computed": "is_trophy_matrix"
+            }
+          ]
         },
         "replaces": [
           "currencies"
@@ -26465,6 +26566,9 @@ function GW2LegendaryTracker() {
       return v ? 1 : 0;
     };
     const computed = (rule) => {
+      // t6 n'est pas un legendaire mais une projection : il ne porte aucune
+      // exigence materielle, donc has_material_requirement s'eteint pour lui.
+      if (rule === "is_trophy_matrix") return selectedLeg === "t6";
       if (rule !== "has_material_requirement") return false;
       const cc = DB.craft_components ?? {};
       for (const comp of Object.values(cc)) {

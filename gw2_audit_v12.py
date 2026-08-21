@@ -541,12 +541,39 @@ def check_orphan_caps(data, errors, warnings):
         found = _cap_hit(line)
         if found:
             lines.append((num, found))
-    if lines:
-        apercu = ", ".join(f"L{n} '{f}'" for n, f in lines[:5])
+    # Regle affinee le 20/08/2026. L'ancienne version signalait TOUTE prose
+    # chiffree du JSX, ce qui melait deux choses tres differentes : un plafond
+    # qui n'existe nulle part ailleurs, et une phrase qui explique un plafond
+    # deja structure. La seconde est utile — c'est meme le role de l'editorial —
+    # et la supprimer appauvrirait l'interface sans rien gagner. Seule la
+    # premiere est une faute.
+    #
+    # Le depart se fait sur la VALEUR : si un cap identique existe quelque part
+    # dans cadence.sources[], la prose ne fait que le redire.
+    caps_structures = set()
+    for comp in (data.get("craft_components") or {}).values():
+        cadence = comp.get("cadence")
+        if not isinstance(cadence, dict):
+            continue
+        for src_ in cadence.get("sources") or []:
+            if isinstance(src_, dict) and isinstance(src_.get("cap"), int):
+                caps_structures.add(src_["cap"])
+
+    orphelines = []
+    for num, found in lines:
+        nombres = {int(n) for n in re.findall(r"\d+", found.replace("\u202f", "").replace("\u00a0", ""))}
+        # Une somme de plafonds structures compte comme couverte : 455/semaine
+        # est 365 plus 90, deux valeurs qui existent bien en cadence.
+        sommes = {a + b for a in caps_structures for b in caps_structures}
+        if nombres & (caps_structures | sommes):
+            continue
+        orphelines.append((num, found))
+
+    if orphelines:
+        apercu = ", ".join(f"L{n} '{f}'" for n, f in orphelines[:5])
         warnings.append(
-            f"{jsx[-1].name} : {len(lines)} ligne(s) portent un plafond en prose "
-            f"cote JSX ({apercu}...) — a remonter en cadence lors de la migration "
-            "editoriale"
+            f"{jsx[-1].name} : {len(orphelines)} plafond(s) en prose sans equivalent chiffre "
+            f"dans une cadence ({apercu}) — a remonter, sous peine de rester hors du calcul"
         )
 
 
@@ -744,7 +771,10 @@ def check_chars_tab_duplication(data, errors, warnings):
     if not jsx:
         return
     text = jsx[-1].read_text(encoding="utf-8")
-    for field in ("perCharPerDay", "perAccountPerDay", "farmType"):
+    # farmType est volontairement absent : il vit encore sur les metas, ou il
+    # pilote un badge affiche. Seuls les champs de rendement chiffre faisaient
+    # doublon avec la cadence.
+    for field in ("perCharPerDay", "perAccountPerDay", "heartBundle"):
         n = text.count(field)
         if n:
             warnings.append(

@@ -5047,6 +5047,9 @@ export default function GW2LegendaryTracker() {
       return v ? 1 : 0;
     };
     const computed = (rule) => {
+      // t6 n'est pas un legendaire mais une projection : il ne porte aucune
+      // exigence materielle, donc has_material_requirement s'eteint pour lui.
+      if (rule === "is_trophy_matrix") return selectedLeg === "t6";
       if (rule !== "has_material_requirement") return false;
       const cc = DB.craft_components ?? {};
       for (const comp of Object.values(cc)) {
