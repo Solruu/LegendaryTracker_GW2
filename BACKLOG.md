@@ -42,6 +42,27 @@ sort du 300. Si 16 : corriger `qty.vision` et supprimer le 300.
 
 ---
 
+## 1 bis. Ectoplasmes de Vision : 250 + 300, additifs ou doublon ?
+
+Même forme que le point 1, trouvé par la règle affinée de l'audit. Vision est
+atteinte **deux fois** sur les globes d'ectoplasme :
+
+- en direct — `glob_of_ectoplasm.qty.vision = 250` (venu de `common_required`) ;
+- par la chaîne — 50 par Memory Essence Encapsulator × 6 encapsulateurs = **300**.
+
+Total calculé : **550**. Les deux peuvent être légitimement additifs (250 pour
+la voie trèfles/tribut, 300 pour les encapsulateurs), ou le 250 peut être un
+doublon périmé comme on le soupçonne pour la Branded Mass.
+
+À vérifier sur **Vision I: Awakening** et **Memory Essence Encapsulator** :
+les 250 ectos apparaissent-ils **en plus** des encapsulateurs, ou sont-ils
+la même dépense comptée deux fois ?
+
+L'audit signale un **risque**, pas une erreur prouvée : les deux lectures sont
+plausibles, et c'est précisément pour ça qu'il faut une source.
+
+---
+
 ## 2. Familles de créatures des 8 lignes de trophées — `verified: false`
 
 Les 32 composants de trophées portent une source « butin direct » citant des

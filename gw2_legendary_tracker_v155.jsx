@@ -1762,17 +1762,11 @@ const LEGENDARIES = {
     icon: "T6",
     description: { fr: "Les 8 trophées T6 — demande transverse de presque tous les légendaires", en: "The 8 T6 trophies — cross-cutting demand from almost every legendary" },
     resetType: "daily",
-    // Barres = 1 paire Condensed (200 de chaque) ; voir t6_demand pour les multiplicateurs
-    currencies: [
-      { id: "blood", name: "Vial of Powerful Blood", required: 200, icon: "BL", apiId: 24295 },
-      { id: "venom", name: "Powerful Venom Sac",     required: 200, icon: "VE", apiId: 24283 },
-      { id: "totem", name: "Elaborate Totem",        required: 200, icon: "TO", apiId: 24300 },
-      { id: "dust",  name: "Pile of Crystalline Dust", required: 200, icon: "DU", apiId: 24277 },
-      { id: "claw",  name: "Vicious Claw",           required: 200, icon: "CL", apiId: 24351 },
-      { id: "bone",  name: "Ancient Bone",           required: 200, icon: "BO", apiId: 24358 },
-      { id: "fang",  name: "Vicious Fang",           required: 200, icon: "FA", apiId: 24357 },
-      { id: "scale", name: "Armored Scale",          required: 200, icon: "SC", apiId: 24289 },
-    ],
+    // La liste des huit trophees et leurs cibles figees a 200 a disparu avec
+    // la conversion de T6 en projection : TrophyMatrix chiffre desormais sur
+    // la selection propre du joueur, via SOURCES_DB.trophy_matrix. Une liste
+    // vide, et non le champ supprime, pour que rien ne parte lire un undefined.
+    currencies: [],
     currencyNoteKeys: ["t6_demand", "t6_src1", "t6_src2", "t6_src3"],
     metas: [],
     bounties: [],

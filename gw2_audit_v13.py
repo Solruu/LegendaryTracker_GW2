@@ -204,6 +204,20 @@ def check_missing_qty(data, errors, warnings):
                 )
 
 
+# Champs qui documentent le SCHEMA, a destination de qui edite le fichier, et
+# non du joueur. Les exiger a l'ecran serait un contresens : ils expliquent
+# pourquoi la donnee est structuree ainsi, pas ce que le joueur doit faire.
+# La convention est un suffixe ou un prefixe explicite, pas une liste de noms
+# a rallonge — sans quoi on se retrouverait a y ajouter chaque avertissement
+# genant, ce qui viderait la regle de son sens.
+DOC_FIELD_MARKERS = ("_deprecated", "rationale", "note_id", "note_schema")
+DOC_FIELD_PATHS = ("/tab_contract/", "/trophy_matrix/", "_note")
+
+
+def _is_doc_field(name, path):
+    return name in DOC_FIELD_MARKERS or any(m in path for m in DOC_FIELD_PATHS)
+
+
 def check_unrendered_fields(data, errors, warnings):
     """Un champ editorial que le JSX ne lit nulle part est du travail invisible.
 
@@ -237,6 +251,12 @@ def check_unrendered_fields(data, errors, warnings):
         # achievement_notes est indexe par id de succes : la cle est une donnee,
         # pas un nom de champ, et le rendu se fait par lookup.
         if key in NOT_FOR_DISPLAY or key.isdigit():
+            continue
+        # La documentation du schema n'a pas vocation a s'afficher : elle
+        # explique pourquoi la donnee est structuree ainsi, a qui edite le
+        # fichier. Toutes ses occurrences doivent l'etre, sinon c'est un vrai
+        # champ editorial qui se cache derriere un nom de documentation.
+        if all(_is_doc_field(key, p) for p in paths):
             continue
         if key not in src:
             warnings.append(
@@ -951,13 +971,23 @@ def check_qty_levels(data, errors, warnings):
                 f"craft_components/{cid} : qty['{key}'] ne designe ni un composant ni un "
                 "legendaire connu — l'exigence ne sera comptee nulle part"
             )
+        # Un composant peut legitimement etre exige EN DIRECT par un legendaire
+        # et PAR PARENT via un intermediaire : les gifts condenses sont demandes
+        # par le Mystic Tribute et, separement, par Selachimorpha. Ce melange
+        # n'est suspect que si les deux chemins aboutissent au MEME legendaire,
+        # auquel cas l'exigence est comptee deux fois.
         if par_parent and aplatis:
-            warnings.append(
-                f"craft_components/{cid} : qty melange {len(par_parent)} cle(s) par parent "
-                f"({', '.join(sorted(par_parent)[:3])}) et {len(aplatis)} total(aux) aplati(s) "
-                f"({', '.join(sorted(aplatis)[:3])}) — deux sens sous une seule syntaxe, a "
-                "trancher a la passe finale"
-            )
+            atteints = set()
+            for parent in par_parent:
+                for k in (comps.get(parent, {}).get("qty") or {}):
+                    atteints.add(k.split("__")[0])
+            double = sorted({a.split("__")[0] for a in aplatis} & atteints)
+            if double:
+                warnings.append(
+                    f"craft_components/{cid} : '{double[0]}' est atteint a la fois en direct et "
+                    f"via {', '.join(sorted(par_parent)[:2])} — l'exigence risque d'etre comptee "
+                    "deux fois"
+                )
 
     jsx = sorted(
         HERE.glob("gw2_legendary_tracker_v*.jsx"),

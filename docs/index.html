@@ -1769,7 +1769,8 @@ const SOURCES_DB = {
     "changelog_v122": "Les gifts condenses de l'armure d'Obsidienne passent de obsidian__per_piece=1 a obsidian__full_set=3. __per_piece est multiplie par 6, ce qui annoncait 6 gifts de CHAQUE type pour un set, soit le double : un set demande 3 Might (gants, jambieres, bottes) et 3 Magic (coiffe, epaulieres, plastron), une seule par piece. Le suffixe __full_set existait deja et est lu par le meme calcul — aucune structure nouvelle. Effet en cascade : 600 trophees T6 de moins par set, soit 2 400 unites tous paliers confondus.",
     "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles.",
     "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres.",
-    "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart."
+    "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart.",
+    "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche."
   },
   "meta_events": {
     "vb": {
@@ -6251,16 +6252,12 @@ const SOURCES_DB = {
         "fr": "MF : 1× de chacun des 4 gifts (Blood, Venom, Totems, Dust). Lyhr, a la Tour du sorcier, propose aussi de l'assembler contre un surcout.",
         "en": "MF: 1x of each of the 4 gifts (Blood, Venom, Totems, Dust). Lyhr, at the Wizard's Tower, will also assemble it for a surcharge."
       },
-      "note_selachimorpha": {
-        "fr": "Selachimorpha consomme 2 gifts condenses de chaque via son Gift of the Seas, mais AUCUN Mystic Tribute : elle demande donc 200 de chacun des 8 trophees T6 sans les 250 Mystic Coins. Seul colifichet du fichier dans ce cas.",
-        "en": "Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
-      },
       "checked": "2026-08-20",
       "ref": "wiki:Mystic_Tribute + wiki:Draconic_Tribute (captures Antoine 20/08/2026)",
       "verified": true,
       "note": {
-        "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire.",
-        "en": "Obsidian armor: 3 per full set, one per piece on headgear, shoulders and chest. ⚠ Counted as __full_set rather than __per_piece: the latter multiplies by 6 and would announce 6 gifts of each type, twice what is needed."
+        "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire. Selachimorpha consomme 2 gifts condenses de chaque via son Gift of the Seas, mais AUCUN Mystic Tribute : elle demande donc 200 de chacun des 8 trophees T6 sans les 250 Mystic Coins. Seul colifichet du fichier dans ce cas.",
+        "en": "Obsidian armor: 3 per full set, one per piece on headgear, shoulders and chest. ⚠ Counted as __full_set rather than __per_piece: the latter multiplies by 6 and would announce 6 gifts of each type, twice what is needed. Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
       }
     },
     "gift_of_condensed_might": {
@@ -23287,17 +23284,11 @@ const LEGENDARIES = {
     icon: "T6",
     description: { fr: "Les 8 trophées T6 — demande transverse de presque tous les légendaires", en: "The 8 T6 trophies — cross-cutting demand from almost every legendary" },
     resetType: "daily",
-    // Barres = 1 paire Condensed (200 de chaque) ; voir t6_demand pour les multiplicateurs
-    currencies: [
-      { id: "blood", name: "Vial of Powerful Blood", required: 200, icon: "BL", apiId: 24295 },
-      { id: "venom", name: "Powerful Venom Sac",     required: 200, icon: "VE", apiId: 24283 },
-      { id: "totem", name: "Elaborate Totem",        required: 200, icon: "TO", apiId: 24300 },
-      { id: "dust",  name: "Pile of Crystalline Dust", required: 200, icon: "DU", apiId: 24277 },
-      { id: "claw",  name: "Vicious Claw",           required: 200, icon: "CL", apiId: 24351 },
-      { id: "bone",  name: "Ancient Bone",           required: 200, icon: "BO", apiId: 24358 },
-      { id: "fang",  name: "Vicious Fang",           required: 200, icon: "FA", apiId: 24357 },
-      { id: "scale", name: "Armored Scale",          required: 200, icon: "SC", apiId: 24289 },
-    ],
+    // La liste des huit trophees et leurs cibles figees a 200 a disparu avec
+    // la conversion de T6 en projection : TrophyMatrix chiffre desormais sur
+    // la selection propre du joueur, via SOURCES_DB.trophy_matrix. Une liste
+    // vide, et non le champ supprime, pour que rien ne parte lire un undefined.
+    currencies: [],
     currencyNoteKeys: ["t6_demand", "t6_src1", "t6_src2", "t6_src3"],
     metas: [],
     bounties: [],
