@@ -1010,7 +1010,8 @@
   "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres.",
   "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart.",
   "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche.",
-  "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour."
+  "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour.",
+  "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond."
  },
  "meta_events": {
   "vb": {
@@ -2671,7 +2672,65 @@
    "qty": {
     "vision": 300
    },
-   "kind": "acquire"
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Ballots de kralkatite — 3 vendeurs de cœurs",
+       "en": "Bundles of Kralkatite — 3 heart vendors"
+      },
+      "period": "day",
+      "cap": 75,
+      "per_character": true,
+      "cost": {
+       "fr": "25 minerais par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. Trois cœurs au Domaine d'Istan, donc 75 par personnage et par jour. C'est de loin la meilleure source, et la seule qui se démultiplie avec les alts.",
+       "en": "25 ore per bundle, 1 bundle per vendor per character per day, once the heart is done. Three hearts in the Domain of Istan, so 75 per character per day. By far the best source, and the only one that scales with alts."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Bundle_of_Kralkatite"
+     },
+     {
+      "label": {
+       "fr": "Piste de récompense Saison 4",
+       "en": "Living World Season 4 reward track"
+      },
+      "period": "week",
+      "cap": 250,
+      "cost": {
+       "fr": "Un Sac de minerai de kralkatite contient 250 minerais. La piste du Domaine d'Istan n'est plus répétable depuis mars 2025 : c'est la piste Saison 4, elle, répétable, qui délivre désormais ces récompenses. Accessible en McM comme en PvP.",
+       "en": "A Sack of Kralkatite Ore holds 250 ore. The Domain of Istan track stopped being repeatable in March 2025: the repeatable Living World Season 4 track now delivers these rewards. Available in both WvW and PvP."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Domain_of_Istan_Reward_Track"
+     },
+     {
+      "label": {
+       "fr": "Nœuds, événements et métas — Domaine d'Istan",
+       "en": "Nodes, events and metas — Domain of Istan"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "Palawadan et le Grand Hall en rendent en volume, surtout via les caches de ravitaillement. Sans plafond mais irrégulier : hors projection de délai.",
+       "en": "Palawadan and the Great Hall yield volume, mostly through supply stashes. Uncapped but irregular: excluded from the delay projection."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore"
+     }
+    ]
+   },
+   "timegate": true,
+   "note": {
+    "fr": "💡 Les 3 vendeurs de cœurs vendent chacun un Ballot de kralkatite (25 minerais) par personnage et par jour : 75 par perso et par jour, gratuits une fois les cœurs faits. Sur 4 personnages, les 300 de Vision tombent en un jour au lieu d'un farm de métas.",
+    "en": "💡 Each of the 3 heart vendors sells one Bundle of Kralkatite (25 ore) per character per day: 75 per character per day, free once the hearts are done. Across 4 characters, Vision's 300 land in a single day rather than a meta farm."
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite"
   },
   "difluorite_crystal": {
    "name": "Difluorite Crystal",
@@ -5048,8 +5107,15 @@
    "kind": "acquire",
    "best": "salvage",
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
+   "checked": "2026-08-22",
+   "ref": "wiki:Memory_Essence_Encapsulator (capture Antoine 22/08/2026)",
+   "qty_overlap_verified": [
+    "vision"
+   ],
+   "note": {
+    "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon.",
+    "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
+   }
   },
   "mystic_clover": {
    "name": "Mystic Clover",

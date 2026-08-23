@@ -981,7 +981,19 @@ def check_qty_levels(data, errors, warnings):
             for parent in par_parent:
                 for k in (comps.get(parent, {}).get("qty") or {}):
                     atteints.add(k.split("__")[0])
-            double = sorted({a.split("__")[0] for a in aplatis} & atteints)
+            # Un chevauchement peut etre legitime : Vision demande 250
+            # ectoplasmes au titre de l'exigence commune a tous les
+            # legendaires, PLUS 300 pour ses encapsulateurs. Le declarer se
+            # fait entite par entite, avec provenance, et non en assouplissant
+            # la regle — sinon le prochain vrai doublon passerait aussi.
+            verifies = set(comp.get("qty_overlap_verified") or [])
+            for lid in verifies:
+                if lid not in {a.split("__")[0] for a in aplatis}:
+                    warnings.append(
+                        f"craft_components/{cid} : qty_overlap_verified cite '{lid}', qui n'est "
+                        "pas un total aplati de ce composant — declaration obsolete"
+                    )
+            double = sorted(({a.split("__")[0] for a in aplatis} & atteints) - verifies)
             if double:
                 warnings.append(
                     f"craft_components/{cid} : '{double[0]}' est atteint a la fois en direct et "

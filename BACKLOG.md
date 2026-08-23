@@ -38,24 +38,25 @@ ne comptent pas ; un Guaranteed Wardrobe Unlock, si.
 
 ---
 
-## 1 bis. Ectoplasmes de Vision : 250 + 300, additifs ou doublon ?
+## 1 bis. Ectoplasmes de Vision — ✅ **RÉSOLU le 22/08/2026 : additifs**
 
-Même forme que le point 1, trouvé par la règle affinée de l'audit. Vision est
-atteinte **deux fois** sur les globes d'ectoplasme :
+La page de l'**Encapsulateur d'essence mnésique** tranche : objet à usage
+unique, **6 requis**, acheté 1 Cristal de vision mineur + 3 Lingots d'électrum
++ 10 Filigranes d'orichalque + **50 Globes d'ectoplasme** pièce.
 
-- en direct — `glob_of_ectoplasm.qty.vision = 250` (venu de `common_required`) ;
-- par la chaîne — 50 par Memory Essence Encapsulator × 6 encapsulateurs = **300**.
+Les deux chemins sont donc **bien additifs** :
 
-Total calculé : **550**. Les deux peuvent être légitimement additifs (250 pour
-la voie trèfles/tribut, 300 pour les encapsulateurs), ou le 250 peut être un
-doublon périmé comme on le soupçonne pour la Branded Mass.
+- **250** — l'exigence commune que porte *tout* légendaire (elle figure à
+  l'identique sur les 21 gen1, Aurora, Conflux, Coalescence…) ;
+- **300** — le coût des 6 encapsulateurs.
 
-À vérifier sur **Vision I: Awakening** et **Memory Essence Encapsulator** :
-les 250 ectos apparaissent-ils **en plus** des encapsulateurs, ou sont-ils
-la même dépense comptée deux fois ?
+**Total : 550.** Contrairement à la Masse marquée, où le total à plat était un
+doublon. Deux cas de forme identique, deux conclusions opposées — d'où l'intérêt
+d'avoir vérifié plutôt que d'extrapoler du premier au second.
 
-L'audit signale un **risque**, pas une erreur prouvée : les deux lectures sont
-plausibles, et c'est précisément pour ça qu'il faut une source.
+Le chevauchement est déclaré dans la donnée via `qty_overlap_verified`, entité
+par entité et avec provenance, plutôt qu'en assouplissant la règle d'audit :
+sinon le prochain vrai doublon passerait aussi.
 
 ---
 
