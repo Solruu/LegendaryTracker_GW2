@@ -1096,6 +1096,49 @@ def check_common_required_merged(data, errors, warnings):
                 )
 
 
+def check_obsidian_gift_split(data, errors, warnings):
+    """Les gifts condenses d'Obsidienne : 3 et 3, pas 6 de chaque.
+
+    Un set demande une seule gift par piece, mais repartie sur deux types :
+    Might sur gants, jambieres et bottes, Magic sur coiffe, epaulieres et
+    plastron. La table emplacement -> type vit dans le JSX, liee aux
+    identifiants de succes ; la quantite vit dans les sources. Les deux doivent
+    concorder, sinon le total d'un set est faux d'un facteur 2 — ce qui a
+    reellement ete le cas jusqu'au 20/08/2026.
+    """
+    cc = data.get("craft_components", {})
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    text = jsx[-1].read_text(encoding="utf-8")
+    for gid, marqueur in (("gift_of_condensed_might", "mighty"),
+                          ("gift_of_condensed_magic", "magical")):
+        comp = cc.get(gid)
+        if not isinstance(comp, dict):
+            continue
+        declare = (comp.get("qty") or {}).get("obsidian__full_set")
+        if declare is None:
+            continue
+        # Emplacements portant ce type dans le bloc arcanum du JSX.
+        emplacements = len(re.findall(rf'gift:\s*"{marqueur}"', text))
+        if emplacements and declare != emplacements:
+            errors.append(
+                f"craft_components/{gid} : qty['obsidian__full_set'] = {declare} mais "
+                f"{emplacements} emplacement(s) portent gift: '{marqueur}' dans le JSX — "
+                "la quantite et la repartition par emplacement divergent"
+            )
+    total = sum(
+        len(re.findall(rf'gift:\s*"{m}"', text)) for m in ("mighty", "magical")
+    )
+    if total and total != 6:
+        errors.append(
+            f"bloc arcanum : {total} emplacements portent un gift, il en faut exactement 6"
+        )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1184,7 +1227,10 @@ def main() -> int:
     # 18. Exigences transverses : un seul emplacement, celui que le calcul lit
     check_common_required_merged(data, errors, warnings)
 
-    # 19. Integrite de chaque entree de meta_eligible
+    # 19. Obsidienne : quantite de gifts et repartition par emplacement
+    check_obsidian_gift_split(data, errors, warnings)
+
+    # 20. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")

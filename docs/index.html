@@ -1775,7 +1775,10 @@ const SOURCES_DB = {
     "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond.",
     "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique.",
     "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la.",
-    "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte."
+    "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte.",
+    "changelog_v132": "Noeuds de ressource, d'apres les constats en jeu d'Antoine. Correction : le Domaine d'Istan n'a AUCUN nœud, contrairement a ce que la cadence de la kralkatite annoncait ; le Domaine de Kourna non plus. Mistonium : 25 nœuds par jour et par compte, 3 coups chacun, chance a chaque coup. Difluorite : 44 nœuds, ~33 % de chance, regime par compte ou par personnage non tranche, compte comme par compte en attendant. Ajout majeur : les vendeurs Glace eternelle des Marches de Bjora et de l'Œil du Nord vendent 10 unites de CHACUNE des six monnaies pour 75 Eclats de glace eternelle + 2 688 karma, SANS limite quotidienne. Ils figuraient dans les trois captures et n'avaient pas ete releves : c'est la seule source non plafonnee des six.",
+    "changelog_v133": "Familles de creatures des 8 lignes de trophees : verifiees contre les tableaux « Dropped by » du wiki, elles etaient FAUSSES sur six lignes sur huit. Le sang ne vient ni des humains ni des bandits mais des skelks, chauves-souris et harpies ; les totems ne viennent ni des hylek ni des krait mais des Svanir dechus des Marches de Bjora ; les crocs ne viennent ni des loups ni des drakes mais des skelks, ours et guivres ; les ecailles viennent d'abord des devoreurs et non des guivres ; la poussiere vient surtout des Marques ; les griffes des ours et destructeurs, pas des devoreurs. Les 32 sources passent de verified: false a verified: true. Trois concentrations utiles ressortent : les Marches de Bjora couvrent Sang et Totems, le Desert de cristal couvre Venin et Ecailles, les Terres sauvages d'argent couvrent Venin et Crocs — et la Poussiere se farme gratuitement pendant le circuit Vision, sur les memes cartes marquees.",
+    "changelog_v134": "Retrait des affirmations negatives ajoutees en v133. Les captures montraient le HAUT des tableaux « Dropped by », tries alphabetiquement : j'y ai lu des absences — « ni humains ni bandits ni centaures » — alors que je ne voyais qu'une fraction de chaque liste. Une absence dans une vue partielle n'est pas une absence, et l'ecrire comme un fait etait une erreur de methode. Les constats positifs sont conserves, puisque ce qui a ete vu tombe bien, et chaque tip precise desormais que la liste n'est pas exhaustive."
   },
   "meta_events": {
     "vb": {
@@ -2821,12 +2824,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Pile_of_Radiant_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -2859,12 +2862,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Pile_of_Luminous_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -2907,12 +2910,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Pile_of_Incandescent_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -2967,12 +2970,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : elementaires, spectres et destructeurs. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: elementals, ghosts and destroyers. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Pile_of_Crystalline_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -3490,18 +3493,19 @@ const SOURCES_DB = {
           },
           {
             "label": {
-              "fr": "Nœuds, événements et métas — Domaine d'Istan",
-              "en": "Nodes, events and metas — Domain of Istan"
+              "fr": "Événements et métas — Domaine d'Istan",
+              "en": "Events and metas — Domain of Istan"
             },
             "period": "day",
             "cap": null,
             "cost": {
-              "fr": "Palawadan et le Grand Hall en rendent en volume, surtout via les caches de ravitaillement. Sans plafond mais irrégulier : hors projection de délai.",
-              "en": "Palawadan and the Great Hall yield volume, mostly through supply stashes. Uncapped but irregular: excluded from the delay projection."
+              "fr": "⚠ Le Domaine d'Istan n'a AUCUN nœud de ressource : contrairement aux autres cartes LW4, la kralkatite ne se mine pas. Elle vient des événements, de Palawadan et du Grand Hall. Vérifié en jeu.",
+              "en": "⚠ The Domain of Istan has NO resource nodes: unlike the other LWS4 maps, Kralkatite cannot be mined. It comes from events, Palawadan and the Great Hall. Verified in game."
             },
             "verified": true,
             "checked": "2026-08-22",
-            "ref": "wiki:Kralkatite_Ore"
+            "ref": "observation en jeu d'Antoine (22/08/2026)",
+            "rng": true
           },
           {
             "label": {
@@ -3518,6 +3522,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-22",
             "ref": "wiki:Supply_Stash"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -3581,6 +3600,22 @@ const SOURCES_DB = {
           },
           {
             "label": {
+              "fr": "Nœuds de difluorite — Îles de Ventesable",
+              "en": "Difluorite nodes — Sandswept Isles"
+            },
+            "period": "day",
+            "cap": 44,
+            "rng": true,
+            "cost": {
+              "fr": "44 nœuds au maximum sur la carte, environ 33 % de chance de cristal par nœud — soit une quinzaine par circuit. ⚠ Quotidien, mais le régime n'est pas tranché : par compte ou par personnage, non vérifié. Compté comme par COMPTE, le plancher prudent, tant que ce n'est pas confirmé.",
+              "en": "44 nodes at most on the map, roughly 33% crystal chance per node — about fifteen per run. ⚠ Daily, but the regime is unsettled: per account or per character, unverified. Counted as per ACCOUNT, the cautious floor, until confirmed."
+            },
+            "verified": false,
+            "checked": "2026-08-22",
+            "ref": "observation en jeu d'Antoine (22/08/2026) — régime par compte/perso à confirmer"
+          },
+          {
+            "label": {
               "fr": "Marchand élonien itinérant — Chute draconique",
               "en": "Traveling Elonian Trader — Dragonfall"
             },
@@ -3609,6 +3644,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-22",
             "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -3658,12 +3708,12 @@ const SOURCES_DB = {
             "cap": null,
             "rng": true,
             "cost": {
-              "fr": "Coffres kournans garantis dans toute la carte, 5 par coffre sur « End the plague experiments », 6 sur le Centre impérial, 3 sur les coffres éveillés. Pas de plafond quotidien documenté, mais rendement lié aux événements : hors projection. ⚠ Pas de ballot chez les vendeurs de cœurs.",
-              "en": "Kournan chests guaranteed throughout the map, 5 per chest on 'End the plague experiments', 6 at the Imperial Center, 3 from Awakened chests. No documented daily cap, but yield tied to events: excluded from the projection. ⚠ No heart-vendor bundle."
+              "fr": "⚠ Le Domaine de Kourna n'a AUCUN nœud de ressource : les éclats viennent exclusivement des événements et de leurs coffres. Vérifié en jeu. Coffres kournans garantis dans toute la carte, 5 par coffre sur « End the plague experiments », 6 sur le Centre impérial, 3 sur les coffres éveillés. Pas de plafond quotidien documenté, mais rendement lié aux événements : hors projection. ⚠ Pas de ballot chez les vendeurs de cœurs.",
+              "en": "⚠ The Domain of Kourna has NO resource nodes: shards come solely from events and their chests. Verified in game. Kournan chests guaranteed throughout the map, 5 per chest on 'End the plague experiments', 6 at the Imperial Center, 3 from Awakened chests. No documented daily cap, but yield tied to events: excluded from the projection. ⚠ No heart-vendor bundle."
             },
             "verified": true,
             "checked": "2026-08-22",
-            "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+            "ref": "observation en jeu d'Antoine (22/08/2026)"
           },
           {
             "label": {
@@ -3694,6 +3744,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-22",
             "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -3766,6 +3831,22 @@ const SOURCES_DB = {
           },
           {
             "label": {
+              "fr": "Nœuds de mistonium — Falaises de Jahai",
+              "en": "Mistonium nodes — Jahai Bluffs"
+            },
+            "period": "day",
+            "cap": 25,
+            "rng": true,
+            "cost": {
+              "fr": "25 nœuds par jour et par COMPTE, 3 coups chacun, avec une chance de mistonium à chaque coup. Le plafond borne les nœuds, pas le rendement : hors projection de délai. Refaire le circuit sur un alt ne rapporte rien.",
+              "en": "25 nodes per day per ACCOUNT, 3 strikes each, with a chance of mistonium on every strike. The cap bounds nodes, not yield: excluded from the delay projection. Running the route on an alt yields nothing."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "observation en jeu d'Antoine (22/08/2026)"
+          },
+          {
+            "label": {
               "fr": "Marchand élonien itinérant — Chute draconique",
               "en": "Traveling Elonian Trader — Dragonfall"
             },
@@ -3794,6 +3875,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-22",
             "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -3866,6 +3962,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-20",
             "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -3924,6 +4035,21 @@ const SOURCES_DB = {
             "verified": true,
             "checked": "2026-08-20",
             "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+          },
+          {
+            "label": {
+              "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+              "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+              "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
           }
         ]
       },
@@ -4876,8 +5002,8 @@ const SOURCES_DB = {
         {
           "type": "drop",
           "tip": {
-            "fr": "Drop McM (rare).",
-            "en": "Drop WvW (rare)."
+            "fr": "Drop McM (rare). Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Drop WvW (rare). Non-exhaustive: the wiki table is long and alphabetically sorted."
           }
         }
       ],
@@ -7143,8 +7269,8 @@ const SOURCES_DB = {
         {
           "type": "drop",
           "tip": {
-            "fr": "Bag of Mystic Coins = 6 garantis. Chance dans les coffres de fractales et les Black Lion Material Bags.",
-            "en": "Bag of Mystic Coins = 6 guaranteed. Chance from fractal chests and Black Lion Material Bags."
+            "fr": "Bag of Mystic Coins = 6 garantis. Chance dans les coffres de fractales et les Black Lion Material Bags. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Bag of Mystic Coins = 6 guaranteed. Chance from fractal chests and Black Lion Material Bags. Non-exhaustive: the wiki table is long and alphabetically sorted."
           }
         },
         {
@@ -10898,12 +11024,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Powerful_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -10959,12 +11085,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Armored_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11020,12 +11146,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vial_of_Powerful_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11081,12 +11207,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Elaborate_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11142,12 +11268,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vicious_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11203,12 +11329,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vicious_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11264,12 +11390,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T6.",
-            "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T6 only."
+            "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Ancient_Bone — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11504,12 +11630,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vial_of_Potent_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11565,12 +11691,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vial_of_Thick_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11614,12 +11740,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, humains, bandits et centaures. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: undead, humans, bandits and centaurs. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Vial_of_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11675,12 +11801,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Potent_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11736,12 +11862,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Full_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11785,12 +11911,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : araignees, serpents et krait. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: spiders, snakes and krait. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11846,12 +11972,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Intricate_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11907,12 +12033,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Engraved_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11956,12 +12082,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : hylek, grawl, krait et ogres. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: hylek, grawl, krait and ogres. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12039,12 +12165,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Large_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12100,12 +12226,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Sharp_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12149,12 +12275,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : devoreurs, drakes, loups et raptors. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: devourers, drakes, wolves and raptors. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12210,12 +12336,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Large_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12271,12 +12397,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Smooth_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12320,12 +12446,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : drakes, guivres et sauriens. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: drakes, wurms and saurians. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12381,12 +12507,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Large_Bone — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12442,12 +12568,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Heavy_Bone — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12491,12 +12617,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : morts-vivants, skelk et canides. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: undead, skelk and canines. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Bone — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12552,12 +12678,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T5.",
-            "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T5 only."
+            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Large_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12613,12 +12739,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T4.",
-            "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T4 only."
+            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Sharp_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12662,12 +12788,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Butin direct : loups, drakes et araignees. Le palier tombe avec le niveau de la zone, pas avec celui du personnage : une carte de haut niveau ne donne que du T3.",
-            "en": "Direct drop: wolves, drakes and spiders. The tier follows the zone level, not the character's: a high-level map yields T3 only."
+            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
           },
-          "verified": false,
-          "checked": "2026-08-20",
-          "ref": "familles de creatures a confirmer contre la page wiki du trophee"
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -26842,6 +26968,37 @@ function GW2LegendaryTracker() {
     ? Math.max(0, obsTarget.size - obsTargetOwned)
     : Math.max(0, 6 - obsOwnedSet.size);
 
+  // ── Gifts condensés restants, par emplacement ──
+  // Un set demande 3 Gift of Condensed Might (gants, jambières, bottes) et 3 of
+  // Condensed Magic (coiffe, épaulières, plastron) : une seule par pièce, mais
+  // réparties sur deux types. Le total d'un set était juste, le coût d'une
+  // pièce isolée ne l'était pas — demander les gants seuls annonçait 3 de
+  // chaque au lieu de 1 Might et 0 Magic.
+  // La table emplacement → type vit déjà dans LEGENDARIES.obsidian.arcanum,
+  // liée aux identifiants de succès. On la lit plutôt que de la redire.
+  const obsGiftSplit = (() => {
+    const arc = LEGENDARIES.obsidian?.arcanum ?? {};
+    const ids = LEGENDARIES.obsidian?.armoryApiIdsBySlot ?? null;
+    const out = { mighty: 0, magical: 0 };
+    for (const [slot, info] of Object.entries(arc)) {
+      const g = info?.gift;
+      if (g !== "mighty" && g !== "magical") continue;
+      // Sans correspondance emplacement → id d'armurerie, on ne peut pas savoir
+      // quelle pièce est possédée : on répartit alors au prorata du restant,
+      // ce qui reste exact sur un set complet et honnête sur un set partiel.
+      if (!ids) { out[g] += 1; continue; }
+      const apiId = ids[slot];
+      const vise = !obsHasTarget || obsTarget.has(apiId);
+      if (vise && !obsOwnedSet.has(apiId)) out[g] += 1;
+    }
+    if (!ids) {
+      const ratio = obsRemainingCount / 6;
+      return { mighty: Math.ceil(out.mighty * ratio), magical: Math.ceil(out.magical * ratio),
+               exact: false };
+    }
+    return { ...out, exact: true };
+  })();
+
   // ── Armes gen3 : ciblées / possédées / restantes ──
   const isWeapons = selectedLeg === "weapons";
   const wpnIdsAll = wpnItems ? Object.keys(wpnItems).map(Number) : [];
@@ -28939,6 +29096,14 @@ function GW2LegendaryTracker() {
                     {isArmorSet && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
+              {(obsGiftSplit.mighty > 0 || obsGiftSplit.magical > 0) && (
+                <div style={{ marginTop: 4, fontSize: "11px", color: "rgba(226,201,126,0.6)" }}>
+                  {NX({ fr: `→ ${obsGiftSplit.mighty} Gift of Condensed Might (gants, jambières, bottes) + ${obsGiftSplit.magical} Gift of Condensed Magic (coiffe, épaulières, plastron)`,
+                        en: `→ ${obsGiftSplit.mighty} Gift of Condensed Might (gloves, leggings, boots) + ${obsGiftSplit.magical} Gift of Condensed Magic (headgear, shoulders, chest)` })}
+                  {!obsGiftSplit.exact && NX({ fr: " — réparti au prorata, faute de correspondance emplacement/armurerie",
+                                               en: " — prorated, no slot-to-armory mapping available" })}
+                </div>
+              )}
             </div>
           )}
           {gtStocks?._bags_ok === false && (

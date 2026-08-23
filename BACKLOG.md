@@ -136,16 +136,27 @@ avec le scope `progression` actif.
 
 ---
 
-## 5. Répartition des gifts condensés par emplacement
+## 5. Répartition des gifts condensés — ✅ **RÉSOLU le 22/08/2026**
 
-L'armure d'Obsidienne demande 3 Gifts of Condensed Might (gants, jambières,
-bottes) et 3 of Condensed Magic (coiffe, épaulières, plastron). C'est modélisé
-en `obsidian__full_set: 3`, ce qui donne le bon total pour un **set complet**.
+Le total d'un set complet était juste (3 Might + 3 Magic), mais le coût d'une
+**pièce isolée** ne l'était pas : demander les gants seuls annonçait 3 de chaque
+au lieu de 1 Might et 0 Magic.
 
-Mais le tracker ne sait pas dire ce que coûte **une pièce précise** : demander
-les gants seuls devrait annoncer 1 Might et 0 Magic. Modéliser la répartition
-par emplacement demanderait un suffixe par emplacement, ou un champ `slots` sur
-le composant. Non fait, faute de besoin exprimé.
+Corrigé sans dupliquer la table : la correspondance emplacement → type vit déjà
+dans `LEGENDARIES.obsidian.arcanum`, liée aux identifiants de succès
+(`gift: "mighty"` / `"magical"`). Le JSX la **lit** plutôt que de la redire, et
+calcule le restant par type à partir des pièces visées et possédées.
+
+Deux modes, honnêtes tous les deux :
+- **exact** quand une correspondance emplacement → identifiant d'armurerie
+  existe — on sait quelle pièce est possédée ;
+- **au prorata** sinon, avec la mention affichée. Exact sur un set complet,
+  approché et signalé comme tel sur un set partiel.
+
+L'audit v14 vérifie que `qty['obsidian__full_set']` égale le nombre
+d'emplacements portant ce type dans le JSX, et que les deux types couvrent
+exactement 6 emplacements. C'est précisément le contrôle qui aurait attrapé
+l'erreur de facteur 2 corrigée le 20/08.
 
 ---
 

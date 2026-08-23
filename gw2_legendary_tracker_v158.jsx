@@ -4883,6 +4883,37 @@ export default function GW2LegendaryTracker() {
     ? Math.max(0, obsTarget.size - obsTargetOwned)
     : Math.max(0, 6 - obsOwnedSet.size);
 
+  // ── Gifts condensés restants, par emplacement ──
+  // Un set demande 3 Gift of Condensed Might (gants, jambières, bottes) et 3 of
+  // Condensed Magic (coiffe, épaulières, plastron) : une seule par pièce, mais
+  // réparties sur deux types. Le total d'un set était juste, le coût d'une
+  // pièce isolée ne l'était pas — demander les gants seuls annonçait 3 de
+  // chaque au lieu de 1 Might et 0 Magic.
+  // La table emplacement → type vit déjà dans LEGENDARIES.obsidian.arcanum,
+  // liée aux identifiants de succès. On la lit plutôt que de la redire.
+  const obsGiftSplit = (() => {
+    const arc = LEGENDARIES.obsidian?.arcanum ?? {};
+    const ids = LEGENDARIES.obsidian?.armoryApiIdsBySlot ?? null;
+    const out = { mighty: 0, magical: 0 };
+    for (const [slot, info] of Object.entries(arc)) {
+      const g = info?.gift;
+      if (g !== "mighty" && g !== "magical") continue;
+      // Sans correspondance emplacement → id d'armurerie, on ne peut pas savoir
+      // quelle pièce est possédée : on répartit alors au prorata du restant,
+      // ce qui reste exact sur un set complet et honnête sur un set partiel.
+      if (!ids) { out[g] += 1; continue; }
+      const apiId = ids[slot];
+      const vise = !obsHasTarget || obsTarget.has(apiId);
+      if (vise && !obsOwnedSet.has(apiId)) out[g] += 1;
+    }
+    if (!ids) {
+      const ratio = obsRemainingCount / 6;
+      return { mighty: Math.ceil(out.mighty * ratio), magical: Math.ceil(out.magical * ratio),
+               exact: false };
+    }
+    return { ...out, exact: true };
+  })();
+
   // ── Armes gen3 : ciblées / possédées / restantes ──
   const isWeapons = selectedLeg === "weapons";
   const wpnIdsAll = wpnItems ? Object.keys(wpnItems).map(Number) : [];
@@ -6980,6 +7011,14 @@ export default function GW2LegendaryTracker() {
                     {isArmorSet && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
+              {(obsGiftSplit.mighty > 0 || obsGiftSplit.magical > 0) && (
+                <div style={{ marginTop: 4, fontSize: "11px", color: "rgba(226,201,126,0.6)" }}>
+                  {NX({ fr: `→ ${obsGiftSplit.mighty} Gift of Condensed Might (gants, jambières, bottes) + ${obsGiftSplit.magical} Gift of Condensed Magic (coiffe, épaulières, plastron)`,
+                        en: `→ ${obsGiftSplit.mighty} Gift of Condensed Might (gloves, leggings, boots) + ${obsGiftSplit.magical} Gift of Condensed Magic (headgear, shoulders, chest)` })}
+                  {!obsGiftSplit.exact && NX({ fr: " — réparti au prorata, faute de correspondance emplacement/armurerie",
+                                               en: " — prorated, no slot-to-armory mapping available" })}
+                </div>
+              )}
             </div>
           )}
           {gtStocks?._bags_ok === false && (
