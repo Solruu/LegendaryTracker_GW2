@@ -1019,7 +1019,8 @@
   "changelog_v133": "Familles de creatures des 8 lignes de trophees : verifiees contre les tableaux « Dropped by » du wiki, elles etaient FAUSSES sur six lignes sur huit. Le sang ne vient ni des humains ni des bandits mais des skelks, chauves-souris et harpies ; les totems ne viennent ni des hylek ni des krait mais des Svanir dechus des Marches de Bjora ; les crocs ne viennent ni des loups ni des drakes mais des skelks, ours et guivres ; les ecailles viennent d'abord des devoreurs et non des guivres ; la poussiere vient surtout des Marques ; les griffes des ours et destructeurs, pas des devoreurs. Les 32 sources passent de verified: false a verified: true. Trois concentrations utiles ressortent : les Marches de Bjora couvrent Sang et Totems, le Desert de cristal couvre Venin et Ecailles, les Terres sauvages d'argent couvrent Venin et Crocs — et la Poussiere se farme gratuitement pendant le circuit Vision, sur les memes cartes marquees.",
   "changelog_v134": "Retrait des affirmations negatives ajoutees en v133. Les captures montraient le HAUT des tableaux « Dropped by », tries alphabetiquement : j'y ai lu des absences — « ni humains ni bandits ni centaures » — alors que je ne voyais qu'une fraction de chaque liste. Une absence dans une vue partielle n'est pas une absence, et l'ecrire comme un fait etait une erreur de methode. Les constats positifs sont conserves, puisque ce qui a ete vu tombe bien, et chaque tip precise desormais que la liste n'est pas exhaustive.",
   "changelog_v135": "Chantier 2, etape 1. Trois legendaires declaraient un Mystic Tribute dans leur propre recette sans figurer dans mystic_tribute.qty : Coalescence, Fractal Capacitor et The Binding of Ipos. La chaine s'arretait net, et Coalescence affichait ZERO trophee T6 alors qu'elle en demande 200 de chacun des huit — meme defaut que celui corrige sur Aurora et Vision. Les 250 pieces mystiques et 77 trefles deja portes a plat ne sont PAS touches : mystic_coin et mystic_clover sont indexes sur des legendaires, pas sur le tribut, donc la cascade ne les relit pas et il n'y a aucun double comptage. Verifie avant et apres sur les totaux.",
-  "changelog_v136": "Chantier 2, etape 2. Gift of Magic et Gift of Might n'existaient pas comme composants : la chaine s'arretait au Gift of Fortune, et les 21 armes gen1, Ad Infinitum et The Ascension affichaient ZERO trophee T6 alors qu'ils en demandent 250 par ligne, soit 2 000 au total. Warbringer, qui declare pourtant un Gift of Fortune dans sa recette, ne figurait meme pas dans son qty. ⚠ Les trefles et ectoplasmes ne sont PAS rattaches au gift : ils sont deja portes a plat par legendaire (77 et 250, verifie sur gen1_frostfang), et les rattacher les compterait deux fois. Difference notable au passage : la voie gen1 demande 250 T6 BRUTS par ligne sans aucun palier inferieur, la ou la voie condensee des gen2 n'en demande que 100 en compensant avec du T5. Le gen1 est 2,5 fois plus cher en T6 pur."
+  "changelog_v136": "Chantier 2, etape 2. Gift of Magic et Gift of Might n'existaient pas comme composants : la chaine s'arretait au Gift of Fortune, et les 21 armes gen1, Ad Infinitum et The Ascension affichaient ZERO trophee T6 alors qu'ils en demandent 250 par ligne, soit 2 000 au total. Warbringer, qui declare pourtant un Gift of Fortune dans sa recette, ne figurait meme pas dans son qty. ⚠ Les trefles et ectoplasmes ne sont PAS rattaches au gift : ils sont deja portes a plat par legendaire (77 et 250, verifie sur gen1_frostfang), et les rattacher les compterait deux fois. Difference notable au passage : la voie gen1 demande 250 T6 BRUTS par ligne sans aucun palier inferieur, la ou la voie condensee des gen2 n'en demande que 100 en compensant avec du T5. Le gen1 est 2,5 fois plus cher en T6 pur.",
+  "changelog_v137": "Backlog point 1 ter tranche par Antoine en jeu : les nœuds de difluorite sont PAR PERSONNAGE, et non par compte comme le plancher prudent le supposait. Les Iles de Ventesable deviennent la carte LW4 la plus rentable par personnage, puisque les coffres de meta (21/jour) ET les nœuds (44/jour a ~33 %) s'y demultiplient tous deux avec les alts — seule monnaie de la Saison 4 a cumuler deux sources par personnage. Le mistonium reste a 25 nœuds par COMPTE : les deux cartes ne suivent pas la meme regle, ce qui interdisait d'extrapoler de l'une a l'autre."
  },
  "meta_events": {
   "vb": {
@@ -2850,12 +2851,13 @@
       "cap": 44,
       "rng": true,
       "cost": {
-       "fr": "44 nœuds au maximum sur la carte, environ 33 % de chance de cristal par nœud — soit une quinzaine par circuit. ⚠ Quotidien, mais le régime n'est pas tranché : par compte ou par personnage, non vérifié. Compté comme par COMPTE, le plancher prudent, tant que ce n'est pas confirmé.",
-       "en": "44 nodes at most on the map, roughly 33% crystal chance per node — about fifteen per run. ⚠ Daily, but the regime is unsettled: per account or per character, unverified. Counted as per ACCOUNT, the cautious floor, until confirmed."
+       "fr": "44 nœuds au maximum sur la carte, environ 33 % de chance de cristal par nœud — soit une quinzaine par circuit. PAR PERSONNAGE et par jour : refaire le circuit sur un alt rapporte autant. Vérifié en jeu. 💡 Deuxième monnaie LW4 à se démultiplier avec les alts, après la kralkatite — mais ici ce sont les NŒUDS qui se démultiplient, pas un ballot de vendeur.",
+       "en": "44 nodes at most on the map, roughly 33% crystal chance per node — about fifteen per run. PER CHARACTER per day: running the route on an alt yields just as much. Verified in game. 💡 The second LWS4 currency to scale with alts, after Kralkatite — but here it is the NODES that scale, not a vendor bundle."
       },
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "observation en jeu d'Antoine (22/08/2026) — régime par compte/perso à confirmer"
+      "ref": "observation en jeu d'Antoine (22/08/2026)",
+      "per_character": true
      },
      {
       "label": {
@@ -2908,7 +2910,11 @@
    "timegate": true,
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+   "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)",
+   "note": {
+    "fr": "💡 Les Îles de Ventesable sont la carte LW4 la plus rentable par personnage : les coffres de méta (21/jour) ET les nœuds (44/jour, ~33 %) se démultiplient tous deux avec les alts. Aucune autre monnaie de la Saison 4 ne cumule deux sources par personnage.",
+    "en": "💡 The Sandswept Isles are the most per-character-rewarding LWS4 map: meta chests (21/day) AND nodes (44/day, ~33%) both scale with alts. No other Season 4 currency stacks two per-character sources."
+   }
   },
   "inscribed_shard": {
    "name": "Inscribed Shard",

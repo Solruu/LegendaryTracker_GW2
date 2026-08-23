@@ -60,26 +60,29 @@ sinon le prochain vrai doublon passerait aussi.
 
 ---
 
-## 1 ter. Nœuds de difluorite : par compte ou par personnage ?
+## 1 ter. Nœuds de difluorite — ✅ **RÉSOLU le 22/08/2026 : par PERSONNAGE**
 
-44 nœuds au maximum aux Îles de Ventesable, environ 33 % de chance de cristal
-par nœud — soit une quinzaine par circuit. **Quotidien, régime non tranché.**
+Vérifié en jeu par Antoine. **44 nœuds, ~33 % de chance, par personnage et par
+jour.** Le plancher prudent (« par compte ») était le mauvais pari.
 
-L'enjeu est le même que pour la kralkatite : si c'est par personnage, monter des
-alts multiplie le rendement ; si c'est par compte, refaire le circuit ne rapporte
-rien. Les sources se contredisent — un guide dit qu'on peut se connecter avec
-chaque personnage pour miner, un joueur rapporte l'inverse sur cette carte
-précise.
+**Conséquence : les Îles de Ventesable sont la carte LW4 la plus rentable par
+personnage.** Les coffres de méta (21/jour) **et** les nœuds (44/jour) s'y
+démultiplient tous deux avec les alts — aucune autre monnaie de la Saison 4 ne
+cumule deux sources par personnage.
 
-**Compté comme par COMPTE en attendant** : c'est le plancher prudent, celui qui
-n'annonce pas un délai qu'on ne tiendra pas.
+Et la règle n'est pas uniforme : le **mistonium** reste à 25 nœuds **par
+compte**. Deux cartes, deux régimes — c'est exactement ce qui interdisait
+d'extrapoler de l'une à l'autre, et pourquoi ce point attendait une observation
+plutôt qu'une déduction.
 
-Vérification : faire le circuit de nœuds, changer de personnage, regarder s'ils
-sont encore là. Trente secondes sur place.
+**Récapitulatif des régimes de nœuds**, désormais complet :
 
-Constats déjà acquis en jeu (22/08/2026) : **Istan et Kourna n'ont aucun nœud**
-de ressource, le mistonium est à **25 nœuds/jour/compte** (3 coups chacun,
-chance à chaque coup).
+| carte | nœuds | régime |
+|---|---|---|
+| Îles de Ventesable | 44 | **par personnage** |
+| Falaises de Jahai | 25 | par compte |
+| Domaine d'Istan | *aucun* | — |
+| Domaine de Kourna | *aucun* | — |
 
 ---
 
