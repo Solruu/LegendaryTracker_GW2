@@ -135,33 +135,42 @@ pour **Totems + Sang**.
 
 ---
 
-## 3 bis. Six « Gift of… » spécifiques manquants
+## 3 bis. Six « Gift of… » spécifiques — ✅ **RÉSOLU le 22/08/2026**
 
-C'est la toute première remarque d'Antoine sur ce projet : *« aucun des
-sous-onglets components ne donne les requis pour les "gift of…" spécifiques »*.
-Les chaînes génériques sont désormais complètes, celle-ci ne l'est pas.
+Créés d'après les arbres GW2Efficiency, plus **deux maillons partagés découverts
+au passage** :
 
-Six identifiants sont cités dans une recette et n'existent pas :
+- **`gift_of_energy`** — 250 de chacun des 4 paliers de poussière, soit 1 000
+  unités. Partagé par **Aurora et Vision**. La ligne des poussières sert donc
+  deux fois : ici, et dans les gifts condensés du Mystic Tribute.
+- **`gift_of_the_mists`** — partagé par **Aurora, Vision ET Conflux**. Exige du
+  **PvP** (Gift of Glory, 250 Éclats) *et* du **McM** (Gift of Battle) : aucune
+  voie purement PvE.
 
-| composant | légendaire(s) |
-|---|---|
-| `gift_of_conquering` | Warbringer, Conflux |
-| `gift_of_the_world` | Conflux |
-| `warcry` | Warbringer (précurseur) |
-| `gift_of_sentience` | Aurora |
-| `gift_of_prescience` | Vision |
-| `gift_of_compassion` | Coalescence |
+**Trouvaille majeure : `warcry`, le précurseur de Warbringer, coûte 2 450
+Tickets d'escarmouche McM** — 350 + 525 + 700 + 875 pour les quatre Wings of
+War. À 455/semaine (365 de la piste + 90 des hebdomadaires), c'est **6 semaines
+pour le seul précurseur**, avant le reste de Warbringer. Le plus lourd timegate
+McM du fichier, et il n'était modélisé nulle part.
 
-**L'audit v15 les signale désormais** : tout composant cité dans
-`legendaries[].components` doit exister, sinon la chaîne s'arrête et le coût
-annoncé est incomplet. C'est la règle qui aurait attrapé d'un coup les gifts
-Magic et Might, et le Mystic Tribute de Coalescence.
+À noter aussi : `gift_of_conquering` demande **4 Gift of Battle**, soit quatre
+pistes de récompense McM complètes. Timegate de fait, invisible tant qu'on ne
+compte que les monnaies.
 
-Ce qui manque pour les créer : leurs **recettes**. Une capture wiki par gift, ou
-l'arbre GW2Efficiency du légendaire concerné, suffirait.
+---
 
-⚠ Ne pas créer de coquilles vides : un composant sans recette ni quantité
-ajoute du bruit sans rien calculer.
+## 3 ter. Deux divergences Coalescence à arbitrer
+
+L'arbre de recette contredit le fichier sur deux lignes :
+
+| poste | arbre | fichier | écart |
+|---|---|---|---|
+| Ball of Dark Energy | **6** | 100 | ×17 |
+| Funerary Incense | **250** | 300 | ×1,2 |
+
+Non tranchées : le 100 recouvre peut-être un autre poste de Coalescence que le
+Gift of Compassion. Vu que trois arbitrages précédents ont donné raison à `qty`
+et un à l'arbre, aucun réflexe n'est fiable ici.
 
 ---
 

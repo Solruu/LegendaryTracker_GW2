@@ -1784,7 +1784,8 @@ const SOURCES_DB = {
     "changelog_v137": "Backlog point 1 ter tranche par Antoine en jeu : les nœuds de difluorite sont PAR PERSONNAGE, et non par compte comme le plancher prudent le supposait. Les Iles de Ventesable deviennent la carte LW4 la plus rentable par personnage, puisque les coffres de meta (21/jour) ET les nœuds (44/jour a ~33 %) s'y demultiplient tous deux avec les alts — seule monnaie de la Saison 4 a cumuler deux sources par personnage. Le mistonium reste a 25 nœuds par COMPTE : les deux cartes ne suivent pas la meme regle, ce qui interdisait d'extrapoler de l'une a l'autre.",
     "changelog_v138": "Ligne des os rechiffree sur le tableau « Dropped by » complet : 56 Risen sur 120 creatures, puis gelees, geants, araignees, elementaires et trolls. Les Detroits de la Devastation (19 sources) manquaient a la liste precedente, qui ne citait que le Bond de Malchor et le Rivage maudit. Spirit Thread : identifiant 77372 pose, mais sa description — « energie liberee par la mort d'un chak gerent » — contredit la cadence « 1 par semaine sur Gorseval » que j'avais ecrite sans source ; elle passe en non verifiee. Ancient Cipher : l'identifiant 81722 renvoie un 404, il reste donc vide.",
     "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master.",
-    "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet."
+    "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet.",
+    "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300."
   },
   "meta_events": {
     "vb": {
@@ -3091,6 +3092,10 @@ const SOURCES_DB = {
         "checked": "2026-08-13",
         "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
         "verified": true
+      },
+      "qty_note": {
+        "fr": "⚠ Divergence à arbitrer : l'arbre de recette de Coalescence montre 6 Boules d'énergie sombre dans le Gift of Compassion, quand qty['coalescence'] en déclare 100. Un facteur ~17. Le 100 recouvre peut-être un autre poste, ou il est faux. Non tranché.",
+        "en": "⚠ Divergence to arbitrate: Coalescence's recipe tree shows 6 Balls of Dark Energy in the Gift of Compassion, while qty['coalescence'] declares 100. A factor of ~17. The 100 may cover another line, or it may be wrong. Unresolved."
       }
     },
     "stabilizing_matrix": {
@@ -3413,6 +3418,10 @@ const SOURCES_DB = {
             "ref": "wiki:Gift_of_Desert_Mastery"
           }
         ]
+      },
+      "qty_note": {
+        "fr": "⚠ Divergence à arbitrer : l'arbre montre 250 Encens funéraires dans le Gift of Desert Mastery de Coalescence, quand qty['coalescence'] en déclare 300. Non tranché.",
+        "en": "⚠ Divergence to arbitrate: the tree shows 250 Funerary Incense in Coalescence's Gift of Desert Mastery, while qty['coalescence'] declares 300. Unresolved."
       }
     },
     "kralkatite_ore": {
@@ -5064,9 +5073,12 @@ const SOURCES_DB = {
         "mist_pearl",
         "mist_enhanced_mithril",
         "warbringer",
-        "armor_wvw"
+        "armor_wvw",
+        "warcry"
       ],
-      "qty": {},
+      "qty": {
+        "warcry": 2450
+      },
       "farmable": true,
       "timegate": true,
       "timegate_note": {
@@ -5074,6 +5086,18 @@ const SOURCES_DB = {
         "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Both: ~4300 cumulative tickets (~12 wks). WvW Armor=7880 tickets (~22 cumulative weeks)."
       },
       "sources": [
+        {
+          "type": "reward_track",
+          "map": "World vs World",
+          "tip": {
+            "fr": "Piste de récompense d'escarmouche : 365 par semaine jusqu'au coffre Diamant, passive dès qu'on joue en McM. Plus 90 aux hebdomadaires McM, et 1 par objectif pris ou défendu. Tout est gratuit.",
+            "en": "Skirmish reward track: 365 per week through the Diamond chest, passive as soon as you play WvW. Plus 90 from the WvW weeklies, and 1 per objective taken or defended. All free."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:WvW_Skirmish_Claim_Ticket"
+        },
         {
           "type": "wvw_skirmish",
           "tip": {
@@ -13079,6 +13103,279 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+    },
+    "gift_of_sentience": {
+      "name": "Gift of Sentience",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "aurora": 1
+      },
+      "needed_for": [
+        "aurora"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Gift of Energy + 1 Gift of the Mists + 100 Pierres runiques glacées + 1 Gift of Valor.",
+        "en": "MF: 1 Gift of Energy + 1 Gift of the Mists + 100 Icy Runestones + 1 Gift of Valor."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+    },
+    "gift_of_prescience": {
+      "name": "Gift of Prescience",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "vision": 1
+      },
+      "needed_for": [
+        "vision"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Gift of Energy + 1 Gift of the Mists + 100 Pierres runiques glacées + 1 Shattered Gift of Prescience (les 6 collections Visions of…).",
+        "en": "MF: 1 Gift of Energy + 1 Gift of the Mists + 100 Icy Runestones + 1 Shattered Gift of Prescience (the 6 Visions of… collections)."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+    },
+    "gift_of_energy": {
+      "name": "Gift of Energy",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_sentience": 1,
+        "gift_of_prescience": 1
+      },
+      "needed_for": [
+        "gift_of_prescience",
+        "gift_of_sentience"
+      ],
+      "recipe": {
+        "fr": "MF : 250 de chacun des 4 paliers de poussière — cristalline, incandescente, lumineuse, radieuse.",
+        "en": "MF: 250 of each of the 4 dust tiers — crystalline, incandescent, luminous, radiant."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "note": {
+        "fr": "⚡ 1 000 poussières au total, et Aurora comme Vision en demandent chacune un. La ligne des poussières sert donc DEUX fois : ici, et dans les gifts condensés du Mystic Tribute.",
+        "en": "⚡ 1,000 dust in total, and both Aurora and Vision need one each. The dust line therefore serves TWICE: here, and in the Mystic Tribute's condensed gifts."
+      }
+    },
+    "gift_of_the_mists": {
+      "name": "Gift of the Mists",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_sentience": 1,
+        "gift_of_prescience": 1,
+        "gift_of_the_world": 1
+      },
+      "needed_for": [
+        "gift_of_prescience",
+        "gift_of_sentience",
+        "gift_of_the_world"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Gift of Glory (250 Éclats de gloire) + 1 Gift of Battle (piste de récompense McM) + 1 Gift of War (250 Mémoires de bataille) + 1 Cube of Stabilized Dark Energy.",
+        "en": "MF: 1 Gift of Glory (250 Shards of Glory) + 1 Gift of Battle (WvW reward track) + 1 Gift of War (250 Memories of Battle) + 1 Cube of Stabilized Dark Energy."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "note": {
+        "fr": "⚡ Partagé par Aurora, Vision ET Conflux. Exige du PvP (gloire) ET du McM (bataille) : aucune voie purement PvE.",
+        "en": "⚡ Shared by Aurora, Vision AND Conflux. Requires PvP (glory) AND WvW (battle): no purely PvE route."
+      }
+    },
+    "gift_of_conquering": {
+      "name": "Gift of Conquering",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "warbringer": 1,
+        "conflux": 1
+      },
+      "needed_for": [
+        "conflux",
+        "warbringer"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Legendary Spike + 4 Gift of Battle + 250 Mémoires de bataille + 2 Cristaux de vision.",
+        "en": "MF: 1 Legendary Spike + 4 Gifts of Battle + 250 Memories of Battle + 2 Vision Crystals."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "note": {
+        "fr": "⚠ 4 Gift of Battle : chacun demande une piste de récompense McM complète. C'est un timegate de fait, invisible tant qu'on ne compte que les monnaies.",
+        "en": "⚠ 4 Gifts of Battle: each needs a full WvW reward track. A de facto timegate, invisible as long as only currencies are counted."
+      }
+    },
+    "gift_of_the_world": {
+      "name": "Gift of the World",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "conflux": 1
+      },
+      "needed_for": [
+        "conflux"
+      ],
+      "recipe": {
+        "fr": "MF : 1 War Commendation (Gift of Warfare + Mist Pearl + Mist-Enhanced Mithril) + 1 Gift of the Mists + 1 Gift of War Dedication + 100 Pierres runiques glacées.",
+        "en": "MF: 1 War Commendation (Gift of Warfare + Mist Pearl + Mist-Enhanced Mithril) + 1 Gift of the Mists + 1 Gift of War Dedication + 100 Icy Runestones."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+    },
+    "warcry": {
+      "name": "Warcry",
+      "kind": "precursor",
+      "farmable": true,
+      "qty": {
+        "warbringer": 1
+      },
+      "needed_for": [
+        "warbringer"
+      ],
+      "recipe": {
+        "fr": "Précurseur : 4 Wings of War achetées contre des Tickets d'escarmouche McM — Recruit's 350, Soldier's 525, General's 700, Commander's 875. Soit 2 450 tickets.",
+        "en": "Precursor: 4 Wings of War bought with WvW Skirmish Claim Tickets — Recruit's 350, Soldier's 525, General's 700, Commander's 875. That is 2,450 tickets."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "note": {
+        "fr": "⏳ 2 450 tickets d'escarmouche : à 455 par semaine — 365 de la piste plus 90 des hebdomadaires — c'est 6 semaines pour le seul précurseur, avant même le reste de Warbringer. Le plus lourd timegate McM du fichier.",
+        "en": "⏳ 2,450 skirmish tickets: at 455 a week — 365 from the track plus 90 from the weeklies — that is 6 weeks for the precursor alone, before anything else in Warbringer. The heaviest WvW timegate in the file."
+      },
+      "cadence_ref": "skirmish_claim_tickets"
+    },
+    "gift_of_compassion": {
+      "name": "Gift of Compassion",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "coalescence": 1
+      },
+      "needed_for": [
+        "coalescence"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Gift of Desert Mastery + 6 Boules d'énergie sombre + 150 Legendary Insights + 1 Gift of Complex Emotions (chaîne d'alambic, 8 émotions à embouteiller).",
+        "en": "MF: 1 Gift of Desert Mastery + 6 Balls of Dark Energy + 150 Legendary Insights + 1 Gift of Complex Emotions (alembic chain, 8 emotions to bottle)."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
     }
   },
   "enchaînements_recommandés": {
