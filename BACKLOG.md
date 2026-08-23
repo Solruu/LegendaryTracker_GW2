@@ -11,34 +11,30 @@ l'intuition « la référence fait foi » aurait été fausse).
 
 ---
 
-## 1. Branded Mass : 6 ou 16 armes Dragonsblood ? — *Antoine vérifie, a priori 6*
+## 1. Branded Mass : 6 armes — ✅ **RÉSOLU le 22/08/2026**
 
-**Enjeu : 660 vs 960 Branded Mass, soit 12 jours de farm à 25/jour.**
+**Vision demande 6 armes Dragonsblood, pas 16.** Antoine avait raison.
 
-Trois nombres coexistent :
+Deux succès portaient sur les armes Dragonsblood, et le tracker confondait
+les deux :
 
-| valeur | emplacement | sens |
-|---|---|---|
-| 300 | `branded_mass.qty.vision` | total à plat, exigence directe |
-| 6 | `dragonsblood_weapons.qty.vision` | nombre d'armes |
-| 60 | `branded_mass.qty.dragonsblood_weapons` | par arme |
-| 960 | `bitTips` du succès 4577 (`vis_forge`) | « 60 par arme, 960 pour les 16 » |
+- **Vision of Equipment: Dragonsblood Weapons** — l'étape réelle de Vision.
+  Fabriquer **six armes de six types différents** (six torches ne comptent pas),
+  puis **retourner voir Forge Master Hilina et acheter l'objet 5 po** : la
+  collection ne se valide pas toute seule.
+- **Journeyman of the Forge** — succès **distinct** de « All or Nothing »,
+  demandant les **16** armes. **Facultatif pour Vision.**
 
-La cascade calcule `6 × 60 + 300 = 660`. La prose dit `16 × 60 = 960`.
+Le tracker présentait Journeyman comme l'étape Equipment, annonçant donc
+**960 Masse marquée au lieu de 360**.
 
-Indice contradictoire : les `bitTips` du succès 4577 comptent **16 entrées**
-(bits 0 à 15), ce qui suggère 16 armes. Mais Antoine penche pour 6 après
-lecture en jeu.
+Corrigé : le total à plat de 300 sur `qty['vision']` était bien le doublon
+périmé soupçonné — l'étape ne demande aucune Masse marquée hors des armes.
+Vision passe de **660 à 360**, soit **12 jours de farm en moins** au plafond
+de 25/jour.
 
-À vérifier :
-1. **Journeyman of the Forge** (succès 4577) — combien d'armes faut-il
-   réellement fabriquer ?
-2. **Dragonsblood Spear** → *Recipe* — le « environ 60 » mérite un chiffre ferme.
-3. **Vision I: Awakening** — une étape consomme-t-elle de la Branded Mass
-   **hors** des armes ? Si non, le 300 à plat est un doublon périmé.
-
-Si 6 est confirmé : corriger la prose des `bitTips` (960 → 360) et trancher le
-sort du 300. Si 16 : corriger `qty.vision` et supprimer le 300.
+Gotchas encodés dans la prose : les armes héroïques et le Dragonsblood Impaler
+ne comptent pas ; un Guaranteed Wardrobe Unlock, si.
 
 ---
 

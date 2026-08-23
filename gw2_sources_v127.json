@@ -1009,7 +1009,8 @@
   "changelog_v123": "La chaine des tributs se referme. Le lien « 1 Mystic Tribute = 2 Gifts of Condensed Magic + 2 of Condensed Might » n'existait qu'en prose dans le champ recipe : seuls les legendaires portant aussi une entree aplatie recevaient des gifts. Aurora, Vision, Conflux, Coalescence, Warbringer, Ad Infinitum et The Ascension affichaient 0 trophee T6 alors qu'ils en demandent 200 de chacun. Les 34 entrees aplaties de gen2 et gen3 sont remplacees par un seul lien mystic_tribute=2 et draconic_tribute=1, que la cascade propage. Les exigences directes hors tribut (Selachimorpha, Obsidienne, Perfected Envoy, runes/cachets/reliques, Aetheric Anchor) sont conservees telles quelles.",
   "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres.",
   "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart.",
-  "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche."
+  "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche.",
+  "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour."
  },
  "meta_events": {
   "vb": {
@@ -2789,7 +2790,6 @@
     }
    ],
    "qty": {
-    "vision": 300,
     "dragonsblood_weapons": 60
    },
    "kind": "acquire",
@@ -2829,10 +2829,13 @@
     ]
    },
    "timegate": true,
-   "qty_note": {
-    "fr": "⚠ Divergence a arbitrer : la prose editoriale annonce 960 Branded Mass minimum pour Vision I (le vrai timegate, via Journeyman of the Forge), alors que qty['vision'] en declare 300. À 25 par jour, l'ecart vaut 26 jours de farm. Non tranche faute de verification de la decomposition.",
-    "en": "⚠ Divergence to arbitrate: the editorial prose states 960 Branded Mass minimum for Vision I (the real timegate, via Journeyman of the Forge), while qty['vision'] declares 300. At 25 a day, the gap is 26 days of farming. Left unresolved pending verification of the breakdown."
-   }
+   "note": {
+    "fr": "Vision en consomme ~360 : 6 armes Dragonsblood à ~60 chacune. Le total passait auparavant à 660, un total à plat de 300 s'ajoutant à la chaîne sans rien représenter — l'étape ne demande aucune Masse marquée en dehors des armes. Le plafond de 25 nœuds par jour et par compte reste le vrai verrou : compter environ 2 semaines, et non 4.",
+    "en": "Vision consumes ~360: 6 Dragonsblood weapons at ~60 each. The total previously read 660, a flat 300 stacking onto the chain without representing anything — the step requires no Branded Mass outside the weapons. The 25 nodes per day per account cap remains the real gate: budget about 2 weeks, not 4."
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Vision_of_Equipment:_Dragonsblood_Weapons + wiki:Journeyman_of_the_Forge (captures Antoine 22/08/2026)"
   },
   "mistborn_mote": {
    "name": "Mistborn Mote",
