@@ -1782,7 +1782,8 @@ const SOURCES_DB = {
     "changelog_v135": "Chantier 2, etape 1. Trois legendaires declaraient un Mystic Tribute dans leur propre recette sans figurer dans mystic_tribute.qty : Coalescence, Fractal Capacitor et The Binding of Ipos. La chaine s'arretait net, et Coalescence affichait ZERO trophee T6 alors qu'elle en demande 200 de chacun des huit — meme defaut que celui corrige sur Aurora et Vision. Les 250 pieces mystiques et 77 trefles deja portes a plat ne sont PAS touches : mystic_coin et mystic_clover sont indexes sur des legendaires, pas sur le tribut, donc la cascade ne les relit pas et il n'y a aucun double comptage. Verifie avant et apres sur les totaux.",
     "changelog_v136": "Chantier 2, etape 2. Gift of Magic et Gift of Might n'existaient pas comme composants : la chaine s'arretait au Gift of Fortune, et les 21 armes gen1, Ad Infinitum et The Ascension affichaient ZERO trophee T6 alors qu'ils en demandent 250 par ligne, soit 2 000 au total. Warbringer, qui declare pourtant un Gift of Fortune dans sa recette, ne figurait meme pas dans son qty. ⚠ Les trefles et ectoplasmes ne sont PAS rattaches au gift : ils sont deja portes a plat par legendaire (77 et 250, verifie sur gen1_frostfang), et les rattacher les compterait deux fois. Difference notable au passage : la voie gen1 demande 250 T6 BRUTS par ligne sans aucun palier inferieur, la ou la voie condensee des gen2 n'en demande que 100 en compensant avec du T5. Le gen1 est 2,5 fois plus cher en T6 pur.",
     "changelog_v137": "Backlog point 1 ter tranche par Antoine en jeu : les nœuds de difluorite sont PAR PERSONNAGE, et non par compte comme le plancher prudent le supposait. Les Iles de Ventesable deviennent la carte LW4 la plus rentable par personnage, puisque les coffres de meta (21/jour) ET les nœuds (44/jour a ~33 %) s'y demultiplient tous deux avec les alts — seule monnaie de la Saison 4 a cumuler deux sources par personnage. Le mistonium reste a 25 nœuds par COMPTE : les deux cartes ne suivent pas la meme regle, ce qui interdisait d'extrapoler de l'une a l'autre.",
-    "changelog_v138": "Ligne des os rechiffree sur le tableau « Dropped by » complet : 56 Risen sur 120 creatures, puis gelees, geants, araignees, elementaires et trolls. Les Detroits de la Devastation (19 sources) manquaient a la liste precedente, qui ne citait que le Bond de Malchor et le Rivage maudit. Spirit Thread : identifiant 77372 pose, mais sa description — « energie liberee par la mort d'un chak gerent » — contredit la cadence « 1 par semaine sur Gorseval » que j'avais ecrite sans source ; elle passe en non verifiee. Ancient Cipher : l'identifiant 81722 renvoie un 404, il reste donc vide."
+    "changelog_v138": "Ligne des os rechiffree sur le tableau « Dropped by » complet : 56 Risen sur 120 creatures, puis gelees, geants, araignees, elementaires et trolls. Les Detroits de la Devastation (19 sources) manquaient a la liste precedente, qui ne citait que le Bond de Malchor et le Rivage maudit. Spirit Thread : identifiant 77372 pose, mais sa description — « energie liberee par la mort d'un chak gerent » — contredit la cadence « 1 par semaine sur Gorseval » que j'avais ecrite sans source ; elle passe en non verifiee. Ancient Cipher : l'identifiant 81722 renvoie un 404, il reste donc vide.",
+    "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master."
   },
   "meta_events": {
     "vb": {
@@ -11527,22 +11528,18 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {},
-      "apiId_note": {
-        "fr": "⚠ L'identifiant 81722 proposé le 22/08/2026 renvoie un 404 sur /v2/items : il ne correspond à aucun objet. Laissé sans apiId plutôt que renseigné à faux — un identifiant erroné produit un stock plausible et faux, ce qui est pire qu'un stock absent.",
-        "en": "⚠ The id 81722 proposed on 2026-08-22 returns a 404 on /v2/items: it matches no item. Left without an apiId rather than filled in wrongly — a wrong id yields a plausible, false stock, which is worse than no stock at all."
-      },
       "sources": [
         {
           "type": "chest",
           "map": "Siren's Landing",
           "tip": {
-            "fr": "Drop aleatoire des coffres caches du Reliquaire d'Abaddon, conditionnes par les 5 coeurs de renommee de la carte.",
-            "en": "Random drop from the Abaddon's Reliquary hidden chests, gated behind the map's 5 renown hearts."
+            "fr": "Drop aléatoire du Coffre caché du Reliquaire, dans le Reliquaire d'Abaddon à Siren's Landing. Objet de la collection Siren's Landing Master. Chaque personnage ne peut ouvrir que deux coffres par jour, d'où les délais.",
+            "en": "Random drop from the Hidden Reliquary Chest, in Abaddon's Reliquary at Siren's Landing. Part of the Siren's Landing Master collection. Each character may only open two chests per day, hence the wait."
           },
           "free_repeatable": true,
           "verified": true,
-          "checked": "2026-08-20",
-          "ref": "observation en jeu d'Antoine (20/08/2026) + gw2_sources_v111"
+          "checked": "2026-08-22",
+          "ref": "wiki:Ancient_Cipher (capture Antoine 22/08/2026) — code de discussion [&AgE6PwEA] decode en 81722"
         }
       ],
       "cadence": {
@@ -11561,8 +11558,8 @@ const SOURCES_DB = {
               "en": "2 chests per character per day, with the map's 5 hearts done for the day. The Cipher is a random drop from those chests: the cap bounds the number of attempts, not the number of Ciphers. It can drop from the first chest."
             },
             "verified": true,
-            "checked": "2026-08-20",
-            "ref": "observation en jeu d'Antoine (20/08/2026) + gw2_sources_v111"
+            "checked": "2026-08-22",
+            "ref": "wiki:Ancient_Cipher (capture Antoine 22/08/2026) — code de discussion [&AgE6PwEA] decode en 81722"
           }
         ]
       },
@@ -11570,7 +11567,11 @@ const SOURCES_DB = {
       "timegate_note": {
         "fr": "Timegate leger : 2 tentatives par jour et par personnage, mais rien ne garantit un echec — le Chiffre peut tomber des le premier coffre. A lancer tot sans en faire un chemin critique.",
         "en": "Light timegate: 2 attempts per character per day, but nothing guarantees a failure - the Cipher can drop from the very first chest. Start it early without treating it as a critical path."
-      }
+      },
+      "apiId": 81722,
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Ancient_Cipher (capture Antoine 22/08/2026) — code de discussion [&AgE6PwEA] decode en 81722"
     },
     "spirit_thread": {
       "name": "Spirit Thread",

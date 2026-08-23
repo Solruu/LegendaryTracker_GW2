@@ -114,18 +114,24 @@ se voient qu'en croisant les huit lignes :
 
 ---
 
-## 3. Identifiants d'objets — partiellement résolu, deux problèmes ouverts
+## 3. Identifiants d'objets — un posé, un contredit
 
-- **`spirit_thread`** → `apiId: 77372` posé. **Mais sa description contredit ce
+- **`ancient_cipher`** → ✅ `apiId: 81722`. Le 404 annoncé le 22/08 était un
+  **artefact de l'outil de récupération**, qui renvoyait une réponse en cache
+  pour une autre URL — pas une réponse de l'API. Vérifié indépendamment en
+  décodant le code de discussion de la fiche, `[&AgE6PwEA]` : type 2 (objet),
+  quantité 1, identifiant 81722 en petit-boutiste.
+  **Leçon de méthode** : un échec d'outil n'est pas un fait sur le monde. Quand
+  un identifiant fourni « n'existe pas », le vérifier par un second chemin
+  avant de l'écrire dans la donnée.
+
+- **`spirit_thread`** → `apiId: 77372` posé, **mais sa description contredit ce
   que le tracker en dit** : « peut être imprégné de l'énergie libérée par la
   mort d'un **chak gerent** » — la méta des Profondeurs enchevêtrées (HoT), pas
-  Gorseval. Or j'avais écrit « 1 par semaine sur Gorseval, Spirit Vale », tiré
-  d'une prose que j'avais moi-même rédigée sans source. **La cadence est
-  dégradée en `verified: false`** plutôt que maintenue.
+  Gorseval. J'avais écrit « 1 par semaine sur Gorseval, Spirit Vale », tiré
+  d'une prose que j'avais moi-même rédigée sans source. Cadence dégradée en
+  `verified: false`.
   → À reprendre : que demande réellement Envoy I, et à quelle cadence ?
-- **`ancient_cipher`** → l'identifiant **81722 renvoie un 404** sur `/v2/items`.
-  Laissé vide : un identifiant faux produit un stock plausible et faux, ce qui
-  est pire qu'un stock absent.
 
 ---
 
