@@ -1774,7 +1774,8 @@ const SOURCES_DB = {
     "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour.",
     "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond.",
     "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique.",
-    "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la."
+    "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la.",
+    "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte."
   },
   "meta_events": {
     "vb": {
@@ -3434,8 +3435,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "vision": 300,
-        "kralkatite_ingot": 10
+        "kralkatite_ingot": 10,
+        "gift_of_crystalline_magic": 100
       },
       "kind": "acquire",
       "cadence": {
@@ -3527,10 +3528,7 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite + wiki:Sunspear_Cache + wiki:Supply_Stash",
-      "qty_overlap_verified": [
-        "vision"
-      ]
+      "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite + wiki:Sunspear_Cache + wiki:Supply_Stash"
     },
     "difluorite_crystal": {
       "name": "Difluorite Crystal",
@@ -3559,9 +3557,65 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "vision": 300
+        "gift_of_crystalline_magic": 100
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Coffres de méta — Îles de Ventesable",
+              "en": "Meta chests — Sandswept Isles"
+            },
+            "period": "day",
+            "cap": 21,
+            "per_character": true,
+            "rng": true,
+            "cost": {
+              "fr": "Coffres garantis une fois par personnage et par jour : 5 au Coffre de Ventesable (Zohaqan), 5 au Coffre Inquest (Chambre du spécimen), et 3 sur chacun des trois boss de groupe. ⚠ Pas de ballot chez les vendeurs de cœurs, contrairement à la kralkatite et au mistonium.",
+              "en": "Chests guaranteed once per character per day: 5 from the Sandswept Chest (Zohaqan), 5 from the Inquest Chest (Specimen Chamber), and 3 from each of the three group bosses. ⚠ No heart-vendor bundle, unlike Kralkatite and Mistonium."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Marchand élonien itinérant — Chute draconique",
+              "en": "Traveling Elonian Trader — Dragonfall"
+            },
+            "period": "day",
+            "cap": 5,
+            "cost": {
+              "fr": "5 par jour et par COMPTE, contre 20 Magie volatile pièce.",
+              "en": "5 per day per ACCOUNT, at 20 Volatile Magic each."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Nœud d'instance personnelle et récolte de carte",
+              "en": "Home instance node and map gathering"
+            },
+            "period": "day",
+            "cap": null,
+            "rng": true,
+            "cost": {
+              "fr": "Nœud garanti en instance personnelle ; environ 33 % de chance sur les nœuds de la carte. Sac de 50 via la piste de récompense des Îles de Ventesable.",
+              "en": "Guaranteed home instance node; roughly 33% chance on map nodes. Sack of 50 through the Sandswept Isles reward track."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+          }
+        ]
+      },
+      "timegate": true,
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
     },
     "inscribed_shard": {
       "name": "Inscribed Shard",
@@ -3590,9 +3644,63 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "vision": 300
+        "gift_of_crystalline_magic": 100
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Coffres kournans — Domaine de Kourna",
+              "en": "Kournan chests — Domain of Kourna"
+            },
+            "period": "day",
+            "cap": null,
+            "rng": true,
+            "cost": {
+              "fr": "Coffres kournans garantis dans toute la carte, 5 par coffre sur « End the plague experiments », 6 sur le Centre impérial, 3 sur les coffres éveillés. Pas de plafond quotidien documenté, mais rendement lié aux événements : hors projection. ⚠ Pas de ballot chez les vendeurs de cœurs.",
+              "en": "Kournan chests guaranteed throughout the map, 5 per chest on 'End the plague experiments', 6 at the Imperial Center, 3 from Awakened chests. No documented daily cap, but yield tied to events: excluded from the projection. ⚠ No heart-vendor bundle."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Réserve kournane — instance personnelle",
+              "en": "Kournan Supply Cache — home instance"
+            },
+            "period": "day",
+            "cap": 3,
+            "cost": {
+              "fr": "3 éclats garantis par jour au nœud d'instance personnelle.",
+              "en": "3 shards guaranteed per day from the home instance node."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Marchand élonien itinérant — Chute draconique",
+              "en": "Traveling Elonian Trader — Dragonfall"
+            },
+            "period": "day",
+            "cap": 5,
+            "cost": {
+              "fr": "5 par jour et par COMPTE, contre 20 Magie volatile pièce.",
+              "en": "5 per day per ACCOUNT, at 20 Volatile Magic each."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+          }
+        ]
+      },
+      "timegate": true,
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
     },
     "lump_of_mistonium": {
       "name": "Lump of Mistonium",
@@ -3603,12 +3711,28 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "map_currency",
-          "map": {
-            "fr": "Promontoire de Jahai",
-            "en": "Jahai Bluffs"
+          "type": "renown_heart",
+          "map": "Jahai Bluffs",
+          "tip": {
+            "fr": "5 chez chacun des 3 vendeurs de cœurs de Jahai, par personnage et par jour, une fois le cœur fait — 455 karma les 5. C'est la voie gratuite et la seule qui se démultiplie avec les alts.",
+            "en": "5 from each of Jahai's 3 heart vendors, per character per day, once the heart is done - 455 karma per 5. This is the free route, and the only one that scales with alts."
           },
-          "tip": "Nodes, events et metas — Jahai Bluffs."
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+        },
+        {
+          "type": "map_currency",
+          "map": "Jahai Bluffs",
+          "tip": {
+            "fr": "Nœuds, événements et métas de Jahai, plus le nœud garanti en instance personnelle.",
+            "en": "Jahai nodes, events and metas, plus the guaranteed home instance node."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
         }
       ],
       "conversion_options": [
@@ -3618,8 +3742,65 @@ const SOURCES_DB = {
           "tip": "Sans limite : 10× Lump of Mistonium contre 75 Eternal Ice Shards + 2688 karma."
         }
       ],
-      "qty": {},
-      "kind": "acquire"
+      "qty": {
+        "gift_of_ephemeral_magic": 100
+      },
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Vendeurs de cœurs — Falaises de Jahai",
+              "en": "Heart vendors — Jahai Bluffs"
+            },
+            "period": "day",
+            "cap": 15,
+            "per_character": true,
+            "cost": {
+              "fr": "5 chez chaque vendeur de cœur complété, par personnage et par jour. Trois cœurs à Jahai, soit 15 par personnage et par jour, à 455 karma les 5. Se démultiplie avec les alts.",
+              "en": "5 from each completed heart vendor, per character per day. Three hearts in Jahai, so 15 per character per day, at 455 karma per 5. Scales with alts."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Marchand élonien itinérant — Chute draconique",
+              "en": "Traveling Elonian Trader — Dragonfall"
+            },
+            "period": "day",
+            "cap": 5,
+            "cost": {
+              "fr": "5 par jour et par COMPTE, contre 20 Magie volatile pièce. Le même marchand vend aussi les autres monnaies LW4 au même plafond.",
+              "en": "5 per day per ACCOUNT, at 20 Volatile Magic each. The same trader also sells the other LWS4 currencies under the same cap."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
+          },
+          {
+            "label": {
+              "fr": "Instance personnelle et coffres de carte",
+              "en": "Home instance and map chests"
+            },
+            "period": "day",
+            "cap": null,
+            "rng": true,
+            "cost": {
+              "fr": "Nœud de mistonium garanti en instance personnelle, plus les coffres de Jahai (5 par événement de carte) et le coffre bonus du Death-Branded Shatterer, une fois par jour et par compte. Rendement variable, hors projection.",
+              "en": "Guaranteed mistonium node in the home instance, plus Jahai chests (5 per map event) and the Death-Branded Shatterer bonus chest, once per day per account. Variable yield, excluded from the projection."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
+          }
+        ]
+      },
+      "timegate": true,
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
     },
     "branded_mass": {
       "name": "Branded Mass",
@@ -3649,7 +3830,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "dragonsblood_weapons": 60
+        "dragonsblood_weapons": 60,
+        "gift_of_ephemeral_magic": 100
       },
       "kind": "acquire",
       "cadence": {
@@ -3723,7 +3905,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "vision": 300
+        "gift_of_ephemeral_magic": 100
       },
       "kind": "acquire",
       "cadence": {
@@ -3768,7 +3950,10 @@ const SOURCES_DB = {
           "tip": "Vendors PoF (Crystal Oasis, etc.)."
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_ephemeral_magic": 1,
+        "gift_of_crystalline_magic": 1
+      },
       "kind": "acquire",
       "best": "vendor",
       "apiId_fix": {
@@ -12605,6 +12790,68 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Kralkatite_Ingot + wiki:Astral_weapons + dulfy (verifie 22/08/2026)"
+    },
+    "gift_of_ephemeral_magic": {
+      "name": "Gift of Ephemeral Magic",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "vision": 3
+      },
+      "needed_for": [
+        "vision"
+      ],
+      "recipe": {
+        "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Jahai, Pics de Chef-Tonnerre et Chute draconique) + 1 Bouteille de vin élonien. Vision en demande 3, d'où les 300 de chaque monnaie.",
+        "en": "Mystic Forge: 100 of each of the 3 map currencies (Jahai, Thunderhead Peaks and Dragonfall) + 1 Bottle of Elonian Wine. Vision needs 3, hence the 300 of each currency."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Les trois monnaies se farment en parallèle, chacune sur sa carte, et toutes ont une source quotidienne gratuite.",
+            "en": "Crafted, not found. The three currencies farm in parallel, one per map, and each has a free daily source."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+    },
+    "gift_of_crystalline_magic": {
+      "name": "Gift of Crystalline Magic",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "vision": 3
+      },
+      "needed_for": [
+        "vision"
+      ],
+      "recipe": {
+        "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Istan, Îles de Ventesable et Kourna) + 1 Bouteille de vin élonien. Vision en demande 3, d'où les 300 de chaque monnaie.",
+        "en": "Mystic Forge: 100 of each of the 3 map currencies (Istan, Sandswept Isles and Kourna) + 1 Bottle of Elonian Wine. Vision needs 3, hence the 300 of each currency."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Les trois monnaies se farment en parallèle, chacune sur sa carte, et toutes ont une source quotidienne gratuite.",
+            "en": "Crafted, not found. The three currencies farm in parallel, one per map, and each has a free daily source."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
     }
   },
   "enchaînements_recommandés": {
