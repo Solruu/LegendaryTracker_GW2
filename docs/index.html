@@ -1778,7 +1778,9 @@ const SOURCES_DB = {
     "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte.",
     "changelog_v132": "Noeuds de ressource, d'apres les constats en jeu d'Antoine. Correction : le Domaine d'Istan n'a AUCUN nœud, contrairement a ce que la cadence de la kralkatite annoncait ; le Domaine de Kourna non plus. Mistonium : 25 nœuds par jour et par compte, 3 coups chacun, chance a chaque coup. Difluorite : 44 nœuds, ~33 % de chance, regime par compte ou par personnage non tranche, compte comme par compte en attendant. Ajout majeur : les vendeurs Glace eternelle des Marches de Bjora et de l'Œil du Nord vendent 10 unites de CHACUNE des six monnaies pour 75 Eclats de glace eternelle + 2 688 karma, SANS limite quotidienne. Ils figuraient dans les trois captures et n'avaient pas ete releves : c'est la seule source non plafonnee des six.",
     "changelog_v133": "Familles de creatures des 8 lignes de trophees : verifiees contre les tableaux « Dropped by » du wiki, elles etaient FAUSSES sur six lignes sur huit. Le sang ne vient ni des humains ni des bandits mais des skelks, chauves-souris et harpies ; les totems ne viennent ni des hylek ni des krait mais des Svanir dechus des Marches de Bjora ; les crocs ne viennent ni des loups ni des drakes mais des skelks, ours et guivres ; les ecailles viennent d'abord des devoreurs et non des guivres ; la poussiere vient surtout des Marques ; les griffes des ours et destructeurs, pas des devoreurs. Les 32 sources passent de verified: false a verified: true. Trois concentrations utiles ressortent : les Marches de Bjora couvrent Sang et Totems, le Desert de cristal couvre Venin et Ecailles, les Terres sauvages d'argent couvrent Venin et Crocs — et la Poussiere se farme gratuitement pendant le circuit Vision, sur les memes cartes marquees.",
-    "changelog_v134": "Retrait des affirmations negatives ajoutees en v133. Les captures montraient le HAUT des tableaux « Dropped by », tries alphabetiquement : j'y ai lu des absences — « ni humains ni bandits ni centaures » — alors que je ne voyais qu'une fraction de chaque liste. Une absence dans une vue partielle n'est pas une absence, et l'ecrire comme un fait etait une erreur de methode. Les constats positifs sont conserves, puisque ce qui a ete vu tombe bien, et chaque tip precise desormais que la liste n'est pas exhaustive."
+    "changelog_v134": "Retrait des affirmations negatives ajoutees en v133. Les captures montraient le HAUT des tableaux « Dropped by », tries alphabetiquement : j'y ai lu des absences — « ni humains ni bandits ni centaures » — alors que je ne voyais qu'une fraction de chaque liste. Une absence dans une vue partielle n'est pas une absence, et l'ecrire comme un fait etait une erreur de methode. Les constats positifs sont conserves, puisque ce qui a ete vu tombe bien, et chaque tip precise desormais que la liste n'est pas exhaustive.",
+    "changelog_v135": "Chantier 2, etape 1. Trois legendaires declaraient un Mystic Tribute dans leur propre recette sans figurer dans mystic_tribute.qty : Coalescence, Fractal Capacitor et The Binding of Ipos. La chaine s'arretait net, et Coalescence affichait ZERO trophee T6 alors qu'elle en demande 200 de chacun des huit — meme defaut que celui corrige sur Aurora et Vision. Les 250 pieces mystiques et 77 trefles deja portes a plat ne sont PAS touches : mystic_coin et mystic_clover sont indexes sur des legendaires, pas sur le tribut, donc la cascade ne les relit pas et il n'y a aucun double comptage. Verifie avant et apres sur les totaux.",
+    "changelog_v136": "Chantier 2, etape 2. Gift of Magic et Gift of Might n'existaient pas comme composants : la chaine s'arretait au Gift of Fortune, et les 21 armes gen1, Ad Infinitum et The Ascension affichaient ZERO trophee T6 alors qu'ils en demandent 250 par ligne, soit 2 000 au total. Warbringer, qui declare pourtant un Gift of Fortune dans sa recette, ne figurait meme pas dans son qty. ⚠ Les trefles et ectoplasmes ne sont PAS rattaches au gift : ils sont deja portes a plat par legendaire (77 et 250, verifie sur gen1_frostfang), et les rattacher les compterait deux fois. Difference notable au passage : la voie gen1 demande 250 T6 BRUTS par ligne sans aucun palier inferieur, la ou la voie condensee des gen2 n'en demande que 100 en compensant avec du T5. Le gen1 est 2,5 fois plus cher en T6 pur."
   },
   "meta_events": {
     "vb": {
@@ -2962,7 +2964,8 @@ const SOURCES_DB = {
       "apiId": 24277,
       "needed_for": [
         "gift_of_energy",
-        "gift_of_dust"
+        "gift_of_dust",
+        "gift_of_magic"
       ],
       "farmable": true,
       "sources": [
@@ -3011,7 +3014,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_dust": 100
+        "gift_of_dust": 100,
+        "gift_of_magic": 250
       },
       "kind": "acquire",
       "best": "drop",
@@ -6583,9 +6587,13 @@ const SOURCES_DB = {
         "gen1_kraitkin": 1,
         "gen1_the_predator": 1,
         "the_ascension": 1,
-        "ad_infinitum": 1
+        "ad_infinitum": 1,
+        "warbringer": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
     },
     "eldritch_scroll": {
       "name": "Eldritch Scroll",
@@ -7188,7 +7196,10 @@ const SOURCES_DB = {
         "stella_radians": 1,
         "aurora": 1,
         "vision": 1,
-        "conflux": 1
+        "conflux": 1,
+        "coalescence": 1,
+        "fractal_capacitor": 1,
+        "the_binding_of_ipos": 1
       },
       "note": {
         "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -7199,8 +7210,8 @@ const SOURCES_DB = {
         "fr": "MF : 2× Gift of Condensed Magic + 2× Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ Les 77 trefles rapportent eux-memes 249 Mystic Coins de plus : compter ~499 pieces au total, alors que les recompenses de connexion n'en donnent plus depuis 2023.",
         "en": "MF: 2x Gift of Condensed Magic + 2x Gift of Condensed Might + 77 Mystic Clovers + 250 Mystic Coins. ⚠ The 77 clovers themselves pull in another 249 Mystic Coins: budget ~499 total, while login rewards have granted none since 2023."
       },
-      "checked": "2026-08-20",
-      "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)",
+      "checked": "2026-08-22",
+      "ref": "recettes declarees dans legendaries[].components (verifie composant par composant, 22/08/2026)",
       "verified": true
     },
     "mystic_coin": {
@@ -11016,7 +11027,8 @@ const SOURCES_DB = {
       "apiId": 24283,
       "kind": "material",
       "qty": {
-        "gift_of_venom": 100
+        "gift_of_venom": 100,
+        "gift_of_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -11068,7 +11080,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_venom"
+        "gift_of_venom",
+        "gift_of_magic"
       ],
       "tier": "T6"
     },
@@ -11077,7 +11090,8 @@ const SOURCES_DB = {
       "apiId": 24289,
       "kind": "material",
       "qty": {
-        "gift_of_scales": 100
+        "gift_of_scales": 100,
+        "gift_of_might": 250
       },
       "farmable": true,
       "sources": [
@@ -11129,7 +11143,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_scales"
+        "gift_of_scales",
+        "gift_of_might"
       ],
       "tier": "T6"
     },
@@ -11138,7 +11153,8 @@ const SOURCES_DB = {
       "apiId": 24295,
       "kind": "material",
       "qty": {
-        "gift_of_blood": 100
+        "gift_of_blood": 100,
+        "gift_of_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -11190,7 +11206,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_blood"
+        "gift_of_blood",
+        "gift_of_magic"
       ],
       "tier": "T6"
     },
@@ -11199,7 +11216,8 @@ const SOURCES_DB = {
       "apiId": 24300,
       "kind": "material",
       "qty": {
-        "gift_of_totems": 100
+        "gift_of_totems": 100,
+        "gift_of_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -11251,7 +11269,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_totems"
+        "gift_of_totems",
+        "gift_of_magic"
       ],
       "tier": "T6"
     },
@@ -11260,7 +11279,8 @@ const SOURCES_DB = {
       "apiId": 24351,
       "kind": "material",
       "qty": {
-        "gift_of_claws": 100
+        "gift_of_claws": 100,
+        "gift_of_might": 250
       },
       "farmable": true,
       "sources": [
@@ -11312,7 +11332,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_claws"
+        "gift_of_claws",
+        "gift_of_might"
       ],
       "tier": "T6"
     },
@@ -11321,7 +11342,8 @@ const SOURCES_DB = {
       "apiId": 24357,
       "kind": "material",
       "qty": {
-        "gift_of_fangs": 100
+        "gift_of_fangs": 100,
+        "gift_of_might": 250
       },
       "farmable": true,
       "sources": [
@@ -11373,7 +11395,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_fangs"
+        "gift_of_fangs",
+        "gift_of_might"
       ],
       "tier": "T6"
     },
@@ -11382,7 +11405,8 @@ const SOURCES_DB = {
       "apiId": 24358,
       "kind": "material",
       "qty": {
-        "gift_of_bones": 100
+        "gift_of_bones": 100,
+        "gift_of_might": 250
       },
       "farmable": true,
       "sources": [
@@ -11434,7 +11458,8 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_bones"
+        "gift_of_bones",
+        "gift_of_might"
       ],
       "tier": "T6"
     },
@@ -12978,6 +13003,76 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+    },
+    "gift_of_magic": {
+      "name": "Gift of Magic",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_fortune": 1
+      },
+      "needed_for": [
+        "gift_of_fortune"
+      ],
+      "recipe": {
+        "fr": "Forge mystique : 250 de chacun des 4 trophées T6 BRUTS (sang, venin, totems et poussière). ⚠ À ne pas confondre avec le Gift of CONDENSED Magic, qui passe par les gifts intermédiaires et ne demande que 100 T6 chacun, plus des paliers inférieurs. Ici, 250 T6 secs par ligne.",
+        "en": "Mystic Forge: 250 of each of the 4 RAW T6 trophies (blood, venom, totems and dust). ⚠ Not to be confused with the Gift of CONDENSED Magic, which goes through the intermediate gifts and needs only 100 T6 each plus lower tiers. Here it is a flat 250 T6 per line."
+      },
+      "note": {
+        "fr": "Chemin gen1 : 1 000 trophées T6 par gift, 2 000 pour les deux — sans aucun palier inférieur. C'est 2,5 fois plus de T6 par ligne que la voie condensée des gen2, qui compense avec du T5. Le gen1 est plus cher en T6 pur.",
+        "en": "Gen1 route: 1,000 T6 trophies per gift, 2,000 for both — with no lower tiers at all. That is 2.5 times more T6 per line than the gen2 condensed route, which makes up for it with T5. Gen1 is costlier in pure T6."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Les 4 lignes de trophées se farment en parallèle — voir les concentrations par carte dans chaque trophée.",
+            "en": "Crafted, not found. The 4 trophy lines farm in parallel — see the per-map concentrations on each trophy."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+    },
+    "gift_of_might": {
+      "name": "Gift of Might",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_fortune": 1
+      },
+      "needed_for": [
+        "gift_of_fortune"
+      ],
+      "recipe": {
+        "fr": "Forge mystique : 250 de chacun des 4 trophées T6 BRUTS (crocs, écailles, griffes et os). ⚠ À ne pas confondre avec le Gift of CONDENSED Magic, qui passe par les gifts intermédiaires et ne demande que 100 T6 chacun, plus des paliers inférieurs. Ici, 250 T6 secs par ligne.",
+        "en": "Mystic Forge: 250 of each of the 4 RAW T6 trophies (fangs, scales, claws and bones). ⚠ Not to be confused with the Gift of CONDENSED Magic, which goes through the intermediate gifts and needs only 100 T6 each plus lower tiers. Here it is a flat 250 T6 per line."
+      },
+      "note": {
+        "fr": "Chemin gen1 : 1 000 trophées T6 par gift, 2 000 pour les deux — sans aucun palier inférieur. C'est 2,5 fois plus de T6 par ligne que la voie condensée des gen2, qui compense avec du T5. Le gen1 est plus cher en T6 pur.",
+        "en": "Gen1 route: 1,000 T6 trophies per gift, 2,000 for both — with no lower tiers at all. That is 2.5 times more T6 per line than the gen2 condensed route, which makes up for it with T5. Gen1 is costlier in pure T6."
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Les 4 lignes de trophées se farment en parallèle — voir les concentrations par carte dans chaque trophée.",
+            "en": "Crafted, not found. The 4 trophy lines farm in parallel — see the per-map concentrations on each trophy."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
     }
   },
   "enchaînements_recommandés": {
