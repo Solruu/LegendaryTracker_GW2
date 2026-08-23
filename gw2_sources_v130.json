@@ -1012,7 +1012,8 @@
   "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche.",
   "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour.",
   "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond.",
-  "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique."
+  "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique.",
+  "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la."
  },
  "meta_events": {
   "vb": {
@@ -2696,6 +2697,22 @@
      },
      {
       "label": {
+       "fr": "Caches sunspear — les 35 du Domaine d'Istan",
+       "en": "Sunspear Caches — all 35 in the Domain of Istan"
+      },
+      "period": "day",
+      "cap": 35,
+      "rng": true,
+      "cost": {
+       "fr": "35 coffres dispersés sur la carte, chacun ouvrable une fois par jour et par COMPTE. Le rendement en minerai est aléatoire : le plafond borne les OUVERTURES, pas les minerais, d'où son exclusion de l'estimation de délai. ⚠ Contrairement aux ballots de cœurs, refaire le circuit sur un second personnage ne rapporte rien : le plafond est global. Un seul run par jour, sur le perso de ton choix. Le succès « Lost to Time » donne les emplacements.",
+       "en": "35 chests scattered across the map, each openable once a day per ACCOUNT. The ore yield is random: the cap bounds the OPENINGS, not the ore, hence its exclusion from the delay estimate. ⚠ Unlike the heart bundles, running the route on a second character yields nothing: the cap is account-wide. One run a day, on whichever character you like. The 'Lost to Time' achievement maps their locations."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Sunspear_Cache"
+     },
+     {
+      "label": {
        "fr": "Piste de récompense Saison 4",
        "en": "Living World Season 4 reward track"
       },
@@ -2723,17 +2740,33 @@
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Kralkatite_Ore"
+     },
+     {
+      "label": {
+       "fr": "Caisses de ravitaillement — Palawadan et Grand Hall",
+       "en": "Supply Stashes — Palawadan and Great Hall"
+      },
+      "period": "day",
+      "cap": 42,
+      "rng": true,
+      "cost": {
+       "fr": "30 caisses à Palawadan et 12 au Grand Hall du Croissant Mordant, par jour et par COMPTE. Une même caisse se reloote après 10 minutes tant que le plafond n'est pas atteint, et participer à l'événement n'est pas requis pour looter. Rendement aléatoire, donc hors estimation de délai. C'est aussi la grosse source de Magie volatile de la carte.",
+       "en": "30 stashes in Palawadan and 12 in the Mordant Crescent Great Hall, per day per ACCOUNT. The same stash can be looted again after 10 minutes while the cap holds, and taking part in the event is not required to loot. It is also the map's main Volatile Magic source."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Supply_Stash"
      }
     ]
    },
    "timegate": true,
    "note": {
-    "fr": "Vision en demande ~3 360 : 300 pour les objets de la collection Visions of Istan — le même montant que le difluorite, les éclats gravés et le mistonium sur leurs cartes respectives — plus 3 000 pour les 300 Lingots de kralkatite, plus ~60 pour les recettes d'armes. 💡 Les 3 vendeurs de cœurs en vendent 75 par personnage et par jour, gratuits une fois le cœur fait : c'est le seul levier qui rende ce mur praticable, et il se démultiplie avec les alts.",
-    "en": "Vision needs ~3,360: 300 for the Visions of Istan collection items — the same amount as difluorite, inscribed shards and mistonium on their own maps — plus 3,000 for the 300 Kralkatite Ingots, plus ~60 for the weapon recipes. 💡 The 3 heart vendors sell 75 per character per day, free once the heart is done: the only lever that makes this wall practical, and it scales with alts."
+    "fr": "Vision en demande ~3 360 : 300 pour les objets de la collection Visions of Istan — le même montant que le difluorite, les éclats gravés et le mistonium sur leurs cartes respectives — plus 3 000 pour les 300 Lingots de kralkatite, plus ~60 pour les recettes d'armes. 💡 Les 3 vendeurs de cœurs en vendent 75 par personnage et par jour, gratuits une fois le cœur fait : c'est le seul levier qui rende ce mur praticable, et il se démultiplie avec les alts. ⚠ Distinguer les deux régimes : les ballots de cœurs sont PAR PERSONNAGE et se démultiplient avec les alts ; les caches sunspear et les caisses de ravitaillement sont PAR COMPTE — refaire leur circuit sur un second perso ne rapporte rien.",
+    "en": "Vision needs ~3,360: 300 for the Visions of Istan collection items — the same amount as difluorite, inscribed shards and mistonium on their own maps — plus 3,000 for the 300 Kralkatite Ingots, plus ~60 for the weapon recipes. 💡 The 3 heart vendors sell 75 per character per day, free once the heart is done: the only lever that makes this wall practical, and it scales with alts. ⚠ Two distinct regimes: the heart bundles are PER CHARACTER and scale with alts; the Sunspear Caches and Supply Stashes are PER ACCOUNT — running their route on a second character yields nothing."
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite",
+   "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite + wiki:Sunspear_Cache + wiki:Supply_Stash",
    "qty_overlap_verified": [
     "vision"
    ]
