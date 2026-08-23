@@ -86,31 +86,32 @@ plutôt qu'une déduction.
 
 ---
 
-## 2. Familles de créatures — 1 ligne sur 8 chiffrée sur le tableau complet
+## 2. Familles de créatures — ✅ **RÉSOLU le 22/08/2026, sur tableaux entiers**
 
-Vérifiées contre les tableaux *Dropped by*, **mais sur des captures tronquées** :
-elles montrent le haut de chaque liste, triée alphabétiquement. Ce qui y figure
-est confirmé ; ce qui n'y figure pas ne l'est pas pour autant.
+Les 8 tableaux *Dropped by* complets, chiffrés par famille et par carte. Les 32
+sources portent désormais des fréquences réelles, pas des estimations.
 
-**Erreur de méthode corrigée en v134** : j'avais écrit des négations —
-« ni humains ni bandits ni centaures » — en lisant une absence dans une vue
-partielle. Une absence dans une liste tronquée n'est pas une absence. Les
-négations sont retirées, les constats positifs conservés, et chaque tip précise
-que la liste n'est pas exhaustive.
+| ligne | familles dominantes | carte de tête |
+|---|---|---|
+| Os | Risen **56/120** | Bond de Malchor 23 |
+| Poussière | Risen 28, élémentaires 20, Marqués 18 (143 NPC) | Étendues fragmentées 14 |
+| Crocs | Mordrem 21, guivres 11 | Terres sauvages d'argent 16 |
+| Venin | Mordrem 19, araignées 16, dévoreurs 13 | Terres sauvages d'argent 15 |
+| Griffes | destructeurs 16, drakes 10 | Brumes 20, DRM Champs de Ruine 8 |
+| Totems | Déchus 15, Aberrants 7, Svanir 6 (56 NPC) | Ruines déchues 11 |
+| Sang | Risen 16, Aberrants 8, skelks 7 | quatre cartes à 8 ex æquo |
+| Écailles | drakes 14, dévoreurs 13, Toxiques 12 | aucune au-dessus de 14 |
 
-Antoine extrait le rendu complet des tableaux dès son retour sur PC. À ce
-moment-là, les familles pourront être complétées plutôt que corrigées.
+**Deux enseignements que les vues partielles cachaient :**
 
-**Ce qui est acquis et ne bougera pas** — les concentrations par carte, qui ne
-se voient qu'en croisant les huit lignes :
+- **Les totems sont la ligne la plus concentrée des huit** — la moitié de ses 56
+  créatures vit aux Marches de Bjora. Une seule carte suffit.
+- **Les écailles sont la plus dispersée** — aucune carte ne dépasse 14 sources,
+  et le McM en fournit autant que la jungle. Il n'y a pas de bon spot.
 
-- **Marches de Bjora** → Sang **et** Totems (Forêt aberrante : six types
-  d'Aberrants sur une zone étroite, plus les chamans déchus).
-- **Désert de cristal / Désolation** → Venin **et** Écailles (dévoreurs).
-- **Terres sauvages d'argent** → Venin **et** Crocs (Mordrem).
-- **Rivage maudit / Bond de Malchor** → Os, le farm le plus dense des huit.
-- La **Poussière** se farme gratuitement pendant le circuit Vision : les Marqués
-  vivent sur Jahai, Chef-Tonnerre, Rivages d'Elon et Oasis de cristal.
+Les croisements tiennent et se précisent : Terres sauvages d'argent pour **Venin
++ Crocs** (Mordrem en tête des deux), Orr pour **Os + Sang + Poussière**, Bjora
+pour **Totems + Sang**.
 
 ---
 
@@ -125,13 +126,12 @@ se voient qu'en croisant les huit lignes :
   un identifiant fourni « n'existe pas », le vérifier par un second chemin
   avant de l'écrire dans la donnée.
 
-- **`spirit_thread`** → `apiId: 77372` posé, **mais sa description contredit ce
-  que le tracker en dit** : « peut être imprégné de l'énergie libérée par la
-  mort d'un **chak gerent** » — la méta des Profondeurs enchevêtrées (HoT), pas
-  Gorseval. J'avais écrit « 1 par semaine sur Gorseval, Spirit Vale », tiré
-  d'une prose que j'avais moi-même rédigée sans source. Cadence dégradée en
-  `verified: false`.
-  → À reprendre : que demande réellement Envoy I, et à quelle cadence ?
+- **`spirit_thread`** → ✅ `apiId: 77372`, et **la cadence Gorseval est
+  rétablie**. La fiche d'Envoy I est sans ambiguïté : le fil vient de
+  **Gorseval** (Val des esprits), et le **chak gerent** sert à l'**imprégner**
+  d'énergie de ligne de faille. Le texte de l'objet ne décrit que cette
+  imprégnation — j'y avais lu une contradiction et dégradé une entrée correcte.
+  **Deuxième fois** qu'une lecture partielle me fait défaire du travail juste.
 
 ---
 

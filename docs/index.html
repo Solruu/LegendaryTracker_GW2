@@ -1783,7 +1783,8 @@ const SOURCES_DB = {
     "changelog_v136": "Chantier 2, etape 2. Gift of Magic et Gift of Might n'existaient pas comme composants : la chaine s'arretait au Gift of Fortune, et les 21 armes gen1, Ad Infinitum et The Ascension affichaient ZERO trophee T6 alors qu'ils en demandent 250 par ligne, soit 2 000 au total. Warbringer, qui declare pourtant un Gift of Fortune dans sa recette, ne figurait meme pas dans son qty. ⚠ Les trefles et ectoplasmes ne sont PAS rattaches au gift : ils sont deja portes a plat par legendaire (77 et 250, verifie sur gen1_frostfang), et les rattacher les compterait deux fois. Difference notable au passage : la voie gen1 demande 250 T6 BRUTS par ligne sans aucun palier inferieur, la ou la voie condensee des gen2 n'en demande que 100 en compensant avec du T5. Le gen1 est 2,5 fois plus cher en T6 pur.",
     "changelog_v137": "Backlog point 1 ter tranche par Antoine en jeu : les nœuds de difluorite sont PAR PERSONNAGE, et non par compte comme le plancher prudent le supposait. Les Iles de Ventesable deviennent la carte LW4 la plus rentable par personnage, puisque les coffres de meta (21/jour) ET les nœuds (44/jour a ~33 %) s'y demultiplient tous deux avec les alts — seule monnaie de la Saison 4 a cumuler deux sources par personnage. Le mistonium reste a 25 nœuds par COMPTE : les deux cartes ne suivent pas la meme regle, ce qui interdisait d'extrapoler de l'une a l'autre.",
     "changelog_v138": "Ligne des os rechiffree sur le tableau « Dropped by » complet : 56 Risen sur 120 creatures, puis gelees, geants, araignees, elementaires et trolls. Les Detroits de la Devastation (19 sources) manquaient a la liste precedente, qui ne citait que le Bond de Malchor et le Rivage maudit. Spirit Thread : identifiant 77372 pose, mais sa description — « energie liberee par la mort d'un chak gerent » — contredit la cadence « 1 par semaine sur Gorseval » que j'avais ecrite sans source ; elle passe en non verifiee. Ancient Cipher : l'identifiant 81722 renvoie un 404, il reste donc vide.",
-    "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master."
+    "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master.",
+    "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet."
   },
   "meta_events": {
     "vb": {
@@ -2829,12 +2830,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (28), élémentaires (20) et Marqués (18) sur 143 créatures — la ligne la plus fournie. 💡 Étendues fragmentées (14), Bond de Malchor (12), Rivage maudit (11), Désert de cristal (11). Les Marqués vivent sur tes cartes de Vision, la poussière tombe donc pendant ton farm. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Risen (28), elementals (20) and Branded (18) across 143 creatures — the richest line. 💡 Fragmented Wastes (14), Malchor's Leap (12), Cursed Shore (11), Crystal Desert (11). The Branded live on your Vision maps, so dust falls during that farm. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Pile_of_Radiant_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -2867,12 +2868,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (28), élémentaires (20) et Marqués (18) sur 143 créatures — la ligne la plus fournie. 💡 Étendues fragmentées (14), Bond de Malchor (12), Rivage maudit (11), Désert de cristal (11). Les Marqués vivent sur tes cartes de Vision, la poussière tombe donc pendant ton farm. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Risen (28), elementals (20) and Branded (18) across 143 creatures — the richest line. 💡 Fragmented Wastes (14), Malchor's Leap (12), Cursed Shore (11), Crystal Desert (11). The Branded live on your Vision maps, so dust falls during that farm. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Pile_of_Luminous_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -2915,12 +2916,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (28), élémentaires (20) et Marqués (18) sur 143 créatures — la ligne la plus fournie. 💡 Étendues fragmentées (14), Bond de Malchor (12), Rivage maudit (11), Désert de cristal (11). Les Marqués vivent sur tes cartes de Vision, la poussière tombe donc pendant ton farm. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Risen (28), elementals (20) and Branded (18) across 143 creatures — the richest line. 💡 Fragmented Wastes (14), Malchor's Leap (12), Cursed Shore (11), Crystal Desert (11). The Branded live on your Vision maps, so dust falls during that farm. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Pile_of_Incandescent_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -2976,12 +2977,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (28), élémentaires (20) et Marqués (18) sur 143 créatures — la ligne la plus fournie. 💡 Étendues fragmentées (14), Bond de Malchor (12), Rivage maudit (11), Désert de cristal (11). Les Marqués vivent sur tes cartes de Vision, la poussière tombe donc pendant ton farm. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Risen (28), elementals (20) and Branded (18) across 143 creatures — the richest line. 💡 Fragmented Wastes (14), Malchor's Leap (12), Cursed Shore (11), Crystal Desert (11). The Branded live on your Vision maps, so dust falls during that farm. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Pile_of_Crystalline_Dust — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11044,12 +11045,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (19), araignées (16) et dévoreurs (13) sur 120 créatures. 💡 Terres sauvages d'argent (15) et Cœur du dragon (11) : le farm Mordrem couvre le Venin ET les Crocs, qui partagent la même carte de tête. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Mordrem (19), spiders (16) and devourers (13) across 120 creatures. 💡 The Silverwastes (15) and Dragon's Stand (11): the Mordrem farm covers Venom AND Fangs, which share the same top map. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Powerful_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11107,12 +11108,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Drakes (14) et dévoreurs (13) au coude à coude, puis les Toxiques (12), les chak (8) et la faune aquatique — méduses, requins, scorpions. 💡 Très dispersé : aucune carte ne dépasse 14 sources. Le McM et les Brumes en fournissent autant que la jungle de Maguuma. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Drakes (14) and devourers (13) neck and neck, then Toxic creatures (12), chak (8) and aquatic life — jellyfish, sharks, scorpions. 💡 Very scattered: no map exceeds 14 sources. WvW and the Mists yield as much as the Maguuma jungle. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Armored_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11170,12 +11171,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (16), Aberrants (8) et skelks (7), puis drakes, harpies et karkas. 💡 La ligne la plus équilibrée : Forêt aberrante (8), Pics enneigés (8), Rivage maudit (8) et Bond de Malchor (8) à égalité. Orr sert donc à la fois le Sang, les Os et la Poussière. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Risen (16), Aberrants (8) and skelk (7), then drakes, harpies and karka. 💡 The most balanced line: Aberrant Forest (8), Shiverpeaks (8), Cursed Shore (8) and Malchor's Leap (8) all tied. Orr therefore serves Blood, Bones and Dust at once. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vial_of_Powerful_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11233,12 +11234,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Déchus (15), Aberrants (7) et Svanir (6) — les trois familles des Marches de Bjora, soit la moitié des 56 créatures. 💡 La ligne la plus concentrée des huit : Ruines déchues (11), Montagnes déchues (9), Forêt aberrante (7), Montagnes méridionales (7), Plateau svanir (6). Tout tient sur une seule carte. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Fallen (15), Aberrants (7) and Svanir (6) — the three Bjora Marches families, half of the 56 creatures. 💡 The most concentrated line of the eight: Fallen Ruins (11), Fallen Mountains (9), Aberrant Forest (7), Southern Mountains (7), Svanir Plateau (6). It all fits on one map. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Elaborate_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11296,12 +11297,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Destructeurs (16), drakes (10), gelées (8), traqueurs et ours (7 chacun). 💡 Les Dragon Response Missions concentrent les destructeurs — Champs de Ruine à elle seule en aligne 8. Étendues fragmentées (12) pour les gelées et les drakes déplacés. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Destroyers (16), drakes (10), oozes (8), stalkers and bears (7 each). 💡 Dragon Response Missions concentrate destroyers — Fields of Ruin alone lists 8. Fragmented Wastes (12) for oozes and displaced drakes. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vicious_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11359,12 +11360,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (21), guivres (11), Risen (9), puis ours, loups et skelks. 💡 Terres sauvages d'argent (16) en tête, comme pour le Venin : une seule carte pour deux lignes. Cime aride (7) et Pics enneigés (6) en appoint. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Mordrem (21), wurms (11), Risen (9), then bears, wolves and skelk. 💡 The Silverwastes (16) lead, as for Venom: one map for two lines. Dry Top (7) and the Shiverpeaks (6) as backup. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vicious_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11422,12 +11423,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Risen massivement — 56 des 120 créatures du tableau — puis gelées, géants, araignées, élémentaires et trolls. 💡 Le trio d'Orr concentre plus de la moitié des sources : Bond de Malchor (23), Rivage maudit (22) et Détroits de la Dévastation (19). ⚡ Les Détroits manquaient à la liste précédente. Les gelées, elles, se farment en Kryta de bas niveau — Champs de Gendarran, Collines de Kessex, Vallée de la Reine — et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-            "en": "Risen overwhelmingly — 56 of the 120 creatures in the table — then oozes, giants, spiders, elementals and trolls. 💡 The Orr trio holds over half the sources: Malchor's Leap (23), Cursed Shore (22) and Straits of Devastation (19). ⚡ The Straits were missing from the previous list. Oozes farm in low-level Kryta — Gendarran Fields, Kessex Hills, Queensdale — and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T6 only."
+            "fr": "Risen massivement — 56 des 120 créatures — puis gelées (10), géants (6), araignées et trolls. 💡 Le trio d'Orr fait plus de la moitié : Bond de Malchor (23), Rivage maudit (22), Détroits de la Dévastation (19). Les gelées se farment en Kryta de bas niveau, et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T6.",
+            "en": "Risen overwhelmingly — 56 of 120 creatures — then oozes (10), giants (6), spiders and trolls. 💡 The Orr trio holds over half: Malchor's Leap (23), Cursed Shore (22), Straits of Devastation (19). Oozes farm in low-level Kryta, and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T6 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Ancient_Bone — tableau « Dropped by » complet, 120 NPC (export Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11580,8 +11581,8 @@ const SOURCES_DB = {
       "qty": {},
       "timegate": true,
       "timegate_note": {
-        "fr": "⚠ À revoir : la note annonçait 5 Spirit Threads à 1 par semaine sur Gorseval. L'identifiant de l'objet pointe vers le chak gerent des Profondeurs enchevêtrées. Ni la quantité ni la cadence ne sont sourcées.",
-        "en": "⚠ To review: the note claimed 5 Spirit Threads at 1 per week from Gorseval. The item id points to the Tangled Depths chak gerent. Neither the quantity nor the cadence is sourced."
+        "fr": "5 Spirit Threads à 1 par semaine sur Gorseval : 5 semaines minimum, et c'est le chemin critique de Perfected Envoy. Chaque fil s'imprègne ensuite sur un chak gerent aux Profondeurs enchevêtrées, qui tourne plusieurs fois par jour et ne contraint donc rien. À lancer dès la semaine 1.",
+        "en": "5 Spirit Threads at 1 per week from Gorseval: 5 weeks minimum, and this is Perfected Envoy's critical path. Each thread is then infused on a chak gerent in the Tangled Depths, which runs several times a day and constrains nothing. Start it on week 1."
       },
       "sources": [
         {
@@ -11607,18 +11608,18 @@ const SOURCES_DB = {
             "period": "week",
             "cap": 1,
             "cost": {
-              "fr": "⚠ Cadence NON VÉRIFIÉE et probablement fausse. L'objet 77372 se décrit ainsi : « peut être imprégné de l'énergie libérée par la mort d'un chak gerent » — soit la méta des Profondeurs enchevêtrées (HoT), et non Gorseval. Le « 1 par semaine sur Gorseval » venait d'une prose rédigée sans source. À retrancher entièrement.",
-              "en": "⚠ Cadence NOT VERIFIED and probably wrong. Item 77372 describes itself as 'can be infused with energy released from the death of a chak gerent' — the Tangled Depths meta (HoT), not Gorseval. The '1 per week from Gorseval' came from prose written without a source. To be redone entirely."
+              "fr": "1 par semaine et par compte, au coffre de Gorseval le Multiple, dans le Val des esprits. 5 requis, donc 5 semaines incompressibles. ⚡ Chaque fil doit ensuite être IMPRÉGNÉ d'énergie de ligne de faille en tuant un chak gerent près de la Confluence des lignes de faille, aux Profondeurs enchevêtrées — c'est cette étape que décrit l'objet en jeu. Les 5 fils imprégnés se combinent en un Spirit Weave. Le chak gerent tourne plusieurs fois par jour : le verrou reste Gorseval.",
+              "en": "1 per week per account, from Gorseval the Multifarious's chest in Spirit Vale. 5 required, so 5 weeks that cannot be shortened. ⚡ Each thread must then be INFUSED with ley-line energy by defeating a chak gerent near the Ley-Line Confluence in the Tangled Depths — that infusion is what the in-game item text describes. The 5 infused threads combine into a Spirit Weave. The chak gerent runs several times a day: Gorseval remains the gate."
             },
-            "verified": false,
+            "verified": true,
             "checked": "2026-08-20",
-            "ref": "contredit par api:/v2/items?ids=77372"
+            "ref": "wiki:Envoy I: Experimental Armor, étape « Spirit Weave » (capture Antoine 22/08/2026)"
           }
         ]
       },
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "api:/v2/items?ids=77372 (identifiant fourni par Antoine, 22/08/2026)",
+      "ref": "wiki:Envoy I: Experimental Armor, étape « Spirit Weave » (capture Antoine 22/08/2026)",
       "apiId": 77372
     },
     "gift_of_blood": {
@@ -11660,12 +11661,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (16), Aberrants (8) et skelks (7), puis drakes, harpies et karkas. 💡 La ligne la plus équilibrée : Forêt aberrante (8), Pics enneigés (8), Rivage maudit (8) et Bond de Malchor (8) à égalité. Orr sert donc à la fois le Sang, les Os et la Poussière. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Risen (16), Aberrants (8) and skelk (7), then drakes, harpies and karka. 💡 The most balanced line: Aberrant Forest (8), Shiverpeaks (8), Cursed Shore (8) and Malchor's Leap (8) all tied. Orr therefore serves Blood, Bones and Dust at once. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vial_of_Potent_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11721,12 +11722,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (16), Aberrants (8) et skelks (7), puis drakes, harpies et karkas. 💡 La ligne la plus équilibrée : Forêt aberrante (8), Pics enneigés (8), Rivage maudit (8) et Bond de Malchor (8) à égalité. Orr sert donc à la fois le Sang, les Os et la Poussière. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Risen (16), Aberrants (8) and skelk (7), then drakes, harpies and karka. 💡 The most balanced line: Aberrant Forest (8), Shiverpeaks (8), Cursed Shore (8) and Malchor's Leap (8) all tied. Orr therefore serves Blood, Bones and Dust at once. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vial_of_Thick_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11770,12 +11771,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Risen (16), Aberrants (8) et skelks (7), puis drakes, harpies et karkas. 💡 La ligne la plus équilibrée : Forêt aberrante (8), Pics enneigés (8), Rivage maudit (8) et Bond de Malchor (8) à égalité. Orr sert donc à la fois le Sang, les Os et la Poussière. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Risen (16), Aberrants (8) and skelk (7), then drakes, harpies and karka. 💡 The most balanced line: Aberrant Forest (8), Shiverpeaks (8), Cursed Shore (8) and Malchor's Leap (8) all tied. Orr therefore serves Blood, Bones and Dust at once. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Vial_of_Blood — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11831,12 +11832,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (19), araignées (16) et dévoreurs (13) sur 120 créatures. 💡 Terres sauvages d'argent (15) et Cœur du dragon (11) : le farm Mordrem couvre le Venin ET les Crocs, qui partagent la même carte de tête. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Mordrem (19), spiders (16) and devourers (13) across 120 creatures. 💡 The Silverwastes (15) and Dragon's Stand (11): the Mordrem farm covers Venom AND Fangs, which share the same top map. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Potent_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -11892,12 +11893,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (19), araignées (16) et dévoreurs (13) sur 120 créatures. 💡 Terres sauvages d'argent (15) et Cœur du dragon (11) : le farm Mordrem couvre le Venin ET les Crocs, qui partagent la même carte de tête. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Mordrem (19), spiders (16) and devourers (13) across 120 creatures. 💡 The Silverwastes (15) and Dragon's Stand (11): the Mordrem farm covers Venom AND Fangs, which share the same top map. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Full_Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -11941,12 +11942,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (19), araignées (16) et dévoreurs (13) sur 120 créatures. 💡 Terres sauvages d'argent (15) et Cœur du dragon (11) : le farm Mordrem couvre le Venin ET les Crocs, qui partagent la même carte de tête. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Mordrem (19), spiders (16) and devourers (13) across 120 creatures. 💡 The Silverwastes (15) and Dragon's Stand (11): the Mordrem farm covers Venom AND Fangs, which share the same top map. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Venom_Sac — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12002,12 +12003,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Déchus (15), Aberrants (7) et Svanir (6) — les trois familles des Marches de Bjora, soit la moitié des 56 créatures. 💡 La ligne la plus concentrée des huit : Ruines déchues (11), Montagnes déchues (9), Forêt aberrante (7), Montagnes méridionales (7), Plateau svanir (6). Tout tient sur une seule carte. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Fallen (15), Aberrants (7) and Svanir (6) — the three Bjora Marches families, half of the 56 creatures. 💡 The most concentrated line of the eight: Fallen Ruins (11), Fallen Mountains (9), Aberrant Forest (7), Southern Mountains (7), Svanir Plateau (6). It all fits on one map. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Intricate_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12063,12 +12064,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Déchus (15), Aberrants (7) et Svanir (6) — les trois familles des Marches de Bjora, soit la moitié des 56 créatures. 💡 La ligne la plus concentrée des huit : Ruines déchues (11), Montagnes déchues (9), Forêt aberrante (7), Montagnes méridionales (7), Plateau svanir (6). Tout tient sur une seule carte. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Fallen (15), Aberrants (7) and Svanir (6) — the three Bjora Marches families, half of the 56 creatures. 💡 The most concentrated line of the eight: Fallen Ruins (11), Fallen Mountains (9), Aberrant Forest (7), Southern Mountains (7), Svanir Plateau (6). It all fits on one map. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Engraved_Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12112,12 +12113,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Déchus (15), Aberrants (7) et Svanir (6) — les trois familles des Marches de Bjora, soit la moitié des 56 créatures. 💡 La ligne la plus concentrée des huit : Ruines déchues (11), Montagnes déchues (9), Forêt aberrante (7), Montagnes méridionales (7), Plateau svanir (6). Tout tient sur une seule carte. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Fallen (15), Aberrants (7) and Svanir (6) — the three Bjora Marches families, half of the 56 creatures. 💡 The most concentrated line of the eight: Fallen Ruins (11), Fallen Mountains (9), Aberrant Forest (7), Southern Mountains (7), Svanir Plateau (6). It all fits on one map. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Totem — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12195,12 +12196,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Destructeurs (16), drakes (10), gelées (8), traqueurs et ours (7 chacun). 💡 Les Dragon Response Missions concentrent les destructeurs — Champs de Ruine à elle seule en aligne 8. Étendues fragmentées (12) pour les gelées et les drakes déplacés. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Destroyers (16), drakes (10), oozes (8), stalkers and bears (7 each). 💡 Dragon Response Missions concentrate destroyers — Fields of Ruin alone lists 8. Fragmented Wastes (12) for oozes and displaced drakes. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Large_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12256,12 +12257,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Destructeurs (16), drakes (10), gelées (8), traqueurs et ours (7 chacun). 💡 Les Dragon Response Missions concentrent les destructeurs — Champs de Ruine à elle seule en aligne 8. Étendues fragmentées (12) pour les gelées et les drakes déplacés. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Destroyers (16), drakes (10), oozes (8), stalkers and bears (7 each). 💡 Dragon Response Missions concentrate destroyers — Fields of Ruin alone lists 8. Fragmented Wastes (12) for oozes and displaced drakes. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Sharp_Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12305,12 +12306,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Destructeurs (16), drakes (10), gelées (8), traqueurs et ours (7 chacun). 💡 Les Dragon Response Missions concentrent les destructeurs — Champs de Ruine à elle seule en aligne 8. Étendues fragmentées (12) pour les gelées et les drakes déplacés. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Destroyers (16), drakes (10), oozes (8), stalkers and bears (7 each). 💡 Dragon Response Missions concentrate destroyers — Fields of Ruin alone lists 8. Fragmented Wastes (12) for oozes and displaced drakes. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Claw — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12366,12 +12367,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Drakes (14) et dévoreurs (13) au coude à coude, puis les Toxiques (12), les chak (8) et la faune aquatique — méduses, requins, scorpions. 💡 Très dispersé : aucune carte ne dépasse 14 sources. Le McM et les Brumes en fournissent autant que la jungle de Maguuma. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Drakes (14) and devourers (13) neck and neck, then Toxic creatures (12), chak (8) and aquatic life — jellyfish, sharks, scorpions. 💡 Very scattered: no map exceeds 14 sources. WvW and the Mists yield as much as the Maguuma jungle. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Large_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12427,12 +12428,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Drakes (14) et dévoreurs (13) au coude à coude, puis les Toxiques (12), les chak (8) et la faune aquatique — méduses, requins, scorpions. 💡 Très dispersé : aucune carte ne dépasse 14 sources. Le McM et les Brumes en fournissent autant que la jungle de Maguuma. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Drakes (14) and devourers (13) neck and neck, then Toxic creatures (12), chak (8) and aquatic life — jellyfish, sharks, scorpions. 💡 Very scattered: no map exceeds 14 sources. WvW and the Mists yield as much as the Maguuma jungle. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Smooth_Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12476,12 +12477,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Drakes (14) et dévoreurs (13) au coude à coude, puis les Toxiques (12), les chak (8) et la faune aquatique — méduses, requins, scorpions. 💡 Très dispersé : aucune carte ne dépasse 14 sources. Le McM et les Brumes en fournissent autant que la jungle de Maguuma. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Drakes (14) and devourers (13) neck and neck, then Toxic creatures (12), chak (8) and aquatic life — jellyfish, sharks, scorpions. 💡 Very scattered: no map exceeds 14 sources. WvW and the Mists yield as much as the Maguuma jungle. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Scale — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12537,12 +12538,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Risen massivement — 56 des 120 créatures du tableau — puis gelées, géants, araignées, élémentaires et trolls. 💡 Le trio d'Orr concentre plus de la moitié des sources : Bond de Malchor (23), Rivage maudit (22) et Détroits de la Dévastation (19). ⚡ Les Détroits manquaient à la liste précédente. Les gelées, elles, se farment en Kryta de bas niveau — Champs de Gendarran, Collines de Kessex, Vallée de la Reine — et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-            "en": "Risen overwhelmingly — 56 of the 120 creatures in the table — then oozes, giants, spiders, elementals and trolls. 💡 The Orr trio holds over half the sources: Malchor's Leap (23), Cursed Shore (22) and Straits of Devastation (19). ⚡ The Straits were missing from the previous list. Oozes farm in low-level Kryta — Gendarran Fields, Kessex Hills, Queensdale — and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T5 only."
+            "fr": "Risen massivement — 56 des 120 créatures — puis gelées (10), géants (6), araignées et trolls. 💡 Le trio d'Orr fait plus de la moitié : Bond de Malchor (23), Rivage maudit (22), Détroits de la Dévastation (19). Les gelées se farment en Kryta de bas niveau, et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Risen overwhelmingly — 56 of 120 creatures — then oozes (10), giants (6), spiders and trolls. 💡 The Orr trio holds over half: Malchor's Leap (23), Cursed Shore (22), Straits of Devastation (19). Oozes farm in low-level Kryta, and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Ancient_Bone — tableau « Dropped by » complet, 120 NPC (export Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12598,12 +12599,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Risen massivement — 56 des 120 créatures du tableau — puis gelées, géants, araignées, élémentaires et trolls. 💡 Le trio d'Orr concentre plus de la moitié des sources : Bond de Malchor (23), Rivage maudit (22) et Détroits de la Dévastation (19). ⚡ Les Détroits manquaient à la liste précédente. Les gelées, elles, se farment en Kryta de bas niveau — Champs de Gendarran, Collines de Kessex, Vallée de la Reine — et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-            "en": "Risen overwhelmingly — 56 of the 120 creatures in the table — then oozes, giants, spiders, elementals and trolls. 💡 The Orr trio holds over half the sources: Malchor's Leap (23), Cursed Shore (22) and Straits of Devastation (19). ⚡ The Straits were missing from the previous list. Oozes farm in low-level Kryta — Gendarran Fields, Kessex Hills, Queensdale — and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T4 only."
+            "fr": "Risen massivement — 56 des 120 créatures — puis gelées (10), géants (6), araignées et trolls. 💡 Le trio d'Orr fait plus de la moitié : Bond de Malchor (23), Rivage maudit (22), Détroits de la Dévastation (19). Les gelées se farment en Kryta de bas niveau, et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Risen overwhelmingly — 56 of 120 creatures — then oozes (10), giants (6), spiders and trolls. 💡 The Orr trio holds over half: Malchor's Leap (23), Cursed Shore (22), Straits of Devastation (19). Oozes farm in low-level Kryta, and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Ancient_Bone — tableau « Dropped by » complet, 120 NPC (export Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12647,12 +12648,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Risen massivement — 56 des 120 créatures du tableau — puis gelées, géants, araignées, élémentaires et trolls. 💡 Le trio d'Orr concentre plus de la moitié des sources : Bond de Malchor (23), Rivage maudit (22) et Détroits de la Dévastation (19). ⚡ Les Détroits manquaient à la liste précédente. Les gelées, elles, se farment en Kryta de bas niveau — Champs de Gendarran, Collines de Kessex, Vallée de la Reine — et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-            "en": "Risen overwhelmingly — 56 of the 120 creatures in the table — then oozes, giants, spiders, elementals and trolls. 💡 The Orr trio holds over half the sources: Malchor's Leap (23), Cursed Shore (22) and Straits of Devastation (19). ⚡ The Straits were missing from the previous list. Oozes farm in low-level Kryta — Gendarran Fields, Kessex Hills, Queensdale — and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T3 only."
+            "fr": "Risen massivement — 56 des 120 créatures — puis gelées (10), géants (6), araignées et trolls. 💡 Le trio d'Orr fait plus de la moitié : Bond de Malchor (23), Rivage maudit (22), Détroits de la Dévastation (19). Les gelées se farment en Kryta de bas niveau, et le Labyrinthe du Roi Fou en concentre 13 pendant Halloween. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Risen overwhelmingly — 56 of 120 creatures — then oozes (10), giants (6), spiders and trolls. 💡 The Orr trio holds over half: Malchor's Leap (23), Cursed Shore (22), Straits of Devastation (19). Oozes farm in low-level Kryta, and the Mad King's Labyrinth packs 13 during Halloween. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Ancient_Bone — tableau « Dropped by » complet, 120 NPC (export Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12708,12 +12709,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (21), guivres (11), Risen (9), puis ours, loups et skelks. 💡 Terres sauvages d'argent (16) en tête, comme pour le Venin : une seule carte pour deux lignes. Cime aride (7) et Pics enneigés (6) en appoint. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T5.",
+            "en": "Mordrem (21), wurms (11), Risen (9), then bears, wolves and skelk. 💡 The Silverwastes (16) lead, as for Venom: one map for two lines. Dry Top (7) and the Shiverpeaks (6) as backup. The tier follows the zone level: a high-level map yields T5 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Large_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "vendor",
@@ -12769,12 +12770,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (21), guivres (11), Risen (9), puis ours, loups et skelks. 💡 Terres sauvages d'argent (16) en tête, comme pour le Venin : une seule carte pour deux lignes. Cime aride (7) et Pics enneigés (6) en appoint. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T4.",
+            "en": "Mordrem (21), wurms (11), Risen (9), then bears, wolves and skelk. 💡 The Silverwastes (16) lead, as for Venom: one map for two lines. Dry Top (7) and the Shiverpeaks (6) as backup. The tier follows the zone level: a high-level map yields T4 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Sharp_Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
@@ -12818,12 +12819,12 @@ const SOURCES_DB = {
           "type": "drop",
           "free_repeatable": true,
           "tip": {
-            "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
-            "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
+            "fr": "Mordrem (21), guivres (11), Risen (9), puis ours, loups et skelks. 💡 Terres sauvages d'argent (16) en tête, comme pour le Venin : une seule carte pour deux lignes. Cime aride (7) et Pics enneigés (6) en appoint. Le palier suit le niveau de la zone : une carte de haut niveau ne donne que du T3.",
+            "en": "Mordrem (21), wurms (11), Risen (9), then bears, wolves and skelk. 💡 The Silverwastes (16) lead, as for Venom: one map for two lines. Dry Top (7) and the Shiverpeaks (6) as backup. The tier follows the zone level: a high-level map yields T3 only."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Fang — tableau « Dropped by » (capture Antoine 22/08/2026)"
+          "ref": "wiki, tableaux « Dropped by » complets (exports Antoine 22/08/2026)"
         },
         {
           "type": "trading_post",
