@@ -83,35 +83,31 @@ chance à chaque coup).
 
 ---
 
-## 2. Familles de créatures — ✅ **RÉSOLU le 22/08/2026**
+## 2. Familles de créatures — partiellement vérifié, tableaux complets attendus
 
-Vérifiées contre les tableaux *Dropped by* du wiki. **Elles étaient fausses sur
-six lignes sur huit** — écrites de mémoire, jamais consultées :
+Vérifiées contre les tableaux *Dropped by*, **mais sur des captures tronquées** :
+elles montrent le haut de chaque liste, triée alphabétiquement. Ce qui y figure
+est confirmé ; ce qui n'y figure pas ne l'est pas pour autant.
 
-| ligne | annoncé | réel |
-|---|---|---|
-| Sang | humains, bandits, centaures | **skelks, chauves-souris, harpies, Risen** |
-| Totems | hylek, krait, ogres | **Svanir déchus, grawls, kodans** |
-| Crocs | loups, drakes, araignées | **skelks, ours, guivres, Mordrem** |
-| Griffes | dévoreurs, raptors | **ours, traqueurs, destructeurs** |
-| Écailles | guivres, sauriens | **dévoreurs**, puis drakes et faune aquatique |
-| Poussière | destructeurs | **les Marqués**, avant spectres et élémentaires |
-| Venin | serpents, krait | dévoreurs, araignées, **Mordrem** |
-| Os | skelks, canidés | **Risen**, puis géants et trolls |
+**Erreur de méthode corrigée en v134** : j'avais écrit des négations —
+« ni humains ni bandits ni centaures » — en lisant une absence dans une vue
+partielle. Une absence dans une liste tronquée n'est pas une absence. Les
+négations sont retirées, les constats positifs conservés, et chaque tip précise
+que la liste n'est pas exhaustive.
 
-Les 32 sources passent de `verified: false` à `verified: true`.
+Antoine extrait le rendu complet des tableaux dès son retour sur PC. À ce
+moment-là, les familles pourront être complétées plutôt que corrigées.
 
-**Trois concentrations utiles en ressortent**, et c'était le but de la demande :
+**Ce qui est acquis et ne bougera pas** — les concentrations par carte, qui ne
+se voient qu'en croisant les huit lignes :
 
 - **Marches de Bjora** → Sang **et** Totems (Forêt aberrante : six types
   d'Aberrants sur une zone étroite, plus les chamans déchus).
 - **Désert de cristal / Désolation** → Venin **et** Écailles (dévoreurs).
 - **Terres sauvages d'argent** → Venin **et** Crocs (Mordrem).
-- Et la **Poussière** se farme gratuitement pendant le circuit Vision : les
-  Marqués vivent sur Jahai, Chef-Tonnerre, Rivages d'Elon et Oasis de cristal.
-
-Le farm le plus dense reste le **Rivage maudit** pour les Os : quatorze types de
-Risen y déposent.
+- **Rivage maudit / Bond de Malchor** → Os, le farm le plus dense des huit.
+- La **Poussière** se farme gratuitement pendant le circuit Vision : les Marqués
+  vivent sur Jahai, Chef-Tonnerre, Rivages d'Elon et Oasis de cristal.
 
 ---
 

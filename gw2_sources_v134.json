@@ -1016,7 +1016,8 @@
   "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la.",
   "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte.",
   "changelog_v132": "Noeuds de ressource, d'apres les constats en jeu d'Antoine. Correction : le Domaine d'Istan n'a AUCUN nœud, contrairement a ce que la cadence de la kralkatite annoncait ; le Domaine de Kourna non plus. Mistonium : 25 nœuds par jour et par compte, 3 coups chacun, chance a chaque coup. Difluorite : 44 nœuds, ~33 % de chance, regime par compte ou par personnage non tranche, compte comme par compte en attendant. Ajout majeur : les vendeurs Glace eternelle des Marches de Bjora et de l'Œil du Nord vendent 10 unites de CHACUNE des six monnaies pour 75 Eclats de glace eternelle + 2 688 karma, SANS limite quotidienne. Ils figuraient dans les trois captures et n'avaient pas ete releves : c'est la seule source non plafonnee des six.",
-  "changelog_v133": "Familles de creatures des 8 lignes de trophees : verifiees contre les tableaux « Dropped by » du wiki, elles etaient FAUSSES sur six lignes sur huit. Le sang ne vient ni des humains ni des bandits mais des skelks, chauves-souris et harpies ; les totems ne viennent ni des hylek ni des krait mais des Svanir dechus des Marches de Bjora ; les crocs ne viennent ni des loups ni des drakes mais des skelks, ours et guivres ; les ecailles viennent d'abord des devoreurs et non des guivres ; la poussiere vient surtout des Marques ; les griffes des ours et destructeurs, pas des devoreurs. Les 32 sources passent de verified: false a verified: true. Trois concentrations utiles ressortent : les Marches de Bjora couvrent Sang et Totems, le Desert de cristal couvre Venin et Ecailles, les Terres sauvages d'argent couvrent Venin et Crocs — et la Poussiere se farme gratuitement pendant le circuit Vision, sur les memes cartes marquees."
+  "changelog_v133": "Familles de creatures des 8 lignes de trophees : verifiees contre les tableaux « Dropped by » du wiki, elles etaient FAUSSES sur six lignes sur huit. Le sang ne vient ni des humains ni des bandits mais des skelks, chauves-souris et harpies ; les totems ne viennent ni des hylek ni des krait mais des Svanir dechus des Marches de Bjora ; les crocs ne viennent ni des loups ni des drakes mais des skelks, ours et guivres ; les ecailles viennent d'abord des devoreurs et non des guivres ; la poussiere vient surtout des Marques ; les griffes des ours et destructeurs, pas des devoreurs. Les 32 sources passent de verified: false a verified: true. Trois concentrations utiles ressortent : les Marches de Bjora couvrent Sang et Totems, le Desert de cristal couvre Venin et Ecailles, les Terres sauvages d'argent couvrent Venin et Crocs — et la Poussiere se farme gratuitement pendant le circuit Vision, sur les memes cartes marquees.",
+  "changelog_v134": "Retrait des affirmations negatives ajoutees en v133. Les captures montraient le HAUT des tableaux « Dropped by », tries alphabetiquement : j'y ai lu des absences — « ni humains ni bandits ni centaures » — alors que je ne voyais qu'une fraction de chaque liste. Une absence dans une vue partielle n'est pas une absence, et l'ecrire comme un fait etait une erreur de methode. Les constats positifs sont conserves, puisque ce qui a ete vu tombe bien, et chaque tip precise desormais que la liste n'est pas exhaustive."
  },
  "meta_events": {
   "vb": {
@@ -2062,8 +2063,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -2100,8 +2101,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -2148,8 +2149,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -2208,8 +2209,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Les Marqués avant tout, puis les spectres et les élémentaires. 💡 Falaises de Jahai, Pics de Chef-Tonnerre, Rivages d'Elon et Oasis de cristal — les mêmes cartes que ton farm de Vision, donc gratuit en parallèle. La Vallée de Grothmar pour les spectres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Branded first and foremost, then ghosts and elementals. 💡 Jahai Bluffs, Thunderhead Peaks, Elon Riverlands and Crystal Oasis — the same maps as your Vision farm, so free alongside it. Grothmar Valley for ghosts. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -4240,8 +4241,8 @@
     {
      "type": "drop",
      "tip": {
-      "fr": "Drop McM (rare).",
-      "en": "Drop WvW (rare)."
+      "fr": "Drop McM (rare). Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Drop WvW (rare). Non-exhaustive: the wiki table is long and alphabetically sorted."
      }
     }
    ],
@@ -6507,8 +6508,8 @@
     {
      "type": "drop",
      "tip": {
-      "fr": "Bag of Mystic Coins = 6 garantis. Chance dans les coffres de fractales et les Black Lion Material Bags.",
-      "en": "Bag of Mystic Coins = 6 guaranteed. Chance from fractal chests and Black Lion Material Bags."
+      "fr": "Bag of Mystic Coins = 6 garantis. Chance dans les coffres de fractales et les Black Lion Material Bags. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Bag of Mystic Coins = 6 guaranteed. Chance from fractal chests and Black Lion Material Bags. Non-exhaustive: the wiki table is long and alphabetically sorted."
      }
     },
     {
@@ -10262,8 +10263,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. ⚠ Ni serpents ni krait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. ⚠ No snakes, no krait. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10323,8 +10324,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10384,8 +10385,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. ⚠ Ni humains ni bandits ni centaures, contrairement à ce que le tracker annonçait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. ⚠ No humans, bandits or centaurs, contrary to what the tracker claimed. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10445,8 +10446,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. ⚠ Ni hylek ni krait ni ogres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. ⚠ No hylek, krait or ogres. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10506,8 +10507,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. ⚠ Ni dévoreurs ni raptors. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. ⚠ No devourers, no raptors. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10567,8 +10568,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. ⚠ Ni loups ni drakes ni araignées. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. ⚠ No wolves, drakes or spiders. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10628,8 +10629,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. ⚠ Ni skelks ni canidés. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6.",
-      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. ⚠ No skelk, no canines. The tier follows the zone level: a high-level map yields T6 only."
+      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T6. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T6 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10868,8 +10869,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. ⚠ Ni humains ni bandits ni centaures, contrairement à ce que le tracker annonçait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. ⚠ No humans, bandits or centaurs, contrary to what the tracker claimed. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10929,8 +10930,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. ⚠ Ni humains ni bandits ni centaures, contrairement à ce que le tracker annonçait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. ⚠ No humans, bandits or centaurs, contrary to what the tracker claimed. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -10978,8 +10979,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. ⚠ Ni humains ni bandits ni centaures, contrairement à ce que le tracker annonçait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. ⚠ No humans, bandits or centaurs, contrary to what the tracker claimed. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Skelks, chauves-souris, harpies et Risen. 💡 La Forêt aberrante des Marches de Bjora concentre six types d'Aberrants sur une zone étroite ; le Rivage maudit et le Bond de Malchor pour les Risen. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bats, harpies and Risen. 💡 Bjora Marches' Aberrant Forest packs six Aberrant types into a tight area; Cursed Shore and Malchor's Leap for the Risen. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11039,8 +11040,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. ⚠ Ni serpents ni krait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. ⚠ No snakes, no krait. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11100,8 +11101,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. ⚠ Ni serpents ni krait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. ⚠ No snakes, no krait. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11149,8 +11150,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. ⚠ Ni serpents ni krait. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. ⚠ No snakes, no krait. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Dévoreurs, araignées et Mordrem. 💡 Le Désert de cristal et la Désolation pour les dévoreurs, les Terres sauvages d'argent pour les Mordrem — mêmes cartes que les Crocs, on farme les deux ensemble. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers, spiders and Mordrem. 💡 Crystal Desert and the Desolation for devourers, the Silverwastes for Mordrem — the same maps as Fangs, so both farm together. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11210,8 +11211,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. ⚠ Ni hylek ni krait ni ogres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. ⚠ No hylek, krait or ogres. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11271,8 +11272,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. ⚠ Ni hylek ni krait ni ogres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. ⚠ No hylek, krait or ogres. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11320,8 +11321,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. ⚠ Ni hylek ni krait ni ogres. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. ⚠ No hylek, krait or ogres. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Svanir déchus, grawls, kodans et Aberrants. 💡 Les Marches de Bjora à elles seules couvrent presque toute la ligne : chamans déchus, Aberrants, Sons of Svanir. C'est la carte la plus rentable des huit lignes, et elle sert aussi au Sang. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Fallen Svanir, grawl, kodan and Aberrants. 💡 Bjora Marches alone covers nearly the whole line: fallen shamans, Aberrants, Sons of Svanir. The most efficient map of the eight lines, and it also serves Blood. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11403,8 +11404,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. ⚠ Ni dévoreurs ni raptors. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. ⚠ No devourers, no raptors. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11464,8 +11465,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. ⚠ Ni dévoreurs ni raptors. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. ⚠ No devourers, no raptors. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11513,8 +11514,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. ⚠ Ni dévoreurs ni raptors. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. ⚠ No devourers, no raptors. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Ours, traqueurs, destructeurs et félins. 💡 Les Dragon Response Missions concentrent les destructeurs (Burster, Fiend, Melter, Soldier au même endroit) ; les Pics enneigés pour les ours et traqueurs alpins. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Bears, stalkers, destroyers and felines. 💡 Dragon Response Missions concentrate destroyers (Burster, Fiend, Melter, Soldier in one place); the Shiverpeaks for alpine bears and stalkers. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11574,8 +11575,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11635,8 +11636,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11684,8 +11685,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Dévoreurs d'abord, puis drakes et faune aquatique. 💡 Le Désert de cristal et la Désolation pour les dévoreurs — mêmes cartes que le Venin, les deux lignes se farment ensemble. Baie de l'Ambre et Anse de Sud-Soleil pour les drakes et les méduses. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Devourers first, then drakes and aquatic life. 💡 Crystal Desert and the Desolation for devourers — the same maps as Venom, so both lines farm together. Ember Bay and Southsun Cove for drakes and jellyfish. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11745,8 +11746,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. ⚠ Ni skelks ni canidés. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. ⚠ No skelk, no canines. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11806,8 +11807,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. ⚠ Ni skelks ni canidés. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. ⚠ No skelk, no canines. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11855,8 +11856,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. ⚠ Ni skelks ni canidés. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. ⚠ No skelk, no canines. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Risen massivement, puis géants, trolls et gelées. 💡 Le Rivage maudit et le Bond de Malchor sont de loin les meilleurs : quatorze types de Risen y déposent des os. C'est le farm le plus dense des huit lignes. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Risen overwhelmingly, then giants, trolls and oozes. 💡 Cursed Shore and Malchor's Leap are by far the best: fourteen Risen types drop bones there. The densest farm of the eight lines. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11916,8 +11917,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. ⚠ Ni loups ni drakes ni araignées. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5.",
-      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. ⚠ No wolves, drakes or spiders. The tier follows the zone level: a high-level map yields T5 only."
+      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T5. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T5 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -11977,8 +11978,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. ⚠ Ni loups ni drakes ni araignées. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4.",
-      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. ⚠ No wolves, drakes or spiders. The tier follows the zone level: a high-level map yields T4 only."
+      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T4. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T4 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
@@ -12026,8 +12027,8 @@
      "type": "drop",
      "free_repeatable": true,
      "tip": {
-      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. ⚠ Ni loups ni drakes ni araignées. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3.",
-      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. ⚠ No wolves, drakes or spiders. The tier follows the zone level: a high-level map yields T3 only."
+      "fr": "Skelks, ours, guivres et Mordrem. 💡 Les Terres sauvages d'argent pour les Mordrem — mêmes cartes que le Venin. Les Pics enneigés pour les ours et les guivres de glace. Le palier tombe avec le niveau de la zone : une carte de haut niveau ne donne que du T3. Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
+      "en": "Skelk, bears, wurms and Mordrem. 💡 The Silverwastes for Mordrem — the same maps as Venom. The Shiverpeaks for bears and ice wurms. The tier follows the zone level: a high-level map yields T3 only. Non-exhaustive: the wiki table is long and alphabetically sorted."
      },
      "verified": true,
      "checked": "2026-08-22",
