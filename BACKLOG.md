@@ -60,6 +60,29 @@ sinon le prochain vrai doublon passerait aussi.
 
 ---
 
+## 1 ter. Nœuds de difluorite : par compte ou par personnage ?
+
+44 nœuds au maximum aux Îles de Ventesable, environ 33 % de chance de cristal
+par nœud — soit une quinzaine par circuit. **Quotidien, régime non tranché.**
+
+L'enjeu est le même que pour la kralkatite : si c'est par personnage, monter des
+alts multiplie le rendement ; si c'est par compte, refaire le circuit ne rapporte
+rien. Les sources se contredisent — un guide dit qu'on peut se connecter avec
+chaque personnage pour miner, un joueur rapporte l'inverse sur cette carte
+précise.
+
+**Compté comme par COMPTE en attendant** : c'est le plancher prudent, celui qui
+n'annonce pas un délai qu'on ne tiendra pas.
+
+Vérification : faire le circuit de nœuds, changer de personnage, regarder s'ils
+sont encore là. Trente secondes sur place.
+
+Constats déjà acquis en jeu (22/08/2026) : **Istan et Kourna n'ont aucun nœud**
+de ressource, le mistonium est à **25 nœuds/jour/compte** (3 coups chacun,
+chance à chaque coup).
+
+---
+
 ## 2. Familles de créatures des 8 lignes de trophées — `verified: false`
 
 Les 32 composants de trophées portent une source « butin direct » citant des

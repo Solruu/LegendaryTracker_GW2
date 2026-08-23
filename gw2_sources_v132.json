@@ -1014,7 +1014,8 @@
   "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond.",
   "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique.",
   "changelog_v130": "Deux sources ajoutees a la kralkatite : les 35 caches sunspear et les 42 caisses de ravitaillement (30 Palawadan + 12 Grand Hall). Toutes deux quotidiennes et PAR COMPTE, contrairement aux ballots de coeurs qui sont par personnage — la distinction decide s'il vaut la peine de refaire le circuit sur un alt, et la reponse est non pour ces deux-la.",
-  "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte."
+  "changelog_v131": "Les deux gifts de magie LW4 sont modelises : Gift of Ephemeral Magic (mistonium, masse marquee, mistborn mote) et Gift of Crystalline Magic (kralkatite, difluorite, eclats graves), chacun 100 de chaque monnaie plus 1 Bouteille de vin elonien, et Vision en demande 3 de chaque. Cela explique enfin les 300 que portaient cinq des six monnaies de carte, et comble le trou du mistonium, qui portait zero. ⚠ Correction d'une erreur de la v127 : les 300 Masses marquees de Vision avaient ete supprimees comme doublon de la chaine des armes Dragonsblood. C'etait faux — elles alimentent le Gift of Ephemeral Magic, qui n'a rien a voir avec l'etape Equipment. Elles sont retablies par la chaine. Cadences posees sur les trois dernieres monnaies LW4. Elles ne suivent PAS le meme regime : le mistonium a des ballots de coeurs par personnage (15/jour), la difluorite des coffres de meta par personnage (21/jour), les eclats graves aucun plafond quotidien documente. Seul le marchand elonien itinerant est commun aux trois, a 5 par jour et par compte.",
+  "changelog_v132": "Noeuds de ressource, d'apres les constats en jeu d'Antoine. Correction : le Domaine d'Istan n'a AUCUN nœud, contrairement a ce que la cadence de la kralkatite annoncait ; le Domaine de Kourna non plus. Mistonium : 25 nœuds par jour et par compte, 3 coups chacun, chance a chaque coup. Difluorite : 44 nœuds, ~33 % de chance, regime par compte ou par personnage non tranche, compte comme par compte en attendant. Ajout majeur : les vendeurs Glace eternelle des Marches de Bjora et de l'Œil du Nord vendent 10 unites de CHACUNE des six monnaies pour 75 Eclats de glace eternelle + 2 688 karma, SANS limite quotidienne. Ils figuraient dans les trois captures et n'avaient pas ete releves : c'est la seule source non plafonnee des six."
  },
  "meta_events": {
   "vb": {
@@ -2729,18 +2730,19 @@
      },
      {
       "label": {
-       "fr": "Nœuds, événements et métas — Domaine d'Istan",
-       "en": "Nodes, events and metas — Domain of Istan"
+       "fr": "Événements et métas — Domaine d'Istan",
+       "en": "Events and metas — Domain of Istan"
       },
       "period": "day",
       "cap": null,
       "cost": {
-       "fr": "Palawadan et le Grand Hall en rendent en volume, surtout via les caches de ravitaillement. Sans plafond mais irrégulier : hors projection de délai.",
-       "en": "Palawadan and the Great Hall yield volume, mostly through supply stashes. Uncapped but irregular: excluded from the delay projection."
+       "fr": "⚠ Le Domaine d'Istan n'a AUCUN nœud de ressource : contrairement aux autres cartes LW4, la kralkatite ne se mine pas. Elle vient des événements, de Palawadan et du Grand Hall. Vérifié en jeu.",
+       "en": "⚠ The Domain of Istan has NO resource nodes: unlike the other LWS4 maps, Kralkatite cannot be mined. It comes from events, Palawadan and the Great Hall. Verified in game."
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Kralkatite_Ore"
+      "ref": "observation en jeu d'Antoine (22/08/2026)",
+      "rng": true
      },
      {
       "label": {
@@ -2757,6 +2759,21 @@
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Supply_Stash"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
@@ -2820,6 +2837,22 @@
      },
      {
       "label": {
+       "fr": "Nœuds de difluorite — Îles de Ventesable",
+       "en": "Difluorite nodes — Sandswept Isles"
+      },
+      "period": "day",
+      "cap": 44,
+      "rng": true,
+      "cost": {
+       "fr": "44 nœuds au maximum sur la carte, environ 33 % de chance de cristal par nœud — soit une quinzaine par circuit. ⚠ Quotidien, mais le régime n'est pas tranché : par compte ou par personnage, non vérifié. Compté comme par COMPTE, le plancher prudent, tant que ce n'est pas confirmé.",
+       "en": "44 nodes at most on the map, roughly 33% crystal chance per node — about fifteen per run. ⚠ Daily, but the regime is unsettled: per account or per character, unverified. Counted as per ACCOUNT, the cautious floor, until confirmed."
+      },
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "observation en jeu d'Antoine (22/08/2026) — régime par compte/perso à confirmer"
+     },
+     {
+      "label": {
        "fr": "Marchand élonien itinérant — Chute draconique",
        "en": "Traveling Elonian Trader — Dragonfall"
       },
@@ -2848,6 +2881,21 @@
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Difluorite_Crystal (capture Antoine 22/08/2026)"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
@@ -2897,12 +2945,12 @@
       "cap": null,
       "rng": true,
       "cost": {
-       "fr": "Coffres kournans garantis dans toute la carte, 5 par coffre sur « End the plague experiments », 6 sur le Centre impérial, 3 sur les coffres éveillés. Pas de plafond quotidien documenté, mais rendement lié aux événements : hors projection. ⚠ Pas de ballot chez les vendeurs de cœurs.",
-       "en": "Kournan chests guaranteed throughout the map, 5 per chest on 'End the plague experiments', 6 at the Imperial Center, 3 from Awakened chests. No documented daily cap, but yield tied to events: excluded from the projection. ⚠ No heart-vendor bundle."
+       "fr": "⚠ Le Domaine de Kourna n'a AUCUN nœud de ressource : les éclats viennent exclusivement des événements et de leurs coffres. Vérifié en jeu. Coffres kournans garantis dans toute la carte, 5 par coffre sur « End the plague experiments », 6 sur le Centre impérial, 3 sur les coffres éveillés. Pas de plafond quotidien documenté, mais rendement lié aux événements : hors projection. ⚠ Pas de ballot chez les vendeurs de cœurs.",
+       "en": "⚠ The Domain of Kourna has NO resource nodes: shards come solely from events and their chests. Verified in game. Kournan chests guaranteed throughout the map, 5 per chest on 'End the plague experiments', 6 at the Imperial Center, 3 from Awakened chests. No documented daily cap, but yield tied to events: excluded from the projection. ⚠ No heart-vendor bundle."
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+      "ref": "observation en jeu d'Antoine (22/08/2026)"
      },
      {
       "label": {
@@ -2933,6 +2981,21 @@
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
@@ -3005,6 +3068,22 @@
      },
      {
       "label": {
+       "fr": "Nœuds de mistonium — Falaises de Jahai",
+       "en": "Mistonium nodes — Jahai Bluffs"
+      },
+      "period": "day",
+      "cap": 25,
+      "rng": true,
+      "cost": {
+       "fr": "25 nœuds par jour et par COMPTE, 3 coups chacun, avec une chance de mistonium à chaque coup. Le plafond borne les nœuds, pas le rendement : hors projection de délai. Refaire le circuit sur un alt ne rapporte rien.",
+       "en": "25 nodes per day per ACCOUNT, 3 strikes each, with a chance of mistonium on every strike. The cap bounds nodes, not yield: excluded from the delay projection. Running the route on an alt yields nothing."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "observation en jeu d'Antoine (22/08/2026)"
+     },
+     {
+      "label": {
        "fr": "Marchand élonien itinérant — Chute draconique",
        "en": "Traveling Elonian Trader — Dragonfall"
       },
@@ -3033,6 +3112,21 @@
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Lump_of_Mistonium (capture Antoine 22/08/2026)"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
@@ -3105,6 +3199,21 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
@@ -3163,6 +3272,21 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+     },
+     {
+      "label": {
+       "fr": "Vendeurs Glace éternelle — Marches de Bjora et Œil du Nord",
+       "en": "Eternal Ice vendors — Bjora Marches and Eye of the North"
+      },
+      "period": "day",
+      "cap": null,
+      "cost": {
+       "fr": "10 unités pour 75 Éclats de glace éternelle + 2 688 karma, SANS limite quotidienne, chez Anette Eymundrdottir (Fort de Jora), Humble Stone (Refuge des esprits) et Kjep Corsson (Salle des Monuments). 💡 C'est la seule source non plafonnée des six monnaies : sur un besoin de 3 000 unités, elle change la stratégie — la glace éternelle se farme aux nœuds des Marches de Bjora et aux métas de Drizzlewood.",
+       "en": "10 units for 75 Eternal Ice Shards + 2,688 karma, with NO daily limit, from Anette Eymundrdottir (Jora's Keep), Humble Stone (Spirits' Refuge) and Kjep Corsson (Hall of Monuments). 💡 The only uncapped source across all six currencies: on a 3,000-unit requirement it changes the strategy — Eternal Ice farms from Bjora Marches nodes and Drizzlewood metas."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore et pages sœurs, tableau « Sold by » (captures Antoine 22/08/2026)"
      }
     ]
    },
