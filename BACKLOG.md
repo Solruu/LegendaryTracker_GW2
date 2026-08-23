@@ -86,7 +86,7 @@ plutôt qu'une déduction.
 
 ---
 
-## 2. Familles de créatures — partiellement vérifié, tableaux complets attendus
+## 2. Familles de créatures — 1 ligne sur 8 chiffrée sur le tableau complet
 
 Vérifiées contre les tableaux *Dropped by*, **mais sur des captures tronquées** :
 elles montrent le haut de chaque liste, triée alphabétiquement. Ce qui y figure
@@ -114,14 +114,18 @@ se voient qu'en croisant les huit lignes :
 
 ---
 
-## 3. Identifiants d'objets manquants
+## 3. Identifiants d'objets — partiellement résolu, deux problèmes ouverts
 
-- `ancient_cipher` — aucun `apiId`. Sans lui, le stock reste silencieusement à
-  zéro. À relever en jeu (lien de discussion ou GW2Efficiency).
-- `spirit_thread` — même situation.
-
-Rappel : un `apiId` faux est **pire** qu'un `apiId` absent, parce qu'il produit
-un stock plausible et faux. Ne rien mettre plutôt que deviner.
+- **`spirit_thread`** → `apiId: 77372` posé. **Mais sa description contredit ce
+  que le tracker en dit** : « peut être imprégné de l'énergie libérée par la
+  mort d'un **chak gerent** » — la méta des Profondeurs enchevêtrées (HoT), pas
+  Gorseval. Or j'avais écrit « 1 par semaine sur Gorseval, Spirit Vale », tiré
+  d'une prose que j'avais moi-même rédigée sans source. **La cadence est
+  dégradée en `verified: false`** plutôt que maintenue.
+  → À reprendre : que demande réellement Envoy I, et à quelle cadence ?
+- **`ancient_cipher`** → l'identifiant **81722 renvoie un 404** sur `/v2/items`.
+  Laissé vide : un identifiant faux produit un stock plausible et faux, ce qui
+  est pire qu'un stock absent.
 
 ---
 
