@@ -135,6 +135,36 @@ pour **Totems + Sang**.
 
 ---
 
+## 3 bis. Six « Gift of… » spécifiques manquants
+
+C'est la toute première remarque d'Antoine sur ce projet : *« aucun des
+sous-onglets components ne donne les requis pour les "gift of…" spécifiques »*.
+Les chaînes génériques sont désormais complètes, celle-ci ne l'est pas.
+
+Six identifiants sont cités dans une recette et n'existent pas :
+
+| composant | légendaire(s) |
+|---|---|
+| `gift_of_conquering` | Warbringer, Conflux |
+| `gift_of_the_world` | Conflux |
+| `warcry` | Warbringer (précurseur) |
+| `gift_of_sentience` | Aurora |
+| `gift_of_prescience` | Vision |
+| `gift_of_compassion` | Coalescence |
+
+**L'audit v15 les signale désormais** : tout composant cité dans
+`legendaries[].components` doit exister, sinon la chaîne s'arrête et le coût
+annoncé est incomplet. C'est la règle qui aurait attrapé d'un coup les gifts
+Magic et Might, et le Mystic Tribute de Coalescence.
+
+Ce qui manque pour les créer : leurs **recettes**. Une capture wiki par gift, ou
+l'arbre GW2Efficiency du légendaire concerné, suffirait.
+
+⚠ Ne pas créer de coquilles vides : un composant sans recette ni quantité
+ajoute du bruit sans rien calculer.
+
+---
+
 ## 4. Portes de maîtrise : les noms sont-ils bons ?
 
 `collection_unlocks` pose des portes `mastery` nommées **« Rift Repair »**

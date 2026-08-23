@@ -1139,6 +1139,27 @@ def check_obsidian_gift_split(data, errors, warnings):
         )
 
 
+def check_recipe_components(data, errors, warnings):
+    """Tout composant cite dans une recette doit exister.
+
+    legendaries[].components enumere ce que la Forge mystique consomme. Un
+    identifiant qui n'existe pas dans craft_components est un maillon absent :
+    la cascade s'arrete la, et le legendaire annonce moins que son cout reel.
+    C'est ainsi que Coalescence affichait zero trophee T6 et que les 21 armes
+    gen1 en affichaient autant, faute des gifts Magic et Might.
+    """
+    cc = data.get("craft_components", {})
+    for lid, leg in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(leg, dict):
+            continue
+        for cid in (leg.get("components") or []):
+            if isinstance(cid, str) and cid not in cc:
+                warnings.append(
+                    f"legendaries/{lid} : la recette cite '{cid}', absent de craft_components — "
+                    "la chaine s'arrete la, et le cout annonce est incomplet"
+                )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1230,7 +1251,10 @@ def main() -> int:
     # 19. Obsidienne : quantite de gifts et repartition par emplacement
     check_obsidian_gift_split(data, errors, warnings)
 
-    # 20. Integrite de chaque entree de meta_eligible
+    # 20. Composants de recette : tout maillon cite doit exister
+    check_recipe_components(data, errors, warnings)
+
+    # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
     if not metas:
         warnings.append("meta_eligible est vide ou absent")
