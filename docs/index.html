@@ -1771,7 +1771,9 @@ const SOURCES_DB = {
     "changelog_v124": "trophy_matrix declare les 8 lignes de trophees et leurs 4 paliers dans l'ordre de la recette, pour alimenter la matrice de l'onglet T6 sans coder la table dans le JSX. Le palier devient un champ explicite sur chaque composant : l'ordre de declaration n'etait pas fiable, la ligne des poussieres preexistant rangee du T3 vers le T6, a l'inverse des sept autres.",
     "changelog_v125": "Trois plafonds quittent la prose du JSX pour cadence : branded_mass (25 nœuds/jour/compte plus 5/jour/personnage au coffre), volatile_magic (50 nœuds/jour) et mistborn_mote (50 nœuds/jour). branded_mass est le plus couteux : c'est le vrai timegate de Vision, et il n'apparaissait pas dans l'onglet Timegates faute de cadence — precisement l'onglet construit pour le montrer. Signale sans etre tranche : la prose annonce 960 Branded Mass pour Vision I, qty en declare 300, soit 26 jours de farm d'ecart.",
     "changelog_v126": "note_selachimorpha rejoint le champ note, effectivement rendu : l'information est du contenu de jeu (Selachimorpha demande 200 de chacun des 8 T6 sans les 250 pieces mystiques), pas de la documentation de schema, et dormait dans un champ que rien n'affiche.",
-    "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour."
+    "changelog_v127": "Branded Mass tranche : Vision demande 6 armes Dragonsblood, pas 16. Journeyman of the Forge, qui en demande 16, est un succes DISTINCT et facultatif pour Vision — le tracker le presentait comme l'etape Equipment, ce qui annoncait 960 Masse marquee au lieu de 360. Le total a plat de 300 sur qty['vision'] est supprime : c'etait le doublon perime soupconne, l'etape ne demandant aucune Masse marquee en dehors des armes. Vision passe de 660 a 360, soit environ 12 jours de farm de moins au plafond de 25 par jour.",
+    "changelog_v128": "Point 1 bis du backlog tranche : les ectoplasmes de Vision sont ADDITIFS, 250 au titre de l'exigence commune plus 300 pour les 6 Encapsulateurs d'essence mnesique, soit 550. Le chevauchement est declare verifie via qty_overlap_verified, pour que l'audit cesse de le signaler sans que la regle soit affaiblie. Kralkatite Ore gagne une cadence : 75 par personnage et par jour aux 3 vendeurs de coeurs du Domaine d'Istan (ballots de 25, gratuits une fois le coeur fait), 250 par Sac via la piste Saison 4 repetable, et les nœuds sans plafond.",
+    "changelog_v129": "La branche Istan de Vision etait chiffree a un dixieme de son cout. Un Lingot de kralkatite demande 10 minerais + 10 poudres de quartz rose + 1 ectoplasme, et une arme Astral en demande 50 : les 6 armes de l'etape « Vision of Equipment: Astral Weapons » pesent donc 300 lingots, soit 3 000 minerais, 3 000 poudres et 300 ectoplasmes. La prose du tracker annoncait ~1 350 et ~1 335, un facteur 2,25 venant d'un calcul a 4,5 minerais par lingot au lieu de 10, et qty['vision'] annonçait 300 minerais, un facteur 10. Le composant Poudre de quartz rose n'existait pas du tout. La chaine est modelisee plutot qu'aplatie, pour que chaque maillon reste verifiable. Le 300 a plat est conserve : difluorite, eclats graves et mistonium portent le meme montant sur des cartes sans craft d'arme, c'est donc le cout des objets de collection, que rien ne duplique."
   },
   "meta_events": {
     "vb": {
@@ -3404,7 +3406,8 @@ const SOURCES_DB = {
       "name": "Kralkatite Ore",
       "apiId": 86069,
       "needed_for": [
-        "gift_of_crystalline_magic"
+        "gift_of_crystalline_magic",
+        "kralkatite_ingot"
       ],
       "farmable": true,
       "sources": [
@@ -3430,9 +3433,71 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "vision": 300
+        "vision": 300,
+        "kralkatite_ingot": 10
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Ballots de kralkatite — 3 vendeurs de cœurs",
+              "en": "Bundles of Kralkatite — 3 heart vendors"
+            },
+            "period": "day",
+            "cap": 75,
+            "per_character": true,
+            "cost": {
+              "fr": "25 minerais par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. Trois cœurs au Domaine d'Istan, donc 75 par personnage et par jour. C'est de loin la meilleure source, et la seule qui se démultiplie avec les alts.",
+              "en": "25 ore per bundle, 1 bundle per vendor per character per day, once the heart is done. Three hearts in the Domain of Istan, so 75 per character per day. By far the best source, and the only one that scales with alts."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Bundle_of_Kralkatite"
+          },
+          {
+            "label": {
+              "fr": "Piste de récompense Saison 4",
+              "en": "Living World Season 4 reward track"
+            },
+            "period": "week",
+            "cap": 250,
+            "cost": {
+              "fr": "Un Sac de minerai de kralkatite contient 250 minerais. La piste du Domaine d'Istan n'est plus répétable depuis mars 2025 : c'est la piste Saison 4, elle, répétable, qui délivre désormais ces récompenses. Accessible en McM comme en PvP.",
+              "en": "A Sack of Kralkatite Ore holds 250 ore. The Domain of Istan track stopped being repeatable in March 2025: the repeatable Living World Season 4 track now delivers these rewards. Available in both WvW and PvP."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Domain_of_Istan_Reward_Track"
+          },
+          {
+            "label": {
+              "fr": "Nœuds, événements et métas — Domaine d'Istan",
+              "en": "Nodes, events and metas — Domain of Istan"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "Palawadan et le Grand Hall en rendent en volume, surtout via les caches de ravitaillement. Sans plafond mais irrégulier : hors projection de délai.",
+              "en": "Palawadan and the Great Hall yield volume, mostly through supply stashes. Uncapped but irregular: excluded from the delay projection."
+            },
+            "verified": true,
+            "checked": "2026-08-22",
+            "ref": "wiki:Kralkatite_Ore"
+          }
+        ]
+      },
+      "timegate": true,
+      "note": {
+        "fr": "Vision en demande ~3 360 : 300 pour les objets de la collection Visions of Istan — le même montant que le difluorite, les éclats gravés et le mistonium sur leurs cartes respectives — plus 3 000 pour les 300 Lingots de kralkatite, plus ~60 pour les recettes d'armes. 💡 Les 3 vendeurs de cœurs en vendent 75 par personnage et par jour, gratuits une fois le cœur fait : c'est le seul levier qui rende ce mur praticable, et il se démultiplie avec les alts.",
+        "en": "Vision needs ~3,360: 300 for the Visions of Istan collection items — the same amount as difluorite, inscribed shards and mistonium on their own maps — plus 3,000 for the 300 Kralkatite Ingots, plus ~60 for the weapon recipes. 💡 The 3 heart vendors sell 75 per character per day, free once the heart is done: the only lever that makes this wall practical, and it scales with alts."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ore + wiki:Bundle_of_Kralkatite",
+      "qty_overlap_verified": [
+        "vision"
+      ]
     },
     "difluorite_crystal": {
       "name": "Difluorite Crystal",
@@ -5753,6 +5818,7 @@ const SOURCES_DB = {
         "amalgamated_rift_essence",
         "gift_of_fortune",
         "gift_of_research",
+        "kralkatite_ingot",
         "memory_essence_encapsulator"
       ],
       "farmable": true,
@@ -5804,13 +5870,21 @@ const SOURCES_DB = {
         "warbringer": 250,
         "coalescence": 250,
         "transcendence": 250,
-        "eikasia": 80
+        "eikasia": 80,
+        "kralkatite_ingot": 1
       },
       "kind": "acquire",
       "best": "salvage",
       "verified": true,
-      "checked": "2026-08-20",
-      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
+      "checked": "2026-08-22",
+      "ref": "wiki:Memory_Essence_Encapsulator (capture Antoine 22/08/2026)",
+      "qty_overlap_verified": [
+        "vision"
+      ],
+      "note": {
+        "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon.",
+        "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
+      }
     },
     "mystic_clover": {
       "name": "Mystic Clover",
@@ -12412,6 +12486,92 @@ const SOURCES_DB = {
         "fr": "Identifiant renomme le 20/08/2026 : 'coalescence' entrait en collision avec l'identifiant du legendaire. Une cle de qty se lit comme un composant si elle en designe un, et comme un legendaire sinon — l'homonyme rendait les neuf references ambigues.",
         "en": "Id renamed on 2026-08-20: 'coalescence' collided with the legendary's id. A qty key reads as a component when it names one, and as a legendary otherwise - the homonym made all nine references ambiguous."
       }
+    },
+    "kralkatite_ingot": {
+      "name": "Kralkatite Ingot",
+      "apiId": 85828,
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "vision": 300
+      },
+      "needed_for": [
+        "vision"
+      ],
+      "recipe": {
+        "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur) : 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 Globe d'ectoplasme. 50 lingots par arme Astral, 6 armes pour l'étape « Vision of Equipment: Astral Weapons » — soit 300 lingots.",
+        "en": "Crafting 400 (Artificer, Weaponsmith or Huntsman): 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 Glob of Ectoplasm. 50 ingots per Astral weapon, 6 weapons for the 'Vision of Equipment: Astral Weapons' step — 300 ingots."
+      },
+      "note": {
+        "fr": "⏳ Le vrai mur de Vision, et de loin : la branche Istan pèse huit fois la branche Thunderhead. 3 000 minerais et 3 000 poudres, quand les armes Dragonsblood n'en demandent que 360 de Masse marquée.",
+        "en": "⏳ Vision's real wall, by a wide margin: the Istan branch weighs eight times the Thunderhead one. 3,000 ore and 3,000 powder, where the Dragonsblood weapons need only 360 Branded Mass."
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "map": "Domain of Istan",
+          "tip": {
+            "fr": "Ne se trouve pas, se fabrique : 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 Globe d'ectoplasme par lingot. Les deux matières premières viennent de la même carte, et le minerai a une source quotidienne gratuite (75 par personnage et par jour aux 3 vendeurs de cœurs). Commencer par les cœurs, tous les jours, sur autant de personnages que possible.",
+            "en": "Not found, crafted: 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 Glob of Ectoplasm per ingot. Both raw materials come from the same map, and the ore has a free daily source (75 per character per day from the 3 heart vendors). Start with the hearts, every day, on as many characters as possible."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Kralkatite_Ingot + wiki:Astral_weapons + dulfy (verifie 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ingot + wiki:Astral_weapons + dulfy (verifie 22/08/2026)"
+    },
+    "powdered_rose_quartz": {
+      "name": "Powdered Rose Quartz",
+      "apiId": 86269,
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "kralkatite_ingot": 10
+      },
+      "needed_for": [
+        "kralkatite_ingot"
+      ],
+      "sources": [
+        {
+          "type": "gathering",
+          "map": "Domain of Istan",
+          "tip": {
+            "fr": "Récolte sur les Brandstones : 1 à 3 garantis dans l'instance personnelle, et 1 à 3 par éclat de Brandstone sur la carte. C'est le sous-produit du minage de la kralkatite, d'où le nom.",
+            "en": "Gathered from Brandstones: 1 to 3 guaranteed in the home instance, and 1 to 3 per Brandstone Chunk on the map. It is the by-product of mining Kralkatite, hence the name."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Powdered_Rose_Quartz"
+        },
+        {
+          "type": "salvage",
+          "tip": {
+            "fr": "Se récupère aussi en récupérant du Rose Quartz.",
+            "en": "Also obtained by salvaging Rose Quartz."
+          },
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Rose_Quartz"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. À 3 000 unités, comparer sérieusement l'achat au farm : le quartz n'a pas de source quotidienne plafonnée comme les ballots de kralkatite.",
+            "en": "Trading Post. At 3,000 units, seriously compare buying against farming: the powder has no capped daily source like the Kralkatite bundles."
+          },
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Kralkatite_Ingot + wiki:Astral_weapons + dulfy (verifie 22/08/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Kralkatite_Ingot + wiki:Astral_weapons + dulfy (verifie 22/08/2026)"
     }
   },
   "enchaînements_recommandés": {
@@ -22436,7 +22596,7 @@ const LEGENDARIES = {
         tip: { fr: "Meta des 6 cartes LW4 — se valide quand les 6 sous-collections ci-dessous sont terminées.", en: "Meta of the 6 LWS4 maps — completes once the 6 sub-collections below are done." } },
       { key: "vis_istan", achievementId: 4765, name: "Visions of Istan",
         bitTips: {
-          "Vision of Equipment: Astral Weapons": { fr: "6 armes Astral ou Stellar. Prérequis : la collection « Brandstone Research » ci-dessous (timegate 7 j). Par arme : 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 composants orichalque — soit ~1 350 Kralkatite Ore et 1 335 Powdered Rose Quartz pour les 6. ⚡ Les skins Astral déjà débloqués comptent, et « Astral Purification » offre de quoi faire une arme Stellar gratuitement : autant d'armes en moins.", en: "6 Astral or Stellar weapons. Prerequisite: the 'Brandstone Research' collection below (7-day timegate). Per weapon: 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 orichalcum components — roughly 1,350 Kralkatite Ore and 1,335 Powdered Rose Quartz for all 6. ⚡ Already-unlocked Astral skins count, and 'Astral Purification' grants a free Stellar weapon's worth: that many fewer to craft." },
+          "Vision of Equipment: Astral Weapons": { fr: "⏳ LE mur de Vision — huit fois la branche Dragonsblood. 6 armes Astral ou Stellar. Prérequis : « Brandstone Research » ci-dessous (timegate 7 j). Par arme : 1 Inscription of the Spearmarshal + 50 Lingots de kralkatite + 2 composants orichalque. Un lingot = 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 ectoplasme, donc 500 + 500 par arme : 3 000 minerais, 3 000 poudres et 300 ectoplasmes pour les 6. 💡 Les 3 vendeurs de cœurs rendent 75 minerais par personnage et par jour, gratuits : c'est le seul levier praticable, et il se démultiplie avec les alts. ⚡ Les skins Astral déjà débloqués comptent, et « Astral Purification » offre de quoi faire une arme Stellar gratuitement : autant d'armes en moins.", en: "⏳ Vision's REAL wall - eight times the Dragonsblood branch. 6 Astral or Stellar weapons. Prerequisite: 'Brandstone Research' below (7-day timegate). Per weapon: 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 orichalcum components. One ingot = 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 ectoplasm, so 500 + 500 per weapon: 3,000 ore, 3,000 powder and 300 ectoplasm for all 6. 💡 The 3 heart vendors give 75 ore per character per day, free: the only workable lever, and it scales with alts." },
           "Vision of Dragons: Aurene": { fr: "Memory Fragment au-dessus du PoI Plaza of Resurgence : voler sur la porte d'abord, puis monter.", en: "Memory Fragment above the Plaza of Resurgence PoI: fly onto the gate first, then ascend." },
           "Vision of Allies: Taimi": { fr: "Interagir avec la Partially Corrupted Data Entry, juste à côté du Volatile Magic Collector près de Chalon Docks wp.", en: "Interact with the Partially Corrupted Data Entry, right next to the Volatile Magic Collector near Chalon Docks wp." },
           "Vision of Enemies: Warden Amala": { fr: "Vaincre Warden Amala au Mordant Crescent Great Hall EN AYANT un Memory Essence Encapsulator en inventaire. Encapsulator = 50 ectos + 10 Orichalcum Filigree + 1 Lesser Vision Crystal + 3 Xunlai Electrum Ingots, chez un Volatile Magic Collector.", en: "Defeat Warden Amala at the Mordant Crescent Great Hall WHILE holding a Memory Essence Encapsulator. Encapsulator = 50 ectos + 10 Orichalcum Filigree + 1 Lesser Vision Crystal + 3 Xunlai Electrum Ingots, from a Volatile Magic Collector." },
