@@ -83,16 +83,35 @@ chance à chaque coup).
 
 ---
 
-## 2. Familles de créatures des 8 lignes de trophées — `verified: false`
+## 2. Familles de créatures — ✅ **RÉSOLU le 22/08/2026**
 
-Les 32 composants de trophées portent une source « butin direct » citant des
-familles de créatures (morts-vivants pour le sang, araignées pour le venin,
-hylek pour les totems…). Elles sont **marquées non vérifiées** : elles viennent
-de connaissances générales, pas d'une page consultée.
+Vérifiées contre les tableaux *Dropped by* du wiki. **Elles étaient fausses sur
+six lignes sur huit** — écrites de mémoire, jamais consultées :
 
-À vérifier sur la page wiki de chaque trophée, section *Dropped by*. Les pages
-sont longues ; l'objectif n'est pas l'exhaustivité mais **deux ou trois familles
-statistiquement bonnes** par ligne.
+| ligne | annoncé | réel |
+|---|---|---|
+| Sang | humains, bandits, centaures | **skelks, chauves-souris, harpies, Risen** |
+| Totems | hylek, krait, ogres | **Svanir déchus, grawls, kodans** |
+| Crocs | loups, drakes, araignées | **skelks, ours, guivres, Mordrem** |
+| Griffes | dévoreurs, raptors | **ours, traqueurs, destructeurs** |
+| Écailles | guivres, sauriens | **dévoreurs**, puis drakes et faune aquatique |
+| Poussière | destructeurs | **les Marqués**, avant spectres et élémentaires |
+| Venin | serpents, krait | dévoreurs, araignées, **Mordrem** |
+| Os | skelks, canidés | **Risen**, puis géants et trolls |
+
+Les 32 sources passent de `verified: false` à `verified: true`.
+
+**Trois concentrations utiles en ressortent**, et c'était le but de la demande :
+
+- **Marches de Bjora** → Sang **et** Totems (Forêt aberrante : six types
+  d'Aberrants sur une zone étroite, plus les chamans déchus).
+- **Désert de cristal / Désolation** → Venin **et** Écailles (dévoreurs).
+- **Terres sauvages d'argent** → Venin **et** Crocs (Mordrem).
+- Et la **Poussière** se farme gratuitement pendant le circuit Vision : les
+  Marqués vivent sur Jahai, Chef-Tonnerre, Rivages d'Elon et Oasis de cristal.
+
+Le farm le plus dense reste le **Rivage maudit** pour les Os : quatorze types de
+Risen y déposent.
 
 ---
 
