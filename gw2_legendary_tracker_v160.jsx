@@ -26,7 +26,6 @@ const I18N = {
     wpn_resolving: "Resolving weapon names via GW2 API…",
     bits_meta_note: "Meta-achievement — its steps are the map achievements below (completion states sync via Flask).",
     bits_meta_nostatus: "Connect the Flask API to see per-achievement completion.",
-    t6_demand: "1 Condensed pair (Magic+Might) = 200 of EACH T6. Demands: Obsidian piece = 1 pair · rune/sigil/relic = 1 pair · Coalescence = 2 pairs · gen3 weapon = 1 pair. Bars below = 1 pair; multiply by your planned crafts.",
     t6_src1: "Eternal Ice loop (IBS): daily strikes (~90-100 shards/day, 30-45 min) or Drakkar + Bjora chests. Conversion at Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — UNLOCK REQUIRED: buy 'Unlock Eternal Ice Trader' from Lady Camilla (hub upgrade vendor). 75 shards → pouch of 25 LW4 map currency, unlimited; also trades directly against Volatile Magic. Note: the Eternal Ice vendor works even without PoF (rare exception in the hub).",
     t6_src2: "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on each LW4 map (near the main waypoints) — T5/T6 trophies worth ~2-5g each; THE volume source. Skip Material Shipments (lower tiers). Extra VM: Dragonfall meta, daily LW4 train.",
     t6_src3: "T5→T6 Mystic Forge promotion: 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Profitability varies — check gw2efficiency (venom sacs and claws are often not worth it). Buy remaining deficits on the TP at the end.",
@@ -258,7 +257,6 @@ const I18N = {
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
     bits_meta_note: "Méta-achievement — ses étapes sont les achievements de carte ci-dessous (statuts synchronisés via Flask).",
     bits_meta_nostatus: "Connecte l'API Flask pour voir la complétion par achievement.",
-    t6_demand: "1 paire Condensed (Magic+Might) = 200 de CHAQUE T6. Demandes : pièce Obsidienne = 1 paire · rune/sigil/relique = 1 paire · Coalescence = 2 paires · arme gen3 = 1 paire. Barres ci-dessous = 1 paire ; multiplie par tes crafts prévus.",
     t6_src1: "Circuit Eternal Ice (IBS) : strikes quotidiennes (~90-100 shards/j, 30-45 min) ou Drakkar + coffres Bjora. Conversion à l'Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — DÉBLOCAGE REQUIS : acheter 'Unlock Eternal Ice Trader' chez Lady Camilla (le PNJ d'améliorations du hub). 75 shards → sachet de 25 monnaies de carte LW4, sans limite ; échange aussi directement contre de la Volatile Magic. Note : le vendor Eternal Ice fonctionne même sans PoF (exception rare du hub).",
     t6_src2: "Trophy Shipments : 250 Volatile Magic + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux) — trophées T5/T6 valant ~2-5 po pièce ; LA source de volume. Éviter les Material Shipments (tiers inférieurs). VM en plus : meta Dragonfall, train LW4 quotidien.",
     t6_src3: "Promotion T5→T6 en Forge : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Rentabilité variable — vérifier gw2efficiency (venom sacs et claws souvent non rentables). Acheter les déficits restants au TP en fin de parcours.",
@@ -1782,7 +1780,6 @@ const LEGENDARIES = {
     // la selection propre du joueur, via SOURCES_DB.trophy_matrix. Une liste
     // vide, et non le champ supprime, pour que rien ne parte lire un undefined.
     currencies: [],
-    currencyNoteKeys: ["t6_demand", "t6_src1", "t6_src2", "t6_src3"],
     metas: [],
     bounties: [],
   },
@@ -2473,7 +2470,12 @@ const FARM_COLOR = {
 
 function farmColor(src) {
   if (!src) return FARM_COLOR["Mixte"];
-  const t = (src.type || src || "").toLowerCase();
+  // src peut etre une chaine (ancien format), un objet avec type, ou un objet
+  // VIDE quand le composant n'a aucune source — et un objet vide est truthy,
+  // donc `src.type || src` rendait l'objet lui-meme et .toLowerCase() cassait
+  // tout l'onglet Grand Total. Vingt composants etaient dans ce cas.
+  const brut = typeof src === "string" ? src : src?.type;
+  const t = (typeof brut === "string" ? brut : "").toLowerCase();
   if (t.includes("pvp") || t.includes("league")) return FARM_COLOR["PvP"];
   if (t.includes("wvw") || t.includes("skirmish") || t.includes("badge")) return FARM_COLOR["WvW"];
   if (t.includes("fractal")) return FARM_COLOR["Fractals"];
@@ -2764,6 +2766,11 @@ class TabErrorBoundary extends React.Component {
   }
 }
 
+// T6 n'est pas un legendaire mais une projection : la matrice des trophees porte
+// sa propre selection de cibles. Le proposer dans les selecteurs de legendaires
+// laissait croire qu'on peut "viser T6" comme on vise Aurora.
+const SANS_GRAND_TOTAL = new Set(["t6"]);
+
 // ── Matrice des trophées ─────────────────────────────────────
 // L'onglet T6 n'est plus un pseudo-légendaire avec des cibles figées à 200 :
 // c'est une projection de la sélection du joueur. Les 8 lignes sont
@@ -2774,6 +2781,8 @@ class TabErrorBoundary extends React.Component {
 function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const [open, setOpen] = useState(null);
   const [picker, setPicker] = useState(false);
+  const [notes, setNotes] = useState(false);
+  const t = useT();
   const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
   const cc = DB.craft_components ?? {};
   const legs = DB.legendaries ?? {};
@@ -2801,6 +2810,25 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
               en: "Each gift needs 100 T6, 250 T5, 50 T4 and 50 T3. T6 is only 100 units out of 450: most of the volume, and most of the possible savings, sit in T5." })}
       </div>
 
+      {/* Notes éditoriales T6 : elles vivaient dans l'onglet Grand Total, où
+          elles n'avaient rien à faire et s'affichaient tronquées. Elles
+          rejoignent la matrice, dépliables pour ne pas noyer l'écran. */}
+      <div style={{ margin: "0 14px 8px" }}>
+        <button onClick={() => setNotes(!notes)}
+          style={{ width: "100%", padding: "7px 12px", background: "rgba(226,201,126,0.04)", border: "1px solid rgba(226,201,126,0.16)", borderRadius: 8, color: "rgba(226,201,126,0.75)", fontSize: "11.5px", cursor: "pointer", textAlign: "left" }}>
+          📖 {NX({ fr: "Où trouver du T6 en volume", en: "Where to find T6 in bulk" })} {notes ? "▾" : "▸"}
+        </button>
+        {notes && (
+          <div style={{ marginTop: 6 }}>
+            {["t6_src1", "t6_src2", "t6_src3"].map(k => (
+              <div key={k} style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.09)", borderRadius: 7, fontFamily: "'Crimson Text', serif", fontSize: "11.5px", lineHeight: 1.55, color: "rgba(226,201,126,0.6)" }}>
+                {t(k)}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       <div style={{ margin: "0 14px 10px" }}>
         <button onClick={() => setPicker(!picker)}
           style={{ width: "100%", padding: "9px 12px", background: "rgba(226,201,126,0.06)", border: "1px solid rgba(226,201,126,0.22)", borderRadius: 8, color: "#e2c97e", fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
@@ -2808,7 +2836,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
         </button>
         {picker && (
           <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: "1px solid rgba(226,201,126,0.14)", borderRadius: 8, maxHeight: 240, overflowY: "auto" }}>
-            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid))
+            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid) && !SANS_GRAND_TOTAL.has(lid))
               .sort((a, b) => String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
               .map(([lid, l]) => (
               <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selectedIds[lid] ? "#e2c97e" : "rgba(226,201,126,0.55)", cursor: "pointer" }}>
@@ -3072,7 +3100,7 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
             {/* Les entrées de SOURCES_DB.legendaries n'ont pas de champ `id` :
                 l'identifiant EST la clé du dictionnaire. */}
             {Object.entries(legs)
-              .filter(([lid]) => QTY_LEG_IDS.has(lid))
+              .filter(([lid]) => QTY_LEG_IDS.has(lid) && !SANS_GRAND_TOTAL.has(lid))
               // `farm` est tantôt une chaîne, tantôt un objet { fr, en } (legendary_rune,
               // legendary_sigil) : sans L() React reçoit un objet en enfant et démonte l'arbre.
               .sort((a, b) => String(L(a[1].farm) ?? "").localeCompare(String(L(b[1].farm) ?? "")) ||
@@ -3306,11 +3334,12 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
       const missing = owned !== null ? Math.max(0, qty - owned) : null;
       const pct = owned !== null ? Math.min(100, (owned / qty) * 100) : null;
       const stockKnown = owned !== null; // true si apiId connu (même si 0)
+      const st = typeof src?.type === "string" ? src.type : "";
       const farmLabel =
-        src.type?.includes("pvp") || src.type?.includes("league") ? "PvP" :
-        src.type?.includes("wvw") || src.type?.includes("skirmish") ? "WvW" :
-        src.type?.includes("fractal") ? "Fractals" :
-        src.type ? "PvE" : "Mixte";
+        st.includes("pvp") || st.includes("league") ? "PvP" :
+        st.includes("wvw") || st.includes("skirmish") ? "WvW" :
+        st.includes("fractal") ? "Fractals" :
+        st ? "PvE" : "Mixte";
       return { compId, name: comp.name ?? compId, qty, owned, missing, pct, apiId, hasStock,
                farm: farmColor(src), farmLabel, tip: L(src.tip) ?? "" };
     })

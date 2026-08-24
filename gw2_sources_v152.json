@@ -1046,7 +1046,8 @@
    "en": "⚠ In computeGrandTotal, a flat total ADDS to what the chain contributes, it does not replace it. Writing a tree figure as a flat total while a link already carries part of it counts twice. Before writing a flat total, subtract what the chain already provides — and verify with the real algorithm, not with a maximum."
   },
   "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule.",
-  "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle."
+  "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle.",
+  "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette."
  },
  "meta_events": {
   "vb": {
@@ -8847,7 +8848,20 @@
    },
    "farmable": true,
    "recipe": "MF : 50× Mystic Aspect + 20× Mystic Clover + 100× Glob of Ectoplasm + 50× Obsidian Shard",
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "gift_of_sigils": {
    "name": "Gift of Sigils",
@@ -8860,7 +8874,20 @@
    },
    "farmable": true,
    "recipe": "MF : 75× Mystic Mote + 30× Mystic Clover + 150× Glob of Ectoplasm + 75× Obsidian Shard",
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "gift_of_the_obscure": {
    "name": "Gift of the Obscure",
@@ -8938,7 +8965,20 @@
    "farmable": true,
    "recipe": "MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — output 1-5 (chance rare ×5)",
    "efficiency_note": "Les procs ×5 réduisent significativement le coût moyen — crafter les Facets une par une.",
-   "kind": "acquire"
+   "kind": "acquire",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "gift_of_relics": {
    "name": "Gift of Relics",
@@ -8951,7 +8991,20 @@
    },
    "farmable": true,
    "recipe": "MF : 25× Mystic Facet + 25× Mystic Clover + 150× Glob of Ectoplasm + 1× Gift of Research",
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "orichalcum_filigree": {
    "name": "Orichalcum Filigree",
@@ -9462,7 +9515,20 @@
    },
    "farmable": true,
    "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
-   "kind": "acquire"
+   "kind": "acquire",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "mystic_mote": {
    "name": "Mystic Mote",
@@ -9475,7 +9541,20 @@
    },
    "farmable": true,
    "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
-   "kind": "acquire"
+   "kind": "acquire",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "glimpse": {
    "name": "Glimpse",
@@ -9873,6 +9952,19 @@
    },
    "needed_for": [
     "lesser_vision_crystal"
+   ],
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Achat chez un marchand. Voir la recette.",
+      "en": "Bought from a vendor. See the recipe."
+     },
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
    ]
   },
   "dragonite_ingot": {
@@ -9888,6 +9980,19 @@
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
     "lesser_vision_crystal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+      "en": "Crafted, not found. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
    ]
   },
   "empyreal_star": {
@@ -9903,6 +10008,19 @@
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
     "lesser_vision_crystal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+      "en": "Crafted, not found. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
    ]
   },
   "bloodstone_brick": {
@@ -9918,6 +10036,19 @@
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
     "lesser_vision_crystal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+      "en": "Crafted, not found. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
    ]
   },
   "dragonite_ore": {
@@ -10086,7 +10217,20 @@
    },
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)"
+   "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
+   "sources": [
+    {
+     "type": "collection",
+     "tip": {
+      "fr": "Récompense de collection. Voir le bloc de déblocage.",
+      "en": "Collection reward. See the unlock block."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "exquisite_serpentite_jewel": {
    "name": "Exquisite Serpentite Jewel",
@@ -10103,6 +10247,19 @@
    "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
    "needed_for": [
     "dragonsblood_weapons"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+      "en": "Crafted, not found. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
    ]
   },
   "antiquated_ducat": {
@@ -11234,7 +11391,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "vial_of_potent_blood": {
    "name": "Vial of Potent Blood",
@@ -11407,7 +11577,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "potent_venom_sac": {
    "name": "Potent Venom Sac",
@@ -11578,7 +11761,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "intricate_totem": {
    "name": "Intricate Totem",
@@ -11749,7 +11945,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "gift_of_claws": {
    "name": "Gift of Claws",
@@ -11771,7 +11980,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "large_claw": {
    "name": "Large Claw",
@@ -11944,7 +12166,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "large_scale": {
    "name": "Large Scale",
@@ -12117,7 +12352,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "large_bone": {
    "name": "Large Bone",
@@ -12290,7 +12538,20 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+   "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Forge mystique. Voir la recette.",
+      "en": "Mystic Forge. See the recipe."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "recette declaree sur le composant"
+    }
+   ]
   },
   "large_fang": {
    "name": "Large Fang",

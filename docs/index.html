@@ -90,7 +90,6 @@ const I18N = {
     wpn_resolving: "Resolving weapon names via GW2 API…",
     bits_meta_note: "Meta-achievement — its steps are the map achievements below (completion states sync via Flask).",
     bits_meta_nostatus: "Connect the Flask API to see per-achievement completion.",
-    t6_demand: "1 Condensed pair (Magic+Might) = 200 of EACH T6. Demands: Obsidian piece = 1 pair · rune/sigil/relic = 1 pair · Coalescence = 2 pairs · gen3 weapon = 1 pair. Bars below = 1 pair; multiply by your planned crafts.",
     t6_src1: "Eternal Ice loop (IBS): daily strikes (~90-100 shards/day, 30-45 min) or Drakkar + Bjora chests. Conversion at Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — UNLOCK REQUIRED: buy 'Unlock Eternal Ice Trader' from Lady Camilla (hub upgrade vendor). 75 shards → pouch of 25 LW4 map currency, unlimited; also trades directly against Volatile Magic. Note: the Eternal Ice vendor works even without PoF (rare exception in the hub).",
     t6_src2: "Trophy Shipments: 250 Volatile Magic + 1g from the Volatile Magic Collectors on each LW4 map (near the main waypoints) — T5/T6 trophies worth ~2-5g each; THE volume source. Skip Material Shipments (lower tiers). Extra VM: Dragonfall meta, daily LW4 train.",
     t6_src3: "T5→T6 Mystic Forge promotion: 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Profitability varies — check gw2efficiency (venom sacs and claws are often not worth it). Buy remaining deficits on the TP at the end.",
@@ -322,7 +321,6 @@ const I18N = {
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
     bits_meta_note: "Méta-achievement — ses étapes sont les achievements de carte ci-dessous (statuts synchronisés via Flask).",
     bits_meta_nostatus: "Connecte l'API Flask pour voir la complétion par achievement.",
-    t6_demand: "1 paire Condensed (Magic+Might) = 200 de CHAQUE T6. Demandes : pièce Obsidienne = 1 paire · rune/sigil/relique = 1 paire · Coalescence = 2 paires · arme gen3 = 1 paire. Barres ci-dessous = 1 paire ; multiplie par tes crafts prévus.",
     t6_src1: "Circuit Eternal Ice (IBS) : strikes quotidiennes (~90-100 shards/j, 30-45 min) ou Drakkar + coffres Bjora. Conversion à l'Eye of the North (WP [&BBsDAAA=]) via Kjep Corrson — DÉBLOCAGE REQUIS : acheter 'Unlock Eternal Ice Trader' chez Lady Camilla (le PNJ d'améliorations du hub). 75 shards → sachet de 25 monnaies de carte LW4, sans limite ; échange aussi directement contre de la Volatile Magic. Note : le vendor Eternal Ice fonctionne même sans PoF (exception rare du hub).",
     t6_src2: "Trophy Shipments : 250 Volatile Magic + 1 po chez les Volatile Magic Collectors de chaque carte LW4 (près des waypoints principaux) — trophées T5/T6 valant ~2-5 po pièce ; LA source de volume. Éviter les Material Shipments (tiers inférieurs). VM en plus : meta Dragonfall, train LW4 quotidien.",
     t6_src3: "Promotion T5→T6 en Forge : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Rentabilité variable — vérifier gw2efficiency (venom sacs et claws souvent non rentables). Acheter les déficits restants au TP en fin de parcours.",
@@ -1822,7 +1820,8 @@ const SOURCES_DB = {
       "en": "⚠ In computeGrandTotal, a flat total ADDS to what the chain contributes, it does not replace it. Writing a tree figure as a flat total while a link already carries part of it counts twice. Before writing a flat total, subtract what the chain already provides — and verify with the real algorithm, not with a maximum."
     },
     "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule.",
-    "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle."
+    "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle.",
+    "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette."
   },
   "meta_events": {
     "vb": {
@@ -9623,7 +9622,20 @@ const SOURCES_DB = {
       },
       "farmable": true,
       "recipe": "MF : 50× Mystic Aspect + 20× Mystic Clover + 100× Glob of Ectoplasm + 50× Obsidian Shard",
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "gift_of_sigils": {
       "name": "Gift of Sigils",
@@ -9636,7 +9648,20 @@ const SOURCES_DB = {
       },
       "farmable": true,
       "recipe": "MF : 75× Mystic Mote + 30× Mystic Clover + 150× Glob of Ectoplasm + 75× Obsidian Shard",
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "gift_of_the_obscure": {
       "name": "Gift of the Obscure",
@@ -9714,7 +9739,20 @@ const SOURCES_DB = {
       "farmable": true,
       "recipe": "MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — output 1-5 (chance rare ×5)",
       "efficiency_note": "Les procs ×5 réduisent significativement le coût moyen — crafter les Facets une par une.",
-      "kind": "acquire"
+      "kind": "acquire",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "gift_of_relics": {
       "name": "Gift of Relics",
@@ -9727,7 +9765,20 @@ const SOURCES_DB = {
       },
       "farmable": true,
       "recipe": "MF : 25× Mystic Facet + 25× Mystic Clover + 150× Glob of Ectoplasm + 1× Gift of Research",
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "orichalcum_filigree": {
       "name": "Orichalcum Filigree",
@@ -10238,7 +10289,20 @@ const SOURCES_DB = {
       },
       "farmable": true,
       "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
-      "kind": "acquire"
+      "kind": "acquire",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "mystic_mote": {
       "name": "Mystic Mote",
@@ -10251,7 +10315,20 @@ const SOURCES_DB = {
       },
       "farmable": true,
       "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
-      "kind": "acquire"
+      "kind": "acquire",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "glimpse": {
       "name": "Glimpse",
@@ -10649,6 +10726,19 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "lesser_vision_crystal"
+      ],
+      "sources": [
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Achat chez un marchand. Voir la recette.",
+            "en": "Bought from a vendor. See the recipe."
+          },
+          "free_repeatable": false,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
       ]
     },
     "dragonite_ingot": {
@@ -10664,6 +10754,19 @@ const SOURCES_DB = {
       "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
       "needed_for": [
         "lesser_vision_crystal"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+            "en": "Crafted, not found. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
       ]
     },
     "empyreal_star": {
@@ -10679,6 +10782,19 @@ const SOURCES_DB = {
       "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
       "needed_for": [
         "lesser_vision_crystal"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+            "en": "Crafted, not found. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
       ]
     },
     "bloodstone_brick": {
@@ -10694,6 +10810,19 @@ const SOURCES_DB = {
       "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
       "needed_for": [
         "lesser_vision_crystal"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+            "en": "Crafted, not found. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
       ]
     },
     "dragonite_ore": {
@@ -10862,7 +10991,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)"
+      "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
+      "sources": [
+        {
+          "type": "collection",
+          "tip": {
+            "fr": "Récompense de collection. Voir le bloc de déblocage.",
+            "en": "Collection reward. See the unlock block."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "exquisite_serpentite_jewel": {
       "name": "Exquisite Serpentite Jewel",
@@ -10879,6 +11021,19 @@ const SOURCES_DB = {
       "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
       "needed_for": [
         "dragonsblood_weapons"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas. Voir la recette.",
+            "en": "Crafted, not found. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
       ]
     },
     "antiquated_ducat": {
@@ -12010,7 +12165,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "vial_of_potent_blood": {
       "name": "Vial of Potent Blood",
@@ -12183,7 +12351,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "potent_venom_sac": {
       "name": "Potent Venom Sac",
@@ -12354,7 +12535,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "intricate_totem": {
       "name": "Intricate Totem",
@@ -12525,7 +12719,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "gift_of_claws": {
       "name": "Gift of Claws",
@@ -12547,7 +12754,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "large_claw": {
       "name": "Large Claw",
@@ -12720,7 +12940,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "large_scale": {
       "name": "Large Scale",
@@ -12893,7 +13126,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "large_bone": {
       "name": "Large Bone",
@@ -13066,7 +13312,20 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)"
+      "ref": "wiki:Gift_of_Blood + wiki:Gift_of_Bones + arbre GW2Efficiency (capture Antoine 20/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique. Voir la recette.",
+            "en": "Mystic Forge. See the recipe."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "recette declaree sur le composant"
+        }
+      ]
     },
     "large_fang": {
       "name": "Large Fang",
@@ -24870,7 +25129,6 @@ const LEGENDARIES = {
     // la selection propre du joueur, via SOURCES_DB.trophy_matrix. Une liste
     // vide, et non le champ supprime, pour que rien ne parte lire un undefined.
     currencies: [],
-    currencyNoteKeys: ["t6_demand", "t6_src1", "t6_src2", "t6_src3"],
     metas: [],
     bounties: [],
   },
@@ -25555,7 +25813,12 @@ const FARM_COLOR = {
 
 function farmColor(src) {
   if (!src) return FARM_COLOR["Mixte"];
-  const t = (src.type || src || "").toLowerCase();
+  // src peut etre une chaine (ancien format), un objet avec type, ou un objet
+  // VIDE quand le composant n'a aucune source — et un objet vide est truthy,
+  // donc `src.type || src` rendait l'objet lui-meme et .toLowerCase() cassait
+  // tout l'onglet Grand Total. Vingt composants etaient dans ce cas.
+  const brut = typeof src === "string" ? src : src?.type;
+  const t = (typeof brut === "string" ? brut : "").toLowerCase();
   if (t.includes("pvp") || t.includes("league")) return FARM_COLOR["PvP"];
   if (t.includes("wvw") || t.includes("skirmish") || t.includes("badge")) return FARM_COLOR["WvW"];
   if (t.includes("fractal")) return FARM_COLOR["Fractals"];
@@ -25846,6 +26109,11 @@ class TabErrorBoundary extends React.Component {
   }
 }
 
+// T6 n'est pas un legendaire mais une projection : la matrice des trophees porte
+// sa propre selection de cibles. Le proposer dans les selecteurs de legendaires
+// laissait croire qu'on peut "viser T6" comme on vise Aurora.
+const SANS_GRAND_TOTAL = new Set(["t6"]);
+
 // ── Matrice des trophées ─────────────────────────────────────
 // L'onglet T6 n'est plus un pseudo-légendaire avec des cibles figées à 200 :
 // c'est une projection de la sélection du joueur. Les 8 lignes sont
@@ -25856,6 +26124,8 @@ class TabErrorBoundary extends React.Component {
 function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const [open, setOpen] = useState(null);
   const [picker, setPicker] = useState(false);
+  const [notes, setNotes] = useState(false);
+  const t = useT();
   const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
   const cc = DB.craft_components ?? {};
   const legs = DB.legendaries ?? {};
@@ -25883,6 +26153,25 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
               en: "Each gift needs 100 T6, 250 T5, 50 T4 and 50 T3. T6 is only 100 units out of 450: most of the volume, and most of the possible savings, sit in T5." })}
       </div>
 
+      {/* Notes éditoriales T6 : elles vivaient dans l'onglet Grand Total, où
+          elles n'avaient rien à faire et s'affichaient tronquées. Elles
+          rejoignent la matrice, dépliables pour ne pas noyer l'écran. */}
+      <div style={{ margin: "0 14px 8px" }}>
+        <button onClick={() => setNotes(!notes)}
+          style={{ width: "100%", padding: "7px 12px", background: "rgba(226,201,126,0.04)", border: "1px solid rgba(226,201,126,0.16)", borderRadius: 8, color: "rgba(226,201,126,0.75)", fontSize: "11.5px", cursor: "pointer", textAlign: "left" }}>
+          📖 {NX({ fr: "Où trouver du T6 en volume", en: "Where to find T6 in bulk" })} {notes ? "▾" : "▸"}
+        </button>
+        {notes && (
+          <div style={{ marginTop: 6 }}>
+            {["t6_src1", "t6_src2", "t6_src3"].map(k => (
+              <div key={k} style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.09)", borderRadius: 7, fontFamily: "'Crimson Text', serif", fontSize: "11.5px", lineHeight: 1.55, color: "rgba(226,201,126,0.6)" }}>
+                {t(k)}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       <div style={{ margin: "0 14px 10px" }}>
         <button onClick={() => setPicker(!picker)}
           style={{ width: "100%", padding: "9px 12px", background: "rgba(226,201,126,0.06)", border: "1px solid rgba(226,201,126,0.22)", borderRadius: 8, color: "#e2c97e", fontSize: "12px", cursor: "pointer", textAlign: "left" }}>
@@ -25890,7 +26179,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
         </button>
         {picker && (
           <div style={{ marginTop: 6, padding: "8px 10px", background: "rgba(0,0,0,0.2)", border: "1px solid rgba(226,201,126,0.14)", borderRadius: 8, maxHeight: 240, overflowY: "auto" }}>
-            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid))
+            {Object.entries(legs).filter(([lid]) => QTY_LEG_IDS.has(lid) && !SANS_GRAND_TOTAL.has(lid))
               .sort((a, b) => String(a[1].name ?? a[0]).localeCompare(String(b[1].name ?? b[0])))
               .map(([lid, l]) => (
               <label key={lid} style={{ display: "flex", alignItems: "center", gap: 7, padding: "3px 0", fontSize: "11px", color: selectedIds[lid] ? "#e2c97e" : "rgba(226,201,126,0.55)", cursor: "pointer" }}>
@@ -26154,7 +26443,7 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
             {/* Les entrées de SOURCES_DB.legendaries n'ont pas de champ `id` :
                 l'identifiant EST la clé du dictionnaire. */}
             {Object.entries(legs)
-              .filter(([lid]) => QTY_LEG_IDS.has(lid))
+              .filter(([lid]) => QTY_LEG_IDS.has(lid) && !SANS_GRAND_TOTAL.has(lid))
               // `farm` est tantôt une chaîne, tantôt un objet { fr, en } (legendary_rune,
               // legendary_sigil) : sans L() React reçoit un objet en enfant et démonte l'arbre.
               .sort((a, b) => String(L(a[1].farm) ?? "").localeCompare(String(L(b[1].farm) ?? "")) ||
@@ -26388,11 +26677,12 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
       const missing = owned !== null ? Math.max(0, qty - owned) : null;
       const pct = owned !== null ? Math.min(100, (owned / qty) * 100) : null;
       const stockKnown = owned !== null; // true si apiId connu (même si 0)
+      const st = typeof src?.type === "string" ? src.type : "";
       const farmLabel =
-        src.type?.includes("pvp") || src.type?.includes("league") ? "PvP" :
-        src.type?.includes("wvw") || src.type?.includes("skirmish") ? "WvW" :
-        src.type?.includes("fractal") ? "Fractals" :
-        src.type ? "PvE" : "Mixte";
+        st.includes("pvp") || st.includes("league") ? "PvP" :
+        st.includes("wvw") || st.includes("skirmish") ? "WvW" :
+        st.includes("fractal") ? "Fractals" :
+        st ? "PvE" : "Mixte";
       return { compId, name: comp.name ?? compId, qty, owned, missing, pct, apiId, hasStock,
                farm: farmColor(src), farmLabel, tip: L(src.tip) ?? "" };
     })
