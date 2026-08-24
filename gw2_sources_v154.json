@@ -1048,7 +1048,8 @@
   "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule.",
   "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle.",
   "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette.",
-  "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture."
+  "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture.",
+  "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource."
  },
  "meta_events": {
   "vb": {
@@ -14150,23 +14151,52 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "map": "Janthir Wilds",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Caches kodan des Janthir Wilds : 2 à 4 par Lesser Kodan Cache, 6 à 10 par Minor, 13 à 20 par Mythical. 💡 Avec 6 stacks de Lowland Expertise, chaque cache en rend davantage — l'Expertise est donc le vrai multiplicateur, pas le nombre de caches.",
+      "en": "Kodan caches in the Janthir Wilds: 2-4 per Lesser Kodan Cache, 6-10 per Minor, 13-20 per Mythical. 💡 With 6 stacks of Lowland Expertise each cache yields more — Expertise is the real multiplier, not the number of caches."
      },
-     "verified": false,
+     "free_repeatable": true,
+     "verified": true,
      "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)"
+    },
+    {
+     "type": "chest",
+     "map": "Cantha",
+     "tip": {
+      "fr": "Coffres canthiens en volume : Glorious et Grand Canthan Chest, Chest of Valdhertz Riches (9 au Grand), Filing Cabinet, coffres de l'Obscur. C'est le farm de fond, réparti sur toute la Fin des dragons.",
+      "en": "Canthan chests in bulk: Glorious and Grand Canthan Chest, Chest of Valdhertz Riches (9 from the Grand), Filing Cabinet, Secrets of the Obscure chests. The background farm, spread across all of End of Dragons."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Huit marchands échangent des Unusual Coins contre des Ancient Coins, à 1 pour 1 : Chin-Hwa (Daigo Ward), Lyhr et Rend Scorchmaul (Tour du sorcier), l'Astral Ward Protector, le Deldrimor Dwarf, le Researcher et le Zaishen Warrior (Skywatch Archipelago), l'Alliance Field Quartermaster (Castora).",
+      "en": "Eight vendors trade Unusual Coins for Ancient Coins, 1 for 1: Chin-Hwa (Daigo Ward), Lyhr and Rend Scorchmaul (Wizard's Tower), the Astral Ward Protector, the Deldrimor Dwarf, the Researcher and the Zaishen Warrior (Skywatch Archipelago), the Alliance Field Quartermaster (Castora)."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)"
     }
    ],
-   "verified": false,
+   "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)",
    "needed_for": [
     "klobjarne_geirr",
     "orrax_manifested"
-   ]
+   ],
+   "note": {
+    "fr": "⏳ 50 000 pour Orrax Manifested et 20 250 pour Klobjarne Geirr : de loin le plus gros volume du fichier. Aucun plafond quotidien, mais aucune source dense non plus — c'est un farm de fond, à mener en parallèle sur des mois plutôt qu'à viser en sprint. 💡 Les Lowland Expertise démultiplient les caches kodan : les monter d'abord.",
+    "en": "⏳ 50,000 for Orrax Manifested and 20,250 for Klobjarne Geirr: by far the largest volume in the file. No daily cap, but no dense source either — a background farm to run in parallel over months rather than sprint at. 💡 Lowland Expertise multiplies kodan cache yields: stack it first."
+   }
   },
   "shard_of_the_homestead": {
    "name": "Shard of the Homestead",
@@ -14633,12 +14663,16 @@
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
    ],
-   "verified": false,
+   "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)",
    "needed_for": [
     "selachimorpha"
-   ]
+   ],
+   "note": {
+    "fr": "⚠ Depuis la mise à jour du 22 août 2023, les Unusual Coins existantes ont été RECATÉGORISÉES en Ancient Coins. Les nouvelles Unusual Coins trouvées en jeu s'échangent 1 pour 1 contre des Ancient Coins chez les huit marchands. Les deux entrées coexistent donc dans le fichier, mais il s'agit de la même ressource à une conversion près.",
+    "en": "⚠ Since the 22 August 2023 update, existing Unusual Coins were RECATEGORISED as Ancient Coins. New Unusual Coins found in game trade 1 for 1 for Ancient Coins at the eight vendors. The two entries therefore coexist in the file, but they are the same resource up to a conversion."
+   }
   },
   "tale_of_adventure": {
    "name": "Tale of Adventure",
