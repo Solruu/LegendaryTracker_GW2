@@ -257,19 +257,29 @@ Ad Infinitum et Coalescence, Pristine Fractal Relic sur Ad Infinitum.
 
 ---
 
-## 4. Portes de maîtrise : les noms sont-ils bons ?
+## 4. Portes de maîtrise — ✅ **RÉSOLU le 22/08/2026**
 
-`collection_unlocks` pose des portes `mastery` nommées **« Rift Repair »**
-(Vision I) et **« Astral Craft »** (les 6 Arcanum). Le conteneur ne peut pas
-joindre l'API GW2, donc **ces deux noms n'ont pas été confrontés à la table**
-`/v2/masteries`.
+**Les deux noms sont exacts** : « Rift Repair » et « Astral Craft » existent tels
+quels. Le marqueur « ⚠ nom introuvable » ne se déclenchera pas.
 
-Le tracker le dira lui-même : si un nom est introuvable, il affiche
-**« ⚠ nom introuvable dans la table des maîtrises »** et non un cadenas — un
-faux verrou masquerait une collection jouable. À regarder à la première synchro
-avec le scope `progression` actif.
+Et les fiches donnent mieux qu'un nom — **la piste et le palier** :
 
----
+| porte | piste | palier | région |
+|---|---|---|---|
+| Rift Repair | Skyscale Mount | 2 | Feu Éternel |
+| Astral Craft | Astral Ward | 2 | Secrets of the Obscure |
+
+**Ça rend les portes décidables sans table de noms.** `/v2/account/masteries`
+rend le niveau atteint **par piste** ; comparer ce niveau au palier requis
+suffit. C'est plus robuste que la correspondance par nom de palier, qu'un
+renommage casserait.
+
+Attention au détail : `level` est un **index 0-base**, le palier affiché en jeu
+vaut donc +1. Flask fait la conversion une fois pour toutes dans
+`mastery_levels_by_name`.
+
+L'audit exige désormais que `track` et `tier` se posent **ensemble** — un palier
+sans piste ne se compare à rien.
 
 ## 5. Répartition des gifts condensés — ✅ **RÉSOLU le 22/08/2026**
 

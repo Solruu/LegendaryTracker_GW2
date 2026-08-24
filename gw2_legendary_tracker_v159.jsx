@@ -536,6 +536,21 @@ const makeGateStatus = (acct) => (gate) => {
     }
     if (g?.type === "mastery") {
       const eq = (a, b) => String(a).toLowerCase() === String(b).toLowerCase();
+      // Voie sûre quand la fiche donne la piste et le palier : l'API rend le
+      // niveau atteint par piste, et le comparer au palier tranche sans
+      // dépendre d'une correspondance de noms.
+      if (g.track && typeof g.tier === "number") {
+        const tous = acct?.masteries_all;
+        const piste = Array.isArray(tous) ? tous.find(n => eq(n, g.track)) : null;
+        const niveau = acct?.mastery_levels_by_name?.[piste ?? g.track];
+        if (typeof niveau === "number") {
+          return {
+            open: niveau >= g.tier,
+            label: NX({ fr: `Maîtrise « ${g.name} » — ${g.track} palier ${g.tier} (${niveau})`,
+                        en: `'${g.name}' mastery — ${g.track} tier ${g.tier} (${niveau})` }),
+          };
+        }
+      }
       const noms = acct?.masteries_unlocked;
       const tous = acct?.masteries_all;
       // Un nom absent de TOUTE la table n'est pas une porte fermée, c'est une

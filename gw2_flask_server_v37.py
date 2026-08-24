@@ -910,6 +910,30 @@ def unlocked_mastery_names(account_masteries):
     return sorted(n for n in names if n)
 
 
+def mastery_levels_by_name(account_masteries):
+    """Niveau atteint sur chaque piste, indexe par NOM de piste.
+
+    Une porte donne une piste et un palier ; l'API ne rend qu'un identifiant et
+    un niveau. C'est ici qu'on relie les deux, une fois pour toutes, plutot que
+    de dependre d'une correspondance de noms de PALIERS — fragile parce qu'un
+    palier peut etre renomme sans que la piste bouge.
+    """
+    table = mastery_table()
+    if table is None or not isinstance(account_masteries, list):
+        return None
+    par_id = {m.get("id"): m for m in table if isinstance(m, dict)}
+    out = {}
+    for e in account_masteries:
+        if not isinstance(e, dict):
+            continue
+        piste = par_id.get(e.get("id"))
+        niveau = e.get("level")
+        if piste and piste.get("name") and isinstance(niveau, int):
+            # `level` est un index 0-base : le palier affiche en jeu vaut +1.
+            out[piste["name"]] = niveau + 1
+    return out
+
+
 def all_mastery_names():
     """Tous les noms connus, pistes et paliers confondus.
 
@@ -1029,6 +1053,7 @@ def progression():
         # Noms resolus : c'est ce que le front compare a gate.name.
         "masteries_unlocked": mastery_names,
         "masteries_all": all_mastery_names(),
+        "mastery_levels_by_name": mastery_levels_by_name(masteries_raw),
         "masteries_scope_ok": mastery_levels is not None,
     }
 

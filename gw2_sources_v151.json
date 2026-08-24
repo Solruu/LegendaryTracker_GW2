@@ -1045,7 +1045,8 @@
    "fr": "⚠ Dans computeGrandTotal, un total à plat s'AJOUTE à ce que la chaîne apporte, il ne le remplace pas. Poser la valeur d'un arbre en total à plat alors qu'un maillon en porte déjà une partie compte donc deux fois. Avant d'écrire un total à plat, retrancher ce que la chaîne fournit déjà — et vérifier avec l'algorithme réel, pas avec un maximum.",
    "en": "⚠ In computeGrandTotal, a flat total ADDS to what the chain contributes, it does not replace it. Writing a tree figure as a flat total while a link already carries part of it counts twice. Before writing a flat total, subtract what the chain already provides — and verify with the real algorithm, not with a maximum."
   },
-  "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule."
+  "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule.",
+  "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle."
  },
  "meta_events": {
   "vb": {
@@ -10392,6 +10393,21 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v153 (prose editoriale d'Antoine, remontee en cadence)"
+     },
+     {
+      "label": {
+       "fr": "Orbes de Magie volatile — failles de réalité",
+       "en": "Volatile Magic orbs — reality rifts"
+      },
+      "period": "day",
+      "cap": 250,
+      "cost": {
+       "fr": "250 orbes par jour et par compte, en suivant les traînées des failles fermées au Skyscale. Au-delà, les orbes continuent d'apparaître mais ne rendent plus de Magie volatile. ⚡ Aux Marches de Bjora, les orbes donnent du karma à la place, et la traînée rapporte 5 Éclats de glace éternelle — utile pour les vendeurs de conversion.",
+       "en": "250 orbs per day per account, following the trails of rifts closed with the Skyscale. Beyond that, orbs keep spawning but no longer yield Volatile Magic. ⚡ In Bjora Marches the orbs give karma instead, and the trail rewards 5 Eternal Ice Shards — useful for the conversion vendors."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "wiki:Rift_Repair"
      },
      {
       "label": {
@@ -21925,9 +21941,11 @@
      "type": "mastery",
      "name": "Rift Repair",
      "note": {
-      "fr": "Requise pour acheter la Trance Stone, qui ouvre les 6 collections de carte.",
-      "en": "Required to buy the Trance Stone, which opens the 6 map collections."
-     }
+      "fr": "Maîtrise Skyscale, région Feu Éternel, palier 2. Nécessaire pour acheter la Trance Stone, qui ouvre les 6 collections de carte de Vision I.",
+      "en": "Skyscale mastery, Path of Fire region, tier 2. Required to buy the Trance Stone, which opens Vision I's 6 map collections."
+     },
+     "track": "Skyscale Mount",
+     "tier": 2
     }
    ],
    "verified": true,
@@ -22566,9 +22584,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22589,9 +22609,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22612,9 +22634,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22635,9 +22659,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22658,9 +22684,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22681,9 +22709,11 @@
      "type": "mastery",
      "name": "Astral Craft",
      "note": {
-      "fr": "Conditionne tout achat chez Lyhr.",
-      "en": "Gates every purchase from Lyhr."
-     }
+      "fr": "Piste Astral Ward, région Secrets of the Obscure, palier 2. Conditionne l'achat de l'armure Astral Ward et des recettes chez Lyhr et l'Astral Ward Mage, à la Tour du sorcier — donc tout l'Arcanum d'Obsidienne.",
+      "en": "Astral Ward track, Secrets of the Obscure region, tier 2. Gates the purchase of the Astral Ward armor and recipes from Lyhr and the Astral Ward Mage at the Wizard's Tower — hence the whole Obsidian Arcanum."
+     },
+     "track": "Astral Ward",
+     "tier": 2
     }
    ]
   },
@@ -22702,8 +22732,8 @@
   }
  },
  "collection_unlocks_note": {
-  "fr": "Déblocage des collections, indexé par identifiant de succès, sur le modèle d'achievement_notes. `text` explique COMMENT débloquer (prose bilingue, encadré orange sous chaque collection non terminée). `gate` dit SI c'est débloqué, sous une forme testable contre l'API : types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Les deux coexistent — le texte reste utile même quand la porte est ouverte. Une collection sans `gate` est traitée comme éligible : mieux vaut en afficher une de trop que d'en masquer une jouable.",
-  "en": "Collection unlocks, indexed by achievement id, following achievement_notes. `text` explains HOW to unlock (bilingual prose, orange block under each unfinished collection). `gate` states WHETHER it is unlocked, in a form testable against the API: types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Both coexist - the text stays useful once the gate is open. A collection with no `gate` is treated as eligible: better to show one too many than to hide a playable one."
+  "fr": "Déblocage des collections, indexé par identifiant de succès, sur le modèle d'achievement_notes. `text` explique COMMENT débloquer (prose bilingue, encadré orange sous chaque collection non terminée). `gate` dit SI c'est débloqué, sous une forme testable contre l'API : types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Les deux coexistent — le texte reste utile même quand la porte est ouverte. Une collection sans `gate` est traitée comme éligible : mieux vaut en afficher une de trop que d'en masquer une jouable. Une porte `mastery` porte désormais `track` (nom de la piste) et `tier` (palier requis), lus sur la fiche wiki : l'API ne rend que des identifiants numériques, mais elle rend aussi le niveau atteint par piste — comparer le niveau au palier suffit à trancher, sans table de noms.",
+  "en": "Collection unlocks, indexed by achievement id, following achievement_notes. `text` explains HOW to unlock (bilingual prose, orange block under each unfinished collection). `gate` states WHETHER it is unlocked, in a form testable against the API: types `mastery`, `fractal_scale`, `expansion`, `achievement`, `item`, `currency`. Both coexist - the text stays useful once the gate is open. A collection with no `gate` is treated as eligible: better to show one too many than to hide a playable one. A `mastery` gate now carries `track` (track name) and `tier` (required tier), read from the wiki: the API only returns numeric ids, but it also returns the level reached per track — comparing level to tier is enough to decide, with no name table needed."
  },
  "tab_contract": {
   "note": {

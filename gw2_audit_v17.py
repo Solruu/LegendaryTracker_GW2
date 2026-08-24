@@ -683,6 +683,12 @@ def check_cadence_flags(data, errors, warnings):
 # Types de porte lisibles par machine. Chacun doit correspondre a une donnee que
 # l'API du compte expose reellement, sinon le filtre d'eligibilite ne peut pas
 # trancher et se met a masquer des collections jouables.
+# Champs supplementaires admis par type de porte. Une maitrise porte track et
+# tier : l'API ne rend que des identifiants numeriques, mais elle rend aussi le
+# niveau atteint par piste, et comparer ce niveau au palier suffit a trancher
+# sans table de correspondance des noms.
+GATE_EXTRA = {"mastery": {"track", "tier"}}
+
 GATE_TYPES = {
     "mastery": "name",        # /v2/account/masteries (scope progression)
     "fractal_scale": "value",  # /v2/account.fractal_level
@@ -746,7 +752,13 @@ def check_collection_unlocks(data, errors, warnings):
             required = GATE_TYPES[gtype]
             if gate.get(required) in (None, ""):
                 errors.append(f"{glabel} : type '{gtype}' exige le champ '{required}'")
-            for extra in set(gate) - {"type", required, "note"}:
+            admis = {"type", required, "note"} | GATE_EXTRA.get(gtype, set())
+            if gtype == "mastery" and ("track" in gate) != ("tier" in gate):
+                errors.append(
+                    f"{glabel} : track et tier se posent ensemble — un palier sans piste, ou "
+                    "l'inverse, ne se compare a rien"
+                )
+            for extra in set(gate) - admis:
                 errors.append(f"{glabel} : champ '{extra}' hors schema pour le type '{gtype}'")
 
     # Un unlock reste-t-il en dur dans le JSX ? Deux sources de verite pour la
