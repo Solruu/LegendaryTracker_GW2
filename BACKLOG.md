@@ -219,6 +219,42 @@ un total à plat compterait deux fois :
 
 ---
 
+## 3 quinquies. ⚠ Les arbres GW2Efficiency sont des plans d'achat
+
+**Découverte du 22/08/2026, qui remet en cause la méthode employée en v145.**
+
+Un arbre de recette GW2Efficiency **résout chaque nœud par le chemin qu'il juge
+le meilleur** et tient compte de ce que le compte possède déjà. Ce n'est pas une
+nomenclature.
+
+**La preuve, sur Vision :**
+
+| poste | arbre | recette |
+|---|---|---|
+| Kralkatite Ore | 100 | **3 100** |
+| Powdered Rose Quartz | *absent* | **3 000** |
+| Kralkatite Ingot | *absent* | **300** |
+| Eternal Ice Shard | **6 750** | 0 |
+
+L'arbre a choisi la **conversion chez les vendeurs Glace éternelle** (10 unités
+pour 75 Éclats) et n'a **pas déplié la branche des armes Astral**. Idem sur
+Coalescence, où les Éclats de magnétite n'apparaissent pas du tout.
+
+**Règle qui en découle**, écrite dans `_meta.recipe_tree_caveat` : les valeurs
+d'un arbre ne comptent comme exigence **que pour les matières sans voie
+alternative** — monnaies brutes, tickets, badges, minerais. Pour tout ce qui se
+convertit, se fabrique ou s'achète autrement, **seule la recette fait foi**.
+
+**Conséquence sur la v145** : les postes sans alternative (tickets, badges,
+dragonite, fragments empyréens) tiennent. Les six valeurs issues du
+développement des 77 trèfles mystiques — Mystic Coin, Obsidian Shard, Glob of
+Ectoplasm pour Conflux et Warbringer — sont marquées **à confirmer** : ce
+développement dépend du chemin (Forge contre achat chez Lyhr) et du stock.
+
+Les arbres de **Coalescence, Vision et Ad Infinitum ne sont pas appliqués**.
+
+---
+
 ## 4. Portes de maîtrise : les noms sont-ils bons ?
 
 `collection_unlocks` pose des portes `mastery` nommées **« Rift Repair »**

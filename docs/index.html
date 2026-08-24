@@ -1789,7 +1789,12 @@ const SOURCES_DB = {
     "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution.",
     "changelog_v143": "⚠ Correction d'une erreur que j'ai introduite en v131. J'y avais deduit « Vision demande 3 gifts de magie » du fait que cinq des six monnaies LW4 portaient 300, chaque gift en demandant 100. C'etait une deduction a partir d'un nombre non verifie. La fiche donne la recette reelle : Gift of Arid Mastery = 100 Encens funeraires + 1 Eclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic, et Vision en demande UN. Donc 100 de chaque monnaie, pas 300 — un facteur 3 sur six monnaies. Les deux divergences de Coalescence sont par ailleurs tranchees, deux pages concordantes a l'appui : 250 Encens funeraires et non 300, 6 Boules d'energie sombre et non 100, toutes deux desormais portees par la chaine via le Gift of Desert Mastery et le Gift of Compassion.",
     "changelog_v144": "Aurora modelisee de bout en bout depuis son arbre de recette. Spark of Sentience = 21 Electrums, un Lingot d'electrum de Xunlai chacun : a 1 lingot par jour, 21 jours incompressibles, et c'est le vrai timegate d'Aurora. Gift of Draconic Mastery = 1 Lingot cristallin + 1 Eclat de pierre de sang + 1 Gift of Bloodstone Magic (rubis, jade, perles) + 1 Gift of Dragon Magic (bois petrifie, baies de houx, orchidees) : les six monnaies LW3 passent de totaux a plat a une chaine. Et le point que la question d'Antoine avait souleve : les 50 Boules d'energie sombre d'Aurora et de Vision sont SUPPRIMEES. L'arbre montre Gift of the Mists → 1 Cube → 1 boule. Aucune recette ne justifiait 50.",
-    "changelog_v145": "Conflux et Warbringer alignes sur leurs arbres de recette complets, extraits des exports HTML GW2Efficiency : 16 exigences posees et 9 corrigees. Les postes deja portes par une chaine modelisee ne sont pas touches, pour ne pas les compter deux fois. Trouvailles : Conflux demande 1 850 Tickets d'escarmouche McM, qui n'apparaissaient nulle part ; Warbringer en demande 2 800 et non 2 450, le precurseur Warcry n'en couvrant que la moitie. Les deux consomment en outre 1 250 Poussiere de pierre de sang, 1 250 Fragments empyreens et 1 250 Minerai de dragonite, tous absents du fichier. ⚠ Mon soupcon sur les 1 750 Memoires de bataille de Conflux etait FAUX : l'arbre les confirme."
+    "changelog_v145": "Conflux et Warbringer alignes sur leurs arbres de recette complets, extraits des exports HTML GW2Efficiency : 16 exigences posees et 9 corrigees. Les postes deja portes par une chaine modelisee ne sont pas touches, pour ne pas les compter deux fois. Trouvailles : Conflux demande 1 850 Tickets d'escarmouche McM, qui n'apparaissaient nulle part ; Warbringer en demande 2 800 et non 2 450, le precurseur Warcry n'en couvrant que la moitie. Les deux consomment en outre 1 250 Poussiere de pierre de sang, 1 250 Fragments empyreens et 1 250 Minerai de dragonite, tous absents du fichier. ⚠ Mon soupcon sur les 1 750 Memoires de bataille de Conflux etait FAUX : l'arbre les confirme.",
+    "recipe_tree_caveat": {
+      "fr": "⚠ Les arbres de recette GW2Efficiency sont des PLANS D'ACHAT, pas des nomenclatures. Ils résolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possède déjà. Preuve : l'arbre de Vision annonce 100 Kralkatite et 6 750 Éclats de glace éternelle, quand la recette en exige 3 100 et aucun Éclat — il a choisi la conversion chez les vendeurs Glace éternelle et n'a pas déplié la branche des armes Astral. Les valeurs d'un arbre ne valent donc comme exigence QUE pour les matières sans voie alternative : monnaies brutes, tickets, badges. Pour tout ce qui se convertit, se fabrique ou s'achète autrement, seule la recette fait foi.",
+      "en": "⚠ GW2Efficiency recipe trees are SHOPPING PLANS, not bills of materials. They resolve each node by whichever path they judge best and account for what the account already owns. Proof: Vision's tree reports 100 Kralkatite and 6,750 Eternal Ice Shards, while the recipe demands 3,100 and no Shards at all — it chose the Eternal Ice vendor conversion and never expanded the Astral weapons branch. A tree's figures therefore count as requirements ONLY for materials with no alternative route: raw currencies, tickets, badges. For anything convertible, craftable or otherwise purchasable, only the recipe is authoritative."
+    },
+    "changelog_v146": "⚠ Decouverte qui remet en cause la methode de la v145. Les arbres GW2Efficiency sont des plans d'achat, pas des nomenclatures : ils resolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possede. L'arbre de Vision annonce 100 Kralkatite et 6 750 Eclats de glace eternelle la ou la recette exige 3 100 et aucun Eclat — il a choisi la conversion chez les vendeurs et n'a pas deplie la branche des armes Astral. Les arbres de Coalescence, Vision et Ad Infinitum ne sont donc PAS appliques. Le caveat est ecrit dans _meta, et les six valeurs de la v145 issues du developpement des trefles mystiques sont marquees a confirmer. Les postes sans voie alternative — tickets, badges, minerais bruts — tiennent."
   },
   "meta_events": {
     "vb": {
@@ -5783,7 +5788,23 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 309,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        },
+        "warbringer": {
+          "jsx": 309,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        }
+      }
     },
     "gift_of_exploration": {
       "name": "Gift of Exploration",
@@ -6350,6 +6371,22 @@ const SOURCES_DB = {
       "note": {
         "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon.",
         "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
+      },
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 249,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        },
+        "warbringer": {
+          "jsx": 499,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        }
       }
     },
     "mystic_clover": {
@@ -7607,7 +7644,23 @@ const SOURCES_DB = {
       },
       "checked": "2026-08-22",
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
-      "verified": true
+      "verified": true,
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 499,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        },
+        "warbringer": {
+          "jsx": 249,
+          "note": "valeur issue du developpement des 77 trefles mystiques dans un arbre GW2Efficiency — or ce developpement depend du chemin choisi (Forge contre achat chez Lyhr) et de ce que le compte possede. A confirmer contre la recette avant d'etre tenue pour exacte.",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "voir _meta.recipe_tree_caveat"
+        }
+      }
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
