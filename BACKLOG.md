@@ -192,66 +192,38 @@ son Gift of Prescience. Aucune recette ne justifiait 50.
 
 ---
 
-## 3 quater. Conflux et Warbringer : trois écarts non tranchés
+## 3 quater. Conflux — ✅ **RÉSOLU : chaîne complète, 8 lignes sur 8**
 
-Les arbres complets ont posé 16 exigences et corrigé 9. Trois restent ouvertes.
+Le postulat d'Antoine est validé et le mien réfuté : **GW2Efficiency couvre
+fidèlement les chaînes de craft, pas les collections.** L'absence des armes
+Astral dans l'arbre de Vision vient de là — c'est une collection, pas un craft.
 
-**Le JSX diverge de l'arbre, dans les deux sens** — ce n'est donc pas un simple
-écart « exigence directe contre total développé » :
+Mon diagnostic « l'arbre substitue les chemins » était **faux** : les Éclats de
+glace éternelle apparaissent sous chaque monnaie comme **coût d'achat affiché**,
+pas comme substitution. Et les armes Dragonsblood, elles, sont bien dans l'arbre,
+entières.
 
-| poste | arbre | JSX |
-|---|---|---|
-| Badge of Honor (Conflux) | 1 500 | 750 |
-| Badge of Honor (Warbringer) | 1 000 | **1 250** |
-| Testimony of Castoran Heroics (Conflux) | 750 | 250 |
+**Ce qui débloque tout : lire la hiérarchie, pas additionner à plat.** Le
+maillon manquant apparaît alors — le **Gift of Warfare** et ses quatre
+**Essences mystiques** :
 
-Déclarés en `qty_conflict`, datés et motivés : l'audit les passe en
-avertissement au lieu de bloquer, et ils restent visibles à chaque exécution.
+| essence | T6 | T5 | socle |
+|---|---|---|---|
+| Strategy | 20 sang | 50 | 1 000 Insignes d'honneur |
+| Animosity | 20 os | 50 | 500 Témoignages castoran |
+| Carnage | 20 écailles | 50 | 500 Mémoires de bataille |
+| Annihilation | 20 griffes | 50 | **350 Tickets d'escarmouche** |
 
-**Deux écarts que la chaîne porte déjà**, signalés sans être forcés — y ajouter
-un total à plat compterait deux fois :
+Il explique **les trois anomalies d'un coup** : les +20 T6 sur exactement ces
+quatre lignes, les 350 tickets manquants de Warbringer, et les écarts sur
+insignes, témoignages et mémoires.
 
-- **350 tickets d'escarmouche** : l'arbre de Warbringer en totalise 2 800, la
-  chaîne n'en porte que 2 450 par `warcry`. Un poste non modélisé.
-- **+20 trophées T6 par ligne**, et seulement sur sang, os, écailles et griffes
-  (220 vs 200 pour Conflux, 270 vs 250 pour Warbringer). Un maillon commun,
-  probablement la Mystic Essence of Strategy.
+Avec les derniers parents (Mist Pearl, Mist-Enhanced Mithril, Gift of War, Gift
+of War Dedication, les deux Certificates), **les huit lignes tombent au chiffre
+près** : 220 / 220 / 220 / 220 T6, 1 500 insignes, 750 témoignages, 1 750
+mémoires, 1 850 tickets.
 
----
-
-## 3 quinquies. ⚠ Les arbres GW2Efficiency sont des plans d'achat
-
-**Découverte du 22/08/2026, qui remet en cause la méthode employée en v145.**
-
-Un arbre de recette GW2Efficiency **résout chaque nœud par le chemin qu'il juge
-le meilleur** et tient compte de ce que le compte possède déjà. Ce n'est pas une
-nomenclature.
-
-**La preuve, sur Vision :**
-
-| poste | arbre | recette |
-|---|---|---|
-| Kralkatite Ore | 100 | **3 100** |
-| Powdered Rose Quartz | *absent* | **3 000** |
-| Kralkatite Ingot | *absent* | **300** |
-| Eternal Ice Shard | **6 750** | 0 |
-
-L'arbre a choisi la **conversion chez les vendeurs Glace éternelle** (10 unités
-pour 75 Éclats) et n'a **pas déplié la branche des armes Astral**. Idem sur
-Coalescence, où les Éclats de magnétite n'apparaissent pas du tout.
-
-**Règle qui en découle**, écrite dans `_meta.recipe_tree_caveat` : les valeurs
-d'un arbre ne comptent comme exigence **que pour les matières sans voie
-alternative** — monnaies brutes, tickets, badges, minerais. Pour tout ce qui se
-convertit, se fabrique ou s'achète autrement, **seule la recette fait foi**.
-
-**Conséquence sur la v145** : les postes sans alternative (tickets, badges,
-dragonite, fragments empyréens) tiennent. Les six valeurs issues du
-développement des 77 trèfles mystiques — Mystic Coin, Obsidian Shard, Glob of
-Ectoplasm pour Conflux et Warbringer — sont marquées **à confirmer** : ce
-développement dépend du chemin (Forge contre achat chez Lyhr) et du stock.
-
-Les arbres de **Coalescence, Vision et Ad Infinitum ne sont pas appliqués**.
+Plus aucun total à plat sur ces postes.
 
 ---
 

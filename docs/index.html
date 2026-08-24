@@ -1794,7 +1794,9 @@ const SOURCES_DB = {
       "fr": "⚠ Les arbres de recette GW2Efficiency sont des PLANS D'ACHAT, pas des nomenclatures. Ils résolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possède déjà. Preuve : l'arbre de Vision annonce 100 Kralkatite et 6 750 Éclats de glace éternelle, quand la recette en exige 3 100 et aucun Éclat — il a choisi la conversion chez les vendeurs Glace éternelle et n'a pas déplié la branche des armes Astral. Les valeurs d'un arbre ne valent donc comme exigence QUE pour les matières sans voie alternative : monnaies brutes, tickets, badges. Pour tout ce qui se convertit, se fabrique ou s'achète autrement, seule la recette fait foi.",
       "en": "⚠ GW2Efficiency recipe trees are SHOPPING PLANS, not bills of materials. They resolve each node by whichever path they judge best and account for what the account already owns. Proof: Vision's tree reports 100 Kralkatite and 6,750 Eternal Ice Shards, while the recipe demands 3,100 and no Shards at all — it chose the Eternal Ice vendor conversion and never expanded the Astral weapons branch. A tree's figures therefore count as requirements ONLY for materials with no alternative route: raw currencies, tickets, badges. For anything convertible, craftable or otherwise purchasable, only the recipe is authoritative."
     },
-    "changelog_v146": "⚠ Decouverte qui remet en cause la methode de la v145. Les arbres GW2Efficiency sont des plans d'achat, pas des nomenclatures : ils resolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possede. L'arbre de Vision annonce 100 Kralkatite et 6 750 Eclats de glace eternelle la ou la recette exige 3 100 et aucun Eclat — il a choisi la conversion chez les vendeurs et n'a pas deplie la branche des armes Astral. Les arbres de Coalescence, Vision et Ad Infinitum ne sont donc PAS appliques. Le caveat est ecrit dans _meta, et les six valeurs de la v145 issues du developpement des trefles mystiques sont marquees a confirmer. Les postes sans voie alternative — tickets, badges, minerais bruts — tiennent."
+    "changelog_v146": "⚠ Decouverte qui remet en cause la methode de la v145. Les arbres GW2Efficiency sont des plans d'achat, pas des nomenclatures : ils resolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possede. L'arbre de Vision annonce 100 Kralkatite et 6 750 Eclats de glace eternelle la ou la recette exige 3 100 et aucun Eclat — il a choisi la conversion chez les vendeurs et n'a pas deplie la branche des armes Astral. Les arbres de Coalescence, Vision et Ad Infinitum ne sont donc PAS appliques. Le caveat est ecrit dans _meta, et les six valeurs de la v145 issues du developpement des trefles mystiques sont marquees a confirmer. Les postes sans voie alternative — tickets, badges, minerais bruts — tiennent.",
+    "changelog_v147": "Ta correction validee : GW2Efficiency couvre fidelement les chaines de CRAFT, pas les collections. En relisant l'arbre par sa hierarchie plutot qu'en additionnant a plat, le maillon manquant apparait — le Gift of Warfare et ses quatre Essences mystiques. Il explique d'un coup les trois anomalies signalees en v145 : les +20 trophees T6 sur le sang, les os, les ecailles et les griffes (20 par essence), les 350 Tickets d'escarmouche manquants de Warbringer (Essence of Annihilation), et les ecarts sur les insignes, temoignages et memoires de bataille, qui sont les socles des trois autres essences. Les totaux a plat correspondants sont retires : la chaine les porte. Mon diagnostic de la v146 — « l'arbre substitue les chemins » — etait faux : les Eclats de glace eternelle apparaissent sous chaque monnaie comme COUT D'ACHAT, pas comme substitution.",
+    "changelog_v148": "Derniers parents de Conflux lus dans la hierarchie de l'arbre : Mist Pearl, Mist-Enhanced Mithril, Gift of War, Gift of War Dedication, Certificate of Honor et Certificate of Heroics. Les trois ecarts restants se resolvent : 1 750 Memoires de bataille (500 pour l'Essence of Carnage plus 5 x 250), 1 500 Insignes (1 000 pour l'Essence of Strategy plus 500 pour le Certificate of Honor), 750 Temoignages (500 plus 250). Conflux est desormais entierement modelise par sa chaine, sans aucun total a plat sur ces postes."
   },
   "meta_events": {
     "vb": {
@@ -3248,7 +3250,7 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_the_mists"
       ],
-      "farmable": false,
+      "farmable": true,
       "sources": [
         {
           "type": "vendor",
@@ -3261,8 +3263,17 @@ const SOURCES_DB = {
           "cost_memory_of_battle": 250
         }
       ],
-      "qty": {},
-      "kind": "advanced_craft"
+      "qty": {
+        "gift_of_the_mists": 1
+      },
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 250 Mémoires de bataille.",
+        "en": "Purchase: 250 Memories of Battle."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "bloodstone_shard": {
       "name": "Bloodstone Shard",
@@ -4758,13 +4769,19 @@ const SOURCES_DB = {
         "mist_pearl",
         "mist_enhanced_mithril",
         "warbringer",
-        "armor_wvw"
+        "armor_wvw",
+        "essence_of_carnage",
+        "gift_of_war"
       ],
       "qty": {
         "triumphant_hero__per_piece": 200,
-        "conflux": 1750,
-        "warbringer": 750,
-        "strife_unending": 250
+        "strife_unending": 250,
+        "essence_of_carnage": 500,
+        "mist_pearl": 250,
+        "mist_enhanced_mithril": 250,
+        "gift_of_war": 250,
+        "gift_of_war_dedication": 250,
+        "gift_of_conquering": 250
       },
       "farmable": true,
       "sources": [
@@ -4853,11 +4870,12 @@ const SOURCES_DB = {
       "name": "Essence of Strategy",
       "apiId": 81319,
       "needed_for": [
-        "mystic_essence_of_strategy",
-        "warbringer"
+        "mystic_essence_of_strategy"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "mystic_essence_of_strategy": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4868,17 +4886,25 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 1 000 Insignes d'honneur.",
+        "en": "Purchase: 1,000 Badges of Honor."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "essence_of_animosity": {
       "name": "Essence of Animosity",
       "apiId": 81494,
       "needed_for": [
-        "mystic_essence_of_animosity",
-        "warbringer"
+        "mystic_essence_of_animosity"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "mystic_essence_of_animosity": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4889,17 +4915,25 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 500 Témoignages d'héroïsme castoran.",
+        "en": "Purchase: 500 Testimonies of Castoran Heroics."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "essence_of_carnage": {
       "name": "Essence of Carnage",
       "apiId": 81449,
       "needed_for": [
-        "mystic_essence_of_carnage",
-        "warbringer"
+        "mystic_essence_of_carnage"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "mystic_essence_of_carnage": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4910,17 +4944,25 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 500 Mémoires de bataille.",
+        "en": "Purchase: 500 Memories of Battle."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "essence_of_annihilation": {
       "name": "Essence of Annihilation",
       "apiId": 81407,
       "needed_for": [
-        "mystic_essence_of_annihilation",
-        "warbringer"
+        "mystic_essence_of_annihilation"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "mystic_essence_of_annihilation": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4928,7 +4970,14 @@ const SOURCES_DB = {
           "tip": "Purchase for 350 WvW Skirmish Claim Tickets."
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 350 Tickets d'escarmouche McM.",
+        "en": "Purchase: 350 WvW Skirmish Claim Tickets."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "emblem_of_the_conqueror": {
       "name": "Emblem of the Conqueror",
@@ -4959,13 +5008,12 @@ const SOURCES_DB = {
       "name": "Mist Pearl",
       "apiId": 93147,
       "needed_for": [
-        "war_commendation",
-        "warbringer"
+        "war_commendation"
       ],
       "qty": {
-        "conflux": 25
+        "war_commendation": 1
       },
-      "farmable": false,
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4976,17 +5024,25 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 250 Mémoires de bataille.",
+        "en": "Purchase: 250 Memories of Battle."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "mist_enhanced_mithril": {
       "name": "Mist-Enhanced Mithril",
       "apiId": 93248,
       "needed_for": [
-        "war_commendation",
-        "warbringer"
+        "war_commendation"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "war_commendation": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -4997,17 +5053,25 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 250 Mémoires de bataille.",
+        "en": "Purchase: 250 Memories of Battle."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "certificate_of_honor": {
       "name": "Certificate of Honor",
       "apiId": 81384,
       "needed_for": [
-        "gift_of_war_dedication",
-        "warbringer"
+        "gift_of_war_dedication"
       ],
-      "qty": {},
-      "farmable": false,
+      "qty": {
+        "gift_of_war_dedication": 1
+      },
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -5015,19 +5079,25 @@ const SOURCES_DB = {
           "tip": "Purchase for WvW tickets + badges. Check wiki for exact cost."
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 500 Insignes d'honneur.",
+        "en": "Purchase: 500 Badges of Honor."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "certificate_of_heroics": {
       "name": "Certificate of Heroics",
       "apiId": 81470,
       "needed_for": [
-        "gift_of_war_dedication",
-        "warbringer"
+        "gift_of_war_dedication"
       ],
       "qty": {
-        "warbringer": 5
+        "gift_of_war_dedication": 1
       },
-      "farmable": false,
+      "farmable": true,
       "sources": [
         {
           "type": "wvw_vendor",
@@ -5038,7 +5108,14 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "intermediate",
+      "recipe": {
+        "fr": "Achat : 250 Témoignages d'héroïsme castoran.",
+        "en": "Purchase: 250 Testimonies of Castoran Heroics."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     },
     "glob_condensed_spirit_energy": {
       "name": "Glob of Condensed Spirit Energy",
@@ -5111,7 +5188,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "warcry": 2450,
-        "conflux": 1850
+        "conflux": 1850,
+        "essence_of_annihilation": 350
       },
       "farmable": true,
       "timegate": true,
@@ -5241,8 +5319,8 @@ const SOURCES_DB = {
       "apiId": 15,
       "kind": "currency",
       "qty": {
-        "conflux": 1500,
-        "warbringer": 1000
+        "essence_of_strategy": 1000,
+        "certificate_of_honor": 500
       },
       "farmable": true,
       "sources": [
@@ -5262,22 +5340,10 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
-      "qty_conflict": {
-        "conflux": {
-          "jsx": 750,
-          "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
-          "checked": "2026-08-22",
-          "verified": false,
-          "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
-        },
-        "warbringer": {
-          "jsx": 1250,
-          "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
-          "checked": "2026-08-22",
-          "verified": false,
-          "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
-        }
-      }
+      "needed_for": [
+        "essence_of_strategy",
+        "certificate_of_honor"
+      ]
     },
     "ascended_shard_of_glory": {
       "name": "Ascended Shard of Glory",
@@ -10285,9 +10351,9 @@ const SOURCES_DB = {
     },
     "gift_of_warfare": {
       "name": "Gift of Warfare",
-      "kind": "advanced_craft",
+      "kind": "intermediate",
       "needed_for": [
-        "warbringer"
+        "war_commendation"
       ],
       "farmable": true,
       "sources": [
@@ -10299,7 +10365,20 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {}
+      "qty": {
+        "war_commendation": 1
+      },
+      "recipe": {
+        "fr": "MF : 1 de chacune des 4 Essences mystiques — Strategy, Animosity, Carnage, Annihilation.",
+        "en": "MF: 1 of each of the 4 Mystic Essences — Strategy, Animosity, Carnage, Annihilation."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "note": {
+        "fr": "⚡ C'est le maillon qui expliquait trois anomalies : les +20 trophées T6 sur le sang, les os, les écailles et les griffes, les 350 tickets d'escarmouche manquants, et les écarts sur les insignes, les témoignages et les mémoires de bataille.",
+        "en": "⚡ This is the link that explained three anomalies: the +20 T6 trophies on blood, bones, scales and claws, the 350 missing skirmish tickets, and the gaps on badges, testimonies and memories of battle."
+      }
     },
     "gift_of_fractals": {
       "name": "Gift of Fractals",
@@ -10598,7 +10677,8 @@ const SOURCES_DB = {
       "qty": {
         "dragonite_ingot": 100,
         "conflux": 1250,
-        "warbringer": 1250
+        "warbringer": 1250,
+        "mystic_essence_of_carnage": 250
       },
       "kind": "base",
       "farmable": true,
@@ -10627,7 +10707,8 @@ const SOURCES_DB = {
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
       },
       "needed_for": [
-        "dragonite_ingot"
+        "dragonite_ingot",
+        "mystic_essence_of_carnage"
       ]
     },
     "empyreal_fragment": {
@@ -10636,7 +10717,8 @@ const SOURCES_DB = {
       "qty": {
         "empyreal_star": 100,
         "conflux": 1250,
-        "warbringer": 1250
+        "warbringer": 1250,
+        "mystic_essence_of_animosity": 250
       },
       "kind": "base",
       "farmable": true,
@@ -10665,7 +10747,8 @@ const SOURCES_DB = {
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
       },
       "needed_for": [
-        "empyreal_star"
+        "empyreal_star",
+        "mystic_essence_of_animosity"
       ]
     },
     "bloodstone_dust": {
@@ -10674,7 +10757,8 @@ const SOURCES_DB = {
       "qty": {
         "bloodstone_brick": 100,
         "conflux": 1250,
-        "warbringer": 1250
+        "warbringer": 1250,
+        "mystic_essence_of_strategy": 250
       },
       "kind": "base",
       "farmable": true,
@@ -10703,7 +10787,8 @@ const SOURCES_DB = {
         "ref": "wiki:Dragonite_Ore, wiki:Empyreal_Fragment, wiki:Pile_of_Bloodstone_Dust — materiaux de recompense d'activite"
       },
       "needed_for": [
-        "bloodstone_brick"
+        "bloodstone_brick",
+        "mystic_essence_of_strategy"
       ]
     },
     "spirit_shard": {
@@ -10858,8 +10943,8 @@ const SOURCES_DB = {
       "apiId": 82,
       "kind": "currency",
       "qty": {
-        "conflux": 750,
-        "warbringer": 500
+        "essence_of_animosity": 500,
+        "certificate_of_heroics": 250
       },
       "farmable": true,
       "sources": [
@@ -10879,15 +10964,10 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
-      "qty_conflict": {
-        "conflux": {
-          "jsx": 250,
-          "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
-          "checked": "2026-08-22",
-          "verified": false,
-          "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
-        }
-      }
+      "needed_for": [
+        "essence_of_animosity",
+        "certificate_of_heroics"
+      ]
     },
     "gaeting_crystal": {
       "name": "Gaeting Crystal",
@@ -11332,7 +11412,8 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_scales": 100,
-        "gift_of_might": 250
+        "gift_of_might": 250,
+        "mystic_essence_of_carnage": 20
       },
       "farmable": true,
       "sources": [
@@ -11385,7 +11466,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_scales",
-        "gift_of_might"
+        "gift_of_might",
+        "mystic_essence_of_carnage"
       ],
       "tier": "T6"
     },
@@ -11395,7 +11477,8 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_blood": 100,
-        "gift_of_magic": 250
+        "gift_of_magic": 250,
+        "mystic_essence_of_strategy": 20
       },
       "farmable": true,
       "sources": [
@@ -11448,7 +11531,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_blood",
-        "gift_of_magic"
+        "gift_of_magic",
+        "mystic_essence_of_strategy"
       ],
       "tier": "T6",
       "qty_note": {
@@ -11525,7 +11609,8 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_claws": 100,
-        "gift_of_might": 250
+        "gift_of_might": 250,
+        "mystic_essence_of_annihilation": 20
       },
       "farmable": true,
       "sources": [
@@ -11578,7 +11663,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_claws",
-        "gift_of_might"
+        "gift_of_might",
+        "mystic_essence_of_annihilation"
       ],
       "tier": "T6"
     },
@@ -11651,7 +11737,8 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_bones": 100,
-        "gift_of_might": 250
+        "gift_of_might": 250,
+        "mystic_essence_of_animosity": 20
       },
       "farmable": true,
       "sources": [
@@ -11704,7 +11791,8 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_bones",
-        "gift_of_might"
+        "gift_of_might",
+        "mystic_essence_of_animosity"
       ],
       "tier": "T6"
     },
@@ -11888,10 +11976,12 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_blood": 250,
-        "warbringer": 50
+        "warbringer": 50,
+        "mystic_essence_of_strategy": 50
       },
       "needed_for": [
-        "gift_of_blood"
+        "gift_of_blood",
+        "mystic_essence_of_strategy"
       ],
       "sources": [
         {
@@ -12424,10 +12514,12 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_claws": 250,
-        "warbringer": 50
+        "warbringer": 50,
+        "mystic_essence_of_annihilation": 50
       },
       "needed_for": [
-        "gift_of_claws"
+        "gift_of_claws",
+        "mystic_essence_of_annihilation"
       ],
       "sources": [
         {
@@ -12596,10 +12688,12 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_scales": 250,
-        "warbringer": 50
+        "warbringer": 50,
+        "mystic_essence_of_carnage": 50
       },
       "needed_for": [
-        "gift_of_scales"
+        "gift_of_scales",
+        "mystic_essence_of_carnage"
       ],
       "sources": [
         {
@@ -12768,10 +12862,12 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_bones": 250,
-        "warbringer": 50
+        "warbringer": 50,
+        "mystic_essence_of_animosity": 50
       },
       "needed_for": [
-        "gift_of_bones"
+        "gift_of_bones",
+        "mystic_essence_of_animosity"
       ],
       "sources": [
         {
@@ -13652,6 +13748,192 @@ const SOURCES_DB = {
           "verified": true,
           "checked": "2026-08-22",
           "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "war_commendation": {
+      "name": "War Commendation",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_the_world": 1
+      },
+      "needed_for": [
+        "gift_of_the_world"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Gift of Warfare + 1 Emblem of the Conqueror + 1 Mist Pearl + 1 Mist-Enhanced Mithril.",
+        "en": "MF: 1 Gift of Warfare + 1 Emblem of the Conqueror + 1 Mist Pearl + 1 Mist-Enhanced Mithril."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "mystic_essence_of_strategy": {
+      "name": "Mystic Essence of Strategy",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_warfare": 1
+      },
+      "needed_for": [
+        "gift_of_warfare"
+      ],
+      "recipe": {
+        "fr": "MF : 20 Vial of Powerful Blood, 50 Vial of Potent Blood, 250 Pile of Bloodstone Dust + 1 Essence of Strategy.",
+        "en": "MF: 20 Vial of Powerful Blood, 50 Vial of Potent Blood, 250 Pile of Bloodstone Dust + 1 Essence of Strategy."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "mystic_essence_of_animosity": {
+      "name": "Mystic Essence of Animosity",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_warfare": 1
+      },
+      "needed_for": [
+        "gift_of_warfare"
+      ],
+      "recipe": {
+        "fr": "MF : 20 Ancient Bone, 50 Large Bone, 250 Empyreal Fragment + 1 Essence of Animosity.",
+        "en": "MF: 20 Ancient Bone, 50 Large Bone, 250 Empyreal Fragment + 1 Essence of Animosity."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "mystic_essence_of_carnage": {
+      "name": "Mystic Essence of Carnage",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_warfare": 1
+      },
+      "needed_for": [
+        "gift_of_warfare"
+      ],
+      "recipe": {
+        "fr": "MF : 20 Armored Scale, 50 Large Scale, 250 Dragonite Ore + 1 Essence of Carnage.",
+        "en": "MF: 20 Armored Scale, 50 Large Scale, 250 Dragonite Ore + 1 Essence of Carnage."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "mystic_essence_of_annihilation": {
+      "name": "Mystic Essence of Annihilation",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_warfare": 1
+      },
+      "needed_for": [
+        "gift_of_warfare"
+      ],
+      "recipe": {
+        "fr": "MF : 20 Vicious Claw, 50 Large Claw + 1 Essence of Annihilation.",
+        "en": "MF: 20 Vicious Claw, 50 Large Claw + 1 Essence of Annihilation."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "gift_of_war_dedication": {
+      "name": "Gift of War Dedication",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_the_world": 1
+      },
+      "needed_for": [
+        "gift_of_the_world"
+      ],
+      "recipe": {
+        "fr": "MF : 1 Certificate of Honor + 1 Certificate of Heroics + 1 Glob of Condensed Spirit Energy + 250 Mémoires de bataille.",
+        "en": "MF: 1 Certificate of Honor + 1 Certificate of Heroics + 1 Glob of Condensed Spirit Energy + 250 Memories of Battle."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique ou s'achete, ne se trouve pas.",
+            "en": "Crafted or bought, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
         }
       ]
     }
