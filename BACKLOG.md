@@ -227,6 +227,36 @@ Plus aucun total à plat sur ces postes.
 
 ---
 
+## 3 sexies. Trois arbres appliqués — méthode corrigée
+
+**Correction de méthode :** GW2Efficiency affiche des quantités **absolues** à
+chaque nœud, déjà multipliées. Les cumuler en cascade produisait des nombres à
+neuf chiffres (3,9 milliards d'éclats d'obsidienne pour Coalescence). **On somme
+les occurrences, on ne multiplie pas.**
+
+**12 exigences posées, 10 corrigées** sur Coalescence, Vision et Ad Infinitum.
+Les plus notables :
+
+- **Ad Infinitum** : 1 500 Minerai de dragonite, 1 500 Fragments empyréens,
+  1 500 Poussière de pierre de sang, 600 Matrices stabilisatrices — **tous
+  absents**. Et 1 039 Globes d'ectoplasme au lieu de 250.
+- **Coalescence** : 300 Mosaïques d'élégie, 250 Lingots cristallins, 250
+  Gemmes amalgamées.
+- **Vision** : 540 Réactifs thermocatalytiques, 250 Éclats de gloire, 100
+  Pierres runiques glacées.
+
+**Périmètre déclaré** (`_meta.raw_materials_scope`) : les matières premières
+génériques de l'artisanat élevé — mithril, argent, or, orichalque, planches,
+cuir, soie, essences de chance — ne sont **pas** modélisées. Les arbres en
+listent des milliers, mais elles s'achètent sans y penser et ne portent aucun
+timegate. Les modéliser doublerait le fichier sans servir la question du
+tracker : *que puis-je faire avancer aujourd'hui ?*
+
+**Trois divergences JSX déclarées** en `qty_conflict` : Mystic Coin sur
+Ad Infinitum et Coalescence, Pristine Fractal Relic sur Ad Infinitum.
+
+---
+
 ## 4. Portes de maîtrise : les noms sont-ils bons ?
 
 `collection_unlocks` pose des portes `mastery` nommées **« Rift Repair »**

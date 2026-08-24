@@ -1035,7 +1035,12 @@
   },
   "changelog_v146": "⚠ Decouverte qui remet en cause la methode de la v145. Les arbres GW2Efficiency sont des plans d'achat, pas des nomenclatures : ils resolvent chaque nœud par le chemin qu'ils jugent le meilleur et tiennent compte de ce que le compte possede. L'arbre de Vision annonce 100 Kralkatite et 6 750 Eclats de glace eternelle la ou la recette exige 3 100 et aucun Eclat — il a choisi la conversion chez les vendeurs et n'a pas deplie la branche des armes Astral. Les arbres de Coalescence, Vision et Ad Infinitum ne sont donc PAS appliques. Le caveat est ecrit dans _meta, et les six valeurs de la v145 issues du developpement des trefles mystiques sont marquees a confirmer. Les postes sans voie alternative — tickets, badges, minerais bruts — tiennent.",
   "changelog_v147": "Ta correction validee : GW2Efficiency couvre fidelement les chaines de CRAFT, pas les collections. En relisant l'arbre par sa hierarchie plutot qu'en additionnant a plat, le maillon manquant apparait — le Gift of Warfare et ses quatre Essences mystiques. Il explique d'un coup les trois anomalies signalees en v145 : les +20 trophees T6 sur le sang, les os, les ecailles et les griffes (20 par essence), les 350 Tickets d'escarmouche manquants de Warbringer (Essence of Annihilation), et les ecarts sur les insignes, temoignages et memoires de bataille, qui sont les socles des trois autres essences. Les totaux a plat correspondants sont retires : la chaine les porte. Mon diagnostic de la v146 — « l'arbre substitue les chemins » — etait faux : les Eclats de glace eternelle apparaissent sous chaque monnaie comme COUT D'ACHAT, pas comme substitution.",
-  "changelog_v148": "Derniers parents de Conflux lus dans la hierarchie de l'arbre : Mist Pearl, Mist-Enhanced Mithril, Gift of War, Gift of War Dedication, Certificate of Honor et Certificate of Heroics. Les trois ecarts restants se resolvent : 1 750 Memoires de bataille (500 pour l'Essence of Carnage plus 5 x 250), 1 500 Insignes (1 000 pour l'Essence of Strategy plus 500 pour le Certificate of Honor), 750 Temoignages (500 plus 250). Conflux est desormais entierement modelise par sa chaine, sans aucun total a plat sur ces postes."
+  "changelog_v148": "Derniers parents de Conflux lus dans la hierarchie de l'arbre : Mist Pearl, Mist-Enhanced Mithril, Gift of War, Gift of War Dedication, Certificate of Honor et Certificate of Heroics. Les trois ecarts restants se resolvent : 1 750 Memoires de bataille (500 pour l'Essence of Carnage plus 5 x 250), 1 500 Insignes (1 000 pour l'Essence of Strategy plus 500 pour le Certificate of Honor), 750 Temoignages (500 plus 250). Conflux est desormais entierement modelise par sa chaine, sans aucun total a plat sur ces postes.",
+  "raw_materials_scope": {
+   "fr": "Les matières premières génériques de l'artisanat élevé — minerai de mithril, argent, or, orichalque, planches, cuir, soie, essences de chance — ne sont PAS modélisées. Les arbres de Vision et d'Ad Infinitum en listent des milliers, mais elles s'achètent au Comptoir sans y penser et ne portent aucun timegate. Les modéliser doublerait le fichier sans rien apporter à la question que le tracker pose : que puis-je faire avancer aujourd'hui ?",
+   "en": "Generic high-tier crafting raw materials — mithril, silver, gold, orichalcum ore, planks, leather, silk, essences of luck — are NOT modelled. Vision's and Ad Infinitum's trees list them in the thousands, but they are bought on the Trading Post without a thought and carry no timegate. Modelling them would double the file without serving the question the tracker asks: what can I move forward today?"
+  },
+  "changelog_v149": "Coalescence, Vision et Ad Infinitum alignes sur leurs arbres. Correction de methode : GW2Efficiency affiche des quantites ABSOLUES a chaque nœud, deja multipliees — les cumuler en cascade produisait des nombres a neuf chiffres. On somme les occurrences, on ne multiplie pas. 12 exigences posees et 10 corrigees. Les matieres premieres generiques de l'artisanat eleve sont volontairement ecartees, et la regle est ecrite dans _meta.raw_materials_scope."
  },
  "meta_events": {
   "vb": {
@@ -2317,12 +2322,13 @@
     }
    ],
    "qty": {
-    "conflux": 100
+    "conflux": 100,
+    "vision": 100
    },
    "kind": "acquire",
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "ball_dark_energy": {
    "name": "Ball of Dark Energy",
@@ -2374,7 +2380,8 @@
    ],
    "qty": {
     "obsidian__per_piece": 75,
-    "cube_stabilized_dark_energy": 75
+    "cube_stabilized_dark_energy": 75,
+    "ad_infinitum": 600
    },
    "farmable": true,
    "sources": [
@@ -2383,7 +2390,10 @@
      "tip": "Fractales (extraction des encryptions) ou TP — peu cher."
     }
    ],
-   "kind": "acquire"
+   "kind": "acquire",
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_battle": {
    "name": "Gift of Battle",
@@ -4617,7 +4627,8 @@
     "mist_band_infused"
    ],
    "qty": {
-    "conflux": 250
+    "conflux": 250,
+    "vision": 250
    },
    "farmable": true,
    "sources": [
@@ -4655,7 +4666,7 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "legendary_insight": {
    "name": "Legendary Insight",
@@ -4998,16 +5009,16 @@
     "gen1_the_predator": 250,
     "perfected_envoy__per_piece": 50,
     "the_ascension": 250,
-    "ad_infinitum": 250,
+    "ad_infinitum": 339,
     "selachimorpha": 250,
     "obsidian__per_piece": 50,
     "endless_summer": 250,
     "upgrades": 450,
-    "vision": 250,
+    "vision": 421,
     "aurora": 250,
     "conflux": 309,
     "warbringer": 309,
-    "coalescence": 250
+    "coalescence": 499
    },
    "farmable": true,
    "sources": [
@@ -5093,7 +5104,7 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_exploration": {
    "name": "Gift of Exploration",
@@ -5393,7 +5404,9 @@
    ],
    "qty": {
     "conflux": 300,
-    "warbringer": 300
+    "warbringer": 300,
+    "vision": 540,
+    "ad_infinitum": 590
    },
    "farmable": true,
    "sources": [
@@ -5430,7 +5443,7 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "exotic_essence_of_luck": {
    "name": "Exotic Essence of Luck",
@@ -5637,14 +5650,14 @@
     "gen1_the_predator": 250,
     "obsidian__per_piece": 600,
     "the_ascension": 250,
-    "ad_infinitum": 250,
+    "ad_infinitum": 1039,
     "memory_essence_encapsulator": 50,
     "upgrades": 1050,
     "vision": 250,
     "aurora": 250,
     "conflux": 249,
     "warbringer": 499,
-    "coalescence": 250,
+    "coalescence": 499,
     "transcendence": 250,
     "eikasia": 80,
     "kralkatite_ingot": 1
@@ -5653,7 +5666,7 @@
    "best": "salvage",
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "qty_overlap_verified": [
     "vision"
    ],
@@ -6516,7 +6529,9 @@
     "gen3_aurenes_scale": 250,
     "gen3_aurenes_wisdom": 250,
     "gen3_aurenes_breath": 250,
-    "gen3_aurenes_tenderness": 250
+    "gen3_aurenes_tenderness": 250,
+    "coalescence": 250,
+    "vision": 100
    },
    "kind": "craftable",
    "best": "craft_500",
@@ -6527,7 +6542,10 @@
     "checked": "2026-08-13",
     "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
    },
-   "free_via_ingredients": true
+   "free_via_ingredients": true,
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_maguuma_mastery": {
    "name": "Gift of Maguuma Mastery",
@@ -6790,12 +6808,12 @@
     "gen3_aurenes_tenderness": 250,
     "transcendence": 250,
     "the_ascension": 250,
-    "ad_infinitum": 250,
+    "ad_infinitum": 249,
     "stella_radians": 250,
-    "coalescence": 250,
+    "coalescence": 499,
     "warbringer": 249,
     "aurora": 250,
-    "vision": 250,
+    "vision": 499,
     "conflux": 499
    },
    "kind": "acquire",
@@ -6916,8 +6934,24 @@
     "ref": "wiki:Mystic_Coin#Acquisition"
    },
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
-   "verified": true
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+   "verified": true,
+   "qty_conflict": {
+    "ad_infinitum": {
+     "jsx": 250,
+     "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
+     "verified": false,
+     "checked": "2026-08-22",
+     "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+    },
+    "coalescence": {
+     "jsx": 250,
+     "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
+     "verified": false,
+     "checked": "2026-08-22",
+     "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+    }
+   }
   },
   "mystic_runestone": {
    "name": "Mystic Runestone",
@@ -7766,7 +7800,7 @@
     }
    ],
    "qty": {
-    "ad_infinitum": 240,
+    "ad_infinitum": 140,
     "conflux": 100
    },
    "kind": "acquire",
@@ -7827,7 +7861,16 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+   "qty_conflict": {
+    "ad_infinitum": {
+     "jsx": 240,
+     "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
+     "verified": false,
+     "checked": "2026-08-22",
+     "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+    }
+   }
   },
   "fractal_research_page": {
    "name": "Fractal Research Page",
@@ -7848,7 +7891,7 @@
     }
    ],
    "qty": {
-    "ad_infinitum": 120
+    "ad_infinitum": 112
    },
    "timegate": true,
    "timegate_note": {
@@ -7908,7 +7951,10 @@
       "ref": "wiki:Fractal_Journal + wiki:Account_Augmentation (14/06/2026)"
      }
     ]
-   }
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_ascension_fractal": {
    "name": "Gift of Ascension",
@@ -9537,8 +9583,12 @@
    },
    "qty": {
     "endless_summer": 250,
-    "vision": 100
-   }
+    "vision": 100,
+    "coalescence": 250
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_warfare": {
    "name": "Gift of Warfare",
@@ -9869,13 +9919,14 @@
     "dragonite_ingot": 100,
     "conflux": 1250,
     "warbringer": 1250,
-    "mystic_essence_of_carnage": 250
+    "mystic_essence_of_carnage": 250,
+    "ad_infinitum": 1500
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -9909,13 +9960,14 @@
     "empyreal_star": 100,
     "conflux": 1250,
     "warbringer": 1250,
-    "mystic_essence_of_animosity": 250
+    "mystic_essence_of_animosity": 250,
+    "ad_infinitum": 1500
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -9949,13 +10001,14 @@
     "bloodstone_brick": 100,
     "conflux": 1250,
     "warbringer": 1250,
-    "mystic_essence_of_strategy": 250
+    "mystic_essence_of_strategy": 250,
+    "ad_infinitum": 1500
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -10269,7 +10322,8 @@
    "apiId": 35,
    "kind": "currency",
    "qty": {
-    "vision": 300
+    "vision": 300,
+    "coalescence": 300
    },
    "farmable": true,
    "sources": [
@@ -10287,8 +10341,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "checked": "2026-08-22",
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "volatile_magic": {
    "name": "Volatile Magic",
