@@ -1025,7 +1025,8 @@
   "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master.",
   "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet.",
   "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300.",
-  "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution."
+  "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution.",
+  "changelog_v143": "⚠ Correction d'une erreur que j'ai introduite en v131. J'y avais deduit « Vision demande 3 gifts de magie » du fait que cinq des six monnaies LW4 portaient 300, chaque gift en demandant 100. C'etait une deduction a partir d'un nombre non verifie. La fiche donne la recette reelle : Gift of Arid Mastery = 100 Encens funeraires + 1 Eclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic, et Vision en demande UN. Donc 100 de chaque monnaie, pas 300 — un facteur 3 sur six monnaies. Les deux divergences de Coalescence sont par ailleurs tranchees, deux pages concordantes a l'appui : 250 Encens funeraires et non 300, 6 Boules d'energie sombre et non 100, toutes deux desormais portees par la chaine via le Gift of Desert Mastery et le Gift of Compassion."
  },
  "meta_events": {
   "vb": {
@@ -2323,7 +2324,6 @@
     "obsidian__per_piece": 1,
     "aurora": 50,
     "vision": 50,
-    "coalescence": 100,
     "cube_stabilized_dark_energy": 1,
     "gift_of_compassion": 6
    },
@@ -2336,8 +2336,8 @@
     "verified": true
    },
    "qty_note": {
-    "fr": "⚠ Trois totaux à plat contredits par la chaîne, à arbitrer. Aurora et Vision : leur Gift of Sentience / Prescience passe par 1 Gift of the Mists → 1 Cube → 1 BOULE, quand qty en déclare 50 chacun. Coalescence : le Gift of Compassion en demande 6, quand qty en déclare 100. Les valeurs à plat sont conservées en attendant vérification — deux suppressions précédentes faites au jugé (Masse marquée, cadence Gorseval) se sont révélées fausses.",
-    "en": "⚠ Three flat totals contradicted by the chain, to arbitrate. Aurora and Vision: their Gift of Sentience / Prescience goes through 1 Gift of the Mists → 1 Cube → 1 BALL, while qty declares 50 each. Coalescence: the Gift of Compassion needs 6, while qty declares 100. The flat values are kept pending verification — two previous judgement-call deletions (Branded Mass, the Gorseval cadence) turned out to be wrong."
+    "fr": "Le total à plat de 100 pour Coalescence est supprimé : la fiche donne 6, dans le Gift of Compassion, et la chaîne les porte. ⚠ Restent Aurora et Vision à 50 chacun, quand leur chaîne n'en demande qu'UNE via le Cube. Non tranché faute de source sur ces deux-là.",
+    "en": "The flat 100 for Coalescence is removed: the wiki gives 6, inside the Gift of Compassion, and the chain carries them. ⚠ Aurora and Vision remain at 50 each, while their chain needs only ONE via the Cube. Unresolved, no source on those two."
    },
    "verified": true,
    "checked": "2026-08-22",
@@ -2488,7 +2488,8 @@
    "needed_for": [
     "gift_of_arid_mastery",
     "gift_of_draconic_mastery",
-    "gift_of_mastery"
+    "gift_of_mastery",
+    "gift_of_desert_mastery"
    ],
    "farmable": false,
    "sources": [
@@ -2563,7 +2564,9 @@
     "the_ascension": 1,
     "ad_infinitum": 1,
     "klobjarne_geirr": 1,
-    "selachimorpha": 1
+    "selachimorpha": 1,
+    "gift_of_arid_mastery": 1,
+    "gift_of_desert_mastery": 1
    },
    "kind": "acquire"
   },
@@ -2613,7 +2616,8 @@
     }
    ],
    "qty": {
-    "coalescence": 300
+    "gift_of_arid_mastery": 100,
+    "gift_of_desert_mastery": 250
    },
    "kind": "acquire",
    "cadence": {
@@ -2630,8 +2634,8 @@
        "en": "5 Trade Contracts. 1 per ACCOUNT per day, not 1 per NPC: the heart must be done for the day."
       },
       "verified": true,
-      "checked": "2026-08-20",
-      "ref": "wiki:Funerary_Incense"
+      "checked": "2026-08-22",
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
      },
      {
       "label": {
@@ -2645,8 +2649,8 @@
        "en": "1 ingot per incense, from the Primeval Steward, capped at 5 per account per day."
       },
       "verified": true,
-      "checked": "2026-08-20",
-      "ref": "wiki:Funerary_Incense"
+      "checked": "2026-08-22",
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
      },
      {
       "label": {
@@ -2660,14 +2664,14 @@
        "en": "3 Elegy Mosaics, or 100 Trade Contracts, per incense. Uncapped: this is the volume route, and it falls outside the delay calculation."
       },
       "verified": true,
-      "checked": "2026-08-20",
-      "ref": "wiki:Gift_of_Desert_Mastery"
+      "checked": "2026-08-22",
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
      }
     ]
    },
    "qty_note": {
-    "fr": "⚠ Divergence à arbitrer : l'arbre montre 250 Encens funéraires dans le Gift of Desert Mastery de Coalescence, quand qty['coalescence'] en déclare 300. Non tranché.",
-    "en": "⚠ Divergence to arbitrate: the tree shows 250 Funerary Incense in Coalescence's Gift of Desert Mastery, while qty['coalescence'] declares 300. Unresolved."
+    "fr": "Le total à plat de 300 pour Coalescence est supprimé : la fiche donne 250, dans le Gift of Desert Mastery, et la chaîne les porte désormais. Vérifié sur deux pages concordantes — la fiche de l'Encens funéraire et la liste complète de Coalescence.",
+    "en": "The flat 300 for Coalescence is removed: the wiki gives 250, inside the Gift of Desert Mastery, and the chain now carries them. Verified on two concordant pages — the Funerary Incense page and Coalescence's full material list."
    }
   },
   "kralkatite_ore": {
@@ -6422,20 +6426,34 @@
    "name": "Gift of Desert Mastery",
    "apiId": 85639,
    "needed_for": [
-    "gen2_all_pof"
+    "gen2_all_pof",
+    "gift_of_compassion"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "mystic_forge",
      "tip": {
-      "fr": "MF : 1× Gift of the Desert + 1× Gift of the Rider + 1× Bloodstone Shard + 250× Crystalline Ingot. Alternative à Gift of Maguuma Mastery (sauf 4 armes HoT à collection).",
-      "en": "MF: 1x Gift of the Desert + 1x Gift of the Rider + 1x Bloodstone Shard + 250x Crystalline Ingot. Alternative to Gift of Maguuma Mastery (except the 4 HoT collection weapons)."
-     }
+      "fr": "Se fabrique, ne se trouve pas.",
+      "en": "Crafted, not found."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
     }
    ],
-   "qty": {},
-   "kind": "advanced_craft"
+   "qty": {
+    "gift_of_compassion": 1
+   },
+   "kind": "intermediate",
+   "recipe": {
+    "fr": "Forge mystique : 1 Gift of the Desert + 1 Gift of the Rider + 1 Éclat de pierre de sang + 250 Encens funéraires.",
+    "en": "Mystic Forge: 1 Gift of the Desert + 1 Gift of the Rider + 1 Bloodstone Shard + 250 Funerary Incense."
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
   },
   "mystic_tribute": {
    "name": "Mystic Tribute",
@@ -9291,9 +9309,18 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "vision": 1
+   },
    "best": "mystic_forge",
-   "cadence_ref": "funerary_incense"
+   "cadence_ref": "funerary_incense",
+   "recipe": {
+    "fr": "Forge mystique : 100 Encens funéraires + 1 Éclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic.",
+    "en": "Mystic Forge: 100 Funerary Incense + 1 Bloodstone Shard + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic."
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
   },
   "amalgamated_gemstone": {
    "name": "Amalgamated Gemstone",
@@ -12231,14 +12258,14 @@
    "kind": "intermediate",
    "farmable": true,
    "qty": {
-    "vision": 3
+    "gift_of_arid_mastery": 1
    },
    "needed_for": [
-    "vision"
+    "gift_of_arid_mastery"
    ],
    "recipe": {
-    "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Jahai, Pics de Chef-Tonnerre et Chute draconique) + 1 Bouteille de vin élonien. Vision en demande 3, d'où les 300 de chaque monnaie.",
-    "en": "Mystic Forge: 100 of each of the 3 map currencies (Jahai, Thunderhead Peaks and Dragonfall) + 1 Bottle of Elonian Wine. Vision needs 3, hence the 300 of each currency."
+    "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Jahai, Pics de Chef-Tonnerre et Chute draconique) + 1 Bouteille de vin élonien. Le Gift of Arid Mastery en demande UN de chaque, et Vision un seul Gift of Arid Mastery : 100 de chaque monnaie, et non 300.",
+    "en": "Mystic Forge: 100 of each of the 3 map currencies (Jahai, Thunderhead Peaks and Dragonfall) + 1 Bottle of Elonian Wine. The Gift of Arid Mastery needs ONE of each, and Vision needs a single Gift of Arid Mastery: 100 of each currency, not 300."
    },
    "sources": [
     {
@@ -12255,21 +12282,21 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
   },
   "gift_of_crystalline_magic": {
    "name": "Gift of Crystalline Magic",
    "kind": "intermediate",
    "farmable": true,
    "qty": {
-    "vision": 3
+    "gift_of_arid_mastery": 1
    },
    "needed_for": [
-    "vision"
+    "gift_of_arid_mastery"
    ],
    "recipe": {
-    "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Istan, Îles de Ventesable et Kourna) + 1 Bouteille de vin élonien. Vision en demande 3, d'où les 300 de chaque monnaie.",
-    "en": "Mystic Forge: 100 of each of the 3 map currencies (Istan, Sandswept Isles and Kourna) + 1 Bottle of Elonian Wine. Vision needs 3, hence the 300 of each currency."
+    "fr": "Forge mystique : 100 de chacune des 3 monnaies de carte (Istan, Îles de Ventesable et Kourna) + 1 Bouteille de vin élonien. Le Gift of Arid Mastery en demande UN de chaque, et Vision un seul Gift of Arid Mastery : 100 de chaque monnaie, et non 300.",
+    "en": "Mystic Forge: 100 of each of the 3 map currencies (Istan, Sandswept Isles and Kourna) + 1 Bottle of Elonian Wine. The Gift of Arid Mastery needs ONE of each, and Vision needs a single Gift of Arid Mastery: 100 of each currency, not 300."
    },
    "sources": [
     {
@@ -12286,7 +12313,7 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Lump_of_Mistonium — section Used in (capture Antoine 22/08/2026)"
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
   },
   "gift_of_magic": {
    "name": "Gift of Magic",

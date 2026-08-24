@@ -159,34 +159,35 @@ compte que les monnaies.
 
 ---
 
-## 3 ter. Ball of Dark Energy et Funerary Incense : à arbitrer
+## 3 ter. Divergences Coalescence — ✅ **RÉSOLUES**, et une erreur de v131 corrigée
 
-**Ball of Dark Energy — la chaîne est maintenant modélisée**, d'après la fiche
-wiki : `Cube of Stabilized Dark Energy = 1 boule + 75 matrices`, et
-`Gift of Compassion = 1 Gift of Desert Mastery + 6 boules + 150 LI + 1 Gift of
-Complex Emotions`.
+Deux pages concordantes (fiche de l'Encens funéraire + liste complète de
+Coalescence) tranchent :
 
-L'arithmétique contredit les trois totaux à plat :
+- **Funerary Incense : 250**, pas 300. Dans le `Gift of Desert Mastery`.
+- **Ball of Dark Energy : 6**, pas 100. Dans le `Gift of Compassion`.
 
-| légendaire | par la chaîne | déclaré à plat | écart |
-|---|---|---|---|
-| Aurora | **1** | 50 | ×50 |
-| Vision | **1** | 50 | ×50 |
-| Coalescence | **6** | 100 | ×17 |
+Les deux totaux à plat sont supprimés, la chaîne les porte.
 
-Aurora et Vision passent par 1 Gift of Sentience/Prescience → 1 Gift of the
-Mists → 1 Cube → **1 boule**. Le chemin est complet et vérifié à chaque maillon.
+### L'erreur que ces fiches révèlent — de mon fait, en v131
 
-**Les trois valeurs sont conservées, pas supprimées.** Deux suppressions
-précédentes faites au jugé — les 300 Masses marquées, la cadence Gorseval — se
-sont révélées **fausses**. L'audit relève désormais le double comptage à chaque
-exécution, ce qui est plus sûr qu'un arbitrage à l'aveugle.
+`Gift of Arid Mastery = 100 Encens + 1 Éclat de pierre de sang + **1** Gift of
+Crystalline Magic + **1** Gift of Ephemeral Magic`, et Vision en demande **un
+seul**.
 
-**Funerary Incense** : l'arbre montre **250** dans le Gift of Desert Mastery de
-Coalescence, le fichier en déclare **300**. Même traitement.
+J'avais écrit **3 de chaque**, déduits du fait que cinq des six monnaies LW4
+portaient 300 et que chaque gift en demande 100. **Déduction à partir d'un
+nombre non vérifié** — le 300 était lui-même faux.
 
-Ce qui trancherait : la fiche wiki de **Coalescence** ou de **Gift of Desert
-Mastery**, section *Recipes*.
+Vision passe donc de **300 à 100** sur chacune des six monnaies. Facteur 3 sur
+six lignes, introduit par moi en construisant une structure autour d'un chiffre
+que je n'avais pas cherché à confirmer.
+
+### Ce qui reste ouvert
+
+`ball_dark_energy` : **Aurora et Vision à 50 chacun**, quand leur chaîne n'en
+demande qu'**une** via le Cube. Même forme que le 100 de Coalescence, qui s'est
+révélé faux — mais pas de source sur ces deux-là, donc conservé et signalé.
 
 ---
 
