@@ -1024,7 +1024,8 @@
   "changelog_v138": "Ligne des os rechiffree sur le tableau « Dropped by » complet : 56 Risen sur 120 creatures, puis gelees, geants, araignees, elementaires et trolls. Les Detroits de la Devastation (19 sources) manquaient a la liste precedente, qui ne citait que le Bond de Malchor et le Rivage maudit. Spirit Thread : identifiant 77372 pose, mais sa description — « energie liberee par la mort d'un chak gerent » — contredit la cadence « 1 par semaine sur Gorseval » que j'avais ecrite sans source ; elle passe en non verifiee. Ancient Cipher : l'identifiant 81722 renvoie un 404, il reste donc vide.",
   "changelog_v139": "Ancient Cipher : apiId 81722 pose. Le 404 annonce en v138 etait un artefact de l'outil de recuperation, qui renvoyait une reponse en cache pour une autre URL — pas une reponse de l'API. Le code de discussion de la fiche, [&AgE6PwEA], decode en 81722 : type 2 (objet), quantite 1, identifiant 81722 en petit-boutiste. La capture confirme par ailleurs le modele deja en place — 2 coffres par personnage et par jour, drop aleatoire — et ajoute l'appartenance a la collection Siren's Landing Master.",
   "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet.",
-  "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300."
+  "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300.",
+  "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution."
  },
  "meta_events": {
   "vb": {
@@ -2322,7 +2323,9 @@
     "obsidian__per_piece": 1,
     "aurora": 50,
     "vision": 50,
-    "coalescence": 100
+    "coalescence": 100,
+    "cube_stabilized_dark_energy": 1,
+    "gift_of_compassion": 6
    },
    "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices).",
    "kind": "acquire",
@@ -2333,9 +2336,12 @@
     "verified": true
    },
    "qty_note": {
-    "fr": "⚠ Divergence à arbitrer : l'arbre de recette de Coalescence montre 6 Boules d'énergie sombre dans le Gift of Compassion, quand qty['coalescence'] en déclare 100. Un facteur ~17. Le 100 recouvre peut-être un autre poste, ou il est faux. Non tranché.",
-    "en": "⚠ Divergence to arbitrate: Coalescence's recipe tree shows 6 Balls of Dark Energy in the Gift of Compassion, while qty['coalescence'] declares 100. A factor of ~17. The 100 may cover another line, or it may be wrong. Unresolved."
-   }
+    "fr": "⚠ Trois totaux à plat contredits par la chaîne, à arbitrer. Aurora et Vision : leur Gift of Sentience / Prescience passe par 1 Gift of the Mists → 1 Cube → 1 BOULE, quand qty en déclare 50 chacun. Coalescence : le Gift of Compassion en demande 6, quand qty en déclare 100. Les valeurs à plat sont conservées en attendant vérification — deux suppressions précédentes faites au jugé (Masse marquée, cadence Gorseval) se sont révélées fausses.",
+    "en": "⚠ Three flat totals contradicted by the chain, to arbitrate. Aurora and Vision: their Gift of Sentience / Prescience goes through 1 Gift of the Mists → 1 Cube → 1 BALL, while qty declares 50 each. Coalescence: the Gift of Compassion needs 6, while qty declares 100. The flat values are kept pending verification — two previous judgement-call deletions (Branded Mass, the Gorseval cadence) turned out to be wrong."
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Ball_of_Dark_Energy — sections « Currency for » et « Recipes » (capture Antoine 22/08/2026)"
   },
   "stabilizing_matrix": {
    "name": "Stabilizing Matrix",
@@ -2344,7 +2350,8 @@
     "cube_stabilized_dark_energy"
    ],
    "qty": {
-    "obsidian__per_piece": 75
+    "obsidian__per_piece": 75,
+    "cube_stabilized_dark_energy": 75
    },
    "farmable": true,
    "sources": [
@@ -9076,20 +9083,28 @@
    "name": "Cube of Stabilized Dark Energy",
    "apiId": 73137,
    "needed_for": [
-    "gift_of_expertise"
+    "gift_of_expertise",
+    "gift_of_the_mists"
    ],
    "qty": {
-    "obsidian__per_piece": 1
+    "obsidian__per_piece": 1,
+    "gift_of_the_mists": 1
    },
    "farmable": true,
-   "recipe": "Craft 500 (toutes disciplines) : 1× Ball of Dark Energy + 75× Stabilizing Matrix",
+   "recipe": {
+    "fr": "Artisanat 500 : 1 Boule d'énergie sombre + 75 Matrices stabilisatrices. Achetable aussi chez Lyhr contre 1 Boule + 10 ectoplasmes + 75 matrices.",
+    "en": "Crafting 500: 1 Ball of Dark Energy + 75 Stabilizing Matrices. Also buyable from Lyhr for 1 Ball + 10 ectoplasm + 75 matrices."
+   },
    "sources": [
     {
      "type": "craft_500",
      "tip": "1 Ball of Dark Energy (salvage ascended) + 75 Stabilizing Matrices (TP/fractales)."
     }
    ],
-   "kind": "craftable"
+   "kind": "craftable",
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "wiki:Ball_of_Dark_Energy — sections « Currency for » et « Recipes » (capture Antoine 22/08/2026)"
   },
   "gift_of_stormy_skies": {
    "name": "Gift of Stormy Skies",

@@ -159,18 +159,34 @@ compte que les monnaies.
 
 ---
 
-## 3 ter. Deux divergences Coalescence à arbitrer
+## 3 ter. Ball of Dark Energy et Funerary Incense : à arbitrer
 
-L'arbre de recette contredit le fichier sur deux lignes :
+**Ball of Dark Energy — la chaîne est maintenant modélisée**, d'après la fiche
+wiki : `Cube of Stabilized Dark Energy = 1 boule + 75 matrices`, et
+`Gift of Compassion = 1 Gift of Desert Mastery + 6 boules + 150 LI + 1 Gift of
+Complex Emotions`.
 
-| poste | arbre | fichier | écart |
+L'arithmétique contredit les trois totaux à plat :
+
+| légendaire | par la chaîne | déclaré à plat | écart |
 |---|---|---|---|
-| Ball of Dark Energy | **6** | 100 | ×17 |
-| Funerary Incense | **250** | 300 | ×1,2 |
+| Aurora | **1** | 50 | ×50 |
+| Vision | **1** | 50 | ×50 |
+| Coalescence | **6** | 100 | ×17 |
 
-Non tranchées : le 100 recouvre peut-être un autre poste de Coalescence que le
-Gift of Compassion. Vu que trois arbitrages précédents ont donné raison à `qty`
-et un à l'arbre, aucun réflexe n'est fiable ici.
+Aurora et Vision passent par 1 Gift of Sentience/Prescience → 1 Gift of the
+Mists → 1 Cube → **1 boule**. Le chemin est complet et vérifié à chaque maillon.
+
+**Les trois valeurs sont conservées, pas supprimées.** Deux suppressions
+précédentes faites au jugé — les 300 Masses marquées, la cadence Gorseval — se
+sont révélées **fausses**. L'audit relève désormais le double comptage à chaque
+exécution, ce qui est plus sûr qu'un arbitrage à l'aveugle.
+
+**Funerary Incense** : l'arbre montre **250** dans le Gift of Desert Mastery de
+Coalescence, le fichier en déclare **300**. Même traitement.
+
+Ce qui trancherait : la fiche wiki de **Coalescence** ou de **Gift of Desert
+Mastery**, section *Recipes*.
 
 ---
 
