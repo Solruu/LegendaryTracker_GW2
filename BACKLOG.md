@@ -183,11 +183,12 @@ Vision passe donc de **300 à 100** sur chacune des six monnaies. Facteur 3 sur
 six lignes, introduit par moi en construisant une structure autour d'un chiffre
 que je n'avais pas cherché à confirmer.
 
-### Ce qui reste ouvert
+### Ce qui reste ouvert — ✅ **plus rien, résolu le 22/08/2026**
 
-`ball_dark_energy` : **Aurora et Vision à 50 chacun**, quand leur chaîne n'en
-demande qu'**une** via le Cube. Même forme que le 100 de Coalescence, qui s'est
-révélé faux — mais pas de source sur ces deux-là, donc conservé et signalé.
+`ball_dark_energy` : les **50 d'Aurora et Vision sont supprimés**. L'arbre de
+recette d'Aurora est explicite — Gift of Sentience → 1 Gift of the Mists →
+1 Cube of Stabilized Dark Energy → **1 boule**. Vision suit le même chemin par
+son Gift of Prescience. Aucune recette ne justifiait 50.
 
 ---
 

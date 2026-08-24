@@ -196,11 +196,15 @@ def check_missing_qty(data, errors, warnings):
                     "aucun composant ne la porte, elle est donc hors du grand total"
                 )
                 continue
-            qty = comps[cid].get("qty")
-            if not isinstance(qty, dict) or legid not in qty:
+            # Un composant peut atteindre le legendaire PAR LA CHAINE plutot
+            # qu'en direct : les six monnaies LW3 d'Aurora passent par le Gift
+            # of Bloodstone Magic et le Gift of Dragon Magic. La regle datait
+            # d'un temps ou tout etait a plat ; exiger une cle directe
+            # signalerait comme invisible ce que la cascade voit tres bien.
+            if not _atteint(cid, legid, comps):
                 warnings.append(
-                    f"craft_components/{cid} : declare pour '{legid}' cote JSX "
-                    "mais sans qty pour ce legendaire — invisible du grand total"
+                    f"craft_components/{cid} : declare pour '{legid}' cote JSX, et ni son qty "
+                    "ni aucune chaine ne le relie a ce legendaire — invisible du grand total"
                 )
 
 
@@ -263,6 +267,27 @@ def check_unrendered_fields(data, errors, warnings):
                 f"champ editorial jamais rendu : '{key}' ({len(paths)} occurrence(s), "
                 f"ex. {paths[0][:70]}) — ecrit dans les sources, absent du JSX"
             )
+
+
+def _atteint(cid, legid, comps, profondeur=0):
+    """Le composant atteint-il ce legendaire, en direct ou par la cascade ?
+
+    On remonte de parent en parent : si un maillon de la chaine porte le
+    legendaire dans son qty, le composant est bien compte. La profondeur est
+    bornee pour qu'une reference circulaire ne boucle pas.
+    """
+    if profondeur > 8:
+        return False
+    qty = (comps.get(cid) or {}).get("qty")
+    if not isinstance(qty, dict):
+        return False
+    for cle in qty:
+        base = cle.split("__")[0]
+        if base == legid:
+            return True
+        if cle in comps and _atteint(cle, legid, comps, profondeur + 1):
+            return True
+    return False
 
 
 def check_qty_vs_jsx(data, errors, warnings):

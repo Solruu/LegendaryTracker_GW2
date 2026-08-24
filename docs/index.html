@@ -1787,7 +1787,8 @@ const SOURCES_DB = {
     "changelog_v140": "Les 8 lignes de trophees sont chiffrees sur les tableaux « Dropped by » ENTIERS, et non plus sur le haut des captures : 32 sources mises a jour avec les frequences reelles par famille et par carte. Deux enseignements que les vues partielles cachaient — les totems sont la ligne la plus concentree des huit, la moitie de ses 56 creatures vivant aux Marches de Bjora, et les ecailles sont la plus dispersee, sans aucune carte au-dessus de 14 sources. Spirit Thread : la cadence Gorseval, degradee a tort en v138, est RETABLIE. La fiche d'Envoy I le dit sans ambiguite — le fil vient de Gorseval, le chak gerent sert a l'impregner, et c'est cette impregnation seule que decrit le texte de l'objet.",
     "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300.",
     "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution.",
-    "changelog_v143": "⚠ Correction d'une erreur que j'ai introduite en v131. J'y avais deduit « Vision demande 3 gifts de magie » du fait que cinq des six monnaies LW4 portaient 300, chaque gift en demandant 100. C'etait une deduction a partir d'un nombre non verifie. La fiche donne la recette reelle : Gift of Arid Mastery = 100 Encens funeraires + 1 Eclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic, et Vision en demande UN. Donc 100 de chaque monnaie, pas 300 — un facteur 3 sur six monnaies. Les deux divergences de Coalescence sont par ailleurs tranchees, deux pages concordantes a l'appui : 250 Encens funeraires et non 300, 6 Boules d'energie sombre et non 100, toutes deux desormais portees par la chaine via le Gift of Desert Mastery et le Gift of Compassion."
+    "changelog_v143": "⚠ Correction d'une erreur que j'ai introduite en v131. J'y avais deduit « Vision demande 3 gifts de magie » du fait que cinq des six monnaies LW4 portaient 300, chaque gift en demandant 100. C'etait une deduction a partir d'un nombre non verifie. La fiche donne la recette reelle : Gift of Arid Mastery = 100 Encens funeraires + 1 Eclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic, et Vision en demande UN. Donc 100 de chaque monnaie, pas 300 — un facteur 3 sur six monnaies. Les deux divergences de Coalescence sont par ailleurs tranchees, deux pages concordantes a l'appui : 250 Encens funeraires et non 300, 6 Boules d'energie sombre et non 100, toutes deux desormais portees par la chaine via le Gift of Desert Mastery et le Gift of Compassion.",
+    "changelog_v144": "Aurora modelisee de bout en bout depuis son arbre de recette. Spark of Sentience = 21 Electrums, un Lingot d'electrum de Xunlai chacun : a 1 lingot par jour, 21 jours incompressibles, et c'est le vrai timegate d'Aurora. Gift of Draconic Mastery = 1 Lingot cristallin + 1 Eclat de pierre de sang + 1 Gift of Bloodstone Magic (rubis, jade, perles) + 1 Gift of Dragon Magic (bois petrifie, baies de houx, orchidees) : les six monnaies LW3 passent de totaux a plat a une chaine. Et le point que la question d'Antoine avait souleve : les 50 Boules d'energie sombre d'Aurora et de Vision sont SUPPRIMEES. L'arbre montre Gift of the Mists → 1 Cube → 1 boule. Aucune recette ne justifiait 50."
   },
   "meta_events": {
     "vb": {
@@ -3083,8 +3084,6 @@ const SOURCES_DB = {
       "qty": {
         "perfected_envoy__per_piece": 1,
         "obsidian__per_piece": 1,
-        "aurora": 50,
-        "vision": 50,
         "cube_stabilized_dark_energy": 1,
         "gift_of_compassion": 6
       },
@@ -3097,8 +3096,8 @@ const SOURCES_DB = {
         "verified": true
       },
       "qty_note": {
-        "fr": "Le total à plat de 100 pour Coalescence est supprimé : la fiche donne 6, dans le Gift of Compassion, et la chaîne les porte. ⚠ Restent Aurora et Vision à 50 chacun, quand leur chaîne n'en demande qu'UNE via le Cube. Non tranché faute de source sur ces deux-là.",
-        "en": "The flat 100 for Coalescence is removed: the wiki gives 6, inside the Gift of Compassion, and the chain carries them. ⚠ Aurora and Vision remain at 50 each, while their chain needs only ONE via the Cube. Unresolved, no source on those two."
+        "fr": "Les totaux à plat de 50 pour Aurora et Vision sont supprimés. L'arbre de recette est explicite : Gift of Sentience / Prescience → 1 Gift of the Mists → 1 Cube of Stabilized Dark Energy → 1 BOULE. Aucune recette ne justifiait 50. Vérifié sur les deux arbres.",
+        "en": "The flat 50 totals for Aurora and Vision are removed. The recipe tree is explicit: Gift of Sentience / Prescience → 1 Gift of the Mists → 1 Cube of Stabilized Dark Energy → 1 BALL. No recipe justified 50. Verified on both trees."
       },
       "verified": true,
       "checked": "2026-08-22",
@@ -3327,7 +3326,8 @@ const SOURCES_DB = {
         "klobjarne_geirr": 1,
         "selachimorpha": 1,
         "gift_of_arid_mastery": 1,
-        "gift_of_desert_mastery": 1
+        "gift_of_desert_mastery": 1,
+        "gift_of_draconic_mastery": 1
       },
       "kind": "acquire"
     },
@@ -4129,7 +4129,7 @@ const SOURCES_DB = {
         "gift_of_bloodstone_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_bloodstone_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -4197,7 +4197,7 @@ const SOURCES_DB = {
         "gift_of_bloodstone_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_bloodstone_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -4275,7 +4275,7 @@ const SOURCES_DB = {
         "gift_of_bloodstone_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_bloodstone_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -4435,7 +4435,7 @@ const SOURCES_DB = {
         "gift_of_dragon_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_dragon_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -4491,7 +4491,7 @@ const SOURCES_DB = {
         "gift_of_dragon_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_dragon_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -4552,7 +4552,7 @@ const SOURCES_DB = {
         "gift_of_dragon_magic"
       ],
       "qty": {
-        "aurora": 250
+        "gift_of_dragon_magic": 250
       },
       "farmable": true,
       "sources": [
@@ -9561,10 +9561,12 @@ const SOURCES_DB = {
       "name": "Xunlai Electrum Ingot",
       "apiId": 46743,
       "needed_for": [
-        "memory_essence_encapsulator"
+        "memory_essence_encapsulator",
+        "spark_of_sentience"
       ],
       "qty": {
-        "memory_essence_encapsulator": 3
+        "memory_essence_encapsulator": 3,
+        "spark_of_sentience": 21
       },
       "farmable": true,
       "craft": {
@@ -10275,13 +10277,22 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "aurora": 1
+      },
       "apiId": 81729,
       "note": {
-        "fr": "Récompense unique de la collection Aurora II: Empowering — pas une ressource récurrente. Le vrai verrou quotidien est le Lump of Mithrillium nécessaire aux 21 Xunlai Electrum Ingots.",
-        "en": "One-off reward from the Aurora II: Empowering collection — not a recurring resource. The real daily gate is the Lump of Mithrillium needed for the 21 Xunlai Electrum Ingots."
+        "fr": "⏳ 21 lingots, et le lingot est plafonné à 1 par jour : 21 jours incompressibles. C'est le vrai timegate d'Aurora, et il court en parallèle de tout le reste — à lancer en premier.",
+        "en": "⏳ 21 ingots, and the ingot is capped at 1 per day: 21 days that cannot be shortened. This is Aurora's real timegate, and it runs in parallel with everything else — start it first."
       },
-      "cadence_ref": "xunlai_electrum_ingot"
+      "cadence_ref": "xunlai_electrum_ingot",
+      "recipe": {
+        "fr": "21 Electrums (Hidden, Plundered, Sonic, Stony, Seared, Graven, Volcanic, Envenomed, Scavenged, Blighted, Atmospheric, Luminous, Poisoned, Goopy, Covert, Bloodstone-Infused, Pyroclastic, Frosted, Misty, Sulfuric, Scorched), chacun à partir d'1 Lingot d'électrum de Xunlai.",
+        "en": "21 Electrums (Hidden, Plundered, Sonic, Stony, Seared, Graven, Volcanic, Envenomed, Scavenged, Blighted, Atmospheric, Luminous, Poisoned, Goopy, Covert, Bloodstone-Infused, Pyroclastic, Frosted, Misty, Sulfuric, Scorched), each from 1 Xunlai Electrum Ingot."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
     },
     "gift_of_draconic_mastery": {
       "name": "Gift of Draconic Mastery",
@@ -10299,7 +10310,16 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {}
+      "qty": {
+        "aurora": 1
+      },
+      "recipe": {
+        "fr": "MF : 1 Lingot cristallin + 1 Éclat de pierre de sang (200 Éclats spirituels) + 1 Gift of Bloodstone Magic + 1 Gift of Dragon Magic.",
+        "en": "MF: 1 Crystalline Ingot + 1 Bloodstone Shard (200 Spirit Shards) + 1 Gift of Bloodstone Magic + 1 Gift of Dragon Magic."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
     },
     "hateful_sworl": {
       "name": "Hateful Sworl",
@@ -13418,6 +13438,68 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+    },
+    "gift_of_bloodstone_magic": {
+      "name": "Gift of Bloodstone Magic",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_draconic_mastery": 1
+      },
+      "needed_for": [
+        "gift_of_draconic_mastery"
+      ],
+      "recipe": {
+        "fr": "Vendeur : 250 Rubis de sang + 250 Éclats de jade + 250 Perles orriennes.",
+        "en": "Vendor: 250 Blood Rubies + 250 Jade Shards + 250 Orrian Pearls."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
+        }
+      ]
+    },
+    "gift_of_dragon_magic": {
+      "name": "Gift of Dragon Magic",
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {
+        "gift_of_draconic_mastery": 1
+      },
+      "needed_for": [
+        "gift_of_draconic_mastery"
+      ],
+      "recipe": {
+        "fr": "Vendeur : 250 Bois pétrifié + 250 Baies de houx fraîches + 250 Fleurs d'orchidée de feu (elles-mêmes 1 250 Graines d'orchidée de feu).",
+        "en": "Vendor: 250 Petrified Wood + 250 Fresh Winterberries + 250 Fire Orchid Blossoms (themselves 1,250 Fire Orchid Seeds)."
+      },
+      "verified": true,
+      "checked": "2026-08-22",
+      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)",
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Se fabrique, ne se trouve pas.",
+            "en": "Crafted, not found."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
+        }
+      ]
     }
   },
   "enchaînements_recommandés": {
