@@ -1801,7 +1801,12 @@ const SOURCES_DB = {
       "fr": "Les matières premières génériques de l'artisanat élevé — minerai de mithril, argent, or, orichalque, planches, cuir, soie, essences de chance — ne sont PAS modélisées. Les arbres de Vision et d'Ad Infinitum en listent des milliers, mais elles s'achètent au Comptoir sans y penser et ne portent aucun timegate. Les modéliser doublerait le fichier sans rien apporter à la question que le tracker pose : que puis-je faire avancer aujourd'hui ?",
       "en": "Generic high-tier crafting raw materials — mithril, silver, gold, orichalcum ore, planks, leather, silk, essences of luck — are NOT modelled. Vision's and Ad Infinitum's trees list them in the thousands, but they are bought on the Trading Post without a thought and carry no timegate. Modelling them would double the file without serving the question the tracker asks: what can I move forward today?"
     },
-    "changelog_v149": "Coalescence, Vision et Ad Infinitum alignes sur leurs arbres. Correction de methode : GW2Efficiency affiche des quantites ABSOLUES a chaque nœud, deja multipliees — les cumuler en cascade produisait des nombres a neuf chiffres. On somme les occurrences, on ne multiplie pas. 12 exigences posees et 10 corrigees. Les matieres premieres generiques de l'artisanat eleve sont volontairement ecartees, et la regle est ecrite dans _meta.raw_materials_scope."
+    "changelog_v149": "Coalescence, Vision et Ad Infinitum alignes sur leurs arbres. Correction de methode : GW2Efficiency affiche des quantites ABSOLUES a chaque nœud, deja multipliees — les cumuler en cascade produisait des nombres a neuf chiffres. On somme les occurrences, on ne multiplie pas. 12 exigences posees et 10 corrigees. Les matieres premieres generiques de l'artisanat eleve sont volontairement ecartees, et la regle est ecrite dans _meta.raw_materials_scope.",
+    "flat_vs_chain_rule": {
+      "fr": "⚠ Dans computeGrandTotal, un total à plat s'AJOUTE à ce que la chaîne apporte, il ne le remplace pas. Poser la valeur d'un arbre en total à plat alors qu'un maillon en porte déjà une partie compte donc deux fois. Avant d'écrire un total à plat, retrancher ce que la chaîne fournit déjà — et vérifier avec l'algorithme réel, pas avec un maximum.",
+      "en": "⚠ In computeGrandTotal, a flat total ADDS to what the chain contributes, it does not replace it. Writing a tree figure as a flat total while a link already carries part of it counts twice. Before writing a flat total, subtract what the chain already provides — and verify with the real algorithm, not with a maximum."
+    },
+    "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule."
   },
   "meta_events": {
     "vb": {
@@ -5198,7 +5203,7 @@ const SOURCES_DB = {
       ],
       "qty": {
         "warcry": 2450,
-        "conflux": 1850,
+        "conflux": 1500,
         "essence_of_annihilation": 350
       },
       "farmable": true,
@@ -5295,7 +5300,7 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
       "qty_note": {
         "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
         "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
@@ -10355,7 +10360,8 @@ const SOURCES_DB = {
       "name": "Gift of Warfare",
       "kind": "intermediate",
       "needed_for": [
-        "war_commendation"
+        "war_commendation",
+        "warbringer"
       ],
       "farmable": true,
       "sources": [
@@ -10368,7 +10374,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "war_commendation": 1
+        "war_commendation": 1,
+        "warbringer": 1
       },
       "recipe": {
         "fr": "MF : 1 de chacune des 4 Essences mystiques — Strategy, Animosity, Carnage, Annihilation.",
@@ -10678,8 +10685,8 @@ const SOURCES_DB = {
       "apiId": 46733,
       "qty": {
         "dragonite_ingot": 100,
-        "conflux": 1250,
-        "warbringer": 1250,
+        "conflux": 1000,
+        "warbringer": 1000,
         "mystic_essence_of_carnage": 250,
         "ad_infinitum": 1500
       },
@@ -10687,7 +10694,7 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
       "sources": [
         {
           "type": "activity_reward",
@@ -10719,8 +10726,8 @@ const SOURCES_DB = {
       "apiId": 46735,
       "qty": {
         "empyreal_star": 100,
-        "conflux": 1250,
-        "warbringer": 1250,
+        "conflux": 1000,
+        "warbringer": 1000,
         "mystic_essence_of_animosity": 250,
         "ad_infinitum": 1500
       },
@@ -10728,7 +10735,7 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
       "sources": [
         {
           "type": "activity_reward",
@@ -10760,8 +10767,8 @@ const SOURCES_DB = {
       "apiId": 46731,
       "qty": {
         "bloodstone_brick": 100,
-        "conflux": 1250,
-        "warbringer": 1250,
+        "conflux": 1000,
+        "warbringer": 1000,
         "mystic_essence_of_strategy": 250,
         "ad_infinitum": 1500
       },
@@ -10769,7 +10776,7 @@ const SOURCES_DB = {
       "farmable": true,
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
       "sources": [
         {
           "type": "activity_reward",
@@ -11982,7 +11989,6 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_blood": 250,
-        "warbringer": 50,
         "mystic_essence_of_strategy": 50
       },
       "needed_for": [
@@ -12036,7 +12042,7 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
     },
     "vial_of_thick_blood": {
       "name": "Vial of Thick Blood",
@@ -12520,7 +12526,6 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_claws": 250,
-        "warbringer": 50,
         "mystic_essence_of_annihilation": 50
       },
       "needed_for": [
@@ -12574,7 +12579,7 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
     },
     "sharp_claw": {
       "name": "Sharp Claw",
@@ -12694,7 +12699,6 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_scales": 250,
-        "warbringer": 50,
         "mystic_essence_of_carnage": 50
       },
       "needed_for": [
@@ -12748,7 +12752,7 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
     },
     "smooth_scale": {
       "name": "Smooth Scale",
@@ -12868,7 +12872,6 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_bones": 250,
-        "warbringer": 50,
         "mystic_essence_of_animosity": 50
       },
       "needed_for": [
@@ -12922,7 +12925,7 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
     },
     "heavy_bone": {
       "name": "Heavy Bone",
