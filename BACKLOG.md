@@ -192,6 +192,33 @@ son Gift of Prescience. Aucune recette ne justifiait 50.
 
 ---
 
+## 3 quater. Conflux et Warbringer : trois écarts non tranchés
+
+Les arbres complets ont posé 16 exigences et corrigé 9. Trois restent ouvertes.
+
+**Le JSX diverge de l'arbre, dans les deux sens** — ce n'est donc pas un simple
+écart « exigence directe contre total développé » :
+
+| poste | arbre | JSX |
+|---|---|---|
+| Badge of Honor (Conflux) | 1 500 | 750 |
+| Badge of Honor (Warbringer) | 1 000 | **1 250** |
+| Testimony of Castoran Heroics (Conflux) | 750 | 250 |
+
+Déclarés en `qty_conflict`, datés et motivés : l'audit les passe en
+avertissement au lieu de bloquer, et ils restent visibles à chaque exécution.
+
+**Deux écarts que la chaîne porte déjà**, signalés sans être forcés — y ajouter
+un total à plat compterait deux fois :
+
+- **350 tickets d'escarmouche** : l'arbre de Warbringer en totalise 2 800, la
+  chaîne n'en porte que 2 450 par `warcry`. Un poste non modélisé.
+- **+20 trophées T6 par ligne**, et seulement sur sang, os, écailles et griffes
+  (220 vs 200 pour Conflux, 270 vs 250 pour Warbringer). Un maillon commun,
+  probablement la Mystic Essence of Strategy.
+
+---
+
 ## 4. Portes de maîtrise : les noms sont-ils bons ?
 
 `collection_unlocks` pose des portes `mastery` nommées **« Rift Repair »**

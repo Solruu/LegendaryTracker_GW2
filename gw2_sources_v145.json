@@ -769,15 +769,15 @@
    },
    "conflux": {
     "clovers": 77,
-    "coins": 250,
-    "ectos": 250,
-    "obsidian": 250
+    "coins": 499,
+    "ectos": 249,
+    "obsidian": 309
    },
    "warbringer": {
     "clovers": 77,
-    "coins": 250,
-    "ectos": 250,
-    "obsidian": 250
+    "coins": 249,
+    "ectos": 499,
+    "obsidian": 309
    },
    "coalescence": {
     "clovers": 77,
@@ -1027,7 +1027,8 @@
   "changelog_v141": "Les six gifts specifiques manquants sont crees, plus deux maillons partages decouverts au passage : Gift of Energy (250 de chacun des 4 paliers de poussiere, partage par Aurora et Vision) et Gift of the Mists (partage par Aurora, Vision ET Conflux, et exigeant du PvP comme du McM). Trouvaille majeure : le precurseur Warcry coute 2 450 Tickets d'escarmouche McM, soit 6 semaines a 455 par semaine, avant meme le reste de Warbringer — le plus lourd timegate McM du fichier, et il n'etait modelise nulle part. Deux divergences signalees sans etre tranchees : l'arbre montre 6 Boules d'energie sombre la ou le fichier en declare 100, et 250 Encens funeraires la ou il en declare 300.",
   "changelog_v142": "Ball of Dark Energy : la chaine est modelisee d'apres la fiche wiki. Cube of Stabilized Dark Energy = 1 boule + 75 matrices, et il alimente le Gift of the Mists ; Gift of Compassion = 6 boules. La cascade donne donc 1 boule a Aurora et Vision, et 6 a Coalescence — quand les totaux a plat en declarent 50, 50 et 100. Les trois sont CONSERVES et signales plutot que supprimes : deux suppressions precedentes faites au juge se sont revelees fausses, et l'audit relevera desormais le double comptage a chaque execution.",
   "changelog_v143": "⚠ Correction d'une erreur que j'ai introduite en v131. J'y avais deduit « Vision demande 3 gifts de magie » du fait que cinq des six monnaies LW4 portaient 300, chaque gift en demandant 100. C'etait une deduction a partir d'un nombre non verifie. La fiche donne la recette reelle : Gift of Arid Mastery = 100 Encens funeraires + 1 Eclat de pierre de sang + 1 Gift of Crystalline Magic + 1 Gift of Ephemeral Magic, et Vision en demande UN. Donc 100 de chaque monnaie, pas 300 — un facteur 3 sur six monnaies. Les deux divergences de Coalescence sont par ailleurs tranchees, deux pages concordantes a l'appui : 250 Encens funeraires et non 300, 6 Boules d'energie sombre et non 100, toutes deux desormais portees par la chaine via le Gift of Desert Mastery et le Gift of Compassion.",
-  "changelog_v144": "Aurora modelisee de bout en bout depuis son arbre de recette. Spark of Sentience = 21 Electrums, un Lingot d'electrum de Xunlai chacun : a 1 lingot par jour, 21 jours incompressibles, et c'est le vrai timegate d'Aurora. Gift of Draconic Mastery = 1 Lingot cristallin + 1 Eclat de pierre de sang + 1 Gift of Bloodstone Magic (rubis, jade, perles) + 1 Gift of Dragon Magic (bois petrifie, baies de houx, orchidees) : les six monnaies LW3 passent de totaux a plat a une chaine. Et le point que la question d'Antoine avait souleve : les 50 Boules d'energie sombre d'Aurora et de Vision sont SUPPRIMEES. L'arbre montre Gift of the Mists → 1 Cube → 1 boule. Aucune recette ne justifiait 50."
+  "changelog_v144": "Aurora modelisee de bout en bout depuis son arbre de recette. Spark of Sentience = 21 Electrums, un Lingot d'electrum de Xunlai chacun : a 1 lingot par jour, 21 jours incompressibles, et c'est le vrai timegate d'Aurora. Gift of Draconic Mastery = 1 Lingot cristallin + 1 Eclat de pierre de sang + 1 Gift of Bloodstone Magic (rubis, jade, perles) + 1 Gift of Dragon Magic (bois petrifie, baies de houx, orchidees) : les six monnaies LW3 passent de totaux a plat a une chaine. Et le point que la question d'Antoine avait souleve : les 50 Boules d'energie sombre d'Aurora et de Vision sont SUPPRIMEES. L'arbre montre Gift of the Mists → 1 Cube → 1 boule. Aucune recette ne justifiait 50.",
+  "changelog_v145": "Conflux et Warbringer alignes sur leurs arbres de recette complets, extraits des exports HTML GW2Efficiency : 16 exigences posees et 9 corrigees. Les postes deja portes par une chaine modelisee ne sont pas touches, pour ne pas les compter deux fois. Trouvailles : Conflux demande 1 850 Tickets d'escarmouche McM, qui n'apparaissaient nulle part ; Warbringer en demande 2 800 et non 2 450, le precurseur Warcry n'en couvrant que la moitie. Les deux consomment en outre 1 250 Poussiere de pierre de sang, 1 250 Fragments empyreens et 1 250 Minerai de dragonite, tous absents du fichier. ⚠ Mon soupcon sur les 1 750 Memoires de bataille de Conflux etait FAUX : l'arbre les confirme."
  },
  "meta_events": {
   "vb": {
@@ -2287,6 +2288,17 @@
    "sources": [
     {
      "type": "vendor",
+     "tip": {
+      "fr": "Achetees 1 po piece chez les marchands de la Forge mystique. Pas de source gratuite : c'est un poste d'or pur, a budgeter comme tel.",
+      "en": "Bought for 1 gold each from Mystic Forge merchants. No free source: a pure gold line, to be budgeted as such."
+     },
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    },
+    {
+     "type": "vendor",
      "npc": "Rojan the Penitent",
      "map": "Frostgorge Sound",
      "wpCode": "[&BNABAAA=]",
@@ -2297,8 +2309,13 @@
      "cost_silver": 2
     }
    ],
-   "qty": {},
-   "kind": "acquire"
+   "qty": {
+    "conflux": 100
+   },
+   "kind": "acquire",
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "ball_dark_energy": {
    "name": "Ball of Dark Energy",
@@ -4327,7 +4344,8 @@
     "warcry"
    ],
    "qty": {
-    "warcry": 2450
+    "warcry": 2450,
+    "conflux": 1850
    },
    "farmable": true,
    "timegate": true,
@@ -4420,6 +4438,13 @@
       "ref": "wiki:WvW_Skirmish_Claim_Ticket"
      }
     ]
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "qty_note": {
+    "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
+    "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
    }
   },
   "testimony_of_heroics": {
@@ -4450,8 +4475,8 @@
    "apiId": 15,
    "kind": "currency",
    "qty": {
-    "conflux": 750,
-    "warbringer": 1250
+    "conflux": 1500,
+    "warbringer": 1000
    },
    "farmable": true,
    "sources": [
@@ -4469,8 +4494,24 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "qty_conflict": {
+    "conflux": {
+     "jsx": 750,
+     "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
+     "checked": "2026-08-22",
+     "verified": false,
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    },
+    "warbringer": {
+     "jsx": 1250,
+     "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
+     "checked": "2026-08-22",
+     "verified": false,
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    }
+   }
   },
   "ascended_shard_of_glory": {
    "name": "Ascended Shard of Glory",
@@ -4504,9 +4545,22 @@
    "needed_for": [
     "mist_band_infused"
    ],
-   "qty": {},
+   "qty": {
+    "conflux": 250
+   },
    "farmable": true,
    "sources": [
+    {
+     "type": "merchant",
+     "tip": {
+      "fr": "Recompenses de PvP structure : coffres de rang, pistes de recompense et coffres de fin de match. Gratuit, mais lie au temps de jeu PvP.",
+      "en": "Structured PvP rewards: rank chests, reward tracks and end-of-match chests. Free, but tied to PvP playtime."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    },
     {
      "type": "pvp",
      "tip": "Drop en PvP (unranked et ranked). S'accumule passivement en jouant."
@@ -4527,7 +4581,10 @@
     "checked": "2026-08-13",
     "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
     "verified": true
-   }
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "legendary_insight": {
    "name": "Legendary Insight",
@@ -4877,8 +4934,8 @@
     "upgrades": 450,
     "vision": 250,
     "aurora": 250,
-    "conflux": 250,
-    "warbringer": 250,
+    "conflux": 309,
+    "warbringer": 309,
     "coalescence": 250
    },
    "farmable": true,
@@ -4964,8 +5021,8 @@
     "ref": "wiki:Obsidian_Shard#Acquisition"
    },
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "gift_of_exploration": {
    "name": "Gift of Exploration",
@@ -5263,9 +5320,23 @@
    "needed_for": [
     "gift_of_research"
    ],
-   "qty": {},
+   "qty": {
+    "conflux": 300,
+    "warbringer": 300
+   },
    "farmable": true,
    "sources": [
+    {
+     "type": "merchant",
+     "tip": {
+      "fr": "Fabriques par tous les artisans, ou achetes quelques piecettes aux marchands. Cout negligeable a cote du reste.",
+      "en": "Crafted by every discipline, or bought for coppers from merchants. Negligible cost next to the rest."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-22",
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    },
     {
      "type": "tp",
      "tip": {
@@ -5285,7 +5356,10 @@
     "checked": "2026-08-13",
     "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
     "verified": true
-   }
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "exotic_essence_of_luck": {
    "name": "Exotic Essence of Luck",
@@ -5497,8 +5571,8 @@
     "upgrades": 1050,
     "vision": 250,
     "aurora": 250,
-    "conflux": 250,
-    "warbringer": 250,
+    "conflux": 249,
+    "warbringer": 499,
     "coalescence": 250,
     "transcendence": 250,
     "eikasia": 80,
@@ -5508,7 +5582,7 @@
    "best": "salvage",
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Memory_Essence_Encapsulator (capture Antoine 22/08/2026)",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
    "qty_overlap_verified": [
     "vision"
    ],
@@ -6648,10 +6722,10 @@
     "ad_infinitum": 250,
     "stella_radians": 250,
     "coalescence": 250,
-    "warbringer": 250,
+    "warbringer": 249,
     "aurora": 250,
     "vision": 250,
-    "conflux": 250
+    "conflux": 499
    },
    "kind": "acquire",
    "best": "vendor",
@@ -6770,8 +6844,8 @@
     "checked": "2026-08-13",
     "ref": "wiki:Mystic_Coin#Acquisition"
    },
-   "checked": "2026-08-20",
-   "ref": "wiki:Conflux + wiki:Selachimorpha (captures Antoine 20/08/2026)",
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
    "verified": true
   },
   "mystic_runestone": {
@@ -7621,7 +7695,8 @@
     }
    ],
    "qty": {
-    "ad_infinitum": 240
+    "ad_infinitum": 240,
+    "conflux": 100
    },
    "kind": "acquire",
    "best": "fractals_daily",
@@ -7678,7 +7753,10 @@
      "checked": "2026-08-13",
      "ref": "wiki:Gift_of_Ascension (Sold by + Used in, capture Antoine 13/08/2026) + wiki:Ad_Infinitum#Full_material_list + couts vendeur cures dans les bitTips"
     }
-   }
+   },
+   "verified": true,
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "fractal_research_page": {
    "name": "Fractal Research Page",
@@ -9704,13 +9782,15 @@
    "name": "Dragonite Ore",
    "apiId": 46733,
    "qty": {
-    "dragonite_ingot": 100
+    "dragonite_ingot": 100,
+    "conflux": 1250,
+    "warbringer": 1250
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -9740,13 +9820,15 @@
    "name": "Empyreal Fragment",
    "apiId": 46735,
    "qty": {
-    "empyreal_star": 100
+    "empyreal_star": 100,
+    "conflux": 1250,
+    "warbringer": 1250
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -9776,13 +9858,15 @@
    "name": "Pile of Bloodstone Dust",
    "apiId": 46731,
    "qty": {
-    "bloodstone_brick": 100
+    "bloodstone_brick": 100,
+    "conflux": 1250,
+    "warbringer": 1250
    },
    "kind": "base",
    "farmable": true,
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
    "sources": [
     {
      "type": "activity_reward",
@@ -9960,7 +10044,7 @@
    "apiId": 82,
    "kind": "currency",
    "qty": {
-    "conflux": 250,
+    "conflux": 750,
     "warbringer": 500
    },
    "farmable": true,
@@ -9979,8 +10063,17 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "qty_conflict": {
+    "conflux": {
+     "jsx": 250,
+     "note": "l'arbre de recette complet donne cette valeur, le JSX en porte une autre, et l'ecart joue dans les deux sens selon le legendaire — non tranche, voir BACKLOG",
+     "checked": "2026-08-22",
+     "verified": false,
+     "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
+    }
+   }
   },
   "gaeting_crystal": {
    "name": "Gaeting Crystal",
@@ -10543,7 +10636,11 @@
     "gift_of_blood",
     "gift_of_magic"
    ],
-   "tier": "T6"
+   "tier": "T6",
+   "qty_note": {
+    "fr": "⚠ Les arbres de Conflux et Warbringer totalisent 20 trophées T6 de PLUS par ligne que la chaîne n'en porte — 220 contre 200 pour Conflux, 270 contre 250 pour Warbringer, et seulement sur le sang, les os, les écailles et les griffes. Un maillon commun non modélisé, probablement la Mystic Essence of Strategy. Signalé plutôt que forcé : y ajouter un total à plat compterait deux fois ce que la chaîne porte déjà.",
+    "en": "⚠ Conflux's and Warbringer's trees total 20 MORE T6 trophies per line than the chain carries — 220 against 200 for Conflux, 270 against 250 for Warbringer, and only on blood, bones, scales and claws. A shared unmodelled link, likely the Mystic Essence of Strategy. Flagged rather than forced: adding a flat total would double-count what the chain already carries."
+   }
   },
   "elaborate_totem": {
    "name": "Elaborate Totem",
@@ -10976,7 +11073,8 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_blood": 250
+    "gift_of_blood": 250,
+    "warbringer": 50
    },
    "needed_for": [
     "gift_of_blood"
@@ -11027,8 +11125,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "vial_of_thick_blood": {
    "name": "Vial of Thick Blood",
@@ -11511,7 +11609,8 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_claws": 250
+    "gift_of_claws": 250,
+    "warbringer": 50
    },
    "needed_for": [
     "gift_of_claws"
@@ -11562,8 +11661,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "sharp_claw": {
    "name": "Sharp Claw",
@@ -11682,7 +11781,8 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_scales": 250
+    "gift_of_scales": 250,
+    "warbringer": 50
    },
    "needed_for": [
     "gift_of_scales"
@@ -11733,8 +11833,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "smooth_scale": {
    "name": "Smooth Scale",
@@ -11853,7 +11953,8 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_bones": 250
+    "gift_of_bones": 250,
+    "warbringer": 50
    },
    "needed_for": [
     "gift_of_bones"
@@ -11904,8 +12005,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+   "checked": "2026-08-22",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
   },
   "heavy_bone": {
    "name": "Heavy Bone",
