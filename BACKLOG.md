@@ -281,6 +281,42 @@ vaut donc +1. Flask fait la conversion une fois pour toutes dans
 L'audit exige désormais que `track` et `tier` se posent **ensemble** — un palier
 sans piste ne se compare à rien.
 
+## 4 bis. Trente composants sans source documentée
+
+Les arbres des neuf derniers légendaires ont fait entrer **30 composants**
+absents du fichier : Ancient Coin (50 000 pour Orrax Manifested), les trois
+Essences de faille, les lodestones, les éclats de carte Janthir, les monnaies
+mursaat, Ursus Oblige, Tale of Adventure…
+
+Ils portent `verified: false` et une source marquée **« à documenter »** :
+**ils existent désormais dans le calcul, mais rien ne dit où les trouver.**
+L'audit les signale — un composant lourd sans piste gratuite laisse le joueur
+sans point de départ.
+
+Ce qu'il faut par composant : la carte ou l'activité, un éventuel plafond
+quotidien, et une voie gratuite s'il en existe une. Une capture de la section
+*Acquisition* du wiki par ligne suffirait.
+
+**Les plus urgents** — ce sont les volumes qui décident d'un chantier :
+
+| composant | pour | quantité |
+|---|---|---|
+| Ancient Coin | Orrax Manifested | **50 000** |
+| Ancient Coin | Klobjarne Geirr | 20 250 |
+| Fine Rift Essence | Orrax Manifested | 6 750 |
+| Ursus Oblige | Orrax Manifested | 1 250 |
+
+---
+
+## 4 ter. Six divergences JSX déclarées
+
+`memory_of_battle`/Strife Unending, `obsidian_shard`/Selachimorpha et
+Endless Summer, `mystic_clover`/Orrax, `mystic_coin`/Stella Radians,
+`ursus_oblige`/Orrax. L'arbre développe la chaîne complète, le JSX porte une
+exigence directe — déclarées en `qty_conflict`, visibles à chaque exécution.
+
+---
+
 ## 5. Répartition des gifts condensés — ✅ **RÉSOLU le 22/08/2026**
 
 Le total d'un set complet était juste (3 Might + 3 Magic), mais le coût d'une

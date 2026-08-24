@@ -1821,7 +1821,8 @@ const SOURCES_DB = {
     },
     "changelog_v150": "Double comptage retire. En posant les valeurs des arbres de Conflux et Warbringer en totaux a plat, j'ai ignore que la chaine des Essences mystiques en portait deja une partie : computeGrandTotal ADDITIONNE le plat et la chaine. Ma verification prenait un maximum et masquait le probleme. 11 totaux ajustes ou retires, la regle est ecrite dans _meta.flat_vs_chain_rule.",
     "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle.",
-    "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette."
+    "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette.",
+    "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture."
   },
   "meta_events": {
     "vb": {
@@ -3006,7 +3007,11 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_energy",
         "gift_of_dust",
-        "gift_of_magic"
+        "gift_of_magic",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "farmable": true,
       "sources": [
@@ -3056,7 +3061,11 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_dust": 100,
-        "gift_of_magic": 250
+        "gift_of_magic": 250,
+        "endless_summer": 200,
+        "klobjarne_geirr": 160,
+        "orrax_manifested": 100,
+        "strife_unending": 300
       },
       "kind": "acquire",
       "best": "drop",
@@ -3157,12 +3166,20 @@ const SOURCES_DB = {
       "name": "Stabilizing Matrix",
       "apiId": 73248,
       "needed_for": [
-        "cube_stabilized_dark_energy"
+        "cube_stabilized_dark_energy",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "strife_unending",
+        "transcendence"
       ],
       "qty": {
         "obsidian__per_piece": 75,
         "cube_stabilized_dark_energy": 75,
-        "ad_infinitum": 600
+        "ad_infinitum": 600,
+        "aetheric_anchor": 75,
+        "klobjarne_geirr": 150,
+        "strife_unending": 150,
+        "transcendence": 95
       },
       "farmable": true,
       "sources": [
@@ -4801,17 +4818,24 @@ const SOURCES_DB = {
         "warbringer",
         "armor_wvw",
         "essence_of_carnage",
-        "gift_of_war"
+        "gift_of_war",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "strife_unending",
+        "transcendence"
       ],
       "qty": {
         "triumphant_hero__per_piece": 200,
-        "strife_unending": 250,
+        "strife_unending": 500,
         "essence_of_carnage": 500,
         "mist_pearl": 250,
         "mist_enhanced_mithril": 250,
         "gift_of_war": 250,
         "gift_of_war_dedication": 250,
-        "gift_of_conquering": 250
+        "gift_of_conquering": 250,
+        "aetheric_anchor": 250,
+        "klobjarne_geirr": 250,
+        "transcendence": 250
       },
       "farmable": true,
       "sources": [
@@ -4865,6 +4889,15 @@ const SOURCES_DB = {
           "verified": true,
           "checked": "2026-08-13",
           "ref": "wiki:Warbringer#Full_material_list + guildjen:legendary-ring-conflux-guide, recoupes"
+        }
+      },
+      "qty_conflict": {
+        "strife_unending": {
+          "jsx": 250,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
         }
       }
     },
@@ -5405,11 +5438,21 @@ const SOURCES_DB = {
       "name": "Shard of Glory",
       "apiId": 70820,
       "needed_for": [
-        "mist_band_infused"
+        "mist_band_infused",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "strife_unending",
+        "the_ascension",
+        "transcendence"
       ],
       "qty": {
         "conflux": 250,
-        "vision": 250
+        "vision": 250,
+        "aetheric_anchor": 250,
+        "klobjarne_geirr": 250,
+        "strife_unending": 500,
+        "the_ascension": 250,
+        "transcendence": 2250
       },
       "farmable": true,
       "sources": [
@@ -5764,7 +5807,16 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_perfected_envoy",
         "gift_of_expertise",
-        "gift_of_mastery"
+        "gift_of_mastery",
+        "aetheric_anchor",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "selachimorpha",
+        "stella_radians",
+        "strife_unending",
+        "the_ascension",
+        "transcendence"
       ],
       "qty": {
         "gen1_frostfang": 250,
@@ -5789,17 +5841,23 @@ const SOURCES_DB = {
         "gen1_kraitkin": 250,
         "gen1_the_predator": 250,
         "perfected_envoy__per_piece": 50,
-        "the_ascension": 250,
+        "the_ascension": 309,
         "ad_infinitum": 339,
-        "selachimorpha": 250,
+        "selachimorpha": 488,
         "obsidian__per_piece": 50,
-        "endless_summer": 250,
+        "endless_summer": 283,
         "upgrades": 450,
         "vision": 421,
         "aurora": 250,
         "conflux": 309,
         "warbringer": 309,
-        "coalescence": 499
+        "coalescence": 499,
+        "aetheric_anchor": 323,
+        "klobjarne_geirr": 353,
+        "orrax_manifested": 220,
+        "stella_radians": 249,
+        "strife_unending": 146,
+        "transcendence": 309
       },
       "farmable": true,
       "sources": [
@@ -5885,7 +5943,23 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "qty_conflict": {
+        "selachimorpha": {
+          "jsx": 250,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        },
+        "endless_summer": {
+          "jsx": 250,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      }
     },
     "gift_of_exploration": {
       "name": "Gift of Exploration",
@@ -5961,10 +6035,16 @@ const SOURCES_DB = {
       "apiId": 100078,
       "type": "wallet_currency",
       "needed_for": [
-        "amalgamated_rift_essence"
+        "amalgamated_rift_essence",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested"
       ],
       "qty": {
-        "obsidian__per_piece": 3000
+        "obsidian__per_piece": 3000,
+        "endless_summer": 2500,
+        "klobjarne_geirr": 3000,
+        "orrax_manifested": 6750
       },
       "farmable": true,
       "sources": [
@@ -6019,10 +6099,16 @@ const SOURCES_DB = {
       "apiId": 100414,
       "type": "wallet_currency",
       "needed_for": [
-        "amalgamated_rift_essence"
+        "amalgamated_rift_essence",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested"
       ],
       "qty": {
-        "obsidian__per_piece": 1200
+        "obsidian__per_piece": 1200,
+        "endless_summer": 1000,
+        "klobjarne_geirr": 1200,
+        "orrax_manifested": 2700
       },
       "farmable": true,
       "sources": [
@@ -6051,10 +6137,16 @@ const SOURCES_DB = {
       "apiId": 100055,
       "type": "wallet_currency",
       "needed_for": [
-        "amalgamated_rift_essence"
+        "amalgamated_rift_essence",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested"
       ],
       "qty": {
-        "obsidian__per_piece": 600
+        "obsidian__per_piece": 600,
+        "endless_summer": 500,
+        "klobjarne_geirr": 600,
+        "orrax_manifested": 1350
       },
       "farmable": true,
       "sources": [
@@ -6151,9 +6243,18 @@ const SOURCES_DB = {
       "name": "Hydrocatalytic Reagent",
       "apiId": 95813,
       "needed_for": [
-        "gift_of_research"
+        "gift_of_research",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "selachimorpha",
+        "stella_radians"
       ],
-      "qty": {},
+      "qty": {
+        "aetheric_anchor": 500,
+        "klobjarne_geirr": 500,
+        "selachimorpha": 1000,
+        "stella_radians": 500
+      },
       "farmable": true,
       "sources": [
         {
@@ -6181,13 +6282,25 @@ const SOURCES_DB = {
       "name": "Thermocatalytic Reagent",
       "apiId": 46747,
       "needed_for": [
-        "gift_of_research"
+        "gift_of_research",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "selachimorpha",
+        "stella_radians",
+        "the_ascension",
+        "transcendence"
       ],
       "qty": {
         "conflux": 300,
         "warbringer": 300,
         "vision": 540,
-        "ad_infinitum": 590
+        "ad_infinitum": 590,
+        "aetheric_anchor": 250,
+        "klobjarne_geirr": 1930,
+        "selachimorpha": 800,
+        "stella_radians": 250,
+        "the_ascension": 300,
+        "transcendence": 300
       },
       "farmable": true,
       "sources": [
@@ -6294,12 +6407,14 @@ const SOURCES_DB = {
       "name": "PvP League Ticket",
       "apiId": 33781,
       "needed_for": [
-        "armor_pvp"
+        "armor_pvp",
+        "the_ascension",
+        "transcendence"
       ],
       "qty": {
         "ardent_glorious__per_piece": 150,
-        "transcendence": 150,
-        "the_ascension": 150
+        "transcendence": 70,
+        "the_ascension": 125
       },
       "farmable": true,
       "timegate": true,
@@ -6389,7 +6504,16 @@ const SOURCES_DB = {
         "gift_of_fortune",
         "gift_of_research",
         "kralkatite_ingot",
-        "memory_essence_encapsulator"
+        "memory_essence_encapsulator",
+        "aetheric_anchor",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "selachimorpha",
+        "stella_radians",
+        "strife_unending",
+        "the_ascension",
+        "transcendence"
       ],
       "farmable": true,
       "sources": [
@@ -6430,7 +6554,7 @@ const SOURCES_DB = {
         "gen1_kraitkin": 250,
         "gen1_the_predator": 250,
         "obsidian__per_piece": 600,
-        "the_ascension": 250,
+        "the_ascension": 499,
         "ad_infinitum": 1039,
         "memory_essence_encapsulator": 50,
         "upgrades": 1050,
@@ -6439,9 +6563,16 @@ const SOURCES_DB = {
         "conflux": 249,
         "warbringer": 499,
         "coalescence": 499,
-        "transcendence": 250,
+        "transcendence": 249,
         "eikasia": 80,
-        "kralkatite_ingot": 1
+        "kralkatite_ingot": 1,
+        "aetheric_anchor": 323,
+        "endless_summer": 548,
+        "klobjarne_geirr": 1041,
+        "orrax_manifested": 2170,
+        "selachimorpha": 178,
+        "stella_radians": 2249,
+        "strife_unending": 146
       },
       "kind": "acquire",
       "best": "salvage",
@@ -6462,7 +6593,8 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_perfected_envoy",
         "gift_of_fortune",
-        "gift_of_prosperity"
+        "gift_of_prosperity",
+        "orrax_manifested"
       ],
       "farmable": true,
       "sources": [
@@ -6644,7 +6776,7 @@ const SOURCES_DB = {
         "obsidian__per_piece": 9,
         "endless_summer": 10,
         "coalescence": 77,
-        "orrax_manifested": 38,
+        "orrax_manifested": 68,
         "selachimorpha": 55,
         "strife_unending": 45,
         "upgrades": 205,
@@ -6764,7 +6896,16 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)"
+      "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
+      "qty_conflict": {
+        "orrax_manifested": {
+          "jsx": 38,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      }
     },
     "gift_of_fortune": {
       "name": "Gift of Fortune",
@@ -7459,7 +7600,15 @@ const SOURCES_DB = {
       "name": "Mystic Coin",
       "apiId": 19976,
       "needed_for": [
-        "mystic_tribute"
+        "mystic_tribute",
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "selachimorpha",
+        "stella_radians",
+        "strife_unending",
+        "the_ascension",
+        "transcendence"
       ],
       "farmable": true,
       "sources": [
@@ -7587,15 +7736,20 @@ const SOURCES_DB = {
         "gen3_aurenes_wisdom": 250,
         "gen3_aurenes_breath": 250,
         "gen3_aurenes_tenderness": 250,
-        "transcendence": 250,
-        "the_ascension": 250,
+        "transcendence": 499,
+        "the_ascension": 249,
         "ad_infinitum": 249,
-        "stella_radians": 250,
+        "stella_radians": 499,
         "coalescence": 499,
         "warbringer": 249,
         "aurora": 250,
         "vision": 499,
-        "conflux": 499
+        "conflux": 499,
+        "aetheric_anchor": 323,
+        "klobjarne_geirr": 123,
+        "orrax_manifested": 220,
+        "selachimorpha": 178,
+        "strife_unending": 146
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7731,6 +7885,13 @@ const SOURCES_DB = {
           "verified": false,
           "checked": "2026-08-22",
           "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+        },
+        "stella_radians": {
+          "jsx": 250,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
         }
       }
     },
@@ -7738,7 +7899,10 @@ const SOURCES_DB = {
       "name": "Mystic Runestone",
       "apiId": 79418,
       "needed_for": [
-        "gen2_gift_unique"
+        "gen2_gift_unique",
+        "endless_summer",
+        "orrax_manifested",
+        "stella_radians"
       ],
       "farmable": false,
       "sources": [
@@ -7792,7 +7956,10 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "klobjarne_geirr": 100
+        "klobjarne_geirr": 100,
+        "endless_summer": 100,
+        "orrax_manifested": 250,
+        "stella_radians": 200
       },
       "kind": "acquire",
       "apiId_fix": {
@@ -8557,7 +8724,8 @@ const SOURCES_DB = {
       "name": "Pristine Fractal Relic",
       "apiId": 24,
       "needed_for": [
-        "ad_infinitum"
+        "ad_infinitum",
+        "transcendence"
       ],
       "farmable": true,
       "sources": [
@@ -8582,7 +8750,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "ad_infinitum": 140,
-        "conflux": 100
+        "conflux": 100,
+        "transcendence": 100
       },
       "kind": "acquire",
       "best": "fractals_daily",
@@ -9117,7 +9286,8 @@ const SOURCES_DB = {
       "name": "Vial of Titan Melted Liquid Obsidian",
       "apiId": 104229,
       "needed_for": [
-        "gift_of_the_mistburned_isles"
+        "gift_of_the_mistburned_isles",
+        "orrax_manifested"
       ],
       "farmable": true,
       "sources": [
@@ -9139,7 +9309,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "orrax_manifested": 100
+        "orrax_manifested": 150
       },
       "kind": "craftable",
       "best": "vendor",
@@ -9477,10 +9647,12 @@ const SOURCES_DB = {
       "name": "Amalgamated Draconic Lodestone",
       "apiId": 92687,
       "needed_for": [
-        "draconic_tribute"
+        "draconic_tribute",
+        "aetheric_anchor"
       ],
       "qty": {
-        "gen3__per_weapon": 5
+        "gen3__per_weapon": 5,
+        "aetheric_anchor": 55
       },
       "farmable": true,
       "sources": [
@@ -10384,7 +10556,9 @@ const SOURCES_DB = {
       "kind": "acquire",
       "needed_for": [
         "coalescence",
-        "gift_of_infused_gems"
+        "gift_of_infused_gems",
+        "klobjarne_geirr",
+        "orrax_manifested"
       ],
       "farmable": true,
       "sources": [
@@ -10443,7 +10617,9 @@ const SOURCES_DB = {
       "qty": {
         "endless_summer": 250,
         "vision": 100,
-        "coalescence": 250
+        "coalescence": 250,
+        "klobjarne_geirr": 275,
+        "orrax_manifested": 200
       },
       "verified": true,
       "checked": "2026-08-22",
@@ -10833,7 +11009,11 @@ const SOURCES_DB = {
         "conflux": 1000,
         "warbringer": 1000,
         "mystic_essence_of_carnage": 250,
-        "ad_infinitum": 1500
+        "ad_infinitum": 1500,
+        "klobjarne_geirr": 3000,
+        "selachimorpha": 1000,
+        "the_ascension": 1000,
+        "transcendence": 1250
       },
       "kind": "base",
       "farmable": true,
@@ -10863,7 +11043,11 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "dragonite_ingot",
-        "mystic_essence_of_carnage"
+        "mystic_essence_of_carnage",
+        "klobjarne_geirr",
+        "selachimorpha",
+        "the_ascension",
+        "transcendence"
       ]
     },
     "empyreal_fragment": {
@@ -10874,7 +11058,11 @@ const SOURCES_DB = {
         "conflux": 1000,
         "warbringer": 1000,
         "mystic_essence_of_animosity": 250,
-        "ad_infinitum": 1500
+        "ad_infinitum": 1500,
+        "klobjarne_geirr": 3000,
+        "selachimorpha": 1000,
+        "the_ascension": 1000,
+        "transcendence": 1250
       },
       "kind": "base",
       "farmable": true,
@@ -10904,7 +11092,11 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "empyreal_star",
-        "mystic_essence_of_animosity"
+        "mystic_essence_of_animosity",
+        "klobjarne_geirr",
+        "selachimorpha",
+        "the_ascension",
+        "transcendence"
       ]
     },
     "bloodstone_dust": {
@@ -10915,7 +11107,11 @@ const SOURCES_DB = {
         "conflux": 1000,
         "warbringer": 1000,
         "mystic_essence_of_strategy": 250,
-        "ad_infinitum": 1500
+        "ad_infinitum": 1500,
+        "klobjarne_geirr": 3000,
+        "selachimorpha": 1000,
+        "the_ascension": 1000,
+        "transcendence": 1250
       },
       "kind": "base",
       "farmable": true,
@@ -10945,7 +11141,11 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "bloodstone_brick",
-        "mystic_essence_of_strategy"
+        "mystic_essence_of_strategy",
+        "klobjarne_geirr",
+        "selachimorpha",
+        "the_ascension",
+        "transcendence"
       ]
     },
     "spirit_shard": {
@@ -11042,7 +11242,9 @@ const SOURCES_DB = {
       "kind": "currency",
       "farmable": true,
       "qty": {
-        "endless_summer": 500
+        "endless_summer": 500,
+        "aetheric_anchor": 500,
+        "selachimorpha": 500
       },
       "sources": [
         {
@@ -11064,7 +11266,11 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "gw2_currencies_ref : devise 81"
+      "ref": "gw2_currencies_ref : devise 81",
+      "needed_for": [
+        "aetheric_anchor",
+        "selachimorpha"
+      ]
     },
     "skirmish_claim_ticket": {
       "name": "WvW Skirmish Claim Ticket",
@@ -11127,7 +11333,8 @@ const SOURCES_DB = {
       "kind": "currency",
       "qty": {
         "essence_of_animosity": 500,
-        "certificate_of_heroics": 250
+        "certificate_of_heroics": 250,
+        "strife_unending": 500
       },
       "farmable": true,
       "sources": [
@@ -11149,7 +11356,8 @@ const SOURCES_DB = {
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
       "needed_for": [
         "essence_of_animosity",
-        "certificate_of_heroics"
+        "certificate_of_heroics",
+        "strife_unending"
       ]
     },
     "gaeting_crystal": {
@@ -11183,7 +11391,8 @@ const SOURCES_DB = {
       "apiId": 69,
       "kind": "currency",
       "qty": {
-        "orrax_manifested": 500
+        "orrax_manifested": 500,
+        "endless_summer": 1000
       },
       "farmable": true,
       "sources": [
@@ -11202,14 +11411,18 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "needed_for": [
+        "endless_summer"
+      ]
     },
     "ursus_oblige": {
       "name": "Ursus Oblige",
       "apiId": 76,
       "kind": "currency",
       "qty": {
-        "orrax_manifested": 300
+        "orrax_manifested": 1250,
+        "klobjarne_geirr": 1250
       },
       "farmable": true,
       "sources": [
@@ -11228,14 +11441,30 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "needed_for": [
+        "klobjarne_geirr",
+        "orrax_manifested"
+      ],
+      "qty_conflict": {
+        "orrax_manifested": {
+          "jsx": 300,
+          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      }
     },
     "research_note": {
       "name": "Research Note",
       "apiId": 61,
       "kind": "currency",
       "qty": {
-        "selachimorpha": 5000
+        "selachimorpha": 5000,
+        "aetheric_anchor": 2500,
+        "klobjarne_geirr": 2500,
+        "stella_radians": 52500
       },
       "farmable": true,
       "sources": [
@@ -11254,7 +11483,12 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "needed_for": [
+        "aetheric_anchor",
+        "klobjarne_geirr",
+        "stella_radians"
+      ]
     },
     "elegy_mosaic": {
       "name": "Elegy Mosaic",
@@ -11364,7 +11598,9 @@ const SOURCES_DB = {
       "apiId": 83,
       "kind": "currency",
       "qty": {
-        "endless_summer": 500
+        "endless_summer": 500,
+        "aetheric_anchor": 500,
+        "selachimorpha": 500
       },
       "farmable": true,
       "sources": [
@@ -11383,7 +11619,11 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "needed_for": [
+        "aetheric_anchor",
+        "selachimorpha"
+      ]
     },
     "karma": {
       "name": "Karma",
@@ -11548,7 +11788,11 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_venom": 100,
-        "gift_of_magic": 250
+        "gift_of_magic": 250,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 100,
+        "strife_unending": 300
       },
       "farmable": true,
       "sources": [
@@ -11601,7 +11845,11 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_venom",
-        "gift_of_magic"
+        "gift_of_magic",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "tier": "T6"
     },
@@ -11612,7 +11860,12 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_scales": 100,
         "gift_of_might": 250,
-        "mystic_essence_of_carnage": 20
+        "mystic_essence_of_carnage": 20,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 200,
+        "strife_unending": 300,
+        "transcendence": 20
       },
       "farmable": true,
       "sources": [
@@ -11666,7 +11919,12 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_scales",
         "gift_of_might",
-        "mystic_essence_of_carnage"
+        "mystic_essence_of_carnage",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "tier": "T6"
     },
@@ -11677,7 +11935,12 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_blood": 100,
         "gift_of_magic": 250,
-        "mystic_essence_of_strategy": 20
+        "mystic_essence_of_strategy": 20,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 100,
+        "strife_unending": 300,
+        "transcendence": 20
       },
       "farmable": true,
       "sources": [
@@ -11731,7 +11994,12 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_blood",
         "gift_of_magic",
-        "mystic_essence_of_strategy"
+        "mystic_essence_of_strategy",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "tier": "T6",
       "qty_note": {
@@ -11745,7 +12013,11 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_totems": 100,
-        "gift_of_magic": 250
+        "gift_of_magic": 250,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 100,
+        "strife_unending": 300
       },
       "farmable": true,
       "sources": [
@@ -11798,7 +12070,11 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_totems",
-        "gift_of_magic"
+        "gift_of_magic",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "tier": "T6"
     },
@@ -11809,7 +12085,12 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_claws": 100,
         "gift_of_might": 250,
-        "mystic_essence_of_annihilation": 20
+        "mystic_essence_of_annihilation": 20,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 100,
+        "strife_unending": 300,
+        "transcendence": 20
       },
       "farmable": true,
       "sources": [
@@ -11863,7 +12144,12 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_claws",
         "gift_of_might",
-        "mystic_essence_of_annihilation"
+        "mystic_essence_of_annihilation",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "tier": "T6"
     },
@@ -11873,7 +12159,11 @@ const SOURCES_DB = {
       "kind": "material",
       "qty": {
         "gift_of_fangs": 100,
-        "gift_of_might": 250
+        "gift_of_might": 250,
+        "endless_summer": 200,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 100,
+        "strife_unending": 300
       },
       "farmable": true,
       "sources": [
@@ -11926,7 +12216,11 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "gift_of_fangs",
-        "gift_of_might"
+        "gift_of_might",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "tier": "T6"
     },
@@ -11937,7 +12231,12 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_bones": 100,
         "gift_of_might": 250,
-        "mystic_essence_of_animosity": 20
+        "mystic_essence_of_animosity": 20,
+        "endless_summer": 200,
+        "klobjarne_geirr": 200,
+        "orrax_manifested": 100,
+        "strife_unending": 300,
+        "transcendence": 20
       },
       "farmable": true,
       "sources": [
@@ -11991,7 +12290,12 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_bones",
         "gift_of_might",
-        "mystic_essence_of_animosity"
+        "mystic_essence_of_animosity",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "tier": "T6"
     },
@@ -12188,11 +12492,21 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_blood": 250,
-        "mystic_essence_of_strategy": 50
+        "mystic_essence_of_strategy": 50,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 250,
+        "strife_unending": 750,
+        "transcendence": 50
       },
       "needed_for": [
         "gift_of_blood",
-        "mystic_essence_of_strategy"
+        "mystic_essence_of_strategy",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "sources": [
         {
@@ -12250,10 +12564,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_blood": 50
+        "gift_of_blood": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_blood"
+        "gift_of_blood",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12299,10 +12621,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_blood": 50
+        "gift_of_blood": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_blood"
+        "gift_of_blood",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12373,10 +12703,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T5",
       "qty": {
-        "gift_of_venom": 250
+        "gift_of_venom": 250,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 250,
+        "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_venom"
+        "gift_of_venom",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12434,10 +12772,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_venom": 50
+        "gift_of_venom": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_venom"
+        "gift_of_venom",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12483,10 +12829,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_venom": 50
+        "gift_of_venom": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_venom"
+        "gift_of_venom",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12557,10 +12911,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T5",
       "qty": {
-        "gift_of_totems": 250
+        "gift_of_totems": 250,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 250,
+        "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_totems"
+        "gift_of_totems",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12618,10 +12980,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_totems": 50
+        "gift_of_totems": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_totems"
+        "gift_of_totems",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12667,10 +13037,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_totems": 50
+        "gift_of_totems": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_totems"
+        "gift_of_totems",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12777,11 +13155,21 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_claws": 250,
-        "mystic_essence_of_annihilation": 50
+        "mystic_essence_of_annihilation": 50,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 250,
+        "strife_unending": 750,
+        "transcendence": 50
       },
       "needed_for": [
         "gift_of_claws",
-        "mystic_essence_of_annihilation"
+        "mystic_essence_of_annihilation",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "sources": [
         {
@@ -12839,10 +13227,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_claws": 50
+        "gift_of_claws": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_claws"
+        "gift_of_claws",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12888,10 +13284,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_claws": 50
+        "gift_of_claws": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_claws"
+        "gift_of_claws",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -12963,11 +13367,21 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_scales": 250,
-        "mystic_essence_of_carnage": 50
+        "mystic_essence_of_carnage": 50,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 500,
+        "strife_unending": 750,
+        "transcendence": 50
       },
       "needed_for": [
         "gift_of_scales",
-        "mystic_essence_of_carnage"
+        "mystic_essence_of_carnage",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "sources": [
         {
@@ -13025,10 +13439,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_scales": 50
+        "gift_of_scales": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 100,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_scales"
+        "gift_of_scales",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13074,10 +13496,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_scales": 50
+        "gift_of_scales": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 100,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_scales"
+        "gift_of_scales",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13149,11 +13579,21 @@ const SOURCES_DB = {
       "tier": "T5",
       "qty": {
         "gift_of_bones": 250,
-        "mystic_essence_of_animosity": 50
+        "mystic_essence_of_animosity": 50,
+        "endless_summer": 500,
+        "klobjarne_geirr": 500,
+        "orrax_manifested": 250,
+        "strife_unending": 750,
+        "transcendence": 50
       },
       "needed_for": [
         "gift_of_bones",
-        "mystic_essence_of_animosity"
+        "mystic_essence_of_animosity",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending",
+        "transcendence"
       ],
       "sources": [
         {
@@ -13211,10 +13651,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_bones": 50
+        "gift_of_bones": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_bones"
+        "gift_of_bones",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13260,10 +13708,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_bones": 50
+        "gift_of_bones": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_bones"
+        "gift_of_bones",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13334,10 +13790,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T5",
       "qty": {
-        "gift_of_fangs": 250
+        "gift_of_fangs": 250,
+        "endless_summer": 500,
+        "klobjarne_geirr": 250,
+        "orrax_manifested": 250,
+        "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_fangs"
+        "gift_of_fangs",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13395,10 +13859,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T4",
       "qty": {
-        "gift_of_fangs": 50
+        "gift_of_fangs": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_fangs"
+        "gift_of_fangs",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -13444,10 +13916,18 @@ const SOURCES_DB = {
       "farmable": true,
       "tier": "T3",
       "qty": {
-        "gift_of_fangs": 50
+        "gift_of_fangs": 50,
+        "endless_summer": 100,
+        "klobjarne_geirr": 50,
+        "orrax_manifested": 50,
+        "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_fangs"
+        "gift_of_fangs",
+        "endless_summer",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "strife_unending"
       ],
       "sources": [
         {
@@ -14234,6 +14714,808 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
         }
+      ]
+    },
+    "destroyer_lodestone": {
+      "name": "Destroyer Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 550,
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "orrax_manifested"
+      ]
+    },
+    "crystal_lodestone": {
+      "name": "Crystal Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 550,
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "orrax_manifested"
+      ]
+    },
+    "corrupted_lodestone": {
+      "name": "Corrupted Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 550,
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "orrax_manifested"
+      ]
+    },
+    "mordrem_lodestone": {
+      "name": "Mordrem Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 550,
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "orrax_manifested"
+      ]
+    },
+    "chromatic_sap": {
+      "name": "Chromatic Sap",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 500,
+        "endless_summer": 500,
+        "selachimorpha": 500
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "endless_summer",
+        "selachimorpha"
+      ]
+    },
+    "raw_enchanting_stone": {
+      "name": "Raw Enchanting Stone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "aetheric_anchor": 500,
+        "endless_summer": 500,
+        "selachimorpha": 500
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "aetheric_anchor",
+        "endless_summer",
+        "selachimorpha"
+      ]
+    },
+    "charged_lodestone": {
+      "name": "Charged Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "endless_summer": 200
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "endless_summer"
+      ]
+    },
+    "ancient_coin": {
+      "name": "Ancient Coin",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 20250,
+        "orrax_manifested": 50000
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr",
+        "orrax_manifested"
+      ]
+    },
+    "shard_of_the_homestead": {
+      "name": "Shard of the Homestead",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 250
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "curious_mursaat_currency": {
+      "name": "Curious Mursaat Currency",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 125
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "neutralized_titan_alloy": {
+      "name": "Neutralized Titan Alloy",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr",
+        "orrax_manifested"
+      ]
+    },
+    "shard_of_lowland_shore": {
+      "name": "Shard of Lowland Shore",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "discounted_shard_of_lowland_shore": {
+      "name": "Discounted Shard of Lowland Shore",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "shard_of_janthir_syntri": {
+      "name": "Shard of Janthir Syntri",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "discounted_shard_of_janthir_syntri": {
+      "name": "Discounted Shard of Janthir Syntri",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr"
+      ]
+    },
+    "mursaat_runestone": {
+      "name": "Mursaat Runestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "klobjarne_geirr": 100,
+        "orrax_manifested": 250
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "klobjarne_geirr",
+        "orrax_manifested"
+      ]
+    },
+    "mursaat_obsidian_chunk": {
+      "name": "Mursaat Obsidian Chunk",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 750
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "titan_heatstone": {
+      "name": "Titan Heatstone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 750
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "curious_mursaat_remnants": {
+      "name": "Curious Mursaat Remnants",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 725
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "curious_mursaat_ruin_shard": {
+      "name": "Curious Mursaat Ruin Shard",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 125
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "shard_of_mistburned_barrens": {
+      "name": "Shard of Mistburned Barrens",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "discounted_shard_of_mistburned_barrens": {
+      "name": "Discounted Shard of Mistburned Barrens",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "shard_of_bava_nisos": {
+      "name": "Shard of Bava Nisos",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "onyx_lodestone": {
+      "name": "Onyx Lodestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "mists_gate_residue": {
+      "name": "Mists Gate Residue",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "orrax_manifested": 50
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "orrax_manifested"
+      ]
+    },
+    "unusual_coin": {
+      "name": "Unusual Coin",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "selachimorpha": 500
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "selachimorpha"
+      ]
+    },
+    "tale_of_adventure": {
+      "name": "Tale of Adventure",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "selachimorpha": 100
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "selachimorpha"
+      ]
+    },
+    "shadowstone_fragment": {
+      "name": "Shadowstone Fragment",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "stella_radians": 500
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "stella_radians"
+      ]
+    },
+    "seer_runestone": {
+      "name": "Seer Runestone",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "stella_radians": 200
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "stella_radians"
+      ]
+    },
+    "ascended_shards_of_glory": {
+      "name": "Ascended Shards of Glory",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "transcendence": 900
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
+            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+          },
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+        }
+      ],
+      "verified": false,
+      "checked": "2026-08-22",
+      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "needed_for": [
+        "transcendence"
       ]
     }
   },
