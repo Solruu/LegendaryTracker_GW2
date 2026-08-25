@@ -1823,7 +1823,8 @@ const SOURCES_DB = {
     "changelog_v151": "Portes de maitrise confirmees : « Rift Repair » et « Astral Craft » existent tels quels, le marqueur « nom introuvable » ne se declenchera pas. Les fiches donnent en outre la piste et le palier — Skyscale Mount palier 2, Astral Ward palier 2 — ce qui rend les portes decidables sans table de correspondance : /v2/account/masteries rend le niveau atteint par piste, il suffit de le comparer au palier requis. Trouvaille au passage sur la fiche Rift Repair : les orbes de Magie volatile sont plafonnes a 250 par jour et par compte, et aux Marches de Bjora la trainee rapporte 5 Eclats de glace eternelle.",
     "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette.",
     "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture.",
-    "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource."
+    "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource.",
+    "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition."
   },
   "meta_events": {
     "vb": {
@@ -14727,19 +14728,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyau de destructeur + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
+            "en": "Forge promotion: 2 Destroyer Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+          },
+          "free_repeatable": true,
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
+            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
           },
           "verified": false,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
         }
       ],
       "verified": false,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14755,19 +14767,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyau de cristal + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
+            "en": "Forge promotion: 2 Crystal Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+          },
+          "free_repeatable": true,
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
+            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
           },
           "verified": false,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
         }
       ],
       "verified": false,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14783,19 +14806,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyau corrompu + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
+            "en": "Forge promotion: 2 Corrupted Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+          },
+          "free_repeatable": true,
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
+            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
           },
           "verified": false,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
         }
       ],
       "verified": false,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14811,19 +14845,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyau mordrem + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
+            "en": "Forge promotion: 2 Mordrem Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+          },
+          "free_repeatable": true,
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
+            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
           },
           "verified": false,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
         }
       ],
       "verified": false,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14898,22 +14943,59 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyaux chargés + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique → 1 pierre magnétique. C'est la voie fiable : les noyaux se trouvent bien plus facilement.",
+            "en": "Forge promotion: 2 Charged Cores + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal → 1 lodestone. The reliable route: cores are far easier to find."
           },
-          "verified": false,
+          "free_repeatable": true,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+        },
+        {
+          "type": "map_bonus",
+          "tip": {
+            "fr": "Récompense bonus de carte, en rotation hebdomadaire : Bond de Malchor 5, Détroit glacé 7, Détroits de la Dévastation 7, Mont Maelstrom 5, Ascension ardente 8, Anse de Sud-Soleil 4, Rivage maudit 8. Une semaine sur huit ne donne rien. ⚡ Source gratuite et régulière, mais il faut être sur la bonne carte la bonne semaine.",
+            "en": "Map bonus reward, on a weekly rotation: Malchor's Leap 5, Frostgorge Sound 7, Straits of Devastation 7, Mount Maelstrom 5, Fireheart Rise 8, Southsun Cove 4, Cursed Shore 8. One week in eight gives nothing. ⚡ Free and regular, but you must be on the right map the right week."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Coffres du Creuset de l'Éternité (explorable) et des Fractales des Brumes. Récupération : Ferraille éthérisée et Ferraille d'horloge tordue.",
+            "en": "Chests in the Crucible of Eternity (explorable) and Fractals of the Mists. Salvage: Salvageable Aetherized Metal Scrap and Twisted Watchwork Scrap."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. À 200 unités pour Endless Summer, comparer sérieusement l'achat au farm : la promotion coûte 2 noyaux plus trois réactifs par pierre.",
+            "en": "Trading Post. At 200 units for Endless Summer, seriously compare buying to farming: promotion costs 2 cores plus three reagents per lodestone."
+          },
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)",
       "needed_for": [
         "endless_summer"
-      ]
+      ],
+      "recipe": {
+        "fr": "Forge mystique (promotion) : 2 Noyaux chargés + 1 Bouteille de vin élonien OU 1 Agent liant mystique + 1 Poussière cristalline + 1 Cristal mystique.",
+        "en": "Mystic Forge (promotion): 2 Charged Cores + 1 Bottle of Elonian Wine OR 1 Mystic Binding Agent + 1 Pile of Crystalline Dust + 1 Mystic Crystal."
+      }
     },
     "ancient_coin": {
       "name": "Ancient Coin",
@@ -15375,19 +15457,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "mystic_forge",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Promotion en Forge : 2 Noyau d'onyx + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
+            "en": "Forge promotion: 2 Onyx Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+          },
+          "free_repeatable": true,
+          "verified": false,
+          "checked": "2026-08-22",
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+        },
+        {
+          "type": "trading_post",
+          "tip": {
+            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
+            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
           },
           "verified": false,
           "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
         }
       ],
       "verified": false,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
       "needed_for": [
         "orrax_manifested"
       ]
