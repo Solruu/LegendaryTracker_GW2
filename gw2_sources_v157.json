@@ -1051,7 +1051,8 @@
   "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture.",
   "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource.",
   "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition.",
-  "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon."
+  "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon.",
+  "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs."
  },
  "meta_events": {
   "vb": {
@@ -14354,19 +14355,21 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Janthir Wilds",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Castaway (Comosus Isle) et Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1 050 karma. ⚠ Exige la maîtrise Adept Handiwork — sans elle, aucun accès.",
+      "en": "Castaway (Comosus Isle) and Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1,050 karma. ⚠ Requires the Adept Handiwork mastery — no access without it."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr"
    ]
@@ -14380,19 +14383,32 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Janthir Wilds",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Deux tarifs très différents : 1 050 karma pièce chez Arid Esker ou Vigilant Dawn (cœur requis), ou 5 pour 1 + 3 + 3 chez eux et le Kodan Landspeaker. 💡 Gharr Leadclaw (Lowland Shore) et le Portable Wizard's Tower Exchange en donnent 20 pour 1 — de loin le meilleur taux.",
+      "en": "Two very different rates: 1,050 karma each from Arid Esker or Vigilant Dawn (heart required), or 5 for 1 + 3 + 3 from them and the Kodan Landspeaker. 💡 Gharr Leadclaw (Lowland Shore) and the Portable Wizard's Tower Exchange give 20 for 1 — by far the best rate."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Garanti dans le Janthir Syntri Strongbox et la Black Lion Delivery Box (2-3).",
+      "en": "Guaranteed from the Janthir Syntri Strongbox and Black Lion Delivery Box (2-3)."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr"
    ]
@@ -14407,19 +14423,21 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Janthir Wilds",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Arid Esker, Vigilant Dawn et Whispers of Wind (Janthir Syntri) plus Ward Trader Sampaguita (Bava Nisos), 4 + 7 + 7 + 6. Les trois premiers exigent le cœur complété.",
+      "en": "Arid Esker, Vigilant Dawn and Whispers of Wind (Janthir Syntri) plus Ward Trader Sampaguita (Bava Nisos), 4 + 7 + 7 + 6. The first three require the heart complete."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr",
     "orrax_manifested"
@@ -14434,30 +14452,60 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
+     "map": "Lowland Shore",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "3 vendeurs de cœurs à Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété.",
+      "en": "3 heart vendors in Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir.",
+      "en": "Trading Post."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr"
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeurs de cœurs — Lowland Shore",
+       "en": "Heart vendors — Lowland Shore"
+      },
+      "period": "week",
+      "cap": 21,
+      "cost": {
+       "fr": "7 par PNJ et par semaine sur 3 PNJ. ⚠ Le plafond est PARTAGÉ entre le shard normal et sa version réduite : 21 shards par semaine au total, quelle que soit la version achetée. Les 100 requis prennent donc 5 semaines.",
+       "en": "7 per NPC per week across 3 NPCs. ⚠ The cap is SHARED between the regular shard and its discounted version: 21 shards a week whichever you buy. The 100 required therefore take 5 weeks."
+      },
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+     }
+    ]
+   },
+   "timegate": true
   },
   "discounted_shard_of_lowland_shore": {
    "name": "Discounted Shard of Lowland Shore",
    "kind": "acquire",
    "farmable": true,
-   "qty": {
-    "klobjarne_geirr": 100
-   },
+   "qty": {},
    "sources": [
     {
      "type": "unknown",
@@ -14470,12 +14518,14 @@
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
-   "needed_for": [
-    "klobjarne_geirr"
-   ]
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+   "needed_for": [],
+   "recipe": {
+    "fr": "Conteneur : rend 1 Shard of Lowland Shore. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
+    "en": "Container: yields 1 Shard of Lowland Shore. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
+   }
   },
   "shard_of_janthir_syntri": {
    "name": "Shard of Janthir Syntri",
@@ -14486,30 +14536,60 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
+     "map": "Janthir Syntri",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "3 vendeurs de cœurs à Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété.",
+      "en": "3 heart vendors in Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "trading_post",
+     "tip": {
+      "fr": "Comptoir.",
+      "en": "Trading Post."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr"
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeurs de cœurs — Janthir Syntri",
+       "en": "Heart vendors — Janthir Syntri"
+      },
+      "period": "week",
+      "cap": 21,
+      "cost": {
+       "fr": "7 par PNJ et par semaine sur 3 PNJ. ⚠ Le plafond est PARTAGÉ entre le shard normal et sa version réduite : 21 shards par semaine au total, quelle que soit la version achetée. Les 100 requis prennent donc 5 semaines.",
+       "en": "7 per NPC per week across 3 NPCs. ⚠ The cap is SHARED between the regular shard and its discounted version: 21 shards a week whichever you buy. The 100 required therefore take 5 weeks."
+      },
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+     }
+    ]
+   },
+   "timegate": true
   },
   "discounted_shard_of_janthir_syntri": {
    "name": "Discounted Shard of Janthir Syntri",
    "kind": "acquire",
    "farmable": true,
-   "qty": {
-    "klobjarne_geirr": 100
-   },
+   "qty": {},
    "sources": [
     {
      "type": "unknown",
@@ -14522,12 +14602,14 @@
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
-   "needed_for": [
-    "klobjarne_geirr"
-   ]
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+   "needed_for": [],
+   "recipe": {
+    "fr": "Conteneur : rend 1 Shard of Janthir Syntri. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
+    "en": "Container: yields 1 Shard of Janthir Syntri. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
+   }
   },
   "mursaat_runestone": {
    "name": "Mursaat Runestone",
@@ -14539,19 +14621,31 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "map": "Janthir Wilds",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Major Kodan Cache et Mursaat Ruins Cache, ~70 % chacune. Garanti dans le Honeycomb-Covered Gear Bag, la Mythical Kodan Cache (1-2) et le Slime-Encrusted Mursaat Strongbox. C'est la voie gratuite.",
+      "en": "Major Kodan Cache and Mursaat Ruins Cache, ~70% each. Guaranteed from the Honeycomb-Covered Gear Bag, Mythical Kodan Cache (1-2) and Slime-Encrusted Mursaat Strongbox. This is the free route."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "4 marchands à 200 : Davo Zes (Bava Nisos), Emlyn Digby (Lowland Shore), Parting Kindness (Janthir Syntri), Patches (Mistburned Barrens).",
+      "en": "4 vendors at 200: Davo Zes (Bava Nisos), Emlyn Digby (Lowland Shore), Parting Kindness (Janthir Syntri), Patches (Mistburned Barrens)."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "klobjarne_geirr",
     "orrax_manifested"
@@ -14691,9 +14785,7 @@
    "name": "Discounted Shard of Mistburned Barrens",
    "kind": "acquire",
    "farmable": true,
-   "qty": {
-    "orrax_manifested": 100
-   },
+   "qty": {},
    "sources": [
     {
      "type": "unknown",
@@ -14706,12 +14798,14 @@
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
-   "needed_for": [
-    "orrax_manifested"
-   ]
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+   "needed_for": [],
+   "recipe": {
+    "fr": "Conteneur : rend 1 Shard of Mistburned Barrens. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
+    "en": "Container: yields 1 Shard of Mistburned Barrens. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
+   }
   },
   "shard_of_bava_nisos": {
    "name": "Shard of Bava Nisos",
