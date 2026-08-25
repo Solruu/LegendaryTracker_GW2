@@ -1824,7 +1824,8 @@ const SOURCES_DB = {
     "changelog_v152": "Correction du plantage de l'onglet Grand Total. Vingt composants n'avaient aucun tableau sources[] — dont les huit gifts de trophees crees a l'etape 5b. Cote JSX, `comp.sources?.[0] ?? {}` rendait alors un objet VIDE, et comme un objet vide est truthy, l'expression `src.type || src` renvoyait l'objet lui-meme : .toLowerCase() cassait tout l'onglet des qu'un legendaire touchait l'un des vingt, soit Aurora, Vision, l'Obsidienne et les gen2 par la chaine des gifts. Les deux cotes sont corriges : farmColor et farmLabel ne supposent plus qu'une source est une chaine ou porte un type, et les vingt composants ont desormais une source minimale renvoyant a leur recette.",
     "changelog_v153": "Les neuf legendaires restants sont alignes sur leurs arbres de recette : Aetheric Anchor, Endless Summer, Klobjarne Geirr, Orrax Manifested, Selachimorpha, Stella Radians, Strife Unending, The Ascension et Transcendence. 30 composants crees, 243 exigences posees, 14 corrigees. Les nouveaux composants portent verified: false et une source « a documenter » : ils existent desormais dans le calcul, mais leur moyen d'obtention reste a ecrire. Les matieres premieres generiques restent hors perimetre, et le retrait de la part deja portee par la chaine est applique avant chaque ecriture.",
     "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource.",
-    "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition."
+    "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition.",
+    "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon."
   },
   "meta_events": {
     "vb": {
@@ -14730,28 +14731,50 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyau de destructeur + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
-            "en": "Forge promotion: 2 Destroyer Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+            "fr": "Promotion en Forge : 2 Noyau de destructeur + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. Vérifié sur la fiche.",
+            "en": "Forge promotion: 2 Destroyer Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. Verified on the page."
           },
           "free_repeatable": true,
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "map_bonus",
+          "tip": {
+            "fr": "Récompense bonus de carte, rotation sur 8 semaines : S1 rien · S2 Anse de Sud-Soleil (6) · S3 Rivage maudit (4) · S4 Bond de Malchor (5) · S5 Détroit glacé (6) · S6 Détroits de la Dévastation (5) · S7 Mont Maelstrom (4) · S8 Ascension ardente (7). ⚡ Les huit pierres parcourent le même cycle de sept cartes, DÉCALÉ : chaque semaine, plusieurs pierres tombent sur des cartes différentes.",
+            "en": "Map bonus reward, 8-week rotation: S1 rien · S2 Anse de Sud-Soleil (6) · S3 Rivage maudit (4) · S4 Bond de Malchor (5) · S5 Détroit glacé (6) · S6 Détroits de la Dévastation (5) · S7 Mont Maelstrom (4) · S8 Ascension ardente (7). ⚡ All eight lodestones run the same seven-map cycle, OFFSET: every week several lodestones drop on different maps."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Coffres de l'Étreinte de Sorrow (explorable) et des Fractales.",
+            "en": "Chests in Sorrow's Embrace (explorable) and Fractals."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
-            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14769,28 +14792,39 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyau de cristal + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
-            "en": "Forge promotion: 2 Crystal Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+            "fr": "Promotion en Forge : 2 Noyau de cristal + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. Vérifié sur la fiche.",
+            "en": "Forge promotion: 2 Crystal Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. Verified on the page."
           },
           "free_repeatable": true,
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "map_bonus",
+          "tip": {
+            "fr": "Récompense bonus de carte, rotation sur 8 semaines : S1 Mont Maelstrom (5) · S2 Ascension ardente (3) · S3 rien · S4 Anse de Sud-Soleil (7) · S5 Rivage maudit (7) · S6 Bond de Malchor (6) · S7 Détroit glacé (6) · S8 Détroits de la Dévastation (5). ⚡ Les huit pierres parcourent le même cycle de sept cartes, DÉCALÉ : chaque semaine, plusieurs pierres tombent sur des cartes différentes.",
+            "en": "Map bonus reward, 8-week rotation: S1 Mont Maelstrom (5) · S2 Ascension ardente (3) · S3 rien · S4 Anse de Sud-Soleil (7) · S5 Rivage maudit (7) · S6 Bond de Malchor (6) · S7 Détroit glacé (6) · S8 Détroits de la Dévastation (5). ⚡ All eight lodestones run the same seven-map cycle, OFFSET: every week several lodestones drop on different maps."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
-            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14808,28 +14842,39 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyau corrompu + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
-            "en": "Forge promotion: 2 Corrupted Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+            "fr": "Promotion en Forge : 2 Noyau corrompu + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. Vérifié sur la fiche.",
+            "en": "Forge promotion: 2 Corrupted Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. Verified on the page."
           },
           "free_repeatable": true,
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "map_bonus",
+          "tip": {
+            "fr": "Récompense bonus de carte, rotation sur 8 semaines : S1 Anse de Sud-Soleil (6) · S2 Rivage maudit (5) · S3 Bond de Malchor (4) · S4 Détroit glacé (7) · S5 Détroits de la Dévastation (4) · S6 Mont Maelstrom (6) · S7 Ascension ardente (3) · S8 rien. ⚡ Les huit pierres parcourent le même cycle de sept cartes, DÉCALÉ : chaque semaine, plusieurs pierres tombent sur des cartes différentes.",
+            "en": "Map bonus reward, 8-week rotation: S1 Anse de Sud-Soleil (6) · S2 Rivage maudit (5) · S3 Bond de Malchor (4) · S4 Détroit glacé (7) · S5 Détroits de la Dévastation (4) · S6 Mont Maelstrom (6) · S7 Ascension ardente (3) · S8 rien. ⚡ All eight lodestones run the same seven-map cycle, OFFSET: every week several lodestones drop on different maps."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
-            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
@@ -14845,34 +14890,54 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyau mordrem + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
-            "en": "Forge promotion: 2 Mordrem Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+            "fr": "Deux Noyaux mordrem combinés. Aucune Forge, aucun réactif.",
+            "en": "Two Mordrem Cores combined. No Forge, no reagents."
           },
           "free_repeatable": true,
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "drop",
+          "map": "Dragon's End",
+          "tip": {
+            "fr": "Butin du Vide à Fin du dragon : Veteran Void Thornheart au Tourbillon de jade, Void Stormseer, Void Worm. Coffres : Dragonvoid Cache, Exalted Supply Box (12), Skritt Supply Box (16), Magic-Warped Bundle.",
+            "en": "Void drops in Dragon's End: Veteran Void Thornheart at the Jade Whirl, Void Stormseer, Void Worm. Chests: Dragonvoid Cache, Exalted Supply Box (12), Skritt Supply Box (16), Magic-Warped Bundle."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
-            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
-      ]
+      ],
+      "recipe": {
+        "fr": "Combinaison directe de 2 Noyaux mordrem. ⚠ PAS de promotion en Forge, contrairement aux six pierres classiques.",
+        "en": "Direct combination of 2 Mordrem Cores. ⚠ NO Forge promotion, unlike the six classic lodestones."
+      },
+      "note": {
+        "fr": "⚠ Aucune récompense bonus de carte, contrairement aux six pierres classiques : le seul levier gratuit est le farm du Vide à Fin du dragon.",
+        "en": "⚠ No map bonus reward, unlike the six classic lodestones: the only free lever is farming the Void in Dragon's End."
+      }
     },
     "chromatic_sap": {
       "name": "Chromatic Sap",
@@ -14945,50 +15010,50 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyaux chargés + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique → 1 pierre magnétique. C'est la voie fiable : les noyaux se trouvent bien plus facilement.",
-            "en": "Forge promotion: 2 Charged Cores + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal → 1 lodestone. The reliable route: cores are far easier to find."
+            "fr": "Promotion en Forge : 2 Noyau chargé + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. Vérifié sur la fiche.",
+            "en": "Forge promotion: 2 Charged Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. Verified on the page."
           },
           "free_repeatable": true,
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "map_bonus",
           "tip": {
-            "fr": "Récompense bonus de carte, en rotation hebdomadaire : Bond de Malchor 5, Détroit glacé 7, Détroits de la Dévastation 7, Mont Maelstrom 5, Ascension ardente 8, Anse de Sud-Soleil 4, Rivage maudit 8. Une semaine sur huit ne donne rien. ⚡ Source gratuite et régulière, mais il faut être sur la bonne carte la bonne semaine.",
-            "en": "Map bonus reward, on a weekly rotation: Malchor's Leap 5, Frostgorge Sound 7, Straits of Devastation 7, Mount Maelstrom 5, Fireheart Rise 8, Southsun Cove 4, Cursed Shore 8. One week in eight gives nothing. ⚡ Free and regular, but you must be on the right map the right week."
+            "fr": "Récompense bonus de carte, rotation sur 8 semaines : S1 Bond de Malchor (5) · S2 Détroit glacé (7) · S3 Détroits de la Dévastation (7) · S4 Mont Maelstrom (5) · S5 Ascension ardente (8) · S6 rien · S7 Anse de Sud-Soleil (4) · S8 Rivage maudit (8). ⚡ Les huit pierres parcourent le même cycle de sept cartes, DÉCALÉ : chaque semaine, plusieurs pierres tombent sur des cartes différentes.",
+            "en": "Map bonus reward, 8-week rotation: S1 Bond de Malchor (5) · S2 Détroit glacé (7) · S3 Détroits de la Dévastation (7) · S4 Mont Maelstrom (5) · S5 Ascension ardente (8) · S6 rien · S7 Anse de Sud-Soleil (4) · S8 Rivage maudit (8). ⚡ All eight lodestones run the same seven-map cycle, OFFSET: every week several lodestones drop on different maps."
           },
           "free_repeatable": true,
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "chest",
           "tip": {
-            "fr": "Coffres du Creuset de l'Éternité (explorable) et des Fractales des Brumes. Récupération : Ferraille éthérisée et Ferraille d'horloge tordue.",
-            "en": "Chests in the Crucible of Eternity (explorable) and Fractals of the Mists. Salvage: Salvageable Aetherized Metal Scrap and Twisted Watchwork Scrap."
+            "fr": "Coffres du Creuset de l'Éternité (explorable) et des Fractales. Récupération : Ferraille éthérisée, Ferraille d'horloge tordue.",
+            "en": "Chests in the Crucible of Eternity (explorable) and Fractals. Salvage: Aetherized Metal Scrap, Twisted Watchwork Scrap."
           },
           "free_repeatable": true,
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. À 200 unités pour Endless Summer, comparer sérieusement l'achat au farm : la promotion coûte 2 noyaux plus trois réactifs par pierre.",
-            "en": "Trading Post. At 200 units for Endless Summer, seriously compare buying to farming: promotion costs 2 cores plus three reagents per lodestone."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
           "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone (export Antoine 25/08/2026)",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "endless_summer"
       ],
@@ -15459,28 +15524,50 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "Promotion en Forge : 2 Noyau d'onyx + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. ⚠ Mécanisme lu sur la fiche du Charged Lodestone et généralisé : chaque pierre se promeut depuis SON noyau. À confirmer sur la fiche de celle-ci.",
-            "en": "Forge promotion: 2 Onyx Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. ⚠ Mechanism read on the Charged Lodestone page and generalised: each lodestone promotes from ITS own core. To confirm on this one's page."
+            "fr": "Promotion en Forge : 2 Noyau d'onyx + 1 Bouteille de vin élonien (ou 1 Agent liant mystique) + 1 Poussière cristalline + 1 Cristal mystique. Vérifié sur la fiche.",
+            "en": "Forge promotion: 2 Onyx Core + 1 Bottle of Elonian Wine (or 1 Mystic Binding Agent) + 1 Pile of Crystalline Dust + 1 Mystic Crystal. Verified on the page."
           },
           "free_repeatable": true,
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "map_bonus",
+          "tip": {
+            "fr": "Récompense bonus de carte, rotation sur 8 semaines : S1 Détroits de la Dévastation (4) · S2 Mont Maelstrom (3) · S3 Ascension ardente (8) · S4 rien · S5 Anse de Sud-Soleil (3) · S6 Rivage maudit (7) · S7 Bond de Malchor (2) · S8 Détroit glacé (4). ⚡ Les huit pierres parcourent le même cycle de sept cartes, DÉCALÉ : chaque semaine, plusieurs pierres tombent sur des cartes différentes.",
+            "en": "Map bonus reward, 8-week rotation: S1 Détroits de la Dévastation (4) · S2 Mont Maelstrom (3) · S3 Ascension ardente (8) · S4 rien · S5 Anse de Sud-Soleil (3) · S6 Rivage maudit (7) · S7 Bond de Malchor (2) · S8 Détroit glacé (4). ⚡ All eight lodestones run the same seven-map cycle, OFFSET: every week several lodestones drop on different maps."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Coffre au trésor enchanté (chance). Récupération : Ferraille d'horloge tordue.",
+            "en": "Enchanted Treasure Chest (chance). Salvage: Twisted Watchwork Scrap."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         },
         {
           "type": "trading_post",
           "tip": {
-            "fr": "Comptoir. ⚠ Sources propres et rotation de récompense bonus de carte non documentées — elles diffèrent d'une pierre à l'autre.",
-            "en": "Trading Post. ⚠ Own drop sources and map bonus rotation not documented — they differ from one lodestone to the next."
+            "fr": "Comptoir.",
+            "en": "Trading Post."
           },
-          "verified": false,
+          "verified": true,
           "checked": "2026-08-22",
-          "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer"
+          "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Charged_Lodestone — mecanisme de promotion generalise aux six, sources propres a confirmer",
+      "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "orrax_manifested"
       ]
