@@ -281,30 +281,35 @@ vaut donc +1. Flask fait la conversion une fois pour toutes dans
 L'audit exige désormais que `track` et `tier` se posent **ensemble** — un palier
 sans piste ne se compare à rien.
 
-## 4 bis. Trente composants sans source documentée
+## 4 bis. Composants sans source — **28 sur 30 documentés**
 
-Les arbres des neuf derniers légendaires ont fait entrer **30 composants**
-absents du fichier : Ancient Coin (50 000 pour Orrax Manifested), les trois
-Essences de faille, les lodestones, les éclats de carte Janthir, les monnaies
-mursaat, Ursus Oblige, Tale of Adventure…
+Il reste **deux** composants marqués « à documenter » :
 
-Ils portent `verified: false` et une source marquée **« à documenter »** :
-**ils existent désormais dans le calcul, mais rien ne dit où les trouver.**
-L'audit les signale — un composant lourd sans piste gratuite laisse le joueur
-sans point de départ.
+- **`Tale of Adventure`** (100) — jamais cherché.
+- **`Unusual Coin`** (500) — partiellement fait : on sait que c'est l'ancien nom
+  d'`Ancient Coin` et que les deux s'échangent 1 pour 1 chez huit marchands. Ce
+  qui manque, c'est où trouver les **nouvelles** Unusual Coins en jeu.
 
-Ce qu'il faut par composant : la carte ou l'activité, un éventuel plafond
-quotidien, et une voie gratuite s'il en existe une. Une capture de la section
-*Acquisition* du wiki par ligne suffirait.
+Plus un point **déduit et non lu** : `Shard of Mistburned Barrens` porte la
+structure de ses deux jumeaux (21/semaine, plafond partagé) marquée
+`verified: false`. Sa fiche propre reste à lire.
 
-**Les plus urgents** — ce sont les volumes qui décident d'un chantier :
+### Timegates fermés découverts en documentant
 
-| composant | pour | quantité |
+Ce sont eux qui décident de l'ordre des chantiers — tous courent en parallèle du
+reste, donc à lancer en premier :
+
+| composant | cadence | délai |
 |---|---|---|
-| Ancient Coin | Orrax Manifested | **50 000** |
-| Ancient Coin | Klobjarne Geirr | 20 250 |
-| Fine Rift Essence | Orrax Manifested | 6 750 |
-| Ursus Oblige | Orrax Manifested | 1 250 |
+| Shard of Bava Nisos | 20/semaine, **vendeur unique** | 5 semaines |
+| Shard of Janthir Syntri | 21/semaine, plafond partagé | 5 semaines |
+| Shard of Lowland Shore | 21/semaine, plafond partagé | 5 semaines |
+| Ascended Shards of Glory | 400 par saison PvP | **2+ saisons** |
+
+### Murs sans timegate, mais à voir venir
+
+- **Seer Runestone** : 35 000 karma pièce → **7 millions** pour Stella Radians.
+- **Ancient Coin** : 50 000 pour Orrax, aucune source dense.
 
 ---
 

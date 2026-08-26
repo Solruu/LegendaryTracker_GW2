@@ -1055,7 +1055,8 @@
   "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs.",
   "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5.",
   "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10.",
-  "changelog_v160": "Ascended Shards of Glory et Shadowstone Fragment documentes. Le premier est le poste le plus FERME du fichier : 900 pour Transcendence, et aucune voie hors PvP structure — ni Comptoir, ni craft, ni conversion. Une saison complete rend 400 sur ses paliers non repetables, donc plus de deux saisons, ou le palier Byzantium repetable a 100 l'unite. Le second suit le profil Visions of Eternity, avec un BUG documente sur le wiki : la maitrise Resourcefulness ne donne AUCUNE chance de fragment en recoltant au Jardin d'Eternite, contrairement a ce qu'elle fait pour la seve et la pierre d'enchantement. Compter sur elle ici serait une erreur, et rien dans le tracker ne l'aurait dit."
+  "changelog_v160": "Ascended Shards of Glory et Shadowstone Fragment documentes. Le premier est le poste le plus FERME du fichier : 900 pour Transcendence, et aucune voie hors PvP structure — ni Comptoir, ni craft, ni conversion. Une saison complete rend 400 sur ses paliers non repetables, donc plus de deux saisons, ou le palier Byzantium repetable a 100 l'unite. Le second suit le profil Visions of Eternity, avec un BUG documente sur le wiki : la maitrise Resourcefulness ne donne AUCUNE chance de fragment en recoltant au Jardin d'Eternite, contrairement a ce qu'elle fait pour la seve et la pierre d'enchantement. Compter sur elle ici serait une erreur, et rien dans le tracker ne l'aurait dit.",
+  "changelog_v161": "Quatre derniers postes documentes. Shard of Bava Nisos : 20 par semaine chez un vendeur UNIQUE, sans coffre ni evenement ni Comptoir — 5 semaines incompressibles pour les 100 d'Orrax, un timegate ferme qu'il faut lancer en premier. Seer Runestone : 35 000 karma piece, soit 7 MILLIONS de karma pour les 200 de Stella Radians — le poste en karma le plus lourd du fichier. Curious Mursaat Ruin Shard : taux d'echange disperses d'un facteur 50, le meilleur exigeant de posseder une monture ou une mini precise. Mist Gate Residue : meme vendeur unique que le Shard of Bava Nisos, mais sans plafond documente."
  },
  "meta_events": {
   "vb": {
@@ -14635,18 +14636,19 @@
    "qty": {},
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Mêmes vendeurs de cœurs que le shard normal, version à prix réduit une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ : acheter la version réduite consomme le quota du shard normal chez ce vendeur.",
+      "en": "Same heart vendors as the regular shard, discounted once the heart is complete. ⚠ The weekly cap is SHARED: buying the discounted version consumes the regular shard's quota at that vendor."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki, fiches Discounted Shard (captures Antoine 25/08/2026)"
     }
    ],
    "verified": true,
-   "checked": "2026-08-25",
+   "checked": "2026-08-26",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [],
    "recipe": {
@@ -14719,18 +14721,19 @@
    "qty": {},
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Mêmes vendeurs de cœurs que le shard normal, version à prix réduit une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ : acheter la version réduite consomme le quota du shard normal chez ce vendeur.",
+      "en": "Same heart vendors as the regular shard, discounted once the heart is complete. ⚠ The weekly cap is SHARED: buying the discounted version consumes the regular shard's quota at that vendor."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki, fiches Discounted Shard (captures Antoine 25/08/2026)"
     }
    ],
    "verified": true,
-   "checked": "2026-08-25",
+   "checked": "2026-08-26",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [],
    "recipe": {
@@ -14982,19 +14985,42 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "event",
+     "map": "Mistburned Barrens",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "La plupart des événements des Mistburned Barrens en rendent 1 à 2. La part due à la maîtrise Mursaat Ruins Delving Improvements n'est pas établie sur le wiki.",
+      "en": "Most events in the Mistburned Barrens yield 1-2. How much comes from the Mursaat Ruins Delving Improvements mastery is not established on the wiki."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Garanti dans les coffres de relevé : Bloodstone Corridor, Valley of Agony et Wraith's Pass Survey Result Chest en rendent 2 chacun, plus le Mistburned Barrens Strongbox et la Black Lion Delivery Box (2-3).",
+      "en": "Guaranteed from survey chests: Bloodstone Corridor, Valley of Agony and Wraith's Pass Survey Result Chest yield 2 each, plus the Mistburned Barrens Strongbox and Black Lion Delivery Box (2-3)."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "⚠ Taux dispersés d'un facteur 50. Gharr Leadclaw (Lowland Shore) en donne 20 pour 1 ; le Kodan Landspeaker en donne 50 pour 1, mais chaque échange exige de posséder un objet précis — Endless Yagon Tonic, Mini Janthir Warg, Mini Barbed Vale. Le même Landspeaker en vend aussi à 1 050 karma pièce, ce qui est de loin le pire.",
+      "en": "⚠ Rates spread by a factor of 50. Gharr Leadclaw (Lowland Shore) gives 20 for 1; the Kodan Landspeaker gives 50 for 1, but each exchange requires owning a specific item — Endless Yagon Tonic, Mini Janthir Warg, Mini Barbed Vale. The same Landspeaker also sells them at 1,050 karma each, by far the worst."
+     },
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
    ]
@@ -15008,22 +15034,44 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
+     "map": "Mistburned Barrens",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "3 vendeurs de cœurs aux Mistburned Barrens, sur le modèle de Janthir Syntri et Lowland Shore : 7 par PNJ et par semaine, plafond partagé avec la version réduite. ⚠ Structure déduite de ses deux jumeaux, pas lue sur sa fiche.",
+      "en": "3 heart vendors in the Mistburned Barrens, on the Janthir Syntri and Lowland Shore model: 7 per NPC per week, cap shared with the discounted version. ⚠ Structure inferred from its two twins, not read on its own page."
      },
+     "free_repeatable": false,
      "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "checked": "2026-08-26",
+     "ref": "structure deduite des shards jumeaux — fiche propre a lire"
     }
    ],
    "verified": false,
-   "checked": "2026-08-22",
+   "checked": "2026-08-26",
    "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
    "needed_for": [
     "orrax_manifested"
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeurs de cœurs — Mistburned Barrens",
+       "en": "Heart vendors — Mistburned Barrens"
+      },
+      "period": "week",
+      "cap": 21,
+      "cost": {
+       "fr": "21 par semaine si la structure est bien celle de ses jumeaux. ⚠ NON VÉRIFIÉ : déduit de Janthir Syntri et Lowland Shore, dont les fiches ont été lues.",
+       "en": "21 per week if the structure matches its twins. ⚠ NOT VERIFIED: inferred from Janthir Syntri and Lowland Shore, whose pages were read."
+      },
+      "verified": false,
+      "checked": "2026-08-26",
+      "ref": "deduit des shards jumeaux"
+     }
+    ]
+   },
+   "timegate": true
   },
   "discounted_shard_of_mistburned_barrens": {
    "name": "Discounted Shard of Mistburned Barrens",
@@ -15032,18 +15080,19 @@
    "qty": {},
    "sources": [
     {
-     "type": "unknown",
+     "type": "renown_heart",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Mêmes vendeurs de cœurs que le shard normal, version à prix réduit une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ : acheter la version réduite consomme le quota du shard normal chez ce vendeur.",
+      "en": "Same heart vendors as the regular shard, discounted once the heart is complete. ⚠ The weekly cap is SHARED: buying the discounted version consumes the regular shard's quota at that vendor."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki, fiches Discounted Shard (captures Antoine 25/08/2026)"
     }
    ],
    "verified": true,
-   "checked": "2026-08-25",
+   "checked": "2026-08-26",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [],
    "recipe": {
@@ -15060,22 +15109,48 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Bava Nisos",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1 400. UNIQUE vendeur, et limite à 20 par semaine.",
+      "en": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1,400. The ONLY vendor, capped at 20 per week."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
-   ]
+   ],
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Ward Trader Sampaguita — Bava Nisos",
+       "en": "Ward Trader Sampaguita — Bava Nisos"
+      },
+      "period": "week",
+      "cap": 20,
+      "cost": {
+       "fr": "20 par semaine, chez le seul vendeur qui en propose. Les 100 requis prennent donc 5 semaines incompressibles — aucune autre voie, ni coffre, ni événement, ni Comptoir.",
+       "en": "20 per week, from the only vendor offering them. The 100 required therefore take 5 unavoidable weeks — no other route, no chest, no event, no Trading Post."
+      },
+      "verified": true,
+      "checked": "2026-08-26",
+      "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
+     }
+    ]
+   },
+   "timegate": true,
+   "note": {
+    "fr": "⏳ 5 semaines incompressibles pour les 100 d'Orrax Manifested, et aucune alternative. Comme les shards de Janthir Syntri et de Lowland Shore, c'est un timegate à lancer en tout premier : il court pendant que le reste avance.",
+    "en": "⏳ 5 unavoidable weeks for Orrax Manifested's 100, with no alternative. Like the Janthir Syntri and Lowland Shore shards, this is a timegate to start first: it runs while everything else progresses."
+   }
   },
   "onyx_lodestone": {
    "name": "Onyx Lodestone",
@@ -15145,19 +15220,21 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Bava Nisos",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 1 + 1 + 10. Seul vendeur, mais aucun plafond hebdomadaire documenté — contrairement au Shard of Bava Nisos vendu au même comptoir.",
+      "en": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 1 + 1 + 10. The only vendor, but no documented weekly cap — unlike the Shard of Bava Nisos sold at the same counter."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
    ]
@@ -15291,22 +15368,28 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "map": "Eternity's Garden",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Historian Meliza (Pilgrim's Rest) et Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35 000 karma pièce. Les deux exigent le cœur de renommée complété. ⚠ 200 runestones pour Stella Radians, soit 7 MILLIONS de karma — c'est le poste en karma le plus lourd du fichier, loin devant les éclats d'obsidienne.",
+      "en": "Historian Meliza (Pilgrim's Rest) and Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35,000 karma each. Both require the renown heart complete. ⚠ 200 runestones for Stella Radians, i.e. 7 MILLION karma — the heaviest karma line in the file, far ahead of obsidian shards."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
     "stella_radians"
-   ]
+   ],
+   "note": {
+    "fr": "⏳ 7 millions de karma pour les 200 de Stella Radians. Aucun plafond, donc aucun timegate — mais un mur de karma qu'il vaut mieux voir venir. Les boosters de karma et les cœurs quotidiens deviennent le vrai levier.",
+    "en": "⏳ 7 million karma for Stella Radians' 200. No cap, so no timegate — but a karma wall worth seeing coming. Karma boosters and daily hearts become the real lever."
+   }
   },
   "ascended_shards_of_glory": {
    "name": "Ascended Shards of Glory",
