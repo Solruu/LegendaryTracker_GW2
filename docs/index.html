@@ -1828,7 +1828,8 @@ const SOURCES_DB = {
     "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon.",
     "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs.",
     "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5.",
-    "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10."
+    "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10.",
+    "changelog_v160": "Ascended Shards of Glory et Shadowstone Fragment documentes. Le premier est le poste le plus FERME du fichier : 900 pour Transcendence, et aucune voie hors PvP structure — ni Comptoir, ni craft, ni conversion. Une saison complete rend 400 sur ses paliers non repetables, donc plus de deux saisons, ou le palier Byzantium repetable a 100 l'unite. Le second suit le profil Visions of Eternity, avec un BUG documente sur le wiki : la maitrise Resourcefulness ne donne AUCUNE chance de fragment en recoltant au Jardin d'Eternite, contrairement a ce qu'elle fait pour la seve et la pierre d'enchantement. Compter sur elle ici serait une erreur, et rien dans le tracker ne l'aurait dit."
   },
   "meta_events": {
     "vb": {
@@ -16000,22 +16001,60 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "event",
+          "map": "Eternity's Garden",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Événements du Jardin d'Éternité : 2 pièce sur une dizaine d'événements listés. « Shackles of the Ancients » en rend 5 au coffre quotidien, DOUBLÉ avec la maîtrise Prosperity Unending — la même qui double les métas de la sève et de la pierre d'enchantement.",
+            "en": "Events in Eternity's Garden: 2 each across about ten listed events. 'Shackles of the Ancients' yields 5 from the daily chest, DOUBLED with the Prosperity Unending mastery — the same one that doubles the sap and enchanting stone metas."
           },
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
+        },
+        {
+          "type": "reward_track",
+          "tip": {
+            "fr": "Piste Visions of Eternity : 5 unités DEUX fois, au palier 1 (5e récompense) et au palier 7 (32e). Soit 10 par piste complète, accessible en McM comme en PvP.",
+            "en": "Visions of Eternity track: 5 units TWICE, at tier 1 (5th reward) and tier 7 (32nd). That is 10 per full track, available in WvW and PvP."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
+        },
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Cinq vendeurs à 10 pièce : Canach et Castaway Agnes (Grève du Naufrage), Captain Emund (Bois Étoilé), Historian Meliza (Jardin d'Éternité), Alliance Field Quartermaster (Castora). Deux fois plus cher que la sève ou la pierre d'enchantement, qui sont à 5.",
+            "en": "Five vendors at 10 each: Canach and Castaway Agnes (Shipwreck Strand), Captain Emund (Starlit Weald), Historian Meliza (Eternity's Garden), Alliance Field Quartermaster (Castora). Twice the price of sap or enchanting stone, which are at 5."
+          },
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Black Lion Delivery Box (2-3), garanti.",
+            "en": "Black Lion Delivery Box (2-3), guaranteed."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
         }
       ],
-      "verified": false,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)",
       "needed_for": [
         "stella_radians"
-      ]
+      ],
+      "note": {
+        "fr": "⚠ BUG documenté sur le wiki : la maîtrise Resourcefulness ne donne AUCUNE chance de Fragment d'ombrepierre en récoltant au Jardin d'Éternité, contrairement à ce qu'elle fait pour la sève et la pierre d'enchantement. Ne pas compter sur la récolte de fond ici : les 500 requis passent par les événements, la piste de récompense ou le vendeur.",
+        "en": "⚠ Bug documented on the wiki: the Resourcefulness mastery has NO chance to grant Shadowstone Fragments when gathering in Eternity's Garden, unlike what it does for sap and enchanting stone. Do not count on background gathering here: the 500 required come from events, the reward track or the vendor."
+      }
     },
     "seer_runestone": {
       "name": "Seer Runestone",
@@ -16052,22 +16091,39 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "pvp_league",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Coffres de fin de palier des ligues PvP. Une saison complète rend 400 sur ses paliers non répétables : Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. Le palier Byzantium est ensuite RÉPÉTABLE à 100 l'unité — c'est là que se fait le volume.",
+            "en": "End-of-tier chests in PvP leagues. A full season yields 400 across its non-repeatable tiers: Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. The Byzantium tier is then REPEATABLE at 100 each — that is where the volume comes from."
           },
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Coffer of Ascended Shards of Glory : 50 garantis. Les mini-saisons 2v2 et 3v3 ont leur propre grille de paliers.",
+            "en": "Coffer of Ascended Shards of Glory: 50 guaranteed. The 2v2 and 3v3 mini-seasons have their own tier tables."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
         }
       ],
-      "verified": false,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)",
       "needed_for": [
         "transcendence"
-      ]
+      ],
+      "timegate": true,
+      "note": {
+        "fr": "⏳ 900 pour Transcendence, et AUCUNE voie hors PvP structuré : ni Comptoir, ni craft, ni conversion. Une saison complète rend 400 sur ses paliers non répétables, donc il faut soit plus de deux saisons, soit farmer le palier Byzantium répétable à 100 l'unité. C'est le poste le plus fermé du fichier — tout le reste de Transcendence peut avancer en parallèle, celui-ci ne dépend que du calendrier des ligues.",
+        "en": "⏳ 900 for Transcendence, and NO route outside structured PvP: no Trading Post, no crafting, no conversion. A full season yields 400 across its non-repeatable tiers, so it takes either more than two seasons or farming the repeatable Byzantium tier at 100 each. The most closed line in the file — everything else in Transcendence can progress in parallel, this one only follows the league calendar."
+      }
     }
   },
   "enchaînements_recommandés": {
