@@ -1826,7 +1826,8 @@ const SOURCES_DB = {
     "changelog_v154": "Ancient Coin documente d'apres la page wiki : caches kodan des Janthir Wilds (2-4, 6-10 et 13-20 selon le rang, et davantage avec 6 stacks de Lowland Expertise), coffres canthiens en volume, et echange 1 pour 1 des Unusual Coins chez huit marchands. Aucun plafond quotidien mais aucune source dense : c'est un farm de fond. Trouvaille : les Unusual Coins ont ete RENOMMEES Ancient Coins le 22 aout 2023 — les deux entrees coexistaient dans le fichier sans que rien ne dise qu'il s'agit de la meme ressource.",
     "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition.",
     "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon.",
-    "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs."
+    "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs.",
+    "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5."
   },
   "meta_events": {
     "vb": {
@@ -14951,24 +14952,86 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "map": "Shipwreck Strand",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Petite chance sur N'IMPORTE QUEL nœud de récolte de Grève du Naufrage, à condition d'avoir la maîtrise Resourcefulness. ⚡ C'est la source de fond : elle tombe pendant que tu fais autre chose sur la carte.",
+            "en": "Small chance from ANY resource node in Shipwreck Strand, provided the Resourcefulness mastery is unlocked. ⚡ The background source: it drops while you do something else on the map."
           },
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "map": "Shipwreck Strand",
+          "tip": {
+            "fr": "Coffres obscurcis de Grève du Naufrage, garantis : Large Obscured Chest et Long-Lost Keepsake Box en rendent 3, Medium Obscured Chest 2. ⚠ Tous exigent la maîtrise Obscured Riches. Aetherlocation Treasure en rend 1 à 2, selon la maîtrise Prosperity Unending.",
+            "en": "Obscured chests in Shipwreck Strand, guaranteed: Large Obscured Chest and Long-Lost Keepsake Box yield 3, Medium Obscured Chest 2. ⚠ All require the Obscured Riches mastery. Aetherlocation Treasure yields 1-2, depending on Prosperity Unending."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "meta",
+          "map": "Shipwreck Strand",
+          "tip": {
+            "fr": "Méta « Hammerhart Rumble! » : quelques événements en rendent 1, et la méta complète davantage — doublé avec la maîtrise Prosperity Unending.",
+            "en": "'Hammerhart Rumble!' meta: some events yield 1, and completing the meta yields more — doubled with the Prosperity Unending mastery."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "reward_track",
+          "tip": {
+            "fr": "Piste de récompense Visions of Eternity : 5 unités, Tier 5, 25e récompense sur 40. Accessible en McM comme en PvP, donc sans mettre les pieds sur la carte.",
+            "en": "Visions of Eternity reward track: 5 units, Tier 5, 25e récompense sur 40. Available in WvW and PvP, so without setting foot on the map."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Six vendeurs à 5 pièce : Canach et Castaway Agnes (Grève du Naufrage), Captain Emund et Huntmaster Arnorr (Bois Étoilé), Historian Meliza (Jardin d'Éternité), Alliance Field Quartermaster (Castora). 💡 Le Hero's Choice Chest de Castora en donne 25 pour 1 — cinq fois mieux.",
+            "en": "Six vendors at 5 each: Canach and Castaway Agnes (Shipwreck Strand), Captain Emund and Huntmaster Arnorr (Starlit Weald), Historian Meliza (Eternity's Garden), Alliance Field Quartermaster (Castora). 💡 Castora's Hero's Choice Chest gives 25 for 1 — five times better."
+          },
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Garanti dans le Shipwreck Strand Lockbox (1-2) et la Black Lion Delivery Box (2-3).",
+            "en": "Guaranteed from the Shipwreck Strand Lockbox (1-2) and Black Lion Delivery Box (2-3)."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "endless_summer",
         "selachimorpha"
-      ]
+      ],
+      "note": {
+        "fr": "💡 Trois maîtrises Visions of Eternity commandent le rendement, et elles servent aux DEUX monnaies : Resourcefulness ouvre la récolte sur tous les nœuds, Obscured Riches ouvre les coffres obscurcis, Prosperity Unending double les métas et améliore les trésors. Les monter une fois profite à Selachimorpha, Endless Summer ET Aetheric Anchor — 1 500 unités de chaque monnaie au total.",
+        "en": "💡 Three Visions of Eternity masteries drive the yield, and they serve BOTH currencies: Resourcefulness opens gathering on every node, Obscured Riches opens the obscured chests, Prosperity Unending doubles metas and improves treasures. Levelling them once benefits Selachimorpha, Endless Summer AND Aetheric Anchor — 1,500 units of each currency in total."
+      }
     },
     "raw_enchanting_stone": {
       "name": "Raw Enchanting Stone",
@@ -14981,24 +15044,86 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "map": "Starlit Weald",
           "tip": {
-            "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-            "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+            "fr": "Petite chance sur N'IMPORTE QUEL nœud de récolte de Bois Étoilé, à condition d'avoir la maîtrise Resourcefulness. ⚡ C'est la source de fond : elle tombe pendant que tu fais autre chose sur la carte.",
+            "en": "Small chance from ANY resource node in Starlit Weald, provided the Resourcefulness mastery is unlocked. ⚡ The background source: it drops while you do something else on the map."
           },
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "map": "Starlit Weald",
+          "tip": {
+            "fr": "Coffres obscurcis de Bois Étoilé, garantis : Large Obscured Chest et Long-Lost Keepsake Box en rendent 3, Medium Obscured Chest 2. ⚠ Tous exigent la maîtrise Obscured Riches. Aetherlocation Treasure en rend 1 à 2, selon la maîtrise Prosperity Unending.",
+            "en": "Obscured chests in Starlit Weald, guaranteed: Large Obscured Chest and Long-Lost Keepsake Box yield 3, Medium Obscured Chest 2. ⚠ All require the Obscured Riches mastery. Aetherlocation Treasure yields 1-2, depending on Prosperity Unending."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "meta",
+          "map": "Starlit Weald",
+          "tip": {
+            "fr": "Méta « Secrets of the Weald » : quelques événements en rendent 1, et la méta complète davantage — doublé avec la maîtrise Prosperity Unending.",
+            "en": "'Secrets of the Weald' meta: some events yield 1, and completing the meta yields more — doubled with the Prosperity Unending mastery."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "reward_track",
+          "tip": {
+            "fr": "Piste de récompense Visions of Eternity : 5 unités, Tier 3, 15e récompense sur 40. Accessible en McM comme en PvP, donc sans mettre les pieds sur la carte.",
+            "en": "Visions of Eternity reward track: 5 units, Tier 3, 15e récompense sur 40. Available in WvW and PvP, so without setting foot on the map."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Six vendeurs à 5 pièce : Canach et Castaway Agnes (Grève du Naufrage), Captain Emund et Huntmaster Arnorr (Bois Étoilé), Historian Meliza (Jardin d'Éternité), Alliance Field Quartermaster (Castora). 💡 Le Hero's Choice Chest de Castora en donne 25 pour 1 — cinq fois mieux.",
+            "en": "Six vendors at 5 each: Canach and Castaway Agnes (Shipwreck Strand), Captain Emund and Huntmaster Arnorr (Starlit Weald), Historian Meliza (Eternity's Garden), Alliance Field Quartermaster (Castora). 💡 Castora's Hero's Choice Chest gives 25 for 1 — five times better."
+          },
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Garanti dans le Starlit Weald Cache (1-2) et la Black Lion Delivery Box (2-3).",
+            "en": "Guaranteed from the Starlit Weald Cache (1-2) and Black Lion Delivery Box (2-3)."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)"
         }
       ],
-      "verified": false,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki:Chromatic_Sap + wiki:Raw_Enchanting_Stone (exports Antoine 25/08/2026)",
       "needed_for": [
         "aetheric_anchor",
         "endless_summer",
         "selachimorpha"
-      ]
+      ],
+      "note": {
+        "fr": "💡 Trois maîtrises Visions of Eternity commandent le rendement, et elles servent aux DEUX monnaies : Resourcefulness ouvre la récolte sur tous les nœuds, Obscured Riches ouvre les coffres obscurcis, Prosperity Unending double les métas et améliore les trésors. Les monter une fois profite à Selachimorpha, Endless Summer ET Aetheric Anchor — 1 500 unités de chaque monnaie au total.",
+        "en": "💡 Three Visions of Eternity masteries drive the yield, and they serve BOTH currencies: Resourcefulness opens gathering on every node, Obscured Riches opens the obscured chests, Prosperity Unending doubles metas and improves treasures. Levelling them once benefits Selachimorpha, Endless Summer AND Aetheric Anchor — 1,500 units of each currency in total."
+      }
     },
     "charged_lodestone": {
       "name": "Charged Lodestone",
