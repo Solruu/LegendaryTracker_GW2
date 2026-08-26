@@ -1056,7 +1056,8 @@
   "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5.",
   "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10.",
   "changelog_v160": "Ascended Shards of Glory et Shadowstone Fragment documentes. Le premier est le poste le plus FERME du fichier : 900 pour Transcendence, et aucune voie hors PvP structure — ni Comptoir, ni craft, ni conversion. Une saison complete rend 400 sur ses paliers non repetables, donc plus de deux saisons, ou le palier Byzantium repetable a 100 l'unite. Le second suit le profil Visions of Eternity, avec un BUG documente sur le wiki : la maitrise Resourcefulness ne donne AUCUNE chance de fragment en recoltant au Jardin d'Eternite, contrairement a ce qu'elle fait pour la seve et la pierre d'enchantement. Compter sur elle ici serait une erreur, et rien dans le tracker ne l'aurait dit.",
-  "changelog_v161": "Quatre derniers postes documentes. Shard of Bava Nisos : 20 par semaine chez un vendeur UNIQUE, sans coffre ni evenement ni Comptoir — 5 semaines incompressibles pour les 100 d'Orrax, un timegate ferme qu'il faut lancer en premier. Seer Runestone : 35 000 karma piece, soit 7 MILLIONS de karma pour les 200 de Stella Radians — le poste en karma le plus lourd du fichier. Curious Mursaat Ruin Shard : taux d'echange disperses d'un facteur 50, le meilleur exigeant de posseder une monture ou une mini precise. Mist Gate Residue : meme vendeur unique que le Shard of Bava Nisos, mais sans plafond documente."
+  "changelog_v161": "Quatre derniers postes documentes. Shard of Bava Nisos : 20 par semaine chez un vendeur UNIQUE, sans coffre ni evenement ni Comptoir — 5 semaines incompressibles pour les 100 d'Orrax, un timegate ferme qu'il faut lancer en premier. Seer Runestone : 35 000 karma piece, soit 7 MILLIONS de karma pour les 200 de Stella Radians — le poste en karma le plus lourd du fichier. Curious Mursaat Ruin Shard : taux d'echange disperses d'un facteur 50, le meilleur exigeant de posseder une monture ou une mini precise. Mist Gate Residue : meme vendeur unique que le Shard of Bava Nisos, mais sans plafond documente.",
+  "changelog_v162": "Les trente composants sont documentes. ⚠ Ma deduction sur le Shard of Mistburned Barrens etait fausse sur les TROIS points : un seul vendeur et non trois, aucun plafond hebdomadaire, et le cœur de renommee doit etre INCOMPLET — l'inverse exact de ses deux jumeaux. La symetrie parfaite de Janthir Syntri et Lowland Shore ne s'etendait pas a la troisieme carte, et le marquage verified: false etait justifie. Unusual Coin se revele etre une monnaie Visions of Eternity et non Janthir : ses coffres sont tous conditionnes par la maitrise Obscured Riches, la meme qui ouvre ceux de la Seve chromatique et de la Pierre d'enchantement brute. Tale of Adventure est une recompense d'histoire non repetable, donc sans farm possible."
  },
  "meta_events": {
   "vb": {
@@ -15037,41 +15038,25 @@
      "type": "renown_heart",
      "map": "Mistburned Barrens",
      "tip": {
-      "fr": "3 vendeurs de cœurs aux Mistburned Barrens, sur le modèle de Janthir Syntri et Lowland Shore : 7 par PNJ et par semaine, plafond partagé avec la version réduite. ⚠ Structure déduite de ses deux jumeaux, pas lue sur sa fiche.",
-      "en": "3 heart vendors in the Mistburned Barrens, on the Janthir Syntri and Lowland Shore model: 7 per NPC per week, cap shared with the discounted version. ⚠ Structure inferred from its two twins, not read on its own page."
+      "fr": "Kodan Landspeaker (Alliance Staging Ground), 3 + 3 + 1 750 karma. ⚠ Exige que le cœur de renommée soit INCOMPLET — l'inverse des shards de Janthir Syntri et Lowland Shore, qui exigent qu'il soit terminé. Un seul vendeur, et aucun plafond hebdomadaire documenté.",
+      "en": "Kodan Landspeaker (Alliance Staging Ground), 3 + 3 + 1,750 karma. ⚠ Requires the renown heart to be INCOMPLETE — the opposite of the Janthir Syntri and Lowland Shore shards, which require it finished. A single vendor, and no documented weekly cap."
      },
      "free_repeatable": false,
-     "verified": false,
+     "verified": true,
      "checked": "2026-08-26",
-     "ref": "structure deduite des shards jumeaux — fiche propre a lire"
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
+   "verified": true,
    "checked": "2026-08-26",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
    ],
-   "cadence": {
-    "sources": [
-     {
-      "label": {
-       "fr": "Vendeurs de cœurs — Mistburned Barrens",
-       "en": "Heart vendors — Mistburned Barrens"
-      },
-      "period": "week",
-      "cap": 21,
-      "cost": {
-       "fr": "21 par semaine si la structure est bien celle de ses jumeaux. ⚠ NON VÉRIFIÉ : déduit de Janthir Syntri et Lowland Shore, dont les fiches ont été lues.",
-       "en": "21 per week if the structure matches its twins. ⚠ NOT VERIFIED: inferred from Janthir Syntri and Lowland Shore, whose pages were read."
-      },
-      "verified": false,
-      "checked": "2026-08-26",
-      "ref": "deduit des shards jumeaux"
-     }
-    ]
-   },
-   "timegate": true
+   "note": {
+    "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
+    "en": "⚠ Does NOT follow its two twins' pattern, contrary to what the symmetry suggested: one vendor instead of three, no weekly cap, and the heart must be left INCOMPLETE. The 100 required therefore carry no timegate — but remember not to finish the heart."
+   }
   },
   "discounted_shard_of_mistburned_barrens": {
    "name": "Discounted Shard of Mistburned Barrens",
@@ -15248,25 +15233,38 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "map": "Visions of Eternity",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Coffres obscurcis, tous garantis mais TOUS conditionnés par la maîtrise Obscured Riches : Large Obscured Chest, Long-Lost Keepsake Box et Seer Artifact Chest 7-10, Medium 4-6, Small et Seer Storage 1-3. ⚡ C'est la même maîtrise qui ouvre les coffres de la Sève chromatique et de la Pierre d'enchantement brute — la monter sert trois monnaies.",
+      "en": "Obscured chests, all guaranteed but ALL gated behind the Obscured Riches mastery: Large Obscured Chest, Long-Lost Keepsake Box and Seer Artifact Chest 7-10, Medium 4-6, Small and Seer Storage 1-3. ⚡ The same mastery opens the Chromatic Sap and Raw Enchanting Stone chests — levelling it serves three currencies."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Aetherlocation Treasure : 2 à 10 sur les coffres normaux, et 15 à 17 sur les coffres RARES. C'est de loin le meilleur rendement par ouverture.",
+      "en": "Aetherlocation Treasure: 2-10 from normal chests, and 15-17 from RARE chests. By far the best yield per opening."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
     }
    ],
    "verified": true,
-   "checked": "2026-08-22",
-   "ref": "wiki:Ancient_Coin, sections Contained in / Gathered from / Sold by / Notes (export Antoine 22/08/2026)",
+   "checked": "2026-08-26",
+   "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
    "needed_for": [
     "selachimorpha"
    ],
    "note": {
-    "fr": "⚠ Depuis la mise à jour du 22 août 2023, les Unusual Coins existantes ont été RECATÉGORISÉES en Ancient Coins. Les nouvelles Unusual Coins trouvées en jeu s'échangent 1 pour 1 contre des Ancient Coins chez les huit marchands. Les deux entrées coexistent donc dans le fichier, mais il s'agit de la même ressource à une conversion près.",
-    "en": "⚠ Since the 22 August 2023 update, existing Unusual Coins were RECATEGORISED as Ancient Coins. New Unusual Coins found in game trade 1 for 1 for Ancient Coins at the eight vendors. The two entries therefore coexist in the file, but they are the same resource up to a conversion."
+    "fr": "Monnaie Visions of Eternity, et non Janthir comme son échange contre des Ancient Coins pouvait le laisser croire. Les 500 requis se farment sur les mêmes cartes et avec la même maîtrise que la Sève chromatique et la Pierre d'enchantement brute : Obscured Riches ouvre les trois. 💡 S'échangent 1 pour 1 contre des Ancient Coins chez huit marchands — un pont direct vers les 50 000 d'Orrax Manifested.",
+    "en": "A Visions of Eternity currency, not a Janthir one as its trade for Ancient Coins might suggest. The 500 required farm on the same maps and behind the same mastery as Chromatic Sap and Raw Enchanting Stone: Obscured Riches opens all three. 💡 Trade 1 for 1 for Ancient Coins at eight vendors — a direct bridge to Orrax Manifested's 50,000."
    }
   },
   "tale_of_adventure": {
@@ -15278,22 +15276,38 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "story",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Récompense des étapes d'histoire de Fin des dragons (les cinq actes) et de Secrets of the Obscure. ⚡ Une seule fois par étape et par compte : ce n'est pas un farm, c'est un sous-produit de la progression narrative.",
+      "en": "Reward from End of Dragons story steps (all five acts) and Secrets of the Obscure. ⚡ Once per step per account: not a farm, a by-product of story progression."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": false,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Black Lion Delivery Box, garanti. Black Lion Material Bag: End of Dragons, par chance.",
+      "en": "Black Lion Delivery Box, guaranteed. Black Lion Material Bag: End of Dragons, by chance."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-26",
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
    "needed_for": [
     "selachimorpha"
-   ]
+   ],
+   "note": {
+    "fr": "⚠ Aucune source répétable en jeu : les étapes d'histoire ne se rejouent pas pour la récompense. Si les 100 requis dépassent ce que l'histoire donne, le reste passe par le Comptoir ou les coffres du Lion Noir.",
+    "en": "⚠ No repeatable in-game source: story steps do not re-award on replay. If the 100 required exceed what the story grants, the rest comes from the Trading Post or Black Lion chests."
+   }
   },
   "shadowstone_fragment": {
    "name": "Shadowstone Fragment",

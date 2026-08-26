@@ -281,32 +281,46 @@ vaut donc +1. Flask fait la conversion une fois pour toutes dans
 L'audit exige désormais que `track` et `tier` se posent **ensemble** — un palier
 sans piste ne se compare à rien.
 
-## 4 bis. Composants sans source — **28 sur 30 documentés**
+## 4 bis. Composants sans source — ✅ **RÉSOLU : 30 sur 30**
 
-Il reste **deux** composants marqués « à documenter » :
+Aucun composant ne porte plus de source « à documenter », et aucun n'est marqué
+`verified: false`.
 
-- **`Tale of Adventure`** (100) — jamais cherché.
-- **`Unusual Coin`** (500) — partiellement fait : on sait que c'est l'ancien nom
-  d'`Ancient Coin` et que les deux s'échangent 1 pour 1 chez huit marchands. Ce
-  qui manque, c'est où trouver les **nouvelles** Unusual Coins en jeu.
+**La dernière fiche a invalidé une déduction, sur les trois points.**
+J'avais donné au `Shard of Mistburned Barrens` la structure de ses deux jumeaux
+— 3 vendeurs, 21/semaine, cœur complété. La réalité :
 
-Plus un point **déduit et non lu** : `Shard of Mistburned Barrens` porte la
-structure de ses deux jumeaux (21/semaine, plafond partagé) marquée
-`verified: false`. Sa fiche propre reste à lire.
+| | jumeaux | Mistburned |
+|---|---|---|
+| vendeurs | 3 | **1** |
+| plafond | 21/semaine | **aucun** |
+| cœur de renommée | **complété** | **incomplet** |
 
-### Timegates fermés découverts en documentant
+L'inverse exact sur la condition du cœur. La symétrie parfaite de Janthir Syntri
+et Lowland Shore ne s'étendait pas à la troisième carte — et le `verified: false`
+posé sur la déduction a fait son travail pour la troisième fois.
 
-Ce sont eux qui décident de l'ordre des chantiers — tous courent en parallèle du
-reste, donc à lancer en premier :
+**Deux ponts découverts en documentant :**
+
+- **`Unusual Coin` est une monnaie Visions of Eternity**, pas Janthir. Ses
+  coffres sont tous derrière la maîtrise **Obscured Riches** — la même qui ouvre
+  ceux de la Sève chromatique et de la Pierre d'enchantement brute. Une maîtrise,
+  **trois monnaies**. Et elles s'échangent 1 pour 1 contre des Ancient Coins :
+  un pont direct vers les 50 000 d'Orrax.
+- **`Tale of Adventure`** n'a **aucune source répétable** : c'est une récompense
+  d'étape d'histoire, une fois par compte. Au-delà de ce que l'histoire donne,
+  il n'y a que le Comptoir.
+
+### Timegates fermés — l'ordre des chantiers
 
 | composant | cadence | délai |
 |---|---|---|
-| Shard of Bava Nisos | 20/semaine, **vendeur unique** | 5 semaines |
+| Shard of Bava Nisos | 20/semaine, vendeur unique | 5 semaines |
 | Shard of Janthir Syntri | 21/semaine, plafond partagé | 5 semaines |
 | Shard of Lowland Shore | 21/semaine, plafond partagé | 5 semaines |
 | Ascended Shards of Glory | 400 par saison PvP | **2+ saisons** |
 
-### Murs sans timegate, mais à voir venir
+### Murs sans timegate
 
 - **Seer Runestone** : 35 000 karma pièce → **7 millions** pour Stella Radians.
 - **Ancient Coin** : 50 000 pour Orrax, aucune source dense.
