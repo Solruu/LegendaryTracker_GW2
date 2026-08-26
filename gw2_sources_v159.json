@@ -1053,7 +1053,8 @@
   "changelog_v155": "Charged Lodestone documente : promotion en Forge depuis 2 Noyaux charges, recompense bonus de carte en rotation hebdomadaire (5 a 8 selon la carte, une semaine sur huit sans rien), coffres du Creuset de l'Eternite et des Fractales, recuperation de ferrailles. Le mecanisme de promotion est generalise aux cinq autres pierres — chacune se promeut depuis SON noyau — mais marque verified: false : c'est une generalisation, pas une lecture. Leurs sources propres et leur rotation de carte different et restent a documenter. La page generale des lodestones n'est qu'une page d'homonymie avec les prix du Comptoir : sans interet pour l'acquisition.",
   "changelog_v156": "Les huit fiches de lodestones lues. La recette de promotion est confirmee identique sur les six pierres classiques : 2 noyaux + vin elonien ou agent liant + poussiere cristalline + cristal mystique. La recompense bonus de carte suit un cycle de sept cartes plus une semaine vide, DECALE d'une pierre a l'autre — chaque semaine, plusieurs pierres tombent sur des cartes differentes, et les rotations completes sont desormais dans le fichier. ⚠ Ma generalisation etait FAUSSE pour le Mordrem Lodestone : il se fabrique en combinant directement deux Noyaux mordrem, sans Forge ni reactif, et ne beneficie d'AUCUN bonus de carte. Son seul levier gratuit est le farm du Vide a Fin du dragon.",
   "changelog_v157": "Six composants Janthir documentes. Trouvaille qui change les quantites : les « Discounted Shard of X » sont des CONTENEURS rendant 1 shard normal, pas une matiere distincte — le fichier en portait 100 de chaque pour Klobjarne Geirr, soit 200 la ou 100 suffisent. GW2Efficiency les listait tous deux parce qu'il montre le chemin d'achat le moins cher, pas deux exigences. Ils deviennent parents du shard. Cadence posee : 7 shards par PNJ et par semaine sur 3 PNJ, soit 21, et le plafond est PARTAGE entre la version normale et la reduite — les 100 requis prennent donc 5 semaines quelle que soit la version achetee. Meilleur taux repere pour la Curious Mursaat Currency : 20 pour 1 chez Gharr Leadclaw, contre 1 050 karma piece ailleurs.",
-  "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5."
+  "changelog_v158": "Chromatic Sap et Raw Enchanting Stone documentes. Les deux sont strictement symetriques — meme structure de sources, seule la carte change : Greve du Naufrage pour l'un, Bois Etoile pour l'autre. Le point qui compte : TROIS maitrises Visions of Eternity commandent le rendement et servent aux deux. Resourcefulness ouvre la recolte sur n'importe quel nœud, Obscured Riches ouvre les coffres obscurcis qui rendent 2 a 3 garantis, Prosperity Unending double les metas. Les monter une fois profite a Selachimorpha, Endless Summer ET Aetheric Anchor, soit 1 500 unites de chaque monnaie. Repere au passage : le Hero's Choice Chest de Castora rend 25 pour 1 la ou les six vendeurs de carte en donnent 5.",
+  "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10."
  },
  "meta_events": {
   "vb": {
@@ -14785,22 +14786,61 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "map": "Mistburned Barrens",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Obsidienne mursaat : rendement GARANTI. Plus une petite chance sur n'importe quel nœud de récolte des Mistburned Barrens, à condition d'avoir la maîtrise Bearkin Harvesting Techniques.",
+      "en": "Mursaat Obsidian: GUARANTEED yield. Plus a small chance from any resource node in the Mistburned Barrens, provided the Bearkin Harvesting Techniques mastery is unlocked."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "map": "Mistburned Barrens",
+     "tip": {
+      "fr": "Grand Chest des Mistburned Barrens : 4, 6 ou 8 selon les stacks de participation de couloir. ⚡ C'est le levier : plus on participe à la méta, plus le coffre rend. Mursaat Ruins Cache en donne 1-2 avec 4 stacks de Lowland Expertise.",
+      "en": "Grand Chest in the Mistburned Barrens: 4, 6 or 8 depending on lane participation stacks. ⚡ That is the lever: the more you take part in the meta, the more the chest yields. Mursaat Ruins Cache gives 1-2 with 4 stacks of Lowland Expertise."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Caches kodan — Lesser, Minor et Mythical (1-2) — mais UNIQUEMENT avec 4 stacks de Lowland Expertise. Sans la maîtrise, ces caches n'en donnent aucun.",
+      "en": "Kodan caches — Lesser, Minor and Mythical (1-2) — but ONLY with 4 stacks of Lowland Expertise. Without the mastery these caches give none."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Quatre tarifs, du pire au meilleur : Ward Trader Sampaguita 10 pour 12, Kodan Landspeaker 10 pour 6, Mistburned Renown Chest 20 pour 1, Commander's Choice Chest de Bava Nisos 30 pour 1. 💡 Le Commander's Choice est deux fois meilleur que le Renown Chest et vingt fois meilleur que Sampaguita.",
+      "en": "Four rates, worst to best: Ward Trader Sampaguita 10 for 12, Kodan Landspeaker 10 for 6, Mistburned Renown Chest 20 for 1, Bava Nisos Commander's Choice Chest 30 for 1. 💡 Commander's Choice is twice as good as the Renown Chest and twenty times better than Sampaguita."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
-   ]
+   ],
+   "note": {
+    "fr": "⏳ 750 pour Orrax Manifested. Deux maîtrises commandent le rendement : Bearkin Harvesting Techniques ouvre la récolte sur tous les nœuds, et 4 stacks de Lowland Expertise ouvrent les caches kodan — les mêmes qui démultiplient les Ancient Coins. Les monter sert donc deux postes à la fois.",
+    "en": "⏳ 750 for Orrax Manifested. Two masteries drive the yield: Bearkin Harvesting Techniques opens gathering on every node, and 4 stacks of Lowland Expertise open the kodan caches — the same ones that multiply Ancient Coins. Levelling them serves two lines at once."
+   }
   },
   "titan_heatstone": {
    "name": "Titan Heatstone",
@@ -14811,22 +14851,73 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "map": "Mistburned Barrens",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "Amas de pierre de chaleur titanesque : rendement GARANTI. Plus une petite chance sur n'importe quel nœud de récolte des Mistburned Barrens, à condition d'avoir la maîtrise Bearkin Harvesting Techniques.",
+      "en": "Titan Heatstone Cluster: GUARANTEED yield. Plus a small chance from any resource node in the Mistburned Barrens, provided the Bearkin Harvesting Techniques mastery is unlocked."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "drop",
+     "map": "Janthir Wilds",
+     "tip": {
+      "fr": "Ventshot, un ennemi normal de Janthir Syntri, Bava Nisos et Mistburned Barrens, en lâche 1.",
+      "en": "Ventshot, un ennemi normal de Janthir Syntri, Bava Nisos et Mistburned Barrens, en lâche 1."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "map": "Mistburned Barrens",
+     "tip": {
+      "fr": "Grand Chest des Mistburned Barrens : 4, 6 ou 8 selon les stacks de participation de couloir. ⚡ C'est le levier : plus on participe à la méta, plus le coffre rend. Mursaat Ruins Cache en donne 1-2 avec 4 stacks de Lowland Expertise.",
+      "en": "Grand Chest in the Mistburned Barrens: 4, 6 or 8 depending on lane participation stacks. ⚡ That is the lever: the more you take part in the meta, the more the chest yields. Mursaat Ruins Cache gives 1-2 with 4 stacks of Lowland Expertise."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Caches kodan — Lesser, Minor et Mythical (1-2) — mais UNIQUEMENT avec 4 stacks de Lowland Expertise. Sans la maîtrise, ces caches n'en donnent aucun.",
+      "en": "Kodan caches — Lesser, Minor and Mythical (1-2) — but ONLY with 4 stacks of Lowland Expertise. Without the mastery these caches give none."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Quatre tarifs, du pire au meilleur : Ward Trader Sampaguita 10 pour 12, Kodan Landspeaker 10 pour 6, Mistburned Renown Chest 20 pour 1, Commander's Choice Chest de Bava Nisos 30 pour 1. 💡 Le Commander's Choice est deux fois meilleur que le Renown Chest et vingt fois meilleur que Sampaguita.",
+      "en": "Four rates, worst to best: Ward Trader Sampaguita 10 for 12, Kodan Landspeaker 10 for 6, Mistburned Renown Chest 20 for 1, Bava Nisos Commander's Choice Chest 30 for 1. 💡 Commander's Choice is twice as good as the Renown Chest and twenty times better than Sampaguita."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
-   ]
+   ],
+   "note": {
+    "fr": "⏳ 750 pour Orrax Manifested. Deux maîtrises commandent le rendement : Bearkin Harvesting Techniques ouvre la récolte sur tous les nœuds, et 4 stacks de Lowland Expertise ouvrent les caches kodan — les mêmes qui démultiplient les Ancient Coins. Les monter sert donc deux postes à la fois.",
+    "en": "⏳ 750 for Orrax Manifested. Two masteries drive the yield: Bearkin Harvesting Techniques opens gathering on every node, and 4 stacks of Lowland Expertise open the kodan caches — the same ones that multiply Ancient Coins. Levelling them serves two lines at once."
+   }
   },
   "curious_mursaat_remnants": {
    "name": "Curious Mursaat Remnants",
@@ -14837,22 +14928,49 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "event",
+     "map": "Bava Nisos",
      "tip": {
-      "fr": "Source à documenter. Repéré dans l'arbre de recette, pas encore rattaché à une carte ni à une activité.",
-      "en": "Source to document. Spotted in the recipe tree, not yet tied to a map or activity."
+      "fr": "La plupart des événements de Bava Nisos en rendent : 1 à 2 pour un événement dynamique, 2 à 4 pour un événement de groupe. ⚡ « A Titanic Voyage » en rend 32 au total à 100 % de participation — de loin le meilleur passage.",
+      "en": "Most events in Bava Nisos yield them: 1-2 for a dynamic event, 2-4 for a group event. ⚡ 'A Titanic Voyage' yields 32 in total at 100% participation — by far the best run."
      },
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "reward_track",
+     "tip": {
+      "fr": "Piste de récompense Janthir Wilds : 5 unités, palier 7, 34e récompense sur 40. Accessible en McM comme en PvP.",
+      "en": "Janthir Wilds reward track: 5 units, tier 7, 34th reward of 40. Available in WvW and PvP."
+     },
+     "free_repeatable": true,
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "20 pour 1 chez Gharr Leadclaw (Lowland Shore), au Portable Wizard's Tower Exchange et au Wizard's Gobbler. Le Commander's Choice Chest de Bava Nisos n'en donne que 10 pour 1 — deux fois moins.",
+      "en": "20 for 1 from Gharr Leadclaw (Lowland Shore), the Portable Wizard's Tower Exchange and the Wizard's Gobbler. Bava Nisos's Commander's Choice Chest gives only 10 for 1 — half as good."
+     },
+     "verified": true,
+     "checked": "2026-08-25",
+     "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)"
     }
    ],
-   "verified": false,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)",
+   "verified": true,
+   "checked": "2026-08-25",
+   "ref": "wiki:Titan_Heatstone + Mursaat_Obsidian_Chunk + Curious_Mursaat_Remnants (exports Antoine 26/08/2026)",
    "needed_for": [
     "orrax_manifested"
-   ]
+   ],
+   "note": {
+    "fr": "⏳ 725 pour Orrax Manifested. Profil très différent des deux autres monnaies mursaat : aucune récolte, aucune cache — c'est une monnaie d'ÉVÉNEMENT. « A Titanic Voyage » en rend 32 par passage complet, soit environ 23 passages. ⚠ Le meilleur taux d'échange s'inverse ici : 20 pour 1 chez Gharr Leadclaw, quand le Commander's Choice Chest, meilleur pour la pierre de chaleur et l'obsidienne, n'en donne que 10.",
+    "en": "⏳ 725 for Orrax Manifested. A very different profile from the other two mursaat currencies: no gathering, no caches — this is an EVENT currency. 'A Titanic Voyage' yields 32 per full run, so about 23 runs. ⚠ The best exchange rate flips here: 20 for 1 from Gharr Leadclaw, while the Commander's Choice Chest, best for heatstone and obsidian, gives only 10."
+   }
   },
   "curious_mursaat_ruin_shard": {
    "name": "Curious Mursaat Ruin Shard",
