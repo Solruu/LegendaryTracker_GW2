@@ -31424,6 +31424,28 @@ function GW2LegendaryTracker() {
     })();
   }, [selectedLeg, lang]);
 
+  // Collections a etapes : une seule liste, quelle que soit l'origine. Les
+  // sources font foi ; leg.raidAchievements reste le repli tant que les dix
+  // autres legendaires n'ont pas migre. La forme rendue est celle du JSX
+  // ({key, achievementId, bitTips, tip}) — les sources s'y coulent.
+  const collSrc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
+    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections;
+  // Aurora, Vision et Prismatic ont AUSSI des collections{} dans les sources,
+  // mais d'une autre forme, rendue par leurs blocs dedies. Le discriminant est
+  // la presence de `key` : seule la forme migree la porte. Sans ce test, leur
+  // onglet afficherait deux fois, et le rendu generique avec des cles vides.
+  const collMigre = Object.values(collSrc ?? {}).filter(c => c && c.key);
+  const collList = collMigre.length
+    ? collMigre.map(c => ({
+        key: c.key,
+        achievementId: c.id,
+        name: c.name,
+        tip: c.note,
+        bitTips: Object.fromEntries(
+          (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
+      }))
+    : (LEGENDARIES[selectedLeg]?.raidAchievements ?? []);
+
   const [expanded, setExpanded] = useState(null);
   const [copied, setCopied] = useState(null);
 
@@ -33902,7 +33924,7 @@ function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET RAIDS (Coalescence)         */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "collections" && leg?.raidAchievements && (
+      {activeTab === "collections" && collList.length > 0 && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
             <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
@@ -33936,7 +33958,7 @@ function GW2LegendaryTracker() {
           <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
-          {(leg?.raidAchievements ?? []).map(a => {
+          {collList.map(a => {
             const st = apiAch[a.key] ?? {};
             const manual = achManualDone[a.key] === true;
             const done = st.done === true || manual;
