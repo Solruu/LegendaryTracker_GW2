@@ -20,7 +20,7 @@ const I18N = {
     tab_pieces: "⬡ Pieces ({n}/18)",
     tab_collections: "✦ Collections",
     tab_weapons: "⚔ Weapons ({n}/{m})",
-    wpn_target_hint: "Tap a weapon to add/remove it from your goal. ✓ = owned (armory). Gen 3 (Aurene) — gen 1/2 coming later.",
+    wpn_target_hint: "Tap a weapon to add/remove it from your goal. ✓ = owned (armory). Counts include every generation.",
     wpn_goal: "Goal: {n} weapon(s) targeted — {o} owned, {r} remaining",
     wpn_goal_default: "No weapon selected — pick your first targets (axe, mace, hammer?).",
     wpn_resolving: "Resolving weapon names via GW2 API…",
@@ -7072,7 +7072,10 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {activeTab === "weapons" && isWeapons && (() => {
         const goalLabel = wpnHasTarget
-          ? t("wpn_goal", { n: wpnTarget.size, o: wpnTargetOwned, r: wpnRemainingCount })
+          // wpnTargetGen et non wpnTarget : o et r sont deja restreints a la
+          // generation affichee, compter n sur toutes les generations donnait
+          // « 5 ciblees, 1 restante » sur un onglet qui n'en montre que 3.
+          ? t("wpn_goal", { n: wpnTargetGen.length, o: wpnTargetOwned, r: wpnRemainingCount })
           : t("wpn_goal_default");
         return (
           <div>
@@ -7094,7 +7097,7 @@ export default function GW2LegendaryTracker() {
               {wpnGen === "gen1" && NX({ fr: "Gen 1 : précurseur via CP, forge ou craft. Par arme : Gift of Fortune (77 clovers + 250 ectos + T6 → onglet T6) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 monnaie de donjon).", en: "Gen 1: precursor via TP, forge or crafting. Per weapon: Gift of Fortune (77 clovers + 250 ectos + T6 → T6 tab) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 dungeon currency)." })}
               {wpnGen === "gen2" && NX({ fr: "Gen 2 : précurseur par collections (3 tiers). Par arme : Mystic Tribute (77 clovers + 250 coins + T6 ×2 → onglet T6) + Gift of Maguuma/Desert Mastery + gift spécifique. Pas d'achat CP possible.", en: "Gen 2: precursor via collections (3 tiers). Per weapon: Mystic Tribute (77 clovers + 250 coins + 2× T6 gifts → T6 tab) + Gift of Maguuma/Desert Mastery + weapon-specific gift. Not purchasable on TP." })}
               {wpnGen === "gen3" && NX({ fr: "Gen 3 (Aurene) : précurseur craft 500 + Gift of Jade Mastery + Draconic Tribute (38 clovers). Variantes de dragons débloquées après liaison. Totaux dans l'onglet Devises.", en: "Gen 3 (Aurene): crafted 500 precursor + Gift of Jade Mastery + Draconic Tribute (38 clovers). Elder Dragon variants unlock after binding. Totals in the Currencies tab." })}
-              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE). Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (JW spear — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE). Weapon-specific costs — check each wiki page." })}
+              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE), qui est un conteneur et apparaît sous ses deux armes de sortie, Ancora Bellum (lance) et Ancora Pax (bâton). Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (JW spear — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE), which is a container and shows up as its two outputs, Ancora Bellum (spear) and Ancora Pax (staff). Weapon-specific costs — check each wiki page." })}
             </div>
             <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
               <div style={{ fontSize: "12px", fontWeight: 600, color: legColor }}>{goalLabel}</div>
