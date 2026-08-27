@@ -52,13 +52,20 @@ Toutes dans `wiki/`, versées le 2026-08-27.
 
 **Pagination.** Le wiki plafonne ces tableaux à 150 lignes et renvoie la suite
 derrière un lien « further results » (`offset=150`). Les suites sont versées à
-part, suffixe `__dropped_by_pN` : `pile_of_incandescent_dust__dropped_by_p2.html`
-(80 lignes, aucun recouvrement avec la page 1).
+part, suffixe `__dropped_by_pN`. Quatre lignes étaient concernées, toutes au T5 :
+
+| ligne | page 1 | page 2 | total |
+|---|---|---|---|
+| `large_bone` | 150 | 11 | 161 |
+| `large_claw` | 150 | 25 | 175 |
+| `pile_of_incandescent_dust` | 150 | 80 | 230 |
+| `potent_venom_sac` | 150 | 11 | 161 |
 
 `gw2_parse_dropped_by_v2.py` les recolle tout seul et **lève** si un NPC apparaît
-dans deux pages — un recouvrement signalerait un mauvais offset.
+dans deux pages — un recouvrement signalerait un mauvais offset. Aucune page 3 :
+les quatre suites sont sous le plafond et ne portent pas de lien « further results ».
 
-Trois captures restent tronquées : `large_bone`, `large_claw`, `potent_venom_sac`.
+**Plus aucune capture tronquée.**
 
 ## wiki/ — Guild Wars 2 Wiki (wiki.guildwars2.com)
 

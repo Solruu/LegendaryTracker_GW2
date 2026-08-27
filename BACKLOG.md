@@ -395,17 +395,3 @@ en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 
 **Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
 rendu. Aucune capture supplémentaire à demander.
-
-## Captures « Dropped by » tronquées au palier T5 (4 sur 32)
-
-Le wiki plafonne ces tableaux à 150 lignes et renvoie le reste derrière un lien
-« further results » (`offset=150`). Quatre captures sont concernées :
-`large_bone`, `large_claw`, `pile_of_incandescent_dust`, `potent_venom_sac`.
-
-`gw2_parse_dropped_by_v2.py` les marque `tronque: true` et le signale en fin de
-passe. **Toute conclusion sur ces quatre lignes au T5 est partielle** tant que
-la suite n'est pas versée.
-
-**Enjeu** : les Os, les Griffes, la Poussière et le Venin sont quatre des huit
-lignes, et le T5 pèse 56 % du volume. C'est le plus gros trou de données ouvert
-sur le sujet.
