@@ -2859,6 +2859,22 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                     <div style={{ marginTop: 3, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(226,201,126,0.6)" }}>
                       {NX(h.why)}
                     </div>
+                    {(h.zones ?? []).length > 0 && (
+                      <div style={{ marginTop: 5, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 4 }}>
+                        {h.zones.map((z, j) => (
+                          <div key={j} style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "0 6px", padding: "1.5px 0", fontSize: "10px" }}>
+                            {/* L() et non NX() : un nom de lieu est un nom propre, le
+                                dictionnaire de termes n'a rien a y substituer. */}
+                            <span style={{ color: "rgba(226,201,126,0.75)" }}>{L(z.name)}</span>
+                            {Object.entries(z.counts ?? {}).map(([g, n]) => (
+                              <span key={g} style={{ color: "rgba(226,201,126,0.45)", whiteSpace: "nowrap" }}>
+                                {NX((matrix.lines ?? []).find(l => l.gift === g)?.label) ?? g} <b style={{ color: "rgba(74,222,128,0.6)" }}>{n}</b>
+                              </span>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               })}

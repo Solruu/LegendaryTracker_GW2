@@ -370,3 +370,15 @@ Si un nouveau conflit apparaît entre `_meta.common_required` et
 `craft_components[].qty`, l'audit le signale en avertissement. Le réflexe à
 avoir : **ne pas trancher en faveur de `common_required`**, qui n'a pas suivi
 les mises à jour du jeu.
+
+## Noms français des sous-zones de farm (38 entrées)
+
+`trophy_matrix.farm_hubs.hubs[].zones[].name.fr` vaut `null` sur les 38 sous-zones.
+Le rendu se replie sur l'anglais, qui est le nom du wiki et reste cherchable.
+
+Ces noms sont des noms propres de lieux : les traduire de tête reviendrait à
+fabriquer 38 toponymes. Ils attendent une source vérifiée (wiki FR ou client de
+jeu en français).
+
+**Enjeu** : cosmétique en français, nul en anglais. Le bloc « Où farmer » est
+exploitable en l'état dans les deux langues.
