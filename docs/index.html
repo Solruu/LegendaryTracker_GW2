@@ -29351,10 +29351,10 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const [picker, setPicker] = useState(false);
   const [notes, setNotes] = useState(false);
   const [hubs, setHubs] = useState(false);
-  // Palier affiche dans « Ou farmer ». Les paliers exposes et leur poids par
-  // gift sont declares dans farm_hubs.tiers : rien de code en dur ici.
-  const hubTiers = matrix.farm_hubs?.tiers ?? [];
-  const [hubTier, setHubTier] = useState(hubTiers[0]?.key ?? "t5");
+  // Palier affiche dans « Ou farmer ». L'etat ne peut pas etre initialise depuis
+  // matrix : matrix est declare plus bas, le lire ici tombe dans la zone morte du
+  // const et fait lever le composant a l'execution — esbuild, lui, compile.
+  const [hubTier, setHubTier] = useState(null);
   const t = useT();
   const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
   const cc = DB.craft_components ?? {};
@@ -29364,6 +29364,10 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const totals = ids.length ? (computeGrandTotal(ids).totals ?? {}) : {};
 
   if (!matrix?.lines?.length) return null;
+  // Paliers exposes par la base ; le palier courant retombe sur le premier tant
+  // que rien n'est choisi, et si le palier choisi disparait de la base.
+  const hubTiers = matrix.farm_hubs?.tiers ?? [];
+  const tierCle = hubTiers.some(x => x.key === hubTier) ? hubTier : (hubTiers[0]?.key ?? null);
   const stockOf = (cid) => {
     const api = cc[cid]?.apiId;
     return api != null && stocks[String(api)] != null ? stocks[String(api)] : null;
@@ -29418,19 +29422,19 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
               </div>
               {hubTiers.length > 1 && (
                 <div style={{ display: "flex", gap: 5, margin: "0 0 7px" }}>
-                  {hubTiers.map(t => (
-                    <button key={t.key} onClick={() => setHubTier(t.key)}
+                  {hubTiers.map(tr => (
+                    <button key={tr.key} onClick={() => setHubTier(tr.key)}
                       style={{ padding: "3px 10px", borderRadius: 6, cursor: "pointer", fontSize: "10.5px",
-                        background: hubTier === t.key ? "rgba(74,222,128,0.14)" : "transparent",
-                        border: `1px solid ${hubTier === t.key ? "rgba(74,222,128,0.35)" : "rgba(226,201,126,0.14)"}`,
-                        color: hubTier === t.key ? "#4ade80" : "rgba(226,201,126,0.5)" }}>
-                      {L(t.label)}{t.per_gift ? ` · ${t.per_gift}` : ""}
+                        background: tierCle === tr.key ? "rgba(74,222,128,0.14)" : "transparent",
+                        border: `1px solid ${tierCle === tr.key ? "rgba(74,222,128,0.35)" : "rgba(226,201,126,0.14)"}`,
+                        color: tierCle === tr.key ? "#4ade80" : "rgba(226,201,126,0.5)" }}>
+                      {L(tr.label)}{tr.per_gift ? ` · ${tr.per_gift}` : ""}
                     </button>
                   ))}
                 </div>
               )}
               {(matrix.farm_hubs.hubs ?? []).map((h, i) => {
-                const gifts = (h.lines ?? {})[hubTier] ?? [];
+                const gifts = (h.lines ?? {})[tierCle] ?? [];
                 if (gifts.length === 0) return null;   // rien a servir a ce palier
                 const noms = gifts.map(g =>
                   NX((matrix.lines ?? []).find(l => l.gift === g)?.label) ?? g);
@@ -29452,7 +29456,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                           // counts vaut { gift: { t5: n, t6: n } } : on ne garde que le
                           // palier affiche, et une zone sans rien a ce palier disparait.
                           const par = Object.entries(z.counts ?? {})
-                            .map(([g, v]) => [g, (v ?? {})[hubTier]])
+                            .map(([g, v]) => [g, (v ?? {})[tierCle]])
                             .filter(([, n]) => typeof n === "number" && n > 0);
                           if (par.length === 0) return null;
                           return (
@@ -29474,7 +29478,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                 );
               })}
               {(matrix.farm_hubs.no_hub ?? [])
-                .filter(n => (n.tiers ?? []).includes(hubTier))
+                .filter(n => (n.tiers ?? []).includes(tierCle))
                 .map((n, i) => (
                 <div key={i} style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 7, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
                   {NX(n.why)}
