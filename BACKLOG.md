@@ -544,3 +544,55 @@ tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
 `unlock_first` ou un `currency_cost`. Wiki, guides, et vérification en jeu.
 
 **Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).
+
+## Migration achievements[] → collections{} — décidée, en cours
+
+**Décision d'Antoine le 27/08/2026, option B** : une seule source de vérité. Les
+onze légendaires qui décrivent leurs collections en `legendaries[].achievements[]`
+passent à `legendaries[].collections{}`, la structure riche déjà utilisée par
+Prismatic, Aurora et Vision.
+
+| | `collections{}` | `achievements[]` |
+|---|---|---|
+| qui | Prismatic, Aurora, Vision | 11 autres |
+| forme | `items[]` avec `bit`, `name`, `how`, `how_ref`, `unlock_first`, `currency_cost` | `key`, `id`, `name`, `total`, `note` |
+| conseils | par étape, dans l'item | `bitTips` **dans le JSX**, indexés par bit |
+
+Aucun légendaire n'a les deux aujourd'hui.
+
+### Ce qui bloque encore : 17 succès absents du dump
+
+Le dump couvre les quatre catégories « Legendary … » des Collections. Mais 17
+succès référencés par les sources vivent **ailleurs** — Visions of Eternity,
+Janthir Wilds, PvP :
+
+The Ascension (4), Endless Summer (2), Stella Radians (2), Strife Unending (2),
+Orrax Manifested (7).
+
+`gw2_dump_bits_v7.py --sources` lit désormais `legendaries[].achievements[].id`
+et les ajoute : **26 identifiants** que le catalogue seul ne voyait pas.
+
+```
+python3 gw2_dump_bits_v7.py --catalogue --sources
+```
+
+### Quatre totaux à revérifier une fois le dump complet
+
+| légendaire | collection | `total` déclaré | bits |
+|---|---|---|---|
+| Endless Summer | `summer_krait` | absent | 0 |
+| Orrax Manifested | `orrax_final` | absent | 1 |
+| Perfected Envoy | `envoy_1` | absent | 18 |
+| Perfected Envoy | `envoy_2` | absent | 14 |
+
+Les autres concordent exactement — les totaux écrits à la main sont bons.
+
+### Ce que la migration devra préserver
+
+- `note` de collection → `note` de collection.
+- `bitTips[i]` du JSX → `items[i].how`, avec `how_verified: false` et un
+  `how_ref` disant d'où ça vient. Ce sont des conseils, pas des instructions
+  vérifiées : les promouvoir sans marqueur serait une généralisation.
+- `collection_unlocks` est indexé par `achievementId` et reste valable.
+- **JSX en dernier, une seule passe** : suppression du chemin `achievements[]`
+  et des 38 blocs `bitTips`, une fois les sources migrées et vérifiées.

@@ -112,6 +112,34 @@ def ids_du_catalogue(chemin_ref):
     return sorted(set(ids)), index
 
 
+def ids_des_sources(chemin=None):
+    """Identifiants declares par legendaries[].achievements[].id dans les sources.
+
+    Le catalogue du referentiel ne couvre que les quatre categories
+    « Legendary … » des Collections. Or 17 succes references par les sources
+    vivent ailleurs — Visions of Eternity, Janthir Wilds, PvP. Les sources sont
+    la seule liste qui dise ce dont le tracker a reellement besoin.
+    """
+    if chemin is None:
+        cands = []
+        for dossier in (os.getcwd(), os.path.dirname(os.path.abspath(__file__))):
+            cands.extend(glob.glob(os.path.join(dossier, "gw2_sources_v*.json")))
+        if not cands:
+            print("[!] aucun gw2_sources_v*.json trouve", file=sys.stderr)
+            return []
+        chemin = max(cands, key=lambda p: int(re.search(r"_v(\d+)\.json$", p).group(1)))
+    data = json.load(open(chemin, encoding="utf-8"))
+    ids = set()
+    for leg in (data.get("legendaries") or {}).values():
+        if not isinstance(leg, dict):
+            continue
+        for a in (leg.get("achievements") or []):
+            if isinstance(a, dict) and isinstance(a.get("id"), int):
+                ids.add(a["id"])
+    print(f"{len(ids)} achievements declares par {os.path.basename(chemin)}")
+    return sorted(ids)
+
+
 def find_jsx(explicit):
     """Localise le JSX : chemin explicite, sinon version la plus haute trouvée
     dans le dossier courant puis dans celui du script."""
@@ -185,6 +213,9 @@ def main():
                     help="ajoute les succes des 4 categories de collections legendaires "
                          "du referentiel (necessaire pour ecrire des collections absentes du JSX)")
     ap.add_argument("--ref", default="gw2_achievements_ref.json")
+    ap.add_argument("--sources", action="store_true",
+                    help="ajoute les succes declares par legendaries[].achievements[] "
+                         "dans le gw2_sources_v*.json le plus recent")
     ap.add_argument("--ids", default=None, help="liste explicite, separee par des virgules")
     args = ap.parse_args()
 
@@ -192,6 +223,8 @@ def main():
     if args.ids:
         ids = sorted({int(x) for x in args.ids.split(",") if x.strip()})
         print(f"{len(ids)} achievements fournis en ligne de commande")
+    if args.sources:
+        ids = sorted(set(ids) | set(ids_des_sources()))
     if args.catalogue:
         cat_ids, index = ids_du_catalogue(args.ref)
         print(f"{len(cat_ids)} achievements dans les 4 categories legendaires du referentiel")
