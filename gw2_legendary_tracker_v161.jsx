@@ -2782,6 +2782,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const [open, setOpen] = useState(null);
   const [picker, setPicker] = useState(false);
   const [notes, setNotes] = useState(false);
+  const [hubs, setHubs] = useState(false);
   const t = useT();
   const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
   const cc = DB.craft_components ?? {};
@@ -2828,6 +2829,48 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
           </div>
         )}
       </div>
+
+      {/* Foyers de farm : l'information qui n'existe qu'en croisant les huit
+          lignes. Elle vivait dans les tips de 32 composants, donc invisible
+          tant qu'on ne dépliait pas chaque ligne une par une. */}
+      {matrix.farm_hubs && (
+        <div style={{ margin: "0 14px 8px" }}>
+          <button onClick={() => setHubs(!hubs)}
+            style={{ width: "100%", padding: "7px 12px", background: "rgba(74,222,128,0.05)", border: "1px solid rgba(74,222,128,0.2)", borderRadius: 8, color: "rgba(74,222,128,0.85)", fontSize: "11.5px", cursor: "pointer", textAlign: "left" }}>
+            🗺 {NX({ fr: "Où farmer — cartes qui servent plusieurs lignes", en: "Where to farm — maps serving several lines" })} {hubs ? "▾" : "▸"}
+          </button>
+          {hubs && (
+            <div style={{ marginTop: 6 }}>
+              <div style={{ margin: "0 0 7px", fontSize: "10.5px", fontStyle: "italic", color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                {NX(matrix.farm_hubs.note)}
+              </div>
+              {(matrix.farm_hubs.hubs ?? []).map((h, i) => {
+                const noms = (h.lines ?? []).map(g =>
+                  NX((matrix.lines ?? []).find(l => l.gift === g)?.label) ?? g);
+                const fort = noms.length >= 2;
+                return (
+                  <div key={i} style={{ margin: "0 0 6px", padding: "8px 11px", background: fort ? "rgba(74,222,128,0.05)" : "rgba(226,201,126,0.03)", border: `1px solid ${fort ? "rgba(74,222,128,0.16)" : "rgba(226,201,126,0.09)"}`, borderRadius: 7 }}>
+                    <div style={{ fontSize: "11.5px", color: fort ? "#4ade80" : "rgba(226,201,126,0.8)", fontWeight: 600 }}>
+                      {NX(h.map)}
+                      <span style={{ marginLeft: 7, fontSize: "10px", fontWeight: 400, opacity: 0.8 }}>
+                        {noms.length} {noms.length > 1 ? NX({ fr: "lignes", en: "lines" }) : NX({ fr: "ligne", en: "line" })} · {noms.join(", ")}
+                      </span>
+                    </div>
+                    <div style={{ marginTop: 3, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(226,201,126,0.6)" }}>
+                      {NX(h.why)}
+                    </div>
+                  </div>
+                );
+              })}
+              {matrix.farm_hubs.no_hub && (
+                <div style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 7, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
+                  {NX(matrix.farm_hubs.no_hub.why)}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       <div style={{ margin: "0 14px 10px" }}>
         <button onClick={() => setPicker(!picker)}
@@ -2906,6 +2949,28 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                           </div>
                         );
                       })}
+                      {/* Le lien inverse : depuis la ligne dépliée, ses foyers.
+                          Sans lui, il faudrait remonter au bloc général et
+                          chercher laquelle des sept cartes sert cette ligne. */}
+                      {(() => {
+                        const mes = (matrix.farm_hubs?.hubs ?? [])
+                          .filter(h => (h.lines ?? []).includes(line.gift));
+                        const sans = matrix.farm_hubs?.no_hub?.line === line.gift;
+                        if (!mes.length && !sans) return null;
+                        return (
+                          <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${D}0.07)`, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                            {sans ? (
+                              <span style={{ color: "rgba(251,146,60,0.8)" }}>{NX(matrix.farm_hubs.no_hub.why)}</span>
+                            ) : (
+                              <span style={{ color: "rgba(74,222,128,0.75)" }}>
+                                🗺 {mes.map(h => NX(h.map)).join(" · ")}
+                                {mes.some(h => (h.lines ?? []).length > 1) &&
+                                  NX({ fr: " — sert aussi d'autres lignes", en: " — also serves other lines" })}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })()}
                       {(() => {
                         // Combien de gifts sont forgeables MAINTENANT : le
                         // minimum sur les quatre paliers. C'est la seule

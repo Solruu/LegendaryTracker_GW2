@@ -1057,7 +1057,8 @@
   "changelog_v159": "Les trois plus gros postes d'Orrax Manifested documentes, soit 2 225 unites. Titan Heatstone et Mursaat Obsidian Chunk sont JUMEAUX : memes vendeurs, memes coffres, memes maitrises, meme carte, seule la source garantie change. Deux maitrises commandent leur rendement — Bearkin Harvesting Techniques pour la recolte, et 4 stacks de Lowland Expertise pour les caches kodan, les memes qui demultiplient les Ancient Coins. Curious Mursaat Remnants a un profil tout autre : monnaie d'EVENEMENT, sans recolte ni cache, dont « A Titanic Voyage » rend 32 par passage complet. ⚠ Le meilleur taux d'echange s'inverse entre les deux familles : Commander's Choice Chest a 30 pour 1 sur la pierre et l'obsidienne, mais Gharr Leadclaw a 20 pour 1 sur les remnants la ou le Commander's Choice n'en donne que 10.",
   "changelog_v160": "Ascended Shards of Glory et Shadowstone Fragment documentes. Le premier est le poste le plus FERME du fichier : 900 pour Transcendence, et aucune voie hors PvP structure — ni Comptoir, ni craft, ni conversion. Une saison complete rend 400 sur ses paliers non repetables, donc plus de deux saisons, ou le palier Byzantium repetable a 100 l'unite. Le second suit le profil Visions of Eternity, avec un BUG documente sur le wiki : la maitrise Resourcefulness ne donne AUCUNE chance de fragment en recoltant au Jardin d'Eternite, contrairement a ce qu'elle fait pour la seve et la pierre d'enchantement. Compter sur elle ici serait une erreur, et rien dans le tracker ne l'aurait dit.",
   "changelog_v161": "Quatre derniers postes documentes. Shard of Bava Nisos : 20 par semaine chez un vendeur UNIQUE, sans coffre ni evenement ni Comptoir — 5 semaines incompressibles pour les 100 d'Orrax, un timegate ferme qu'il faut lancer en premier. Seer Runestone : 35 000 karma piece, soit 7 MILLIONS de karma pour les 200 de Stella Radians — le poste en karma le plus lourd du fichier. Curious Mursaat Ruin Shard : taux d'echange disperses d'un facteur 50, le meilleur exigeant de posseder une monture ou une mini precise. Mist Gate Residue : meme vendeur unique que le Shard of Bava Nisos, mais sans plafond documente.",
-  "changelog_v162": "Les trente composants sont documentes. ⚠ Ma deduction sur le Shard of Mistburned Barrens etait fausse sur les TROIS points : un seul vendeur et non trois, aucun plafond hebdomadaire, et le cœur de renommee doit etre INCOMPLET — l'inverse exact de ses deux jumeaux. La symetrie parfaite de Janthir Syntri et Lowland Shore ne s'etendait pas a la troisieme carte, et le marquage verified: false etait justifie. Unusual Coin se revele etre une monnaie Visions of Eternity et non Janthir : ses coffres sont tous conditionnes par la maitrise Obscured Riches, la meme qui ouvre ceux de la Seve chromatique et de la Pierre d'enchantement brute. Tale of Adventure est une recompense d'histoire non repetable, donc sans farm possible."
+  "changelog_v162": "Les trente composants sont documentes. ⚠ Ma deduction sur le Shard of Mistburned Barrens etait fausse sur les TROIS points : un seul vendeur et non trois, aucun plafond hebdomadaire, et le cœur de renommee doit etre INCOMPLET — l'inverse exact de ses deux jumeaux. La symetrie parfaite de Janthir Syntri et Lowland Shore ne s'etendait pas a la troisieme carte, et le marquage verified: false etait justifie. Unusual Coin se revele etre une monnaie Visions of Eternity et non Janthir : ses coffres sont tous conditionnes par la maitrise Obscured Riches, la meme qui ouvre ceux de la Seve chromatique et de la Pierre d'enchantement brute. Tale of Adventure est une recompense d'histoire non repetable, donc sans farm possible.",
+  "changelog_v163": "Les concentrations de farm des trophees deviennent une DONNEE au lieu de rester en prose. Elles vivaient dans les tips de 32 composants, invisibles tant qu'on ne depliait pas chaque ligne une par une — alors que l'information utile n'existe qu'en CROISANT les huit lignes. trophy_matrix.farm_hubs classe 7 foyers par nombre de lignes servies : Orr en sert trois, Bjora, les Terres sauvages d'argent, le Desert de cristal et les Etendues fragmentees en servent deux. Plus un constat negatif tout aussi utile : les Ecailles n'ont aucun bon spot et sont a acheter plutot qu'a farmer."
  },
  "meta_events": {
   "vb": {
@@ -25267,6 +25268,121 @@
      "fang"
     ]
    }
-  ]
+  ],
+  "farm_hubs": {
+   "note": {
+    "fr": "Foyers de farm, classés par nombre de lignes servies. Une carte qui alimente deux lignes vaut deux fois une carte qui n'en alimente qu'une — et ce classement ne figure sur aucune fiche : il sort du croisement des huit tableaux « Dropped by ».",
+    "en": "Farm hubs, ranked by how many lines each serves. A map feeding two lines is worth twice one feeding a single line — and this ranking appears on no wiki page: it comes from crossing the eight 'Dropped by' tables."
+   },
+   "hubs": [
+    {
+     "map": {
+      "fr": "Marches de Bjora",
+      "en": "Bjora Marches"
+     },
+     "lines": [
+      "gift_of_totems",
+      "gift_of_blood"
+     ],
+     "why": {
+      "fr": "La ligne la plus concentrée des huit y vit à moitié : Ruines déchues 11, Montagnes déchues 9, Forêt aberrante 7, Montagnes méridionales 7, Plateau svanir 6. Les Aberrants servent aussi le Sang.",
+      "en": "The most concentrated of the eight lines lives half here: Fallen Ruins 11, Fallen Mountains 9, Aberrant Forest 7, Southern Mountains 7, Svanir Plateau 6. The Aberrants also serve Blood."
+     }
+    },
+    {
+     "map": {
+      "fr": "Terres sauvages d'argent",
+      "en": "The Silverwastes"
+     },
+     "lines": [
+      "gift_of_fangs",
+      "gift_of_venom"
+     ],
+     "why": {
+      "fr": "Les Mordrem sont en tête des DEUX lignes : 21 sur les Crocs, 19 sur le Venin. Une seule carte, deux lignes, le meilleur rendement du lot.",
+      "en": "Mordrem lead BOTH lines: 21 on Fangs, 19 on Venom. One map, two lines, the best return of the set."
+     }
+    },
+    {
+     "map": {
+      "fr": "Orr — Bond de Malchor, Rivage maudit, Détroits",
+      "en": "Orr — Malchor's Leap, Cursed Shore, Straits"
+     },
+     "lines": [
+      "gift_of_bones",
+      "gift_of_blood",
+      "gift_of_dust"
+     ],
+     "why": {
+      "fr": "TROIS lignes. Les Risen dominent les Os (56 créatures sur 120) et pèsent lourd sur le Sang et la Poussière. Le trio concentre 23 + 22 + 19 sources d'os.",
+      "en": "THREE lines. Risen dominate Bones (56 creatures out of 120) and weigh heavily on Blood and Dust. The trio concentrates 23 + 22 + 19 bone sources."
+     }
+    },
+    {
+     "map": {
+      "fr": "Désert de cristal et Désolation",
+      "en": "Crystal Desert and the Desolation"
+     },
+     "lines": [
+      "gift_of_scales",
+      "gift_of_venom"
+     ],
+     "why": {
+      "fr": "Les dévoreurs servent les deux : 13 sur les Écailles, 13 sur le Venin.",
+      "en": "Devourers serve both: 13 on Scales, 13 on Venom."
+     }
+    },
+    {
+     "map": {
+      "fr": "Étendues fragmentées (Bloodstone Fen)",
+      "en": "Fragmented Wastes (Bloodstone Fen)"
+     },
+     "lines": [
+      "gift_of_dust",
+      "gift_of_claws"
+     ],
+     "why": {
+      "fr": "14 sources de Poussière et 12 de Griffes, sur une carte compacte.",
+      "en": "14 Dust sources and 12 Claw sources, on a compact map."
+     }
+    },
+    {
+     "map": {
+      "fr": "Cartes de Vision — Jahai, Chef-Tonnerre, Elon, Oasis",
+      "en": "Vision maps — Jahai, Thunderhead, Elon, Crystal Oasis"
+     },
+     "lines": [
+      "gift_of_dust"
+     ],
+     "why": {
+      "fr": "💡 Gratuit : les Marqués sont la 3e famille de la Poussière et vivent exactement là où se farme Vision. La poussière tombe pendant le circuit, sans détour.",
+      "en": "💡 Free: the Branded are Dust's 3rd family and live exactly where Vision is farmed. Dust drops during the run, with no detour."
+     }
+    },
+    {
+     "map": {
+      "fr": "Dragon Response Missions",
+      "en": "Dragon Response Missions"
+     },
+     "lines": [
+      "gift_of_claws"
+     ],
+     "why": {
+      "fr": "Les destructeurs mènent les Griffes (16), et les DRM les concentrent — Champs de Ruine en aligne 8 à elle seule.",
+      "en": "Destroyers lead Claws (16), and DRMs concentrate them — Fields of Ruin alone lists 8."
+     }
+    }
+   ],
+   "no_hub": {
+    "line": "gift_of_scales",
+    "why": {
+     "fr": "⚠ Les Écailles n'ont AUCUN bon spot : 90 créatures réparties sans qu'aucune carte ne dépasse 14 sources, et le McM en fournit autant que la jungle. C'est la ligne à acheter plutôt qu'à farmer.",
+     "en": "⚠ Scales have NO good spot: 90 creatures spread out with no map above 14 sources, and WvW yields as much as the jungle. This is the line to buy rather than farm."
+    }
+   },
+   "verified": true,
+   "checked": "2026-08-26",
+   "ref": "wiki, tableaux « Dropped by » complets des 8 trophees (exports Antoine 22/08/2026)"
+  }
  }
 }
