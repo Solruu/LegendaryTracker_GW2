@@ -450,50 +450,72 @@ de 250 n'est probablement pas la bonne pour ce légendaire.
 `ressources/gw2efficiency/`, en décomposant l'écart avant d'écrire. Ne jamais
 aligner les deux champs sans décomposition — c'est l'erreur évitée ici.
 
-## Vision instruit sur l'arbre — trois constats, aucune écriture
+## Vision instruit sur l'arbre — attribution corrigée, trois constats
 
-Arbre `ressources/gw2efficiency/coalescence_vision_ad_infinitum.html`, segmenté
-par légendaire (Coalescence 10 617 → Vision 1 040 734 → Ad Infinitum 7 004 769)
-et lu avec `gw2_parse_recipe_tree_v1.py`. **Rien n'a été écrit dans les sources :
-les trois constats demandent un arbitrage.**
+Arbre segmenté par légendaire et lu par `gw2_parse_recipe_tree_v2.py`.
+
+**Le v1 attribuait faux.** Il rattachait chaque feuille au nœud qui la
+*précédait dans le texte*, ce qui n'est pas la hiérarchie : il a ainsi imputé
+100 ectoplasmes à la Bouteille d'huile de dirigeable, qui n'en demande aucun.
+Le v2 mesure la profondeur au solde des `<div>` et prend le dernier nœud de
+profondeur strictement inférieure. **Les totaux étaient bons, les noms faux.**
+
+### Décomposition réelle, Vision
+
+| ectoplasmes (717) | | obsidiennes (421) | |
+|---|---|---|---|
+| Memory Essence Encapsulator | 300 | Mystic Clover | 249 |
+| Mystic Clover | 249 | Fulgurite | 100 |
+| Crystalline Ingot | 100 | Dragonite Ingot | 24 |
+| Diviner's Orichalcum-Imbued Inscription | 30 | Empyreal Star | 24 |
+| Lump of Mithrillium | 18 | Bloodstone Brick | 24 |
+| Lacquered Banner Pole | 10 | | |
+| Olmakhan Charm | 5 | | |
+| Banner Pennon | 5 | | |
 
 ### 1. `common_required[vision].obsidian = 250` ne correspond à rien
 
-L'arbre décompose les 421 obsidiennes de Vision en **249** (trèfles) + **18 × 4**
-(Lesser Vision Crystal, Thermocatalytic Reagent, Spirit Shard) + **100**
-(Crystalline Ingot). **Aucun nœud à 250.** L'exigence directe affichée en
-référence est donc fausse ; la vraie vaut 172.
-
-Le total `qty = 421` est juste, lui — il colle au centime près à l'arbre, et
-`obsidian_shard` n'a aucune contribution de chaîne qui doublerait le compte.
+Aucun nœud à 250 dans la branche obsidienne de Vision. L'exigence directe vaut
+**172** (100 Fulgurite + 3 × 24). Le total `qty = 421` est juste et colle à
+l'arbre.
 
 ### 2. Ectoplasmes : les deux sources sont incomplètes, chacune à sa façon
 
-| | ectos Vision |
-|---|---|
-| tracker (`computeGrandTotal`) | **850** = 250 à plat + 300 encapsulateurs + 300 kralkatite |
-| arbre GW2Efficiency | **717** = 249 trèfles + 300 encapsulateurs + 18 mithrillium + 5 runes de préhension + 15 bannière + 30 glace éternelle + 100 huile de dirigeable |
+Tracker **850** = 250 à plat + 300 encapsulateurs + 300 kralkatite.
+Arbre **717**, sans le kralkatite.
 
-L'arbre **omet les 300 ectoplasmes du kralkatite** parce que la branche passe par
-« Vision of Equipment: Astral Weapons », une étape de collection — et les arbres
-omettent les étapes verrouillées par collection. Conforme à
-`_meta.recipe_tree_caveat`. Ce n'est donc **pas** un sur-compte du tracker.
+L'arbre omet les 300 du kralkatite : la branche passe par « Vision of Equipment:
+Astral Weapons », étape de collection, et les arbres les omettent toutes.
+Conforme à `_meta.recipe_tree_caveat` — ce n'est **pas** un sur-compte du tracker.
 
-Mais le tracker, lui, **ne porte aucun des 168 ectoplasmes** que l'arbre liste :
-mithrillium, runes de préhension, bannière du commandant, glace éternelle, huile
-de dirigeable. Total réconcilié plausible : **1 017**, soit 167 de plus
-qu'affiché aujourd'hui.
+Le tracker, lui, ne porte aucun des **168** ectoplasmes hors trèfles et
+encapsulateurs : Crystalline Ingot 100, Diviner's Inscription 30, Mithrillium 18,
+Banner Pole 10, Olmakhan Charm 5, Banner Pennon 5. Ni `crystalline_ingot` ni
+`fulgurite` n'existent dans `craft_components`.
 
-**À arbitrer avant d'écrire** : ces 168 sont-ils dans le périmètre ? L'huile de
-dirigeable et le mithrillium sont des crafts à cadence quotidienne — ils
-relèvent peut-être des Timegates plutôt que du total de matériaux.
+Total réconcilié : **1 017**.
 
-### 3. Le 250 à plat des ectoplasmes est un nombre orphelin
+### 3. Le 250 à plat des ectoplasmes est orphelin
 
-`glob_of_ectoplasm.qty['vision'] = 250` ne correspond ni aux 249 des trèfles ni à
-une exigence directe identifiée. S'il vise les trèfles, il est faux d'une unité
-et devrait valoir 249 comme partout ailleurs. S'il vise autre chose, cette chose
-n'est pas documentée.
+Il ne correspond ni aux 249 des trèfles ni à une exigence directe identifiée.
+Ne pas l'aligner sur 249 avant d'avoir tranché le point 2 : ce serait un total
+faux avec l'air d'avoir été vérifié.
 
-**Ne rien aligner sans avoir tranché le point 2** : corriger 250 en 249 en
-ignorant les 168 manquants donnerait un total faux avec l'air d'être vérifié.
+## Les bits de collection ne réduisent pas les besoins, sauf sur 4 composants
+
+Le mécanisme existe : `craft_components[].qty_extras` porte `sub` + `bit` +
+`amount`, et `pendingExtra` dans `computeGrandTotal` retranche ce qui est déjà
+validé. **Mais il n'est câblé que sur quatre composants** : `blood_ruby`,
+`jade_shard_lw3`, `orrian_pearl_lw3`, `karma` — tous sur Aurora.
+
+**Conséquence** : une collection qui consomme une ressource continue d'afficher
+le coût plein après complétion partielle. Le besoin en Lingots d'électrum Xunlai
+ne bougera pas à 9/21.
+
+**À noter aussi** : les 21 Lingots Xunlai sont rattachés dans les sources à
+`spark_of_sentience`, dont `needed_for` vaut `["aurora"]`. Vision, lui, en
+calcule **18**, par les 6 encapsulateurs × 3. Si les 21 relèvent bien de Vision,
+le rattachement est à revoir — à vérifier en jeu avant d'écrire.
+
+**Enjeu** : c'est une fonctionnalité transversale qui ne s'applique aujourd'hui
+qu'à un légendaire sur quatorze.
