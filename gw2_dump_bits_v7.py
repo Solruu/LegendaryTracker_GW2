@@ -97,8 +97,13 @@ def ids_du_catalogue(chemin_ref):
     sans rouvrir le referentiel.
     """
     if not os.path.isfile(chemin_ref):
-        print(f"[!] referentiel introuvable : {chemin_ref}", file=sys.stderr)
-        return [], {}
+        voisin = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              os.path.basename(chemin_ref))
+        if os.path.isfile(voisin):
+            chemin_ref = voisin
+        else:
+            print(f"[!] referentiel introuvable : {chemin_ref}", file=sys.stderr)
+            return [], {}
     ref = json.load(open(chemin_ref, encoding="utf-8"))
     groupe = (ref.get("by_group") or {}).get("Collections") or {}
     ids, index = [], {}
@@ -110,6 +115,18 @@ def ids_du_catalogue(chemin_ref):
             ids.append(aid)
             index[aid] = (cat, entree.get("name", ""))
     return sorted(set(ids)), index
+
+
+# Filet de securite pour --sources : liste gelee des achievementId declares
+# par legendaries[].achievements[] au 27/08/2026. Utilisee quand aucun
+# gw2_sources_v*.json n'est trouvable depuis le dossier courant — c'est ce
+# qui s'est produit a la premiere tentative, le dump revenant a 147 succes
+# au lieu de 164. Les sources restent la source de verite.
+SOURCES_FALLBACK_IDS = [
+    2295, 2351, 2368, 2557, 2646, 2715, 2725, 2738, 2752, 3012, 6933, 8582,
+    8714, 8723, 8730, 8743, 8750, 8761, 8769, 8880, 9057, 9180, 9183, 9244,
+    9330, 9344,
+]
 
 
 def ids_des_sources(chemin=None):
@@ -125,8 +142,9 @@ def ids_des_sources(chemin=None):
         for dossier in (os.getcwd(), os.path.dirname(os.path.abspath(__file__))):
             cands.extend(glob.glob(os.path.join(dossier, "gw2_sources_v*.json")))
         if not cands:
-            print("[!] aucun gw2_sources_v*.json trouve", file=sys.stderr)
-            return []
+            print(f"[!] aucun gw2_sources_v*.json trouve — repli sur la liste gelee "
+                  f"({len(SOURCES_FALLBACK_IDS)} succes)", file=sys.stderr)
+            return list(SOURCES_FALLBACK_IDS)
         chemin = max(cands, key=lambda p: int(re.search(r"_v(\d+)\.json$", p).group(1)))
     data = json.load(open(chemin, encoding="utf-8"))
     ids = set()
