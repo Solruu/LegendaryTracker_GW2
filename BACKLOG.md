@@ -449,3 +449,51 @@ de 250 n'est probablement pas la bonne pour ce légendaire.
 **Méthode** : instruire un légendaire à la fois sur son arbre versé dans
 `ressources/gw2efficiency/`, en décomposant l'écart avant d'écrire. Ne jamais
 aligner les deux champs sans décomposition — c'est l'erreur évitée ici.
+
+## Vision instruit sur l'arbre — trois constats, aucune écriture
+
+Arbre `ressources/gw2efficiency/coalescence_vision_ad_infinitum.html`, segmenté
+par légendaire (Coalescence 10 617 → Vision 1 040 734 → Ad Infinitum 7 004 769)
+et lu avec `gw2_parse_recipe_tree_v1.py`. **Rien n'a été écrit dans les sources :
+les trois constats demandent un arbitrage.**
+
+### 1. `common_required[vision].obsidian = 250` ne correspond à rien
+
+L'arbre décompose les 421 obsidiennes de Vision en **249** (trèfles) + **18 × 4**
+(Lesser Vision Crystal, Thermocatalytic Reagent, Spirit Shard) + **100**
+(Crystalline Ingot). **Aucun nœud à 250.** L'exigence directe affichée en
+référence est donc fausse ; la vraie vaut 172.
+
+Le total `qty = 421` est juste, lui — il colle au centime près à l'arbre, et
+`obsidian_shard` n'a aucune contribution de chaîne qui doublerait le compte.
+
+### 2. Ectoplasmes : les deux sources sont incomplètes, chacune à sa façon
+
+| | ectos Vision |
+|---|---|
+| tracker (`computeGrandTotal`) | **850** = 250 à plat + 300 encapsulateurs + 300 kralkatite |
+| arbre GW2Efficiency | **717** = 249 trèfles + 300 encapsulateurs + 18 mithrillium + 5 runes de préhension + 15 bannière + 30 glace éternelle + 100 huile de dirigeable |
+
+L'arbre **omet les 300 ectoplasmes du kralkatite** parce que la branche passe par
+« Vision of Equipment: Astral Weapons », une étape de collection — et les arbres
+omettent les étapes verrouillées par collection. Conforme à
+`_meta.recipe_tree_caveat`. Ce n'est donc **pas** un sur-compte du tracker.
+
+Mais le tracker, lui, **ne porte aucun des 168 ectoplasmes** que l'arbre liste :
+mithrillium, runes de préhension, bannière du commandant, glace éternelle, huile
+de dirigeable. Total réconcilié plausible : **1 017**, soit 167 de plus
+qu'affiché aujourd'hui.
+
+**À arbitrer avant d'écrire** : ces 168 sont-ils dans le périmètre ? L'huile de
+dirigeable et le mithrillium sont des crafts à cadence quotidienne — ils
+relèvent peut-être des Timegates plutôt que du total de matériaux.
+
+### 3. Le 250 à plat des ectoplasmes est un nombre orphelin
+
+`glob_of_ectoplasm.qty['vision'] = 250` ne correspond ni aux 249 des trèfles ni à
+une exigence directe identifiée. S'il vise les trèfles, il est faux d'une unité
+et devrait valoir 249 comme partout ailleurs. S'il vise autre chose, cette chose
+n'est pas documentée.
+
+**Ne rien aligner sans avoir tranché le point 2** : corriger 250 en 249 en
+ignorant les 168 manquants donnerait un total faux avec l'air d'être vérifié.
