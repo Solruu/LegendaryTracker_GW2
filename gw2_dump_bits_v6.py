@@ -25,6 +25,11 @@ joignable depuis l'environnement de Claude — d'où ce script, à lancer en loc
 Il extrait automatiquement TOUS les `achievementId` du JSX (aucune liste à
 maintenir à la main), interroge /v2/achievements et écrit un dump JSON.
 
+Le v6 rend le dump BILINGUE en une seule passe : anglais et francais, pour les
+noms de succes comme pour les noms de bits. Les sources du tracker nomment les
+objets en anglais — c'est la langue du client d'Antoine et celle du wiki — et
+gardent le francais pour la prose. Un dump monolingue oblige a relancer.
+
 Le v5 resout les bits de type `Item` et `Skin`. L'API ne rend que leur
 identifiant : un dump non resolu donne « bit 3 = objet 76918 », inexploitable
 pour ecrire une etape. Le v5 interroge /v2/items et /v2/skins et ecrit le nom a
@@ -173,7 +178,8 @@ def main():
     ap.add_argument("--jsx", default=None,
                     help="chemin du JSX ; par défaut, détection automatique "
                          "de la version la plus haute")
-    ap.add_argument("--lang", default="fr", choices=["fr", "en"])
+    ap.add_argument("--lang", default="both", choices=["fr", "en", "both"],
+                    help="'both' (defaut) ecrit les deux langues en une passe")
     ap.add_argument("--out", default="gw2_bits_dump.json")
     ap.add_argument("--catalogue", action="store_true",
                     help="ajoute les succes des 4 categories de collections legendaires "
@@ -206,8 +212,16 @@ def main():
         print(f"    Repli sur la liste gelée : {len(ids)} achievements (tracker v98).")
         print("    Pour repartir du JSX : --jsx \"chemin\\vers\\le_fichier.jsx\"")
 
-    defs = fetch(ids, args.lang)
-    print(f"{len(defs)} définitions récupérées")
+    langues = ["en", "fr"] if args.lang == "both" else [args.lang]
+    principale = langues[0]
+    par_langue = {}
+    for lg in langues:
+        par_langue[lg] = fetch(ids, lg)
+        print(f"{len(par_langue[lg])} définitions récupérées en {lg}")
+    defs = par_langue[principale]
+    noms_alt = {}
+    for lg in langues[1:]:
+        noms_alt[lg] = {d["id"]: d.get("name", "") for d in par_langue[lg]}
 
     payload, with_bits, counters, missing = {}, 0, [], []
     got = {d["id"] for d in defs}
@@ -252,9 +266,16 @@ def main():
                 besoin_skins.add(b["id"])
             elif b["type"] == "Minipet":
                 besoin_minis.add(b["id"])
-    noms_items = resoudre(besoin_items, API_ITEMS, args.lang, "objets")
-    noms_skins = resoudre(besoin_skins, API_SKINS, args.lang, "apparences")
-    noms_minis = resoudre(besoin_minis, API_MINIS, args.lang, "miniatures")
+    tables = {}
+    for lg in langues:
+        tables[lg] = {
+            "Item": resoudre(besoin_items, API_ITEMS, lg, f"objets ({lg})"),
+            "Skin": resoudre(besoin_skins, API_SKINS, lg, f"apparences ({lg})"),
+            "Minipet": resoudre(besoin_minis, API_MINIS, lg, f"miniatures ({lg})"),
+        }
+    noms_items = tables[principale]["Item"]
+    noms_skins = tables[principale]["Skin"]
+    noms_minis = tables[principale]["Minipet"]
     non_resolus = 0
     for entry in payload.values():
         for b in entry["bits"]:
@@ -269,6 +290,18 @@ def main():
                 non_resolus += 1
     if non_resolus:
         print(f"[!] {non_resolus} bits restent sans nom")
+    # Langues secondaires : un champ text_<lg> a cote, jamais a la place.
+    for lg in langues[1:]:
+        for aid, entry in payload.items():
+            alt = noms_alt.get(lg, {}).get(int(aid))
+            if alt:
+                entry[f"name_{lg}"] = alt
+            for b in entry["bits"]:
+                if b.get("id") is None:
+                    continue
+                nom = tables[lg].get(b["type"], {}).get(b["id"])
+                if nom:
+                    b[f"text_{lg}"] = nom
 
     missing = [i for i in ids if i not in got]
 
