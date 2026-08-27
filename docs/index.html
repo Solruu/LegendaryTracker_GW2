@@ -95,6 +95,7 @@ const I18N = {
     t6_src3: "T5→T6 Mystic Forge promotion: 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Profitability varies — check gw2efficiency (venom sacs and claws are often not worth it). Buy remaining deficits on the TP at the end.",
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
+    bits_nodata_note: "No progress yet — the API only reports collections you have started. Steps come from the tracker's own data.",
     bits_loading: "Loading step definitions…",
     tab_cadences: "Timegates",
     cad_daily_reset: "Daily reset in",
@@ -326,6 +327,7 @@ const I18N = {
     t6_src3: "Promotion T5→T6 en Forge : 250 T5 + dust + spirit shards → 5-12 T6 (~35-50/stack). Rentabilité variable — vérifier gw2efficiency (venom sacs et claws souvent non rentables). Acheter les déficits restants au TP en fin de parcours.",
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
+    bits_nodata_note: "Aucune progression — l'API ne renvoie que les collections déjà entamées. Les étapes viennent des données du tracker.",
     bits_loading: "Chargement des définitions d'étapes…",
     tab_cadences: "Timegates",
     cad_daily_reset: "Reset quotidien dans",
@@ -31443,6 +31445,7 @@ function GW2LegendaryTracker() {
         tip: c.note,
         bitTips: Object.fromEntries(
           (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
+        steps: (c.items ?? []).map(i => ({ index: i.bit, text: i.name })),
       }))
     : (LEGENDARIES[selectedLeg]?.raidAchievements ?? []);
 
@@ -33964,9 +33967,18 @@ function GW2LegendaryTracker() {
             const done = st.done === true || manual;
             const cur = st.current ?? 0;
             const mx = st.max ?? 0;
-            const locked = !done && mx === 0;
+            // account/achievements n'expose pas les succes a progression nulle :
+            // « aucune donnee » ne veut pas dire « verrouille ». On distingue.
+            const noData = !done && mx === 0;
+            const locked = noData && !!unlockOf(a.achievementId);
             const isOpen = expandedAch === a.key;
-            const def = achBitsDefs[String(a.achievementId)];
+            // Les collections migrees portent leurs etapes dans les sources :
+            // l'affichage ne depend plus du balayage runtime de l'API, qui
+            // laissait « Chargement des definitions d'etapes… » indefiniment
+            // tant qu'il n'avait pas ete lance a la main.
+            const def = a.steps
+              ? { bits: a.steps, tierMax: a.steps.length, subs: [], fromSources: true }
+              : achBitsDefs[String(a.achievementId)];
             const doneBits = new Set(st.bits ?? []);
             return (
               <div key={a.key}
@@ -34057,8 +34069,8 @@ function GW2LegendaryTracker() {
                 })()}
                 {isOpen && (
                   <div style={{ marginTop: "8px", borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: "7px" }} onClick={e => e.stopPropagation()}>
-                    {locked && (
-                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.6)", marginBottom: "5px" }}>{t("bits_locked_note")}</div>
+                    {(locked || noData) && (
+                      <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.6)", marginBottom: "5px" }}>{t(locked ? "bits_locked_note" : "bits_nodata_note")}</div>
                     )}
                     {!a.recipe && !def && (
                       <div style={{ fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>{t("bits_loading")}</div>
