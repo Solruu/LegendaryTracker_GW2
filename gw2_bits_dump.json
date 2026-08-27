@@ -3,19 +3,30 @@
     "source": "https://api.guildwars2.com/v2/achievements",
     "lang": "both",
     "jsx": "FALLBACK_IDS",
-    "count": 163,
-    "with_bits": 149,
+    "count": 186,
+    "with_bits": 160,
     "counters_without_bits": [
       "2715 — Path of the Ascension IV: Hymn of Glory",
       "2725 — Path of the Ascension III: Monument of Legends",
       "2738 — Path of the Ascension I: The Thrill of Battle",
       "2752 — Path of the Ascension II: Tapestry of Sacrifice",
       "3459 — Legendary Armorer",
+      "4093 — \"A Bug in the System\" Mastery",
+      "4195 — \"Long Live the Lich\" Mastery",
+      "4359 — \"A Star to Guide Us\" Mastery",
+      "4544 — \"All or Nothing\" Mastery",
+      "4689 — \"War Eternal\" Mastery",
       "4771 — Vision II: Farsight",
+      "5790 — Seasons of the Dragons",
       "7788 — Legendary Sigil Collector",
       "7796 — Legendary Rune Collector",
       "8582 — Mistburned Barrens Mastery",
       "8769 — Bava Nisos Mastery",
+      "8814 — Incursive Investigation: Infinite Recursion",
+      "8826 — Incursive Investigation",
+      "8835 — Incursive Investigation: Third Recursion",
+      "8840 — Incursive Investigation: First Recursion",
+      "8841 — Incursive Investigation: Second Recursion",
       "8880 — Shipwreck Strand Mastery",
       "9057 — Starlit Weald Mastery",
       "9180 — Helping Hylek: Kill Krait"
@@ -14107,6 +14118,602 @@
       "nom_referentiel": "Envoy Armor II: Refined Armor",
       "name_fr": "Armure d'émissaire II : armure raffinée"
     },
+    "3402": {
+      "name": "The Druid Stone",
+      "requirement": "",
+      "description": "Melandru's blessing to the most devout of her followers was to become one with nature and leave behind their physical construct. Pay tribute to and learn from the druid spirits in Draconis Mons to cultivate your relationship with nature through the Druid Stone.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Earned by completing the Heart of the Volcano instance.",
+          "id": 81102,
+          "text_fr": "À gagner en terminant l'instance Cœur du volcan."
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Druid Runestone",
+          "id": 81140,
+          "text_fr": "Pierre de rune druidique"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Bring a Druid Runestone to Kodama in the Savage Rise of Draconis Mons as a token of your friendship.",
+          "id": 81073,
+          "text_fr": "Apporter une pierre de rune druidique à Kodama, au Cap sauvage du Mont Draconis, en témoignage de votre amitié."
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Bring a Fire Orchid to Kodama in the Savage Rise.",
+          "id": 81087,
+          "text_fr": "Apporter une orchidée de feu à Kodama, au Cap sauvage."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Bring a Fire Orchid to Liriodendron in the watering hole of the Savage Rise.",
+          "id": 81178,
+          "text_fr": "Apporter une orchidée de feu à Liriodendron, au point d'eau du Cap sauvage."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Bring a Fire Orchid to Broadleaf on a ledge above the Savage Rise.",
+          "id": 81053,
+          "text_fr": "Apporter une orchidée de feu à Grand-feuille sur une corniche surplombant le Cap sauvage."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Bring a Fire Orchid to Rosewood on a ledge above the Ancient Hollow.",
+          "id": 80996,
+          "text_fr": "Apporter une orchidée de feu à Bois de rose sur une corniche surplombant la Grotte ancienne."
+        }
+      ],
+      "name_fr": "La pierre druidique"
+    },
+    "3436": {
+      "name": "A Henge Away from Home",
+      "requirement": "",
+      "description": "Your dedication to nature is proving fruitful, but there is still much to do. Continue to show your respect for Melandru's druids and help bring their magic out into the world again.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 32,
+      "prerequisites": [
+        3447
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Blooming Druid Stone",
+          "id": 7214,
+          "text_fr": "Pierre druidique florissante"
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": "Heavy Houndskin Mantle",
+          "id": 7210,
+          "text_fr": "Houppelande lourde en peau de chien"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Dropped by the Destroyer Aestus in Draconis Mons.",
+          "id": 81058,
+          "text_fr": "À récupérer sur le destructeur Aestus au Mont Draconis."
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Aestus Runestone",
+          "id": 81047,
+          "text_fr": "Pierre de rune d'Aestus"
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Dropped by the Destroyer Ignis in Draconis Mons.",
+          "id": 81110,
+          "text_fr": "À récupérer sur le destructeur Ignis au Mont Draconis."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Ignis Runestone",
+          "id": 81165,
+          "text_fr": "Pierre de rune d'Ignis"
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Dropped by the Molten Desecrator in Draconis Mons.",
+          "id": 81041,
+          "text_fr": "À récupérer sur le profanateur de la Fusion au Mont Draconis."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Desecrator Runestone",
+          "id": 81066,
+          "text_fr": "Pierre de rune de profanateur"
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Bring the Aestus Runestone, Ignis Runestone, and Desecrator Runestone to Kodama in Draconis Mons.",
+          "id": 81185,
+          "text_fr": "Apporter les pierres de rune d'Aestus, d'Ignis et de profanateur à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Dropped by Fire Elementals.",
+          "id": 81118,
+          "text_fr": "À récupérer sur les élémentaires de feu."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Volcanic Runestone",
+          "id": 81023,
+          "text_fr": "Pierre de rune volcanique"
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Dropped by Ice Elementals.",
+          "id": 81094,
+          "text_fr": "À récupérer sur les élémentaires de glace."
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Glacial Runestone",
+          "id": 81195,
+          "text_fr": "Pierre de rune glaciale"
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Dropped by air elementals.",
+          "id": 80999,
+          "text_fr": "À récupérer sur les élémentaires d'air."
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Charged Runestone",
+          "id": 81086,
+          "text_fr": "Pierre de rune chargée"
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Dropped by earth elementals.",
+          "id": 81105,
+          "text_fr": "À récupérer sur les élémentaires de terre."
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Earthen Runestone",
+          "id": 81160,
+          "text_fr": "Pierre de rune de terre"
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Bring a Volcanic Runestone, a Glacial Runestone, a Charged Runestone, and an Earthen Runestone to Kodama in Draconis Mons.",
+          "id": 81187,
+          "text_fr": "Apporter une pierre de rune volcanique, une pierre de rune glaciale, une pierre de rune chargée et une pierre de rune de terre à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Bring a Vision Crystal to Kodama in Druid's Grotto in Draconis Mons.",
+          "id": 81099,
+          "text_fr": "Apporter un cristal de vision à Kodama dans la Grotte druidique du Mont Draconis."
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "Bring 10 Fire Orchids and 5 Charged Lodestones to Kodama in the Savage Rise.",
+          "id": 80994,
+          "text_fr": "Apporter 10 orchidées de feu et 5 magnétites chargées à Kodama, au Cap sauvage."
+        },
+        {
+          "index": 20,
+          "type": "Item",
+          "text": "Bring 10 Fire Orchids and 5 Glacial Lodestones to Liriodendron in the watering hole of the Savage Rise.",
+          "id": 81080,
+          "text_fr": "Apporter 10 orchidées de feu et 5 magnétites de glace à Liriodendron, au point d'eau du Cap sauvage."
+        },
+        {
+          "index": 21,
+          "type": "Item",
+          "text": "Bring 10 Fire Orchids and 5 Onyx Lodestones to Broadleaf on a ledge above the Savage Rise.",
+          "id": 81004,
+          "text_fr": "Apporter 10 orchidées de feu et 5 magnétites d'onyx à Grand-feuille sur une corniche surplombant le Cap sauvage."
+        },
+        {
+          "index": 22,
+          "type": "Item",
+          "text": "Bring 10 Fire Orchids and 5 Molten Lodestones to Rosewood on a ledge above the Ancient Hollow.",
+          "id": 81054,
+          "text_fr": "Apporter 10 orchidées de feu et 5 magnétites en fusion à Bois de rose sur une corniche surplombant la Grotte ancienne."
+        },
+        {
+          "index": 23,
+          "type": "Item",
+          "text": "Plant 3 Fire Orchid Seeds in the garden of Dierdre's Steps in Mount Maelstrom.",
+          "id": 81180,
+          "text_fr": "Planter 3 graines d'orchidées de feu dans le jardin des Marches de Dierdre, au Mont Maelström."
+        },
+        {
+          "index": 24,
+          "type": "Item",
+          "text": "Plant 3 Fire Orchid Seeds in the garden of the oasis in Dry Top.",
+          "id": 81148,
+          "text_fr": "Planter 3 graines d'orchidées de feu dans le jardin de l'oasis de Cimesèche."
+        },
+        {
+          "index": 25,
+          "type": "Item",
+          "text": "Plant 3 Fire Orchid Seeds at the Cathedral of Verdance in Cursed Shore.",
+          "id": 81029,
+          "text_fr": "Planter 3 graines d'orchidées de feu à la Cathédrale de Verdance, au Rivage maudit."
+        },
+        {
+          "index": 26,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil on one of the islands of the Eastern Boiling Sea in Draconis Mons.",
+          "id": 81171,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile d'une des îles de la Mer bouillonnante orientale, au Mont Draconis."
+        },
+        {
+          "index": 27,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil overlooking Wind Rider Ledge in Draconis Mons.",
+          "id": 81164,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile surplombant la Corniche des chevaucheurs de vent, au Mont Draconis."
+        },
+        {
+          "index": 28,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil of the bioluminescent cave above Rata Arcanum in Draconis Mons.",
+          "id": 81170,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile de la grotte bioluminescente au-dessus de Rata Arcanum, au Mont Draconis."
+        },
+        {
+          "index": 29,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil on the ledge overlooking the Frothing Pedestal in Draconis Mons.",
+          "id": 81081,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile sur la corniche surplombant le Piédestal écumant, au Mont Draconis."
+        },
+        {
+          "index": 30,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil in the Nu II Vault in Draconis Mons.",
+          "id": 80995,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile du Coffre nu II, au Mont Draconis."
+        },
+        {
+          "index": 31,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil above the Ancient Hollow in Draconis Mons.",
+          "id": 81150,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile au-dessus de la Grotte ancienne, au Mont Draconis."
+        }
+      ],
+      "name_fr": "À quelques pierres de la maison"
+    },
+    "3445": {
+      "name": "Awakening the Druid Stone",
+      "requirement": "",
+      "description": "Continue to cultivate your relationship with nature through tributes to the druid spirits of Draconis Mons.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 14,
+      "prerequisites": [
+        3402
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Druid Stone",
+          "id": 7209,
+          "text_fr": "Pierre druidique"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Dropped by the Greater Wardbough in Draconis Mons.",
+          "id": 81052,
+          "text_fr": "À récupérer sur la ramille supérieure au Mont Draconis."
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Wardbough's Runestone",
+          "id": 81168,
+          "text_fr": "Pierre de rune de ramille"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Bring the Wardbough Runestone to Kodama in Draconis Mons.",
+          "id": 81153,
+          "text_fr": "Apporter la pierre de rune de ramille à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Given by the Restless Arboreal Spirit in Brisban Wildlands.",
+          "id": 81114,
+          "text_fr": "Don de l'esprit d'arbre agité des Terres sauvages de Brisban."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Arboreal Runestone",
+          "id": 81062,
+          "text_fr": "Pierre de rune arborifère"
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Bring the Arboreal Runestone to Kodama in Draconis Mons.",
+          "id": 81020,
+          "text_fr": "Apporter la pierre de rune arborifère à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Dropped by the Rotting Ancient Oakheart in Queensdale.",
+          "id": 81050,
+          "text_fr": "À récupérer sur le cœur-de-chêne ancien pourrissant dans la Vallée de la reine."
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Oakheart's Runestone",
+          "id": 81064,
+          "text_fr": "Pierre de rune de cœur-de-chêne"
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Bring the Oakheart Runestone to Kodama in Draconis Mons.",
+          "id": 80998,
+          "text_fr": "Apporter la pierre de rune de cœur-de-chêne à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Bring 3 Fire Orchids to Kodama in the Savage Rise.",
+          "id": 81201,
+          "text_fr": "Apporter 3 orchidées de feu à Kodama, au Cap sauvage."
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Bring 3 Fire Orchids to Liriodendron in the watering hole of the Savage Rise.",
+          "id": 81006,
+          "text_fr": "Apporter 3 orchidées de feu à Liriodendron, au point d'eau du Cap sauvage."
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Bring 3 Fire Orchids to Broadleaf on a ledge above the Savage Rise.",
+          "id": 81200,
+          "text_fr": "Apporter 3 orchidées de feu à Grand-feuille sur une corniche surplombant le Cap sauvage."
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Bring 3 Fire Orchids to Rosewood on a ledge above the Ancient Hollow.",
+          "id": 81035,
+          "text_fr": "Apporter 3 orchidées de feu à Bois de rose sur une corniche surplombant la Grotte ancienne."
+        }
+      ],
+      "name_fr": "L'éveil de la pierre druidique"
+    },
+    "3447": {
+      "name": "Sprouting the Druid Stone",
+      "requirement": "",
+      "description": "Continue to cultivate your relationship with nature through tributes to the druid spirits of Draconis Mons.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 21,
+      "prerequisites": [
+        3445
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Living Druid Stone",
+          "id": 7216,
+          "text_fr": "Pierre druidique vivante"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Dropped by the Stonehead King in Draconis Mons.",
+          "id": 81010,
+          "text_fr": "À récupérer sur le roi têtenpierre au Mont Draconis."
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Saurian Runestone",
+          "id": 81033,
+          "text_fr": "Pierre de rune saurienne"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Bring the Saurian Runestone to Kodama in Draconis Mons.",
+          "id": 81134,
+          "text_fr": "Apporter la pierre de rune saurienne à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Dropped by the Emperor Mattake in Draconis Mons.",
+          "id": 81174,
+          "text_fr": "À récupérer sur l'empereur Mattake au Mont Draconis."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Imperial Runestone",
+          "id": 81032,
+          "text_fr": "Pierre de rune impériale"
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Bring the Imperial Runestone to Kodama in Draconis Mons.",
+          "id": 81088,
+          "text_fr": "Apporter la pierre de rune impériale à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Dropped by the webby mother in Draconis Mons.",
+          "id": 81043,
+          "text_fr": "À récupérer sur la mère tricotine au Mont Draconis."
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Webby Runestone",
+          "id": 81146,
+          "text_fr": "Pierre de rune tricotine"
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Bring the Webby Runestone to Kodama in Draconis Mons.",
+          "id": 81131,
+          "text_fr": "Apporter la pierre de rune tricotine à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Dropped by the Bloodstone-charged lava wurm in Draconis Mons.",
+          "id": 81015,
+          "text_fr": "À récupérer sur la guivre de lave chargée de pierre de sang au Mont Draconis."
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Wurm Runestone",
+          "id": 81059,
+          "text_fr": "Pierre de rune de guivre"
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Bring the Wurm Runestone to Kodama in Draconis Mons.",
+          "id": 81069,
+          "text_fr": "Apporter la pierre de rune de guivre à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Dropped by the Inquest Power Suit in Draconis Mons.",
+          "id": 81083,
+          "text_fr": "À récupérer sur la combinaison de l'Enqueste au Mont Draconis."
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Arcanum Runestone",
+          "id": 81196,
+          "text_fr": "Pierre de rune d'arcanum"
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Bring the Arcanum Runestone to Kodama in Draconis Mons.",
+          "id": 81137,
+          "text_fr": "Apporter la pierre de rune d'arcanum à Kodama, au Mont Draconis."
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Bring 5 Fire Orchids and a Charged Lodestone to Kodama in the Savage Rise.",
+          "id": 81084,
+          "text_fr": "Apporter 5 orchidées de feu et une magnétite chargée à Kodama, au Cap sauvage."
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Bring 5 Fire Orchids and a Glacial Lodestone to Liriodendron in the watering hole of the Savage Rise.",
+          "id": 81048,
+          "text_fr": "Apporter 5 orchidées de feu et une magnétite de glace à Liriodendron, au point d'eau du Cap sauvage."
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Bring 5 Fire Orchids and an Onyx Lodestone to Broadleaf on a ledge above the Savage Rise.",
+          "id": 81021,
+          "text_fr": "Apporter 5 orchidées de feu et une magnétite d'onyx à Grand-feuille sur une corniche surplombant le Cap sauvage."
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "Bring 5 Fire Orchids and a Molten Lodestone to Rosewood on a ledge above the Ancient Hollow.",
+          "id": 81125,
+          "text_fr": "Apporter 5 orchidées de feu et une magnétite en fusion à Bois de rose sur une corniche surplombant la Grotte ancienne."
+        },
+        {
+          "index": 20,
+          "type": "Item",
+          "text": "Plant a Fire Orchid Seed in the fertile soil near Kodama in the Savage Rise of Draconis Mons.",
+          "id": 81149,
+          "text_fr": "Planter une graine d'orchidée de feu dans le sol fertile près de Kodama, au Cap sauvage du Mont Draconis."
+        }
+      ],
+      "name_fr": "La pousse de la pierre druidique"
+    },
     "3459": {
       "name": "Legendary Armorer",
       "requirement": "Bind  unique legendary Perfected Envoy armor skin.",
@@ -15089,6 +15696,264 @@
       "nom_referentiel": "Draconis Mons Master",
       "name_fr": "Maître du Mont Draconis"
     },
+    "3964": {
+      "name": "Astral Purification",
+      "requirement": "",
+      "description": "You think you can purify Kralkatite through a confluence of astral energy if focused correctly.",
+      "locked_text": "Craft an astral weapon.",
+      "points": 8,
+      "tier_max": 15,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a charged mirror.",
+          "id": 85895,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir chargé."
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a corrupted mirror.",
+          "id": 85868,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir corrompu."
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a crystal mirror.",
+          "id": 85812,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir de cristal."
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a glacial mirror.",
+          "id": 86318,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir glacial."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a destroyer mirror.",
+          "id": 86306,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir du destructeur."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft a molten mirror.",
+          "id": 86169,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir fondu."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Bring Ouissal the materials to craft an onyx mirror.",
+          "id": 86059,
+          "text_fr": "Apporter à Ouissal les matériaux nécessaires à la fabrication d'un miroir d'onyx."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Place the charged mirror above the Field of the Hopeful.",
+          "id": 86207,
+          "text_fr": "Placer le miroir chargé au-dessus du Champ de l'espoir."
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Place the corrupted mirror in the bluffs above Palawadan.",
+          "id": 86299,
+          "text_fr": "Placer le miroir corrompu dans les falaises dominant Palawadan."
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Place the crystal mirror overlooking Champion's Dawn.",
+          "id": 85910,
+          "text_fr": "Placer le miroir de cristal en surplomb de l'Aube du Champion."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Place the glacial mirror high above the Modri Caverns.",
+          "id": 85898,
+          "text_fr": "Placer le miroir glacial loin au-dessus des Cavernes de Modri."
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Place the destroyer mirror in the Churrhir Cliffs.",
+          "id": 86322,
+          "text_fr": "Placer le miroir du destructeur dans les Falaises de Churrhir."
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Place the molten mirror above Jakumba's Legacy.",
+          "id": 85864,
+          "text_fr": "Placer le miroir fondu au-dessus de l'Héritage de Jakumba."
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Place the onyx mirror atop the Mordant Crescent Great Hall.",
+          "id": 86280,
+          "text_fr": "Placer le miroir d'onyx au sommet de la Grand-salle du Croissant mordant."
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Bring Yasna's notes to Sunsmith Oiussal in the Sunspear Base.",
+          "id": 86199,
+          "text_fr": "Apporter les notes de Yasna à la forgeronne du soleil Ouissal, à la base des Lanciers du soleil."
+        }
+      ],
+      "name_fr": "Purification astrale"
+    },
+    "4000": {
+      "name": "Brandstone Research",
+      "requirement": "",
+      "description": "Istan is being bombarded by Brandstones, which may have unique and useful properties.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 85639,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 85663,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 86126,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 85851,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 86386,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 86078,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Assist Yasna with her research in the Astralarium.",
+          "id": 85973,
+          "text_fr": "Aider Yasna dans ses recherches à l'Astralarium."
+        }
+      ],
+      "name_fr": "Recherche de pierres stigmatisées"
+    },
+    "4027": {
+      "name": "Library Detective",
+      "requirement": "Collect overdue library books—through whatever means necessary.",
+      "description": "",
+      "locked_text": "",
+      "points": 8,
+      "tier_max": 7,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "Hidden",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Koss on Koss (Extended Edition)",
+          "id": 86142,
+          "text_fr": "Koss parle de Koss (édition enrichie)"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Everyone's a Corsair: A Guidebook",
+          "id": 86353,
+          "text_fr": "Guide pour le corsaire en chacun de nous"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "The Battle of Sorrow's Furnace",
+          "id": 86229,
+          "text_fr": "La bataille de la Fournaise des lamentations"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "The Great Joko, Hero of Tyria",
+          "id": 85975,
+          "text_fr": "Le grand Joko, héros de la Tyrie"
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Awakening of the Heart",
+          "id": 85648,
+          "text_fr": "Éveil du cœur"
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "101 Things the Mordant Crescent Doesn't Want You to Know!",
+          "id": 85901,
+          "text_fr": "101 choses que le Croissant mordant veut vous cacher !"
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Mysteries of the Night Sky",
+          "id": 85675,
+          "text_fr": "Les mystères du ciel étoilé"
+        }
+      ],
+      "name_fr": "Enquêteur de la bibliothèque"
+    },
     "4035": {
       "name": "Coalescence I: Unbridled",
       "requirement": "",
@@ -15179,6 +16044,297 @@
       "categorie": "Legendary Trinkets",
       "nom_referentiel": "Coalescence I: Unbridled",
       "name_fr": "Coalescence I : illimitée"
+    },
+    "4093": {
+      "name": "\"A Bug in the System\" Mastery",
+      "requirement": "Complete all  \"A Bug in the System\" achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 21,
+      "tier_max": 35,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de \"Un bug dans le système\""
+    },
+    "4177": {
+      "name": "Master Diver",
+      "requirement": "Find and open ten sunken chests.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "Repeatable",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Gendarran Fields Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti des Champs de Gendarran récupéré"
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Harathi Hinterlands Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti des Hinterlands harathis récupéré"
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Bloodtide Coast Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti de la Côte de la marée sanglante récupéré"
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Kessex Hills Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti des Collines de Kessex récupéré"
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Iron Marches Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti du Marais de fer récupéré"
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Snowden Drifts Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti des Congères d'Antreneige récupéré"
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Frostgorge Sound Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti du Détroit des gorges glacées récupéré"
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Lornar's Pass Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti du Passage de Lornar récupéré"
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Timberline Falls Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti des Chutes de la canopée récupéré"
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Mount Maelstrom Sunken Chest Looted",
+          "id": null,
+          "text_fr": "Coffre englouti du Mont Maelström récupéré"
+        }
+      ],
+      "name_fr": "Maître de la plongée"
+    },
+    "4195": {
+      "name": "\"Long Live the Lich\" Mastery",
+      "requirement": "Complete all  \"Long Live the Lich\" achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 28,
+      "tier_max": 38,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise \"Longue vie à la liche\""
+    },
+    "4359": {
+      "name": "\"A Star to Guide Us\" Mastery",
+      "requirement": "Complete all  \"A Star to Guide Us\" achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 30,
+      "tier_max": 38,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de \"Guidés par une étoile\""
+    },
+    "4376": {
+      "name": "The Convergence of Sorrow I: Elegy",
+      "requirement": "Console an Awakened armorsmith and change the heart of a Sunspear.",
+      "description": "<c=@Flavor>It can take a lifetime to learn how to live.</c>",
+      "locked_text": "Complete Chapter 5 of Episode 4 to unlock this collection.",
+      "points": 5,
+      "tier_max": 20,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "RequiresUnlock",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Find the Awakened armorsmith in Sun's Refuge.",
+          "id": 88490,
+          "text_fr": "Trouver la forgeronne d'armures éveillée au Refuge du soleil."
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Find one of the armorsmith's monuments in Jahai.",
+          "id": 88892,
+          "text_fr": "Trouver l'un des monuments du forgeron d'armures à Jahai."
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Investigate the monuments' destruction.",
+          "id": 88482,
+          "text_fr": "Enquêter sur la destruction des monuments."
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Return to the armorsmith.",
+          "id": 88821,
+          "text_fr": "Retourner auprès de la forgeronne d'armures."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Find Second Spear Riyid.",
+          "id": 88488,
+          "text_fr": "Trouver le second lancier Riyid."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Listen to the Sunspear's fellow soldiers.",
+          "id": 88932,
+          "text_fr": "Écouter les camarades du Lancier du soleil."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Find something left behind at an old homestead.",
+          "id": 88782,
+          "text_fr": "Trouver un objet oublié dans une vieille ferme."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Find something else left behind at an old homestead.",
+          "id": 88960,
+          "text_fr": "Trouver un autre objet oublié dans une vieille ferme."
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Find the former Sunspear.",
+          "id": 88524,
+          "text_fr": "Trouver l'ancien Lancier du soleil."
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Bring an idea, and two memories, to the armorsmith.",
+          "id": 88945,
+          "text_fr": "Apporter une idée et deux souvenirs à la forgeronne d'armures."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "A memorial among wurms and bones.",
+          "id": 88593,
+          "text_fr": "Un mémorial parmi les guivres et les ossements."
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "A memorial overlooking what flows and what grows.",
+          "id": 88659,
+          "text_fr": "Un mémorial surplombant les cours d'eau et la flore."
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "A memorial preceding prosperity.",
+          "id": 88542,
+          "text_fr": "Un mémorial précédant la prospérité."
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "A memorial of secrets beside an ancient arch.",
+          "id": 88639,
+          "text_fr": "Un mémorial de secrets à côté d'une ancienne arche."
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "A memorial where a general meets an old foe anew.",
+          "id": 88950,
+          "text_fr": "Un mémorial où un général retrouve un vieil ennemi."
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "A memorial where a tyrant rose.",
+          "id": 88486,
+          "text_fr": "Un mémorial qui a vu un tyran s'élever."
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Two memorials where one was destroyed.",
+          "id": 88548,
+          "text_fr": "Deux mémoriaux dont l'un fut détruit."
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Find the destroyer.",
+          "id": 88787,
+          "text_fr": "Trouver le destructeur."
+        },
+        {
+          "index": 18,
+          "type": "Item",
+          "text": "Where all things come together.",
+          "id": 88870,
+          "text_fr": "Là où tout se rassemble."
+        },
+        {
+          "index": 19,
+          "type": "Item",
+          "text": "Endings and Beginnings",
+          "id": 88931,
+          "text_fr": "Fins et commencements"
+        }
+      ],
+      "name_fr": "Convergence des lamentations I : Élégie"
     },
     "4412": {
       "name": "Coalescence II: The Gift",
@@ -15327,6 +16483,170 @@
       "categorie": "Legendary Trinkets",
       "nom_referentiel": "Coalescence II: The Gift",
       "name_fr": "Coalescence II : Le cadeau"
+    },
+    "4544": {
+      "name": "\"All or Nothing\" Mastery",
+      "requirement": "Complete all  All or Nothing achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 21,
+      "tier_max": 30,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de Quitte ou double"
+    },
+    "4577": {
+      "name": "Journeyman of the Forge",
+      "requirement": "Acquire a full set of Dragonsblood weapons with Aurene.",
+      "description": "These weapons will change the world.",
+      "locked_text": "",
+      "points": 16,
+      "tier_max": 16,
+      "prerequisites": [
+        4513
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood axe.",
+          "id": 8596,
+          "text_fr": "Vous avez obtenu une hache de sang de dragon."
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood dagger.",
+          "id": 8597,
+          "text_fr": "Vous avez obtenu une dague de sang de dragon."
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood focus.",
+          "id": 8601,
+          "text_fr": "Vous avez obtenu un focus de sang de dragon."
+        },
+        {
+          "index": 3,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood greatsword.",
+          "id": 8615,
+          "text_fr": "Vous avez obtenu un espadon de sang de dragon."
+        },
+        {
+          "index": 4,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood hammer.",
+          "id": 8593,
+          "text_fr": "Vous avez obtenu un marteau de sang de dragon."
+        },
+        {
+          "index": 5,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood longbow.",
+          "id": 8583,
+          "text_fr": "Vous avez obtenu un arc long de sang de dragon."
+        },
+        {
+          "index": 6,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood mace.",
+          "id": 8613,
+          "text_fr": "Vous avez obtenu une masse de sang de dragon."
+        },
+        {
+          "index": 7,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood pistol.",
+          "id": 8611,
+          "text_fr": "Vous avez obtenu un pistolet de sang de dragon."
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood rifle.",
+          "id": 8614,
+          "text_fr": "Vous avez obtenu un fusil de sang de dragon."
+        },
+        {
+          "index": 9,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood scepter.",
+          "id": 8555,
+          "text_fr": "Vous avez obtenu un sceptre de sang de dragon."
+        },
+        {
+          "index": 10,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood shield.",
+          "id": 8568,
+          "text_fr": "Vous avez obtenu un bouclier de sang de dragon."
+        },
+        {
+          "index": 11,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood short bow.",
+          "id": 8610,
+          "text_fr": "Vous avez obtenu un arc court de sang de dragon."
+        },
+        {
+          "index": 12,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood staff.",
+          "id": 8564,
+          "text_fr": "Vous avez obtenu un bâton de sang de dragon."
+        },
+        {
+          "index": 13,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood sword.",
+          "id": 8554,
+          "text_fr": "Vous avez obtenu une épée de sang de dragon."
+        },
+        {
+          "index": 14,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood torch.",
+          "id": 8605,
+          "text_fr": "Vous avez obtenu une torche de sang de dragon."
+        },
+        {
+          "index": 15,
+          "type": "Skin",
+          "text": "Acquired a Dragonsblood warhorn.",
+          "id": 8572,
+          "text_fr": "Vous avez obtenu un cor de guerre de sang de dragon."
+        }
+      ],
+      "name_fr": "Compagnon de la forge"
+    },
+    "4689": {
+      "name": "\"War Eternal\" Mastery",
+      "requirement": "Complete all  \"War Eternal\" achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 25,
+      "tier_max": 18,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de l'épisode \"Guerre éternelle\""
     },
     "4757": {
       "name": "Visions of Dragonfall",
@@ -15900,6 +17220,23 @@
       "categorie": "Legendary Trinkets",
       "nom_referentiel": "Coalescence III: Culmination",
       "name_fr": "Coalescence III : Apogée"
+    },
+    "5790": {
+      "name": "Seasons of the Dragons",
+      "requirement": "Complete  Return meta-achievements. Return meta-achievements will become available over time, and they are permanently available once introduced.",
+      "description": "",
+      "locked_text": "",
+      "points": 100,
+      "tier_max": 24,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Saisons des dragons"
     },
     "6933": {
       "name": "Mists Research",
@@ -20322,6 +21659,182 @@
       ],
       "bits": [],
       "name_fr": "Maîtrise de Bava Nisos"
+    },
+    "8814": {
+      "name": "Incursive Investigation: Infinite Recursion",
+      "requirement": "Earn fractalline dust by completing quickplay fractals and related Fractal Incursion achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 0,
+      "tier_max": 150,
+      "prerequisites": [
+        8835
+      ],
+      "flags": [
+        "Repeatable",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive : récursion infinie"
+    },
+    "8823": {
+      "name": "Incursive Investigation: Relic in the Mists",
+      "requirement": "While progressing the Incursive Investigation: Working Together achievement, discover the Agony-Torn Gloves in a quickplay fractal.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 1,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive : relique dans les Brumes"
+    },
+    "8826": {
+      "name": "Incursive Investigation",
+      "requirement": "Complete  key Fractal Incursion achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 30,
+      "tier_max": 5,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive"
+    },
+    "8830": {
+      "name": "Incursive Investigation: Working Together",
+      "requirement": "Work with the Mist Stranger to address a disturbance in the Fractals of the Mists and earn a legendary reward.",
+      "description": "This achievement will unlock additional Incursive Investigation achievements when certain steps are reached.\nDuring the Fractal Incursion event, some steps of this achievement will be unlocked week by week. Afterward, there will be no limit on it.",
+      "locked_text": "",
+      "points": 6,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "1. Speak with the Mist Stranger to learn about disturbances in the fractals.",
+          "id": null,
+          "text_fr": "1. Parler à l'Étranger des Brumes pour en savoir plus sur les perturbations dans les fractales."
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "3. Complete a Fractal of the Mists in quickplay mode and loot the final treasure chest.",
+          "id": null,
+          "text_fr": "3. Terminer une fractale des Brumes en mode session rapide et ouvrir le coffre au trésor final."
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "4. Bring the Agony-Torn Gloves to the Mist Stranger.",
+          "id": null,
+          "text_fr": "4. Apporter les gants déchirés par l'agonie à l'Étranger des Brumes."
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "5. Complete the Incursive Investigation: First Recursion achievement and wait until Fractal Incursion week one ends.",
+          "id": null,
+          "text_fr": "5. Terminer le succès \"Enquête invasive : première récursion\" et attendre que prenne fin la première semaine de l'invasion des fractales."
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "6. Check in with the Mist Stranger and your allies.",
+          "id": null,
+          "text_fr": "6. Parler à l'Étranger des Brumes et à vos alliés."
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "7. Complete the Incursive Investigation: Second Recursion achievement and wait until Fractal Incursion week two ends.",
+          "id": null,
+          "text_fr": "7. Terminer le succès \"Enquête invasive : deuxième récursion\" et attendre que prenne fin la deuxième semaine de l'invasion des fractales."
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "8. Check in with the Mist Stranger and your allies.",
+          "id": null,
+          "text_fr": "8. Parler à l'Étranger des Brumes et à vos alliés."
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "9. Complete the Incursive Investigation: Third Recursion achievement.",
+          "id": null,
+          "text_fr": "9. Terminer le succès \"Enquête invasive : troisième récursion\"."
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "10. Confer with the Mist Stranger about the end of the crisis.",
+          "id": null,
+          "text_fr": "10. Consulter l'Étranger des Brumes au sujet de la fin de la crise."
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "2. Speak with gathered allies to hear the plan.",
+          "id": null,
+          "text_fr": "2. Parler aux alliés présents pour découvrir le plan."
+        }
+      ],
+      "name_fr": "Enquête invasive : collaboration"
+    },
+    "8835": {
+      "name": "Incursive Investigation: Third Recursion",
+      "requirement": "Earn fractalline dust by completing quickplay fractals and related Fractal Incursion achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 450,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive : troisième récursion"
+    },
+    "8840": {
+      "name": "Incursive Investigation: First Recursion",
+      "requirement": "Earn fractalline dust by completing quickplay fractals and related Fractal Incursion achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 150,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive : première récursion"
+    },
+    "8841": {
+      "name": "Incursive Investigation: Second Recursion",
+      "requirement": "Earn fractalline dust by completing quickplay fractals and related Fractal Incursion achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 300,
+      "prerequisites": [],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Enquête invasive : deuxième récursion"
     },
     "8869": {
       "name": "Acquiring Agaleus",

@@ -929,7 +929,8 @@
   "changelog_v169": "Les six ecarts restants sont instruits sur leurs arbres : les six valeurs de qty sont CONFIRMEES, aucune donnee ne change. Ad Infinitum 1039 ectos = 250 Beta Fractal Capacitor + 250 Fractal Capacitor + 25 Unbound Wings + 10 Bound Wings + 5 Mithrillium + 249 trefles + 250 Gift of Fortune ; 339 obsidiennes = 90 (Dragonite, Empyreal, Bloodstone) + 249 trefles. Selachimorpha 488 = 60 + 178 trefles + 250 Gift of Castoran Mastery. Endless Summer 283 = 250 Gift of Infused Gems + 33 trefles. Orrax 68 trefles = 30 Gift of the Side Course + 38 Draconic Tribute — l'ancienne table n'en comptait que 38, elle ignorait la premiere branche. Vision 421 = 249 trefles + 100 Fulgurite + 72. Le cout unitaire du trefle, environ 3,23 par unite, est documente dans common_required_scope : il recoupe cinq arbres.",
   "changelog_v170": "Les onglets Armes et Colifichets etaient morts depuis la migration vers tab_contract : le contrat demandait les flags isWeapons et isTrinkets, qui n'existent nulle part. Les vrais s'appellent isWeaponTracker et isTrinketTracker. Zero occurrence dans LEGENDARIES contre 4 pour isArmorSet, qui lui fonctionnait — d'ou une panne invisible sur deux hubs seulement. La matrice de ciblage par generation, le selecteur gen1/gen2/gen3/Divers et les notes de cout par generation existaient et n'etaient jamais rendus. Corrige dans le contrat, pas dans le JSX : les flags du JSX sont les noms d'origine, c'est le contrat qui les avait mal recopies.",
   "changelog_v171": "Ad Infinitum migre vers collections{} : validation de forme avant les dix autres. Les trois structures concurrentes fusionnent en une. raidAchievements[] du JSX apportait les bitTips par etape, achievements[] des sources la note et le total, le dump les noms d'etapes. Resultat : 4 collections, 46 etapes nommees, 46 how issus des bitTips et marques how_verified false — ce sont des conseils editoriaux, pas des instructions reverifiees. Les totaux ne sont plus ecrits a la main mais comptes sur les bits du dump. La note d'adinf_4 divergeait entre le JSX et les sources : la version JSX chiffre les murs d'echelle, elle est retenue, l'autre passe en note_alt plutot que d'etre perdue.",
-  "changelog_v172": "Les dix legendaires restants migrent vers collections{} : 56 collections, 379 etapes. raidAchievements[] du JSX disparait des sources comme structure concurrente. Trois conventions d'indexation des bitTips coexistaient : par numero de bit, par nom d'objet, et — la ou le dump porte la phrase de requirement au lieu du nom — par rang. Le rapprochement par rang n'est applique que si le nombre de conseils egale EXACTEMENT le nombre de bits, sinon on ne devine pas. metaSubs, recipe, cumulative, rate et target sont conserves tels quels : ils ont un rendu dedie. Les how portent tous how_verified false. Trois plafonds en prose sont apparus a l'audit en migrant : ils vivaient dans le JSX, ou la regle ne regardait pas. Aucun n'est nouveau, ils etaient invisibles. cadence_ref pose sur le legendaire — legendary_insight pour Perfected Envoy, trefles et jetons de fournisseur pour les Upgrades, cristal de difluorite pour Vision — plutot que de redeclarer des cadences qui existent deja sur les composants."
+  "changelog_v172": "Les dix legendaires restants migrent vers collections{} : 56 collections, 379 etapes. raidAchievements[] du JSX disparait des sources comme structure concurrente. Trois conventions d'indexation des bitTips coexistaient : par numero de bit, par nom d'objet, et — la ou le dump porte la phrase de requirement au lieu du nom — par rang. Le rapprochement par rang n'est applique que si le nombre de conseils egale EXACTEMENT le nombre de bits, sinon on ne devine pas. metaSubs, recipe, cumulative, rate et target sont conserves tels quels : ils ont un rendu dedie. Les how portent tous how_verified false. Trois plafonds en prose sont apparus a l'audit en migrant : ils vivaient dans le JSX, ou la regle ne regardait pas. Aucun n'est nouveau, ils etaient invisibles. cadence_ref pose sur le legendaire — legendary_insight pour Perfected Envoy, trefles et jetons de fournisseur pour les Upgrades, cristal de difluorite pour Vision — plutot que de redeclarer des cadences qui existent deja sur les composants.",
+  "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule."
  },
  "meta_events": {
   "vb": {
@@ -16491,7 +16492,8 @@
      "note": {
       "fr": "Part I — ~15 jours (Daily League Participation ×15). Récompense : Recruit's Wings of Glory débloquées.",
       "en": "Part I — ~15 days (Daily League Participation ×15). Reward: unlocks Recruit's Wings of Glory."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "ascension_path_2": {
      "id": 2752,
@@ -16504,7 +16506,8 @@
      "note": {
       "fr": "Part II — mêmes succès, quotas augmentés (~15 jours).",
       "en": "Part II — same achievements, higher quotas (~15 days)."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "ascension_path_3": {
      "id": 2725,
@@ -16517,7 +16520,8 @@
      "note": {
       "fr": "Part III — multi-classes requis (League Professional ×3).",
       "en": "Part III — multiclassing required (League Professional ×3)."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "ascension_path_4": {
      "id": 2715,
@@ -16530,7 +16534,8 @@
      "note": {
       "fr": "Part IV — dernière étape du grind ranked.",
       "en": "Part IV — final ranked grind step."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -16710,7 +16715,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "adinf_2": {
      "id": 2557,
@@ -16835,7 +16841,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "adinf_3": {
      "id": 2368,
@@ -16960,7 +16967,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "adinf_4": {
      "id": 2295,
@@ -17109,7 +17117,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -17176,7 +17185,8 @@
      "note_alt": {
       "fr": "Prérequis : parler à Hylek Amini (NE d'Eztlitl Grounds [&BEoCAAA=]), puis tuer 25 kraits à Nonmoa Lake ou compléter l'event Krait Witch.",
       "en": "Prereq: talk to Hylek Amini (NE of Eztlitl Grounds [&BEoCAAA=]), then kill 25 krait at Nonmoa Lake or complete the Krait Witch event."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "summer_sungod": {
      "id": 9183,
@@ -17295,7 +17305,8 @@
        "bit": 19,
        "name": "Return to Palak."
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "selachi_shipwreck": {
      "id": 8880,
@@ -17309,7 +17320,8 @@
       "fr": "36 succès requis (sur ~53). Débloque l'achat du composant clé chez le vendeur (500 monnaie de carte + 250 po + 300k karma) + récompense mastery. Partagé avec Selachimorpha.",
       "en": "36 achievements required (of ~53). Unlocks the key component purchase from the vendor (500 map currency + 250 g + 300k karma) + mastery reward. Shared with Selachimorpha."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "selachi_starlit": {
      "id": 9057,
@@ -17323,7 +17335,8 @@
       "fr": "36 succès requis (sur ~55). Même logique pour le Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Partagé avec Selachimorpha.",
       "en": "36 achievements required (of ~55). Same logic for the Gift of the People (Canach, Breezy Cay [&BJEPAAA=]). Shared with Selachimorpha."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -17587,7 +17600,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -17729,7 +17743,8 @@
        "bit": 7,
        "name": "Investigate the Mysterious Energy in Darra's Maze."
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "strife_unending": {
      "id": 9244,
@@ -17806,7 +17821,8 @@
        "bit": 10,
        "name": "Return to Dugan."
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -17873,7 +17889,8 @@
       "fr": "Récompense : Salmon of Knowledge (composant du précurseur Orrax Contained). Rachetable au vendeur de cœur si détruit.",
       "en": "Reward: Salmon of Knowledge (Orrax Contained precursor component). Re-purchasable from the heart vendor if destroyed."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_bava_mastery": {
      "id": 8769,
@@ -17891,7 +17908,8 @@
       "fr": "Récompense : Askur Camping Cookout (composant du précurseur). Rachetable au vendeur de cœur si détruit.",
       "en": "Reward: Askur Camping Cookout (precursor component). Re-purchasable from the heart vendor if destroyed."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_experiments": {
      "id": 8761,
@@ -17976,7 +17994,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_contained": {
      "id": 8730,
@@ -18029,7 +18048,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_isles": {
      "id": 8743,
@@ -18132,7 +18152,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_shadows": {
      "id": 8723,
@@ -18199,7 +18220,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_feast": {
      "id": 8750,
@@ -18304,7 +18326,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "orrax_final": {
      "id": 8714,
@@ -18329,7 +18352,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -18566,14 +18590,15 @@
        "bit": 23,
        "name": "Return to the shaman."
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "selachi_diver": {
      "id": 4177,
      "key": "selachi_diver",
      "name": {
-      "fr": "selachi_diver",
-      "en": "selachi_diver"
+      "fr": "Maître de la plongée",
+      "en": "Master Diver"
      },
      "total": 10,
      "note": {
@@ -18589,7 +18614,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Gendarran Fields Sunken Chest Looted"
       },
       {
        "bit": 1,
@@ -18599,7 +18624,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Harathi Hinterlands Sunken Chest Looted"
       },
       {
        "bit": 2,
@@ -18609,7 +18634,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Bloodtide Coast Sunken Chest Looted"
       },
       {
        "bit": 3,
@@ -18619,7 +18644,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Kessex Hills Sunken Chest Looted"
       },
       {
        "bit": 4,
@@ -18629,7 +18654,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Iron Marches Sunken Chest Looted"
       },
       {
        "bit": 5,
@@ -18639,7 +18664,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Snowden Drifts Sunken Chest Looted"
       },
       {
        "bit": 6,
@@ -18649,7 +18674,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Frostgorge Sound Sunken Chest Looted"
       },
       {
        "bit": 7,
@@ -18659,7 +18684,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Lornar's Pass Sunken Chest Looted"
       },
       {
        "bit": 8,
@@ -18669,7 +18694,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Timberline Falls Sunken Chest Looted"
       },
       {
        "bit": 9,
@@ -18679,10 +18704,10 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Mount Maelstrom Sunken Chest Looted"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "selachi_shipwreck": {
      "id": 8880,
@@ -18696,7 +18721,8 @@
       "fr": "Requis pour le Don de maîtrise castoréenne. 36 succès exigés sur 53 éligibles — 17 sont donc facultatifs : déplie la liste, elle est triée par effort croissant et propose les moins coûteux en premier.",
       "en": "Required for the Gift of Castoran Mastery. 36 achievements needed out of 53 eligible — 17 are therefore optional: expand the list, it is sorted by increasing effort and offers the cheapest first."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "selachi_starlit": {
      "id": 9057,
@@ -18710,7 +18736,8 @@
       "fr": "Requis pour le Don de maîtrise castoréenne. 36 succès exigés sur 54 éligibles suivis — 18 sont donc facultatifs. ⚠ Un 55e objectif existe en jeu, « A Hunt for the Ages », mais l'API ne l'expose pas : le compteur officiel pourra afficher un point de plus que cette liste, sans que ce soit une erreur.",
       "en": "Required for the Gift of Castoran Mastery. 36 achievements needed out of 54 tracked eligible — 18 are therefore optional. ⚠ A 55th objective exists in game, 'A Hunt for the Ages', but the API does not expose it: the official counter may show one more than this list, which is not an error."
      },
-     "metaSubs": true
+     "metaSubs": true,
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -19088,7 +19115,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "envoy_2": {
      "id": 3012,
@@ -19247,7 +19275,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    },
    "cadence_ref": "legendary_insight"
@@ -21245,39 +21274,39 @@
      "id": 8826,
      "key": "eikasia_meta",
      "name": {
-      "fr": "eikasia_meta",
-      "en": "eikasia_meta"
+      "fr": "Enquête invasive",
+      "en": "Incursive Investigation"
      },
-     "total": null,
+     "total": 5,
      "note": {
       "fr": "Meta-achievement — récompense : Eikasia, Mists-Grasper Choice (choix d'UN poids parmi les 3).",
       "en": "Meta-achievement — reward: Eikasia, Mists-Grasper Choice (pick ONE of the 3 weights)."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "eikasia_relic": {
      "id": 8823,
      "key": "eikasia_relic",
      "name": {
-      "fr": "eikasia_relic",
-      "en": "eikasia_relic"
+      "fr": "Enquête invasive : relique dans les Brumes",
+      "en": "Incursive Investigation: Relic in the Mists"
      },
-     "total": null,
+     "total": 1,
      "note": {
       "fr": "Étape 1 : compléter une fractale en quickplay et looter le coffre final, puis rapporter les Agony-Torn Gloves au Mist Stranger (Fort Marriner, Arche du Lion).",
       "en": "Step 1: complete a quickplay fractal and loot the final chest, then bring the Agony-Torn Gloves to the Mist Stranger (Fort Marriner, Lion's Arch)."
      },
-     "total_unknown_ref": "succes absent du dump 163 — total non etabli, jamais devine"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "eikasia_working": {
      "id": 8830,
      "key": "eikasia_working",
      "name": {
-      "fr": "eikasia_working",
-      "en": "eikasia_working"
+      "fr": "Enquête invasive : collaboration",
+      "en": "Incursive Investigation: Working Together"
      },
-     "total": 6,
+     "total": 10,
      "note": {
       "fr": "Fil conducteur de la Fractalline Dust — quickplay + achievements annexes (la plupart donnent 10+ Dust).",
       "en": "Fractalline Dust through-line — quickplay + side achievements (most grant 10+ Dust)."
@@ -21291,7 +21320,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "1. Speak with the Mist Stranger to learn about disturbances in the fractals."
       },
       {
        "bit": 1,
@@ -21301,7 +21330,11 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "3. Complete a Fractal of the Mists in quickplay mode and loot the final treasure chest."
+      },
+      {
+       "bit": 2,
+       "name": "4. Bring the Agony-Torn Gloves to the Mist Stranger."
       },
       {
        "bit": 3,
@@ -21311,7 +21344,11 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "5. Complete the Incursive Investigation: First Recursion achievement and wait until Fractal Incursion week one ends."
+      },
+      {
+       "bit": 4,
+       "name": "6. Check in with the Mist Stranger and your allies."
       },
       {
        "bit": 5,
@@ -21321,7 +21358,11 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "7. Complete the Incursive Investigation: Second Recursion achievement and wait until Fractal Incursion week two ends."
+      },
+      {
+       "bit": 6,
+       "name": "8. Check in with the Mist Stranger and your allies."
       },
       {
        "bit": 7,
@@ -21331,7 +21372,11 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "9. Complete the Incursive Investigation: Third Recursion achievement."
+      },
+      {
+       "bit": 8,
+       "name": "10. Confer with the Mist Stranger about the end of the crisis."
       },
       {
        "bit": 9,
@@ -21341,17 +21386,17 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "2. Speak with gathered allies to hear the plan."
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "eikasia_r1": {
      "id": 8840,
      "key": "eikasia_r1",
      "name": {
-      "fr": "eikasia_r1",
-      "en": "eikasia_r1"
+      "fr": "Enquête invasive : première récursion",
+      "en": "Incursive Investigation: First Recursion"
      },
      "total": 150,
      "note": {
@@ -21365,16 +21410,16 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "cible cumulative declaree par target"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
     },
     "eikasia_r2": {
      "id": 8841,
      "key": "eikasia_r2",
      "name": {
-      "fr": "eikasia_r2",
-      "en": "eikasia_r2"
+      "fr": "Enquête invasive : deuxième récursion",
+      "en": "Incursive Investigation: Second Recursion"
      },
-     "total": 150,
+     "total": 300,
      "note": {
       "fr": "2e palier : 150 Dust (300 cumulées). S'active à la fin du 1er palier.",
       "en": "2nd tier: 150 Dust (300 total). Activates when the 1st tier completes."
@@ -21386,16 +21431,16 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "cible cumulative declaree par target"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
     },
     "eikasia_r3": {
      "id": 8835,
      "key": "eikasia_r3",
      "name": {
-      "fr": "eikasia_r3",
-      "en": "eikasia_r3"
+      "fr": "Enquête invasive : troisième récursion",
+      "en": "Incursive Investigation: Third Recursion"
      },
-     "total": 150,
+     "total": 450,
      "note": {
       "fr": "3e palier : 150 Dust (450 au total) — dernière récursion avant la meta.",
       "en": "3rd tier: 150 Dust (450 total) — final recursion before the meta."
@@ -21407,14 +21452,14 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "cible cumulative declaree par target"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
     },
     "eikasia_infinite": {
      "id": 8814,
      "key": "eikasia_infinite",
      "name": {
-      "fr": "eikasia_infinite",
-      "en": "eikasia_infinite"
+      "fr": "Enquête invasive : récursion infinie",
+      "en": "Incursive Investigation: Infinite Recursion"
      },
      "total": 150,
      "note": {
@@ -21428,7 +21473,7 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "cible cumulative declaree par target"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
     }
    }
   },
@@ -23214,8 +23259,8 @@
      "id": 3402,
      "key": "henge_3402",
      "name": {
-      "fr": "henge_3402",
-      "en": "henge_3402"
+      "fr": "La pierre druidique",
+      "en": "The Druid Stone"
      },
      "total": 7,
      "note": {
@@ -23258,14 +23303,14 @@
        "name": "Fire Orchid to Rosewood"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "henge_3445": {
      "id": 3445,
      "key": "henge_3445",
      "name": {
-      "fr": "henge_3445",
-      "en": "henge_3445"
+      "fr": "L'éveil de la pierre druidique",
+      "en": "Awakening the Druid Stone"
      },
      "total": 14,
      "note": {
@@ -23366,14 +23411,14 @@
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "henge_3447": {
      "id": 3447,
      "key": "henge_3447",
      "name": {
-      "fr": "henge_3447",
-      "en": "henge_3447"
+      "fr": "La pousse de la pierre druidique",
+      "en": "Sprouting the Druid Stone"
      },
      "total": 21,
      "note": {
@@ -23502,14 +23547,14 @@
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "henge_3436": {
      "id": 3436,
      "key": "henge_3436",
      "name": {
-      "fr": "henge_3436",
-      "en": "henge_3436"
+      "fr": "À quelques pierres de la maison",
+      "en": "A Henge Away from Home"
      },
      "total": 32,
      "note": {
@@ -23682,7 +23727,7 @@
        "name": "Ancient Hollow Propagation"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    },
    "components": [
@@ -24295,7 +24340,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_istan": {
      "id": 4765,
@@ -24374,7 +24420,8 @@
        "bit": 6,
        "name": "Vision of Action: Domain of Istan"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_kourna": {
      "id": 4760,
@@ -24459,7 +24506,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_jahai": {
      "id": 4770,
@@ -24544,7 +24592,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_sandswept": {
      "id": 4774,
@@ -24629,7 +24678,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_thunderhead": {
      "id": 4764,
@@ -24714,7 +24764,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_dragonfall": {
      "id": 4757,
@@ -24799,14 +24850,15 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_brandstone": {
      "id": 4000,
      "key": "vis_brandstone",
      "name": {
-      "fr": "vis_brandstone",
-      "en": "vis_brandstone"
+      "fr": "Recherche de pierres stigmatisées",
+      "en": "Brandstone Research"
      },
      "total": 7,
      "note": {
@@ -24885,16 +24937,16 @@
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_astral_purif": {
      "id": 3964,
      "key": "vis_astral_purif",
      "name": {
-      "fr": "vis_astral_purif",
-      "en": "vis_astral_purif"
+      "fr": "Purification astrale",
+      "en": "Astral Purification"
      },
-     "total": 1,
+     "total": 15,
      "note": {
       "fr": "Débloque aussi les recettes d'armes Stellar chez Yasna.",
       "en": "Also unlocks the Stellar weapon recipes at Yasna."
@@ -24908,64 +24960,120 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Bring Ouissal the materials to craft a charged mirror."
+      },
+      {
+       "bit": 1,
+       "name": "Bring Ouissal the materials to craft a corrupted mirror."
+      },
+      {
+       "bit": 2,
+       "name": "Bring Ouissal the materials to craft a crystal mirror."
+      },
+      {
+       "bit": 3,
+       "name": "Bring Ouissal the materials to craft a glacial mirror."
+      },
+      {
+       "bit": 4,
+       "name": "Bring Ouissal the materials to craft a destroyer mirror."
+      },
+      {
+       "bit": 5,
+       "name": "Bring Ouissal the materials to craft a molten mirror."
+      },
+      {
+       "bit": 6,
+       "name": "Bring Ouissal the materials to craft an onyx mirror."
+      },
+      {
+       "bit": 7,
+       "name": "Place the charged mirror above the Field of the Hopeful."
+      },
+      {
+       "bit": 8,
+       "name": "Place the corrupted mirror in the bluffs above Palawadan."
+      },
+      {
+       "bit": 9,
+       "name": "Place the crystal mirror overlooking Champion's Dawn."
+      },
+      {
+       "bit": 10,
+       "name": "Place the glacial mirror high above the Modri Caverns."
+      },
+      {
+       "bit": 11,
+       "name": "Place the destroyer mirror in the Churrhir Cliffs."
+      },
+      {
+       "bit": 12,
+       "name": "Place the molten mirror above Jakumba's Legacy."
+      },
+      {
+       "bit": 13,
+       "name": "Place the onyx mirror atop the Mordant Crescent Great Hall."
+      },
+      {
+       "bit": 14,
+       "name": "Bring Yasna's notes to Sunsmith Oiussal in the Sunspear Base."
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_ep_lich": {
      "id": 4195,
      "key": "vis_ep_lich",
      "name": {
-      "fr": "vis_ep_lich",
-      "en": "vis_ep_lich"
+      "fr": "Maîtrise \"Longue vie à la liche\"",
+      "en": "\"Long Live the Lich\" Mastery"
      },
-     "total": null,
+     "total": 38,
      "note": {
       "fr": "⚠ 38 succès à compléter — le plus gros morceau de Vision I en volume, mais SANS timegate : tout est faisable d'affilée. C'est du temps de jeu, pas de l'attente.",
       "en": "⚠ 38 achievements to complete — Vision I's biggest chunk by volume, but with NO timegate: it can all be done back to back. It costs playtime, not waiting."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_ep_bug": {
      "id": 4093,
      "key": "vis_ep_bug",
      "name": {
-      "fr": "vis_ep_bug",
-      "en": "vis_ep_bug"
+      "fr": "Maîtrise de \"Un bug dans le système\"",
+      "en": "\"A Bug in the System\" Mastery"
      },
-     "total": null,
+     "total": 35,
      "note": {
       "fr": "35 succès. Sans timegate. Fournit aussi la Banner of the Commander (recette de Lady Camilla) utile ailleurs dans Vision.",
       "en": "35 achievements. No timegate. Also provides the Banner of the Commander (Lady Camilla's recipe) used elsewhere in Vision."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_ep_star": {
      "id": 4359,
      "key": "vis_ep_star",
      "name": {
-      "fr": "vis_ep_star",
-      "en": "vis_ep_star"
+      "fr": "Maîtrise de \"Guidés par une étoile\"",
+      "en": "\"A Star to Guide Us\" Mastery"
      },
-     "total": null,
+     "total": 38,
      "note": {
       "fr": "Sans timegate. Attention : Visions of Jahai demande EN PLUS la collection Elegy ci-dessous.",
       "en": "No timegate. Note: Visions of Jahai ALSO requires the Elegy collection below."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_elegy": {
      "id": 4376,
      "key": "vis_elegy",
      "name": {
-      "fr": "vis_elegy",
-      "en": "vis_elegy"
+      "fr": "Convergence des lamentations I : Élégie",
+      "en": "The Convergence of Sorrow I: Elegy"
      },
-     "total": 5,
+     "total": 20,
      "note": {
       "fr": "⚠ Demande des composants de craft (armure Elegy). Sans timegate, mais prévoir les matériaux — c'est la 2e sous-collection cachée de Visions of Jahai.",
       "en": "⚠ Requires crafting components (Elegy armor). No timegate, but budget the materials — it's the 2nd hidden sub-collection of Visions of Jahai."
@@ -24979,7 +25087,39 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Find the Awakened armorsmith in Sun's Refuge."
+      },
+      {
+       "bit": 1,
+       "name": "Find one of the armorsmith's monuments in Jahai."
+      },
+      {
+       "bit": 2,
+       "name": "Investigate the monuments' destruction."
+      },
+      {
+       "bit": 3,
+       "name": "Return to the armorsmith."
+      },
+      {
+       "bit": 4,
+       "name": "Find Second Spear Riyid."
+      },
+      {
+       "bit": 5,
+       "name": "Listen to the Sunspear's fellow soldiers."
+      },
+      {
+       "bit": 6,
+       "name": "Find something left behind at an old homestead."
+      },
+      {
+       "bit": 7,
+       "name": "Find something else left behind at an old homestead."
+      },
+      {
+       "bit": 8,
+       "name": "Find the former Sunspear."
       },
       {
        "bit": 9,
@@ -24989,7 +25129,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Bring an idea, and two memories, to the armorsmith."
       },
       {
        "bit": 10,
@@ -24999,7 +25139,31 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "A memorial among wurms and bones."
+      },
+      {
+       "bit": 11,
+       "name": "A memorial overlooking what flows and what grows."
+      },
+      {
+       "bit": 12,
+       "name": "A memorial preceding prosperity."
+      },
+      {
+       "bit": 13,
+       "name": "A memorial of secrets beside an ancient arch."
+      },
+      {
+       "bit": 14,
+       "name": "A memorial where a general meets an old foe anew."
+      },
+      {
+       "bit": 15,
+       "name": "A memorial where a tyrant rose."
+      },
+      {
+       "bit": 16,
+       "name": "Two memorials where one was destroyed."
       },
       {
        "bit": 17,
@@ -25009,7 +25173,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Find the destroyer."
       },
       {
        "bit": 18,
@@ -25019,32 +25183,36 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Where all things come together."
+      },
+      {
+       "bit": 19,
+       "name": "Endings and Beginnings"
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_ep_allornothing": {
      "id": 4544,
      "key": "vis_ep_allornothing",
      "name": {
-      "fr": "vis_ep_allornothing",
-      "en": "vis_ep_allornothing"
+      "fr": "Maîtrise de Quitte ou double",
+      "en": "\"All or Nothing\" Mastery"
      },
-     "total": null,
+     "total": 30,
      "note": {
       "fr": "Sans timegate. ⚠ L'étape « Equipment » ne passe PAS par Journeyman of the Forge : elle demande 6 armes Dragonsblood de six types différents, puis un achat 5 po chez Forge Master Hilina.",
       "en": "No timegate. ⚠ The 'Equipment' step does NOT go through Journeyman of the Forge: it needs 6 Dragonsblood weapons of six different types, then a 5-gold purchase from Forge Master Hilina."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_forge": {
      "id": 4577,
      "key": "vis_forge",
      "name": {
-      "fr": "vis_forge",
-      "en": "vis_forge"
+      "fr": "Compagnon de la forge",
+      "en": "Journeyman of the Forge"
      },
      "total": 16,
      "note": {
@@ -25060,7 +25228,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood axe."
       },
       {
        "bit": 1,
@@ -25070,7 +25238,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood dagger."
       },
       {
        "bit": 2,
@@ -25080,7 +25248,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood focus."
       },
       {
        "bit": 3,
@@ -25090,7 +25258,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood greatsword."
       },
       {
        "bit": 4,
@@ -25100,7 +25268,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood hammer."
       },
       {
        "bit": 5,
@@ -25110,7 +25278,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood longbow."
       },
       {
        "bit": 6,
@@ -25120,7 +25288,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood mace."
       },
       {
        "bit": 7,
@@ -25130,7 +25298,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood pistol."
       },
       {
        "bit": 8,
@@ -25140,7 +25308,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood rifle."
       },
       {
        "bit": 9,
@@ -25150,7 +25318,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood scepter."
       },
       {
        "bit": 10,
@@ -25160,7 +25328,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood shield."
       },
       {
        "bit": 11,
@@ -25170,7 +25338,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood short bow."
       },
       {
        "bit": 12,
@@ -25180,7 +25348,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood staff."
       },
       {
        "bit": 13,
@@ -25190,7 +25358,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood sword."
       },
       {
        "bit": 14,
@@ -25200,7 +25368,7 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood torch."
       },
       {
        "bit": 15,
@@ -25210,25 +25378,25 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_missing": true
+       "name": "Acquired a Dragonsblood warhorn."
       }
      ],
-     "total_ref": "compte des etapes editoriales — succes absent du dump 163, l'API ne l'expose pas"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_ep_wareternal": {
      "id": 4689,
      "key": "vis_ep_wareternal",
      "name": {
-      "fr": "vis_ep_wareternal",
-      "en": "vis_ep_wareternal"
+      "fr": "Maîtrise de l'épisode \"Guerre éternelle\"",
+      "en": "\"War Eternal\" Mastery"
      },
-     "total": null,
+     "total": 18,
      "note": {
       "fr": "18 succès. Fournit AUSSI les pièces d'armure Mist Shard exigées par l'étape « Equipment » de Dragonfall : Chasing Waterfalls (9 cascades) → casque, My Beautiful Infrastructure (10 events de pont) → gants, Life in the Underworld (10 events Olmakhan) → jambières, Cutting Weeds (10 events Mist Wardens) → bottes. Un seul poids d'armure suffit.",
       "en": "18 achievements. ALSO provides the Mist Shard armor pieces required by Dragonfall's 'Equipment' step: Chasing Waterfalls (9 waterfalls) → helm, My Beautiful Infrastructure (10 bridge events) → gloves, Life in the Underworld (10 Olmakhan events) → leggings, Cutting Weeds (10 Mist Warden events) → boots. A single weight class is enough."
      },
      "metaSubs": true,
-     "total_unknown_ref": "meta a sous-collections : le total se resout a l'execution contre l'API, il n'est pas fixe dans les sources"
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "vis_meta_2": {
      "id": 4771,
@@ -25241,7 +25409,8 @@
      "note": {
       "fr": "/kneel à 20 Mastery Insights de la LS4 en restant à genoux 15 s (effet Meditative Rest) — se relever avant la fin ne valide pas. 24 existent, 4 inaccessibles (Rata Primus, Dunlon Springs et Ntouka Pond sous l'eau, Above the Umbral Battlegrounds en l'air). Récompense : Glimpse.",
       "en": "/kneel at 20 LWS4 Mastery Insights, staying kneeled 15 s (Meditative Rest effect) — standing up early doesn't count. 24 exist, 4 unreachable (Rata Primus, Dunlon Springs and Ntouka Pond underwater, Above the Umbral Battlegrounds mid-air). Reward: Glimpse."
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    },
    "recipe_verified": "2026-07-26 (wiki) — recette + collections + prérequis",
@@ -25400,7 +25569,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "coalescence_2": {
      "id": 4412,
@@ -25595,7 +25765,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "coalescence_3": {
      "id": 4805,
@@ -25690,7 +25861,8 @@
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    }
   },
@@ -25844,7 +26016,8 @@
        "1 Mystic Aspect (craft 75, Armorsmith/LW/Tailor) = 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
        "→ Per rune: 500 Lucent Piles + 50 charms of EACH type + 20 Clovers + 100 Ectos + 50 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"
       ]
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "sigil_collector": {
      "id": 7788,
@@ -25871,7 +26044,8 @@
        "1 Mystic Mote (craft 75, Artificer/Huntsman/Weaponsmith) = 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",
        "→ Per sigil: 750 Lucent Piles + 75 symbols of EACH type + 30 Clovers + 150 Ectos + 75 Obby Shards + 50 Provisioner Tokens + T6 (Condensed ×2)"
       ]
-     }
+     },
+     "total_ref": "compte des bits exposes par /v2/achievements"
     },
     "relic_components": {
      "id": 7829,
@@ -26010,7 +26184,8 @@
        "bit": 19,
        "name": "Purchased from faction provisioners."
       }
-     ]
+     ],
+     "total_ref": "compte des bits exposes par /v2/achievements"
     }
    },
    "cadence_ref": [
