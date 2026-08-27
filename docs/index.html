@@ -28403,7 +28403,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                         const sans = matrix.farm_hubs?.no_hub?.line === line.gift;
                         if (!mes.length && !sans) return null;
                         return (
-                          <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${D}0.07)`, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+                          <div style={{ marginTop: 6, paddingTop: 5, borderTop: "1px solid rgba(226,201,126,0.07)", fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
                             {sans ? (
                               <span style={{ color: "rgba(251,146,60,0.8)" }}>{NX(matrix.farm_hubs.no_hub.why)}</span>
                             ) : (
