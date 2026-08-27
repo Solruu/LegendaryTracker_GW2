@@ -397,3 +397,55 @@ en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 
 **Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
 rendu. Aucune capture supplémentaire à demander.
+
+## common_required contre qty — 6 sur 16 étaient la définition, 9 restent
+
+**Résolu le 27/08/2026 pour la moitié du lot.** Les deux champs ne mesurent pas
+la même chose : `_meta.common_required` porte l'**exigence directe de recette**
+(250 pièces du Tribut mystique, 77 trèfles du Don de Fortune), `craft_components[].qty`
+porte le **total réellement à réunir, trèfles compris**.
+
+Or 77 trèfles coûtent en espérance **249 pièces, 249 ectoplasmes et 249
+obsidiennes** par la recette à 10. L'arbre GW2Efficiency le montre en
+développant le nœud Mystic Clover : ses enfants sont `249 Obsidian Shard`,
+`249 Mystic Coin`, `249 Glob of Ectoplasm`, `150 Philosopher's Stone`.
+
+Donc **499 = 250 + 249 est normal**, et six avertissements tombent : Coalescence
+(pièces, ectos, obsidienne), Stella Radians (pièces), The Ascension (ectos),
+Transcendence (pièces), Vision (pièces).
+
+**Hypothèse réfutée** : j'avais soupçonné les 249 d'être une empreinte de stock
+soustrait par GW2Efficiency. L'arbre montre `ownedQuantity` vide partout. Aligner
+`common_required` sur `qty` aurait cassé un affichage correct.
+
+`gw2_audit_v18.py` tolère désormais l'écart de 249 **au seul cas vérifié** —
+légendaire à exactement 77 trèfles. Pour 10 ou 55 trèfles le compte observé ne
+suit pas la proportion, il n'est donc pas extrapolé.
+
+### Les 9 écarts restants, par nature
+
+**Trois sous-comptes probables** — `qty` est *inférieur* à l'exigence directe, ce
+qui est impossible pour un total : Ad Infinitum (pièces, 249 contre 250), The
+Ascension (pièces, 249 contre 250), Transcendence (ectos, 249 contre 250). Le
+motif est identique dans les trois cas : `qty` semble ne porter **que** le coût
+trèfle, l'exigence directe ayant disparu. **Enjeu : sous-estimation de 250
+unités sur trois légendaires.**
+
+**Six écarts positifs inexpliqués** :
+
+| légendaire | matériau | direct | total | écart | dont trèfles |
+|---|---|---|---|---|---|
+| Vision | obsidienne | 250 | 421 | 171 | 249 attendus — l'écart est *plus petit* que le coût trèfle |
+| Ad Infinitum | ectos | 250 | 1039 | 789 | 249, reste 540 |
+| Ad Infinitum | obsidienne | 250 | 339 | 89 | 249 attendus, écart plus petit |
+| Selachimorpha | obsidienne | 250 | 488 | 238 | 55 trèfles, pas de référence |
+| Endless Summer | obsidienne | 250 | 283 | 33 | 10 trèfles, pas de référence |
+| Orrax Manifested | trèfles | 38 | 68 | 30 | sans objet |
+
+**Vision est prioritaire** : c'est la cible en cours, et son écart d'obsidienne
+est plus petit que le coût trèfle seul, ce qui signifie que l'exigence directe
+de 250 n'est probablement pas la bonne pour ce légendaire.
+
+**Méthode** : instruire un légendaire à la fois sur son arbre versé dans
+`ressources/gw2efficiency/`, en décomposant l'écart avant d'écrire. Ne jamais
+aligner les deux champs sans décomposition — c'est l'erreur évitée ici.

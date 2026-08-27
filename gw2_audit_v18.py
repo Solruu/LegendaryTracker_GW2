@@ -19,7 +19,7 @@ doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
 l'entite qui la porte via cadence_ref. Ce script echoue sinon.
 
 Usage :
-    python3 gw2_audit_v1.py gw2_sources_v79.json
+    python3 gw2_audit_v18.py gw2_sources_v166.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
@@ -1095,6 +1095,15 @@ COMMON_TO_COMPONENT = {
 # common_required sont une reference PAR UNITE, pas un total.
 COMMON_HUBS = {"weapons", "upgrades", "t6", "prismatic"}
 
+# Cout en esperance des 77 trefles par la recette a 10 : 249 pieces, 249 ectos,
+# 249 obsidiennes. Verifie sur l'arbre GW2Efficiency, noeud Mystic Clover
+# developpe. Un legendaire a 77 trefles porte donc legitimement 250 en exigence
+# directe et 499 en total. Volontairement limite au cas exact et verifie : pour
+# 10 ou 55 trefles le compte observe ne suit pas la proportion, on ne l'extrapole
+# donc pas.
+COUT_TREFLES = {"coins": 249, "ectos": 249, "obsidian": 249}
+TREFLES_REFERENCE = 77
+
 
 def check_common_required_merged(data, errors, warnings):
     """Une exigence de materiau transverse ne vit que dans qty.
@@ -1126,10 +1135,25 @@ def check_common_required_merged(data, errors, warnings):
                     f"craft_components/{cid}.qty['{key}'] — invisible du calcul"
                 )
             elif actuel != val:
+                # Les deux champs ne mesurent pas la meme chose : common_required
+                # porte l'exigence directe, qty le total trefles compris. Voir
+                # _meta.common_required_scope.
+                trefles = (cc["mystic_clover"].get("qty") or {}).get(key)
+                attendu = COUT_TREFLES.get(champ) if trefles == TREFLES_REFERENCE else None
+                if attendu is not None and actuel - val == attendu:
+                    continue
+                ecart = actuel - val
+                if ecart < 0:
+                    motif = (f"qty est INFERIEUR de {-ecart} a l'exigence directe — le total ne peut "
+                             "pas etre sous l'exigence, sous-compte probable")
+                elif attendu is not None:
+                    motif = (f"ecart de {ecart}, dont {attendu} imputables aux trefles ; "
+                             f"{ecart - attendu} restent inexpliques")
+                else:
+                    motif = f"ecart de {ecart}, sans cout trefle de reference a ce compte"
                 warnings.append(
-                    f"_meta.common_required[{lid}].{champ} = {val} diverge de "
-                    f"craft_components/{cid}.qty['{key}'] = {actuel} — deux nombres pour une "
-                    "meme exigence, a arbitrer"
+                    f"_meta.common_required[{lid}].{champ} = {val} contre "
+                    f"craft_components/{cid}.qty['{key}'] = {actuel} — {motif}, a instruire (BACKLOG)"
                 )
 
 
