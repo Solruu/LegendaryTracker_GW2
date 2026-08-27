@@ -1105,6 +1105,35 @@ COUT_TREFLES = {"coins": 249, "ectos": 249, "obsidian": 249}
 TREFLES_REFERENCE = 77
 
 
+def totaux_calcules(cc, legid):
+    """Rejoue l'expansion de chaine de computeGrandTotal.
+
+    La regle comparait common_required a la seule valeur A PLAT de qty. Or un
+    total peut etre porte par la chaine : depuis que la branche Encens funeraire
+    de Vision est modelisee, glob_of_ectoplasm.qty['vision'] ne vaut plus que le
+    reliquat trefle, et le total reel sort de l'expansion. Comparer au plat
+    faisait alors crier la regle sur des donnees justes.
+    """
+    totals, reporte = {}, {}
+    for cid, comp in cc.items():
+        v = (comp.get("qty") or {}).get(legid)
+        if isinstance(v, int):
+            totals[cid] = totals.get(cid, 0) + v
+    for _ in range(8):
+        ajout = {}
+        for cid, comp in cc.items():
+            for cle, v in (comp.get("qty") or {}).items():
+                if not isinstance(v, int) or cle not in cc:
+                    continue
+                parent = totals.get(cle, 0)
+                if parent > 0:
+                    ajout[cid] = ajout.get(cid, 0) + v * parent
+        for cid, v in ajout.items():
+            totals[cid] = totals.get(cid, 0) - reporte.get(cid, 0) + v
+            reporte[cid] = v
+    return totals
+
+
 def check_common_required_merged(data, errors, warnings):
     """Une exigence de materiau transverse ne vit que dans qty.
 
@@ -1116,9 +1145,11 @@ def check_common_required_merged(data, errors, warnings):
     """
     cc = data.get("craft_components", {})
     cr = (data.get("_meta") or {}).get("common_required") or {}
+    totaux = {}
     for lid, req in sorted(cr.items()):
         if lid in COMMON_HUBS or not isinstance(req, dict):
             continue
+        totaux[lid] = totaux_calcules(cc, lid)
         key = f"{lid}__per_piece" if req.get("perPiece") else lid
         for champ, cid in COMMON_TO_COMPONENT.items():
             val = req.get(champ)
@@ -1128,8 +1159,9 @@ def check_common_required_merged(data, errors, warnings):
             if not isinstance(comp, dict):
                 errors.append(f"common_required : composant '{cid}' introuvable")
                 continue
-            actuel = (comp.get("qty") or {}).get(key)
-            if actuel is None:
+            aplat = (comp.get("qty") or {}).get(key)
+            actuel = totaux.get(lid, {}).get(cid) if req.get("perPiece") is not True else aplat
+            if aplat is None and not actuel:
                 errors.append(
                     f"_meta.common_required[{lid}].{champ} = {val} n'existe pas dans "
                     f"craft_components/{cid}.qty['{key}'] — invisible du calcul"
@@ -1138,7 +1170,7 @@ def check_common_required_merged(data, errors, warnings):
                 # Les deux champs ne mesurent pas la meme chose : common_required
                 # porte l'exigence directe, qty le total trefles compris. Voir
                 # _meta.common_required_scope.
-                trefles = (cc["mystic_clover"].get("qty") or {}).get(key)
+                trefles = totaux.get(lid, {}).get("mystic_clover")
                 attendu = COUT_TREFLES.get(champ) if trefles == TREFLES_REFERENCE else None
                 if attendu is not None and actuel - val == attendu:
                     continue

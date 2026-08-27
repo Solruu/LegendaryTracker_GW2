@@ -1840,7 +1840,7 @@ const SOURCES_DB = {
       "en": "⚠ `_meta.common_required` and `craft_components[].qty` do NOT measure the same thing, and making them agree would be a mistake. `common_required` holds the DIRECT recipe requirement — the 250 Mystic Coins of the Mystic Tribute, the 77 clovers of the Gift of Fortune. `qty` holds the TOTAL actually needed, clovers included. And 77 clovers cost, in expectation, 249 coins, 249 ectoplasms and 249 obsidian shards through the 10-at-a-time recipe — the GW2Efficiency tree shows it by expanding the Mystic Clover node. A gap of exactly 249 on a legendary with 77 clovers is therefore NORMAL: 499 = 250 + 249. Never align one on the other without decomposing the gap first."
     },
     "changelog_v166": "Semantique de common_required documentee. Les 16 divergences signalees par l'audit n'etaient pas 16 erreurs : six sont la definition meme des deux champs. common_required porte l'exigence directe de recette, qty le total trefles compris, et 77 trefles coutent 249 pieces, 249 ectos et 249 obsidiennes en esperance (recette a 10, visible en developpant le noeud Mystic Clover de l'arbre). 499 = 250 + 249. Les 249 isoles n'etaient donc PAS une empreinte de stock soustrait par GW2Efficiency, hypothese que l'arbre a refutee. Aligner common_required sur qty aurait casse un affichage correct. Dix ecarts restent inexpliques et passent au BACKLOG, dont l'obsidienne de Vision (421 contre 250, ecart 171 qui ne correspond pas au cout trefle de 249).",
-    "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient."
+    "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient. Vision : les 167 ectoplasmes manquants sont rentres. La chaine porte desormais Lump of Mithrillium (cadence 1/jour/compte, le maillon qui impose les 21 jours d'Aurora II et qui n'existait dans aucun composant), Crystalline Ingot, Fulgurite, l'inscription des armes Sang-de-dragon, la Banniere du commandant et la chaine des bandoulieres olmakhan. Total ectos 850 -> 1017, conforme a l'arbre une fois reintegres les 300 du kralkatite que l'arbre omet (branche de collection). Les totaux a plat de Vision et de Coalescence ont ete retranches de ce que la chaine apporte maintenant, sinon les deux se cumulaient : ectos 250 -> 249 et obsidienne 421 -> 321 sur Vision, 499 -> 249 sur les deux materiaux de Coalescence. L'obsidienne totale de Vision reste a 421 et celle de Coalescence a 499 : seule la repartition entre plat et chaine change. Diff exhaustif passe sur tous les legendaires : seuls Vision et Coalescence bougent."
   },
   "meta_events": {
     "vb": {
@@ -5834,7 +5834,8 @@ const SOURCES_DB = {
         "stella_radians",
         "strife_unending",
         "the_ascension",
-        "transcendence"
+        "transcendence",
+        "fulgurite"
       ],
       "qty": {
         "gen1_frostfang": 250,
@@ -5865,17 +5866,18 @@ const SOURCES_DB = {
         "obsidian__per_piece": 50,
         "endless_summer": 283,
         "upgrades": 450,
-        "vision": 421,
+        "vision": 321,
         "aurora": 250,
         "conflux": 309,
         "warbringer": 309,
-        "coalescence": 499,
+        "coalescence": 249,
         "aetheric_anchor": 323,
         "klobjarne_geirr": 353,
         "orrax_manifested": 220,
         "stella_radians": 249,
         "strife_unending": 146,
-        "transcendence": 309
+        "transcendence": 309,
+        "fulgurite": 1
       },
       "farmable": true,
       "sources": [
@@ -6531,7 +6533,13 @@ const SOURCES_DB = {
         "stella_radians",
         "strife_unending",
         "the_ascension",
-        "transcendence"
+        "transcendence",
+        "lump_of_mithrillium",
+        "crystalline_ingot",
+        "diviners_orichalcum_imbued_inscription",
+        "lacquered_banner_pole",
+        "banner_pennon",
+        "olmakhan_bandolier_chain"
       ],
       "farmable": true,
       "sources": [
@@ -6576,11 +6584,11 @@ const SOURCES_DB = {
         "ad_infinitum": 1039,
         "memory_essence_encapsulator": 50,
         "upgrades": 1050,
-        "vision": 250,
+        "vision": 249,
         "aurora": 250,
         "conflux": 249,
         "warbringer": 499,
-        "coalescence": 499,
+        "coalescence": 249,
         "transcendence": 249,
         "eikasia": 80,
         "kralkatite_ingot": 1,
@@ -6590,7 +6598,13 @@ const SOURCES_DB = {
         "orrax_manifested": 2170,
         "selachimorpha": 178,
         "stella_radians": 2249,
-        "strife_unending": 146
+        "strife_unending": 146,
+        "lump_of_mithrillium": 1,
+        "crystalline_ingot": 1,
+        "diviners_orichalcum_imbued_inscription": 5,
+        "lacquered_banner_pole": 10,
+        "banner_pennon": 5,
+        "olmakhan_bandolier_chain": 1
       },
       "kind": "acquire",
       "best": "salvage",
@@ -16268,6 +16282,170 @@ const SOURCES_DB = {
         "fr": "⏳ 900 pour Transcendence, et AUCUNE voie hors PvP structuré : ni Comptoir, ni craft, ni conversion. Une saison complète rend 400 sur ses paliers non répétables, donc il faut soit plus de deux saisons, soit farmer le palier Byzantium répétable à 100 l'unité. C'est le poste le plus fermé du fichier — tout le reste de Transcendence peut avancer en parallèle, celui-ci ne dépend que du calendrier des ligues.",
         "en": "⏳ 900 for Transcendence, and NO route outside structured PvP: no Trading Post, no crafting, no conversion. A full season yields 400 across its non-repeatable tiers, so it takes either more than two seasons or farming the repeatable Byzantium tier at 100 each. The most closed line in the file — everything else in Transcendence can progress in parallel, this one only follows the league calendar."
       }
+    },
+    "lump_of_mithrillium": {
+      "name": "Lump of Mithrillium",
+      "apiId": 46742,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "xunlai_electrum_ingot"
+      ],
+      "qty": {
+        "xunlai_electrum_ingot": 1
+      },
+      "craft": {
+        "profession": "Jeweler",
+        "level": 400,
+        "ingredients": [
+          {
+            "name": "Mithril Ingot",
+            "qty": 50
+          },
+          {
+            "name": "Glob of Ectoplasm",
+            "qty": 1
+          },
+          {
+            "name": "Thermocatalytic Reagent",
+            "qty": 10
+          }
+        ]
+      },
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Raffinement quotidien (joaillerie 400) — 1 par COMPTE et par jour, reset quotidien standard. Le plafond est partagé entre l'achat chez un vendeur et le craft : acheter n'en débloque pas un second.",
+              "en": "Daily refinement (Jeweler 400) — 1 per ACCOUNT per day, standard daily reset. The cap is shared between vendor purchase and crafting: buying does not unlock a second one."
+            },
+            "period": "day",
+            "cap": 1
+          }
+        ],
+        "verified": true,
+        "checked": "2026-08-27",
+        "ref": "wiki:Lump_of_Mithrillium"
+      },
+      "note": {
+        "fr": "⏳ C'est ce maillon qui impose les 21 jours d'Aurora II : un lingot d'électrum Xunlai consomme un grumeau, et le grumeau est plafonné à 1 par jour et par compte.",
+        "en": "⏳ This link is what imposes Aurora II's 21 days: one Xunlai Electrum Ingot consumes one lump, and the lump is capped at 1 per day per account."
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "wiki:Lump_of_Mithrillium"
+    },
+    "fulgurite": {
+      "name": "Fulgurite",
+      "apiId": 76933,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "crystalline_ingot"
+      ],
+      "qty": {
+        "crystalline_ingot": 1
+      },
+      "note": {
+        "fr": "Porte les obsidiennes de la branche Encens funéraire de Vision.",
+        "en": "Carries the obsidian of Vision's Funerary Incense branch."
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "crystalline_ingot": {
+      "name": "Crystalline Ingot",
+      "apiId": 46683,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "funerary_incense"
+      ],
+      "qty": {
+        "funerary_incense": 1
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "diviners_orichalcum_imbued_inscription": {
+      "name": "Diviner's Orichalcum-Imbued Inscription",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "dragonsblood_weapons"
+      ],
+      "qty": {
+        "dragonsblood_weapons": 1
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "banner_of_the_commander": {
+      "name": "Banner of the Commander",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "vision"
+      ],
+      "qty": {
+        "vision": 1
+      },
+      "note": {
+        "fr": "Demandée par la collection « Visions of Kourna ».",
+        "en": "Required by the 'Visions of Kourna' collection."
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "lacquered_banner_pole": {
+      "name": "Lacquered Banner Pole",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "banner_of_the_commander"
+      ],
+      "qty": {
+        "banner_of_the_commander": 1
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "banner_pennon": {
+      "name": "Banner Pennon",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "banner_of_the_commander"
+      ],
+      "qty": {
+        "banner_of_the_commander": 1
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+    },
+    "olmakhan_bandolier_chain": {
+      "name": "Olmakhan Bandolier (chaîne)",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "vision"
+      ],
+      "qty": {
+        "vision": 5
+      },
+      "note": {
+        "fr": "Chaîne gigogne Simple → Tissée → À poches → Renforcée : 5 charmes olmakhan au total, 1 ectoplasme chacun.",
+        "en": "Nested chain Simple → Handwoven → Pocketed → Reinforced: 5 Olmakhan Charms in total, 1 ectoplasm each."
+      },
+      "verified": true,
+      "checked": "2026-08-27",
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
     }
   },
   "enchaînements_recommandés": {

@@ -450,56 +450,30 @@ de 250 n'est probablement pas la bonne pour ce légendaire.
 `ressources/gw2efficiency/`, en décomposant l'écart avant d'écrire. Ne jamais
 aligner les deux champs sans décomposition — c'est l'erreur évitée ici.
 
-## Vision instruit sur l'arbre — attribution corrigée, trois constats
+## Vision — chaîne complétée le 27/08/2026, `common_required` reste à revoir
 
-Arbre segmenté par légendaire et lu par `gw2_parse_recipe_tree_v2.py`.
+Les 167 ectoplasmes manquants sont rentrés. **Total Vision : 850 → 1 017**,
+conforme à l'arbre une fois réintégrés les 300 du kralkatite que l'arbre omet
+(branche de collection).
 
-**Le v1 attribuait faux.** Il rattachait chaque feuille au nœud qui la
-*précédait dans le texte*, ce qui n'est pas la hiérarchie : il a ainsi imputé
-100 ectoplasmes à la Bouteille d'huile de dirigeable, qui n'en demande aucun.
-Le v2 mesure la profondeur au solde des `<div>` et prend le dernier nœud de
-profondeur strictement inférieure. **Les totaux étaient bons, les noms faux.**
+Six maillons créés : `lump_of_mithrillium`, `crystalline_ingot`, `fulgurite`,
+`diviners_orichalcum_imbued_inscription`, `banner_of_the_commander` (+ pôle et
+pennon), `olmakhan_bandolier_chain`.
 
-### Décomposition réelle, Vision
+**Les totaux à plat ont été retranchés de ce que la chaîne apporte** — sinon les
+deux se cumulent (`_meta.flat_vs_chain_rule`). Vision : ectos 250 → 249,
+obsidienne 421 → 321. Coalescence : 499 → 249 sur les deux. **Les totaux
+calculés ne bougent pas** : Vision 421 d'obsidienne, Coalescence 499 partout.
+Seule la répartition entre plat et chaîne change.
 
-| ectoplasmes (717) | | obsidiennes (421) | |
-|---|---|---|---|
-| Memory Essence Encapsulator | 300 | Mystic Clover | 249 |
-| Mystic Clover | 249 | Fulgurite | 100 |
-| Crystalline Ingot | 100 | Dragonite Ingot | 24 |
-| Diviner's Orichalcum-Imbued Inscription | 30 | Empyreal Star | 24 |
-| Lump of Mithrillium | 18 | Bloodstone Brick | 24 |
-| Lacquered Banner Pole | 10 | | |
-| Olmakhan Charm | 5 | | |
-| Banner Pennon | 5 | | |
+Diff exhaustif passé sur tous les légendaires : **seuls Vision et Coalescence
+bougent**, et uniquement là où c'était voulu.
 
-### 1. `common_required[vision].obsidian = 250` ne correspond à rien
+### Reste ouvert : `common_required` de Vision
 
-Aucun nœud à 250 dans la branche obsidienne de Vision. L'exigence directe vaut
-**172** (100 Fulgurite + 3 × 24). Le total `qty = 421` est juste et colle à
-l'arbre.
-
-### 2. Ectoplasmes : les deux sources sont incomplètes, chacune à sa façon
-
-Tracker **850** = 250 à plat + 300 encapsulateurs + 300 kralkatite.
-Arbre **717**, sans le kralkatite.
-
-L'arbre omet les 300 du kralkatite : la branche passe par « Vision of Equipment:
-Astral Weapons », étape de collection, et les arbres les omettent toutes.
-Conforme à `_meta.recipe_tree_caveat` — ce n'est **pas** un sur-compte du tracker.
-
-Le tracker, lui, ne porte aucun des **168** ectoplasmes hors trèfles et
-encapsulateurs : Crystalline Ingot 100, Diviner's Inscription 30, Mithrillium 18,
-Banner Pole 10, Olmakhan Charm 5, Banner Pennon 5. Ni `crystalline_ingot` ni
-`fulgurite` n'existent dans `craft_components`.
-
-Total réconcilié : **1 017**.
-
-### 3. Le 250 à plat des ectoplasmes est orphelin
-
-Il ne correspond ni aux 249 des trèfles ni à une exigence directe identifiée.
-Ne pas l'aligner sur 249 avant d'avoir tranché le point 2 : ce serait un total
-faux avec l'air d'avoir été vérifié.
+`obsidian = 250` ne correspond toujours à rien — la vraie exigence directe vaut
+**172** (100 Fulgurite + 3 × 24). Et `ectos = 250` face à un total de 1 017.
+Ces deux valeurs sont des reliquats du gabarit générique.
 
 ## Les bits de collection ne réduisent pas les besoins — 5 composants sur N câblés
 
