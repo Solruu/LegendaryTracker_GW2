@@ -25,6 +25,12 @@ joignable depuis l'environnement de Claude — d'où ce script, à lancer en loc
 Il extrait automatiquement TOUS les `achievementId` du JSX (aucune liste à
 maintenir à la main), interroge /v2/achievements et écrit un dump JSON.
 
+Le v5 resout les bits de type `Item` et `Skin`. L'API ne rend que leur
+identifiant : un dump non resolu donne « bit 3 = objet 76918 », inexploitable
+pour ecrire une etape. Le v5 interroge /v2/items et /v2/skins et ecrit le nom a
+cote. Sur les 147 succes des collections legendaires, cela represente environ
+2 100 identifiants distincts.
+
 Le v4 ajoute `--catalogue` : au lieu de partir du JSX, il part des quatre
 catégories de collections légendaires de `gw2_achievements_ref.json` — Legendary
 Trinkets, Backpacks, Armor, Weapons. C'est ce qu'il faut pour ÉCRIRE les
@@ -55,6 +61,9 @@ import sys
 import urllib.request
 
 API = "https://api.guildwars2.com/v2/achievements"
+API_ITEMS = "https://api.guildwars2.com/v2/items"
+API_SKINS = "https://api.guildwars2.com/v2/skins"
+API_MINIS = "https://api.guildwars2.com/v2/minis"
 
 # Filet de sécurité : liste gelée des achievementId du tracker v98. Utilisée
 # seulement si aucun JSX n'est trouvable, pour que le script reste utilisable
@@ -140,6 +149,25 @@ def fetch(ids, lang):
     return out
 
 
+def resoudre(ids, endpoint, lang, etiquette):
+    """Rend {id: nom} pour une liste d'identifiants, par lots de 150."""
+    noms = {}
+    ids = sorted(set(ids))
+    for i in range(0, len(ids), 150):
+        chunk = ids[i:i + 150]
+        url = f"{endpoint}?ids={','.join(map(str, chunk))}&lang={lang}"
+        try:
+            with urllib.request.urlopen(url, timeout=30) as r:
+                for obj in json.load(r):
+                    noms[obj["id"]] = obj.get("name", "")
+        except Exception as exc:
+            print(f"  [!] {etiquette} lot {i // 150 + 1} en echec : {exc}", file=sys.stderr)
+    manquants = [i for i in ids if i not in noms]
+    print(f"{len(noms)}/{len(ids)} {etiquette} resolus"
+          + (f" — {len(manquants)} sans nom, ex. {manquants[:5]}" if manquants else ""))
+    return noms
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jsx", default=None,
@@ -210,6 +238,37 @@ def main():
             with_bits += 1
         elif tier_max > 1:
             counters.append(f'{d["id"]} — {entry["name"]}')
+
+    # Les bits Item et Skin ne portent qu'un identifiant. Sans nom, une etape
+    # se lit « objet 76918 » et ne sert a rien pour rediger un how.
+    besoin_items, besoin_skins, besoin_minis = set(), set(), set()
+    for entry in payload.values():
+        for b in entry["bits"]:
+            if b.get("id") is None:
+                continue
+            if b["type"] == "Item":
+                besoin_items.add(b["id"])
+            elif b["type"] == "Skin":
+                besoin_skins.add(b["id"])
+            elif b["type"] == "Minipet":
+                besoin_minis.add(b["id"])
+    noms_items = resoudre(besoin_items, API_ITEMS, args.lang, "objets")
+    noms_skins = resoudre(besoin_skins, API_SKINS, args.lang, "apparences")
+    noms_minis = resoudre(besoin_minis, API_MINIS, args.lang, "miniatures")
+    non_resolus = 0
+    for entry in payload.values():
+        for b in entry["bits"]:
+            if b.get("text"):
+                continue
+            table = {"Item": noms_items, "Skin": noms_skins,
+                     "Minipet": noms_minis}.get(b["type"], {})
+            nom = table.get(b.get("id"))
+            if nom:
+                b["text"] = nom
+            elif b.get("id") is not None:
+                non_resolus += 1
+    if non_resolus:
+        print(f"[!] {non_resolus} bits restent sans nom")
 
     missing = [i for i in ids if i not in got]
 
