@@ -1059,7 +1059,8 @@
   "changelog_v161": "Quatre derniers postes documentes. Shard of Bava Nisos : 20 par semaine chez un vendeur UNIQUE, sans coffre ni evenement ni Comptoir — 5 semaines incompressibles pour les 100 d'Orrax, un timegate ferme qu'il faut lancer en premier. Seer Runestone : 35 000 karma piece, soit 7 MILLIONS de karma pour les 200 de Stella Radians — le poste en karma le plus lourd du fichier. Curious Mursaat Ruin Shard : taux d'echange disperses d'un facteur 50, le meilleur exigeant de posseder une monture ou une mini precise. Mist Gate Residue : meme vendeur unique que le Shard of Bava Nisos, mais sans plafond documente.",
   "changelog_v162": "Les trente composants sont documentes. ⚠ Ma deduction sur le Shard of Mistburned Barrens etait fausse sur les TROIS points : un seul vendeur et non trois, aucun plafond hebdomadaire, et le cœur de renommee doit etre INCOMPLET — l'inverse exact de ses deux jumeaux. La symetrie parfaite de Janthir Syntri et Lowland Shore ne s'etendait pas a la troisieme carte, et le marquage verified: false etait justifie. Unusual Coin se revele etre une monnaie Visions of Eternity et non Janthir : ses coffres sont tous conditionnes par la maitrise Obscured Riches, la meme qui ouvre ceux de la Seve chromatique et de la Pierre d'enchantement brute. Tale of Adventure est une recompense d'histoire non repetable, donc sans farm possible.",
   "changelog_v163": "Les concentrations de farm des trophees deviennent une DONNEE au lieu de rester en prose. Elles vivaient dans les tips de 32 composants, invisibles tant qu'on ne depliait pas chaque ligne une par une — alors que l'information utile n'existe qu'en CROISANT les huit lignes. trophy_matrix.farm_hubs classe 7 foyers par nombre de lignes servies : Orr en sert trois, Bjora, les Terres sauvages d'argent, le Desert de cristal et les Etendues fragmentees en servent deux. Plus un constat negatif tout aussi utile : les Ecailles n'ont aucun bon spot et sont a acheter plutot qu'a farmer.",
-  "changelog_v164": "Foyers de farm T6 : classement refait sur les creatures distinctes au lieu du nombre de lignes servies, et chaque foyer porte desormais ses sous-zones nommees avec leurs effectifs par ligne (zones[]). Le classement precedent comptait les lignes, ce qui hissait des regions entieres du wiki (The Mists, Tyrie, Desert de cristal) au-dessus des vraies cartes et enterrait les Terres sauvages d'argent (2 lignes, 47 creatures, 2e meilleure carte du jeu). Orr, fusionne en un seul foyer, est scinde en trois : les Detroits font 35 os mais seulement 9 sang, profil different de ses voisines. Les Marches de Bjora servent 4 lignes et non 2 : la Poussiere y compte 13 creatures, omises. Les Etendues fragmentees (Bloodstone Fen) sont la sous-zone la plus dense des 800 entrees : 42 creatures, 7 lignes. Noms de sous-zones en anglais, fr: null en attente de verification — jamais traduits de tete."
+  "changelog_v164": "Foyers de farm T6 : classement refait sur les creatures distinctes au lieu du nombre de lignes servies, et chaque foyer porte desormais ses sous-zones nommees avec leurs effectifs par ligne (zones[]). Le classement precedent comptait les lignes, ce qui hissait des regions entieres du wiki (The Mists, Tyrie, Desert de cristal) au-dessus des vraies cartes et enterrait les Terres sauvages d'argent (2 lignes, 47 creatures, 2e meilleure carte du jeu). Orr, fusionne en un seul foyer, est scinde en trois : les Detroits font 35 os mais seulement 9 sang, profil different de ses voisines. Les Marches de Bjora servent 4 lignes et non 2 : la Poussiere y compte 13 creatures, omises. Les Etendues fragmentees (Bloodstone Fen) sont la sous-zone la plus dense des 800 entrees : 42 creatures, 7 lignes. Noms de sous-zones en anglais, fr: null en attente de verification — jamais traduits de tete.",
+  "changelog_v165": "Foyers de farm : la dimension palier entre dans counts, qui passe de {gift: n} a {gift: {t5: n, t6: n}}, au niveau du foyer comme de la sous-zone. Meme champ, meme chemin de rendu, une dimension de plus. Les paliers exposes et leur poids par gift sont declares dans farm_hubs.tiers, pas codes dans le JSX. Classement refait en pondere 250/100 au lieu du seul T6, et seuil devenu relatif (8 % de la ligne au palier) : un seuil absolu calibre sur des lignes de 56 a 144 ne tenait pas sur des lignes de 230. Le palier change les foyers, ce que le bloc T6 seul ne pouvait pas montrer : les Griffes n'ont AUCUN foyer au T5 (meilleure carte 12 sur 175) alors qu'elles en ont un au T6, et les Ecailles l'inverse. no_hub passe donc de constat unique a liste portant les paliers concernes. T3 et T4 restent parses mais non exposes, au backlog. Corpus complet : les quatre tableaux tronques a 150 lignes sont recolles."
  },
  "meta_events": {
   "vb": {
@@ -25272,24 +25273,83 @@
   ],
   "farm_hubs": {
    "note": {
-    "fr": "Foyers classés par nombre de créatures DISTINCTES, pas par nombre de lignes servies. Une ligne n'est listée que si la carte y porte au moins 8 créatures. ⚡ Le classement précédent comptait les lignes : il faisait remonter des régions entières du wiki — The Mists, la Tyrie, le Désert de cristal — au-dessus des vraies cartes, et enterrait les Terres sauvages d'argent, qui ne servent que deux lignes mais alignent 47 créatures. Sous-zones et effectifs sortent du croisement des huit tableaux « Dropped by », 800 entrées.",
-    "en": "Hubs ranked by DISTINCT creature count, not by number of lines served. A line is listed only if the map carries at least 8 creatures for it. ⚡ The previous ranking counted lines: it pushed whole wiki regions — The Mists, Tyria, the Crystal Desert — above real maps, and buried The Silverwastes, which serve only two lines but field 47 creatures. Sub-zones and counts come from crossing the eight 'Dropped by' tables, 800 entries."
+    "fr": "Foyers classés par volume pondéré : 250 unités de T5 et 100 de T6 par gift, soit 71 % du poids sur le T5. Une ligne n'est listée que si la carte réunit au moins 8 % de ses créatures à ce palier. ⚡ Le palier change les foyers : les Griffes n'ont aucun foyer au T5 alors qu'elles en ont un au T6, et les Écailles l'inverse. Sous-zones et effectifs sortent des 32 tableaux « Dropped by », 2 598 entrées. Les entrées régionales du wiki (Tyrie, McM, Désert de cristal) sont écartées : on ne peut pas s'y rendre.",
+    "en": "Hubs ranked by weighted volume: 250 T5 and 100 T6 per gift, so 71 % of the weight sits on T5. A line is listed only if the map gathers at least 8 % of its creatures at that tier. ⚡ The tier changes the hubs: Claws have no hub at T5 while they have one at T6, and Dragon's Stand serves Scales at T5 but not at T6. Sub-zones and counts come from the 32 'Dropped by' tables, 2,598 entries. The wiki's region-level entries (Tyria, WvW, Crystal Desert) are excluded: you cannot travel there."
    },
+   "tiers": [
+    {
+     "key": "t5",
+     "label": {
+      "fr": "T5",
+      "en": "T5"
+     },
+     "per_gift": 250
+    },
+    {
+     "key": "t6",
+     "label": {
+      "fr": "T6",
+      "en": "T6"
+     },
+     "per_gift": 100
+    }
+   ],
    "hubs": [
     {
      "map": {
       "fr": "Rivage maudit",
       "en": "Cursed Shore"
      },
-     "lines": [
-      "gift_of_bones",
-      "gift_of_dust",
-      "gift_of_blood",
-      "gift_of_venom"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust",
+       "gift_of_fangs"
+      ],
+      "t6": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust"
+      ]
+     },
      "why": {
-      "fr": "La meilleure carte du jeu, toutes lignes confondues : 103 créatures distinctes. Les Risen portent les Os et pèsent lourd sur la Poussière et le Sang. Les sous-zones nommées sont les concentrations de champions et d'élites ; les Risen communs, eux, sont partout sur la carte.",
-      "en": "The best map in the game across all lines: 103 distinct creatures. Risen carry Bones and weigh heavily on Dust and Blood. The named sub-zones are the champion and elite concentrations; common Risen roam the whole map."
+      "fr": "La meilleure carte du jeu aux deux paliers exposés : les Risen portent les Os, la Poussière et le Sang, au T5 comme au T6. Les sous-zones nommées sont les concentrations de champions et d'élites ; les Risen communs, eux, sont partout sur la carte.",
+      "en": "The best map in the game at both exposed tiers: Risen carry Bones, Dust and Blood, at T5 as at T6. The named sub-zones are the champion and elite concentrations; common Risen roam the whole map."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t5": 47,
+       "t6": 41
+      },
+      "gift_of_dust": {
+       "t5": 28,
+       "t6": 23
+      },
+      "gift_of_blood": {
+       "t5": 15,
+       "t6": 15
+      },
+      "gift_of_venom": {
+       "t5": 12,
+       "t6": 8
+      },
+      "gift_of_fangs": {
+       "t5": 11,
+       "t6": 6
+      },
+      "gift_of_scales": {
+       "t5": 8,
+       "t6": 5
+      },
+      "gift_of_claws": {
+       "t5": 5,
+       "t6": 4
+      },
+      "gift_of_totems": {
+       "t5": 1,
+       "t6": 1
+      }
      },
      "zones": [
       {
@@ -25298,10 +25358,22 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 4,
-        "gift_of_dust": 4,
-        "gift_of_venom": 1,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 4,
+         "t6": 4
+        },
+        "gift_of_dust": {
+         "t5": 4,
+         "t6": 4
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25310,9 +25382,18 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 6,
-        "gift_of_dust": 2,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 6,
+         "t6": 6
+        },
+        "gift_of_dust": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25321,23 +25402,25 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 2,
-        "gift_of_dust": 2,
-        "gift_of_venom": 1,
-        "gift_of_blood": 1,
-        "gift_of_fangs": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Fields of Gold",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_blood": 3,
-        "gift_of_bones": 2,
-        "gift_of_scales": 1,
-        "gift_of_dust": 1
+        "gift_of_bones": {
+         "t5": 3,
+         "t6": 2
+        },
+        "gift_of_dust": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_fangs": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t6": 1
+        }
        }
       },
       {
@@ -25346,22 +25429,49 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 2,
-        "gift_of_dust": 2,
-        "gift_of_totems": 1,
-        "gift_of_venom": 1,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 3,
+         "t6": 2
+        },
+        "gift_of_dust": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_totems": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t6": 1
+        }
        }
       },
       {
        "name": {
-        "en": "Winterknell Isle",
+        "en": "Fields of Gold",
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 4,
-        "gift_of_dust": 1,
-        "gift_of_venom": 1
+        "gift_of_blood": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_bones": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_dust": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       }
      ]
@@ -25371,14 +25481,59 @@
       "fr": "Bond de Malchor",
       "en": "Malchor's Leap"
      },
-     "lines": [
-      "gift_of_bones",
-      "gift_of_dust",
-      "gift_of_blood"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust",
+       "gift_of_fangs",
+       "gift_of_scales"
+      ],
+      "t6": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust",
+       "gift_of_fangs",
+       "gift_of_scales"
+      ]
+     },
      "why": {
-      "fr": "Le doublon du Rivage maudit, à peine derrière : 92 créatures. Les deux cathédrales concentrent à elles seules 25 sources. À enchaîner avec le Rivage, les cartes se touchent.",
-      "en": "Cursed Shore's twin, barely behind: 92 creatures. The two cathedrals alone hold 25 sources. Chain it with Cursed Shore, the maps adjoin."
+      "fr": "Le doublon du Rivage maudit, à peine derrière, et un peu plus polyvalent : il sert les Écailles aux deux paliers, ce que son voisin ne fait pas. À enchaîner avec le Rivage, les cartes se touchent.",
+      "en": "Cursed Shore's twin, barely behind, and slightly more versatile: it serves Scales at both tiers, which its neighbour does not. Chain it with Cursed Shore, the maps adjoin."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t5": 38,
+       "t6": 33
+      },
+      "gift_of_dust": {
+       "t5": 25,
+       "t6": 19
+      },
+      "gift_of_blood": {
+       "t5": 15,
+       "t6": 14
+      },
+      "gift_of_scales": {
+       "t5": 14,
+       "t6": 7
+      },
+      "gift_of_fangs": {
+       "t5": 11,
+       "t6": 7
+      },
+      "gift_of_venom": {
+       "t5": 8,
+       "t6": 4
+      },
+      "gift_of_claws": {
+       "t5": 5,
+       "t6": 4
+      },
+      "gift_of_totems": {
+       "t5": 4,
+       "t6": 4
+      }
      },
      "zones": [
       {
@@ -25387,10 +25542,22 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 5,
-        "gift_of_dust": 4,
-        "gift_of_blood": 3,
-        "gift_of_totems": 2
+        "gift_of_bones": {
+         "t5": 5,
+         "t6": 5
+        },
+        "gift_of_dust": {
+         "t5": 4,
+         "t6": 4
+        },
+        "gift_of_blood": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_totems": {
+         "t5": 2,
+         "t6": 2
+        }
        }
       },
       {
@@ -25399,9 +25566,18 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 6,
-        "gift_of_blood": 3,
-        "gift_of_dust": 2
+        "gift_of_bones": {
+         "t5": 7,
+         "t6": 6
+        },
+        "gift_of_blood": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_dust": {
+         "t5": 2,
+         "t6": 2
+        }
        }
       },
       {
@@ -25410,10 +25586,22 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 3,
-        "gift_of_dust": 2,
-        "gift_of_totems": 1,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_dust": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_totems": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25422,9 +25610,21 @@
         "fr": null
        },
        "counts": {
-        "gift_of_fangs": 2,
-        "gift_of_bones": 1,
-        "gift_of_blood": 1
+        "gift_of_fangs": {
+         "t5": 1,
+         "t6": 2
+        },
+        "gift_of_bones": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_scales": {
+         "t5": 2
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25433,20 +25633,18 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 2,
-        "gift_of_dust": 1,
-        "gift_of_blood": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Whisper Bay",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_scales": 1,
-        "gift_of_totems": 1,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_dust": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       }
      ]
@@ -25456,14 +25654,54 @@
       "fr": "Détroits de la Dévastation",
       "en": "Straits of Devastation"
      },
-     "lines": [
-      "gift_of_bones",
-      "gift_of_dust",
-      "gift_of_blood"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust"
+      ],
+      "t6": [
+       "gift_of_blood",
+       "gift_of_bones",
+       "gift_of_dust"
+      ]
+     },
      "why": {
-      "fr": "Troisième carte d'Orr, excellente pour les Os (35) mais nettement plus faible sur le Sang (9) que ses deux voisines. À ne pas confondre avec elles : le profil diffère.",
-      "en": "Orr's third map, excellent for Bones (35) but clearly weaker on Blood (9) than its two neighbours. Not interchangeable with them: the profile differs."
+      "fr": "Troisième carte d'Orr. Excellente pour les Os, nettement plus faible sur le Sang que ses deux voisines. Le profil diffère : elle ne les remplace pas.",
+      "en": "Orr's third map. Excellent for Bones, clearly weaker on Blood than its two neighbours. The profile differs: it does not replace them."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t5": 41,
+       "t6": 35
+      },
+      "gift_of_dust": {
+       "t5": 18,
+       "t6": 14
+      },
+      "gift_of_blood": {
+       "t5": 9,
+       "t6": 9
+      },
+      "gift_of_scales": {
+       "t5": 8,
+       "t6": 4
+      },
+      "gift_of_venom": {
+       "t5": 7,
+       "t6": 3
+      },
+      "gift_of_fangs": {
+       "t5": 7,
+       "t6": 2
+      },
+      "gift_of_claws": {
+       "t5": 7,
+       "t6": 1
+      },
+      "gift_of_totems": {
+       "t5": 4
+      }
      },
      "zones": [
       {
@@ -25472,9 +25710,52 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 5,
-        "gift_of_dust": 3,
-        "gift_of_venom": 1
+        "gift_of_bones": {
+         "t5": 5,
+         "t6": 5
+        },
+        "gift_of_dust": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Plinth Timberland",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_bones": {
+         "t5": 4
+        },
+        "gift_of_claws": {
+         "t5": 4
+        },
+        "gift_of_totems": {
+         "t5": 4
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Signal Peak",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_bones": {
+         "t5": 4
+        },
+        "gift_of_claws": {
+         "t5": 4
+        },
+        "gift_of_totems": {
+         "t5": 4
+        }
        }
       },
       {
@@ -25483,32 +25764,18 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 4,
-        "gift_of_dust": 1,
-        "gift_of_blood": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Strait of Malediction",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_bones": 2,
-        "gift_of_dust": 1,
-        "gift_of_blood": 1,
-        "gift_of_fangs": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Cathedral of Glorious Victory",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_bones": 2,
-        "gift_of_dust": 1,
-        "gift_of_blood": 1
+        "gift_of_bones": {
+         "t5": 4,
+         "t6": 4
+        },
+        "gift_of_dust": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25517,18 +25784,17 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 3,
-        "gift_of_scales": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Zho'qafa Catacombs",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_bones": 3,
-        "gift_of_dust": 1
+        "gift_of_bones": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_scales": {
+         "t5": 2,
+         "t6": 1
+        },
+        "gift_of_fangs": {
+         "t5": 1
+        }
        }
       }
      ]
@@ -25538,14 +25804,42 @@
       "fr": "Marches de Bjora",
       "en": "Bjora Marches"
      },
-     "lines": [
-      "gift_of_totems",
-      "gift_of_dust",
-      "gift_of_blood"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_blood",
+       "gift_of_dust",
+       "gift_of_totems"
+      ],
+      "t6": [
+       "gift_of_blood",
+       "gift_of_dust",
+       "gift_of_totems"
+      ]
+     },
      "why": {
-      "fr": "La ligne des Totems y vit à moitié — 26 créatures sur 56 — et la Poussière suit de près avec 13, ce que la fiche précédente omettait. Les Aberrants servent le Sang. Trois lignes sur une carte compacte, sans méta à attendre.",
-      "en": "Half the Totem line lives here — 26 creatures of 56 — and Dust follows closely with 13, which the previous card omitted. Aberrants serve Blood. Three lines on one compact map, no meta to wait for."
+      "fr": "Le foyer des Totems, et de loin : 26 créatures aux deux paliers, soit près de la moitié de la ligne au T6 et un gros tiers au T5. La Poussière suit. Les Aberrants servent le Sang. Carte compacte, sans méta à attendre.",
+      "en": "The Totem hub, by a wide margin: 26 creatures at both tiers, close to half the line at T6 and a good third at T5. Dust follows. Aberrants serve Blood. Compact map, no meta to wait for."
+     },
+     "counts": {
+      "gift_of_totems": {
+       "t5": 26,
+       "t6": 26
+      },
+      "gift_of_dust": {
+       "t5": 19,
+       "t6": 13
+      },
+      "gift_of_blood": {
+       "t5": 10,
+       "t6": 8
+      },
+      "gift_of_claws": {
+       "t5": 2,
+       "t6": 2
+      },
+      "gift_of_fangs": {
+       "t5": 1
+      }
      },
      "zones": [
       {
@@ -25554,8 +25848,14 @@
         "fr": null
        },
        "counts": {
-        "gift_of_totems": 11,
-        "gift_of_dust": 9
+        "gift_of_totems": {
+         "t5": 12,
+         "t6": 11
+        },
+        "gift_of_dust": {
+         "t5": 13,
+         "t6": 9
+        }
        }
       },
       {
@@ -25564,8 +25864,14 @@
         "fr": null
        },
        "counts": {
-        "gift_of_totems": 9,
-        "gift_of_dust": 8
+        "gift_of_totems": {
+         "t5": 11,
+         "t6": 9
+        },
+        "gift_of_dust": {
+         "t5": 11,
+         "t6": 8
+        }
        }
       },
       {
@@ -25574,8 +25880,14 @@
         "fr": null
        },
        "counts": {
-        "gift_of_blood": 8,
-        "gift_of_totems": 7
+        "gift_of_blood": {
+         "t5": 9,
+         "t6": 8
+        },
+        "gift_of_totems": {
+         "t5": 8,
+         "t6": 7
+        }
        }
       },
       {
@@ -25584,19 +25896,18 @@
         "fr": null
        },
        "counts": {
-        "gift_of_totems": 7,
-        "gift_of_dust": 4,
-        "gift_of_blood": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Svanir Plateau",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_totems": 6,
-        "gift_of_dust": 3
+        "gift_of_totems": {
+         "t5": 8,
+         "t6": 7
+        },
+        "gift_of_dust": {
+         "t5": 7,
+         "t6": 4
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25605,84 +25916,14 @@
         "fr": null
        },
        "counts": {
-        "gift_of_totems": 5,
-        "gift_of_dust": 4
-       }
-      }
-     ]
-    },
-    {
-     "map": {
-      "fr": "Terres sauvages d'argent",
-      "en": "The Silverwastes"
-     },
-     "lines": [
-      "gift_of_fangs",
-      "gift_of_venom"
-     ],
-     "why": {
-      "fr": "Deux lignes seulement, mais 47 créatures : les Mordrem mènent les Crocs (24) ET le Venin (23), et ce sont les mêmes mobs. Les sous-zones se valent — la carte est homogène, contrairement à Orr. Deuxième meilleure carte réelle du jeu malgré son étroitesse.",
-      "en": "Only two lines, but 47 creatures: Mordrem lead Fangs (24) AND Venom (23), and they are the same mobs. The sub-zones are equivalent — the map is homogeneous, unlike Orr. Second-best real map in the game despite its narrowness."
-     },
-     "zones": [
-      {
-       "name": {
-        "en": "Southwestern Silverwastes",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 3,
-        "gift_of_fangs": 3
-       }
-      },
-      {
-       "name": {
-        "en": "Northwestern Silverwastes",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 3,
-        "gift_of_fangs": 3
-       }
-      },
-      {
-       "name": {
-        "en": "Northern Silverwastes",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 2,
-        "gift_of_fangs": 2
-       }
-      },
-      {
-       "name": {
-        "en": "Sharp Valley",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 2,
-        "gift_of_fangs": 2
-       }
-      },
-      {
-       "name": {
-        "en": "Southeastern Silverwastes",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 2,
-        "gift_of_fangs": 2
-       }
-      },
-      {
-       "name": {
-        "en": "Central Silverwastes",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 1,
-        "gift_of_fangs": 1
+        "gift_of_totems": {
+         "t5": 7,
+         "t6": 5
+        },
+        "gift_of_dust": {
+         "t5": 7,
+         "t6": 4
+        }
        }
       }
      ]
@@ -25692,13 +25933,48 @@
       "fr": "Bloodstone Fen",
       "en": "Bloodstone Fen"
      },
-     "lines": [
-      "gift_of_dust",
-      "gift_of_claws"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_dust"
+      ],
+      "t6": [
+       "gift_of_claws",
+       "gift_of_dust"
+      ]
+     },
      "why": {
-      "fr": "Tout tient dans UNE sous-zone : les Étendues fragmentées alignent 42 créatures sur 7 lignes, la plus forte densité des 800 entrées croisées. Aucune autre sous-zone du jeu n'en réunit la moitié. Carte minuscule, aucun trajet.",
-      "en": "It all fits in ONE sub-zone: Fragmented Wastes holds 42 creatures across 7 lines, the highest density of the 800 entries crossed. No other sub-zone in the game gathers half as many. Tiny map, no travel."
+      "fr": "Tout tient dans UNE sous-zone : les Étendues fragmentées, la plus dense du jeu. Carte minuscule, aucun trajet. Attention au palier : les Griffes n'y qualifient qu'au T6.",
+      "en": "It all fits in ONE sub-zone: Fragmented Wastes, the densest in the game. Tiny map, no travel. Mind the tier: Claws only qualify here at T6."
+     },
+     "counts": {
+      "gift_of_dust": {
+       "t5": 19,
+       "t6": 16
+      },
+      "gift_of_claws": {
+       "t5": 12,
+       "t6": 13
+      },
+      "gift_of_scales": {
+       "t5": 7,
+       "t6": 6
+      },
+      "gift_of_bones": {
+       "t5": 3,
+       "t6": 4
+      },
+      "gift_of_venom": {
+       "t5": 4,
+       "t6": 3
+      },
+      "gift_of_blood": {
+       "t5": 3,
+       "t6": 3
+      },
+      "gift_of_fangs": {
+       "t5": 4,
+       "t6": 1
+      }
      },
      "zones": [
       {
@@ -25707,13 +25983,34 @@
         "fr": null
        },
        "counts": {
-        "gift_of_dust": 14,
-        "gift_of_claws": 12,
-        "gift_of_scales": 6,
-        "gift_of_bones": 3,
-        "gift_of_venom": 3,
-        "gift_of_blood": 3,
-        "gift_of_fangs": 1
+        "gift_of_dust": {
+         "t5": 14,
+         "t6": 14
+        },
+        "gift_of_claws": {
+         "t5": 12,
+         "t6": 12
+        },
+        "gift_of_scales": {
+         "t5": 6,
+         "t6": 6
+        },
+        "gift_of_bones": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_blood": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_fangs": {
+         "t5": 4,
+         "t6": 1
+        }
        }
       },
       {
@@ -25722,8 +26019,21 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 1,
-        "gift_of_claws": 1
+        "gift_of_bones": {
+         "t6": 1
+        },
+        "gift_of_scales": {
+         "t5": 1
+        },
+        "gift_of_claws": {
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1
+        },
+        "gift_of_dust": {
+         "t5": 1
+        }
        }
       }
      ]
@@ -25733,34 +26043,93 @@
       "fr": "Draconis Mons",
       "en": "Draconis Mons"
      },
-     "lines": [
-      "gift_of_venom",
-      "gift_of_scales"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_scales",
+       "gift_of_venom"
+      ],
+      "t6": [
+       "gift_of_scales",
+       "gift_of_venom"
+      ]
+     },
      "why": {
-      "fr": "Le meilleur spot réel des Écailles (9) — ce qui en dit long sur cette ligne — doublé du Venin (11). En dehors du McM et des entrées régionales du wiki, rien ne fait mieux sur les Écailles.",
-      "en": "The best real Scales spot (9) — which says a lot about that line — doubled with Venom (11). Outside WvW and the wiki's region-level entries, nothing does better on Scales."
+      "fr": "Le meilleur spot des Écailles au T6, doublé du Venin aux deux paliers. Aussi la meilleure carte des Griffes au T5 en volume brut, à égalité avec Bloodstone Fen — mais 12 créatures sur 175 restent sous le seuil : la ligne est trop dispersée pour qu'un foyer la serve.",
+      "en": "The best Scales spot at T6, doubled with Venom at both tiers. Also the best Claws map at T5 by raw count, tied with Bloodstone Fen — but 12 creatures of 175 stays below threshold: the line is too scattered for any hub to serve it."
+     },
+     "counts": {
+      "gift_of_venom": {
+       "t5": 14,
+       "t6": 11
+      },
+      "gift_of_scales": {
+       "t5": 13,
+       "t6": 9
+      },
+      "gift_of_claws": {
+       "t5": 12,
+       "t6": 7
+      },
+      "gift_of_bones": {
+       "t5": 4,
+       "t6": 3
+      },
+      "gift_of_fangs": {
+       "t5": 3,
+       "t6": 2
+      },
+      "gift_of_dust": {
+       "t5": 5
+      },
+      "gift_of_blood": {
+       "t5": 3,
+       "t6": 1
+      },
+      "gift_of_totems": {
+       "t5": 1
+      }
      },
      "zones": [
-      {
-       "name": {
-        "en": "Golemancer's Tomb",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_venom": 3,
-        "gift_of_scales": 2
-       }
-      },
       {
        "name": {
         "en": "Rata Arcanum",
         "fr": null
        },
        "counts": {
-        "gift_of_blood": 1,
-        "gift_of_claws": 1,
-        "gift_of_fangs": 1
+        "gift_of_claws": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_fangs": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_dust": {
+         "t5": 2
+        },
+        "gift_of_blood": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_totems": {
+         "t5": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Golemancer's Tomb",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_venom": {
+         "t5": 2,
+         "t6": 3
+        },
+        "gift_of_scales": {
+         "t5": 2,
+         "t6": 2
+        }
        }
       },
       {
@@ -25769,18 +26138,17 @@
         "fr": null
        },
        "counts": {
-        "gift_of_bones": 1,
-        "gift_of_scales": 1
-       }
-      },
-      {
-       "name": {
-        "en": "Scalding Gorge",
-        "fr": null
-       },
-       "counts": {
-        "gift_of_bones": 1,
-        "gift_of_claws": 1
+        "gift_of_claws": {
+         "t5": 3
+        },
+        "gift_of_bones": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       },
       {
@@ -25789,16 +26157,275 @@
         "fr": null
        },
        "counts": {
-        "gift_of_scales": 1
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_claws": {
+         "t5": 1
+        },
+        "gift_of_fangs": {
+         "t5": 1
+        },
+        "gift_of_blood": {
+         "t5": 1
+        }
        }
       },
       {
        "name": {
-        "en": "Ancient Hollow",
+        "en": "Savage Rise",
         "fr": null
        },
        "counts": {
-        "gift_of_venom": 1
+        "gift_of_venom": {
+         "t5": 2,
+         "t6": 1
+        },
+        "gift_of_claws": {
+         "t5": 1
+        },
+        "gift_of_dust": {
+         "t5": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Terres sauvages d'argent",
+      "en": "The Silverwastes"
+     },
+     "lines": {
+      "t5": [
+       "gift_of_fangs",
+       "gift_of_venom"
+      ],
+      "t6": [
+       "gift_of_fangs",
+       "gift_of_venom"
+      ]
+     },
+     "why": {
+      "fr": "Deux lignes seulement, mais les Mordrem mènent les Crocs ET le Venin, et ce sont les mêmes mobs. Les sous-zones se valent — la carte est homogène, contrairement à Orr.",
+      "en": "Only two lines, but Mordrem lead Fangs AND Venom, and they are the same mobs. The sub-zones are equivalent — the map is homogeneous, unlike Orr."
+     },
+     "counts": {
+      "gift_of_fangs": {
+       "t5": 24,
+       "t6": 24
+      },
+      "gift_of_venom": {
+       "t5": 24,
+       "t6": 23
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Southwestern Silverwastes",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 3,
+         "t6": 3
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Northwestern Silverwastes",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 3,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 3,
+         "t6": 3
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Southeastern Silverwastes",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_venom": {
+         "t5": 3,
+         "t6": 2
+        },
+        "gift_of_fangs": {
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Northern Silverwastes",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_venom": {
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Sharp Valley",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_venom": {
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Dragon's Stand",
+      "en": "Dragon's Stand"
+     },
+     "lines": {
+      "t5": [
+       "gift_of_scales",
+       "gift_of_venom"
+      ],
+      "t6": [
+       "gift_of_venom"
+      ]
+     },
+     "why": {
+      "fr": "Le Venin y qualifie aux deux paliers, les Écailles au T5 seulement — au T6 la carte passe juste sous le seuil. La méta finale enchaîne les Mordrem en continu ; il faut en accepter le calendrier.",
+      "en": "Venom qualifies at both tiers, Scales at T5 only — at T6 the map falls just below threshold. The final meta chains Mordrem continuously; you have to accept its schedule."
+     },
+     "counts": {
+      "gift_of_venom": {
+       "t5": 19,
+       "t6": 14
+      },
+      "gift_of_scales": {
+       "t5": 13,
+       "t6": 6
+      },
+      "gift_of_fangs": {
+       "t5": 6,
+       "t6": 6
+      },
+      "gift_of_claws": {
+       "t5": 3,
+       "t6": 1
+      },
+      "gift_of_bones": {
+       "t5": 1,
+       "t6": 2
+      },
+      "gift_of_blood": {
+       "t5": 1
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Chak Nest",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Exhumed Delve",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Southern Barbed Gate",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Northern Blighting Tower",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Central Blighting Tower",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 1
+        }
        }
       }
      ]
@@ -25808,9 +26435,15 @@
       "fr": "Cartes de Vision — Jahai, Chef-Tonnerre, Elon, Oasis",
       "en": "Vision maps — Jahai, Thunderhead, Elon, Oasis"
      },
-     "lines": [
-      "gift_of_dust"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_dust"
+      ],
+      "t6": [
+       "gift_of_dust"
+      ]
+     },
+     "counts": {},
      "why": {
       "fr": "💡 Gratuit : les Marqués sont une famille majeure de la Poussière et vivent exactement là où se farme Vision. La poussière tombe pendant le circuit, sans détour.",
       "en": "💡 Free: the Branded are a major Dust family and live exactly where Vision is farmed. Dust drops during the circuit, no detour."
@@ -25822,12 +26455,18 @@
       "fr": "Missions de riposte des dragons",
       "en": "Dragon Response Missions"
      },
-     "lines": [
-      "gift_of_claws"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_claws"
+      ],
+      "t6": [
+       "gift_of_claws"
+      ]
+     },
+     "counts": {},
      "why": {
-      "fr": "Les destructeurs mènent les Griffes, et les DRM les concentrent en instance courte.",
-      "en": "Destroyers lead Claws, and DRMs pack them into short instances."
+      "fr": "Les destructeurs mènent les Griffes, et les DRM les concentrent en instance courte. Le seul recours sur une ligne qui n'a aucun foyer de terrain au T5.",
+      "en": "Destroyers lead Claws, and DRMs pack them into short instances. The only recourse on a line with no field hub at T5."
      },
      "zones": []
     },
@@ -25836,24 +26475,35 @@
       "fr": "Labyrinthe du Roi Fou — Halloween seulement",
       "en": "Mad King's Labyrinth — Halloween only"
      },
-     "lines": [
-      "gift_of_bones"
-     ],
+     "lines": {
+      "t5": [
+       "gift_of_bones"
+      ],
+      "t6": [
+       "gift_of_bones"
+      ]
+     },
+     "counts": {},
      "why": {
-      "fr": "⚠ Saisonnier. 19 créatures d'os, quatrième source du jeu, mais la carte n'existe que pendant Halloween. À ne pas inscrire dans un plan hors saison.",
-      "en": "⚠ Seasonal. 19 bone creatures, the game's fourth source, but the map only exists during Halloween. Do not build an off-season plan around it."
+      "fr": "⚠ Saisonnier. Gros pourvoyeur d'os aux quatre paliers, mais la carte n'existe que pendant Halloween. À ne pas inscrire dans un plan hors saison.",
+      "en": "⚠ Seasonal. A major bone supplier at all four tiers, but the map only exists during Halloween. Do not build an off-season plan around it."
      },
      "zones": []
     }
    ],
-   "no_hub": {
-    "line": "gift_of_scales",
-    "why": {
-     "fr": "⚠ Les Écailles n'ont AUCUN bon spot. Hors régions et McM, la meilleure carte réelle est Draconis Mons avec 9 créatures, puis la Désolation et les Profondeurs enchevêtrées à 7. 90 créatures éparpillées sans concentration : c'est la ligne à acheter plutôt qu'à farmer.",
-     "en": "⚠ Scales have NO good spot. Outside regions and WvW, the best real map is Draconis Mons with 9 creatures, then the Desolation and Tangled Depths at 7. 90 creatures scattered with no concentration: this is the line to buy rather than farm."
+   "no_hub": [
+    {
+     "line": "gift_of_claws",
+     "tiers": [
+      "t5"
+     ],
+     "why": {
+      "fr": "⚠ Aucune carte ne sert les Griffes au T5. La meilleure, Draconis Mons, ne réunit que 12 créatures sur 175 — sous le seuil. La ligne est éparpillée sur tout le jeu : les DRM ou l'achat, pas le terrain.",
+      "en": "⚠ No map serves Claws at T5. The best, Draconis Mons, gathers only 12 creatures of 175 — below threshold. The line is scattered across the whole game: DRMs or buying, not field farming."
+     }
     }
-   },
-   "ref": "wiki — huit tableaux « Dropped by » versés dans ressources/wiki/*__dropped_by.html, parsés par gw2_parse_dropped_by_v1.py (800 entrées, 2026-08-27)",
+   ],
+   "ref": "wiki — 32 tableaux « Dropped by » versés dans ressources/wiki/, parsés par gw2_parse_dropped_by_v2.py (2 598 entrées, 2026-08-27)",
    "verified": true,
    "checked": "2026-08-27"
   }

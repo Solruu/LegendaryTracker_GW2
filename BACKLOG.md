@@ -373,7 +373,7 @@ les mises à jour du jeu.
 
 ## Noms français des sous-zones de farm (38 entrées)
 
-`trophy_matrix.farm_hubs.hubs[].zones[].name.fr` vaut `null` sur les 38 sous-zones.
+`trophy_matrix.farm_hubs.hubs[].zones[].name.fr` vaut `null` sur les 37 sous-zones.
 Le rendu se replie sur l'anglais, qui est le nom du wiki et reste cherchable.
 
 Ces noms sont des noms propres de lieux : les traduire de tête reviendrait à
@@ -390,7 +390,9 @@ parsées par `gw2_parse_dropped_by_v2.py`, mais **ne sont pas exposées** dans l
 bloc « Où farmer ».
 
 **Pourquoi c'est écarté** : 50 T3 + 50 T4 sur 450 unités par gift, soit 11 %
-chacun. Les tableaux sont maigres — les Totems T3 alignent 8 créatures, le T4
+chacun. `farm_hubs.tiers` déclare les paliers exposés et leur poids ; ajouter
+`t3` et `t4` à cette liste suffirait à les faire apparaître, une fois leurs
+compteurs calculés. Les tableaux sont maigres — les Totems T3 alignent 8 créatures, le T4
 en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 
 **Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le

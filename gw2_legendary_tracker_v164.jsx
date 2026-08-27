@@ -2783,6 +2783,10 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const [picker, setPicker] = useState(false);
   const [notes, setNotes] = useState(false);
   const [hubs, setHubs] = useState(false);
+  // Palier affiche dans « Ou farmer ». Les paliers exposes et leur poids par
+  // gift sont declares dans farm_hubs.tiers : rien de code en dur ici.
+  const hubTiers = matrix.farm_hubs?.tiers ?? [];
+  const [hubTier, setHubTier] = useState(hubTiers[0]?.key ?? "t5");
   const t = useT();
   const DB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
   const cc = DB.craft_components ?? {};
@@ -2844,8 +2848,23 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
               <div style={{ margin: "0 0 7px", fontSize: "10.5px", fontStyle: "italic", color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
                 {NX(matrix.farm_hubs.note)}
               </div>
+              {hubTiers.length > 1 && (
+                <div style={{ display: "flex", gap: 5, margin: "0 0 7px" }}>
+                  {hubTiers.map(t => (
+                    <button key={t.key} onClick={() => setHubTier(t.key)}
+                      style={{ padding: "3px 10px", borderRadius: 6, cursor: "pointer", fontSize: "10.5px",
+                        background: hubTier === t.key ? "rgba(74,222,128,0.14)" : "transparent",
+                        border: `1px solid ${hubTier === t.key ? "rgba(74,222,128,0.35)" : "rgba(226,201,126,0.14)"}`,
+                        color: hubTier === t.key ? "#4ade80" : "rgba(226,201,126,0.5)" }}>
+                      {L(t.label)}{t.per_gift ? ` · ${t.per_gift}` : ""}
+                    </button>
+                  ))}
+                </div>
+              )}
               {(matrix.farm_hubs.hubs ?? []).map((h, i) => {
-                const noms = (h.lines ?? []).map(g =>
+                const gifts = (h.lines ?? {})[hubTier] ?? [];
+                if (gifts.length === 0) return null;   // rien a servir a ce palier
+                const noms = gifts.map(g =>
                   NX((matrix.lines ?? []).find(l => l.gift === g)?.label) ?? g);
                 const fort = noms.length >= 2;
                 return (
@@ -2861,28 +2880,38 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                     </div>
                     {(h.zones ?? []).length > 0 && (
                       <div style={{ marginTop: 5, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 4 }}>
-                        {h.zones.map((z, j) => (
+                        {h.zones.map((z, j) => {
+                          // counts vaut { gift: { t5: n, t6: n } } : on ne garde que le
+                          // palier affiche, et une zone sans rien a ce palier disparait.
+                          const par = Object.entries(z.counts ?? {})
+                            .map(([g, v]) => [g, (v ?? {})[hubTier]])
+                            .filter(([, n]) => typeof n === "number" && n > 0);
+                          if (par.length === 0) return null;
+                          return (
                           <div key={j} style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "0 6px", padding: "1.5px 0", fontSize: "10px" }}>
                             {/* L() et non NX() : un nom de lieu est un nom propre, le
                                 dictionnaire de termes n'a rien a y substituer. */}
                             <span style={{ color: "rgba(226,201,126,0.75)" }}>{L(z.name)}</span>
-                            {Object.entries(z.counts ?? {}).map(([g, n]) => (
+                            {par.map(([g, n]) => (
                               <span key={g} style={{ color: "rgba(226,201,126,0.45)", whiteSpace: "nowrap" }}>
                                 {NX((matrix.lines ?? []).find(l => l.gift === g)?.label) ?? g} <b style={{ color: "rgba(74,222,128,0.6)" }}>{n}</b>
                               </span>
                             ))}
                           </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     )}
                   </div>
                 );
               })}
-              {matrix.farm_hubs.no_hub && (
-                <div style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 7, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
-                  {NX(matrix.farm_hubs.no_hub.why)}
+              {(matrix.farm_hubs.no_hub ?? [])
+                .filter(n => (n.tiers ?? []).includes(hubTier))
+                .map((n, i) => (
+                <div key={i} style={{ margin: "0 0 6px", padding: "8px 11px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 7, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
+                  {NX(n.why)}
                 </div>
-              )}
+              ))}
             </div>
           )}
         </div>
