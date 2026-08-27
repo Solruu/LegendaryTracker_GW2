@@ -501,21 +501,23 @@ Il ne correspond ni aux 249 des trèfles ni à une exigence directe identifiée.
 Ne pas l'aligner sur 249 avant d'avoir tranché le point 2 : ce serait un total
 faux avec l'air d'avoir été vérifié.
 
-## Les bits de collection ne réduisent pas les besoins, sauf sur 4 composants
+## Les bits de collection ne réduisent pas les besoins — 5 composants sur N câblés
 
 Le mécanisme existe : `craft_components[].qty_extras` porte `sub` + `bit` +
 `amount`, et `pendingExtra` dans `computeGrandTotal` retranche ce qui est déjà
-validé. **Mais il n'est câblé que sur quatre composants** : `blood_ruby`,
-`jade_shard_lw3`, `orrian_pearl_lw3`, `karma` — tous sur Aurora.
+validé. Il était câblé sur quatre composants : `blood_ruby`, `jade_shard_lw3`,
+`orrian_pearl_lw3`, `karma` — tous sur Aurora. **`xunlai_electrum_ingot` a été
+ajouté le 27/08/2026** (21 bits d'Aurora II, un lingot par sanctuaire infusé).
 
-**Conséquence** : une collection qui consomme une ressource continue d'afficher
-le coût plein après complétion partielle. Le besoin en Lingots d'électrum Xunlai
-ne bougera pas à 9/21.
+**Un piège d'implémentation à connaître** : `pendingExtra` n'est atteint que si
+le composant porte une entrée `qty` pour le légendaire sélectionné. Les 21
+lingots étaient portés à plat par `qty['spark_of_sentience'] = 21`, donc par la
+chaîne — et `qty_extras` n'aurait jamais été lu. Il faut ramener la base à
+`qty['<legendaire>'] = 0` et passer la quantité en `qty_extras`, sinon les deux
+se cumulent.
 
-**À noter aussi** : les 21 Lingots Xunlai sont rattachés dans les sources à
-`spark_of_sentience`, dont `needed_for` vaut `["aurora"]`. Vision, lui, en
-calcule **18**, par les 6 encapsulateurs × 3. Si les 21 relèvent bien de Vision,
-le rattachement est à revoir — à vérifier en jeu avant d'écrire.
-
-**Enjeu** : c'est une fonctionnalité transversale qui ne s'applique aujourd'hui
-qu'à un légendaire sur quatorze.
+**Reste à faire** : passer en revue les autres collections qui consomment une
+ressource et les câbler de même. Le mécanisme ne couvre aujourd'hui qu'Aurora.
+Candidats évidents : tout `currency_cost` déclaré sur un bit (Natto, Lieutenant
+Bran, Exemplar Ylan, les Faveurs des cinq dieux) — plusieurs sont déjà câblés,
+il faut vérifier lesquels ne le sont pas.

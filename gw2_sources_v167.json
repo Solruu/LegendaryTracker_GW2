@@ -1065,7 +1065,8 @@
    "fr": "⚠ `_meta.common_required` et `craft_components[].qty` ne mesurent PAS la même chose, et les faire converger serait une erreur. `common_required` porte l'EXIGENCE DIRECTE de recette — les 250 pièces mystiques du Tribut mystique, les 77 trèfles du Don de Fortune. `qty` porte le TOTAL réellement à réunir, trèfles compris. Or 77 trèfles coûtent en espérance 249 pièces, 249 ectoplasmes et 249 obsidiennes par la recette à 10 — l'arbre GW2Efficiency le montre en développant le nœud Mystic Clover. Un écart de exactement 249 sur un légendaire à 77 trèfles est donc NORMAL : 499 = 250 + 249. Ne jamais aligner l'un sur l'autre sans avoir décomposé l'écart.",
    "en": "⚠ `_meta.common_required` and `craft_components[].qty` do NOT measure the same thing, and making them agree would be a mistake. `common_required` holds the DIRECT recipe requirement — the 250 Mystic Coins of the Mystic Tribute, the 77 clovers of the Gift of Fortune. `qty` holds the TOTAL actually needed, clovers included. And 77 clovers cost, in expectation, 249 coins, 249 ectoplasms and 249 obsidian shards through the 10-at-a-time recipe — the GW2Efficiency tree shows it by expanding the Mystic Clover node. A gap of exactly 249 on a legendary with 77 clovers is therefore NORMAL: 499 = 250 + 249. Never align one on the other without decomposing the gap first."
   },
-  "changelog_v166": "Semantique de common_required documentee. Les 16 divergences signalees par l'audit n'etaient pas 16 erreurs : six sont la definition meme des deux champs. common_required porte l'exigence directe de recette, qty le total trefles compris, et 77 trefles coutent 249 pieces, 249 ectos et 249 obsidiennes en esperance (recette a 10, visible en developpant le noeud Mystic Clover de l'arbre). 499 = 250 + 249. Les 249 isoles n'etaient donc PAS une empreinte de stock soustrait par GW2Efficiency, hypothese que l'arbre a refutee. Aligner common_required sur qty aurait casse un affichage correct. Dix ecarts restent inexpliques et passent au BACKLOG, dont l'obsidienne de Vision (421 contre 250, ecart 171 qui ne correspond pas au cout trefle de 249)."
+  "changelog_v166": "Semantique de common_required documentee. Les 16 divergences signalees par l'audit n'etaient pas 16 erreurs : six sont la definition meme des deux champs. common_required porte l'exigence directe de recette, qty le total trefles compris, et 77 trefles coutent 249 pieces, 249 ectos et 249 obsidiennes en esperance (recette a 10, visible en developpant le noeud Mystic Clover de l'arbre). 499 = 250 + 249. Les 249 isoles n'etaient donc PAS une empreinte de stock soustrait par GW2Efficiency, hypothese que l'arbre a refutee. Aligner common_required sur qty aurait casse un affichage correct. Dix ecarts restent inexpliques et passent au BACKLOG, dont l'obsidienne de Vision (421 contre 250, ecart 171 qui ne correspond pas au cout trefle de 249).",
+  "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient."
  },
  "meta_events": {
   "vb": {
@@ -9244,11 +9245,12 @@
    "apiId": 46743,
    "needed_for": [
     "memory_essence_encapsulator",
-    "spark_of_sentience"
+    "spark_of_sentience",
+    "aurora"
    ],
    "qty": {
     "memory_essence_encapsulator": 3,
-    "spark_of_sentience": 21
+    "aurora": 0
    },
    "farmable": true,
    "craft": {
@@ -9320,7 +9322,44 @@
       "ref": "wiki:Aurora"
      }
     ]
-   }
+   },
+   "qty_extras": [
+    {
+     "legendary": "aurora",
+     "sub": "aurora_2",
+     "bits": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "amountPer": 1,
+     "label": {
+      "fr": "Sanctuaires de maîtrise à infuser — Aurora II",
+      "en": "Mastery insights to infuse — Aurora II"
+     },
+     "ref": "wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire",
+     "verified": true,
+     "checked": "2026-08-27"
+    }
+   ]
   },
   "memory_essence_encapsulator": {
    "name": "Memory Essence Encapsulator",
