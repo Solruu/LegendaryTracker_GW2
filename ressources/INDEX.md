@@ -25,6 +25,31 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | article complet | `#bodyContent` entier : encadré d'objet, acquisition, utilisations, notes | toutes les pages `wiki/` sans suffixe |
 | section seule | le tableau `NPC \| Level \| Rank \| Locations \| Quantity` uniquement | les trois `__dropped_by` |
 
+## Les huit lignes de trophées, tous paliers
+
+Les gifts consomment 50 T3 + 50 T4 + 250 T5 + 100 T6 par ligne : **le T5 pèse
+plus de la moitié du volume**, le T6 moins d'un quart. Le bloc « Où farmer »
+ne couvre aujourd'hui que le T6.
+
+Le palier T6 est versé en **section « Dropped by » seule** (suffixe
+`__dropped_by`) ; les paliers T3 à T5 sont versés en **articles complets** : le
+tableau des mobs y est noyé au milieu des recettes et des conteneurs. Un
+parseur doit localiser la section avant de lire les lignes — `gw2_parse_dropped_by_v1.py`
+ne sait pour l'instant traiter que les fragments.
+
+| ligne | T3 | T4 | T5 | T6 |
+|---|---|---|---|---|
+| Os | `bone` | `heavy_bone` | `large_bone` | `ancient_bone__dropped_by` |
+| Griffes | `claw` | `sharp_claw` | `large_claw` | `vicious_claw__dropped_by` |
+| Crocs | `fang` | `sharp_fang` | `large_fang` | `vicious_fang__dropped_by` |
+| Écailles | `scale` | `smooth_scale` | `large_scale` | `armored_scale__dropped_by` |
+| Totems | `totem` | `engraved_totem` | `intricate_totem` | `elaborate_totem__dropped_by` |
+| Poussière | `pile_of_radiant_dust` | `pile_of_luminous_dust` | `pile_of_incandescent_dust` | `pile_of_crystalline_dust__dropped_by` |
+| Venin | *manque* | `full_venom_sac` | `potent_venom_sac` | `powerful_venom_sac__dropped_by` |
+| Sang | *manque* | *manque* | *manque* | `vial_of_powerful_blood__dropped_by` |
+
+Toutes dans `wiki/`, versées le 2026-08-27.
+
 ## wiki/ — Guild Wars 2 Wiki (wiki.guildwars2.com)
 
 | fichier | page source | portée | versé le |
@@ -68,6 +93,26 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | `tale_of_adventure.html` | Tale of Adventure | article complet | 2026-08-27 |
 | `titan_heatstone.html` | Titan Heatstone | article complet | 2026-08-27 |
 | `unusual_coin.html` | Unusual Coin | article complet | 2026-08-27 |
+| `bone.html` | Bone | article complet — T3 | 2026-08-27 |
+| `claw.html` | Claw | article complet — T3 | 2026-08-27 |
+| `fang.html` | Fang | article complet — T3 | 2026-08-27 |
+| `scale.html` | Scale | article complet — T3 | 2026-08-27 |
+| `totem.html` | Totem | article complet — T3 | 2026-08-27 |
+| `pile_of_radiant_dust.html` | Pile of Radiant Dust | article complet — T3 | 2026-08-27 |
+| `heavy_bone.html` | Heavy Bone | article complet — T4 | 2026-08-27 |
+| `sharp_claw.html` | Sharp Claw | article complet — T4 | 2026-08-27 |
+| `sharp_fang.html` | Sharp Fang | article complet — T4 | 2026-08-27 |
+| `smooth_scale.html` | Smooth Scale | article complet — T4 | 2026-08-27 |
+| `engraved_totem.html` | Engraved Totem | article complet — T4 | 2026-08-27 |
+| `full_venom_sac.html` | Full Venom Sac | article complet — T4 | 2026-08-27 |
+| `pile_of_luminous_dust.html` | Pile of Luminous Dust | article complet — T4 | 2026-08-27 |
+| `large_bone.html` | Large Bone | article complet — T5 | 2026-08-27 |
+| `large_claw.html` | Large Claw | article complet — T5 | 2026-08-27 |
+| `large_fang.html` | Large Fang | article complet — T5 | 2026-08-27 |
+| `large_scale.html` | Large Scale | article complet — T5 | 2026-08-27 |
+| `intricate_totem.html` | Intricate Totem | article complet — T5 | 2026-08-27 |
+| `potent_venom_sac.html` | Potent Venom Sac | article complet — T5 | 2026-08-27 |
+| `pile_of_incandescent_dust.html` | Pile of Incandescent Dust | article complet — T5 | 2026-08-27 |
 
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
@@ -94,7 +139,6 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 
 **Rien pour le palier T6** : les huit tableaux « Dropped by » sont versés.
 
-Pour étendre le bloc « Où farmer » aux paliers inférieurs — qui pèsent 250 unités
-sur 450 par gift contre 100 pour le T6 — il faudrait les mêmes tableaux pour les
-huit lignes en T5, T4 et T3, soit 24 pages. Le T5 seul en couvrirait la plus
-grosse part.
+Pour les paliers T3 à T5, **quatre pages sur vingt-quatre** manquent encore :
+`Venom Sac` (T3), `Vial of Blood` (T3), `Vial of Thick Blood` (T4) et
+`Vial of Potent Blood` (T5). La ligne du Sang est entièrement absente sous le T6.
