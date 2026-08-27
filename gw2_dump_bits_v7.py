@@ -219,9 +219,16 @@ def main():
         par_langue[lg] = fetch(ids, lg)
         print(f"{len(par_langue[lg])} définitions récupérées en {lg}")
     defs = par_langue[principale]
-    noms_alt = {}
+    noms_alt, bits_alt = {}, {}
     for lg in langues[1:]:
         noms_alt[lg] = {d["id"]: d.get("name", "") for d in par_langue[lg]}
+        # Certains bits portent un texte fourni par l'API (une phrase d'action,
+        # pas un nom d'objet) : les collections d'armes gen1 en sont pleines.
+        # Ce texte n'est pas dans /v2/items — il faut le prendre dans la
+        # definition du succes de la langue voulue, sinon 909 bits restent
+        # unilingues.
+        bits_alt[lg] = {d["id"]: [b.get("text") for b in d.get("bits", [])]
+                        for d in par_langue[lg]}
 
     payload, with_bits, counters, missing = {}, 0, [], []
     got = {d["id"] for d in defs}
@@ -296,7 +303,12 @@ def main():
             alt = noms_alt.get(lg, {}).get(int(aid))
             if alt:
                 entry[f"name_{lg}"] = alt
+            textes = bits_alt.get(lg, {}).get(int(aid), [])
             for b in entry["bits"]:
+                direct = textes[b["index"]] if b["index"] < len(textes) else None
+                if direct:
+                    b[f"text_{lg}"] = direct
+                    continue
                 if b.get("id") is None:
                     continue
                 nom = tables[lg].get(b["type"], {}).get(b["id"])
