@@ -45,8 +45,8 @@ ne sait pour l'instant traiter que les fragments.
 | Écailles | `scale` | `smooth_scale` | `large_scale` | `armored_scale__dropped_by` |
 | Totems | `totem` | `engraved_totem` | `intricate_totem` | `elaborate_totem__dropped_by` |
 | Poussière | `pile_of_radiant_dust` | `pile_of_luminous_dust` | `pile_of_incandescent_dust` | `pile_of_crystalline_dust__dropped_by` |
-| Venin | *manque* | `full_venom_sac` | `potent_venom_sac` | `powerful_venom_sac__dropped_by` |
-| Sang | *manque* | *manque* | *manque* | `vial_of_powerful_blood__dropped_by` |
+| Venin | `venom_sac` | `full_venom_sac` | `potent_venom_sac` | `powerful_venom_sac__dropped_by` |
+| Sang | `vial_of_blood` | `vial_of_thick_blood` | `vial_of_potent_blood` | `vial_of_powerful_blood__dropped_by` |
 
 Toutes dans `wiki/`, versées le 2026-08-27.
 
@@ -113,6 +113,10 @@ Toutes dans `wiki/`, versées le 2026-08-27.
 | `intricate_totem.html` | Intricate Totem | article complet — T5 | 2026-08-27 |
 | `potent_venom_sac.html` | Potent Venom Sac | article complet — T5 | 2026-08-27 |
 | `pile_of_incandescent_dust.html` | Pile of Incandescent Dust | article complet — T5 | 2026-08-27 |
+| `venom_sac.html` | Venom Sac | article complet — T3 | 2026-08-27 |
+| `vial_of_blood.html` | Vial of Blood | article complet — T3 | 2026-08-27 |
+| `vial_of_thick_blood.html` | Vial of Thick Blood | article complet — T4 | 2026-08-27 |
+| `vial_of_potent_blood.html` | Vial of Potent Blood | article complet — T5 | 2026-08-27 |
 
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
@@ -137,8 +141,4 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 
 ## Manquent encore
 
-**Rien pour le palier T6** : les huit tableaux « Dropped by » sont versés.
-
-Pour les paliers T3 à T5, **quatre pages sur vingt-quatre** manquent encore :
-`Venom Sac` (T3), `Vial of Blood` (T3), `Vial of Thick Blood` (T4) et
-`Vial of Potent Blood` (T5). La ligne du Sang est entièrement absente sous le T6.
+**Rien.** Les 32 pages des huit lignes de trophées sont versées, du T3 au T6.
