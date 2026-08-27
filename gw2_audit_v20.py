@@ -1087,107 +1087,19 @@ def check_qty_levels(data, errors, warnings):
                     )
 
 
-COMMON_TO_COMPONENT = {
-    "clovers": "mystic_clover", "coins": "mystic_coin",
-    "ectos": "glob_of_ectoplasm", "obsidian": "obsidian_shard",
-}
-# Hubs : leurs membres portent deja leur propre qty, et leurs valeurs dans
-# common_required sont une reference PAR UNITE, pas un total.
-COMMON_HUBS = {"weapons", "upgrades", "t6", "prismatic"}
-
-# Cout en esperance des 77 trefles par la recette a 10 : 249 pieces, 249 ectos,
-# 249 obsidiennes. Verifie sur l'arbre GW2Efficiency, noeud Mystic Clover
-# developpe. Un legendaire a 77 trefles porte donc legitimement 250 en exigence
-# directe et 499 en total. Volontairement limite au cas exact et verifie : pour
-# 10 ou 55 trefles le compte observe ne suit pas la proportion, on ne l'extrapole
-# donc pas.
-COUT_TREFLES = {"coins": 249, "ectos": 249, "obsidian": 249}
-TREFLES_REFERENCE = 77
+# _meta.common_required a ete supprime le 27/08/2026 : c'etait une table
+# parallele qui portait des exigences directes la ou l'affichage attendait des
+# totaux. La regle qui la comparait a qty disparait avec elle. La source unique
+# est desormais craft_components[].qty, developpee par computeGrandTotal.
 
 
-def totaux_calcules(cc, legid):
-    """Rejoue l'expansion de chaine de computeGrandTotal.
-
-    La regle comparait common_required a la seule valeur A PLAT de qty. Or un
-    total peut etre porte par la chaine : depuis que la branche Encens funeraire
-    de Vision est modelisee, glob_of_ectoplasm.qty['vision'] ne vaut plus que le
-    reliquat trefle, et le total reel sort de l'expansion. Comparer au plat
-    faisait alors crier la regle sur des donnees justes.
-    """
-    totals, reporte = {}, {}
-    for cid, comp in cc.items():
-        v = (comp.get("qty") or {}).get(legid)
-        if isinstance(v, int):
-            totals[cid] = totals.get(cid, 0) + v
-    for _ in range(8):
-        ajout = {}
-        for cid, comp in cc.items():
-            for cle, v in (comp.get("qty") or {}).items():
-                if not isinstance(v, int) or cle not in cc:
-                    continue
-                parent = totals.get(cle, 0)
-                if parent > 0:
-                    ajout[cid] = ajout.get(cid, 0) + v * parent
-        for cid, v in ajout.items():
-            totals[cid] = totals.get(cid, 0) - reporte.get(cid, 0) + v
-            reporte[cid] = v
-    return totals
-
-
-def check_common_required_merged(data, errors, warnings):
-    """Une exigence de materiau transverse ne vit que dans qty.
-
-    computeGrandTotal ne lit que craft_components[].qty. Une valeur ecrite
-    seulement dans _meta.common_required s'affiche en reference et compte pour
-    zero — c'est ainsi que Vision et Aurora ont annonce 0 trefle et 0
-    ectoplasme pendant des mois, et que les cadences correspondantes
-    disparaissaient de l'onglet Timegates.
-    """
-    cc = data.get("craft_components", {})
-    cr = (data.get("_meta") or {}).get("common_required") or {}
-    totaux = {}
-    for lid, req in sorted(cr.items()):
-        if lid in COMMON_HUBS or not isinstance(req, dict):
-            continue
-        totaux[lid] = totaux_calcules(cc, lid)
-        key = f"{lid}__per_piece" if req.get("perPiece") else lid
-        for champ, cid in COMMON_TO_COMPONENT.items():
-            val = req.get(champ)
-            if val is None:
-                continue
-            comp = cc.get(cid)
-            if not isinstance(comp, dict):
-                errors.append(f"common_required : composant '{cid}' introuvable")
-                continue
-            aplat = (comp.get("qty") or {}).get(key)
-            actuel = totaux.get(lid, {}).get(cid) if req.get("perPiece") is not True else aplat
-            if aplat is None and not actuel:
-                errors.append(
-                    f"_meta.common_required[{lid}].{champ} = {val} n'existe pas dans "
-                    f"craft_components/{cid}.qty['{key}'] — invisible du calcul"
-                )
-            elif actuel != val:
-                # Les deux champs ne mesurent pas la meme chose : common_required
-                # porte l'exigence directe, qty le total trefles compris. Voir
-                # _meta.common_required_scope.
-                trefles = totaux.get(lid, {}).get("mystic_clover")
-                attendu = COUT_TREFLES.get(champ) if trefles == TREFLES_REFERENCE else None
-                if attendu is not None and actuel - val == attendu:
-                    continue
-                ecart = actuel - val
-                if ecart < 0:
-                    motif = (f"qty est INFERIEUR de {-ecart} a l'exigence directe — le total ne peut "
-                             "pas etre sous l'exigence, sous-compte probable")
-                elif attendu is not None:
-                    motif = (f"ecart de {ecart}, dont {attendu} imputables aux trefles ; "
-                             f"{ecart - attendu} restent inexpliques")
-                else:
-                    motif = f"ecart de {ecart}, sans cout trefle de reference a ce compte"
-                warnings.append(
-                    f"_meta.common_required[{lid}].{champ} = {val} contre "
-                    f"craft_components/{cid}.qty['{key}'] = {actuel} — {motif}, a instruire (BACKLOG)"
-                )
-
+def check_no_parallel_common_table(data, errors, warnings):
+    """Interdit la resurrection de la table parallele."""
+    if "common_required" in (data.get("_meta") or {}):
+        errors.append(
+            "_meta.common_required est de retour — table parallele supprimee le 27/08/2026 ; "
+            "les exigences en materiaux communs vivent dans craft_components[].qty"
+        )
 
 def check_obsidian_gift_split(data, errors, warnings):
     """Les gifts condenses d'Obsidienne : 3 et 3, pas 6 de chaque.
@@ -1339,9 +1251,9 @@ def main() -> int:
     check_qty_levels(data, errors, warnings)
 
     # 18. Exigences transverses : un seul emplacement, celui que le calcul lit
-    check_common_required_merged(data, errors, warnings)
 
     # 19. Obsidienne : quantite de gifts et repartition par emplacement
+    check_no_parallel_common_table(data, errors, warnings)
     check_obsidian_gift_split(data, errors, warnings)
 
     # 20. Composants de recette : tout maillon cite doit exister

@@ -2339,13 +2339,13 @@ const OBS_WEIGHT_LABELS = {
 // ═══════════════════════════════════════════════════════════════
 
 const COMMON_MATS = [
-  { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
+  { id: "clovers", compId: "mystic_clover", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
     tip: { fr: "Coffre du Sorcier (60 AA, 20/saison), Manfred Njallson (30 Magnetite, 15/sem), Dugan McM (5/sem), vendeur de ligue PvP (5/sem), Mystic Forge (~31% de réussite). \u26a0 Plus de Chest of Loyalty depuis 2023.", en: "Wizard's Vault (60 AA, 20/season), Manfred Njallson (30 Magnetite, 15/wk), WvW Dugan (5/wk), PvP league vendor (5/wk), Mystic Forge (~31% success). \u26a0 No Chest of Loyalty since 2023." } },
-  { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
+  { id: "coins", compId: "mystic_coin", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
     tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Manfred Njallson (10/sem), Skirmish McM (2 Gold / 4 Diamond, sans plafond), Ley-Line Anomaly (1/j), SAB (3/sem), comptoir. \u26a0 Aucune source de connexion depuis 2023 ; Nikki, Vorri et Zazzl n'en vendent plus.", en: "Wizard's Vault (9 AA, 60/season), Manfred Njallson (10/wk), WvW Skirmish (2 Gold / 4 Diamond, no cap), Ley-Line Anomaly (1/day), SAB (3/wk), TP. \u26a0 No login source since 2023; Nikki, Vorri and Zazzl no longer stock it." } },
-  { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
+  { id: "ectos", compId: "glob_of_ectoplasm", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
     tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
-  { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
+  { id: "obsidian", compId: "obsidian_shard", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
     tip: { fr: "Karma — merchants de maps LW ou Temples de Orr.", en: "Karma — LW map merchants or Temples of Orr." } },
 ];
 
@@ -5240,9 +5240,7 @@ export default function GW2LegendaryTracker() {
           if (key === selectedLeg || key === sid || key.startsWith(selectedLeg + "__")) return true;
         }
       }
-      const req = (DB._meta?.common_required ?? {})[selectedLeg]
-        ?? (DB._meta?.common_required ?? {})[sid] ?? {};
-      return Object.values(req).some(v => v != null);
+      return false;
     };
     const evaluate = (p) => {
       if (!p || typeof p !== "object") return false;
@@ -7286,12 +7284,21 @@ export default function GW2LegendaryTracker() {
         const meta = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?._meta ?? {};
         const cc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
         const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries?.[selectedLeg] ?? {};
-        const reqMap = (meta.common_required ?? {})[selectedLeg] ?? null;
-        const perPiece = !!(reqMap && reqMap.perPiece);
+        // Les exigences en materiaux communs sortent du meme calcul que le
+        // grand total. La table _meta.common_required qui vivait ici tenait des
+        // exigences DIRECTES, pas des totaux : elle annoncait 250 obsidiennes a
+        // Vision quand la chaine en demande 421, et appliquait un gabarit
+        // generique de 250/250/250/77 a des legendaires qui n'ont pas ces
+        // exigences. Une seule source desormais.
+        const totalsLeg = computeGrandTotal([selectedLeg]).totals ?? {};
+        // Sets d'armure : le total est deja pose par piece dans qty, il reste a
+        // le multiplier par les pieces restantes.
+        const perPiece = COMMON_MATS.some(m =>
+          m.compId && ((cc[m.compId]?.qty ?? {})[selectedLeg + "__per_piece"] !== undefined));
         const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
         const mats = COMMON_MATS
-          .map(m => ({ ...m, req: reqMap ? reqMap[m.id] : m.required }))
-          .filter(m => m.req != null)
+          .map(m => ({ ...m, req: totalsLeg[m.compId] }))
+          .filter(m => typeof m.req === "number" && m.req > 0)
           .map(m => ({ ...m, req: m.req * mult }));
         // Arbre des gifts : composants de tête + matériaux rattachés (index inverse needed_for)
         const tops = (S.components ?? []);

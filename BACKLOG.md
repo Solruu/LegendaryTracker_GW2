@@ -398,46 +398,38 @@ en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 **Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
 rendu. Aucune capture supplémentaire à demander.
 
-## common_required : ce n'est pas qty qui sous-compte, c'est common_required qui invente
+## common_required supprimé — ✅ **RÉSOLU le 27/08/2026**
 
-**Instruit le 27/08/2026 sur les arbres.** Les trois cas où `qty` paraissait
-*inférieur* à l'exigence directe ne sont pas des sous-comptes : les arbres
-donnent raison à `qty`.
+La table parallèle est morte. Le bloc « Matériaux communs » lit désormais
+`computeGrandTotal`, comme le grand total. **Une seule source.**
 
-| légendaire | matériau | arbre | `qty` | `common_required` |
-|---|---|---|---|---|
-| Ad Infinitum | pièces | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
-| The Ascension | pièces | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
-| Transcendence | ectos | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
+**Pourquoi elle était fausse** : elle portait des exigences *directes* de recette
+là où l'affichage attendait des *totaux*, et posait un gabarit générique de
+250/250/250/77 sur des légendaires qui n'ont pas ces exigences. The Ascension n'a
+aucun Tribut mystique, Transcendence aucune exigence directe en ectoplasmes.
 
-**Le motif est le même que sur Vision** : `common_required` applique un gabarit
-générique — 250 pièces, 250 ectos, 250 obsidiennes, 77 trèfles — à des
-légendaires qui n'ont pas ces exigences. The Ascension n'a **aucun** Tribut
-mystique : ses 250 ectoplasmes viennent du Don de Fortune, et il ne demande
-aucune pièce en direct. Transcendence, à l'inverse, a le Tribut (250 pièces) et
-aucune exigence directe en ectoplasmes.
+**Diff exhaustif sur les 85 légendaires** : 64 affichages changent, **aucun ne
+disparaît**.
 
-### La vraie question : à quoi sert encore ce champ ?
+- Vision : obsidienne 250 → **421**, ectos 250 → **1 017**, pièces 250 → **499**
+- Coalescence : 250 → **499** sur trois matériaux
+- 62 armes gen1/gen2/gen3 n'affichaient **rien** faute d'entrée dans la table.
+  Elles affichent maintenant leurs 77 trèfles et 250 pièces.
 
-`common_required` alimente le bloc « Matériaux communs ». Il y affiche
-l'exigence **directe**, quand le joueur veut savoir combien il lui en faut **en
-tout**. Sur Vision c'est 250 d'obsidienne affichés contre 421 réellement
-nécessaires, et 250 d'ectoplasmes contre 1 017.
+**Performance** : 1 ms par appel, sur 319 composants et 1 108 clés `qty`. Aucun
+sujet.
 
-**Proposition, à valider** : dériver l'affichage des totaux calculés par
-`computeGrandTotal` au lieu de maintenir une table parallèle à la main. Le champ
-deviendrait redondant et pourrait disparaître, avec sa règle d'audit.
+`gw2_audit_v20.py` porte un garde qui **échoue** si `_meta.common_required`
+réapparaît. `_meta.common_required_scope` garde l'historique et la règle : si une
+exigence manque à l'affichage, c'est un maillon absent de la chaîne — à ajouter
+là, jamais dans une table à côté.
 
-**Ce qui bloque** : ça change les nombres affichés sur les quatorze légendaires
-d'un coup. À faire d'un bloc, avec un diff exhaustif avant/après, pas au fil de
-l'eau.
+### Reste : les six écarts positifs à instruire sur leurs arbres
 
-### Les six écarts positifs, toujours ouverts
-
-Ad Infinitum ectos (1 039 contre 250) et obsidienne (339), Selachimorpha
-obsidienne (488), Endless Summer obsidienne (283), Orrax trèfles (68 contre 38),
-Vision obsidienne (421). Chacun demande son arbre — tous sont versés dans
-`ressources/gw2efficiency/`.
+Ad Infinitum ectos (1 039) et obsidienne (339), Selachimorpha obsidienne (488),
+Endless Summer obsidienne (283), Orrax trèfles (68), Vision obsidienne (421).
+Tous les arbres sont versés dans `ressources/gw2efficiency/`. Ces nombres sont
+désormais ce que le tracker affiche : les valider, c'est valider l'affichage.
 
 ## Vision — chaîne complétée le 27/08/2026, `common_required` reste à revoir
 

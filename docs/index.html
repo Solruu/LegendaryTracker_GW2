@@ -1528,148 +1528,6 @@ const SOURCES_DB = {
     "changelog_v30": "direct_sync.collection_key_ids : mappings Aurora/Vision/Obsidian extraits de Flask — collections synchronisables en direct (mobile).",
     "changelog_v31": "Testimonies : conflux corrigé 82→jade 65 (recette actuelle), double compteur jade+castoran sur conflux/warbringer (Jade plus obtenables depuis VoE).",
     "changelog_v32": "i18n : recipes bilinguées (armures par pièce, strife, ~70 armes gen1/2/3) — le label « Par pièce » n'apparaît plus en FR côté EN.",
-    "common_required": {
-      "vision": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": 250
-      },
-      "aurora": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": 250
-      },
-      "conflux": {
-        "clovers": 77,
-        "coins": 499,
-        "ectos": 249,
-        "obsidian": 309
-      },
-      "warbringer": {
-        "clovers": 77,
-        "coins": 249,
-        "ectos": 499,
-        "obsidian": 309
-      },
-      "coalescence": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": 250
-      },
-      "selachimorpha": {
-        "clovers": 55,
-        "coins": null,
-        "ectos": null,
-        "obsidian": 250
-      },
-      "endless_summer": {
-        "clovers": 10,
-        "coins": null,
-        "ectos": null,
-        "obsidian": 250
-      },
-      "stella_radians": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": null,
-        "obsidian": null
-      },
-      "strife_unending": {
-        "clovers": 45,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null
-      },
-      "orrax_manifested": {
-        "clovers": 38,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null
-      },
-      "ad_infinitum": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": 250
-      },
-      "the_ascension": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": null
-      },
-      "transcendence": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": null
-      },
-      "eikasia": {
-        "clovers": null,
-        "coins": null,
-        "ectos": 80,
-        "obsidian": null
-      },
-      "prismatic": {
-        "clovers": null,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null
-      },
-      "perfected_envoy": {
-        "clovers": 15,
-        "coins": null,
-        "ectos": null,
-        "obsidian": 50,
-        "perPiece": true
-      },
-      "triumphant_hero": {
-        "clovers": 15,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null,
-        "perPiece": true
-      },
-      "ardent_glorious": {
-        "clovers": 15,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null,
-        "perPiece": true
-      },
-      "obsidian": {
-        "clovers": 9,
-        "coins": null,
-        "ectos": 600,
-        "obsidian": 50,
-        "perPiece": true
-      },
-      "upgrades": {
-        "clovers": 77,
-        "coins": null,
-        "ectos": 250,
-        "obsidian": null
-      },
-      "weapons": {
-        "clovers": 77,
-        "coins": 250,
-        "ectos": 250,
-        "obsidian": 250
-      },
-      "t6": {
-        "clovers": null,
-        "coins": null,
-        "ectos": null,
-        "obsidian": null
-      },
-      "_deprecated": {
-        "fr": "⚠ common_required n'est plus la source de verite : les exigences de materiaux transverses vivent dans craft_components[].qty, seul emplacement que computeGrandTotal lit. Ce bloc est conserve pour l'affichage de reference, mais toute valeur qui ne s'y retrouve pas en qty est invisible du calcul. L'audit refuse desormais une exigence presente ici et absente de qty.",
-        "en": "⚠ common_required is no longer the source of truth: cross-cutting material requirements live in craft_components[].qty, the only place computeGrandTotal reads. This block is kept as a display reference, but any value missing from qty is invisible to the calculation. The audit now refuses a requirement present here and absent from qty."
-      }
-    },
     "common_required_note": "Quantités de matériaux communs par légendaire (null = non requis ; perPiece = coût par pièce d'armure). Remplace les valeurs génériques figées de COMMON_MATS.",
     "changelog_v33": "Onglet Composants unifié : common_required par légendaire (fin des objectifs génériques 77/250/250/100).",
     "component_schema": {
@@ -1836,11 +1694,12 @@ const SOURCES_DB = {
     "changelog_v164": "Foyers de farm T6 : classement refait sur les creatures distinctes au lieu du nombre de lignes servies, et chaque foyer porte desormais ses sous-zones nommees avec leurs effectifs par ligne (zones[]). Le classement precedent comptait les lignes, ce qui hissait des regions entieres du wiki (The Mists, Tyrie, Desert de cristal) au-dessus des vraies cartes et enterrait les Terres sauvages d'argent (2 lignes, 47 creatures, 2e meilleure carte du jeu). Orr, fusionne en un seul foyer, est scinde en trois : les Detroits font 35 os mais seulement 9 sang, profil different de ses voisines. Les Marches de Bjora servent 4 lignes et non 2 : la Poussiere y compte 13 creatures, omises. Les Etendues fragmentees (Bloodstone Fen) sont la sous-zone la plus dense des 800 entrees : 42 creatures, 7 lignes. Noms de sous-zones en anglais, fr: null en attente de verification — jamais traduits de tete.",
     "changelog_v165": "Foyers de farm : la dimension palier entre dans counts, qui passe de {gift: n} a {gift: {t5: n, t6: n}}, au niveau du foyer comme de la sous-zone. Meme champ, meme chemin de rendu, une dimension de plus. Les paliers exposes et leur poids par gift sont declares dans farm_hubs.tiers, pas codes dans le JSX. Classement refait en pondere 250/100 au lieu du seul T6, et seuil devenu relatif (8 % de la ligne au palier) : un seuil absolu calibre sur des lignes de 56 a 144 ne tenait pas sur des lignes de 230. Le palier change les foyers, ce que le bloc T6 seul ne pouvait pas montrer : les Griffes n'ont AUCUN foyer au T5 (meilleure carte 12 sur 175) alors qu'elles en ont un au T6, et les Ecailles l'inverse. no_hub passe donc de constat unique a liste portant les paliers concernes. T3 et T4 restent parses mais non exposes, au backlog. Corpus complet : les quatre tableaux tronques a 150 lignes sont recolles.",
     "common_required_scope": {
-      "fr": "⚠ `_meta.common_required` et `craft_components[].qty` ne mesurent PAS la même chose, et les faire converger serait une erreur. `common_required` porte l'EXIGENCE DIRECTE de recette — les 250 pièces mystiques du Tribut mystique, les 77 trèfles du Don de Fortune. `qty` porte le TOTAL réellement à réunir, trèfles compris. Or 77 trèfles coûtent en espérance 249 pièces, 249 ectoplasmes et 249 obsidiennes par la recette à 10 — l'arbre GW2Efficiency le montre en développant le nœud Mystic Clover. Un écart de exactement 249 sur un légendaire à 77 trèfles est donc NORMAL : 499 = 250 + 249. Ne jamais aligner l'un sur l'autre sans avoir décomposé l'écart.",
-      "en": "⚠ `_meta.common_required` and `craft_components[].qty` do NOT measure the same thing, and making them agree would be a mistake. `common_required` holds the DIRECT recipe requirement — the 250 Mystic Coins of the Mystic Tribute, the 77 clovers of the Gift of Fortune. `qty` holds the TOTAL actually needed, clovers included. And 77 clovers cost, in expectation, 249 coins, 249 ectoplasms and 249 obsidian shards through the 10-at-a-time recipe — the GW2Efficiency tree shows it by expanding the Mystic Clover node. A gap of exactly 249 on a legendary with 77 clovers is therefore NORMAL: 499 = 250 + 249. Never align one on the other without decomposing the gap first."
+      "fr": "⚠ Historique. `_meta.common_required` a été supprimé le 27/08/2026. C'était une table parallèle, tenue à la main, qui portait des exigences DIRECTES de recette là où le bloc « Matériaux communs » devait afficher des TOTAUX. Elle appliquait un gabarit générique — 250 pièces, 250 ectoplasmes, 250 obsidiennes, 77 trèfles — à des légendaires qui n'ont pas ces exigences : The Ascension n'a aucun Tribut mystique, Transcendence aucune exigence directe en ectoplasmes, et Vision affichait 250 obsidiennes pour 421 réellement nécessaires. Les totaux sortent désormais tous de `computeGrandTotal`, donc de `craft_components[].qty` et de l'expansion de chaîne. Une seule source. Si une exigence manque à l'affichage, c'est un maillon absent de la chaîne — à ajouter là, jamais dans une table à côté.",
+      "en": "⚠ Historical. `_meta.common_required` was removed on 2026-08-27. It was a hand-maintained parallel table holding DIRECT recipe requirements where the 'Common materials' block needed TOTALS. It applied a generic template — 250 coins, 250 ectoplasms, 250 obsidian, 77 clovers — to legendaries that do not have those requirements: The Ascension has no Mystic Tribute, Transcendence no direct ectoplasm requirement, and Vision displayed 250 obsidian against 421 actually needed. Totals now all come from `computeGrandTotal`, hence from `craft_components[].qty` and chain expansion. One source. If a requirement is missing from the display, a link is missing from the chain — add it there, never in a table on the side."
     },
     "changelog_v166": "Semantique de common_required documentee. Les 16 divergences signalees par l'audit n'etaient pas 16 erreurs : six sont la definition meme des deux champs. common_required porte l'exigence directe de recette, qty le total trefles compris, et 77 trefles coutent 249 pieces, 249 ectos et 249 obsidiennes en esperance (recette a 10, visible en developpant le noeud Mystic Clover de l'arbre). 499 = 250 + 249. Les 249 isoles n'etaient donc PAS une empreinte de stock soustrait par GW2Efficiency, hypothese que l'arbre a refutee. Aligner common_required sur qty aurait casse un affichage correct. Dix ecarts restent inexpliques et passent au BACKLOG, dont l'obsidienne de Vision (421 contre 250, ecart 171 qui ne correspond pas au cout trefle de 249).",
-    "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient. Vision : les 167 ectoplasmes manquants sont rentres. La chaine porte desormais Lump of Mithrillium (cadence 1/jour/compte, le maillon qui impose les 21 jours d'Aurora II et qui n'existait dans aucun composant), Crystalline Ingot, Fulgurite, l'inscription des armes Sang-de-dragon, la Banniere du commandant et la chaine des bandoulieres olmakhan. Total ectos 850 -> 1017, conforme a l'arbre une fois reintegres les 300 du kralkatite que l'arbre omet (branche de collection). Les totaux a plat de Vision et de Coalescence ont ete retranches de ce que la chaine apporte maintenant, sinon les deux se cumulaient : ectos 250 -> 249 et obsidienne 421 -> 321 sur Vision, 499 -> 249 sur les deux materiaux de Coalescence. L'obsidienne totale de Vision reste a 421 et celle de Coalescence a 499 : seule la repartition entre plat et chaine change. Diff exhaustif passe sur tous les legendaires : seuls Vision et Coalescence bougent."
+    "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient. Vision : les 167 ectoplasmes manquants sont rentres. La chaine porte desormais Lump of Mithrillium (cadence 1/jour/compte, le maillon qui impose les 21 jours d'Aurora II et qui n'existait dans aucun composant), Crystalline Ingot, Fulgurite, l'inscription des armes Sang-de-dragon, la Banniere du commandant et la chaine des bandoulieres olmakhan. Total ectos 850 -> 1017, conforme a l'arbre une fois reintegres les 300 du kralkatite que l'arbre omet (branche de collection). Les totaux a plat de Vision et de Coalescence ont ete retranches de ce que la chaine apporte maintenant, sinon les deux se cumulaient : ectos 250 -> 249 et obsidienne 421 -> 321 sur Vision, 499 -> 249 sur les deux materiaux de Coalescence. L'obsidienne totale de Vision reste a 421 et celle de Coalescence a 499 : seule la repartition entre plat et chaine change. Diff exhaustif passe sur tous les legendaires : seuls Vision et Coalescence bougent.",
+    "changelog_v168": "Suppression de _meta.common_required. Le bloc « Materiaux communs » lit desormais computeGrandTotal, comme le grand total : une seule source. La table parallele annoncait des exigences directes la ou il fallait des totaux, et posait un gabarit generique de 250/250/250/77 sur des legendaires qui n'ont pas ces exigences. Diff exhaustif sur les 85 legendaires : 64 affichages changent, aucun ne disparait. Les deux plus gros ecarts sont Vision (obsidienne 250 -> 421, ectos 250 -> 1017, pieces 250 -> 499) et Coalescence (250 -> 499 sur trois materiaux). Les 62 autres sont des armes gen1/gen2/gen3 qui n'affichaient RIEN faute d'entree dans la table et affichent maintenant leurs 77 trefles et 250 pieces. Cout mesure de l'expansion de chaine : 1 ms par appel sur 319 composants et 1108 cles."
   },
   "meta_events": {
     "vb": {
@@ -29135,13 +28994,13 @@ const OBS_WEIGHT_LABELS = {
 // ═══════════════════════════════════════════════════════════════
 
 const COMMON_MATS = [
-  { id: "clovers", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
+  { id: "clovers", compId: "mystic_clover", name: "Mystic Clover", required: 77, icon: "MC", apiId: 19675,
     tip: { fr: "Coffre du Sorcier (60 AA, 20/saison), Manfred Njallson (30 Magnetite, 15/sem), Dugan McM (5/sem), vendeur de ligue PvP (5/sem), Mystic Forge (~31% de réussite). \u26a0 Plus de Chest of Loyalty depuis 2023.", en: "Wizard's Vault (60 AA, 20/season), Manfred Njallson (30 Magnetite, 15/wk), WvW Dugan (5/wk), PvP league vendor (5/wk), Mystic Forge (~31% success). \u26a0 No Chest of Loyalty since 2023." } },
-  { id: "coins", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
+  { id: "coins", compId: "mystic_coin", name: "Mystic Coin", required: 250, icon: "MN", apiId: 19976,
     tip: { fr: "Coffre du Sorcier (9 AA, 60/saison), Manfred Njallson (10/sem), Skirmish McM (2 Gold / 4 Diamond, sans plafond), Ley-Line Anomaly (1/j), SAB (3/sem), comptoir. \u26a0 Aucune source de connexion depuis 2023 ; Nikki, Vorri et Zazzl n'en vendent plus.", en: "Wizard's Vault (9 AA, 60/season), Manfred Njallson (10/wk), WvW Skirmish (2 Gold / 4 Diamond, no cap), Ley-Line Anomaly (1/day), SAB (3/wk), TP. \u26a0 No login source since 2023; Nikki, Vorri and Zazzl no longer stock it." } },
-  { id: "ectos", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
+  { id: "ectos", compId: "glob_of_ectoplasm", name: "Glob of Ectoplasm", required: 250, icon: "EC", apiId: 19721,
     tip: { fr: "Salvage de rares niveau 68+. Drop abondant pendant les metas.", en: "Salvage rare gear lvl 68+. Abundant drops during metas." } },
-  { id: "obsidian", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
+  { id: "obsidian", compId: "obsidian_shard", name: "Obsidian Shard", required: 100, icon: "OS", apiId: 19925,
     tip: { fr: "Karma — merchants de maps LW ou Temples de Orr.", en: "Karma — LW map merchants or Temples of Orr." } },
 ];
 
@@ -32030,9 +31889,7 @@ function GW2LegendaryTracker() {
           if (key === selectedLeg || key === sid || key.startsWith(selectedLeg + "__")) return true;
         }
       }
-      const req = (DB._meta?.common_required ?? {})[selectedLeg]
-        ?? (DB._meta?.common_required ?? {})[sid] ?? {};
-      return Object.values(req).some(v => v != null);
+      return false;
     };
     const evaluate = (p) => {
       if (!p || typeof p !== "object") return false;
@@ -34076,12 +33933,21 @@ function GW2LegendaryTracker() {
         const meta = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?._meta ?? {};
         const cc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
         const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries?.[selectedLeg] ?? {};
-        const reqMap = (meta.common_required ?? {})[selectedLeg] ?? null;
-        const perPiece = !!(reqMap && reqMap.perPiece);
+        // Les exigences en materiaux communs sortent du meme calcul que le
+        // grand total. La table _meta.common_required qui vivait ici tenait des
+        // exigences DIRECTES, pas des totaux : elle annoncait 250 obsidiennes a
+        // Vision quand la chaine en demande 421, et appliquait un gabarit
+        // generique de 250/250/250/77 a des legendaires qui n'ont pas ces
+        // exigences. Une seule source desormais.
+        const totalsLeg = computeGrandTotal([selectedLeg]).totals ?? {};
+        // Sets d'armure : le total est deja pose par piece dans qty, il reste a
+        // le multiplier par les pieces restantes.
+        const perPiece = COMMON_MATS.some(m =>
+          m.compId && ((cc[m.compId]?.qty ?? {})[selectedLeg + "__per_piece"] !== undefined));
         const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
         const mats = COMMON_MATS
-          .map(m => ({ ...m, req: reqMap ? reqMap[m.id] : m.required }))
-          .filter(m => m.req != null)
+          .map(m => ({ ...m, req: totalsLeg[m.compId] }))
+          .filter(m => typeof m.req === "number" && m.req > 0)
           .map(m => ({ ...m, req: m.req * mult }));
         // Arbre des gifts : composants de tête + matériaux rattachés (index inverse needed_for)
         const tops = (S.components ?? []);
