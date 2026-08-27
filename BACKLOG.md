@@ -495,3 +495,43 @@ Exemplar Ylan, la Relique d'un dieu). Rien à rattraper de ce côté.
 qu'aucun `currency_cost` ne le déclare — les 21 lingots Xunlai en étaient
 l'exemple, portés par une prose de `note`. Il faut relire les collections à la
 recherche de consommations non déclarées, pas se fier au champ.
+
+## Complétude — état réel au 27/08/2026
+
+### Armes gen1/gen2 — ✅ **déjà fait, l'entrée du backlog était périmée**
+
+Le sélecteur de génération existe (gen1 / gen2 / gen3 / Divers, avec compteurs
+possédées/total), `genOf` classe par nom EN et plage d'identifiants, et chaque
+génération a sa note de coût. Klobjarne Geirr et Aetheric Anchor sont nommés
+dans la note « Divers ».
+
+**Un point à vérifier en jeu, non tranché** : la découverte filtre sur
+`it.type !== "Weapon"`. Aetheric Anchor est décrit dans les sources comme
+`container → legendary spear + legendary staff` (apiId 105497). Si l'API le rend
+comme conteneur et non comme arme, il n'apparaît pas dans la liste. À regarder
+dans l'onglet Armes, catégorie Divers : il doit y avoir Klobjarne Geirr **et**
+Aetheric Anchor.
+
+### Les collections — le vrai chantier
+
+**3 légendaires sur 85 portent un bloc `collections`** : Prismatic, Aurora,
+Vision. Les 26 autres ont leur recette et leur chaîne de composants — vérifiées
+contre les arbres — mais aucune étape.
+
+Il faut deux choses, de nature différente :
+
+**a) Les définitions de bits.** `gw2_dump_bits_v4.py --catalogue` part désormais
+des quatre catégories de collections légendaires de `gw2_achievements_ref.json`
+(**147 succès**) au lieu du seul JSX, qui ne peut pas référencer ce qui n'y est
+pas encore. Le JSX en apporte 35 de plus ; les deux modes fusionnent.
+
+⚠ **À lancer en local par Antoine** : l'API GW2 renvoie **403 Forbidden** depuis
+l'environnement de Claude, et `web_fetch` réécrit les URL — une requête sur le
+succès 2351 rend le 4949. Aucun contournement.
+
+**b) Le « comment » de chaque bit.** L'API donne l'ordre et le libellé des
+étapes, jamais où ni comment les obtenir. C'est ce qui fait la valeur du
+tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
+`unlock_first` ou un `currency_cost`. Wiki, guides, et vérification en jeu.
+
+**Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).

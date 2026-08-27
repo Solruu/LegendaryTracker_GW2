@@ -25,9 +25,17 @@ joignable depuis l'environnement de Claude — d'où ce script, à lancer en loc
 Il extrait automatiquement TOUS les `achievementId` du JSX (aucune liste à
 maintenir à la main), interroge /v2/achievements et écrit un dump JSON.
 
+Le v4 ajoute `--catalogue` : au lieu de partir du JSX, il part des quatre
+catégories de collections légendaires de `gw2_achievements_ref.json` — Legendary
+Trinkets, Backpacks, Armor, Weapons. C'est ce qu'il faut pour ÉCRIRE les
+collections manquantes : le JSX ne peut pas référencer ce qui n'y est pas encore.
+Les deux modes se combinent, les identifiants sont fusionnés et dédupliqués.
+
 Usage :
-    python3 gw2_dump_bits_v3.py
-    python3 gw2_dump_bits_v3.py --jsx gw2_legendary_tracker_v98.jsx --lang fr
+    python3 gw2_dump_bits_v4.py
+    python3 gw2_dump_bits_v4.py --catalogue            # les 4 categories legendaires
+    python3 gw2_dump_bits_v4.py --catalogue --jsx ""   # catalogue seul, sans le JSX
+    python3 gw2_dump_bits_v4.py --ids 2351,2557,2368   # une liste explicite
 
 Sortie : gw2_bits_dump.json  (à committer ou à coller dans le chat)
 
@@ -59,6 +67,35 @@ FALLBACK_IDS = [
     8761, 8769, 8814, 8823, 8826, 8830, 8835, 8840, 8841, 8869, 8880, 9057,
     9180, 9183, 9244, 9330, 9344,
 ]
+
+
+# Les quatre categories de collections legendaires du referentiel. Ce sont
+# elles qui portent les etapes des trinkets, dos, armures et armes.
+CATEGORIES_LEGENDAIRES = [
+    "Legendary Trinkets", "Legendary Backpacks", "Legendary Armor", "Legendary Weapons",
+]
+
+
+def ids_du_catalogue(chemin_ref):
+    """Identifiants des succes des quatre categories legendaires du referentiel.
+
+    Rend aussi un index id -> (categorie, nom) pour que le dump soit lisible
+    sans rouvrir le referentiel.
+    """
+    if not os.path.isfile(chemin_ref):
+        print(f"[!] referentiel introuvable : {chemin_ref}", file=sys.stderr)
+        return [], {}
+    ref = json.load(open(chemin_ref, encoding="utf-8"))
+    groupe = (ref.get("by_group") or {}).get("Collections") or {}
+    ids, index = [], {}
+    for cat in CATEGORIES_LEGENDAIRES:
+        for entree in groupe.get(cat, []):
+            aid = entree.get("id")
+            if aid is None:
+                continue
+            ids.append(aid)
+            index[aid] = (cat, entree.get("name", ""))
+    return sorted(set(ids)), index
 
 
 def find_jsx(explicit):
@@ -110,15 +147,34 @@ def main():
                          "de la version la plus haute")
     ap.add_argument("--lang", default="fr", choices=["fr", "en"])
     ap.add_argument("--out", default="gw2_bits_dump.json")
+    ap.add_argument("--catalogue", action="store_true",
+                    help="ajoute les succes des 4 categories de collections legendaires "
+                         "du referentiel (necessaire pour ecrire des collections absentes du JSX)")
+    ap.add_argument("--ref", default="gw2_achievements_ref.json")
+    ap.add_argument("--ids", default=None, help="liste explicite, separee par des virgules")
     args = ap.parse_args()
 
-    jsx = find_jsx(args.jsx)
+    ids, index = [], {}
+    if args.ids:
+        ids = sorted({int(x) for x in args.ids.split(",") if x.strip()})
+        print(f"{len(ids)} achievements fournis en ligne de commande")
+    if args.catalogue:
+        cat_ids, index = ids_du_catalogue(args.ref)
+        print(f"{len(cat_ids)} achievements dans les 4 categories legendaires du referentiel")
+        ids = sorted(set(ids) | set(cat_ids))
+
+    jsx = None if args.jsx == "" else find_jsx(args.jsx)
     if jsx:
-        ids = extract_ids(jsx)
-        print(f"{len(ids)} achievements référencés dans {os.path.basename(jsx)}")
+        du_jsx = extract_ids(jsx)
+        nouveaux = sorted(set(du_jsx) - set(ids))
+        print(f"{len(du_jsx)} achievements référencés dans {os.path.basename(jsx)} "
+              f"({len(nouveaux)} en plus du catalogue)")
+        ids = sorted(set(ids) | set(du_jsx))
+    elif ids:
+        pass
     else:
         ids = FALLBACK_IDS
-        print("[!] Aucun gw2_legendary_tracker_v*.jsx trouvé dans ce dossier.")
+        print("[!] Aucune source d'identifiants : ni --ids, ni --catalogue, ni JSX.")
         print(f"    Repli sur la liste gelée : {len(ids)} achievements (tracker v98).")
         print("    Pour repartir du JSX : --jsx \"chemin\\vers\\le_fichier.jsx\"")
 
@@ -147,6 +203,8 @@ def main():
                 for i, b in enumerate(bits)
             ],
         }
+        if d["id"] in index:
+            entry["categorie"], entry["nom_referentiel"] = index[d["id"]]
         payload[str(d["id"])] = entry
         if bits:
             with_bits += 1
