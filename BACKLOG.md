@@ -382,3 +382,30 @@ jeu en français).
 
 **Enjeu** : cosmétique en français, nul en anglais. Le bloc « Où farmer » est
 exploitable en l'état dans les deux langues.
+
+## Foyers de farm : paliers T3 et T4 (QoL, optionnel)
+
+Les 16 captures T3/T4 des huit lignes sont versées dans `ressources/wiki/` et
+parsées par `gw2_parse_dropped_by_v2.py`, mais **ne sont pas exposées** dans le
+bloc « Où farmer ».
+
+**Pourquoi c'est écarté** : 50 T3 + 50 T4 sur 450 unités par gift, soit 11 %
+chacun. Les tableaux sont maigres — les Totems T3 alignent 8 créatures, le T4
+en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
+
+**Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
+rendu. Aucune capture supplémentaire à demander.
+
+## Captures « Dropped by » tronquées au palier T5 (4 sur 32)
+
+Le wiki plafonne ces tableaux à 150 lignes et renvoie le reste derrière un lien
+« further results » (`offset=150`). Quatre captures sont concernées :
+`large_bone`, `large_claw`, `pile_of_incandescent_dust`, `potent_venom_sac`.
+
+`gw2_parse_dropped_by_v2.py` les marque `tronque: true` et le signale en fin de
+passe. **Toute conclusion sur ces quatre lignes au T5 est partielle** tant que
+la suite n'est pas versée.
+
+**Enjeu** : les Os, les Griffes, la Poussière et le Venin sont quatre des huit
+lignes, et le T5 pèse 56 % du volume. C'est le plus gros trou de données ouvert
+sur le sujet.
