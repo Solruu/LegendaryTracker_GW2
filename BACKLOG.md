@@ -398,57 +398,46 @@ en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 **Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
 rendu. Aucune capture supplémentaire à demander.
 
-## common_required contre qty — 6 sur 16 étaient la définition, 9 restent
+## common_required : ce n'est pas qty qui sous-compte, c'est common_required qui invente
 
-**Résolu le 27/08/2026 pour la moitié du lot.** Les deux champs ne mesurent pas
-la même chose : `_meta.common_required` porte l'**exigence directe de recette**
-(250 pièces du Tribut mystique, 77 trèfles du Don de Fortune), `craft_components[].qty`
-porte le **total réellement à réunir, trèfles compris**.
+**Instruit le 27/08/2026 sur les arbres.** Les trois cas où `qty` paraissait
+*inférieur* à l'exigence directe ne sont pas des sous-comptes : les arbres
+donnent raison à `qty`.
 
-Or 77 trèfles coûtent en espérance **249 pièces, 249 ectoplasmes et 249
-obsidiennes** par la recette à 10. L'arbre GW2Efficiency le montre en
-développant le nœud Mystic Clover : ses enfants sont `249 Obsidian Shard`,
-`249 Mystic Coin`, `249 Glob of Ectoplasm`, `150 Philosopher's Stone`.
+| légendaire | matériau | arbre | `qty` | `common_required` |
+|---|---|---|---|---|
+| Ad Infinitum | pièces | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
+| The Ascension | pièces | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
+| Transcendence | ectos | 249, trèfles uniquement | 249 ✅ | 250 ❌ |
 
-Donc **499 = 250 + 249 est normal**, et six avertissements tombent : Coalescence
-(pièces, ectos, obsidienne), Stella Radians (pièces), The Ascension (ectos),
-Transcendence (pièces), Vision (pièces).
+**Le motif est le même que sur Vision** : `common_required` applique un gabarit
+générique — 250 pièces, 250 ectos, 250 obsidiennes, 77 trèfles — à des
+légendaires qui n'ont pas ces exigences. The Ascension n'a **aucun** Tribut
+mystique : ses 250 ectoplasmes viennent du Don de Fortune, et il ne demande
+aucune pièce en direct. Transcendence, à l'inverse, a le Tribut (250 pièces) et
+aucune exigence directe en ectoplasmes.
 
-**Hypothèse réfutée** : j'avais soupçonné les 249 d'être une empreinte de stock
-soustrait par GW2Efficiency. L'arbre montre `ownedQuantity` vide partout. Aligner
-`common_required` sur `qty` aurait cassé un affichage correct.
+### La vraie question : à quoi sert encore ce champ ?
 
-`gw2_audit_v18.py` tolère désormais l'écart de 249 **au seul cas vérifié** —
-légendaire à exactement 77 trèfles. Pour 10 ou 55 trèfles le compte observé ne
-suit pas la proportion, il n'est donc pas extrapolé.
+`common_required` alimente le bloc « Matériaux communs ». Il y affiche
+l'exigence **directe**, quand le joueur veut savoir combien il lui en faut **en
+tout**. Sur Vision c'est 250 d'obsidienne affichés contre 421 réellement
+nécessaires, et 250 d'ectoplasmes contre 1 017.
 
-### Les 9 écarts restants, par nature
+**Proposition, à valider** : dériver l'affichage des totaux calculés par
+`computeGrandTotal` au lieu de maintenir une table parallèle à la main. Le champ
+deviendrait redondant et pourrait disparaître, avec sa règle d'audit.
 
-**Trois sous-comptes probables** — `qty` est *inférieur* à l'exigence directe, ce
-qui est impossible pour un total : Ad Infinitum (pièces, 249 contre 250), The
-Ascension (pièces, 249 contre 250), Transcendence (ectos, 249 contre 250). Le
-motif est identique dans les trois cas : `qty` semble ne porter **que** le coût
-trèfle, l'exigence directe ayant disparu. **Enjeu : sous-estimation de 250
-unités sur trois légendaires.**
+**Ce qui bloque** : ça change les nombres affichés sur les quatorze légendaires
+d'un coup. À faire d'un bloc, avec un diff exhaustif avant/après, pas au fil de
+l'eau.
 
-**Six écarts positifs inexpliqués** :
+### Les six écarts positifs, toujours ouverts
 
-| légendaire | matériau | direct | total | écart | dont trèfles |
-|---|---|---|---|---|---|
-| Vision | obsidienne | 250 | 421 | 171 | 249 attendus — l'écart est *plus petit* que le coût trèfle |
-| Ad Infinitum | ectos | 250 | 1039 | 789 | 249, reste 540 |
-| Ad Infinitum | obsidienne | 250 | 339 | 89 | 249 attendus, écart plus petit |
-| Selachimorpha | obsidienne | 250 | 488 | 238 | 55 trèfles, pas de référence |
-| Endless Summer | obsidienne | 250 | 283 | 33 | 10 trèfles, pas de référence |
-| Orrax Manifested | trèfles | 38 | 68 | 30 | sans objet |
-
-**Vision est prioritaire** : c'est la cible en cours, et son écart d'obsidienne
-est plus petit que le coût trèfle seul, ce qui signifie que l'exigence directe
-de 250 n'est probablement pas la bonne pour ce légendaire.
-
-**Méthode** : instruire un légendaire à la fois sur son arbre versé dans
-`ressources/gw2efficiency/`, en décomposant l'écart avant d'écrire. Ne jamais
-aligner les deux champs sans décomposition — c'est l'erreur évitée ici.
+Ad Infinitum ectos (1 039 contre 250) et obsidienne (339), Selachimorpha
+obsidienne (488), Endless Summer obsidienne (283), Orrax trèfles (68 contre 38),
+Vision obsidienne (421). Chacun demande son arbre — tous sont versés dans
+`ressources/gw2efficiency/`.
 
 ## Vision — chaîne complétée le 27/08/2026, `common_required` reste à revoir
 
@@ -490,8 +479,11 @@ chaîne — et `qty_extras` n'aurait jamais été lu. Il faut ramener la base à
 `qty['<legendaire>'] = 0` et passer la quantité en `qty_extras`, sinon les deux
 se cumulent.
 
-**Reste à faire** : passer en revue les autres collections qui consomment une
-ressource et les câbler de même. Le mécanisme ne couvre aujourd'hui qu'Aurora.
-Candidats évidents : tout `currency_cost` déclaré sur un bit (Natto, Lieutenant
-Bran, Exemplar Ylan, les Faveurs des cinq dieux) — plusieurs sont déjà câblés,
-il faut vérifier lesquels ne le sont pas.
+**Revue faite le 27/08/2026** : les sources ne déclarent que **quatre**
+`currency_cost` sur des bits, et les quatre sont câblés (Natto, Lieutenant Bran,
+Exemplar Ylan, la Relique d'un dieu). Rien à rattraper de ce côté.
+
+**Le vrai trou est ailleurs** : une collection peut consommer une ressource sans
+qu'aucun `currency_cost` ne le déclare — les 21 lingots Xunlai en étaient
+l'exemple, portés par une prose de `note`. Il faut relire les collections à la
+recherche de consommations non déclarées, pas se fier au champ.
