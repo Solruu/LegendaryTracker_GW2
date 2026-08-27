@@ -34,6 +34,9 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | `elaborate_totem__dropped_by.html` | Elaborate Totem | section « Dropped by », 56 NPC | 2026-08-27 |
 | `pile_of_crystalline_dust__dropped_by.html` | Pile of Crystalline Dust | section « Dropped by », 143 NPC | 2026-08-27 |
 | `powerful_venom_sac__dropped_by.html` | Powerful Venom Sac | section « Dropped by », 120 NPC | 2026-08-27 |
+| `vial_of_powerful_blood__dropped_by.html` | Vial of Powerful Blood | section « Dropped by », 74 NPC | 2026-08-27 |
+| `vicious_claw__dropped_by.html` | Vicious Claw | section « Dropped by », 110 NPC | 2026-08-27 |
+| `vicious_fang__dropped_by.html` | Vicious Fang | section « Dropped by », 87 NPC | 2026-08-27 |
 | `ancient_coin.html` | Ancient Coin | article complet | 2026-08-27 |
 | `ascended_shard_of_glory.html` | Ascended Shard of Glory | article complet | 2026-08-27 |
 | `charged_lodestone.html` | Charged Lodestone | article complet | 2026-08-27 |
@@ -62,6 +65,9 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | `shard_of_lowland_shore.html` | Shard of Lowland Shore | article complet | 2026-08-27 |
 | `shard_of_mistburned_barrens.html` | Shard of Mistburned Barrens | article complet | 2026-08-27 |
 | `shard_of_the_homestead.html` | Shard of the Homestead | article complet | 2026-08-27 |
+| `tale_of_adventure.html` | Tale of Adventure | article complet | 2026-08-27 |
+| `titan_heatstone.html` | Titan Heatstone | article complet | 2026-08-27 |
+| `unusual_coin.html` | Unusual Coin | article complet | 2026-08-27 |
 
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
@@ -78,8 +84,17 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 | `klobjarne_geirr.html` | Klobjarne Geirr | 2026-08-27 |
 | `orrax_manifested.html` | Orrax Manifested | 2026-08-27 |
 | `selachimorpha.html` | Selachimorpha, conteneur | 2026-08-27 |
+| `stella_radians.html` | Stella Radians | 2026-08-27 |
+| `strife_unending.html` | Strife Unending | 2026-08-27 |
+| `the_ascension.html` | The Ascension | 2026-08-27 |
+| `transcendence.html` | Transcendence | 2026-08-27 |
+| `warbringer.html` | Warbringer, arbre complet | 2026-08-27 |
 
 ## Manquent encore
 
-Pour finir l'affinage des foyers de farm T6, trois tableaux « Dropped by » :
-`vial_of_powerful_blood`, `vicious_claw`, `vicious_fang`.
+**Rien pour le palier T6** : les huit tableaux « Dropped by » sont versés.
+
+Pour étendre le bloc « Où farmer » aux paliers inférieurs — qui pèsent 250 unités
+sur 450 par gift contre 100 pour le T6 — il faudrait les mêmes tableaux pour les
+huit lignes en T5, T4 et T3, soit 24 pages. Le T5 seul en couvrirait la plus
+grosse part.
