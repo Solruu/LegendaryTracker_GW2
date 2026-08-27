@@ -560,7 +560,38 @@ Prismatic, Aurora et Vision.
 
 Aucun légendaire n'a les deux aujourd'hui.
 
-### Ce qui bloque encore : 17 succès absents du dump
+### Dump complet le 27/08/2026 — 163 succès, bilingue, zéro bit sans nom
+
+Un seul absent : **9330 `stella_forge_guard`**, que l'API ne renvoie pas
+(`not_returned: [9330]`). À instruire à part — succès retiré ou non exposé.
+
+### État par collection avant migration
+
+**13 collections sont des compteurs sans étapes** — l'API ne leur donne aucun
+bit. Ce n'est pas un trou : ce sont des succès à progression numérique (les
+quatre Path of the Ascension, les quatre Mastery d'Orrax et d'Endless Summer,
+Legendary Armorer, Vision II, les collecteurs de runes et de cachets). En
+`collections{}` elles auront un `total` mais pas d'`items[]`.
+
+**Neuf totaux divergent du dump, tous par sous-compte :**
+
+| légendaire | collection | `total` écrit | bits réels |
+|---|---|---|---|
+| Strife Unending | `strife_mists_research` | 3 | **8** |
+| Strife Unending | `strife_unending` | 10 | **11** |
+| Orrax Manifested | `orrax_contained` | absent | 5 |
+| Orrax Manifested | `orrax_isles` | absent | 13 |
+| Orrax Manifested | `orrax_shadows` | absent | 7 |
+| Orrax Manifested | `orrax_feast` | absent | 18 |
+| Orrax Manifested | `orrax_final` | absent | 1 |
+| Perfected Envoy | `envoy_1` | absent | 18 |
+| Perfected Envoy | `envoy_2` | absent | 14 |
+
+Les deux de Strife Unending sont **faux, pas absents** : `Mists Research` a bien
+8 étapes (parler à Dugan, puis sept enquêtes en McM), et `Mists Research: Strife
+Unending` en a 11. Le tracker en annonçait 3 et 10.
+
+### Ce qui bloquait : 17 succès absents du dump — ✅ résolu
 
 Le dump couvre les quatre catégories « Legendary … » des Collections. Mais 17
 succès référencés par les sources vivent **ailleurs** — Visions of Eternity,

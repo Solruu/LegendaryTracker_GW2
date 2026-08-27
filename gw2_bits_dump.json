@@ -3,16 +3,26 @@
     "source": "https://api.guildwars2.com/v2/achievements",
     "lang": "both",
     "jsx": "FALLBACK_IDS",
-    "count": 147,
-    "with_bits": 141,
+    "count": 163,
+    "with_bits": 149,
     "counters_without_bits": [
+      "2715 — Path of the Ascension IV: Hymn of Glory",
+      "2725 — Path of the Ascension III: Monument of Legends",
+      "2738 — Path of the Ascension I: The Thrill of Battle",
+      "2752 — Path of the Ascension II: Tapestry of Sacrifice",
       "3459 — Legendary Armorer",
       "4771 — Vision II: Farsight",
       "7788 — Legendary Sigil Collector",
       "7796 — Legendary Rune Collector",
+      "8582 — Mistburned Barrens Mastery",
+      "8769 — Bava Nisos Mastery",
+      "8880 — Shipwreck Strand Mastery",
+      "9057 — Starlit Weald Mastery",
       "9180 — Helping Hylek: Kill Krait"
     ],
-    "not_returned": []
+    "not_returned": [
+      9330
+    ]
   },
   "achievements": {
     "2177": {
@@ -12818,6 +12828,80 @@
       "nom_referentiel": "Envoy Armor I: Experimental Armor",
       "name_fr": "Armure d'émissaire I : armure expérimentale"
     },
+    "2715": {
+      "name": "Path of the Ascension IV: Hymn of Glory",
+      "requirement": "Complete all 11 Path of Ascension IV achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 18,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Chemin vers l'Ascension IV : l'hymne à la gloire"
+    },
+    "2725": {
+      "name": "Path of the Ascension III: Monument of Legends",
+      "requirement": "Complete all 11 Path of Ascension III achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 18,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Chemin vers l'Ascension III : le monument des légendes"
+    },
+    "2738": {
+      "name": "Path of the Ascension I: The Thrill of Battle",
+      "requirement": "Complete all 11 Path of Ascension I achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 18,
+      "tier_max": 11,
+      "prerequisites": [
+        2740
+      ],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Chemin vers l'Ascension I : le frisson du combat"
+    },
+    "2752": {
+      "name": "Path of the Ascension II: Tapestry of Sacrifice",
+      "requirement": "Complete all 11 Path of Ascension II achievements.",
+      "description": "",
+      "locked_text": "",
+      "points": 18,
+      "tier_max": 11,
+      "prerequisites": [],
+      "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Chemin vers l'Ascension II : la fresque du sacrifice"
+    },
     "2913": {
       "name": "Chuka and Champawat IV: Baby Book",
       "requirement": "",
@@ -15816,6 +15900,79 @@
       "categorie": "Legendary Trinkets",
       "nom_referentiel": "Coalescence III: Culmination",
       "name_fr": "Coalescence III : Apogée"
+    },
+    "6933": {
+      "name": "Mists Research",
+      "requirement": "Investigate places of power in the Mists.",
+      "description": "Discover a mysterious power made of Mists energy.",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 8,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Speak to Dugan.",
+          "id": null,
+          "text_fr": "Parler à Dugan."
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Investigate the Krait Reliquary in Darkrait Inlet.",
+          "id": null,
+          "text_fr": "Examiner le reliquaire krait dans la crique Sombrait."
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Investigate the Dredge Furnace in Molevekian Delve.",
+          "id": null,
+          "text_fr": "Examiner le Fourneau draguerre dans l'Antre de Molevekian."
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Investigate the Harpy Nesting Grounds in Orgath Uplands.",
+          "id": null,
+          "text_fr": "Examiner les Nids de Harpies dans les Hauteurs d'Orgath."
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Investigate the Heart of Stone inside Stonemist Castle.",
+          "id": null,
+          "text_fr": "Examiner le Cœur de pierre à l'intérieur du Château Brumepierre."
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Investigate the Centaur Totem in the Spiritholme.",
+          "id": null,
+          "text_fr": "Examiner le Totem de Centaure dans le Heaume spirituel."
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Investigate the Skritt Shiny in the Titanpaw.",
+          "id": null,
+          "text_fr": "Examiner le Qui-brille des Skritts dans le Bras du Titan."
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Investigate the Mysterious Energy in Darra's Maze.",
+          "id": null,
+          "text_fr": "Examiner l'énergie mystérieuse dans le Labyrinthe de Darra."
+        }
+      ],
+      "name_fr": "Recherche des Brumes"
     },
     "6967": {
       "name": "Legendary Weapon: The Moot",
@@ -19639,6 +19796,23 @@
       "nom_referentiel": "Legendary Weapon: Klobjarne Geirr",
       "name_fr": "Arme légendaire : Klobjarne Geirr"
     },
+    "8582": {
+      "name": "Mistburned Barrens Mastery",
+      "requirement": "Complete  map achievements throughout Mistburned Barrens.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 17,
+      "prerequisites": [],
+      "flags": [
+        "RepairOnLogin",
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise des Landes de Feu-de-Brume"
+    },
     "8714": {
       "name": "Legendary Backpack and Glider: Orrax",
       "requirement": "Bind the legendary backpack and glider Orrax Manifested.",
@@ -19666,6 +19840,488 @@
       "categorie": "Legendary Backpacks",
       "nom_referentiel": "Legendary Backpack and Glider: Orrax",
       "name_fr": "Sac à dos et deltaplane légendaires : Orrax"
+    },
+    "8723": {
+      "name": "Unknown Nightmares: Gift of Shadows",
+      "requirement": "This collection can be a useful reference for what is needed for each gift to create Orrax Manifested.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 7,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Gift of Shadows",
+          "id": 104846,
+          "text_fr": "Don des ombres"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Gift of Darkness",
+          "id": 19631,
+          "text_fr": "Don de ténèbres"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Gift of Scales",
+          "id": 75299,
+          "text_fr": "Don d'écailles"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Purchased from unusual coin vendors in Mistburned Barrens and Bava Nisos.",
+          "id": 104791,
+          "text_fr": "À acheter auprès des vendeurs de pièces inhabituelles des Landes de Feu-de-Brume et de Bava Nisos."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Purchased from a Mystic Forge vendor for Spirit Shards.",
+          "id": 20797,
+          "text_fr": "À acheter auprès d'un vendeur de la forge mystique contre des éclats d'esprit."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Earned by completing events in Mistburned Barrens.",
+          "id": 104331,
+          "text_fr": "À remporter en terminant des événements dans les Landes de Feu-de-Brume."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Earned by completing events in Bava Nisos.",
+          "id": 104829,
+          "text_fr": "À remporter en terminant des événements dans Bava Nisos."
+        }
+      ],
+      "name_fr": "Cauchemars innommés : don des ombres"
+    },
+    "8730": {
+      "name": "Unknown Nightmares: Orrax Contained",
+      "requirement": "This collection can be a useful reference for crafting the precursor backpack, Orrax Contained.\n\nCompletion of this achievement will also award a homestead decoration.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 5,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Orrax Contained",
+          "id": 104690,
+          "text_fr": "Orrax réprimé"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Received from completing the Unknown Nightmares: Experiments in the Shadows achievement",
+          "id": 104777,
+          "text_fr": "À recevoir en terminant le succès \"Cauchemars innommés : expériences dans les ombres\""
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Draconic Tribute",
+          "id": 96137,
+          "text_fr": "Tribut draconique"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "If needed, remnants of this item can be purchased from the renown heart vendor in Mistburned Barrens.",
+          "id": 102367,
+          "text_fr": "Si besoin, il est possible d'acheter des restes de cet objet auprès du vendeur de cœur de renommée des Landes de Feu-de-Brume."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+          "id": 104704,
+          "text_fr": "Si besoin, il est possible d'acheter des restes de cet objet auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos."
+        }
+      ],
+      "name_fr": "Cauchemars innommés : Orrax réprimé"
+    },
+    "8743": {
+      "name": "Unknown Nightmares: Gift of the Mistburned Isles",
+      "requirement": "This collection can be a useful reference for what is needed for each gift to create Orrax Manifested.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 13,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Gift of the Mistburned Isles",
+          "id": 104962,
+          "text_fr": "Don des Îles de Feu-de-Brume"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Gift of the Mursaat Ruins",
+          "id": 104763,
+          "text_fr": "Don des ruines mursaats"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Gift of Janthir Wanderlust",
+          "id": 104699,
+          "text_fr": "Don d'esprit d'aventure de Janthir"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Found in chests in Janthir Wilds, or purchased from the Trading Post.",
+          "id": 103351,
+          "text_fr": "À trouver dans des coffres des terres sauvages de Janthir, ou à acheter sur le comptoir."
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor.",
+          "id": 79418,
+          "text_fr": "Il est nécessaire d'avoir la maîtrise Érudit des secrets pour pouvoir acheter ceci auprès d'un vendeur de la forge mystique."
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Crafted using Mursaat Obsidian Chunks, Titan Heatstones, Globs of Ectoplasm, and Ancient Wood Planks.",
+          "id": 104229,
+          "text_fr": "À fabriquer à l'aide de morceaux d'obsidienne mursaat, de pierres de chaleur de Titan, de boules d'ectoplasme et de planches de bois ancien."
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Purchased from Ward Trader Sampaguita in Bava Nisos.",
+          "id": 105004,
+          "text_fr": "À acheter auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos."
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Shard of Mistburned Barrens",
+          "id": 104282,
+          "text_fr": "Éclat des Landes de Feu-de-Brume"
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Shard of Bava Nisos",
+          "id": 104855,
+          "text_fr": "Éclat de Bava Nisos"
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore.",
+          "id": 102929,
+          "text_fr": "À remporter dans la Côte des basses terres en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès des vendeurs de cœur de renommée de la Côte des basses terres."
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Earned in Janthir Syntri by completing all map locations. Further copies can be purchased from renown heart vendors in Janthir Syntri.",
+          "id": 102958,
+          "text_fr": "À remporter dans la Syntri de Janthir en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès des vendeurs de cœur de renommée de la Syntri de Janthir."
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Earned in Mistburned Barrens by completing all map locations. Further copies can be purchased from the renown heart vendor in Mistburned Barrens.",
+          "id": 104313,
+          "text_fr": "À remporter dans les Landes de Feu-de-Brume en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès du vendeur de cœur de renommée des Landes de Feu-de-Brume."
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Earned in Bava Nisos by completing all map locations. Further copies can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+          "id": 104896,
+          "text_fr": "À remporter dans Bava Nisos en déverrouillant tous les lieux de la carte. Davantage d'exemplaires peuvent être achetés auprès de la vendeuse de la Garde Sampaguita dans Bava Nisos."
+        }
+      ],
+      "name_fr": "Cauchemars innommés : don des Îles de Feu-de-Brume"
+    },
+    "8750": {
+      "name": "Unknown Nightmares: Gift of the Feast",
+      "requirement": "This collection can be a useful reference for what is needed for each gift to create Orrax Manifested.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 18,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Item",
+          "text": "Gift of the Feast",
+          "id": 104872,
+          "text_fr": "Don du festin"
+        },
+        {
+          "index": 1,
+          "type": "Item",
+          "text": "Gift of the Appetizer",
+          "id": 104965,
+          "text_fr": "Don de l'amuse-gueule"
+        },
+        {
+          "index": 2,
+          "type": "Item",
+          "text": "Gift of the Entrée",
+          "id": 104932,
+          "text_fr": "Don de l'entrée"
+        },
+        {
+          "index": 3,
+          "type": "Item",
+          "text": "Gift of the Side Course",
+          "id": 104839,
+          "text_fr": "Don de l'accompagnement"
+        },
+        {
+          "index": 4,
+          "type": "Item",
+          "text": "Gift of the Dessert",
+          "id": 104717,
+          "text_fr": "Don du dessert"
+        },
+        {
+          "index": 5,
+          "type": "Item",
+          "text": "Bowl of Poultry Satay",
+          "id": 87076,
+          "text_fr": "Bol de saté de volaille"
+        },
+        {
+          "index": 6,
+          "type": "Item",
+          "text": "Spicy Marinated Mushroom",
+          "id": 41563,
+          "text_fr": "Champignon mariné épicé"
+        },
+        {
+          "index": 7,
+          "type": "Item",
+          "text": "Red-Lentil Saobosa",
+          "id": 84550,
+          "text_fr": "Saobosa de lentilles rouges"
+        },
+        {
+          "index": 8,
+          "type": "Item",
+          "text": "Plate of Spicy Herbed Chicken",
+          "id": 41567,
+          "text_fr": "Assiette de poulet épicé"
+        },
+        {
+          "index": 9,
+          "type": "Item",
+          "text": "Plate of Orrian Steak Frittes",
+          "id": 12468,
+          "text_fr": "Assiette de steak-frites orrien"
+        },
+        {
+          "index": 10,
+          "type": "Item",
+          "text": "Plate of Truffle Steak",
+          "id": 12467,
+          "text_fr": "Assiette de steak à la truffe"
+        },
+        {
+          "index": 11,
+          "type": "Item",
+          "text": "Meaty Asparagus Skewer",
+          "id": 95942,
+          "text_fr": "Brochette d'asperges à la viande"
+        },
+        {
+          "index": 12,
+          "type": "Item",
+          "text": "Bowl of Black Pepper Cactus Salad",
+          "id": 66529,
+          "text_fr": "Bol de salade de cactus au poivre noir"
+        },
+        {
+          "index": 13,
+          "type": "Item",
+          "text": "Sometimes acquired by combining Mystic Coins, Obsidian Shards, Globs of Ectoplasm, and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors.",
+          "id": 19675,
+          "text_fr": "Parfois obtenu en combinant des pièces mystiques, des éclats d'obsidienne, des boules d'ectoplasme et soit des pierres philosophales, soit des cristaux mystiques dans la forge mystique. Peut également être acheté auprès des vendeurs des missions d'attaque, des raids ou des fractales."
+        },
+        {
+          "index": 14,
+          "type": "Item",
+          "text": "Bowl of Prickly Pear Sorbet",
+          "id": 66539,
+          "text_fr": "Bol de sorbet à la figue de barbarie"
+        },
+        {
+          "index": 15,
+          "type": "Item",
+          "text": "Bowl of Passion Fruit Tapioca Pudding",
+          "id": 71826,
+          "text_fr": "Bol de tapioca aux fruits de la passion"
+        },
+        {
+          "index": 16,
+          "type": "Item",
+          "text": "Refined from 250 Fine Rift Essences, 100 Masterwork Rift Essences, and 50 Rare Rift Essences. Essences can be found by hunting rifts.",
+          "id": 100930,
+          "text_fr": "À raffiner à partir de 250 essences de brèche raffinées, 100 essences de brèche prodigieuses et 50 essences de brèche rares. Vous pouvez trouver des essences en chassant les brèches."
+        },
+        {
+          "index": 17,
+          "type": "Item",
+          "text": "Purchase a seed from Deft Lahar in the homestead, and harvest it after letting it grow for 24 hours.",
+          "id": 104844,
+          "text_fr": "Acheter une graine à Lahar habile dans votre pavillon, puis la récolter après l'avoir laissée pousser pendant 24 heures."
+        }
+      ],
+      "name_fr": "Cauchemars innommés : don du festin"
+    },
+    "8761": {
+      "name": "Unknown Nightmares: Experiments in the Shadows",
+      "requirement": "Help a scientist reach out into the Mists, and hope that the Mists don't reach back.",
+      "description": "",
+      "locked_text": "",
+      "points": 5,
+      "tier_max": 10,
+      "prerequisites": [
+        8731
+      ],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research.",
+          "id": null,
+          "text_fr": "Parler à Jorvik Jorundsson dans Bava Nisos pour savoir comment vous pourriez participer à ses recherches."
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery.",
+          "id": null,
+          "text_fr": "Terminer l'événement \"Rassembler de la foudre pour maintenir chargées les tourelles asuras\" dans les Landes de Feu-de-Brume ou l'événement \"Récupérer des jarres, les remplir de foudre et les laisser aux points de dépôt\" dans la Syntri de Janthir pour charger la batterie."
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Return to Jorvik Jorundsson in Bava Nisos and give him the battery.",
+          "id": null,
+          "text_fr": "Retourner voir Jorvik Jorundsson dans Bava Nisos pour lui donner la batterie."
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Travel to Godslost Swamp and find the suspicious portal to calibrate Jorvik Jorundsson's sensor.",
+          "id": null,
+          "text_fr": "Se rendre au Marais d'Anathema et trouver le portail suspect pour calibrer le capteur de Jorvik Jorundsson."
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Talk to Jorvik Jorundsson in Bava Nisos to give him his sensor back.",
+          "id": null,
+          "text_fr": "Parler à Jorvik Jorundsson dans Bava Nisos pour lui rendre son capteur."
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal.",
+          "id": null,
+          "text_fr": "Terminer le puzzle de saut \"Grotte du cristal du chaos\" dans les Marais de fer pour y trouver un cristal adéquat."
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Talk to Jorvik Jorundsson in Bava Nisos to verify the crystal is appropriate for their purposes.",
+          "id": null,
+          "text_fr": "Parler à Jorvik Jorundsson dans Bava Nisos pour vérifier que le cristal corresponde à ses besoins."
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel.",
+          "id": null,
+          "text_fr": "Utiliser le bassin de divination dans le Panthéon des Hauts Faits pour mettre le cristal en affinité et en faire un réceptacle."
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Talk to Jorvik Jorundsson in Bava Nisos to give him the attuned crystal.",
+          "id": null,
+          "text_fr": "Parler à Jorvik Jorundsson dans Bava Nisos pour lui donner le cristal en affinité."
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing.",
+          "id": null,
+          "text_fr": "Parler à l'être des ombres par le biais de son miroir de cristal dans Bava Nisos pour obtenir sa bénédiction."
+        }
+      ],
+      "name_fr": "Cauchemars innommés : expériences dans les ombres"
+    },
+    "8769": {
+      "name": "Bava Nisos Mastery",
+      "requirement": "Complete  map achievements throughout Bava Nisos.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 10,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de Bava Nisos"
     },
     "8869": {
       "name": "Acquiring Agaleus",
@@ -19852,6 +20508,38 @@
       "nom_referentiel": "Acquiring Agaleus",
       "name_fr": "Obtention d'Agaleus"
     },
+    "8880": {
+      "name": "Shipwreck Strand Mastery",
+      "requirement": "Complete  map achievements throughout Shipwreck Strand.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 36,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise de la Rive aux épaves"
+    },
+    "9057": {
+      "name": "Starlit Weald Mastery",
+      "requirement": "Complete  map achievements throughout Starlit Weald.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 36,
+      "prerequisites": [],
+      "flags": [
+        "CategoryDisplay",
+        "MoveToTop",
+        "Permanent"
+      ],
+      "bits": [],
+      "name_fr": "Maîtrise du Bois étoilé"
+    },
     "9180": {
       "name": "Helping Hylek: Kill Krait",
       "requirement": "Kill  krait in Nonmoa Lake or complete the Kill the Krait Witch event to aid the Eztlitl hylek.",
@@ -20025,6 +20713,236 @@
       "categorie": "Legendary Trinkets",
       "nom_referentiel": "Radiance of the Sun God",
       "name_fr": "Rayonnement du dieu soleil"
+    },
+    "9244": {
+      "name": "Mists Research: Strife Unending",
+      "requirement": "Help Dugan with more research on the Mists.",
+      "description": "",
+      "locked_text": "",
+      "points": 10,
+      "tier_max": 11,
+      "prerequisites": [
+        6933
+      ],
+      "flags": [
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Text",
+          "text": "Check in with Dugan.",
+          "id": null,
+          "text_fr": "Parler à Dugan."
+        },
+        {
+          "index": 1,
+          "type": "Text",
+          "text": "After equipping a Mistwalker Infusion, kill 100 enemy players.",
+          "id": null,
+          "text_fr": "Après avoir équipé une infusion d'arpenteur des Brumes, tuer 100 joueurs ennemis."
+        },
+        {
+          "index": 2,
+          "type": "Text",
+          "text": "Find the warclaw tamer in Zraith's Beacon.",
+          "id": null,
+          "text_fr": "Trouver le dresseur de razziafelis à la Balise de Zraith."
+        },
+        {
+          "index": 3,
+          "type": "Text",
+          "text": "Capture the forge in the Edge of the Mists and talk to the smith there.",
+          "id": null,
+          "text_fr": "Capturer la forge à la lisière des Brumes et parler au forgeron qui s'y trouve."
+        },
+        {
+          "index": 4,
+          "type": "Text",
+          "text": "Capture and commune with the altar in the Edge of the Mists.",
+          "id": null,
+          "text_fr": "Capturer l'autel à la lisière des Brumes et y communier."
+        },
+        {
+          "index": 5,
+          "type": "Text",
+          "text": "Capture the workshop in the Edge of the Mists and talk to the mechanic there.",
+          "id": null,
+          "text_fr": "Capturer l'atelier à la lisière des Brumes et parler au mécanicien qui s'y trouve."
+        },
+        {
+          "index": 6,
+          "type": "Text",
+          "text": "Capture the keep of an enemy team in Eternal Battlegrounds and talk to the warclaw spirit there.",
+          "id": null,
+          "text_fr": "Capturer le fort d'une équipe ennemie dans les Champs de bataille éternels et parler à l'esprit de razziafelis qui s'y trouve."
+        },
+        {
+          "index": 7,
+          "type": "Text",
+          "text": "Capture Askalion Hills in Alpine Borderlands and talk to the warclaw spirit there.",
+          "id": null,
+          "text_fr": "Capturer les Collines d'Askalion dans les Territoires frontaliers alpins et parler à l'esprit de razziafelis qui s'y trouve."
+        },
+        {
+          "index": 8,
+          "type": "Text",
+          "text": "Capture Dreadfall Bay in Alpine Borderlands and talk to the warclaw spirit there.",
+          "id": null,
+          "text_fr": "Capturer la Baie du Noir déclin dans les Territoires frontaliers alpins et parler à l'esprit de razziafelis qui s'y trouve."
+        },
+        {
+          "index": 9,
+          "type": "Text",
+          "text": "Capture Stoic Rampart in Desert Borderlands and talk to the warclaw spirit there.",
+          "id": null,
+          "text_fr": "Capturer le Rempart stoïque dans les Territoires frontaliers du désert et parler à l'esprit de razziafelis qui s'y trouve."
+        },
+        {
+          "index": 10,
+          "type": "Text",
+          "text": "Return to Dugan.",
+          "id": null,
+          "text_fr": "Retourner voir Dugan."
+        }
+      ],
+      "name_fr": "Recherche des Brumes : Discorde infinie"
+    },
+    "9344": {
+      "name": "Glimmering Resin Weapon Collector",
+      "requirement": "Unlock all  Glimmering Resin weapon skins by crafting them after unlocking their recipe or by purchasing them from completed renown heart vendors in Eternity's Garden.",
+      "description": "",
+      "locked_text": "",
+      "points": 3,
+      "tier_max": 17,
+      "prerequisites": [],
+      "flags": [
+        "Pvp",
+        "RepairOnLogin",
+        "Permanent"
+      ],
+      "bits": [
+        {
+          "index": 0,
+          "type": "Skin",
+          "text": "Glimmering Resin Axe",
+          "id": 13959,
+          "text_fr": "Hache en résine scintillante"
+        },
+        {
+          "index": 1,
+          "type": "Skin",
+          "text": "Glimmering Resin Dagger",
+          "id": 13861,
+          "text_fr": "Dague en résine scintillante"
+        },
+        {
+          "index": 2,
+          "type": "Skin",
+          "text": "Glimmering Resin Focus",
+          "id": 13971,
+          "text_fr": "Focus en résine scintillante"
+        },
+        {
+          "index": 3,
+          "type": "Skin",
+          "text": "Glimmering Resin Greatsword",
+          "id": 13986,
+          "text_fr": "Espadon en résine scintillante"
+        },
+        {
+          "index": 4,
+          "type": "Skin",
+          "text": "Glimmering Resin Hammer",
+          "id": 13985,
+          "text_fr": "Marteau en résine scintillante"
+        },
+        {
+          "index": 5,
+          "type": "Skin",
+          "text": "Glimmering Resin Longbow",
+          "id": 13945,
+          "text_fr": "Arc long en résine scintillante"
+        },
+        {
+          "index": 6,
+          "type": "Skin",
+          "text": "Glimmering Resin Mace",
+          "id": 13856,
+          "text_fr": "Masse en résine scintillante"
+        },
+        {
+          "index": 7,
+          "type": "Skin",
+          "text": "Glimmering Resin Pistol",
+          "id": 13978,
+          "text_fr": "Pistolet en résine scintillante"
+        },
+        {
+          "index": 8,
+          "type": "Skin",
+          "text": "Glimmering Resin Rifle",
+          "id": 13866,
+          "text_fr": "Fusil en résine scintillante"
+        },
+        {
+          "index": 9,
+          "type": "Skin",
+          "text": "Glimmering Resin Scepter",
+          "id": 13934,
+          "text_fr": "Sceptre en résine scintillante"
+        },
+        {
+          "index": 10,
+          "type": "Skin",
+          "text": "Glimmering Resin Shield",
+          "id": 13850,
+          "text_fr": "Bouclier en résine scintillante"
+        },
+        {
+          "index": 11,
+          "type": "Skin",
+          "text": "Glimmering Resin Short Bow",
+          "id": 13990,
+          "text_fr": "Arc court en résine scintillante"
+        },
+        {
+          "index": 12,
+          "type": "Skin",
+          "text": "Glimmering Resin Spear",
+          "id": 13982,
+          "text_fr": "Lance en résine scintillante"
+        },
+        {
+          "index": 13,
+          "type": "Skin",
+          "text": "Glimmering Resin Staff",
+          "id": 13964,
+          "text_fr": "Bâton en résine scintillante"
+        },
+        {
+          "index": 14,
+          "type": "Skin",
+          "text": "Glimmering Resin Sword",
+          "id": 13933,
+          "text_fr": "Épée en résine scintillante"
+        },
+        {
+          "index": 15,
+          "type": "Skin",
+          "text": "Glimmering Resin Torch",
+          "id": 13865,
+          "text_fr": "Torche en résine scintillante"
+        },
+        {
+          "index": 16,
+          "type": "Skin",
+          "text": "Glimmering Resin Warhorn",
+          "id": 13917,
+          "text_fr": "Cor de guerre en résine scintillante"
+        }
+      ],
+      "name_fr": "Collectionneur d'armes en résine scintillante"
     }
   }
 }
