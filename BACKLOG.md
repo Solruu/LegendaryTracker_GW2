@@ -498,12 +498,21 @@ recherche de consommations non déclarées, pas se fier au champ.
 
 ## Complétude — état réel au 27/08/2026
 
-### Armes gen1/gen2 — ✅ **déjà fait, l'entrée du backlog était périmée**
+### Armes gen1/gen2 — le code existait, l'onglet était mort
 
-Le sélecteur de génération existe (gen1 / gen2 / gen3 / Divers, avec compteurs
-possédées/total), `genOf` classe par nom EN et plage d'identifiants, et chaque
-génération a sa note de coût. Klobjarne Geirr et Aetheric Anchor sont nommés
-dans la note « Divers ».
+Le sélecteur de génération, `genOf` et les notes de coût par génération étaient
+tous écrits. **Ils n'étaient jamais rendus** : `tab_contract` demandait les flags
+`isWeapons` et `isTrinkets`, qui n'existent nulle part. Les vrais s'appellent
+`isWeaponTracker` et `isTrinketTracker`.
+
+Zéro occurrence contre 4 pour `isArmorSet`, qui fonctionnait — d'où une panne
+limitée à deux hubs, et silencieuse : un flag inconnu vaut `undefined`, donc
+faux, donc l'onglet ne s'affiche pas et rien ne le signale.
+
+Corrigé dans le contrat, pas dans le JSX : les flags du JSX sont les noms
+d'origine, c'est le contrat qui les avait mal recopiés. `gw2_audit_v21.py`
+**échoue** désormais si un flag demandé par `tab_contract` n'existe pas dans le
+JSX.
 
 **Un point à vérifier en jeu, non tranché** : la découverte filtre sur
 `it.type !== "Weapon"`. Aetheric Anchor est décrit dans les sources comme

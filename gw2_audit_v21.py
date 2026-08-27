@@ -1093,6 +1093,30 @@ def check_qty_levels(data, errors, warnings):
 # est desormais craft_components[].qty, developpee par computeGrandTotal.
 
 
+def check_contract_flags_exist(data, errors, warnings):
+    """Un flag demande par tab_contract doit exister dans le JSX.
+
+    Les onglets Armes et Colifichets sont restes morts sans bruit : le contrat
+    demandait isWeapons et isTrinkets, le JSX ne connait que isWeaponTracker et
+    isTrinketTracker. Un flag inconnu vaut undefined, donc faux, donc l'onglet
+    ne s'affiche jamais et rien ne le signale.
+    """
+    jsx = sorted(
+        HERE.glob("gw2_legendary_tracker_v*.jsx"),
+        key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)),
+    )
+    if not jsx:
+        return
+    src = jsx[-1].read_text(encoding="utf-8")
+    demandes = set(re.findall(r'"flag":\s*"([^"]+)"', json.dumps(data.get("tab_contract") or {})))
+    for flag in sorted(demandes):
+        if not re.search(r"\b" + re.escape(flag) + r":\s*true", src):
+            errors.append(
+                f"tab_contract demande le flag '{flag}', absent de {jsx[-1].name} — "
+                "l'onglet ne s'affichera jamais"
+            )
+
+
 def check_no_parallel_common_table(data, errors, warnings):
     """Interdit la resurrection de la table parallele."""
     if "common_required" in (data.get("_meta") or {}):
@@ -1253,6 +1277,7 @@ def main() -> int:
     # 18. Exigences transverses : un seul emplacement, celui que le calcul lit
 
     # 19. Obsidienne : quantite de gifts et repartition par emplacement
+    check_contract_flags_exist(data, errors, warnings)
     check_no_parallel_common_table(data, errors, warnings)
     check_obsidian_gift_split(data, errors, warnings)
 
