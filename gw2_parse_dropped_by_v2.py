@@ -96,7 +96,7 @@ def verifie_colonnes(bloc, path):
 
 def parse(path):
     html = open(path, encoding="utf-8", errors="replace").read()
-    if not path.endswith("__dropped_by.html"):
+    if "__dropped_by" not in os.path.basename(path):
         html = section(html, path)
     verifie_colonnes(html, path)
     tronque = "further results" in html
@@ -125,15 +125,35 @@ def main():
             continue
         ligne, palier = CIBLES[f]
         rows, tronque = parse(os.path.join(DIR, f))
+        sources = [f]
+        # Suites de pagination : <base>__dropped_by_p2.html, _p3…
+        base = f[:-len(".html")].replace("__dropped_by", "")
+        p = 2
+        while True:
+            suite = f"{base}__dropped_by_p{p}.html"
+            chemin = os.path.join(DIR, suite)
+            if not os.path.exists(chemin):
+                break
+            srows, stronque = parse(chemin)
+            connus = {r["npc"] for r in rows}
+            doublons = [r["npc"] for r in srows if r["npc"] in connus]
+            if doublons:
+                raise ValueError(f"{suite} : {len(doublons)} doublons avec la page "
+                                 f"precedente, ex. {doublons[0]} — mauvais offset ?")
+            rows += srows
+            sources.append(suite)
+            tronque = stronque
+            p += 1
         data.setdefault(ligne, {})[palier] = {
-            "source": f, "tronque": tronque, "npc": rows,
+            "sources": sources, "tronque": tronque, "npc": rows,
         }
         total += len(rows)
         if tronque:
             tronques.append(f"{ligne} {palier}")
         sans_zone = sum(1 for r in rows if r["spots"] and all(s["zone"] is None for s in r["spots"]))
         marque = "  ⚠ TRONQUE a 150" if tronque else ""
-        print(f"{ligne:10s} {palier}  {len(rows):4d} NPC  {sans_zone:3d} sans sous-zone{marque}")
+        pages = f"  ({len(sources)} pages)" if len(sources) > 1 else ""
+        print(f"{ligne:10s} {palier}  {len(rows):4d} NPC  {sans_zone:3d} sans sous-zone{pages}{marque}")
     if tronques:
         print("\n⚠ captures tronquees, conclusions partielles : " + ", ".join(tronques))
     json.dump(data, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
