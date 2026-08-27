@@ -118,14 +118,17 @@ def ids_du_catalogue(chemin_ref):
 
 
 # Filet de securite pour --sources : liste gelee des achievementId declares
-# par legendaries[].achievements[] au 27/08/2026. Utilisee quand aucun
+# par les sources au 27/08/2026 — apres migration, legendaries[].collections{}. Utilisee quand aucun
 # gw2_sources_v*.json n'est trouvable depuis le dossier courant — c'est ce
 # qui s'est produit a la premiere tentative, le dump revenant a 147 succes
 # au lieu de 164. Les sources restent la source de verite.
 SOURCES_FALLBACK_IDS = [
-    2295, 2351, 2368, 2557, 2646, 2715, 2725, 2738, 2752, 3012, 6933, 8582,
-    8714, 8723, 8730, 8743, 8750, 8761, 8769, 8880, 9057, 9180, 9183, 9244,
-    9330, 9344,
+    2295, 2351, 2368, 2557, 2646, 2715, 2725, 2738, 2752, 3012, 3402, 3436,
+    3445, 3447, 3489, 3964, 4000, 4027, 4035, 4093, 4177, 4195, 4359, 4376,
+    4412, 4544, 4577, 4689, 4757, 4760, 4762, 4764, 4765, 4770, 4771, 4774,
+    4805, 5790, 6933, 7788, 7796, 7829, 8582, 8714, 8723, 8730, 8743, 8750,
+    8761, 8769, 8814, 8823, 8826, 8830, 8835, 8840, 8841, 8869, 8880, 9057,
+    9180, 9183, 9244, 9330, 9344,
 ]
 
 
@@ -151,9 +154,15 @@ def ids_des_sources(chemin=None):
     for leg in (data.get("legendaries") or {}).values():
         if not isinstance(leg, dict):
             continue
+        # achievements[] a disparu le 27/08/2026 : les collections vivent
+        # desormais dans collections{}. On lit les deux, l'ancien pour les
+        # sources non encore migrees.
         for a in (leg.get("achievements") or []):
             if isinstance(a, dict) and isinstance(a.get("id"), int):
                 ids.add(a["id"])
+        for c in (leg.get("collections") or {}).values():
+            if isinstance(c, dict) and isinstance(c.get("id"), int):
+                ids.add(c["id"])
     print(f"{len(ids)} achievements declares par {os.path.basename(chemin)}")
     return sorted(ids)
 
