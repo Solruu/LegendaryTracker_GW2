@@ -125,6 +125,8 @@ def main():
             continue
         ligne, palier = CIBLES[f]
         rows, tronque = parse(os.path.join(DIR, f))
+        for r in rows:
+            r["page"] = 1
         sources = [f]
         # Suites de pagination : <base>__dropped_by_p2.html, _p3…
         base = f[:-len(".html")].replace("__dropped_by", "")
@@ -135,6 +137,8 @@ def main():
             if not os.path.exists(chemin):
                 break
             srows, stronque = parse(chemin)
+            for r in srows:
+                r["page"] = p
             connus = {r["npc"] for r in rows}
             doublons = [r["npc"] for r in srows if r["npc"] in connus]
             if doublons:
