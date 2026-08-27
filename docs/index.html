@@ -1701,7 +1701,8 @@ const SOURCES_DB = {
     "changelog_v167": "Les 21 lingots d'electrum Xunlai d'Aurora II se decomptent enfin bit a bit. La collection consomme un lingot par sanctuaire de maitrise infuse : un bit valide n'a plus rien a consommer, et le besoin doit baisser. Le mecanisme existait deja (qty_extras + pendingExtra) mais n'etait cable que sur quatre composants, tous sur Aurora — une fonctionnalite transversale qui ne s'appliquait qu'a un legendaire sur quatorze. Le total etait porte a plat par qty['spark_of_sentience'] = 21, invisible de pendingExtra qui n'est atteint que si le composant porte une entree qty pour le legendaire selectionne. Base ramenee a qty['aurora'] = 0 et les 21 unites passees en qty_extras, sinon les deux se cumulaient. Vision : les 167 ectoplasmes manquants sont rentres. La chaine porte desormais Lump of Mithrillium (cadence 1/jour/compte, le maillon qui impose les 21 jours d'Aurora II et qui n'existait dans aucun composant), Crystalline Ingot, Fulgurite, l'inscription des armes Sang-de-dragon, la Banniere du commandant et la chaine des bandoulieres olmakhan. Total ectos 850 -> 1017, conforme a l'arbre une fois reintegres les 300 du kralkatite que l'arbre omet (branche de collection). Les totaux a plat de Vision et de Coalescence ont ete retranches de ce que la chaine apporte maintenant, sinon les deux se cumulaient : ectos 250 -> 249 et obsidienne 421 -> 321 sur Vision, 499 -> 249 sur les deux materiaux de Coalescence. L'obsidienne totale de Vision reste a 421 et celle de Coalescence a 499 : seule la repartition entre plat et chaine change. Diff exhaustif passe sur tous les legendaires : seuls Vision et Coalescence bougent.",
     "changelog_v168": "Suppression de _meta.common_required. Le bloc « Materiaux communs » lit desormais computeGrandTotal, comme le grand total : une seule source. La table parallele annoncait des exigences directes la ou il fallait des totaux, et posait un gabarit generique de 250/250/250/77 sur des legendaires qui n'ont pas ces exigences. Diff exhaustif sur les 85 legendaires : 64 affichages changent, aucun ne disparait. Les deux plus gros ecarts sont Vision (obsidienne 250 -> 421, ectos 250 -> 1017, pieces 250 -> 499) et Coalescence (250 -> 499 sur trois materiaux). Les 62 autres sont des armes gen1/gen2/gen3 qui n'affichaient RIEN faute d'entree dans la table et affichent maintenant leurs 77 trefles et 250 pieces. Cout mesure de l'expansion de chaine : 1 ms par appel sur 319 composants et 1108 cles.",
     "changelog_v169": "Les six ecarts restants sont instruits sur leurs arbres : les six valeurs de qty sont CONFIRMEES, aucune donnee ne change. Ad Infinitum 1039 ectos = 250 Beta Fractal Capacitor + 250 Fractal Capacitor + 25 Unbound Wings + 10 Bound Wings + 5 Mithrillium + 249 trefles + 250 Gift of Fortune ; 339 obsidiennes = 90 (Dragonite, Empyreal, Bloodstone) + 249 trefles. Selachimorpha 488 = 60 + 178 trefles + 250 Gift of Castoran Mastery. Endless Summer 283 = 250 Gift of Infused Gems + 33 trefles. Orrax 68 trefles = 30 Gift of the Side Course + 38 Draconic Tribute — l'ancienne table n'en comptait que 38, elle ignorait la premiere branche. Vision 421 = 249 trefles + 100 Fulgurite + 72. Le cout unitaire du trefle, environ 3,23 par unite, est documente dans common_required_scope : il recoupe cinq arbres.",
-    "changelog_v170": "Les onglets Armes et Colifichets etaient morts depuis la migration vers tab_contract : le contrat demandait les flags isWeapons et isTrinkets, qui n'existent nulle part. Les vrais s'appellent isWeaponTracker et isTrinketTracker. Zero occurrence dans LEGENDARIES contre 4 pour isArmorSet, qui lui fonctionnait — d'ou une panne invisible sur deux hubs seulement. La matrice de ciblage par generation, le selecteur gen1/gen2/gen3/Divers et les notes de cout par generation existaient et n'etaient jamais rendus. Corrige dans le contrat, pas dans le JSX : les flags du JSX sont les noms d'origine, c'est le contrat qui les avait mal recopies."
+    "changelog_v170": "Les onglets Armes et Colifichets etaient morts depuis la migration vers tab_contract : le contrat demandait les flags isWeapons et isTrinkets, qui n'existent nulle part. Les vrais s'appellent isWeaponTracker et isTrinketTracker. Zero occurrence dans LEGENDARIES contre 4 pour isArmorSet, qui lui fonctionnait — d'ou une panne invisible sur deux hubs seulement. La matrice de ciblage par generation, le selecteur gen1/gen2/gen3/Divers et les notes de cout par generation existaient et n'etaient jamais rendus. Corrige dans le contrat, pas dans le JSX : les flags du JSX sont les noms d'origine, c'est le contrat qui les avait mal recopies.",
+    "changelog_v171": "Ad Infinitum migre vers collections{} : validation de forme avant les dix autres. Les trois structures concurrentes fusionnent en une. raidAchievements[] du JSX apportait les bitTips par etape, achievements[] des sources la note et le total, le dump les noms d'etapes. Resultat : 4 collections, 46 etapes nommees, 46 how issus des bitTips et marques how_verified false — ce sont des conseils editoriaux, pas des instructions reverifiees. Les totaux ne sont plus ecrits a la main mais comptes sur les bits du dump. La note d'adinf_4 divergeait entre le JSX et les sources : la version JSX chiffre les murs d'echelle, elle est retenue, l'autre passe en note_alt plutot que d'etre perdue."
   },
   "meta_events": {
     "vb": {
@@ -17314,48 +17315,6 @@ const SOURCES_DB = {
         "fr": "apiId 74155 confirmé (wiki EN/FR + gw2efficiency). L'ancienne note « 74155 = Astralaria » était erronée : Astralaria = 76158.",
         "en": "apiId 74155 confirmed (EN/FR wiki + gw2efficiency). The old '74155 = Astralaria' note was wrong: Astralaria = 76158."
       },
-      "achievements": [
-        {
-          "key": "adinf_1",
-          "id": 2351,
-          "name": "Ad Infinitum I: Finite Result",
-          "total": 11,
-          "note": {
-            "fr": "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).",
-            "en": "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)."
-          }
-        },
-        {
-          "key": "adinf_2",
-          "id": 2557,
-          "name": "Ad Infinitum II: Upper Bound",
-          "total": 11,
-          "note": {
-            "fr": "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.",
-            "en": "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta."
-          }
-        },
-        {
-          "key": "adinf_3",
-          "id": 2368,
-          "name": "Ad Infinitum III: Unbound",
-          "total": 11,
-          "note": {
-            "fr": "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.",
-            "en": "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage."
-          }
-        },
-        {
-          "key": "adinf_4",
-          "id": 2295,
-          "name": "Legendary Backpack: Ad Infinitum",
-          "total": 13,
-          "note": {
-            "fr": "13 composants T3/T4 (CM 80% heal réduit : Underground Facility 51+, Aetherblade 51+…). Craftez Unbound puis parlez à Kelvei pour débloquer.",
-            "en": "13 T3/T4 components (80% reduced-healing CMs: Underground Facility 51+, Aetherblade 51+…). Craft Unbound then talk to Kelvei to unlock."
-          }
-        }
-      ],
       "guide": [
         {
           "fr": "Timegate central : chaque collection consomme 1 Fractal Journal = 28 Fractal Research Pages (~3/jour via dailies recommandées, +1 par CM Sunqua/Nightmare/Shattered) → ~10 j/collection sans CM, ~5 j avec.",
@@ -17383,7 +17342,533 @@ const SOURCES_DB = {
         "en": "~40 days min without CMs (4 × 28 Research Pages), ~20 days with daily CMs"
       },
       "recipe_verified": "2026-07-25 (wiki) — conforme",
-      "cadence_ref": "fractal_research_page"
+      "cadence_ref": "fractal_research_page",
+      "collections": {
+        "adinf_1": {
+          "id": 2351,
+          "key": "adinf_1",
+          "name": {
+            "fr": "Ad Infinitum I : Limite finie",
+            "en": "Ad Infinitum I: Finite Result"
+          },
+          "total": 11,
+          "note": {
+            "fr": "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).",
+            "en": "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)."
+          },
+          "items": [
+            {
+              "bit": 0,
+              "name": "Defender of Ascalon",
+              "how": {
+                "fr": "Défenseur d'Ascalon : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 20 Reliques fractales immaculées.",
+                "en": "Defender of Ascalon: from BUY-2046 PFR, in the Mistlock Observatory, 20 Pristine Fractal Relics."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 1,
+              "name": "Charr-Nip",
+              "how": {
+                "fr": "Charr-Nip : chez BUY-4373, à l'Observatoire, 100 Reliques fractales + 80 pa.",
+                "en": "Charr-Nip: from BUY-4373, in the Mistlock Observatory, 100 Fractal Relics + 80 s."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 2,
+              "name": "Swampland Challenge Mote",
+              "how": {
+                "fr": "Mote de défi Marécages : activer le mote et finir le fractale Marécages ÉCHELLE 1-20, avec -80 % de soins. Accessible dès maintenant à ton niveau.",
+                "en": "Swampland Challenge Mote: activate the mote and clear the Swampland fractal at SCALE 1-20, with an 80% healing reduction. Reachable at your current level."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 3,
+              "name": "Aquatic Ruin Challenge Mote",
+              "how": {
+                "fr": "Mote de défi Ruines aquatiques : même principe, échelle 1-20, -80 % de soins. ⚠ Bug connu : les deux motes sont donnés par le COFFRE final, pense à le looter.",
+                "en": "Aquatic Ruin Challenge Mote: same principle, scale 1-20, 80% healing reduction. ⚠ Known bug: both motes come from the final CHEST, remember to loot it."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 4,
+              "name": "Jade Kraken Timed Mote",
+              "how": {
+                "fr": "Mote chronométré Kraken de jade : battre la Gueule de jade en moins de 5 minutes, fractale Océan solide échelle 20.",
+                "en": "Jade Kraken Timed Mote: beat the Jade Maw in under 5 minutes, Solid Ocean fractal at scale 20."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 5,
+              "name": "Ascalonian Fractal Field Research Paper",
+              "how": {
+                "fr": "Rapport de recherche ascalonien : chez le Chercheur du Champ de bataille urbain, DANS le fractale, contre un Journal fractal (28 Pages de recherche).",
+                "en": "Ascalonian Fractal Field Research Paper: from the Urban Battlegrounds Field Researcher, INSIDE the fractal, for a Fractal Journal (28 Research Pages)."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 6,
+              "name": "Burning Frozen Core",
+              "how": {
+                "fr": "Cœur gelé brûlant : récupérer un Cœur d'élémentaire de glace gigantesque sur le Chef chaman svanir (boss de monde, Contreforts du Voyageur), puis l'imprégner dans le Magma bouillant en fin de fractale Volcanique.",
+                "en": "Burning Frozen Core: get a Gigantic Ice Elemental Core from the Champion Svanir Shaman Chief (world boss, Wayfarer Foothills), then imbue it in the Boiling-Hot Magma at the end of the Volcanic fractal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 7,
+              "name": "Charged Clump of Swamp Moss",
+              "how": {
+                "fr": "Amas de mousse chargé : ramasser l'Amas de mousse en finissant le fractale Marécages, puis le charger au Réservoir d'énergie de l'Opticalium, en Province de Metrica.",
+                "en": "Charged Clump of Swamp Moss: pick up the Clump of Swamp Moss by clearing the Swampland fractal, then charge it in the Energy Storage Tank at the Opticalium, in Metrica Province."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 8,
+              "name": "Prototype Fractal Capacitor",
+              "how": {
+                "fr": "Condensateur fractal prototype : chez BUY-4373, 1 350 Reliques fractales. ⚠ NE LE RECYCLE PAS : il doit être conservé et amélioré pour Ad Infinitum II. La chaîne complète consomme 4 Dons d’ascension (500 reliques + 25 immaculées + 20 po chacun) : montée en Élevé, en Bêta infusé, en Condensateur fractal infusé, puis la recette finale. 💡 Le Reliquaire fractal propose le Don à 25 reliques au lieu de 500, environ un jour sur sept — consulte-le quotidiennement, quatre passages te feraient économiser 1 900 reliques. Il s’obtient par le succès « Recyclage élevé » : 6 objets puissants issus du recyclage d’élevé, exactement les recyclages qui te fournissent les Boules d’énergie sombre.",
+                "en": "Prototype Fractal Capacitor: from BUY-4373, 1,350 Fractal Relics. ⚠ DO NOT SALVAGE IT: it must be kept and upgraded for Ad Infinitum II. The full chain consumes 4 Gifts of Ascension (500 relics + 25 pristine + 20 g each): upgrade to Ascended, to Beta Infused, to Fractal Capacitor (Infused), then the final recipe. 💡 The Fractal Reliquary offers the Gift for 25 relics instead of 500, roughly one day in seven — check it daily; four hits would save 1,900 relics. It comes from the 'Ascended Recycling' achievement: 6 powerful items from salvaging ascended gear, the very salvages that give you Balls of Dark Energy."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 9,
+              "name": "Unstable Magically Charged Infusion Sample",
+              "how": {
+                "fr": "Échantillon d'infusion instable : charger une infusion d'agonie +4 au Geyser des Brumes, en fin de fractale Marécages.",
+                "en": "Unstable Magically Charged Infusion Sample: charge a +4 Agony Infusion at the Mist Geyser, at the end of the Swampland fractal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 10,
+              "name": "Aetherblade Recruitment Form",
+              "how": {
+                "fr": "Formulaire de recrutement aetherblade : chez le Quartier-maître aetherblade, dans le fractale Capitaine Mai Trin, contre 1 Boule d'énergie sombre (recyclage d'élevé). ⚠ Aucune progression requise dans le fractale : le vendeur est dans une cabane accessible par le chemin derrière le départ.",
+                "en": "Aetherblade Recruitment Form: from the Aetherblade Quartermaster, in the Captain Mai Trin fractal, for 1 Ball of Dark Energy (salvaged from ascended gear). ⚠ No progress needed in the fractal: the vendor sits in a cabin reached by the path behind the start."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            }
+          ]
+        },
+        "adinf_2": {
+          "id": 2557,
+          "key": "adinf_2",
+          "name": {
+            "fr": "Ad Infinitum II : Limite supérieure",
+            "en": "Ad Infinitum II: Upper Bound"
+          },
+          "total": 11,
+          "note": {
+            "fr": "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.",
+            "en": "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta."
+          },
+          "items": [
+            {
+              "bit": 0,
+              "name": "Dredge Spiral Drill",
+              "how": {
+                "fr": "Foreuse spirale des taupards : chez BUY-2046 PFR, à l'Observatoire, 30 Reliques fractales immaculées.",
+                "en": "Dredge Spiral Drill: from BUY-2046 PFR, in the Mistlock Observatory, 30 Pristine Fractal Relics."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 1,
+              "name": "Glob of Molten Fire",
+              "how": {
+                "fr": "Boule de feu en fusion : chez BUY-4373, à l'Observatoire, 200 Reliques fractales + 80 pa.",
+                "en": "Glob of Molten Fire: from BUY-4373, in the Mistlock Observatory, 200 Fractal Relics + 80 s."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 2,
+              "name": "Uncategorized Challenge Mote",
+              "how": {
+                "fr": "Mote de défi Non répertorié : ⚠ ÉCHELLE 36, avec -80 % de soins. C'est ici que ton niveau fractale devient bloquant — il faut avoir débloqué l'échelle 36.",
+                "en": "Uncategorized Challenge Mote: ⚠ SCALE 36, with an 80% healing reduction. This is where your fractal level starts to block - you need scale 36 unlocked."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 3,
+              "name": "Snowblind Challenge Mote",
+              "how": {
+                "fr": "Mote de défi Aveugle-neige : échelle 27, -80 % de soins.",
+                "en": "Snowblind Challenge Mote: scale 27, 80% healing reduction."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 4,
+              "name": "Thaumanova Reactor Timed Mote",
+              "how": {
+                "fr": "Mote chronométré Réacteur Thaumanova : échelle 15, à finir en moins de 20 minutes. Large, aucune course.",
+                "en": "Thaumanova Reactor Timed Mote: scale 15, to be cleared in under 20 minutes. Generous, no rush needed."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 5,
+              "name": "Molten Alliance Fractal Field Research Paper",
+              "how": {
+                "fr": "Rapport de recherche Alliance en fusion : contre 1 Journal fractal (28 Pages), auprès du Chercheur de la Fournaise en fusion, sur un chemin OPTIONNEL après le fractale Boss en fusion. Ne quitte pas l'instance trop vite.",
+                "en": "Molten Alliance Field Research Paper: for 1 Fractal Journal (28 Pages), from the Molten Furnace Field Researcher, on an OPTIONAL path after the Molten Boss fractal. Don't leave the instance too quickly."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 6,
+              "name": "Jade Maw Fang",
+              "how": {
+                "fr": "Croc de Gueule de jade : récupérer une Vrille de Colèreronce au coffre du Courroux de la vigne (Terres sauvages d'argent), puis l'échanger auprès du Chercheur de jade gelé, en fin de fractale Océan solide.",
+                "en": "Jade Maw Fang: get a Vinewrath Tendril from the Vinewrath Chest (Silverwastes), then trade it with the Frozen Jade Researcher at the end of the Solid Ocean fractal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 7,
+              "name": "Pollenated Ice Elemental Core",
+              "how": {
+                "fr": "Cœur d'élémentaire de glace pollinisé : Cœur pris sur le Chaman légendaire Lornarr (fractale Aveugle-neige), puis imprégné d'un Nuage de pollen pendant la Brèche, aux Terres sauvages d'argent. ⚠ Récupère le Cœur AVANT de lancer la méta, sinon c'est deux métas au lieu d'une.",
+                "en": "Pollenated Ice Elemental Core: Core taken from Legendary Shaman Lornarr (Snowblind fractal), then imbued with a Luminescent Pollen Cloud during The Breach, in the Silverwastes. ⚠ Get the Core BEFORE starting the meta, otherwise it's two metas instead of one."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 8,
+              "name": "Beta Fractal Capacitor",
+              "how": {
+                "fr": "Condensateur fractal bêta (infusé) : c'est ici que sert le Condensateur prototype gardé en collection I. Forge mystique deux fois — d'abord en Élevé (Fiole d'essence des Brumes + Don d'Ascension + 40 Cristaux mystiques ou 240 Pierres philosophales), puis en Bêta infusé (Boule d'essence coagulée + Don d'Ascension + 250 ectoplasmes). Débloqué d'office si tu possèdes déjà un palier supérieur.",
+                "en": "Beta Fractal Capacitor (Infused): this is where the Prototype Capacitor kept from collection I is used. Mystic Forge twice - first to Ascended (Vial of Condensed Mists Essence + Gift of Ascension + 40 Mystic Crystals or 240 Philosopher's Stones), then to Beta Infused (Glob of Coagulated Mists Essence + Gift of Ascension + 250 ectoplasm). Auto-unlocked if you already own a higher tier."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 9,
+              "name": "Weak Magically Charged Infusion Sample",
+              "how": {
+                "fr": "Échantillon d'infusion faible : charger une infusion d'agonie +6 au Geyser des Brumes, dans le fractale Fournaise en fusion.",
+                "en": "Weak Magically Charged Infusion Sample: charge a +6 Agony Infusion at the Mist Geyser, in the Molten Furnace fractal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 10,
+              "name": "Aetherblade Handbook",
+              "how": {
+                "fr": "Manuel aetherblade : chez le Quartier-maître aetherblade (fractale Mai Trin), 2 Boules d'énergie sombre. Recycler Limite finie en rend 5 : 2 pour ce manuel, 2 pour fabriquer Limite supérieure. Aucun achat nécessaire.",
+                "en": "Aetherblade Handbook: from the Aetherblade Quartermaster (Mai Trin fractal), 2 Balls of Dark Energy. Salvaging Finite Result yields 5: 2 for this handbook, 2 to craft Upper Bound. No purchase needed."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            }
+          ]
+        },
+        "adinf_3": {
+          "id": 2368,
+          "key": "adinf_3",
+          "name": {
+            "fr": "Ad Infinitum III : Sans limite",
+            "en": "Ad Infinitum III: Unbound"
+          },
+          "total": 11,
+          "note": {
+            "fr": "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.",
+            "en": "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage."
+          },
+          "items": [
+            {
+              "bit": 0,
+              "name": "Inquest Dragon Energy Research Cube",
+              "how": {
+                "fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 40 Reliques fractales immaculées.",
+                "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 1,
+              "name": "Essence of Subject 2",
+              "how": {
+                "fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.",
+                "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 2,
+              "name": "Volcanic Challenge Mote",
+              "how": {
+                "fr": "Particule de défi volcanique : activer le mote et finir la fractale Volcanique ÉCHELLE 28, avec -80 % de soins.",
+                "en": "Volcanic Challenge Mote: activate the mote and clear the Volcanic fractal at SCALE 28, with an 80% healing reduction."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 3,
+              "name": "Cliffside Challenge Mote",
+              "how": {
+                "fr": "Particule de défi de Flanc de falaise : mote activé, Flanc de falaise ÉCHELLE 46, -80 % de soins. La description de l'objet annonce le palier core (21-50), mais la fractale ne tourne qu'aux échelles 6, 46, 68 et 94 : une seule tombe dans l'intervalle.",
+                "en": "Cliffside Challenge Mote: mote activated, Cliffside at SCALE 46, 80% healing reduction. The item description says core tier (21-50), but the fractal only runs at scales 6, 46, 68 and 94: only one falls in range."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 4,
+              "name": "Molten Boss Timed Mote",
+              "how": {
+                "fr": "Particule de défi du boss de la Fusion : finir la fractale Boss en fusion ÉCHELLE 10 en moins de 5 minutes.",
+                "en": "Molten Boss Timed Mote: clear the Molten Boss fractal at SCALE 10 in under 5 minutes."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 5,
+              "name": "Thaumanova Fractal Field Research Paper",
+              "how": {
+                "fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.",
+                "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 6,
+              "name": "Old Tom's Vital Reading (He's Dead)",
+              "how": {
+                "fr": "Rapport de bug du Gros Tom (Il est mort) : interagir avec les Restes du golem d'essai de Vexa, dans le puzzle de saut du Labo de Vexa (Rive d'Ardentcœur), sur la plateforme au sud-est → tu reçois le Lecteur de diagnostic. Ni Vexa ni son golem n'ont besoin d'être tués. Ensuite, analyser les restes du Gros Tom en fin de fractale Non répertorié.",
+                "en": "Old Tom's Vital Reading (He's Dead): interact with Vexa's Test-Golem Remains in the Vexa's Lab jumping puzzle (Fireheart Rise), on the platform to the southeast → you get Vexa's Golem Diagnostic Reader. Neither Vexa nor her golem needs to be killed. Then analyse Old Tom's remains at the end of the Uncategorized fractal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 7,
+              "name": "Rabsovich's Lost Treasure",
+              "how": {
+                "fr": "Trésor perdu de Rabsovich : tuer le champion Rabsovich dans le Complexe souterrain → Clé du casier ; puis ouvrir le Casier de Rabsovich au sud-ouest des Falaises de Bourreloup, zone d'excavation Dociu [&BFgCAAA=].",
+                "en": "Rabsovich's Lost Treasure: kill Champion Rabsovich in the Underground Facility fractal → Rabsovich's Locker Key; then open Rabsovich's Locker southwest of Dredgehaunt Cliffs, Dociu Excavation area [&BFgCAAA=]."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 8,
+              "name": "Fractal Capacitor",
+              "how": {
+                "fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).",
+                "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 9,
+              "name": "Magically Charged Infusion Sample",
+              "how": {
+                "fr": "Échantillon d'infusion chargé en magie : charger une infusion d'agonie +8 au Geyser des Brumes d'Aveugle-neige. ⚠ Ne saute pas le combat de la Source élémentaire, sinon le geyser n'apparaît pas ; au lieu d'entrer dans la grotte du boss final, pars vers l'ouest.",
+                "en": "Magically Charged Infusion Sample: charge a +8 Agony Infusion at the Mist Geyser in the Snowblind fractal. ⚠ Don't skip the Elemental Source fight or the geyser won't spawn; instead of entering the final boss cave, head west."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 10,
+              "name": "Aetherblade Secret Handshake Tutorial Book",
+              "how": {
+                "fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.",
+                "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            }
+          ]
+        },
+        "adinf_4": {
+          "id": 2295,
+          "key": "adinf_4",
+          "name": {
+            "fr": "Sac à dos légendaire : Ad Infinitum",
+            "en": "Legendary Backpack: Ad Infinitum"
+          },
+          "total": 13,
+          "note": {
+            "fr": "13 composants, Théorie d'Ad Infinitum comprise. Le vrai mur d'échelle est ici : Complexe souterrain 53, Étherlame 65, Mai Trin chronométré en T4. Craftez Unbound puis parlez à Kelvei pour débloquer.",
+            "en": "13 components, including the Theory of Ad Infinitum. The real scale wall sits here: Underground Facility 53, Aetherblade 65, timed Mai Trin at T4. Craft Unbound then talk to Kelvei to unlock."
+          },
+          "note_alt": {
+            "fr": "13 composants T3/T4 (CM 80% heal réduit : Underground Facility 51+, Aetherblade 51+…). Craftez Unbound puis parlez à Kelvei pour débloquer.",
+            "en": "13 T3/T4 components (80% reduced-healing CMs: Underground Facility 51+, Aetherblade 51+…). Craft Unbound then talk to Kelvei to unlock."
+          },
+          "items": [
+            {
+              "bit": 0,
+              "name": "Aetherblade Pirate Eye Patch",
+              "how": {
+                "fr": "Cache-œil de pirate étherlame : chez BUY-2046 PFR, à l'Observatoire, 50 Reliques fractales immaculées.",
+                "en": "Aetherblade Pirate Eye Patch: from BUY-2046 PFR, in the Mistlock Observatory, 50 Pristine Fractal Relics."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 1,
+              "name": "Aetherblade Airship Steering Wheel",
+              "how": {
+                "fr": "Volant d'aéronef étherlame : chez BUY-4373, 600 Reliques fractales + 80 pa.",
+                "en": "Aetherblade Airship Steering Wheel: from BUY-4373, 600 Fractal Relics + 80 s."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 2,
+              "name": "Underground Facility Challenge Mote",
+              "how": {
+                "fr": "Particule de défi du complexe souterrain : mote activé, Complexe souterrain ÉCHELLE 53, -80 % de soins. ⚠ C'est ici que le palier de fractale redevient bloquant — bien au-dessus de l'échelle 36 exigée en collection II.",
+                "en": "Underground Facility Challenge Mote: mote activated, Underground Facility at SCALE 53, 80% healing reduction. ⚠ This is where fractal scale becomes blocking again — well above the scale 36 required in collection II."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 3,
+              "name": "Aetherblade Challenge Mote",
+              "how": {
+                "fr": "Particule de défi étherlame : mote activé, fractale Étherlame ÉCHELLE 65, -80 % de soins.",
+                "en": "Aetherblade Challenge Mote: mote activated, Aetherblade fractal at SCALE 65, 80% healing reduction."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 4,
+              "name": "Mai Trin Timed Mote",
+              "how": {
+                "fr": "Particule chronométrée de Mai Trin : finir le fractale Capitaine Mai Trin en T4 (échelles 76-100) en moins de 25 minutes. C'est le seul composant qui exige strictement le T4.",
+                "en": "Mai Trin Timed Mote: clear the Captain Mai Trin fractal at T4 (scales 76-100) in under 25 minutes. This is the only component that strictly requires T4."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 5,
+              "name": "Aetherblade Fractal Field Research Paper",
+              "how": {
+                "fr": "Article de recherche sur la fractale étherlame : chez le vendeur du fractale Capitaine Mai Trin, contre 1 Journal fractal (28 Pages de recherche) — le 4e et dernier journal.",
+                "en": "Aetherblade Fractal Field Research Paper: from the vendor in the Captain Mai Trin fractal, for 1 Fractal Journal (28 Research Pages) — the 4th and last journal."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 6,
+              "name": "Jungle Wurm Omelet (Mossman Style)",
+              "how": {
+                "fr": "Omelette de guivre de la jungle (à la Moussu) : tuer la Grande vigne cauchemardesque dans le donjon Tonnelle du crépuscule (premier champion, avant le choix du chemin) → Œuf de guivre de la jungle ; puis le porter à la cabane du Moussu dans le fractale Marécages, accessible par le tunnel de la salle du boss une fois Fleurchasseur tué.",
+                "en": "Jungle Wurm Omelet (Mossman Style): kill the Greater Nightmare Vine in the Twilight Arbor dungeon (first champion, before the path choice) → Jungle Wurm Egg; then bring it to Mossman's hut in the Swampland fractal, reached through the tunnel in the boss room once Bloomhunger is down."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 7,
+              "name": "Charged Archdiviner's Mallet",
+              "how": {
+                "fr": "Massette de l'archidevin chargée : tuer l'Archidevin légendaire dans Flanc de falaise → Massette de l'archidevin ; puis sauter au centre du Réacteur de Thaumanova explosé, en Province de Metrica. ⚠ L'accès à la zone demande une Clé matricielle.",
+                "en": "Charged Archdiviner's Mallet: kill the Legendary Archdiviner in the Cliffside fractal → Archdiviner's Mallet; then jump into the middle of the exploded Thaumanova Reactor in Metrica Province. ⚠ Reaching the area requires a Matrix Key."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 8,
+              "name": "Explosive Magically Charged Infusion Sample",
+              "how": {
+                "fr": "Échantillon d'infusion chargé en magie explosive : charger une infusion d'agonie +10 (artificier 400+ ou HdV) au Geyser des Brumes de Flanc de falaise. Passe la grille de droite en arrivant sur la plateforme du boss final ; elle ne s'ouvre qu'une fois le boss tué.",
+                "en": "Explosive Magically Charged Infusion Sample: charge a +10 Agony Infusion (Artificer 400+ or TP) at the Mist Geyser in the Cliffside fractal. Take the gate on the right as you reach the final boss platform; it only opens once the boss is dead."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 9,
+              "name": "Aetherblade Diploma",
+              "how": {
+                "fr": "Diplôme étherlame : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre. ⚠ Le compte ne tombe pas juste : il en manque 1 après les 9 de Limite supérieure — recycle le Condensateur fractal (infusé) du palier 3 (rend exactement 1 Boule) ou n'importe quel élevé non-anneau.",
+                "en": "Aetherblade Diploma: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy. ⚠ The maths doesn't quite work out: you're 1 short after the 9 from Upper Bound — salvage the tier 3 Fractal Capacitor (Infused) (yields exactly 1 Ball) or any non-ring ascended item."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 10,
+              "name": "Lessons in Arbology",
+              "how": {
+                "fr": "Leçon d'arboriculture : crafter un Don de bois (250 planches de bois vieilli + 250 dur + 250 de sapin + 250 ancien ; recette chez Miyani, chasseur 400), l'avoir dans l'inventaire, finir le Champ de bataille urbain (Capitaine Ashym, n'importe quel palier) puis remettre le Don au Bûcheron ascalonien vétéran, dans le bâtiment qui s'ouvre en fin de fractale. ⚠ Le Don est consommé et non récupérable.",
+                "en": "Lessons in Arbology: craft a Gift of Wood (250 Seasoned + 250 Hard + 250 Elder + 250 Ancient Wood Planks; recipe from Miyani, Huntsman 400), keep it in your inventory, clear the Urban Battleground fractal (Captain Ashym, any tier) then hand the Gift to the Veteran Ascalonian Woodcutter in the building that opens at the end. ⚠ The Gift is consumed and cannot be recovered."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 11,
+              "name": "Lessons in Metallurgy",
+              "how": {
+                "fr": "Leçon de métallurgie : crafter un Don de métal (250 lingots d'orichalque + 250 de mithril + 250 d'acier sombre + 250 de platine ; recette chez Miyani, forgeron d'armes 400), finir la fractale Fournaise en fusion, puis utiliser le Don sur l'Établi de l'armurier taupard — porte latérale de la salle du boss.",
+                "en": "Lessons in Metallurgy: craft a Gift of Metal (250 Orichalcum + 250 Mithril + 250 Darksteel + 250 Platinum Ingots; recipe from Miyani, Weaponsmith 400), clear the Molten Furnace fractal, then use the Gift on the Dredge Weaponsmith's Workbench — side door of the boss room."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 12,
+              "name": "Theory of Ad Infinitum",
+              "how": {
+                "fr": "Théorie d'Ad Infinitum : l'item de déblocage compte lui-même comme 13e composant. Kelvei ne le donne qu'après avoir FABRIQUÉ Sans limite — terminer Ad Infinitum III ne suffit pas. Il se coche donc dès l'ouverture de la collection : tu démarres à 1/13.",
+                "en": "Theory of Ad Infinitum: the unlock item itself counts as the 13th component. Kelvei only hands it over after you have CRAFTED Unbound — completing Ad Infinitum III is not enough. It therefore ticks as soon as the collection opens: you start at 1/13."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            }
+          ]
+        }
+      }
     },
     "endless_summer": {
       "name": "Endless Summer",
@@ -27494,7 +27979,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
       )}
 
       {/* Collections / succès — progression API (masqué si l'onglet Collections à bits existe) */}
-      {(T.achievements ?? []).length > 0 && !(typeof LEGENDARIES !== "undefined" && LEGENDARIES[curKey]?.raidAchievements) && (
+      {(T.achievements ?? []).length > 0 && !(typeof LEGENDARIES !== "undefined" && LEGENDARIES[curKey]?.raidAchievements) && !T.collections && (
         <>
           <div className="section-label">{NX({ fr: "Collections & succès", en: "Collections & achievements" })}</div>
           {T.achievements.map((a) => {
@@ -28882,20 +29367,6 @@ const LEGENDARIES = {
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
     },
-    raidAchievements: [
-      { key: "adinf_1", achievementId: 2351,
-        bitTips: {"0": {"fr": "Défenseur d'Ascalon : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 20 Reliques fractales immaculées.", "en": "Defender of Ascalon: from BUY-2046 PFR, in the Mistlock Observatory, 20 Pristine Fractal Relics."}, "1": {"fr": "Charr-Nip : chez BUY-4373, à l'Observatoire, 100 Reliques fractales + 80 pa.", "en": "Charr-Nip: from BUY-4373, in the Mistlock Observatory, 100 Fractal Relics + 80 s."}, "2": {"fr": "Mote de défi Marécages : activer le mote et finir le fractale Marécages ÉCHELLE 1-20, avec -80 % de soins. Accessible dès maintenant à ton niveau.", "en": "Swampland Challenge Mote: activate the mote and clear the Swampland fractal at SCALE 1-20, with an 80% healing reduction. Reachable at your current level."}, "3": {"fr": "Mote de défi Ruines aquatiques : même principe, échelle 1-20, -80 % de soins. ⚠ Bug connu : les deux motes sont donnés par le COFFRE final, pense à le looter.", "en": "Aquatic Ruin Challenge Mote: same principle, scale 1-20, 80% healing reduction. ⚠ Known bug: both motes come from the final CHEST, remember to loot it."}, "4": {"fr": "Mote chronométré Kraken de jade : battre la Gueule de jade en moins de 5 minutes, fractale Océan solide échelle 20.", "en": "Jade Kraken Timed Mote: beat the Jade Maw in under 5 minutes, Solid Ocean fractal at scale 20."}, "5": {"fr": "Rapport de recherche ascalonien : chez le Chercheur du Champ de bataille urbain, DANS le fractale, contre un Journal fractal (28 Pages de recherche).", "en": "Ascalonian Fractal Field Research Paper: from the Urban Battlegrounds Field Researcher, INSIDE the fractal, for a Fractal Journal (28 Research Pages)."}, "6": {"fr": "Cœur gelé brûlant : récupérer un Cœur d'élémentaire de glace gigantesque sur le Chef chaman svanir (boss de monde, Contreforts du Voyageur), puis l'imprégner dans le Magma bouillant en fin de fractale Volcanique.", "en": "Burning Frozen Core: get a Gigantic Ice Elemental Core from the Champion Svanir Shaman Chief (world boss, Wayfarer Foothills), then imbue it in the Boiling-Hot Magma at the end of the Volcanic fractal."}, "7": {"fr": "Amas de mousse chargé : ramasser l'Amas de mousse en finissant le fractale Marécages, puis le charger au Réservoir d'énergie de l'Opticalium, en Province de Metrica.", "en": "Charged Clump of Swamp Moss: pick up the Clump of Swamp Moss by clearing the Swampland fractal, then charge it in the Energy Storage Tank at the Opticalium, in Metrica Province."}, "8": {"fr": "Condensateur fractal prototype : chez BUY-4373, 1 350 Reliques fractales. ⚠ NE LE RECYCLE PAS : il doit être conservé et amélioré pour Ad Infinitum II. La chaîne complète consomme 4 Dons d\u2019ascension (500 reliques + 25 immaculées + 20 po chacun) : montée en Élevé, en Bêta infusé, en Condensateur fractal infusé, puis la recette finale. 💡 Le Reliquaire fractal propose le Don à 25 reliques au lieu de 500, environ un jour sur sept — consulte-le quotidiennement, quatre passages te feraient économiser 1 900 reliques. Il s\u2019obtient par le succès « Recyclage élevé » : 6 objets puissants issus du recyclage d\u2019élevé, exactement les recyclages qui te fournissent les Boules d\u2019énergie sombre.", "en": "Prototype Fractal Capacitor: from BUY-4373, 1,350 Fractal Relics. ⚠ DO NOT SALVAGE IT: it must be kept and upgraded for Ad Infinitum II. The full chain consumes 4 Gifts of Ascension (500 relics + 25 pristine + 20 g each): upgrade to Ascended, to Beta Infused, to Fractal Capacitor (Infused), then the final recipe. 💡 The Fractal Reliquary offers the Gift for 25 relics instead of 500, roughly one day in seven — check it daily; four hits would save 1,900 relics. It comes from the 'Ascended Recycling' achievement: 6 powerful items from salvaging ascended gear, the very salvages that give you Balls of Dark Energy."}, "9": {"fr": "Échantillon d'infusion instable : charger une infusion d'agonie +4 au Geyser des Brumes, en fin de fractale Marécages.", "en": "Unstable Magically Charged Infusion Sample: charge a +4 Agony Infusion at the Mist Geyser, at the end of the Swampland fractal."}, "10": {"fr": "Formulaire de recrutement aetherblade : chez le Quartier-maître aetherblade, dans le fractale Capitaine Mai Trin, contre 1 Boule d'énergie sombre (recyclage d'élevé). ⚠ Aucune progression requise dans le fractale : le vendeur est dans une cabane accessible par le chemin derrière le départ.", "en": "Aetherblade Recruitment Form: from the Aetherblade Quartermaster, in the Captain Mai Trin fractal, for 1 Ball of Dark Energy (salvaged from ascended gear). ⚠ No progress needed in the fractal: the vendor sits in a cabin reached by the path behind the start."}},
-        tip: { fr: "11 composants fractales. Kelvei (Mistlock Observatory) donne « Theory of… » pour débloquer. Fractal Journal = 28 Research Pages (timegate).", en: "11 fractal components. Kelvei (Mistlock Observatory) hands 'Theory of…' to unlock. Fractal Journal = 28 Research Pages (timegated)." } },
-      { key: "adinf_2", achievementId: 2557,
-        bitTips: {"0": {"fr": "Foreuse spirale des taupards : chez BUY-2046 PFR, à l'Observatoire, 30 Reliques fractales immaculées.", "en": "Dredge Spiral Drill: from BUY-2046 PFR, in the Mistlock Observatory, 30 Pristine Fractal Relics."}, "1": {"fr": "Boule de feu en fusion : chez BUY-4373, à l'Observatoire, 200 Reliques fractales + 80 pa.", "en": "Glob of Molten Fire: from BUY-4373, in the Mistlock Observatory, 200 Fractal Relics + 80 s."}, "2": {"fr": "Mote de défi Non répertorié : ⚠ ÉCHELLE 36, avec -80 % de soins. C'est ici que ton niveau fractale devient bloquant — il faut avoir débloqué l'échelle 36.", "en": "Uncategorized Challenge Mote: ⚠ SCALE 36, with an 80% healing reduction. This is where your fractal level starts to block - you need scale 36 unlocked."}, "3": {"fr": "Mote de défi Aveugle-neige : échelle 27, -80 % de soins.", "en": "Snowblind Challenge Mote: scale 27, 80% healing reduction."}, "4": {"fr": "Mote chronométré Réacteur Thaumanova : échelle 15, à finir en moins de 20 minutes. Large, aucune course.", "en": "Thaumanova Reactor Timed Mote: scale 15, to be cleared in under 20 minutes. Generous, no rush needed."}, "5": {"fr": "Rapport de recherche Alliance en fusion : contre 1 Journal fractal (28 Pages), auprès du Chercheur de la Fournaise en fusion, sur un chemin OPTIONNEL après le fractale Boss en fusion. Ne quitte pas l'instance trop vite.", "en": "Molten Alliance Field Research Paper: for 1 Fractal Journal (28 Pages), from the Molten Furnace Field Researcher, on an OPTIONAL path after the Molten Boss fractal. Don't leave the instance too quickly."}, "6": {"fr": "Croc de Gueule de jade : récupérer une Vrille de Colèreronce au coffre du Courroux de la vigne (Terres sauvages d'argent), puis l'échanger auprès du Chercheur de jade gelé, en fin de fractale Océan solide.", "en": "Jade Maw Fang: get a Vinewrath Tendril from the Vinewrath Chest (Silverwastes), then trade it with the Frozen Jade Researcher at the end of the Solid Ocean fractal."}, "7": {"fr": "Cœur d'élémentaire de glace pollinisé : Cœur pris sur le Chaman légendaire Lornarr (fractale Aveugle-neige), puis imprégné d'un Nuage de pollen pendant la Brèche, aux Terres sauvages d'argent. ⚠ Récupère le Cœur AVANT de lancer la méta, sinon c'est deux métas au lieu d'une.", "en": "Pollenated Ice Elemental Core: Core taken from Legendary Shaman Lornarr (Snowblind fractal), then imbued with a Luminescent Pollen Cloud during The Breach, in the Silverwastes. ⚠ Get the Core BEFORE starting the meta, otherwise it's two metas instead of one."}, "8": {"fr": "Condensateur fractal bêta (infusé) : c'est ici que sert le Condensateur prototype gardé en collection I. Forge mystique deux fois — d'abord en Élevé (Fiole d'essence des Brumes + Don d'Ascension + 40 Cristaux mystiques ou 240 Pierres philosophales), puis en Bêta infusé (Boule d'essence coagulée + Don d'Ascension + 250 ectoplasmes). Débloqué d'office si tu possèdes déjà un palier supérieur.", "en": "Beta Fractal Capacitor (Infused): this is where the Prototype Capacitor kept from collection I is used. Mystic Forge twice - first to Ascended (Vial of Condensed Mists Essence + Gift of Ascension + 40 Mystic Crystals or 240 Philosopher's Stones), then to Beta Infused (Glob of Coagulated Mists Essence + Gift of Ascension + 250 ectoplasm). Auto-unlocked if you already own a higher tier."}, "9": {"fr": "Échantillon d'infusion faible : charger une infusion d'agonie +6 au Geyser des Brumes, dans le fractale Fournaise en fusion.", "en": "Weak Magically Charged Infusion Sample: charge a +6 Agony Infusion at the Mist Geyser, in the Molten Furnace fractal."}, "10": {"fr": "Manuel aetherblade : chez le Quartier-maître aetherblade (fractale Mai Trin), 2 Boules d'énergie sombre. Recycler Limite finie en rend 5 : 2 pour ce manuel, 2 pour fabriquer Limite supérieure. Aucun achat nécessaire.", "en": "Aetherblade Handbook: from the Aetherblade Quartermaster (Mai Trin fractal), 2 Balls of Dark Energy. Salvaging Finite Result yields 5: 2 for this handbook, 2 to craft Upper Bound. No purchase needed."}},
-        tip: { fr: "Recycler Finite Result → 5 Balls of Dark Energy (2 pour l'Aetherblade Handbook, 2 pour forger Upper Bound). Ice Elemental Core AVANT le méta Silverwastes.", en: "Salvage Finite Result → 5 Balls of Dark Energy (2 for the Aetherblade Handbook, 2 to craft Upper Bound). Grab the Ice Elemental Core BEFORE the Silverwastes meta." } },
-      { key: "adinf_3", achievementId: 2368,
-        bitTips: {"0": {"fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 40 Reliques fractales immaculées.", "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."}, "1": {"fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.", "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."}, "2": {"fr": "Particule de défi volcanique : activer le mote et finir la fractale Volcanique ÉCHELLE 28, avec -80 % de soins.", "en": "Volcanic Challenge Mote: activate the mote and clear the Volcanic fractal at SCALE 28, with an 80% healing reduction."}, "3": {"fr": "Particule de défi de Flanc de falaise : mote activé, Flanc de falaise ÉCHELLE 46, -80 % de soins. La description de l'objet annonce le palier core (21-50), mais la fractale ne tourne qu'aux échelles 6, 46, 68 et 94 : une seule tombe dans l'intervalle.", "en": "Cliffside Challenge Mote: mote activated, Cliffside at SCALE 46, 80% healing reduction. The item description says core tier (21-50), but the fractal only runs at scales 6, 46, 68 and 94: only one falls in range."}, "4": {"fr": "Particule de défi du boss de la Fusion : finir la fractale Boss en fusion ÉCHELLE 10 en moins de 5 minutes.", "en": "Molten Boss Timed Mote: clear the Molten Boss fractal at SCALE 10 in under 5 minutes."}, "5": {"fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.", "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."}, "6": {"fr": "Rapport de bug du Gros Tom (Il est mort) : interagir avec les Restes du golem d'essai de Vexa, dans le puzzle de saut du Labo de Vexa (Rive d'Ardentcœur), sur la plateforme au sud-est → tu reçois le Lecteur de diagnostic. Ni Vexa ni son golem n'ont besoin d'être tués. Ensuite, analyser les restes du Gros Tom en fin de fractale Non répertorié.", "en": "Old Tom's Vital Reading (He's Dead): interact with Vexa's Test-Golem Remains in the Vexa's Lab jumping puzzle (Fireheart Rise), on the platform to the southeast → you get Vexa's Golem Diagnostic Reader. Neither Vexa nor her golem needs to be killed. Then analyse Old Tom's remains at the end of the Uncategorized fractal."}, "7": {"fr": "Trésor perdu de Rabsovich : tuer le champion Rabsovich dans le Complexe souterrain → Clé du casier ; puis ouvrir le Casier de Rabsovich au sud-ouest des Falaises de Bourreloup, zone d'excavation Dociu [&BFgCAAA=].", "en": "Rabsovich's Lost Treasure: kill Champion Rabsovich in the Underground Facility fractal → Rabsovich's Locker Key; then open Rabsovich's Locker southwest of Dredgehaunt Cliffs, Dociu Excavation area [&BFgCAAA=]."}, "8": {"fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).", "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."}, "9": {"fr": "Échantillon d'infusion chargé en magie : charger une infusion d'agonie +8 au Geyser des Brumes d'Aveugle-neige. ⚠ Ne saute pas le combat de la Source élémentaire, sinon le geyser n'apparaît pas ; au lieu d'entrer dans la grotte du boss final, pars vers l'ouest.", "en": "Magically Charged Infusion Sample: charge a +8 Agony Infusion at the Mist Geyser in the Snowblind fractal. ⚠ Don't skip the Elemental Source fight or the geyser won't spawn; instead of entering the final boss cave, head west."}, "10": {"fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.", "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."}},
-        tip: { fr: "Recycler Upper Bound → 9 Balls (3 Handshake Book, 5 pour forger Unbound). Récompense : précurseur Unbound — NE PAS recycler.", en: "Salvage Upper Bound → 9 Balls (3 Handshake Book, 5 to craft Unbound). Reward: Unbound precursor — DO NOT salvage." } },
-      { key: "adinf_4", achievementId: 2295,
-        bitTips: {"0": {"fr": "Cache-œil de pirate étherlame : chez BUY-2046 PFR, à l'Observatoire, 50 Reliques fractales immaculées.", "en": "Aetherblade Pirate Eye Patch: from BUY-2046 PFR, in the Mistlock Observatory, 50 Pristine Fractal Relics."}, "1": {"fr": "Volant d'aéronef étherlame : chez BUY-4373, 600 Reliques fractales + 80 pa.", "en": "Aetherblade Airship Steering Wheel: from BUY-4373, 600 Fractal Relics + 80 s."}, "2": {"fr": "Particule de défi du complexe souterrain : mote activé, Complexe souterrain ÉCHELLE 53, -80 % de soins. ⚠ C'est ici que le palier de fractale redevient bloquant — bien au-dessus de l'échelle 36 exigée en collection II.", "en": "Underground Facility Challenge Mote: mote activated, Underground Facility at SCALE 53, 80% healing reduction. ⚠ This is where fractal scale becomes blocking again — well above the scale 36 required in collection II."}, "3": {"fr": "Particule de défi étherlame : mote activé, fractale Étherlame ÉCHELLE 65, -80 % de soins.", "en": "Aetherblade Challenge Mote: mote activated, Aetherblade fractal at SCALE 65, 80% healing reduction."}, "4": {"fr": "Particule chronométrée de Mai Trin : finir le fractale Capitaine Mai Trin en T4 (échelles 76-100) en moins de 25 minutes. C'est le seul composant qui exige strictement le T4.", "en": "Mai Trin Timed Mote: clear the Captain Mai Trin fractal at T4 (scales 76-100) in under 25 minutes. This is the only component that strictly requires T4."}, "5": {"fr": "Article de recherche sur la fractale étherlame : chez le vendeur du fractale Capitaine Mai Trin, contre 1 Journal fractal (28 Pages de recherche) — le 4e et dernier journal.", "en": "Aetherblade Fractal Field Research Paper: from the vendor in the Captain Mai Trin fractal, for 1 Fractal Journal (28 Research Pages) — the 4th and last journal."}, "6": {"fr": "Omelette de guivre de la jungle (à la Moussu) : tuer la Grande vigne cauchemardesque dans le donjon Tonnelle du crépuscule (premier champion, avant le choix du chemin) → Œuf de guivre de la jungle ; puis le porter à la cabane du Moussu dans le fractale Marécages, accessible par le tunnel de la salle du boss une fois Fleurchasseur tué.", "en": "Jungle Wurm Omelet (Mossman Style): kill the Greater Nightmare Vine in the Twilight Arbor dungeon (first champion, before the path choice) → Jungle Wurm Egg; then bring it to Mossman's hut in the Swampland fractal, reached through the tunnel in the boss room once Bloomhunger is down."}, "7": {"fr": "Massette de l'archidevin chargée : tuer l'Archidevin légendaire dans Flanc de falaise → Massette de l'archidevin ; puis sauter au centre du Réacteur de Thaumanova explosé, en Province de Metrica. ⚠ L'accès à la zone demande une Clé matricielle.", "en": "Charged Archdiviner's Mallet: kill the Legendary Archdiviner in the Cliffside fractal → Archdiviner's Mallet; then jump into the middle of the exploded Thaumanova Reactor in Metrica Province. ⚠ Reaching the area requires a Matrix Key."}, "8": {"fr": "Échantillon d'infusion chargé en magie explosive : charger une infusion d'agonie +10 (artificier 400+ ou HdV) au Geyser des Brumes de Flanc de falaise. Passe la grille de droite en arrivant sur la plateforme du boss final ; elle ne s'ouvre qu'une fois le boss tué.", "en": "Explosive Magically Charged Infusion Sample: charge a +10 Agony Infusion (Artificer 400+ or TP) at the Mist Geyser in the Cliffside fractal. Take the gate on the right as you reach the final boss platform; it only opens once the boss is dead."}, "9": {"fr": "Diplôme étherlame : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre. ⚠ Le compte ne tombe pas juste : il en manque 1 après les 9 de Limite supérieure — recycle le Condensateur fractal (infusé) du palier 3 (rend exactement 1 Boule) ou n'importe quel élevé non-anneau.", "en": "Aetherblade Diploma: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy. ⚠ The maths doesn't quite work out: you're 1 short after the 9 from Upper Bound — salvage the tier 3 Fractal Capacitor (Infused) (yields exactly 1 Ball) or any non-ring ascended item."}, "10": {"fr": "Leçon d'arboriculture : crafter un Don de bois (250 planches de bois vieilli + 250 dur + 250 de sapin + 250 ancien ; recette chez Miyani, chasseur 400), l'avoir dans l'inventaire, finir le Champ de bataille urbain (Capitaine Ashym, n'importe quel palier) puis remettre le Don au Bûcheron ascalonien vétéran, dans le bâtiment qui s'ouvre en fin de fractale. ⚠ Le Don est consommé et non récupérable.", "en": "Lessons in Arbology: craft a Gift of Wood (250 Seasoned + 250 Hard + 250 Elder + 250 Ancient Wood Planks; recipe from Miyani, Huntsman 400), keep it in your inventory, clear the Urban Battleground fractal (Captain Ashym, any tier) then hand the Gift to the Veteran Ascalonian Woodcutter in the building that opens at the end. ⚠ The Gift is consumed and cannot be recovered."}, "11": {"fr": "Leçon de métallurgie : crafter un Don de métal (250 lingots d'orichalque + 250 de mithril + 250 d'acier sombre + 250 de platine ; recette chez Miyani, forgeron d'armes 400), finir la fractale Fournaise en fusion, puis utiliser le Don sur l'Établi de l'armurier taupard — porte latérale de la salle du boss.", "en": "Lessons in Metallurgy: craft a Gift of Metal (250 Orichalcum + 250 Mithril + 250 Darksteel + 250 Platinum Ingots; recipe from Miyani, Weaponsmith 400), clear the Molten Furnace fractal, then use the Gift on the Dredge Weaponsmith's Workbench — side door of the boss room."}, "12": {"fr": "Théorie d'Ad Infinitum : l'item de déblocage compte lui-même comme 13e composant. Kelvei ne le donne qu'après avoir FABRIQUÉ Sans limite — terminer Ad Infinitum III ne suffit pas. Il se coche donc dès l'ouverture de la collection : tu démarres à 1/13.", "en": "Theory of Ad Infinitum: the unlock item itself counts as the 13th component. Kelvei only hands it over after you have CRAFTED Unbound — completing Ad Infinitum III is not enough. It therefore ticks as soon as the collection opens: you start at 1/13."}},
-        tip: { fr: "13 composants, Théorie d'Ad Infinitum comprise. Le vrai mur d'échelle est ici : Complexe souterrain 53, Étherlame 65, Mai Trin chronométré en T4. Craftez Unbound puis parlez à Kelvei pour débloquer.", en: "13 components, including the Theory of Ad Infinitum. The real scale wall sits here: Underground Facility 53, Aetherblade 65, timed Mai Trin at T4. Craft Unbound then talk to Kelvei to unlock." } },
-    ],
     metas: [
       { id: "adinf_dailies", name: { fr: "Dailies fractales recommandées", en: "Recommended fractal dailies" }, subname: { fr: "~3 Research Pages/jour", en: "~3 Research Pages/day" }, expansion: "Core", icon: "FD",
         isTimeless: true,

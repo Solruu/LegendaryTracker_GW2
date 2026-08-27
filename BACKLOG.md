@@ -545,7 +545,36 @@ tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
 
 **Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).
 
-## Migration achievements[] → collections{} — décidée, en cours
+## Migration vers collections{} — Ad Infinitum validé, 10 restants
+
+**Ad Infinitum migré le 27/08/2026**, forme validée avant de généraliser :
+4 collections, **46 étapes nommées, 46 `how`**, totaux comptés sur les bits du
+dump au lieu d'être écrits à la main.
+
+Les trois structures ont fusionné en une :
+`raidAchievements[]` du JSX a donné les `bitTips` par étape, `achievements[]`
+des sources la note et l'identifiant, le dump les noms d'étapes.
+
+**Marquage** : les 46 `how` portent `how_verified: false` et un `how_ref` disant
+d'où ils viennent. Ce sont des conseils éditoriaux repris tels quels, pas des
+instructions revérifiées étape par étape.
+
+**Divergence conservée** : la note d'`adinf_4` différait entre le JSX et les
+sources. La version JSX chiffre les murs d'échelle (Complexe souterrain 53,
+Étherlame 65, Mai Trin en T4), elle est retenue ; l'autre passe en `note_alt`
+plutôt que d'être perdue. `note_alt` n'est pas encore rendu — un avertissement
+d'audit le signale.
+
+**JSX** : le bloc `raidAchievements` d'Ad Infinitum est supprimé, et la garde du
+bloc « Collections & succès » masque désormais aussi quand `T.collections`
+existe — sans quoi Ad Infinitum aurait affiché les deux chemins.
+
+**Restent 10 légendaires** : Vision, Aurora, Coalescence, Selachimorpha, Eikasia,
+Upgrades, Perfected Envoy, Endless Summer, Stella Radians, Orrax Manifested,
+Strife Unending — moins Vision et Aurora qui ont déjà `collections{}` et
+demandent une fusion plutôt qu'une création.
+
+## (ancien) Migration achievements[] → collections{} — décidée, en cours
 
 **Décision d'Antoine le 27/08/2026, option B** : une seule source de vérité. Les
 onze légendaires qui décrivent leurs collections en `legendaries[].achievements[]`
