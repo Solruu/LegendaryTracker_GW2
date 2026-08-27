@@ -14,8 +14,7 @@ que le parseur a laissé tomber.
 - Pas de suffixe de version : ces fichiers sont des captures datées, pas des
   livrables. Une nouvelle capture **remplace** l'ancienne et la date change
   ci-dessous. L'historique git conserve la précédente.
-- Poids : 18 Mo bruts pour les 20 premières captures, **~570 Ko une fois
-  compressées par git**. Le HTML se comprime à 3 %. Aucune raison de trier.
+- Poids : le HTML se comprime à 3 %. Aucune raison de trier ni d'élaguer.
 
 ## Portée des captures
 
@@ -33,6 +32,8 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | `ancient_bone__dropped_by.html` | Ancient Bone | section « Dropped by », 120 NPC | 2026-08-27 |
 | `armored_scale__dropped_by.html` | Armored Scale | section « Dropped by », 90 NPC | 2026-08-27 |
 | `elaborate_totem__dropped_by.html` | Elaborate Totem | section « Dropped by », 56 NPC | 2026-08-27 |
+| `pile_of_crystalline_dust__dropped_by.html` | Pile of Crystalline Dust | section « Dropped by », 143 NPC | 2026-08-27 |
+| `powerful_venom_sac__dropped_by.html` | Powerful Venom Sac | section « Dropped by », 120 NPC | 2026-08-27 |
 | `ancient_coin.html` | Ancient Coin | article complet | 2026-08-27 |
 | `ascended_shard_of_glory.html` | Ascended Shard of Glory | article complet | 2026-08-27 |
 | `charged_lodestone.html` | Charged Lodestone | article complet | 2026-08-27 |
@@ -45,6 +46,22 @@ Deux profondeurs coexistent, à connaître avant de parser :
 | `destroyer_lodestone.html` | Destroyer Lodestone | article complet | 2026-08-27 |
 | `evergreen_lodestone.html` | Evergreen Lodestone | article complet | 2026-08-27 |
 | `glacial_lodestone.html` | Glacial Lodestone | article complet | 2026-08-27 |
+| `lodestone.html` | Lodestone | article complet — page générique des orbes | 2026-08-27 |
+| `mists_gate_residue.html` | Mists Gate Residue | article complet | 2026-08-27 |
+| `molten_lodestone.html` | Molten Lodestone | article complet | 2026-08-27 |
+| `mordrem_lodestone.html` | Mordrem Lodestone | article complet | 2026-08-27 |
+| `mursaat_obsidian_chunk.html` | Mursaat Obsidian Chunk | article complet | 2026-08-27 |
+| `mursaat_runestone.html` | Mursaat Runestone | article complet | 2026-08-27 |
+| `neutralized_titan_alloy.html` | Neutralized Titan Alloy | article complet | 2026-08-27 |
+| `onyx_lodestone.html` | Onyx Lodestone | article complet | 2026-08-27 |
+| `raw_enchanting_stone.html` | Raw Enchanting Stone | article complet | 2026-08-27 |
+| `seer_runestone.html` | Seer Runestone | article complet | 2026-08-27 |
+| `shadowstone_fragment.html` | Shadowstone Fragment | article complet | 2026-08-27 |
+| `shard_of_bava_nisos.html` | Shard of Bava Nisos | article complet | 2026-08-27 |
+| `shard_of_janthir_syntri.html` | Shard of Janthir Syntri | article complet | 2026-08-27 |
+| `shard_of_lowland_shore.html` | Shard of Lowland Shore | article complet | 2026-08-27 |
+| `shard_of_mistburned_barrens.html` | Shard of Mistburned Barrens | article complet | 2026-08-27 |
+| `shard_of_the_homestead.html` | Shard of the Homestead | article complet | 2026-08-27 |
 
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
@@ -59,9 +76,10 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 | `conflux.html` | Conflux, arbre complet | 2026-08-27 |
 | `endless_summer.html` | Endless Summer | 2026-08-27 |
 | `klobjarne_geirr.html` | Klobjarne Geirr | 2026-08-27 |
+| `orrax_manifested.html` | Orrax Manifested | 2026-08-27 |
+| `selachimorpha.html` | Selachimorpha, conteneur | 2026-08-27 |
 
 ## Manquent encore
 
-Pour finir l'affinage des foyers de farm T6, cinq tableaux « Dropped by » :
-`pile_of_crystalline_dust`, `powerful_venom_sac`, `vial_of_powerful_blood`,
-`vicious_claw`, `vicious_fang`.
+Pour finir l'affinage des foyers de farm T6, trois tableaux « Dropped by » :
+`vial_of_powerful_blood`, `vicious_claw`, `vicious_fang`.
