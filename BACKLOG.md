@@ -424,12 +424,28 @@ réapparaît. `_meta.common_required_scope` garde l'historique et la règle : si
 exigence manque à l'affichage, c'est un maillon absent de la chaîne — à ajouter
 là, jamais dans une table à côté.
 
-### Reste : les six écarts positifs à instruire sur leurs arbres
+### Les six écarts — ✅ **INSTRUITS le 27/08/2026, les six valeurs sont justes**
 
-Ad Infinitum ectos (1 039) et obsidienne (339), Selachimorpha obsidienne (488),
-Endless Summer obsidienne (283), Orrax trèfles (68), Vision obsidienne (421).
-Tous les arbres sont versés dans `ressources/gw2efficiency/`. Ces nombres sont
-désormais ce que le tracker affiche : les valider, c'est valider l'affichage.
+Décomposition sur les arbres versés. **Aucune donnée n'a changé** : `qty` avait
+raison partout, c'est l'ancienne table qui se trompait.
+
+| légendaire | matériau | total | décomposition |
+|---|---|---|---|
+| Ad Infinitum | ectos | 1 039 | 250 Beta Fractal Capacitor + 250 Fractal Capacitor + 25 Unbound Wings + 10 Bound Wings + 5 Mithrillium + 249 trèfles + 250 Gift of Fortune |
+| Ad Infinitum | obsidienne | 339 | 90 (Dragonite, Empyreal, Bloodstone) + 249 trèfles |
+| Selachimorpha | obsidienne | 488 | 60 + 178 trèfles + 250 Gift of Castoran Mastery |
+| Endless Summer | obsidienne | 283 | 250 Gift of Infused Gems + 33 trèfles |
+| Orrax Manifested | trèfles | 68 | 30 Gift of the Side Course + 38 Draconic Tribute |
+| Vision | obsidienne | 421 | 249 trèfles + 100 Fulgurite + 72 |
+
+**Orrax est le cas le plus parlant** : l'ancienne table annonçait 38 trèfles, en
+ne comptant que le Tribut draconique. Elle ignorait purement et simplement la
+branche du Gift of the Side Course, soit 30 trèfles — près de la moitié.
+
+**Coût unitaire du trèfle, recoupé sur cinq arbres** : environ **3,23** pièces,
+ectoplasmes et obsidiennes par trèfle. 77 → 249, 55 → 178, 38 → 123, 30 → 97,
+10 → 33. Le rapport tient partout à l'arrondi près. Documenté dans
+`_meta.common_required_scope` pour servir de recoupement rapide.
 
 ## Vision — chaîne complétée le 27/08/2026, `common_required` reste à revoir
 
