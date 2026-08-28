@@ -702,3 +702,55 @@ alignées sur les sources, toutes vérifiées sur les arbres.
 
 **Ursus Oblige affichait 300 pour 1 250 réellement nécessaires** — un facteur
 quatre sur la ressource principale d'Orrax.
+
+## Doubles comptes — 1 sur 3 tranché le 27/08/2026
+
+### ✅ Fragment de pierre de sang — corrigé
+
+Aurora, Vision et Coalescence portaient **1 à plat** en plus du Don de maîtrise
+qui l'exige déjà : total de **2 pour 1 requis**. L'arbre est net — Vision
+`1 <- Gift of Arid Mastery`, Coalescence `1 <- Gift of Desert Mastery`, aucun
+nœud direct. Les trois totaux à plat sont retirés, la chaîne suffit.
+
+### ⏳ Ball of Dark Energy et Stabilizing Matrix — non tranchés, faute de source
+
+Les deux portent une exigence **à plat sur `obsidian__per_piece`** ET une
+exigence **via `cube_stabilized_dark_energy`**, qui lui-même vaut 1 par pièce :
+
+| composant | à plat / pièce | via le cube | total calculé |
+|---|---|---|---|
+| Ball of Dark Energy | 1 | 1 × 1 | **2** |
+| Stabilizing Matrix | 75 | 1 × 75 | **150** |
+
+**Deux lectures possibles, et je ne peux pas choisir** : soit la pièce exige un
+cube *et* des matrices en plus — auquel cas les totaux sont bons —, soit les
+matrices sont consommées *par* le cube et sont comptées deux fois.
+
+**Ce qu'il faudrait** : l'arbre GW2Efficiency de l'armure d'obsidienne, absent de
+`ressources/gw2efficiency/`. Un seul export réglerait la question.
+
+## Jeton de fournisseur : 450 contre 600
+
+Troisième table parallèle, dernière du genre : le bloc `currencies` du JSX
+déclare **450** pour `upgrades` (apiId 29), la chaîne en calcule **600**
+(6 runes × 50 + 6 sigils × 50, d'après la prose des deux collections).
+
+Ni l'un ni l'autre n'est sourcé. Le 600 vient de ma lecture de la prose, le 450
+d'une saisie plus ancienne. **À vérifier en jeu avant d'aligner quoi que ce
+soit** — aligner sur un nombre non vérifié ne ferait que figer une erreur.
+
+## Collections des armes gen1/gen2/gen3 — méthode établie, non appliquée
+
+**53 armes, aucune collection.** Le dump couvre 104 succès « Legendary Weapons »,
+mais le rapprochement automatique par nom n'en atteint que **24 sur 53**.
+
+Les 29 restantes échouent pour des raisons distinctes :
+- **Eternity** n'a pas de collection propre — elle se forge depuis Sunrise et
+  Twilight.
+- Les **gen3 (Aurene's …)** n'ont pas de collection de précurseur du tout.
+- Plusieurs gen2 — Tigris, Caladbolg, Eureka, Xiuquatl — portent des noms de
+  collection qui ne commencent pas par le nom de l'arme.
+
+**Ne pas appliquer le rapprochement automatique en l'état** : 45 % d'échec, et
+un rapprochement par nom qui se trompe crée des collections attribuées à la
+mauvaise arme. Il faut une table de correspondance explicite, arme par arme.
