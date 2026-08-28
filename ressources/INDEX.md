@@ -116,6 +116,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-08-27 |
 | `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-08-27 |
 | `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-08-27 |
+| `acquiring_agaleus.html` | Acquiring Agaleus | collection, 24 objets | 2026-08-27 |
+| `astral_purification.html` | Astral Purification | collection, 15 objets | 2026-08-27 |
+| `radiance_of_the_sun_god.html` | Radiance of the Sun God | collection, 20 objets | 2026-08-27 |
+| `the_convergence_of_sorrow_i_elegy.html` | The Convergence of Sorrow I: Elegy | collection, 20 objets | 2026-08-27 |
+| `unknown_nightmares_gift_of_the_feast.html` | Unknown Nightmares: Gift of the Feast | collection, 18 objets | 2026-08-27 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -170,7 +175,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **86 captures, 86 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **91 captures, 91 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

@@ -935,7 +935,8 @@
   "changelog_v175": "Trois doubles comptes signales de longue date par l'audit sont tranches sur les arbres. Le Fragment de pierre de sang etait compte deux fois sur Aurora, Vision et Coalescence : une fois a plat sur le legendaire, une fois par le Don de maitrise qui l'exige. L'arbre est net — Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery, aucun noeud direct. Les trois affichaient 2 pour 1 requis. Les totaux a plat sont retires : la chaine suffit.",
   "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop.",
   "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre.",
-  "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur. Les 55 conseils tires du wiki sont en anglais : leur champ fr passe a null plutot que de recopier l'anglais, ce qui aurait fait croire a une traduction. L() se replie sur l'anglais, comme pour les noms de sous-zones. how_fr_missing les marque, ils sont denombrables."
+  "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur. Les 55 conseils tires du wiki sont en anglais : leur champ fr passe a null plutot que de recopier l'anglais, ce qui aurait fait croire a une traduction. L() se replie sur l'anglais, comme pour les noms de sous-zones. how_fr_missing les marque, ils sont denombrables.",
+  "changelog_v179": "Cinq collections de plus documentees : Acquiring Agaleus, Astral Purification, Radiance of the Sun God, The Convergence of Sorrow I Elegy et Gift of the Feast. Le parseur passe en v2 : le v1 prenait toute ligne commencant par un chiffre et ramassait donc le tableau des MATERIAUX au lieu de celui des objets — Elegy revenait avec des lingots d'orichalque et leurs prix. Le v2 s'ancre sur l'en-tete et n'accepte que les formes connues, dont « Objective | Nearest Waypoint | Notes » que le v1 ignorait completement. Le point de passage le plus proche, quand le wiki le donne, entre dans un champ waypoint plutot que d'etre noye dans le conseil. Le champ waypoint prend la forme {name, chat_code} deja en usage ailleurs dans collections{} et lue par le JSX (item.waypoint?.chat_code) : une chaine brute aurait ete un homonyme d'une autre forme, donc un chemin parallele. Le code de chat est extrait du libelle du wiki."
  },
  "meta_events": {
   "vb": {
@@ -17192,107 +17193,318 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to the hylek shaman in Shipwreck Strand.",
+       "name": "Speak to the hylek shaman in Shipwreck Strand",
        "how": {
         "fr": "Le chamane Palak, à la Rive aux épaves, ouvre toute la chaîne. Les 19 étapes suivantes sont linéaires.",
         "en": "Shaman Palak, at Shipwreck Strand, opens the whole chain. The following 19 steps are linear."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Speak to the hylek shaman in Shipwreck Strand.",
+       "waypoint": {
+        "name": "Hullgarden Pier Waypoint",
+        "chat_code": "[&BMwPAAA=]"
+       }
       },
       {
        "bit": 1,
-       "name": "Defeat Tequatl the Sunless.",
+       "name": "Defeat Tequatl the Sunless",
        "how": {
         "fr": "⚠ Tequatl le Sans-soleil : boss de monde à horaire fixe et à forte affluence. C'est le seul vrai timegate de la collection — cale-le en premier sur le timer.",
         "en": "⚠ Tequatl the Sunless: fixed-schedule, high-population world boss. It's the collection's only real timegate - slot it in first using the timer."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Defeat Tequatl the Sunless.",
+       "waypoint": {
+        "name": "Splintered Coast Waypoint",
+        "chat_code": "[&BNABAAA=]"
+       }
       },
       {
        "bit": 2,
-       "name": "Find the Shard of Zintl in Wychmire Swamp."
+       "name": "Find the Shard of Zintl in the Wychmire Swamp",
+       "name_api": "Find the Shard of Zintl in Wychmire Swamp.",
+       "waypoint": {
+        "name": "Falias Thorp Waypoint",
+        "chat_code": "[&BD4BAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Complete the Tears of Itlaocol mini-dungeon in Caledon Forest and loot the final chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Find Palak's Acolyte in Jelako Cliffrise."
+       "name": "Find Palak's acolyte in Jelako Cliffrise",
+       "name_api": "Find Palak's Acolyte in Jelako Cliffrise.",
+       "waypoint": {
+        "name": "Jelako Waypoint",
+        "chat_code": "[&BK8BAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to Veteran Hylek Nahualli slightly northeast of Jelako Waypoint — [&BK8BAAA=] in Jelako Cliffrise"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Help shore up hylek defenses in Jelako Cliffrise."
+       "name": "Help shore up hylek defenses in Jelako Cliffrise",
+       "name_api": "Help shore up hylek defenses in Jelako Cliffrise.",
+       "waypoint": {
+        "name": "Jelako Waypoint",
+        "chat_code": "[&BK8BAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Complete the Help Shore up Hylek Defenses (54) renown heart. This will auto-complete if you have done the heart before"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak to the Lapatl chieftain."
+       "name": "Speak to the Lapatl chieftain",
+       "name_api": "Speak to the Lapatl chieftain.",
+       "waypoint": {
+        "name": "Jelako Waypoint",
+        "chat_code": "[&BK8BAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to the Lapatl Chieftain north of Jelako Waypoint — [&BK8BAAA=] in Bloodtide Coast after completing the Protect the Lapatl Chieftain from the undead (54) event. If the event is already completed, you can speak to her directly"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Track down the Lorantl hylek."
+       "name": "Track down the Lorantl Hylek",
+       "name_api": "Track down the Lorantl hylek.",
+       "waypoint": {
+        "name": "Firthside Vigil Waypoint",
+        "chat_code": "[&BKoBAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to Huitzilin in the Lorantl Grounds — [&BK0EAAA=] cave. The entrance to the cave is underwater due west of where the point of interest is marked on the map"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Recover the stolen shard from the trolls in Risewild Hills."
+       "name": "Recover the stolen shard from the trolls in Risewild Hills",
+       "name_api": "Recover the stolen shard from the trolls in Risewild Hills.",
+       "waypoint": {
+        "name": "Remanda Waypoint",
+        "chat_code": "[&BKcBAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Enter the troll camp on the hill east of Mudflat Camp — [&BC0AAAA=] in Bloodtide Coast and defeat trolls until the shard drops. Trolls outside the camp can drop the shard too. Drop chance is about 3%"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Find Palak's acolyte in Viathan's Arm."
+       "name": "Find Palak's acolyte in Viathan's Arm",
+       "name_api": "Find Palak's acolyte in Viathan's Arm.",
+       "waypoint": {
+        "name": "Ireko Tradecamp Waypoint",
+        "chat_code": "[&BAoAAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Head north and slightly east to the renown heart vendor for Help Matlal collect truffles for her starving tribe (22). While inside the cave, go north, dive underwater, and follow the underwater tunnel towards Togatl Grounds — [&BCIAAAA=] and speak to Hylek Nahualli"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Purchase a set of Dragonfly Steaks from the hylek cook in Michoan Marsh.",
+       "name": "Purchase a set of Dragonfly Steaks from the hylek cook in Michoan Marsh",
        "how": {
         "fr": "Les steaks de libellule s'achètent chez le cuisinier hylek au Marais michéen. Achète-les avant de traverser la carte, l'étape 11 suit immédiatement.",
         "en": "The dragonfly steaks are sold by the hylek cook at Mickelson's Marsh. Buy them before crossing the map, step 11 follows immediately."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Purchase a set of Dragonfly Steaks from the hylek cook in Michoan Marsh.",
+       "waypoint": {
+        "name": "Michotl Grounds Waypoint",
+        "chat_code": "[&BLEEAAA=]"
+       }
       },
       {
        "bit": 10,
-       "name": "Return to the Togatl chief with the Dragonfly Steaks."
+       "name": "Return to the Togatl chief with the Dragonfly Steaks",
+       "name_api": "Return to the Togatl chief with the Dragonfly Steaks.",
+       "waypoint": {
+        "name": "Ireko Tradecamp Waypoint",
+        "chat_code": "[&BAoAAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to Togatl Grounds — [&BCIAAAA=] in Kessex Hills via the underwater tunnel and talk to Chief Tlatoa"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Find Palak's acolyte in the Hunting Banks."
+       "name": "Find Palak's acolyte in the Hunting Banks",
+       "name_api": "Find Palak's acolyte in the Hunting Banks.",
+       "waypoint": {
+        "name": "Eztlitl Grounds Waypoint",
+        "chat_code": "[&BEoCAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Speak to Hylek Amini northeast of Eztlitl Grounds Waypoint — [&BEoCAAA=] in Timberline Falls . Unlocks Helping Hylek: Kill Krait"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Defeat krait or the krait witch at Nonmoa Lake."
+       "name": "Defeat krait at Nonmoa Lake",
+       "name_api": "Defeat krait or the krait witch at Nonmoa Lake.",
+       "waypoint": {
+        "name": "Nonmoa Waypoint",
+        "chat_code": "[&BEkCAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Complete above achievement by defeating 25 krait. Participating in the Defend Chief Eztlitl from the krait (59) event will provide many targets. Alternatively defeating the Champion Krait Witch in the [Group Event] Kill the krait witch (60) event atop the krait fortress completes the objective"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Find Palak's acolyte in Whitland Flats."
+       "name": "Find Palak's acolyte in Whitland Flats",
+       "name_api": "Find Palak's acolyte in Whitland Flats.",
+       "waypoint": {
+        "name": "Old Sledge Site Waypoint",
+        "chat_code": "[&BNQCAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Travel northeast of Old Sledge Site Waypoint — [&BNQCAAA=] in Mount Maelstrom to Lonatl Grounds — [&BJgGAAA=] and speak to Hylek Tlamatini to receive a Recovered Inquest Note"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Uncover the shard in the Inquest reactor by solving the zone puzzle.",
+       "name": "Uncover the shard in the Inquest reactor",
        "how": {
         "fr": "Énigme des zones dans le réacteur de l'Enqueste — la seule étape qui demande de la réflexion plutôt que du déplacement. Prévois du temps.",
         "en": "Zone puzzle in the Inquest reactor - the only step that asks for thought rather than travel. Set aside some time."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Uncover the shard in the Inquest reactor by solving the zone puzzle.",
+       "waypoint": {
+        "name": "Crucible of Eternity Waypoint",
+        "chat_code": "[&BEIFAAA=]"
+       }
       },
       {
        "bit": 15,
-       "name": "Recover the shard stolen by the Keepers of the Elements."
+       "name": "Recover the shard stolen by the Keepers of the Elements",
+       "name_api": "Recover the shard stolen by the Keepers of the Elements.",
+       "waypoint": {
+        "name": "See Hidden Garden for potential entrances"
+       },
+       "how": {
+        "fr": null,
+        "en": "Complete the Hidden Garden jumping puzzle in Mount Maelstrom and open the Sylvan Chest at the end"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Seek out the shaman in Astrozintli Forelands."
+       "name": "Seek out the shaman in Astrozintli Forelands",
+       "name_api": "Seek out the shaman in Astrozintli Forelands.",
+       "waypoint": {
+        "name": "Zintl Holy Grounds Waypoint",
+        "chat_code": "[&BMgBAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Travel to Zintl Holy Grounds Waypoint — [&BMgBAAA=] in Sparkfly Fen and speak to Shaman Huelec inside the temple to the northeast. If you helped the hylek during your level 50 Personal story in Chosen of the Sun , you get to skip the steps. You cannot complete this step if the [Group Event] Defend the Zintl Holy Grounds (58) event is active"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Meditate at the hylek holy site."
+       "name": "Meditate at the hylek holy site",
+       "name_api": "Meditate at the hylek holy site.",
+       "waypoint": {
+        "name": "Judgment Waypoint",
+        "chat_code": "[&BNUCAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Travel to Judgment Waypoint — [&BNUCAAA=] in Mount Maelstrom, head north until you reach Environmental Activist Jenrys , then use the /sit emote near her. If you're in a good spot, a red message will appear in your chat (\"You feel a wave of warmth wash over you. Maybe you should sit and reflect for a moment.\"), and sitting should give you Zintl's Warmth . Sit there for approximately 15 seconds. Note: you may need to move around her, and not too near. Keep moving and sitting until you get Zintl's Warmth in your status bar. If this doesn't work, try logging out to character select and logging back in. Might only work during map day time"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Return to Shaman Huelec."
+       "name": "Return to Shaman Huelec",
+       "name_api": "Return to Shaman Huelec.",
+       "waypoint": {
+        "name": "Zintl Holy Grounds Waypoint",
+        "chat_code": "[&BMgBAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to Zintl Holy Grounds Waypoint — [&BMgBAAA=] in Sparkfly Fen and speak to Shaman Huelec again. You cannot complete this step if the [Group Event] Defend the Zintl Holy Grounds (58) event is active"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Return to Palak."
+       "name": "Return to Palak",
+       "name_api": "Return to Palak.",
+       "waypoint": {
+        "name": "Hullgarden Pier Waypoint",
+        "chat_code": "[&BMwPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to Shaman Palak on the cliff northeast of Hullgarden Pier Waypoint — [&BMwPAAA=] to complete the achievement and receive a chest containing a Gift of the Hylek"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18227,23 +18439,58 @@
      "items": [
       {
        "bit": 0,
-       "name": "Gift of the Feast"
+       "name": "Gift of the Feast",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mistburned Isles, a Gift of Shadows, a Gift of The Feast, and Orrax Contained in the Mystic Forge to create the legendary backpack and glider Orrax Manifested. Created in the Mystic Forge by combining: • 1 Gift of the Appetizer • 1 Gift of the Entrée • 1 Gift of the Side Course • 1 Gift of the Dessert"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Gift of the Appetizer"
+       "name": "Gift of the Appetizer",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Appetizer, a Gift of the Entrée, a Gift of the Side Course, and a Gift of the Dessert in the Mystic Forge to create the Gift of the Feast. Created in the Mystic Forge by combining: • 200 Bowls of Poultry Satay • 100 Red-Lentil Saobosas • 50 Spicy Marinated Mushrooms • 5 Fruits of the Shadow"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Gift of the Entrée"
+       "name": "Gift of the Entrée",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Appetizer, a Gift of the Entrée, a Gift of the Side Course, and a Gift of the Dessert in the Mystic Forge to create the Gift of the Feast. Created in the Mystic Forge by combining: • 200 Plates of Orrian Steak Frittes • 100 Plates of Truffle Steak • 50 Plates of Spicy Herbed Chicken • 5 Fruits of the Shadow"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Gift of the Side Course"
+       "name": "Gift of the Side Course",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Appetizer, a Gift of the Entrée, a Gift of the Side Course, and a Gift of the Dessert in the Mystic Forge to create the Gift of the Feast. Created in the Mystic Forge by combining: • 200 Meaty Asparagus Skewers • 100 Bowls of Black Pepper Cactus Salad • 30 Mystic Clovers • 5 Fruits of the Shadow"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Gift of the Dessert"
+       "name": "Gift of the Dessert",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Appetizer, a Gift of the Entrée, a Gift of the Side Course, and a Gift of the Dessert in the Mystic Forge to create the Gift of the Feast. Created in the Mystic Forge by combining: • 200 Bowls of Prickly Pear Sorbet • 50 Bowls of Passion Fruit Tapioca Pudding • 2 Amalgamated Rift Essences • 5 Fruits of the Shadow"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
@@ -18279,13 +18526,14 @@
       },
       {
        "bit": 13,
-       "name": "Sometimes acquired by combining Mystic Coins, Obsidian Shards, Globs of Ectoplasm, and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors.",
+       "name": "Mystic Clover",
        "how": {
         "fr": "Trèfles mystiques : recette forge à ~33 % de réussite, ou achat direct chez les vendeurs d'attaque, de raid ou de fractales. L'achat est plus fiable que la forge.",
         "en": "Mystic Clovers: Mystic Forge recipe at ~33% success, or direct purchase from strike, raid or fractal vendors. Buying is more reliable than forging."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Sometimes acquired by combining Mystic Coins, Obsidian Shards, Globs of Ectoplasm, and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors."
       },
       {
        "bit": 14,
@@ -18297,23 +18545,25 @@
       },
       {
        "bit": 16,
-       "name": "Refined from 250 Fine Rift Essences, 100 Masterwork Rift Essences, and 50 Rare Rift Essences. Essences can be found by hunting rifts.",
+       "name": "Amalgamated Rift Essence",
        "how": {
         "fr": "250 essences raffinées + 100 prodigieuses + 50 rares, uniquement en chassant les brèches. C'est le poste le plus long de la collection.",
         "en": "250 refined + 100 prodigious + 50 rare essences, only by hunting rifts. This is the collection's longest item."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Refined from 250 Fine Rift Essences, 100 Masterwork Rift Essences, and 50 Rare Rift Essences. Essences can be found by hunting rifts."
       },
       {
        "bit": 17,
-       "name": "Purchase a seed from Deft Lahar in the homestead, and harvest it after letting it grow for 24 hours.",
+       "name": "Fruit of the Shadow",
        "how": {
         "fr": "⚠ Timegate de 24 h : achète la graine chez Lahar habile dans ton pavillon DÈS MAINTENANT, elle poussera pendant que tu fais le reste.",
         "en": "⚠ 24h timegate: buy the seed from Lahar the Skilled in your homestead RIGHT NOW, it will grow while you do the rest."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Purchase a seed from Deft Lahar in the homestead, and harvest it after letting it grow for 24 hours."
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18449,135 +18699,377 @@
      "items": [
       {
        "bit": 0,
-       "name": "Talk to the castaway \"captain\" in Pub Canach.",
+       "name": "Talk to the castaway \"captain\" in Pub Canach",
        "how": {
         "fr": "Point de départ : le « capitaine » naufragé se trouve au Pub Canach. Toute la chaîne en découle.",
         "en": "Starting point: the shipwrecked 'captain' is at Canach's Pub. The whole chain follows from him."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Talk to the castaway \"captain\" in Pub Canach.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       }
       },
       {
        "bit": 1,
-       "name": "Bring a drink to the captain."
+       "name": "Bring a drink to the captain",
+       "name_api": "Bring a drink to the captain.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Using the Mixology Station from the heart, create any drink and take it to the captain"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Listen to the rest of Captain Lakes's tale."
+       "name": "Listen to the rest of Captain Lakes's tale",
+       "name_api": "Listen to the rest of Captain Lakes's tale.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Listen to the captain's dialogue"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Find the diver."
+       "name": "Find the diver",
+       "name_api": "Find the diver.",
+       "waypoint": {
+        "name": "Sanctum Harbor Waypoint",
+        "chat_code": "[&BC8EAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to Dive Master Astora"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Complete the Master Diver achievement, then return to Dive Master Astora.",
+       "name": "Complete the Master Diver achievement, then return to Dive Master Astora",
        "how": {
         "fr": "⚠ Verrou dur : « Maître de la plongée » doit être terminé en entier (10 coffres) avant de pouvoir avancer. Lance-le en tout premier, c'est le poste le plus long.",
         "en": "⚠ Hard gate: 'Master Diver' must be fully completed (10 chests) before you can progress. Start it first, it's the longest item."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Complete the Master Diver achievement, then return to Dive Master Astora.",
+       "waypoint": {
+        "name": "Sanctum Harbor Waypoint",
+        "chat_code": "[&BC8EAAA=]"
+       }
       },
       {
        "bit": 5,
-       "name": "Find the treasure in Sharkmaw Caverns."
+       "name": "Find the treasure in Sharkmaw Caverns",
+       "name_api": "Find the treasure in Sharkmaw Caverns.",
+       "waypoint": {
+        "name": "Farshore Waypoint",
+        "chat_code": "[&BDMEAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Interact with the Magnificent Chest at the end of Weyandt's Revenge jumping puzzle. Contains the Tattered Note"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Find the sunken treasure in the Siren's Reef fractal or Underwater Ruins fractal.",
+       "name": "Find the sunken treasure in the Siren's Reef Fractal or Aquatic Ruins Fractal",
        "how": {
         "fr": "Deux fractales au choix — Récif de la sirène ou Ruines aquatiques. Les deux sont en bas de la rotation, accessibles sans RA élevée.",
         "en": "Two fractals to choose from - Siren's Reef or Aquatic Ruins. Both sit low in the rotation, reachable without high AR."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Find the sunken treasure in the Siren's Reef fractal or Underwater Ruins fractal.",
+       "waypoint": {
+        "name": "Fort Marriner Waypoint",
+        "chat_code": "[&BDAEAAA=]"
+       }
       },
       {
        "bit": 7,
-       "name": "Look for treasure using your skimmer's Aetherlocation skill in Castora."
+       "name": "Look for treasure using your skimmer's Aetherlocation skill in Castora",
+       "name_api": "Look for treasure using your skimmer's Aetherlocation skill in Castora.",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Castoran Intuition mastery to use aetherlocation. Find and open an Aetherlocation Treasure in any Castora map"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Defeat Taidha Covington to retrieve a piece of the mask from her reward chest.",
+       "name": "Defeat Taidha Covington to retrieve a piece of the mask from her reward chest",
        "how": {
         "fr": "Taidha Covington est un boss de monde à horaire fixe. Cale ton passage sur le timer plutôt que d'espérer tomber dessus.",
         "en": "Taidha Covington is a world boss on a fixed timer. Plan around the schedule rather than hoping to stumble on it."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Defeat Taidha Covington to retrieve a piece of the mask from her reward chest.",
+       "waypoint": {
+        "name": "Laughing Gull Waypoint",
+        "chat_code": "[&BKgBAAA=]"
+       }
       },
       {
        "bit": 9,
-       "name": "Find the piece of the mask in the 'Booter's Path in Castora.",
+       "name": "Find the piece of the mask in the 'Booter's Path in Castora",
        "how": {
         "fr": "Les fragments de masque (étapes 9 à 16) se collectent dans n'importe quel ordre. Regroupe ceux de Castora en une seule passe, ils sont quatre.",
         "en": "The mask fragments (steps 9 to 16) can be collected in any order. Group the Castora ones in a single pass, there are four of them."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Find the piece of the mask in the 'Booter's Path in Castora.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       }
       },
       {
        "bit": 10,
-       "name": "Find the piece of the mask in the base of Wiley's Buccaneers."
+       "name": "Find the piece of the mask in the base of Wiley's Buccaneers",
+       "name_api": "Find the piece of the mask in the base of Wiley's Buccaneers.",
+       "waypoint": {
+        "name": "Brigantine Waypoint",
+        "chat_code": "[&BM0DAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Interact with the Torn Note inside of Wiley's Cove — [&BHsAAAA=] in Gendarran Fields to obtain Wiley's Note . Read the note to fulfill the objective"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Discover where Wiley hid his piece of the mask."
+       "name": "Discover where Wiley hid his piece of the mask",
+       "name_api": "Discover where Wiley hid his piece of the mask.",
+       "waypoint": {
+        "name": "Vigil Keep Waypoint",
+        "chat_code": "[&BJIBAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "In a cliffside cave above the small camp due south of Vigil Keep Waypoint. The entrance is small, elevated and marked by a dead ram – stand by Warmaster Grayson and look east. It is not in the chest by the basilisk; it is slightly further back in the cave. If you do not see a second chest, log out and log back in and it should be there. (You can also use a lounge pass and immediately return.)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Find the piece of the mask in Castora."
+       "name": "Find the piece of the mask in Castora",
+       "name_api": "Find the piece of the mask in Castora.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "From Hammerhart Battery — [&BHUPAAA=] , head south into the caves, the chest is marked on the map, underwater among tree roots"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Find the mask piece on one of the freebooters in Castora."
+       "name": "Find the mask piece on one of the freebooters in Castora",
+       "name_api": "Find the mask piece on one of the freebooters in Castora.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Random drop from freebooter enemies – easily farmable around Twisting Hollows by Grogslinger's — [&BJsPAAA=] , Bunkhome Square — [&BJUPAAA=] and The Wardroom — [&BMUPAAA=] . Note that the group of enemies that can drop this piece is quite broad, so you'll likely also receive it eventually by doing events or renown hearts. For example, Rowdy Patrons at Pub Canach can also drop the piece"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Find the piece of the mask in Southsun Cove."
+       "name": "Find the piece of the mask in Southsun Cove",
+       "name_api": "Find the piece of the mask in Southsun Cove.",
+       "waypoint": {
+        "name": "Pearl Islet Waypoint",
+        "chat_code": "[&BNUGAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Immediately underwater of Privateer's Moorage — [&BNYGAAA=] , on the bay floor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Find the piece of the mask in Lion's Arch."
+       "name": "Find the piece of the mask in Lion's Arch",
+       "name_api": "Find the piece of the mask in Lion's Arch.",
+       "waypoint": {
+        "name": "Claw Island Portage Waypoint",
+        "chat_code": "[&BA8EAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "West of the Phoenix Roost — [&BCMEAAA=] lighthouse, underwater Chest on the sea floor surrounded by ruins. (May require a relog.)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Find the piece of the mask hidden in Orr."
+       "name": "Find the piece of the mask hidden in Orr",
+       "name_api": "Find the piece of the mask hidden in Orr.",
+       "waypoint": {
+        "name": "Shipwreck Rock Waypoint",
+        "chat_code": "[&BOQGAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "West of Shipwreck Rock Waypoint underwater enclosed by ship wreckage"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Return to Captain Lakes to figure out how to put all the pieces together."
+       "name": "Return to Captain Lakes to figure out how to put all the pieces together",
+       "name_api": "Return to Captain Lakes to figure out how to put all the pieces together.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to \"Captain\" Ruymond Lakes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Speak to Cecil the Strong Arm."
+       "name": "Speak to Cecil the Strong Arm",
+       "name_api": "Speak to Cecil the Strong Arm.",
+       "waypoint": {
+        "name": "Pub Canach Waypoint",
+        "chat_code": "[&BJEPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to Cecil , next to \"Captain\" Lakes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Find the recluse from Weyandt's crew."
+       "name": "Find the recluse from Weyandt's crew",
+       "name_api": "Find the recluse from Weyandt's crew.",
+       "waypoint": {
+        "name": "Dark Leviathan Waypoint",
+        "chat_code": "[&BJwPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Talk to the Castaway sitting on the lower ledge west from Leystone Promontory . (May require a relog.)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 20,
-       "name": "Find the Shark Spirit near the Honor of the Waves sanctuary."
+       "name": "Find the Shark Spirit near the Honor of the Waves sanctuary",
+       "name_api": "Find the Shark Spirit near the Honor of the Waves sanctuary.",
+       "waypoint": {
+        "name": "Honor of the Waves Waypoint",
+        "chat_code": "[&BEMFAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Interact with the Shark Spirit swimming in a circle west of Honor of the Waves Waypoint . It may take a moment to spawn"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 21,
-       "name": "Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit.",
+       "name": "Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit",
        "how": {
         "fr": "Honneur des vagues en mode Exploration — n'importe quel chemin convient. Donjon à 5, à prévoir en LFG.",
         "en": "Honor of the Waves in Explorable mode - any path works. A 5-player dungeon, plan for LFG."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit.",
+       "waypoint": {
+        "name": "Honor of the Waves Waypoint",
+        "chat_code": "[&BEMFAAA=]"
+       }
       },
       {
        "bit": 22,
-       "name": "Return to the Shark Spirit."
+       "name": "Return to the Shark Spirit",
+       "name_api": "Return to the Shark Spirit.",
+       "waypoint": {
+        "name": "Honor of the Waves Waypoint",
+        "chat_code": "[&BEMFAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to the Shark Spirit swimming around west from Honor of the Waves Waypoint"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 23,
-       "name": "Return to the shaman."
+       "name": "Return to the shaman",
+       "name_api": "Return to the shaman.",
+       "waypoint": {
+        "name": "Dark Leviathan Waypoint",
+        "chat_code": "[&BJwPAAA=]"
+       },
+       "how": {
+        "fr": null,
+        "en": "Return to the Castaway west of Leystone Promontory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -25376,63 +25868,176 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Bring Ouissal the materials to craft a charged mirror."
+       "name": "Charged Mirror",
+       "name_api": "Bring Ouissal the materials to craft a charged mirror."
       },
       {
        "bit": 1,
-       "name": "Bring Ouissal the materials to craft a corrupted mirror."
+       "name": "Corrupted Mirror",
+       "name_api": "Bring Ouissal the materials to craft a corrupted mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Corrupted Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Bring Ouissal the materials to craft a crystal mirror."
+       "name": "Crystal Mirror",
+       "name_api": "Bring Ouissal the materials to craft a crystal mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Crystal Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Bring Ouissal the materials to craft a glacial mirror."
+       "name": "Glacial Mirror",
+       "name_api": "Bring Ouissal the materials to craft a glacial mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Glacial Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Bring Ouissal the materials to craft a destroyer mirror."
+       "name": "Destroyer Mirror",
+       "name_api": "Bring Ouissal the materials to craft a destroyer mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Destroyer Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Bring Ouissal the materials to craft a molten mirror."
+       "name": "Molten Mirror",
+       "name_api": "Bring Ouissal the materials to craft a molten mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Molten Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Bring Ouissal the materials to craft an onyx mirror."
+       "name": "Onyx Mirror",
+       "name_api": "Bring Ouissal the materials to craft an onyx mirror.",
+       "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Onyx Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Place the charged mirror above the Field of the Hopeful."
+       "name": "Charged Light",
+       "name_api": "Place the charged mirror above the Field of the Hopeful.",
+       "how": {
+        "fr": null,
+        "en": "Place the charged mirror above the Field of the Hopeful"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Place the corrupted mirror in the bluffs above Palawadan."
+       "name": "Corrupted Light",
+       "name_api": "Place the corrupted mirror in the bluffs above Palawadan.",
+       "how": {
+        "fr": null,
+        "en": "Place the corrupted mirror in the bluffs above Palawadan"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Place the crystal mirror overlooking Champion's Dawn."
+       "name": "Crystal Light",
+       "name_api": "Place the crystal mirror overlooking Champion's Dawn.",
+       "how": {
+        "fr": null,
+        "en": "Place the crystal mirror overlooking Champion's Dawn"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Place the glacial mirror high above the Modri Caverns."
+       "name": "Glacial Light",
+       "name_api": "Place the glacial mirror high above the Modri Caverns.",
+       "how": {
+        "fr": null,
+        "en": "Place the glacial mirror high above the Modri Caverns"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Place the destroyer mirror in the Churrhir Cliffs."
+       "name": "Destroyer Light",
+       "name_api": "Place the destroyer mirror in the Churrhir Cliffs.",
+       "how": {
+        "fr": null,
+        "en": "Place the destroyer mirror in the Churrhir Cliffs"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Place the molten mirror above Jakumba's Legacy."
+       "name": "Molten Light",
+       "name_api": "Place the molten mirror above Jakumba's Legacy.",
+       "how": {
+        "fr": null,
+        "en": "Place the molten mirror above Jakumba's Legacy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Place the onyx mirror atop the Mordant Crescent Great Hall."
+       "name": "Onyx Light",
+       "name_api": "Place the onyx mirror atop the Mordant Crescent Great Hall.",
+       "how": {
+        "fr": null,
+        "en": "Place the onyx mirror atop the Mordant Crescent Great Hall"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Bring Yasna's notes to Sunsmith Oiussal in the Sunspear Base."
+       "name": "Yasna's Notes",
+       "name_api": "Bring Yasna's notes to Sunsmith Oiussal in the Sunspear Base.",
+       "how": {
+        "fr": null,
+        "en": "Bring Yasna's notes to Sunsmith Ouissal in the Sunspear Base"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -25503,39 +26108,104 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Find the Awakened armorsmith in Sun's Refuge."
+       "name": "Amira's Lament",
+       "name_api": "Find the Awakened armorsmith in Sun's Refuge."
       },
       {
        "bit": 1,
-       "name": "Find one of the armorsmith's monuments in Jahai."
+       "name": "Unreadable Words",
+       "name_api": "Find one of the armorsmith's monuments in Jahai.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the Ruined Memorial northwest of the Venta Pass Waypoint — [&BJMLAAA=] (any memorial will work, but the next step is specific to this monument)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Investigate the monuments' destruction."
+       "name": "Field Notes on Wrecked Memorials",
+       "name_api": "Investigate the monuments' destruction.",
+       "how": {
+        "fr": null,
+        "en": "Approach Eladaar northwest of the Venta Pass Waypoint — [&BJMLAAA=] - you'll find her chopping down a monument with an axe"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Return to the armorsmith."
+       "name": "Amira's Complaint",
+       "name_api": "Return to the armorsmith.",
+       "how": {
+        "fr": null,
+        "en": "Return to Amira in Sun's Refuge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Find Second Spear Riyid."
+       "name": "Notes on a Sunspear",
+       "name_api": "Find Second Spear Riyid.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Second Spear Riyid at Riyid's Post in the Rilohn River area and to the east of Reclaimed Chantry Waypoint — [&BJkLAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Listen to the Sunspear's fellow soldiers."
+       "name": "Further Notes on a Sunspear",
+       "name_api": "Listen to the Sunspear's fellow soldiers.",
+       "how": {
+        "fr": null,
+        "en": "There's a marked Sunspear behind Riyid. Listen to their conversation - wait for the dialogue to finish, and for the Sunspear to show you the location of Eladaar's house on the world map"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Find something left behind at an old homestead."
+       "name": "Child's Toy",
+       "name_api": "Find something left behind at an old homestead.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the Toy Roller Beetle to the west of the Ruined Procession vista, on the wooden plank roof of the house below. North of Venta Pass Waypoint — [&BJMLAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Find something else left behind at an old homestead."
+       "name": "Portrait of a Wife",
+       "name_api": "Find something else left behind at an old homestead.",
+       "how": {
+        "fr": null,
+        "en": "In the house below, a Faded Portrait lies against the wall"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Find the former Sunspear."
+       "name": "Harsh Words",
+       "name_api": "Find the former Sunspear.",
+       "how": {
+        "fr": null,
+        "en": "Head southeast back towards the entrance to the Sun's Refuge - Eladaar will be at Mirza's Rest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
@@ -25545,7 +26215,8 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Bring an idea, and two memories, to the armorsmith."
+       "name": "Commission",
+       "name_api": "Bring an idea, and two memories, to the armorsmith."
       },
       {
        "bit": 10,
@@ -25555,31 +26226,80 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "A memorial among wurms and bones."
+       "name": "Memorial for a Soldier",
+       "name_api": "A memorial among wurms and bones."
       },
       {
        "bit": 11,
-       "name": "A memorial overlooking what flows and what grows."
+       "name": "Memorial for a Laborer",
+       "name_api": "A memorial overlooking what flows and what grows.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Cured Hardened Leather Squares . Travel to and repair the Ruined Memorial in Yatendi Village , northwest of the Yatendi Village Waypoint — [&BH4LAAA=] near the cliff. Then return to Amira to purchase the next memorial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "A memorial preceding prosperity."
+       "name": "Memorial for a Friend",
+       "name_api": "A memorial preceding prosperity.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Bolts of Gossamer . Travel to and repair the Ruined Memorial in Crescent's Prosperity , halfway between the \"Crescent's Prosperity and \"Prosperity's Approach\" map text, under a tree on the west side. (South-west of Reclaimed Chantry Waypoint — [&BJkLAAA=] or north-west of Yatendi Village Waypoint — [&BH4LAAA=] .) Then return to Amira to purchase the next memorial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "A memorial of secrets beside an ancient arch."
+       "name": "Memorial for a Peacemaker",
+       "name_api": "A memorial of secrets beside an ancient arch.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Ancient Wood Planks . From Reclaimed Chantry Waypoint — [&BJkLAAA=] travel to and repair the Ruined Memorial in Reclaimed Chantry , beneath the vista, inside the chantry. Then return to Amira to purchase the next memorial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "A memorial where a general meets an old foe anew."
+       "name": "Memorial for a Wanderer",
+       "name_api": "A memorial where a general meets an old foe anew.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Orichalcum Ingots . Venta Pass Waypoint — [&BJMLAAA=] travel to and repair the Ruined Memorial in Almorra's Stand , directly east of Staging Platform . Then return to Amira to purchase the next memorial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "A memorial where a tyrant rose."
+       "name": "Memorial for a Brother",
+       "name_api": "A memorial where a tyrant rose.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Cured Hardened Leather Squares . Yatendi Village Waypoint — [&BH4LAAA=] travel to and repair the Ruined Memorial in Central Brand Scar , just south of Monument to the Return of Palawa Joko . Then return to Amira to purchase the next memorial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Two memorials where one was destroyed."
+       "name": "Memorial for a Wife and Son",
+       "name_api": "Two memorials where one was destroyed.",
+       "how": {
+        "fr": null,
+        "en": "Purchase an Awakened Memorial from Amira using 20 Bolts of Gossamer . Travel to and repair the Ruined Memorial in Venta Pass , northwest of the Venta Pass Waypoint — [&BJMLAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
@@ -25589,7 +26309,8 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Find the destroyer."
+       "name": "Invitation",
+       "name_api": "Find the destroyer."
       },
       {
        "bit": 18,
@@ -25599,11 +26320,19 @@
        },
        "how_verified": false,
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Where all things come together."
+       "name": "Convergence",
+       "name_api": "Where all things come together."
       },
       {
        "bit": 19,
-       "name": "Endings and Beginnings"
+       "name": "Endings and Beginnings",
+       "how": {
+        "fr": null,
+        "en": "Return to Amira in the Sun's Refuge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
