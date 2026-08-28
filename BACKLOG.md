@@ -383,7 +383,7 @@ jeu en français).
 **Enjeu** : cosmétique en français, nul en anglais. Le bloc « Où farmer » est
 exploitable en l'état dans les deux langues.
 
-## Foyers de farm : paliers T3 et T4 (QoL, optionnel)
+## Foyers de farm : paliers T3 et T4 — ✅ **FAIT le 27/08/2026**
 
 Les 16 captures T3/T4 des huit lignes sont versées dans `ressources/wiki/` et
 parsées par `gw2_parse_dropped_by_v2.py`, mais **ne sont pas exposées** dans le
@@ -395,8 +395,13 @@ chacun. `farm_hubs.tiers` déclare les paliers exposés et leur poids ; ajouter
 compteurs calculés. Les tableaux sont maigres — les Totems T3 alignent 8 créatures, le T4
 en aligne 11 — et les mobs concernés sont de bas niveau, croisés en passant.
 
-**Si un jour on l'ajoute** : la donnée est déjà là, il ne resterait que le
-rendu. Aucune capture supplémentaire à demander.
+**Fait.** `farm_hubs.tiers` passe de deux à quatre paliers, `counts` et `lines`
+gagnent leurs entrées t3/t4. Six foyers de bas paliers ont dû être **ajoutés** —
+Kessex Hills, Queensdale, Gendarran Fields, Iron Marches, la Désolation, le
+Labyrinthe du Roi Fou : la liste était bâtie sur les seuls T5 et T6, donc
+sélectionner T3 vidait le bloc. Même structure, même seuil relatif de 8 %.
+
+Rendu : T3 → 5 foyers, T4 → 6, T5 → 15, T6 → 16.
 
 ## common_required supprimé — ✅ **RÉSOLU le 27/08/2026**
 
@@ -656,3 +661,38 @@ Les autres concordent exactement — les totaux écrits à la main sont bons.
 - `collection_unlocks` est indexé par `achievementId` et reste valable.
 - **JSX en dernier, une seule passe** : suppression du chemin `achievements[]`
   et des 38 blocs `bitTips`, une fois les sources migrées et vérifiées.
+
+## Sources payantes contre sources introuvables — ✅ **RÉSOLU le 27/08/2026**
+
+La règle d'audit disait « aucune source `free_repeatable` — le joueur sans stock
+n'a aucune piste ». C'était faux pour cinq composants : ils ont une piste, elle
+est payante et plafonnée.
+
+`paid_repeatable` + `paid_cap` posés sur cinq d'entre eux, d'après les sections
+Acquisition des captures : Bava Nisos 20/semaine, Janthir Syntri et Lowland
+Shore 7 par PNJ et par semaine, Homestead et Seer Runestone sans plafond chiffré.
+
+**Deux cas laissés ouverts, volontairement** : `neutralized_titan_alloy` et
+`shard_of_mistburned_barrens` ont une capture wiki dont la section Acquisition
+est **vide** — le tableau est rendu côté client. Ni piste gratuite ni piste
+payante ne sont confirmées, et `free_sources_note` le dit : l'absence vient de
+la capture, pas du jeu. À recapturer.
+
+## Les blocs `currencies` du JSX — ✅ **RÉSOLU le 27/08/2026**
+
+Deuxième table parallèle, même maladie que `common_required` : des exigences en
+doublon de `craft_components[].qty`, restées au gabarit de 250. Huit valeurs
+alignées sur les sources, toutes vérifiées sur les arbres.
+
+| légendaire | composant | JSX | réel |
+|---|---|---|---|
+| Orrax Manifested | Ursus Oblige | 300 | **1 250** |
+| Strife Unending | Mémoire de bataille | 250 | **500** |
+| Coalescence, Stella Radians | Pièce mystique | 250 | **499** |
+| Selachimorpha | Obsidienne | 250 | **488** |
+| Endless Summer | Obsidienne | 250 | **283** |
+| Orrax Manifested | Trèfle mystique | 38 | **68** |
+| Ad Infinitum | Relique fractale immaculée | 240 | **140** |
+
+**Ursus Oblige affichait 300 pour 1 250 réellement nécessaires** — un facteur
+quatre sur la ressource principale d'Orrax.

@@ -930,7 +930,7 @@
   "changelog_v170": "Les onglets Armes et Colifichets etaient morts depuis la migration vers tab_contract : le contrat demandait les flags isWeapons et isTrinkets, qui n'existent nulle part. Les vrais s'appellent isWeaponTracker et isTrinketTracker. Zero occurrence dans LEGENDARIES contre 4 pour isArmorSet, qui lui fonctionnait — d'ou une panne invisible sur deux hubs seulement. La matrice de ciblage par generation, le selecteur gen1/gen2/gen3/Divers et les notes de cout par generation existaient et n'etaient jamais rendus. Corrige dans le contrat, pas dans le JSX : les flags du JSX sont les noms d'origine, c'est le contrat qui les avait mal recopies.",
   "changelog_v171": "Ad Infinitum migre vers collections{} : validation de forme avant les dix autres. Les trois structures concurrentes fusionnent en une. raidAchievements[] du JSX apportait les bitTips par etape, achievements[] des sources la note et le total, le dump les noms d'etapes. Resultat : 4 collections, 46 etapes nommees, 46 how issus des bitTips et marques how_verified false — ce sont des conseils editoriaux, pas des instructions reverifiees. Les totaux ne sont plus ecrits a la main mais comptes sur les bits du dump. La note d'adinf_4 divergeait entre le JSX et les sources : la version JSX chiffre les murs d'echelle, elle est retenue, l'autre passe en note_alt plutot que d'etre perdue.",
   "changelog_v172": "Les dix legendaires restants migrent vers collections{} : 56 collections, 379 etapes. raidAchievements[] du JSX disparait des sources comme structure concurrente. Trois conventions d'indexation des bitTips coexistaient : par numero de bit, par nom d'objet, et — la ou le dump porte la phrase de requirement au lieu du nom — par rang. Le rapprochement par rang n'est applique que si le nombre de conseils egale EXACTEMENT le nombre de bits, sinon on ne devine pas. metaSubs, recipe, cumulative, rate et target sont conserves tels quels : ils ont un rendu dedie. Les how portent tous how_verified false. Trois plafonds en prose sont apparus a l'audit en migrant : ils vivaient dans le JSX, ou la regle ne regardait pas. Aucun n'est nouveau, ils etaient invisibles. cadence_ref pose sur le legendaire — legendary_insight pour Perfected Envoy, trefles et jetons de fournisseur pour les Upgrades, cristal de difluorite pour Vision — plutot que de redeclarer des cadences qui existent deja sur les composants.",
-  "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort."
+  "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort. Les paliers T3 et T4 rejoignent le bloc « Ou farmer » : counts et lines gagnent leurs entrees t3/t4, farm_hubs.tiers passe de deux a quatre. Meme structure, meme seuil relatif de 8 % — rien de parallele. Les 50+50 unites par gift qu'ils pesent sont desormais visibles."
  },
  "meta_events": {
   "vb": {
@@ -29796,10 +29796,26 @@
   ],
   "farm_hubs": {
    "note": {
-    "fr": "Foyers classés par volume pondéré : 250 unités de T5 et 100 de T6 par gift, soit 71 % du poids sur le T5. Une ligne n'est listée que si la carte réunit au moins 8 % de ses créatures à ce palier. ⚡ Le palier change les foyers : les Griffes n'ont aucun foyer au T5 alors qu'elles en ont un au T6, et les Écailles l'inverse. Sous-zones et effectifs sortent des 32 tableaux « Dropped by », 2 598 entrées. Les entrées régionales du wiki (Tyrie, McM, Désert de cristal) sont écartées : on ne peut pas s'y rendre.",
-    "en": "Hubs ranked by weighted volume: 250 T5 and 100 T6 per gift, so 71 % of the weight sits on T5. A line is listed only if the map gathers at least 8 % of its creatures at that tier. ⚡ The tier changes the hubs: Claws have no hub at T5 while they have one at T6, and Dragon's Stand serves Scales at T5 but not at T6. Sub-zones and counts come from the 32 'Dropped by' tables, 2,598 entries. The wiki's region-level entries (Tyria, WvW, Crystal Desert) are excluded: you cannot travel there."
+    "fr": "Foyers classés par volume pondéré : 50 T3 + 50 T4 + 250 T5 + 100 T6 par gift, soit 56 % du poids sur le T5. Une ligne n'est listée que si la carte réunit au moins 8 % de ses créatures à ce palier. ⚡ Le palier change les foyers : les Griffes n'ont aucun foyer au T5 alors qu'elles en ont un au T6, et les Écailles l'inverse. Sous-zones et effectifs sortent des 32 tableaux « Dropped by », 2 598 entrées. Les entrées régionales du wiki (Tyrie, McM, Désert de cristal) sont écartées : on ne peut pas s'y rendre.",
+    "en": "Hubs ranked by weighted volume: 50 T3 + 50 T4 + 250 T5 + 100 T6 per gift, so 56 % of the weight sits on T5. A line is listed only if the map gathers at least 8 % of its creatures at that tier. ⚡ The tier changes the hubs: Claws have no hub at T5 while they have one at T6, and Dragon's Stand serves Scales at T5 but not at T6. Sub-zones and counts come from the 32 'Dropped by' tables, 2,598 entries. The wiki's region-level entries (Tyria, WvW, Crystal Desert) are excluded: you cannot travel there."
    },
    "tiers": [
+    {
+     "key": "t3",
+     "label": {
+      "fr": "T3",
+      "en": "T3"
+     },
+     "per_gift": 50
+    },
+    {
+     "key": "t4",
+     "label": {
+      "fr": "T4",
+      "en": "T4"
+     },
+     "per_gift": 50
+    },
     {
      "key": "t5",
      "label": {
@@ -29843,7 +29859,9 @@
      "counts": {
       "gift_of_bones": {
        "t5": 47,
-       "t6": 41
+       "t6": 41,
+       "t3": 1,
+       "t4": 3
       },
       "gift_of_dust": {
        "t5": 28,
@@ -29855,19 +29873,27 @@
       },
       "gift_of_venom": {
        "t5": 12,
-       "t6": 8
+       "t6": 8,
+       "t3": 1,
+       "t4": 3
       },
       "gift_of_fangs": {
        "t5": 11,
-       "t6": 6
+       "t6": 6,
+       "t3": 1,
+       "t4": 2
       },
       "gift_of_scales": {
        "t5": 8,
-       "t6": 5
+       "t6": 5,
+       "t3": 1,
+       "t4": 3
       },
       "gift_of_claws": {
        "t5": 5,
-       "t6": 4
+       "t6": 4,
+       "t3": 1,
+       "t4": 2
       },
       "gift_of_totems": {
        "t5": 1,
@@ -30027,11 +30053,13 @@
      "counts": {
       "gift_of_bones": {
        "t5": 38,
-       "t6": 33
+       "t6": 33,
+       "t4": 1
       },
       "gift_of_dust": {
        "t5": 25,
-       "t6": 19
+       "t6": 19,
+       "t4": 1
       },
       "gift_of_blood": {
        "t5": 15,
@@ -30039,7 +30067,8 @@
       },
       "gift_of_scales": {
        "t5": 14,
-       "t6": 7
+       "t6": 7,
+       "t4": 3
       },
       "gift_of_fangs": {
        "t5": 11,
@@ -30051,11 +30080,13 @@
       },
       "gift_of_claws": {
        "t5": 5,
-       "t6": 4
+       "t6": 4,
+       "t4": 1
       },
       "gift_of_totems": {
        "t5": 4,
-       "t6": 4
+       "t6": 4,
+       "t4": 1
       }
      },
      "zones": [
@@ -30196,11 +30227,14 @@
      "counts": {
       "gift_of_bones": {
        "t5": 41,
-       "t6": 35
+       "t6": 35,
+       "t3": 1,
+       "t4": 1
       },
       "gift_of_dust": {
        "t5": 18,
-       "t6": 14
+       "t6": 14,
+       "t4": 1
       },
       "gift_of_blood": {
        "t5": 9,
@@ -30208,11 +30242,14 @@
       },
       "gift_of_scales": {
        "t5": 8,
-       "t6": 4
+       "t6": 4,
+       "t3": 1,
+       "t4": 1
       },
       "gift_of_venom": {
        "t5": 7,
-       "t6": 3
+       "t6": 3,
+       "t4": 1
       },
       "gift_of_fangs": {
        "t5": 7,
@@ -30220,10 +30257,12 @@
       },
       "gift_of_claws": {
        "t5": 7,
-       "t6": 1
+       "t6": 1,
+       "t3": 1
       },
       "gift_of_totems": {
-       "t5": 4
+       "t5": 4,
+       "t4": 1
       }
      },
      "zones": [
@@ -30243,7 +30282,8 @@
         },
         "gift_of_venom": {
          "t5": 1,
-         "t6": 1
+         "t6": 1,
+         "t4": 1
         }
        }
       },
@@ -30358,7 +30398,8 @@
       },
       "gift_of_claws": {
        "t5": 2,
-       "t6": 2
+       "t6": 2,
+       "t3": 1
       },
       "gift_of_fangs": {
        "t5": 1
@@ -30583,11 +30624,15 @@
      "counts": {
       "gift_of_venom": {
        "t5": 14,
-       "t6": 11
+       "t6": 11,
+       "t3": 2,
+       "t4": 4
       },
       "gift_of_scales": {
        "t5": 13,
-       "t6": 9
+       "t6": 9,
+       "t3": 1,
+       "t4": 1
       },
       "gift_of_claws": {
        "t5": 12,
@@ -30599,14 +30644,18 @@
       },
       "gift_of_fangs": {
        "t5": 3,
-       "t6": 2
+       "t6": 2,
+       "t3": 1,
+       "t4": 2
       },
       "gift_of_dust": {
-       "t5": 5
+       "t5": 5,
+       "t4": 1
       },
       "gift_of_blood": {
        "t5": 3,
-       "t6": 1
+       "t6": 1,
+       "t4": 2
       },
       "gift_of_totems": {
        "t5": 1
@@ -30628,11 +30677,13 @@
          "t6": 1
         },
         "gift_of_dust": {
-         "t5": 2
+         "t5": 2,
+         "t4": 1
         },
         "gift_of_blood": {
          "t5": 1,
-         "t6": 1
+         "t6": 1,
+         "t4": 1
         },
         "gift_of_totems": {
          "t5": 1
@@ -30703,13 +30754,18 @@
        "counts": {
         "gift_of_venom": {
          "t5": 2,
-         "t6": 1
+         "t6": 1,
+         "t3": 1,
+         "t4": 1
         },
         "gift_of_claws": {
          "t5": 1
         },
         "gift_of_dust": {
          "t5": 1
+        },
+        "gift_of_fangs": {
+         "t3": 1
         }
        }
       }
@@ -30737,11 +30793,13 @@
      "counts": {
       "gift_of_fangs": {
        "t5": 24,
-       "t6": 24
+       "t6": 24,
+       "t4": 2
       },
       "gift_of_venom": {
        "t5": 24,
-       "t6": 23
+       "t6": 23,
+       "t4": 2
       }
      },
      "zones": [
@@ -30948,6 +31006,695 @@
         "gift_of_venom": {
          "t5": 1,
          "t6": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Kessex Hills",
+      "en": "Kessex Hills"
+     },
+     "lines": {
+      "t3": [
+       "gift_of_bones",
+       "gift_of_claws"
+      ],
+      "t4": [
+       "gift_of_bones",
+       "gift_of_dust"
+      ],
+      "t5": [
+       "gift_of_bones"
+      ],
+      "t6": [
+       "gift_of_bones"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t3": 15,
+       "t4": 14,
+       "t5": 18,
+       "t6": 15
+      },
+      "gift_of_dust": {
+       "t3": 4,
+       "t4": 5,
+       "t5": 5,
+       "t6": 5
+      },
+      "gift_of_claws": {
+       "t3": 5,
+       "t4": 2,
+       "t5": 7,
+       "t6": 3
+      },
+      "gift_of_venom": {
+       "t3": 4,
+       "t4": 4,
+       "t5": 4,
+       "t6": 4
+      },
+      "gift_of_scales": {
+       "t3": 1,
+       "t4": 2,
+       "t5": 5,
+       "t6": 3
+      },
+      "gift_of_fangs": {
+       "t3": 1,
+       "t5": 2,
+       "t6": 1
+      },
+      "gift_of_totems": {
+       "t4": 1
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Cereboth Canyon",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_claws": {
+         "t3": 1,
+         "t4": 2,
+         "t5": 2,
+         "t6": 2
+        },
+        "gift_of_fangs": {
+         "t3": 1,
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Viathan's Arm",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t4": 1,
+         "t5": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Queensdale",
+      "en": "Queensdale"
+     },
+     "lines": {
+      "t3": [
+       "gift_of_bones",
+       "gift_of_fangs",
+       "gift_of_venom"
+      ],
+      "t4": [
+       "gift_of_bones",
+       "gift_of_venom"
+      ],
+      "t5": [
+       "gift_of_bones"
+      ],
+      "t6": [
+       "gift_of_bones"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t3": 14,
+       "t4": 13,
+       "t5": 17,
+       "t6": 13
+      },
+      "gift_of_venom": {
+       "t3": 6,
+       "t4": 5,
+       "t5": 6,
+       "t6": 4
+      },
+      "gift_of_fangs": {
+       "t3": 6,
+       "t4": 4,
+       "t5": 6,
+       "t6": 3
+      },
+      "gift_of_dust": {
+       "t3": 4,
+       "t4": 4,
+       "t5": 4,
+       "t6": 4
+      },
+      "gift_of_claws": {
+       "t3": 4,
+       "t4": 3,
+       "t5": 5,
+       "t6": 2
+      },
+      "gift_of_scales": {
+       "t3": 1,
+       "t4": 1,
+       "t5": 2,
+       "t6": 1
+      },
+      "gift_of_blood": {
+       "t4": 2
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "The Heartwoods",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t3": 2,
+         "t5": 2,
+         "t6": 1
+        },
+        "gift_of_claws": {
+         "t3": 1,
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_venom": {
+         "t5": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Queen's Forest",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_bones": {
+         "t5": 1
+        },
+        "gift_of_fangs": {
+         "t5": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Godslost Swamp",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t4": 1,
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_bones": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Phinney Ridge",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_venom": {
+         "t5": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Gendarran Fields",
+      "en": "Gendarran Fields"
+     },
+     "lines": {
+      "t3": [
+       "gift_of_bones",
+       "gift_of_dust",
+       "gift_of_venom"
+      ],
+      "t4": [
+       "gift_of_bones",
+       "gift_of_dust",
+       "gift_of_venom"
+      ],
+      "t5": [
+       "gift_of_bones"
+      ],
+      "t6": [
+       "gift_of_bones"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t3": 15,
+       "t4": 15,
+       "t5": 17,
+       "t6": 15
+      },
+      "gift_of_venom": {
+       "t3": 8,
+       "t4": 6,
+       "t5": 8,
+       "t6": 7
+      },
+      "gift_of_dust": {
+       "t3": 6,
+       "t4": 7,
+       "t5": 5,
+       "t6": 5
+      },
+      "gift_of_scales": {
+       "t3": 1,
+       "t4": 1,
+       "t5": 4,
+       "t6": 3
+      },
+      "gift_of_claws": {
+       "t3": 2,
+       "t4": 1,
+       "t5": 1,
+       "t6": 1
+      },
+      "gift_of_fangs": {
+       "t3": 1,
+       "t4": 1
+      },
+      "gift_of_totems": {
+       "t4": 1
+      },
+      "gift_of_blood": {
+       "t3": 1
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Overlook Caverns",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_venom": {
+         "t3": 2,
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Provernic Crypt",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_venom": {
+         "t3": 2,
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Cornucopian Fields",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_claws": {
+         "t3": 1,
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "The Bloodfields",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_blood": {
+         "t3": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "The Desolation",
+      "en": "The Desolation"
+     },
+     "lines": {
+      "t4": [
+       "gift_of_venom"
+      ],
+      "t6": [
+       "gift_of_fangs",
+       "gift_of_scales"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_venom": {
+       "t3": 3,
+       "t4": 5,
+       "t5": 9,
+       "t6": 6
+      },
+      "gift_of_scales": {
+       "t3": 2,
+       "t4": 1,
+       "t5": 5,
+       "t6": 7
+      },
+      "gift_of_bones": {
+       "t5": 7,
+       "t6": 7
+      },
+      "gift_of_fangs": {
+       "t5": 7,
+       "t6": 7
+      },
+      "gift_of_claws": {
+       "t5": 4,
+       "t6": 1
+      },
+      "gift_of_blood": {
+       "t5": 4,
+       "t6": 1
+      },
+      "gift_of_totems": {
+       "t5": 3,
+       "t6": 1
+      },
+      "gift_of_dust": {
+       "t5": 3,
+       "t6": 1
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Scorched March",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_bones": {
+         "t5": 4,
+         "t6": 4
+        },
+        "gift_of_fangs": {
+         "t5": 2,
+         "t6": 2
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Sand Jackal Run",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_fangs": {
+         "t5": 2,
+         "t6": 1
+        },
+        "gift_of_claws": {
+         "t5": 2
+        },
+        "gift_of_venom": {
+         "t5": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "The Darklands",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 3
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Broken Shelf",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t5": 1,
+         "t6": 3
+        },
+        "gift_of_venom": {
+         "t5": 1,
+         "t6": 3
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Mad King's Realm",
+      "en": "Mad King's Realm"
+     },
+     "lines": {
+      "t3": [
+       "gift_of_bones",
+       "gift_of_venom"
+      ],
+      "t4": [
+       "gift_of_bones",
+       "gift_of_venom"
+      ],
+      "t5": [
+       "gift_of_bones"
+      ],
+      "t6": [
+       "gift_of_bones"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_bones": {
+       "t3": 16,
+       "t4": 16,
+       "t5": 21,
+       "t6": 19
+      },
+      "gift_of_venom": {
+       "t3": 5,
+       "t4": 5,
+       "t5": 5,
+       "t6": 5
+      },
+      "gift_of_dust": {
+       "t3": 4,
+       "t4": 4,
+       "t5": 5,
+       "t6": 5
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Mad King's Labyrinth",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_bones": {
+         "t3": 10,
+         "t4": 10,
+         "t5": 15,
+         "t6": 13
+        },
+        "gift_of_venom": {
+         "t3": 5,
+         "t4": 5,
+         "t5": 5,
+         "t6": 5
+        },
+        "gift_of_dust": {
+         "t5": 1,
+         "t6": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "map": {
+      "fr": "Iron Marches",
+      "en": "Iron Marches"
+     },
+     "lines": {
+      "t3": [
+       "gift_of_dust"
+      ],
+      "t4": [
+       "gift_of_claws",
+       "gift_of_dust",
+       "gift_of_venom"
+      ]
+     },
+     "why": {
+      "fr": "Foyer des paliers bas : cette carte sert des lignes en T3 ou T4 que les cartes de niveau 80 n'atteignent pas. Le T3 et le T4 pèsent 50 unités chacun sur les 450 d'un gift.",
+      "en": "Low-tier hub: this map serves lines at T3 or T4 that level-80 maps do not reach. T3 and T4 weigh 50 units each of a gift's 450."
+     },
+     "counts": {
+      "gift_of_dust": {
+       "t3": 8,
+       "t4": 11,
+       "t5": 8,
+       "t6": 7
+      },
+      "gift_of_claws": {
+       "t3": 3,
+       "t4": 10,
+       "t5": 5,
+       "t6": 1
+      },
+      "gift_of_fangs": {
+       "t3": 2,
+       "t4": 4,
+       "t5": 7,
+       "t6": 6
+      },
+      "gift_of_venom": {
+       "t3": 1,
+       "t4": 6,
+       "t5": 5,
+       "t6": 4
+      },
+      "gift_of_scales": {
+       "t3": 1,
+       "t4": 3
+      },
+      "gift_of_bones": {
+       "t4": 1
+      },
+      "gift_of_totems": {
+       "t4": 1
+      },
+      "gift_of_blood": {
+       "t4": 1
+      }
+     },
+     "zones": [
+      {
+       "name": {
+        "en": "Glory's Steps",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_claws": {
+         "t3": 1,
+         "t4": 2,
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_fangs": {
+         "t3": 1,
+         "t4": 1,
+         "t5": 1,
+         "t6": 1
+        },
+        "gift_of_bones": {
+         "t4": 1
+        },
+        "gift_of_scales": {
+         "t4": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Echoslab Arches",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_claws": {
+         "t4": 1,
+         "t5": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Crystalwept Groves",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_scales": {
+         "t3": 1,
+         "t4": 1
+        },
+        "gift_of_totems": {
+         "t4": 1
+        },
+        "gift_of_venom": {
+         "t4": 1
+        },
+        "gift_of_dust": {
+         "t4": 1
+        }
+       }
+      },
+      {
+       "name": {
+        "en": "Champion's Shield",
+        "fr": null
+       },
+       "counts": {
+        "gift_of_claws": {
+         "t4": 2
+        },
+        "gift_of_dust": {
+         "t4": 2
         }
        }
       }
