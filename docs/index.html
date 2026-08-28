@@ -1709,7 +1709,8 @@ const SOURCES_DB = {
     "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort. Les paliers T3 et T4 rejoignent le bloc « Ou farmer » : counts et lines gagnent leurs entrees t3/t4, farm_hubs.tiers passe de deux a quatre. Meme structure, meme seuil relatif de 8 % — rien de parallele. Les 50+50 unites par gift qu'ils pesent sont desormais visibles.",
     "changelog_v174": "Balayage des 64 collections a la recherche de consommations vivant en prose, comme les lingots Xunlai. 74 mentions chiffrees relevees ; une seule n'etait portee par aucun composant : les runes et sigils legendaires consomment 300 trefles mystiques et 600 jetons de fournisseur, et provisioner_token n'existait pas dans craft_components. Cree, avec son plafond de 105 par semaine, et marque verified false — le compte vient de la prose, pas d'une source verifiee. Les 73 autres mentions sont deja dans la chaine : ectoplasmes et notes de recherche de Stella Radians, eclats de magnetite de Coalescence.",
     "changelog_v175": "Trois doubles comptes signales de longue date par l'audit sont tranches sur les arbres. Le Fragment de pierre de sang etait compte deux fois sur Aurora, Vision et Coalescence : une fois a plat sur le legendaire, une fois par le Don de maitrise qui l'exige. L'arbre est net — Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery, aucun noeud direct. Les trois affichaient 2 pour 1 requis. Les totaux a plat sont retires : la chaine suffit.",
-    "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop."
+    "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop.",
+    "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre."
   },
   "meta_events": {
     "vb": {
@@ -15190,13 +15191,15 @@ const SOURCES_DB = {
           "type": "vendor",
           "map": "Janthir Wilds",
           "tip": {
-            "fr": "Arid Esker, Vigilant Dawn et Whispers of Wind (Janthir Syntri) plus Ward Trader Sampaguita (Bava Nisos), 4 + 7 + 7 + 6. Les trois premiers exigent le cœur complété.",
-            "en": "Arid Esker, Vigilant Dawn and Whispers of Wind (Janthir Syntri) plus Ward Trader Sampaguita (Bava Nisos), 4 + 7 + 7 + 6. The first three require the heart complete."
+            "fr": "Quatre vendeurs : Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site) et Whispers of Wind (Festering Basin) à Janthir Syntri — cœur à COMPLÉTER — et Ward Trader Sampaguita (Mantle's Arrival, Bava Nisos), sans condition de cœur. Aucun plafond hebdomadaire annoncé.",
+            "en": "Four vendors: Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site) and Whispers of Wind (Festering Basin) in Janthir Syntri — heart must be COMPLETE — plus Ward Trader Sampaguita (Mantle's Arrival, Bava Nisos), no heart condition. No weekly cap announced."
           },
           "free_repeatable": false,
           "verified": true,
-          "checked": "2026-08-25",
-          "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+          "checked": "2026-08-27",
+          "ref": "wiki, section Acquisition — captures recuperees le 27/08/2026",
+          "paid_repeatable": true,
+          "paid_repeatable_ref": "wiki, section Acquisition — captures recuperees le 27/08/2026"
         }
       ],
       "verified": true,
@@ -15205,12 +15208,7 @@ const SOURCES_DB = {
       "needed_for": [
         "klobjarne_geirr",
         "orrax_manifested"
-      ],
-      "free_sources_note": {
-        "fr": "⚠ Non établi. La capture wiki de cet objet rend une section Acquisition vide — le tableau des vendeurs est construit côté client et n'apparaît pas dans le HTML. Ni piste gratuite ni piste payante ne sont donc confirmées : l'absence vient de la capture, pas du jeu.",
-        "en": "⚠ Not established. The wiki capture for this item renders an empty Acquisition section — the vendor table is built client-side and does not appear in the HTML. Neither a free nor a paid path is confirmed: the absence comes from the capture, not from the game."
-      },
-      "free_sources_note_ref": "ressources/wiki/neutralized_titan_alloy.html — section Acquisition vide"
+      ]
     },
     "shard_of_lowland_shore": {
       "name": "Shard of Lowland Shore",
@@ -15692,14 +15690,20 @@ const SOURCES_DB = {
           "type": "renown_heart",
           "map": "Mistburned Barrens",
           "tip": {
-            "fr": "Kodan Landspeaker (Alliance Staging Ground), 3 + 3 + 1 750 karma. ⚠ Exige que le cœur de renommée soit INCOMPLET — l'inverse des shards de Janthir Syntri et Lowland Shore, qui exigent qu'il soit terminé. Un seul vendeur, et aucun plafond hebdomadaire documenté.",
-            "en": "Kodan Landspeaker (Alliance Staging Ground), 3 + 3 + 1,750 karma. ⚠ Requires the renown heart to be INCOMPLETE — the opposite of the Janthir Syntri and Lowland Shore shards, which require it finished. A single vendor, and no documented weekly cap."
+            "fr": "Kodan Landspeaker (Alliance Staging Ground, Mistburned Barrens) — 20 par semaine et par PNJ, éclats normaux et réduits confondus. ⚠ Exige le cœur de renom INCOMPLET : le compléter ferme la source.",
+            "en": "Kodan Landspeaker (Alliance Staging Ground, Mistburned Barrens) — 20 per week per NPC, regular and discounted shards alike. ⚠ Requires the renown heart to be INCOMPLETE: completing it closes the source."
           },
           "free_repeatable": false,
           "verified": true,
-          "checked": "2026-08-26",
-          "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
-          "paid_repeatable_unknown": "la capture wiki ne rend pas le tableau des vendeurs (section Acquisition vide) — renouvellement et plafond non etablis, a recapturer"
+          "checked": "2026-08-27",
+          "ref": "wiki, section Acquisition — captures recuperees le 27/08/2026",
+          "paid_repeatable": true,
+          "paid_cap": {
+            "n": 20,
+            "period": "week",
+            "per": "vendeur"
+          },
+          "paid_repeatable_ref": "wiki, section Acquisition — captures recuperees le 27/08/2026"
         }
       ],
       "verified": true,
@@ -15712,11 +15716,28 @@ const SOURCES_DB = {
         "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
         "en": "⚠ Does NOT follow its two twins' pattern, contrary to what the symmetry suggested: one vendor instead of three, no weekly cap, and the heart must be left INCOMPLETE. The 100 required therefore carry no timegate — but remember not to finish the heart."
       },
-      "free_sources_note": {
-        "fr": "⚠ Non établi. La capture wiki de cet objet rend une section Acquisition vide — le tableau des vendeurs est construit côté client et n'apparaît pas dans le HTML. Ni piste gratuite ni piste payante ne sont donc confirmées : l'absence vient de la capture, pas du jeu.",
-        "en": "⚠ Not established. The wiki capture for this item renders an empty Acquisition section — the vendor table is built client-side and does not appear in the HTML. Neither a free nor a paid path is confirmed: the absence comes from the capture, not from the game."
-      },
-      "free_sources_note_ref": "ressources/wiki/shard_of_mistburned_barrens.html — section Acquisition vide"
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Kodan Landspeaker — Alliance Staging Ground, Landes calcinées",
+              "en": "Kodan Landspeaker — Alliance Staging Ground, Mistburned Barrens"
+            },
+            "period": "week",
+            "cap": 20,
+            "cost": {
+              "fr": "3 + 3 + 1 750 karma. ⚠ Exige le cœur de renom INCOMPLET.",
+              "en": "3 + 3 + 1,750 karma. ⚠ Requires the renown heart to be INCOMPLETE."
+            },
+            "verified": true,
+            "checked": "2026-08-27",
+            "ref": "wiki:Shard_of_Mistburned_Barrens — ressources/wiki/shard_of_mistburned_barrens.html, 27/08/2026"
+          }
+        ],
+        "verified": true,
+        "checked": "2026-08-27",
+        "ref": "wiki:Shard_of_Mistburned_Barrens — ressources/wiki/shard_of_mistburned_barrens.html, 27/08/2026"
+      }
     },
     "discounted_shard_of_mistburned_barrens": {
       "name": "Discounted Shard of Mistburned Barrens",

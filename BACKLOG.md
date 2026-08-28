@@ -678,11 +678,18 @@ est payante et plafonnée.
 Acquisition des captures : Bava Nisos 20/semaine, Janthir Syntri et Lowland
 Shore 7 par PNJ et par semaine, Homestead et Seer Runestone sans plafond chiffré.
 
-**Deux cas laissés ouverts, volontairement** : `neutralized_titan_alloy` et
-`shard_of_mistburned_barrens` ont une capture wiki dont la section Acquisition
-est **vide** — le tableau est rendu côté client. Ni piste gratuite ni piste
-payante ne sont confirmées, et `free_sources_note` le dit : l'absence vient de
-la capture, pas du jeu. À recapturer.
+**Les deux cas ouverts sont clos le 27/08/2026.** Recapturés, et l'absence
+venait bien de la capture :
+
+- **Alliage de titan neutralisé** : quatre vendeurs — Arid Esker, Vigilant Dawn
+  et Whispers of Wind à Janthir Syntri (cœur à **compléter**), plus Ward Trader
+  Sampaguita à Bava Nisos, sans condition. Aucun plafond hebdomadaire annoncé.
+- **Éclat des Landes calcinées** : Kodan Landspeaker, **20 par semaine et par
+  PNJ**, éclats normaux et réduits confondus. ⚠ Exige le cœur de renom
+  **INCOMPLET** — le compléter ferme la source, ce qui confirme la règle déjà
+  notée pour cette famille d'éclats.
+
+`free_sources_note` est retiré des deux : il n'a plus lieu d'être.
 
 ## Les blocs `currencies` du JSX — ✅ **RÉSOLU le 27/08/2026**
 
