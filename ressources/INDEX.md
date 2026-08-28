@@ -110,6 +110,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `tale_of_adventure.html` | Tale of Adventure | article complet | 2026-08-27 |
 | `titan_heatstone.html` | Titan Heatstone | article complet | 2026-08-27 |
 | `unusual_coin.html` | Unusual Coin | article complet | 2026-08-27 |
+| `lump_of_mithrillium.html` | Lump of Mithrillium | article complet | 2026-08-27 |
+| `provisioner_token.html` | Provisioner Token | article complet | 2026-08-27 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -130,6 +132,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `intricate_totem.html` | Intricate Totem | article complet — T5 | 2026-08-27 |
 | `potent_venom_sac.html` | Potent Venom Sac | article complet — T5 | 2026-08-27 |
 | `pile_of_incandescent_dust.html` | Pile of Incandescent Dust | article complet — T5 | 2026-08-27 |
+| `large_bone__dropped_by_p2.html` | Large Bone | suite « Dropped by », 11 NPC | 2026-08-27 |
+| `large_claw__dropped_by_p2.html` | Large Claw | suite « Dropped by », 25 NPC | 2026-08-27 |
+| `pile_of_incandescent_dust__dropped_by_p2.html` | Pile of Incandescent Dust | suite « Dropped by », 80 NPC | 2026-08-27 |
+| `potent_venom_sac__dropped_by_p2.html` | Potent Venom Sac | suite « Dropped by », 11 NPC | 2026-08-27 |
 | `venom_sac.html` | Venom Sac | article complet — T3 | 2026-08-27 |
 | `vial_of_blood.html` | Vial of Blood | article complet — T3 | 2026-08-27 |
 | `vial_of_thick_blood.html` | Vial of Thick Blood | article complet — T4 | 2026-08-27 |
@@ -155,6 +161,13 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 | `the_ascension.html` | The Ascension | 2026-08-27 |
 | `transcendence.html` | Transcendence | 2026-08-27 |
 | `warbringer.html` | Warbringer, arbre complet | 2026-08-27 |
+| `obsidian_armor_breastplate.html` | Cuirasse d'armure d'obsidienne lourde | 2026-08-27 |
+
+## Contrôle d'inventaire
+
+Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
+lire. Vérification du 27/08/2026 : **82 captures, 82 lignes, aucun écart** —
+7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
 

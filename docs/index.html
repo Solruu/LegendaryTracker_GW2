@@ -1708,7 +1708,8 @@ const SOURCES_DB = {
     "changelog_v172": "Les dix legendaires restants migrent vers collections{} : 56 collections, 379 etapes. raidAchievements[] du JSX disparait des sources comme structure concurrente. Trois conventions d'indexation des bitTips coexistaient : par numero de bit, par nom d'objet, et — la ou le dump porte la phrase de requirement au lieu du nom — par rang. Le rapprochement par rang n'est applique que si le nombre de conseils egale EXACTEMENT le nombre de bits, sinon on ne devine pas. metaSubs, recipe, cumulative, rate et target sont conserves tels quels : ils ont un rendu dedie. Les how portent tous how_verified false. Trois plafonds en prose sont apparus a l'audit en migrant : ils vivaient dans le JSX, ou la regle ne regardait pas. Aucun n'est nouveau, ils etaient invisibles. cadence_ref pose sur le legendaire — legendary_insight pour Perfected Envoy, trefles et jetons de fournisseur pour les Upgrades, cristal de difluorite pour Vision — plutot que de redeclarer des cadences qui existent deja sur les composants.",
     "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort. Les paliers T3 et T4 rejoignent le bloc « Ou farmer » : counts et lines gagnent leurs entrees t3/t4, farm_hubs.tiers passe de deux a quatre. Meme structure, meme seuil relatif de 8 % — rien de parallele. Les 50+50 unites par gift qu'ils pesent sont desormais visibles.",
     "changelog_v174": "Balayage des 64 collections a la recherche de consommations vivant en prose, comme les lingots Xunlai. 74 mentions chiffrees relevees ; une seule n'etait portee par aucun composant : les runes et sigils legendaires consomment 300 trefles mystiques et 600 jetons de fournisseur, et provisioner_token n'existait pas dans craft_components. Cree, avec son plafond de 105 par semaine, et marque verified false — le compte vient de la prose, pas d'une source verifiee. Les 73 autres mentions sont deja dans la chaine : ectoplasmes et notes de recherche de Stella Radians, eclats de magnetite de Coalescence.",
-    "changelog_v175": "Trois doubles comptes signales de longue date par l'audit sont tranches sur les arbres. Le Fragment de pierre de sang etait compte deux fois sur Aurora, Vision et Coalescence : une fois a plat sur le legendaire, une fois par le Don de maitrise qui l'exige. L'arbre est net — Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery, aucun noeud direct. Les trois affichaient 2 pour 1 requis. Les totaux a plat sont retires : la chaine suffit."
+    "changelog_v175": "Trois doubles comptes signales de longue date par l'audit sont tranches sur les arbres. Le Fragment de pierre de sang etait compte deux fois sur Aurora, Vision et Coalescence : une fois a plat sur le legendaire, une fois par le Don de maitrise qui l'exige. L'arbre est net — Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery, aucun noeud direct. Les trois affichaient 2 pour 1 requis. Les totaux a plat sont retires : la chaine suffit.",
+    "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop."
   },
   "meta_events": {
     "vb": {
@@ -3028,7 +3029,6 @@ const SOURCES_DB = {
       ],
       "qty": {
         "perfected_envoy__per_piece": 1,
-        "obsidian__per_piece": 1,
         "cube_stabilized_dark_energy": 1,
         "gift_of_compassion": 6
       },
@@ -3046,7 +3046,8 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Ball_of_Dark_Energy — sections « Currency for » et « Recipes » (capture Antoine 22/08/2026)"
+      "ref": "wiki:Ball_of_Dark_Energy — sections « Currency for » et « Recipes » (capture Antoine 22/08/2026)",
+      "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece"
     },
     "stabilizing_matrix": {
       "name": "Stabilizing Matrix",
@@ -3059,7 +3060,6 @@ const SOURCES_DB = {
         "transcendence"
       ],
       "qty": {
-        "obsidian__per_piece": 75,
         "cube_stabilized_dark_energy": 75,
         "ad_infinitum": 600,
         "aetheric_anchor": 75,
@@ -3077,7 +3077,8 @@ const SOURCES_DB = {
       "kind": "acquire",
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece"
     },
     "gift_of_battle": {
       "name": "Gift of Battle",
@@ -10102,58 +10103,50 @@ const SOURCES_DB = {
           "type": "vendor",
           "paid_repeatable": true,
           "paid_cap": {
-            "n": 105,
-            "period": "week"
+            "n": 7,
+            "period": "week",
+            "per": "vendeur"
           },
           "tip": {
-            "fr": "Vendeurs de matériaux d'artisanat, plafond de 105 par semaine et par compte. Lyhr et Vindrae en vendent sans limite contre de l'or.",
-            "en": "Crafting material vendors, capped at 105 per week per account. Lyhr and Vindrae sell them without limit for gold."
+            "fr": "Faction Provisioners, 7 par semaine et par vendeur. Voir la page « Faction Provisioner » du wiki pour le tableau complet des prix et des emplacements.",
+            "en": "Faction Provisioners, 7 per week per vendor. See the wiki's 'Faction Provisioner' page for the full price and location table."
           },
-          "verified": false,
-          "ref": "prose de upgrades_combined/rune_collector et sigil_collector — a reverifier en jeu",
-          "checked": "2026-08-27"
+          "verified": true,
+          "checked": "2026-08-27",
+          "ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026",
+          "paid_repeatable_ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026"
         }
       ],
-      "verified": false,
+      "verified": true,
       "checked": "2026-08-27",
-      "ref": "deduit de la prose des collections runes et sigils, jamais porte par un composant jusqu'ici",
+      "ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026",
       "cadence": {
         "sources": [
           {
             "label": {
-              "fr": "Vendeurs de matériaux d'artisanat",
-              "en": "Crafting material vendors"
+              "fr": "Faction Provisioners — 7 par semaine et par vendeur",
+              "en": "Faction Provisioners — 7 per week per vendor"
             },
             "period": "week",
-            "cap": 105,
+            "cap": 7,
             "cost": {
-              "fr": "Échange de matériaux, plafond par COMPTE",
-              "en": "Material exchange, per-ACCOUNT cap"
+              "fr": "Un matériau différent par vendeur (obsidienne, runes, cordes…). Le plafond est PAR VENDEUR : multiplier par le nombre de vendeurs visités.",
+              "en": "A different material per vendor (obsidian, runes, cords…). The cap is PER VENDOR: multiply by the number of vendors visited."
             },
-            "verified": false,
+            "verified": true,
             "checked": "2026-08-27",
-            "ref": "prose de upgrades_combined/rune_collector — a reverifier en jeu"
-          },
-          {
-            "label": {
-              "fr": "Lyhr et Vindrae — sans limite",
-              "en": "Lyhr and Vindrae — no limit"
-            },
-            "period": "none",
-            "cap": null,
-            "cost": {
-              "fr": "Or, aucune limite hebdomadaire",
-              "en": "Gold, no weekly limit"
-            },
-            "verified": false,
-            "checked": "2026-08-27",
-            "ref": "prose de upgrades_combined/rune_collector — a reverifier en jeu"
+            "ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026"
           }
         ],
-        "verified": false,
+        "verified": true,
         "checked": "2026-08-27",
-        "ref": "deduit de la prose des collections runes et sigils"
-      }
+        "ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026"
+      },
+      "note": {
+        "fr": "⚙ Repère global du wiki : **2 600 jetons** suffisent à acheter les 52 Dons d'artisanat de TOUS les légendaires de l'Armurerie — 8 cachets, 7 runes, la relique et 36 pièces d'armure. Ce total compte l'armure d'obsidienne ET celle de l'Émissaire, dont les fonctions se recouvrent : n'en faire qu'une par classe d'armure ramène le besoin à **1 700 jetons**.",
+        "en": "⚙ Global benchmark from the wiki: **2,600 tokens** buy the 52 Gifts of Craftsmanship for EVERY legendary in the Armory — 8 sigils, 7 runes, the relic and 36 armor pieces. That total counts both Obsidian and Envoy armor, whose functions overlap: crafting only one set per weight class brings the requirement down to **1,700 tokens**."
+      },
+      "note_ref": "wiki:Provisioner_Token — ressources/wiki/provisioner_token.html, capture du 27/08/2026"
     },
     "gift_of_expertise": {
       "name": "Gift of Expertise",

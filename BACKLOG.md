@@ -712,7 +712,7 @@ qui l'exige déjà : total de **2 pour 1 requis**. L'arbre est net — Vision
 `1 <- Gift of Arid Mastery`, Coalescence `1 <- Gift of Desert Mastery`, aucun
 nœud direct. Les trois totaux à plat sont retirés, la chaîne suffit.
 
-### ⏳ Ball of Dark Energy et Stabilizing Matrix — non tranchés, faute de source
+### ✅ Ball of Dark Energy et Stabilizing Matrix — tranchés le 27/08/2026
 
 Les deux portent une exigence **à plat sur `obsidian__per_piece`** ET une
 exigence **via `cube_stabilized_dark_energy`**, qui lui-même vaut 1 par pièce :
@@ -722,14 +722,26 @@ exigence **via `cube_stabilized_dark_energy`**, qui lui-même vaut 1 par pièce 
 | Ball of Dark Energy | 1 | 1 × 1 | **2** |
 | Stabilizing Matrix | 75 | 1 × 75 | **150** |
 
-**Deux lectures possibles, et je ne peux pas choisir** : soit la pièce exige un
-cube *et* des matrices en plus — auquel cas les totaux sont bons —, soit les
-matrices sont consommées *par* le cube et sont comptées deux fois.
+**L'arbre de la cuirasse tranche** : par pièce, tout passe par le cube.
+`75 Stabilizing Matrix <- Cube`, `1 Ball of Dark Energy <- Cube`, **aucun nœud
+direct sur la pièce**. Les entrées à plat étaient bien un doublon.
 
-**Ce qu'il faudrait** : l'arbre GW2Efficiency de l'armure d'obsidienne, absent de
-`ressources/gw2efficiency/`. Un seul export réglerait la question.
+Corrigé : la matrice repasse de 150 à **75** par pièce, la boule de 2 à **1**.
+Sur les six pièces d'un set, **450 matrices de trop** disparaissent.
 
-## Jeton de fournisseur : 450 contre 600
+## Jeton de fournisseur — ✅ **VÉRIFIÉ le 27/08/2026 sur le wiki**
+
+Le plafond n'est **pas** de 105 par compte : c'est **7 par semaine et par
+VENDEUR**. Le 105 de la prose était un total de quinze vendeurs présenté comme
+un plafond déclaré. Cadence corrigée, `verified: true`.
+
+**Repère global relevé sur la page** : **2 600 jetons** suffisent aux 52 Dons
+d'artisanat de TOUS les légendaires de l'Armurerie — 8 cachets, 7 runes, la
+relique, 36 pièces d'armure. Ce total compte l'armure d'obsidienne ET celle de
+l'Émissaire, dont les fonctions se recouvrent : une seule par classe d'armure
+ramène le besoin à **1 700**. Inscrit dans la note du composant.
+
+### Reste : 450 contre 600
 
 Troisième table parallèle, dernière du genre : le bloc `currencies` du JSX
 déclare **450** pour `upgrades` (apiId 29), la chaîne en calcule **600**
