@@ -32392,7 +32392,7 @@ const LEGENDARIES = {
       { id: "insights",  name: "Legendary Insight", required: 150, icon: "LI", apiId: 70 },
       { id: "gaeting",   name: "Gaeting Crystal",   required: 100, icon: "GC", apiId: 39 },
       { id: "clovers",   name: "Mystic Clover",     required: 77,  icon: "MC", apiId: 19675 },
-      { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
+      { id: "coins",     name: "Mystic Coin",       required: 499, icon: "MN", apiId: 19976 },
     ],
     collectionNoteKeys: ["raids_li_note", "raids_wings_note"],
     metas: [],
@@ -32412,7 +32412,7 @@ const LEGENDARIES = {
     currencies: [
       { id: "notes",   name: "Research Note",  required: 5000, icon: "RN", apiId: 61 },
       { id: "clovers", name: "Mystic Clover",  required: 55,   icon: "MC", apiId: 19675 },
-      { id: "shards",  name: "Obsidian Shard", required: 250,  icon: "OS", apiId: 19925 },
+      { id: "shards",  name: "Obsidian Shard", required: 488,  icon: "OS", apiId: 19925 },
     ],
     collectionNoteKeys: ["sel_note1", "sel_note2"],
     metas: [],
@@ -32817,7 +32817,7 @@ const LEGENDARIES = {
     currencies: [
       { id: "sap",      name: "Aether-Rich Sap",      required: 500, icon: "AS", apiId: 83 },
       { id: "ducat",    name: "Antiquated Ducat",     required: 500, icon: "AD", apiId: 81 },
-      { id: "obsidian", name: "Obsidian Shard",       required: 250, icon: "OS", apiId: 19925 },
+      { id: "obsidian", name: "Obsidian Shard",       required: 283, icon: "OS", apiId: 19925 },
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
       { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
     ],
@@ -32847,7 +32847,7 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [
       { id: "karma",   name: "Karma",         required: 7000000, icon: "KA", apiId: 2 },
-      { id: "coins",   name: "Mystic Coin",   required: 250,     icon: "MO", apiId: 19976 },
+      { id: "coins",   name: "Mystic Coin",   required: 499,     icon: "MO", apiId: 19976 },
       { id: "clovers", name: "Mystic Clover", required: 77,      icon: "MC", apiId: 19675 },
     ],
     metas: [
@@ -32871,8 +32871,8 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [
       { id: "tales",   name: "Tales of Dungeon Delving", required: 500, icon: "TD", apiId: 69 },
-      { id: "clovers", name: "Mystic Clover",            required: 38,  icon: "MC", apiId: 19675 },
-      { id: "oblige",  name: "Ursus Oblige",             required: 300, icon: "UO", apiId: 76 },
+      { id: "clovers", name: "Mystic Clover",            required: 68,  icon: "MC", apiId: 19675 },
+      { id: "oblige",  name: "Ursus Oblige",             required: 1250, icon: "UO", apiId: 76 },
     ],
     metas: [
       { id: "titanic", name: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, subname: { fr: "Bava Nisos", en: "Bava Nisos" }, expansion: "JW", icon: "TV",
@@ -32899,9 +32899,9 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [
       { id: "relics",   name: "Fractal Relic",          required: 4650, icon: "FR", apiId: 7 },
-      { id: "pristine", name: "Pristine Fractal Relic", required: 240, icon: "PF", apiId: 24 },
+      { id: "pristine", name: "Pristine Fractal Relic", required: 140, icon: "PF", apiId: 24 },
       { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
-      { id: "coins",    name: "Mystic Coin",            required: 250, icon: "MO", apiId: 19976 },
+      { id: "coins",    name: "Mystic Coin",            required: 249, icon: "MO", apiId: 19976 },
     ],
     requirements: {
       unit: { fr: "collection", en: "collection" },
@@ -32947,7 +32947,7 @@ const LEGENDARIES = {
     currencies: [
       { id: "tickets", name: "Skirmish Claim Tickets", required: 3000, icon: "SK", apiId: 26 },
       { id: "clovers", name: "Mystic Clover",          required: 45,   icon: "MC", apiId: 19675 },
-      { id: "memory",  name: "Memory of Battle",       required: 250,  icon: "MB", apiId: 71581 },
+      { id: "memory",  name: "Memory of Battle",       required: 500,  icon: "MB", apiId: 71581 },
     ],
     requirements: {
       unit: { fr: "accessoire", en: "accessory" }, unitTotal: 1,
@@ -34992,6 +34992,7 @@ function GW2LegendaryTracker() {
         bitTips: Object.fromEntries(
           (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
         steps: (c.items ?? []).map(i => ({ index: i.bit, text: i.name })),
+        noteAlt: c.note_alt,
       }))
     : [];   // plus de repli : raidAchievements a disparu du JSX
 
@@ -37571,6 +37572,15 @@ function GW2LegendaryTracker() {
                 <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: "3px" }}>
                   {L(a.tip)}
                 </div>
+                {/* note_alt : la note concurrente conservee quand le JSX et les
+                    sources divergeaient a la migration. Elle etait ecrite mais
+                    jamais affichee — mieux vaut la montrer en retrait que la
+                    laisser morte dans le fichier. */}
+                {a.noteAlt && (
+                  <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.28)", fontFamily: "'Crimson Text', serif", fontStyle: "italic", marginTop: "3px", paddingLeft: 8, borderLeft: "2px solid rgba(226,201,126,0.12)" }}>
+                    {L(a.noteAlt)}
+                  </div>
+                )}
                 {(() => {
                   // Le deblocage vit dans les sources, indexe par identifiant de
                   // succes (collection_unlocks). Il disait COMMENT debloquer ; la

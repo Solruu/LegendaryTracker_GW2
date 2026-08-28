@@ -136,6 +136,8 @@ def _jsx_currency_blocks(src):
 NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "editorial_principle", "meta_eligible_note", "achievement_notes_note",
                    "i18n_note", "i18n_zones_note", "apiid_fix_note", "armory_map_fix_note",
+                   "common_required_scope", "flat_vs_chain_rule", "raw_materials_scope",
+                   "recipe_tree_caveat",
                    "free_repeatable_note", "apiId_fix", "how",
                    "paid_repeatable_ref", "paid_repeatable_unknown", "total_ref", "free_sources_note_ref",
                    "total_unknown_ref", "how_ref", "cadence_ref_note"}
