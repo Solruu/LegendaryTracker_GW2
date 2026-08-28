@@ -1706,7 +1706,8 @@ const SOURCES_DB = {
     "changelog_v170": "Les onglets Armes et Colifichets etaient morts depuis la migration vers tab_contract : le contrat demandait les flags isWeapons et isTrinkets, qui n'existent nulle part. Les vrais s'appellent isWeaponTracker et isTrinketTracker. Zero occurrence dans LEGENDARIES contre 4 pour isArmorSet, qui lui fonctionnait — d'ou une panne invisible sur deux hubs seulement. La matrice de ciblage par generation, le selecteur gen1/gen2/gen3/Divers et les notes de cout par generation existaient et n'etaient jamais rendus. Corrige dans le contrat, pas dans le JSX : les flags du JSX sont les noms d'origine, c'est le contrat qui les avait mal recopies.",
     "changelog_v171": "Ad Infinitum migre vers collections{} : validation de forme avant les dix autres. Les trois structures concurrentes fusionnent en une. raidAchievements[] du JSX apportait les bitTips par etape, achievements[] des sources la note et le total, le dump les noms d'etapes. Resultat : 4 collections, 46 etapes nommees, 46 how issus des bitTips et marques how_verified false — ce sont des conseils editoriaux, pas des instructions reverifiees. Les totaux ne sont plus ecrits a la main mais comptes sur les bits du dump. La note d'adinf_4 divergeait entre le JSX et les sources : la version JSX chiffre les murs d'echelle, elle est retenue, l'autre passe en note_alt plutot que d'etre perdue.",
     "changelog_v172": "Les dix legendaires restants migrent vers collections{} : 56 collections, 379 etapes. raidAchievements[] du JSX disparait des sources comme structure concurrente. Trois conventions d'indexation des bitTips coexistaient : par numero de bit, par nom d'objet, et — la ou le dump porte la phrase de requirement au lieu du nom — par rang. Le rapprochement par rang n'est applique que si le nombre de conseils egale EXACTEMENT le nombre de bits, sinon on ne devine pas. metaSubs, recipe, cumulative, rate et target sont conserves tels quels : ils ont un rendu dedie. Les how portent tous how_verified false. Trois plafonds en prose sont apparus a l'audit en migrant : ils vivaient dans le JSX, ou la regle ne regardait pas. Aucun n'est nouveau, ils etaient invisibles. cadence_ref pose sur le legendaire — legendary_insight pour Perfected Envoy, trefles et jetons de fournisseur pour les Upgrades, cristal de difluorite pour Vision — plutot que de redeclarer des cadences qui existent deja sur les composants.",
-    "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort. Les paliers T3 et T4 rejoignent le bloc « Ou farmer » : counts et lines gagnent leurs entrees t3/t4, farm_hubs.tiers passe de deux a quatre. Meme structure, meme seuil relatif de 8 % — rien de parallele. Les 50+50 unites par gift qu'ils pesent sont desormais visibles."
+    "changelog_v173": "Dump elargi a 186 succes : les 24 qui manquaient sont arrives. Les 38 etapes sans libelle sont nommees, 33 etapes que l'editorial ignorait sont ajoutees (468 au lieu de 435), et les 7 metas sans total fixe en ont un. Plus aucune collection sans total, plus aucune etape sans nom. Cinq totaux etaient FAUX et sont corriges sur l'API : Vision astral_purif 1 -> 15 et elegy 5 -> 20, Eikasia working 6 -> 10, r2 150 -> 300 et r3 150 -> 450. Les deux de Vision sous-estimaient d'un facteur 15 et 4. Pour Eikasia, il n'y a pas contradiction : `target` est la quantite d'un palier, le total de l'API le seuil cumule. Deuxieme table parallele supprimee : les blocs currencies du JSX portaient des exigences en doublon de craft_components[].qty, restees au gabarit de 250. Huit valeurs alignees sur les sources, toutes verifiees sur les arbres : Ursus Oblige d'Orrax 300 -> 1250, memoire de bataille de Strife Unending 250 -> 500, trefles d'Orrax 38 -> 68, obsidienne de Selachimorpha 250 -> 488 et d'Endless Summer 250 -> 283, pieces de Coalescence et Stella Radians 250 -> 499, reliques fractales d'Ad Infinitum 240 -> 140. Les sources sans piste gratuite sont distinguees de celles sans piste du tout : cinq portent desormais paid_repeatable avec leur plafond hebdomadaire. note_alt est rendu au lieu de rester mort. Les paliers T3 et T4 rejoignent le bloc « Ou farmer » : counts et lines gagnent leurs entrees t3/t4, farm_hubs.tiers passe de deux a quatre. Meme structure, meme seuil relatif de 8 % — rien de parallele. Les 50+50 unites par gift qu'ils pesent sont desormais visibles.",
+    "changelog_v174": "Balayage des 64 collections a la recherche de consommations vivant en prose, comme les lingots Xunlai. 74 mentions chiffrees relevees ; une seule n'etait portee par aucun composant : les runes et sigils legendaires consomment 300 trefles mystiques et 600 jetons de fournisseur, et provisioner_token n'existait pas dans craft_components. Cree, avec son plafond de 105 par semaine, et marque verified false — le compte vient de la prose, pas d'une source verifiee. Les 73 autres mentions sont deja dans la chaine : ectoplasmes et notes de recherche de Stella Radians, eclats de magnetite de Coalescence."
   },
   "meta_events": {
     "vb": {
@@ -6492,7 +6493,8 @@ const SOURCES_DB = {
         "armor_perfected_envoy",
         "gift_of_fortune",
         "gift_of_prosperity",
-        "orrax_manifested"
+        "orrax_manifested",
+        "upgrades_combined"
       ],
       "farmable": true,
       "sources": [
@@ -6683,7 +6685,8 @@ const SOURCES_DB = {
         "conflux": 77,
         "warbringer": 77,
         "triumphant_hero__per_piece": 15,
-        "ardent_glorious__per_piece": 15
+        "ardent_glorious__per_piece": 15,
+        "upgrades_combined": 300
       },
       "kind": "acquire",
       "best": "vendor",
@@ -10086,134 +10089,71 @@ const SOURCES_DB = {
     },
     "provisioner_token": {
       "name": "Provisioner Token",
-      "apiId": 29,
-      "type": "wallet_currency",
-      "needed_for": [
-        "gift_of_craftsmanship_purchase"
-      ],
+      "apiId": 90502,
+      "kind": "acquire",
       "farmable": true,
+      "needed_for": [
+        "upgrades_combined"
+      ],
       "qty": {
-        "obsidian__per_piece": 50,
-        "upgrades": 450
+        "upgrades_combined": 600
       },
       "sources": [
         {
-          "type": "vendor_unlimited",
-          "npc": "Rend Scorchmaul (Wizard's Tower, SotO)",
-          "tip": "SANS LIMITE d'échanges. Matériaux bruts (rotation quotidienne, ex. stack de Mithril/Elder Wood) = 1 token. La meilleure source pour du volume."
-        },
-        {
-          "type": "vendor_daily",
-          "npc": "Faction Provisioners SotO/JW (5 sur Skywatch, Amnytas, Inner Nayos, Lowland Shore…)",
-          "tip": "1 échange/jour/vendor. Matériaux bruts = 1 token, armes Stormforged/Saryx = 5 tokens. 3 choix rotatifs par jour."
-        },
-        {
-          "type": "vendor_weekly",
-          "npc": "Faction Provisioners Tyrie centrale + HoT",
-          "tip": "7 échanges/semaine par vendor (patch 03/06/2025, anciennement 1/jour)."
-        },
-        {
-          "type": "no_cap_mats",
-          "tip": "Échangeables SANS limite hebdo : Charged Quartz Crystal, Lump of Mithrillium, Glob of Elder Spirit Residue, Spool of Thick Elonian Cord, Research Notes."
-        },
-        {
-          "type": "vendor_daily",
-          "tip": {
-            "fr": "Échange quotidien chez les marchands de fournitures (Provisioner) : 1 jeton contre un objet d'artisanat de ton choix, une fois par jour et par personnage. Gratuit au sens où l'objet donné se fabrique ou se récolte. 💡 Le plafond est PAR PERSONNAGE : avec plusieurs personnages, les 450 jetons des améliorations légendaires tombent bien plus vite.",
-            "en": "Daily exchange at Provisioner merchants: 1 token for a crafting item of your choice, once per day per character. Free in that the item handed over is crafted or gathered. 💡 The cap is PER CHARACTER: with several characters the 450 tokens for legendary upgrades come in far faster."
+          "type": "vendor",
+          "paid_repeatable": true,
+          "paid_cap": {
+            "n": 105,
+            "period": "week"
           },
-          "free_repeatable": true,
-          "cadence": "quotidienne (par personnage)",
-          "verified": true,
-          "checked": "2026-08-13",
-          "ref": "wiki:Provisioner_Token — echange quotidien par personnage"
+          "tip": {
+            "fr": "Vendeurs de matériaux d'artisanat, plafond de 105 par semaine et par compte. Lyhr et Vindrae en vendent sans limite contre de l'or.",
+            "en": "Crafting material vendors, capped at 105 per week per account. Lyhr and Vindrae sell them without limit for gold."
+          },
+          "verified": false,
+          "ref": "prose de upgrades_combined/rune_collector et sigil_collector — a reverifier en jeu",
+          "checked": "2026-08-27"
         }
       ],
-      "totals_note": "2600 tokens = armurerie complète (52 Gifts of Craftsmanship) ; 1700 en ne craftant qu'un set d'armure par poids.",
-      "kind": "acquire",
-      "best": "vendor_weekly",
+      "verified": false,
+      "checked": "2026-08-27",
+      "ref": "deduit de la prose des collections runes et sigils, jamais porte par un composant jusqu'ici",
       "cadence": {
         "sources": [
           {
             "label": {
-              "fr": "Faction Provisioners (9 vendeurs recensés)",
-              "en": "Faction Provisioners (9 vendors listed)"
+              "fr": "Vendeurs de matériaux d'artisanat",
+              "en": "Crafting material vendors"
             },
             "period": "week",
-            "cap": 63,
+            "cap": 105,
             "cost": {
-              "fr": "7/semaine par vendeur. Black Citadel, Hoelbrak, Lion's Arch, Divinity's Reach, The Grove, Rata Sum, Verdant Brink, Auric Basin, Tangled Depths. Contrepartie variable selon le vendeur.",
-              "en": "7/week per vendor. Black Citadel, Hoelbrak, Lion's Arch, Divinity's Reach, The Grove, Rata Sum, Verdant Brink, Auric Basin, Tangled Depths. Cost varies by vendor."
+              "fr": "Échange de matériaux, plafond par COMPTE",
+              "en": "Material exchange, per-ACCOUNT cap"
             },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Provisioner_Token#Acquisition"
+            "verified": false,
+            "checked": "2026-08-27",
+            "ref": "prose de upgrades_combined/rune_collector — a reverifier en jeu"
           },
           {
             "label": {
-              "fr": "Dugan (McM)",
-              "en": "Dugan (WvW)"
+              "fr": "Lyhr et Vindrae — sans limite",
+              "en": "Lyhr and Vindrae — no limit"
             },
-            "period": "week",
-            "cap": 25,
-            "cost": {
-              "fr": "5 Memory of Battle + 5 Testimony of Castoran + 5 Skirmish Claim Ticket + 10 Badge of Honor",
-              "en": "5 Memory of Battle + 5 Testimony of Castoran + 5 Skirmish Claim Ticket + 10 Badge of Honor"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Provisioner_Token#Acquisition"
-          },
-          {
-            "label": {
-              "fr": "League Vendor (PvP)",
-              "en": "League Vendor (PvP)"
-            },
-            "period": "week",
-            "cap": 15,
-            "cost": {
-              "fr": "5 PvP League Ticket + 100 Shard of Glory",
-              "en": "5 PvP League Ticket + 100 Shard of Glory"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Provisioner_Token#Acquisition"
-          },
-          {
-            "label": {
-              "fr": "League Vendor — Emblem of Tournament Victory",
-              "en": "League Vendor — Emblem of Tournament Victory"
-            },
-            "period": "week",
-            "cap": 2,
-            "cost": {
-              "fr": "5 tokens pour 1 Emblem",
-              "en": "5 tokens for 1 Emblem"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Provisioner_Token#Acquisition"
-          },
-          {
-            "label": {
-              "fr": "Rend Scorchmaul (Tour du Sorcier)",
-              "en": "Rend Scorchmaul (Wizard's Tower)"
-            },
-            "period": "week",
+            "period": "none",
             "cap": null,
             "cost": {
-              "fr": "AUCUN plafond hebdo. 300 Research Notes, ou 1 Lump of Mithrillium / Glob of Elder Spirit Residue / Spool of Thick Elonian Cord / Charged Quartz Crystal. ⚠ Ces quatre matériaux sont eux-mêmes limités à 1/jour au craft : seule la voie Research Notes est réellement sans limite.",
-              "en": "NO weekly cap. 300 Research Notes, or 1 Lump of Mithrillium / Glob of Elder Spirit Residue / Spool of Thick Elonian Cord / Charged Quartz Crystal. ⚠ Those four materials are themselves capped at 1/day to craft: only the Research Notes route is genuinely uncapped."
+              "fr": "Or, aucune limite hebdomadaire",
+              "en": "Gold, no weekly limit"
             },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Provisioner_Token#Acquisition"
+            "verified": false,
+            "checked": "2026-08-27",
+            "ref": "prose de upgrades_combined/rune_collector — a reverifier en jeu"
           }
-        ]
-      },
-      "note": {
-        "fr": "105 tokens/semaine plafonnés (63 Faction + 25 Dugan + 15 + 2 PvP), plus Rend Scorchmaul sans plafond. ⚠ Aucune source quotidienne : la table d'acquisition ne mentionne que des limites hebdomadaires. La mention « 1 échange/jour/vendeur » précédemment portée ici était fausse.",
-        "en": "105 capped tokens/week (63 Faction + 25 Dugan + 15 + 2 PvP), plus uncapped Rend Scorchmaul. ⚠ No daily source: the acquisition table lists weekly limits only. The '1 trade/day/vendor' claim previously carried here was wrong."
+        ],
+        "verified": false,
+        "checked": "2026-08-27",
+        "ref": "deduit de la prose des collections runes et sigils"
       }
     },
     "gift_of_expertise": {

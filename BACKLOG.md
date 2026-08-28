@@ -496,10 +496,16 @@ se cumulent.
 `currency_cost` sur des bits, et les quatre sont câblés (Natto, Lieutenant Bran,
 Exemplar Ylan, la Relique d'un dieu). Rien à rattraper de ce côté.
 
-**Le vrai trou est ailleurs** : une collection peut consommer une ressource sans
-qu'aucun `currency_cost` ne le déclare — les 21 lingots Xunlai en étaient
-l'exemple, portés par une prose de `note`. Il faut relire les collections à la
-recherche de consommations non déclarées, pas se fier au champ.
+**Balayage fait le 27/08/2026.** Les 64 collections ont été passées au crible :
+**74 mentions chiffrées de consommation** vivent en prose. Soixante-treize sont
+déjà portées par la chaîne — ectoplasmes et notes de recherche de Stella
+Radians, éclats de magnétite de Coalescence, essences de Coalescence III.
+
+**Une seule manquait vraiment** : les runes et sigils légendaires consomment
+**300 trèfles mystiques et 600 jetons de fournisseur**, et `provisioner_token`
+n'existait dans aucun composant. Créé, avec son plafond de 105 par semaine, et
+marqué `verified: false` — le compte vient de la prose, pas d'une source
+vérifiée. À confirmer en jeu.
 
 ## Complétude — état réel au 27/08/2026
 
