@@ -14412,13 +14412,15 @@
      "type": "vendor",
      "map": "Janthir Wilds",
      "tip": {
-      "fr": "Castaway (Comosus Isle) et Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1 050 karma. ⚠ Exige la maîtrise Adept Handiwork — sans elle, aucun accès.",
-      "en": "Castaway (Comosus Isle) and Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1,050 karma. ⚠ Requires the Adept Handiwork mastery — no access without it."
+      "fr": "Castaway (Comosus Isle) et Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1 050 karma. ⚠ Exige la maîtrise Adept Handiwork — sans elle, aucun accès. Castaway (Comosus Isle) et Deft Lahar (Hearth's Glow) — exige la maîtrise Adept Handiworker Crafting.",
+      "en": "Castaway (Comosus Isle) and Deft Lahar (Hearth's Glow), 5 + 5 + 5 + 1,050 karma. ⚠ Requires the Adept Handiwork mastery — no access without it. Castaway (Comosus Isle) and Deft Lahar (Hearth's Glow) — requires the Adept Handiworker Crafting mastery."
      },
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-25",
-     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+     "paid_repeatable": true,
+     "paid_repeatable_ref": "wiki, section Acquisition des captures versees dans ressources/wiki/ (27/08/2026)"
     }
    ],
    "verified": true,
@@ -14495,7 +14497,12 @@
    "needed_for": [
     "klobjarne_geirr",
     "orrax_manifested"
-   ]
+   ],
+   "free_sources_note": {
+    "fr": "⚠ Non établi. La capture wiki de cet objet rend une section Acquisition vide — le tableau des vendeurs est construit côté client et n'apparaît pas dans le HTML. Ni piste gratuite ni piste payante ne sont donc confirmées : l'absence vient de la capture, pas du jeu.",
+    "en": "⚠ Not established. The wiki capture for this item renders an empty Acquisition section — the vendor table is built client-side and does not appear in the HTML. Neither a free nor a paid path is confirmed: the absence comes from the capture, not from the game."
+   },
+   "free_sources_note_ref": "ressources/wiki/neutralized_titan_alloy.html — section Acquisition vide"
   },
   "shard_of_lowland_shore": {
    "name": "Shard of Lowland Shore",
@@ -14509,13 +14516,20 @@
      "type": "renown_heart",
      "map": "Lowland Shore",
      "tip": {
-      "fr": "3 vendeurs de cœurs à Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété.",
-      "en": "3 heart vendors in Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete."
+      "fr": "3 vendeurs de cœurs à Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété. 7 éclats par PNJ et par semaine, version normale ou réduite confondues.",
+      "en": "3 heart vendors in Lowland Shore — Guiding Breath (Harvest Den), Shading Willow (Autumn's Vale), Vast Caldera (Coursing Upland). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete. Seven shards per NPC per week, regular or discounted alike."
      },
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-25",
-     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+     "paid_repeatable": true,
+     "paid_repeatable_ref": "wiki, section Acquisition des captures versees dans ressources/wiki/ (27/08/2026)",
+     "paid_cap": {
+      "n": 7,
+      "period": "week",
+      "per": "vendeur"
+     }
     },
     {
      "type": "trading_post",
@@ -14594,13 +14608,20 @@
      "type": "renown_heart",
      "map": "Janthir Syntri",
      "tip": {
-      "fr": "3 vendeurs de cœurs à Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété.",
-      "en": "3 heart vendors in Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete."
+      "fr": "3 vendeurs de cœurs à Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards par PNJ et par semaine, soit 21 au total. Coût : 3 + 3 + 1 750 karma la version normale, moins cher en version réduite une fois le cœur complété. 7 éclats par PNJ et par semaine, version normale ou réduite confondues.",
+      "en": "3 heart vendors in Janthir Syntri — Arid Esker (Echoing Hills), Vigilant Dawn (Old Hutment Site), Whispers of Wind (Festering Basin). 7 shards per NPC per week, so 21 in total. Cost: 3 + 3 + 1,750 karma for the regular version, cheaper for the discounted one once the heart is complete. 7 shards per NPC per week, regular or discounted alike."
      },
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-25",
-     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+     "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
+     "paid_repeatable": true,
+     "paid_repeatable_ref": "wiki, section Acquisition des captures versees dans ressources/wiki/ (27/08/2026)",
+     "paid_cap": {
+      "n": 7,
+      "period": "week",
+      "per": "vendeur"
+     }
     },
     {
      "type": "trading_post",
@@ -14969,7 +14990,8 @@
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-26",
-     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)"
+     "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
+     "paid_repeatable_unknown": "la capture wiki ne rend pas le tableau des vendeurs (section Acquisition vide) — renouvellement et plafond non etablis, a recapturer"
     }
    ],
    "verified": true,
@@ -14981,7 +15003,12 @@
    "note": {
     "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
     "en": "⚠ Does NOT follow its two twins' pattern, contrary to what the symmetry suggested: one vendor instead of three, no weekly cap, and the heart must be left INCOMPLETE. The 100 required therefore carry no timegate — but remember not to finish the heart."
-   }
+   },
+   "free_sources_note": {
+    "fr": "⚠ Non établi. La capture wiki de cet objet rend une section Acquisition vide — le tableau des vendeurs est construit côté client et n'apparaît pas dans le HTML. Ni piste gratuite ni piste payante ne sont donc confirmées : l'absence vient de la capture, pas du jeu.",
+    "en": "⚠ Not established. The wiki capture for this item renders an empty Acquisition section — the vendor table is built client-side and does not appear in the HTML. Neither a free nor a paid path is confirmed: the absence comes from the capture, not from the game."
+   },
+   "free_sources_note_ref": "ressources/wiki/shard_of_mistburned_barrens.html — section Acquisition vide"
   },
   "discounted_shard_of_mistburned_barrens": {
    "name": "Discounted Shard of Mistburned Barrens",
@@ -15022,13 +15049,19 @@
      "type": "vendor",
      "map": "Bava Nisos",
      "tip": {
-      "fr": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1 400. UNIQUE vendeur, et limite à 20 par semaine.",
-      "en": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1,400. The ONLY vendor, capped at 20 per week."
+      "fr": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1 400. UNIQUE vendeur, et limite à 20 par semaine. Ward Trader Sampaguita (Mantle's Arrival, Bava Nisos) — plafond 20 par semaine.",
+      "en": "Ward Trader Sampaguita (Mantle's Arrival), 1 + 2 + 1,400. The ONLY vendor, capped at 20 per week. Ward Trader Sampaguita (Mantle's Arrival, Bava Nisos) — limit 20 per week."
      },
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-26",
-     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
+     "paid_repeatable": true,
+     "paid_repeatable_ref": "wiki, section Acquisition des captures versees dans ressources/wiki/ (27/08/2026)",
+     "paid_cap": {
+      "n": 20,
+      "period": "week"
+     }
     }
    ],
    "verified": true,
@@ -15310,13 +15343,15 @@
      "type": "vendor",
      "map": "Eternity's Garden",
      "tip": {
-      "fr": "Historian Meliza (Pilgrim's Rest) et Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35 000 karma pièce. Les deux exigent le cœur de renommée complété. ⚠ 200 runestones pour Stella Radians, soit 7 MILLIONS de karma — c'est le poste en karma le plus lourd du fichier, loin devant les éclats d'obsidienne.",
-      "en": "Historian Meliza (Pilgrim's Rest) and Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35,000 karma each. Both require the renown heart complete. ⚠ 200 runestones for Stella Radians, i.e. 7 MILLION karma — the heaviest karma line in the file, far ahead of obsidian shards."
+      "fr": "Historian Meliza (Pilgrim's Rest) et Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35 000 karma pièce. Les deux exigent le cœur de renommée complété. ⚠ 200 runestones pour Stella Radians, soit 7 MILLIONS de karma — c'est le poste en karma le plus lourd du fichier, loin devant les éclats d'obsidienne. Historian Meliza (Pilgrim's Rest) et Steward Brizio (Artificer's Islet), Jardin d'Éternité — exige le cœur complété.",
+      "en": "Historian Meliza (Pilgrim's Rest) and Steward Brizio (Artificer's Islet), 1 + 10 + 250 + 35,000 karma each. Both require the renown heart complete. ⚠ 200 runestones for Stella Radians, i.e. 7 MILLION karma — the heaviest karma line in the file, far ahead of obsidian shards. Historian Meliza (Pilgrim's Rest) and Steward Brizio (Artificer's Islet), Eternity's Garden — requires the renown heart complete."
      },
      "free_repeatable": false,
      "verified": true,
      "checked": "2026-08-26",
-     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)"
+     "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
+     "paid_repeatable": true,
+     "paid_repeatable_ref": "wiki, section Acquisition des captures versees dans ressources/wiki/ (27/08/2026)"
     }
    ],
    "verified": true,

@@ -136,7 +136,9 @@ def _jsx_currency_blocks(src):
 NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "editorial_principle", "meta_eligible_note", "achievement_notes_note",
                    "i18n_note", "i18n_zones_note", "apiid_fix_note", "armory_map_fix_note",
-                   "free_repeatable_note", "apiId_fix", "how"}
+                   "free_repeatable_note", "apiId_fix", "how",
+                   "paid_repeatable_ref", "paid_repeatable_unknown", "total_ref", "free_sources_note_ref",
+                   "total_unknown_ref", "how_ref", "cadence_ref_note"}
 
 
 def check_free_sources(data, errors, warnings):
@@ -159,11 +161,24 @@ def check_free_sources(data, errors, warnings):
         if comp.get("free_sources_note") or comp.get("free_via_ingredients"):
             continue
         srcs = comp.get("sources") or []
-        if not any(isinstance(s, dict) and s.get("free_repeatable") for s in srcs):
-            warnings.append(
-                f"craft_components/{cid} : exige au moins 100 unites mais aucune "
-                "source marquee free_repeatable — le joueur sans stock n'a aucune piste"
-            )
+        if any(isinstance(s, dict) and s.get("free_repeatable") for s in srcs):
+            continue
+        # Payant n'est pas introuvable. Un vendeur renouvelable, meme plafonne,
+        # EST une piste : c'est meme la seule pour les eclats de Janthir et le
+        # Seer Runestone. On ne le signale qu'a titre indicatif, et seulement
+        # quand le plafond n'est pas chiffre.
+        payantes = [s for s in srcs if isinstance(s, dict) and s.get("paid_repeatable")]
+        if payantes:
+            if not any(s.get("paid_cap") for s in payantes):
+                warnings.append(
+                    f"craft_components/{cid} : seule piste payante-renouvelable, sans plafond "
+                    "chiffre — la cadence d'achat reste inconnue"
+                )
+            continue
+        warnings.append(
+            f"craft_components/{cid} : exige au moins 100 unites et n'a aucune piste "
+            "renouvelable, ni gratuite ni payante"
+        )
 
 
 def check_missing_qty(data, errors, warnings):
