@@ -794,6 +794,21 @@ de l'objet (« A Flower for Kodama »). Deux vocabulaires, un seul ordre.
 
 42 étapes prennent le libellé du wiki, plus lisible ; l'ancien reste en `name_api`.
 
+### Bilinguisme : les noms oui, les conseils non
+
+- **Les `name` sont des chaînes anglaises**, comme partout ailleurs dans
+  `collections{}` — `NXS` les traduit au rendu par le dictionnaire de termes.
+  Rien ne change, la convention est respectée.
+- **Les 55 `how` du wiki sont en anglais seul.** Leur champ `fr` vaut `null`,
+  pas une copie de l'anglais : recopier ferait croire à une traduction qui
+  n'existe pas. `L()` se replie sur l'anglais, même convention que les noms de
+  sous-zones. `how_fr_missing: true` les rend dénombrables.
+
+**À faire un jour** : traduire ces 55 conseils. Cosmétique en anglais, nul en
+français — le contenu est là, seule la langue manque. Les 6 autres `how` dont
+le français est identique à l'anglais viennent des anciens `bitTips` et sont
+sans doute dans le même cas.
+
 ### Reste : 129 étapes, par ordre de rendement
 
 | collection | légendaire | sans conseil |
