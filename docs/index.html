@@ -1710,7 +1710,8 @@ const SOURCES_DB = {
     "changelog_v174": "Balayage des 64 collections a la recherche de consommations vivant en prose, comme les lingots Xunlai. 74 mentions chiffrees relevees ; une seule n'etait portee par aucun composant : les runes et sigils legendaires consomment 300 trefles mystiques et 600 jetons de fournisseur, et provisioner_token n'existait pas dans craft_components. Cree, avec son plafond de 105 par semaine, et marque verified false — le compte vient de la prose, pas d'une source verifiee. Les 73 autres mentions sont deja dans la chaine : ectoplasmes et notes de recherche de Stella Radians, eclats de magnetite de Coalescence.",
     "changelog_v175": "Trois doubles comptes signales de longue date par l'audit sont tranches sur les arbres. Le Fragment de pierre de sang etait compte deux fois sur Aurora, Vision et Coalescence : une fois a plat sur le legendaire, une fois par le Don de maitrise qui l'exige. L'arbre est net — Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery, aucun noeud direct. Les trois affichaient 2 pour 1 requis. Les totaux a plat sont retires : la chaine suffit.",
     "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop.",
-    "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre."
+    "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre.",
+    "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur."
   },
   "meta_events": {
     "vb": {
@@ -24034,37 +24035,80 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "'Heart of the Volcano' story instance"
+              "name": "Volcano's Heart",
+              "name_api": "'Heart of the Volcano' story instance",
+              "how": {
+                "fr": "Consume the Volcano's Heart earned from completing Heart of the Volcano , the fifth and final story step of the Flashpoint episode",
+                "en": "Consume the Volcano's Heart earned from completing Heart of the Volcano , the fifth and final story step of the Flashpoint episode"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 1,
-              "name": "Druid Runestone — 5 fragments"
+              "name": "Druid Runestone",
+              "name_api": "Druid Runestone — 5 fragments",
+              "how": {
+                "fr": "Obtain a Druid Runestone by combining 5 Druid Runestone Fragments . Fragments can be bought once a day in Draconis Mons from each of the 4 Renown Heart NPCs for 1,050 and Supplymaster Hanjo for 1,000",
+                "en": "Obtain a Druid Runestone by combining 5 Druid Runestone Fragments . Fragments can be bought once a day in Draconis Mons from each of the 4 Renown Heart NPCs for 1,050 and Supplymaster Hanjo for 1,000"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 2,
-              "name": "Hand the stone to Kodama",
+              "name": "The Druid's Story",
               "how": {
                 "fr": "Kodama est dans Druid's Grotto [&BMUJAAA=], Savage Rise.",
                 "en": "Kodama is inside Druid's Grotto [&BMUJAAA=], Savage Rise."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "Hand the stone to Kodama"
             },
             {
               "bit": 3,
-              "name": "Fire Orchid to Kodama"
+              "name": "A Flower for Kodama",
+              "name_api": "Fire Orchid to Kodama",
+              "how": {
+                "fr": "Bring a Fire Orchid Blossom to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring a Fire Orchid Blossom to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 4,
-              "name": "Fire Orchid to Liriodendron"
+              "name": "A Flower for Liriodendron",
+              "name_api": "Fire Orchid to Liriodendron",
+              "how": {
+                "fr": "Bring a Fire Orchid Blossom to Liriodendron , located in Peace Grounds — [&BMkJAAA=] in the Savage Rise",
+                "en": "Bring a Fire Orchid Blossom to Liriodendron , located in Peace Grounds — [&BMkJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 5,
-              "name": "Fire Orchid to Broadleaf"
+              "name": "A Flower for Broadleaf",
+              "name_api": "Fire Orchid to Broadleaf",
+              "how": {
+                "fr": "Bring a Fire Orchid Blossom to Broadleaf , located on a high ledge in the western end of the Savage Rise",
+                "en": "Bring a Fire Orchid Blossom to Broadleaf , located on a high ledge in the western end of the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 6,
-              "name": "Fire Orchid to Rosewood"
+              "name": "A Flower for Rosewood",
+              "name_api": "Fire Orchid to Rosewood",
+              "how": {
+                "fr": "Bring a Fire Orchid Blossom to Rosewood , located upon a rock bridge above Ancient Hollow Waypoint — [&BNUJAAA=] in the Ancient Hollow",
+                "en": "Bring a Fire Orchid Blossom to Rosewood , located upon a rock bridge above Ancient Hollow Waypoint — [&BNUJAAA=] in the Ancient Hollow"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements"
@@ -24084,7 +24128,14 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Druid Stone (skin)"
+              "name": "Druid Stone",
+              "name_api": "Druid Stone (skin)",
+              "how": {
+                "fr": "Earned by completing the prior The Druid Stone achievement",
+                "en": "Earned by completing the prior The Druid Stone achievement"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 1,
@@ -24098,11 +24149,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Wardbough's Runestone"
+              "name": "Wardbough's Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Wardbough",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Wardbough"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 3,
-              "name": "Wardbough's Rest — to Kodama"
+              "name": "Wardbough's Rest",
+              "name_api": "Wardbough's Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Wardbough's Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Wardbough's Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 4,
@@ -24116,11 +24180,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 5,
-              "name": "Arboreal Runestone"
+              "name": "Arboreal Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Arbor",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Arbor"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 6,
-              "name": "Arboreal Rest — to Kodama"
+              "name": "Arboreal Rest",
+              "name_api": "Arboreal Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Arboreal Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Arboreal Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 7,
@@ -24134,45 +24211,68 @@ const SOURCES_DB = {
             },
             {
               "bit": 8,
-              "name": "Oakheart's Runestone"
+              "name": "Oakheart's Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Oakhearts",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Oakhearts"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 9,
-              "name": "Oakheart's Rest — to Kodama"
+              "name": "Oakheart's Rest",
+              "name_api": "Oakheart's Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Oakheart's Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Oakheart's Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 10,
-              "name": "A Bouquet for Kodama — 3 Fire Orchid Blossoms"
+              "name": "A Bouquet for Kodama",
+              "name_api": "A Bouquet for Kodama — 3 Fire Orchid Blossoms",
+              "how": {
+                "fr": "Bring 3 Fire Orchid Blossoms to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring 3 Fire Orchid Blossoms to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 11,
-              "name": "A Bouquet for Liriodendron — 3 blossoms",
+              "name": "A Bouquet for Liriodendron",
               "how": {
                 "fr": "Liriodendron : Peace Grounds [&BMkJAAA=], Savage Rise.",
                 "en": "Liriodendron: Peace Grounds [&BMkJAAA=], Savage Rise."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "A Bouquet for Liriodendron — 3 blossoms"
             },
             {
               "bit": 12,
-              "name": "A Bouquet for Broadleaf — 3 blossoms",
+              "name": "A Bouquet for Broadleaf",
               "how": {
                 "fr": "Broadleaf : sur une corniche surplombant Savage Rise.",
                 "en": "Broadleaf: on a ledge above the Savage Rise."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "A Bouquet for Broadleaf — 3 blossoms"
             },
             {
               "bit": 13,
-              "name": "A Bouquet for Rosewood — 3 blossoms",
+              "name": "A Bouquet for Rosewood",
               "how": {
                 "fr": "Rosewood : pont rocheux au-dessus d'Ancient Hollow Waypoint [&BNUJAAA=].",
                 "en": "Rosewood: rock bridge above Ancient Hollow Waypoint [&BNUJAAA=]."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "A Bouquet for Rosewood — 3 blossoms"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements"
@@ -24192,7 +24292,14 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Living Druid Stone (skin)"
+              "name": "Living Druid Stone",
+              "name_api": "Living Druid Stone (skin)",
+              "how": {
+                "fr": "Earned by completing the preceding Awakening the Druid Stone achievement",
+                "en": "Earned by completing the preceding Awakening the Druid Stone achievement"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 1,
@@ -24206,11 +24313,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Saurian Runestone"
+              "name": "Saurian Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Saurians",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Saurians"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 3,
-              "name": "Saurian Rest — to Kodama"
+              "name": "Saurian Rest",
+              "name_api": "Saurian Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Saurian Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Saurian Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 4,
@@ -24224,11 +24344,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 5,
-              "name": "Imperial Runestone"
+              "name": "Imperial Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Empire",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Empire"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 6,
-              "name": "Imperial Rest — to Kodama"
+              "name": "Imperial Rest",
+              "name_api": "Imperial Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Imperial Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Imperial Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 7,
@@ -24242,11 +24375,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 8,
-              "name": "Webby Runestone"
+              "name": "Webby Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Webby",
+                "en": "Obtained by combining a Druid Runestone with the Element of Webby"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 9,
-              "name": "Webby Rest — to Kodama"
+              "name": "Webby Rest",
+              "name_api": "Webby Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Webby Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Webby Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 10,
@@ -24260,11 +24406,24 @@ const SOURCES_DB = {
             },
             {
               "bit": 11,
-              "name": "Wurm Runestone"
+              "name": "Wurm Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Wurm",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Wurm"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 12,
-              "name": "Wurm Rest — to Kodama"
+              "name": "Wurm Rest",
+              "name_api": "Wurm Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Wurm Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Wurm Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 13,
@@ -24278,37 +24437,79 @@ const SOURCES_DB = {
             },
             {
               "bit": 14,
-              "name": "Arcanum Runestone"
+              "name": "Arcanum Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Arcanum",
+                "en": "Obtained by combining a Druid Runestone with the Element of Arcanum"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 15,
-              "name": "Arcanum Rest — to Kodama"
+              "name": "Arcanum Rest",
+              "name_api": "Arcanum Rest — to Kodama",
+              "how": {
+                "fr": "Bring the Arcanum Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring the Arcanum Runestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 16,
-              "name": "A Charged Bouquet — Kodama: 5 blossoms + 1 Charged Lodestone"
+              "name": "A Charged Bouquet for Kodama",
+              "name_api": "A Charged Bouquet — Kodama: 5 blossoms + 1 Charged Lodestone",
+              "how": {
+                "fr": "Bring 5 Fire Orchid Blossoms and a Charged Lodestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise",
+                "en": "Bring 5 Fire Orchid Blossoms and a Charged Lodestone to Kodama , located inside Druid's Grotto — [&BMUJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 17,
-              "name": "A Glacial Bouquet — Liriodendron: 5 + 1 Glacial Lodestone"
+              "name": "A Glacial Bouquet for Liriodendron",
+              "name_api": "A Glacial Bouquet — Liriodendron: 5 + 1 Glacial Lodestone",
+              "how": {
+                "fr": "Bring 5 Fire Orchid Blossoms and a Glacial Lodestone to Liriodendron , located in the Peace Grounds — [&BMkJAAA=] in the Savage Rise",
+                "en": "Bring 5 Fire Orchid Blossoms and a Glacial Lodestone to Liriodendron , located in the Peace Grounds — [&BMkJAAA=] in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 18,
-              "name": "An Onyx Bouquet — Broadleaf: 5 + 1 Onyx Lodestone"
+              "name": "An Onyx Bouquet for Broadleaf",
+              "name_api": "An Onyx Bouquet — Broadleaf: 5 + 1 Onyx Lodestone",
+              "how": {
+                "fr": "Bring 5 Fire Orchid Blossoms and an Onyx Lodestone to Broadleaf on a ledge above the Savage Rise",
+                "en": "Bring 5 Fire Orchid Blossoms and an Onyx Lodestone to Broadleaf on a ledge above the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 19,
-              "name": "A Molten Bouquet — Rosewood: 5 + 1 Molten Lodestone"
+              "name": "A Molten Bouquet for Rosewood",
+              "name_api": "A Molten Bouquet — Rosewood: 5 + 1 Molten Lodestone",
+              "how": {
+                "fr": "Bring 5 Fire Orchid Blossoms and a Molten Lodestone to Rosewood , located upon a rock bridge above Ancient Hollow Waypoint — [&BNUJAAA=] in the Ancient Hollow",
+                "en": "Bring 5 Fire Orchid Blossoms and a Molten Lodestone to Rosewood , located upon a rock bridge above Ancient Hollow Waypoint — [&BNUJAAA=] in the Ancient Hollow"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 20,
-              "name": "Propagation of the Fire Orchid — plant 3 seeds",
+              "name": "Propagation of the Fire Orchid",
               "how": {
                 "fr": "Fertile Soil : de l'autre côté de la grotte par rapport à Kodama, au sud, sur une corniche près du cercle de nœuds de lin.",
                 "en": "Fertile Soil: on the far side of the grotto from Kodama, to the south, on a ledge near the flax node ring."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "Propagation of the Fire Orchid — plant 3 seeds"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements"
@@ -24328,45 +24529,96 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Blooming Druid Stone (skin)"
+              "name": "Blooming Druid Stone",
+              "name_api": "Blooming Druid Stone (skin)",
+              "how": {
+                "fr": "Earned by completing the Sprouting the Druid Stone achievement",
+                "en": "Earned by completing the Sprouting the Druid Stone achievement"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 1,
-              "name": "Heavy Houndskin Mantle (skin)",
+              "name": "Heavy Houndskin Mantle",
               "how": {
                 "fr": "Ouvrir une Houndskin Mantle Box (récompense de maîtrise Flashpoint) — compte rétroactivement.",
                 "en": "Open a Houndskin Mantle Box (Flashpoint mastery reward) — counts retroactively."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "Heavy Houndskin Mantle (skin)"
             },
             {
               "bit": 2,
-              "name": "Element of Aestus"
+              "name": "Element of Aestus",
+              "how": {
+                "fr": "Dropped by the Destroyer Aestus in Draconis Mons",
+                "en": "Dropped by the Destroyer Aestus in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 3,
-              "name": "Aestus Runestone"
+              "name": "Aestus Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Aestus",
+                "en": "Obtained by combining a Druid Runestone with the Element of Aestus"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 4,
-              "name": "Element of Ignis"
+              "name": "Element of Ignis",
+              "how": {
+                "fr": "Dropped by the Destroyer Ignis in Draconis Mons",
+                "en": "Dropped by the Destroyer Ignis in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 5,
-              "name": "Ignis Runestone"
+              "name": "Ignis Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Ignis",
+                "en": "Obtained by combining a Druid Runestone with the Element of Ignis"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 6,
-              "name": "Element of the Desecrator"
+              "name": "Element of the Desecrator",
+              "how": {
+                "fr": "Dropped by the Molten Desecrator in Draconis Mons",
+                "en": "Dropped by the Molten Desecrator in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 7,
-              "name": "Desecrator Runestone"
+              "name": "Desecrator Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of the Desecrator",
+                "en": "Obtained by combining a Druid Runestone with the Element of the Desecrator"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 8,
-              "name": "Destroyer's Rest — all 3 runestones TOGETHER"
+              "name": "Destroyer's Rest",
+              "name_api": "Destroyer's Rest — all 3 runestones TOGETHER",
+              "how": {
+                "fr": "Bring the Aestus Runestone, Ignis Runestone, and Desecrator Runestone to Kodama in Draconis Mons",
+                "en": "Bring the Aestus Runestone, Ignis Runestone, and Desecrator Runestone to Kodama in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 9,
@@ -24380,7 +24632,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 10,
-              "name": "Volcanic Runestone"
+              "name": "Volcanic Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Fire",
+                "en": "Obtained by combining a Druid Runestone with the Element of Fire"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 11,
@@ -24394,7 +24652,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 12,
-              "name": "Glacial Runestone"
+              "name": "Glacial Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Water",
+                "en": "Obtained by combining a Druid Runestone with the Element of Water"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 13,
@@ -24408,7 +24672,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 14,
-              "name": "Charged Runestone"
+              "name": "Charged Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Air",
+                "en": "Obtained by combining a Druid Runestone with the Element of Air"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 15,
@@ -24422,73 +24692,176 @@ const SOURCES_DB = {
             },
             {
               "bit": 16,
-              "name": "Earthen Runestone"
+              "name": "Earthen Runestone",
+              "how": {
+                "fr": "Obtained by combining a Druid Runestone with the Element of Earth",
+                "en": "Obtained by combining a Druid Runestone with the Element of Earth"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 17,
-              "name": "Elemental Rest — all 4 runestones TOGETHER"
+              "name": "Elemental Rest",
+              "name_api": "Elemental Rest — all 4 runestones TOGETHER",
+              "how": {
+                "fr": "Bring a Volcanic Runestone, a Glacial Runestone, a Charged Runestone, and an Earthen Runestone to Kodama in Draconis Mons",
+                "en": "Bring a Volcanic Runestone, a Glacial Runestone, a Charged Runestone, and an Earthen Runestone to Kodama in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 18,
-              "name": "Druid's Vision — bring a Vision Crystal"
+              "name": "Druid's Vision",
+              "name_api": "Druid's Vision — bring a Vision Crystal",
+              "how": {
+                "fr": "Bring a Vision Crystal to Kodama in Druid's Grotto in Draconis Mons",
+                "en": "Bring a Vision Crystal to Kodama in Druid's Grotto in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 19,
-              "name": "A Storm Bouquet — Kodama: 10 blossoms + 5 Charged Lodestones"
+              "name": "A Storm Bouquet for Kodama",
+              "name_api": "A Storm Bouquet — Kodama: 10 blossoms + 5 Charged Lodestones",
+              "how": {
+                "fr": "Bring 10 Fire Orchids and 5 Charged Lodestones to Kodama in the Savage Rise",
+                "en": "Bring 10 Fire Orchids and 5 Charged Lodestones to Kodama in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 20,
-              "name": "A Frozen Bouquet — Liriodendron: 10 + 5 Glacial"
+              "name": "A Frozen Bouquet for Liriodendron",
+              "name_api": "A Frozen Bouquet — Liriodendron: 10 + 5 Glacial",
+              "how": {
+                "fr": "Bring 10 Fire Orchids and 5 Glacial Lodestones to Liriodendron in the watering hole of the Savage Rise",
+                "en": "Bring 10 Fire Orchids and 5 Glacial Lodestones to Liriodendron in the watering hole of the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 21,
-              "name": "An Earthen Bouquet — Broadleaf: 10 + 5 Onyx"
+              "name": "An Earthen Bouquet for Broadleaf",
+              "name_api": "An Earthen Bouquet — Broadleaf: 10 + 5 Onyx",
+              "how": {
+                "fr": "Bring 10 Fire Orchids and 5 Onyx Lodestones to Broadleaf on a ledge above the Savage Rise",
+                "en": "Bring 10 Fire Orchids and 5 Onyx Lodestones to Broadleaf on a ledge above the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 22,
-              "name": "An Infernal Bouquet — Rosewood: 10 + 5 Molten"
+              "name": "An Infernal Bouquet for Rosewood",
+              "name_api": "An Infernal Bouquet — Rosewood: 10 + 5 Molten",
+              "how": {
+                "fr": "Bring 10 Fire Orchids and 5 Molten Lodestones to Rosewood on a ledge above the Ancient Hollow",
+                "en": "Bring 10 Fire Orchids and 5 Molten Lodestones to Rosewood on a ledge above the Ancient Hollow"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 23,
-              "name": "Dierdre's Orchard — 3 seeds, Dierdre's Steps (Mount Maelstrom)",
+              "name": "Dierdre's Orchard",
               "how": {
                 "fr": "Les 3 « Orchards » demandent 3 graines chacun, hors Draconis Mons.",
                 "en": "The 3 'Orchards' need 3 seeds each, outside Draconis Mons."
               },
               "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "name_api": "Dierdre's Orchard — 3 seeds, Dierdre's Steps (Mount Maelstrom)"
             },
             {
               "bit": 24,
-              "name": "Maguuma's Orchard — 3 seeds, garden of the oasis (Dry Top)"
+              "name": "Maguuma's Orchard",
+              "name_api": "Maguuma's Orchard — 3 seeds, garden of the oasis (Dry Top)",
+              "how": {
+                "fr": "Plant 3 Fire Orchid Seeds in the garden of the oasis in Dry Top",
+                "en": "Plant 3 Fire Orchid Seeds in the garden of the oasis in Dry Top"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 25,
-              "name": "Melandru's Orchard — 3 seeds, Cathedral of Verdance (Cursed Shore)"
+              "name": "Melandru's Orchard",
+              "name_api": "Melandru's Orchard — 3 seeds, Cathedral of Verdance (Cursed Shore)",
+              "how": {
+                "fr": "Plant 3 Fire Orchid Seeds at the Cathedral of Verdance in Cursed Shore",
+                "en": "Plant 3 Fire Orchid Seeds at the Cathedral of Verdance in Cursed Shore"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 26,
-              "name": "Seaside Propagation — Eastern Boiling Sea islands"
+              "name": "Seaside Propagation",
+              "name_api": "Seaside Propagation — Eastern Boiling Sea islands",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil on one of the islands of the Eastern Boiling Sea in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil on one of the islands of the Eastern Boiling Sea in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 27,
-              "name": "Wind Rider Ledge Propagation"
+              "name": "Wind Rider Ledge Propagation",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil overlooking Wind Rider Ledge in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil overlooking Wind Rider Ledge in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 28,
-              "name": "Rata Arcanum Propagation — bioluminescent cavern"
+              "name": "Rata Arcanum Propagation",
+              "name_api": "Rata Arcanum Propagation — bioluminescent cavern",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil of the bioluminescent cavern above Rata Arcanum in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil of the bioluminescent cavern above Rata Arcanum in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 29,
-              "name": "Seaside Ledges Propagation — ledge above Frothing Pedestal"
+              "name": "Seaside Ledges Propagation",
+              "name_api": "Seaside Ledges Propagation — ledge above Frothing Pedestal",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil on the ledge overlooking the Frothing Pedestal in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil on the ledge overlooking the Frothing Pedestal in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 30,
-              "name": "Nu II Propagation — Nu II Vault"
+              "name": "Nu II Propagation",
+              "name_api": "Nu II Propagation — Nu II Vault",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil in the Nu II Vault in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil in the Nu II Vault in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             },
             {
               "bit": 31,
-              "name": "Ancient Hollow Propagation"
+              "name": "Ancient Hollow Propagation",
+              "how": {
+                "fr": "Plant a Fire Orchid Seed in the fertile soil above the Ancient Hollow in Draconis Mons",
+                "en": "Plant a Fire Orchid Seed in the fertile soil above the Ancient Hollow in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements"

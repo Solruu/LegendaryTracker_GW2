@@ -773,3 +773,42 @@ Les 29 restantes échouent pour des raisons distinctes :
 **Ne pas appliquer le rapprochement automatique en l'état** : 45 % d'échec, et
 un rapprochement par nom qui se trompe crée des collections attribuées à la
 mauvaise arme. Il faut une table de correspondance explicite, arme par arme.
+
+## Étapes documentées — Wayfarer's Henge fait le 27/08/2026
+
+**339 étapes sur 468 (72 %)**, contre 284 (60 %) avant.
+
+Les quatre collections d'Aurora sont complètes : **55 conseils ajoutés**, tirés
+de la colonne Notes du tableau « Collection items » du wiki. Ce sont les
+**premiers `how` marqués `how_verified: true`** — les 284 autres viennent des
+anciens `bitTips` et restent à `false`.
+
+`gw2_parse_collection_v1.py` fait le travail. Deux pièges du HTML wiki traités :
+le JavaScript inline des liens de point de passage, qui finissait sinon dans la
+note, et les entités des chatlinks `[&BMUJAAA=]`, qu'il faut au contraire garder.
+
+**Rapprochement par rang, avec garde-fou** : tenté seulement si les deux listes
+ont la même longueur. Le contrôle par nom ne vaut rien ici — l'API rend une
+phrase d'action (« Bring a Fire Orchid to Kodama… ») là où le wiki rend le nom
+de l'objet (« A Flower for Kodama »). Deux vocabulaires, un seul ordre.
+
+42 étapes prennent le libellé du wiki, plus lisible ; l'ancien reste en `name_api`.
+
+### Reste : 129 étapes, par ordre de rendement
+
+| collection | légendaire | sans conseil |
+|---|---|---|
+| Acquiring Agaleus (8869) | Selachimorpha | 18 |
+| Radiance of the Sun God (9183) | Endless Summer | 16 |
+| Gift of the Feast (8750) | Orrax Manifested | 15 |
+| The Convergence of Sorrow I: Elegy (4376) | Vision | 15 |
+| Legendary Relics: Components (7829) | Upgrades | 15 |
+| Astral Purification (3964) | Vision | 14 |
+| Mists Research: Strife Unending (9244) | Strife Unending | 8 |
+| Gift of the Mistburned Isles (8743) | Orrax Manifested | 7 |
+| Mists Research (6933) | Strife Unending | 6 |
+| Experiments in the Shadows (8761) | Orrax Manifested | 5 |
+| Working Together (8830) | Eikasia | 4 |
+| Gift of Shadows (8723) | Orrax Manifested | 3 |
+| Orrax Contained (8730) | Orrax Manifested | 2 |
+| Visions of Istan (4765) | Vision | 1 |

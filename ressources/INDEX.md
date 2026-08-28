@@ -112,6 +112,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unusual_coin.html` | Unusual Coin | article complet | 2026-08-27 |
 | `lump_of_mithrillium.html` | Lump of Mithrillium | article complet | 2026-08-27 |
 | `provisioner_token.html` | Provisioner Token | article complet | 2026-08-27 |
+| `the_druid_stone.html` | The Druid Stone | collection, 7 objets | 2026-08-27 |
+| `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-08-27 |
+| `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-08-27 |
+| `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-08-27 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -166,7 +170,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **82 captures, 82 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **86 captures, 86 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
