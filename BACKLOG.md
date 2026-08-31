@@ -894,3 +894,38 @@ ne correspond au texte d'un autre bit — le rapprochement par rang y était sai
 Mais la garde « même longueur » ne suffit pas à le garantir : il faudrait
 comparer les contenus, pas seulement les comptes.
 
+## Étapes des armes — lots identifiés, palier IV fait
+
+Les quatre paliers ne coûtent pas la même chose :
+
+| palier | étapes | libellés **distincts** | mutualisation |
+|---|---|---|---|
+| **IV — succès final** | 324 | 84 | ✅ **fait** — 234 liées à un composant |
+| **II — Perfected** | 317 | **79** | 265 étapes partagées entre 24 armes |
+| I — Experimental | 382 | 348 | quasi nulle |
+| III — Précurseur | 731 | 673 | quasi nulle |
+
+### ✅ Palier IV — 234 étapes sans une seule capture
+
+Ses étapes ne sont pas des actions mais des **composants** : Icy Runestone,
+Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of
+Fortune, Mystic Clover… chacun ×20.
+
+Quatorze existent déjà dans `craft_components`. Elles portent désormais un champ
+`component` — une **référence, pas une copie** : sources, cadence et prix se
+lisent dans le composant, et un `how` paraphrasé aurait divergé dès la première
+mise à jour. Le rendu retombe sur le `tip` du composant.
+
+### Palier II — un seul lot, 79 libellés pour 317 étapes
+
+Les 24 armes partagent les mêmes étapes : « Speak to Scholar Mossi in the
+Trader's Forum in Lion's Arch » ×24, « Purchased from Grandmaster Craftsman
+Hobbs » ×23, « Speak to a Master Weaponsmith… » sur toutes.
+
+**Une seule page suffit à valider la méthode**, deux couvrent 15 libellés sur 79 —
+le reste diffère par le métier d'artisanat, pas par la structure.
+
+### Paliers I et III — au fil des cibles
+
+1 021 libellés distincts pour 1 113 étapes. Chaque arme a ses objets et ses
+lieux : il faut les pages, arme par arme, comme tu joues.

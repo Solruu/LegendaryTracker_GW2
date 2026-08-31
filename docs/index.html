@@ -1716,7 +1716,8 @@ const SOURCES_DB = {
     "changelog_v180": "Huit collections de plus documentees : Legendary Relics Components, les deux Mists Research de Strife Unending, quatre Unknown Nightmares d'Orrax et Visions of Istan. Les huit tombent juste, longueurs identiques cote wiki et cote tracker. La neuvieme capture, incursive_investigation, est la page de CATEGORIE de succes et non la page de collection : le wiki redirige « Incursive Investigation: Working Together » vers elle. Rien n'en a ete tire, elle n'est pas versee.",
     "changelog_v181": "Les quatre dernieres etapes utiles sont documentees : les rendez-vous avec le Mist Stranger, dans la zone instanciee accessible depuis l'Arche du Lion. Source : la section Objectives de la page de CATEGORIE du wiki, relevee par Antoine — la page de collection redirige vers elle et n'expose aucun tableau d'objets. Decouverte au passage : l'ordre des bits de l'API ne suit pas la numerotation du wiki sur cette collection, le bit 9 porte l'objectif 2. Un rapprochement par rang y aurait tout decale. Verification faite sur les 20 collections deja traitees : aucun nom ne correspond au texte d'un autre bit, le rapprochement par rang y etait sain.",
     "changelog_v182": "Douze fiches d'armes inventees sont remplacees. Chacune portait un precursor et un gift_unique absents des 53 lignes de la table du wiki — Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade, Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Shield of Aurene's Wisdom : aucun n'existe. A leur place, les huit gen2 et quatre gen3 reelles que le tracker ne montrait pas : Claw of the Khan-Ur, Flames of War, Pharus, Sharur, The HMS Divinity, The Shining Blade, Verdarach, et Aurene's Fang, Flight, Tail, Wing. Tigris disparait : la table la donne en Final tier de Chuka and Champawat, c'est un precurseur. The Binding of Ipos, vraie gen2, passe sous le prefixe gen2_ : elle vivait hors prefixe et n'entrait donc pas dans le selecteur du Grand Total. Les recettes des nouvelles fiches sont reprises du gabarit de generation et marquees recipe_verified false.",
-    "changelog_v183": "Les collections des armes sont posees. 25 armes en ont — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka and Champawat, HOPE, Nevermore) — pour 87 collections et 1 570 etapes nommees. Les 28 autres n'en ont AUCUNE, et c'est un vide etabli : les douze gen2 de PoF et les seize gen3 fabriquent leur precurseur a la Forge mystique au lieu de le gagner par une chaine de succes. collections_none le dit explicitement, pour qu'on ne relance pas le rapprochement a chaque session. Aucun how n'est ecrit : les etapes sont nommees, leur mode d'obtention reste a documenter."
+    "changelog_v183": "Les collections des armes sont posees. 25 armes en ont — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka and Champawat, HOPE, Nevermore) — pour 87 collections et 1 570 etapes nommees. Les 28 autres n'en ont AUCUNE, et c'est un vide etabli : les douze gen2 de PoF et les seize gen3 fabriquent leur precurseur a la Forge mystique au lieu de le gagner par une chaine de succes. collections_none le dit explicitement, pour qu'on ne relance pas le rapprochement a chaque session. Aucun how n'est ecrit : les etapes sont nommees, leur mode d'obtention reste a documenter.",
+    "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie."
   },
   "meta_events": {
     "vb": {
@@ -21499,11 +21500,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -21515,43 +21520,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -21875,11 +21900,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -21891,43 +21920,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -22275,11 +22324,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -22291,43 +22344,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -22679,7 +22752,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -22695,43 +22770,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -23047,11 +23142,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Energy"
+              "name": "Gift of Energy",
+              "component": "gift_of_energy",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -23063,43 +23162,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -23451,11 +23570,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -23467,43 +23590,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -23839,11 +23982,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Energy"
+              "name": "Gift of Energy",
+              "component": "gift_of_energy",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -23855,43 +24002,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -24223,11 +24390,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -24239,43 +24410,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -24587,7 +24778,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -24603,43 +24796,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -25015,7 +25228,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -25031,43 +25246,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -25427,11 +25662,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -25443,43 +25682,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -25819,11 +26078,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -25835,43 +26098,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -25925,7 +26208,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Pile of Crystalline Dust"
+              "name": "Pile of Crystalline Dust",
+              "component": "dust_crystalline",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -26345,11 +26630,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -26361,43 +26650,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -26617,7 +26926,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -26633,43 +26944,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -26929,11 +27260,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Metal"
+              "name": "Gift of Metal",
+              "component": "gift_of_metal",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -26945,43 +27280,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -27309,7 +27664,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -27325,43 +27682,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -27697,7 +28074,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -27713,43 +28092,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -28093,11 +28492,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Energy"
+              "name": "Gift of Energy",
+              "component": "gift_of_energy",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -28109,43 +28512,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -28389,11 +28812,15 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
-              "name": "Gift of Energy"
+              "name": "Gift of Energy",
+              "component": "gift_of_energy",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 4,
@@ -28405,43 +28832,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -28757,7 +29204,9 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "Icy Runestone"
+              "name": "Icy Runestone",
+              "component": "icy_runestone",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 3,
@@ -28773,43 +29222,63 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "Gift of Mastery"
+              "name": "Gift of Mastery",
+              "component": "gift_of_mastery",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 7,
-              "name": "Gift of Exploration"
+              "name": "Gift of Exploration",
+              "component": "gift_of_exploration",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 8,
-              "name": "Bloodstone Shard"
+              "name": "Bloodstone Shard",
+              "component": "bloodstone_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 9,
-              "name": "Obsidian Shard"
+              "name": "Obsidian Shard",
+              "component": "obsidian_shard",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 10,
-              "name": "Gift of Fortune"
+              "name": "Gift of Fortune",
+              "component": "gift_of_fortune",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 11,
-              "name": "Glob of Ectoplasm"
+              "name": "Glob of Ectoplasm",
+              "component": "glob_of_ectoplasm",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 12,
-              "name": "Mystic Clover"
+              "name": "Mystic Clover",
+              "component": "mystic_clover",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 13,
-              "name": "Gift of Might"
+              "name": "Gift of Might",
+              "component": "gift_of_might",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 14,
-              "name": "Gift of Magic"
+              "name": "Gift of Magic",
+              "component": "gift_of_magic",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             },
             {
               "bit": 15,
-              "name": "Gift of Battle"
+              "name": "Gift of Battle",
+              "component": "gift_of_battle",
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -46657,6 +47126,10 @@ function GW2LegendaryTracker() {
         bitTips: Object.fromEntries(
           (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
         steps: (c.items ?? []).map(i => ({ index: i.bit, text: i.name })),
+        // Une etape peut pointer vers un composant plutot que porter un conseil :
+        // ses sources et sa cadence vivent dans craft_components, on les lit la.
+        bitComponents: Object.fromEntries(
+          (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
         noteAlt: c.note_alt,
       }))
     : [];   // plus de repli : raidAchievements a disparu du JSX
@@ -49432,7 +49905,13 @@ function GW2LegendaryTracker() {
                               : (b.type === "Skin" && b.id) ? (def.namesEn?.["s" + String(b.id)] ?? null)
                               : (b.type === "Minipet" && b.id) ? (def.namesEn?.["m" + String(b.id)] ?? null)
                               : (b.type === "Text" ? (b.text ?? null) : null);
+                            // Une etape peut renvoyer vers un composant : ses sources
+                            // vivent dans craft_components, on les lit la plutot que
+                            // de recopier un conseil qui divergerait.
+                            const cid = a.bitComponents?.[String(i)];
+                            const csrc = cid ? ((SOURCES_DB?.craft_components ?? {})[cid]?.sources ?? [])[0] : null;
                             const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i]
+                              ?? csrc?.tip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>

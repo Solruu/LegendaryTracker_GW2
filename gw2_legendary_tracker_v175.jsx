@@ -3905,6 +3905,10 @@ export default function GW2LegendaryTracker() {
         bitTips: Object.fromEntries(
           (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
         steps: (c.items ?? []).map(i => ({ index: i.bit, text: i.name })),
+        // Une etape peut pointer vers un composant plutot que porter un conseil :
+        // ses sources et sa cadence vivent dans craft_components, on les lit la.
+        bitComponents: Object.fromEntries(
+          (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
         noteAlt: c.note_alt,
       }))
     : [];   // plus de repli : raidAchievements a disparu du JSX
@@ -6680,7 +6684,13 @@ export default function GW2LegendaryTracker() {
                               : (b.type === "Skin" && b.id) ? (def.namesEn?.["s" + String(b.id)] ?? null)
                               : (b.type === "Minipet" && b.id) ? (def.namesEn?.["m" + String(b.id)] ?? null)
                               : (b.type === "Text" ? (b.text ?? null) : null);
+                            // Une etape peut renvoyer vers un composant : ses sources
+                            // vivent dans craft_components, on les lit la plutot que
+                            // de recopier un conseil qui divergerait.
+                            const cid = a.bitComponents?.[String(i)];
+                            const csrc = cid ? ((SOURCES_DB?.craft_components ?? {})[cid]?.sources ?? [])[0] : null;
                             const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i]
+                              ?? csrc?.tip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
