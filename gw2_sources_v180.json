@@ -936,7 +936,8 @@
   "changelog_v176": "Les deux derniers doubles comptes sont tranches par l'arbre de la cuirasse d'obsidienne. Par piece, la Matrice stabilisante et la Boule d'energie noire passent INTEGRALEMENT par le Cube d'energie noire stabilisee : 75 <- Cube et 1 <- Cube, aucun noeud direct sur la piece. Les entrees a plat sur obsidian__per_piece etaient donc un doublon de la chaine — la matrice affichait 150 par piece pour 75 requis, la boule 2 pour 1. Sur les six pieces d'un set, 450 matrices de trop.",
   "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre.",
   "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur. Les 55 conseils tires du wiki sont en anglais : leur champ fr passe a null plutot que de recopier l'anglais, ce qui aurait fait croire a une traduction. L() se replie sur l'anglais, comme pour les noms de sous-zones. how_fr_missing les marque, ils sont denombrables.",
-  "changelog_v179": "Cinq collections de plus documentees : Acquiring Agaleus, Astral Purification, Radiance of the Sun God, The Convergence of Sorrow I Elegy et Gift of the Feast. Le parseur passe en v2 : le v1 prenait toute ligne commencant par un chiffre et ramassait donc le tableau des MATERIAUX au lieu de celui des objets — Elegy revenait avec des lingots d'orichalque et leurs prix. Le v2 s'ancre sur l'en-tete et n'accepte que les formes connues, dont « Objective | Nearest Waypoint | Notes » que le v1 ignorait completement. Le point de passage le plus proche, quand le wiki le donne, entre dans un champ waypoint plutot que d'etre noye dans le conseil. Le champ waypoint prend la forme {name, chat_code} deja en usage ailleurs dans collections{} et lue par le JSX (item.waypoint?.chat_code) : une chaine brute aurait ete un homonyme d'une autre forme, donc un chemin parallele. Le code de chat est extrait du libelle du wiki."
+  "changelog_v179": "Cinq collections de plus documentees : Acquiring Agaleus, Astral Purification, Radiance of the Sun God, The Convergence of Sorrow I Elegy et Gift of the Feast. Le parseur passe en v2 : le v1 prenait toute ligne commencant par un chiffre et ramassait donc le tableau des MATERIAUX au lieu de celui des objets — Elegy revenait avec des lingots d'orichalque et leurs prix. Le v2 s'ancre sur l'en-tete et n'accepte que les formes connues, dont « Objective | Nearest Waypoint | Notes » que le v1 ignorait completement. Le point de passage le plus proche, quand le wiki le donne, entre dans un champ waypoint plutot que d'etre noye dans le conseil. Le champ waypoint prend la forme {name, chat_code} deja en usage ailleurs dans collections{} et lue par le JSX (item.waypoint?.chat_code) : une chaine brute aurait ete un homonyme d'une autre forme, donc un chemin parallele. Le code de chat est extrait du libelle du wiki.",
+  "changelog_v180": "Huit collections de plus documentees : Legendary Relics Components, les deux Mists Research de Strife Unending, quatre Unknown Nightmares d'Orrax et Visions of Istan. Les huit tombent juste, longueurs identiques cote wiki et cote tracker. La neuvieme capture, incursive_investigation, est la page de CATEGORIE de succes et non la page de collection : le wiki redirige « Incursive Investigation: Working Together » vers elle. Rien n'en a ete tire, elle n'est pas versee."
  },
  "meta_events": {
   "vb": {
@@ -17902,47 +17903,97 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to Dugan.",
+       "name": "Speak to Dugan",
        "how": {
         "fr": "Dugan est le point d'entrée. Les 7 lieux suivants sont tous en McM : fais-les en une session, carte par carte.",
         "en": "Dugan is the entry point. The following 7 locations are all in WvW: do them in one session, map by map."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Speak to Dugan."
       },
       {
        "bit": 1,
-       "name": "Investigate the Krait Reliquary in Darkrait Inlet.",
+       "name": "Investigate the Krait Reliquary in Darkrait Inlet",
        "how": {
         "fr": "Les 7 examens ne demandent aucun combat, seulement d'atteindre le lieu. Un passage en heure creuse suffit — inutile d'attendre un bus.",
         "en": "The 7 examinations require no combat, only reaching the spot. An off-peak run is enough - no need to wait for a zerg."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Investigate the Krait Reliquary in Darkrait Inlet."
       },
       {
        "bit": 2,
-       "name": "Investigate the Dredge Furnace in Molevekian Delve."
+       "name": "Investigate the Dredge Furnace in Molevekian Delve",
+       "name_api": "Investigate the Dredge Furnace in Molevekian Delve.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in the north-west of Eternal Battlegrounds"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Investigate the Harpy Nesting Grounds in Orgath Uplands."
+       "name": "Investigate the Harpy Nesting Grounds in Orgath Uplands",
+       "name_api": "Investigate the Harpy Nesting Grounds in Orgath Uplands.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in the north-east of Eternal Battlegrounds"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Investigate the Heart of Stone inside Stonemist Castle."
+       "name": "Investigate the Heart of the Stone inside Stonemist Castle",
+       "name_api": "Investigate the Heart of Stone inside Stonemist Castle.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in Stonemist Castle , in the center of Eternal Battlegrounds"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Investigate the Centaur Totem in the Spiritholme."
+       "name": "Investigate the Centaur Totem in the Spiritholme",
+       "name_api": "Investigate the Centaur Totem in the Spiritholme.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in the north-east of Blue Alpine Borderlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Investigate the Skritt Shiny in the Titanpaw."
+       "name": "Investigate the Skritt Shiny in the Titanpaw",
+       "name_api": "Investigate the Skritt Shiny in the Titanpaw.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in the north-west of Green Alpine Borderlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Investigate the Mysterious Energy in Darra's Maze."
+       "name": "Investigate the Mysterious Energy in Darra's Maze",
+       "name_api": "Investigate the Mysterious Energy in Darra's Maze.",
+       "how": {
+        "fr": null,
+        "en": "Interact with the hero point in the south of the central area of Red Desert Borderlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -17962,65 +18013,132 @@
      "items": [
       {
        "bit": 0,
-       "name": "Check in with Dugan."
+       "name": "Check in with Dugan",
+       "name_api": "Check in with Dugan.",
+       "how": {
+        "fr": null,
+        "en": "Can be found in the spawn area of any team in World vs. World maps (except Edge of the Mists ). Requires the Mists Research achievement"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "After equipping a Mistwalker Infusion, kill 100 enemy players.",
+       "name": "After equipping a Mistwalker Infusion , kill 100 enemy players",
        "how": {
         "fr": "⚠ Le gros morceau : 100 joueurs ennemis tués AVEC une infusion d'arpenteur des Brumes équipée. Équipe-la maintenant, sinon les kills ne comptent pas rétroactivement.",
         "en": "⚠ The big one: 100 enemy players killed WITH a Mistwalker infusion equipped. Equip it now, otherwise kills don't count retroactively."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "After equipping a Mistwalker Infusion, kill 100 enemy players."
       },
       {
        "bit": 2,
-       "name": "Find the warclaw tamer in Zraith's Beacon."
+       "name": "Find the warclaw tamer in Zraith's Beacon",
+       "name_api": "Find the warclaw tamer in Zraith's Beacon.",
+       "how": {
+        "fr": null,
+        "en": "Phongluamthan the Tamer and his two warclaws can be found in an area nearby but under the end of the jumping puzzle, near the Orichalcum Ore node"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Capture the forge in the Edge of the Mists and talk to the smith there.",
+       "name": "Capture the forge in the Edge of the Mists and talk to the smith there",
        "how": {
         "fr": "Les 3 objectifs de la lisière des Brumes (forge, autel, atelier) se font en une seule visite si ton équipe tient la carte.",
         "en": "The 3 Edge of the Mists objectives (forge, altar, workshop) can be done in a single visit if your team holds the map."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Capture the forge in the Edge of the Mists and talk to the smith there."
       },
       {
        "bit": 4,
-       "name": "Capture and commune with the altar in the Edge of the Mists."
+       "name": "Capture and commune with the altar in the Edge of the Mists",
+       "name_api": "Capture and commune with the altar in the Edge of the Mists.",
+       "how": {
+        "fr": null,
+        "en": "Interact with Altar (object) (EotM green side, Overgrowth Region)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Capture the workshop in the Edge of the Mists and talk to the mechanic there."
+       "name": "Capture the workshop in the Edge of the Mists and talk to the mechanic there",
+       "name_api": "Capture the workshop in the Edge of the Mists and talk to the mechanic there.",
+       "how": {
+        "fr": null,
+        "en": "Talk to Champion Charr Mechanic at the Workshop (EotM red side, Badlands Region)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Capture the keep of an enemy team in Eternal Battlegrounds and talk to the warclaw spirit there.",
+       "name": "Capture the keep of an enemy team in Eternal Battlegrounds",
        "how": {
         "fr": "Les 4 captures suivantes couvrent trois cartes différentes. Suis les objectifs de ton serveur plutôt que de forcer une carte précise.",
         "en": "The next 4 captures span three different maps. Follow your server's objectives rather than forcing a specific map."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Capture the keep of an enemy team in Eternal Battlegrounds and talk to the warclaw spirit there."
       },
       {
        "bit": 7,
-       "name": "Capture Askalion Hills in Alpine Borderlands and talk to the warclaw spirit there."
+       "name": "Capture Askalion Hills in Alpine Borderlands",
+       "name_api": "Capture Askalion Hills in Alpine Borderlands and talk to the warclaw spirit there.",
+       "how": {
+        "fr": null,
+        "en": "East side of Blue Alpine Borderlands . Warclaw outside the lord's room (BBL Hills)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Capture Dreadfall Bay in Alpine Borderlands and talk to the warclaw spirit there."
+       "name": "Capture Dreadfall Bay in Alpine Borderlands",
+       "name_api": "Capture Dreadfall Bay in Alpine Borderlands and talk to the warclaw spirit there.",
+       "how": {
+        "fr": null,
+        "en": "West side of Green Alpine Borderlands . Warclaw Spirit will spawn outside the lord's room right next to the stairs. (GBL Bay)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Capture Stoic Rampart in Desert Borderlands and talk to the warclaw spirit there."
+       "name": "Capture Stoic Rampart in Desert Borderlands",
+       "name_api": "Capture Stoic Rampart in Desert Borderlands and talk to the warclaw spirit there.",
+       "how": {
+        "fr": null,
+        "en": "Warclaw West side of the lords area. (RBL Earth Keep)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Return to Dugan."
+       "name": "Return to Dugan",
+       "name_api": "Return to Dugan.",
+       "how": {
+        "fr": null,
+        "en": "Requires all previous steps to be completed"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18127,73 +18245,118 @@
      "items": [
       {
        "bit": 0,
-       "name": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research.",
+       "name": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research",
        "how": {
         "fr": "Jorvik Jorundsson, dans Bava Nisos, est la clé de tout l'onglet : lui parler ouvre d'un coup les 5 collections de dons.",
         "en": "Jorvik Jorundsson, in Bava Nisos, is the key to the whole tab: talking to him opens all 5 gift collections at once."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research."
       },
       {
        "bit": 1,
-       "name": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery.",
+       "name": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery",
        "how": {
         "fr": "Deux événements au choix — celui de la Syntri de Janthir est en général plus rapide à trouver que celui des Landes.",
         "en": "Two events to choose from - the Janthir Syntri one is usually quicker to find than the Barrens one."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery."
       },
       {
        "bit": 2,
-       "name": "Return to Jorvik Jorundsson in Bava Nisos and give him the battery."
+       "name": "Return to Jorvik Jorundsson in Bava Nisos and give him the battery",
+       "name_api": "Return to Jorvik Jorundsson in Bava Nisos and give him the battery.",
+       "how": {
+        "fr": null,
+        "en": "Return to Jorvik in Bava Nisos, Mantle's Arrival Waypoint — [&BGEPAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Travel to Godslost Swamp and find the suspicious portal to calibrate Jorvik Jorundsson's sensor."
+       "name": "Travel to Godslost Swamp and find the suspicious portal to calibrate Jorvik Jorundsson's sensor",
+       "name_api": "Travel to Godslost Swamp and find the suspicious portal to calibrate Jorvik Jorundsson's sensor.",
+       "how": {
+        "fr": null,
+        "en": "The suspicious portal in Godslost Swamp in Queensdale is located just east of Swamplost Haven Waypoint — [&BPcAAAA=] , outside of Swamplost Haven. It looks like a regular green underworld portal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Talk to Jorvik Jorundsson in Bava Nisos to give him his sensor back."
+       "name": "Talk to Jorvik Jorundsson in Bava Nisos to give him his sensor back",
+       "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to give him his sensor back.",
+       "how": {
+        "fr": null,
+        "en": "Return to Jorvik in Bava Nisos, Mantle's Arrival Waypoint — [&BGEPAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal.",
+       "name": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal",
        "how": {
         "fr": "Puzzle de saut « Grotte du cristal du chaos », dans les Marais de fer. Prévois un deltaplane et de la patience.",
         "en": "'Chaos Crystal Cavern' jumping puzzle, in the Iron Marches. Bring a glider and patience."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal."
       },
       {
        "bit": 6,
-       "name": "Talk to Jorvik Jorundsson in Bava Nisos to verify the crystal is appropriate for their purposes."
+       "name": "Talk to Jorvik Jorundsson in Bava Nisos to verify the crystal is appropriate for their purposes",
+       "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to verify the crystal is appropriate for their purposes.",
+       "how": {
+        "fr": null,
+        "en": "Return to Jorvik in Bava Nisos, Mantle's Arrival Waypoint — [&BGEPAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel.",
+       "name": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel",
        "how": {
         "fr": "Le bassin de divination est au Panthéon des Hauts Faits — pas dans Janthir. Aller-retour à anticiper.",
         "en": "The divination pool is in the Hall of Monuments - not in Janthir. Plan the round trip."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel."
       },
       {
        "bit": 8,
-       "name": "Talk to Jorvik Jorundsson in Bava Nisos to give him the attuned crystal."
+       "name": "Talk to Jorvik Jorundsson in Bava Nisos to give him the attuned crystal",
+       "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to give him the attuned crystal.",
+       "how": {
+        "fr": null,
+        "en": "Return to Jorvik in Bava Nisos, Mantle's Arrival Waypoint — [&BGEPAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing.",
+       "name": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing",
        "how": {
         "fr": "Dernière étape, purement dialoguée : elle valide la collection et débloque le composant de Orrax réprimé.",
         "en": "Final step, pure dialogue: it validates the collection and unlocks the Orrax Contained component."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing."
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18213,41 +18376,58 @@
      "items": [
       {
        "bit": 0,
-       "name": "Orrax Contained"
+       "name": "Orrax Contained",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mistburned Isles, a Gift of Shadows, a Gift of the Feast, and Orrax Contained in the Mystic Forge to create Orrax Manifested"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Received from completing the Unknown Nightmares: Experiments in the Shadows achievement",
+       "name": "Binding of the Dragon",
        "how": {
         "fr": "Ce composant tombe automatiquement à la fin de « Expériences dans les ombres » — ne le cherche pas ailleurs.",
         "en": "This component drops automatically at the end of 'Experiments in the Shadows' - don't look for it elsewhere."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Received from completing the Unknown Nightmares: Experiments in the Shadows achievement"
       },
       {
        "bit": 2,
-       "name": "Draconic Tribute"
+       "name": "Draconic Tribute",
+       "how": {
+        "fr": null,
+        "en": "In the Mystic Forge , combine 38 Mystic Clovers , a Gift of Condensed Magic , a Gift of Condensed Might , and 5 Amalgamated Draconic Lodestones to create a Draconic Tribute"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "If needed, remnants of this item can be purchased from the renown heart vendor in Mistburned Barrens.",
+       "name": "Salmon of Knowledge Backpiece",
        "how": {
         "fr": "Rachetable en boucle chez le vendeur de cœur de renommée des Landes de Feu-de-Brume : aucun risque de blocage définitif.",
         "en": "Repeatable from the Mistburned Barrens renown heart vendor: no risk of a permanent block."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "If needed, remnants of this item can be purchased from the renown heart vendor in Mistburned Barrens."
       },
       {
        "bit": 4,
-       "name": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+       "name": "Askur Camping Cookout Backpiece",
        "how": {
         "fr": "Même filet de sécurité chez la vendeuse de la Garde Sampaguita, dans Bava Nisos.",
         "en": "Same safety net from the Sampaguita Guard vendor, in Bava Nisos."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos."
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18267,91 +18447,148 @@
      "items": [
       {
        "bit": 0,
-       "name": "Gift of the Mistburned Isles"
+       "name": "Gift of the Mistburned Isles",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mistburned Isles, a Gift of Shadows, a Gift of the Feast, and Orrax Contained in the Mystic Forge to create the legendary backpack and glider Orrax Manifested. Created in the Mystic Forge by combining: • 1 Gift of the Mursaat Ruins • 1 Gift of Janthir Wanderlust • 250 Mursaat Runestones • 250 Mystic Runestones"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Gift of the Mursaat Ruins"
+       "name": "Gift of the Mursaat Ruins",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mursaat Ruins, a Gift of Janthir Wanderlust, 250 Mursaat Runestones, and 250 Mystic Runestones in the Mystic Forge to create the Gift of the Mistburned Isles. Created in the Mystic Forge by combining: • 100 Vials of Titan Melted Liquid Obsidian • 50 Mists Gate Residues • 100 Shards of Mistburned Barrens • 100 Shards of Bava Nisos"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Gift of Janthir Wanderlust"
+       "name": "Gift of Janthir Wanderlust",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mursaat Ruins, a Gift of Janthir Wanderlust, 250 Mursaat Runestones, and 250 Mystic Runestones in the Mystic Forge to create a Gift of the Mistburned Isles. Created in the Mystic Forge by combining: • 1 Gift of Lowland Shore • 1 Gift of Janthir Syntri • 1 Gift of Mistburned Barrens • 1 Gift of Bava Nisos"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Found in chests in Janthir Wilds, or purchased from the Trading Post."
+       "name": "Mursaat Runestone",
+       "name_api": "Found in chests in Janthir Wilds, or purchased from the Trading Post.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Found in chests in Janthir Wilds, or purchased from the trading post"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor.",
+       "name": "Mystic Runestone",
        "how": {
         "fr": "⚠ Maîtrise Érudit des secrets obligatoire. Si elle n'est pas montée, c'est le premier vrai blocage de l'onglet — commence par là.",
         "en": "⚠ Scholar of Secrets mastery required. If it isn't levelled, this is the tab's first real blocker - start here."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor."
       },
       {
        "bit": 5,
-       "name": "Crafted using Mursaat Obsidian Chunks, Titan Heatstones, Globs of Ectoplasm, and Ancient Wood Planks.",
+       "name": "Vial of Titan Melted Liquid Obsidian",
        "how": {
         "fr": "Fabrication : obsidienne mursaat, pierres de chaleur de Titan, ectoplasme et bois ancien. Armurier 400 requis.",
         "en": "Crafting: mursaat obsidian, Titan heat stones, ectoplasm and ancient wood. Armorsmith 400 required."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Crafted using Mursaat Obsidian Chunks, Titan Heatstones, Globs of Ectoplasm, and Ancient Wood Planks."
       },
       {
        "bit": 6,
-       "name": "Purchased from Ward Trader Sampaguita in Bava Nisos."
+       "name": "Mists Gate Residue",
+       "name_api": "Purchased from Ward Trader Sampaguita in Bava Nisos.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Purchased from Ward Trader Sampaguita in Bava Nisos"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Shard of Mistburned Barrens"
+       "name": "Shard of Mistburned Barrens",
+       "how": {
+        "fr": null,
+        "en": "Used in the crafting of Janthir Wilds legendary items . Purchased from the Mistburned Barrens renown heart vendor , or purchased from the Trading Post"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Shard of Bava Nisos"
+       "name": "Shard of Bava Nisos",
+       "how": {
+        "fr": null,
+        "en": "Used in the crafting of Janthir Wilds legendary items. Purchased from a Bava Nisos vendor or from the Trading Post"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore.",
+       "name": "Gift of Lowland Shore",
        "how": {
         "fr": "Complétion de carte de la Côte des basses terres. Les exemplaires supplémentaires s'achètent, donc pas besoin de viser juste du premier coup.",
         "en": "Lowland Shore map completion. Extra copies can be bought, so no need to get it right first time."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore."
       },
       {
        "bit": 10,
-       "name": "Earned in Janthir Syntri by completing all map locations. Further copies can be purchased from renown heart vendors in Janthir Syntri.",
+       "name": "Gift of Janthir Syntri",
        "how": {
         "fr": "Idem pour la Syntri de Janthir : complétion de carte, puis rachat chez les cœurs de renommée.",
         "en": "Same for Janthir Syntri: map completion, then repurchase from the renown hearts."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned in Janthir Syntri by completing all map locations. Further copies can be purchased from renown heart vendors in Janthir Syntri."
       },
       {
        "bit": 11,
-       "name": "Earned in Mistburned Barrens by completing all map locations. Further copies can be purchased from the renown heart vendor in Mistburned Barrens.",
+       "name": "Gift of Mistburned Barrens",
        "how": {
         "fr": "Idem pour les Landes de Feu-de-Brume.",
         "en": "Same for the Mistburned Barrens."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned in Mistburned Barrens by completing all map locations. Further copies can be purchased from the renown heart vendor in Mistburned Barrens."
       },
       {
        "bit": 12,
-       "name": "Earned in Bava Nisos by completing all map locations. Further copies can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+       "name": "Gift of Bava Nisos",
        "how": {
         "fr": "Idem pour Bava Nisos. Les 4 complétions de carte sont l'essentiel du temps de cette collection — lance-les en fond.",
         "en": "Same for Bava Nisos. The 4 map completions are most of this collection's time - start them in the background."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned in Bava Nisos by completing all map locations. Further copies can be purchased from Ward Trader Sampaguita in Bava Nisos."
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -18371,55 +18608,80 @@
      "items": [
       {
        "bit": 0,
-       "name": "Gift of Shadows"
+       "name": "Gift of Shadows",
+       "how": {
+        "fr": null,
+        "en": "Combine a Gift of the Mistburned Isles, a Gift of Shadows, a Gift of The Feast, and Orrax Contained in the Mystic Forge to create the legendary backpack and glider Orrax Manifested. Created in the Mystic Forge by combining: • 1 Gift of Darkness • 1 Gift of Scales • 1 Gift of Titan Understanding • 1 Bloodstone Shard"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Gift of Darkness"
+       "name": "Gift of Darkness",
+       "how": {
+        "fr": null,
+        "en": "A gift of darkness used to create Twilight . Purchase the recipe for this item from any Mystic Forge vendor and reach an armorsmith rating of 400 to craft"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Gift of Scales"
+       "name": "Gift of Scales",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Scales , 50 Smooth Scales , 250 Large Scales , and 100 Armored Scales"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Purchased from unusual coin vendors in Mistburned Barrens and Bava Nisos.",
+       "name": "Gift of Titan Understanding",
        "how": {
         "fr": "Vendeurs de pièces inhabituelles des Landes de Feu-de-Brume et de Bava Nisos : les deux vendent la même chose, prends le plus proche.",
         "en": "Unusual Coin vendors in the Mistburned Barrens and Bava Nisos: both sell the same thing, take the closest."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Purchased from unusual coin vendors in Mistburned Barrens and Bava Nisos."
       },
       {
        "bit": 4,
-       "name": "Purchased from a Mystic Forge vendor for Spirit Shards.",
+       "name": "Bloodstone Shard",
        "how": {
         "fr": "Payable en éclats d'esprit à la forge mystique — la ressource que tu accumules sans t'en servir.",
         "en": "Payable in spirit shards at the Mystic Forge - the resource you accumulate without using."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Purchased from a Mystic Forge vendor for Spirit Shards."
       },
       {
        "bit": 5,
-       "name": "Earned by completing events in Mistburned Barrens.",
+       "name": "Curious Mursaat Ruin Shard",
        "how": {
         "fr": "Événements des Landes de Feu-de-Brume : farmable en boucle, aucun plafond.",
         "en": "Mistburned Barrens events: farmable on repeat, no cap."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned by completing events in Mistburned Barrens."
       },
       {
        "bit": 6,
-       "name": "Earned by completing events in Bava Nisos.",
+       "name": "Curious Mursaat Remnants",
        "how": {
         "fr": "Événements de Bava Nisos, même logique. Les deux tombent en faisant les métas de carte.",
         "en": "Bava Nisos events, same logic. Both drop while doing the map metas."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Earned by completing events in Bava Nisos."
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -25326,7 +25588,14 @@
       },
       {
        "bit": 6,
-       "name": "Vision of Action: Domain of Istan"
+       "name": "Vision of Action: Domain of Istan",
+       "how": {
+        "fr": null,
+        "en": "Hint: Stop the supply of deathly materials"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"
@@ -27221,113 +27490,233 @@
      "items": [
       {
        "bit": 0,
-       "name": "Refined from 50 Vials Blood, 50 Vials of Thick Blood, 250 Vials of Potent Blood, and 100 Vials of Powerful Blood.",
+       "name": "Gift of Blood",
        "how": {
         "fr": "Les 8 dons de matériaux (étapes 1 à 8) consomment chacun 450 matériaux T1-T6. C'est le poste le plus coûteux : vérifie ton stockage AVANT d'acheter au comptoir.",
         "en": "The 8 material gifts (steps 1 to 8) each consume 450 T1-T6 materials. This is the costliest item: check your storage BEFORE buying on the trading post."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Refined from 50 Vials Blood, 50 Vials of Thick Blood, 250 Vials of Potent Blood, and 100 Vials of Powerful Blood."
       },
       {
        "bit": 1,
-       "name": "Refined from 50 Bones, 50 Heavy Bones, 250 Large Bones, and 100 Ancient Bones."
+       "name": "Gift of Bones",
+       "name_api": "Refined from 50 Bones, 50 Heavy Bones, 250 Large Bones, and 100 Ancient Bones.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Bones , 50 Heavy Bones , 250 Large Bones , and 100 Ancient Bones"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Refined from 50 Claws, 50 Sharp Claws, 250 Large Claws, and 100 Vicious Claws."
+       "name": "Gift of Claws",
+       "name_api": "Refined from 50 Claws, 50 Sharp Claws, 250 Large Claws, and 100 Vicious Claws.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Claws , 50 Sharp Claws , 250 Large Claws , and 100 Vicious Claws"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Refined from 50 Piles of Radiant Dust, 50 Piles of Luminous Dust, 250 Piles of Incandescent Dust, and 100 Piles of Crystalline Dust."
+       "name": "Gift of Dust",
+       "name_api": "Refined from 50 Piles of Radiant Dust, 50 Piles of Luminous Dust, 250 Piles of Incandescent Dust, and 100 Piles of Crystalline Dust.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Piles of Radiant Dust , 50 Piles of Luminous Dust , 250 Piles of Incandescent Dust , and 100 Piles of Crystalline Dust"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Refined from 50 Fangs, 50 Sharp Fangs, 250 Large Fangs, and 100 Vicious Fangs."
+       "name": "Gift of Fangs",
+       "name_api": "Refined from 50 Fangs, 50 Sharp Fangs, 250 Large Fangs, and 100 Vicious Fangs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Fangs , 50 Sharp Fangs , 250 Large Fangs , and 100 Vicious Fangs"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Refined from 50 Scales, 50 Smooth Scales, 250 Large Scales, and 100 Armored Scales."
+       "name": "Gift of Scales",
+       "name_api": "Refined from 50 Scales, 50 Smooth Scales, 250 Large Scales, and 100 Armored Scales.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Scales , 50 Smooth Scales , 250 Large Scales , and 100 Armored Scales"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Refined from 50 Totems, 50 Engraved Totems, 250 Intricate Totems, and 100 Elaborate Totems."
+       "name": "Gift of Totems",
+       "name_api": "Refined from 50 Totems, 50 Engraved Totems, 250 Intricate Totems, and 100 Elaborate Totems.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Totems , 50 Engraved Totems , 250 Intricate Totems , and 100 Elaborate Totems"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Refined from 50 Venom Sacs, 50 Full Venom Sacs, 250 Potent Venom Sacs, and 100 Powerful Venom Sacs."
+       "name": "Gift of Venom",
+       "name_api": "Refined from 50 Venom Sacs, 50 Full Venom Sacs, 250 Potent Venom Sacs, and 100 Powerful Venom Sacs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Refined from 50 Venom Sacs , 50 Full Venom Sacs , 250 Potent Venom Sacs , and 100 Powerful Venom Sacs"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Lyhr in the Wizard's Tower can also help create this.",
+       "name": "Mystic Clover",
        "how": {
         "fr": "Lyhr, à la Tour du sorcier, fabrique ceci à ta place si la discipline te manque — inutile de monter un métier pour la relique.",
         "en": "Lyhr, at the Wizard's Tower, crafts this for you if you lack the discipline - no need to level a craft for the relic."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Lyhr in the Wizard's Tower can also help create this."
       },
       {
        "bit": 9,
-       "name": "Lyhr in the Wizard's Tower can also help create this."
+       "name": "Gift of Research",
+       "name_api": "Lyhr in the Wizard's Tower can also help create this.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Lyhr in the Wizard's Tower can also help create this"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Thermocatalytic Reagent"
+       "name": "Thermocatalytic Reagent",
+       "how": {
+        "fr": null,
+        "en": "Used in the crafting of ascended items. Can be purchased from master craftsmen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Purchased from master craftspeople for research notes. \nResearch notes are acquired by deconstructing crafted items with research kits.\nResearch kits are bought from master craftspeople.",
+       "name": "Hydrocatalytic Reagent",
        "how": {
         "fr": "Notes de recherche : obtenues en décomposant des objets fabriqués avec un kit de recherche. Décompose ce que tu produis plutôt que de le vendre.",
         "en": "Research Notes: obtained by salvaging items crafted with a research kit. Salvage what you produce rather than selling it."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Purchased from master craftspeople for research notes. \nResearch notes are acquired by deconstructing crafted items with research kits.\nResearch kits are bought from master craftspeople."
       },
       {
        "bit": 12,
-       "name": "Essence of luck can be acquired by salvaging gear of fine or masterwork quality and salvaging globs of ectoplasm. Artificers can craft essence of luck at higher quality.\nLyhr in the Wizard's Tower can also help create this.",
+       "name": "Essence of Luck",
        "how": {
         "fr": "Essences de chance : recyclage d'équipement raffiné/chef-d'œuvre et de boules d'ectoplasme. À accumuler passivement, ne l'achète pas.",
         "en": "Essences of Luck: salvaged from fine/masterwork gear and globs of ectoplasm. Accumulate it passively, don't buy it."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Essence of luck can be acquired by salvaging gear of fine or masterwork quality and salvaging globs of ectoplasm. Artificers can craft essence of luck at higher quality.\nLyhr in the Wizard's Tower can also help create this."
       },
       {
        "bit": 13,
-       "name": "Salvaged from certain rare or exotic gear. Lyhr in the Wizard's Tower seems to want this in large quantities."
+       "name": "Glob of Ectoplasm",
+       "name_api": "Salvaged from certain rare or exotic gear. Lyhr in the Wizard's Tower seems to want this in large quantities.",
+       "how": {
+        "fr": null,
+        "en": "Salvage Item"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Mystic Facet"
+       "name": "Mystic Facet",
+       "how": {
+        "fr": null,
+        "en": "Used in the Mystic Forge to create the Gift of Relics . Used for the legendary relic . A Mystic Facet is made by combining these items in the Mystic Forge: • 1 Relic • 250 Piles of Lucent Crystal • 250 Piles of Lucent Crystal • 250 Piles of Lucent Crystal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Lucent motes are acquired by salvaging runes, sigils, and relics.",
+       "name": "Pile of Lucent Crystal",
        "how": {
         "fr": "Particules luisantes : recyclage de runes, cachets et reliques. Tes vieilles runes légendaires de remplacement sont la meilleure source.",
         "en": "Glob of Glimmering Particles: salvaged from runes, sigils and relics. Your old replacement runes are the best source."
        },
        "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "name_api": "Lucent motes are acquired by salvaging runes, sigils, and relics."
       },
       {
        "bit": 16,
-       "name": "Gift of Relics"
+       "name": "Gift of Relics",
+       "how": {
+        "fr": null,
+        "en": "In the Mystic Forge , combine a Gift of Relics, a Gift of Condensed Magic , a Gift of Condensed Might , and a Gift of Craftsmanship to create a legendary relic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Gift of Condensed Magic"
+       "name": "Gift of Condensed Magic",
+       "how": {
+        "fr": null,
+        "en": "Hint: Lyhr in the Wizard's Tower can also help create this"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Gift of Condensed Might"
+       "name": "Gift of Condensed Might",
+       "how": {
+        "fr": null,
+        "en": "Hint: Lyhr in the Wizard's Tower can also help create this"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Purchased from faction provisioners."
+       "name": "Gift of Craftsmanship",
+       "name_api": "Purchased from faction provisioners.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Purchase from provisioners in major cities, the Maguuma Jungle, or the Horn of Maguuma"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements"

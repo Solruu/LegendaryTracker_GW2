@@ -809,21 +809,15 @@ français — le contenu est là, seule la langue manque. Les 6 autres `how` don
 le français est identique à l'anglais viennent des anciens `bitTips` et sont
 sans doute dans le même cas.
 
-### Reste : 129 étapes, par ordre de rendement
+### Reste : 14 étapes sur 468 — **97 % documenté**
 
-| collection | légendaire | sans conseil |
-|---|---|---|
-| Acquiring Agaleus (8869) | Selachimorpha | 18 |
-| Radiance of the Sun God (9183) | Endless Summer | 16 |
-| Gift of the Feast (8750) | Orrax Manifested | 15 |
-| The Convergence of Sorrow I: Elegy (4376) | Vision | 15 |
-| Legendary Relics: Components (7829) | Upgrades | 15 |
-| Astral Purification (3964) | Vision | 14 |
-| Mists Research: Strife Unending (9244) | Strife Unending | 8 |
-| Gift of the Mistburned Isles (8743) | Orrax Manifested | 7 |
-| Mists Research (6933) | Strife Unending | 6 |
-| Experiments in the Shadows (8761) | Orrax Manifested | 5 |
-| Working Together (8830) | Eikasia | 4 |
-| Gift of Shadows (8723) | Orrax Manifested | 3 |
-| Orrax Contained (8730) | Orrax Manifested | 2 |
-| Visions of Istan (4765) | Vision | 1 |
+| collection | légendaire | sans conseil | pourquoi |
+|---|---|---|---|
+| Unknown Nightmares: Gift of the Feast | Orrax | 10 | **rien à écrire** : ce sont des plats de cuisine, le wiki ne met pas de note sur ces lignes et le nom suffit |
+| Incursive Investigation: Working Together | Eikasia | 4 | capture à refaire |
+
+**Le seul vrai reste : `Incursive Investigation: Working Together`** (succès 8830).
+Le wiki **redirige** ce titre vers la page de *catégorie* du groupe de succès,
+qui ne contient aucun tableau d'objets — la capture reçue en était une. Il faut
+atteindre la page de collection elle-même, pas la redirection.
+
