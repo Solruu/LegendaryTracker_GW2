@@ -758,21 +758,55 @@ Ni l'un ni l'autre n'est sourcé. Le 600 vient de ma lecture de la prose, le 450
 d'une saisie plus ancienne. **À vérifier en jeu avant d'aligner quoi que ce
 soit** — aligner sur un nombre non vérifié ne ferait que figer une erreur.
 
-## Collections des armes gen1/gen2/gen3 — méthode établie, non appliquée
+## Collections des armes — la page « Precursor weapon » tranche l'essentiel
 
-**53 armes, aucune collection.** Le dump couvre 104 succès « Legendary Weapons »,
-mais le rapprochement automatique par nom n'en atteint que **24 sur 53**.
+Capture versée : `ressources/wiki/precursor_weapon.html`. Sa table donne, pour
+chaque arme, les trois paliers de précurseur, la légendaire, le type et **la
+génération** — 20 gen1, 16 gen2, 16 gen3, 1 « Standalone » (Klobjarne Geirr).
 
-Les 29 restantes échouent pour des raisons distinctes :
-- **Eternity** n'a pas de collection propre — elle se forge depuis Sunrise et
-  Twilight.
-- Les **gen3 (Aurene's …)** n'ont pas de collection de précurseur du tout.
-- Plusieurs gen2 — Tigris, Caladbolg, Eureka, Xiuquatl — portent des noms de
-  collection qui ne commencent pas par le nom de l'arme.
+### Ce qui est établi
 
-**Ne pas appliquer le rapprochement automatique en l'état** : 45 % d'échec, et
-un rapprochement par nom qui se trompe crée des collections attribuées à la
-mauvaise arme. Il faut une table de correspondance explicite, arme par arme.
+**Les gen3 n'ont aucune collection, et c'est définitif.** Les 16 sont dans la
+table du wiki avec `gen=3rd` et leurs précurseurs, mais aucun des 104 succès
+« Legendary Weapons » ne les mentionne. Les précurseurs gen3 passent par les
+Dons de recherche, pas par des collections. **À marquer comme vide assumé**,
+sinon on relancera le rapprochement indéfiniment.
+
+**25 armes s'apparient proprement** : les gen1 avec leur famille
+`Legendary Weapon: X`, les gen2 avec leur chaîne `X I: … / II: … / III: …`.
+
+**Tigris est un précurseur, confirmé** : la table du wiki la donne en
+« Final tier » de **Chuka and Champawat**. Elle est enregistrée comme arme dans
+`legendaries`, ce qui gonfle le compteur gen2 d'une unité.
+
+### Les 12 entrées qui ne se réconcilient pas
+
+Absentes de la colonne « Legendary » du wiki **et** des 104 succès :
+
+- **Eternity** — légitime, elle n'a pas de précurseur (forge de Sunrise +
+  Twilight). Vide assumé.
+- **7 gen2** : Caladbolg, Elegy, Eordas Grip, H.O.P.E. (Scepter), Itzel's Boon,
+  Lorekeeper, Reaver of the Mists. Aucune n'apparaît nulle part dans la table
+  des 53 précurseurs.
+- **4 gen3** : Aurene's Guard, Reckoning, Tenderness, Wrath — alors que les 12
+  autres Aurene's y sont.
+
+**Hypothèse à vérifier, non écrite** : ces entrées sont soit des variantes de
+nom (H.O.P.E. Scepter contre H.O.P.E.), soit des armes postérieures à la table
+du wiki, soit des précurseurs comme Tigris. Le tracker compte gen2 à 16 et gen3
+à 16, ce que le wiki confirme — donc si sept gen2 sont en trop, sept autres
+manquent.
+
+### Forme de la table, une fois tranché
+
+```
+gen2_astralaria → [2571, 2447, 2433, 2268]
+gen1_bolt       → [2355, 2356, 2480, <final>]
+gen3_*          → []   + marqueur « vide assumé »
+```
+
+Une ligne par arme, identifiants explicites, et un marqueur distinguant
+« pas encore mappé » de « vide établi ».
 
 ## Étapes documentées — Wayfarer's Henge fait le 27/08/2026
 
