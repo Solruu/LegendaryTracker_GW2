@@ -941,7 +941,8 @@
   "changelog_v181": "Les quatre dernieres etapes utiles sont documentees : les rendez-vous avec le Mist Stranger, dans la zone instanciee accessible depuis l'Arche du Lion. Source : la section Objectives de la page de CATEGORIE du wiki, relevee par Antoine — la page de collection redirige vers elle et n'expose aucun tableau d'objets. Decouverte au passage : l'ordre des bits de l'API ne suit pas la numerotation du wiki sur cette collection, le bit 9 porte l'objectif 2. Un rapprochement par rang y aurait tout decale. Verification faite sur les 20 collections deja traitees : aucun nom ne correspond au texte d'un autre bit, le rapprochement par rang y etait sain.",
   "changelog_v182": "Douze fiches d'armes inventees sont remplacees. Chacune portait un precursor et un gift_unique absents des 53 lignes de la table du wiki — Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade, Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Shield of Aurene's Wisdom : aucun n'existe. A leur place, les huit gen2 et quatre gen3 reelles que le tracker ne montrait pas : Claw of the Khan-Ur, Flames of War, Pharus, Sharur, The HMS Divinity, The Shining Blade, Verdarach, et Aurene's Fang, Flight, Tail, Wing. Tigris disparait : la table la donne en Final tier de Chuka and Champawat, c'est un precurseur. The Binding of Ipos, vraie gen2, passe sous le prefixe gen2_ : elle vivait hors prefixe et n'entrait donc pas dans le selecteur du Grand Total. Les recettes des nouvelles fiches sont reprises du gabarit de generation et marquees recipe_verified false.",
   "changelog_v183": "Les collections des armes sont posees. 25 armes en ont — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka and Champawat, HOPE, Nevermore) — pour 87 collections et 1 570 etapes nommees. Les 28 autres n'en ont AUCUNE, et c'est un vide etabli : les douze gen2 de PoF et les seize gen3 fabriquent leur precurseur a la Forge mystique au lieu de le gagner par une chaine de succes. collections_none le dit explicitement, pour qu'on ne relance pas le rapprochement a chaque session. Aucun how n'est ecrit : les etapes sont nommees, leur mode d'obtention reste a documenter.",
-  "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie."
+  "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie.",
+  "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages."
  },
  "meta_events": {
   "vb": {
@@ -21316,59 +21317,170 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Basic Mithril Mace Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak to a Master Weaponsmith to discover the art of forging."
+       "name": "The Art of Forging: Mace Head Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Speak to a Master Weaponsmith to learn the secret to weighting a weapon head."
+       "name": "Weighted Mace Head",
+       "name_api": "Speak to a Master Weaponsmith to learn the secret to weighting a weapon head.",
+       "how": {
+        "fr": null,
+        "en": "Create to demonstrate your ability as a Weaponsmith- only has value as part of this collection"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Speak to a Master Weaponsmith to discover the art of woodworking."
+       "name": "The Art of Woodworking: Mace Haft Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of woodworking.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of woodworking"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Speak to a Master Weaponsmith to discover the secret to balancing a haft."
+       "name": "Balanced Mace Haft",
+       "name_api": "Speak to a Master Weaponsmith to discover the secret to balancing a haft.",
+       "how": {
+        "fr": null,
+        "en": "Create to demonstrate your ability as a Weaponsmith- only has value as part of this collection"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools."
+       "name": "Superior Mace Forging Tools",
+       "name_api": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools.",
+       "how": {
+        "fr": null,
+        "en": "Demonstrate your ability to build the needed tools for Maces- only has value as part of this collection"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics."
+       "name": "Desert Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics. (Requires 1000 Bandit Crests )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics."
+       "name": "Jungle Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics. (Requires 400 Geodes )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics."
+       "name": "Old World Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics. (Requires 100 Obsidian Shards )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics."
+       "name": "Ancient Water Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics. (Requires 100 Karka Shells )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics."
+       "name": "Herbal Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics. (Requires 25 Passion Flowers )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics."
+       "name": "Stabilizing Magics: Mace Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics. (Requires 25 Stabilizing Matrices )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track."
+       "name": "The Moot Vol. 2",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "The Energizer Experiment"
+       "name": "The Energizer Experiment",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_moot_ii_the_perfected_mace.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",

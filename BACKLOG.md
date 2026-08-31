@@ -916,14 +916,21 @@ Quatorze existent déjà dans `craft_components`. Elles portent désormais un ch
 lisent dans le composant, et un `how` paraphrasé aurait divergé dès la première
 mise à jour. Le rendu retombe sur le `tip` du composant.
 
-### Palier II — un seul lot, 79 libellés pour 317 étapes
+### Palier II — ⚠ **la mutualisation était un mirage**, capture d'essai du 27/08/2026
 
-Les 24 armes partagent les mêmes étapes : « Speak to Scholar Mossi in the
-Trader's Forum in Lion's Arch » ×24, « Purchased from Grandmaster Craftsman
-Hobbs » ×23, « Speak to a Master Weaponsmith… » sur toutes.
+`The Moot II: The Perfected Mace` a tranché. Ce que le wiki apporte, ce sont les
+**noms d'objets** — « Weighted Mace Head », « Desert Magics: Mace Edition »,
+« The Moot Vol. 2 » — que l'API ne donne pas : elle rend la phrase d'action à
+leur place. Les notes du wiki, elles, **répètent le plus souvent cette même
+phrase** ; seules 4 des 14 apportent autre chose.
 
-**Une seule page suffit à valider la méthode**, deux couvrent 15 libellés sur 79 —
-le reste diffère par le métier d'artisanat, pas par la structure.
+**Or les 79 libellés partagés étaient les DESCRIPTIONS, déjà dans le tracker.**
+Les noms, eux, sont propres à chaque arme : « Mace Edition » contre « Hammer
+Edition ». Le palier II n'est donc **pas** un lot bon marché — il faut ses
+24 pages, comme les paliers I et III.
+
+Le gain reste réel mais modeste : lisibilité des libellés. 14 noms et 14 `how`
+posés sur The Moot II.
 
 ### Paliers I et III — au fil des cibles
 
