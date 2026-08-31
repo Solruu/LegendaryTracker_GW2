@@ -936,3 +936,34 @@ posés sur The Moot II.
 
 1 021 libellés distincts pour 1 113 étapes. Chaque arme a ses objets et ses
 lieux : il faut les pages, arme par arme, comme tu joues.
+
+## Le champ `unlock` — ✅ amorcé le 27/08/2026 depuis l'encadré du wiki
+
+Antoine a repéré que l'encadré d'un succès porte trois champs que ni l'API ni le
+tableau des objets ne donnent :
+
+| champ | ce qu'il dit |
+|---|---|
+| `prerequisite` | le succès à terminer avant |
+| `unlock_item` | l'objet qui déclenche l'ouverture |
+| `reward` | ce que la collection rend |
+
+**Astralaria III le résume** : prérequis *Historian of the Armaments*, objet
+déclencheur *The Apparatus* — le précurseur du palier II — et récompense le
+*Chest of Time and Space*, qui **contient la recette** du Mechanism.
+
+L'ordre entre paliers devient donc une **donnée** au lieu d'une note en prose :
+`unlock_item` porte le précurseur du palier précédent.
+
+`gw2_parse_achievement_box_v1.py` fait le travail. Posé sur **16 collections**,
+celles dont la capture porte l'encadré — les autres l'auront au fur et à mesure.
+
+**Un piège de bornage rencontré** : quand `Unlock Item` manque, le champ
+précédent déborde et ramène « Salvation's Cost Title: ». Le parseur borne
+désormais sur le **premier** intitulé rencontré, quel qu'il soit, et écarte les
+valeurs qui ressemblent à une phrase plutôt qu'à un nom.
+
+**Reste** : les 87 collections d'armes non encore capturées, et la fusion avec
+`collection_unlocks`, qui porte déjà des portes de déblocage (niveau de fractale,
+maîtrises) pour quelques succès. Les deux coexistent aujourd'hui sans se
+contredire — le bloc du wiki ne s'affiche que si `collection_unlocks` ne dit rien.

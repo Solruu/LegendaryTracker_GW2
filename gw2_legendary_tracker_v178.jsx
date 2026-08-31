@@ -32,6 +32,9 @@ const I18N = {
     bits_tap_hint: "Tap a collection to expand its steps.",
     bits_locked_note: "Collection locked in-game — steps shown for reference; progress will appear once unlocked.",
     bits_nodata_note: "No progress yet — the API only reports collections you have started. Steps come from the tracker's own data.",
+    unlock_prereq: "Requires:",
+    unlock_item: "Unlocked by:",
+    unlock_reward: "Rewards:",
     bits_loading: "Loading step definitions…",
     tab_cadences: "Timegates",
     cad_daily_reset: "Daily reset in",
@@ -264,6 +267,9 @@ const I18N = {
     bits_tap_hint: "Touche une collection pour déplier ses étapes.",
     bits_locked_note: "Collection verrouillée en jeu — étapes affichées à titre indicatif ; la progression apparaîtra une fois débloquée.",
     bits_nodata_note: "Aucune progression — l'API ne renvoie que les collections déjà entamées. Les étapes viennent des données du tracker.",
+    unlock_prereq: "Exige :",
+    unlock_item: "Débloquée par :",
+    unlock_reward: "Rend :",
     bits_loading: "Chargement des définitions d'étapes…",
     tab_cadences: "Timegates",
     cad_daily_reset: "Reset quotidien dans",
@@ -3913,6 +3919,7 @@ export default function GW2LegendaryTracker() {
           (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
         // Une etape peut etre une autre legendaire : Eternity se forge depuis
         // Sunrise et Twilight. On y renvoie, on ne recopie pas leur chaine.
+        unlock: c.unlock,
         bitLegendaries: Object.fromEntries(
           (c.items ?? []).filter(i => i.legendary).map(i => [String(i.bit), i.legendary])),
         noteAlt: c.note_alt,
@@ -6523,7 +6530,25 @@ export default function GW2LegendaryTracker() {
                   // porte, elle, dit SI c'est debloque, et se lit contre le compte.
                   if (done) return null;
                   const U = unlockOf(a.achievementId);
-                  if (!U) return null;
+                  // L'encadre du wiki dit comment la collection s'ouvre : quel
+                  // succes la precede, quel objet la declenche, ce qu'elle rend.
+                  // C'est plus precis que le locked_text en prose de l'API.
+                  const UB = a.unlock;
+                  if (!U && !UB) return null;
+                  if (!U) {
+                    const l = [
+                      UB.prerequisite && { k: "→", t: t("unlock_prereq"), v: UB.prerequisite.name },
+                      UB.unlock_item && { k: "🔑", t: t("unlock_item"), v: UB.unlock_item.name },
+                      UB.reward && { k: "🎁", t: t("unlock_reward"), v: UB.reward.name },
+                    ].filter(Boolean);
+                    return (
+                      <div style={{ marginTop: 6, padding: "6px 8px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.85)", lineHeight: 1.6 }}>
+                        {l.map((x, xi) => (
+                          <div key={xi}>{x.k} <span style={{ opacity: 0.7 }}>{x.t}</span> <b>{x.v}</b></div>
+                        ))}
+                      </div>
+                    );
+                  }
                   const gates = makeGateStatus(acctGates)(U.gate);
                   return (
                     <div style={{ marginTop: 6, padding: "6px 8px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.85)", lineHeight: 1.5 }}>

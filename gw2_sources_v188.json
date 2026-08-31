@@ -944,7 +944,8 @@
   "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie.",
   "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages.",
   "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite.",
-  "changelog_v187": "Astralaria documentee : ses quatre collections, 120 etapes. Les noms passent au libelle du wiki, les notes deviennent des how. Le balayage des renvois est etendu : une etape dont le nom correspond a un composant ou a une autre legendaire pointe vers elle au lieu de recevoir une copie. L'ordre entre paliers est strict et documente : chaque collection s'ouvre en consommant le precurseur de la precedente — Astralaria IV commence par The Mechanism, aboutissement du III."
+  "changelog_v187": "Astralaria documentee : ses quatre collections, 120 etapes. Les noms passent au libelle du wiki, les notes deviennent des how. Le balayage des renvois est etendu : une etape dont le nom correspond a un composant ou a une autre legendaire pointe vers elle au lieu de recevoir une copie. L'ordre entre paliers est strict et documente : chaque collection s'ouvre en consommant le precurseur de la precedente — Astralaria IV commence par The Mechanism, aboutissement du III.",
+  "changelog_v188": "L'encadre des succes du wiki entre dans les sources : prerequisite, unlock_item et reward, trois champs que l'API n'expose pas — elle rend locked_text en prose, sans structure. C'est la reponse a « comment j'ouvre cette collection », en attente au backlog depuis le debut. Astralaria III le montre bien : prerequis Historian of the Armaments, objet declencheur The Apparatus — le precurseur du palier II — et recompense le Chest of Time and Space, qui contient la recette du Mechanism. L'ordre entre paliers devient une donnee au lieu d'une note en prose. Pose sur 23 collections, celles dont la capture porte l'encadre."
  },
  "meta_events": {
   "vb": {
@@ -18148,7 +18149,14 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Mists Research"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
    }
   },
@@ -18366,7 +18374,18 @@
        "name_api": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing."
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Salvation's Cost"
+      },
+      "reward": {
+       "name": "Binding of the Dragon",
+       "wiki": "Binding of the Dragon"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "orrax_contained": {
      "id": 8730,
@@ -18437,7 +18456,18 @@
        "name_api": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos."
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Salvation's Cost"
+      },
+      "reward": {
+       "name": "Orrax Contained Homestead Decoration",
+       "wiki": "Orrax Contained Homestead Decoration"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "orrax_isles": {
      "id": 8743,
@@ -19341,7 +19371,15 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "reward": {
+       "name": "Agaleus Container",
+       "wiki": "Agaleus Container"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "selachi_diver": {
      "id": 4177,
@@ -21487,7 +21525,22 @@
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "prerequisite": {
+       "name": "Magister of Legends",
+       "wiki": "Magister of Legends"
+      },
+      "unlock_item": {
+       "name": "The Energizer Experiment",
+       "wiki": "The Energizer Experiment"
+      },
+      "reward": {
+       "name": "Tricks and Tips for Legendary Mace Crafti"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "the_moot_iii_the_energizer": {
      "id": 2374,
@@ -29332,7 +29385,23 @@
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "prerequisite": {
+       "name": "Scholar of Secrets",
+       "wiki": "Scholar of Secrets"
+      },
+      "unlock_item": {
+       "name": "The Mechanism",
+       "wiki": "The Mechanism"
+      },
+      "reward": {
+       "name": "Gift of the Cosmos",
+       "wiki": "Gift of the Cosmos"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "astralaria_iii_the_mechanism": {
      "id": 2433,
@@ -29742,7 +29811,23 @@
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "prerequisite": {
+       "name": "Historian of the Armaments",
+       "wiki": "Historian of the Armaments"
+      },
+      "unlock_item": {
+       "name": "The Apparatus",
+       "wiki": "The Apparatus"
+      },
+      "reward": {
+       "name": "Chest of Time and Space",
+       "wiki": "Chest of Time and Space"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "astralaria_ii_the_apparatus": {
      "id": 2447,
@@ -29923,7 +30008,23 @@
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "prerequisite": {
+       "name": "Magister of Legends",
+       "wiki": "Magister of Legends"
+      },
+      "unlock_item": {
+       "name": "The Device",
+       "wiki": "The Device"
+      },
+      "reward": {
+       "name": "Tricks and Tips for Celestial Axe Crafting",
+       "wiki": "Tricks and Tips for Celestial Axe Crafting"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "astralaria_i_the_device": {
      "id": 2571,
@@ -30165,7 +30266,23 @@
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "prerequisite": {
+       "name": "Revered Antiquarian",
+       "wiki": "Revered Antiquarian"
+      },
+      "unlock_item": {
+       "name": "Astralaria Vol. 1",
+       "wiki": "Astralaria Vol. 1"
+      },
+      "reward": {
+       "name": "Chest of Ancient Knowledge",
+       "wiki": "Chest of Ancient Knowledge"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
    },
    "collections_order": {
@@ -34728,7 +34845,15 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "reward": {
+       "name": "Druid Stone",
+       "wiki": "Druid Stone"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "henge_3445": {
      "id": 3445,
@@ -34900,7 +35025,19 @@
        "name_api": "A Bouquet for Rosewood — 3 blossoms"
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "The Druid Stone",
+       "wiki": "The Druid Stone"
+      },
+      "reward": {
+       "name": "Living Druid Stone",
+       "wiki": "Living Druid Stone"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "henge_3447": {
      "id": 3447,
@@ -35152,7 +35289,19 @@
        "name_api": "Propagation of the Fire Orchid — plant 3 seeds"
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Awakening the Druid Stone",
+       "wiki": "Awakening the Druid Stone"
+      },
+      "reward": {
+       "name": "Blooming Druid Stone",
+       "wiki": "Blooming Druid Stone"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "henge_3436": {
      "id": 3436,
@@ -35530,7 +35679,19 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Sprouting the Druid Stone",
+       "wiki": "Sprouting the Druid Stone"
+      },
+      "reward": {
+       "name": "The Wayfarer's Henge",
+       "wiki": "The Wayfarer%27s Henge"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
    },
    "components": [
@@ -36231,7 +36392,15 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_kourna": {
      "id": 4760,
@@ -36942,7 +37111,18 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "prerequisite": {
+       "name": "Craft an astral weapon."
+      },
+      "reward": {
+       "name": "Irradiated Vision Crystal",
+       "wiki": "Irradiated Vision Crystal"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_ep_lich": {
      "id": 4195,
@@ -37237,7 +37417,15 @@
        "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "reward": {
+       "name": "Box of Elegy Armor",
+       "wiki": "Box of Elegy Armor"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_ep_allornothing": {
      "id": 4544,
