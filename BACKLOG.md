@@ -758,92 +758,62 @@ Ni l'un ni l'autre n'est sourcé. Le 600 vient de ma lecture de la prose, le 450
 d'une saisie plus ancienne. **À vérifier en jeu avant d'aligner quoi que ce
 soit** — aligner sur un nombre non vérifié ne ferait que figer une erreur.
 
-## Armes : deux patterns, et une liste gen2/gen3 fausse
+## Armes — ✅ liste réconciliée le 27/08/2026, deux patterns identifiés
 
-### Pattern A — précurseur par collections (les vraies gen1 et gen2)
+### Douze fiches inventées remplacées
 
-Chaîne `X I: … / II: … / III: …` dans la catégorie « Legendary Weapons », plus
-un succès final `Legendary Weapon: X`. 25 armes s'y rangent proprement.
+Chacune portait un `precursor` et un `gift_unique` **absents des 53 lignes de la
+table du wiki** : Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade,
+Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Claw of
+Retribution, et quatre « of Aurene's Power ». Aucun n'existe.
 
-### Pattern B — arme d'histoire, hors catégorie Legendary Weapons
+À leur place, les armes réelles que le tracker ne montrait pas :
 
-**Caladbolg est l'exemple type, et il explique les autres.** Ce n'est pas une
-légendaire : c'est une épée de l'histoire, forgée par l'Arbre Pâle d'une épine
-de sa propre branche. On l'obtient par la chaîne **Knight of the Thorn**, qui
-vit dans le groupe **Side Stories**, pas dans « Legendary Weapons » — d'où zéro
-correspondance quand on cherche au mauvais endroit.
+| gen2 | précurseur | gen3 | précurseur |
+|---|---|---|---|
+| Claw of the Khan-Ur | Claw of Resolution | Aurene's Fang | Dragon's Fang |
+| Flames of War | Liturgy | Aurene's Flight | Dragon's Flight |
+| Pharus | Spero | Aurene's Tail | Dragon's Tail |
+| Sharur | Might of Arah | Aurene's Wing | Dragon's Wing |
+| The HMS Divinity | Man o' War | | |
+| The Shining Blade | Save the Queen | | |
+| Verdarach | Call of the Void | | |
 
-Sept succès la composent : `Dreams of a Thorn` (3390), `Shards of a Thorn`
-(3388), `Sword Taxonomy` (3389), `The Sword Regrown` (3387), `Knight of the
-Thorn` (3391), et deux ajouts Janthir — `Forms of the Thorn` (9221),
-`Reverie of a Thorn` (9223).
+**Tigris disparaît** : la table la donne en Final tier de Chuka and Champawat,
+c'est un précurseur. **The Binding of Ipos** passe sous le préfixe `gen2_` —
+vraie gen2, elle vivait hors préfixe et n'entrait donc pas dans le sélecteur du
+Grand Total. Ses références dans `craft_components` ont suivi.
 
-**Une table de correspondance qui ne regarde que « Legendary Weapons » ne peut
-pas les trouver.** Elle doit accepter des identifiants venus de n'importe quel
-groupe.
+**Réconciliation complète** : gen1 21 (les 20 du wiki + Eternity), gen2 16/16,
+gen3 16/16, aucune manquante, aucune en trop.
 
-### ⚠ Découverte grave : huit gen2 et quatre gen3 sont absentes du tracker
+⚠ Les onze fiches créées portent `recipe_verified: false` : leur recette est
+reprise du gabarit de génération. **Les composants propres à chaque arme restent
+à établir** — c'est le prochain chantier.
 
-Comparaison ligne à ligne avec la table du wiki :
+### Deux patterns pour les collections d'armes
 
-| | manquantes au tracker | en trop dans le tracker |
-|---|---|---|
-| **gen2** | Claw of the Khan-Ur, Flames of War, Pharus, Sharur, The HMS Divinity, The Shining Blade, Verdarach, The Binding of Ipos | Caladbolg, Elegy, Eordas Grip, H.O.P.E. (Scepter), Itzel's Boon, Lorekeeper, Reaver of the Mists, Tigris |
-| **gen3** | Aurene's Fang, Flight, Tail, Wing | Aurene's Guard, Reckoning, Tenderness, Wrath |
+- **Pattern A** — chaîne `X I: … / II: … / III: …` dans « Legendary Weapons »,
+  plus un `Legendary Weapon: X` final. 25 armes.
+- **Pattern B** — arme d'histoire hors de cette catégorie. Caladbolg s'obtient
+  par **Knight of the Thorn**, groupe **Side Stories** : `Dreams of a Thorn`
+  (3390), `Shards of a Thorn` (3388), `Sword Taxonomy` (3389), `The Sword
+  Regrown` (3387), `Knight of the Thorn` (3391), plus `Forms of the Thorn`
+  (9221) et `Reverie of a Thorn` (9223).
 
-Les comptes tombaient juste — 16 et 16 — **parce que les erreurs se
-compensaient exactement**. Sept vraies légendaires gen2 sont invisibles dans le
-tracker, remplacées par des armes d'histoire et un précurseur.
+**Une table de correspondance ne doit donc pas se limiter à « Legendary
+Weapons »** : elle doit accepter des identifiants de n'importe quel groupe.
 
-`The Binding of Ipos` existe bien dans `legendaries`, mais sous sa propre clé,
-hors du préfixe `gen2_` — elle n'est donc pas comptée dans l'onglet Armes.
+### Reste : les armes d'histoire comme cinquième catégorie
 
-### Contre-indication technique : AUCUNE, mais la liste affichée n'est pas celle-là
+Caladbolg, Itzel's Boon, Lorekeeper, Elegy, Reaver of the Mists, H.O.P.E.
+(Scepter) sont de vraies armes à suivre — collections, farm de composants,
+déblocages. Elles ont été **retirées** parce que leurs fiches étaient inventées,
+pas parce qu'elles n'ont pas leur place. À recréer proprement, sur leurs vraies
+chaînes de succès.
 
-**L'onglet Armes ne lit pas `legendaries`.** Sa grille vient d'une découverte à
-l'exécution : `/v2/legendaryarmory` → `/v2/items`, filtrée sur `type: Weapon`,
-puis classée par `genOf` sur l'identifiant. C'est pour ça que le compteur
-affichait 16 gen2 justes alors que les sources en portent huit de faux.
-
-Les entrées `legendaries.gen*_` alimentent **le sélecteur du Grand Total**
-(`GT_GROUPS`), pas la grille. Les deux listes ont divergé sans que rien ne le
-signale.
-
-### Les huit « en trop » ne sont pas des erreurs de nom : ce sont des inventions
-
-Chacune porte un `precursor` et un `gift_unique` qui **n'existent nulle part** :
-
-| entrée | `precursor` déclaré | dans la table des 53 ? |
-|---|---|---|
-| `gen2_caladbolg` | Sword of Wrath | non |
-| `gen2_elegy` | Elegy Mosaic | non |
-| `gen2_lorekeeper` | Ancient Tome | non |
-| `gen2_reaver_of_the_mists` | Gleaming Blade | non |
-| `gen2_itzels_boon` | Sacred Jungle Defender | non |
-| `gen2_eordas_grip` | Keeper of the Wilds | non |
-| `gen2_hope_scepter` | Hope's Last Spark | non |
-| `gen3_aurenes_guard` | Shield of Aurene's Wisdom | non |
-
-Aucun de ces précurseurs n'apparaît dans la table du wiki, qui en liste 53 sans
-exception. Ce ne sont pas des variantes de nom ni des armes récentes : ce sont
-des **entrées fabriquées**, avec un précurseur et un don inventés pour chacune.
-
-**Conséquence** : le sélecteur du Grand Total propose huit armes gen2 et quatre
-gen3 qui n'existent pas, et en cache huit vraies — Sharur, Verdarach, The
-Shining Blade, Pharus, Flames of War, Claw of the Khan-Ur, The HMS Divinity, et
-The Binding of Ipos (présente mais hors préfixe `gen2_`).
-
-### Ce que ça change pour ta demande
-
-Ajouter les armes d'histoire est **techniquement sans obstacle** : même
-mécanique, mêmes collections, même structure. Mais **Caladbolg n'est pas une
-arme d'histoire mal rangée dans le tracker — c'est un nom posé sur une fiche
-inventée.** L'ajouter proprement veut dire repartir de zéro sur ces douze
-entrées, pas les déplacer.
-
-**Ordre proposé** : d'abord réparer les douze fiches fausses en repartant de la
-table du wiki, ensuite seulement ajouter les vraies armes d'histoire comme
-cinquième catégorie.
+**`Eordas Grip` n'existe pas** : aucune page wiki, absente de la table. Ne pas
+la recréer.
 
 ## Étapes documentées — Wayfarer's Henge fait le 27/08/2026
 

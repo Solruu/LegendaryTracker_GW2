@@ -938,7 +938,8 @@
   "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur. Les 55 conseils tires du wiki sont en anglais : leur champ fr passe a null plutot que de recopier l'anglais, ce qui aurait fait croire a une traduction. L() se replie sur l'anglais, comme pour les noms de sous-zones. how_fr_missing les marque, ils sont denombrables.",
   "changelog_v179": "Cinq collections de plus documentees : Acquiring Agaleus, Astral Purification, Radiance of the Sun God, The Convergence of Sorrow I Elegy et Gift of the Feast. Le parseur passe en v2 : le v1 prenait toute ligne commencant par un chiffre et ramassait donc le tableau des MATERIAUX au lieu de celui des objets — Elegy revenait avec des lingots d'orichalque et leurs prix. Le v2 s'ancre sur l'en-tete et n'accepte que les formes connues, dont « Objective | Nearest Waypoint | Notes » que le v1 ignorait completement. Le point de passage le plus proche, quand le wiki le donne, entre dans un champ waypoint plutot que d'etre noye dans le conseil. Le champ waypoint prend la forme {name, chat_code} deja en usage ailleurs dans collections{} et lue par le JSX (item.waypoint?.chat_code) : une chaine brute aurait ete un homonyme d'une autre forme, donc un chemin parallele. Le code de chat est extrait du libelle du wiki.",
   "changelog_v180": "Huit collections de plus documentees : Legendary Relics Components, les deux Mists Research de Strife Unending, quatre Unknown Nightmares d'Orrax et Visions of Istan. Les huit tombent juste, longueurs identiques cote wiki et cote tracker. La neuvieme capture, incursive_investigation, est la page de CATEGORIE de succes et non la page de collection : le wiki redirige « Incursive Investigation: Working Together » vers elle. Rien n'en a ete tire, elle n'est pas versee.",
-  "changelog_v181": "Les quatre dernieres etapes utiles sont documentees : les rendez-vous avec le Mist Stranger, dans la zone instanciee accessible depuis l'Arche du Lion. Source : la section Objectives de la page de CATEGORIE du wiki, relevee par Antoine — la page de collection redirige vers elle et n'expose aucun tableau d'objets. Decouverte au passage : l'ordre des bits de l'API ne suit pas la numerotation du wiki sur cette collection, le bit 9 porte l'objectif 2. Un rapprochement par rang y aurait tout decale. Verification faite sur les 20 collections deja traitees : aucun nom ne correspond au texte d'un autre bit, le rapprochement par rang y etait sain."
+  "changelog_v181": "Les quatre dernieres etapes utiles sont documentees : les rendez-vous avec le Mist Stranger, dans la zone instanciee accessible depuis l'Arche du Lion. Source : la section Objectives de la page de CATEGORIE du wiki, relevee par Antoine — la page de collection redirige vers elle et n'expose aucun tableau d'objets. Decouverte au passage : l'ordre des bits de l'API ne suit pas la numerotation du wiki sur cette collection, le bit 9 porte l'objectif 2. Un rapprochement par rang y aurait tout decale. Verification faite sur les 20 collections deja traitees : aucun nom ne correspond au texte d'un autre bit, le rapprochement par rang y etait sain.",
+  "changelog_v182": "Douze fiches d'armes inventees sont remplacees. Chacune portait un precursor et un gift_unique absents des 53 lignes de la table du wiki — Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade, Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Shield of Aurene's Wisdom : aucun n'existe. A leur place, les huit gen2 et quatre gen3 reelles que le tracker ne montrait pas : Claw of the Khan-Ur, Flames of War, Pharus, Sharur, The HMS Divinity, The Shining Blade, Verdarach, et Aurene's Fang, Flight, Tail, Wing. Tigris disparait : la table la donne en Final tier de Chuka and Champawat, c'est un precurseur. The Binding of Ipos, vraie gen2, passe sous le prefixe gen2_ : elle vivait hors prefixe et n'entrait donc pas dans le selecteur du Grand Total. Les recettes des nouvelles fiches sont reprises du gabarit de generation et marquees recipe_verified false."
  },
  "meta_events": {
   "vb": {
@@ -6711,7 +6712,7 @@
     "conflux": 1,
     "coalescence": 1,
     "fractal_capacitor": 1,
-    "the_binding_of_ipos": 1
+    "gen2_the_binding_of_ipos": 1
    },
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -9814,7 +9815,7 @@
    "name": "Gift of the Desolation",
    "kind": "advanced_craft",
    "needed_for": [
-    "the_binding_of_ipos"
+    "gen2_the_binding_of_ipos"
    ],
    "farmable": true,
    "sources": [
@@ -9832,7 +9833,7 @@
    "name": "Gift of Souls",
    "kind": "advanced_craft",
    "needed_for": [
-    "the_binding_of_ipos"
+    "gen2_the_binding_of_ipos"
    ],
    "farmable": true,
    "sources": [
@@ -9946,7 +9947,7 @@
    "name": "Ars Goetia",
    "kind": "precursor",
    "needed_for": [
-    "the_binding_of_ipos"
+    "gen2_the_binding_of_ipos"
    ],
    "farmable": true,
    "sources": [
@@ -9965,7 +9966,7 @@
    "apiId": 85744,
    "kind": "advanced_craft",
    "needed_for": [
-    "the_binding_of_ipos"
+    "gen2_the_binding_of_ipos"
    ],
    "farmable": true,
    "sources": [
@@ -21084,80 +21085,6 @@
    "armory_max_count": 2,
    "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
   },
-  "gen2_tigris": {
-   "name": "Tigris",
-   "slot": "weapon (Dagger)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "HoT",
-   "wiki": "Tigris",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Claw of Retribution",
-   "gift_unique": "Gift of Tigris",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "gen": "gen2",
-   "armory_api_id": 74326,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen2_caladbolg": {
-   "name": "Caladbolg",
-   "slot": "weapon (Sword)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "HoT",
-   "wiki": "Caladbolg",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Sword of Wrath",
-   "gift_unique": "Gift of Caladbolg",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "gen": "gen2",
-   "armory_api_id": 74408,
-   "armory_max_count": 4,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
   "gen2_eureka": {
    "name": "Eureka",
    "slot": "weapon (Mace)",
@@ -21232,80 +21159,6 @@
    "armory_max_count": 2,
    "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
   },
-  "gen2_eordas_grip": {
-   "name": "Eordas Grip",
-   "slot": "weapon (Shield)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "HoT",
-   "wiki": "Eordas_Grip",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Keeper of the Wilds",
-   "gift_unique": "Gift of Eordas Grip",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "gen": "gen2",
-   "armory_api_id": 74331,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen2_itzels_boon": {
-   "name": "Itzel's Boon",
-   "slot": "weapon (Warhorn)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "HoT",
-   "wiki": "Itzel%27s_Boon",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Sacred Jungle Defender",
-   "gift_unique": "Gift of Itzel's Boon",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "gen": "gen2",
-   "armory_api_id": 74411,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
   "gen2_exordium": {
    "name": "Exordium",
    "slot": "weapon (Greatsword)",
@@ -21343,118 +21196,6 @@
    "armory_max_count": 2,
    "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
   },
-  "gen2_hope_scepter": {
-   "name": "H.O.P.E. (Scepter)",
-   "slot": "weapon (Scepter)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "HoT",
-   "wiki": "The_Radiant",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Hope's Last Spark",
-   "gift_unique": "Gift of the Radiant",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "gen": "gen2",
-   "armory_api_id": null,
-   "armory_note": "The Radiant (scepter PoF) — apiId to confirm",
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen2_lorekeeper": {
-   "name": "Lorekeeper",
-   "slot": "weapon (Hammer)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "PoF",
-   "wiki": "Lorekeeper",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Ancient Tome",
-   "gift_unique": "Gift of Lorekeeper",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "gen": "gen2",
-   "armory_api_id": 84634,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen2_elegy": {
-   "name": "Elegy",
-   "slot": "weapon (Greatsword)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "PoF",
-   "wiki": "Elegy",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Elegy Mosaic",
-   "gift_unique": "Gift of Elegy",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "gen": "gen2",
-   "armory_api_id": 84535,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
   "gen2_xiuquatl": {
    "name": "Xiuquatl",
    "slot": "weapon (Scepter)",
@@ -21489,43 +21230,6 @@
    "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
    "gen": "gen2",
    "armory_api_id": 84536,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen2_reaver_of_the_mists": {
-   "name": "Reaver of the Mists",
-   "slot": "weapon (Axe)",
-   "farm": "PvE mixte (HoT/PoF)",
-   "expansion": "PoF",
-   "wiki": "Reaver_of_the_Mists",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
-   },
-   "shared_components": [
-    "airship_part",
-    "ley_line_crystal",
-    "lump_of_aurillium",
-    "gift_of_the_itzel",
-    "gift_of_the_nuhoch",
-    "gift_of_the_exalted",
-    "gift_of_gliding",
-    "gift_of_insights",
-    "gift_of_maguuma",
-    "crystalline_ingot_gen2",
-    "gift_of_maguuma_mastery",
-    "gift_of_desert_mastery",
-    "mystic_tribute",
-    "mystic_coin",
-    "mystic_runestone",
-    "legendary_shard_gen2"
-   ],
-   "precursor": "Gleaming Blade",
-   "gift_unique": "Gift of the Reaver",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "gen": "gen2",
-   "armory_api_id": 84537,
    "armory_max_count": 2,
    "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
   },
@@ -21715,37 +21419,6 @@
    "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
    "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
   },
-  "gen3_aurenes_guard": {
-   "name": "Aurene's Guard",
-   "slot": "weapon (Shield)",
-   "farm": "PvE mixte (EoD)",
-   "expansion": "EoD",
-   "wiki": "Aurene%27s_Guard",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
-    "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
-   },
-   "shared_components": [
-    "mystic_coin",
-    "gift_of_cantha",
-    "antique_summoning_stone",
-    "jade_runestone",
-    "gift_of_the_dragon_empire",
-    "gift_of_jade_mastery",
-    "draconic_tribute",
-    "memories_of_aurene",
-    "legendary_shard_gen3"
-   ],
-   "precursor": "Shield of Aurene's Wisdom",
-   "gift_unique": "Gift of Aurene's Wisdom",
-   "gen": "gen3",
-   "armory_api_id": null,
-   "armory_max_count": 2,
-   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-   "names_unverified": true,
-   "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
   "gen3_aurenes_persuasion": {
    "name": "Aurene's Persuasion",
    "slot": "weapon (Torch)",
@@ -21800,68 +21473,6 @@
    ],
    "precursor": "Warhorn of Aurene's Wisdom",
    "gift_unique": "Gift of Aurene's Wisdom",
-   "gen": "gen3",
-   "armory_api_id": null,
-   "armory_max_count": 2,
-   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-   "names_unverified": true,
-   "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen3_aurenes_wrath": {
-   "name": "Aurene's Wrath",
-   "slot": "weapon (Greatsword)",
-   "farm": "PvE mixte (EoD)",
-   "expansion": "EoD",
-   "wiki": "Aurene%27s_Wrath",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
-   },
-   "shared_components": [
-    "mystic_coin",
-    "gift_of_cantha",
-    "antique_summoning_stone",
-    "jade_runestone",
-    "gift_of_the_dragon_empire",
-    "gift_of_jade_mastery",
-    "draconic_tribute",
-    "memories_of_aurene",
-    "legendary_shard_gen3"
-   ],
-   "precursor": "Greatsword of Aurene's Power",
-   "gift_unique": "Gift of Aurene's Power",
-   "gen": "gen3",
-   "armory_api_id": null,
-   "armory_max_count": 2,
-   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-   "names_unverified": true,
-   "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen3_aurenes_reckoning": {
-   "name": "Aurene's Reckoning",
-   "slot": "weapon (Hammer)",
-   "farm": "PvE mixte (EoD)",
-   "expansion": "EoD",
-   "wiki": "Aurene%27s_Reckoning",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
-   },
-   "shared_components": [
-    "mystic_coin",
-    "gift_of_cantha",
-    "antique_summoning_stone",
-    "jade_runestone",
-    "gift_of_the_dragon_empire",
-    "gift_of_jade_mastery",
-    "draconic_tribute",
-    "memories_of_aurene",
-    "legendary_shard_gen3"
-   ],
-   "precursor": "Hammer of Aurene's Power",
-   "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
    "armory_api_id": null,
    "armory_max_count": 2,
@@ -21954,37 +21565,6 @@
     "legendary_shard_gen3"
    ],
    "precursor": "Shortbow of Aurene's Power",
-   "gift_unique": "Gift of Aurene's Power",
-   "gen": "gen3",
-   "armory_api_id": null,
-   "armory_max_count": 2,
-   "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-   "names_unverified": true,
-   "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)"
-  },
-  "gen3_aurenes_tenderness": {
-   "name": "Aurene's Tenderness",
-   "slot": "weapon (Staff)",
-   "farm": "PvE mixte (EoD)",
-   "expansion": "EoD",
-   "wiki": "Aurene%27s_Tenderness",
-   "recipe": {
-    "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-    "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
-   },
-   "shared_components": [
-    "mystic_coin",
-    "gift_of_cantha",
-    "antique_summoning_stone",
-    "jade_runestone",
-    "gift_of_the_dragon_empire",
-    "gift_of_jade_mastery",
-    "draconic_tribute",
-    "memories_of_aurene",
-    "legendary_shard_gen3"
-   ],
-   "precursor": "Staff of Aurene's Power",
    "gift_unique": "Gift of Aurene's Power",
    "gen": "gen3",
    "armory_api_id": null,
@@ -27331,30 +26911,6 @@
    "armory_max_count": 1,
    "recipe_verified": "2026-07-25 (wiki) — entrée fantôme, renvoi vers Ad Infinitum"
   },
-  "the_binding_of_ipos": {
-   "name": "The Binding of Ipos",
-   "slot": "focus",
-   "farm": "PvE (PoF)",
-   "expansion": "PoF",
-   "wiki": "The_Binding_of_Ipos",
-   "recipe": {
-    "fr": "MF : Ars Goetia (précurseur) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute",
-    "en": "MF: Ars Goetia (precursor) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute"
-   },
-   "components": [
-    "ars_goetia",
-    "gift_of_ipos",
-    "gift_of_desert_mastery",
-    "mystic_tribute"
-   ],
-   "note": {
-    "fr": "⚠ Correction v40 : c'est un FOCUS légendaire gen2 (LS4 ép.1 Daybreak), pas un accessoire. Précurseur : Ars Goetia. ⚠ Ne jamais stat-swap le précurseur — il deviendrait un objet élevé générique inutilisable.",
-    "en": "⚠ v40 fix: this is a gen2 legendary FOCUS (LWS4 ep.1 Daybreak), not an accessory. Precursor: Ars Goetia. ⚠ Never stat-swap the precursor — it would turn into a generic ascended item, unusable."
-   },
-   "armory_api_id": 91048,
-   "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki) — corrigé"
-  },
   "warbringer": {
    "name": "Warbringer",
    "slot": "back",
@@ -27854,6 +27410,304 @@
    },
    "recipe_verified": "2026-07-25 (wiki)",
    "cadence_ref": "skirmish_claim_tickets"
+  },
+  "gen2_claw_of_the_khan_ur": {
+   "name": "Claw of the Khan-Ur",
+   "slot": "weapon (Dagger)",
+   "gen": "gen2",
+   "precursor": "Claw of Resolution",
+   "precursor_tiers": {
+    "t1": "Claw of Execution",
+    "t2": "Claw of Retribution"
+   },
+   "expansion": "HoT",
+   "wiki": "Claw of the Khan-Ur",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_flames_of_war": {
+   "name": "Flames of War",
+   "slot": "weapon (Torch)",
+   "gen": "gen2",
+   "precursor": "Liturgy",
+   "precursor_tiers": {
+    "t1": "Forgotten Brilliance",
+    "t2": "Neophyte's Beacon"
+   },
+   "expansion": "HoT",
+   "wiki": "Flames of War",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_pharus": {
+   "name": "Pharus",
+   "slot": "weapon (Longbow)",
+   "gen": "gen2",
+   "precursor": "Spero",
+   "precursor_tiers": {
+    "t1": "Exitus",
+    "t2": "Doctrina"
+   },
+   "expansion": "HoT",
+   "wiki": "Pharus",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_sharur": {
+   "name": "Sharur",
+   "slot": "weapon (Hammer)",
+   "gen": "gen2",
+   "precursor": "Might of Arah",
+   "precursor_tiers": {
+    "t1": "Vizier's Folly",
+    "t2": "Reclamation"
+   },
+   "expansion": "HoT",
+   "wiki": "Sharur",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_the_hms_divinity": {
+   "name": "The HMS Divinity",
+   "slot": "weapon (Rifle)",
+   "gen": "gen2",
+   "precursor": "Man o' War",
+   "precursor_tiers": {
+    "t1": "Schooner",
+    "t2": "Frigate"
+   },
+   "expansion": "HoT",
+   "wiki": "The HMS Divinity",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_the_shining_blade": {
+   "name": "The Shining Blade",
+   "slot": "weapon (Sword)",
+   "gen": "gen2",
+   "precursor": "Save the Queen",
+   "precursor_tiers": {
+    "t1": "Exemplar's Edge",
+    "t2": "Vengeance"
+   },
+   "expansion": "HoT",
+   "wiki": "The Shining Blade",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_verdarach": {
+   "name": "Verdarach",
+   "slot": "weapon (Warhorn)",
+   "gen": "gen2",
+   "precursor": "Call of the Void",
+   "precursor_tiers": {
+    "t1": "Hifthorn",
+    "t2": "Lament"
+   },
+   "expansion": "HoT",
+   "wiki": "Verdarach",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen3_aurene_s_fang": {
+   "name": "Aurene's Fang",
+   "slot": "weapon (Sword)",
+   "gen": "gen3",
+   "precursor": "Dragon's Fang",
+   "precursor_tiers": {
+    "t1": "—",
+    "t2": "—"
+   },
+   "expansion": "EoD",
+   "wiki": "Aurene's Fang",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen3_aurene_s_flight": {
+   "name": "Aurene's Flight",
+   "slot": "weapon (Longbow)",
+   "gen": "gen3",
+   "precursor": "Dragon's Flight",
+   "precursor_tiers": {
+    "t1": "—",
+    "t2": "—"
+   },
+   "expansion": "EoD",
+   "wiki": "Aurene's Flight",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen3_aurene_s_tail": {
+   "name": "Aurene's Tail",
+   "slot": "weapon (Mace)",
+   "gen": "gen3",
+   "precursor": "Dragon's Tail",
+   "precursor_tiers": {
+    "t1": "—",
+    "t2": "—"
+   },
+   "expansion": "EoD",
+   "wiki": "Aurene's Tail",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen3_aurene_s_wing": {
+   "name": "Aurene's Wing",
+   "slot": "weapon (Short bow)",
+   "gen": "gen3",
+   "precursor": "Dragon's Wing",
+   "precursor_tiers": {
+    "t1": "—",
+    "t2": "—"
+   },
+   "expansion": "EoD",
+   "wiki": "Aurene's Wing",
+   "recipe": {
+    "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
+    "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+   },
+   "recipe_verified": false,
+   "verified": true,
+   "checked": "2026-08-27",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "note": {
+    "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
+    "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+   }
+  },
+  "gen2_the_binding_of_ipos": {
+   "name": "The Binding of Ipos",
+   "slot": "focus",
+   "farm": "PvE (PoF)",
+   "expansion": "PoF",
+   "wiki": "The_Binding_of_Ipos",
+   "recipe": {
+    "fr": "MF : Ars Goetia (précurseur) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute",
+    "en": "MF: Ars Goetia (precursor) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute"
+   },
+   "components": [
+    "ars_goetia",
+    "gift_of_ipos",
+    "gift_of_desert_mastery",
+    "mystic_tribute"
+   ],
+   "note": {
+    "fr": "⚠ Correction v40 : c'est un FOCUS légendaire gen2 (LS4 ép.1 Daybreak), pas un accessoire. Précurseur : Ars Goetia. ⚠ Ne jamais stat-swap le précurseur — il deviendrait un objet élevé générique inutilisable.",
+    "en": "⚠ v40 fix: this is a gen2 legendary FOCUS (LWS4 ep.1 Daybreak), not an accessory. Precursor: Ars Goetia. ⚠ Never stat-swap the precursor — it would turn into a generic ascended item, unusable."
+   },
+   "armory_api_id": 91048,
+   "armory_max_count": 2,
+   "recipe_verified": "2026-07-25 (wiki) — corrigé",
+   "gen": "gen2",
+   "precursor": "Ars Goetia",
+   "precursor_tiers": {
+    "t1": "Mark of the Unnamed",
+    "t2": "The True Name"
+   },
+   "moved_from": "the_binding_of_ipos",
+   "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
+   "verified": true,
+   "checked": "2026-08-27"
   }
  },
  "meta_eligible_note": {
