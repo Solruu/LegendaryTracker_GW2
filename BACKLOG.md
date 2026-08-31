@@ -798,9 +798,52 @@ tracker, remplacées par des armes d'histoire et un précurseur.
 `The Binding of Ipos` existe bien dans `legendaries`, mais sous sa propre clé,
 hors du préfixe `gen2_` — elle n'est donc pas comptée dans l'onglet Armes.
 
-**Aucune correction écrite** : il faut décider si les armes d'histoire (pattern B)
-restent dans l'onglet Armes sous une catégorie propre, ou en sortent. `Eordas
-Grip` n'a d'ailleurs **aucune page wiki** — probablement une entrée fantôme.
+### Contre-indication technique : AUCUNE, mais la liste affichée n'est pas celle-là
+
+**L'onglet Armes ne lit pas `legendaries`.** Sa grille vient d'une découverte à
+l'exécution : `/v2/legendaryarmory` → `/v2/items`, filtrée sur `type: Weapon`,
+puis classée par `genOf` sur l'identifiant. C'est pour ça que le compteur
+affichait 16 gen2 justes alors que les sources en portent huit de faux.
+
+Les entrées `legendaries.gen*_` alimentent **le sélecteur du Grand Total**
+(`GT_GROUPS`), pas la grille. Les deux listes ont divergé sans que rien ne le
+signale.
+
+### Les huit « en trop » ne sont pas des erreurs de nom : ce sont des inventions
+
+Chacune porte un `precursor` et un `gift_unique` qui **n'existent nulle part** :
+
+| entrée | `precursor` déclaré | dans la table des 53 ? |
+|---|---|---|
+| `gen2_caladbolg` | Sword of Wrath | non |
+| `gen2_elegy` | Elegy Mosaic | non |
+| `gen2_lorekeeper` | Ancient Tome | non |
+| `gen2_reaver_of_the_mists` | Gleaming Blade | non |
+| `gen2_itzels_boon` | Sacred Jungle Defender | non |
+| `gen2_eordas_grip` | Keeper of the Wilds | non |
+| `gen2_hope_scepter` | Hope's Last Spark | non |
+| `gen3_aurenes_guard` | Shield of Aurene's Wisdom | non |
+
+Aucun de ces précurseurs n'apparaît dans la table du wiki, qui en liste 53 sans
+exception. Ce ne sont pas des variantes de nom ni des armes récentes : ce sont
+des **entrées fabriquées**, avec un précurseur et un don inventés pour chacune.
+
+**Conséquence** : le sélecteur du Grand Total propose huit armes gen2 et quatre
+gen3 qui n'existent pas, et en cache huit vraies — Sharur, Verdarach, The
+Shining Blade, Pharus, Flames of War, Claw of the Khan-Ur, The HMS Divinity, et
+The Binding of Ipos (présente mais hors préfixe `gen2_`).
+
+### Ce que ça change pour ta demande
+
+Ajouter les armes d'histoire est **techniquement sans obstacle** : même
+mécanique, mêmes collections, même structure. Mais **Caladbolg n'est pas une
+arme d'histoire mal rangée dans le tracker — c'est un nom posé sur une fiche
+inventée.** L'ajouter proprement veut dire repartir de zéro sur ces douze
+entrées, pas les déplacer.
+
+**Ordre proposé** : d'abord réparer les douze fiches fausses en repartant de la
+table du wiki, ensuite seulement ajouter les vraies armes d'histoire comme
+cinquième catégorie.
 
 ## Étapes documentées — Wayfarer's Henge fait le 27/08/2026
 
