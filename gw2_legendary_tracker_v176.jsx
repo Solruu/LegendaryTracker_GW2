@@ -3909,6 +3909,10 @@ export default function GW2LegendaryTracker() {
         // ses sources et sa cadence vivent dans craft_components, on les lit la.
         bitComponents: Object.fromEntries(
           (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
+        // Une etape peut etre une autre legendaire : Eternity se forge depuis
+        // Sunrise et Twilight. On y renvoie, on ne recopie pas leur chaine.
+        bitLegendaries: Object.fromEntries(
+          (c.items ?? []).filter(i => i.legendary).map(i => [String(i.bit), i.legendary])),
         noteAlt: c.note_alt,
       }))
     : [];   // plus de repli : raidAchievements a disparu du JSX
@@ -6689,8 +6693,14 @@ export default function GW2LegendaryTracker() {
                             // de recopier un conseil qui divergerait.
                             const cid = a.bitComponents?.[String(i)];
                             const csrc = cid ? ((SOURCES_DB?.craft_components ?? {})[cid]?.sources ?? [])[0] : null;
+                            const lref = a.bitLegendaries?.[String(i)];
+                            const ltip = lref ? {
+                              fr: `Légendaire à part entière : sa chaîne complète est sur sa propre fiche.`,
+                              en: `A legendary in its own right: its full chain lives on its own entry.`,
+                            } : null;
                             const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i]
                               ?? csrc?.tip
+                              ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>

@@ -1,13 +1,13 @@
 # Pages wiki restantes — collections d'armes
 
 État au 27/08/2026. Une case par page de collection à capturer.
-Le compteur est `étapes sans conseil / total`.
-**25 armes · 101 pages · 1730 étapes.**
+Compteur : `étapes sans conseil / total`.
+**24 armes · 100 pages · 1727 étapes.** Eternity est terminée.
 
 
-Les collections `Legendary Weapon: X` sont déjà couvertes aux trois quarts :
-leurs composants (Icy Runestone, Gift of Mastery, Bloodstone Shard…) pointent
-vers `craft_components`. Il n'y reste que les étapes propres à l'arme.
+Une étape est considérée couverte si elle porte un conseil, **ou** si elle
+renvoie à un composant (`component`) ou à une autre légendaire (`legendary`).
+Les renvois sont des références, jamais des copies.
 
 ## Astralaria — 120 étapes, 4 pages
 
@@ -34,10 +34,6 @@ vers `craft_components`. Il n'y reste que les étapes propres à l'arme.
 - [ ] `Chuka and Champawat IV: Baby Book` — 15/15
 - [ ] `Chuka and Champawat IV: Secluded Tour` — 10/10
 - [ ] `Chuka and Champawat IV: Tiger Training Guide` — 14/14
-
-## Eternity — 3 étapes, 1 pages
-
-- [ ] `Legendary Weapon: Eternity` — 3/4
 
 ## Frenzy — 36 étapes, 4 pages
 

@@ -132,6 +132,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `precursor_weapon.html` | Precursor weapon | table des 53 précurseurs, avec génération | 2026-08-27 |
 | `caladbolg.html` | Caladbolg | article complet — arme d'histoire, chaîne Knight of the Thorn | 2026-08-27 |
 | `the_moot_ii_the_perfected_mace.html` | The Moot II: The Perfected Mace | collection, 14 objets — capture d'essai palier II | 2026-08-27 |
+| `eternity.html` | Eternity | article complet — table de recette en cascade | 2026-08-27 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -186,7 +187,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **102 captures, 102 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **103 captures, 103 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

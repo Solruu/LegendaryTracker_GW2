@@ -1718,7 +1718,8 @@ const SOURCES_DB = {
     "changelog_v182": "Douze fiches d'armes inventees sont remplacees. Chacune portait un precursor et un gift_unique absents des 53 lignes de la table du wiki — Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade, Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Shield of Aurene's Wisdom : aucun n'existe. A leur place, les huit gen2 et quatre gen3 reelles que le tracker ne montrait pas : Claw of the Khan-Ur, Flames of War, Pharus, Sharur, The HMS Divinity, The Shining Blade, Verdarach, et Aurene's Fang, Flight, Tail, Wing. Tigris disparait : la table la donne en Final tier de Chuka and Champawat, c'est un precurseur. The Binding of Ipos, vraie gen2, passe sous le prefixe gen2_ : elle vivait hors prefixe et n'entrait donc pas dans le selecteur du Grand Total. Les recettes des nouvelles fiches sont reprises du gabarit de generation et marquees recipe_verified false.",
     "changelog_v183": "Les collections des armes sont posees. 25 armes en ont — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka and Champawat, HOPE, Nevermore) — pour 87 collections et 1 570 etapes nommees. Les 28 autres n'en ont AUCUNE, et c'est un vide etabli : les douze gen2 de PoF et les seize gen3 fabriquent leur precurseur a la Forge mystique au lieu de le gagner par une chaine de succes. collections_none le dit explicitement, pour qu'on ne relance pas le rapprochement a chaque session. Aucun how n'est ecrit : les etapes sont nommees, leur mode d'obtention reste a documenter.",
     "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie.",
-    "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages."
+    "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages.",
+    "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite."
   },
   "meta_events": {
     "vb": {
@@ -26312,11 +26313,15 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Sunrise"
+              "name": "Sunrise",
+              "legendary": "gen1_sunrise",
+              "legendary_ref": "etape identifiee a une autre legendaire du tracker : sa chaine complete se lit sur sa propre fiche, on n'en recopie rien ici"
             },
             {
               "bit": 1,
-              "name": "Twilight"
+              "name": "Twilight",
+              "legendary": "gen1_twilight",
+              "legendary_ref": "etape identifiee a une autre legendaire du tracker : sa chaine complete se lit sur sa propre fiche, on n'en recopie rien ici"
             },
             {
               "bit": 2,
@@ -26326,7 +26331,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 3,
-              "name": "Philosopher's Stone"
+              "name": "Philosopher's Stone",
+              "how": {
+                "fr": "Vendu par Miyani, à côté de la Forge mystique de l'Arche du Lion, contre des éclats de karma. Aucune source gratuite.",
+                "en": "Sold by Miyani, next to the Mystic Forge in Lion's Arch, for karma. No free source."
+              },
+              "how_verified": true,
+              "how_ref": "wiki:Eternity — ressources/wiki/eternity.html, table « Required item / Primary ingredients »"
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -47242,6 +47253,10 @@ function GW2LegendaryTracker() {
         // ses sources et sa cadence vivent dans craft_components, on les lit la.
         bitComponents: Object.fromEntries(
           (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
+        // Une etape peut etre une autre legendaire : Eternity se forge depuis
+        // Sunrise et Twilight. On y renvoie, on ne recopie pas leur chaine.
+        bitLegendaries: Object.fromEntries(
+          (c.items ?? []).filter(i => i.legendary).map(i => [String(i.bit), i.legendary])),
         noteAlt: c.note_alt,
       }))
     : [];   // plus de repli : raidAchievements a disparu du JSX
@@ -50022,8 +50037,14 @@ function GW2LegendaryTracker() {
                             // de recopier un conseil qui divergerait.
                             const cid = a.bitComponents?.[String(i)];
                             const csrc = cid ? ((SOURCES_DB?.craft_components ?? {})[cid]?.sources ?? [])[0] : null;
+                            const lref = a.bitLegendaries?.[String(i)];
+                            const ltip = lref ? {
+                              fr: `Légendaire à part entière : sa chaîne complète est sur sa propre fiche.`,
+                              en: `A legendary in its own right: its full chain lives on its own entry.`,
+                            } : null;
                             const btip = (a.bitTips && enKey && a.bitTips[enKey]) ?? a.bitTips?.[i]
                               ?? csrc?.tip
+                              ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
                             return btip ? (
                               <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
