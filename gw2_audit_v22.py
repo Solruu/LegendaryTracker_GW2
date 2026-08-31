@@ -141,6 +141,8 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "free_repeatable_note", "apiId_fix", "how",
                    "paid_repeatable_ref", "paid_repeatable_unknown", "total_ref", "free_sources_note_ref",
                    "note_ordering", "note_ordering_ref", "name_api", "how_fr_missing",
+                   "collections_order_ref", "component_ref", "legendary_ref",
+                   "collections_none_ref", "flat_removed_ref", "total_ref",
                    "total_unknown_ref", "how_ref", "cadence_ref_note"}
 
 

@@ -2,19 +2,14 @@
 
 État au 27/08/2026. Une case par page de collection à capturer.
 Compteur : `étapes sans conseil / total`.
-**24 armes · 100 pages · 1727 étapes.** Eternity est terminée.
+**23 armes · 96 pages · 1607 étapes.**
 
 
-Une étape est considérée couverte si elle porte un conseil, **ou** si elle
-renvoie à un composant (`component`) ou à une autre légendaire (`legendary`).
+Une étape compte comme couverte si elle porte un conseil, **ou** si elle renvoie
+à un composant (`component`) ou à une autre légendaire (`legendary`).
 Les renvois sont des références, jamais des copies.
 
-## Astralaria — 120 étapes, 4 pages
-
-- [ ] `Astralaria I: The Device` — 19/19
-- [ ] `Astralaria II: The Apparatus` — 14/14
-- [ ] `Astralaria III: The Mechanism` — 33/33
-- [ ] `Astralaria IV: The Cosmos` — 54/54
+**Terminées : Eternity, Astralaria.**
 
 ## Bolt — 68 étapes, 4 pages
 

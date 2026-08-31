@@ -3896,6 +3896,8 @@ export default function GW2LegendaryTracker() {
   // message l'onglet serait vide et indiscernable d'une donnee manquante.
   const collSrcNone = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
     ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_none;
+  const collSrcOrder = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
+    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_order;
   const collList = collMigre.length
     ? collMigre.map(c => ({
         key: c.key,
@@ -6396,7 +6398,15 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET RAIDS (Coalescence)         */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "collections" && collList.length === 0 && collSrcNone && (
+      {/* Ordre entre paliers : une contrainte de jeu, pas un detail editorial.
+          Elle se lit avant la liste, sinon on decouvre trop tard qu'un palier
+          en consomme un autre. */}
+      {activeTab === "collections" && collList.length > 0 && collSrcOrder && (
+        <div style={{ margin: "10px 14px 4px", padding: "9px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: 8, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(96,165,250,0.75)" }}>
+          {NX(collSrcOrder)}
+        </div>
+      )}
+            {activeTab === "collections" && collList.length === 0 && collSrcNone && (
         <div style={{ margin: "10px 14px", padding: "10px 13px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 8, fontSize: "11px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
           {NX(collSrcNone)}
         </div>

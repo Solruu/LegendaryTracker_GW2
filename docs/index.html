@@ -1719,7 +1719,8 @@ const SOURCES_DB = {
     "changelog_v183": "Les collections des armes sont posees. 25 armes en ont — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka and Champawat, HOPE, Nevermore) — pour 87 collections et 1 570 etapes nommees. Les 28 autres n'en ont AUCUNE, et c'est un vide etabli : les douze gen2 de PoF et les seize gen3 fabriquent leur precurseur a la Forge mystique au lieu de le gagner par une chaine de succes. collections_none le dit explicitement, pour qu'on ne relance pas le rapprochement a chaque session. Aucun how n'est ecrit : les etapes sont nommees, leur mode d'obtention reste a documenter.",
     "changelog_v184": "Palier IV des armes : 234 etapes sur 324 pointent desormais vers le composant qui les porte deja, au lieu de recevoir un how recopie. Icy Runestone, Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of Fortune, Mystic Clover et sept autres existent dans craft_components avec leurs sources, leurs cadences et leurs prix : un how paraphrase aurait diverge des la premiere mise a jour. Le champ component est une reference, pas une copie.",
     "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages.",
-    "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite."
+    "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite.",
+    "changelog_v187": "Astralaria documentee : ses quatre collections, 120 etapes. Les noms passent au libelle du wiki, les notes deviennent des how. Le balayage des renvois est etendu : une etape dont le nom correspond a un composant ou a une autre legendaire pointe vers elle au lieu de recevoir une copie. L'ordre entre paliers est strict et documente : chaque collection s'ouvre en consommant le precurseur de la precedente — Astralaria IV commence par The Mechanism, aboutissement du III."
   },
   "meta_events": {
     "vb": {
@@ -29458,219 +29459,651 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Take the Sextant, Astrolabe, Incomplete Star Charts, and Star Charter's Bag along with Ogden's Notes to the Durmand Priory, and use the Cartographer's Workbench to create the Celestial Cartographer's Gear."
+              "name": "The Mechanism",
+              "name_api": "Take the Sextant, Astrolabe, Incomplete Star Charts, and Star Charter's Bag along with Ogden's Notes to the Durmand Priory, and use the Cartographer's Workbench to create the Celestial Cartographer's Gear.",
+              "how": {
+                "fr": null,
+                "en": "Crafted from a recipe received by completing the Astralaria III: The Mechanism collection"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Take the Counterweighting Mechanism, Dredge Cogs, Magnification Lens, and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant."
+              "name": "Astralaria Vol. 4",
+              "name_api": "Take the Counterweighting Mechanism, Dredge Cogs, Magnification Lens, and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant.",
+              "how": {
+                "fr": null,
+                "en": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Take the Ancient Charting Device, Ancient Planetarium Slide, Finely Tuned Watchwork Mechanism, and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe."
+              "name": "Cosmic Power",
+              "name_api": "Take the Ancient Charting Device, Ancient Planetarium Slide, Finely Tuned Watchwork Mechanism, and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe.",
+              "how": {
+                "fr": null,
+                "en": "Combine the Magic of the Elder Dragons , Power of the Ley Lines , Energy of the Mists , and a Vision Crystal to create the Cosmic Power"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills."
+              "name": "Magic of the Elder Dragons",
+              "name_api": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills.",
+              "how": {
+                "fr": null,
+                "en": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Zhaitan's Magic",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Weighted Golem Cube"
+              "name": "Jormag's Magic",
+              "name_api": "Weighted Golem Cube",
+              "how": {
+                "fr": null,
+                "en": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Kralkatorrik's Magic",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs."
+              "name": "Mordremoth's Magic",
+              "name_api": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Obtained from the chest after defeating Mordremoth in Dragon's Stand . (See also Ley-Line Font Energy below.)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore."
+              "name": "Power of the Ley Lines",
+              "name_api": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore.",
+              "how": {
+                "fr": null,
+                "en": "Combine the four energies to create the Power of the Ley Lines"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Occasionally looted from saurians in Auric Basin."
+              "name": "Ley-Line Hub Energy",
+              "name_api": "Occasionally looted from saurians in Auric Basin.",
+              "how": {
+                "fr": null,
+                "en": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Found in the chest after defeating the statue of Dwayna located at the Cathedral of Zephyrs in Malchor's Leap."
+              "name": "Ley-Line Stream Energy",
+              "name_api": "Found in the chest after defeating the statue of Dwayna located at the Cathedral of Zephyrs in Malchor's Leap.",
+              "how": {
+                "fr": null,
+                "en": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore."
+              "name": "Exalted Energy",
+              "name_api": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore.",
+              "how": {
+                "fr": null,
+                "en": "Energy gathered by earning silver or better in the On Wings of Gold adventure located inside Auric Basin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Ley-Line Font Energy",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove."
+              "name": "Energy of the Mists",
+              "name_api": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove.",
+              "how": {
+                "fr": null,
+                "en": "Combine the four Mists energies to create the Energy of the Mists"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
-              "name": "Occasionally found while looting a krait's possessions."
+              "name": "Whisper of Jade Wind",
+              "name_api": "Occasionally found while looting a krait's possessions.",
+              "how": {
+                "fr": null,
+                "en": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 15,
-              "name": "Looted from the Mossman in the Swampland Fractal."
+              "name": "Memory of the Ages",
+              "name_api": "Looted from the Mossman in the Swampland Fractal.",
+              "how": {
+                "fr": null,
+                "en": "Mists energy found by communing with the Temple of the Ages hero challenge in Queensdale"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 16,
-              "name": "Found in the treasure room of the Windy Cave in Lornar's Pass."
+              "name": "Echo of the Foefire",
+              "name_api": "Found in the treasure room of the Windy Cave in Lornar's Pass.",
+              "how": {
+                "fr": null,
+                "en": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 17,
-              "name": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes."
+              "name": "Tomb of the Primeval Kings Fragment",
+              "name_api": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes.",
+              "how": {
+                "fr": null,
+                "en": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 18,
-              "name": "Take the long way around to loot this from the Grand Chest near Fryxx in Straits of Devastation."
+              "name": "Celestial Cartographer's Gear",
+              "name_api": "Take the long way around to loot this from the Grand Chest near Fryxx in Straits of Devastation.",
+              "how": {
+                "fr": null,
+                "en": "Take the Sextant , Astrolabe , Incomplete Star Charts , and Star Charter's Bag along with Ogden's Notes to the Durmand Priory , and use the Cartographer's Workbench to create the Celestial Cartographer's Gear"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 19,
-              "name": "Found in the chest at the end of the Aetherblade Fractal."
+              "name": "Sextant",
+              "name_api": "Found in the chest at the end of the Aetherblade Fractal.",
+              "how": {
+                "fr": null,
+                "en": "Take the Counterweighting Mechanism , Dredge Cogs , Magnification Lens , and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 20,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Counterweighting Mechanism",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 21,
-              "name": "Combine the four human star charts into the Human Constellation Chapter."
+              "name": "Weighted Golem Cube",
+              "name_api": "Combine the four human star charts into the Human Constellation Chapter.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest after defeating the Inquest Golem Mark II in Mount Maelstrom"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 22,
-              "name": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth."
+              "name": "Dredge Cogs",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth.",
+              "how": {
+                "fr": null,
+                "en": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 23,
-              "name": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru."
+              "name": "Magnification Lens",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru.",
+              "how": {
+                "fr": null,
+                "en": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore or during the event Kill the Eye of Zhaitan patrolling the King's Passage in Malchor's Leap . Successfully completing the defense event for the Gates of Arah will also yield this item"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 24,
-              "name": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin."
+              "name": "Hollow Saurian Bone",
+              "name_api": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin.",
+              "how": {
+                "fr": null,
+                "en": "Occasionally looted from saurians in Auric Basin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 25,
-              "name": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach."
+              "name": "Astrolabe",
+              "name_api": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach.",
+              "how": {
+                "fr": null,
+                "en": "Take the Ancient Charting Device , Ancient Planetarium Slide , Finely Tuned Watchwork Mechanism , and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 26,
-              "name": "Combine the four charr star charts into the Charr Constellation Chapter."
+              "name": "Ancient Charting Device",
+              "name_api": "Combine the four charr star charts into the Charr Constellation Chapter.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest after defeating the statue of Dwayna or looted from Risen Priestess of Dwayna or Risen Lieutenant located at the Cathedral of Zephyrs in Malchor's Leap"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 27,
-              "name": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal."
+              "name": "Ancient Planetarium Slide",
+              "name_api": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal.",
+              "how": {
+                "fr": null,
+                "en": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 28,
-              "name": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau."
+              "name": "Finely Tuned Watchwork Mechanism",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 29,
-              "name": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes."
+              "name": "Tuning Instruments",
+              "name_api": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes.",
+              "how": {
+                "fr": null,
+                "en": "Take The Long Way Around to loot this from the Grand Chest near Fryxx in Straits of Devastation"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 30,
-              "name": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight."
+              "name": "Watchwork Pivots",
+              "name_api": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest at the end of the Aetherblade Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 31,
-              "name": "Combine the four norn star charts into the Norn Constellation Chapter."
+              "name": "Flawless Ancient Karka Husk",
+              "name_api": "Combine the four norn star charts into the Norn Constellation Chapter.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 32,
-              "name": "During the night, use the Celestial Cartographer's Gear near Shifting Waves, who stands in Snow Climb at Frostgorge Sound."
+              "name": "Incomplete Star Charts",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near Shifting Waves, who stands in Snow Climb at Frostgorge Sound.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 33,
-              "name": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass."
+              "name": "Star Charter's Bag",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 34,
-              "name": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs."
+              "name": "Krait Oil",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Occasionally found while looting a krait 's possessions"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 35,
-              "name": "During the night, use the Celestial Cartographer's Gear near the chest at the Shattered Ice Ruins in Frostgorge Sound."
+              "name": "Swamp-Cured Leather",
+              "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the Shattered Ice Ruins in Frostgorge Sound.",
+              "how": {
+                "fr": null,
+                "en": "Looted from the Mossman in the Swampland Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 36,
-              "name": "Combine the Magic of the Elder Dragons, Power of the Ley Lines, Energy from the Mists, and a Vision Crystal to create the Cosmic Power."
+              "name": "Soft Fur",
+              "name_api": "Combine the Magic of the Elder Dragons, Power of the Ley Lines, Energy from the Mists, and a Vision Crystal to create the Cosmic Power.",
+              "how": {
+                "fr": null,
+                "en": "Found in the treasure room of the Windy Cave in Lornar's Pass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 37,
-              "name": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons."
+              "name": "Ogden's Notes",
+              "name_api": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons.",
+              "how": {
+                "fr": null,
+                "en": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 38,
-              "name": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen."
+              "name": "Tyrian Constellation Almanac",
+              "name_api": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 39,
-              "name": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound."
+              "name": "Human Constellation Chapter",
+              "name_api": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound.",
+              "how": {
+                "fr": null,
+                "en": "Combine the four human star charts into the Human Constellation Chapter"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 40,
-              "name": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes."
+              "name": "Star Chart: Eye of Grenth",
+              "name_api": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 41,
-              "name": "Obtained from the chest after defeating Mordremoth in Dragon's Stand."
+              "name": "Star Chart: Gnarl of Melandru",
+              "name_api": "Obtained from the chest after defeating Mordremoth in Dragon's Stand.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 42,
-              "name": "Combine the four energies to create the Power of the Ley Lines."
+              "name": "Star Chart: Hounds of Balthazar",
+              "name_api": "Combine the four energies to create the Power of the Ley Lines.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 43,
-              "name": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths."
+              "name": "Star Chart: Kormir's Scales of Order",
+              "name_api": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 44,
-              "name": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths."
+              "name": "Charr Constellation Chapter",
+              "name_api": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths.",
+              "how": {
+                "fr": null,
+                "en": "Combine the four charr star charts into the Charr Constellation Chapter"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 45,
-              "name": "Energy gathered by earning rank silver or better in the Wings of Gold adventure located inside Auric Basin."
+              "name": "Star Chart: Cauldron",
+              "name_api": "Energy gathered by earning rank silver or better in the Wings of Gold adventure located inside Auric Basin.",
+              "how": {
+                "fr": null,
+                "en": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 46,
-              "name": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand."
+              "name": "Star Chart: Unnamed Soldier",
+              "name_api": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 47,
-              "name": "Combine the four Mists energies to create the Energy from the Mists."
+              "name": "Star Chart: Siege Devourer",
+              "name_api": "Combine the four Mists energies to create the Energy from the Mists.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 48,
-              "name": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal."
+              "name": "Star Chart: Claw of the Khan-Ur",
+              "name_api": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal.",
+              "how": {
+                "fr": null,
+                "en": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 49,
-              "name": "Mists energy found by communing with the Temple of Ages hero challenge in Queensdale."
+              "name": "Norn Constellation Chapter",
+              "name_api": "Mists energy found by communing with the Temple of Ages hero challenge in Queensdale.",
+              "how": {
+                "fr": null,
+                "en": "Combine the four norn star charts into the Norn Constellation Chapter"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 50,
-              "name": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire."
+              "name": "Star Chart: Great Spirit Bear",
+              "name_api": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near Shifting Waves , who stands in Snow Climb at Frostgorge Sound"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 51,
-              "name": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability."
+              "name": "Star Chart: Great Spirit Raven",
+              "name_api": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 52,
-              "name": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track."
+              "name": "Star Chart: Great Spirit Wolf",
+              "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track.",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 53,
-              "name": "The Mechanism"
+              "name": "Star Chart: Great Spirit Snow Leopard",
+              "name_api": "The Mechanism",
+              "how": {
+                "fr": null,
+                "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Shattered Ice Ruins in Frostgorge Sound"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -29688,135 +30121,399 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "The Apparatus",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Salvage this weapon to receive its spirit , needed to craft the next tier of this legendary precursor"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire, Elemental Flames, Destroyer's Heat, a Flame Effigy Band, and a Fire Imbued Heart, to create the Ultra Hot Sphere."
+              "name": "Astralaria Vol. 3",
+              "name_api": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire, Elemental Flames, Destroyer's Heat, a Flame Effigy Band, and a Fire Imbued Heart, to create the Ultra Hot Sphere.",
+              "how": {
+                "fr": null,
+                "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Ley-Line Bezoar",
+              "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Looted from the Legendary Chak Gerent map meta event completion chest in Tangled Depths"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Gathered by being struck by the Legendary Matriarch Wyvern's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory."
+              "name": "Runed Sphere Casing",
+              "name_api": "Gathered by being struck by the Legendary Matriarch Wyvern's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe."
+              "name": "Tail of the Star God Fragment",
+              "name_api": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe.",
+              "how": {
+                "fr": null,
+                "en": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Gathered by looting the Legendary Fire Elemental's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Syphon in your inventory."
+              "name": "Wondrous Compass",
+              "name_api": "Gathered by looting the Legendary Fire Elemental's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Syphon in your inventory.",
+              "how": {
+                "fr": null,
+                "en": "Take the \" Elder Dragons and Star Navigation Theories Vol. III ,\" the Skritt Salvaged Compass , the Damaged Airship Compass and the Ancient Orrian Compass to Scarlet 's home in Dry Top , and use her workbench to create the Wondrous Compass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Elder Dragons and Star Navigation Theories Vol. III",
+              "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Gathered by looting the Megadestroyer's chest in Mount Maelstrom with the Quartz Vial in your inventory."
+              "name": "Ancient Orrian Compass",
+              "name_api": "Gathered by looting the Megadestroyer's chest in Mount Maelstrom with the Quartz Vial in your inventory.",
+              "how": {
+                "fr": null,
+                "en": "Looted from the Champion Risen Captain , found inside the Chapel of Lady Glaive in Straits of Devastation"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Damaged Airship Compass",
+              "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory."
+              "name": "Salvaged Compass",
+              "name_api": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest at the end of Drydock Scratch in the Silverwastes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Meteorite Ingot",
+              "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch . (Recipe produces 25)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory."
+              "name": "Ultrahot Sphere",
+              "name_api": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory.",
+              "how": {
+                "fr": null,
+                "en": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire , Elemental Flames , Destroyer's Heat , a Flame Effigy Embers , and a Fire Imbued Heart , to create the Ultra Hot Sphere"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Take the Stabilizing Gyroscope, the Aetherblade Gearbox Mechanism, the Steam Cogs, and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint."
+              "name": "Wyvern's Liquid Fire",
+              "name_api": "Take the Stabilizing Gyroscope, the Aetherblade Gearbox Mechanism, the Steam Cogs, and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint.",
+              "how": {
+                "fr": null,
+                "en": "Gathered by being struck by the Legendary Matriarch Wyvern 's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance."
+              "name": "Aurillium Capsule",
+              "name_api": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance.",
+              "how": {
+                "fr": null,
+                "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
-              "name": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields."
+              "name": "Elemental Flames",
+              "name_api": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields.",
+              "how": {
+                "fr": null,
+                "en": "Gathered by looting the Legendary Fire Elemental 's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Siphon in your inventory"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 15,
-              "name": "Harvested from steam creatures."
+              "name": "Thaumanova Flames Siphon",
+              "name_api": "Harvested from steam creatures.",
+              "how": {
+                "fr": null,
+                "en": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 16,
-              "name": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths."
+              "name": "Destroyer's Heat",
+              "name_api": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths.",
+              "how": {
+                "fr": null,
+                "en": "Gathered by looting the Megadestroyer 's chest in Mount Maelstrom with the Quartz Vial in your inventory"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 17,
-              "name": "Found in the chest at the end of the Uncategorized fractal."
+              "name": "Quartz Vial",
+              "name_api": "Found in the chest at the end of the Uncategorized fractal.",
+              "how": {
+                "fr": null,
+                "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 18,
-              "name": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise."
+              "name": "Flame Effigy Embers",
+              "name_api": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise.",
+              "how": {
+                "fr": null,
+                "en": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 19,
-              "name": "Looted from the Champion Risen Captain, found inside the Chapel of Lady Glaive in Straits of Devastation."
+              "name": "Obsidian Magma Container",
+              "name_api": "Looted from the Champion Risen Captain, found inside the Chapel of Lady Glaive in Straits of Devastation.",
+              "how": {
+                "fr": null,
+                "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 20,
-              "name": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin."
+              "name": "Fire Imbued Heart",
+              "name_api": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin.",
+              "how": {
+                "fr": null,
+                "en": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 21,
-              "name": "Found in the chest at the end of Drydock Scratch in the Silverwastes."
+              "name": "Mists Imbued Jar",
+              "name_api": "Found in the chest at the end of Drydock Scratch in the Silverwastes.",
+              "how": {
+                "fr": null,
+                "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 22,
-              "name": "Take the \"Elder Dragons and Star Navigation Theories Vol. III,\" the Skritt Salvaged Compass, the Ancient Orrian Compass, and the Damaged Airship Compass to Scarlet's home in Dry Top, and use her workbench to create the Wondrous Compass."
+              "name": "Rune Enchanted Rings",
+              "name_api": "Take the \"Elder Dragons and Star Navigation Theories Vol. III,\" the Skritt Salvaged Compass, the Ancient Orrian Compass, and the Damaged Airship Compass to Scarlet's home in Dry Top, and use her workbench to create the Wondrous Compass.",
+              "how": {
+                "fr": null,
+                "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 23,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Pact Airship Strut",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 24,
-              "name": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better."
+              "name": "Divinity's Reach's Garden Rings",
+              "name_api": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better.",
+              "how": {
+                "fr": null,
+                "en": "Ponder the rings in the central garden in Divinity's Reach"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 25,
-              "name": "Ponder the rings in the central garden in Divinity's Reach."
+              "name": "Cosmic Mechanism",
+              "name_api": "Ponder the rings in the central garden in Divinity's Reach.",
+              "how": {
+                "fr": null,
+                "en": "Take the Mists Enchanted Mechanism , the Technomancy Blueprint , the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 26,
-              "name": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes."
+              "name": "Ancient Runed Tablet",
+              "name_api": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes.",
+              "how": {
+                "fr": null,
+                "en": "Found in Admiral Taidha Covington 's chest after defeating her on Laughing Gull Island in Bloodtide Coast"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 27,
-              "name": "Looted from the Legendary Chak Gerent in Tangled Depths."
+              "name": "Mists Enchanted Mechanism",
+              "name_api": "Looted from the Legendary Chak Gerent in Tangled Depths.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest at the end of Uncategorized Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 28,
-              "name": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch."
+              "name": "Technomancy Blueprint",
+              "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
+              "how": {
+                "fr": null,
+                "en": "Take the Stabilizing Gyroscope , the Aetherblade Gearbox Mechanism , the Steam Cogs , and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 29,
-              "name": "Found in Admiral Taidha Covington's chest after defeating her on Laughing Gull Island in Bloodtide Coast."
+              "name": "Stabilizing Gyroscope",
+              "name_api": "Found in Admiral Taidha Covington's chest after defeating her on Laughing Gull Island in Bloodtide Coast.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 30,
-              "name": "Take the Mist Enchanted Mechanism, the Technomancy Blueprint, the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism."
+              "name": "Aetherblade Gearbox Mechanism",
+              "name_api": "Take the Mist Enchanted Mechanism, the Technomancy Blueprint, the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism.",
+              "how": {
+                "fr": null,
+                "en": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 31,
-              "name": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track."
+              "name": "Steam Cogs",
+              "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+              "how": {
+                "fr": null,
+                "en": "Harvested from steam creatures"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 32,
-              "name": "The Apparatus"
+              "name": "Charr Helicopter Gearbox",
+              "name_api": "The Apparatus",
+              "how": {
+                "fr": null,
+                "en": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -29834,59 +30531,170 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Speak to a Master Weaponsmith to discover the art of forging."
+              "name": "Basic Axe Requisition",
+              "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to learn his needs for the war effort. (Craft 250 Basic Mithril Axe )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Speak to a Master Weaponsmith to discover the secret to honing a blade."
+              "name": "The Art of Forging: Axe Blade Edition Vol. 2",
+              "name_api": "Speak to a Master Weaponsmith to discover the secret to honing a blade.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to discover the art of forging. (Complete the Basic Axe Requisition first which unlocks this, then craft the variety of axe blades)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Speak to a Master Weaponsmith to discover the art of woodworking."
+              "name": "Honed Axe Blade",
+              "name_api": "Speak to a Master Weaponsmith to discover the art of woodworking.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to discover the secret to honing a blade. (Craft the recipe unlocked by completing The Art of Forging: Axe Blade Edition Vol. 2 )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Speak to a Master Weaponsmith to discover the secret to weighting a haft."
+              "name": "The Art of Woodworking: Axe Haft Edition Vol. 2",
+              "name_api": "Speak to a Master Weaponsmith to discover the secret to weighting a haft.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to discover the art of woodworking. (Complete the Basic Axe Requisition first which unlocks this, then craft the variety of axe hafts)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Speak to a Master Weaponsmith to learn the secrets of precision forging tools."
+              "name": "Weighted Axe Haft",
+              "name_api": "Speak to a Master Weaponsmith to learn the secrets of precision forging tools.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to discover the secret to weighting a haft. (Craft the recipe unlocked by completing The Art of Woodworking: Axe Haft Edition Vol. 2 )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+              "name": "Precise Axe Forging Tools",
+              "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+              "how": {
+                "fr": null,
+                "en": "Speak to a Master Weaponsmith to discover the secrets of precision forging tools"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics."
+              "name": "Desert Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics. (Requires 1000 Bandit Crests )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics."
+              "name": "Jungle Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics. (Requires 400 Geodes )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics."
+              "name": "Old World Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics. (Requires 100 Obsidian Shards )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics."
+              "name": "Ancient Water Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics. (Requires 100 Karka Shells )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics."
+              "name": "Herbal Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics. (Requires 25 Passion Flowers )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics."
+              "name": "Stabilizing Magics: Axe Edition Vol. 2",
+              "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics.",
+              "how": {
+                "fr": null,
+                "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics. (Requires 25 Stabilizing Matrices )"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track."
+              "name": "Astralaria Vol. 2",
+              "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track.",
+              "how": {
+                "fr": null,
+                "en": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "The Device"
+              "name": "The Device",
+              "how": {
+                "fr": null,
+                "en": "Salvage this weapon to receive its spirit , needed to craft the next tier of this legendary precursor"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
@@ -29904,86 +30712,243 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Found in the chest at the end of the Buried Archives jumping puzzle in Cursed Shore."
+              "name": "Orrian Celestial Codex",
+              "name_api": "Found in the chest at the end of the Buried Archives jumping puzzle in Cursed Shore.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the chest at the end of the Buried Archives jumping puzzle in Cursed Shore"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Discover and read \"Rising Stars,\" the ancient jotun astronomy book in the Durmand Priory library in Lornar's Pass."
+              "name": "Rising Stars",
+              "name_api": "Discover and read \"Rising Stars,\" the ancient jotun astronomy book in the Durmand Priory library in Lornar's Pass.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Discover and read \" Rising Stars \", the ancient jotun astronomy book in the Durmand Priory library in Lornar's Pass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Ponder the world map on the floor of the Chamber of Ministers in Divinity's Reach."
+              "name": "Ponder the World",
+              "name_api": "Ponder the world map on the floor of the Chamber of Ministers in Divinity's Reach.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Ponder the world map on the floor of the Chamber of Ministers in Divinity's Reach"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Obtained from completing the Zinn's Prize Student achievement."
+              "name": "Mini Holographic Zinn",
+              "name_api": "Obtained from completing the Zinn's Prize Student achievement.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Obtained from completing the Zinn Study Guide achievement"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Found in the treasure room of Old Oola's Lab in the Akk Wilds of Metrica Province."
+              "name": "Oola's Study on Ancient Magic",
+              "name_api": "Found in the treasure room of Old Oola's Lab in the Akk Wilds of Metrica Province.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the treasure room of Old Oola's Lab in the Akk Wilds of Metrica Province"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Found in an Exalted chest within the trial rooms of Tarir, the Forgotten City of Auric Basin."
+              "name": "Timeworn Forgotten Parchment",
+              "name_api": "Found in an Exalted chest within the trial rooms of Tarir, the Forgotten City of Auric Basin.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in an Exalted chest within the trial rooms of Tarir, the Forgotten City of Auric Basin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Attained from the Fallen Masks adventure in the Forgotten City of Auric Basin by reaching a rank of bronze or better."
+              "name": "Timeworn Forgotten Tablet",
+              "name_api": "Attained from the Fallen Masks adventure in the Forgotten City of Auric Basin by reaching a rank of bronze or better.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Attained from the Fallen Masks adventure in the Forgotten City of Auric Basin by reaching a rank of bronze or better"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Found in the treasure-room chest within the Forsaken Halls of Dredgehaunt Cliffs."
+              "name": "Dwarven Runestones Vol. 1",
+              "name_api": "Found in the treasure-room chest within the Forsaken Halls of Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the treasure-room chest within the Forsaken Halls of Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Found in the chest in the Tomb of Blackpowder within Kapellenburg in Dredgehaunt Cliffs."
+              "name": "Dwarven Runestones Vol. 2",
+              "name_api": "Found in the chest in the Tomb of Blackpowder within Kapellenburg in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the chest in the Tomb of Blackpowder within Kapellenburg in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Search Omadd's Machine within the Cavern of Shining Lights of Dry Top to find his notes."
+              "name": "Omadd's Lost Notes",
+              "name_api": "Search Omadd's Machine within the Cavern of Shining Lights of Dry Top to find his notes.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Search Omadd's Machine within the Cavern of Shining Lights of Dry Top to find his notes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Take a rubbing of one of the jotun runestones near Leaning Grade in Dredgehaunt Cliffs."
+              "name": "Leaning Grade Runestone Rubbing",
+              "name_api": "Take a rubbing of one of the jotun runestones near Leaning Grade in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Take a rubbing of one of the jotun runestones near Leaning Grade in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Take a rubbing of the jotun runestone in the Ghost Stones in Dredgehaunt Cliffs."
+              "name": "Ghost Stones Runestone Rubbing",
+              "name_api": "Take a rubbing of the jotun runestone in the Ghost Stones in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Take a rubbing of one of the jotun runestone near Ghost Stones in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Take a rubbing of the jotun runestone monument near Heimdahl's Last Stand in Dredgehaunt Cliffs."
+              "name": "Heimdahl's Stand Runestone Rubbing",
+              "name_api": "Take a rubbing of the jotun runestone monument near Heimdahl's Last Stand in Dredgehaunt Cliffs.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Take a rubbing of one of the jotun runestone monument near Heimdahl's Last Stand in Dredgehaunt Cliffs"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Take a rubbing of the ancient casket in the Azabe Qabar, Royal Tombs in Cursed Shore."
+              "name": "Azabe Qabar Gravestone Rubbing",
+              "name_api": "Take a rubbing of the ancient casket in the Azabe Qabar, Royal Tombs in Cursed Shore.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Take a rubbing of the ancient casket in the Azabe Qabar, Royal Tombs in Cursed Shore"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
-              "name": "Offered for purchase by Albin Chronicler in Wayfarer Foothills after successfully helping trade with the jotun tribe."
+              "name": "Pouch of Jotun Runestones",
+              "name_api": "Offered for purchase by Albin Chronicler in Wayfarer Foothills after successfully helping trade with the jotun tribe.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Offered for purchase by Albin Chronicler in Wayfarer Foothills after successfully helping trade with the jotun tribe"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 15,
-              "name": "Search the buried chests of Dry Top once they have been uncovered during a sandstorm."
+              "name": "Primeval Runescroll",
+              "name_api": "Search the buried chests of Dry Top once they have been uncovered during a sandstorm.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Search the buried chests of Dry Top once they have been uncovered during a sandstorm"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 16,
-              "name": "Found in the Cliffside Fractal chest."
+              "name": "Mists Knowledge Crystal",
+              "name_api": "Found in the Cliffside Fractal chest.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the Cliffside Fractal chest"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 17,
-              "name": "Found in the chest deep within King Jalis's Refuge in Snowden Drifts."
+              "name": "Ancient Royal Runescroll",
+              "name_api": "Found in the chest deep within King Jalis's Refuge in Snowden Drifts.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Found in the chest deep within King Jalis's Refuge in Snowden Drifts"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 18,
-              "name": "After completing your collection of ancient knowledge, speak with Ogden in the Durmand Priory library about your findings so that he may continue with research of his own."
+              "name": "Deliver Notes to Ogden Stonehealer",
+              "name_api": "After completing your collection of ancient knowledge, speak with Ogden in the Durmand Priory library about your findings so that he may continue with research of his own.",
+              "how": {
+                "fr": null,
+                "en": "Hint: After completing your collection of ancient knowledge, speak with Ogden in the Durmand Priory library about your findings so that he may continue with research of his own"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
           "checked": "2026-08-27"
         }
-      }
+      },
+      "collections_order": {
+        "fr": "⚠ Ordre strict entre paliers : chaque collection s'ouvre en consommant le précurseur produite par la précédente. Astralaria IV commence par « The Mechanism », qui est l'aboutissement du III. À l'intérieur d'une collection, en revanche, la numérotation du wiki est un ordre de lecture, pas une contrainte.",
+        "en": "⚠ Strict order between tiers: each collection opens by consuming the precursor produced by the previous one. Astralaria IV starts with 'The Mechanism', the outcome of III. Inside a collection, however, the wiki's numbering is a reading order, not a constraint."
+      },
+      "collections_order_ref": "tableaux « Collection items » des quatre paliers"
     },
     "gen2_hope": {
       "name": "HOPE",
@@ -47240,6 +48205,8 @@ function GW2LegendaryTracker() {
   // message l'onglet serait vide et indiscernable d'une donnee manquante.
   const collSrcNone = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
     ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_none;
+  const collSrcOrder = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
+    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_order;
   const collList = collMigre.length
     ? collMigre.map(c => ({
         key: c.key,
@@ -49740,7 +50707,15 @@ function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET RAIDS (Coalescence)         */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "collections" && collList.length === 0 && collSrcNone && (
+      {/* Ordre entre paliers : une contrainte de jeu, pas un detail editorial.
+          Elle se lit avant la liste, sinon on decouvre trop tard qu'un palier
+          en consomme un autre. */}
+      {activeTab === "collections" && collList.length > 0 && collSrcOrder && (
+        <div style={{ margin: "10px 14px 4px", padding: "9px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: 8, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(96,165,250,0.75)" }}>
+          {NX(collSrcOrder)}
+        </div>
+      )}
+            {activeTab === "collections" && collList.length === 0 && collSrcNone && (
         <div style={{ margin: "10px 14px", padding: "10px 13px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 8, fontSize: "11px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
           {NX(collSrcNone)}
         </div>
