@@ -130,6 +130,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unknown_nightmares_orrax_contained.html` | Unknown Nightmares: Orrax Contained | collection, 5 objets | 2026-08-27 |
 | `visions_of_istan.html` | Visions of Istan | collection, 7 objets | 2026-08-27 |
 | `precursor_weapon.html` | Precursor weapon | table des 53 précurseurs, avec génération | 2026-08-27 |
+| `caladbolg.html` | Caladbolg | article complet — arme d'histoire, chaîne Knight of the Thorn | 2026-08-27 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -184,7 +185,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **100 captures, 100 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **101 captures, 101 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
