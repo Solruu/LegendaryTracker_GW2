@@ -804,6 +804,27 @@ reprise du gabarit de génération. **Les composants propres à chaque arme rest
 **Une table de correspondance ne doit donc pas se limiter à « Legendary
 Weapons »** : elle doit accepter des identifiants de n'importe quel groupe.
 
+### ✅ Collections des armes posées le 27/08/2026
+
+**25 armes en ont** — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka
+and Champawat, HOPE, Nevermore) — soit **87 collections et 1 978 étapes
+nommées**.
+
+**Les 28 autres n'en ont AUCUNE, et c'est un vide établi** : les douze gen2 de
+PoF (Eureka, Exordium, Sharur, Verdarach, Xiuquatl, Pharus, Shooshadoo, Claw of
+the Khan-Ur, Flames of War, The HMS Divinity, The Shining Blade, The Binding of
+Ipos) et les seize gen3 **fabriquent leur précurseur à la Forge mystique** au
+lieu de le gagner par une chaîne de succès. Aucun des 6 785 succès du
+référentiel ne les mentionne.
+
+`collections_none` le dit explicitement et **s'affiche dans l'onglet** : sans
+ça, l'onglet vide serait indiscernable d'une donnée manquante, et on relancerait
+le rapprochement à chaque session.
+
+⚠ **Aucun `how` n'est écrit sur ces 1 978 étapes.** Elles sont nommées, leur mode
+d'obtention reste à documenter — c'est le plus gros chantier éditorial restant,
+loin devant tout le reste.
+
 ### Reste : les armes d'histoire comme cinquième catégorie
 
 Caladbolg, Itzel's Boon, Lorekeeper, Elegy, Reaver of the Mists, H.O.P.E.

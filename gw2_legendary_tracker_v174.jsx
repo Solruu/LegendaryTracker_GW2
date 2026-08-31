@@ -3892,6 +3892,10 @@ export default function GW2LegendaryTracker() {
   // la presence de `key` : seule la forme migree la porte. Sans ce test, leur
   // onglet afficherait deux fois, et le rendu generique avec des cles vides.
   const collMigre = Object.values(collSrc ?? {}).filter(c => c && c.key);
+  // Vide ETABLI : l'arme n'a pas de collection, son precurseur se forge. Sans ce
+  // message l'onglet serait vide et indiscernable d'une donnee manquante.
+  const collSrcNone = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
+    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_none;
   const collList = collMigre.length
     ? collMigre.map(c => ({
         key: c.key,
@@ -6384,7 +6388,12 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET RAIDS (Coalescence)         */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "collections" && collList.length > 0 && (
+      {activeTab === "collections" && collList.length === 0 && collSrcNone && (
+        <div style={{ margin: "10px 14px", padding: "10px 13px", background: "rgba(251,146,60,0.05)", border: "1px solid rgba(251,146,60,0.18)", borderRadius: 8, fontSize: "11px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(251,146,60,0.8)" }}>
+          {NX(collSrcNone)}
+        </div>
+      )}
+            {activeTab === "collections" && collList.length > 0 && (
         <div>
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
             <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
