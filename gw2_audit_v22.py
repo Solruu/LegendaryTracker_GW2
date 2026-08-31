@@ -140,6 +140,7 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "recipe_tree_caveat",
                    "free_repeatable_note", "apiId_fix", "how",
                    "paid_repeatable_ref", "paid_repeatable_unknown", "total_ref", "free_sources_note_ref",
+                   "note_ordering", "note_ordering_ref", "name_api", "how_fr_missing",
                    "total_unknown_ref", "how_ref", "cadence_ref_note"}
 
 

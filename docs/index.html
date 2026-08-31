@@ -1713,7 +1713,8 @@ const SOURCES_DB = {
     "changelog_v177": "Les deux dernieres captures a section Acquisition vide sont recuperees, et elles confirment que l'absence venait bien de la capture. L'Alliage de titan neutralise a QUATRE vendeurs, trois a Janthir Syntri et un a Bava Nisos, sans plafond hebdomadaire annonce. L'Eclat des Landes calcinees en a un, plafonne a 20 par semaine et par PNJ — et il exige le coeur de renom INCOMPLET, ce qui confirme la regle deja notee au backlog : completer le coeur ferme la source. Les deux passent en paid_repeatable verifie ; free_sources_note est retire, il n'a plus lieu d'etre.",
     "changelog_v178": "La chaine du Wayfarer's Henge est documentee : 55 etapes recuperent leur conseil, tire de la colonne Notes du tableau « Collection items » du wiki. Ce sont les premiers how marques verified true — les 284 autres viennent des anciens bitTips et restent a false. Les noms d'etapes passent au libelle du wiki (« A Flower for Kodama ») plutot qu'a la phrase d'action de l'API (« Bring a Fire Orchid to Kodama… ») ; l'ancienne valeur est gardee en name_api. gw2_parse_collection_v1.py retire le JavaScript inline des liens de point de passage, qui sans cela finissait dans la note. Le rapprochement se fait par rang et n'est tente que si les deux listes ont la meme longueur. Les 55 conseils tires du wiki sont en anglais : leur champ fr passe a null plutot que de recopier l'anglais, ce qui aurait fait croire a une traduction. L() se replie sur l'anglais, comme pour les noms de sous-zones. how_fr_missing les marque, ils sont denombrables.",
     "changelog_v179": "Cinq collections de plus documentees : Acquiring Agaleus, Astral Purification, Radiance of the Sun God, The Convergence of Sorrow I Elegy et Gift of the Feast. Le parseur passe en v2 : le v1 prenait toute ligne commencant par un chiffre et ramassait donc le tableau des MATERIAUX au lieu de celui des objets — Elegy revenait avec des lingots d'orichalque et leurs prix. Le v2 s'ancre sur l'en-tete et n'accepte que les formes connues, dont « Objective | Nearest Waypoint | Notes » que le v1 ignorait completement. Le point de passage le plus proche, quand le wiki le donne, entre dans un champ waypoint plutot que d'etre noye dans le conseil. Le champ waypoint prend la forme {name, chat_code} deja en usage ailleurs dans collections{} et lue par le JSX (item.waypoint?.chat_code) : une chaine brute aurait ete un homonyme d'une autre forme, donc un chemin parallele. Le code de chat est extrait du libelle du wiki.",
-    "changelog_v180": "Huit collections de plus documentees : Legendary Relics Components, les deux Mists Research de Strife Unending, quatre Unknown Nightmares d'Orrax et Visions of Istan. Les huit tombent juste, longueurs identiques cote wiki et cote tracker. La neuvieme capture, incursive_investigation, est la page de CATEGORIE de succes et non la page de collection : le wiki redirige « Incursive Investigation: Working Together » vers elle. Rien n'en a ete tire, elle n'est pas versee."
+    "changelog_v180": "Huit collections de plus documentees : Legendary Relics Components, les deux Mists Research de Strife Unending, quatre Unknown Nightmares d'Orrax et Visions of Istan. Les huit tombent juste, longueurs identiques cote wiki et cote tracker. La neuvieme capture, incursive_investigation, est la page de CATEGORIE de succes et non la page de collection : le wiki redirige « Incursive Investigation: Working Together » vers elle. Rien n'en a ete tire, elle n'est pas versee.",
+    "changelog_v181": "Les quatre dernieres etapes utiles sont documentees : les rendez-vous avec le Mist Stranger, dans la zone instanciee accessible depuis l'Arche du Lion. Source : la section Objectives de la page de CATEGORIE du wiki, relevee par Antoine — la page de collection redirige vers elle et n'expose aucun tableau d'objets. Decouverte au passage : l'ordre des bits de l'API ne suit pas la numerotation du wiki sur cette collection, le bit 9 porte l'objectif 2. Un rapprochement par rang y aurait tout decale. Verification faite sur les 20 collections deja traitees : aucun nom ne correspond au texte d'un autre bit, le rapprochement par rang y etait sain."
   },
   "meta_events": {
     "vb": {
@@ -22853,7 +22854,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 2,
-              "name": "4. Bring the Agony-Torn Gloves to the Mist Stranger."
+              "name": "4. Bring the Agony-Torn Gloves to the Mist Stranger.",
+              "how": {
+                "fr": "Le Mist Stranger se trouve dans la zone instanciée dédiée, accessible depuis l'Arche du Lion.",
+                "en": "The Mist Stranger is in the dedicated instanced zone, reachable from Lion's Arch."
+              },
+              "how_verified": true,
+              "how_ref": "page wiki « Incursive Investigation », section Objectives — relevee par Antoine le 27/08/2026 ; la page de collection elle-meme redirige vers la categorie et n'expose pas de tableau d'objets"
             },
             {
               "bit": 3,
@@ -22867,7 +22874,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 4,
-              "name": "6. Check in with the Mist Stranger and your allies."
+              "name": "6. Check in with the Mist Stranger and your allies.",
+              "how": {
+                "fr": "Le Mist Stranger se trouve dans la zone instanciée dédiée, accessible depuis l'Arche du Lion.",
+                "en": "The Mist Stranger is in the dedicated instanced zone, reachable from Lion's Arch."
+              },
+              "how_verified": true,
+              "how_ref": "page wiki « Incursive Investigation », section Objectives — relevee par Antoine le 27/08/2026 ; la page de collection elle-meme redirige vers la categorie et n'expose pas de tableau d'objets"
             },
             {
               "bit": 5,
@@ -22881,7 +22894,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 6,
-              "name": "8. Check in with the Mist Stranger and your allies."
+              "name": "8. Check in with the Mist Stranger and your allies.",
+              "how": {
+                "fr": "Le Mist Stranger se trouve dans la zone instanciée dédiée, accessible depuis l'Arche du Lion.",
+                "en": "The Mist Stranger is in the dedicated instanced zone, reachable from Lion's Arch."
+              },
+              "how_verified": true,
+              "how_ref": "page wiki « Incursive Investigation », section Objectives — relevee par Antoine le 27/08/2026 ; la page de collection elle-meme redirige vers la categorie et n'expose pas de tableau d'objets"
             },
             {
               "bit": 7,
@@ -22895,7 +22914,13 @@ const SOURCES_DB = {
             },
             {
               "bit": 8,
-              "name": "10. Confer with the Mist Stranger about the end of the crisis."
+              "name": "10. Confer with the Mist Stranger about the end of the crisis.",
+              "how": {
+                "fr": "Le Mist Stranger se trouve dans la zone instanciée dédiée, accessible depuis l'Arche du Lion.",
+                "en": "The Mist Stranger is in the dedicated instanced zone, reachable from Lion's Arch."
+              },
+              "how_verified": true,
+              "how_ref": "page wiki « Incursive Investigation », section Objectives — relevee par Antoine le 27/08/2026 ; la page de collection elle-meme redirige vers la categorie et n'expose pas de tableau d'objets"
             },
             {
               "bit": 9,
@@ -22908,7 +22933,12 @@ const SOURCES_DB = {
               "name": "2. Speak with gathered allies to hear the plan."
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "note_ordering": {
+            "fr": "⚠ L'ordre des bits de l'API ne suit PAS la numérotation des objectifs du wiki : le bit 9 porte l'objectif 2. Ne jamais rapprocher cette collection par rang.",
+            "en": "⚠ The API bit order does NOT follow the wiki's objective numbering: bit 9 carries objective 2. Never match this collection by rank."
+          },
+          "note_ordering_ref": "page wiki « Incursive Investigation », section Objectives — relevee par Antoine le 27/08/2026 ; la page de collection elle-meme redirige vers la categorie et n'expose pas de tableau d'objets"
         },
         "eikasia_r1": {
           "id": 8840,

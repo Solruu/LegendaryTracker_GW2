@@ -809,15 +809,26 @@ français — le contenu est là, seule la langue manque. Les 6 autres `how` don
 le français est identique à l'anglais viennent des anciens `bitTips` et sont
 sans doute dans le même cas.
 
-### Reste : 14 étapes sur 468 — **97 % documenté**
+### Reste : 10 étapes sur 468, toutes sans objet — **458/458 utiles**
 
 | collection | légendaire | sans conseil | pourquoi |
 |---|---|---|---|
 | Unknown Nightmares: Gift of the Feast | Orrax | 10 | **rien à écrire** : ce sont des plats de cuisine, le wiki ne met pas de note sur ces lignes et le nom suffit |
-| Incursive Investigation: Working Together | Eikasia | 4 | capture à refaire |
 
-**Le seul vrai reste : `Incursive Investigation: Working Together`** (succès 8830).
-Le wiki **redirige** ce titre vers la page de *catégorie* du groupe de succès,
-qui ne contient aucun tableau d'objets — la capture reçue en était une. Il faut
-atteindre la page de collection elle-même, pas la redirection.
+**`Incursive Investigation: Working Together` est fait** (succès 8830). Ce
+n'était pas une redirection à contourner : la collection **est documentée dans
+la page de catégorie**, section Objectives, sans tableau d'objets. Les quatre
+rendez-vous avec le Mist Stranger ont leur `how` — la zone instanciée dédiée,
+accessible depuis l'Arche du Lion.
+
+### ⚠ Piège découvert : l'ordre des bits n'est pas celui du wiki
+
+Sur cette collection, **le bit 9 porte l'objectif 2**. Un rapprochement par rang
+aurait tout décalé d'un cran. Le champ `note_ordering` le signale sur la
+collection concernée.
+
+**Vérification faite sur les 20 collections déjà traitées** : aucun nom d'étape
+ne correspond au texte d'un autre bit — le rapprochement par rang y était sain.
+Mais la garde « même longueur » ne suffit pas à le garantir : il faudrait
+comparer les contenus, pas seulement les comptes.
 
