@@ -1209,6 +1209,51 @@ def check_recipe_components(data, errors, warnings):
                 )
 
 
+def check_precursor_vs_last_tier(data, errors, warnings):
+    """Le precurseur d'une arme a collections est l'objet qui ouvre son dernier palier.
+
+    Les collections d'une arme gen2 forment une chaine : chaque palier s'ouvre en
+    consommant ce que le precedent a produit, et unlock_item le dit litteralement.
+    Le palier IV s'ouvre donc avec le PRECURSEUR — le troisieme des quatre objets
+    de la chaine, pas le premier. Le champ precursor doit valoir exactement cela.
+
+    C'est ainsi que les quatre gen2 de HoT etaient fausses en meme temps :
+    Astralaria portait The Device, son palier I ; HOPE portait The Mechanism, qui
+    appartient a Astralaria ; Nevermore et Chuka portaient des noms absents de la
+    table du wiki. Aucune de ces erreurs n'etait visible sans confronter le champ
+    a la chaine que les collections decrivent deja.
+    """
+    ROM = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5}
+    for lid, leg in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(leg, dict):
+            continue
+        prec = leg.get("precursor")
+        cols = leg.get("collections")
+        if not prec or not isinstance(cols, dict):
+            continue
+        paliers = []
+        for c in cols.values():
+            if not isinstance(c, dict):
+                continue
+            nom = ((c.get("name") or {}).get("en")) or ""
+            m = re.search(r"\b(IV|III|II|I)\b", nom)
+            if m:
+                paliers.append((ROM[m.group(1)], c))
+        if len(paliers) < 2:
+            continue
+        paliers.sort(key=lambda x: x[0])
+        dernier = paliers[-1][1]
+        ouvre = ((dernier.get("unlock") or {}).get("unlock_item") or {}).get("name")
+        if not ouvre:
+            continue  # encadre pas encore capture — rien a confronter
+        if ouvre != prec:
+            errors.append(
+                f"legendaries/{lid} : precursor '{prec}' mais le dernier palier "
+                f"({(dernier.get('name') or {}).get('en')}) s'ouvre avec '{ouvre}' — "
+                "l'un des deux est faux, et la table « Precursor weapon » du wiki tranche"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1303,6 +1348,7 @@ def main() -> int:
 
     # 20. Composants de recette : tout maillon cite doit exister
     check_recipe_components(data, errors, warnings)
+    check_precursor_vs_last_tier(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

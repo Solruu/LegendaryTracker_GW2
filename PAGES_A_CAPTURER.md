@@ -1,15 +1,16 @@
 # Pages wiki restantes — collections d'armes
 
-État au 27/08/2026. Une case par page de collection à capturer.
+État au 01/09/2026. Une case par page de collection à capturer.
 Compteur : `étapes sans conseil / total`.
-**23 armes · 96 pages · 1607 étapes.**
+**22 armes · 92 pages · 1483 étapes.**
+
 
 
 Une étape compte comme couverte si elle porte un conseil, **ou** si elle renvoie
 à un composant (`component`) ou à une autre légendaire (`legendary`).
 Les renvois sont des références, jamais des copies.
 
-**Terminées : Eternity, Astralaria.**
+**Terminées : Eternity, Astralaria, HOPE.**
 
 ## Bolt — 68 étapes, 4 pages
 
@@ -43,13 +44,6 @@ Les renvois sont des références, jamais des copies.
 - [ ] `Frostfang II: The Perfected Axe` — 12/12
 - [ ] `Frostfang III: Tooth of Frostfang` — 34/34
 - [ ] `Legendary Weapon: Frostfang` — 4/16
-
-## HOPE — 124 étapes, 4 pages
-
-- [ ] `HOPE I: Research` — 20/20
-- [ ] `HOPE II: Development` — 14/14
-- [ ] `HOPE III: Prototype` — 31/31
-- [ ] `HOPE IV: The Catalyst` — 59/59
 
 ## Howler — 75 étapes, 4 pages
 

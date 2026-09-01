@@ -138,6 +138,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `astralaria_ii_the_apparatus.html` | Astralaria II: The Apparatus | collection, 14 objets | 2026-08-27 |
 | `astralaria_iii_the_mechanism.html` | Astralaria III: The Mechanism | collection, 33 objets | 2026-08-27 |
 | `astralaria_iv_the_cosmos.html` | Astralaria IV: The Cosmos | collection, 54 objets | 2026-08-27 |
+| `hope.html` | HOPE | article complet — table de recette en cascade | 2026-09-01 |
+| `hope_i_research.html` | HOPE I: Research | collection, 20 objets | 2026-09-01 |
+| `hope_ii_development.html` | HOPE II: Development | collection, 14 objets | 2026-09-01 |
+| `hope_iii_prototype.html` | HOPE III: Prototype | collection, 31 objets | 2026-09-01 |
+| `hope_iv_the_catalyst.html` | HOPE IV: The Catalyst | collection, 59 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -192,7 +197,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **108 captures, 108 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **113 captures, 113 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

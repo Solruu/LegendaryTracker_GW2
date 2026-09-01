@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v111",
+  "version": "v189",
   "last_updated": "2026-08-13",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -945,7 +945,8 @@
   "changelog_v185": "Capture d'essai du palier II sur The Moot II. Resultat : le wiki apporte les NOMS d'objets, que l'API ne donne pas — elle rend la phrase d'action a leur place. Les notes, elles, repetent le plus souvent cette meme phrase. Le gain est donc la lisibilite des libelles, pas un conseil nouveau : 14 noms et 14 how poses sur cette collection. Consequence pour la suite : la mutualisation mesuree (79 libelles pour 317 etapes) portait sur les DESCRIPTIONS, qui sont deja dans le tracker. Les noms, eux, sont propres a chaque arme — « Desert Magics: Mace Edition » contre « Hammer Edition ». Le palier II n'est donc PAS un lot bon marche : il faut ses 24 pages.",
   "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite.",
   "changelog_v187": "Astralaria documentee : ses quatre collections, 120 etapes. Les noms passent au libelle du wiki, les notes deviennent des how. Le balayage des renvois est etendu : une etape dont le nom correspond a un composant ou a une autre legendaire pointe vers elle au lieu de recevoir une copie. L'ordre entre paliers est strict et documente : chaque collection s'ouvre en consommant le precurseur de la precedente — Astralaria IV commence par The Mechanism, aboutissement du III.",
-  "changelog_v188": "L'encadre des succes du wiki entre dans les sources : prerequisite, unlock_item et reward, trois champs que l'API n'expose pas — elle rend locked_text en prose, sans structure. C'est la reponse a « comment j'ouvre cette collection », en attente au backlog depuis le debut. Astralaria III le montre bien : prerequis Historian of the Armaments, objet declencheur The Apparatus — le precurseur du palier II — et recompense le Chest of Time and Space, qui contient la recette du Mechanism. L'ordre entre paliers devient une donnee au lieu d'une note en prose. Pose sur 23 collections, celles dont la capture porte l'encadre."
+  "changelog_v188": "L'encadre des succes du wiki entre dans les sources : prerequisite, unlock_item et reward, trois champs que l'API n'expose pas — elle rend locked_text en prose, sans structure. C'est la reponse a « comment j'ouvre cette collection », en attente au backlog depuis le debut. Astralaria III le montre bien : prerequis Historian of the Armaments, objet declencheur The Apparatus — le precurseur du palier II — et recompense le Chest of Time and Space, qui contient la recette du Mechanism. L'ordre entre paliers devient une donnee au lieu d'une note en prose. Pose sur 23 collections, celles dont la capture porte l'encadre.",
+  "changelog_v189": "HOPE documentee : ses quatre collections, 124 etapes, 121 noms repris du wiki et 124 conseils. Aucun renvoi component ni legendary : les 124 objets sont des trophees propres a l'arme, sans recouvrement avec craft_components — verifie, pas suppose. Les blocs unlock des quatre paliers portent la chaine complete : Research ouvre le II, Development le III, Prototype le IV. Pas de note collections_order : la donnee la dit deja. Correction collaterale : les precurseurs des QUATRE gen2 de HoT etaient faux. La table du wiki distingue trois paliers — Experimental, Perfected, Final — et le precurseur est le TROISIEME, pas le premier. Astralaria prenait The Device (palier I) au lieu de The Mechanism ; HOPE prenait The Mechanism, qui est celui d'Astralaria ; Nevermore Unfinished Raven Staff au lieu de The Raven Staff ; Chuka and Champawat Tiger's Empowerment au lieu de Tigris. L'ancienne valeur est conservee dans precursor_erreur."
  },
  "meta_events": {
   "vb": {
@@ -28716,7 +28717,7 @@
     "mystic_runestone",
     "legendary_shard_gen2"
    ],
-   "precursor": "The Device",
+   "precursor": "The Mechanism",
    "gift_unique": "Gift of Astralaria",
    "collection": true,
    "mastery_gift": "gift_of_maguuma_mastery",
@@ -30289,7 +30290,9 @@
     "fr": "⚠ Ordre strict entre paliers : chaque collection s'ouvre en consommant le précurseur produite par la précédente. Astralaria IV commence par « The Mechanism », qui est l'aboutissement du III. À l'intérieur d'une collection, en revanche, la numérotation du wiki est un ordre de lecture, pas une contrainte.",
     "en": "⚠ Strict order between tiers: each collection opens by consuming the precursor produced by the previous one. Astralaria IV starts with 'The Mechanism', the outcome of III. Inside a collection, however, the wiki's numbering is a reading order, not a constraint."
    },
-   "collections_order_ref": "tableaux « Collection items » des quatre paliers"
+   "collections_order_ref": "tableaux « Collection items » des quatre paliers",
+   "precursor_erreur": "The Device",
+   "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
   },
   "gen2_hope": {
    "name": "HOPE",
@@ -30319,7 +30322,7 @@
     "mystic_runestone",
     "legendary_shard_gen2"
    ],
-   "precursor": "The Mechanism",
+   "precursor": "Prototype",
    "gift_unique": "Gift of HOPE",
    "collection": true,
    "mastery_gift": "gift_of_maguuma_mastery",
@@ -30339,244 +30342,732 @@
      "items": [
       {
        "bit": 0,
-       "name": "Take the Charged Dwarven Spell Trap, Energized Soul Battery Fragment, Case of Corrupted Phials, and Chaotic Magic to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy."
+       "name": "Dwarven Spell Trap",
+       "name_api": "Take the Charged Dwarven Spell Trap, Energized Soul Battery Fragment, Case of Corrupted Phials, and Chaotic Magic to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Ogden , in the Durmand Priory within Lornar's Pass , to obtain this"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak with Ogden, in the Durmand Priory within Lornar's Pass, to obtain this."
+       "name": "Fleshreaver's Magic",
+       "name_api": "Speak with Ogden, in the Durmand Priory within Lornar's Pass, to obtain this.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic."
+       "name": "Karka Queen's Magic",
+       "name_api": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic."
+       "name": "Fleshgrazer's Magic",
+       "name_api": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic."
+       "name": "Charged Dwarven Spell Trap",
+       "name_api": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic.",
+       "how": {
+        "fr": null,
+        "en": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak with Countess Anise in the Throne Room of Divinity's Reach to obtain the Soul Battery Fragment."
+       "name": "Soul Battery Fragment",
+       "name_api": "Speak with Countess Anise in the Throne Room of Divinity's Reach to obtain the Soul Battery Fragment.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Countess Anise in the Throne Room of Divinity's Reach to obtain the Soul Battery Fragment"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Activate the Soul Battery Fragment before defeating the Legendary Risen High Wizard at the Narthex in Cursed Shore to capture its soul energy."
+       "name": "Risen High Wizard Soul Energy",
+       "name_api": "Activate the Soul Battery Fragment before defeating the Legendary Risen High Wizard at the Narthex in Cursed Shore to capture its soul energy.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Soul Battery Fragment before defeating the Legendary Risen High Wizard at the Narthex in Cursed Shore to capture its soul energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Activate the Soul Battery Fragment before defeating the Risen King, located inside the Reliquary Vault of Cursed Shore, to capture its soul energy."
+       "name": "Risen King Soul Energy",
+       "name_api": "Activate the Soul Battery Fragment before defeating the Risen King, located inside the Reliquary Vault of Cursed Shore, to capture its soul energy.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Soul Battery Fragment before defeating the Risen King , located inside the Reliquary Vault of Cursed Shore , to capture its soul energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Activate the Soul Battery Fragment before defeating the Champion Risen Knight, located near the Dwayna Statue in Malchor's Leap, to capture its soul energy."
+       "name": "Risen Knight Soul Energy",
+       "name_api": "Activate the Soul Battery Fragment before defeating the Champion Risen Knight, located near the Dwayna Statue in Malchor's Leap, to capture its soul energy.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Soul Battery Fragment before defeating the Champion Risen Knight , located near the Dwayna Statue in Malchor's Leap , to capture its soul energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Activate the Soul Battery Fragment before defeating Karas the Undying, west of Rayhan Bayt in Malchor's Leap, to capture its soul energy."
+       "name": "Karas the Undying's Soul Energy",
+       "name_api": "Activate the Soul Battery Fragment before defeating Karas the Undying, west of Rayhan Bayt in Malchor's Leap, to capture its soul energy.",
+       "how": {
+        "fr": null,
+        "en": "Activate the Soul Battery Fragment before defeating Karas the Undying , west of Rayhan Bayt in Malchor's Leap , to capture its soul energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Speak with the Priestess of Dwayna, at the Plaza of Dwayna in Divinity's Reach, to purchase Pure Crystalline Phials."
+       "name": "Energized Soul Battery Fragment",
+       "name_api": "Speak with the Priestess of Dwayna, at the Plaza of Dwayna in Divinity's Reach, to purchase Pure Crystalline Phials.",
+       "how": {
+        "fr": null,
+        "en": "Gather four soul energies to power the Soul Battery Fragment"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes."
+       "name": "Pure Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes.",
+       "how": {
+        "fr": null,
+        "en": "Speak with the Priestess of Dwayna , at the Plaza of Dwayna in Divinity's Reach , to purchase a Pure Crystalline Phial"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Champion Icebrood Quaggan, one of which is located inside the cave in the south of Leopard's Tail Valley of Frostgorge Sound."
+       "name": "Branded Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Champion Icebrood Quaggan, one of which is located inside the cave in the south of Leopard's Tail Valley of Frostgorge Sound.",
+       "how": {
+        "fr": null,
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap."
+       "name": "Icebrood Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap.",
+       "how": {
+        "fr": null,
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Icebrood Quaggan located inside the cave in the south of Leopard's Tail Valley in Frostgorge Sound"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin."
+       "name": "Risen Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin.",
+       "how": {
+        "fr": null,
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp of Queensdale."
+       "name": "Mordrem-Influenced Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp of Queensdale.",
+       "how": {
+        "fr": null,
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials."
+       "name": "Dhuum-Touched Crystalline Phial",
+       "name_api": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials.",
+       "how": {
+        "fr": null,
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp in Queensdale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic."
+       "name": "Case of Corrupted Crystalline Phials",
+       "name_api": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic.",
+       "how": {
+        "fr": null,
+        "en": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Found by looting the chest in Spekk's Laboratory in Caledon Forest."
+       "name": "Crystallized Magic",
+       "name_api": "Found by looting the chest in Spekk's Laboratory in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Found by looting the chest in Spekk's Laboratory in Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "With the Crystallized Magic in your inventory, gather the searing's chaotic energy by looting the chest at the end of the Urban Battlegrounds Fractal."
+       "name": "Force of the Searing",
+       "name_api": "With the Crystallized Magic in your inventory, gather the searing's chaotic energy by looting the chest at the end of the Urban Battlegrounds Fractal.",
+       "how": {
+        "fr": null,
+        "en": "With the Crystallized Magic in your inventory, gather the searing's chaotic energy by looting the chest at the end of the Urban Battlegrounds Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 20,
-       "name": "With the Crystallized Magic in your inventory, gather chaotic ectoplasmic energy by looting the Ascalonian ghosts found at the Old Piken Ruins in Iron Marches."
+       "name": "Ectoplasmic Vapor",
+       "name_api": "With the Crystallized Magic in your inventory, gather chaotic ectoplasmic energy by looting the Ascalonian ghosts found at the Old Piken Ruins in Iron Marches.",
+       "how": {
+        "fr": null,
+        "en": "With the Crystallized Magic in your inventory, gather chaotic ectoplasmic energy by looting the Ascalonian ghosts found at the Old Piken Ruins in Iron Marches"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 21,
-       "name": "With the Crystallized Magic in your inventory, gather chaotic ley-line energy by defeating earth elementals near Omadd's Machine within the Cavern of the Shining Lights in Dry Top."
+       "name": "Ley-Line Hub Radiation",
+       "name_api": "With the Crystallized Magic in your inventory, gather chaotic ley-line energy by defeating earth elementals near Omadd's Machine within the Cavern of the Shining Lights in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "With the Crystallized Magic in your inventory, gather chaotic ley-line energy by defeating earth elementals near Omadd's Machine within the Cavern of the Shining Lights in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 22,
-       "name": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls, to create the Alchemical Catalyst."
+       "name": "Chaotic Magics",
+       "name_api": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls, to create the Alchemical Catalyst.",
+       "how": {
+        "fr": null,
+        "en": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 23,
-       "name": "With an Empty Hylek Flask in your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance."
+       "name": "Transcendent Energy",
+       "name_api": "With an Empty Hylek Flask in your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance.",
+       "how": {
+        "fr": null,
+        "en": "Take the Charged Dwarven Spell Trap , Energized Soul Battery Fragment , Case of Corrupted Crystalline Phials , and Chaotic Magics to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 24,
-       "name": "Recipe purchased from Atlalli, Mastery Alchemist at the Hunting Banks of Timberline Falls."
+       "name": "Empty Hylek Flask",
+       "name_api": "Recipe purchased from Atlalli, Mastery Alchemist at the Hunting Banks of Timberline Falls.",
+       "how": {
+        "fr": null,
+        "en": "Recipe purchased from Atlalli , Mastery [ sic ] Alchemist at the Hunting Banks of Timberline Falls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 25,
-       "name": "A volatile ingredient looted from the Veteran Matriarch after rescuing Wark from the infatuated harpy inside the western ruins of the Shattered Palisades in Blazeridge Steppes."
+       "name": "Sulfuric Egg",
+       "name_api": "A volatile ingredient looted from the Veteran Matriarch after rescuing Wark from the infatuated harpy inside the western ruins of the Shattered Palisades in Blazeridge Steppes.",
+       "how": {
+        "fr": null,
+        "en": "A volatile ingredient looted from the Veteran Harpy Matriarch after rescuing Wark from the infatuated harpy inside the western ruins of the Shattered Palisades in Blazeridge Steppes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 26,
-       "name": "A volatile ingredient occasionally looted from toxic oozes."
+       "name": "Slimemold",
+       "name_api": "A volatile ingredient occasionally looted from toxic oozes.",
+       "how": {
+        "fr": null,
+        "en": "A volatile ingredient occasionally looted from toxic oozes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 27,
-       "name": "A volatile ingredient looted from Vilnia Shadowsong near the Raven Shaman's Power Source hidden within Darkhoof Heights in Snowden Drifts."
+       "name": "Crystallized Chaos",
+       "name_api": "A volatile ingredient looted from Vilnia Shadowsong near the Raven Shaman's Power Source hidden within Darkhoof Heights in Snowden Drifts.",
+       "how": {
+        "fr": null,
+        "en": "A volatile ingredient looted from Vilnia Shadowsong near the Raven Shaman's Power Source hidden within Darkhoof Heights in Snowden Drifts"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 28,
-       "name": "A volatile ingredient looted from the Mordrem Wyvern at Matriarch's Perch in Verdant Brink."
+       "name": "Naphthenic Acid",
+       "name_api": "A volatile ingredient looted from the Mordrem Wyvern at Matriarch's Perch in Verdant Brink.",
+       "how": {
+        "fr": null,
+        "en": "A volatile ingredient looted from the Mordrem Wyvern at Matriarch's Perch in Verdant Brink"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 29,
-       "name": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest."
+       "name": "Concentrated Volatile Substance",
+       "name_api": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest.",
+       "how": {
+        "fr": null,
+        "en": "With an Empty Hylek Flask your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 30,
-       "name": "Speak with Atlalli, the Mastery Alchemist at the Hunting Grounds in Timberline Falls, to learn his secret ichor extraction technique."
+       "name": "Ichor Extraction Technique",
+       "name_api": "Speak with Atlalli, the Mastery Alchemist at the Hunting Grounds in Timberline Falls, to learn his secret ichor extraction technique.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Atlalli, the Mastery Alchemist , at the Hunting Grounds in Timberline Falls , to learn his secret ichor extraction technique"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 31,
-       "name": "After learning the special technique, achieve a rank of silver or better in the Haywire Punch-o-Matic Battle adventure within the Rata Novus Lane of Tangled Depths to gather the chak's ichor."
+       "name": "Common Chak Ichor",
+       "name_api": "After learning the special technique, achieve a rank of silver or better in the Haywire Punch-o-Matic Battle adventure within the Rata Novus Lane of Tangled Depths to gather the chak's ichor.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, achieve a rank silver or better in the Haywire Punch-o-Matic Battle adventure within the Rata Novus Lane of Tangled Depths to gather the chak's ichor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 32,
-       "name": "After learning the special technique, defeat the Champion Wasp Queen near the Ebonhawke Delegation in Fields of Ruin to gather her ichor."
+       "name": "Royal Wasp Ichor",
+       "name_api": "After learning the special technique, defeat the Champion Wasp Queen near the Ebonhawke Delegation in Fields of Ruin to gather her ichor.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Champion Wasp Queen near the Ebonhawke Delegation in Fields of Ruin to gather her ichor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 33,
-       "name": "After learning the special technique, defeat the Champion Branded Devourer Queen inside the Infestation in Iron Marches or the Champion Giant Branded Devourer in Sniper's Woods in Fields of Ruin to gather the ichor."
+       "name": "Branded Devourer Ichor",
+       "name_api": "After learning the special technique, defeat the Champion Branded Devourer Queen inside the Infestation in Iron Marches or the Champion Giant Branded Devourer in Sniper's Woods in Fields of Ruin to gather the ichor.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Champion Branded Devourer Queen inside The Infestation in Iron Marches or the Champion Giant Branded Devourer in Sniper's Woods in Fields of Ruin to gather the ichor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 34,
-       "name": "After learning the special technique, defeat the Legendary Chak Gerent in Tangled Depths to gather its ichor."
+       "name": "Royal Chak Ichor",
+       "name_api": "After learning the special technique, defeat the Legendary Chak Gerent in Tangled Depths to gather its ichor.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Legendary Chak Gerent in Tangled Depths to gather its ichor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 35,
-       "name": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter."
+       "name": "Ichor Alkahest",
+       "name_api": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter.",
+       "how": {
+        "fr": null,
+        "en": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 36,
-       "name": "Speak with Eda in Queensdale to learn her spider venom extraction technique."
+       "name": "Spider Venom Extraction Technique",
+       "name_api": "Speak with Eda in Queensdale to learn her spider venom extraction technique.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Eda in Queensdale to learn her spider venom extraction technique"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 37,
-       "name": "After learning the special technique, defeat Gargantula inside the cave at Wynchona Woods in Harathi Hinterlands and loot her venom."
+       "name": "Gargantula's Venom",
+       "name_api": "After learning the special technique, defeat Gargantula inside the cave at Wynchona Woods in Harathi Hinterlands and loot her venom.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat Gargantula inside the cave at Wynchona Woods in Harathi Hinterlands and loot her venom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 38,
-       "name": "After learning the special technique, defeat the Toxic Spider Queen just north of the Togatl Grounds in Kessex Hills and loot her venom."
+       "name": "Toxic Spider Queen's Venom",
+       "name_api": "After learning the special technique, defeat the Toxic Spider Queen just north of the Togatl Grounds in Kessex Hills and loot her venom.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Toxic Spider Queen just north of the Togatl Grounds in Kessex Hills and loot her venom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 39,
-       "name": "After learning the special technique, defeat the Canyon Spider Queen located inside the Sweltering Canyons of Fireheart Rise and loot her venom."
+       "name": "Canyon Spider Queen's Venom",
+       "name_api": "After learning the special technique, defeat the Canyon Spider Queen located inside the Sweltering Canyons of Fireheart Rise and loot her venom.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Champion Canyon Spider Queen located inside the Sweltering Canyons of Fireheart Rise and loot her venom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 40,
-       "name": "After learning the special technique, defeat the Enraged Spider Queen outside the mansion of Almuten Estates in Gendarran Fields and loot her venom."
+       "name": "Enraged Spider Queen's Venom",
+       "name_api": "After learning the special technique, defeat the Enraged Spider Queen outside the mansion of Almuten Estates in Gendarran Fields and loot her venom.",
+       "how": {
+        "fr": null,
+        "en": "After learning the special technique, defeat the Enraged Spider Queen outside the mansion of Almuten Estates in Gendarran Fields and loot her venom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 41,
-       "name": "Speak with Jett, along the southern road exiting Griffonfall in Auric Basin, to obtain the M-PEC."
+       "name": "Arachnid Venom Decanter",
+       "name_api": "Speak with Jett, along the southern road exiting Griffonfall in Auric Basin, to obtain the M-PEC.",
+       "how": {
+        "fr": null,
+        "en": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 42,
-       "name": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria."
+       "name": "M-PEC",
+       "name_api": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Jett , along the southern road exiting Griffonfall in Auric Basin , to obtain the M-PEC"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 43,
-       "name": "Activate the M-PEC before defeating a Champion Mushroom Emperor in Tangled Depths, Auric Basin, or Dragon's Stand to gather its spores."
+       "name": "Mushroom Emperor's Volatile Spores",
+       "name_api": "Activate the M-PEC before defeating a Champion Mushroom Emperor in Tangled Depths, Auric Basin, or Dragon's Stand to gather its spores.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating a Champion Mushroom Emperor in Tangled Depths or Dragon's Stand to gather its spores"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 44,
-       "name": "Activate the M-PEC before defeating a Veteran Bloodsucker inside the caves of Auric Basin to gather its enzymes."
+       "name": "Bloodsucker Enzymes",
+       "name_api": "Activate the M-PEC before defeating a Veteran Bloodsucker inside the caves of Auric Basin to gather its enzymes.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating a Veteran Bloodsucker inside the caves of Auric Basin to gather its enzymes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 45,
-       "name": "Activate the M-PEC before defeating the Veteran Follower of Zintl outside the Capitzel Grounds in Auric Basin to gather their beetle's juice."
+       "name": "Beetle Juice",
+       "name_api": "Activate the M-PEC before defeating the Veteran Follower of Zintl outside the Capitzel Grounds in Auric Basin to gather their beetle's juice.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating the Veteran Follower of Zintl outside the Capitzel Grounds in Auric Basin to gather their beetle's juice"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 46,
-       "name": "Activate the M-PEC before defeating a Veteran Deep Cave Troll found inside the damp caverns in either Auric Basin or Tangled Depths to gather its saliva."
+       "name": "Frothy Troll Saliva",
+       "name_api": "Activate the M-PEC before defeating a Veteran Deep Cave Troll found inside the damp caverns in either Auric Basin or Tangled Depths to gather its saliva.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating a Veteran Deep Cave Troll found inside the damp caverns in either Auric Basin or Tangled Depths to gather its saliva"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 47,
-       "name": "Activate the M-PEC before defeating a Champion Arrowhead at Arrowhead Vale in Auric Basin to gather its mucus."
+       "name": "Malodorous Mucus",
+       "name_api": "Activate the M-PEC before defeating a Champion Arrowhead at Arrowhead Vale in Auric Basin to gather its mucus.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating a Champion Arrowhead at Arrowhead Vale in Auric Basin to gather its mucus"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 48,
-       "name": "Activate the M-PEC before defeating a Champion Stonehead near the Griffonfall Pylon in Auric Basin to gather its salivary stone."
+       "name": "Salivary Stone",
+       "name_api": "Activate the M-PEC before defeating a Champion Stonehead near the Griffonfall Pylon in Auric Basin to gather its salivary stone.",
+       "how": {
+        "fr": null,
+        "en": "Activate the M-PEC before defeating a Champion Stonehead near the Griffonfall Pylon in Auric Basin to gather its salivary stone"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 49,
-       "name": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths."
+       "name": "Concentrated Maguuma Bacteria",
+       "name_api": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths.",
+       "how": {
+        "fr": null,
+        "en": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 50,
-       "name": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangeled Depths, to gain the Incomplete Catalytic Converter."
+       "name": "Alchemical Catalyst",
+       "name_api": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangeled Depths, to gain the Incomplete Catalytic Converter.",
+       "how": {
+        "fr": null,
+        "en": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist , in the Hunting Banks of Timberline Falls , to create the Alchemical Catalyst"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 51,
-       "name": "After obtaining the incomplete catalytic converter, gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand."
+       "name": "Incomplete Catalytic Converter",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand.",
+       "how": {
+        "fr": null,
+        "en": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangled Depths , to gain the Incomplete Catalytic Converter"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 52,
-       "name": "After obtaining the incomplete catalytic converter, gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand."
+       "name": "Blademaster's Core",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand.",
+       "how": {
+        "fr": null,
+        "en": "After obtaining the Incomplete Catalytic Converter , gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 53,
-       "name": "After obtaining the incomplete catalytic converter, gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand."
+       "name": "Axemaster's Core",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand.",
+       "how": {
+        "fr": null,
+        "en": "After obtaining the Incomplete Catalytic Converter , gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 54,
-       "name": "After obtaining the incomplete catalytic converter, gather Mordremoth's core by slaying the Elder Dragon in Dragon's Stand."
+       "name": "Stavemaster's Core",
+       "name_api": "After obtaining the incomplete catalytic converter, gather Mordremoth's core by slaying the Elder Dragon in Dragon's Stand.",
+       "how": {
+        "fr": null,
+        "en": "After obtaining the Incomplete Catalytic Converter , gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 55,
-       "name": "Gather four soul energies to power the Soul Battery Fragment."
+       "name": "Mordremoth's Core",
+       "name_api": "Gather four soul energies to power the Soul Battery Fragment.",
+       "how": {
+        "fr": null,
+        "en": "After obtaining the Incomplete Catalytic Converter , gather Mordremoth 's core by slaying the Elder Dragon in Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 56,
-       "name": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it."
+       "name": "Catalytic Converter",
+       "name_api": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it.",
+       "how": {
+        "fr": null,
+        "en": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 57,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track."
+       "name": "HOPE Vol. 4",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 58,
-       "name": "Prototype"
+       "name": "Prototype",
+       "how": {
+        "fr": null,
+        "en": "This weapon is used to craft the legendary pistol HOPE"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "HOPE IV: The Catalyst",
+      "prerequisite": {
+       "name": "Scholar of Secrets",
+       "wiki": "Scholar of Secrets"
+      },
+      "unlock_item": {
+       "name": "Prototype",
+       "wiki": "Prototype"
+      },
+      "reward": {
+       "name": "Gift of the Catalyst",
+       "wiki": "Gift of the Catalyst"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "hope_ii_development": {
      "id": 2354,
@@ -30589,64 +31080,191 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to a Master Huntsman to discover the art of woodworking."
+       "name": "The Art of Woodworking: Pistol Frame Edition Vol. 2",
+       "name_api": "Speak to a Master Huntsman to discover the art of woodworking.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to discover the art of woodworking"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak to a Master Huntsman to discover the secret to mechanical pistol frames."
+       "name": "Mechanical Pistol Frame",
+       "name_api": "Speak to a Master Huntsman to discover the secret to mechanical pistol frames.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to discover the secret to mechanical pistol frames"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Speak to a Master Huntsman to discover the art of forging."
+       "name": "The Art of Forging: Pistol Barrel Edition Vol. 2",
+       "name_api": "Speak to a Master Huntsman to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Speak to a Master Huntsman to learn the secret to precision barrels."
+       "name": "Precise Pistol Barrel",
+       "name_api": "Speak to a Master Huntsman to learn the secret to precision barrels.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to discover the secret to precise pistol barrels"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Speak to a Master Huntsman to learn the secrets of precision forging tools."
+       "name": "Precise Pistol Forging Tools",
+       "name_api": "Speak to a Master Huntsman to learn the secrets of precision forging tools.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to learn the secrets of precision forging tools"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak to a Master Huntsman to learn his needs for the war effort."
+       "name": "Basic Pistol Requisition",
+       "name_api": "Speak to a Master Huntsman to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Huntsman to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics."
+       "name": "Desert Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics. (Requires 1000 Bandit Crests )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics."
+       "name": "Jungle Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics. (Requires 400 Geodes )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics."
+       "name": "Old World Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics. (Requires 100 Obsidian Shards )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics."
+       "name": "Ancient Water Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics. (Requires 100 Karka Shells )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics."
+       "name": "Herbal Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics. (Requires 25 Passion Flowers )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics."
+       "name": "Stabilizing Magics: Pistol Edition Vol. 2",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics. (Requires 25 Stabilizing Matrices )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track."
+       "name": "HOPE Vol. 2",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Research"
+       "name": "Research",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "HOPE II: Development",
+      "prerequisite": {
+       "name": "Magister of Legends",
+       "wiki": "Magister of Legends"
+      },
+      "unlock_item": {
+       "name": "Research",
+       "wiki": "Research"
+      },
+      "reward": {
+       "name": "Tricks and Tips for Mec"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "hope_i_research": {
      "id": 2450,
@@ -30659,88 +31277,265 @@
      "items": [
       {
        "bit": 0,
-       "name": "Purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls."
+       "name": "Hylek Alchemy Apprentice Tome",
+       "name_api": "Purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Poison's Test once you have crafted the Vial of Potent Hylek Poison."
+       "name": "Hylek Alchemy Chapter 1: Poisons",
+       "name_api": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Poison's Test once you have crafted the Vial of Potent Hylek Poison.",
+       "how": {
+        "fr": null,
+        "en": "Use a character with the Huntsman crafting profession to craft Vial of Potent Hylek Poison . Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Poison's Test"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "The secrets to crafting a quality hylek poison can be found among the alchemy supplies hidden in the treasure room of the Tears of Itlaocol in Caledon Forest."
+       "name": "Vial of Potent Hylek Poison",
+       "name_api": "The secrets to crafting a quality hylek poison can be found among the alchemy supplies hidden in the treasure room of the Tears of Itlaocol in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "The secrets to crafting a quality hylek poison can be found among the alchemy supplies hidden in the treasure room of the Tears of Itlaocol in Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Harvested from Veteran Mosquitos in Caledon Forest."
+       "name": "Mosquito Blood",
+       "name_api": "Harvested from Veteran Mosquitos in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "EVENT: Harvested from Veteran Mosquitos in Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Found growing alone near the vista of Lightfoot Passage in Straits of Devastation."
+       "name": "Deadly Nightshade",
+       "name_api": "Found growing alone near the vista of Lightfoot Passage in Straits of Devastation.",
+       "how": {
+        "fr": null,
+        "en": "Found growing alone near the vista of Lightfoot Passage in Straits of Devastation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Found on the Hylek of Morgatl Grounds in Caledon Forest."
+       "name": "Hylek Dart Poison Gland",
+       "name_api": "Found on the Hylek of Morgatl Grounds in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Found on the Hylek of Morgatl Grounds in Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Medicine's Test once you have crafted the Vial of Healing Breath."
+       "name": "Hylek Alchemy Chapter 2: Healing Breath",
+       "name_api": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Medicine's Test once you have crafted the Vial of Healing Breath.",
+       "how": {
+        "fr": null,
+        "en": "Use a character with the Huntsman crafting profession to craft Vial of Healing Breath . Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Hylek Medicine's Test"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Recipe purchased from Matlal after successfully helping her collect truffles for her starving tribe in the Eukaryan Caves of Kessex Hills."
+       "name": "Vial of Healing Breath",
+       "name_api": "Recipe purchased from Matlal after successfully helping her collect truffles for her starving tribe in the Eukaryan Caves of Kessex Hills.",
+       "how": {
+        "fr": null,
+        "en": "Recipe purchased from Matlal after successfully helping her collect truffles for her starving tribe in the Eukaryan Caves of Kessex Hills"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Offered for purchase by Cook Huelic after helping the Michotl tribe within the Michoan Marsh of Metrica Province."
+       "name": "Michotl Tribe's Herbs",
+       "name_api": "Offered for purchase by Cook Huelic after helping the Michotl tribe within the Michoan Marsh of Metrica Province.",
+       "how": {
+        "fr": null,
+        "en": "Offered for purchase by Cook Huelic after helping the Michotl Tribe within the Michoan Marsh of Metrica Province"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Found in the Great Jungle Wurm's chest in the Wychmire Swamp of Caledon Forest."
+       "name": "Jar of Wurmswort",
+       "name_api": "Found in the Great Jungle Wurm's chest in the Wychmire Swamp of Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Found in the Great Jungle Wurm 's chest in the Wychmire Swamp of Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Purchase from Fiona Hastings in the apiary near Claypool in Queensdale after successfully defending her beehives from hungry bears."
+       "name": "Raw Honey",
+       "name_api": "Purchase from Fiona Hastings in the apiary near Claypool in Queensdale after successfully defending her beehives from hungry bears.",
+       "how": {
+        "fr": null,
+        "en": "South from waypoint across the water from Duran Brothers' Docks . Purchase from Fiona Hastings in the apiary near Claypool in Queensdale after successfully completing defending her beehives from hungry bears"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls."
+       "name": "Filtered Honey",
+       "name_api": "Purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls.",
+       "how": {
+        "fr": null,
+        "en": "Use a character with the Huntsman crafting profession to craft Filtered Honey . Recipe purchased from Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls after getting Raw Honey"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Speak with Nochtli in the Prospect Valley of Dry Top about how to find this rare aloe."
+       "name": "Mamnoon Aloe",
+       "name_api": "Speak with Nochtli in the Prospect Valley of Dry Top about how to find this rare aloe.",
+       "how": {
+        "fr": null,
+        "en": "Speak with Nochtli in the Prospect Valley of Dry Top about how to find this rare aloe"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Sun God's Breath test once you have crafted the Sun God's Breath Flask."
+       "name": "Hylek Alchemy Chapter 3: Sun God's Breath",
+       "name_api": "Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Sun God's Breath test once you have crafted the Sun God's Breath Flask.",
+       "how": {
+        "fr": null,
+        "en": "Use a character with the Huntsman crafting profession to craft Sun God's Breath Flask . Speak to Atlalli, the Master Alchemist in the Hunting Banks of Timberline Falls to start the Sun God's Breath Test"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Offered for purchase by Cuadinti after helping him prepare Southwatch Post near the Astrozintli Forelands in Sparkfly Fen."
+       "name": "Sun God's Breath Flask",
+       "name_api": "Offered for purchase by Cuadinti after helping him prepare Southwatch Post near the Astrozintli Forelands in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "Offered for purchase by Cuadinti after helping him prepare Southwatch Post near the Astrozintli Forelands in Sparkfly Fen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Found in Champion Mayatl the Fierce's chest near the Temple of Ameyalli in Verdant Brink."
+       "name": "Frog's Breath",
+       "name_api": "Found in Champion Mayatl the Fierce's chest near the Temple of Ameyalli in Verdant Brink.",
+       "how": {
+        "fr": null,
+        "en": "Found in Champion Mayatl the Fierce 's chest near the Temple of Ameyalli in Verdant Brink"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Offered for purchase by Atzintli after helping the Atzintli and Zopatl tribes battle the krait in the Ventry Bay of Caledon Forest."
+       "name": "Sun God's Vial",
+       "name_api": "Offered for purchase by Atzintli after helping the Atzintli and Zopatl tribes battle the krait in the Ventry Bay of Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Offered for purchase by heart vendor Atzintli after helping the Atzintli and Topatl tribes battle the krait in the Ventry Bay of Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Attained from the Bugs in the Branches adventure of Jaka Itzel in Verdant Brink by reaching a rank of silver or better."
+       "name": "Fire Bug Larva",
+       "name_api": "Attained from the Bugs in the Branches adventure of Jaka Itzel in Verdant Brink by reaching a rank of silver or better.",
+       "how": {
+        "fr": null,
+        "en": "Attained from the Bugs in the Branches adventure of Jaka Itzel in Verdant Brink by reaching a rank of silver or better"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Harvested from the Bloomhunger in the Swamplands Fractal."
+       "name": "Bloomhunger Sap",
+       "name_api": "Harvested from the Bloomhunger in the Swamplands Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Harvested from the Bloomhunger in the Swamplands Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Complete this book by recording the three Hylek Alchemy Chapters in your Hylek Alchemy Apprentice Tome by passing each of Atlalli's tests with the tome in your inventory."
+       "name": "Complete Hylek Alchemy Tome",
+       "name_api": "Complete this book by recording the three Hylek Alchemy Chapters in your Hylek Alchemy Apprentice Tome by passing each of Atlalli's tests with the tome in your inventory.",
+       "how": {
+        "fr": null,
+        "en": "Complete this book by recording the three Hylek Alchemy Chapters in your Hylek Alchemy Apprentice Tome by passing each of Atlalli 's tests with the tome in your inventory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "HOPE I: Research",
+      "prerequisite": {
+       "name": "Revered Antiquarian",
+       "wiki": "Revered Antiquarian"
+      },
+      "unlock_item": {
+       "name": "HOPE Vol. 1",
+       "wiki": "HOPE Vol. 1"
+      },
+      "reward": {
+       "name": "Chest of Concoctions",
+       "wiki": "Chest of Concoctions"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "hope_iii_prototype": {
      "id": 2556,
@@ -30753,134 +31548,400 @@
      "items": [
       {
        "bit": 0,
-       "name": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor."
+       "name": "Empty Branded Crystal",
+       "name_api": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor.",
+       "how": {
+        "fr": null,
+        "en": "Found in the chest after defeating the Shatterer in Blazeridge Steppes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province."
+       "name": "Chak Crystal Charge",
+       "name_api": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province.",
+       "how": {
+        "fr": null,
+        "en": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley Line Node in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom."
+       "name": "Ley-Line Crystal Charge",
+       "name_api": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "A reactor component found in the chest at the end of the Uncategorized Fractal."
+       "name": "Chaos Crystal Charge",
+       "name_api": "A reactor component found in the chest at the end of the Uncategorized Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top."
+       "name": "Omadd's Crystal Charge",
+       "name_api": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal."
+       "name": "Hexfoundry Crystal Charge",
+       "name_api": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Found in the chest at the end of the Thaumanova Reactor Fractal."
+       "name": "Energized Branded Crystal",
+       "name_api": "Found in the chest at the end of the Thaumanova Reactor Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Collect the five crystal charges to energize the Empty Branded Crystal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen."
+       "name": "Aetherized Capacitor",
+       "name_api": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom."
+       "name": "Aspect Elemental Reactor",
+       "name_api": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom."
+       "name": "Damaged Reactor Housing",
+       "name_api": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Collect the five crystal charges to energize the Empty Branded Crystal."
+       "name": "Old Tom's New Reactor",
+       "name_api": "Collect the five crystal charges to energize the Empty Branded Crystal.",
+       "how": {
+        "fr": null,
+        "en": "A reactor component found in the chest at the end of the Uncategorized Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Found in the chest after defeating the Shatterer in Blazeridge Steppes."
+       "name": "Golem Capacitor",
+       "name_api": "Found in the chest after defeating the Shatterer in Blazeridge Steppes.",
+       "how": {
+        "fr": null,
+        "en": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top."
+       "name": "Experimental Reactor",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley-Line Node in Tangled Depths."
+       "name": "Infinitely Spiraled Device",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley-Line Node in Tangled Depths.",
+       "how": {
+        "fr": null,
+        "en": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches."
+       "name": "Sabotaged Weapon Parts",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches.",
+       "how": {
+        "fr": null,
+        "en": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen."
+       "name": "Perpetual Energy Coil",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen. Requires Energized Branded Crystal , Experimental Reactor , Infinitely Spiraled Device and Sabotaged Weapon Parts"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths."
+       "name": "Charged Auric Particles",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths.",
+       "how": {
+        "fr": null,
+        "en": "Gathered by earning a rank of silver or better in the On Wings of Gold adventure in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom."
+       "name": "Golden Oxide Compound",
+       "name_api": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Purchase the recipe for the Unstable Energy Concoction from Atlalli the Master Alchemist in the Hunting Banks of Timberline Falls."
+       "name": "Ley-Line Mercuric Compound",
+       "name_api": "Purchase the recipe for the Unstable Energy Concoction from Atlalli the Master Alchemist in the Hunting Banks of Timberline Falls.",
+       "how": {
+        "fr": null,
+        "en": "Occasionally looted from veteran chak lobbers in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Gathered by earning a rank of silver or better in the Wings of Gold adventure in Auric Basin."
+       "name": "Nuhoch Saliva",
+       "name_api": "Gathered by earning a rank of silver or better in the Wings of Gold adventure in Auric Basin.",
+       "how": {
+        "fr": null,
+        "en": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 20,
-       "name": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin."
+       "name": "Alkaline Solution",
+       "name_api": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin.",
+       "how": {
+        "fr": null,
+        "en": "Purchase the recipe for the Unstable Energy Concoction from Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls. Requires the 4 items above as ingredients"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 21,
-       "name": "Occasionally looted from veteran chak lobbers in Tangled Depths."
+       "name": "Perplexing Energized Cube",
+       "name_api": "Occasionally looted from veteran chak lobbers in Tangled Depths.",
+       "how": {
+        "fr": null,
+        "en": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 22,
-       "name": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink."
+       "name": "Thaumanova Anomaly Spark",
+       "name_api": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink.",
+       "how": {
+        "fr": null,
+        "en": "Found in the chest at the end of the Thaumanova Reactor Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 23,
-       "name": "Take the Perplexing Energized Cube, the Perpetual Energy Coil, Alkaline Solution, and the Thaumanova Anomaly Spark  to the Snaff Memorial Lab in Rata Sum and use the Synergetics Workstation to create the Synergetic Generator."
+       "name": "Synergetic Generator",
+       "name_api": "Take the Perplexing Energized Cube, the Perpetual Energy Coil, Alkaline Solution, and the Thaumanova Anomaly Spark  to the Snaff Memorial Lab in Rata Sum and use the Synergetics Workstation to create the Synergetic Generator.",
+       "how": {
+        "fr": null,
+        "en": "Take the Perplexing Energized Cube , the Perpetual Energy Coil , Alkaline Solution , and the Thaumanova Anomaly Spark to the Snaff Memorial Lab in Rata Sum and use the Synergetics Workstation to create a Synergetic Generator"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 24,
-       "name": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless."
+       "name": "Proximity Test: Fungus Among Us Adventure",
+       "name_api": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless.",
+       "how": {
+        "fr": null,
+        "en": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 25,
-       "name": "Take the Synergetic Generator to Goemm's Lab in Metrica Provice and test the energy reactions near the chest after defeating Goemm the Mad."
+       "name": "Proximity Test: Goemm's Lab",
+       "name_api": "Take the Synergetic Generator to Goemm's Lab in Metrica Provice and test the energy reactions near the chest after defeating Goemm the Mad.",
+       "how": {
+        "fr": null,
+        "en": "Take the Synergetic Generator to Goemm's Lab in Metrica Province and test the energy reactions near the chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 26,
-       "name": "Take the Synergetic Generator to the abandoned mine in Dry Top and attempt to sabotage the Inquest Synergetics Panel. After defeating the Inquest Synergetics Expert, use the device to test the energy reactions in the area."
+       "name": "Proximity Test: Inquest Specialist",
+       "name_api": "Take the Synergetic Generator to the abandoned mine in Dry Top and attempt to sabotage the Inquest Synergetics Panel. After defeating the Inquest Synergetics Expert, use the device to test the energy reactions in the area.",
+       "how": {
+        "fr": null,
+        "en": "Take the Synergetic Generator to the abandoned mine in Dry Top and attempt to sabotage the Inquest Synergetics Panel . After defeating the Inquest Synergetics Expert, use the device to test the energy reactions in the area"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 27,
-       "name": "Take the Synergetic Generator to Maelstrom's Core in Mount Maelstrom and test the energy reactions near the chest after defeating the Megadestroyer."
+       "name": "Proximity Test: Megadestroyer",
+       "name_api": "Take the Synergetic Generator to Maelstrom's Core in Mount Maelstrom and test the energy reactions near the chest after defeating the Megadestroyer.",
+       "how": {
+        "fr": null,
+        "en": "Take the Synergetic Generator to Mount Maelstrom and test the energy reactions near the chest after defeating the Megadestroyer"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 28,
-       "name": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us."
+       "name": "Proximity Test: Tequatl",
+       "name_api": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us.",
+       "how": {
+        "fr": null,
+        "en": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 29,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track."
+       "name": "HOPE Vol. 3",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 30,
-       "name": "Development"
+       "name": "Development",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "HOPE III: Prototype",
+      "prerequisite": {
+       "name": "Historian of the Armaments",
+       "wiki": "Historian of the Armaments"
+      },
+      "unlock_item": {
+       "name": "Development",
+       "wiki": "Development"
+      },
+      "reward": {
+       "name": "Chest of Anomaly",
+       "wiki": "Chest of Anomaly"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
-   }
+   },
+   "precursor_erreur": "The Mechanism",
+   "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
   },
   "gen2_nevermore": {
    "name": "Nevermore",
@@ -30910,7 +31971,7 @@
     "mystic_runestone",
     "legendary_shard_gen2"
    ],
-   "precursor": "Unfinished Raven Staff",
+   "precursor": "The Raven Staff",
    "gift_unique": "Gift of Nevermore",
    "collection": true,
    "mastery_gift": "gift_of_maguuma_mastery",
@@ -31475,7 +32536,9 @@
      "verified": true,
      "checked": "2026-08-27"
     }
-   }
+   },
+   "precursor_erreur": "Unfinished Raven Staff",
+   "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
   },
   "gen2_chuka_and_champawat": {
    "name": "Chuka and Champawat",
@@ -31505,7 +32568,7 @@
     "mystic_runestone",
     "legendary_shard_gen2"
    ],
-   "precursor": "Tiger's Empowerment",
+   "precursor": "Tigris",
    "gift_unique": "Gift of Chuka and Champawat",
    "collection": true,
    "mastery_gift": "gift_of_maguuma_mastery",
@@ -32148,7 +33211,9 @@
      "verified": true,
      "checked": "2026-08-27"
     }
-   }
+   },
+   "precursor_erreur": "Tiger's Empowerment",
+   "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
   },
   "gen2_eureka": {
    "name": "Eureka",
