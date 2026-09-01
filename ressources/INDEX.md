@@ -191,6 +191,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `kamohoalii_kotaki_i_the_experimental_spear.html` | Kamohoali'i Kotaki I: The Experimental Spear | collection, 6 objets | 2026-09-01 |
 | `kamohoalii_kotaki_ii_the_perfected_spear.html` | Kamohoali'i Kotaki II: The Perfected Spear | collection, 7 objets | 2026-09-01 |
 | `kamohoalii_kotaki_iii_carcharias.html` | Kamohoali'i Kotaki III: Carcharias | collection, 28 objets | 2026-09-01 |
+| `kraitkin.html` | Kraitkin | article complet — table de recette en cascade | 2026-09-01 |
+| `kraitkin_i_the_experimental_trident.html` | Kraitkin I: The Experimental Trident | collection, 7 objets | 2026-09-01 |
+| `kraitkin_ii_the_perfected_trident.html` | Kraitkin II: The Perfected Trident | collection, 9 objets | 2026-09-01 |
+| `kraitkin_iii_venom.html` | Kraitkin III: Venom | collection, 21 objets | 2026-09-01 |
+| `kudzu.html` | Kudzu | article complet — table de recette en cascade | 2026-09-01 |
+| `kudzu_i_the_experimental_longbow.html` | Kudzu I: The Experimental Longbow | collection, 13 objets | 2026-09-01 |
+| `kudzu_ii_the_perfected_longbow.html` | Kudzu II: The Perfected Longbow | collection, 16 objets | 2026-09-01 |
+| `kudzu_iii_leaf_of_kudzu.html` | Kudzu III: Leaf of Kudzu | collection, 29 objets | 2026-09-01 |
+| `meteorlogicus.html` | Meteorlogicus | article complet — table de recette en cascade | 2026-09-01 |
+| `meteorlogicus_i_the_experimental_scepter.html` | Meteorlogicus I: The Experimental Scepter | collection, 15 objets | 2026-09-01 |
+| `meteorlogicus_ii_the_perfected_scepter.html` | Meteorlogicus II: The Perfected Scepter | collection, 11 objets | 2026-09-01 |
+| `meteorlogicus_iii_storm.html` | Meteorlogicus III: Storm | collection, 29 objets | 2026-09-01 |
+| `quip.html` | Quip | article complet — table de recette en cascade | 2026-09-01 |
+| `quip_i_the_experimental_pistol.html` | Quip I: The Experimental Pistol | collection, 16 objets | 2026-09-01 |
+| `quip_ii_the_perfected_pistol.html` | Quip II: The Perfected Pistol | collection, 13 objets | 2026-09-01 |
+| `quip_iii_chaos_gun.html` | Quip III: Chaos Gun | collection, 35 objets | 2026-09-01 |
+| `rodgort.html` | Rodgort | article complet — table de recette en cascade | 2026-09-01 |
+| `rodgort_i_the_experimental_torch.html` | Rodgort I: The Experimental Torch | collection, 11 objets | 2026-09-01 |
+| `rodgort_ii_the_perfected_torch.html` | Rodgort II: The Perfected Torch | collection, 12 objets | 2026-09-01 |
+| `rodgort_iii_rodgorts_flame.html` | Rodgort III: Rodgort's Flame | collection, 31 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -245,7 +265,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **161 captures, 161 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **181 captures, 181 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
