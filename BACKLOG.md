@@ -982,14 +982,20 @@ l'Icy Runestone de la gen1, et `shared_components` porte `mystic_runestone` pour
 les seize armes gen2. Les captures contredisent cela pour les deux armes lues à
 ce jour :
 
-| arme | ce que dit sa page wiki | source |
-|---|---|---|
-| Astralaria | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/astralaria.html` |
-| HOPE | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/hope.html` |
+| arme | génération | ce que dit sa page wiki | source |
+|---|---|---|---|
+| Astralaria | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/astralaria.html` |
+| HOPE | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/hope.html` |
+| Nevermore | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/nevermore.html` |
+| Bolt | gen1 | **100 Icy Runestones** — témoin, conforme à `gen1_craft_note` | `ressources/wiki/bolt.html` |
 
-« Mystic Runestone » n'apparaît nulle part dans ces deux pages.
+« Mystic Runestone » n'apparaît dans aucune de ces pages. **Trois gen2 sur trois
+lues nomment l'Icy Runestone**, et Bolt sert de témoin : la gen1 la nomme aussi,
+donc les deux générations lisent pareil et c'est bien `gen2_craft_note` qui est
+suspect, pas la lecture.
 
-**En attente** : les quatorze autres pages gen2. La règle est donc de **relever
+**En attente** : les treize autres pages gen2 — dont Chuka and Champawat, dernière
+des quatre armes à collections, dont la capture d'article reste à refaire. La règle est donc de **relever
 la runestone nommée à chaque intégration d'une page d'arme**, et de ne trancher
 `gen2_craft_note` et les `shared_components` qu'une fois la série complète —
 un correctif partiel ferait cohabiter deux conventions.

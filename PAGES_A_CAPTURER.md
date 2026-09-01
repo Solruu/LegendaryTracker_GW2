@@ -2,7 +2,7 @@
 
 État au 01/09/2026. Une case par page de collection à capturer.
 Compteur : `étapes sans conseil / total`.
-**22 armes · 92 pages · 1483 étapes.**
+**21 armes · 80 pages · 1222 étapes.**
 
 
 
@@ -10,23 +10,15 @@ Une étape compte comme couverte si elle porte un conseil, **ou** si elle renvoi
 à un composant (`component`) ou à une autre légendaire (`legendary`).
 Les renvois sont des références, jamais des copies.
 
-**Terminées : Eternity, Astralaria, HOPE.**
+**Terminées : Eternity, Astralaria, HOPE, Nevermore.**
 
-## Bolt — 68 étapes, 4 pages
+## Bolt — 4 étapes, 1 pages
 
-- [ ] `Bolt I: The Experimental Sword` — 21/21
-- [ ] `Bolt II: The Perfected Sword` — 13/13
-- [ ] `Bolt III: Zap` — 30/30
 - [ ] `Legendary Weapon: Bolt` — 4/16
 
-## Chuka and Champawat — 127 étapes, 9 pages
+## Chuka and Champawat — 55 étapes, 4 pages
 
-- [ ] `Chuka and Champawat I: Hunter's Journal` — 20/20
-- [ ] `Chuka and Champawat I: The Hunt` — 7/7
-- [ ] `Chuka and Champawat II: Ambush` — 16/16
 - [ ] `Chuka and Champawat III: Naturalist's Journal` — 16/16
-- [ ] `Chuka and Champawat III: Tigris` — 20/20
-- [ ] `Chuka and Champawat IV: A Nontraditional Family` — 9/9
 - [ ] `Chuka and Champawat IV: Baby Book` — 15/15
 - [ ] `Chuka and Champawat IV: Secluded Tour` — 10/10
 - [ ] `Chuka and Champawat IV: Tiger Training Guide` — 14/14
@@ -86,13 +78,6 @@ Les renvois sont des références, jamais des copies.
 - [ ] `Meteorlogicus I: The Experimental Scepter` — 15/15
 - [ ] `Meteorlogicus II: The Perfected Scepter` — 11/11
 - [ ] `Meteorlogicus III: Storm` — 29/29
-
-## Nevermore — 125 étapes, 4 pages
-
-- [ ] `Nevermore I: Ravenswood Branch` — 14/14
-- [ ] `Nevermore II: Ravenswood Staff` — 14/14
-- [ ] `Nevermore III: The Raven Staff` — 34/34
-- [ ] `Nevermore IV: The Raven Spirit` — 63/63
 
 ## Quip — 69 étapes, 4 pages
 

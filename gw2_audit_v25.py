@@ -1208,21 +1208,25 @@ def check_recipe_components(data, errors, warnings):
                 )
 
 
-def check_precursor_vs_last_tier(data, errors, warnings):
-    """Le precurseur d'une arme a collections est l'objet qui ouvre son dernier palier.
+def check_precursor_is_tier_three(data, errors, warnings):
+    """Le precurseur d'une arme a collections est le titre de son palier III.
 
-    Les collections d'une arme gen2 forment une chaine : chaque palier s'ouvre en
-    consommant ce que le precedent a produit, et unlock_item le dit litteralement.
-    Le palier IV s'ouvre donc avec le PRECURSEUR — le troisieme des quatre objets
-    de la chaine, pas le premier. Le champ precursor doit valoir exactement cela.
+    Les collections d'une arme forment une chaine, et le TROISIEME palier est
+    celui qui rend le precurseur — son titre le nomme litteralement : Bolt III:
+    Zap, HOPE III: Prototype, Nevermore III: The Raven Staff. La regle vaut pour
+    les 21 armes gen1 comme pour les quatre gen2 a collections, sans exception.
+
+    Une premiere version de cette regle confrontait le precurseur a l'unlock_item
+    du DERNIER palier. Elle tenait sur la gen2, qui a un palier IV ouvert par le
+    precurseur, et se trompait sur toute la gen1, qui s'arrete au III : Bolt
+    n'ouvre rien avec Zap, il le produit. Bolt l'a fait tomber des sa premiere
+    integration. Le palier III est le point fixe des deux familles.
 
     C'est ainsi que les quatre gen2 de HoT etaient fausses en meme temps :
     Astralaria portait The Device, son palier I ; HOPE portait The Mechanism, qui
     appartient a Astralaria ; Nevermore et Chuka portaient des noms absents de la
-    table du wiki. Aucune de ces erreurs n'etait visible sans confronter le champ
-    a la chaine que les collections decrivent deja.
+    table « Precursor weapon » du wiki.
     """
-    ROM = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5}
     for lid, leg in sorted(data.get("legendaries", {}).items()):
         if not isinstance(leg, dict):
             continue
@@ -1230,26 +1234,22 @@ def check_precursor_vs_last_tier(data, errors, warnings):
         cols = leg.get("collections")
         if not prec or not isinstance(cols, dict):
             continue
-        paliers = []
+        titres = []
         for c in cols.values():
             if not isinstance(c, dict):
                 continue
-            nom = ((c.get("name") or {}).get("en")) or ""
-            m = re.search(r"\b(IV|III|II|I)\b", nom)
-            if m:
-                paliers.append((ROM[m.group(1)], c))
-        if len(paliers) < 2:
-            continue
-        paliers.sort(key=lambda x: x[0])
-        dernier = paliers[-1][1]
-        ouvre = ((dernier.get("unlock") or {}).get("unlock_item") or {}).get("name")
-        if not ouvre:
-            continue  # encadre pas encore capture — rien a confronter
-        if ouvre != prec:
+            nom = c.get("name")
+            nom = nom.get("en") if isinstance(nom, dict) else nom
+            if nom and re.search(r"\bIII\b", nom):
+                titres.append(nom)
+        if not titres:
+            continue  # arme sans palier III : rien a confronter
+        attendus = {t.split(": ", 1)[1] for t in titres if ": " in t}
+        if attendus and prec not in attendus:
             errors.append(
-                f"legendaries/{lid} : precursor '{prec}' mais le dernier palier "
-                f"({(dernier.get('name') or {}).get('en')}) s'ouvre avec '{ouvre}' — "
-                "l'un des deux est faux, et la table « Precursor weapon » du wiki tranche"
+                f"legendaries/{lid} : precursor '{prec}' mais le palier III s'intitule "
+                f"{sorted(titres)} — le palier III nomme le precurseur, "
+                "et la table « Precursor weapon » du wiki tranche"
             )
 
 
@@ -1366,7 +1366,7 @@ def main() -> int:
 
     # 20. Composants de recette : tout maillon cite doit exister
     check_recipe_components(data, errors, warnings)
-    check_precursor_vs_last_tier(data, errors, warnings)
+    check_precursor_is_tier_three(data, errors, warnings)
     check_no_flat_weapon_lists(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible

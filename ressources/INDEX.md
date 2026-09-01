@@ -143,6 +143,20 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `hope_ii_development.html` | HOPE II: Development | collection, 14 objets | 2026-09-01 |
 | `hope_iii_prototype.html` | HOPE III: Prototype | collection, 31 objets | 2026-09-01 |
 | `hope_iv_the_catalyst.html` | HOPE IV: The Catalyst | collection, 59 objets | 2026-09-01 |
+| `bolt.html` | Bolt | article complet — table de recette en cascade | 2026-09-01 |
+| `bolt_i_the_experimental_sword.html` | Bolt I: The Experimental Sword | collection, 21 objets | 2026-09-01 |
+| `bolt_ii_the_perfected_sword.html` | Bolt II: The Perfected Sword | collection, 13 objets | 2026-09-01 |
+| `bolt_iii_zap.html` | Bolt III: Zap | collection, 30 objets | 2026-09-01 |
+| `nevermore.html` | Nevermore | article complet — table de recette en cascade | 2026-09-01 |
+| `nevermore_i_ravenswood_branch.html` | Nevermore I: Ravenswood Branch | collection, 14 objets | 2026-09-01 |
+| `nevermore_ii_ravenswood_staff.html` | Nevermore II: Ravenswood Staff | collection, 14 objets | 2026-09-01 |
+| `nevermore_iii_the_raven_staff.html` | Nevermore III: The Raven Staff | collection, 34 objets | 2026-09-01 |
+| `nevermore_iv_the_raven_spirit.html` | Nevermore IV: The Raven Spirit | collection, 63 objets | 2026-09-01 |
+| `chuka_i_hunters_journal.html` | Chuka and Champawat I: Hunter's Journal | collection, 20 objets | 2026-09-01 |
+| `chuka_i_the_hunt.html` | Chuka and Champawat I: The Hunt | collection, 7 objets | 2026-09-01 |
+| `chuka_ii_ambush.html` | Chuka and Champawat II: Ambush | collection, 16 objets | 2026-09-01 |
+| `chuka_iii_tigris.html` | Chuka and Champawat III: Tigris | collection, 20 objets | 2026-09-01 |
+| `chuka_iv_a_nontraditional_family.html` | Chuka and Champawat IV: A Nontraditional Family | collection, 9 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -197,7 +211,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **113 captures, 113 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **127 captures, 127 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
