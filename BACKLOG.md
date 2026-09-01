@@ -1026,56 +1026,27 @@ simples par convention et relèvent de la même passe API, pas d'une traduction.
 
 ---
 
-## Armes sans collection — inventaire ouvert le 01/09/2026
+## Armes sans collection — 20 lues sur 28 le 01/09/2026
 
-Les 24 armes à collections sont terminées. Restent **28 armes qui n'ont aucune
-chaîne de succès** : leur précurseur s'obtient à la Forge mystique ou au marchand,
-pas par une collection. Il n'y a donc **rien à capturer côté collections** — mais
-leur article wiki n'a jamais été lu, et deux choses en dépendent :
+Ces armes n'ont aucune chaîne de succès : leur précurseur s'achète ou se forge.
+Rien à capturer côté collections. Leur article a néanmoins été lu pour vérifier
+`recipe`, `precursor`, `gift_unique` et `slot`, remplis jusqu'ici par patron
+générationnel — et le patron était faux presque partout.
 
-1. **La runestone.** 24 armes lues nomment l'Icy Runestone, zéro Mystic. Ces 28
-   sont les seules non lues, et les 12 gen2 sont précisément celles que
-   `gen2_craft_note` oppose aux 4 gen2 à collections.
-2. **Le champ `recipe`.** Il est rempli par patron générationnel, pas vérifié page
-   par page. Le même patron s'était révélé faux sur Eternity.
+**Faites (20)** : les 16 gen3, plus Claw of the Khan-Ur, Eureka, Exordium et
+Flames of War. 14 précurseurs, 17 dons et 10 types corrigés contre le wiki.
 
-### 12 gen2 — précurseur acheté chez Grandmaster Craftsman Hobbs
+**Restent 8 gen2, précurseur acheté chez Grandmaster Craftsman Hobbs :**
 
-| arme | type | extension |
-|---|---|---|
-| Claw of the Khan-Ur | Dagger | HoT |
-| Eureka | Mace | HoT |
-| Exordium | Greatsword | HoT |
-| Flames of War | Torch | HoT |
-| Pharus | Longbow | HoT |
-| Sharur | Hammer | HoT |
-| Shooshadoo | Focus | HoT |
-| The Binding of Ipos | focus | PoF |
-| The HMS Divinity | Rifle | HoT |
-| The Shining Blade | Sword | HoT |
-| Verdarach | Warhorn | HoT |
-| Xiuquatl | Scepter | PoF |
+| arme | type |
+|---|---|
+| Pharus | Longbow |
+| Sharur | Hammer |
+| Shooshadoo | Focus |
+| The Binding of Ipos | focus |
+| The HMS Divinity | Rifle |
+| The Shining Blade | Sword |
+| Verdarach | Warhorn |
+| Xiuquatl | Scepter |
 
-### 16 gen3 — précurseur de Forge mystique, aucune collection
-
-| arme | type | extension |
-|---|---|---|
-| Aurene's Argument | Focus | EoD |
-| Aurene's Bite | Sword | EoD |
-| Aurene's Breath | Shortbow | EoD |
-| Aurene's Claw | Dagger | EoD |
-| Aurene's Fang | Sword | EoD |
-| Aurene's Flight | Longbow | EoD |
-| Aurene's Gaze | Pistol | EoD |
-| Aurene's Insight | Scepter | EoD |
-| Aurene's Persuasion | Torch | EoD |
-| Aurene's Rending | Axe | EoD |
-| Aurene's Scale | Longbow | EoD |
-| Aurene's Tail | Mace | EoD |
-| Aurene's Voice | Warhorn | EoD |
-| Aurene's Weight | Mace | EoD |
-| Aurene's Wing | Short bow | EoD |
-| Aurene's Wisdom | Rifle | EoD |
-
-**À capturer** : l'article wiki de chacune, soit 28 pages. Pas de sous-collection,
-pas de palier — une page par arme.
+Une page d'article chacune. Pas de sous-collection, pas de palier.
