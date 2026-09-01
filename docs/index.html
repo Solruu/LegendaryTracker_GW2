@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v198",
+    "version": "v199",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1737,7 +1737,8 @@ const SOURCES_DB = {
     "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity.",
     "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix.",
     "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron.",
-    "changelog_v198": "Passe 1 des chantiers hors armes, 20 pages. 134 conseils poses ou remplaces, 40 noms repris du wiki, 15 blocs unlock. Aurora: Awakening annoncait 7 etapes et n en portait aucune — les 7 sont creees, ordre verifie contre gw2_bits_dump. Forge Guard s Armor Collection utilise un tableau « Collectible » sans colonne Notes, que gw2_parse_collection_v2.py ne lit pas : ses 6 objets sont extraits a part et le items_ref le dit. Champ progress introduit sur la structure collections existante, mais sur un perimetre bien plus etroit que prevu. J avais capture les listes de succes eligibles des meta de maitrise ; l audit a refuse le push, et il avait raison : meta_eligible portait deja les seize listes, verifiees le 11/08. Le diff est sans appel — ma capture n apportait qu un separateur « ... » parasite et une entite HTML mal decodee. Le travail etait fait ; c est le items vide de la collection qui m a fait croire au contraire, alors que la liste vit ailleurs, exactement la ou la regle du projet la met. progress ne subsiste donc que la ou RIEN ne le porte : les quatre recursions d Eikasia, ou l API n expose aucun bit et la progression est de la Fractalline Dust, et Helping Hylek, ou c est un compteur de kraits tues. Il ne porte ni seuil ni pool — total et meta_eligible les donnent deja. RENDU JSX NON FAIT : progress n est pas encore lu par le JSX. Passe finale apres les trois lots."
+    "changelog_v198": "Passe 1 des chantiers hors armes, 20 pages. 134 conseils poses ou remplaces, 40 noms repris du wiki, 15 blocs unlock. Aurora: Awakening annoncait 7 etapes et n en portait aucune — les 7 sont creees, ordre verifie contre gw2_bits_dump. Forge Guard s Armor Collection utilise un tableau « Collectible » sans colonne Notes, que gw2_parse_collection_v2.py ne lit pas : ses 6 objets sont extraits a part et le items_ref le dit. Champ progress introduit sur la structure collections existante, mais sur un perimetre bien plus etroit que prevu. J avais capture les listes de succes eligibles des meta de maitrise ; l audit a refuse le push, et il avait raison : meta_eligible portait deja les seize listes, verifiees le 11/08. Le diff est sans appel — ma capture n apportait qu un separateur « ... » parasite et une entite HTML mal decodee. Le travail etait fait ; c est le items vide de la collection qui m a fait croire au contraire, alors que la liste vit ailleurs, exactement la ou la regle du projet la met. progress ne subsiste donc que la ou RIEN ne le porte : les quatre recursions d Eikasia, ou l API n expose aucun bit et la progression est de la Fractalline Dust, et Helping Hylek, ou c est un compteur de kraits tues. Il ne porte ni seuil ni pool — total et meta_eligible les donnent deja. RENDU JSX NON FAIT : progress n est pas encore lu par le JSX. Passe finale apres les trois lots.",
+    "changelog_v199": "Passe 2 des chantiers hors armes, 20 pages. 69 conseils, 16 noms, 11 blocs unlock, et 20 renvois component poses sur Legendary Relics: Components — premiers renvois hors armes. Glimmering Resin Weapon Collector traite comme Forge Guard : tableau « Collectible » sans colonne Notes, extrait a part, 17 conseils construits depuis le type et l'objet lie. Les cinq pages de meta ont servi a RECOUPER meta_eligible, pas a le refaire. Quatre listes sur cinq correspondent nom pour nom : Shipwreck Strand 53, Mistburned Barrens 23, Long Live the Lich 48, Incursive Investigation 5. La cinquieme confirme une divergence deja notee : le wiki liste 55 objectifs a Starlit Weald contre 54 cotes API, « A Hunt for the Ages » n'ayant pas d'identifiant expose. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre ; la note le dit. how_jsx : 213 anciens conseils avaient ete conserves en posant les versions wiki. Le recoupement montre qu'ils ne font PAS doublon — similarite mediane 0,34. Le wiki dit ou aller, eux disent quoi eviter : ne pas recycler le condensateur avant Ad Infinitum II, acheter les cles chez Astora avant de partir, l'evenement qui fait disparaitre Akili. Seuls 11 etaient de vraies redites et sont supprimes ; 202 sont conserves comme conseils complementaires. Ils restent NON RENDUS — l'audit le signale, et c'est le principal enjeu de la passe JSX finale."
   },
   "meta_events": {
     "vb": {
@@ -16982,10 +16983,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
-              "how_jsx": {
-                "fr": "Charr-Nip : chez BUY-4373, à l'Observatoire, 100 Reliques fractales + 80 pa.",
-                "en": "Charr-Nip: from BUY-4373, in the Mistlock Observatory, 100 Fractal Relics + 80 s."
-              },
               "how_fr_missing": true
             },
             {
@@ -17057,10 +17054,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
-              "how_jsx": {
-                "fr": "Cœur gelé brûlant : récupérer un Cœur d'élémentaire de glace gigantesque sur le Chef chaman svanir (boss de monde, Contreforts du Voyageur), puis l'imprégner dans le Magma bouillant en fin de fractale Volcanique.",
-                "en": "Burning Frozen Core: get a Gigantic Ice Elemental Core from the Champion Svanir Shaman Chief (world boss, Wayfarer Foothills), then imbue it in the Boiling-Hot Magma at the end of the Volcanic fractal."
-              },
               "how_fr_missing": true
             },
             {
@@ -17562,134 +17555,216 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Aetherblade Pirate Eye Patch",
               "how": {
+                "fr": null,
+                "en": "Purchased from BUY-2046 PFR in the Mistlock Observatory for 50"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Cache-œil de pirate étherlame : chez BUY-2046 PFR, à l'Observatoire, 50 Reliques fractales immaculées.",
                 "en": "Aetherblade Pirate Eye Patch: from BUY-2046 PFR, in the Mistlock Observatory, 50 Pristine Fractal Relics."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "name": "Aetherblade Airship Steering Wheel",
               "how": {
+                "fr": null,
+                "en": "Purchased from BUY-4373 in the Mistlock Observatory for 600 + 80"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Volant d'aéronef étherlame : chez BUY-4373, 600 Reliques fractales + 80 pa.",
                 "en": "Aetherblade Airship Steering Wheel: from BUY-4373, 600 Fractal Relics + 80 s."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 2,
               "name": "Underground Facility Challenge Mote",
               "how": {
+                "fr": null,
+                "en": "Activate the challenge mote, and complete the level (51-100) Underground Facility Fractal with an 80% reduction to healing"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Particule de défi du complexe souterrain : mote activé, Complexe souterrain ÉCHELLE 53, -80 % de soins. ⚠ C'est ici que le palier de fractale redevient bloquant — bien au-dessus de l'échelle 36 exigée en collection II.",
                 "en": "Underground Facility Challenge Mote: mote activated, Underground Facility at SCALE 53, 80% healing reduction. ⚠ This is where fractal scale becomes blocking again — well above the scale 36 required in collection II."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 3,
               "name": "Aetherblade Challenge Mote",
               "how": {
+                "fr": null,
+                "en": "Activate the challenge mote, and complete the level (51-100) Aetherblade Fractal with an 80% reduction to healing"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Particule de défi étherlame : mote activé, fractale Étherlame ÉCHELLE 65, -80 % de soins.",
                 "en": "Aetherblade Challenge Mote: mote activated, Aetherblade fractal at SCALE 65, 80% healing reduction."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 4,
               "name": "Mai Trin Timed Mote",
               "how": {
+                "fr": null,
+                "en": "Complete the level (76-100) Captain Mai Trin Boss Fractal in under 25 minutes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Particule chronométrée de Mai Trin : finir le fractale Capitaine Mai Trin en T4 (échelles 76-100) en moins de 25 minutes. C'est le seul composant qui exige strictement le T4.",
                 "en": "Mai Trin Timed Mote: clear the Captain Mai Trin fractal at T4 (scales 76-100) in under 25 minutes. This is the only component that strictly requires T4."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 5,
               "name": "Aetherblade Fractal Field Research Paper",
               "how": {
+                "fr": null,
+                "en": "Sold by a vendor in the Captain Mai Trin Boss Fractal for 1"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Article de recherche sur la fractale étherlame : chez le vendeur du fractale Capitaine Mai Trin, contre 1 Journal fractal (28 Pages de recherche) — le 4e et dernier journal.",
                 "en": "Aetherblade Fractal Field Research Paper: from the vendor in the Captain Mai Trin fractal, for 1 Fractal Journal (28 Research Pages) — the 4th and last journal."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 6,
               "name": "Jungle Wurm Omelet (Mossman Style)",
               "how": {
+                "fr": null,
+                "en": "Obtain a Jungle Wurm Egg by defeating the Greater Nightmare Vine in Twilight Arbor . Bring it to the Mossman's hut in the Swampland Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Omelette de guivre de la jungle (à la Moussu) : tuer la Grande vigne cauchemardesque dans le donjon Tonnelle du crépuscule (premier champion, avant le choix du chemin) → Œuf de guivre de la jungle ; puis le porter à la cabane du Moussu dans le fractale Marécages, accessible par le tunnel de la salle du boss une fois Fleurchasseur tué.",
                 "en": "Jungle Wurm Omelet (Mossman Style): kill the Greater Nightmare Vine in the Twilight Arbor dungeon (first champion, before the path choice) → Jungle Wurm Egg; then bring it to Mossman's hut in the Swampland fractal, reached through the tunnel in the boss room once Bloomhunger is down."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 7,
               "name": "Charged Archdiviner's Mallet",
               "how": {
+                "fr": null,
+                "en": "Take the Archdiviner's Mallet from his remains at the top of the Cliffside Fractal . Jump into the middle of the exploded Thaumanova Reactor in Metrica Province to charge it"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Massette de l'archidevin chargée : tuer l'Archidevin légendaire dans Flanc de falaise → Massette de l'archidevin ; puis sauter au centre du Réacteur de Thaumanova explosé, en Province de Metrica. ⚠ L'accès à la zone demande une Clé matricielle.",
                 "en": "Charged Archdiviner's Mallet: kill the Legendary Archdiviner in the Cliffside fractal → Archdiviner's Mallet; then jump into the middle of the exploded Thaumanova Reactor in Metrica Province. ⚠ Reaching the area requires a Matrix Key."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 8,
               "name": "Explosive Magically Charged Infusion Sample",
               "how": {
+                "fr": null,
+                "en": "Charge a + 10 Agony Infusion in the Mist Geyser in the Cliffside Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Échantillon d'infusion chargé en magie explosive : charger une infusion d'agonie +10 (artificier 400+ ou HdV) au Geyser des Brumes de Flanc de falaise. Passe la grille de droite en arrivant sur la plateforme du boss final ; elle ne s'ouvre qu'une fois le boss tué.",
                 "en": "Explosive Magically Charged Infusion Sample: charge a +10 Agony Infusion (Artificer 400+ or TP) at the Mist Geyser in the Cliffside fractal. Take the gate on the right as you reach the final boss platform; it only opens once the boss is dead."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 9,
               "name": "Aetherblade Diploma",
               "how": {
+                "fr": null,
+                "en": "[1] Sold by a vendor in the Captain Mai Trin Boss Fractal for 3"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Diplôme étherlame : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre. ⚠ Le compte ne tombe pas juste : il en manque 1 après les 9 de Limite supérieure — recycle le Condensateur fractal (infusé) du palier 3 (rend exactement 1 Boule) ou n'importe quel élevé non-anneau.",
                 "en": "Aetherblade Diploma: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy. ⚠ The maths doesn't quite work out: you're 1 short after the 9 from Upper Bound — salvage the tier 3 Fractal Capacitor (Infused) (yields exactly 1 Ball) or any non-ring ascended item."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 10,
               "name": "Lessons in Arbology",
               "how": {
+                "fr": null,
+                "en": "After defeating Captain Ashym , take a Gift of Wood to the Ascalonian woodcutter , located inside the Urban Battleground Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Leçon d'arboriculture : crafter un Don de bois (250 planches de bois vieilli + 250 dur + 250 de sapin + 250 ancien ; recette chez Miyani, chasseur 400), l'avoir dans l'inventaire, finir le Champ de bataille urbain (Capitaine Ashym, n'importe quel palier) puis remettre le Don au Bûcheron ascalonien vétéran, dans le bâtiment qui s'ouvre en fin de fractale. ⚠ Le Don est consommé et non récupérable.",
                 "en": "Lessons in Arbology: craft a Gift of Wood (250 Seasoned + 250 Hard + 250 Elder + 250 Ancient Wood Planks; recipe from Miyani, Huntsman 400), keep it in your inventory, clear the Urban Battleground fractal (Captain Ashym, any tier) then hand the Gift to the Veteran Ascalonian Woodcutter in the building that opens at the end. ⚠ The Gift is consumed and cannot be recovered."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 11,
               "name": "Lessons in Metallurgy",
               "how": {
+                "fr": null,
+                "en": "Take a Gift of Metal to the dredge weaponsmith's workbench located inside the Molten Furnace Fractal"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Leçon de métallurgie : crafter un Don de métal (250 lingots d'orichalque + 250 de mithril + 250 d'acier sombre + 250 de platine ; recette chez Miyani, forgeron d'armes 400), finir la fractale Fournaise en fusion, puis utiliser le Don sur l'Établi de l'armurier taupard — porte latérale de la salle du boss.",
                 "en": "Lessons in Metallurgy: craft a Gift of Metal (250 Orichalcum + 250 Mithril + 250 Darksteel + 250 Platinum Ingots; recipe from Miyani, Weaponsmith 400), clear the Molten Furnace fractal, then use the Gift on the Dredge Weaponsmith's Workbench — side door of the boss room."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 12,
               "name": "Theory of Ad Infinitum",
               "how": {
+                "fr": null,
+                "en": "Unlocks the collection Ad Infinitum"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_backpack_ad_infinitum.html",
+              "how_jsx": {
                 "fr": "Théorie d'Ad Infinitum : l'item de déblocage compte lui-même comme 13e composant. Kelvei ne le donne qu'après avoir FABRIQUÉ Sans limite — terminer Ad Infinitum III ne suffit pas. Il se coche donc dès l'ouverture de la collection : tu démarres à 1/13.",
                 "en": "Theory of Ad Infinitum: the unlock item itself counts as the 13th component. Kelvei only hands it over after you have CRAFTED Unbound — completing Ad Infinitum III is not enough. It therefore ticks as soon as the collection opens: you start at 1/13."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Legendary Backpack: Ad Infinitum",
+            "prerequisite": {
+              "name": "Ad Infinitum III: Unbound",
+              "wiki": "Ad Infinitum III: Unbound"
+            },
+            "unlock_item": {
+              "name": "Theory of Ad Infinitum",
+              "wiki": "Theory of Ad Infinitum"
+            },
+            "reward": {
+              "name": "Gift of Infinity",
+              "wiki": "Gift of Infinity"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         }
       }
     },
@@ -17782,31 +17857,41 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Speak to the hylek shaman in Shipwreck Strand",
               "how": {
-                "fr": "Le chamane Palak, à la Rive aux épaves, ouvre toute la chaîne. Les 19 étapes suivantes sont linéaires.",
-                "en": "Shaman Palak, at Shipwreck Strand, opens the whole chain. The following 19 steps are linear."
+                "fr": null,
+                "en": "Speak to Shaman Palak the hylek Legendary Crafting vendor , found standing on the cliff northeast of Hullgarden Pier Waypoint — in Shipwreck Strand"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/radiance_of_the_sun_god.html",
               "name_api": "Speak to the hylek shaman in Shipwreck Strand.",
               "waypoint": {
                 "name": "Hullgarden Pier Waypoint",
                 "chat_code": "[&BMwPAAA=]"
-              }
+              },
+              "how_jsx": {
+                "fr": "Le chamane Palak, à la Rive aux épaves, ouvre toute la chaîne. Les 19 étapes suivantes sont linéaires.",
+                "en": "Shaman Palak, at Shipwreck Strand, opens the whole chain. The following 19 steps are linear."
+              },
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "name": "Defeat Tequatl the Sunless",
               "how": {
-                "fr": "⚠ Tequatl le Sans-soleil : boss de monde à horaire fixe et à forte affluence. C'est le seul vrai timegate de la collection — cale-le en premier sur le timer.",
-                "en": "⚠ Tequatl the Sunless: fixed-schedule, high-population world boss. It's the collection's only real timegate - slot it in first using the timer."
+                "fr": null,
+                "en": "Defeat the world boss Tequatl the Sunless in the [Group Event] Defeat Tequatl the Sunless (65) event"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/radiance_of_the_sun_god.html",
               "name_api": "Defeat Tequatl the Sunless.",
               "waypoint": {
                 "name": "Splintered Coast Waypoint",
                 "chat_code": "[&BNABAAA=]"
-              }
+              },
+              "how_jsx": {
+                "fr": "⚠ Tequatl le Sans-soleil : boss de monde à horaire fixe et à forte affluence. C'est le seul vrai timegate de la collection — cale-le en premier sur le timer.",
+                "en": "⚠ Tequatl the Sunless: fixed-schedule, high-population world boss. It's the collection's only real timegate - slot it in first using the timer."
+              },
+              "how_fr_missing": true
             },
             {
               "bit": 2,
@@ -17924,16 +18009,21 @@ const SOURCES_DB = {
               "bit": 9,
               "name": "Purchase a set of Dragonfly Steaks from the hylek cook in Michoan Marsh",
               "how": {
-                "fr": "Les steaks de libellule s'achètent chez le cuisinier hylek au Marais michéen. Achète-les avant de traverser la carte, l'étape 11 suit immédiatement.",
-                "en": "The dragonfly steaks are sold by the hylek cook at Mickelson's Marsh. Buy them before crossing the map, step 11 follows immediately."
+                "fr": null,
+                "en": "Travel east of Michotl Grounds Waypoint — in Metrica Province and complete the renown heart Help the Michotl tribe (11). Then purchase Dragonfly Steaks from the heart vendor Cook Huelic for 7,000"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/radiance_of_the_sun_god.html",
               "name_api": "Purchase a set of Dragonfly Steaks from the hylek cook in Michoan Marsh.",
               "waypoint": {
                 "name": "Michotl Grounds Waypoint",
                 "chat_code": "[&BLEEAAA=]"
-              }
+              },
+              "how_jsx": {
+                "fr": "Les steaks de libellule s'achètent chez le cuisinier hylek au Marais michéen. Achète-les avant de traverser la carte, l'étape 11 suit immédiatement.",
+                "en": "The dragonfly steaks are sold by the hylek cook at Mickelson's Marsh. Buy them before crossing the map, step 11 follows immediately."
+              },
+              "how_fr_missing": true
             },
             {
               "bit": 10,
@@ -18003,16 +18093,21 @@ const SOURCES_DB = {
               "bit": 14,
               "name": "Uncover the shard in the Inquest reactor",
               "how": {
-                "fr": "Énigme des zones dans le réacteur de l'Enqueste — la seule étape qui demande de la réflexion plutôt que du déplacement. Prévois du temps.",
-                "en": "Zone puzzle in the Inquest reactor - the only step that asks for thought rather than travel. Set aside some time."
+                "fr": null,
+                "en": "Travel to the Infinite Coil Reactor and find the shard using the hints given in the Recovered Inquest Note .Order: Black, Green, Blue, Red, Violet, white - make sure to go through the middle to get to the next one. Anomaly : The chest may already be available at Zone White — without the need to solve the puzzle"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/radiance_of_the_sun_god.html",
               "name_api": "Uncover the shard in the Inquest reactor by solving the zone puzzle.",
               "waypoint": {
                 "name": "Crucible of Eternity Waypoint",
                 "chat_code": "[&BEIFAAA=]"
-              }
+              },
+              "how_jsx": {
+                "fr": "Énigme des zones dans le réacteur de l'Enqueste — la seule étape qui demande de la réflexion plutôt que du déplacement. Prévois du temps.",
+                "en": "Zone puzzle in the Inquest reactor - the only step that asks for thought rather than travel. Set aside some time."
+              },
+              "how_fr_missing": true
             },
             {
               "bit": 15,
@@ -18094,7 +18189,15 @@ const SOURCES_DB = {
               "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Radiance of the Sun God",
+            "prerequisite": null,
+            "unlock_item": null,
+            "reward": null
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "selachi_shipwreck": {
           "id": 8880,
@@ -18292,174 +18395,260 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Glimmering Resin Axe",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Axe skin (Skin). Craft it after unlocking its recipe, or buy the Axe from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "name": "Glimmering Resin Dagger",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Dagger skin (Skin). Craft it after unlocking its recipe, or buy the Dagger from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 2,
               "name": "Glimmering Resin Focus",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Focus skin (Skin). Craft it after unlocking its recipe, or buy the Focus from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 3,
               "name": "Glimmering Resin Greatsword",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Greatsword skin (Skin). Craft it after unlocking its recipe, or buy the Greatsword from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 4,
               "name": "Glimmering Resin Hammer",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Hammer skin (Skin). Craft it after unlocking its recipe, or buy the Hammer from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 5,
               "name": "Glimmering Resin Longbow",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Longbow skin (Skin). Craft it after unlocking its recipe, or buy the Longbow from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 6,
               "name": "Glimmering Resin Mace",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Mace skin (Skin). Craft it after unlocking its recipe, or buy the Mace from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 7,
               "name": "Glimmering Resin Pistol",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Pistol skin (Skin). Craft it after unlocking its recipe, or buy the Pistol from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 8,
               "name": "Glimmering Resin Rifle",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Rifle skin (Skin). Craft it after unlocking its recipe, or buy the Rifle from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 9,
               "name": "Glimmering Resin Scepter",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Scepter skin (Skin). Craft it after unlocking its recipe, or buy the Scepter from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 10,
               "name": "Glimmering Resin Shield",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Shield skin (Skin). Craft it after unlocking its recipe, or buy the Shield from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 11,
               "name": "Glimmering Resin Short Bow",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Short Bow skin (Skin). Craft it after unlocking its recipe, or buy the Short bow from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 12,
               "name": "Glimmering Resin Spear",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Spear skin (Skin). Craft it after unlocking its recipe, or buy the Spear from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 13,
               "name": "Glimmering Resin Staff",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Staff skin (Skin). Craft it after unlocking its recipe, or buy the Staff from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 14,
               "name": "Glimmering Resin Sword",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Sword skin (Skin). Craft it after unlocking its recipe, or buy the Sword from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 15,
               "name": "Glimmering Resin Torch",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Torch skin (Skin). Craft it after unlocking its recipe, or buy the Torch from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 16,
               "name": "Glimmering Resin Warhorn",
               "how": {
+                "fr": null,
+                "en": "Unlock the Glimmering Resin Warhorn skin (Skin). Craft it after unlocking its recipe, or buy the Warhorn from a completed renown heart vendor in Eternity's Garden."
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html",
+              "how_jsx": {
                 "fr": "17 apparences. Deux voies : fabriquer (Artificier/Chasseur/Forgeron d'armes 400) après avoir acheté la recette chez Historienne Meliza ou Intendant Brizio contre des Fragments de pierre d'ombre — 85 au total pour les 17 ; ou acheter l'arme finie, plus cher. ⚠ Le cœur de renommée doit être fait DU JOUR pour que le vendeur propose quoi que ce soit. Dans les deux cas il faut la version « Résine chromatique » de chaque arme, achetable au comptoir. Fabriquer les 17 : 170 Boules d'ectoplasme + 4 250 Notes de recherche. Les acheter : 204 ectoplasmes + 5 100 Notes + 102 Fragments. Fabriquer est nettement moins cher.",
                 "en": "17 skins. Two routes: craft them (Artificer/Huntsman/Weaponsmith 400) after buying the recipe from Historian Meliza or Steward Brizio for Shadowstone Fragments - 85 total for all 17; or buy the finished weapon, which costs more. ⚠ The renown heart must be completed FOR THE DAY before the vendor offers anything. Either way you need the Chromatic Resin version of each weapon, available on the trading post. Crafting all 17: 170 Globs of Ectoplasm + 4,250 Research Notes. Buying them: 204 ectoplasm + 5,100 Notes + 102 Fragments. Crafting is markedly cheaper."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "items_ref": "wiki, tableau « Collectible » — ressources/wiki/glimmering_resin_weapon_collector.html ; format sans colonne Notes, non lu par gw2_parse_collection_v2.py"
         }
       }
     },
@@ -18561,23 +18750,33 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Speak to Dugan",
               "how": {
+                "fr": null,
+                "en": "Can be found in the spawn area of any team in Eternal Battlegrounds or any of the three Borderlands"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/mists_research.html",
+              "name_api": "Speak to Dugan.",
+              "how_jsx": {
                 "fr": "Dugan est le point d'entrée. Les 7 lieux suivants sont tous en McM : fais-les en une session, carte par carte.",
                 "en": "Dugan is the entry point. The following 7 locations are all in WvW: do them in one session, map by map."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Speak to Dugan."
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "name": "Investigate the Krait Reliquary in Darkrait Inlet",
               "how": {
+                "fr": null,
+                "en": "Interact with the hero point in the south of Eternal Battlegrounds"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/mists_research.html",
+              "name_api": "Investigate the Krait Reliquary in Darkrait Inlet.",
+              "how_jsx": {
                 "fr": "Les 7 examens ne demandent aucun combat, seulement d'atteindre le lieu. Un passage en heure creuse suffit — inutile d'attendre un bus.",
                 "en": "The 7 examinations require no combat, only reaching the spot. An off-peak run is enough - no need to wait for a zerg."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Investigate the Krait Reliquary in Darkrait Inlet."
+              "how_fr_missing": true
             },
             {
               "bit": 2,
@@ -18652,7 +18851,15 @@ const SOURCES_DB = {
               "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Mists Research",
+            "prerequisite": null,
+            "unlock_item": null,
+            "reward": null
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "strife_unending": {
           "id": 9244,
@@ -18683,12 +18890,17 @@ const SOURCES_DB = {
               "bit": 1,
               "name": "After equipping a Mistwalker Infusion , kill 100 enemy players",
               "how": {
+                "fr": null,
+                "en": "The infusion can either be bought on the trading post, or purchased from Dugan. Note that the kill count is preserved, even if using the same infusion across multiple characters. Track by the Mists Research: Strife Unending"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/mists_research_strife_unending.html",
+              "name_api": "After equipping a Mistwalker Infusion, kill 100 enemy players.",
+              "how_jsx": {
                 "fr": "⚠ Le gros morceau : 100 joueurs ennemis tués AVEC une infusion d'arpenteur des Brumes équipée. Équipe-la maintenant, sinon les kills ne comptent pas rétroactivement.",
                 "en": "⚠ The big one: 100 enemy players killed WITH a Mistwalker infusion equipped. Equip it now, otherwise kills don't count retroactively."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "After equipping a Mistwalker Infusion, kill 100 enemy players."
+              "how_fr_missing": true
             },
             {
               "bit": 2,
@@ -18706,12 +18918,17 @@ const SOURCES_DB = {
               "bit": 3,
               "name": "Capture the forge in the Edge of the Mists and talk to the smith there",
               "how": {
+                "fr": null,
+                "en": "Talk to Champion Norn Smith at the Forge (EotM blue side, Frostreach Region)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/mists_research_strife_unending.html",
+              "name_api": "Capture the forge in the Edge of the Mists and talk to the smith there.",
+              "how_jsx": {
                 "fr": "Les 3 objectifs de la lisière des Brumes (forge, autel, atelier) se font en une seule visite si ton équipe tient la carte.",
                 "en": "The 3 Edge of the Mists objectives (forge, altar, workshop) can be done in a single visit if your team holds the map."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Capture the forge in the Edge of the Mists and talk to the smith there."
+              "how_fr_missing": true
             },
             {
               "bit": 4,
@@ -18741,12 +18958,17 @@ const SOURCES_DB = {
               "bit": 6,
               "name": "Capture the keep of an enemy team in Eternal Battlegrounds",
               "how": {
+                "fr": null,
+                "en": "The Warclaw Spirit will spawn by the lord's rooms upon capture. (enemy team EBG keeps only)"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/mists_research_strife_unending.html",
+              "name_api": "Capture the keep of an enemy team in Eternal Battlegrounds and talk to the warclaw spirit there.",
+              "how_jsx": {
                 "fr": "Les 4 captures suivantes couvrent trois cartes différentes. Suis les objectifs de ton serveur plutôt que de forcer une carte précise.",
                 "en": "The next 4 captures span three different maps. Follow your server's objectives rather than forcing a specific map."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Capture the keep of an enemy team in Eternal Battlegrounds and talk to the warclaw spirit there."
+              "how_fr_missing": true
             },
             {
               "bit": 7,
@@ -18799,9 +19021,12 @@ const SOURCES_DB = {
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
           "unlock": {
+            "achievement": "Mists Research: Strife Unending",
             "prerequisite": {
               "name": "Mists Research"
-            }
+            },
+            "unlock_item": null,
+            "reward": null
           },
           "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
           "unlock_verified": true
@@ -18910,23 +19135,33 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research",
               "how": {
+                "fr": null,
+                "en": "Jorvik Jorundsson can be found in Mantle's Arrival , near Mantle's Arrival Waypoint —"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_experiments_in_the_shadows.html",
+              "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research.",
+              "how_jsx": {
                 "fr": "Jorvik Jorundsson, dans Bava Nisos, est la clé de tout l'onglet : lui parler ouvre d'un coup les 5 collections de dons.",
                 "en": "Jorvik Jorundsson, in Bava Nisos, is the key to the whole tab: talking to him opens all 5 gift collections at once."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Talk to Jorvik Jorundsson in Bava Nisos to learn how you can help further their research."
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "name": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery",
               "how": {
+                "fr": null,
+                "en": "Complete either Collect lightning to keep the asura turrets charged (80) in Mistburned Barrens or Collect jars, fill them with lightning, and deposit them in the drop-off locations (80) in Janthir Syntri . In particular, the event in Mistburned Barrens has a known cooldown of 3 minutes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_experiments_in_the_shadows.html",
+              "name_api": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery.",
+              "how_jsx": {
                 "fr": "Deux événements au choix — celui de la Syntri de Janthir est en général plus rapide à trouver que celui des Landes.",
                 "en": "Two events to choose from - the Janthir Syntri one is usually quicker to find than the Barrens one."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Complete the \"Collect lightning to keep the asura turrets charged\" event in Mistburned Barrens or the \"Collect jars, fill them with lightning, and deposit them in the drop-off locations\" event in Janthir Syntri to charge the battery."
+              "how_fr_missing": true
             },
             {
               "bit": 2,
@@ -18968,12 +19203,17 @@ const SOURCES_DB = {
               "bit": 5,
               "name": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal",
               "how": {
+                "fr": null,
+                "en": "The Chaos Crystal Cavern jumping puzzle starts at the west of Old Piken Ruins Waypoint —"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_experiments_in_the_shadows.html",
+              "name_api": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal.",
+              "how_jsx": {
                 "fr": "Puzzle de saut « Grotte du cristal du chaos », dans les Marais de fer. Prévois un deltaplane et de la patience.",
                 "en": "'Chaos Crystal Cavern' jumping puzzle, in the Iron Marches. Bring a glider and patience."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches to find an appropriate crystal."
+              "how_fr_missing": true
             },
             {
               "bit": 6,
@@ -18991,12 +19231,17 @@ const SOURCES_DB = {
               "bit": 7,
               "name": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel",
               "how": {
+                "fr": null,
+                "en": "The Scrying Pool is at the northwest of Eye of the North Waypoint — . Interact with it and select \" Submerge the crystal into the scrying pool.\""
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_experiments_in_the_shadows.html",
+              "name_api": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel.",
+              "how_jsx": {
                 "fr": "Le bassin de divination est au Panthéon des Hauts Faits — pas dans Janthir. Aller-retour à anticiper.",
                 "en": "The divination pool is in the Hall of Monuments - not in Janthir. Plan the round trip."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Use the scrying pool in the Hall of Monuments to attune the crystal to become a vessel."
+              "how_fr_missing": true
             },
             {
               "bit": 8,
@@ -19014,19 +19259,26 @@ const SOURCES_DB = {
               "bit": 9,
               "name": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing",
               "how": {
+                "fr": null,
+                "en": "Interact with Nightmare Contained located next to the blue marked boxes, to the right of Jorvik"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_experiments_in_the_shadows.html",
+              "name_api": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing.",
+              "how_jsx": {
                 "fr": "Dernière étape, purement dialoguée : elle valide la collection et débloque le composant de Orrax réprimé.",
                 "en": "Final step, pure dialogue: it validates the collection and unlocks the Orrax Contained component."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Talk to a shadowy being through their crystal mirror in Bava Nisos to acquire their blessing."
+              "how_fr_missing": true
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
           "unlock": {
+            "achievement": "Unknown Nightmares: Experiments in the Shadows",
             "prerequisite": {
               "name": "Salvation's Cost"
             },
+            "unlock_item": null,
             "reward": {
               "name": "Binding of the Dragon",
               "wiki": "Binding of the Dragon"
@@ -20078,105 +20330,166 @@ const SOURCES_DB = {
             {
               "bit": 0,
               "how": {
+                "fr": null,
+                "en": "North-West from Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Gendarran Fields Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Gendarran Fields Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "how": {
+                "fr": null,
+                "en": "North-East from Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Harathi Hinterlands Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Harathi Hinterlands Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 2,
               "how": {
+                "fr": null,
+                "en": "South east from Waypoint. Located in a wrecked ship NE of Merchantman's Strait midway between Stormbluff Isle waypoint and Remanda Waypoint . You can see the ship's crow's nest sticking out from the water. Note: there are two chests in this ship; the Sunken Chest is on the seabed under the front of the wreck, while Penzan's Lost Treasure is in the middle of the wreck on a deck along with two other non-interactive chests"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Bloodtide Coast Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Bloodtide Coast Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 3,
               "how": {
+                "fr": null,
+                "en": "West from Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Kessex Hills Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Kessex Hills Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 4,
               "how": {
+                "fr": null,
+                "en": "North-Northeast from Waypoint. Above the cave near Spentlung Depth , not inside of it"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Iron Marches Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Iron Marches Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 5,
               "how": {
+                "fr": null,
+                "en": "East from Waypoint in rock cave"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Snowden Drifts Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Snowden Drifts Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 6,
               "how": {
+                "fr": null,
+                "en": "Southwest from Waypoint. Above the Iron Horse Mines point of interest, not below in the tunnels"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Frostgorge Sound Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Frostgorge Sound Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 7,
               "how": {
+                "fr": null,
+                "en": "West-Southwest from Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Lornar's Pass Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Lornar's Pass Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 8,
               "how": {
+                "fr": null,
+                "en": "West from Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Timberline Falls Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Timberline Falls Sunken Chest Looted"
+              "how_fr_missing": true
             },
             {
               "bit": 9,
               "how": {
+                "fr": null,
+                "en": "North-northeast of the Waypoint"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/master_diver.html",
+              "name": "Mount Maelstrom Sunken Chest Looted",
+              "how_jsx": {
                 "fr": "Coffre englouti — pense à acheter tes Clés rouillées ouvragées chez la Maîtresse de la plongée Astora AVANT de partir : chaque coffre en consomme une, et il n'y a pas de vendeur sur place.",
                 "en": "Sunken chest - remember to buy your Ornate Rusted Keys from Dive Master Astora BEFORE setting out: each chest consumes one, and there's no vendor on site."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Mount Maelstrom Sunken Chest Looted"
+              "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Master Diver",
+            "prerequisite": null,
+            "unlock_item": null,
+            "reward": {
+              "name": "Swim-Speed Infusion +10",
+              "wiki": "Swim-Speed Infusion %2B10"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "selachi_shipwreck": {
           "id": 8880,
@@ -51684,18 +51997,24 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "druid_runestone"
             },
             {
               "bit": 2,
               "name": "The Druid's Story",
               "how": {
+                "fr": null,
+                "en": "Bring a Druid Runestone to Kodama , located inside Druid's Grotto — in the Savage Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_druid_stone.html",
+              "name_api": "Hand the stone to Kodama",
+              "how_jsx": {
                 "fr": "Kodama est dans Druid's Grotto [&BMUJAAA=], Savage Rise.",
                 "en": "Kodama is inside Druid's Grotto [&BMUJAAA=], Savage Rise."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Hand the stone to Kodama"
+              "how_fr_missing": true
             },
             {
               "bit": 3,
@@ -51748,6 +52067,9 @@ const SOURCES_DB = {
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
           "unlock": {
+            "achievement": "The Druid Stone",
+            "prerequisite": null,
+            "unlock_item": null,
             "reward": {
               "name": "Druid Stone",
               "wiki": "Druid Stone"
@@ -51828,10 +52150,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
-              "how_jsx": {
-                "fr": "Donné par le Restless Arboreal Spirit près de Seraph Observers Waypoint [&BGIAAAA=], Brisban Wildlands.",
-                "en": "Given by the Restless Arboreal Spirit near Seraph Observers Waypoint [&BGIAAAA=], Brisban Wildlands."
-              },
               "how_fr_missing": true
             },
             {
@@ -51866,10 +52184,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
-              "how_jsx": {
-                "fr": "Rotting Ancient Oakheart — event « Defeat the corrupted veteran oakheart » près de Greatheart Weald [&BIoGAAA=], Queensdale.",
-                "en": "Rotting Ancient Oakheart — 'Defeat the corrupted veteran oakheart' event near Greatheart Weald [&BIoGAAA=], Queensdale."
-              },
               "how_fr_missing": true
             },
             {
@@ -51933,10 +52247,6 @@ const SOURCES_DB = {
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
               "name_api": "A Bouquet for Broadleaf — 3 blossoms",
-              "how_jsx": {
-                "fr": "Broadleaf : sur une corniche surplombant Savage Rise.",
-                "en": "Broadleaf: on a ledge above the Savage Rise."
-              },
               "how_fr_missing": true
             },
             {
@@ -52001,11 +52311,12 @@ const SOURCES_DB = {
               "bit": 1,
               "name": "Element of the Saurians",
               "how": {
-                "fr": "Stonehead King — event « Slay the stonehead » (Savage Rise). Parler à Vigil Scout Premhoc au NE de Scout's Clearing [&BNAJAAA=] pour lancer l'event précédent.",
-                "en": "Stonehead King — 'Slay the stonehead' event (Savage Rise). Talk to Vigil Scout Premhoc northeast of Scout's Clearing [&BNAJAAA=] to start the preceding event."
+                "fr": null,
+                "en": "Dropped by the Stonehead King in [Group Event] Slay the stonehead (80) in the Savage Rise . Talk to Vigil Scout Premhoc northeast of Scout's Clearing — to start the preceding event"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
@@ -52034,11 +52345,16 @@ const SOURCES_DB = {
               "bit": 4,
               "name": "Element of the Empire",
               "how": {
+                "fr": null,
+                "en": "Dropped by the Emperor Mattake in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "how_jsx": {
                 "fr": "Emperor Mattake, Draconis Mons.",
                 "en": "Emperor Mattake, Draconis Mons."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 5,
@@ -52067,11 +52383,16 @@ const SOURCES_DB = {
               "bit": 7,
               "name": "Element of Webby",
               "how": {
+                "fr": null,
+                "en": "Dropped by the Webby Mother in Draconis Mons"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "how_jsx": {
                 "fr": "Webby Mother, Draconis Mons.",
                 "en": "Webby Mother, Draconis Mons."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_fr_missing": true
             },
             {
               "bit": 8,
@@ -52100,11 +52421,12 @@ const SOURCES_DB = {
               "bit": 10,
               "name": "Element of the Wurm",
               "how": {
-                "fr": "Bloodstone-Charged Lava Wurm, Draconis Mons.",
-                "en": "Bloodstone-Charged Lava Wurm, Draconis Mons."
+                "fr": null,
+                "en": "Dropped by the Bloodstone-Charged Lava Wurm in Draconis Mons"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
@@ -52133,11 +52455,12 @@ const SOURCES_DB = {
               "bit": 13,
               "name": "Element of Arcanum",
               "how": {
-                "fr": "Inquest Power Suit, Draconis Mons.",
-                "en": "Inquest Power Suit, Draconis Mons."
+                "fr": null,
+                "en": "Dropped by the Inquest Power Suit in Draconis Mons"
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
@@ -52214,20 +52537,27 @@ const SOURCES_DB = {
               "bit": 20,
               "name": "Propagation of the Fire Orchid",
               "how": {
+                "fr": null,
+                "en": "Plant a Fire Orchid Seed in the Fertile Soil within Druid's Grotto — in the Savage Rise of Draconis Mons. The fertile soil is on the other side of the grotto from Kodama to the south, on a ledge near the flax node ring"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sprouting_the_druid_stone.html",
+              "name_api": "Propagation of the Fire Orchid — plant 3 seeds",
+              "how_jsx": {
                 "fr": "Fertile Soil : de l'autre côté de la grotte par rapport à Kodama, au sud, sur une corniche près du cercle de nœuds de lin.",
                 "en": "Fertile Soil: on the far side of the grotto from Kodama, to the south, on a ledge near the flax node ring."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Propagation of the Fire Orchid — plant 3 seeds"
+              "how_fr_missing": true
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
           "unlock": {
+            "achievement": "Sprouting the Druid Stone",
             "prerequisite": {
               "name": "Awakening the Druid Stone",
               "wiki": "Awakening the Druid Stone"
             },
+            "unlock_item": null,
             "reward": {
               "name": "Blooming Druid Stone",
               "wiki": "Blooming Druid Stone"
@@ -52390,10 +52720,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
-              "how_jsx": {
-                "fr": "Ice Elementals.",
-                "en": "Ice Elementals."
-              },
               "how_fr_missing": true
             },
             {
@@ -52416,10 +52742,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
-              "how_jsx": {
-                "fr": "Air Elementals et Sparks.",
-                "en": "Air Elementals and Sparks."
-              },
               "how_fr_missing": true
             },
             {
@@ -52442,10 +52764,6 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
-              "how_jsx": {
-                "fr": "Earth Elementals.",
-                "en": "Earth Elementals."
-              },
               "how_fr_missing": true
             },
             {
@@ -54218,13 +54536,18 @@ const SOURCES_DB = {
             {
               "bit": 0,
               "how": {
+                "fr": null,
+                "en": "Talk to Amira in the northwest corner of Sun's Refuge ; she has a \"collection available\" map icon"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_convergence_of_sorrow_i_elegy.html",
+              "name": "Amira's Lament",
+              "name_api": "Find the Awakened armorsmith in Sun's Refuge.",
+              "how_jsx": {
                 "fr": "Départ de la chaîne : la forgeronne d'armures éveillée se trouve au Refuge du soleil, à Jahai. Tout le reste en découle.",
                 "en": "Start of the chain: the Awakened armorsmith is at Sun's Refuge, in Jahai. Everything else follows from her."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Amira's Lament",
-              "name_api": "Find the Awakened armorsmith in Sun's Refuge."
+              "how_fr_missing": true
             },
             {
               "bit": 1,
@@ -54325,24 +54648,34 @@ const SOURCES_DB = {
             {
               "bit": 9,
               "how": {
+                "fr": null,
+                "en": "Return to Amira in the Sun's Refuge"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_convergence_of_sorrow_i_elegy.html",
+              "name": "Commission",
+              "name_api": "Bring an idea, and two memories, to the armorsmith.",
+              "how_jsx": {
                 "fr": "Point de bascule : c'est la remise des trois objets qui ouvre la seconde moitié (les mémoriaux). Ne farme pas les mémoriaux avant.",
                 "en": "Turning point: handing over the three items opens the second half (the memorials). Don't farm memorials before this."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Commission",
-              "name_api": "Bring an idea, and two memories, to the armorsmith."
+              "how_fr_missing": true
             },
             {
               "bit": 10,
               "how": {
+                "fr": null,
+                "en": "Purchase an Awakened Memorial from Amira using 20 Orichalcum Ingots . From Soul's Vendetta Waypoint — travel to and repair the Ruined Memorial in Wurmhaven , west of Wurmmarshal's Encampment . Then return to Amira to purchase the next memorial"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_convergence_of_sorrow_i_elegy.html",
+              "name": "Memorial for a Soldier",
+              "name_api": "A memorial among wurms and bones.",
+              "how_jsx": {
                 "fr": "Les mémoriaux 10 à 16 sont des énigmes de lieu dans Jahai. Fais-les d'une traite avec une carte de marqueurs, sinon tu y repasseras dix fois.",
                 "en": "Memorials 10 to 16 are location riddles across Jahai. Do them in one pass with a marker pack, otherwise you'll come back ten times."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Memorial for a Soldier",
-              "name_api": "A memorial among wurms and bones."
+              "how_fr_missing": true
             },
             {
               "bit": 11,
@@ -54419,24 +54752,34 @@ const SOURCES_DB = {
             {
               "bit": 17,
               "how": {
+                "fr": null,
+                "en": "Talk to Eladaar, near Soul's Vendetta Waypoint —"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_convergence_of_sorrow_i_elegy.html",
+              "name": "Invitation",
+              "name_api": "Find the destroyer.",
+              "how_jsx": {
                 "fr": "« Trouver le destructeur » : c'est un combat, prévois d'être accompagné ou en build solide.",
                 "en": "'Find the destroyer': this is a fight, bring company or a solid build."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Invitation",
-              "name_api": "Find the destroyer."
+              "how_fr_missing": true
             },
             {
               "bit": 18,
               "how": {
+                "fr": null,
+                "en": "Return to the Ruined Memorial northwest of Venta Pass Waypoint — again"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/the_convergence_of_sorrow_i_elegy.html",
+              "name": "Convergence",
+              "name_api": "Where all things come together.",
+              "how_jsx": {
                 "fr": "Dernière étape, elle se déclenche seulement une fois les 18 précédentes validées.",
                 "en": "Final step, it only triggers once the previous 18 are validated."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Convergence",
-              "name_api": "Where all things come together."
+              "how_fr_missing": true
             },
             {
               "bit": 19,
@@ -54452,6 +54795,9 @@ const SOURCES_DB = {
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
           "unlock": {
+            "achievement": "The Convergence of Sorrow I: Elegy",
+            "prerequisite": null,
+            "unlock_item": null,
             "reward": {
               "name": "Box of Elegy Armor",
               "wiki": "Box of Elegy Armor"
@@ -54491,165 +54837,274 @@ const SOURCES_DB = {
             {
               "bit": 0,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood axe"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Axe",
+              "name_api": "Acquired a Dragonsblood axe.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood axe."
+              "how_fr_missing": true
             },
             {
               "bit": 1,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood dagger"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Dagger",
+              "name_api": "Acquired a Dragonsblood dagger.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood dagger."
+              "how_fr_missing": true
             },
             {
               "bit": 2,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood focus"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Focus",
+              "name_api": "Acquired a Dragonsblood focus.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood focus."
+              "how_fr_missing": true
             },
             {
               "bit": 3,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood greatsword"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Greatsword",
+              "name_api": "Acquired a Dragonsblood greatsword.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood greatsword."
+              "how_fr_missing": true
             },
             {
               "bit": 4,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood hammer"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Hammer",
+              "name_api": "Acquired a Dragonsblood hammer.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood hammer."
+              "how_fr_missing": true
             },
             {
               "bit": 5,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood longbow"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Longbow",
+              "name_api": "Acquired a Dragonsblood longbow.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood longbow."
+              "how_fr_missing": true
             },
             {
               "bit": 6,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood mace"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Mace",
+              "name_api": "Acquired a Dragonsblood mace.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood mace."
+              "how_fr_missing": true
             },
             {
               "bit": 7,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood pistol"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Pistol",
+              "name_api": "Acquired a Dragonsblood pistol.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood pistol."
+              "how_fr_missing": true
             },
             {
               "bit": 8,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood rifle"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Rifle",
+              "name_api": "Acquired a Dragonsblood rifle.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood rifle."
+              "how_fr_missing": true
             },
             {
               "bit": 9,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood scepter"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Scepter",
+              "name_api": "Acquired a Dragonsblood scepter.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood scepter."
+              "how_fr_missing": true
             },
             {
               "bit": 10,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood shield"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Shield",
+              "name_api": "Acquired a Dragonsblood shield.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood shield."
+              "how_fr_missing": true
             },
             {
               "bit": 11,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood short bow"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Short Bow",
+              "name_api": "Acquired a Dragonsblood short bow.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood short bow."
+              "how_fr_missing": true
             },
             {
               "bit": 12,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood staff"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Staff",
+              "name_api": "Acquired a Dragonsblood staff.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood staff."
+              "how_fr_missing": true
             },
             {
               "bit": 13,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood sword"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Sword",
+              "name_api": "Acquired a Dragonsblood sword.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood sword."
+              "how_fr_missing": true
             },
             {
               "bit": 14,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood torch"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Torch",
+              "name_api": "Acquired a Dragonsblood torch.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood torch."
+              "how_fr_missing": true
             },
             {
               "bit": 15,
               "how": {
+                "fr": null,
+                "en": "Hint: Acquired a Dragonsblood warhorn"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/journeyman_of_the_forge.html",
+              "name": "Dragonsblood Warhorn",
+              "name_api": "Acquired a Dragonsblood warhorn.",
+              "how_jsx": {
                 "fr": "⚠ Cette collection en demande 16 — Vision n'en demande que 6, et de SIX TYPES DIFFÉRENTS. Environ 60 Masse marquée par arme, soit ~360 pour Vision, contre ~960 pour finir celle-ci. Plafond : 25 nœuds/jour/compte aux Pics de Chef-Tonnerre.",
                 "en": "⚠ This collection asks for 16 — Vision only needs 6, of SIX DIFFERENT TYPES. Roughly 60 Branded Mass per weapon, so ~360 for Vision against ~960 to finish this one. Cap: 25 nodes per day per account in Thunderhead Peaks."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name": "Acquired a Dragonsblood warhorn."
+              "how_fr_missing": true
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Journeyman of the Forge",
+            "prerequisite": {
+              "name": "Dragonsblood"
+            },
+            "unlock_item": null,
+            "reward": {
+              "name": "Explore the Lost Epics of Deldrimor",
+              "wiki": "Explore the Lost Epics of Deldrimor"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "vis_ep_wareternal": {
           "id": 4689,
@@ -55544,12 +55999,18 @@ const SOURCES_DB = {
               "bit": 0,
               "name": "Gift of Blood",
               "how": {
+                "fr": null,
+                "en": "Hint: Refined from 50 Vials of Blood , 50 Vials of Thick Blood , 250 Vials of Potent Blood , and 100 Vials of Powerful Blood"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_relics_components.html",
+              "name_api": "Refined from 50 Vials Blood, 50 Vials of Thick Blood, 250 Vials of Potent Blood, and 100 Vials of Powerful Blood.",
+              "component": "gift_of_blood",
+              "how_jsx": {
                 "fr": "Les 8 dons de matériaux (étapes 1 à 8) consomment chacun 450 matériaux T1-T6. C'est le poste le plus coûteux : vérifie ton stockage AVANT d'acheter au comptoir.",
                 "en": "The 8 material gifts (steps 1 to 8) each consume 450 T1-T6 materials. This is the costliest item: check your storage BEFORE buying on the trading post."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Refined from 50 Vials Blood, 50 Vials of Thick Blood, 250 Vials of Potent Blood, and 100 Vials of Powerful Blood."
+              "how_fr_missing": true
             },
             {
               "bit": 1,
@@ -55561,7 +56022,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_bones"
             },
             {
               "bit": 2,
@@ -55573,7 +56035,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_claws"
             },
             {
               "bit": 3,
@@ -55585,7 +56048,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_dust"
             },
             {
               "bit": 4,
@@ -55597,7 +56061,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_fangs"
             },
             {
               "bit": 5,
@@ -55609,7 +56074,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_scales"
             },
             {
               "bit": 6,
@@ -55621,7 +56087,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_totems"
             },
             {
               "bit": 7,
@@ -55633,18 +56100,25 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_venom"
             },
             {
               "bit": 8,
               "name": "Mystic Clover",
               "how": {
+                "fr": null,
+                "en": "Hint: Sometimes acquired by combining Mystic Coins , Obsidian Shards , Globs of Ectoplasm , and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_relics_components.html",
+              "name_api": "Lyhr in the Wizard's Tower can also help create this.",
+              "component": "mystic_clover",
+              "how_jsx": {
                 "fr": "Lyhr, à la Tour du sorcier, fabrique ceci à ta place si la discipline te manque — inutile de monter un métier pour la relique.",
                 "en": "Lyhr, at the Wizard's Tower, crafts this for you if you lack the discipline - no need to level a craft for the relic."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Lyhr in the Wizard's Tower can also help create this."
+              "how_fr_missing": true
             },
             {
               "bit": 9,
@@ -55656,7 +56130,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_research"
             },
             {
               "bit": 10,
@@ -55667,18 +56142,25 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "thermocatalytic_reagent"
             },
             {
               "bit": 11,
               "name": "Hydrocatalytic Reagent",
               "how": {
+                "fr": null,
+                "en": "Used in the crafting of special items. Can be purchased from master craftspeople"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_relics_components.html",
+              "name_api": "Purchased from master craftspeople for research notes. \nResearch notes are acquired by deconstructing crafted items with research kits.\nResearch kits are bought from master craftspeople.",
+              "component": "hydrocatalytic_reagent",
+              "how_jsx": {
                 "fr": "Notes de recherche : obtenues en décomposant des objets fabriqués avec un kit de recherche. Décompose ce que tu produis plutôt que de le vendre.",
                 "en": "Research Notes: obtained by salvaging items crafted with a research kit. Salvage what you produce rather than selling it."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Purchased from master craftspeople for research notes. \nResearch notes are acquired by deconstructing crafted items with research kits.\nResearch kits are bought from master craftspeople."
+              "how_fr_missing": true
             },
             {
               "bit": 12,
@@ -55701,7 +56183,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "glob_of_ectoplasm"
             },
             {
               "bit": 14,
@@ -55712,18 +56195,25 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "mystic_facet"
             },
             {
               "bit": 15,
               "name": "Pile of Lucent Crystal",
               "how": {
+                "fr": null,
+                "en": "Refined from lucent motes. Used to craft runes and sigils"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/legendary_relics_components.html",
+              "name_api": "Lucent motes are acquired by salvaging runes, sigils, and relics.",
+              "component": "pile_of_lucent_crystal",
+              "how_jsx": {
                 "fr": "Particules luisantes : recyclage de runes, cachets et reliques. Tes vieilles runes légendaires de remplacement sont la meilleure source.",
                 "en": "Glob of Glimmering Particles: salvaged from runes, sigils and relics. Your old replacement runes are the best source."
               },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-              "name_api": "Lucent motes are acquired by salvaging runes, sigils, and relics."
+              "how_fr_missing": true
             },
             {
               "bit": 16,
@@ -55734,7 +56224,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_relics"
             },
             {
               "bit": 17,
@@ -55745,7 +56236,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_condensed_magic"
             },
             {
               "bit": 18,
@@ -55756,7 +56248,8 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_condensed_might"
             },
             {
               "bit": 19,
@@ -55768,10 +56261,19 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-              "how_fr_missing": true
+              "how_fr_missing": true,
+              "component": "gift_of_craftsmanship"
             }
           ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "unlock": {
+            "achievement": "Legendary Relics: Components",
+            "prerequisite": null,
+            "unlock_item": null,
+            "reward": null
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         }
       },
       "cadence_ref": [
@@ -57572,7 +58074,7 @@ const SOURCES_DB = {
       "name": "Starlit Weald Mastery",
       "threshold": 36,
       "source": "wiki:Starlit_Weald_(achievements)",
-      "verified": "2026-08-12",
+      "verified": "2026-09-01",
       "achievements": [
         [
           8904,
@@ -57791,9 +58293,7 @@ const SOURCES_DB = {
           "Inquest Hologram"
         ]
       ],
-      "notes": [
-        "« A Hunt for the Ages » est un objectif eligible de Starlit Weald mais n'est pas expose par /v2/achievements : aucun id, donc impossible a suivre. Retire de la liste plutot que laisse a null. Le seuil de 36 reste atteignable avec les 54 objectifs restants."
-      ]
+      "notes": "Le wiki liste 55 objectifs, l'API n'en expose que 54 : « A Hunt for the Ages » existe en jeu mais n'a pas d'identifiant expose. Recoupe le 01/09/2026 contre ressources/wiki/starlit_weald_achievements.html — les 54 autres correspondent nom pour nom. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre."
     },
     "3516": {
       "name": "\"One Path Ends\" Mastery",

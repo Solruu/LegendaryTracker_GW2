@@ -1,0 +1,810 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2024-08-20_jw_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Janthir_Wilds" title="Guild Wars 2: Janthir Wilds content"><img alt="Guild Wars 2: Janthir Wilds content" src="/images/thumb/6/60/Janthir_Wilds_logo.png/35px-Janthir_Wilds_logo.png" decoding="async" width="35" height="35" srcset="/images/thumb/6/60/Janthir_Wilds_logo.png/53px-Janthir_Wilds_logo.png 1.5x, /images/thumb/6/60/Janthir_Wilds_logo.png/70px-Janthir_Wilds_logo.png 2x" data-file-width="1638" data-file-height="1638"></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Mistburned Barrens (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=Mistburned_Barrens_Mastery&amp;redirect=no" class="mw-redirect" title="Mistburned Barrens Mastery">Mistburned Barrens Mastery</a>)</span></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190"> <i>This article is about the achievement category.  For the zone, see <a href="/wiki/Mistburned_Barrens" title="Mistburned Barrens">Mistburned Barrens</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">Mistburned Barrens</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned in <a href="/wiki/Mistburned_Barrens" title="Mistburned Barrens">Mistburned Barrens</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Mistburned_Barrens_(achievements).png" class="image"><img alt="Mistburned Barrens (achievements).png" src="/images/thumb/1/1a/Mistburned_Barrens_%28achievements%29.png/48px-Mistburned_Barrens_%28achievements%29.png" decoding="async" width="48" height="48" srcset="/images/1/1a/Mistburned_Barrens_%28achievements%29.png 1.5x" data-file-width="64" data-file-height="64"></a></div> Mistburned Barrens <small>(Janthir Wilds)</small>
+</th>
+<th>Total achievements: 27
+</th>
+<th style="text-align: right; border-left-width: 0;">9&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 46<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr id="achievement8582" class="widget-account-achievement line" data-id="achievement8582">
+<th id="Mistburned_Barrens_Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> Mistburned Barrens Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8582">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Complete 17 map achievements throughout Mistburned Barrens.<dl><dd><table style="width: 95%; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td colspan="3" style="padding:0;"><b>Rewards:</b>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">1:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Titan_Heatstone" title="Titan Heatstone"><img alt="Titan Heatstone.png" src="/images/thumb/2/20/Titan_Heatstone.png/20px-Titan_Heatstone.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/2/20/Titan_Heatstone.png/30px-Titan_Heatstone.png 1.5x, /images/thumb/2/20/Titan_Heatstone.png/40px-Titan_Heatstone.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Titan_Heatstone" title="Titan Heatstone">Titan Heatstone</a> (10)
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">2:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Mursaat_Obsidian_Chunk" title="Mursaat Obsidian Chunk"><img alt="Mursaat Obsidian Chunk.png" src="/images/thumb/c/c8/Mursaat_Obsidian_Chunk.png/20px-Mursaat_Obsidian_Chunk.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/c/c8/Mursaat_Obsidian_Chunk.png/30px-Mursaat_Obsidian_Chunk.png 1.5x, /images/thumb/c/c8/Mursaat_Obsidian_Chunk.png/40px-Mursaat_Obsidian_Chunk.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Mursaat_Obsidian_Chunk" title="Mursaat Obsidian Chunk">Mursaat Obsidian Chunk</a> (10)
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">3:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Curious_Mursaat_Ruin_Shard" title="Curious Mursaat Ruin Shard"><img alt="Curious Mursaat Ruin Shard.png" src="/images/thumb/1/13/Curious_Mursaat_Ruin_Shard.png/20px-Curious_Mursaat_Ruin_Shard.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/1/13/Curious_Mursaat_Ruin_Shard.png/30px-Curious_Mursaat_Ruin_Shard.png 1.5x, /images/thumb/1/13/Curious_Mursaat_Ruin_Shard.png/40px-Curious_Mursaat_Ruin_Shard.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Curious_Mursaat_Ruin_Shard" title="Curious Mursaat Ruin Shard">Curious Mursaat Ruin Shard</a> (20)
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">4:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Salmon_of_Knowledge_Backpiece" title="Salmon of Knowledge Backpiece"><img alt="Salmon of Knowledge Backpiece.png" src="/images/thumb/8/8b/Salmon_of_Knowledge_Backpiece.png/20px-Salmon_of_Knowledge_Backpiece.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/8/8b/Salmon_of_Knowledge_Backpiece.png/30px-Salmon_of_Knowledge_Backpiece.png 1.5x, /images/thumb/8/8b/Salmon_of_Knowledge_Backpiece.png/40px-Salmon_of_Knowledge_Backpiece.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Salmon_of_Knowledge_Backpiece" title="Salmon of Knowledge Backpiece">Salmon of Knowledge Backpiece</a></td></tr></tbody></table></dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">23 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8592" title="Mistburned Barrens (achievements)">Into the Corridor</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8638" title="Mistburned Barrens (achievements)">Hollow Shards</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8566" title="Mistburned Barrens (achievements)">Thousandfold Mercy</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8577" title="Mistburned Barrens (achievements)">Demise of the Blood Phenom</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8585" title="Mistburned Barrens (achievements)">Scan and Soothe</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8624" title="Mistburned Barrens (achievements)">Restless No More</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8569" title="Mistburned Barrens (achievements)">Down in the Valley</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8620" title="Mistburned Barrens (achievements)">Silence the Screaming</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8595" title="Mistburned Barrens (achievements)">Boom!</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8555" title="Mistburned Barrens (achievements)">We Are the Champions</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8593" title="Mistburned Barrens (achievements)">More Than a Little Bit</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8591" title="Mistburned Barrens (achievements)">Pro Scavenger</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8623" title="Mistburned Barrens (achievements)">Respectable Researcher</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8574" title="Mistburned Barrens (achievements)">Search and Destroy</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8562" title="Mistburned Barrens (achievements)">Hazardous Research: Gold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8579" title="Mistburned Barrens (achievements)">Hazardous Research: Silver</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8637" title="Mistburned Barrens (achievements)">Search-and-Rescue Challenge: Gold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8640" title="Mistburned Barrens (achievements)">Search-and-Rescue Challenge: Silver</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8634" title="Mistburned Barrens (achievements)">A Job for Warclaws</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Janthir_Side_Stories#achievement8564" title="Janthir Side Stories">Scouring the Archive</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Janthir_Side_Stories#achievement8610" title="Janthir Side Stories">Reading Between the Lines</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8552" title="Mistburned Barrens (achievements)">Missing Scout</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Janthir_Side_Stories#achievement8584" title="Janthir Side Stories">Mursaat's Game</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 4 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8582">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 8 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8582">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 12 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8582">
+<td style="width:220px; vertical-align:top;" class="white">Completed 17 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8572" class="widget-account-achievement line" data-id="achievement8572">
+<th id="A_Cappella" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> A Cappella
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8572">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Succumb to spectral agony in the <a href="/wiki/Valley_of_Agony" title="Valley of Agony">Valley of Agony</a>.<span style="color:#686868; display: block;"><i>Those who join Yagon's twisted choir are doomed to sing forever.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Succumbed to Spectral Agony in the Valley of Agony
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8634" class="widget-account-achievement line" data-id="achievement8634">
+<th id="A_Job_for_Warclaws" style="text-align:left">A Job for Warclaws
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8634">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find all of the lost scouts in the <a href="/wiki/Mistburned_Barrens:_Search-and-Rescue_Challenge" title="Mistburned Barrens: Search-and-Rescue Challenge">Search-and-Rescue Challenge</a> without dismounting your <a href="/wiki/Warclaw" title="Warclaw">warclaw</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Found All of the Lost Scouts without Dismounting Your Warclaw
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8606" class="widget-account-achievement line" data-id="achievement8606">
+<th id="Be_Free,_Little_Bot" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Program_the_golems_and_bring_them_to_the_ruins_entrance" title="Program the golems and bring them to the ruins entrance">Be Free, Little Bot</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8606">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Liberate a <a href="/wiki/H.O.X." title="H.O.X.">golem</a> from its humanoid oppressors.<span style="color:#686868; display: block;"><i>They can't see us. Quick, run for your life!</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup><sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Freed 1 Bots
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8595" class="widget-account-achievement line" data-id="achievement8595">
+<th id="Boom!" style="text-align:left">Boom!
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8595">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Cause a massive explosion by overloading the jade construct.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Overloaded the Jade Construct
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8577" class="widget-account-achievement line" data-id="achievement8577">
+<th id="Demise_of_the_Blood_Phenom" style="text-align:left">Demise of the Blood Phenom
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8577">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Stop_Manikaz_from_completing_his_ritual" title="Stop Manikaz from completing his ritual">Stop Manikaz</a> from completing his plan.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Stopped Manikaz
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8569" class="widget-account-achievement line" data-id="achievement8569">
+<th id="Down_in_the_Valley" style="text-align:left">Down in the Valley
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8569">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Throw <a href="/wiki/Coalesced_Mists_energy" class="mw-redirect" title="Coalesced Mists energy">coalesced Mists energy</a> to the jade construct.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Threw 50 Total Energy
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8569">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Threw 100 Total Energy
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8569">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Threw 150 Total Energy
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8569">
+<td style="width:220px; vertical-align:top;" class="white">Threw 200 Total Energy
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8560" class="widget-account-achievement line" data-id="achievement8560">
+<th id="Flawless_Crafter" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Craft_bows_for_the_survey" title="Craft bows for the survey">Flawless Crafter</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8560">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully craft your bows without missing a carve during the preparation for the central survey.<span style="color:#686868; display: block;"><i>Those are some smooth woodworking skills.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Crafted Bows without Missing a Stroke
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8568" class="widget-account-achievement line" data-id="achievement8568">
+<th id="Hazardous_Research:_Bronze" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"> Hazardous Research: Bronze
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8568">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a bronze medal in the <a href="/wiki/Mistburned_Barrens:_Hazardous_Research" title="Mistburned Barrens: Hazardous Research">Hazardous Research adventure</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Bronze Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8562" class="widget-account-achievement line" data-id="achievement8562">
+<th id="Hazardous_Research:_Gold" style="text-align:left">Hazardous Research: Gold
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8562">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a gold medal in the <a href="/wiki/Mistburned_Barrens:_Hazardous_Research" title="Mistburned Barrens: Hazardous Research">Hazardous Research adventure</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Gold Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8579" class="widget-account-achievement line" data-id="achievement8579">
+<th id="Hazardous_Research:_Silver" style="text-align:left">Hazardous Research: Silver
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8579">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a silver medal in the <a href="/wiki/Mistburned_Barrens:_Hazardous_Research" title="Mistburned Barrens: Hazardous Research">Hazardous Research adventure</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Silver Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8638" class="widget-account-achievement line" data-id="achievement8638">
+<th id="Hollow_Shards" style="text-align:left">Hollow Shards
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8638">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help Priory Scholar Ciana gather diminished bloodstone shards.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped Priory Scholar Ciana
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8592" class="widget-account-achievement line" data-id="achievement8592">
+<th id="Into_the_Corridor" style="text-align:left">Into the Corridor
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8592">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Escort Priory Scholar Ciana into the Bloodstone Corridor.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Escorted Priory Scholar Ciana
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8552" class="widget-account-achievement line" data-id="achievement8552">
+<th id="Missing_Scout" style="text-align:left"><a href="/wiki/Missing_Scout" title="Missing Scout">Missing Scout</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8552">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Complete the steps to investigate the missing scouts.<span style="color:#686868; display: block;"><i>There have been reports of missing scouts in the area. Maybe someone at the Alliance Staging Ground knows more.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">5 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Someone at the Alliance Staging Ground must know more.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Talk to Ocean Bloom and Blinding Sunrise about their missing friend.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Ocean Bloom and Blinding Sunrise said to seek out Quiet Lagoon, who is scouting in the north.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Quiet Lagoon is having me look for his missing scouts. Riven Marl should be among them.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Riven Marl was not among the missing scouts. Maybe they are lost somewhere else in these ruins.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Step
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8552">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 2 Steps
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8552">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 3 Steps
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8552">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 4 Steps
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8552">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 5 Steps
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8593" class="widget-account-achievement line" data-id="achievement8593">
+<th id="More_Than_a_Little_Bit" style="text-align:left">More Than a Little Bit
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8593">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Finish the Keep the Areas Clear while the Golems Gather Samples event with more than 1 minute remaining on the timer.<span style="color:#686868; display: block;"><i>Well...most of it came back clean.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-5" class="reference"><a href="#cite_note-5">[5]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Event Completed withing the Time Limit
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8591" class="widget-account-achievement line" data-id="achievement8591">
+<th id="Pro_Scavenger" style="text-align:left">Pro Scavenger
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8591">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the <a href="/wiki/Escort_the_Kodan_Wildstalker" title="Escort the Kodan Wildstalker">Escort the Kodan Wildstalker</a> event without the wildstalker being downed.<span style="color:#686868; display: block;"><i>How did you even find all of this?</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Event Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8576" class="widget-account-achievement line" data-id="achievement8576">
+<th id="Radioactive" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Overload_the_jade_construct_by_throwing_overcharged_coalesced_Mists_energy_into_it_while_it%27s_at_full_health" title="Overload the jade construct by throwing overcharged coalesced Mists energy into it while it's at full health">Radioactive</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8576">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Die in a massive bloodstone explosion.<span style="color:#686868; display: block;"><i>That could have gone better...</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Died When the Jade Construct Overloaded
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8623" class="widget-account-achievement line" data-id="achievement8623">
+<th id="Respectable_Researcher" style="text-align:left">Respectable Researcher
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8623">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the <a href="/wiki/Weaken_and_tranquilize_Mistburned_creatures_for_allies_to_research" title="Weaken and tranquilize Mistburned creatures for allies to research">Capture Mistburned Creatures for Allies to Research</a> event.<span style="color:#686868; display: block;"><i>Doing things as they should be done.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Event Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8624" class="widget-account-achievement line" data-id="achievement8624">
+<th id="Restless_No_More" style="text-align:left">Restless No More
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8624">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Help_the_southern_survey_team_put_the_ghosts_to_rest" title="Help the southern survey team put the ghosts to rest">Help the southern survey team put vengeful souls to rest</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Vengeful Souls Pacified
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8585" class="widget-account-achievement line" data-id="achievement8585">
+<th id="Scan_and_Soothe" style="text-align:left">Scan and Soothe
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8585">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Stop the Mistburned wildlife from destroying Priory scanners.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Stopped Mistburned Wildlife
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8574" class="widget-account-achievement line" data-id="achievement8574">
+<th id="Search_and_Destroy" style="text-align:left">Search and Destroy
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8574">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the Mistburned champion in the <a href="/wiki/Find_and_defeat_the_source_of_the_Mists_runoff_scent" title="Find and defeat the source of the Mists runoff scent">Find and Defeat the Source of the Mists Runoff Scent</a> event.<span style="color:#686868; display: block;"><i>I'd chase you to the ends of Tyria.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated the Mistburned Champion
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8604" class="widget-account-achievement line" data-id="achievement8604">
+<th id="Search-and-Rescue_Challenge:_Bronze" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"> Search-and-Rescue Challenge: Bronze
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8604">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a bronze medal while finding lost kodan scouts in the <a href="/wiki/Mistburned_Barrens:_Search-and-Rescue_Challenge" title="Mistburned Barrens: Search-and-Rescue Challenge">Search-and-Rescue challenge</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Bronze Medal in the Search-and-Rescue Challenge
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8637" class="widget-account-achievement line" data-id="achievement8637">
+<th id="Search-and-Rescue_Challenge:_Gold" style="text-align:left">Search-and-Rescue Challenge: Gold
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8637">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a gold medal while finding lost kodan scouts in the <a href="/wiki/Mistburned_Barrens:_Search-and-Rescue_Challenge" title="Mistburned Barrens: Search-and-Rescue Challenge">Search-and-Rescue challenge</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Gold Medal in the Search-and-Rescue Challenge
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8640" class="widget-account-achievement line" data-id="achievement8640">
+<th id="Search-and-Rescue_Challenge:_Silver" style="text-align:left">Search-and-Rescue Challenge: Silver
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8640">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a silver medal while finding lost kodan scouts in the <a href="/wiki/Mistburned_Barrens:_Search-and-Rescue_Challenge" title="Mistburned Barrens: Search-and-Rescue Challenge">Search-and-Rescue challenge</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Silver Medal in the Search-and-Rescue Challenge
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8620" class="widget-account-achievement line" data-id="achievement8620">
+<th id="Silence_the_Screaming" style="text-align:left"><a href="/wiki/Defeat_Yagon_and_the_captured_jade_construct" title="Defeat Yagon and the captured jade construct">Silence the Screaming</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8620">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Defeat_Yagon_and_the_captured_jade_construct" title="Defeat Yagon and the captured jade construct">Banish</a> <a href="/wiki/Yagon" title="Yagon">Yagon</a> from Tyria before she completes her foul ritual.<span style="color:#686868; display: block;"><i>The valley is silent...for now.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Banished Yagon from Tyria
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8566" class="widget-account-achievement line" data-id="achievement8566">
+<th id="Thousandfold_Mercy" style="text-align:left">Thousandfold Mercy
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8566">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help free the thousand souls trapped inside the bloodstone construct.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Freed the Trapped Souls
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8555" class="widget-account-achievement line" data-id="achievement8555">
+<th id="We_Are_the_Champions" style="text-align:left"><a href="/wiki/Keep_the_jade_construct_alive_by_throwing_coalesced_Mists_energy_into_it_as_it_fights_the_titanspawn" title="Keep the jade construct alive by throwing coalesced Mists energy into it as it fights the titanspawn">We Are the Champions</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8555">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help the <a href="/wiki/Champion_Jade_Armor" title="Champion Jade Armor">jade construct</a> defeat the other champions.<span style="color:#686868; display: block;"><i>My ten-ton killer behemoth is better than your killer behemoths.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[7]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped the Jade Construct
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Mistburned_Barrens_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8595" title="Mistburned Barrens (achievements)">Boom!</a>, <a href="/wiki/Mistburned_Barrens_(achievements)#achievement8620" title="Mistburned Barrens (achievements)">Silence the Screaming</a> and <a href="/wiki/Mistburned_Barrens_(achievements)#achievement8555" title="Mistburned Barrens (achievements)">We Are the Champions</a> share a mastery point.</li>
+<li><a href="/wiki/Mistburned_Barrens_(achievements)#achievement8623" title="Mistburned Barrens (achievements)">Respectable Researcher</a> and <a href="/wiki/Mistburned_Barrens_(achievements)#achievement8593" title="Mistburned Barrens (achievements)">More Than a Little Bit</a> share a mastery point.</li></ul>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>A Job for Warclaws</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_A_Job_for_Warclaws" title="Achievement Eligibility: A Job for Warclaws"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_A_Job_for_Warclaws" title="Achievement Eligibility: A Job for Warclaws">Achievement Eligibility: A Job for Warclaws</a>.</span>
+</li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Be Free, Little Bot</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Be_Free,_Little_Bot" title="Achievement Eligibility: Be Free, Little Bot"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Be_Free,_Little_Bot" title="Achievement Eligibility: Be Free, Little Bot">Achievement Eligibility: Be Free, Little Bot</a>.</span>
+</li>
+<li id="cite_note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Be Free, Little Bot</b>: During <span class="inline-icon"><a href="/wiki/Dynamic_event" title="Dynamic event"><img alt="Event collect (tango icon).png" src="/images/e/ec/Event_collect_%28tango_icon%29.png" decoding="async" width="20" height="20" data-file-width="20" data-file-height="20"></a></span> [Group Event] <a href="/wiki/Program_the_golems_and_bring_them_to_the_ruins_entrance" title="Program the golems and bring them to the ruins entrance">Program the golems and bring them to the ruins entrance</a> (80), leave the event area after programming a bot, without turning it in.</span>
+</li>
+<li id="cite_note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>Down in the Valley</b>: The overcharged coalesced Mists energy spawned during <span class="inline-icon"><a href="/wiki/Dynamic_event" title="Dynamic event"><img alt="Event collect (tango icon).png" src="/images/e/ec/Event_collect_%28tango_icon%29.png" decoding="async" width="20" height="20" data-file-width="20" data-file-height="20"></a></span> [Group Event] <a href="/wiki/Overload_the_jade_construct_by_throwing_overcharged_coalesced_Mists_energy_into_it_while_it%27s_at_full_health" title="Overload the jade construct by throwing overcharged coalesced Mists energy into it while it's at full health">Overload the jade construct by throwing overcharged coalesced Mists energy into it while it's at full health</a> (80) does not progress this achievement. The two versions can be distinguished by their behaviour. The overcharged version stacks up to 10 times, while the normal version only allows one charge being carried at a time.</span>
+</li>
+<li id="cite_note-5"><b><a href="#cite_ref-5">^</a></b> <span class="reference-text"><b>More Than a Little Bit</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_More_Than_a_Little_Bit" title="Achievement Eligibility: More Than a Little Bit"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_More_Than_a_Little_Bit" title="Achievement Eligibility: More Than a Little Bit">Achievement Eligibility: More Than a Little Bit</a>.</span>
+</li>
+<li id="cite_note-6"><b><a href="#cite_ref-6">^</a></b> <span class="reference-text"><b>Pro Scavenger</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Pro_Scavenger" title="Achievement Eligibility: Pro Scavenger"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Pro_Scavenger" title="Achievement Eligibility: Pro Scavenger">Achievement Eligibility: Pro Scavenger</a>.</span>
+</li>
+<li id="cite_note-7"><b><a href="#cite_ref-7">^</a></b> <span class="reference-text"><b>We Are the Champions</b>: During <span class="inline-icon"><a href="/wiki/Dynamic_event" title="Dynamic event"><img alt="Event collect (tango icon).png" src="/images/e/ec/Event_collect_%28tango_icon%29.png" decoding="async" width="20" height="20" data-file-width="20" data-file-height="20"></a></span> [Group Event] <a href="/wiki/Keep_the_jade_construct_alive_by_throwing_coalesced_Mists_energy_into_it_as_it_fights_the_titanspawn" title="Keep the jade construct alive by throwing coalesced Mists energy into it as it fights the titanspawn">Keep the jade construct alive by throwing coalesced Mists energy into it as it fights the titanspawn</a> (80), help destroy the <a href="/wiki/Titanspawn" class="mw-redirect" title="Titanspawn">titanspawn</a> <a href="/wiki/Champion" class="mw-redirect" title="Champion">champions</a> the <a href="/wiki/Champion_Jade_Armor" title="Champion Jade Armor">Champion Jade Armor</a> is fighting (<a href="/wiki/Champion_Ruinshard_Shambler" title="Champion Ruinshard Shambler">Champion Ruinshard Shambler</a>, <a href="/wiki/Champion_Rot_Strider" title="Champion Rot Strider">Rot Strider</a> and <a href="/wiki/Champion_Sentient_Conduit" title="Champion Sentient Conduit">Sentient Conduit</a>) in <span class="inline-icon"><a href="/wiki/Point_of_Interest" title="Point of Interest"><img alt="Point of interest (map icon).png" src="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/20px-Point_of_interest_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/30px-Point_of_interest_%28map_icon%29.png 1.5x, /images/7/70/Point_of_interest_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Yagon%27s_Gift" title="Yagon's Gift">Yagon's Gift</a> — <span class="gamelink" id="gamelink-1" data-type="map" data-id="3916" title="3916"></span><script>!function(){const t=document.getElementById('gamelink-1');if(!t)return;const e=function(t,e){if(!t)return"invalid type (blank)";const n={item:2,text:3,map:4,skill:6,trait:7,recipe:9,skin:10,outfit:11}[t.trim().toLowerCase()]||0;if(!n)return"invalid type";let i=+e;const l=[];for(;i>0;)l.push(255&i),i>>=8;for(;l.length<4||l.length%2!=0;)l.push(0);2==n&&l.unshift(1),l.unshift(n);let r="";for(let t=0;t<l.length;t++)r+=String.fromCharCode(l[t]);return"[&"+btoa(r)+"]"}(t.getAttribute("data-type"),t.getAttribute("data-id")),n=document.createElement("input");n.className="chatlink",n.type="text",n.value=e,n.readOnly=!0,n.spellcheck=!1,t.appendChild(document.createTextNode(e)),t.parentNode.insertBefore(n,t),t.addEventListener("click",function(){t.style.visibility="hidden",n.style.display="inline-block",n.focus(),n.select(),document.execCommand("Copy")},!1),n.addEventListener("blur",function(){n.style.display=null,t.style.visibility=null},!1)}();</script> by using a long range ability like a <a href="/wiki/Skyscale" title="Skyscale">Skyscale</a>  <span style="overflow: hidden; width: 20px; height: 20px; display:inline-block; vertical-align:middle;"><span style="margin: -3.333px; overflow: hidden; display: inline-block;"><a href="/wiki/Fireball_(skyscale)" title="Fireball (skyscale)"><img alt="Fireball Skyscale.png" src="/images/thumb/b/b7/Fireball_Skyscale.png/27px-Fireball_Skyscale.png" decoding="async" width="27" height="27" srcset="/images/thumb/b/b7/Fireball_Skyscale.png/41px-Fireball_Skyscale.png 1.5x, /images/thumb/b/b7/Fireball_Skyscale.png/54px-Fireball_Skyscale.png 2x" data-file-width="128" data-file-height="128"></a></span></span>&nbsp;<a href="/wiki/Fireball_(skyscale)" title="Fireball (skyscale)">Fireball</a>.</span>
+</li>
+</ol></div>
+<hr style="margin: 1em 0em; clear: both;">
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">Categories
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Janthir_(achievements)" title="Janthir (achievements)">Janthir</a></li>
+<li><a href="/wiki/Lowland_Shore_(achievements)" title="Lowland Shore (achievements)">Lowland Shore</a></li>
+<li><a href="/wiki/Janthir_Syntri_(achievements)" title="Janthir Syntri (achievements)">Janthir Syntri</a></li>
+<li><a class="mw-selflink selflink">Mistburned Barrens</a></li>
+<li><a href="/wiki/Bava_Nisos_(achievements)" title="Bava Nisos (achievements)">Bava Nisos</a></li>
+<li><a href="/wiki/Convergences:_Mount_Balrior" title="Convergences: Mount Balrior">Convergences: Mount Balrior</a></li>
+<li><a href="/wiki/Weekly_Rift_Hunting_(Janthir_Wilds)" title="Weekly Rift Hunting (Janthir Wilds)">Weekly Rift Hunting</a></li>
+<li><a href="/wiki/Repeatable" title="Repeatable">Repeatable</a></li>
+<li><a href="/wiki/Janthir_Side_Stories" title="Janthir Side Stories">Janthir Side Stories</a></li>
+<li><a href="/wiki/Legendary_Spear:_Klobjarne_Geirr" title="Legendary Spear: Klobjarne Geirr">Legendary Spear: Klobjarne Geirr</a></li>
+<li><a href="/wiki/Legendary_Backpack:_Orrax_Manifested" title="Legendary Backpack: Orrax Manifested">Legendary Backpack: Orrax Manifested</a></li>
+<li><a href="/wiki/Renown_Hearts_(achievements)" title="Renown Hearts (achievements)">Renown Hearts</a></li>
+<li><a href="/wiki/Mastery_Insights_(Janthir_Wilds)" title="Mastery Insights (Janthir Wilds)">Mastery Insights</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260901150219
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.584 seconds
+Real time usage: 0.775 seconds
+Preprocessor visited node count: 14129/1000000
+Post‐expand include size: 161957/2097152 bytes
+Template argument size: 41953/2097152 bytes
+Highest expansion depth: 17/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 6752/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  650.854      1 -total
+ 73.70%  479.708     27 Template:Achievement_table_row
+ 11.32%   73.695      1 Template:Achievement_category_infobox
+ 10.00%   65.073      1 Template:Achievement_nav
+  7.18%   46.747      4 Template:Effect
+  6.99%   45.524      3 Template:Event
+  4.86%   31.642      4 Template:Effect_icon
+  4.09%   26.590     21 Template:Ifexists
+  3.80%   24.716      1 Template:Poi
+  2.70%   17.588      1 Template:Achievement_table_header
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:392923-0!dateformat=default and timestamp 20260901150218 and revision id 3116553.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Mistburned_Barrens_(achievements)&amp;oldid=3116553#Mistburned_Barrens_Mastery">https://wiki.guildwars2.com/index.php?title=Mistburned_Barrens_(achievements)&amp;oldid=3116553#Mistburned_Barrens_Mastery</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Janthir_Wilds_content" title="Category:Janthir Wilds content">Janthir Wilds content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		

@@ -307,6 +307,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `envoy_armor_i_experimental_armor.html` | Envoy Armor I: Experimental Armor | collection, 18 objets | 2026-09-01 |
 | `envoy_armor_ii_refined_armor.html` | Envoy Armor II: Refined Armor | collection, 14 objets | 2026-09-01 |
 | `forge_guards_armor_collection.html` | Forge Guard's Armor Collection | collection, 6 objets — table sans colonne Notes | 2026-09-01 |
+| `glimmering_resin_weapon_collector.html` | Glimmering Resin Weapon Collector | collection, 17 objets — table sans colonne Notes | 2026-09-01 |
+| `incursive_investigation.html` | Incursive Investigation | méta — recoupement de meta_eligible, 5 objectifs | 2026-09-01 |
+| `journeyman_of_the_forge.html` | Journeyman of the Forge | collection, 16 objets | 2026-09-01 |
+| `legendary_armor_achievements.html` | Legendary Armor (achievements) | page de catégorie — contexte, non parsée | 2026-09-01 |
+| `legendary_backpack_ad_infinitum.html` | Legendary Backpack: Ad Infinitum | collection, 13 objets | 2026-09-01 |
+| `legendary_relics_components.html` | Legendary Relics: Components | collection, 20 objets — 20 renvois component | 2026-09-01 |
+| `legendary_weapons_achievements.html` | Legendary Weapons (achievements) | page de catégorie — contexte, non parsée | 2026-09-01 |
+| `living_world_return.html` | Living World Return | page de contexte — 24 méta Return, contenu retiré du jeu | 2026-09-01 |
+| `long_live_the_lich_achievements.html` | Long Live the Lich (achievements) | méta — recoupement de meta_eligible, 48 objectifs | 2026-09-01 |
+| `master_diver.html` | Master Diver | collection, 10 objets | 2026-09-01 |
+| `mistburned_barrens_achievements.html` | Mistburned Barrens (achievements) | méta — recoupement de meta_eligible, 23 objectifs | 2026-09-01 |
+| `mists_research.html` | Mists Research | collection, 8 objets | 2026-09-01 |
+| `mists_research_strife_unending.html` | Mists Research: Strife Unending | collection, 11 objets | 2026-09-01 |
+| `radiance_of_the_sun_god.html` | Radiance of the Sun God | collection, 20 objets | 2026-09-01 |
+| `shipwreck_strand_achievements.html` | Shipwreck Strand (achievements) | méta — recoupement de meta_eligible, 53 objectifs | 2026-09-01 |
+| `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-09-01 |
+| `starlit_weald_achievements.html` | Starlit Weald (achievements) | méta — 55 au wiki contre 54 à l'API, divergence confirmée | 2026-09-01 |
+| `the_convergence_of_sorrow_i_elegy.html` | The Convergence of Sorrow I: Elegy | collection, 20 objets | 2026-09-01 |
+| `the_druid_stone.html` | The Druid Stone | collection, 7 objets | 2026-09-01 |
+| `unknown_nightmares_experiments_in_the_shadows.html` | Unknown Nightmares: Experiments in the Shadows | collection, 10 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -361,7 +381,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **277 captures, 277 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **297 captures, 297 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

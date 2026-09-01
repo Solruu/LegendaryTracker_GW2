@@ -1,0 +1,1649 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2025-10-28_voe_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Visions_of_Eternity" title="Guild Wars 2: Visions of Eternity content"><img alt="Guild Wars 2: Visions of Eternity content" src="/images/thumb/c/cd/Visions_of_Eternity_logo.png/35px-Visions_of_Eternity_logo.png" decoding="async" width="35" height="35" srcset="/images/thumb/c/cd/Visions_of_Eternity_logo.png/53px-Visions_of_Eternity_logo.png 1.5x, /images/thumb/c/cd/Visions_of_Eternity_logo.png/70px-Visions_of_Eternity_logo.png 2x" data-file-width="1600" data-file-height="1600"></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Starlit Weald (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=Starlit_Weald_Mastery&amp;redirect=no" class="mw-redirect" title="Starlit Weald Mastery">Starlit Weald Mastery</a>)</span></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190"> <i>This article is about the achievement category.  For the zone, see <a href="/wiki/Starlit_Weald" title="Starlit Weald">Starlit Weald</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">Starlit Weald</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned in <a href="/wiki/Starlit_Weald" title="Starlit Weald">Starlit Weald</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Starlit_Weald_(achievements).png" class="image"><img alt="Starlit Weald (achievements).png" src="/images/thumb/8/88/Starlit_Weald_%28achievements%29.png/48px-Starlit_Weald_%28achievements%29.png" decoding="async" width="48" height="48" srcset="/images/8/88/Starlit_Weald_%28achievements%29.png 1.5x" data-file-width="64" data-file-height="64"></a></div> Starlit Weald <small>(Visions of Eternity)</small>
+</th>
+<th>Total achievements: 54
+</th>
+<th style="text-align: right; border-left-width: 0;">7&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 132<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr id="achievement9057" class="widget-account-achievement line" data-id="achievement9057">
+<th id="Starlit_Weald_Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> Starlit Weald Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9057">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Complete 36 map achievements throughout Starlit Weald.<dl><dd><table style="width: 95%; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td colspan="3" style="padding:0;"><b>Rewards:</b>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">1:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Relic_of_the_Mist_Stranger" title="Relic of the Mist Stranger"><img alt="Relic of the Mist Stranger.png" src="/images/thumb/9/97/Relic_of_the_Mist_Stranger.png/20px-Relic_of_the_Mist_Stranger.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/9/97/Relic_of_the_Mist_Stranger.png/30px-Relic_of_the_Mist_Stranger.png 1.5x, /images/thumb/9/97/Relic_of_the_Mist_Stranger.png/40px-Relic_of_the_Mist_Stranger.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Relic_of_the_Mist_Stranger" title="Relic of the Mist Stranger">Relic of the Mist Stranger</a>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">2:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Mastery_Point_(Visions_of_Eternity)" title="Mastery Point (Visions of Eternity)"><img alt="Mastery Point (Visions of Eternity).png" src="/images/thumb/b/bc/Mastery_Point_%28Visions_of_Eternity%29.png/20px-Mastery_Point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/b/bc/Mastery_Point_%28Visions_of_Eternity%29.png/30px-Mastery_Point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/b/bc/Mastery_Point_%28Visions_of_Eternity%29.png/40px-Mastery_Point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Mastery_Point_(Visions_of_Eternity)" title="Mastery Point (Visions of Eternity)">Mastery Point</a>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">3:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Raw_Enchanting_Stone" title="Raw Enchanting Stone"><img alt="Raw Enchanting Stone.png" src="/images/thumb/0/0a/Raw_Enchanting_Stone.png/20px-Raw_Enchanting_Stone.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/0/0a/Raw_Enchanting_Stone.png/30px-Raw_Enchanting_Stone.png 1.5x, /images/thumb/0/0a/Raw_Enchanting_Stone.png/40px-Raw_Enchanting_Stone.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Raw_Enchanting_Stone" title="Raw Enchanting Stone">Raw Enchanting Stone</a> (10)
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">4:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Alliance_Field_Operative%27s_Coat_Box" title="Alliance Field Operative's Coat Box"><img alt="Alliance Field Operative's Jacket.png" src="/images/thumb/7/79/Alliance_Field_Operative%27s_Jacket.png/20px-Alliance_Field_Operative%27s_Jacket.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/7/79/Alliance_Field_Operative%27s_Jacket.png/30px-Alliance_Field_Operative%27s_Jacket.png 1.5x, /images/thumb/7/79/Alliance_Field_Operative%27s_Jacket.png/40px-Alliance_Field_Operative%27s_Jacket.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Alliance_Field_Operative%27s_Coat_Box" title="Alliance Field Operative's Coat Box">Alliance Field Operative's Coat Box</a>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">4:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Seer_Wreath_of_Service" title="Seer Wreath of Service"><img alt="Seer Wreath of Service.png" src="/images/thumb/7/7c/Seer_Wreath_of_Service.png/20px-Seer_Wreath_of_Service.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/7/7c/Seer_Wreath_of_Service.png/30px-Seer_Wreath_of_Service.png 1.5x, /images/thumb/7/7c/Seer_Wreath_of_Service.png/40px-Seer_Wreath_of_Service.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Seer_Wreath_of_Service" title="Seer Wreath of Service">Seer Wreath of Service</a></td></tr></tbody></table></dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">55 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8904" title="Starlit Weald (achievements)">Great Choya Race: Bronze</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9049" title="Starlit Weald (achievements)">Great Choya Race: Gold</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9027" title="Starlit Weald (achievements)">Great Choya Race: Silver</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9040" title="Starlit Weald (achievements)">Starlit Weald Ley Line Adventure: Bronze</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9039" title="Starlit Weald (achievements)">Starlit Weald Ley Line Adventure: Gold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8884" title="Starlit Weald (achievements)">Starlit Weald Ley Line Adventure: Silver</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Castoran_Culture#achievement8919" title="Castoran Culture">Gwyl Rings</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9022" title="Starlit Weald (achievements)">Emergent Metamorphosis</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Castoran_Culture#achievement9048" title="Castoran Culture">A Magical Journey</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8967" title="Starlit Weald (achievements)">Choya Language Expert</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9045" title="Starlit Weald (achievements)">Grilling Buddies</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9069" title="Starlit Weald (achievements)">Dubious Dancing</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9062" title="Starlit Weald (achievements)">Choya Momentum</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9000" title="Starlit Weald (achievements)">Choya Champion</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8909" title="Starlit Weald (achievements)">Sylvan Shapeshifter</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9074" title="Starlit Weald (achievements)">Egg Protector</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9078" title="Starlit Weald (achievements)">On Second Thought...</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8986" title="Starlit Weald (achievements)">Sebb Subverter</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9061" title="Starlit Weald (achievements)">Skimming off the Top</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8867" title="Starlit Weald (achievements)">Read the Room</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8922" title="Starlit Weald (achievements)">No-Hit Run</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9077" title="Starlit Weald (achievements)">Project Bodyguard</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8902" title="Starlit Weald (achievements)">Rampage Router</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8933" title="Starlit Weald (achievements)">Leading from the Front</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9044" title="Starlit Weald (achievements)">A Hunt for the Ages</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8918" title="Starlit Weald (achievements)">Secret Spelunker</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9007" title="Starlit Weald (achievements)">Backdoor Exploit</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9083" title="Starlit Weald (achievements)">Inquest Saboteur</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8866" title="Starlit Weald (achievements)">Inquest Training Speed Runner</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9072" title="Starlit Weald (achievements)">Forest Caretaker</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9033" title="Starlit Weald (achievements)">Soup's On</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8938" title="Starlit Weald (achievements)">Huntmaster of Castora</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8856" title="Starlit Weald (achievements)">Wavehawk Savior</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8917" title="Starlit Weald (achievements)">Ancient Investigator</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8862" title="Starlit Weald (achievements)">Lost No Longer</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8937" title="Starlit Weald (achievements)">Starlit Tourist</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8996" title="Starlit Weald (achievements)">Treasures of the Last Vault</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8886" title="Starlit Weald (achievements)">Escape Artist: Defense Systems</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8982" title="Starlit Weald (achievements)">Dubious Exit</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8920" title="Starlit Weald (achievements)">Wavehawk Delivery</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9047" title="Starlit Weald (achievements)">Cuckoo Clock</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9025" title="Starlit Weald (achievements)">Sidony's Revenge</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9018" title="Starlit Weald (achievements)">Old Magic: Gold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9035" title="Starlit Weald (achievements)">Old Magic: Silver</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9003" title="Starlit Weald (achievements)">Orb Hopper</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9042" title="Starlit Weald (achievements)">Can't Fool Me</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8941" title="Starlit Weald (achievements)">Tread Lightly</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8942" title="Starlit Weald (achievements)">Back to Sleep</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8881" title="Starlit Weald (achievements)">Sketch Artist</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Renown_Hearts_(Visions_of_Eternity)#achievement8857" title="Renown Hearts (Visions of Eternity)">Foothold Bivouac Renown Mastery</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Renown_Hearts_(Visions_of_Eternity)#achievement9065" title="Renown Hearts (Visions of Eternity)">Untamed Crags Renown Mastery</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Renown_Hearts_(Visions_of_Eternity)#achievement8915" title="Renown Hearts (Visions of Eternity)">Priory Expedition Renown Mastery</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9028" title="Starlit Weald (achievements)">Birdie Benefactor</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement8952" title="Starlit Weald (achievements)">Meandering Magic</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Starlit_Weald_(achievements)#achievement9008" title="Starlit Weald (achievements)">Inquest Hologram</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 9 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9057">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 18 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9057">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 27 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9057">
+<td style="width:220px; vertical-align:top;" class="white">Completed 36 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9044" class="widget-account-achievement line" data-id="achievement9044">
+<th id="A_Hunt_for_the_Ages" style="text-align:left"><a href="/wiki/A_Hunt_for_the_Ages" title="A Hunt for the Ages">A Hunt for the Ages</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9044">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the giant beasts of Starlit Weald.<span style="color:#686868; display: block;"><i>Now to find a wall big enough for all the trophies.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tyrannus Man-Eater</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Spineshell Impaler</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tyrannus Emperor</li></ul></td></tr></tbody></table></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated 3 Giant Beasts
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8917" class="widget-account-achievement line" data-id="achievement8917">
+<th id="Ancient_Investigator" style="text-align:left"><a href="/wiki/Ancient_Investigator" title="Ancient Investigator">Ancient Investigator</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8917">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Investigate ancient locations and artifacts in Starlit Weald.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">6 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Assist an artifact investigation in the Overgrown Thicket.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Locate and decipher an ancient map.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat the Eternal Sentinel in the Lost Basilica.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Survive a trapped room in the Lost Basilica.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Follow a ghost to get some answers.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Assist an artifact investigation in the Crumbling Precipice.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 6 Events
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8942" class="widget-account-achievement line" data-id="achievement8942">
+<th id="Back_to_Sleep" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Subdue_Gwyllian,_Seneschal_of_the_Forest" title="Subdue Gwyllian, Seneschal of the Forest">Back to Sleep</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8942">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Subdue the <a href="/wiki/Gwyllian,_Seneschal_of_the_Forest" title="Gwyllian, Seneschal of the Forest">Seneschal of the Forest</a>.<dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Relic_of_Castora" title="Relic of Castora"><img alt="Relic of Castora.png" src="/images/thumb/4/49/Relic_of_Castora.png/20px-Relic_of_Castora.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/49/Relic_of_Castora.png/30px-Relic_of_Castora.png 1.5x, /images/thumb/4/49/Relic_of_Castora.png/40px-Relic_of_Castora.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Relic_of_Castora" title="Relic of Castora">Relic of Castora</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Secrets of the Weald Meta-Event
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9007" class="widget-account-achievement line" data-id="achievement9007">
+<th id="Backdoor_Exploit" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> Backdoor Exploit
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9007">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Enter the Lost Basilica through the secret entrance.<span style="color:#686868; display: block;"><i>That's probably not supposed to be there.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Found the Lost Basilica's Secret Entrance
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9028" class="widget-account-achievement line" data-id="achievement9028">
+<th id="Birdie_Benefactor" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Birdie_Benefactor" title="Birdie Benefactor">Birdie Benefactor</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9028">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully return the chick to its nest.<span style="color:#686868; display: block;"><i>You'll earn a medal for this one, soldier.</i></span><dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">5 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the fallen chick.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>First Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Second Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Third Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Return the chick to its nest.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Returned the Chick to Its Nest
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9042" class="widget-account-achievement line" data-id="achievement9042">
+<th id="Can't_Fool_Me" style="text-align:left"><a href="/wiki/Subdue_Gwyllian,_Seneschal_of_the_Forest" title="Subdue Gwyllian, Seneschal of the Forest">Can't Fool Me</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">6<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9042">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Successfully destroy the correct <a href="/wiki/Gwyldell" title="Gwyldell">illusion</a> of <a href="/wiki/Gwyllian,_Seneschal_of_the_Forest" title="Gwyllian, Seneschal of the Forest">Gwyllian</a> in the <a href="/wiki/Secrets_of_the_Weald" title="Secrets of the Weald">Secrets of the Weald</a> meta-event.<span style="color:#686868; display: block;"><i>You already know how that trick is done.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Destroyed 1 Illusion
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9042">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Destroyed 10 Illusions
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9042">
+<td style="width:220px; vertical-align:top;" class="offwhite">Destroyed 20 Illusions
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9000" class="widget-account-achievement line" data-id="achievement9000">
+<th id="Choya_Champion" style="text-align:left"><a href="/wiki/Reach_the_finish_line_in_the_Enchanting_Grottoes" title="Reach the finish line in the Enchanting Grottoes">Choya Champion</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9000">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn first place in the <a href="/wiki/Reach_the_finish_line_in_the_Enchanting_Grottoes" title="Reach the finish line in the Enchanting Grottoes">choya race</a>.<span style="color:#686868; display: block;"><i>Another trophy for the shelf.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Won the Choya Race
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8967" class="widget-account-achievement line" data-id="achievement8967">
+<th id="Choya_Language_Expert" style="text-align:left"><a href="/wiki/Dance_with_the_choya" title="Dance with the choya">Choya Language Expert</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8967">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Successfully copy 20 dance moves in the "<a href="/wiki/Dance_with_the_choya" title="Dance with the choya">Dance with the choya</a>" event.<span style="color:#686868; display: block;"><i>Your bodily wiggles now have nuance and depth.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Performed 5 Moves Correctly
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8967">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Performed 10 Moves Correctly
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8967">
+<td style="width:220px; vertical-align:top;" class="offwhite">Performed 20 Moves Correctly
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9062" class="widget-account-achievement line" data-id="achievement9062">
+<th id="Choya_Momentum" style="text-align:left">Choya Momentum
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9062">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Roll 20 times while transformed into a choya in Starlit Weald.
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Rolled 1 Time
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9062">
+<td style="width:220px; vertical-align:top;" class="white">Rolled 20 Times
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9047" class="widget-account-achievement line" data-id="achievement9047">
+<th id="Cuckoo_Clock" style="text-align:left"><a href="/wiki/Birdie_Benefactor" title="Birdie Benefactor">Cuckoo Clock</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9047">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully return the baby chick to its nest in under 4 minutes and 30 seconds.<span style="color:#686868; display: block;"><i>Nap time simply can't wait.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Baby Chick Returned within the Time Limit
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8911" class="widget-account-achievement line" data-id="achievement8911">
+<th id="Daily_Birdie_Benefactor" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Birdie_Benefactor" title="Birdie Benefactor">Daily Birdie Benefactor</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8911">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully return the chick to its nest.<span style="color:#686868; display: block;"><i>You'll earn a medal for this one, soldier.</i></span><dl><dd><b>Prerequisite:</b> <a href="/wiki/Starlit_Weald_(achievements)#achievement9028" title="Starlit Weald (achievements)">Birdie Benefactor</a></dd><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">5 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the fallen chick.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>First Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Second Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Third Checkpoint</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Return the chick to its nest.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Returned the Chick to Its Nest
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9041" class="widget-account-achievement line" data-id="achievement9041">
+<th id="Daily_Inquest_Hologram" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Inquest_Hologram" title="Inquest Hologram">Daily Inquest Hologram</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9041">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the <a href="/wiki/Inquest_Hologram" title="Inquest Hologram">Inquest Hologram</a> jumping puzzle.<dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Inquest Hologram Jumping Puzzle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9055" class="widget-account-achievement line" data-id="achievement9055">
+<th id="Daily_Meandering_Magic" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Meandering_Magic" title="Meandering Magic">Daily Meandering Magic</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9055">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully collect all of the magic essence and return to the brazier.<span style="color:#686868; display: block;"><i>Sometimes the real magic is the orbs we collect along the way.</i></span><dl><dd><b>Prerequisite:</b> <a href="/wiki/Starlit_Weald_(achievements)#achievement8952" title="Starlit Weald (achievements)">Meandering Magic</a></dd><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Meandering Magic Jumping Puzzle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9069" class="widget-account-achievement line" data-id="achievement9069">
+<th id="Dubious_Dancing" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Dance_with_the_choya" title="Dance with the choya">Dubious Dancing</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9069">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Use the /dance emote during the "<a href="/wiki/Dance_with_the_choya" title="Dance with the choya">Dance with the choya</a>" event.<span style="color:#686868; display: block;"><i>Your moves perplexed and even upset the choya dancers. How embarrassing.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Used the /dance Emote
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8982" class="widget-account-achievement line" data-id="achievement8982">
+<th id="Dubious_Exit" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> Dubious Exit
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8982">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Exit the Lost Basilica through the secret sewer exit.<span style="color:#686868; display: block;"><i>There's always a sewer level.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Exited the Lost Basilica through the Sewers
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9074" class="widget-account-achievement line" data-id="achievement9074">
+<th id="Egg_Protector" style="text-align:left"><a href="/wiki/Escort_Johanna_and_protect_the_eggs" title="Escort Johanna and protect the eggs">Egg Protector</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9074">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the "<a href="/wiki/Escort_Johanna_and_protect_the_eggs" title="Escort Johanna and protect the eggs">Escort Johanna and protect the eggs</a>" event without the eggs or Johanna being downed.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Protected Johanna and the Eggs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9022" class="widget-account-achievement line" data-id="achievement9022">
+<th id="Emergent_Metamorphosis" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Emergent_Metamorphosis" title="Emergent Metamorphosis">Emergent Metamorphosis</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9022">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Scour Castora to find the parts needed to power up the deactivated chrysalis.<dl><dd><b>Unlock Item:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Deactivated_Chrysalis_Backpiece" title="Deactivated Chrysalis Backpiece"><img alt="Deactivated Chrysalis Backpiece.png" src="/images/thumb/f/f5/Deactivated_Chrysalis_Backpiece.png/20px-Deactivated_Chrysalis_Backpiece.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/f/f5/Deactivated_Chrysalis_Backpiece.png/30px-Deactivated_Chrysalis_Backpiece.png 1.5x, /images/thumb/f/f5/Deactivated_Chrysalis_Backpiece.png/40px-Deactivated_Chrysalis_Backpiece.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Deactivated_Chrysalis_Backpiece" title="Deactivated Chrysalis Backpiece">Deactivated Chrysalis Backpiece</a></dd><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Emergent_Metamorphosis_Backpiece" title="Emergent Metamorphosis Backpiece"><img alt="Emergent Metamorphosis Backpiece.png" src="/images/thumb/6/67/Emergent_Metamorphosis_Backpiece.png/20px-Emergent_Metamorphosis_Backpiece.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/6/67/Emergent_Metamorphosis_Backpiece.png/30px-Emergent_Metamorphosis_Backpiece.png 1.5x, /images/thumb/6/67/Emergent_Metamorphosis_Backpiece.png/40px-Emergent_Metamorphosis_Backpiece.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Emergent_Metamorphosis_Backpiece" title="Emergent Metamorphosis Backpiece">Emergent Metamorphosis Backpiece</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement9022-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Deactivated_Chrysalis_Backpiece" title="Deactivated Chrysalis Backpiece"><img alt="Deactivated Chrysalis Backpiece.png" src="/images/f/f5/Deactivated_Chrysalis_Backpiece.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement9022-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Upgraded_Hologram_Emitter" title="Upgraded Hologram Emitter"><img alt="Upgraded Hologram Emitter.png" src="/images/6/62/Upgraded_Hologram_Emitter.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement9022-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Reinforced_Lens" title="Reinforced Lens"><img alt="Reinforced Lens.png" src="/images/7/7b/Reinforced_Lens.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement9022-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Superconductor_Cable" title="Superconductor Cable"><img alt="Superconductor Cable.png" src="/images/3/3b/Superconductor_Cable.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement9022-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Expanded_Power_Source" title="Expanded Power Source"><img alt="Expanded Power Source.png" src="/images/a/ad/Expanded_Power_Source.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement9022-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Concealed_Microthruster" title="Concealed Microthruster"><img alt="Concealed Microthruster.png" src="/images/7/7c/Concealed_Microthruster.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9022">
+<td style="width:220px; vertical-align:top;" class="white">6 Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8886" class="widget-account-achievement line" data-id="achievement8886">
+<th id="Escape_Artist:_Defense_Systems" style="text-align:left">Escape Artist: Defense Systems
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8886">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Trigger or disable all of the defense systems.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">5 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Turret Trap</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Illusory_Progenitor" title="Illusory Progenitor">Illusory Progenitor</a> Trap</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Spirit_Link" title="Spirit Link">Spirit Link</a> Trap</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Cursed_Artifact" title="Cursed Artifact">Cursed Artifact</a> Trap</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Arcane_Grinder" title="Arcane Grinder">Arcane Grinder</a></li></ul></td></tr></tbody></table></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Triggered or Disabled 5 Defense Systems
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9072" class="widget-account-achievement line" data-id="achievement9072">
+<th id="Forest_Caretaker" style="text-align:left"><a href="/wiki/Forest_Caretaker" title="Forest Caretaker">Forest Caretaker</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9072">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete events involving the local wildlife in Starlit Weald.<span style="color:#686868; display: block;"><i>You're doing your part for the wildlife.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">9 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Replant trees razed by the Inquest.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help a dying flower bloom.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Take down a rampaging predator.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Enter a race as a choya.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Dance among the choya.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Investigate the strange creatures in the forest.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Collect magic on your skimmer in Tranquil Glen.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Collect magic on your skimmer in Overgrown Thicket.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Track down the missing wavehawks.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Event
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9072">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 4 Events
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9072">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 9 Events
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8904" class="widget-account-achievement line" data-id="achievement8904">
+<th id="Great_Choya_Race:_Bronze" style="text-align:left"><a href="/wiki/The_Great_Choya_Race" title="The Great Choya Race">Great Choya Race: Bronze</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8904">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a bronze medal or better in the Great Choya Race adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Bronze Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9049" class="widget-account-achievement line" data-id="achievement9049">
+<th id="Great_Choya_Race:_Gold" style="text-align:left"><a href="/wiki/The_Great_Choya_Race" title="The Great Choya Race">Great Choya Race: Gold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9049">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a gold medal in the Great Choya Race adventure.<span style="color:#686868; display: block;"><i>No wonder Narcisse keeps picking you.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Gold Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9027" class="widget-account-achievement line" data-id="achievement9027">
+<th id="Great_Choya_Race:_Silver" style="text-align:left"><a href="/wiki/The_Great_Choya_Race" title="The Great Choya Race">Great Choya Race: Silver</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9027">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a silver medal or better in the Great Choya Race adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Silver Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9045" class="widget-account-achievement line" data-id="achievement9045">
+<th id="Grilling_Buddies" style="text-align:left"><a href="/wiki/Dance_with_the_choya" title="Dance with the choya">Grilling Buddies</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9045">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Dance with a choya by the fire.<span style="color:#686868; display: block;"><i>The meat is sacred, and so is your bond.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Danced with a Choya by the Fire
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8938" class="widget-account-achievement line" data-id="achievement8938">
+<th id="Huntmaster_of_Castora" style="text-align:left"><a href="/wiki/Huntmaster_of_Castora" title="Huntmaster of Castora">Huntmaster of Castora</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8938">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Read each hunting chronicle in Starlit Weald.<span style="color:#686868; display: block;"><i>You have found your place in the cycle.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">4 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Nature_and_the_Hunt" title="Nature and the Hunt">Nature and the Hunt</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Hunting_Logbook" title="Hunting Logbook">Hunting Logbook</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Annals_of_the_Great_Hunt" title="Annals of the Great Hunt">Annals of the Great Hunt</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Rites_of_Passage" title="Rites of Passage">Rites of Passage</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Read 4 Hunting Chronicles
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9008" class="widget-account-achievement line" data-id="achievement9008">
+<th id="Inquest_Hologram" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Inquest_Hologram" title="Inquest Hologram">Inquest Hologram</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9008">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the <a href="/wiki/Inquest_Hologram" title="Inquest Hologram">Inquest Hologram</a> jumping puzzle.<dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Inquest Hologram Jumping Puzzle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9083" class="widget-account-achievement line" data-id="achievement9083">
+<th id="Inquest_Saboteur" style="text-align:left"><a href="/wiki/Inquest_Saboteur" title="Inquest Saboteur">Inquest Saboteur</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9083">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Disrupt Inquest activity throughout Starlit Weald.<span style="color:#686868; display: block;"><i>You're making it impossible for them to get any work done.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">7 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Weakened the Inquest experiments by reverse engineering their systems.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Fought the Inquest forces in Tranquil Glen.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Fought the Inquest forces in the Cloister of Stars.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Rained artillery fire down on the Inquest command complex.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Escorted a colorful test subject out of the Inquest command complex.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Freed Inquest test subjects before experiments could commence.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Dismantled an Inquest golem clear-cutting the forest.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Disrupted Inquest Forces 1 Time
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9083">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Disrupted Inquest Forces 3 Times
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9083">
+<td style="width:220px; vertical-align:top;" class="offwhite">Disrupted Inquest Forces 7 Times
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8866" class="widget-account-achievement line" data-id="achievement8866">
+<th id="Inquest_Training_Speed_Runner" style="text-align:left"><a href="/wiki/Inquest_Hologram" title="Inquest Hologram">Inquest Training Speed Runner</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8866">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the Inquest jumping puzzle in 90 seconds or less.<span style="color:#686868; display: block;"><i>A new personal best!</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Inquest Jumping Puzzle in 90 Seconds or Less
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8933" class="widget-account-achievement line" data-id="achievement8933">
+<th id="Leading_from_the_Front" style="text-align:left"><a href="/wiki/Leading_from_the_Front" title="Leading from the Front">Leading from the Front</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8933">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Help your allies across Starlit Weald.<span style="color:#686868; display: block;"><i>They can always count on you.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">9 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help an overwhelmed ally with an artillery bombardment.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Witness an ally overcome their fear as they search for relics.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defend an ally while they study unique flowers.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help an ally hunt down a large beast near their camp.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help an ally protect the native wavehawks.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help an ally rebuild a nest.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help an overwhelmed camp rebuild their defenses.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help defend an overwhelmed camp from an Inquest raid.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Help allies that are being attacked by magical wildlife.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Helped 1 Ally
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8933">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Helped 4 Allies
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8933">
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped 9 Allies
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8862" class="widget-account-achievement line" data-id="achievement8862">
+<th id="Lost_No_Longer" style="text-align:left">Lost No Longer
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8862">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Explore the hidden depths of the Lost Basilica.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Clear the hazards of the Hallowed Archive.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Gather ancient magic to find your way deeper inside.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat a long-slumbering defense system.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Explored 1 Area
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8862">
+<td style="width:220px; vertical-align:top;" class="white">Explored 3 Areas
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8952" class="widget-account-achievement line" data-id="achievement8952">
+<th id="Meandering_Magic" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Meandering_Magic" title="Meandering Magic">Meandering Magic</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Visions of Eternity mastery point"><img alt="Visions of Eternity mastery point" src="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/20px-Mastery_point_%28Visions_of_Eternity%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/30px-Mastery_point_%28Visions_of_Eternity%29.png 1.5x, /images/thumb/5/5b/Mastery_point_%28Visions_of_Eternity%29.png/40px-Mastery_point_%28Visions_of_Eternity%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8952">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully collect all of the magic essence and return to the brazier.<span style="color:#686868; display: block;"><i>Sometimes the real magic is the orbs we collect along the way.</i></span><dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag"><img alt="Beaded Pouch.png" src="/images/thumb/4/42/Beaded_Pouch.png/20px-Beaded_Pouch.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/4/42/Beaded_Pouch.png/30px-Beaded_Pouch.png 1.5x, /images/thumb/4/42/Beaded_Pouch.png/40px-Beaded_Pouch.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Tropical_Forest_Gear_Bag" title="Tropical Forest Gear Bag">Tropical Forest Gear Bag</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Meandering Magic Jumping Puzzle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8922" class="widget-account-achievement line" data-id="achievement8922">
+<th id="No-Hit_Run" style="text-align:left"><a href="/wiki/Survive_the_trap_room" title="Survive the trap room">No-Hit Run</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8922">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully complete the "<a href="/wiki/Survive_the_trap_room" title="Survive the trap room">Survive the trap room</a>" event without getting hit by a single defense orb.<span style="color:#686868; display: block;"><i>Now if only someone had seen you do it.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-5" class="reference"><a href="#cite_note-5">[5]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Event without Being Hit
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9018" class="widget-account-achievement line" data-id="achievement9018">
+<th id="Old_Magic:_Gold" style="text-align:left"><a href="/wiki/Old_Magic" title="Old Magic">Old Magic: Gold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9018">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a gold medal in the Old Magic adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Gold Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9035" class="widget-account-achievement line" data-id="achievement9035">
+<th id="Old_Magic:_Silver" style="text-align:left"><a href="/wiki/Old_Magic" title="Old Magic">Old Magic: Silver</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9035">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a silver medal in the Old Magic adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Silver Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9078" class="widget-account-achievement line" data-id="achievement9078">
+<th id="On_Second_Thought..." style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Help_Archaeologist_Aekki_investigate_the_artifacts" title="Help Archaeologist Aekki investigate the artifacts">On Second Thought...</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9078">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Fly away while being ambushed.<span style="color:#686868; display: block;"><i>...I'll see you later.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Escaped an Ambush
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9003" class="widget-account-achievement line" data-id="achievement9003">
+<th id="Orb_Hopper" style="text-align:left"><a href="/wiki/Secrets_of_the_Weald" title="Secrets of the Weald">Orb Hopper</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">9<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9003">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Successfully gather orbs in the <a href="/wiki/Secrets_of_the_Weald" title="Secrets of the Weald">Secrets of the Weald</a> meta-event.
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Gathered 10 Orbs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9003">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Gathered 50 Orbs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9003">
+<td style="width:220px; vertical-align:top;" class="offwhite">Gathered 100 Orbs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9077" class="widget-account-achievement line" data-id="achievement9077">
+<th id="Project_Bodyguard" style="text-align:left"><a href="/wiki/Escort_Project_FRU1TPUNCH_to_safety" title="Escort Project FRU1TPUNCH to safety">Project Bodyguard</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9077">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Escort_Project_FRU1TPUNCH_to_safety" title="Escort Project FRU1TPUNCH to safety">Escort Project FRU1TPUNCH</a> through the base without it getting downed.<span style="color:#686868; display: block;"><i>Never saw this in your future, did you?</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Escorted Project FRU1TPUNCH
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8902" class="widget-account-achievement line" data-id="achievement8902">
+<th id="Rampage_Router" style="text-align:left"><a href="/wiki/Defend_the_camp_from_the_wildlife_attack" title="Defend the camp from the wildlife attack">Rampage Router</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8902">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the "<a href="/wiki/Defend_the_camp_from_the_wildlife_attack" title="Defend the camp from the wildlife attack">Defend the camp from the wildlife attack</a>" event without any tents being destroyed.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Saved 1 Tent
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8867" class="widget-account-achievement line" data-id="achievement8867">
+<th id="Read_the_Room" style="text-align:left"><a href="/wiki/Survive_the_trap_room" title="Survive the trap room">Read the Room</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8867">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Successfully disable 10 traps in a row during the "<a href="/wiki/Survive_the_trap_room" title="Survive the trap room">Survive the trap room</a>" event.
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Disabled 10 Traps in a Row
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8867">
+<td style="width:220px; vertical-align:top;" class="white">Disabled 10 Traps in a Row
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8986" class="widget-account-achievement line" data-id="achievement8986">
+<th id="Sebb_Subverter" style="text-align:left"><a href="/wiki/Rescue_the_animals_from_the_Inquest_and_escort_them_to_safety" title="Rescue the animals from the Inquest and escort them to safety">Sebb Subverter</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8986">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Free 15 captured animals.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[7]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Freed 1 Animal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8986">
+<td style="width:220px; vertical-align:top;" class="white">Freed 15 Animals
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8918" class="widget-account-achievement line" data-id="achievement8918">
+<th id="Secret_Spelunker" style="text-align:left">Secret Spelunker
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8918">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover all the hidden caves in Starlit Weald.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Lost_Grotto_(Starlit_Weald)" title="Lost Grotto (Starlit Weald)">Lost Grotto</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Hidden_Aquifer" title="Hidden Aquifer">Hidden Aquifer</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Sparkling_Sanctum" title="Sparkling Sanctum">Sparkling Sanctum</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Discovered 3 Caves
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9025" class="widget-account-achievement line" data-id="achievement9025">
+<th id="Sidony's_Revenge" style="text-align:left">Sidony's Revenge
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9025">
+<td rowspan="2" style="vertical-align:top; min-width:530px;" class="white">Experience all of the curses from the <a href="/wiki/Warded_Artifacts" title="Warded Artifacts">artifacts</a>.<span style="color:#686868; display: block;"><i>There's probably a lesson here, if you're the type to learn lessons.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">4 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Experience the curse of heat.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Experience the curse of weight.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Experience the curse of height.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Experience the curse of the depths.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Experienced 1 Curse
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9025">
+<td style="width:220px; vertical-align:top;" class="white">Experienced 4 Curses
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8881" class="widget-account-achievement line" data-id="achievement8881">
+<th id="Sketch_Artist" style="text-align:left"><a href="/wiki/Assist_your_allies_in_establishing_camp_and_getting_along" title="Assist your allies in establishing camp and getting along">Sketch Artist</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8881">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Make 10 correct sketches in a row for the Foothold Bivouac renown heart.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Made 10 Correct Sketches in a Row
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9061" class="widget-account-achievement line" data-id="achievement9061">
+<th id="Skimming_off_the_Top" style="text-align:left">Skimming off the Top
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9061">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">While assisting researchers in gathering magic, collect 50 orbs with your skimmer.<span style="color:#686868; display: block;"><i>Nobody will even notice it's missing, right?</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-9" class="reference"><a href="#cite_note-9">[9]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Orb
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9061">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 25 Orbs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement9061">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 50 Orbs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9033" class="widget-account-achievement line" data-id="achievement9033">
+<th id="Soup's_On" style="text-align:left"><a href="/wiki/Soup%27s_On" title="Soup's On">Soup's On</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9033">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find the <a href="/wiki/Kjartan_the_Cook" title="Kjartan the Cook">cook</a> at the <a href="/wiki/Hunter%27s_Camp" title="Hunter's Camp">Hunter's Camp</a> and help them prepare a <a href="/wiki/Bowl_of_Stew" title="Bowl of Stew">hearty soup</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-10" class="reference"><a href="#cite_note-10">[10]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Prepared Soup
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8937" class="widget-account-achievement line" data-id="achievement8937">
+<th id="Starlit_Tourist" style="text-align:left"><a href="/wiki/Starlit_Tourist" title="Starlit Tourist">Starlit Tourist</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8937">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Visit ruins scattered around Starlit Weald.<span style="color:#686868; display: block;"><i>Ooh, would you look at that?</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">13 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>It looks like the Inquest have already been digging here.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Is it safe to drink from a celestial fountain?</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This statue seems to be keeping watch over the door.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This ruined structure must have been a spiritual place once.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>All of these floor traps make me feel like I'm not wanted here.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>They sure did put a lot of defenses in their library, huh?</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This relic must have been unearthed by all this digging.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Don't drop it in the pool of stars! Who knows what might happen.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This crumbling wall still guards the forest's edge.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This pillar must have towered over the area before it crumbled.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Better not stick around to meet whatever giant thing lives in here.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This tower may have fallen, but it's still climbable.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>This must have been a gathering spot before the Inquest set up their excavators.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Visited 1 Site
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8937">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Visited 6 Sites
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8937">
+<td style="width:220px; vertical-align:top;" class="offwhite">Visited 13 Sites
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9040" class="widget-account-achievement line" data-id="achievement9040">
+<th id="Starlit_Weald_Ley_Line_Adventure:_Bronze" style="text-align:left"><a href="/wiki/Ley-Line_Rider" title="Ley-Line Rider">Starlit Weald Ley Line Adventure: Bronze</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9040">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a bronze medal or better in the Starlit Weald Ley Line adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Bronze Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement9039" class="widget-account-achievement line" data-id="achievement9039">
+<th id="Starlit_Weald_Ley_Line_Adventure:_Gold" style="text-align:left"><a href="/wiki/Ley-Line_Rider" title="Ley-Line Rider">Starlit Weald Ley Line Adventure: Gold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement9039">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a gold medal in the Starlit Weald Ley Line adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Gold Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8884" class="widget-account-achievement line" data-id="achievement8884">
+<th id="Starlit_Weald_Ley_Line_Adventure:_Silver" style="text-align:left"><a href="/wiki/Ley-Line_Rider" title="Ley-Line Rider">Starlit Weald Ley Line Adventure: Silver</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8884">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Earn a silver medal or better in the Starlit Weald Ley Line adventure.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Earned a Silver Medal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8909" class="widget-account-achievement line" data-id="achievement8909">
+<th id="Sylvan_Shapeshifter" style="text-align:left"><a href="/wiki/Sylvan_Shapeshifter" title="Sylvan Shapeshifter">Sylvan Shapeshifter</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8909">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Experience all of the transformations of the cursed artifacts.<span style="color:#686868; display: block;"><i>They'd prefer you to be anything but yourself.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">6 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into a fish.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into a raven.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into a quaggan.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into a choya.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into an anomaly.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Transform into a watchknight.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Experienced 1 Transformation
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8909">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Experienced 3 Transformations
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8909">
+<td style="width:220px; vertical-align:top;" class="offwhite">Experienced 6 Transformations
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8941" class="widget-account-achievement line" data-id="achievement8941">
+<th id="Tread_Lightly" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> Tread Lightly
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8941">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Visit the slumbering <a href="/wiki/Gwyllian,_Seneschal_of_the_Forest" title="Gwyllian, Seneschal of the Forest">Gwyllian</a> after completing the <a href="/wiki/Secrets_of_the_Weald" title="Secrets of the Weald">Secrets of the Weald</a> meta-event.<span style="color:#686868; display: block;"><i>Watching it sleep is a small window into what it was before the seers made it a seneschal.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Visited the Slumbering Seneschal
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8996" class="widget-account-achievement line" data-id="achievement8996">
+<th id="Treasures_of_the_Last_Vault" style="text-align:left">Treasures of the Last Vault
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8996">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">View the objects tucked away in the Last Vault.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Preserved Eggs</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Prototype Bloodstones</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Ingredients for Preparation</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Viewed 3 Objects
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8920" class="widget-account-achievement line" data-id="achievement8920">
+<th id="Wavehawk_Delivery" style="text-align:left"><a href="/wiki/Assist_your_allies_in_establishing_camp_and_getting_along" title="Assist your allies in establishing camp and getting along">Wavehawk Delivery</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8920">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Gather one of every type of wavehawk food.<span style="color:#686868; display: block;"><i>They didn't even leave a tip.</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">4 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Freshwater Clams</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Seaweed</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Fish</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Coral</li></ul></td></tr></tbody></table></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-11" class="reference"><a href="#cite_note-11">[11]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Gathered 4 Types of Wavehawk Food
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8856" class="widget-account-achievement line" data-id="achievement8856">
+<th id="Wavehawk_Savior" style="text-align:left">Wavehawk Savior
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8856">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Free trapped wavehawks throughout Starlit Weald.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-12" class="reference"><a href="#cite_note-12">[12]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Saved 50 Wavehawks
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Starlit_Weald_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap mw-references-columns"><ol class="references">
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>A Hunt for the Ages</b>: Despite specifying the Tyrannus Man-Eater, it is the Augmented Man-Eater which grants credit. (Possible bug)</span>
+</li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Escape Artist: Defense Systems</b>: Turret Trap may refer to: <a href="/wiki/Arcane_Seeker" title="Arcane Seeker">Arcane Seeker</a>, <a href="/wiki/Arcane_Spreadshot" title="Arcane Spreadshot">Arcane Spreadshot</a>, and <a href="/wiki/Seer_Sticker" title="Seer Sticker">Seer Sticker</a>.</span>
+</li>
+<li id="cite_note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Grilling Buddies</b>: Wait for the choya dance event, put on the costume, run up the right stone above the fire to where a choya stands, hit any dance button to get credit</span>
+</li>
+<li id="cite_note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>Inquest Training Speed Runner</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Inquest_Training_Speed_Runner" title="Achievement Eligibility: Inquest Training Speed Runner"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Inquest_Training_Speed_Runner" title="Achievement Eligibility: Inquest Training Speed Runner">Achievement Eligibility: Inquest Training Speed Runner</a>.</span>
+</li>
+<li id="cite_note-5"><b><a href="#cite_ref-5">^</a></b> <span class="reference-text"><b>No-Hit Run</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_No-Hit_Run" title="Achievement Eligibility: No-Hit Run"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_No-Hit_Run" title="Achievement Eligibility: No-Hit Run">Achievement Eligibility: No-Hit Run</a>.</span>
+</li>
+<li id="cite_note-6"><b><a href="#cite_ref-6">^</a></b> <span class="reference-text"><b>Project Bodyguard</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Project_Bodyguard" title="Achievement Eligibility: Project Bodyguard"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Project_Bodyguard" title="Achievement Eligibility: Project Bodyguard">Achievement Eligibility: Project Bodyguard</a>.</span>
+</li>
+<li id="cite_note-7"><b><a href="#cite_ref-7">^</a></b> <span class="reference-text"><b>Sebb Subverter</b>: Escort animals during <a href="/wiki/Rescue_the_animals_from_the_Inquest_and_escort_them_to_safety" title="Rescue the animals from the Inquest and escort them to safety">Rescue the animals from the Inquest and escort them to safety</a> at <a href="/wiki/Specimen_Containment" title="Specimen Containment">Specimen Containment</a></span>
+</li>
+<li id="cite_note-8"><b><a href="#cite_ref-8">^</a></b> <span class="reference-text"><b>Sketch Artist</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Sketch_Artist" title="Achievement Eligibility: Sketch Artist"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Sketch_Artist" title="Achievement Eligibility: Sketch Artist">Achievement Eligibility: Sketch Artist</a>.</span>
+</li>
+<li id="cite_note-9"><b><a href="#cite_ref-9">^</a></b> <span class="reference-text"><b>Skimming off the Top</b>: Qualifying events: <a href="/wiki/Help_Arcanist_Malane_gather_magic_samples" title="Help Arcanist Malane gather magic samples">Help Arcanist Malane gather magic samples</a>, <a href="/wiki/Help_Corporal_Vikar_gather_magic_samples" title="Help Corporal Vikar gather magic samples">Help Corporal Vikar gather magic samples</a>.</span>
+</li>
+<li id="cite_note-10"><b><a href="#cite_ref-10">^</a></b> <span class="reference-text"><b>Soup's On</b>: This achievement can only be acquired while the heart is not completed.</span>
+</li>
+<li id="cite_note-11"><b><a href="#cite_ref-11">^</a></b> <span class="reference-text"><b>Wavehawk Delivery</b>: At the <span class="inline-icon"><a href="/wiki/Point_of_Interest" title="Point of Interest"><img alt="Point of interest (map icon).png" src="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/20px-Point_of_interest_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/30px-Point_of_interest_%28map_icon%29.png 1.5x, /images/7/70/Point_of_interest_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Lake_of_Lillies" title="Lake of Lillies">Lake of Lillies</a> — <span class="gamelink" id="gamelink-1" data-type="map" data-id="3973" title="3973"></span><script>!function(){const t=document.getElementById('gamelink-1');if(!t)return;const e=function(t,e){if(!t)return"invalid type (blank)";const n={item:2,text:3,map:4,skill:6,trait:7,recipe:9,skin:10,outfit:11}[t.trim().toLowerCase()]||0;if(!n)return"invalid type";let i=+e;const l=[];for(;i>0;)l.push(255&i),i>>=8;for(;l.length<4||l.length%2!=0;)l.push(0);2==n&&l.unshift(1),l.unshift(n);let r="";for(let t=0;t<l.length;t++)r+=String.fromCharCode(l[t]);return"[&"+btoa(r)+"]"}(t.getAttribute("data-type"),t.getAttribute("data-id")),n=document.createElement("input");n.className="chatlink",n.type="text",n.value=e,n.readOnly=!0,n.spellcheck=!1,t.appendChild(document.createTextNode(e)),t.parentNode.insertBefore(n,t),t.addEventListener("click",function(){t.style.visibility="hidden",n.style.display="inline-block",n.focus(),n.select(),document.execCommand("Copy")},!1),n.addEventListener("blur",function(){n.style.display=null,t.style.visibility=null},!1)}();</script>, while riding a skimmer and collecting the four types of food in the water at the PoI. You must be on your skimmer and interact with the Freshwater Clams, Edible Seaweed, Edible Coral, and eligible fish under the water showing the hand icon over them. The heart <span class="inline-icon"><a href="/wiki/Renown_Heart#Tiered_renown_hearts" title="Renown Heart"><img alt="Janthiri Renown Heart (map icon).png" src="/images/thumb/a/ac/Janthiri_Renown_Heart_%28map_icon%29.png/20px-Janthiri_Renown_Heart_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/a/ac/Janthiri_Renown_Heart_%28map_icon%29.png/30px-Janthiri_Renown_Heart_%28map_icon%29.png 1.5x, /images/a/ac/Janthiri_Renown_Heart_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span> <a href="/wiki/Assist_your_allies_in_establishing_camp_and_getting_along" title="Assist your allies in establishing camp and getting along">Assist your allies in establishing camp and getting along</a> (80) must not be completed.</span>
+</li>
+<li id="cite_note-12"><b><a href="#cite_ref-12">^</a></b> <span class="reference-text"><b>Wavehawk Savior</b>: Despite the description, wavehawks can only be freed during the <a href="/wiki/Stop_the_Inquest_and_save_the_wild_wavehawks" title="Stop the Inquest and save the wild wavehawks">Stop the Inquest and save the wild wavehawks</a> event.</span>
+</li>
+</ol></div>
+<hr style="margin: 1em 0em; clear: both;">
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">Categories
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Castora_(achievements)" title="Castora (achievements)">Castora</a></li>
+<li><a href="/wiki/Shipwreck_Strand_(achievements)" title="Shipwreck Strand (achievements)">Shipwreck Strand</a></li>
+<li><a class="mw-selflink selflink">Starlit Weald</a></li>
+<li><a href="/wiki/Eternity%27s_Garden_(achievements)" title="Eternity's Garden (achievements)">Eternity's Garden</a></li>
+<li><a href="/wiki/Renown_Hearts_(Visions_of_Eternity)" title="Renown Hearts (Visions of Eternity)">Renown Hearts</a></li>
+<li><a href="/wiki/Castoran_Culture" title="Castoran Culture">Castoran Culture</a></li>
+<li><a href="/wiki/Mastery_Insights_(Visions_of_Eternity)" title="Mastery Insights (Visions of Eternity)">Mastery Insights</a></li>
+<li><a href="/wiki/Weekly_Rift_Hunting_(Visions_of_Eternity)" title="Weekly Rift Hunting (Visions of Eternity)">Weekly Rift Hunting</a></li>
+<li><a href="/wiki/Repeatable_(Visions_of_Eternity)" title="Repeatable (Visions of Eternity)">Repeatable</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260901122201
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 1.094 seconds
+Real time usage: 1.390 seconds
+Preprocessor visited node count: 28809/1000000
+Post‐expand include size: 388454/2097152 bytes
+Template argument size: 86334/2097152 bytes
+Highest expansion depth: 17/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 7104/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1123.919      1 -total
+ 82.34%  925.414     54 Template:Achievement_table_row
+  8.98%  100.917      1 Template:Achievement_category_infobox
+  5.10%   57.322      1 Template:Achievement_nav
+  4.16%   46.724      6 Template:Item_icon_without_name
+  3.53%   39.658      4 Template:Effect
+  2.65%   29.779      1 Template:Poi
+  2.25%   25.269      4 Template:Effect_icon
+  2.23%   25.025    136 Template:Ap
+  1.86%   20.949     21 Template:Ifexists
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:404593-0!dateformat=default and timestamp 20260901122200 and revision id 3126581.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Starlit_Weald_(achievements)&amp;oldid=3126581#Starlit_Weald_Mastery">https://wiki.guildwars2.com/index.php?title=Starlit_Weald_(achievements)&amp;oldid=3126581#Starlit_Weald_Mastery</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Visions_of_Eternity_content" title="Category:Visions of Eternity content">Visions of Eternity content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		

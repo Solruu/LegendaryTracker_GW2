@@ -1,0 +1,867 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2015-10-23_hot_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns content"><img alt="Guild Wars 2: Heart of Thorns content" src="/images/thumb/1/19/HoT_Texture_Trans.png/35px-HoT_Texture_Trans.png" decoding="async" width="35" height="28" srcset="/images/thumb/1/19/HoT_Texture_Trans.png/53px-HoT_Texture_Trans.png 1.5x, /images/thumb/1/19/HoT_Texture_Trans.png/70px-HoT_Texture_Trans.png 2x" data-file-width="3000" data-file-height="2368"></a></div></div>
+				<div id="mw-indicator-2023-08-22_soto_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Secrets_of_the_Obscure" title="Guild Wars 2: Secrets of the Obscure content"><img alt="Guild Wars 2: Secrets of the Obscure content" src="/images/thumb/4/44/Secrets_of_the_Obscure_logo.png/35px-Secrets_of_the_Obscure_logo.png" decoding="async" width="35" height="30" srcset="/images/thumb/4/44/Secrets_of_the_Obscure_logo.png/53px-Secrets_of_the_Obscure_logo.png 1.5x, /images/thumb/4/44/Secrets_of_the_Obscure_logo.png/70px-Secrets_of_the_Obscure_logo.png 2x" data-file-width="350" data-file-height="302"></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Legendary Armor (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=Legendary_Rune_Collector&amp;redirect=no" class="mw-redirect" title="Legendary Rune Collector">Legendary Rune Collector</a>)</span></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190"> <i>This article is about the achievement collections.  For the actual equippable armor, see <a href="/wiki/Legendary_armor" title="Legendary armor">Legendary armor</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">Legendary Armor</a> is a category found in the <a href="/wiki/Achievement" title="Achievement">Achievements</a> category <a href="/wiki/Collections" title="Collections">Collections</a>.
+</p><p>For the <a href="/wiki/Envoy_Armor_I:_Experimental_Armor" title="Envoy Armor I: Experimental Armor">Envoy Armor I: Experimental Armor</a> achievement, this collection is unlocked by defeating any boss in the <a href="/wiki/Forsaken_Thicket" title="Forsaken Thicket">Forsaken Thicket</a>, and contains the precursors for the raid based <a href="/wiki/Legendary_armor" title="Legendary armor">legendary armor</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Legendary_Armor_(achievements).png" class="image"><img alt="Legendary Armor (achievements).png" src="/images/thumb/7/7b/Legendary_Armor_%28achievements%29.png/48px-Legendary_Armor_%28achievements%29.png" decoding="async" width="48" height="48" srcset="/images/7/7b/Legendary_Armor_%28achievements%29.png 1.5x" data-file-width="64" data-file-height="64"></a></div> Legendary Armor <small>(Collections)</small>
+</th>
+<th>Total achievements: 15
+</th>
+<th style="text-align: right; border-left-width: 0;">126<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr id="achievement7128" class="widget-account-achievement line" data-id="achievement7128">
+<th id="A_Legendary_Path:_Astral_Gifts" style="text-align:left"><a href="/wiki/A_Legendary_Path:_Astral_Gifts" title="A Legendary Path: Astral Gifts">A Legendary Path: Astral Gifts</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7128">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary components and gifts for Astral armors. The wizard smith, Lyhr, can help you craft them in the Wizard's Tower.<span style="color:#686868; display: block;"><i>This collection can be a useful reference to what's needed for each gift. You may need multiples of some of these items.</i></span><dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7128-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Blood" title="Gift of Blood"><img alt="Gift of Blood.png" src="/images/6/69/Gift_of_Blood.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Bones" title="Gift of Bones"><img alt="Gift of Bones.png" src="/images/a/ae/Gift_of_Bones.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Claws" title="Gift of Claws"><img alt="Gift of Claws.png" src="/images/2/28/Gift_of_Claws.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Dust" title="Gift of Dust"><img alt="Gift of Dust.png" src="/images/9/91/Gift_of_Dust.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Fangs" title="Gift of Fangs"><img alt="Gift of Fangs.png" src="/images/a/a4/Gift_of_Fangs.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Scales" title="Gift of Scales"><img alt="Gift of Scales.png" src="/images/f/f3/Gift_of_Scales.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Totems" title="Gift of Totems"><img alt="Gift of Totems.png" src="/images/3/3b/Gift_of_Totems.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Venom" title="Gift of Venom"><img alt="Gift of Venom.png" src="/images/5/53/Gift_of_Venom.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Condensed_Might" title="Gift of Condensed Might"><img alt="Gift of Condensed Might.png" src="/images/6/65/Gift_of_Condensed_Might.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Condensed_Magic" title="Gift of Condensed Magic"><img alt="Gift of Condensed Magic.png" src="/images/3/3e/Gift_of_Condensed_Magic.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Magical_Prosperity" title="Gift of Magical Prosperity"><img alt="Gift of Magical Prosperity.png" src="/images/3/3e/Gift_of_Magical_Prosperity.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Mighty_Prosperity" title="Gift of Mighty Prosperity"><img alt="Gift of Mighty Prosperity.png" src="/images/f/fa/Gift_of_Mighty_Prosperity.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Expertise" title="Gift of Expertise"><img alt="Gift of Expertise.png" src="/images/5/56/Gift_of_Expertise.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Research" title="Gift of Research"><img alt="Gift of Research.png" src="/images/d/de/Gift_of_Research.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Craftsmanship" title="Gift of Craftsmanship"><img alt="Gift of Craftsmanship.png" src="/images/2/2a/Gift_of_Craftsmanship.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_the_Astral_Ward" title="Gift of the Astral Ward"><img alt="Gift of the Astral Ward.png" src="/images/5/56/Gift_of_the_Astral_Ward.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lesser_Vision_Crystal" title="Lesser Vision Crystal"><img alt="Lesser Vision Crystal.png" src="/images/1/1f/Lesser_Vision_Crystal.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bloodstone_Brick" title="Bloodstone Brick"><img alt="Bloodstone Brick.png" src="/images/f/fe/Bloodstone_Brick.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit18" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Empyreal_Star" title="Empyreal Star"><img alt="Empyreal Star.png" src="/images/2/2d/Empyreal_Star.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit19" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragonite_Ingot" title="Dragonite Ingot"><img alt="Dragonite Ingot.png" src="/images/0/03/Dragonite_Ingot.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit20" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Shard" title="Obsidian Shard"><img alt="Obsidian Shard.png" src="/images/f/f1/Obsidian_Shard.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit21" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Skywatch_Archipelago" title="Gift of Skywatch Archipelago"><img alt="Gift of Skywatch Archipelago.png" src="/images/5/5f/Gift_of_Skywatch_Archipelago.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit22" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Amnytas" title="Gift of Amnytas"><img alt="Gift of Amnytas.png" src="/images/b/bf/Gift_of_Amnytas.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit23" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gift_of_Inner_Nayos" title="Gift of Inner Nayos"><img alt="Gift of Inner Nayos.png" src="/images/8/8b/Gift_of_Inner_Nayos.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit24" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Mystic_Clover" title="Mystic Clover"><img alt="Mystic Clover.png" src="/images/7/7c/Mystic_Clover.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit25" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Amalgamated_Rift_Essence" title="Amalgamated Rift Essence"><img alt="Amalgamated Rift Essence.png" src="/images/c/c0/Amalgamated_Rift_Essence.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit26" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Purified_Rift_Essence" title="Purified Rift Essence"><img alt="Purified Rift Essence.png" src="/images/3/30/Purified_Rift_Essence.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit27" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Ball_of_Dark_Energy" title="Ball of Dark Energy"><img alt="Ball of Dark Energy.png" src="/images/6/67/Ball_of_Dark_Energy.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit28" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Cube_of_Stabilized_Dark_Energy" title="Cube of Stabilized Dark Energy"><img alt="Cube of Stabilized Dark Energy.png" src="/images/7/76/Cube_of_Stabilized_Dark_Energy.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit29" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Footprints" title="Arcanum of Astral Footprints"><img alt="Arcanum of Astral Footprints.png" src="/images/c/cd/Arcanum_of_Astral_Footprints.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit30" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Stride" title="Arcanum of Astral Stride"><img alt="Arcanum of Astral Stride.png" src="/images/c/ca/Arcanum_of_Astral_Stride.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit31" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Grasp" title="Arcanum of Astral Grasp"><img alt="Arcanum of Astral Grasp.png" src="/images/2/27/Arcanum_of_Astral_Grasp.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit32" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Heartbeat" title="Arcanum of Astral Heartbeat"><img alt="Arcanum of Astral Heartbeat.png" src="/images/2/22/Arcanum_of_Astral_Heartbeat.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit33" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Bearing" title="Arcanum of Astral Bearing"><img alt="Arcanum of Astral Bearing.png" src="/images/a/a6/Arcanum_of_Astral_Bearing.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7128-bit34" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcanum_of_Astral_Thought" title="Arcanum of Astral Thought"><img alt="Arcanum of Astral Thought.png" src="/images/e/e2/Arcanum_of_Astral_Thought.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 7 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7128">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 14 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7128">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 21 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7128">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 28 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7128">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 35 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8869" class="widget-account-achievement line" data-id="achievement8869">
+<th id="Acquiring_Agaleus" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Acquiring_Agaleus" title="Acquiring Agaleus">Acquiring Agaleus</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8869">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete 24 steps to acquire the legendary precursor Agaleus.<span style="color:#686868; display: block;"><i>It's not just the "captain's" story that's fishy...</i></span><dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Agaleus_Container" title="Agaleus Container"><img alt="Agaleus.png" src="/images/thumb/e/ef/Agaleus.png/20px-Agaleus.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/ef/Agaleus.png/30px-Agaleus.png 1.5x, /images/thumb/e/ef/Agaleus.png/40px-Agaleus.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Agaleus_Container" title="Agaleus Container">Agaleus Container</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">24 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Talk to the castaway "captain" in Pub Canach.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Bring a drink to the captain.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Listen to the rest of Captain Lakes's tale.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the diver.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete the Master Diver achievement, then return to Dive Master Astora.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the treasure in Sharkmaw Caverns.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the sunken treasure in the Siren's Reef fractal or Underwater Ruins fractal.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Look for treasure using your skimmer's Aetherlocation skill in Castora.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat Taidha Covington to retrieve a piece of the mask from her reward chest.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask in the 'Booter's Path in Castora.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask in the base of Wiley's Buccaneers.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Discover where Wiley hid his piece of the mask.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask in Castora.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the mask piece on one of the freebooters in Castora.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask in Southsun Cove.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask in Lion's Arch.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the piece of the mask hidden in Orr.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Return to Captain Lakes to figure out how to put all the pieces together.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Speak to Cecil the Strong Arm.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the recluse from Weyandt's crew.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Find the Shark Spirit near the Honor of the Waves sanctuary.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Return to the Shark Spirit.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Return to the shaman.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 24 Steps
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7098" class="widget-account-achievement line" data-id="achievement7098">
+<th id="Astral_Bearing" style="text-align:left"><a href="/wiki/Astral_Bearing" title="Astral Bearing">Astral Bearing</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7098">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Galene the Seething to unlock the ability to purchase the <a href="/wiki/Arcanum_of_Astral_Bearing" title="Arcanum of Astral Bearing">Arcanum of Astral Bearing</a> from the Lyhr, the wizard smith.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7098-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Shoulders_(skin)" title="Astral Ward Heavy Shoulders (skin)"><img alt="Astral Ward Shoulders.png" src="/images/8/89/Astral_Ward_Shoulders.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7098-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Shoulders_(skin)" title="Rift Hunter Heavy Shoulders (skin)"><img alt="Rift Hunter Shoulders.png" src="/images/f/fb/Rift_Hunter_Shoulders.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7098-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Shoulders_(skin)" title="Oneiros-Spun Heavy Shoulders (skin)"><img alt="Oneiros-Spun Shoulders.png" src="/images/c/c7/Oneiros-Spun_Shoulders.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7098-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Galene_the_Seething" title="Lifeblood of Galene the Seething"><img alt="Lifeblood of Galene the Seething.png" src="/images/c/c4/Lifeblood_of_Galene_the_Seething.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Galene and Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7098">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated Galene and Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7098">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Galene and Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7098">
+<td style="width:220px; vertical-align:top;" class="white">Defeated Galene and Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7051" class="widget-account-achievement line" data-id="achievement7051">
+<th id="Astral_Footprints" style="text-align:left"><a href="/wiki/Astral_Footprints" title="Astral Footprints">Astral Footprints</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7051">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Myros the Spiteful to unlock the ability to purchase the <a href="/wiki/Arcanum_of_Astral_Footprints" title="Arcanum of Astral Footprints">Arcanum of Astral Footprints</a> from the Wizard's Tower.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7051-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Boots_(skin)" title="Astral Ward Heavy Boots (skin)"><img alt="Astral Ward Boots.png" src="/images/8/84/Astral_Ward_Boots.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7051-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Boots_(skin)" title="Rift Hunter Heavy Boots (skin)"><img alt="Rift Hunter Boots.png" src="/images/8/8f/Rift_Hunter_Boots.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7051-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Boots_(skin)" title="Oneiros-Spun Heavy Boots (skin)"><img alt="Oneiros-Spun Boots.png" src="/images/1/14/Oneiros-Spun_Boots.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7051-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Myros_the_Spiteful" title="Lifeblood of Myros the Spiteful"><img alt="Lifeblood of Myros the Spiteful.png" src="/images/0/00/Lifeblood_of_Myros_the_Spiteful.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7051">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7051">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7051">
+<td style="width:220px; vertical-align:top;" class="white">Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7219" class="widget-account-achievement line" data-id="achievement7219">
+<th id="Astral_Grasp" style="text-align:left"><a href="/wiki/Astral_Grasp" title="Astral Grasp">Astral Grasp</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7219">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Pherus the Subjugator to unlock the ability to purchase the <a href="/wiki/Arcanum_of_Astral_Grasp" title="Arcanum of Astral Grasp">Arcanum of Astral Grasp</a> from the Wizard's Tower.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7219-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Gloves_(skin)" title="Astral Ward Heavy Gloves (skin)"><img alt="Astral Ward Gloves.png" src="/images/d/d8/Astral_Ward_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7219-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Gloves_(skin)" title="Rift Hunter Heavy Gloves (skin)"><img alt="Rift Hunter Gloves.png" src="/images/e/e0/Rift_Hunter_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7219-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Gloves_(skin)" title="Oneiros-Spun Heavy Gloves (skin)"><img alt="Oneiros-Spun Gloves.png" src="/images/e/e3/Oneiros-Spun_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7219-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Pherus_the_Subjugator" title="Lifeblood of Pherus the Subjugator"><img alt="Lifeblood of Pherus the Subjugator.png" src="/images/e/e3/Lifeblood_of_Pherus_the_Subjugator.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Pherus and Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7219">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated Pherus and Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7219">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Pherus and Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7219">
+<td style="width:220px; vertical-align:top;" class="white">Defeated Pherus and Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7096" class="widget-account-achievement line" data-id="achievement7096">
+<th id="Astral_Heartbeat" style="text-align:left"><a href="/wiki/Astral_Heartbeat" title="Astral Heartbeat">Astral Heartbeat</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7096">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Nourys, the Eyes of the Abyss to unlock the ability to purchase <a href="/wiki/Arcanum_of_Astral_Heartbeat" title="Arcanum of Astral Heartbeat">Arcanum of Astral Heartbeat</a> from the Wizard's Tower.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7096-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Coat_(skin)" title="Astral Ward Heavy Coat (skin)"><img alt="Astral Ward Coat.png" src="/images/a/a8/Astral_Ward_Coat.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7096-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Coat_(skin)" title="Rift Hunter Heavy Coat (skin)"><img alt="Rift Hunter Coat.png" src="/images/8/86/Rift_Hunter_Coat.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7096-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Coat_(skin)" title="Oneiros-Spun Heavy Coat (skin)"><img alt="Oneiros-Spun Coat.png" src="/images/8/88/Oneiros-Spun_Coat.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7096-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Nourys,_Eyes_of_the_Abyss" title="Lifeblood of Nourys, Eyes of the Abyss"><img alt="Lifeblood of Nourys, Eyes of the Abyss.png" src="/images/5/52/Lifeblood_of_Nourys%2C_Eyes_of_the_Abyss.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Nourys and Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7096">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated Nourys and Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7096">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Nourys and Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7096">
+<td style="width:220px; vertical-align:top;" class="white">Defeated Nourys and Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7240" class="widget-account-achievement line" data-id="achievement7240">
+<th id="Astral_Stride" style="text-align:left"><a href="/wiki/Astral_Stride" title="Astral Stride">Astral Stride</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7240">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Knaebelag the Terror to unlock the ability to purchase the <a href="/wiki/Arcanum_of_Astral_Stride" title="Arcanum of Astral Stride">Arcanum of Astral Stride</a> from Lyhr, the wizard smith.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7240-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Leggings_(skin)" title="Astral Ward Heavy Leggings (skin)"><img alt="Astral Ward Leggings.png" src="/images/9/96/Astral_Ward_Leggings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7240-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Leggings_(skin)" title="Rift Hunter Heavy Leggings (skin)"><img alt="Rift Hunter Leggings.png" src="/images/a/a6/Rift_Hunter_Leggings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7240-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Leggings_(skin)" title="Oneiros-Spun Heavy Leggings (skin)"><img alt="Oneiros-Spun Heavy Leggings.png" src="/images/b/b0/Oneiros-Spun_Heavy_Leggings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7240-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Knaebelag_the_Terror" title="Lifeblood of Knaebelag the Terror"><img alt="Lifeblood of Knaebelag the Terror.png" src="/images/f/f2/Lifeblood_of_Knaebelag_the_Terror.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Knaebelag and Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7240">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated Knaebelag and Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7240">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Knaebelag and Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7240">
+<td style="width:220px; vertical-align:top;" class="white">Defeated Knaebelag and Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7214" class="widget-account-achievement line" data-id="achievement7214">
+<th id="Astral_Thought" style="text-align:left"><a href="/wiki/Astral_Thought" title="Astral Thought">Astral Thought</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7214">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Gather the necessary armor skins and defeat Ignaxious to unlock the ability to purchase the <a href="/wiki/Arcanum_of_Astral_Thought" title="Arcanum of Astral Thought">Arcanum of Astral Thought</a> from the Wizard's Tower.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7214-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Astral_Ward_Heavy_Helm_(skin)" title="Astral Ward Heavy Helm (skin)"><img alt="Astral Ward Helm.png" src="/images/0/0d/Astral_Ward_Helm.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7214-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Rift_Hunter_Heavy_Helm_(skin)" title="Rift Hunter Heavy Helm (skin)"><img alt="Rift Hunter Helm.png" src="/images/5/5e/Rift_Hunter_Helm.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7214-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Oneiros-Spun_Heavy_Helm_(skin)" title="Oneiros-Spun Heavy Helm (skin)"><img alt="Oneiros-Spun Helm.png" src="/images/d/d3/Oneiros-Spun_Helm.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7214-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lifeblood_of_Ignaxious" title="Lifeblood of Ignaxious"><img alt="Lifeblood of Ignaxious.png" src="/images/e/e8/Lifeblood_of_Ignaxious.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Ignaxious and Collected 1 Skin
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7214">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated Ignaxious and Collected 2 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7214">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated Ignaxious and Collected 3 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7214">
+<td style="width:220px; vertical-align:top;" class="white">Defeated Ignaxious and Collected 4 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2646" class="widget-account-achievement line" data-id="achievement2646">
+<th id="Envoy_Armor_I:_Experimental_Armor" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Envoy_Armor_I:_Experimental_Armor" title="Envoy Armor I: Experimental Armor">Envoy Armor I: Experimental Armor</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">9<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2646">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white"><span style="color:#686868; display: block;"><i>The <a href="/wiki/Envoy" title="Envoy">envoys</a> shepherd the souls of the dead to their place in the <a href="/wiki/Underworld" title="Underworld">Underworld</a>. By studying spiritual energy, you may learn their secrets and start your journey towards building a truly legendary set of armor.</i></span><dl><dd><b>Unlock Item:</b>  <span class="item-icon thumb-icon"><a href="/wiki/The_Lost_Art_of_Armor_Crafting" title="The Lost Art of Armor Crafting"><img alt="The Lost Art of Armor Crafting.png" src="/images/thumb/a/aa/The_Lost_Art_of_Armor_Crafting.png/20px-The_Lost_Art_of_Armor_Crafting.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/a/aa/The_Lost_Art_of_Armor_Crafting.png/30px-The_Lost_Art_of_Armor_Crafting.png 1.5x, /images/thumb/a/aa/The_Lost_Art_of_Armor_Crafting.png/40px-The_Lost_Art_of_Armor_Crafting.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/The_Lost_Art_of_Armor_Crafting" title="The Lost Art of Armor Crafting">The Lost Art of Armor Crafting</a></dd><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Chest_of_Experimental_Armor" title="Chest of Experimental Armor"><img alt="Chest of Experimental Armor.png" src="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/20px-Chest_of_Experimental_Armor.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/30px-Chest_of_Experimental_Armor.png 1.5x, /images/thumb/e/e7/Chest_of_Experimental_Armor.png/40px-Chest_of_Experimental_Armor.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Chest_of_Experimental_Armor" title="Chest of Experimental Armor">Chest of Experimental Armor</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement2646-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Infused_Living_Crystal" title="Infused Living Crystal"><img alt="Infused Living Crystal.png" src="/images/7/74/Infused_Living_Crystal.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Infused_Soul_Mirror" title="Infused Soul Mirror"><img alt="Infused Soul Mirror.png" src="/images/8/81/Infused_Soul_Mirror.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Auric_Energy_Crystal" title="Auric Energy Crystal"><img alt="Auric Energy Crystal.png" src="/images/d/de/Auric_Energy_Crystal.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Spirit_Weave" title="Spirit Weave"><img alt="Spirit Weave.png" src="/images/8/8b/Spirit_Weave.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Coagulated_Ectoplasm" title="Coagulated Ectoplasm"><img alt="Coagulated Ectoplasm.png" src="/images/d/d5/Coagulated_Ectoplasm.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Core_of_Flame" title="Core of Flame"><img alt="Core of Flame.png" src="/images/8/8c/Core_of_Flame.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Arcane_Dust" title="Arcane Dust"><img alt="Arcane Dust.png" src="/images/5/50/Arcane_Dust.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Mushroom_Medley" title="Mushroom Medley"><img alt="Mushroom Medley.png" src="/images/1/14/Mushroom_Medley.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Giant_Beehive_(trophy)" title="Giant Beehive (trophy)"><img alt="Giant Beehive (trophy).png" src="/images/2/2a/Giant_Beehive_%28trophy%29.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Vial_of_Forsaken_Thicket_Waters" title="Vial of Forsaken Thicket Waters"><img alt="Vial of Forsaken Thicket Waters.png" src="/images/a/a7/Vial_of_Forsaken_Thicket_Waters.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Spirit_Quest_Tonic" title="Spirit Quest Tonic"><img alt="Spirit Quest Tonic.png" src="/images/6/6b/Spirit_Quest_Tonic.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bloodstone_Fragment_(trophy)" title="Bloodstone Fragment (trophy)"><img alt="Bloodstone Fragment (trophy).png" src="/images/3/35/Bloodstone_Fragment_%28trophy%29.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bloodstone_Battery_(Charged)" title="Bloodstone Battery (Charged)"><img alt="Bloodstone Battery (Charged).png" src="/images/f/fb/Bloodstone_Battery_%28Charged%29.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Soul_of_the_Keep" title="Soul of the Keep"><img alt="Soul of the Keep.png" src="/images/e/ea/Soul_of_the_Keep.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Tormented_Aurillium" title="Tormented Aurillium"><img alt="Tormented Aurillium.png" src="/images/9/9c/Tormented_Aurillium.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Spirit_Strings" title="Spirit Strings"><img alt="Spirit Strings.png" src="/images/e/e8/Spirit_Strings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bloodstone-Infused_Ectoplasm" title="Bloodstone-Infused Ectoplasm"><img alt="Bloodstone-Infused Ectoplasm.png" src="/images/a/ad/Bloodstone-Infused_Ectoplasm.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement2646-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/White_Mantle_Ritual_Goblet" title="White Mantle Ritual Goblet"><img alt="White Mantle Ritual Goblet.png" src="/images/6/63/White_Mantle_Ritual_Goblet.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 6 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2646">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 12 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2646">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 18 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement3012" class="widget-account-achievement line" data-id="achievement3012">
+<th id="Envoy_Armor_II:_Refined_Armor" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Envoy_Armor_II:_Refined_Armor" title="Envoy Armor II: Refined Armor">Envoy Armor II: Refined Armor</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">9<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3012">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white"><span style="color:#686868; display: block;"><i>To improve your Envoy Armor, it will take an incredible amount of aspected magical energy collected from across Tyria and the Mists.</i></span><dl><dd><b>Unlock Item:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Chest_of_Experimental_Armor" title="Chest of Experimental Armor"><img alt="Chest of Experimental Armor.png" src="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/20px-Chest_of_Experimental_Armor.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/30px-Chest_of_Experimental_Armor.png 1.5x, /images/thumb/e/e7/Chest_of_Experimental_Armor.png/40px-Chest_of_Experimental_Armor.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Chest_of_Experimental_Armor" title="Chest of Experimental Armor">Chest of Experimental Armor</a></dd><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Chest_of_Refined_Envoy_Armor" title="Chest of Refined Envoy Armor"><img alt="Chest of Experimental Armor.png" src="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/20px-Chest_of_Experimental_Armor.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e7/Chest_of_Experimental_Armor.png/30px-Chest_of_Experimental_Armor.png 1.5x, /images/thumb/e/e7/Chest_of_Experimental_Armor.png/40px-Chest_of_Experimental_Armor.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Chest_of_Refined_Envoy_Armor" title="Chest of Refined Envoy Armor">Chest of Refined Envoy Armor</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3012-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Crystalline_Heart" title="Crystalline Heart"><img alt="Crystalline Heart.png" src="/images/5/56/Crystalline_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Vine_Heart" title="Vine Heart"><img alt="Vine Heart.png" src="/images/a/aa/Vine_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Burning_Heart" title="Burning Heart"><img alt="Burning Heart.png" src="/images/6/6f/Burning_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Frozen_Heart" title="Frozen Heart"><img alt="Frozen Heart.png" src="/images/1/18/Frozen_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Windy_Heart" title="Windy Heart"><img alt="Windy Heart.png" src="/images/c/c6/Windy_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Sodden_Heart" title="Sodden Heart"><img alt="Sodden Heart.png" src="/images/a/af/Sodden_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Ley-Infused_Heart" title="Ley-Infused Heart"><img alt="Ley-Infused Heart.png" src="/images/d/d0/Ley-Infused_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Cultivated_Heart" title="Cultivated Heart"><img alt="Cultivated Heart.png" src="/images/5/52/Cultivated_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Penitent_Heart" title="Penitent Heart"><img alt="Penitent Heart.png" src="/images/b/b9/Penitent_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Jade_Heart" title="Jade Heart"><img alt="Jade Heart.png" src="/images/0/00/Jade_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Protected_Heart" title="Protected Heart"><img alt="Protected Heart.png" src="/images/8/87/Protected_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Tormented_Heart" title="Tormented Heart"><img alt="Tormented Heart.png" src="/images/e/e3/Tormented_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Demonic_Heart" title="Demonic Heart"><img alt="Demonic Heart.png" src="/images/7/71/Demonic_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement3012-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Redeemed_Heart" title="Redeemed Heart"><img alt="Redeemed Heart.png" src="/images/5/5a/Redeemed_Heart.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Item
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3012">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 7 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3012">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 14 Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement3459" class="widget-account-achievement line" data-id="achievement3459">
+<th id="Legendary_Armorer" style="text-align:left"><a href="/wiki/Title" title="This achievement rewards a title."><img alt="This achievement rewards a title." src="/images/thumb/2/25/Title_icon.png/20px-Title_icon.png" decoding="async" width="20" height="20" srcset="/images/2/25/Title_icon.png 1.5x" data-file-width="22" data-file-height="22"></a> Legendary Armorer
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3459">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Bind 18 unique legendary <a href="/wiki/Perfected_Envoy_armor" title="Perfected Envoy armor">Perfected Envoy armor</a> skins.<span style="color:#686868; display: block;"><i>Owner of some of the rarest items in Tyria.</i></span><dl><dd><b>Title:</b> Envoy's Herald</dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">6 Unique Legendary Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3459">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">12 Unique Legendary Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3459">
+<td style="width:220px; vertical-align:top;" class="offwhite">18 Unique Legendary Items
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement7796" class="widget-account-achievement line" data-id="achievement7796">
+<th id="Legendary_Rune_Collector" style="text-align:left">Legendary Rune Collector
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Bind 7 <a href="/wiki/Legendary_rune" class="mw-redirect" title="Legendary rune">legendary runes</a>. (Players with existing legendary runes can update this achievement when visiting <a href="/wiki/Lion%27s_Arch" title="Lion's Arch">Lion's Arch</a> or <a href="/wiki/The_Wizard%27s_Tower" title="The Wizard's Tower">the Wizard's Tower</a>.)<span style="color:#686868; display: block;"><i>You feel a new bounce in your step now that you don't have to carry so many runes around.</i></span>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">Bound 1 Legendary Rune
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">Bound 2 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">Bound 3 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">Bound 4 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">Bound 5 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">Bound 6 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7796">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">Bound 7 Legendary Runes
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr>
+<tr id="achievement7802" class="widget-account-achievement line" data-id="achievement7802">
+<th id="That's_Quality_Armor" style="text-align:left"><a href="/wiki/Title" title="This achievement rewards a title."><img alt="This achievement rewards a title." src="/images/thumb/2/25/Title_icon.png/20px-Title_icon.png" decoding="async" width="20" height="20" srcset="/images/2/25/Title_icon.png 1.5x" data-file-width="22" data-file-height="22"></a> <a href="/wiki/That%27s_Quality_Armor" title="That's Quality Armor">That's Quality Armor</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement7802">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Collect 18 unique legendary Obsidian armor skins.<span style="color:#686868; display: block;"><i>"Thank you so much, Take a look."</i></span><dl><dd><b>Title:</b> Wow. That's quality armor.</dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement7802-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Helmet" title="Obsidian Heavy Helmet"><img alt="Obsidian Heavy Helmet.png" src="/images/e/ee/Obsidian_Heavy_Helmet.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Pauldrons" title="Obsidian Heavy Pauldrons"><img alt="Obsidian Heavy Pauldrons.png" src="/images/3/39/Obsidian_Heavy_Pauldrons.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Breastplate" title="Obsidian Heavy Breastplate"><img alt="Obsidian Heavy Breastplate.png" src="/images/2/2f/Obsidian_Heavy_Breastplate.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Gauntlets" title="Obsidian Heavy Gauntlets"><img alt="Obsidian Heavy Gauntlets.png" src="/images/d/d2/Obsidian_Heavy_Gauntlets.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Cuisses" title="Obsidian Heavy Cuisses"><img alt="Obsidian Heavy Cuisses.png" src="/images/5/55/Obsidian_Heavy_Cuisses.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Heavy_Greaves" title="Obsidian Heavy Greaves"><img alt="Obsidian Heavy Greaves.png" src="/images/0/0a/Obsidian_Heavy_Greaves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Mask" title="Obsidian Medium Mask"><img alt="Obsidian Medium Mask.png" src="/images/5/56/Obsidian_Medium_Mask.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Shoulders" title="Obsidian Medium Shoulders"><img alt="Obsidian Medium Shoulders.png" src="/images/6/6f/Obsidian_Medium_Shoulders.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Jacket" title="Obsidian Medium Jacket"><img alt="Obsidian Medium Jacket.png" src="/images/3/33/Obsidian_Medium_Jacket.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Gloves" title="Obsidian Medium Gloves"><img alt="Obsidian Medium Gloves.png" src="/images/4/4c/Obsidian_Medium_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Leggings" title="Obsidian Medium Leggings"><img alt="Obsidian Medium Leggings.png" src="/images/8/85/Obsidian_Medium_Leggings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Medium_Boots" title="Obsidian Medium Boots"><img alt="Obsidian Medium Boots.png" src="/images/4/47/Obsidian_Medium_Boots.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Crown" title="Obsidian Light Crown"><img alt="Obsidian Light Crown.png" src="/images/b/bc/Obsidian_Light_Crown.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Mantle" title="Obsidian Light Mantle"><img alt="Obsidian Light Mantle.png" src="/images/4/40/Obsidian_Light_Mantle.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Regalia" title="Obsidian Light Regalia"><img alt="Obsidian Light Regalia.png" src="/images/c/cf/Obsidian_Light_Regalia.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Gloves" title="Obsidian Light Gloves"><img alt="Obsidian Light Gloves.png" src="/images/e/ee/Obsidian_Light_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Pants" title="Obsidian Light Pants"><img alt="Obsidian Light Pants.png" src="/images/0/08/Obsidian_Light_Pants.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement7802-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Obsidian_Light_Shoes" title="Obsidian Light Shoes"><img alt="Obsidian Light Shoes.png" src="/images/5/59/Obsidian_Light_Shoes.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 6 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7802">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 12 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement7802">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 18 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8064" class="widget-account-achievement line" data-id="achievement8064">
+<th id="Tier_2_Legendary_Armor:_Suffused_Obsidian" style="text-align:left"><img alt="This achievement is repeatable infinitely and does not contribute to a meta achievement." src="/images/c/c0/Tango_repeatable_event.png" decoding="async" title="This achievement is repeatable infinitely and does not contribute to a meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Tier_2_Legendary_Armor:_Suffused_Obsidian" title="Tier 2 Legendary Armor: Suffused Obsidian">Tier 2 Legendary Armor: Suffused Obsidian</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8064">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete each task with a runestone of suffusion in your inventory to earn two imbued runes of suffusion. These are used to purchase Suffused Obsidian armor pieces from Junior Archivist's Aide Conri.<span style="color:#686868; display: block;"><i>"Now, what if I told you I could add some panache to that ensemble?"—Conri</i></span><span style="display:block;"><small>This achievement is capped at 15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>.</small></span><dl><dd><table style="width: 95%; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td colspan="3" style="padding:0;"><b>Rewards:</b>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">1:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Imbued_Rune_of_Suffusion" title="Imbued Rune of Suffusion"><img alt="Imbued Rune of Suffusion.png" src="/images/thumb/e/e4/Imbued_Rune_of_Suffusion.png/20px-Imbued_Rune_of_Suffusion.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e4/Imbued_Rune_of_Suffusion.png/30px-Imbued_Rune_of_Suffusion.png 1.5x, /images/thumb/e/e4/Imbued_Rune_of_Suffusion.png/40px-Imbued_Rune_of_Suffusion.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Imbued_Rune_of_Suffusion" title="Imbued Rune of Suffusion">Imbued Rune of Suffusion</a> (2)</td></tr></tbody></table></dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">9 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Purchase the runestone of suffusion from Conri.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Capture 250 charges of rift energy.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat 3 legendary creatures in Convergences.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete 15 events (excluding rift hunting) in Skywatch Archipelago.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete 15 events (excluding rift hunting) in Amnytas.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete 15 events (excluding rift hunting) in Inner Nayos.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Add power to 75 starlight lanterns.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat 3 world bosses throughout Central Tyria.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete 3 meta-events in Skywatch Archipelago, Amnytas, or Inner Nayos.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Imbued the runestone of suffusion.
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8093" class="widget-account-achievement line" data-id="achievement8093">
+<th id="Wow._That's_Flashy_Armor." style="text-align:left"><a href="/wiki/Title" title="This achievement rewards a title."><img alt="This achievement rewards a title." src="/images/thumb/2/25/Title_icon.png/20px-Title_icon.png" decoding="async" width="20" height="20" srcset="/images/2/25/Title_icon.png 1.5x" data-file-width="22" data-file-height="22"></a> <a href="/wiki/Wow._That%27s_Flashy_Armor." title="Wow. That's Flashy Armor.">Wow. That's Flashy Armor.</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8093">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Collect  unique legendary Suffused Obsidian armor skin.<span style="color:#686868; display: block;"><i>"Thanks."<br>"Thanks."<br>"Thanks."</i></span><dl><dd><b>Title:</b> <span style="color: #ccbb66;">Eternal Forgemaster</span></dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement8093-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Helmet" title="Suffused Obsidian Heavy Helmet"><img alt="Suffused Obsidian Heavy Helmet.png" src="/images/4/40/Suffused_Obsidian_Heavy_Helmet.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Pauldrons" title="Suffused Obsidian Heavy Pauldrons"><img alt="Suffused Obsidian Heavy Pauldrons.png" src="/images/8/86/Suffused_Obsidian_Heavy_Pauldrons.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Breastplate" title="Suffused Obsidian Heavy Breastplate"><img alt="Suffused Obsidian Heavy Breastplate.png" src="/images/2/22/Suffused_Obsidian_Heavy_Breastplate.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Gauntlets" title="Suffused Obsidian Heavy Gauntlets"><img alt="Suffused Obsidian Heavy Gauntlets.png" src="/images/c/ce/Suffused_Obsidian_Heavy_Gauntlets.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Cuisses" title="Suffused Obsidian Heavy Cuisses"><img alt="Suffused Obsidian Heavy Cuisses.png" src="/images/7/70/Suffused_Obsidian_Heavy_Cuisses.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Heavy_Greaves" title="Suffused Obsidian Heavy Greaves"><img alt="Suffused Obsidian Heavy Greaves.png" src="/images/7/70/Suffused_Obsidian_Heavy_Greaves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Mask" title="Suffused Obsidian Medium Mask"><img alt="Suffused Obsidian Medium Mask.png" src="/images/7/74/Suffused_Obsidian_Medium_Mask.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Shoulders" title="Suffused Obsidian Medium Shoulders"><img alt="Suffused Obsidian Medium Shoulders.png" src="/images/5/59/Suffused_Obsidian_Medium_Shoulders.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Jacket" title="Suffused Obsidian Medium Jacket"><img alt="Suffused Obsidian Medium Jacket.png" src="/images/c/cb/Suffused_Obsidian_Medium_Jacket.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Gloves" title="Suffused Obsidian Medium Gloves"><img alt="Suffused Obsidian Medium Gloves.png" src="/images/7/7d/Suffused_Obsidian_Medium_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Leggings" title="Suffused Obsidian Medium Leggings"><img alt="Suffused Obsidian Medium Leggings.png" src="/images/e/ee/Suffused_Obsidian_Medium_Leggings.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Medium_Boots" title="Suffused Obsidian Medium Boots"><img alt="Suffused Obsidian Medium Boots.png" src="/images/2/26/Suffused_Obsidian_Medium_Boots.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Crown" title="Suffused Obsidian Light Crown"><img alt="Suffused Obsidian Light Crown.png" src="/images/c/c6/Suffused_Obsidian_Light_Crown.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Mantle" title="Suffused Obsidian Light Mantle"><img alt="Suffused Obsidian Light Mantle.png" src="/images/8/8f/Suffused_Obsidian_Light_Mantle.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Regalia" title="Suffused Obsidian Light Regalia"><img alt="Suffused Obsidian Light Regalia.png" src="/images/d/d2/Suffused_Obsidian_Light_Regalia.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Gloves" title="Suffused Obsidian Light Gloves"><img alt="Suffused Obsidian Light Gloves.png" src="/images/4/4c/Suffused_Obsidian_Light_Gloves.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Pants" title="Suffused Obsidian Light Pants"><img alt="Suffused Obsidian Light Pants.png" src="/images/f/fc/Suffused_Obsidian_Light_Pants.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div><div class="widget-account-achievement" data-id="achievement8093-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Suffused_Obsidian_Light_Shoes" title="Suffused Obsidian Light Shoes"><img alt="Suffused Obsidian Light Shoes.png" src="/images/6/62/Suffused_Obsidian_Light_Shoes.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64"></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 6 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8093">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 12 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8093">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 18 Skins
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Legendary_Armor_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>Legendary Armorer</b>: Please note that the Legendary Armorer achievement is only advanced by crafting <a href="/wiki/Perfected_Envoy_armor" title="Perfected Envoy armor">Perfected Envoy armor</a> from raids, not by upgrading PvP or WvW ascended armor to legendary.</span>
+</li>
+</ol></div>
+<ul><li>Though the Astral collections specify Heavy armor, unlocking any armor weight of the above skins will unlock light, medium, and heavy versions.</li></ul>
+<h2><span class="mw-headline" id="Mail_received_upon_choosing_an_Experimental_Armor">Mail received upon choosing an Experimental Armor</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Legendary_Armor_(achievements)&amp;action=edit&amp;section=2" title="Edit section: Mail received upon choosing an Experimental Armor">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div>
+<div style="display:inline-block; margin-right:10px;">
+<dl><dt>Light</dt></dl>
+<div class="mail" style="margin:10px 0px; max-width:500px;">
+<table style="width: 100%; padding: 10px;">
+
+<tbody><tr>
+<td style="width: 30px; vertical-align: top; padding: 0px 5px;">
+<p><a href="/wiki/Mail" title="Mail"><img alt="Mail.png" src="/images/f/fe/Mail.png" decoding="async" width="29" height="20" data-file-width="29" data-file-height="20"></a>
+</p>
+</td>
+<td style="padding: 0px 5px;"><p><b><a href="/wiki/Giita" title="Giita">Giita</a></b></p>
+<p>Your Legendary Journey</p>
+<hr>
+<p>Salutations,
+</p><p>Your efforts in the Forsaken Thicket are the stuff of legend. It has come to my attention that you have assembled a very remarkable set of armor, and I would like to offer my expertise to help improve it to make a truly legendary creation.
+</p>
+Find me in Lion's Arch.<p>—<a href="/wiki/Giita" title="Giita">Giita</a></p>
+</td></tr></tbody></table>
+</div></div>
+<div style="display:inline-block; margin-right:10px;">
+<dl><dt>Medium</dt></dl>
+<div class="mail" style="margin:10px 0px; max-width:500px;">
+<table style="width: 100%; padding: 10px;">
+
+<tbody><tr>
+<td style="width: 30px; vertical-align: top; padding: 0px 5px;">
+<p><a href="/wiki/Mail" title="Mail"><img alt="Mail.png" src="/images/f/fe/Mail.png" decoding="async" width="29" height="20" data-file-width="29" data-file-height="20"></a>
+</p>
+</td>
+<td style="padding: 0px 5px;"><p><b><a href="/wiki/Hamil" title="Hamil">Hamil</a></b></p>
+<p>Your Legendary Journey</p>
+<hr>
+<p>Greetings,
+</p><p>Your deeds in the Forsaken Thicket are well known. It has come to my attention that you have assembled a very remarkable set of armor, and I would like to offer my expertise to help improve it to make a truly legendary creation.
+</p><p>If you are interested, come talk to me in Lion's Arch.
+</p>
+</td></tr></tbody></table>
+</div></div>
+<div style="display:inline-block;">
+<dl><dt>Heavy</dt></dl>
+<div class="mail" style="margin:10px 0px; max-width:500px;">
+<table style="width: 100%; padding: 10px;">
+
+<tbody><tr>
+<td style="width: 30px; vertical-align: top; padding: 0px 5px;">
+<p><a href="/wiki/Mail" title="Mail"><img alt="Mail.png" src="/images/f/fe/Mail.png" decoding="async" width="29" height="20" data-file-width="29" data-file-height="20"></a>
+</p>
+</td>
+<td style="padding: 0px 5px;"><p><b><a href="/wiki/Muireall" title="Muireall">Muireall</a></b></p>
+<p>Your Legendary Journey</p>
+<hr>
+<p>Hail, mighty crafter!
+</p><p>Your efforts in the Forsaken Thicket are known throughout Tyria. Congratulations! It has come to my attention that you have assembled a very remarkable set of armor, and I would like to offer my expertise to help improve it to make a truly legendary creation.
+</p>
+Find me in Lion's Arch.<p>—<a href="/wiki/Muireall" title="Muireall">Muireall</a></p>
+</td></tr></tbody></table>
+</div></div>
+</div>
+<hr style="margin: 1em 0em; clear: both;">
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Collections" title="Collections">Collections achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">Categories
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Basic_Collections" title="Basic Collections">Basic Collections</a></li>
+<li><a href="/wiki/Rare_Collections" title="Rare Collections">Rare Collections</a></li>
+<li><a href="/wiki/Specialization_Collections" title="Specialization Collections">Specialization Collections</a></li>
+<li><a href="/wiki/Legendary_Weapons_(achievements)" title="Legendary Weapons (achievements)">Legendary Weapons</a></li>
+<li><a href="/wiki/Legendary_Backpacks" title="Legendary Backpacks">Legendary Backpacks</a></li>
+<li><a class="mw-selflink selflink">Legendary Armor</a></li>
+<li><a href="/wiki/Legendary_Trinkets" title="Legendary Trinkets">Legendary Trinkets</a></li>
+<li><a href="/wiki/Festival_Collections" title="Festival Collections">Festival Collections</a></li>
+<li><a href="/wiki/Black_Lion_Collections" title="Black Lion Collections">Black Lion Collections</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260901103801
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 1.251 seconds
+Real time usage: 2.048 seconds
+Preprocessor visited node count: 17010/1000000
+Post‐expand include size: 359978/2097152 bytes
+Template argument size: 55747/2097152 bytes
+Highest expansion depth: 10/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 449/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1764.291      1 -total
+ 91.24% 1609.678     15 Template:Achievement_table_row
+ 69.62% 1228.295    127 Template:Item_icon_without_name
+  3.87%   68.221      1 Template:Achievement_category_infobox
+  3.50%   61.774      1 Template:Achievement_nav
+  1.39%   24.496     21 Template:Ifexists
+  0.91%   16.000      1 Template:Achievement_table_header
+  0.85%   14.939      1 Template:Infobox_requires
+  0.75%   13.234     70 Template:Ap
+  0.59%   10.387      1 Template:Infobox_status
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:166995-0!dateformat=default and timestamp 20260901103759 and revision id 3156868.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Legendary_Armor_(achievements)&amp;oldid=3156868#Legendary_Rune_Collector">https://wiki.guildwars2.com/index.php?title=Legendary_Armor_(achievements)&amp;oldid=3156868#Legendary_Rune_Collector</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Heart_of_Thorns_content" title="Category:Heart of Thorns content">Heart of Thorns content</a></li><li><a href="/wiki/Category:Secrets_of_the_Obscure_content" title="Category:Secrets of the Obscure content">Secrets of the Obscure content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		
