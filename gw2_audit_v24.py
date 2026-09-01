@@ -992,10 +992,9 @@ def check_qty_levels(data, errors, warnings):
     """
     comps = data.get("craft_components", {})
     legs = set(data.get("legendaries", {}))
-    for family in ("gen1_weapons", "gen2_weapons", "gen3_weapons", "armor_sets"):
-        node = data.get(family)
-        if isinstance(node, dict):
-            legs |= set(node)
+    node = data.get("armor_sets")
+    if isinstance(node, dict):
+        legs |= set(node)
     # Pseudo-legendaires du selecteur, sans entree propre cote sources.
     legs |= {"t6", "weapons", "trinkets", "upgrades", "prismatic", "obsidian",
              "gen1_all", "gen2_all", "gen3_all", "legendary_trinkets"}
@@ -1254,6 +1253,25 @@ def check_precursor_vs_last_tier(data, errors, warnings):
             )
 
 
+def check_no_flat_weapon_lists(data, errors, warnings):
+    """Aucune liste plate d'armes a cote de legendaries.
+
+    gen1_weapons, gen2_weapons et gen3_weapons decrivaient les memes armes que
+    legendaries, avec les memes champs, et personne ne les lisait. Elles ont
+    derive exactement comme common_required avant elles : quand v182 a retire
+    douze fiches inventees de legendaries, les listes plates les ont gardees —
+    Tigris promu arme a part entiere alors qu'il est le precurseur de Chuka,
+    quatre Aurene's qui n'existent pas. Une donnee qui n'a qu'une source ne peut
+    pas diverger d'elle-meme.
+    """
+    for family in ("gen1_weapons", "gen2_weapons", "gen3_weapons"):
+        if family in data:
+            errors.append(
+                f"{family} : liste plate d'armes recreee a cote de legendaries — "
+                "la fiche d'une arme vit dans legendaries et nulle part ailleurs"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1349,6 +1367,7 @@ def main() -> int:
     # 20. Composants de recette : tout maillon cite doit exister
     check_recipe_components(data, errors, warnings)
     check_precursor_vs_last_tier(data, errors, warnings)
+    check_no_flat_weapon_lists(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

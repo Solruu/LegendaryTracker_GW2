@@ -967,3 +967,32 @@ valeurs qui ressemblent à une phrase plutôt qu'à un nom.
 `collection_unlocks`, qui porte déjà des portes de déblocage (niveau de fractale,
 maîtrises) pour quelques succès. Les deux coexistent aujourd'hui sans se
 contredire — le bloc du wiki ne s'affiche que si `collection_unlocks` ne dit rien.
+
+---
+
+## Quelle pierre runique, arme par arme — ouvert le 01/09/2026
+
+`Icy Runestone` (19676) et `Mystic Runestone` (79418) sont **deux objets
+distincts, échangeables 1 pour 1 chez le même PNJ**, au même prix — 1 po pièce.
+Même schéma que les Ancient Coins et Curious Coins. Le coût ne dépend donc pas
+de laquelle des deux l'arme demande, mais **la donnée doit dire la bonne**.
+
+`gen2_craft_note` affirme que la gen2 utilise la Mystic Runestone à la place de
+l'Icy Runestone de la gen1, et `shared_components` porte `mystic_runestone` pour
+les seize armes gen2. Les captures contredisent cela pour les deux armes lues à
+ce jour :
+
+| arme | ce que dit sa page wiki | source |
+|---|---|---|
+| Astralaria | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/astralaria.html` |
+| HOPE | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/hope.html` |
+
+« Mystic Runestone » n'apparaît nulle part dans ces deux pages.
+
+**En attente** : les quatorze autres pages gen2. La règle est donc de **relever
+la runestone nommée à chaque intégration d'une page d'arme**, et de ne trancher
+`gen2_craft_note` et les `shared_components` qu'une fois la série complète —
+un correctif partiel ferait cohabiter deux conventions.
+
+La donnée reste **en l'état** d'ici là : le prix étant identique, le grand total
+n'est pas faux, seule l'étiquette l'est.

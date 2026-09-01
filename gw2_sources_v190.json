@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v189",
+  "version": "v190",
   "last_updated": "2026-08-13",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -946,7 +946,8 @@
   "changelog_v186": "Une etape peut desormais renvoyer vers une AUTRE legendaire, par le champ legendary. Eternity le demandait : elle se forge depuis Sunrise et Twilight, et le wiki ne recopie pas leurs collections, il y renvoie. Meme principe que le champ component pose au palier IV — une reference, pas une copie. Le Philosopher's Stone recoit son how depuis la table de recette du wiki : vendu par Miyani, aucune source gratuite.",
   "changelog_v187": "Astralaria documentee : ses quatre collections, 120 etapes. Les noms passent au libelle du wiki, les notes deviennent des how. Le balayage des renvois est etendu : une etape dont le nom correspond a un composant ou a une autre legendaire pointe vers elle au lieu de recevoir une copie. L'ordre entre paliers est strict et documente : chaque collection s'ouvre en consommant le precurseur de la precedente — Astralaria IV commence par The Mechanism, aboutissement du III.",
   "changelog_v188": "L'encadre des succes du wiki entre dans les sources : prerequisite, unlock_item et reward, trois champs que l'API n'expose pas — elle rend locked_text en prose, sans structure. C'est la reponse a « comment j'ouvre cette collection », en attente au backlog depuis le debut. Astralaria III le montre bien : prerequis Historian of the Armaments, objet declencheur The Apparatus — le precurseur du palier II — et recompense le Chest of Time and Space, qui contient la recette du Mechanism. L'ordre entre paliers devient une donnee au lieu d'une note en prose. Pose sur 23 collections, celles dont la capture porte l'encadre.",
-  "changelog_v189": "HOPE documentee : ses quatre collections, 124 etapes, 121 noms repris du wiki et 124 conseils. Aucun renvoi component ni legendary : les 124 objets sont des trophees propres a l'arme, sans recouvrement avec craft_components — verifie, pas suppose. Les blocs unlock des quatre paliers portent la chaine complete : Research ouvre le II, Development le III, Prototype le IV. Pas de note collections_order : la donnee la dit deja. Correction collaterale : les precurseurs des QUATRE gen2 de HoT etaient faux. La table du wiki distingue trois paliers — Experimental, Perfected, Final — et le precurseur est le TROISIEME, pas le premier. Astralaria prenait The Device (palier I) au lieu de The Mechanism ; HOPE prenait The Mechanism, qui est celui d'Astralaria ; Nevermore Unfinished Raven Staff au lieu de The Raven Staff ; Chuka and Champawat Tiger's Empowerment au lieu de Tigris. L'ancienne valeur est conservee dans precursor_erreur."
+  "changelog_v189": "HOPE documentee : ses quatre collections, 124 etapes, 121 noms repris du wiki et 124 conseils. Aucun renvoi component ni legendary : les 124 objets sont des trophees propres a l'arme, sans recouvrement avec craft_components — verifie, pas suppose. Les blocs unlock des quatre paliers portent la chaine complete : Research ouvre le II, Development le III, Prototype le IV. Pas de note collections_order : la donnee la dit deja. Correction collaterale : les precurseurs des QUATRE gen2 de HoT etaient faux. La table du wiki distingue trois paliers — Experimental, Perfected, Final — et le precurseur est le TROISIEME, pas le premier. Astralaria prenait The Device (palier I) au lieu de The Mechanism ; HOPE prenait The Mechanism, qui est celui d'Astralaria ; Nevermore Unfinished Raven Staff au lieu de The Raven Staff ; Chuka and Champawat Tiger's Empowerment au lieu de Tigris. L'ancienne valeur est conservee dans precursor_erreur.",
+  "changelog_v190": "Les trois listes plates d'armes sont supprimees. gen1_weapons, gen2_weapons et gen3_weapons doublaient legendaries sans etre lues par personne — ni le JSX, ni le build, ni le serveur. Elles avaient derive : gen2_weapons portait encore les huit fiches inventees que v182 avait retirees de legendaries (Tigris en arme, Eordas Grip, Lorekeeper, Reaver of the Mists...), gen3_weapons quatre autres (Aurene's Guard, Reckoning, Tenderness, Wrath). C'est le meme motif que common_required : une table parallele accumule les erreurs que la structure de reference ne porte plus. Un seul champ n'existait que la : la note de recette d'Eternity. Elle est verifiee sur l'encadre Recipes du wiki et remonte dans legendaries/gen1_eternity, corrigee au passage — 1 Sunrise + 1 Twilight + 5 Pile of Crystalline Dust + 10 Philosopher's Stone. L'ancienne annoncait 2 Icy Runestones et un Gift of Condensed Magic, absents de la recette ; et le patron generationnel qui l'avait ecrasee ne s'applique pas a Eternity."
  },
  "meta_events": {
   "vb": {
@@ -15626,159 +15627,6 @@
    }
   }
  },
- "gen1_weapons": [
-  {
-   "name": "Frostfang",
-   "type": "Axe",
-   "precursor": "Tooth of Frostfang",
-   "gift": "Gift of Frostfang",
-   "wiki": "Frostfang"
-  },
-  {
-   "name": "Incinerator",
-   "type": "Dagger",
-   "precursor": "Spark",
-   "gift": "Gift of Incinerator",
-   "wiki": "Incinerator"
-  },
-  {
-   "name": "The Moot",
-   "type": "Mace",
-   "precursor": "The Energizer",
-   "gift": "Gift of The Moot",
-   "wiki": "The_Moot"
-  },
-  {
-   "name": "Quip",
-   "type": "Pistol",
-   "precursor": "Chaos Gun",
-   "gift": "Gift of Quip",
-   "wiki": "Quip"
-  },
-  {
-   "name": "Meteorlogicus",
-   "type": "Scepter",
-   "precursor": "Storm",
-   "gift": "Gift of Meteorlogicus",
-   "wiki": "Meteorlogicus"
-  },
-  {
-   "name": "Bolt",
-   "type": "Sword",
-   "precursor": "Zap",
-   "gift": "Gift of Bolt",
-   "wiki": "Bolt"
-  },
-  {
-   "name": "The Minstrel",
-   "type": "Focus",
-   "precursor": "The Bard",
-   "gift": "Gift of The Minstrel",
-   "wiki": "The_Minstrel"
-  },
-  {
-   "name": "The Flameseeker Prophecies",
-   "type": "Shield",
-   "precursor": "The Chosen",
-   "gift": "Gift of The Flameseeker Prophecies",
-   "wiki": "The_Flameseeker_Prophecies"
-  },
-  {
-   "name": "Rodgort",
-   "type": "Torch",
-   "precursor": "Rodgort's Flame",
-   "gift": "Gift of Rodgort",
-   "wiki": "Rodgort"
-  },
-  {
-   "name": "Howler",
-   "type": "Warhorn",
-   "precursor": "Howl",
-   "gift": "Gift of Howler",
-   "wiki": "Howler"
-  },
-  {
-   "name": "Sunrise",
-   "type": "Greatsword",
-   "precursor": "Dawn",
-   "gift": "Gift of Sunrise",
-   "wiki": "Sunrise"
-  },
-  {
-   "name": "Twilight",
-   "type": "Greatsword",
-   "precursor": "Dusk",
-   "gift": "Gift of Twilight",
-   "wiki": "Twilight"
-  },
-  {
-   "name": "Eternity",
-   "type": "Greatsword",
-   "precursor": "Sunrise + Twilight",
-   "gift": "N/A — MF direct",
-   "wiki": "Eternity",
-   "note": {
-    "fr": "Craft spécial : MF Sunrise + Twilight + 2× Icy Runestone + Gift of Condensed Magic. Requiert d'abord les deux espadons.",
-    "en": "Special craft: MF Sunrise + Twilight + 2× Icy Runestone + Gift of Condensed Magic. Requires both greatswords first."
-   }
-  },
-  {
-   "name": "The Juggernaut",
-   "type": "Hammer",
-   "precursor": "The Colossus",
-   "gift": "Gift of The Juggernaut",
-   "wiki": "The_Juggernaut"
-  },
-  {
-   "name": "Frenzy",
-   "type": "Harpoon",
-   "precursor": "Rage",
-   "gift": "Gift of Frenzy",
-   "wiki": "Frenzy"
-  },
-  {
-   "name": "Kamohoali'i Kotaki",
-   "type": "Spear",
-   "precursor": "Carcharias",
-   "gift": "Gift of Kamohoali'i Kotaki",
-   "wiki": "Kamohoali%27i_Kotaki"
-  },
-  {
-   "name": "Kudzu",
-   "type": "Longbow",
-   "precursor": "Leaf of Kudzu",
-   "gift": "Gift of Kudzu",
-   "wiki": "Kudzu"
-  },
-  {
-   "name": "The Dreamer",
-   "type": "Shortbow",
-   "precursor": "The Lover",
-   "gift": "Gift of The Dreamer",
-   "wiki": "The_Dreamer"
-  },
-  {
-   "name": "The Bifrost",
-   "type": "Staff",
-   "precursor": "The Legend",
-   "gift": "Gift of The Bifrost",
-   "wiki": "The_Bifrost"
-  },
-  {
-   "name": "Kraitkin",
-   "type": "Trident",
-   "precursor": "Venom",
-   "gift": "Gift of Kraitkin",
-   "wiki": "Kraitkin"
-  },
-  {
-   "name": "The Predator",
-   "type": "Rifle",
-   "precursor": "The Hunter",
-   "gift": "Gift of The Predator",
-   "wiki": "The_Predator"
-  }
- ],
  "gen1_craft_note": {
   "recipe": "MF : Précurseur + Gift of [Weapon] + Gift of Fortune + Gift of Mastery",
   "common_components": [
@@ -16043,168 +15891,6 @@
   },
   "expansion_required": "HoT (ou PoF pour Gift of Desert Mastery)"
  },
- "gen2_weapons": [
-  {
-   "name": "Astralaria",
-   "type": "Axe",
-   "precursor": "The Device",
-   "gift": "Gift of Astralaria",
-   "wiki": "Astralaria",
-   "collection": true,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "HOPE",
-   "type": "Pistol",
-   "precursor": "The Mechanism",
-   "gift": "Gift of HOPE",
-   "wiki": "HOPE",
-   "collection": true,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Nevermore",
-   "type": "Staff",
-   "precursor": "Unfinished Raven Staff",
-   "gift": "Gift of Nevermore",
-   "wiki": "Nevermore",
-   "collection": true,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Chuka and Champawat",
-   "type": "Shortbow",
-   "precursor": "Tiger's Empowerment",
-   "gift": "Gift of Chuka and Champawat",
-   "wiki": "Chuka_and_Champawat",
-   "collection": true,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Tigris",
-   "type": "Dagger",
-   "precursor": "Claw of Retribution",
-   "gift": "Gift of Tigris",
-   "wiki": "Tigris",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Caladbolg",
-   "type": "Sword",
-   "precursor": "Sword of Wrath",
-   "gift": "Gift of Caladbolg",
-   "wiki": "Caladbolg",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Eureka",
-   "type": "Mace",
-   "precursor": "Spark of Eureka",
-   "gift": "Gift of Eureka",
-   "wiki": "Eureka",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Shooshadoo",
-   "type": "Focus",
-   "precursor": "Glowing Fetish",
-   "gift": "Gift of Shooshadoo",
-   "wiki": "Shooshadoo",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Eordas Grip",
-   "type": "Shield",
-   "precursor": "Keeper of the Wilds",
-   "gift": "Gift of Eordas Grip",
-   "wiki": "Eordas_Grip",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Itzel's Boon",
-   "type": "Warhorn",
-   "precursor": "Sacred Jungle Defender",
-   "gift": "Gift of Itzel's Boon",
-   "wiki": "Itzel%27s_Boon",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Exordium",
-   "type": "Greatsword",
-   "precursor": "Claw of Resolution",
-   "gift": "Gift of Exordium",
-   "wiki": "Exordium",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "H.O.P.E. (Scepter)",
-   "type": "Scepter",
-   "precursor": "Hope's Last Spark",
-   "gift": "Gift of the Radiant",
-   "wiki": "The_Radiant",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery",
-   "expansion": "HoT"
-  },
-  {
-   "name": "Lorekeeper",
-   "type": "Hammer",
-   "precursor": "Ancient Tome",
-   "gift": "Gift of Lorekeeper",
-   "wiki": "Lorekeeper",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "expansion": "PoF"
-  },
-  {
-   "name": "Elegy",
-   "type": "Greatsword",
-   "precursor": "Elegy Mosaic",
-   "gift": "Gift of Elegy",
-   "wiki": "Elegy",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "expansion": "PoF"
-  },
-  {
-   "name": "Xiuquatl",
-   "type": "Scepter",
-   "precursor": "Xiuquatl Core",
-   "gift": "Gift of Xiuquatl",
-   "wiki": "Xiuquatl",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "expansion": "PoF"
-  },
-  {
-   "name": "Reaver of the Mists",
-   "type": "Axe",
-   "precursor": "Gleaming Blade",
-   "gift": "Gift of the Reaver",
-   "wiki": "Reaver_of_the_Mists",
-   "collection": false,
-   "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
-   "expansion": "PoF"
-  }
- ],
  "gen3_craft_note": {
   "recipe": "MF : Précurseur + Gift of [Aurene's Weapon] + Gift of Jade Mastery + Draconic Tribute",
   "common_components": [
@@ -16227,136 +15913,6 @@
   },
   "expansion_required": "End of Dragons"
  },
- "gen3_weapons": [
-  {
-   "name": "Aurene's Fang",
-   "type": "Axe",
-   "precursor": "Axe of Aurene's Rending",
-   "gift": "Gift of Aurene's Rending",
-   "wiki": "Aurene%27s_Fang",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Claw",
-   "type": "Dagger",
-   "precursor": "Dagger of Aurene's Rending",
-   "gift": "Gift of Aurene's Rending",
-   "wiki": "Aurene%27s_Claw",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Bite",
-   "type": "Sword",
-   "precursor": "Sword of Aurene's Rending",
-   "gift": "Gift of Aurene's Rending",
-   "wiki": "Aurene%27s_Bite",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Weight",
-   "type": "Mace",
-   "precursor": "Mace of Aurene's Resolve",
-   "gift": "Gift of Aurene's Resolve",
-   "wiki": "Aurene%27s_Weight",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Gaze",
-   "type": "Pistol",
-   "precursor": "Pistol of Aurene's Resolve",
-   "gift": "Gift of Aurene's Resolve",
-   "wiki": "Aurene%27s_Gaze",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Insight",
-   "type": "Scepter",
-   "precursor": "Scepter of Aurene's Resolve",
-   "gift": "Gift of Aurene's Resolve",
-   "wiki": "Aurene%27s_Insight",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Argument",
-   "type": "Focus",
-   "precursor": "Focus of Aurene's Wisdom",
-   "gift": "Gift of Aurene's Wisdom",
-   "wiki": "Aurene%27s_Argument",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Guard",
-   "type": "Shield",
-   "precursor": "Shield of Aurene's Wisdom",
-   "gift": "Gift of Aurene's Wisdom",
-   "wiki": "Aurene%27s_Guard",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Persuasion",
-   "type": "Torch",
-   "precursor": "Torch of Aurene's Wisdom",
-   "gift": "Gift of Aurene's Wisdom",
-   "wiki": "Aurene%27s_Persuasion",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Voice",
-   "type": "Warhorn",
-   "precursor": "Warhorn of Aurene's Wisdom",
-   "gift": "Gift of Aurene's Wisdom",
-   "wiki": "Aurene%27s_Voice",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Wrath",
-   "type": "Greatsword",
-   "precursor": "Greatsword of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Wrath",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Reckoning",
-   "type": "Hammer",
-   "precursor": "Hammer of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Reckoning",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Scale",
-   "type": "Longbow",
-   "precursor": "Longbow of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Scale",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Wisdom",
-   "type": "Rifle",
-   "precursor": "Rifle of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Wisdom",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Breath",
-   "type": "Shortbow",
-   "precursor": "Shortbow of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Breath",
-   "expansion": "EoD"
-  },
-  {
-   "name": "Aurene's Tenderness",
-   "type": "Staff",
-   "precursor": "Staff of Aurene's Power",
-   "gift": "Gift of Aurene's Power",
-   "wiki": "Aurene%27s_Tenderness",
-   "expansion": "EoD"
-  }
- ],
  "legendaries": {
   "transcendence": {
    "name": "Transcendence",
@@ -25562,8 +25118,8 @@
    "expansion": "Core",
    "wiki": "Eternity",
    "recipe": {
-    "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Eternity",
-    "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Eternity"
+    "fr": "Forge mystique : 1 Sunrise + 1 Twilight + 5 Pile of Crystalline Dust + 10 Philosopher's Stone. Variante mémoire : Memory of Sunrise + Memory of Twilight, mêmes appoints.",
+    "en": "Mystic Forge: 1 Sunrise + 1 Twilight + 5 Piles of Crystalline Dust + 10 Philosopher's Stones. Memory variant: Memory of Sunrise + Memory of Twilight, same top-ups."
    },
    "shared_components": [
     "gift_of_battle",
@@ -25579,7 +25135,7 @@
    "gen": "gen1",
    "armory_api_id": 30706,
    "armory_max_count": 2,
-   "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+   "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — ressources/wiki/eternity.html ; remplace le patron générationnel, qui ne s'applique pas : Eternity ne consomme ni gift d'arme ni gift de maîtrise)",
    "collections": {
     "legendary_weapon_eternity": {
      "id": 7250,
