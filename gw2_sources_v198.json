@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v197",
+  "version": "v198",
   "last_updated": "2026-08-13",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -954,7 +954,8 @@
   "changelog_v194": "Les vingt armes gen1 sont documentees. 919 conseils et 919 noms repris du wiki, 79 blocs unlock, sur les 70 collections encore ouvertes — les trois paliers numerotes de chaque arme plus son palier Legendary Weapon:. Les etapes d'armes passent de 1040 non couvertes a 4. Ces 4 restantes sont Legendary Weapon: Twilight, dont la capture manque au paquet final : 19 pages recues sur 20. C'est la seule collection d'arme du tracker sans capture. Les paliers Legendary Weapon: se ventilent comme prevu : douze de leurs seize etapes retombent sur craft_components deja documentes (Gift of Fortune, Gift of Mastery, Bloodstone Shard, Mystic Clover, Icy Runestone...), les quatre ou cinq autres sont propres a l'arme et recoivent un conseil. Runestone : les vingt paliers IV nomment l'Icy Runestone, zero Mystic. Avec les quatre gen2 a collections deja lues, cela fait vingt-quatre armes concordantes et aucun contre-exemple. La question reste ouverte pour les douze gen2 sans collection, seules non lues.",
   "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity.",
   "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix.",
-  "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron."
+  "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron.",
+  "changelog_v198": "Passe 1 des chantiers hors armes, 20 pages. 134 conseils poses ou remplaces, 40 noms repris du wiki, 15 blocs unlock. Aurora: Awakening annoncait 7 etapes et n en portait aucune — les 7 sont creees, ordre verifie contre gw2_bits_dump. Forge Guard s Armor Collection utilise un tableau « Collectible » sans colonne Notes, que gw2_parse_collection_v2.py ne lit pas : ses 6 objets sont extraits a part et le items_ref le dit. Champ progress introduit sur la structure collections existante, mais sur un perimetre bien plus etroit que prevu. J avais capture les listes de succes eligibles des meta de maitrise ; l audit a refuse le push, et il avait raison : meta_eligible portait deja les seize listes, verifiees le 11/08. Le diff est sans appel — ma capture n apportait qu un separateur « ... » parasite et une entite HTML mal decodee. Le travail etait fait ; c est le items vide de la collection qui m a fait croire au contraire, alors que la liste vit ailleurs, exactement la ou la regle du projet la met. progress ne subsiste donc que la ou RIEN ne le porte : les quatre recursions d Eikasia, ou l API n expose aucun bit et la progression est de la Fractalline Dust, et Helping Hylek, ou c est un compteur de kraits tues. Il ne porte ni seuil ni pool — total et meta_eligible les donnent deja. RENDU JSX NON FAIT : progress n est pas encore lu par le JSX. Passe finale apres les trois lots."
  },
  "meta_events": {
   "vb": {
@@ -16179,114 +16180,186 @@
        "bit": 0,
        "name": "Defender of Ascalon",
        "how": {
+        "fr": null,
+        "en": "Sold by BUY-2046 PFR in the Mistlock Observatory for 20 Pristine Fractal Relic"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Défenseur d'Ascalon : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 20 Reliques fractales immaculées.",
         "en": "Defender of Ascalon: from BUY-2046 PFR, in the Mistlock Observatory, 20 Pristine Fractal Relics."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Charr-Nip",
        "how": {
+        "fr": null,
+        "en": "Sold by BUY-4373 in the Mistlock Observatory for 100 Fractal Relic + 80"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Charr-Nip : chez BUY-4373, à l'Observatoire, 100 Reliques fractales + 80 pa.",
         "en": "Charr-Nip: from BUY-4373, in the Mistlock Observatory, 100 Fractal Relics + 80 s."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Swampland Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the level 1-20 Swampland Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Mote de défi Marécages : activer le mote et finir le fractale Marécages ÉCHELLE 1-20, avec -80 % de soins. Accessible dès maintenant à ton niveau.",
         "en": "Swampland Challenge Mote: activate the mote and clear the Swampland fractal at SCALE 1-20, with an 80% healing reduction. Reachable at your current level."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Aquatic Ruin Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the level 1-20 Aquatic Ruins Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Mote de défi Ruines aquatiques : même principe, échelle 1-20, -80 % de soins. ⚠ Bug connu : les deux motes sont donnés par le COFFRE final, pense à le looter.",
         "en": "Aquatic Ruin Challenge Mote: same principle, scale 1-20, 80% healing reduction. ⚠ Known bug: both motes come from the final CHEST, remember to loot it."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Jade Kraken Timed Mote",
        "how": {
+        "fr": null,
+        "en": "Beat the Jade Maw in under 5 minutes in the level 20 Solid Ocean Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Mote chronométré Kraken de jade : battre la Gueule de jade en moins de 5 minutes, fractale Océan solide échelle 20.",
         "en": "Jade Kraken Timed Mote: beat the Jade Maw in under 5 minutes, Solid Ocean fractal at scale 20."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Ascalonian Fractal Field Research Paper",
        "how": {
+        "fr": null,
+        "en": "Sold by the Urban Battlegrounds Field Researcher in the Urban Battleground Fractal for a Fractal Journal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Rapport de recherche ascalonien : chez le Chercheur du Champ de bataille urbain, DANS le fractale, contre un Journal fractal (28 Pages de recherche).",
         "en": "Ascalonian Fractal Field Research Paper: from the Urban Battlegrounds Field Researcher, INSIDE the fractal, for a Fractal Journal (28 Research Pages)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Burning Frozen Core",
        "how": {
+        "fr": null,
+        "en": "Obtain a Gigantic Ice Elemental Core from the Champion Svanir Shaman Chief world boss in Wayfarer Foothills and imbue it in the Boiling-Hot Magma at the end of the Volcanic Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Cœur gelé brûlant : récupérer un Cœur d'élémentaire de glace gigantesque sur le Chef chaman svanir (boss de monde, Contreforts du Voyageur), puis l'imprégner dans le Magma bouillant en fin de fractale Volcanique.",
         "en": "Burning Frozen Core: get a Gigantic Ice Elemental Core from the Champion Svanir Shaman Chief (world boss, Wayfarer Foothills), then imbue it in the Boiling-Hot Magma at the end of the Volcanic fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Charged Clump of Swamp Moss",
        "how": {
+        "fr": null,
+        "en": "Obtain a Clump of Swamp Moss by completing the Swampland Fractal and charge it in the Specially Charged Energy Storage Tank at the Opticalium in Metrica Province"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Amas de mousse chargé : ramasser l'Amas de mousse en finissant le fractale Marécages, puis le charger au Réservoir d'énergie de l'Opticalium, en Province de Metrica.",
         "en": "Charged Clump of Swamp Moss: pick up the Clump of Swamp Moss by clearing the Swampland fractal, then charge it in the Energy Storage Tank at the Opticalium, in Metrica Province."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
        "name": "Prototype Fractal Capacitor",
        "how": {
+        "fr": null,
+        "en": "Sold by BUY-4373 in the Mistlock Observatory for 1,350 Fractal Relic + 21 12"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Condensateur fractal prototype : chez BUY-4373, 1 350 Reliques fractales. ⚠ NE LE RECYCLE PAS : il doit être conservé et amélioré pour Ad Infinitum II. La chaîne complète consomme 4 Dons d’ascension (500 reliques + 25 immaculées + 20 po chacun) : montée en Élevé, en Bêta infusé, en Condensateur fractal infusé, puis la recette finale. 💡 Le Reliquaire fractal propose le Don à 25 reliques au lieu de 500, environ un jour sur sept — consulte-le quotidiennement, quatre passages te feraient économiser 1 900 reliques. Il s’obtient par le succès « Recyclage élevé » : 6 objets puissants issus du recyclage d’élevé, exactement les recyclages qui te fournissent les Boules d’énergie sombre.",
         "en": "Prototype Fractal Capacitor: from BUY-4373, 1,350 Fractal Relics. ⚠ DO NOT SALVAGE IT: it must be kept and upgraded for Ad Infinitum II. The full chain consumes 4 Gifts of Ascension (500 relics + 25 pristine + 20 g each): upgrade to Ascended, to Beta Infused, to Fractal Capacitor (Infused), then the final recipe. 💡 The Fractal Reliquary offers the Gift for 25 relics instead of 500, roughly one day in seven — check it daily; four hits would save 1,900 relics. It comes from the 'Ascended Recycling' achievement: 6 powerful items from salvaging ascended gear, the very salvages that give you Balls of Dark Energy."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Unstable Magically Charged Infusion Sample",
        "how": {
+        "fr": null,
+        "en": "Charge a +4 Agony Infusion at the Mist Geyser found at the end of the Swampland Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Échantillon d'infusion instable : charger une infusion d'agonie +4 au Geyser des Brumes, en fin de fractale Marécages.",
         "en": "Unstable Magically Charged Infusion Sample: charge a +4 Agony Infusion at the Mist Geyser, at the end of the Swampland fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
        "name": "Aetherblade Recruitment Form",
        "how": {
+        "fr": null,
+        "en": "Sold by the Aetherblade Quartermaster in the Captain Mai Trin Boss Fractal for 1 Ball of Dark Energy , salvaged from ascended gear . Does not require any progress in the fractal, the vendor is located inside a cabin in an area reached by following the path behind the start of the fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
+       "how_jsx": {
         "fr": "Formulaire de recrutement aetherblade : chez le Quartier-maître aetherblade, dans le fractale Capitaine Mai Trin, contre 1 Boule d'énergie sombre (recyclage d'élevé). ⚠ Aucune progression requise dans le fractale : le vendeur est dans une cabane accessible par le chemin derrière le départ.",
         "en": "Aetherblade Recruitment Form: from the Aetherblade Quartermaster, in the Captain Mai Trin fractal, for 1 Ball of Dark Energy (salvaged from ascended gear). ⚠ No progress needed in the fractal: the vendor sits in a cabin reached by the path behind the start."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Ad Infinitum I: Finite Result",
+      "prerequisite": {
+       "name": "Kelvei",
+       "wiki": "Kelvei, the Legendary Observer"
+      },
+      "unlock_item": {
+       "name": "Theory of the Finite Result",
+       "wiki": "Theory of the Finite Result"
+      },
+      "reward": {
+       "name": "Proof: Finite Result",
+       "wiki": "Proof: Finite Result"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "adinf_2": {
      "id": 2557,
@@ -16305,114 +16378,187 @@
        "bit": 0,
        "name": "Dredge Spiral Drill",
        "how": {
+        "fr": null,
+        "en": "Purchased from BUY-2046 PFR in the Mistlock Observatory for 30"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Foreuse spirale des taupards : chez BUY-2046 PFR, à l'Observatoire, 30 Reliques fractales immaculées.",
         "en": "Dredge Spiral Drill: from BUY-2046 PFR, in the Mistlock Observatory, 30 Pristine Fractal Relics."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Glob of Molten Fire",
        "how": {
+        "fr": null,
+        "en": "Purchased from BUY-4373 in the Mistlock Observatory for 200 + 80"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Boule de feu en fusion : chez BUY-4373, à l'Observatoire, 200 Reliques fractales + 80 pa.",
         "en": "Glob of Molten Fire: from BUY-4373, in the Mistlock Observatory, 200 Fractal Relics + 80 s."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Uncategorized Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the scale 36 Uncategorized Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Mote de défi Non répertorié : ⚠ ÉCHELLE 36, avec -80 % de soins. C'est ici que ton niveau fractale devient bloquant — il faut avoir débloqué l'échelle 36.",
         "en": "Uncategorized Challenge Mote: ⚠ SCALE 36, with an 80% healing reduction. This is where your fractal level starts to block - you need scale 36 unlocked."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Snowblind Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the scale 27 Snowblind Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Mote de défi Aveugle-neige : échelle 27, -80 % de soins.",
         "en": "Snowblind Challenge Mote: scale 27, 80% healing reduction."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Thaumanova Reactor Timed Mote",
        "how": {
+        "fr": null,
+        "en": "Complete the scale 15 Thaumanova Reactor Fractal in under 20 minutes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Mote chronométré Réacteur Thaumanova : échelle 15, à finir en moins de 20 minutes. Large, aucune course.",
         "en": "Thaumanova Reactor Timed Mote: scale 15, to be cleared in under 20 minutes. Generous, no rush needed."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Molten Alliance Fractal Field Research Paper",
        "how": {
+        "fr": null,
+        "en": "Exchanged for 1 by the Molten Furnace Field Researcher located on an optional path after completing the Molten Boss Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Rapport de recherche Alliance en fusion : contre 1 Journal fractal (28 Pages), auprès du Chercheur de la Fournaise en fusion, sur un chemin OPTIONNEL après le fractale Boss en fusion. Ne quitte pas l'instance trop vite.",
         "en": "Molten Alliance Field Research Paper: for 1 Fractal Journal (28 Pages), from the Molten Furnace Field Researcher, on an OPTIONAL path after the Molten Boss fractal. Don't leave the instance too quickly."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Jade Maw Fang",
        "how": {
+        "fr": null,
+        "en": "Obtain a Vinewrath Tendril from the Vinewrath Chest after defeating the Mordrem Vinewrath in the Silverwastes and trade with the Frozen Jade Researcher at the end of the Solid Ocean Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Croc de Gueule de jade : récupérer une Vrille de Colèreronce au coffre du Courroux de la vigne (Terres sauvages d'argent), puis l'échanger auprès du Chercheur de jade gelé, en fin de fractale Océan solide.",
         "en": "Jade Maw Fang: get a Vinewrath Tendril from the Vinewrath Chest (Silverwastes), then trade it with the Frozen Jade Researcher at the end of the Solid Ocean fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Pollenated Ice Elemental Core",
        "how": {
+        "fr": null,
+        "en": "Obtain an Ice Elemental Core from the Legendary Shaman Lornarr Dragonseeker in the Snowblind Fractal and imbue it with a Luminescent Pollen Cloud during The Breach meta event in the Silverwastes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Cœur d'élémentaire de glace pollinisé : Cœur pris sur le Chaman légendaire Lornarr (fractale Aveugle-neige), puis imprégné d'un Nuage de pollen pendant la Brèche, aux Terres sauvages d'argent. ⚠ Récupère le Cœur AVANT de lancer la méta, sinon c'est deux métas au lieu d'une.",
         "en": "Pollenated Ice Elemental Core: Core taken from Legendary Shaman Lornarr (Snowblind fractal), then imbued with a Luminescent Pollen Cloud during The Breach, in the Silverwastes. ⚠ Get the Core BEFORE starting the meta, otherwise it's two metas instead of one."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Beta Fractal Capacitor",
+       "name": "Beta Fractal Capacitor (Infused)",
        "how": {
+        "fr": null,
+        "en": "1) Create a Prototype Fractal Capacitor (Ascended) in the Mystic Forge with EITHER: a) Vial of Condensed Mists Essence , Gift of Ascension , 40 Mystic Crystal , and a Prototype Fractal Capacitor . b) Vial of Condensed Mists Essence , Gift of Ascension , 240 Philosopher's Stone , and a Prototype Fractal Capacitor . 2) Create a Beta Fractal Capacitor (Infused) in the Mystic Forge with a: Glob of Coagulated Mists Essence , Gift of Ascension , 250 Globs of Ectoplasm , and a Prototype Fractal Capacitor (Ascended) . Automatically unlocked if it or a higher tier is already owned"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "name_api": "Beta Fractal Capacitor",
+       "how_jsx": {
         "fr": "Condensateur fractal bêta (infusé) : c'est ici que sert le Condensateur prototype gardé en collection I. Forge mystique deux fois — d'abord en Élevé (Fiole d'essence des Brumes + Don d'Ascension + 40 Cristaux mystiques ou 240 Pierres philosophales), puis en Bêta infusé (Boule d'essence coagulée + Don d'Ascension + 250 ectoplasmes). Débloqué d'office si tu possèdes déjà un palier supérieur.",
         "en": "Beta Fractal Capacitor (Infused): this is where the Prototype Capacitor kept from collection I is used. Mystic Forge twice - first to Ascended (Vial of Condensed Mists Essence + Gift of Ascension + 40 Mystic Crystals or 240 Philosopher's Stones), then to Beta Infused (Glob of Coagulated Mists Essence + Gift of Ascension + 250 ectoplasm). Auto-unlocked if you already own a higher tier."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Weak Magically Charged Infusion Sample",
        "how": {
+        "fr": null,
+        "en": "Charge a +6 Agony Infusion at the Mist Geyser in the Molten Furnace Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Échantillon d'infusion faible : charger une infusion d'agonie +6 au Geyser des Brumes, dans le fractale Fournaise en fusion.",
         "en": "Weak Magically Charged Infusion Sample: charge a +6 Agony Infusion at the Mist Geyser, in the Molten Furnace fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
        "name": "Aetherblade Handbook",
        "how": {
+        "fr": null,
+        "en": "Sold by the Aetherblade Quartermaster in the Captain Mai Trin Boss Fractal for 2 , salvaged from Finite Result or other ascended gear"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_ii_upper_bound.html",
+       "how_jsx": {
         "fr": "Manuel aetherblade : chez le Quartier-maître aetherblade (fractale Mai Trin), 2 Boules d'énergie sombre. Recycler Limite finie en rend 5 : 2 pour ce manuel, 2 pour fabriquer Limite supérieure. Aucun achat nécessaire.",
         "en": "Aetherblade Handbook: from the Aetherblade Quartermaster (Mai Trin fractal), 2 Balls of Dark Energy. Salvaging Finite Result yields 5: 2 for this handbook, 2 to craft Upper Bound. No purchase needed."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Ad Infinitum II: Upper Bound",
+      "prerequisite": {
+       "name": "Ad Infinitum I: Finite Result",
+       "wiki": "Ad Infinitum I: Finite Result"
+      },
+      "unlock_item": {
+       "name": "Theory of the Upper Bound",
+       "wiki": "Theory of the Upper Bound"
+      },
+      "reward": {
+       "name": "Proof: Upper Bound",
+       "wiki": "Proof: Upper Bound"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "adinf_3": {
      "id": 2368,
@@ -16431,114 +16577,187 @@
        "bit": 0,
        "name": "Inquest Dragon Energy Research Cube",
        "how": {
+        "fr": null,
+        "en": "Purchased from BUY-2046 PFR in the Mistlock Observatory for 40"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de la Serrure des Brumes, 40 Reliques fractales immaculées.",
         "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Essence of Subject 2",
        "how": {
+        "fr": null,
+        "en": "Purchased from BUY-4373 in the Mistlock Observatory for 400 + 80"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.",
         "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Volcanic Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the scale 28 Volcanic Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Particule de défi volcanique : activer le mote et finir la fractale Volcanique ÉCHELLE 28, avec -80 % de soins.",
         "en": "Volcanic Challenge Mote: activate the mote and clear the Volcanic fractal at SCALE 28, with an 80% healing reduction."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Cliffside Challenge Mote",
        "how": {
+        "fr": null,
+        "en": "Activate the challenge mote , and complete the scale 46 Cliffside Fractal with an 80% reduction to healing"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Particule de défi de Flanc de falaise : mote activé, Flanc de falaise ÉCHELLE 46, -80 % de soins. La description de l'objet annonce le palier core (21-50), mais la fractale ne tourne qu'aux échelles 6, 46, 68 et 94 : une seule tombe dans l'intervalle.",
         "en": "Cliffside Challenge Mote: mote activated, Cliffside at SCALE 46, 80% healing reduction. The item description says core tier (21-50), but the fractal only runs at scales 6, 46, 68 and 94: only one falls in range."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Molten Boss Timed Mote",
        "how": {
+        "fr": null,
+        "en": "Complete the level 10 Molten Boss Fractal timed challenge. Beat the boss in under 5 minutes"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Particule de défi du boss de la Fusion : finir la fractale Boss en fusion ÉCHELLE 10 en moins de 5 minutes.",
         "en": "Molten Boss Timed Mote: clear the Molten Boss fractal at SCALE 10 in under 5 minutes."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Thaumanova Fractal Field Research Paper",
        "how": {
+        "fr": null,
+        "en": "Sold by the Thaumanova Reactor Field Researcher at the end of the Thaumanova Reactor Fractal for 1"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.",
         "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Old Tom's Vital Reading (He's Dead)",
        "how": {
+        "fr": null,
+        "en": "Obtain Vexa's Golem Diagnostic Reader from Vexa's Lab in Fireheart Rise (entrance is in western Sloven Pitch , Breaktooth's Waypoint — ) and analyze Old Tom 's remains in the Uncategorized Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Rapport de bug du Gros Tom (Il est mort) : interagir avec les Restes du golem d'essai de Vexa, dans le puzzle de saut du Labo de Vexa (Rive d'Ardentcœur), sur la plateforme au sud-est → tu reçois le Lecteur de diagnostic. Ni Vexa ni son golem n'ont besoin d'être tués. Ensuite, analyser les restes du Gros Tom en fin de fractale Non répertorié.",
         "en": "Old Tom's Vital Reading (He's Dead): interact with Vexa's Test-Golem Remains in the Vexa's Lab jumping puzzle (Fireheart Rise), on the platform to the southeast → you get Vexa's Golem Diagnostic Reader. Neither Vexa nor her golem needs to be killed. Then analyse Old Tom's remains at the end of the Uncategorized fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Rabsovich's Lost Treasure",
        "how": {
+        "fr": null,
+        "en": "Obtain Rabsovich's Locker Key from Champion Rabsovich in the Underground Facility Fractal and open Rabsovich's Locker in Dociu Excavation , Dredgehaunt Cliffs . Southeast of Dociu Waypoint —"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Trésor perdu de Rabsovich : tuer le champion Rabsovich dans le Complexe souterrain → Clé du casier ; puis ouvrir le Casier de Rabsovich au sud-ouest des Falaises de Bourreloup, zone d'excavation Dociu [&BFgCAAA=].",
         "en": "Rabsovich's Lost Treasure: kill Champion Rabsovich in the Underground Facility fractal → Rabsovich's Locker Key; then open Rabsovich's Locker southwest of Dredgehaunt Cliffs, Dociu Excavation area [&BFgCAAA=]."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
        "name": "Fractal Capacitor",
        "how": {
+        "fr": null,
+        "en": "Create a Fractal Capacitor (Infused) in the Mystic Forge with a: Shard of Crystallized Mists Essence , Gift of Ascension , 250 Globs of Ectoplasm , and a Beta Fractal Capacitor (Infused) . Automatically unlocked if already owned"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "legendary": "fractal_capacitor",
+       "how_jsx": {
         "fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).",
         "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Magically Charged Infusion Sample",
        "how": {
+        "fr": null,
+        "en": "Charge a +8 Agony Infusion at the Mist Geyser in the Snowblind Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Échantillon d'infusion chargé en magie : charger une infusion d'agonie +8 au Geyser des Brumes d'Aveugle-neige. ⚠ Ne saute pas le combat de la Source élémentaire, sinon le geyser n'apparaît pas ; au lieu d'entrer dans la grotte du boss final, pars vers l'ouest.",
         "en": "Magically Charged Infusion Sample: charge a +8 Agony Infusion at the Mist Geyser in the Snowblind fractal. ⚠ Don't skip the Elemental Source fight or the geyser won't spawn; instead of entering the final boss cave, head west."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
        "name": "Aetherblade Secret Handshake Tutorial Book",
        "how": {
+        "fr": null,
+        "en": "Sold by the Aetherblade Quartermaster in the Captain Mai Trin Boss Fractal for 3 . Can be salvaged from Upper Bound or other ascended gear"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_iii_unbound.html",
+       "how_jsx": {
         "fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.",
         "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[].bitTips du JSX v167 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Ad Infinitum III: Unbound",
+      "prerequisite": {
+       "name": "Ad Infinitum II: Upper Bound",
+       "wiki": "Ad Infinitum II: Upper Bound"
+      },
+      "unlock_item": {
+       "name": "Theory of the Unbound",
+       "wiki": "Theory of the Unbound"
+      },
+      "reward": {
+       "name": "Proof: Unbound",
+       "wiki": "Proof: Unbound"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "adinf_4": {
      "id": 2295,
@@ -16756,7 +16975,13 @@
       "fr": "Prérequis : parler à Hylek Amini (NE d'Eztlitl Grounds [&BEoCAAA=]), puis tuer 25 kraits à Nonmoa Lake ou compléter l'event Krait Witch.",
       "en": "Prereq: talk to Hylek Amini (NE of Eztlitl Grounds [&BEoCAAA=]), then kill 25 krait at Nonmoa Lake or complete the Krait Witch event."
      },
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "progress": {
+      "kind": "kills",
+      "what": "krait"
+     },
+     "progress_ref": "wiki : compteur de victimes, pas une liste d'objets ; le seuil vit dans total",
+     "progress_verified": true
     },
     "summer_sungod": {
      "id": 9183,
@@ -17197,7 +17422,76 @@
       "fr": "Rare Collections — débloquer les 6 skins Forge Guard (n'importe quel poids : 1 pièce débloquée = les 3 poids). Sources : drops VoE, Alliance Field Quartermaster, boîtes du méta-succès de carte.",
       "en": "Rare Collections — unlock all 6 Forge Guard skins (any weight: 1 piece unlocked = all 3 weights). Sources: VoE drops, Alliance Field Quartermaster, map meta-achievement boxes."
      },
-     "name_ref": "wiki ; francais inconnu — le succes 9330 est posterieur au dump des succes"
+     "name_ref": "wiki ; francais inconnu — le succes 9330 est posterieur au dump des succes",
+     "items": [
+      {
+       "bit": 0,
+       "name": "Forge Guard's Medium Helmet",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Helmet skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      },
+      {
+       "bit": 1,
+       "name": "Forge Guard's Medium Pauldron",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Pauldron skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      },
+      {
+       "bit": 2,
+       "name": "Forge Guard's Medium Cuirass",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Cuirass skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      },
+      {
+       "bit": 3,
+       "name": "Forge Guard's Medium Gloves",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Gloves skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      },
+      {
+       "bit": 4,
+       "name": "Forge Guard's Medium Leggings",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Leggings skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      },
+      {
+       "bit": 5,
+       "name": "Forge Guard's Medium Boots",
+       "how": {
+        "fr": null,
+        "en": "Unlock the Forge Guard's Medium Boots skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+       },
+       "how_verified": true,
+       "how_fr_missing": true,
+       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html"
+      }
+     ],
+     "items_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html ; format sans colonne Notes, non lu par gw2_parse_collection_v2.py"
     },
     "stella_resin": {
      "id": 9344,
@@ -18572,16 +18866,21 @@
        "bit": 0,
        "name": "Talk to the castaway \"captain\" in Pub Canach",
        "how": {
-        "fr": "Point de départ : le « capitaine » naufragé se trouve au Pub Canach. Toute la chaîne en découle.",
-        "en": "Starting point: the shipwrecked 'captain' is at Canach's Pub. The whole chain follows from him."
+        "fr": null,
+        "en": "Talk to \"Captain\" Ruymond Lakes in Pub Canach"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Talk to the castaway \"captain\" in Pub Canach.",
        "waypoint": {
         "name": "Pub Canach Waypoint",
         "chat_code": "[&BJEPAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "Point de départ : le « capitaine » naufragé se trouve au Pub Canach. Toute la chaîne en découle.",
+        "en": "Starting point: the shipwrecked 'captain' is at Canach's Pub. The whole chain follows from him."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 1,
@@ -18635,16 +18934,21 @@
        "bit": 4,
        "name": "Complete the Master Diver achievement, then return to Dive Master Astora",
        "how": {
-        "fr": "⚠ Verrou dur : « Maître de la plongée » doit être terminé en entier (10 coffres) avant de pouvoir avancer. Lance-le en tout premier, c'est le poste le plus long.",
-        "en": "⚠ Hard gate: 'Master Diver' must be fully completed (10 chests) before you can progress. Start it first, it's the longest item."
+        "fr": null,
+        "en": "Complete Sunken Treasure Hunter : Master Diver — Find and open the sunken chests . (5 ). If you have completed the achievement previously, you do not need to repeat it"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Complete the Master Diver achievement, then return to Dive Master Astora.",
        "waypoint": {
         "name": "Sanctum Harbor Waypoint",
         "chat_code": "[&BC8EAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "⚠ Verrou dur : « Maître de la plongée » doit être terminé en entier (10 coffres) avant de pouvoir avancer. Lance-le en tout premier, c'est le poste le plus long.",
+        "en": "⚠ Hard gate: 'Master Diver' must be fully completed (10 chests) before you can progress. Start it first, it's the longest item."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 5,
@@ -18666,16 +18970,21 @@
        "bit": 6,
        "name": "Find the sunken treasure in the Siren's Reef Fractal or Aquatic Ruins Fractal",
        "how": {
-        "fr": "Deux fractales au choix — Récif de la sirène ou Ruines aquatiques. Les deux sont en bas de la rotation, accessibles sans RA élevée.",
-        "en": "Two fractals to choose from - Siren's Reef or Aquatic Ruins. Both sit low in the rotation, reachable without high AR."
+        "fr": null,
+        "en": "Open a Sunken Chest at the end of the Siren's Reef Fractal or Aquatic Ruins Fractal . You may have to open multiple chests, so bring multiple Ornate Rusted Keys"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Find the sunken treasure in the Siren's Reef fractal or Underwater Ruins fractal.",
        "waypoint": {
         "name": "Fort Marriner Waypoint",
         "chat_code": "[&BDAEAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "Deux fractales au choix — Récif de la sirène ou Ruines aquatiques. Les deux sont en bas de la rotation, accessibles sans RA élevée.",
+        "en": "Two fractals to choose from - Siren's Reef or Aquatic Ruins. Both sit low in the rotation, reachable without high AR."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 7,
@@ -18693,31 +19002,41 @@
        "bit": 8,
        "name": "Defeat Taidha Covington to retrieve a piece of the mask from her reward chest",
        "how": {
-        "fr": "Taidha Covington est un boss de monde à horaire fixe. Cale ton passage sur le timer plutôt que d'espérer tomber dessus.",
-        "en": "Taidha Covington is a world boss on a fixed timer. Plan around the schedule rather than hoping to stumble on it."
+        "fr": null,
+        "en": "Kill Admiral Taidha Covington"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Defeat Taidha Covington to retrieve a piece of the mask from her reward chest.",
        "waypoint": {
         "name": "Laughing Gull Waypoint",
         "chat_code": "[&BKgBAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "Taidha Covington est un boss de monde à horaire fixe. Cale ton passage sur le timer plutôt que d'espérer tomber dessus.",
+        "en": "Taidha Covington is a world boss on a fixed timer. Plan around the schedule rather than hoping to stumble on it."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Find the piece of the mask in the 'Booter's Path in Castora",
        "how": {
-        "fr": "Les fragments de masque (étapes 9 à 16) se collectent dans n'importe quel ordre. Regroupe ceux de Castora en une seule passe, ils sont quatre.",
-        "en": "The mask fragments (steps 9 to 16) can be collected in any order. Group the Castora ones in a single pass, there are four of them."
+        "fr": null,
+        "en": "Complete the minidungeon 'Booter's Path . (Note: If you complete the minidungeon on the same day prior to unlocking this step in the collection, you will be unable to do this step until the next day after it resets.)"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Find the piece of the mask in the 'Booter's Path in Castora.",
        "waypoint": {
         "name": "Pub Canach Waypoint",
         "chat_code": "[&BJEPAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "Les fragments de masque (étapes 9 à 16) se collectent dans n'importe quel ordre. Regroupe ceux de Castora en une seule passe, ils sont quatre.",
+        "en": "The mask fragments (steps 9 to 16) can be collected in any order. Group the Castora ones in a single pass, there are four of them."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 10,
@@ -18899,16 +19218,21 @@
        "bit": 21,
        "name": "Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit",
        "how": {
-        "fr": "Honneur des vagues en mode Exploration — n'importe quel chemin convient. Donjon à 5, à prévoir en LFG.",
-        "en": "Honor of the Waves in Explorable mode - any path works. A 5-player dungeon, plan for LFG."
+        "fr": null,
+        "en": "Do any path of Honor of the Waves (explorable) . (Story mode doesn't count.)"
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/acquiring_agaleus.html",
        "name_api": "Complete one of the explorable paths in Honor of the Waves to help the Shark Spirit.",
        "waypoint": {
         "name": "Honor of the Waves Waypoint",
         "chat_code": "[&BEMFAAA=]"
-       }
+       },
+       "how_jsx": {
+        "fr": "Honneur des vagues en mode Exploration — n'importe quel chemin convient. Donjon à 5, à prévoir en LFG.",
+        "en": "Honor of the Waves in Explorable mode - any path works. A 5-player dungeon, plan for LFG."
+       },
+       "how_fr_missing": true
       },
       {
        "bit": 22,
@@ -18945,6 +19269,9 @@
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "Acquiring Agaleus",
+      "prerequisite": null,
+      "unlock_item": null,
       "reward": {
        "name": "Agaleus Container",
        "wiki": "Agaleus Container"
@@ -19297,186 +19624,308 @@
      "items": [
       {
        "bit": 0,
-       "name": "Acquire a Living Crystal from the Earth Elemental in the Tangled Depths and use it to capture energy left over in the pillars after defeating the Vale Guardian in Spirit Vale.",
+       "name": "Infused Living Crystal",
        "how": {
+        "fr": null,
+        "en": "Hint: Acquire a Living Crystal from the Earth Elemental in the Tangled Depths and use it to capture energy left over in the pillars after defeating the Vale Guardian in Spirit Vale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Acquire a Living Crystal from the Earth Elemental in the Tangled Depths and use it to capture energy left over in the pillars after defeating the Vale Guardian in Spirit Vale.",
+       "how_jsx": {
         "fr": "Living Crystal : élémentaires de terre dans la grotte à l'est de Nuhoch Lane (Ley-Line Confluence wp, TD) — tuer le groupe, puis celui derrière le mur. Infuser sur un pilier de l'arène APRÈS le kill du Vale Guardian (W1).",
         "en": "Living Crystal: earth elementals in the cave east of Nuhoch Lane (Ley-Line Confluence wp, TD) — kill the group, then the one behind the wall. Infuse on an arena pillar AFTER killing Vale Guardian (W1)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Acquire a Soul Mirror from Burnisher Kengo in Auric Basin and use it to capture spectral energy from the lit ghost sconce at the exit of the Spirit Woods in Spirit Vale.",
+       "name": "Infused Soul Mirror",
        "how": {
+        "fr": null,
+        "en": "Hint: Acquire a Soul Mirror from Burnisher Kengo in Auric Basin and use it to capture spectral energy from the lit ghost sconce at the exit of the Spirit Woods in Spirit Vale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Acquire a Soul Mirror from Burnisher Kengo in Auric Basin and use it to capture spectral energy from the lit ghost sconce at the exit of the Spirit Woods in Spirit Vale.",
+       "how_jsx": {
         "fr": "Soul Mirror : Burnisher Kengo (temple au nord de Northwatch wp, AB — indisponible pendant certaines phases du méta). Infuser au brasier avant Gorseval (W1) : un porteur garde la torche spectrale sur TOUT le cimetière (down/swap = raté, +1 semaine), puis INTERAGIR avec le brasier (le coffre ne suffit pas).",
         "en": "Soul Mirror: Burnisher Kengo (temple north of Northwatch wp, AB — unavailable during some meta phases). Infuse at the brazier before Gorseval (W1): one carrier keeps the spectral torch through the WHOLE cemetery (down/swap = fail, +1 week), then INTERACT with the brazier (the chest is not enough)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Use an Energy Crystal from the Vale Guardian in Spirit Vale to capture Auric energy from the Inner Chamber of Tarir, the Forgotten City.",
+       "name": "Auric Energy Crystal",
        "how": {
+        "fr": null,
+        "en": "Hint: Use an Energy Crystal from the Vale Guardian in Spirit Vale to capture Auric energy from the Inner Chamber of Tarir, the Forgotten City"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Use an Energy Crystal from the Vale Guardian in Spirit Vale to capture Auric energy from the Inner Chamber of Tarir, the Forgotten City.",
+       "how_jsx": {
         "fr": "Acheter Polished Aurillium (Faction Provisioner), puis atteindre 18 stacks de Madness pendant Twisted Castle (W3) avec l'objet utilisé.",
         "en": "Buy Polished Aurillium (any Faction Provisioner), then reach 18 stacks of Madness during Twisted Castle (W3) with the item consumed."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Infuse Spirit Threads from Gorseval the Multifarious in Spirit Vale with ley-line energy released when defeating a chak gerent near the Ley-Line Confluence in the Tangled Depths. Combine 5 Energized Spirit Threads to create a Spirit Weave.",
+       "name": "Spirit Weave",
        "how": {
+        "fr": null,
+        "en": "Infuse Spirit Threads from Gorseval the Multifarious in Spirit Vale with ley-line energy released when defeating a chak gerent near the Ley-Line Confluence in the Tangled Depths . Combine 5 Energized Spirit Threads to create a Spirit Weave"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Infuse Spirit Threads from Gorseval the Multifarious in Spirit Vale with ley-line energy released when defeating a chak gerent near the Ley-Line Confluence in the Tangled Depths. Combine 5 Energized Spirit Threads to create a Spirit Weave.",
+       "how_jsx": {
         "fr": "Energy Crystal : drop du Vale Guardian (W1). L'apporter à l'œuf de Glint (chambre intérieure de Tarir, AB) — transformation automatique.",
         "en": "Energy Crystal: Vale Guardian drop (W1). Bring it to Glint's Egg (Tarir inner chamber, AB) — auto-transforms."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Collect Ectoplasmic Residue from the Spirit Woods and use it to create Coagulated Ectoplasm.",
+       "name": "Coagulated Ectoplasm",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect Ectoplasmic Residue from the Spirit Woods and use it to create Coagulated Ectoplasm"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect Ectoplasmic Residue from the Spirit Woods and use it to create Coagulated Ectoplasm.",
+       "how_jsx": {
         "fr": "⏳ 5 Spirit Threads : 1/semaine sur Gorseval (min. 5 semaines — à lancer EN PREMIER). Énergiser au Chak Gerent (méta TD) : taguer les 4 lanes énergise jusqu'à 4 threads en un cycle. 5 énergisés → double-clic.",
         "en": "⏳ 5 Spirit Threads: 1/week from Gorseval (min. 5 weeks — start this FIRST). Energize at Chak Gerent (TD meta): tagging all 4 lanes energizes up to 4 threads in one cycle. 5 energized → double-click."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Collect a Flame Core from the chest after defeating Sabetha the Saboteur.",
+       "name": "Core of Flame",
        "how": {
+        "fr": null,
+        "en": "Collect a Flame Core from the chest after defeating Sabetha the Saboteur"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a Flame Core from the chest after defeating Sabetha the Saboteur.",
+       "how_jsx": {
         "fr": "10 Ectoplasmic Residues → double-clic. Résidus dans les coffres cachés de W1/W2/W3 (spots fixes, cartes sur Hardstuck).",
         "en": "10 Ectoplasmic Residues → double-click. Residues from the hidden chests in W1/W2/W3 (fixed spots, maps on Hardstuck)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Collect Powdered Aurillium from high above central Tarir and combine it with Bloodstone Powder from Salvation Pass in the Forsaken Thicket.",
+       "name": "Arcane Dust",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect Powdered Aurillium from high above central Tarir and combine it with Bloodstone Powder from Salvation Pass in the Forsaken Thicket"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect Powdered Aurillium from high above central Tarir and combine it with Bloodstone Powder from Salvation Pass in the Forsaken Thicket.",
+       "how_jsx": {
         "fr": "Coffre de Sabetha (W1) après le kill.",
         "en": "Sabetha's chest (W1) after the kill."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Create a Mushroom Medley by combining a Noxious Mushroom Cap, Mushroom Emperor Gills, an Orrian Truffle, and a Sawgill Mushroom.",
+       "name": "Mushroom Medley",
        "how": {
+        "fr": null,
+        "en": "Hint: Create a Mushroom Medley by combining a Noxious Mushroom Cap , Mushroom Emperor Gills , an Orrian Truffle , and a Sawgill Mushroom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Create a Mushroom Medley by combining a Noxious Mushroom Cap, Mushroom Emperor Gills, an Orrian Truffle, and a Sawgill Mushroom.",
+       "how_jsx": {
         "fr": "Bloodstone Powder (coffre de Matthias, W2) + Powdered Aurillium (coffre au sommet de la chambre intérieure de Tarir, fin du Sanctum Scramble — accessible en monture sans faire l'aventure). Consommer l'un des deux.",
         "en": "Bloodstone Powder (Matthias coffer, W2) + Powdered Aurillium (chest atop Tarir's inner chamber, Sanctum Scramble end — reachable by mount without the adventure). Consume either."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Collect a Giant Beehive from the trees high above Salvation Pass.",
+       "name": "Giant Beehive",
        "how": {
+        "fr": null,
+        "en": "Collect a Giant Beehive from the trees high above Salvation Pass"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a Giant Beehive from the trees high above Salvation Pass.",
+       "how_jsx": {
         "fr": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (CP/stock). Les 4 en inventaire → consommer Gills ou Cap.",
         "en": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (TP/storage). All 4 in inventory → consume Gills or Cap."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Collect a vial of water from the fountains in the Temple of Salvation.",
+       "name": "Vial of Forsaken Thicket Waters",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect a vial of water from the fountains in the Temple of Salvation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a vial of water from the fountains in the Temple of Salvation.",
+       "how_jsx": {
         "fr": "W2 : ruche en haut d'un arbre au sud du plan d'eau près du Prison Camp — mini-JP depuis l'arbre au chemin de bois (SO), tir à distance pour la faire tomber, looter dans l'eau.",
         "en": "W2: hive high in a tree south of the water by the Prison Camp — mini-JP from the wooden-path tree (SW), shoot it down with a ranged attack, loot in the water below."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Create a Spirit Quest Tonic by combining Arcane Dust, Mushroom Medley, a Giant Beehive, and a Vial of Forsaken Thicket Waters.",
+       "name": "Spirit Quest Tonic",
        "how": {
+        "fr": null,
+        "en": "Hint: Create a Spirit Quest Tonic by combining Arcane Dust , Mushroom Medley , a Giant Beehive , and a Vial of Forsaken Thicket Waters"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Create a Spirit Quest Tonic by combining Arcane Dust, Mushroom Medley, a Giant Beehive, and a Vial of Forsaken Thicket Waters.",
+       "how_jsx": {
         "fr": "Après le kill de Matthias (W2), marcher dans une des 4 fontaines du temple — DANS l'instance du kill (rejoindre une autre instance ne compte pas).",
         "en": "After killing Matthias (W2), walk into one of the temple's 4 fountains — IN the kill instance (joining another instance doesn't count)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Collect a Bloodstone Fragment from the chest after defeating Matthias Gabrel.",
+       "name": "Bloodstone Fragment",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect a Bloodstone Fragment from the chest after defeating Matthias Gabrel"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a Bloodstone Fragment from the chest after defeating Matthias Gabrel.",
+       "how_jsx": {
         "fr": "Se crée en consommant l'un de : Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (les 4 en inventaire).",
         "en": "Created by consuming any of: Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (all 4 in inventory)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Collect a Bloodstone Battery from the Stronghold of the Faithful and charge it with energy using the machinery at Rata Novus.",
+       "name": "Bloodstone Battery (Charged)",
        "how": {
+        "fr": null,
+        "en": "Collect a Bloodstone Battery from the Stronghold of the Faithful and charge it with energy using the machinery in Rata Novus"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a Bloodstone Battery from the Stronghold of the Faithful and charge it with energy using the machinery at Rata Novus.",
+       "how_jsx": {
         "fr": "Loot direct sur Matthias (W2).",
         "en": "Direct loot from Matthias (W2)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Collect a Stone Soul after defeating the Keep Construct and use chak goop to free the soul inside.",
+       "name": "Soul of the Keep",
        "how": {
+        "fr": null,
+        "en": "Collect a Stone Soul after defeating the Keep Construct and use chak goop to free the soul inside"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a Stone Soul after defeating the Keep Construct and use chak goop to free the soul inside.",
+       "how_jsx": {
         "fr": "Batterie vide : coffre de McLeod (Escort, W3). La charger au socket du 2e étage du Command Center de Rata Novus (TD) — tourelles mortelles si le centre n'est pas repris : traverser vite en monture ou faire l'event chain.",
         "en": "Empty battery: McLeod's chest (Escort, W3). Charge it at the 2nd-floor socket of the Rata Novus Command Center (TD) — deadly turrets if not retaken: rush through on a mount or do the event chain."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Trade with Scavenger Rakatin in Auric Basin to acquire a piece of Polished Aurillium and use it to capture the tormented energies of the Twisted Castle.",
+       "name": "Tormented Aurillium",
        "how": {
+        "fr": null,
+        "en": "Trade with Scavenger Rakatin in Auric Basin to acquire a piece of Polished Aurillium and use it to capture the tormented energies of the Twisted Castle"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Trade with Scavenger Rakatin in Auric Basin to acquire a piece of Polished Aurillium and use it to capture the tormented energies of the Twisted Castle.",
+       "how_jsx": {
         "fr": "Stone Soul : Keep Construct (W3). Puis se faire toucher par le Goop d'un Veteran Chak Lobber/Slinger et consommer le Stone Soul SOUS l'effet Goop.",
         "en": "Stone Soul: Keep Construct (W3). Then get hit by a Veteran Chak Lobber/Slinger Goop and consume the Stone Soul WHILE under the Goop effect."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Purchase Itzel Spirit Poison from Jaka Itzel, and use it while defeating the Keep Construct.",
+       "name": "Spirit Strings",
        "how": {
+        "fr": null,
+        "en": "Purchase Itzel Spirit Poison from Jaka Itzel and use it while defeating the Keep Construct"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Purchase Itzel Spirit Poison from Jaka Itzel, and use it while defeating the Keep Construct.",
+       "how_jsx": {
         "fr": "⚠ Acheter Itzel Spirit Poison (vendeur de maîtrise Itzel/Xochitl : 100 Airship Parts + 1 po) et l'avoir ACTIF en ouvrant le coffer de Keep Construct (pas le coffre d'environnement). Oubli = +1 semaine.",
         "en": "⚠ Buy Itzel Spirit Poison (Itzel mastery vendor/Xochitl: 100 Airship Parts + 1 g) and have it ACTIVE when opening Keep Construct's coffer (not the environmental chest). Miss it = +1 week."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Found inside the Twisted Castle.",
+       "name": "Bloodstone-Infused Ectoplasm",
        "how": {
+        "fr": null,
+        "en": "Hint: Found inside the Twisted Castle"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Found inside the Twisted Castle.",
+       "how_jsx": {
         "fr": "Un des 3 coffres cachés du Twisted Castle (W3) — lootable même instance clear ; plus simple en planant après l'encounter.",
         "en": "Any of the 3 hidden chests in Twisted Castle (W3) — lootable even in a cleared instance; easier gliding after the encounter."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Collect a White Mantle Ritual Goblet from the chest after defeating Xera.",
+       "name": "White Mantle Ritual Goblet",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect a White Mantle Ritual Goblet from the chest after defeating Xera"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
+       "name_api": "Collect a White Mantle Ritual Goblet from the chest after defeating Xera.",
+       "how_jsx": {
         "fr": "Coffre de Xera (W3) après le kill.",
         "en": "Xera's chest (W3) after the kill."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Envoy Armor I: Experimental Armor",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "The Lost Art of Armor Crafting",
+       "wiki": "The Lost Art of Armor Crafting"
+      },
+      "reward": {
+       "name": "Chest of Experimental Armor",
+       "wiki": "Chest of Experimental Armor"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "envoy_2": {
      "id": 3012,
@@ -19497,146 +19946,244 @@
      "items": [
       {
        "bit": 0,
-       "name": "Created by a master craftsman with 100 Crystalline Ingots.",
+       "name": "Crystalline Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by a master craftsman with 100 Crystalline Ingots"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by a master craftsman with 100 Crystalline Ingots.",
+       "how_jsx": {
         "fr": "100 Crystalline Ingots (craft 500 : 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore des Noxious Pods de Dragon's Stand) → Master Craftsman d'armure à l'Arche du Lion. UN SEUL cœur sert pour toutes les étapes (réutilisable).",
         "en": "100 Crystalline Ingots (craft 500: 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore from Dragon's Stand Noxious Pods) → Armor Master Craftsman in Lion's Arch. ONE heart is reused for every step."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Created by infusing the Crystalline Heart with octovine essence in Auric Basin.",
+       "name": "Vine Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart with octovine essence in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart with octovine essence in Auric Basin.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur après avoir participé au méta Battle for Tarir (AB) — la réussite n'est pas requise.",
         "en": "Use the Heart after participating in the Battle for Tarir meta (AB) — success not required."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Created by infusing the Crystalline Heart inside the Volcanic fractal.",
+       "name": "Burning Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart inside the Volcanic fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart inside the Volcanic fractal.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur après la fractale Volcanic.",
         "en": "Use the Heart after the Volcanic Fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Created by infusing the Crystalline Heart in the Snowblind fractal.",
+       "name": "Frozen Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart in the Snowblind Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart in the Snowblind fractal.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur après la fractale Snowblind.",
         "en": "Use the Heart after the Snowblind Fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Created by infusing the Crystalline Heart after being buffeted by a wyvern in Verdant Brink.",
+       "name": "Windy Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart after being buffeted by a wyvern in Verdant Brink"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart after being buffeted by a wyvern in Verdant Brink.",
+       "how_jsx": {
         "fr": "Se faire toucher par le Wing Buffet d'une wyverne (Patriarche/Legendary en canopée de VB, event Wyvern Cliffs, ou la Matriarche du combat Qadim) puis utiliser le Cœur.",
         "en": "Get hit by a Wyvern's Wing Buffet (Patriarch/Legendary in VB canopy, Wyvern Cliffs event, or the Matriarch during the Qadim fight) then use the Heart."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Created by infusing the Crystalline Heart in the Aquatic Ruins fractal.",
+       "name": "Sodden Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart in the Aquatic Ruins Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart in the Aquatic Ruins fractal.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur après la fractale Aquatic Ruins.",
         "en": "Use the Heart after the Aquatic Ruins Fractal."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Created by infusing the Crystalline Heart in the ley lines underneath Dragon's Stand.",
+       "name": "Ley-Infused Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart in the ley lines underneath Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart in the ley lines underneath Dragon's Stand.",
+       "how_jsx": {
         "fr": "Dragon's Stand : sous la plateforme n°5 du combat final Mordremoth, utiliser le Cœur depuis le rocher le plus bas.",
         "en": "Dragon's Stand: under platform #5 of the final Mordremoth fight, use the Heart from the lowest rock."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Created by infusing the Crystalline Heart high in the Great Tree in Tangled Depths.",
+       "name": "Cultivated Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart high in The Great Tree in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart high in the Great Tree in Tangled Depths.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur à la Flax Node Farm de The Great Tree (TD, depuis Ogre Camp wp).",
         "en": "Use the Heart at the Flax Node Farm in The Great Tree (TD, from Ogre Camp wp)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Created by infusing the Crystalline Heart inside the Bastion of the Penitent.",
+       "name": "Penitent Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Created by infusing the Crystalline Heart inside the Bastion of the Penitent"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Created by infusing the Crystalline Heart inside the Bastion of the Penitent.",
+       "how_jsx": {
         "fr": "Utiliser le Cœur simplement dans le Bastion of the Penitent (W4).",
         "en": "Simply use the Heart while inside Bastion of the Penitent (W4)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Activate the Crystalline Heart and survive the Cairn the Indomitable encounter without being hit by Spatial Manipulation.",
+       "name": "Jade Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Activate the Crystalline Heart and survive the Cairn the Indomitable encounter without being hit by Spatial Manipulation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Activate the Crystalline Heart and survive the Cairn the Indomitable encounter without being hit by Spatial Manipulation.",
+       "how_jsx": {
         "fr": "⚠ Activer le Cœur AVANT Cairn (W4) et tuer le boss sans être touché par Spatial Manipulation (faire les cercles verts ; down = raté). Le CM force les verts — parfois plus simple. Réactiver après chaque wipe.",
         "en": "⚠ Activate the Heart BEFORE Cairn (W4) and kill the boss without being hit by Spatial Manipulation (do the green circles; going down = fail). The CM forces greens — sometimes easier. Reactivate after each wipe."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Activate the Crystalline Heart and survive the Recreation Sector in the Bastion of the Penitent after being protected by its defenses.",
+       "name": "Protected Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Activate the Crystalline Heart and survive the Recreation Sector in the Bastion of the Penitent after being protected by its defenses"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Activate the Crystalline Heart and survive the Recreation Sector in the Bastion of the Penitent after being protected by its defenses.",
+       "how_jsx": {
         "fr": "Activer le Cœur AVANT Mursaat Overseer (W4) et recevoir le buff Protect au moins une fois — prévenir le joueur Protect, rester près de lui.",
         "en": "Activate the Heart BEFORE Mursaat Overseer (W4) and receive the Protect buff at least once — tell the Protect player, stick with them."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Activate the Crystalline Heart and use it to absorb energy from Rigom in the Bastion of the Penitent.",
+       "name": "Tormented Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Activate the Crystalline Heart and use it to absorb energy from Rigom in the Bastion of the Penitent"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Activate the Crystalline Heart and use it to absorb energy from Rigom in the Bastion of the Penitent.",
+       "how_jsx": {
         "fr": "Activer le Cœur AVANT Samarog (W4) et se faire toucher par l'explosion de Rigom à 1% — demander au groupe de laisser détoner avant de pousser Rigom sous Samarog.",
         "en": "Activate the Heart BEFORE Samarog (W4) and get hit by Rigom's 1% explosion — ask the squad to let him detonate before pushing Rigom under Samarog."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Activate the Crystalline Heart and survive the Deimos encounter in the Bastion of the Penitent.",
+       "name": "Demonic Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Activate the Crystalline Heart and defeat Deimos in the Bastion of the Penitent"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Activate the Crystalline Heart and survive the Deimos encounter in the Bastion of the Penitent.",
+       "how_jsx": {
         "fr": "Activer le Cœur AVANT Deimos (W4) et survivre à tout l'encounter.",
         "en": "Activate the Heart BEFORE Deimos (W4) and survive the whole encounter."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Show penitence at the Tree of Solitude.",
+       "name": "Redeemed Heart",
        "how": {
+        "fr": null,
+        "en": "Hint: Show penitence at the Tree of Solitude . Activate the Crystalline Heart and /kneel at the Tree of Solitude"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_ii_refined_armor.html",
+       "name_api": "Show penitence at the Tree of Solitude.",
+       "how_jsx": {
         "fr": "Tous les autres cœurs faits : /kneel devant le Tree of Solitude (instance clear acceptée).",
         "en": "All other hearts done: /kneel at the Tree of Solitude (cleared instance is fine)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Envoy Armor II: Refined Armor",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Chest of Experimental Armor",
+       "wiki": "Chest of Experimental Armor"
+      },
+      "reward": {
+       "name": "Chest of Refined Envoy Armor",
+       "wiki": "Chest of Refined Envoy Armor"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
    },
    "cadence_ref": "legendary_insight"
@@ -48329,7 +48876,14 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas",
+     "progress": {
+      "kind": "currency",
+      "currency": "fractalline_dust",
+      "repeatable": false
+     },
+     "progress_ref": "API : le succes n'expose aucun bit ; le seuil vit dans total, la nature du compteur ici",
+     "progress_verified": true
     },
     "eikasia_r2": {
      "id": 8841,
@@ -48350,7 +48904,14 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas",
+     "progress": {
+      "kind": "currency",
+      "currency": "fractalline_dust",
+      "repeatable": false
+     },
+     "progress_ref": "API : le succes n'expose aucun bit ; le seuil vit dans total, la nature du compteur ici",
+     "progress_verified": true
     },
     "eikasia_r3": {
      "id": 8835,
@@ -48371,7 +48932,14 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas",
+     "progress": {
+      "kind": "currency",
+      "currency": "fractalline_dust",
+      "repeatable": false
+     },
+     "progress_ref": "API : le succes n'expose aucun bit ; le seuil vit dans total, la nature du compteur ici",
+     "progress_verified": true
     },
     "eikasia_infinite": {
      "id": 8814,
@@ -48392,7 +48960,14 @@
       "unit": "Fractalline Dust"
      },
      "target": 150,
-     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas"
+     "total_ref": "compte des bits ou seuil de tier expose par /v2/achievements — c'est le seuil CUMULE ; `target` reste la quantite du palier seul, les deux ne se contredisent pas",
+     "progress": {
+      "kind": "currency",
+      "currency": "fractalline_dust",
+      "repeatable": true
+     },
+     "progress_ref": "API : le succes n'expose aucun bit ; le seuil vit dans total, la nature du compteur ici",
+     "progress_verified": true
     }
    }
   },
@@ -49780,7 +50355,101 @@
      },
      "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
      "id_erreur": 4027,
-     "id_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
+     "id_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
+     "items": [
+      {
+       "bit": 0,
+       "name": "Sentient Seed",
+       "how": {
+        "fr": null,
+        "en": "Unlocks the journey to Aurora"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 1,
+       "name": "Bloodstone Fen Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Bloodstone Fen Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 2,
+       "name": "Ember Bay Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Ember Bay Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 3,
+       "name": "Bitterfrost Frontier Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Bitterfrost Frontier Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 4,
+       "name": "Lake Doric Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Lake Doric Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 5,
+       "name": "Draconis Mons Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Draconis Mons Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      },
+      {
+       "bit": 6,
+       "name": "Siren's Landing Hero",
+       "how": {
+        "fr": null,
+        "en": "Complete Siren's Landing Master"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+       "how_fr_missing": true
+      }
+     ],
+     "items_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
+     "unlock": {
+      "achievement": "Aurora: Awakening",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Sentient Seed",
+       "wiki": "Sentient Seed"
+      },
+      "reward": {
+       "name": "Gift of Valor",
+       "wiki": "Gift of Valor"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "aurora_2": {
      "id": 3489,
@@ -50182,7 +50851,21 @@
       "fr": "Les codes de chat sont transcrits depuis une capture d'écran. S'il y en a un qui ne fonctionne pas en jeu, signale-le : c'est une erreur de transcription, pas de source.",
       "en": "Chat codes are transcribed from a screenshot. If one does not work in game, report it: that is a transcription error, not a source error."
      },
-     "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
+     "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
+     "unlock": {
+      "achievement": "Aurora II: Empowering",
+      "prerequisite": {
+       "name": "Aurora: Awakening",
+       "wiki": "Aurora: Awakening"
+      },
+      "unlock_item": null,
+      "reward": {
+       "name": "Spark of Sentience",
+       "wiki": "Spark of Sentience"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "henge_3402": {
      "id": 3402,
@@ -50320,11 +51003,16 @@
        "bit": 1,
        "name": "Element of the Wardbough",
        "how": {
+        "fr": null,
+        "en": "Dropped by the Greater Wardbough in [Group Event] Kill the greater spirit of nature (80) at Eternal Pool — in Draconis Mons . Talk to Squad Leader Perun near Scout's Clearing — to start the first event in the chain"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "how_jsx": {
         "fr": "Greater Wardbough — event « Kill the greater spirit of nature » à Eternal Pool [&BL4JAAA=]. Parler à Squad Leader Perun près de Scout's Clearing [&BNAJAAA=] pour lancer la chaîne.",
         "en": "Greater Wardbough — 'Kill the greater spirit of nature' event at Eternal Pool [&BL4JAAA=]. Talk to Squad Leader Perun near Scout's Clearing [&BNAJAAA=] to start the chain."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
@@ -50353,11 +51041,16 @@
        "bit": 4,
        "name": "Element of the Arbor",
        "how": {
+        "fr": null,
+        "en": "Given by the Restless Arboreal Spirit near Seraph Observers Waypoint — in Brisban Wildlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "how_jsx": {
         "fr": "Donné par le Restless Arboreal Spirit près de Seraph Observers Waypoint [&BGIAAAA=], Brisban Wildlands.",
         "en": "Given by the Restless Arboreal Spirit near Seraph Observers Waypoint [&BGIAAAA=], Brisban Wildlands."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
@@ -50386,11 +51079,16 @@
        "bit": 7,
        "name": "Element of the Oakhearts",
        "how": {
+        "fr": null,
+        "en": "Dropped by the Rotting Ancient Oakheart in [Group Event] Defeat the corrupted veteran oakheart (9) near Greatheart Weald — in Queensdale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "how_jsx": {
         "fr": "Rotting Ancient Oakheart — event « Defeat the corrupted veteran oakheart » près de Greatheart Weald [&BIoGAAA=], Queensdale.",
         "en": "Rotting Ancient Oakheart — 'Defeat the corrupted veteran oakheart' event near Greatheart Weald [&BIoGAAA=], Queensdale."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
@@ -50431,42 +51129,59 @@
        "bit": 11,
        "name": "A Bouquet for Liriodendron",
        "how": {
+        "fr": null,
+        "en": "Bring 3 Fire Orchid Blossoms to Liriodendron , located in the Peace Grounds — in the Savage Rise"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "name_api": "A Bouquet for Liriodendron — 3 blossoms",
+       "how_jsx": {
         "fr": "Liriodendron : Peace Grounds [&BMkJAAA=], Savage Rise.",
         "en": "Liriodendron: Peace Grounds [&BMkJAAA=], Savage Rise."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "A Bouquet for Liriodendron — 3 blossoms"
+       "how_fr_missing": true
       },
       {
        "bit": 12,
        "name": "A Bouquet for Broadleaf",
        "how": {
+        "fr": null,
+        "en": "Bring 3 Fire Orchid Blossoms to Broadleaf on a ledge above the Savage Rise"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "name_api": "A Bouquet for Broadleaf — 3 blossoms",
+       "how_jsx": {
         "fr": "Broadleaf : sur une corniche surplombant Savage Rise.",
         "en": "Broadleaf: on a ledge above the Savage Rise."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "A Bouquet for Broadleaf — 3 blossoms"
+       "how_fr_missing": true
       },
       {
        "bit": 13,
        "name": "A Bouquet for Rosewood",
        "how": {
+        "fr": null,
+        "en": "Bring 3 Fire Orchid Blossoms to Rosewood , located upon a rock bridge above Ancient Hollow Waypoint — in the Ancient Hollow"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
+       "name_api": "A Bouquet for Rosewood — 3 blossoms",
+       "how_jsx": {
         "fr": "Rosewood : pont rocheux au-dessus d'Ancient Hollow Waypoint [&BNUJAAA=].",
         "en": "Rosewood: rock bridge above Ancient Hollow Waypoint [&BNUJAAA=]."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "A Bouquet for Rosewood — 3 blossoms"
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "Awakening the Druid Stone",
       "prerequisite": {
        "name": "The Druid Stone",
        "wiki": "The Druid Stone"
       },
+      "unlock_item": null,
       "reward": {
        "name": "Living Druid Stone",
        "wiki": "Living Druid Stone"
@@ -50768,12 +51483,17 @@
        "bit": 1,
        "name": "Heavy Houndskin Mantle",
        "how": {
+        "fr": null,
+        "en": "Obtained by opening a Houndskin Mantle Box"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "name_api": "Heavy Houndskin Mantle (skin)",
+       "how_jsx": {
         "fr": "Ouvrir une Houndskin Mantle Box (récompense de maîtrise Flashpoint) — compte rétroactivement.",
         "en": "Open a Houndskin Mantle Box (Flashpoint mastery reward) — counts retroactively."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Heavy Houndskin Mantle (skin)"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
@@ -50857,11 +51577,16 @@
        "bit": 9,
        "name": "Element of Fire",
        "how": {
+        "fr": null,
+        "en": "Dropped by Fire Elementals"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "how_jsx": {
         "fr": "Fire Elementals. ⚡ Les 4 élémentaires spawnent ensemble à la Cathedral of Eternal Radiance (Malchor's Leap), ou au temple de Lyssa sous contrôle du Pacte.",
         "en": "Fire Elementals. ⚡ All 4 elementals spawn together at the Cathedral of Eternal Radiance (Malchor's Leap), or at Lyssa's temple while Pact-controlled."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
@@ -50878,11 +51603,16 @@
        "bit": 11,
        "name": "Element of Water",
        "how": {
+        "fr": null,
+        "en": "Dropped by Ice Elementals"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "how_jsx": {
         "fr": "Ice Elementals.",
         "en": "Ice Elementals."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 12,
@@ -50899,11 +51629,16 @@
        "bit": 13,
        "name": "Element of Air",
        "how": {
+        "fr": null,
+        "en": "Dropped by Air Elementals and Sparks"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "how_jsx": {
         "fr": "Air Elementals et Sparks.",
         "en": "Air Elementals and Sparks."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 14,
@@ -50920,11 +51655,16 @@
        "bit": 15,
        "name": "Element of Earth",
        "how": {
+        "fr": null,
+        "en": "Dropped by Earth Elementals"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "how_jsx": {
         "fr": "Earth Elementals.",
         "en": "Earth Elementals."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 16,
@@ -51013,12 +51753,17 @@
        "bit": 23,
        "name": "Dierdre's Orchard",
        "how": {
+        "fr": null,
+        "en": "Plant 3 Fire Orchid Seeds in the garden of Dierdre's Steps in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/a_henge_away_from_home.html",
+       "name_api": "Dierdre's Orchard — 3 seeds, Dierdre's Steps (Mount Maelstrom)",
+       "how_jsx": {
         "fr": "Les 3 « Orchards » demandent 3 graines chacun, hors Draconis Mons.",
         "en": "The 3 'Orchards' need 3 seeds each, outside Draconis Mons."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Dierdre's Orchard — 3 seeds, Dierdre's Steps (Mount Maelstrom)"
+       "how_fr_missing": true
       },
       {
        "bit": 24,
@@ -51117,10 +51862,12 @@
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "A Henge Away from Home",
       "prerequisite": {
        "name": "Sprouting the Druid Stone",
        "wiki": "Sprouting the Druid Stone"
       },
+      "unlock_item": null,
       "reward": {
        "name": "The Wayfarer's Henge",
        "wiki": "The Wayfarer%27s Henge"
@@ -52291,76 +53038,129 @@
      "items": [
       {
        "bit": 0,
-       "name": "Day 1 — 10 Kralkatite Ore to Yasna",
+       "name": "Kralkatite Research",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Collect 10 Kralkatite Ores and bring them to Yasna"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 1 — 10 Kralkatite Ore to Yasna",
+       "how_jsx": {
         "fr": "Yasna est au niveau le plus bas de la bibliothèque centrale de l'Astralarium. ⚠ Une seule tâche par jour : passer la voir chaque jour.",
         "en": "Yasna is on the lowest level of the Astralarium's central library. ⚠ One task per day only: check in daily."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Day 2 — 10 Branded Residues",
+       "name": "Branded Residue Research",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Collect 10 Branded Residues and bring them to Yasna. They drop from any Branded creatures in PoF maps"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 2 — 10 Branded Residues",
+       "how_jsx": {
         "fr": "Les Branded Residues tombent des élémentaires branded — il y en a toujours autour d'un brandstone tombé.",
         "en": "Branded Residues drop from branded elementals — there are always some guarding a fallen brandstone."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Day 3 — Particle Collector readings on a fallen brandstone",
+       "name": "Miasma Research",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Use the Particle Collector from Yasna on a Brandstone Impact Site and then activate it. You obtain Particle Collector (Filled) which you return to her"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 3 — Particle Collector readings on a fallen brandstone",
+       "how_jsx": {
         "fr": "Récupérer le Brandstone Multitool auprès d'un Volatile Magic Collector (ou Scholar Fatima au sommet de l'Astralarium) pour localiser les impacts. Un brandstone tombe toutes les ~15 min.",
         "en": "Get the Brandstone Multitool from a Volatile Magic Collector (or Scholar Fatima atop the Astralarium) to locate impacts. A brandstone falls roughly every 15 min."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Day 4 — 10 Powdered Rose Quartz",
+       "name": "Powdered Gemstone Research",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Collect 10 Powdered Rose Quartz from the Brandstone Chunks from the Brandstone impact site and bring them to Yasna. Can be bought on TP"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 4 — 10 Powdered Rose Quartz",
+       "how_jsx": {
         "fr": "Le Powdered Rose Quartz est un drop rare des nœuds présents sur les sites de brandstone. Achetable au comptoir.",
         "en": "Powdered Rose Quartz is a rare drop from the nodes at brandstone sites. Also buyable on the TP."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Day 5 — Astral Alignments (forbidden-section book)",
+       "name": "Treatise on Astral Alignments",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Speak to the renown heart NPC Archivist Salwa to enter the restricted archives. Take the Treatise on Astral Alignments and bring it to Yasna"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 5 — Astral Alignments (forbidden-section book)",
+       "how_jsx": {
         "fr": "Parler au vendeur de cœur pour accéder à la section interdite de l'archive, y prendre le livre et le rapporter à Yasna.",
         "en": "Talk to the heart vendor to access the archive's forbidden section, grab the book and bring it back to Yasna."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Day 6 — Mirror Calibration Readings (escort)",
+       "name": "Mirror Calibration Readings",
        "how": {
+        "fr": null,
+        "en": "Hint: Assist Yasna with her research in the Astralarium . Complete the Defend Akili while he recalibrates mirrors around the Astralarium event at the Astralarium and return to Yasna. If your inventory is full, you will not receive the item and might have to repeat the event"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 6 — Mirror Calibration Readings (escort)",
+       "how_jsx": {
         "fr": "Event d'escorte autour de l'Astralarium : parler à Akili quand l'icône d'event apparaît. ⚠ Akili disparaît si l'event « Stop the book-burning raid » se déclenche avant.",
         "en": "Escort event around the Astralarium: talk to Akili when the event icon appears. ⚠ Akili vanishes if the 'Stop the book-burning raid' event starts first."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Day 7 — Blazing Kralkatite (10 Ore + 5 Rose Quartz at the Beam of Light)",
+       "name": "Blazing Kralkatite",
        "how": {
+        "fr": null,
+        "en": "Bring this to Yasna in the Astralarium . Combine 10 Kralkatite Ore and 5 Powdered Rose Quartz at the Beam of Light at the top of The Astralarium"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/brandstone_research.html",
+       "name_api": "Day 7 — Blazing Kralkatite (10 Ore + 5 Rose Quartz at the Beam of Light)",
+       "how_jsx": {
         "fr": "Le Beam of Light est au sommet de l'Astralarium — y combiner les matériaux.",
         "en": "The Beam of Light is atop the Astralarium — combine the materials there."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Brandstone Research",
+      "prerequisite": null,
+      "unlock_item": null,
+      "reward": {
+       "name": "Kralkatite Ore",
+       "wiki": "Kralkatite Ore"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_astral_purif": {
      "id": 3964,
@@ -52378,13 +53178,18 @@
       {
        "bit": 0,
        "how": {
+        "fr": null,
+        "en": "Bring 10 Orichalcum Ingots , 10 Powdered Rose Quartz , 5 Glob of Ectoplasm , and 3 Charged Lodestones to Ouissal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astral_purification.html",
+       "name": "Charged Mirror",
+       "name_api": "Bring Ouissal the materials to craft a charged mirror.",
+       "how_jsx": {
         "fr": "Se débloque au craft de ta PREMIÈRE arme Astral : ouvrir le courrier et donner la « Note from Yasna » à Ouissal. Récompense : un Irradiated Vision Crystal — l'ingrédient principal d'une arme Stellar, soit une arme Astral entière économisée (500 Kralkatite Ore + 500 Powdered Rose Quartz).",
         "en": "Unlocks when you craft your FIRST Astral weapon: open your mail and give the 'Note from Yasna' to Ouissal. Reward: an Irradiated Vision Crystal — the main ingredient of a Stellar weapon, i.e. a whole Astral weapon's worth of materials saved (500 Kralkatite Ore + 500 Powdered Rose Quartz)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name": "Charged Mirror",
-       "name_api": "Bring Ouissal the materials to craft a charged mirror."
+       "how_fr_missing": true
       },
       {
        "bit": 1,
@@ -52557,9 +53362,11 @@
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "Astral Purification",
       "prerequisite": {
        "name": "Craft an astral weapon."
       },
+      "unlock_item": null,
       "reward": {
        "name": "Irradiated Vision Crystal",
        "wiki": "Irradiated Vision Crystal"
@@ -53152,104 +53959,168 @@
        "bit": 0,
        "name": "Transcendental Binding",
        "how": {
+        "fr": null,
+        "en": "Can be placed in the Mystic Forge along with other bookmaking materials to create a Meditation Logbook"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Coffre en face de celui de Soulless Horror (W5), après le kill.",
         "en": "Chest across from Soulless Horror's chest (W5), after the kill."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Transcendental Ink",
        "how": {
+        "fr": null,
+        "en": "Can be placed in the Mystic Forge along with other bookmaking materials to create a Meditation Logbook"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Sous le pont menant à Dhuum, après les 3 premiers encounters de W5.",
         "en": "Under the bridge leading to Dhuum, after clearing the first 3 W5 encounters."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Transcendental Parchment",
        "how": {
+        "fr": null,
+        "en": "Can be placed in the Mystic Forge along with other bookmaking materials to create a Meditation Logbook"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Derrière le trône de Dhuum, après l'avoir tué.",
         "en": "Behind Dhuum's throne, after killing him."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Meditation Logbook",
        "how": {
+        "fr": null,
+        "en": "Used to track calming actions and thoughts. Created by combining Transcendental Ink , Transcendental Binding , Transcendental Parchment and Brandsparks in the Mystic Forge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "MF : Binding + Ink + Parchment + 100 Pulsing Brandsparks.",
         "en": "MF: Binding + Ink + Parchment + 100 Pulsing Brandsparks."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Meditation Log: Crystal Oasis",
        "how": {
+        "fr": null,
+        "en": "\"These bleached bones... A sentinel of Kormir?\""
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Temple of Kormir wp → NO jusqu'au perchoir à griffons, /sit 1 min (attendre l'expiration du buff).",
         "en": "Temple of Kormir wp → NW to the griffon roost, /sit 1 min (wait for the buff to expire)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Meditation Log: Desert Highlands",
        "how": {
+        "fr": null,
+        "en": "Falling water echoes over the stones, set by dwarves long forgotten, recently remembered"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Salle cachée de la falaise à la cascade : tunnel des ruines naines (destroyers) ou trou dans la cascade aux Enchanted Bluffs, /sit 1 min.",
         "en": "Hidden room at the waterfall cliff: dwarven-ruins tunnel (destroyers) or hole in the waterfall by Enchanted Bluffs, /sit 1 min."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Meditation Log: Elon Riverlands",
        "how": {
+        "fr": null,
+        "en": "A quiet place for rest in the graveyard of stone, albeit modestly damp"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Derrière la cascade (en face du spot visible), /sit 1 min.",
         "en": "Behind the waterfall (across from the visible spot), /sit 1 min."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Meditation Log: The Desolation",
        "how": {
+        "fr": null,
+        "en": "Beware the danger of secrets kept"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Est de Bonestrand wp [&BNwKAAA=] : portail chacal derrière la cascade → grotte d'Abaddon, /sit auprès d'Hasara.",
         "en": "East of Bonestrand wp [&BNwKAAA=]: jackal portal behind the waterfall → Abaddon's cave, /sit by Hasara."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
        "name": "Meditation Log: Domain of Vabbi",
        "how": {
+        "fr": null,
+        "en": "Despite the Branding, this city is still an architectural marvel"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Spot de méditation du Domain of Vabbi, /sit 1 min (voir wiki pour l'emplacement exact).",
         "en": "Domain of Vabbi meditation spot, /sit 1 min (see wiki for the exact location)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Meditation Log: Completed Log",
        "how": {
+        "fr": null,
+        "en": "Your journey of self has come to an end, for now"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_i_unbridled.html",
+       "how_jsx": {
         "fr": "Se valide automatiquement une fois les 5 méditations terminées.",
         "en": "Completes automatically once all 5 meditations are done."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Coalescence I: Unbridled",
+      "prerequisite": {
+       "name": "raid boss",
+       "wiki": "Raid"
+      },
+      "unlock_item": null,
+      "reward": {
+       "name": "Hateful Sworl",
+       "wiki": "Hateful Sworl"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "coalescence_2": {
      "id": 4412,
@@ -53268,184 +54139,288 @@
        "bit": 0,
        "name": "Alembic Apparatus",
        "how": {
+        "fr": null,
+        "en": "This object seems to have empty sockets at each of its points. The question is, what is meant to go into each of them?"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Appareil à alambic : chez Érudite Glenna (100 Éclats de magnétite + 10 po). ⚠ Indispensable AVANT de pouvoir ramasser le moindre flacon vide.",
         "en": "Alembic Apparatus: from Scholar Glenna (100 Magnetite Shards + 10 g). ⚠ Required BEFORE you can pick up any empty bottle."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Bottle of Rage (Empty)",
        "how": {
+        "fr": null,
+        "en": "The faintest air of rage clings to this otherwise empty vessel. Interact with the bottles by the eastern Balthazar statue at the Temple of Balthazar in Straits of Devastation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de rage (vide) : statue orientale de Balthazar, au Temple de Balthazar, dans les Détroits de la Dévastation.",
         "en": "Bottle of Rage (Empty): eastern Balthazar statue, at the Temple of Balthazar, in Straits of Devastation."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Bottle of Rage (Filled)",
        "how": {
+        "fr": null,
+        "en": "This bottle is hot to the touch, filled with malice and hatred. Filled when approaching the burnt spot in King Joko's Sky Garden in the Domain of Vabbi , where Balthazar was killed"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de rage (rempli) : s'approcher du Jardin céleste du roi Joko, dans le Domaine de Vabbi — là où Balthazar est mort.",
         "en": "Bottle of Rage (Filled): approach King Joko's Sky Garden, in the Domain of Vabbi - where Balthazar died."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Bottle of Contempt (Empty)",
        "how": {
+        "fr": null,
+        "en": "You would much rather not be carrying this jar. Interact with the bottles found in a small crevice just northwest of The Cauldron of Searing hero point in Iron Marches . WP Near [Dewclaw Waypoint]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de mépris (vide) : petite crevasse sous le point de héros du Chaudron d'Ardence, dans les Marais de fer.",
         "en": "Bottle of Contempt (Empty): small crevice below The Cauldron of Searing hero point, in Iron Marches."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Bottle of Contempt (Filled)",
        "how": {
+        "fr": null,
+        "en": "Every moment you possess this jar, you are filled with a nearly overwhelming sense of unease and discomfort. Talk to any Separatist Sympathizer NPC around the Stronghold of Ebonhawke in Fields of Ruin [Hawkgates Waypoint]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de mépris (rempli) : parler à n'importe quel PNJ Sympathisant séparatiste autour du Bastion d'Ébonhawke, dans les Champs de ruines.",
         "en": "Bottle of Contempt (Filled): talk to any Separatist Sympathizer NPC around the Stronghold of Ebonhawke, in Fields of Ruin."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Bottle of Surprise (Empty)",
        "how": {
+        "fr": null,
+        "en": "This vessel contains the vaguest hints of unpredictability. Interact with the bottles found in the third small chest in the Mythwright Gambit Raid, north of the Mythwright Cauldron Ley Rift. The item is obtainable after beating Qadim"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de surprise (vide) : ⚠ le seul en raid. Troisième petit coffre du Pari de Mythwright, au nord de la faille de ley, accessible après Qadim.",
         "en": "Bottle of Surprise (Empty): ⚠ the only one inside a raid. Third small chest in Mythwright Gambit, north of the ley rift, reachable after Qadim."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Bottle of Surprise (Filled)",
        "how": {
+        "fr": null,
+        "en": "There is something curiously and perpetually astounding about this jar. Jump into the Mystic Forge in Lion's Arch"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de surprise (rempli) : sauter dans la Forge mystique de l'Arche du Lion.",
         "en": "Bottle of Surprise (Filled): jump into the Mystic Forge in Lion's Arch."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Bottle of Fear (Empty)",
        "how": {
+        "fr": null,
+        "en": "Holding this empty bottle, you feel slightly uncomfortable, as if something watches you from afar. Interact with the bottles found in front of the broken Dwayna statue slightly south of the Temple of the Ages hero challenge in Queensdale . [Godslost Waypoint]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de peur (vide) : devant la statue brisée de Dwayna, légèrement au sud du défi de héros du Temple des Âges, à Queensdale.",
         "en": "Bottle of Fear (Empty): in front of the broken Dwayna statue, slightly south of the Temple of the Ages hero challenge, in Queensdale."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 8,
        "name": "Bottle of Fear (Filled)",
        "how": {
+        "fr": null,
+        "en": "Every moment you hold this jar, you feel something terrifying stalking behind you. Talk to the Sanctum Librarian in The Dark Library , which can be accessed through the rift at the end of the Tomb of Primeval Kings in Desert Highlands . The rift can only be opened once the player has completed the Open Skies: Sunspear Sanctuary part of the Griffon mount scavenger hunt"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de peur (rempli) : ⚠ le vrai blocage. Bibliothécaire du Sanctuaire, dans la Bibliothèque sombre, via la faille au bout du Tombeau des Rois primitifs (Hautes Terres désertiques). La faille n'ouvre qu'avec « Ciel ouvert : Sanctuaire des Lanciers du soleil » (chasse au griffon) — ou avec un joueur du groupe qui l'a.",
         "en": "Bottle of Fear (Filled): ⚠ the real blocker. Sanctum Librarian, in The Dark Library, via the rift at the end of the Tomb of Primeval Kings (Desert Highlands). The rift only opens with 'Open Skies: Sunspear Sanctuary' (griffon hunt) - or with a party member who has it."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 9,
        "name": "Bottle of Anguish (Empty)",
        "how": {
+        "fr": null,
+        "en": "If not careful, you can spend much longer staring into the open mouth of this empty jar than you had intended. Interact with the bottles found in a bookshelf in the Scarlet's Secret Lair instance that is hidden behind an invisible wall in the caverns below the Durmand Priory (location)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon d'angoisse (vide) : sur une étagère de l'instance Repaire secret de Scarlet, derrière un mur invisible dans les cavernes sous le Prieuré de Durmand.",
         "en": "Bottle of Anguish (Empty): on a bookshelf in the Scarlet's Secret Lair instance, behind an invisible wall in the caverns below the Durmand Priory."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 10,
        "name": "Bottle of Anguish (Filled)",
        "how": {
+        "fr": null,
+        "en": "You feel a tremendous weight holding this vessel—one of regret and uncertainty. Use the /kneel emote at the Field of the Fallen point of interest in Lion's Arch"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon d'angoisse (rempli) : emote /kneel au point d'intérêt Champ des Tombés, à l'Arche du Lion.",
         "en": "Bottle of Anguish (Filled): use the /kneel emote at the Field of the Fallen point of interest, in Lion's Arch."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 11,
        "name": "Bottle of Excitement (Empty)",
        "how": {
+        "fr": null,
+        "en": "You simply cannot wait to find the material that belongs in this jar. Interact with the bottles found on the table just after the Splorg Metamystics Lab south entrance in Metrica Province"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon d'excitation (vide) : sur la table juste après l'entrée sud du labo Splorg Metamystics, en Province de Metrica.",
         "en": "Bottle of Excitement (Empty): on the table just past the Splorg Metamystics Lab south entrance, in Metrica Province."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 12,
        "name": "Bottle of Excitement (Filled)",
        "how": {
+        "fr": null,
+        "en": "Your mood is raised significantly thanks to your possession of this jar. Jump into the endlessly looped portal fountain (which keeps teleporting you above it after falling in), in the Fractals of the Mists lobby"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon d'excitation (rempli) : sauter dans la fontaine-portail en boucle du hall des Fractales des Brumes.",
         "en": "Bottle of Excitement (Filled): jump into the endlessly looping portal fountain in the Fractals of the Mists lobby."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 13,
        "name": "Bottle of Joy (Empty)",
        "how": {
+        "fr": null,
+        "en": "This jar seems to possess the faintest traces of positivity, but is otherwise devoid of contents. Interact with the bottles next to one of the quaggans named Coddler on the ground level of the Coddler's Cove jumping puzzle in Timberline Falls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de joie (vide) : à côté du quaggan Coddler, au niveau du sol du puzzle de saut de la Crique de Coddler, aux Chutes de la canopée.",
         "en": "Bottle of Joy (Empty): next to the quaggan Coddler, on the ground level of the Coddler's Cove jumping puzzle, in Timberline Falls."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 14,
        "name": "Bottle of Joy (Filled)",
        "how": {
+        "fr": null,
+        "en": "Nearly weightless and possessed of some sort of bubbly energy, this jar is very pleasing to hold. Jump into the fountain with the playing Quaggan Hatchlings near the Mystic Plaza Point of Interest in Lion's Arch"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de joie (rempli) : sauter dans la fontaine aux bébés quaggans, près du point d'intérêt Place mystique, à l'Arche du Lion.",
         "en": "Bottle of Joy (Filled): jump into the fountain with the quaggan hatchlings, near the Mystic Plaza point of interest, in Lion's Arch."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 15,
        "name": "Bottle of Shame (Empty)",
        "how": {
+        "fr": null,
+        "en": "You cannot help but hide this jar from others. Interact with the bottles found under the table in front of Logan Thackeray inside the Seraph Headquarters instance in Divinity's Reach"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de honte (vide) : sous la table devant Logan Thackeray, dans l'instance du QG du Séraphin, à la Cité Divine.",
         "en": "Bottle of Shame (Empty): under the table in front of Logan Thackeray, inside the Seraph Headquarters instance, in Divinity's Reach."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 16,
        "name": "Bottle of Shame (Filled)",
        "how": {
+        "fr": null,
+        "en": "You feel strangely guilty possessing this jar, as if a terrible secret weighs on you. Approach the Glint's Lair point of interest in the Desert Highlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Flacon de honte (rempli) : s'approcher du point d'intérêt Repaire de Glint, dans les Hautes Terres désertiques.",
         "en": "Bottle of Shame (Filled): approach the Glint's Lair point of interest, in the Desert Highlands."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 17,
        "name": "Alchemical Alembic Complete",
        "how": {
+        "fr": null,
+        "en": "Filling the jars has lead to a startling conclusion. Use the Alembic Apparatus item in the Inventory after filling all the bottles"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_ii_the_gift.html",
+       "how_jsx": {
         "fr": "Alambic alchimique complet : utiliser l'Appareil à alambic depuis l'inventaire une fois les 17 flacons faits. ⚠ Un flacon rempli ne compte qu'après son vide correspondant.",
         "en": "Alchemical Alembic Complete: use the Alembic Apparatus from your inventory once all 17 bottles are done. ⚠ A filled bottle only counts after its matching empty one."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Coalescence II: The Gift",
+      "prerequisite": {
+       "name": "Coalescence I: Unbridled",
+       "wiki": "Coalescence I: Unbridled"
+      },
+      "unlock_item": null,
+      "reward": {
+       "name": "Gift of Complex Emotions",
+       "wiki": "Gift of Complex Emotions"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "coalescence_3": {
      "id": 4805,
@@ -53464,84 +54439,138 @@
        "bit": 0,
        "name": "Twisted Essence of Generosity",
        "how": {
+        "fr": null,
+        "en": "Hint: To exist, we must destroy those around us. To acquire, defeat Cardinal Adina in the Key of Ahdashim raid"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence tordue de générosité : Cardinale Adina, dans la Clé d'Ahdashim.",
         "en": "Twisted Essence of Generosity: Cardinal Adina, in the Key of Ahdashim."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Twisted Essence of Resolve",
        "how": {
+        "fr": null,
+        "en": "Hint: Fight every battle. To acquire, defeat Cardinal Sabir in the Key of Ahdashim raid"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence tordue de résolution : Cardinal Sabir, dans la Clé d'Ahdashim.",
         "en": "Twisted Essence of Resolve: Cardinal Sabir, in the Key of Ahdashim."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Twisted Essence of Trust",
        "how": {
+        "fr": null,
+        "en": "Hint: Success is solitary. To acquire, defeat Qadim the Peerless in the Key of Ahdashim raid"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence tordue de confiance : Qadim l'Inégalé, dans la Clé d'Ahdashim. ⚠ Les 3 essences tombent dans le coffre bonus HEBDOMADAIRE : active la collection III AVANT ton clear de la semaine, sinon c'est une semaine perdue.",
         "en": "Twisted Essence of Trust: Qadim the Peerless, in the Key of Ahdashim. ⚠ All 3 essences drop from the WEEKLY bonus chest: enable collection III BEFORE your weekly clear, or you lose a week."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Worn Meditation Logbook",
        "how": {
+        "fr": null,
+        "en": "Hint: This book has shared much time with its companion. Talk to Hasara , found hidden in Abaddon's cave in Silent Vale in the Desolation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Carnet de méditation usé : parler à Hasara, caché dans la grotte d'Abaddon, au Val silencieux (la Désolation).",
         "en": "Worn Meditation Logbook: talk to Hasara, hidden in Abaddon's cave, in Silent Vale (the Desolation)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Purified Essence of Generosity",
        "how": {
+        "fr": null,
+        "en": "Hint: The ink on this page glows brightly and reads, \"To exist, we must share ourselves with those around us.\" Go to the Sunspear Sanctuary in Domain of Vabbi and interact with the Strange Energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence purifiée de générosité : Sanctuaire des Lanciers du soleil, Domaine de Vabbi, interagir avec l'Énergie étrange.",
         "en": "Purified Essence of Generosity: Sunspear Sanctuary, Domain of Vabbi, interact with the Strange Energy."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Purified Essence of Resolve",
        "how": {
+        "fr": null,
+        "en": "Hint: The ink on this page glows brightly and reads, \"Not every battle must be fought. Not every battle must be won.\" Go to the Sunspear Sanctuary in Domain of Vabbi and interact with the Strange Energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence purifiée de résolution : même Énergie étrange. ⚠ Les 3 essences tordues doivent être validées dans la collection, sinon l'interaction échoue.",
         "en": "Purified Essence of Resolve: same Strange Energy. ⚠ All 3 twisted essences must be validated in the collection, otherwise the interaction fails."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Purified Essence of Trust",
        "how": {
+        "fr": null,
+        "en": "Hint: The ink on this page glows brightly and reads, \"One cannot succeed by themselves in this world.\" Go to the Sunspear Sanctuary in Domain of Vabbi and interact with the Strange Energy"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Essence purifiée de confiance : même Énergie étrange.",
         "en": "Purified Essence of Trust: same Strange Energy."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 7,
        "name": "Infused Meditation Log Book",
        "how": {
+        "fr": null,
+        "en": "Hint: This book hums as you flip through its pages"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/coalescence_iii_culmination.html",
+       "how_jsx": {
         "fr": "Carnet de méditation infusé : accordé automatiquement par l'Énergie étrange si le Carnet usé est en inventaire. Avec les 3 essences tordues déjà prises, une seule interaction valide les 4 dernières étapes d'un coup.",
         "en": "Infused Meditation Log Book: granted automatically by the Strange Energy if the Worn Logbook is in your inventory. With all 3 twisted essences already collected, a single interaction validates the last 4 steps at once."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Coalescence III: Culmination",
+      "prerequisite": {
+       "name": "Coalescence II: The Gift",
+       "wiki": "Coalescence II: The Gift"
+      },
+      "unlock_item": null,
+      "reward": {
+       "name": "Gift of Patience",
+       "wiki": "Gift of Patience"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     }
    }
   },

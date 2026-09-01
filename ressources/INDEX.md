@@ -287,6 +287,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `the_shining_blade.html` | The Shining Blade | article complet — table de recette en cascade | 2026-09-01 |
 | `verdarach.html` | Verdarach | article complet — table de recette en cascade | 2026-09-01 |
 | `xiuquatl.html` | Xiuquatl | article complet — table de recette en cascade | 2026-09-01 |
+| `a_bug_in_the_system_achievements.html` | A Bug in the System (achievements) | méta de maîtrise — 48 succès éligibles, seuil 35 | 2026-09-01 |
+| `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-09-01 |
+| `a_star_to_guide_us_achievements.html` | A Star to Guide Us (achievements) | méta de maîtrise — 55 éligibles, seuil 38 | 2026-09-01 |
+| `acquiring_agaleus.html` | Acquiring Agaleus | collection, 24 objets | 2026-09-01 |
+| `ad_infinitum_i_finite_result.html` | Ad Infinitum I: Finite Result | collection, 11 objets | 2026-09-01 |
+| `ad_infinitum_ii_upper_bound.html` | Ad Infinitum II: Upper Bound | collection, 11 objets | 2026-09-01 |
+| `ad_infinitum_iii_unbound.html` | Ad Infinitum III: Unbound | collection, 11 objets | 2026-09-01 |
+| `all_or_nothing_achievements.html` | All or Nothing (achievements) | méta de maîtrise — 40 éligibles, seuil 30 | 2026-09-01 |
+| `astral_purification.html` | Astral Purification | collection, 15 objets | 2026-09-01 |
+| `aurora_awakening.html` | Aurora: Awakening | collection, 7 objets — créée, elle était vide | 2026-09-01 |
+| `aurora_ii_empowering.html` | Aurora II: Empowering | collection, 21 objets | 2026-09-01 |
+| `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-09-01 |
+| `bava_nisos_achievements.html` | Bava Nisos (achievements) | méta de maîtrise — 15 éligibles, seuil 10 | 2026-09-01 |
+| `brandstone_research.html` | Brandstone Research | collection, 7 objets | 2026-09-01 |
+| `coalescence_i_unbridled.html` | Coalescence I: Unbridled | collection, 10 objets | 2026-09-01 |
+| `coalescence_ii_the_gift.html` | Coalescence II: The Gift | collection, 18 objets | 2026-09-01 |
+| `coalescence_iii_culmination.html` | Coalescence III: Culmination | collection, 8 objets | 2026-09-01 |
+| `envoy_armor_i_experimental_armor.html` | Envoy Armor I: Experimental Armor | collection, 18 objets | 2026-09-01 |
+| `envoy_armor_ii_refined_armor.html` | Envoy Armor II: Refined Armor | collection, 14 objets | 2026-09-01 |
+| `forge_guards_armor_collection.html` | Forge Guard's Armor Collection | collection, 6 objets — table sans colonne Notes | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -341,7 +361,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **257 captures, 257 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **277 captures, 277 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

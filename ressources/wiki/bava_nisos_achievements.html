@@ -1,0 +1,692 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2024-08-20_jw_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Janthir_Wilds" title="Guild Wars 2: Janthir Wilds content"><img alt="Guild Wars 2: Janthir Wilds content" src="/images/thumb/6/60/Janthir_Wilds_logo.png/35px-Janthir_Wilds_logo.png" decoding="async" width="35" height="35" srcset="/images/thumb/6/60/Janthir_Wilds_logo.png/53px-Janthir_Wilds_logo.png 1.5x, /images/thumb/6/60/Janthir_Wilds_logo.png/70px-Janthir_Wilds_logo.png 2x" data-file-width="1638" data-file-height="1638"></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Bava Nisos (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=Bava_Nisos_Mastery&amp;redirect=no" class="mw-redirect" title="Bava Nisos Mastery">Bava Nisos Mastery</a>)</span></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190"> <i>This article is about the achievement category.  For the zone, see <a href="/wiki/Bava_Nisos" title="Bava Nisos">Bava Nisos</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">Bava Nisos</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned in <a href="/wiki/Bava_Nisos" title="Bava Nisos">Bava Nisos</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Bava_Nisos_(achievements).png" class="image"><img alt="Bava Nisos (achievements).png" src="/images/thumb/c/c3/Bava_Nisos_%28achievements%29.png/48px-Bava_Nisos_%28achievements%29.png" decoding="async" width="48" height="48" srcset="/images/c/c3/Bava_Nisos_%28achievements%29.png 1.5x" data-file-width="64" data-file-height="64"></a></div> Bava Nisos <small>(Janthir Wilds)</small>
+</th>
+<th>Total achievements: 19
+</th>
+<th style="text-align: right; border-left-width: 0;">4&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 47<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr id="achievement8769" class="widget-account-achievement line" data-id="achievement8769">
+<th id="Bava_Nisos_Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> Bava Nisos Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8769">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete 10 map achievements throughout Bava Nisos.<dl><dd><table style="width: 95%; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td colspan="3" style="padding:0;"><b>Rewards:</b>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">3:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Relic_of_Bava_Nisos" title="Relic of Bava Nisos"><img alt="Relic of Bava Nisos.png" src="/images/thumb/e/ee/Relic_of_Bava_Nisos.png/20px-Relic_of_Bava_Nisos.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/ee/Relic_of_Bava_Nisos.png/30px-Relic_of_Bava_Nisos.png 1.5x, /images/thumb/e/ee/Relic_of_Bava_Nisos.png/40px-Relic_of_Bava_Nisos.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Relic_of_Bava_Nisos" title="Relic of Bava Nisos">Relic of Bava Nisos</a>
+</td></tr>
+<tr>
+<td style="padding:0;border-style:hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Tier</li></ul>
+</td>
+<td style="text-align:right;padding:0 0.32em;border-style:hidden;">3:
+</td>
+<td style="width:99%;padding:0;border-style:hidden;"> <span class="item-icon thumb-icon"><a href="/wiki/Askur_Camping_Cookout_Backpiece" title="Askur Camping Cookout Backpiece"><img alt="Askur Camping Cookout Backpiece.png" src="/images/thumb/d/df/Askur_Camping_Cookout_Backpiece.png/20px-Askur_Camping_Cookout_Backpiece.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/d/df/Askur_Camping_Cookout_Backpiece.png/30px-Askur_Camping_Cookout_Backpiece.png 1.5x, /images/thumb/d/df/Askur_Camping_Cookout_Backpiece.png/40px-Askur_Camping_Cookout_Backpiece.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Askur_Camping_Cookout_Backpiece" title="Askur Camping Cookout Backpiece">Askur Camping Cookout Backpiece</a></td></tr></tbody></table></dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">15 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8752" title="Bava Nisos (achievements)">Traversing the Titan</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8785" title="Bava Nisos (achievements)">For Old Times' Sake</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8718" title="Bava Nisos (achievements)">Demolition Expert</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8740" title="Bava Nisos (achievements)">Assorted Chaos</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Janthir_Side_Stories#achievement8706" title="Janthir Side Stories">Case 382: Titan Organ Smuggling</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8755" title="Bava Nisos (achievements)">Close the Door</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8721" title="Bava Nisos (achievements)">Sweet Relief</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8767" title="Bava Nisos (achievements)">Separation Anxiety</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8708" title="Bava Nisos (achievements)">Two Birds</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8713" title="Bava Nisos (achievements)">A Titanic Voyage</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8735" title="Bava Nisos (achievements)">Vengeance Denied</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8781" title="Bava Nisos (achievements)">Pure Soul</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8705" title="Bava Nisos (achievements)">Echo Evader</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8747" title="Bava Nisos (achievements)">Spirit Nutritionist</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Bava_Nisos_(achievements)#achievement8751" title="Bava Nisos (achievements)">Artillery Annihilator</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Achievement
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8769">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 5 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8769">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 10 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">8<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8713" class="widget-account-achievement line" data-id="achievement8713">
+<th id="A_Titanic_Voyage" style="text-align:left"><a href="/wiki/A_Titanic_Voyage" title="A Titanic Voyage">A Titanic Voyage</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8713">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete all parts of the <a href="/wiki/A_Titanic_Voyage" title="A Titanic Voyage">A Titanic Voyage</a> meta-event.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">8 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Power Livia's spell with titanspawn energy.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Defeat Lextalion the Merciless.</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Bring down the semipermeable membrane protecting the northern organ cavity.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Bring down the semipermeable membrane protecting the central organ cavity.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Bring down the semipermeable membrane protecting the southern organ cavity.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Destroy the north lung.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Destroy the heart.</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Destroy the south lung.</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed the A Titanic Voyage Meta-Event
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8713">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed the A Titanic Voyage Meta-Event
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement8713">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the A Titanic Voyage Meta-Event
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8809" class="widget-account-achievement line" data-id="achievement8809">
+<th id="An_Audible_Voyage" style="text-align:left">An Audible Voyage
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8809">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the <a href="/wiki/A_Titanic_Voyage" title="A Titanic Voyage">A Titanic Voyage</a> meta-event with added voice-over.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the A Titanic Voyage Meta-Event with Added Voice-Over
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8751" class="widget-account-achievement line" data-id="achievement8751">
+<th id="Artillery_Annihilator" style="text-align:left">Artillery Annihilator
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8751">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Annihilate 25 <a href="/wiki/Titan_Leukocyte" title="Titan Leukocyte">titan artillery</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Annihilated 25 Titan Artillery
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8740" class="widget-account-achievement line" data-id="achievement8740">
+<th id="Assorted_Chaos" style="text-align:left"><a href="/wiki/Help_Rysta_preserve_and_sort_the_mursaat_texts_before_they_degrade_completely" title="Help Rysta preserve and sort the mursaat texts before they degrade completely">Assorted Chaos</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8740">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Intentionally <a href="/wiki/Help_Rysta_preserve_and_sort_the_mursaat_texts_before_they_degrade_completely" title="Help Rysta preserve and sort the mursaat texts before they degrade completely">sort a text</a> into the wrong category.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Intentionally Sorted a Text into the Wrong Category
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8755" class="widget-account-achievement line" data-id="achievement8755">
+<th id="Close_the_Door" style="text-align:left"><a href="/wiki/Defend_allies_to_destroy_the_Mists-charged_jade_and_close_the_titan_rifts" title="Defend allies to destroy the Mists-charged jade and close the titan rifts">Close the Door</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8755">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully complete the <a href="/wiki/Defend_allies_to_destroy_the_Mists-charged_jade_and_close_the_titan_rifts" title="Defend allies to destroy the Mists-charged jade and close the titan rifts">Destroy Charged Jade and Close Titan Rifts</a> event without losing the point for more than 30 seconds.<span style="color:#686868; display: block;"><i>Don't let it hit you on the way out.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Event and Met the Condition
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8718" class="widget-account-achievement line" data-id="achievement8718">
+<th id="Demolition_Expert" style="text-align:left"><a href="/wiki/Destroy_jade_constructs,_titanspawn,_and_other_mursaat_defenses" title="Destroy jade constructs, titanspawn, and other mursaat defenses">Demolition Expert</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8718">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help <a href="/wiki/Statics_Expert_Zullos" title="Statics Expert Zullos">Statics Expert Zullos</a> and his team destroy an <a href="/wiki/Mursaat_Tower" title="Mursaat Tower">ether tower</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped Zullos Get Rid of an Ether Tower
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8705" class="widget-account-achievement line" data-id="achievement8705">
+<th id="Echo_Evader" style="text-align:left"><a href="/wiki/Defeat_Lextalion_the_Merciless" title="Defeat Lextalion the Merciless">Echo Evader</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&nbsp;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Janthir Wilds mastery point"><img alt="Janthir Wilds mastery point" src="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/20px-Mastery_point_%28Janthir_Wilds%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/30px-Mastery_point_%28Janthir_Wilds%29.png 1.5x, /images/thumb/d/d1/Mastery_point_%28Janthir_Wilds%29.png/40px-Mastery_point_%28Janthir_Wilds%29.png 2x" data-file-width="64" data-file-height="64"></a></span> 5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8705">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat Lextalion without being hit by the Haunting Echoes shock wave more than 9 times.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[2]</a></sup><sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated Lextalion and Evaded the Shock Wave
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8785" class="widget-account-achievement line" data-id="achievement8785">
+<th id="For_Old_Times'_Sake" style="text-align:left"><a href="/wiki/For_Old_Times%27_Sake" title="For Old Times' Sake">For Old Times' Sake</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8785">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Light a starlight lantern in Bava Nisos, for old time's sake.<span style="color:#686868; display: block;"><i>A reminder to be a beacon of light in these times of darkness.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Lit a Starlight Lantern in Bava Nisos
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8756" class="widget-account-achievement line" data-id="achievement8756">
+<th id="Mirror_Memory_Master" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"> <a href="/wiki/Find_the_ward_members_inside_the_mirror_network_and_return_their_findings_to_Alya" title="Find the ward members inside the mirror network and return their findings to Alya">Mirror Memory Master</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8756">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Turn in four pieces of positional data while <a href="/wiki/Find_the_ward_members_inside_the_mirror_network_and_return_their_findings_to_Alya" title="Find the ward members inside the mirror network and return their findings to Alya">helping Alya map the malfunctioning mirror network</a> before it changes again.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Provided Positional Data
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8781" class="widget-account-achievement line" data-id="achievement8781">
+<th id="Pure_Soul" style="text-align:left"><a href="/wiki/Defeat_Lextalion_the_Merciless" title="Defeat Lextalion the Merciless">Pure Soul</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8781">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat Lextalion without being affected by <a href="/wiki/Malefic_Darkness" title="Malefic Darkness">Malefic Darkness</a> for more than 10 seconds.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-5" class="reference"><a href="#cite_note-5">[5]</a></sup><sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated Lextalion and Escaped Malefic Darkness
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8709" class="widget-account-achievement line" data-id="achievement8709">
+<th id="Ritualist_Training—Part_2" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"> <a href="/wiki/Help_Kyung_complete_her_ritual_by_consoling_spirits,_finding_lost_mursaat_mementos,_and_driving_away_titanspawn" title="Help Kyung complete her ritual by consoling spirits, finding lost mursaat mementos, and driving away titanspawn">Ritualist Training—Part 2</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8709">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Help_Kyung_complete_her_ritual_by_consoling_spirits,_finding_lost_mursaat_mementos,_and_driving_away_titanspawn" title="Help Kyung complete her ritual by consoling spirits, finding lost mursaat mementos, and driving away titanspawn">Help Kyung with her ritual</a> to calm distressed mursaat spirits.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped Kyung
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8767" class="widget-account-achievement line" data-id="achievement8767">
+<th id="Separation_Anxiety" style="text-align:left"><a href="/wiki/Keep_the_titans_apart_in_order_to_defeat_them" title="Keep the titans apart in order to defeat them">Separation Anxiety</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8767">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Successfully use your warclaw's Chain Pull to stop one of the titans from reaching the other in the "<a href="/wiki/Keep_the_titans_apart_in_order_to_defeat_them" title="Keep the titans apart in order to defeat them">Keep the titans apart in order to defeat them</a>" event.<span style="color:#686868; display: block;"><i>You can't just leave me behind.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[7]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Stopped the Titan
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8747" class="widget-account-achievement line" data-id="achievement8747">
+<th id="Spirit_Nutritionist" style="text-align:left"><a href="/wiki/Defeat_Lextalion_the_Merciless" title="Defeat Lextalion the Merciless">Spirit Nutritionist</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8747">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat Lextalion without him consuming any spirits.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated Lextalion without Consuming Spirits
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8721" class="widget-account-achievement line" data-id="achievement8721">
+<th id="Sweet_Relief" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> <a href="/wiki/Use_medicine_to_reduce_the_titan%27s_inflammation_and_open_the_pathway" title="Use medicine to reduce the titan's inflammation and open the pathway">Sweet Relief</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8721">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete all 3 "<a href="/wiki/Use_medicine_to_reduce_the_titan%27s_inflammation_and_open_the_pathway" title="Use medicine to reduce the titan's inflammation and open the pathway">Use medicine to reduce the titan's inflammation and open the pathway</a>" events.<span style="color:#686868; display: block;"><i>Isn't aging a pain?</i></span><dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Curious_Mursaat_Remnants" title="Curious Mursaat Remnants"><img alt="Curious Mursaat Remnants.png" src="/images/thumb/e/eb/Curious_Mursaat_Remnants.png/20px-Curious_Mursaat_Remnants.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/eb/Curious_Mursaat_Remnants.png/30px-Curious_Mursaat_Remnants.png 1.5x, /images/thumb/e/eb/Curious_Mursaat_Remnants.png/40px-Curious_Mursaat_Remnants.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Curious_Mursaat_Remnants" title="Curious Mursaat Remnants">Curious Mursaat Remnants</a> (5)</dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;"></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete the Eastern Inflammation Reduction</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete the Northern Inflammation Reduction</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Complete the Southern Inflammation Reduction</li></ul></td></tr></tbody></table></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 3 Events
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8724" class="widget-account-achievement line" data-id="achievement8724">
+<th id="This_Is_Fine" style="text-align:left"><img alt="This achievement does not count towards the category's meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category's meta achievement." width="20" height="20" data-file-width="20" data-file-height="20"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Set_up_the_gastric_dispersion_devices" title="Set up the gastric dispersion devices">This Is Fine</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8724">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Sit in a poison cloud in the "<a href="/wiki/Set_up_the_gastric_dispersion_devices" title="Set up the gastric dispersion devices">Set up the gastric dispersion devices</a>" event.<span style="color:#686868; display: block;"><i>Might as well grab a mug.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-9" class="reference"><a href="#cite_note-9">[9]</a></sup><sup id="cite_ref-10" class="reference"><a href="#cite_note-10">[10]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Sat in 1 Poison Cloud
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8752" class="widget-account-achievement line" data-id="achievement8752">
+<th id="Traversing_the_Titan" style="text-align:left"><a href="/wiki/Traversing_the_Titan" title="Traversing the Titan">Traversing the Titan</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8752">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Open the chest at the end of <a href="/wiki/Traversing_the_Titan" title="Traversing the Titan">the jumping puzzle</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Chest Opened
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8708" class="widget-account-achievement line" data-id="achievement8708">
+<th id="Two_Birds" style="text-align:left"><a href="/wiki/Use_debris_in_the_environment_to_help_destroy_the_titan_organ_sacs" title="Use debris in the environment to help destroy the titan organ sacs">Two Birds</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8708">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat an enemy with debris in the "<a href="/wiki/Use_debris_in_the_environment_to_help_destroy_the_titan_organ_sacs" title="Use debris in the environment to help destroy the titan organ sacs">Use debris in the environment to help destroy the titan organ sacs</a>" event.<span style="color:#686868; display: block;"><i>It's more than one stone, really, but it's the same idea.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite_ref-11" class="reference"><a href="#cite_note-11">[11]</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated an Enemy
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement8735" class="widget-account-achievement line" data-id="achievement8735">
+<th id="Vengeance_Denied" style="text-align:left"><a href="/wiki/Defeat_Lextalion_the_Merciless" title="Defeat Lextalion the Merciless">Vengeance Denied</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement8735">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Prevent Lextalion from casting Keystone's Vengeance by breaking his defiance bar 5 times.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Successfully Broke Lextalion's Defiance Bar 5 Times
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Bava_Nisos_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap mw-references-columns"><ol class="references">
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>Close the Door</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Close_the_Door" title="Achievement Eligibility: Close the Door"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Close_the_Door" title="Achievement Eligibility: Close the Door">Achievement Eligibility: Close the Door</a>.</span>
+</li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Echo Evader</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Echo_Evader" title="Achievement Eligibility: Echo Evader"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Echo_Evader" title="Achievement Eligibility: Echo Evader">Achievement Eligibility: Echo Evader</a>.</span>
+</li>
+<li id="cite_note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Echo Evader</b>: Eligibility isn't removed upon dying, and it's possible to get the achievement even if the event fails.</span>
+</li>
+<li id="cite_note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>Mirror Memory Master</b>: There are only 3 ward members inside the network. To get the achievement, find 3, turn them in, then find one of the 3 members again. They will be in the same place for that event. There is a dialog box for finding Rhianwyn, Prenn and Surepaw as you turn them in: "You have turned in Prenn. You need to turn in Rhianwyn and Surepaw to turn in Prenn again."</span>
+</li>
+<li id="cite_note-5"><b><a href="#cite_ref-5">^</a></b> <span class="reference-text"><b>Pure Soul</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Pure_Soul" title="Achievement Eligibility: Pure Soul"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Pure_Soul" title="Achievement Eligibility: Pure Soul">Achievement Eligibility: Pure Soul</a>.</span>
+</li>
+<li id="cite_note-6"><b><a href="#cite_ref-6">^</a></b> <span class="reference-text"><b>Pure Soul</b>: Standing in the red circle zone on the ground will be applied <span class="inline-icon effect"><a href="/wiki/Malefic_Darkness" title="Malefic Darkness"><img alt="Spectral Darkness.png" src="/images/thumb/a/a8/Spectral_Darkness.png/20px-Spectral_Darkness.png" decoding="async" width="20" height="20" srcset="/images/thumb/a/a8/Spectral_Darkness.png/30px-Spectral_Darkness.png 1.5x, /images/a/a8/Spectral_Darkness.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Malefic_Darkness" title="Malefic Darkness">Malefic Darkness</a>. Note that the 10 seconds requirement is accumulated across the fight. You can stand in and out of <a href="/wiki/Beneficent_Light" title="Beneficent Light">Beneficent Light</a> to obtain continuous <span class="inline-icon effect"><a href="/wiki/Malefic_Darkness_Immunity" title="Malefic Darkness Immunity"><img alt="Ash Legion Pledge.png" src="/images/thumb/e/ea/Ash_Legion_Pledge.png/20px-Ash_Legion_Pledge.png" decoding="async" width="20" height="20" srcset="/images/thumb/e/ea/Ash_Legion_Pledge.png/30px-Ash_Legion_Pledge.png 1.5x, /images/e/ea/Ash_Legion_Pledge.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Malefic_Darkness_Immunity" title="Malefic Darkness Immunity">Malefic Darkness Immunity</a>, thus avoid getting <span class="inline-icon effect"><a href="/wiki/Malefic_Darkness" title="Malefic Darkness"><img alt="Spectral Darkness.png" src="/images/thumb/a/a8/Spectral_Darkness.png/20px-Spectral_Darkness.png" decoding="async" width="20" height="20" srcset="/images/thumb/a/a8/Spectral_Darkness.png/30px-Spectral_Darkness.png 1.5x, /images/a/a8/Spectral_Darkness.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Malefic_Darkness" title="Malefic Darkness">Malefic Darkness</a>.</span>
+</li>
+<li id="cite_note-7"><b><a href="#cite_ref-7">^</a></b> <span class="reference-text"><b>Separation Anxiety</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Separation_Anxiety" title="Achievement Eligibility: Separation Anxiety"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Separation_Anxiety" title="Achievement Eligibility: Separation Anxiety">Achievement Eligibility: Separation Anxiety</a>.</span>
+</li>
+<li id="cite_note-8"><b><a href="#cite_ref-8">^</a></b> <span class="reference-text"><b>Sweet Relief</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Sweet_Relief" title="Achievement Eligibility: Sweet Relief"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Sweet_Relief" title="Achievement Eligibility: Sweet Relief">Achievement Eligibility: Sweet Relief</a>.</span>
+</li>
+<li id="cite_note-9"><b><a href="#cite_ref-9">^</a></b> <span class="reference-text"><b>This Is Fine</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_This_Is_Fine" title="Achievement Eligibility: This Is Fine"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_This_Is_Fine" title="Achievement Eligibility: This Is Fine">Achievement Eligibility: This Is Fine</a>.</span>
+</li>
+<li id="cite_note-10"><b><a href="#cite_ref-10">^</a></b> <span class="reference-text"><b>This Is Fine</b>: Use the /sit emote while in a poison field.</span>
+</li>
+<li id="cite_note-11"><b><a href="#cite_ref-11">^</a></b> <span class="reference-text"><b>Two Birds</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/Achievement_Eligibility:_Two_Birds" title="Achievement Eligibility: Two Birds"><img alt="Achievement effect.png" src="/images/thumb/1/10/Achievement_effect.png/20px-Achievement_effect.png" decoding="async" width="20" height="20" srcset="/images/thumb/1/10/Achievement_effect.png/30px-Achievement_effect.png 1.5x, /images/1/10/Achievement_effect.png 2x" data-file-width="32" data-file-height="32"></a></span>&nbsp;<a href="/wiki/Achievement_Eligibility:_Two_Birds" title="Achievement Eligibility: Two Birds">Achievement Eligibility: Two Birds</a>.</span>
+</li>
+</ol></div>
+<div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><img alt="Bug" src="/images/thumb/e/e9/Game_bug.png/18px-Game_bug.png" decoding="async" width="18" height="18" srcset="/images/thumb/e/e9/Game_bug.png/27px-Game_bug.png 1.5x, /images/e/e9/Game_bug.png 2x" data-file-width="32" data-file-height="32"></a> <a href="/wiki/Bug" title="Bug"><b>Bugs</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div>
+<ul><li>Sweet Relief achievement eligibility is only granted if you are present at the event location and unmounted prior to the event spawning. In addition, getting downed removes the eligibility.</li>
+<li>Two Birds achievement eligibility is removed upon getting downed.</li>
+<li>Close the Door achievement eligibility may be bugged if you're in the vicinity of the event when it starts. Logging out and back in fixes it.</li>
+<li>This Is Fine achievement eligibility is lost if you go downstate. Re-logging can restore the eligibility.</li>
+<li>Spirit Nutritionist is awarded seemingly at random. Players present on the same map and having fulfilled the requirements may or may not get achievement awarded to them. <sup style="white-space:nowrap;">[<a href="/index.php?title=Talk:Bava_Nisos_(achievements)&amp;action=edit&amp;redlink=1" class="new" title="Talk:Bava Nisos (achievements) (page does not exist)"><span title="Does anyone know what variables may affect achievement completion?">verification requested</span></a>]</sup></li></ul></div></div>
+</div>
+<h2><span class="mw-headline" id="Trivia">Trivia</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Bava_Nisos_(achievements)&amp;action=edit&amp;section=2" title="Edit section: Trivia">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>"For Old Times' Sake" is a reference to the <a href="/wiki/Starlight_Lantern" title="Starlight Lantern">Starlight Lantern</a> achievements from <a href="/wiki/Secrets_of_the_Obscure" class="mw-redirect" title="Secrets of the Obscure">Secrets of the Obscure</a>, where players have to light a total 155 lanterns in order to obtain one piece of <a href="/wiki/Obsidian_armor" title="Obsidian armor">Obsidian legendary armor</a>.</li>
+<li>"This Is Fine" is a reference to a comic strip <a rel="nofollow" class="external text" href="https://knowyourmeme.com/memes/this-is-fine/">meme</a> by the same name.</li></ul>
+<hr style="margin: 1em 0em; clear: both;">
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">Categories
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Janthir_(achievements)" title="Janthir (achievements)">Janthir</a></li>
+<li><a href="/wiki/Lowland_Shore_(achievements)" title="Lowland Shore (achievements)">Lowland Shore</a></li>
+<li><a href="/wiki/Janthir_Syntri_(achievements)" title="Janthir Syntri (achievements)">Janthir Syntri</a></li>
+<li><a href="/wiki/Mistburned_Barrens_(achievements)" title="Mistburned Barrens (achievements)">Mistburned Barrens</a></li>
+<li><a class="mw-selflink selflink">Bava Nisos</a></li>
+<li><a href="/wiki/Convergences:_Mount_Balrior" title="Convergences: Mount Balrior">Convergences: Mount Balrior</a></li>
+<li><a href="/wiki/Weekly_Rift_Hunting_(Janthir_Wilds)" title="Weekly Rift Hunting (Janthir Wilds)">Weekly Rift Hunting</a></li>
+<li><a href="/wiki/Repeatable" title="Repeatable">Repeatable</a></li>
+<li><a href="/wiki/Janthir_Side_Stories" title="Janthir Side Stories">Janthir Side Stories</a></li>
+<li><a href="/wiki/Legendary_Spear:_Klobjarne_Geirr" title="Legendary Spear: Klobjarne Geirr">Legendary Spear: Klobjarne Geirr</a></li>
+<li><a href="/wiki/Legendary_Backpack:_Orrax_Manifested" title="Legendary Backpack: Orrax Manifested">Legendary Backpack: Orrax Manifested</a></li>
+<li><a href="/wiki/Renown_Hearts_(achievements)" title="Renown Hearts (achievements)">Renown Hearts</a></li>
+<li><a href="/wiki/Mastery_Insights_(Janthir_Wilds)" title="Mastery Insights (Janthir Wilds)">Mastery Insights</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260901125914
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.460 seconds
+Real time usage: 0.637 seconds
+Preprocessor visited node count: 10454/1000000
+Post‐expand include size: 122948/2097152 bytes
+Template argument size: 35121/2097152 bytes
+Highest expansion depth: 17/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 8537/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  532.752      1 -total
+ 66.01%  351.651     19 Template:Achievement_table_row
+ 17.45%   92.990     10 Template:Effect
+ 14.12%   75.244      1 Template:Achievement_category_infobox
+ 12.64%   67.336      1 Template:Achievement_nav
+ 11.29%   60.166     10 Template:Effect_icon
+  4.56%   24.309     21 Template:Ifexists
+  3.69%   19.679      1 Template:Achievement_table_header
+  1.75%    9.307      1 Template:Infobox_status
+  1.68%    8.927      1 Template:Infobox_requires
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:396912-0!dateformat=default and timestamp 20260901125914 and revision id 3168236.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Bava_Nisos_(achievements)&amp;oldid=3168236#Bava_Nisos_Mastery">https://wiki.guildwars2.com/index.php?title=Bava_Nisos_(achievements)&amp;oldid=3168236#Bava_Nisos_Mastery</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Janthir_Wilds_content" title="Category:Janthir Wilds content">Janthir Wilds content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li><li><a href="/wiki/Category:Pages_with_verification_requests" title="Category:Pages with verification requests">Pages with verification requests</a></li><li><a href="/wiki/Category:Bugs" title="Category:Bugs">Bugs</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		
