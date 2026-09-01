@@ -279,6 +279,14 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `eureka.html` | Eureka | article complet — table de recette en cascade | 2026-09-01 |
 | `exordium.html` | Exordium | article complet — table de recette en cascade | 2026-09-01 |
 | `flames_of_war.html` | Flames of War | article complet — table de recette en cascade | 2026-09-01 |
+| `pharus.html` | Pharus | article complet — table de recette en cascade | 2026-09-01 |
+| `sharur.html` | Sharur | article complet — table de recette en cascade | 2026-09-01 |
+| `shooshadoo.html` | Shooshadoo | article complet — table de recette en cascade | 2026-09-01 |
+| `the_binding_of_ipos.html` | The Binding of Ipos | article complet — table de recette en cascade | 2026-09-01 |
+| `the_hms_divinity.html` | The HMS Divinity | article complet — table de recette en cascade | 2026-09-01 |
+| `the_shining_blade.html` | The Shining Blade | article complet — table de recette en cascade | 2026-09-01 |
+| `verdarach.html` | Verdarach | article complet — table de recette en cascade | 2026-09-01 |
+| `xiuquatl.html` | Xiuquatl | article complet — table de recette en cascade | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -333,7 +341,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **249 captures, 249 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **257 captures, 257 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

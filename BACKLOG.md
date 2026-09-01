@@ -1026,27 +1026,27 @@ simples par convention et relèvent de la même passe API, pas d'une traduction.
 
 ---
 
-## Armes sans collection — 20 lues sur 28 le 01/09/2026
+## Armes — ✅ **TERMINÉ le 01/09/2026**
 
-Ces armes n'ont aucune chaîne de succès : leur précurseur s'achète ou se forge.
-Rien à capturer côté collections. Leur article a néanmoins été lu pour vérifier
-`recipe`, `precursor`, `gift_unique` et `slot`, remplis jusqu'ici par patron
-générationnel — et le patron était faux presque partout.
+Les 53 fiches d'armes sont documentées et vérifiées page à page.
 
-**Faites (20)** : les 16 gen3, plus Claw of the Khan-Ur, Eureka, Exordium et
-Flames of War. 14 précurseurs, 17 dons et 10 types corrigés contre le wiki.
+| | armes | état |
+|---|---|---|
+| à collections | 24 | 1 978 étapes sur 1 978 couvertes |
+| sans collection | 28 | recette, précurseur, don et type vérifiés |
+| Eternity | 1 | recette et chaîne vérifiées |
 
-**Restent 8 gen2, précurseur acheté chez Grandmaster Craftsman Hobbs :**
+**Plus une seule `recipe` issue du patron générationnel.** Le patron s'était révélé
+faux sur Eternity, puis sur 12 des 16 gen3, puis sur Shooshadoo et Xiuquatl. Toutes
+les recettes viennent désormais de l'encadré « Recipes » de la page de l'arme.
 
-| arme | type |
-|---|---|
-| Pharus | Longbow |
-| Sharur | Hammer |
-| Shooshadoo | Focus |
-| The Binding of Ipos | focus |
-| The HMS Divinity | Rifle |
-| The Shining Blade | Sword |
-| Verdarach | Warhorn |
-| Xiuquatl | Scepter |
+Corrections cumulées sur les 28 sans collection : **16 précurseurs, 23 `gift_unique`,
+12 `slot`**. L'ancienne valeur est conservée dans `*_erreur`.
 
-Une page d'article chacune. Pas de sous-collection, pas de palier.
+Deux singularités relevées et conservées :
+- **Aurene's Voice** se forge avec le `Gift of Aurene's Horn`, pas `Gift of Aurene's
+  Voice`. Seule des 16 gen3 à ne pas suivre son propre nom.
+- **Les 16 gen2 offrent deux recettes**, au choix `Gift of Maguuma Mastery` ou `Gift
+  of Desert Mastery`. `gen2_craft_note` le disait par un astérisque ; le champ
+  `recipe` ne gardait qu'une branche. Les deux y figurent maintenant.
+

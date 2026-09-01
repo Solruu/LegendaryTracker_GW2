@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v196",
+    "version": "v197",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1735,7 +1735,8 @@ const SOURCES_DB = {
     "changelog_v193": "Sunrise et Twilight : leurs six collections numerotees, 127 conseils et 123 noms repris du wiki, plus les six blocs unlock. Il manque leurs paliers IV — Legendary Weapon: Sunrise et Legendary Weapon: Twilight, 4 etapes sur 16 chacun, les douze autres pointant deja vers craft_components. Aucun renvoi component ni legendary sur les 127 etapes : verifie contre les 319 composants. La chaine d'Eternity est desormais complete de bout en bout : ses deux renvois legendary pointent vers gen1_sunrise et gen1_twilight, dont les precurseurs Dawn et Dusk sont eux-memes documentes palier par palier. C'est la seule arme du tracker qui se forge depuis d'autres armes. Runestone : Sunrise et Twilight nomment l'Icy Runestone, comme Bolt. Trois temoins gen1, quatre gen2, aucune Mystic Runestone dans les sept pages lues a ce jour.",
     "changelog_v194": "Les vingt armes gen1 sont documentees. 919 conseils et 919 noms repris du wiki, 79 blocs unlock, sur les 70 collections encore ouvertes — les trois paliers numerotes de chaque arme plus son palier Legendary Weapon:. Les etapes d'armes passent de 1040 non couvertes a 4. Ces 4 restantes sont Legendary Weapon: Twilight, dont la capture manque au paquet final : 19 pages recues sur 20. C'est la seule collection d'arme du tracker sans capture. Les paliers Legendary Weapon: se ventilent comme prevu : douze de leurs seize etapes retombent sur craft_components deja documentes (Gift of Fortune, Gift of Mastery, Bloodstone Shard, Mystic Clover, Icy Runestone...), les quatre ou cinq autres sont propres a l'arme et recoivent un conseil. Runestone : les vingt paliers IV nomment l'Icy Runestone, zero Mystic. Avec les quatre gen2 a collections deja lues, cela fait vingt-quatre armes concordantes et aucun contre-exemple. La question reste ouverte pour les douze gen2 sans collection, seules non lues.",
     "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity.",
-    "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix."
+    "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix.",
+    "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron."
   },
   "meta_events": {
     "vb": {
@@ -20794,8 +20795,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Frostfang",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Frostfang",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Frostfang"
+        "fr": "Forge mystique : 1 Tooth of Frostfang + 1 Gift of Frostfang + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Tooth of Frostfang + 1 Gift of Frostfang + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -20811,7 +20812,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30686,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "frostfang_iii_tooth_of_frostfang": {
           "id": 2393,
@@ -21867,8 +21868,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Incinerator",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Incinerator",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Incinerator"
+        "fr": "Forge mystique : 1 Spark + 1 Gift of Incinerator + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Spark + 1 Gift of Incinerator + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -21884,7 +21885,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30687,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "incinerator_ii_the_perfected_dagger": {
           "id": 2458,
@@ -22892,8 +22893,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Moot",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Moot",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Moot"
+        "fr": "Forge mystique : 1 The Energizer + 1 Gift of The Moot + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Energizer + 1 Gift of The Moot + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -22909,7 +22910,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30688,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_moot_i_the_experimental_mace": {
           "id": 2177,
@@ -23988,8 +23989,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Quip",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Quip",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Quip"
+        "fr": "Forge mystique : 1 Chaos Gun + 1 Gift of Quip + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Chaos Gun + 1 Gift of Quip + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -24005,7 +24006,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30689,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "quip_i_the_experimental_pistol": {
           "id": 2389,
@@ -25093,8 +25094,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Meteorlogicus",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Meteorlogicus",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Meteorlogicus"
+        "fr": "Forge mystique : 1 Storm + 1 Gift of Meteorlogicus + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Storm + 1 Gift of Meteorlogicus + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -25110,7 +25111,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30690,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "meteorlogicus_ii_the_perfected_scepter": {
           "id": 2391,
@@ -26093,8 +26094,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Bolt",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Bolt",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Bolt"
+        "fr": "Forge mystique : 1 Zap + 1 Gift of Bolt + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Zap + 1 Gift of Bolt + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -26110,7 +26111,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30691,
       "armory_max_count": 4,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "bolt_i_the_experimental_sword": {
           "id": 2355,
@@ -27201,8 +27202,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Minstrel",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Minstrel",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Minstrel"
+        "fr": "Forge mystique : 1 The Bard + 1 Gift of The Minstrel + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Bard + 1 Gift of The Minstrel + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -27218,7 +27219,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30692,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_minstrel_ii_the_perfected_focus": {
           "id": 2213,
@@ -28261,8 +28262,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Flameseeker_Prophecies",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Flameseeker Prophecies",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Flameseeker Prophecies"
+        "fr": "Forge mystique : 1 The Chosen + 1 Gift of The Flameseeker Prophecies + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Chosen + 1 Gift of The Flameseeker Prophecies + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -28278,7 +28279,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30693,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_flameseeker_prophecies_ii_the_perfec": {
           "id": 2390,
@@ -29309,8 +29310,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Rodgort",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Rodgort",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Rodgort"
+        "fr": "Forge mystique : 1 Rodgort's Flame + 1 Gift of Rodgort + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Rodgort's Flame + 1 Gift of Rodgort + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -29326,7 +29327,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30694,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "rodgort_i_the_experimental_torch": {
           "id": 2180,
@@ -30295,8 +30296,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Howler",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Howler",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Howler"
+        "fr": "Forge mystique : 1 Howl + 1 Gift of Howler + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Howl + 1 Gift of Howler + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -30312,7 +30313,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30695,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "howler_iii_howl": {
           "id": 2260,
@@ -31473,8 +31474,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Sunrise",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Sunrise",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Sunrise"
+        "fr": "Forge mystique : 1 Dawn + 1 Gift of Sunrise + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Dawn + 1 Gift of Sunrise + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -31490,7 +31491,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30704,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "sunrise_i_the_experimental_daysword": {
           "id": 2253,
@@ -32605,8 +32606,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Twilight",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Twilight",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Twilight"
+        "fr": "Forge mystique : 1 Dusk + 1 Gift of Twilight + 1 Gift of Mastery + 1 Gift of Fortune",
+        "en": "Mystic Forge: 1 Dusk + 1 Gift of Twilight + 1 Gift of Mastery + 1 Gift of Fortune"
       },
       "shared_components": [
         "gift_of_battle",
@@ -32622,7 +32623,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30705,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "twilight_iii_dusk": {
           "id": 2183,
@@ -33747,8 +33748,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Juggernaut",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Juggernaut",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Juggernaut"
+        "fr": "Forge mystique : 1 The Colossus + 1 Gift of The Juggernaut + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Colossus + 1 Gift of The Juggernaut + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -33764,7 +33765,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30696,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_juggernaut_ii_the_perfected_hammer": {
           "id": 2241,
@@ -35047,8 +35048,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Frenzy",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Frenzy",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Frenzy"
+        "fr": "Forge mystique : 1 Rage + 1 Gift of Frenzy + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Rage + 1 Gift of Frenzy + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -35064,7 +35065,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30697,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "frenzy_ii_the_perfected_harpoon_gun": {
           "id": 2232,
@@ -35757,8 +35758,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Kamohoali%27i_Kotaki",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kamohoali'i Kotaki",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kamohoali'i Kotaki"
+        "fr": "Forge mystique : 1 Carcharias + 1 Gift of Kamohoali'i Kotaki + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Carcharias + 1 Gift of Kamohoali'i Kotaki + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -35774,7 +35775,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30698,
       "armory_max_count": 4,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "kamohoali_i_kotaki_ii_the_perfected_spea": {
           "id": 2306,
@@ -36589,8 +36590,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Kudzu",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kudzu",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kudzu"
+        "fr": "Forge mystique : 1 Leaf of Kudzu + 1 Gift of Kudzu + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Leaf of Kudzu + 1 Gift of Kudzu + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -36606,7 +36607,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30699,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "kudzu_i_the_experimental_longbow": {
           "id": 2193,
@@ -37623,8 +37624,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Dreamer",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Dreamer",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Dreamer"
+        "fr": "Forge mystique : 1 The Lover + 1 Gift of The Dreamer + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Lover + 1 Gift of The Dreamer + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -37640,7 +37641,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30700,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_dreamer_iii_the_lover": {
           "id": 2428,
@@ -38681,8 +38682,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Bifrost",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Bifrost",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Bifrost"
+        "fr": "Forge mystique : 1 The Legend + 1 Gift of The Bifrost + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Legend + 1 Gift of The Bifrost + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -38698,7 +38699,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30701,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_bifrost_iii_the_legend": {
           "id": 2187,
@@ -39765,8 +39766,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "Kraitkin",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of Kraitkin",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of Kraitkin"
+        "fr": "Forge mystique : 1 Venom + 1 Gift of Kraitkin + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 Venom + 1 Gift of Kraitkin + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -39782,7 +39783,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30702,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "kraitkin_iii_venom": {
           "id": 2296,
@@ -40548,8 +40549,8 @@ const SOURCES_DB = {
       "expansion": "Core",
       "wiki": "The_Predator",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of The Predator",
-        "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of The Predator"
+        "fr": "Forge mystique : 1 The Hunter + 1 Gift of The Predator + 1 Gift of Fortune + 1 Gift of Mastery",
+        "en": "Mystic Forge: 1 The Hunter + 1 Gift of The Predator + 1 Gift of Fortune + 1 Gift of Mastery"
       },
       "shared_components": [
         "gift_of_battle",
@@ -40565,7 +40566,7 @@ const SOURCES_DB = {
       "gen": "gen1",
       "armory_api_id": 30703,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
         "the_predator_iii_the_hunter": {
           "id": 2280,
@@ -41546,8 +41547,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Astralaria",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 The Mechanism + 1 Mystic Tribute + 1 Gift of Astralaria + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
+        "en": "Mystic Forge: 1 The Mechanism + 1 Mystic Tribute + 1 Gift of Astralaria + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
       "shared_components": [
         "airship_part",
@@ -41574,7 +41575,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74155,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
         "astralaria_iv_the_cosmos": {
           "id": 2268,
@@ -43152,8 +43153,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "HOPE",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Prototype + 1 Mystic Tribute + 1 Gift of HOPE + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
+        "en": "Mystic Forge: 1 Prototype + 1 Mystic Tribute + 1 Gift of HOPE + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
       "shared_components": [
         "airship_part",
@@ -43180,7 +43181,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74329,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
         "hope_iv_the_catalyst": {
           "id": 2250,
@@ -44802,8 +44803,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Nevermore",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 The Raven Staff + 1 Mystic Tribute + 1 Gift of Nevermore + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
+        "en": "Mystic Forge: 1 The Raven Staff + 1 Mystic Tribute + 1 Gift of Nevermore + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
       "shared_components": [
         "airship_part",
@@ -44830,7 +44831,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74333,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
         "nevermore_ii_ravenswood_staff": {
           "id": 2288,
@@ -46465,8 +46466,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Chuka_and_Champawat",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Tigris + 1 Mystic Tribute + 1 Gift of Chuka and Champawat + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
+        "en": "Mystic Forge: 1 Tigris + 1 Mystic Tribute + 1 Gift of Chuka and Champawat + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
       "shared_components": [
         "airship_part",
@@ -46493,7 +46494,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74332,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
         "chuka_and_champawat_iv_baby_book": {
           "id": 2913,
@@ -48292,8 +48293,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Eureka",
       "recipe": {
-        "fr": "Forge mystique : 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
-        "en": "Mystic Forge: 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
+        "fr": "Forge mystique : 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
       "shared_components": [
         "airship_part",
@@ -48320,7 +48321,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74328,
       "armory_max_count": 2,
-      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
@@ -48331,13 +48332,13 @@ const SOURCES_DB = {
     },
     "gen2_shooshadoo": {
       "name": "Shooshadoo",
-      "slot": "weapon (Focus)",
+      "slot": "weapon (Shield)",
       "farm": "PvE mixte (HoT/PoF)",
       "expansion": "HoT",
       "wiki": "Shooshadoo",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Friendship + 1 Gift of Shooshadoo + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Friendship + 1 Gift of Shooshadoo + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
       "shared_components": [
         "airship_part",
@@ -48357,19 +48358,23 @@ const SOURCES_DB = {
         "mystic_runestone",
         "legendary_shard_gen2"
       ],
-      "precursor": "Glowing Fetish",
+      "precursor": "Friendship",
       "gift_unique": "Gift of Shooshadoo",
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74330,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Glowing Fetish",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
+      "slot_erreur": "weapon (Focus)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_exordium": {
       "name": "Exordium",
@@ -48378,8 +48383,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Exordium",
       "recipe": {
-        "fr": "Forge mystique : 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
-        "en": "Mystic Forge: 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
+        "fr": "Forge mystique : 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
       "shared_components": [
         "airship_part",
@@ -48406,7 +48411,7 @@ const SOURCES_DB = {
       "gen": "gen2",
       "armory_api_id": 74334,
       "armory_max_count": 2,
-      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
@@ -48422,8 +48427,8 @@ const SOURCES_DB = {
       "expansion": "PoF",
       "wiki": "Xiuquatl",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Tlehco + 1 Gift of Xiuquatl + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Tlehco + 1 Gift of Xiuquatl + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
       "shared_components": [
         "airship_part",
@@ -48443,19 +48448,21 @@ const SOURCES_DB = {
         "mystic_runestone",
         "legendary_shard_gen2"
       ],
-      "precursor": "Xiuquatl Core",
+      "precursor": "Tlehco",
       "gift_unique": "Gift of Xiuquatl",
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
       "armory_api_id": 84536,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Xiuquatl Core",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen3_aurenes_claw": {
       "name": "Aurene's Claw",
@@ -54862,10 +54869,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Claw of the Khan-Ur",
       "recipe": {
-        "fr": "Forge mystique : 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
-        "en": "Mystic Forge: 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
+        "fr": "Forge mystique : 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54894,10 +54901,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Flames of War",
       "recipe": {
-        "fr": "Forge mystique : 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
-        "en": "Mystic Forge: 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
+        "fr": "Forge mystique : 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54926,10 +54933,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Pharus",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Spero + 1 Gift of Pharus + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Spero + 1 Gift of Pharus + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54941,7 +54948,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Pharus",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_sharur": {
       "name": "Sharur",
@@ -54955,10 +54965,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Sharur",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Might of Arah + 1 Gift of Arah + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Might of Arah + 1 Gift of Arah + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54970,7 +54980,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Arah",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_the_hms_divinity": {
       "name": "The HMS Divinity",
@@ -54984,10 +54997,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "The HMS Divinity",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Man o' War + 1 Gift of Divinity + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Man o' War + 1 Gift of Divinity + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54999,7 +55012,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Divinity",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_the_shining_blade": {
       "name": "The Shining Blade",
@@ -55013,10 +55029,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "The Shining Blade",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Save the Queen + 1 Gift of the Blade + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Save the Queen + 1 Gift of the Blade + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -55028,7 +55044,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of the Blade",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_verdarach": {
       "name": "Verdarach",
@@ -55042,10 +55061,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Verdarach",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Call of the Void + 1 Gift of Verdarach + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Call of the Void + 1 Gift of Verdarach + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -55057,7 +55076,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Verdarach",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen3_aurene_s_fang": {
       "name": "Aurene's Fang",
@@ -55189,13 +55211,13 @@ const SOURCES_DB = {
     },
     "gen2_the_binding_of_ipos": {
       "name": "The Binding of Ipos",
-      "slot": "focus",
+      "slot": "weapon (Focus)",
       "farm": "PvE (PoF)",
       "expansion": "PoF",
       "wiki": "The_Binding_of_Ipos",
       "recipe": {
-        "fr": "MF : Ars Goetia (précurseur) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute",
-        "en": "MF: Ars Goetia (precursor) + Gift of Ipos + Gift of Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Ars Goetia + 1 Gift of Ipos + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
+        "en": "Mystic Forge: 1 Ars Goetia + 1 Gift of Ipos + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
       "components": [
         "ars_goetia",
@@ -55209,7 +55231,7 @@ const SOURCES_DB = {
       },
       "armory_api_id": 91048,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki) — corrigé",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "gen": "gen2",
       "precursor": "Ars Goetia",
       "precursor_tiers": {
@@ -55224,7 +55246,12 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Ipos",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
+      "slot_erreur": "focus",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     }
   },
   "meta_eligible_note": {
