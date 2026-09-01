@@ -171,6 +171,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `twilight_i_the_experimental_nightsword.html` | Twilight I: The Experimental Nightsword | collection, 15 objets | 2026-09-01 |
 | `twilight_ii_the_perfected_nightsword.html` | Twilight II: The Perfected Nightsword | collection, 16 objets | 2026-09-01 |
 | `twilight_iii_dusk.html` | Twilight III: Dusk | collection, 30 objets | 2026-09-01 |
+| `frenzy.html` | Frenzy | article complet — table de recette en cascade | 2026-09-01 |
+| `frenzy_i_the_experimental_harpoon_gun.html` | Frenzy I: The Experimental Harpoon Gun | collection, 6 objets | 2026-09-01 |
+| `frenzy_ii_the_perfected_harpoon_gun.html` | Frenzy II: The Perfected Harpoon Gun | collection, 7 objets | 2026-09-01 |
+| `frenzy_iii_rage.html` | Frenzy III: Rage | collection, 18 objets | 2026-09-01 |
+| `frostfang.html` | Frostfang | article complet — table de recette en cascade | 2026-09-01 |
+| `frostfang_i_the_experimental_axe.html` | Frostfang I: The Experimental Axe | collection, 15 objets | 2026-09-01 |
+| `frostfang_ii_the_perfected_axe.html` | Frostfang II: The Perfected Axe | collection, 12 objets | 2026-09-01 |
+| `frostfang_iii_tooth_of_frostfang.html` | Frostfang III: Tooth of Frostfang | collection, 34 objets | 2026-09-01 |
+| `howler.html` | Howler | article complet — table de recette en cascade | 2026-09-01 |
+| `howler_i_the_experimental_warhorn.html` | Howler I: The Experimental Warhorn | collection, 22 objets | 2026-09-01 |
+| `howler_ii_the_perfected_warhorn.html` | Howler II: The Perfected Warhorn | collection, 13 objets | 2026-09-01 |
+| `howler_iii_howl.html` | Howler III: Howl | collection, 35 objets | 2026-09-01 |
+| `incinerator.html` | Incinerator | article complet — table de recette en cascade | 2026-09-01 |
+| `incinerator_i_the_experimental_dagger.html` | Incinerator I: The Experimental Dagger | collection, 18 objets | 2026-09-01 |
+| `incinerator_ii_the_perfected_dagger.html` | Incinerator II: The Perfected Dagger | collection, 15 objets | 2026-09-01 |
+| `incinerator_iii_spark.html` | Incinerator III: Spark | collection, 24 objets | 2026-09-01 |
+| `kamohoalii_kotaki.html` | Kamohoali'i Kotaki | article complet — table de recette en cascade | 2026-09-01 |
+| `kamohoalii_kotaki_i_the_experimental_spear.html` | Kamohoali'i Kotaki I: The Experimental Spear | collection, 6 objets | 2026-09-01 |
+| `kamohoalii_kotaki_ii_the_perfected_spear.html` | Kamohoali'i Kotaki II: The Perfected Spear | collection, 7 objets | 2026-09-01 |
+| `kamohoalii_kotaki_iii_carcharias.html` | Kamohoali'i Kotaki III: Carcharias | collection, 28 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -225,7 +245,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **141 captures, 141 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **161 captures, 161 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
