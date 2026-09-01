@@ -991,10 +991,12 @@ ce jour :
 | Chuka and Champawat | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/chuka_and_champawat.html` |
 | Sunrise | gen1 | **100 Icy Runestones** | `ressources/wiki/sunrise.html` |
 | Twilight | gen1 | **100 Icy Runestones** | `ressources/wiki/twilight.html` |
+| **20 paliers `Legendary Weapon:`** | gen1 | **Icy Runestone** dans les 20 tableaux | `ressources/wiki/legendary_weapon_*.html` |
 
-« Mystic Runestone » n'apparaît dans aucune de ces pages. **Les quatre gen2 à
-collections nomment toutes l'Icy Runestone**, et trois gen1 servent de témoins —
-Bolt, Sunrise, Twilight — qui la nomment aussi. Les deux générations lisent donc pareil, ce qui rend
+« Mystic Runestone » n'apparaît dans aucune de ces pages. **Les quatre gen2 à collections nomment toutes l'Icy Runestone**, et **les vingt
+gen1 aussi** — relevé non plus sur la cascade de recette mais sur l'étape même de
+leur palier `Legendary Weapon:`, où l'Icy Runestone figure comme objet de
+collection. Vingt-quatre armes concordantes, zéro Mystic Runestone. Les deux générations lisent donc pareil, ce qui rend
 `gen2_craft_note` suspect plutôt que la lecture.
 
 ⚠ Ces quatre-là sont précisément les armes que `gift_of_desert_mastery` exclut
@@ -1002,8 +1004,11 @@ Bolt, Sunrise, Twilight — qui la nomment aussi. Les deux générations lisent 
 demandent bien la Mystic Runestone — auquel cas la note ne serait pas fausse mais
 trop générale. **Rien ne le tranche avant leurs pages.**
 
-**En attente** : les douze autres pages gen2 — celles des armes SANS collection,
-craftées via Hobbs, qui sont aussi celles que la note oppose aux quatre ci-dessus. La règle est donc de **relever
+**En attente** : les douze gen2 SANS collection, craftées via Hobbs — les seules
+armes du tracker dont la page n'a jamais été lue. Ce sont précisément celles que
+`gen2_craft_note` oppose aux quatre gen2 à collections. Si elles nomment la Mystic
+Runestone, la note est juste mais trop générale ; si elles nomment l'Icy, la note
+est fausse et `shared_components` doit changer pour les seize. La règle est donc de **relever
 la runestone nommée à chaque intégration d'une page d'arme**, et de ne trancher
 `gen2_craft_note` et les `shared_components` qu'une fois la série complète —
 un correctif partiel ferait cohabiter deux conventions.
