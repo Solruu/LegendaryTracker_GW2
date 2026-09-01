@@ -163,6 +163,14 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `chuka_iv_secluded_tour.html` | Chuka and Champawat IV: Secluded Tour | collection, 10 objets | 2026-09-01 |
 | `chuka_iv_tiger_training_guide.html` | Chuka and Champawat IV: Tiger Training Guide | collection, 14 objets | 2026-09-01 |
 | `spirit_of_the_tiger_achievement.html` | Spirit of the Tiger (achievement) | succès Explorateur, 11 tanières — source du how de l'étape Mini Tiger Spirit | 2026-09-01 |
+| `sunrise.html` | Sunrise | article complet — table de recette en cascade | 2026-09-01 |
+| `sunrise_i_the_experimental_daysword.html` | Sunrise I: The Experimental Daysword | collection, 15 objets | 2026-09-01 |
+| `sunrise_ii_the_perfected_daysword.html` | Sunrise II: The Perfected Daysword | collection, 16 objets | 2026-09-01 |
+| `sunrise_iii_dawn.html` | Sunrise III: Dawn | collection, 35 objets | 2026-09-01 |
+| `twilight.html` | Twilight | article complet — table de recette en cascade | 2026-09-01 |
+| `twilight_i_the_experimental_nightsword.html` | Twilight I: The Experimental Nightsword | collection, 15 objets | 2026-09-01 |
+| `twilight_ii_the_perfected_nightsword.html` | Twilight II: The Perfected Nightsword | collection, 16 objets | 2026-09-01 |
+| `twilight_iii_dusk.html` | Twilight III: Dusk | collection, 30 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -217,7 +225,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **133 captures, 133 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **141 captures, 141 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

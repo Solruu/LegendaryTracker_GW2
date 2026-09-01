@@ -2,7 +2,7 @@
 
 État au 01/09/2026. Une case par page de collection à capturer.
 Compteur : `étapes sans conseil / total`.
-**20 armes · 76 pages · 1167 étapes.**
+**20 armes · 70 pages · 1040 étapes.**
 
 
 
@@ -87,12 +87,9 @@ Les quatre gen2 à collections sont faites.
 - [ ] `Rodgort II: The Perfected Torch` — 12/12
 - [ ] `Rodgort III: Rodgort's Flame` — 31/31
 
-## Sunrise — 70 étapes, 4 pages
+## Sunrise — 4 étapes, 1 pages
 
 - [ ] `Legendary Weapon: Sunrise` — 4/16
-- [ ] `Sunrise I: The Experimental Daysword` — 15/15
-- [ ] `Sunrise II: The Perfected Daysword` — 16/16
-- [ ] `Sunrise III: Dawn` — 35/35
 
 ## The Bifrost — 66 étapes, 4 pages
 
@@ -142,9 +139,6 @@ Les quatre gen2 à collections sont faites.
 - [ ] `The Predator II: The Perfected Rifle` — 14/14
 - [ ] `The Predator III: The Hunter` — 24/24
 
-## Twilight — 65 étapes, 4 pages
+## Twilight — 4 étapes, 1 pages
 
 - [ ] `Legendary Weapon: Twilight` — 4/16
-- [ ] `Twilight I: The Experimental Nightsword` — 15/15
-- [ ] `Twilight II: The Perfected Nightsword` — 16/16
-- [ ] `Twilight III: Dusk` — 30/30

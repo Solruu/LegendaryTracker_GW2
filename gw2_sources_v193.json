@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v192",
+  "version": "v193",
   "last_updated": "2026-08-13",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -949,7 +949,8 @@
   "changelog_v189": "HOPE documentee : ses quatre collections, 124 etapes, 121 noms repris du wiki et 124 conseils. Aucun renvoi component ni legendary : les 124 objets sont des trophees propres a l'arme, sans recouvrement avec craft_components — verifie, pas suppose. Les blocs unlock des quatre paliers portent la chaine complete : Research ouvre le II, Development le III, Prototype le IV. Pas de note collections_order : la donnee la dit deja. Correction collaterale : les precurseurs des QUATRE gen2 de HoT etaient faux. La table du wiki distingue trois paliers — Experimental, Perfected, Final — et le precurseur est le TROISIEME, pas le premier. Astralaria prenait The Device (palier I) au lieu de The Mechanism ; HOPE prenait The Mechanism, qui est celui d'Astralaria ; Nevermore Unfinished Raven Staff au lieu de The Raven Staff ; Chuka and Champawat Tiger's Empowerment au lieu de Tigris. L'ancienne valeur est conservee dans precursor_erreur.",
   "changelog_v190": "Les trois listes plates d'armes sont supprimees. gen1_weapons, gen2_weapons et gen3_weapons doublaient legendaries sans etre lues par personne — ni le JSX, ni le build, ni le serveur. Elles avaient derive : gen2_weapons portait encore les huit fiches inventees que v182 avait retirees de legendaries (Tigris en arme, Eordas Grip, Lorekeeper, Reaver of the Mists...), gen3_weapons quatre autres (Aurene's Guard, Reckoning, Tenderness, Wrath). C'est le meme motif que common_required : une table parallele accumule les erreurs que la structure de reference ne porte plus. Un seul champ n'existait que la : la note de recette d'Eternity. Elle est verifiee sur l'encadre Recipes du wiki et remonte dans legendaries/gen1_eternity, corrigee au passage — 1 Sunrise + 1 Twilight + 5 Pile of Crystalline Dust + 10 Philosopher's Stone. L'ancienne annoncait 2 Icy Runestones et un Gift of Condensed Magic, absents de la recette ; et le patron generationnel qui l'avait ecrasee ne s'applique pas a Eternity.",
   "changelog_v191": "Nevermore complete, Bolt et Chuka avances : douze collections, 253 noms repris du wiki et 261 conseils, plus les douze blocs unlock. Nevermore boucle ses quatre paliers ; Bolt ses trois collections numerotees, sans Legendary Weapon: Bolt ; Chuka cinq de ses neuf pages. Aucun renvoi component ni legendary : comme HOPE, ces armes ne partagent aucun objet avec craft_components — verifie contre les 319 composants, pas suppose. La regle du precurseur est generalisee et corrigee. La v23 confrontait le precurseur a l'unlock_item du DERNIER palier : vrai pour la gen2, qui a un palier IV ouvert par le precurseur, faux pour toute la gen1, qui s'arrete au III — Bolt ne s'ouvre pas avec Zap, il le produit. La regle a bloque le push des la premiere integration de Bolt. Le point fixe des deux familles est le PALIER III, dont le titre nomme le precurseur : Bolt III: Zap, HOPE III: Prototype, Nevermore III: The Raven Staff, Chuka III: Tigris. Verifie sur les 24 armes a collections, sans exception.",
-  "changelog_v192": "Chuka and Champawat bouclee : ses neuf collections, 127 etapes. Avec Eternity, Astralaria, HOPE, Nevermore et Bolt, les quatre gen2 a collections sont faites. Les onze tanieres de tigre du succes Spirit of the Tiger entrent dans le how de l'etape Mini Tiger Spirit, la ou elle vit deja — sept des onze sont sur des cartes que le Naturalist's Journal visite aussi, mais le wiki donne des reperes differents de part et d'autre, donc l'identite des tanieres n'est PAS affirmee. Le nom d'une collection est bilingue, sans exception. Quatre le portaient en chaine simple contre 167 en couple fr/en — Aurora: Awakening, Aurora II: Empowering, Vision I: Awakening, Vision II: Farsight. Le francais vient du dump des succes, pas d'une traduction maison. Une erreur d'identifiant est tombee au passage : aurora_1 pointait sur le succes 4027, qui est « Library Detective » et n'a rien a voir. Aurora: Awakening est le 3522. La correction avait ete faite cote serveur Flask en mai et n'avait jamais atteint les sources. Un anglais recopie dans le champ francais est aussi rattrape : stella_forge_guard portait son nom anglais des deux cotes. Le succes 9330 est posterieur au dump, donc le francais reste null — c'est une absence, pas une traduction."
+  "changelog_v192": "Chuka and Champawat bouclee : ses neuf collections, 127 etapes. Avec Eternity, Astralaria, HOPE, Nevermore et Bolt, les quatre gen2 a collections sont faites. Les onze tanieres de tigre du succes Spirit of the Tiger entrent dans le how de l'etape Mini Tiger Spirit, la ou elle vit deja — sept des onze sont sur des cartes que le Naturalist's Journal visite aussi, mais le wiki donne des reperes differents de part et d'autre, donc l'identite des tanieres n'est PAS affirmee. Le nom d'une collection est bilingue, sans exception. Quatre le portaient en chaine simple contre 167 en couple fr/en — Aurora: Awakening, Aurora II: Empowering, Vision I: Awakening, Vision II: Farsight. Le francais vient du dump des succes, pas d'une traduction maison. Une erreur d'identifiant est tombee au passage : aurora_1 pointait sur le succes 4027, qui est « Library Detective » et n'a rien a voir. Aurora: Awakening est le 3522. La correction avait ete faite cote serveur Flask en mai et n'avait jamais atteint les sources. Un anglais recopie dans le champ francais est aussi rattrape : stella_forge_guard portait son nom anglais des deux cotes. Le succes 9330 est posterieur au dump, donc le francais reste null — c'est une absence, pas une traduction.",
+  "changelog_v193": "Sunrise et Twilight : leurs six collections numerotees, 127 conseils et 123 noms repris du wiki, plus les six blocs unlock. Il manque leurs paliers IV — Legendary Weapon: Sunrise et Legendary Weapon: Twilight, 4 etapes sur 16 chacun, les douze autres pointant deja vers craft_components. Aucun renvoi component ni legendary sur les 127 etapes : verifie contre les 319 composants. La chaine d'Eternity est desormais complete de bout en bout : ses deux renvois legendary pointent vers gen1_sunrise et gen1_twilight, dont les precurseurs Dawn et Dusk sont eux-memes documentes palier par palier. C'est la seule arme du tracker qui se forge depuis d'autres armes. Runestone : Sunrise et Twilight nomment l'Icy Runestone, comme Bolt. Trois temoins gen1, quatre gen2, aucune Mystic Runestone dans les sept pages lues a ce jour."
  },
  "meta_events": {
   "vb": {
@@ -24859,68 +24860,205 @@
      "items": [
       {
        "bit": 0,
-       "name": "Help the charr reclaim their homeland in the Urban Battleground Fractal."
+       "name": "Homeland Reclaimer",
+       "name_api": "Help the charr reclaim their homeland in the Urban Battleground Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Help the charr reclaim their homeland in the Urban Battleground Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Loot from the chest after defeating Tequatl the Sunless."
+       "name": "Sunbringer",
+       "name_api": "Loot from the chest after defeating Tequatl the Sunless.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Loot from the chest after defeating Tequatl the Sunless"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Save the captives from sacrifice and defeat the grawl shaman in the Volcanic Fractal."
+       "name": "Sacrifice Savior",
+       "name_api": "Save the captives from sacrifice and defeat the grawl shaman in the Volcanic Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Save the captives from sacrifice and defeat the grawl shaman in the Volcanic Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Free captives from their imprisonment by bandits or centaurs in Harathi Hinterlands."
+       "name": "Hinterlands Liberator",
+       "name_api": "Free captives from their imprisonment by bandits or centaurs in Harathi Hinterlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Free captives from their imprisonment by bandits or centaurs in Harathi Hinterlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Defend (or free) the quaggans of Soggorsort from krait slavers in Caledon Forest."
+       "name": "Caledon Liberator",
+       "name_api": "Defend (or free) the quaggans of Soggorsort from krait slavers in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defend (or free) the quaggans of Soggorsort from krait slavers in Caledon Forest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Free the quaggan hatchlings imprisoned by the krait in Viathan Lake at the heart of Kessex Hills."
+       "name": "Kessex Liberator",
+       "name_api": "Free the quaggan hatchlings imprisoned by the krait in Viathan Lake at the heart of Kessex Hills.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Free the quaggan hatchlings imprisoned by the krait in Viathan Lake at the heart of Kessex Hills"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Defend (or free) the skritt from enslavement from the Nightmare Court at Zinder Slope in Brisban Wildlands."
+       "name": "Brisban Liberator",
+       "name_api": "Defend (or free) the skritt from enslavement from the Nightmare Court at Zinder Slope in Brisban Wildlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defend (or free) the skritt from enslavement from the Nightmare Court at Zinder Slope in Brisban Wildlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Rescue the captive Zephyrites from the Inquest in Dry Top."
+       "name": "Zephyrite Liberator",
+       "name_api": "Rescue the captive Zephyrites from the Inquest in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Rescue the captive Zephyrites from the Inquest in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Defend (or free) the villagers of Halkor Meadows from harpy captivity in Fields of Ruin."
+       "name": "Hawke Liberator",
+       "name_api": "Defend (or free) the villagers of Halkor Meadows from harpy captivity in Fields of Ruin.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defend (or free) the villagers of Halkor Meadows from harpy captivity in Fields of Ruin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Help the hylek defend the Zintl Holy Grounds in Sparkfly Fen."
+       "name": "Hylek Defender",
+       "name_api": "Help the hylek defend the Zintl Holy Grounds in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Help the hylek defend the Zintl Holy Grounds in Sparkfly Fen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Help defend the Steeleye Span when it is being attacked by branded creatures."
+       "name": "Blazeridge Defender",
+       "name_api": "Help defend the Steeleye Span when it is being attacked by branded creatures.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Help defend the Steeleye Span when it is being attacked by branded creatures"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Defend Lornar's Pass from an insurgence of steam creatures."
+       "name": "Lornar's Defender",
+       "name_api": "Defend Lornar's Pass from an insurgence of steam creatures.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defend Lornar's Pass from an insurgence of steam creatures"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Defeat the Shadow Behemoth as he attempts to cross over from the Underworld."
+       "name": "World Defender",
+       "name_api": "Defeat the Shadow Behemoth as he attempts to cross over from the Underworld.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defeat the Shadow Behemoth as he attempts to cross over from the Underworld"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Help aid the dredge rebellion in Frostgorge Sound."
+       "name": "Savior of the Moletariate",
+       "name_api": "Help aid the dredge rebellion in Frostgorge Sound.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Help aid the dredge rebellion in Frostgorge Sound"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Help defend the settlements on Southsun Cove by defeating the Karka Queen."
+       "name": "Settlement Supporter",
+       "name_api": "Help defend the settlements on Southsun Cove by defeating the Karka Queen.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Help defend the settlements on Southsun Cove by defeating the Karka Queen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Sunrise I: The Experimental Daysword",
+      "prerequisite": {
+       "name": "Revered Antiquarian",
+       "wiki": "Revered Antiquarian"
+      },
+      "unlock_item": {
+       "name": "Sunrise Vol. 1",
+       "wiki": "Sunrise Vol. 1"
+      },
+      "reward": {
+       "name": "Chest of Hope",
+       "wiki": "Chest of Hope"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "sunrise_ii_the_perfected_daysword": {
      "id": 2278,
@@ -24933,72 +25071,215 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Basic Mithril Daysword Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak to a Master Weaponsmith to discover the art of forging."
+       "name": "The Art of Forging: Daysword Blade Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Mithril Daysword Blade Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Speak to a Master Weaponsmith to learn the secret to weighting a blade."
+       "name": "Weighted Daysword Blade",
+       "name_api": "Speak to a Master Weaponsmith to learn the secret to weighting a blade.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secret of weighting a blade"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Speak to a Master Weaponsmith to discover the art of forging."
+       "name": "The Art of Forging: Daysword Hilt Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Mithril Daysword Hilt Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Speak to a Master Weaponsmith to discover the secret to balancing a hilt."
+       "name": "Balanced Daysword Hilt",
+       "name_api": "Speak to a Master Weaponsmith to discover the secret to balancing a hilt.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secret of balancing a hilt"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools."
+       "name": "Superior Daysword Forging Tools",
+       "name_api": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics."
+       "name": "Desert Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics. (Requires 1000 Bandit Crests )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics."
+       "name": "Jungle Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics. (Requires 400 Geodes )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics."
+       "name": "Old World Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics. (Requires 100 Obsidian Shards )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics."
+       "name": "Ancient Water Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics. (Requires 100 Karka Shells )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics."
+       "name": "Herbal Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics. (Requires 25 Passion Flowers )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics."
+       "name": "Stabilizing Magics: Daysword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics. (Requires 25 Stabilizing Matrices )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track."
+       "name": "Sunrise Vol. 2",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Dawn Experiment"
+       "name": "Dawn Experiment",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Sunrise II: The Perfected Daysword",
+      "prerequisite": {
+       "name": "Magister of Legends",
+       "wiki": "Magister of Legends"
+      },
+      "unlock_item": {
+       "name": "Dawn Experiment",
+       "wiki": "Dawn Experiment"
+      },
+      "reward": {
+       "name": "Tricks and Tips for Adv"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "sunrise_iii_dawn": {
      "id": 2630,
@@ -25011,148 +25292,444 @@
      "items": [
       {
        "bit": 0,
-       "name": "Recipe purchased from Grandmaster Craftsman Hobbs."
+       "name": "Illuminator",
+       "name_api": "Recipe purchased from Grandmaster Craftsman Hobbs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Recipe purchased from Grandmaster Craftsman Hobbs . Purchase Recipe: Illuminator for 5,005 from Grandmaster Craftsman Hobbs in Trader's Forum"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Use the Illuminator to capture the Cluster of Light in the Hidden Garden jumping puzzle in Mount Maelstrom."
+       "name": "Hidden Sunlight",
+       "name_api": "Use the Illuminator to capture the Cluster of Light in the Hidden Garden jumping puzzle in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the Cluster of Light in the Hidden Garden jumping puzzle in Mount Maelstrom . This is just one of the four possible entrances, for the full list, check Hidden Garden jumping puzzle for more info"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Use the Illuminator to capture the light at the top of the Cliffside Fractal."
+       "name": "Smoky Sunlight",
+       "name_api": "Use the Illuminator to capture the light at the top of the Cliffside Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light at the top of the Cliffside Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Use the Illuminator to capture the light at the top of the Lion's Arch Lighthouse."
+       "name": "Guiding Light",
+       "name_api": "Use the Illuminator to capture the light at the top of the Lion's Arch Lighthouse.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light at the top of the Lion's Arch Lighthouse"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Use the Illuminator on the Pyrite Peninsula in Malchor's Leap."
+       "name": "Wealdwood Light",
+       "name_api": "Use the Illuminator on the Pyrite Peninsula in Malchor's Leap.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator on the Pyrite Peninsula in Malchor's Leap . Activate near the light orb of the Metal Forest hero challenge in The Wealdwood — [&BI4CAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Use the Illuminator to capture light from the wreck of the Golden Vanity in Cursed Shore."
+       "name": "Golden Orrian Light",
+       "name_api": "Use the Illuminator to capture light from the wreck of the Golden Vanity in Cursed Shore.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture light from The Wreck of the Golden Vanity in Cursed Shore . Activate near the underwater light orb at The Wreck of the Golden Vanity — [&BAgDAAA=] by the Captain's Log hero challenge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Pick up a luminous plant in the Aquatic Ruins Fractal and use the Illuminator to capture its light."
+       "name": "Bioluminescence",
+       "name_api": "Pick up a luminous plant in the Aquatic Ruins Fractal and use the Illuminator to capture its light.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Pick up a luminous plant in the Aquatic Ruins Fractal and use the Illuminator to capture its light"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Loot this after killing the Thaumanova Anomaly in the Thaumanova Fractal, and use the Illuminator to capture its light."
+       "name": "Radioactive Brightness",
+       "name_api": "Loot this after killing the Thaumanova Anomaly in the Thaumanova Fractal, and use the Illuminator to capture its light.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Loot this after killing the Thaumanova Anomaly in the Thaumanova Reactor Fractal , and use the Illuminator to capture its light. Automatically looted from the end chest without using the Illuminator"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Use the Illuminator to capture the light of the glowing ice pillar in Underground Facility Fractal."
+       "name": "Frosty Glow",
+       "name_api": "Use the Illuminator to capture the light of the glowing ice pillar in Underground Facility Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light of the glowing ice pillar in Underground Facility Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Use the Illuminator to capture the light after killing Mai Trin in her boss fractal."
+       "name": "Stormlight",
+       "name_api": "Use the Illuminator to capture the light after killing Mai Trin in her boss fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light after killing Mai Trin in her boss fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Use the Illuminator to capture the light near the end chest of the Branded Mine jumping puzzle in Fields of Ruin."
+       "name": "Branded Glow",
+       "name_api": "Use the Illuminator to capture the light near the end chest of the Branded Mine jumping puzzle in Fields of Ruin.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the end chest of the Branded Mine jumping puzzle in Fields of Ruin"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Use the Illuminator to capture the light near the end chest of the Chaos Crystal Cavern jumping puzzle in Iron Marches."
+       "name": "Chaotic Light",
+       "name_api": "Use the Illuminator to capture the light near the end chest of the Chaos Crystal Cavern jumping puzzle in Iron Marches.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the end chest of the Chaos Crystal Cavern jumping puzzle in Iron Marches"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Use the Illuminator to capture the light of the glowing waterfall in Demongrub Pits in Queensdale."
+       "name": "Watery Glow",
+       "name_api": "Use the Illuminator to capture the light of the glowing waterfall in Demongrub Pits in Queensdale.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light of the glowing waterfall in Demongrub Pits in Queensdale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Use the Illuminator to capture the light near the end chest of the Collapsed Observatory jumping puzzle in Kessex Hills."
+       "name": "Collapsed Skylight",
+       "name_api": "Use the Illuminator to capture the light near the end chest of the Collapsed Observatory jumping puzzle in Kessex Hills.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the end chest of The Collapsed Observatory jumping puzzle in Kessex Hills"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Use the Illuminator to capture one of the sunbeams in the cavern near the end of the Fawcett's Bounty jumping puzzle in Harathi Hinterlands."
+       "name": "Fawcett's Sunbeam",
+       "name_api": "Use the Illuminator to capture one of the sunbeams in the cavern near the end of the Fawcett's Bounty jumping puzzle in Harathi Hinterlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture one of the sunbeams in the cavern near the end of the Fawcett's Bounty jumping puzzle in Harathi Hinterlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Use the Illuminator to capture the light of energy beams at the top of the Second Aetherblade Site in Gendarran Fields."
+       "name": "Illusory Light",
+       "name_api": "Use the Illuminator to capture the light of energy beams at the top of the Second Aetherblade Site in Gendarran Fields.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light of energy beams at the top of the Second Aetherblade Site in Gendarran Fields . In the Not So Secret jumping puzzle in Broadhollow Bluffs , take the route to the Diving Goggles . Activate while standing on the floating cloaking device high above the airship, the source of the four light blue energy beams that radiate out to cloak the entire base. Carefully jump down onto it from the platform just before the Diving Goggles"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Use the Illuminator to capture a glowing stream of ley-line energy in the Cavern of the Shining Lights in Dry Top."
+       "name": "Leylight",
+       "name_api": "Use the Illuminator to capture a glowing stream of ley-line energy in the Cavern of the Shining Lights in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture a glowing stream of ley-line energy in the Cavern of the Shining Lights in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Use the Illuminator to capture the light near the teleportation stone at the bottom of Griffonrook Run in Lornar's Pass."
+       "name": "Griffonrook Glow",
+       "name_api": "Use the Illuminator to capture the light near the teleportation stone at the bottom of Griffonrook Run in Lornar's Pass.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the teleportation stone at the bottom of Griffonrook Run in Lornar's Pass . The entrance to the puzzle is located underwater on the left or west side of the river"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Use the Illuminator to capture the light at the purified Dwayna shrine in Malchor's Leap."
+       "name": "Dwayna's Light",
+       "name_api": "Use the Illuminator to capture the light at the purified Dwayna shrine in Malchor's Leap.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light at the purified Dwayna shrine in Malchor's Leap . If the Temple of Dwayna is contested, you will need to defeat the possessed statue of Dwayna before you can activate your Illuminator"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Use the Illuminator to capture the light of the hidden grotto in the Grove."
+       "name": "Misty Glow",
+       "name_api": "Use the Illuminator to capture the light of the hidden grotto in the Grove.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light of the hidden grotto in the Grove . To reach the hidden grotto, head west from Ronan's Waypoint — [&BLwEAAA=] and go north. There will be a small pond which holds the entrance (west of The House of Aife ). Continue swimming through the underwater cave until you reach the surface of the grotto"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 20,
-       "name": "Use the Illuminator to capture the light on the island at the end of the Skipping Stones jumping puzzle in Southsun Cove."
+       "name": "Tropical Sunlight",
+       "name_api": "Use the Illuminator to capture the light on the island at the end of the Skipping Stones jumping puzzle in Southsun Cove.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light on the island at the end of the Skipping Stones jumping puzzle in Southsun Cove"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 21,
-       "name": "Use the Illuminator to capture the light near the Dwayna statue in the Ruins of Holy Demetra in Harathi Hinterlands."
+       "name": "Demetra's Illumination",
+       "name_api": "Use the Illuminator to capture the light near the Dwayna statue in the Ruins of Holy Demetra in Harathi Hinterlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the Dwayna statue in the Ruins of Holy Demetra in Harathi Hinterlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 22,
-       "name": "Use the Illuminator to capture the sunbeam in the caves near Krok's Ruin in Frostgorge Sound."
+       "name": "Icy Light",
+       "name_api": "Use the Illuminator to capture the sunbeam in the caves near Krok's Ruin in Frostgorge Sound.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the sunbeam in the caves near Krok's Ruin in Frostgorge Sound"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 23,
-       "name": "Use the Illuminator to capture the sunbeam in the treasure room of the Loreclaw Expanse jumping puzzle in Plains of Ashford."
+       "name": "Loreclaw's Light",
+       "name_api": "Use the Illuminator to capture the sunbeam in the treasure room of the Loreclaw Expanse jumping puzzle in Plains of Ashford.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the sunbeam in the treasure room of the Loreclaw Expanse jumping puzzle in Plains of Ashford"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 24,
-       "name": "Use the Illuminator to capture the light near the ghostly pirate treasure at Fort Cadence in Sparkfly Fen."
+       "name": "Ghostly Light",
+       "name_api": "Use the Illuminator to capture the light near the ghostly pirate treasure at Fort Cadence in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light near the ghostly treasure at Fort Cadence in Sparkfly Fen . The treasure is located in front of Veteran Captain Ferrine , near the Spooky Luka the Disbeliever hero challenge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 25,
-       "name": "Use the Illuminator to capture the sunbeam in the caves near Lightfoot Passage in Straits of Devastation."
+       "name": "Cleansing Light",
+       "name_api": "Use the Illuminator to capture the sunbeam in the caves near Lightfoot Passage in Straits of Devastation.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the sunbeam in the caves near Lightfoot Passage in Straits of Devastation"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 26,
-       "name": "Use the Illuminator to capture the sunbeam in the Unguent Den in Mount Maelstrom."
+       "name": "Unguent Illumination",
+       "name_api": "Use the Illuminator to capture the sunbeam in the Unguent Den in Mount Maelstrom.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the sunbeam in the Unguent Den in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 27,
-       "name": "Use the Illuminator to capture the sunbeam in the hidden cave behind Jeztar Falls in Metrica Province."
+       "name": "Jeztar Glow",
+       "name_api": "Use the Illuminator to capture the sunbeam in the hidden cave behind Jeztar Falls in Metrica Province.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the sunbeam in the hidden cave behind Jeztar Falls in Metrica Province . The entrance to the hidden cave is located underwater, below the bridge of floating arrow tiles in front of the waterfall in eastern Jeztar Falls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 28,
-       "name": "Use the Illuminator to capture one of the light beams at Luminates Plant in Metrica Province."
+       "name": "Luminate Illumination",
+       "name_api": "Use the Illuminator to capture one of the light beams at Luminates Plant in Metrica Province.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture one of the light beams at Luminates Plant in Metrica Province"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 29,
-       "name": "Use the Illuminator to capture light from the glowing plants at Aurora's Remains in Brisban Wildlands."
+       "name": "Aurora's Glow",
+       "name_api": "Use the Illuminator to capture light from the glowing plants at Aurora's Remains in Brisban Wildlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture light from the glowing plants at Aurora's Remains in Brisban Wildlands . Need to circle around to the east from the Triforge Point Waypoint — [&BGQAAAA=] , then head south across Thaumacore Inquiry Center — [&BFoAAAA=] , then head west to Aurora's Remains"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 30,
-       "name": "Use the Illuminator to capture the light of the glowing green beam in the Thaumanova Reactor in Metrica Province after the shield is disabled."
+       "name": "Irradiated Light",
+       "name_api": "Use the Illuminator to capture the light of the glowing green beam in the Thaumanova Reactor in Metrica Province after the shield is disabled.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the light of the glowing green beam in the Thaumanova Reactor in Metrica Province after the shield is disabled. In order for the Illuminator to activate, the hole's barrier must be deactivated by a fully charged Matrix Cube Key . You must NOT jump into the hole"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 31,
-       "name": "Use the Illuminator to capture the Sloftly Glowing Light skill challenge in Gendarran Fields."
+       "name": "Soft Glow",
+       "name_api": "Use the Illuminator to capture the Sloftly Glowing Light skill challenge in Gendarran Fields.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the Sloftly Glowing Light [ sic ] skill challenge in Gendarran Fields"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 32,
-       "name": "Use the Illuminator to capture the phosphorescent glow from the light of the Inquest terminals in the Aetherblade Fractal."
+       "name": "Phosphorescent Glow",
+       "name_api": "Use the Illuminator to capture the phosphorescent glow from the light of the Inquest terminals in the Aetherblade Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Illuminator to capture the phosphorescent glow from the light of the Inquest terminals in the Aetherblade Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 33,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track."
+       "name": "Sunrise Vol. 3",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchase for 5 + 10,003 from Grandmaster Craftsman Hobbs in Trader's Forum . Requires Historian of the Armaments in the Legendary Crafting mastery track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 34,
-       "name": "Perfected Daysword"
+       "name": "Perfected Daysword",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/sunrise_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Sunrise III: Dawn",
+      "prerequisite": {
+       "name": "Historian of the Armaments",
+       "wiki": "Historian of the Armaments"
+      },
+      "unlock_item": {
+       "name": "Perfected Daysword",
+       "wiki": "Perfected Daysword"
+      },
+      "reward": {
+       "name": "Chest of Illumination",
+       "wiki": "Chest of Illumination"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "legendary_weapon_sunrise": {
      "id": 7084,
@@ -25295,128 +25872,384 @@
      "items": [
       {
        "bit": 0,
-       "name": "Recipe purchased from Grandmaster Craftsman Hobbs."
+       "name": "Gloominator",
+       "name_api": "Recipe purchased from Grandmaster Craftsman Hobbs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Recipe purchased from Grandmaster Craftsman Hobbs . Purchase Recipe: Gloominator for 5,005 from Grandmaster Craftsman Hobbs in Trader's Forum"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Use the Gloominator to capture the murk in the dark deeps of the Aquatic Ruins Fractal."
+       "name": "Aquatic Murk",
+       "name_api": "Use the Gloominator to capture the murk in the dark deeps of the Aquatic Ruins Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the murk in the dark deeps of the Aquatic Ruins Fractal . Requires the Luminous Plants path"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Use the Gloominator to capture the gloom in Bloomhunger's room in the Swampland Fractal."
+       "name": "Swampy Gloom",
+       "name_api": "Use the Gloominator to capture the gloom in Bloomhunger's room in the Swampland Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom in Bloomhunger 's room in the Swampland Fractal . Does not require defeating Bloomhunger"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Use the Gloominator to capture the darkness in the Snowblind Fractal."
+       "name": "Frozen Darkness",
+       "name_api": "Use the Gloominator to capture the darkness in the Snowblind Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness in the Snowblind Fractal. Use inside the dark forest after defeating the Elemental Source"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Use the Gloominator to capture the night after killing the Jade Maw in the Solid Ocean Fractal."
+       "name": "Jade Night",
+       "name_api": "Use the Gloominator to capture the night after killing the Jade Maw in the Solid Ocean Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the night after killing the Jade Maw in the Solid Ocean Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Use the Gloominator to capture the gloom in the treasure room of the Behem Gauntlet jumping puzzle in Blazeridge Steppes."
+       "name": "Cavernous Gloom",
+       "name_api": "Use the Gloominator to capture the gloom in the treasure room of the Behem Gauntlet jumping puzzle in Blazeridge Steppes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom in the treasure room of the Behem Gauntlet jumping puzzle in Blazeridge Steppes. Entrance to Behem Gauntlet is a cave in eastern Behem Gauntlet . Requires reaching the chest at the end"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Use the Gloominator to capture the darkness of the dark room in the Weyandt's Revenge jumping puzzle in Lion's Arch."
+       "name": "Pirates Darkness",
+       "name_api": "Use the Gloominator to capture the darkness of the dark room in the Weyandt's Revenge jumping puzzle in Lion's Arch.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness of the dark room in the Weyandt's Revenge jumping puzzle in Lion's Arch . Entrance to Weyandt's Revenge is in Farshore Ward behind Tokk's Mill — [&BCQEAAA=] . The dark room cannot be accessed by the skip to the end of the puzzle"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Use the Gloominator to capture the gloom after killing the Fleshgrazer at the end of the Forsaken Fortune minidungeon in Dredgehaunt Cliffs."
+       "name": "Forsaken Gloom",
+       "name_api": "Use the Gloominator to capture the gloom after killing the Fleshgrazer at the end of the Forsaken Fortune minidungeon in Dredgehaunt Cliffs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom after killing the Fleshgrazer at the end of the Forsaken Fortune mini dungeon in Dredgehaunt Cliffs . Entrance to Forsaken Fortune is the Sealed Dwarven Door (may already be open) in Wyrmblood Lake . After interacting with the door, talk to Gerrvid inside Travelen's Steading — [&BDICAAA=] who will open the door after Escort Gerrvid to the dwarven ruins (43)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Use the Gloominator to capture the darkness of the dark room in the Obsidian Sanctum jumping puzzle in the Mists."
+       "name": "Obsidian Darkness",
+       "name_api": "Use the Gloominator to capture the darkness of the dark room in the Obsidian Sanctum jumping puzzle in the Mists.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness of the dark room in the Obsidian Sanctum jumping puzzle in The Mists. The dark room of Obsidian Sanctum is halfway through the jumping puzzle, entered after reaching a stone platform on the eastern edge of the map"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Use the Gloominator to capture the dim near the treasure room of the Spelunker's Delve jumping puzzle in Caledon Forest."
+       "name": "Spelunker's Dim",
+       "name_api": "Use the Gloominator to capture the dim near the treasure room of the Spelunker's Delve jumping puzzle in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the dim near the treasure room of the Spelunker's Delve jumping puzzle in Caledon Forest. Entrance to Spelunker's Delve is in The Verdence . End of the puzzle is in south Sleive's Inlet and can be skipped to with a Springer mount by a High Vault to the ledge with the end Splendid Chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Use the Gloominator to capture the gloom of the treasure room in the Tears of Itlaocol minidungeon in Caledon Forest."
+       "name": "Itlaocol's Gloom",
+       "name_api": "Use the Gloominator to capture the gloom of the treasure room in the Tears of Itlaocol minidungeon in Caledon Forest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom of the treasure room in the Tears of Itlaocol mini dungeon in Caledon Forest . Entrance to Tears of Itlaocol is in Wychmire Swamp , a gate guarded by the hylek village in Dengatl Grounds — [&BHQAAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Use the Gloominator to capture the darkness at a portal to Grenth's Domain in the battle for the Cathedral of Silence in Cursed Shore."
+       "name": "Grenth's Darkness",
+       "name_api": "Use the Gloominator to capture the darkness at a portal to Grenth's Domain in the battle for the Cathedral of Silence in Cursed Shore.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness at a portal to Grenth's domain in the battle for the Cathedral of Silence in Cursed Shore. The portals are small brown whirlpools on the ground that apply (unnamed effect) , and appear in the Temple of Grenth in Cathedral of Silence . If the statues are corrupted , they will only spawn during the meta event [Group Event] Use portals to fight shades, slay the Risen Priest of Grenth, and protect Keeper Jonez Deadrun (80). If the Pact has control of the temple, there will be a portal in the south section, near the Statue of Grenth"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Use the Gloominator to capture the inky blackness of a dark cloud in the tar lake north of Sloven Pitch in Fireheart Rise."
+       "name": "Inky Blackness",
+       "name_api": "Use the Gloominator to capture the inky blackness of a dark cloud in the tar lake north of Sloven Pitch in Fireheart Rise.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the blackness of a dark cloud in the tar lake north [ sic ] of Sloven Pitch in Fireheart Rise"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Use the Gloominator to capture the gloom while in Tequatl's watery grave."
+       "name": "Tequatl's Gloom",
+       "name_api": "Use the Gloominator to capture the gloom while in Tequatl's watery grave.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom while in Tequatl 's watery grave . Requires [Group Event] Defeat Tequatl the Sunless (65) in Splintered Coast"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Use the Gloominator to capture the gloom while in the Lair of the Coil in Timberline Falls."
+       "name": "Coil's Gloom",
+       "name_api": "Use the Gloominator to capture the gloom while in the Lair of the Coil in Timberline Falls.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom while in the Lair of the Coil in Timberline Falls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Use the Gloominator to capture the darkness in the center of the Tangled Labyrinth in the Silverwastes."
+       "name": "Tangled Darkness",
+       "name_api": "Use the Gloominator to capture the darkness in the center of the Tangled Labyrinth in the Silverwastes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness in the center of the Tangled Labyrinth in the Silverwastes. Entrance to Tangled Labyrinth is in Sharp Valley . Only accessible during the Time Out phase after a successful Mordrem Vinewrath meta event"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 16,
-       "name": "Use the Gloominator to capture the gloom in the treasure room of Provernic Crypt in Gendarran Fields."
+       "name": "Crypt's Gloom",
+       "name_api": "Use the Gloominator to capture the gloom in the treasure room of Provernic Crypt in Gendarran Fields.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom in the treasure room of Provernic Crypt in Gendarran Fields. Entrance to Provernic Crypt is near Hermit Guilland"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 17,
-       "name": "Use the Gloominator to capture the murk in the treasure room of the Flame Temple Tombs minidungeon in Diessa Plateau."
+       "name": "Rhendak's Murk",
+       "name_api": "Use the Gloominator to capture the murk in the treasure room of the Flame Temple Tombs minidungeon in Diessa Plateau.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the murk in the treasure room of the Flame Temple Tombs mini dungeon in Diessa Plateau . Does not require defeating Rhendak the Crazed . The entrance to the Font of Rhand in Flame Temple Tombs is only accessible via a portal in Incendio Templum . Requires a successful Flame Legion Battles meta event to Capture Incendio Templum from the Flame Legion before reinforcements arrive (25) in Sanctum Way and Incendio Templum"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 18,
-       "name": "Use the Gloominator to capture the darkness in the Prosperity Mines in Dry Top."
+       "name": "Mine's Darkness",
+       "name_api": "Use the Gloominator to capture the darkness in the Prosperity Mines in Dry Top.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness in the Prosperity Mines in Dry Top. Entrance to the Prosperity Mine — [&BH0HAAA=] is in northeast Prospect Valley , east of the Town of Prosperity — [&BH4HAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 19,
-       "name": "Use the Gloominator to capture the gloom near the corpse of the Copper Husk inside the Breach beneath Red Rock Bastion in the Silverwastes."
+       "name": "Breach's Copper Gloom",
+       "name_api": "Use the Gloominator to capture the gloom near the corpse of the Copper Husk inside the Breach beneath Red Rock Bastion in the Silverwastes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom near the corpse of the Copper Husk inside the Breach beneath Red Rock Bastion in the Silverwastes. Accessed during The Breach meta event underneath Red Rock Bastion — [&BKYHAAA=] in Southeastern Silverwastes . Does not require defeating the Champion Mordrem Husk Copper"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 20,
-       "name": "Use the Gloominator to capture the darkness inside the cave under Cereboth Canyon in Kessex Hills."
+       "name": "Cereboth's Darkness",
+       "name_api": "Use the Gloominator to capture the darkness inside the cave under Cereboth Canyon in Kessex Hills.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness inside the cave under Cereboth Canyon in Kessex Hills. Entrance is under the waterfall and leads into the cavern full of Cave Trolls"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 21,
-       "name": "Use the Gloominator to capture the murk near the Shadow Behemoth in Queensdale."
+       "name": "Underworld Murk",
+       "name_api": "Use the Gloominator to capture the murk near the Shadow Behemoth in Queensdale.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the murk near the Shadow Behemoth in Queensdale . Requires the Secrets in the Swamp meta event to [Group Event] Defeat the shadow behemoth (15) world boss in Godslost Swamp"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 22,
-       "name": "Use the Gloominator to capture the darkness in one of the test subject chambers in Vexa's Lab in Fireheart Rise."
+       "name": "Captive Darkness",
+       "name_api": "Use the Gloominator to capture the darkness in one of the test subject chambers in Vexa's Lab in Fireheart Rise.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness in one of the test subject chambers in Vexa's Lab in Fireheart Rise. Entrance to Vexa's Lab is in southwest Sloven Pitch , within a cave spewing lava near Sloven Pitch Vista — [&BIIGAAA=]"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 23,
-       "name": "Use the Gloominator to capture the gloom near the corpse of the Iron Troll inside the Breach beneath Amber Sandfall in the Silverwastes."
+       "name": "Breach's Iron Gloom",
+       "name_api": "Use the Gloominator to capture the gloom near the corpse of the Iron Troll inside the Breach beneath Amber Sandfall in the Silverwastes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom near the corpse of the Iron Troll inside the Breach beneath Amber Sandfall in the Silverwastes. Accessed during The Breach meta event underneath Amber Sandfall — [&BKoHAAA=] in Southwestern Silverwastes . Does not require defeating the Champion Mordrem Troll Iron"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 24,
-       "name": "Use the Gloominator to capture the gloom near the corpse of the Silver Teragriff inside the Breach beneath Indigo Cave in the Silverwastes."
+       "name": "Breach's Silver Gloom",
+       "name_api": "Use the Gloominator to capture the gloom near the corpse of the Silver Teragriff inside the Breach beneath Indigo Cave in the Silverwastes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom near the corpse of the Silver Teragriff inside the Breach beneath Indigo Cave in the Silverwastes . Accessed during The Breach meta event underneath Indigo Cave — [&BKkHAAA=] in Central Silverwastes . Does not require defeating the Champion Mordrem Teragriff Silver"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 25,
-       "name": "Use the Gloominator to capture the gloom near the corpse of the Platinum Thrasher inside the Breach beneath Blue Oasis in the Silverwastes."
+       "name": "Breach's Platinum Gloom",
+       "name_api": "Use the Gloominator to capture the gloom near the corpse of the Platinum Thrasher inside the Breach beneath Blue Oasis in the Silverwastes.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom near the corpse of the Platinum Thrasher inside the Breach beneath Blue Oasis in the Silverwastes. Accessed during The Breach meta event underneath Blue Oasis — [&BKsHAAA=] in Northwestern Silverwastes . Does not require defeating the Champion Mordrem Thrasher Platinum"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 26,
-       "name": "Use the Gloominator to capture the gloom in the icy cavern of Tribulation Caverns in Dredgehaunt Cliffs."
+       "name": "Tribulation's Gloom",
+       "name_api": "Use the Gloominator to capture the gloom in the icy cavern of Tribulation Caverns in Dredgehaunt Cliffs.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the gloom in the icy cavern of Tribulation Caverns in Dredgehaunt Cliffs . Entrance to Tribulation Caverns is in Tribulation Rift , above the Tomb of Morlog — [&BPMEAAA=] , on the ledge with the Splendid Chest at the end of the Tribulation Rift Scaffolding jumping puzzle . It can be skipped to with a mount that can ascend the structures on the mountainside southeast of Tribulation Rift Vista — [&BCMGAAA=] . Gloom can be collected anywhere in the bottom of the first ice cavern where the Tribulation Caverns jumping puzzle starts"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 27,
-       "name": "Use the Gloominator to capture the darkness in Rabsovich's room in the Underground Facility Fractal."
+       "name": "Underground Darkness",
+       "name_api": "Use the Gloominator to capture the darkness in Rabsovich's room in the Underground Facility Fractal.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Use the Gloominator to capture the darkness in Rabsovich 's room in the Underground Facility Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 28,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track."
+       "name": "Twilight Vol. 3",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "This item only has value as part of a collection. Purchase for 5 + 10,003 from Grandmaster Craftsman Hobbs in Trader's Forum . Requires Historian of the Armaments in the Legendary Crafting mastery track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 29,
-       "name": "Perfected Nightsword"
+       "name": "Perfected Nightsword",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Twilight III: Dusk",
+      "prerequisite": {
+       "name": "Historian of the Armaments",
+       "wiki": "Historian of the Armaments"
+      },
+      "unlock_item": {
+       "name": "Perfected Nightsword",
+       "wiki": "Perfected Nightsword"
+      },
+      "reward": {
+       "name": "Chest of Gloom",
+       "wiki": "Chest of Gloom"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "twilight_ii_the_perfected_nightsword": {
      "id": 2184,
@@ -25429,72 +26262,215 @@
      "items": [
       {
        "bit": 0,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Basic Mithril Nightsword Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Speak to a Master Weaponsmith to discover the art of forging."
+       "name": "The Art of Forging: Nightsword Blade Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Mithril Nightsword Blade Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Speak to a Master Weaponsmith to learn the secret to weighting a blade."
+       "name": "Weighted Nightsword Blade",
+       "name_api": "Speak to a Master Weaponsmith to learn the secret to weighting a blade.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secret to weighting a blade"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Speak to a Master Weaponsmith to discover the art of forging."
+       "name": "The Art of Forging: Nightsword Hilt Edition",
+       "name_api": "Speak to a Master Weaponsmith to discover the art of forging.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to discover the art of forging"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Speak to a Master Weaponsmith to learn his needs for the war effort."
+       "name": "Mithril Nightsword Hilt Requisition",
+       "name_api": "Speak to a Master Weaponsmith to learn his needs for the war effort.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn his needs for the war effort"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Speak to a Master Weaponsmith to discover the secret to balancing a hilt."
+       "name": "Balanced Nightsword Hilt",
+       "name_api": "Speak to a Master Weaponsmith to discover the secret to balancing a hilt.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secret to balancing a hilt"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools."
+       "name": "Superior Nightsword Forging Tools",
+       "name_api": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools.",
+       "how": {
+        "fr": null,
+        "en": "Speak to a Master Weaponsmith to learn the secrets of superior forging tools"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics."
+       "name": "Desert Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Desert Magics. (Requires 1000 Bandit Crests )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics."
+       "name": "Jungle Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Jungle Magics. (Requires 400 Geodes )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics."
+       "name": "Old World Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Old World Magics. (Requires 100 Obsidian Shards )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics."
+       "name": "Ancient Water Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Ancient Water Magics. (Requires 100 Karka Shells )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics."
+       "name": "Herbal Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Herbal Magics. (Requires 25 Passion Flowers )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics."
+       "name": "Stabilizing Magics: Nightsword Edition",
+       "name_api": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics.",
+       "how": {
+        "fr": null,
+        "en": "Speak to Scholar Mossi in the Trader's Forum in Lion's Arch to learn her needs for applied research in Stabilizing Magics. (Requires 25 Stabilizing Matrices )"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track."
+       "name": "Twilight Vol. 2",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": null,
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Magister of Legends ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 15,
-       "name": "Dusk Experiment"
+       "name": "Dusk Experiment",
+       "how": {
+        "fr": null,
+        "en": "Salvage this weapon to receive its spirit, needed to craft the next tier of this legendary precursor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Twilight II: The Perfected Nightsword",
+      "prerequisite": {
+       "name": "Magister of Legends",
+       "wiki": "Magister of Legends"
+      },
+      "unlock_item": {
+       "name": "Dusk Experiment",
+       "wiki": "Dusk Experiment"
+      },
+      "reward": {
+       "name": "Tricks and Tips"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "twilight_i_the_experimental_nightsword": {
      "id": 2420,
@@ -25507,68 +26483,205 @@
      "items": [
       {
        "bit": 0,
-       "name": "A gift from the ghost of Elise after helping Fen visit her grave in the Bonerattler Caverns of Harathi Hinterlands."
+       "name": "Final Sorrow",
+       "name_api": "A gift from the ghost of Elise after helping Fen visit her grave in the Bonerattler Caverns of Harathi Hinterlands.",
+       "how": {
+        "fr": null,
+        "en": "Hint: A gift from the ghost of Elise after helping Fen visit her grave in the Bonerattler Caverns of Harathi Hinterlands"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 1,
-       "name": "Cleanse the Cathedral of Zephyrs in Malchor's Leap and loot this from the chest."
+       "name": "Malchor's Demise",
+       "name_api": "Cleanse the Cathedral of Zephyrs in Malchor's Leap and loot this from the chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Cleanse the Cathedral of Zephyrs in Malchor's Leap and loot this from the chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 2,
-       "name": "Visit the Vizier's Tower, where the fall of Orr originated, and loot this from the chest there."
+       "name": "Orr's Fall",
+       "name_api": "Visit the Vizier's Tower, where the fall of Orr originated, and loot this from the chest there.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Visit the Vizier's Tower , where the fall of Orr originated, and loot this from the chest there"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 3,
-       "name": "Read about the end of the Ascalonian human civilization at the Shards of War in the Plains of Ashford."
+       "name": "Ascalon's Searing",
+       "name_api": "Read about the end of the Ascalonian human civilization at the Shards of War in the Plains of Ashford.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Read about the end of the Ascalonian human civilization at the Shards of War in the Plains of Ashford"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 4,
-       "name": "Examine the wreckage of the Breachmaker in Lion's Arch."
+       "name": "Scarlet's Demise",
+       "name_api": "Examine the wreckage of the Breachmaker in Lion's Arch.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Examine the wreckage of the Breachmaker in Lion's Arch"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 5,
-       "name": "Examine the wreckage of the clockwork marionette in Lornar's Pass."
+       "name": "Marionette's Defeat",
+       "name_api": "Examine the wreckage of the clockwork marionette in Lornar's Pass.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Examine the wreckage of the clockwork marionette in Lornar's Pass"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 6,
-       "name": "Experience the meltdown of the Thaumanova Reactor in the Fractals of the Mists, and loot this from the chest."
+       "name": "Reactor Meltdown",
+       "name_api": "Experience the meltdown of the Thaumanova Reactor in the Fractals of the Mists, and loot this from the chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Experience the meltdown of the Thaumanova Reactor in the Fractals of the Mists, and loot this from the chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 7,
-       "name": "Experience the end of Mai Trin in the Fractals of the Mists, and loot this from her chest."
+       "name": "Aetherblade's Downfall",
+       "name_api": "Experience the end of Mai Trin in the Fractals of the Mists, and loot this from her chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Experience the end of the Mai Trin in the Fractals of the Mists, and loot this from her chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 8,
-       "name": "Experience the end of the Molten Alliance Leaders in the Fractals of the Mists, and loot this from their chest."
+       "name": "Molten Collapse",
+       "name_api": "Experience the end of the Molten Alliance Leaders in the Fractals of the Mists, and loot this from their chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Experience the end of the Molten Alliance Leaders in the Fractals of the Mists, and loot this from their chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 9,
-       "name": "Defeat the Toxic Alchemist in Kessex Hills and loot this from her corpse."
+       "name": "Nightmare's Legacy",
+       "name_api": "Defeat the Toxic Alchemist in Kessex Hills and loot this from her corpse.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defeat the Toxic Alchemist in Kessex Hills and loot this from her corpse"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 10,
-       "name": "Sink the Ash Horizon in Sparkfly Fen."
+       "name": "Return to the Depths",
+       "name_api": "Sink the Ash Horizon in Sparkfly Fen.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Sink the Ash Horizon in Sparkfly Fen"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 11,
-       "name": "Destroy the Inquest research facility at Bauxite Alchemicals in Malchor's Leap, and loot this from the chest there."
+       "name": "Research Destruction",
+       "name_api": "Destroy the Inquest research facility at Bauxite Alchemicals in Malchor's Leap, and loot this from the chest there.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Destroy the Inquest research facility at Bauxite Alchemicals in Malchor's Leap, and loot this from the chest there"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 12,
-       "name": "Defeat Taidha Covington in Bloodtide Coast and loot this from her chest."
+       "name": "Ocean Supremacy",
+       "name_api": "Defeat Taidha Covington in Bloodtide Coast and loot this from her chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defeat Taidha Covington in Bloodtide Coast and loot this from her chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 13,
-       "name": "Defeat the Harathi Overlord in Kessex Hills and loot this from his corpse."
+       "name": "Overlord's Defeat",
+       "name_api": "Defeat the Harathi Overlord in Kessex Hills and loot this from his corpse.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defeat the Harathi Overlord in Kessex Hills and loot this from his corpse"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       },
       {
        "bit": 14,
-       "name": "Defeat the Modniir Ulgoth in Harathi Hinterlands and loot this from his chest."
+       "name": "Modniir's Ruin",
+       "name_api": "Defeat the Modniir Ulgoth in Harathi Hinterlands and loot this from his chest.",
+       "how": {
+        "fr": null,
+        "en": "Hint: Defeat the Modniir Ulgoth in Harathi Hinterlands and loot this from his chest"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+       "how_fr_missing": true
       }
      ],
      "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
      "verified": true,
-     "checked": "2026-08-27"
+     "checked": "2026-08-27",
+     "unlock": {
+      "achievement": "Twilight I: The Experimental Nightsword",
+      "prerequisite": {
+       "name": "Revered Antiquarian",
+       "wiki": "Revered Antiquarian"
+      },
+      "unlock_item": {
+       "name": "Twilight Vol. 1",
+       "wiki": "Twilight Vol. 1"
+      },
+      "reward": {
+       "name": "Chest of the End",
+       "wiki": "Chest of the End"
+      }
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "legendary_weapon_twilight": {
      "id": 7183,

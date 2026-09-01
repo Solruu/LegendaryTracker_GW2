@@ -989,10 +989,12 @@ ce jour :
 | Nevermore | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/nevermore.html` |
 | Bolt | gen1 | **100 Icy Runestones** — témoin, conforme à `gen1_craft_note` | `ressources/wiki/bolt.html` |
 | Chuka and Champawat | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/chuka_and_champawat.html` |
+| Sunrise | gen1 | **100 Icy Runestones** | `ressources/wiki/sunrise.html` |
+| Twilight | gen1 | **100 Icy Runestones** | `ressources/wiki/twilight.html` |
 
 « Mystic Runestone » n'apparaît dans aucune de ces pages. **Les quatre gen2 à
-collections nomment toutes l'Icy Runestone**, et Bolt sert de témoin : la gen1 la
-nomme aussi. Les deux générations lisent donc pareil, ce qui rend
+collections nomment toutes l'Icy Runestone**, et trois gen1 servent de témoins —
+Bolt, Sunrise, Twilight — qui la nomment aussi. Les deux générations lisent donc pareil, ce qui rend
 `gen2_craft_note` suspect plutôt que la lecture.
 
 ⚠ Ces quatre-là sont précisément les armes que `gift_of_desert_mastery` exclut
