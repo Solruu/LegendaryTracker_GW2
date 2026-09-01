@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v199",
+  "version": "v200",
   "last_updated": "2026-08-13",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -956,7 +956,8 @@
   "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix.",
   "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron.",
   "changelog_v198": "Passe 1 des chantiers hors armes, 20 pages. 134 conseils poses ou remplaces, 40 noms repris du wiki, 15 blocs unlock. Aurora: Awakening annoncait 7 etapes et n en portait aucune — les 7 sont creees, ordre verifie contre gw2_bits_dump. Forge Guard s Armor Collection utilise un tableau « Collectible » sans colonne Notes, que gw2_parse_collection_v2.py ne lit pas : ses 6 objets sont extraits a part et le items_ref le dit. Champ progress introduit sur la structure collections existante, mais sur un perimetre bien plus etroit que prevu. J avais capture les listes de succes eligibles des meta de maitrise ; l audit a refuse le push, et il avait raison : meta_eligible portait deja les seize listes, verifiees le 11/08. Le diff est sans appel — ma capture n apportait qu un separateur « ... » parasite et une entite HTML mal decodee. Le travail etait fait ; c est le items vide de la collection qui m a fait croire au contraire, alors que la liste vit ailleurs, exactement la ou la regle du projet la met. progress ne subsiste donc que la ou RIEN ne le porte : les quatre recursions d Eikasia, ou l API n expose aucun bit et la progression est de la Fractalline Dust, et Helping Hylek, ou c est un compteur de kraits tues. Il ne porte ni seuil ni pool — total et meta_eligible les donnent deja. RENDU JSX NON FAIT : progress n est pas encore lu par le JSX. Passe finale apres les trois lots.",
-  "changelog_v199": "Passe 2 des chantiers hors armes, 20 pages. 69 conseils, 16 noms, 11 blocs unlock, et 20 renvois component poses sur Legendary Relics: Components — premiers renvois hors armes. Glimmering Resin Weapon Collector traite comme Forge Guard : tableau « Collectible » sans colonne Notes, extrait a part, 17 conseils construits depuis le type et l'objet lie. Les cinq pages de meta ont servi a RECOUPER meta_eligible, pas a le refaire. Quatre listes sur cinq correspondent nom pour nom : Shipwreck Strand 53, Mistburned Barrens 23, Long Live the Lich 48, Incursive Investigation 5. La cinquieme confirme une divergence deja notee : le wiki liste 55 objectifs a Starlit Weald contre 54 cotes API, « A Hunt for the Ages » n'ayant pas d'identifiant expose. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre ; la note le dit. how_jsx : 213 anciens conseils avaient ete conserves en posant les versions wiki. Le recoupement montre qu'ils ne font PAS doublon — similarite mediane 0,34. Le wiki dit ou aller, eux disent quoi eviter : ne pas recycler le condensateur avant Ad Infinitum II, acheter les cles chez Astora avant de partir, l'evenement qui fait disparaitre Akili. Seuls 11 etaient de vraies redites et sont supprimes ; 202 sont conserves comme conseils complementaires. Ils restent NON RENDUS — l'audit le signale, et c'est le principal enjeu de la passe JSX finale."
+  "changelog_v199": "Passe 2 des chantiers hors armes, 20 pages. 69 conseils, 16 noms, 11 blocs unlock, et 20 renvois component poses sur Legendary Relics: Components — premiers renvois hors armes. Glimmering Resin Weapon Collector traite comme Forge Guard : tableau « Collectible » sans colonne Notes, extrait a part, 17 conseils construits depuis le type et l'objet lie. Les cinq pages de meta ont servi a RECOUPER meta_eligible, pas a le refaire. Quatre listes sur cinq correspondent nom pour nom : Shipwreck Strand 53, Mistburned Barrens 23, Long Live the Lich 48, Incursive Investigation 5. La cinquieme confirme une divergence deja notee : le wiki liste 55 objectifs a Starlit Weald contre 54 cotes API, « A Hunt for the Ages » n'ayant pas d'identifiant expose. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre ; la note le dit. how_jsx : 213 anciens conseils avaient ete conserves en posant les versions wiki. Le recoupement montre qu'ils ne font PAS doublon — similarite mediane 0,34. Le wiki dit ou aller, eux disent quoi eviter : ne pas recycler le condensateur avant Ad Infinitum II, acheter les cles chez Astora avant de partir, l'evenement qui fait disparaitre Akili. Seuls 11 etaient de vraies redites et sont supprimes ; 202 sont conserves comme conseils complementaires. Ils restent NON RENDUS — l'audit le signale, et c'est le principal enjeu de la passe JSX finale.",
+  "changelog_v200": "Passe 3 des chantiers hors armes, 17 pages. 57 conseils, 10 blocs unlock, 18 renvois component sur les six collections Visions of. Les conseils non verifies tombent a 14. Les quatre Path of the Ascension rejoignent meta_eligible : ce sont des meta sur un pool de succes PvP, 11 exiges sur 11 a 12 eligibles, pas des collections d'objets. L'audit a d'abord refuse le push parce que j'avais ecrit les entrees en [null, nom] — la page de categorie PvP n'expose pas les identifiants. Ils sont resolus par nom contre gw2_achievements_ref.json, les 47 sans exception. War Eternal recoupe : 18 contre 18, nom pour nom. C'est la sixieme meta verifiee sur six, apres les cinq de la passe 2 — meta_eligible n'a pas bouge d'une ligne. Vision I reste sans items a juste titre : c'est un meta sur ses six sous-collections Visions of, deja portees par subcollections et desormais toutes documentees. Vision II est le seul cas ou la structure ne suit pas, et il est SIGNALE, pas force : 20 sanctuaires exiges sur 24, mais un sanctuaire de maitrise est un point de carte sans identifiant de succes, donc meta_eligible ne peut pas l'accueillir, et le succes 4771 n'expose aucun bit. Le champ pool_a_modeliser dit ou vit la liste et ce qu'il faut decider."
  },
  "meta_events": {
   "vb": {
@@ -18527,18 +18528,24 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "orrax_contained"
       },
       {
        "bit": 1,
        "name": "Binding of the Dragon",
        "how": {
+        "fr": null,
+        "en": "Combine a Binding of the Dragon, a Draconic Tribute, a Salmon of Knowledge Backpiece, and an Askur Camping Cookout Backpack (or the remnants of either) in the Mystic Forge to create the legendary precursor Orrax Contained. Rewarded from completing the achievement Unknown Nightmares: Experiments in the Shadows"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_orrax_contained.html",
+       "name_api": "Received from completing the Unknown Nightmares: Experiments in the Shadows achievement",
+       "how_jsx": {
         "fr": "Ce composant tombe automatiquement à la fin de « Expériences dans les ombres » — ne le cherche pas ailleurs.",
         "en": "This component drops automatically at the end of 'Experiments in the Shadows' - don't look for it elsewhere."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Received from completing the Unknown Nightmares: Experiments in the Shadows achievement"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
@@ -18549,36 +18556,49 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "draconic_tribute"
       },
       {
        "bit": 3,
        "name": "Salmon of Knowledge Backpiece",
        "how": {
+        "fr": null,
+        "en": "This back item is used for crafting Janthir Wilds legendaries. Remnants can be purchased from the renown heart vendor in Mistburned Barrens"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_orrax_contained.html",
+       "name_api": "If needed, remnants of this item can be purchased from the renown heart vendor in Mistburned Barrens.",
+       "how_jsx": {
         "fr": "Rachetable en boucle chez le vendeur de cœur de renommée des Landes de Feu-de-Brume : aucun risque de blocage définitif.",
         "en": "Repeatable from the Mistburned Barrens renown heart vendor: no risk of a permanent block."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "If needed, remnants of this item can be purchased from the renown heart vendor in Mistburned Barrens."
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Askur Camping Cookout Backpiece",
        "how": {
+        "fr": null,
+        "en": "This back item is used for crafting Janthir Wilds legendaries. Remnants can be purchased from Ward Trader Sampaguita in Bava Nisos"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_orrax_contained.html",
+       "name_api": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+       "how_jsx": {
         "fr": "Même filet de sécurité chez la vendeuse de la Garde Sampaguita, dans Bava Nisos.",
         "en": "Same safety net from the Sampaguita Guard vendor, in Bava Nisos."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "If needed, remnants can be purchased from Ward Trader Sampaguita in Bava Nisos."
+       "how_fr_missing": true
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "Unknown Nightmares: Orrax Contained",
       "prerequisite": {
        "name": "Salvation's Cost"
       },
+      "unlock_item": null,
       "reward": {
        "name": "Orrax Contained Homestead Decoration",
        "wiki": "Orrax Contained Homestead Decoration"
@@ -18609,7 +18629,8 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "gift_of_the_mistburned_isles"
       },
       {
        "bit": 1,
@@ -18643,29 +18664,42 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "mursaat_runestone"
       },
       {
        "bit": 4,
        "name": "Mystic Runestone",
        "how": {
+        "fr": null,
+        "en": "Hint: Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor.",
+       "component": "mystic_runestone",
+       "how_jsx": {
         "fr": "⚠ Maîtrise Érudit des secrets obligatoire. Si elle n'est pas montée, c'est le premier vrai blocage de l'onglet — commence par là.",
         "en": "⚠ Scholar of Secrets mastery required. If it isn't levelled, this is the tab's first real blocker - start here."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Requires the Scholar of Secrets Mastery to purchase from a Mystic Forge vendor."
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vial of Titan Melted Liquid Obsidian",
        "how": {
+        "fr": null,
+        "en": "Hint: Crafted using Mursaat Obsidian Chunks , Titan Heatstones , Globs of Ectoplasm , and Ancient Wood Planks"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Crafted using Mursaat Obsidian Chunks, Titan Heatstones, Globs of Ectoplasm, and Ancient Wood Planks.",
+       "component": "vial_of_titan_melted_obsidian",
+       "how_jsx": {
         "fr": "Fabrication : obsidienne mursaat, pierres de chaleur de Titan, ectoplasme et bois ancien. Armurier 400 requis.",
         "en": "Crafting: mursaat obsidian, Titan heat stones, ectoplasm and ancient wood. Armorsmith 400 required."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Crafted using Mursaat Obsidian Chunks, Titan Heatstones, Globs of Ectoplasm, and Ancient Wood Planks."
+       "how_fr_missing": true
       },
       {
        "bit": 6,
@@ -18677,7 +18711,8 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "mists_gate_residue"
       },
       {
        "bit": 7,
@@ -18688,7 +18723,8 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "shard_of_mistburned_barrens"
       },
       {
        "bit": 8,
@@ -18699,54 +18735,85 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "shard_of_bava_nisos"
       },
       {
        "bit": 9,
        "name": "Gift of Lowland Shore",
        "how": {
+        "fr": null,
+        "en": "Hint: Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore.",
+       "how_jsx": {
         "fr": "Complétion de carte de la Côte des basses terres. Les exemplaires supplémentaires s'achètent, donc pas besoin de viser juste du premier coup.",
         "en": "Lowland Shore map completion. Extra copies can be bought, so no need to get it right first time."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned in Lowland Shore by completing all map locations. Additional copies can be purchased from renown heart vendors in Lowland Shore."
+       "how_fr_missing": true
       },
       {
        "bit": 10,
        "name": "Gift of Janthir Syntri",
        "how": {
+        "fr": null,
+        "en": "Hint: Earned in Janthir Syntri by completing all map locations. Additional copies can be purchased from renown heart vendors in Janthir Syntri"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Earned in Janthir Syntri by completing all map locations. Further copies can be purchased from renown heart vendors in Janthir Syntri.",
+       "how_jsx": {
         "fr": "Idem pour la Syntri de Janthir : complétion de carte, puis rachat chez les cœurs de renommée.",
         "en": "Same for Janthir Syntri: map completion, then repurchase from the renown hearts."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned in Janthir Syntri by completing all map locations. Further copies can be purchased from renown heart vendors in Janthir Syntri."
+       "how_fr_missing": true
       },
       {
        "bit": 11,
        "name": "Gift of Mistburned Barrens",
        "how": {
+        "fr": null,
+        "en": "Used in the crafting of Janthir Wilds legendary items"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Earned in Mistburned Barrens by completing all map locations. Further copies can be purchased from the renown heart vendor in Mistburned Barrens.",
+       "how_jsx": {
         "fr": "Idem pour les Landes de Feu-de-Brume.",
         "en": "Same for the Mistburned Barrens."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned in Mistburned Barrens by completing all map locations. Further copies can be purchased from the renown heart vendor in Mistburned Barrens."
+       "how_fr_missing": true
       },
       {
        "bit": 12,
        "name": "Gift of Bava Nisos",
        "how": {
+        "fr": null,
+        "en": "Used in the crafting of Janthir Wilds legendary items"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_mistburned_isles.html",
+       "name_api": "Earned in Bava Nisos by completing all map locations. Further copies can be purchased from Ward Trader Sampaguita in Bava Nisos.",
+       "how_jsx": {
         "fr": "Idem pour Bava Nisos. Les 4 complétions de carte sont l'essentiel du temps de cette collection — lance-les en fond.",
         "en": "Same for Bava Nisos. The 4 map completions are most of this collection's time - start them in the background."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned in Bava Nisos by completing all map locations. Further copies can be purchased from Ward Trader Sampaguita in Bava Nisos."
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Unknown Nightmares: Gift of the Mistburned Isles",
+      "prerequisite": {
+       "name": "Salvation's Cost Collection <img alt=\"Gift of the Mistburned Isles.png\" src=\"/images/b/b7/Gift_of_the_M"
+      },
+      "unlock_item": null,
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "orrax_shadows": {
      "id": 8723,
@@ -18770,7 +18837,8 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "gift_of_shadows_orrax"
       },
       {
        "bit": 1,
@@ -18792,54 +18860,88 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "gift_of_scales"
       },
       {
        "bit": 3,
        "name": "Gift of Titan Understanding",
        "how": {
+        "fr": null,
+        "en": "Combine a Gift of Darkness, a Gift of Scales, a gift of Titan Understanding, and a Bloodstone Shard in the Mystic Forge to create the Gift of Shadows. A Gift of Titan Understanding can be purchased from the renown heart vendor in Mistburned Barrens or Ward Trader Sampaguita"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_shadows.html",
+       "name_api": "Purchased from unusual coin vendors in Mistburned Barrens and Bava Nisos.",
+       "how_jsx": {
         "fr": "Vendeurs de pièces inhabituelles des Landes de Feu-de-Brume et de Bava Nisos : les deux vendent la même chose, prends le plus proche.",
         "en": "Unusual Coin vendors in the Mistburned Barrens and Bava Nisos: both sell the same thing, take the closest."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Purchased from unusual coin vendors in Mistburned Barrens and Bava Nisos."
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Bloodstone Shard",
        "how": {
+        "fr": null,
+        "en": "Hint: Purchased from a Mystic Forge vendor for Spirit Shards"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_shadows.html",
+       "name_api": "Purchased from a Mystic Forge vendor for Spirit Shards.",
+       "component": "bloodstone_shard",
+       "how_jsx": {
         "fr": "Payable en éclats d'esprit à la forge mystique — la ressource que tu accumules sans t'en servir.",
         "en": "Payable in spirit shards at the Mystic Forge - the resource you accumulate without using."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Purchased from a Mystic Forge vendor for Spirit Shards."
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Curious Mursaat Ruin Shard",
        "how": {
+        "fr": null,
+        "en": "Hint: Earned by completing events in Mistburned Barrens"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_shadows.html",
+       "name_api": "Earned by completing events in Mistburned Barrens.",
+       "component": "curious_mursaat_ruin_shard",
+       "how_jsx": {
         "fr": "Événements des Landes de Feu-de-Brume : farmable en boucle, aucun plafond.",
         "en": "Mistburned Barrens events: farmable on repeat, no cap."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned by completing events in Mistburned Barrens."
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Curious Mursaat Remnants",
        "how": {
+        "fr": null,
+        "en": "Hint: Earned by completing events in Bava Nisos"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_shadows.html",
+       "name_api": "Earned by completing events in Bava Nisos.",
+       "component": "curious_mursaat_remnants",
+       "how_jsx": {
         "fr": "Événements de Bava Nisos, même logique. Les deux tombent en faisant les métas de carte.",
         "en": "Bava Nisos events, same logic. Both drop while doing the map metas."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Earned by completing events in Bava Nisos."
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Unknown Nightmares: Gift of Shadows",
+      "prerequisite": {
+       "name": "Salvation's Cost Collection <img alt=\"Gift of Shadows.png\" src=\"/images/9/9e/Gift_of_Shadows.png\" decoding=\"async\" width=\"64\" hei"
+      },
+      "unlock_item": null,
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "orrax_feast": {
      "id": 8750,
@@ -18863,7 +18965,8 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
-       "how_fr_missing": true
+       "how_fr_missing": true,
+       "component": "gift_of_the_feast"
       },
       {
        "bit": 1,
@@ -18945,12 +19048,18 @@
        "bit": 13,
        "name": "Mystic Clover",
        "how": {
+        "fr": null,
+        "en": "Hint: Sometimes acquired by combining Mystic Coins , Obsidian Shards , Globs of Ectoplasm , and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_feast.html",
+       "name_api": "Sometimes acquired by combining Mystic Coins, Obsidian Shards, Globs of Ectoplasm, and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors.",
+       "component": "mystic_clover",
+       "how_jsx": {
         "fr": "Trèfles mystiques : recette forge à ~33 % de réussite, ou achat direct chez les vendeurs d'attaque, de raid ou de fractales. L'achat est plus fiable que la forge.",
         "en": "Mystic Clovers: Mystic Forge recipe at ~33% success, or direct purchase from strike, raid or fractal vendors. Buying is more reliable than forging."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Sometimes acquired by combining Mystic Coins, Obsidian Shards, Globs of Ectoplasm, and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors."
+       "how_fr_missing": true
       },
       {
        "bit": 14,
@@ -18964,26 +19073,47 @@
        "bit": 16,
        "name": "Amalgamated Rift Essence",
        "how": {
+        "fr": null,
+        "en": "Hint: Refined from 250 Fine Rift Essences , 100 Masterwork Rift Essences , and 50 Rare Rift Essences . Essences can be found by hunting rifts"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_feast.html",
+       "name_api": "Refined from 250 Fine Rift Essences, 100 Masterwork Rift Essences, and 50 Rare Rift Essences. Essences can be found by hunting rifts.",
+       "component": "amalgamated_rift_essence",
+       "how_jsx": {
         "fr": "250 essences raffinées + 100 prodigieuses + 50 rares, uniquement en chassant les brèches. C'est le poste le plus long de la collection.",
         "en": "250 refined + 100 prodigious + 50 rare essences, only by hunting rifts. This is the collection's longest item."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Refined from 250 Fine Rift Essences, 100 Masterwork Rift Essences, and 50 Rare Rift Essences. Essences can be found by hunting rifts."
+       "how_fr_missing": true
       },
       {
        "bit": 17,
        "name": "Fruit of the Shadow",
        "how": {
+        "fr": null,
+        "en": "Grown in the homestead. The seedlings are purchased from Deft Lahar . Used in the Mystic Forge to create: • Gift of the Appetizer • Gift of the Entrée • Gift of the Side Course • Gift of the Dessert"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/unknown_nightmares_gift_of_the_feast.html",
+       "name_api": "Purchase a seed from Deft Lahar in the homestead, and harvest it after letting it grow for 24 hours.",
+       "how_jsx": {
         "fr": "⚠ Timegate de 24 h : achète la graine chez Lahar habile dans ton pavillon DÈS MAINTENANT, elle poussera pendant que tu fais le reste.",
         "en": "⚠ 24h timegate: buy the seed from Lahar the Skilled in your homestead RIGHT NOW, it will grow while you do the rest."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape",
-       "name_api": "Purchase a seed from Deft Lahar in the homestead, and harvest it after letting it grow for 24 hours."
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Unknown Nightmares: Gift of the Feast",
+      "prerequisite": {
+       "name": "Salvation's Cost Collection <img alt=\"Gift of the Feast.png\" src=\"/images/2/23/Gift_of_the_Feast.png\" decoding=\"async\" width="
+      },
+      "unlock_item": null,
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "orrax_final": {
      "id": 8714,
@@ -52738,7 +52868,8 @@
      "verified": true,
      "checked": "2026-08-13",
      "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion",
-     "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
+     "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
+     "pool_a_modeliser": "24 sanctuaires de maitrise existent, 20 suffisent — mais ce pool n'a pas sa place dans meta_eligible, qui indexe des SUCCES par identifiant. Un sanctuaire est un point de carte, il n'a pas d'identifiant de succes. Le succes 4771 n'expose aucun bit non plus. La liste des 24, avec carte, point de passage et code de discussion, est dans ressources/wiki/vision_ii_farsight.html et attend une decision de structure."
     },
     "vis_meta_1": {
      "id": 4762,
@@ -52833,61 +52964,91 @@
        "bit": 0,
        "name": "Heavy Corsair Turban",
        "how": {
+        "fr": null,
+        "en": "Complete \"Daybreak\" Mastery or Domain of Istan Reward Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "Récompense de TOUS les succès « Daybreak » (épisode 1 de la LS4).",
         "en": "Reward for ALL 'Daybreak' achievements (LWS4 episode 1)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near the Mordant Crescent Great Hall in the Domain of Istan . The Memory Fragment is located above Plaza of Resurgence , easiest reached by flying onto the gate first and ascending from there"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "Memory Fragment au-dessus du PoI Plaza of Resurgence : voler sur la porte d'abord, puis monter.",
         "en": "Memory Fragment above the Plaza of Resurgence PoI: fly onto the gate first, then ascend."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Taimi",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Chalon Docks Waypoint in the Domain of Istan . Acquired by interacting with Partially Corrupted Data Entry , located south of Chalon Docks Waypoint , next to Alaleh on top of a barrel"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "Interagir avec la Partially Corrupted Data Entry, juste à côté du Volatile Magic Collector près de Chalon Docks wp.",
         "en": "Interact with the Partially Corrupted Data Entry, right next to the Volatile Magic Collector near Chalon Docks wp."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Warden Amala",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat Warden Amala in the Mordant Crescent Great Hall while holding a Memory Essence Encapsulator in your inventory. Has to be the Defeat Warden Amala event , not the story fight"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "Vaincre Warden Amala au Mordant Crescent Great Hall EN AYANT un Memory Essence Encapsulator en inventaire. Encapsulator = 50 ectos + 10 Orichalcum Filigree + 1 Lesser Vision Crystal + 3 Xunlai Electrum Ingots, chez un Volatile Magic Collector.",
         "en": "Defeat Warden Amala at the Mordant Crescent Great Hall WHILE holding a Memory Essence Encapsulator. Encapsulator = 50 ectos + 10 Orichalcum Filigree + 1 Lesser Vision Crystal + 3 Xunlai Electrum Ingots, from a Volatile Magic Collector."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Domain of Istan",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift near the Astralarium in the Domain of Istan . The rift is located on top of the big telescope at Astralarium Waypoint , right next to the vista"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "Utiliser le skyscale pour atteindre la faille près de l'Astralarium.",
         "en": "Use your skyscale to reach the rift near the Astralarium."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vision of Equipment: Astral Weapons",
        "how": {
+        "fr": null,
+        "en": "Purchased from Yasna for 5 after crafting 6 Astral weapons"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_istan.html",
+       "how_jsx": {
         "fr": "⏳ LE mur de Vision — huit fois la branche Dragonsblood. 6 armes Astral ou Stellar. Prérequis : « Brandstone Research » ci-dessous (timegate 7 j). Par arme : 1 Inscription of the Spearmarshal + 50 Lingots de kralkatite + 2 composants orichalque. Un lingot = 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 ectoplasme, donc 500 + 500 par arme : 3 000 minerais, 3 000 poudres et 300 ectoplasmes pour les 6. 💡 Les 3 vendeurs de cœurs rendent 75 minerais par personnage et par jour, gratuits : c'est le seul levier praticable, et il se démultiplie avec les alts. ⚡ Les skins Astral déjà débloqués comptent, et « Astral Purification » offre de quoi faire une arme Stellar gratuitement : autant d'armes en moins.",
         "en": "⏳ Vision's REAL wall - eight times the Dragonsblood branch. 6 Astral or Stellar weapons. Prerequisite: 'Brandstone Research' below (7-day timegate). Per weapon: 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 orichalcum components. One ingot = 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 ectoplasm, so 500 + 500 per weapon: 3,000 ore, 3,000 powder and 300 ectoplasm for all 6. 💡 The 3 heart vendors give 75 ore per character per day, free: the only workable lever, and it scales with alts."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
@@ -52903,10 +53064,13 @@
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
      "unlock": {
+      "achievement": "Visions of Istan",
+      "prerequisite": null,
       "unlock_item": {
        "name": "Trance Stone",
        "wiki": "Trance Stone"
-      }
+      },
+      "reward": null
      },
      "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
      "unlock_verified": true
@@ -52928,74 +53092,121 @@
        "bit": 0,
        "name": "Heavy Corsair Jerkin",
        "how": {
+        "fr": null,
+        "en": "Complete \"Long Live the Lich\" Mastery . Choosing one weight unlocks the others, you don't need to take heavy specifically. Can also be obtained by completing Domain of Kourna Reward Track and choosing Corsair Jerkin Box . You don't need to choose heavy specifically using this method either"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Récompense de la maîtrise « Long Live the Lich » (38 succès sur 48 — la liste détaillée est dans le méta d'épisode ci-dessus). 💡 N'importe quel poids débloque les autres : inutile de viser le lourd. ↔ Alternative sans succès : la piste de récompense du Domaine de Kourna, puis choisir la Boîte de veste corsaire.",
         "en": "Reward from the 'Long Live the Lich' Mastery (38 of 48 achievements — the detailed list is in the episode meta above). 💡 Any weight unlocks the others: no need to aim for heavy. ↔ Achievement-free alternative: the Domain of Kourna reward track, then pick the Corsair Jerkin Box."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Zelbahn Garrison in the Domain of Kourna . Almost directly above Lady Camilla , just north of the Allied Encampment Waypoint —"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Fragment de mémoire près de la Garnison de Zelbahn, presque à la verticale au-dessus de Dame Camilla, juste au nord du point de passage du Campement allié [&BFcLAAA=].",
         "en": "Memory Fragment near Zelbahn Garrison, almost directly above Lady Camilla, just north of Allied Encampment Waypoint [&BFcLAAA=]."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Blish",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near the Allied Encampment in the Domain of Kourna. Interact with the Data Log Printout directly west of Lady Camilla"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Interagir avec l'Imprimé du journal de données, directement à l'ouest de Dame Camilla, près du Campement allié.",
         "en": "Interact with the Data Log Printout, directly west of Lady Camilla, near the Allied Encampment."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Olori Ogun",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat Troopmarshal Olori Ogun in the Domain of Kourna while holding a Memory Essence Encapsulator in your inventory. Defeat Troopmarshal Olori Ogun in the Domain of Kourna while holding a Memory Essence Encapsulator in your inventory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Vaincre le Maréchal des troupes Olori Ogun en ayant un Encapsulateur d'essence mémorielle DANS l'inventaire. ⚠ C'est l'un des six usages de l'encapsulateur : chaque carte a sa « Vision of Enemies », d'où les 6 exemplaires à prévoir. Sans l'objet en inventaire au moment du kill, rien n'est crédité.",
         "en": "Defeat Troopmarshal Olori Ogun while holding a Memory Essence Encapsulator IN your inventory. ⚠ This is one of the encapsulator's six uses: every map has its 'Vision of Enemies', which is why 6 copies are needed. Without the item in your inventory at the kill, nothing is credited."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Domain of Kourna",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift near the highest point of the Allied Encampment within the Domain of Kourna. Right above the Domain of Kourna Insight: Allied Encampment"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Faille accessible en Skyscale, près du point le plus haut du Campement allié — la plus haute tour, au sud du point de passage, juste au-dessus du point de maîtrise. Suivre la magie volatile flottante et la ramasser en ENTIER ; si tu en rates, un second passage te remontre le chemin. ⚠ Ce n'est PAS une synergie avec Vision II : celle-ci n'est déverrouillée qu'une fois Vision I terminée, donc tu repasseras ici plus tard, forcément. Retiens juste l'emplacement.",
         "en": "Rift reachable by Skyscale, near the highest point of the Allied Encampment — the tallest tower, south of the waypoint, right above the mastery point. Follow the floating Volatile Magic and collect ALL of it; if you miss some, a second pass shows the way again. ⚠ This is NOT a synergy with Vision II: that collection only unlocks once Vision I is complete, so you will necessarily come back here later. Just remember the spot."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Banner of the Commander",
        "how": {
+        "fr": null,
+        "en": "-"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "component": "banner_of_the_commander",
+       "how_jsx": {
         "fr": "Fabriquer la Bannière du commandant exotique. ⚠ La recette n'est PAS apprise d'office : il faut acheter la feuille de recette chez Dame Camilla, au Campement allié [&BFcLAAA=], pour 1 po. Métier : Armurier, Travailleur du cuir ou Tailleur niveau 500. Ingrédients : 1 Hampe de bannière laquée, 1 Flamme de bannière, 25 lingots d'orichalque, 20 teintures non identifiées. ⚠ NE L'ÉQUIPE PAS : liée au compte mais liée à l'âme à l'utilisation — sur un personnage sans l'un des trois métiers, elle cesse d'être utilisable pour fabriquer sa version élevée, même déposée en banque. Garde-la en inventaire.",
         "en": "Craft the exotic Banner of the Commander. ⚠ The recipe is NOT auto-learned: buy the recipe sheet from Lady Camilla at the Allied Encampment [&BFcLAAA=] for 1 g. Discipline: Armorsmith, Leatherworker or Tailor 500. Ingredients: 1 Lacquered Banner Pole, 1 Banner Pennon, 25 Orichalcum Ingots, 20 Unidentified Dyes. ⚠ DO NOT EQUIP IT: account bound but soulbound on use — on a character without one of the three disciplines it stops being usable to craft its ascended counterpart, even from the bank. Keep it in your inventory."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Vision of Action: Domain of Kourna",
        "how": {
+        "fr": null,
+        "en": "Hint: Perform an ancient ritual with unlikely allies. Complete Dance with the choya to assist Tebb's research (80)"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_kourna.html",
+       "how_jsx": {
         "fr": "Participer à l'événement « Dance with the choya to assist Tebb's research », à l'Idole du choya [&BF4LAAA=], à la Traversée de Kodonur. Parler au Chercheur pour être transformé en choya, puis suivre la danse avec les compétences données. 80 réussites au total.",
         "en": "Complete the 'Dance with the choya to assist Tebb's research' achievement (80 dances)."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Visions of Kourna",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      },
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_jahai": {
      "id": 4770,
@@ -53014,74 +53225,120 @@
        "bit": 0,
        "name": "Updated Record of Joko's Deeds",
        "how": {
+        "fr": null,
+        "en": "Available to purchase from Trader Hyacinth upon completion of the \"A Star to Guide Us\" Mastery achievement"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Acheter chez la Marchande Hyacinth, juste à côté du point de passage du Village de Yatendi [&BH4LAAA=], pour 50 magie volatile + 8 pc. ⚠ Elle n'ouvre son stock qu'une fois la maîtrise « A Star to Guide Us » terminée — c'est le seul prérequis de la collection qui passe par un autre méta d'épisode.",
         "en": "Buy from Trader Hyacinth, right next to Yatendi Village Waypoint [&BH4LAAA=], for 50 Volatile Magic + 8 c. ⚠ She only opens her stock once the 'A Star to Guide Us' Mastery is complete — the collection's only prerequisite routed through another episode meta."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Venta Pass Waypoint in Jahai Bluffs . High above the Venta Pass waypoint"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Fragment de mémoire haut au-dessus du point de passage du Col de Venta [&BJMLAAA=].",
         "en": "Memory Fragment high above Venta Pass Waypoint [&BJMLAAA=]."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Braham",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Mirza's Rest in the Jahai Bluffs. Interact with the Undelivered Letter north-east of Mirza's Rest at the base of the tree in the water"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Interagir avec la Lettre non distribuée, au nord-est du Repos de Mirza, au pied de l'arbre qui est dans l'eau.",
         "en": "Interact with the Undelivered Letter, north-east of Mirza's Rest, at the base of the tree standing in the water."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Death-Branded Shatterer",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat Death-Branded Shatterer within Jahai Bluffs while holding a Memory Essence Encapsulator in your inventory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Vaincre le Bristanacier marqué par la mort, dans les Falaises de Jahai, en ayant un Encapsulateur d'essence mémorielle DANS l'inventaire. ⚠ Boss de méta : cale-toi sur le timer, l'encapsulateur doit être en poche au moment du kill.",
         "en": "Defeat the Death-Branded Shatterer in Jahai Bluffs while holding a Memory Essence Encapsulator IN your inventory. ⚠ Meta boss: plan around the timer, the encapsulator must be on you at the kill."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Jahai Bluffs",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift high above the Displaced Towers in Jahai Bluffs. Very top of the tower at Displaced Vizier's Tower"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Faille accessible en Skyscale, très haut au-dessus des Tours déplacées — tout en haut de la Tour du vizir déplacé.",
         "en": "Rift reachable by Skyscale, very high above the Displaced Towers — at the very top of the Displaced Vizier's Tower."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vision of Equipment: Elegy Armor",
        "how": {
+        "fr": null,
+        "en": "Hint: Complete the The Convergence of Sorrow I: Elegy achievement, and then speak with Amira"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Terminer le succès « The Convergence of Sorrow I: Elegy », puis parler à Amira. 💡 Ce succès est déjà suivi séparément dans le tracker.",
         "en": "Complete 'The Convergence of Sorrow I: Elegy', then speak with Amira. 💡 That achievement is already tracked separately here."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Vision of Action: Jahai Bluffs",
        "how": {
+        "fr": null,
+        "en": "Hint: Thwart an imposter's sinister plans"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+       "how_jsx": {
         "fr": "Événement « Stop “Joko” from recruiting the Awakened! », à la Balafre centrale de la Marque, dans les Falaises de Jahai. 💡 L'objet est donné à la fin de l'événement, RÉUSSITE OU ÉCHEC — inutile de stresser sur le résultat, il suffit d'y participer. ⚠ L'événement ne démarre pas seul : il est précédé de « Console the Awakened loyalists », et cette chaîne amont n'est pas entièrement remontée ici. 💡 Si tu vises aussi « If I May Interrupt » (éligible à « A Star to Guide Us », le méta qui débloque le Registre de Joko ci-dessus), c'est le même événement — mais il exige un run parfait, avec seulement 3 à 5 joueurs : au-delà, la mise à l'échelle rend les barres de ténacité incassables. Les deux objectifs sont ouverts en même temps, donc l'enchaînement est réel.",
         "en": "Event ‘Stop “Joko” from recruiting the Awakened!’, at Central Brand Scar in Jahai Bluffs. 💡 The item is granted at the end of the event, ON SUCCESS OR FAILURE — no need to stress about the outcome, just take part. ⚠ The event does not start on its own: it is preceded by 'Console the Awakened loyalists', and that upstream chain is not fully traced here. 💡 If you also want 'If I May Interrupt' (eligible for 'A Star to Guide Us', the meta that unlocks Joko's Record above), it is the same event — but it demands a perfect run with only 3 to 5 players: beyond that, scaling makes the defiance bars unbreakable. Both objectives are open at the same time, so the chaining is real."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Visions of Jahai",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      },
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_sandswept": {
      "id": 4774,
@@ -53100,74 +53357,120 @@
        "bit": 0,
        "name": "Olmakhan Mantle",
        "how": {
+        "fr": null,
+        "en": "Complete \"A Bug in the System\" Mastery or Sandswept Isles Reward Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Récompense de la maîtrise « A Bug in the System » (35 succès sur 47 — liste détaillée dans le méta d'épisode). ↔ Alternative sans succès : la piste de récompense des Îles Balayées.",
         "en": "Reward from the 'A Bug in the System' Mastery (35 of 47 achievements — detailed list in the episode meta). ↔ Achievement-free alternative: the Sandswept Isles reward track."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near the Atholma in the Sandswept Isles . Located on top of the cliff directly north of Atholma Waypoint — , in the air near a tree"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Fragment de mémoire au sommet de la falaise directement au nord du point de passage d'Atholma [&BEMLAAA=], en l'air près d'un arbre.",
         "en": "Memory Fragment atop the cliff directly north of Atholma Waypoint [&BEMLAAA=], in the air near a tree."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Rox",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Jemandi Market in the Sandswept Isles. Acquired by interacting with Unfinished Field Report located slightly north-west of Atholma Waypoint — , on top of a crate directly across of Olmakhan Villager and the Repair Anvil"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Interagir avec le Rapport de terrain inachevé, légèrement au nord-ouest du point de passage d'Atholma [&BEMLAAA=], sur une caisse juste en face du Villageois olmakhan et de l'Enclume de réparation.",
         "en": "Interact with the Unfinished Field Report, slightly north-west of Atholma Waypoint [&BEMLAAA=], on a crate directly across from the Olmakhan Villager and the Repair Anvil."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Kuda's Subjects",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat Kuda's test subjects within the Specimen Chamber while holding a Memory Essence Encapsulator in your inventory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Vaincre les sujets d'expérience de Kuda, dans la Chambre des spécimens, en ayant un Encapsulateur d'essence mémorielle DANS l'inventaire.",
         "en": "Defeat Kuda's test subjects in the Specimen Chamber while holding a Memory Essence Encapsulator IN your inventory."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Sandswept Isles",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift near the Iron Whale in the Sandswept Isles. Located above The Iron Whale , easily reached from Atholma Waypoint — . This is not to be mistaken with the rift to the north of The Iron Whale"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Faille accessible en Skyscale, au-dessus de la Baleine de fer, facilement atteinte depuis le point de passage d'Atholma [&BEMLAAA=]. ⚠ Ne pas la confondre avec la faille située au NORD de la Baleine de fer, qui ne compte pas.",
         "en": "Rift reachable by Skyscale, above The Iron Whale, easily reached from Atholma Waypoint [&BEMLAAA=]. ⚠ Do not mistake it for the rift NORTH of The Iron Whale, which does not count."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vision of Equipment: Olmakhan Bandolier",
        "how": {
+        "fr": null,
+        "en": "Hint: Acquire the Reinforced Olmakhan Bandolier . If not awarded retroactively, the player needs to buy Vision of Equipment: Olmakhan Bandolier from Ethall , after acquiring the Reinforced Olmakhan Bandolier"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Obtenir la Bandoulière olmakhan renforcée. ⚠ Le crédit rétroactif n'est pas garanti : si l'étape ne se valide pas toute seule après l'avoir obtenue, il faut acheter l'objet « Vision of Equipment: Olmakhan Bandolier » chez Ethall.",
         "en": "Acquire the Reinforced Olmakhan Bandolier. ⚠ Retroactive credit is not guaranteed: if the step does not tick by itself once you have it, buy the 'Vision of Equipment: Olmakhan Bandolier' item from Ethall."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Vision of Action: Sandswept Isles",
        "how": {
+        "fr": null,
+        "en": "Hint: Help the youth learn to provide"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_sandswept_isles.html",
+       "how_jsx": {
         "fr": "Terminer l'événement « Catch as many fish as you can! », à la Jetée de bois flotté [&BDMLAAA=], sur le détroit de Panube. 💡 LE point à retenir : cet événement démarre IMMÉDIATEMENT sur une carte fraîche. Inutile de faire tout le méta Tempêtes rassemblées — change d'instance et parle à Teyrna. Sinon, il conclut la chaîne Élémentaires déchaînés → Échos de l'appel-tempête (×3) → Ancienne Rhona → Zohaqan. Déroulé : prendre un harpon dans les barils au bout des pontons, viser un Cœlacanthe, Tir de harpon pour accrocher puis Moulinet pour le sortir de l'eau ; se placer dans le cercle blanc qui apparaît derrière toi sur le ponton jusqu'à ce que le poisson soit ramené, puis le déposer dans le Panier à poissons. Les cercles des autres joueurs comptent aussi, et vous êtes deux à marquer. Les Cœlacanthes obstinés ignorent parfois le harpon : change de cible. Tuer une Ombre mystérieuse dans l'eau donne aussi de la participation.",
         "en": "Complete the event 'Catch as many fish as you can!' at Driftwood Jetty [&BDMLAAA=], on the Strait of Panube. 💡 THE key point: this event starts IMMEDIATELY on a fresh map. No need to run the whole Gathering Storms meta — switch instance and talk to Teyrna. Otherwise it closes the chain Rampaging elementals → Stormcaller echoes (x3) → Elder Rhona → Zohaqan. How it works: grab a harpoon gun from the barrels at the dock ends, target a Coelacanth, Harpoon Shot to hook then Reel It In to yank it into the air; stand in the white circle appearing behind you on the dock until the fish is reeled in, then deposit it in the Fish Basket. Other players' circles count too, and both of you score. Stubborn Coelacanths sometimes ignore the harpoon: switch target. Killing a Mysterious Shadow in the water also grants participation."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Visions of Sandswept Isles",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      },
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_thunderhead": {
      "id": 4764,
@@ -53186,74 +53489,120 @@
        "bit": 0,
        "name": "Heavy Corsair Leggings",
        "how": {
+        "fr": null,
+        "en": "Complete \"All or Nothing\" Mastery or Thunderhead Peaks Reward Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Récompense de la maîtrise « All or Nothing » (30 succès sur 39 — liste détaillée dans le méta d'épisode). ↔ Alternative sans succès : la piste de récompense des Pics de Tonnerre.",
         "en": "Reward from the 'All or Nothing' Mastery (30 of 39 achievements — detailed list in the episode meta). ↔ Achievement-free alternative: the Thunderhead Peaks reward track."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near the The Forge in the Thunderhead Peaks . Directly above The Forge"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Fragment de mémoire directement au-dessus de la Forge.",
         "en": "Memory Fragment directly above The Forge."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Caithe",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near History's End Waypoint in Thunderhead Peaks. Interact with the Torn Page just southwest of the History's End Waypoint —"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Interagir avec la Page déchirée, juste au sud-ouest du point de passage de la Fin de l'histoire [&BLsLAAA=].",
         "en": "Interact with the Torn Page, just south-west of History's End Waypoint [&BLsLAAA=]."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Wrathbringer",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat Wrathbringer in Thunderhead Keep while holding a Memory Essence Encapsulator in your inventory"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Vaincre le Porteur de courroux, dans le Bastion de Tonnerre, en ayant un Encapsulateur d'essence mémorielle DANS l'inventaire.",
         "en": "Defeat the Wrathbringer in Thunderhead Keep while holding a Memory Essence Encapsulator IN your inventory."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Thunderhead Peaks",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift near the Weeping Sisters in Thunderhead Peaks. Begins in a cave to the southeast of The Weeping Sisters —"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Faille accessible en Skyscale près des Sœurs pleureuses. Le parcours DÉMARRE dans une grotte au sud-est des Sœurs pleureuses [&BKkLAAA=] — c'est l'entrée qu'on cherche, pas la faille elle-même.",
         "en": "Rift reachable by Skyscale near the Weeping Sisters. The trail STARTS in a cave south-east of The Weeping Sisters [&BKkLAAA=] — that entrance is what you are looking for, not the rift itself."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vision of Equipment: Dragonsblood Weapons",
        "how": {
+        "fr": null,
+        "en": "Hint: Forge Master Hilina holds the secrets to ancient weaponry. Craft six different Dragonsblood weapons . You will need 360 Branded Mass and 18 Exquisite Serpentite Jewels to craft the necessary amount of weapons. You need to buy Vision of Equipment: Dragonsblood Weapons from Forge Master Hilina after completing the six weapons"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Fabriquer six armes de sang de dragon différentes, puis acheter l'objet de collection chez la Maître forgeronne Hilina. ⚠ C'est de loin l'étape la plus chère de tout Vision : 360 masses marquées et 18 joyaux de serpentite exquis. À rapprocher des 300 masses marquées déjà exigées par le Don de magie éphémère — soit 660 au total, ce que l'onglet Grand total affiche désormais.",
         "en": "Craft six different Dragonsblood weapons, then buy the collection item from Forge Master Hilina. ⚠ By far the most expensive step in all of Vision: 360 Branded Mass and 18 Exquisite Serpentite Jewels. Add the 300 Branded Mass already required by the Gift of Ephemeral Magic — 660 in total, which the Grand Total tab now shows."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Vision of Action: Thunderhead Peaks",
        "how": {
+        "fr": null,
+        "en": "Hint: Come to the aid of a peaceful people"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_thunderhead_peaks.html",
+       "how_jsx": {
         "fr": "Événement « Defend the Zephyrites from the Branded », au Havre de la symphonie, rattaché au cœur « Rallier les soldats du Pacte, les corsaires et les Zéphyrites ». Déroulé : deux Dévoreurs de siège marqués apparaissent à l'est et à l'ouest, un peu en retrait des barricades — à traiter en priorité, ils font très mal aux barricades. Trois vagues, puis Bivor Sombrecœur, un centaure marqué bourré de contrôle : l'engager vite pour qu'il ne se rabatte pas sur les barricades. ⚠ Observation d'Antoine, non tranchée : la chaîne semble partir de plusieurs bases différentes pour converger au même endroit. Le wiki ne donne qu'un seul prédécesseur, « Escorter Pepperseed jusqu'aux docks zéphyrites », suivi de « Aider Pepperseed à livrer les fournitures à la Forge ».",
         "en": "Event 'Defend the Zephyrites from the Branded' at Symphony's Haven, tied to the 'Rally the Pact soldiers, corsairs, and Zephyrites' heart. How it goes: two Branded Siege Devourers appear east and west, slightly back from the barricades — deal with them first, they hurt the barricades badly. Three waves, then Bivor Darkheart, a Branded centaur loaded with crowd control: engage him fast so he does not turn on the barricades. ⚠ Antoine's observation, unresolved: the chain seems to start from several different bases and converge on the same place. The wiki lists only one predecessor, 'Escort Pepperseed back to the Zephyrite Docks', followed by 'Help Pepperseed deliver Zephyrite supplies to the Forge'."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Visions of Thunderhead Peaks",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      },
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_dragonfall": {
      "id": 4757,
@@ -53272,74 +53621,120 @@
        "bit": 0,
        "name": "Heavy Corsair Boots",
        "how": {
+        "fr": null,
+        "en": "Complete \"War Eternal\" Mastery or Dragonfall Reward Track"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Récompense de la maîtrise « War Eternal ». ⚠ C'est le seul méta d'épisode SANS marge : 18 succès exigés sur 18 éligibles, aucun n'est facultatif. ↔ Alternative sans succès : la piste de récompense de Chute draconique.",
         "en": "Reward from the 'War Eternal' Mastery. ⚠ It is the only episode meta with NO slack: 18 achievements required out of 18 eligible, none optional. ↔ Achievement-free alternative: the Dragonfall reward track."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 1,
        "name": "Vision of Dragons: Aurene",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near Airdrome Port in Dragonfall . The Memory Fragment is located on top of the tall pillar next to the Pact Command Waypoint — , above General Almorra Soulkeeper , next to the airship. It can be reached from the top of the airship"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Fragment de mémoire au sommet du grand pilier voisin du point de passage du Commandement du Pacte [&BN4LAAA=], au-dessus de la Générale Almorra Ame-gardienne. 💡 Le plus simple est de partir du haut de l'aéronef.",
         "en": "Memory Fragment atop the tall pillar next to Pact Command Waypoint [&BN4LAAA=], above General Almorra Soulkeeper. 💡 Easiest approach is from the top of the airship."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 2,
        "name": "Vision of Allies: Zafirah",
        "how": {
+        "fr": null,
+        "en": "Hint: Somewhere near the Pact Outpost in Dragonfall . Interact with the Torn Journal Page next to the Traveling Elonian Trader"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Interagir avec la Page de journal déchirée, juste à côté du Marchand elonien itinérant, près de l'Avant-poste du Pacte.",
         "en": "Interact with the Torn Journal Page, right next to the Traveling Elonian Trader, near the Pact Outpost."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 3,
        "name": "Vision of Enemies: Ley-Infused Enemy",
        "how": {
+        "fr": null,
+        "en": "Hint: Defeat a ley-infused enemy while holding a Memory Essence Encapsulator in your inventory. Complete any subevent of Bonus Event: Defeat the ley-infused champion"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Vaincre un ennemi infusé de lignes de faille en ayant un Encapsulateur d'essence mémorielle DANS l'inventaire. 💡 N'importe quel sous-événement de « Bonus Event: Defeat the ley-infused champion » convient — inutile de chercher un ennemi précis.",
         "en": "Defeat a ley-infused enemy while holding a Memory Essence Encapsulator IN your inventory. 💡 Any subevent of 'Bonus Event: Defeat the ley-infused champion' works — no need to hunt a specific foe."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 4,
        "name": "Vision of Landscapes: Dragonfall",
        "how": {
+        "fr": null,
+        "en": "Hint: Use your skyscale to access a rift near the Necrotic Coast within Dragonfall . West of Wailing Basin on the island at water level, near the lonely tree. You'll have to follow the volatile magic till the end rift. The magic must be collected in order"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Faille à l'ouest du Bassin des lamentations, sur l'île au niveau de l'eau, près de l'arbre isolé. Suivre la magie volatile jusqu'à la faille finale. ⚠ La magie doit être ramassée DANS L'ORDRE : en sauter une oblige à recommencer.",
         "en": "Rift west of Wailing Basin, on the island at water level, near the lonely tree. Follow the Volatile Magic to the end rift. ⚠ The magic must be collected IN ORDER: skipping one forces a restart."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 5,
        "name": "Vision of Equipment: Dragon Champion Armor",
        "how": {
+        "fr": null,
+        "en": "Hint: Complete one weight class of Tier 1 Mist Shard armor . Purchased from the Traveling Elonian Trader in Dragonfall"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Terminer une classe de poids complète de l'armure Éclat des Brumes de rang 1, achetée chez le Marchand elonien itinérant, à Chute draconique.",
         "en": "Complete one weight class of Tier 1 Mist Shard armor, purchased from the Traveling Elonian Trader in Dragonfall."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       },
       {
        "bit": 6,
        "name": "Vision of Action: Dragonfall",
        "how": {
+        "fr": null,
+        "en": "Hint: Collect strategic resources for the war effort. Complete one of: Collect Eternal Embers , Collect Melandru's Tears throughout Melandru's Lost Domain , Collect Soul Binders throughout the Underworld"
+       },
+       "how_verified": true,
+       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_dragonfall.html",
+       "how_jsx": {
         "fr": "Terminer UN SEUL des trois événements de groupe : Récolter des braises éternelles, Récolter les larmes de Melandru dans le Domaine perdu de Melandru, ou Récolter des lieurs d'âme dans les Enfers. 💡 Observation en jeu d'Antoine, absente du wiki : ces trois chaînes partent toutes du camp principal et suivent la colonisation de leur branche sur carte fraîche, après le méta — et surtout, ce n'est PAS la dernière étape qui crédite la collection, mais l'étape de RÉCOLTE, située à peu près au milieu de la chaîne. Inutile donc d'aller au bout : dès la récolte faite, c'est validé.",
         "en": "Complete just ONE of the three group events: Collect Eternal Embers, Collect Melandru's Tears throughout Melandru's Lost Domain, or Collect Soul Binders throughout the Underworld. 💡 Antoine's in-game observation, absent from the wiki: all three chains start at the main camp and follow their branch's colonisation on a fresh map, after the meta — and crucially, it is NOT the last step that credits the collection but the COLLECT step, roughly mid-chain. So there is no need to see it through: once the collecting is done, it ticks."
        },
-       "how_verified": false,
-       "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+       "how_fr_missing": true
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Visions of Dragonfall",
+      "prerequisite": null,
+      "unlock_item": {
+       "name": "Trance Stone",
+       "wiki": "Trance Stone"
+      },
+      "reward": null
+     },
+     "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+     "unlock_verified": true
     },
     "vis_brandstone": {
      "id": 4000,
@@ -56796,7 +57191,7 @@
    "name": "\"War Eternal\" Mastery",
    "threshold": 18,
    "source": "wiki:War_Eternal_(achievements)",
-   "verified": "2026-08-11",
+   "verified": "2026-09-01",
    "achievements": [
     [
      4673,
@@ -58299,6 +58694,230 @@
      "Rock Collector"
     ]
    ]
+  },
+  "2738": {
+   "name": "Path of the Ascension I: The Thrill of Battle",
+   "threshold": 11,
+   "source": "wiki:year_of_the_ascension_part_i",
+   "verified": "2026-09-01",
+   "achievements": [
+    [
+     2690,
+     "League Recruit"
+    ],
+    [
+     2707,
+     "League Conqueror—Recruit"
+    ],
+    [
+     2709,
+     "League Dominator—Recruit"
+    ],
+    [
+     2758,
+     "League Slayer—Recruit"
+    ],
+    [
+     2677,
+     "League Professional—Recruit"
+    ],
+    [
+     2698,
+     "League Top Stats—Recruit"
+    ],
+    [
+     2672,
+     "League Rank Earner—Recruit"
+    ],
+    [
+     2750,
+     "Essence Collector—Recruit"
+    ],
+    [
+     2737,
+     "Mystic Essence Collector—Recruit"
+    ],
+    [
+     2689,
+     "Wings of Glory—Recruit"
+    ],
+    [
+     2759,
+     "Daily League Participator—Recruit"
+    ]
+   ],
+   "notes": "Identifiants resolus par nom contre gw2_achievements_ref.json — la page de categorie PvP ne les expose pas. Pool et seuil lus sur le wiki."
+  },
+  "2752": {
+   "name": "Path of the Ascension II: Tapestry of Sacrifice",
+   "threshold": 11,
+   "source": "wiki:year_of_the_ascension_part_ii",
+   "verified": "2026-09-01",
+   "achievements": [
+    [
+     2687,
+     "Continuing Your Ascension"
+    ],
+    [
+     2744,
+     "League Elementalist—Veteran"
+    ],
+    [
+     2719,
+     "League Engineer—Veteran"
+    ],
+    [
+     2726,
+     "League Guardian—Veteran"
+    ],
+    [
+     2675,
+     "League Mesmer—Veteran"
+    ],
+    [
+     2693,
+     "League Necromancer—Veteran"
+    ],
+    [
+     2743,
+     "League Ranger—Veteran"
+    ],
+    [
+     2671,
+     "League Revenant—Veteran"
+    ],
+    [
+     2705,
+     "League Thief—Veteran"
+    ],
+    [
+     2716,
+     "League Warrior—Veteran"
+    ],
+    [
+     2720,
+     "League Veteran"
+    ],
+    [
+     2717,
+     "League Conqueror—Veteran"
+    ]
+   ],
+   "notes": "Identifiants resolus par nom contre gw2_achievements_ref.json — la page de categorie PvP ne les expose pas. Pool et seuil lus sur le wiki."
+  },
+  "2725": {
+   "name": "Path of the Ascension III: Monument of Legends",
+   "threshold": 11,
+   "source": "wiki:year_of_the_ascension_part_iii",
+   "verified": "2026-09-01",
+   "achievements": [
+    [
+     2741,
+     "Advance Your Ascension"
+    ],
+    [
+     2691,
+     "League Elementalist—Champion"
+    ],
+    [
+     2681,
+     "League Engineer—Champion"
+    ],
+    [
+     2722,
+     "League Guardian—Champion"
+    ],
+    [
+     2702,
+     "League Mesmer—Champion"
+    ],
+    [
+     2708,
+     "League Necromancer—Champion"
+    ],
+    [
+     2742,
+     "League Ranger—Champion"
+    ],
+    [
+     2703,
+     "League Revenant—Champion"
+    ],
+    [
+     2699,
+     "League Thief—Champion"
+    ],
+    [
+     2739,
+     "League Warrior—Champion"
+    ],
+    [
+     2747,
+     "League Champion"
+    ],
+    [
+     2684,
+     "League Conqueror—Champion"
+    ]
+   ],
+   "notes": "Identifiants resolus par nom contre gw2_achievements_ref.json — la page de categorie PvP ne les expose pas. Pool et seuil lus sur le wiki."
+  },
+  "2715": {
+   "name": "Path of the Ascension IV: Hymn of Glory",
+   "threshold": 11,
+   "source": "wiki:year_of_the_ascension_part_iv",
+   "verified": "2026-09-01",
+   "achievements": [
+    [
+     2736,
+     "Finish Your Ascension"
+    ],
+    [
+     2674,
+     "League Elementalist—Elite"
+    ],
+    [
+     2683,
+     "League Engineer—Elite"
+    ],
+    [
+     2757,
+     "League Guardian—Elite"
+    ],
+    [
+     2751,
+     "League Mesmer—Elite"
+    ],
+    [
+     2695,
+     "League Necromancer—Elite"
+    ],
+    [
+     2670,
+     "League Ranger—Elite"
+    ],
+    [
+     2745,
+     "League Revenant—Elite"
+    ],
+    [
+     2688,
+     "League Thief—Elite"
+    ],
+    [
+     2713,
+     "League Warrior—Elite"
+    ],
+    [
+     2706,
+     "League Elite"
+    ],
+    [
+     2701,
+     "League Conqueror—Elite"
+    ]
+   ],
+   "notes": "Identifiants resolus par nom contre gw2_achievements_ref.json — la page de categorie PvP ne les expose pas. Pool et seuil lus sur le wiki."
   }
  },
  "achievement_notes": {

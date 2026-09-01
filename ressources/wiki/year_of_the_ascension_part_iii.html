@@ -1,0 +1,1075 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Year of the Ascension Part III</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=Path_of_the_Ascension_III:_Monument_of_Legends&amp;redirect=no" class="mw-redirect" title="Path of the Ascension III: Monument of Legends">Path of the Ascension III: Monument of Legends</a>)</span></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>
+<a class="mw-selflink selflink">Year of the Ascension Part III</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category which is the third part leading to the acquisition of <a href="/wiki/The_Ascension" title="The Ascension">The Ascension</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Legendary_Backpacks.png" class="image"><img alt="Legendary Backpacks.png" src="/images/thumb/0/09/Legendary_Backpacks.png/48px-Legendary_Backpacks.png" decoding="async" width="48" height="48" srcset="/images/0/09/Legendary_Backpacks.png 1.5x" data-file-width="64" data-file-height="64"></a></div> Year of the Ascension Part III <small>(Player vs. Player)</small>
+</th>
+<th>Total achievements: 22
+</th>
+<th style="text-align: right; border-left-width: 0;">129<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr id="achievement2725" class="widget-account-achievement line" data-id="achievement2725">
+<th id="Path_of_the_Ascension_III:_Monument_of_Legends" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32"> Path of the Ascension III: Monument of Legends
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">18<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2725">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete all 11 Path of Ascension III achievements.<dl><dd><b>Reward:</b>  <span class="item-icon thumb-icon"><a href="/wiki/Monument_of_Legends" title="Monument of Legends"><img alt="Monument of Legends.png" src="/images/thumb/0/07/Monument_of_Legends.png/20px-Monument_of_Legends.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/0/07/Monument_of_Legends.png/30px-Monument_of_Legends.png 1.5x, /images/thumb/0/07/Monument_of_Legends.png/40px-Monument_of_Legends.png 2x" data-file-width="64" data-file-height="64"></a></span>&nbsp;<a href="/wiki/Monument_of_Legends" title="Monument of Legends">Monument of Legends</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2725">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 5 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2725">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 11 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2741" class="widget-account-achievement line" data-id="achievement2741">
+<th id="Advance_Your_Ascension" style="text-align:left">Advance Your Ascension
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2741">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the meta-achievement Path of Ascension II: Tapestry of Sacrifice.<span style="color:#686868; display: block;"><i>Play in ranked matches to advance achievements.</i></span><dl><dd><b>Prerequisite:</b> Advance Your Ascension</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Complete the Meta-achievement Path of Ascension II: Tapestry of Sacrifice
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2691" class="widget-account-achievement line" data-id="achievement2691">
+<th id="League_Elementalist—Champion" style="text-align:left">League Elementalist—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2691">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as an elementalist.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as an Elementalist
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2691">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as an Elementalist
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2691">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as an Elementalist
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2691">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as an Elementalist
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2681" class="widget-account-achievement line" data-id="achievement2681">
+<th id="League_Engineer—Champion" style="text-align:left">League Engineer—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2681">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as an engineer.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as an Engineer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2681">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as an Engineer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2681">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as an Engineer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2681">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as an Engineer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2722" class="widget-account-achievement line" data-id="achievement2722">
+<th id="League_Guardian—Champion" style="text-align:left">League Guardian—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2722">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a guardian.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Guardian
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2722">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Guardian
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2722">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Guardian
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2722">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Guardian
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2702" class="widget-account-achievement line" data-id="achievement2702">
+<th id="League_Mesmer—Champion" style="text-align:left">League Mesmer—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2702">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a mesmer.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Mesmer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2702">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Mesmer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2702">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Mesmer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2702">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Mesmer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2708" class="widget-account-achievement line" data-id="achievement2708">
+<th id="League_Necromancer—Champion" style="text-align:left">League Necromancer—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2708">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a necromancer.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Necromancer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2708">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Necromancer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2708">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Necromancer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2708">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Necromancer
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2742" class="widget-account-achievement line" data-id="achievement2742">
+<th id="League_Ranger—Champion" style="text-align:left">League Ranger—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2742">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a ranger.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Ranger
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2742">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Ranger
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2742">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Ranger
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2742">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Ranger
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2703" class="widget-account-achievement line" data-id="achievement2703">
+<th id="League_Revenant—Champion" style="text-align:left">League Revenant—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2703">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a revenant.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Revenant
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2703">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Revenant
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2703">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Revenant
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2703">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Revenant
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2699" class="widget-account-achievement line" data-id="achievement2699">
+<th id="League_Thief—Champion" style="text-align:left">League Thief—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2699">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a thief.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Thief
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2699">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Thief
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2699">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Thief
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2699">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Thief
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2739" class="widget-account-achievement line" data-id="achievement2739">
+<th id="League_Warrior—Champion" style="text-align:left">League Warrior—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2739">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Win 7 ranked matches as a warrior.<span style="color:#686868; display: block;"><i>Completing this achievement advances the League Profession—Champion achievement.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ranked Matches Won as a Warrior
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2739">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Ranked Matches Won as a Warrior
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2739">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">5 Ranked Matches Won as a Warrior
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2739">
+<td style="width:220px; vertical-align:top;" class="white">7 Ranked Matches Won as a Warrior
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2747" class="widget-account-achievement line" data-id="achievement2747">
+<th id="League_Champion" style="text-align:left">League Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2747">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete 3 <a href="/wiki/PvP_League#Rewards" title="PvP League">league tracks</a>.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 League Tracks Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2747">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">2 League Tracks Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2747">
+<td style="width:220px; vertical-align:top;" class="offwhite">3 League Tracks Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2684" class="widget-account-achievement line" data-id="achievement2684">
+<th id="League_Conqueror—Champion" style="text-align:left">League Conqueror—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Win 45 ranked matches.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Conqueror—Champion</dd></dl>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">1 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">5 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">10 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">15 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">20 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">25 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">30 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">35 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">40 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2684">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">45 Ranked Matches Won
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr>
+<tr id="achievement2724" class="widget-account-achievement line" data-id="achievement2724">
+<th id="League_Dominator—Champion" style="text-align:left">League Dominator—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2724">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Win 5 ranked matches in a day.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Dominator—Champion</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">5 Ranked Matches Won in a Day
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2711" class="widget-account-achievement line" data-id="achievement2711">
+<th id="League_Slayer—Champion" style="text-align:left">League Slayer—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">14<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Kill 120 players in ranked matches.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Slayer—Champion</dd></dl>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">1 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">5 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">10 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">20 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">30 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">40 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">50 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">60 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">70 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">80 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">90 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">100 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">110 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2711">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">120 Kills in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr>
+<tr id="achievement2682" class="widget-account-achievement line" data-id="achievement2682">
+<th id="League_Professional—Champion" style="text-align:left">League Professional—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2682">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Complete 3 profession achievements.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Professional—Champion</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Professional Achievements Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2682">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">2 Professional Achievements Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2682">
+<td style="width:220px; vertical-align:top;" class="offwhite">3 Professional Achievements Completed
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2686" class="widget-account-achievement line" data-id="achievement2686">
+<th id="League_Top_Stats—Champion" style="text-align:left">League Top Stats—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Earn 75 top stats in ranked matches.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Top Stats—Champion</dd></dl>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">1 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">5 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">10 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">20 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">30 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">40 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">50 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">60 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">70 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2686">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">75 Top Stats Earned in Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr>
+<tr id="achievement2748" class="widget-account-achievement line" data-id="achievement2748">
+<th id="League_Rank_Earner—Champion" style="text-align:left">League Rank Earner—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">16<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Obtain 80,000 rank points from playing ranked matches.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> League Rank Earner—Veteran</dd></dl>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">5,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">10,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">15,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">20,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">25,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">30,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">35,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">40,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">45,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">50,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">55,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">60,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">65,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">70,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">75,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2748">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">80,000 Rank Points Earned from Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr>
+<tr id="achievement2685" class="widget-account-achievement line" data-id="achievement2685">
+<th id="Essence_Collector—Champion" style="text-align:left">Essence Collector—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2685">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Purchase 1 <a href="/wiki/Essence_of_Discipline" title="Essence of Discipline">Essence of Discipline</a> from the League Vendor.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> Essence Collector—Veteran</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Essence of Discipline Purchased
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2753" class="widget-account-achievement line" data-id="achievement2753">
+<th id="Mystic_Essence_Collector—Champion" style="text-align:left">Mystic Essence Collector—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2753">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Obtain by combining the following items in the mystic forge: Essence of Discipline, 20 Armored Scales, 50 Large Scales, and 250 Dragonite Ore.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> Mystic Essence Collector—Veteran</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Essence of Discipline Obtained
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2678" class="widget-account-achievement line" data-id="achievement2678">
+<th id="Wings_of_Glory—Champion" style="text-align:left">Wings of Glory—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2678">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Purchase 1 Champion's Wings of Glory from the League Vendor.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> Wings of Glory—Veteran</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Champion's Wings of Glory Purchased
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr id="achievement2749" class="widget-account-achievement line" data-id="achievement2749">
+<th id="Daily_League_Participator—Champion" style="text-align:left">Daily League Participator—Champion
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">15<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Increments each day after playing in 3 ranked matches.<span style="color:#686868; display: block;"><i>Completing this achievement awards an item for Path of the Ascension III: Monument of Legends.</i></span><dl><dd><b>Prerequisite:</b> Daily League Participator—Veteran</dd></dl>
+</td>
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">1 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">2 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="offwhite">3 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;" class="white">4 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td colspan="2" style="vertical-align:top;" class="offwhite">
+<table class="expandable" style="width: 100%; border-spacing: 0;">
+
+<tbody><tr><td colspan="2">Show more tiers
+</td></tr>
+<tr>
+<td style="min-width:200px; max-width:300px; vertical-align:top;">5 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">6 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">7 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">8 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">9 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">10 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">11 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">12 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">13 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width:200px; max-width:300px; vertical-align:top; height: 1em;">14 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement2749">
+<td style="min-width: 200px; max-width: 300px; vertical-align: top;">15 Days of Completing 3 Ranked Matches
+</td>
+<td style="width:40px; text-align:right; vertical-align:top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45"></a></span>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<hr style="margin: 1em 0em; clear: both;">
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">PvP
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/PvP_Season" title="PvP Season">PvP Season</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">PvP Maps
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Forest_of_Niflhel_(achievements)" title="Forest of Niflhel (achievements)">Forest of Niflhel</a></li>
+<li><a href="/wiki/Legacy_of_the_Foefire_(achievements)" title="Legacy of the Foefire (achievements)">Legacy of the Foefire</a></li>
+<li><a href="/wiki/Revenge_of_the_Capricorn_(achievements)" title="Revenge of the Capricorn (achievements)">Revenge of the Capricorn</a></li>
+<li><a href="/wiki/Battle_of_Kyhlo_(achievements)" title="Battle of Kyhlo (achievements)">Battle of Kyhlo</a></li>
+<li><a href="/wiki/Temple_of_the_Silent_Storm_(achievements)" title="Temple of the Silent Storm (achievements)">Temple of the Silent Storm</a></li>
+<li><a href="/wiki/Battle_of_Champion%27s_Dusk_(achievements)" title="Battle of Champion's Dusk (achievements)">Battle of Champion's Dusk</a></li>
+<li><a href="/wiki/Spirit_Watch_(achievements)" title="Spirit Watch (achievements)">Spirit Watch</a></li>
+<li><a href="/wiki/Skyhammer_(achievements)" title="Skyhammer (achievements)">Skyhammer</a></li>
+<li><a href="/wiki/Djinn%27s_Dominion_(achievements)" title="Djinn's Dominion (achievements)">Djinn's Dominion</a></li>
+<li><a href="/wiki/Eternal_Coliseum_(achievements)" title="Eternal Coliseum (achievements)">Eternal Coliseum</a></li>
+<li><a href="/wiki/Sunjiang_Backstreets_(achievements)" title="Sunjiang Backstreets (achievements)">Sunjiang Backstreets</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">The Ascension
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Year_of_the_Ascension_Part_I" title="Year of the Ascension Part I">Year of the Ascension Part I</a></li>
+<li><a href="/wiki/Year_of_the_Ascension_Part_II" title="Year of the Ascension Part II">Year of the Ascension Part II</a></li>
+<li><a class="mw-selflink selflink">Year of the Ascension Part III</a></li>
+<li><a href="/wiki/Year_of_the_Ascension_Part_IV" title="Year of the Ascension Part IV">Year of the Ascension Part IV</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">PvP
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/PvP_Conqueror" title="PvP Conqueror">PvP Conqueror</a></li>
+<li><a href="/wiki/Profession_Achievements" title="Profession Achievements">Profession Achievements</a></li>
+<li><a href="/wiki/PvP_Champion_Series" title="PvP Champion Series">PvP Champion Series</a></li>
+<li><a href="/wiki/Legacy_PvP_Seasons" title="Legacy PvP Seasons">Legacy PvP Seasons</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;">Activity
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Sanctum_Sprint_(achievements)" title="Sanctum Sprint (achievements)">Sanctum Sprint</a></li>
+<li><a href="/wiki/Crab_Toss_(achievements)" title="Crab Toss (achievements)">Crab Toss</a></li>
+<li><a href="/wiki/Keg_Brawl_(achievements)" title="Keg Brawl (achievements)">Keg Brawl</a></li>
+<li><a href="/wiki/Southsun_Survival_(achievements)" title="Southsun Survival (achievements)">Southsun Survival</a></li>
+<li><a href="/wiki/Belcher%27s_Bluff_(achievements)" title="Belcher's Bluff (achievements)">Belcher's Bluff</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260901131014
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.557 seconds
+Real time usage: 0.695 seconds
+Preprocessor visited node count: 15557/1000000
+Post‐expand include size: 224311/2097152 bytes
+Template argument size: 32030/2097152 bytes
+Highest expansion depth: 11/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  537.589      1 -total
+ 71.00%  381.703     22 Template:Achievement_table_row
+ 14.12%   75.892      1 Template:Achievement_nav
+ 11.44%   61.490      1 Template:Achievement_category_infobox
+  4.64%   24.937     21 Template:Ifexists
+  4.26%   22.903    138 Template:Ap
+  3.07%   16.493      1 Template:Achievement_table_header
+  1.96%   10.510      1 Template:Infobox_status
+  1.27%    6.804     25 Template:Achievement_nav_result_format
+  0.78%    4.201      1 Template:Account_achievements_widget
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:169410-0!dateformat=default and timestamp 20260901131013 and revision id 3115980.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Year_of_the_Ascension_Part_III&amp;oldid=3115980#Path_of_the_Ascension_III:_Monument_of_Legends">https://wiki.guildwars2.com/index.php?title=Year_of_the_Ascension_Part_III&amp;oldid=3115980#Path_of_the_Ascension_III:_Monument_of_Legends</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		
