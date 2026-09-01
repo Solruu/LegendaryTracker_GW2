@@ -211,6 +211,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `rodgort_i_the_experimental_torch.html` | Rodgort I: The Experimental Torch | collection, 11 objets | 2026-09-01 |
 | `rodgort_ii_the_perfected_torch.html` | Rodgort II: The Perfected Torch | collection, 12 objets | 2026-09-01 |
 | `rodgort_iii_rodgorts_flame.html` | Rodgort III: Rodgort's Flame | collection, 31 objets | 2026-09-01 |
+| `the_bifrost.html` | The Bifrost | article complet — table de recette en cascade | 2026-09-01 |
+| `the_bifrost_i_the_experimental_staff.html` | The Bifrost I: The Experimental Staff | collection, 16 objets | 2026-09-01 |
+| `the_bifrost_ii_the_perfected_staff.html` | The Bifrost II: The Perfected Staff | collection, 14 objets | 2026-09-01 |
+| `the_bifrost_iii_the_legend.html` | The Bifrost III: The Legend | collection, 32 objets | 2026-09-01 |
+| `the_dreamer.html` | The Dreamer | article complet — table de recette en cascade | 2026-09-01 |
+| `the_dreamer_i_the_experimental_short_bow.html` | The Dreamer I: The Experimental Short Bow | collection, 14 objets | 2026-09-01 |
+| `the_dreamer_ii_the_perfected_short_bow.html` | The Dreamer II: The Perfected Short Bow | collection, 16 objets | 2026-09-01 |
+| `the_dreamer_iii_the_lover.html` | The Dreamer III: The Lover | collection, 30 objets | 2026-09-01 |
+| `the_flameseeker_prophecies.html` | The Flameseeker Prophecies | article complet — table de recette en cascade | 2026-09-01 |
+| `the_flameseeker_prophecies_i_the_experimental_shield.html` | The Flameseeker Prophecies I: The Experimental Shield | collection, 14 objets | 2026-09-01 |
+| `the_flameseeker_prophecies_ii_the_perfected_shield.html` | The Flameseeker Prophecies II: The Perfected Shield | collection, 13 objets | 2026-09-01 |
+| `the_flameseeker_prophecies_iii_the_chosen.html` | The Flameseeker Prophecies III: The Chosen | collection, 32 objets | 2026-09-01 |
+| `the_juggernaut.html` | The Juggernaut | article complet — table de recette en cascade | 2026-09-01 |
+| `the_juggernaut_i_the_experimental_hammer.html` | The Juggernaut I: The Experimental Hammer | collection, 32 objets | 2026-09-01 |
+| `the_juggernaut_ii_the_perfected_hammer.html` | The Juggernaut II: The Perfected Hammer | collection, 16 objets | 2026-09-01 |
+| `the_juggernaut_iii_the_colossus.html` | The Juggernaut III: The Colossus | collection, 32 objets | 2026-09-01 |
+| `the_minstrel.html` | The Minstrel | article complet — table de recette en cascade | 2026-09-01 |
+| `the_minstrel_i_the_experimental_focus.html` | The Minstrel I: The Experimental Focus | collection, 15 objets | 2026-09-01 |
+| `the_minstrel_ii_the_perfected_focus.html` | The Minstrel II: The Perfected Focus | collection, 12 objets | 2026-09-01 |
+| `the_minstrel_iii_the_bard.html` | The Minstrel III: The Bard | collection, 33 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -265,7 +285,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **181 captures, 181 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **201 captures, 201 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore
