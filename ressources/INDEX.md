@@ -259,6 +259,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `legendary_weapon_the_moot.html` | Legendary Weapon: The Moot | collection, 16 objets | 2026-09-01 |
 | `legendary_weapon_the_predator.html` | Legendary Weapon: The Predator | collection, 16 objets | 2026-09-01 |
 | `legendary_weapon_twilight.html` | Legendary Weapon: Twilight | collection, 16 objets | 2026-09-01 |
+| `aurenes_argument.html` | Aurene's Argument | article — Pistol, recette et précurseur Dragon's Argument | 2026-09-01 |
+| `aurenes_bite.html` | Aurene's Bite | article — Greatsword, recette et précurseur Dragon's Bite | 2026-09-01 |
+| `aurenes_breath.html` | Aurene's Breath | article — Torch, recette et précurseur Dragon's Breath | 2026-09-01 |
+| `aurenes_claw.html` | Aurene's Claw | article — Dagger, recette et précurseur Dragon's Claw | 2026-09-01 |
+| `aurenes_fang.html` | Aurene's Fang | article — Sword, recette et précurseur Dragon's Fang | 2026-09-01 |
+| `aurenes_flight.html` | Aurene's Flight | article — Longbow, recette et précurseur Dragon's Flight | 2026-09-01 |
+| `aurenes_gaze.html` | Aurene's Gaze | article — Focus, recette et précurseur Dragon's Gaze | 2026-09-01 |
+| `aurenes_insight.html` | Aurene's Insight | article — Staff, recette et précurseur Dragon's Insight | 2026-09-01 |
+| `aurenes_persuasion.html` | Aurene's Persuasion | article — Rifle, recette et précurseur Dragon's Persuasion | 2026-09-01 |
+| `aurenes_rending.html` | Aurene's Rending | article — Axe, recette et précurseur Dragon's Rending | 2026-09-01 |
+| `aurenes_scale.html` | Aurene's Scale | article — Shield, recette et précurseur Dragon's Scale | 2026-09-01 |
+| `aurenes_tail.html` | Aurene's Tail | article — Mace, recette et précurseur Dragon's Tail | 2026-09-01 |
+| `aurenes_voice.html` | Aurene's Voice | article — Warhorn, recette et précurseur Dragon's Voice | 2026-09-01 |
+| `aurenes_weight.html` | Aurene's Weight | article — Hammer, recette et précurseur Dragon's Weight | 2026-09-01 |
+| `aurenes_wing.html` | Aurene's Wing | article — Short bow, recette et précurseur Dragon's Wing | 2026-09-01 |
+| `aurenes_wisdom.html` | Aurene's Wisdom | article — Scepter, recette et précurseur Dragon's Wisdom | 2026-09-01 |
+| `claw_of_the_khan_ur.html` | Claw of the Khan-Ur | article complet — table de recette en cascade | 2026-09-01 |
+| `eureka.html` | Eureka | article complet — table de recette en cascade | 2026-09-01 |
+| `exordium.html` | Exordium | article complet — table de recette en cascade | 2026-09-01 |
+| `flames_of_war.html` | Flames of War | article complet — table de recette en cascade | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -313,7 +333,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **229 captures, 229 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **249 captures, 249 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

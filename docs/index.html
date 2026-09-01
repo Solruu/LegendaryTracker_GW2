@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v195",
+    "version": "v196",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1734,7 +1734,8 @@ const SOURCES_DB = {
     "changelog_v192": "Chuka and Champawat bouclee : ses neuf collections, 127 etapes. Avec Eternity, Astralaria, HOPE, Nevermore et Bolt, les quatre gen2 a collections sont faites. Les onze tanieres de tigre du succes Spirit of the Tiger entrent dans le how de l'etape Mini Tiger Spirit, la ou elle vit deja — sept des onze sont sur des cartes que le Naturalist's Journal visite aussi, mais le wiki donne des reperes differents de part et d'autre, donc l'identite des tanieres n'est PAS affirmee. Le nom d'une collection est bilingue, sans exception. Quatre le portaient en chaine simple contre 167 en couple fr/en — Aurora: Awakening, Aurora II: Empowering, Vision I: Awakening, Vision II: Farsight. Le francais vient du dump des succes, pas d'une traduction maison. Une erreur d'identifiant est tombee au passage : aurora_1 pointait sur le succes 4027, qui est « Library Detective » et n'a rien a voir. Aurora: Awakening est le 3522. La correction avait ete faite cote serveur Flask en mai et n'avait jamais atteint les sources. Un anglais recopie dans le champ francais est aussi rattrape : stella_forge_guard portait son nom anglais des deux cotes. Le succes 9330 est posterieur au dump, donc le francais reste null — c'est une absence, pas une traduction.",
     "changelog_v193": "Sunrise et Twilight : leurs six collections numerotees, 127 conseils et 123 noms repris du wiki, plus les six blocs unlock. Il manque leurs paliers IV — Legendary Weapon: Sunrise et Legendary Weapon: Twilight, 4 etapes sur 16 chacun, les douze autres pointant deja vers craft_components. Aucun renvoi component ni legendary sur les 127 etapes : verifie contre les 319 composants. La chaine d'Eternity est desormais complete de bout en bout : ses deux renvois legendary pointent vers gen1_sunrise et gen1_twilight, dont les precurseurs Dawn et Dusk sont eux-memes documentes palier par palier. C'est la seule arme du tracker qui se forge depuis d'autres armes. Runestone : Sunrise et Twilight nomment l'Icy Runestone, comme Bolt. Trois temoins gen1, quatre gen2, aucune Mystic Runestone dans les sept pages lues a ce jour.",
     "changelog_v194": "Les vingt armes gen1 sont documentees. 919 conseils et 919 noms repris du wiki, 79 blocs unlock, sur les 70 collections encore ouvertes — les trois paliers numerotes de chaque arme plus son palier Legendary Weapon:. Les etapes d'armes passent de 1040 non couvertes a 4. Ces 4 restantes sont Legendary Weapon: Twilight, dont la capture manque au paquet final : 19 pages recues sur 20. C'est la seule collection d'arme du tracker sans capture. Les paliers Legendary Weapon: se ventilent comme prevu : douze de leurs seize etapes retombent sur craft_components deja documentes (Gift of Fortune, Gift of Mastery, Bloodstone Shard, Mystic Clover, Icy Runestone...), les quatre ou cinq autres sont propres a l'arme et recoivent un conseil. Runestone : les vingt paliers IV nomment l'Icy Runestone, zero Mystic. Avec les quatre gen2 a collections deja lues, cela fait vingt-quatre armes concordantes et aucun contre-exemple. La question reste ouverte pour les douze gen2 sans collection, seules non lues.",
-    "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity."
+    "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity.",
+    "changelog_v196": "Vingt articles lus : les 16 gen3 et 4 des 12 gen2 sans collection. Le patron generationnel qui remplissait leurs fiches etait faux presque partout. 14 precurseurs, 17 gift_unique et 10 slot corriges, chacun contre l'encadre Recipes et l'infobox de la page. La gen3 etait la plus atteinte : douze de ses seize fiches portaient des precurseurs inventes de la forme « Focus of Aurene's Wisdom » alors que le wiki donne « Dragon's Argument » — le precurseur reprend le suffixe de l'arme, sans exception. Les types etaient decales en cascade : Argument etait donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus, Insight Scepter au lieu de Staff. Seules Fang, Flight, Tail et Wing etaient justes — les quatre que v182 avait deja corrigees. Singularite relevee et conservee : Aurene's Voice se forge avec le « Gift of Aurene's Horn », pas « Gift of Aurene's Voice ». C'est la seule des seize a ne pas suivre son propre nom. RUNESTONE — la question est tranchee. Les 16 gen3 et les 4 gen2 lues nomment 100 Mystic Runestones. Les 4 gen2 a collections nomment l'Icy. La ligne de partage n'est donc pas la generation mais le mode d'obtention du precurseur : collection d'achievements -> Icy, achat chez Hobbs -> Mystic. shared_components corrige pour les quatre armes a collections ; needed_for des deux composants suit. Le grand total est inchange, les deux objets s'echangeant 1 pour 1 au meme prix."
   },
   "meta_events": {
     "vb": {
@@ -2996,7 +2997,11 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_prescience",
         "gift_of_sentience",
-        "gift_of_the_world"
+        "gift_of_the_world",
+        "gen2_astralaria",
+        "gen2_hope",
+        "gen2_nevermore",
+        "gen2_chuka_and_champawat"
       ],
       "farmable": true,
       "sources": [
@@ -16676,7 +16681,10 @@ const SOURCES_DB = {
       "fr": "Gen2 utilise Mystic Runestone (1g chez Miyani) au lieu des Icy Runestone gen1.",
       "en": "Gen2 uses Mystic Runestone (1g from Miyani) instead of gen1 Icy Runestones."
     },
-    "expansion_required": "HoT (ou PoF pour Gift of Desert Mastery)"
+    "expansion_required": "HoT (ou PoF pour Gift of Desert Mastery)",
+    "runestone_erreur": null,
+    "runestone": "Deux runestones coexistent en gen2, et la generation ne suffit pas a trancher. Les QUATRE armes a collections — Astralaria, HOPE, Nevermore, Chuka and Champawat — consomment 100 Icy Runestones, comme toute la gen1. Les DOUZE armes dont le precurseur s'achete chez Grandmaster Craftsman Hobbs consomment 100 Mystic Runestones, comme la gen3. La ligne de partage est donc le mode d'obtention du precurseur, pas la generation. Les deux objets s'echangent 1 pour 1 chez le meme marchand au meme prix : le grand total ne bouge pas, seule l'etiquette etait fausse.",
+    "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic"
   },
   "gen3_craft_note": {
     "recipe": "MF : Précurseur + Gift of [Aurene's Weapon] + Gift of Jade Mastery + Draconic Tribute",
@@ -41556,7 +41564,7 @@ const SOURCES_DB = {
         "gift_of_desert_mastery",
         "mystic_tribute",
         "mystic_coin",
-        "mystic_runestone",
+        "icy_runestone",
         "legendary_shard_gen2"
       ],
       "precursor": "The Mechanism",
@@ -43134,7 +43142,8 @@ const SOURCES_DB = {
       },
       "collections_order_ref": "tableaux « Collection items » des quatre paliers",
       "precursor_erreur": "The Device",
-      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
+      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
+      "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic"
     },
     "gen2_hope": {
       "name": "HOPE",
@@ -43161,7 +43170,7 @@ const SOURCES_DB = {
         "gift_of_desert_mastery",
         "mystic_tribute",
         "mystic_coin",
-        "mystic_runestone",
+        "icy_runestone",
         "legendary_shard_gen2"
       ],
       "precursor": "Prototype",
@@ -44783,7 +44792,8 @@ const SOURCES_DB = {
         }
       },
       "precursor_erreur": "The Mechanism",
-      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
+      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
+      "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic"
     },
     "gen2_nevermore": {
       "name": "Nevermore",
@@ -44810,7 +44820,7 @@ const SOURCES_DB = {
         "gift_of_desert_mastery",
         "mystic_tribute",
         "mystic_coin",
-        "mystic_runestone",
+        "icy_runestone",
         "legendary_shard_gen2"
       ],
       "precursor": "The Raven Staff",
@@ -46445,7 +46455,8 @@ const SOURCES_DB = {
         }
       },
       "precursor_erreur": "Unfinished Raven Staff",
-      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
+      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
+      "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic"
     },
     "gen2_chuka_and_champawat": {
       "name": "Chuka and Champawat",
@@ -46472,7 +46483,7 @@ const SOURCES_DB = {
         "gift_of_desert_mastery",
         "mystic_tribute",
         "mystic_coin",
-        "mystic_runestone",
+        "icy_runestone",
         "legendary_shard_gen2"
       ],
       "precursor": "Tigris",
@@ -48271,7 +48282,8 @@ const SOURCES_DB = {
         }
       },
       "precursor_erreur": "Tiger's Empowerment",
-      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html"
+      "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
+      "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic"
     },
     "gen2_eureka": {
       "name": "Eureka",
@@ -48280,8 +48292,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Eureka",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
+        "en": "Mystic Forge: 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
       },
       "shared_components": [
         "airship_part",
@@ -48301,19 +48313,21 @@ const SOURCES_DB = {
         "mystic_runestone",
         "legendary_shard_gen2"
       ],
-      "precursor": "Spark of Eureka",
+      "precursor": "Endeavor",
       "gift_unique": "Gift of Eureka",
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74328,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Spark of Eureka",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_shooshadoo": {
       "name": "Shooshadoo",
@@ -48364,8 +48378,8 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Exordium",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
+        "en": "Mystic Forge: 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
       },
       "shared_components": [
         "airship_part",
@@ -48385,19 +48399,21 @@ const SOURCES_DB = {
         "mystic_runestone",
         "legendary_shard_gen2"
       ],
-      "precursor": "Claw of Resolution",
+      "precursor": "Exitare",
       "gift_unique": "Gift of Exordium",
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
       "armory_api_id": 74334,
       "armory_max_count": 2,
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Claw of Resolution",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_xiuquatl": {
       "name": "Xiuquatl",
@@ -48448,8 +48464,8 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene%27s_Claw",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Claw + 1 Dragon's Claw + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Claw + 1 Dragon's Claw + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48462,30 +48478,34 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Dagger of Aurene's Rending",
-      "gift_unique": "Gift of Aurene's Rending",
+      "precursor": "Dragon's Claw",
+      "gift_unique": "Gift of Aurene's Claw",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Dagger of Aurene's Rending",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Rending",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_bite": {
       "name": "Aurene's Bite",
-      "slot": "weapon (Sword)",
+      "slot": "weapon (Greatsword)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Bite",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Bite + 1 Dragon's Bite + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Bite + 1 Dragon's Bite + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48498,30 +48518,36 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Sword of Aurene's Rending",
-      "gift_unique": "Gift of Aurene's Rending",
+      "precursor": "Dragon's Bite",
+      "gift_unique": "Gift of Aurene's Bite",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 4,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Sword of Aurene's Rending",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Rending",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Sword)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_weight": {
       "name": "Aurene's Weight",
-      "slot": "weapon (Mace)",
+      "slot": "weapon (Hammer)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Weight",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Weight + 1 Dragon's Weight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Weight + 1 Dragon's Weight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48534,30 +48560,36 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Mace of Aurene's Resolve",
-      "gift_unique": "Gift of Aurene's Resolve",
+      "precursor": "Dragon's Weight",
+      "gift_unique": "Gift of Aurene's Weight",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Mace of Aurene's Resolve",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Resolve",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Mace)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_gaze": {
       "name": "Aurene's Gaze",
-      "slot": "weapon (Pistol)",
+      "slot": "weapon (Focus)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Gaze",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Gaze + 1 Dragon's Gaze + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Gaze + 1 Dragon's Gaze + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48570,30 +48602,36 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Pistol of Aurene's Resolve",
-      "gift_unique": "Gift of Aurene's Resolve",
+      "precursor": "Dragon's Gaze",
+      "gift_unique": "Gift of Aurene's Gaze",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Pistol of Aurene's Resolve",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Resolve",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Pistol)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_insight": {
       "name": "Aurene's Insight",
-      "slot": "weapon (Scepter)",
+      "slot": "weapon (Staff)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Insight",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Resolve + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Insight + 1 Dragon's Insight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Insight + 1 Dragon's Insight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48606,30 +48644,36 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Scepter of Aurene's Resolve",
-      "gift_unique": "Gift of Aurene's Resolve",
+      "precursor": "Dragon's Insight",
+      "gift_unique": "Gift of Aurene's Insight",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Scepter of Aurene's Resolve",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Resolve",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Scepter)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_argument": {
       "name": "Aurene's Argument",
-      "slot": "weapon (Focus)",
+      "slot": "weapon (Pistol)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Argument",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Argument + 1 Dragon's Argument + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Argument + 1 Dragon's Argument + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48642,30 +48686,36 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Focus of Aurene's Wisdom",
-      "gift_unique": "Gift of Aurene's Wisdom",
+      "precursor": "Dragon's Argument",
+      "gift_unique": "Gift of Aurene's Argument",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Focus of Aurene's Wisdom",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Wisdom",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Focus)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_persuasion": {
       "name": "Aurene's Persuasion",
-      "slot": "weapon (Torch)",
+      "slot": "weapon (Rifle)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Persuasion",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Persuasion + 1 Dragon's Persuasion + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Persuasion + 1 Dragon's Persuasion + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48678,20 +48728,26 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Torch of Aurene's Wisdom",
-      "gift_unique": "Gift of Aurene's Wisdom",
+      "precursor": "Dragon's Persuasion",
+      "gift_unique": "Gift of Aurene's Persuasion",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Torch of Aurene's Wisdom",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Wisdom",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Torch)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_voice": {
       "name": "Aurene's Voice",
@@ -48700,8 +48756,8 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene%27s_Voice",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Wisdom + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Horn + 1 Dragon's Voice + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Horn + 1 Dragon's Voice + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48714,7 +48770,89 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Warhorn of Aurene's Wisdom",
+      "precursor": "Dragon's Voice",
+      "gift_unique": "Gift of Aurene's Horn",
+      "gen": "gen3",
+      "armory_api_id": null,
+      "armory_max_count": 2,
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "collections_none": {
+        "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
+        "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
+      },
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Warhorn of Aurene's Wisdom",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Wisdom",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
+    },
+    "gen3_aurenes_scale": {
+      "name": "Aurene's Scale",
+      "slot": "weapon (Shield)",
+      "farm": "PvE mixte (EoD)",
+      "expansion": "EoD",
+      "wiki": "Aurene%27s_Scale",
+      "recipe": {
+        "fr": "Forge mystique : 1 Gift of Aurene's Scale + 1 Dragon's Scale + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Scale + 1 Dragon's Scale + 1 Gift of Jade Mastery + 1 Draconic Tribute"
+      },
+      "shared_components": [
+        "mystic_coin",
+        "gift_of_cantha",
+        "antique_summoning_stone",
+        "jade_runestone",
+        "gift_of_the_dragon_empire",
+        "gift_of_jade_mastery",
+        "draconic_tribute",
+        "memories_of_aurene",
+        "legendary_shard_gen3"
+      ],
+      "precursor": "Dragon's Scale",
+      "gift_unique": "Gift of Aurene's Scale",
+      "gen": "gen3",
+      "armory_api_id": null,
+      "armory_max_count": 2,
+      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
+      "names_unverified": true,
+      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
+      "collections_none": {
+        "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
+        "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
+      },
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Longbow of Aurene's Power",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Power",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Longbow)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
+    },
+    "gen3_aurenes_wisdom": {
+      "name": "Aurene's Wisdom",
+      "slot": "weapon (Scepter)",
+      "farm": "PvE mixte (EoD)",
+      "expansion": "EoD",
+      "wiki": "Aurene%27s_Wisdom",
+      "recipe": {
+        "fr": "Forge mystique : 1 Gift of Aurene's Wisdom + 1 Dragon's Wisdom + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Wisdom + 1 Dragon's Wisdom + 1 Gift of Jade Mastery + 1 Draconic Tribute"
+      },
+      "shared_components": [
+        "mystic_coin",
+        "gift_of_cantha",
+        "antique_summoning_stone",
+        "jade_runestone",
+        "gift_of_the_dragon_empire",
+        "gift_of_jade_mastery",
+        "draconic_tribute",
+        "memories_of_aurene",
+        "legendary_shard_gen3"
+      ],
+      "precursor": "Dragon's Wisdom",
       "gift_unique": "Gift of Aurene's Wisdom",
       "gen": "gen3",
       "armory_api_id": null,
@@ -48722,94 +48860,28 @@ const SOURCES_DB = {
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
-    },
-    "gen3_aurenes_scale": {
-      "name": "Aurene's Scale",
-      "slot": "weapon (Longbow)",
-      "farm": "PvE mixte (EoD)",
-      "expansion": "EoD",
-      "wiki": "Aurene%27s_Scale",
-      "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
-      },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
-      "precursor": "Longbow of Aurene's Power",
-      "gift_unique": "Gift of Aurene's Power",
-      "gen": "gen3",
-      "armory_api_id": null,
-      "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-      "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
-      "collections_none": {
-        "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
-        "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
-      },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
-    },
-    "gen3_aurenes_wisdom": {
-      "name": "Aurene's Wisdom",
-      "slot": "weapon (Rifle)",
-      "farm": "PvE mixte (EoD)",
-      "expansion": "EoD",
-      "wiki": "Aurene%27s_Wisdom",
-      "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
-      },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
-      "precursor": "Rifle of Aurene's Power",
-      "gift_unique": "Gift of Aurene's Power",
-      "gen": "gen3",
-      "armory_api_id": null,
-      "armory_max_count": 2,
-      "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
-      "names_unverified": true,
-      "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
-      "collections_none": {
-        "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
-        "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
-      },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Rifle of Aurene's Power",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Power",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Rifle)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurenes_breath": {
       "name": "Aurene's Breath",
-      "slot": "weapon (Shortbow)",
+      "slot": "weapon (Torch)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Breath",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Power + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Breath + 1 Dragon's Breath + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Breath + 1 Dragon's Breath + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -48822,20 +48894,26 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Shortbow of Aurene's Power",
-      "gift_unique": "Gift of Aurene's Power",
+      "precursor": "Dragon's Breath",
+      "gift_unique": "Gift of Aurene's Breath",
       "gen": "gen3",
       "armory_api_id": null,
       "armory_max_count": 2,
       "armory_note": "ID invalidé — les 96937-96952 'consécutifs' étaient faux (résolvaient vers des consommables). Découverte runtime via /v2/legendaryarmory dans le tracker.",
       "names_unverified": true,
       "note_verif": "Nom/slot hérités d'une session erronée — le tracker résout les vraies armes au runtime via /v2/legendaryarmory ; ne pas se fier à cette entrée sans vérification wiki.",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Shortbow of Aurene's Power",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "gift_unique_erreur": "Gift of Aurene's Power",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "weapon (Shortbow)",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "eikasia": {
       "name": "Eikasia, Mists-Grasper",
@@ -54683,13 +54761,13 @@ const SOURCES_DB = {
     },
     "gen3_aurenes_rending": {
       "name": "Aurene's Rending",
-      "slot": "Axe",
+      "slot": "weapon (Axe)",
       "farm": "PvE mixte (EoD)",
       "expansion": "EoD",
       "wiki": "Aurene%27s_Fang",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute",
-        "en": "MF: Precursor + Gift of Aurene's Rending + Gift of Jade Mastery + Draconic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Rending + 1 Dragon's Rending + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Rending + 1 Dragon's Rending + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
       "shared_components": [
         "mystic_coin",
@@ -54702,18 +54780,22 @@ const SOURCES_DB = {
         "memories_of_aurene",
         "legendary_shard_gen3"
       ],
-      "precursor": "Axe of Aurene's Rending",
+      "precursor": "Dragon's Rending",
       "gift_unique": "Gift of Aurene's Rending",
       "gen": "gen3",
       "armory_api_id": 96937,
       "armory_max_count": 2,
       "armory_note": "96937 vérifié wiki — la hache gen3 s'appelle Aurene's Rending (l'ancienne entrée la nommait Fang à tort ; Fang = épée).",
-      "recipe_verified": "2026-07-25 (wiki — patron générationnel : précurseur + gift d'arme + gift de maîtrise + Gift of Fortune/Mystic Tribute/Draconic Tribute)",
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "precursor_erreur": "Axe of Aurene's Rending",
+      "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html",
+      "slot_erreur": "Axe",
+      "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "t6_tracker": {
       "name": "Matériaux T6",
@@ -54780,10 +54862,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Claw of the Khan-Ur",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
+        "en": "Mystic Forge: 1 Claw of Resolution + 1 Gift of the Four Legions + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54795,7 +54877,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of the Four Legions",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_flames_of_war": {
       "name": "Flames of War",
@@ -54809,10 +54894,10 @@ const SOURCES_DB = {
       "expansion": "HoT",
       "wiki": "Flames of War",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery",
+        "en": "Mystic Forge: 1 Liturgy + 1 Gift of Balthazar + 1 Mystic Tribute + 1 Gift of Maguuma Mastery"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54824,7 +54909,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Balthazar",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
     },
     "gen2_pharus": {
       "name": "Pharus",
@@ -54983,10 +55071,10 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene's Fang",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Fang + 1 Dragon's Fang + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Fang + 1 Dragon's Fang + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -54998,7 +55086,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Aurene's Fang",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurene_s_flight": {
       "name": "Aurene's Flight",
@@ -55012,10 +55103,10 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene's Flight",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Flight + 1 Dragon's Flight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Flight + 1 Dragon's Flight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -55027,7 +55118,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Aurene's Flight",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurene_s_tail": {
       "name": "Aurene's Tail",
@@ -55041,10 +55135,10 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene's Tail",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Tail + 1 Dragon's Tail + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Tail + 1 Dragon's Tail + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -55056,7 +55150,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Aurene's Tail",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen3_aurene_s_wing": {
       "name": "Aurene's Wing",
@@ -55070,10 +55167,10 @@ const SOURCES_DB = {
       "expansion": "EoD",
       "wiki": "Aurene's Wing",
       "recipe": {
-        "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
-        "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
+        "fr": "Forge mystique : 1 Gift of Aurene's Wing + 1 Dragon's Wing + 1 Gift of Jade Mastery + 1 Draconic Tribute",
+        "en": "Mystic Forge: 1 Gift of Aurene's Wing + 1 Dragon's Wing + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "recipe_verified": false,
+      "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "verified": true,
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
@@ -55085,7 +55182,10 @@ const SOURCES_DB = {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
         "en": "No collection: this weapon's precursor is crafted in the Mystic Forge, not earned through an achievement chain. Established empty, not pending."
       },
-      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes"
+      "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes",
+      "gift_unique_erreur": null,
+      "gift_unique": "Gift of Aurene's Wing",
+      "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
     },
     "gen2_the_binding_of_ipos": {
       "name": "The Binding of Ipos",

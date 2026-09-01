@@ -1310,6 +1310,37 @@ def check_collection_name_bilingual(data, errors, warnings):
                 )
 
 
+def check_gen3_precursor_suffix(data, errors, warnings):
+    """Le precurseur d'une gen3 reprend le suffixe de l'arme.
+
+    Les seize gen3 suivent une regle sans exception : Aurene's Claw se forge
+    depuis Dragon's Claw, Aurene's Argument depuis Dragon's Argument. Le suffixe
+    est partage, seul le prefixe change.
+
+    Douze des seize portaient des precurseurs inventes de la forme « Focus of
+    Aurene's Wisdom », et les types allaient avec, decales en cascade : Argument
+    donne Focus au lieu de Pistol, Gaze Pistol au lieu de Focus. Aucune de ces
+    valeurs n'existe dans le jeu. Elles ont survecu au nettoyage de v182, qui
+    n'avait corrige que Fang, Flight, Tail et Wing.
+
+    Le don, lui, ne suit PAS toujours : Aurene's Voice se forge avec le « Gift of
+    Aurene's Horn ». Cette regle ne controle donc que le precurseur.
+    """
+    for lid, leg in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(leg, dict) or leg.get("gen") != "gen3":
+            continue
+        nom = leg.get("name") or ""
+        prec = leg.get("precursor")
+        if not nom.startswith("Aurene's ") or not prec:
+            continue
+        attendu = "Dragon's " + nom.split("'s ", 1)[1]
+        if prec != attendu:
+            errors.append(
+                f"legendaries/{lid} : precursor '{prec}' mais l'arme s'appelle "
+                f"'{nom}' — une gen3 se forge depuis '{attendu}'"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1407,6 +1438,7 @@ def main() -> int:
     check_precursor_is_tier_three(data, errors, warnings)
     check_no_flat_weapon_lists(data, errors, warnings)
     check_collection_name_bilingual(data, errors, warnings)
+    check_gen3_precursor_suffix(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

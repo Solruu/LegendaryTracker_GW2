@@ -970,54 +970,32 @@ contredire — le bloc du wiki ne s'affiche que si `collection_unlocks` ne dit r
 
 ---
 
-## Quelle pierre runique, arme par arme — ouvert le 01/09/2026
+## Quelle pierre runique, arme par arme — ✅ **TRANCHÉ le 01/09/2026**
 
-`Icy Runestone` (19676) et `Mystic Runestone` (79418) sont **deux objets
-distincts, échangeables 1 pour 1 chez le même PNJ**, au même prix — 1 po pièce.
-Même schéma que les Ancient Coins et Curious Coins. Le coût ne dépend donc pas
-de laquelle des deux l'arme demande, mais **la donnée doit dire la bonne**.
+`Icy Runestone` (19676) et `Mystic Runestone` (79418) sont deux objets distincts,
+échangeables 1 pour 1 chez le même PNJ, au même prix — 1 po pièce.
 
-`gen2_craft_note` affirme que la gen2 utilise la Mystic Runestone à la place de
-l'Icy Runestone de la gen1, et `shared_components` porte `mystic_runestone` pour
-les seize armes gen2. Les captures contredisent cela pour les deux armes lues à
-ce jour :
+**La ligne de partage n'est pas la génération, c'est le mode d'obtention du
+précurseur.**
 
-| arme | génération | ce que dit sa page wiki | source |
-|---|---|---|---|
-| Astralaria | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/astralaria.html` |
-| HOPE | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/hope.html` |
-| Nevermore | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/nevermore.html` |
-| Bolt | gen1 | **100 Icy Runestones** — témoin, conforme à `gen1_craft_note` | `ressources/wiki/bolt.html` |
-| Chuka and Champawat | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/chuka_and_champawat.html` |
-| Sunrise | gen1 | **100 Icy Runestones** | `ressources/wiki/sunrise.html` |
-| Twilight | gen1 | **100 Icy Runestones** | `ressources/wiki/twilight.html` |
-| **20 paliers `Legendary Weapon:`** | gen1 | **Icy Runestone** dans les 20 tableaux | `ressources/wiki/legendary_weapon_*.html` |
+| famille | armes | runestone |
+|---|---|---|
+| gen1 — précurseur par collection | 20 | **Icy** |
+| gen2 — précurseur par collection | 4 (Astralaria, HOPE, Nevermore, Chuka) | **Icy** |
+| gen2 — précurseur acheté chez Hobbs | 12 | **Mystic** |
+| gen3 — précurseur de Forge mystique | 16 | **Mystic** |
 
-« Mystic Runestone » n'apparaît dans aucune de ces pages. **Les quatre gen2 à collections nomment toutes l'Icy Runestone**, et **les vingt
-gen1 aussi** — relevé non plus sur la cascade de recette mais sur l'étape même de
-leur palier `Legendary Weapon:`, où l'Icy Runestone figure comme objet de
-collection. Vingt-quatre armes concordantes, zéro Mystic Runestone. Les deux générations lisent donc pareil, ce qui rend
-`gen2_craft_note` suspect plutôt que la lecture.
+`gen2_craft_note` disait « la gen2 utilise la Mystic Runestone » : vrai pour douze
+armes sur seize, faux pour les quatre à collections. La note est corrigée et
+`shared_components` de ces quatre passe à `icy_runestone`, `needed_for` des deux
+composants suit.
 
-⚠ Ces quatre-là sont précisément les armes que `gift_of_desert_mastery` exclut
-(voir `gen2_craft_note`). Il reste possible que les douze autres gen2, elles,
-demandent bien la Mystic Runestone — auquel cas la note ne serait pas fausse mais
-trop générale. **Rien ne le tranche avant leurs pages.**
+**Le grand total est inchangé** : même prix, même marchand. Seule l'étiquette
+était fausse.
 
-**En attente** : les douze gen2 SANS collection, craftées via Hobbs — les seules
-armes du tracker dont la page n'a jamais été lue. Ce sont précisément celles que
-`gen2_craft_note` oppose aux quatre gen2 à collections. Si elles nomment la Mystic
-Runestone, la note est juste mais trop générale ; si elles nomment l'Icy, la note
-est fausse et `shared_components` doit changer pour les seize. La règle est donc de **relever
-la runestone nommée à chaque intégration d'une page d'arme**, et de ne trancher
-`gen2_craft_note` et les `shared_components` qu'une fois la série complète —
-un correctif partiel ferait cohabiter deux conventions.
-
-La donnée reste **en l'état** d'ici là : le prix étant identique, le grand total
-n'est pas faux, seule l'étiquette l'est.
-
-
----
+Reste à lire : 8 des 12 gen2 via Hobbs (Pharus, Sharur, Shooshadoo, The Binding of
+Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl). Quatre ont été
+lues — Claw of the Khan-Ur, Eureka, Exordium, Flames of War — toutes Mystic.
 
 ## Régionalisation complète du tracker — ouvert le 01/09/2026
 
