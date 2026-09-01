@@ -988,14 +988,20 @@ ce jour :
 | HOPE | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/hope.html` |
 | Nevermore | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/nevermore.html` |
 | Bolt | gen1 | **100 Icy Runestones** — témoin, conforme à `gen1_craft_note` | `ressources/wiki/bolt.html` |
+| Chuka and Champawat | gen2 | **100 Icy Runestones**, chez Rojan the Penitent | `ressources/wiki/chuka_and_champawat.html` |
 
-« Mystic Runestone » n'apparaît dans aucune de ces pages. **Trois gen2 sur trois
-lues nomment l'Icy Runestone**, et Bolt sert de témoin : la gen1 la nomme aussi,
-donc les deux générations lisent pareil et c'est bien `gen2_craft_note` qui est
-suspect, pas la lecture.
+« Mystic Runestone » n'apparaît dans aucune de ces pages. **Les quatre gen2 à
+collections nomment toutes l'Icy Runestone**, et Bolt sert de témoin : la gen1 la
+nomme aussi. Les deux générations lisent donc pareil, ce qui rend
+`gen2_craft_note` suspect plutôt que la lecture.
 
-**En attente** : les treize autres pages gen2 — dont Chuka and Champawat, dernière
-des quatre armes à collections, dont la capture d'article reste à refaire. La règle est donc de **relever
+⚠ Ces quatre-là sont précisément les armes que `gift_of_desert_mastery` exclut
+(voir `gen2_craft_note`). Il reste possible que les douze autres gen2, elles,
+demandent bien la Mystic Runestone — auquel cas la note ne serait pas fausse mais
+trop générale. **Rien ne le tranche avant leurs pages.**
+
+**En attente** : les douze autres pages gen2 — celles des armes SANS collection,
+craftées via Hobbs, qui sont aussi celles que la note oppose aux quatre ci-dessus. La règle est donc de **relever
 la runestone nommée à chaque intégration d'une page d'arme**, et de ne trancher
 `gen2_craft_note` et les `shared_components` qu'une fois la série complète —
 un correctif partiel ferait cohabiter deux conventions.

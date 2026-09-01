@@ -157,6 +157,12 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `chuka_ii_ambush.html` | Chuka and Champawat II: Ambush | collection, 16 objets | 2026-09-01 |
 | `chuka_iii_tigris.html` | Chuka and Champawat III: Tigris | collection, 20 objets | 2026-09-01 |
 | `chuka_iv_a_nontraditional_family.html` | Chuka and Champawat IV: A Nontraditional Family | collection, 9 objets | 2026-09-01 |
+| `chuka_and_champawat.html` | Chuka and Champawat | article complet — table de recette en cascade | 2026-09-01 |
+| `chuka_iii_naturalists_journal.html` | Chuka and Champawat III: Naturalist's Journal | collection, 16 objets | 2026-09-01 |
+| `chuka_iv_baby_book.html` | Chuka and Champawat IV: Baby Book | collection, 15 objets | 2026-09-01 |
+| `chuka_iv_secluded_tour.html` | Chuka and Champawat IV: Secluded Tour | collection, 10 objets | 2026-09-01 |
+| `chuka_iv_tiger_training_guide.html` | Chuka and Champawat IV: Tiger Training Guide | collection, 14 objets | 2026-09-01 |
+| `spirit_of_the_tiger_achievement.html` | Spirit of the Tiger (achievement) | succès Explorateur, 11 tanières — source du how de l'étape Mini Tiger Spirit | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -211,7 +217,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **127 captures, 127 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **133 captures, 133 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

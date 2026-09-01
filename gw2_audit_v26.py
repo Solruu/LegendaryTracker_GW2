@@ -1272,6 +1272,44 @@ def check_no_flat_weapon_lists(data, errors, warnings):
             )
 
 
+def check_collection_name_bilingual(data, errors, warnings):
+    """Le nom d'une collection est un couple fr/en, sans exception.
+
+    167 collections le portaient ainsi et quatre en chaine simple — celles
+    d'Aurora et de Vision, les plus anciennes du fichier, ecrites avant que la
+    convention existe. Le JSX les tolerait par NXS, donc rien ne cassait : la
+    divergence etait invisible a l'usage et n'attendait qu'un lecteur plus strict
+    pour le devenir. Une meme donnee ne se lit pas de deux formes.
+
+    Le francais ne se fabrique pas : il vient du dump des succes. Une collection
+    sans traduction connue porte fr: null, jamais une copie de l'anglais.
+    """
+    for lid, leg in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(leg, dict):
+            continue
+        for ck, c in sorted((leg.get("collections") or {}).items()):
+            if not isinstance(c, dict):
+                continue
+            nom = c.get("name")
+            if nom is None:
+                continue
+            if not isinstance(nom, dict):
+                errors.append(
+                    f"legendaries/{lid}/collections/{ck} : name est une chaine "
+                    f"({nom!r}) — le nom d'une collection est un couple fr/en"
+                )
+            elif "en" not in nom or "fr" not in nom:
+                errors.append(
+                    f"legendaries/{lid}/collections/{ck} : name incomplet "
+                    f"({sorted(nom)}) — il faut les deux cles fr et en, fr: null si inconnue"
+                )
+            elif isinstance(nom.get("fr"), str) and nom["fr"] == nom.get("en"):
+                warnings.append(
+                    f"legendaries/{lid}/collections/{ck} : name fr identique a en — "
+                    "un anglais recopie dans le champ francais n'est pas une traduction"
+                )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1368,6 +1406,7 @@ def main() -> int:
     check_recipe_components(data, errors, warnings)
     check_precursor_is_tier_three(data, errors, warnings)
     check_no_flat_weapon_lists(data, errors, warnings)
+    check_collection_name_bilingual(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

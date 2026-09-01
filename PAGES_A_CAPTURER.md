@@ -2,7 +2,7 @@
 
 État au 01/09/2026. Une case par page de collection à capturer.
 Compteur : `étapes sans conseil / total`.
-**21 armes · 80 pages · 1222 étapes.**
+**20 armes · 76 pages · 1167 étapes.**
 
 
 
@@ -10,18 +10,12 @@ Une étape compte comme couverte si elle porte un conseil, **ou** si elle renvoi
 à un composant (`component`) ou à une autre légendaire (`legendary`).
 Les renvois sont des références, jamais des copies.
 
-**Terminées : Eternity, Astralaria, HOPE, Nevermore.**
+**Terminées : Eternity, Astralaria, HOPE, Nevermore, Chuka and Champawat.**
+Les quatre gen2 à collections sont faites.
 
 ## Bolt — 4 étapes, 1 pages
 
 - [ ] `Legendary Weapon: Bolt` — 4/16
-
-## Chuka and Champawat — 55 étapes, 4 pages
-
-- [ ] `Chuka and Champawat III: Naturalist's Journal` — 16/16
-- [ ] `Chuka and Champawat IV: Baby Book` — 15/15
-- [ ] `Chuka and Champawat IV: Secluded Tour` — 10/10
-- [ ] `Chuka and Champawat IV: Tiger Training Guide` — 14/14
 
 ## Frenzy — 36 étapes, 4 pages
 

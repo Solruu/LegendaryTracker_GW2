@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v191",
+    "version": "v192",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1730,7 +1730,8 @@ const SOURCES_DB = {
     "changelog_v188": "L'encadre des succes du wiki entre dans les sources : prerequisite, unlock_item et reward, trois champs que l'API n'expose pas — elle rend locked_text en prose, sans structure. C'est la reponse a « comment j'ouvre cette collection », en attente au backlog depuis le debut. Astralaria III le montre bien : prerequis Historian of the Armaments, objet declencheur The Apparatus — le precurseur du palier II — et recompense le Chest of Time and Space, qui contient la recette du Mechanism. L'ordre entre paliers devient une donnee au lieu d'une note en prose. Pose sur 23 collections, celles dont la capture porte l'encadre.",
     "changelog_v189": "HOPE documentee : ses quatre collections, 124 etapes, 121 noms repris du wiki et 124 conseils. Aucun renvoi component ni legendary : les 124 objets sont des trophees propres a l'arme, sans recouvrement avec craft_components — verifie, pas suppose. Les blocs unlock des quatre paliers portent la chaine complete : Research ouvre le II, Development le III, Prototype le IV. Pas de note collections_order : la donnee la dit deja. Correction collaterale : les precurseurs des QUATRE gen2 de HoT etaient faux. La table du wiki distingue trois paliers — Experimental, Perfected, Final — et le precurseur est le TROISIEME, pas le premier. Astralaria prenait The Device (palier I) au lieu de The Mechanism ; HOPE prenait The Mechanism, qui est celui d'Astralaria ; Nevermore Unfinished Raven Staff au lieu de The Raven Staff ; Chuka and Champawat Tiger's Empowerment au lieu de Tigris. L'ancienne valeur est conservee dans precursor_erreur.",
     "changelog_v190": "Les trois listes plates d'armes sont supprimees. gen1_weapons, gen2_weapons et gen3_weapons doublaient legendaries sans etre lues par personne — ni le JSX, ni le build, ni le serveur. Elles avaient derive : gen2_weapons portait encore les huit fiches inventees que v182 avait retirees de legendaries (Tigris en arme, Eordas Grip, Lorekeeper, Reaver of the Mists...), gen3_weapons quatre autres (Aurene's Guard, Reckoning, Tenderness, Wrath). C'est le meme motif que common_required : une table parallele accumule les erreurs que la structure de reference ne porte plus. Un seul champ n'existait que la : la note de recette d'Eternity. Elle est verifiee sur l'encadre Recipes du wiki et remonte dans legendaries/gen1_eternity, corrigee au passage — 1 Sunrise + 1 Twilight + 5 Pile of Crystalline Dust + 10 Philosopher's Stone. L'ancienne annoncait 2 Icy Runestones et un Gift of Condensed Magic, absents de la recette ; et le patron generationnel qui l'avait ecrasee ne s'applique pas a Eternity.",
-    "changelog_v191": "Nevermore complete, Bolt et Chuka avances : douze collections, 253 noms repris du wiki et 261 conseils, plus les douze blocs unlock. Nevermore boucle ses quatre paliers ; Bolt ses trois collections numerotees, sans Legendary Weapon: Bolt ; Chuka cinq de ses neuf pages. Aucun renvoi component ni legendary : comme HOPE, ces armes ne partagent aucun objet avec craft_components — verifie contre les 319 composants, pas suppose. La regle du precurseur est generalisee et corrigee. La v23 confrontait le precurseur a l'unlock_item du DERNIER palier : vrai pour la gen2, qui a un palier IV ouvert par le precurseur, faux pour toute la gen1, qui s'arrete au III — Bolt ne s'ouvre pas avec Zap, il le produit. La regle a bloque le push des la premiere integration de Bolt. Le point fixe des deux familles est le PALIER III, dont le titre nomme le precurseur : Bolt III: Zap, HOPE III: Prototype, Nevermore III: The Raven Staff, Chuka III: Tigris. Verifie sur les 24 armes a collections, sans exception."
+    "changelog_v191": "Nevermore complete, Bolt et Chuka avances : douze collections, 253 noms repris du wiki et 261 conseils, plus les douze blocs unlock. Nevermore boucle ses quatre paliers ; Bolt ses trois collections numerotees, sans Legendary Weapon: Bolt ; Chuka cinq de ses neuf pages. Aucun renvoi component ni legendary : comme HOPE, ces armes ne partagent aucun objet avec craft_components — verifie contre les 319 composants, pas suppose. La regle du precurseur est generalisee et corrigee. La v23 confrontait le precurseur a l'unlock_item du DERNIER palier : vrai pour la gen2, qui a un palier IV ouvert par le precurseur, faux pour toute la gen1, qui s'arrete au III — Bolt ne s'ouvre pas avec Zap, il le produit. La regle a bloque le push des la premiere integration de Bolt. Le point fixe des deux familles est le PALIER III, dont le titre nomme le precurseur : Bolt III: Zap, HOPE III: Prototype, Nevermore III: The Raven Staff, Chuka III: Tigris. Verifie sur les 24 armes a collections, sans exception.",
+    "changelog_v192": "Chuka and Champawat bouclee : ses neuf collections, 127 etapes. Avec Eternity, Astralaria, HOPE, Nevermore et Bolt, les quatre gen2 a collections sont faites. Les onze tanieres de tigre du succes Spirit of the Tiger entrent dans le how de l'etape Mini Tiger Spirit, la ou elle vit deja — sept des onze sont sur des cartes que le Naturalist's Journal visite aussi, mais le wiki donne des reperes differents de part et d'autre, donc l'identite des tanieres n'est PAS affirmee. Le nom d'une collection est bilingue, sans exception. Quatre le portaient en chaine simple contre 167 en couple fr/en — Aurora: Awakening, Aurora II: Empowering, Vision I: Awakening, Vision II: Farsight. Le francais vient du dump des succes, pas d'une traduction maison. Une erreur d'identifiant est tombee au passage : aurora_1 pointait sur le succes 4027, qui est « Library Detective » et n'a rien a voir. Aurora: Awakening est le 3522. La correction avait ete faite cote serveur Flask en mai et n'avait jamais atteint les sources. Un anglais recopie dans le champ francais est aussi rattrape : stella_forge_guard portait son nom anglais des deux cotes. Le succes 9330 est posterieur au dump, donc le francais reste null — c'est une absence, pas une traduction."
   },
   "meta_events": {
     "vb": {
@@ -17954,7 +17955,7 @@ const SOURCES_DB = {
           "id": 9330,
           "key": "stella_forge_guard",
           "name": {
-            "fr": "Forge Guard's Armor Collection",
+            "fr": null,
             "en": "Forge Guard's Armor Collection"
           },
           "total": 6,
@@ -17965,7 +17966,8 @@ const SOURCES_DB = {
           "note_alt": {
             "fr": "Rare Collections — débloquer les 6 skins Forge Guard (n'importe quel poids : 1 pièce débloquée = les 3 poids). Sources : drops VoE, Alliance Field Quartermaster, boîtes du méta-succès de carte.",
             "en": "Rare Collections — unlock all 6 Forge Guard skins (any weight: 1 piece unlocked = all 3 weights). Sources: VoE drops, Alliance Field Quartermaster, map meta-achievement boxes."
-          }
+          },
+          "name_ref": "wiki ; francais inconnu — le succes 9330 est posterieur au dump des succes"
         },
         "stella_resin": {
           "id": 9344,
@@ -34552,68 +34554,202 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Talk to Cymbel in Fields of Ruin."
+              "name": "Baby Book",
+              "name_api": "Talk to Cymbel in Fields of Ruin.",
+              "how": {
+                "fr": null,
+                "en": "A blank journal for an expectant tiger mother. Double-click to access your tiger den . Talk to Cymbel in Fields of Ruin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Craft Tiger Nesting Materials and deposit them at your den.\nRecipe obtained from Cymbel."
+              "name": "Notes on Tiger Nesting Materials",
+              "name_api": "Craft Tiger Nesting Materials and deposit them at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Tiger Nesting Materials and deposit them at your den. Recipe is obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Craft a Heat Stone and deposit it at your den.\nRecipe obtained from merchants in Dry Top."
+              "name": "Notes on Heat Stone Usage",
+              "name_api": "Craft a Heat Stone and deposit it at your den.\nRecipe obtained from merchants in Dry Top.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft a Heat Stone and deposit it at your den. Recipe obtained from merchants in Dry Top"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Craft Artificial Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Simple Notes on Artificial Tiger Milk",
+              "name_api": "Craft Artificial Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Artificial Tiger Milk and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Craft Nutritional Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Detailed Notes on Artificial Tiger Milk",
+              "name_api": "Craft Nutritional Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Nutritional Tiger Milk and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Craft Infused Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Advanced Notes on Artificial Tiger Milk",
+              "name_api": "Craft Infused Tiger Milk and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Infused Tiger Milk and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Craft Basic Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Simple Notes on Solid Food",
+              "name_api": "Craft Basic Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Basic Tiger Food and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Craft Nutritional Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Detailed Notes on Solid Food",
+              "name_api": "Craft Nutritional Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Nutritional Tiger Food and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Craft Infused Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Advanced Notes on Solid Food",
+              "name_api": "Craft Infused Tiger Food and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft Infused Tiger Food and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Craft a Tough Leather Ball and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Notes on Tiger Play",
+              "name_api": "Craft a Tough Leather Ball and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft a Tough Leather Ball and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Craft a Scratching Post and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Notes on Claw Care",
+              "name_api": "Craft a Scratching Post and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Craft a Tiger Scratching Post and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "After completing the Scratching Post, craft a Tiger Pole and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Notes on Napping",
+              "name_api": "After completing the Scratching Post, craft a Tiger Pole and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: After completing the Tiger Scratching Post , craft a Tiger Pole and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "After completing the Tiger Pole, craft a Tiger Gym and deposit it at your den.\nRecipe obtained from Cymbel."
+              "name": "Notes on Exercise",
+              "name_api": "After completing the Tiger Pole, craft a Tiger Gym and deposit it at your den.\nRecipe obtained from Cymbel.",
+              "how": {
+                "fr": null,
+                "en": "Hint: After completing the Tiger Pole , craft a Tiger Gym and deposit it at your den. Recipe obtained from Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Talk to Shaman Sigarr in Wayfarer Foothills."
+              "name": "Memories of the Mother",
+              "name_api": "Talk to Shaman Sigarr in Wayfarer Foothills.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Talk to Shaman Sigarr in Wayfarer Foothills"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
-              "name": "Talk to Shaman Sigarr in Wayfarer Foothills."
+              "name": "Memories of the Father",
+              "name_api": "Talk to Shaman Sigarr in Wayfarer Foothills.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Talk to Shaman Sigarr in Wayfarer Foothills"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
-          "checked": "2026-08-27"
+          "checked": "2026-08-27",
+          "unlock": {
+            "achievement": "Chuka and Champawat IV: Baby Book",
+            "prerequisite": null,
+            "unlock_item": {
+              "name": "Baby Book",
+              "wiki": "Baby Book"
+            },
+            "reward": {
+              "name": "Completed Baby Book",
+              "wiki": "Completed Baby Book"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "chuka_and_champawat_i_hunter_s_journal": {
           "id": 2920,
@@ -35116,48 +35252,142 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Talk to Cymbel in Fields of Ruin."
+              "name": "List of Secluded Locations",
+              "name_api": "Talk to Cymbel in Fields of Ruin.",
+              "how": {
+                "fr": null,
+                "en": "Talk to Cymbel in Fields of Ruin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Complete the Griffonrook Run jumping puzzle in Lornar's Pass."
+              "name": "Griffonrook Feasibility Report",
+              "name_api": "Complete the Griffonrook Run jumping puzzle in Lornar's Pass.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Complete the Griffonrook Run jumping puzzle in Lornar's Pass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Loot the Splendid Chest in Rebel's Seclusion in Fireheart Rise."
+              "name": "Rebel's Seclusion Feasibility Report",
+              "name_api": "Loot the Splendid Chest in Rebel's Seclusion in Fireheart Rise.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Loot the Splendid Chest in Rebel's Seclusion in Fireheart Rise"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Complete the Collapsed Observatory jumping puzzle in Kessex Hills."
+              "name": "Collapsed Observatory Feasibility Report",
+              "name_api": "Complete the Collapsed Observatory jumping puzzle in Kessex Hills.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Complete the Collapsed Observatory jumping puzzle in Kessex Hills"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Complete the Craze's Folly jumping puzzle in Blazeridge Steppes."
+              "name": "Craze's Folly Feasibility Report",
+              "name_api": "Complete the Craze's Folly jumping puzzle in Blazeridge Steppes.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Complete the Craze's Folly jumping puzzle in Blazeridge Steppes"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Complete the Demongrub Pits jumping puzzle in Queensdale."
+              "name": "Demongrub Pits Feasibility Report",
+              "name_api": "Complete the Demongrub Pits jumping puzzle in Queensdale.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Complete the Demongrub Pits jumping puzzle in Queensdale"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Complete the Fawcett's Bounty jumping puzzle in Harathi Hinterlands."
+              "name": "Fawcett's Bounty Feasibility Report",
+              "name_api": "Complete the Fawcett's Bounty jumping puzzle in Harathi Hinterlands.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Complete the Fawcett's Bounty jumping puzzle in Harathi Hinterlands"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Reach the vista in Lightfoot Passage in the Straits of Devastation."
+              "name": "Lightfoot Passage Feasibility Report",
+              "name_api": "Reach the vista in Lightfoot Passage in the Straits of Devastation.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Reach the vista in Lightfoot Passage in the Straits of Devastation"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Find the den location in the Hidden Garden jumping puzzle."
+              "name": "Hidden Garden Feasibility Report",
+              "name_api": "Find the den location in the Hidden Garden jumping puzzle.",
+              "how": {
+                "fr": null,
+                "en": "Hint: Find the den location in the Hidden Garden jumping puzzle"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Talk to Cymbel in Fields of Ruin after scouting all of the locations."
+              "name": "Comprehensive Feasibility Report",
+              "name_api": "Talk to Cymbel in Fields of Ruin after scouting all of the locations.",
+              "how": {
+                "fr": null,
+                "en": "Talk to Cymbel in Fields of Ruin after scouting all of the locations"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
-          "checked": "2026-08-27"
+          "checked": "2026-08-27",
+          "unlock": {
+            "achievement": "Chuka and Champawat IV: Secluded Tour",
+            "prerequisite": null,
+            "unlock_item": {
+              "name": "List of Secluded Locations",
+              "wiki": "List of Secluded Locations"
+            },
+            "reward": {
+              "name": "Tiger Den Map",
+              "wiki": "Tiger Den Map"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "chuka_and_champawat_iv_tiger_training_gu": {
           "id": 2943,
@@ -35170,64 +35400,190 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Talk to Cymbel in Fields of Ruin after obtaining the Baby Book."
+              "name": "Tiger Training Guide",
+              "name_api": "Talk to Cymbel in Fields of Ruin after obtaining the Baby Book.",
+              "how": {
+                "fr": null,
+                "en": "Talk to Cymbel in Fields of Ruin after obtaining the Baby Book"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Defeat the Golem Mark II in Mount Maelstrom while carrying a tiger cub."
+              "name": "Lesson: Avoid Inquest",
+              "name_api": "Defeat the Golem Mark II in Mount Maelstrom while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Golem Mark II in Mount Maelstrom while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Defeat Taida Covington in Bloodtide Coast while carrying a tiger cub."
+              "name": "Lesson: Avoid Bandits",
+              "name_api": "Defeat Taida Covington in Bloodtide Coast while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat Taida Covington in Bloodtide Coast while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Defeat Ulgoth the Modniir in Harathi Hinterlands while carrying a tiger cub."
+              "name": "Lesson: Avoid Centaurs",
+              "name_api": "Defeat Ulgoth the Modniir in Harathi Hinterlands while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat Ulgoth the Modniir in Harathi Hinterlands while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Defeat the Shatterer in Blazeridge Steppes while carrying a tiger cub."
+              "name": "Lesson: Avoid Dragons",
+              "name_api": "Defeat the Shatterer in Blazeridge Steppes while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Shatterer in Blazeridge Steppes while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Defeat the Champion Ram near Krongar Pass in Timberline Falls while carrying a tiger cub."
+              "name": "Lesson: Hunting",
+              "name_api": "Defeat the Champion Ram near Krongar Pass in Timberline Falls while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Champion Ram near Krongar Pass in Timberline Falls while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Defeat the Vine Wrath in the Silverwastes while carrying a tiger cub."
+              "name": "Lesson: Gathering",
+              "name_api": "Defeat the Vine Wrath in the Silverwastes while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Vinewrath in the Silverwastes while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Complete the Noble Crash Site meta-event in Verdant Brink while carrying a tiger cub."
+              "name": "Lesson: The Way of the Jungle",
+              "name_api": "Complete the Noble Crash Site meta-event in Verdant Brink while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Complete the Noble Crash Site meta-event in Verdant Brink while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Defeat Risen Gorillas in Cursed Shore while carrying a tiger cub."
+              "name": "Lesson: Extinct Creatures",
+              "name_api": "Defeat Risen Gorillas in Cursed Shore while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat Risen Gorillas in Cursed Shore while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Defeat the Bandit-Trained Broodmother near Wynchona Woods in Harathi Hinterlands while carrying a tiger cub."
+              "name": "Lesson: Deception",
+              "name_api": "Defeat the Bandit-Trained Broodmother near Wynchona Woods in Harathi Hinterlands while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Bandit-Trained Broodmother near Wynchona Woods in Harathi Hinterlands while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Complete the Coddler's Cove jumping puzzle near Mellagan's Grotto in Timberline Falls while carrying a tiger cub."
+              "name": "Lesson: Caring",
+              "name_api": "Complete the Coddler's Cove jumping puzzle near Mellagan's Grotto in Timberline Falls while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Complete the Coddler's Cove jumping puzzle near Mellagan's Grotto in Timberline Falls while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Protect Fen as he makes his way into the Bonerattler Caverns in Harathi Hinterlands while carrying a tiger cub."
+              "name": "Lesson: Remembrance",
+              "name_api": "Protect Fen as he makes his way into the Bonerattler Caverns in Harathi Hinterlands while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Protect Fen as he makes his way into the Bonerattler Caverns in Harathi Hinterlands while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Talk to Tholaun near Almuten Estates in Gendarran Fields and fulfill his request while carrying a tiger cub."
+              "name": "Lesson: Friendship",
+              "name_api": "Talk to Tholaun near Almuten Estates in Gendarran Fields and fulfill his request while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Talk to Tholaun near Almuten Estates in Gendarran Fields and fulfill his request while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Protect the Lupikids as they search for treasure near Cornucopian Fields in Gendarran Fields while carrying a tiger cub."
+              "name": "Lesson: Adventure",
+              "name_api": "Protect the Lupikids as they search for treasure near Cornucopian Fields in Gendarran Fields while carrying a tiger cub.",
+              "how": {
+                "fr": null,
+                "en": "Protect the Lupikids as they search for treasure near Cornucopian Fields in Gendarran Fields while carrying a tiger cub"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
-          "checked": "2026-08-27"
+          "checked": "2026-08-27",
+          "unlock": {
+            "achievement": "Chuka and Champawat IV: Tiger Training Guide",
+            "prerequisite": null,
+            "unlock_item": {
+              "name": "Tiger Training Guide",
+              "wiki": "Tiger Training Guide"
+            },
+            "reward": {
+              "name": "Annotated Tiger Training Guide",
+              "wiki": "Annotated Tiger Training Guide"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "chuka_and_champawat_iii_naturalist_s_jou": {
           "id": 2946,
@@ -35240,72 +35596,214 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Bring a crude leather book to Cymbel after gaining her trust."
+              "name": "Naturalist's Journal",
+              "name_api": "Bring a crude leather book to Cymbel after gaining her trust.",
+              "how": {
+                "fr": null,
+                "en": "Head to Fields of Ruin and complete Defend Cymbel and Nia from the ogres trying to steal their pets or Help Nia rescue Cymbel's hounds , then give a Crude Leather Book to Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 1",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Speak with the Aqualimit Leader at Fisher's Beach Bend in Metrica Province"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 2",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Head west from the Aqualimit Leader and investigate the Tiger Tracks Leading from Tangled Depths on the cliff nearby"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 3",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Talk to Shrael Backstab in the SCAR Bivouac in Tangled Depths"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 4",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Follow the Tiger Tracks northeast from Shrael, up to the vista at Cascade Descent , and investigate the Tiger Den nestled behind a large root"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 5",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Investigate the Tiger Blood on the eastern cliff above Fumerol Caves in Verdant Brink"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 6",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Head to the end of Old Oola Lab in Metrica Province and interact with the Signs of Tiger Habitation"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 7",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den at the top of the Dreamdark Enclave ( Dark Reverie ) jumping puzzle in Caledon Forest"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 8",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den at the top of the Skipping Stones jumping puzzle in Southsun Cove"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 9",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Defeat the Champion Reef Rider at the end of the Skipping Stones jumping puzzle"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 10",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den above The Tower of Modius in Sparkfly Fen"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 11",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den in the rocks near Twoheaded Meadows in Lornar's Pass"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 12",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den in the Crimson Plateau jumping puzzle in Diessa Plateau"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 13",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den in the Loreclaw Expanse jumping puzzle in the Plains of Ashford"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 14",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Interact with the Tiger Den on the cliffs above Halkor Meadows in the Fields of Ruin"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 15,
-              "name": "Consult your Naturalist's Journal for instructions."
+              "name": "Naturalist's Journal: Entry 15",
+              "name_api": "Consult your Naturalist's Journal for instructions.",
+              "how": {
+                "fr": null,
+                "en": "Return to Cymbel"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
-          "checked": "2026-08-27"
+          "checked": "2026-08-27",
+          "unlock": {
+            "achievement": "Chuka and Champawat III: Naturalist's Journal",
+            "prerequisite": null,
+            "unlock_item": {
+              "name": "Naturalist's Journal",
+              "wiki": "Naturalist%27s Journal"
+            },
+            "reward": {
+              "name": "Completed Naturalist's Journal",
+              "wiki": "Completed Naturalist%27s Journal"
+            }
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         },
         "chuka_and_champawat_iii_tigris": {
           "id": 2951,
@@ -35675,10 +36173,10 @@ const SOURCES_DB = {
               "name_api": "Complete the Spirit of the Tiger achievement and unlock this mini in your wardrobe.",
               "how": {
                 "fr": null,
-                "en": "Complete the Spirit of the Tiger achievement and unlock this miniature in your wardrobe"
+                "en": "Complete the Spirit of the Tiger achievement (Explorer) and unlock this miniature in your wardrobe. It requires finding all eleven Tiger Dens: Tangled Depths: SCAR Lane; Caledon Forest: Dreamdark Enclave; Southsun Cove: Southsun Strait; Sparkfly Fen: Orvanic Shore; Lornar's Pass: Demon's Maw; Diessa Plateau: The Breached Wall; Fields of Ruin: Tanglerot Hills; Plains of Ashford: Loreclaw Expanse; Verdant Brink: Skyclaw Peaks; Tangled Depths: Rata Novus Lane; Dragon's Stand: Broken Altar. Seven of the eleven sit on maps the Naturalist's Journal also sends you to (Caledon Forest, Southsun Cove, Sparkfly Fen, Lornar's Pass, Diessa Plateau, Fields of Ruin, Plains of Ashford), so the two are worth running together; the wiki gives different landmarks on each side, so whether they are the same dens is not established here. The four HoT ones - SCAR Lane, Rata Novus Lane, Skyclaw Peaks and Broken Altar - have no journal counterpart."
               },
               "how_verified": true,
-              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
+              "how_ref": "wiki, page « Spirit of the Tiger (achievement) » — ressources/wiki/spirit_of_the_tiger_achievement.html",
               "how_fr_missing": true
             },
             {
@@ -36706,8 +37204,11 @@ const SOURCES_DB = {
       },
       "collections": {
         "aurora_1": {
-          "id": 4027,
-          "name": "Aurora: Awakening",
+          "id": 3522,
+          "name": {
+            "fr": "Aurora : éveil",
+            "en": "Aurora: Awakening"
+          },
           "reward": {
             "fr": "Gift of Valor",
             "en": "Gift of Valor"
@@ -38032,11 +38533,17 @@ const SOURCES_DB = {
               "fr": "Marais de la pierre de sang ne coûte aucun karma : tous ses objets sont des drops, de la récolte ou l'achat chez Natto (rubis + magie déchaînée). Seule incertitude restante : 3 des 4 objets du Mont Draconis, supposés à 7 000 comme ailleurs.",
               "en": "Bloodstone Fen costs no karma: all its items are drops, gathering, or the Natto purchase (rubies + Unbound Magic). Only remaining uncertainty: 3 of the 4 Draconis Mons items, assumed at 7,000 like elsewhere."
             }
-          }
+          },
+          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
+          "id_erreur": 4027,
+          "id_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
         },
         "aurora_2": {
           "id": 3489,
-          "name": "Aurora II: Empowering",
+          "name": {
+            "fr": "Aurora II : renforcement",
+            "en": "Aurora II: Empowering"
+          },
           "reward": "Spark of Sentience",
           "total": 21,
           "note": "21 lingots d'electrum Xunlai à infuser sur des sanctuaires de maîtrise. Aucun aléatoire, aucun timegate — uniquement du déplacement. Le vrai coût est en amont : les lingots dépendent des Grumeaux de mithrillium, limités à un par jour et par compte.",
@@ -38430,7 +38937,8 @@ const SOURCES_DB = {
           "chat_code_warning": {
             "fr": "Les codes de chat sont transcrits depuis une capture d'écran. S'il y en a un qui ne fonctionne pas en jeu, signale-le : c'est une erreur de transcription, pas de source.",
             "en": "Chat codes are transcribed from a screenshot. If one does not work in game, report it: that is a transcription error, not a source error."
-          }
+          },
+          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
         },
         "henge_3402": {
           "id": 3402,
@@ -39422,7 +39930,10 @@ const SOURCES_DB = {
       "collections": {
         "vision_1": {
           "id": 4762,
-          "name": "Vision I: Awakening",
+          "name": {
+            "fr": "Vision I : Éveil",
+            "en": "Vision I: Awakening"
+          },
           "reward": {
             "fr": "Shattered Gift of Prescience",
             "en": "Shattered Gift of Prescience"
@@ -39482,11 +39993,15 @@ const SOURCES_DB = {
                 "en": "Dragonfall"
               }
             }
-          ]
+          ],
+          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
         },
         "vision_2": {
           "id": 4771,
-          "name": "Vision II: Farsight",
+          "name": {
+            "fr": "Vision II : Prévoyance",
+            "en": "Vision II: Farsight"
+          },
           "reward": {
             "fr": "Glimpse (précurseur)",
             "en": "Glimpse (precursor)"
@@ -39913,7 +40428,8 @@ const SOURCES_DB = {
           },
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion"
+          "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion",
+          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
         },
         "vis_meta_1": {
           "id": 4762,
