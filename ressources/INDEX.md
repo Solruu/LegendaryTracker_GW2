@@ -258,6 +258,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `legendary_weapon_the_minstrel.html` | Legendary Weapon: The Minstrel | collection, 16 objets | 2026-09-01 |
 | `legendary_weapon_the_moot.html` | Legendary Weapon: The Moot | collection, 16 objets | 2026-09-01 |
 | `legendary_weapon_the_predator.html` | Legendary Weapon: The Predator | collection, 16 objets | 2026-09-01 |
+| `legendary_weapon_twilight.html` | Legendary Weapon: Twilight | collection, 16 objets | 2026-09-01 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -312,7 +313,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 ## Contrôle d'inventaire
 
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
-lire. Vérification du 27/08/2026 : **228 captures, 228 lignes, aucun écart** —
+lire. Vérification du 27/08/2026 : **229 captures, 229 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
 
 ## Manquent encore

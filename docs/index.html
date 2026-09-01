@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v194",
+    "version": "v195",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1733,7 +1733,8 @@ const SOURCES_DB = {
     "changelog_v191": "Nevermore complete, Bolt et Chuka avances : douze collections, 253 noms repris du wiki et 261 conseils, plus les douze blocs unlock. Nevermore boucle ses quatre paliers ; Bolt ses trois collections numerotees, sans Legendary Weapon: Bolt ; Chuka cinq de ses neuf pages. Aucun renvoi component ni legendary : comme HOPE, ces armes ne partagent aucun objet avec craft_components — verifie contre les 319 composants, pas suppose. La regle du precurseur est generalisee et corrigee. La v23 confrontait le precurseur a l'unlock_item du DERNIER palier : vrai pour la gen2, qui a un palier IV ouvert par le precurseur, faux pour toute la gen1, qui s'arrete au III — Bolt ne s'ouvre pas avec Zap, il le produit. La regle a bloque le push des la premiere integration de Bolt. Le point fixe des deux familles est le PALIER III, dont le titre nomme le precurseur : Bolt III: Zap, HOPE III: Prototype, Nevermore III: The Raven Staff, Chuka III: Tigris. Verifie sur les 24 armes a collections, sans exception.",
     "changelog_v192": "Chuka and Champawat bouclee : ses neuf collections, 127 etapes. Avec Eternity, Astralaria, HOPE, Nevermore et Bolt, les quatre gen2 a collections sont faites. Les onze tanieres de tigre du succes Spirit of the Tiger entrent dans le how de l'etape Mini Tiger Spirit, la ou elle vit deja — sept des onze sont sur des cartes que le Naturalist's Journal visite aussi, mais le wiki donne des reperes differents de part et d'autre, donc l'identite des tanieres n'est PAS affirmee. Le nom d'une collection est bilingue, sans exception. Quatre le portaient en chaine simple contre 167 en couple fr/en — Aurora: Awakening, Aurora II: Empowering, Vision I: Awakening, Vision II: Farsight. Le francais vient du dump des succes, pas d'une traduction maison. Une erreur d'identifiant est tombee au passage : aurora_1 pointait sur le succes 4027, qui est « Library Detective » et n'a rien a voir. Aurora: Awakening est le 3522. La correction avait ete faite cote serveur Flask en mai et n'avait jamais atteint les sources. Un anglais recopie dans le champ francais est aussi rattrape : stella_forge_guard portait son nom anglais des deux cotes. Le succes 9330 est posterieur au dump, donc le francais reste null — c'est une absence, pas une traduction.",
     "changelog_v193": "Sunrise et Twilight : leurs six collections numerotees, 127 conseils et 123 noms repris du wiki, plus les six blocs unlock. Il manque leurs paliers IV — Legendary Weapon: Sunrise et Legendary Weapon: Twilight, 4 etapes sur 16 chacun, les douze autres pointant deja vers craft_components. Aucun renvoi component ni legendary sur les 127 etapes : verifie contre les 319 composants. La chaine d'Eternity est desormais complete de bout en bout : ses deux renvois legendary pointent vers gen1_sunrise et gen1_twilight, dont les precurseurs Dawn et Dusk sont eux-memes documentes palier par palier. C'est la seule arme du tracker qui se forge depuis d'autres armes. Runestone : Sunrise et Twilight nomment l'Icy Runestone, comme Bolt. Trois temoins gen1, quatre gen2, aucune Mystic Runestone dans les sept pages lues a ce jour.",
-    "changelog_v194": "Les vingt armes gen1 sont documentees. 919 conseils et 919 noms repris du wiki, 79 blocs unlock, sur les 70 collections encore ouvertes — les trois paliers numerotes de chaque arme plus son palier Legendary Weapon:. Les etapes d'armes passent de 1040 non couvertes a 4. Ces 4 restantes sont Legendary Weapon: Twilight, dont la capture manque au paquet final : 19 pages recues sur 20. C'est la seule collection d'arme du tracker sans capture. Les paliers Legendary Weapon: se ventilent comme prevu : douze de leurs seize etapes retombent sur craft_components deja documentes (Gift of Fortune, Gift of Mastery, Bloodstone Shard, Mystic Clover, Icy Runestone...), les quatre ou cinq autres sont propres a l'arme et recoivent un conseil. Runestone : les vingt paliers IV nomment l'Icy Runestone, zero Mystic. Avec les quatre gen2 a collections deja lues, cela fait vingt-quatre armes concordantes et aucun contre-exemple. La question reste ouverte pour les douze gen2 sans collection, seules non lues."
+    "changelog_v194": "Les vingt armes gen1 sont documentees. 919 conseils et 919 noms repris du wiki, 79 blocs unlock, sur les 70 collections encore ouvertes — les trois paliers numerotes de chaque arme plus son palier Legendary Weapon:. Les etapes d'armes passent de 1040 non couvertes a 4. Ces 4 restantes sont Legendary Weapon: Twilight, dont la capture manque au paquet final : 19 pages recues sur 20. C'est la seule collection d'arme du tracker sans capture. Les paliers Legendary Weapon: se ventilent comme prevu : douze de leurs seize etapes retombent sur craft_components deja documentes (Gift of Fortune, Gift of Mastery, Bloodstone Shard, Mystic Clover, Icy Runestone...), les quatre ou cinq autres sont propres a l'arme et recoivent un conseil. Runestone : les vingt paliers IV nomment l'Icy Runestone, zero Mystic. Avec les quatre gen2 a collections deja lues, cela fait vingt-quatre armes concordantes et aucun contre-exemple. La question reste ouverte pour les douze gen2 sans collection, seules non lues.",
+    "changelog_v195": "Legendary Weapon: Twilight integree, la derniere capture qui manquait. Les 24 armes a collections sont documentees : 1978 etapes sur 1978 couvertes, 0 restante. PAGES_A_CAPTURER.md est vide. Restent 28 armes SANS collection, qui ne relevent pas de ce chantier : elles n'ont pas de chaine de succes a documenter, seulement une recette. 12 gen2 craftees via Hobbs et 16 gen3 a precurseur de Forge mystique. Leur article wiki n'a jamais ete lu, ce qui laisse ouverte la question de la runestone et empeche de verifier leur recipe, aujourd'hui remplie par patron generationnel — le meme patron qui s'etait revele faux sur Eternity."
   },
   "meta_events": {
     "vb": {
@@ -33448,96 +33449,216 @@ const SOURCES_DB = {
           "items": [
             {
               "bit": 0,
-              "name": "Dusk"
+              "name": "Dusk",
+              "how": {
+                "fr": null,
+                "en": "This weapon is used to craft the legendary greatsword Twilight . Combine this weapon in the Mystic Forge with: • 1 Gift of Twilight • 1 Gift of Mastery • 1 Gift of Fortune"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 1,
-              "name": "Gift of Twilight"
+              "name": "Gift of Twilight",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create the legendary greatsword Twilight . Made by combining these items in the Mystic Forge : 1 Gift of Metal 1 Gift of Darkness 100 Icy Runestones 1 Superior Sigil of Blood"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 2,
               "name": "Icy Runestone",
               "component": "icy_runestone",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "Used to create legendary weapon and trinket gift items. Purchased from Rojan the Penitent in Frostgorge Sound after successfully defeating the Claw of Jormag"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 3,
               "name": "Gift of Metal",
               "component": "gift_of_metal",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift of metal used to create generation one and two legendary weapons and the legendary back item Ad Infinitum . Purchase the recipe for this item from any Mystic Forge vendor and reach a weaponsmith rating of 400 to craft"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 4,
-              "name": "Gift of Darkness"
+              "name": "Gift of Darkness",
+              "how": {
+                "fr": null,
+                "en": "A gift of darkness used to create Twilight . Purchase the recipe for this item from any Mystic Forge vendor and reach an armorsmith rating of 400 to craft"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 5,
-              "name": "Gift of Ascalon"
+              "name": "Gift of Ascalon",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create legendary weapons . Purchased from dungeon vendors for 500 Tales of Dungeon Delving"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 6,
               "name": "Gift of Mastery",
               "component": "gift_of_mastery",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create legendary weapons . Made by combining these items in the Mystic Forge : 1 Bloodstone Shard 250 Obsidian Shards 1 Gift of Exploration 1 Gift of Battle"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 7,
               "name": "Gift of Exploration",
               "component": "gift_of_exploration",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create legendary weapons . Acquired from fully exploring all Central Tyrian maps"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 8,
               "name": "Bloodstone Shard",
               "component": "bloodstone_shard",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "Hint: Purchased from a Mystic Forge vendor for Spirit Shards"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 9,
               "name": "Obsidian Shard",
               "component": "obsidian_shard",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "Hint: Usually purchased from laurel merchants, fractal vendors, Mastery vendors, and quartermasters across Tyria"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 10,
               "name": "Gift of Fortune",
               "component": "gift_of_fortune",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift of fortune used to create legendary weapons . Made by combining these items in the Mystic Forge : 77 Mystic Clovers 250 Globs of Ectoplasm 1 Gift of Might 1 Gift of Magic"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 11,
               "name": "Glob of Ectoplasm",
               "component": "glob_of_ectoplasm",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "Salvage Item"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 12,
               "name": "Mystic Clover",
               "component": "mystic_clover",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "Hint: Sometimes acquired by combining Mystic Coins , Obsidian Shards , Globs of Ectoplasm , and either Philosopher's Stones or Mystic Crystals in the Mystic Forge. Can also be purchased from strike, raid, or fractal vendors"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 13,
               "name": "Gift of Might",
               "component": "gift_of_might",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create legendary weapons . Made by combining these items in the Mystic Forge : 250 Vicious Fangs 250 Armored Scales 250 Vicious Claws 250 Ancient Bones"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 14,
               "name": "Gift of Magic",
               "component": "gift_of_magic",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift used to create legendary weapons . Made by combining these items in the Mystic Forge : 250 Vials of Powerful Blood 250 Powerful Venom Sacs 250 Elaborate Totems 250 Piles of Crystalline Dust"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             },
             {
               "bit": 15,
               "name": "Gift of Battle",
               "component": "gift_of_battle",
-              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components"
+              "component_ref": "etape identifiee a un composant existant par egalite de nom ; sources, cadence et prix se lisent dans craft_components",
+              "how": {
+                "fr": null,
+                "en": "A gift used in legendary crafting. Acquired from the WvW Gift of Battle Item Reward Track . To create the Gift of War Prosperity, combine this in the Mystic Forge with: 15 Mystic Clovers 1 Gift of Condensed Might 1 Gift of Condensed Magic"
+              },
+              "how_verified": true,
+              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/twilight_*.html",
+              "how_fr_missing": true
             }
           ],
           "ref": "categorie « Legendary Weapons » de gw2_achievements_ref.json, rapprochee par nom d'arme ; les etapes viennent de gw2_bits_dump.json",
           "verified": true,
-          "checked": "2026-08-27"
+          "checked": "2026-08-27",
+          "unlock": {
+            "achievement": "Legendary Weapon: Twilight",
+            "prerequisite": null,
+            "unlock_item": null,
+            "reward": null
+          },
+          "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
+          "unlock_verified": true
         }
       }
     },

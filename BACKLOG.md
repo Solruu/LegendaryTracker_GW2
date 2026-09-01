@@ -1044,3 +1044,60 @@ largement, substitue les noms propres anglais des `how`.
 
 **Non traité ici** : les 3 258 `name` d'objets et d'étapes, qui sont des chaînes
 simples par convention et relèvent de la même passe API, pas d'une traduction.
+
+
+---
+
+## Armes sans collection — inventaire ouvert le 01/09/2026
+
+Les 24 armes à collections sont terminées. Restent **28 armes qui n'ont aucune
+chaîne de succès** : leur précurseur s'obtient à la Forge mystique ou au marchand,
+pas par une collection. Il n'y a donc **rien à capturer côté collections** — mais
+leur article wiki n'a jamais été lu, et deux choses en dépendent :
+
+1. **La runestone.** 24 armes lues nomment l'Icy Runestone, zéro Mystic. Ces 28
+   sont les seules non lues, et les 12 gen2 sont précisément celles que
+   `gen2_craft_note` oppose aux 4 gen2 à collections.
+2. **Le champ `recipe`.** Il est rempli par patron générationnel, pas vérifié page
+   par page. Le même patron s'était révélé faux sur Eternity.
+
+### 12 gen2 — précurseur acheté chez Grandmaster Craftsman Hobbs
+
+| arme | type | extension |
+|---|---|---|
+| Claw of the Khan-Ur | Dagger | HoT |
+| Eureka | Mace | HoT |
+| Exordium | Greatsword | HoT |
+| Flames of War | Torch | HoT |
+| Pharus | Longbow | HoT |
+| Sharur | Hammer | HoT |
+| Shooshadoo | Focus | HoT |
+| The Binding of Ipos | focus | PoF |
+| The HMS Divinity | Rifle | HoT |
+| The Shining Blade | Sword | HoT |
+| Verdarach | Warhorn | HoT |
+| Xiuquatl | Scepter | PoF |
+
+### 16 gen3 — précurseur de Forge mystique, aucune collection
+
+| arme | type | extension |
+|---|---|---|
+| Aurene's Argument | Focus | EoD |
+| Aurene's Bite | Sword | EoD |
+| Aurene's Breath | Shortbow | EoD |
+| Aurene's Claw | Dagger | EoD |
+| Aurene's Fang | Sword | EoD |
+| Aurene's Flight | Longbow | EoD |
+| Aurene's Gaze | Pistol | EoD |
+| Aurene's Insight | Scepter | EoD |
+| Aurene's Persuasion | Torch | EoD |
+| Aurene's Rending | Axe | EoD |
+| Aurene's Scale | Longbow | EoD |
+| Aurene's Tail | Mace | EoD |
+| Aurene's Voice | Warhorn | EoD |
+| Aurene's Weight | Mace | EoD |
+| Aurene's Wing | Short bow | EoD |
+| Aurene's Wisdom | Rifle | EoD |
+
+**À capturer** : l'article wiki de chacune, soit 28 pages. Pas de sous-collection,
+pas de palier — une page par arme.
