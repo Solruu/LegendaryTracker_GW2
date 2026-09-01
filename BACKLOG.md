@@ -1008,3 +1008,32 @@ un correctif partiel ferait cohabiter deux conventions.
 
 La donnée reste **en l'état** d'ici là : le prix étant identique, le grand total
 n'est pas faux, seule l'étiquette l'est.
+
+
+---
+
+## Régionalisation complète du tracker — ouvert le 01/09/2026
+
+Objectif : le tracker entier en français, pas quelques champs. État des lieux
+chiffré sur `gw2_sources_v192.json` :
+
+| catégorie | textes distincts | emplacements | état |
+|---|---|---|---|
+| `how` en anglais, `fr: null` | 666 | 744 | proposition FR fournie |
+| `tip` / `note` en français seul | 69 | 96 | proposition EN fournie |
+| `name` de secteur / collection | 57 | 57 | **à résoudre par API** |
+
+Livrable : `gw2_traductions_v1.xlsx`, trois onglets plus une légende. Colonne
+jaune « Traduction validée » à remplir par Antoine ; vide = la proposition convient.
+
+**Convention retenue** (arbitrage du 01/09) : les noms propres GW2 restent en
+anglais dans les propositions françaises. Leur forme officielle viendra de
+`/v2/*?lang=fr` lors d'une passe ultérieure — les traduire à la main produirait
+des noms introuvables en jeu. Seule la prose est traduite.
+
+**Reste à faire après retour du tableur** : injecter les colonnes validées dans
+les sources, puis écrire la passe API qui résout les 57 noms propres et, plus
+largement, substitue les noms propres anglais des `how`.
+
+**Non traité ici** : les 3 258 `name` d'objets et d'étapes, qui sont des chaînes
+simples par convention et relèvent de la même passe API, pas d'une traduction.
