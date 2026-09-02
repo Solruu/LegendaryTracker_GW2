@@ -782,7 +782,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v200",
+    "version": "v201",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1739,7 +1739,8 @@ const SOURCES_DB = {
     "changelog_v197": "Les 52 armes du tracker sont documentees. Les huit dernieres gen2 lues : Pharus, Sharur, Shooshadoo, The Binding of Ipos, The HMS Divinity, The Shining Blade, Verdarach, Xiuquatl. 2 precurseurs, 6 gift_unique et 2 slot corriges. Shooshadoo prenait Glowing Fetish, invente, au lieu de Friendship, et etait donne Focus alors que c'est un Shield ; Xiuquatl prenait « Xiuquatl Core », invente lui aussi, au lieu de Tlehco. Six armes n'avaient aucun gift_unique. Toutes les 16 gen2 offrent DEUX recettes de Forge mystique, au choix Gift of Maguuma Mastery ou Gift of Desert Mastery. gen2_craft_note le disait deja par son asterisque ; le champ recipe, lui, ne gardait qu'une branche. Les 16 recipe portent desormais les deux. Les huit pages confirment la Mystic Runestone, ce qui clot le releve : 24 armes a precurseur de collection en Icy, 28 a precurseur achete ou forge en Mystic, 52 sur 52 lues, zero contre-exemple. Dans la foulee, les 24 armes a collections ont vu leur recipe reecrite depuis l'encadre Recipes de leur propre page, la ou elle venait encore du patron generationnel. Aucun precurseur ni gift ne bougeait — ils avaient deja ete corriges palier par palier — mais la formulation etait generique. Les 53 fiches d'armes ont desormais une recipe verifiee page a page, plus une seule ligne de patron.",
     "changelog_v198": "Passe 1 des chantiers hors armes, 20 pages. 134 conseils poses ou remplaces, 40 noms repris du wiki, 15 blocs unlock. Aurora: Awakening annoncait 7 etapes et n en portait aucune — les 7 sont creees, ordre verifie contre gw2_bits_dump. Forge Guard s Armor Collection utilise un tableau « Collectible » sans colonne Notes, que gw2_parse_collection_v2.py ne lit pas : ses 6 objets sont extraits a part et le items_ref le dit. Champ progress introduit sur la structure collections existante, mais sur un perimetre bien plus etroit que prevu. J avais capture les listes de succes eligibles des meta de maitrise ; l audit a refuse le push, et il avait raison : meta_eligible portait deja les seize listes, verifiees le 11/08. Le diff est sans appel — ma capture n apportait qu un separateur « ... » parasite et une entite HTML mal decodee. Le travail etait fait ; c est le items vide de la collection qui m a fait croire au contraire, alors que la liste vit ailleurs, exactement la ou la regle du projet la met. progress ne subsiste donc que la ou RIEN ne le porte : les quatre recursions d Eikasia, ou l API n expose aucun bit et la progression est de la Fractalline Dust, et Helping Hylek, ou c est un compteur de kraits tues. Il ne porte ni seuil ni pool — total et meta_eligible les donnent deja. RENDU JSX NON FAIT : progress n est pas encore lu par le JSX. Passe finale apres les trois lots.",
     "changelog_v199": "Passe 2 des chantiers hors armes, 20 pages. 69 conseils, 16 noms, 11 blocs unlock, et 20 renvois component poses sur Legendary Relics: Components — premiers renvois hors armes. Glimmering Resin Weapon Collector traite comme Forge Guard : tableau « Collectible » sans colonne Notes, extrait a part, 17 conseils construits depuis le type et l'objet lie. Les cinq pages de meta ont servi a RECOUPER meta_eligible, pas a le refaire. Quatre listes sur cinq correspondent nom pour nom : Shipwreck Strand 53, Mistburned Barrens 23, Long Live the Lich 48, Incursive Investigation 5. La cinquieme confirme une divergence deja notee : le wiki liste 55 objectifs a Starlit Weald contre 54 cotes API, « A Hunt for the Ages » n'ayant pas d'identifiant expose. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre ; la note le dit. how_jsx : 213 anciens conseils avaient ete conserves en posant les versions wiki. Le recoupement montre qu'ils ne font PAS doublon — similarite mediane 0,34. Le wiki dit ou aller, eux disent quoi eviter : ne pas recycler le condensateur avant Ad Infinitum II, acheter les cles chez Astora avant de partir, l'evenement qui fait disparaitre Akili. Seuls 11 etaient de vraies redites et sont supprimes ; 202 sont conserves comme conseils complementaires. Ils restent NON RENDUS — l'audit le signale, et c'est le principal enjeu de la passe JSX finale.",
-    "changelog_v200": "Passe 3 des chantiers hors armes, 17 pages. 57 conseils, 10 blocs unlock, 18 renvois component sur les six collections Visions of. Les conseils non verifies tombent a 14. Les quatre Path of the Ascension rejoignent meta_eligible : ce sont des meta sur un pool de succes PvP, 11 exiges sur 11 a 12 eligibles, pas des collections d'objets. L'audit a d'abord refuse le push parce que j'avais ecrit les entrees en [null, nom] — la page de categorie PvP n'expose pas les identifiants. Ils sont resolus par nom contre gw2_achievements_ref.json, les 47 sans exception. War Eternal recoupe : 18 contre 18, nom pour nom. C'est la sixieme meta verifiee sur six, apres les cinq de la passe 2 — meta_eligible n'a pas bouge d'une ligne. Vision I reste sans items a juste titre : c'est un meta sur ses six sous-collections Visions of, deja portees par subcollections et desormais toutes documentees. Vision II est le seul cas ou la structure ne suit pas, et il est SIGNALE, pas force : 20 sanctuaires exiges sur 24, mais un sanctuaire de maitrise est un point de carte sans identifiant de succes, donc meta_eligible ne peut pas l'accueillir, et le succes 4771 n'expose aucun bit. Le champ pool_a_modeliser dit ou vit la liste et ce qu'il faut decider."
+    "changelog_v200": "Passe 3 des chantiers hors armes, 17 pages. 57 conseils, 10 blocs unlock, 18 renvois component sur les six collections Visions of. Les conseils non verifies tombent a 14. Les quatre Path of the Ascension rejoignent meta_eligible : ce sont des meta sur un pool de succes PvP, 11 exiges sur 11 a 12 eligibles, pas des collections d'objets. L'audit a d'abord refuse le push parce que j'avais ecrit les entrees en [null, nom] — la page de categorie PvP n'expose pas les identifiants. Ils sont resolus par nom contre gw2_achievements_ref.json, les 47 sans exception. War Eternal recoupe : 18 contre 18, nom pour nom. C'est la sixieme meta verifiee sur six, apres les cinq de la passe 2 — meta_eligible n'a pas bouge d'une ligne. Vision I reste sans items a juste titre : c'est un meta sur ses six sous-collections Visions of, deja portees par subcollections et desormais toutes documentees. Vision II est le seul cas ou la structure ne suit pas, et il est SIGNALE, pas force : 20 sanctuaires exiges sur 24, mais un sanctuaire de maitrise est un point de carte sans identifiant de succes, donc meta_eligible ne peut pas l'accueillir, et le succes 4771 n'expose aucun bit. Le champ pool_a_modeliser dit ou vit la liste et ce qu'il faut decider.",
+    "changelog_v201": "Deux corrections, dont une des miennes. 1) Le champ pool_a_modeliser pose en v200 sur Vision II est RETIRE : il etait faux. J'avais annonce que les 24 sanctuaires n'avaient pas de structure d'accueil ; ils etaient deja la, sur vision_2, avec carte, point de passage et code de discussion. Je regardais l'entree vide du doublon. 2) Ce doublon est la vraie trouvaille. Vision portait DEUX entrees par succes : vision_1 et vis_meta_1 sur le 4762, vision_2 et vis_meta_2 sur le 4771. Les premieres avaient les champs editoriaux — note de deblocage, recompense, sous-collections, les 24 sanctuaires ; les secondes n'avaient que les bits de l'API et le total. Aucun conflit de valeur, donc rien ne se contredisait : la moitie de l'information etait juste rattachee a l'entree que personne ne lisait. Fusionnees, les pauvres supprimees. Regle d'audit v28 : deux collections d'une meme legendaire ne partagent pas un identifiant. C'est le motif de common_required et des listes plates d'armes, une troisieme fois. RESTE, ET C'EST DU JSX : Vision porte une TROISIEME copie de ses donnees editoriales, codee en dur dans le tracker ligne 1077 — collections.vision_1, collections.vision_2 et le tableau VISIONS_OF. L'onglet Vision rend cette copie, pas les sources. Les six collections Visions of documentees en passe 3, 42 etapes avec leurs conseils wiki, ne s'affichent donc nulle part. C'est le premier point de la passe JSX finale."
   },
   "meta_events": {
     "vb": {
@@ -53215,7 +53216,73 @@ const SOURCES_DB = {
               }
             }
           ],
-          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes"
+          "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
+          "key": "vision_1",
+          "total": 6,
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "items": [
+            {
+              "bit": 0,
+              "name": "Complete the Visions of Istan collection.",
+              "how": {
+                "fr": "Istan : la plus lourde des six, elle exige en plus la maîtrise Chevaucher les skyscales. À garder pour la fin si tu ne l'as pas.",
+                "en": "Istan: the heaviest of the six, it also requires the Riding Skyscales mastery. Save it for last if you lack it."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 1,
+              "name": "Complete the Visions of Sandswept Isles collection.",
+              "how": {
+                "fr": "Îles de Ventesable : la plus rapide, essentiellement des objets de carte. Bon point de départ.",
+                "en": "Sandswept Isles: the fastest, mostly map items. A good starting point."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 2,
+              "name": "Complete the Visions of Kourna collection.",
+              "how": {
+                "fr": "Kourna : 7 objets dont plusieurs derrière des événements de carte à horaires. Vérifie le timer avant de t'y mettre.",
+                "en": "Kourna: 7 items, several behind timed map events. Check the timer before starting."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 3,
+              "name": "Complete the Visions of Jahai collection.",
+              "how": {
+                "fr": "Jahai : couplée à la Convergence des lamentations, tu y repasseras de toute façon. À enchaîner avec l'Élégie.",
+                "en": "Jahai: paired with the Convergence of Sorrow, you'll be back there anyway. Chain it with Elegy."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 4,
+              "name": "Complete the Visions of Thunderhead Peaks collection.",
+              "how": {
+                "fr": "Pics de Chef-Tonnerre : la carte qui alimente aussi la Masse marquée de Compagnon de la forge. Double emploi, priorise-la.",
+                "en": "Thunderhead Peaks: the map that also feeds Journeyman of the Forge's Branded Mass. Double duty, prioritise it."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            },
+            {
+              "bit": 5,
+              "name": "Complete the Visions of Dragonfall collection.",
+              "how": {
+                "fr": "Chute draconique : événements de carte fréquents, la collection tombe presque seule en farmant la méta.",
+                "en": "Dragonfall: frequent map events, the collection nearly completes itself while farming the meta."
+              },
+              "how_verified": false,
+              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
+            }
+          ],
+          "fusion_ref": "fusion de vis_meta_1 le 01/09/2026 : deux entrees portaient le meme succes 4762, l'une les champs editoriaux, l'autre les bits de l'API. Aucun champ n'entrait en conflit — la pauvre ne portait que ce qui manquait a la riche."
         },
         "vision_2": {
           "id": 4771,
@@ -53651,83 +53718,9 @@ const SOURCES_DB = {
           "checked": "2026-08-13",
           "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion",
           "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
-          "pool_a_modeliser": "24 sanctuaires de maitrise existent, 20 suffisent — mais ce pool n'a pas sa place dans meta_eligible, qui indexe des SUCCES par identifiant. Un sanctuaire est un point de carte, il n'a pas d'identifiant de succes. Le succes 4771 n'expose aucun bit non plus. La liste des 24, avec carte, point de passage et code de discussion, est dans ressources/wiki/vision_ii_farsight.html et attend une decision de structure."
-        },
-        "vis_meta_1": {
-          "id": 4762,
-          "key": "vis_meta_1",
-          "name": {
-            "fr": "Vision I : Éveil",
-            "en": "Vision I: Awakening"
-          },
-          "total": 6,
-          "note": {
-            "fr": "Meta des 6 cartes LW4 — se valide quand les 6 sous-collections ci-dessous sont terminées.",
-            "en": "Meta of the 6 LWS4 maps — completes once the 6 sub-collections below are done."
-          },
-          "items": [
-            {
-              "bit": 0,
-              "name": "Complete the Visions of Istan collection.",
-              "how": {
-                "fr": "Istan : la plus lourde des six, elle exige en plus la maîtrise Chevaucher les skyscales. À garder pour la fin si tu ne l'as pas.",
-                "en": "Istan: the heaviest of the six, it also requires the Riding Skyscales mastery. Save it for last if you lack it."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            },
-            {
-              "bit": 1,
-              "name": "Complete the Visions of Sandswept Isles collection.",
-              "how": {
-                "fr": "Îles de Ventesable : la plus rapide, essentiellement des objets de carte. Bon point de départ.",
-                "en": "Sandswept Isles: the fastest, mostly map items. A good starting point."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            },
-            {
-              "bit": 2,
-              "name": "Complete the Visions of Kourna collection.",
-              "how": {
-                "fr": "Kourna : 7 objets dont plusieurs derrière des événements de carte à horaires. Vérifie le timer avant de t'y mettre.",
-                "en": "Kourna: 7 items, several behind timed map events. Check the timer before starting."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            },
-            {
-              "bit": 3,
-              "name": "Complete the Visions of Jahai collection.",
-              "how": {
-                "fr": "Jahai : couplée à la Convergence des lamentations, tu y repasseras de toute façon. À enchaîner avec l'Élégie.",
-                "en": "Jahai: paired with the Convergence of Sorrow, you'll be back there anyway. Chain it with Elegy."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            },
-            {
-              "bit": 4,
-              "name": "Complete the Visions of Thunderhead Peaks collection.",
-              "how": {
-                "fr": "Pics de Chef-Tonnerre : la carte qui alimente aussi la Masse marquée de Compagnon de la forge. Double emploi, priorise-la.",
-                "en": "Thunderhead Peaks: the map that also feeds Journeyman of the Forge's Branded Mass. Double duty, prioritise it."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            },
-            {
-              "bit": 5,
-              "name": "Complete the Visions of Dragonfall collection.",
-              "how": {
-                "fr": "Chute draconique : événements de carte fréquents, la collection tombe presque seule en farmant la méta.",
-                "en": "Dragonfall: frequent map events, the collection nearly completes itself while farming the meta."
-              },
-              "how_verified": false,
-              "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
-            }
-          ],
-          "total_ref": "compte des bits exposes par /v2/achievements"
+          "key": "vision_2",
+          "total_ref": "compte des bits exposes par /v2/achievements",
+          "fusion_ref": "fusion de vis_meta_2 le 01/09/2026 : deux entrees portaient le meme succes 4771, l'une les champs editoriaux, l'autre les bits de l'API. Aucun champ n'entrait en conflit — la pauvre ne portait que ce qui manquait a la riche."
         },
         "vis_istan": {
           "id": 4765,
@@ -55514,20 +55507,6 @@ const SOURCES_DB = {
             "en": "18 achievements. ALSO provides the Mist Shard armor pieces required by Dragonfall's 'Equipment' step: Chasing Waterfalls (9 waterfalls) → helm, My Beautiful Infrastructure (10 bridge events) → gloves, Life in the Underworld (10 Olmakhan events) → leggings, Cutting Weeds (10 Mist Warden events) → boots. A single weight class is enough."
           },
           "metaSubs": true,
-          "total_ref": "compte des bits exposes par /v2/achievements"
-        },
-        "vis_meta_2": {
-          "id": 4771,
-          "key": "vis_meta_2",
-          "name": {
-            "fr": "Vision II : Prévoyance",
-            "en": "Vision II: Farsight"
-          },
-          "total": 20,
-          "note": {
-            "fr": "/kneel à 20 Mastery Insights de la LS4 en restant à genoux 15 s (effet Meditative Rest) — se relever avant la fin ne valide pas. 24 existent, 4 inaccessibles (Rata Primus, Dunlon Springs et Ntouka Pond sous l'eau, Above the Umbral Battlegrounds en l'air). Récompense : Glimpse.",
-            "en": "/kneel at 20 LWS4 Mastery Insights, staying kneeled 15 s (Meditative Rest effect) — standing up early doesn't count. 24 exist, 4 unreachable (Rata Primus, Dunlon Springs and Ntouka Pond underwater, Above the Umbral Battlegrounds mid-air). Reward: Glimpse."
-          },
           "total_ref": "compte des bits exposes par /v2/achievements"
         }
       },

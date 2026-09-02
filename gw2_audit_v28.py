@@ -1341,6 +1341,40 @@ def check_gen3_precursor_suffix(data, errors, warnings):
             )
 
 
+def check_no_duplicate_collection_id(data, errors, warnings):
+    """Deux collections d'une meme legendaire ne partagent pas un identifiant.
+
+    Vision portait vision_1 et vis_meta_1 sur le succes 4762, vision_2 et
+    vis_meta_2 sur le 4771. Les premieres avaient les champs editoriaux — note
+    de deblocage, recompense, sous-collections, les 24 sanctuaires avec carte et
+    point de passage. Les secondes n'avaient que les bits de l'API et le total.
+    Aucun champ n'entrait en conflit, donc rien ne se contredisait a l'ecran :
+    la moitie des donnees etait simplement invisible, rattachee a l'entree que
+    le rendu ne regardait pas.
+
+    C'est le motif de common_required et des listes plates d'armes, une fois de
+    plus : deux entrees pour une meme chose finissent par diverger, ou par se
+    partager l'information sans que personne ne s'en apercoive.
+    """
+    for lid, leg in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(leg, dict):
+            continue
+        vus = {}
+        for ck, c in sorted((leg.get("collections") or {}).items()):
+            if not isinstance(c, dict):
+                continue
+            aid = c.get("id")
+            if aid is None:
+                continue
+            if aid in vus:
+                errors.append(
+                    f"legendaries/{lid} : les collections '{vus[aid]}' et '{ck}' portent "
+                    f"toutes deux le succes {aid} — une seule entree par succes"
+                )
+            else:
+                vus[aid] = ck
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1439,6 +1473,7 @@ def main() -> int:
     check_no_flat_weapon_lists(data, errors, warnings)
     check_collection_name_bilingual(data, errors, warnings)
     check_gen3_precursor_suffix(data, errors, warnings)
+    check_no_duplicate_collection_id(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
