@@ -2598,18 +2598,33 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
                           Sans lui, il faudrait remonter au bloc général et
                           chercher laquelle des sept cartes sert cette ligne. */}
                       {(() => {
+                        // hubs[].lines est un objet indexe par palier depuis la
+                        // refonte des foyers ({ t5: [...], t6: [...] }), et
+                        // no_hub une LISTE. Le code lisait encore un tableau
+                        // plat et un objet unique : d'ou le « .includes is not a
+                        // function » qui tuait l'onglet des qu'on depliait une
+                        // ligne, et un avertissement « aucun foyer » qui ne
+                        // s'affichait jamais.
+                        const lignesDuHub = (h) => {
+                          const L = h?.lines;
+                          if (Array.isArray(L)) return L;
+                          if (L && typeof L === "object") return Object.values(L).flat();
+                          return [];
+                        };
                         const mes = (matrix.farm_hubs?.hubs ?? [])
-                          .filter(h => (h.lines ?? []).includes(line.gift));
-                        const sans = matrix.farm_hubs?.no_hub?.line === line.gift;
+                          .filter(h => lignesDuHub(h).includes(line.gift));
+                        const sansEntry = (matrix.farm_hubs?.no_hub ?? [])
+                          .find(n => n.line === line.gift);
+                        const sans = !!sansEntry;
                         if (!mes.length && !sans) return null;
                         return (
                           <div style={{ marginTop: 6, paddingTop: 5, borderTop: "1px solid rgba(226,201,126,0.07)", fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
                             {sans ? (
-                              <span style={{ color: "rgba(251,146,60,0.8)" }}>{NX(matrix.farm_hubs.no_hub.why)}</span>
+                              <span style={{ color: "rgba(251,146,60,0.8)" }}>{NX(sansEntry.why)}</span>
                             ) : (
                               <span style={{ color: "rgba(74,222,128,0.75)" }}>
                                 🗺 {mes.map(h => NX(h.map)).join(" · ")}
-                                {mes.some(h => (h.lines ?? []).length > 1) &&
+                                {mes.some(h => lignesDuHub(h).length > 1) &&
                                   NX({ fr: " — sert aussi d'autres lignes", en: " — also serves other lines" })}
                               </span>
                             )}
@@ -3627,12 +3642,25 @@ export default function GW2LegendaryTracker() {
     // un cache d'avant la curation. D'où la signature de données ci-dessous, qui rend
     // l'oubli impossible : toute retouche des blocs éditoriaux change la clé.
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 17; // 17 : `name` ajouté à la charge (le diagnostic affichait le requirement)
+    const ACH_DEFS_SCHEMA = 18; // 18 : `progress` ajouté à la charge — sans cette incrémentation,
+                            // les compteurs d'Eikasia restaient servis depuis un cache d'avant
+                            // et n'affichaient qu'un tiret. La signature de données ne couvre
+                            // que meta_eligible et achievement_notes : un bloc `progress` ajouté
+                            // dans legendaries ne la change pas.
     // Signature des données éditoriales injectées dans `out` : listes curées et
     // pièges. Toute modification invalide le cache sans intervention manuelle.
     const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
     let dsig = 0;
-    for (const c of JSON.stringify([SDB?.meta_eligible ?? {}, SDB?.achievement_notes ?? {}])) {
+    // Les blocs `progress` entrent dans la signature : ils vivent dans
+    // legendaries, que la signature ne couvrait pas, et leur ajout ne changeait
+    // donc rien a la cle. Un tiret s'affichait a la place du compteur.
+    const progSig = [];
+    for (const [lid, l] of Object.entries(SDB?.legendaries ?? {})) {
+      for (const [ck, c] of Object.entries(l?.collections ?? {})) {
+        if (c?.progress) progSig.push([lid, ck, c.progress]);
+      }
+    }
+    for (const c of JSON.stringify([SDB?.meta_eligible ?? {}, SDB?.achievement_notes ?? {}, progSig])) {
       dsig = ((dsig << 5) - dsig + c.charCodeAt(0)) | 0;
     }
     const cacheKey = `gw2_ach_bits_${selectedLeg}_${lang}_s${ACH_DEFS_SCHEMA}_${(sig >>> 0).toString(36)}_${(dsig >>> 0).toString(36)}`;

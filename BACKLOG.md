@@ -1050,3 +1050,49 @@ Deux singularités relevées et conservées :
   of Desert Mastery`. `gen2_craft_note` le disait par un astérisque ; le champ
   `recipe` ne gardait qu'une branche. Les deux y figurent maintenant.
 
+
+
+---
+
+## Deux arbitrages d'interface — ouverts le 02/09/2026
+
+### ① Vision s'affiche deux fois
+
+Vision a un **onglet dédié** écrit à la main (bloc `selectedLeg === "vision"`) et,
+depuis la migration de ses collections, ses huit `vis_*` portent une `key` — ce qui
+les fait aussi passer dans le **rendu générique** piloté par les sources.
+
+Le commentaire du tracker le dit lui-même : *« le discriminant est la présence de
+`key` : seule la forme migrée la porte. Sans ce test, leur onglet afficherait deux
+fois. »* L'invariant a été rompu par la migration, pas par le rendu.
+
+**Le générique est le meilleur des deux** : il affiche la progression API réelle
+(6/7), les blocs orange de déblocage, les étapes nommées. Le dédié affiche des cases
+à cocher à 0/6.
+
+Mais le dédié porte **trois sections que le générique n'a pas** : le craft du
+Memory Essence Encapsulator, les six Requiem Experiments, et le compteur d'Elegy
+Mosaics.
+
+**Décision à prendre** : retirer l'onglet dédié en relogeant ces trois sections, ou
+retirer les `key` des huit `vis_*` et enrichir le dédié. La première va dans le sens
+du projet — une seule source, un seul rendu — mais demande de déplacer du code que je
+ne peux pas exécuter ici.
+
+### ② Les 1 978 étapes d'armes n'ont aucune route dans l'interface
+
+L'onglet Armes est une **matrice de ciblage** : il liste les 16 armes d'une
+génération, on en coche, et les onglets T6 et Composants chiffrent la sélection.
+C'est cohérent — mais cliquer une arme ne mène nulle part.
+
+Or les 53 fiches d'armes portent maintenant **1 978 étapes documentées**, avec
+conseils wiki, conseils de terrain, blocs `unlock` et renvois `component`. Elles
+vivent sous `legendaries.gen1_bolt.collections` etc., alors que l'onglet travaille
+sur une entrée agrégée `weapons`. **Aucun chemin ne relie les deux.**
+
+C'est le plus gros écart restant entre les données et ce qu'on en voit : tout le
+travail des captures est là, et invisible.
+
+**Décision à prendre** : ouvrir la fiche d'une arme au clic (onglet Collections
+alimenté par `gen*_<arme>`), ou ajouter un sélecteur d'arme au-dessus de l'onglet
+Collections existant. La seconde réutilise le rendu générique qui marche déjà.
