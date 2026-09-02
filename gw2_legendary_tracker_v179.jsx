@@ -89,6 +89,10 @@ const I18N = {
     bits_why: "volume {v} · prerequisites {p} · {a} AP",
     bits_has_prereq: "— gated behind a prerequisite.",
     bits_counter_gap: "⚙ Counter of {n} with no step list available — flag it so Claude can source it.",
+    prog_currency: "⚙ Counter: {n} {c} to accumulate — no step list, and none exists.",
+    prog_kills: "⚙ Counter: {n} {w} to defeat — no step list, and none exists.",
+    prog_generic: "⚙ Counter of {n} — no step list, and none exists.",
+    prog_repeatable: "Repeatable: the surplus is lost, it does not carry over.",
     bits_no_api: "exists in game but not exposed by the API — status cannot be tracked",
     wpn_note1: "Per weapon: precursor (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Key totals: 100 Antique Summoning Stones (capped at 17/week: 7 from the daily Dragon's End meta, 5 from Leivas, 5 from EoD strike CMs — or TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Gen 3 weapons are tradeable until first equip — a gifted one binds on use. Elder Dragon skin variants unlock via Jade Bot terminals once the base weapon is bound.",
@@ -324,6 +328,10 @@ const I18N = {
     bits_why: "volume {v} · prérequis {p} · {a} AP",
     bits_has_prereq: "— verrouillé derrière un prérequis.",
     bits_counter_gap: "⚙ Compteur de {n} sans liste d’étapes — à signaler pour sourcer le détail.",
+    prog_currency: "⚙ Compteur : {n} {c} à accumuler — pas de liste d’étapes, et il n’en existe pas.",
+    prog_kills: "⚙ Compteur : {n} {w} à vaincre — pas de liste d’étapes, et il n’en existe pas.",
+    prog_generic: "⚙ Compteur de {n} — pas de liste d’étapes, et il n’en existe pas.",
+    prog_repeatable: "Répétable : le surplus est perdu, il ne se reporte pas.",
     bits_no_api: "existe en jeu mais non exposé par l’API — statut non traçable",
     wpn_note1: "Par arme : précurseur (craft 500) + Gift of Aurene's X + Gift of Jade Mastery + Draconic Tribute. Totaux clés : 100 Antique Summoning Stones (plafond 17/sem : 7 via la méta quotidienne Trépas du dragon, 5 chez Leivas, 5 en strikes EoD CM — ou TP), 100 Jade Runestones, 38 Clovers, 5 Amalgamated Draconic Lodestones, ~3000 Research Notes.",
     wpn_note2: "Les armes gen 3 sont échangeables jusqu'au premier équipement — une arme offerte se lie à l'usage. Les variantes de skins Dragons Ancestraux se débloquent aux terminaux Jade Bot une fois l'arme de base liée.",
@@ -1073,29 +1081,16 @@ const LEGENDARIES = {
         tip: { fr: "Souvent la plus peuplée grâce aux metas Forged.", en: "Often the most populated thanks to the Forged metas." }, elegy: "4–50" },
     ],
     // ── Collections / achievements de progression ─────────────
-    collections: {
-      vision_1: {
-        id: 4762,
-        name: "Vision I: Awakening",
-        reward: "Shattered Gift of Prescience",
-        note: { fr: "⚠ Déblocage : acheter la Trance Stone chez n'importe quel Volatile Magic Collector (LW4). Prérequis compte : Skyscale + maîtrise Rift Repair. Prévoir 6 Memory Essence Encapsulators (1 par sous-collection, achat Volatile Magic) — les garder en inventaire pendant les 6 collections. Récompense : Shattered Gift of Prescience (à réparer ensuite en Gift of Prescience).", en: "⚠ Unlock: buy the Trance Stone from any Volatile Magic Collector (LWS4). Account prerequisites: Skyscale + Rift Repair mastery. Get 6 Memory Essence Encapsulators (1 per sub-collection, Volatile Magic purchase) — keep them in your inventory throughout the 6 collections. Reward: Shattered Gift of Prescience (repaired into the Gift of Prescience afterwards)." },
-        subcollections: [
-          { id: 4765, name: "Visions of Istan",             map: { fr: "Domaine d'Istan", en: "Domain of Istan" },        how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire). Istan : Fragment au-dessus du PoI Plaza of Resurgence (voler sur la porte puis monter) · Allies = Partially Corrupted Data Entry près de Chalon Docks wp · Enemies = Warden Amala au Mordant Crescent Great Hall.", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin. Istan: Fragment above the Plaza of Resurgence PoI (fly onto the gate, then ascend) · Allies = Partially Corrupted Data Entry near Chalon Docks wp · Enemies = Warden Amala at the Mordant Crescent Great Hall." } },
-          { id: 4760, name: "Visions of Kourna",            map: { fr: "Domaine de Kourna", en: "Domain of Kourna" },       how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire).", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin." } },
-          { id: 4770, name: "Visions of Jahai",             map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" },           how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire).", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin." } },
-          { id: 4774, name: "Visions of Sandswept Isles",   map: { fr: "Îles de Ventesable", en: "Sandswept Isles" },        how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire).", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin." } },
-          { id: 4764, name: "Visions of Thunderhead Peaks", map: { fr: "Pics de Chef-Tonnerre", en: "Thunderhead Peaks" },      how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire).", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin." } },
-          { id: 4757, name: "Visions of Dragonfall",        map: { fr: "Chute draconique", en: "Dragonfall" },             how: { fr: "3 étapes : Vision of Dragons (Memory Fragment à trouver), Vision of Allies (interaction avec un PNJ/objet), Vision of Enemies (vaincre le boss de zone en gardant un Memory Essence Encapsulator en inventaire).", en: "~6 steps: Dragons (Memory Fragment), Allies (interaction), Enemies (map boss, holding a Memory Essence Encapsulator), Landscapes (skyscale rift), Equipment (crafting chain — details under the step) and the episode skin." } },
-        ],
-      },
-      vision_2: {
-        id: 4771,
-        name: "Vision II: Farsight",
-        reward: "Glimpse",
-        note: { fr: "⚠ Correction v58 : ce n'est PAS la chaîne Requiem. Il faut faire /kneel à 20 Mastery Insights de la LS4 et RESTER à genoux 15 s (effet Meditative Rest) — se relever avant la fin ne valide pas l'étape. 24 insights existent, 20 suffisent : 4 sont inaccessibles (Rata Primus, Dunlon Springs et Ntouka Pond sous l'eau, Above the Umbral Battlegrounds en l'air). Récompense : Glimpse.", en: "⚠ v58 fix: this is NOT the Requiem chain. You must /kneel at 20 LWS4 Mastery Insights and STAY kneeling for 15 s (Meditative Rest effect) — standing up early doesn't count. 24 insights exist, 20 are enough: 4 are unreachable (Rata Primus, Dunlon Springs and Ntouka Pond underwater, Above the Umbral Battlegrounds in mid-air). Reward: Glimpse." },
-        subcollections: [],
-      },
-    },
+    // Marqueur, plus une copie. Le contenu editorial de Vision — note de
+    // deblocage, recompense, sous-collections — vivait ici EN TROISIEME
+    // exemplaire, apres vision_1/vision_2 et vis_meta_1/vis_meta_2 dans les
+    // sources. Personne ne le lisait : l'onglet Vision rend `visionCollections`
+    // pour la progression et SOURCES_DB pour les etapes.
+    // Cette cle reste parce qu'elle SERT DE DRAPEAU : `!T.collections` masque la
+    // liste generique de succes pour les legendaires qui ont leur propre onglet.
+    // La vider preserve ce comportement a l'identique ; lui donner un vrai nom
+    // demanderait de toucher a la condition, donc a d'autres legendaires.
+    collections: {},
     // ── Requiem collections (source d'Elegy Mosaic) ───────────
     requiem: {
       note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète en Jahai Bluffs via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
@@ -2139,6 +2134,7 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
                 )}
               </div>
               <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
+              <FieldTip tip={item.how_jsx} NX={NX} />
             </div>
           </div>
         );
@@ -2149,6 +2145,26 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
 
 // Code de chat d'un point de passage, copiable en un clic — comme sur le wiki.
 // La cible de clic doit rester large sur mobile, d'ou le padding.
+// Conseil de terrain : ce que le wiki ne dit pas.
+// `how` vient du wiki — ou aller, quoi ramasser. `how_jsx` vient du jeu :
+// l'objet a ne pas recycler, la cle a acheter avant de partir, l'evenement
+// qui fait disparaitre le PNJ. Les deux ont ete confrontes un a un le
+// 01/09/2026 : similarite mediane 0,34, et les 11 vraies redites supprimees.
+// Ce qui reste ne fait pas doublon et restait invisible faute de rendu.
+function FieldTip({ tip, NX }) {
+  if (!tip) return null;
+  const txt = NX(tip);
+  if (!txt) return null;
+  return (
+    <div style={{
+      fontSize: 10, marginTop: 3, paddingLeft: 6,
+      borderLeft: "2px solid rgba(226,201,126,0.28)",
+      color: "rgba(226,201,126,0.62)", fontFamily: "'Crimson Text', serif",
+      lineHeight: 1.5, fontStyle: "italic",
+    }}>{txt}</div>
+  );
+}
+
 function ChatCode({ code, copied, onCopy }) {
   if (!code) return null;
   const isMe = copied === code;
@@ -3793,9 +3809,23 @@ export default function GW2LegendaryTracker() {
         // Détecteur d'angles morts : un succès sans bits dont le palier final dépasse 1
         // est un compteur ; s'il n'a aucune liste d'étapes, il nous manque une source.
         // Se signale tout seul plutôt que de dépendre d'un repérage manuel sur le nom.
+        // Un compteur peut n'avoir aucune etape parce qu'il n'en existe pas :
+        // les recursions d'Eikasia comptent de la Fractalline Dust, Helping
+        // Hylek compte des krait tues. Le bloc `progress` des sources le dit.
+        // Sans lui on alerte, avec lui on explique — meme chemin, pas de
+        // branche parallele.
+        const progressParId = {};
+        for (const l of Object.values(
+          (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.legendaries ?? {})) {
+          for (const c of Object.values(l?.collections ?? {})) {
+            if (c?.progress && c?.id != null) progressParId[String(c.id)] = c.progress;
+          }
+        }
         for (const d of defs) {
           const o = out[String(d.id)];
           if (!o || (d.bits ?? []).length > 0 || (o.subs ?? []).length > 0) continue;
+          const pg = progressParId[String(d.id)];
+          if (pg) { o.progress = pg; continue; }
           if ((o.tierMax ?? 0) > 1) o.counterNoSteps = true;
         }
         setAchBitsDefs(out);
@@ -5761,6 +5791,7 @@ export default function GW2LegendaryTracker() {
                             <div style={{ flex: 1 }}>
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
+                              {missing && <FieldTip tip={item.how_jsx} NX={NX} />}
                               {/* Prérequis chiffrés : total + restant selon les étapes déjà validées */}
                               {missing && item.requirements && (() => {
                                 const RQ = item.requirements;
@@ -6080,6 +6111,7 @@ export default function GW2LegendaryTracker() {
                             )}
                           </div>
                           <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(item.how)}</div>
+                          <FieldTip tip={item.how_jsx} NX={NX} />
                         </div>
                       </div>
                     );
@@ -6108,14 +6140,36 @@ export default function GW2LegendaryTracker() {
         const v1Done = vc.vision_1?.done ?? false;
         const v2Done = vc.vision_2?.done ?? false;
 
+        // Les etapes viennent des sources, pas d'une copie locale. Le tableau
+        // ne garde que la cle de progression `vc`, qui vient de la synchro API
+        // et n'a pas d'equivalent cote sources, et l'id du succes qui fait le
+        // pont. Les six collections Visions of, 42 etapes avec leurs conseils
+        // wiki, etaient documentees depuis le 01/09 et ne s'affichaient nulle
+        // part : elles vivaient dans les sources pendant que cet onglet lisait
+        // une troisieme copie codee en dur ici meme.
+        const VISION_SRC = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
+          ?.legendaries?.vision?.collections) ?? {};
+        const parIdVision = {};
+        for (const c of Object.values(VISION_SRC)) {
+          if (c?.id != null) parIdVision[String(c.id)] = c;
+        }
         const VISIONS_OF = [
-          { key: "vision_istan",       label: "Visions of Istan",             map: { fr: "Domaine d'Istan", en: "Domain of Istan" } },
-          { key: "vision_kourna",      label: "Visions of Kourna",            map: { fr: "Domaine de Kourna", en: "Domain of Kourna" } },
-          { key: "vision_jahai",       label: "Visions of Jahai",             map: { fr: "Promontoire de Jahai", en: "Jahai Bluffs" } },
-          { key: "vision_sandswept",   label: "Visions of Sandswept Isles",   map: { fr: "Îles de Ventesable", en: "Sandswept Isles" } },
-          { key: "vision_thunderhead", label: "Visions of Thunderhead Peaks", map: { fr: "Pics de Chef-Tonnerre", en: "Thunderhead Peaks" } },
-          { key: "vision_dragonfall",  label: "Visions of Dragonfall",        map: { fr: "Chute draconique", en: "Dragonfall" } },
-        ];
+          { key: "vision_istan",       id: 4765 },
+          { key: "vision_kourna",      id: 4760 },
+          { key: "vision_jahai",       id: 4770 },
+          { key: "vision_sandswept",   id: 4774 },
+          { key: "vision_thunderhead", id: 4764 },
+          { key: "vision_dragonfall",  id: 4757 },
+        ].map(v => {
+          const src = parIdVision[String(v.id)];
+          return {
+            ...v,
+            src,
+            label: (src?.name?.en) ?? v.key,
+            map: src?.map ?? null,
+            items: src?.items ?? [],
+          };
+        });
         const v1Count = VISIONS_OF.filter(v => vc[v.key]?.done).length;
 
         const CONVERGENCE = [
@@ -6171,8 +6225,11 @@ export default function GW2LegendaryTracker() {
                 const cur  = vc[v.key]?.current ?? 0;
                 const max  = vc[v.key]?.max ?? 0;
                 const isLast = i === VISIONS_OF.length - 1;
+                const ouvert = visionSubExpanded === v.key;
                 return (
-                  <div key={v.key} style={{ padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "center", gap: 8 }}>
+                  <React.Fragment key={v.key}>
+                  <div onClick={() => v.items.length > 0 && setVisionSubExpanded(ouvert ? null : v.key)}
+                    style={{ cursor: v.items.length > 0 ? "pointer" : "default", padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.5)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
                     </div>
@@ -6183,7 +6240,26 @@ export default function GW2LegendaryTracker() {
                     {hasData && !done && max > 0 && (
                       <span style={{ fontSize: 10, color: "rgba(226,201,126,0.4)" }}>{cur}/{max}</span>
                     )}
+                    {v.items.length > 0 && (
+                      <span style={{ fontSize: 10, color: "rgba(226,201,126,0.25)", marginLeft: 8 }}>
+                        {ouvert ? "\u25B2" : "\u25BC"}
+                      </span>
+                    )}
                   </div>
+                  {ouvert && (
+                    <div style={{ borderLeft: "1px solid rgba(167,139,250,0.2)", borderRight: "1px solid rgba(167,139,250,0.2)", background: "rgba(0,0,0,0.12)", padding: "4px 13px 8px 33px" }}>
+                      {v.items.map((item, k) => (
+                        <div key={k} style={{ padding: "5px 0", borderBottom: k < v.items.length - 1 ? "1px solid rgba(226,201,126,0.05)" : "none" }}>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(226,201,126,0.85)" }}>{item.name}</div>
+                          {item.how && (
+                            <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
+                          )}
+                          <FieldTip tip={item.how_jsx} NX={NX} />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  </React.Fragment>
                 );
               })}
               {/* ── Required craft: Memory Essence Encapsulator ── */}
@@ -6685,6 +6761,16 @@ export default function GW2LegendaryTracker() {
                           {def.desc ? <div style={{ marginTop: 3, fontStyle: "italic", opacity: 0.8 }}>{def.desc}</div> : null}
                           {locked && def.lockedTxt ? <div style={{ marginTop: 3, color: "rgba(251,146,60,0.7)" }}>🔒 {def.lockedTxt}</div> : null}
                           {!def.req && !def.desc && <div style={{ fontStyle: "italic", opacity: 0.6 }}>—</div>}
+                          {def.progress && (
+                            <div style={{ marginTop: 5, fontSize: "10px", color: "rgba(226,201,126,0.7)" }}>
+                              {def.progress.kind === "currency"
+                                ? t("prog_currency", { n: def.tierMax, c: def.progress.currency_label ? NX(def.progress.currency_label) : def.progress.currency })
+                                : def.progress.kind === "kills"
+                                  ? t("prog_kills", { n: def.tierMax, w: NX(def.progress.what) || def.progress.what })
+                                  : t("prog_generic", { n: def.tierMax })}
+                              {def.progress.repeatable ? " " + t("prog_repeatable") : ""}
+                            </div>
+                          )}
                           {def.counterNoSteps && (
                             <div style={{ marginTop: 5, fontSize: "10px", color: "rgba(251,146,60,0.8)" }}>{t("bits_counter_gap", { n: def.tierMax })}</div>
                           )}
