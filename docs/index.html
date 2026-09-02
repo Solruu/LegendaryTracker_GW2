@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v202",
+    "version": "v203",
     "last_updated": "2026-08-13",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -1749,7 +1749,8 @@ const SOURCES_DB = {
     "changelog_v199": "Passe 2 des chantiers hors armes, 20 pages. 69 conseils, 16 noms, 11 blocs unlock, et 20 renvois component poses sur Legendary Relics: Components — premiers renvois hors armes. Glimmering Resin Weapon Collector traite comme Forge Guard : tableau « Collectible » sans colonne Notes, extrait a part, 17 conseils construits depuis le type et l'objet lie. Les cinq pages de meta ont servi a RECOUPER meta_eligible, pas a le refaire. Quatre listes sur cinq correspondent nom pour nom : Shipwreck Strand 53, Mistburned Barrens 23, Long Live the Lich 48, Incursive Investigation 5. La cinquieme confirme une divergence deja notee : le wiki liste 55 objectifs a Starlit Weald contre 54 cotes API, « A Hunt for the Ages » n'ayant pas d'identifiant expose. La liste reste alignee sur l'API, qui est ce que le tracker peut suivre ; la note le dit. how_jsx : 213 anciens conseils avaient ete conserves en posant les versions wiki. Le recoupement montre qu'ils ne font PAS doublon — similarite mediane 0,34. Le wiki dit ou aller, eux disent quoi eviter : ne pas recycler le condensateur avant Ad Infinitum II, acheter les cles chez Astora avant de partir, l'evenement qui fait disparaitre Akili. Seuls 11 etaient de vraies redites et sont supprimes ; 202 sont conserves comme conseils complementaires. Ils restent NON RENDUS — l'audit le signale, et c'est le principal enjeu de la passe JSX finale.",
     "changelog_v200": "Passe 3 des chantiers hors armes, 17 pages. 57 conseils, 10 blocs unlock, 18 renvois component sur les six collections Visions of. Les conseils non verifies tombent a 14. Les quatre Path of the Ascension rejoignent meta_eligible : ce sont des meta sur un pool de succes PvP, 11 exiges sur 11 a 12 eligibles, pas des collections d'objets. L'audit a d'abord refuse le push parce que j'avais ecrit les entrees en [null, nom] — la page de categorie PvP n'expose pas les identifiants. Ils sont resolus par nom contre gw2_achievements_ref.json, les 47 sans exception. War Eternal recoupe : 18 contre 18, nom pour nom. C'est la sixieme meta verifiee sur six, apres les cinq de la passe 2 — meta_eligible n'a pas bouge d'une ligne. Vision I reste sans items a juste titre : c'est un meta sur ses six sous-collections Visions of, deja portees par subcollections et desormais toutes documentees. Vision II est le seul cas ou la structure ne suit pas, et il est SIGNALE, pas force : 20 sanctuaires exiges sur 24, mais un sanctuaire de maitrise est un point de carte sans identifiant de succes, donc meta_eligible ne peut pas l'accueillir, et le succes 4771 n'expose aucun bit. Le champ pool_a_modeliser dit ou vit la liste et ce qu'il faut decider.",
     "changelog_v201": "Deux corrections, dont une des miennes. 1) Le champ pool_a_modeliser pose en v200 sur Vision II est RETIRE : il etait faux. J'avais annonce que les 24 sanctuaires n'avaient pas de structure d'accueil ; ils etaient deja la, sur vision_2, avec carte, point de passage et code de discussion. Je regardais l'entree vide du doublon. 2) Ce doublon est la vraie trouvaille. Vision portait DEUX entrees par succes : vision_1 et vis_meta_1 sur le 4762, vision_2 et vis_meta_2 sur le 4771. Les premieres avaient les champs editoriaux — note de deblocage, recompense, sous-collections, les 24 sanctuaires ; les secondes n'avaient que les bits de l'API et le total. Aucun conflit de valeur, donc rien ne se contredisait : la moitie de l'information etait juste rattachee a l'entree que personne ne lisait. Fusionnees, les pauvres supprimees. Regle d'audit v28 : deux collections d'une meme legendaire ne partagent pas un identifiant. C'est le motif de common_required et des listes plates d'armes, une troisieme fois. RESTE, ET C'EST DU JSX : Vision porte une TROISIEME copie de ses donnees editoriales, codee en dur dans le tracker ligne 1077 — collections.vision_1, collections.vision_2 et le tableau VISIONS_OF. L'onglet Vision rend cette copie, pas les sources. Les six collections Visions of documentees en passe 3, 42 etapes avec leurs conseils wiki, ne s'affichent donc nulle part. C'est le premier point de la passe JSX finale. PASSE JSX FAITE — tracker v179. Quatre points. 1) Composant FieldTip : les 259 how_jsx s'affichent enfin, en italique sous le conseil wiki, aux trois endroits ou une etape est rendue. L'avertissement « champ editorial jamais rendu » de l'audit a disparu. 2) progress se greffe sur counterNoSteps, le mecanisme qui existait deja : au lieu d'alerter « compteur sans liste d'etapes, a signaler », le tracker dit ce qui se compte — 150 poussieres fractallines, 25 krait — et precise que le surplus d'Infinite Recursion est perdu. Meme chemin, pas de branche. 3) VISIONS_OF n'est plus code en dur : le tableau ne garde que la cle de progression, qui vient de la synchro API et n'a pas d'equivalent cote sources, et l'id du succes qui fait le pont. Les six collections deviennent depliables et montrent leurs 42 etapes avec conseils wiki et conseils de terrain. 4) LEGENDARIES.vision.collections est vide de son contenu editorial, la troisieme copie. La cle elle-meme est CONSERVEE : elle sert de drapeau ligne 856, « !T.collections » masque la liste generique de succes. La supprimer aurait fait reapparaitre un doublon d'affichage. A renommer un jour, mais la condition touche d'autres legendaires. meta_eligible n'a rien demande : il etait deja cable et generique, les quatre Path of the Ascension sont reprises telles quelles, et la signature de donnees du cache invalide toute seule.",
-    "changelog_v202": "Trois correctifs apres validation d'Antoine dans l'interface. 1) L'onglet T6 plantait des qu'on depliait une ligne : « .includes is not a function ». farm_hubs.hubs[].lines est un objet indexe par palier depuis la refonte des foyers ({t5:[...], t6:[...]}) et le code le lisait encore comme un tableau plat. Corrige par un aplatissement explicite. Au meme endroit, no_hub est une LISTE et le code faisait no_hub.line === ... sur elle : l'avertissement « aucun foyer ne sert cette ligne » ne s'est jamais affiche depuis la refonte. Corrige aussi. 2) Eikasia n'affichait qu'un tiret la ou progress devait parler. Le bloc etait bien lu, mais servi depuis un cache d'avant : ACH_DEFS_SCHEMA n'avait pas ete incremente alors que la FORME de la charge changeait, et la signature de donnees ne couvre que meta_eligible et achievement_notes. Schema porte a 18, et les blocs progress entrent desormais dans la signature pour que le piege ne se represente pas. Le commentaire du fichier decrivait exactement cette erreur ; je l'ai commise quand meme. 3) Vision s'affichait en double. La cause immediate est de moi : en fusionnant les doublons en v201 j'ai aligne les cles de vision_1 et vision_2, or `key` est le discriminant qui decide si une collection alimente le rendu generique. Vision ayant son propre onglet, elle passait dans les deux. Les cles repassent a nul. RESTE : les huit collections vis_* portent des cles depuis leur migration et s'affichent donc elles aussi deux fois — cela precede mon intervention. Le doublon demande un arbitrage, decrit dans BACKLOG.md."
+    "changelog_v202": "Trois correctifs apres validation d'Antoine dans l'interface. 1) L'onglet T6 plantait des qu'on depliait une ligne : « .includes is not a function ». farm_hubs.hubs[].lines est un objet indexe par palier depuis la refonte des foyers ({t5:[...], t6:[...]}) et le code le lisait encore comme un tableau plat. Corrige par un aplatissement explicite. Au meme endroit, no_hub est une LISTE et le code faisait no_hub.line === ... sur elle : l'avertissement « aucun foyer ne sert cette ligne » ne s'est jamais affiche depuis la refonte. Corrige aussi. 2) Eikasia n'affichait qu'un tiret la ou progress devait parler. Le bloc etait bien lu, mais servi depuis un cache d'avant : ACH_DEFS_SCHEMA n'avait pas ete incremente alors que la FORME de la charge changeait, et la signature de donnees ne couvre que meta_eligible et achievement_notes. Schema porte a 18, et les blocs progress entrent desormais dans la signature pour que le piege ne se represente pas. Le commentaire du fichier decrivait exactement cette erreur ; je l'ai commise quand meme. 3) Vision s'affichait en double. La cause immediate est de moi : en fusionnant les doublons en v201 j'ai aligne les cles de vision_1 et vision_2, or `key` est le discriminant qui decide si une collection alimente le rendu generique. Vision ayant son propre onglet, elle passait dans les deux. Les cles repassent a nul. RESTE : les huit collections vis_* portent des cles depuis leur migration et s'affichent donc elles aussi deux fois — cela precede mon intervention. Le doublon demande un arbitrage, decrit dans BACKLOG.md.",
+    "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste."
   },
   "meta_events": {
     "vb": {
@@ -53245,7 +53246,7 @@ const SOURCES_DB = {
             }
           ],
           "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
-          "key": null,
+          "key": "vision_1",
           "total": 6,
           "total_ref": "compte des bits exposes par /v2/achievements",
           "items": [
@@ -53311,7 +53312,7 @@ const SOURCES_DB = {
             }
           ],
           "fusion_ref": "fusion de vis_meta_1 le 01/09/2026 : deux entrees portaient le meme succes 4762, l'une les champs editoriaux, l'autre les bits de l'API. Aucun champ n'entrait en conflit — la pauvre ne portait que ce qui manquait a la riche.",
-          "key_null_ref": "`key` reste nul volontairement. Le tracker s'en sert comme discriminant : seules les collections portant une `key` alimentent le rendu generique. Vision a son propre onglet, donc lui donner une cle la faisait afficher DEUX fois. Je l'avais posee le 01/09 en alignant les cles apres la fusion des doublons — c'etait l'erreur."
+          "key_ref": "`key` retablie le 02/09 : l'onglet dedie de Vision ne rend plus ses collections, elles passent toutes par le rendu generique. La cle est ce qui les y fait entrer."
         },
         "vision_2": {
           "id": 4771,
@@ -53747,10 +53748,10 @@ const SOURCES_DB = {
           "checked": "2026-08-13",
           "ref": "guildjen:legendary-accessory-vision-guide (maj 19/05/2026) + wiki:Vision_II:_Farsight et sa page de discussion",
           "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
-          "key": null,
+          "key": "vision_2",
           "total_ref": "compte des bits exposes par /v2/achievements",
           "fusion_ref": "fusion de vis_meta_2 le 01/09/2026 : deux entrees portaient le meme succes 4771, l'une les champs editoriaux, l'autre les bits de l'API. Aucun champ n'entrait en conflit — la pauvre ne portait que ce qui manquait a la riche.",
-          "key_null_ref": "`key` reste nul volontairement. Le tracker s'en sert comme discriminant : seules les collections portant une `key` alimentent le rendu generique. Vision a son propre onglet, donc lui donner une cle la faisait afficher DEUX fois. Je l'avais posee le 01/09 en alignant les cles apres la fusion des doublons — c'etait l'erreur."
+          "key_ref": "`key` retablie le 02/09 : l'onglet dedie de Vision ne rend plus ses collections, elles passent toutes par le rendu generique. La cle est ce qui les y fait entrer."
         },
         "vis_istan": {
           "id": 4765,
@@ -68297,8 +68298,6 @@ function GW2LegendaryTracker() {
         const vc = visionCollections;
         const hasData = Object.keys(vc).length > 0;
 
-        const v1Done = vc.vision_1?.done ?? false;
-        const v2Done = vc.vision_2?.done ?? false;
 
         // Les etapes viennent des sources, pas d'une copie locale. Le tableau
         // ne garde que la cle de progression `vc`, qui vient de la synchro API
@@ -68307,36 +68306,10 @@ function GW2LegendaryTracker() {
         // wiki, etaient documentees depuis le 01/09 et ne s'affichaient nulle
         // part : elles vivaient dans les sources pendant que cet onglet lisait
         // une troisieme copie codee en dur ici meme.
-        const VISION_SRC = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
-          ?.legendaries?.vision?.collections) ?? {};
-        const parIdVision = {};
-        for (const c of Object.values(VISION_SRC)) {
-          if (c?.id != null) parIdVision[String(c.id)] = c;
-        }
-        const VISIONS_OF = [
-          { key: "vision_istan",       id: 4765 },
-          { key: "vision_kourna",      id: 4760 },
-          { key: "vision_jahai",       id: 4770 },
-          { key: "vision_sandswept",   id: 4774 },
-          { key: "vision_thunderhead", id: 4764 },
-          { key: "vision_dragonfall",  id: 4757 },
-        ].map(v => {
-          const src = parIdVision[String(v.id)];
-          return {
-            ...v,
-            src,
-            label: (src?.name?.en) ?? v.key,
-            map: src?.map ?? null,
-            items: src?.items ?? [],
-          };
-        });
-        const v1Count = VISIONS_OF.filter(v => vc[v.key]?.done).length;
-
-        const CONVERGENCE = [
-          { key: "vision_convergence_1", label: "The Convergence of Sorrow I: Elegy",   note: { fr: "6 items Elegy — liés aux Requiem Armor collections", en: "6 Elegy items — tied to the Requiem Armor collections" } },
-          { key: "vision_convergence_2", label: "The Convergence of Sorrow II: Requiem", note: { fr: "6 items Requiem — suite de Elegy", en: "6 Requiem items — follow-up to Elegy" } },
-        ];
-        const convCount = CONVERGENCE.filter(c => vc[c.key]?.done).length;
+        // Vision I, Vision II et leurs sous-collections sont rendues par le bloc
+        // generique pilote par les sources. Ce qui suit ne garde que ce que le
+        // generique ne porte pas : le craft de l'Encapsulator et les six Requiem
+        // Experiments, qui ne sont pas dans les sources.
 
         const REQUIEM = [
           { key: "requiem_1", label: "Requiem: Experiment 1" },
@@ -68362,66 +68335,12 @@ function GW2LegendaryTracker() {
               </div>
             </div>
 
-            {/* ── VISION I : Awakening ── */}
+            {/* Vision I et ses six sous-collections sont rendues par le bloc
+                generique pilote par les sources : progression API reelle, blocs
+                de deblocage, etapes nommees. Les lister ici aussi les affichait
+                deux fois, avec une version moins riche. Seul reste ci-dessous ce
+                que le generique ne porte pas : le craft de l'Encapsulator. */}
             <div style={{ margin: "10px 14px 0" }}>
-              <div style={{ padding: "10px 13px", background: v1Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v1Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: v1Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v1Done ? "✓ " : ""}{NX("Vision I: Awakening")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
-                    {t("vision_reward_1")}
-                  </div>
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: v1Done ? "#4ade80" : C }}>{v1Count}<span style={{ fontSize: 10, opacity: 0.5 }}>/6</span></div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, padding: "6px 13px 8px" }}>
-                <div className="prog-bar">
-                  <div className="prog-fill" style={{ width: `${(v1Count/6)*100}%`, background: v1Done ? "linear-gradient(90deg,#16a34a,#4ade80)" : `linear-gradient(90deg,${C}80,${C})` }} />
-                </div>
-              </div>
-              {VISIONS_OF.map((v, i) => {
-                const done = vc[v.key]?.done ?? false;
-                const cur  = vc[v.key]?.current ?? 0;
-                const max  = vc[v.key]?.max ?? 0;
-                const isLast = i === VISIONS_OF.length - 1;
-                const ouvert = visionSubExpanded === v.key;
-                return (
-                  <React.Fragment key={v.key}>
-                  <div onClick={() => v.items.length > 0 && setVisionSubExpanded(ouvert ? null : v.key)}
-                    style={{ cursor: v.items.length > 0 ? "pointer" : "default", padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.5)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(v.label)}</span>
-                      <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", marginLeft: 7, background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(v.map)}</span>
-                    </div>
-                    {hasData && !done && max > 0 && (
-                      <span style={{ fontSize: 10, color: "rgba(226,201,126,0.4)" }}>{cur}/{max}</span>
-                    )}
-                    {v.items.length > 0 && (
-                      <span style={{ fontSize: 10, color: "rgba(226,201,126,0.25)", marginLeft: 8 }}>
-                        {ouvert ? "\u25B2" : "\u25BC"}
-                      </span>
-                    )}
-                  </div>
-                  {ouvert && (
-                    <div style={{ borderLeft: "1px solid rgba(167,139,250,0.2)", borderRight: "1px solid rgba(167,139,250,0.2)", background: "rgba(0,0,0,0.12)", padding: "4px 13px 8px 33px" }}>
-                      {v.items.map((item, k) => (
-                        <div key={k} style={{ padding: "5px 0", borderBottom: k < v.items.length - 1 ? "1px solid rgba(226,201,126,0.05)" : "none" }}>
-                          <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(226,201,126,0.85)" }}>{item.name}</div>
-                          {item.how && (
-                            <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
-                          )}
-                          <FieldTip tip={item.how_jsx} NX={NX} />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  </React.Fragment>
-                );
-              })}
               {/* ── Required craft: Memory Essence Encapsulator ── */}
               {(() => {
                 const mee = SOURCES_DB?.craft_components?.memory_essence_encapsulator;
@@ -68457,40 +68376,10 @@ function GW2LegendaryTracker() {
               })()}
             </div>
 
-            {/* ── VISION II : Farsight (Convergence of Sorrow) ── */}
-            <div style={{ margin: "10px 14px 0" }}>
-              <div style={{ padding: "10px 13px", background: v2Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v2Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: v2Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v2Done ? "✓ " : ""}{NX("Vision II: Farsight")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
-                    {t("vision_reward_2")}
-                  </div>
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: v2Done ? "#4ade80" : C }}>{convCount}<span style={{ fontSize: 10, opacity: 0.5 }}>/2</span></div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, padding: "6px 13px 8px" }}>
-                <div className="prog-bar">
-                  <div className="prog-fill" style={{ width: `${(convCount/2)*100}%`, background: v2Done ? "linear-gradient(90deg,#16a34a,#4ade80)" : `linear-gradient(90deg,${C}80,${C})` }} />
-                </div>
-              </div>
-              {CONVERGENCE.map((c, i) => {
-                const done = vc[c.key]?.done ?? false;
-                const isLast = i === CONVERGENCE.length - 1;
-                return (
-                  <div key={c.key} style={{ padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "flex-start", gap: 8 }}>
-                    <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.5)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
-                      {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(c.label)}</div>
-                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(c.note)}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Vision II et les deux Convergence of Sorrow passent aussi par le
+                bloc generique. Ne reste ici que le compteur d'Elegy Mosaics, qui
+                agrege les six Requiem Experiments — ceux-la ne sont pas dans les
+                sources et vivent encore en dur plus bas. */}
 
             {/* ── REQUIEM Experiments (Elegy Mosaics) ── */}
             <div style={{ margin: "10px 14px 0" }}>

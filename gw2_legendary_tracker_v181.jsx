@@ -6165,8 +6165,6 @@ export default function GW2LegendaryTracker() {
         const vc = visionCollections;
         const hasData = Object.keys(vc).length > 0;
 
-        const v1Done = vc.vision_1?.done ?? false;
-        const v2Done = vc.vision_2?.done ?? false;
 
         // Les etapes viennent des sources, pas d'une copie locale. Le tableau
         // ne garde que la cle de progression `vc`, qui vient de la synchro API
@@ -6175,36 +6173,10 @@ export default function GW2LegendaryTracker() {
         // wiki, etaient documentees depuis le 01/09 et ne s'affichaient nulle
         // part : elles vivaient dans les sources pendant que cet onglet lisait
         // une troisieme copie codee en dur ici meme.
-        const VISION_SRC = ((typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
-          ?.legendaries?.vision?.collections) ?? {};
-        const parIdVision = {};
-        for (const c of Object.values(VISION_SRC)) {
-          if (c?.id != null) parIdVision[String(c.id)] = c;
-        }
-        const VISIONS_OF = [
-          { key: "vision_istan",       id: 4765 },
-          { key: "vision_kourna",      id: 4760 },
-          { key: "vision_jahai",       id: 4770 },
-          { key: "vision_sandswept",   id: 4774 },
-          { key: "vision_thunderhead", id: 4764 },
-          { key: "vision_dragonfall",  id: 4757 },
-        ].map(v => {
-          const src = parIdVision[String(v.id)];
-          return {
-            ...v,
-            src,
-            label: (src?.name?.en) ?? v.key,
-            map: src?.map ?? null,
-            items: src?.items ?? [],
-          };
-        });
-        const v1Count = VISIONS_OF.filter(v => vc[v.key]?.done).length;
-
-        const CONVERGENCE = [
-          { key: "vision_convergence_1", label: "The Convergence of Sorrow I: Elegy",   note: { fr: "6 items Elegy — liés aux Requiem Armor collections", en: "6 Elegy items — tied to the Requiem Armor collections" } },
-          { key: "vision_convergence_2", label: "The Convergence of Sorrow II: Requiem", note: { fr: "6 items Requiem — suite de Elegy", en: "6 Requiem items — follow-up to Elegy" } },
-        ];
-        const convCount = CONVERGENCE.filter(c => vc[c.key]?.done).length;
+        // Vision I, Vision II et leurs sous-collections sont rendues par le bloc
+        // generique pilote par les sources. Ce qui suit ne garde que ce que le
+        // generique ne porte pas : le craft de l'Encapsulator et les six Requiem
+        // Experiments, qui ne sont pas dans les sources.
 
         const REQUIEM = [
           { key: "requiem_1", label: "Requiem: Experiment 1" },
@@ -6230,66 +6202,12 @@ export default function GW2LegendaryTracker() {
               </div>
             </div>
 
-            {/* ── VISION I : Awakening ── */}
+            {/* Vision I et ses six sous-collections sont rendues par le bloc
+                generique pilote par les sources : progression API reelle, blocs
+                de deblocage, etapes nommees. Les lister ici aussi les affichait
+                deux fois, avec une version moins riche. Seul reste ci-dessous ce
+                que le generique ne porte pas : le craft de l'Encapsulator. */}
             <div style={{ margin: "10px 14px 0" }}>
-              <div style={{ padding: "10px 13px", background: v1Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v1Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: v1Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v1Done ? "✓ " : ""}{NX("Vision I: Awakening")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
-                    {t("vision_reward_1")}
-                  </div>
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: v1Done ? "#4ade80" : C }}>{v1Count}<span style={{ fontSize: 10, opacity: 0.5 }}>/6</span></div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, padding: "6px 13px 8px" }}>
-                <div className="prog-bar">
-                  <div className="prog-fill" style={{ width: `${(v1Count/6)*100}%`, background: v1Done ? "linear-gradient(90deg,#16a34a,#4ade80)" : `linear-gradient(90deg,${C}80,${C})` }} />
-                </div>
-              </div>
-              {VISIONS_OF.map((v, i) => {
-                const done = vc[v.key]?.done ?? false;
-                const cur  = vc[v.key]?.current ?? 0;
-                const max  = vc[v.key]?.max ?? 0;
-                const isLast = i === VISIONS_OF.length - 1;
-                const ouvert = visionSubExpanded === v.key;
-                return (
-                  <React.Fragment key={v.key}>
-                  <div onClick={() => v.items.length > 0 && setVisionSubExpanded(ouvert ? null : v.key)}
-                    style={{ cursor: v.items.length > 0 ? "pointer" : "default", padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.5)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(v.label)}</span>
-                      <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", marginLeft: 7, background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(v.map)}</span>
-                    </div>
-                    {hasData && !done && max > 0 && (
-                      <span style={{ fontSize: 10, color: "rgba(226,201,126,0.4)" }}>{cur}/{max}</span>
-                    )}
-                    {v.items.length > 0 && (
-                      <span style={{ fontSize: 10, color: "rgba(226,201,126,0.25)", marginLeft: 8 }}>
-                        {ouvert ? "\u25B2" : "\u25BC"}
-                      </span>
-                    )}
-                  </div>
-                  {ouvert && (
-                    <div style={{ borderLeft: "1px solid rgba(167,139,250,0.2)", borderRight: "1px solid rgba(167,139,250,0.2)", background: "rgba(0,0,0,0.12)", padding: "4px 13px 8px 33px" }}>
-                      {v.items.map((item, k) => (
-                        <div key={k} style={{ padding: "5px 0", borderBottom: k < v.items.length - 1 ? "1px solid rgba(226,201,126,0.05)" : "none" }}>
-                          <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(226,201,126,0.85)" }}>{item.name}</div>
-                          {item.how && (
-                            <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>
-                          )}
-                          <FieldTip tip={item.how_jsx} NX={NX} />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  </React.Fragment>
-                );
-              })}
               {/* ── Required craft: Memory Essence Encapsulator ── */}
               {(() => {
                 const mee = SOURCES_DB?.craft_components?.memory_essence_encapsulator;
@@ -6325,40 +6243,10 @@ export default function GW2LegendaryTracker() {
               })()}
             </div>
 
-            {/* ── VISION II : Farsight (Convergence of Sorrow) ── */}
-            <div style={{ margin: "10px 14px 0" }}>
-              <div style={{ padding: "10px 13px", background: v2Done ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${v2Done ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: v2Done ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {v2Done ? "✓ " : ""}{NX("Vision II: Farsight")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
-                    {t("vision_reward_2")}
-                  </div>
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: v2Done ? "#4ade80" : C }}>{convCount}<span style={{ fontSize: 10, opacity: 0.5 }}>/2</span></div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, padding: "6px 13px 8px" }}>
-                <div className="prog-bar">
-                  <div className="prog-fill" style={{ width: `${(convCount/2)*100}%`, background: v2Done ? "linear-gradient(90deg,#16a34a,#4ade80)" : `linear-gradient(90deg,${C}80,${C})` }} />
-                </div>
-              </div>
-              {CONVERGENCE.map((c, i) => {
-                const done = vc[c.key]?.done ?? false;
-                const isLast = i === CONVERGENCE.length - 1;
-                return (
-                  <div key={c.key} style={{ padding: "8px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderTop: "1px solid rgba(226,201,126,0.04)", borderBottom: isLast ? `1px solid rgba(167,139,250,0.2)` : "none", borderRadius: isLast ? "0 0 8px 8px" : 0, display: "flex", alignItems: "flex-start", gap: 8 }}>
-                    <div style={{ width: 14, height: 14, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.5)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
-                      {done && <span style={{ fontSize: 9, color: "#4ade80" }}>✓</span>}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(c.label)}</div>
-                      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(c.note)}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Vision II et les deux Convergence of Sorrow passent aussi par le
+                bloc generique. Ne reste ici que le compteur d'Elegy Mosaics, qui
+                agrege les six Requiem Experiments — ceux-la ne sont pas dans les
+                sources et vivent encore en dur plus bas. */}
 
             {/* ── REQUIEM Experiments (Elegy Mosaics) ── */}
             <div style={{ margin: "10px 14px 0" }}>

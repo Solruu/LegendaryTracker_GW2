@@ -1056,7 +1056,20 @@ Deux singularités relevées et conservées :
 
 ## Deux arbitrages d'interface — ouverts le 02/09/2026
 
-### ① Vision s'affiche deux fois
+### ① Vision s'affiche deux fois — ✅ **RÉGLÉ le 02/09/2026**
+
+L'onglet dédié ne rend plus Vision I, les six `Visions of`, Vision II ni les deux
+Convergence : tout passe par le rendu générique. Il ne garde que le craft de
+l'Encapsulator et les six Requiem Experiments.
+
+**Reste une donnée manquante** : les six Requiem Experiments vivent en dur dans le
+JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant
+qu'elles n'y sont pas, elles ne peuvent pas rejoindre le rendu générique comme le
+reste. À capturer : la page wiki `Requiem: Experiment 1` à `6`, ou la page
+`The Convergence of Sorrow II: Requiem`.
+
+<details><summary>Constat d'origine</summary>
+
 
 Vision a un **onglet dédié** écrit à la main (bloc `selectedLeg === "vision"`) et,
 depuis la migration de ses collections, ses huit `vis_*` portent une `key` — ce qui
@@ -1074,10 +1087,8 @@ Mais le dédié porte **trois sections que le générique n'a pas** : le craft d
 Memory Essence Encapsulator, les six Requiem Experiments, et le compteur d'Elegy
 Mosaics.
 
-**Décision à prendre** : retirer l'onglet dédié en relogeant ces trois sections, ou
-retirer les `key` des huit `vis_*` et enrichir le dédié. La première va dans le sens
-du projet — une seule source, un seul rendu — mais demande de déplacer du code que je
-ne peux pas exécuter ici.
+Choix retenu : retirer les sections en double de l'onglet dédié.
+</details>
 
 ### ② Les 1 978 étapes d'armes n'ont aucune route dans l'interface
 
