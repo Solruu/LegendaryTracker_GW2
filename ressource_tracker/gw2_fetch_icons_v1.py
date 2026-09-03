@@ -130,7 +130,7 @@ SLUG_TO_ITEM_ID = {
 }
 
 # ---------------------------------------------------------------------------
-# Slugs présents dans gw2_node_ID_v1.py (NODE_TYPES_LIST) mais SANS item_id
+# Slugs présents dans gw2_node_ID_v2.py (NODE_TYPES_LIST) mais SANS item_id
 # vérifié ci-dessus → reçoivent l'icône générique de secours (FALLBACK_ICON_URL)
 # plutôt que rien du tout. À compléter au fil des sessions si un item_id
 # fiable est trouvé (jamais d'ID deviné — cf. règle "ne pas inventer de donnée").

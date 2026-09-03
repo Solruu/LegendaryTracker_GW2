@@ -242,7 +242,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(args.input):
         print(f"[ERREUR] Fichier introuvable : {args.input}")
-        print("         Lance d'abord gw2_node_ID_v1.py pour créer des nodes.")
+        print("         Lance d'abord gw2_node_ID_v2.py pour créer des nodes.")
         sys.exit(1)
 
     if not os.path.isdir(args.icons):
