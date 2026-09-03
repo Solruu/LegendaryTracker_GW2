@@ -1,5 +1,5 @@
 """
-GW2 Taco Generator (v2)
+GW2 Taco Generator (v3)
 ========================
 Lit gw2_nodes.json et génère un pack .taco (zip contenant markers.xml + icônes PNG).
 Hiérarchie Pathing : Catégorie > Groupe > Type de ressource
@@ -9,8 +9,8 @@ gw2_fetch_icons_v4.py) — la génération de pastilles colorées a été abando
 Lance gw2_fetch_icons_v4.py AVANT ce script si icons/ est absent ou incomplet.
 
 Usage :
-    python gw2_taco_gen_v2.py
-    python gw2_taco_gen_v2.py --input mes_nodes.json --output mon_pack.taco --icons icons/
+    python gw2_taco_gen_v3.py
+    python gw2_taco_gen_v3.py --input mes_nodes.json --output mon_pack.taco --icons icons/
 
 Dépendances : aucune (stdlib uniquement)
 """
@@ -39,15 +39,28 @@ def load_icon_bytes(slug, icons_dir):
 # Génère le XML markers.xml
 # ---------------------------------------------------------------------------
 MAP_NAMES = {
-    15: "Brisban Wildlands",
-    24: "Gendarran Fields",
-    21: "Fields of Ruin",
-    26: "Dredgehaunt Cliffs",
-    20: "Blazeridge Steppes",
+    15: "Queensdale",
     17: "Harathi Hinterlands",
-    22: "Bloodtide Coast",
-    29: "Iron Marches",
-    # à compléter au fil des sessions
+    18: "Divinity's Reach",
+    19: "Plains of Ashford",
+    20: "Blazeridge Steppes",
+    21: "Fields of Ruin",
+    22: "Fireheart Rise",
+    23: "Kessex Hills",
+    24: "Gendarran Fields",
+    25: "Iron Marches",
+    26: "Dredgehaunt Cliffs",
+    27: "Lornar's Pass",
+    28: "Wayfarer Foothills",
+    29: "Timberline Falls",
+    30: "Frostgorge Sound",
+    31: "Snowden Drifts",
+    32: "Diessa Plateau",
+    34: "Caledon Forest",
+    # à compléter au fil des sessions -- vérifié contre
+    # wiki.guildwars2.com/wiki/Property:Has_map_id (source officielle, liée à API:2/maps)
+    # Les anciennes valeurs (15=Brisban Wildlands, 22=Bloodtide Coast, 29=Iron Marches)
+    # étaient fausses -- jamais vérifiées, corrigées le 03/09/2026.
 }
 
 GROUP_ORDER = ["Minerai", "Bois", "Vegetal", "Special"]
