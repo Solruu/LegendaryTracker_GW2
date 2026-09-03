@@ -112,26 +112,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unusual_coin.html` | Unusual Coin | article complet | 2026-08-27 |
 | `lump_of_mithrillium.html` | Lump of Mithrillium | article complet | 2026-08-27 |
 | `provisioner_token.html` | Provisioner Token | article complet | 2026-08-27 |
-| `the_druid_stone.html` | The Druid Stone | collection, 7 objets | 2026-08-27 |
-| `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-08-27 |
-| `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-08-27 |
-| `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-08-27 |
-| `acquiring_agaleus.html` | Acquiring Agaleus | collection, 24 objets | 2026-08-27 |
-| `astral_purification.html` | Astral Purification | collection, 15 objets | 2026-08-27 |
-| `radiance_of_the_sun_god.html` | Radiance of the Sun God | collection, 20 objets | 2026-08-27 |
-| `the_convergence_of_sorrow_i_elegy.html` | The Convergence of Sorrow I: Elegy | collection, 20 objets | 2026-08-27 |
-| `unknown_nightmares_gift_of_the_feast.html` | Unknown Nightmares: Gift of the Feast | collection, 18 objets | 2026-08-27 |
-| `legendary_relics_components.html` | Legendary Relics: Components | collection, 20 objets | 2026-08-27 |
-| `mists_research.html` | Mists Research | collection, 8 objets | 2026-08-27 |
-| `mists_research_strife_unending.html` | Mists Research: Strife Unending | collection, 11 objets | 2026-08-27 |
-| `unknown_nightmares_experiments_in_the_shadows.html` | Unknown Nightmares: Experiments in the Shadows | collection, 10 objets | 2026-08-27 |
-| `unknown_nightmares_gift_of_shadows.html` | Unknown Nightmares: Gift of Shadows | collection, 7 objets | 2026-08-27 |
-| `unknown_nightmares_gift_of_the_mistburned_isles.html` | Unknown Nightmares: Gift of the Mistburned Isles | collection, 13 objets | 2026-08-27 |
-| `unknown_nightmares_orrax_contained.html` | Unknown Nightmares: Orrax Contained | collection, 5 objets | 2026-08-27 |
-| `visions_of_istan.html` | Visions of Istan | collection, 7 objets | 2026-08-27 |
 | `precursor_weapon.html` | Precursor weapon | table des 53 précurseurs, avec génération | 2026-08-27 |
 | `caladbolg.html` | Caladbolg | article complet — arme d'histoire, chaîne Knight of the Thorn | 2026-08-27 |
-| `the_moot_ii_the_perfected_mace.html` | The Moot II: The Perfected Mace | collection, 14 objets — capture d'essai palier II | 2026-08-27 |
 | `eternity.html` | Eternity | article complet — table de recette en cascade | 2026-08-27 |
 | `astralaria.html` | Astralaria | article complet — table de recette en cascade | 2026-08-27 |
 | `astralaria_i_the_device.html` | Astralaria I: The Device | collection, 19 objets | 2026-08-27 |
@@ -434,7 +416,6 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unidentified_gear.html` | Unidentified Gear | article complet — page mère, 3 raretés | 2026-09-03 |
 | `vesperite_ore.html` | Vesperite Ore | article complet | 2026-09-03 |
 | `wood.html` | Wood | référence — table complète paliers/planches | 2026-09-03 |
-
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -464,12 +445,10 @@ lire. Vérification du 27/08/2026 : **314 captures, 314 lignes, aucun écart** �
 7 fichiers manquaient à l'index, ajoutés.
 
 Vérification du 03/09/2026 (ajout des 62 captures cuir/soie/unidentified gear/
-bois-minerai) : **345 fichiers réels dans `wiki/`, 363 lignes dans son tableau**.
-L'écart de 18 est antérieur à cet ajout — 18 pages de succès/légendaires
-(a_henge_away_from_home, acquiring_agaleus, astral_purification, etc.) ont
-chacune deux lignes dans le tableau. Vérifié : aucune des 62 captures d'aujourd'hui
-n'est concernée, l'écart préexistait au 27/08. Pas corrigé ici — décision hors
-scope de cette session, à trancher avec le contexte de leur double capture.
+bois-minerai) : les 18 doublons repérés étaient de vraies recaptures (même
+fichier, même contenu, juste daté 08-27 puis 09-01) jamais nettoyées — lignes
+du 08-27 retirées, la version 09-01 fait foi. **345 fichiers réels, 345 lignes,
+aucun écart.**
 
 ## Manquent encore
 
