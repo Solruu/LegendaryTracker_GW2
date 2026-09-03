@@ -1,5 +1,5 @@
 """
-GW2 Taco Generator (v3)
+GW2 Taco Generator (v4)
 ========================
 Lit gw2_nodes.json et génère un pack .taco (zip contenant markers.xml + icônes PNG).
 Hiérarchie Pathing : Catégorie > Groupe > Type de ressource
@@ -9,8 +9,8 @@ gw2_fetch_icons_v4.py) — la génération de pastilles colorées a été abando
 Lance gw2_fetch_icons_v4.py AVANT ce script si icons/ est absent ou incomplet.
 
 Usage :
-    python gw2_taco_gen_v3.py
-    python gw2_taco_gen_v3.py --input mes_nodes.json --output mon_pack.taco --icons icons/
+    python gw2_taco_gen_v4.py
+    python gw2_taco_gen_v4.py --input mes_nodes.json --output mon_pack.taco --icons icons/
 
 Dépendances : aucune (stdlib uniquement)
 """

@@ -1,5 +1,5 @@
 """
-GW2 Node Capture — MumbleLink (v5)
+GW2 Node Capture — MumbleLink (v6)
 ====================================
 Sélection manuelle du type de node, capture position via F12.
 
@@ -118,7 +118,7 @@ NODE_TYPES_LIST = [
     ("truffle", "Vegetal", "Truffle", False),
     ("mushroom_varied", "Vegetal", "Varied Mushrooms", True),
     ("taproot", "Vegetal", "Variegated Taproot", True),
-    ("varietal_mint", "Vegetal", "Varietal Mint Leaf", False),
+    ("varietal_mint", "Vegetal", "Varietal Mint Seed", False),
     ("verdant_herbs", "Vegetal", "Verdant Herbs", True),
     ("vegetal_unknown", "Vegetal", "Végétal (type variable)", True),
     ("winter_root", "Vegetal", "Winter Root Vegetables", True),
@@ -228,9 +228,9 @@ def run_taco_gen(output_taco=None):
     if output_taco is None:
         output_taco = DEFAULT_TACO
     here = os.path.dirname(os.path.abspath(__file__))
-    taco_script = os.path.join(here, "gw2_taco_gen_v3.py")
+    taco_script = os.path.join(here, "gw2_taco_gen_v4.py")
     if not os.path.exists(taco_script):
-        print("  ⚠️  gw2_taco_gen_v3.py introuvable — génération ignorée.")
+        print("  ⚠️  gw2_taco_gen_v4.py introuvable — génération ignorée.")
         return
     os.makedirs(os.path.dirname(output_taco), exist_ok=True)
     print(f"\n  🔧 Génération du pack .taco → {output_taco}")

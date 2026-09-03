@@ -1,10 +1,10 @@
 """
-GW2 Fetch Icons (v5)
+GW2 Fetch Icons (v6)
 =====================
 Télécharge les icônes officielles de chaque type de node depuis l'API GW2
-et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v3.py.
+et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v4.py.
 Les slugs sans item_id connu (FALLBACK_SLUGS) reçoivent l'icône générique
-plutôt que d'être ignorés — gw2_taco_gen_v3.py exige un fichier par slug
+plutôt que d'être ignorés — gw2_taco_gen_v4.py exige un fichier par slug
 utilisé pour afficher une icône (sinon marqueur par défaut BlishHUD).
 
 Usage :
@@ -101,6 +101,7 @@ SLUG_TO_ITEM_ID = {
     "orrian_oyster": 81837,
     "passiflora": 36731,
     "black_crocus": 12547,
+    "varietal_mint": 91731,
     # ── Special ───────────────────────────────────────────────────────────────
     "mawdrey_target": 68996,
     "quartz_formation": 43773,
@@ -138,7 +139,6 @@ FALLBACK_SLUGS = [
     "toxic_seedling",
     "truffle",
     "tukawa",
-    "varietal_mint",
     "vegetal_unknown",
     "verdant_herbs",
     "winter_root",
@@ -303,7 +303,7 @@ def main():
     print(f"  ❌ Échecs       : {fail}")
     print(f"  ℹ️  {len(FALLBACK_SLUGS)} slugs sur icône générique (pas d'item_id connu) : "
           f"{', '.join(FALLBACK_SLUGS)}")
-    print(f"\n  → Lance maintenant : python gw2_taco_gen_v3.py")
+    print(f"\n  → Lance maintenant : python gw2_taco_gen_v4.py")
     print(f"     Les icônes dans '{args.output}/' seront embarquées dans le .taco")
 
 
