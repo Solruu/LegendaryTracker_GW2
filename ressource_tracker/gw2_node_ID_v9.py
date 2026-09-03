@@ -1,5 +1,5 @@
 """
-GW2 Node Capture — MumbleLink (v8)
+GW2 Node Capture — MumbleLink (v9)
 ====================================
 Sélection manuelle du type de node, capture position via F12.
 
@@ -8,6 +8,11 @@ WORKFLOW :
   2. Choisis le type de node dans le menu console
   3. En jeu, approche-toi du node et appuie sur F12
   4. T + Entrée → changer de type | Q + Entrée → quitter
+
+Le menu de sélection (au démarrage et au T) se filtre automatiquement aux
+types déjà capturés sur la map où tu te trouves (5-7 en général, au lieu
+des 108). Tape A pour voir la liste complète si le type que tu cherches
+n'a encore jamais été capturé sur cette map.
 
 Dépendances : pip install keyboard
 """
@@ -196,35 +201,71 @@ def find_nearby(nodes, x, y, z, map_id):
     return best
 
 # ---------------------------------------------------------------------------
-# Menu
+# Menu — filtré par map courante
 # ---------------------------------------------------------------------------
-def print_menu():
+def types_known_on_map(map_id):
+    """Slugs déjà capturés sur cette map dans gw2_nodes.json. Set vide si
+    la map n'a encore aucune capture (pas None -> on le distingue du cas
+    'map illisible')."""
+    if map_id is None:
+        return None
+    nodes = load_nodes()
+    return {n["type"] for n in nodes if n.get("map_id") == map_id}
+
+def print_menu(display_list, filtered):
     print("\n" + "="*55)
-    print("  GW2 Node Capture — choix du type")
+    title = "GW2 Node Capture — choix du type"
+    if filtered:
+        title += f"  (filtré : {len(display_list)}/{len(NODE_TYPES_LIST)}, map connue)"
+    print(f"  {title}")
     print("="*55)
     group = None
-    for i, (slug, grp, label, rand) in enumerate(NODE_TYPES_LIST):
+    for i, (slug, grp, label, rand) in enumerate(display_list):
         if grp != group:
             print(f"\n  [{grp}]")
             group = grp
         tag = " ⚠" if rand else ""
         print(f"  {i+1:3d}. {label}{tag}")
     print("\n" + "="*55)
+    if filtered:
+        print("  A = afficher les 108 types (map pas encore vue ici)")
 
-def select_type():
-    print_menu()
+def select_type(ml=None):
+    map_id = None
+    if ml:
+        pos = ml.read()
+        if pos:
+            map_id = pos[3]
+
+    known = types_known_on_map(map_id)
+    if known:  # None (map illisible) ou set() (map neuve) -> pas de filtre
+        display_list = [e for e in NODE_TYPES_LIST if e[0] in known]
+        filtered = True
+    else:
+        display_list = NODE_TYPES_LIST
+        filtered = False
+        if known is not None:  # set() : map lue mais aucune capture connue ici
+            print("\n  ℹ️  Aucune capture connue sur cette map — liste complète.")
+
+    print_menu(display_list, filtered)
     while True:
         try:
-            idx = int(input(f"\n  Numéro (1-{len(NODE_TYPES_LIST)}) : ").strip()) - 1
-            if 0 <= idx < len(NODE_TYPES_LIST):
-                slug, group, label, rand = NODE_TYPES_LIST[idx]
+            raw = input(f"\n  Numéro (1-{len(display_list)}){' | A' if filtered else ''} : ").strip()
+            if filtered and raw.lower() == "a":
+                display_list = NODE_TYPES_LIST
+                filtered = False
+                print_menu(display_list, filtered)
+                continue
+            idx = int(raw) - 1
+            if 0 <= idx < len(display_list):
+                slug, group, label, rand = display_list[idx]
                 tag = " [variable]" if rand else ""
                 print(f"\n  ✔ {label} ({group}){tag}")
                 print("  → F12 pour capturer | T pour changer de type")
                 return slug, group, label, rand
         except (ValueError, KeyboardInterrupt):
             pass
-        print(f"  Entre un nombre entre 1 et {len(NODE_TYPES_LIST)}.")
+        print(f"  Entre un nombre entre 1 et {len(display_list)}{' ou A' if filtered else ''}.")
 
 # ---------------------------------------------------------------------------
 # Taco gen
@@ -265,7 +306,7 @@ def main():
     nodes = load_nodes()
     print(f"  Nodes existants : {len(nodes)}")
 
-    selected = list(select_type())  # [slug, group, label, rand]
+    selected = list(select_type(ml))  # [slug, group, label, rand]
 
     def on_f12():
         pos = ml.read()
@@ -304,7 +345,7 @@ def main():
                 run_taco_gen(args.taco)
                 sys.exit(0)
             elif cmd in ("t", "type"):
-                new = list(select_type())
+                new = list(select_type(ml))
                 selected[:] = new
             else:
                 print(f"  [{selected[2]}]  F12=capturer | T=changer | Q=quitter")
