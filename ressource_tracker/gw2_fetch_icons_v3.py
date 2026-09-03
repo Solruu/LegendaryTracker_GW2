@@ -1,5 +1,5 @@
 """
-GW2 Fetch Icons (v2)
+GW2 Fetch Icons (v3)
 =====================
 Télécharge les icônes officielles de chaque type de node depuis l'API GW2
 et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v1.py.
@@ -29,102 +29,84 @@ import urllib.error
 # Source : https://api.guildwars2.com/v2/items?ids=...
 # ---------------------------------------------------------------------------
 SLUG_TO_ITEM_ID = {
-    # ── Minerais standards ──────────────────────────────────────────────────
-    "copper":           19697,
-    "iron":             19699,
-    "silver":           19698,
-    "gold":             19700,
-    "platinum":         19701,
-    "darksteel":        19702,
-    "mithril":          19703,
-    "orichalcum":       19704,
-    # Minerais extension
-    "quartz":           43773,
-    "ambrite":          62949,
-    "fulgurite":        48807,
-    "difluorite":       73248,
-    "jade":             97263,
-    "prismaticite":     96978,
-    "somnorite":        105986,
-    "vesperite":        105990,
-    # Rich veins — même icône que le minerai de base
-    "rich_iron":        19699,
-    "rich_silver":      19698,
-    "rich_gold":        19700,
-    "rich_mithril":     19703,
-    "rich_orichalcum":  19704,
-    # ── Bois ────────────────────────────────────────────────────────────────
-    "green_wood":       19723,
-    "soft_wood":        19724,
-    "seasoned_wood":    19725,
-    "hard_wood":        19726,
-    "elder_wood":       19727,
-    "ancient_wood":     19728,
-    "cypress":          20013,
-    "snow_cherry":      46739,
-    "palm":             20015,
-    "petrified":        97166,
-    "red_oak":          20010,
-    # ── Végétaux tier 1 ─────────────────────────────────────────────────────
-    "blueberry":        36730,
-    "mushroom_button":  36729,
-    "carrot":           36728,
-    "herb_seedlings":   36726,
-    "onion":            36727,
-    "potato":           36725,
-    "lettuce":          36724,
-    # Tier 2
-    "strawberry":       36737,
-    "herb_sprouts":     36735,
-    "spinach":          36736,
-    "grapes":           36734,
-    "cabbage":          36733,
-    # Tier 3
-    "young_herbs":      36743,
-    "zucchini":         36744,
-    "root_vegetables":  36742,
-    "kale":             36741,
-    "mushroom_varied":  36745,
-    # Tier 4
-    "mature_herbs":     36751,
-    "scallions":        36752,
-    "portobello":       36753,
-    "blackberries":     36750,
-    "sugar_pumpkin":    36749,
-    "cauliflower":      36748,
-    "taproot":          36747,
-    # Tier 5
-    "verdant_herbs":    36759,
-    "leeks":            36760,
-    "winter_root":      36758,
-    "raspberries":      36757,
-    "asparagus":        36761,
-    "cayenne_pepper":   36756,
-    "butternut":        36755,
-    "artichoke":        36754,
-    # Tier 6
-    "lotus":            36767,
-    "omnomberry":       36765,
-    "orrian_truffle":   36766,
-    "snow_truffle":     36764,
-    "ghost_pepper":     36763,
-    "mussel":           36762,
-    "seaweed":          36768,
-    # Extensions HoT / PoF / IBS / EoD / SotO
-    "flax":             67015,
-    "sawgill":          66521,
-    "lentils":          70838,
-    "passiflora":       72936,
-    "orrian_oyster":    87828,
-    "haresfoot":        66522,
-    "coral":            66526,
-    "shing_jea_orchid": 97166,   # fallback
-    "primordial_orchid":105980,
-    "hatched_chili":    105977,
-    # ── Spécial ─────────────────────────────────────────────────────────────
-    "mawdrey_target":   68996,   # Mawdrey II
-    "quartz_formation": 43773,   # Quartz Crystal
+    # ── Minerais standards ────────────────────────────────────────────────────
+    "copper": 19697,
+    "iron": 19699,
+    "silver": 19703,
+    "gold": 19698,
+    "platinum": 19702,
+    "darksteel": 19702,
+    "mithril": 19700,
+    "orichalcum": 19701,
+    # ── Minerais extension ────────────────────────────────────────────────────
+    "quartz": 43773,
+    "ambrite": 66637,
+    "difluorite": 86977,
+    "jade": 97102,
+    "prismaticite": 94163,
+    "somnorite": 19701,
+    "vesperite": 19700,
+    # ── Rich veins (meme icone que le minerai de base) ────────────────────────
+    "rich_iron": 19699,
+    "rich_silver": 19703,
+    "rich_gold": 19698,
+    "rich_mithril": 19700,
+    "rich_orichalcum": 19701,
+    "rich_copper": 19697,
+    "rich_platinum": 19702,
+    "sunstone": 24471,
+    # ── Bois ──────────────────────────────────────────────────────────────────
+    "green_wood": 19723,
+    "soft_wood": 19726,
+    "seasoned_wood": 19727,
+    "hard_wood": 19724,
+    "elder_wood": 19722,
+    "ancient_wood": 19725,
+    "cypress": 19722,
+    "palm": 19722,
+    "red_oak": 19722,
+    "sawgill": 73504,
+    # ── Vegetal ───────────────────────────────────────────────────────────────
+    "blueberry": 12255,
+    "mushroom_button": 12147,
+    "carrot": 12134,
+    "onion": 12142,
+    "potato": 12135,
+    "lettuce": 12238,
+    "strawberry": 12253,
+    "spinach": 12241,
+    "grapes": 12341,
+    "cabbage": 12332,
+    "zucchini": 12330,
+    "kale": 12333,
+    "portobello": 12334,
+    "blackberries": 12537,
+    "sugar_pumpkin": 12538,
+    "cauliflower": 12532,
+    "leeks": 12508,
+    "raspberries": 12254,
+    "asparagus": 12505,
+    "cayenne_pepper": 12504,
+    "butternut": 12511,
+    "artichoke": 12512,
+    "lotus": 12510,
+    "omnomberry": 12128,
+    "orrian_truffle": 12545,
+    "snow_truffle": 12144,
+    "ghost_pepper": 12544,
+    "mussel": 74266,
+    "seaweed": 12509,
+    "scallions": 12533,
+    "saffron": 12547,
+    "clam": 12327,
+    "orrian_oyster": 81837,
+    "passiflora": 36731,
+    "black_crocus": 12547,
+    # ── Special ───────────────────────────────────────────────────────────────
+    "mawdrey_target": 68996,
+    "quartz_formation": 43773,
 }
+
 
 # ---------------------------------------------------------------------------
 # Slugs présents dans gw2_node_ID_v3.py (NODE_TYPES_LIST) mais SANS item_id
@@ -133,14 +115,37 @@ SLUG_TO_ITEM_ID = {
 # fiable est trouvé (jamais d'ID deviné — cf. règle "ne pas inventer de donnée").
 # ---------------------------------------------------------------------------
 FALLBACK_SLUGS = [
-    "black_crocus", "clam", "herb_patch", "mixed_harvesting",
-    "rich_copper", "rich_platinum", "saffron", "sunflower",
-    "sunstone", "toxic_seedling", "truffle", "varietal_mint",
+    "coral",
+    "fir",
+    "flax",
+    "fulgurite",
+    "haresfoot",
+    "hatched_chili",
+    "herb_patch",
+    "herb_seedlings",
+    "herb_sprouts",
+    "lentils",
+    "mature_herbs",
+    "mixed_harvesting",
+    "mushroom_varied",
+    "orrian_sapling",
+    "petrified",
+    "primordial_orchid",
+    "root_vegetables",
+    "shing_jea_orchid",
+    "snow_cherry",
+    "sunflower",
+    "taproot",
+    "toxic_seedling",
+    "truffle",
+    "tukawa",
+    "varietal_mint",
     "vegetal_unknown",
-    # v2 : retirés de SLUG_TO_ITEM_ID, item_id invalide (échec API 03/09/2026),
-    # jamais reverifiés depuis leur ajout initial — repli plutôt qu'un ID inventé.
-    "fir", "tukawa", "orrian_sapling",
+    "verdant_herbs",
+    "winter_root",
+    "young_herbs",
 ]
+
 
 # Fallback pour les slugs sans item_id connu (icône générique GW2)
 FALLBACK_ICON_URL = (
