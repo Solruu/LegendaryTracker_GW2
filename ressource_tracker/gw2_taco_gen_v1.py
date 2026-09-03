@@ -85,14 +85,16 @@ TYPE_ORDER = {
         "sugar_pumpkin", "cauliflower", "taproot",
         # Tier 5
         "verdant_herbs", "leeks", "winter_root", "raspberries",
-        "asparagus", "cayenne", "butternut", "artichoke",
+        "asparagus", "cayenne_pepper", "butternut", "artichoke",
         # Tier 6
         "lotus", "omnomberry", "orrian_truffle", "snow_truffle",
         "ghost_pepper", "mussel", "seaweed",
         # Extensions
         "flax", "sawgill", "lentils", "passiflora", "orrian_oyster",
         "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid",
-        "hatched_chili", "vegetal_unknown",
+        "hatched_chili", "black_crocus", "clam", "herb_patch",
+        "mixed_harvesting", "saffron", "sunflower", "toxic_seedling",
+        "truffle", "varietal_mint", "vegetal_unknown",
     ],
     "Special": [
         "mawdrey_target", "quartz_formation",
@@ -243,7 +245,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(args.input):
         print(f"[ERREUR] Fichier introuvable : {args.input}")
-        print("         Lance d'abord gw2_node_ID_v2.py pour créer des nodes.")
+        print("         Lance d'abord gw2_node_ID_v3.py pour créer des nodes.")
         sys.exit(1)
 
     if not os.path.isdir(args.icons):
