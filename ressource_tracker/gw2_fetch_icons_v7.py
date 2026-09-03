@@ -1,10 +1,10 @@
 """
-GW2 Fetch Icons (v6)
+GW2 Fetch Icons (v7)
 =====================
 Télécharge les icônes officielles de chaque type de node depuis l'API GW2
-et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v4.py.
+et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v5.py.
 Les slugs sans item_id connu (FALLBACK_SLUGS) reçoivent l'icône générique
-plutôt que d'être ignorés — gw2_taco_gen_v4.py exige un fichier par slug
+plutôt que d'être ignorés — gw2_taco_gen_v5.py exige un fichier par slug
 utilisé pour afficher une icône (sinon marqueur par défaut BlishHUD).
 
 Usage :
@@ -55,17 +55,41 @@ SLUG_TO_ITEM_ID = {
     "rich_copper": 19697,
     "rich_platinum": 19702,
     "sunstone": 24471,
-    # ── Bois ──────────────────────────────────────────────────────────────────
+    # ── Bois -- tiers generiques ──────────────────────────────────────────────
     "green_wood": 19723,
     "soft_wood": 19726,
     "seasoned_wood": 19727,
     "hard_wood": 19724,
     "elder_wood": 19722,
     "ancient_wood": 19725,
+    "sawgill": 73504,
+    # ── Bois -- skins T1 Green (Copper Axe) ───────────────────────────────────
+    "aspen": 19723,
+    "ekku": 19723,
+    "kertch": 19723,
+    # ── Bois -- skins T2 Soft (Iron Axe) ──────────────────────────────────────
+    "gummo": 19726,
+    "mimosa": 19726,
+    # ── Bois -- skins T3 Seasoned (Steel Axe) ─────────────────────────────────
+    "fir": 19727,
+    "tukawa": 19727,
+    # ── Bois -- skins T4 Hard (Darksteel Axe) ─────────────────────────────────
+    "pine": 19724,
+    "banyan": 19724,
+    "inglewood": 19724,
+    # ── Bois -- skins T5 Elder (Mithril Axe) ──────────────────────────────────
     "cypress": 19722,
     "palm": 19722,
     "red_oak": 19722,
-    "sawgill": 73504,
+    "baoba": 19722,
+    "mebahya": 19722,
+    "spiderknot_tree": 19722,
+    # ── Bois -- skins T6 Ancient (Orichalcum Axe) ─────────────────────────────
+    "ancient_sapling": 19725,
+    "ancient_spiderknot_tree": 19725,
+    "orrian_sapling": 19725,
+    # ── Bois -- cas particulier ───────────────────────────────────────────────
+    "petrified": 96471,
     # ── Vegetal ───────────────────────────────────────────────────────────────
     "blueberry": 12255,
     "mushroom_button": 12147,
@@ -105,7 +129,10 @@ SLUG_TO_ITEM_ID = {
     # ── Special ───────────────────────────────────────────────────────────────
     "mawdrey_target": 68996,
     "quartz_formation": 43773,
+    # ── Autres ────────────────────────────────────────────────────────────────
+    "snow_cherry": 19726,
 }
+
 
 
 # ---------------------------------------------------------------------------
@@ -116,7 +143,6 @@ SLUG_TO_ITEM_ID = {
 # ---------------------------------------------------------------------------
 FALLBACK_SLUGS = [
     "coral",
-    "fir",
     "flax",
     "fulgurite",
     "haresfoot",
@@ -128,22 +154,19 @@ FALLBACK_SLUGS = [
     "mature_herbs",
     "mixed_harvesting",
     "mushroom_varied",
-    "orrian_sapling",
-    "petrified",
     "primordial_orchid",
     "root_vegetables",
     "shing_jea_orchid",
-    "snow_cherry",
     "sunflower",
     "taproot",
     "toxic_seedling",
     "truffle",
-    "tukawa",
     "vegetal_unknown",
     "verdant_herbs",
     "winter_root",
     "young_herbs",
 ]
+
 
 
 # Fallback pour les slugs sans item_id connu (icône générique GW2)
@@ -303,7 +326,7 @@ def main():
     print(f"  ❌ Échecs       : {fail}")
     print(f"  ℹ️  {len(FALLBACK_SLUGS)} slugs sur icône générique (pas d'item_id connu) : "
           f"{', '.join(FALLBACK_SLUGS)}")
-    print(f"\n  → Lance maintenant : python gw2_taco_gen_v4.py")
+    print(f"\n  → Lance maintenant : python gw2_taco_gen_v5.py")
     print(f"     Les icônes dans '{args.output}/' seront embarquées dans le .taco")
 
 

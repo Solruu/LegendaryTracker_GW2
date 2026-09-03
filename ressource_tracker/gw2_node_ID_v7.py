@@ -1,5 +1,5 @@
 """
-GW2 Node Capture — MumbleLink (v6)
+GW2 Node Capture — MumbleLink (v7)
 ====================================
 Sélection manuelle du type de node, capture position via F12.
 
@@ -51,19 +51,32 @@ NODE_TYPES_LIST = [
     ("sunstone", "Minerai", "Sunstone Nugget", False),
     ("vesperite", "Minerai", "Vesperite Ore", False),
     # ── BOIS ──────────────────────────────────────────────────────────────────
+    ("ancient_sapling", "Bois", "Ancient Sapling", False),
+    ("ancient_spiderknot_tree", "Bois", "Ancient Spiderknot Tree", False),
     ("ancient_wood", "Bois", "Ancient Wood Log", False),
+    ("aspen", "Bois", "Aspen Sapling", False),
+    ("banyan", "Bois", "Banyan Sapling", False),
+    ("baoba", "Bois", "Baoba Sapling", False),
     ("cypress", "Bois", "Cypress Sapling", False),
+    ("ekku", "Bois", "Ekku Sapling", False),
     ("elder_wood", "Bois", "Elder Wood Log", False),
     ("fir", "Bois", "Fir Sapling", False),
     ("green_wood", "Bois", "Green Wood Sapling", False),
+    ("gummo", "Bois", "Gummo Sapling", False),
     ("hard_wood", "Bois", "Hard Wood Log", False),
+    ("inglewood", "Bois", "Inglewood Sapling", False),
+    ("kertch", "Bois", "Kertch Sapling", False),
+    ("mebahya", "Bois", "Mebahya Sapling", False),
+    ("mimosa", "Bois", "Mimosa Sapling", False),
     ("orrian_sapling", "Bois", "Orrian Sapling", False),
     ("palm", "Bois", "Palm Sapling", False),
     ("petrified", "Bois", "Petrified Echovald Sapling", False),
+    ("pine", "Bois", "Pine Sapling", False),
     ("red_oak", "Bois", "Red Oak Sapling", False),
     ("seasoned_wood", "Bois", "Seasoned Wood Log", False),
     ("snow_cherry", "Bois", "Snow Cherry Sapling", False),
     ("soft_wood", "Bois", "Soft Wood Sapling", False),
+    ("spiderknot_tree", "Bois", "Spiderknot Tree", False),
     ("tukawa", "Bois", "Tukawa Sapling", False),
     # ── VEGETAL ──────────────────────────────────────────────────────────────────
     ("artichoke", "Vegetal", "Artichokes", True),
@@ -127,8 +140,7 @@ NODE_TYPES_LIST = [
     # ── SPECIAL ──────────────────────────────────────────────────────────────────
     ("mawdrey_target", "Special", "Mawdrey Target", False),
     ("quartz_formation", "Special", "Quartz Crystal Formation", False),
-]
-# ---------------------------------------------------------------------------
+]# ---------------------------------------------------------------------------
 # MumbleLink
 # ---------------------------------------------------------------------------
 MUMBLE_LINK_SIZE  = 5460
@@ -228,9 +240,9 @@ def run_taco_gen(output_taco=None):
     if output_taco is None:
         output_taco = DEFAULT_TACO
     here = os.path.dirname(os.path.abspath(__file__))
-    taco_script = os.path.join(here, "gw2_taco_gen_v4.py")
+    taco_script = os.path.join(here, "gw2_taco_gen_v5.py")
     if not os.path.exists(taco_script):
-        print("  ⚠️  gw2_taco_gen_v4.py introuvable — génération ignorée.")
+        print("  ⚠️  gw2_taco_gen_v5.py introuvable — génération ignorée.")
         return
     os.makedirs(os.path.dirname(output_taco), exist_ok=True)
     print(f"\n  🔧 Génération du pack .taco → {output_taco}")
