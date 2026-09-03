@@ -47,6 +47,9 @@ NODE_TYPES_LIST = [
     ("rich_gold",       "Minerai", "Rich Gold Vein",              False),
     ("rich_mithril",    "Minerai", "Rich Mithril Vein",           False),
     ("rich_orichalcum", "Minerai", "Rich Orichalcum Vein",        False),
+    ("rich_copper",     "Minerai", "Rich Copper Vein",            False),
+    ("rich_platinum",   "Minerai", "Rich Platinum Vein",          False),
+    ("sunstone",        "Minerai", "Sunstone Nugget",             False),
     # ── BOIS ──────────────────────────────────────────────────────────────────
     ("green_wood",      "Bois",    "Green Wood Sapling",          False),
     ("soft_wood",       "Bois",    "Soft Wood Sapling",           False),
@@ -128,10 +131,6 @@ NODE_TYPES_LIST = [
     ("truffle",         "Vegetal", "Truffle",                     False),
     ("varietal_mint",   "Vegetal", "Varietal Mint Leaf",          False),
     ("vegetal_unknown", "Vegetal", "Végétal (type variable)",     True),
-    # ── Minerais riches supplémentaires ──────────────────────────────────────
-    ("rich_copper",     "Minerai", "Rich Copper Vein",            False),
-    ("rich_platinum",   "Minerai", "Rich Platinum Vein",          False),
-    ("sunstone",        "Minerai", "Sunstone Nugget",             False),
     # ── SPÉCIAL ───────────────────────────────────────────────────────────────
     ("mawdrey_target",  "Special", "Mawdrey Target",              False),
     ("quartz_formation","Special", "Quartz Crystal Formation",    False),

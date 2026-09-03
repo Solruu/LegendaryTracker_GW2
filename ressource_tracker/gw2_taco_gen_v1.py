@@ -56,14 +56,15 @@ GROUP_ORDER = ["Minerai", "Bois", "Vegetal", "Special"]
 # Les rich veins sont placées juste après leur minerai de base
 TYPE_ORDER = {
     "Minerai": [
-        "copper", "iron", "rich_iron",
+        "copper", "rich_copper", "iron", "rich_iron",
         "silver", "rich_silver",
         "gold", "rich_gold",
-        "platinum", "darksteel",
+        "platinum", "rich_platinum", "darksteel",
         "mithril", "rich_mithril",
         "orichalcum", "rich_orichalcum",
         "quartz", "ambrite", "fulgurite", "difluorite",
         "jade", "prismaticite", "somnorite", "vesperite",
+        "sunstone",
     ],
     "Bois": [
         "green_wood", "soft_wood", "seasoned_wood", "hard_wood",
