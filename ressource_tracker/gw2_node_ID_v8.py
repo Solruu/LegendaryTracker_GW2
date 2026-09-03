@@ -1,5 +1,5 @@
 """
-GW2 Node Capture — MumbleLink (v7)
+GW2 Node Capture — MumbleLink (v8)
 ====================================
 Sélection manuelle du type de node, capture position via F12.
 
@@ -26,7 +26,6 @@ except ImportError:
 # ---------------------------------------------------------------------------
 NODE_TYPES_LIST = [
     # ── MINERAI ──────────────────────────────────────────────────────────────────
-    ("ambrite", "Minerai", "Ambrite", False),
     ("copper", "Minerai", "Copper Ore", False),
     ("darksteel", "Minerai", "Darksteel Ore", False),
     ("difluorite", "Minerai", "Difluorite Crystal", False),
@@ -48,7 +47,6 @@ NODE_TYPES_LIST = [
     ("rich_silver", "Minerai", "Rich Silver Vein", False),
     ("silver", "Minerai", "Silver Ore", False),
     ("somnorite", "Minerai", "Somnorite Ore", False),
-    ("sunstone", "Minerai", "Sunstone Nugget", False),
     ("vesperite", "Minerai", "Vesperite Ore", False),
     # ── BOIS ──────────────────────────────────────────────────────────────────
     ("ancient_sapling", "Bois", "Ancient Sapling", False),
@@ -131,14 +129,13 @@ NODE_TYPES_LIST = [
     ("truffle", "Vegetal", "Truffle", False),
     ("mushroom_varied", "Vegetal", "Varied Mushrooms", True),
     ("taproot", "Vegetal", "Variegated Taproot", True),
-    ("varietal_mint", "Vegetal", "Varietal Mint Seed", False),
+    ("varietal_mint", "Vegetal", "Varietal Mint Seed", True),
     ("verdant_herbs", "Vegetal", "Verdant Herbs", True),
     ("vegetal_unknown", "Vegetal", "Végétal (type variable)", True),
     ("winter_root", "Vegetal", "Winter Root Vegetables", True),
     ("young_herbs", "Vegetal", "Young Herbs", True),
     ("zucchini", "Vegetal", "Zucchini", True),
     # ── SPECIAL ──────────────────────────────────────────────────────────────────
-    ("mawdrey_target", "Special", "Mawdrey Target", False),
     ("quartz_formation", "Special", "Quartz Crystal Formation", False),
 ]# ---------------------------------------------------------------------------
 # MumbleLink
@@ -240,9 +237,9 @@ def run_taco_gen(output_taco=None):
     if output_taco is None:
         output_taco = DEFAULT_TACO
     here = os.path.dirname(os.path.abspath(__file__))
-    taco_script = os.path.join(here, "gw2_taco_gen_v5.py")
+    taco_script = os.path.join(here, "gw2_taco_gen_v6.py")
     if not os.path.exists(taco_script):
-        print("  ⚠️  gw2_taco_gen_v5.py introuvable — génération ignorée.")
+        print("  ⚠️  gw2_taco_gen_v6.py introuvable — génération ignorée.")
         return
     os.makedirs(os.path.dirname(output_taco), exist_ok=True)
     print(f"\n  🔧 Génération du pack .taco → {output_taco}")

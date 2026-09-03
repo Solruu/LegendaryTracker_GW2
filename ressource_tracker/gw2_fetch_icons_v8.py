@@ -1,10 +1,10 @@
 """
-GW2 Fetch Icons (v7)
+GW2 Fetch Icons (v8)
 =====================
 Télécharge les icônes officielles de chaque type de node depuis l'API GW2
-et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v5.py.
+et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v6.py.
 Les slugs sans item_id connu (FALLBACK_SLUGS) reçoivent l'icône générique
-plutôt que d'être ignorés — gw2_taco_gen_v5.py exige un fichier par slug
+plutôt que d'être ignorés — gw2_taco_gen_v6.py exige un fichier par slug
 utilisé pour afficher une icône (sinon marqueur par défaut BlishHUD).
 
 Usage :
@@ -40,7 +40,6 @@ SLUG_TO_ITEM_ID = {
     "orichalcum": 19701,
     # ── Minerais extension ────────────────────────────────────────────────────
     "quartz": 43773,
-    "ambrite": 66637,
     "difluorite": 86977,
     "jade": 97102,
     "prismaticite": 94163,
@@ -54,7 +53,6 @@ SLUG_TO_ITEM_ID = {
     "rich_orichalcum": 19701,
     "rich_copper": 19697,
     "rich_platinum": 19702,
-    "sunstone": 24471,
     # ── Bois -- tiers generiques ──────────────────────────────────────────────
     "green_wood": 19723,
     "soft_wood": 19726,
@@ -125,9 +123,7 @@ SLUG_TO_ITEM_ID = {
     "orrian_oyster": 81837,
     "passiflora": 36731,
     "black_crocus": 12547,
-    "varietal_mint": 91731,
     # ── Special ───────────────────────────────────────────────────────────────
-    "mawdrey_target": 68996,
     "quartz_formation": 43773,
     # ── Autres ────────────────────────────────────────────────────────────────
     "snow_cherry": 19726,
@@ -142,6 +138,7 @@ SLUG_TO_ITEM_ID = {
 # fiable est trouvé (jamais d'ID deviné — cf. règle "ne pas inventer de donnée").
 # ---------------------------------------------------------------------------
 FALLBACK_SLUGS = [
+    "varietal_mint",  # chance sur mature_herbs/verdant_herbs, pas de sortie garantie
     "coral",
     "flax",
     "fulgurite",
@@ -326,7 +323,7 @@ def main():
     print(f"  ❌ Échecs       : {fail}")
     print(f"  ℹ️  {len(FALLBACK_SLUGS)} slugs sur icône générique (pas d'item_id connu) : "
           f"{', '.join(FALLBACK_SLUGS)}")
-    print(f"\n  → Lance maintenant : python gw2_taco_gen_v5.py")
+    print(f"\n  → Lance maintenant : python gw2_taco_gen_v6.py")
     print(f"     Les icônes dans '{args.output}/' seront embarquées dans le .taco")
 
 

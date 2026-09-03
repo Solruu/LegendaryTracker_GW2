@@ -1,5 +1,5 @@
 """
-GW2 Taco Generator (v5)
+GW2 Taco Generator (v6)
 ========================
 Lit gw2_nodes.json et génère un pack .taco (zip contenant markers.xml + icônes PNG).
 Hiérarchie Pathing : Catégorie > Groupe > Type de ressource
@@ -9,8 +9,8 @@ gw2_fetch_icons_v4.py) — la génération de pastilles colorées a été abando
 Lance gw2_fetch_icons_v4.py AVANT ce script si icons/ est absent ou incomplet.
 
 Usage :
-    python gw2_taco_gen_v5.py
-    python gw2_taco_gen_v5.py --input mes_nodes.json --output mon_pack.taco --icons icons/
+    python gw2_taco_gen_v6.py
+    python gw2_taco_gen_v6.py --input mes_nodes.json --output mon_pack.taco --icons icons/
 
 Dépendances : aucune (stdlib uniquement)
 """
@@ -75,9 +75,8 @@ TYPE_ORDER = {
         "platinum", "rich_platinum", "darksteel",
         "mithril", "rich_mithril",
         "orichalcum", "rich_orichalcum",
-        "quartz", "ambrite", "fulgurite", "difluorite",
+        "quartz", "fulgurite", "difluorite",
         "jade", "prismaticite", "somnorite", "vesperite",
-        "sunstone",
     ],
     "Bois": [
         "green_wood", "soft_wood", "seasoned_wood", "hard_wood",
@@ -115,7 +114,7 @@ TYPE_ORDER = {
         "truffle", "varietal_mint", "vegetal_unknown",
     ],
     "Special": [
-        "mawdrey_target", "quartz_formation",
+        "quartz_formation",
     ],
 }
 
