@@ -1,16 +1,16 @@
 """
-GW2 Taco Generator (v1)
+GW2 Taco Generator (v2)
 ========================
 Lit gw2_nodes.json et génère un pack .taco (zip contenant markers.xml + icônes PNG).
 Hiérarchie Pathing : Catégorie > Groupe > Type de ressource
 
 Les icônes sont les vraies icônes GW2 (dossier icons/, produit par
-gw2_fetch_icons.py) — la génération de pastilles colorées a été abandonnée.
-Lance gw2_fetch_icons.py AVANT ce script si icons/ est absent ou incomplet.
+gw2_fetch_icons_v4.py) — la génération de pastilles colorées a été abandonnée.
+Lance gw2_fetch_icons_v4.py AVANT ce script si icons/ est absent ou incomplet.
 
 Usage :
-    python gw2_taco_gen_v1.py
-    python gw2_taco_gen_v1.py --input mes_nodes.json --output mon_pack.taco --icons icons/
+    python gw2_taco_gen_v2.py
+    python gw2_taco_gen_v2.py --input mes_nodes.json --output mon_pack.taco --icons icons/
 
 Dépendances : aucune (stdlib uniquement)
 """
@@ -24,7 +24,7 @@ from collections import defaultdict
 
 # ---------------------------------------------------------------------------
 # Icônes réelles GW2 — chargées depuis le dossier icons/ (produit par
-# gw2_fetch_icons.py). Plus de génération de pastilles colorées.
+# gw2_fetch_icons_v4.py). Plus de génération de pastilles colorées.
 # ---------------------------------------------------------------------------
 def load_icon_bytes(slug, icons_dir):
     """Retourne les bytes du PNG icons/<slug>.png, ou None si absent."""
@@ -93,7 +93,7 @@ TYPE_ORDER = {
         "flax", "sawgill", "lentils", "passiflora", "orrian_oyster",
         "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid",
         "hatched_chili", "black_crocus", "clam", "herb_patch",
-        "mixed_harvesting", "saffron", "sunflower", "toxic_seedling",
+        "mixed_harvesting", "sunflower", "toxic_seedling",
         "truffle", "varietal_mint", "vegetal_unknown",
     ],
     "Special": [
@@ -209,7 +209,7 @@ def generate_taco(input_file, output_file, icons_dir):
         print(f"  ⚠️  Icônes manquantes ({len(missing)}) — marqueur par défaut BlishHUD utilisé :")
         for slug in sorted(missing):
             print(f"       - {slug}")
-        print(f"       → Lance gw2_fetch_icons.py, ou ajoute ces slugs à SLUG_TO_ITEM_ID.")
+        print(f"       → Lance gw2_fetch_icons_v4.py, ou ajoute ces slugs à SLUG_TO_ITEM_ID.")
 
     print("[3/4] Génération du XML...")
     xml_content = generate_xml(nodes, available_icons=set(icons.keys()))
@@ -245,10 +245,10 @@ if __name__ == "__main__":
 
     if not os.path.exists(args.input):
         print(f"[ERREUR] Fichier introuvable : {args.input}")
-        print("         Lance d'abord gw2_node_ID_v3.py pour créer des nodes.")
+        print("         Lance d'abord gw2_node_ID_v4.py pour créer des nodes.")
         sys.exit(1)
 
     if not os.path.isdir(args.icons):
-        print(f"  ⚠️  Dossier icônes '{args.icons}/' introuvable — lance gw2_fetch_icons.py d'abord.")
+        print(f"  ⚠️  Dossier icônes '{args.icons}/' introuvable — lance gw2_fetch_icons_v4.py d'abord.")
 
     generate_taco(args.input, args.output, args.icons)

@@ -1,17 +1,17 @@
 """
-GW2 Fetch Icons (v3)
+GW2 Fetch Icons (v4)
 =====================
 Télécharge les icônes officielles de chaque type de node depuis l'API GW2
-et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v1.py.
+et les stocke dans le dossier icons/ utilisé par gw2_taco_gen_v2.py.
 Les slugs sans item_id connu (FALLBACK_SLUGS) reçoivent l'icône générique
-plutôt que d'être ignorés — gw2_taco_gen_v1.py exige un fichier par slug
+plutôt que d'être ignorés — gw2_taco_gen_v2.py exige un fichier par slug
 utilisé pour afficher une icône (sinon marqueur par défaut BlishHUD).
 
 Usage :
-    python gw2_fetch_icons.py
-    python gw2_fetch_icons.py --output icons/     # dossier personnalisé
-    python gw2_fetch_icons.py --size 32           # taille PNG (16, 32, 64)
-    python gw2_fetch_icons.py --force             # re-télécharge même si déjà présent
+    python gw2_fetch_icons_v4.py
+    python gw2_fetch_icons_v4.py --output icons/     # dossier personnalisé
+    python gw2_fetch_icons_v4.py --size 32           # taille PNG (16, 32, 64)
+    python gw2_fetch_icons_v4.py --force             # re-télécharge même si déjà présent
 
 Dépendances : aucune (stdlib uniquement)
 """
@@ -97,7 +97,6 @@ SLUG_TO_ITEM_ID = {
     "mussel": 74266,
     "seaweed": 12509,
     "scallions": 12533,
-    "saffron": 12547,
     "clam": 12327,
     "orrian_oyster": 81837,
     "passiflora": 36731,
@@ -109,7 +108,7 @@ SLUG_TO_ITEM_ID = {
 
 
 # ---------------------------------------------------------------------------
-# Slugs présents dans gw2_node_ID_v3.py (NODE_TYPES_LIST) mais SANS item_id
+# Slugs présents dans gw2_node_ID_v4.py (NODE_TYPES_LIST) mais SANS item_id
 # vérifié ci-dessus → reçoivent l'icône générique de secours (FALLBACK_ICON_URL)
 # plutôt que rien du tout. À compléter au fil des sessions si un item_id
 # fiable est trouvé (jamais d'ID deviné — cf. règle "ne pas inventer de donnée").
@@ -304,7 +303,7 @@ def main():
     print(f"  ❌ Échecs       : {fail}")
     print(f"  ℹ️  {len(FALLBACK_SLUGS)} slugs sur icône générique (pas d'item_id connu) : "
           f"{', '.join(FALLBACK_SLUGS)}")
-    print(f"\n  → Lance maintenant : python gw2_taco_gen_v1.py")
+    print(f"\n  → Lance maintenant : python gw2_taco_gen_v2.py")
     print(f"     Les icônes dans '{args.output}/' seront embarquées dans le .taco")
 
 
