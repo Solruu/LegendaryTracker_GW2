@@ -372,6 +372,68 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `vial_of_blood.html` | Vial of Blood | article complet — T3 | 2026-08-27 |
 | `vial_of_thick_blood.html` | Vial of Thick Blood | article complet — T4 | 2026-08-27 |
 | `vial_of_potent_blood.html` | Vial of Potent Blood | article complet — T5 | 2026-08-27 |
+| `ancient_sapling.html` | Ancient Sapling | article complet | 2026-09-03 |
+| `ancient_spiderknot_tree.html` | Ancient Spiderknot Tree | article complet | 2026-09-03 |
+| `ancient_wood_log.html` | Ancient Wood Log | article complet | 2026-09-03 |
+| `aspen_sapling.html` | Aspen Sapling | article complet | 2026-09-03 |
+| `banyan_sapling.html` | Banyan Sapling | article complet | 2026-09-03 |
+| `baoba_sapling.html` | Baoba Sapling | article complet | 2026-09-03 |
+| `copper_ore_node.html` | Copper Ore (node) | article complet | 2026-09-03 |
+| `copper_ore.html` | Copper Ore | article complet | 2026-09-03 |
+| `crafting_material.html` | Crafting material | référence générale matériaux | 2026-09-03 |
+| `cypress_sapling.html` | Cypress Sapling | article complet | 2026-09-03 |
+| `ekku_sapling.html` | Ekku Sapling | article complet | 2026-09-03 |
+| `elder_wood_log.html` | Elder Wood Log | article complet | 2026-09-03 |
+| `fir_sapling.html` | Fir Sapling | article complet | 2026-09-03 |
+| `gathering.html` | Gathering | référence générale récolte | 2026-09-03 |
+| `gold_ore_node.html` | Gold Ore (node) | article complet | 2026-09-03 |
+| `gold_ore.html` | Gold Ore | article complet | 2026-09-03 |
+| `green_wood_log.html` | Green Wood Log | article complet | 2026-09-03 |
+| `gummo_sapling.html` | Gummo Sapling | article complet | 2026-09-03 |
+| `hard_wood_log.html` | Hard Wood Log | article complet | 2026-09-03 |
+| `inglewood_sapling.html` | Inglewood Sapling | article complet | 2026-09-03 |
+| `iron_ore_node.html` | Iron Ore (node) | article complet | 2026-09-03 |
+| `iron_ore.html` | Iron Ore | article complet | 2026-09-03 |
+| `kertch_sapling.html` | Kertch Sapling | article complet | 2026-09-03 |
+| `mebahya_sapling.html` | Mebahya Sapling | article complet | 2026-09-03 |
+| `metal.html` | Metal | référence — table complète paliers/lingots | 2026-09-03 |
+| `mimosa_sapling.html` | Mimosa Sapling | article complet | 2026-09-03 |
+| `mithril_ore_node.html` | Mithril Ore (node) | article complet | 2026-09-03 |
+| `mithril_ore.html` | Mithril Ore | article complet | 2026-09-03 |
+| `node_farm.html` | Node farm | référence — clusters saplings/ore, non exploité | 2026-09-03 |
+| `ore.html` | Ore | référence — table complète paliers/pics requis | 2026-09-03 |
+| `orichalcum_ore_node.html` | Orichalcum Ore (node) | article complet | 2026-09-03 |
+| `orichalcum_ore.html` | Orichalcum Ore | article complet | 2026-09-03 |
+| `orrian_sapling.html` | Orrian Sapling | article complet | 2026-09-03 |
+| `palm_sapling.html` | Palm Sapling | article complet | 2026-09-03 |
+| `petrified_echovald_sapling.html` | Petrified Echovald Sapling | article complet | 2026-09-03 |
+| `piece_of_unidentified_gear.html` | Piece of Unidentified Gear | article complet — Unidentified Gear (Masterwork) | 2026-09-03 |
+| `piece_of_common_unidentified_gear.html` | Piece of Common Unidentified Gear | article complet — Unidentified Gear (Fine) | 2026-09-03 |
+| `piece_of_rare_unidentified_gear.html` | Piece of Rare Unidentified Gear | article complet — Unidentified Gear (Rare), rewarded_by world bosses | 2026-09-03 |
+| `pine_sapling.html` | Pine Sapling | article complet | 2026-09-03 |
+| `platinum_ore_node.html` | Platinum Ore (node) | article complet | 2026-09-03 |
+| `platinum_ore.html` | Platinum Ore | article complet | 2026-09-03 |
+| `red_oak_sapling.html` | Red Oak Sapling | article complet | 2026-09-03 |
+| `rich_copper_vein.html` | Rich Copper Vein | article complet | 2026-09-03 |
+| `rich_gold_vein.html` | Rich Gold Vein | article complet | 2026-09-03 |
+| `rich_iron_vein.html` | Rich Iron Vein | article complet | 2026-09-03 |
+| `rich_mithril_vein.html` | Rich Mithril Vein | article complet | 2026-09-03 |
+| `rich_orichalcum_vein.html` | Rich Orichalcum Vein | article complet | 2026-09-03 |
+| `rich_platinum_vein.html` | Rich Platinum Vein | article complet | 2026-09-03 |
+| `rich_silver_vein.html` | Rich Silver Vein | article complet | 2026-09-03 |
+| `seasoned_wood_log.html` | Seasoned Wood Log | article complet | 2026-09-03 |
+| `silk_scrap.html` | Silk Scrap | article complet — piste soie/farming_reference | 2026-09-03 |
+| `silver_ore_node.html` | Silver Ore (node) | article complet | 2026-09-03 |
+| `silver_ore.html` | Silver Ore | article complet | 2026-09-03 |
+| `snow_cherry_sapling.html` | Snow Cherry Sapling | article complet | 2026-09-03 |
+| `soft_wood_log.html` | Soft Wood Log | article complet | 2026-09-03 |
+| `somnorite_ore.html` | Somnorite Ore | article complet | 2026-09-03 |
+| `spiderknot_tree.html` | Spiderknot Tree | article complet | 2026-09-03 |
+| `thick_leather_section.html` | Thick Leather Section | article complet — piste cuir/farming_reference | 2026-09-03 |
+| `tukawa_sapling.html` | Tukawa Sapling | article complet | 2026-09-03 |
+| `unidentified_gear.html` | Unidentified Gear | article complet — page mère, 3 raretés | 2026-09-03 |
+| `vesperite_ore.html` | Vesperite Ore | article complet | 2026-09-03 |
+| `wood.html` | Wood | référence — table complète paliers/planches | 2026-09-03 |
 
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
@@ -400,6 +462,14 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 Un fichier présent mais absent de ce tableau est un fichier que personne ne sait
 lire. Vérification du 27/08/2026 : **314 captures, 314 lignes, aucun écart** —
 7 fichiers manquaient à l'index, ajoutés.
+
+Vérification du 03/09/2026 (ajout des 62 captures cuir/soie/unidentified gear/
+bois-minerai) : **345 fichiers réels dans `wiki/`, 363 lignes dans son tableau**.
+L'écart de 18 est antérieur à cet ajout — 18 pages de succès/légendaires
+(a_henge_away_from_home, acquiring_agaleus, astral_purification, etc.) ont
+chacune deux lignes dans le tableau. Vérifié : aucune des 62 captures d'aujourd'hui
+n'est concernée, l'écart préexistait au 27/08. Pas corrigé ici — décision hors
+scope de cette session, à trancher avec le contexte de leur double capture.
 
 ## Manquent encore
 
