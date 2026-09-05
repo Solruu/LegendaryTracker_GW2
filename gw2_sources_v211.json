@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v210",
+  "version": "v211",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2258,9 +2258,9 @@
     }
    ],
    "qty": {
-    "conflux": 100,
-    "vision": 100,
-    "gift_of_sentience": 100
+    "gift_of_sentience": 100,
+    "gift_of_the_world": 100,
+    "gift_of_prescience": 100
    },
    "kind": "acquire",
    "verified": true,
@@ -8737,7 +8737,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_castoran_mastery": 1
+   },
    "kind": "advanced_craft"
   },
   "gift_of_the_seas": {

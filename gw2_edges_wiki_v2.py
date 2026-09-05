@@ -1,5 +1,5 @@
 import json, re, collections, sys
-d=json.load(open('gw2_sources_v209.json'), object_pairs_hook=collections.OrderedDict)
+d=json.load(open('gw2_sources_v210.json'), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 def norm(s): return re.sub(r'[^a-z0-9]','',s.lower())
@@ -8,8 +8,21 @@ def nom(cid):
     return (n.get('en') or n.get('fr')) if isinstance(n,dict) else (n or cid)
 def clean(t): return t.replace('_',' ').replace('%27',"'").replace('%C3%A9','é')
 by=collections.defaultdict(set)
+def sans_pluriel(x):
+    # « Shard of Lowland Shore » cote wiki, « Shards of Lowland Shore » en base :
+    # le pluriel est au milieu de la locution, pas a la fin, donc rstrip('s') ne
+    # sert a rien. On compare des formes ou tous les 's' ont saute. C'est brutal,
+    # mais le rapprochement refuse deja de trancher en cas d'ambiguite, donc une
+    # collision est signalee, jamais devinee.
+    return x.replace('s','')
+def sans_parenthese(x):
+    # « Gift of Adventure (VoE) » : le suffixe desambigue en base, le wiki ne
+    # le porte pas.
+    return re.sub(r'\(.*?\)','',x).strip()
 for cid in cc:
-    by[norm(nom(cid))].add(cid); by[norm(cid.replace('_',' '))].add(cid)
+    n=nom(cid)
+    for v in (n, cid.replace('_',' '), sans_parenthese(n)):
+        by[norm(v)].add(cid); by[sans_pluriel(norm(v))].add(cid)
     n=nom(cid)
     if '/' in n:
         g,dd=n.split('/',1)
@@ -18,7 +31,8 @@ for cid in cc:
         if len(mots)>1: by[norm(' '.join(mots[:-1])+' '+dd.strip())].add(cid)
 AMBIG=set()
 def to_id(t,page=None):
-    for k in (norm(clean(t)), norm(clean(t)).rstrip('s'), norm(clean(t))+'s'):
+    base=norm(clean(t))
+    for k in (base, base.rstrip('s'), base+'s', sans_pluriel(base)):
         s=by.get(k)
         if not s: continue
         if len(s)==1: return next(iter(s))
