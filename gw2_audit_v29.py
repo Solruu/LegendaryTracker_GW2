@@ -19,7 +19,7 @@ doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
 l'entite qui la porte via cadence_ref. Ce script echoue sinon.
 
 Usage :
-    python3 gw2_audit_v18.py gw2_sources_v166.json
+    python3 gw2_audit_v29.py gw2_sources_v203.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
@@ -1375,6 +1375,65 @@ def check_no_duplicate_collection_id(data, errors, warnings):
                 vus[aid] = ck
 
 
+def check_needed_for_chiffre(data, errors, warnings):
+    """Un lien declare dans needed_for doit porter sa quantite dans qty.
+
+    craft_components decrit deja un arbre de craft complet : `qty` accepte comme
+    cle un identifiant de COMPOSANT et non seulement de legendaire, et
+    computeGrandTotal propage ces liens en cascade sur six passes. Le graphe
+    existe donc, chiffre, jusqu'a la profondeur voulue.
+
+    Mais deux champs decrivent les memes aretes. `needed_for` porte le graphe
+    complet, `qty` seulement les aretes chiffrees. La mesure du 05/09/2026 donne
+    100 aretes declarees dans needed_for sans quantite correspondante, et ZERO
+    dans l'autre sens : `qty` est un sous-ensemble strict. Ce n'est donc pas une
+    contradiction entre deux tables, c'est une table complete et une table
+    partielle qui se ressemblent.
+
+    La consequence est silencieuse et deja active. L'onglet Composants construit
+    son arbre par index inverse sur needed_for, tandis que les totaux se
+    calculent sur qty : un composant peut s'afficher sous un gift tout en pesant
+    zero dans le cout annonce. gift_of_battle et bloodstone_shard se rangent
+    ainsi sous gift_of_mastery sans y compter pour une seule unite.
+
+    Ce controle avertit tant que les quantites manquent. Une fois les 100 aretes
+    chiffrees, needed_for devient exactement derivable de qty et n'a plus lieu
+    d'etre stocke : le JSX le recalculera par index inverse, et cette regle
+    passera en erreur.
+    """
+    cc = data.get("craft_components", {})
+    manquantes = []
+    inverses = []
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        declares = {p for p in (comp.get("needed_for") or []) if p in cc}
+        chiffres = {
+            str(k).split("__")[0]
+            for k in (comp.get("qty") or {})
+            if str(k).split("__")[0] in cc
+        }
+        for parent in sorted(declares - chiffres):
+            manquantes.append(f"{cid} -> {parent}")
+        for parent in sorted(chiffres - declares):
+            inverses.append(f"{cid} -> {parent}")
+
+    if manquantes:
+        warnings.append(
+            f"needed_for sans quantite : {len(manquantes)} arete(s) declarees et non "
+            f"chiffrees dans qty — elles s'affichent dans l'arbre et pesent zero "
+            f"dans les totaux. Voir DETTE_ARBRE_CRAFT.md. Liste : "
+            + ", ".join(manquantes)
+        )
+    # Le sens inverse serait plus grave : une quantite propagee par la cascade
+    # sans que l'arete soit declaree, donc un cout compte et jamais affiche.
+    for lien in inverses:
+        errors.append(
+            f"qty sans needed_for : {lien} — la cascade compte cette arete mais "
+            "l'arbre ne l'affiche pas"
+        )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1474,6 +1533,9 @@ def main() -> int:
     check_collection_name_bilingual(data, errors, warnings)
     check_gen3_precursor_suffix(data, errors, warnings)
     check_no_duplicate_collection_id(data, errors, warnings)
+
+    # 30. Chaque arete de l'arbre de craft porte sa quantite
+    check_needed_for_chiffre(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

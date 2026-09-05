@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v203",
-  "last_updated": "2026-08-13",
+  "version": "v204",
+  "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -6079,10 +6079,6 @@
      }
     }
    ],
-   "sub_components": {
-    "gift_of_magic": "MF : 250× Vicious Claw + 250× Large Fang + 250× Vial of Powerful Blood + 250× Potent Venom Sac",
-    "gift_of_might": "MF : 250× Ancient Bone + 250× Large Scale + 250× Armored Scale + 250× Powerful Venom Sac (ou Potent)"
-   },
    "qty": {
     "gen1_frostfang": 1,
     "gen1_incinerator": 1,
@@ -11577,7 +11573,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_magic": 1
+    "gift_of_condensed_magic": 2
    },
    "needed_for": [
     "gift_of_condensed_magic"
@@ -11789,7 +11785,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_magic": 1
+    "gift_of_condensed_magic": 2
    },
    "needed_for": [
     "gift_of_condensed_magic"
@@ -11997,7 +11993,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_magic": 1
+    "gift_of_condensed_magic": 2
    },
    "needed_for": [
     "gift_of_condensed_magic"
@@ -12205,7 +12201,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_magic": 1
+    "gift_of_condensed_magic": 2
    },
    "needed_for": [
     "gift_of_condensed_magic"
@@ -12240,7 +12236,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 2
    },
    "needed_for": [
     "gift_of_condensed_might"
@@ -12452,7 +12448,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 2
    },
    "needed_for": [
     "gift_of_condensed_might"
@@ -12664,7 +12660,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 2
    },
    "needed_for": [
     "gift_of_condensed_might"
@@ -12876,7 +12872,7 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 2
    },
    "needed_for": [
     "gift_of_condensed_might"
