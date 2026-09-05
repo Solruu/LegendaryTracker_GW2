@@ -90,10 +90,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `curious_mursaat_ruin_shard.html` | Curious Mursaat Ruin Shard | article complet | 2026-08-27 |
 | `destroyer_lodestone.html` | Destroyer Lodestone | article complet | 2026-08-27 |
 | `evergreen_lodestone.html` | Evergreen Lodestone | article complet | 2026-08-27 |
-| `glacial_lodestone.html` | Glacial Lodestone | article complet | 2026-08-27 |
+| `glacial_lodestone.html` | Glacial Lodestone | article complet | 2026-09-05 |
 | `lodestone.html` | Lodestone | article complet — page générique des orbes | 2026-08-27 |
 | `mists_gate_residue.html` | Mists Gate Residue | article complet | 2026-08-27 |
-| `molten_lodestone.html` | Molten Lodestone | article complet | 2026-08-27 |
+| `molten_lodestone.html` | Molten Lodestone | article complet | 2026-09-05 |
 | `mordrem_lodestone.html` | Mordrem Lodestone | article complet | 2026-08-27 |
 | `mursaat_obsidian_chunk.html` | Mursaat Obsidian Chunk | article complet | 2026-08-27 |
 | `mursaat_runestone.html` | Mursaat Runestone | article complet | 2026-08-27 |
@@ -269,63 +269,63 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `the_shining_blade.html` | The Shining Blade | article complet — table de recette en cascade | 2026-09-01 |
 | `verdarach.html` | Verdarach | article complet — table de recette en cascade | 2026-09-01 |
 | `xiuquatl.html` | Xiuquatl | article complet — table de recette en cascade | 2026-09-01 |
-| `a_bug_in_the_system_achievements.html` | A Bug in the System (achievements) | méta de maîtrise — 48 succès éligibles, seuil 35 | 2026-09-01 |
-| `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-09-01 |
-| `a_star_to_guide_us_achievements.html` | A Star to Guide Us (achievements) | méta de maîtrise — 55 éligibles, seuil 38 | 2026-09-01 |
-| `acquiring_agaleus.html` | Acquiring Agaleus | collection, 24 objets | 2026-09-01 |
-| `ad_infinitum_i_finite_result.html` | Ad Infinitum I: Finite Result | collection, 11 objets | 2026-09-01 |
-| `ad_infinitum_ii_upper_bound.html` | Ad Infinitum II: Upper Bound | collection, 11 objets | 2026-09-01 |
-| `ad_infinitum_iii_unbound.html` | Ad Infinitum III: Unbound | collection, 11 objets | 2026-09-01 |
-| `all_or_nothing_achievements.html` | All or Nothing (achievements) | méta de maîtrise — 40 éligibles, seuil 30 | 2026-09-01 |
-| `astral_purification.html` | Astral Purification | collection, 15 objets | 2026-09-01 |
-| `aurora_awakening.html` | Aurora: Awakening | collection, 7 objets — créée, elle était vide | 2026-09-01 |
-| `aurora_ii_empowering.html` | Aurora II: Empowering | collection, 21 objets | 2026-09-01 |
-| `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-09-01 |
-| `bava_nisos_achievements.html` | Bava Nisos (achievements) | méta de maîtrise — 15 éligibles, seuil 10 | 2026-09-01 |
-| `brandstone_research.html` | Brandstone Research | collection, 7 objets | 2026-09-01 |
-| `coalescence_i_unbridled.html` | Coalescence I: Unbridled | collection, 10 objets | 2026-09-01 |
-| `coalescence_ii_the_gift.html` | Coalescence II: The Gift | collection, 18 objets | 2026-09-01 |
-| `coalescence_iii_culmination.html` | Coalescence III: Culmination | collection, 8 objets | 2026-09-01 |
-| `envoy_armor_i_experimental_armor.html` | Envoy Armor I: Experimental Armor | collection, 18 objets | 2026-09-01 |
-| `envoy_armor_ii_refined_armor.html` | Envoy Armor II: Refined Armor | collection, 14 objets | 2026-09-01 |
+| `a_bug_in_the_system_achievements.html` | A Bug in the System (achievements) | méta de maîtrise — 48 succès éligibles, seuil 35 | 2026-09-05 |
+| `a_henge_away_from_home.html` | A Henge Away from Home | collection, 32 objets | 2026-09-05 |
+| `a_star_to_guide_us_achievements.html` | A Star to Guide Us (achievements) | méta de maîtrise — 55 éligibles, seuil 38 | 2026-09-05 |
+| `acquiring_agaleus.html` | Acquiring Agaleus | collection, 24 objets | 2026-09-05 |
+| `ad_infinitum_i_finite_result.html` | Ad Infinitum I: Finite Result | collection, 11 objets | 2026-09-05 |
+| `ad_infinitum_ii_upper_bound.html` | Ad Infinitum II: Upper Bound | collection, 11 objets | 2026-09-05 |
+| `ad_infinitum_iii_unbound.html` | Ad Infinitum III: Unbound | collection, 11 objets | 2026-09-05 |
+| `all_or_nothing_achievements.html` | All or Nothing (achievements) | méta de maîtrise — 40 éligibles, seuil 30 | 2026-09-05 |
+| `astral_purification.html` | Astral Purification | collection, 15 objets | 2026-09-05 |
+| `aurora_awakening.html` | Aurora: Awakening | collection, 7 objets — créée, elle était vide | 2026-09-05 |
+| `aurora_ii_empowering.html` | Aurora II: Empowering | collection, 21 objets | 2026-09-05 |
+| `awakening_the_druid_stone.html` | Awakening the Druid Stone | collection, 14 objets | 2026-09-05 |
+| `bava_nisos_achievements.html` | Bava Nisos (achievements) | méta de maîtrise — 15 éligibles, seuil 10 | 2026-09-05 |
+| `brandstone_research.html` | Brandstone Research | collection, 7 objets | 2026-09-05 |
+| `coalescence_i_unbridled.html` | Coalescence I: Unbridled | collection, 10 objets | 2026-09-05 |
+| `coalescence_ii_the_gift.html` | Coalescence II: The Gift | collection, 18 objets | 2026-09-05 |
+| `coalescence_iii_culmination.html` | Coalescence III: Culmination | collection, 8 objets | 2026-09-05 |
+| `envoy_armor_i_experimental_armor.html` | Envoy Armor I: Experimental Armor | collection, 18 objets | 2026-09-05 |
+| `envoy_armor_ii_refined_armor.html` | Envoy Armor II: Refined Armor | collection, 14 objets | 2026-09-05 |
 | `forge_guards_armor_collection.html` | Forge Guard's Armor Collection | collection, 6 objets — table sans colonne Notes | 2026-09-01 |
-| `glimmering_resin_weapon_collector.html` | Glimmering Resin Weapon Collector | collection, 17 objets — table sans colonne Notes | 2026-09-01 |
-| `incursive_investigation.html` | Incursive Investigation | méta — recoupement de meta_eligible, 5 objectifs | 2026-09-01 |
-| `journeyman_of_the_forge.html` | Journeyman of the Forge | collection, 16 objets | 2026-09-01 |
-| `legendary_armor_achievements.html` | Legendary Armor (achievements) | page de catégorie — contexte, non parsée | 2026-09-01 |
-| `legendary_backpack_ad_infinitum.html` | Legendary Backpack: Ad Infinitum | collection, 13 objets | 2026-09-01 |
-| `legendary_relics_components.html` | Legendary Relics: Components | collection, 20 objets — 20 renvois component | 2026-09-01 |
-| `legendary_weapons_achievements.html` | Legendary Weapons (achievements) | page de catégorie — contexte, non parsée | 2026-09-01 |
-| `living_world_return.html` | Living World Return | page de contexte — 24 méta Return, contenu retiré du jeu | 2026-09-01 |
-| `long_live_the_lich_achievements.html` | Long Live the Lich (achievements) | méta — recoupement de meta_eligible, 48 objectifs | 2026-09-01 |
-| `master_diver.html` | Master Diver | collection, 10 objets | 2026-09-01 |
-| `mistburned_barrens_achievements.html` | Mistburned Barrens (achievements) | méta — recoupement de meta_eligible, 23 objectifs | 2026-09-01 |
-| `mists_research.html` | Mists Research | collection, 8 objets | 2026-09-01 |
-| `mists_research_strife_unending.html` | Mists Research: Strife Unending | collection, 11 objets | 2026-09-01 |
-| `radiance_of_the_sun_god.html` | Radiance of the Sun God | collection, 20 objets | 2026-09-01 |
-| `shipwreck_strand_achievements.html` | Shipwreck Strand (achievements) | méta — recoupement de meta_eligible, 53 objectifs | 2026-09-01 |
-| `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-09-01 |
-| `starlit_weald_achievements.html` | Starlit Weald (achievements) | méta — 55 au wiki contre 54 à l'API, divergence confirmée | 2026-09-01 |
-| `the_convergence_of_sorrow_i_elegy.html` | The Convergence of Sorrow I: Elegy | collection, 20 objets | 2026-09-01 |
-| `the_druid_stone.html` | The Druid Stone | collection, 7 objets | 2026-09-01 |
-| `unknown_nightmares_experiments_in_the_shadows.html` | Unknown Nightmares: Experiments in the Shadows | collection, 10 objets | 2026-09-01 |
-| `unknown_nightmares_gift_of_shadows.html` | Unknown Nightmares: Gift of Shadows | collection, 7 objets | 2026-09-01 |
-| `unknown_nightmares_gift_of_the_feast.html` | Unknown Nightmares: Gift of the Feast | collection, 18 objets | 2026-09-01 |
-| `unknown_nightmares_gift_of_the_mistburned_isles.html` | Unknown Nightmares: Gift of the Mistburned Isles | collection, 13 objets | 2026-09-01 |
-| `unknown_nightmares_orrax_contained.html` | Unknown Nightmares: Orrax Contained | collection, 5 objets | 2026-09-01 |
-| `vision_i_awakening.html` | Vision I: Awakening | méta sur 6 sous-collections — pas de tableau d'objets | 2026-09-01 |
-| `vision_ii_farsight.html` | Vision II: Farsight | 24 sanctuaires de maîtrise, seuil 20 — pool à modéliser | 2026-09-01 |
-| `visions_of_dragonfall.html` | Visions of Dragonfall | collection, 7 objets | 2026-09-01 |
-| `visions_of_istan.html` | Visions of Istan | collection, 7 objets | 2026-09-01 |
-| `visions_of_jahai.html` | Visions of Jahai | collection, 7 objets | 2026-09-01 |
-| `visions_of_kourna.html` | Visions of Kourna | collection, 7 objets | 2026-09-01 |
-| `visions_of_sandswept_isles.html` | Visions of Sandswept Isles | collection, 7 objets | 2026-09-01 |
-| `visions_of_thunderhead_peaks.html` | Visions of Thunderhead Peaks | collection, 7 objets | 2026-09-01 |
-| `war_eternal_achievements.html` | War Eternal (achievements) | méta — recoupement de meta_eligible, 18 objectifs | 2026-09-01 |
-| `year_of_the_ascension_part_i.html` | Year of the Ascension Part I | méta PvP — Path of the Ascension I, 11 sur 11 | 2026-09-01 |
-| `year_of_the_ascension_part_ii.html` | Year of the Ascension Part II | méta PvP — Path of the Ascension II, 11 sur 12 | 2026-09-01 |
-| `year_of_the_ascension_part_iii.html` | Year of the Ascension Part III | méta PvP — Path of the Ascension III, 11 sur 12 | 2026-09-01 |
-| `year_of_the_ascension_part_iv.html` | Year of the Ascension Part IV | méta PvP — Path of the Ascension IV, 11 sur 12 | 2026-09-01 |
+| `glimmering_resin_weapon_collector.html` | Glimmering Resin Weapon Collector | collection, 17 objets — table sans colonne Notes | 2026-09-05 |
+| `incursive_investigation.html` | Incursive Investigation | méta — recoupement de meta_eligible, 5 objectifs | 2026-09-05 |
+| `journeyman_of_the_forge.html` | Journeyman of the Forge | collection, 16 objets | 2026-09-05 |
+| `legendary_armor_achievements.html` | Legendary Armor (achievements) | page de catégorie — contexte, non parsée | 2026-09-05 |
+| `legendary_backpack_ad_infinitum.html` | Legendary Backpack: Ad Infinitum | collection, 13 objets | 2026-09-05 |
+| `legendary_relics_components.html` | Legendary Relics: Components | collection, 20 objets — 20 renvois component | 2026-09-05 |
+| `legendary_weapons_achievements.html` | Legendary Weapons (achievements) | page de catégorie — contexte, non parsée | 2026-09-05 |
+| `living_world_return.html` | Living World Return | page de contexte — 24 méta Return, contenu retiré du jeu | 2026-09-05 |
+| `long_live_the_lich_achievements.html` | Long Live the Lich (achievements) | méta — recoupement de meta_eligible, 48 objectifs | 2026-09-05 |
+| `master_diver.html` | Master Diver | collection, 10 objets | 2026-09-05 |
+| `mistburned_barrens_achievements.html` | Mistburned Barrens (achievements) | méta — recoupement de meta_eligible, 23 objectifs | 2026-09-05 |
+| `mists_research.html` | Mists Research | collection, 8 objets | 2026-09-05 |
+| `mists_research_strife_unending.html` | Mists Research: Strife Unending | collection, 11 objets | 2026-09-05 |
+| `radiance_of_the_sun_god.html` | Radiance of the Sun God | collection, 20 objets | 2026-09-05 |
+| `shipwreck_strand_achievements.html` | Shipwreck Strand (achievements) | méta — recoupement de meta_eligible, 53 objectifs | 2026-09-05 |
+| `sprouting_the_druid_stone.html` | Sprouting the Druid Stone | collection, 21 objets | 2026-09-05 |
+| `starlit_weald_achievements.html` | Starlit Weald (achievements) | méta — 55 au wiki contre 54 à l'API, divergence confirmée | 2026-09-05 |
+| `the_convergence_of_sorrow_i_elegy.html` | The Convergence of Sorrow I: Elegy | collection, 20 objets | 2026-09-05 |
+| `the_druid_stone.html` | The Druid Stone | collection, 7 objets | 2026-09-05 |
+| `unknown_nightmares_experiments_in_the_shadows.html` | Unknown Nightmares: Experiments in the Shadows | collection, 10 objets | 2026-09-05 |
+| `unknown_nightmares_gift_of_shadows.html` | Unknown Nightmares: Gift of Shadows | collection, 7 objets | 2026-09-05 |
+| `unknown_nightmares_gift_of_the_feast.html` | Unknown Nightmares: Gift of the Feast | collection, 18 objets | 2026-09-05 |
+| `unknown_nightmares_gift_of_the_mistburned_isles.html` | Unknown Nightmares: Gift of the Mistburned Isles | collection, 13 objets | 2026-09-05 |
+| `unknown_nightmares_orrax_contained.html` | Unknown Nightmares: Orrax Contained | collection, 5 objets | 2026-09-05 |
+| `vision_i_awakening.html` | Vision I: Awakening | méta sur 6 sous-collections — pas de tableau d'objets | 2026-09-05 |
+| `vision_ii_farsight.html` | Vision II: Farsight | 24 sanctuaires de maîtrise, seuil 20 — pool à modéliser | 2026-09-05 |
+| `visions_of_dragonfall.html` | Visions of Dragonfall | collection, 7 objets | 2026-09-05 |
+| `visions_of_istan.html` | Visions of Istan | collection, 7 objets | 2026-09-05 |
+| `visions_of_jahai.html` | Visions of Jahai | collection, 7 objets | 2026-09-05 |
+| `visions_of_kourna.html` | Visions of Kourna | collection, 7 objets | 2026-09-05 |
+| `visions_of_sandswept_isles.html` | Visions of Sandswept Isles | collection, 7 objets | 2026-09-05 |
+| `visions_of_thunderhead_peaks.html` | Visions of Thunderhead Peaks | collection, 7 objets | 2026-09-05 |
+| `war_eternal_achievements.html` | War Eternal (achievements) | méta — recoupement de meta_eligible, 18 objectifs | 2026-09-05 |
+| `year_of_the_ascension_part_i.html` | Year of the Ascension Part I | méta PvP — Path of the Ascension I, 11 sur 11 | 2026-09-05 |
+| `year_of_the_ascension_part_ii.html` | Year of the Ascension Part II | méta PvP — Path of the Ascension II, 11 sur 12 | 2026-09-05 |
+| `year_of_the_ascension_part_iii.html` | Year of the Ascension Part III | méta PvP — Path of the Ascension III, 11 sur 12 | 2026-09-05 |
+| `year_of_the_ascension_part_iv.html` | Year of the Ascension Part IV | méta PvP — Path of the Ascension IV, 11 sur 12 | 2026-09-05 |
 | `bone.html` | Bone | article complet — T3 | 2026-08-27 |
 | `claw.html` | Claw | article complet — T3 | 2026-08-27 |
 | `fang.html` | Fang | article complet — T3 | 2026-08-27 |
@@ -416,6 +416,107 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unidentified_gear.html` | Unidentified Gear | article complet — page mère, 3 raretés | 2026-09-03 |
 | `vesperite_ore.html` | Vesperite Ore | article complet | 2026-09-03 |
 | `wood.html` | Wood | référence — table complète paliers/planches | 2026-09-03 |
+| `amalgamated_rift_essence.html` | Amalgamated Rift Essence | article complet | 2026-09-05 |
+| `ancient_wood_plank.html` | Ancient Wood Plank | article complet | 2026-09-05 |
+| `blessing_of_the_jade_empress.html` | Blessing of the Jade Empress | article complet | 2026-09-05 |
+| `bolt_of_gossamer.html` | Bolt of Gossamer | article complet | 2026-09-05 |
+| `box_o_fun.html` | Box o' Fun | article complet | 2026-09-05 |
+| `certificate_of_heroics.html` | Certificate of Heroics | article complet | 2026-09-05 |
+| `chrysocola_orb.html` | Chrysocola Orb | article complet | 2026-09-05 |
+| `chunk_of_ancient_ambergris.html` | Chunk of Ancient Ambergris | article complet | 2026-09-05 |
+| `chunk_of_pure_jade.html` | Chunk of Pure Jade | article complet | 2026-09-05 |
+| `crystalline_ingot.html` | Crystalline Ingot | article complet | 2026-09-05 |
+| `cured_hardened_leather_square.html` | Cured Hardened Leather Square | article complet | 2026-09-05 |
+| `darksteel_ingot.html` | Darksteel Ingot | article complet | 2026-09-05 |
+| `draconic_tribute.html` | Draconic Tribute | article complet | 2026-09-05 |
+| `elder_wood_plank.html` | Elder Wood Plank | article complet | 2026-09-05 |
+| `essence_of_animosity.html` | Essence of Animosity | article complet | 2026-09-05 |
+| `forge_guard_s_armor_collection.html` | Forge Guard's Armor Collection | article complet | 2026-09-05 |
+| `fulgurite.html` | Fulgurite | article complet | 2026-09-05 |
+| `ghost_pepper.html` | Ghost Pepper | article complet | 2026-09-05 |
+| `gift_of_arah.html` | Gift of Arah | article complet | 2026-09-05 |
+| `gift_of_astralaria.html` | Gift of Astralaria | article complet | 2026-09-05 |
+| `gift_of_aurene_s_argument.html` | Gift of Aurene's Argument | article complet | 2026-09-05 |
+| `gift_of_aurene_s_bite.html` | Gift of Aurene's Bite | article complet | 2026-09-05 |
+| `gift_of_aurene_s_breath.html` | Gift of Aurene's Breath | article complet | 2026-09-05 |
+| `gift_of_aurene_s_claw.html` | Gift of Aurene's Claw | article complet | 2026-09-05 |
+| `gift_of_aurene_s_fang.html` | Gift of Aurene's Fang | article complet | 2026-09-05 |
+| `gift_of_aurene_s_flight.html` | Gift of Aurene's Flight | article complet | 2026-09-05 |
+| `gift_of_aurene_s_gaze.html` | Gift of Aurene's Gaze | article complet | 2026-09-05 |
+| `gift_of_aurene_s_horn.html` | Gift of Aurene's Horn | article complet | 2026-09-05 |
+| `gift_of_aurene_s_insight.html` | Gift of Aurene's Insight | article complet | 2026-09-05 |
+| `gift_of_aurene_s_persuasion.html` | Gift of Aurene's Persuasion | article complet | 2026-09-05 |
+| `gift_of_aurene_s_rending.html` | Gift of Aurene's Rending | article complet | 2026-09-05 |
+| `gift_of_aurene_s_scale.html` | Gift of Aurene's Scale | article complet | 2026-09-05 |
+| `gift_of_aurene_s_tail.html` | Gift of Aurene's Tail | article complet | 2026-09-05 |
+| `gift_of_aurene_s_weight.html` | Gift of Aurene's Weight | article complet | 2026-09-05 |
+| `gift_of_aurene_s_wing.html` | Gift of Aurene's Wing | article complet | 2026-09-05 |
+| `gift_of_aurene_s_wisdom.html` | Gift of Aurene's Wisdom | article complet | 2026-09-05 |
+| `gift_of_balthazar.html` | Gift of Balthazar | article complet | 2026-09-05 |
+| `gift_of_castoran_mastery.html` | Gift of Castoran Mastery | article complet | 2026-09-05 |
+| `gift_of_chuka_and_champawat.html` | Gift of Chuka and Champawat | article complet | 2026-09-05 |
+| `gift_of_conquering.html` | Gift of Conquering | article complet | 2026-09-05 |
+| `gift_of_desert_mastery.html` | Gift of Desert Mastery | article complet | 2026-09-05 |
+| `gift_of_divinity.html` | Gift of Divinity | article complet | 2026-09-05 |
+| `gift_of_energy.html` | Gift of Energy | article complet | 2026-09-05 |
+| `gift_of_eureka.html` | Gift of Eureka | article complet | 2026-09-05 |
+| `gift_of_exordium.html` | Gift of Exordium | article complet | 2026-09-05 |
+| `gift_of_expertise.html` | Gift of Expertise | article complet | 2026-09-05 |
+| `gift_of_fortune.html` | Gift of Fortune | article complet | 2026-09-05 |
+| `gift_of_gatherer_of_the_hunt.html` | Gift of Gatherer of the Hunt | article complet | 2026-09-05 |
+| `gift_of_hope.html` | Gift of HOPE | article complet | 2026-09-05 |
+| `gift_of_infused_gems.html` | Gift of Infused Gems | article complet | 2026-09-05 |
+| `gift_of_insights.html` | Gift of Insights | article complet | 2026-09-05 |
+| `gift_of_jade_mastery.html` | Gift of Jade Mastery | article complet | 2026-09-05 |
+| `gift_of_janthir_wilds.html` | Gift of Janthir Wilds | article complet | 2026-09-05 |
+| `gift_of_magical_prosperity.html` | Gift of Magical Prosperity | article complet | 2026-09-05 |
+| `gift_of_maguuma_mastery.html` | Gift of Maguuma Mastery | article complet | 2026-09-05 |
+| `gift_of_mastery.html` | Gift of Mastery | article complet | 2026-09-05 |
+| `gift_of_mighty_prosperity.html` | Gift of Mighty Prosperity | article complet | 2026-09-05 |
+| `gift_of_nevermore.html` | Gift of Nevermore | article complet | 2026-09-05 |
+| `gift_of_patience.html` | Gift of Patience | article complet | 2026-09-05 |
+| `gift_of_pharus.html` | Gift of Pharus | article complet | 2026-09-05 |
+| `gift_of_prescience.html` | Gift of Prescience | article complet | 2026-09-05 |
+| `gift_of_research.html` | Gift of Research | article complet | 2026-09-05 |
+| `gift_of_sentience.html` | Gift of Sentience | article complet | 2026-09-05 |
+| `gift_of_shooshadoo.html` | Gift of Shooshadoo | article complet | 2026-09-05 |
+| `gift_of_the_blade.html` | Gift of the Blade | article complet | 2026-09-05 |
+| `gift_of_the_champion.html` | Gift of the Champion | article complet | 2026-09-05 |
+| `gift_of_the_dragon_empire.html` | Gift of the Dragon Empire | article complet | 2026-09-05 |
+| `gift_of_the_elders.html` | Gift of the Elders | article complet | 2026-09-05 |
+| `gift_of_the_exalted.html` | Gift of the Exalted | article complet | 2026-09-05 |
+| `gift_of_the_feast.html` | Gift of the Feast | article complet | 2026-09-05 |
+| `gift_of_the_four_legions.html` | Gift of the Four Legions | article complet | 2026-09-05 |
+| `gift_of_the_itzel.html` | Gift of the Itzel | article complet | 2026-09-05 |
+| `gift_of_the_mistburned_isles.html` | Gift of the Mistburned Isles | article complet | 2026-09-05 |
+| `gift_of_the_mists.html` | Gift of the Mists | article complet | 2026-09-05 |
+| `gift_of_the_nuhoch.html` | Gift of the Nuhoch | article complet | 2026-09-05 |
+| `gift_of_the_rider.html` | Gift of the Rider | article complet | 2026-09-05 |
+| `gift_of_the_world.html` | Gift of the World | article complet | 2026-09-05 |
+| `gift_of_uncovered_grounds.html` | Gift of Uncovered Grounds | article complet | 2026-09-05 |
+| `gift_of_verdarach.html` | Gift of Verdarach | article complet | 2026-09-05 |
+| `gift_of_war_dedication.html` | Gift of War Dedication | article complet | 2026-09-05 |
+| `gift_of_xiuquatl.html` | Gift of Xiuquatl | article complet | 2026-09-05 |
+| `hard_wood_plank.html` | Hard Wood Plank | article complet | 2026-09-05 |
+| `hardened_leather_section.html` | Hardened Leather Section | article complet | 2026-09-05 |
+| `lamplighter_s_badge.html` | Lamplighter's Badge | article complet | 2026-09-05 |
+| `mist_band_infused.html` | Mist Band (Infused) | article complet | 2026-09-05 |
+| `mist_enhanced_mithril.html` | Mist-Enhanced Mithril | article complet | 2026-09-05 |
+| `mist_pearl.html` | Mist Pearl | article complet | 2026-09-05 |
+| `mithril_ingot.html` | Mithril Ingot | article complet | 2026-09-05 |
+| `mystic_curio.html` | Mystic Curio | article complet | 2026-09-05 |
+| `mystic_tribute.html` | Mystic Tribute | article complet | 2026-09-05 |
+| `omnomberry.html` | Omnomberry | article complet | 2026-09-05 |
+| `opal_orb.html` | Opal Orb | article complet | 2026-09-05 |
+| `orichalcum_ingot.html` | Orichalcum Ingot | article complet | 2026-09-05 |
+| `platinum_ingot.html` | Platinum Ingot | article complet | 2026-09-05 |
+| `seasoned_wood_plank.html` | Seasoned Wood Plank | article complet | 2026-09-05 |
+| `silver_doubloon.html` | Silver Doubloon | article complet | 2026-09-05 |
+| `spark_of_sentience.html` | Spark of Sentience | article complet | 2026-09-05 |
+| `steel_ingot.html` | Steel Ingot | article complet | 2026-09-05 |
+| `war_commendation.html` | War Commendation | article complet | 2026-09-05 |
+| `warcry.html` | Warcry | article complet | 2026-09-05 |
+| `wings_of_ascension.html` | Wings of Ascension | article complet | 2026-09-05 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -449,6 +550,10 @@ bois-minerai) : les 18 doublons repérés étaient de vraies recaptures (même
 fichier, même contenu, juste daté 08-27 puis 09-01) jamais nettoyées — lignes
 du 08-27 retirées, la version 09-01 fait foi. **345 fichiers réels, 345 lignes,
 aucun écart.**
+
+Vérification du 05/09/2026 (lot 7, arbre de craft chiffré) : 159 captures
+reçues, dont 58 recaptures de pages déjà versées — dates mises à jour, aucune
+ligne dupliquée. **446 fichiers réels, 446 lignes, aucun écart.**
 
 ## Manquent encore
 

@@ -281,6 +281,69 @@ Les pages a capturer pour la suite sont listees dans
 `PAGES_A_CAPTURER_ARBRE_CRAFT.md`.
 
 
+## F — v206 : lot 7 integre, 43 aretes chiffrees
+
+159 captures recues, dont 58 recaptures de pages deja versees. Le depot passe a
+446 pages, INDEX.md remis a jour et reconcilie fichier par fichier.
+
+`gw2_parse_wiki_recipe_v1.py` lit la page de l'objet lui-meme, la ou
+`gw2_parse_material_list_v1.py` lisait les tables des pages d'armes. Deux blocs :
+`div.recipe-box` porte la recette, et l'infobox porte l'apiId de l'objet dans un
+`span.gamelink` de type `item`. Le gamelink de type `recipe` du meme bloc est
+ignore : il identifie la recette, pas l'objet, et le confondre remplirait la base
+d'identifiants qui ne resolvent rien contre l'inventaire.
+
+**183 pages avec recette, 805 aretes, 228 apiId.** Sur les 83 aretes en dette,
+60 sont chiffrees par ces recettes.
+
+### Ce qui est entre
+
+- **42 vrais trous combles.** Le composant ne comptait vers ce parent nulle part.
+  Les quatre poussieres vers `gift_of_energy` a 250, les trois reactifs vers
+  `gift_of_research` a 250, les quatre `wings_of_glory_*` vers
+  `wings_of_ascension`, les quatre essences de faille, les dons de maitrise HoT
+  vers `gift_of_insights` et `gift_of_maguuma_mastery`.
+- **1 depliage neutre** : `legendary_spike -> gift_of_conquering` = 1. Le wiki
+  confirme la valeur que la division impliquait, et Conflux recupere le pic qui
+  lui manquait.
+- **41 apiId** recuperes sur des composants qui n'en avaient aucun — dont
+  `gift_of_energy`, `gift_of_the_mists`, `gift_of_sentience`, les lodestones et
+  la famille mursaat. Il en reste 53 sans identifiant.
+
+**191 lignes de total montent, aucune ne descend.** C'est attendu : combler un
+trou ne peut qu'augmenter un cout sous-estime. Zero alerte `comptee deux fois`.
+
+### La regle qui a evite le double comptage
+
+Un premier jet testait la couverture sur les seules cles directes du parent. Il
+ajoutait `emblem_of_the_conqueror -> war_commendation` alors que l'embleme etait
+deja a plat sur Conflux, et faisait passer `skirmish_claim_tickets` de 1850 a
+3350 sur ce meme legendaire. Le test correct porte sur la **portee transitive**
+du parent : l'ensemble des legendaires qu'il atteint en suivant les cles `qty`,
+de proche en proche. Trois cas :
+
+- aucune cle a plat du composant dans cette portee : comblement sur
+- toutes dedans : depliage, avec verification que la quantite du wiki egale le
+  rapport qu'impliquait la table a plat
+- une partie seulement : refus, arbitrage requis
+
+Les 17 refus sont dans `PAGES_A_CAPTURER_ARBRE_CRAFT.md`. Ils ne demandent
+aucune capture : la quantite est connue. Ils demandent de deplier `obsidian_shard`,
+`mystic_clover`, `glob_of_ectoplasm`, `mystic_coin` et `bloodstone_shard` en
+chiffrant toutes leurs aretes d'un coup, pas une par une.
+
+### Trois noms en double
+
+Le rapprochement par nom a bute sur trois collisions : `crystalline_ingot` et
+`crystalline_ingot_gen2`, `gift_of_expertise` et `gift_of_expertise_jw`,
+`skirmish_claim_ticket` et `skirmish_claim_tickets` portent deux a deux le meme
+nom d'affichage. Le parseur refuse de trancher plutot que de deviner ; la
+troisieme paire ressemble a un doublon pur et vaut un examen.
+
+**40 aretes restantes**, dont 17 en arbitrage et 23 sans recette lisible sur la
+page du parent — ces objets ne s'obtiennent pas par recette.
+
+
 ## Suite
 
 1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des

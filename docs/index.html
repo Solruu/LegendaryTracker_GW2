@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v205",
+    "version": "v206",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2815,7 +2815,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_dust": 50
+        "gift_of_dust": 50,
+        "gift_of_energy": 250
       },
       "kind": "acquire",
       "best": "drop",
@@ -2863,7 +2864,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_dust": 50
+        "gift_of_dust": 50,
+        "gift_of_energy": 250
       },
       "kind": "acquire",
       "best": "drop",
@@ -2923,7 +2925,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_dust": 250
+        "gift_of_dust": 250,
+        "gift_of_energy": 250
       },
       "kind": "acquire",
       "best": "drop",
@@ -2993,7 +2996,8 @@ const SOURCES_DB = {
         "endless_summer": 200,
         "klobjarne_geirr": 160,
         "orrax_manifested": 100,
-        "strife_unending": 300
+        "strife_unending": 300,
+        "gift_of_energy": 250
       },
       "kind": "acquire",
       "best": "drop",
@@ -3045,7 +3049,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "conflux": 100,
-        "vision": 100
+        "vision": 100,
+        "gift_of_sentience": 100
       },
       "kind": "acquire",
       "verified": true,
@@ -3200,7 +3205,9 @@ const SOURCES_DB = {
         "gen3_aurenes_tenderness": 1,
         "transcendence": 1,
         "the_ascension": 1,
-        "ad_infinitum": 1
+        "ad_infinitum": 1,
+        "gift_of_conquering": 4,
+        "gift_of_the_mists": 1
       },
       "kind": "advanced_craft"
     },
@@ -3220,7 +3227,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_the_mists": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_war": {
@@ -4617,7 +4626,9 @@ const SOURCES_DB = {
       "needed_for": [
         "crystalline_ingot"
       ],
-      "qty": {},
+      "qty": {
+        "crystalline_ingot": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -4640,7 +4651,9 @@ const SOURCES_DB = {
       "needed_for": [
         "fulgurite"
       ],
-      "qty": {},
+      "qty": {
+        "fulgurite": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -4669,7 +4682,9 @@ const SOURCES_DB = {
       "needed_for": [
         "fulgurite"
       ],
-      "qty": {},
+      "qty": {
+        "fulgurite": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -4698,7 +4713,9 @@ const SOURCES_DB = {
       "needed_for": [
         "fulgurite"
       ],
-      "qty": {},
+      "qty": {
+        "fulgurite": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -4723,7 +4740,7 @@ const SOURCES_DB = {
         "warbringer"
       ],
       "qty": {
-        "warbringer": 1
+        "gift_of_conquering": 1
       },
       "farmable": true,
       "sources": [
@@ -4838,7 +4855,9 @@ const SOURCES_DB = {
         "gift_of_conquering",
         "warbringer"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_conquering": 2
+      },
       "farmable": true,
       "sources": [
         {
@@ -5117,7 +5136,9 @@ const SOURCES_DB = {
         "gift_of_war_dedication",
         "warbringer"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_war_dedication": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -5550,7 +5571,9 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_desert_mastery"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_desert_mastery": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -5570,7 +5593,9 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_desert_mastery"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_desert_mastery": 1
+      },
       "farmable": true,
       "sources": [
         {
@@ -5619,7 +5644,9 @@ const SOURCES_DB = {
       "needed_for": [
         "warcry"
       ],
-      "qty": {},
+      "qty": {
+        "warcry": 1
+      },
       "farmable": false,
       "sources": [
         {
@@ -5639,7 +5666,9 @@ const SOURCES_DB = {
       "needed_for": [
         "warcry"
       ],
-      "qty": {},
+      "qty": {
+        "warcry": 1
+      },
       "farmable": false,
       "sources": [
         {
@@ -5659,7 +5688,9 @@ const SOURCES_DB = {
       "needed_for": [
         "warcry"
       ],
-      "qty": {},
+      "qty": {
+        "warcry": 1
+      },
       "farmable": false,
       "sources": [
         {
@@ -5679,7 +5710,9 @@ const SOURCES_DB = {
       "needed_for": [
         "warcry"
       ],
-      "qty": {},
+      "qty": {
+        "warcry": 1
+      },
       "farmable": false,
       "sources": [
         {
@@ -6185,7 +6218,8 @@ const SOURCES_DB = {
         "aetheric_anchor": 500,
         "klobjarne_geirr": 500,
         "selachimorpha": 1000,
-        "stella_radians": 500
+        "stella_radians": 500,
+        "gift_of_research": 250
       },
       "farmable": true,
       "sources": [
@@ -6232,7 +6266,8 @@ const SOURCES_DB = {
         "selachimorpha": 800,
         "stella_radians": 250,
         "the_ascension": 300,
-        "transcendence": 300
+        "transcendence": 300,
+        "gift_of_research": 250
       },
       "farmable": true,
       "sources": [
@@ -6277,7 +6312,9 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_research"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_research": 250
+      },
       "farmable": true,
       "sources": [
         {
@@ -7218,7 +7255,7 @@ const SOURCES_DB = {
     },
     "gift_of_the_itzel": {
       "name": "Gift of the Itzel",
-      "apiId": null,
+      "apiId": 73469,
       "needed_for": [
         "gift_of_insights"
       ],
@@ -7234,12 +7271,14 @@ const SOURCES_DB = {
           "tip": "150 Airship Parts + 3g. Requires Itzel Language mastery."
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_insights": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_the_nuhoch": {
       "name": "Gift of the Nuhoch",
-      "apiId": null,
+      "apiId": 76767,
       "needed_for": [
         "gift_of_insights"
       ],
@@ -7255,12 +7294,14 @@ const SOURCES_DB = {
           "tip": "150 Ley Line Crystals + 3g. Requires Nuhoch Language mastery."
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_insights": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_the_exalted": {
       "name": "Gift of the Exalted",
-      "apiId": null,
+      "apiId": 76636,
       "needed_for": [
         "gift_of_insights"
       ],
@@ -7279,7 +7320,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_insights": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_gliding": {
@@ -7300,12 +7343,14 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_insights": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_insights": {
       "name": "Gift of Insights",
-      "apiId": null,
+      "apiId": 72964,
       "needed_for": [
         "gift_of_maguuma_mastery"
       ],
@@ -7319,7 +7364,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_maguuma_mastery": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_maguuma": {
@@ -7338,7 +7385,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_maguuma_mastery": 1
+      },
       "kind": "advanced_craft"
     },
     "crystalline_ingot_gen2": {
@@ -8173,7 +8222,8 @@ const SOURCES_DB = {
         "gen3_aurenes_scale": 100,
         "gen3_aurenes_wisdom": 100,
         "gen3_aurenes_breath": 100,
-        "gen3_aurenes_tenderness": 100
+        "gen3_aurenes_tenderness": 100,
+        "gift_of_the_dragon_empire": 100
       },
       "apiId_note": "96722 vérifié gw2_materials_ref (97264 était faux). Achetable TP ou vendors EoD.",
       "kind": "acquire",
@@ -8195,7 +8245,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_jade_mastery": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_jade_mastery": {
@@ -8350,7 +8402,9 @@ const SOURCES_DB = {
           "tip": "MF : 5× Mist Diamond + 2× Pile of Crystalline Dust + 250× Shard of Glory. Mist Diamonds = TP ou drop PvP."
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_the_champion": 1
+      },
       "kind": "advanced_craft"
     },
     "tome_of_the_mists": {
@@ -8369,7 +8423,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_the_champion": 1
+      },
       "kind": "acquire"
     },
     "gift_of_competitive_dedication": {
@@ -8388,7 +8444,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_the_champion": 1
+      },
       "kind": "advanced_craft"
     },
     "mist_pendant": {
@@ -8496,7 +8554,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "wings_of_ascension": 1
+      },
       "kind": "acquire"
     },
     "wings_of_glory_veteran": {
@@ -8515,7 +8575,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "wings_of_ascension": 1
+      },
       "kind": "acquire"
     },
     "wings_of_glory_champion": {
@@ -8534,7 +8596,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "wings_of_ascension": 1
+      },
       "kind": "acquire"
     },
     "wings_of_glory_elite": {
@@ -8553,7 +8617,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "wings_of_ascension": 1
+      },
       "kind": "acquire"
     },
     "wings_of_ascension": {
@@ -9432,7 +9498,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_janthir_wilds": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_uncovered_grounds": {
@@ -9451,7 +9519,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_janthir_wilds": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_expertise_jw": {
@@ -9579,7 +9649,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gen3__per_weapon": 5,
-        "aetheric_anchor": 55
+        "aetheric_anchor": 55,
+        "draconic_tribute": 5
       },
       "farmable": true,
       "sources": [
@@ -9669,7 +9740,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_castoran_mastery": 1
+      },
       "kind": "advanced_craft"
     },
     "gift_of_castoran_mastery": {
@@ -10176,7 +10249,7 @@ const SOURCES_DB = {
     },
     "gift_of_expertise": {
       "name": "Gift of Expertise",
-      "apiId": null,
+      "apiId": 100852,
       "needed_for": [
         "armor_obsidian_per_piece"
       ],
@@ -10737,7 +10810,8 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {}
+      "qty": {},
+      "apiId": 91193
     },
     "ars_goetia": {
       "name": "Ars Goetia",
@@ -14118,7 +14192,8 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "apiId": 81796
     },
     "gift_of_prescience": {
       "name": "Gift of Prescience",
@@ -14149,7 +14224,8 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "apiId": 90985
     },
     "gift_of_energy": {
       "name": "Gift of Energy",
@@ -14186,7 +14262,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚡ 1 000 poussières au total, et Aurora comme Vision en demandent chacune un. La ligne des poussières sert donc DEUX fois : ici, et dans les gifts condensés du Mystic Tribute.",
         "en": "⚡ 1,000 dust in total, and both Aurora and Vision need one each. The dust line therefore serves TWICE: here, and in the Mystic Tribute's condensed gifts."
-      }
+      },
+      "apiId": 19623
     },
     "gift_of_the_mists": {
       "name": "Gift of the Mists",
@@ -14225,7 +14302,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚡ Partagé par Aurora, Vision ET Conflux. Exige du PvP (gloire) ET du McM (bataille) : aucune voie purement PvE.",
         "en": "⚡ Shared by Aurora, Vision AND Conflux. Requires PvP (glory) AND WvW (battle): no purely PvE route."
-      }
+      },
+      "apiId": 76427
     },
     "gift_of_conquering": {
       "name": "Gift of Conquering",
@@ -14262,7 +14340,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚠ 4 Gift of Battle : chacun demande une piste de récompense McM complète. C'est un timegate de fait, invisible tant qu'on ne compte que les monnaies.",
         "en": "⚠ 4 Gifts of Battle: each needs a full WvW reward track. A de facto timegate, invisible as long as only currencies are counted."
-      }
+      },
+      "apiId": 81371
     },
     "gift_of_the_world": {
       "name": "Gift of the World",
@@ -14293,7 +14372,8 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+      "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+      "apiId": 93190
     },
     "warcry": {
       "name": "Warcry",
@@ -14329,7 +14409,8 @@ const SOURCES_DB = {
         "fr": "⏳ 2 450 tickets d'escarmouche : à 455 par semaine — 365 de la piste plus 90 des hebdomadaires — c'est 6 semaines pour le seul précurseur, avant même le reste de Warbringer. Le plus lourd timegate McM du fichier.",
         "en": "⏳ 2,450 skirmish tickets: at 455 a week — 365 from the track plus 90 from the weeklies — that is 6 weeks for the precursor alone, before anything else in Warbringer. The heaviest WvW timegate in the file."
       },
-      "cadence_ref": "skirmish_claim_tickets"
+      "cadence_ref": "skirmish_claim_tickets",
+      "apiId": 81467
     },
     "gift_of_compassion": {
       "name": "Gift of Compassion",
@@ -14453,7 +14534,8 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
         }
-      ]
+      ],
+      "apiId": 93101
     },
     "mystic_essence_of_strategy": {
       "name": "Mystic Essence of Strategy",
@@ -14608,7 +14690,8 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
         }
-      ]
+      ],
+      "apiId": 83259
     },
     "destroyer_lodestone": {
       "name": "Destroyer Lodestone",
@@ -14669,7 +14752,8 @@ const SOURCES_DB = {
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 24325
     },
     "crystal_lodestone": {
       "name": "Crystal Lodestone",
@@ -14719,7 +14803,8 @@ const SOURCES_DB = {
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 24330
     },
     "corrupted_lodestone": {
       "name": "Corrupted Lodestone",
@@ -14769,7 +14854,8 @@ const SOURCES_DB = {
       "needed_for": [
         "aetheric_anchor",
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 24340
     },
     "mordrem_lodestone": {
       "name": "Mordrem Lodestone",
@@ -14828,7 +14914,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚠ Aucune récompense bonus de carte, contrairement aux six pierres classiques : le seul levier gratuit est le farm du Vide à Fin du dragon.",
         "en": "⚠ No map bonus reward, unlike the six classic lodestones: the only free lever is farming the Void in Dragon's End."
-      }
+      },
+      "apiId": 70842
     },
     "chromatic_sap": {
       "name": "Chromatic Sap",
@@ -14920,7 +15007,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "💡 Trois maîtrises Visions of Eternity commandent le rendement, et elles servent aux DEUX monnaies : Resourcefulness ouvre la récolte sur tous les nœuds, Obscured Riches ouvre les coffres obscurcis, Prosperity Unending double les métas et améliore les trésors. Les monter une fois profite à Selachimorpha, Endless Summer ET Aetheric Anchor — 1 500 unités de chaque monnaie au total.",
         "en": "💡 Three Visions of Eternity masteries drive the yield, and they serve BOTH currencies: Resourcefulness opens gathering on every node, Obscured Riches opens the obscured chests, Prosperity Unending doubles metas and improves treasures. Levelling them once benefits Selachimorpha, Endless Summer AND Aetheric Anchor — 1,500 units of each currency in total."
-      }
+      },
+      "apiId": 106385
     },
     "raw_enchanting_stone": {
       "name": "Raw Enchanting Stone",
@@ -15012,7 +15100,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "💡 Trois maîtrises Visions of Eternity commandent le rendement, et elles servent aux DEUX monnaies : Resourcefulness ouvre la récolte sur tous les nœuds, Obscured Riches ouvre les coffres obscurcis, Prosperity Unending double les métas et améliore les trésors. Les monter une fois profite à Selachimorpha, Endless Summer ET Aetheric Anchor — 1 500 unités de chaque monnaie au total.",
         "en": "💡 Three Visions of Eternity masteries drive the yield, and they serve BOTH currencies: Resourcefulness opens gathering on every node, Obscured Riches opens the obscured chests, Prosperity Unending doubles metas and improves treasures. Levelling them once benefits Selachimorpha, Endless Summer AND Aetheric Anchor — 1,500 units of each currency in total."
-      }
+      },
+      "apiId": 105686
     },
     "charged_lodestone": {
       "name": "Charged Lodestone",
@@ -15075,7 +15164,8 @@ const SOURCES_DB = {
       "recipe": {
         "fr": "Forge mystique (promotion) : 2 Noyaux chargés + 1 Bouteille de vin élonien OU 1 Agent liant mystique + 1 Poussière cristalline + 1 Cristal mystique.",
         "en": "Mystic Forge (promotion): 2 Charged Cores + 1 Bottle of Elonian Wine OR 1 Mystic Binding Agent + 1 Pile of Crystalline Dust + 1 Mystic Crystal."
-      }
+      },
+      "apiId": 24305
     },
     "ancient_coin": {
       "name": "Ancient Coin",
@@ -15132,7 +15222,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 50 000 pour Orrax Manifested et 20 250 pour Klobjarne Geirr : de loin le plus gros volume du fichier. Aucun plafond quotidien, mais aucune source dense non plus — c'est un farm de fond, à mener en parallèle sur des mois plutôt qu'à viser en sprint. 💡 Les Lowland Expertise démultiplient les caches kodan : les monter d'abord.",
         "en": "⏳ 50,000 for Orrax Manifested and 20,250 for Klobjarne Geirr: by far the largest volume in the file. No daily cap, but no dense source either — a background farm to run in parallel over months rather than sprint at. 💡 Lowland Expertise multiplies kodan cache yields: stack it first."
-      }
+      },
+      "apiId": 100477
     },
     "shard_of_the_homestead": {
       "name": "Shard of the Homestead",
@@ -15162,7 +15253,8 @@ const SOURCES_DB = {
       "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
       "needed_for": [
         "klobjarne_geirr"
-      ]
+      ],
+      "apiId": 103587
     },
     "curious_mursaat_currency": {
       "name": "Curious Mursaat Currency",
@@ -15201,7 +15293,8 @@ const SOURCES_DB = {
       "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
       "needed_for": [
         "klobjarne_geirr"
-      ]
+      ],
+      "apiId": 102494
     },
     "neutralized_titan_alloy": {
       "name": "Neutralized Titan Alloy",
@@ -15233,7 +15326,8 @@ const SOURCES_DB = {
       "needed_for": [
         "klobjarne_geirr",
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 102467
     },
     "shard_of_lowland_shore": {
       "name": "Shard of Lowland Shore",
@@ -15298,7 +15392,8 @@ const SOURCES_DB = {
           }
         ]
       },
-      "timegate": true
+      "timegate": true,
+      "apiId": 102569
     },
     "discounted_shard_of_lowland_shore": {
       "name": "Discounted Shard of Lowland Shore",
@@ -15390,7 +15485,8 @@ const SOURCES_DB = {
           }
         ]
       },
-      "timegate": true
+      "timegate": true,
+      "apiId": 103316
     },
     "discounted_shard_of_janthir_syntri": {
       "name": "Discounted Shard of Janthir Syntri",
@@ -15457,7 +15553,8 @@ const SOURCES_DB = {
       "needed_for": [
         "klobjarne_geirr",
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 103351
     },
     "mursaat_obsidian_chunk": {
       "name": "Mursaat Obsidian Chunk",
@@ -15522,7 +15619,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 750 pour Orrax Manifested. Deux maîtrises commandent le rendement : Bearkin Harvesting Techniques ouvre la récolte sur tous les nœuds, et 4 stacks de Lowland Expertise ouvrent les caches kodan — les mêmes qui démultiplient les Ancient Coins. Les monter sert donc deux postes à la fois.",
         "en": "⏳ 750 for Orrax Manifested. Two masteries drive the yield: Bearkin Harvesting Techniques opens gathering on every node, and 4 stacks of Lowland Expertise open the kodan caches — the same ones that multiply Ancient Coins. Levelling them serves two lines at once."
-      }
+      },
+      "apiId": 103427
     },
     "titan_heatstone": {
       "name": "Titan Heatstone",
@@ -15599,7 +15697,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 750 pour Orrax Manifested. Deux maîtrises commandent le rendement : Bearkin Harvesting Techniques ouvre la récolte sur tous les nœuds, et 4 stacks de Lowland Expertise ouvrent les caches kodan — les mêmes qui démultiplient les Ancient Coins. Les monter sert donc deux postes à la fois.",
         "en": "⏳ 750 for Orrax Manifested. Two masteries drive the yield: Bearkin Harvesting Techniques opens gathering on every node, and 4 stacks of Lowland Expertise open the kodan caches — the same ones that multiply Ancient Coins. Levelling them serves two lines at once."
-      }
+      },
+      "apiId": 102655
     },
     "curious_mursaat_remnants": {
       "name": "Curious Mursaat Remnants",
@@ -15652,7 +15751,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 725 pour Orrax Manifested. Profil très différent des deux autres monnaies mursaat : aucune récolte, aucune cache — c'est une monnaie d'ÉVÉNEMENT. « A Titanic Voyage » en rend 32 par passage complet, soit environ 23 passages. ⚠ Le meilleur taux d'échange s'inverse ici : 20 pour 1 chez Gharr Leadclaw, quand le Commander's Choice Chest, meilleur pour la pierre de chaleur et l'obsidienne, n'en donne que 10.",
         "en": "⏳ 725 for Orrax Manifested. A very different profile from the other two mursaat currencies: no gathering, no caches — this is an EVENT currency. 'A Titanic Voyage' yields 32 per full run, so about 23 runs. ⚠ The best exchange rate flips here: 20 for 1 from Gharr Leadclaw, while the Commander's Choice Chest, best for heatstone and obsidian, gives only 10."
-      }
+      },
+      "apiId": 104829
     },
     "curious_mursaat_ruin_shard": {
       "name": "Curious Mursaat Ruin Shard",
@@ -15701,7 +15801,8 @@ const SOURCES_DB = {
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 104331
     },
     "shard_of_mistburned_barrens": {
       "name": "Shard of Mistburned Barrens",
@@ -15762,7 +15863,8 @@ const SOURCES_DB = {
         "verified": true,
         "checked": "2026-08-27",
         "ref": "wiki:Shard_of_Mistburned_Barrens — ressources/wiki/shard_of_mistburned_barrens.html, 27/08/2026"
-      }
+      },
+      "apiId": 104282
     },
     "discounted_shard_of_mistburned_barrens": {
       "name": "Discounted Shard of Mistburned Barrens",
@@ -15847,7 +15949,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 5 semaines incompressibles pour les 100 d'Orrax Manifested, et aucune alternative. Comme les shards de Janthir Syntri et de Lowland Shore, c'est un timegate à lancer en tout premier : il court pendant que le reste avance.",
         "en": "⏳ 5 unavoidable weeks for Orrax Manifested's 100, with no alternative. Like the Janthir Syntri and Lowland Shore shards, this is a timegate to start first: it runs while everything else progresses."
-      }
+      },
+      "apiId": 104855
     },
     "onyx_lodestone": {
       "name": "Onyx Lodestone",
@@ -15906,7 +16009,8 @@ const SOURCES_DB = {
       "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
       "needed_for": [
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 24310
     },
     "mists_gate_residue": {
       "name": "Mists Gate Residue",
@@ -15934,7 +16038,8 @@ const SOURCES_DB = {
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
         "orrax_manifested"
-      ]
+      ],
+      "apiId": 105004
     },
     "unusual_coin": {
       "name": "Unusual Coin",
@@ -15977,7 +16082,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "Monnaie Visions of Eternity, et non Janthir comme son échange contre des Ancient Coins pouvait le laisser croire. Les 500 requis se farment sur les mêmes cartes et avec la même maîtrise que la Sève chromatique et la Pierre d'enchantement brute : Obscured Riches ouvre les trois. 💡 S'échangent 1 pour 1 contre des Ancient Coins chez huit marchands — un pont direct vers les 50 000 d'Orrax Manifested.",
         "en": "A Visions of Eternity currency, not a Janthir one as its trade for Ancient Coins might suggest. The 500 required farm on the same maps and behind the same mastery as Chromatic Sap and Raw Enchanting Stone: Obscured Riches opens all three. 💡 Trade 1 for 1 for Ancient Coins at eight vendors — a direct bridge to Orrax Manifested's 50,000."
-      }
+      },
+      "apiId": 96046
     },
     "tale_of_adventure": {
       "name": "Tale of Adventure",
@@ -16019,7 +16125,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚠ Aucune source répétable en jeu : les étapes d'histoire ne se rejouent pas pour la récompense. Si les 100 requis dépassent ce que l'histoire donne, le reste passe par le Comptoir ou les coffres du Lion Noir.",
         "en": "⚠ No repeatable in-game source: story steps do not re-award on replay. If the 100 required exceed what the story grants, the rest comes from the Trading Post or Black Lion chests."
-      }
+      },
+      "apiId": 96151
     },
     "shadowstone_fragment": {
       "name": "Shadowstone Fragment",
@@ -16083,7 +16190,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⚠ BUG documenté sur le wiki : la maîtrise Resourcefulness ne donne AUCUNE chance de Fragment d'ombrepierre en récoltant au Jardin d'Éternité, contrairement à ce qu'elle fait pour la sève et la pierre d'enchantement. Ne pas compter sur la récolte de fond ici : les 500 requis passent par les événements, la piste de récompense ou le vendeur.",
         "en": "⚠ Bug documented on the wiki: the Resourcefulness mastery has NO chance to grant Shadowstone Fragments when gathering in Eternity's Garden, unlike what it does for sap and enchanting stone. Do not count on background gathering here: the 500 required come from events, the reward track or the vendor."
-      }
+      },
+      "apiId": 109459
     },
     "seer_runestone": {
       "name": "Seer Runestone",
@@ -16117,7 +16225,8 @@ const SOURCES_DB = {
       "note": {
         "fr": "⏳ 7 millions de karma pour les 200 de Stella Radians. Aucun plafond, donc aucun timegate — mais un mur de karma qu'il vaut mieux voir venir. Les boosters de karma et les cœurs quotidiens deviennent le vrai levier.",
         "en": "⏳ 7 million karma for Stella Radians' 200. No cap, so no timegate — but a karma wall worth seeing coming. Karma boosters and daily hearts become the real lever."
-      }
+      },
+      "apiId": 109666
     },
     "ascended_shards_of_glory": {
       "name": "Ascended Shards of Glory",
