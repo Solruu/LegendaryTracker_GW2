@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v208",
+  "version": "v210",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4463,7 +4463,8 @@
    "qty": {
     "ardent_glorious__per_piece": 1000,
     "transcendence": 500,
-    "the_ascension": 250
+    "the_ascension": 250,
+    "mist_band_infused": 150
    },
    "farmable": true,
    "sources": [
@@ -4497,7 +4498,8 @@
     "klobjarne_geirr": 250,
     "strife_unending": 500,
     "the_ascension": 250,
-    "transcendence": 2250
+    "transcendence": 2250,
+    "mist_band_infused": 170
    },
    "farmable": true,
    "sources": [
@@ -4590,7 +4592,8 @@
     "gift_of_patience"
    ],
    "qty": {
-    "coalescence": 450
+    "coalescence": 450,
+    "gift_of_patience": 100
    },
    "farmable": true,
    "sources": [
@@ -6293,7 +6296,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_itzel": 500
+   },
    "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
    "kind": "acquire"
   },
@@ -6318,7 +6323,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_nuhoch": 500
+   },
    "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
    "kind": "acquire"
   },
@@ -6343,7 +6350,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_exalted": 500
+   },
    "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
    "kind": "acquire"
   },
@@ -8548,25 +8557,6 @@
    },
    "kind": "advanced_craft"
   },
-  "gift_of_expertise_jw": {
-   "name": "Gift of Expertise",
-   "apiId": 102512,
-   "needed_for": [
-    "gift_of_janthir_wilds"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "mystic_forge",
-     "tip": {
-      "fr": "MF : essences des Convergences et Rifts JW (Amalgamated Gemstone + essences JW). Farmable via les Convergences JW. Alternative : achat chez Ward Crafter Lucirae (Astral Ward Moon Camp).",
-      "en": "MF: essences from JW Convergences and Rifts (Amalgamated Gemstone + JW essences). Farmable via JW Convergences. Alternative: purchase from Ward Crafter Lucirae (Astral Ward Moon Camp)."
-     }
-    }
-   ],
-   "qty": {},
-   "kind": "advanced_craft"
-  },
   "gift_of_janthir_wilds": {
    "name": "Gift of Janthir Wilds",
    "apiId": 102514,
@@ -8661,7 +8651,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_elders": 1
+   },
    "kind": "advanced_craft"
   },
   "amalgamated_draconic_lodestone": {
@@ -9275,10 +9267,12 @@
    "name": "Gift of Expertise",
    "apiId": 100852,
    "needed_for": [
-    "armor_obsidian_per_piece"
+    "armor_obsidian_per_piece",
+    "gift_of_janthir_wilds"
    ],
    "qty": {
-    "obsidian__per_piece": 1
+    "obsidian__per_piece": 1,
+    "gift_of_janthir_wilds": 1
    },
    "farmable": true,
    "recipe": "MF : 12× Amalgamated Rift Essence + 1× Eldritch Scroll (50 Spirit Shards) + 50× Obsidian Shard + 1× Cube of Stabilized Dark Energy",
@@ -9286,6 +9280,13 @@
     {
      "type": "mystic_forge",
      "tip": "Ou craft assisté Lyhr (+10 Ectos)."
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "MF : essences des Convergences et Rifts JW (Amalgamated Gemstone + essences JW). Farmable via les Convergences JW. Alternative : achat chez Ward Crafter Lucirae (Astral Ward Moon Camp).",
+      "en": "MF: essences from JW Convergences and Rifts (Amalgamated Gemstone + JW essences). Farmable via JW Convergences. Alternative: purchase from Ward Crafter Lucirae (Astral Ward Moon Camp)."
+     }
     }
    ],
    "kind": "advanced_craft"
