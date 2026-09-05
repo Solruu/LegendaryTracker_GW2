@@ -1033,10 +1033,30 @@ def check_qty_levels(data, errors, warnings):
         # n'est suspect que si les deux chemins aboutissent au MEME legendaire,
         # auquel cas l'exigence est comptee deux fois.
         if par_parent and aplatis:
+            # La portee d'un parent est TRANSITIVE. Ne regarder qu'un cran au
+            # dessus laissait passer les chaines : jade_runestone portait 100 en
+            # direct sur seize gen3 ET une arete vers gift_of_the_dragon_empire,
+            # dont le qty ne cite aucun legendaire mais gift_of_jade_mastery,
+            # qui les cite tous. Deux cents runes de jade annoncees au lieu de
+            # cent, sans un mot de l'audit.
+            def _portee(cid_, vu=None):
+                if vu is None:
+                    vu = set()
+                if cid_ in vu:
+                    return set()
+                vu.add(cid_)
+                out = set()
+                for k in (comps.get(cid_, {}).get("qty") or {}):
+                    b = k.split("__")[0]
+                    if b in comps:
+                        out |= _portee(b, vu)
+                    else:
+                        out.add(b)
+                return out
+
             atteints = set()
             for parent in par_parent:
-                for k in (comps.get(parent, {}).get("qty") or {}):
-                    atteints.add(k.split("__")[0])
+                atteints |= _portee(parent)
             # Un chevauchement peut etre legitime : Vision demande 250
             # ectoplasmes au titre de l'exigence commune a tous les
             # legendaires, PLUS 300 pour ses encapsulateurs. Le declarer se
