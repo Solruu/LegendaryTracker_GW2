@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v207",
+    "version": "v208",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2787,8 +2787,8 @@ const SOURCES_DB = {
       "name": "Pile of Radiant Dust",
       "apiId": 24274,
       "needed_for": [
-        "gift_of_energy",
-        "gift_of_dust"
+        "gift_of_dust",
+        "gift_of_energy"
       ],
       "farmable": true,
       "sources": [
@@ -2826,8 +2826,8 @@ const SOURCES_DB = {
       "name": "Pile of Luminous Dust",
       "apiId": 24275,
       "needed_for": [
-        "gift_of_energy",
-        "gift_of_dust"
+        "gift_of_dust",
+        "gift_of_energy"
       ],
       "farmable": true,
       "sources": [
@@ -2875,8 +2875,8 @@ const SOURCES_DB = {
       "name": "Pile of Incandescent Dust",
       "apiId": 24276,
       "needed_for": [
-        "gift_of_energy",
-        "gift_of_dust"
+        "gift_of_dust",
+        "gift_of_energy"
       ],
       "farmable": true,
       "sources": [
@@ -2936,10 +2936,10 @@ const SOURCES_DB = {
       "name": "Pile of Crystalline Dust",
       "apiId": 24277,
       "needed_for": [
-        "gift_of_energy",
-        "gift_of_dust",
-        "gift_of_magic",
         "endless_summer",
+        "gift_of_dust",
+        "gift_of_energy",
+        "gift_of_magic",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -3014,13 +3014,13 @@ const SOURCES_DB = {
       "name": "Icy Runestone",
       "apiId": 19676,
       "needed_for": [
-        "gift_of_prescience",
-        "gift_of_sentience",
-        "gift_of_the_world",
         "gen2_astralaria",
+        "gen2_chuka_and_champawat",
         "gen2_hope",
         "gen2_nevermore",
-        "gen2_chuka_and_champawat"
+        "gift_of_prescience",
+        "gift_of_sentience",
+        "gift_of_the_world"
       ],
       "farmable": true,
       "sources": [
@@ -3061,9 +3061,9 @@ const SOURCES_DB = {
       "name": "Ball of Dark Energy",
       "apiId": 71994,
       "needed_for": [
+        "armor_perfected_envoy",
         "cube_stabilized_dark_energy",
-        "gift_of_compassion",
-        "armor_perfected_envoy"
+        "gift_of_compassion"
       ],
       "farmable": true,
       "sources": [
@@ -3103,8 +3103,8 @@ const SOURCES_DB = {
       "name": "Stabilizing Matrix",
       "apiId": 73248,
       "needed_for": [
-        "cube_stabilized_dark_energy",
         "aetheric_anchor",
+        "cube_stabilized_dark_energy",
         "klobjarne_geirr",
         "strife_unending",
         "transcendence"
@@ -3134,10 +3134,10 @@ const SOURCES_DB = {
       "name": "Gift of Battle",
       "apiId": 19651,
       "needed_for": [
-        "gift_of_the_mists",
         "gift_of_conquering",
-        "warbringer",
-        "gift_of_mastery"
+        "gift_of_mastery",
+        "gift_of_the_mists",
+        "warbringer"
       ],
       "farmable": true,
       "sources": [
@@ -3268,9 +3268,9 @@ const SOURCES_DB = {
       "apiId": 20797,
       "needed_for": [
         "gift_of_arid_mastery",
+        "gift_of_desert_mastery",
         "gift_of_draconic_mastery",
-        "gift_of_mastery",
-        "gift_of_desert_mastery"
+        "gift_of_mastery"
       ],
       "farmable": false,
       "sources": [
@@ -3954,8 +3954,8 @@ const SOURCES_DB = {
       "name": "Branded Mass",
       "apiId": 89537,
       "needed_for": [
-        "gift_of_ephemeral_magic",
-        "dragonsblood_weapons"
+        "dragonsblood_weapons",
+        "gift_of_ephemeral_magic"
       ],
       "farmable": true,
       "sources": [
@@ -4758,18 +4758,18 @@ const SOURCES_DB = {
       "name": "Memory of Battle",
       "apiId": 71581,
       "needed_for": [
-        "gift_of_conquering",
-        "gift_of_war_dedication",
-        "mist_pearl",
-        "mist_enhanced_mithril",
-        "warbringer",
+        "aetheric_anchor",
         "armor_wvw",
         "essence_of_carnage",
+        "gift_of_conquering",
         "gift_of_war",
-        "aetheric_anchor",
+        "gift_of_war_dedication",
         "klobjarne_geirr",
+        "mist_enhanced_mithril",
+        "mist_pearl",
         "strife_unending",
-        "transcendence"
+        "transcendence",
+        "warbringer"
       ],
       "qty": {
         "triumphant_hero__per_piece": 200,
@@ -5189,128 +5189,12 @@ const SOURCES_DB = {
       "kind": "acquire",
       "best": "pvp_vendor"
     },
-    "skirmish_claim_tickets": {
-      "name": "WvW Skirmish Claim Ticket",
-      "apiId": 26460,
-      "needed_for": [
-        "essence_of_annihilation",
-        "mist_pearl",
-        "mist_enhanced_mithril",
-        "warbringer",
-        "armor_wvw",
-        "warcry"
-      ],
-      "qty": {
-        "warcry": 2450,
-        "conflux": 1500,
-        "essence_of_annihilation": 350
-      },
-      "farmable": true,
-      "timegate": true,
-      "timegate_note": {
-        "fr": "Max 365/sem (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Si les deux : ~4300 tickets cumulés (~12 sem). Armor WvW=7880 tickets (~22 semaines cumul).",
-        "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Both: ~4300 cumulative tickets (~12 wks). WvW Armor=7880 tickets (~22 cumulative weeks)."
-      },
-      "sources": [
-        {
-          "type": "reward_track",
-          "map": "World vs World",
-          "tip": {
-            "fr": "Piste de récompense d'escarmouche : 365 par semaine jusqu'au coffre Diamant, passive dès qu'on joue en McM. Plus 90 aux hebdomadaires McM, et 1 par objectif pris ou défendu. Tout est gratuit.",
-            "en": "Skirmish reward track: 365 per week through the Diamond chest, passive as soon as you play WvW. Plus 90 from the WvW weeklies, and 1 per objective taken or defended. All free."
-          },
-          "free_repeatable": true,
-          "verified": true,
-          "checked": "2026-08-22",
-          "ref": "wiki:WvW_Skirmish_Claim_Ticket"
-        },
-        {
-          "type": "wvw_skirmish",
-          "tip": {
-            "fr": "Skirmish Reward Track passif (toujours actif en WvW). Max 365/sem en atteignant le Diamond tier.",
-            "en": "Passive Skirmish Reward Track (always active in WvW). Max 365/wk by reaching Diamond tier."
-          }
-        },
-        {
-          "type": "wvw_weeklies",
-          "tip": {
-            "fr": "Weeklies WvW — jusqu'à ~90 tickets bonus/semaine.",
-            "en": "WvW weeklies - up to ~90 bonus tickets/week."
-          }
-        },
-        {
-          "type": "wvw_objectives",
-          "tip": {
-            "fr": "Tickets bonus en capturant/défendant des objectifs (tours/forts/châteaux).",
-            "en": "Bonus tickets via capturing/defending objectives (towers/keeps/castles)."
-          }
-        }
-      ],
-      "kind": "acquire",
-      "best": "wvw_skirmish",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Piste de récompense d'escarmouche",
-              "en": "Skirmish reward track"
-            },
-            "period": "week",
-            "cap": 365,
-            "cost": {
-              "fr": "1 450 pips jusqu'au coffre Diamant. Piste passive, toujours active en McM (hors Lisière des brumes).",
-              "en": "1,450 pips through the Diamond chest. Passive track, always on in WvW (Edge of the Mists excluded)."
-            },
-            "verified": true,
-            "checked": "2026-08-20",
-            "ref": "wiki:Skirmish_reward_track"
-          },
-          {
-            "label": {
-              "fr": "Hebdomadaires McM",
-              "en": "WvW weeklies"
-            },
-            "period": "week",
-            "cap": 90,
-            "cost": {
-              "fr": "Jusqu'à 90 tickets par semaine en terminant les succès hebdomadaires McM.",
-              "en": "Up to 90 tickets per week by completing the Weekly WvW achievements."
-            },
-            "verified": true,
-            "checked": "2026-08-20",
-            "ref": "wiki:WvW_Skirmish_Claim_Ticket"
-          },
-          {
-            "label": {
-              "fr": "Attaque et défense d'objectifs",
-              "en": "Attacking and defending objectives"
-            },
-            "period": "day",
-            "cap": null,
-            "cost": {
-              "fr": "1 ticket par tour, fort ou château pris ou défendu, participation or minimum. Sans plafond, mais irrégulier : hors projection de délai.",
-              "en": "1 ticket per tower, keep or castle taken or defended, gold participation minimum. Uncapped but irregular: excluded from delay projection."
-            },
-            "verified": true,
-            "checked": "2026-08-20",
-            "ref": "wiki:WvW_Skirmish_Claim_Ticket"
-          }
-        ]
-      },
-      "verified": true,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
-      "qty_note": {
-        "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
-        "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
-      }
-    },
     "testimony_of_heroics": {
       "name": "Testimony of Heroics",
       "apiId": 26464,
       "needed_for": [
-        "essence_of_animosity",
         "certificate_of_heroics",
+        "essence_of_animosity",
         "warbringer"
       ],
       "qty": {
@@ -5355,16 +5239,16 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
       "needed_for": [
-        "essence_of_strategy",
-        "certificate_of_honor"
+        "certificate_of_honor",
+        "essence_of_strategy"
       ]
     },
     "ascended_shard_of_glory": {
       "name": "Ascended Shard of Glory",
       "apiId": 69085,
       "needed_for": [
-        "mist_band_infused",
-        "armor_pvp"
+        "armor_pvp",
+        "mist_band_infused"
       ],
       "qty": {
         "ardent_glorious__per_piece": 1000,
@@ -5389,9 +5273,9 @@ const SOURCES_DB = {
       "name": "Shard of Glory",
       "apiId": 70820,
       "needed_for": [
-        "mist_band_infused",
         "aetheric_anchor",
         "klobjarne_geirr",
+        "mist_band_infused",
         "strife_unending",
         "the_ascension",
         "transcendence"
@@ -5768,19 +5652,19 @@ const SOURCES_DB = {
       "name": "Obsidian Shard",
       "apiId": 19925,
       "needed_for": [
+        "aetheric_anchor",
         "armor_perfected_envoy",
+        "endless_summer",
+        "fulgurite",
         "gift_of_expertise",
         "gift_of_mastery",
-        "aetheric_anchor",
-        "endless_summer",
         "klobjarne_geirr",
         "orrax_manifested",
         "selachimorpha",
         "stella_radians",
         "strife_unending",
         "the_ascension",
-        "transcendence",
-        "fulgurite"
+        "transcendence"
       ],
       "qty": {
         "gen1_frostfang": 250,
@@ -6208,8 +6092,8 @@ const SOURCES_DB = {
       "name": "Hydrocatalytic Reagent",
       "apiId": 95813,
       "needed_for": [
-        "gift_of_research",
         "aetheric_anchor",
+        "gift_of_research",
         "klobjarne_geirr",
         "selachimorpha",
         "stella_radians"
@@ -6248,8 +6132,8 @@ const SOURCES_DB = {
       "name": "Thermocatalytic Reagent",
       "apiId": 46747,
       "needed_for": [
-        "gift_of_research",
         "aetheric_anchor",
+        "gift_of_research",
         "klobjarne_geirr",
         "selachimorpha",
         "stella_radians",
@@ -6469,26 +6353,26 @@ const SOURCES_DB = {
       "name": "Glob of Ectoplasm",
       "apiId": 19721,
       "needed_for": [
+        "aetheric_anchor",
         "amalgamated_rift_essence",
+        "banner_pennon",
+        "crystalline_ingot",
+        "diviners_orichalcum_imbued_inscription",
+        "endless_summer",
         "gift_of_fortune",
         "gift_of_research",
-        "kralkatite_ingot",
-        "memory_essence_encapsulator",
-        "aetheric_anchor",
-        "endless_summer",
         "klobjarne_geirr",
+        "kralkatite_ingot",
+        "lacquered_banner_pole",
+        "lump_of_mithrillium",
+        "memory_essence_encapsulator",
+        "olmakhan_bandolier_chain",
         "orrax_manifested",
         "selachimorpha",
         "stella_radians",
         "strife_unending",
         "the_ascension",
-        "transcendence",
-        "lump_of_mithrillium",
-        "crystalline_ingot",
-        "diviners_orichalcum_imbued_inscription",
-        "lacquered_banner_pole",
-        "banner_pennon",
-        "olmakhan_bandolier_chain"
+        "transcendence"
       ],
       "farmable": true,
       "sources": [
@@ -6991,8 +6875,8 @@ const SOURCES_DB = {
       "apiId": 68553,
       "needed_for": [
         "armor_perfected_envoy",
-        "mystic_tribute",
-        "draconic_tribute"
+        "draconic_tribute",
+        "mystic_tribute"
       ],
       "farmable": true,
       "sources": [
@@ -7036,8 +6920,8 @@ const SOURCES_DB = {
       "apiId": 68552,
       "needed_for": [
         "armor_perfected_envoy",
-        "mystic_tribute",
-        "draconic_tribute"
+        "draconic_tribute",
+        "mystic_tribute"
       ],
       "farmable": true,
       "sources": [
@@ -7390,76 +7274,6 @@ const SOURCES_DB = {
       },
       "kind": "advanced_craft"
     },
-    "crystalline_ingot_gen2": {
-      "name": "Crystalline Ingot",
-      "apiId": 46683,
-      "needed_for": [
-        "gift_of_maguuma_mastery"
-      ],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "craft_500",
-          "tip": {
-            "fr": "Craft 500 : 1× Crystalline Ore + 1× Bottle of Airship Oil + 1× Pile of Auric Dust + 1× Ley Line Spark. Composants drop post-metas HoT (déjà dans craft_components).",
-            "en": "Craft 500: 1x Crystalline Ore + 1x Bottle of Airship Oil + 1x Pile of Auric Dust + 1x Ley Line Spark. Components drop from HoT metas (already in craft_components)."
-          }
-        },
-        {
-          "type": "tp",
-          "tip": "Buy on TP."
-        }
-      ],
-      "qty": {
-        "gen2_astralaria": 250,
-        "gen2_hope": 250,
-        "gen2_nevermore": 250,
-        "gen2_chuka_and_champawat": 250,
-        "gen2_tigris": 250,
-        "gen2_caladbolg": 250,
-        "gen2_eureka": 250,
-        "gen2_shooshadoo": 250,
-        "gen2_eordas_grip": 250,
-        "gen2_itzels_boon": 250,
-        "gen2_exordium": 250,
-        "gen2_hope_scepter": 250,
-        "gen2_lorekeeper": 250,
-        "gen2_elegy": 250,
-        "gen2_xiuquatl": 250,
-        "gen2_reaver_of_the_mists": 250,
-        "gen3_aurenes_fang": 250,
-        "gen3_aurenes_claw": 250,
-        "gen3_aurenes_bite": 250,
-        "gen3_aurenes_weight": 250,
-        "gen3_aurenes_gaze": 250,
-        "gen3_aurenes_insight": 250,
-        "gen3_aurenes_argument": 250,
-        "gen3_aurenes_guard": 250,
-        "gen3_aurenes_persuasion": 250,
-        "gen3_aurenes_voice": 250,
-        "gen3_aurenes_wrath": 250,
-        "gen3_aurenes_reckoning": 250,
-        "gen3_aurenes_scale": 250,
-        "gen3_aurenes_wisdom": 250,
-        "gen3_aurenes_breath": 250,
-        "gen3_aurenes_tenderness": 250,
-        "coalescence": 250,
-        "vision": 100
-      },
-      "kind": "craftable",
-      "best": "craft_500",
-      "free_sources_note": {
-        "fr": "Gratuit par ses ingrédients, pas par lui-même. Le lingot se fabrique (craft 500) à partir de quatre matériaux de Cœur de Maguuma, tous farmables en jouant les métas HoT : Crystalline Ore (Bastion du Pénitent / Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) et Ley Line Spar (Tangled Depths). Jouer les quatre métas HoT en boucle fait monter les quatre compteurs simultanément — long, mais sans une pièce d'or.",
-        "en": "Free through its ingredients, not by itself. The ingot is crafted (500) from four Heart of Maguuma materials, all farmable by playing the HoT metas: Crystalline Ore (Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) and Ley Line Spar (Tangled Depths). Running the four HoT metas in a loop raises all four counters at once — slow, but without a single coin.",
-        "verified": true,
-        "checked": "2026-08-13",
-        "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
-      },
-      "free_via_ingredients": true,
-      "verified": true,
-      "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-    },
     "gift_of_maguuma_mastery": {
       "name": "Gift of Maguuma Mastery",
       "apiId": 73239,
@@ -7591,9 +7405,9 @@ const SOURCES_DB = {
       "name": "Mystic Coin",
       "apiId": 19976,
       "needed_for": [
-        "mystic_tribute",
         "aetheric_anchor",
         "klobjarne_geirr",
+        "mystic_tribute",
         "orrax_manifested",
         "selachimorpha",
         "stella_radians",
@@ -7890,8 +7704,8 @@ const SOURCES_DB = {
       "name": "Mystic Runestone",
       "apiId": 79418,
       "needed_for": [
-        "gen2_gift_unique",
         "endless_summer",
+        "gen2_gift_unique",
         "orrax_manifested",
         "stella_radians"
       ],
@@ -8476,8 +8290,8 @@ const SOURCES_DB = {
       "name": "Gift of Skirmishing",
       "apiId": 77226,
       "needed_for": [
-        "transcendence",
-        "the_ascension"
+        "the_ascension",
+        "transcendence"
       ],
       "farmable": true,
       "sources": [
@@ -9075,8 +8889,8 @@ const SOURCES_DB = {
       "name": "Gift of the Survivors",
       "apiId": 107033,
       "needed_for": [
-        "endless_summer",
-        "aetheric_anchor"
+        "aetheric_anchor",
+        "endless_summer"
       ],
       "farmable": true,
       "sources": [
@@ -9099,8 +8913,8 @@ const SOURCES_DB = {
       "name": "Gift of the People",
       "apiId": 107034,
       "needed_for": [
-        "endless_summer",
-        "aetheric_anchor"
+        "aetheric_anchor",
+        "endless_summer"
       ],
       "farmable": true,
       "sources": [
@@ -9644,8 +9458,8 @@ const SOURCES_DB = {
       "name": "Amalgamated Draconic Lodestone",
       "apiId": 92687,
       "needed_for": [
-        "draconic_tribute",
-        "aetheric_anchor"
+        "aetheric_anchor",
+        "draconic_tribute"
       ],
       "qty": {
         "gen3__per_weapon": 5,
@@ -9866,8 +9680,8 @@ const SOURCES_DB = {
       "apiId": 89271,
       "needed_for": [
         "legendary_relic",
-        "legendary_sigil",
-        "legendary_rune"
+        "legendary_rune",
+        "legendary_sigil"
       ],
       "farmable": true,
       "sources": [
@@ -10000,9 +9814,9 @@ const SOURCES_DB = {
       "name": "Xunlai Electrum Ingot",
       "apiId": 46743,
       "needed_for": [
+        "aurora",
         "memory_essence_encapsulator",
-        "spark_of_sentience",
-        "aurora"
+        "spark_of_sentience"
       ],
       "qty": {
         "memory_essence_encapsulator": 3,
@@ -11011,8 +10825,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "dragonite_ingot",
-        "mystic_essence_of_carnage",
         "klobjarne_geirr",
+        "mystic_essence_of_carnage",
         "selachimorpha",
         "the_ascension",
         "transcendence"
@@ -11060,8 +10874,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "empyreal_star",
-        "mystic_essence_of_animosity",
         "klobjarne_geirr",
+        "mystic_essence_of_animosity",
         "selachimorpha",
         "the_ascension",
         "transcendence"
@@ -11109,8 +10923,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "bloodstone_brick",
-        "mystic_essence_of_strategy",
         "klobjarne_geirr",
+        "mystic_essence_of_strategy",
         "selachimorpha",
         "the_ascension",
         "transcendence"
@@ -11262,11 +11076,111 @@ const SOURCES_DB = {
           "verified": true,
           "checked": "2026-08-13",
           "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+        },
+        {
+          "type": "reward_track",
+          "map": "World vs World",
+          "tip": {
+            "fr": "Piste de récompense d'escarmouche : 365 par semaine jusqu'au coffre Diamant, passive dès qu'on joue en McM. Plus 90 aux hebdomadaires McM, et 1 par objectif pris ou défendu. Tout est gratuit.",
+            "en": "Skirmish reward track: 365 per week through the Diamond chest, passive as soon as you play WvW. Plus 90 from the WvW weeklies, and 1 per objective taken or defended. All free."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-22",
+          "ref": "wiki:WvW_Skirmish_Claim_Ticket"
+        },
+        {
+          "type": "wvw_skirmish",
+          "tip": {
+            "fr": "Skirmish Reward Track passif (toujours actif en WvW). Max 365/sem en atteignant le Diamond tier.",
+            "en": "Passive Skirmish Reward Track (always active in WvW). Max 365/wk by reaching Diamond tier."
+          }
+        },
+        {
+          "type": "wvw_weeklies",
+          "tip": {
+            "fr": "Weeklies WvW — jusqu'à ~90 tickets bonus/semaine.",
+            "en": "WvW weeklies - up to ~90 bonus tickets/week."
+          }
+        },
+        {
+          "type": "wvw_objectives",
+          "tip": {
+            "fr": "Tickets bonus en capturant/défendant des objectifs (tours/forts/châteaux).",
+            "en": "Bonus tickets via capturing/defending objectives (towers/keeps/castles)."
+          }
         }
       ],
       "verified": true,
       "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+      "needed_for": [
+        "armor_wvw",
+        "essence_of_annihilation",
+        "mist_enhanced_mithril",
+        "mist_pearl",
+        "warbringer",
+        "warcry"
+      ],
+      "timegate": true,
+      "timegate_note": {
+        "fr": "Max 365/sem (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Si les deux : ~4300 tickets cumulés (~12 sem). Armor WvW=7880 tickets (~22 semaines cumul).",
+        "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Both: ~4300 cumulative tickets (~12 wks). WvW Armor=7880 tickets (~22 cumulative weeks)."
+      },
+      "best": "wvw_skirmish",
+      "cadence": {
+        "sources": [
+          {
+            "label": {
+              "fr": "Piste de récompense d'escarmouche",
+              "en": "Skirmish reward track"
+            },
+            "period": "week",
+            "cap": 365,
+            "cost": {
+              "fr": "1 450 pips jusqu'au coffre Diamant. Piste passive, toujours active en McM (hors Lisière des brumes).",
+              "en": "1,450 pips through the Diamond chest. Passive track, always on in WvW (Edge of the Mists excluded)."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "wiki:Skirmish_reward_track"
+          },
+          {
+            "label": {
+              "fr": "Hebdomadaires McM",
+              "en": "WvW weeklies"
+            },
+            "period": "week",
+            "cap": 90,
+            "cost": {
+              "fr": "Jusqu'à 90 tickets par semaine en terminant les succès hebdomadaires McM.",
+              "en": "Up to 90 tickets per week by completing the Weekly WvW achievements."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "wiki:WvW_Skirmish_Claim_Ticket"
+          },
+          {
+            "label": {
+              "fr": "Attaque et défense d'objectifs",
+              "en": "Attacking and defending objectives"
+            },
+            "period": "day",
+            "cap": null,
+            "cost": {
+              "fr": "1 ticket par tour, fort ou château pris ou défendu, participation or minimum. Sans plafond, mais irrégulier : hors projection de délai.",
+              "en": "1 ticket per tower, keep or castle taken or defended, gold participation minimum. Uncapped but irregular: excluded from delay projection."
+            },
+            "verified": true,
+            "checked": "2026-08-20",
+            "ref": "wiki:WvW_Skirmish_Claim_Ticket"
+          }
+        ]
+      },
+      "qty_note": {
+        "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
+        "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
+      }
     },
     "testimony_of_jade_heroics": {
       "name": "Testimony of Jade Heroics",
@@ -11323,8 +11237,8 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
       "needed_for": [
-        "essence_of_animosity",
         "certificate_of_heroics",
+        "essence_of_animosity",
         "strife_unending"
       ]
     },
@@ -11812,9 +11726,9 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_venom",
-        "gift_of_magic",
         "endless_summer",
+        "gift_of_magic",
+        "gift_of_venom",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -11885,11 +11799,11 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_scales",
-        "gift_of_might",
-        "mystic_essence_of_carnage",
         "endless_summer",
+        "gift_of_might",
+        "gift_of_scales",
         "klobjarne_geirr",
+        "mystic_essence_of_carnage",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -11960,11 +11874,11 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
+        "endless_summer",
         "gift_of_blood",
         "gift_of_magic",
-        "mystic_essence_of_strategy",
-        "endless_summer",
         "klobjarne_geirr",
+        "mystic_essence_of_strategy",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -12037,9 +11951,9 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "gift_of_totems",
-        "gift_of_magic",
         "endless_summer",
+        "gift_of_magic",
+        "gift_of_totems",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12110,11 +12024,11 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
+        "endless_summer",
         "gift_of_claws",
         "gift_of_might",
-        "mystic_essence_of_annihilation",
-        "endless_summer",
         "klobjarne_geirr",
+        "mystic_essence_of_annihilation",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -12183,9 +12097,9 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
+        "endless_summer",
         "gift_of_fangs",
         "gift_of_might",
-        "endless_summer",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12256,11 +12170,11 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
+        "endless_summer",
         "gift_of_bones",
         "gift_of_might",
-        "mystic_essence_of_animosity",
-        "endless_summer",
         "klobjarne_geirr",
+        "mystic_essence_of_animosity",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -12468,10 +12382,10 @@ const SOURCES_DB = {
         "transcendence": 50
       },
       "needed_for": [
-        "gift_of_blood",
-        "mystic_essence_of_strategy",
         "endless_summer",
+        "gift_of_blood",
         "klobjarne_geirr",
+        "mystic_essence_of_strategy",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -12539,8 +12453,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_blood",
         "endless_summer",
+        "gift_of_blood",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12596,8 +12510,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_blood",
         "endless_summer",
+        "gift_of_blood",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12678,8 +12592,8 @@ const SOURCES_DB = {
         "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_venom",
         "endless_summer",
+        "gift_of_venom",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12747,8 +12661,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_venom",
         "endless_summer",
+        "gift_of_venom",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12804,8 +12718,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_venom",
         "endless_summer",
+        "gift_of_venom",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12886,8 +12800,8 @@ const SOURCES_DB = {
         "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_totems",
         "endless_summer",
+        "gift_of_totems",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -12955,8 +12869,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_totems",
         "endless_summer",
+        "gift_of_totems",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13012,8 +12926,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_totems",
         "endless_summer",
+        "gift_of_totems",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13131,10 +13045,10 @@ const SOURCES_DB = {
         "transcendence": 50
       },
       "needed_for": [
-        "gift_of_claws",
-        "mystic_essence_of_annihilation",
         "endless_summer",
+        "gift_of_claws",
         "klobjarne_geirr",
+        "mystic_essence_of_annihilation",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -13202,8 +13116,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_claws",
         "endless_summer",
+        "gift_of_claws",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13259,8 +13173,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_claws",
         "endless_summer",
+        "gift_of_claws",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13343,10 +13257,10 @@ const SOURCES_DB = {
         "transcendence": 50
       },
       "needed_for": [
-        "gift_of_scales",
-        "mystic_essence_of_carnage",
         "endless_summer",
+        "gift_of_scales",
         "klobjarne_geirr",
+        "mystic_essence_of_carnage",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -13414,8 +13328,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_scales",
         "endless_summer",
+        "gift_of_scales",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13471,8 +13385,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_scales",
         "endless_summer",
+        "gift_of_scales",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13555,10 +13469,10 @@ const SOURCES_DB = {
         "transcendence": 50
       },
       "needed_for": [
-        "gift_of_bones",
-        "mystic_essence_of_animosity",
         "endless_summer",
+        "gift_of_bones",
         "klobjarne_geirr",
+        "mystic_essence_of_animosity",
         "orrax_manifested",
         "strife_unending",
         "transcendence"
@@ -13626,8 +13540,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_bones",
         "endless_summer",
+        "gift_of_bones",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13683,8 +13597,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_bones",
         "endless_summer",
+        "gift_of_bones",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13765,8 +13679,8 @@ const SOURCES_DB = {
         "strife_unending": 750
       },
       "needed_for": [
-        "gift_of_fangs",
         "endless_summer",
+        "gift_of_fangs",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13834,8 +13748,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_fangs",
         "endless_summer",
+        "gift_of_fangs",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -13891,8 +13805,8 @@ const SOURCES_DB = {
         "strife_unending": 150
       },
       "needed_for": [
-        "gift_of_fangs",
         "endless_summer",
+        "gift_of_fangs",
         "klobjarne_geirr",
         "orrax_manifested",
         "strife_unending"
@@ -14409,7 +14323,7 @@ const SOURCES_DB = {
         "fr": "⏳ 2 450 tickets d'escarmouche : à 455 par semaine — 365 de la piste plus 90 des hebdomadaires — c'est 6 semaines pour le seul précurseur, avant même le reste de Warbringer. Le plus lourd timegate McM du fichier.",
         "en": "⏳ 2,450 skirmish tickets: at 455 a week — 365 from the track plus 90 from the weeklies — that is 6 weeks for the precursor alone, before anything else in Warbringer. The heaviest WvW timegate in the file."
       },
-      "cadence_ref": "skirmish_claim_tickets",
+      "cadence_ref": "skirmish_claim_ticket",
       "apiId": 81467
     },
     "gift_of_compassion": {
@@ -16348,14 +16262,69 @@ const SOURCES_DB = {
       "kind": "intermediate",
       "farmable": false,
       "needed_for": [
-        "funerary_incense"
+        "funerary_incense",
+        "gift_of_maguuma_mastery"
       ],
       "qty": {
-        "funerary_incense": 1
+        "funerary_incense": 1,
+        "gen2_astralaria": 250,
+        "gen2_hope": 250,
+        "gen2_nevermore": 250,
+        "gen2_chuka_and_champawat": 250,
+        "gen2_tigris": 250,
+        "gen2_caladbolg": 250,
+        "gen2_eureka": 250,
+        "gen2_shooshadoo": 250,
+        "gen2_eordas_grip": 250,
+        "gen2_itzels_boon": 250,
+        "gen2_exordium": 250,
+        "gen2_hope_scepter": 250,
+        "gen2_lorekeeper": 250,
+        "gen2_elegy": 250,
+        "gen2_xiuquatl": 250,
+        "gen2_reaver_of_the_mists": 250,
+        "gen3_aurenes_fang": 250,
+        "gen3_aurenes_claw": 250,
+        "gen3_aurenes_bite": 250,
+        "gen3_aurenes_weight": 250,
+        "gen3_aurenes_gaze": 250,
+        "gen3_aurenes_insight": 250,
+        "gen3_aurenes_argument": 250,
+        "gen3_aurenes_guard": 250,
+        "gen3_aurenes_persuasion": 250,
+        "gen3_aurenes_voice": 250,
+        "gen3_aurenes_wrath": 250,
+        "gen3_aurenes_reckoning": 250,
+        "gen3_aurenes_scale": 250,
+        "gen3_aurenes_wisdom": 250,
+        "gen3_aurenes_breath": 250,
+        "gen3_aurenes_tenderness": 250
       },
       "verified": true,
       "checked": "2026-08-27",
-      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+      "sources": [
+        {
+          "type": "craft_500",
+          "tip": {
+            "fr": "Craft 500 : 1× Crystalline Ore + 1× Bottle of Airship Oil + 1× Pile of Auric Dust + 1× Ley Line Spark. Composants drop post-metas HoT (déjà dans craft_components).",
+            "en": "Craft 500: 1x Crystalline Ore + 1x Bottle of Airship Oil + 1x Pile of Auric Dust + 1x Ley Line Spark. Components drop from HoT metas (already in craft_components)."
+          }
+        },
+        {
+          "type": "tp",
+          "tip": "Buy on TP."
+        }
+      ],
+      "best": "craft_500",
+      "free_sources_note": {
+        "fr": "Gratuit par ses ingrédients, pas par lui-même. Le lingot se fabrique (craft 500) à partir de quatre matériaux de Cœur de Maguuma, tous farmables en jouant les métas HoT : Crystalline Ore (Bastion du Pénitent / Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) et Ley Line Spar (Tangled Depths). Jouer les quatre métas HoT en boucle fait monter les quatre compteurs simultanément — long, mais sans une pièce d'or.",
+        "en": "Free through its ingredients, not by itself. The ingot is crafted (500) from four Heart of Maguuma materials, all farmable by playing the HoT metas: Crystalline Ore (Dragon's Stand), Bottle of Airship Oil (Verdant Brink), Pile of Auric Dust (Auric Basin) and Ley Line Spar (Tangled Depths). Running the four HoT metas in a loop raises all four counters at once — slow, but without a single coin.",
+        "verified": true,
+        "checked": "2026-08-13",
+        "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
+      },
+      "free_via_ingredients": true
     },
     "diviners_orichalcum_imbued_inscription": {
       "name": "Diviner's Orichalcum-Imbued Inscription",
@@ -16736,7 +16705,7 @@ const SOURCES_DB = {
       },
       "full_set_tickets": 7880,
       "wiki": "Triumphant_Hero%27s_armor",
-      "cadence_ref": "skirmish_claim_tickets"
+      "cadence_ref": "skirmish_claim_ticket"
     },
     "ardent_glorious": {
       "name": "Ardent Glorious Armor (PvP)",
@@ -18836,7 +18805,7 @@ const SOURCES_DB = {
         }
       ],
       "recipe_verified": "2026-07-25 (wiki) — échange vendeur, pas de recette MF",
-      "cadence_ref": "skirmish_claim_tickets",
+      "cadence_ref": "skirmish_claim_ticket",
       "collections": {
         "strife_mists_research": {
           "id": 6933,
@@ -21660,7 +21629,7 @@ const SOURCES_DB = {
         }
       ],
       "recipe_verified": "2026-07-25 (wiki) — conforme",
-      "cadence_ref": "skirmish_claim_tickets"
+      "cadence_ref": "skirmish_claim_ticket"
     },
     "ardent_glorious": {
       "name": "Ardent Glorious Armor",
@@ -21801,7 +21770,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -42654,7 +42623,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -44260,7 +44229,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -45910,7 +45879,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -47573,7 +47542,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -49400,7 +49369,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -49444,7 +49413,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -49490,7 +49459,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -49534,7 +49503,7 @@ const SOURCES_DB = {
         "gift_of_gliding",
         "gift_of_insights",
         "gift_of_maguuma",
-        "crystalline_ingot_gen2",
+        "crystalline_ingot",
         "gift_of_maguuma_mastery",
         "gift_of_desert_mastery",
         "mystic_tribute",
@@ -56373,7 +56342,7 @@ const SOURCES_DB = {
         "fr": "2 800 Skirmish Tickets au total (~7-8 semaines au cap 365+90/sem). ⚠ Prérequis : rang McM 350 et tag de commandant (300 po) pour le dernier Wings of War. Warcry = les 4 Wings of War forgés ensemble (2 450 tickets).",
         "en": "2,800 Skirmish Tickets total (~7-8 weeks at the 365+90/wk cap). ⚠ Prerequisites: WvW rank 350 and a commander tag (300 g) for the last Wings of War. Warcry = the 4 Wings of War forged together (2,450 tickets)."
       },
-      "cadence_ref": "skirmish_claim_tickets"
+      "cadence_ref": "skirmish_claim_ticket"
     },
     "upgrades_combined": {
       "name": "Legendary Upgrades",
@@ -56881,7 +56850,7 @@ const SOURCES_DB = {
         "en": "WvW legendary ring. ~1,850 Skirmish Tickets minimum (365/wk cap → ~5-6 weeks). 100 Icy Runestones from Rojan the Penitent (Frostgorge Sound, 1 g each — unavailable during Breaking the Claw of Jormag)."
       },
       "recipe_verified": "2026-07-25 (wiki)",
-      "cadence_ref": "skirmish_claim_tickets"
+      "cadence_ref": "skirmish_claim_ticket"
     },
     "gen2_claw_of_the_khan_ur": {
       "name": "Claw of the Khan-Ur",
