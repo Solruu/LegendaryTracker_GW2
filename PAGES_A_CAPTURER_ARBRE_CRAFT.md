@@ -1,85 +1,133 @@
 # Pages wiki à capturer — arbre de craft chiffré
 
-État au 05/09/2026, après le lot 7 et `gw2_sources_v206.json`.
-
-**Les 101 pages demandées le 05/09 sont toutes versées.** Sur les 83 arêtes qu'elles devaient chiffrer, 60 le sont ; 43 sont intégrées, 17 attendent un arbitrage et non une capture.
+État au 05/09/2026, après `gw2_sources_v216.json` (branche d'arme intégrée).
 
 
-## Reste : 40 arêtes sur 31 parents
+## 94 composants sans apiId et sans page
 
-`●` = capture au dépôt ; `○` = page absente. Une capture présente sans recette lisible n'est pas un défaut de capture : la page ne porte pas de `recipe-box`, l'objet s'obtient autrement.
+Le tracker affiche leur besoin mais ne peut pas lire le stock : sans identifiant, la colonne « possédé » reste vide. Ce sont pour l'essentiel les dons d'arme gen1 et leurs sous-dons, créés depuis les tables « Full material list » — les quantités sont justes, l'identité ne l'est pas encore.
 
-| | parent | arêtes | composants | nature du blocage |
-|---|---|---|---|---|
-| ● | `Amalgamated Rift Essence` | 4 | `fine_rift_essence`, `glob_of_ectoplasm`, `masterwork_rift_essence`, `rare_rift_essence` | arbitrage — dépliage partiel |
-| ● | `Gift of Mastery` | 4 | `bloodstone_shard`, `gift_of_battle`, `gift_of_exploration`, `obsidian_shard` | arbitrage — dépliage partiel |
-| ● | `Gift of Fortune` | 2 | `glob_of_ectoplasm`, `mystic_clover` | arbitrage — dépliage partiel |
-| ● | `Gift of Magical / Mighty Prosperity` | 2 | `gift_of_craftsmanship`, `mystic_clover` | arbitrage — dépliage partiel |
-| ● | `Mist Band (Infused)` | 2 | `ascended_shard_of_glory`, `shard_of_glory` | page versée, pas de recipe-box |
-| ● | `Certificate of Heroics` | 1 | `testimony_of_heroics` | page versée, pas de recipe-box |
-| ● | `Essence of Animosity` | 1 | `testimony_of_heroics` | page versée, pas de recipe-box |
-| ● | `Gift of Castoran Mastery` | 1 | `gift_of_adventure_voe` | page versée, pas de recipe-box |
-| ● | `Gift of Expertise` | 1 | `obsidian_shard` | arbitrage — dépliage partiel |
-| ● | `Gift of Gatherer of the Hunt` | 1 | `shards_of_lowland_shore` | page versée, pas de recipe-box |
-| ● | `Gift of Infused Gems` | 1 | `amalgamated_gemstone` | page versée, pas de recipe-box |
-| ● | `Gift of Janthir Wilds` | 1 | `gift_of_expertise_jw` | page versée, pas de recipe-box |
-| ● | `Gift of Maguuma Mastery` | 1 | `crystalline_ingot_gen2` | page versée, pas de recipe-box |
-| ● | `Gift of Patience` | 1 | `magnetite_shard` | page versée, pas de recipe-box |
-| ● | `Gift of Prescience` | 1 | `icy_runestone` | arbitrage — dépliage partiel |
-| ● | `Gift of Research` | 1 | `glob_of_ectoplasm` | page versée, pas de recipe-box |
-| ● | `Gift of Uncovered Grounds` | 1 | `shards_of_janthir_syntri` | page versée, pas de recipe-box |
-| ● | `Gift of the Dragon Empire` | 1 | `antique_summoning_stone` | page versée, pas de recipe-box |
-| ● | `Gift of the Elders` | 1 | `gift_of_the_tides` | page versée, pas de recipe-box |
-| ● | `Gift of the Exalted` | 1 | `lump_of_aurillium` | page versée, pas de recipe-box |
-| ● | `Gift of the Feast` | 1 | `fruits_of_the_shadow` | page versée, pas de recipe-box |
-| ● | `Gift of the Itzel` | 1 | `airship_part` | page versée, pas de recipe-box |
-| ● | `Gift of the Mistburned Isles` | 1 | `curious_mursaat_remnant` | page versée, pas de recipe-box |
-| ● | `Gift of the Nuhoch` | 1 | `ley_line_crystal` | page versée, pas de recipe-box |
-| ● | `Gift of the Rider` | 1 | `trade_contract` | page versée, pas de recipe-box |
-| ● | `Gift of the World` | 1 | `icy_runestone` | arbitrage — dépliage partiel |
-| ● | `Mist Pearl` | 1 | `skirmish_claim_tickets` | page versée, pas de recipe-box |
-| ● | `Mist-Enhanced Mithril` | 1 | `skirmish_claim_tickets` | page versée, pas de recipe-box |
-| ● | `Mystic Tribute` | 1 | `mystic_coin` | arbitrage — dépliage partiel |
-| ● | `Spark of Sentience` | 1 | `xunlai_electrum_ingot` | page versée, pas de recipe-box |
-| ● | `War Commendation` | 1 | `emblem_of_the_conqueror` | arbitrage — dépliage partiel |
-
-## Pages réellement manquantes : 0
-
-Aucune.
-
-## Les 17 arbitrages
-
-Ces arêtes ont leur quantité, lue sur le wiki. Elles restent dehors parce que le composant est rattaché à plat à des légendaires que le parent n'atteint pas tous. Déplier ne couvrirait qu'une partie des cas et laisserait le composant compté en direct ici, par la cascade là — le double comptage qu'on refuse.
-
-| arête | qty wiki | couverture |
-|---|---|---|
-| `bloodstone_shard` → `gift_of_mastery` | 1 | 21/57 cles a plat couvertes — depliage partiel |
-| `emblem_of_the_conqueror` → `war_commendation` | 1 | 1/2 cles a plat couvertes — depliage partiel |
-| `fine_rift_essence` → `amalgamated_rift_essence` | 250 | 1/4 cles a plat couvertes — depliage partiel |
-| `gift_of_battle` → `gift_of_mastery` | 1 | 21/56 cles a plat couvertes — depliage partiel |
-| `gift_of_craftsmanship` → `gift_of_prosperity` | 1 | 1/5 cles a plat couvertes — depliage partiel |
-| `gift_of_exploration` → `gift_of_mastery` | 1 | 21/23 cles a plat couvertes — depliage partiel |
-| `glob_of_ectoplasm` → `amalgamated_rift_essence` | 50 | 1/39 cles a plat couvertes — depliage partiel |
-| `glob_of_ectoplasm` → `gift_of_fortune` | 250 | 24/39 cles a plat couvertes — depliage partiel |
-| `icy_runestone` → `gift_of_prescience` | 100 | 1/2 cles a plat couvertes — depliage partiel |
-| `icy_runestone` → `gift_of_the_world` | 100 | 1/2 cles a plat couvertes — depliage partiel |
-| `masterwork_rift_essence` → `amalgamated_rift_essence` | 100 | 1/4 cles a plat couvertes — depliage partiel |
-| `mystic_clover` → `gift_of_fortune` | 77 | 24/73 cles a plat couvertes — depliage partiel |
-| `mystic_clover` → `gift_of_prosperity` | 9 | 1/73 cles a plat couvertes — depliage partiel |
-| `mystic_coin` → `mystic_tribute` | 250 | 22/67 cles a plat couvertes — depliage partiel |
-| `obsidian_shard` → `gift_of_expertise` | 50 | 1/39 cles a plat couvertes — depliage partiel |
-| `obsidian_shard` → `gift_of_mastery` | 250 | 21/39 cles a plat couvertes — depliage partiel |
-| `rare_rift_essence` → `amalgamated_rift_essence` | 50 | 1/4 cles a plat couvertes — depliage partiel |
-
-La sortie passe par le dépliage complet des composants concernés — `obsidian_shard`, `mystic_clover`, `glob_of_ectoplasm`, `mystic_coin`, `bloodstone_shard` — en chiffrant toutes leurs arêtes d'un coup.
-
-
-## Trois noms en double dans `craft_components`
-
-Relevés en rapprochant les recettes : deux composants portent le même nom d'affichage, ce qui rend tout appariement par nom ambigu. Le parseur refuse de trancher plutôt que de deviner.
-
-| nom | composants |
+| composant | nom |
 |---|---|
-| Crystalline Ingot | `crystalline_ingot`, `crystalline_ingot_gen2` |
-| Gift of Expertise | `gift_of_expertise`, `gift_of_expertise_jw` |
-| WvW Skirmish Claim Ticket | `skirmish_claim_ticket`, `skirmish_claim_tickets` |
+| `airship_part` | Airship Part |
+| `ars_goetia` | Ars Goetia |
+| `banner_pennon` | Banner Pennon |
+| `banner_of_the_commander` | Banner of the Commander |
+| `case_of_captured_lightning` | Case of Captured Lightning |
+| `clot_of_congealed_screams` | Clot of Congealed Screams |
+| `discounted_shard_of_janthir_syntri` | Discounted Shard of Janthir Syntri |
+| `discounted_shard_of_lowland_shore` | Discounted Shard of Lowland Shore |
+| `discounted_shard_of_mistburned_barrens` | Discounted Shard of Mistburned Barrens |
+| `diviners_orichalcum_imbued_inscription` | Diviner's Orichalcum-Imbued Inscription |
+| `dragonsblood_weapons` | Dragonsblood Weapons |
+| `eel_statue` | Eel Statue |
+| `exquisite_serpentite_jewel` | Exquisite Serpentite Jewel |
+| `gift_of_arid_mastery` | Gift of Arid Mastery |
+| `gift_of_blood` | Gift of Blood |
+| `gift_of_bloodstone_magic` | Gift of Bloodstone Magic |
+| `gift_of_bolt` | Gift of Bolt |
+| `gift_of_bones` | Gift of Bones |
+| `gift_of_claws` | Gift of Claws |
+| `gift_of_color` | Gift of Color |
+| `gift_of_compassion` | Gift of Compassion |
+| `gift_of_competitive_dedication` | Gift of Competitive Dedication |
+| `gift_of_crystalline_magic` | Gift of Crystalline Magic |
+| `gift_of_darkness` | Gift of Darkness |
+| `gift_of_draconic_mastery` | Gift of Draconic Mastery |
+| `gift_of_dragon_magic` | Gift of Dragon Magic |
+| `gift_of_dust` | Gift of Dust |
+| `gift_of_entertainment` | Gift of Entertainment |
+| `gift_of_ephemeral_magic` | Gift of Ephemeral Magic |
+| `gift_of_family` | Gift of Family |
+| `gift_of_fangs` | Gift of Fangs |
+| `gift_of_fractals` | Gift of Fractals |
+| `gift_of_frenzy` | Gift of Frenzy |
+| `gift_of_frostfang` | Gift of Frostfang |
+| `gift_of_gliding` | Gift of Gliding |
+| `gift_of_history` | Gift of History |
+| `gift_of_howler` | Gift of Howler |
+| `gift_of_ice` | Gift of Ice |
+| `gift_of_incinerator` | Gift of Incinerator |
+| `gift_of_kamohoali_i_kotaki` | Gift of Kamohoali'i Kotaki |
+| `gift_of_kraitkin` | Gift of Kraitkin |
+| `gift_of_kudzu` | Gift of Kudzu |
+| `gift_of_light` | Gift of Light |
+| `gift_of_lightning` | Gift of Lightning |
+| `gift_of_magic` | Gift of Magic |
+| `gift_of_prosperity` | Gift of Magical / Mighty Prosperity |
+| `gift_of_maguuma` | Gift of Maguuma |
+| `gift_of_meteorlogicus` | Gift of Meteorlogicus |
+| `gift_of_might` | Gift of Might |
+| `gift_of_music` | Gift of Music |
+| `gift_of_nature` | Gift of Nature |
+| `gift_of_quip` | Gift of Quip |
+| `gift_of_rodgort` | Gift of Rodgort |
+| `gift_of_scales` | Gift of Scales |
+| `gift_of_souls` | Gift of Souls |
+| `gift_of_sunrise` | Gift of Sunrise |
+| `gift_of_the_bifrost` | Gift of The Bifrost |
+| `gift_of_the_dreamer` | Gift of The Dreamer |
+| `gift_of_the_flameseeker_prophecies` | Gift of The Flameseeker Prophecies |
+| `gift_of_the_juggernaut` | Gift of The Juggernaut |
+| `gift_of_the_minstrel` | Gift of The Minstrel |
+| `gift_of_the_moot` | Gift of The Moot |
+| `gift_of_totems` | Gift of Totems |
+| `gift_of_twilight` | Gift of Twilight |
+| `gift_of_venom` | Gift of Venom |
+| `gift_of_warfare` | Gift of Warfare |
+| `gift_of_water` | Gift of Water |
+| `gift_of_weather` | Gift of Weather |
+| `gift_of_wood` | Gift of Wood |
+| `gift_of_the_astral_ward` | Gift of the Astral Ward |
+| `gift_of_the_catalyst` | Gift of the Catalyst |
+| `gift_of_the_cosmos` | Gift of the Cosmos |
+| `gift_of_the_desolation` | Gift of the Desolation |
+| `gift_of_the_homesteader` | Gift of the Homesteader |
+| `gift_of_the_raven_spirit` | Gift of the Raven Spirit |
+| `glob_of_coagulated_mists_essence` | Glob of Coagulated Mists Essence |
+| `hateful_sworl` | Hateful Sworl |
+| `lacquered_banner_pole` | Lacquered Banner Pole |
+| `legendary_shard_gen2` | Legendary Shards (Gen2) |
+| `legendary_shard_gen3` | Legendary Shards (Gen3 / Aurene) |
+| `ley_line_crystal` | Ley Line Crystal |
+| `lump_of_aurillium` | Lump of Aurillium |
+| `mystic_essence_of_animosity` | Mystic Essence of Animosity |
+| `mystic_essence_of_annihilation` | Mystic Essence of Annihilation |
+| `mystic_essence_of_carnage` | Mystic Essence of Carnage |
+| `mystic_essence_of_strategy` | Mystic Essence of Strategy |
+| `olmakhan_bandolier_chain` | Olmakhan Bandolier (chaîne) |
+| `pouch_of_stardust` | Pouch of Stardust |
+| `shark_statue` | Shark Statue |
+| `spinal_blade_perfected` | Spinal Blade Back Pack (Perfected) |
+| `unicorn_statue` | Unicorn Statue |
+| `vial_of_liquid_flame` | Vial of Liquid Flame |
+| `vial_of_quicksilver` | Vial of Quicksilver |
+| `wolf_statue` | Wolf Statue |
+
+## 29 arêtes déclarées non chiffrées, sur 21 parents
+
+Aucune ne demande de capture : quantité connue mais dépliage partiel, arête qui saute un niveau, ou étape de collection.
+
+| parent | composants |
+|---|---|
+| `Amalgamated Rift Essence` | `fine_rift_essence`, `glob_of_ectoplasm`, `masterwork_rift_essence`, `rare_rift_essence` |
+| `Gift of Mastery` | `bloodstone_shard`, `gift_of_battle`, `gift_of_exploration`, `obsidian_shard` |
+| `Gift of Fortune` | `glob_of_ectoplasm`, `mystic_clover` |
+| `Gift of Magical / Mighty Prosperity` | `gift_of_craftsmanship`, `mystic_clover` |
+| `Certificate of Heroics` | `testimony_of_heroics` |
+| `Essence of Animosity` | `testimony_of_heroics` |
+| `Essence of Annihilation` | `skirmish_claim_ticket` |
+| `Gift of Expertise` | `obsidian_shard` |
+| `Gift of Infused Gems` | `amalgamated_gemstone` |
+| `Gift of Maguuma Mastery` | `crystalline_ingot` |
+| `Gift of Research` | `glob_of_ectoplasm` |
+| `Gift of the Dragon Empire` | `antique_summoning_stone` |
+| `Gift of the Feast` | `fruits_of_the_shadow` |
+| `Gift of the Mistburned Isles` | `curious_mursaat_remnant` |
+| `Gift of the Rider` | `trade_contract` |
+| `Mist Pearl` | `skirmish_claim_ticket` |
+| `Mist-Enhanced Mithril` | `skirmish_claim_ticket` |
+| `Mystic Tribute` | `mystic_coin` |
+| `Spark of Sentience` | `xunlai_electrum_ingot` |
+| `War Commendation` | `emblem_of_the_conqueror` |
+| `Warcry` | `skirmish_claim_ticket` |

@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v215",
+  "version": "v216",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2147,8 +2147,10 @@
    "apiId": 24277,
    "needed_for": [
     "endless_summer",
+    "gift_of_color",
     "gift_of_dust",
     "gift_of_energy",
+    "gift_of_history",
     "gift_of_magic",
     "klobjarne_geirr",
     "orrax_manifested",
@@ -2207,7 +2209,9 @@
     "klobjarne_geirr": 160,
     "orrax_manifested": 100,
     "strife_unending": 300,
-    "gift_of_energy": 250
+    "gift_of_energy": 250,
+    "gift_of_color": 250,
+    "gift_of_history": 250
    },
    "kind": "acquire",
    "best": "drop",
@@ -2228,9 +2232,32 @@
     "gen2_chuka_and_champawat",
     "gen2_hope",
     "gen2_nevermore",
+    "gift_of_astralaria",
+    "gift_of_bolt",
+    "gift_of_chuka_and_champawat",
+    "gift_of_frenzy",
+    "gift_of_frostfang",
+    "gift_of_hope",
+    "gift_of_howler",
+    "gift_of_incinerator",
+    "gift_of_kamohoali_i_kotaki",
+    "gift_of_kraitkin",
+    "gift_of_kudzu",
+    "gift_of_meteorlogicus",
+    "gift_of_nevermore",
     "gift_of_prescience",
+    "gift_of_quip",
+    "gift_of_rodgort",
     "gift_of_sentience",
-    "gift_of_the_world"
+    "gift_of_sunrise",
+    "gift_of_the_bifrost",
+    "gift_of_the_dreamer",
+    "gift_of_the_flameseeker_prophecies",
+    "gift_of_the_juggernaut",
+    "gift_of_the_minstrel",
+    "gift_of_the_moot",
+    "gift_of_the_world",
+    "gift_of_twilight"
    ],
    "farmable": true,
    "sources": [
@@ -2260,7 +2287,30 @@
    "qty": {
     "gift_of_sentience": 100,
     "gift_of_the_world": 100,
-    "gift_of_prescience": 100
+    "gift_of_prescience": 100,
+    "gift_of_astralaria": 100,
+    "gift_of_bolt": 100,
+    "gift_of_chuka_and_champawat": 100,
+    "gift_of_frenzy": 100,
+    "gift_of_frostfang": 100,
+    "gift_of_hope": 100,
+    "gift_of_howler": 100,
+    "gift_of_incinerator": 100,
+    "gift_of_kamohoali_i_kotaki": 100,
+    "gift_of_kraitkin": 100,
+    "gift_of_kudzu": 100,
+    "gift_of_meteorlogicus": 100,
+    "gift_of_nevermore": 100,
+    "gift_of_quip": 100,
+    "gift_of_rodgort": 100,
+    "gift_of_sunrise": 100,
+    "gift_of_the_bifrost": 100,
+    "gift_of_the_dreamer": 100,
+    "gift_of_the_flameseeker_prophecies": 100,
+    "gift_of_the_juggernaut": 100,
+    "gift_of_the_minstrel": 100,
+    "gift_of_the_moot": 100,
+    "gift_of_twilight": 100
    },
    "kind": "acquire",
    "verified": true,
@@ -5109,10 +5159,42 @@
    "name": "Gift of Metal",
    "apiId": 19621,
    "needed_for": [
-    "gen1_weapon_gifts"
+    "gen1_weapon_gifts",
+    "gift_of_arah",
+    "gift_of_astralaria",
+    "gift_of_bolt",
+    "gift_of_eureka",
+    "gift_of_exordium",
+    "gift_of_frostfang",
+    "gift_of_incinerator",
+    "gift_of_kamohoali_i_kotaki",
+    "gift_of_shooshadoo",
+    "gift_of_sunrise",
+    "gift_of_the_blade",
+    "gift_of_the_flameseeker_prophecies",
+    "gift_of_the_four_legions",
+    "gift_of_the_juggernaut",
+    "gift_of_the_moot",
+    "gift_of_twilight"
    ],
    "qty": {
-    "klobjarne_geirr": 1
+    "klobjarne_geirr": 1,
+    "gift_of_arah": 1,
+    "gift_of_astralaria": 1,
+    "gift_of_bolt": 1,
+    "gift_of_eureka": 1,
+    "gift_of_exordium": 1,
+    "gift_of_frostfang": 1,
+    "gift_of_incinerator": 1,
+    "gift_of_kamohoali_i_kotaki": 1,
+    "gift_of_shooshadoo": 1,
+    "gift_of_sunrise": 1,
+    "gift_of_the_flameseeker_prophecies": 1,
+    "gift_of_the_juggernaut": 1,
+    "gift_of_the_moot": 1,
+    "gift_of_twilight": 1,
+    "gift_of_the_blade": 1,
+    "gift_of_the_four_legions": 1
    },
    "farmable": true,
    "sources": [
@@ -5312,10 +5394,42 @@
    "name": "Gift of Research",
    "apiId": 97655,
    "needed_for": [
-    "armor_obsidian_per_piece"
+    "armor_obsidian_per_piece",
+    "gift_of_aurene_s_argument",
+    "gift_of_aurene_s_bite",
+    "gift_of_aurene_s_breath",
+    "gift_of_aurene_s_claw",
+    "gift_of_aurene_s_fang",
+    "gift_of_aurene_s_flight",
+    "gift_of_aurene_s_gaze",
+    "gift_of_aurene_s_horn",
+    "gift_of_aurene_s_insight",
+    "gift_of_aurene_s_persuasion",
+    "gift_of_aurene_s_rending",
+    "gift_of_aurene_s_scale",
+    "gift_of_aurene_s_tail",
+    "gift_of_aurene_s_weight",
+    "gift_of_aurene_s_wing",
+    "gift_of_aurene_s_wisdom"
    ],
    "qty": {
-    "obsidian__per_piece": 1
+    "obsidian__per_piece": 1,
+    "gift_of_aurene_s_argument": 1,
+    "gift_of_aurene_s_bite": 1,
+    "gift_of_aurene_s_breath": 1,
+    "gift_of_aurene_s_claw": 1,
+    "gift_of_aurene_s_fang": 1,
+    "gift_of_aurene_s_flight": 1,
+    "gift_of_aurene_s_gaze": 1,
+    "gift_of_aurene_s_horn": 1,
+    "gift_of_aurene_s_insight": 1,
+    "gift_of_aurene_s_persuasion": 1,
+    "gift_of_aurene_s_rending": 1,
+    "gift_of_aurene_s_scale": 1,
+    "gift_of_aurene_s_tail": 1,
+    "gift_of_aurene_s_weight": 1,
+    "gift_of_aurene_s_wing": 1,
+    "gift_of_aurene_s_wisdom": 1
    },
    "farmable": true,
    "sources": [
@@ -6532,7 +6646,15 @@
    "name": "Gift of Maguuma Mastery",
    "apiId": 73239,
    "needed_for": [
-    "gen2_all"
+    "gen2_all",
+    "gen2_claw_of_the_khan_ur",
+    "gen2_flames_of_war",
+    "gen2_pharus",
+    "gen2_sharur",
+    "gen2_the_binding_of_ipos",
+    "gen2_the_hms_divinity",
+    "gen2_the_shining_blade",
+    "gen2_verdarach"
    ],
    "farmable": true,
    "sources": [
@@ -6562,7 +6684,15 @@
     "gen2_lorekeeper": 1,
     "gen2_elegy": 1,
     "gen2_xiuquatl": 1,
-    "gen2_reaver_of_the_mists": 1
+    "gen2_reaver_of_the_mists": 1,
+    "gen2_claw_of_the_khan_ur": 1,
+    "gen2_flames_of_war": 1,
+    "gen2_pharus": 1,
+    "gen2_sharur": 1,
+    "gen2_the_binding_of_ipos": 1,
+    "gen2_the_hms_divinity": 1,
+    "gen2_the_shining_blade": 1,
+    "gen2_verdarach": 1
    },
    "kind": "advanced_craft"
   },
@@ -6571,6 +6701,18 @@
    "apiId": 86036,
    "needed_for": [
     "gen2_all_pof",
+    "gen2_claw_of_the_khan_ur",
+    "gen2_eureka",
+    "gen2_exordium",
+    "gen2_flames_of_war",
+    "gen2_pharus",
+    "gen2_sharur",
+    "gen2_shooshadoo",
+    "gen2_the_binding_of_ipos",
+    "gen2_the_hms_divinity",
+    "gen2_the_shining_blade",
+    "gen2_verdarach",
+    "gen2_xiuquatl",
     "gift_of_compassion"
    ],
    "farmable": true,
@@ -6588,7 +6730,19 @@
     }
    ],
    "qty": {
-    "gift_of_compassion": 1
+    "gift_of_compassion": 1,
+    "gen2_claw_of_the_khan_ur": 1,
+    "gen2_eureka": 1,
+    "gen2_exordium": 1,
+    "gen2_flames_of_war": 1,
+    "gen2_pharus": 1,
+    "gen2_sharur": 1,
+    "gen2_shooshadoo": 1,
+    "gen2_the_binding_of_ipos": 1,
+    "gen2_the_hms_divinity": 1,
+    "gen2_the_shining_blade": 1,
+    "gen2_verdarach": 1,
+    "gen2_xiuquatl": 1
    },
    "kind": "intermediate",
    "recipe": {
@@ -6604,6 +6758,13 @@
    "apiId": 71820,
    "needed_for": [
     "gen2_all",
+    "gen2_claw_of_the_khan_ur",
+    "gen2_flames_of_war",
+    "gen2_pharus",
+    "gen2_sharur",
+    "gen2_the_hms_divinity",
+    "gen2_the_shining_blade",
+    "gen2_verdarach",
     "legendary_trinkets"
    ],
    "farmable": true,
@@ -6640,7 +6801,14 @@
     "conflux": 1,
     "coalescence": 1,
     "fractal_capacitor": 1,
-    "gen2_the_binding_of_ipos": 1
+    "gen2_the_binding_of_ipos": 1,
+    "gen2_claw_of_the_khan_ur": 1,
+    "gen2_flames_of_war": 1,
+    "gen2_pharus": 1,
+    "gen2_sharur": 1,
+    "gen2_the_hms_divinity": 1,
+    "gen2_the_shining_blade": 1,
+    "gen2_verdarach": 1
    },
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -6960,6 +7128,34 @@
    "needed_for": [
     "endless_summer",
     "gen2_gift_unique",
+    "gift_of_arah",
+    "gift_of_aurene_s_argument",
+    "gift_of_aurene_s_bite",
+    "gift_of_aurene_s_breath",
+    "gift_of_aurene_s_claw",
+    "gift_of_aurene_s_fang",
+    "gift_of_aurene_s_flight",
+    "gift_of_aurene_s_gaze",
+    "gift_of_aurene_s_horn",
+    "gift_of_aurene_s_insight",
+    "gift_of_aurene_s_persuasion",
+    "gift_of_aurene_s_rending",
+    "gift_of_aurene_s_scale",
+    "gift_of_aurene_s_tail",
+    "gift_of_aurene_s_weight",
+    "gift_of_aurene_s_wing",
+    "gift_of_aurene_s_wisdom",
+    "gift_of_balthazar",
+    "gift_of_divinity",
+    "gift_of_eureka",
+    "gift_of_exordium",
+    "gift_of_ipos",
+    "gift_of_pharus",
+    "gift_of_shooshadoo",
+    "gift_of_the_blade",
+    "gift_of_the_four_legions",
+    "gift_of_verdarach",
+    "gift_of_xiuquatl",
     "orrax_manifested",
     "stella_radians"
    ],
@@ -7018,7 +7214,35 @@
     "klobjarne_geirr": 100,
     "endless_summer": 100,
     "orrax_manifested": 250,
-    "stella_radians": 200
+    "stella_radians": 200,
+    "gift_of_arah": 100,
+    "gift_of_aurene_s_argument": 100,
+    "gift_of_aurene_s_bite": 100,
+    "gift_of_aurene_s_breath": 100,
+    "gift_of_aurene_s_claw": 100,
+    "gift_of_aurene_s_fang": 100,
+    "gift_of_aurene_s_flight": 100,
+    "gift_of_aurene_s_gaze": 100,
+    "gift_of_aurene_s_horn": 100,
+    "gift_of_aurene_s_insight": 100,
+    "gift_of_aurene_s_persuasion": 100,
+    "gift_of_aurene_s_rending": 100,
+    "gift_of_aurene_s_scale": 100,
+    "gift_of_aurene_s_tail": 100,
+    "gift_of_aurene_s_weight": 100,
+    "gift_of_aurene_s_wing": 100,
+    "gift_of_aurene_s_wisdom": 100,
+    "gift_of_balthazar": 100,
+    "gift_of_divinity": 100,
+    "gift_of_eureka": 100,
+    "gift_of_exordium": 100,
+    "gift_of_ipos": 100,
+    "gift_of_pharus": 100,
+    "gift_of_shooshadoo": 100,
+    "gift_of_verdarach": 100,
+    "gift_of_xiuquatl": 100,
+    "gift_of_the_blade": 100,
+    "gift_of_the_four_legions": 100
    },
    "kind": "acquire",
    "apiId_fix": {
@@ -7292,7 +7516,12 @@
    "name": "Gift of Jade Mastery",
    "apiId": 96033,
    "needed_for": [
-    "gen3_all"
+    "gen3_all",
+    "gen3_aurene_s_fang",
+    "gen3_aurene_s_flight",
+    "gen3_aurene_s_tail",
+    "gen3_aurene_s_wing",
+    "gen3_aurenes_rending"
    ],
    "farmable": true,
    "sources": [
@@ -7320,7 +7549,12 @@
     "gen3_aurenes_scale": 1,
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
-    "gen3_aurenes_tenderness": 1
+    "gen3_aurenes_tenderness": 1,
+    "gen3_aurene_s_fang": 1,
+    "gen3_aurene_s_flight": 1,
+    "gen3_aurenes_rending": 1,
+    "gen3_aurene_s_tail": 1,
+    "gen3_aurene_s_wing": 1
    },
    "kind": "advanced_craft"
   },
@@ -7328,7 +7562,12 @@
    "name": "Draconic Tribute",
    "apiId": 96137,
    "needed_for": [
-    "gen3_all"
+    "gen3_all",
+    "gen3_aurene_s_fang",
+    "gen3_aurene_s_flight",
+    "gen3_aurene_s_tail",
+    "gen3_aurene_s_wing",
+    "gen3_aurenes_rending"
    ],
    "farmable": true,
    "sources": [
@@ -7356,7 +7595,12 @@
     "gen3_aurenes_scale": 1,
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
-    "gen3_aurenes_tenderness": 1
+    "gen3_aurenes_tenderness": 1,
+    "gen3_aurene_s_fang": 1,
+    "gen3_aurene_s_flight": 1,
+    "gen3_aurenes_rending": 1,
+    "gen3_aurene_s_tail": 1,
+    "gen3_aurene_s_wing": 1
    },
    "note": {
     "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
@@ -9780,7 +10024,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {
+    "gen2_the_binding_of_ipos": 1
+   }
   },
   "augurs_stone": {
    "name": "Augur's Stone",
@@ -10865,7 +11111,9 @@
     "klobjarne_geirr": 100,
     "orrax_manifested": 200,
     "strife_unending": 300,
-    "transcendence": 20
+    "transcendence": 20,
+    "eel_statue": 250,
+    "shark_statue": 250
    },
    "farmable": true,
    "sources": [
@@ -10917,12 +11165,14 @@
    "checked": "2026-08-13",
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
+    "eel_statue",
     "endless_summer",
     "gift_of_might",
     "gift_of_scales",
     "klobjarne_geirr",
     "mystic_essence_of_carnage",
     "orrax_manifested",
+    "shark_statue",
     "strife_unending",
     "transcendence"
    ],
@@ -10940,7 +11190,8 @@
     "klobjarne_geirr": 100,
     "orrax_manifested": 100,
     "strife_unending": 300,
-    "transcendence": 20
+    "transcendence": 20,
+    "shark_statue": 250
    },
    "farmable": true,
    "sources": [
@@ -10998,6 +11249,7 @@
     "klobjarne_geirr",
     "mystic_essence_of_strategy",
     "orrax_manifested",
+    "shark_statue",
     "strife_unending",
     "transcendence"
    ],
@@ -11163,7 +11415,8 @@
     "endless_summer": 200,
     "klobjarne_geirr": 100,
     "orrax_manifested": 100,
-    "strife_unending": 300
+    "strife_unending": 300,
+    "wolf_statue": 250
    },
    "farmable": true,
    "sources": [
@@ -11220,7 +11473,8 @@
     "gift_of_might",
     "klobjarne_geirr",
     "orrax_manifested",
-    "strife_unending"
+    "strife_unending",
+    "wolf_statue"
    ],
    "tier": "T6"
   },
@@ -13265,11 +13519,25 @@
    "farmable": true,
    "qty": {
     "gift_of_sentience": 1,
-    "gift_of_prescience": 1
+    "gift_of_prescience": 1,
+    "gift_of_ipos": 1,
+    "gift_of_kraitkin": 1,
+    "gift_of_meteorlogicus": 1,
+    "gift_of_nevermore": 1,
+    "gift_of_the_bifrost": 1,
+    "gift_of_the_minstrel": 1,
+    "gift_of_xiuquatl": 1
    },
    "needed_for": [
+    "gift_of_ipos",
+    "gift_of_kraitkin",
+    "gift_of_meteorlogicus",
+    "gift_of_nevermore",
     "gift_of_prescience",
-    "gift_of_sentience"
+    "gift_of_sentience",
+    "gift_of_the_bifrost",
+    "gift_of_the_minstrel",
+    "gift_of_xiuquatl"
    ],
    "recipe": {
     "fr": "MF : 250 de chacun des 4 paliers de poussière — cristalline, incandescente, lumineuse, radieuse.",
@@ -13304,12 +13572,76 @@
    "qty": {
     "gift_of_sentience": 1,
     "gift_of_prescience": 1,
-    "gift_of_the_world": 1
+    "gift_of_the_world": 1,
+    "gift_of_arah": 1,
+    "gift_of_astralaria": 1,
+    "gift_of_aurene_s_argument": 1,
+    "gift_of_aurene_s_bite": 1,
+    "gift_of_aurene_s_breath": 1,
+    "gift_of_aurene_s_claw": 1,
+    "gift_of_aurene_s_fang": 1,
+    "gift_of_aurene_s_flight": 1,
+    "gift_of_aurene_s_gaze": 1,
+    "gift_of_aurene_s_horn": 1,
+    "gift_of_aurene_s_insight": 1,
+    "gift_of_aurene_s_persuasion": 1,
+    "gift_of_aurene_s_rending": 1,
+    "gift_of_aurene_s_scale": 1,
+    "gift_of_aurene_s_tail": 1,
+    "gift_of_aurene_s_weight": 1,
+    "gift_of_aurene_s_wing": 1,
+    "gift_of_aurene_s_wisdom": 1,
+    "gift_of_balthazar": 1,
+    "gift_of_chuka_and_champawat": 1,
+    "gift_of_divinity": 1,
+    "gift_of_eureka": 1,
+    "gift_of_exordium": 1,
+    "gift_of_hope": 1,
+    "gift_of_ipos": 1,
+    "gift_of_nevermore": 1,
+    "gift_of_pharus": 1,
+    "gift_of_shooshadoo": 1,
+    "gift_of_verdarach": 1,
+    "gift_of_xiuquatl": 1,
+    "gift_of_the_blade": 1,
+    "gift_of_the_four_legions": 1
    },
    "needed_for": [
+    "gift_of_arah",
+    "gift_of_astralaria",
+    "gift_of_aurene_s_argument",
+    "gift_of_aurene_s_bite",
+    "gift_of_aurene_s_breath",
+    "gift_of_aurene_s_claw",
+    "gift_of_aurene_s_fang",
+    "gift_of_aurene_s_flight",
+    "gift_of_aurene_s_gaze",
+    "gift_of_aurene_s_horn",
+    "gift_of_aurene_s_insight",
+    "gift_of_aurene_s_persuasion",
+    "gift_of_aurene_s_rending",
+    "gift_of_aurene_s_scale",
+    "gift_of_aurene_s_tail",
+    "gift_of_aurene_s_weight",
+    "gift_of_aurene_s_wing",
+    "gift_of_aurene_s_wisdom",
+    "gift_of_balthazar",
+    "gift_of_chuka_and_champawat",
+    "gift_of_divinity",
+    "gift_of_eureka",
+    "gift_of_exordium",
+    "gift_of_hope",
+    "gift_of_ipos",
+    "gift_of_nevermore",
+    "gift_of_pharus",
     "gift_of_prescience",
     "gift_of_sentience",
-    "gift_of_the_world"
+    "gift_of_shooshadoo",
+    "gift_of_the_blade",
+    "gift_of_the_four_legions",
+    "gift_of_the_world",
+    "gift_of_verdarach",
+    "gift_of_xiuquatl"
    ],
    "recipe": {
     "fr": "MF : 1 Gift of Glory (250 Éclats de gloire) + 1 Gift of Battle (piste de récompense McM) + 1 Gift of War (250 Mémoires de bataille) + 1 Cube of Stabilized Dark Energy.",
@@ -13731,7 +14063,8 @@
    "farmable": true,
    "qty": {
     "aetheric_anchor": 550,
-    "orrax_manifested": 50
+    "orrax_manifested": 50,
+    "vial_of_liquid_flame": 100
    },
    "sources": [
     {
@@ -13783,7 +14116,8 @@
    "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
    "needed_for": [
     "aetheric_anchor",
-    "orrax_manifested"
+    "orrax_manifested",
+    "vial_of_liquid_flame"
    ],
    "apiId": 24325
   },
@@ -13844,7 +14178,8 @@
    "farmable": true,
    "qty": {
     "aetheric_anchor": 550,
-    "orrax_manifested": 50
+    "orrax_manifested": 50,
+    "gift_of_ice": 100
    },
    "sources": [
     {
@@ -13885,6 +14220,7 @@
    "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
    "needed_for": [
     "aetheric_anchor",
+    "gift_of_ice",
     "orrax_manifested"
    ],
    "apiId": 24340
@@ -14140,7 +14476,10 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "endless_summer": 200
+    "endless_summer": 200,
+    "gift_of_light": 100,
+    "gift_of_lightning": 100,
+    "gift_of_weather": 100
    },
    "sources": [
     {
@@ -14191,7 +14530,10 @@
    "checked": "2026-08-22",
    "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
    "needed_for": [
-    "endless_summer"
+    "endless_summer",
+    "gift_of_light",
+    "gift_of_lightning",
+    "gift_of_weather"
    ],
    "recipe": {
     "fr": "Forge mystique (promotion) : 2 Noyaux chargés + 1 Bouteille de vin élonien OU 1 Agent liant mystique + 1 Poussière cristalline + 1 Cristal mystique.",
@@ -15040,7 +15382,9 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "orrax_manifested": 100
+    "orrax_manifested": 100,
+    "gift_of_darkness": 100,
+    "gift_of_history": 100
    },
    "sources": [
     {
@@ -15091,6 +15435,8 @@
    "checked": "2026-08-22",
    "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
    "needed_for": [
+    "gift_of_darkness",
+    "gift_of_history",
     "orrax_manifested"
    ],
    "apiId": 24310
@@ -15529,6 +15875,2036 @@
    "verified": true,
    "checked": "2026-08-27",
    "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+  },
+  "ancient_wood_plank": {
+   "name": "Ancient Wood Plank",
+   "apiId": 19712,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_nature": 250,
+    "gift_of_wood": 250
+   },
+   "needed_for": [
+    "gift_of_nature",
+    "gift_of_wood"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "blessing_of_the_jade_empress": {
+   "name": "Blessing of the Jade Empress",
+   "apiId": 97829,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_dragon_empire": 5
+   },
+   "needed_for": [
+    "gift_of_the_dragon_empire"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "bolt_of_gossamer": {
+   "name": "Bolt of Gossamer",
+   "apiId": 19746,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_entertainment": 250,
+    "gift_of_lightning": 250,
+    "gift_of_music": 250
+   },
+   "needed_for": [
+    "gift_of_entertainment",
+    "gift_of_lightning",
+    "gift_of_music"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "box_o_fun": {
+   "name": "Box o' Fun",
+   "apiId": 20000,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_entertainment": 5
+   },
+   "needed_for": [
+    "gift_of_entertainment"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "chrysocola_orb": {
+   "name": "Chrysocola Orb",
+   "apiId": 24512,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "unicorn_statue": 100
+   },
+   "needed_for": [
+    "unicorn_statue"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "chunk_of_ancient_ambergris": {
+   "name": "Chunk of Ancient Ambergris",
+   "apiId": 96347,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_dragon_empire": 100
+   },
+   "needed_for": [
+    "gift_of_the_dragon_empire"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "chunk_of_pure_jade": {
+   "name": "Chunk of Pure Jade",
+   "apiId": 97102,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_dragon_empire": 200
+   },
+   "needed_for": [
+    "gift_of_the_dragon_empire"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "cured_hardened_leather_square": {
+   "name": "Cured Hardened Leather Square",
+   "apiId": 19737,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "eel_statue": 250,
+    "gift_of_darkness": 250,
+    "gift_of_history": 250,
+    "gift_of_light": 250,
+    "gift_of_nature": 250,
+    "wolf_statue": 250
+   },
+   "needed_for": [
+    "eel_statue",
+    "gift_of_darkness",
+    "gift_of_history",
+    "gift_of_light",
+    "gift_of_nature",
+    "wolf_statue"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "darksteel_ingot": {
+   "name": "Darksteel Ingot",
+   "apiId": 19681,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_metal": 250
+   },
+   "needed_for": [
+    "gift_of_metal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "eel_statue": {
+   "name": "Eel Statue",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_kraitkin": 1
+   },
+   "needed_for": [
+    "gift_of_kraitkin"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "elder_wood_plank": {
+   "name": "Elder Wood Plank",
+   "apiId": 19709,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_wood": 250
+   },
+   "needed_for": [
+    "gift_of_wood"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "ghost_pepper": {
+   "name": "Ghost Pepper",
+   "apiId": 12544,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "vial_of_liquid_flame": 250
+   },
+   "needed_for": [
+    "vial_of_liquid_flame"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_arah": {
+   "name": "Gift of Arah",
+   "apiId": 81684,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_sharur": 1
+   },
+   "needed_for": [
+    "gen2_sharur"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_astralaria": {
+   "name": "Gift of Astralaria",
+   "apiId": 71972,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_astralaria": 1
+   },
+   "needed_for": [
+    "gen2_astralaria"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_argument": {
+   "name": "Gift of Aurene's Argument",
+   "apiId": 96493,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_argument": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_argument"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_bite": {
+   "name": "Gift of Aurene's Bite",
+   "apiId": 97027,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_bite": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_bite"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_breath": {
+   "name": "Gift of Aurene's Breath",
+   "apiId": 95922,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_breath": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_breath"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_claw": {
+   "name": "Gift of Aurene's Claw",
+   "apiId": 97066,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_claw": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_claw"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_fang": {
+   "name": "Gift of Aurene's Fang",
+   "apiId": 96790,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurene_s_fang": 1
+   },
+   "needed_for": [
+    "gen3_aurene_s_fang"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_flight": {
+   "name": "Gift of Aurene's Flight",
+   "apiId": 95777,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurene_s_flight": 1
+   },
+   "needed_for": [
+    "gen3_aurene_s_flight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_gaze": {
+   "name": "Gift of Aurene's Gaze",
+   "apiId": 97088,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_gaze": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_gaze"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_horn": {
+   "name": "Gift of Aurene's Horn",
+   "apiId": 96354,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_voice": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_voice"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_insight": {
+   "name": "Gift of Aurene's Insight",
+   "apiId": 97281,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_insight": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_insight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_persuasion": {
+   "name": "Gift of Aurene's Persuasion",
+   "apiId": 97412,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_persuasion": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_persuasion"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_rending": {
+   "name": "Gift of Aurene's Rending",
+   "apiId": 97804,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_rending": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_rending"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_scale": {
+   "name": "Gift of Aurene's Scale",
+   "apiId": 96073,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_scale": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_scale"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_tail": {
+   "name": "Gift of Aurene's Tail",
+   "apiId": 95846,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurene_s_tail": 1
+   },
+   "needed_for": [
+    "gen3_aurene_s_tail"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_weight": {
+   "name": "Gift of Aurene's Weight",
+   "apiId": 96161,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_weight": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_weight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_wing": {
+   "name": "Gift of Aurene's Wing",
+   "apiId": 96015,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurene_s_wing": 1
+   },
+   "needed_for": [
+    "gen3_aurene_s_wing"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_aurene_s_wisdom": {
+   "name": "Gift of Aurene's Wisdom",
+   "apiId": 97552,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen3_aurenes_wisdom": 1
+   },
+   "needed_for": [
+    "gen3_aurenes_wisdom"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_balthazar": {
+   "name": "Gift of Balthazar",
+   "apiId": 81144,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_flames_of_war": 1
+   },
+   "needed_for": [
+    "gen2_flames_of_war"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_bolt": {
+   "name": "Gift of Bolt",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_bolt": 1
+   },
+   "needed_for": [
+    "gen1_bolt"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_chuka_and_champawat": {
+   "name": "Gift of Chuka and Champawat",
+   "apiId": 78627,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_chuka_and_champawat": 1
+   },
+   "needed_for": [
+    "gen2_chuka_and_champawat"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_color": {
+   "name": "Gift of Color",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_bifrost": 1
+   },
+   "needed_for": [
+    "gift_of_the_bifrost"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_darkness": {
+   "name": "Gift of Darkness",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_twilight": 1
+   },
+   "needed_for": [
+    "gift_of_twilight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_divinity": {
+   "name": "Gift of Divinity",
+   "apiId": 80650,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_the_hms_divinity": 1
+   },
+   "needed_for": [
+    "gen2_the_hms_divinity"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_entertainment": {
+   "name": "Gift of Entertainment",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_quip": 1,
+    "gift_of_the_moot": 1
+   },
+   "needed_for": [
+    "gift_of_quip",
+    "gift_of_the_moot"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_eureka": {
+   "name": "Gift of Eureka",
+   "apiId": 79419,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_eureka": 1
+   },
+   "needed_for": [
+    "gen2_eureka"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_exordium": {
+   "name": "Gift of Exordium",
+   "apiId": 90893,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_exordium": 1
+   },
+   "needed_for": [
+    "gen2_exordium"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_family": {
+   "name": "Gift of Family",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_chuka_and_champawat": 1
+   },
+   "needed_for": [
+    "gift_of_chuka_and_champawat"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_frenzy": {
+   "name": "Gift of Frenzy",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_frenzy": 1
+   },
+   "needed_for": [
+    "gen1_frenzy"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_frostfang": {
+   "name": "Gift of Frostfang",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_frostfang": 1
+   },
+   "needed_for": [
+    "gen1_frostfang"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_hope": {
+   "name": "Gift of HOPE",
+   "apiId": 77086,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_hope": 1
+   },
+   "needed_for": [
+    "gen2_hope"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_history": {
+   "name": "Gift of History",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_flameseeker_prophecies": 1
+   },
+   "needed_for": [
+    "gift_of_the_flameseeker_prophecies"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_howler": {
+   "name": "Gift of Howler",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_howler": 1
+   },
+   "needed_for": [
+    "gen1_howler"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_ice": {
+   "name": "Gift of Ice",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_frostfang": 1
+   },
+   "needed_for": [
+    "gift_of_frostfang"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_incinerator": {
+   "name": "Gift of Incinerator",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_incinerator": 1
+   },
+   "needed_for": [
+    "gen1_incinerator"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_kamohoali_i_kotaki": {
+   "name": "Gift of Kamohoali'i Kotaki",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_kamohoalii_kotaki": 1
+   },
+   "needed_for": [
+    "gen1_kamohoalii_kotaki"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_kraitkin": {
+   "name": "Gift of Kraitkin",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_kraitkin": 1
+   },
+   "needed_for": [
+    "gen1_kraitkin"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_kudzu": {
+   "name": "Gift of Kudzu",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_kudzu": 1
+   },
+   "needed_for": [
+    "gen1_kudzu"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_light": {
+   "name": "Gift of Light",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_sunrise": 1
+   },
+   "needed_for": [
+    "gift_of_sunrise"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_lightning": {
+   "name": "Gift of Lightning",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_bolt": 1
+   },
+   "needed_for": [
+    "gift_of_bolt"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_meteorlogicus": {
+   "name": "Gift of Meteorlogicus",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_meteorlogicus": 1
+   },
+   "needed_for": [
+    "gen1_meteorlogicus"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_music": {
+   "name": "Gift of Music",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_minstrel": 1
+   },
+   "needed_for": [
+    "gift_of_the_minstrel"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_nature": {
+   "name": "Gift of Nature",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_kudzu": 1
+   },
+   "needed_for": [
+    "gift_of_kudzu"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_nevermore": {
+   "name": "Gift of Nevermore",
+   "apiId": 74300,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_nevermore": 1
+   },
+   "needed_for": [
+    "gen2_nevermore"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_pharus": {
+   "name": "Gift of Pharus",
+   "apiId": 89445,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_pharus": 1
+   },
+   "needed_for": [
+    "gen2_pharus"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_quip": {
+   "name": "Gift of Quip",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_quip": 1
+   },
+   "needed_for": [
+    "gen1_quip"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_rodgort": {
+   "name": "Gift of Rodgort",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_rodgort": 1
+   },
+   "needed_for": [
+    "gen1_rodgort"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_shooshadoo": {
+   "name": "Gift of Shooshadoo",
+   "apiId": 79839,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_shooshadoo": 1
+   },
+   "needed_for": [
+    "gen2_shooshadoo"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_sunrise": {
+   "name": "Gift of Sunrise",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_sunrise": 1
+   },
+   "needed_for": [
+    "gen1_sunrise"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_bifrost": {
+   "name": "Gift of The Bifrost",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_bifrost": 1
+   },
+   "needed_for": [
+    "gen1_the_bifrost"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_dreamer": {
+   "name": "Gift of The Dreamer",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_dreamer": 1
+   },
+   "needed_for": [
+    "gen1_the_dreamer"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_flameseeker_prophecies": {
+   "name": "Gift of The Flameseeker Prophecies",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_flameseeker_prophecies": 1
+   },
+   "needed_for": [
+    "gen1_the_flameseeker_prophecies"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_juggernaut": {
+   "name": "Gift of The Juggernaut",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_juggernaut": 1
+   },
+   "needed_for": [
+    "gen1_the_juggernaut"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_minstrel": {
+   "name": "Gift of The Minstrel",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_minstrel": 1
+   },
+   "needed_for": [
+    "gen1_the_minstrel"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_moot": {
+   "name": "Gift of The Moot",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_moot": 1
+   },
+   "needed_for": [
+    "gen1_the_moot"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_twilight": {
+   "name": "Gift of Twilight",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_twilight": 1
+   },
+   "needed_for": [
+    "gen1_twilight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_verdarach": {
+   "name": "Gift of Verdarach",
+   "apiId": 88060,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_verdarach": 1
+   },
+   "needed_for": [
+    "gen2_verdarach"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_water": {
+   "name": "Gift of Water",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_frenzy": 1
+   },
+   "needed_for": [
+    "gift_of_frenzy"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_weather": {
+   "name": "Gift of Weather",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_meteorlogicus": 1
+   },
+   "needed_for": [
+    "gift_of_meteorlogicus"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_wood": {
+   "name": "Gift of Wood",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_balthazar": 1,
+    "gift_of_chuka_and_champawat": 1,
+    "gift_of_divinity": 1,
+    "gift_of_frenzy": 1,
+    "gift_of_hope": 1,
+    "gift_of_howler": 1,
+    "gift_of_kudzu": 1,
+    "gift_of_pharus": 1,
+    "gift_of_quip": 1,
+    "gift_of_rodgort": 1,
+    "gift_of_the_dreamer": 1,
+    "gift_of_verdarach": 1
+   },
+   "needed_for": [
+    "gift_of_balthazar",
+    "gift_of_chuka_and_champawat",
+    "gift_of_divinity",
+    "gift_of_frenzy",
+    "gift_of_hope",
+    "gift_of_howler",
+    "gift_of_kudzu",
+    "gift_of_pharus",
+    "gift_of_quip",
+    "gift_of_rodgort",
+    "gift_of_the_dreamer",
+    "gift_of_verdarach"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_xiuquatl": {
+   "name": "Gift of Xiuquatl",
+   "apiId": 88500,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_xiuquatl": 1
+   },
+   "needed_for": [
+    "gen2_xiuquatl"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_blade": {
+   "name": "Gift of the Blade",
+   "apiId": 82003,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_the_shining_blade": 1
+   },
+   "needed_for": [
+    "gen2_the_shining_blade"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_catalyst": {
+   "name": "Gift of the Catalyst",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_hope": 1
+   },
+   "needed_for": [
+    "gift_of_hope"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_cosmos": {
+   "name": "Gift of the Cosmos",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_astralaria": 1
+   },
+   "needed_for": [
+    "gift_of_astralaria"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_four_legions": {
+   "name": "Gift of the Four Legions",
+   "apiId": 87115,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen2_claw_of_the_khan_ur": 1
+   },
+   "needed_for": [
+    "gen2_claw_of_the_khan_ur"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_raven_spirit": {
+   "name": "Gift of the Raven Spirit",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_nevermore": 1
+   },
+   "needed_for": [
+    "gift_of_nevermore"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "glacial_lodestone": {
+   "name": "Glacial Lodestone",
+   "apiId": 24320,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_ice": 100,
+    "gift_of_water": 100
+   },
+   "needed_for": [
+    "gift_of_ice",
+    "gift_of_water"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "hard_wood_plank": {
+   "name": "Hard Wood Plank",
+   "apiId": 19711,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_wood": 250
+   },
+   "needed_for": [
+    "gift_of_wood"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "hardened_leather_section": {
+   "name": "Hardened Leather Section",
+   "apiId": 19732,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_weather": 250
+   },
+   "needed_for": [
+    "gift_of_weather"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "mithril_ingot": {
+   "name": "Mithril Ingot",
+   "apiId": 19684,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_metal": 250
+   },
+   "needed_for": [
+    "gift_of_metal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "molten_lodestone": {
+   "name": "Molten Lodestone",
+   "apiId": 24315,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_water": 100,
+    "vial_of_liquid_flame": 100,
+    "vial_of_quicksilver": 150
+   },
+   "needed_for": [
+    "gift_of_water",
+    "vial_of_liquid_flame",
+    "vial_of_quicksilver"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "omnomberry": {
+   "name": "Omnomberry",
+   "apiId": 12128,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_nature": 250
+   },
+   "needed_for": [
+    "gift_of_nature"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "opal_orb": {
+   "name": "Opal Orb",
+   "apiId": 24522,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_color": 100,
+    "gift_of_music": 100,
+    "unicorn_statue": 100
+   },
+   "needed_for": [
+    "gift_of_color",
+    "gift_of_music",
+    "unicorn_statue"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "orichalcum_ingot": {
+   "name": "Orichalcum Ingot",
+   "apiId": 19685,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "eel_statue": 250,
+    "gift_of_darkness": 250,
+    "gift_of_entertainment": 250,
+    "gift_of_ice": 250,
+    "gift_of_light": 250,
+    "gift_of_lightning": 250,
+    "gift_of_metal": 250,
+    "gift_of_music": 250,
+    "gift_of_water": 250,
+    "gift_of_weather": 250,
+    "shark_statue": 250,
+    "unicorn_statue": 250,
+    "wolf_statue": 250
+   },
+   "needed_for": [
+    "eel_statue",
+    "gift_of_darkness",
+    "gift_of_entertainment",
+    "gift_of_ice",
+    "gift_of_light",
+    "gift_of_lightning",
+    "gift_of_metal",
+    "gift_of_music",
+    "gift_of_water",
+    "gift_of_weather",
+    "shark_statue",
+    "unicorn_statue",
+    "wolf_statue"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "platinum_ingot": {
+   "name": "Platinum Ingot",
+   "apiId": 19686,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_metal": 250
+   },
+   "needed_for": [
+    "gift_of_metal"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "seasoned_wood_plank": {
+   "name": "Seasoned Wood Plank",
+   "apiId": 19714,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "gift_of_wood": 250
+   },
+   "needed_for": [
+    "gift_of_wood"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "shark_statue": {
+   "name": "Shark Statue",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_kamohoali_i_kotaki": 1
+   },
+   "needed_for": [
+    "gift_of_kamohoali_i_kotaki"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "silver_doubloon": {
+   "name": "Silver Doubloon",
+   "apiId": 24502,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "vial_of_quicksilver": 250
+   },
+   "needed_for": [
+    "vial_of_quicksilver"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "steel_ingot": {
+   "name": "Steel Ingot",
+   "apiId": 19688,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "vial_of_quicksilver": 250
+   },
+   "needed_for": [
+    "vial_of_quicksilver"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "unicorn_statue": {
+   "name": "Unicorn Statue",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_dreamer": 1
+   },
+   "needed_for": [
+    "gift_of_the_dreamer"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "vial_of_liquid_flame": {
+   "name": "Vial of Liquid Flame",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_incinerator": 1,
+    "gift_of_rodgort": 1
+   },
+   "needed_for": [
+    "gift_of_incinerator",
+    "gift_of_rodgort"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "vial_of_quicksilver": {
+   "name": "Vial of Quicksilver",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_juggernaut": 1
+   },
+   "needed_for": [
+    "gift_of_the_juggernaut"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "wolf_statue": {
+   "name": "Wolf Statue",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_howler": 1
+   },
+   "needed_for": [
+    "gift_of_howler"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
   }
  },
  "enchaînements_recommandés": {
