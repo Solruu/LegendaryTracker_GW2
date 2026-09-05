@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v204",
+  "version": "v205",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5319,7 +5319,7 @@
     "gift_of_expertise"
    ],
    "qty": {
-    "obsidian__per_piece": 12
+    "gift_of_expertise": 12
    },
    "farmable": true,
    "recipe": "Craft 400 : 250× Fine + 100× Masterwork + 50× Rare + 50× Ecto",
@@ -7176,22 +7176,7 @@
     }
    ],
    "qty": {
-    "gen3_aurenes_fang": 1,
-    "gen3_aurenes_claw": 1,
-    "gen3_aurenes_bite": 1,
-    "gen3_aurenes_weight": 1,
-    "gen3_aurenes_gaze": 1,
-    "gen3_aurenes_insight": 1,
-    "gen3_aurenes_argument": 1,
-    "gen3_aurenes_guard": 1,
-    "gen3_aurenes_persuasion": 1,
-    "gen3_aurenes_voice": 1,
-    "gen3_aurenes_wrath": 1,
-    "gen3_aurenes_reckoning": 1,
-    "gen3_aurenes_scale": 1,
-    "gen3_aurenes_wisdom": 1,
-    "gen3_aurenes_breath": 1,
-    "gen3_aurenes_tenderness": 1
+    "gift_of_jade_mastery": 1
    },
    "kind": "advanced_craft"
   },
@@ -7831,7 +7816,7 @@
     }
    ],
    "qty": {
-    "ad_infinitum": 4650
+    "gift_of_ascension_fractal": 4650
    },
    "kind": "acquire",
    "best": "daily_reward",
@@ -8166,7 +8151,7 @@
     }
    ],
    "qty": {
-    "endless_summer": 1
+    "gift_of_rays": 1
    },
    "kind": "advanced_craft"
   },
@@ -8187,7 +8172,7 @@
     }
    ],
    "qty": {
-    "endless_summer": 1
+    "gift_of_rays": 1
    },
    "kind": "advanced_craft"
   },
@@ -8208,7 +8193,7 @@
     }
    ],
    "qty": {
-    "endless_summer": 1
+    "gift_of_rays": 1
    },
    "kind": "advanced_craft"
   },
@@ -8406,7 +8391,7 @@
     }
    ],
    "qty": {
-    "orrax_manifested": 100
+    "gift_of_the_mistburned_isles": 100
    },
    "kind": "acquire"
   },
@@ -8430,7 +8415,7 @@
     }
    ],
    "qty": {
-    "orrax_manifested": 100
+    "gift_of_the_mistburned_isles": 100
    },
    "kind": "acquire"
   },
@@ -8461,7 +8446,7 @@
     }
    ],
    "qty": {
-    "orrax_manifested": 150
+    "gift_of_the_mistburned_isles": 150
    },
    "kind": "craftable",
    "best": "vendor",
@@ -9058,7 +9043,7 @@
     "gift_of_relics"
    ],
    "qty": {
-    "legendary_relic__per_unit": 25
+    "gift_of_relics": 25
    },
    "farmable": true,
    "recipe": "MF : 1× Relique (exotique, n'importe laquelle) + 750× Pile of Lucent Crystal — output 1-5 (chance rare ×5)",
@@ -9426,8 +9411,8 @@
     "gift_of_the_mists"
    ],
    "qty": {
-    "obsidian__per_piece": 1,
-    "gift_of_the_mists": 1
+    "gift_of_the_mists": 1,
+    "gift_of_expertise": 1
    },
    "farmable": true,
    "recipe": {
@@ -9471,7 +9456,7 @@
     "gift_of_stormy_skies"
    ],
    "qty": {
-    "obsidian__per_piece": 1
+    "gift_of_stormy_skies": 1
    },
    "farmable": true,
    "recipe": "MF : Gift of Skywatch Archipelago + Gift of Amnytas + Gift of Inner Nayos + Gift of Persistence",
@@ -9500,7 +9485,7 @@
     "gift_of_stormy_skies"
    ],
    "qty": {
-    "obsidian__per_piece": 5
+    "gift_of_stormy_skies": 5
    },
    "farmable": true,
    "sources": [
@@ -9519,7 +9504,7 @@
     "gift_of_stormy_skies"
    ],
    "qty": {
-    "obsidian__per_piece": 5
+    "gift_of_stormy_skies": 5
    },
    "farmable": true,
    "sources": [
@@ -9538,7 +9523,7 @@
     "gift_of_stormy_skies"
    ],
    "qty": {
-    "obsidian__per_piece": 5
+    "gift_of_stormy_skies": 5
    },
    "farmable": true,
    "sources": [
@@ -9576,7 +9561,7 @@
     "gift_of_runes"
    ],
    "qty": {
-    "legendary_rune__per_unit": 50
+    "gift_of_runes": 50
    },
    "farmable": true,
    "recipe": "Craft 75 (Armorsmith/Leatherworker/Tailor) : 10× Pile of Lucent Crystal + 1× Charm of Brilliance + 1× Charm of Potence + 1× Charm of Skill",
@@ -9602,7 +9587,7 @@
     "gift_of_sigils"
    ],
    "qty": {
-    "legendary_sigil__per_unit": 75
+    "gift_of_sigils": 75
    },
    "farmable": true,
    "recipe": "Craft 75 (Artificer/Huntsman/Weaponsmith) : 10× Pile of Lucent Crystal + 1× Symbol of Control + 1× Symbol of Enhancement + 1× Symbol of Pain",

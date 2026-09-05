@@ -242,6 +242,45 @@ Seules les corrections sans ambiguite ni effet de bord :
   le contenu n'est structure nulle part.
 
 
+## E — v205 : premier depliage, 17 aretes
+
+Regle appliquee : **tout ou rien par composant**. Une arete n'est depliee que si
+le parent couvre TOUTES les cles a plat du composant. Un depliage partiel
+laisserait le composant compte en direct sur certains legendaires et par la
+cascade sur d'autres — deux comptages paralleles dans la meme entree, exactement
+ce qu'on cherche a supprimer. Le controle `check_qty_levels` de l'audit l'a
+confirme en levant l'alerte sur un premier jet partiel (`crystalline_ingot_gen2`
+et `gift_of_cantha` atteints a la fois en direct et par le don).
+
+Controle de neutralite : les totaux de chaque cible ont ete recalcules avant et
+apres, cascade comprise, suffixes `__per_piece` / `__onetime` / `__per_unit` /
+`__full_set` compris. **Zero ecart.** Un depliage correct ne change aucun
+chiffre affiche ; il remplace une valeur en dur par un produit.
+
+Les 17 : `gift_of_cantha -> gift_of_jade_mastery` 1 (16 cles retirees),
+`fractal_relic -> gift_of_ascension_fractal` 4650,
+`mystic_mote -> gift_of_sigils` 75, `mystic_aspect -> gift_of_runes` 50,
+`mystic_facet -> gift_of_relics` 25,
+`amalgamated_rift_essence -> gift_of_expertise` 12,
+les trois `-> gift_of_stormy_skies` a 5, les trois `-> gift_of_rays` a 1,
+les trois `-> gift_of_the_mistburned_isles` (100, 100, 150),
+`cube_stabilized_dark_energy -> gift_of_expertise` 1,
+`gift_of_the_astral_ward -> gift_of_stormy_skies` 1.
+
+**83 aretes restantes**, dont deux ecartees pour arbitrage plutot que par manque
+de donnee :
+
+- `legendary_spike -> gift_of_conquering` : le pic est a plat sur Warbringer
+  seul, alors que le don sert aussi a Conflux. Deplier donnerait a Conflux un
+  pic qu'il ne porte pas — probablement la bonne valeur, mais c'est une
+  correction, pas un depliage neutre. Le controle l'a arretee.
+- `xunlai_electrum_ingot -> spark_of_sentience` : rapport nul, parce que le
+  composant porte `aurora: 0`. Un zero en dur n'est pas une quantite.
+
+Les pages a capturer pour la suite sont listees dans
+`PAGES_A_CAPTURER_ARBRE_CRAFT.md`.
+
+
 ## Suite
 
 1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des
