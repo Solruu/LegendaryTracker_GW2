@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v213",
+    "version": "v214",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5244,11 +5244,12 @@ const SOURCES_DB = {
       ]
     },
     "ascended_shard_of_glory": {
-      "name": "Ascended Shard of Glory",
-      "apiId": 69085,
+      "name": "Ascended Shards of Glory",
+      "apiId": 33,
       "needed_for": [
         "armor_pvp",
-        "mist_band_infused"
+        "mist_band_infused",
+        "transcendence"
       ],
       "qty": {
         "ardent_glorious__per_piece": 1000,
@@ -5266,9 +5267,43 @@ const SOURCES_DB = {
           },
           "free_repeatable": true,
           "cadence": "à volonté"
+        },
+        {
+          "type": "pvp_league",
+          "tip": {
+            "fr": "Coffres de fin de palier des ligues PvP. Une saison complète rend 400 sur ses paliers non répétables : Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. Le palier Byzantium est ensuite RÉPÉTABLE à 100 l'unité — c'est là que se fait le volume.",
+            "en": "End-of-tier chests in PvP leagues. A full season yields 400 across its non-repeatable tiers: Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. The Byzantium tier is then REPEATABLE at 100 each — that is where the volume comes from."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Coffer of Ascended Shards of Glory : 50 garantis. Les mini-saisons 2v2 et 3v3 ont leur propre grille de paliers.",
+            "en": "Coffer of Ascended Shards of Glory: 50 guaranteed. The 2v2 and 3v3 mini-seasons have their own tier tables."
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-08-25",
+          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
         }
       ],
-      "kind": "acquire"
+      "kind": "currency",
+      "apiIdNote": {
+        "fr": "Identifiant de MONNAIE (portefeuille), pas d'objet : la page wiki ne porte ni lien API ni gamelink. L'ancien 69085 n'etait atteste nulle part.",
+        "en": null
+      },
+      "verified": true,
+      "checked": "2026-08-25",
+      "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)",
+      "timegate": true,
+      "note": {
+        "fr": "⏳ 900 pour Transcendence, et AUCUNE voie hors PvP structuré : ni Comptoir, ni craft, ni conversion. Une saison complète rend 400 sur ses paliers non répétables, donc il faut soit plus de deux saisons, soit farmer le palier Byzantium répétable à 100 l'unité. C'est le poste le plus fermé du fichier — tout le reste de Transcendence peut avancer en parallèle, celui-ci ne dépend que du calendrier des ligues.",
+        "en": "⏳ 900 for Transcendence, and NO route outside structured PvP: no Trading Post, no crafting, no conversion. A full season yields 400 across its non-repeatable tiers, so it takes either more than two seasons or farming the repeatable Byzantium tier at 100 each. The most closed line in the file — everything else in Transcendence can progress in parallel, this one only follows the league calendar."
+      }
     },
     "shard_of_glory": {
       "name": "Shard of Glory",
@@ -16091,49 +16126,6 @@ const SOURCES_DB = {
         "en": "⏳ 7 million karma for Stella Radians' 200. No cap, so no timegate — but a karma wall worth seeing coming. Karma boosters and daily hearts become the real lever."
       },
       "apiId": 109666
-    },
-    "ascended_shards_of_glory": {
-      "name": "Ascended Shards of Glory",
-      "kind": "acquire",
-      "farmable": true,
-      "qty": {
-        "transcendence": 900
-      },
-      "sources": [
-        {
-          "type": "pvp_league",
-          "tip": {
-            "fr": "Coffres de fin de palier des ligues PvP. Une saison complète rend 400 sur ses paliers non répétables : Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. Le palier Byzantium est ensuite RÉPÉTABLE à 100 l'unité — c'est là que se fait le volume.",
-            "en": "End-of-tier chests in PvP leagues. A full season yields 400 across its non-repeatable tiers: Cerulean 25, Jasper 50, Saffron 75, Persimmon 75, Amaranth 75, Byzantium 100. The Byzantium tier is then REPEATABLE at 100 each — that is where the volume comes from."
-          },
-          "free_repeatable": true,
-          "verified": true,
-          "checked": "2026-08-25",
-          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
-        },
-        {
-          "type": "chest",
-          "tip": {
-            "fr": "Coffer of Ascended Shards of Glory : 50 garantis. Les mini-saisons 2v2 et 3v3 ont leur propre grille de paliers.",
-            "en": "Coffer of Ascended Shards of Glory: 50 guaranteed. The 2v2 and 3v3 mini-seasons have their own tier tables."
-          },
-          "free_repeatable": true,
-          "verified": true,
-          "checked": "2026-08-25",
-          "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)"
-        }
-      ],
-      "verified": true,
-      "checked": "2026-08-25",
-      "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)",
-      "needed_for": [
-        "transcendence"
-      ],
-      "timegate": true,
-      "note": {
-        "fr": "⏳ 900 pour Transcendence, et AUCUNE voie hors PvP structuré : ni Comptoir, ni craft, ni conversion. Une saison complète rend 400 sur ses paliers non répétables, donc il faut soit plus de deux saisons, soit farmer le palier Byzantium répétable à 100 l'unité. C'est le poste le plus fermé du fichier — tout le reste de Transcendence peut avancer en parallèle, celui-ci ne dépend que du calendrier des ligues.",
-        "en": "⏳ 900 for Transcendence, and NO route outside structured PvP: no Trading Post, no crafting, no conversion. A full season yields 400 across its non-repeatable tiers, so it takes either more than two seasons or farming the repeatable Byzantium tier at 100 each. The most closed line in the file — everything else in Transcendence can progress in parallel, this one only follows the league calendar."
-      }
     },
     "lump_of_mithrillium": {
       "name": "Lump of Mithrillium",

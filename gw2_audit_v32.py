@@ -19,7 +19,7 @@ doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
 l'entite qui la porte via cadence_ref. Ce script echoue sinon.
 
 Usage :
-    python3 gw2_audit_v31.py gw2_sources_v213.json
+    python3 gw2_audit_v32.py gw2_sources_v214.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
@@ -1446,6 +1446,9 @@ def check_api_id_unique(data, errors, warnings):
     Ce controle est arrive apres coup : il aurait attrape les quatre doublons
     d'un coup, sans qu'il faille les decouvrir un par un en rapprochant des noms.
     """
+    # Les identifiants de MONNAIE et d'OBJET vivent dans deux espaces separes :
+    # 26 designe la monnaie « WvW Skirmish Claim Ticket » et, cote objets, tout
+    # autre chose. Comparer les deux ensemble inventerait des collisions.
     cc = data.get("craft_components", {})
     par = {}
     for cid, comp in sorted(cc.items()):
@@ -1453,11 +1456,11 @@ def check_api_id_unique(data, errors, warnings):
             continue
         ident = comp.get("apiId") or comp.get("apiId_fix")
         if isinstance(ident, int):
-            par.setdefault(ident, []).append(cid)
-    for ident, liste in sorted(par.items()):
+            par.setdefault((comp.get("kind") == "currency", ident), []).append(cid)
+    for (monnaie, ident), liste in sorted(par.items()):
         if len(liste) > 1:
             errors.append(
-                f"apiId {ident} porte par {len(liste)} composants : "
+                f"apiId {'monnaie ' if monnaie else ''}{ident} porte par {len(liste)} composants : "
                 + ", ".join(liste)
                 + " — deux entrees pour un meme objet, le cout est compte deux fois"
             )
@@ -1466,7 +1469,13 @@ def check_api_id_unique(data, errors, warnings):
 def check_nom_pluriel_double(data, errors, warnings):
     """Deux composants dont les noms ne different que par des « s ».
 
-    Aucun nom d'objet de Guild Wars 2 n'est au pluriel. Quatre entrees fictives
+    Aucun nom d'OBJET de Guild Wars 2 n'est au pluriel — mais les MONNAIES du
+    portefeuille le sont : l'API nomme la 33 « Ascended Shards of Glory ». Le
+    doublon singulier/pluriel peut donc opposer un objet invente a un vrai
+    objet, ou une monnaie legitime a un objet homonyme. D'ou l'avertissement
+    plutot que l'erreur.
+
+    Quatre entrees fictives
     ont pourtant vecu dans la base sous cette forme — Shards of Lowland Shore,
     Shards of Janthir Syntri, Shards of Mistburned Barrens, Shards of Bava
     Nisos — chacune doublant le cout de son singulier. Leurs apiId designaient
