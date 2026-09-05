@@ -64,11 +64,21 @@ def recettes(html):
         m = INGR.search(bloc)
         if not m:
             continue
-        ing = []
+        # Un ingredient peut apparaitre sur DEUX lignes de la meme recette :
+        # Gift of Research demande 250 Hydrocatalytic Reagent deux fois, soit
+        # 500. Prendre le maximum au lieu de la somme aurait divise ce cout par
+        # deux ; la table du vendeur, qui annonce 500, l'a confirme.
+        cumul = {}
+        ordre = []
         for qte, corps in PAIRE.findall(m.group(1)):
             lien = LIEN.search(ICONE.sub("", corps))
-            if lien:
-                ing.append((lien.group(1), int(qte.replace(",", ""))))
+            if not lien:
+                continue
+            cible = lien.group(1)
+            if cible not in cumul:
+                ordre.append(cible)
+            cumul[cible] = cumul.get(cible, 0) + int(qte.replace(",", ""))
+        ing = [(c, cumul[c]) for c in ordre]
         if not ing:
             continue
         champs = {k.strip(): _texte(v) for k, v in CHAMP.findall(bloc)}
