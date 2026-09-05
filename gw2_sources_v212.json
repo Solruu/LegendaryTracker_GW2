@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v211",
+  "version": "v212",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -8460,61 +8460,6 @@
    "story_gate": "Salvation's Cost (JW story step)",
    "kind": "precursor"
   },
-  "shards_of_lowland_shore": {
-   "name": "Shards of Lowland Shore",
-   "apiId": 102100,
-   "needed_for": [
-    "gift_of_gatherer_of_the_hunt"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "map_currency",
-     "map": "Lowland Shore (JW)",
-     "tip": {
-      "fr": "Events, coffres, hearts. 7/heart/semaine chez les vendeurs de hearts de Lowland Shore (prix réduit après complétion).",
-      "en": "Events, chests, hearts. 7/heart/week from Lowland Shore heart vendors (reduced price after completion)."
-     },
-     "free_repeatable": true,
-     "cadence": "à volonté"
-    },
-    {
-     "type": "tp",
-     "tip": "Buy on TP."
-    }
-   ],
-   "qty": {
-    "klobjarne_geirr": 500
-   },
-   "kind": "acquire",
-   "best": "map_currency"
-  },
-  "shards_of_janthir_syntri": {
-   "name": "Shards of Janthir Syntri",
-   "apiId": 102101,
-   "needed_for": [
-    "gift_of_uncovered_grounds"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "map_currency",
-     "map": "Janthir Syntri (JW)",
-     "tip": "Events, chests, hearts. 7/heart/semaine chez vendors heart Janthir Syntri.",
-     "free_repeatable": true,
-     "cadence": "à volonté"
-    },
-    {
-     "type": "tp",
-     "tip": "Buy on TP."
-    }
-   ],
-   "qty": {
-    "klobjarne_geirr": 500
-   },
-   "kind": "acquire",
-   "best": "map_currency"
-  },
   "gift_of_gatherer_of_the_hunt": {
    "name": "Gift of Gatherer of the Hunt",
    "apiId": 102515,
@@ -8577,7 +8522,6 @@
   },
   "gift_of_the_homesteader": {
    "name": "Gift of the Homesteader",
-   "apiId": 102515,
    "needed_for": [
     "klobjarne_geirr"
    ],
@@ -8594,7 +8538,11 @@
    "qty": {
     "klobjarne_geirr": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "apiIdNote": {
+    "fr": "Identifiant a verifier : 102515 appartient a Gift of Gatherer of the Hunt, doublement atteste sur sa page wiki. Aucune page pour le Homesteader.",
+    "en": null
+   }
   },
   "gift_of_klobjarne_geirr": {
    "name": "Gift of Klobjarne Geirr",
@@ -14461,7 +14409,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "klobjarne_geirr": 100
+    "gift_of_gatherer_of_the_hunt": 100
    },
    "sources": [
     {
@@ -14492,13 +14440,27 @@
      "verified": true,
      "checked": "2026-08-25",
      "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "map_currency",
+     "map": "Lowland Shore (JW)",
+     "tip": {
+      "fr": "Events, coffres, hearts. 7/heart/semaine chez les vendeurs de hearts de Lowland Shore (prix réduit après complétion).",
+      "en": "Events, chests, hearts. 7/heart/week from Lowland Shore heart vendors (reduced price after completion)."
+     },
+     "free_repeatable": true,
+     "cadence": "à volonté"
+    },
+    {
+     "type": "tp",
+     "tip": "Buy on TP."
     }
    ],
    "verified": true,
    "checked": "2026-08-25",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
-    "klobjarne_geirr"
+    "gift_of_gatherer_of_the_hunt"
    ],
    "cadence": {
     "sources": [
@@ -14520,7 +14482,8 @@
     ]
    },
    "timegate": true,
-   "apiId": 102569
+   "apiId": 102569,
+   "best": "map_currency"
   },
   "discounted_shard_of_lowland_shore": {
    "name": "Discounted Shard of Lowland Shore",
@@ -14554,7 +14517,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "klobjarne_geirr": 100
+    "gift_of_gatherer_of_the_hunt": 100
    },
    "sources": [
     {
@@ -14585,13 +14548,24 @@
      "verified": true,
      "checked": "2026-08-25",
      "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)"
+    },
+    {
+     "type": "map_currency",
+     "map": "Janthir Syntri (JW)",
+     "tip": "Events, chests, hearts. 7/heart/semaine chez vendors heart Janthir Syntri.",
+     "free_repeatable": true,
+     "cadence": "à volonté"
+    },
+    {
+     "type": "tp",
+     "tip": "Buy on TP."
     }
    ],
    "verified": true,
    "checked": "2026-08-25",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
-    "klobjarne_geirr"
+    "gift_of_gatherer_of_the_hunt"
    ],
    "cadence": {
     "sources": [
@@ -14613,7 +14587,8 @@
     ]
    },
    "timegate": true,
-   "apiId": 103316
+   "apiId": 103316,
+   "best": "map_currency"
   },
   "discounted_shard_of_janthir_syntri": {
    "name": "Discounted Shard of Janthir Syntri",

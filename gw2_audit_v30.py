@@ -19,7 +19,7 @@ doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
 l'entite qui la porte via cadence_ref. Ce script echoue sinon.
 
 Usage :
-    python3 gw2_audit_v29.py gw2_sources_v203.json
+    python3 gw2_audit_v30.py gw2_sources_v212.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
@@ -1434,6 +1434,35 @@ def check_needed_for_chiffre(data, errors, warnings):
         )
 
 
+def check_api_id_unique(data, errors, warnings):
+    """Deux composants ne peuvent pas porter le meme apiId.
+
+    Un apiId identifie un objet du jeu. Deux entrees qui le partagent decrivent
+    donc le meme objet, et l'onglet affiche deux lignes de meme nom dont les
+    couts s'additionnent. C'est exactement ce qui faisait annoncer 3700 tickets
+    d'escarmouche a Conflux au lieu de 1850, et 600 eclats a Klobjarne au lieu
+    de 100.
+
+    Ce controle est arrive apres coup : il aurait attrape les quatre doublons
+    d'un coup, sans qu'il faille les decouvrir un par un en rapprochant des noms.
+    """
+    cc = data.get("craft_components", {})
+    par = {}
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        ident = comp.get("apiId") or comp.get("apiId_fix")
+        if isinstance(ident, int):
+            par.setdefault(ident, []).append(cid)
+    for ident, liste in sorted(par.items()):
+        if len(liste) > 1:
+            errors.append(
+                f"apiId {ident} porte par {len(liste)} composants : "
+                + ", ".join(liste)
+                + " — deux entrees pour un meme objet, le cout est compte deux fois"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1536,6 +1565,9 @@ def main() -> int:
 
     # 30. Chaque arete de l'arbre de craft porte sa quantite
     check_needed_for_chiffre(data, errors, warnings)
+
+    # 31. Un apiId = un objet = un composant
+    check_api_id_unique(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
