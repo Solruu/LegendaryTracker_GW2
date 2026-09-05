@@ -19,7 +19,7 @@ doit donc exister sous forme structuree dans cadence.sources[], ou pointer vers
 l'entite qui la porte via cadence_ref. Ce script echoue sinon.
 
 Usage :
-    python3 gw2_audit_v30.py gw2_sources_v212.json
+    python3 gw2_audit_v31.py gw2_sources_v213.json
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
@@ -1463,6 +1463,42 @@ def check_api_id_unique(data, errors, warnings):
             )
 
 
+def check_nom_pluriel_double(data, errors, warnings):
+    """Deux composants dont les noms ne different que par des « s ».
+
+    Aucun nom d'objet de Guild Wars 2 n'est au pluriel. Quatre entrees fictives
+    ont pourtant vecu dans la base sous cette forme — Shards of Lowland Shore,
+    Shards of Janthir Syntri, Shards of Mistburned Barrens, Shards of Bava
+    Nisos — chacune doublant le cout de son singulier. Leurs apiId designaient
+    une cape, un sceptre, un gizmo et un skin d'arc long.
+
+    check_api_id_unique ne les attrape pas : elles portaient des identifiants
+    differents, faux mais distincts. Le nom est ici le seul signal. La regle
+    compare des formes ou tous les « s » ont saute, ce qui rapproche aussi
+    « Curious Mursaat Remnant » et « Curious Mursaat Remnants » — un vrai
+    couple, l'un etant le conteneur de l'autre. C'est donc un avertissement, a
+    lever au cas par cas contre /v2/items.
+    """
+    cc = data.get("craft_components", {})
+    familles = {}
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        n = comp.get("name")
+        n = (n.get("en") or n.get("fr")) if isinstance(n, dict) else n
+        if not isinstance(n, str):
+            continue
+        cle = re.sub(r"[^a-z0-9]", "", n.lower()).replace("s", "")
+        familles.setdefault(cle, []).append((cid, n))
+    for cle, liste in sorted(familles.items()):
+        if len(liste) > 1:
+            warnings.append(
+                "noms ne differant que par des « s » : "
+                + ", ".join(f"{cid} ({n})" for cid, n in liste)
+                + " — a verifier contre /v2/items, aucun objet GW2 n'a de nom au pluriel"
+            )
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1568,6 +1604,9 @@ def main() -> int:
 
     # 31. Un apiId = un objet = un composant
     check_api_id_unique(data, errors, warnings)
+
+    # 32. Un nom au pluriel face a son singulier est presque toujours une invention
+    check_nom_pluriel_double(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v212",
+    "version": "v213",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -9050,54 +9050,6 @@ const SOURCES_DB = {
       "qty": {},
       "kind": "acquire"
     },
-    "shards_of_mistburned_barrens": {
-      "name": "Shards of Mistburned Barrens",
-      "apiId": 103200,
-      "needed_for": [
-        "gift_of_the_mistburned_isles"
-      ],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "map_currency",
-          "map": "Mistburned Barrens (JW)",
-          "tip": {
-            "fr": "Currency Mistburned Barrens — events, chests, meta. Échangeable 5:1 avec Shards of Bava Nisos.",
-            "en": "Mistburned Barrens currency - events, chests, meta. Exchangeable 5:1 with Shards of Bava Nisos."
-          },
-          "free_repeatable": true,
-          "cadence": "à volonté"
-        }
-      ],
-      "qty": {
-        "gift_of_the_mistburned_isles": 100
-      },
-      "kind": "acquire"
-    },
-    "shards_of_bava_nisos": {
-      "name": "Shards of Bava Nisos",
-      "apiId": 104801,
-      "needed_for": [
-        "gift_of_the_mistburned_isles"
-      ],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "map_currency",
-          "map": "Bava Nisos (JW)",
-          "tip": {
-            "fr": "Currency Bava Nisos — events, chests, meta A Titanic Voyage. Échangeable 5:1 avec Shards of Mistburned Barrens chez vendors JW.",
-            "en": "Bava Nisos currency - events, chests, A Titanic Voyage meta. Exchangeable 5:1 with Shards of Mistburned Barrens at JW vendors."
-          },
-          "free_repeatable": true,
-          "cadence": "à volonté"
-        }
-      ],
-      "qty": {
-        "gift_of_the_mistburned_isles": 100
-      },
-      "kind": "acquire"
-    },
     "vial_of_titan_melted_obsidian": {
       "name": "Vial of Titan Melted Liquid Obsidian",
       "apiId": 104229,
@@ -15701,7 +15653,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "orrax_manifested": 100
+        "gift_of_the_mistburned_isles": 100
       },
       "sources": [
         {
@@ -15722,13 +15674,23 @@ const SOURCES_DB = {
             "per": "vendeur"
           },
           "paid_repeatable_ref": "wiki, section Acquisition — captures recuperees le 27/08/2026"
+        },
+        {
+          "type": "map_currency",
+          "map": "Mistburned Barrens (JW)",
+          "tip": {
+            "fr": "Currency Mistburned Barrens — events, chests, meta. Échangeable 5:1 avec Shards of Bava Nisos.",
+            "en": "Mistburned Barrens currency - events, chests, meta. Exchangeable 5:1 with Shards of Bava Nisos."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "verified": true,
       "checked": "2026-08-26",
       "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
       "needed_for": [
-        "orrax_manifested"
+        "gift_of_the_mistburned_isles"
       ],
       "note": {
         "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
@@ -15790,7 +15752,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "orrax_manifested": 100
+        "gift_of_the_mistburned_isles": 100
       },
       "sources": [
         {
@@ -15810,13 +15772,23 @@ const SOURCES_DB = {
             "n": 20,
             "period": "week"
           }
+        },
+        {
+          "type": "map_currency",
+          "map": "Bava Nisos (JW)",
+          "tip": {
+            "fr": "Currency Bava Nisos — events, chests, meta A Titanic Voyage. Échangeable 5:1 avec Shards of Mistburned Barrens chez vendors JW.",
+            "en": "Bava Nisos currency - events, chests, A Titanic Voyage meta. Exchangeable 5:1 with Shards of Mistburned Barrens at JW vendors."
+          },
+          "free_repeatable": true,
+          "cadence": "à volonté"
         }
       ],
       "verified": true,
       "checked": "2026-08-26",
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
-        "orrax_manifested"
+        "gift_of_the_mistburned_isles"
       ],
       "cadence": {
         "sources": [
