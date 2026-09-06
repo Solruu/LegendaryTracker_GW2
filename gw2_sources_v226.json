@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v223",
-  "last_updated": "2026-09-05",
+  "version": "v226",
+  "last_updated": "2026-09-06",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -2375,9 +2375,7 @@
    "qty": {
     "cube_stabilized_dark_energy": 75,
     "ad_infinitum": 600,
-    "aetheric_anchor": 75,
     "klobjarne_geirr": 150,
-    "strife_unending": 150,
     "transcendence": 95
    },
    "farmable": true,
@@ -2413,27 +2411,6 @@
     }
    ],
    "qty": {
-    "gen1_frostfang": 1,
-    "gen1_incinerator": 1,
-    "gen1_the_moot": 1,
-    "gen1_quip": 1,
-    "gen1_meteorlogicus": 1,
-    "gen1_bolt": 1,
-    "gen1_the_minstrel": 1,
-    "gen1_the_flameseeker_prophecies": 1,
-    "gen1_rodgort": 1,
-    "gen1_howler": 1,
-    "gen1_sunrise": 1,
-    "gen1_twilight": 1,
-    "gen1_eternity": 1,
-    "gen1_the_juggernaut": 1,
-    "gen1_frenzy": 1,
-    "gen1_kamohoalii_kotaki": 1,
-    "gen1_kudzu": 1,
-    "gen1_the_dreamer": 1,
-    "gen1_the_bifrost": 1,
-    "gen1_kraitkin": 1,
-    "gen1_the_predator": 1,
     "gen2_tigris": 1,
     "gen2_caladbolg": 1,
     "gen2_eordas_grip": 1,
@@ -2450,7 +2427,8 @@
     "the_ascension": 1,
     "ad_infinitum": 1,
     "gift_of_conquering": 4,
-    "gift_of_the_mists": 1
+    "gift_of_the_mists": 1,
+    "gift_of_mastery": 1
    },
    "kind": "advanced_craft"
   },
@@ -2511,8 +2489,10 @@
    "apiId": 20797,
    "needed_for": [
     "gift_of_arid_mastery",
+    "gift_of_castoran_mastery",
     "gift_of_desert_mastery",
     "gift_of_draconic_mastery",
+    "gift_of_janthir_wilds",
     "gift_of_mastery"
    ],
    "farmable": false,
@@ -2529,27 +2509,6 @@
     }
    ],
    "qty": {
-    "gen1_frostfang": 1,
-    "gen1_incinerator": 1,
-    "gen1_the_moot": 1,
-    "gen1_quip": 1,
-    "gen1_meteorlogicus": 1,
-    "gen1_bolt": 1,
-    "gen1_the_minstrel": 1,
-    "gen1_the_flameseeker_prophecies": 1,
-    "gen1_rodgort": 1,
-    "gen1_howler": 1,
-    "gen1_sunrise": 1,
-    "gen1_twilight": 1,
-    "gen1_eternity": 1,
-    "gen1_the_juggernaut": 1,
-    "gen1_frenzy": 1,
-    "gen1_kamohoalii_kotaki": 1,
-    "gen1_kudzu": 1,
-    "gen1_the_dreamer": 1,
-    "gen1_the_bifrost": 1,
-    "gen1_kraitkin": 1,
-    "gen1_the_predator": 1,
     "gen2_astralaria": 1,
     "gen2_hope": 1,
     "gen2_nevermore": 1,
@@ -2584,11 +2543,12 @@
     "gen3_aurenes_tenderness": 1,
     "the_ascension": 1,
     "ad_infinitum": 1,
-    "klobjarne_geirr": 1,
-    "selachimorpha": 1,
     "gift_of_arid_mastery": 1,
     "gift_of_desert_mastery": 1,
-    "gift_of_draconic_mastery": 1
+    "gift_of_draconic_mastery": 1,
+    "gift_of_castoran_mastery": 1,
+    "gift_of_janthir_wilds": 1,
+    "gift_of_mastery": 1
    },
    "kind": "acquire",
    "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026.",
@@ -4026,14 +3986,12 @@
    ],
    "qty": {
     "triumphant_hero__per_piece": 200,
-    "strife_unending": 500,
     "essence_of_carnage": 500,
     "mist_pearl": 250,
     "mist_enhanced_mithril": 250,
     "gift_of_war": 250,
     "gift_of_war_dedication": 250,
-    "gift_of_conquering": 250,
-    "aetheric_anchor": 250
+    "gift_of_conquering": 250
    },
    "farmable": true,
    "sources": [
@@ -4250,12 +4208,14 @@
    "name": "Emblem of the Conqueror",
    "apiId": 93146,
    "needed_for": [
+    "gift_of_the_mistwalker",
     "war_commendation",
     "warbringer"
    ],
    "qty": {
     "conflux": 100,
-    "warbringer": 100
+    "warbringer": 100,
+    "gift_of_the_mistwalker": 2
    },
    "farmable": true,
    "sources": [
@@ -4415,9 +4375,12 @@
    "name": "Mist Band (Infused)",
    "apiId": 80058,
    "needed_for": [
+    "conflux",
     "conflux_final"
    ],
-   "qty": {},
+   "qty": {
+    "conflux": 1
+   },
    "farmable": true,
    "sources": [
     {
@@ -4624,7 +4587,8 @@
    "apiId": 70,
    "kind": "currency",
    "qty": {
-    "coalescence": 150
+    "coalescence": 150,
+    "gift_of_prowess": 25
    },
    "farmable": true,
    "sources": [
@@ -4663,7 +4627,10 @@
       "ref": "wiki:Legendary_Insight (page du 22/02/2026, après l'unification raids/strikes)"
      }
     ]
-   }
+   },
+   "needed_for": [
+    "gift_of_prowess"
+   ]
   },
   "magnetite_shard": {
    "name": "Magnetite Shard",
@@ -4960,27 +4927,6 @@
     "transcendence"
    ],
    "qty": {
-    "gen1_frostfang": 250,
-    "gen1_incinerator": 250,
-    "gen1_the_moot": 250,
-    "gen1_quip": 250,
-    "gen1_meteorlogicus": 250,
-    "gen1_bolt": 250,
-    "gen1_the_minstrel": 250,
-    "gen1_the_flameseeker_prophecies": 250,
-    "gen1_rodgort": 250,
-    "gen1_howler": 250,
-    "gen1_sunrise": 250,
-    "gen1_twilight": 250,
-    "gen1_eternity": 250,
-    "gen1_the_juggernaut": 250,
-    "gen1_frenzy": 250,
-    "gen1_kamohoalii_kotaki": 250,
-    "gen1_kudzu": 250,
-    "gen1_the_dreamer": 250,
-    "gen1_the_bifrost": 250,
-    "gen1_kraitkin": 250,
-    "gen1_the_predator": 250,
     "perfected_envoy__per_piece": 50,
     "the_ascension": 309,
     "ad_infinitum": 339,
@@ -4999,7 +4945,8 @@
     "stella_radians": 249,
     "strife_unending": 146,
     "transcendence": 309,
-    "fulgurite": 1
+    "fulgurite": 1,
+    "gift_of_mastery": 250
    },
    "farmable": true,
    "sources": [
@@ -5118,29 +5065,9 @@
     "gift_of_mastery"
    ],
    "qty": {
-    "gen1_frostfang": 1,
-    "gen1_incinerator": 1,
-    "gen1_the_moot": 1,
-    "gen1_quip": 1,
-    "gen1_meteorlogicus": 1,
-    "gen1_bolt": 1,
-    "gen1_the_minstrel": 1,
-    "gen1_the_flameseeker_prophecies": 1,
-    "gen1_rodgort": 1,
-    "gen1_howler": 1,
-    "gen1_sunrise": 1,
-    "gen1_twilight": 1,
-    "gen1_eternity": 1,
-    "gen1_the_juggernaut": 1,
-    "gen1_frenzy": 1,
-    "gen1_kamohoalii_kotaki": 1,
-    "gen1_kudzu": 1,
-    "gen1_the_dreamer": 1,
-    "gen1_the_bifrost": 1,
-    "gen1_kraitkin": 1,
-    "gen1_the_predator": 1,
     "the_ascension": 1,
-    "ad_infinitum": 1
+    "ad_infinitum": 1,
+    "gift_of_mastery": 1
    },
    "farmable": true,
    "sources": [
@@ -5959,27 +5886,6 @@
     }
    ],
    "qty": {
-    "gen1_frostfang": 77,
-    "gen1_incinerator": 77,
-    "gen1_the_moot": 77,
-    "gen1_quip": 77,
-    "gen1_meteorlogicus": 77,
-    "gen1_bolt": 77,
-    "gen1_the_minstrel": 77,
-    "gen1_the_flameseeker_prophecies": 77,
-    "gen1_rodgort": 77,
-    "gen1_howler": 77,
-    "gen1_sunrise": 77,
-    "gen1_twilight": 77,
-    "gen1_eternity": 77,
-    "gen1_the_juggernaut": 77,
-    "gen1_frenzy": 77,
-    "gen1_kamohoalii_kotaki": 77,
-    "gen1_kudzu": 77,
-    "gen1_the_dreamer": 77,
-    "gen1_the_bifrost": 77,
-    "gen1_kraitkin": 77,
-    "gen1_the_predator": 77,
     "gen2_astralaria": 77,
     "gen2_hope": 77,
     "gen2_nevermore": 77,
@@ -6014,8 +5920,6 @@
     "gen3_aurenes_tenderness": 77,
     "perfected_envoy__per_piece": 15,
     "transcendence": 77,
-    "the_ascension": 77,
-    "ad_infinitum": 77,
     "stella_radians": 77,
     "aetheric_anchor": 100,
     "obsidian__per_piece": 9,
@@ -6028,11 +5932,11 @@
     "vision": 77,
     "aurora": 77,
     "conflux": 77,
-    "warbringer": 77,
     "triumphant_hero__per_piece": 15,
     "ardent_glorious__per_piece": 15,
     "upgrades_combined": 300,
-    "gift_of_the_homesteader": 38
+    "gift_of_the_homesteader": 38,
+    "gift_of_fortune": 77
    },
    "kind": "acquire",
    "best": "vendor",
@@ -7171,14 +7075,17 @@
     "gift_of_divinity",
     "gift_of_eureka",
     "gift_of_exordium",
+    "gift_of_infused_gems",
     "gift_of_ipos",
     "gift_of_pharus",
     "gift_of_shooshadoo",
     "gift_of_the_blade",
     "gift_of_the_four_legions",
+    "gift_of_the_mistburned_isles",
     "gift_of_verdarach",
     "gift_of_xiuquatl",
     "orrax_manifested",
+    "seer_runestone",
     "stella_radians"
    ],
    "farmable": false,
@@ -7234,9 +7141,6 @@
    ],
    "qty": {
     "klobjarne_geirr": 100,
-    "endless_summer": 100,
-    "orrax_manifested": 250,
-    "stella_radians": 200,
     "gift_of_arah": 100,
     "gift_of_aurene_s_argument": 100,
     "gift_of_aurene_s_bite": 100,
@@ -7264,7 +7168,10 @@
     "gift_of_verdarach": 100,
     "gift_of_xiuquatl": 100,
     "gift_of_the_blade": 100,
-    "gift_of_the_four_legions": 100
+    "gift_of_the_four_legions": 100,
+    "gift_of_infused_gems": 100,
+    "gift_of_the_mistburned_isles": 250,
+    "seer_runestone": 1
    },
    "kind": "acquire",
    "apiId_fix": {
@@ -8022,6 +7929,7 @@
    "apiId": 24,
    "needed_for": [
     "ad_infinitum",
+    "mist_band_infused",
     "transcendence"
    ],
    "farmable": true,
@@ -8047,8 +7955,8 @@
    ],
    "qty": {
     "ad_infinitum": 140,
-    "conflux": 100,
-    "transcendence": 100
+    "transcendence": 100,
+    "mist_band_infused": 100
    },
    "kind": "acquire",
    "best": "fractals_daily",
@@ -8832,12 +8740,14 @@
    "apiId": 92687,
    "needed_for": [
     "aetheric_anchor",
-    "draconic_tribute"
+    "draconic_tribute",
+    "gift_of_insight"
    ],
    "qty": {
     "gen3__per_weapon": 5,
     "aetheric_anchor": 55,
-    "draconic_tribute": 5
+    "draconic_tribute": 5,
+    "gift_of_insight": 55
    },
    "farmable": true,
    "sources": [
@@ -9469,13 +9379,15 @@
    "apiId": 73137,
    "needed_for": [
     "gift_of_expertise",
+    "gift_of_prowess",
     "gift_of_research",
     "gift_of_the_mists"
    ],
    "qty": {
     "gift_of_the_mists": 1,
     "gift_of_expertise": 1,
-    "gift_of_research": 1
+    "gift_of_research": 1,
+    "gift_of_prowess": 1
    },
    "farmable": true,
    "recipe": {
@@ -9602,10 +9514,12 @@
    "name": "Gift of Magical / Mighty Prosperity",
    "apiId": null,
    "needed_for": [
-    "armor_obsidian_per_piece"
+    "armor_obsidian_per_piece",
+    "perfected_envoy"
    ],
    "qty": {
-    "obsidian__per_piece": 1
+    "obsidian__per_piece": 1,
+    "perfected_envoy": 1
    },
    "farmable": true,
    "recipe": "MF : 1× Gift of Craftsmanship + 9× Mystic Clover + 1× Gift of Condensed Magic (tête/épaules/torse) ou Might (gants/jambes/bottes) + 1× Gift of Research",
@@ -9686,7 +9600,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {
+    "vision": 1
+   }
   },
   "gift_of_arid_mastery": {
    "name": "Gift of Arid Mastery",
@@ -9992,7 +9908,9 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {
+    "coalescence": 1
+   }
   },
   "gift_of_patience": {
    "name": "Gift of Patience",
@@ -10010,7 +9928,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "coalescence": 1
+   },
    "apiId": 91193
   },
   "ars_goetia": {
@@ -10056,7 +9976,8 @@
    "name": "Augur's Stone",
    "apiId": 46752,
    "qty": {
-    "lesser_vision_crystal": 1
+    "lesser_vision_crystal": 1,
+    "vision_crystal": 2
    },
    "kind": "purchase",
    "farmable": true,
@@ -10071,7 +9992,8 @@
     "spirit_shard": 20
    },
    "needed_for": [
-    "lesser_vision_crystal"
+    "lesser_vision_crystal",
+    "vision_crystal"
    ],
    "sources": [
     {
@@ -10091,7 +10013,8 @@
    "name": "Dragonite Ingot",
    "apiId": 46732,
    "qty": {
-    "lesser_vision_crystal": 2
+    "lesser_vision_crystal": 2,
+    "vision_crystal": 10
    },
    "kind": "refined",
    "farmable": true,
@@ -10099,7 +10022,8 @@
    "checked": "2026-08-13",
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
-    "lesser_vision_crystal"
+    "lesser_vision_crystal",
+    "vision_crystal"
    ],
    "sources": [
     {
@@ -10119,7 +10043,8 @@
    "name": "Empyreal Star",
    "apiId": 46734,
    "qty": {
-    "lesser_vision_crystal": 2
+    "lesser_vision_crystal": 2,
+    "vision_crystal": 10
    },
    "kind": "refined",
    "farmable": true,
@@ -10127,7 +10052,8 @@
    "checked": "2026-08-13",
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
-    "lesser_vision_crystal"
+    "lesser_vision_crystal",
+    "vision_crystal"
    ],
    "sources": [
     {
@@ -10147,7 +10073,8 @@
    "name": "Bloodstone Brick",
    "apiId": 46730,
    "qty": {
-    "lesser_vision_crystal": 2
+    "lesser_vision_crystal": 2,
+    "vision_crystal": 10
    },
    "kind": "refined",
    "farmable": true,
@@ -10155,7 +10082,8 @@
    "checked": "2026-08-13",
    "ref": "wiki:Lesser_Vision_Crystal + recette 7881 (2 lingots, 2 etoiles, 2 briques, 1 pierre) — verifie 2026-08-13",
    "needed_for": [
-    "lesser_vision_crystal"
+    "lesser_vision_crystal",
+    "vision_crystal"
    ],
    "sources": [
     {
@@ -10599,8 +10527,8 @@
    "apiId": 65,
    "kind": "currency",
    "qty": {
-    "conflux": 250,
-    "warbringer": 500
+    "warbringer": 500,
+    "certificate_of_heroics": 250
    },
    "farmable": true,
    "sources": [
@@ -10619,7 +10547,10 @@
    ],
    "verified": true,
    "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
+   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "needed_for": [
+    "certificate_of_heroics"
+   ]
   },
   "testimony_of_castoran_heroics": {
    "name": "Testimony of Castoran Heroics",
@@ -13694,7 +13625,9 @@
     "gift_of_the_blade": 1,
     "gift_of_the_four_legions": 1,
     "gift_of_klobjarne_geirr": 1,
-    "gift_of_the_champion": 1
+    "gift_of_the_champion": 1,
+    "gift_of_the_elders": 1,
+    "gift_of_the_mistwalker": 2
    },
    "needed_for": [
     "gift_of_arah",
@@ -13730,7 +13663,9 @@
     "gift_of_shooshadoo",
     "gift_of_the_blade",
     "gift_of_the_champion",
+    "gift_of_the_elders",
     "gift_of_the_four_legions",
+    "gift_of_the_mistwalker",
     "gift_of_the_world",
     "gift_of_verdarach",
     "gift_of_xiuquatl"
@@ -15827,6 +15762,7 @@
    "farmable": false,
    "needed_for": [
     "funerary_incense",
+    "gift_of_draconic_mastery",
     "gift_of_maguuma_mastery"
    ],
    "qty": {
@@ -15862,7 +15798,8 @@
     "gen3_aurenes_scale": 250,
     "gen3_aurenes_wisdom": 250,
     "gen3_aurenes_breath": 250,
-    "gen3_aurenes_tenderness": 250
+    "gen3_aurenes_tenderness": 250,
+    "gift_of_draconic_mastery": 1
    },
    "verified": true,
    "checked": "2026-08-27",
@@ -17760,11 +17697,13 @@
    "qty": {
     "gift_of_color": 100,
     "gift_of_music": 100,
-    "unicorn_statue": 100
+    "unicorn_statue": 100,
+    "gift_of_rays": 250
    },
    "needed_for": [
     "gift_of_color",
     "gift_of_music",
+    "gift_of_rays",
     "unicorn_statue"
    ],
    "sources": [
@@ -18224,6 +18163,924 @@
      "tip": {
       "fr": null,
       "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
+     }
+    }
+   ]
+  },
+  "concentrated_chromatic_sap": {
+   "name": "Concentrated Chromatic Sap",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_survivors": 1
+   },
+   "needed_for": [
+    "gift_of_the_survivors"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "emblem_of_the_avenger": {
+   "name": "Emblem of the Avenger",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_mistwalker": 40
+   },
+   "needed_for": [
+    "gift_of_the_mistwalker"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "emerald_orb": {
+   "name": "Emerald Orb",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_rays": 250
+   },
+   "needed_for": [
+    "gift_of_rays"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "fractalline_dust": {
+   "name": "Fractalline Dust",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "fractalline_spark": 150
+   },
+   "needed_for": [
+    "fractalline_spark"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "fractalline_spark": {
+   "name": "Fractalline Spark",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "eikasia": 1
+   },
+   "needed_for": [
+    "eikasia"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_adventure": {
+   "name": "Gift of Adventure",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_castoran_mastery": 1
+   },
+   "needed_for": [
+    "gift_of_castoran_mastery"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_complex_emotions": {
+   "name": "Gift of Complex Emotions",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_compassion": 1
+   },
+   "needed_for": [
+    "gift_of_compassion"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_dedication": {
+   "name": "Gift of Dedication",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "perfected_envoy": 1
+   },
+   "needed_for": [
+    "perfected_envoy"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_eternity_s_garden_exploration": {
+   "name": "Gift of Eternity's Garden Exploration",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_galdra": 1
+   },
+   "needed_for": [
+    "gift_of_galdra"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_insight": {
+   "name": "Gift of Insight",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {},
+   "needed_for": [],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_magical_prosperity": {
+   "name": "Gift of Magical Prosperity",
+   "apiId": 100512,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "eikasia": 1
+   },
+   "needed_for": [
+    "eikasia"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_mighty_prosperity": {
+   "name": "Gift of Mighty Prosperity",
+   "apiId": 100933,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "eikasia": 1
+   },
+   "needed_for": [
+    "eikasia"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_prowess": {
+   "name": "Gift of Prowess",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "perfected_envoy": 1
+   },
+   "needed_for": [
+    "perfected_envoy"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_regrowth": {
+   "name": "Gift of Regrowth",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_galdra": 1
+   },
+   "needed_for": [
+    "gift_of_galdra"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_restoration": {
+   "name": "Gift of Restoration",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_shadowstones": 1
+   },
+   "needed_for": [
+    "gift_of_shadowstones"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_shipwreck_strand_exploration": {
+   "name": "Gift of Shipwreck Strand Exploration",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_survivors": 1
+   },
+   "needed_for": [
+    "gift_of_the_survivors"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_starlit_weald_exploration": {
+   "name": "Gift of Starlit Weald Exploration",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_people": 1
+   },
+   "needed_for": [
+    "gift_of_the_people"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_valor": {
+   "name": "Gift of Valor",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_sentience": 1
+   },
+   "needed_for": [
+    "gift_of_sentience"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_war_prosperity": {
+   "name": "Gift of War Prosperity",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_mist_warrior": 3
+   },
+   "needed_for": [
+    "gift_of_the_mist_warrior"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_mist_warrior": {
+   "name": "Gift of the Mist Warrior",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "strife_unending": 1
+   },
+   "needed_for": [
+    "strife_unending"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_mistwalker": {
+   "name": "Gift of the Mistwalker",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "strife_unending": 1
+   },
+   "needed_for": [
+    "strife_unending"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_pact": {
+   "name": "Gift of the Pact",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_dedication": 1
+   },
+   "needed_for": [
+    "gift_of_dedication"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_warclaw": {
+   "name": "Gift of the Warclaw",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "strife_unending": 1
+   },
+   "needed_for": [
+    "strife_unending"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "grandmaster_mark_shard": {
+   "name": "Grandmaster Mark Shard",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_mist_warrior": 50
+   },
+   "needed_for": [
+    "gift_of_the_mist_warrior"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "hymn_of_glory": {
+   "name": "Hymn of Glory",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_competitor": 1
+   },
+   "needed_for": [
+    "gift_of_the_competitor"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "mistwalker_infusion": {
+   "name": "Mistwalker Infusion",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_mistwalker": 1
+   },
+   "needed_for": [
+    "gift_of_the_mistwalker"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "monument_of_legends": {
+   "name": "Monument of Legends",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_competitor": 1
+   },
+   "needed_for": [
+    "gift_of_the_competitor"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "patron_of_the_magical_arts_plaque": {
+   "name": "Patron of the Magical Arts Plaque",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_people": 1
+   },
+   "needed_for": [
+    "gift_of_the_people"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "pile_of_recycled_siege_equipment": {
+   "name": "Pile of Recycled Siege Equipment",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_mist_warrior": 25
+   },
+   "needed_for": [
+    "gift_of_the_mist_warrior"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "preserved_eidolon_hide": {
+   "name": "Preserved Eidolon Hide",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_galdra": 1
+   },
+   "needed_for": [
+    "gift_of_galdra"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "pristine_mist_essence": {
+   "name": "Pristine Mist Essence",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "unbound": 1
+   },
+   "needed_for": [
+    "unbound"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "refined_envoy_armor": {
+   "name": "Refined Envoy armor",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "perfected_envoy": 1
+   },
+   "needed_for": [
+    "perfected_envoy"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "ruby_orb": {
+   "name": "Ruby Orb",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_rays": 250
+   },
+   "needed_for": [
+    "gift_of_rays"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "sapphire_orb": {
+   "name": "Sapphire Orb",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_rays": 250
+   },
+   "needed_for": [
+    "gift_of_rays"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "seer_wreath_of_service": {
+   "name": "Seer Wreath of Service",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_people": 1
+   },
+   "needed_for": [
+    "gift_of_the_people"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "shadowstone_containment_frame": {
+   "name": "Shadowstone Containment Frame",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_shadowstones": 1
+   },
+   "needed_for": [
+    "gift_of_shadowstones"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "shadowstone_orb": {
+   "name": "Shadowstone Orb",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_shadowstones": 1
+   },
+   "needed_for": [
+    "gift_of_shadowstones"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "shattered_gift_of_prescience": {
+   "name": "Shattered Gift of Prescience",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_prescience": 1
+   },
+   "needed_for": [
+    "gift_of_prescience"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "so_it_is_written": {
+   "name": "So It Is Written",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "vial_of_liquid_shadowstone": 1
+   },
+   "needed_for": [
+    "vial_of_liquid_shadowstone"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "solution_unbound": {
+   "name": "Solution: Unbound",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "unbound": 1
+   },
+   "needed_for": [
+    "unbound"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "survivor_s_enchanted_compass": {
+   "name": "Survivor's Enchanted Compass",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_survivors": 1
+   },
+   "needed_for": [
+    "gift_of_the_survivors"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "tapestry_of_sacrifice": {
+   "name": "Tapestry of Sacrifice",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_competitor": 1
+   },
+   "needed_for": [
+    "gift_of_the_competitor"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "the_thrill_of_battle": {
+   "name": "The Thrill of Battle",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_competitor": 1
+   },
+   "needed_for": [
+    "gift_of_the_competitor"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "third_order_mist_frame": {
+   "name": "Third Order Mist Frame",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "unbound": 1
+   },
+   "needed_for": [
+    "unbound"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "unbound": {
+   "name": "Unbound",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "ad_infinitum": 1
+   },
+   "needed_for": [
+    "ad_infinitum"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "unbound_wings": {
+   "name": "Unbound Wings",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "unbound": 1
+   },
+   "needed_for": [
+    "unbound"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
    ]

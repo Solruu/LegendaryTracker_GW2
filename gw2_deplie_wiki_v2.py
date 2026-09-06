@@ -29,7 +29,7 @@ totaux avant et apres, et refus d'ecrire au moindre ecart.
 import collections
 import json
 
-SRC, DST = "gw2_sources_v222.json", "gw2_sources_v223.json"
+SRC, DST = "gw2_sources_v224.json", "gw2_sources_v225.json"
 ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
 SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
 

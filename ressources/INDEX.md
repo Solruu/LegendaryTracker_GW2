@@ -519,6 +519,24 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `wings_of_ascension.html` | Wings of Ascension | article complet | 2026-09-05 |
 | `klobjarne_geirr.html` | Klobjarne Geirr | article complet | 2026-09-05 |
 | `transcendence.html` | Transcendence | article complet | 2026-09-05 |
+| `ad_infinitum.html` | Ad Infinitum | article complet | 2026-09-06 |
+| `aetheric_anchor.html` | Aetheric Anchor | article complet | 2026-09-06 |
+| `ardent_glorious_armor.html` | Ardent Glorious armor | article complet | 2026-09-06 |
+| `aurora.html` | Aurora | article complet | 2026-09-06 |
+| `coalescence.html` | Coalescence | article complet | 2026-09-06 |
+| `conflux.html` | Conflux | article complet | 2026-09-06 |
+| `eikasia_mists_grasper.html` | Eikasia, Mists-Grasper | article complet | 2026-09-06 |
+| `endless_summer.html` | Endless Summer | article complet | 2026-09-06 |
+| `obsidian_armor.html` | Obsidian armor | article complet | 2026-09-06 |
+| `orrax_manifested.html` | Orrax Manifested | article complet | 2026-09-06 |
+| `perfected_envoy_armor.html` | Perfected Envoy armor | article complet | 2026-09-06 |
+| `selachimorpha.html` | Selachimorpha | article complet | 2026-09-06 |
+| `stella_radians.html` | Stella Radians | article complet | 2026-09-06 |
+| `strife_unending.html` | Strife Unending | article complet | 2026-09-06 |
+| `the_ascension.html` | The Ascension | article complet | 2026-09-06 |
+| `triumphant_hero_s_armor.html` | Triumphant Hero's armor | article complet | 2026-09-06 |
+| `vision.html` | Vision | article complet | 2026-09-06 |
+| `warbringer.html` | Warbringer | article complet | 2026-09-06 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -560,6 +578,9 @@ ligne dupliquée. **446 fichiers réels, 446 lignes, aucun écart.**
 Vérification du 05/09/2026 (lot 8) : les deux pages qui bloquaient les
 arbitrages, Transcendence et Klobjarne Geirr. **448 fichiers réels, 448 lignes,
 aucun écart.**
+
+Vérification du 06/09/2026 (lot 9) : les 18 tables de colifichets, d'armures et
+de légendaires hors armes. **466 fichiers réels, 466 lignes, aucun écart.**
 
 ## Manquent encore
 

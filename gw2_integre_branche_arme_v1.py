@@ -4,7 +4,7 @@ spec=importlib.util.spec_from_file_location('m','gw2_parse_material_list_v1.py')
 M=importlib.util.module_from_spec(spec); spec.loader.exec_module(M)
 rec={r['page']:r for r in json.load(open('gw2_wiki_recipes_v1.json'))}
 
-d=json.load(open('gw2_sources_v219.json'), object_pairs_hook=collections.OrderedDict)
+d=json.load(open('gw2_sources_v223.json'), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']; legs=d['legendaries']
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 SUF=(('',1),('__per_piece',6),('__onetime',1),('__per_unit',1),('__full_set',1))
@@ -45,10 +45,32 @@ precs={norm(l.get('precursor') or '') for l in legs.values() if l.get('precursor
 BRUIT={'Miyani','Mystic_Forge','Weaponsmith','Artificer','Huntsman','Leatherworker','Armorsmith',
        'Jeweler','Tailor','Chef','Scribe','Coin','Spirit_Shard','Spirit_Shards','Karma','Laurel',
        'Legendary_Crafting','Legendary_Weapons_(achievements)','Unidentified_Dye'}
+# Les pages de categorie, de succes et les etapes de collection ne sont pas des
+# composants d'arbre : elles sont portees par collections{}. Sans ce filtre,
+# l'integration creait « Legendary Trinkets », « World vs. World Collections »
+# ou « The Thrill of Battle » comme s'il s'agissait d'objets a crafter — et
+# « Legendary Trinkets » entrait en collision avec un identifiant de legendaire.
+etapes = set()
+for _l in legs.values():
+    for _c in (_l.get('collections') or {}).values():
+        if not isinstance(_c, dict):
+            continue
+        _n = _c.get('name')
+        if isinstance(_n, dict) and _n.get('en'):
+            etapes.add(norm(_n['en']))
+        for _it in (_c.get('items') or []):
+            if isinstance(_it, dict) and _it.get('name'):
+                etapes.add(norm(_it['name']))
+
 def ecarte(t):
+    c = clean(t)
     return (t.startswith(('Recipe:','Poem_on','Tribute_to','Superior_Sigil'))
             or t.endswith('_(weapon)') or re.match(r"^Shard_(of_|o%27)", t)
-            or t in BRUIT or norm(clean(t)) in precs)
+            or t in BRUIT or norm(c) in precs
+            or t.endswith('_(achievements)') or 'Collections' in c
+            or c.startswith(('Legendary Trinkets','Legendary Armor','Legendary Backpack',
+                             'Legendary Weapons','Legendary Runes','Legendary Sigils'))
+            or norm(c) in etapes)
 
 # --- apiId depuis les pages, double attestation exigee ---
 api={}
@@ -148,5 +170,5 @@ print(f'\nlignes de total modifiees : {len(ec)} | baisses : {len(baisses)}')
 for x in baisses[:10]: print('   BAISSE',x)
 print('exemple gen1_bolt :', {k:apres['gen1_bolt'].get(k,0) for k in
       ('gift_of_bolt','gift_of_metal','icy_runestone','orichalcum_ingot','mithril_ingot','charged_lodestone')})
-d['_meta']['version']='v220'; d['_meta']['last_updated']='2026-09-05'
-json.dump(d, open('gw2_sources_v220.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
+d['_meta']['version']='v224'; d['_meta']['last_updated']='2026-09-05'
+json.dump(d, open('gw2_sources_v224.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
