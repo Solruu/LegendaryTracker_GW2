@@ -5,11 +5,16 @@
 `●` = une capture existe au dépôt mais elle ne suffit pas ; `○` = jamais capturée. Le titre est celui de l'article sur le wiki EN.
 
 
-## 1 — Plus aucune page ne bloque un chiffre
+## 1 — Deux pages manquent vraiment
 
-Transcendence et Klobjarne Geirr sont versées (lot 8). Les huit chevauchements de Transcendence sont tranchés : légitimes, sa table porte deux branches distinctes pour les mêmes trophées.
+Transcendence et Klobjarne Geirr sont versées (lot 8), et les huit chevauchements de Transcendence sont tranchés.
 
-**Ce qui bloque maintenant n'est plus une capture mais un arbitrage.** La table de Klobjarne Geirr décrit un arbre complet — Gift of the Homesteader vers les dons condensés, Gift of Klobjarne Geirr vers Gift of Research — mais l'intégrer ouvre 34 chevauchements avec les clés à plat déjà en place, dont 28 où l'arbre vaut exactement le double. Il faut décider, trophée par trophée, si la base sous-comptait ou si la table se lit autrement. Détail dans `DETTE_ARBRE_CRAFT.md`.
+| | page wiki | pourquoi |
+|---|---|---|
+| ○ | `Gift of Condensed Might` | Sa recette — 1 de chaque don de trophée — n'est dans **aucune** des 448 captures. Vérifié contre `INDEX_CONTENU.json`. Elle vient d'une capture d'écran, ce qui est une source mais pas une source rejouable. |
+| ○ | `Gift of Condensed Magic` | Même chose, par symétrie. La quantité appliquée est déduite de son jumeau, pas lue. |
+
+L'arbre de Klobjarne est intégré. Il reste huit écarts entre la clé à plat et l'arbre, tous parce que l'arbre est incomplet et non parce qu'il double : la table décrit des sous-crafts de Nyr Hrammr — 6 Deldrimor Steel Spear Heads à 30 poussières cristallines et 300 réactifs thermocatalytiques chacun, 6 Large Spiritwood Hafts — que la base ne modélise pas. Les 160 poussières à plat valent bien 100 par le Gift of Dust plus 60 par ces sous-crafts.
 
 
 ## 2 — 33 collections incomplètes

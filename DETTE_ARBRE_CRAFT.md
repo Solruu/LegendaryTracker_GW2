@@ -406,9 +406,23 @@ Homesteader ne fournit, il y manque une source.
 
 ## I — Ce qui aurait du m'eviter tout ca
 
-`mystic_tribute.html` est au depot depuis le debut. Sa boite de recette donne
-2 Gift of Condensed Magic + 2 Gift of Condensed Might + 77 Mystic Clover +
-250 Mystic Coin. Il suffisait de l'ouvrir.
+Correction du message de commit de la v220, qui affirmait que
+`mystic_tribute.html` donnait la reponse. Il ne la donne pas. Il donne la
+recette du tribut — 2 Gift of Condensed Magic + 2 Gift of Condensed Might +
+77 Mystic Clover + 250 Mystic Coin — mais pas le contenu d'un don condense.
+`INDEX_CONTENU.json` le confirme : sur 448 pages et 230 boites de recette,
+**aucune** ne produit un Gift of Condensed Might ou Magic. La page manquait
+vraiment, et la capture d'ecran etait necessaire.
+
+Ce que le depot permettait, en revanche, c'etait de DOUTER. Le tribut demande
+2 dons condenses ; les tables annoncent « 2 Gift of Bones » sous « 2 Gifts of
+Condensed Might ». Deux fois deux ne fait quatre que si le second 2 est
+unitaire, ce qu'aucune page n'affirmait. J'ai choisi la lecture qui doublait
+sans jamais chercher a la confirmer.
+
+Les deux pages sont donc ajoutees a `PAGES_A_CAPTURER.md` : la quantite est
+juste mais sa source n'est pas rejouable, et celle du Gift of Condensed Magic
+est deduite de son jumeau, pas lue.
 
 `ressources/INDEX.md` dit quelles pages on a. Il ne dit pas ce qu'elles
 CONTIENNENT. Chercher « ai-je la recette de X ? » demandait de fouiller 448
