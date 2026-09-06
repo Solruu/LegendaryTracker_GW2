@@ -4,7 +4,7 @@ spec=importlib.util.spec_from_file_location('m','gw2_parse_material_list_v1.py')
 M=importlib.util.module_from_spec(spec); spec.loader.exec_module(M)
 rec={r['page']:r for r in json.load(open('gw2_wiki_recipes_v1.json'))}
 
-d=json.load(open('gw2_sources_v215.json'), object_pairs_hook=collections.OrderedDict)
+d=json.load(open('gw2_sources_v219.json'), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']; legs=d['legendaries']
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 SUF=(('',1),('__per_piece',6),('__onetime',1),('__per_unit',1),('__full_set',1))
@@ -148,5 +148,5 @@ print(f'\nlignes de total modifiees : {len(ec)} | baisses : {len(baisses)}')
 for x in baisses[:10]: print('   BAISSE',x)
 print('exemple gen1_bolt :', {k:apres['gen1_bolt'].get(k,0) for k in
       ('gift_of_bolt','gift_of_metal','icy_runestone','orichalcum_ingot','mithril_ingot','charged_lodestone')})
-d['_meta']['version']='v216'; d['_meta']['last_updated']='2026-09-05'
-json.dump(d, open('gw2_sources_v216.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
+d['_meta']['version']='v220'; d['_meta']['last_updated']='2026-09-05'
+json.dump(d, open('gw2_sources_v220.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)

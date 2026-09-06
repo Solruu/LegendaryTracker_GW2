@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v218",
+    "version": "v220",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4822,7 +4822,6 @@ const SOURCES_DB = {
         "gift_of_war_dedication": 250,
         "gift_of_conquering": 250,
         "aetheric_anchor": 250,
-        "klobjarne_geirr": 250,
         "transcendence": 250
       },
       "farmable": true,
@@ -4894,10 +4893,12 @@ const SOURCES_DB = {
       "apiId": 46746,
       "needed_for": [
         "gift_of_conquering",
+        "gift_of_skirmishing",
         "warbringer"
       ],
       "qty": {
-        "gift_of_conquering": 2
+        "gift_of_conquering": 2,
+        "gift_of_skirmishing": 2
       },
       "farmable": true,
       "sources": [
@@ -6199,7 +6200,8 @@ const SOURCES_DB = {
         "gift_of_aurene_s_tail",
         "gift_of_aurene_s_weight",
         "gift_of_aurene_s_wing",
-        "gift_of_aurene_s_wisdom"
+        "gift_of_aurene_s_wisdom",
+        "gift_of_klobjarne_geirr"
       ],
       "qty": {
         "obsidian__per_piece": 1,
@@ -6218,7 +6220,8 @@ const SOURCES_DB = {
         "gift_of_aurene_s_tail": 1,
         "gift_of_aurene_s_weight": 1,
         "gift_of_aurene_s_wing": 1,
-        "gift_of_aurene_s_wisdom": 1
+        "gift_of_aurene_s_wisdom": 1,
+        "gift_of_klobjarne_geirr": 1
       },
       "farmable": true,
       "sources": [
@@ -6611,6 +6614,7 @@ const SOURCES_DB = {
         "armor_perfected_envoy",
         "gift_of_fortune",
         "gift_of_prosperity",
+        "gift_of_the_homesteader",
         "orrax_manifested",
         "upgrades_combined"
       ],
@@ -6804,7 +6808,8 @@ const SOURCES_DB = {
         "warbringer": 77,
         "triumphant_hero__per_piece": 15,
         "ardent_glorious__per_piece": 15,
-        "upgrades_combined": 300
+        "upgrades_combined": 300,
+        "gift_of_the_homesteader": 38
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7028,6 +7033,7 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_perfected_envoy",
         "draconic_tribute",
+        "gift_of_the_homesteader",
         "mystic_tribute"
       ],
       "farmable": true,
@@ -7052,7 +7058,8 @@ const SOURCES_DB = {
         "selachimorpha": 2,
         "obsidian__full_set": 3,
         "mystic_tribute": 2,
-        "draconic_tribute": 1
+        "draconic_tribute": 1,
+        "gift_of_the_homesteader": 1
       },
       "kind": "advanced_craft",
       "recipe": {
@@ -7073,6 +7080,7 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_perfected_envoy",
         "draconic_tribute",
+        "gift_of_the_homesteader",
         "mystic_tribute"
       ],
       "farmable": true,
@@ -7097,7 +7105,8 @@ const SOURCES_DB = {
         "selachimorpha": 2,
         "obsidian__full_set": 3,
         "mystic_tribute": 2,
-        "draconic_tribute": 1
+        "draconic_tribute": 1,
+        "gift_of_the_homesteader": 1
       },
       "kind": "advanced_craft",
       "recipe": {
@@ -11852,7 +11861,6 @@ const SOURCES_DB = {
         "gift_of_venom": 100,
         "gift_of_magic": 250,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300
       },
@@ -11924,7 +11932,6 @@ const SOURCES_DB = {
         "gift_of_might": 250,
         "mystic_essence_of_carnage": 20,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 200,
         "strife_unending": 300,
         "transcendence": 20,
@@ -12010,7 +12017,6 @@ const SOURCES_DB = {
         "gift_of_magic": 250,
         "mystic_essence_of_strategy": 20,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300,
         "transcendence": 20,
@@ -12097,7 +12103,6 @@ const SOURCES_DB = {
         "gift_of_totems": 100,
         "gift_of_magic": 250,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300
       },
@@ -12169,7 +12174,6 @@ const SOURCES_DB = {
         "gift_of_might": 250,
         "mystic_essence_of_annihilation": 20,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300,
         "transcendence": 20
@@ -12250,7 +12254,6 @@ const SOURCES_DB = {
         "gift_of_fangs": 100,
         "gift_of_might": 250,
         "endless_summer": 200,
-        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300,
         "wolf_statue": 250
@@ -12552,7 +12555,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_magic": 2
+        "gift_of_condensed_magic": 1
       },
       "needed_for": [
         "gift_of_condensed_magic"
@@ -12592,7 +12595,6 @@ const SOURCES_DB = {
         "gift_of_blood": 250,
         "mystic_essence_of_strategy": 50,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750,
         "transcendence": 50
@@ -12671,7 +12673,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_blood": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -12728,7 +12729,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_blood": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -12771,7 +12771,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_magic": 2
+        "gift_of_condensed_magic": 1
       },
       "needed_for": [
         "gift_of_condensed_magic"
@@ -12810,7 +12810,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_venom": 250,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750
       },
@@ -12879,7 +12878,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_venom": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -12936,7 +12934,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_venom": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -12979,7 +12976,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_magic": 2
+        "gift_of_condensed_magic": 1
       },
       "needed_for": [
         "gift_of_condensed_magic"
@@ -13018,7 +13015,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_totems": 250,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750
       },
@@ -13087,7 +13083,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_totems": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13144,7 +13139,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_totems": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13187,7 +13181,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_magic": 2
+        "gift_of_condensed_magic": 1
       },
       "needed_for": [
         "gift_of_condensed_magic"
@@ -13222,7 +13216,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_might": 2
+        "gift_of_condensed_might": 1
       },
       "needed_for": [
         "gift_of_condensed_might"
@@ -13262,7 +13256,6 @@ const SOURCES_DB = {
         "gift_of_claws": 250,
         "mystic_essence_of_annihilation": 50,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750,
         "transcendence": 50
@@ -13341,7 +13334,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_claws": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13398,7 +13390,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_claws": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13441,7 +13432,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_might": 2
+        "gift_of_condensed_might": 1
       },
       "needed_for": [
         "gift_of_condensed_might"
@@ -13481,7 +13472,6 @@ const SOURCES_DB = {
         "gift_of_scales": 250,
         "mystic_essence_of_carnage": 50,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 500,
         "strife_unending": 750,
         "transcendence": 50
@@ -13560,7 +13550,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_scales": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 100,
         "strife_unending": 150
       },
@@ -13617,7 +13606,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_scales": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 100,
         "strife_unending": 150
       },
@@ -13660,7 +13648,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_might": 2
+        "gift_of_condensed_might": 1
       },
       "needed_for": [
         "gift_of_condensed_might"
@@ -13879,7 +13867,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": true,
       "qty": {
-        "gift_of_condensed_might": 2
+        "gift_of_condensed_might": 1
       },
       "needed_for": [
         "gift_of_condensed_might"
@@ -13918,7 +13906,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_fangs": 250,
         "endless_summer": 500,
-        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750
       },
@@ -13987,7 +13974,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_fangs": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -14044,7 +14030,6 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_fangs": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -14476,7 +14461,9 @@ const SOURCES_DB = {
         "gift_of_verdarach": 1,
         "gift_of_xiuquatl": 1,
         "gift_of_the_blade": 1,
-        "gift_of_the_four_legions": 1
+        "gift_of_the_four_legions": 1,
+        "gift_of_klobjarne_geirr": 1,
+        "gift_of_the_champion": 1
       },
       "needed_for": [
         "gift_of_arah",
@@ -14504,12 +14491,14 @@ const SOURCES_DB = {
         "gift_of_exordium",
         "gift_of_hope",
         "gift_of_ipos",
+        "gift_of_klobjarne_geirr",
         "gift_of_nevermore",
         "gift_of_pharus",
         "gift_of_prescience",
         "gift_of_sentience",
         "gift_of_shooshadoo",
         "gift_of_the_blade",
+        "gift_of_the_champion",
         "gift_of_the_four_legions",
         "gift_of_the_world",
         "gift_of_verdarach",
@@ -18777,6 +18766,146 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "gift_of_howler"
+      ],
+      "sources": [
+        {
+          "type": "acquire",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "certificate_of_support": {
+      "name": "Certificate of Support",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "gift_of_skirmishing": 5
+      },
+      "needed_for": [
+        "gift_of_skirmishing"
+      ],
+      "sources": [
+        {
+          "type": "acquire",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "gift_of_embracing_refuge": {
+      "name": "Gift of Embracing Refuge",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "qty": {
+        "gift_of_the_homesteader": 1
+      },
+      "needed_for": [
+        "gift_of_the_homesteader"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "gift_of_recollector_of_memories": {
+      "name": "Gift of Recollector of Memories",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "qty": {
+        "gift_of_klobjarne_geirr": 1
+      },
+      "needed_for": [
+        "gift_of_klobjarne_geirr"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "gift_of_sharpened_tip": {
+      "name": "Gift of Sharpened Tip",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "qty": {
+        "nyr_hrammr": 1
+      },
+      "needed_for": [
+        "nyr_hrammr"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "perfect_mist_core": {
+      "name": "Perfect Mist Core",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "gift_of_skirmishing": 1
+      },
+      "needed_for": [
+        "gift_of_skirmishing"
+      ],
+      "sources": [
+        {
+          "type": "acquire",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "standing_stones_timepiece": {
+      "name": "Standing Stones Timepiece",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "nyr_hrammr": 1
+      },
+      "needed_for": [
+        "nyr_hrammr"
+      ],
+      "sources": [
+        {
+          "type": "acquire",
+          "tip": {
+            "fr": null,
+            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "valkyrie_bearkin_war_helm": {
+      "name": "Valkyrie Bearkin War Helm",
+      "kind": "acquire",
+      "farmable": true,
+      "qty": {
+        "nyr_hrammr": 1
+      },
+      "needed_for": [
+        "nyr_hrammr"
       ],
       "sources": [
         {

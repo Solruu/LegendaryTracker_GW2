@@ -379,6 +379,53 @@ passe) mais n'est pas versee : elle changerait 34 couts affiches sur une lecture
 incertaine.
 
 
+## H — v220 : la correction C1 etait l'erreur
+
+La boite Recipe de la page Gift of Condensed Might dit : 1 Gift of Claws,
+1 Gift of Scales, 1 Gift of Bones, 1 Gift of Fangs. Un de chaque.
+
+Ma toute premiere correction de cette serie, C1, avait mis ces huit quantites
+a 2 en lisant la table d'Eureka : « 2 Gifts of Condensed Magic » en colonne 2,
+« 2 Gift of Blood » en colonne 3. J'en avais conclu deux dons de sang PAR don
+condense. C'etait l'agregat des deux.
+
+Les quantites de la colonne 3 de ces tables sont AGREGEES sur celle de la
+colonne 2. La regle est maintenant ecrite en tete de
+`gw2_parse_material_list_v1.py`, la ou elle aurait du etre des la premiere
+lecture.
+
+Consequence : toutes les gen2 passant par un Mystic Tribute ont annonce le
+DOUBLE de leur cout en T6 pendant six versions, de la v204 a la v219. Astralaria
+redescend de 400 a 200 fioles de sang puissant.
+
+Et le blocage de la v218 se dissout : sur les 33 chevauchements que l'arbre de
+Klobjarne ouvrait, 25 etaient l'effet de ce doublement. Une fois C1 annulee,
+l'arbre reproduit exactement la cle a plat et les 25 cles partent. Il en reste
+huit, ou le plat depasse l'arbre — Klobjarne exige plus que la branche
+Homesteader ne fournit, il y manque une source.
+
+## I — Ce qui aurait du m'eviter tout ca
+
+`mystic_tribute.html` est au depot depuis le debut. Sa boite de recette donne
+2 Gift of Condensed Magic + 2 Gift of Condensed Might + 77 Mystic Clover +
+250 Mystic Coin. Il suffisait de l'ouvrir.
+
+`ressources/INDEX.md` dit quelles pages on a. Il ne dit pas ce qu'elles
+CONTIENNENT. Chercher « ai-je la recette de X ? » demandait de fouiller 448
+fichiers, ce que je n'ai pas fait : j'ai suppose, quatre fois, et declare un
+blocage a chaque fois.
+
+`gw2_index_contenu_v1.py` repond desormais a la question. Il produit
+`ressources/INDEX_CONTENU.json` : pour chaque page, l'apiId atteste, les boites
+de recette AVEC l'objet qu'elles produisent — une page en porte souvent
+plusieurs, pour des objets qui n'ont pas de page a eux — les couts vendeur et
+les aretes de la table. 230 recettes portant 191 objets distincts, la ou l'index
+des noms de fichiers n'en annoncait aucune.
+
+Il se cherche : `python3 gw2_index_contenu_v1.py "Condensed Might"` sort en une
+seconde les pages qui en parlent et ce qu'elles en disent.
+
+
 ## Suite
 
 1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des

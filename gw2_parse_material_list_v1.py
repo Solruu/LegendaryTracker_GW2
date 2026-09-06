@@ -18,6 +18,15 @@ listes d'acquisition en prose (« Lost Bandit Chests », « PvP Reward Tracks »
 on ne retient d'elle que les <dd> qui COMMENCENT par un nombre, seule forme qui
 exprime une quantite plutot qu'une provenance.
 
+PIEGE DE LECTURE, paye trois fois : les quantites de la colonne 3 sont
+AGREGEES sur celle de la colonne 2. Quand la colonne 2 dit « 2 Gift of
+Condensed Might » et la colonne 3 « 2 Gift of Bones », la recette du don
+condense demande UN Gift of Bones, pas deux — la page Gift of Condensed Might
+le dit noir sur blanc, et mystic_tribute.html aussi. Les aretes de niveau 3
+rendues par ce script sont donc des totaux ; pour obtenir la quantite unitaire,
+diviser par la quantite de la colonne 2. J'ai lu ces « 2 » comme unitaires et
+double les T6 de toutes les gen2 pendant six versions.
+
 Convention du wiki, appliquee ici : un ingredient sans nombre vaut 1. C'est vrai
 de Bloodstone Shard, Gift of Exploration, Gift of Battle, Gift of Magic. La
 quantite retournee est None quand aucun nombre n'est ecrit, et c'est a
