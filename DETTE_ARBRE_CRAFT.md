@@ -278,7 +278,7 @@ de donnee :
   composant porte `aurora: 0`. Un zero en dur n'est pas une quantite.
 
 Les pages a capturer pour la suite sont listees dans
-`PAGES_A_CAPTURER_ARBRE_CRAFT.md`.
+`PAGES_A_CAPTURER.md`.
 
 
 ## F — v206 : lot 7 integre, 43 aretes chiffrees
@@ -327,7 +327,7 @@ de proche en proche. Trois cas :
   rapport qu'impliquait la table a plat
 - une partie seulement : refus, arbitrage requis
 
-Les 17 refus sont dans `PAGES_A_CAPTURER_ARBRE_CRAFT.md`. Ils ne demandent
+Les 17 refus sont dans `PAGES_A_CAPTURER.md`. Ils ne demandent
 aucune capture : la quantite est connue. Ils demandent de deplier `obsidian_shard`,
 `mystic_clover`, `glob_of_ectoplasm`, `mystic_coin` et `bloodstone_shard` en
 chiffrant toutes leurs aretes d'un coup, pas une par une.
