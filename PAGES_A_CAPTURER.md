@@ -1,22 +1,18 @@
 # Pages wiki à capturer
 
-État au 05/09/2026, sur `gw2_sources_v217.json`. Fichier unique : il remplace `PAGES_A_CAPTURER_HORS_ARMES.md` et `PAGES_A_CAPTURER_ARBRE_CRAFT.md`, qui disaient la même chose à deux dates différentes.
+État au 05/09/2026, sur `gw2_sources_v218.json`. Fichier unique, recalculé depuis les sources à chaque passe.
 
-`●` = une capture existe au dépôt mais elle ne suffit pas ; `○` = jamais capturée. Le titre est celui de l'article sur le wiki EN. Toutes les lignes sont recalculées depuis les sources, pas recopiées d'un état antérieur.
+`●` = une capture existe au dépôt mais elle ne suffit pas ; `○` = jamais capturée. Le titre est celui de l'article sur le wiki EN.
 
 
-## 1 — Deux pages qui débloquent neuf arbitrages
+## 1 — Plus aucune page ne bloque un chiffre
 
-Priorité haute : ce sont des chiffres affichés, pas du confort. Neuf chevauchements attendent une source pour trancher entre exigence réelle et double comptage.
+Transcendence et Klobjarne Geirr sont versées (lot 8). Les huit chevauchements de Transcendence sont tranchés : légitimes, sa table porte deux branches distinctes pour les mêmes trophées.
 
-| | page wiki | ce qu'elle débloque |
-|---|---|---|
-| ○ | `Transcendence` | Les huit trophées T5/T6 : 20 en direct + 400 par les dons condensés, ou 50 + 1 000. L'arbre gw2efficiency montre deux nœuds mais ne multiplie pas par les tributs, donc il ne tranche pas. |
-| ○ | `Klobjarne Geirr` | `stabilizing_matrix` : 150 en direct + 75 par le cube. Sert de toute façon, l'arme est au backlog. |
+**Ce qui bloque maintenant n'est plus une capture mais un arbitrage.** La table de Klobjarne Geirr décrit un arbre complet — Gift of the Homesteader vers les dons condensés, Gift of Klobjarne Geirr vers Gift of Research — mais l'intégrer ouvre 34 chevauchements avec les clés à plat déjà en place, dont 28 où l'arbre vaut exactement le double. Il faut décider, trophée par trophée, si la base sous-comptait ou si la table se lit autrement. Détail dans `DETTE_ARBRE_CRAFT.md`.
+
 
 ## 2 — 33 collections incomplètes
-
-Recalculé depuis `legendaries[].collections`. Le lot 7 en avait comblé une trentaine ; il ne reste que celles-ci.
 
 | | page wiki | légendaire | id succès | ce qui manque |
 |---|---|---|---|---|
@@ -56,7 +52,7 @@ Recalculé depuis `legendaries[].collections`. Le lot 7 en avait comblé une tre
 
 ## 3 — 94 composants sans identifiant ni page
 
-Leur quantité est juste, leur identité non : sans `apiId`, le tracker affiche le besoin mais laisse la colonne « possédé » vide. Presque tous viennent des tables « Full material list » versées le 05/09.
+Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche mais la colonne « possédé » reste vide.
 
 
 ### 62 dons d'arme et sous-dons
@@ -165,8 +161,6 @@ Leur quantité est juste, leur identité non : sans `apiId`, le tracker affiche 
 
 ## 4 — 29 arêtes non chiffrées : aucune capture requise
 
-La quantité est connue ou l'arête relève d'un autre chemin. Elles restent là parce que le dépliage serait partiel, parce que l'arête saute un niveau, ou parce qu'il s'agit d'une étape de collection.
-
 | parent | composants |
 |---|---|
 | `Amalgamated Rift Essence` | `fine_rift_essence`, `glob_of_ectoplasm`, `masterwork_rift_essence`, `rare_rift_essence` |
@@ -193,8 +187,4 @@ La quantité est connue ou l'arête relève d'un autre chemin. Elles restent là
 
 ## Ce qui n'est pas ici
 
-Les 24 armes à collections sont documentées : 1 978 étapes sur 1 978 couvertes. Une étape compte comme couverte si elle porte un conseil, ou si elle renvoie à un composant ou à une autre légendaire — les renvois sont des références, jamais des copies.
-
-Les 28 armes **sans collection** n'ont aucune chaîne de succès à documenter ; leur suivi relève de `BACKLOG.md`.
-
-Les précurseurs, les fiches `Recipe:`, les poèmes, les tributs et les cachets supérieurs cités par les tables du wiki ne sont pas des composants d'arbre : ils sont portés par `collections{}`, et les verser ici créerait le double comptage qu'on passe son temps à traquer.
+Les 24 armes à collections sont documentées, 1 978 étapes sur 1 978. Les 28 armes sans collection relèvent de `BACKLOG.md`. Les précurseurs, fiches `Recipe:`, poèmes, tributs et cachets supérieurs sont portés par `collections{}` : les verser dans l'arbre créerait un double comptage.

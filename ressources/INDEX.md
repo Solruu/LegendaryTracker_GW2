@@ -517,6 +517,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `war_commendation.html` | War Commendation | article complet | 2026-09-05 |
 | `warcry.html` | Warcry | article complet | 2026-09-05 |
 | `wings_of_ascension.html` | Wings of Ascension | article complet | 2026-09-05 |
+| `klobjarne_geirr.html` | Klobjarne Geirr | article complet | 2026-09-05 |
+| `transcendence.html` | Transcendence | article complet | 2026-09-05 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -554,6 +556,10 @@ aucun écart.**
 Vérification du 05/09/2026 (lot 7, arbre de craft chiffré) : 159 captures
 reçues, dont 58 recaptures de pages déjà versées — dates mises à jour, aucune
 ligne dupliquée. **446 fichiers réels, 446 lignes, aucun écart.**
+
+Vérification du 05/09/2026 (lot 8) : les deux pages qui bloquaient les
+arbitrages, Transcendence et Klobjarne Geirr. **448 fichiers réels, 448 lignes,
+aucun écart.**
 
 ## Manquent encore
 

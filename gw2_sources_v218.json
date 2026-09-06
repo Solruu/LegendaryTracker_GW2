@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v217",
+  "version": "v218",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -9447,11 +9447,13 @@
    "apiId": 73137,
    "needed_for": [
     "gift_of_expertise",
+    "gift_of_research",
     "gift_of_the_mists"
    ],
    "qty": {
     "gift_of_the_mists": 1,
-    "gift_of_expertise": 1
+    "gift_of_expertise": 1,
+    "gift_of_research": 1
    },
    "farmable": true,
    "recipe": {
@@ -11200,7 +11202,14 @@
     "strife_unending",
     "transcendence"
    ],
-   "tier": "T6"
+   "tier": "T6",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "vial_of_powerful_blood": {
    "name": "Vial of Powerful Blood",
@@ -11281,6 +11290,13 @@
    "qty_note": {
     "fr": "⚠ Les arbres de Conflux et Warbringer totalisent 20 trophées T6 de PLUS par ligne que la chaîne n'en porte — 220 contre 200 pour Conflux, 270 contre 250 pour Warbringer, et seulement sur le sang, les os, les écailles et les griffes. Un maillon commun non modélisé, probablement la Mystic Essence of Strategy. Signalé plutôt que forcé : y ajouter un total à plat compterait deux fois ce que la chaîne porte déjà.",
     "en": "⚠ Conflux's and Warbringer's trees total 20 MORE T6 trophies per line than the chain carries — 220 against 200 for Conflux, 270 against 250 for Warbringer, and only on blood, bones, scales and claws. A shared unmodelled link, likely the Mystic Essence of Strategy. Flagged rather than forced: adding a flat total would double-count what the chain already carries."
+   },
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
    }
   },
   "elaborate_totem": {
@@ -11427,7 +11443,14 @@
     "strife_unending",
     "transcendence"
    ],
-   "tier": "T6"
+   "tier": "T6",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "vicious_fang": {
    "name": "Vicious Fang",
@@ -11575,7 +11598,14 @@
     "strife_unending",
     "transcendence"
    ],
-   "tier": "T6"
+   "tier": "T6",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "druid_runestone": {
    "name": "Druid Runestone",
@@ -11833,7 +11863,14 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
+   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "vial_of_thick_blood": {
    "name": "Vial of Thick Blood",
@@ -12496,7 +12533,14 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
+   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "sharp_claw": {
    "name": "Sharp Claw",
@@ -12708,7 +12752,14 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
+   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "smooth_scale": {
    "name": "Smooth Scale",
@@ -12920,7 +12971,14 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)"
+   "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "note": {
+    "fr": "Transcendence porte deux branches distinctes pour ces trophees : le Mystic Tribute par les dons condenses, et le Gift of the Champion par les Essences mystiques (20 et 50 selon le palier). Table « Full material list » de la page Transcendence, capturee le 05/09/2026.",
+    "en": null
+   }
   },
   "heavy_bone": {
    "name": "Heavy Bone",

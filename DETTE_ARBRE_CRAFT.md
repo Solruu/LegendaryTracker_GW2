@@ -344,6 +344,41 @@ troisieme paire ressemble a un doublon pur et vaut un examen.
 page du parent — ces objets ne s'obtiennent pas par recette.
 
 
+## G — v218 : les neuf arbitrages, et le blocage suivant
+
+Les deux pages qui manquaient sont versees. Elles tranchent huit cas sur neuf.
+
+**Transcendence : les huit chevauchements sont legitimes.** Sa table porte deux
+branches distinctes pour les memes trophees. Le Mystic Tribute descend vers deux
+Gifts of Condensed Might et deux Gifts of Condensed Magic, eux-memes vers deux
+dons de trophees chacun : c'est la cascade. Le Gift of the Champion descend vers
+les Essences mystiques, qui demandent 20 os anciens et 50 gros os selon le
+palier : c'est la cle a plat. Deux exigences reelles, declarees dans
+`qty_overlap_verified` avec la provenance versee dans `note`.
+
+L'arbre gw2efficiency, lui, montrait « 20 » et « 200 » sans dire d'ou venait
+quoi. Il ne pouvait pas trancher ; la table du wiki le fait en une ligne.
+
+**Klobjarne Geirr : la page repond, et ouvre une question plus grosse.** Le cube
+d'energie sombre stabilisee y figure DEUX fois, une par branche — Gift of
+Expertise sous Gift of Janthir Wilds, Gift of Research sous Gift of Klobjarne
+Geirr — a 75 matrices chacun.
+
+Mais integrer l'arbre complet de Klobjarne ouvre **34 chevauchements** avec les
+cles a plat en place, et dans 28 cas l'arbre vaut exactement le double du plat :
+100 ecailles blindees a plat contre 200 par la branche Homesteader, 250 fioles
+de sang epais contre 500. Le facteur deux est trop regulier pour etre un hasard
+et trop general pour etre tranche au jugé : soit la base sous-compte les T5/T6
+de Klobjarne depuis toujours, soit la colonne « 2 Gifts of Condensed Might » de
+la table se lit comme un total et non comme un multiplicateur.
+
+C'est la meme ambiguite de lecture que sur Transcendence, ou elle s'etait
+resolue parce que deux branches distinctes existaient. Ici elles n'existent pas.
+L'integration est prete (`gw2_integre_branche_arme_v1.py` la produit en une
+passe) mais n'est pas versee : elle changerait 34 couts affiches sur une lecture
+incertaine.
+
+
 ## Suite
 
 1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des
