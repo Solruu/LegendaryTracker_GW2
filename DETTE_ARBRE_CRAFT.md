@@ -440,6 +440,48 @@ Il se cherche : `python3 gw2_index_contenu_v1.py "Condensed Might"` sort en une
 seconde les pages qui en parlent et ce qu'elles en disent.
 
 
+## J — v223 : le tout-ou-rien etait mal cadre, et ca ne debloque presque rien
+
+La v1 du depliage travaillait par COMPOSANT : elle ne retirait les cles a plat
+que si l'arbre reproduisait TOUTES les cles du composant. `bloodstone_shard` en
+porte 57, `mystic_clover` 73 ; un seul legendaire non modelise bloquait tous
+les autres. Sur les six plus gros, elle depliait zero.
+
+Ce tout-ou-rien repondait a une vraie crainte mal cadree. Le double comptage se
+produit pour UN legendaire donne, quand la meme depense y arrive par deux
+chemins. Deux legendaires differents ne peuvent pas se doubler l'un l'autre. La
+condition juste est donc par paire (composant, legendaire), et
+`gw2_deplie_wiki_v2.py` l'applique.
+
+Deux gardes ont ete necessaires. La premiere passe retirait les cles des
+chevauchements DECLARES legitimes — l'arbre y vaut 1, le plat 1, mais les deux
+sont reels : gen2_eureka perdait la moitie de tout, l'eclat de sang comme le
+lingot cristallin. `qty_overlap_verified` est desormais consulte avant de
+retirer quoi que ce soit.
+
+Resultat honnete : **deux cles**. Transcendence perd son doublon de Gift of
+Battle et de Memory of Battle, la chaine Gift of the Champion -> Gift of the
+Mists -> Gift of Battle n'existant pas encore quand les dix-neuf autres
+legendaires ont ete corriges.
+
+**Le refactor ne debloque pas les six gros, et le diagnostic est net.** Ce
+n'etait pas la methode :
+
+    mystic_clover      73 cles — 73 sans aucun chemin modelise
+    mystic_coin        67 cles — 67 sans aucun chemin modelise
+    bloodstone_shard   57 cles — 53 sans aucun chemin modelise
+    gift_of_battle     36 cles — 36 sans aucun chemin modelise
+    obsidian_shard     39 cles — 37 sans aucun chemin modelise
+    glob_of_ectoplasm  39 cles — 37 sans aucun chemin modelise
+
+Pour la quasi-totalite de ces cles, l'arbre ne contribue RIEN : il n'existe
+aucun chemin entre le composant et le legendaire. Les depliages successifs ont
+epuise ce que les captures permettent de chainer. Ce qui manque maintenant,
+ce sont les recettes des dons intermediaires par lesquels ces materiaux
+transitent — un don de maitrise par extension, la ou une seule page couvre
+souvent seize legendaires.
+
+
 ## Suite
 
 1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des
