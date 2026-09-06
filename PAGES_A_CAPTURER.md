@@ -1,23 +1,57 @@
 # Pages wiki à capturer
 
-État au 05/09/2026, sur `gw2_sources_v218.json`. Fichier unique, recalculé depuis les sources à chaque passe.
-
-`●` = une capture existe au dépôt mais elle ne suffit pas ; `○` = jamais capturée. Le titre est celui de l'article sur le wiki EN.
+État au 05/09/2026, sur `gw2_sources_v223.json`. Recalculé depuis les sources à chaque passe. `●` = capture au dépôt mais insuffisante ; `○` = jamais capturée.
 
 
-## 1 — Deux pages manquent vraiment
+## 1 — 34 tables « Full material list » qui débloqueraient le dépliage
 
-Transcendence et Klobjarne Geirr sont versées (lot 8), et les huit chevauchements de Transcendence sont tranchés.
+C'est devenu la priorité. Six composants concentrent 311 coûts en dur — trèfle mystique, pièce mystique, éclat de sang, don de bataille, éclat d'obsidienne, ectoplasme — et pour la quasi-totalité de ces clés **l'arbre ne contribue rien** : il n'existe aucun chemin modélisé entre le composant et le légendaire. Ce ne sont ni une méthode ni un arbitrage qui manquent, ce sont les recettes des dons intermédiaires. Une seule table en fournit souvent plusieurs.
+
+| | page wiki | clés débloquées |
+|---|---|---|
+| ○ | `Ad Infinitum` | 6 — `bloodstone_shard`, `gift_of_battle`, `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `The Ascension` | 6 — `bloodstone_shard`, `gift_of_battle`, `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ● | `The Predator` | 6 — `bloodstone_shard`, `gift_of_battle`, `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Selachimorpha` | 5 — `bloodstone_shard`, `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Aetheric Anchor (→ Ancora Pax + Ancora Bellum)` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Aurora` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Coalescence` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Conflux` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Orrax Manifested` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Stella Radians` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Strife Unending` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Vision` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `Warbringer` | 4 — `glob_of_ectoplasm`, `mystic_clover`, `mystic_coin`, `obsidian_shard` |
+| ○ | `gen2_caladbolg` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_elegy` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_eordas_grip` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_hope_scepter` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_itzels_boon` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_lorekeeper` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_reaver_of_the_mists` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen2_tigris` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen3_aurenes_fang` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen3_aurenes_guard` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen3_aurenes_reckoning` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen3_aurenes_tenderness` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `gen3_aurenes_wrath` | 4 — `bloodstone_shard`, `gift_of_battle`, `mystic_clover`, `mystic_coin` |
+| ○ | `Endless Summer` | 3 — `glob_of_ectoplasm`, `mystic_clover`, `obsidian_shard` |
+| ○ | `Obsidian Armor` | 3 — `glob_of_ectoplasm`, `mystic_clover`, `obsidian_shard` |
+| ○ | `upgrades` | 3 — `glob_of_ectoplasm`, `mystic_clover`, `obsidian_shard` |
+| ○ | `Perfected Envoy Armor` | 2 — `mystic_clover`, `obsidian_shard` |
+| ○ | `Ardent Glorious Armor` | 1 — `mystic_clover` |
+| ○ | `Eikasia, Mists-Grasper` | 1 — `glob_of_ectoplasm` |
+| ○ | `Legendary Upgrades` | 1 — `mystic_clover` |
+| ○ | `Triumphant Hero's Armor` | 1 — `mystic_clover` |
+
+## 2 — Deux recettes sans source rejouable
 
 | | page wiki | pourquoi |
 |---|---|---|
-| ○ | `Gift of Condensed Might` | Sa recette — 1 de chaque don de trophée — n'est dans **aucune** des 448 captures. Vérifié contre `INDEX_CONTENU.json`. Elle vient d'une capture d'écran, ce qui est une source mais pas une source rejouable. |
-| ○ | `Gift of Condensed Magic` | Même chose, par symétrie. La quantité appliquée est déduite de son jumeau, pas lue. |
+| ○ | `Gift of Condensed Might` | Sa recette — 1 de chaque don de trophée — n'est dans aucune des 448 captures, vérifié contre `INDEX_CONTENU.json`. Elle vient d'une capture d'écran. |
+| ○ | `Gift of Condensed Magic` | Même chose, et sa quantité est déduite de son jumeau plutôt que lue. |
 
-L'arbre de Klobjarne est intégré. Il reste huit écarts entre la clé à plat et l'arbre, tous parce que l'arbre est incomplet et non parce qu'il double : la table décrit des sous-crafts de Nyr Hrammr — 6 Deldrimor Steel Spear Heads à 30 poussières cristallines et 300 réactifs thermocatalytiques chacun, 6 Large Spiritwood Hafts — que la base ne modélise pas. Les 160 poussières à plat valent bien 100 par le Gift of Dust plus 60 par ces sous-crafts.
-
-
-## 2 — 33 collections incomplètes
+## 3 — 33 collections incomplètes
 
 | | page wiki | légendaire | id succès | ce qui manque |
 |---|---|---|---|---|
@@ -55,12 +89,12 @@ L'arbre de Klobjarne est intégré. Il reste huit écarts entre la clé à plat 
 | ● | `Vision I: Awakening` | Vision | 4762 | 6 conseils non vérifiés, sans unlock |
 | ● | `Vision II: Farsight` | Vision | 4771 | sans unlock |
 
-## 3 — 94 composants sans identifiant ni page
+## 4 — 105 composants sans identifiant ni page
 
-Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche mais la colonne « possédé » reste vide.
+Quantité juste, identité non : le besoin s'affiche, la colonne « possédé » reste vide.
 
 
-### 62 dons d'arme et sous-dons
+### 65 dons d'arme et sous-dons
 
 | page wiki |
 |---|
@@ -78,6 +112,7 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Gift of Draconic Mastery` |
 | `Gift of Dragon Magic` |
 | `Gift of Dust` |
+| `Gift of Embracing Refuge` |
 | `Gift of Entertainment` |
 | `Gift of Ephemeral Magic` |
 | `Gift of Family` |
@@ -103,8 +138,10 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Gift of Music` |
 | `Gift of Nature` |
 | `Gift of Quip` |
+| `Gift of Recollector of Memories` |
 | `Gift of Rodgort` |
 | `Gift of Scales` |
+| `Gift of Sharpened Tip` |
 | `Gift of Souls` |
 | `Gift of Sunrise` |
 | `Gift of The Bifrost` |
@@ -127,7 +164,7 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Gift of the Homesteader` |
 | `Gift of the Raven Spirit` |
 
-### 32 autres
+### 40 autres
 
 | page wiki |
 |---|
@@ -136,7 +173,10 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Banner Pennon` |
 | `Banner of the Commander` |
 | `Case of Captured Lightning` |
+| `Certificate of Support` |
 | `Clot of Congealed Screams` |
+| `Deldrimor Steel Ingot` |
+| `Deldrimor Steel Spear Head` |
 | `Discounted Shard of Janthir Syntri` |
 | `Discounted Shard of Lowland Shore` |
 | `Discounted Shard of Mistburned Barrens` |
@@ -147,6 +187,7 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Glob of Coagulated Mists Essence` |
 | `Hateful Sworl` |
 | `Lacquered Banner Pole` |
+| `Large Spiritwood Haft` |
 | `Legendary Shards (Gen2)` |
 | `Legendary Shards (Gen3 / Aurene)` |
 | `Ley Line Crystal` |
@@ -156,15 +197,19 @@ Leur quantité est juste, leur identité non : sans `apiId`, le besoin s'affiche
 | `Mystic Essence of Carnage` |
 | `Mystic Essence of Strategy` |
 | `Olmakhan Bandolier (chaîne)` |
+| `Perfect Mist Core` |
 | `Pouch of Stardust` |
 | `Shark Statue` |
 | `Spinal Blade Back Pack (Perfected)` |
+| `Spiritwood Plank` |
+| `Standing Stones Timepiece` |
 | `Unicorn Statue` |
+| `Valkyrie Bearkin War Helm` |
 | `Vial of Liquid Flame` |
 | `Vial of Quicksilver` |
 | `Wolf Statue` |
 
-## 4 — 29 arêtes non chiffrées : aucune capture requise
+## 5 — 29 arêtes non chiffrées : aucune capture requise
 
 | parent | composants |
 |---|---|
