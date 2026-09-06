@@ -1054,9 +1054,37 @@ def check_qty_levels(data, errors, warnings):
                         out.add(b)
                 return out
 
+            # Atteindre n'est pas compter. glob_of_ectoplasm atteint Aurora par
+            # huit chemins qui, tous, valent zero pour ce legendaire : la cle a
+            # plat est seule a compter et il n'y a aucun doublon. On n'avertit
+            # donc que si la cascade contribue REELLEMENT.
+            def _total(leg):
+                t, exp = {}, {}
+                for c2, comp2 in comps.items():
+                    v = (comp2.get("qty") or {}).get(leg)
+                    if isinstance(v, int):
+                        t[c2] = t.get(c2, 0) + v
+                for _ in range(10):
+                    add = {}
+                    for c2, comp2 in comps.items():
+                        for k2, v2 in (comp2.get("qty") or {}).items():
+                            if isinstance(v2, int) and k2 in comps and t.get(k2, 0) > 0:
+                                add[c2] = add.get(c2, 0) + v2 * t[k2]
+                    bouge = False
+                    for c2, v2 in add.items():
+                        if exp.get(c2, 0) != v2:
+                            t[c2] = t.get(c2, 0) - exp.get(c2, 0) + v2
+                            exp[c2] = v2
+                            bouge = True
+                    if not bouge:
+                        break
+                return t
+
             atteints = set()
             for parent in par_parent:
-                atteints |= _portee(parent)
+                for lid in _portee(parent):
+                    if _total(lid).get(parent, 0) > 0:
+                        atteints.add(lid)
             # Un chevauchement peut etre legitime : Vision demande 250
             # ectoplasmes au titre de l'exigence commune a tous les
             # legendaires, PLUS 300 pour ses encapsulateurs. Le declarer se

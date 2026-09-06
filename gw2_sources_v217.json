@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v216",
+  "version": "v217",
   "last_updated": "2026-09-05",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2431,37 +2431,18 @@
     "gen1_the_bifrost": 1,
     "gen1_kraitkin": 1,
     "gen1_the_predator": 1,
-    "gen2_astralaria": 1,
-    "gen2_hope": 1,
-    "gen2_nevermore": 1,
-    "gen2_chuka_and_champawat": 1,
     "gen2_tigris": 1,
     "gen2_caladbolg": 1,
-    "gen2_eureka": 1,
-    "gen2_shooshadoo": 1,
     "gen2_eordas_grip": 1,
     "gen2_itzels_boon": 1,
-    "gen2_exordium": 1,
     "gen2_hope_scepter": 1,
     "gen2_lorekeeper": 1,
     "gen2_elegy": 1,
-    "gen2_xiuquatl": 1,
     "gen2_reaver_of_the_mists": 1,
     "gen3_aurenes_fang": 1,
-    "gen3_aurenes_claw": 1,
-    "gen3_aurenes_bite": 1,
-    "gen3_aurenes_weight": 1,
-    "gen3_aurenes_gaze": 1,
-    "gen3_aurenes_insight": 1,
-    "gen3_aurenes_argument": 1,
     "gen3_aurenes_guard": 1,
-    "gen3_aurenes_persuasion": 1,
-    "gen3_aurenes_voice": 1,
     "gen3_aurenes_wrath": 1,
     "gen3_aurenes_reckoning": 1,
-    "gen3_aurenes_scale": 1,
-    "gen3_aurenes_wisdom": 1,
-    "gen3_aurenes_breath": 1,
     "gen3_aurenes_tenderness": 1,
     "transcendence": 1,
     "the_ascension": 1,
@@ -2608,7 +2589,17 @@
     "gift_of_draconic_mastery": 1
    },
    "kind": "acquire",
-   "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026."
+   "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026.",
+   "qty_overlap_verified": [
+    "gen2_eureka",
+    "gen2_exordium",
+    "gen2_shooshadoo",
+    "gen2_xiuquatl"
+   ],
+   "note": {
+    "fr": "Tables gen2 : ces douze armes portent les DEUX maitrises, Maguuma et Desert. L'eclat et le lingot y figurent donc deux fois, une par branche.",
+    "en": null
+   }
   },
   "funerary_incense": {
    "name": "Funerary Incense",
@@ -5106,6 +5097,14 @@
      "checked": "2026-08-22",
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
+   },
+   "qty_overlap_verified": [
+    "coalescence",
+    "vision"
+   ],
+   "note": {
+    "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
+    "en": null
    }
   },
   "gift_of_exploration": {
@@ -5807,10 +5806,11 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "qty_overlap_verified": [
+    "coalescence",
     "vision"
    ],
    "note": {
-    "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon.",
+    "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon. Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par le lingot cristallin.",
     "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
    }
   },
@@ -10194,7 +10194,15 @@
     "selachimorpha",
     "the_ascension",
     "transcendence"
-   ]
+   ],
+   "qty_overlap_verified": [
+    "conflux",
+    "warbringer"
+   ],
+   "note": {
+    "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
+    "en": null
+   }
   },
   "empyreal_fragment": {
    "name": "Empyreal Fragment",
@@ -10243,7 +10251,15 @@
     "selachimorpha",
     "the_ascension",
     "transcendence"
-   ]
+   ],
+   "qty_overlap_verified": [
+    "conflux",
+    "warbringer"
+   ],
+   "note": {
+    "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
+    "en": null
+   }
   },
   "bloodstone_dust": {
    "name": "Pile of Bloodstone Dust",
@@ -10292,7 +10308,15 @@
     "selachimorpha",
     "the_ascension",
     "transcendence"
-   ]
+   ],
+   "qty_overlap_verified": [
+    "conflux",
+    "warbringer"
+   ],
+   "note": {
+    "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
+    "en": null
+   }
   },
   "spirit_shard": {
    "name": "Spirit Shard",
@@ -15796,7 +15820,17 @@
     "checked": "2026-08-13",
     "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
    },
-   "free_via_ingredients": true
+   "free_via_ingredients": true,
+   "qty_overlap_verified": [
+    "gen2_eureka",
+    "gen2_exordium",
+    "gen2_shooshadoo",
+    "gen2_xiuquatl"
+   ],
+   "note": {
+    "fr": "Tables gen2 : ces douze armes portent les DEUX maitrises, Maguuma et Desert. L'eclat et le lingot y figurent donc deux fois, une par branche.",
+    "en": null
+   }
   },
   "diviners_orichalcum_imbued_inscription": {
    "name": "Diviner's Orichalcum-Imbued Inscription",
