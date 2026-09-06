@@ -1556,6 +1556,46 @@ def check_nom_pluriel_double(data, errors, warnings):
             )
 
 
+def check_lecture_colonne3(data, errors, warnings):
+    """Un enfant ne doit pas couter plus cher que son parent ne le justifie.
+
+    La table « Full material list » du wiki agrege les quantites de la colonne 3
+    sur celle de la colonne 2 : « 2 Gifts of Condensed Might » suivi de
+    « 2 Gift of Bones » veut dire UN don d'os par don condense, pas deux. J'ai
+    lu ces nombres comme unitaires et double le cout en trophees de toutes les
+    gen2 passant par un Mystic Tribute, de la v204 a la v219 — six versions.
+
+    Le symptome etait pourtant visible : une arete enfant -> parent dont la
+    quantite egale exactement la quantite du parent chez SON parent est presque
+    toujours ce mauvais report. Deux dons d'os par don condense quand le tribut
+    demande deux dons condenses, c'est le meme « 2 » recopie d'un cran.
+
+    Ce controle le signale. Il ne peut pas etre une erreur : une coincidence
+    numerique reste possible, et certaines recettes demandent legitimement
+    autant d'un ingredient que de leur propre lot. Mais toute arete qui
+    l'allume merite d'etre confrontee a la boite Recipe de la page du parent,
+    pas a une table d'arme.
+    """
+    cc = data.get("craft_components", {})
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        for parent, q in sorted((comp.get("qty") or {}).items()):
+            p = parent.split("__")[0]
+            if p not in cc or not isinstance(q, int) or q < 2:
+                continue
+            for grand, qg in sorted((cc[p].get("qty") or {}).items()):
+                if grand.split("__")[0] in cc and qg == q:
+                    warnings.append(
+                        f"lecture colonne 3 a verifier : {cid} -> {p} = {q}, "
+                        f"et {p} -> {grand.split('__')[0]} = {qg}. Le meme nombre "
+                        "a deux crans est le symptome d'une quantite agregee lue "
+                        "comme unitaire — confronter a la boite Recipe de "
+                        f"{p}, pas a une table d'arme"
+                    )
+                    break
+
+
 def _lbl(line):
     lab = line.get("label")
     return lab.get("fr", "?") if isinstance(lab, dict) else str(lab)
@@ -1664,6 +1704,9 @@ def main() -> int:
 
     # 32. Un nom au pluriel face a son singulier est presque toujours une invention
     check_nom_pluriel_double(data, errors, warnings)
+
+    # 33. Le meme nombre a deux crans : quantite agregee lue comme unitaire
+    check_lecture_colonne3(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
