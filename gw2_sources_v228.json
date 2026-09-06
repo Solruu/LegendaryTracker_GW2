@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v226",
+  "version": "v228",
   "last_updated": "2026-09-06",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2231,6 +2231,7 @@
    "name": "Icy Runestone",
    "apiId": 19676,
    "needed_for": [
+    "eikasia",
     "gen2_astralaria",
     "gen2_chuka_and_champawat",
     "gen2_hope",
@@ -2259,6 +2260,7 @@
     "gift_of_the_juggernaut",
     "gift_of_the_minstrel",
     "gift_of_the_moot",
+    "gift_of_the_predator",
     "gift_of_the_world",
     "gift_of_twilight"
    ],
@@ -2313,7 +2315,9 @@
     "gift_of_the_juggernaut": 100,
     "gift_of_the_minstrel": 100,
     "gift_of_the_moot": 100,
-    "gift_of_twilight": 100
+    "gift_of_twilight": 100,
+    "eikasia": 200,
+    "gift_of_the_predator": 100
    },
    "kind": "acquire",
    "verified": true,
@@ -2493,7 +2497,9 @@
     "gift_of_desert_mastery",
     "gift_of_draconic_mastery",
     "gift_of_janthir_wilds",
-    "gift_of_mastery"
+    "gift_of_mastery",
+    "gift_of_shadows_orrax",
+    "gift_of_the_elders"
    ],
    "farmable": false,
    "sources": [
@@ -2548,7 +2554,9 @@
     "gift_of_draconic_mastery": 1,
     "gift_of_castoran_mastery": 1,
     "gift_of_janthir_wilds": 1,
-    "gift_of_mastery": 1
+    "gift_of_mastery": 1,
+    "gift_of_shadows_orrax": 1,
+    "gift_of_the_elders": 1
    },
    "kind": "acquire",
    "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026.",
@@ -5341,7 +5349,11 @@
     "gift_of_aurene_s_weight",
     "gift_of_aurene_s_wing",
     "gift_of_aurene_s_wisdom",
-    "gift_of_klobjarne_geirr"
+    "gift_of_galdra",
+    "gift_of_klobjarne_geirr",
+    "gift_of_magical_prosperity",
+    "gift_of_mighty_prosperity",
+    "gift_of_the_elders"
    ],
    "qty": {
     "obsidian__per_piece": 1,
@@ -5361,7 +5373,11 @@
     "gift_of_aurene_s_weight": 1,
     "gift_of_aurene_s_wing": 1,
     "gift_of_aurene_s_wisdom": 1,
-    "gift_of_klobjarne_geirr": 1
+    "gift_of_klobjarne_geirr": 1,
+    "gift_of_galdra": 1,
+    "gift_of_magical_prosperity": 1,
+    "gift_of_mighty_prosperity": 1,
+    "gift_of_the_elders": 1
    },
    "farmable": true,
    "sources": [
@@ -5763,6 +5779,9 @@
    "needed_for": [
     "armor_perfected_envoy",
     "gift_of_fortune",
+    "gift_of_insight",
+    "gift_of_magical_prosperity",
+    "gift_of_mighty_prosperity",
     "gift_of_prosperity",
     "gift_of_the_homesteader",
     "orrax_manifested",
@@ -5936,7 +5955,10 @@
     "ardent_glorious__per_piece": 15,
     "upgrades_combined": 300,
     "gift_of_the_homesteader": 38,
-    "gift_of_fortune": 77
+    "gift_of_fortune": 77,
+    "gift_of_insight": 100,
+    "gift_of_magical_prosperity": 9,
+    "gift_of_mighty_prosperity": 9
    },
    "kind": "acquire",
    "best": "vendor",
@@ -6133,6 +6155,8 @@
    "apiId": 68551,
    "needed_for": [
     "armor_perfected_envoy",
+    "gift_of_magical_prosperity",
+    "gift_of_mighty_prosperity",
     "gift_of_prosperity"
    ],
    "farmable": true,
@@ -6150,7 +6174,9 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
-    "obsidian__per_piece": 1
+    "obsidian__per_piece": 1,
+    "gift_of_magical_prosperity": 1,
+    "gift_of_mighty_prosperity": 1
    },
    "kind": "advanced_craft"
   },
@@ -6160,6 +6186,8 @@
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
+    "gift_of_insight",
+    "gift_of_magical_prosperity",
     "gift_of_the_homesteader",
     "mystic_tribute"
    ],
@@ -6186,7 +6214,9 @@
     "obsidian__full_set": 3,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
-    "gift_of_the_homesteader": 1
+    "gift_of_the_homesteader": 1,
+    "gift_of_insight": 4,
+    "gift_of_magical_prosperity": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -6207,6 +6237,8 @@
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
+    "gift_of_insight",
+    "gift_of_mighty_prosperity",
     "gift_of_the_homesteader",
     "mystic_tribute"
    ],
@@ -6233,7 +6265,9 @@
     "obsidian__full_set": 3,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
-    "gift_of_the_homesteader": 1
+    "gift_of_the_homesteader": 1,
+    "gift_of_insight": 4,
+    "gift_of_mighty_prosperity": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -7496,7 +7530,8 @@
     "gen3_aurene_s_flight",
     "gen3_aurene_s_tail",
     "gen3_aurene_s_wing",
-    "gen3_aurenes_rending"
+    "gen3_aurenes_rending",
+    "orrax_contained"
    ],
    "farmable": true,
    "sources": [
@@ -7529,7 +7564,8 @@
     "gen3_aurene_s_flight": 1,
     "gen3_aurenes_rending": 1,
     "gen3_aurene_s_tail": 1,
-    "gen3_aurene_s_wing": 1
+    "gen3_aurene_s_wing": 1,
+    "orrax_contained": 1
    },
    "note": {
     "fr": "Structurellement identique à Mystic Tribute (gen2). Mêmes sous-composants, tag EoD différent.",
@@ -12587,10 +12623,12 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 1,
+    "gift_of_shadows_orrax": 1
    },
    "needed_for": [
-    "gift_of_condensed_might"
+    "gift_of_condensed_might",
+    "gift_of_shadows_orrax"
    ],
    "recipe": {
     "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Armored Scale + 250× Large Scale + 50× Smooth Scale + 50× Scale.",
@@ -15411,7 +15449,8 @@
    "qty": {
     "orrax_manifested": 100,
     "gift_of_darkness": 100,
-    "gift_of_history": 100
+    "gift_of_history": 100,
+    "gift_of_stealth": 100
    },
    "sources": [
     {
@@ -15464,6 +15503,7 @@
    "needed_for": [
     "gift_of_darkness",
     "gift_of_history",
+    "gift_of_stealth",
     "orrax_manifested"
    ],
    "apiId": 24310
@@ -16647,9 +16687,11 @@
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gift_of_twilight": 1
+    "gift_of_twilight": 1,
+    "gift_of_shadows_orrax": 1
    },
    "needed_for": [
+    "gift_of_shadows_orrax",
     "gift_of_twilight"
    ],
    "sources": [
@@ -17408,7 +17450,8 @@
     "gift_of_quip": 1,
     "gift_of_rodgort": 1,
     "gift_of_the_dreamer": 1,
-    "gift_of_verdarach": 1
+    "gift_of_verdarach": 1,
+    "gift_of_the_predator": 1
    },
    "needed_for": [
     "gift_of_balthazar",
@@ -17422,6 +17465,7 @@
     "gift_of_quip",
     "gift_of_rodgort",
     "gift_of_the_dreamer",
+    "gift_of_the_predator",
     "gift_of_verdarach"
    ],
    "sources": [
@@ -17734,7 +17778,8 @@
     "gift_of_weather": 250,
     "shark_statue": 250,
     "unicorn_statue": 250,
-    "wolf_statue": 250
+    "wolf_statue": 250,
+    "gift_of_stealth": 250
    },
    "needed_for": [
     "eel_statue",
@@ -17745,6 +17790,7 @@
     "gift_of_lightning",
     "gift_of_metal",
     "gift_of_music",
+    "gift_of_stealth",
     "gift_of_water",
     "gift_of_weather",
     "shark_statue",
@@ -19078,6 +19124,206 @@
    "sources": [
     {
      "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_janthir_wanderlust": {
+   "name": "Gift of Janthir Wanderlust",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_mistburned_isles": 1
+   },
+   "needed_for": [
+    "gift_of_the_mistburned_isles"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_stealth": {
+   "name": "Gift of Stealth",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_predator": 1
+   },
+   "needed_for": [
+    "gift_of_the_predator"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_predator": {
+   "name": "Gift of The Predator",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gen1_the_predator": 1
+   },
+   "needed_for": [
+    "gen1_the_predator"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_titan_understanding": {
+   "name": "Gift of Titan Understanding",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_shadows_orrax": 1
+   },
+   "needed_for": [
+    "gift_of_shadows_orrax"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_appetizer": {
+   "name": "Gift of the Appetizer",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_feast": 1
+   },
+   "needed_for": [
+    "gift_of_the_feast"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_dessert": {
+   "name": "Gift of the Dessert",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_feast": 1
+   },
+   "needed_for": [
+    "gift_of_the_feast"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_mursaat_ruins": {
+   "name": "Gift of the Mursaat Ruins",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_mistburned_isles": 1
+   },
+   "needed_for": [
+    "gift_of_the_mistburned_isles"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_side_course": {
+   "name": "Gift of the Side Course",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_feast": 1
+   },
+   "needed_for": [
+    "gift_of_the_feast"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "orrian_truffle": {
+   "name": "Orrian Truffle",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_stealth": 250
+   },
+   "needed_for": [
+    "gift_of_stealth"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": null,
+      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+     }
+    }
+   ]
+  },
+  "gift_of_the_entree": {
+   "name": "Gift of the Entrée",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "gift_of_the_feast": 1
+   },
+   "needed_for": [
+    "gift_of_the_feast"
+   ],
+   "sources": [
+    {
+     "type": "craft",
      "tip": {
       "fr": null,
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."

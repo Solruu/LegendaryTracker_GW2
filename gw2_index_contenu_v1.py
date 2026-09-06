@@ -75,11 +75,11 @@ def indexer(chemin):
         "page": Path(chemin).stem,
         "titre": re.sub(r"\s+", " ", t.group(1)).strip() if t else None,
         "api_id": ident,
-        "table_materiaux": 'id="Full_material_list"' in html,
+        "table_materiaux": LISTE.a_une_table(html),
         "recettes": recettes,
         "couts_vendeur": [{"objet": o, "qty": q} for o, q in couts],
         "aretes_table": [{"parent": p, "enfant": e, "qty": q}
-                         for p, e, q in LISTE.aretes(chemin)] if 'id="Full_material_list"' in html else [],
+                         for p, e, q in LISTE.aretes(chemin)] if LISTE.a_une_table(html) else [],
     }
 
 

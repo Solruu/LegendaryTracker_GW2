@@ -18624,7 +18624,7 @@
   "page": "the_predator",
   "titre": "The Predator",
   "api_id": 30694,
-  "table_materiaux": false,
+  "table_materiaux": true,
   "recettes": [
    {
     "sortie": 1,
@@ -18652,7 +18652,148 @@
    }
   ],
   "couts_vendeur": [],
-  "aretes_table": []
+  "aretes_table": [
+   {
+    "parent": "Gift_of_Mastery",
+    "enfant": "Bloodstone_Shard",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Mastery",
+    "enfant": "Obsidian_Shard",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Mastery",
+    "enfant": "Gift_of_Exploration",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Mastery",
+    "enfant": "Gift_of_Battle",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Fortune",
+    "enfant": "Glob_of_Ectoplasm",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Fortune",
+    "enfant": "Mystic_Clover",
+    "qty": 77
+   },
+   {
+    "parent": "Gift_of_Fortune",
+    "enfant": "Gift_of_Magic",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Magic",
+    "enfant": "Vial_of_Powerful_Blood",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Magic",
+    "enfant": "Powerful_Venom_Sac",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Magic",
+    "enfant": "Elaborate_Totem",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Magic",
+    "enfant": "Pile_of_Crystalline_Dust",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Fortune",
+    "enfant": "Gift_of_Might",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Might",
+    "enfant": "Vicious_Fang",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Might",
+    "enfant": "Armored_Scale",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Might",
+    "enfant": "Vicious_Claw",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Might",
+    "enfant": "Ancient_Bone",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_The_Predator",
+    "enfant": "Icy_Runestone",
+    "qty": 100
+   },
+   {
+    "parent": "Gift_of_The_Predator",
+    "enfant": "Superior_Sigil_of_Force",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_The_Predator",
+    "enfant": "Gift_of_Wood",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Wood",
+    "enfant": "Ancient_Wood_Plank",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Wood",
+    "enfant": "Elder_Wood_Plank",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Wood",
+    "enfant": "Hard_Wood_Plank",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Wood",
+    "enfant": "Seasoned_Wood_Plank",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_The_Predator",
+    "enfant": "Gift_of_Stealth",
+    "qty": null
+   },
+   {
+    "parent": "Gift_of_Stealth",
+    "enfant": "Orichalcum_Ingot",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Stealth",
+    "enfant": "Orrian_Truffle",
+    "qty": 250
+   },
+   {
+    "parent": "Gift_of_Stealth",
+    "enfant": "Onyx_Lodestone",
+    "qty": 100
+   },
+   {
+    "parent": "The_Hunter",
+    "enfant": "Mystic_Forge",
+    "qty": null
+   }
+  ]
  },
  {
   "page": "the_predator_i_the_experimental_rifle",

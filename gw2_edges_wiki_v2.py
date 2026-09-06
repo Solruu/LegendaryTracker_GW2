@@ -1,5 +1,5 @@
 import json, re, collections, sys
-d=json.load(open('gw2_sources_v225.json'), object_pairs_hook=collections.OrderedDict)
+d=json.load(open('gw2_sources_v227.json'), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 def norm(s): return re.sub(r'[^a-z0-9]','',s.lower())

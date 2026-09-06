@@ -119,10 +119,29 @@ def _grille(tbl):
     return grille
 
 
+# Le wiki ecrit ce titre de deux facons. Soixante-neuf pages disent
+# « Full material list », The Predator dit « Full materials list ». Ma
+# recherche litterale d'une seule des deux a fait declarer cette page « sans
+# table » pendant trois passes, et six couts sont restes en dur pour un « s ».
+_TITRES = ('id="Full_material_list"', 'id="Full_materials_list"')
+
+
+def _debut(html):
+    for t in _TITRES:
+        i = html.find(t)
+        if i >= 0:
+            return i
+    return -1
+
+
+def a_une_table(html):
+    return _debut(html) >= 0
+
+
 def aretes(chemin):
     """[(parent, enfant, quantite_ou_None)] pour une page."""
     html = Path(chemin).read_text(encoding="utf-8", errors="ignore")
-    i = html.find('id="Full_material_list"')
+    i = _debut(html)
     if i < 0:
         return []
     j = html.find("<table", i)

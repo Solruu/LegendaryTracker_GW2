@@ -26,7 +26,7 @@ la cascade y sont deux exigences reelles.
 import collections
 import json
 
-SRC, DST = "gw2_sources_v225.json", "gw2_sources_v226.json"
+SRC, DST = "gw2_sources_v227.json", "gw2_sources_v228.json"
 ARETES = "/tmp/edges2.json"
 ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
 SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
