@@ -790,7 +790,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v221",
+    "version": "v222",
     "last_updated": "2026-09-05",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2936,6 +2936,7 @@ const SOURCES_DB = {
       "name": "Pile of Crystalline Dust",
       "apiId": 24277,
       "needed_for": [
+        "deldrimor_steel_spear_head",
         "endless_summer",
         "gift_of_color",
         "gift_of_dust",
@@ -2943,6 +2944,7 @@ const SOURCES_DB = {
         "gift_of_history",
         "gift_of_magic",
         "klobjarne_geirr",
+        "large_spiritwood_haft",
         "orrax_manifested",
         "strife_unending"
       ],
@@ -2996,12 +2998,13 @@ const SOURCES_DB = {
         "gift_of_dust": 100,
         "gift_of_magic": 250,
         "endless_summer": 200,
-        "klobjarne_geirr": 160,
         "orrax_manifested": 100,
         "strife_unending": 300,
         "gift_of_energy": 250,
         "gift_of_color": 250,
-        "gift_of_history": 250
+        "gift_of_history": 250,
+        "deldrimor_steel_spear_head": 5,
+        "large_spiritwood_haft": 5
       },
       "kind": "acquire",
       "best": "drop",
@@ -4893,12 +4896,14 @@ const SOURCES_DB = {
       "apiId": 46746,
       "needed_for": [
         "gift_of_conquering",
+        "gift_of_sharpened_tip",
         "gift_of_skirmishing",
         "warbringer"
       ],
       "qty": {
         "gift_of_conquering": 2,
-        "gift_of_skirmishing": 2
+        "gift_of_skirmishing": 2,
+        "gift_of_sharpened_tip": 6
       },
       "farmable": true,
       "sources": [
@@ -6254,7 +6259,7 @@ const SOURCES_DB = {
       ],
       "qty": {
         "aetheric_anchor": 500,
-        "klobjarne_geirr": 500,
+        "klobjarne_geirr": 250,
         "selachimorpha": 1000,
         "stella_radians": 500,
         "gift_of_research": 250
@@ -6280,15 +6285,20 @@ const SOURCES_DB = {
         "checked": "2026-08-13",
         "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
         "verified": true
-      }
+      },
+      "qty_overlap_verified": [
+        "klobjarne_geirr"
+      ]
     },
     "thermocatalytic_reagent": {
       "name": "Thermocatalytic Reagent",
       "apiId": 46747,
       "needed_for": [
         "aetheric_anchor",
+        "deldrimor_steel_spear_head",
         "gift_of_research",
         "klobjarne_geirr",
+        "large_spiritwood_haft",
         "selachimorpha",
         "stella_radians",
         "the_ascension",
@@ -6300,12 +6310,14 @@ const SOURCES_DB = {
         "vision": 540,
         "ad_infinitum": 590,
         "aetheric_anchor": 250,
-        "klobjarne_geirr": 1930,
+        "klobjarne_geirr": 1080,
         "selachimorpha": 800,
         "stella_radians": 250,
         "the_ascension": 300,
         "transcendence": 300,
-        "gift_of_research": 250
+        "gift_of_research": 250,
+        "deldrimor_steel_spear_head": 50,
+        "large_spiritwood_haft": 50
       },
       "farmable": true,
       "sources": [
@@ -6342,7 +6354,10 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "qty_overlap_verified": [
+        "klobjarne_geirr"
+      ]
     },
     "exotic_essence_of_luck": {
       "name": "Exotic Essence of Luck",
@@ -12327,7 +12342,7 @@ const SOURCES_DB = {
         "gift_of_might": 250,
         "mystic_essence_of_animosity": 20,
         "endless_summer": 200,
-        "klobjarne_geirr": 200,
+        "klobjarne_geirr": 100,
         "orrax_manifested": 100,
         "strife_unending": 300,
         "transcendence": 20
@@ -12393,6 +12408,7 @@ const SOURCES_DB = {
       ],
       "tier": "T6",
       "qty_overlap_verified": [
+        "klobjarne_geirr",
         "transcendence"
       ],
       "note": {
@@ -13688,7 +13704,7 @@ const SOURCES_DB = {
         "gift_of_bones": 250,
         "mystic_essence_of_animosity": 50,
         "endless_summer": 500,
-        "klobjarne_geirr": 500,
+        "klobjarne_geirr": 250,
         "orrax_manifested": 250,
         "strife_unending": 750,
         "transcendence": 50
@@ -13751,6 +13767,7 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
       "qty_overlap_verified": [
+        "klobjarne_geirr",
         "transcendence"
       ],
       "note": {
@@ -13767,7 +13784,7 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_bones": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 100,
+        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13813,7 +13830,10 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+      "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)",
+      "qty_overlap_verified": [
+        "klobjarne_geirr"
+      ]
     },
     "bone": {
       "name": "Bone",
@@ -13824,7 +13844,7 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_bones": 50,
         "endless_summer": 100,
-        "klobjarne_geirr": 100,
+        "klobjarne_geirr": 50,
         "orrax_manifested": 50,
         "strife_unending": 150
       },
@@ -13860,7 +13880,10 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
+      "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)",
+      "qty_overlap_verified": [
+        "klobjarne_geirr"
+      ]
     },
     "gift_of_fangs": {
       "name": "Gift of Fangs",
@@ -18913,6 +18936,86 @@ const SOURCES_DB = {
           "tip": {
             "fr": null,
             "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "deldrimor_steel_spear_head": {
+      "name": "Deldrimor Steel Spear Head",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "qty": {
+        "gift_of_sharpened_tip": 6
+      },
+      "needed_for": [
+        "gift_of_sharpened_tip"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
+          }
+        }
+      ]
+    },
+    "large_spiritwood_haft": {
+      "name": "Large Spiritwood Haft",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "qty": {
+        "gift_of_sharpened_tip": 6
+      },
+      "needed_for": [
+        "gift_of_sharpened_tip"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
+          }
+        }
+      ]
+    },
+    "deldrimor_steel_ingot": {
+      "name": "Deldrimor Steel Ingot",
+      "kind": "refined",
+      "farmable": true,
+      "qty": {
+        "deldrimor_steel_spear_head": 3
+      },
+      "needed_for": [
+        "deldrimor_steel_spear_head"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
+          }
+        }
+      ]
+    },
+    "spiritwood_plank": {
+      "name": "Spiritwood Plank",
+      "kind": "refined",
+      "farmable": true,
+      "qty": {
+        "large_spiritwood_haft": 2
+      },
+      "needed_for": [
+        "large_spiritwood_haft"
+      ],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": null,
+            "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
           }
         }
       ]
