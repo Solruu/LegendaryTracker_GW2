@@ -38,10 +38,43 @@ Les voies alternatives ne sont pas perdues : elles restent dans les captures
 wiki, et c'est le champ `recipe` de la donnee qui a vocation a les porter,
 puisqu'elles ne sont precisement pas chiffrables dans l'arbre.
 
-La table VENDEUR ne sait pas distinguer les voies : elle aplatit les six orbes
-de Gift of Infused Gems en une seule liste. Quand une page porte aussi des
-recettes, ce sont les recettes qui tranchent : un ingredient qu'elles ont
-designe comme alternatif ne peut pas revenir par le vendeur.
+v4 : UNE PAGE A RECETTE NE PRODUIT AUCUNE ARETE PAR SON VENDEUR.
+
+La v3 n'ecartait du vendeur que les ingredients que les recettes avaient
+designes comme alternatifs. C'etait trop peu. Lyhr, dans la Tour du Sorcier,
+vend le Gift of Blood pour 50 fioles fines + 50 epaisses + 250 puissantes +
+100 tres-puissantes **+ 10 ectoplasmes** — exactement les ingredients de la
+recette de la Forge mystique, plus une surtaxe. C'est un service : il evite le
+detour par la Forge, contre dix ectos.
+
+Poser cette table en aretes ajoutait donc 10 ectoplasmes a l'arbre de tout
+legendaire passant par un don de trophee, alors que le joueur qui va a la Forge
+ne les paie jamais. Le meme motif se retrouve sur une trentaine de dons.
+
+La regle est donc plus simple et plus large : quand une page porte une boite
+Recipe, la recette dit ce qu'il FAUT et le vendeur ne dit qu'une facon de
+l'obtenir. Le vendeur n'y produit aucune arete. Il reste dans `sources[]`, qui
+porte deja les voies d'acquisition avec leur type — c'est sa place, pas `qty`.
+
+v5 : LA BOITE RECIPE N'EST PAS LE SEUL SIGNE D'UNE AUTRE VOIE.
+
+La v4 ne regardait que la recette. Or `ancient_coin` n'en a pas et se ramasse
+quand meme : sa section Acquisition ouvre sur « Contained in » et « Gathered
+from », le vendeur ne venant qu'apres. Poser son cout vendeur ajoutait 50 000
+pieces inhabituelles a Orrax Manifested pour une monnaie qui tombe dans des
+caches.
+
+On lit donc les SOUS-SECTIONS d'Acquisition de la page. Des qu'il en existe une
+qui n'est pas un achat — Contained in, Gathered from, Dropped by, Rewarded by,
+Reward tracks, Salvaged from, ou une boite Recipe — le vendeur est un service
+et ne produit aucune arete. Il reste dans `sources[]`, qui porte deja les voies
+d'acquisition avec leur type ; ce n'est pas a `qty` de dire comment on obtient,
+seulement combien il en faut.
+
+Une page dont l'acquisition se resume a un tableau de vendeur garde son cout :
+`Gift of the Pact` chez le Whispers Keeper, 250 Airship Part + 250 Ley Line
+Crystal + 250 Lump of Aurillium, joints par des « + » sur une seule ligne. La,
+l'achat est la seule voie documentee, donc c'est l'arete.
 """
 import json, re, collections, sys
 from pathlib import Path
@@ -117,10 +150,32 @@ for p, vs in variantes.items():
     for cible in communs:
         c = to_id(cible)
         if c: edges[p][c] = (vs[0][cible], 'recette')
+LIBRE = ("Contained_in", "Gathered_from", "Dropped_by", "Rewarded_by",
+         "Reward_tracks", "Salvaged_from", "Recipe", "Recipes")
+
+
+def autre_voie(page):
+    """Vrai si la page montre une acquisition qui n'est pas un achat."""
+    f = Path("ressources/wiki") / f"{page}.html"
+    if not f.exists():
+        return False
+    txt = f.read_text(encoding="utf-8", errors="ignore")
+    i = txt.find('id="Acquisition"')
+    seg = txt[i:i + 60000] if i >= 0 else txt
+    j = re.search(r'id="(Used_in|Notes|References|Trivia)"', seg)
+    if j:
+        seg = seg[:j.start()]
+    return any(f'id="{s}"' in seg for s in LIBRE)
+
+
+vendeurs_ecartes = []
 for r in json.load(open('gw2_wiki_vendor_costs_v1.json')):
     if not r['couts']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue
+    if p in variantes or autre_voie(r['page']):
+        vendeurs_ecartes.append(p)
+        continue
     for cible,q in r['couts']:
         if cible in alternatifs_de.get(p, set()): continue
         c=to_id(cible)
@@ -132,6 +187,7 @@ print('promotions ecartees:',len(promotions))
 print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])
 for x in promotions: print('   ',x[0],'<-',x[2],f"(sortie {x[1]})")
+print('pages dont le vendeur est ecarte (autre voie documentee):',len(vendeurs_ecartes))
 print('parents chiffres:',len(edges),'| conflits recette/vendeur:',len(conflits))
 for x in conflits: print('   ',x)
 print('ambiguites restantes:',sorted(AMBIG))

@@ -85,6 +85,21 @@ for (p, e), (q, org) in E.items():
         origine[(e, p)] = org
 
 
+# NOTE. Un premier jet distinguait ici « composant farmable » et « composant
+# achetable seulement », pour ne pas faire entrer un raccourci marchand dans
+# l'arbre. La distinction est juste, mais les champs sur lesquels elle
+# s'appuyait ne la portent pas : `farmable` vaut true sur
+# concentrated_chromatic_sap et solution_unbound, dont l'unique source est un
+# « extrait de la table de materiaux », et `free_repeatable` n'est renseigne
+# quasiment nulle part. Batir une regle de cout dessus, c'etait trancher au
+# jugé en croyant lire.
+
+# Le tri se fait desormais en amont, dans gw2_edges_wiki_v4, sur ce que la page
+# du wiki montre vraiment : si elle porte une boite Recipe, la recette dit ce
+# qu'il FAUT et le vendeur n'est qu'un service — aucune arete. Sinon, l'achat
+# est la seule voie documentee, donc c'est l'arete.
+
+
 def cycle(enfant, parent):
     """Vrai si poser enfant -> parent rend le graphe cyclique.
 
@@ -172,17 +187,7 @@ for tour in range(4):
                     a_retirer.append(leg)
             elif cascade[leg] == 0 and not any(
                     isinstance(q.get(leg + s), int) for s, _ in SUF if s):
-                # Un REMPLISSAGE ajoute un cout que rien d'autre ne corrobore :
-                # il exige une source qui ne laisse pas de place a l'ambiguite.
-                # Une recette en est une. Une table VENDEUR n'en est pas une :
-                # elle aplatit en une seule liste des options qui s'excluent
-                # (les six orbes de Gift of Infused Gems), et rien dans la
-                # capture ne dit laquelle est requise. Ces cas partent en
-                # arbitrage plutot qu'en donnee.
-                if any(origine.get((enfant, p)) != "recette" for p in neuves):
-                    mauvais.append((leg, "remplissage sur cout vendeur", apport[leg]))
-                else:
-                    remplis.append((leg, apport[leg]))
+                remplis.append((leg, apport[leg]))
             else:
                 mauvais.append((leg, f"deja {cascade[leg]} par cascade", apport[leg]))
         if mauvais:

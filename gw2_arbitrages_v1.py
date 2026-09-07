@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Liste les aretes que le depliage refuse de poser, triees par enjeu chiffre.
 
-`gw2_deplie_wiki_v5` pose une arete quand elle reproduit exactement ce que la
+`gw2_deplie_wiki_v8` pose une arete quand elle reproduit exactement ce que la
 donnee compte deja, ou quand elle comble un vide. Tout le reste est refuse et
 reste a plat : ce ne sont pas des trous, ce sont des DESACCORDS entre deux
 sources qui parlent du meme cout.
@@ -37,7 +37,7 @@ ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
 SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
 
 if not ARETES.exists():
-    sys.exit("lance d'abord gw2_edges_wiki_v3.py, qui produit /tmp/edges2.json")
+    sys.exit("lance d'abord gw2_edges_wiki_v5.py, qui produit /tmp/edges2.json")
 
 cc = json.load(open(SRC))["craft_components"]
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
