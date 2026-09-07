@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v231.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v232.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -53,12 +53,12 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
+| `Vision Crystal` | 3 |
 | `Magnetite Shard` | 2 |
 | `Branded Mass` | 1 |
 | `Gift of Battle` | 1 |
 | `Inscribed Shard` | 1 |
 | `PvP League Ticket` | 1 |
-| `Vision Crystal` | 1 |
 
 ## 3 — 7 composants sans apiId ni page
 

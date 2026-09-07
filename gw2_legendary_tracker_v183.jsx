@@ -2191,6 +2191,9 @@ function ChatCode({ code, copied, onCopy }) {
   );
 }
 
+const ALT_KEY = "gw2_cad_alt_v1";
+const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
+
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
@@ -2216,6 +2219,17 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     return add;
   };
   const legs = SOURCES_DB?.legendaries ?? {};
+  // Choix un-parmi-N declares dans SOURCES_DB.alt_groups. Douze armes gen2
+  // acceptent Maguuma OU Desert Mastery : les compter toutes les deux revenait
+  // a reclamer deux dons la ou la Forge en demande un. Seule l'option CHOISIE
+  // est comptee, et les options ne portent aucune cle qty sur ces cibles —
+  // l'audit le verifie.
+  const altGroups = SOURCES_DB?.alt_groups ?? {};
+  const altSel = (() => {
+    try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  })();
+  const altPick = (gid) => altSel[gid] ?? altGroups[gid]?.default ?? null;
   const totals = {};
   const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
@@ -2265,6 +2279,14 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       }
     }
   }
+  // Cibles LEGENDAIRES d'un choix : la presence vaut 1 par legendaire coche.
+  for (const [gid, g] of Object.entries(altGroups)) {
+    const opt = altPick(gid);
+    if (!opt) continue;
+    const n = (g.targets ?? []).filter(t => selectedIds.includes(t)).length;
+    if (n > 0) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0) * n;
+  }
+
   // Developpement des intermediaires : un composant dont la quantite est indexee
   // sur un AUTRE composant (10 filigranes par encapsulateur) n'etait compte nulle
   // part, faute d'etre rattache a un legendaire. On propage en cascade, en
@@ -2282,6 +2304,16 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
         const parent = totals[key] ?? 0;
         if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
       }
+    }
+    // Cibles COMPOSANTS d'un choix : la presence vaut le total deja calcule.
+    // Elles passent par `add` comme le reste de la cascade, sans quoi la
+    // contribution serait reappliquee a chaque passe.
+    for (const [gid, g] of Object.entries(altGroups)) {
+      const opt = altPick(gid);
+      if (!opt) continue;
+      let n = 0;
+      for (const t of (g.targets ?? [])) if (cc[t]) n += totals[t] ?? 0;
+      if (n > 0) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
     }
     let changed = false;
     for (const [compId, v] of Object.entries(add)) {
@@ -3001,6 +3033,15 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
   const [filterFarm, setFilterFarm] = useState("all");
+  // Choix un-parmi-N. La valeur par defaut vient de la donnee, pas du code :
+  // c'est la donnee qui sait quelle option est la plus courante.
+  const [altSel, setAltSel] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem(ALT_KEY, JSON.stringify(altSel)); } catch (_) {}
+  }, [altSel]);
   const [showVariables, setShowVariables] = useState(false);
   const [showApiInput, setShowApiInput] = useState(false);
   const [editingComp, setEditingComp] = useState(null); // compId en cours d'édition manuelle
@@ -3297,6 +3338,43 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
               ))}
             </div>
           </div>
+
+          {/* Choix un-parmi-N : Maguuma ou Desert, une gemme parmi six.
+              N'apparait que si un legendaire coche est concerne — sinon le
+              choix serait sans effet et sans sens. */}
+          {Object.entries(ALT_GROUPS)
+            .filter(([, g]) => (g.targets ?? []).some(x => selectedIds.includes(x) || (totals[x] ?? 0) > 0))
+            .map(([gid, g]) => {
+              const pick = altSel[gid] ?? g.default;
+              return (
+                <div key={gid} style={{ marginBottom: 8, padding: "7px 10px", borderRadius: 5,
+                  border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
+                  <div style={{ fontSize: 10, color: C, fontFamily: "'Cinzel', serif",
+                    letterSpacing: "0.06em", marginBottom: 5 }}>
+                    {L(g.label) ?? gid}
+                  </div>
+                  <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+                    {(g.options ?? []).map(o => (
+                      <button key={o} onClick={() => setAltSel(x => ({ ...x, [gid]: o }))} style={{
+                        padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
+                        fontFamily: "'Crimson Text', serif",
+                        border: `1px solid ${pick === o ? C : D + "0.15)"}`,
+                        background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
+                        color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
+                      }}>
+                        {L(cc[o]?.name) ?? o}
+                      </button>
+                    ))}
+                  </div>
+                  {L(g.note) ? (
+                    <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
+                      fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>
+                      {L(g.note)}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
 
           {/* Resources table */}
           {rows.length === 0 ? (

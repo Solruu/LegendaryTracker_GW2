@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v231",
+    "version": "v232",
     "last_updated": "2026-09-07",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -7418,11 +7418,6 @@ const SOURCES_DB = {
           "tip": "MF : 1× Gift of Maguuma + 1× Gift of Insights + 1× Bloodstone Shard + 250× Crystalline Ingot."
         }
       ],
-      "interchangeable_with": "gift_of_desert_mastery",
-      "interchangeable_note": {
-        "fr": "Gift of Desert Mastery utilisable à la place pour toutes les armes gen2 SAUF Astralaria, HOPE, Nevermore et Chuka and Champawat.",
-        "en": "Gift of Desert Mastery can be used instead for all gen2 weapons EXCEPT Astralaria, HOPE, Nevermore and Chuka and Champawat."
-      },
       "qty": {
         "gen2_astralaria": 1,
         "gen2_hope": 1,
@@ -7430,24 +7425,12 @@ const SOURCES_DB = {
         "gen2_chuka_and_champawat": 1,
         "gen2_tigris": 1,
         "gen2_caladbolg": 1,
-        "gen2_eureka": 1,
-        "gen2_shooshadoo": 1,
         "gen2_eordas_grip": 1,
         "gen2_itzels_boon": 1,
-        "gen2_exordium": 1,
         "gen2_hope_scepter": 1,
         "gen2_lorekeeper": 1,
         "gen2_elegy": 1,
-        "gen2_xiuquatl": 1,
-        "gen2_reaver_of_the_mists": 1,
-        "gen2_claw_of_the_khan_ur": 1,
-        "gen2_flames_of_war": 1,
-        "gen2_pharus": 1,
-        "gen2_sharur": 1,
-        "gen2_the_binding_of_ipos": 1,
-        "gen2_the_hms_divinity": 1,
-        "gen2_the_shining_blade": 1,
-        "gen2_verdarach": 1
+        "gen2_reaver_of_the_mists": 1
       },
       "kind": "advanced_craft"
     },
@@ -7485,19 +7468,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_compassion": 1,
-        "gen2_claw_of_the_khan_ur": 1,
-        "gen2_eureka": 1,
-        "gen2_exordium": 1,
-        "gen2_flames_of_war": 1,
-        "gen2_pharus": 1,
-        "gen2_sharur": 1,
-        "gen2_shooshadoo": 1,
-        "gen2_the_binding_of_ipos": 1,
-        "gen2_the_hms_divinity": 1,
-        "gen2_the_shining_blade": 1,
-        "gen2_verdarach": 1,
-        "gen2_xiuquatl": 1
+        "gift_of_compassion": 1
       },
       "kind": "intermediate",
       "recipe": {
@@ -66703,6 +66674,39 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-27"
     }
+  },
+  "alt_groups": {
+    "gen2_mastery": {
+      "qty": 1,
+      "options": [
+        "gift_of_maguuma_mastery",
+        "gift_of_desert_mastery"
+      ],
+      "default": "gift_of_maguuma_mastery",
+      "targets": [
+        "gen2_claw_of_the_khan_ur",
+        "gen2_eureka",
+        "gen2_exordium",
+        "gen2_flames_of_war",
+        "gen2_pharus",
+        "gen2_sharur",
+        "gen2_shooshadoo",
+        "gen2_the_binding_of_ipos",
+        "gen2_the_hms_divinity",
+        "gen2_the_shining_blade",
+        "gen2_verdarach",
+        "gen2_xiuquatl"
+      ],
+      "label": {
+        "fr": "Don de maîtrise — un seul des deux",
+        "en": "Mastery gift — one of the two"
+      },
+      "note": {
+        "fr": "La recette de la Forge mystique demande un seul don de maîtrise. Astralaria, HOPE, Nevermore et Chuka and Champawat n'acceptent que Maguuma ; les douze autres laissent le choix.",
+        "en": "The Mystic Forge recipe asks for a single mastery gift. Astralaria, HOPE, Nevermore and Chuka and Champawat only accept Maguuma; the other twelve leave the choice open."
+      },
+      "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme"
+    }
   }
 };
 
@@ -68169,6 +68173,9 @@ function ChatCode({ code, copied, onCopy }) {
   );
 }
 
+const ALT_KEY = "gw2_cad_alt_v1";
+const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
+
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
@@ -68194,6 +68201,17 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     return add;
   };
   const legs = SOURCES_DB?.legendaries ?? {};
+  // Choix un-parmi-N declares dans SOURCES_DB.alt_groups. Douze armes gen2
+  // acceptent Maguuma OU Desert Mastery : les compter toutes les deux revenait
+  // a reclamer deux dons la ou la Forge en demande un. Seule l'option CHOISIE
+  // est comptee, et les options ne portent aucune cle qty sur ces cibles —
+  // l'audit le verifie.
+  const altGroups = SOURCES_DB?.alt_groups ?? {};
+  const altSel = (() => {
+    try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  })();
+  const altPick = (gid) => altSel[gid] ?? altGroups[gid]?.default ?? null;
   const totals = {};
   const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
@@ -68243,6 +68261,14 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       }
     }
   }
+  // Cibles LEGENDAIRES d'un choix : la presence vaut 1 par legendaire coche.
+  for (const [gid, g] of Object.entries(altGroups)) {
+    const opt = altPick(gid);
+    if (!opt) continue;
+    const n = (g.targets ?? []).filter(t => selectedIds.includes(t)).length;
+    if (n > 0) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0) * n;
+  }
+
   // Developpement des intermediaires : un composant dont la quantite est indexee
   // sur un AUTRE composant (10 filigranes par encapsulateur) n'etait compte nulle
   // part, faute d'etre rattache a un legendaire. On propage en cascade, en
@@ -68260,6 +68286,16 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
         const parent = totals[key] ?? 0;
         if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
       }
+    }
+    // Cibles COMPOSANTS d'un choix : la presence vaut le total deja calcule.
+    // Elles passent par `add` comme le reste de la cascade, sans quoi la
+    // contribution serait reappliquee a chaque passe.
+    for (const [gid, g] of Object.entries(altGroups)) {
+      const opt = altPick(gid);
+      if (!opt) continue;
+      let n = 0;
+      for (const t of (g.targets ?? [])) if (cc[t]) n += totals[t] ?? 0;
+      if (n > 0) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
     }
     let changed = false;
     for (const [compId, v] of Object.entries(add)) {
@@ -68979,6 +69015,15 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
   const [filterFarm, setFilterFarm] = useState("all");
+  // Choix un-parmi-N. La valeur par defaut vient de la donnee, pas du code :
+  // c'est la donnee qui sait quelle option est la plus courante.
+  const [altSel, setAltSel] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem(ALT_KEY, JSON.stringify(altSel)); } catch (_) {}
+  }, [altSel]);
   const [showVariables, setShowVariables] = useState(false);
   const [showApiInput, setShowApiInput] = useState(false);
   const [editingComp, setEditingComp] = useState(null); // compId en cours d'édition manuelle
@@ -69275,6 +69320,43 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
               ))}
             </div>
           </div>
+
+          {/* Choix un-parmi-N : Maguuma ou Desert, une gemme parmi six.
+              N'apparait que si un legendaire coche est concerne — sinon le
+              choix serait sans effet et sans sens. */}
+          {Object.entries(ALT_GROUPS)
+            .filter(([, g]) => (g.targets ?? []).some(x => selectedIds.includes(x) || (totals[x] ?? 0) > 0))
+            .map(([gid, g]) => {
+              const pick = altSel[gid] ?? g.default;
+              return (
+                <div key={gid} style={{ marginBottom: 8, padding: "7px 10px", borderRadius: 5,
+                  border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
+                  <div style={{ fontSize: 10, color: C, fontFamily: "'Cinzel', serif",
+                    letterSpacing: "0.06em", marginBottom: 5 }}>
+                    {L(g.label) ?? gid}
+                  </div>
+                  <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+                    {(g.options ?? []).map(o => (
+                      <button key={o} onClick={() => setAltSel(x => ({ ...x, [gid]: o }))} style={{
+                        padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
+                        fontFamily: "'Crimson Text', serif",
+                        border: `1px solid ${pick === o ? C : D + "0.15)"}`,
+                        background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
+                        color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
+                      }}>
+                        {L(cc[o]?.name) ?? o}
+                      </button>
+                    ))}
+                  </div>
+                  {L(g.note) ? (
+                    <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
+                      fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>
+                      {L(g.note)}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
 
           {/* Resources table */}
           {rows.length === 0 ? (

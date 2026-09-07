@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v231",
+  "version": "v232",
   "last_updated": "2026-09-07",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -6632,11 +6632,6 @@
      "tip": "MF : 1× Gift of Maguuma + 1× Gift of Insights + 1× Bloodstone Shard + 250× Crystalline Ingot."
     }
    ],
-   "interchangeable_with": "gift_of_desert_mastery",
-   "interchangeable_note": {
-    "fr": "Gift of Desert Mastery utilisable à la place pour toutes les armes gen2 SAUF Astralaria, HOPE, Nevermore et Chuka and Champawat.",
-    "en": "Gift of Desert Mastery can be used instead for all gen2 weapons EXCEPT Astralaria, HOPE, Nevermore and Chuka and Champawat."
-   },
    "qty": {
     "gen2_astralaria": 1,
     "gen2_hope": 1,
@@ -6644,24 +6639,12 @@
     "gen2_chuka_and_champawat": 1,
     "gen2_tigris": 1,
     "gen2_caladbolg": 1,
-    "gen2_eureka": 1,
-    "gen2_shooshadoo": 1,
     "gen2_eordas_grip": 1,
     "gen2_itzels_boon": 1,
-    "gen2_exordium": 1,
     "gen2_hope_scepter": 1,
     "gen2_lorekeeper": 1,
     "gen2_elegy": 1,
-    "gen2_xiuquatl": 1,
-    "gen2_reaver_of_the_mists": 1,
-    "gen2_claw_of_the_khan_ur": 1,
-    "gen2_flames_of_war": 1,
-    "gen2_pharus": 1,
-    "gen2_sharur": 1,
-    "gen2_the_binding_of_ipos": 1,
-    "gen2_the_hms_divinity": 1,
-    "gen2_the_shining_blade": 1,
-    "gen2_verdarach": 1
+    "gen2_reaver_of_the_mists": 1
    },
    "kind": "advanced_craft"
   },
@@ -6699,19 +6682,7 @@
     }
    ],
    "qty": {
-    "gift_of_compassion": 1,
-    "gen2_claw_of_the_khan_ur": 1,
-    "gen2_eureka": 1,
-    "gen2_exordium": 1,
-    "gen2_flames_of_war": 1,
-    "gen2_pharus": 1,
-    "gen2_sharur": 1,
-    "gen2_shooshadoo": 1,
-    "gen2_the_binding_of_ipos": 1,
-    "gen2_the_hms_divinity": 1,
-    "gen2_the_shining_blade": 1,
-    "gen2_verdarach": 1,
-    "gen2_xiuquatl": 1
+    "gift_of_compassion": 1
    },
    "kind": "intermediate",
    "recipe": {
@@ -65916,6 +65887,39 @@
    "ref": "wiki — 32 tableaux « Dropped by » versés dans ressources/wiki/, parsés par gw2_parse_dropped_by_v2.py (2 598 entrées, 2026-08-27)",
    "verified": true,
    "checked": "2026-08-27"
+  }
+ },
+ "alt_groups": {
+  "gen2_mastery": {
+   "qty": 1,
+   "options": [
+    "gift_of_maguuma_mastery",
+    "gift_of_desert_mastery"
+   ],
+   "default": "gift_of_maguuma_mastery",
+   "targets": [
+    "gen2_claw_of_the_khan_ur",
+    "gen2_eureka",
+    "gen2_exordium",
+    "gen2_flames_of_war",
+    "gen2_pharus",
+    "gen2_sharur",
+    "gen2_shooshadoo",
+    "gen2_the_binding_of_ipos",
+    "gen2_the_hms_divinity",
+    "gen2_the_shining_blade",
+    "gen2_verdarach",
+    "gen2_xiuquatl"
+   ],
+   "label": {
+    "fr": "Don de maîtrise — un seul des deux",
+    "en": "Mastery gift — one of the two"
+   },
+   "note": {
+    "fr": "La recette de la Forge mystique demande un seul don de maîtrise. Astralaria, HOPE, Nevermore et Chuka and Champawat n'acceptent que Maguuma ; les douze autres laissent le choix.",
+    "en": "The Mystic Forge recipe asks for a single mastery gift. Astralaria, HOPE, Nevermore and Chuka and Champawat only accept Maguuma; the other twelve leave the choice open."
+   },
+   "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme"
   }
  }
 }

@@ -1556,6 +1556,45 @@ def check_nom_pluriel_double(data, errors, warnings):
             )
 
 
+def check_alt_groups(data, errors, warnings):
+    """`alt_groups` exprime un choix : exactement une option est comptee.
+
+    La regle qui compte est la derniere : aucune option ne doit garder une cle
+    `qty` sur une cible du groupe. Si elle la garde, la cible paie l'option par
+    la cle ET par le groupe, et le double compte que la structure existe pour
+    supprimer revient par la fenetre. C'est exactement l'etat dont on est
+    parti : douze armes gen2 portaient les deux dons de maitrise a 1 chacun.
+    """
+    groupes = data.get("alt_groups") or {}
+    cc = data.get("craft_components") or {}
+    legs = data.get("legendaries") or {}
+    for gid, g in groupes.items():
+        label = f"alt_groups[{gid}]"
+        options = g.get("options") or []
+        if len(options) < 2:
+            errors.append(f"{label} : un choix demande au moins deux options")
+        for o in options:
+            if o not in cc:
+                errors.append(f"{label} : option inconnue « {o} »")
+        if g.get("default") not in options:
+            errors.append(f"{label} : `default` doit figurer dans `options`")
+        if not isinstance(g.get("qty"), int) or g["qty"] <= 0:
+            errors.append(f"{label} : `qty` doit etre un entier positif")
+        cibles = g.get("targets") or []
+        if not cibles:
+            errors.append(f"{label} : aucune cible")
+        for t in cibles:
+            if t not in legs and t not in cc:
+                errors.append(f"{label} : cible inconnue « {t} »")
+            for o in options:
+                if t in ((cc.get(o) or {}).get("qty") or {}):
+                    errors.append(
+                        f"{label} : « {o} » garde une cle qty sur « {t} » — la cible "
+                        f"paierait l'option deux fois, par la cle et par le groupe")
+        if not g.get("ref"):
+            warnings.append(f"{label} : sans `ref`, l'arbitrage n'est pas tracable")
+
+
 def check_lecture_colonne3(data, errors, warnings):
     """Un enfant ne doit pas couter plus cher que son parent ne le justifie.
 
@@ -1707,6 +1746,9 @@ def main() -> int:
 
     # 33. Le meme nombre a deux crans : quantite agregee lue comme unitaire
     check_lecture_colonne3(data, errors, warnings)
+
+    # 34. alt_groups : un choix un-parmi-N ne doit jamais compter deux fois
+    check_alt_groups(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

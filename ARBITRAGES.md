@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v231.json` — 420 desaccords sur 31 composants.
+Source : `gw2_sources_v232.json` — 352 desaccords sur 29 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -15,13 +15,13 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x12, ecart de compte x1 |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | 2 | 580 | ecart de compte x2 |
-| `amalgamated_gemstone` — Amalgamated Gemstone | 42 | 500 | cout vendeur x41, ecart de compte x1 |
-| `obsidian_shard` — Obsidian Shard | 69 | 423 | deja compte par cascade x55, ecart de compte x14 |
 | `magnetite_shard` — Magnetite Shard | 1 | 350 | ecart de compte x1 |
-| `airship_part` — Airship Part | 25 | 250 | deja compte par cascade x24, cout vendeur x1 |
+| `obsidian_shard` — Obsidian Shard | 69 | 265 | deja compte par cascade x55, ecart de compte x14 |
+| `airship_part` — Airship Part | 13 | 250 | deja compte par cascade x12, cout vendeur x1 |
+| `amalgamated_gemstone` — Amalgamated Gemstone | 34 | 250 | cout vendeur x33, ecart de compte x1 |
 | `dust_incandescent` — Pile of Incandescent Dust | 2 | 250 | deja compte par cascade x2 |
-| `ley_line_crystal` — Ley Line Crystal | 25 | 250 | deja compte par cascade x24, cout vendeur x1 |
-| `lump_of_aurillium` — Lump of Aurillium | 25 | 250 | deja compte par cascade x24, cout vendeur x1 |
+| `ley_line_crystal` — Ley Line Crystal | 13 | 250 | deja compte par cascade x12, cout vendeur x1 |
+| `lump_of_aurillium` — Lump of Aurillium | 13 | 250 | deja compte par cascade x12, cout vendeur x1 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
 | `mystic_coin` — Mystic Coin | 67 | 223 | ecart de compte x67 |
@@ -33,8 +33,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `mystic_clover` — Mystic Clover | 30 | 77 | ecart de compte x16, cout vendeur x14 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 | `gift_of_battle` — Gift of Battle | 1 | 1 | deja compte par cascade x1 |
-| `bloodstone_shard` — Bloodstone Shard | 12 | 0 | deja compte par cascade x12 |
-| `crystalline_ingot` — Crystalline Ingot | 12 | 0 | deja compte par cascade x12 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
 | `gift_of_bones` — Gift of Bones | 1 | 0 | deja compte par cascade x1 |
 | `inscribed_shard` — Inscribed Shard | 1 | 0 | deja compte par cascade x1 |
@@ -113,14 +111,14 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `conflux` | 249 | 77 | 172 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `stella_radians` | 2249 | 2077 | 172 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
 
-## DEJA COMPTE PAR CASCADE — 212 cas
+## DEJA COMPTE PAR CASCADE — 152 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 212. Le reste se
+Les 60 plus gros ecarts sur 152. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
@@ -128,14 +126,6 @@ recalcule en relancant le script.
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
 | `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 400 | 1650 | 1250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `vision` | 768 | 77 | 691 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_eureka` | 500 | 77 | 423 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_exordium` | 500 | 77 | 423 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_shooshadoo` | 500 | 77 | 423 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_xiuquatl` | 500 | 77 | 423 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `obsidian_shard` — Obsidian Shard | `gen2_eureka` | 500 | 77 | 423 | gift_of_castoran_mastery (recette), gift_of_expertise (recette), gift_of_infused_gems (recette) +2 autres |
-| `obsidian_shard` — Obsidian Shard | `gen2_exordium` | 500 | 77 | 423 | gift_of_castoran_mastery (recette), gift_of_expertise (recette), gift_of_infused_gems (recette) +2 autres |
-| `obsidian_shard` — Obsidian Shard | `gen2_shooshadoo` | 500 | 77 | 423 | gift_of_castoran_mastery (recette), gift_of_expertise (recette), gift_of_infused_gems (recette) +2 autres |
-| `obsidian_shard` — Obsidian Shard | `gen2_xiuquatl` | 500 | 77 | 423 | gift_of_castoran_mastery (recette), gift_of_expertise (recette), gift_of_infused_gems (recette) +2 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +5 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +5 autres |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_bifrost` | 250 | 500 | 250 | chrysocola_orb (recette), emerald_orb (recette), opal_orb (recette) +2 autres |
@@ -145,84 +135,81 @@ recalcule en relancant le script.
 | `airship_part` — Airship Part | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_claw_of_the_khan_ur` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_eureka` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_exordium` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_flames_of_war` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_pharus` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_sharur` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_shooshadoo` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_the_binding_of_ipos` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_the_hms_divinity` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_the_shining_blade` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `airship_part` — Airship Part | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_verdarach` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `airship_part` — Airship Part | `gen2_xiuquatl` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_claw_of_the_khan_ur` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_eureka` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_exordium` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_flames_of_war` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_pharus` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_sharur` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_shooshadoo` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_the_binding_of_ipos` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `coalescence` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_astralaria` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_caladbolg` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_chuka_and_champawat` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_elegy` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_eordas_grip` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_eureka` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_exordium` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_hope` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_hope_scepter` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_itzels_boon` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_lorekeeper` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_nevermore` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_reaver_of_the_mists` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_shooshadoo` | 250 | 77 | 173 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
 
-## COUT VENDEUR — 65 cas
+## COUT VENDEUR — 57 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
 
-Les 60 plus gros ecarts sur 65. Le reste se
-recalcule en relancant le script.
-
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `obsidian` | 0 | 3654 | 3654 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_eureka` | 0 | 500 | 500 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_exordium` | 0 | 500 | 500 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_shooshadoo` | 0 | 500 | 500 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_xiuquatl` | 0 | 500 | 500 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `upgrades_combined` | 0 | 300 | 300 | amalgamated_rift_essence (recette), gift_of_fortune (recette), gift_of_souls (recette) +6 autres |
 | `airship_part` — Airship Part | `perfected_envoy` | 0 | 250 | 250 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_astralaria` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_caladbolg` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_chuka_and_champawat` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_claw_of_the_khan_ur` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_elegy` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_eordas_grip` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_flames_of_war` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
+| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_eureka` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
+| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_exordium` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_hope` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_hope_scepter` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_itzels_boon` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_lorekeeper` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_nevermore` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_pharus` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_reaver_of_the_mists` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_sharur` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_the_binding_of_ipos` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_the_hms_divinity` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_the_shining_blade` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
+| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_shooshadoo` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_tigris` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
-| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_verdarach` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
+| `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_xiuquatl` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen3_aurenes_argument` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen3_aurenes_bite` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen3_aurenes_breath` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
@@ -256,3 +243,8 @@ recalcule en relancant le script.
 | `mystic_clover` — Mystic Clover | `gen3_aurene_s_fang` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_the_side_course (recette) +2 autres |
 | `mystic_clover` — Mystic Clover | `gen3_aurene_s_flight` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_the_side_course (recette) +2 autres |
 | `mystic_clover` — Mystic Clover | `gen3_aurene_s_tail` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_the_side_course (recette) +2 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_wing` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_the_side_course (recette) +2 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_rending` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_the_side_course (recette) +2 autres |
+| `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur), unbound_wings (recette) |
+| `amalgamated_gemstone` — Amalgamated Gemstone | `aurora` | 0 | 1 | 1 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +2 autres |
+| `vision_crystal` — Vision Crystal | `ad_infinitum` | 0 | 1 | 1 | gift_of_adventure (vendeur), unbound_wings (recette) |
