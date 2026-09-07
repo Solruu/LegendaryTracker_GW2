@@ -1107,3 +1107,31 @@ travail des captures est là, et invisible.
 **Décision à prendre** : ouvrir la fiche d'une arme au clic (onglet Collections
 alimenté par `gen*_<arme>`), ou ajouter un sélecteur d'arme au-dessus de l'onglet
 Collections existant. La seconde réutilise le rendu générique qui marche déjà.
+
+### ③ 181 désaccords entre l'arbre de craft et les tables du wiki
+
+Le dépliage des coûts à plat en arêtes s'arrête là où deux sources se
+contredisent. Ces cas ne sont **pas** des trous : la donnée reste à plat et le
+total affiché ne bouge pas tant que l'arbitrage n'est pas fait.
+
+Le détail est dans **`ARBITRAGES.md`**, régénérable par
+`python3 gw2_edges_wiki_v3.py && python3 gw2_arbitrages_v1.py`.
+
+Trois familles, qui ne se tranchent pas de la même façon :
+
+- **Écart de compte (56)** — la clé à plat et l'arête donnent deux nombres
+  différents, l'un des deux est faux. Se tranche sur la page du **parent**,
+  boîte Recipe. Les plus gros écarts sont sur les monnaies Mursaat d'Orrax
+  (18 100 et 9 175) et sur `glob_of_ectoplasm`.
+- **Déjà compté par cascade (71)** — le composant arrive déjà au légendaire par
+  un chemin modélisé et la table en propose un second. Soit le second ne vaut
+  pas pour ce légendaire, soit les deux sont réels et le chevauchement se
+  déclare dans `qty_overlap_verified`. `bloodstone_shard` et
+  `crystalline_ingot` sont entièrement bloqués par là, avec un écart de 0 :
+  poser l'arête doublerait exactement.
+- **Coût vendeur (54)** — la table vendeur aplatit des options qui s'excluent.
+  Se tranche en regardant si le vendeur propose un **choix** ou une **liste**.
+  `amalgamated_gemstone` en concentre 41 à lui seul.
+
+Deux composants portent la moitié du lot : `glob_of_ectoplasm` (47) et
+`amalgamated_gemstone` (43).

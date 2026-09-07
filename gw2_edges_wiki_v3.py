@@ -44,7 +44,12 @@ recettes, ce sont les recettes qui tranchent : un ingredient qu'elles ont
 designe comme alternatif ne peut pas revenir par le vendeur.
 """
 import json, re, collections, sys
-d=json.load(open('gw2_sources_v228.json'), object_pairs_hook=collections.OrderedDict)
+from pathlib import Path
+# Le fichier de sources est resolu au plus haut _vN plutot que code en dur :
+# une version figee ici devient introuvable des la passe suivante.
+SRC = max(Path(__file__).resolve().parent.glob('gw2_sources_v*.json'),
+          key=lambda p: int(p.stem.split('_v')[-1]))
+d=json.load(open(SRC), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 def norm(s): return re.sub(r'[^a-z0-9]','',s.lower())
