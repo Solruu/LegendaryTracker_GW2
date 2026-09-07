@@ -150,9 +150,16 @@ for f in ("compte", "cascade", "vendeur"):
     else:
         out.append("La table vendeur aplatit des options qui s'excluent. Se tranche en")
         out.append("regardant si le vendeur propose un choix ou une liste.\n")
+    # Le detail est plafonne : une famille a 811 lignes ne se lit pas, et la
+    # somme par composant plus haut suffit a decider par ou commencer. Le
+    # calcul, lui, porte sur la totalite.
+    CAP = 60
+    if len(sous) > CAP:
+        out.append(f"Les {CAP} plus gros ecarts sur {len(sous)}. Le reste se")
+        out.append("recalcule en relancant le script.\n")
     out.append("| composant | legendaire | donnee | wiki | ecart | parents proposes |")
     out.append("|---|---|---:|---:|---:|---|")
-    for enj, _, e, leg, dit, ap, ps, orgs in sous:
+    for enj, _, e, leg, dit, ap, ps, orgs in sous[:CAP]:
         # La liste complete des parents est illisible des qu'un composant en a
         # treize (glob_of_ectoplasm). On en montre trois, le compte fait le
         # reste, et le detail se relit dans /tmp/edges2.json.

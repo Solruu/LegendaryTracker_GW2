@@ -32,6 +32,24 @@ Un seul refus fait tomber tout le composant : on ne laisse pas la moitie de ses
 aretes posees et l'autre moitie a plat, ce serait exactement le double comptage
 qu'on cherche a eviter.
 
+v6 : LE CONTROLE D'INVARIANCE DESCEND AU NIVEAU DU COMPOSANT.
+
+La v5 posait tous les composants acceptables, puis verifiait l'invariance a la
+fin. Une seule arete fautive faisait donc echouer la passe entiere, y compris
+les vingt bonnes. Et la condition par paire ne voit que le composant qu'elle
+examine : poser `gift_of_condensed_might` sous Strife Unending est valide de son
+propre point de vue, mais fait remonter tous les dons de trophees sous lui,
+alors que Strife Unending compte deja ces trophees a plat. Les ecailles passent
+de 300 a 600 — un composant plus bas, invisible depuis celui qu'on teste.
+
+Chaque composant est donc pose SEUL, les totaux sont recalcules, et il est
+REPRIS si un total etabli a bouge ou baisse. Ce qui reste est ce qui tient.
+
+Corrige au passage : un composant sans cle `qty` recevait ses aretes dans un
+dictionnaire detache, jamais rattache a la donnee. Il etait redeplie a chaque
+tour sans que rien ne soit ecrit — `fruits_of_the_shadow` apparaissait quatre
+fois dans le rapport.
+
 Deux gardes heritees, toujours necessaires :
 
 - les chevauchements declares dans `qty_overlap_verified` sont ignores, la cle
@@ -46,7 +64,12 @@ Une baisse, ou une hausse la ou un total existait, interdit l'ecriture.
 import collections
 import json
 
-SRC, DST, VER = "gw2_sources_v228.json", "gw2_sources_v229.json", "v229"
+# Resolution au plus haut _vN plutot qu'un chemin fige : une version codee en
+# dur devient introuvable des la passe suivante, ce qui s'est produit.
+HERE = __import__("pathlib").Path(__file__).resolve().parent
+SRC = max(HERE.glob("gw2_sources_v*.json"), key=lambda p: int(p.stem.split("_v")[-1]))
+VER = f"v{int(SRC.stem.split('_v')[-1]) + 1}"
+DST = HERE / f"gw2_sources_{VER}.json"
 ARETES = "/tmp/edges2.json"
 ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
 SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
@@ -120,7 +143,9 @@ for tour in range(4):
     T = {l: totaux(l) for l in cibles}
     bouge = False
     for enfant, parents in sorted(par_enfant.items()):
-        q = cc[enfant].get("qty") or {}
+        # setdefault et non `.get(...) or {}` : un composant sans cle `qty`
+        # recevait sinon ses aretes dans un dictionnaire detache de la donnee.
+        q = cc[enfant].setdefault("qty", {})
         neuves = {p: v for p, v in parents.items() if p not in q}
         if not neuves:
             continue
@@ -163,11 +188,27 @@ for tour in range(4):
         if mauvais:
             refus.append((enfant, "compte", mauvais[:2]))
             continue
+        # Essai reversible : on pose, on recalcule TOUT, on garde si et seulement
+        # si aucun total etabli n'a bouge. La condition par paire ne voit pas les
+        # composants situes plus bas dans l'arbre ; ce controle-ci les voit.
+        avant_essai = dict(q)
+        nf_avant = list(cc[enfant].get("needed_for") or [])
         for p, v in neuves.items():
             q[p] = v
-        cc[enfant]["needed_for"] = sorted(set(cc[enfant].get("needed_for") or []) | set(neuves))
+        cc[enfant]["needed_for"] = sorted(set(nf_avant) | set(neuves))
         for leg in a_retirer:
             del q[leg]
+        essai = {l: totaux(l) for l in cibles}
+        casse = [(l, k, avant[l].get(k, 0), essai[l].get(k, 0)) for l in cibles
+                 for k in set(avant[l]) | set(essai[l])
+                 if avant[l].get(k, 0) != essai[l].get(k, 0)
+                 and not (avant[l].get(k, 0) == 0 and essai[l].get(k, 0) > 0)]
+        if casse:
+            q.clear()
+            q.update(avant_essai)
+            cc[enfant]["needed_for"] = nf_avant
+            refus.append((enfant, "casse un total ailleurs", casse[:2]))
+            continue
         if a_retirer:
             echanges.append((enfant, sorted(neuves), a_retirer))
         if remplis:

@@ -469,10 +469,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `gift_of_insights.html` | Gift of Insights | article complet | 2026-09-05 |
 | `gift_of_jade_mastery.html` | Gift of Jade Mastery | article complet | 2026-09-05 |
 | `gift_of_janthir_wilds.html` | Gift of Janthir Wilds | article complet | 2026-09-05 |
-| `gift_of_magical_prosperity.html` | Gift of Magical Prosperity | article complet | 2026-09-05 |
+| `gift_of_magical_prosperity.html` | Gift of Magical Prosperity | article complet | 2026-09-07 |
 | `gift_of_maguuma_mastery.html` | Gift of Maguuma Mastery | article complet | 2026-09-05 |
 | `gift_of_mastery.html` | Gift of Mastery | article complet | 2026-09-05 |
-| `gift_of_mighty_prosperity.html` | Gift of Mighty Prosperity | article complet | 2026-09-05 |
+| `gift_of_mighty_prosperity.html` | Gift of Mighty Prosperity | article complet | 2026-09-07 |
 | `gift_of_nevermore.html` | Gift of Nevermore | article complet | 2026-09-05 |
 | `gift_of_patience.html` | Gift of Patience | article complet | 2026-09-05 |
 | `gift_of_pharus.html` | Gift of Pharus | article complet | 2026-09-05 |
@@ -521,14 +521,14 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `transcendence.html` | Transcendence | article complet | 2026-09-05 |
 | `ad_infinitum.html` | Ad Infinitum | article complet | 2026-09-06 |
 | `aetheric_anchor.html` | Aetheric Anchor | article complet | 2026-09-06 |
-| `ardent_glorious_armor.html` | Ardent Glorious armor | article complet | 2026-09-06 |
+| `ardent_glorious_armor.html` | Ardent Glorious armor | article complet | 2026-09-07 |
 | `aurora.html` | Aurora | article complet | 2026-09-06 |
 | `coalescence.html` | Coalescence | article complet | 2026-09-06 |
 | `conflux.html` | Conflux | article complet | 2026-09-06 |
 | `eikasia_mists_grasper.html` | Eikasia, Mists-Grasper | article complet | 2026-09-06 |
 | `endless_summer.html` | Endless Summer | article complet | 2026-09-06 |
-| `obsidian_armor.html` | Obsidian armor | article complet | 2026-09-06 |
-| `orrax_manifested.html` | Orrax Manifested | article complet | 2026-09-06 |
+| `obsidian_armor.html` | Obsidian armor | article complet | 2026-09-07 |
+| `orrax_manifested.html` | Orrax Manifested | article complet | 2026-09-07 |
 | `perfected_envoy_armor.html` | Perfected Envoy armor | article complet | 2026-09-06 |
 | `selachimorpha.html` | Selachimorpha | article complet | 2026-09-06 |
 | `stella_radians.html` | Stella Radians | article complet | 2026-09-06 |
@@ -537,6 +537,182 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `triumphant_hero_s_armor.html` | Triumphant Hero's armor | article complet | 2026-09-06 |
 | `vision.html` | Vision | article complet | 2026-09-06 |
 | `warbringer.html` | Warbringer | article complet | 2026-09-06 |
+| `aether_rich_sap.html` | Aether-Rich Sap | article complet | 2026-09-07 |
+| `airship_part.html` | Airship Part | article complet | 2026-09-07 |
+| `amalgamated_gemstone.html` | Amalgamated Gemstone | article complet | 2026-09-07 |
+| `antiquated_ducat.html` | Antiquated Ducat | article complet | 2026-09-07 |
+| `ars_goetia.html` | Ars Goetia | article complet | 2026-09-07 |
+| `banner_of_the_commander.html` | Banner of the Commander | article complet | 2026-09-07 |
+| `banner_pennon.html` | Banner Pennon | article complet | 2026-09-07 |
+| `bloodstone_shard.html` | Bloodstone Shard | article complet | 2026-09-07 |
+| `case_of_captured_lightning.html` | Case of Captured Lightning | article complet | 2026-09-07 |
+| `certificate_of_support.html` | Certificate of Support | article complet | 2026-09-07 |
+| `clot_of_congealed_screams.html` | Clot of Congealed Screams | article complet | 2026-09-07 |
+| `concentrated_chromatic_sap.html` | Concentrated Chromatic Sap | article complet | 2026-09-07 |
+| `deldrimor_steel_ingot.html` | Deldrimor Steel Ingot | article complet | 2026-09-07 |
+| `deldrimor_steel_spear_head.html` | Deldrimor Steel Spear Head | article complet | 2026-09-07 |
+| `discounted_shard_of_janthir_syntri.html` | Discounted Shard of Janthir Syntri | article complet | 2026-09-07 |
+| `discounted_shard_of_lowland_shore.html` | Discounted Shard of Lowland Shore | article complet | 2026-09-07 |
+| `discounted_shard_of_mistburned_barrens.html` | Discounted Shard of Mistburned Barrens | article complet | 2026-09-07 |
+| `diviners_orichalcum_imbued_inscription.html` | Diviner's Orichalcum-Imbued Inscription | article complet | 2026-09-07 |
+| `dragonsblood_weapons.html` | Dragonsblood weapons | article complet | 2026-09-07 |
+| `eel_statue.html` | Eel Statue | article complet | 2026-09-07 |
+| `emblem_of_the_avenger.html` | Emblem of the Avenger | article complet | 2026-09-07 |
+| `emblem_of_the_conqueror.html` | Emblem of the Conqueror | article complet | 2026-09-07 |
+| `emerald_orb.html` | Emerald Orb | article complet | 2026-09-07 |
+| `exquisite_serpentite_jewel.html` | Exquisite Serpentite Jewel | article complet | 2026-09-07 |
+| `fractal_capacitor.html` | Fractal Capacitor | article complet | 2026-09-07 |
+| `fractalline_dust.html` | Fractalline Dust | article complet | 2026-09-07 |
+| `fractalline_spark.html` | Fractalline Spark | article complet | 2026-09-07 |
+| `gift_of_adventure.html` | Gift of Adventure | article complet | 2026-09-07 |
+| `gift_of_arid_mastery.html` | Gift of Arid Mastery | article complet | 2026-09-07 |
+| `gift_of_blood.html` | Gift of Blood | article complet | 2026-09-07 |
+| `gift_of_bloodstone_magic.html` | Gift of Bloodstone Magic | article complet | 2026-09-07 |
+| `gift_of_bolt.html` | Gift of Bolt | article complet | 2026-09-07 |
+| `gift_of_bones.html` | Gift of Bones | article complet | 2026-09-07 |
+| `gift_of_claws.html` | Gift of Claws | article complet | 2026-09-07 |
+| `gift_of_color.html` | Gift of Color | article complet | 2026-09-07 |
+| `gift_of_compassion.html` | Gift of Compassion | article complet | 2026-09-07 |
+| `gift_of_competitive_dedication.html` | Gift of Competitive Dedication | article complet | 2026-09-07 |
+| `gift_of_complex_emotions.html` | Gift of Complex Emotions | article complet | 2026-09-07 |
+| `gift_of_crystalline_magic.html` | Gift of Crystalline Magic | article complet | 2026-09-07 |
+| `gift_of_darkness.html` | Gift of Darkness | article complet | 2026-09-07 |
+| `gift_of_dedication.html` | Gift of Dedication | article complet | 2026-09-07 |
+| `gift_of_draconic_mastery.html` | Gift of Draconic Mastery | article complet | 2026-09-07 |
+| `gift_of_dragon_magic.html` | Gift of Dragon Magic | article complet | 2026-09-07 |
+| `gift_of_dust.html` | Gift of Dust | article complet | 2026-09-07 |
+| `gift_of_embracing_refuge.html` | Gift of Embracing Refuge | article complet | 2026-09-07 |
+| `gift_of_entertainment.html` | Gift of Entertainment | article complet | 2026-09-07 |
+| `gift_of_ephemeral_magic.html` | Gift of Ephemeral Magic | article complet | 2026-09-07 |
+| `gift_of_eternitys_garden_exploration.html` | Gift of Eternity's Garden Exploration | article complet | 2026-09-07 |
+| `gift_of_family.html` | Gift of Family | article complet | 2026-09-07 |
+| `gift_of_fangs.html` | Gift of Fangs | article complet | 2026-09-07 |
+| `gift_of_frenzy.html` | Gift of Frenzy | article complet | 2026-09-07 |
+| `gift_of_frostfang.html` | Gift of Frostfang | article complet | 2026-09-07 |
+| `gift_of_gliding.html` | Gift of Gliding | article complet | 2026-09-07 |
+| `gift_of_history.html` | Gift of History | article complet | 2026-09-07 |
+| `gift_of_howler.html` | Gift of Howler | article complet | 2026-09-07 |
+| `gift_of_ice.html` | Gift of Ice | article complet | 2026-09-07 |
+| `gift_of_incinerator.html` | Gift of Incinerator | article complet | 2026-09-07 |
+| `gift_of_insight.html` | Gift of Insight | article complet | 2026-09-07 |
+| `gift_of_janthir_wanderlust.html` | Gift of Janthir Wanderlust | article complet | 2026-09-07 |
+| `gift_of_kamohoalii_kotaki.html` | Gift of Kamohoali'i Kotaki | article complet | 2026-09-07 |
+| `gift_of_kraitkin.html` | Gift of Kraitkin | article complet | 2026-09-07 |
+| `gift_of_kudzu.html` | Gift of Kudzu | article complet | 2026-09-07 |
+| `gift_of_light.html` | Gift of Light | article complet | 2026-09-07 |
+| `gift_of_lightning.html` | Gift of Lightning | article complet | 2026-09-07 |
+| `gift_of_magic.html` | Gift of Magic | article complet | 2026-09-07 |
+| `gift_of_maguuma.html` | Gift of Maguuma | article complet | 2026-09-07 |
+| `gift_of_meteorlogicus.html` | Gift of Meteorlogicus | article complet | 2026-09-07 |
+| `gift_of_might.html` | Gift of Might | article complet | 2026-09-07 |
+| `gift_of_music.html` | Gift of Music | article complet | 2026-09-07 |
+| `gift_of_nature.html` | Gift of Nature | article complet | 2026-09-07 |
+| `gift_of_prowess.html` | Gift of Prowess | article complet | 2026-09-07 |
+| `gift_of_quip.html` | Gift of Quip | article complet | 2026-09-07 |
+| `gift_of_recollector_of_memories.html` | Gift of Recollector of Memories | article complet | 2026-09-07 |
+| `gift_of_regrowth.html` | Gift of Regrowth | article complet | 2026-09-07 |
+| `gift_of_restoration.html` | Gift of Restoration | article complet | 2026-09-07 |
+| `gift_of_rodgort.html` | Gift of Rodgort | article complet | 2026-09-07 |
+| `gift_of_scales.html` | Gift of Scales | article complet | 2026-09-07 |
+| `gift_of_sharpened_tip.html` | Gift of Sharpened Tip | article complet | 2026-09-07 |
+| `gift_of_shipwreck_strand_exploration.html` | Gift of Shipwreck Strand Exploration | article complet | 2026-09-07 |
+| `gift_of_souls.html` | Gift of Souls | article complet | 2026-09-07 |
+| `gift_of_starlit_weald_exploration.html` | Gift of Starlit Weald Exploration | article complet | 2026-09-07 |
+| `gift_of_stealth.html` | Gift of Stealth | article complet | 2026-09-07 |
+| `gift_of_sunrise.html` | Gift of Sunrise | article complet | 2026-09-07 |
+| `gift_of_the_appetizer.html` | Gift of the Appetizer | article complet | 2026-09-07 |
+| `gift_of_the_astral_ward.html` | Gift of the Astral Ward | article complet | 2026-09-07 |
+| `gift_of_the_bifrost.html` | Gift of The Bifrost | article complet | 2026-09-07 |
+| `gift_of_the_catalyst.html` | Gift of the Catalyst | article complet | 2026-09-07 |
+| `gift_of_the_cosmos.html` | Gift of the Cosmos | article complet | 2026-09-07 |
+| `gift_of_the_desolation.html` | Gift of the Desolation | article complet | 2026-09-07 |
+| `gift_of_the_dessert.html` | Gift of the Dessert | article complet | 2026-09-07 |
+| `gift_of_the_dreamer.html` | Gift of The Dreamer | article complet | 2026-09-07 |
+| `gift_of_the_entree.html` | Gift of the Entrée | article complet | 2026-09-07 |
+| `gift_of_the_flameseeker_prophecies.html` | Gift of The Flameseeker Prophecies | article complet | 2026-09-07 |
+| `gift_of_the_homesteader.html` | Gift of the Homesteader | article complet | 2026-09-07 |
+| `gift_of_the_juggernaut.html` | Gift of The Juggernaut | article complet | 2026-09-07 |
+| `gift_of_the_minstrel.html` | Gift of The Minstrel | article complet | 2026-09-07 |
+| `gift_of_the_mist_warrior.html` | Gift of the Mist Warrior | article complet | 2026-09-07 |
+| `gift_of_the_mistwalker.html` | Gift of the Mistwalker | article complet | 2026-09-07 |
+| `gift_of_the_moot.html` | Gift of The Moot | article complet | 2026-09-07 |
+| `gift_of_the_mursaat_ruins.html` | Gift of the Mursaat Ruins | article complet | 2026-09-07 |
+| `gift_of_the_pact.html` | Gift of the Pact | article complet | 2026-09-07 |
+| `gift_of_the_predator.html` | Gift of The Predator | article complet | 2026-09-07 |
+| `gift_of_the_raven_spirit.html` | Gift of the Raven Spirit | article complet | 2026-09-07 |
+| `gift_of_the_side_course.html` | Gift of the Side Course | article complet | 2026-09-07 |
+| `gift_of_the_warclaw.html` | Gift of the Warclaw | article complet | 2026-09-07 |
+| `gift_of_titan_understanding.html` | Gift of Titan Understanding | article complet | 2026-09-07 |
+| `gift_of_totems.html` | Gift of Totems | article complet | 2026-09-07 |
+| `gift_of_twilight.html` | Gift of Twilight | article complet | 2026-09-07 |
+| `gift_of_valor.html` | Gift of Valor | article complet | 2026-09-07 |
+| `gift_of_venom.html` | Gift of Venom | article complet | 2026-09-07 |
+| `gift_of_war_prosperity.html` | Gift of War Prosperity | article complet | 2026-09-07 |
+| `gift_of_warfare.html` | Gift of Warfare | article complet | 2026-09-07 |
+| `gift_of_water.html` | Gift of Water | article complet | 2026-09-07 |
+| `gift_of_weather.html` | Gift of Weather | article complet | 2026-09-07 |
+| `gift_of_wood.html` | Gift of Wood | article complet | 2026-09-07 |
+| `glob_of_coagulated_mists_essence.html` | Glob of Coagulated Mists Essence | article complet | 2026-09-07 |
+| `glob_of_ectoplasm.html` | Glob of Ectoplasm | article complet | 2026-09-07 |
+| `grandmaster_mark_shard.html` | Grandmaster Mark Shard | article complet | 2026-09-07 |
+| `hateful_sworl.html` | Hateful Sworl | article complet | 2026-09-07 |
+| `hymn_of_glory.html` | Hymn of Glory | article complet | 2026-09-07 |
+| `lacquered_banner_pole.html` | Lacquered Banner Pole | article complet | 2026-09-07 |
+| `large_spiritwood_haft.html` | Large Spiritwood Haft | article complet | 2026-09-07 |
+| `legendary_relic.html` | Legendary Relic | article complet | 2026-09-07 |
+| `legendary_rune.html` | Legendary Rune | article complet | 2026-09-07 |
+| `legendary_sigil.html` | Legendary Sigil | article complet | 2026-09-07 |
+| `legendary_weapon_eternity.html` | Legendary Weapon: Eternity | article complet | 2026-09-07 |
+| `ley_line_crystal.html` | Ley Line Crystal | article complet | 2026-09-07 |
+| `lump_of_aurillium.html` | Lump of Aurillium | article complet | 2026-09-07 |
+| `memory_of_battle.html` | Memory of Battle | article complet | 2026-09-07 |
+| `mistwalker_infusion.html` | Mistwalker Infusion | article complet | 2026-09-07 |
+| `monument_of_legends.html` | Monument of Legends | article complet | 2026-09-07 |
+| `mystic_clover.html` | Mystic Clover | article complet | 2026-09-07 |
+| `mystic_coin.html` | Mystic Coin | article complet | 2026-09-07 |
+| `mystic_essence_of_animosity.html` | Mystic Essence of Animosity | article complet | 2026-09-07 |
+| `mystic_essence_of_annihilation.html` | Mystic Essence of Annihilation | article complet | 2026-09-07 |
+| `mystic_essence_of_carnage.html` | Mystic Essence of Carnage | article complet | 2026-09-07 |
+| `mystic_essence_of_strategy.html` | Mystic Essence of Strategy | article complet | 2026-09-07 |
+| `obsidian_shard.html` | Obsidian Shard | article complet | 2026-09-07 |
+| `orrian_truffle.html` | Orrian Truffle | article complet | 2026-09-07 |
+| `patron_of_the_magical_arts_plaque.html` | Patron of the Magical Arts Plaque | article complet | 2026-09-07 |
+| `perfect_mist_core.html` | Perfect Mist Core | article complet | 2026-09-07 |
+| `pile_of_crystalline_dust.html` | Pile of Crystalline Dust | article complet | 2026-09-07 |
+| `pile_of_recycled_siege_equipment.html` | Pile of Recycled Siege Equipment | article complet | 2026-09-07 |
+| `pouch_of_stardust.html` | Pouch of Stardust | article complet | 2026-09-07 |
+| `preserved_eidolon_hide.html` | Preserved Eidolon Hide | article complet | 2026-09-07 |
+| `pristine_mist_essence.html` | Pristine Mist Essence | article complet | 2026-09-07 |
+| `refined_envoy_armor.html` | Refined Envoy armor | article complet | 2026-09-07 |
+| `research_note.html` | Research Note | article complet | 2026-09-07 |
+| `ruby_orb.html` | Ruby Orb | article complet | 2026-09-07 |
+| `sapphire_orb.html` | Sapphire Orb | article complet | 2026-09-07 |
+| `seer_wreath_of_service.html` | Seer Wreath of Service | article complet | 2026-09-07 |
+| `shadowstone_containment_frame.html` | Shadowstone Containment Frame | article complet | 2026-09-07 |
+| `shadowstone_orb.html` | Shadowstone Orb | article complet | 2026-09-07 |
+| `shark_statue.html` | Shark Statue | article complet | 2026-09-07 |
+| `shattered_gift_of_prescience.html` | Shattered Gift of Prescience | article complet | 2026-09-07 |
+| `simple_olmakhan_bandolier.html` | Simple Olmakhan Bandolier | article complet | 2026-09-07 |
+| `so_it_is_written.html` | So It Is Written | article complet | 2026-09-07 |
+| `solution_unbound.html` | Solution: Unbound | article complet | 2026-09-07 |
+| `spinal_blade_pack.html` | Spinal Blade Pack | article complet | 2026-09-07 |
+| `spiritwood_plank.html` | Spiritwood Plank | article complet | 2026-09-07 |
+| `standing_stones_timepiece.html` | Standing Stones Timepiece | article complet | 2026-09-07 |
+| `survivors_enchanted_compass.html` | Survivor's Enchanted Compass | article complet | 2026-09-07 |
+| `tapestry_of_sacrifice.html` | Tapestry of Sacrifice | article complet | 2026-09-07 |
+| `testimony_of_jade_heroics.html` | Testimony of Jade Heroics | article complet | 2026-09-07 |
+| `the_thrill_of_battle.html` | The Thrill of Battle | article complet | 2026-09-07 |
+| `thermocatalytic_reagent.html` | Thermocatalytic Reagent | article complet | 2026-09-07 |
+| `third_order_mist_frame.html` | Third Order Mist Frame | article complet | 2026-09-07 |
+| `triumphant_heros_armor.html` | Triumphant Hero's armor | article complet | 2026-09-07 |
+| `unbound.html` | Unbound | article complet | 2026-09-07 |
+| `unbound_wings.html` | Unbound Wings | article complet | 2026-09-07 |
+| `unicorn_statue.html` | Unicorn Statue | article complet | 2026-09-07 |
+| `valkyrie_bearkin_war_helm_heavy.html` | Valkyrie Bearkin War Helm (heavy) | article complet | 2026-09-07 |
+| `vial_of_liquid_flame.html` | Vial of Liquid Flame | article complet | 2026-09-07 |
+| `vial_of_quicksilver.html` | Vial of Quicksilver | article complet | 2026-09-07 |
+| `vial_of_titan_melted_liquid_obsidian.html` | Vial of Titan Melted Liquid Obsidian | article complet | 2026-09-07 |
+| `wolf_statue.html` | Wolf Statue | article complet | 2026-09-07 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -581,6 +757,12 @@ aucun écart.**
 
 Vérification du 06/09/2026 (lot 9) : les 18 tables de colifichets, d'armures et
 de légendaires hors armes. **466 fichiers réels, 466 lignes, aucun écart.**
+
+Vérification du 07/09/2026 (lot 10, file `PAGES_A_CAPTURER.txt`) : 181 captures
+reçues, dont 5 recaptures — dates mises à jour, aucune ligne dupliquée. Une
+redirection signalée par le manifeste : `Valkyrie Bearkin War Helm (heavy)`
+arrive sur `Valkyrie Bearkin War Helm`, la page ne distingue pas les poids.
+**642 fichiers réels, 642 lignes, aucun écart.**
 
 ## Manquent encore
 

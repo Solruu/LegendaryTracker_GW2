@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v229",
+  "version": "v230",
   "last_updated": "2026-09-07",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4356,11 +4356,13 @@
    "name": "Glob of Condensed Spirit Energy",
    "apiId": 83008,
    "needed_for": [
+    "gift_of_competitive_dedication",
     "gift_of_war_dedication",
     "warbringer"
    ],
    "qty": {
-    "gift_of_war_dedication": 1
+    "gift_of_war_dedication": 1,
+    "gift_of_competitive_dedication": 1
    },
    "farmable": true,
    "sources": [
@@ -4595,8 +4597,8 @@
    "apiId": 70,
    "kind": "currency",
    "qty": {
-    "coalescence": 150,
-    "gift_of_prowess": 25
+    "gift_of_prowess": 25,
+    "gift_of_compassion": 150
    },
    "farmable": true,
    "sources": [
@@ -4637,6 +4639,7 @@
     ]
    },
    "needed_for": [
+    "gift_of_compassion",
     "gift_of_prowess"
    ]
   },
@@ -6719,6 +6722,7 @@
    "name": "Mystic Tribute",
    "apiId": 71820,
    "needed_for": [
+    "coalescence_ring",
     "gen2_all",
     "gen2_claw_of_the_khan_ur",
     "gen2_flames_of_war",
@@ -6770,7 +6774,8 @@
     "gen2_sharur": 1,
     "gen2_the_hms_divinity": 1,
     "gen2_the_shining_blade": 1,
-    "gen2_verdarach": 1
+    "gen2_verdarach": 1,
+    "coalescence_ring": 1
    },
    "note": {
     "fr": "Partage Mystic Clovers/Coins avec le Gift of Fortune gen1. ⚠ Les Mystic Coins ne viennent PLUS des récompenses de connexion (système retiré en 2023, remplacé par le Coffre du Sorcier).",
@@ -8571,7 +8576,11 @@
    "name": "Fruits of the Shadow",
    "apiId": 104820,
    "needed_for": [
-    "gift_of_the_feast"
+    "gift_of_the_appetizer",
+    "gift_of_the_dessert",
+    "gift_of_the_entree",
+    "gift_of_the_feast",
+    "gift_of_the_side_course"
    ],
    "farmable": true,
    "sources": [
@@ -8583,7 +8592,12 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_appetizer": 5,
+    "gift_of_the_dessert": 5,
+    "gift_of_the_entree": 5,
+    "gift_of_the_side_course": 5
+   },
    "kind": "acquire"
   },
   "gift_of_the_feast": {
@@ -9934,7 +9948,8 @@
    "name": "Hateful Sworl",
    "kind": "precursor",
    "needed_for": [
-    "coalescence"
+    "coalescence",
+    "coalescence_ring"
    ],
    "farmable": true,
    "sources": [
@@ -9947,14 +9962,16 @@
     }
    ],
    "qty": {
-    "coalescence": 1
+    "coalescence": 1,
+    "coalescence_ring": 1
    }
   },
   "gift_of_patience": {
    "name": "Gift of Patience",
    "kind": "advanced_craft",
    "needed_for": [
-    "coalescence"
+    "coalescence",
+    "coalescence_ring"
    ],
    "farmable": true,
    "sources": [
@@ -9967,7 +9984,8 @@
     }
    ],
    "qty": {
-    "coalescence": 1
+    "coalescence": 1,
+    "coalescence_ring": 1
    },
    "apiId": 91193
   },
@@ -10600,7 +10618,7 @@
    "qty": {
     "essence_of_animosity": 500,
     "certificate_of_heroics": 250,
-    "strife_unending": 500
+    "gift_of_the_mist_warrior": 500
    },
    "farmable": true,
    "sources": [
@@ -10623,6 +10641,7 @@
    "needed_for": [
     "certificate_of_heroics",
     "essence_of_animosity",
+    "gift_of_the_mist_warrior",
     "strife_unending"
    ]
   },
@@ -10687,8 +10706,8 @@
    "apiId": 76,
    "kind": "currency",
    "qty": {
-    "orrax_manifested": 1250,
-    "klobjarne_geirr": 1250
+    "klobjarne_geirr": 1250,
+    "gift_of_titan_understanding": 1250
    },
    "farmable": true,
    "sources": [
@@ -10709,6 +10728,7 @@
    "checked": "2026-08-13",
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
+    "gift_of_titan_understanding",
     "klobjarne_geirr",
     "orrax_manifested"
    ],
@@ -13851,10 +13871,12 @@
    "kind": "intermediate",
    "farmable": true,
    "qty": {
-    "coalescence": 1
+    "coalescence": 1,
+    "coalescence_ring": 1
    },
    "needed_for": [
-    "coalescence"
+    "coalescence",
+    "coalescence_ring"
    ],
    "recipe": {
     "fr": "MF : 1 Gift of Desert Mastery + 6 Boules d'énergie sombre + 150 Legendary Insights + 1 Gift of Complex Emotions (chaîne d'alambic, 8 émotions à embouteiller).",
@@ -14197,7 +14219,8 @@
    "farmable": true,
    "qty": {
     "aetheric_anchor": 550,
-    "orrax_manifested": 50
+    "orrax_manifested": 50,
+    "gift_of_souls": 100
    },
    "sources": [
     {
@@ -14238,6 +14261,7 @@
    "ref": "wiki, fiches individuelles des lodestones (exports Antoine 25/08/2026)",
    "needed_for": [
     "aetheric_anchor",
+    "gift_of_souls",
     "orrax_manifested"
    ],
    "apiId": 24330
@@ -14453,9 +14477,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "aetheric_anchor": 500,
-    "endless_summer": 500,
-    "selachimorpha": 500
+    "patron_of_the_magical_arts_plaque": 500
    },
    "sources": [
     {
@@ -14533,6 +14555,7 @@
    "needed_for": [
     "aetheric_anchor",
     "endless_summer",
+    "patron_of_the_magical_arts_plaque",
     "selachimorpha"
    ],
    "note": {
@@ -14674,7 +14697,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "klobjarne_geirr": 250
+    "gift_of_embracing_refuge": 250
    },
    "sources": [
     {
@@ -14696,6 +14719,7 @@
    "checked": "2026-08-25",
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
+    "gift_of_embracing_refuge",
     "klobjarne_geirr"
    ],
    "apiId": 103587
@@ -15518,7 +15542,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "orrax_manifested": 50
+    "gift_of_the_mursaat_ruins": 50
    },
    "sources": [
     {
@@ -15538,6 +15562,7 @@
    "checked": "2026-08-26",
    "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
+    "gift_of_the_mursaat_ruins",
     "orrax_manifested"
    ],
    "apiId": 105004
@@ -15634,7 +15659,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "stella_radians": 500
+    "shadowstone_orb": 500
    },
    "sources": [
     {
@@ -15686,6 +15711,7 @@
    "checked": "2026-08-25",
    "ref": "wiki:Ascended_Shard_of_Glory + wiki:Shadowstone_Fragment (exports Antoine 26/08/2026)",
    "needed_for": [
+    "shadowstone_orb",
     "stella_radians"
    ],
    "note": {
@@ -15967,11 +15993,13 @@
    "farmable": true,
    "qty": {
     "gift_of_nature": 250,
-    "gift_of_wood": 250
+    "gift_of_wood": 250,
+    "vial_of_titan_melted_obsidian": 3
    },
    "needed_for": [
     "gift_of_nature",
-    "gift_of_wood"
+    "gift_of_wood",
+    "vial_of_titan_melted_obsidian"
    ],
    "sources": [
     {
@@ -16012,9 +16040,11 @@
    "qty": {
     "gift_of_entertainment": 250,
     "gift_of_lightning": 250,
-    "gift_of_music": 250
+    "gift_of_music": 250,
+    "banner_pennon": 5
    },
    "needed_for": [
+    "banner_pennon",
     "gift_of_entertainment",
     "gift_of_lightning",
     "gift_of_music"
@@ -17635,10 +17665,12 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "gift_of_wood": 250
+    "gift_of_wood": 250,
+    "spiritwood_plank": 20
    },
    "needed_for": [
-    "gift_of_wood"
+    "gift_of_wood",
+    "spiritwood_plank"
    ],
    "sources": [
     {
@@ -17843,10 +17875,12 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "gift_of_wood": 250
+    "gift_of_wood": 250,
+    "spiritwood_plank": 10
    },
    "needed_for": [
-    "gift_of_wood"
+    "gift_of_wood",
+    "spiritwood_plank"
    ],
    "sources": [
     {
@@ -17905,9 +17939,11 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "vial_of_quicksilver": 250
+    "vial_of_quicksilver": 250,
+    "deldrimor_steel_ingot": 10
    },
    "needed_for": [
+    "deldrimor_steel_ingot",
     "vial_of_quicksilver"
    ],
    "sources": [
@@ -18187,10 +18223,12 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "deldrimor_steel_spear_head": 3
+    "deldrimor_steel_spear_head": 3,
+    "third_order_mist_frame": 5
    },
    "needed_for": [
-    "deldrimor_steel_spear_head"
+    "deldrimor_steel_spear_head",
+    "third_order_mist_frame"
    ],
    "sources": [
     {
@@ -18207,10 +18245,12 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "large_spiritwood_haft": 2
+    "large_spiritwood_haft": 2,
+    "third_order_mist_frame": 5
    },
    "needed_for": [
-    "large_spiritwood_haft"
+    "large_spiritwood_haft",
+    "third_order_mist_frame"
    ],
    "sources": [
     {
