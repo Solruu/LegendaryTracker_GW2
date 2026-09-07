@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v228",
-  "last_updated": "2026-09-06",
+  "version": "v229",
+  "last_updated": "2026-09-07",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -6131,7 +6131,8 @@
    "name": "Eldritch Scroll",
    "apiId": 20852,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "gift_of_expertise"
    ],
    "farmable": false,
    "sources": [
@@ -6146,7 +6147,8 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1
+    "perfected_envoy__per_piece": 1,
+    "gift_of_expertise": 1
    },
    "kind": "acquire"
   },
@@ -10435,9 +10437,11 @@
    "apiId": 26,
    "kind": "currency",
    "qty": {
-    "conflux": 1850,
     "warbringer": 2800,
-    "strife_unending": 3000
+    "strife_unending": 3000,
+    "mist_enhanced_mithril": 750,
+    "mist_pearl": 750,
+    "mist_band_infused": 350
    },
    "farmable": true,
    "sources": [
@@ -10493,6 +10497,7 @@
    "needed_for": [
     "armor_wvw",
     "essence_of_annihilation",
+    "mist_band_infused",
     "mist_enhanced_mithril",
     "mist_pearl",
     "warbringer",
@@ -17651,9 +17656,11 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "gift_of_weather": 250
+    "gift_of_weather": 250,
+    "cured_hardened_leather_square": 3
    },
    "needed_for": [
+    "cured_hardened_leather_square",
     "gift_of_weather"
    ],
    "sources": [
@@ -17672,10 +17679,12 @@
    "kind": "refined",
    "farmable": true,
    "qty": {
-    "gift_of_metal": 250
+    "gift_of_metal": 250,
+    "lump_of_mithrillium": 50
    },
    "needed_for": [
-    "gift_of_metal"
+    "gift_of_metal",
+    "lump_of_mithrillium"
    ],
    "sources": [
     {
