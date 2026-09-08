@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v247",
+  "version": "v248",
   "last_updated": "2026-09-08",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -66924,11 +66924,11 @@
   "gemmes_infusees": {
    "qty": 250,
    "options": [
+    "ruby_orb",
     "beryl_orb",
     "chrysocola_orb",
     "emerald_orb",
     "opal_orb",
-    "ruby_orb",
     "sapphire_orb"
    ],
    "default": "ruby_orb",
@@ -66948,9 +66948,9 @@
   "trophee_mystic_curio": {
    "qty": 35,
    "options": [
+    "large_bone",
     "potent_venom_sac",
     "intricate_totem",
-    "large_bone",
     "large_claw",
     "large_fang",
     "large_scale",

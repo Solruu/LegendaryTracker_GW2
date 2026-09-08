@@ -1645,6 +1645,19 @@ def check_alt_groups(data, errors, warnings):
                 errors.append(f"{label} : option inconnue « {o} »")
         if g.get("default") not in options:
             errors.append(f"{label} : `default` doit figurer dans `options`")
+        elif options and g["default"] != options[0]:
+            # REGLE D'ANTOINE, 08/09 : le defaut est la voie la PLUS EFFICIENTE
+            # quand il y en a une, sinon la premiere de la liste. Les deux se
+            # disent avec un seul fait si l'ordre porte la preference — la voie
+            # retenue est en tete, et la raison va dans `note`. Un `default`
+            # ailleurs dans la liste voudrait dire que l'ordre ne veut rien
+            # dire, et il n'y aurait plus de regle du tout pour les groupes ou
+            # aucune option n'est objectivement meilleure.
+            errors.append(
+                f"{label} : `default` = « {g['default']} » n'est pas la premiere "
+                f"option (« {options[0]} »). La voie retenue se met en tete de "
+                "`options` et sa raison dans `note`."
+            )
         if not isinstance(g.get("qty"), int) or g["qty"] <= 0:
             errors.append(f"{label} : `qty` doit etre un entier positif")
         cibles = g.get("targets") or []

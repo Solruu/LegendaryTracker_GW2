@@ -2229,7 +2229,19 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
     catch (_) { return {}; }
   })();
-  const altPick = (gid) => altSel[gid] ?? altGroups[gid]?.default ?? null;
+  // UN CHOIX PAR NIVEAU, PAS UN CHOIX GLOBAL. Le premier jet ne retenait qu'une
+  // option par groupe, pour toutes ses cibles a la fois : choisir les fractales
+  // pour les trefles d'un legendaire les choisissait pour tous. C'est le
+  // contraire de ce que le tracker sert a faire — on fait du McM pour une
+  // piece, des fractales pour une autre, une session de raids pour la
+  // troisieme. La selection est donc indexee par (groupe, cible).
+  // L'ancien format, une chaine par groupe, reste lisible : il vaut alors le
+  // meme choix pour toutes les cibles.
+  const altPick = (gid, cible) => {
+    const v = altSel[gid];
+    if (typeof v === "string") return v;
+    return (v && v[cible]) ?? altGroups[gid]?.default ?? null;
+  };
   const totals = {};
   const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
@@ -2281,10 +2293,11 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   }
   // Cibles LEGENDAIRES d'un choix : la presence vaut 1 par legendaire coche.
   for (const [gid, g] of Object.entries(altGroups)) {
-    const opt = altPick(gid);
-    if (!opt) continue;
-    const n = (g.targets ?? []).filter(t => selectedIds.includes(t)).length;
-    if (n > 0) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0) * n;
+    for (const t of (g.targets ?? [])) {
+      if (!selectedIds.includes(t)) continue;
+      const opt = altPick(gid, t);
+      if (opt) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0);
+    }
   }
 
   // Developpement des intermediaires : un composant dont la quantite est indexee
@@ -2309,11 +2322,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     // Elles passent par `add` comme le reste de la cascade, sans quoi la
     // contribution serait reappliquee a chaque passe.
     for (const [gid, g] of Object.entries(altGroups)) {
-      const opt = altPick(gid);
-      if (!opt) continue;
-      let n = 0;
-      for (const t of (g.targets ?? [])) if (cc[t]) n += totals[t] ?? 0;
-      if (n > 0) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
+      for (const t of (g.targets ?? [])) {
+        if (!cc[t]) continue;
+        const n = totals[t] ?? 0;
+        if (!n) continue;
+        const opt = altPick(gid, t);
+        if (opt) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
+      }
     }
     let changed = false;
     for (const [compId, v] of Object.entries(add)) {
@@ -3355,7 +3370,25 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
           {Object.entries(ALT_GROUPS)
             .filter(([, g]) => (g.targets ?? []).some(x => selectedIds.includes(x) || (totals[x] ?? 0) > 0))
             .map(([gid, g]) => {
-              const pick = altSel[gid] ?? g.default;
+              // Une ligne de boutons PAR CIBLE concernee, et non une seule pour
+              // tout le groupe : douze armes gen2 acceptent Maguuma ou Desert,
+              // et rien n'oblige a repondre la meme chose pour les douze.
+              const cibles = (g.targets ?? []).filter(
+                x => selectedIds.includes(x) || (totals[x] ?? 0) > 0);
+              const nomCible = (x) => L(SOURCES_DB?.legendaries?.[x]?.name)
+                ?? L(cc[x]?.name) ?? x;
+              const pickDe = (x) => {
+                const v = altSel[gid];
+                if (typeof v === "string") return v;
+                return (v && v[x]) ?? g.default;
+              };
+              const choisir = (x, o) => setAltSel(st => {
+                const av = st[gid];
+                const base = typeof av === "string"
+                  ? Object.fromEntries(cibles.map(c => [c, av]))
+                  : { ...(av ?? {}) };
+                return { ...st, [gid]: { ...base, [x]: o } };
+              });
               return (
                 <div key={gid} style={{ marginBottom: 8, padding: "7px 10px", borderRadius: 5,
                   border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
@@ -3363,19 +3396,29 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                     letterSpacing: "0.06em", marginBottom: 5 }}>
                     {L(g.label) ?? gid}
                   </div>
-                  <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-                    {(g.options ?? []).map(o => (
-                      <button key={o} onClick={() => setAltSel(x => ({ ...x, [gid]: o }))} style={{
-                        padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
-                        fontFamily: "'Crimson Text', serif",
-                        border: `1px solid ${pick === o ? C : D + "0.15)"}`,
-                        background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
-                        color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
-                      }}>
-                        {L(cc[o]?.name) ?? o}
-                      </button>
-                    ))}
-                  </div>
+                  {cibles.map(x => {
+                    const pick = pickDe(x);
+                    return (
+                      <div key={x} style={{ display: "flex", gap: 5, flexWrap: "wrap",
+                        alignItems: "center", marginBottom: 4 }}>
+                        {cibles.length > 1 ? (
+                          <span style={{ fontSize: 10, color: D + "0.5)", minWidth: 118,
+                            fontFamily: "'Crimson Text', serif" }}>{nomCible(x)}</span>
+                        ) : null}
+                        {(g.options ?? []).map(o => (
+                          <button key={o} onClick={() => choisir(x, o)} style={{
+                            padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
+                            fontFamily: "'Crimson Text', serif",
+                            border: `1px solid ${pick === o ? C : D + "0.15)"}`,
+                            background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
+                            color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
+                          }}>
+                            {L(cc[o]?.name) ?? o}
+                          </button>
+                        ))}
+                      </div>
+                    );
+                  })}
                   {L(g.note) ? (
                     <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
                       fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>

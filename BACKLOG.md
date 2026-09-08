@@ -45,6 +45,18 @@ sont pas confrontees du tout — c'est pourquoi les 420 eclats de gloire n'ont
 jamais ete signales. Dix-sept pages a table ne sont rattachees a aucun
 legendaire, ce chiffre en fait probablement partie.
 
+**Regle posee le 08/09 par Antoine, sur les options :**
+
+1. **Un choix s'applique par NIVEAU, pas au total.** On fait du McM pour une
+   piece, des fractales pour une autre, une session de raids pour la troisieme :
+   c'est tout le point du tracker. La selection est donc indexee par
+   (groupe, cible) et le selecteur affiche une ligne par cible concernee. Douze
+   armes gen2 acceptent Maguuma ou Desert et repondent chacune pour elle-meme.
+2. **Le defaut est la voie la plus EFFICIENTE quand il y en a une, sinon la
+   premiere de la liste.** Les deux se disent avec un seul fait : la voie
+   retenue se met en TETE de `options`, sa raison va dans `note`, et l'audit
+   refuse tout `default` qui ne serait pas `options[0]`. Aucun champ nouveau.
+
 **Ce qui reste a trancher, par ordre d'enjeu :**
 
 1. **Conflux, deux ecarts declares** (`qty_conflict`, 08/09) : la chaine donne
