@@ -786,8 +786,8 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v237",
-    "last_updated": "2026-09-07",
+    "version": "v238",
+    "last_updated": "2026-09-08",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -2944,6 +2944,7 @@ const SOURCES_DB = {
       "needed_for": [
         "deldrimor_steel_spear_head",
         "endless_summer",
+        "gen1_eternity",
         "gift_of_color",
         "gift_of_dust",
         "gift_of_energy",
@@ -3012,7 +3013,8 @@ const SOURCES_DB = {
         "gift_of_history": 250,
         "deldrimor_steel_spear_head": 5,
         "large_spiritwood_haft": 5,
-        "glob_of_coagulated_mists_essence": 1
+        "glob_of_coagulated_mists_essence": 1,
+        "gen1_eternity": 5
       },
       "kind": "acquire",
       "best": "drop",
@@ -10690,7 +10692,9 @@ const SOURCES_DB = {
           }
         }
       ],
-      "qty": {}
+      "qty": {
+        "gen2_the_binding_of_ipos": 1
+      }
     },
     "gift_of_ipos": {
       "name": "Gift of Ipos",
@@ -18984,9 +18988,11 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "gift_of_the_mistwalker": 40
+        "gift_of_the_mistwalker": 40,
+        "conflux": 1
       },
       "needed_for": [
+        "conflux",
         "gift_of_the_mistwalker"
       ],
       "sources": [
@@ -19141,8 +19147,12 @@ const SOURCES_DB = {
       "name": "Gift of Insight",
       "kind": "advanced_craft",
       "farmable": false,
-      "qty": {},
-      "needed_for": [],
+      "qty": {
+        "aetheric_anchor": 1
+      },
+      "needed_for": [
+        "aetheric_anchor"
+      ],
       "sources": [
         {
           "type": "craft",

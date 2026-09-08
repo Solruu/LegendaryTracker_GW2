@@ -1196,14 +1196,19 @@ réconcilier produit des arbitrages là où il devrait y avoir un calcul.
 confronter aux 722 clés existantes, ne garder les clés que là où l'arbre ne
 descend pas encore, et publier les trous restants.
 
-**Mesuré le 08/09 — le renversement n'est PAS tenable aujourd'hui.**
-`gw2_confronte_v1.py` compare, légendaire par légendaire, ce que le tracker
-affiche et ce que donnerait la lecture de bas en haut. Résultat : 3 305 écarts,
-dont **3 096 baisses**. Ignorer la clé à plat fait perdre le coût, et la chaîne
-ne le remplace pas. Ce n'est pas une affaire de cinq pages manquantes : la
-plupart des légendaires n'ont pas leur propre recette **reliée** à leurs
-composants. `CONFRONTATION.md` porte le détail, par légendaire et par
-composant. Le renversement se fera quand ce nombre approchera de zéro.
+**Mesuré le 08/09.** `gw2_confronte_v1.py` compare, légendaire par légendaire,
+ce que le tracker affiche et ce que donnerait la lecture de bas en haut :
+**567 écarts, 356 hausses et 211 baisses**, sur 89 légendaires.
+
+*(Un premier chiffrage annonçait 3 096 baisses. Il était faux : la simulation
+retirait la clé à plat d'un composant dès qu'une arête existait **quelque
+part**, sans vérifier qu'elle mène à CE légendaire. `research_note` est relié à
+`seer_runestone`, ce qui ne lui rend pas ses 5 000 sur Selachimorpha. Corrigé —
+la clé ne cède la place que là où la chaîne rattache vraiment.)*
+
+Les baisses restantes sont concentrées : `empyreal_fragment`, `dragonite_ore`
+et `bloodstone_dust` valent 9 000 à plat sur Klobjarne Geirr contre 3 000 par
+la chaîne — un facteur 3 net, à confronter à la recette du Vision Crystal.
 
 **Ce qui bloque côté captures :** plus grand-chose. Le lot du 08/09 a comblé 34 des 39 trous.
 Restent **cinq** : `Dragonsblood Weapons` (3 dépendants), `Augur's Stone`,

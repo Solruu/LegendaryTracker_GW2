@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v237.json` — 271 desaccords sur 32 composants.
+Source : `gw2_sources_v238.json` — 274 desaccords sur 32 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,20 +10,20 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | 73 | 3654 | deja compte par cascade x37, alea du trefle mystique x24, cout vendeur x12 |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | 74 | 3654 | deja compte par cascade x37, alea du trefle mystique x25, cout vendeur x12 |
 | `research_note` — Research Note | 1 | 2500 | ecart de compte x1 |
 | `shard_of_glory` — Shard of Glory | 1 | 2000 | ecart de compte x1 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
-| `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x12, ecart de compte x1 |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | 7 | 1140 | ecart de compte x5, deja compte par cascade x2 |
 | `trade_contract` — Trade Contract | 2 | 950 | ecart de compte x1, cout vendeur x1 |
+| `dust_crystalline` — Pile of Crystalline Dust | 13 | 850 | deja compte par cascade x12, ecart de compte x1 |
 | `elegy_mosaic` — Elegy Mosaic | 1 | 450 | ecart de compte x1 |
-| `obsidian_shard` — Obsidian Shard | 78 | 426 | deja compte par cascade x57, cout vendeur x14, alea du trefle mystique x7 |
+| `obsidian_shard` — Obsidian Shard | 79 | 426 | deja compte par cascade x57, cout vendeur x14, alea du trefle mystique x8 |
 | `magnetite_shard` — Magnetite Shard | 1 | 350 | ecart de compte x1 |
+| `mystic_coin` — Mystic Coin | 18 | 322 | alea du trefle mystique x18 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
-| `mystic_coin` — Mystic Coin | 17 | 248 | alea du trefle mystique x17 |
 | `airship_part` — Airship Part | 12 | 200 | deja compte par cascade x12 |
 | `ley_line_crystal` — Ley Line Crystal | 12 | 200 | deja compte par cascade x12 |
 | `lump_of_aurillium` — Lump of Aurillium | 12 | 200 | deja compte par cascade x12 |
@@ -96,9 +96,9 @@ recalcule en relancant le script.
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
-| `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 400 | 1650 | 1250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `obsidian` | 1500 | 360 | 1140 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `klobjarne_geirr` | 850 | 1800 | 950 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
+| `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 800 | 1650 | 850 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `vision` | 768 | 177 | 591 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
@@ -193,7 +193,7 @@ regardant si le vendeur propose un choix ou une liste.
 | `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur), unbound_wings (recette) |
 | `vision_crystal` — Vision Crystal | `ad_infinitum` | 0 | 1 | 1 | gift_of_adventure (vendeur), unbound_wings (recette) |
 
-## ALEA DU TREFLE MYSTIQUE — 48 cas
+## ALEA DU TREFLE MYSTIQUE — 51 cas
 
 Le trefle explique une partie de l'ecart, pas tout. La colonne donne
 ce qui RESTE une fois la part passant par mystic_clover multipliee
@@ -205,6 +205,9 @@ chiffre a plat trop genereux. Les cas ou le trefle explique tout
 |---|---|---:|---:|---:|---|
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 1039 | 352 | +516 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `endless_summer` | 548 | 10 | +516 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `aetheric_anchor` | 323 | 200 | -322 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
+| `mystic_coin` — Mystic Coin | `aetheric_anchor` | 323 | 200 | -322 | mystic_clover (recette), mystic_tribute (recette) |
+| `obsidian_shard` — Obsidian Shard | `aetheric_anchor` | 323 | 200 | -322 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_bolt` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_eternity` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_frenzy` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
@@ -252,7 +255,7 @@ chiffre a plat trop genereux. Les cas ou le trefle explique tout
 | `obsidian_shard` — Obsidian Shard | `warbringer` | 309 | 197 | -59 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `eikasia` | 80 | 18 | +22 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 
-## CLOS PAR L'ALEA DU TREFLE — 67 cas
+## CLOS PAR L'ALEA DU TREFLE — 64 cas
 
 La cle a plat et la chaine disent la meme chose des lors qu'on paie le
 taux d'echec du trefle. Rien a arbitrer, rien a changer : c'est la
@@ -270,9 +273,6 @@ verification que la donnee et le wiki concordent.
 | `mystic_coin` — Mystic Coin | `stella_radians` | 499 | 498 |
 | `mystic_coin` — Mystic Coin | `transcendence` | 499 | 498 |
 | `mystic_coin` — Mystic Coin | `vision` | 499 | 498 |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `aetheric_anchor` | 323 | 323 |
-| `mystic_coin` — Mystic Coin | `aetheric_anchor` | 323 | 323 |
-| `obsidian_shard` — Obsidian Shard | `aetheric_anchor` | 323 | 323 |
 | `obsidian_shard` — Obsidian Shard | `endless_summer` | 283 | 282 |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `aurora` | 250 | 248 |
 | `mystic_coin` — Mystic Coin | `gen1_bolt` | 250 | 248 |

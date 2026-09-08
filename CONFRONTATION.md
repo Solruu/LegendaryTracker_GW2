@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v237.json`. 3305 ecarts sur 89 legendaires.
+Source : `gw2_sources_v238.json`. 567 ecarts sur 89 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -16,77 +16,60 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 
 | legendaire | composants en ecart | somme des ecarts |
 |---|---:|---:|
-| `obsidian` | 69 | 52884 |
-| `klobjarne_geirr` | 22 | 24800 |
-| `perfected_envoy` | 50 | 22092 |
-| `aetheric_anchor` | 54 | 20464 |
-| `transcendence` | 60 | 18137 |
-| `conflux` | 59 | 15466 |
-| `selachimorpha` | 54 | 14163 |
-| `warbringer` | 34 | 13027 |
-| `coalescence` | 69 | 12309 |
-| `endless_summer` | 37 | 11541 |
-| `stella_radians` | 50 | 11295 |
-| `gen2_eureka` | 59 | 10899 |
-| `gen2_exordium` | 59 | 10899 |
-| `gen2_shooshadoo` | 59 | 10899 |
-| `gen2_xiuquatl` | 59 | 10899 |
-| `ad_infinitum` | 25 | 9510 |
-| `vision` | 53 | 9363 |
-| `gen2_caladbolg` | 49 | 8449 |
-| `gen2_elegy` | 49 | 8449 |
-| `gen2_eordas_grip` | 49 | 8449 |
-| `gen2_hope_scepter` | 49 | 8449 |
-| `gen2_itzels_boon` | 49 | 8449 |
-| `gen2_lorekeeper` | 49 | 8449 |
-| `gen2_reaver_of_the_mists` | 49 | 8449 |
-| `gen2_tigris` | 49 | 8449 |
-| `gen2_astralaria` | 48 | 8448 |
-| `gen2_chuka_and_champawat` | 48 | 8448 |
-| `gen2_hope` | 48 | 8448 |
-| `gen2_nevermore` | 48 | 8448 |
-| `gen2_claw_of_the_khan_ur` | 47 | 8198 |
-| `gen2_flames_of_war` | 47 | 8198 |
-| `gen2_pharus` | 47 | 8198 |
-| `gen2_sharur` | 47 | 8198 |
-| `gen2_the_binding_of_ipos` | 47 | 8198 |
-| `gen2_the_hms_divinity` | 47 | 8198 |
-| `gen2_the_shining_blade` | 47 | 8198 |
-| `gen2_verdarach` | 47 | 8198 |
-| `aurora` | 47 | 8048 |
-| `orrax_manifested` | 44 | 7302 |
-| `the_ascension` | 16 | 7141 |
-| `ardent_glorious` | 3 | 6990 |
-| `gen3_aurenes_argument` | 56 | 6443 |
-| `gen3_aurenes_bite` | 56 | 6443 |
-| `gen3_aurenes_breath` | 56 | 6443 |
-| `gen3_aurenes_claw` | 56 | 6443 |
-| `gen3_aurenes_gaze` | 56 | 6443 |
-| `gen3_aurenes_insight` | 56 | 6443 |
-| `gen3_aurenes_persuasion` | 56 | 6443 |
-| `gen3_aurenes_scale` | 56 | 6443 |
-| `gen3_aurenes_voice` | 56 | 6443 |
-| `gen3_aurenes_weight` | 56 | 6443 |
-| `gen3_aurenes_wisdom` | 56 | 6443 |
-| `gen3_aurenes_fang` | 56 | 6194 |
-| `gen3_aurenes_guard` | 56 | 6194 |
-| `gen3_aurenes_reckoning` | 56 | 6194 |
-| `gen3_aurenes_tenderness` | 56 | 6194 |
-| `gen3_aurenes_wrath` | 56 | 6194 |
-| `strife_unending` | 19 | 4886 |
-| `legendary_relic` | 47 | 3936 |
-| `gen3_aurene_s_fang` | 45 | 3866 |
-| `gen3_aurene_s_flight` | 45 | 3866 |
-| `gen3_aurene_s_tail` | 45 | 3866 |
-| `gen3_aurene_s_wing` | 45 | 3866 |
-| `gen3_aurenes_rending` | 45 | 3866 |
-| `legendary_sigil` | 46 | 3701 |
-| `legendary_rune` | 46 | 3671 |
-| `triumphant_hero` | 2 | 1290 |
+| `klobjarne_geirr` | 17 | 20400 |
+| `transcendence` | 22 | 9758 |
+| `ad_infinitum` | 21 | 9207 |
+| `conflux` | 15 | 7687 |
+| `orrax_manifested` | 42 | 7334 |
+| `the_ascension` | 12 | 6688 |
+| `warbringer` | 11 | 6588 |
+| `stella_radians` | 6 | 3516 |
+| `aetheric_anchor` | 10 | 2682 |
+| `coalescence` | 7 | 2328 |
+| `obsidian` | 5 | 2094 |
+| `strife_unending` | 17 | 1386 |
+| `gen2_eureka` | 8 | 1382 |
+| `gen2_exordium` | 8 | 1382 |
+| `gen2_shooshadoo` | 8 | 1382 |
+| `gen2_xiuquatl` | 8 | 1382 |
+| `gen2_claw_of_the_khan_ur` | 6 | 1381 |
+| `gen2_flames_of_war` | 6 | 1381 |
+| `gen2_pharus` | 6 | 1381 |
+| `gen2_sharur` | 6 | 1381 |
+| `gen2_the_binding_of_ipos` | 6 | 1381 |
+| `gen2_the_hms_divinity` | 6 | 1381 |
+| `gen2_the_shining_blade` | 6 | 1381 |
+| `gen2_verdarach` | 6 | 1381 |
+| `vision` | 8 | 1334 |
+| `gen2_astralaria` | 6 | 1131 |
+| `gen2_caladbolg` | 6 | 1131 |
+| `gen2_chuka_and_champawat` | 6 | 1131 |
+| `gen2_elegy` | 6 | 1131 |
+| `gen2_eordas_grip` | 6 | 1131 |
+| `gen2_hope` | 6 | 1131 |
+| `gen2_hope_scepter` | 6 | 1131 |
+| `gen2_itzels_boon` | 6 | 1131 |
+| `gen2_lorekeeper` | 6 | 1131 |
+| `gen2_nevermore` | 6 | 1131 |
+| `gen2_reaver_of_the_mists` | 6 | 1131 |
+| `gen2_tigris` | 6 | 1131 |
+| `selachimorpha` | 10 | 943 |
 | `gen1_the_bifrost` | 4 | 827 |
 | `gen1_the_dreamer` | 4 | 827 |
 | `gen1_the_minstrel` | 4 | 827 |
-| `eikasia` | 5 | 798 |
+| `gen3_aurenes_argument` | 5 | 654 |
+| `gen3_aurenes_bite` | 5 | 654 |
+| `gen3_aurenes_breath` | 5 | 654 |
+| `gen3_aurenes_claw` | 5 | 654 |
+| `gen3_aurenes_gaze` | 5 | 654 |
+| `gen3_aurenes_insight` | 5 | 654 |
+| `gen3_aurenes_persuasion` | 5 | 654 |
+| `gen3_aurenes_scale` | 5 | 654 |
+| `gen3_aurenes_voice` | 5 | 654 |
+| `gen3_aurenes_weight` | 5 | 654 |
+| `gen3_aurenes_wisdom` | 5 | 654 |
+| `eikasia` | 4 | 598 |
+| `endless_summer` | 3 | 571 |
 | `gen1_frenzy` | 4 | 527 |
 | `gen1_frostfang` | 4 | 527 |
 | `gen1_incinerator` | 4 | 527 |
@@ -98,40 +81,43 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_the_flameseeker_prophecies` | 4 | 427 |
 | `gen1_the_predator` | 4 | 427 |
 | `gen1_twilight` | 4 | 427 |
-| `gen1_eternity` | 3 | 327 |
+| `perfected_envoy` | 8 | 426 |
+| `aurora` | 3 | 423 |
+| `gen3_aurenes_fang` | 4 | 404 |
+| `gen3_aurenes_guard` | 4 | 404 |
+| `gen3_aurenes_reckoning` | 4 | 404 |
+| `gen3_aurenes_tenderness` | 4 | 404 |
+| `gen3_aurenes_wrath` | 4 | 404 |
+| `gen3_aurene_s_fang` | 5 | 402 |
+| `gen3_aurene_s_flight` | 5 | 402 |
+| `gen3_aurene_s_tail` | 5 | 402 |
+| `gen3_aurene_s_wing` | 5 | 402 |
+| `gen3_aurenes_rending` | 5 | 402 |
+| `gen1_eternity` | 4 | 332 |
 | `gen1_howler` | 3 | 327 |
 | `gen1_kamohoalii_kotaki` | 3 | 327 |
 | `gen1_kraitkin` | 3 | 327 |
 | `gen1_kudzu` | 3 | 327 |
 | `gen1_quip` | 3 | 327 |
 | `gen1_the_moot` | 3 | 327 |
+| `legendary_relic` | 4 | 325 |
+| `ardent_glorious` | 3 | 270 |
+| `triumphant_hero` | 3 | 270 |
+| `legendary_sigil` | 3 | 90 |
+| `legendary_rune` | 3 | 60 |
 
 ## Les 80 plus gros ecarts
 
 | legendaire | composant | actuelle | recettes | ecart |
 |---|---|---:|---:|---:|
-| `obsidian` | `fine_rift_essence` — Fine Rift Essence | 18000 | 0 | -18000 |
-| `obsidian` | `masterwork_rift_essence` — Masterwork Rift Essence | 7200 | 0 | -7200 |
-| `ardent_glorious` | `ascended_shard_of_glory` — Ascended Shards of Glory | 6000 | 0 | -6000 |
+| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 9000 | 3000 | -6000 |
 | `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 9000 | 3000 | -6000 |
 | `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 9000 | 3000 | -6000 |
-| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 9000 | 3000 | -6000 |
-| `selachimorpha` | `research_note` — Research Note | 5000 | 0 | -5000 |
 | `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
-| `obsidian` | `rare_rift_essence` — Rare Rift Essence | 3600 | 0 | -3600 |
-| `obsidian` | `glob_of_ectoplasm` — Glob of Ectoplasm | 3600 | 0 | -3600 |
-| `strife_unending` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 3000 | 0 | -3000 |
-| `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 0 | -2800 |
-| `aetheric_anchor` | `research_note` — Research Note | 2500 | 0 | -2500 |
-| `endless_summer` | `fine_rift_essence` — Fine Rift Essence | 2500 | 0 | -2500 |
-| `klobjarne_geirr` | `research_note` — Research Note | 2500 | 0 | -2500 |
 | `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
 | `transcendence` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1000 | -2250 |
 | `transcendence` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1000 | -2250 |
 | `transcendence` | `dragonite_ore` — Dragonite Ore | 3250 | 1000 | -2250 |
-| `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1000 | -2250 |
-| `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1000 | -2250 |
-| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1000 | -2250 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
 | `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
@@ -139,54 +125,68 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `the_ascension` | `bloodstone_dust` — Pile of Bloodstone Dust | 3000 | 1000 | -2000 |
 | `the_ascension` | `dragonite_ore` — Dragonite Ore | 3000 | 1000 | -2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
-| `obsidian` | `exotic_essence_of_luck` — Exotic Essence of Luck | 1500 | 0 | -1500 |
-| `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 0 | -1500 |
-| `obsidian` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 1500 | 0 | -1500 |
-| `perfected_envoy` | `dust_incandescent` — Pile of Incandescent Dust | 1500 | 0 | -1500 |
-| `perfected_envoy` | `intricate_totem` — Intricate Totem | 1500 | 0 | -1500 |
-| `perfected_envoy` | `large_claw` — Large Claw | 1500 | 0 | -1500 |
-| `perfected_envoy` | `large_scale` — Large Scale | 1500 | 0 | -1500 |
-| `perfected_envoy` | `vial_of_potent_blood` — Vial of Potent Blood | 1500 | 0 | -1500 |
-| `perfected_envoy` | `potent_venom_sac` — Potent Venom Sac | 1500 | 0 | -1500 |
-| `perfected_envoy` | `large_bone` — Large Bone | 1500 | 0 | -1500 |
-| `perfected_envoy` | `large_fang` — Large Fang | 1500 | 0 | -1500 |
-| `klobjarne_geirr` | `ursus_oblige` — Ursus Oblige | 1250 | 0 | -1250 |
-| `obsidian` | `empyreal_fragment` — Empyreal Fragment | 1200 | 0 | -1200 |
-| `obsidian` | `bloodstone_dust` — Pile of Bloodstone Dust | 1200 | 0 | -1200 |
-| `obsidian` | `dragonite_ore` — Dragonite Ore | 1200 | 0 | -1200 |
-| `triumphant_hero` | `memory_of_battle` — Memory of Battle | 1200 | 0 | -1200 |
+| `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
+| `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
+| `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 800 | 2450 | +1650 |
+| `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
 | `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
 | `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
-| `aetheric_anchor` | `dust_incandescent` — Pile of Incandescent Dust | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `large_fang` — Large Fang | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `intricate_totem` — Intricate Totem | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `large_claw` — Large Claw | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `large_scale` — Large Scale | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `vial_of_potent_blood` — Vial of Potent Blood | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `potent_venom_sac` — Potent Venom Sac | 1000 | 0 | -1000 |
-| `aetheric_anchor` | `large_bone` — Large Bone | 1000 | 0 | -1000 |
-| `endless_summer` | `masterwork_rift_essence` — Masterwork Rift Essence | 1000 | 0 | -1000 |
-| `selachimorpha` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1000 | 0 | -1000 |
-| `warbringer` | `badge_of_honor` — Badge of Honor | 1000 | 0 | -1000 |
-| `ardent_glorious` | `pvp_league_ticket` — PvP League Ticket | 900 | 0 | -900 |
+| `coalescence` | `trade_contract` — Trade Contract | 300 | 1250 | +950 |
 | `klobjarne_geirr` | `mithril_ingot` — Mithril Ingot | 250 | 1150 | +900 |
-| `obsidian` | `stabilizing_matrix` — Stabilizing Matrix | 900 | 0 | -900 |
-| `obsidian` | `dust_incandescent` — Pile of Incandescent Dust | 750 | 0 | -750 |
-| `obsidian` | `intricate_totem` — Intricate Totem | 750 | 0 | -750 |
-| `obsidian` | `large_claw` — Large Claw | 750 | 0 | -750 |
-| `obsidian` | `large_scale` — Large Scale | 750 | 0 | -750 |
-| `obsidian` | `vial_of_potent_blood` — Vial of Potent Blood | 750 | 0 | -750 |
-| `obsidian` | `potent_venom_sac` — Potent Venom Sac | 750 | 0 | -750 |
-| `obsidian` | `large_bone` — Large Bone | 750 | 0 | -750 |
-| `obsidian` | `large_fang` — Large Fang | 750 | 0 | -750 |
 | `orrax_manifested` | `titan_heatstone` — Titan Heatstone | 750 | 1500 | +750 |
 | `orrax_manifested` | `mursaat_obsidian_chunk` — Mursaat Obsidian Chunk | 750 | 1500 | +750 |
 | `strife_unending` | `dust_incandescent` — Pile of Incandescent Dust | 0 | 750 | +750 |
 | `ad_infinitum` | `glob_of_ectoplasm` — Glob of Ectoplasm | 1039 | 357 | -682 |
-| `perfected_envoy` | `vicious_claw` — Vicious Claw | 600 | 0 | -600 |
-| `perfected_envoy` | `elaborate_totem` — Elaborate Totem | 600 | 0 | -600 |
-| `perfected_envoy` | `armored_scale` — Armored Scale | 600 | 0 | -600 |
-| `perfected_envoy` | `vial_of_powerful_blood` — Vial of Powerful Blood | 600 | 0 | -600 |
-| `perfected_envoy` | `ancient_bone` — Ancient Bone | 600 | 0 | -600 |
-| `perfected_envoy` | `vicious_fang` — Vicious Fang | 600 | 0 | -600 |
+| `endless_summer` | `glob_of_ectoplasm` — Glob of Ectoplasm | 548 | 10 | -538 |
+| `conflux` | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 250 | 750 | +500 |
+| `eikasia` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 500 | 1000 | +500 |
+| `gen1_the_bifrost` | `dust_incandescent` — Pile of Incandescent Dust | 250 | 750 | +500 |
+| `gen1_the_dreamer` | `dust_incandescent` — Pile of Incandescent Dust | 500 | 1000 | +500 |
+| `gen1_the_minstrel` | `dust_incandescent` — Pile of Incandescent Dust | 250 | 750 | +500 |
+| `klobjarne_geirr` | `orichalcum_ingot` — Orichalcum Ingot | 250 | 750 | +500 |
+| `orrax_manifested` | `large_scale` — Large Scale | 1000 | 500 | -500 |
+| `selachimorpha` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 800 | 300 | -500 |
+| `vision` | `trade_contract` — Trade Contract | 0 | 500 | +500 |
+| `coalescence` | `elegy_mosaic` — Elegy Mosaic | 300 | 750 | +450 |
+| `orrax_manifested` | `ancient_wood_plank` — Ancient Wood Plank | 450 | 900 | +450 |
+| `orrax_manifested` | `glob_of_ectoplasm` — Glob of Ectoplasm | 2170 | 2536 | +366 |
+| `klobjarne_geirr` | `darksteel_ingot` — Darksteel Ingot | 250 | 610 | +360 |
+| `obsidian` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 1500 | 1860 | +360 |
+| `coalescence` | `magnetite_shard` — Magnetite Shard | 550 | 200 | -350 |
+| `ad_infinitum` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 590 | 250 | -340 |
+| `gen2_claw_of_the_khan_ur` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_flames_of_war` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_pharus` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_sharur` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_the_binding_of_ipos` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_the_hms_divinity` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_the_shining_blade` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_verdarach` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
+| `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_astralaria` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_astralaria` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_caladbolg` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_caladbolg` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_caladbolg` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_chuka_and_champawat` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_chuka_and_champawat` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_chuka_and_champawat` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_elegy` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_elegy` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_elegy` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_eordas_grip` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_eordas_grip` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_eordas_grip` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_eureka` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_exordium` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_exordium` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_exordium` | `airship_part` — Airship Part | 500 | 800 | +300 |
+| `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |

@@ -83,8 +83,6 @@ def totaux(leg, recettes=False):
         if recettes:
             for p, v in proposees.get(cid, {}).items():
                 q[p] = v
-            if any(k in cc for k in q):
-                q = {k: v for k, v in q.items() if k.split("__")[0] in cc}
         qty[cid] = q
     t = {}
     for cid, q in qty.items():
@@ -115,7 +113,14 @@ def totaux(leg, recettes=False):
                 bouge = True
         if not bouge:
             break
-    return t
+    if not recettes:
+        return t
+    # La cle a plat d'un composant ne cede la place a la chaine que la ou la
+    # chaine le rattache VRAIMENT a ce legendaire. Retirer la cle des qu'une
+    # arete existe ailleurs faisait tomber a zero des couts que rien ne
+    # remplacait — `research_note` est relie a seer_runestone, ce qui ne lui
+    # rend pas ses 5 000 sur Selachimorpha.
+    return {cid: (exp[cid] if exp.get(cid, 0) > 0 else v) for cid, v in t.items()}
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})
