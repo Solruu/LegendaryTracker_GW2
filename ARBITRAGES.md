@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v235.json` — 310 desaccords sur 32 composants.
+Source : `gw2_sources_v236.json` — 305 desaccords sur 32 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,7 +10,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | 67 | 3654 | deja compte par cascade x34, alea du trefle mystique x25, cout vendeur x8 |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | 65 | 3654 | deja compte par cascade x34, alea du trefle mystique x24, cout vendeur x7 |
 | `research_note` — Research Note | 1 | 2500 | ecart de compte x1 |
 | `shard_of_glory` — Shard of Glory | 1 | 2000 | ecart de compte x1 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
@@ -18,7 +18,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | 7 | 1140 | ecart de compte x5, deja compte par cascade x2 |
 | `trade_contract` — Trade Contract | 2 | 950 | ecart de compte x1, cout vendeur x1 |
 | `elegy_mosaic` — Elegy Mosaic | 1 | 450 | ecart de compte x1 |
-| `obsidian_shard` — Obsidian Shard | 71 | 426 | deja compte par cascade x55, cout vendeur x8, alea du trefle mystique x8 |
+| `obsidian_shard` — Obsidian Shard | 69 | 426 | deja compte par cascade x55, cout vendeur x7, alea du trefle mystique x7 |
 | `magnetite_shard` — Magnetite Shard | 1 | 350 | ecart de compte x1 |
 | `airship_part` — Airship Part | 13 | 250 | deja compte par cascade x12, cout vendeur x1 |
 | `amalgamated_gemstone` — Amalgamated Gemstone | 36 | 250 | cout vendeur x33, ecart de compte x3 |
@@ -33,7 +33,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `curious_mursaat_ruin_shard` — Curious Mursaat Ruin Shard | 1 | 100 | ecart de compte x1 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 100 | ecart de compte x2 |
 | `emblem_of_the_conqueror` — Emblem of the Conqueror | 1 | 99 | ecart de compte x1 |
-| `mystic_clover` — Mystic Clover | 33 | 77 | cout vendeur x17, ecart de compte x16 |
+| `mystic_clover` — Mystic Clover | 32 | 77 | cout vendeur x16, ecart de compte x16 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 | `gift_of_battle` — Gift of Battle | 1 | 1 | deja compte par cascade x1 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
@@ -158,12 +158,12 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_nevermore` | 250 | 77 | 173 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_reaver_of_the_mists` | 250 | 77 | 173 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 
-## COUT VENDEUR — 72 cas
+## COUT VENDEUR — 69 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
 
-Les 60 plus gros ecarts sur 72. Le reste se
+Les 60 plus gros ecarts sur 69. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
@@ -171,8 +171,6 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `obsidian` | 0 | 3654 | 3654 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `trade_contract` — Trade Contract | `vision` | 0 | 500 | 500 | funerary_incense (vendeur) |
 | `obsidian_shard` — Obsidian Shard | `obsidian` | 0 | 426 | 426 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `upgrades_combined` | 0 | 300 | 300 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
-| `obsidian_shard` — Obsidian Shard | `upgrades_combined` | 0 | 300 | 300 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `airship_part` — Airship Part | `perfected_envoy` | 0 | 250 | 250 | gift_of_gliding (vendeur), gift_of_the_pact (vendeur) |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_astralaria` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +3 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `gen2_caladbolg` | 0 | 250 | 250 | crystalline_ingot (recette), discounted_shard_of_janthir_syntri (vendeur), discounted_shard_of_lowland_shore (vendeur) +3 autres |
@@ -217,7 +215,6 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `triumphant_hero` | 0 | 90 | 90 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `obsidian_shard` — Obsidian Shard | `ardent_glorious` | 0 | 90 | 90 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `obsidian_shard` — Obsidian Shard | `triumphant_hero` | 0 | 90 | 90 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
-| `mystic_clover` — Mystic Clover | `fractal_capacitor` | 0 | 77 | 77 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
 | `mystic_clover` — Mystic Clover | `gen2_claw_of_the_khan_ur` | 0 | 77 | 77 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
 | `mystic_clover` — Mystic Clover | `gen2_flames_of_war` | 0 | 77 | 77 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
 | `mystic_clover` — Mystic Clover | `gen2_pharus` | 0 | 77 | 77 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
@@ -228,8 +225,11 @@ recalcule en relancant le script.
 | `mystic_clover` — Mystic Clover | `gen2_verdarach` | 0 | 77 | 77 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
 | `obsidian_shard` — Obsidian Shard | `legendary_sigil` | 0 | 75 | 75 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `obsidian_shard` — Obsidian Shard | `legendary_rune` | 0 | 50 | 50 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_fang` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_flight` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_tail` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_adventure (vendeur), gift_of_relics (recette) +5 autres |
 
-## ALEA DU TREFLE MYSTIQUE — 50 cas
+## ALEA DU TREFLE MYSTIQUE — 48 cas
 
 Le trefle explique une partie de l'ecart, pas tout. La colonne donne
 ce qui RESTE une fois la part passant par mystic_clover multipliee
@@ -241,7 +241,6 @@ chiffre a plat trop genereux. Les cas ou le trefle explique tout
 |---|---|---:|---:|---:|---|
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 1039 | 352 | +516 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `endless_summer` | 548 | 10 | +516 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `upgrades` | 1050 | 205 | +389 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_bolt` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_eternity` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen1_frenzy` | 250 | 327 | -248 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +10 autres |
@@ -280,7 +279,6 @@ chiffre a plat trop genereux. Les cas ou le trefle explique tout
 | `mystic_coin` — Mystic Coin | `gen2_shooshadoo` | 250 | 327 | -248 | glob_of_coagulated_mists_essence (recette), mystic_clover (recette), mystic_tribute (recette) |
 | `mystic_coin` — Mystic Coin | `gen2_tigris` | 250 | 327 | -248 | glob_of_coagulated_mists_essence (recette), mystic_clover (recette), mystic_tribute (recette) |
 | `mystic_coin` — Mystic Coin | `gen2_xiuquatl` | 250 | 327 | -248 | glob_of_coagulated_mists_essence (recette), mystic_clover (recette), mystic_tribute (recette) |
-| `obsidian_shard` — Obsidian Shard | `upgrades` | 450 | 205 | -211 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `obsidian_shard` — Obsidian Shard | `klobjarne_geirr` | 353 | 448 | -180 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `obsidian_shard` — Obsidian Shard | `ad_infinitum` | 339 | 77 | +91 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |
 | `obsidian_shard` — Obsidian Shard | `selachimorpha` | 488 | 305 | +61 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +8 autres |

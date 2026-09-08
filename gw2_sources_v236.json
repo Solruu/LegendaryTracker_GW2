@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v235",
-  "last_updated": "2026-09-07",
+  "version": "v236",
+  "last_updated": "2026-09-08",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -4922,7 +4922,6 @@
     "selachimorpha": 488,
     "obsidian__per_piece": 50,
     "endless_summer": 283,
-    "upgrades": 450,
     "vision": 321,
     "aurora": 250,
     "conflux": 309,
@@ -5724,7 +5723,6 @@
     "the_ascension": 499,
     "ad_infinitum": 1039,
     "memory_essence_encapsulator": 50,
-    "upgrades": 1050,
     "vision": 249,
     "aurora": 250,
     "conflux": 249,
@@ -5935,13 +5933,11 @@
     "orrax_manifested": 68,
     "selachimorpha": 55,
     "strife_unending": 45,
-    "upgrades": 205,
     "vision": 77,
     "aurora": 77,
     "conflux": 77,
     "triumphant_hero__per_piece": 15,
     "ardent_glorious__per_piece": 15,
-    "upgrades_combined": 300,
     "gift_of_the_homesteader": 38,
     "gift_of_fortune": 77,
     "gift_of_insight": 100,
@@ -6722,7 +6718,6 @@
     "vision": 1,
     "conflux": 1,
     "coalescence": 1,
-    "fractal_capacitor": 1,
     "gen2_the_binding_of_ipos": 1,
     "gen2_claw_of_the_khan_ur": 1,
     "gen2_flames_of_war": 1,
@@ -7186,37 +7181,6 @@
     "ref": "wiki:Mystic_Runestone, wiki:Icy_Runestone, wiki:Jormag_Defender's_Kit (captures Antoine 13/08/2026)"
    }
   },
-  "legendary_shard_gen2": {
-   "name": "Legendary Shards (Gen2)",
-   "apiId": null,
-   "needed_for": [
-    "gen2_precursor"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "craft_500",
-     "tip": {
-      "fr": "Craft à la discipline correspondante (Weaponsmith/Huntsman/Artificer 500) depuis des matériaux élevés. Recettes achetées chez Grandmaster Craftsman Hobbs (Lion's Arch) ou Miyani.",
-      "en": "Crafted at the matching discipline (Weaponsmith/Huntsman/Artificer 500) from ascended materials. Recipes purchased from Grandmaster Craftsman Hobbs (Lion's Arch) or Miyani."
-     }
-    },
-    {
-     "type": "chest_conversion",
-     "tip": {
-      "fr": "Conversion via Enormous Chest of Legendary Shards — utile pour convertir des shards off-hand en main-hand.",
-      "en": "Conversion via Enormous Chest of Legendary Shards - useful for converting off-hand shards into main-hand."
-     }
-    }
-   ],
-   "qty": {},
-   "note": {
-    "fr": "Chaque type d'arme a ses propres shards (ex. Shard of Resolution pour Astralaria). Recettes achetées chez Hobbs pour 10 po.",
-    "en": "Each weapon type has its own shards (e.g. Shard of Resolution for Astralaria). Recipes purchased from Hobbs for 10g."
-   },
-   "kind": "craftable",
-   "best": "craft_500"
-  },
   "gift_of_cantha": {
    "name": "Gift of Cantha",
    "apiId": 97019,
@@ -7568,37 +7532,6 @@
     "fr": "garanti en méta quotidienne — coût marginal nul",
     "en": "guaranteed daily meta reward — zero marginal cost"
    }
-  },
-  "legendary_shard_gen3": {
-   "name": "Legendary Shards (Gen3 / Aurene)",
-   "apiId": null,
-   "needed_for": [
-    "gen3_precursor"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "craft_500",
-     "tip": {
-      "fr": "Craft à la discipline correspondante (500) depuis des matériaux élevés. Recette dans le Codex of Dragon's Weapons (1 gratuite en fin d'histoire EoD) ou achetée chez Leivas pour 35 000 karma + 10 Tales of Adventure.",
-      "en": "Crafted at the matching discipline (500) from ascended materials. Recipe in Codex of Dragon's Weapons (1 free at the end of EoD story) or purchased from Leivas for 35,000 karma + 10 Tales of Adventure."
-     }
-    },
-    {
-     "type": "tales_of_adventure",
-     "tip": {
-      "fr": "Tales of Adventure requis pour les recettes supplémentaires chez Leivas. Obtenus via les collections EoD.",
-      "en": "Tales of Adventure required for additional recipes from Leivas. Obtained via EoD collections."
-     }
-    }
-   ],
-   "qty": {},
-   "note": {
-    "fr": "Precurseur gen3 craftable (pas TP-able raw) mais vendable une fois crafté. 1 précurseur gratuit via Seasons of the Dragons ou Codex of Dragon's Weapons.",
-    "en": "Gen3 precursor craftable (not TP-able raw) but sellable once crafted. 1 free precursor via Seasons of the Dragons or Codex of Dragon's Weapons."
-   },
-   "kind": "craftable",
-   "best": "craft_500"
   },
   "salt_forged_mist_diamond": {
    "name": "Salt-Forged Mist Diamond",
@@ -8999,8 +8932,7 @@
     }
    ],
    "qty": {
-    "legendary_relic": 18750,
-    "upgrades": 23250
+    "legendary_relic": 18750
    },
    "kind": "acquire",
    "best": "tp",
@@ -9304,9 +9236,7 @@
    "needed_for": [
     "upgrades_combined"
    ],
-   "qty": {
-    "upgrades_combined": 600
-   },
+   "qty": {},
    "sources": [
     {
      "type": "vendor",
@@ -9751,24 +9681,6 @@
     "fr": "⚡ C'est le maillon qui expliquait trois anomalies : les +20 trophées T6 sur le sang, les os, les écailles et les griffes, les 350 tickets d'escarmouche manquants, et les écarts sur les insignes, les témoignages et les mémoires de bataille.",
     "en": "⚡ This is the link that explained three anomalies: the +20 T6 trophies on blood, bones, scales and claws, the 350 missing skirmish tickets, and the gaps on badges, testimonies and memories of battle."
    }
-  },
-  "gift_of_fractals": {
-   "name": "Gift of Fractals",
-   "kind": "advanced_craft",
-   "needed_for": [
-    "fractal_capacitor"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "fractals_vendor",
-     "tip": {
-      "fr": "Achat chez BUY-2046 PFR (Mistlock Observatory) contre Fractal Relics / Pristine Relics.",
-      "en": "Purchase from BUY-2046 PFR (Mistlock Observatory) for Fractal Relics / Pristine Relics."
-     }
-    }
-   ],
-   "qty": {}
   },
   "glob_of_coagulated_mists_essence": {
    "name": "Glob of Coagulated Mists Essence",
@@ -59233,20 +59145,12 @@
    "farm": "Fractals",
    "expansion": "Core",
    "wiki": "Fractal_Capacitor",
-   "recipe": "MF : Spinal Blade Back Pack (Perfected) + Gift of Fractals + Glob of Coagulated Mists Essence + Mystic Tribute",
-   "components": [
-    "spinal_blade_perfected",
-    "gift_of_fractals",
-    "glob_of_coagulated_mists_essence",
-    "mystic_tribute"
-   ],
    "note": {
     "fr": "⚠ Entrée non confirmée : aucun légendaire « Fractal Capacitor » n'existe — le dos légendaire des fractales est Ad Infinitum. Les Fractal Capacitors (Prototype/Beta/Ad Infinitum) sont les ÉTAPES de sa chaîne. Conservé comme renvoi ; voir l'onglet Ad Infinitum.",
     "en": "⚠ Unconfirmed entry: no 'Fractal Capacitor' legendary exists — the fractal legendary back is Ad Infinitum. The Fractal Capacitors (Prototype/Beta/Ad Infinitum) are STEPS in its chain. Kept as a pointer; see the Ad Infinitum tab."
    },
    "armory_api_id": 74155,
-   "armory_max_count": 1,
-   "recipe_verified": "2026-07-25 (wiki) — entrée fantôme, renvoi vers Ad Infinitum"
+   "armory_max_count": 1
   },
   "warbringer": {
    "name": "Warbringer",

@@ -34,9 +34,10 @@ Cinq familles, dans l'ordre de ce qu'elles debloquent :
    page de categorie « Incursive Investigation », pas un article ; « Helping
    Hylek: Kill Krait » est un compteur de kills sans etapes par nature, et le
    restera. Demander leur page fait chercher des articles qui n'existent pas.
-   On ne sort donc une URL que si la page porte deja un nom d'article connu de
-   l'index ; sinon on renvoie a la page du LEGENDAIRE, qui liste ses
-   collections.
+   Aucune URL n'est donc sortie pour cette famille : ces succes vivent dans le
+   meta global, pas dans un article. La section reste, parce que la liste des
+   collections incompletes est utile ; mais elle ne demande plus rien a
+   capturer, elle dit ou lire.
 
 Sortie double : `PAGES_A_CAPTURER.md` pour la lecture, `PAGES_A_CAPTURER.txt`
 pour l'automatisation — une URL par ligne, rien d'autre, aucun en-tete.
@@ -256,7 +257,14 @@ for c in sans_id:
     out.append(f"| `{ti}` |")
 
 manquantes = [x for x in collections_vides if not x[4]]
-out.append(f"\n## 4 — {len(collections_vides)} collections incomplètes, dont {len(manquantes)} sans capture\n")
+out.append(f"\n## 4 — {len(collections_vides)} collections incomplètes — "
+           f"RIEN À CAPTURER\n")
+out.append("Ces succès n'ont pas d'article à eux : « Incursive Investigation:")
+out.append("Infinite Recursion » est une ligne de la page de catégorie, « Helping")
+out.append("Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils")
+out.append("vivent dans le méta global. La liste reste parce qu'elle est utile ; la")
+out.append("colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans")
+out.append("`PAGES_A_CAPTURER.txt`.\n")
 out.append("| | succès | légendaire | id | ce qui manque | où le lire |")
 out.append("|---|---|---|---:|---|---|")
 renvois = {}
@@ -272,9 +280,7 @@ for t, leg, aid, manque, cap in collections_vides:
         renvois[cible] += 1
     out.append(f"| {'●' if cap else '○'} | `{t}` | {leg} | {aid} | {manque} | "
                f"{'—' if cap else '`' + cible + '`'} |")
-for cible in renvois:
-    if not capturee(cible):
-        urls.append(url(cible))
+# Volontairement aucune URL : voir l'en-tete. Ces succes n'ont pas d'article.
 
 (HERE / "PAGES_A_CAPTURER.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 vus, propres = set(), []

@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v235.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v236.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 bis — 15 cibles citees par l'arbre sans entree connue
+## 0 bis — 14 cibles citees par l'arbre sans entree connue
 
 Ces cles portent des couts a plat mais ne correspondent ni a un legendaire,
 ni a une piece d'armure, ni a un composant. Ce n'est pas une capture qui
@@ -29,7 +29,6 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 - `gen3_aurenes_reckoning`
 - `gen3_aurenes_tenderness`
 - `gen3_aurenes_wrath`
-- `upgrades`
 
 ## 0 — 5 trous de l'arbre — LA PRIORITÉ
 
@@ -46,7 +45,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Fractalline Spark` | 1 |
 | `Olmakhan Bandolier` | 1 |
 
-## 1 — 5 tables « Full material list » manquantes
+## 1 — 3 tables « Full material list » manquantes
 
 Ces cibles portent des coûts à plat mais leur page n'est pas capturée avec
 sa table de matériaux. Sans elle, l'arbre ne peut pas se déplier : il
@@ -57,8 +56,6 @@ ignore ce que la cible contient réellement.
 | `Obsidian armor` | 15 |
 | `Ardent Glorious armor` | 3 |
 | `Triumphant Hero's armor` | 3 |
-| `Legendary Upgrades` | 2 |
-| `Fractal Capacitor` | 1 |
 
 ## 2 — 3 composants en arbitrage sans page au dépôt
 
@@ -72,22 +69,26 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | `Elegy Mosaic` | 2 |
 | `Shard of Glory` | 2 |
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 4 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Gift of Fractals` |
 | `Gift of Magical / Mighty Prosperity` |
-| `Legendary Shards (Gen2)` |
-| `Legendary Shards (Gen3 / Aurene)` |
 | `Olmakhan Bandolier` |
 | `Spinal Blade Back Pack (Perfected)` |
 | `Valkyrie Bearkin War Helm` |
 
-## 4 — 32 collections incomplètes, dont 26 sans capture
+## 4 — 32 collections incomplètes — RIEN À CAPTURER
+
+Ces succès n'ont pas d'article à eux : « Incursive Investigation:
+Infinite Recursion » est une ligne de la page de catégorie, « Helping
+Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils
+vivent dans le méta global. La liste reste parce qu'elle est utile ; la
+colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
+`PAGES_A_CAPTURER.txt`.
 
 | | succès | légendaire | id | ce qui manque | où le lire |
 |---|---|---|---:|---|---|

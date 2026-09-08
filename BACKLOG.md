@@ -1200,3 +1200,25 @@ descend pas encore, et publier les trous restants.
 Restent **cinq** : `Dragonsblood Weapons` (3 dépendants), `Augur's Stone`,
 `Bloodstone Shard`, `Fractalline Spark`, `Olmakhan Bandolier`. Section 0 de
 `PAGES_A_CAPTURER.md`.
+
+
+### ⑥ La ligne runes / cachets / reliques est incomplète, et ça se voit enfin
+
+`upgrades` portait 450 obsidiennes, 1050 ectoplasmes, 205 trèfles et 23 250
+cristaux luisants, à côté des trois entrées réelles `legendary_rune`,
+`legendary_sigil` et `legendary_relic`. Table parallèle **et inerte** :
+`upgrades` n'existe pas dans `legendaries`, l'interface ne propose au choix que
+des entrées de `legendaries`, donc elle ne pouvait jamais être cochée. Ces
+chiffres n'étaient comptés nulle part.
+
+Retirée, elle laisse voir le vrai état : les chaînes des trois entrées réelles
+ne descendent pas jusqu'à l'obsidienne et aux ectoplasmes. Les recettes sont
+pourtant capturées — `gift_of_runes` (50 Mystic Aspect + 20 trèfles + 100 ecto
++ 50 obsidiennes), `gift_of_sigils` (75 Mystic Mote + 30 trèfles + 150 ecto +
+75 obsidiennes), `gift_of_relics` (25 Mystic Facet + 25 trèfles + 150 ecto +
+1 Gift of Research). Il manque les arêtes.
+
+Deux obstacles connus : `gift_of_craftsmanship` n'est pas capturé, et la
+recette de `gift_of_sigils` écrit `Mystic_clover` avec un c minuscule — à
+vérifier côté `to_id`, une casse qui ne colle pas fait perdre l'arête en
+silence.
