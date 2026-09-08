@@ -75,6 +75,34 @@ Une page dont l'acquisition se resume a un tableau de vendeur garde son cout :
 `Gift of the Pact` chez le Whispers Keeper, 250 Airship Part + 250 Ley Line
 Crystal + 250 Lump of Aurillium, joints par des « + » sur une seule ligne. La,
 l'achat est la seule voie documentee, donc c'est l'arete.
+
+v7 : LA DIVISION DES TOTAUX NE MARCHAIT QU'AU DEUXIEME NIVEAU.
+
+Dans une table « Full material list », TOUTES les quantites sont des totaux
+pour le legendaire, a n'importe quelle profondeur. L'unitaire d'une arete
+parent -> enfant est donc le total de l'enfant divise par le total du parent.
+
+La v6 ne savait calculer ce diviseur que pour un parent apparaissant lui-meme
+comme enfant d'une ligne de PREMIER niveau (`t not in _n1`). Au troisieme
+niveau elle ne divisait plus rien et posait le total brut comme unitaire.
+
+Le cout est mesurable. La table de The Binding of Ipos donne :
+
+    Gift_of_Ipos            -> Shard_of_the_Dark_Arts   100
+    Shard_of_the_Dark_Arts  -> Mystic_Curio             100
+    Shard_of_the_Dark_Arts  -> Mithril_Ingot           2000
+
+La v6 posait « 100 Mystic Curio par tesson » et « 2 000 lingots par tesson »
+au lieu de 1 et 20. Multiplie par les 100 tessons, la confrontation annoncait
+700 000 lingots de mithril la ou la donnee en compte 3 500 — un ecart de
++696 500 que j'aurais pu prendre pour une table incomplete a corriger.
+
+Le diviseur se lit desormais sur la ligne ou l'item est lui-meme enfant, quelle
+que soit sa profondeur. Un item porte par deux lignes avec deux quantites
+differentes n'a pas de diviseur sur : on ne divise pas, et le cas est signale.
+Sur 76 tables, douze items sont dans ce cas et aucun n'est parent d'une arete —
+ce sont des feuilles (lingots, planches, tickets) citees a la fois comme
+composant direct et comme cout d'un intermediaire.
 """
 import json, re, collections, sys
 from pathlib import Path
@@ -188,16 +216,27 @@ import gw2_parse_material_list_v1 as _P
 _sous_groupe = {o for g in (d.get('alt_groups') or {}).values()
                 for o in (g.get('options') or [])}
 _tab = 0
+_ambig_div, _div_refusees = [], []
 for _page in sorted(_P.WIKI.glob('*.html')):
     if _P._debut(_page.read_text(encoding='utf-8', errors='ignore')) < 0: continue
     if _page.stem in _P.DOUBLES: continue
     _brut = _P.aretes(_page)
-    _n1 = {e for _t, e, _q in _brut}
-    _n2 = {e: q for t, e, q in _brut if e in _n1 and t not in _n1}
+    # Toutes les quantites de la table sont des totaux pour le legendaire. Le
+    # diviseur d'un parent est le total lu sur la ligne ou il est lui-meme
+    # enfant — a n'importe quelle profondeur, et non au seul premier niveau.
+    _vals = collections.defaultdict(set)
+    for _t, _e, _q in _brut:
+        if _q is not None: _vals[_e].add(_q)
+    _n2 = {e: next(iter(v)) for e, v in _vals.items() if len(v) == 1}
+    for e, v in _vals.items():
+        if len(v) > 1 and any(t == e for t, _e, _q in _brut):
+            _ambig_div.append((_page.stem, e, sorted(v)))
     for _t, _e, _q in _brut:
         if _q is None: continue
         if _t in _n2 and _n2[_t]:
-            if _q % _n2[_t]: continue
+            if _q % _n2[_t]:
+                _div_refusees.append((_page.stem, _t, _e, _q, _n2[_t]))
+                continue
             _q //= _n2[_t]
         _pi, _ei = to_id(_t), to_id(_e)
         if not _pi or not _ei or _pi == _ei: continue
@@ -205,6 +244,10 @@ for _page in sorted(_P.WIKI.glob('*.html')):
         if _ei in edges[_pi]: continue
         edges[_pi][_ei] = (_q, 'table'); _tab += 1
 print('aretes venues des tables de materiaux:', _tab)
+print('divisions refusees (non entieres):', len(_div_refusees))
+for _x in _div_refusees[:10]: print('   ', _x)
+print('parents a diviseur ambigu:', len(_ambig_div))
+for _x in _ambig_div: print('   ', _x)
 print('promotions ecartees:',len(promotions))
 print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])
