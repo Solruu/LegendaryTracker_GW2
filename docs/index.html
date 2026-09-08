@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v240",
+    "version": "v241",
     "last_updated": "2026-09-08",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -16925,10 +16925,12 @@ const SOURCES_DB = {
         "shard_of_spero": 30,
         "shard_of_tlehco": 20,
         "shard_of_the_crown": 20,
-        "shard_of_the_dark_arts": 10
+        "shard_of_the_dark_arts": 10,
+        "mystic_curio": 10
       },
       "needed_for": [
         "gift_of_wood",
+        "mystic_curio",
         "shadowstone_containment_frame",
         "shard_of_arah",
         "shard_of_call_of_the_void",
@@ -18440,11 +18442,13 @@ const SOURCES_DB = {
         "shard_of_spero": 40,
         "shard_of_tlehco": 30,
         "shard_of_the_crown": 30,
-        "shard_of_the_dark_arts": 20
+        "shard_of_the_dark_arts": 20,
+        "mystic_curio": 15
       },
       "needed_for": [
         "gift_of_metal",
         "lump_of_mithrillium",
+        "mystic_curio",
         "shadowstone_containment_frame",
         "shard_of_arah",
         "shard_of_call_of_the_void",
@@ -20383,6 +20387,290 @@ const SOURCES_DB = {
       "ref": "table « Full material list » — Gift of Ipos → 100 Shard of the Dark Arts",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+    },
+    "mystic_curio": {
+      "name": "Mystic Curio",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_arah",
+        "shard_of_call_of_the_void",
+        "shard_of_endeavor",
+        "shard_of_exitare",
+        "shard_of_friendship",
+        "shard_of_liturgy",
+        "shard_of_resolution",
+        "shard_of_spero",
+        "shard_of_the_crown",
+        "shard_of_the_dark_arts",
+        "shard_of_tlehco"
+      ],
+      "qty": {
+        "shard_of_arah": 1,
+        "shard_of_call_of_the_void": 1,
+        "shard_of_endeavor": 1,
+        "shard_of_exitare": 1,
+        "shard_of_friendship": 1,
+        "shard_of_liturgy": 1,
+        "shard_of_resolution": 1,
+        "shard_of_spero": 1,
+        "shard_of_the_crown": 1,
+        "shard_of_the_dark_arts": 1,
+        "shard_of_tlehco": 1
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Forge mystique : 35 trophées de palier 5 au choix + 15 lingots de mithril + 10 planches de bois d'ancêtre.",
+            "en": "Mystic Forge: 35 tier-5 trophies of your choice + 15 Mithril Ingots + 10 Elder Wood Planks."
+          }
+        }
+      ],
+      "ref": "wiki Mystic Curio — sept boîtes Recipe, une par trophée T5",
+      "checked": "2026-09-08",
+      "verified": "sept recettes capturées, ingrédients communs identiques"
+    },
+    "tribute_to_arah": {
+      "name": "Tribute to Arah",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_arah"
+      ],
+      "qty": {
+        "shard_of_arah": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Arah",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_call_of_the_void": {
+      "name": "Tribute to Call of the Void",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_call_of_the_void"
+      ],
+      "qty": {
+        "shard_of_call_of_the_void": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Call of the Void",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_endeavor": {
+      "name": "Tribute to Endeavor",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_endeavor"
+      ],
+      "qty": {
+        "shard_of_endeavor": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Endeavor",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_exitare": {
+      "name": "Tribute to Exitare",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_exitare"
+      ],
+      "qty": {
+        "shard_of_exitare": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Exitare",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_friendship": {
+      "name": "Tribute to Friendship",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_friendship"
+      ],
+      "qty": {
+        "shard_of_friendship": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Friendship",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_liturgy": {
+      "name": "Tribute to Liturgy",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_liturgy"
+      ],
+      "qty": {
+        "shard_of_liturgy": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Liturgy",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_resolution": {
+      "name": "Tribute to Resolution",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_resolution"
+      ],
+      "qty": {
+        "shard_of_resolution": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Resolution",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_spero": {
+      "name": "Tribute to Spero",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_spero"
+      ],
+      "qty": {
+        "shard_of_spero": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Spero",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_the_crown": {
+      "name": "Tribute to the Crown",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_the_crown"
+      ],
+      "qty": {
+        "shard_of_the_crown": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of the Crown",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_the_dark_arts": {
+      "name": "Tribute to the Dark Arts",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_the_dark_arts"
+      ],
+      "qty": {
+        "shard_of_the_dark_arts": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of the Dark Arts",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "tribute_to_tlehco": {
+      "name": "Tribute to Tlehco",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_tlehco"
+      ],
+      "qty": {
+        "shard_of_tlehco": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard of Tlehco",
+      "checked": "2026-09-08",
+      "verified": "exigence sourcée, coût inconnu"
     }
   },
   "enchaînements_recommandés": {
@@ -66949,6 +67237,31 @@ const SOURCES_DB = {
         "en": "The page states any core game gemstone works: six recipes, one per colour. Pick whichever you have in stock, or the cheapest on the Trading Post."
       },
       "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes"
+    },
+    "trophee_mystic_curio": {
+      "qty": 35,
+      "options": [
+        "potent_venom_sac",
+        "intricate_totem",
+        "large_bone",
+        "large_claw",
+        "large_fang",
+        "large_scale",
+        "vial_of_potent_blood"
+      ],
+      "default": "large_bone",
+      "targets": [
+        "mystic_curio"
+      ],
+      "label": {
+        "fr": "Trophée du Mystic Curio — un seul des sept",
+        "en": "Mystic Curio trophy — one of the seven"
+      },
+      "note": {
+        "fr": "Sept recettes, une par trophée de palier 5. Prends celui dont tu as le plus en stock : c'est le même prix ailleurs.",
+        "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
+      },
+      "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
     }
   }
 };

@@ -1256,6 +1256,12 @@ Arah, Call of the Void, Endeavor, Exitare, Friendship, Liturgy, Resolution,
 Spero, Tlehco, the Crown, the Dark Arts. Créés par `gw2_tessons_gen2_v1.py`
 depuis les tables, avec leurs ingrédients.
 
-Reste à modéliser, cités par les tables sans détail : le **Mystic Curio**
-(1 par tesson, onze fois) et les onze **Tribute to X** (1 par tesson). Les
-créer sans recette en ferait des feuilles muettes.
+**Mystic Curio fait** : sa page était au dépôt et porte **sept** recettes, une
+par trophée de palier 5 — 35 trophées + 15 lingots de mithril + 10 planches de
+bois d'ancêtre. Le trophée est un `alt_groups` de plus (`trophee_mystic_curio`).
+
+**Les onze `Tribute to X` sont créés sans coût** : les tables disent qu'il en
+faut un par tesson, aucune page n'est au dépôt, et rien ne détaille leur
+recette. L'exigence est sourcée, le coût ne l'est pas. Ils sont désormais en
+section 3 de `PAGES_A_CAPTURER.md`, ce qui est le point : un manque qu'on voit
+vaut mieux qu'un manque caché dans une phrase de `sources`.

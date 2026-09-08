@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v240.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v241.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -39,18 +39,18 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Shard of Arah` | 4 |
+| `Shard of Call of the Void` | 4 |
+| `Shard of Endeavor` | 4 |
+| `Shard of Exitare` | 4 |
+| `Shard of Friendship` | 4 |
+| `Shard of Liturgy` | 4 |
+| `Shard of Resolution` | 4 |
+| `Shard of Spero` | 4 |
+| `Shard of the Crown` | 4 |
+| `Shard of the Dark Arts` | 4 |
+| `Shard of Tlehco` | 4 |
 | `Dragonsblood Weapons` | 3 |
-| `Shard of Arah` | 2 |
-| `Shard of Call of the Void` | 2 |
-| `Shard of Endeavor` | 2 |
-| `Shard of Exitare` | 2 |
-| `Shard of Friendship` | 2 |
-| `Shard of Liturgy` | 2 |
-| `Shard of Resolution` | 2 |
-| `Shard of Spero` | 2 |
-| `Shard of the Crown` | 2 |
-| `Shard of the Dark Arts` | 2 |
-| `Shard of Tlehco` | 2 |
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
@@ -84,7 +84,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | `WvW Skirmish Claim Ticket` | 2 |
 | `Shard of the Dark Arts` | 1 |
 
-## 3 — 15 composants sans apiId ni page
+## 3 — 26 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -105,6 +105,17 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Shard of the Dark Arts` |
 | `Shard of Tlehco` |
 | `Spinal Blade Back Pack (Perfected)` |
+| `Tribute to Arah` |
+| `Tribute to Call of the Void` |
+| `Tribute to Endeavor` |
+| `Tribute to Exitare` |
+| `Tribute to Friendship` |
+| `Tribute to Liturgy` |
+| `Tribute to Resolution` |
+| `Tribute to Spero` |
+| `Tribute to the Crown` |
+| `Tribute to the Dark Arts` |
+| `Tribute to Tlehco` |
 | `Valkyrie Bearkin War Helm` |
 
 ## 4 — 32 collections incomplètes — RIEN À CAPTURER
