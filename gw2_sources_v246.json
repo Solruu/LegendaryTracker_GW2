@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v244",
-  "last_updated": "2026-09-08",
+  "version": "v246",
+  "last_updated": "2026-09-07",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -4443,7 +4443,8 @@
    "qty": {
     "essence_of_strategy": 1000,
     "certificate_of_honor": 500,
-    "commanders_wings_of_war": 250
+    "commanders_wings_of_war": 250,
+    "clover_vendor_wvw": 10
    },
    "farmable": true,
    "sources": [
@@ -4465,6 +4466,7 @@
    "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Warbringer : Commander's Compendium, prerequis du palier Commander's Wings of War, coute 250 insignes",
    "needed_for": [
     "certificate_of_honor",
+    "clover_vendor_wvw",
     "commanders_wings_of_war",
     "essence_of_strategy"
    ],
@@ -4657,13 +4659,15 @@
    "name": "Magnetite Shard",
    "apiId": 28,
    "needed_for": [
+    "clover_vendor_raid",
     "gift_of_complex_emotions",
     "gift_of_patience"
    ],
    "qty": {
     "coalescence": 350,
     "gift_of_patience": 100,
-    "gift_of_complex_emotions": 100
+    "gift_of_complex_emotions": 100,
+    "clover_vendor_raid": 30
    },
    "farmable": true,
    "sources": [
@@ -4940,6 +4944,7 @@
    "needed_for": [
     "aetheric_anchor",
     "armor_perfected_envoy",
+    "clover_forge",
     "endless_summer",
     "fulgurite",
     "gift_of_castoran_mastery",
@@ -4979,7 +4984,8 @@
     "gift_of_runes": 50,
     "gift_of_sigils": 75,
     "gift_of_castoran_mastery": 250,
-    "gift_of_infused_gems": 250
+    "gift_of_infused_gems": 250,
+    "clover_forge": 3.23
    },
    "farmable": true,
    "sources": [
@@ -5554,10 +5560,12 @@
    "name": "Exotic Essence of Luck",
    "apiId": 45175,
    "needed_for": [
+    "clover_lunar",
     "gift_of_research"
    ],
    "qty": {
-    "gift_of_research": 250
+    "gift_of_research": 250,
+    "clover_lunar": 10
    },
    "farmable": true,
    "sources": [
@@ -5622,6 +5630,7 @@
    "needed_for": [
     "armor_pvp",
     "certificate_of_support",
+    "clover_vendor_pvp",
     "the_ascension",
     "transcendence"
    ],
@@ -5629,7 +5638,8 @@
     "ardent_glorious__per_piece": 150,
     "transcendence": 45,
     "the_ascension": 100,
-    "certificate_of_support": 5
+    "certificate_of_support": 5,
+    "clover_vendor_pvp": 5
    },
    "farmable": true,
    "timegate": true,
@@ -5722,6 +5732,11 @@
     "aetheric_anchor",
     "amalgamated_rift_essence",
     "banner_pennon",
+    "clover_forge",
+    "clover_vendor_fractal",
+    "clover_vendor_pvp",
+    "clover_vendor_raid",
+    "clover_vendor_wvw",
     "crystalline_ingot",
     "diviners_orichalcum_imbued_inscription",
     "endless_summer",
@@ -5796,7 +5811,12 @@
     "glob_of_coagulated_mists_essence": 1,
     "gift_of_fortune": 250,
     "neutralized_titan_alloy": 3,
-    "seer_runestone": 10
+    "seer_runestone": 10,
+    "clover_forge": 3.23,
+    "clover_vendor_fractal": 2,
+    "clover_vendor_raid": 2,
+    "clover_vendor_pvp": 2,
+    "clover_vendor_wvw": 2
    },
    "kind": "acquire",
    "best": "salvage",
@@ -6820,9 +6840,13 @@
    "apiId": 19976,
    "needed_for": [
     "aetheric_anchor",
+    "clover_forge",
+    "clover_vendor_fractal",
+    "clover_vendor_pvp",
+    "clover_vendor_raid",
+    "clover_vendor_wvw",
     "glob_of_coagulated_mists_essence",
     "klobjarne_geirr",
-    "mystic_clover",
     "mystic_tribute",
     "orrax_manifested",
     "selachimorpha",
@@ -6904,75 +6928,63 @@
     }
    ],
    "qty": {
-    "gen1_frostfang": 173,
-    "gen1_incinerator": 173,
-    "gen1_the_moot": 173,
-    "gen1_quip": 173,
-    "gen1_meteorlogicus": 173,
-    "gen1_bolt": 173,
-    "gen1_the_minstrel": 173,
-    "gen1_the_flameseeker_prophecies": 173,
-    "gen1_rodgort": 173,
-    "gen1_howler": 173,
-    "gen1_sunrise": 173,
-    "gen1_twilight": 173,
-    "gen1_eternity": 173,
-    "gen1_the_juggernaut": 173,
-    "gen1_frenzy": 173,
-    "gen1_kamohoalii_kotaki": 173,
-    "gen1_kudzu": 173,
-    "gen1_the_dreamer": 173,
-    "gen1_the_bifrost": 173,
-    "gen1_kraitkin": 173,
-    "gen1_the_predator": 173,
-    "gen2_astralaria": 173,
-    "gen2_hope": 173,
-    "gen2_nevermore": 173,
-    "gen2_chuka_and_champawat": 173,
-    "gen2_tigris": 173,
-    "gen2_caladbolg": 173,
-    "gen2_eureka": 173,
-    "gen2_shooshadoo": 173,
-    "gen2_eordas_grip": 173,
-    "gen2_itzels_boon": 173,
-    "gen2_exordium": 173,
-    "gen2_hope_scepter": 173,
-    "gen2_lorekeeper": 173,
-    "gen2_elegy": 173,
-    "gen2_xiuquatl": 173,
-    "gen2_reaver_of_the_mists": 173,
-    "gen3_aurenes_fang": 173,
-    "gen3_aurenes_claw": 173,
-    "gen3_aurenes_bite": 173,
-    "gen3_aurenes_weight": 173,
-    "gen3_aurenes_gaze": 173,
-    "gen3_aurenes_insight": 173,
-    "gen3_aurenes_argument": 173,
-    "gen3_aurenes_guard": 173,
-    "gen3_aurenes_persuasion": 173,
-    "gen3_aurenes_voice": 173,
-    "gen3_aurenes_wrath": 173,
-    "gen3_aurenes_reckoning": 173,
-    "gen3_aurenes_scale": 173,
-    "gen3_aurenes_wisdom": 173,
-    "gen3_aurenes_breath": 173,
-    "gen3_aurenes_tenderness": 173,
-    "transcendence": 422,
-    "the_ascension": 172,
-    "ad_infinitum": 172,
-    "stella_radians": 422,
-    "coalescence": 422,
-    "warbringer": 172,
-    "aurora": 173,
-    "vision": 422,
-    "conflux": 422,
-    "aetheric_anchor": 123,
-    "klobjarne_geirr": 85,
-    "orrax_manifested": 152,
-    "selachimorpha": 123,
-    "strife_unending": 101,
+    "gen1_frostfang": 250,
+    "gen1_incinerator": 250,
+    "gen1_the_moot": 250,
+    "gen1_quip": 250,
+    "gen1_meteorlogicus": 250,
+    "gen1_bolt": 250,
+    "gen1_the_minstrel": 250,
+    "gen1_the_flameseeker_prophecies": 250,
+    "gen1_rodgort": 250,
+    "gen1_howler": 250,
+    "gen1_sunrise": 250,
+    "gen1_twilight": 250,
+    "gen1_eternity": 250,
+    "gen1_the_juggernaut": 250,
+    "gen1_frenzy": 250,
+    "gen1_kamohoalii_kotaki": 250,
+    "gen1_kudzu": 250,
+    "gen1_the_dreamer": 250,
+    "gen1_the_bifrost": 250,
+    "gen1_kraitkin": 250,
+    "gen1_the_predator": 250,
+    "gen3_aurenes_fang": 250,
+    "gen3_aurenes_claw": 250,
+    "gen3_aurenes_bite": 250,
+    "gen3_aurenes_weight": 250,
+    "gen3_aurenes_gaze": 250,
+    "gen3_aurenes_insight": 250,
+    "gen3_aurenes_argument": 250,
+    "gen3_aurenes_guard": 250,
+    "gen3_aurenes_persuasion": 250,
+    "gen3_aurenes_voice": 250,
+    "gen3_aurenes_wrath": 250,
+    "gen3_aurenes_reckoning": 250,
+    "gen3_aurenes_scale": 250,
+    "gen3_aurenes_wisdom": 250,
+    "gen3_aurenes_breath": 250,
+    "gen3_aurenes_tenderness": 250,
+    "transcendence": 249,
+    "the_ascension": 249,
+    "ad_infinitum": 249,
+    "stella_radians": 249,
+    "coalescence": 249,
+    "warbringer": 249,
+    "vision": 249,
+    "conflux": 249,
+    "aetheric_anchor": 323,
+    "klobjarne_geirr": 123,
+    "orrax_manifested": 220,
+    "selachimorpha": 178,
+    "strife_unending": 146,
     "glob_of_coagulated_mists_essence": 1,
-    "mystic_clover": 1
+    "clover_forge": 3.23,
+    "clover_vendor_fractal": 2,
+    "clover_vendor_raid": 2,
+    "clover_vendor_pvp": 2,
+    "clover_vendor_wvw": 2,
+    "mystic_tribute": 250
    },
    "kind": "acquire",
    "best": "vendor",
@@ -7118,73 +7130,11 @@
     }
    },
    "qty_overlap_verified": [
-    "ad_infinitum",
-    "aetheric_anchor",
-    "aurora",
     "coalescence",
     "conflux",
-    "gen1_bolt",
-    "gen1_eternity",
-    "gen1_frenzy",
-    "gen1_frostfang",
-    "gen1_howler",
-    "gen1_incinerator",
-    "gen1_kamohoalii_kotaki",
-    "gen1_kraitkin",
-    "gen1_kudzu",
-    "gen1_meteorlogicus",
-    "gen1_quip",
-    "gen1_rodgort",
-    "gen1_sunrise",
-    "gen1_the_bifrost",
-    "gen1_the_dreamer",
-    "gen1_the_flameseeker_prophecies",
-    "gen1_the_juggernaut",
-    "gen1_the_minstrel",
-    "gen1_the_moot",
-    "gen1_the_predator",
-    "gen1_twilight",
-    "gen2_astralaria",
-    "gen2_caladbolg",
-    "gen2_chuka_and_champawat",
-    "gen2_elegy",
-    "gen2_eordas_grip",
-    "gen2_eureka",
-    "gen2_exordium",
-    "gen2_hope",
-    "gen2_hope_scepter",
-    "gen2_itzels_boon",
-    "gen2_lorekeeper",
-    "gen2_nevermore",
-    "gen2_reaver_of_the_mists",
-    "gen2_shooshadoo",
-    "gen2_tigris",
-    "gen2_xiuquatl",
-    "gen3_aurenes_argument",
-    "gen3_aurenes_bite",
-    "gen3_aurenes_breath",
-    "gen3_aurenes_claw",
-    "gen3_aurenes_fang",
-    "gen3_aurenes_gaze",
-    "gen3_aurenes_guard",
-    "gen3_aurenes_insight",
-    "gen3_aurenes_persuasion",
-    "gen3_aurenes_reckoning",
-    "gen3_aurenes_scale",
-    "gen3_aurenes_tenderness",
-    "gen3_aurenes_voice",
-    "gen3_aurenes_weight",
-    "gen3_aurenes_wisdom",
-    "gen3_aurenes_wrath",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "selachimorpha",
     "stella_radians",
-    "strife_unending",
-    "the_ascension",
     "transcendence",
-    "vision",
-    "warbringer"
+    "vision"
    ]
   },
   "mystic_runestone": {
@@ -7939,6 +7889,7 @@
    "apiId": 7,
    "needed_for": [
     "ad_infinitum",
+    "clover_vendor_fractal",
     "gift_of_ascension_fractal"
    ],
    "farmable": true,
@@ -7963,7 +7914,8 @@
     }
    ],
    "qty": {
-    "gift_of_ascension_fractal": 4650
+    "gift_of_ascension_fractal": 4650,
+    "clover_vendor_fractal": 150
    },
    "kind": "acquire",
    "best": "daily_reward",
@@ -10369,7 +10321,10 @@
    "farmable": true,
    "qty": {
     "augurs_stone": 20,
-    "bloodstone_shard": 200
+    "bloodstone_shard": 200,
+    "clover_vendor_fractal": 2,
+    "clover_vendor_raid": 2,
+    "clover_vendor_pvp": 2
    },
    "sources": [
     {
@@ -10390,7 +10345,10 @@
    "ref": "gw2_currencies_ref : devise 23",
    "needed_for": [
     "augurs_stone",
-    "bloodstone_shard"
+    "bloodstone_shard",
+    "clover_vendor_fractal",
+    "clover_vendor_pvp",
+    "clover_vendor_raid"
    ]
   },
   "dragonsblood_weapons": {
@@ -10495,7 +10453,8 @@
     "mist_enhanced_mithril": 750,
     "mist_pearl": 750,
     "mist_band_infused": 350,
-    "commanders_wings_of_war": 875
+    "commanders_wings_of_war": 875,
+    "clover_vendor_wvw": 20
    },
    "farmable": true,
    "sources": [
@@ -10550,6 +10509,7 @@
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
     "armor_wvw",
+    "clover_vendor_wvw",
     "commanders_wings_of_war",
     "essence_of_annihilation",
     "mist_band_infused",
@@ -20041,6 +20001,324 @@
    "ref": "table « Full material list » — 1 Tribute par Shard of Tlehco",
    "checked": "2026-09-08",
    "verified": "exigence sourcée, coût inconnu"
+  },
+  "philosophers_stone": {
+   "name": "Philosopher's Stone",
+   "kind": "currency",
+   "needed_for": [
+    "clover_forge"
+   ],
+   "qty": {
+    "clover_forge": 19.35
+   },
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Achetee en eclats d'esprit chez Miyani et les preposes a la Forge. Le taux d'echange n'est pas lisible sur la capture.",
+      "en": "Bought with Spirit Shards from Miyani and Mystic Forge Attendants. The exchange rate is not readable on the capture."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition",
+   "checked": "2026-09-08",
+   "verified": "cite par la page, cout non chiffre"
+  },
+  "astral_acclaim": {
+   "name": "Astral Acclaim",
+   "kind": "currency",
+   "needed_for": [
+    "clover_wizards_vault"
+   ],
+   "qty": {
+    "clover_wizards_vault": 60
+   },
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Monnaie du coffre du Magicien, gagnee par les objectifs hebdomadaires et saisonniers.",
+      "en": "Wizard's Vault currency, earned from weekly and seasonal objectives."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition",
+   "checked": "2026-09-08",
+   "verified": "cite par la page, cout non chiffre"
+  },
+  "clover_reward_track": {
+   "name": "Mystic Clover — piste de récompenses",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Gratuit. Pistes PvP, WvW et d'escarmouche (Mist-Warped Bundle). Voie principale : du temps, pas de matériaux.",
+      "en": "Free. PvP, WvW and Skirmish reward tracks (Mist-Warped Bundle). Main route: time, not materials."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page"
+  },
+  "clover_forge": {
+   "name": "Mystic Clover — Forge mystique",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Coût moyen : la Forge ne rend un trèfle que 31 % du temps, donc 3,23 tentatives par trèfle. Chiffres de la recette « Average » du wiki.",
+      "en": "Average cost: the Forge yields a clover only 31% of the time, so 3.23 attempts per clover. Figures from the wiki's \"Average\" recipe."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page"
+  },
+  "clover_vendor_fractal": {
+   "name": "Mystic Clover — vendeur Fractales",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "BUY-4373, plafond 10 par semaine.",
+      "en": "BUY-4373, limit 10 per week."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "BUY-4373, Fractales des Brumes",
+       "en": "BUY-4373, Fractals of the Mists"
+      },
+      "period": "week",
+      "cap": 10,
+      "cost": {
+       "fr": "BUY-4373, plafond 10 par semaine.",
+       "en": "BUY-4373, limit 10 per week."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_vendor_raid": {
+   "name": "Mystic Clover — vendeur Raids",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Manfred Njallson, plafond 15 par semaine.",
+      "en": "Manfred Njallson, limit 15 per week."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Manfred Njallson, raids",
+       "en": "Manfred Njallson, raids"
+      },
+      "period": "week",
+      "cap": 15,
+      "cost": {
+       "fr": "Manfred Njallson, plafond 15 par semaine.",
+       "en": "Manfred Njallson, limit 15 per week."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_vendor_pvp": {
+   "name": "Mystic Clover — vendeur PvP",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Vendeur de ligue, plafond 5 par semaine (partagé avec l'emblème de victoire en tournoi).",
+      "en": "League Vendor, limit 5 per week (shared with the Emblem of Tournament Victory option)."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeur de ligue PvP — plafond partage avec l'emblème de victoire en tournoi",
+       "en": "PvP League Vendor — cap shared with the Emblem of Tournament Victory option"
+      },
+      "period": "week",
+      "cap": 5,
+      "cost": {
+       "fr": "Vendeur de ligue, plafond 5 par semaine (partagé avec l'emblème de victoire en tournoi).",
+       "en": "League Vendor, limit 5 per week (shared with the Emblem of Tournament Victory option)."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_vendor_wvw": {
+   "name": "Mystic Clover — vendeur McM",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Dugan, plafond 5 par semaine. Seule voie de vendeur qui ne demande pas d'éclat d'esprit.",
+      "en": "Dugan, limit 5 per week. The only vendor route that needs no Spirit Shard."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Dugan, McM",
+       "en": "Dugan, WvW"
+      },
+      "period": "week",
+      "cap": 5,
+      "cost": {
+       "fr": "Dugan, plafond 5 par semaine. Seule voie de vendeur qui ne demande pas d'éclat d'esprit.",
+       "en": "Dugan, limit 5 per week. The only vendor route that needs no Spirit Shard."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_wizards_vault": {
+   "name": "Mystic Clover — coffre du Magicien",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "60 écus astraux, plafond 20 par saison.",
+      "en": "60 Astral Acclaim, limit 20 per season."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Coffre du Magicien",
+       "en": "Wizard's Vault"
+      },
+      "period": "season",
+      "cap": 20,
+      "cost": {
+       "fr": "60 écus astraux, plafond 20 par saison.",
+       "en": "60 Astral Acclaim, limit 20 per season."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_lunar": {
+   "name": "Mystic Clover — Nouvel An lunaire",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "10 essences de chance exotiques, plafond 1 par semaine. Ne demande rien d'autre.",
+      "en": "10 Exotic Essences of Luck, limit 1 per week. Requires nothing else."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
+   "checked": "2026-09-08",
+   "verified": "voie citee par la page ; cout ecrit par la page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Récompenses du Nouvel An lunaire",
+       "en": "New Year Rewards"
+      },
+      "period": "week",
+      "cap": 1,
+      "cost": {
+       "fr": "10 essences de chance exotiques, plafond 1 par semaine. Ne demande rien d'autre.",
+       "en": "10 Exotic Essences of Luck, limit 1 per week. Requires nothing else."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
   }
  },
  "enchaînements_recommandés": {
@@ -66632,6 +66910,32 @@
     "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
    },
    "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
+  },
+  "acquisition_trefle": {
+   "qty": 1,
+   "options": [
+    "clover_reward_track",
+    "clover_forge",
+    "clover_vendor_fractal",
+    "clover_vendor_raid",
+    "clover_vendor_pvp",
+    "clover_vendor_wvw",
+    "clover_wizards_vault",
+    "clover_lunar"
+   ],
+   "default": "clover_reward_track",
+   "targets": [
+    "mystic_clover"
+   ],
+   "label": {
+    "fr": "Trèfles mystiques — comment tu les obtiens",
+    "en": "Mystic Clovers — how you get them"
+   },
+   "note": {
+    "fr": "Le trèfle n'a pas un coût, il a des voies. Par défaut les pistes de récompenses, qui ne coûtent aucun matériau : les totaux ci-dessous n'en portent donc rien. Choisis une autre voie et son prix remonte dans l'arbre. Miyani et Lyhr en vendent aussi, à un prix que la capture ne permet pas de lire.",
+    "en": "A clover has no cost, it has routes. Reward tracks by default, which cost no materials, so the totals below carry none. Pick another route and its price flows back up the tree. Miyani and Lyhr sell them too, at a price the capture does not let us read."
+   },
+   "ref": "wiki Mystic Clover — section Acquisition"
   }
  }
 }

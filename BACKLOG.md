@@ -13,6 +13,15 @@ qui ne marchait qu'au deuxieme niveau et annoncait 700 000 lingots de mithril
 sur The Binding of Ipos, et la regle d'audit qui comparait le JSX a la cle a
 plat au lieu du total affiche.
 
+**Tranche le 08/09 par Antoine : le trefle mystique n'a pas un cout, il a des
+voies.** Pistes de recompenses PvP/WvW (gratuites, voie principale), Forge
+mystique (31 % de reussite), six vendeurs, coffre du Magicien. Modelise en
+`alt_groups acquisition_trefle`, defaut sur la piste de recompenses — donc cout
+nul par defaut, et le prix remonte dans l'arbre si Antoine choisit un vendeur.
+Consequence en cascade : le trefle ne mangeant plus de pieces mystiques,
+l'arete `mystic_coin <- mystic_tribute 250` se pose enfin, dix-sept cles a plat
+disparaissent et les huit gen2 sans collection passent de zero a 250.
+
 **Ce qui reste a trancher, par ordre d'enjeu :**
 
 1. **Conflux, deux ecarts declares** (`qty_conflict`, 08/09) : la chaine donne

@@ -2326,6 +2326,16 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     if (!changed) break;
   }
 
+  // Un cout moyen se compte en decimales : la Forge mystique ne rend un trefle
+  // que 31 % du temps, donc 3,23 pieces mystiques par trefle. Les sommes
+  // flottantes trainent alors des queues de calcul (498.70000000000005) qui
+  // n'ont aucun sens a l'ecran. On arrondit au centieme a la toute fin, jamais
+  // en cours de cascade : arrondir a chaque etage ferait deriver le total.
+  for (const k of Object.keys(totals)) {
+    const v = totals[k];
+    if (typeof v === "number" && !Number.isInteger(v)) totals[k] = Math.round(v * 100) / 100;
+  }
+
   return { totals, variable };
 }
 

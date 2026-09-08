@@ -1,9 +1,9 @@
 # Confrontation aux tables « Full material list »
 
-Source : `gw2_sources_v244.json` contre les 77 tables capturées, arête par arête.
+Source : `gw2_sources_v246.json` contre les 77 tables capturées, arête par arête.
 
-- **295 accords** — la table et `qty` disent le même nombre.
-- **20 arêtes absentes** de `qty` — un coût manquant, pas un désaccord.
+- **296 accords** — la table et `qty` disent le même nombre.
+- **19 arêtes absentes** de `qty` — un coût manquant, pas un désaccord.
 - **1 désaccords** — les deux se prononcent et divergent.
 
 Les quantités de troisième colonne sont divisées par celles de la deuxième :
@@ -17,7 +17,7 @@ arrondie. Les arêtes sans nombre écrit sont ignorées.
 |---|---|---:|---:|
 | `pvp_league_ticket` | `certificate_of_support` | 5 | 25 |
 
-## Arêtes chiffrées par la table et absentes de `qty` — 20
+## Arêtes chiffrées par la table et absentes de `qty` — 19
 
 | composant | parent | table |
 |---|---|---:|
@@ -25,7 +25,6 @@ arrondie. Les arêtes sans nombre écrit sont ignorées.
 | `skirmish_claim_ticket` | `soldiers_wings_of_war` | 525 |
 | `skirmish_claim_ticket` | `recruits_wings_of_war` | 350 |
 | `emerald_orb` | `gift_of_rays` | 250 |
-| `mystic_coin` | `mystic_tribute` | 250 |
 | `opal_orb` | `gift_of_rays` | 250 |
 | `ruby_orb` | `gift_of_rays` | 250 |
 | `sapphire_orb` | `gift_of_rays` | 250 |

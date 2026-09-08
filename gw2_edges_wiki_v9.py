@@ -161,13 +161,36 @@ def to_id(t,page=None):
 edges=collections.defaultdict(dict)   # parent -> {enfant: (qty, origine)}
 conflits=[]
 promotions=[]
+cibles_de_choix_ecartees=[]
 variantes={}
 ecartes_alt=[]
 alternatifs_de={}
+# v9 : UN COMPOSANT DONT L'ACQUISITION EST UN CHOIX NE PREND PAS SES ARETES DE
+# SA RECETTE. Le trefle mystique s'obtient par huit voies — pistes de
+# recompenses gratuites, Forge, six vendeurs — et la Forge n'en est qu'une, qui
+# echoue d'ailleurs deux fois sur trois. Poser sa boite Recipe en arete, c'est
+# declarer obligatoire un achat facultatif : la v8 en tirait « 1 piece mystique
+# par trefle », que rien n'exige. Les voies sont modelisees en composants et
+# `alt_groups` choisit ; la recette n'a plus rien a dire ici.
+# La distinction porte sur la NATURE des options, pas sur l'existence du groupe :
+# un choix d'INGREDIENT (une gemme parmi six pour le Gift of Infused Gems, un
+# trophee parmi sept pour le Mystic Curio) laisse la recette dire le reste, et
+# ecarter toute la boite ferait perdre le mithril et le bois du Curio. Seul un
+# choix de VOIE D'ACQUISITION — options de `kind` « acquisition » — remplace la
+# recette, puisqu'il la contient comme une option parmi d'autres.
+_CIBLES_DE_CHOIX = {
+    t for g in (d.get('alt_groups') or {}).values()
+    for t in (g.get('targets') or [])
+    if t in cc and (g.get('options') or [])
+    and all((cc.get(o) or {}).get('kind') == 'acquisition' for o in g['options'])}
+
 for r in json.load(open('gw2_wiki_recipes_v1.json')):
     if not r['recettes']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue
+    if p in _CIBLES_DE_CHOIX:
+        cibles_de_choix_ecartees.append(p)
+        continue
     for rc in r['recettes']:
         if rc['sortie'] > 1:
             # Promotion : voie d'acquisition alternative, pas une exigence.
@@ -245,6 +268,7 @@ print('divisions refusees (non entieres):', len(_div_refusees))
 for _x in _div_refusees[:10]: print('   ', _x)
 print('parents a diviseur ambigu:', len(_ambig_div))
 for _x in _ambig_div: print('   ', _x)
+print('recettes ecartees (acquisition en choix declare):', sorted(set(cibles_de_choix_ecartees)))
 print('promotions ecartees:',len(promotions))
 print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])

@@ -1,17 +1,17 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v244.json`, 926 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v246.json`, 926 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **824 accords** — le nombre affiche est celui de la table.
-- **39 trous** — l'affichage est SOUS le plancher. Certains.
-- **45 excedents expliques** — le surplus vient d'une branche
+- **832 accords** — le nombre affiche est celui de la table.
+- **31 trous** — l'affichage est SOUS le plancher. Certains.
+- **40 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir.
-- **18 excedents nus** — rien dans la donnee ne les explique : soit
+- **23 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -27,14 +27,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen3_aurene_s_tail` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
 | `gen3_aurene_s_wing` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
 | `legendary_relic` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
-| `gen2_claw_of_the_khan_ur` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_flames_of_war` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_pharus` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_sharur` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_the_binding_of_ipos` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_the_hms_divinity` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_the_shining_blade` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
-| `gen2_verdarach` | `mystic_coin` — Mystic Coin | 77 | 250 | -173 |
 | `gen2_the_hms_divinity` | `mystic_curio` — Mystic Curio | 0 | 100 | -100 |
 | `strife_unending` | `gift_of_war_prosperity` — Gift of War Prosperity | 3 | 30 | -27 |
 | `gen3_aurene_s_fang` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
@@ -66,6 +58,11 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | +2000 |
 | `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | +350 |
 | `perfected_envoy` | `obsidian_shard` — Obsidian Shard | 300 | 50 | +250 |
+| `coalescence` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
+| `conflux` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
+| `stella_radians` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
+| `transcendence` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
+| `vision` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
 | `selachimorpha` | `obsidian_shard` — Obsidian Shard | 488 | 250 | +238 |
 | `aetheric_anchor` | `mystic_clover` — Mystic Clover | 200 | 100 | +100 |
 | `perfected_envoy` | `mystic_clover` — Mystic Clover | 90 | 15 | +75 |
@@ -112,11 +109,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
-| `coalescence` | `mystic_coin` | 499 | 250 | `mystic_clover` |
-| `conflux` | `mystic_coin` | 499 | 250 | `mystic_clover` |
-| `stella_radians` | `mystic_coin` | 499 | 250 | `mystic_clover` |
-| `transcendence` | `mystic_coin` | 499 | 250 | `mystic_clover` |
-| `vision` | `mystic_coin` | 499 | 250 | `mystic_clover` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
@@ -126,3 +118,8 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_the_binding_of_ipos` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
+| `warbringer` | `vial_of_powerful_blood` | 270 | 250 | `mystic_essence_of_strategy` |
+| `warbringer` | `armored_scale` | 270 | 250 | `mystic_essence_of_carnage` |
+| `warbringer` | `vicious_claw` | 270 | 250 | `mystic_essence_of_annihilation` |
+| `warbringer` | `ancient_bone` | 270 | 250 | `mystic_essence_of_animosity` |
+| `conflux` | `gift_of_battle` | 5 | 4 | `gift_of_the_mists` |
