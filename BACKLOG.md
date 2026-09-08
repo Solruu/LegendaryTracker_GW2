@@ -1122,12 +1122,29 @@ Trois familles, qui ne se tranchent pas de la même façon :
 - **Écart de compte (64)** — la clé à plat et l'arête donnent deux nombres
   différents, l'un des deux est faux. Se tranche sur la page du **parent**,
   boîte Recipe.
-- **Aléa du trèfle mystique (79)** — pas un désaccord. La chaîne compte les
-  **trèfles**, la clé à plat compte les écus qu'il faut y consacrer, la recette
-  du trèfle réussissant environ une fois sur trois. 45 des 60 cas visibles
-  tombent à ×3,23–3,25, soit exactement 1 / 0,31. Les rares valeurs éloignées
-  — `glob_of_ectoplasm` sur Endless Summer à ×54,8 — sont d'autres problèmes,
-  désormais visibles parce que le bruit a été retiré.
+- **Clos par l'aléa du trèfle (67)** — la clé à plat et la chaîne disent la
+  même chose dès qu'on paie le taux d'échec du trèfle. Rien à arbitrer.
+- **Aléa du trèfle, reste inexpliqué (50)** — le trèfle explique une partie de
+  l'écart, pas tout. Voir l'anomalie ci-dessous.
+
+#### L'anomalie que le calcul du reste a fait sortir
+
+Vingt et une armes gen1 portent `glob_of_ectoplasm: 250` à plat, et la chaîne
+en réclame 498 : 250 pour le Don de fortune, 248 pour les 77 trèfles au taux
+d'échec. Le reste vaut **−248**, exactement le coût des trèfles.
+
+La même arme porte `mystic_coin: 250`, et là le compte tombe juste — les écus
+ne servent qu'aux trèfles, donc la clé les inclut forcément.
+
+**Lecture proposée, à confirmer** : les clés à plat des armes gen1 comptent
+l'ectoplasme du Don de fortune mais **pas** celui consommé par les trèfles,
+alors que la clé des écus, elle, l'inclut. Deux clés du même légendaire ne
+diraient donc pas la même chose. Si c'est bien ça, l'ectoplasme réel d'une gen1
+est proche de 500, pas de 250.
+
+Ce n'est pas tranché : aucune capture ne porte le total attendu, et corriger
+ferait **doubler** un chiffre affiché sur vingt et une armes. À arbitrer avant
+toute écriture.
 - **Déjà compté par cascade (71)** — le composant arrive déjà au légendaire par
   un chemin modélisé et la table en propose un second. Soit le second ne vaut
   pas pour ce légendaire, soit les deux sont réels et le chevauchement se

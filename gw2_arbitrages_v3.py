@@ -41,9 +41,22 @@ garantie, toutes tournent autour de ~31 % de reussite ». Et 1 / 0,31 = 3,23,
 soit exactement le rapport observe.
 
 Poser l'arete remplacerait donc un cout espere honnete par un plancher
-theorique que personne n'atteint. Ces cas sont sortis des arbitrages et
-regroupes a part, avec leur multiplicateur implicite : s'il s'ecarte nettement
-de 3,25, c'est qu'autre chose se joue et qu'il faut regarder.
+theorique que personne n'atteint. Ces cas sortent des arbitrages.
+
+Mais le multiplicateur brut ne suffisait pas a les separer. Un composant peut
+arriver au legendaire par le trefle ET par ailleurs : l'obsidienne de The
+Ascension vaut 309 a plat, dont 77 par les trefles — a multiplier — et le reste
+non. Comparer 309 a 77 donnait x4,01 et laissait croire a une anomalie, alors
+que la seule question est : que reste-t-il UNE FOIS le trefle paye ?
+
+On separe donc la contribution qui passe par mystic_clover du reste :
+
+    attendu = part_trefle x 3,2258 + part_directe
+    reste   = cle_a_plat - attendu
+
+Un reste voisin de zero, et le cas est clos : la donnee et le wiki disent la
+meme chose. Un reste franc, et c'est un cout reel que l'arbre ne modelise pas
+encore — la, il y a quelque chose a chercher.
 """
 import collections
 import json
@@ -107,6 +120,11 @@ T = {l: totaux(l) for l in cibles}
 FAM = {"compte": "ECART DE COMPTE", "cascade": "DEJA COMPTE PAR CASCADE",
        "vendeur": "COUT VENDEUR", "alea": "ALEA DU TREFLE MYSTIQUE"}
 
+# 1 / 0,31 : la recette du trefle reussit environ une fois sur trois, chiffre
+# que porte la note de mystic_clover dans la donnee elle-meme.
+TAUX = 3.2258
+clos = []
+reste = {}
 _anc = {}
 
 
@@ -144,9 +162,18 @@ for enfant, parents in sorted(par_enfant.items()):
         if plat is not None:
             if apport[leg] == plat:
                 continue
-            fam = "alea" if (plat > apport[leg]
-                             and "mystic_clover" in ancetres(enfant)) else "compte"
-            dit = plat
+            # Part du chemin qui passe par le trefle : elle seule subit le taux
+            # d'echec. Le reste arrive directement et se compte tel quel.
+            par_trefle = neuves.get("mystic_clover", 0) * T[leg].get("mystic_clover", 0)
+            direct = apport[leg] - par_trefle
+            attendu = par_trefle * TAUX + direct
+            if par_trefle > 0 and abs(plat - attendu) <= max(5, 0.05 * plat):
+                clos.append((enfant, leg, plat, round(attendu)))
+                continue
+            fam, dit = "compte", plat
+            if par_trefle > 0:
+                fam = "alea"
+                reste[(enfant, leg)] = round(plat - attendu)
         elif cascade[leg] > 0:
             fam, dit = "cascade", cascade[leg]
         elif any(origine.get((enfant, p)) != "recette" for p in neuves):
@@ -157,6 +184,11 @@ for enfant, parents in sorted(par_enfant.items()):
                        sorted(neuves), {p: origine.get((enfant, p)) for p in neuves}))
 
 lignes.sort(key=lambda x: -x[0])
+if reste:
+    for i, x in enumerate(lignes):
+        if x[1] == "alea":
+            lignes[i] = (abs(reste.get((x[2], x[3]), 0)),) + x[1:]
+    lignes.sort(key=lambda x: -x[0])
 par_fam = collections.Counter(x[1] for x in lignes)
 composants = {x[2] for x in lignes}
 
@@ -193,11 +225,11 @@ for f in ("compte", "cascade", "vendeur", "alea"):
         out.append("La table vendeur aplatit des options qui s'excluent. Se tranche en")
         out.append("regardant si le vendeur propose un choix ou une liste.\n")
     else:
-        out.append("Pas un desaccord : deux lectures de la meme chose. La chaine compte")
-        out.append("les TREFLES, la cle a plat compte ce qu'il faut y consacrer, la")
-        out.append("recette du trefle reussissant environ une fois sur trois. Attendu :")
-        out.append("un multiplicateur voisin de 3,25. S'il s'en ecarte nettement, autre")
-        out.append("chose se joue et il faut regarder.\n")
+        out.append("Le trefle explique une partie de l'ecart, pas tout. La colonne donne")
+        out.append("ce qui RESTE une fois la part passant par mystic_clover multipliee")
+        out.append("par 3,23 : un cout reel que l'arbre ne modelise pas encore, ou un")
+        out.append("chiffre a plat trop genereux. Les cas ou le trefle explique tout")
+        out.append("(a 5 % pres) sont clos et listes en fin de fichier.\n")
     # Le detail est plafonne : une famille a 811 lignes ne se lit pas, et la
     # somme par composant plus haut suffit a decider par ou commencer. Le
     # calcul, lui, porte sur la totalite.
@@ -206,7 +238,7 @@ for f in ("compte", "cascade", "vendeur", "alea"):
         out.append(f"Les {CAP} plus gros ecarts sur {len(sous)}. Le reste se")
         out.append("recalcule en relancant le script.\n")
     out.append("| composant | legendaire | donnee | wiki | "
-               + ("multiplicateur" if f == "alea" else "ecart")
+               + ("reste apres trefle" if f == "alea" else "ecart")
                + " | parents proposes |")
     out.append("|---|---|---:|---:|---:|---|")
     for enj, _, e, leg, dit, ap, ps, orgs in sous[:CAP]:
@@ -218,9 +250,19 @@ for f in ("compte", "cascade", "vendeur", "alea"):
             pp += f" +{len(ps) - 3} autres"
         if f == "alea":
             out.append(f"| `{e}` — {nom(e)} | `{leg}` | {dit} | {ap} | "
-                       f"×{dit / ap:.2f} | {pp} |")
+                       f"{reste.get((e, leg), 0):+} | {pp} |")
         else:
             out.append(f"| `{e}` — {nom(e)} | `{leg}` | {dit} | {ap} | {enj} | {pp} |")
+
+if clos:
+    out.append(f"\n## CLOS PAR L'ALEA DU TREFLE — {len(clos)} cas\n")
+    out.append("La cle a plat et la chaine disent la meme chose des lors qu'on paie le")
+    out.append("taux d'echec du trefle. Rien a arbitrer, rien a changer : c'est la")
+    out.append("verification que la donnee et le wiki concordent.\n")
+    out.append("| composant | legendaire | donnee | attendu |")
+    out.append("|---|---|---:|---:|")
+    for e, leg, plat, att in sorted(clos, key=lambda x: -x[2]):
+        out.append(f"| `{e}` — {nom(e)} | `{leg}` | {plat} | {att} |")
 
 Path(HERE / "ARBITRAGES.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 print(f"{len(lignes)} desaccords sur {len(composants)} composants")
