@@ -1,6 +1,6 @@
 # Confrontation aux tables « Full material list »
 
-Source : `gw2_sources_v241.json` contre les 77 tables capturées, arête par arête.
+Source : `gw2_sources_v242.json` contre les 77 tables capturées, arête par arête.
 
 - **289 accords** — la table et `qty` disent le même nombre.
 - **27 arêtes absentes** de `qty` — un coût manquant, pas un désaccord.

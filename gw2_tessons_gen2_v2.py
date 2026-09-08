@@ -37,7 +37,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import gw2_parse_material_list_v1 as P  # noqa: E402
+import gw2_parse_material_list_v2 as P  # noqa: E402
 
 SRC = max(HERE.glob("gw2_sources_v*.json"), key=lambda p: int(p.stem.split("_v")[-1]))
 VER = f"v{int(SRC.stem.split('_v')[-1]) + 1}"

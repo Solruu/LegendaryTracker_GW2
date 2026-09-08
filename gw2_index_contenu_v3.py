@@ -43,7 +43,7 @@ def _charger(nom, fichier):
     return mod
 
 
-LISTE = _charger("liste", "gw2_parse_material_list_v1.py")
+LISTE = _charger("liste", "gw2_parse_material_list_v2.py")
 RECETTE = _charger("recette", "gw2_parse_wiki_recipe_v1.py")
 VENDEUR = _charger("vendeur", "gw2_parse_vendor_cost_v1.py")
 

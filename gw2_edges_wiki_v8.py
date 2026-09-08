@@ -76,6 +76,13 @@ Une page dont l'acquisition se resume a un tableau de vendeur garde son cout :
 Crystal + 250 Lump of Aurillium, joints par des « + » sur une seule ligne. La,
 l'achat est la seule voie documentee, donc c'est l'arete.
 
+v8 : LA DIVISION EST FAITE PAR LE PARSEUR, PLUS ICI.
+
+`gw2_parse_material_list_v2.aretes_unitaires()` la porte desormais pour tous
+les consommateurs, avec le meme traitement des refus et des ambiguites. Ce
+fichier ne fait plus que consommer le resultat. Le pourquoi ci-dessous reste
+la trace de l'erreur.
+
 v7 : LA DIVISION DES TOTAUX NE MARCHAIT QU'AU DEUXIEME NIVEAU.
 
 Dans une table « Full material list », TOUTES les quantites sont des totaux
@@ -212,7 +219,7 @@ for r in json.load(open('gw2_wiki_vendor_costs_v1.json')):
             if edges[p][c][0]!=q: conflits.append((p,c,edges[p][c],q))
         else: edges[p][c]=(q,'vendeur')
 # --- troisieme source : tables « Full material list » ---
-import gw2_parse_material_list_v1 as _P
+import gw2_parse_material_list_v2 as _P
 _sous_groupe = {o for g in (d.get('alt_groups') or {}).values()
                 for o in (g.get('options') or [])}
 _tab = 0
@@ -220,24 +227,14 @@ _ambig_div, _div_refusees = [], []
 for _page in sorted(_P.WIKI.glob('*.html')):
     if _P._debut(_page.read_text(encoding='utf-8', errors='ignore')) < 0: continue
     if _page.stem in _P.DOUBLES: continue
-    _brut = _P.aretes(_page)
-    # Toutes les quantites de la table sont des totaux pour le legendaire. Le
-    # diviseur d'un parent est le total lu sur la ligne ou il est lui-meme
-    # enfant — a n'importe quelle profondeur, et non au seul premier niveau.
-    _vals = collections.defaultdict(set)
-    for _t, _e, _q in _brut:
-        if _q is not None: _vals[_e].add(_q)
-    _n2 = {e: next(iter(v)) for e, v in _vals.items() if len(v) == 1}
-    for e, v in _vals.items():
-        if len(v) > 1 and any(t == e for t, _e, _q in _brut):
-            _ambig_div.append((_page.stem, e, sorted(v)))
+    # La division des totaux est faite par le parseur, une fois pour tous les
+    # consommateurs — la v7 la refaisait ici avec sa propre regle, et
+    # gw2_confronte_tables en avait une troisieme.
+    _brut, _ref, _amb = _P.aretes_unitaires(_page)
+    _div_refusees += [(_page.stem,) + x for x in _ref]
+    _ambig_div += [(_page.stem,) + x for x in _amb]
     for _t, _e, _q in _brut:
         if _q is None: continue
-        if _t in _n2 and _n2[_t]:
-            if _q % _n2[_t]:
-                _div_refusees.append((_page.stem, _t, _e, _q, _n2[_t]))
-                continue
-            _q //= _n2[_t]
         _pi, _ei = to_id(_t), to_id(_e)
         if not _pi or not _ei or _pi == _ei: continue
         if _ei in _sous_groupe: continue

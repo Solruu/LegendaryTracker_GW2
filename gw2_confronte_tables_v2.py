@@ -37,7 +37,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import gw2_parse_material_list_v1 as P  # noqa: E402
+import gw2_parse_material_list_v2 as P  # noqa: E402
 
 SRC = max(HERE.glob("gw2_sources_v*.json"), key=lambda p: int(p.stem.split("_v")[-1]))
 d = json.load(open(SRC, encoding="utf-8"))
@@ -69,33 +69,22 @@ def to_id(t):
 
 
 accord, absente, desaccord, non_resolus = [], [], [], collections.Counter()
-divisions = []
+divisions, ambigus_div = [], []
 for page in sorted(P.WIKI.glob("*.html")):
     if P._debut(page.read_text(encoding="utf-8", errors="ignore")) < 0:
         continue
     if page.stem in P.DOUBLES:
         continue
-    brut = P.aretes(page)
-    # Une arete est de NIVEAU 2 si son parent apparait comme enfant d'une arete
-    # de la meme page : c'est alors une quantite agregee, a diviser.
-    # Une quantite de colonne 3 est agregee sur celle de la colonne 2. La
-    # colonne 2 se reconnait a ceci qu'elle reapparait comme TETE d'une autre
-    # ligne de la meme table. Un premier jet cherchait « enfant deja vu comme
-    # enfant, tete jamais vue comme enfant », ce qui ne designait rien : aucune
-    # division n'etait appliquee, et le zero de divisions non entieres etait un
-    # zero de divisions tout court.
-    tetes = {t for t, _e, _q in brut}
-    niveau2 = {e: q for _t, e, q in brut if e in tetes and q}
-    for tete, enfant, q in brut:
-        if q is None:
+    # La division des totaux est faite par le parseur, une fois pour tous les
+    # consommateurs. Cette boucle en portait sa propre version, voisine mais
+    # pas identique a celle de l'extracteur d'aretes : deux lectures possibles
+    # de la meme table, dont le desaccord ne pouvait pas se voir.
+    brut, refusees, ambigus = P.aretes_unitaires(page)
+    divisions += [(page.stem,) + x for x in refusees]
+    ambigus_div += [(page.stem,) + x for x in ambigus]
+    for tete, enfant, unitaire in brut:
+        if unitaire is None:
             continue
-        unitaire, div = q, None
-        if tete in niveau2 and niveau2[tete]:
-            div = niveau2[tete]
-            if q % div:
-                divisions.append((page.stem, tete, enfant, q, div))
-                continue
-            unitaire = q // div
         pid, eid = to_id(tete), to_id(enfant)
         if not pid or not eid:
             non_resolus[tete if not pid else enfant] += 1
@@ -147,5 +136,6 @@ if divisions:
 Path(HERE / "CONFRONTATION_TABLES.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 print(f"accords : {len(acc_u)} | absentes : {len(abs_u)} | desaccords : {len(des_u)}")
 print(f"divisions non entieres : {len(set(divisions))}")
+print(f"parents a diviseur ambigu : {len(set(ambigus_div))}")
 print(f"noms non resolus : {len(non_resolus)} — {non_resolus.most_common(8)}")
 print("CONFRONTATION_TABLES.md ecrit")

@@ -32,10 +32,34 @@ de Bloodstone Shard, Gift of Exploration, Gift of Battle, Gift of Magic. La
 quantite retournee est None quand aucun nombre n'est ecrit, et c'est a
 l'appelant de decider — ce script ne devine pas.
 
+v2 : LA DIVISION DES TOTAUX REMONTE ICI, ET N'EST PLUS ECRITE QU'UNE FOIS.
+
+Deux consommateurs la refaisaient chacun de son cote, avec deux regles qui
+n'etaient pas la meme :
+
+- `gw2_edges_wiki_v6` cherchait un parent apparaissant comme enfant d'une ligne
+  de PREMIER niveau. Au troisieme niveau il ne divisait plus rien et posait le
+  total brut comme unitaire : « 100 Mystic Curio par tesson » au lieu de 1.
+- `gw2_confronte_tables_v1` cherchait un enfant qui reapparait comme TETE
+  ailleurs, ce qui est la bonne regle — mais gardait silencieusement la
+  derniere valeur quand deux lignes en donnaient deux.
+
+Les deux outils lisaient donc la meme table differemment, et le desaccord ne
+pouvait se voir puisque chacun n'imprimait que son propre resultat. C'est la
+table parallele que les regles du projet interdisent, sous forme de code.
+
+`aretes_unitaires()` est desormais la seule lecture. Regle : toutes les
+quantites de la table sont des totaux pour le legendaire, a n'importe quelle
+profondeur ; l'unitaire d'une arete vaut donc total(enfant) / total(parent), le
+diviseur se lisant sur la ligne ou le parent est lui-meme enfant. Un parent
+porte par deux lignes de quantites differentes n'a pas de diviseur sur : on ne
+divise pas et le cas est rendu a l'appelant. Une division non entiere est
+refusee, jamais arrondie.
+
 Usage :
-    python3 gw2_parse_material_list_v1.py                 # toutes les pages
-    python3 gw2_parse_material_list_v1.py bolt frostfang  # une selection
-    python3 gw2_parse_material_list_v1.py --json out.json
+    python3 gw2_parse_material_list_v2.py                 # toutes les pages
+    python3 gw2_parse_material_list_v2.py bolt frostfang  # une selection
+    python3 gw2_parse_material_list_v2.py --json out.json
 """
 import json
 import re
@@ -163,6 +187,41 @@ def aretes(chemin):
                 if petit != enfant:
                     out.append((enfant, petit, pq))
     return out
+
+
+def aretes_unitaires(chemin):
+    """[(parent, enfant, unitaire)] plus le rapport de lecture d'une page.
+
+    Retourne (aretes, refusees, ambigus) :
+      - aretes    : quantites UNITAIRES, division appliquee, None conserve tel
+                    quel (le wiki n'ecrit pas les quantites qui valent 1) ;
+      - refusees  : (parent, enfant, total, diviseur) dont la division ne tombe
+                    pas juste — l'arete n'est pas rendue ;
+      - ambigus   : (item, [quantites]) pour un parent dont le total est ecrit
+                    plusieurs fois avec des valeurs differentes.
+    """
+    brut = aretes(chemin)
+    tetes = {t for t, _e, _q in brut}
+    vus = {}
+    for _t, e, q in brut:
+        if q is not None:
+            vus.setdefault(e, set()).add(q)
+    diviseur = {e: next(iter(v)) for e, v in vus.items() if e in tetes and len(v) == 1}
+    ambigus = sorted((e, sorted(v)) for e, v in vus.items() if e in tetes and len(v) > 1)
+
+    out, refusees = [], []
+    for tete, enfant, q in brut:
+        if q is None:
+            out.append((tete, enfant, None))
+            continue
+        div = diviseur.get(tete)
+        if div:
+            if q % div:
+                refusees.append((tete, enfant, q, div))
+                continue
+            q //= div
+        out.append((tete, enfant, q))
+    return out, refusees, ambigus
 
 
 def main():

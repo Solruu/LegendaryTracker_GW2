@@ -1,6 +1,6 @@
 import json, re, collections, importlib.util
 from pathlib import Path
-spec=importlib.util.spec_from_file_location('m','gw2_parse_material_list_v1.py')
+spec=importlib.util.spec_from_file_location('m','gw2_parse_material_list_v2.py')
 M=importlib.util.module_from_spec(spec); spec.loader.exec_module(M)
 rec={r['page']:r for r in json.load(open('gw2_wiki_recipes_v1.json'))}
 

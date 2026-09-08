@@ -82,7 +82,8 @@ ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
 SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
 
 if not ARETES.exists():
-    sys.exit("lance d'abord gw2_edges_wiki_v5.py, qui produit /tmp/edges2.json")
+    sys.exit("lance d'abord l'extracteur d'aretes — le gw2_edges_wiki_v*.py de\n"
+             "version la plus haute — qui produit /tmp/edges2.json")
 
 cc = json.load(open(SRC))["craft_components"]
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
