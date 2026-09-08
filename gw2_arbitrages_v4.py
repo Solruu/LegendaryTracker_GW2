@@ -40,6 +40,18 @@ elle-meme, dans la note de mystic_clover : « aucune recette de Clover n'est
 garantie, toutes tournent autour de ~31 % de reussite ». Et 1 / 0,31 = 3,23,
 soit exactement le rapport observe.
 
+LE WIKI L'ECRIT NOIR SUR BLANC, et je ne l'avais pas vu. La table « Full
+material list » de Klobjarne Geirr dit : « 38 Mystic Clovers — Forged from a
+total of about 123 Mystic Coins, 123 Globs of Ectoplasm, 123 Obsidian Shards,
+and 74 Spirit Shards ». 123 / 38 = 3,24. Le taux n'est donc pas une inference
+de ma part a partir d'un pourcentage note en marge : c'est un chiffre que le
+wiki publie, et que nos totaux reproduisent — le tracker annonce lui aussi 38
+trefles et 123 ecus pour Klobjarne Geirr.
+
+Consequence a retenir : les tables de materiaux du wiki INCLUENT deja le cout
+des rates. Un total a plat qui vient d'une de ces tables ne doit donc pas etre
+remultiplie.
+
 Poser l'arete remplacerait donc un cout espere honnete par un plancher
 theorique que personne n'atteint. Ces cas sortent des arbitrages.
 

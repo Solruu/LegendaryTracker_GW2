@@ -1136,15 +1136,16 @@ d'échec. Le reste vaut **−248**, exactement le coût des trèfles.
 La même arme porte `mystic_coin: 250`, et là le compte tombe juste — les écus
 ne servent qu'aux trèfles, donc la clé les inclut forcément.
 
-**Lecture proposée, à confirmer** : les clés à plat des armes gen1 comptent
-l'ectoplasme du Don de fortune mais **pas** celui consommé par les trèfles,
-alors que la clé des écus, elle, l'inclut. Deux clés du même légendaire ne
-diraient donc pas la même chose. Si c'est bien ça, l'ectoplasme réel d'une gen1
-est proche de 500, pas de 250.
+**Tranché le 08/09, et la lecture proposée était fausse.** La table « Full
+material list » de Klobjarne Geirr écrit : *38 Mystic Clovers — forged from a
+total of about 123 Mystic Coins, 123 Globs of Ectoplasm, 123 Obsidian Shards,
+and 74 Spirit Shards*. Les tables du wiki **incluent** donc le coût des ratés,
+pour l'ectoplasme comme pour les écus. Un total qui vient d'une de ces tables
+ne doit pas être remultiplié.
 
-Ce n'est pas tranché : aucune capture ne porte le total attendu, et corriger
-ferait **doubler** un chiffre affiché sur vingt et une armes. À arbitrer avant
-toute écriture.
+Vérification faite sur Klobjarne Geirr, le tracker reproduit la table à
+l'identique : 38 trèfles, 123 écus, et les six lignes de trophées (100 / 250 /
+50 / 50) exactes. **Rien à corriger sur les gen1.**
 - **Déjà compté par cascade (71)** — le composant arrive déjà au légendaire par
   un chemin modélisé et la table en propose un second. Soit le second ne vaut
   pas pour ce légendaire, soit les deux sont réels et le chevauchement se
