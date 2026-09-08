@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 — 15 cibles citees par l'arbre sans entree connue
+## 0 bis — 15 cibles citees par l'arbre sans entree connue
 
 Ces cles portent des couts a plat mais ne correspondent ni a un legendaire,
 ni a une piece d'armure, ni a un composant. Ce n'est pas une capture qui
@@ -30,6 +30,55 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 - `gen3_aurenes_tenderness`
 - `gen3_aurenes_wrath`
 - `upgrades`
+
+## 0 — 39 trous de l'arbre — LA PRIORITÉ
+
+Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
+coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
+pas avec quoi. Tant qu'ils manquent, le calcul de bas en haut s'arrête là
+et les totaux restent tributaires des coûts recopiés à plat.
+
+| page wiki | composants qui en dépendent |
+|---|---:|
+| `Gift of Condensed Magic` | 4 |
+| `Gift of Condensed Might` | 4 |
+| `Gift of Galdra` | 4 |
+| `Gift of Metal` | 4 |
+| `Gift of Shadows` | 4 |
+| `Gift of Stormy Skies` | 4 |
+| `Gift of the Competitor` | 4 |
+| `Lesser Vision Crystal` | 4 |
+| `Memory Essence Encapsulator` | 4 |
+| `Vision Crystal` | 4 |
+| `Dragonsblood Weapons` | 3 |
+| `Gift of Ipos` | 3 |
+| `Gift of Klobjarne Geirr` | 3 |
+| `Gift of Shadowstones` | 3 |
+| `Gift of Skirmishing` | 3 |
+| `Gift of the People` | 3 |
+| `Gift of the Survivors` | 3 |
+| `Kralkatite Ingot` | 3 |
+| `Nyr Hrammr` | 3 |
+| `Cube of Stabilized Dark Energy` | 2 |
+| `Augur's Stone` | 1 |
+| `Bloodstone Brick` | 1 |
+| `Bloodstone Shard` | 1 |
+| `Certificate of Honor` | 1 |
+| `Dragonite Ingot` | 1 |
+| `Empyreal Star` | 1 |
+| `Essence of Carnage` | 1 |
+| `Essence of Strategy` | 1 |
+| `Fractalline Spark` | 1 |
+| `Funerary Incense` | 1 |
+| `Gift of Ascension` | 1 |
+| `Gift of Relics` | 1 |
+| `Gift of Runes` | 1 |
+| `Gift of Sigils` | 1 |
+| `Gift of War` | 1 |
+| `Olmakhan Bandolier` | 1 |
+| `Orrax Contained` | 1 |
+| `Vial of Liquid Shadowstone` | 1 |
+| `Xunlai Electrum Ingot` | 1 |
 
 ## 1 — 5 tables « Full material list » manquantes
 
@@ -53,12 +102,12 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
+| `PvP League Ticket` | 3 |
 | `Vision Crystal` | 3 |
 | `Magnetite Shard` | 2 |
 | `Branded Mass` | 1 |
 | `Gift of Battle` | 1 |
 | `Inscribed Shard` | 1 |
-| `PvP League Ticket` | 1 |
 
 ## 3 — 8 composants sans apiId ni page
 
@@ -72,7 +121,7 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Gift of Magical / Mighty Prosperity` |
 | `Legendary Shards (Gen2)` |
 | `Legendary Shards (Gen3 / Aurene)` |
-| `Olmakhan Bandolier (chaîne)` |
+| `Olmakhan Bandolier` |
 | `Spinal Blade Back Pack (Perfected)` |
 | `Valkyrie Bearkin War Helm` |
 

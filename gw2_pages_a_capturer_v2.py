@@ -12,7 +12,14 @@ Rien n'est reclame sans avoir ete cherche d'abord dans l'index. C'est la regle
 qui a coute quatre fausses alertes : declarer un besoin bloquant pour une donnee
 qui dormait dans une capture au depot.
 
-Quatre familles, dans l'ordre de ce qu'elles debloquent :
+Cinq familles, dans l'ordre de ce qu'elles debloquent :
+
+0. LES TROUS DE L'ARBRE. Un composant qui a des enfants dans la donnee mais ni
+   boite Recipe ni cout vendeur au depot : l'arbre sait qu'il faut le
+   fabriquer, il ne sait pas avec quoi. C'est la seule famille qui empeche le
+   calcul de bas en haut, et donc la seule vraiment bloquante. Les 197 autres
+   composants sans recette n'en ont pas parce qu'il n'y en a pas : ce sont des
+   feuilles qu'on farme ou qu'on achete.
 
 1. Les tables « Full material list » manquantes. Une cible qui porte des couts
    a plat sans que sa page soit capturee avec sa table, c'est un arbre qui ne
@@ -60,7 +67,17 @@ def en(v):
 
 
 def titre_composant(cid):
-    return en(cc.get(cid, {}).get("name")) or cid.replace("_", " ").title()
+    c = cc.get(cid, {})
+    if c.get("wiki"):
+        return lisible(c["wiki"])
+    t = en(c.get("name")) or cid.replace("_", " ").title()
+    # « Olmakhan Bandolier (chaine) » : la parenthese est une precision ajoutee
+    # par la donnee, pas un homonyme du wiki. Les desambiguisations du wiki sont
+    # en anglais ; celle-ci porte un accent, donc elle vient de nous.
+    m = re.search(r"\s*\(([^)]*)\)\s*$", t)
+    if m and any(ord(ch) > 127 for ch in m.group(1)):
+        t = t[:m.start()]
+    return t.strip()
 
 
 INCONNUES = set()
@@ -99,6 +116,28 @@ def url(titre):
     # automatise ne le fait pas toujours.
     return WIKI + quote(titre.replace(" ", "_"), safe="/_():,-")
 
+
+# --- 0. trous de l'arbre --------------------------------------------------------
+R_REC = {r["page"]: r for r in json.load(open(HERE / "gw2_wiki_recipes_v1.json",
+                                             encoding="utf-8"))}
+R_VEN = {r["page"]: r for r in json.load(open(HERE / "gw2_wiki_vendor_costs_v1.json",
+                                              encoding="utf-8"))}
+enfants = {}
+for _cid, _c in cc.items():
+    for _k in (_c.get("qty") or {}):
+        _b = _k.split("__")[0]
+        if _b in cc:
+            enfants.setdefault(_b, set()).add(_cid)
+
+
+def voie_connue(cid):
+    for x in {cid, slug(titre_composant(cid))}:
+        if (R_REC.get(x, {}).get("recettes") or R_VEN.get(x, {}).get("couts")):
+            return True
+    return False
+
+
+trous = sorted(cid for cid in cc if enfants.get(cid) and not voie_connue(cid))
 
 # --- 1. tables « Full material list » -----------------------------------------
 plat = {}
@@ -157,13 +196,25 @@ out.append("interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les même
 out.append("pages en URLs brutes, une par ligne, pour l'automatisation.\n")
 
 if INCONNUES:
-    out.append(f"\n## 0 — {len(INCONNUES)} cibles citees par l'arbre sans entree connue\n")
+    out.append(f"\n## 0 bis — {len(INCONNUES)} cibles citees par l'arbre sans entree connue\n")
     out.append("Ces cles portent des couts a plat mais ne correspondent ni a un legendaire,")
     out.append("ni a une piece d'armure, ni a un composant. Ce n'est pas une capture qui")
     out.append("manque, c'est une entree — souvent une variante d'ecriture d'une cle")
     out.append("existante. A regler avant de capturer quoi que ce soit pour elles.\n")
     for c in sorted(INCONNUES):
         out.append(f"- `{c}`")
+
+out.append(f"\n## 0 — {len(trous)} trous de l'arbre — LA PRIORITÉ\n")
+out.append("Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni")
+out.append("coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait")
+out.append("pas avec quoi. Tant qu'ils manquent, le calcul de bas en haut s'arrête là")
+out.append("et les totaux restent tributaires des coûts recopiés à plat.\n")
+out.append("| page wiki | composants qui en dépendent |")
+out.append("|---|---:|")
+for _c in sorted(trous, key=lambda x: (-len(enfants.get(x, ())), x)):
+    _t = titre_composant(_c)
+    urls.append(url(_t))
+    out.append(f"| `{_t}` | {len(enfants.get(_c, ()))} |")
 
 out.append(f"\n## 1 — {len(tables)} tables « Full material list » manquantes\n")
 out.append("Ces cibles portent des coûts à plat mais leur page n'est pas capturée avec")
@@ -214,6 +265,7 @@ for u in urls:
         propres.append(u)
 (HERE / "PAGES_A_CAPTURER.txt").write_text("\n".join(propres) + "\n", encoding="utf-8")
 
+print(f"0 — TROUS DE L'ARBRE                 : {len(trous)}")
 print(f"1 — tables materiaux manquantes      : {len(tables)}")
 print(f"2 — composants en arbitrage sans page: {len(en_arbitrage)}")
 print(f"3 — composants sans apiId ni page    : {len(sans_id)}")

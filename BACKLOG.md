@@ -1182,3 +1182,21 @@ pas de `alt_groups`.**
   l'exprimer. Et aucun des quatre n'est un composant — Sunrise et Twilight sont
   des légendaires. Modéliser un légendaire composé de deux autres légendaires
   est une autre affaire, bien plus large que `alt_groups`.
+
+
+### ⑤ Renverser la primauté : les recettes deviennent la seule source
+
+Les 722 clés à plat de `craft_components[*].qty` ne sont pas une source, ce sont
+un **résultat** — recopié à la main, légendaire par légendaire. Une recette est
+une propriété de l'**objet**, identique quel que soit le niveau où il apparaît ;
+un total par légendaire s'en déduit. Les traiter comme deux sources à
+réconcilier produit des arbitrages là où il devrait y avoir un calcul.
+
+**Ce qu'il faut faire :** bâtir le total de bas en haut depuis les recettes,
+confronter aux 722 clés existantes, ne garder les clés que là où l'arbre ne
+descend pas encore, et publier les trous restants.
+
+**Ce qui bloque :** 39 composants ont des enfants dans la donnée mais ni boîte
+Recipe ni coût vendeur au dépôt. Ce sont les seuls vrais trous — les 197 autres
+composants sans recette n'en ont pas parce qu'il n'y en a pas. Section 0 de
+`PAGES_A_CAPTURER.md`.
