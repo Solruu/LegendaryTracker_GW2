@@ -1119,10 +1119,15 @@ Le détail est dans **`ARBITRAGES.md`**, régénérable par
 
 Trois familles, qui ne se tranchent pas de la même façon :
 
-- **Écart de compte (56)** — la clé à plat et l'arête donnent deux nombres
+- **Écart de compte (64)** — la clé à plat et l'arête donnent deux nombres
   différents, l'un des deux est faux. Se tranche sur la page du **parent**,
-  boîte Recipe. Les plus gros écarts sont sur les monnaies Mursaat d'Orrax
-  (18 100 et 9 175) et sur `glob_of_ectoplasm`.
+  boîte Recipe.
+- **Aléa du trèfle mystique (79)** — pas un désaccord. La chaîne compte les
+  **trèfles**, la clé à plat compte les écus qu'il faut y consacrer, la recette
+  du trèfle réussissant environ une fois sur trois. 45 des 60 cas visibles
+  tombent à ×3,23–3,25, soit exactement 1 / 0,31. Les rares valeurs éloignées
+  — `glob_of_ectoplasm` sur Endless Summer à ×54,8 — sont d'autres problèmes,
+  désormais visibles parce que le bruit a été retiré.
 - **Déjà compté par cascade (71)** — le composant arrive déjà au légendaire par
   un chemin modélisé et la table en propose un second. Soit le second ne vaut
   pas pour ce légendaire, soit les deux sont réels et le chevauchement se
@@ -1136,7 +1141,7 @@ Trois familles, qui ne se tranchent pas de la même façon :
 Deux composants portent la moitié du lot : `glob_of_ectoplasm` (47) et
 `amalgamated_gemstone` (43).
 
-### ④ `alt_groups` — deux groupes peuplés sur quatre identifiés
+### ④ `alt_groups` — deux groupes, et les deux autres n'en étaient pas
 
 La structure `alt_groups` existe et calcule (voir `gw2_alt_groups_v1.py`, règle
 d'audit `check_alt_groups`). Un seul groupe y est versé : `gen2_mastery`.
@@ -1146,9 +1151,17 @@ Trois autres relèvent du même mécanisme et attendent :
 - ~~Les six orbes du Gift of Infused Gems~~ — **fait**. La page capturée le
   08/09 tranche : Gift of Rays consomme **un** Gift of Infused Gems, lequel
   consomme 250 unités d'**une** gemme. Groupe `gemmes_infusees`.
-- **Eternity** — Sunrise + Twilight, ou leurs Memories.
-- **Les lodestones** — Bottle of Elonian Wine, ou Mystic Binding Agent.
+**Les deux autres candidats sont retirés — vérification faite, ils ne relèvent
+pas de `alt_groups`.**
 
-Ces deux derniers sont déjà écartés à l'extraction, donc sans double compte à
-corriger. Ils entreront ici pour être **affichés comme choix**, pas pour
-réparer un chiffre.
+- **Les lodestones.** Le choix vin d'Élone / agent liant n'existe que dans la
+  recette *Cœur → Lodestone*. Or l'arbre ne modélise pas cette recette :
+  `charged_core` et `mystic_binding_agent` ne sont pas des composants, et
+  `charged_lodestone` est une feuille qu'on farme ou qu'on achète (200 pour
+  Endless Summer). C'est correct — les lodestones tombent. Poser le groupe
+  aurait **fabriqué** un coût de cœurs et de vin que personne ne paie.
+- **Eternity.** Le choix porte sur des **paires** (Sunrise + Twilight, ou leurs
+  deux Memories), pas sur un composant parmi N : `options` ne peut pas
+  l'exprimer. Et aucun des quatre n'est un composant — Sunrise et Twilight sont
+  des légendaires. Modéliser un légendaire composé de deux autres légendaires
+  est une autre affaire, bien plus large que `alt_groups`.

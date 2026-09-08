@@ -21,9 +21,29 @@ meme facon :
 - COUT VENDEUR — la table vendeur aplatit des options qui s'excluent. Se
   tranche en regardant si le vendeur propose un choix ou une liste.
 
+- ALEA DU TREFLE MYSTIQUE — pas un desaccord, une lecture differente de la
+  meme chose. Voir plus bas.
+
 L'enjeu chiffre est |ce que la donnee dit - ce que l'arete donnerait|, en
 valeur absolue. Il classe, il ne juge pas : un ecart de 1 sur un Bloodstone
 Shard peut compter plus qu'un ecart de 18 000 sur une monnaie de carte.
+
+L'ALEA DU TREFLE, ET POURQUOI CE N'EST PAS UNE ERREUR.
+
+Une arme gen1 demande 250 ecus mystiques a plat, et la chaine de recettes n'en
+compte que 77. Le rapport vaut 3,25. Aucune des deux valeurs n'est fausse :
+elles repondent a deux questions.
+
+77, c'est le nombre de trefles mystiques. 250, c'est le nombre d'ecus qu'il
+faut y consacrer, parce que la recette du trefle ECHOUE. La donnee le dit
+elle-meme, dans la note de mystic_clover : « aucune recette de Clover n'est
+garantie, toutes tournent autour de ~31 % de reussite ». Et 1 / 0,31 = 3,23,
+soit exactement le rapport observe.
+
+Poser l'arete remplacerait donc un cout espere honnete par un plancher
+theorique que personne n'atteint. Ces cas sont sortis des arbitrages et
+regroupes a part, avec leur multiplicateur implicite : s'il s'ecarte nettement
+de 3,25, c'est qu'autre chose se joue et qu'il faut regarder.
 """
 import collections
 import json
@@ -85,7 +105,27 @@ cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or
 T = {l: totaux(l) for l in cibles}
 
 FAM = {"compte": "ECART DE COMPTE", "cascade": "DEJA COMPTE PAR CASCADE",
-       "vendeur": "COUT VENDEUR"}
+       "vendeur": "COUT VENDEUR", "alea": "ALEA DU TREFLE MYSTIQUE"}
+
+_anc = {}
+
+
+def ancetres(cid, vus=None):
+    """Tous les composants situes au-dessus de cid, aretes posees ou proposees."""
+    if cid in _anc:
+        return _anc[cid]
+    vus = vus if vus is not None else set()
+    out = set()
+    for p in list(par_enfant.get(cid, {})) + [
+            k.split("__")[0] for k in ((cc.get(cid) or {}).get("qty") or {})]:
+        if p in vus or p not in cc:
+            continue
+        vus.add(p)
+        out.add(p)
+        out |= ancetres(p, vus)
+    if not vus:
+        _anc[cid] = out
+    return out
 lignes = []
 for enfant, parents in sorted(par_enfant.items()):
     q = cc[enfant].get("qty") or {}
@@ -104,7 +144,9 @@ for enfant, parents in sorted(par_enfant.items()):
         if plat is not None:
             if apport[leg] == plat:
                 continue
-            fam, dit = "compte", plat
+            fam = "alea" if (plat > apport[leg]
+                             and "mystic_clover" in ancetres(enfant)) else "compte"
+            dit = plat
         elif cascade[leg] > 0:
             fam, dit = "cascade", cascade[leg]
         elif any(origine.get((enfant, p)) != "recette" for p in neuves):
@@ -134,7 +176,7 @@ for e, _ in enjeu_comp.most_common():
     fams = ", ".join(f"{FAM[f].lower()} x{n}" for f, n in par_comp[e].most_common())
     out.append(f"| `{e}` — {nom(e)} | {sum(par_comp[e].values())} | {enjeu_comp[e]} | {fams} |")
 
-for f in ("compte", "cascade", "vendeur"):
+for f in ("compte", "cascade", "vendeur", "alea"):
     sous = [x for x in lignes if x[1] == f]
     if not sous:
         continue
@@ -147,9 +189,15 @@ for f in ("compte", "cascade", "vendeur"):
         out.append("en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,")
         out.append("soit les deux sont reels et le chevauchement se declare dans")
         out.append("`qty_overlap_verified`.\n")
-    else:
+    elif f == "vendeur":
         out.append("La table vendeur aplatit des options qui s'excluent. Se tranche en")
         out.append("regardant si le vendeur propose un choix ou une liste.\n")
+    else:
+        out.append("Pas un desaccord : deux lectures de la meme chose. La chaine compte")
+        out.append("les TREFLES, la cle a plat compte ce qu'il faut y consacrer, la")
+        out.append("recette du trefle reussissant environ une fois sur trois. Attendu :")
+        out.append("un multiplicateur voisin de 3,25. S'il s'en ecarte nettement, autre")
+        out.append("chose se joue et il faut regarder.\n")
     # Le detail est plafonne : une famille a 811 lignes ne se lit pas, et la
     # somme par composant plus haut suffit a decider par ou commencer. Le
     # calcul, lui, porte sur la totalite.
@@ -157,7 +205,9 @@ for f in ("compte", "cascade", "vendeur"):
     if len(sous) > CAP:
         out.append(f"Les {CAP} plus gros ecarts sur {len(sous)}. Le reste se")
         out.append("recalcule en relancant le script.\n")
-    out.append("| composant | legendaire | donnee | wiki | ecart | parents proposes |")
+    out.append("| composant | legendaire | donnee | wiki | "
+               + ("multiplicateur" if f == "alea" else "ecart")
+               + " | parents proposes |")
     out.append("|---|---|---:|---:|---:|---|")
     for enj, _, e, leg, dit, ap, ps, orgs in sous[:CAP]:
         # La liste complete des parents est illisible des qu'un composant en a
@@ -166,7 +216,11 @@ for f in ("compte", "cascade", "vendeur"):
         pp = ", ".join(f"{p} ({orgs[p]})" for p in ps[:3])
         if len(ps) > 3:
             pp += f" +{len(ps) - 3} autres"
-        out.append(f"| `{e}` — {nom(e)} | `{leg}` | {dit} | {ap} | {enj} | {pp} |")
+        if f == "alea":
+            out.append(f"| `{e}` — {nom(e)} | `{leg}` | {dit} | {ap} | "
+                       f"×{dit / ap:.2f} | {pp} |")
+        else:
+            out.append(f"| `{e}` — {nom(e)} | `{leg}` | {dit} | {ap} | {enj} | {pp} |")
 
 Path(HERE / "ARBITRAGES.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 print(f"{len(lignes)} desaccords sur {len(composants)} composants")
