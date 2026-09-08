@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v234",
+    "version": "v235",
     "last_updated": "2026-09-07",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5880,10 +5880,10 @@ const SOURCES_DB = {
         "gift_of_the_four_legions",
         "gift_of_the_juggernaut",
         "gift_of_the_moot",
-        "gift_of_twilight"
+        "gift_of_twilight",
+        "nyr_hrammr"
       ],
       "qty": {
-        "klobjarne_geirr": 1,
         "gift_of_arah": 1,
         "gift_of_astralaria": 1,
         "gift_of_bolt": 1,
@@ -5899,7 +5899,8 @@ const SOURCES_DB = {
         "gift_of_the_moot": 1,
         "gift_of_twilight": 1,
         "gift_of_the_blade": 1,
-        "gift_of_the_four_legions": 1
+        "gift_of_the_four_legions": 1,
+        "nyr_hrammr": 1
       },
       "farmable": true,
       "sources": [
@@ -6124,6 +6125,7 @@ const SOURCES_DB = {
         "gift_of_klobjarne_geirr",
         "gift_of_magical_prosperity",
         "gift_of_mighty_prosperity",
+        "gift_of_relics",
         "gift_of_the_elders"
       ],
       "qty": {
@@ -6148,7 +6150,8 @@ const SOURCES_DB = {
         "gift_of_galdra": 1,
         "gift_of_magical_prosperity": 1,
         "gift_of_mighty_prosperity": 1,
-        "gift_of_the_elders": 1
+        "gift_of_the_elders": 1,
+        "gift_of_relics": 1
       },
       "farmable": true,
       "sources": [
@@ -7857,6 +7860,7 @@ const SOURCES_DB = {
         "gift_of_exordium",
         "gift_of_infused_gems",
         "gift_of_ipos",
+        "gift_of_klobjarne_geirr",
         "gift_of_pharus",
         "gift_of_shooshadoo",
         "gift_of_the_blade",
@@ -7920,7 +7924,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "klobjarne_geirr": 100,
         "gift_of_arah": 100,
         "gift_of_aurene_s_argument": 100,
         "gift_of_aurene_s_bite": 100,
@@ -7951,7 +7954,8 @@ const SOURCES_DB = {
         "gift_of_the_four_legions": 100,
         "gift_of_infused_gems": 100,
         "gift_of_the_mistburned_isles": 250,
-        "seer_runestone": 1
+        "seer_runestone": 1,
+        "gift_of_klobjarne_geirr": 100
       },
       "kind": "acquire",
       "apiId_fix": {
@@ -11161,9 +11165,7 @@ const SOURCES_DB = {
       "kind": "currency",
       "farmable": true,
       "qty": {
-        "endless_summer": 500,
-        "aetheric_anchor": 500,
-        "selachimorpha": 500
+        "gift_of_the_people": 500
       },
       "sources": [
         {
@@ -11188,6 +11190,7 @@ const SOURCES_DB = {
       "ref": "gw2_currencies_ref : devise 81",
       "needed_for": [
         "aetheric_anchor",
+        "gift_of_the_people",
         "selachimorpha"
       ]
     },
@@ -11625,9 +11628,7 @@ const SOURCES_DB = {
       "apiId": 83,
       "kind": "currency",
       "qty": {
-        "endless_summer": 500,
-        "aetheric_anchor": 500,
-        "selachimorpha": 500
+        "gift_of_the_survivors": 500
       },
       "farmable": true,
       "sources": [
@@ -11649,6 +11650,7 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "aetheric_anchor",
+        "gift_of_the_survivors",
         "selachimorpha"
       ]
     },
@@ -16478,7 +16480,7 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "stella_radians": 200
+        "gift_of_shadowstones": 200
       },
       "sources": [
         {
@@ -16500,6 +16502,7 @@ const SOURCES_DB = {
       "checked": "2026-08-26",
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
+        "gift_of_shadowstones",
         "stella_radians"
       ],
       "note": {
@@ -18600,10 +18603,12 @@ const SOURCES_DB = {
       "kind": "refined",
       "farmable": true,
       "qty": {
-        "gift_of_metal": 250
+        "gift_of_metal": 250,
+        "xunlai_electrum_ingot": 20
       },
       "needed_for": [
-        "gift_of_metal"
+        "gift_of_metal",
+        "xunlai_electrum_ingot"
       ],
       "sources": [
         {

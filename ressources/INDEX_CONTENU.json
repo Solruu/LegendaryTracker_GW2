@@ -872,6 +872,15 @@
   "aretes_table": []
  },
  {
+  "page": "augurs_stone",
+  "titre": "Augur's Stone",
+  "api_id": 46752,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "aurenes_argument",
   "titre": "Aurene's Argument",
   "api_id": 95808,
@@ -3459,6 +3468,32 @@
   "aretes_table": []
  },
  {
+  "page": "beryl_orb",
+  "titre": "Beryl Orb",
+  "api_id": 24520,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Beryl_Crystal",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Beryl Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "blessing_of_the_jade_empress",
   "titre": "Blessing of the Jade Empress",
   "api_id": 97829,
@@ -3468,6 +3503,73 @@
    {
     "objet": "Imperial_Favor",
     "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "bloodstone_brick",
+  "titre": "Bloodstone Brick",
+  "api_id": 46730,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Pile_of_Bloodstone_Dust",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Bloodstone Brick"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Pile_of_Bloodstone_Dust",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Bloodstone Brick"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Obsidian_Shard",
+    "qty": 2
+   },
+   {
+    "objet": "Pile_of_Bloodstone_Dust",
+    "qty": 100
+   },
+   {
+    "objet": "Thermocatalytic_Reagent",
+    "qty": 10
    }
   ],
   "aretes_table": []
@@ -3765,6 +3867,32 @@
   "aretes_table": []
  },
  {
+  "page": "branded_mass",
+  "titre": "Branded Mass",
+  "api_id": 89537,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Eternal_Ice_Shard",
+    "qty": 75
+   },
+   {
+    "objet": "Jorbreaker",
+    "qty": 1
+   },
+   {
+    "objet": "Magnetite_Shard",
+    "qty": 2
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "brandstone_research",
   "titre": "Brandstone Research",
   "api_id": null,
@@ -3827,6 +3955,33 @@
    {
     "objet": "Testimony_of_Castoran_Heroics",
     "qty": 250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "certificate_of_honor",
+  "titre": "Certificate of Honor",
+  "api_id": 83620,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Badge_of_Honor",
+      500
+     ]
+    ],
+    "produit": "Certificate of Honor"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Badge_of_Honor",
+    "qty": 500
    }
   ],
   "aretes_table": []
@@ -5195,6 +5350,45 @@
   "aretes_table": []
  },
  {
+  "page": "cube_of_stabilized_dark_energy",
+  "titre": "Cube of Stabilized Dark Energy",
+  "api_id": 73137,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Weaponsmith Tailor Artificer Leatherworker Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Ball_of_Dark_Energy",
+      1
+     ],
+     [
+      "Stabilizing_Matrix",
+      75
+     ]
+    ],
+    "produit": "Cube of Stabilized Dark Energy"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Ball_of_Dark_Energy",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Stabilizing_Matrix",
+    "qty": 75
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "cured_hardened_leather_square",
   "titre": "Cured Hardened Leather Square",
   "api_id": 19737,
@@ -5660,6 +5854,73 @@
   "aretes_table": []
  },
  {
+  "page": "dragonite_ingot",
+  "titre": "Dragonite Ingot",
+  "api_id": 46732,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Dragonite_Ore",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Dragonite Ingot"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Dragonite_Ore",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Dragonite Ingot"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Dragonite_Ore",
+    "qty": 100
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Obsidian_Shard",
+    "qty": 2
+   },
+   {
+    "objet": "Thermocatalytic_Reagent",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "dragonsblood_weapons",
   "titre": "Dragonsblood weapons",
   "api_id": null,
@@ -5914,6 +6175,73 @@
   "aretes_table": []
  },
  {
+  "page": "empyreal_star",
+  "titre": "Empyreal Star",
+  "api_id": 46734,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Empyreal_Fragment",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Empyreal Star"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Empyreal_Fragment",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Empyreal Star"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Empyreal_Fragment",
+    "qty": 100
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Obsidian_Shard",
+    "qty": 2
+   },
+   {
+    "objet": "Thermocatalytic_Reagent",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "endless_summer",
   "titre": "Endless Summer",
   "api_id": 107022,
@@ -6144,6 +6472,60 @@
    {
     "objet": "Testimony_of_Castoran_Heroics",
     "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "essence_of_carnage",
+  "titre": "Essence of Carnage",
+  "api_id": 81469,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Memory_of_Battle",
+      500
+     ]
+    ],
+    "produit": "Essence of Carnage"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Memory_of_Battle",
+    "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "essence_of_strategy",
+  "titre": "Essence of Strategy",
+  "api_id": 81326,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Badge_of_Honor",
+      1000
+     ]
+    ],
+    "produit": "Essence of Strategy"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Badge_of_Honor",
+    "qty": 1000
    }
   ],
   "aretes_table": []
@@ -7347,15 +7729,6 @@
   ]
  },
  {
-  "page": "forge_guard_s_armor_collection",
-  "titre": "Forge Guard's Armor Collection",
-  "api_id": null,
-  "table_materiaux": false,
-  "recettes": [],
-  "couts_vendeur": [],
-  "aretes_table": []
- },
- {
   "page": "forge_guards_armor_collection",
   "titre": "Forge Guard's Armor Collection",
   "api_id": null,
@@ -7860,6 +8233,44 @@
   "aretes_table": []
  },
  {
+  "page": "funerary_incense",
+  "titre": "Funerary Incense",
+  "api_id": 86093,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Amalgamated_Gemstone",
+    "qty": 1
+   },
+   {
+    "objet": "Crystalline_Ingot",
+    "qty": 1
+   },
+   {
+    "objet": "Elegy_Mosaic",
+    "qty": 3
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 1
+   },
+   {
+    "objet": "Obsidian_Shard",
+    "qty": 1
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 5
+   },
+   {
+    "objet": "Trade_Contracts",
+    "qty": 100
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gathering",
   "titre": "Gathering",
   "api_id": null,
@@ -7969,6 +8380,24 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_ascension",
+  "titre": "Gift of Ascension",
+  "api_id": 37070,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Black_Lion_Commemorative_Sprocket",
+    "qty": 4
+   },
+   {
+    "objet": "Fractal_Relic",
+    "qty": 500
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -8584,6 +9013,15 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_battle",
+  "titre": "Gift of Battle",
+  "api_id": 19678,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_blood",
   "titre": "Gift of Blood",
   "api_id": 71655,
@@ -9001,6 +9439,116 @@
    {
     "objet": "Magnetite_Shard",
     "qty": 100
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_condensed_magic",
+  "titre": "Gift of Condensed Magic",
+  "api_id": 76530,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Blood",
+      1
+     ],
+     [
+      "Gift_of_Venom",
+      1
+     ],
+     [
+      "Gift_of_Totems",
+      1
+     ],
+     [
+      "Gift_of_Dust",
+      1
+     ]
+    ],
+    "produit": "Gift of Condensed Magic"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Blood",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Dust",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Totems",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Venom",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_condensed_might",
+  "titre": "Gift of Condensed Might",
+  "api_id": 70867,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Claws",
+      1
+     ],
+     [
+      "Gift_of_Scales",
+      1
+     ],
+     [
+      "Gift_of_Bones",
+      1
+     ],
+     [
+      "Gift_of_Fangs",
+      1
+     ]
+    ],
+    "produit": "Gift of Condensed Might"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Bones",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Claws",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Fangs",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Scales",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
    }
   ],
   "aretes_table": []
@@ -9776,6 +10324,32 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_galdra",
+  "titre": "Gift of Galdra",
+  "api_id": 109469,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Eternity%27s_Garden_Exploration",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Regrowth",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Research",
+    "qty": 1
+   },
+   {
+    "objet": "Preserved_Eidolon_Hide",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_gatherer_of_the_hunt",
   "titre": "Gift of Gatherer of the Hunt",
   "api_id": 102515,
@@ -10278,6 +10852,40 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_ipos",
+  "titre": "Gift of Ipos",
+  "api_id": 85744,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_the_Mists",
+      1
+     ],
+     [
+      "Mystic_Runestone",
+      100
+     ],
+     [
+      "Shard_of_the_Dark_Arts",
+      100
+     ],
+     [
+      "Gift_of_Energy",
+      1
+     ]
+    ],
+    "produit": "Gift of Ipos"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_jade_mastery",
   "titre": "Gift of Jade Mastery",
   "api_id": 96033,
@@ -10432,6 +11040,61 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_klobjarne_geirr",
+  "titre": "Gift of Klobjarne Geirr",
+  "api_id": 102901,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Recollector_of_Memories",
+      1
+     ],
+     [
+      "Mystic_Runestone",
+      100
+     ],
+     [
+      "Gift_of_the_Mists",
+      1
+     ],
+     [
+      "Gift_of_Research",
+      1
+     ]
+    ],
+    "produit": "Gift of Klobjarne Geirr"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Recollector_of_Memories",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Research",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_the_Mists",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 5
+   },
+   {
+    "objet": "Mystic_Runestone",
+    "qty": 100
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -10759,6 +11422,61 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_metal",
+  "titre": "Gift of Metal",
+  "api_id": 19621,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      250
+     ],
+     [
+      "Mithril_Ingot",
+      250
+     ],
+     [
+      "Darksteel_Ingot",
+      250
+     ],
+     [
+      "Platinum_Ingot",
+      250
+     ]
+    ],
+    "produit": "Gift of Metal"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Darksteel_Ingot",
+    "qty": 250
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 5
+   },
+   {
+    "objet": "Mithril_Ingot",
+    "qty": 250
+   },
+   {
+    "objet": "Orichalcum_Ingot",
+    "qty": 250
+   },
+   {
+    "objet": "Platinum_Ingot",
+    "qty": 250
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -11273,6 +11991,40 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_relics",
+  "titre": "Gift of Relics",
+  "api_id": 101519,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Facet",
+      25
+     ],
+     [
+      "Mystic_Clover",
+      25
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      150
+     ],
+     [
+      "Gift_of_Research",
+      1
+     ]
+    ],
+    "produit": "Gift of Relics"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_research",
   "titre": "Gift of Research",
   "api_id": 97655,
@@ -11357,6 +12109,40 @@
      ]
     ],
     "produit": "Gift of Rodgort"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_runes",
+  "titre": "Gift of Runes",
+  "api_id": 89218,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Aspect",
+      50
+     ],
+     [
+      "Mystic_Clover",
+      20
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      50
+     ]
+    ],
+    "produit": "Gift of Runes"
    }
   ],
   "couts_vendeur": [],
@@ -11449,6 +12235,66 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_shadows",
+  "titre": "Gift of Shadows",
+  "api_id": 104846,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Darkness",
+      1
+     ],
+     [
+      "Gift_of_Scales",
+      1
+     ],
+     [
+      "Gift_of_Titan_Understanding",
+      1
+     ],
+     [
+      "Bloodstone_Shard",
+      1
+     ]
+    ],
+    "produit": "Gift of Shadows"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_shadowstones",
+  "titre": "Gift of Shadowstones",
+  "api_id": 109161,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Restoration",
+    "qty": 1
+   },
+   {
+    "objet": "Seer_Runestone",
+    "qty": 200
+   },
+   {
+    "objet": "Shadowstone_Containment_Frame",
+    "qty": 1
+   },
+   {
+    "objet": "Shadowstone_Orb",
+    "qty": 1
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -11550,6 +12396,74 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_sigils",
+  "titre": "Gift of Sigils",
+  "api_id": 91449,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Mote",
+      75
+     ],
+     [
+      "Mystic_clover",
+      30
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      150
+     ],
+     [
+      "Obsidian_Shard",
+      75
+     ]
+    ],
+    "produit": "Gift of Sigils"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_skirmishing",
+  "titre": "Gift of Skirmishing",
+  "api_id": 77485,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Vision_Crystal",
+      2
+     ],
+     [
+      "Shard_of_Glory",
+      250
+     ],
+     [
+      "Certificate_of_Support",
+      5
+     ],
+     [
+      "Perfect_Mist_Core",
+      1
+     ]
+    ],
+    "produit": "Gift of Skirmishing"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_souls",
   "titre": "Gift of Souls",
   "api_id": 36072,
@@ -11624,6 +12538,61 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_stormy_skies",
+  "titre": "Gift of Stormy Skies",
+  "api_id": 100288,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_the_Astral_Ward",
+      1
+     ],
+     [
+      "Case_of_Captured_Lightning",
+      5
+     ],
+     [
+      "Clot_of_Congealed_Screams",
+      5
+     ],
+     [
+      "Pouch_of_Stardust",
+      5
+     ]
+    ],
+    "produit": "Gift of Stormy Skies"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Case_of_Captured_Lightning",
+    "qty": 5
+   },
+   {
+    "objet": "Clot_of_Congealed_Screams",
+    "qty": 5
+   },
+   {
+    "objet": "Gift_of_the_Astral_Ward",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Pouch_of_Stardust",
+    "qty": 5
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -11991,6 +12960,40 @@
      ]
     ],
     "produit": "Gift of the Champion"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_the_competitor",
+  "titre": "Gift of the Competitor",
+  "api_id": 77509,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "The_Thrill_of_Battle",
+      1
+     ],
+     [
+      "Tapestry_of_Sacrifice",
+      1
+     ],
+     [
+      "Monument_of_Legends",
+      1
+     ],
+     [
+      "Hymn_of_Glory",
+      1
+     ]
+    ],
+    "produit": "Gift of the Competitor"
    }
   ],
   "couts_vendeur": [],
@@ -12872,6 +13875,32 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_people",
+  "titre": "Gift of the People",
+  "api_id": 105804,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Antiquated_Ducat",
+    "qty": 500
+   },
+   {
+    "objet": "Gift_of_Starlit_Weald_Exploration",
+    "qty": 1
+   },
+   {
+    "objet": "Patron_of_the_Magical_Arts_Plaque",
+    "qty": 1
+   },
+   {
+    "objet": "Seer_Wreath_of_Service",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_predator",
   "titre": "Gift of The Predator",
   "api_id": 19661,
@@ -13067,6 +14096,32 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "gift_of_the_survivors",
+  "titre": "Gift of the Survivors",
+  "api_id": 106712,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Aether-Rich_Sap",
+    "qty": 500
+   },
+   {
+    "objet": "Concentrated_Chromatic_Sap",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Shipwreck_Strand_Exploration",
+    "qty": 1
+   },
+   {
+    "objet": "Survivor%27s_Enchanted_Compass",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
  },
  {
   "page": "gift_of_the_warclaw",
@@ -13377,6 +14432,33 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_war",
+  "titre": "Gift of War",
+  "api_id": 71008,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Memory_of_Battle",
+      250
+     ]
+    ],
+    "produit": "Gift of War"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Memory_of_Battle",
+    "qty": 250
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -14638,6 +15720,32 @@
   "aretes_table": []
  },
  {
+  "page": "inscribed_shard",
+  "titre": "Inscribed Shard",
+  "api_id": 87645,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Eternal_Ice_Shard",
+    "qty": 75
+   },
+   {
+    "objet": "Jorbreaker",
+    "qty": 1
+   },
+   {
+    "objet": "Magnetite_Shard",
+    "qty": 2
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "intricate_totem",
   "titre": "Intricate Totem",
   "api_id": 24299,
@@ -15405,6 +16513,36 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "kralkatite_ingot",
+  "titre": "Kralkatite Ingot",
+  "api_id": 85828,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Kralkatite_Ore",
+      10
+     ],
+     [
+      "Powdered_Rose_Quartz",
+      10
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ]
+    ],
+    "produit": "Kralkatite Ingot"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -16906,6 +18044,61 @@
   "aretes_table": []
  },
  {
+  "page": "lesser_vision_crystal",
+  "titre": "Lesser Vision Crystal",
+  "api_id": 49523,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bloodstone_Brick",
+      2
+     ],
+     [
+      "Dragonite_Ingot",
+      2
+     ],
+     [
+      "Empyreal_Star",
+      2
+     ],
+     [
+      "Augur%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Lesser Vision Crystal"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Augur%27s_Stone",
+    "qty": 1
+   },
+   {
+    "objet": "Bloodstone_Brick",
+    "qty": 2
+   },
+   {
+    "objet": "Dragonite_Ingot",
+    "qty": 2
+   },
+   {
+    "objet": "Empyreal_Star",
+    "qty": 2
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "ley_line_crystal",
   "titre": "Ley Line Crystal",
   "api_id": null,
@@ -17001,6 +18194,15 @@
   "aretes_table": []
  },
  {
+  "page": "magnetite_shard",
+  "titre": "Magnetite Shard",
+  "api_id": 77378,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "master_diver",
   "titre": "Master Diver",
   "api_id": null,
@@ -17016,6 +18218,32 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "memory_essence_encapsulator",
+  "titre": "Memory Essence Encapsulator",
+  "api_id": 91024,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ectoplasm",
+    "qty": 50
+   },
+   {
+    "objet": "Lesser_Vision_Crystal",
+    "qty": 1
+   },
+   {
+    "objet": "Orichalcum_Filigree",
+    "qty": 10
+   },
+   {
+    "objet": "Xunlai_Electrum_Ingot",
+    "qty": 3
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -18394,6 +19622,133 @@
   "aretes_table": []
  },
  {
+  "page": "nyr_hrammr",
+  "titre": "Nyr Hrammr",
+  "api_id": 103973,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(heavy)",
+      1
+     ]
+    ],
+    "produit": "Nyr Hrammr"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(medium)",
+      1
+     ]
+    ],
+    "produit": "Nyr Hrammr"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(light)",
+      1
+     ]
+    ],
+    "produit": "Nyr Hrammr"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece_Remnant",
+      1
+     ],
+     [
+      "Bearkin_War_Helm_Remnant",
+      1
+     ]
+    ],
+    "produit": "Nyr Hrammr"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Bearkin_War_Helm_Remnant",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Metal",
+    "qty": 1
+   },
+   {
+    "objet": "Gift_of_Sharpened_Tip",
+    "qty": 1
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 5
+   },
+   {
+    "objet": "Standing_Stones_Timepiece_Remnant",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "obsidian_armor",
   "titre": "Obsidian armor",
   "api_id": null,
@@ -18666,6 +20021,69 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "orrax_contained",
+  "titre": "Orrax Contained",
+  "api_id": 104690,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Binding_of_the_Dragon",
+      1
+     ],
+     [
+      "Draconic_Tribute",
+      1
+     ],
+     [
+      "Salmon_of_Knowledge_Backpiece",
+      1
+     ],
+     [
+      "Askur_Camping_Cookout_Backpiece",
+      1
+     ]
+    ],
+    "produit": "Orrax Contained"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Binding_of_the_Dragon",
+      1
+     ],
+     [
+      "Draconic_Tribute",
+      1
+     ],
+     [
+      "Salmon_of_Knowledge_Backpiece_Remnant",
+      1
+     ],
+     [
+      "Askur_Camping_Cookout_Backpiece_Remnant",
+      1
+     ]
+    ],
+    "produit": "Orrax Contained"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Plate_of_Orrian_Steak_Frittes",
+    "qty": 5
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -19849,6 +21267,15 @@
   "page": "provisioner_token",
   "titre": "Provisioner Token",
   "api_id": 88926,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "pvp_league_ticket",
+  "titre": "PvP League Ticket",
+  "api_id": null,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -25413,15 +26840,6 @@
   ]
  },
  {
-  "page": "triumphant_hero_s_armor",
-  "titre": "Triumphant Hero's armor",
-  "api_id": null,
-  "table_materiaux": false,
-  "recettes": [],
-  "couts_vendeur": [],
-  "aretes_table": []
- },
- {
   "page": "triumphant_heros_armor",
   "titre": "Triumphant Hero's armor",
   "api_id": null,
@@ -26213,6 +27631,20 @@
   "aretes_table": []
  },
  {
+  "page": "vial_of_liquid_shadowstone",
+  "titre": "Vial of Liquid Shadowstone",
+  "api_id": 109391,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Shadowstone_Fragment",
+    "qty": 250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "vial_of_potent_blood",
   "titre": "Vial of Potent Blood",
   "api_id": 24294,
@@ -26528,6 +27960,65 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "vision_crystal",
+  "titre": "Vision Crystal",
+  "api_id": 46746,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bloodstone_Brick",
+      5
+     ],
+     [
+      "Dragonite_Ingot",
+      5
+     ],
+     [
+      "Empyreal_Star",
+      5
+     ],
+     [
+      "Augur%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Vision Crystal"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Augur%27s_Stone",
+    "qty": 1
+   },
+   {
+    "objet": "Black_Lion_Commemorative_Sprocket",
+    "qty": 6
+   },
+   {
+    "objet": "Bloodstone_Brick",
+    "qty": 5
+   },
+   {
+    "objet": "Dragonite_Ingot",
+    "qty": 5
+   },
+   {
+    "objet": "Empyreal_Star",
+    "qty": 5
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
  },
  {
   "page": "vision_i_awakening",
@@ -27243,6 +28734,40 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "xunlai_electrum_ingot",
+  "titre": "Xunlai Electrum Ingot",
+  "api_id": 46743,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Silver_Ingot",
+      20
+     ],
+     [
+      "Gold_Ingot",
+      10
+     ],
+     [
+      "Platinum_Ingot",
+      20
+     ],
+     [
+      "Lump_of_Mithrillium",
+      1
+     ]
+    ],
+    "produit": "Xunlai Electrum Ingot"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
  },
  {
   "page": "year_of_the_ascension_part_i",

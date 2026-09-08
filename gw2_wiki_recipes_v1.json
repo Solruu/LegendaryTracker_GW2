@@ -363,6 +363,12 @@
   "recettes": []
  },
  {
+  "page": "augurs_stone",
+  "titre": "Augur's Stone",
+  "api_id": 46752,
+  "recettes": []
+ },
+ {
   "page": "aurenes_argument",
   "titre": "Aurene's Argument",
   "api_id": 95808,
@@ -969,10 +975,77 @@
   "recettes": []
  },
  {
+  "page": "beryl_orb",
+  "titre": "Beryl Orb",
+  "api_id": 24520,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Beryl_Crystal",
+      2
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "blessing_of_the_jade_empress",
   "titre": "Blessing of the Jade Empress",
   "api_id": 97829,
   "recettes": []
+ },
+ {
+  "page": "bloodstone_brick",
+  "titre": "Bloodstone Brick",
+  "api_id": 46730,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Pile_of_Bloodstone_Dust",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Pile_of_Bloodstone_Dust",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   }
+  ]
  },
  {
   "page": "bloodstone_shard",
@@ -1098,6 +1171,12 @@
   "recettes": []
  },
  {
+  "page": "branded_mass",
+  "titre": "Branded Mass",
+  "api_id": 89537,
+  "recettes": []
+ },
+ {
   "page": "brandstone_research",
   "titre": "Brandstone Research",
   "api_id": null,
@@ -1128,6 +1207,24 @@
      [
       "Testimony_of_Jade_Heroics",
       250
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "certificate_of_honor",
+  "titre": "Certificate of Honor",
+  "api_id": 83620,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Badge_of_Honor",
+      500
      ]
     ]
    }
@@ -1698,6 +1795,28 @@
   ]
  },
  {
+  "page": "cube_of_stabilized_dark_energy",
+  "titre": "Cube of Stabilized Dark Energy",
+  "api_id": 73137,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Weaponsmith Tailor Artificer Leatherworker Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Ball_of_Dark_Energy",
+      1
+     ],
+     [
+      "Stabilizing_Matrix",
+      75
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "cured_hardened_leather_square",
   "titre": "Cured Hardened Leather Square",
   "api_id": 19737,
@@ -1968,6 +2087,51 @@
   ]
  },
  {
+  "page": "dragonite_ingot",
+  "titre": "Dragonite Ingot",
+  "api_id": 46732,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Dragonite_Ore",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Dragonite_Ore",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "dragonsblood_weapons",
   "titre": "Dragonsblood weapons",
   "api_id": 89651,
@@ -2119,6 +2283,51 @@
   ]
  },
  {
+  "page": "empyreal_star",
+  "titre": "Empyreal Star",
+  "api_id": 46734,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Empyreal_Fragment",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "425",
+    "ingredients": [
+     [
+      "Empyreal_Fragment",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "endless_summer",
   "titre": "Endless Summer",
   "api_id": 107022,
@@ -2199,6 +2408,42 @@
      [
       "Testimony_of_Jade_Heroics",
       500
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "essence_of_carnage",
+  "titre": "Essence of Carnage",
+  "api_id": 81469,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Memory_of_Battle",
+      500
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "essence_of_strategy",
+  "titre": "Essence of Strategy",
+  "api_id": 81326,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Badge_of_Honor",
+      1000
      ]
     ]
    }
@@ -2461,12 +2706,6 @@
   ]
  },
  {
-  "page": "forge_guard_s_armor_collection",
-  "titre": "Forge Guard's Armor Collection",
-  "api_id": null,
-  "recettes": []
- },
- {
   "page": "forge_guards_armor_collection",
   "titre": "Forge Guard's Armor Collection",
   "api_id": null,
@@ -2643,6 +2882,12 @@
   ]
  },
  {
+  "page": "funerary_incense",
+  "titre": "Funerary Incense",
+  "api_id": 86093,
+  "recettes": []
+ },
+ {
   "page": "gathering",
   "titre": "Gathering",
   "api_id": null,
@@ -2719,6 +2964,12 @@
     ]
    }
   ]
+ },
+ {
+  "page": "gift_of_ascension",
+  "titre": "Gift of Ascension",
+  "api_id": 37070,
+  "recettes": []
  },
  {
   "page": "gift_of_astralaria",
@@ -3261,6 +3512,12 @@
   ]
  },
  {
+  "page": "gift_of_battle",
+  "titre": "Gift of Battle",
+  "api_id": 19678,
+  "recettes": []
+ },
+ {
   "page": "gift_of_blood",
   "titre": "Gift of Blood",
   "api_id": 71655,
@@ -3541,6 +3798,66 @@
   "titre": "Gift of Complex Emotions",
   "api_id": 88909,
   "recettes": []
+ },
+ {
+  "page": "gift_of_condensed_magic",
+  "titre": "Gift of Condensed Magic",
+  "api_id": 76530,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Blood",
+      1
+     ],
+     [
+      "Gift_of_Venom",
+      1
+     ],
+     [
+      "Gift_of_Totems",
+      1
+     ],
+     [
+      "Gift_of_Dust",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_condensed_might",
+  "titre": "Gift of Condensed Might",
+  "api_id": 70867,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Claws",
+      1
+     ],
+     [
+      "Gift_of_Scales",
+      1
+     ],
+     [
+      "Gift_of_Bones",
+      1
+     ],
+     [
+      "Gift_of_Fangs",
+      1
+     ]
+    ]
+   }
+  ]
  },
  {
   "page": "gift_of_conquering",
@@ -4131,6 +4448,12 @@
   ]
  },
  {
+  "page": "gift_of_galdra",
+  "titre": "Gift of Galdra",
+  "api_id": 109469,
+  "recettes": []
+ },
+ {
   "page": "gift_of_gatherer_of_the_hunt",
   "titre": "Gift of Gatherer of the Hunt",
   "api_id": 102515,
@@ -4498,6 +4821,36 @@
   ]
  },
  {
+  "page": "gift_of_ipos",
+  "titre": "Gift of Ipos",
+  "api_id": 85744,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_the_Mists",
+      1
+     ],
+     [
+      "Mystic_Runestone",
+      100
+     ],
+     [
+      "Shard_of_the_Dark_Arts",
+      100
+     ],
+     [
+      "Gift_of_Energy",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "gift_of_jade_mastery",
   "titre": "Gift of Jade Mastery",
   "api_id": 96033,
@@ -4611,6 +4964,36 @@
      ],
      [
       "Superior_Sigil_of_Agony",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_klobjarne_geirr",
+  "titre": "Gift of Klobjarne Geirr",
+  "api_id": 102901,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Recollector_of_Memories",
+      1
+     ],
+     [
+      "Mystic_Runestone",
+      100
+     ],
+     [
+      "Gift_of_the_Mists",
+      1
+     ],
+     [
+      "Gift_of_Research",
       1
      ]
     ]
@@ -4882,6 +5265,36 @@
      [
       "Gift_of_Battle",
       1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_metal",
+  "titre": "Gift of Metal",
+  "api_id": 19621,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      250
+     ],
+     [
+      "Mithril_Ingot",
+      250
+     ],
+     [
+      "Darksteel_Ingot",
+      250
+     ],
+     [
+      "Platinum_Ingot",
+      250
      ]
     ]
    }
@@ -5260,6 +5673,36 @@
   "recettes": []
  },
  {
+  "page": "gift_of_relics",
+  "titre": "Gift of Relics",
+  "api_id": 101519,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Facet",
+      25
+     ],
+     [
+      "Mystic_Clover",
+      25
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      150
+     ],
+     [
+      "Gift_of_Research",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "gift_of_research",
   "titre": "Gift of Research",
   "api_id": 97655,
@@ -5316,6 +5759,36 @@
      [
       "Superior_Sigil_of_Fire",
       1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_runes",
+  "titre": "Gift of Runes",
+  "api_id": 89218,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Aspect",
+      50
+     ],
+     [
+      "Mystic_Clover",
+      20
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      100
+     ],
+     [
+      "Obsidian_Shard",
+      50
      ]
     ]
    }
@@ -5380,6 +5853,42 @@
     ]
    }
   ]
+ },
+ {
+  "page": "gift_of_shadows",
+  "titre": "Gift of Shadows",
+  "api_id": 104846,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Darkness",
+      1
+     ],
+     [
+      "Gift_of_Scales",
+      1
+     ],
+     [
+      "Gift_of_Titan_Understanding",
+      1
+     ],
+     [
+      "Bloodstone_Shard",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_shadowstones",
+  "titre": "Gift of Shadowstones",
+  "api_id": 109161,
+  "recettes": []
  },
  {
   "page": "gift_of_sharpened_tip",
@@ -5448,6 +5957,66 @@
   ]
  },
  {
+  "page": "gift_of_sigils",
+  "titre": "Gift of Sigils",
+  "api_id": 91449,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Mystic_Mote",
+      75
+     ],
+     [
+      "Mystic_clover",
+      30
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      150
+     ],
+     [
+      "Obsidian_Shard",
+      75
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_skirmishing",
+  "titre": "Gift of Skirmishing",
+  "api_id": 77485,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Vision_Crystal",
+      2
+     ],
+     [
+      "Shard_of_Glory",
+      250
+     ],
+     [
+      "Certificate_of_Support",
+      5
+     ],
+     [
+      "Perfect_Mist_Core",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "gift_of_souls",
   "titre": "Gift of Souls",
   "api_id": 36072,
@@ -5508,6 +6077,36 @@
      [
       "Onyx_Lodestone",
       100
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_stormy_skies",
+  "titre": "Gift of Stormy Skies",
+  "api_id": 100288,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_the_Astral_Ward",
+      1
+     ],
+     [
+      "Case_of_Captured_Lightning",
+      5
+     ],
+     [
+      "Clot_of_Congealed_Screams",
+      5
+     ],
+     [
+      "Pouch_of_Stardust",
+      5
      ]
     ]
    }
@@ -5693,6 +6292,36 @@
      ],
      [
       "Tome_of_the_Mists",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_the_competitor",
+  "titre": "Gift of the Competitor",
+  "api_id": 77509,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "The_Thrill_of_Battle",
+      1
+     ],
+     [
+      "Tapestry_of_Sacrifice",
+      1
+     ],
+     [
+      "Monument_of_Legends",
+      1
+     ],
+     [
+      "Hymn_of_Glory",
       1
      ]
     ]
@@ -6174,6 +6803,12 @@
   "recettes": []
  },
  {
+  "page": "gift_of_the_people",
+  "titre": "Gift of the People",
+  "api_id": 105804,
+  "recettes": []
+ },
+ {
   "page": "gift_of_the_predator",
   "titre": "Gift of The Predator",
   "api_id": 19661,
@@ -6268,6 +6903,12 @@
     ]
    }
   ]
+ },
+ {
+  "page": "gift_of_the_survivors",
+  "titre": "Gift of the Survivors",
+  "api_id": 106712,
+  "recettes": []
  },
  {
   "page": "gift_of_the_warclaw",
@@ -6462,6 +7103,24 @@
      [
       "Mystic_Runestone",
       100
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "gift_of_war",
+  "titre": "Gift of War",
+  "api_id": 71008,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Memory_of_Battle",
+      250
      ]
     ]
    }
@@ -7135,6 +7794,12 @@
   "recettes": []
  },
  {
+  "page": "inscribed_shard",
+  "titre": "Inscribed Shard",
+  "api_id": 87645,
+  "recettes": []
+ },
+ {
   "page": "intricate_totem",
   "titre": "Intricate Totem",
   "api_id": 24299,
@@ -7329,6 +7994,32 @@
   "titre": "Kraitkin III: Venom",
   "api_id": null,
   "recettes": []
+ },
+ {
+  "page": "kralkatite_ingot",
+  "titre": "Kralkatite Ingot",
+  "api_id": 85828,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Kralkatite_Ore",
+      10
+     ],
+     [
+      "Powdered_Rose_Quartz",
+      10
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ]
+    ]
+   }
+  ]
  },
  {
   "page": "kudzu",
@@ -7773,6 +8464,36 @@
   "recettes": []
  },
  {
+  "page": "lesser_vision_crystal",
+  "titre": "Lesser Vision Crystal",
+  "api_id": 49523,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bloodstone_Brick",
+      2
+     ],
+     [
+      "Dragonite_Ingot",
+      2
+     ],
+     [
+      "Empyreal_Star",
+      2
+     ],
+     [
+      "Augur%27s_Stone",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "ley_line_crystal",
   "titre": "Ley Line Crystal",
   "api_id": null,
@@ -7848,6 +8569,12 @@
   ]
  },
  {
+  "page": "magnetite_shard",
+  "titre": "Magnetite Shard",
+  "api_id": 77378,
+  "recettes": []
+ },
+ {
   "page": "master_diver",
   "titre": "Master Diver",
   "api_id": null,
@@ -7857,6 +8584,12 @@
   "page": "mebahya_sapling",
   "titre": "Mebahya Sapling",
   "api_id": null,
+  "recettes": []
+ },
+ {
+  "page": "memory_essence_encapsulator",
+  "titre": "Memory Essence Encapsulator",
+  "api_id": 91024,
   "recettes": []
  },
  {
@@ -8633,6 +9366,105 @@
   "recettes": []
  },
  {
+  "page": "nyr_hrammr",
+  "titre": "Nyr Hrammr",
+  "api_id": 103973,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(heavy)",
+      1
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(medium)",
+      1
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece",
+      1
+     ],
+     [
+      "Valkyrie_Bearkin_War_Helm_(light)",
+      1
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Sharpened_Tip",
+      1
+     ],
+     [
+      "Gift_of_Metal",
+      1
+     ],
+     [
+      "Standing_Stones_Timepiece_Remnant",
+      1
+     ],
+     [
+      "Bearkin_War_Helm_Remnant",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
   "page": "obsidian_armor",
   "titre": "Obsidian armor",
   "api_id": null,
@@ -8819,6 +9651,59 @@
   "titre": "Orichalcum Ore (node)",
   "api_id": null,
   "recettes": []
+ },
+ {
+  "page": "orrax_contained",
+  "titre": "Orrax Contained",
+  "api_id": 104690,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Binding_of_the_Dragon",
+      1
+     ],
+     [
+      "Draconic_Tribute",
+      1
+     ],
+     [
+      "Salmon_of_Knowledge_Backpiece",
+      1
+     ],
+     [
+      "Askur_Camping_Cookout_Backpiece",
+      1
+     ]
+    ]
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Binding_of_the_Dragon",
+      1
+     ],
+     [
+      "Draconic_Tribute",
+      1
+     ],
+     [
+      "Salmon_of_Knowledge_Backpiece_Remnant",
+      1
+     ],
+     [
+      "Askur_Camping_Cookout_Backpiece_Remnant",
+      1
+     ]
+    ]
+   }
+  ]
  },
  {
   "page": "orrax_manifested",
@@ -9265,6 +10150,12 @@
   "page": "provisioner_token",
   "titre": "Provisioner Token",
   "api_id": 88926,
+  "recettes": []
+ },
+ {
+  "page": "pvp_league_ticket",
+  "titre": "PvP League Ticket",
+  "api_id": null,
   "recettes": []
  },
  {
@@ -10954,12 +11845,6 @@
   ]
  },
  {
-  "page": "triumphant_hero_s_armor",
-  "titre": "Triumphant Hero's armor",
-  "api_id": null,
-  "recettes": []
- },
- {
   "page": "triumphant_heros_armor",
   "titre": "Triumphant Hero's armor",
   "api_id": null,
@@ -11299,6 +12184,12 @@
   ]
  },
  {
+  "page": "vial_of_liquid_shadowstone",
+  "titre": "Vial of Liquid Shadowstone",
+  "api_id": 109391,
+  "recettes": []
+ },
+ {
   "page": "vial_of_potent_blood",
   "titre": "Vial of Potent Blood",
   "api_id": 24294,
@@ -11452,6 +12343,36 @@
      ],
      [
       "Gift_of_Arid_Mastery",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "vision_crystal",
+  "titre": "Vision Crystal",
+  "api_id": 46746,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Tailor Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bloodstone_Brick",
+      5
+     ],
+     [
+      "Dragonite_Ingot",
+      5
+     ],
+     [
+      "Empyreal_Star",
+      5
+     ],
+     [
+      "Augur%27s_Stone",
       1
      ]
     ]
@@ -11715,6 +12636,36 @@
      ],
      [
       "Gift_of_Desert_Mastery",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "page": "xunlai_electrum_ingot",
+  "titre": "Xunlai Electrum Ingot",
+  "api_id": 46743,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Silver_Ingot",
+      20
+     ],
+     [
+      "Gold_Ingot",
+      10
+     ],
+     [
+      "Platinum_Ingot",
+      20
+     ],
+     [
+      "Lump_of_Mithrillium",
       1
      ]
     ]

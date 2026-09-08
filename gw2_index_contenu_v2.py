@@ -24,6 +24,8 @@ qui n'ont pas de page a eux.
     python3 gw2_index_contenu_v1.py "Condensed Might"   # cherche
 """
 import importlib.util
+import collections
+import html as _html
 import json
 import re
 import sys
@@ -112,6 +114,25 @@ def main():
     print(f"  boites de recette : {rec}, portant {len(produits)} objets distincts")
     print(f"  tables « Full material list » : {sum(1 for e in index if e['table_materiaux'])}")
     print(f"  couts vendeur : {sum(len(e['couts_vendeur']) for e in index)}")
+    # Deux fichiers pour une seule page du wiki : le cas est arrive deux fois,
+    # ne de la convention d'apostrophe. « Triumphant Hero's armor » a ete
+    # capture sous triumphant_hero_s_armor ET triumphant_heros_armor, indexe
+    # deux fois, et rien ne l'a signale — le controle d'inventaire comptait des
+    # fichiers, pas des pages. On compare desormais le titre lu dans le HTML.
+    titres = collections.defaultdict(list)
+    for f in sorted(WIKI.glob("*.html")):
+        t = f.read_text(encoding="utf-8", errors="ignore")[:60000]
+        m = re.search(r'<h1[^>]*id="firstHeading"[^>]*>(.*?)</h1>', t, re.S)
+        if m:
+            titres[re.sub(r"<[^>]+>", "", _html.unescape(m.group(1))).strip()].append(f.name)
+    dup = {k: v for k, v in titres.items() if len(v) > 1}
+    if dup:
+        print(f"  DOUBLONS : {len(dup)} page(s) capturee(s) sous plusieurs noms")
+        for k, v in sorted(dup.items()):
+            print(f"     {k} <- {', '.join(sorted(v))}")
+    else:
+        print(f"  doublons de page : aucun ({len(titres)} titres distincts)")
+
     print(f"Ecrit : {SORTIE}")
     return 0
 

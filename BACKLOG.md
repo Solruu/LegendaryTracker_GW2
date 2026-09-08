@@ -1196,7 +1196,7 @@ réconcilier produit des arbitrages là où il devrait y avoir un calcul.
 confronter aux 722 clés existantes, ne garder les clés que là où l'arbre ne
 descend pas encore, et publier les trous restants.
 
-**Ce qui bloque :** 39 composants ont des enfants dans la donnée mais ni boîte
-Recipe ni coût vendeur au dépôt. Ce sont les seuls vrais trous — les 197 autres
-composants sans recette n'en ont pas parce qu'il n'y en a pas. Section 0 de
+**Ce qui bloque :** plus grand-chose. Le lot du 08/09 a comblé 34 des 39 trous.
+Restent **cinq** : `Dragonsblood Weapons` (3 dépendants), `Augur's Stone`,
+`Bloodstone Shard`, `Fractalline Spark`, `Olmakhan Bandolier`. Section 0 de
 `PAGES_A_CAPTURER.md`.
