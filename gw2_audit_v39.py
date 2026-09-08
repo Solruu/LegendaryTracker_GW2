@@ -310,54 +310,16 @@ def _atteint(cid, legid, comps, profondeur=0):
     return False
 
 
-ARMOR_JSX = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
-SUF_JSX = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1),
-           ("__full_set", 1))
+# La cascade n'est plus ecrite ici. Elle vivait dans dix fichiers, dont deux
+# avaient deja diverge sans que rien ne le signale. Un seul moteur desormais :
+# gw2_moteur_v1.Modele.
+import sys as _sys
+_sys.path.insert(0, str(HERE))
+from gw2_moteur_v1 import Modele as _Modele  # noqa: E402
 
 
 def _totaux_legendaire(data, legid):
-    """Ce que le tracker AFFICHE pour un legendaire : cles a plat plus cascade.
-
-    C'est ce nombre-la, et non la cle a plat seule, qui doit egaler le required
-    du JSX. Tant qu'un composant portait tout son cout en une cle unique, les
-    deux se confondaient. Depuis que le depliage ramene une cle au RELIQUAT —
-    250 pieces mystiques sur une gen1 valent 77 apportees par les trefles plus
-    173 encore a plat — la cle a plat ne vaut plus le total, et comparer le JSX
-    a elle faisait echouer l'audit sur des donnees justes.
-    """
-    comps = data.get("craft_components", {})
-    groupes = data.get("alt_groups") or {}
-    t, exp = {}, {}
-    for cid, c in comps.items():
-        q = c.get("qty") or {}
-        for suf, mm in SUF_JSX:
-            mult = mm if (suf not in ("__per_piece", "__full_set")
-                          or legid in ARMOR_JSX) else 0
-            v = q.get(legid + suf)
-            if isinstance(v, int) and mult:
-                t[cid] = t.get(cid, 0) + v * mult
-    for g in groupes.values():
-        if legid in (g.get("targets") or []):
-            t[g["default"]] = t.get(g["default"], 0) + g["qty"]
-    for _ in range(12):
-        add = {}
-        for cid, c in comps.items():
-            for k, v in (c.get("qty") or {}).items():
-                if isinstance(v, int) and k in comps and t.get(k, 0) > 0:
-                    add[cid] = add.get(cid, 0) + v * t[k]
-        for g in groupes.values():
-            n = sum(t.get(x, 0) for x in (g.get("targets") or []) if x in comps)
-            if n:
-                add[g["default"]] = add.get(g["default"], 0) + g["qty"] * n
-        bouge = False
-        for cid, v in add.items():
-            if exp.get(cid, 0) != v:
-                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
-                exp[cid] = v
-                bouge = True
-        if not bouge:
-            break
-    return t
+    return _Modele.depuis(data).totaux(legid)
 
 
 def check_qty_vs_jsx(data, errors, warnings):

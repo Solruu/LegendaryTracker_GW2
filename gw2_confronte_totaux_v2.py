@@ -80,44 +80,20 @@ for leg, v in L.items():
         page_leg[norm(w)] = leg
 
 
-def totaux(leg):
-    """Ce que le tracker affiche : cles a plat plus cascade."""
-    t, exp = {}, {}
-    for cid, c in cc.items():
-        q = c.get("qty") or {}
-        for suf, mm in SUF:
-            mult = mm if (suf not in ("__per_piece", "__full_set") or leg in ARMOR) else 0
-            v = q.get(leg + suf)
-            if isinstance(v, int) and mult:
-                t[cid] = t.get(cid, 0) + v * mult
-    for g in groupes.values():
-        if leg in (g.get("targets") or []):
-            t[g["default"]] = t.get(g["default"], 0) + g["qty"]
-    for _ in range(12):
-        add = {}
-        for cid, c in cc.items():
-            for k, v in (c.get("qty") or {}).items():
-                if isinstance(v, int) and k in cc and t.get(k, 0) > 0:
-                    add[cid] = add.get(cid, 0) + v * t[k]
-        for g in groupes.values():
-            n = sum(t.get(x, 0) for x in (g.get("targets") or []) if x in cc)
-            if n:
-                add[g["default"]] = add.get(g["default"], 0) + g["qty"] * n
-        bouge = False
-        for cid, v in add.items():
-            if exp.get(cid, 0) != v:
-                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
-                exp[cid] = v
-                bouge = True
-        if not bouge:
-            break
-    return t
+from gw2_moteur_v1 import Modele  # noqa: E402
 
-
-# Les options d'un `alt_groups` que le calcul ne retient pas : un choix, pas
-# une somme. Le tracker ne compte que le `default`, la table les ecrit toutes.
-non_defaut = {o for g in groupes.values()
+# Les options d'un choix que le calcul ne retient pas : la table les ecrit
+# toutes, le tracker n'en compte qu'une.
+non_defaut = {o for g in (d.get("alt_groups") or {}).values()
               for o in (g.get("options") or []) if o != g.get("default")}
+
+# La cascade n'est plus ecrite ici : un seul moteur pour tous les outils.
+_M = Modele.depuis(d, SRC)
+
+
+def totaux(leg):
+    return _M.totaux(leg)
+
 
 trous, accords, excedents, sans_leg = [], [], [], []
 for page in sorted(P.WIKI.glob("*.html")):

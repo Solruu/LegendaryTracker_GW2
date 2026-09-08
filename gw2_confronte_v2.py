@@ -74,53 +74,32 @@ def nom(cid):
     return (n.get("en") or n.get("fr")) if isinstance(n, dict) else (n or cid)
 
 
+import sys as _sys  # noqa: E402
+_sys.path.insert(0, str(HERE))
+from gw2_moteur_v1 import Modele  # noqa: E402
+
+# La cascade n'est plus ecrite ici. Deux modeles : l'etat actuel, et le meme ou
+# toutes les aretes proposees par les captures sont posees. Le second se
+# construit en modifiant une COPIE des sources, pas en recodant le calcul.
+_ACTUEL = Modele.depuis(d, SRC)
+import copy as _copy  # noqa: E402
+_d2 = _copy.deepcopy(d)
+for _cid, _pp in proposees.items():
+    _q = _d2["craft_components"][_cid].setdefault("qty", {})
+    for _p, _v in _pp.items():
+        _q[_p] = _v
+_RECETTES = Modele.depuis(_d2)
+
+
 def totaux(leg, recettes=False):
-    """recettes=False : l'etat actuel. True : toutes les aretes proposees posees,
-    et la cle a plat ignoree pour tout composant rattache a l'arbre."""
-    qty = {}
-    for cid, c in cc.items():
-        q = dict(c.get("qty") or {})
-        if recettes:
-            for p, v in proposees.get(cid, {}).items():
-                q[p] = v
-        qty[cid] = q
-    t = {}
-    for cid, q in qty.items():
-        for suf, mm in SUF:
-            mult = mm if (suf not in ("__per_piece", "__full_set") or leg in ARMOR) else 0
-            v = q.get(leg + suf)
-            if isinstance(v, int) and mult:
-                t[cid] = t.get(cid, 0) + v * mult
-    for g in groupes.values():
-        if leg in (g.get("targets") or []):
-            t[g["default"]] = t.get(g["default"], 0) + g["qty"]
-    exp = {}
-    for _ in range(12):
-        add = {}
-        for cid, q in qty.items():
-            for k, v in q.items():
-                if isinstance(v, int) and k in cc and t.get(k, 0) > 0:
-                    add[cid] = add.get(cid, 0) + v * t[k]
-        for g in groupes.values():
-            n = sum(t.get(x, 0) for x in (g.get("targets") or []) if x in cc)
-            if n:
-                add[g["default"]] = add.get(g["default"], 0) + g["qty"] * n
-        bouge = False
-        for cid, v in add.items():
-            if exp.get(cid, 0) != v:
-                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
-                exp[cid] = v
-                bouge = True
-        if not bouge:
-            break
+    """recettes=False : l'etat actuel. True : toutes les aretes proposees
+    posees, et la cle a plat ignoree pour tout composant que la chaine rattache
+    VRAIMENT a ce legendaire — la retirer des qu'une arete existe ailleurs
+    faisait tomber a zero des couts que rien ne remplacait."""
     if not recettes:
-        return t
-    # La cle a plat d'un composant ne cede la place a la chaine que la ou la
-    # chaine le rattache VRAIMENT a ce legendaire. Retirer la cle des qu'une
-    # arete existe ailleurs faisait tomber a zero des couts que rien ne
-    # remplacait — `research_note` est relie a seer_runestone, ce qui ne lui
-    # rend pas ses 5 000 sur Selachimorpha.
-    return {cid: (exp[cid] if exp.get(cid, 0) > 0 else v) for cid, v in t.items()}
+        return _ACTUEL.totaux(leg)
+    t, base = _RECETTES.totaux(leg, detail=True)
+    return {cid: (base[cid] if base.get(cid, 0) > 0 else v) for cid, v in t.items()}
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})

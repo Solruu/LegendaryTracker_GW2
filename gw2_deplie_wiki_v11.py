@@ -135,31 +135,22 @@ def cycle(enfant, parent):
     return False
 
 
+import sys as _sys  # noqa: E402
+_sys.path.insert(0, str(HERE))
+from gw2_moteur_v1 import Modele  # noqa: E402
+
+# LA CASCADE ECRITE ICI IGNORAIT `alt_groups`, ET C'EST LE PLUS GRAVE DES DIX
+# CAS : ce script ECRIT la donnee. Il decidait « deja compte par cascade » et
+# « ca casserait un total ailleurs » sur des nombres qui ne tenaient aucun
+# compte des choix declares. Un seul moteur desormais.
+#
+# Le modele est reconstruit a chaque appel parce que le script MODIFIE `cc` en
+# place entre deux calculs : un modele garde en cache repondrait sur l'etat
+# d'avant.
+
+
 def totaux(leg):
-    """Total de chaque composant pour un legendaire, cle a plat + cascade."""
-    t, exp = {}, {}
-    for cid, c in cc.items():
-        q = c.get("qty") or {}
-        for suf, mm in SUF:
-            mult = mm if (suf not in ("__per_piece", "__full_set") or leg in ARMOR) else 0
-            v = q.get(leg + suf)
-            if isinstance(v, int) and mult:
-                t[cid] = t.get(cid, 0) + v * mult
-    for _ in range(10):
-        add = {}
-        for cid, c in cc.items():
-            for k, v in (c.get("qty") or {}).items():
-                if isinstance(v, int) and k in cc and t.get(k, 0) > 0:
-                    add[cid] = add.get(cid, 0) + v * t[k]
-        bouge = False
-        for cid, v in add.items():
-            if exp.get(cid, 0) != v:
-                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
-                exp[cid] = v
-                bouge = True
-        if not bouge:
-            break
-    return t
+    return Modele.depuis(d).totaux(leg)
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})

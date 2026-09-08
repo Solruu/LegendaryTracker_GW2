@@ -100,30 +100,20 @@ def nom(cid):
     return (n.get("en") or n.get("fr")) if isinstance(n, dict) else (n or cid)
 
 
+import sys as _sys  # noqa: E402
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gw2_moteur_v1 import Modele  # noqa: E402
+
+# LA CASCADE ECRITE ICI IGNORAIT `alt_groups`. Le rapport classait donc des
+# ecarts en « deja compte par cascade » sur des totaux qui ne tenaient aucun
+# compte des choix declares : douze armes gen2 y comptaient zero don de
+# maitrise, et l'encens funeraire n'existait pour personne. Un seul moteur
+# desormais, celui que l'audit et le JSX appliquent.
+_M = Modele(SRC)
+
+
 def totaux(leg):
-    t, exp = {}, {}
-    for cid, c in cc.items():
-        q = c.get("qty") or {}
-        for suf, mm in SUF:
-            mult = mm if (suf not in ("__per_piece", "__full_set") or leg in ARMOR) else 0
-            v = q.get(leg + suf)
-            if isinstance(v, int) and mult:
-                t[cid] = t.get(cid, 0) + v * mult
-    for _ in range(10):
-        add = {}
-        for cid, c in cc.items():
-            for k, v in (c.get("qty") or {}).items():
-                if isinstance(v, int) and k in cc and t.get(k, 0) > 0:
-                    add[cid] = add.get(cid, 0) + v * t[k]
-        bouge = False
-        for cid, v in add.items():
-            if exp.get(cid, 0) != v:
-                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
-                exp[cid] = v
-                bouge = True
-        if not bouge:
-            break
-    return t
+    return _M.totaux(leg)
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})

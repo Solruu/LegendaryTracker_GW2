@@ -45,6 +45,37 @@ sont pas confrontees du tout — c'est pourquoi les 420 eclats de gloire n'ont
 jamais ete signales. Dix-sept pages a table ne sont rattachees a aucun
 legendaire, ce chiffre en fait probablement partie.
 
+## 0 bis. Le moteur de calcul est ecrit UNE fois — 08/09
+
+La cascade etait reimplementee **dix fois** : neuf scripts Python et le JSX. Et
+elles avaient deja diverge. `gw2_deplie_wiki_v10` et `gw2_arbitrages_v5`
+calculaient leurs totaux **en ignorant `alt_groups`**, quand l'audit, les deux
+confrontations et le JSX les appliquaient. Le deplieur — qui ECRIT la donnee —
+decidait « deja compte par cascade » sur des nombres ou douze armes gen2
+portaient zero don de maitrise.
+
+`gw2_moteur_v1.py` porte desormais le seul calcul. Modele, Composant,
+Legendaire, Choix. **Les vues derivees ne sont plus stockees** :
+`consommateurs` et `composants` se calculent depuis `qty` au lieu d'etre
+recopies — parce que `needed_for` dit deja la meme chose dans la donnee et ne
+la dit **plus pareil pour 140 composants sur 506**, dont un qui pointe vers un
+legendaire inexistant (`armor_perfected_envoy`).
+
+Migres et verifies : audit v39 (**sortie identique au caractere pres**),
+confrontation des totaux v2 (**identique**), confrontation de bas en haut v2
+(**identique**), arbitrages v6 (**100 -> 136 desaccords** : l'ancien
+sous-comptait, faute d'appliquer les choix), deplieur v11 (memes 63 refus, mais
+pris sur les bons totaux).
+
+Le moteur signale au passage **14 cibles fantomes** visees par `qty` et absentes
+de `legendaries`, dont un `gen3` nu et huit gen2 a collections.
+
+**Ce qui manque encore : le JSX porte la dixieme implementation, et il doit la
+garder** — le calcul se refait a chaque clic, dans le navigateur. La parade
+n'est pas de la supprimer mais de la CONFRONTER : un test qui fait tourner les
+deux moteurs sur les memes sources et compare tous les totaux de tous les
+legendaires. Tant qu'il n'existe pas, la divergence reste possible de ce cote.
+
 **Regle posee le 08/09 par Antoine, sur les options :**
 
 1. **Un choix s'applique par NIVEAU, pas au total.** On fait du McM pour une
@@ -1196,7 +1227,7 @@ contredisent. Ces cas ne sont **pas** des trous : la donnée reste à plat et le
 total affiché ne bouge pas tant que l'arbitrage n'est pas fait.
 
 Le détail est dans **`ARBITRAGES.md`**, régénérable par
-`python3 gw2_edges_wiki_v8.py && python3 gw2_arbitrages_v5.py`.
+`python3 gw2_edges_wiki_v9.py && python3 gw2_arbitrages_v6.py`.
 
 Trois familles, qui ne se tranchent pas de la même façon :
 

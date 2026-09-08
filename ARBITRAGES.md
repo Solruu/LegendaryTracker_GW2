@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v247.json` — 100 desaccords sur 28 composants.
+Source : `gw2_sources_v248.json` — 136 desaccords sur 28 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -21,9 +21,9 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
-| `airship_part` — Airship Part | 12 | 200 | deja compte par cascade x12 |
-| `ley_line_crystal` — Ley Line Crystal | 12 | 200 | deja compte par cascade x12 |
-| `lump_of_aurillium` — Lump of Aurillium | 12 | 200 | deja compte par cascade x12 |
+| `airship_part` — Airship Part | 24 | 200 | deja compte par cascade x24 |
+| `ley_line_crystal` — Ley Line Crystal | 24 | 200 | deja compte par cascade x24 |
+| `lump_of_aurillium` — Lump of Aurillium | 24 | 200 | deja compte par cascade x24 |
 | `branded_mass` — Branded Mass | 1 | 160 | deja compte par cascade x1 |
 | `darksteel_ingot` — Darksteel Ingot | 1 | 110 | deja compte par cascade x1 |
 | `mystic_clover` — Mystic Clover | 3 | 90 | cout vendeur x2, deja compte par cascade x1 |
@@ -59,14 +59,14 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 | `obsidian_shard` — Obsidian Shard | `warbringer` | 309 | 120 | 189 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +3 autres |
 | `obsidian_shard` — Obsidian Shard | `klobjarne_geirr` | 353 | 410 | 57 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +3 autres |
 
-## DEJA COMPTE PAR CASCADE — 80 cas
+## DEJA COMPTE PAR CASCADE — 116 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 80. Le reste se
+Les 60 plus gros ecarts sur 116. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
@@ -89,48 +89,48 @@ recalcule en relancant le script.
 | `airship_part` — Airship Part | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_claw_of_the_khan_ur` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_eureka` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_exordium` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_flames_of_war` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_pharus` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_sharur` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_shooshadoo` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_the_binding_of_ipos` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_the_hms_divinity` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_the_shining_blade` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_verdarach` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `airship_part` — Airship Part | `gen2_xiuquatl` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_claw_of_the_khan_ur` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_eureka` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_exordium` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_flames_of_war` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_pharus` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `ley_line_crystal` — Ley Line Crystal | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_elegy` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_eordas_grip` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_hope` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_hope_scepter` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_itzels_boon` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_lorekeeper` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_nevermore` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_reaver_of_the_mists` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `lump_of_aurillium` — Lump of Aurillium | `gen2_tigris` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
-| `thermocatalytic_reagent` — Thermocatalytic Reagent | `vision` | 180 | 360 | 180 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) |
-| `branded_mass` — Branded Mass | `vision` | 460 | 300 | 160 | diviners_orichalcum_imbued_inscription (recette) |
-| `dust_crystalline` — Pile of Crystalline Dust | `gen1_bolt` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `dust_crystalline` — Pile of Crystalline Dust | `gen1_sunrise` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_predator` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `dust_crystalline` — Pile of Crystalline Dust | `gen1_twilight` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `darksteel_ingot` — Darksteel Ingot | `klobjarne_geirr` | 250 | 360 | 110 | deldrimor_steel_ingot (recette) |
-| `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_juggernaut` | 250 | 150 | 100 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `pvp_league_ticket` — PvP League Ticket | `the_ascension` | 25 | 100 | 75 | wings_of_glory_champion (table), wings_of_glory_elite (table), wings_of_glory_recruit (table) +1 autres |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_sharur` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_shooshadoo` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_the_binding_of_ipos` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_the_hms_divinity` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `ley_line_crystal` — Ley Line Crystal | `gen2_the_shining_blade` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 
 ## COUT VENDEUR — 8 cas
 
