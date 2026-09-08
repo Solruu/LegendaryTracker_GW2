@@ -1241,3 +1241,16 @@ blocage était le grain du déplieur — voir `gw2_deplie_wiki_v9.py`.
 Les trois entrées portent désormais leur coût : rune 50 obsidiennes + 100
 ectoplasmes + 20 trèfles + 50 Mystic Aspect ; cachet 75 + 150 + 30 + 75 Mystic
 Mote ; relique 150 ectoplasmes + 25 trèfles + 25 Mystic Facet.
+
+
+### ⑦ Les « Legendary Shards » ont un vrai nom, et il est au dépôt
+
+En confrontant les tables de matériaux, 36 noms n'ont pas trouvé de composant.
+Huit d'entre eux sont les tessons de précurseur gen3, nommés un par arme :
+`Shard of Resolution`, `Shard of Endeavor`, `Shard of Exitare`, `Shard of
+Liturgy`, `Shard of Spero`, `Shard of Arah`, `Shard of Friendship`, `Shard of
+the Dark Arts`. Cinq occurrences chacun.
+
+C'est ce que les entrées supprimées `legendary_shard_gen2` / `_gen3`
+essayaient de désigner sans le savoir : un placeholder générique là où le jeu
+a huit objets nommés. Ils sont chiffrés dans les tables et absents de la base.

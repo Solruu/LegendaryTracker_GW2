@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v238.json` — 274 desaccords sur 32 composants.
+Source : `gw2_sources_v239.json` — 282 desaccords sur 34 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,6 +10,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
+| `pile_of_lucent_crystal` — Pile of Lucent Crystal | 1 | 12500 | ecart de compte x1 |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | 74 | 3654 | deja compte par cascade x37, alea du trefle mystique x25, cout vendeur x12 |
 | `research_note` — Research Note | 1 | 2500 | ecart de compte x1 |
 | `shard_of_glory` — Shard of Glory | 1 | 2000 | ecart de compte x1 |
@@ -20,6 +21,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `elegy_mosaic` — Elegy Mosaic | 1 | 450 | ecart de compte x1 |
 | `obsidian_shard` — Obsidian Shard | 79 | 426 | deja compte par cascade x57, cout vendeur x14, alea du trefle mystique x8 |
 | `magnetite_shard` — Magnetite Shard | 1 | 350 | ecart de compte x1 |
+| `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1 | 350 | ecart de compte x1 |
 | `mystic_coin` — Mystic Coin | 18 | 322 | alea du trefle mystique x18 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
@@ -31,9 +33,9 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `darksteel_ingot` — Darksteel Ingot | 1 | 110 | deja compte par cascade x1 |
 | `amalgamated_gemstone` — Amalgamated Gemstone | 3 | 100 | deja compte par cascade x2, ecart de compte x1 |
 | `curious_mursaat_ruin_shard` — Curious Mursaat Ruin Shard | 1 | 100 | ecart de compte x1 |
-| `pvp_league_ticket` — PvP League Ticket | 2 | 100 | ecart de compte x2 |
 | `emblem_of_the_conqueror` — Emblem of the Conqueror | 1 | 99 | ecart de compte x1 |
-| `mystic_clover` — Mystic Clover | 16 | 39 | ecart de compte x16 |
+| `mystic_clover` — Mystic Clover | 23 | 90 | ecart de compte x16, cout vendeur x7 |
+| `pvp_league_ticket` — PvP League Ticket | 1 | 45 | ecart de compte x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 | `gift_of_battle` — Gift of Battle | 1 | 1 | deja compte par cascade x1 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
@@ -43,19 +45,21 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `shard_of_mistburned_barrens` — Shard of Mistburned Barrens | 1 | 0 | deja compte par cascade x1 |
 | `vial_of_titan_melted_obsidian` — Vial of Titan Melted Liquid Obsidian | 1 | 0 | deja compte par cascade x1 |
 
-## ECART DE COMPTE — 32 cas
+## ECART DE COMPTE — 33 cas
 
 La cle a plat et l'arete donnent deux nombres differents : l'un des deux
 est faux. Se tranche sur la page du PARENT, boite Recipe.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
+| `pile_of_lucent_crystal` — Pile of Lucent Crystal | `legendary_relic` | 18750 | 6250 | 12500 | mystic_facet (table) |
 | `research_note` — Research Note | `stella_radians` | 52500 | 50000 | 2500 | seer_runestone (vendeur) |
 | `shard_of_glory` — Shard of Glory | `transcendence` | 2250 | 250 | 2000 | gift_of_skirmishing (recette) |
 | `trade_contract` — Trade Contract | `coalescence` | 300 | 1250 | 950 | funerary_incense (vendeur) |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `ad_infinitum` | 590 | 10 | 580 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
 | `elegy_mosaic` — Elegy Mosaic | `coalescence` | 300 | 750 | 450 | funerary_incense (vendeur) |
 | `magnetite_shard` — Magnetite Shard | `coalescence` | 450 | 100 | 350 | gift_of_complex_emotions (vendeur) |
+| `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | `warbringer` | 2800 | 2450 | 350 | commanders_wings_of_war (table), generals_wings_of_war (table), recruits_wings_of_war (table) +1 autres |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `conflux` | 300 | 600 | 300 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `the_ascension` | 300 | 600 | 300 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `transcendence` | 300 | 600 | 300 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +2 autres |
@@ -63,25 +67,24 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 | `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `amalgamated_gemstone` — Amalgamated Gemstone | `orrax_manifested` | 200 | 100 | 100 | funerary_incense (vendeur), shard_of_bava_nisos (vendeur) |
 | `curious_mursaat_ruin_shard` — Curious Mursaat Ruin Shard | `orrax_manifested` | 125 | 25 | 100 | gift_of_titan_understanding (vendeur) |
-| `pvp_league_ticket` — PvP League Ticket | `the_ascension` | 125 | 25 | 100 | certificate_of_support (recette) |
 | `emblem_of_the_conqueror` — Emblem of the Conqueror | `conflux` | 100 | 1 | 99 | war_commendation (recette) |
-| `pvp_league_ticket` — PvP League Ticket | `transcendence` | 70 | 25 | 45 | certificate_of_support (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_argument` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_bite` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_breath` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_claw` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_fang` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_gaze` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_guard` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_insight` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_persuasion` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_reckoning` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_scale` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_tenderness` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_voice` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_weight` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_wisdom` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `gen3_aurenes_wrath` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_the_side_course (recette) |
+| `pvp_league_ticket` — PvP League Ticket | `transcendence` | 70 | 25 | 45 | certificate_of_support (recette), wings_of_glory_champion (table), wings_of_glory_elite (table) +2 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_argument` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_bite` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_breath` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_claw` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_fang` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_gaze` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_guard` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_insight` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_persuasion` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_reckoning` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_scale` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_tenderness` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_voice` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_weight` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_wisdom` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_wrath` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 
 ## DEJA COMPTE PAR CASCADE — 162 cas
 
@@ -156,7 +159,7 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_nevermore` | 250 | 77 | 173 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_reaver_of_the_mists` | 250 | 77 | 173 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 
-## COUT VENDEUR — 29 cas
+## COUT VENDEUR — 36 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
@@ -170,6 +173,7 @@ regardant si le vendeur propose un choix ou une liste.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `ardent_glorious` | 0 | 90 | 90 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `perfected_envoy` | 0 | 90 | 90 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `triumphant_hero` | 0 | 90 | 90 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
+| `mystic_clover` — Mystic Clover | `obsidian` | 0 | 90 | 90 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `obsidian_shard` — Obsidian Shard | `ardent_glorious` | 0 | 90 | 90 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `obsidian_shard` — Obsidian Shard | `triumphant_hero` | 0 | 90 | 90 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `gen2_claw_of_the_khan_ur` | 0 | 77 | 77 | amalgamated_rift_essence (recette), funerary_incense (vendeur), gift_of_fortune (recette) +5 autres |
@@ -188,8 +192,14 @@ regardant si le vendeur propose un choix ou une liste.
 | `obsidian_shard` — Obsidian Shard | `gen2_the_hms_divinity` | 0 | 77 | 77 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `obsidian_shard` — Obsidian Shard | `gen2_the_shining_blade` | 0 | 77 | 77 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `obsidian_shard` — Obsidian Shard | `gen2_verdarach` | 0 | 77 | 77 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_fang` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_flight` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_tail` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurene_s_wing` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `gen3_aurenes_rending` | 0 | 38 | 38 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `obsidian_shard` — Obsidian Shard | `legendary_relic` | 0 | 25 | 25 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
 | `obsidian_shard` — Obsidian Shard | `eikasia` | 0 | 18 | 18 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) +6 autres |
+| `mystic_clover` — Mystic Clover | `perfected_envoy` | 0 | 15 | 15 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur), unbound_wings (recette) |
 | `vision_crystal` — Vision Crystal | `ad_infinitum` | 0 | 1 | 1 | gift_of_adventure (vendeur), unbound_wings (recette) |
 

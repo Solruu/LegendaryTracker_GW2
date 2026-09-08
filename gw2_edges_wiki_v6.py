@@ -183,6 +183,28 @@ for r in json.load(open('gw2_wiki_vendor_costs_v1.json')):
         if c in edges[p]:
             if edges[p][c][0]!=q: conflits.append((p,c,edges[p][c],q))
         else: edges[p][c]=(q,'vendeur')
+# --- troisieme source : tables « Full material list » ---
+import gw2_parse_material_list_v1 as _P
+_sous_groupe = {o for g in (d.get('alt_groups') or {}).values()
+                for o in (g.get('options') or [])}
+_tab = 0
+for _page in sorted(_P.WIKI.glob('*.html')):
+    if _P._debut(_page.read_text(encoding='utf-8', errors='ignore')) < 0: continue
+    if _page.stem in _P.DOUBLES: continue
+    _brut = _P.aretes(_page)
+    _n1 = {e for _t, e, _q in _brut}
+    _n2 = {e: q for t, e, q in _brut if e in _n1 and t not in _n1}
+    for _t, _e, _q in _brut:
+        if _q is None: continue
+        if _t in _n2 and _n2[_t]:
+            if _q % _n2[_t]: continue
+            _q //= _n2[_t]
+        _pi, _ei = to_id(_t), to_id(_e)
+        if not _pi or not _ei or _pi == _ei: continue
+        if _ei in _sous_groupe: continue
+        if _ei in edges[_pi]: continue
+        edges[_pi][_ei] = (_q, 'table'); _tab += 1
+print('aretes venues des tables de materiaux:', _tab)
 print('promotions ecartees:',len(promotions))
 print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])

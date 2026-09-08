@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v238.json`. 567 ecarts sur 89 legendaires.
+Source : `gw2_sources_v239.json`. 570 ecarts sur 89 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -17,16 +17,17 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | legendaire | composants en ecart | somme des ecarts |
 |---|---:|---:|
 | `klobjarne_geirr` | 17 | 20400 |
+| `legendary_relic` | 5 | 12825 |
 | `transcendence` | 22 | 9758 |
 | `ad_infinitum` | 21 | 9207 |
 | `conflux` | 15 | 7687 |
 | `orrax_manifested` | 42 | 7334 |
-| `the_ascension` | 12 | 6688 |
-| `warbringer` | 11 | 6588 |
+| `warbringer` | 12 | 6938 |
+| `the_ascension` | 11 | 6588 |
 | `stella_radians` | 6 | 3516 |
 | `aetheric_anchor` | 10 | 2682 |
+| `obsidian` | 6 | 2400 |
 | `coalescence` | 7 | 2328 |
-| `obsidian` | 5 | 2094 |
 | `strife_unending` | 17 | 1386 |
 | `gen2_eureka` | 8 | 1382 |
 | `gen2_exordium` | 8 | 1382 |
@@ -74,6 +75,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_frostfang` | 4 | 527 |
 | `gen1_incinerator` | 4 | 527 |
 | `gen1_rodgort` | 4 | 527 |
+| `perfected_envoy` | 9 | 516 |
 | `gen1_the_juggernaut` | 4 | 477 |
 | `gen1_bolt` | 4 | 427 |
 | `gen1_meteorlogicus` | 4 | 427 |
@@ -81,7 +83,6 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_the_flameseeker_prophecies` | 4 | 427 |
 | `gen1_the_predator` | 4 | 427 |
 | `gen1_twilight` | 4 | 427 |
-| `perfected_envoy` | 8 | 426 |
 | `aurora` | 3 | 423 |
 | `gen3_aurenes_fang` | 4 | 404 |
 | `gen3_aurenes_guard` | 4 | 404 |
@@ -100,7 +101,6 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_kudzu` | 3 | 327 |
 | `gen1_quip` | 3 | 327 |
 | `gen1_the_moot` | 3 | 327 |
-| `legendary_relic` | 4 | 325 |
 | `ardent_glorious` | 3 | 270 |
 | `triumphant_hero` | 3 | 270 |
 | `legendary_sigil` | 3 | 90 |
@@ -110,17 +110,18 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 
 | legendaire | composant | actuelle | recettes | ecart |
 |---|---|---:|---:|---:|
+| `legendary_relic` | `pile_of_lucent_crystal` — Pile of Lucent Crystal | 18750 | 6250 | -12500 |
+| `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 9000 | 3000 | -6000 |
 | `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 9000 | 3000 | -6000 |
 | `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 9000 | 3000 | -6000 |
-| `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 9000 | 3000 | -6000 |
 | `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
 | `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
+| `transcendence` | `dragonite_ore` — Dragonite Ore | 3250 | 1000 | -2250 |
 | `transcendence` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1000 | -2250 |
 | `transcendence` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1000 | -2250 |
-| `transcendence` | `dragonite_ore` — Dragonite Ore | 3250 | 1000 | -2250 |
+| `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
-| `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `the_ascension` | `empyreal_fragment` — Empyreal Fragment | 3000 | 1000 | -2000 |
 | `the_ascension` | `bloodstone_dust` — Pile of Bloodstone Dust | 3000 | 1000 | -2000 |
 | `the_ascension` | `dragonite_ore` — Dragonite Ore | 3000 | 1000 | -2000 |
@@ -155,6 +156,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `klobjarne_geirr` | `darksteel_ingot` — Darksteel Ingot | 250 | 610 | +360 |
 | `obsidian` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 1500 | 1860 | +360 |
 | `coalescence` | `magnetite_shard` — Magnetite Shard | 550 | 200 | -350 |
+| `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | -350 |
 | `ad_infinitum` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 590 | 250 | -340 |
 | `gen2_claw_of_the_khan_ur` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
 | `gen2_flames_of_war` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
@@ -164,29 +166,27 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_the_hms_divinity` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
 | `gen2_the_shining_blade` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
 | `gen2_verdarach` | `mystic_coin` — Mystic Coin | 0 | 327 | +327 |
-| `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_astralaria` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
 | `gen2_astralaria` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_caladbolg` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_caladbolg` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_caladbolg` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_chuka_and_champawat` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_caladbolg` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_caladbolg` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_chuka_and_champawat` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
 | `gen2_chuka_and_champawat` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_chuka_and_champawat` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
 | `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_elegy` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_elegy` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_elegy` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_eordas_grip` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_eordas_grip` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_elegy` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_elegy` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_eordas_grip` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_eordas_grip` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_eordas_grip` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
 | `gen2_eureka` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_exordium` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
+| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
 | `gen2_exordium` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
 | `gen2_exordium` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
+| `gen2_exordium` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
