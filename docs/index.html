@@ -1714,7 +1714,8 @@ const SOURCES_DB = {
     "changelog_v202": "Trois correctifs apres validation d'Antoine dans l'interface. 1) L'onglet T6 plantait des qu'on depliait une ligne : « .includes is not a function ». farm_hubs.hubs[].lines est un objet indexe par palier depuis la refonte des foyers ({t5:[...], t6:[...]}) et le code le lisait encore comme un tableau plat. Corrige par un aplatissement explicite. Au meme endroit, no_hub est une LISTE et le code faisait no_hub.line === ... sur elle : l'avertissement « aucun foyer ne sert cette ligne » ne s'est jamais affiche depuis la refonte. Corrige aussi. 2) Eikasia n'affichait qu'un tiret la ou progress devait parler. Le bloc etait bien lu, mais servi depuis un cache d'avant : ACH_DEFS_SCHEMA n'avait pas ete incremente alors que la FORME de la charge changeait, et la signature de donnees ne couvre que meta_eligible et achievement_notes. Schema porte a 18, et les blocs progress entrent desormais dans la signature pour que le piege ne se represente pas. Le commentaire du fichier decrivait exactement cette erreur ; je l'ai commise quand meme. 3) Vision s'affichait en double. La cause immediate est de moi : en fusionnant les doublons en v201 j'ai aligne les cles de vision_1 et vision_2, or `key` est le discriminant qui decide si une collection alimente le rendu generique. Vision ayant son propre onglet, elle passait dans les deux. Les cles repassent a nul. RESTE : les huit collections vis_* portent des cles depuis leur migration et s'affichent donc elles aussi deux fois — cela precede mon intervention. Le doublon demande un arbitrage, decrit dans BACKLOG.md.",
     "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste.",
     "changelog_v204": "Douze cibles fantomes supprimees (huit gen2 : Tigris, Caladbolg, Eordas Grip, Itzel's Boon, Hope Scepter, Lorekeeper, Elegy, Reaver of the Mists — des noms de paliers de collection deja retires de legendaries en v182 mais dont les residus trainaient dans legendary_ids, armory_apiid_to_legid (7 IDs API orphelins) et les qty de gift_of_battle/gift_of_maguuma_mastery/mystic_tribute ; quatre gen3 aurenes_guard/wrath/reckoning/tenderness, jamais confirmees en jeu, residus dans mystic_clover/mystic_coin/gift_of_jade_mastery/draconic_tribute/crystalline_ingot). Confirme par Antoine : liste canonique de 16 armes Aurene's, toutes deja 16/16 en base. gen3_aurenes_fang fusionnee dans gen3_aurene_s_fang (meme arme, cle orpheline) : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 recuperes, cohérents avec les 11 autres gen3. Son gift_of_battle: 1 n'a pas de pareil sur les 15 autres gen3 et n'est pas repris, en attente d'arbitrage.",
-    "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurene_s_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source."
+    "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurene_s_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source.",
+    "changelog_v206": "Cause reelle du sous-comptage thermocatalytic_reagent / sur-comptage obsidian_shard sur Conflux, Transcendence, Warbringer, The Ascension : bloodstone_brick / dragonite_ingot / empyreal_star n'avaient AUCUNE arete vers thermocatalytic_reagent/obsidian_shard, alors que leurs propres pages wiki donnent chacune 10 Thermocatalytic Reagent + 2 Obsidian Shard par unite (verifie sur bloodstone_brick.html, dragonite_ingot.html, empyreal_star.html, recipe-box). Aretes ajoutees une seule fois au niveau des trois lingots (source unique) ; la cascade existante (lingots -> vision_crystal:10 chacun -> Gift of Conquering/Gift of Skirmishing:2 -> les 4 legendaires) calcule desormais 600 thermocatalytic_reagent et 120 obsidian_shard, conforme a CONFRONTATION.md. Les cles a plat directes (300 / 309) sont retirees pour ces 4 cibles, devenues redondantes. CORRECTIF EN COURS DE ROUTE : un premier essai avait ajoute vision_crystal en arete DIRECTE sur les 4 legendaires — faux, ca doublait Gift of Conquering/Gift of Skirmishing qui portaient deja vision_crystal:2 chacun (source : recette propre de Gift of Conquering, verifiee sur gift_of_conquering.html — 1 Legendary Spike + 4 Gift of Battle + 250 Memory of Battle + 2 Vision Crystal). Corrige avant commit, jamais pousse. 6 avertissements 'lecture colonne 3' attendus et verifies a la main (10 thermocatalytic / 2 obsidian par lingot ET 10 lingots / vision_crystal sont deux faits reels, coincidence de nombre, pas une erreur)."
   },
   "meta_events": {
     "vb": {
@@ -5686,33 +5687,33 @@ const SOURCES_DB = {
         "selachimorpha",
         "stella_radians",
         "strife_unending",
-        "the_ascension",
-        "transcendence"
+        "bloodstone_brick",
+        "dragonite_ingot",
+        "empyreal_star"
       ],
       "qty": {
         "perfected_envoy__per_piece": 50,
-        "the_ascension": 309,
         "ad_infinitum": 339,
         "selachimorpha": 238,
         "obsidian__per_piece": 50,
         "endless_summer": 33,
         "vision": 321,
         "aurora": 250,
-        "conflux": 309,
-        "warbringer": 309,
         "coalescence": 249,
         "aetheric_anchor": 323,
         "klobjarne_geirr": 353,
         "orrax_manifested": 220,
         "stella_radians": 249,
         "strife_unending": 146,
-        "transcendence": 309,
         "fulgurite": 1,
         "gift_of_mastery": 250,
         "gift_of_runes": 50,
         "gift_of_sigils": 75,
         "gift_of_castoran_mastery": 250,
-        "gift_of_infused_gems": 250
+        "gift_of_infused_gems": 250,
+        "bloodstone_brick": 2,
+        "dragonite_ingot": 2,
+        "empyreal_star": 2
       },
       "farmable": true,
       "sources": [
@@ -6221,25 +6222,25 @@ const SOURCES_DB = {
         "pristine_mist_essence",
         "selachimorpha",
         "stella_radians",
-        "the_ascension",
-        "transcendence"
+        "bloodstone_brick",
+        "dragonite_ingot",
+        "empyreal_star"
       ],
       "qty": {
-        "conflux": 300,
-        "warbringer": 300,
         "vision": 360,
         "ad_infinitum": 580,
         "aetheric_anchor": 250,
         "klobjarne_geirr": 1080,
         "selachimorpha": 800,
         "stella_radians": 250,
-        "the_ascension": 300,
-        "transcendence": 300,
         "gift_of_research": 250,
         "deldrimor_steel_spear_head": 50,
         "large_spiritwood_haft": 50,
         "lump_of_mithrillium": 10,
-        "pristine_mist_essence": 10
+        "pristine_mist_essence": 10,
+        "bloodstone_brick": 10,
+        "dragonite_ingot": 10,
+        "empyreal_star": 10
       },
       "farmable": true,
       "sources": [
