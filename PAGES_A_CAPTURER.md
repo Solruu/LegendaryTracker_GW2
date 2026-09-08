@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v246.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v247.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -30,7 +30,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 - `gen3_aurenes_tenderness`
 - `gen3_aurenes_wrath`
 
-## 0 — 26 trous de l'arbre — LA PRIORITÉ
+## 0 — 28 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -40,6 +40,8 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | page wiki | composants qui en dépendent |
 |---|---:|
 | `Mystic Clover — Forge mystique` | 4 |
+| `Mystic Clover — Lyhr / Lucirae` | 4 |
+| `Mystic Clover — Miyani / préposés à la Forge` | 4 |
 | `Mystic Clover — vendeur Fractales` | 4 |
 | `Mystic Clover — vendeur PvP` | 4 |
 | `Mystic Clover — vendeur Raids` | 4 |
@@ -91,7 +93,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | `WvW Skirmish Claim Ticket` | 2 |
 | `Shard of the Dark Arts` | 1 |
 
-## 3 — 36 composants sans apiId ni page
+## 3 — 38 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -101,6 +103,8 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Astral Acclaim` |
 | `Mystic Clover — Forge mystique` |
 | `Mystic Clover — Nouvel An lunaire` |
+| `Mystic Clover — Lyhr / Lucirae` |
+| `Mystic Clover — Miyani / préposés à la Forge` |
 | `Mystic Clover — piste de récompenses` |
 | `Mystic Clover — vendeur Fractales` |
 | `Mystic Clover — vendeur PvP` |

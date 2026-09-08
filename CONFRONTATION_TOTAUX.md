@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v246.json`, 926 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v247.json`, 926 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots

@@ -22,6 +22,29 @@ Consequence en cascade : le trefle ne mangeant plus de pieces mystiques,
 l'arete `mystic_coin <- mystic_tribute 250` se pose enfin, dix-sept cles a plat
 disparaissent et les huit gen2 sans collection passent de zero a 250.
 
+**Regle le 08/09 : Conflux n'avait pas besoin d'arbitrage.** La page porte une
+section « Required currencies » qui donne ligne par ligne 1 850 tickets,
+1 750 memoires, **1 500 insignes**, **750 temoignages de Castoran**, 250 eclats
+de gloire et 100 eclats d'esprit. La chaine donnait deja les quatre premiers au
+nombre pres ; c'est le JSX qui portait 750 et 250. Corrige en v185, qty_conflict
+leves. Je n'avais pas lu ce tableau — j'avais lu une fenetre de 160 caracteres
+autour du mot « Badge ».
+
+**Ouvert et chiffre : la Mist Band (Infused) s'achete de trois facons et la
+donnee les compte LES TROIS.** 100 reliques de fractale prealables + 2 matrices,
+ou 150 eclats de gloire ascendants + 170 eclats de gloire, ou 350 tickets
+d'escarmouche + 250 memoires. D'ou 420 eclats de gloire affiches contre 250 au
+wiki, et 80 eclats d'esprit contre 100. Meme motif que le trefle, meme
+traitement — mais l'arithmetique des tickets ne se referme pas : le wiki annonce
+1 850 HORS option McM et nos 1 850 incluent deja les 350 de cette option. A
+elucider avant de poser un defaut.
+
+**Trou d'outillage : le parseur de tables ne lit que TROIS colonnes.** Conflux
+et Warbringer en ont quatre (« Quaternary components »), donc leurs tables ne
+sont pas confrontees du tout — c'est pourquoi les 420 eclats de gloire n'ont
+jamais ete signales. Dix-sept pages a table ne sont rattachees a aucun
+legendaire, ce chiffre en fait probablement partie.
+
 **Ce qui reste a trancher, par ordre d'enjeu :**
 
 1. **Conflux, deux ecarts declares** (`qty_conflict`, 08/09) : la chaine donne

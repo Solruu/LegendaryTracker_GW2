@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v246",
-  "last_updated": "2026-09-07",
+  "version": "v247",
+  "last_updated": "2026-09-08",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -4463,21 +4463,13 @@
    ],
    "verified": true,
    "checked": "2026-09-08",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Warbringer : Commander's Compendium, prerequis du palier Commander's Wings of War, coute 250 insignes",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Warbringer : Commander's Compendium, prerequis du palier Commander's Wings of War, coute 250 insignes | wiki Conflux, section « Required currencies » : 1 500 insignes et 750 temoignages de Castoran, sans reserve sur la version Infused",
    "needed_for": [
     "certificate_of_honor",
     "clover_vendor_wvw",
     "commanders_wings_of_war",
     "essence_of_strategy"
-   ],
-   "qty_conflict": {
-    "conflux": {
-     "jsx": 750,
-     "chaine": 1500,
-     "depuis": "2026-09-08",
-     "note": "La chaine donne 1500, le JSX affiche 750. La page Conflux ecrit « 1,500 Badge of Honor » mais dans une phrase qui mentionne aussi la version Infused : le 750 pourrait etre le Conflux seul et le 1500 le total avec l'infusion. Non tranche : demande a Antoine, qui peut lire le cout en jeu."
-    }
-   }
+   ]
   },
   "ascended_shard_of_glory": {
    "name": "Ascended Shards of Glory",
@@ -4945,6 +4937,8 @@
     "aetheric_anchor",
     "armor_perfected_envoy",
     "clover_forge",
+    "clover_lyhr",
+    "clover_miyani",
     "endless_summer",
     "fulgurite",
     "gift_of_castoran_mastery",
@@ -4985,7 +4979,9 @@
     "gift_of_sigils": 75,
     "gift_of_castoran_mastery": 250,
     "gift_of_infused_gems": 250,
-    "clover_forge": 3.23
+    "clover_forge": 3.23,
+    "clover_miyani": 3,
+    "clover_lyhr": 3
    },
    "farmable": true,
    "sources": [
@@ -5733,6 +5729,8 @@
     "amalgamated_rift_essence",
     "banner_pennon",
     "clover_forge",
+    "clover_lyhr",
+    "clover_miyani",
     "clover_vendor_fractal",
     "clover_vendor_pvp",
     "clover_vendor_raid",
@@ -5816,7 +5814,9 @@
     "clover_vendor_fractal": 2,
     "clover_vendor_raid": 2,
     "clover_vendor_pvp": 2,
-    "clover_vendor_wvw": 2
+    "clover_vendor_wvw": 2,
+    "clover_miyani": 5,
+    "clover_lyhr": 5
    },
    "kind": "acquire",
    "best": "salvage",
@@ -6841,6 +6841,8 @@
    "needed_for": [
     "aetheric_anchor",
     "clover_forge",
+    "clover_lyhr",
+    "clover_miyani",
     "clover_vendor_fractal",
     "clover_vendor_pvp",
     "clover_vendor_raid",
@@ -6984,7 +6986,9 @@
     "clover_vendor_raid": 2,
     "clover_vendor_pvp": 2,
     "clover_vendor_wvw": 2,
-    "mystic_tribute": 250
+    "mystic_tribute": 250,
+    "clover_miyani": 3,
+    "clover_lyhr": 3
    },
    "kind": "acquire",
    "best": "vendor",
@@ -10324,7 +10328,9 @@
     "bloodstone_shard": 200,
     "clover_vendor_fractal": 2,
     "clover_vendor_raid": 2,
-    "clover_vendor_pvp": 2
+    "clover_vendor_pvp": 2,
+    "clover_miyani": 3,
+    "clover_lyhr": 3
    },
    "sources": [
     {
@@ -10346,6 +10352,8 @@
    "needed_for": [
     "augurs_stone",
     "bloodstone_shard",
+    "clover_lyhr",
+    "clover_miyani",
     "clover_vendor_fractal",
     "clover_vendor_pvp",
     "clover_vendor_raid"
@@ -10637,21 +10645,13 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+   "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Conflux, section « Required currencies » : 1 500 insignes et 750 temoignages de Castoran, sans reserve sur la version Infused",
    "needed_for": [
     "certificate_of_heroics",
     "essence_of_animosity",
     "gift_of_the_mist_warrior",
     "strife_unending"
-   ],
-   "qty_conflict": {
-    "conflux": {
-     "jsx": 250,
-     "chaine": 750,
-     "depuis": "2026-09-08",
-     "note": "La chaine donne 750 (500 par l'Essence of Animosity + 250 par le Certificate of Heroics), le JSX affiche 250. La recette de Conflux exige des temoignages de JADE ; les Castoran sont suivis en parallele depuis la note v50 en attendant l'alignement d'ArenaNet. Le 750 peut donc etre le cout de la variante Castoran et le 250 celui que la recette actuelle demande. Non tranche."
-    }
-   }
+   ]
   },
   "gaeting_crystal": {
    "name": "Gaeting Crystal",
@@ -20319,6 +20319,65 @@
      }
     ]
    }
+  },
+  "clover_miyani": {
+   "name": "Mystic Clover — Miyani / préposés à la Forge",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit par trèfle. Plafond de 10 par semaine, commun à tous les préposés.",
+      "en": "3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards per clover. Combined weekly limit of 10 across all attendants."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition ; confirme par la table de Conflux (« Bought from Lyhr for a total of 231 + 385 + 231 + 231 », soit 77 x 3, 5, 3, 3)",
+   "checked": "2026-09-08",
+   "verified": "prix lu sur les liens du HTML, confirme par Antoine et par une seconde page",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Miyani et préposés à la Forge mystique",
+       "en": "Miyani and Mystic Forge Attendants"
+      },
+      "period": "week",
+      "cap": 10,
+      "cost": {
+       "fr": "3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit par trèfle. Plafond de 10 par semaine, commun à tous les préposés.",
+       "en": "3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards per clover. Combined weekly limit of 10 across all attendants."
+      },
+      "verified": true,
+      "checked": "2026-09-08",
+      "ref": "wiki:Mystic_Clover — section Acquisition"
+     }
+    ]
+   }
+  },
+  "clover_lyhr": {
+   "name": "Mystic Clover — Lyhr / Lucirae",
+   "kind": "acquisition",
+   "needed_for": [
+    "mystic_clover"
+   ],
+   "qty": {},
+   "sources": [
+    {
+     "type": "choice",
+     "tip": {
+      "fr": "Même prix que Miyani — 3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit — mais SANS plafond. C'est la voie payante à privilégier dès qu'on dépasse 10 trèfles par semaine.",
+      "en": "Same price as Miyani — 3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards — but with NO cap. The paid route to prefer beyond 10 clovers a week."
+     }
+    }
+   ],
+   "ref": "wiki Mystic Clover — section Acquisition ; confirme par la table de Conflux (« Bought from Lyhr for a total of 231 + 385 + 231 + 231 », soit 77 x 3, 5, 3, 3)",
+   "checked": "2026-09-08",
+   "verified": "prix lu sur les liens du HTML, confirme par Antoine et par une seconde page"
   }
  },
  "enchaînements_recommandés": {
@@ -66916,6 +66975,8 @@
    "options": [
     "clover_reward_track",
     "clover_forge",
+    "clover_miyani",
+    "clover_lyhr",
     "clover_vendor_fractal",
     "clover_vendor_raid",
     "clover_vendor_pvp",
@@ -66932,8 +66993,8 @@
     "en": "Mystic Clovers — how you get them"
    },
    "note": {
-    "fr": "Le trèfle n'a pas un coût, il a des voies. Par défaut les pistes de récompenses, qui ne coûtent aucun matériau : les totaux ci-dessous n'en portent donc rien. Choisis une autre voie et son prix remonte dans l'arbre. Miyani et Lyhr en vendent aussi, à un prix que la capture ne permet pas de lire.",
-    "en": "A clover has no cost, it has routes. Reward tracks by default, which cost no materials, so the totals below carry none. Pick another route and its price flows back up the tree. Miyani and Lyhr sell them too, at a price the capture does not let us read."
+    "fr": "Le trèfle n'a pas un coût, il a des voies. Par défaut les pistes de récompenses, qui ne coûtent aucun matériau : les totaux ci-dessous n'en portent donc rien. Choisis une autre voie et son prix remonte dans l'arbre. Miyani et Lyhr vendent au même prix ; seul Miyani est plafonné. La cadence de chaque voie est portée par la voie elle-même, pas par cette note.",
+    "en": "A clover has no cost, it has routes. Reward tracks by default, which cost no materials, so the totals below carry none. Pick another route and its price flows back up the tree. Miyani and Lyhr sell at the same price; only Miyani is capped. Each route carries its own cadence, not this note."
    },
    "ref": "wiki Mystic Clover — section Acquisition"
   }
