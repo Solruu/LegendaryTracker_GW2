@@ -713,6 +713,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `vial_of_quicksilver.html` | Vial of Quicksilver | article complet | 2026-09-07 |
 | `vial_of_titan_melted_liquid_obsidian.html` | Vial of Titan Melted Liquid Obsidian | article complet | 2026-09-07 |
 | `wolf_statue.html` | Wolf Statue | article complet | 2026-09-07 |
+| `gift_of_rays.html` | Gift of Rays | article complet | 2026-09-08 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -763,6 +764,9 @@ reçues, dont 5 recaptures — dates mises à jour, aucune ligne dupliquée. Une
 redirection signalée par le manifeste : `Valkyrie Bearkin War Helm (heavy)`
 arrive sur `Valkyrie Bearkin War Helm`, la page ne distingue pas les poids.
 **642 fichiers réels, 642 lignes, aucun écart.**
+
+Vérification du 08/09/2026 (lot 11) : `Gift of Rays`, capture unique demandée
+pour trancher les quatre orbes. **643 fichiers réels, 643 lignes, aucun écart.**
 
 ## Manquent encore
 

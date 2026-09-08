@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v232",
+    "version": "v234",
     "last_updated": "2026-09-07",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -3282,7 +3282,10 @@ const SOURCES_DB = {
         "gift_of_castoran_mastery",
         "gift_of_desert_mastery",
         "gift_of_draconic_mastery",
+        "gift_of_infused_gems",
+        "gift_of_jade_mastery",
         "gift_of_janthir_wilds",
+        "gift_of_maguuma_mastery",
         "gift_of_mastery",
         "gift_of_shadows_orrax",
         "gift_of_the_elders"
@@ -3301,38 +3304,10 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen2_astralaria": 1,
-        "gen2_hope": 1,
-        "gen2_nevermore": 1,
-        "gen2_chuka_and_champawat": 1,
-        "gen2_tigris": 1,
-        "gen2_caladbolg": 1,
         "gen2_eureka": 1,
         "gen2_shooshadoo": 1,
-        "gen2_eordas_grip": 1,
-        "gen2_itzels_boon": 1,
         "gen2_exordium": 1,
-        "gen2_hope_scepter": 1,
-        "gen2_lorekeeper": 1,
-        "gen2_elegy": 1,
         "gen2_xiuquatl": 1,
-        "gen2_reaver_of_the_mists": 1,
-        "gen3_aurenes_fang": 1,
-        "gen3_aurenes_claw": 1,
-        "gen3_aurenes_bite": 1,
-        "gen3_aurenes_weight": 1,
-        "gen3_aurenes_gaze": 1,
-        "gen3_aurenes_insight": 1,
-        "gen3_aurenes_argument": 1,
-        "gen3_aurenes_guard": 1,
-        "gen3_aurenes_persuasion": 1,
-        "gen3_aurenes_voice": 1,
-        "gen3_aurenes_wrath": 1,
-        "gen3_aurenes_reckoning": 1,
-        "gen3_aurenes_scale": 1,
-        "gen3_aurenes_wisdom": 1,
-        "gen3_aurenes_breath": 1,
-        "gen3_aurenes_tenderness": 1,
         "the_ascension": 1,
         "ad_infinitum": 1,
         "gift_of_arid_mastery": 1,
@@ -3342,7 +3317,10 @@ const SOURCES_DB = {
         "gift_of_janthir_wilds": 1,
         "gift_of_mastery": 1,
         "gift_of_shadows_orrax": 1,
-        "gift_of_the_elders": 1
+        "gift_of_the_elders": 1,
+        "gift_of_infused_gems": 1,
+        "gift_of_jade_mastery": 1,
+        "gift_of_maguuma_mastery": 1
       },
       "kind": "acquire",
       "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026.",
@@ -8990,10 +8968,12 @@ const SOURCES_DB = {
       "apiId": 100569,
       "needed_for": [
         "astral_ward_armor",
+        "gift_of_rays",
         "oneiros_spun_armor"
       ],
       "qty": {
-        "obsidian__onetime": 12
+        "obsidian__onetime": 12,
+        "gift_of_rays": 10
       },
       "farmable": true,
       "recipe": "Craft 400 : 1× Amalgamated Rift Essence + 1× Mystic Clover",
@@ -16611,22 +16591,10 @@ const SOURCES_DB = {
       ],
       "qty": {
         "funerary_incense": 1,
-        "gen2_astralaria": 250,
-        "gen2_hope": 250,
-        "gen2_nevermore": 250,
-        "gen2_chuka_and_champawat": 250,
-        "gen2_tigris": 250,
-        "gen2_caladbolg": 250,
         "gen2_eureka": 250,
         "gen2_shooshadoo": 250,
-        "gen2_eordas_grip": 250,
-        "gen2_itzels_boon": 250,
         "gen2_exordium": 250,
-        "gen2_hope_scepter": 250,
-        "gen2_lorekeeper": 250,
-        "gen2_elegy": 250,
         "gen2_xiuquatl": 250,
-        "gen2_reaver_of_the_mists": 250,
         "gen3_aurenes_fang": 250,
         "gen3_aurenes_claw": 250,
         "gen3_aurenes_bite": 250,
@@ -16643,7 +16611,8 @@ const SOURCES_DB = {
         "gen3_aurenes_wisdom": 250,
         "gen3_aurenes_breath": 250,
         "gen3_aurenes_tenderness": 250,
-        "gift_of_draconic_mastery": 1
+        "gift_of_draconic_mastery": 1,
+        "gift_of_maguuma_mastery": 250
       },
       "verified": true,
       "checked": "2026-08-27",
@@ -16862,6 +16831,7 @@ const SOURCES_DB = {
         "unicorn_statue": 100
       },
       "needed_for": [
+        "gift_of_infused_gems",
         "unicorn_statue"
       ],
       "sources": [
@@ -18559,13 +18529,12 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_color": 100,
         "gift_of_music": 100,
-        "unicorn_statue": 100,
-        "gift_of_rays": 250
+        "unicorn_statue": 100
       },
       "needed_for": [
         "gift_of_color",
+        "gift_of_infused_gems",
         "gift_of_music",
-        "gift_of_rays",
         "unicorn_statue"
       ],
       "sources": [
@@ -19083,11 +19052,9 @@ const SOURCES_DB = {
       "name": "Emerald Orb",
       "kind": "acquire",
       "farmable": true,
-      "qty": {
-        "gift_of_rays": 250
-      },
+      "qty": {},
       "needed_for": [
-        "gift_of_rays"
+        "gift_of_infused_gems"
       ],
       "sources": [
         {
@@ -19681,11 +19648,9 @@ const SOURCES_DB = {
       "name": "Ruby Orb",
       "kind": "acquire",
       "farmable": true,
-      "qty": {
-        "gift_of_rays": 250
-      },
+      "qty": {},
       "needed_for": [
-        "gift_of_rays"
+        "gift_of_infused_gems"
       ],
       "sources": [
         {
@@ -19701,11 +19666,9 @@ const SOURCES_DB = {
       "name": "Sapphire Orb",
       "kind": "acquire",
       "farmable": true,
-      "qty": {
-        "gift_of_rays": 250
-      },
+      "qty": {},
       "needed_for": [
-        "gift_of_rays"
+        "gift_of_infused_gems"
       ],
       "sources": [
         {
@@ -20153,6 +20116,23 @@ const SOURCES_DB = {
           "tip": {
             "fr": null,
             "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+          }
+        }
+      ]
+    },
+    "beryl_orb": {
+      "name": "Beryl Orb",
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "gift_of_infused_gems"
+      ],
+      "sources": [
+        {
+          "type": "acquire",
+          "tip": {
+            "fr": null,
+            "en": "Core game gemstone — crafted by jewelers or bought on the Trading Post, like the five other orbs."
           }
         }
       ]
@@ -66706,6 +66686,30 @@ const SOURCES_DB = {
         "en": "The Mystic Forge recipe asks for a single mastery gift. Astralaria, HOPE, Nevermore and Chuka and Champawat only accept Maguuma; the other twelve leave the choice open."
       },
       "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme"
+    },
+    "gemmes_infusees": {
+      "qty": 250,
+      "options": [
+        "beryl_orb",
+        "chrysocola_orb",
+        "emerald_orb",
+        "opal_orb",
+        "ruby_orb",
+        "sapphire_orb"
+      ],
+      "default": "ruby_orb",
+      "targets": [
+        "gift_of_infused_gems"
+      ],
+      "label": {
+        "fr": "Gemme du don de gemmes infusées — une seule des six",
+        "en": "Gemstone for the Gift of Infused Gems — one of the six"
+      },
+      "note": {
+        "fr": "La page indique que n'importe quelle gemme du jeu de base convient : six recettes, une par couleur. Choisis celle que tu as en stock ou la moins chère au comptoir.",
+        "en": "The page states any core game gemstone works: six recipes, one per colour. Pick whichever you have in stock, or the cheapest on the Trading Post."
+      },
+      "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes"
     }
   }
 };

@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v232.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v234.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -60,13 +60,14 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | `Inscribed Shard` | 1 |
 | `PvP League Ticket` | 1 |
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 8 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Beryl Orb` |
 | `Gift of Fractals` |
 | `Gift of Magical / Mighty Prosperity` |
 | `Legendary Shards (Gen2)` |

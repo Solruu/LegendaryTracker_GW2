@@ -1136,17 +1136,16 @@ Trois familles, qui ne se tranchent pas de la même façon :
 Deux composants portent la moitié du lot : `glob_of_ectoplasm` (47) et
 `amalgamated_gemstone` (43).
 
-### ④ `alt_groups` — un seul groupe peuplé sur quatre identifiés
+### ④ `alt_groups` — deux groupes peuplés sur quatre identifiés
 
 La structure `alt_groups` existe et calcule (voir `gw2_alt_groups_v1.py`, règle
 d'audit `check_alt_groups`). Un seul groupe y est versé : `gen2_mastery`.
 
 Trois autres relèvent du même mécanisme et attendent :
 
-- **Les six orbes du Gift of Infused Gems.** `gift_of_rays` porte aujourd'hui
-  250 de **quatre** orbes différents, ce qui a toutes les allures du même
-  défaut — la recette n'en demande qu'un. **Sa page n'est pas au dépôt**, et on
-  ne devine pas un coût. À capturer : `Gift of Rays`.
+- ~~Les six orbes du Gift of Infused Gems~~ — **fait**. La page capturée le
+  08/09 tranche : Gift of Rays consomme **un** Gift of Infused Gems, lequel
+  consomme 250 unités d'**une** gemme. Groupe `gemmes_infusees`.
 - **Eternity** — Sunrise + Twilight, ou leurs Memories.
 - **Les lodestones** — Bottle of Elonian Wine, ou Mystic Binding Agent.
 
