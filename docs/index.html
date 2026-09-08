@@ -829,38 +829,25 @@ const SOURCES_DB = {
       "gen1_twilight",
       "gen1_weapon_generic",
       "gen2_astralaria",
-      "gen2_caladbolg",
       "gen2_chuka_and_champawat",
-      "gen2_elegy",
-      "gen2_eordas_grip",
       "gen2_eureka",
       "gen2_exordium",
       "gen2_hope",
-      "gen2_hope_scepter",
-      "gen2_itzels_boon",
-      "gen2_lorekeeper",
       "gen2_nevermore",
-      "gen2_reaver_of_the_mists",
       "gen2_shooshadoo",
-      "gen2_tigris",
       "gen2_weapon_generic",
       "gen2_xiuquatl",
       "gen3_aurenes_argument",
       "gen3_aurenes_bite",
       "gen3_aurenes_breath",
       "gen3_aurenes_claw",
-      "gen3_aurenes_fang",
       "gen3_aurenes_gaze",
-      "gen3_aurenes_guard",
       "gen3_aurenes_insight",
       "gen3_aurenes_persuasion",
-      "gen3_aurenes_reckoning",
       "gen3_aurenes_scale",
-      "gen3_aurenes_tenderness",
       "gen3_aurenes_voice",
       "gen3_aurenes_weight",
       "gen3_aurenes_wisdom",
-      "gen3_aurenes_wrath",
       "gen3_weapon_generic",
       "klobjarne_geirr",
       "legendary_relic",
@@ -982,38 +969,17 @@ const SOURCES_DB = {
       "74332": [
         "gen2_chuka_and_champawat"
       ],
-      "74326": [
-        "gen2_tigris"
-      ],
-      "74408": [
-        "gen2_caladbolg"
-      ],
       "74328": [
         "gen2_eureka"
       ],
       "74330": [
         "gen2_shooshadoo"
       ],
-      "74331": [
-        "gen2_eordas_grip"
-      ],
-      "74411": [
-        "gen2_itzels_boon"
-      ],
       "74334": [
         "gen2_exordium"
       ],
-      "84634": [
-        "gen2_lorekeeper"
-      ],
-      "84535": [
-        "gen2_elegy"
-      ],
       "84536": [
         "gen2_xiuquatl"
-      ],
-      "84537": [
-        "gen2_reaver_of_the_mists"
       ],
       "96937": [
         "gen3_aurenes_rending"
@@ -1746,7 +1712,8 @@ const SOURCES_DB = {
     "changelog_v200": "Passe 3 des chantiers hors armes, 17 pages. 57 conseils, 10 blocs unlock, 18 renvois component sur les six collections Visions of. Les conseils non verifies tombent a 14. Les quatre Path of the Ascension rejoignent meta_eligible : ce sont des meta sur un pool de succes PvP, 11 exiges sur 11 a 12 eligibles, pas des collections d'objets. L'audit a d'abord refuse le push parce que j'avais ecrit les entrees en [null, nom] — la page de categorie PvP n'expose pas les identifiants. Ils sont resolus par nom contre gw2_achievements_ref.json, les 47 sans exception. War Eternal recoupe : 18 contre 18, nom pour nom. C'est la sixieme meta verifiee sur six, apres les cinq de la passe 2 — meta_eligible n'a pas bouge d'une ligne. Vision I reste sans items a juste titre : c'est un meta sur ses six sous-collections Visions of, deja portees par subcollections et desormais toutes documentees. Vision II est le seul cas ou la structure ne suit pas, et il est SIGNALE, pas force : 20 sanctuaires exiges sur 24, mais un sanctuaire de maitrise est un point de carte sans identifiant de succes, donc meta_eligible ne peut pas l'accueillir, et le succes 4771 n'expose aucun bit. Le champ pool_a_modeliser dit ou vit la liste et ce qu'il faut decider.",
     "changelog_v201": "Deux corrections, dont une des miennes. 1) Le champ pool_a_modeliser pose en v200 sur Vision II est RETIRE : il etait faux. J'avais annonce que les 24 sanctuaires n'avaient pas de structure d'accueil ; ils etaient deja la, sur vision_2, avec carte, point de passage et code de discussion. Je regardais l'entree vide du doublon. 2) Ce doublon est la vraie trouvaille. Vision portait DEUX entrees par succes : vision_1 et vis_meta_1 sur le 4762, vision_2 et vis_meta_2 sur le 4771. Les premieres avaient les champs editoriaux — note de deblocage, recompense, sous-collections, les 24 sanctuaires ; les secondes n'avaient que les bits de l'API et le total. Aucun conflit de valeur, donc rien ne se contredisait : la moitie de l'information etait juste rattachee a l'entree que personne ne lisait. Fusionnees, les pauvres supprimees. Regle d'audit v28 : deux collections d'une meme legendaire ne partagent pas un identifiant. C'est le motif de common_required et des listes plates d'armes, une troisieme fois. RESTE, ET C'EST DU JSX : Vision porte une TROISIEME copie de ses donnees editoriales, codee en dur dans le tracker ligne 1077 — collections.vision_1, collections.vision_2 et le tableau VISIONS_OF. L'onglet Vision rend cette copie, pas les sources. Les six collections Visions of documentees en passe 3, 42 etapes avec leurs conseils wiki, ne s'affichent donc nulle part. C'est le premier point de la passe JSX finale. PASSE JSX FAITE — tracker v179. Quatre points. 1) Composant FieldTip : les 259 how_jsx s'affichent enfin, en italique sous le conseil wiki, aux trois endroits ou une etape est rendue. L'avertissement « champ editorial jamais rendu » de l'audit a disparu. 2) progress se greffe sur counterNoSteps, le mecanisme qui existait deja : au lieu d'alerter « compteur sans liste d'etapes, a signaler », le tracker dit ce qui se compte — 150 poussieres fractallines, 25 krait — et precise que le surplus d'Infinite Recursion est perdu. Meme chemin, pas de branche. 3) VISIONS_OF n'est plus code en dur : le tableau ne garde que la cle de progression, qui vient de la synchro API et n'a pas d'equivalent cote sources, et l'id du succes qui fait le pont. Les six collections deviennent depliables et montrent leurs 42 etapes avec conseils wiki et conseils de terrain. 4) LEGENDARIES.vision.collections est vide de son contenu editorial, la troisieme copie. La cle elle-meme est CONSERVEE : elle sert de drapeau ligne 856, « !T.collections » masque la liste generique de succes. La supprimer aurait fait reapparaitre un doublon d'affichage. A renommer un jour, mais la condition touche d'autres legendaires. meta_eligible n'a rien demande : il etait deja cable et generique, les quatre Path of the Ascension sont reprises telles quelles, et la signature de donnees du cache invalide toute seule.",
     "changelog_v202": "Trois correctifs apres validation d'Antoine dans l'interface. 1) L'onglet T6 plantait des qu'on depliait une ligne : « .includes is not a function ». farm_hubs.hubs[].lines est un objet indexe par palier depuis la refonte des foyers ({t5:[...], t6:[...]}) et le code le lisait encore comme un tableau plat. Corrige par un aplatissement explicite. Au meme endroit, no_hub est une LISTE et le code faisait no_hub.line === ... sur elle : l'avertissement « aucun foyer ne sert cette ligne » ne s'est jamais affiche depuis la refonte. Corrige aussi. 2) Eikasia n'affichait qu'un tiret la ou progress devait parler. Le bloc etait bien lu, mais servi depuis un cache d'avant : ACH_DEFS_SCHEMA n'avait pas ete incremente alors que la FORME de la charge changeait, et la signature de donnees ne couvre que meta_eligible et achievement_notes. Schema porte a 18, et les blocs progress entrent desormais dans la signature pour que le piege ne se represente pas. Le commentaire du fichier decrivait exactement cette erreur ; je l'ai commise quand meme. 3) Vision s'affichait en double. La cause immediate est de moi : en fusionnant les doublons en v201 j'ai aligne les cles de vision_1 et vision_2, or `key` est le discriminant qui decide si une collection alimente le rendu generique. Vision ayant son propre onglet, elle passait dans les deux. Les cles repassent a nul. RESTE : les huit collections vis_* portent des cles depuis leur migration et s'affichent donc elles aussi deux fois — cela precede mon intervention. Le doublon demande un arbitrage, decrit dans BACKLOG.md.",
-    "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste."
+    "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste.",
+    "changelog_v204": "Douze cibles fantomes supprimees (huit gen2 : Tigris, Caladbolg, Eordas Grip, Itzel's Boon, Hope Scepter, Lorekeeper, Elegy, Reaver of the Mists — des noms de paliers de collection deja retires de legendaries en v182 mais dont les residus trainaient dans legendary_ids, armory_apiid_to_legid (7 IDs API orphelins) et les qty de gift_of_battle/gift_of_maguuma_mastery/mystic_tribute ; quatre gen3 aurenes_guard/wrath/reckoning/tenderness, jamais confirmees en jeu, residus dans mystic_clover/mystic_coin/gift_of_jade_mastery/draconic_tribute/crystalline_ingot). Confirme par Antoine : liste canonique de 16 armes Aurene's, toutes deja 16/16 en base. gen3_aurenes_fang fusionnee dans gen3_aurene_s_fang (meme arme, cle orpheline) : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 recuperes, cohérents avec les 11 autres gen3. Son gift_of_battle: 1 n'a pas de pareil sur les 15 autres gen3 et n'est pas repris, en attente d'arbitrage."
   },
   "meta_events": {
     "vb": {
@@ -3215,19 +3182,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen2_tigris": 1,
-        "gen2_caladbolg": 1,
-        "gen2_eordas_grip": 1,
-        "gen2_itzels_boon": 1,
-        "gen2_hope_scepter": 1,
-        "gen2_lorekeeper": 1,
-        "gen2_elegy": 1,
-        "gen2_reaver_of_the_mists": 1,
-        "gen3_aurenes_fang": 1,
-        "gen3_aurenes_guard": 1,
-        "gen3_aurenes_wrath": 1,
-        "gen3_aurenes_reckoning": 1,
-        "gen3_aurenes_tenderness": 1,
         "the_ascension": 1,
         "ad_infinitum": 1,
         "gift_of_conquering": 4,
@@ -6735,22 +6689,17 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen3_aurenes_fang": 39,
         "gen3_aurenes_claw": 39,
         "gen3_aurenes_bite": 39,
         "gen3_aurenes_weight": 39,
         "gen3_aurenes_gaze": 39,
         "gen3_aurenes_insight": 39,
         "gen3_aurenes_argument": 39,
-        "gen3_aurenes_guard": 39,
         "gen3_aurenes_persuasion": 39,
         "gen3_aurenes_voice": 39,
-        "gen3_aurenes_wrath": 39,
-        "gen3_aurenes_reckoning": 39,
         "gen3_aurenes_scale": 39,
         "gen3_aurenes_wisdom": 39,
         "gen3_aurenes_breath": 39,
-        "gen3_aurenes_tenderness": 39,
         "perfected_envoy__per_piece": 15,
         "aetheric_anchor": 100,
         "obsidian__per_piece": 9,
@@ -6769,7 +6718,8 @@ const SOURCES_DB = {
         "gift_of_sigils": 30,
         "gift_of_war_prosperity": 15,
         "mystic_tribute": 77,
-        "draconic_tribute": 38
+        "draconic_tribute": 38,
+        "gen3_aurene_s_fang": 39
       },
       "kind": "acquire",
       "best": "vendor",
@@ -6940,18 +6890,13 @@ const SOURCES_DB = {
         "gen3_aurenes_bite",
         "gen3_aurenes_breath",
         "gen3_aurenes_claw",
-        "gen3_aurenes_fang",
         "gen3_aurenes_gaze",
-        "gen3_aurenes_guard",
         "gen3_aurenes_insight",
         "gen3_aurenes_persuasion",
-        "gen3_aurenes_reckoning",
         "gen3_aurenes_scale",
-        "gen3_aurenes_tenderness",
         "gen3_aurenes_voice",
         "gen3_aurenes_weight",
         "gen3_aurenes_wisdom",
-        "gen3_aurenes_wrath",
         "orrax_manifested"
       ]
     },
@@ -7510,15 +7455,7 @@ const SOURCES_DB = {
         "gen2_astralaria": 1,
         "gen2_hope": 1,
         "gen2_nevermore": 1,
-        "gen2_chuka_and_champawat": 1,
-        "gen2_tigris": 1,
-        "gen2_caladbolg": 1,
-        "gen2_eordas_grip": 1,
-        "gen2_itzels_boon": 1,
-        "gen2_hope_scepter": 1,
-        "gen2_lorekeeper": 1,
-        "gen2_elegy": 1,
-        "gen2_reaver_of_the_mists": 1
+        "gen2_chuka_and_champawat": 1
       },
       "kind": "advanced_craft"
     },
@@ -7597,18 +7534,10 @@ const SOURCES_DB = {
         "gen2_hope": 1,
         "gen2_nevermore": 1,
         "gen2_chuka_and_champawat": 1,
-        "gen2_tigris": 1,
-        "gen2_caladbolg": 1,
         "gen2_eureka": 1,
         "gen2_shooshadoo": 1,
-        "gen2_eordas_grip": 1,
-        "gen2_itzels_boon": 1,
         "gen2_exordium": 1,
-        "gen2_hope_scepter": 1,
-        "gen2_lorekeeper": 1,
-        "gen2_elegy": 1,
         "gen2_xiuquatl": 1,
-        "gen2_reaver_of_the_mists": 1,
         "transcendence": 1,
         "stella_radians": 1,
         "aurora": 1,
@@ -7747,22 +7676,17 @@ const SOURCES_DB = {
         "gen1_the_bifrost": 250,
         "gen1_kraitkin": 250,
         "gen1_the_predator": 250,
-        "gen3_aurenes_fang": 250,
         "gen3_aurenes_claw": 250,
         "gen3_aurenes_bite": 250,
         "gen3_aurenes_weight": 250,
         "gen3_aurenes_gaze": 250,
         "gen3_aurenes_insight": 250,
         "gen3_aurenes_argument": 250,
-        "gen3_aurenes_guard": 250,
         "gen3_aurenes_persuasion": 250,
         "gen3_aurenes_voice": 250,
-        "gen3_aurenes_wrath": 250,
-        "gen3_aurenes_reckoning": 250,
         "gen3_aurenes_scale": 250,
         "gen3_aurenes_wisdom": 250,
         "gen3_aurenes_breath": 250,
-        "gen3_aurenes_tenderness": 250,
         "transcendence": 249,
         "the_ascension": 249,
         "ad_infinitum": 249,
@@ -7777,7 +7701,8 @@ const SOURCES_DB = {
         "selachimorpha": 178,
         "strife_unending": 146,
         "glob_of_coagulated_mists_essence": 1,
-        "mystic_tribute": 250
+        "mystic_tribute": 250,
+        "gen3_aurene_s_fang": 250
       },
       "kind": "acquire",
       "best": "vendor",
@@ -8315,22 +8240,17 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen3_aurenes_fang": 1,
         "gen3_aurenes_claw": 1,
         "gen3_aurenes_bite": 1,
         "gen3_aurenes_weight": 1,
         "gen3_aurenes_gaze": 1,
         "gen3_aurenes_insight": 1,
         "gen3_aurenes_argument": 1,
-        "gen3_aurenes_guard": 1,
         "gen3_aurenes_persuasion": 1,
         "gen3_aurenes_voice": 1,
-        "gen3_aurenes_wrath": 1,
-        "gen3_aurenes_reckoning": 1,
         "gen3_aurenes_scale": 1,
         "gen3_aurenes_wisdom": 1,
         "gen3_aurenes_breath": 1,
-        "gen3_aurenes_tenderness": 1,
         "gen3_aurene_s_fang": 1,
         "gen3_aurene_s_flight": 1,
         "gen3_aurenes_rending": 1,
@@ -8362,22 +8282,17 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen3_aurenes_fang": 1,
         "gen3_aurenes_claw": 1,
         "gen3_aurenes_bite": 1,
         "gen3_aurenes_weight": 1,
         "gen3_aurenes_gaze": 1,
         "gen3_aurenes_insight": 1,
         "gen3_aurenes_argument": 1,
-        "gen3_aurenes_guard": 1,
         "gen3_aurenes_persuasion": 1,
         "gen3_aurenes_voice": 1,
-        "gen3_aurenes_wrath": 1,
-        "gen3_aurenes_reckoning": 1,
         "gen3_aurenes_scale": 1,
         "gen3_aurenes_wisdom": 1,
         "gen3_aurenes_breath": 1,
-        "gen3_aurenes_tenderness": 1,
         "gen3_aurene_s_fang": 1,
         "gen3_aurene_s_flight": 1,
         "gen3_aurenes_rending": 1,
@@ -16649,24 +16564,20 @@ const SOURCES_DB = {
         "gen2_shooshadoo": 250,
         "gen2_exordium": 250,
         "gen2_xiuquatl": 250,
-        "gen3_aurenes_fang": 250,
         "gen3_aurenes_claw": 250,
         "gen3_aurenes_bite": 250,
         "gen3_aurenes_weight": 250,
         "gen3_aurenes_gaze": 250,
         "gen3_aurenes_insight": 250,
         "gen3_aurenes_argument": 250,
-        "gen3_aurenes_guard": 250,
         "gen3_aurenes_persuasion": 250,
         "gen3_aurenes_voice": 250,
-        "gen3_aurenes_wrath": 250,
-        "gen3_aurenes_reckoning": 250,
         "gen3_aurenes_scale": 250,
         "gen3_aurenes_wisdom": 250,
         "gen3_aurenes_breath": 250,
-        "gen3_aurenes_tenderness": 250,
         "gift_of_draconic_mastery": 1,
-        "gift_of_maguuma_mastery": 250
+        "gift_of_maguuma_mastery": 250,
+        "gen3_aurene_s_fang": 250
       },
       "verified": true,
       "checked": "2026-08-27",
@@ -61497,8 +61408,8 @@ const SOURCES_DB = {
       "checked": "2026-08-27",
       "ref": "wiki:Precursor_weapon — ressources/wiki/precursor_weapon.html, table des 53 precurseurs, 27/08/2026",
       "note": {
-        "fr": "Fiche créée depuis la table des précurseurs du wiki. Recette reprise du gabarit de sa génération et NON vérifiée : les composants propres à cette arme restent à établir.",
-        "en": "Entry created from the wiki's precursor table. Recipe copied from the generation template and NOT verified: this weapon's own components remain to be established."
+        "fr": "Coûts mystic_clover/mystic_coin/crystalline_ingot récupérés d'une clé orpheline (gen3_aurenes_fang) et fusionnés le 2026-09-08, cohérents avec les 11 autres gen3 de même gabarit. Un 4e chiffre de l'orphelin (gift_of_battle: 1) n'apparaît sur aucune autre gen3 de la famille et n'a PAS été repris — probable contamination de gabarit gen2, à trancher par Antoine si besoin.",
+        "en": "mystic_clover/mystic_coin/crystalline_ingot costs recovered from an orphan key (gen3_aurenes_fang) and merged 2026-09-08, consistent with the 11 other gen3 of the same template. A 4th figure from the orphan (gift_of_battle: 1) does not appear on any other gen3 in the family and was NOT carried over — likely gen2 template contamination, left for Antoine to arbitrate if needed."
       },
       "collections_none": {
         "fr": "Aucune collection : le précurseur de cette arme se fabrique à la Forge mystique, il ne s'obtient pas par une chaîne de succès. Vide établi, pas vide en attente.",
