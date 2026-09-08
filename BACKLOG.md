@@ -1196,7 +1196,16 @@ réconcilier produit des arbitrages là où il devrait y avoir un calcul.
 confronter aux 722 clés existantes, ne garder les clés que là où l'arbre ne
 descend pas encore, et publier les trous restants.
 
-**Ce qui bloque :** plus grand-chose. Le lot du 08/09 a comblé 34 des 39 trous.
+**Mesuré le 08/09 — le renversement n'est PAS tenable aujourd'hui.**
+`gw2_confronte_v1.py` compare, légendaire par légendaire, ce que le tracker
+affiche et ce que donnerait la lecture de bas en haut. Résultat : 3 305 écarts,
+dont **3 096 baisses**. Ignorer la clé à plat fait perdre le coût, et la chaîne
+ne le remplace pas. Ce n'est pas une affaire de cinq pages manquantes : la
+plupart des légendaires n'ont pas leur propre recette **reliée** à leurs
+composants. `CONFRONTATION.md` porte le détail, par légendaire et par
+composant. Le renversement se fera quand ce nombre approchera de zéro.
+
+**Ce qui bloque côté captures :** plus grand-chose. Le lot du 08/09 a comblé 34 des 39 trous.
 Restent **cinq** : `Dragonsblood Weapons` (3 dépendants), `Augur's Stone`,
 `Bloodstone Shard`, `Fractalline Spark`, `Olmakhan Bandolier`. Section 0 de
 `PAGES_A_CAPTURER.md`.
