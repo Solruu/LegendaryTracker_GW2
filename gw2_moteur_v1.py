@@ -201,8 +201,38 @@ class Modele:
     def fantomes(self) -> list[str]:
         return sorted(l.id for l in self.legendaires.values() if not l.declare)
 
+    @staticmethod
+    def _surcout(comp: "Composant", cible: str, faites: dict | None) -> float:
+        """`qty_extras` : un surcout qui tombe tant qu'une etape de collection
+        n'est pas validee. Meme regle que le JSX, au caractere pres — c'est
+        cette regle-la que le test de conformite compare.
+
+        Il ne s'ajoute QUE la ou le composant porte une cle a plat pour la
+        cible. Ailleurs il n'existe pas, meme si la cascade y amene le
+        composant : le JSX le calcule dans la branche de la cle a plat.
+        """
+        faites = faites or {}
+
+        def faite(sub, bit):
+            sc = faites.get(sub)
+            if not sc:
+                return False
+            return bool(sc.get("done")) or bit in (sc.get("bits") or [])
+
+        add = 0
+        for x in (comp.brut.get("qty_extras") or []):
+            if x.get("legendary") != cible:
+                continue
+            if isinstance(x.get("bits"), list):
+                add += sum(1 for b in x["bits"] if not faite(x.get("sub"), b)) \
+                    * x.get("amountPer", 0)
+            elif not faite(x.get("sub"), x.get("bit")):
+                add += x.get("amount", 0)
+        return add
+
     def totaux(self, cible: str, selection: dict | None = None,
-               detail: bool = False):
+               detail: bool = False, surcouts: bool = False,
+               collections_faites: dict | None = None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
 
         `selection` : {id_de_groupe: {cible: option}} — ou {id: option} pour
@@ -223,6 +253,8 @@ class Modele:
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
                     t[cid] = t.get(cid, 0) + v * mult
+                    if surcouts and suf == "":
+                        t[cid] += self._surcout(c, cible, collections_faites)
         for ch in self.choix.values():
             if cible in ch.cibles:
                 o = ch.retenue(cible, selection)
