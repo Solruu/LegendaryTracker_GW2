@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "version": "v239",
-  "last_updated": "2026-09-07",
+  "version": "v240",
+  "last_updated": "2026-09-08",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -16128,11 +16128,33 @@
    "farmable": true,
    "qty": {
     "gift_of_wood": 250,
-    "shadowstone_containment_frame": 2500
+    "shadowstone_containment_frame": 2500,
+    "shard_of_arah": 30,
+    "shard_of_call_of_the_void": 10,
+    "shard_of_endeavor": 20,
+    "shard_of_exitare": 30,
+    "shard_of_friendship": 10,
+    "shard_of_liturgy": 10,
+    "shard_of_resolution": 20,
+    "shard_of_spero": 30,
+    "shard_of_tlehco": 20,
+    "shard_of_the_crown": 20,
+    "shard_of_the_dark_arts": 10
    },
    "needed_for": [
     "gift_of_wood",
-    "shadowstone_containment_frame"
+    "shadowstone_containment_frame",
+    "shard_of_arah",
+    "shard_of_call_of_the_void",
+    "shard_of_endeavor",
+    "shard_of_exitare",
+    "shard_of_friendship",
+    "shard_of_liturgy",
+    "shard_of_resolution",
+    "shard_of_spero",
+    "shard_of_the_crown",
+    "shard_of_the_dark_arts",
+    "shard_of_tlehco"
    ],
    "sources": [
     {
@@ -17621,12 +17643,34 @@
    "qty": {
     "gift_of_metal": 250,
     "lump_of_mithrillium": 50,
-    "shadowstone_containment_frame": 2500
+    "shadowstone_containment_frame": 2500,
+    "shard_of_arah": 40,
+    "shard_of_call_of_the_void": 20,
+    "shard_of_endeavor": 30,
+    "shard_of_exitare": 40,
+    "shard_of_friendship": 20,
+    "shard_of_liturgy": 20,
+    "shard_of_resolution": 30,
+    "shard_of_spero": 40,
+    "shard_of_tlehco": 30,
+    "shard_of_the_crown": 30,
+    "shard_of_the_dark_arts": 20
    },
    "needed_for": [
     "gift_of_metal",
     "lump_of_mithrillium",
-    "shadowstone_containment_frame"
+    "shadowstone_containment_frame",
+    "shard_of_arah",
+    "shard_of_call_of_the_void",
+    "shard_of_endeavor",
+    "shard_of_exitare",
+    "shard_of_friendship",
+    "shard_of_liturgy",
+    "shard_of_resolution",
+    "shard_of_spero",
+    "shard_of_the_crown",
+    "shard_of_the_dark_arts",
+    "shard_of_tlehco"
    ],
    "sources": [
     {
@@ -19311,6 +19355,248 @@
      }
     }
    ]
+  },
+  "shard_of_arah": {
+   "name": "Shard of Arah",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_arah"
+   ],
+   "qty": {
+    "gift_of_arah": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Arah. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Arah.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Arah. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Arah."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Arah → 100 Shard of Arah",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_call_of_the_void": {
+   "name": "Shard of Call of the Void",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_verdarach"
+   ],
+   "qty": {
+    "gift_of_verdarach": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Verdarach. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Call of the Void.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Verdarach. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Call of the Void."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Verdarach → 100 Shard of Call of the Void",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_endeavor": {
+   "name": "Shard of Endeavor",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_eureka"
+   ],
+   "qty": {
+    "gift_of_eureka": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Eureka. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Endeavor.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Eureka. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Endeavor."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Eureka → 100 Shard of Endeavor",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_exitare": {
+   "name": "Shard of Exitare",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_exordium"
+   ],
+   "qty": {
+    "gift_of_exordium": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Exordium. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Exitare.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Exordium. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Exitare."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Exordium → 100 Shard of Exitare",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_friendship": {
+   "name": "Shard of Friendship",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_shooshadoo"
+   ],
+   "qty": {
+    "gift_of_shooshadoo": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Shooshadoo. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Friendship.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Shooshadoo. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Friendship."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Shooshadoo → 100 Shard of Friendship",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_liturgy": {
+   "name": "Shard of Liturgy",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_balthazar"
+   ],
+   "qty": {
+    "gift_of_balthazar": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Balthazar. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Liturgy.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Balthazar. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Liturgy."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Balthazar → 100 Shard of Liturgy",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_resolution": {
+   "name": "Shard of Resolution",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_the_four_legions"
+   ],
+   "qty": {
+    "gift_of_the_four_legions": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of the Four Legions. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Resolution.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of the Four Legions. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Resolution."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of the Four Legions → 100 Shard of Resolution",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_spero": {
+   "name": "Shard of Spero",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_pharus"
+   ],
+   "qty": {
+    "gift_of_pharus": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Pharus. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Spero.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Pharus. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Spero."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Pharus → 100 Shard of Spero",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_tlehco": {
+   "name": "Shard of Tlehco",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_xiuquatl"
+   ],
+   "qty": {
+    "gift_of_xiuquatl": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Xiuquatl. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Tlehco.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Xiuquatl. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Tlehco."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Xiuquatl → 100 Shard of Tlehco",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_the_crown": {
+   "name": "Shard of the Crown",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_the_blade"
+   ],
+   "qty": {
+    "gift_of_the_blade": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of the Blade. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Queen.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of the Blade. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Queen."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of the Blade → 100 Shard of the Crown",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+  },
+  "shard_of_the_dark_arts": {
+   "name": "Shard of the Dark Arts",
+   "kind": "advanced_craft",
+   "needed_for": [
+    "gift_of_ipos"
+   ],
+   "qty": {
+    "gift_of_ipos": 100
+   },
+   "sources": [
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Ipos. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Dark Arts.",
+      "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Ipos. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Dark Arts."
+     }
+    }
+   ],
+   "ref": "table « Full material list » — Gift of Ipos → 100 Shard of the Dark Arts",
+   "checked": "2026-09-08",
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
   }
  },
  "enchaînements_recommandés": {

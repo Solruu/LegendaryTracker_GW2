@@ -78,11 +78,14 @@ for page in sorted(P.WIKI.glob("*.html")):
     brut = P.aretes(page)
     # Une arete est de NIVEAU 2 si son parent apparait comme enfant d'une arete
     # de la meme page : c'est alors une quantite agregee, a diviser.
-    enfants_n1 = {e for _t, e, _q in brut}
-    niveau2 = {}
-    for tete, enfant, q in brut:
-        if enfant in enfants_n1 and tete not in enfants_n1:
-            niveau2[enfant] = q
+    # Une quantite de colonne 3 est agregee sur celle de la colonne 2. La
+    # colonne 2 se reconnait a ceci qu'elle reapparait comme TETE d'une autre
+    # ligne de la meme table. Un premier jet cherchait « enfant deja vu comme
+    # enfant, tete jamais vue comme enfant », ce qui ne designait rien : aucune
+    # division n'etait appliquee, et le zero de divisions non entieres etait un
+    # zero de divisions tout court.
+    tetes = {t for t, _e, _q in brut}
+    niveau2 = {e: q for _t, e, q in brut if e in tetes and q}
     for tete, enfant, q in brut:
         if q is None:
             continue

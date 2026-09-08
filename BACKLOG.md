@@ -1251,6 +1251,11 @@ Huit d'entre eux sont les tessons de précurseur gen3, nommés un par arme :
 Liturgy`, `Shard of Spero`, `Shard of Arah`, `Shard of Friendship`, `Shard of
 the Dark Arts`. Cinq occurrences chacun.
 
-C'est ce que les entrées supprimées `legendary_shard_gen2` / `_gen3`
-essayaient de désigner sans le savoir : un placeholder générique là où le jeu
-a huit objets nommés. Ils sont chiffrés dans les tables et absents de la base.
+**Fait le 08/09** — et ce sont **onze** tessons, tous **gen2**, pas huit gen3 :
+Arah, Call of the Void, Endeavor, Exitare, Friendship, Liturgy, Resolution,
+Spero, Tlehco, the Crown, the Dark Arts. Créés par `gw2_tessons_gen2_v1.py`
+depuis les tables, avec leurs ingrédients.
+
+Reste à modéliser, cités par les tables sans détail : le **Mystic Curio**
+(1 par tesson, onze fois) et les onze **Tribute to X** (1 par tesson). Les
+créer sans recette en ferait des feuilles muettes.

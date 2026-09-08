@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v239.json` — 282 desaccords sur 34 composants.
+Source : `gw2_sources_v240.json` — 283 desaccords sur 35 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -43,6 +43,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `inscribed_shard` — Inscribed Shard | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_bava_nisos` — Shard of Bava Nisos | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_mistburned_barrens` — Shard of Mistburned Barrens | 1 | 0 | deja compte par cascade x1 |
+| `shard_of_the_dark_arts` — Shard of the Dark Arts | 1 | 0 | deja compte par cascade x1 |
 | `vial_of_titan_melted_obsidian` — Vial of Titan Melted Liquid Obsidian | 1 | 0 | deja compte par cascade x1 |
 
 ## ECART DE COMPTE — 33 cas
@@ -86,14 +87,14 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 | `mystic_clover` — Mystic Clover | `gen3_aurenes_wisdom` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `mystic_clover` — Mystic Clover | `gen3_aurenes_wrath` | 77 | 38 | 39 | draconic_tribute (recette), gift_of_prosperity (table), gift_of_the_side_course (recette) |
 
-## DEJA COMPTE PAR CASCADE — 162 cas
+## DEJA COMPTE PAR CASCADE — 163 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 162. Le reste se
+Les 60 plus gros ecarts sur 163. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
