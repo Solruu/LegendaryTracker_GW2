@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v241",
+    "version": "v244",
     "last_updated": "2026-09-08",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -4999,9 +4999,10 @@ const SOURCES_DB = {
         "warbringer"
       ],
       "qty": {
-        "conflux": 100,
+        "conflux": 99,
         "warbringer": 100,
-        "gift_of_the_mistwalker": 2
+        "gift_of_the_mistwalker": 2,
+        "war_commendation": 1
       },
       "farmable": true,
       "sources": [
@@ -5015,7 +5016,10 @@ const SOURCES_DB = {
           "cadence": "unique"
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "qty_overlap_verified": [
+        "conflux"
+      ]
     },
     "mist_pearl": {
       "name": "Mist Pearl",
@@ -5224,7 +5228,8 @@ const SOURCES_DB = {
       "kind": "currency",
       "qty": {
         "essence_of_strategy": 1000,
-        "certificate_of_honor": 500
+        "certificate_of_honor": 500,
+        "commanders_wings_of_war": 250
       },
       "farmable": true,
       "sources": [
@@ -5242,12 +5247,21 @@ const SOURCES_DB = {
         }
       ],
       "verified": true,
-      "checked": "2026-08-22",
-      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)",
+      "checked": "2026-09-08",
+      "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Warbringer : Commander's Compendium, prerequis du palier Commander's Wings of War, coute 250 insignes",
       "needed_for": [
         "certificate_of_honor",
+        "commanders_wings_of_war",
         "essence_of_strategy"
-      ]
+      ],
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 750,
+          "chaine": 1500,
+          "depuis": "2026-09-08",
+          "note": "La chaine donne 1500, le JSX affiche 750. La page Conflux ecrit « 1,500 Badge of Honor » mais dans une phrase qui mentionne aussi la version Infused : le 750 pourrait etre le Conflux seul et le 1500 le total avec l'infusion. Non tranche : demande a Antoine, qui peut lire le cout en jeu."
+        }
+      }
     },
     "ascended_shard_of_glory": {
       "name": "Ascended Shards of Glory",
@@ -5316,6 +5330,7 @@ const SOURCES_DB = {
       "apiId": 70820,
       "needed_for": [
         "aetheric_anchor",
+        "gift_of_skirmishing",
         "klobjarne_geirr",
         "mist_band_infused",
         "strife_unending",
@@ -5328,9 +5343,9 @@ const SOURCES_DB = {
         "aetheric_anchor": 250,
         "klobjarne_geirr": 250,
         "strife_unending": 500,
-        "the_ascension": 250,
-        "transcendence": 2250,
-        "mist_band_infused": 170
+        "transcendence": 2000,
+        "mist_band_infused": 170,
+        "gift_of_skirmishing": 250
       },
       "farmable": true,
       "sources": [
@@ -5368,7 +5383,10 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "qty_overlap_verified": [
+        "transcendence"
+      ]
     },
     "legendary_insight": {
       "name": "Legendary Insight",
@@ -5425,11 +5443,13 @@ const SOURCES_DB = {
       "name": "Magnetite Shard",
       "apiId": 28,
       "needed_for": [
+        "gift_of_complex_emotions",
         "gift_of_patience"
       ],
       "qty": {
-        "coalescence": 450,
-        "gift_of_patience": 100
+        "coalescence": 350,
+        "gift_of_patience": 100,
+        "gift_of_complex_emotions": 100
       },
       "farmable": true,
       "sources": [
@@ -5496,7 +5516,10 @@ const SOURCES_DB = {
       "note": {
         "fr": "Plafond relevé de 300 à 800 le 3 février 2026, en même temps que la fusion des Strikes dans les raids et la conversion des Prophet Shards. ⚠ Les sources hors plafond (CM, minis, salvage, succès) sont le vrai levier une fois les 800 atteints. Les rencontres de Visions of Eternity donnent du Gaeting Crystal, pas du Magnetite.",
         "en": "Cap raised from 300 to 800 on 3 February 2026, alongside the Strike/raid merge and the Prophet Shard conversion. ⚠ Off-cap sources (CM, minis, salvage, achievements) are the real lever once the 800 are reached. Visions of Eternity encounters award Gaeting Crystal, not Magnetite."
-      }
+      },
+      "qty_overlap_verified": [
+        "coalescence"
+      ]
     },
     "gift_of_the_desert": {
       "name": "Gift of the Desert",
@@ -5705,7 +5728,9 @@ const SOURCES_DB = {
         "armor_perfected_envoy",
         "endless_summer",
         "fulgurite",
+        "gift_of_castoran_mastery",
         "gift_of_expertise",
+        "gift_of_infused_gems",
         "gift_of_mastery",
         "gift_of_runes",
         "gift_of_sigils",
@@ -5721,9 +5746,9 @@ const SOURCES_DB = {
         "perfected_envoy__per_piece": 50,
         "the_ascension": 309,
         "ad_infinitum": 339,
-        "selachimorpha": 488,
+        "selachimorpha": 238,
         "obsidian__per_piece": 50,
-        "endless_summer": 283,
+        "endless_summer": 33,
         "vision": 321,
         "aurora": 250,
         "conflux": 309,
@@ -5738,7 +5763,9 @@ const SOURCES_DB = {
         "fulgurite": 1,
         "gift_of_mastery": 250,
         "gift_of_runes": 50,
-        "gift_of_sigils": 75
+        "gift_of_sigils": 75,
+        "gift_of_castoran_mastery": 250,
+        "gift_of_infused_gems": 250
       },
       "farmable": true,
       "sources": [
@@ -5843,6 +5870,8 @@ const SOURCES_DB = {
       },
       "qty_overlap_verified": [
         "coalescence",
+        "endless_summer",
+        "selachimorpha",
         "vision"
       ],
       "note": {
@@ -6241,6 +6270,8 @@ const SOURCES_DB = {
         "gift_of_research",
         "klobjarne_geirr",
         "large_spiritwood_haft",
+        "lump_of_mithrillium",
+        "pristine_mist_essence",
         "selachimorpha",
         "stella_radians",
         "the_ascension",
@@ -6249,8 +6280,8 @@ const SOURCES_DB = {
       "qty": {
         "conflux": 300,
         "warbringer": 300,
-        "vision": 540,
-        "ad_infinitum": 590,
+        "vision": 360,
+        "ad_infinitum": 580,
         "aetheric_anchor": 250,
         "klobjarne_geirr": 1080,
         "selachimorpha": 800,
@@ -6259,7 +6290,9 @@ const SOURCES_DB = {
         "transcendence": 300,
         "gift_of_research": 250,
         "deldrimor_steel_spear_head": 50,
-        "large_spiritwood_haft": 50
+        "large_spiritwood_haft": 50,
+        "lump_of_mithrillium": 10,
+        "pristine_mist_essence": 10
       },
       "farmable": true,
       "sources": [
@@ -6298,7 +6331,9 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
       "qty_overlap_verified": [
-        "klobjarne_geirr"
+        "ad_infinitum",
+        "klobjarne_geirr",
+        "vision"
       ]
     },
     "exotic_essence_of_luck": {
@@ -6372,13 +6407,15 @@ const SOURCES_DB = {
       "apiId": 33781,
       "needed_for": [
         "armor_pvp",
+        "certificate_of_support",
         "the_ascension",
         "transcendence"
       ],
       "qty": {
         "ardent_glorious__per_piece": 150,
-        "transcendence": 70,
-        "the_ascension": 125
+        "transcendence": 45,
+        "the_ascension": 100,
+        "certificate_of_support": 5
       },
       "farmable": true,
       "timegate": true,
@@ -6413,7 +6450,11 @@ const SOURCES_DB = {
             "ref": "gw2_sources_v111 timegate_note — repris tel quel, non revérifié"
           }
         ]
-      }
+      },
+      "qty_overlap_verified": [
+        "the_ascension",
+        "transcendence"
+      ]
     },
     "mist_core_fragment": {
       "name": "Mist Core Fragment",
@@ -6482,8 +6523,10 @@ const SOURCES_DB = {
         "lacquered_banner_pole",
         "lump_of_mithrillium",
         "memory_essence_encapsulator",
+        "neutralized_titan_alloy",
         "olmakhan_bandolier_chain",
         "orrax_manifested",
+        "seer_runestone",
         "selachimorpha",
         "stella_radians",
         "strife_unending",
@@ -6507,45 +6550,24 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen1_frostfang": 250,
-        "gen1_incinerator": 250,
-        "gen1_the_moot": 250,
-        "gen1_quip": 250,
-        "gen1_meteorlogicus": 250,
-        "gen1_bolt": 250,
-        "gen1_the_minstrel": 250,
-        "gen1_the_flameseeker_prophecies": 250,
-        "gen1_rodgort": 250,
-        "gen1_howler": 250,
-        "gen1_sunrise": 250,
-        "gen1_twilight": 250,
-        "gen1_eternity": 250,
-        "gen1_the_juggernaut": 250,
-        "gen1_frenzy": 250,
-        "gen1_kamohoalii_kotaki": 250,
-        "gen1_kudzu": 250,
-        "gen1_the_dreamer": 250,
-        "gen1_the_bifrost": 250,
-        "gen1_kraitkin": 250,
-        "gen1_the_predator": 250,
         "obsidian__per_piece": 600,
-        "the_ascension": 499,
-        "ad_infinitum": 1039,
+        "the_ascension": 249,
+        "ad_infinitum": 789,
         "memory_essence_encapsulator": 50,
         "vision": 249,
         "aurora": 250,
         "conflux": 249,
-        "warbringer": 499,
+        "warbringer": 249,
         "coalescence": 249,
         "transcendence": 249,
         "eikasia": 80,
         "kralkatite_ingot": 1,
         "aetheric_anchor": 323,
         "endless_summer": 548,
-        "klobjarne_geirr": 1041,
-        "orrax_manifested": 2170,
+        "klobjarne_geirr": 741,
+        "orrax_manifested": 2020,
         "selachimorpha": 178,
-        "stella_radians": 2249,
+        "stella_radians": 249,
         "strife_unending": 146,
         "lump_of_mithrillium": 1,
         "crystalline_ingot": 1,
@@ -6557,7 +6579,10 @@ const SOURCES_DB = {
         "gift_of_runes": 100,
         "gift_of_sigils": 150,
         "gift_of_souls": 20,
-        "glob_of_coagulated_mists_essence": 1
+        "glob_of_coagulated_mists_essence": 1,
+        "gift_of_fortune": 250,
+        "neutralized_titan_alloy": 3,
+        "seer_runestone": 10
       },
       "kind": "acquire",
       "best": "salvage",
@@ -6565,8 +6590,14 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
       "qty_overlap_verified": [
+        "ad_infinitum",
         "coalescence",
-        "vision"
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "stella_radians",
+        "the_ascension",
+        "vision",
+        "warbringer"
       ],
       "note": {
         "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon. Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par le lingot cristallin.",
@@ -6578,6 +6609,7 @@ const SOURCES_DB = {
       "apiId": 19675,
       "needed_for": [
         "armor_perfected_envoy",
+        "draconic_tribute",
         "gift_of_adventure",
         "gift_of_fortune",
         "gift_of_insight",
@@ -6711,27 +6743,27 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen3_aurenes_fang": 77,
-        "gen3_aurenes_claw": 77,
-        "gen3_aurenes_bite": 77,
-        "gen3_aurenes_weight": 77,
-        "gen3_aurenes_gaze": 77,
-        "gen3_aurenes_insight": 77,
-        "gen3_aurenes_argument": 77,
-        "gen3_aurenes_guard": 77,
-        "gen3_aurenes_persuasion": 77,
-        "gen3_aurenes_voice": 77,
-        "gen3_aurenes_wrath": 77,
-        "gen3_aurenes_reckoning": 77,
-        "gen3_aurenes_scale": 77,
-        "gen3_aurenes_wisdom": 77,
-        "gen3_aurenes_breath": 77,
-        "gen3_aurenes_tenderness": 77,
+        "gen3_aurenes_fang": 39,
+        "gen3_aurenes_claw": 39,
+        "gen3_aurenes_bite": 39,
+        "gen3_aurenes_weight": 39,
+        "gen3_aurenes_gaze": 39,
+        "gen3_aurenes_insight": 39,
+        "gen3_aurenes_argument": 39,
+        "gen3_aurenes_guard": 39,
+        "gen3_aurenes_persuasion": 39,
+        "gen3_aurenes_voice": 39,
+        "gen3_aurenes_wrath": 39,
+        "gen3_aurenes_reckoning": 39,
+        "gen3_aurenes_scale": 39,
+        "gen3_aurenes_wisdom": 39,
+        "gen3_aurenes_breath": 39,
+        "gen3_aurenes_tenderness": 39,
         "perfected_envoy__per_piece": 15,
         "aetheric_anchor": 100,
         "obsidian__per_piece": 9,
         "endless_summer": 10,
-        "orrax_manifested": 68,
+        "orrax_manifested": 30,
         "triumphant_hero__per_piece": 15,
         "ardent_glorious__per_piece": 15,
         "gift_of_the_homesteader": 38,
@@ -6744,7 +6776,8 @@ const SOURCES_DB = {
         "gift_of_runes": 20,
         "gift_of_sigils": 30,
         "gift_of_war_prosperity": 15,
-        "mystic_tribute": 77
+        "mystic_tribute": 77,
+        "draconic_tribute": 38
       },
       "kind": "acquire",
       "best": "vendor",
@@ -6864,7 +6897,26 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
         }
-      }
+      },
+      "qty_overlap_verified": [
+        "gen3_aurenes_argument",
+        "gen3_aurenes_bite",
+        "gen3_aurenes_breath",
+        "gen3_aurenes_claw",
+        "gen3_aurenes_fang",
+        "gen3_aurenes_gaze",
+        "gen3_aurenes_guard",
+        "gen3_aurenes_insight",
+        "gen3_aurenes_persuasion",
+        "gen3_aurenes_reckoning",
+        "gen3_aurenes_scale",
+        "gen3_aurenes_tenderness",
+        "gen3_aurenes_voice",
+        "gen3_aurenes_weight",
+        "gen3_aurenes_wisdom",
+        "gen3_aurenes_wrath",
+        "orrax_manifested"
+      ]
     },
     "gift_of_fortune": {
       "name": "Gift of Fortune",
@@ -7556,6 +7608,7 @@ const SOURCES_DB = {
         "aetheric_anchor",
         "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
+        "mystic_clover",
         "mystic_tribute",
         "orrax_manifested",
         "selachimorpha",
@@ -7637,74 +7690,75 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen1_frostfang": 250,
-        "gen1_incinerator": 250,
-        "gen1_the_moot": 250,
-        "gen1_quip": 250,
-        "gen1_meteorlogicus": 250,
-        "gen1_bolt": 250,
-        "gen1_the_minstrel": 250,
-        "gen1_the_flameseeker_prophecies": 250,
-        "gen1_rodgort": 250,
-        "gen1_howler": 250,
-        "gen1_sunrise": 250,
-        "gen1_twilight": 250,
-        "gen1_eternity": 250,
-        "gen1_the_juggernaut": 250,
-        "gen1_frenzy": 250,
-        "gen1_kamohoalii_kotaki": 250,
-        "gen1_kudzu": 250,
-        "gen1_the_dreamer": 250,
-        "gen1_the_bifrost": 250,
-        "gen1_kraitkin": 250,
-        "gen1_the_predator": 250,
-        "gen2_astralaria": 250,
-        "gen2_hope": 250,
-        "gen2_nevermore": 250,
-        "gen2_chuka_and_champawat": 250,
-        "gen2_tigris": 250,
-        "gen2_caladbolg": 250,
-        "gen2_eureka": 250,
-        "gen2_shooshadoo": 250,
-        "gen2_eordas_grip": 250,
-        "gen2_itzels_boon": 250,
-        "gen2_exordium": 250,
-        "gen2_hope_scepter": 250,
-        "gen2_lorekeeper": 250,
-        "gen2_elegy": 250,
-        "gen2_xiuquatl": 250,
-        "gen2_reaver_of_the_mists": 250,
-        "gen3_aurenes_fang": 250,
-        "gen3_aurenes_claw": 250,
-        "gen3_aurenes_bite": 250,
-        "gen3_aurenes_weight": 250,
-        "gen3_aurenes_gaze": 250,
-        "gen3_aurenes_insight": 250,
-        "gen3_aurenes_argument": 250,
-        "gen3_aurenes_guard": 250,
-        "gen3_aurenes_persuasion": 250,
-        "gen3_aurenes_voice": 250,
-        "gen3_aurenes_wrath": 250,
-        "gen3_aurenes_reckoning": 250,
-        "gen3_aurenes_scale": 250,
-        "gen3_aurenes_wisdom": 250,
-        "gen3_aurenes_breath": 250,
-        "gen3_aurenes_tenderness": 250,
-        "transcendence": 499,
-        "the_ascension": 249,
-        "ad_infinitum": 249,
-        "stella_radians": 499,
-        "coalescence": 499,
-        "warbringer": 249,
-        "aurora": 250,
-        "vision": 499,
-        "conflux": 499,
-        "aetheric_anchor": 323,
-        "klobjarne_geirr": 123,
-        "orrax_manifested": 220,
-        "selachimorpha": 178,
-        "strife_unending": 146,
-        "glob_of_coagulated_mists_essence": 1
+        "gen1_frostfang": 173,
+        "gen1_incinerator": 173,
+        "gen1_the_moot": 173,
+        "gen1_quip": 173,
+        "gen1_meteorlogicus": 173,
+        "gen1_bolt": 173,
+        "gen1_the_minstrel": 173,
+        "gen1_the_flameseeker_prophecies": 173,
+        "gen1_rodgort": 173,
+        "gen1_howler": 173,
+        "gen1_sunrise": 173,
+        "gen1_twilight": 173,
+        "gen1_eternity": 173,
+        "gen1_the_juggernaut": 173,
+        "gen1_frenzy": 173,
+        "gen1_kamohoalii_kotaki": 173,
+        "gen1_kudzu": 173,
+        "gen1_the_dreamer": 173,
+        "gen1_the_bifrost": 173,
+        "gen1_kraitkin": 173,
+        "gen1_the_predator": 173,
+        "gen2_astralaria": 173,
+        "gen2_hope": 173,
+        "gen2_nevermore": 173,
+        "gen2_chuka_and_champawat": 173,
+        "gen2_tigris": 173,
+        "gen2_caladbolg": 173,
+        "gen2_eureka": 173,
+        "gen2_shooshadoo": 173,
+        "gen2_eordas_grip": 173,
+        "gen2_itzels_boon": 173,
+        "gen2_exordium": 173,
+        "gen2_hope_scepter": 173,
+        "gen2_lorekeeper": 173,
+        "gen2_elegy": 173,
+        "gen2_xiuquatl": 173,
+        "gen2_reaver_of_the_mists": 173,
+        "gen3_aurenes_fang": 173,
+        "gen3_aurenes_claw": 173,
+        "gen3_aurenes_bite": 173,
+        "gen3_aurenes_weight": 173,
+        "gen3_aurenes_gaze": 173,
+        "gen3_aurenes_insight": 173,
+        "gen3_aurenes_argument": 173,
+        "gen3_aurenes_guard": 173,
+        "gen3_aurenes_persuasion": 173,
+        "gen3_aurenes_voice": 173,
+        "gen3_aurenes_wrath": 173,
+        "gen3_aurenes_reckoning": 173,
+        "gen3_aurenes_scale": 173,
+        "gen3_aurenes_wisdom": 173,
+        "gen3_aurenes_breath": 173,
+        "gen3_aurenes_tenderness": 173,
+        "transcendence": 422,
+        "the_ascension": 172,
+        "ad_infinitum": 172,
+        "stella_radians": 422,
+        "coalescence": 422,
+        "warbringer": 172,
+        "aurora": 173,
+        "vision": 422,
+        "conflux": 422,
+        "aetheric_anchor": 123,
+        "klobjarne_geirr": 85,
+        "orrax_manifested": 152,
+        "selachimorpha": 123,
+        "strife_unending": 101,
+        "glob_of_coagulated_mists_essence": 1,
+        "mystic_clover": 1
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7848,7 +7902,76 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
         }
-      }
+      },
+      "qty_overlap_verified": [
+        "ad_infinitum",
+        "aetheric_anchor",
+        "aurora",
+        "coalescence",
+        "conflux",
+        "gen1_bolt",
+        "gen1_eternity",
+        "gen1_frenzy",
+        "gen1_frostfang",
+        "gen1_howler",
+        "gen1_incinerator",
+        "gen1_kamohoalii_kotaki",
+        "gen1_kraitkin",
+        "gen1_kudzu",
+        "gen1_meteorlogicus",
+        "gen1_quip",
+        "gen1_rodgort",
+        "gen1_sunrise",
+        "gen1_the_bifrost",
+        "gen1_the_dreamer",
+        "gen1_the_flameseeker_prophecies",
+        "gen1_the_juggernaut",
+        "gen1_the_minstrel",
+        "gen1_the_moot",
+        "gen1_the_predator",
+        "gen1_twilight",
+        "gen2_astralaria",
+        "gen2_caladbolg",
+        "gen2_chuka_and_champawat",
+        "gen2_elegy",
+        "gen2_eordas_grip",
+        "gen2_eureka",
+        "gen2_exordium",
+        "gen2_hope",
+        "gen2_hope_scepter",
+        "gen2_itzels_boon",
+        "gen2_lorekeeper",
+        "gen2_nevermore",
+        "gen2_reaver_of_the_mists",
+        "gen2_shooshadoo",
+        "gen2_tigris",
+        "gen2_xiuquatl",
+        "gen3_aurenes_argument",
+        "gen3_aurenes_bite",
+        "gen3_aurenes_breath",
+        "gen3_aurenes_claw",
+        "gen3_aurenes_fang",
+        "gen3_aurenes_gaze",
+        "gen3_aurenes_guard",
+        "gen3_aurenes_insight",
+        "gen3_aurenes_persuasion",
+        "gen3_aurenes_reckoning",
+        "gen3_aurenes_scale",
+        "gen3_aurenes_tenderness",
+        "gen3_aurenes_voice",
+        "gen3_aurenes_weight",
+        "gen3_aurenes_wisdom",
+        "gen3_aurenes_wrath",
+        "klobjarne_geirr",
+        "orrax_manifested",
+        "selachimorpha",
+        "stella_radians",
+        "strife_unending",
+        "the_ascension",
+        "transcendence",
+        "vision",
+        "warbringer"
+      ]
     },
     "mystic_runestone": {
       "name": "Mystic Runestone",
@@ -9720,7 +9843,8 @@ const SOURCES_DB = {
       "needed_for": [
         "legendary_relic",
         "legendary_rune",
-        "legendary_sigil"
+        "legendary_sigil",
+        "mystic_facet"
       ],
       "farmable": true,
       "sources": [
@@ -9742,14 +9866,18 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "legendary_relic": 18750
+        "legendary_relic": 12500,
+        "mystic_facet": 250
       },
       "kind": "acquire",
       "best": "tp",
       "best_reason": {
         "fr": "achat direct (pas d'alternative gratuite)",
         "en": "direct purchase (no free alternative)"
-      }
+      },
+      "qty_overlap_verified": [
+        "legendary_relic"
+      ]
     },
     "mystic_facet": {
       "name": "Mystic Facet",
@@ -10396,7 +10524,8 @@ const SOURCES_DB = {
         "discounted_shard_of_mistburned_barrens",
         "gift_of_infused_gems",
         "klobjarne_geirr",
-        "orrax_manifested"
+        "orrax_manifested",
+        "shard_of_bava_nisos"
       ],
       "farmable": true,
       "sources": [
@@ -10455,15 +10584,19 @@ const SOURCES_DB = {
       "qty": {
         "endless_summer": 250,
         "klobjarne_geirr": 275,
-        "orrax_manifested": 200,
+        "orrax_manifested": 100,
         "crystalline_ingot": 1,
         "discounted_shard_of_janthir_syntri": 1,
         "discounted_shard_of_lowland_shore": 1,
-        "discounted_shard_of_mistburned_barrens": 1
+        "discounted_shard_of_mistburned_barrens": 1,
+        "shard_of_bava_nisos": 1
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "qty_overlap_verified": [
+        "orrax_manifested"
+      ]
     },
     "gift_of_warfare": {
       "name": "Gift of Warfare",
@@ -11143,11 +11276,12 @@ const SOURCES_DB = {
       "apiId": 26,
       "kind": "currency",
       "qty": {
-        "warbringer": 2800,
+        "warbringer": 1925,
         "strife_unending": 3000,
         "mist_enhanced_mithril": 750,
         "mist_pearl": 750,
-        "mist_band_infused": 350
+        "mist_band_infused": 350,
+        "commanders_wings_of_war": 875
       },
       "farmable": true,
       "sources": [
@@ -11202,6 +11336,7 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "armor_wvw",
+        "commanders_wings_of_war",
         "essence_of_annihilation",
         "mist_band_infused",
         "mist_enhanced_mithril",
@@ -11267,7 +11402,10 @@ const SOURCES_DB = {
       "qty_note": {
         "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
         "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
-      }
+      },
+      "qty_overlap_verified": [
+        "warbringer"
+      ]
     },
     "testimony_of_jade_heroics": {
       "name": "Testimony of Jade Heroics",
@@ -11331,7 +11469,15 @@ const SOURCES_DB = {
         "essence_of_animosity",
         "gift_of_the_mist_warrior",
         "strife_unending"
-      ]
+      ],
+      "qty_conflict": {
+        "conflux": {
+          "jsx": 250,
+          "chaine": 750,
+          "depuis": "2026-09-08",
+          "note": "La chaine donne 750 (500 par l'Essence of Animosity + 250 par le Certificate of Heroics), le JSX affiche 250. La recette de Conflux exige des temoignages de JADE ; les Castoran sont suivis en parallele depuis la note v50 en attendant l'alignement d'ArenaNet. Le 750 peut donc etre le cout de la variante Castoran et le 250 celui que la recette actuelle demande. Non tranche."
+        }
+      }
     },
     "gaeting_crystal": {
       "name": "Gaeting Crystal",
@@ -11438,7 +11584,8 @@ const SOURCES_DB = {
         "selachimorpha": 5000,
         "aetheric_anchor": 2500,
         "klobjarne_geirr": 2500,
-        "stella_radians": 52500
+        "stella_radians": 2500,
+        "seer_runestone": 250
       },
       "farmable": true,
       "sources": [
@@ -11461,6 +11608,10 @@ const SOURCES_DB = {
       "needed_for": [
         "aetheric_anchor",
         "klobjarne_geirr",
+        "seer_runestone",
+        "stella_radians"
+      ],
+      "qty_overlap_verified": [
         "stella_radians"
       ]
     },
@@ -15953,8 +16104,9 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "orrax_manifested": 125,
-        "discounted_shard_of_mistburned_barrens": 1
+        "orrax_manifested": 100,
+        "discounted_shard_of_mistburned_barrens": 1,
+        "gift_of_titan_understanding": 25
       },
       "sources": [
         {
@@ -15996,9 +16148,13 @@ const SOURCES_DB = {
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
         "discounted_shard_of_mistburned_barrens",
+        "gift_of_titan_understanding",
         "orrax_manifested"
       ],
-      "apiId": 104331
+      "apiId": 104331,
+      "qty_overlap_verified": [
+        "orrax_manifested"
+      ]
     },
     "shard_of_mistburned_barrens": {
       "name": "Shard of Mistburned Barrens",

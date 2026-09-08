@@ -166,7 +166,7 @@ cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or
                  if k.split("__")[0] not in cc})
 avant = {l: totaux(l) for l in cibles}
 
-echanges, remplissages, refus = [], [], []
+echanges, remplissages, refus, partages = [], [], [], []
 for tour in range(4):
     T = {l: totaux(l) for l in cibles}
     bouge = False
@@ -188,7 +188,7 @@ for tour in range(4):
                        for l in cibles}
             apport = {l: _v * T[l].get(_p, 0) for l in cibles}
 
-            a_retirer, remplis, mauvais = [], [], []
+            a_retirer, remplis, mauvais, reliquats = [], [], [], []
             for leg in cibles:
                 if apport[leg] == 0:
                     continue
@@ -196,8 +196,20 @@ for tour in range(4):
                 if leg in declares or not isinstance(plat, int):
                     plat = None
                 if plat is not None:
-                    if apport[leg] != plat:
+                    if apport[leg] > plat:
+                        # La chaine exigerait plus que la table recopiee. Reduire
+                        # a zero puis ajouter serait inventer ; on refuse.
                         mauvais.append((leg, plat, apport[leg]))
+                    elif apport[leg] < plat:
+                        # RELIQUAT. La cle a plat couvre plus que cette arete :
+                        # la chaine en prend sa part, le reste reste ecrit. Le
+                        # total affiche ne bouge pas d'un point, et ce qui n'est
+                        # pas encore explique reste visible au lieu d'etre noye.
+                        # La v9 refusait ce cas, et c'est lui qui immobilisait le
+                        # depliage depuis cinq passes : 250 pieces mystiques
+                        # apportees par le Mystic Tribute contre une cle de 499
+                        # sur Vision n'est pas un desaccord, c'est un partage.
+                        reliquats.append((leg, plat, apport[leg]))
                     else:
                         a_retirer.append(leg)
                 elif cascade[leg] == 0 and not any(
@@ -214,10 +226,16 @@ for tour in range(4):
             # controle-ci les voit.
             avant_essai = dict(q)
             nf_avant = list(cc[enfant].get("needed_for") or [])
+            ov_avant = list(cc[enfant].get("qty_overlap_verified") or [])
             q[_p] = _v
             cc[enfant]["needed_for"] = sorted(set(nf_avant) | {_p})
             for leg in a_retirer:
                 del q[leg]
+            for leg, plat, ap in reliquats:
+                q[leg] = plat - ap
+            if reliquats:
+                cc[enfant]["qty_overlap_verified"] = sorted(
+                    set(ov_avant) | {l for l, _a, _b in reliquats})
             essai = {l: totaux(l) for l in cibles}
             casse = [(l, k, avant[l].get(k, 0), essai[l].get(k, 0)) for l in cibles
                      for k in set(avant[l]) | set(essai[l])
@@ -227,6 +245,9 @@ for tour in range(4):
                 q.clear()
                 q.update(avant_essai)
                 cc[enfant]["needed_for"] = nf_avant
+                cc[enfant]["qty_overlap_verified"] = ov_avant
+                if not ov_avant:
+                    cc[enfant].pop("qty_overlap_verified", None)
                 refus.append((f"{enfant} <- {_p}", "casse un total ailleurs", casse[:2]))
                 continue
             T = {l: totaux(l) for l in cibles}
@@ -234,6 +255,8 @@ for tour in range(4):
                 echanges.append((f"{enfant} <- {_p}", [_p], a_retirer))
             if remplis:
                 remplissages.append((f"{enfant} <- {_p}", remplis))
+            if reliquats:
+                partages.append((f"{enfant} <- {_p}", reliquats))
             bouge = True
     if not bouge:
         break
@@ -249,6 +272,10 @@ for e, ps, legs in echanges:
 print(f"\nREMPLISSAGES (composant compte nulle part, la table dit qu'il devrait) : {len(remplissages)}")
 for e, r in remplissages:
     print(f"   {e} : {len(r)} legendaires — {r[:3]}")
+print(f"\nRELIQUATS (la chaine prend sa part, le reste reste ecrit) : {len(partages)}")
+for e, r in partages:
+    print(f"   {e} : {len(r)} legendaires — " +
+          ", ".join(f"{l} {p} = {a} + {p - a}" for l, p, a in r[:3]))
 print(f"\nREFUS : {len(refus)}")
 for r in refus[:12]:
     print("  ", r)

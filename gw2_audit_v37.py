@@ -310,12 +310,69 @@ def _atteint(cid, legid, comps, profondeur=0):
     return False
 
 
+ARMOR_JSX = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
+SUF_JSX = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1),
+           ("__full_set", 1))
+
+
+def _totaux_legendaire(data, legid):
+    """Ce que le tracker AFFICHE pour un legendaire : cles a plat plus cascade.
+
+    C'est ce nombre-la, et non la cle a plat seule, qui doit egaler le required
+    du JSX. Tant qu'un composant portait tout son cout en une cle unique, les
+    deux se confondaient. Depuis que le depliage ramene une cle au RELIQUAT —
+    250 pieces mystiques sur une gen1 valent 77 apportees par les trefles plus
+    173 encore a plat — la cle a plat ne vaut plus le total, et comparer le JSX
+    a elle faisait echouer l'audit sur des donnees justes.
+    """
+    comps = data.get("craft_components", {})
+    groupes = data.get("alt_groups") or {}
+    t, exp = {}, {}
+    for cid, c in comps.items():
+        q = c.get("qty") or {}
+        for suf, mm in SUF_JSX:
+            mult = mm if (suf not in ("__per_piece", "__full_set")
+                          or legid in ARMOR_JSX) else 0
+            v = q.get(legid + suf)
+            if isinstance(v, int) and mult:
+                t[cid] = t.get(cid, 0) + v * mult
+    for g in groupes.values():
+        if legid in (g.get("targets") or []):
+            t[g["default"]] = t.get(g["default"], 0) + g["qty"]
+    for _ in range(12):
+        add = {}
+        for cid, c in comps.items():
+            for k, v in (c.get("qty") or {}).items():
+                if isinstance(v, int) and k in comps and t.get(k, 0) > 0:
+                    add[cid] = add.get(cid, 0) + v * t[k]
+        for g in groupes.values():
+            n = sum(t.get(x, 0) for x in (g.get("targets") or []) if x in comps)
+            if n:
+                add[g["default"]] = add.get(g["default"], 0) + g["qty"] * n
+        bouge = False
+        for cid, v in add.items():
+            if exp.get(cid, 0) != v:
+                t[cid] = t.get(cid, 0) - exp.get(cid, 0) + v
+                exp[cid] = v
+                bouge = True
+        if not bouge:
+            break
+    return t
+
+
 def check_qty_vs_jsx(data, errors, warnings):
-    """Le qty de base d'un composant doit egaler le required du meme legendaire.
+    """Le TOTAL d'un composant doit egaler le required du meme legendaire.
 
     Le rubis de sang portait 300 dans les sources et 250 dans le JSX : le meme
     fait ecrit a deux endroits, dont un incapable de decompter une etape faite.
     Un surcout appartient a qty_extras, jamais au nombre de base.
+
+    v37 : on compare le TOTAL (cle a plat + cascade) et non plus la seule cle a
+    plat. La regle d'origine supposait qu'un composant portait tout son cout en
+    une cle ; le depliage la ramene desormais au reliquat quand une arete en
+    prend une part. Comparer le JSX au reliquat, c'etait echouer sur une donnee
+    juste — et, plus grave, ne rien verifier du tout des qu'un cout passait
+    entierement par la chaine, la cle disparaissant alors du dictionnaire.
     """
     jsx = sorted(
         HERE.glob("gw2_legendary_tracker_v*.jsx"),
@@ -324,14 +381,24 @@ def check_qty_vs_jsx(data, errors, warnings):
     if not jsx:
         return
     per_leg = _jsx_currency_blocks(jsx[-1].read_text(encoding="utf-8"))
-    for cid, comp in data.get("craft_components", {}).items():
-        api, qty = comp.get("apiId"), comp.get("qty")
-        if not isinstance(api, int) or not isinstance(qty, dict):
-            continue
-        for legid, val in qty.items():
-            if not isinstance(val, int) or "__" in legid:
+    comps = data.get("craft_components", {})
+    par_api = {}
+    for cid, comp in comps.items():
+        if isinstance(comp.get("apiId"), int):
+            par_api.setdefault(comp["apiId"], cid)
+    for legid, reqs in per_leg.items():
+        totaux = _totaux_legendaire(data, legid)
+        for api, req in reqs.items():
+            cid = par_api.get(api)
+            if cid is None:
                 continue
-            req = per_leg.get(legid, {}).get(api)
+            comp = comps[cid]
+            val = totaux.get(cid, 0)
+            # Un composant que rien ne rattache a ce legendaire n'est pas un
+            # ecart : c'est un cout que l'arbre ne porte pas encore, et
+            # CONFRONTATION_TOTAUX.md le compte deja comme un trou.
+            if val == 0:
+                continue
             if req is not None and req != val:
                 # Une divergence peut etre connue et non tranchee : on l'accepte
                 # UNIQUEMENT si elle est declaree, datee et motivee. Sinon elle

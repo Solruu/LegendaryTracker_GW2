@@ -1,5 +1,42 @@
 # Backlog
 
+## 0. Etat du 08/09/2026 — le depliage est repartis
+
+Le depliage etait immobile depuis cinq passes. La cause n'etait pas un manque
+de captures : le deplieur REFUSAIT toute arete dont l'apport ne valait pas
+exactement la cle a plat. `gw2_deplie_wiki_v10` ramene desormais la cle au
+RELIQUAT — 250 pieces mystiques sur une gen1 valent 77 apportees par les
+trefles plus 173 encore a plat — et le total affiche ne bouge pas d'un point.
+
+Deux instruments ont ete corrigés en amont : la division des totaux des tables,
+qui ne marchait qu'au deuxieme niveau et annoncait 700 000 lingots de mithril
+sur The Binding of Ipos, et la regle d'audit qui comparait le JSX a la cle a
+plat au lieu du total affiche.
+
+**Ce qui reste a trancher, par ordre d'enjeu :**
+
+1. **Conflux, deux ecarts declares** (`qty_conflict`, 08/09) : la chaine donne
+   1 500 insignes et 750 temoignages Castoran, le JSX 750 et 250. La page ecrit
+   « 1,500 Badge of Honor » dans une phrase qui mentionne aussi la version
+   Infused — le 750 pourrait etre le Conflux seul. Antoine peut lire le cout en
+   jeu ; personne d'autre ne peut trancher.
+2. **39 trous de `CONFRONTATION_TOTAUX.md`** : le total affiche est SOUS ce
+   qu'ecrit la table. Ceux-la sont certains, pas discutables. En tete :
+   HMS Divinity (4 000 lingots, 3 000 planches, 100 curios : sa branche de
+   tesson n'est pas modelisee) et les huit gen2 sans collection, a 77 pieces
+   mystiques la ou la table en demande 250 par le Mystic Tribute.
+3. **18 excedents nus** : l'affichage depasse la table sans qu'une branche
+   fermee l'explique. Doublon ou branche legitime a nommer.
+4. **1 desaccord de table**, artefact connu : `pvp_league_ticket <-
+   certificate_of_support`. La recette dit 5 par certificat, la table de
+   The Ascension ecrit 25 sans donner le nombre de certificats — donc sans
+   diviseur. La recette fait foi ; le rapport ne sait pas encore le dire.
+5. **Cibles fantomes** : `gen3_aurenes_fang`, `_guard`, `_reckoning`,
+   `_tenderness`, `_wrath` portent des couts mais ne figurent pas dans
+   `legendaries`, ou les memes armes existent sous la convention
+   `gen3_aurene_s_*`. Meme cause que les doublons de captures : l'apostrophe.
+   A fusionner apres verification.
+
 Points en attente d'une vérification en jeu ou sur le wiki. Chacun est **connu,
 localisé et chiffré** — ce ne sont pas des inconnues, ce sont des arbitrages
 qui demandent une source que le conteneur ne peut pas atteindre.

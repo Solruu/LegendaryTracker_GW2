@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v241.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v244.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -30,7 +30,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 - `gen3_aurenes_tenderness`
 - `gen3_aurenes_wrath`
 
-## 0 — 17 trous de l'arbre — LA PRIORITÉ
+## 0 — 19 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -51,9 +51,11 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Shard of the Dark Arts` | 4 |
 | `Shard of Tlehco` | 4 |
 | `Dragonsblood Weapons` | 3 |
+| `Commander's Wings of War` | 2 |
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
+| `Mystic Facet` | 1 |
 | `Olmakhan Bandolier` | 1 |
 | `Perfect Mist Core` | 1 |
 
@@ -69,7 +71,7 @@ ignore ce que la cible contient réellement.
 | `Ardent Glorious armor` | 3 |
 | `Triumphant Hero's armor` | 3 |
 
-## 2 — 6 composants en arbitrage sans page au dépôt
+## 2 — 4 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -79,8 +81,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 |---|---:|
 | `Trade Contract` | 3 |
 | `Elegy Mosaic` | 2 |
-| `Pile of Lucent Crystal` | 2 |
-| `Shard of Glory` | 2 |
 | `WvW Skirmish Claim Ticket` | 2 |
 | `Shard of the Dark Arts` | 1 |
 
