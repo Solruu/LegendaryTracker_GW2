@@ -786,7 +786,7 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v248",
+    "version": "v249",
     "last_updated": "2026-09-08",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -5229,8 +5229,7 @@ const SOURCES_DB = {
       "qty": {
         "essence_of_strategy": 1000,
         "certificate_of_honor": 500,
-        "commanders_wings_of_war": 250,
-        "clover_vendor_wvw": 10
+        "commanders_wings_of_war": 250
       },
       "farmable": true,
       "sources": [
@@ -5252,7 +5251,6 @@ const SOURCES_DB = {
       "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026) | wiki Warbringer : Commander's Compendium, prerequis du palier Commander's Wings of War, coute 250 insignes | wiki Conflux, section « Required currencies » : 1 500 insignes et 750 temoignages de Castoran, sans reserve sur la version Infused",
       "needed_for": [
         "certificate_of_honor",
-        "clover_vendor_wvw",
         "commanders_wings_of_war",
         "essence_of_strategy"
       ]
@@ -5437,15 +5435,13 @@ const SOURCES_DB = {
       "name": "Magnetite Shard",
       "apiId": 28,
       "needed_for": [
-        "clover_vendor_raid",
         "gift_of_complex_emotions",
         "gift_of_patience"
       ],
       "qty": {
         "coalescence": 350,
         "gift_of_patience": 100,
-        "gift_of_complex_emotions": 100,
-        "clover_vendor_raid": 30
+        "gift_of_complex_emotions": 100
       },
       "farmable": true,
       "sources": [
@@ -5722,9 +5718,6 @@ const SOURCES_DB = {
       "needed_for": [
         "aetheric_anchor",
         "armor_perfected_envoy",
-        "clover_forge",
-        "clover_lyhr",
-        "clover_miyani",
         "endless_summer",
         "fulgurite",
         "gift_of_castoran_mastery",
@@ -5764,10 +5757,7 @@ const SOURCES_DB = {
         "gift_of_runes": 50,
         "gift_of_sigils": 75,
         "gift_of_castoran_mastery": 250,
-        "gift_of_infused_gems": 250,
-        "clover_forge": 3.23,
-        "clover_miyani": 3,
-        "clover_lyhr": 3
+        "gift_of_infused_gems": 250
       },
       "farmable": true,
       "sources": [
@@ -6342,12 +6332,10 @@ const SOURCES_DB = {
       "name": "Exotic Essence of Luck",
       "apiId": 45175,
       "needed_for": [
-        "clover_lunar",
         "gift_of_research"
       ],
       "qty": {
-        "gift_of_research": 250,
-        "clover_lunar": 10
+        "gift_of_research": 250
       },
       "farmable": true,
       "sources": [
@@ -6412,7 +6400,6 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_pvp",
         "certificate_of_support",
-        "clover_vendor_pvp",
         "the_ascension",
         "transcendence"
       ],
@@ -6420,8 +6407,7 @@ const SOURCES_DB = {
         "ardent_glorious__per_piece": 150,
         "transcendence": 45,
         "the_ascension": 100,
-        "certificate_of_support": 5,
-        "clover_vendor_pvp": 5
+        "certificate_of_support": 5
       },
       "farmable": true,
       "timegate": true,
@@ -6514,13 +6500,6 @@ const SOURCES_DB = {
         "aetheric_anchor",
         "amalgamated_rift_essence",
         "banner_pennon",
-        "clover_forge",
-        "clover_lyhr",
-        "clover_miyani",
-        "clover_vendor_fractal",
-        "clover_vendor_pvp",
-        "clover_vendor_raid",
-        "clover_vendor_wvw",
         "crystalline_ingot",
         "diviners_orichalcum_imbued_inscription",
         "endless_summer",
@@ -6595,14 +6574,7 @@ const SOURCES_DB = {
         "glob_of_coagulated_mists_essence": 1,
         "gift_of_fortune": 250,
         "neutralized_titan_alloy": 3,
-        "seer_runestone": 10,
-        "clover_forge": 3.23,
-        "clover_vendor_fractal": 2,
-        "clover_vendor_raid": 2,
-        "clover_vendor_pvp": 2,
-        "clover_vendor_wvw": 2,
-        "clover_miyani": 5,
-        "clover_lyhr": 5
+        "seer_runestone": 10
       },
       "kind": "acquire",
       "best": "salvage",
@@ -6876,11 +6848,56 @@ const SOURCES_DB = {
             "period": "week",
             "cap": null,
             "cost": {
-              "fr": "~31 % de réussite",
-              "en": "~31% success"
+              "fr": "1 écu + 1 ectoplasme + 1 éclat d'obsidienne + 6 pierres philosophales par TENTATIVE, et 31 % de réussite — soit 3,23 tentatives par trèfle (recette « Average » du wiki)",
+              "en": "1 coin + 1 ectoplasm + 1 obsidian shard + 6 philosopher's stones per ATTEMPT, 31% success — 3.23 attempts per clover (the wiki's own \"Average\" recipe)"
             },
             "verified": true,
-            "checked": "2026-08-11",
+            "checked": "2026-09-08",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
+              "fr": "BUY-4373 (Fractales)",
+              "en": "BUY-4373 (Fractals)"
+            },
+            "period": "week",
+            "cap": 10,
+            "cost": {
+              "fr": "150 reliques fractales immaculées + 2 écus + 2 ectoplasmes + 2 éclats spirituels",
+              "en": "150 Pristine Fractal Relics + 2 coins + 2 ectoplasm + 2 spirit shards"
+            },
+            "verified": true,
+            "checked": "2026-09-08",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
+              "fr": "Miyani / préposés à la Forge",
+              "en": "Miyani / Forge Attendants"
+            },
+            "period": "week",
+            "cap": 10,
+            "cost": {
+              "fr": "3 écus + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats spirituels. Plafond CUMULÉ entre tous les préposés.",
+              "en": "3 coins + 5 ectoplasm + 3 obsidian shards + 3 spirit shards. Cap SHARED across all attendants."
+            },
+            "verified": true,
+            "checked": "2026-09-08",
+            "ref": "wiki:Mystic_Clover — liens du HTML, confirmes par la table de Conflux"
+          },
+          {
+            "label": {
+              "fr": "Nouvel An lunaire",
+              "en": "Lunar New Year"
+            },
+            "period": "week",
+            "cap": 1,
+            "cost": {
+              "fr": "10 essences de chance exotiques, et rien d'autre",
+              "en": "10 Exotic Essences of Luck, nothing else"
+            },
+            "verified": true,
+            "checked": "2026-09-08",
             "ref": "wiki:Mystic_Clover"
           }
         ]
@@ -7626,13 +7643,6 @@ const SOURCES_DB = {
       "apiId": 19976,
       "needed_for": [
         "aetheric_anchor",
-        "clover_forge",
-        "clover_lyhr",
-        "clover_miyani",
-        "clover_vendor_fractal",
-        "clover_vendor_pvp",
-        "clover_vendor_raid",
-        "clover_vendor_wvw",
         "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "mystic_tribute",
@@ -7767,14 +7777,7 @@ const SOURCES_DB = {
         "selachimorpha": 178,
         "strife_unending": 146,
         "glob_of_coagulated_mists_essence": 1,
-        "clover_forge": 3.23,
-        "clover_vendor_fractal": 2,
-        "clover_vendor_raid": 2,
-        "clover_vendor_pvp": 2,
-        "clover_vendor_wvw": 2,
-        "mystic_tribute": 250,
-        "clover_miyani": 3,
-        "clover_lyhr": 3
+        "mystic_tribute": 250
       },
       "kind": "acquire",
       "best": "vendor",
@@ -8679,7 +8682,6 @@ const SOURCES_DB = {
       "apiId": 7,
       "needed_for": [
         "ad_infinitum",
-        "clover_vendor_fractal",
         "gift_of_ascension_fractal"
       ],
       "farmable": true,
@@ -8704,8 +8706,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_ascension_fractal": 4650,
-        "clover_vendor_fractal": 150
+        "gift_of_ascension_fractal": 4650
       },
       "kind": "acquire",
       "best": "daily_reward",
@@ -11111,12 +11112,7 @@ const SOURCES_DB = {
       "farmable": true,
       "qty": {
         "augurs_stone": 20,
-        "bloodstone_shard": 200,
-        "clover_vendor_fractal": 2,
-        "clover_vendor_raid": 2,
-        "clover_vendor_pvp": 2,
-        "clover_miyani": 3,
-        "clover_lyhr": 3
+        "bloodstone_shard": 200
       },
       "sources": [
         {
@@ -11137,12 +11133,7 @@ const SOURCES_DB = {
       "ref": "gw2_currencies_ref : devise 23",
       "needed_for": [
         "augurs_stone",
-        "bloodstone_shard",
-        "clover_lyhr",
-        "clover_miyani",
-        "clover_vendor_fractal",
-        "clover_vendor_pvp",
-        "clover_vendor_raid"
+        "bloodstone_shard"
       ]
     },
     "dragonsblood_weapons": {
@@ -11247,8 +11238,7 @@ const SOURCES_DB = {
         "mist_enhanced_mithril": 750,
         "mist_pearl": 750,
         "mist_band_infused": 350,
-        "commanders_wings_of_war": 875,
-        "clover_vendor_wvw": 20
+        "commanders_wings_of_war": 875
       },
       "farmable": true,
       "sources": [
@@ -11303,7 +11293,6 @@ const SOURCES_DB = {
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
         "armor_wvw",
-        "clover_vendor_wvw",
         "commanders_wings_of_war",
         "essence_of_annihilation",
         "mist_band_infused",
@@ -20791,12 +20780,8 @@ const SOURCES_DB = {
     "philosophers_stone": {
       "name": "Philosopher's Stone",
       "kind": "currency",
-      "needed_for": [
-        "clover_forge"
-      ],
-      "qty": {
-        "clover_forge": 19.35
-      },
+      "needed_for": [],
+      "qty": {},
       "sources": [
         {
           "type": "vendor",
@@ -20813,12 +20798,8 @@ const SOURCES_DB = {
     "astral_acclaim": {
       "name": "Astral Acclaim",
       "kind": "currency",
-      "needed_for": [
-        "clover_wizards_vault"
-      ],
-      "qty": {
-        "clover_wizards_vault": 60
-      },
+      "needed_for": [],
+      "qty": {},
       "sources": [
         {
           "type": "vendor",
@@ -20831,339 +20812,6 @@ const SOURCES_DB = {
       "ref": "wiki Mystic Clover — section Acquisition",
       "checked": "2026-09-08",
       "verified": "cite par la page, cout non chiffre"
-    },
-    "clover_reward_track": {
-      "name": "Mystic Clover — piste de récompenses",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Gratuit. Pistes PvP, WvW et d'escarmouche (Mist-Warped Bundle). Voie principale : du temps, pas de matériaux.",
-            "en": "Free. PvP, WvW and Skirmish reward tracks (Mist-Warped Bundle). Main route: time, not materials."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page"
-    },
-    "clover_forge": {
-      "name": "Mystic Clover — Forge mystique",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Coût moyen : la Forge ne rend un trèfle que 31 % du temps, donc 3,23 tentatives par trèfle. Chiffres de la recette « Average » du wiki.",
-            "en": "Average cost: the Forge yields a clover only 31% of the time, so 3.23 attempts per clover. Figures from the wiki's \"Average\" recipe."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page"
-    },
-    "clover_vendor_fractal": {
-      "name": "Mystic Clover — vendeur Fractales",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "BUY-4373, plafond 10 par semaine.",
-            "en": "BUY-4373, limit 10 per week."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "BUY-4373, Fractales des Brumes",
-              "en": "BUY-4373, Fractals of the Mists"
-            },
-            "period": "week",
-            "cap": 10,
-            "cost": {
-              "fr": "BUY-4373, plafond 10 par semaine.",
-              "en": "BUY-4373, limit 10 per week."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_vendor_raid": {
-      "name": "Mystic Clover — vendeur Raids",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Manfred Njallson, plafond 15 par semaine.",
-            "en": "Manfred Njallson, limit 15 per week."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Manfred Njallson, raids",
-              "en": "Manfred Njallson, raids"
-            },
-            "period": "week",
-            "cap": 15,
-            "cost": {
-              "fr": "Manfred Njallson, plafond 15 par semaine.",
-              "en": "Manfred Njallson, limit 15 per week."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_vendor_pvp": {
-      "name": "Mystic Clover — vendeur PvP",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Vendeur de ligue, plafond 5 par semaine (partagé avec l'emblème de victoire en tournoi).",
-            "en": "League Vendor, limit 5 per week (shared with the Emblem of Tournament Victory option)."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Vendeur de ligue PvP — plafond partage avec l'emblème de victoire en tournoi",
-              "en": "PvP League Vendor — cap shared with the Emblem of Tournament Victory option"
-            },
-            "period": "week",
-            "cap": 5,
-            "cost": {
-              "fr": "Vendeur de ligue, plafond 5 par semaine (partagé avec l'emblème de victoire en tournoi).",
-              "en": "League Vendor, limit 5 per week (shared with the Emblem of Tournament Victory option)."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_vendor_wvw": {
-      "name": "Mystic Clover — vendeur McM",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Dugan, plafond 5 par semaine. Seule voie de vendeur qui ne demande pas d'éclat d'esprit.",
-            "en": "Dugan, limit 5 per week. The only vendor route that needs no Spirit Shard."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Dugan, McM",
-              "en": "Dugan, WvW"
-            },
-            "period": "week",
-            "cap": 5,
-            "cost": {
-              "fr": "Dugan, plafond 5 par semaine. Seule voie de vendeur qui ne demande pas d'éclat d'esprit.",
-              "en": "Dugan, limit 5 per week. The only vendor route that needs no Spirit Shard."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_wizards_vault": {
-      "name": "Mystic Clover — coffre du Magicien",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "60 écus astraux, plafond 20 par saison.",
-            "en": "60 Astral Acclaim, limit 20 per season."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Coffre du Magicien",
-              "en": "Wizard's Vault"
-            },
-            "period": "season",
-            "cap": 20,
-            "cost": {
-              "fr": "60 écus astraux, plafond 20 par saison.",
-              "en": "60 Astral Acclaim, limit 20 per season."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_lunar": {
-      "name": "Mystic Clover — Nouvel An lunaire",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "10 essences de chance exotiques, plafond 1 par semaine. Ne demande rien d'autre.",
-            "en": "10 Exotic Essences of Luck, limit 1 per week. Requires nothing else."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition, resume des voies",
-      "checked": "2026-09-08",
-      "verified": "voie citee par la page ; cout ecrit par la page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Récompenses du Nouvel An lunaire",
-              "en": "New Year Rewards"
-            },
-            "period": "week",
-            "cap": 1,
-            "cost": {
-              "fr": "10 essences de chance exotiques, plafond 1 par semaine. Ne demande rien d'autre.",
-              "en": "10 Exotic Essences of Luck, limit 1 per week. Requires nothing else."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_miyani": {
-      "name": "Mystic Clover — Miyani / préposés à la Forge",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit par trèfle. Plafond de 10 par semaine, commun à tous les préposés.",
-            "en": "3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards per clover. Combined weekly limit of 10 across all attendants."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition ; confirme par la table de Conflux (« Bought from Lyhr for a total of 231 + 385 + 231 + 231 », soit 77 x 3, 5, 3, 3)",
-      "checked": "2026-09-08",
-      "verified": "prix lu sur les liens du HTML, confirme par Antoine et par une seconde page",
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Miyani et préposés à la Forge mystique",
-              "en": "Miyani and Mystic Forge Attendants"
-            },
-            "period": "week",
-            "cap": 10,
-            "cost": {
-              "fr": "3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit par trèfle. Plafond de 10 par semaine, commun à tous les préposés.",
-              "en": "3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards per clover. Combined weekly limit of 10 across all attendants."
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover — section Acquisition"
-          }
-        ]
-      }
-    },
-    "clover_lyhr": {
-      "name": "Mystic Clover — Lyhr / Lucirae",
-      "kind": "acquisition",
-      "needed_for": [
-        "mystic_clover"
-      ],
-      "qty": {},
-      "sources": [
-        {
-          "type": "choice",
-          "tip": {
-            "fr": "Même prix que Miyani — 3 pièces mystiques + 5 ectoplasmes + 3 éclats d'obsidienne + 3 éclats d'esprit — mais SANS plafond. C'est la voie payante à privilégier dès qu'on dépasse 10 trèfles par semaine.",
-            "en": "Same price as Miyani — 3 Mystic Coins + 5 Globs of Ectoplasm + 3 Obsidian Shards + 3 Spirit Shards — but with NO cap. The paid route to prefer beyond 10 clovers a week."
-          }
-        }
-      ],
-      "ref": "wiki Mystic Clover — section Acquisition ; confirme par la table de Conflux (« Bought from Lyhr for a total of 231 + 385 + 231 + 231 », soit 77 x 3, 5, 3, 3)",
-      "checked": "2026-09-08",
-      "verified": "prix lu sur les liens du HTML, confirme par Antoine et par une seconde page"
     }
   },
   "enchaînements_recommandés": {
@@ -67755,34 +67403,6 @@ const SOURCES_DB = {
         "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
       },
       "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
-    },
-    "acquisition_trefle": {
-      "qty": 1,
-      "options": [
-        "clover_reward_track",
-        "clover_forge",
-        "clover_miyani",
-        "clover_lyhr",
-        "clover_vendor_fractal",
-        "clover_vendor_raid",
-        "clover_vendor_pvp",
-        "clover_vendor_wvw",
-        "clover_wizards_vault",
-        "clover_lunar"
-      ],
-      "default": "clover_reward_track",
-      "targets": [
-        "mystic_clover"
-      ],
-      "label": {
-        "fr": "Trèfles mystiques — comment tu les obtiens",
-        "en": "Mystic Clovers — how you get them"
-      },
-      "note": {
-        "fr": "Le trèfle n'a pas un coût, il a des voies. Par défaut les pistes de récompenses, qui ne coûtent aucun matériau : les totaux ci-dessous n'en portent donc rien. Choisis une autre voie et son prix remonte dans l'arbre. Miyani et Lyhr vendent au même prix ; seul Miyani est plafonné. La cadence de chaque voie est portée par la voie elle-même, pas par cette note.",
-        "en": "A clover has no cost, it has routes. Reward tracks by default, which cost no materials, so the totals below carry none. Pick another route and its price flows back up the tree. Miyani and Lyhr sell at the same price; only Miyani is capped. Each route carries its own cadence, not this note."
-      },
-      "ref": "wiki Mystic Clover — section Acquisition"
     }
   }
 };

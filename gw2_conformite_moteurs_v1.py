@@ -18,11 +18,13 @@ bouchons pour ce que le navigateur fournit : `SOURCES_DB`, `localStorage`, et
 les deux constantes d'armure. Decouper plutot que recopier est le point : une
 copie deriverait, exactement comme les dix autres.
 
-CE QUE LE TEST NEUTRALISE, ET POURQUOI. `qty_extras` porte des surcouts qui
-dependent des etapes de collection deja validees, un etat de navigateur que le
-moteur Python n'a pas. On passe donc un instantane de collections VIDE et on
-retire ces surcouts du cote JSX avant de comparer. Cinq composants sont
-concernes ; ils sont listes dans le rapport pour qu'on ne les oublie pas.
+CE QUE MON PREMIER JET FAISAIT DE FAUX. `qty_extras` porte des surcouts qui
+dependent des etapes de collection validees, un etat de navigateur. J'ai
+d'abord voulu les retirer du cote JSX avant de comparer. C'etait faux : leur
+effet SE PROPAGE dans la cascade, et les retirer du seul composant qui les
+porte laissait 1 050 lingots de mithril d'ecart sur Aurora, par une chaine de
+quatre niveaux. Le moteur Python les calcule donc lui aussi, avec la meme
+regle, et on compare les deux totaux entiers sans rien neutraliser.
 """
 import json
 import re

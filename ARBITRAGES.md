@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v248.json` — 136 desaccords sur 28 composants.
+Source : `gw2_sources_v249.json` — 136 desaccords sur 28 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -71,21 +71,21 @@ recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 150.0 | 1800 | 1650.0 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 150 | 1800 | 1650 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `obsidian` | 1500 | 360 | 1140 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) |
 | `thermocatalytic_reagent` — Thermocatalytic Reagent | `klobjarne_geirr` | 850 | 1800 | 950 | bloodstone_brick (recette), dragonite_ingot (recette), empyreal_star (recette) |
 | `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 800 | 1650 | 850 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | `warbringer` | 875 | 1575 | 700 | generals_wings_of_war (table), recruits_wings_of_war (table), soldiers_wings_of_war (table) |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `vision` | 768.0 | 100 | 668.0 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `vision` | 768 | 100 | 668 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `klobjarne_geirr` | 300.0 | 600 | 300.0 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `klobjarne_geirr` | 300 | 600 | 300 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_bifrost` | 250 | 500 | 250 | opal_orb (recette) |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_minstrel` | 250 | 500 | 250 | opal_orb (recette) |
 | `orichalcum_ingot` — Orichalcum Ingot | `klobjarne_geirr` | 250 | 500 | 250 | neutralized_titan_alloy (recette) |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | `conflux` | 250 | 500 | 250 | essence_of_animosity (recette) |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 250.0 | 25 | 225.0 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 250 | 25 | 225 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `airship_part` — Airship Part | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_caladbolg` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur) |

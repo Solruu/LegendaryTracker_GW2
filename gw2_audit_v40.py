@@ -1597,6 +1597,22 @@ def check_alt_groups(data, errors, warnings):
     groupes = data.get("alt_groups") or {}
     cc = data.get("craft_components") or {}
     legs = data.get("legendaries") or {}
+    # UNE VOIE D'ACQUISITION N'EST PAS UN COMPOSANT. J'ai modelise les huit
+    # facons d'obtenir un trefle mystique en huit composants plus un groupe,
+    # alors que la base portait deja ces voies dans `sources[]` et
+    # `cadence.sources[]`, avec leurs prix et leurs plafonds, depuis le 11 aout.
+    # Le meme fait a deux endroits, dont un seul tenu a jour : la table
+    # parallele que le projet s'interdit. La quantite exigee et la voie
+    # d'acquisition sont deux natures differentes ; `qty` porte la premiere,
+    # `cadence.sources[]` la seconde, et `alt_groups` ne sert qu'aux choix
+    # d'INGREDIENT a un niveau de la recette.
+    for cid, c in cc.items():
+        if c.get("kind") == "acquisition":
+            errors.append(
+                f"craft_components/{cid} : une voie d'acquisition n'est pas un "
+                "composant. Elle se declare dans `sources[]` et, si elle a un "
+                "plafond, dans `cadence.sources[]`."
+            )
     for gid, g in groupes.items():
         label = f"alt_groups[{gid}]"
         options = g.get("options") or []

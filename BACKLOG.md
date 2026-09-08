@@ -45,6 +45,26 @@ sont pas confrontees du tout — c'est pourquoi les 420 eclats de gloire n'ont
 jamais ete signales. Dix-sept pages a table ne sont rattachees a aucun
 legendaire, ce chiffre en fait probablement partie.
 
+## 0 ter. Les voies du trefle sont revenues d'ou elles n'auraient pas du sortir
+
+Antoine a pose la question qui tranche : la quantite exigee (77 trefles) et la
+voie d'acquisition (10 par semaine chez BUY-4373) sont deux natures
+differentes. Elles etaient DEJA separees dans la base — `qty` porte l'exigence,
+`sources[]` et `cadence.sources[]` portent l'acquisition, et l'onglet Cadences
+lit `need = totals[id]` puis somme les plafonds. J'avais quand meme cree dix
+composants `clover_*` et un `alt_groups` qui recopiaient tout cela.
+
+Defait. `alt_groups` revient a ce pour quoi il existe : un choix d'INGREDIENT a
+un niveau. Le travail « par niveau » reste valable, il ne portait pas sur le
+trefle. **Un seul composant change de total a l'ecran : le faux
+`clover_reward_track` disparait. Aucun autre nombre ne bouge.**
+
+Garde-fou pose : l'audit refuse desormais tout composant de `kind`
+« acquisition ». Et la regle qui empeche la recette du trefle de revenir n'est
+plus adossee au modele mais A LA PAGE — une section Acquisition qui s'ouvre par
+un « Overview » enumerant les methodes est une page a plusieurs voies. Deux
+pages sur 682.
+
 ## 0 bis. Le moteur de calcul est ecrit UNE fois — 08/09
 
 La cascade etait reimplementee **dix fois** : neuf scripts Python et le JSX. Et
@@ -70,11 +90,17 @@ pris sur les bons totaux).
 Le moteur signale au passage **14 cibles fantomes** visees par `qty` et absentes
 de `legendaries`, dont un `gen3` nu et huit gen2 a collections.
 
-**Ce qui manque encore : le JSX porte la dixieme implementation, et il doit la
-garder** — le calcul se refait a chaque clic, dans le navigateur. La parade
-n'est pas de la supprimer mais de la CONFRONTER : un test qui fait tourner les
-deux moteurs sur les memes sources et compare tous les totaux de tous les
-legendaires. Tant qu'il n'existe pas, la divergence reste possible de ce cote.
+**Le JSX garde la dixieme implementation** — le calcul se refait a chaque clic,
+dans le navigateur. La parade n'est pas de la supprimer mais de la CONFRONTER :
+`gw2_conformite_moteurs_v1.py` decoupe `computeGrandTotal` du fichier JSX, la
+vraie fonction et non une copie, l'evalue dans node et compare tous les totaux.
+**98 cibles, 5 603 totaux, aucun ecart.** A lancer avant chaque push touchant
+au calcul.
+
+Il a servi tout de suite : mon premier jet retirait les surcouts `qty_extras`
+du cote JSX pour comparer, ce qui etait faux — leur effet SE PROPAGE dans la
+cascade, et les retirer laissait 1 050 lingots de mithril d'ecart sur Aurora.
+Le moteur Python les calcule desormais lui aussi, sous option `surcouts=True`.
 
 **Regle posee le 08/09 par Antoine, sur les options :**
 

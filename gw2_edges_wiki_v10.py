@@ -172,23 +172,38 @@ alternatifs_de={}
 # declarer obligatoire un achat facultatif : la v8 en tirait « 1 piece mystique
 # par trefle », que rien n'exige. Les voies sont modelisees en composants et
 # `alt_groups` choisit ; la recette n'a plus rien a dire ici.
-# La distinction porte sur la NATURE des options, pas sur l'existence du groupe :
-# un choix d'INGREDIENT (une gemme parmi six pour le Gift of Infused Gems, un
-# trophee parmi sept pour le Mystic Curio) laisse la recette dire le reste, et
-# ecarter toute la boite ferait perdre le mithril et le bois du Curio. Seul un
-# choix de VOIE D'ACQUISITION — options de `kind` « acquisition » — remplace la
-# recette, puisqu'il la contient comme une option parmi d'autres.
-_CIBLES_DE_CHOIX = {
-    t for g in (d.get('alt_groups') or {}).values()
-    for t in (g.get('targets') or [])
-    if t in cc and (g.get('options') or [])
-    and all((cc.get(o) or {}).get('kind') == 'acquisition' for o in g['options'])}
+# v10 : LE SIGNAL N'EST PLUS DANS `alt_groups`, IL EST DANS LA PAGE.
+# La v9 ecartait la recette d'un composant dont l'acquisition etait un choix
+# declare. C'etait juste, mais adosse a une modelisation qui a ete defaite : les
+# voies du trefle sont retournees dans `cadence.sources[]`, ou elles vivaient
+# deja. La regle tombait avec elle, et la recette du trefle revenait aussitot
+# poser « 1 piece mystique par trefle ».
+#
+# Le signal solide est celui que le wiki donne lui-meme : une page dont la
+# section Acquisition s'ouvre par un « Overview » enumerant les methodes est une
+# page a PLUSIEURS voies, et sa boite Recipe n'en est qu'une. Deux pages sur 682
+# sont dans ce cas, le trefle mystique et les armes Dragonsblood — les seules
+# dont le wiki juge necessaire de resumer les voies avant de les detailler.
+def _voies_multiples(page):
+    f = Path("ressources/wiki") / f"{page}.html"
+    if not f.exists():
+        return False
+    t = f.read_text(encoding="utf-8", errors="ignore")
+    i = t.find('id="Acquisition"')
+    if i < 0:
+        return False
+    seg = t[i:i + 40000]
+    j = re.search(r'id="(Used_in|Notes|References|Trivia)"', seg)
+    if j:
+        seg = seg[:j.start()]
+    return 'id="Overview"' in seg and ('id="Recipes"' in seg or 'id="Recipe"' in seg)
+
 
 for r in json.load(open('gw2_wiki_recipes_v1.json')):
     if not r['recettes']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue
-    if p in _CIBLES_DE_CHOIX:
+    if _voies_multiples(r['page']):
         cibles_de_choix_ecartees.append(p)
         continue
     for rc in r['recettes']:
@@ -268,7 +283,7 @@ print('divisions refusees (non entieres):', len(_div_refusees))
 for _x in _div_refusees[:10]: print('   ', _x)
 print('parents a diviseur ambigu:', len(_ambig_div))
 for _x in _ambig_div: print('   ', _x)
-print('recettes ecartees (acquisition en choix declare):', sorted(set(cibles_de_choix_ecartees)))
+print('recettes ecartees (page a voies multiples):', sorted(set(cibles_de_choix_ecartees)))
 print('promotions ecartees:',len(promotions))
 print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])
