@@ -786,8 +786,8 @@ function useT() {
 
 const SOURCES_DB = {
   "_meta": {
-    "version": "v236",
-    "last_updated": "2026-09-08",
+    "version": "v237",
+    "last_updated": "2026-09-07",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -2871,8 +2871,13 @@ const SOURCES_DB = {
       "name": "Pile of Incandescent Dust",
       "apiId": 24276,
       "needed_for": [
+        "beryl_orb",
+        "chrysocola_orb",
+        "emerald_orb",
         "gift_of_dust",
-        "gift_of_energy"
+        "gift_of_energy",
+        "ruby_orb",
+        "sapphire_orb"
       ],
       "farmable": true,
       "sources": [
@@ -2922,7 +2927,12 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_dust": 250,
-        "gift_of_energy": 250
+        "gift_of_energy": 250,
+        "beryl_orb": 5,
+        "chrysocola_orb": 5,
+        "emerald_orb": 5,
+        "ruby_orb": 5,
+        "sapphire_orb": 5
       },
       "kind": "acquire",
       "best": "drop",
@@ -2939,6 +2949,7 @@ const SOURCES_DB = {
         "gift_of_energy",
         "gift_of_history",
         "gift_of_magic",
+        "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "large_spiritwood_haft",
         "orrax_manifested",
@@ -3000,7 +3011,8 @@ const SOURCES_DB = {
         "gift_of_color": 250,
         "gift_of_history": 250,
         "deldrimor_steel_spear_head": 5,
-        "large_spiritwood_haft": 5
+        "large_spiritwood_haft": 5,
+        "glob_of_coagulated_mists_essence": 1
       },
       "kind": "acquire",
       "best": "drop",
@@ -5693,6 +5705,8 @@ const SOURCES_DB = {
         "fulgurite",
         "gift_of_expertise",
         "gift_of_mastery",
+        "gift_of_runes",
+        "gift_of_sigils",
         "klobjarne_geirr",
         "orrax_manifested",
         "selachimorpha",
@@ -5720,7 +5734,9 @@ const SOURCES_DB = {
         "strife_unending": 146,
         "transcendence": 309,
         "fulgurite": 1,
-        "gift_of_mastery": 250
+        "gift_of_mastery": 250,
+        "gift_of_runes": 50,
+        "gift_of_sigils": 75
       },
       "farmable": true,
       "sources": [
@@ -6453,7 +6469,12 @@ const SOURCES_DB = {
         "diviners_orichalcum_imbued_inscription",
         "endless_summer",
         "gift_of_fortune",
+        "gift_of_relics",
         "gift_of_research",
+        "gift_of_runes",
+        "gift_of_sigils",
+        "gift_of_souls",
+        "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "kralkatite_ingot",
         "lacquered_banner_pole",
@@ -6529,7 +6550,12 @@ const SOURCES_DB = {
         "diviners_orichalcum_imbued_inscription": 5,
         "lacquered_banner_pole": 10,
         "banner_pennon": 5,
-        "olmakhan_bandolier_chain": 1
+        "olmakhan_bandolier_chain": 1,
+        "gift_of_relics": 150,
+        "gift_of_runes": 100,
+        "gift_of_sigils": 150,
+        "gift_of_souls": 20,
+        "glob_of_coagulated_mists_essence": 1
       },
       "kind": "acquire",
       "best": "salvage",
@@ -6550,12 +6576,18 @@ const SOURCES_DB = {
       "apiId": 19675,
       "needed_for": [
         "armor_perfected_envoy",
+        "gift_of_adventure",
         "gift_of_fortune",
         "gift_of_insight",
         "gift_of_magical_prosperity",
         "gift_of_mighty_prosperity",
         "gift_of_prosperity",
+        "gift_of_relics",
+        "gift_of_runes",
+        "gift_of_sigils",
         "gift_of_the_homesteader",
+        "gift_of_war_prosperity",
+        "mystic_tribute",
         "orrax_manifested",
         "upgrades_combined"
       ],
@@ -6677,22 +6709,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gen2_astralaria": 77,
-        "gen2_hope": 77,
-        "gen2_nevermore": 77,
-        "gen2_chuka_and_champawat": 77,
-        "gen2_tigris": 77,
-        "gen2_caladbolg": 77,
-        "gen2_eureka": 77,
-        "gen2_shooshadoo": 77,
-        "gen2_eordas_grip": 77,
-        "gen2_itzels_boon": 77,
-        "gen2_exordium": 77,
-        "gen2_hope_scepter": 77,
-        "gen2_lorekeeper": 77,
-        "gen2_elegy": 77,
-        "gen2_xiuquatl": 77,
-        "gen2_reaver_of_the_mists": 77,
         "gen3_aurenes_fang": 77,
         "gen3_aurenes_claw": 77,
         "gen3_aurenes_bite": 77,
@@ -6710,25 +6726,23 @@ const SOURCES_DB = {
         "gen3_aurenes_breath": 77,
         "gen3_aurenes_tenderness": 77,
         "perfected_envoy__per_piece": 15,
-        "transcendence": 77,
-        "stella_radians": 77,
         "aetheric_anchor": 100,
         "obsidian__per_piece": 9,
         "endless_summer": 10,
-        "coalescence": 77,
         "orrax_manifested": 68,
-        "selachimorpha": 55,
-        "strife_unending": 45,
-        "vision": 77,
-        "aurora": 77,
-        "conflux": 77,
         "triumphant_hero__per_piece": 15,
         "ardent_glorious__per_piece": 15,
         "gift_of_the_homesteader": 38,
         "gift_of_fortune": 77,
         "gift_of_insight": 100,
         "gift_of_magical_prosperity": 9,
-        "gift_of_mighty_prosperity": 9
+        "gift_of_mighty_prosperity": 9,
+        "gift_of_adventure": 55,
+        "gift_of_relics": 25,
+        "gift_of_runes": 20,
+        "gift_of_sigils": 30,
+        "gift_of_war_prosperity": 15,
+        "mystic_tribute": 77
       },
       "kind": "acquire",
       "best": "vendor",
@@ -7161,7 +7175,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_itzel"
+        "gift_of_the_itzel",
+        "gift_of_the_pact"
       ],
       "farmable": true,
       "sources": [
@@ -7178,7 +7193,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_itzel": 500
+        "gift_of_the_itzel": 500,
+        "gift_of_the_pact": 250
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7188,7 +7204,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_nuhoch"
+        "gift_of_the_nuhoch",
+        "gift_of_the_pact"
       ],
       "farmable": true,
       "sources": [
@@ -7205,7 +7222,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_nuhoch": 500
+        "gift_of_the_nuhoch": 500,
+        "gift_of_the_pact": 250
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7215,7 +7233,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_exalted"
+        "gift_of_the_exalted",
+        "gift_of_the_pact"
       ],
       "farmable": true,
       "sources": [
@@ -7232,7 +7251,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_exalted": 500
+        "gift_of_the_exalted": 500,
+        "gift_of_the_pact": 250
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7532,6 +7552,7 @@ const SOURCES_DB = {
       "apiId": 19976,
       "needed_for": [
         "aetheric_anchor",
+        "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "mystic_tribute",
         "orrax_manifested",
@@ -7680,7 +7701,8 @@ const SOURCES_DB = {
         "klobjarne_geirr": 123,
         "orrax_manifested": 220,
         "selachimorpha": 178,
-        "strife_unending": 146
+        "strife_unending": 146,
+        "glob_of_coagulated_mists_essence": 1
       },
       "kind": "acquire",
       "best": "vendor",
@@ -10366,6 +10388,10 @@ const SOURCES_DB = {
       "kind": "acquire",
       "needed_for": [
         "coalescence",
+        "crystalline_ingot",
+        "discounted_shard_of_janthir_syntri",
+        "discounted_shard_of_lowland_shore",
+        "discounted_shard_of_mistburned_barrens",
         "gift_of_infused_gems",
         "klobjarne_geirr",
         "orrax_manifested"
@@ -10426,10 +10452,12 @@ const SOURCES_DB = {
       },
       "qty": {
         "endless_summer": 250,
-        "vision": 100,
-        "coalescence": 250,
         "klobjarne_geirr": 275,
-        "orrax_manifested": 200
+        "orrax_manifested": 200,
+        "crystalline_ingot": 1,
+        "discounted_shard_of_janthir_syntri": 1,
+        "discounted_shard_of_lowland_shore": 1,
+        "discounted_shard_of_mistburned_barrens": 1
       },
       "verified": true,
       "checked": "2026-08-22",
@@ -15921,7 +15949,8 @@ const SOURCES_DB = {
       "kind": "acquire",
       "farmable": true,
       "qty": {
-        "orrax_manifested": 125
+        "orrax_manifested": 125,
+        "discounted_shard_of_mistburned_barrens": 1
       },
       "sources": [
         {
@@ -15962,6 +15991,7 @@ const SOURCES_DB = {
       "checked": "2026-08-26",
       "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
       "needed_for": [
+        "discounted_shard_of_mistburned_barrens",
         "orrax_manifested"
       ],
       "apiId": 104331
@@ -18481,9 +18511,12 @@ const SOURCES_DB = {
         "shark_statue": 250,
         "unicorn_statue": 250,
         "wolf_statue": 250,
-        "gift_of_stealth": 250
+        "gift_of_stealth": 250,
+        "banner_of_the_commander": 25,
+        "gift_of_souls": 250
       },
       "needed_for": [
+        "banner_of_the_commander",
         "eel_statue",
         "gift_of_darkness",
         "gift_of_entertainment",
@@ -18492,6 +18525,7 @@ const SOURCES_DB = {
         "gift_of_lightning",
         "gift_of_metal",
         "gift_of_music",
+        "gift_of_souls",
         "gift_of_stealth",
         "gift_of_water",
         "gift_of_weather",

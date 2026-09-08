@@ -1218,7 +1218,11 @@ pourtant capturées — `gift_of_runes` (50 Mystic Aspect + 20 trèfles + 100 ec
 75 obsidiennes), `gift_of_relics` (25 Mystic Facet + 25 trèfles + 150 ecto +
 1 Gift of Research). Il manque les arêtes.
 
-Deux obstacles connus : `gift_of_craftsmanship` n'est pas capturé, et la
-recette de `gift_of_sigils` écrit `Mystic_clover` avec un c minuscule — à
-vérifier côté `to_id`, une casse qui ne colle pas fait perdre l'arête en
-silence.
+**Résolu.** Aucun des deux obstacles que j'avais annoncés n'en était un : `norm()`
+met tout en minuscules, donc `Mystic_clover` se résolvait très bien, et
+`gift_of_craftsmanship` porte déjà ses arêtes vers les trois entrées. Le vrai
+blocage était le grain du déplieur — voir `gw2_deplie_wiki_v9.py`.
+
+Les trois entrées portent désormais leur coût : rune 50 obsidiennes + 100
+ectoplasmes + 20 trèfles + 50 Mystic Aspect ; cachet 75 + 150 + 30 + 75 Mystic
+Mote ; relique 150 ectoplasmes + 25 trèfles + 25 Mystic Facet.

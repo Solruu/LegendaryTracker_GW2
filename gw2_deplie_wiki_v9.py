@@ -28,9 +28,22 @@ que la cascade apporte deja de ce que la cle a plat porte :
 - pas de cle a plat, mais cascade_actuelle > 0 -> le composant est deja compte
   par un autre chemin. Poser l'arete doublerait. REFUS.
 
-Un seul refus fait tomber tout le composant : on ne laisse pas la moitie de ses
-aretes posees et l'autre moitie a plat, ce serait exactement le double comptage
-qu'on cherche a eviter.
+v9 : LE GRAIN DESCEND DE L'ENSEMBLE A L'ARETE.
+
+Jusqu'ici un seul refus faisait tomber TOUTES les aretes proposees pour un
+composant. La prudence se defendait, mais elle coutait cher : l'obsidienne est
+refusee a cause d'Ad Infinitum et de l'Aetheric Anchor, ce qui bloquait du meme
+coup `obsidian_shard <- gift_of_runes 50`, une arete qui ne touche que
+legendary_rune et sur laquelle rien ne se contredit. Toute la ligne
+runes/cachets/reliques restait a zero pour cette raison.
+
+Or une arete est une unite : `enfant <- parent`. La poser n'affecte que les
+legendaires ou le PARENT compte pour quelque chose. Chacune est donc examinee
+seule, avec exactement les memes conditions qu'avant — echange si elle
+reproduit la cle a plat, remplissage si le composant n'etait compte nulle part,
+refus sinon — puis eprouvee par le recalcul complet des totaux.
+
+Ce qui tombe, tombe seul. Ce qui tient, passe.
 
 v6 : LE CONTROLE D'INVARIANCE DESCEND AU NIVEAU DU COMPOSANT.
 
@@ -161,64 +174,67 @@ for tour in range(4):
         # setdefault et non `.get(...) or {}` : un composant sans cle `qty`
         # recevait sinon ses aretes dans un dictionnaire detache de la donnee.
         q = cc[enfant].setdefault("qty", {})
-        neuves = {p: v for p, v in parents.items() if p not in q}
-        if not neuves:
+        candidates = {p: v for p, v in parents.items() if p not in q}
+        if not candidates:
             continue
-        if any(cycle(enfant, p) for p in neuves):
-            refus.append((enfant, "cycle", sorted(neuves)[:2]))
-            continue
-        declares = set(cc[enfant].get("qty_overlap_verified") or [])
-        # ce que les aretes DEJA posees apportent, legendaire par legendaire
-        cascade = {l: sum(v * T[l].get(p, 0) for p, v in q.items() if p in cc)
-                   for l in cibles}
-        apport = {l: sum(v * T[l].get(p, 0) for p, v in neuves.items()) for l in cibles}
-
-        a_retirer, remplis, mauvais = [], [], []
-        for leg in cibles:
-            if apport[leg] == 0:
+        for _p, _v in sorted(candidates.items()):
+            neuves = {_p: _v}
+            if cycle(enfant, _p):
+                refus.append((enfant, "cycle", [_p]))
                 continue
-            plat = q.get(leg)
-            if leg in declares or not isinstance(plat, int):
-                plat = None
-            if plat is not None:
-                if apport[leg] != plat:
-                    mauvais.append((leg, plat, apport[leg]))
+            declares = set(cc[enfant].get("qty_overlap_verified") or [])
+            # ce que les aretes DEJA posees apportent, legendaire par legendaire
+            cascade = {l: sum(v * T[l].get(p, 0) for p, v in q.items() if p in cc)
+                       for l in cibles}
+            apport = {l: _v * T[l].get(_p, 0) for l in cibles}
+
+            a_retirer, remplis, mauvais = [], [], []
+            for leg in cibles:
+                if apport[leg] == 0:
+                    continue
+                plat = q.get(leg)
+                if leg in declares or not isinstance(plat, int):
+                    plat = None
+                if plat is not None:
+                    if apport[leg] != plat:
+                        mauvais.append((leg, plat, apport[leg]))
+                    else:
+                        a_retirer.append(leg)
+                elif cascade[leg] == 0 and not any(
+                        isinstance(q.get(leg + s), int) for s, _ in SUF if s):
+                    remplis.append((leg, apport[leg]))
                 else:
-                    a_retirer.append(leg)
-            elif cascade[leg] == 0 and not any(
-                    isinstance(q.get(leg + s), int) for s, _ in SUF if s):
-                remplis.append((leg, apport[leg]))
-            else:
-                mauvais.append((leg, f"deja {cascade[leg]} par cascade", apport[leg]))
-        if mauvais:
-            refus.append((enfant, "compte", mauvais[:2]))
-            continue
-        # Essai reversible : on pose, on recalcule TOUT, on garde si et seulement
-        # si aucun total etabli n'a bouge. La condition par paire ne voit pas les
-        # composants situes plus bas dans l'arbre ; ce controle-ci les voit.
-        avant_essai = dict(q)
-        nf_avant = list(cc[enfant].get("needed_for") or [])
-        for p, v in neuves.items():
-            q[p] = v
-        cc[enfant]["needed_for"] = sorted(set(nf_avant) | set(neuves))
-        for leg in a_retirer:
-            del q[leg]
-        essai = {l: totaux(l) for l in cibles}
-        casse = [(l, k, avant[l].get(k, 0), essai[l].get(k, 0)) for l in cibles
-                 for k in set(avant[l]) | set(essai[l])
-                 if avant[l].get(k, 0) != essai[l].get(k, 0)
-                 and not (avant[l].get(k, 0) == 0 and essai[l].get(k, 0) > 0)]
-        if casse:
-            q.clear()
-            q.update(avant_essai)
-            cc[enfant]["needed_for"] = nf_avant
-            refus.append((enfant, "casse un total ailleurs", casse[:2]))
-            continue
-        if a_retirer:
-            echanges.append((enfant, sorted(neuves), a_retirer))
-        if remplis:
-            remplissages.append((enfant, remplis))
-        bouge = True
+                    mauvais.append((leg, f"deja {cascade[leg]} par cascade", apport[leg]))
+            if mauvais:
+                refus.append((f"{enfant} <- {_p}", "compte", mauvais[:2]))
+                continue
+            # Essai reversible : on pose, on recalcule TOUT, on garde si et
+            # seulement si aucun total etabli n'a bouge. La condition par paire ne
+            # voit pas les composants situes plus bas dans l'arbre ; ce
+            # controle-ci les voit.
+            avant_essai = dict(q)
+            nf_avant = list(cc[enfant].get("needed_for") or [])
+            q[_p] = _v
+            cc[enfant]["needed_for"] = sorted(set(nf_avant) | {_p})
+            for leg in a_retirer:
+                del q[leg]
+            essai = {l: totaux(l) for l in cibles}
+            casse = [(l, k, avant[l].get(k, 0), essai[l].get(k, 0)) for l in cibles
+                     for k in set(avant[l]) | set(essai[l])
+                     if avant[l].get(k, 0) != essai[l].get(k, 0)
+                     and not (avant[l].get(k, 0) == 0 and essai[l].get(k, 0) > 0)]
+            if casse:
+                q.clear()
+                q.update(avant_essai)
+                cc[enfant]["needed_for"] = nf_avant
+                refus.append((f"{enfant} <- {_p}", "casse un total ailleurs", casse[:2]))
+                continue
+            T = {l: totaux(l) for l in cibles}
+            if a_retirer:
+                echanges.append((f"{enfant} <- {_p}", [_p], a_retirer))
+            if remplis:
+                remplissages.append((f"{enfant} <- {_p}", remplis))
+            bouge = True
     if not bouge:
         break
 
