@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v259.json` — 94 desaccords sur 27 composants.
+Source : `gw2_sources_v260.json` — 93 desaccords sur 26 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -14,7 +14,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x12, ecart de compte x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
-| `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1 | 700 | deja compte par cascade x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
@@ -47,14 +46,14 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 
-## DEJA COMPTE PAR CASCADE — 84 cas
+## DEJA COMPTE PAR CASCADE — 83 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 84. Le reste se
+Les 60 plus gros ecarts sur 83. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
@@ -62,7 +61,6 @@ recalcule en relancant le script.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 150 | 1800 | 1650 | amalgamated_rift_essence (recette), unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
 | `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 400 | 1650 | 1250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | `warbringer` | 875 | 1575 | 700 | generals_wings_of_war (table), recruits_wings_of_war (table), soldiers_wings_of_war (table) |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `klobjarne_geirr` | 300 | 600 | 300 | amalgamated_rift_essence (recette), unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
@@ -119,6 +117,7 @@ recalcule en relancant le script.
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_the_hms_divinity` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_the_shining_blade` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_verdarach` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_xiuquatl` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 
 ## COUT VENDEUR — 9 cas
 

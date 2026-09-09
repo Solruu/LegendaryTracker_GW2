@@ -169,7 +169,7 @@ const I18N = {
     tab_raids: "⚔ Raids",
     raids_li_note: "Cap: 77 Legendary Insights/week (43 weekly clears + encounters + daily bounties + quickplay). 150 needed — minimum 2 weeks.",
     raids_wings_note: "Wings 5–6–7 (PoF) required for the 3 collections. Gift of Compassion sold by Scholar Glenna in any wing.",
-    wb_req_note: "Requires WvW rank 350 + Commander's Compendium (300g + 250 Badges) for the last Warcry tier. Minimum 7 weeks (2800 tickets at 365+90/week).",
+    wb_req_note: "Requires WvW rank 350 + Commander's Compendium (300g + 250 Badges) for the last Warcry tier. Minimum 6 weeks (2450 tickets at 365+90/week).",
     ach_locked: "Locked",
     obs_target_hint: "Tap a piece to add/remove it from your goal. ✓ = owned (armory). Default goal: 1 full set (6 pieces).",
     obs_goal: "Goal: {n} piece(s) targeted — {o} owned, {r} remaining",
@@ -402,7 +402,7 @@ const I18N = {
     tab_raids: "⚔ Raids",
     raids_li_note: "Cap : 77 Legendary Insights/semaine (43 clears hebdo + encounters + primes daily + quickplay). 150 requis — minimum 2 semaines.",
     raids_wings_note: "Wings 5–6–7 (PoF) obligatoires pour les 3 collections. Gift of Compassion vendu par Scholar Glenna dans n'importe quelle wing.",
-    wb_req_note: "Requiert rang McM 350 + Commander's Compendium (300 po + 250 Badges) pour le dernier palier de Warcry. Minimum 7 semaines (2800 tickets à 365+90/sem).",
+    wb_req_note: "Requiert rang McM 350 + Commander's Compendium (300 po + 250 Badges) pour le dernier palier de Warcry. Minimum 6 semaines (2450 tickets à 365+90/sem).",
     ach_locked: "Verrouillé",
     obs_target_hint: "Touche une pièce pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Objectif par défaut : 1 set complet (6 pièces).",
     obs_goal: "Objectif : {n} pièce(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
@@ -1721,7 +1721,8 @@ const SOURCES_DB = {
     "changelog_v209": "dragonite_ore / bloodstone_dust / empyreal_fragment : retire la cle a plat directe klobjarne_geirr (3000 chacune, 9000 au total). Source : les trois pages wiki 'Used in' (Dragonite Ore, Pile of Bloodstone Dust, Empyreal Fragment, captures Antoine) sont exhaustives et ne citent aucune voie vers Klobjarne Geirr ou ses composants (Gift of Metal, Gift of the Mists, Draconic Tribute) — seule la voie ingot/brique/etoile existe (100 matiere brute chacun), deja comptee via la cascade Vision Crystal (6, sourcee sur la Full material list de Klobjarne Geirr) -> 60 lingots -> 6000 matiere brute chacune. L'audit confirmait deja le doublon (klobjarne_geirr etait le seul signale 'atteint a la fois en direct et via [ingot]' parmi les cibles concernees par ces trois matieres). Klobjarne Geirr passe donc de 9000 a 6000 pour chacune des trois matieres (-9000 au total). Les autres cibles partageant ces cles a plat (conflux, warbringer, transcendence, the_ascension, ad_infinitum, selachimorpha) ne sont PAS touchees : l'audit ne les signale pas comme doublon, et un ecart residuel de 250 sur conflux/warbringer face a l'estimation manuelle reste a comprendre avant d'y toucher — hors perimetre de cette passe.",
     "changelog_v210": "dragonite_ore / bloodstone_dust / empyreal_fragment : meme correctif que Klobjarne Geirr (v209), applique a The Ascension et Transcendence — retire les cles a plat directes (the_ascension: 1000 chacune ; transcendence: 1250 chacune), remplacees par la cascade deja presente et propre (2000 chacune via Vision Crystal -> Gift of Skirmishing, sans residu inexplique). Ecarte du correctif : Conflux et Warbringer, deja declares qty_overlap_verified par une session precedente (chevauchement legitime, cascade a 2250 avec un residu de 250 non explique par ce correctif — laisse en l'etat, deja tranche ailleurs).",
     "changelog_v211": "obsidian_shard sur klobjarne_geirr : 353 -> 50, source directe. La Full material list de Klobjarne Geirr montre '50 Obsidian Shards' comme composant primaire autonome (achete contre Karma ou converti depuis les recompenses PvP/WvW), separe de tout le reste de l'arbre — ni sous Eldritch Scroll, ni sous Draconic Tribute. La cascade Vision Crystal (deja propre, verifiee cette session) apporte 360 de plus via les trois lingots, total reel 410, contre 713 avant ce correctif (353 flat fautif + 360 cascade).",
-    "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list."
+    "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list.",
+    "changelog_v213": "skirmish_claim_ticket sur Warbringer : cables les 3 aretes manquantes vers Recruit's/Soldier's/General's Wings of War (350/525/700), Commander's (875) deja presente. Warcry demandant les 4 ailes (deja modelise), le cout est cumulatif : 350+525+700+875 = 2450 contre 2800 avant (875 cascade + 1925 flat directe fautive, retiree). Confirme par Antoine : les 4 objets se combinent en Forge mystique pour Warcry, le rang McM requis par palier est un prerequis d'ACHAT (deja documente dans sources.tip de chaque aile), pas un facteur reduisant le total."
   },
   "meta_events": {
     "vb": {
@@ -11145,12 +11146,14 @@ const SOURCES_DB = {
       "apiId": 26,
       "kind": "currency",
       "qty": {
-        "warbringer": 1925,
         "strife_unending": 3000,
         "mist_enhanced_mithril": 750,
         "mist_pearl": 750,
         "mist_band_infused": 350,
-        "commanders_wings_of_war": 875
+        "commanders_wings_of_war": 875,
+        "recruits_wings_of_war": 350,
+        "soldiers_wings_of_war": 525,
+        "generals_wings_of_war": 700
       },
       "farmable": true,
       "sources": [
@@ -11210,8 +11213,10 @@ const SOURCES_DB = {
         "mist_band_infused",
         "mist_enhanced_mithril",
         "mist_pearl",
-        "warbringer",
-        "warcry"
+        "warcry",
+        "recruits_wings_of_war",
+        "soldiers_wings_of_war",
+        "generals_wings_of_war"
       ],
       "timegate": true,
       "timegate_note": {
@@ -67840,7 +67845,7 @@ const LEGENDARIES = {
     resetType: "weekly",
     requirementNoteKey: "wb_req_note",
     currencies: [
-      { id: "tickets", name: "Skirmish Claim Tickets", required: 2800, icon: "SK", apiId: 26 },
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 2450, icon: "SK", apiId: 26 },
       { id: "memory",  name: "Memory of Battle",       required: 750,  icon: "MB", apiId: 71581 },
       { id: "badges",  name: "Badge of Honor",         required: 1250, icon: "BH", apiId: 15 },
       { id: "jade",     name: "Testimony of Jade Heroics",     required: 500, icon: "JH", apiId: 65 },
@@ -67852,7 +67857,7 @@ const LEGENDARIES = {
       unit: { fr: "dos", en: "back" }, unitTotal: 1,
       note: { fr: "⚠ Prérequis bloquants : rang McM 350 et tag de commandant (300 po) pour acheter le 4e Wings of War.", en: "⚠ Hard prerequisites: WvW rank 350 and a commander tag (300 g) to buy the 4th Wings of War." },
       lines: [
-        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 2800, curKey: "tickets",
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 2450, curKey: "tickets",
           detail: { fr: "4 Wings of War (2 450) + composants · plafond 365/semaine + ~90 via les hebdos McM", en: "4 Wings of War (2,450) + components · 365/week cap + ~90 from WvW weeklies" } },
         { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
           detail: { fr: "455 tickets/semaine hebdos comprises · tickets partagés avec Conflux, Strife et Triumphant Hero — les enchaîner du moins cher au plus cher", en: "455 tickets/week including weeklies · tickets shared with Conflux, Strife and Triumphant Hero — chain them cheapest first" } },
