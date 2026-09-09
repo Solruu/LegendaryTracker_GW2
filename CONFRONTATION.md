@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v260.json`. 318 ecarts sur 66 legendaires.
+Source : `gw2_sources_v261.json`. 318 ecarts sur 66 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -18,7 +18,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 |---|---:|---:|
 | `klobjarne_geirr` | 17 | 13248 |
 | `legendary_relic` | 2 | 12750 |
-| `gen2_the_binding_of_ipos` | 9 | 10200 |
+| `gen2_the_binding_of_ipos` | 9 | 11700 |
 | `ad_infinitum` | 20 | 9189 |
 | `conflux` | 15 | 7780 |
 | `orrax_manifested` | 40 | 7030 |
@@ -27,25 +27,25 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `the_ascension` | 11 | 3681 |
 | `stella_radians` | 5 | 3498 |
 | `coalescence` | 12 | 3451 |
+| `gen2_eureka` | 5 | 2651 |
+| `gen2_exordium` | 5 | 2651 |
+| `gen2_shooshadoo` | 5 | 2651 |
+| `gen2_xiuquatl` | 5 | 2651 |
 | `vision` | 15 | 2597 |
+| `gen2_astralaria` | 3 | 2400 |
+| `gen2_chuka_and_champawat` | 3 | 2400 |
+| `gen2_claw_of_the_khan_ur` | 3 | 2400 |
+| `gen2_flames_of_war` | 3 | 2400 |
+| `gen2_hope` | 3 | 2400 |
+| `gen2_nevermore` | 3 | 2400 |
+| `gen2_pharus` | 3 | 2400 |
+| `gen2_sharur` | 3 | 2400 |
+| `gen2_the_hms_divinity` | 3 | 2400 |
+| `gen2_the_shining_blade` | 3 | 2400 |
+| `gen2_verdarach` | 3 | 2400 |
 | `aetheric_anchor` | 5 | 2305 |
 | `obsidian` | 2 | 1536 |
-| `gen2_eureka` | 5 | 1151 |
-| `gen2_exordium` | 5 | 1151 |
-| `gen2_shooshadoo` | 5 | 1151 |
-| `gen2_xiuquatl` | 5 | 1151 |
 | `strife_unending` | 14 | 1083 |
-| `gen2_astralaria` | 3 | 900 |
-| `gen2_chuka_and_champawat` | 3 | 900 |
-| `gen2_claw_of_the_khan_ur` | 3 | 900 |
-| `gen2_flames_of_war` | 3 | 900 |
-| `gen2_hope` | 3 | 900 |
-| `gen2_nevermore` | 3 | 900 |
-| `gen2_pharus` | 3 | 900 |
-| `gen2_sharur` | 3 | 900 |
-| `gen2_the_hms_divinity` | 3 | 900 |
-| `gen2_the_shining_blade` | 3 | 900 |
-| `gen2_verdarach` | 3 | 900 |
 | `selachimorpha` | 8 | 752 |
 | `aurora` | 2 | 500 |
 | `eikasia` | 1 | 500 |
@@ -117,53 +117,53 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `transcendence` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `transcendence` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |
 | `klobjarne_geirr` | `mithril_ingot` — Mithril Ingot | 250 | 1150 | +900 |
+| `gen2_astralaria` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_astralaria` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_chuka_and_champawat` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_chuka_and_champawat` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_chuka_and_champawat` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_eureka` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_exordium` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_exordium` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_exordium` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_flames_of_war` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_hope` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_hope` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_hope` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_nevermore` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_nevermore` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_nevermore` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_pharus` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_pharus` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_pharus` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_sharur` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_sharur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_sharur` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_shooshadoo` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_shooshadoo` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_the_binding_of_ipos` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_the_binding_of_ipos` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_the_binding_of_ipos` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_the_hms_divinity` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_the_hms_divinity` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_the_hms_divinity` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_the_shining_blade` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_the_shining_blade` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_the_shining_blade` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_verdarach` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_verdarach` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_verdarach` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
+| `gen2_xiuquatl` | `airship_part` — Airship Part | 800 | 1600 | +800 |
+| `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
+| `gen2_xiuquatl` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
 | `ad_infinitum` | `glob_of_ectoplasm` — Glob of Ectoplasm | 1039 | 280 | -759 |
-| `orrax_manifested` | `titan_heatstone` — Titan Heatstone | 750 | 1500 | +750 |
 | `orrax_manifested` | `mursaat_obsidian_chunk` — Mursaat Obsidian Chunk | 750 | 1500 | +750 |
-| `strife_unending` | `dust_incandescent` — Pile of Incandescent Dust | 0 | 750 | +750 |
-| `conflux` | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 250 | 750 | +500 |
-| `eikasia` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 500 | 1000 | +500 |
-| `gen1_the_bifrost` | `dust_incandescent` — Pile of Incandescent Dust | 250 | 750 | +500 |
-| `gen1_the_dreamer` | `dust_incandescent` — Pile of Incandescent Dust | 500 | 1000 | +500 |
-| `gen1_the_minstrel` | `dust_incandescent` — Pile of Incandescent Dust | 250 | 750 | +500 |
-| `klobjarne_geirr` | `orichalcum_ingot` — Orichalcum Ingot | 250 | 750 | +500 |
-| `orrax_manifested` | `large_scale` — Large Scale | 1000 | 500 | -500 |
-| `selachimorpha` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 800 | 300 | -500 |
-| `vision` | `trade_contract` — Trade Contract | 0 | 500 | +500 |
-| `orrax_manifested` | `ancient_wood_plank` — Ancient Wood Plank | 450 | 900 | +450 |
-| `klobjarne_geirr` | `darksteel_ingot` — Darksteel Ingot | 250 | 610 | +360 |
-| `vision` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 900 | 540 | -360 |
-| `ad_infinitum` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 590 | 250 | -340 |
-| `ad_infinitum` | `obsidian_shard` — Obsidian Shard | 339 | 30 | -309 |
-| `conflux` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 600 | 300 | -300 |
-| `gen2_astralaria` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_astralaria` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_chuka_and_champawat` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_chuka_and_champawat` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_chuka_and_champawat` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_eureka` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_exordium` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_exordium` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_exordium` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_flames_of_war` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_hope` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_hope` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_hope` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_nevermore` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_nevermore` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_nevermore` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_pharus` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_pharus` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_pharus` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_sharur` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |
-| `gen2_sharur` | `ley_line_crystal` — Ley Line Crystal | 500 | 800 | +300 |
-| `gen2_sharur` | `airship_part` — Airship Part | 500 | 800 | +300 |
-| `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 500 | 800 | +300 |

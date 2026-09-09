@@ -1722,7 +1722,8 @@ const SOURCES_DB = {
     "changelog_v210": "dragonite_ore / bloodstone_dust / empyreal_fragment : meme correctif que Klobjarne Geirr (v209), applique a The Ascension et Transcendence — retire les cles a plat directes (the_ascension: 1000 chacune ; transcendence: 1250 chacune), remplacees par la cascade deja presente et propre (2000 chacune via Vision Crystal -> Gift of Skirmishing, sans residu inexplique). Ecarte du correctif : Conflux et Warbringer, deja declares qty_overlap_verified par une session precedente (chevauchement legitime, cascade a 2250 avec un residu de 250 non explique par ce correctif — laisse en l'etat, deja tranche ailleurs).",
     "changelog_v211": "obsidian_shard sur klobjarne_geirr : 353 -> 50, source directe. La Full material list de Klobjarne Geirr montre '50 Obsidian Shards' comme composant primaire autonome (achete contre Karma ou converti depuis les recompenses PvP/WvW), separe de tout le reste de l'arbre — ni sous Eldritch Scroll, ni sous Draconic Tribute. La cascade Vision Crystal (deja propre, verifiee cette session) apporte 360 de plus via les trois lingots, total reel 410, contre 713 avant ce correctif (353 flat fautif + 360 cascade).",
     "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list.",
-    "changelog_v213": "skirmish_claim_ticket sur Warbringer : cables les 3 aretes manquantes vers Recruit's/Soldier's/General's Wings of War (350/525/700), Commander's (875) deja presente. Warcry demandant les 4 ailes (deja modelise), le cout est cumulatif : 350+525+700+875 = 2450 contre 2800 avant (875 cascade + 1925 flat directe fautive, retiree). Confirme par Antoine : les 4 objets se combinent en Forge mystique pour Warcry, le rang McM requis par palier est un prerequis d'ACHAT (deja documente dans sources.tip de chaque aile), pas un facteur reduisant le total."
+    "changelog_v213": "skirmish_claim_ticket sur Warbringer : cables les 3 aretes manquantes vers Recruit's/Soldier's/General's Wings of War (350/525/700), Commander's (875) deja presente. Warcry demandant les 4 ailes (deja modelise), le cout est cumulatif : 350+525+700+875 = 2450 contre 2800 avant (875 cascade + 1925 flat directe fautive, retiree). Confirme par Antoine : les 4 objets se combinent en Forge mystique pour Warcry, le rang McM requis par palier est un prerequis d'ACHAT (deja documente dans sources.tip de chaque aile), pas un facteur reduisant le total.",
+    "changelog_v214": "airship_part / ley_line_crystal / lump_of_aurillium sur les 15 gen2 (via Gift of Maguuma Mastery -> Gift of Insights) : 500 -> 800 chacune. La note deja capturee sur gift_of_insights precise le vrai total ('800 de chaque monnaie HoT, requis pour l'ensemble Itzel+Nuhoch+Exalted+Gliding'), jamais cablee. Les donnees attribuaient a tort chaque monnaie a UN SEUL don (Airship Part -> Gift of the Itzel, Ley Line Crystal -> Gift of the Nuhoch, Lump of Aurillium -> Gift of the Exalted, 500 chacune, Gift of Gliding jamais touche) — deplace vers gift_of_insights, seul niveau ou le total de 800 est reellement source."
   },
   "meta_events": {
     "vb": {
@@ -7219,8 +7220,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_itzel",
-        "gift_of_the_pact"
+        "gift_of_the_pact",
+        "gift_of_insights"
       ],
       "farmable": true,
       "sources": [
@@ -7237,8 +7238,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_itzel": 500,
-        "gift_of_the_pact": 250
+        "gift_of_the_pact": 250,
+        "gift_of_insights": 800
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7248,8 +7249,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_nuhoch",
-        "gift_of_the_pact"
+        "gift_of_the_pact",
+        "gift_of_insights"
       ],
       "farmable": true,
       "sources": [
@@ -7266,8 +7267,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_nuhoch": 500,
-        "gift_of_the_pact": 250
+        "gift_of_the_pact": 250,
+        "gift_of_insights": 800
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7277,8 +7278,8 @@ const SOURCES_DB = {
       "apiId": null,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_the_exalted",
-        "gift_of_the_pact"
+        "gift_of_the_pact",
+        "gift_of_insights"
       ],
       "farmable": true,
       "sources": [
@@ -7295,8 +7296,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_the_exalted": 500,
-        "gift_of_the_pact": 250
+        "gift_of_the_pact": 250,
+        "gift_of_insights": 800
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
