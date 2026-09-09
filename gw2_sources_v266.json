@@ -941,7 +941,8 @@
   "changelog_v216": "11 Tribute to X (gen2, sur les 11 -- Tribute to the Queen/Crown exclu, page non captee) : cout en monnaie modelise via 3 alt_groups (qty 10/15/20 selon la tribute), 6 monnaies au choix (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), Volatile Magic par defaut sur decision d'Antoine. unbound_magic cree comme composant (n'existait pas).",
   "changelog_v217": "glob_of_ectoplasm -> amalgamated_rift_essence : 50, source deja documentee dans le champ recipe d'amalgamated_rift_essence ('1 Amalgamated = 250 Fine + 100 Masterwork + 50 Rare + 50 Ecto') mais jamais cablee. Touche trois cascades existantes : gift_of_expertise (12, vers Obsidian armure et Gift of Janthir Wilds), gift_of_the_dessert (2, vers Gift of the Feast), gift_of_titan_understanding (25, vers Orrax Manifested).",
   "changelog_v218": "darksteel_ingot -> deldrimor_steel_ingot : 20, source deldrimor_steel_ingot.html (lot du 09/09), jamais cablee. Touche deldrimor_steel_spear_head (3, deja connecte a Klobjarne Geirr via gift_of_sharpened_tip/nyr_hrammr) et third_order_mist_frame (5, pas encore connecte a un legendaire -- aucun impact immediat, structure prete).",
-  "changelog_v219": "gift_of_war_prosperity : recette completee (gift_of_battle 1, gift_of_condensed_might 1, gift_of_condensed_magic 1 -- mystic_clover 15 deja present). Source deja capturee (gift_of_war_prosperity.html). Cascade vers gift_of_the_mist_warrior (3) -> strife_unending (1)."
+  "changelog_v219": "gift_of_war_prosperity : recette completee (gift_of_battle 1, gift_of_condensed_might 1, gift_of_condensed_magic 1 -- mystic_clover 15 deja present). Source deja capturee (gift_of_war_prosperity.html). Cascade vers gift_of_the_mist_warrior (3) -> strife_unending (1).",
+  "changelog_v220": "Orrax Contained : sources documentees completement (page fraiche fournie par Antoine). Confirme : le succes 'Unknown Nightmares: Orrax Contained' est un prerequis commun a DEUX voies (achat OU Forge mystique via Draconic Tribute), pas une voie unique. La voie Forge (deja modelisee, draconic_tribute.qty[orrax_contained]=1) reste le defaut -- confirmee correcte par Antoine, chiffres inchanges (68 Mystic Clover / 200 Pile of Crystalline Dust sur Orrax Manifested). Voie achat documentee pour reference, non decomposee (Plate of Orrian Steak Frittes a sa propre chaine)."
  },
  "meta_events": {
   "vb": {
@@ -8569,9 +8570,29 @@
     {
      "type": "achievement_collection",
      "tip": {
-      "fr": "Précurseur. Obtenu via le succès « Unknown Nightmares: Experiments in the Shadows » + craft élevé + succès de maîtrise Lowland Shore & Janthir Syntri. Débloqué chez Jorvik Jorundsson (Bava Nisos) après Salvation's Cost.",
-      "en": "Precursor. Obtained via the 'Unknown Nightmares: Experiments in the Shadows' achievement + ascended crafting + Lowland Shore & Janthir Syntri mastery achievements. Unlocked from Jorvik Jorundsson (Bava Nisos) after Salvation's Cost."
+      "fr": "Précurseur. Prérequis commun aux deux voies ci-dessous : succès « Unknown Nightmares: Experiments in the Shadows » + craft élevé + succès de maîtrise Lowland Shore & Janthir Syntri, puis succès « Unknown Nightmares: Orrax Contained » (débloque l'achat et la Forge mystique).",
+      "en": "Precursor. Common prerequisite for both routes below: 'Unknown Nightmares: Experiments in the Shadows' achievement + ascended crafting + Lowland Shore & Janthir Syntri mastery achievements, then 'Unknown Nightmares: Orrax Contained' (unlocks both purchase and Mystic Forge)."
      }
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Voie retenue (modélisée) : 1 Binding of the Dragon (récompense de succès) + 1 Draconic Tribute + 1 Salmon of Knowledge Backpiece + 1 Askur Camping Cookout Backpiece (tous deux récompenses de succès de maîtrise).",
+      "en": "Modelled route: 1 Binding of the Dragon (achievement reward) + 1 Draconic Tribute + 1 Salmon of Knowledge Backpiece + 1 Askur Camping Cookout Backpiece (both mastery achievement rewards)."
+     },
+     "verified": true,
+     "checked": "2026-09-09",
+     "ref": "orrax_contained.html, section Recipes"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Voie alternative (non modélisée en détail) : achat pour 5 Plate of Orrian Steak Frittes + 5 Gold coin + 52 500 Karma, chez Gharr Leadclaw (Lowland Shore) ou équivalents Janthir. Plate of Orrian Steak Frittes a sa propre chaîne de craft, non décomposée ici.",
+      "en": "Alternative route (not modelled in detail): purchase for 5 Plate of Orrian Steak Frittes + 5 Gold coin + 52,500 Karma, from Gharr Leadclaw (Lowland Shore) or Janthir equivalents. Plate of Orrian Steak Frittes has its own craft chain, not decomposed here."
+     },
+     "verified": true,
+     "checked": "2026-09-09",
+     "ref": "orrax_contained.html, section Sold by"
     }
    ],
    "qty": {
