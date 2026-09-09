@@ -49,6 +49,25 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Recruit's Wings of War` | 1 |
 | `Soldier's Wings of War` | 1 |
 
+### Ajout manuel (non détecté par le générateur)
+
+Wings of Ascension (PvP) demande 4 paliers, même structure que Warcry/Wings of
+War (McM) déjà résolu : `Recruit's`, `Veteran's`, `Champion's`, `Elite's Wings
+of Glory` (1 chacun). Trois de ces composants existent déjà côté données
+(`wings_of_glory_champion/elite/recruit`, sans page captée) ; `Veteran's`
+n'existe pas encore du tout côté composant. Le générateur ne les détecte pas
+pour la même raison que `Testimony of Castoran Heroics` avant lui : ces
+composants ont déjà de la donnée utilisable, donc ne comptent pas comme
+« trou ». Coûts en PvP League Ticket par palier inconnus tant que ces pages
+ne sont pas capturées.
+
+| page wiki |
+|---|
+| `Recruit's Wings of Glory` |
+| `Veteran's Wings of Glory` |
+| `Champion's Wings of Glory` |
+| `Elite's Wings of Glory` |
+
 ## 1 — 3 tables « Full material list » manquantes
 
 Ces cibles portent des coûts à plat mais leur page n'est pas capturée avec
