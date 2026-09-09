@@ -1715,7 +1715,8 @@ const SOURCES_DB = {
     "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste.",
     "changelog_v204": "Douze cibles fantomes supprimees (huit gen2 : Tigris, Caladbolg, Eordas Grip, Itzel's Boon, Hope Scepter, Lorekeeper, Elegy, Reaver of the Mists — des noms de paliers de collection deja retires de legendaries en v182 mais dont les residus trainaient dans legendary_ids, armory_apiid_to_legid (7 IDs API orphelins) et les qty de gift_of_battle/gift_of_maguuma_mastery/mystic_tribute ; quatre gen3 aurenes_guard/wrath/reckoning/tenderness, jamais confirmees en jeu, residus dans mystic_clover/mystic_coin/gift_of_jade_mastery/draconic_tribute/crystalline_ingot). Confirme par Antoine : liste canonique de 16 armes Aurene's, toutes deja 16/16 en base. gen3_aurenes_fang fusionnee dans gen3_aurene_s_fang (meme arme, cle orpheline) : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 recuperes, cohérents avec les 11 autres gen3. Son gift_of_battle: 1 n'a pas de pareil sur les 15 autres gen3 et n'est pas repris, en attente d'arbitrage.",
     "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurene_s_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source.",
-    "changelog_v206": "Cause reelle du sous-comptage thermocatalytic_reagent / sur-comptage obsidian_shard sur Conflux, Transcendence, Warbringer, The Ascension : bloodstone_brick / dragonite_ingot / empyreal_star n'avaient AUCUNE arete vers thermocatalytic_reagent/obsidian_shard, alors que leurs propres pages wiki donnent chacune 10 Thermocatalytic Reagent + 2 Obsidian Shard par unite (verifie sur bloodstone_brick.html, dragonite_ingot.html, empyreal_star.html, recipe-box). Aretes ajoutees une seule fois au niveau des trois lingots (source unique) ; la cascade existante (lingots -> vision_crystal:10 chacun -> Gift of Conquering/Gift of Skirmishing:2 -> les 4 legendaires) calcule desormais 600 thermocatalytic_reagent et 120 obsidian_shard, conforme a CONFRONTATION.md. Les cles a plat directes (300 / 309) sont retirees pour ces 4 cibles, devenues redondantes. CORRECTIF EN COURS DE ROUTE : un premier essai avait ajoute vision_crystal en arete DIRECTE sur les 4 legendaires — faux, ca doublait Gift of Conquering/Gift of Skirmishing qui portaient deja vision_crystal:2 chacun (source : recette propre de Gift of Conquering, verifiee sur gift_of_conquering.html — 1 Legendary Spike + 4 Gift of Battle + 250 Memory of Battle + 2 Vision Crystal). Corrige avant commit, jamais pousse. 6 avertissements 'lecture colonne 3' attendus et verifies a la main (10 thermocatalytic / 2 obsidian par lingot ET 10 lingots / vision_crystal sont deux faits reels, coincidence de nombre, pas une erreur)."
+    "changelog_v206": "Cause reelle du sous-comptage thermocatalytic_reagent / sur-comptage obsidian_shard sur Conflux, Transcendence, Warbringer, The Ascension : bloodstone_brick / dragonite_ingot / empyreal_star n'avaient AUCUNE arete vers thermocatalytic_reagent/obsidian_shard, alors que leurs propres pages wiki donnent chacune 10 Thermocatalytic Reagent + 2 Obsidian Shard par unite (verifie sur bloodstone_brick.html, dragonite_ingot.html, empyreal_star.html, recipe-box). Aretes ajoutees une seule fois au niveau des trois lingots (source unique) ; la cascade existante (lingots -> vision_crystal:10 chacun -> Gift of Conquering/Gift of Skirmishing:2 -> les 4 legendaires) calcule desormais 600 thermocatalytic_reagent et 120 obsidian_shard, conforme a CONFRONTATION.md. Les cles a plat directes (300 / 309) sont retirees pour ces 4 cibles, devenues redondantes. CORRECTIF EN COURS DE ROUTE : un premier essai avait ajoute vision_crystal en arete DIRECTE sur les 4 legendaires — faux, ca doublait Gift of Conquering/Gift of Skirmishing qui portaient deja vision_crystal:2 chacun (source : recette propre de Gift of Conquering, verifiee sur gift_of_conquering.html — 1 Legendary Spike + 4 Gift of Battle + 250 Memory of Battle + 2 Vision Crystal). Corrige avant commit, jamais pousse. 6 avertissements 'lecture colonne 3' attendus et verifies a la main (10 thermocatalytic / 2 obsidian par lingot ET 10 lingots / vision_crystal sont deux faits reels, coincidence de nombre, pas une erreur).",
+    "changelog_v207": "Funerary Incense : route par defaut posee au niveau de la source (Intendant primitif, Mosaiques d'elegie, 3/encens) plutot qu'au niveau de chaque legendaire — seule route sans plafond journalier ('voie de volume', deja documentee comme telle dans funerary_incense.cadence). elegy_mosaic.qty['funerary_incense']=3 pose ; les cles a plat coalescence (300) et vision (300) retirees, remplacees par la cascade existante funerary_incense(250/vision:100) -> gift_of_desert_mastery/gift_of_arid_mastery -> gift_of_compassion -> coalescence/vision. Resultat : coalescence passe de 300 a 750 mosaiques (conforme a CONFRONTATION.md) ; vision reste a 300 (la cascade retombe exactement sur l'ancien flat, donc aucun changement de chiffre affiche pour vision, juste une source unique au lieu de deux). trade_contract.qty['coalescence']=300 retire (route non retenue par defaut, restait un vestige d'un ancien partage arbitraire entre les deux monnaies) ; l'alternative Contrat commercial reste documentee dans funerary_incense.cadence.sources pour qui prefere farmer cette voie plutot que la carte source des mosaiques."
   },
   "meta_events": {
     "vb": {
@@ -5519,9 +5520,7 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_the_rider"
       ],
-      "qty": {
-        "coalescence": 300
-      },
+      "qty": {},
       "farmable": true,
       "sources": [
         {
@@ -11498,8 +11497,7 @@ const SOURCES_DB = {
       "apiId": 35,
       "kind": "currency",
       "qty": {
-        "vision": 300,
-        "coalescence": 300
+        "funerary_incense": 3
       },
       "farmable": true,
       "sources": [
@@ -11518,7 +11516,10 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "needed_for": [
+        "funerary_incense"
+      ]
     },
     "volatile_magic": {
       "name": "Volatile Magic",
