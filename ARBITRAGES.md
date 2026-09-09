@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v264.json` — 91 desaccords sur 25 composants.
+Source : `gw2_sources_v265.json` — 90 desaccords sur 24 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -24,7 +24,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `mystic_clover` — Mystic Clover | 3 | 90 | cout vendeur x2, deja compte par cascade x1 |
 | `pvp_league_ticket` — PvP League Ticket | 1 | 75 | deja compte par cascade x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
-| `gift_of_battle` — Gift of Battle | 1 | 1 | deja compte par cascade x1 |
 | `airship_part` — Airship Part | 16 | 0 | deja compte par cascade x16 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
 | `gift_of_bones` — Gift of Bones | 1 | 0 | deja compte par cascade x1 |
@@ -45,14 +44,14 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 
-## DEJA COMPTE PAR CASCADE — 81 cas
+## DEJA COMPTE PAR CASCADE — 80 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 81. Le reste se
+Les 60 plus gros ecarts sur 80. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
@@ -80,7 +79,6 @@ recalcule en relancant le script.
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_incinerator` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_rodgort` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `mystic_clover` — Mystic Clover | `orrax_manifested` | 38 | 30 | 8 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
-| `gift_of_battle` — Gift of Battle | `strife_unending` | 2 | 3 | 1 | gift_of_war_prosperity (recette) |
 | `airship_part` — Airship Part | `gen2_astralaria` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
 | `airship_part` — Airship Part | `gen2_claw_of_the_khan_ur` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
@@ -117,6 +115,7 @@ recalcule en relancant le script.
 | `ley_line_crystal` — Ley Line Crystal | `gen2_the_shining_blade` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_nuhoch (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_verdarach` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_nuhoch (vendeur) |
 | `ley_line_crystal` — Ley Line Crystal | `gen2_xiuquatl` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_nuhoch (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_astralaria` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_exalted (vendeur) |
 
 ## COUT VENDEUR — 9 cas
 
