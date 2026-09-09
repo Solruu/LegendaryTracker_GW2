@@ -642,6 +642,15 @@
   "aretes_table": []
  },
  {
+  "page": "astral_acclaim",
+  "titre": "Astral Acclaim",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "astral_purification",
   "titre": "Astral Purification",
   "api_id": null,
@@ -4921,6 +4930,20 @@
   "aretes_table": []
  },
  {
+  "page": "commanders_wings_of_war",
+  "titre": "Commander's Wings of War",
+  "api_id": 81294,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "WvW_Skirmish_Claim_Ticket",
+    "qty": 875
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "concentrated_chromatic_sap",
   "titre": "Concentrated Chromatic Sap",
   "api_id": 105848,
@@ -8277,6 +8300,20 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "generals_wings_of_war",
+  "titre": "General's Wings of War",
+  "api_id": 81288,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "WvW_Skirmish_Claim_Ticket",
+    "qty": 700
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -19307,6 +19344,32 @@
   "aretes_table": []
  },
  {
+  "page": "mystic_facet",
+  "titre": "Mystic Facet",
+  "api_id": 101540,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Relic",
+      1
+     ],
+     [
+      "Pile_of_Lucent_Crystal",
+      750
+     ]
+    ],
+    "produit": "Mystic Facet"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "mystic_tribute",
   "titre": "Mystic Tribute",
   "api_id": 71820,
@@ -20810,6 +20873,20 @@
   ]
  },
  {
+  "page": "philosophers_stone",
+  "titre": "Philosopher's Stone",
+  "api_id": 20796,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Bauble_Bubble",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "piece_of_common_unidentified_gear",
   "titre": "Piece of Common Unidentified Gear",
   "api_id": 85016,
@@ -21511,6 +21588,20 @@
   "aretes_table": []
  },
  {
+  "page": "recruits_wings_of_war",
+  "titre": "Recruit's Wings of War",
+  "api_id": 81455,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "WvW_Skirmish_Claim_Ticket",
+    "qty": 350
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "red_oak_sapling",
   "titre": "Red Oak Sapling",
   "api_id": null,
@@ -22192,6 +22283,40 @@
   "aretes_table": []
  },
  {
+  "page": "shard_of_arah",
+  "titre": "Shard of Arah",
+  "api_id": 82069,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Arah",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      40
+     ],
+     [
+      "Elder_Wood_Plank",
+      30
+     ]
+    ],
+    "produit": "Shard of Arah"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "shard_of_bava_nisos",
   "titre": "Shard of Bava Nisos",
   "api_id": 104855,
@@ -22210,6 +22335,142 @@
   "aretes_table": []
  },
  {
+  "page": "shard_of_call_of_the_void",
+  "titre": "Shard of Call of the Void",
+  "api_id": 87711,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_the_Call_of_the_Void",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      20
+     ],
+     [
+      "Elder_Wood_Plank",
+      10
+     ]
+    ],
+    "produit": "Shard of Call of the Void"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_endeavor",
+  "titre": "Shard of Endeavor",
+  "api_id": 79445,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Endeavor",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      30
+     ],
+     [
+      "Elder_Wood_Plank",
+      20
+     ]
+    ],
+    "produit": "Shard of Endeavor"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_exitare",
+  "titre": "Shard of Exitare",
+  "api_id": 90390,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_the_Exitare",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      40
+     ],
+     [
+      "Elder_Wood_Plank",
+      30
+     ]
+    ],
+    "produit": "Shard of Exitare"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_friendship",
+  "titre": "Shard of Friendship",
+  "api_id": 79784,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Friendship",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      20
+     ],
+     [
+      "Elder_Wood_Plank",
+      10
+     ]
+    ],
+    "produit": "Shard of Friendship"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "shard_of_janthir_syntri",
   "titre": "Shard of Janthir Syntri",
   "api_id": 103316,
@@ -22225,6 +22486,40 @@
     "qty": 3
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_liturgy",
+  "titre": "Shard of Liturgy",
+  "api_id": 81051,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Liturgy",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      20
+     ],
+     [
+      "Elder_Wood_Plank",
+      10
+     ]
+    ],
+    "produit": "Shard of Liturgy"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -22264,6 +22559,142 @@
   "aretes_table": []
  },
  {
+  "page": "shard_of_resolution",
+  "titre": "Shard of Resolution",
+  "api_id": 87031,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Resolution",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      30
+     ],
+     [
+      "Elder_Wood_Plank",
+      20
+     ]
+    ],
+    "produit": "Shard of Resolution"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_spero",
+  "titre": "Shard of Spero",
+  "api_id": 89947,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Spero",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      40
+     ],
+     [
+      "Elder_Wood_Plank",
+      30
+     ]
+    ],
+    "produit": "Shard of Spero"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_the_crown",
+  "titre": "Shard of the Crown",
+  "api_id": 81961,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_the_Queen",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      30
+     ],
+     [
+      "Elder_Wood_Plank",
+      20
+     ]
+    ],
+    "produit": "Shard of the Crown"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_the_dark_arts",
+  "titre": "Shard of the Dark Arts",
+  "api_id": 86120,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_the_Dark_Arts",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      20
+     ],
+     [
+      "Elder_Wood_Plank",
+      10
+     ]
+    ],
+    "produit": "Shard of the Dark Arts"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "shard_of_the_homestead",
   "titre": "Shard of the Homestead",
   "api_id": 103587,
@@ -22283,6 +22714,40 @@
     "qty": 5
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_of_tlehco",
+  "titre": "Shard of Tlehco",
+  "api_id": 88738,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_Tlehco",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      30
+     ],
+     [
+      "Elder_Wood_Plank",
+      20
+     ]
+    ],
+    "produit": "Shard of Tlehco"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -23188,6 +23653,20 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "soldiers_wings_of_war",
+  "titre": "Soldier's Wings of War",
+  "api_id": 81356,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "WvW_Skirmish_Claim_Ticket",
+    "qty": 525
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -26838,6 +27317,346 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "tribute_to_arah",
+  "titre": "Tribute to Arah",
+  "api_id": 81871,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 20
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 20
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 20
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 20
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 20
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_endeavor",
+  "titre": "Tribute to Endeavor",
+  "api_id": 79453,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 15
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 15
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 15
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 15
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 15
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 15
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_friendship",
+  "titre": "Tribute to Friendship",
+  "api_id": 79845,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 10
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 10
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 10
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 10
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 10
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_liturgy",
+  "titre": "Tribute to Liturgy",
+  "api_id": 81163,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 10
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 10
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 10
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 10
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 10
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_resolution",
+  "titre": "Tribute to Resolution",
+  "api_id": 87165,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 15
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 15
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 15
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 15
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 15
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 15
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_spero",
+  "titre": "Tribute to Spero",
+  "api_id": 89478,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 20
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 20
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 20
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 20
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 20
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_the_call_of_the_void",
+  "titre": "Tribute to the Call of the Void",
+  "api_id": 87627,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 10
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 10
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 10
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 10
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 10
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_the_dark_arts",
+  "titre": "Tribute to the Dark Arts",
+  "api_id": 86266,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 10
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 10
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 10
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 10
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 10
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_the_exitare",
+  "titre": "Tribute to the Exitare",
+  "api_id": 90776,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 20
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 20
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 20
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 20
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 20
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_tlehco",
+  "titre": "Tribute to Tlehco",
+  "api_id": 88756,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 15
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 15
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 15
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 15
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 15
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 15
+   }
+  ],
+  "aretes_table": []
  },
  {
   "page": "triumphant_heros_armor",
