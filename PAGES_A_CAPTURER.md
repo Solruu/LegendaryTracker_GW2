@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v249.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v261.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,29 +8,16 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 bis — 14 cibles citees par l'arbre sans entree connue
+## 0 bis — 1 cibles citees par l'arbre sans entree connue
 
 Ces cles portent des couts a plat mais ne correspondent ni a un legendaire,
 ni a une piece d'armure, ni a un composant. Ce n'est pas une capture qui
 manque, c'est une entree — souvent une variante d'ecriture d'une cle
 existante. A regler avant de capturer quoi que ce soit pour elles.
 
-- `gen2_caladbolg`
-- `gen2_elegy`
-- `gen2_eordas_grip`
-- `gen2_hope_scepter`
-- `gen2_itzels_boon`
-- `gen2_lorekeeper`
-- `gen2_reaver_of_the_mists`
-- `gen2_tigris`
 - `gen3`
-- `gen3_aurenes_fang`
-- `gen3_aurenes_guard`
-- `gen3_aurenes_reckoning`
-- `gen3_aurenes_tenderness`
-- `gen3_aurenes_wrath`
 
-## 0 — 19 trous de l'arbre — LA PRIORITÉ
+## 0 — 22 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -55,9 +42,12 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
+| `General's Wings of War` | 1 |
 | `Mystic Facet` | 1 |
 | `Olmakhan Bandolier` | 1 |
 | `Perfect Mist Core` | 1 |
+| `Recruit's Wings of War` | 1 |
+| `Soldier's Wings of War` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 
@@ -71,7 +61,7 @@ ignore ce que la cible contient réellement.
 | `Ardent Glorious armor` | 3 |
 | `Triumphant Hero's armor` | 3 |
 
-## 2 — 4 composants en arbitrage sans page au dépôt
+## 2 — 2 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -80,8 +70,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 | `Trade Contract` | 3 |
-| `Elegy Mosaic` | 2 |
-| `WvW Skirmish Claim Ticket` | 2 |
 | `Shard of the Dark Arts` | 1 |
 
 ## 3 — 28 composants sans apiId ni page
