@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v256.json` — 101 desaccords sur 27 composants.
+Source : `gw2_sources_v257.json` — 100 desaccords sur 27 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -15,10 +15,10 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
 | `dust_crystalline` — Pile of Crystalline Dust | 13 | 850 | deja compte par cascade x12, ecart de compte x1 |
 | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1 | 700 | deja compte par cascade x1 |
-| `obsidian_shard` — Obsidian Shard | 5 | 303 | deja compte par cascade x3, ecart de compte x1, cout vendeur x1 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
+| `obsidian_shard` — Obsidian Shard | 4 | 228 | deja compte par cascade x3, cout vendeur x1 |
 | `airship_part` — Airship Part | 16 | 200 | deja compte par cascade x16 |
 | `ley_line_crystal` — Ley Line Crystal | 16 | 200 | deja compte par cascade x16 |
 | `lump_of_aurillium` — Lump of Aurillium | 16 | 200 | deja compte par cascade x16 |
@@ -38,14 +38,13 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `shard_of_the_dark_arts` — Shard of the Dark Arts | 1 | 0 | deja compte par cascade x1 |
 | `vial_of_titan_melted_obsidian` — Vial of Titan Melted Liquid Obsidian | 1 | 0 | deja compte par cascade x1 |
 
-## ECART DE COMPTE — 2 cas
+## ECART DE COMPTE — 1 cas
 
 La cle a plat et l'arete donnent deux nombres differents : l'un des deux
 est faux. Se tranche sur la page du PARENT, boite Recipe.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `obsidian_shard` — Obsidian Shard | `klobjarne_geirr` | 353 | 50 | 303 | funerary_incense (vendeur), gift_of_expertise (recette), gift_of_prowess (recette) |
 | `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 
 ## DEJA COMPTE PAR CASCADE — 90 cas
