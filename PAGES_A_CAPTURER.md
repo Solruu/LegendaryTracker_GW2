@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v261.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v262.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -61,7 +61,7 @@ ignore ce que la cible contient réellement.
 | `Ardent Glorious armor` | 3 |
 | `Triumphant Hero's armor` | 3 |
 
-## 2 — 2 composants en arbitrage sans page au dépôt
+## 2 — 1 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -70,42 +70,21 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 | `Trade Contract` | 3 |
-| `Shard of the Dark Arts` | 1 |
 
-## 3 — 28 composants sans apiId ni page
+## 3 — 8 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Astral Acclaim` |
 | `Gift of Magical / Mighty Prosperity` |
 | `Olmakhan Bandolier` |
-| `Philosopher's Stone` |
-| `Shard of Arah` |
-| `Shard of Call of the Void` |
-| `Shard of Endeavor` |
-| `Shard of Exitare` |
-| `Shard of Friendship` |
-| `Shard of Liturgy` |
-| `Shard of Resolution` |
-| `Shard of Spero` |
-| `Shard of the Crown` |
-| `Shard of the Dark Arts` |
-| `Shard of Tlehco` |
 | `Spinal Blade Back Pack (Perfected)` |
-| `Tribute to Arah` |
 | `Tribute to Call of the Void` |
-| `Tribute to Endeavor` |
 | `Tribute to Exitare` |
-| `Tribute to Friendship` |
-| `Tribute to Liturgy` |
-| `Tribute to Resolution` |
-| `Tribute to Spero` |
 | `Tribute to the Crown` |
-| `Tribute to the Dark Arts` |
-| `Tribute to Tlehco` |
+| `Unbound Magic` |
 | `Valkyrie Bearkin War Helm` |
 
 ## 4 — 32 collections incomplètes — RIEN À CAPTURER

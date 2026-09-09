@@ -937,7 +937,8 @@
   "changelog_v211": "obsidian_shard sur klobjarne_geirr : 353 -> 50, source directe. La Full material list de Klobjarne Geirr montre '50 Obsidian Shards' comme composant primaire autonome (achete contre Karma ou converti depuis les recompenses PvP/WvW), separe de tout le reste de l'arbre — ni sous Eldritch Scroll, ni sous Draconic Tribute. La cascade Vision Crystal (deja propre, verifiee cette session) apporte 360 de plus via les trois lingots, total reel 410, contre 713 avant ce correctif (353 flat fautif + 360 cascade).",
   "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list.",
   "changelog_v213": "skirmish_claim_ticket sur Warbringer : cables les 3 aretes manquantes vers Recruit's/Soldier's/General's Wings of War (350/525/700), Commander's (875) deja presente. Warcry demandant les 4 ailes (deja modelise), le cout est cumulatif : 350+525+700+875 = 2450 contre 2800 avant (875 cascade + 1925 flat directe fautive, retiree). Confirme par Antoine : les 4 objets se combinent en Forge mystique pour Warcry, le rang McM requis par palier est un prerequis d'ACHAT (deja documente dans sources.tip de chaque aile), pas un facteur reduisant le total.",
-  "changelog_v214": "airship_part / ley_line_crystal / lump_of_aurillium sur les 15 gen2 (via Gift of Maguuma Mastery -> Gift of Insights) : 500 -> 800 chacune. La note deja capturee sur gift_of_insights precise le vrai total ('800 de chaque monnaie HoT, requis pour l'ensemble Itzel+Nuhoch+Exalted+Gliding'), jamais cablee. Les donnees attribuaient a tort chaque monnaie a UN SEUL don (Airship Part -> Gift of the Itzel, Ley Line Crystal -> Gift of the Nuhoch, Lump of Aurillium -> Gift of the Exalted, 500 chacune, Gift of Gliding jamais touche) — deplace vers gift_of_insights, seul niveau ou le total de 800 est reellement source."
+  "changelog_v214": "airship_part / ley_line_crystal / lump_of_aurillium sur les 15 gen2 (via Gift of Maguuma Mastery -> Gift of Insights) : 500 -> 800 chacune. La note deja capturee sur gift_of_insights precise le vrai total ('800 de chaque monnaie HoT, requis pour l'ensemble Itzel+Nuhoch+Exalted+Gliding'), jamais cablee. Les donnees attribuaient a tort chaque monnaie a UN SEUL don (Airship Part -> Gift of the Itzel, Ley Line Crystal -> Gift of the Nuhoch, Lump of Aurillium -> Gift of the Exalted, 500 chacune, Gift of Gliding jamais touche) — deplace vers gift_of_insights, seul niveau ou le total de 800 est reellement source.",
+  "changelog_v216": "11 Tribute to X (gen2, sur les 11 -- Tribute to the Queen/Crown exclu, page non captee) : cout en monnaie modelise via 3 alt_groups (qty 10/15/20 selon la tribute), 6 monnaies au choix (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), Volatile Magic par defaut sur decision d'Antoine. unbound_magic cree comme composant (n'existait pas)."
  },
  "meta_events": {
   "vb": {
@@ -19946,6 +19947,24 @@
    "ref": "wiki Mystic Clover — section Acquisition",
    "checked": "2026-09-08",
    "verified": "cite par la page, cout non chiffre"
+  },
+  "unbound_magic": {
+   "name": "Unbound Magic",
+   "kind": "currency",
+   "qty": {},
+   "farmable": true,
+   "sources": [
+    {
+     "type": "map_currency",
+     "tip": {
+      "fr": "Monnaie de carte PoF : nœuds, événements et métas des cartes du Désert de cristal.",
+      "en": "PoF map currency: nodes, events and metas on Crystal Desert maps."
+     },
+     "free_repeatable": true,
+     "cadence": "à volonté"
+    }
+   ],
+   "_note_capture": "Page wiki propre non encore capturee (cadence/plafonds non verifies) -- ajoutee a PAGES_A_CAPTURER."
   }
  },
  "enchaînements_recommandés": {
@@ -66537,6 +66556,91 @@
     "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
    },
    "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
+  },
+  "tribut_20": {
+   "qty": 20,
+   "options": [
+    "volatile_magic",
+    "unbound_magic",
+    "airship_part",
+    "ley_line_crystal",
+    "lump_of_aurillium",
+    "trade_contract"
+   ],
+   "default": "volatile_magic",
+   "targets": [
+    "tribute_to_arah",
+    "tribute_to_spero",
+    "tribute_to_exitare"
+   ],
+   "label": {
+    "fr": "Tribute to X — une seule des six monnaies (20)",
+    "en": "Tribute to X — one of six currencies (20)"
+   },
+   "note": {
+    "fr": "Chaque Tribute to X s'achete indifferemment contre l'une de six monnaies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), meme quantite pour les six. Volatile Magic retenu par defaut (meta EoD, cout marginal nul) ; bascule vers une autre monnaie possible si tu veux accelerer avec des ressources deja en stock.",
+    "en": "Each Tribute to X is bought with any one of six currencies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), same quantity for all six. Volatile Magic kept as default (free EoD meta); switch to another currency to speed up using stock you already have."
+   },
+   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
+   "verified": true,
+   "checked": "2026-09-09"
+  },
+  "tribut_15": {
+   "qty": 15,
+   "options": [
+    "volatile_magic",
+    "unbound_magic",
+    "airship_part",
+    "ley_line_crystal",
+    "lump_of_aurillium",
+    "trade_contract"
+   ],
+   "default": "volatile_magic",
+   "targets": [
+    "tribute_to_endeavor",
+    "tribute_to_resolution",
+    "tribute_to_tlehco"
+   ],
+   "label": {
+    "fr": "Tribute to X — une seule des six monnaies (15)",
+    "en": "Tribute to X — one of six currencies (15)"
+   },
+   "note": {
+    "fr": "Chaque Tribute to X s'achete indifferemment contre l'une de six monnaies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), meme quantite pour les six. Volatile Magic retenu par defaut (meta EoD, cout marginal nul) ; bascule vers une autre monnaie possible si tu veux accelerer avec des ressources deja en stock.",
+    "en": "Each Tribute to X is bought with any one of six currencies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), same quantity for all six. Volatile Magic kept as default (free EoD meta); switch to another currency to speed up using stock you already have."
+   },
+   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
+   "verified": true,
+   "checked": "2026-09-09"
+  },
+  "tribut_10": {
+   "qty": 10,
+   "options": [
+    "volatile_magic",
+    "unbound_magic",
+    "airship_part",
+    "ley_line_crystal",
+    "lump_of_aurillium",
+    "trade_contract"
+   ],
+   "default": "volatile_magic",
+   "targets": [
+    "tribute_to_friendship",
+    "tribute_to_liturgy",
+    "tribute_to_the_dark_arts",
+    "tribute_to_call_of_the_void"
+   ],
+   "label": {
+    "fr": "Tribute to X — une seule des six monnaies (10)",
+    "en": "Tribute to X — one of six currencies (10)"
+   },
+   "note": {
+    "fr": "Chaque Tribute to X s'achete indifferemment contre l'une de six monnaies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), meme quantite pour les six. Volatile Magic retenu par defaut (meta EoD, cout marginal nul) ; bascule vers une autre monnaie possible si tu veux accelerer avec des ressources deja en stock.",
+    "en": "Each Tribute to X is bought with any one of six currencies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), same quantity for all six. Volatile Magic kept as default (free EoD meta); switch to another currency to speed up using stock you already have."
+   },
+   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
+   "verified": true,
+   "checked": "2026-09-09"
   }
  }
 }

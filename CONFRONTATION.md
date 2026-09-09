@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v261.json`. 318 ecarts sur 66 legendaires.
+Source : `gw2_sources_v262.json`. 319 ecarts sur 66 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -18,7 +18,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 |---|---:|---:|
 | `klobjarne_geirr` | 17 | 13248 |
 | `legendary_relic` | 2 | 12750 |
-| `gen2_the_binding_of_ipos` | 9 | 11700 |
+| `gen2_the_binding_of_ipos` | 10 | 12700 |
 | `ad_infinitum` | 20 | 9189 |
 | `conflux` | 15 | 7780 |
 | `orrax_manifested` | 40 | 7030 |
@@ -91,31 +91,32 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
 | `gen2_the_binding_of_ipos` | `large_bone` — Large Bone | 4000 | 7500 | +3500 |
 | `gen2_the_binding_of_ipos` | `mithril_ingot` — Mithril Ingot | 3500 | 7000 | +3500 |
-| `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 6000 | 3000 | -3000 |
 | `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
 | `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 6000 | 3000 | -3000 |
+| `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 6000 | 3000 | -3000 |
 | `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
-| `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
+| `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
-| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `klobjarne_geirr` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 3730 | 1930 | -1800 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
 | `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `coalescence` | `trade_contract` — Trade Contract | 0 | 1250 | +1250 |
-| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
 | `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
-| `the_ascension` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
+| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
+| `gen2_the_binding_of_ipos` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `the_ascension` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `the_ascension` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |
-| `transcendence` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
+| `the_ascension` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
 | `transcendence` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `transcendence` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |
+| `transcendence` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
 | `klobjarne_geirr` | `mithril_ingot` — Mithril Ingot | 250 | 1150 | +900 |
 | `gen2_astralaria` | `airship_part` — Airship Part | 800 | 1600 | +800 |
 | `gen2_astralaria` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
@@ -166,4 +167,3 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 1600 | +800 |
 | `gen2_xiuquatl` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |
 | `ad_infinitum` | `glob_of_ectoplasm` — Glob of Ectoplasm | 1039 | 280 | -759 |
-| `orrax_manifested` | `mursaat_obsidian_chunk` — Mursaat Obsidian Chunk | 750 | 1500 | +750 |
