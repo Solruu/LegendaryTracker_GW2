@@ -1717,7 +1717,9 @@ const SOURCES_DB = {
     "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurene_s_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source.",
     "changelog_v206": "Cause reelle du sous-comptage thermocatalytic_reagent / sur-comptage obsidian_shard sur Conflux, Transcendence, Warbringer, The Ascension : bloodstone_brick / dragonite_ingot / empyreal_star n'avaient AUCUNE arete vers thermocatalytic_reagent/obsidian_shard, alors que leurs propres pages wiki donnent chacune 10 Thermocatalytic Reagent + 2 Obsidian Shard par unite (verifie sur bloodstone_brick.html, dragonite_ingot.html, empyreal_star.html, recipe-box). Aretes ajoutees une seule fois au niveau des trois lingots (source unique) ; la cascade existante (lingots -> vision_crystal:10 chacun -> Gift of Conquering/Gift of Skirmishing:2 -> les 4 legendaires) calcule desormais 600 thermocatalytic_reagent et 120 obsidian_shard, conforme a CONFRONTATION.md. Les cles a plat directes (300 / 309) sont retirees pour ces 4 cibles, devenues redondantes. CORRECTIF EN COURS DE ROUTE : un premier essai avait ajoute vision_crystal en arete DIRECTE sur les 4 legendaires — faux, ca doublait Gift of Conquering/Gift of Skirmishing qui portaient deja vision_crystal:2 chacun (source : recette propre de Gift of Conquering, verifiee sur gift_of_conquering.html — 1 Legendary Spike + 4 Gift of Battle + 250 Memory of Battle + 2 Vision Crystal). Corrige avant commit, jamais pousse. 6 avertissements 'lecture colonne 3' attendus et verifies a la main (10 thermocatalytic / 2 obsidian par lingot ET 10 lingots / vision_crystal sont deux faits reels, coincidence de nombre, pas une erreur).",
     "changelog_v207": "Funerary Incense : route par defaut posee au niveau de la source (Intendant primitif, Mosaiques d'elegie, 3/encens) plutot qu'au niveau de chaque legendaire — seule route sans plafond journalier ('voie de volume', deja documentee comme telle dans funerary_incense.cadence). elegy_mosaic.qty['funerary_incense']=3 pose ; les cles a plat coalescence (300) et vision (300) retirees, remplacees par la cascade existante funerary_incense(250/vision:100) -> gift_of_desert_mastery/gift_of_arid_mastery -> gift_of_compassion -> coalescence/vision. Resultat : coalescence passe de 300 a 750 mosaiques (conforme a CONFRONTATION.md) ; vision reste a 300 (la cascade retombe exactement sur l'ancien flat, donc aucun changement de chiffre affiche pour vision, juste une source unique au lieu de deux). trade_contract.qty['coalescence']=300 retire (route non retenue par defaut, restait un vestige d'un ancien partage arbitraire entre les deux monnaies) ; l'alternative Contrat commercial reste documentee dans funerary_incense.cadence.sources pour qui prefere farmer cette voie plutot que la carte source des mosaiques.",
-    "changelog_v208": "magnetite_shard : les trois cles fabriquees (coalescence 350, gift_of_patience 100, gift_of_complex_emotions 100 - total 550 sur Coalescence) sont retirees. Source : page wiki 'Magnetite Shard/Used in', qui liste tous les consommateurs reels de l'objet - exclusivement des trophees Handiworker/Homestead, aucune legendaire. Confirme par la Full material list de Coalescence elle-meme (Gift of Patience/Gift of Complex Emotions obtenus par succes de scenario, pas par artisanat)."
+    "changelog_v208": "magnetite_shard : les trois cles fabriquees (coalescence 350, gift_of_patience 100, gift_of_complex_emotions 100 - total 550 sur Coalescence) sont retirees. Source : page wiki 'Magnetite Shard/Used in', qui liste tous les consommateurs reels de l'objet - exclusivement des trophees Handiworker/Homestead, aucune legendaire. Confirme par la Full material list de Coalescence elle-meme (Gift of Patience/Gift of Complex Emotions obtenus par succes de scenario, pas par artisanat).",
+    "changelog_v209": "dragonite_ore / bloodstone_dust / empyreal_fragment : retire la cle a plat directe klobjarne_geirr (3000 chacune, 9000 au total). Source : les trois pages wiki 'Used in' (Dragonite Ore, Pile of Bloodstone Dust, Empyreal Fragment, captures Antoine) sont exhaustives et ne citent aucune voie vers Klobjarne Geirr ou ses composants (Gift of Metal, Gift of the Mists, Draconic Tribute) — seule la voie ingot/brique/etoile existe (100 matiere brute chacun), deja comptee via la cascade Vision Crystal (6, sourcee sur la Full material list de Klobjarne Geirr) -> 60 lingots -> 6000 matiere brute chacune. L'audit confirmait deja le doublon (klobjarne_geirr etait le seul signale 'atteint a la fois en direct et via [ingot]' parmi les cibles concernees par ces trois matieres). Klobjarne Geirr passe donc de 9000 a 6000 pour chacune des trois matieres (-9000 au total). Les autres cibles partageant ces cles a plat (conflux, warbringer, transcendence, the_ascension, ad_infinitum, selachimorpha) ne sont PAS touchees : l'audit ne les signale pas comme doublon, et un ecart residuel de 250 sur conflux/warbringer face a l'estimation manuelle reste a comprendre avant d'y toucher — hors perimetre de cette passe.",
+    "changelog_v210": "dragonite_ore / bloodstone_dust / empyreal_fragment : meme correctif que Klobjarne Geirr (v209), applique a The Ascension et Transcendence — retire les cles a plat directes (the_ascension: 1000 chacune ; transcendence: 1250 chacune), remplacees par la cascade deja presente et propre (2000 chacune via Vision Crystal -> Gift of Skirmishing, sans residu inexplique). Ecarte du correctif : Conflux et Warbringer, deja declares qty_overlap_verified par une session precedente (chevauchement legitime, cascade a 2250 avec un residu de 250 non explique par ce correctif — laisse en l'etat, deja tranche ailleurs)."
   },
   "meta_events": {
     "vb": {
@@ -10865,10 +10867,7 @@ const SOURCES_DB = {
         "warbringer": 1000,
         "mystic_essence_of_carnage": 250,
         "ad_infinitum": 1500,
-        "klobjarne_geirr": 3000,
-        "selachimorpha": 1000,
-        "the_ascension": 1000,
-        "transcendence": 1250
+        "selachimorpha": 1000
       },
       "kind": "base",
       "farmable": true,
@@ -10898,11 +10897,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "dragonite_ingot",
-        "klobjarne_geirr",
         "mystic_essence_of_carnage",
-        "selachimorpha",
-        "the_ascension",
-        "transcendence"
+        "selachimorpha"
       ],
       "qty_overlap_verified": [
         "conflux",
@@ -10922,10 +10918,7 @@ const SOURCES_DB = {
         "warbringer": 1000,
         "mystic_essence_of_animosity": 250,
         "ad_infinitum": 1500,
-        "klobjarne_geirr": 3000,
-        "selachimorpha": 1000,
-        "the_ascension": 1000,
-        "transcendence": 1250
+        "selachimorpha": 1000
       },
       "kind": "base",
       "farmable": true,
@@ -10955,11 +10948,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "empyreal_star",
-        "klobjarne_geirr",
         "mystic_essence_of_animosity",
-        "selachimorpha",
-        "the_ascension",
-        "transcendence"
+        "selachimorpha"
       ],
       "qty_overlap_verified": [
         "conflux",
@@ -10979,10 +10969,7 @@ const SOURCES_DB = {
         "warbringer": 1000,
         "mystic_essence_of_strategy": 250,
         "ad_infinitum": 1500,
-        "klobjarne_geirr": 3000,
-        "selachimorpha": 1000,
-        "the_ascension": 1000,
-        "transcendence": 1250
+        "selachimorpha": 1000
       },
       "kind": "base",
       "farmable": true,
@@ -11012,11 +10999,8 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "bloodstone_brick",
-        "klobjarne_geirr",
         "mystic_essence_of_strategy",
-        "selachimorpha",
-        "the_ascension",
-        "transcendence"
+        "selachimorpha"
       ],
       "qty_overlap_verified": [
         "conflux",
