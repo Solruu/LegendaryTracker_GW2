@@ -938,7 +938,8 @@
   "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list.",
   "changelog_v213": "skirmish_claim_ticket sur Warbringer : cables les 3 aretes manquantes vers Recruit's/Soldier's/General's Wings of War (350/525/700), Commander's (875) deja presente. Warcry demandant les 4 ailes (deja modelise), le cout est cumulatif : 350+525+700+875 = 2450 contre 2800 avant (875 cascade + 1925 flat directe fautive, retiree). Confirme par Antoine : les 4 objets se combinent en Forge mystique pour Warcry, le rang McM requis par palier est un prerequis d'ACHAT (deja documente dans sources.tip de chaque aile), pas un facteur reduisant le total.",
   "changelog_v214": "airship_part / ley_line_crystal / lump_of_aurillium sur les 15 gen2 (via Gift of Maguuma Mastery -> Gift of Insights) : 500 -> 800 chacune. La note deja capturee sur gift_of_insights precise le vrai total ('800 de chaque monnaie HoT, requis pour l'ensemble Itzel+Nuhoch+Exalted+Gliding'), jamais cablee. Les donnees attribuaient a tort chaque monnaie a UN SEUL don (Airship Part -> Gift of the Itzel, Ley Line Crystal -> Gift of the Nuhoch, Lump of Aurillium -> Gift of the Exalted, 500 chacune, Gift of Gliding jamais touche) — deplace vers gift_of_insights, seul niveau ou le total de 800 est reellement source.",
-  "changelog_v216": "11 Tribute to X (gen2, sur les 11 -- Tribute to the Queen/Crown exclu, page non captee) : cout en monnaie modelise via 3 alt_groups (qty 10/15/20 selon la tribute), 6 monnaies au choix (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), Volatile Magic par defaut sur decision d'Antoine. unbound_magic cree comme composant (n'existait pas)."
+  "changelog_v216": "11 Tribute to X (gen2, sur les 11 -- Tribute to the Queen/Crown exclu, page non captee) : cout en monnaie modelise via 3 alt_groups (qty 10/15/20 selon la tribute), 6 monnaies au choix (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), Volatile Magic par defaut sur decision d'Antoine. unbound_magic cree comme composant (n'existait pas).",
+  "changelog_v217": "glob_of_ectoplasm -> amalgamated_rift_essence : 50, source deja documentee dans le champ recipe d'amalgamated_rift_essence ('1 Amalgamated = 250 Fine + 100 Masterwork + 50 Rare + 50 Ecto') mais jamais cablee. Touche trois cascades existantes : gift_of_expertise (12, vers Obsidian armure et Gift of Janthir Wilds), gift_of_the_dessert (2, vers Gift of the Feast), gift_of_titan_understanding (25, vers Orrax Manifested)."
  },
  "meta_events": {
   "vb": {
@@ -5748,7 +5749,8 @@
     "gift_of_fortune": 250,
     "neutralized_titan_alloy": 3,
     "seer_runestone": 10,
-    "funerary_incense": 1
+    "funerary_incense": 1,
+    "amalgamated_rift_essence": 50
    },
    "kind": "acquire",
    "best": "salvage",
