@@ -934,7 +934,8 @@
   "changelog_v208": "magnetite_shard : les trois cles fabriquees (coalescence 350, gift_of_patience 100, gift_of_complex_emotions 100 - total 550 sur Coalescence) sont retirees. Source : page wiki 'Magnetite Shard/Used in', qui liste tous les consommateurs reels de l'objet - exclusivement des trophees Handiworker/Homestead, aucune legendaire. Confirme par la Full material list de Coalescence elle-meme (Gift of Patience/Gift of Complex Emotions obtenus par succes de scenario, pas par artisanat).",
   "changelog_v209": "dragonite_ore / bloodstone_dust / empyreal_fragment : retire la cle a plat directe klobjarne_geirr (3000 chacune, 9000 au total). Source : les trois pages wiki 'Used in' (Dragonite Ore, Pile of Bloodstone Dust, Empyreal Fragment, captures Antoine) sont exhaustives et ne citent aucune voie vers Klobjarne Geirr ou ses composants (Gift of Metal, Gift of the Mists, Draconic Tribute) — seule la voie ingot/brique/etoile existe (100 matiere brute chacun), deja comptee via la cascade Vision Crystal (6, sourcee sur la Full material list de Klobjarne Geirr) -> 60 lingots -> 6000 matiere brute chacune. L'audit confirmait deja le doublon (klobjarne_geirr etait le seul signale 'atteint a la fois en direct et via [ingot]' parmi les cibles concernees par ces trois matieres). Klobjarne Geirr passe donc de 9000 a 6000 pour chacune des trois matieres (-9000 au total). Les autres cibles partageant ces cles a plat (conflux, warbringer, transcendence, the_ascension, ad_infinitum, selachimorpha) ne sont PAS touchees : l'audit ne les signale pas comme doublon, et un ecart residuel de 250 sur conflux/warbringer face a l'estimation manuelle reste a comprendre avant d'y toucher — hors perimetre de cette passe.",
   "changelog_v210": "dragonite_ore / bloodstone_dust / empyreal_fragment : meme correctif que Klobjarne Geirr (v209), applique a The Ascension et Transcendence — retire les cles a plat directes (the_ascension: 1000 chacune ; transcendence: 1250 chacune), remplacees par la cascade deja presente et propre (2000 chacune via Vision Crystal -> Gift of Skirmishing, sans residu inexplique). Ecarte du correctif : Conflux et Warbringer, deja declares qty_overlap_verified par une session precedente (chevauchement legitime, cascade a 2250 avec un residu de 250 non explique par ce correctif — laisse en l'etat, deja tranche ailleurs).",
-  "changelog_v211": "obsidian_shard sur klobjarne_geirr : 353 -> 50, source directe. La Full material list de Klobjarne Geirr montre '50 Obsidian Shards' comme composant primaire autonome (achete contre Karma ou converti depuis les recompenses PvP/WvW), separe de tout le reste de l'arbre — ni sous Eldritch Scroll, ni sous Draconic Tribute. La cascade Vision Crystal (deja propre, verifiee cette session) apporte 360 de plus via les trois lingots, total reel 410, contre 713 avant ce correctif (353 flat fautif + 360 cascade)."
+  "changelog_v211": "obsidian_shard sur klobjarne_geirr : 353 -> 50, source directe. La Full material list de Klobjarne Geirr montre '50 Obsidian Shards' comme composant primaire autonome (achete contre Karma ou converti depuis les recompenses PvP/WvW), separe de tout le reste de l'arbre — ni sous Eldritch Scroll, ni sous Draconic Tribute. La cascade Vision Crystal (deja propre, verifiee cette session) apporte 360 de plus via les trois lingots, total reel 410, contre 713 avant ce correctif (353 flat fautif + 360 cascade).",
+  "changelog_v212": "Aetheric Anchor : gift_of_condensed_magic et gift_of_condensed_might avaient chacun une arete directe vers aetheric_anchor (4) EN PLUS de la cascade via gift_of_insight (4 aussi, gift_of_insight.qty['aetheric_anchor']=1 x gift_of_condensed_magic.qty['gift_of_insight']=4), doublant tout l'arbre en dessous (Blood/Venom/Totems/Dust et Fangs/Scales/Claws/Bones). Source : la Full material list d'Aetheric Anchor montre '4 Gifts of Condensed Magic' et '4 Gifts of Condensed Might' comme enfants de Gift of Insight (achete chez Magister Sirkk, la page precise explicitement 'NOT a Mystic Forge recipe' — ce sont les composants du prix d'achat, pas une seconde voie). Aretes directes retirees ; dust_crystalline passe de 800 a 400 pour Aetheric Anchor, conforme a la Full material list."
  },
  "meta_events": {
   "vb": {
@@ -4899,7 +4900,8 @@
     "strife_unending",
     "bloodstone_brick",
     "dragonite_ingot",
-    "empyreal_star"
+    "empyreal_star",
+    "funerary_incense"
    ],
    "qty": {
     "perfected_envoy__per_piece": 50,
@@ -4923,7 +4925,8 @@
     "gift_of_infused_gems": 250,
     "bloodstone_brick": 2,
     "dragonite_ingot": 2,
-    "empyreal_star": 2
+    "empyreal_star": 2,
+    "funerary_incense": 1
    },
    "farmable": true,
    "sources": [
@@ -5689,7 +5692,8 @@
     "stella_radians",
     "strife_unending",
     "the_ascension",
-    "transcendence"
+    "transcendence",
+    "funerary_incense"
    ],
    "farmable": true,
    "sources": [
@@ -5740,7 +5744,8 @@
     "glob_of_coagulated_mists_essence": 1,
     "gift_of_fortune": 250,
     "neutralized_titan_alloy": 3,
-    "seer_runestone": 10
+    "seer_runestone": 10,
+    "funerary_incense": 1
    },
    "kind": "acquire",
    "best": "salvage",
@@ -6246,7 +6251,6 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 1,
-    "aetheric_anchor": 4,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
@@ -6297,7 +6301,6 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 1,
-    "aetheric_anchor": 4,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
@@ -9621,7 +9624,8 @@
     "gift_of_infused_gems",
     "klobjarne_geirr",
     "orrax_manifested",
-    "shard_of_bava_nisos"
+    "shard_of_bava_nisos",
+    "funerary_incense"
    ],
    "farmable": true,
    "sources": [
@@ -9685,7 +9689,8 @@
     "discounted_shard_of_janthir_syntri": 1,
     "discounted_shard_of_lowland_shore": 1,
     "discounted_shard_of_mistburned_barrens": 1,
-    "shard_of_bava_nisos": 1
+    "shard_of_bava_nisos": 1,
+    "funerary_incense": 1
    },
    "verified": true,
    "checked": "2026-08-22",
@@ -15762,7 +15767,6 @@
    "kind": "intermediate",
    "farmable": false,
    "needed_for": [
-    "funerary_incense",
     "gift_of_draconic_mastery",
     "gift_of_maguuma_mastery",
     "gen3_aurene_s_flight",
@@ -15770,7 +15774,6 @@
     "gen3_aurene_s_wing"
    ],
    "qty": {
-    "funerary_incense": 1,
     "gen2_eureka": 250,
     "gen2_shooshadoo": 250,
     "gen2_exordium": 250,

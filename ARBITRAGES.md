@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v257.json` — 100 desaccords sur 27 composants.
+Source : `gw2_sources_v259.json` — 94 desaccords sur 27 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,15 +10,16 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | 6 | 3600 | deja compte par cascade x5, cout vendeur x1 |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | 3 | 1650 | deja compte par cascade x3 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
+| `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x12, ecart de compte x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
-| `dust_crystalline` — Pile of Crystalline Dust | 13 | 850 | deja compte par cascade x12, ecart de compte x1 |
 | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1 | 700 | deja compte par cascade x1 |
+| `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
-| `obsidian_shard` — Obsidian Shard | 4 | 228 | deja compte par cascade x3, cout vendeur x1 |
+| `obsidian_shard` — Obsidian Shard | 1 | 228 | deja compte par cascade x1 |
 | `airship_part` — Airship Part | 16 | 200 | deja compte par cascade x16 |
 | `ley_line_crystal` — Ley Line Crystal | 16 | 200 | deja compte par cascade x16 |
 | `lump_of_aurillium` — Lump of Aurillium | 16 | 200 | deja compte par cascade x16 |
@@ -29,7 +30,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `pvp_league_ticket` — PvP League Ticket | 1 | 75 | deja compte par cascade x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 | `gift_of_battle` — Gift of Battle | 1 | 1 | deja compte par cascade x1 |
-| `amalgamated_gemstone` — Amalgamated Gemstone | 2 | 0 | deja compte par cascade x2 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
 | `gift_of_bones` — Gift of Bones | 1 | 0 | deja compte par cascade x1 |
 | `inscribed_shard` — Inscribed Shard | 1 | 0 | deja compte par cascade x1 |
@@ -47,32 +47,31 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 
-## DEJA COMPTE PAR CASCADE — 90 cas
+## DEJA COMPTE PAR CASCADE — 84 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 90. Le reste se
+Les 60 plus gros ecarts sur 84. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 150 | 1800 | 1650 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 150 | 1800 | 1650 | amalgamated_rift_essence (recette), unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
-| `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 800 | 1650 | 850 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
+| `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 400 | 1650 | 1250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | `warbringer` | 875 | 1575 | 700 | generals_wings_of_war (table), recruits_wings_of_war (table), soldiers_wings_of_war (table) |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `vision` | 768 | 100 | 668 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `klobjarne_geirr` | 300 | 600 | 300 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `klobjarne_geirr` | 300 | 600 | 300 | amalgamated_rift_essence (recette), unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_bifrost` | 250 | 500 | 250 | opal_orb (recette) |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_minstrel` | 250 | 500 | 250 | opal_orb (recette) |
 | `orichalcum_ingot` — Orichalcum Ingot | `klobjarne_geirr` | 250 | 500 | 250 | neutralized_titan_alloy (recette) |
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | `conflux` | 250 | 500 | 250 | essence_of_animosity (recette) |
-| `obsidian_shard` — Obsidian Shard | `obsidian` | 72 | 300 | 228 | funerary_incense (vendeur), gift_of_expertise (recette), gift_of_prowess (recette) |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 250 | 25 | 225 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
+| `obsidian_shard` — Obsidian Shard | `obsidian` | 72 | 300 | 228 | gift_of_expertise (recette), gift_of_prowess (recette) |
+| `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 250 | 25 | 225 | amalgamated_rift_essence (recette), unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
 | `airship_part` — Airship Part | `gen2_astralaria` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `airship_part` — Airship Part | `gen2_claw_of_the_khan_ur` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
@@ -119,6 +118,7 @@ recalcule en relancant le script.
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_the_binding_of_ipos` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_the_hms_divinity` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_the_shining_blade` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
+| `lump_of_aurillium` — Lump of Aurillium | `gen2_verdarach` | 500 | 300 | 200 | gift_of_gliding (vendeur) |
 
 ## COUT VENDEUR — 9 cas
 
@@ -127,12 +127,12 @@ regardant si le vendeur propose un choix ou une liste.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `obsidian` | 0 | 3600 | 3600 | amalgamated_rift_essence (recette), funerary_incense (vendeur), unbound_wings (recette) +1 autres |
 | `trade_contract` — Trade Contract | `coalescence` | 0 | 1250 | 1250 | funerary_incense (vendeur) |
 | `trade_contract` — Trade Contract | `vision` | 0 | 500 | 500 | funerary_incense (vendeur) |
+| `crystalline_ingot` — Crystalline Ingot | `coalescence` | 0 | 250 | 250 | funerary_incense (vendeur) |
 | `magnetite_shard` — Magnetite Shard | `coalescence` | 0 | 200 | 200 | gift_of_complex_emotions (vendeur), gift_of_patience (vendeur) |
+| `crystalline_ingot` — Crystalline Ingot | `vision` | 0 | 100 | 100 | funerary_incense (vendeur) |
 | `mystic_clover` — Mystic Clover | `obsidian` | 0 | 90 | 90 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
-| `obsidian_shard` — Obsidian Shard | `perfected_envoy` | 0 | 50 | 50 | funerary_incense (vendeur), gift_of_expertise (recette), gift_of_prowess (recette) |
 | `mystic_clover` — Mystic Clover | `perfected_envoy` | 0 | 15 | 15 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur), unbound_wings (recette) |
 | `vision_crystal` — Vision Crystal | `ad_infinitum` | 0 | 1 | 1 | gift_of_adventure (vendeur), unbound_wings (recette) |
