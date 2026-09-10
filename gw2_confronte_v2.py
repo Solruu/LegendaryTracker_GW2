@@ -56,7 +56,8 @@ HERE = Path(__file__).resolve().parent
 SRC = max(HERE.glob("gw2_sources_v*.json"), key=lambda p: int(p.stem.split("_v")[-1]))
 ARETES = Path("/tmp/edges2.json")
 ARMOR = {"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"}
-SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
+SUF = (("", 1), ("__per_piece", 6), ("__per_piece_light", 6), ("__per_piece_medium", 6),
+       ("__per_piece_heavy", 6), ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
 TAUX = 3.2258
 
 d = json.load(open(SRC, encoding="utf-8"))

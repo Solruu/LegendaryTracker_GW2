@@ -1004,8 +1004,10 @@ def check_tab_contract(data, errors, warnings):
 
 # Suffixes de cle admis dans qty. Les deux premiers sont lus par le JSX ; les
 # deux suivants sont declares mais pas encore branches, et l'audit le rappelle.
-QTY_SUFFIXES = ("__per_piece", "__full_set", "__per_unit", "__onetime")
-QTY_SUFFIXES_RENDUS = ("__per_piece", "__full_set")
+QTY_SUFFIXES = ("__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy",
+                "__full_set", "__per_unit", "__onetime")
+QTY_SUFFIXES_RENDUS = ("__per_piece", "__per_piece_light", "__per_piece_medium",
+                       "__per_piece_heavy", "__full_set")
 
 
 def check_qty_levels(data, errors, warnings):

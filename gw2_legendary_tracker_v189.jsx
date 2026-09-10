@@ -2260,12 +2260,20 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
           }
         }
       }
-      // Armor sets : __per_piece × 6
-      const pieceKey = legId + "__per_piece";
-      if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
-        const val = qty[pieceKey];
-        if (typeof val === "number") {
-          totals[compId] = (totals[compId] ?? 0) + val * ARMOR_PIECE_COUNT;
+      // Armor sets : __per_piece × 6 (tous poids confondus), ou une des trois
+      // variantes de poids (__per_piece_light/medium/heavy) quand le cout
+      // brut ascended varie par poids -- confirme sur Ardent Glorious
+      // (Crown leger vs Legplates lourd, 10/09/2026). Chaque suffixe compte
+      // pour un SET COMPLET de ce poids (6 pieces), pas une piece seule ;
+      // s'ils coexistent sur un meme composant, ils s'additionnent (c'est le
+      // cas si on construit plusieurs poids a la fois).
+      for (const suf of ["__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy"]) {
+        const pieceKey = legId + suf;
+        if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
+          const val = qty[pieceKey];
+          if (typeof val === "number") {
+            totals[compId] = (totals[compId] ?? 0) + val * ARMOR_PIECE_COUNT;
+          }
         }
       }
       // __onetime : cout paye une seule fois pour le compte, quel que soit le
@@ -7131,7 +7139,8 @@ export default function GW2LegendaryTracker() {
         // Sets d'armure : le total est deja pose par piece dans qty, il reste a
         // le multiplier par les pieces restantes.
         const perPiece = COMMON_MATS.some(m =>
-          m.compId && ((cc[m.compId]?.qty ?? {})[selectedLeg + "__per_piece"] !== undefined));
+          m.compId && ["__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy"]
+            .some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined));
         const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
         const mats = COMMON_MATS
           .map(m => ({ ...m, req: totalsLeg[m.compId] }))

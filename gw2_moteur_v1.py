@@ -38,11 +38,18 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-# Les armures se comptent par piece ; les suffixes disent comment.
+# Les armures se comptent par piece ; les suffixes disent comment. Les trois sets legendaires
+# se declinent chacun en 3 poids (leger/moyen/lourd) : meme structure de dons (Prosperity/
+# Prowess/Dedication), mais le cout brut ascended (Ascended Shard of Glory, marque Grandmaster)
+# varie par poids -- confirme le 10/09/2026 sur Ardent Glorious (Crown leger : 100 + 3x Tailor's
+# Mark ; Legplates lourd : 150 + 4x Armorsmith's Mark). Chaque suffixe de poids compte pour un
+# set COMPLET de ce poids (6 pieces), pas une piece seule.
 ARMURES = frozenset({"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"})
 PIECES = 6
-SUFFIXES = (("", 1), ("__per_piece", PIECES), ("__onetime", 1),
-            ("__per_unit", 1), ("__full_set", 1))
+SUFFIXES = (("", 1), ("__per_piece", PIECES),
+            ("__per_piece_light", PIECES), ("__per_piece_medium", PIECES),
+            ("__per_piece_heavy", PIECES),
+            ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
 PROFONDEUR = 12
 
 
@@ -248,7 +255,8 @@ class Modele:
         for cid, c in self.composants.items():
             q = c.qty
             for suf, mult in SUFFIXES:
-                if suf in ("__per_piece", "__full_set") and not armure:
+                if suf in ("__per_piece", "__per_piece_light", "__per_piece_medium",
+                           "__per_piece_heavy", "__full_set") and not armure:
                     continue
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
