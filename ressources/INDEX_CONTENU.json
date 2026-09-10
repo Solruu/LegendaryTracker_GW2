@@ -4023,6 +4023,20 @@
   "aretes_table": []
  },
  {
+  "page": "champions_wings_of_glory",
+  "titre": "Champion's Wings of Glory",
+  "api_id": 77477,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 30
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "charged_lodestone",
   "titre": "Charged Lodestone",
   "api_id": 24305,
@@ -6151,6 +6165,20 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "elites_wings_of_glory",
+  "titre": "Elite's Wings of Glory",
+  "api_id": 77503,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 40
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -14964,6 +14992,40 @@
   "aretes_table": []
  },
  {
+  "page": "handwoven_olmakhan_bandolier",
+  "titre": "Handwoven Olmakhan Bandolier",
+  "api_id": 87217,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Simple_Olmakhan_Bandolier",
+      2
+     ],
+     [
+      "Olmakhan_Latigo_Strap",
+      4
+     ],
+     [
+      "Supreme_Rune_of_Holding",
+      1
+     ],
+     [
+      "Olmakhan_Charm",
+      1
+     ]
+    ],
+    "produit": "Handwoven Olmakhan Bandolier"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "hard_wood_log",
   "titre": "Hard Wood Log",
   "api_id": 19724,
@@ -21223,6 +21285,40 @@
   "aretes_table": []
  },
  {
+  "page": "pocketed_olmakhan_bandolier",
+  "titre": "Pocketed Olmakhan Bandolier",
+  "api_id": 86993,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Handwoven_Olmakhan_Bandolier",
+      1
+     ],
+     [
+      "Olmakhan_Latigo_Strap",
+      4
+     ],
+     [
+      "Supreme_Rune_of_Holding",
+      5
+     ],
+     [
+      "Olmakhan_Charm",
+      1
+     ]
+    ],
+    "produit": "Pocketed Olmakhan Bandolier"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "potent_venom_sac",
   "titre": "Potent Venom Sac",
   "api_id": 24282,
@@ -21588,6 +21684,20 @@
   "aretes_table": []
  },
  {
+  "page": "recruits_wings_of_glory",
+  "titre": "Recruit's Wings of Glory",
+  "api_id": 77507,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "recruits_wings_of_war",
   "titre": "Recruit's Wings of War",
   "api_id": 81455,
@@ -21616,6 +21726,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "reinforced_olmakhan_bandolier",
+  "titre": "Reinforced Olmakhan Bandolier",
+  "api_id": 87225,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pocketed_Olmakhan_Bandolier",
+      1
+     ],
+     [
+      "Olmakhan_Latigo_Strap",
+      4
+     ],
+     [
+      "Supreme_Rune_of_Holding",
+      12
+     ],
+     [
+      "Olmakhan_Charm",
+      1
+     ]
+    ],
+    "produit": "Reinforced Olmakhan Bandolier"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -27105,6 +27249,40 @@
   "aretes_table": []
  },
  {
+  "page": "trade_contract",
+  "titre": "Trade Contract",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Amalgamated_Gemstone",
+    "qty": 1
+   },
+   {
+    "objet": "Eye_of_Kormir",
+    "qty": 100
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 1
+   },
+   {
+    "objet": "Obsidian_Shard",
+    "qty": 1
+   },
+   {
+    "objet": "Pulsing_Brandspark",
+    "qty": 40
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "transcendence",
   "titre": "Transcendence",
   "api_id": 92991,
@@ -27625,6 +27803,40 @@
   "aretes_table": []
  },
  {
+  "page": "tribute_to_the_queen",
+  "titre": "Tribute to the Queen",
+  "api_id": 81974,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 15
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 15
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 15
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 15
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 15
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 15
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "tribute_to_tlehco",
   "titre": "Tribute to Tlehco",
   "api_id": 88756,
@@ -27909,6 +28121,15 @@
     "produit": "Unbound"
    }
   ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "unbound_magic",
+  "titre": "Unbound Magic",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -28383,6 +28604,20 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "veterans_wings_of_glory",
+  "titre": "Veteran's Wings of Glory",
+  "api_id": 77522,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 20
+   }
+  ],
   "aretes_table": []
  },
  {
