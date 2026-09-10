@@ -1730,7 +1730,8 @@ const SOURCES_DB = {
     "changelog_v219": "gift_of_war_prosperity : recette completee (gift_of_battle 1, gift_of_condensed_might 1, gift_of_condensed_magic 1 -- mystic_clover 15 deja present). Source deja capturee (gift_of_war_prosperity.html). Cascade vers gift_of_the_mist_warrior (3) -> strife_unending (1).",
     "changelog_v220": "Orrax Contained : sources documentees completement (page fraiche fournie par Antoine). Confirme : le succes 'Unknown Nightmares: Orrax Contained' est un prerequis commun a DEUX voies (achat OU Forge mystique via Draconic Tribute), pas une voie unique. La voie Forge (deja modelisee, draconic_tribute.qty[orrax_contained]=1) reste le defaut -- confirmee correcte par Antoine, chiffres inchanges (68 Mystic Clover / 200 Pile of Crystalline Dust sur Orrax Manifested). Voie achat documentee pour reference, non decomposee (Plate of Orrian Steak Frittes a sa propre chaine).",
     "changelog_v221": "Wings of Glory (PvP), les 4 paliers : pvp_league_ticket cable (10/20/30/40, source vendeur 'League Vendor' confirmee sur les 4 pages du lot 8). wings_of_glory_veteran cree (manquait). sources.tip des 3 composants deja existants corrige : c'etait decrit comme 'recompense de saison PvP', en realite achat direct en tickets chez un vendeur, comme Wings of War cote McM.",
-    "changelog_v222": "Renomme tribute_to_the_crown -> tribute_to_the_queen (nom invente corrige, confirme par tribute_to_the_queen.html). Ajoute au groupe tribut_15 existant (15 au choix des 6 monnaies, Volatile Magic par defaut, meme structure que les 10 autres Tribute to X)."
+    "changelog_v222": "Renomme tribute_to_the_crown -> tribute_to_the_queen (nom invente corrige, confirme par tribute_to_the_queen.html). Ajoute au groupe tribut_15 existant (15 au choix des 6 monnaies, Volatile Magic par defaut, meme structure que les 10 autres Tribute to X).",
+    "changelog_v223": "Strife Unending : gift_of_the_warclaw 1->2 et ball_dark_energy (jamais cable, 2) corriges contre le champ requirements deja verifie wiki (25/07/2026). components rempli (etait vide) pour que l'arbre de dons ait une racine affichable sur l'onglet Materiaux : gift_of_the_mistwalker, gift_of_the_mist_warrior, skirmish_claim_ticket, gift_of_the_warclaw, ball_dark_energy. Le reste des requirements documentes (Mistwalker Infusion, 3000 tickets, 45 clovers, 40 Emblem of the Avenger) etait deja correctement cable et confirme par cascade."
   },
   "meta_events": {
     "vb": {
@@ -3114,7 +3115,8 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_perfected_envoy",
         "cube_stabilized_dark_energy",
-        "gift_of_compassion"
+        "gift_of_compassion",
+        "strife_unending"
       ],
       "farmable": true,
       "sources": [
@@ -3131,7 +3133,8 @@ const SOURCES_DB = {
       "qty": {
         "perfected_envoy__per_piece": 1,
         "cube_stabilized_dark_energy": 1,
-        "gift_of_compassion": 6
+        "gift_of_compassion": 6,
+        "strife_unending": 2
       },
       "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices).",
       "kind": "acquire",
@@ -19546,7 +19549,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": false,
       "qty": {
-        "strife_unending": 1
+        "strife_unending": 2
       },
       "needed_for": [
         "strife_unending"
@@ -23148,7 +23151,13 @@ const SOURCES_DB = {
         "fr": "Échange chez Dugan (McM) : Gift of the Mistwalker + composants McM (pas de MF classique).",
         "en": "Exchange at Dugan (WvW): Gift of the Mistwalker + WvW components (no classic MF)."
       },
-      "components": [],
+      "components": [
+        "gift_of_the_mistwalker",
+        "gift_of_the_mist_warrior",
+        "skirmish_claim_ticket",
+        "gift_of_the_warclaw",
+        "ball_dark_energy"
+      ],
       "note": {
         "fr": "Correction v20 : il y a bien des composants à réunir (pas un simple achat). Requiert Mistwalker Infusion (équipée pour le succès ET consommée), 3 000 Skirmish Claim Tickets (~8 semaines au cap 365/sem), 45 Mystic Clovers, 2× Gift of the Warclaw (succès 9244), emblèmes (Conqueror : 200 objectifs / Avenger : 4 000 kills), 2 Balls of Dark Energy. Le visuel évolue avec le killstreak WvW.",
         "en": "v20 correction: components must be gathered (not a simple purchase). Requires a Mistwalker Infusion (equipped for the achievement AND consumed), 3,000 Skirmish Claim Tickets (~8 weeks at 365/wk cap), 45 Mystic Clovers, 2× Gift of the Warclaw (achievement 9244), emblems (Conqueror: 200 objectives / Avenger: 4,000 kills), 2 Balls of Dark Energy. Visual evolves with WvW killstreak."
