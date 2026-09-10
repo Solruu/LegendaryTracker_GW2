@@ -69821,13 +69821,17 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
   );
 }
 
-function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, apiKey = "", setApiKey, apiStatus = "idle", apiError = "", onDetect, stocks = {}, stockStatus = "idle", stockError = "", onFetchStocks, onSetStockManual }) {
-  const t = useT();
-  const [selected, setSelected] = useState({});        // legId → bool
-  const [collapsed, setCollapsed] = useState({});      // groupId → bool
-  const [filterFarm, setFilterFarm] = useState("all");
-  // Choix un-parmi-N. La valeur par defaut vient de la donnee, pas du code :
-  // c'est la donnee qui sait quelle option est la plus courante.
+// Choix un-parmi-N (Maguuma ou Desert, une gemme parmi six, une monnaie de
+// tribut parmi six...) : composant autonome, reutilise a la fois dans l'onglet
+// Grand Total (toutes les cibles cochees) et dans l'onglet Materiaux d'un
+// legendaire (une seule cible). Meme lecture/ecriture localStorage que les
+// autres onglets independants (cf. computeGrandTotal) : chaque montage relit
+// l'instantane persiste plutot que de faire descendre l'etat par props sur
+// plusieurs niveaux — un choix fait dans un onglet est donc vu par l'autre des
+// son prochain montage (changement d'onglet), sans etat partage a cabler.
+function AltGroupsPicker({ selectedIds = [], totals = {} }) {
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const C = "#e2c97e", D = "rgba(226,201,126,";
   const [altSel, setAltSel] = useState(() => {
     try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
     catch (_) { return {}; }
@@ -69835,6 +69839,83 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   useEffect(() => {
     try { localStorage.setItem(ALT_KEY, JSON.stringify(altSel)); } catch (_) {}
   }, [altSel]);
+
+  const groupes = Object.entries(ALT_GROUPS)
+    .filter(([, g]) => (g.targets ?? []).some(x => selectedIds.includes(x) || (totals[x] ?? 0) > 0));
+  if (groupes.length === 0) return null;
+
+  return (
+    <div style={{ margin: "0 14px 8px" }}>
+      {groupes.map(([gid, g]) => {
+        // Une ligne de boutons PAR CIBLE concernee, et non une seule pour
+        // tout le groupe : douze armes gen2 acceptent Maguuma ou Desert,
+        // et rien n'oblige a repondre la meme chose pour les douze.
+        const cibles = (g.targets ?? []).filter(
+          x => selectedIds.includes(x) || (totals[x] ?? 0) > 0);
+        const nomCible = (x) => L(SOURCES_DB?.legendaries?.[x]?.name)
+          ?? L(cc[x]?.name) ?? x;
+        const pickDe = (x) => {
+          const v = altSel[gid];
+          if (typeof v === "string") return v;
+          return (v && v[x]) ?? g.default;
+        };
+        const choisir = (x, o) => setAltSel(st => {
+          const av = st[gid];
+          const base = typeof av === "string"
+            ? Object.fromEntries(cibles.map(c => [c, av]))
+            : { ...(av ?? {}) };
+          return { ...st, [gid]: { ...base, [x]: o } };
+        });
+        return (
+          <div key={gid} style={{ marginBottom: 8, padding: "7px 10px", borderRadius: 5,
+            border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
+            <div style={{ fontSize: 10, color: C, fontFamily: "'Cinzel', serif",
+              letterSpacing: "0.06em", marginBottom: 5 }}>
+              {L(g.label) ?? gid}
+            </div>
+            {cibles.map(x => {
+              const pick = pickDe(x);
+              return (
+                <div key={x} style={{ display: "flex", gap: 5, flexWrap: "wrap",
+                  alignItems: "center", marginBottom: 4 }}>
+                  {cibles.length > 1 ? (
+                    <span style={{ fontSize: 10, color: D + "0.5)", minWidth: 118,
+                      fontFamily: "'Crimson Text', serif" }}>{nomCible(x)}</span>
+                  ) : null}
+                  {(g.options ?? []).map(o => (
+                    <button key={o} onClick={() => choisir(x, o)} style={{
+                      padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
+                      fontFamily: "'Crimson Text', serif",
+                      border: `1px solid ${pick === o ? C : D + "0.15)"}`,
+                      background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
+                      color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
+                    }}>
+                      {L(cc[o]?.name) ?? o}
+                    </button>
+                  ))}
+                </div>
+              );
+            })}
+            {L(g.note) ? (
+              <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
+                fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>
+                {L(g.note)}
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, apiKey = "", setApiKey, apiStatus = "idle", apiError = "", onDetect, stocks = {}, stockStatus = "idle", stockError = "", onFetchStocks, onSetStockManual }) {
+  const t = useT();
+  const [selected, setSelected] = useState({});        // legId → bool
+  const [collapsed, setCollapsed] = useState({});      // groupId → bool
+  const [filterFarm, setFilterFarm] = useState("all");
+  // Choix un-parmi-N : deplace dans AltGroupsPicker (etat et rendu partages
+  // avec l'onglet Materiaux d'un legendaire).
   const [showVariables, setShowVariables] = useState(false);
   const [showApiInput, setShowApiInput] = useState(false);
   const [editingComp, setEditingComp] = useState(null); // compId en cours d'édition manuelle
@@ -70132,70 +70213,8 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
             </div>
           </div>
 
-          {/* Choix un-parmi-N : Maguuma ou Desert, une gemme parmi six.
-              N'apparait que si un legendaire coche est concerne — sinon le
-              choix serait sans effet et sans sens. */}
-          {Object.entries(ALT_GROUPS)
-            .filter(([, g]) => (g.targets ?? []).some(x => selectedIds.includes(x) || (totals[x] ?? 0) > 0))
-            .map(([gid, g]) => {
-              // Une ligne de boutons PAR CIBLE concernee, et non une seule pour
-              // tout le groupe : douze armes gen2 acceptent Maguuma ou Desert,
-              // et rien n'oblige a repondre la meme chose pour les douze.
-              const cibles = (g.targets ?? []).filter(
-                x => selectedIds.includes(x) || (totals[x] ?? 0) > 0);
-              const nomCible = (x) => L(SOURCES_DB?.legendaries?.[x]?.name)
-                ?? L(cc[x]?.name) ?? x;
-              const pickDe = (x) => {
-                const v = altSel[gid];
-                if (typeof v === "string") return v;
-                return (v && v[x]) ?? g.default;
-              };
-              const choisir = (x, o) => setAltSel(st => {
-                const av = st[gid];
-                const base = typeof av === "string"
-                  ? Object.fromEntries(cibles.map(c => [c, av]))
-                  : { ...(av ?? {}) };
-                return { ...st, [gid]: { ...base, [x]: o } };
-              });
-              return (
-                <div key={gid} style={{ marginBottom: 8, padding: "7px 10px", borderRadius: 5,
-                  border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
-                  <div style={{ fontSize: 10, color: C, fontFamily: "'Cinzel', serif",
-                    letterSpacing: "0.06em", marginBottom: 5 }}>
-                    {L(g.label) ?? gid}
-                  </div>
-                  {cibles.map(x => {
-                    const pick = pickDe(x);
-                    return (
-                      <div key={x} style={{ display: "flex", gap: 5, flexWrap: "wrap",
-                        alignItems: "center", marginBottom: 4 }}>
-                        {cibles.length > 1 ? (
-                          <span style={{ fontSize: 10, color: D + "0.5)", minWidth: 118,
-                            fontFamily: "'Crimson Text', serif" }}>{nomCible(x)}</span>
-                        ) : null}
-                        {(g.options ?? []).map(o => (
-                          <button key={o} onClick={() => choisir(x, o)} style={{
-                            padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
-                            fontFamily: "'Crimson Text', serif",
-                            border: `1px solid ${pick === o ? C : D + "0.15)"}`,
-                            background: pick === o ? C + "22" : "rgba(255,255,255,0.02)",
-                            color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
-                          }}>
-                            {L(cc[o]?.name) ?? o}
-                          </button>
-                        ))}
-                      </div>
-                    );
-                  })}
-                  {L(g.note) ? (
-                    <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
-                      fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>
-                      {L(g.note)}
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
+          {/* Choix un-parmi-N : composant partage, voir AltGroupsPicker. */}
+          <AltGroupsPicker selectedIds={selectedIds} totals={totals} />
 
           {/* Resources table */}
           {rows.length === 0 ? (
@@ -73893,6 +73912,10 @@ function GW2LegendaryTracker() {
         return (
           <div>
             <div style={{ margin: "0 14px" }}><EditorialNotes obj={S} /></div>
+            {/* Choix un-parmi-N propres a CE legendaire (ex : monnaie de tribut,
+                gemme, Maguuma/Desert) — meme composant que l'onglet Grand Total,
+                cible unique. */}
+            <AltGroupsPicker selectedIds={[selectedLeg]} totals={totalsLeg} />
             {mats.length > 0 && (
               <>
                 <div className="section-label">{NX({ fr: "Matériaux communs", en: "Common materials" })}</div>
