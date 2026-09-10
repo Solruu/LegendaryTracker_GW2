@@ -239,11 +239,23 @@ class Modele:
 
     def totaux(self, cible: str, selection: dict | None = None,
                detail: bool = False, surcouts: bool = False,
-               collections_faites: dict | None = None):
+               collections_faites: dict | None = None,
+               repartition_poids: dict | None = None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
 
         `selection` : {id_de_groupe: {cible: option}} — ou {id: option} pour
         l'ancien format. Absent, chaque groupe prend son defaut.
+
+        `repartition_poids` : {armure: {"light": n, "medium": n, "heavy": n}}.
+        Une armure legendaire est un set de 6 pieces, mais son cout brut
+        ascended (Ascended Shard of Glory, marque Grandmaster) varie par
+        poids -- confirme le 10/09/2026 (Ardent Glorious : leger vs lourd).
+        Sans repartition fournie, chaque suffixe de poids present compte pour
+        un set COMPLET (x6) — comportement de compatibilite pour l'audit et
+        les confrontations, qui ne construisent pas un set reel et n'ont pas
+        a choisir. Avec une repartition, seul le compte de pieces de CE poids
+        s'applique (somme des trois <= 6 pour un set complet, mais rien
+        n'empeche un compte partiel si toutes les pieces ne sont pas visees).
 
         `detail=True` rend aussi la part APPORTEE PAR LA CHAINE, seule facon de
         savoir ou une cle a plat peut ceder la place sans perdre son cout. Les
@@ -251,6 +263,7 @@ class Modele:
         oubliait la contribution des choix.
         """
         armure = cible in ARMURES
+        rp = (repartition_poids or {}).get(cible)
         t: dict[str, float] = {}
         for cid, c in self.composants.items():
             q = c.qty
@@ -258,6 +271,9 @@ class Modele:
                 if suf in ("__per_piece", "__per_piece_light", "__per_piece_medium",
                            "__per_piece_heavy", "__full_set") and not armure:
                     continue
+                if rp is not None and suf.startswith("__per_piece_"):
+                    poids = suf.removeprefix("__per_piece_")
+                    mult = rp.get(poids, 0)
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
                     t[cid] = t.get(cid, 0) + v * mult

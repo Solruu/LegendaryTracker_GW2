@@ -2028,6 +2028,41 @@ const GT_GROUPS = [
 // ── Armor set : nb pièces requises (toujours 6) ───────────────
 const ARMOR_PIECE_COUNT = 6;
 const ARMOR_IDS = ["perfected_envoy","obsidian","triumphant_hero","ardent_glorious"];
+// Les 6 emplacements d'un set d'armure, dans l'ordre d'affichage du picker.
+// Meme liste cote engine (gw2_moteur_v1.py n'en a pas besoin : il recoit deja
+// des comptes agreges) — seule la vue par emplacement vit ici.
+const ARMOR_SLOTS = ["helm", "shoulders", "chest", "gloves", "legs", "boots"];
+const ARMOR_WEIGHT_KEY = "gw2_armor_weights_v1";
+const ARMOR_WEIGHT_LABEL = {
+  light: { fr: "Léger", en: "Light" },
+  medium: { fr: "Moyen", en: "Medium" },
+  heavy: { fr: "Lourd", en: "Heavy" },
+};
+const ARMOR_SLOT_LABEL = {
+  helm: { fr: "Casque", en: "Helm" },
+  shoulders: { fr: "Épaulières", en: "Shoulders" },
+  chest: { fr: "Torse", en: "Chest" },
+  gloves: { fr: "Gants", en: "Gloves" },
+  legs: { fr: "Jambières", en: "Legs" },
+  boots: { fr: "Bottes", en: "Boots" },
+};
+// Lit la repartition choisie pour UNE armure : {light: n, medium: n, heavy: n}.
+// Chaque emplacement sans choix explicite compte "light" par defaut (premiere
+// piece capturee pour Ardent Glorious/Triumphant Hero) — pas "aucune piece",
+// pour que le total ne tombe jamais silencieusement a zero avant que
+// l'utilisateur touche le picker.
+function readArmorWeightCounts(armorId) {
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem(ARMOR_WEIGHT_KEY) ?? "null") ?? {}; }
+  catch (_) { all = {}; }
+  const bySlot = all[armorId] ?? {};
+  const counts = { light: 0, medium: 0, heavy: 0 };
+  for (const slot of ARMOR_SLOTS) {
+    const w = bySlot[slot] ?? "light";
+    counts[w] = (counts[w] ?? 0) + 1;
+  }
+  return counts;
+}
 
 // ── Farm type → couleur badge ─────────────────────────────────
 const FARM_COLOR = {
@@ -2260,19 +2295,26 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
           }
         }
       }
-      // Armor sets : __per_piece × 6 (tous poids confondus), ou une des trois
-      // variantes de poids (__per_piece_light/medium/heavy) quand le cout
-      // brut ascended varie par poids -- confirme sur Ardent Glorious
-      // (Crown leger vs Legplates lourd, 10/09/2026). Chaque suffixe compte
-      // pour un SET COMPLET de ce poids (6 pieces), pas une piece seule ;
-      // s'ils coexistent sur un meme composant, ils s'additionnent (c'est le
-      // cas si on construit plusieurs poids a la fois).
-      for (const suf of ["__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy"]) {
-        const pieceKey = legId + suf;
-        if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
-          const val = qty[pieceKey];
+      // Armor sets : __per_piece × 6 (le materiau ne varie pas par poids), ou
+      // une des trois variantes de poids quand le cout brut ascended varie
+      // (Ascended Shard of Glory, marque Grandmaster) -- confirme sur Ardent
+      // Glorious (Crown leger vs Legplates lourd, 10/09/2026). Chaque poids
+      // compte pour le nombre d'EMPLACEMENTS choisis a ce poids dans le
+      // picker (readArmorWeightCounts), pas pour un set complet fixe.
+      const pieceKey = legId + "__per_piece";
+      if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
+        const val = qty[pieceKey];
+        if (typeof val === "number") {
+          totals[compId] = (totals[compId] ?? 0) + val * ARMOR_PIECE_COUNT;
+        }
+      }
+      if (ARMOR_IDS.includes(legId)) {
+        const counts = readArmorWeightCounts(legId);
+        for (const poids of ["light", "medium", "heavy"]) {
+          const wKey = legId + "__per_piece_" + poids;
+          const val = qty[wKey];
           if (typeof val === "number") {
-            totals[compId] = (totals[compId] ?? 0) + val * ARMOR_PIECE_COUNT;
+            totals[compId] = (totals[compId] ?? 0) + val * (counts[poids] ?? 0);
           }
         }
       }
@@ -3061,6 +3103,69 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
   );
 }
 
+// Choix du poids (leger/moyen/lourd) PAR EMPLACEMENT pour un set d'armure
+// legendaire dont le cout brut ascended varie par poids (Ardent Glorious,
+// Triumphant Hero). Six emplacements independants — Antoine peut viser un set
+// mixte (ex. gants+jambieres+bottes lourds pour un guerrier, casque+epaules+
+// torse legers pour un autre personnage) plutot qu'un seul poids fige pour
+// tout le set. Meme lecture/ecriture localStorage independante que les autres
+// onglets (voir AltGroupsPicker) : lu ici, consomme par computeGrandTotal via
+// readArmorWeightCounts.
+function ArmorWeightPicker({ armorId }) {
+  if (!ARMOR_IDS.includes(armorId)) return null;
+  const C = "#e2c97e", D = "rgba(226,201,126,";
+  const [weights, setWeights] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(ARMOR_WEIGHT_KEY) ?? "null") ?? {}; }
+    catch (_) { return {}; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem(ARMOR_WEIGHT_KEY, JSON.stringify(weights)); } catch (_) {}
+  }, [weights]);
+
+  const bySlot = weights[armorId] ?? {};
+  const choisir = (slot, poids) => setWeights(st => ({
+    ...st, [armorId]: { ...(st[armorId] ?? {}), [slot]: poids }
+  }));
+
+  return (
+    <div style={{ margin: "0 14px 8px", padding: "7px 10px", borderRadius: 5,
+      border: `1px solid ${D}0.15)`, background: "rgba(255,255,255,0.02)" }}>
+      <div style={{ fontSize: 10, color: C, fontFamily: "'Cinzel', serif",
+        letterSpacing: "0.06em", marginBottom: 5 }}>
+        {L({ fr: "Poids par emplacement", en: "Weight per slot" })}
+      </div>
+      {ARMOR_SLOTS.map(slot => {
+        const pick = bySlot[slot] ?? "light";
+        return (
+          <div key={slot} style={{ display: "flex", gap: 5, flexWrap: "wrap",
+            alignItems: "center", marginBottom: 4 }}>
+            <span style={{ fontSize: 10, color: D + "0.5)", minWidth: 88,
+              fontFamily: "'Crimson Text', serif" }}>{L(ARMOR_SLOT_LABEL[slot])}</span>
+            {["light", "medium", "heavy"].map(poids => (
+              <button key={poids} onClick={() => choisir(slot, poids)} style={{
+                padding: "3px 9px", borderRadius: 3, fontSize: 10, cursor: "pointer",
+                fontFamily: "'Crimson Text', serif",
+                border: `1px solid ${pick === poids ? C : D + "0.15)"}`,
+                background: pick === poids ? C + "22" : "rgba(255,255,255,0.02)",
+                color: pick === poids ? C : D + "0.5)", transition: "all 0.15s"
+              }}>
+                {L(ARMOR_WEIGHT_LABEL[poids])}
+              </button>
+            ))}
+          </div>
+        );
+      })}
+      <div style={{ fontSize: 10, color: D + "0.45)", marginTop: 5,
+        fontFamily: "'Crimson Text', serif", fontStyle: "italic" }}>
+        {L({
+          fr: "Le coût brut ascended (Ascended Shard of Glory, marque Grandmaster) varie par poids ; les 3 Gifts et le reste des matériaux restent identiques quel que soit le choix.",
+          en: "The raw ascended cost (Ascended Shard of Glory, Grandmaster mark) varies by weight; the 3 Gifts and the rest of the materials stay the same regardless of choice.",
+        })}
+      </div>
+    </div>
+  );
+}
+
 // Choix un-parmi-N (Maguuma ou Desert, une gemme parmi six, une monnaie de
 // tribut parmi six...) : composant autonome, reutilise a la fois dans l'onglet
 // Grand Total (toutes les cibles cochees) et dans l'onglet Materiaux d'un
@@ -3453,6 +3558,10 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
             </div>
           </div>
 
+          {/* Poids par emplacement : un picker par set d'armure coche. */}
+          {ARMOR_IDS.filter(a => selectedIds.includes(a)).map(a => (
+            <ArmorWeightPicker key={a} armorId={a} />
+          ))}
           {/* Choix un-parmi-N : composant partage, voir AltGroupsPicker. */}
           <AltGroupsPicker selectedIds={selectedIds} totals={totals} />
 
@@ -7156,6 +7265,9 @@ export default function GW2LegendaryTracker() {
             {/* Choix un-parmi-N propres a CE legendaire (ex : monnaie de tribut,
                 gemme, Maguuma/Desert) — meme composant que l'onglet Grand Total,
                 cible unique. */}
+            {/* Poids par emplacement (Ardent Glorious / Triumphant Hero) :
+                composant autonome, cible unique. */}
+            <ArmorWeightPicker armorId={selectedLeg} />
             <AltGroupsPicker selectedIds={[selectedLeg]} totals={totalsLeg} />
             {mats.length > 0 && (
               <>

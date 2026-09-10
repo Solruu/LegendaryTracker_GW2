@@ -56,15 +56,18 @@ def main() -> int:
 const SOURCES_DB = SOURCES;
 const ARMOR_PIECE_COUNT = 6;
 const ARMOR_IDS = ["perfected_envoy","obsidian","triumphant_hero","ardent_glorious"];
+const ARMOR_SLOTS = ["helm", "shoulders", "chest", "gloves", "legs", "boots"];
+const ARMOR_WEIGHT_KEY = "gw2_armor_weights_v1";
 const localStorage = { getItem: () => null, setItem: () => {} };
 const ALT_KEY = "gw2_cad_alt_v1";
 const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
+%s
 %s
 const cibles = CIBLES;
 const out = {};
 for (const c of cibles) out[c] = computeGrandTotal([c], {}).totals;
 console.log(JSON.stringify(out));
-""" % decouper("computeGrandTotal")
+""" % (decouper("readArmorWeightCounts"), decouper("computeGrandTotal"))
 
     script = HERE / ".conformite.mjs"
     script.write_text(
@@ -85,9 +88,15 @@ console.log(JSON.stringify(out));
     # neutraliser. Les neutraliser etait faux — leur effet se propage dans la
     # cascade, et les retirer du seul composant qui les porte laissait passer
     # 1 050 lingots de mithril d'ecart sur Aurora.
+    # Les 6 emplacements d'un set d'armure sans choix explicite comptent tous
+    # "light" par defaut cote JSX (readArmorWeightCounts) : meme defaut ici,
+    # pour comparer des totaux qui representent la meme situation reelle.
+    ARMURES_POIDS_DEFAUT = {"light": 6, "medium": 0, "heavy": 0}
+    repartition = {a: dict(ARMURES_POIDS_DEFAUT) for a in
+                   ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
     ecarts, compares = [], 0
     for cible in m.cibles:
-        py = m.totaux(cible, surcouts=True)
+        py = m.totaux(cible, surcouts=True, repartition_poids=repartition)
         js = dict(cote_js.get(cible) or {})
         for cid in set(py) | set(js):
             a, b = py.get(cid, 0), js.get(cid, 0)
