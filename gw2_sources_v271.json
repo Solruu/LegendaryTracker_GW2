@@ -947,7 +947,8 @@
   "changelog_v222": "Renomme tribute_to_the_crown -> tribute_to_the_queen (nom invente corrige, confirme par tribute_to_the_queen.html). Ajoute au groupe tribut_15 existant (15 au choix des 6 monnaies, Volatile Magic par defaut, meme structure que les 10 autres Tribute to X).",
   "changelog_v223": "Strife Unending : gift_of_the_warclaw 1->2 et ball_dark_energy (jamais cable, 2) corriges contre le champ requirements deja verifie wiki (25/07/2026). components rempli (etait vide) pour que l'arbre de dons ait une racine affichable sur l'onglet Materiaux : gift_of_the_mistwalker, gift_of_the_mist_warrior, skirmish_claim_ticket, gift_of_the_warclaw, ball_dark_energy. Le reste des requirements documentes (Mistwalker Infusion, 3000 tickets, 45 clovers, 40 Emblem of the Avenger) etait deja correctement cable et confirme par cascade.",
   "changelog_v224": "Triumphant Hero's armor : premiere piece decomposee (Triumphant Hero's Masque, casque leger). Recette legendaire = 1 piece ascended + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication, 1 chacun par piece -- pas de split Magical/Mighty par poids comme Obsidian, a confirmer sur une 2e piece. gift_of_war_prosperity et gift_of_war_dedication (deja connectes ailleurs) relies a triumphant_hero__per_piece=1. gift_of_war_prowess cree (n'existait pas), structure honnete : exigence sourcee (1/piece), sa propre recette inconnue -- page non capturee. components rempli. RESTE A FAIRE : recette de Gift of War Prowess, confirmation du split par poids sur une 2e piece.",
-  "changelog_v225": "Triumphant Hero's armor : memory_of_battle par piece corrige (200 -> 250), skirmish_claim_ticket par piece ajoute (175, jamais cable), grandmaster_tailors_mark cree (3/piece, jamais cable). Source : triumphant_heros_masque.html, table Sold by, ligne ascended (achat direct, pas d'upgrade sequentiel depuis l'exotique)."
+  "changelog_v225": "Triumphant Hero's armor : memory_of_battle par piece corrige (200 -> 250), skirmish_claim_ticket par piece ajoute (175, jamais cable), grandmaster_tailors_mark cree (3/piece, jamais cable). Source : triumphant_heros_masque.html, table Sold by, ligne ascended (achat direct, pas d'upgrade sequentiel depuis l'exotique).",
+  "changelog_v226": "Ardent Glorious armor : premiere piece decomposee (Ardent Glorious Crown, casque leger). Meme structure que Triumphant Hero (Competitive Prosperity/Prowess/Dedication au lieu de War). CORRECTION reelle : ascended_shard_of_glory par piece etait a {old_asg}, la page confirme 100 (x2 vendeurs identiques) -- ecart x10. shard_of_glory par piece ajoute (250, jamais cable). grandmaster_tailors_mark par piece ajoute (3). gift_of_competitive_dedication deja existant (gift_of_the_champion, cote Transcendence) -- ardent_glorious ajoute en plus, additif. gift_of_competitive_prosperity et gift_of_competitive_prowess crees (structure honnete, exigence sourcee, recette propre inconnue). components rempli."
  },
  "meta_events": {
   "vb": {
@@ -4456,7 +4457,7 @@
     "transcendence"
    ],
    "qty": {
-    "ardent_glorious__per_piece": 1000,
+    "ardent_glorious__per_piece": 100,
     "transcendence": 500,
     "the_ascension": 250,
     "mist_band_infused": 150
@@ -4519,7 +4520,8 @@
     "mist_band_infused",
     "strife_unending",
     "the_ascension",
-    "transcendence"
+    "transcendence",
+    "ardent_glorious"
    ],
    "qty": {
     "conflux": 250,
@@ -4529,7 +4531,8 @@
     "strife_unending": 500,
     "transcendence": 2000,
     "mist_band_infused": 170,
-    "gift_of_skirmishing": 250
+    "gift_of_skirmishing": 250,
+    "ardent_glorious__per_piece": 250
    },
    "farmable": true,
    "sources": [
@@ -7637,7 +7640,8 @@
    "name": "Gift of Competitive Dedication",
    "apiId": null,
    "needed_for": [
-    "gift_of_the_champion"
+    "gift_of_the_champion",
+    "ardent_glorious"
    ],
    "farmable": true,
    "sources": [
@@ -7650,7 +7654,8 @@
     }
    ],
    "qty": {
-    "gift_of_the_champion": 1
+    "gift_of_the_champion": 1,
+    "ardent_glorious__per_piece": 1
    },
    "kind": "advanced_craft"
   },
@@ -20067,10 +20072,12 @@
    "name": "Grandmaster Tailor's Mark",
    "kind": "acquire",
    "qty": {
-    "triumphant_hero__per_piece": 3
+    "triumphant_hero__per_piece": 3,
+    "ardent_glorious__per_piece": 3
    },
    "needed_for": [
-    "triumphant_hero"
+    "triumphant_hero",
+    "ardent_glorious"
    ],
    "farmable": true,
    "sources": [
@@ -20085,6 +20092,50 @@
      "ref": "triumphant_heros_masque.html, section Sold by"
     }
    ]
+  },
+  "gift_of_competitive_prosperity": {
+   "name": "Gift of Competitive Prosperity",
+   "kind": "advanced_craft",
+   "qty": {
+    "ardent_glorious__per_piece": 1
+   },
+   "needed_for": [
+    "ardent_glorious"
+   ],
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Recette non capturée — la page d'Ardent Glorious Crown confirme 1 par pièce, sans détailler son propre coût.",
+      "en": "Recipe not captured — Ardent Glorious Crown page confirms 1 per piece, without detailing its own cost."
+     }
+    }
+   ],
+   "verified": "exigence sourcee, cout inconnu",
+   "checked": "2026-09-10",
+   "ref": "ardent_glorious_crown.html, section Used in"
+  },
+  "gift_of_competitive_prowess": {
+   "name": "Gift of Competitive Prowess",
+   "kind": "advanced_craft",
+   "qty": {
+    "ardent_glorious__per_piece": 1
+   },
+   "needed_for": [
+    "ardent_glorious"
+   ],
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Recette non capturée — la page d'Ardent Glorious Crown confirme 1 par pièce, sans détailler son propre coût.",
+      "en": "Recipe not captured — Ardent Glorious Crown page confirms 1 per piece, without detailing its own cost."
+     }
+    }
+   ],
+   "verified": "exigence sourcee, cout inconnu",
+   "checked": "2026-09-10",
+   "ref": "ardent_glorious_crown.html, section Used in"
   }
  },
  "enchaînements_recommandés": {
@@ -25391,7 +25442,12 @@
     }
    ],
    "recipe_verified": "2026-07-25 (wiki) — conforme",
-   "cadence_ref": "pvp_league_ticket"
+   "cadence_ref": "pvp_league_ticket",
+   "components": [
+    "gift_of_competitive_prosperity",
+    "gift_of_competitive_prowess",
+    "gift_of_competitive_dedication"
+   ]
   },
   "gen1_weapon_generic": {
    "name": "Gen1 Weapon (générique)",
