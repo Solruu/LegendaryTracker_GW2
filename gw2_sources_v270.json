@@ -945,7 +945,9 @@
   "changelog_v220": "Orrax Contained : sources documentees completement (page fraiche fournie par Antoine). Confirme : le succes 'Unknown Nightmares: Orrax Contained' est un prerequis commun a DEUX voies (achat OU Forge mystique via Draconic Tribute), pas une voie unique. La voie Forge (deja modelisee, draconic_tribute.qty[orrax_contained]=1) reste le defaut -- confirmee correcte par Antoine, chiffres inchanges (68 Mystic Clover / 200 Pile of Crystalline Dust sur Orrax Manifested). Voie achat documentee pour reference, non decomposee (Plate of Orrian Steak Frittes a sa propre chaine).",
   "changelog_v221": "Wings of Glory (PvP), les 4 paliers : pvp_league_ticket cable (10/20/30/40, source vendeur 'League Vendor' confirmee sur les 4 pages du lot 8). wings_of_glory_veteran cree (manquait). sources.tip des 3 composants deja existants corrige : c'etait decrit comme 'recompense de saison PvP', en realite achat direct en tickets chez un vendeur, comme Wings of War cote McM.",
   "changelog_v222": "Renomme tribute_to_the_crown -> tribute_to_the_queen (nom invente corrige, confirme par tribute_to_the_queen.html). Ajoute au groupe tribut_15 existant (15 au choix des 6 monnaies, Volatile Magic par defaut, meme structure que les 10 autres Tribute to X).",
-  "changelog_v223": "Strife Unending : gift_of_the_warclaw 1->2 et ball_dark_energy (jamais cable, 2) corriges contre le champ requirements deja verifie wiki (25/07/2026). components rempli (etait vide) pour que l'arbre de dons ait une racine affichable sur l'onglet Materiaux : gift_of_the_mistwalker, gift_of_the_mist_warrior, skirmish_claim_ticket, gift_of_the_warclaw, ball_dark_energy. Le reste des requirements documentes (Mistwalker Infusion, 3000 tickets, 45 clovers, 40 Emblem of the Avenger) etait deja correctement cable et confirme par cascade."
+  "changelog_v223": "Strife Unending : gift_of_the_warclaw 1->2 et ball_dark_energy (jamais cable, 2) corriges contre le champ requirements deja verifie wiki (25/07/2026). components rempli (etait vide) pour que l'arbre de dons ait une racine affichable sur l'onglet Materiaux : gift_of_the_mistwalker, gift_of_the_mist_warrior, skirmish_claim_ticket, gift_of_the_warclaw, ball_dark_energy. Le reste des requirements documentes (Mistwalker Infusion, 3000 tickets, 45 clovers, 40 Emblem of the Avenger) etait deja correctement cable et confirme par cascade.",
+  "changelog_v224": "Triumphant Hero's armor : premiere piece decomposee (Triumphant Hero's Masque, casque leger). Recette legendaire = 1 piece ascended + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication, 1 chacun par piece -- pas de split Magical/Mighty par poids comme Obsidian, a confirmer sur une 2e piece. gift_of_war_prosperity et gift_of_war_dedication (deja connectes ailleurs) relies a triumphant_hero__per_piece=1. gift_of_war_prowess cree (n'existait pas), structure honnete : exigence sourcee (1/piece), sa propre recette inconnue -- page non capturee. components rempli. RESTE A FAIRE : recette de Gift of War Prowess, confirmation du split par poids sur une 2e piece.",
+  "changelog_v225": "Triumphant Hero's armor : memory_of_battle par piece corrige (200 -> 250), skirmish_claim_ticket par piece ajoute (175, jamais cable), grandmaster_tailors_mark cree (3/piece, jamais cable). Source : triumphant_heros_masque.html, table Sold by, ligne ascended (achat direct, pas d'upgrade sequentiel depuis l'exotique)."
  },
  "meta_events": {
   "vb": {
@@ -3961,7 +3963,7 @@
     "warbringer"
    ],
    "qty": {
-    "triumphant_hero__per_piece": 200,
+    "triumphant_hero__per_piece": 250,
     "essence_of_carnage": 500,
     "mist_pearl": 250,
     "mist_enhanced_mithril": 250,
@@ -10432,7 +10434,8 @@
     "commanders_wings_of_war": 875,
     "recruits_wings_of_war": 350,
     "soldiers_wings_of_war": 525,
-    "generals_wings_of_war": 700
+    "generals_wings_of_war": 700,
+    "triumphant_hero__per_piece": 175
    },
    "farmable": true,
    "sources": [
@@ -10495,7 +10498,8 @@
     "warcry",
     "recruits_wings_of_war",
     "soldiers_wings_of_war",
-    "generals_wings_of_war"
+    "generals_wings_of_war",
+    "triumphant_hero"
    ],
    "timegate": true,
    "timegate_note": {
@@ -14107,10 +14111,12 @@
    "kind": "intermediate",
    "farmable": true,
    "qty": {
-    "gift_of_the_world": 1
+    "gift_of_the_world": 1,
+    "triumphant_hero__per_piece": 1
    },
    "needed_for": [
-    "gift_of_the_world"
+    "gift_of_the_world",
+    "triumphant_hero"
    ],
    "recipe": {
     "fr": "MF : 1 Certificate of Honor + 1 Certificate of Heroics + 1 Glob of Condensed Spirit Energy + 250 Mémoires de bataille.",
@@ -18683,10 +18689,12 @@
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gift_of_the_mist_warrior": 3
+    "gift_of_the_mist_warrior": 3,
+    "triumphant_hero__per_piece": 1
    },
    "needed_for": [
-    "gift_of_the_mist_warrior"
+    "gift_of_the_mist_warrior",
+    "triumphant_hero"
    ],
    "sources": [
     {
@@ -20032,6 +20040,51 @@
    "verified": true,
    "checked": "2026-09-09",
    "ref": "tribute_to_the_queen.html (lot 8) -- corrige le nom invente 'tribute_to_the_crown'"
+  },
+  "gift_of_war_prowess": {
+   "name": "Gift of War Prowess",
+   "kind": "advanced_craft",
+   "qty": {
+    "triumphant_hero__per_piece": 1
+   },
+   "needed_for": [
+    "triumphant_hero"
+   ],
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Recette non capturée — la page de Triumphant Hero's Masque confirme 1 par pièce, sans détailler son propre coût.",
+      "en": "Recipe not captured — Triumphant Hero's Masque page confirms 1 per piece, without detailing its own cost."
+     }
+    }
+   ],
+   "verified": "exigence sourcee, cout inconnu",
+   "checked": "2026-09-10",
+   "ref": "triumphant_heros_masque.html, section Recipe"
+  },
+  "grandmaster_tailors_mark": {
+   "name": "Grandmaster Tailor's Mark",
+   "kind": "acquire",
+   "qty": {
+    "triumphant_hero__per_piece": 3
+   },
+   "needed_for": [
+    "triumphant_hero"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "craft_byproduct",
+     "tip": {
+      "fr": "Sous-produit de fabrication Tailleur (discipline artisanale).",
+      "en": "Tailoring discipline crafting byproduct."
+     },
+     "verified": true,
+     "checked": "2026-09-10",
+     "ref": "triumphant_heros_masque.html, section Sold by"
+    }
+   ]
   }
  },
  "enchaînements_recommandés": {
@@ -25264,7 +25317,12 @@
     }
    ],
    "recipe_verified": "2026-07-25 (wiki) — conforme",
-   "cadence_ref": "skirmish_claim_ticket"
+   "cadence_ref": "skirmish_claim_ticket",
+   "components": [
+    "gift_of_war_prosperity",
+    "gift_of_war_prowess",
+    "gift_of_war_dedication"
+   ]
   },
   "ardent_glorious": {
    "name": "Ardent Glorious Armor",
