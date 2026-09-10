@@ -1728,7 +1728,9 @@ const SOURCES_DB = {
     "changelog_v217": "glob_of_ectoplasm -> amalgamated_rift_essence : 50, source deja documentee dans le champ recipe d'amalgamated_rift_essence ('1 Amalgamated = 250 Fine + 100 Masterwork + 50 Rare + 50 Ecto') mais jamais cablee. Touche trois cascades existantes : gift_of_expertise (12, vers Obsidian armure et Gift of Janthir Wilds), gift_of_the_dessert (2, vers Gift of the Feast), gift_of_titan_understanding (25, vers Orrax Manifested).",
     "changelog_v218": "darksteel_ingot -> deldrimor_steel_ingot : 20, source deldrimor_steel_ingot.html (lot du 09/09), jamais cablee. Touche deldrimor_steel_spear_head (3, deja connecte a Klobjarne Geirr via gift_of_sharpened_tip/nyr_hrammr) et third_order_mist_frame (5, pas encore connecte a un legendaire -- aucun impact immediat, structure prete).",
     "changelog_v219": "gift_of_war_prosperity : recette completee (gift_of_battle 1, gift_of_condensed_might 1, gift_of_condensed_magic 1 -- mystic_clover 15 deja present). Source deja capturee (gift_of_war_prosperity.html). Cascade vers gift_of_the_mist_warrior (3) -> strife_unending (1).",
-    "changelog_v220": "Orrax Contained : sources documentees completement (page fraiche fournie par Antoine). Confirme : le succes 'Unknown Nightmares: Orrax Contained' est un prerequis commun a DEUX voies (achat OU Forge mystique via Draconic Tribute), pas une voie unique. La voie Forge (deja modelisee, draconic_tribute.qty[orrax_contained]=1) reste le defaut -- confirmee correcte par Antoine, chiffres inchanges (68 Mystic Clover / 200 Pile of Crystalline Dust sur Orrax Manifested). Voie achat documentee pour reference, non decomposee (Plate of Orrian Steak Frittes a sa propre chaine)."
+    "changelog_v220": "Orrax Contained : sources documentees completement (page fraiche fournie par Antoine). Confirme : le succes 'Unknown Nightmares: Orrax Contained' est un prerequis commun a DEUX voies (achat OU Forge mystique via Draconic Tribute), pas une voie unique. La voie Forge (deja modelisee, draconic_tribute.qty[orrax_contained]=1) reste le defaut -- confirmee correcte par Antoine, chiffres inchanges (68 Mystic Clover / 200 Pile of Crystalline Dust sur Orrax Manifested). Voie achat documentee pour reference, non decomposee (Plate of Orrian Steak Frittes a sa propre chaine).",
+    "changelog_v221": "Wings of Glory (PvP), les 4 paliers : pvp_league_ticket cable (10/20/30/40, source vendeur 'League Vendor' confirmee sur les 4 pages du lot 8). wings_of_glory_veteran cree (manquait). sources.tip des 3 composants deja existants corrige : c'etait decrit comme 'recompense de saison PvP', en realite achat direct en tickets chez un vendeur, comme Wings of War cote McM.",
+    "changelog_v222": "Renomme tribute_to_the_crown -> tribute_to_the_queen (nom invente corrige, confirme par tribute_to_the_queen.html). Ajoute au groupe tribut_15 existant (15 au choix des 6 monnaies, Volatile Magic par defaut, meme structure que les 10 autres Tribute to X)."
   },
   "meta_events": {
     "vb": {
@@ -6365,13 +6367,21 @@ const SOURCES_DB = {
         "armor_pvp",
         "certificate_of_support",
         "the_ascension",
-        "transcendence"
+        "transcendence",
+        "wings_of_glory_recruit",
+        "wings_of_glory_veteran",
+        "wings_of_glory_champion",
+        "wings_of_glory_elite"
       ],
       "qty": {
         "ardent_glorious__per_piece": 150,
         "transcendence": 45,
         "the_ascension": 100,
-        "certificate_of_support": 5
+        "certificate_of_support": 5,
+        "wings_of_glory_recruit": 10,
+        "wings_of_glory_veteran": 20,
+        "wings_of_glory_champion": 30,
+        "wings_of_glory_elite": 40
       },
       "farmable": true,
       "timegate": true,
@@ -8523,11 +8533,16 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "pvp_league",
+          "type": "pvp_vendor",
+          "npc": "League Vendor",
+          "map": "Hall of Memories / Heart of the Mists",
           "tip": {
-            "fr": "Récompense PvP League Season — Tier Bronze. S'accumule en jouant des ranked games.",
-            "en": "PvP League Season reward - Bronze tier. Accumulates by playing ranked games."
-          }
+            "fr": "Achat pour 10 PvP League Ticket.",
+            "en": "Purchase for 10 PvP League Ticket."
+          },
+          "verified": true,
+          "checked": "2026-09-09",
+          "ref": "recruits_wings_of_glory.html"
         }
       ],
       "qty": {
@@ -8537,24 +8552,28 @@ const SOURCES_DB = {
     },
     "wings_of_glory_veteran": {
       "name": "Veteran's Wings of Glory",
-      "apiId": 77221,
+      "kind": "acquire",
+      "qty": {
+        "wings_of_ascension": 1
+      },
       "needed_for": [
         "wings_of_ascension"
       ],
       "farmable": true,
       "sources": [
         {
-          "type": "pvp_league",
+          "type": "pvp_vendor",
+          "npc": "League Vendor",
+          "map": "Hall of Memories / Heart of the Mists",
           "tip": {
-            "fr": "Récompense PvP League Season — Tier Silver. Complète le chemin Path of the Ascension.",
-            "en": "PvP League Season reward - Silver tier. Completes the Path of the Ascension."
-          }
+            "fr": "Achat pour 20 PvP League Ticket.",
+            "en": "Purchase for 20 PvP League Ticket."
+          },
+          "verified": true,
+          "checked": "2026-09-09",
+          "ref": "veterans_wings_of_glory.html"
         }
-      ],
-      "qty": {
-        "wings_of_ascension": 1
-      },
-      "kind": "acquire"
+      ]
     },
     "wings_of_glory_champion": {
       "name": "Champion's Wings of Glory",
@@ -8565,11 +8584,16 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "pvp_league",
+          "type": "pvp_vendor",
+          "npc": "League Vendor",
+          "map": "Hall of Memories / Heart of the Mists",
           "tip": {
-            "fr": "Récompense PvP League Season — Tier Gold.",
-            "en": "PvP League Season reward - Gold tier."
-          }
+            "fr": "Achat pour 30 PvP League Ticket.",
+            "en": "Purchase for 30 PvP League Ticket."
+          },
+          "verified": true,
+          "checked": "2026-09-09",
+          "ref": "champions_wings_of_glory.html"
         }
       ],
       "qty": {
@@ -8586,11 +8610,16 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "pvp_league",
+          "type": "pvp_vendor",
+          "npc": "League Vendor",
+          "map": "Hall of Memories / Heart of the Mists",
           "tip": {
-            "fr": "Récompense PvP League Season — Tier Legendary/Platinum.",
-            "en": "PvP League Season reward - Legendary/Platinum tier."
-          }
+            "fr": "Achat pour 40 PvP League Ticket.",
+            "en": "Purchase for 40 PvP League Ticket."
+          },
+          "verified": true,
+          "checked": "2026-09-09",
+          "ref": "elites_wings_of_glory.html"
         }
       ],
       "qty": {
@@ -20665,28 +20694,6 @@ const SOURCES_DB = {
       "checked": "2026-09-08",
       "verified": "exigence sourcée, coût inconnu"
     },
-    "tribute_to_the_crown": {
-      "name": "Tribute to the Crown",
-      "kind": "advanced_craft",
-      "needed_for": [
-        "shard_of_the_crown"
-      ],
-      "qty": {
-        "shard_of_the_crown": 1
-      },
-      "sources": [
-        {
-          "type": "unknown",
-          "tip": {
-            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-          }
-        }
-      ],
-      "ref": "table « Full material list » — 1 Tribute par Shard of the Crown",
-      "checked": "2026-09-08",
-      "verified": "exigence sourcée, coût inconnu"
-    },
     "tribute_to_the_dark_arts": {
       "name": "Tribute to the Dark Arts",
       "kind": "advanced_craft",
@@ -20783,7 +20790,31 @@ const SOURCES_DB = {
           "cadence": "à volonté"
         }
       ],
-      "_note_capture": "Page wiki propre non encore capturee (cadence/plafonds non verifies) -- ajoutee a PAGES_A_CAPTURER."
+      "verified": true,
+      "checked": "2026-09-09",
+      "ref": "unbound_magic.html (lot 8)"
+    },
+    "tribute_to_the_queen": {
+      "name": "Tribute to the Queen",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_of_the_crown"
+      ],
+      "qty": {
+        "shard_of_the_crown": 1
+      },
+      "sources": [
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+            "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-09-09",
+      "ref": "tribute_to_the_queen.html (lot 8) -- corrige le nom invente 'tribute_to_the_crown'"
     }
   },
   "enchaînements_recommandés": {
@@ -67418,7 +67449,8 @@ const SOURCES_DB = {
       "targets": [
         "tribute_to_endeavor",
         "tribute_to_resolution",
-        "tribute_to_tlehco"
+        "tribute_to_tlehco",
+        "tribute_to_the_queen"
       ],
       "label": {
         "fr": "Tribute to X — une seule des six monnaies (15)",
