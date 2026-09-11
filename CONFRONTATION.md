@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v277.json`. 366 ecarts sur 68 legendaires.
+Source : `gw2_sources_v278.json`. 382 ecarts sur 68 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -54,22 +54,22 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_the_dreamer` | 1 | 500 |
 | `gen1_the_minstrel` | 1 | 500 |
 | `perfected_envoy` | 7 | 426 |
-| `gen3_aurene_s_fang` | 2 | 289 |
-| `gen3_aurene_s_flight` | 2 | 289 |
-| `gen3_aurene_s_tail` | 2 | 289 |
-| `gen3_aurene_s_wing` | 2 | 289 |
-| `gen3_aurenes_argument` | 2 | 289 |
-| `gen3_aurenes_bite` | 2 | 289 |
-| `gen3_aurenes_breath` | 2 | 289 |
-| `gen3_aurenes_claw` | 2 | 289 |
-| `gen3_aurenes_gaze` | 2 | 289 |
-| `gen3_aurenes_insight` | 2 | 289 |
-| `gen3_aurenes_persuasion` | 2 | 289 |
-| `gen3_aurenes_scale` | 2 | 289 |
-| `gen3_aurenes_voice` | 2 | 289 |
-| `gen3_aurenes_weight` | 2 | 289 |
-| `gen3_aurenes_wisdom` | 2 | 289 |
-| `gen3_aurenes_rending` | 1 | 250 |
+| `gen3_aurene_s_fang` | 3 | 294 |
+| `gen3_aurene_s_flight` | 3 | 294 |
+| `gen3_aurene_s_tail` | 3 | 294 |
+| `gen3_aurene_s_wing` | 3 | 294 |
+| `gen3_aurenes_argument` | 3 | 294 |
+| `gen3_aurenes_bite` | 3 | 294 |
+| `gen3_aurenes_breath` | 3 | 294 |
+| `gen3_aurenes_claw` | 3 | 294 |
+| `gen3_aurenes_gaze` | 3 | 294 |
+| `gen3_aurenes_insight` | 3 | 294 |
+| `gen3_aurenes_persuasion` | 3 | 294 |
+| `gen3_aurenes_scale` | 3 | 294 |
+| `gen3_aurenes_voice` | 3 | 294 |
+| `gen3_aurenes_weight` | 3 | 294 |
+| `gen3_aurenes_wisdom` | 3 | 294 |
+| `gen3_aurenes_rending` | 2 | 255 |
 | `legendary_relic` | 1 | 250 |
 | `gen1_frenzy` | 1 | 200 |
 | `gen1_frostfang` | 1 | 200 |
@@ -122,14 +122,14 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
-| `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_pharus` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_pharus` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
-| `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_sharur` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_sharur` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
-| `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `gen2_the_binding_of_ipos` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `gen2_the_binding_of_ipos` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
 | `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
@@ -143,17 +143,17 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `klobjarne_geirr` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 3730 | 1930 | -1800 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
-| `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_eureka` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_eureka` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_the_shining_blade` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_the_shining_blade` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_xiuquatl` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_xiuquatl` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
@@ -162,10 +162,10 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
 | `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
-| `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_flames_of_war` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_flames_of_war` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
-| `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_shooshadoo` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
 | `the_ascension` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |

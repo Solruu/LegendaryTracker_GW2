@@ -1,21 +1,12 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v277.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v278.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
-
-## 0 bis — 1 cibles citees par l'arbre sans entree connue
-
-Ces cles portent des couts a plat mais ne correspondent ni a un legendaire,
-ni a une piece d'armure, ni a un composant. Ce n'est pas une capture qui
-manque, c'est une entree — souvent une variante d'ecriture d'une cle
-existante. A regler avant de capturer quoi que ce soit pour elles.
-
-- `gen3`
 
 ## 0 — 6 trous de l'arbre — LA PRIORITÉ
 
