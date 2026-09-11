@@ -4425,7 +4425,8 @@
    "qty": {
     "essence_of_strategy": 1000,
     "certificate_of_honor": 500,
-    "commanders_wings_of_war": 250
+    "commanders_wings_of_war": 250,
+    "gift_of_battle": 500
    },
    "farmable": true,
    "sources": [
@@ -4448,7 +4449,8 @@
    "needed_for": [
     "certificate_of_honor",
     "commanders_wings_of_war",
-    "essence_of_strategy"
+    "essence_of_strategy",
+    "gift_of_battle"
    ]
   },
   "ascended_shard_of_glory": {
@@ -4649,8 +4651,14 @@
   "magnetite_shard": {
    "name": "Magnetite Shard",
    "apiId": 28,
-   "needed_for": [],
-   "qty": {},
+   "needed_for": [
+    "gift_of_complex_emotions",
+    "gift_of_patience"
+   ],
+   "qty": {
+    "gift_of_complex_emotions": 100,
+    "gift_of_patience": 100
+   },
    "farmable": true,
    "sources": [
     {

@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v274.json`. 3211 ecarts sur 74 legendaires.
+Source : `gw2_sources_v275.json`. 363 ecarts sur 68 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -16,162 +16,156 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 
 | legendaire | composants en ecart | somme des ecarts |
 |---|---:|---:|
-| `warbringer` | 26 | 33744303053081172517843 |
-| `conflux` | 29 | 33476503449245024885821 |
-| `ad_infinitum` | 56 | 322388924425377004319 |
-| `the_ascension` | 52 | 322388924425377000956 |
-| `strife_unending` | 65 | 149461217573545882262 |
-| `triumphant_hero` | 18 | 49330989022521054976 |
-| `gen1_the_bifrost` | 43 | 8230298373698075836 |
-| `gen1_the_dreamer` | 43 | 8230298373698075836 |
-| `gen1_the_minstrel` | 43 | 8230298373698075836 |
-| `gen1_frenzy` | 44 | 8230298373698075536 |
-| `gen1_frostfang` | 44 | 8230298373698075536 |
-| `gen1_incinerator` | 44 | 8230298373698075536 |
-| `gen1_rodgort` | 44 | 8230298373698075536 |
-| `gen1_the_juggernaut` | 44 | 8230298373698075486 |
-| `gen1_bolt` | 44 | 8230298373698075436 |
-| `gen1_meteorlogicus` | 44 | 8230298373698075436 |
-| `gen1_sunrise` | 44 | 8230298373698075436 |
-| `gen1_the_flameseeker_prophecies` | 44 | 8230298373698075436 |
-| `gen1_the_predator` | 44 | 8230298373698075436 |
-| `gen1_twilight` | 44 | 8230298373698075436 |
-| `gen1_eternity` | 44 | 8230298373698075341 |
-| `gen1_howler` | 43 | 8230298373698075336 |
-| `gen1_kamohoalii_kotaki` | 43 | 8230298373698075336 |
-| `gen1_kraitkin` | 43 | 8230298373698075336 |
-| `gen1_kudzu` | 43 | 8230298373698075336 |
-| `gen1_quip` | 43 | 8230298373698075336 |
-| `gen1_the_moot` | 43 | 8230298373698075336 |
-| `stella_radians` | 22 | 7006602788680172554 |
-| `gen2_eureka` | 51 | 730901674861635876 |
-| `gen2_xiuquatl` | 51 | 730901674861635876 |
-| `gen2_shooshadoo` | 51 | 730901674861632876 |
-| `gen2_exordium` | 48 | 730901674861626876 |
-| `aetheric_anchor` | 55 | 369684272403119008 |
-| `gen2_the_binding_of_ipos` | 55 | 369684272403110915 |
-| `gen2_pharus` | 49 | 369684272403100615 |
-| `gen2_sharur` | 49 | 369684272403100615 |
-| `gen2_claw_of_the_khan_ur` | 49 | 369684272403097615 |
-| `gen2_the_shining_blade` | 49 | 369684272403097615 |
-| `klobjarne_geirr` | 54 | 369684272403097347 |
-| `gen2_flames_of_war` | 49 | 369684272403094615 |
-| `gen2_astralaria` | 46 | 369684272403088615 |
-| `gen2_chuka_and_champawat` | 46 | 369684272403088615 |
-| `gen2_hope` | 46 | 369684272403088615 |
-| `gen2_nevermore` | 46 | 369684272403088615 |
-| `gen2_the_hms_divinity` | 46 | 369684272403088615 |
-| `gen2_verdarach` | 46 | 369684272403088615 |
-| `vision` | 55 | 369684272403087572 |
-| `gen3_aurene_s_fang` | 44 | 369684272403086504 |
-| `gen3_aurene_s_flight` | 44 | 369684272403086504 |
-| `gen3_aurene_s_tail` | 44 | 369684272403086504 |
-| `gen3_aurene_s_wing` | 44 | 369684272403086504 |
-| `gen3_aurenes_argument` | 44 | 369684272403086504 |
-| `gen3_aurenes_bite` | 44 | 369684272403086504 |
-| `gen3_aurenes_breath` | 44 | 369684272403086504 |
-| `gen3_aurenes_claw` | 44 | 369684272403086504 |
-| `gen3_aurenes_gaze` | 44 | 369684272403086504 |
-| `gen3_aurenes_insight` | 44 | 369684272403086504 |
-| `gen3_aurenes_persuasion` | 44 | 369684272403086504 |
-| `gen3_aurenes_scale` | 44 | 369684272403086504 |
-| `gen3_aurenes_voice` | 44 | 369684272403086504 |
-| `gen3_aurenes_weight` | 44 | 369684272403086504 |
-| `gen3_aurenes_wisdom` | 44 | 369684272403086504 |
-| `gen3_aurenes_rending` | 43 | 369684272403086465 |
-| `aurora` | 43 | 369684272403085715 |
-| `transcendence` | 37 | 361217402458526156 |
-| `selachimorpha` | 64 | 8466869946391527 |
-| `orrax_manifested` | 82 | 8466869944621181 |
-| `coalescence` | 61 | 417483757595938 |
-| `endless_summer` | 53 | 408949147541039 |
+| `gen2_the_binding_of_ipos` | 12 | 24700 |
+| `gen2_pharus` | 6 | 14400 |
+| `gen2_sharur` | 6 | 14400 |
+| `klobjarne_geirr` | 16 | 13488 |
+| `gen2_eureka` | 8 | 11651 |
+| `gen2_xiuquatl` | 8 | 11651 |
+| `gen2_claw_of_the_khan_ur` | 6 | 11400 |
+| `gen2_the_shining_blade` | 6 | 11400 |
+| `strife_unending` | 30 | 9752 |
+| `ad_infinitum` | 19 | 9089 |
+| `gen2_shooshadoo` | 8 | 8651 |
+| `gen2_flames_of_war` | 6 | 8400 |
+| `orrax_manifested` | 40 | 7920 |
+| `conflux` | 15 | 7780 |
+| `warbringer` | 11 | 6681 |
+| `transcendence` | 22 | 6101 |
 | `obsidian` | 3 | 5136 |
-| `eikasia` | 32 | 3444 |
+| `the_ascension` | 12 | 3781 |
+| `stella_radians` | 5 | 3498 |
+| `coalescence` | 11 | 3251 |
+| `gen2_exordium` | 5 | 2651 |
+| `vision` | 15 | 2597 |
+| `gen2_astralaria` | 3 | 2400 |
+| `gen2_chuka_and_champawat` | 3 | 2400 |
+| `gen2_hope` | 3 | 2400 |
+| `gen2_nevermore` | 3 | 2400 |
+| `gen2_the_hms_divinity` | 3 | 2400 |
+| `gen2_verdarach` | 3 | 2400 |
+| `aetheric_anchor` | 5 | 2305 |
+| `triumphant_hero` | 3 | 1596 |
+| `selachimorpha` | 8 | 752 |
+| `aurora` | 2 | 500 |
+| `eikasia` | 1 | 500 |
+| `gen1_the_bifrost` | 1 | 500 |
+| `gen1_the_dreamer` | 1 | 500 |
+| `gen1_the_minstrel` | 1 | 500 |
 | `perfected_envoy` | 7 | 411 |
+| `gen3_aurene_s_fang` | 2 | 289 |
+| `gen3_aurene_s_flight` | 2 | 289 |
+| `gen3_aurene_s_tail` | 2 | 289 |
+| `gen3_aurene_s_wing` | 2 | 289 |
+| `gen3_aurenes_argument` | 2 | 289 |
+| `gen3_aurenes_bite` | 2 | 289 |
+| `gen3_aurenes_breath` | 2 | 289 |
+| `gen3_aurenes_claw` | 2 | 289 |
+| `gen3_aurenes_gaze` | 2 | 289 |
+| `gen3_aurenes_insight` | 2 | 289 |
+| `gen3_aurenes_persuasion` | 2 | 289 |
+| `gen3_aurenes_scale` | 2 | 289 |
+| `gen3_aurenes_voice` | 2 | 289 |
+| `gen3_aurenes_weight` | 2 | 289 |
+| `gen3_aurenes_wisdom` | 2 | 289 |
+| `gen3_aurenes_rending` | 1 | 250 |
 | `legendary_relic` | 1 | 250 |
+| `gen1_frenzy` | 1 | 200 |
+| `gen1_frostfang` | 1 | 200 |
+| `gen1_incinerator` | 1 | 200 |
+| `gen1_rodgort` | 1 | 200 |
+| `gen1_the_juggernaut` | 1 | 150 |
+| `gen1_bolt` | 1 | 100 |
+| `gen1_meteorlogicus` | 1 | 100 |
+| `gen1_sunrise` | 1 | 100 |
+| `gen1_the_flameseeker_prophecies` | 1 | 100 |
+| `gen1_the_predator` | 1 | 100 |
+| `gen1_twilight` | 1 | 100 |
 | `ardent_glorious` | 1 | 90 |
+| `endless_summer` | 1 | 33 |
+| `gen1_eternity` | 1 | 5 |
 
 ## Les 80 plus gros ecarts
 
 | legendaire | composant | actuelle | recettes | ecart |
 |---|---|---:|---:|---:|
-| `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2450 | 29236710671325489530450 | +29236710671325489528000 |
-| `conflux` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1850 | 28998364180776321049850 | +28998364180776321048000 |
-| `warbringer` | `badge_of_honor` — Badge of Honor | 1250 | 4205526533889795259250 | +4205526533889795258000 |
-| `conflux` | `badge_of_honor` — Badge of Honor | 1500 | 4178373239788336348525 | +4178373239788336347025 |
-| `ad_infinitum` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 280988623763147226000 | +280988623763147226000 |
-| `the_ascension` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 280988623763147226000 | +280988623763147226000 |
-| `strife_unending` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 3000 | 128611119602955138000 | +128611119602955135000 |
-| `warbringer` | `emblem_of_the_avenger` — Emblem of the Avenger | 0 | 97065927031696068400 | +97065927031696068400 |
-| `conflux` | `emblem_of_the_avenger` — Emblem of the Avenger | 1 | 96451865902732282600 | +96451865902732282599 |
-| `warbringer` | `grandmaster_mark_shard` — Grandmaster Mark Shard | 0 | 89860182932349784000 | +89860182932349784000 |
-| `conflux` | `grandmaster_mark_shard` — Grandmaster Mark Shard | 0 | 89114433159446614020 | +89114433159446614020 |
-| `warbringer` | `memory_of_battle` — Memory of Battle | 750 | 54627619747337794750 | +54627619747337794000 |
-| `conflux` | `memory_of_battle` — Memory of Battle | 1750 | 54173880049671829510 | +54173880049671827760 |
-| `ad_infinitum` | `badge_of_honor` — Badge of Honor | 0 | 38540061506140271500 | +38540061506140271500 |
-| `the_ascension` | `badge_of_honor` — Badge of Honor | 0 | 38540061506140271500 | +38540061506140271500 |
-| `triumphant_hero` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 1310 | 37971933991183692000 | +37971933991183690690 |
-| `warbringer` | `gift_of_battle` — Gift of Battle | 4 | 24595872552844084736 | +24595872552844084732 |
-| `conflux` | `gift_of_battle` — Gift of Battle | 5 | 24395805816495766225 | +24395805816495766220 |
-| `strife_unending` | `badge_of_honor` — Badge of Honor | 0 | 19498538151265884500 | +19498538151265884500 |
-| `warbringer` | `emblem_of_the_conqueror` — Emblem of the Conqueror | 100 | 15251677354993072488 | +15251677354993072388 |
-| `conflux` | `emblem_of_the_conqueror` — Emblem of the Conqueror | 100 | 15128703834527792161 | +15128703834527792061 |
-| `triumphant_hero` | `badge_of_honor` — Badge of Honor | 3000 | 10843943986344915000 | +10843943986344912000 |
-| `warbringer` | `gift_of_the_mists` — Gift of the Mists | 0 | 9745570223775163176 | +9745570223775163176 |
-| `conflux` | `gift_of_the_mists` — Gift of the Mists | 1 | 9666121393592107017 | +9666121393592107016 |
-| `gen1_bolt` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_eternity` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_frenzy` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_frostfang` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_howler` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_incinerator` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_kamohoalii_kotaki` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_kraitkin` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_kudzu` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_meteorlogicus` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_quip` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_rodgort` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_sunrise` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_bifrost` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_dreamer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_flameseeker_prophecies` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_juggernaut` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_minstrel` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_moot` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_the_predator` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `gen1_twilight` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 0 | 6334968380529666000 | +6334968380529666000 |
-| `warbringer` | `mistwalker_infusion` — Mistwalker Infusion | 0 | 4872785111887581588 | +4872785111887581588 |
-| `conflux` | `mistwalker_infusion` — Mistwalker Infusion | 0 | 4833060696796053508 | +4833060696796053508 |
-| `stella_radians` | `research_note` — Research Note | 52500 | 4429991660853500000 | +4429991660853447500 |
-| `warbringer` | `stabilizing_matrix` — Stabilizing Matrix | 0 | 2909258484348870600 | +2909258484348870600 |
-| `conflux` | `stabilizing_matrix` — Stabilizing Matrix | 75 | 2884999040984556225 | +2884999040984556150 |
-| `gen1_bolt` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_eternity` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_frenzy` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_frostfang` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_howler` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_incinerator` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_kamohoalii_kotaki` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_kraitkin` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_kudzu` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_meteorlogicus` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_quip` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_rodgort` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_sunrise` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_bifrost` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_dreamer` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_flameseeker_prophecies` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_juggernaut` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_minstrel` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_moot` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_the_predator` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `gen1_twilight` | `badge_of_honor` — Badge of Honor | 0 | 1809386588623663500 | +1809386588623663500 |
-| `stella_radians` | `elder_wood_plank` — Elder Wood Plank | 2500 | 953378478062117500 | +953378478062115000 |
-| `stella_radians` | `mithril_ingot` — Mithril Ingot | 2500 | 953378478062117500 | +953378478062115000 |
-| `ad_infinitum` | `emblem_of_the_avenger` — Emblem of the Avenger | 0 | 886193678746035400 | +886193678746035400 |
-| `the_ascension` | `emblem_of_the_avenger` — Emblem of the Avenger | 0 | 886193678746035400 | +886193678746035400 |
-| `ad_infinitum` | `grandmaster_mark_shard` — Grandmaster Mark Shard | 0 | 867101976103936000 | +867101976103936000 |
-| `the_ascension` | `grandmaster_mark_shard` — Grandmaster Mark Shard | 0 | 867101976103936000 | +867101976103936000 |
-| `warbringer` | `gift_of_war` — Gift of War | 0 | 822830298453045088 | +822830298453045088 |
-| `warbringer` | `cube_stabilized_dark_energy` — Cube of Stabilized Dark Energy | 0 | 822830298453045088 | +822830298453045088 |
-| `warbringer` | `gift_of_glory` — Gift of Glory | 0 | 822830298453045088 | +822830298453045088 |
+| `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
+| `obsidian` | `glob_of_ectoplasm` — Glob of Ectoplasm | 7200 | 3600 | -3600 |
+| `gen2_the_binding_of_ipos` | `mithril_ingot` — Mithril Ingot | 3500 | 7000 | +3500 |
+| `gen2_the_binding_of_ipos` | `large_bone` — Large Bone | 4000 | 7500 | +3500 |
+| `gen2_the_binding_of_ipos` | `volatile_magic` — Volatile Magic | 1000 | 4000 | +3000 |
+| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
+| `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 6000 | 3000 | -3000 |
+| `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 6000 | 3000 | -3000 |
+| `gen2_pharus` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
+| `gen2_pharus` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_pharus` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
+| `gen2_sharur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
+| `gen2_sharur` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_sharur` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
+| `gen2_the_binding_of_ipos` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
+| `gen2_the_binding_of_ipos` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_the_binding_of_ipos` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
+| `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
+| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
+| `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
+| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
+| `gen2_eureka` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
+| `gen2_the_shining_blade` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
+| `gen2_the_shining_blade` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_the_shining_blade` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
+| `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
+| `gen2_xiuquatl` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_xiuquatl` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
+| `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
+| `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
+| `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
+| `gen2_pharus` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
+| `gen2_pharus` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
+| `gen2_sharur` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
+| `gen2_sharur` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
+| `gen2_the_binding_of_ipos` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
+| `gen2_the_binding_of_ipos` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
+| `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
+| `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
+| `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
+| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
+| `gen2_flames_of_war` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
+| `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
+| `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
+| `gen2_shooshadoo` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
+| `gen2_shooshadoo` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
+| `klobjarne_geirr` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 3730 | 1930 | -1800 |
+| `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
+| `gen2_claw_of_the_khan_ur` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_claw_of_the_khan_ur` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
+| `gen2_eureka` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_eureka` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
+| `gen2_the_shining_blade` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_the_shining_blade` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
+| `gen2_xiuquatl` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_xiuquatl` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
+| `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
+| `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
+| `coalescence` | `trade_contract` — Trade Contract | 0 | 1250 | +1250 |
+| `orrax_manifested` | `glob_of_ectoplasm` — Glob of Ectoplasm | 3520 | 2400 | -1120 |
+| `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
+| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
+| `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
+| `gen2_flames_of_war` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
+| `gen2_flames_of_war` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
+| `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
+| `gen2_shooshadoo` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
+| `the_ascension` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |

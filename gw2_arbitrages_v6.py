@@ -87,6 +87,18 @@ if not ARETES.exists():
              "version la plus haute — qui produit /tmp/edges2.json")
 
 cc = json.load(open(SRC))["craft_components"]
+_ALT_GROUPS = json.load(open(SRC)).get("alt_groups") or {}
+# Un composant option d'un alt_groups (Maguuma/Desert, les six gemmes, les six
+# monnaies de tribut...) confirme bien par la table vendeur qu'il POURRAIT
+# servir, mais un seul des freres suffit par construction du choix. Sans
+# cette exemption, chaque option non choisie (5 par groupe de tribut) sortait
+# comme un "cout vendeur" manquant -- confirme sur trade_contract/
+# unbound_magic/volatile_magic, freres d'airship_part/ley_line_crystal/
+# lump_of_aurillium (deja selectionnes) dans tribut_10/15/20.
+_ALT_CIBLES = collections.defaultdict(set)
+for _g in _ALT_GROUPS.values():
+    for _opt in (_g.get("options") or []):
+        _ALT_CIBLES[_opt].update(_g.get("targets") or [])
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
 par_enfant = collections.defaultdict(dict)
 origine = {}
@@ -151,7 +163,8 @@ def ancetres(cid, vus=None):
 lignes = []
 for enfant, parents in sorted(par_enfant.items()):
     q = cc[enfant].get("qty") or {}
-    neuves = {p: v for p, v in parents.items() if p not in q}
+    neuves = {p: v for p, v in parents.items()
+              if p not in q and p not in _ALT_CIBLES.get(enfant, ())}
     if not neuves:
         continue
     declares = set(cc[enfant].get("qty_overlap_verified") or [])

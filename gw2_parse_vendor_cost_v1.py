@@ -57,13 +57,25 @@ def _cout_cellule(cellule):
 
 
 def couts(chemin):
-    """[(objet, quantite)] pour la page, dedupliques, et les divergences."""
+    """[(objet, quantite)] pour la page, dedupliques, et les divergences.
+
+    Le scan s'arrete au premier titre H2 qui n'est plus de l'acquisition --
+    "Currency for" notamment liste ce qu'on ACHETE AVEC cet objet comme
+    monnaie, pas son propre cout. Sans cette borne, un badge/embleme/jeton
+    dont la page a une section "Currency for" faisait remonter le catalogue
+    entier d'un vendeur (armes de siege, packs de butin...) comme si c'etait
+    son PROPRE prix -- confirme sur emblem_of_the_avenger.html : "Currency for"
+    donnait 23 objets sans rapport, dont l'objet lui-meme en "cout" de 1.
+    """
     html = Path(chemin).read_text(encoding="utf-8", errors="ignore")
     i = html.find('id="Acquisition"')
     if i < 0:
         return [], []
+    fin = re.search(
+        r'<h2>.*?id="(?!Acquisition)[A-Za-z_]+"', html[i + 1:], re.S)
+    borne = i + 1 + fin.start() if fin else len(html)
     vus, divergences = {}, []
-    for tbl in re.finditer(r"<table[^>]*>(.*?)</table>", html[i:], re.S):
+    for tbl in re.finditer(r"<table[^>]*>(.*?)</table>", html[i:borne], re.S):
         entete = None
         for ligne in LIGNE.findall(tbl.group(1)):
             cs = CELLULE.findall(ligne)

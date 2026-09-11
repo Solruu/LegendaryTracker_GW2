@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v274.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v275.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -17,7 +17,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 
 - `gen3`
 
-## 0 — 1 trous de l'arbre — LA PRIORITÉ
+## 0 — 5 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -26,7 +26,11 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Augur's Stone` | 1 |
+| `Bloodstone Shard` | 1 |
+| `Fractalline Spark` | 1 |
 | `Olmakhan Bandolier` | 1 |
+| `Perfect Mist Core` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 
@@ -40,7 +44,7 @@ ignore ce que la cible contient réellement.
 | `Ardent Glorious armor` | 10 |
 | `Triumphant Hero's armor` | 10 |
 
-## 2 — 7 composants en arbitrage sans page au dépôt
+## 2 — 0 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -48,13 +52,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
-| `Badge of Honor` | 31 |
-| `Volatile Magic` | 10 |
-| `WvW Skirmish Claim Ticket` | 4 |
-| `Gift of Glory` | 1 |
-| `Gift of the Tides` | 1 |
-| `Legendary Insight` | 1 |
-| `Mystic Runestone` | 1 |
 
 ## 3 — 13 composants sans apiId ni page
 
