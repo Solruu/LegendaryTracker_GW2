@@ -32,7 +32,7 @@ import re
 import sys
 from pathlib import Path
 
-LIGNE = re.compile(r"<tr>(.*?)</tr>", re.S)
+LIGNE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.S)
 CELLULE = re.compile(r"<t([dh])\b([^>]*)>(.*?)</t\1>", re.S)
 PRIX = re.compile(r'<span class="price".*?</span>', re.S)
 ICONE = re.compile(r"<img[^>]*>", re.S)

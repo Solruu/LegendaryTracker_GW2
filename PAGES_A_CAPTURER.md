@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v273.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v274.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -17,7 +17,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 
 - `gen3`
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 1 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -26,12 +26,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Dragonsblood Weapons` | 3 |
-| `Augur's Stone` | 1 |
-| `Bloodstone Shard` | 1 |
-| `Fractalline Spark` | 1 |
 | `Olmakhan Bandolier` | 1 |
-| `Perfect Mist Core` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 
@@ -45,44 +40,7 @@ ignore ce que la cible contient réellement.
 | `Ardent Glorious armor` | 10 |
 | `Triumphant Hero's armor` | 10 |
 
-### Ajout manuel (non détecté par le générateur) — split poids × emplacement
-
-Le coût brut ascended (Ascended Shard of Glory / Memory of Battle + WvW
-Skirmish Claim Ticket, marque Grandmaster) varie par POIDS **et** par
-EMPLACEMENT au sein d'un même poids — confirmé le 10/09/2026 (Ardent
-Glorious Legplates lourd/jambières ≠ Triumphant Hero Wargreaves
-lourd/bottes). Chaque pièce d'un set d'armure légendaire a sa propre page ;
-seules 3 des 18 combinaisons poids × emplacement sont capturées par set
-(15 manquantes chacun, 30 au total). Le générateur ne détecte pas ce besoin
-— ces pages portent déjà des coûts à plat exploitables pour LEUR propre
-poids/emplacement, ce n'est pas un « trou » à ses yeux, juste une
-combinaison voisine non capturée.
-
-**Ardent Glorious armor** (capturé : léger/casque = Crown, moyen/torse =
-Brigandine, lourd/jambières = Legplates)
-
-| emplacement | léger | moyen | lourd |
-|---|---|---|---|
-| casque | ✅ `Ardent Glorious Crown` | `Ardent Glorious Cap` | `Ardent Glorious Plate Helm` |
-| épaulières | `Ardent Glorious Epaulets` | `Ardent Glorious Shoulderguards` | `Ardent Glorious Pauldrons` |
-| torse | `Ardent Glorious Raiment` | ✅ `Ardent Glorious Brigandine` | `Ardent Glorious Breastplate` |
-| gants | `Ardent Glorious Armguards` | `Ardent Glorious Wristplates` | `Ardent Glorious Gauntlets` |
-| jambières | `Ardent Glorious Leggings` | `Ardent Glorious Legguards` | ✅ `Ardent Glorious Legplates` |
-| bottes | `Ardent Glorious Footgear` | `Ardent Glorious Shinplates` | `Ardent Glorious Wargreaves` |
-
-**Triumphant Hero's armor** (capturé : léger/casque = Masque, moyen/torse =
-Brigandine, lourd/bottes = Wargreaves)
-
-| emplacement | léger | moyen | lourd |
-|---|---|---|---|
-| casque | ✅ `Triumphant Hero's Masque` | `Triumphant Hero's Faceguard` | `Triumphant Hero's Warhelm` |
-| épaulières | `Triumphant Hero's Epaulets` | `Triumphant Hero's Shoulderguards` | `Triumphant Hero's Pauldrons` |
-| torse | `Triumphant Hero's Raiment` | ✅ `Triumphant Hero's Brigandine` | `Triumphant Hero's Breastplate` |
-| gants | `Triumphant Hero's Armguards` | `Triumphant Hero's Wristplates` | `Triumphant Hero's Gauntlets` |
-| jambières | `Triumphant Hero's Leggings` | `Triumphant Hero's Legguards` | `Triumphant Hero's Legplates` |
-| bottes | `Triumphant Hero's Footgear` | `Triumphant Hero's Shinplates` | ✅ `Triumphant Hero's Wargreaves` |
-
-## 2 — 0 composants en arbitrage sans page au dépôt
+## 2 — 7 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -90,23 +48,31 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
+| `Badge of Honor` | 31 |
+| `Volatile Magic` | 10 |
+| `WvW Skirmish Claim Ticket` | 4 |
+| `Gift of Glory` | 1 |
+| `Gift of the Tides` | 1 |
+| `Legendary Insight` | 1 |
+| `Mystic Runestone` | 1 |
 
-## 3 — 12 composants sans apiId ni page
+## 3 — 13 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Gift of Competitive Prosperity` |
-| `Gift of Competitive Prowess` |
+| `Blended Leather Sheet` |
+| `Bolt Of Empowered Silk` |
+| `Carbonized Mithrillium Ingot` |
+| `Empowered Cured Thick Leather Square` |
+| `Empowered Mithril Ingot` |
 | `Gift of Magical / Mighty Prosperity` |
-| `Gift of War Prowess` |
-| `Grandmaster Armorsmith's Mark` |
-| `Grandmaster Leatherworker's Mark` |
-| `Grandmaster Tailor's Mark` |
 | `Olmakhan Bandolier` |
+| `Record of League Victories` |
 | `Spinal Blade Back Pack (Perfected)` |
+| `Square Of Vabbian Silk` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
