@@ -119,6 +119,19 @@ SRC = max(Path(__file__).resolve().parent.glob('gw2_sources_v*.json'),
           key=lambda p: int(p.stem.split('_v')[-1]))
 d=json.load(open(SRC), object_pairs_hook=collections.OrderedDict)
 cc=d['craft_components']
+# Recettes et couts vendeur venaient de deux fichiers derives (gw2_wiki_recipes_v1.json,
+# gw2_wiki_vendor_costs_v1.json), jamais regeneres depuis des sessions entieres -- 682 pages
+# contre 720 dans l'index maitre. ressources/INDEX_CONTENU.json est la seule source a jour ;
+# les deux derives sont supprimes, ce script lit l'index directement. Seule la forme de
+# 'couts_vendeur' differe de l'ancien 'couts' (liste de dicts {objet,qty} au lieu de paires) --
+# convertie une fois ici pour que le reste du fichier n'ait rien a changer.
+_INDEX = json.load(open(Path(__file__).resolve().parent / 'ressources' / 'INDEX_CONTENU.json',
+                         encoding='utf-8'))
+WIKI_RECIPES = [r for r in _INDEX if r.get('recettes')]
+WIKI_VENDOR_COSTS = [
+    {**r, 'couts': [(c['objet'], c['qty']) for c in (r.get('couts_vendeur') or [])]}
+    for r in _INDEX if r.get('couts_vendeur')
+]
 ARMOR={'perfected_envoy','obsidian','triumphant_hero','ardent_glorious'}
 def norm(s): return re.sub(r'[^a-z0-9]','',s.lower())
 def nom(cid):
@@ -199,7 +212,7 @@ def _voies_multiples(page):
     return 'id="Overview"' in seg and ('id="Recipes"' in seg or 'id="Recipe"' in seg)
 
 
-for r in json.load(open('gw2_wiki_recipes_v1.json')):
+for r in WIKI_RECIPES:
     if not r['recettes']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue
@@ -242,7 +255,7 @@ def autre_voie(page):
 
 
 vendeurs_ecartes = []
-for r in json.load(open('gw2_wiki_vendor_costs_v1.json')):
+for r in WIKI_VENDOR_COSTS:
     if not r['couts']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue

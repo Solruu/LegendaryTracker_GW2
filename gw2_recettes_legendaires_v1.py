@@ -44,8 +44,11 @@ DST = HERE / f"gw2_sources_{VER}.json"
 d = json.load(open(SRC, encoding="utf-8"), object_pairs_hook=collections.OrderedDict)
 cc = d["craft_components"]
 legs = d["legendaries"]
-R = {r["page"]: r for r in json.load(open(HERE / "gw2_wiki_recipes_v1.json",
-                                          encoding="utf-8"))}
+# gw2_wiki_recipes_v1.json etait un extrait fige de ressources/INDEX_CONTENU.json, jamais
+# regenere -- 682 pages contre 720 dans l'index maitre, aujourd'hui supprime. Meme champ
+# "recettes", meme forme : rien d'autre a changer que la source.
+R = {r["page"]: r for r in json.load(open(HERE / "ressources" / "INDEX_CONTENU.json",
+                                          encoding="utf-8")) if r.get("recettes")}
 
 
 def slug(t):
