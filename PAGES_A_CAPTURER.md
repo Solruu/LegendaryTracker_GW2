@@ -17,7 +17,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 
 - `gen3`
 
-## 0 — 26 trous de l'arbre — LA PRIORITÉ
+## 0 — 6 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -26,32 +26,12 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Shard of Arah` | 4 |
-| `Shard of Call of the Void` | 4 |
-| `Shard of Endeavor` | 4 |
-| `Shard of Exitare` | 4 |
-| `Shard of Friendship` | 4 |
-| `Shard of Liturgy` | 4 |
-| `Shard of Resolution` | 4 |
-| `Shard of Spero` | 4 |
-| `Shard of the Crown` | 4 |
-| `Shard of the Dark Arts` | 4 |
-| `Shard of Tlehco` | 4 |
 | `Dragonsblood Weapons` | 3 |
-| `Commander's Wings of War` | 2 |
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
-| `General's Wings of War` | 1 |
-| `Mystic Facet` | 1 |
 | `Olmakhan Bandolier` | 1 |
 | `Perfect Mist Core` | 1 |
-| `Recruit's Wings of War` | 1 |
-| `Soldier's Wings of War` | 1 |
-| `Champion's Wings of Glory` | 1 |
-| `Elite's Wings of Glory` | 1 |
-| `Recruit's Wings of Glory` | 1 |
-| `Veteran's Wings of Glory` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 

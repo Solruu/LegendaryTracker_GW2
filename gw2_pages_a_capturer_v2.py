@@ -126,10 +126,11 @@ def url(titre):
 
 
 # --- 0. trous de l'arbre --------------------------------------------------------
-R_REC = {r["page"]: r for r in json.load(open(HERE / "gw2_wiki_recipes_v1.json",
-                                             encoding="utf-8"))}
-R_VEN = {r["page"]: r for r in json.load(open(HERE / "gw2_wiki_vendor_costs_v1.json",
-                                              encoding="utf-8"))}
+# voie_connue() interrogeait gw2_wiki_recipes_v1.json et gw2_wiki_vendor_costs_v1.json
+# -- deux fichiers derives, jamais regeneres depuis des sessions entieres (682 pages
+# contre 720 dans INDEX_CONTENU.json). Resultat : 10 pages deja captees avec recette
+# au depot (Shard of Arah et consorts) redemandees en boucle comme "trou". idx est
+# deja l'index maitre, a jour, charge une fois en tete de fichier : une seule source.
 enfants = {}
 for _cid, _c in cc.items():
     for _k in (_c.get("qty") or {}):
@@ -140,7 +141,8 @@ for _cid, _c in cc.items():
 
 def voie_connue(cid):
     for x in {cid, slug(titre_composant(cid))}:
-        if (R_REC.get(x, {}).get("recettes") or R_VEN.get(x, {}).get("couts")):
+        r = idx.get(x)
+        if r and (r.get("recettes") or r.get("couts_vendeur")):
             return True
     return False
 
