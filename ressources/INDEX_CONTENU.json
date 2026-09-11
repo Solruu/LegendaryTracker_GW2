@@ -4277,6 +4277,40 @@
   "aretes_table": []
  },
  {
+  "page": "blended_leather_sheet",
+  "titre": "Blended Leather Sheet",
+  "api_id": 80723,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor Artificer Weaponsmith Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Cured_Thin_Leather_Square",
+      10
+     ],
+     [
+      "Cured_Coarse_Leather_Square",
+      5
+     ],
+     [
+      "Cured_Rugged_Leather_Square",
+      10
+     ],
+     [
+      "Spool_of_Thick_Elonian_Cord",
+      1
+     ]
+    ],
+    "produit": "Blended Leather Sheet"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "blessing_of_the_jade_empress",
   "titre": "Blessing of the Jade Empress",
   "api_id": 97829,
@@ -4569,6 +4603,40 @@
   "aretes_table": []
  },
  {
+  "page": "bolt_of_empowered_silk",
+  "titre": "Bolt of Empowered Silk",
+  "api_id": 80686,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Glob_of_Dark_Matter",
+      1
+     ],
+     [
+      "Vial_of_Might",
+      1
+     ],
+     [
+      "Vial_of_Magic",
+      1
+     ],
+     [
+      "Bolt_of_Silk",
+      150
+     ]
+    ],
+    "produit": "Bolt of Empowered Silk"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bolt_of_gossamer",
   "titre": "Bolt of Gossamer",
   "api_id": 19746,
@@ -4702,6 +4770,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "carbonized_mithrillium_ingot",
+  "titre": "Carbonized Mithrillium Ingot",
+  "api_id": 80714,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor Artificer Weaponsmith Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Iron_Ingot",
+      10
+     ],
+     [
+      "Steel_Ingot",
+      5
+     ],
+     [
+      "Darksteel_Ingot",
+      10
+     ],
+     [
+      "Lump_of_Mithrillium",
+      1
+     ]
+    ],
+    "produit": "Carbonized Mithrillium Ingot"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -7055,6 +7157,74 @@
      ]
     ],
     "produit": "Transmogrify Emerald Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "empowered_cured_thick_leather_square",
+  "titre": "Empowered Cured Thick Leather Square",
+  "api_id": 80743,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Glob_of_Dark_Matter",
+      1
+     ],
+     [
+      "Vial_of_Might",
+      1
+     ],
+     [
+      "Vial_of_Magic",
+      1
+     ],
+     [
+      "Cured_Thick_Leather_Square",
+      65
+     ]
+    ],
+    "produit": "Empowered Cured Thick Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "empowered_mithril_ingot",
+  "titre": "Empowered Mithril Ingot",
+  "api_id": 80831,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Glob_of_Dark_Matter",
+      1
+     ],
+     [
+      "Vial_of_Might",
+      1
+     ],
+     [
+      "Vial_of_Magic",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      150
+     ]
+    ],
+    "produit": "Empowered Mithril Ingot"
    }
   ],
   "couts_vendeur": [],
@@ -22801,6 +22971,33 @@
   "aretes_table": []
  },
  {
+  "page": "record_of_league_victories",
+  "titre": "Record of League Victories",
+  "api_id": 82700,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "PvP_League_Ticket",
+      30
+     ]
+    ],
+    "produit": "Record of League Victories"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 30
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "recruits_wings_of_glory",
   "titre": "Recruit's Wings of Glory",
   "api_id": 77507,
@@ -25080,6 +25277,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "square_of_vabbian_silk",
+  "titre": "Square of Vabbian Silk",
+  "api_id": 80775,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bolt_of_Wool",
+      10
+     ],
+     [
+      "Bolt_of_Cotton",
+      5
+     ],
+     [
+      "Bolt_of_Linen",
+      10
+     ],
+     [
+      "Spool_of_Silk_Weaving_Thread",
+      1
+     ]
+    ],
+    "produit": "Square of Vabbian Silk"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },

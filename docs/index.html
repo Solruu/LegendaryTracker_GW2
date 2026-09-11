@@ -6411,7 +6411,8 @@ const SOURCES_DB = {
         "wings_of_glory_recruit",
         "wings_of_glory_veteran",
         "wings_of_glory_champion",
-        "wings_of_glory_elite"
+        "wings_of_glory_elite",
+        "record_of_league_victories"
       ],
       "qty": {
         "ardent_glorious__per_piece": 150,
@@ -6421,7 +6422,8 @@ const SOURCES_DB = {
         "wings_of_glory_recruit": 10,
         "wings_of_glory_veteran": 20,
         "wings_of_glory_champion": 30,
-        "wings_of_glory_elite": 40
+        "wings_of_glory_elite": 40,
+        "record_of_league_victories": 30
       },
       "farmable": true,
       "timegate": true,
@@ -16631,10 +16633,12 @@ const SOURCES_DB = {
       "kind": "intermediate",
       "farmable": false,
       "needed_for": [
-        "xunlai_electrum_ingot"
+        "xunlai_electrum_ingot",
+        "carbonized_mithrillium_ingot"
       ],
       "qty": {
-        "xunlai_electrum_ingot": 1
+        "xunlai_electrum_ingot": 1,
+        "carbonized_mithrillium_ingot": 1
       },
       "craft": {
         "profession": "Jeweler",
@@ -17041,11 +17045,13 @@ const SOURCES_DB = {
       "farmable": true,
       "qty": {
         "gift_of_metal": 250,
-        "deldrimor_steel_ingot": 20
+        "deldrimor_steel_ingot": 20,
+        "carbonized_mithrillium_ingot": 10
       },
       "needed_for": [
         "gift_of_metal",
-        "deldrimor_steel_ingot"
+        "deldrimor_steel_ingot",
+        "carbonized_mithrillium_ingot"
       ],
       "sources": [
         {
@@ -18613,7 +18619,8 @@ const SOURCES_DB = {
         "shard_of_tlehco": 30,
         "shard_of_the_crown": 30,
         "shard_of_the_dark_arts": 20,
-        "mystic_curio": 15
+        "mystic_curio": 15,
+        "empowered_mithril_ingot": 150
       },
       "needed_for": [
         "gift_of_metal",
@@ -18630,7 +18637,8 @@ const SOURCES_DB = {
         "shard_of_spero",
         "shard_of_the_crown",
         "shard_of_the_dark_arts",
-        "shard_of_tlehco"
+        "shard_of_tlehco",
+        "empowered_mithril_ingot"
       ],
       "sources": [
         {
@@ -18859,11 +18867,13 @@ const SOURCES_DB = {
       "farmable": true,
       "qty": {
         "vial_of_quicksilver": 250,
-        "deldrimor_steel_ingot": 10
+        "deldrimor_steel_ingot": 10,
+        "carbonized_mithrillium_ingot": 5
       },
       "needed_for": [
         "deldrimor_steel_ingot",
-        "vial_of_quicksilver"
+        "vial_of_quicksilver",
+        "carbonized_mithrillium_ingot"
       ],
       "sources": [
         {
@@ -21126,7 +21136,7 @@ const SOURCES_DB = {
     },
     "carbonized_mithrillium_ingot": {
       "name": "Carbonized Mithrillium Ingot",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_tailors_mark": 1,
         "grandmaster_leatherworkers_mark": 1,
@@ -21140,17 +21150,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "carbonized_mithrillium_ingot.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients : 10x iron_ingot, 5x steel_ingot, 10x darksteel_ingot, 1x lump_of_mithrillium.",
+        "en": "Crafted (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients: 10x iron_ingot, 5x steel_ingot, 10x darksteel_ingot, 1x lump_of_mithrillium."
+      }
     },
     "square_of_vabbian_silk": {
       "name": "Square Of Vabbian Silk",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_tailors_mark": 2,
         "grandmaster_leatherworkers_mark": 1,
@@ -21164,17 +21181,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "square_of_vabbian_silk.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Leatherworker/Armorsmith/Tailor, rating 500). Ingredients : 10x bolt_of_wool, 5x bolt_of_cotton, 10x bolt_of_linen, 1x spool_of_silk_weaving_thread.",
+        "en": "Crafted (Leatherworker/Armorsmith/Tailor, rating 500). Ingredients: 10x bolt_of_wool, 5x bolt_of_cotton, 10x bolt_of_linen, 1x spool_of_silk_weaving_thread."
+      }
     },
     "blended_leather_sheet": {
       "name": "Blended Leather Sheet",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_tailors_mark": 1,
         "grandmaster_leatherworkers_mark": 1,
@@ -21188,17 +21212,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "blended_leather_sheet.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients : 10x cured_thin_leather_square, 5x cured_coarse_leather_square, 10x cured_rugged_leather_square, 1x spool_of_thick_elonian_cord.",
+        "en": "Crafted (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients: 10x cured_thin_leather_square, 5x cured_coarse_leather_square, 10x cured_rugged_leather_square, 1x spool_of_thick_elonian_cord."
+      }
     },
     "empowered_mithril_ingot": {
       "name": "Empowered Mithril Ingot",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_armorsmiths_mark": 1
       },
@@ -21208,17 +21239,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "empowered_mithril_ingot.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Armorsmith, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x mithril_ingot.",
+        "en": "Crafted (Armorsmith, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x mithril_ingot."
+      }
     },
     "empowered_cured_thick_leather_square": {
       "name": "Empowered Cured Thick Leather Square",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_leatherworkers_mark": 1
       },
@@ -21228,17 +21266,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "empowered_cured_thick_leather_square.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Leatherworker, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 65x cured_thick_leather_square.",
+        "en": "Crafted (Leatherworker, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 65x cured_thick_leather_square."
+      }
     },
     "bolt_of_empowered_silk": {
       "name": "Bolt Of Empowered Silk",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "grandmaster_tailors_mark": 1
       },
@@ -21248,17 +21293,24 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "advanced_craft",
           "tip": {
-            "fr": "Recette non capturee -- ingredient d'une marque Grandmaster.",
-            "en": "Recipe not captured -- ingredient of a Grandmaster mark."
-          }
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "bolt_of_empowered_silk.html, section Recipe"
         }
-      ]
+      ],
+      "recipe": {
+        "fr": "Fabrication (Tailor, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x bolt_of_silk.",
+        "en": "Crafted (Tailor, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x bolt_of_silk."
+      }
     },
     "record_of_league_victories": {
       "name": "Record of League Victories",
-      "kind": "acquire",
+      "kind": "advanced_craft",
       "qty": {
         "gift_of_competitive_prowess": 1
       },
@@ -21268,10 +21320,313 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Voir le champ recipe.",
+            "en": "See the recipe field."
+          },
+          "verified": true,
+          "checked": "2026-09-11",
+          "ref": "record_of_league_victories.html, section Recipe"
+        }
+      ],
+      "recipe": {
+        "fr": "Forge Mystique / conversion. Ingredients : 30x pvp_league_ticket.",
+        "en": "Mystic Forge / conversion. Ingredients: 30x pvp_league_ticket."
+      }
+    },
+    "iron_ingot": {
+      "name": "Iron Ingot",
+      "kind": "acquire",
+      "qty": {
+        "carbonized_mithrillium_ingot": 10
+      },
+      "needed_for": [
+        "carbonized_mithrillium_ingot"
+      ],
+      "farmable": true,
+      "sources": [
+        {
           "type": "unknown",
           "tip": {
-            "fr": "Recette non capturee -- ingredient de Gift of Competitive Prowess.",
-            "en": "Recipe not captured -- ingredient of Gift of Competitive Prowess."
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "cured_thin_leather_square": {
+      "name": "Cured Thin Leather Square",
+      "kind": "acquire",
+      "qty": {
+        "blended_leather_sheet": 10
+      },
+      "needed_for": [
+        "blended_leather_sheet"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "cured_coarse_leather_square": {
+      "name": "Cured Coarse Leather Square",
+      "kind": "acquire",
+      "qty": {
+        "blended_leather_sheet": 5
+      },
+      "needed_for": [
+        "blended_leather_sheet"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "cured_rugged_leather_square": {
+      "name": "Cured Rugged Leather Square",
+      "kind": "acquire",
+      "qty": {
+        "blended_leather_sheet": 10
+      },
+      "needed_for": [
+        "blended_leather_sheet"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "spool_of_thick_elonian_cord": {
+      "name": "Spool Of Thick Elonian Cord",
+      "kind": "acquire",
+      "qty": {
+        "blended_leather_sheet": 1
+      },
+      "needed_for": [
+        "blended_leather_sheet"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "glob_of_dark_matter": {
+      "name": "Glob Of Dark Matter",
+      "kind": "acquire",
+      "qty": {
+        "bolt_of_empowered_silk": 1,
+        "empowered_cured_thick_leather_square": 1,
+        "empowered_mithril_ingot": 1
+      },
+      "needed_for": [
+        "bolt_of_empowered_silk",
+        "empowered_cured_thick_leather_square",
+        "empowered_mithril_ingot"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "vial_of_might": {
+      "name": "Vial Of Might",
+      "kind": "acquire",
+      "qty": {
+        "bolt_of_empowered_silk": 1,
+        "empowered_cured_thick_leather_square": 1,
+        "empowered_mithril_ingot": 1
+      },
+      "needed_for": [
+        "bolt_of_empowered_silk",
+        "empowered_cured_thick_leather_square",
+        "empowered_mithril_ingot"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "vial_of_magic": {
+      "name": "Vial Of Magic",
+      "kind": "acquire",
+      "qty": {
+        "bolt_of_empowered_silk": 1,
+        "empowered_cured_thick_leather_square": 1,
+        "empowered_mithril_ingot": 1
+      },
+      "needed_for": [
+        "bolt_of_empowered_silk",
+        "empowered_cured_thick_leather_square",
+        "empowered_mithril_ingot"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "bolt_of_silk": {
+      "name": "Bolt Of Silk",
+      "kind": "acquire",
+      "qty": {
+        "bolt_of_empowered_silk": 150,
+        "shadowstone_containment_frame": 2500
+      },
+      "needed_for": [
+        "bolt_of_empowered_silk",
+        "shadowstone_containment_frame"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "cured_thick_leather_square": {
+      "name": "Cured Thick Leather Square",
+      "kind": "acquire",
+      "qty": {
+        "empowered_cured_thick_leather_square": 65,
+        "shadowstone_containment_frame": 2500
+      },
+      "needed_for": [
+        "empowered_cured_thick_leather_square",
+        "shadowstone_containment_frame"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "bolt_of_wool": {
+      "name": "Bolt Of Wool",
+      "kind": "acquire",
+      "qty": {
+        "square_of_vabbian_silk": 10
+      },
+      "needed_for": [
+        "square_of_vabbian_silk"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "bolt_of_cotton": {
+      "name": "Bolt Of Cotton",
+      "kind": "acquire",
+      "qty": {
+        "square_of_vabbian_silk": 5
+      },
+      "needed_for": [
+        "square_of_vabbian_silk"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "bolt_of_linen": {
+      "name": "Bolt Of Linen",
+      "kind": "acquire",
+      "qty": {
+        "square_of_vabbian_silk": 10
+      },
+      "needed_for": [
+        "square_of_vabbian_silk"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
+          }
+        }
+      ]
+    },
+    "spool_of_silk_weaving_thread": {
+      "name": "Spool Of Silk Weaving Thread",
+      "kind": "acquire",
+      "qty": {
+        "square_of_vabbian_silk": 1
+      },
+      "needed_for": [
+        "square_of_vabbian_silk"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturee -- ingredient de base, pas encore trace individuellement.",
+            "en": "Recipe not captured -- base ingredient, not individually tracked yet."
           }
         }
       ]

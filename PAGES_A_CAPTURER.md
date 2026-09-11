@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v275.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v277.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -54,26 +54,33 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 13 composants sans apiId ni page
+## 3 — 20 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Blended Leather Sheet` |
-| `Bolt Of Empowered Silk` |
-| `Carbonized Mithrillium Ingot` |
-| `Empowered Cured Thick Leather Square` |
-| `Empowered Mithril Ingot` |
+| `Bolt Of Cotton` |
+| `Bolt Of Linen` |
+| `Bolt Of Silk` |
+| `Bolt Of Wool` |
+| `Cured Coarse Leather Square` |
+| `Cured Rugged Leather Square` |
+| `Cured Thick Leather Square` |
+| `Cured Thin Leather Square` |
 | `Gift of Magical / Mighty Prosperity` |
+| `Glob Of Dark Matter` |
+| `Iron Ingot` |
 | `Olmakhan Bandolier` |
-| `Record of League Victories` |
 | `Spinal Blade Back Pack (Perfected)` |
-| `Square Of Vabbian Silk` |
+| `Spool Of Silk Weaving Thread` |
+| `Spool Of Thick Elonian Cord` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
+| `Vial Of Magic` |
+| `Vial Of Might` |
 
 ## 4 — 32 collections incomplètes — RIEN À CAPTURER
 
