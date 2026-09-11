@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v265.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v273.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -17,7 +17,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 
 - `gen3`
 
-## 0 — 22 trous de l'arbre — LA PRIORITÉ
+## 0 — 26 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -48,25 +48,10 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Perfect Mist Core` | 1 |
 | `Recruit's Wings of War` | 1 |
 | `Soldier's Wings of War` | 1 |
-
-### Ajout manuel (non détecté par le générateur)
-
-Wings of Ascension (PvP) demande 4 paliers, même structure que Warcry/Wings of
-War (McM) déjà résolu : `Recruit's`, `Veteran's`, `Champion's`, `Elite's Wings
-of Glory` (1 chacun). Trois de ces composants existent déjà côté données
-(`wings_of_glory_champion/elite/recruit`, sans page captée) ; `Veteran's`
-n'existe pas encore du tout côté composant. Le générateur ne les détecte pas
-pour la même raison que `Testimony of Castoran Heroics` avant lui : ces
-composants ont déjà de la donnée utilisable, donc ne comptent pas comme
-« trou ». Coûts en PvP League Ticket par palier inconnus tant que ces pages
-ne sont pas capturées.
-
-| page wiki |
-|---|
-| `Recruit's Wings of Glory` |
-| `Veteran's Wings of Glory` |
-| `Champion's Wings of Glory` |
-| `Elite's Wings of Glory` |
+| `Champion's Wings of Glory` | 1 |
+| `Elite's Wings of Glory` | 1 |
+| `Recruit's Wings of Glory` | 1 |
+| `Veteran's Wings of Glory` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 
@@ -77,10 +62,47 @@ ignore ce que la cible contient réellement.
 | page wiki | coûts à plat concernés |
 |---|---:|
 | `Obsidian armor` | 15 |
-| `Ardent Glorious armor` | 3 |
-| `Triumphant Hero's armor` | 3 |
+| `Ardent Glorious armor` | 10 |
+| `Triumphant Hero's armor` | 10 |
 
-## 2 — 1 composants en arbitrage sans page au dépôt
+### Ajout manuel (non détecté par le générateur) — split poids × emplacement
+
+Le coût brut ascended (Ascended Shard of Glory / Memory of Battle + WvW
+Skirmish Claim Ticket, marque Grandmaster) varie par POIDS **et** par
+EMPLACEMENT au sein d'un même poids — confirmé le 10/09/2026 (Ardent
+Glorious Legplates lourd/jambières ≠ Triumphant Hero Wargreaves
+lourd/bottes). Chaque pièce d'un set d'armure légendaire a sa propre page ;
+seules 3 des 18 combinaisons poids × emplacement sont capturées par set
+(15 manquantes chacun, 30 au total). Le générateur ne détecte pas ce besoin
+— ces pages portent déjà des coûts à plat exploitables pour LEUR propre
+poids/emplacement, ce n'est pas un « trou » à ses yeux, juste une
+combinaison voisine non capturée.
+
+**Ardent Glorious armor** (capturé : léger/casque = Crown, moyen/torse =
+Brigandine, lourd/jambières = Legplates)
+
+| emplacement | léger | moyen | lourd |
+|---|---|---|---|
+| casque | ✅ `Ardent Glorious Crown` | `Ardent Glorious Cap` | `Ardent Glorious Plate Helm` |
+| épaulières | `Ardent Glorious Epaulets` | `Ardent Glorious Shoulderguards` | `Ardent Glorious Pauldrons` |
+| torse | `Ardent Glorious Raiment` | ✅ `Ardent Glorious Brigandine` | `Ardent Glorious Breastplate` |
+| gants | `Ardent Glorious Armguards` | `Ardent Glorious Wristplates` | `Ardent Glorious Gauntlets` |
+| jambières | `Ardent Glorious Leggings` | `Ardent Glorious Legguards` | ✅ `Ardent Glorious Legplates` |
+| bottes | `Ardent Glorious Footgear` | `Ardent Glorious Shinplates` | `Ardent Glorious Wargreaves` |
+
+**Triumphant Hero's armor** (capturé : léger/casque = Masque, moyen/torse =
+Brigandine, lourd/bottes = Wargreaves)
+
+| emplacement | léger | moyen | lourd |
+|---|---|---|---|
+| casque | ✅ `Triumphant Hero's Masque` | `Triumphant Hero's Faceguard` | `Triumphant Hero's Warhelm` |
+| épaulières | `Triumphant Hero's Epaulets` | `Triumphant Hero's Shoulderguards` | `Triumphant Hero's Pauldrons` |
+| torse | `Triumphant Hero's Raiment` | ✅ `Triumphant Hero's Brigandine` | `Triumphant Hero's Breastplate` |
+| gants | `Triumphant Hero's Armguards` | `Triumphant Hero's Wristplates` | `Triumphant Hero's Gauntlets` |
+| jambières | `Triumphant Hero's Leggings` | `Triumphant Hero's Legguards` | `Triumphant Hero's Legplates` |
+| bottes | `Triumphant Hero's Footgear` | `Triumphant Hero's Shinplates` | ✅ `Triumphant Hero's Wargreaves` |
+
+## 2 — 0 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -88,22 +110,25 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
-| `Trade Contract` | 3 |
 
-## 3 — 8 composants sans apiId ni page
+## 3 — 12 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Gift of Competitive Prosperity` |
+| `Gift of Competitive Prowess` |
 | `Gift of Magical / Mighty Prosperity` |
+| `Gift of War Prowess` |
+| `Grandmaster Armorsmith's Mark` |
+| `Grandmaster Leatherworker's Mark` |
+| `Grandmaster Tailor's Mark` |
 | `Olmakhan Bandolier` |
 | `Spinal Blade Back Pack (Perfected)` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
-| `Tribute to the Crown` |
-| `Unbound Magic` |
 | `Valkyrie Bearkin War Helm` |
 
 ## 4 — 32 collections incomplètes — RIEN À CAPTURER
