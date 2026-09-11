@@ -67,7 +67,7 @@ const cibles = CIBLES;
 const out = {};
 for (const c of cibles) out[c] = computeGrandTotal([c], {}).totals;
 console.log(JSON.stringify(out));
-""" % (decouper("readArmorWeightCounts"), decouper("computeGrandTotal"))
+""" % (decouper("readArmorWeightBySlot"), decouper("computeGrandTotal"))
 
     script = HERE / ".conformite.mjs"
     script.write_text(
@@ -91,12 +91,16 @@ console.log(JSON.stringify(out));
     # Les 6 emplacements d'un set d'armure sans choix explicite comptent tous
     # "light" par defaut cote JSX (readArmorWeightCounts) : meme defaut ici,
     # pour comparer des totaux qui representent la meme situation reelle.
-    ARMURES_POIDS_DEFAUT = {"light": 6, "medium": 0, "heavy": 0}
-    repartition = {a: dict(ARMURES_POIDS_DEFAUT) for a in
-                   ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
+    # Les 6 emplacements d'un set d'armure sans choix explicite valent tous
+    # "light" par defaut cote JSX (readArmorWeightBySlot) : meme defaut ici,
+    # pour comparer des totaux qui representent la meme situation reelle.
+    ARMOR_SLOTS = ("helm", "shoulders", "chest", "gloves", "legs", "boots")
+    poids_defaut = {s: "light" for s in ARMOR_SLOTS}
+    poids_par_emplacement = {a: dict(poids_defaut) for a in
+                              ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
     ecarts, compares = [], 0
     for cible in m.cibles:
-        py = m.totaux(cible, surcouts=True, repartition_poids=repartition)
+        py = m.totaux(cible, surcouts=True, poids_par_emplacement=poids_par_emplacement)
         js = dict(cote_js.get(cible) or {})
         for cid in set(py) | set(js):
             a, b = py.get(cid, 0), js.get(cid, 0)

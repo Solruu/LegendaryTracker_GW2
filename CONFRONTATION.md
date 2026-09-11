@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v272.json`. 337 ecarts sur 67 legendaires.
+Source : `gw2_sources_v273.json`. 337 ecarts sur 67 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -91,36 +91,36 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `legendary_relic` | `pile_of_lucent_crystal` — Pile of Lucent Crystal | 18750 | 6250 | -12500 |
 | `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
 | `obsidian` | `glob_of_ectoplasm` — Glob of Ectoplasm | 7200 | 3600 | -3600 |
-| `gen2_the_binding_of_ipos` | `large_bone` — Large Bone | 4000 | 7500 | +3500 |
 | `gen2_the_binding_of_ipos` | `mithril_ingot` — Mithril Ingot | 3500 | 7000 | +3500 |
-| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
+| `gen2_the_binding_of_ipos` | `large_bone` — Large Bone | 4000 | 7500 | +3500 |
 | `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 6000 | 3000 | -3000 |
 | `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 6000 | 3000 | -3000 |
+| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
 | `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
-| `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
 | `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
+| `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
-| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `klobjarne_geirr` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 3730 | 1930 | -1800 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
 | `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
 | `coalescence` | `trade_contract` — Trade Contract | 0 | 1250 | +1250 |
 | `orrax_manifested` | `glob_of_ectoplasm` — Glob of Ectoplasm | 3520 | 2400 | -1120 |
+| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
 | `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
-| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
 | `gen2_the_binding_of_ipos` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
+| `the_ascension` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
 | `the_ascension` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `the_ascension` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |
-| `the_ascension` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
-| `transcendence` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `transcendence` | `bloodstone_dust` — Pile of Bloodstone Dust | 2000 | 1000 | -1000 |
 | `transcendence` | `dragonite_ore` — Dragonite Ore | 2000 | 1000 | -1000 |
+| `transcendence` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
 | `klobjarne_geirr` | `mithril_ingot` — Mithril Ingot | 250 | 1150 | +900 |
 | `gen2_astralaria` | `airship_part` — Airship Part | 800 | 1600 | +800 |
 | `gen2_astralaria` | `ley_line_crystal` — Ley Line Crystal | 800 | 1600 | +800 |

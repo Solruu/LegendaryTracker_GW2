@@ -1735,7 +1735,8 @@ const SOURCES_DB = {
     "changelog_v224": "Triumphant Hero's armor : premiere piece decomposee (Triumphant Hero's Masque, casque leger). Recette legendaire = 1 piece ascended + Gift of War Prosperity + Gift of War Prowess + Gift of War Dedication, 1 chacun par piece -- pas de split Magical/Mighty par poids comme Obsidian, a confirmer sur une 2e piece. gift_of_war_prosperity et gift_of_war_dedication (deja connectes ailleurs) relies a triumphant_hero__per_piece=1. gift_of_war_prowess cree (n'existait pas), structure honnete : exigence sourcee (1/piece), sa propre recette inconnue -- page non capturee. components rempli. RESTE A FAIRE : recette de Gift of War Prowess, confirmation du split par poids sur une 2e piece.",
     "changelog_v225": "Triumphant Hero's armor : memory_of_battle par piece corrige (200 -> 250), skirmish_claim_ticket par piece ajoute (175, jamais cable), grandmaster_tailors_mark cree (3/piece, jamais cable). Source : triumphant_heros_masque.html, table Sold by, ligne ascended (achat direct, pas d'upgrade sequentiel depuis l'exotique).",
     "changelog_v226": "Ardent Glorious armor : premiere piece decomposee (Ardent Glorious Crown, casque leger). Meme structure que Triumphant Hero (Competitive Prosperity/Prowess/Dedication au lieu de War). CORRECTION reelle : ascended_shard_of_glory par piece etait a {old_asg}, la page confirme 100 (x2 vendeurs identiques) -- ecart x10. shard_of_glory par piece ajoute (250, jamais cable). grandmaster_tailors_mark par piece ajoute (3). gift_of_competitive_dedication deja existant (gift_of_the_champion, cote Transcendence) -- ardent_glorious ajoute en plus, additif. gift_of_competitive_prosperity et gift_of_competitive_prowess crees (structure honnete, exigence sourcee, recette propre inconnue). components rempli.",
-    "changelog_v227": "Ardent Glorious armor : split par poids ajoute au moteur (3 nouveaux suffixes __per_piece_light/medium/heavy, Python et JSX, chacun x6 = un set complet de ce poids). Ardent Glorious Legplates.html (piece lourde) confirme : 150 Ascended Shard of Glory + 4 Grandmaster Armorsmith's Mark, contre 100 + 3 Tailor's Mark pour le leger (Crown). Ancien __per_piece uniforme fautif retire (100 Ascended Shard of Glory, 3 Tailor's Mark -- supposait le leger pour les 6 pieces). grandmaster_armorsmiths_mark cree (n'existait pas). Shard of Glory (250) et les 3 Gifts restent identiques par poids, non touches. MANQUANT : le poids medium (Leatherworker's Mark, quantite Ascended Shard of Glory inconnue) -- aucune donnee inventee en attendant."
+    "changelog_v227": "Ardent Glorious armor : split par poids ajoute au moteur (3 nouveaux suffixes __per_piece_light/medium/heavy, Python et JSX, chacun x6 = un set complet de ce poids). Ardent Glorious Legplates.html (piece lourde) confirme : 150 Ascended Shard of Glory + 4 Grandmaster Armorsmith's Mark, contre 100 + 3 Tailor's Mark pour le leger (Crown). Ancien __per_piece uniforme fautif retire (100 Ascended Shard of Glory, 3 Tailor's Mark -- supposait le leger pour les 6 pieces). grandmaster_armorsmiths_mark cree (n'existait pas). Shard of Glory (250) et les 3 Gifts restent identiques par poids, non touches. MANQUANT : le poids medium (Leatherworker's Mark, quantite Ascended Shard of Glory inconnue) -- aucune donnee inventee en attendant.",
+    "changelog_v228": "Split armures : le cout brut varie par EMPLACEMENT en plus du poids (Ardent Glorious Brigandine torse/moyen = 250 Ascended Shard of Glory + 4 Grandmaster Leatherworker's Mark, ni 100 ni 150 -- confirme un 3e point que Crown/Legplates ne suffisaient pas a placer). Schema migre de __per_piece_{poids} (uniforme sur les 6 pieces) vers __piece_{poids}_{emplacement} (une cellule par piece reellement confirmee, moteur+JSX+audit+conformite mis a jour ensemble). Triumphant Hero Wargreaves (lourd, bottes) confirme 3 Grandmaster Armorsmith's Mark + 175 WvW Skirmish Claim Ticket + 250 Memory of Battle -- l'ancien grandmaster_armorsmiths_mark n'avait que la valeur Ardent Glorious (4, jambieres) ; les deux coexistent maintenant, DIFFERENTES (3 vs 4), memes poids, emplacements differents. Triumphant Hero Brigandine (moyen, torse) confirme 4 Grandmaster Leatherworker's Mark (marque creee) + 350 WvW Skirmish Claim Ticket + 250 Memory of Battle -- l'ancien skirmish_claim_ticket__per_piece=175 uniforme etait fautif pour le torse (retire, 175 confirme pour casque et bottes uniquement). Memory of Battle (250) et les 3 Gifts restent __per_piece, confirmes identiques sur les 3 emplacements connus de chaque set. MANQUANT : 12 des 18 cellules poids x emplacement par set d'armure restent non capturees (shoulders/gloves des deux, plus le poids restant sur chaque emplacement deja vu) -- aucune valeur inventee ni interpolee en attendant."
   },
   "meta_events": {
     "vb": {
@@ -5247,8 +5248,9 @@ const SOURCES_DB = {
         "transcendence": 500,
         "the_ascension": 250,
         "mist_band_infused": 150,
-        "ardent_glorious__per_piece_light": 100,
-        "ardent_glorious__per_piece_heavy": 150
+        "ardent_glorious__piece_light_helm": 100,
+        "ardent_glorious__piece_heavy_legs": 150,
+        "ardent_glorious__piece_medium_chest": 250
       },
       "farmable": true,
       "sources": [
@@ -11228,7 +11230,9 @@ const SOURCES_DB = {
         "recruits_wings_of_war": 350,
         "soldiers_wings_of_war": 525,
         "generals_wings_of_war": 700,
-        "triumphant_hero__per_piece": 175
+        "triumphant_hero__piece_light_helm": 175,
+        "triumphant_hero__piece_heavy_boots": 175,
+        "triumphant_hero__piece_medium_chest": 350
       },
       "farmable": true,
       "sources": [
@@ -20860,8 +20864,8 @@ const SOURCES_DB = {
       "name": "Grandmaster Tailor's Mark",
       "kind": "acquire",
       "qty": {
-        "triumphant_hero__per_piece": 3,
-        "ardent_glorious__per_piece_light": 3
+        "ardent_glorious__piece_light_helm": 3,
+        "triumphant_hero__piece_light_helm": 3
       },
       "needed_for": [
         "triumphant_hero",
@@ -20929,10 +20933,12 @@ const SOURCES_DB = {
       "name": "Grandmaster Armorsmith's Mark",
       "kind": "acquire",
       "qty": {
-        "ardent_glorious__per_piece_heavy": 4
+        "ardent_glorious__piece_heavy_legs": 4,
+        "triumphant_hero__piece_heavy_boots": 3
       },
       "needed_for": [
-        "ardent_glorious"
+        "ardent_glorious",
+        "triumphant_hero"
       ],
       "farmable": true,
       "sources": [
@@ -20945,6 +20951,51 @@ const SOURCES_DB = {
           "verified": true,
           "checked": "2026-09-10",
           "ref": "ardent_glorious_legplates.html, section Sold by"
+        },
+        {
+          "type": "craft_byproduct",
+          "tip": {
+            "fr": "Sous-produit de fabrication Armurier (discipline artisanale).",
+            "en": "Armorsmith discipline crafting byproduct."
+          },
+          "verified": true,
+          "checked": "2026-09-10",
+          "ref": "triumphant_heros_wargreaves.html, section Sold by"
+        }
+      ]
+    },
+    "grandmaster_leatherworkers_mark": {
+      "name": "Grandmaster Leatherworker's Mark",
+      "kind": "acquire",
+      "qty": {
+        "ardent_glorious__piece_medium_chest": 4,
+        "triumphant_hero__piece_medium_chest": 4
+      },
+      "needed_for": [
+        "ardent_glorious",
+        "triumphant_hero"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "craft_byproduct",
+          "tip": {
+            "fr": "Sous-produit de fabrication Couturier (discipline artisanale).",
+            "en": "Leatherworking discipline crafting byproduct."
+          },
+          "verified": true,
+          "checked": "2026-09-10",
+          "ref": "ardent_glorious_brigandine.html, section Sold by"
+        },
+        {
+          "type": "craft_byproduct",
+          "tip": {
+            "fr": "Sous-produit de fabrication Couturier (discipline artisanale).",
+            "en": "Leatherworking discipline crafting byproduct."
+          },
+          "verified": true,
+          "checked": "2026-09-10",
+          "ref": "triumphant_heros_brigandine.html, section Sold by"
         }
       ]
     }
@@ -68962,22 +69013,20 @@ const ARMOR_SLOT_LABEL = {
   legs: { fr: "Jambières", en: "Legs" },
   boots: { fr: "Bottes", en: "Boots" },
 };
-// Lit la repartition choisie pour UNE armure : {light: n, medium: n, heavy: n}.
-// Chaque emplacement sans choix explicite compte "light" par defaut (premiere
+// Lit le poids choisi PAR EMPLACEMENT pour une armure : {helm: "light", ...}.
+// Chaque emplacement sans choix explicite vaut "light" par defaut (premiere
 // piece capturee pour Ardent Glorious/Triumphant Hero) — pas "aucune piece",
 // pour que le total ne tombe jamais silencieusement a zero avant que
-// l'utilisateur touche le picker.
-function readArmorWeightCounts(armorId) {
+// l'utilisateur touche le picker. Meme forme que cote Python
+// (poids_par_emplacement) : la conformite compare les deux telles quelles.
+function readArmorWeightBySlot(armorId) {
   let all = {};
   try { all = JSON.parse(localStorage.getItem(ARMOR_WEIGHT_KEY) ?? "null") ?? {}; }
   catch (_) { all = {}; }
   const bySlot = all[armorId] ?? {};
-  const counts = { light: 0, medium: 0, heavy: 0 };
-  for (const slot of ARMOR_SLOTS) {
-    const w = bySlot[slot] ?? "light";
-    counts[w] = (counts[w] ?? 0) + 1;
-  }
-  return counts;
+  const out = {};
+  for (const slot of ARMOR_SLOTS) out[slot] = bySlot[slot] ?? "light";
+  return out;
 }
 
 // ── Farm type → couleur badge ─────────────────────────────────
@@ -69211,12 +69260,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
           }
         }
       }
-      // Armor sets : __per_piece × 6 (le materiau ne varie pas par poids), ou
-      // une des trois variantes de poids quand le cout brut ascended varie
-      // (Ascended Shard of Glory, marque Grandmaster) -- confirme sur Ardent
-      // Glorious (Crown leger vs Legplates lourd, 10/09/2026). Chaque poids
-      // compte pour le nombre d'EMPLACEMENTS choisis a ce poids dans le
-      // picker (readArmorWeightCounts), pas pour un set complet fixe.
+      // Armor sets : __per_piece × 6 (materiau identique quel que soit poids/
+      // emplacement : les 3 Gifts, Shard of Glory). Le cout brut ascended qui
+      // varie PAR POIDS ET PAR EMPLACEMENT (Ascended Shard of Glory, marque
+      // Grandmaster, WvW Skirmish Claim Ticket -- confirme le 10/09/2026 :
+      // Wargreaves lourd/bottes et Legplates lourd/jambieres n'ont pas le
+      // meme compte) se cherche a la cle exacte __piece_{poids}_{emplacement},
+      // jamais interpole entre cellules voisines.
       const pieceKey = legId + "__per_piece";
       if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
         const val = qty[pieceKey];
@@ -69225,12 +69275,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
         }
       }
       if (ARMOR_IDS.includes(legId)) {
-        const counts = readArmorWeightCounts(legId);
-        for (const poids of ["light", "medium", "heavy"]) {
-          const wKey = legId + "__per_piece_" + poids;
-          const val = qty[wKey];
+        const bySlot = readArmorWeightBySlot(legId);
+        for (const slot of ARMOR_SLOTS) {
+          const poids = bySlot[slot];
+          const sKey = `${legId}__piece_${poids}_${slot}`;
+          const val = qty[sKey];
           if (typeof val === "number") {
-            totals[compId] = (totals[compId] ?? 0) + val * (counts[poids] ?? 0);
+            totals[compId] = (totals[compId] ?? 0) + val;
           }
         }
       }
@@ -74164,8 +74215,10 @@ function GW2LegendaryTracker() {
         // Sets d'armure : le total est deja pose par piece dans qty, il reste a
         // le multiplier par les pieces restantes.
         const perPiece = COMMON_MATS.some(m =>
-          m.compId && ["__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy"]
-            .some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined));
+          m.compId && (
+            ["__per_piece"].some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined) ||
+            Object.keys(cc[m.compId]?.qty ?? {}).some(k => k.startsWith(selectedLeg + "__piece_"))
+          ));
         const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
         const mats = COMMON_MATS
           .map(m => ({ ...m, req: totalsLeg[m.compId] }))

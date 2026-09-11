@@ -38,18 +38,20 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-# Les armures se comptent par piece ; les suffixes disent comment. Les trois sets legendaires
-# se declinent chacun en 3 poids (leger/moyen/lourd) : meme structure de dons (Prosperity/
-# Prowess/Dedication), mais le cout brut ascended (Ascended Shard of Glory, marque Grandmaster)
-# varie par poids -- confirme le 10/09/2026 sur Ardent Glorious (Crown leger : 100 + 3x Tailor's
-# Mark ; Legplates lourd : 150 + 4x Armorsmith's Mark). Chaque suffixe de poids compte pour un
-# set COMPLET de ce poids (6 pieces), pas une piece seule.
+# Les armures se comptent par piece. Les 3 Gifts et Shard of Glory (250) sont identiques quel
+# que soit le poids/emplacement -- suffixe __per_piece, x6 (un set complet). Mais le cout brut
+# ascended (Ascended Shard of Glory, marque Grandmaster, WvW Skirmish Claim Ticket) varie non
+# seulement par POIDS mais aussi par EMPLACEMENT au sein d'un meme poids -- confirme le
+# 10/09/2026 : Triumphant Hero Wargreaves (lourd, bottes) = 3 Armorsmith's Mark, quand Ardent
+# Glorious Legplates (lourd, jambieres) = 4 Armorsmith's Mark ; Triumphant Hero Masque (leger,
+# casque) = 175 tickets, Brigandine (moyen, torse) = 350. Suffixe dedie __piece_{poids}_
+# {emplacement}, une valeur par piece REELLEMENT confirmee -- jamais interpole entre emplacements
+# ou poids voisins.
 ARMURES = frozenset({"perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"})
+ARMOR_SLOTS = ("helm", "shoulders", "chest", "gloves", "legs", "boots")
 PIECES = 6
-SUFFIXES = (("", 1), ("__per_piece", PIECES),
-            ("__per_piece_light", PIECES), ("__per_piece_medium", PIECES),
-            ("__per_piece_heavy", PIECES),
-            ("__onetime", 1), ("__per_unit", 1), ("__full_set", 1))
+SUFFIXES = (("", 1), ("__per_piece", PIECES), ("__onetime", 1),
+            ("__per_unit", 1), ("__full_set", 1))
 PROFONDEUR = 12
 
 
@@ -240,22 +242,21 @@ class Modele:
     def totaux(self, cible: str, selection: dict | None = None,
                detail: bool = False, surcouts: bool = False,
                collections_faites: dict | None = None,
-               repartition_poids: dict | None = None):
+               poids_par_emplacement: dict | None = None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
 
         `selection` : {id_de_groupe: {cible: option}} — ou {id: option} pour
         l'ancien format. Absent, chaque groupe prend son defaut.
 
-        `repartition_poids` : {armure: {"light": n, "medium": n, "heavy": n}}.
-        Une armure legendaire est un set de 6 pieces, mais son cout brut
-        ascended (Ascended Shard of Glory, marque Grandmaster) varie par
-        poids -- confirme le 10/09/2026 (Ardent Glorious : leger vs lourd).
-        Sans repartition fournie, chaque suffixe de poids present compte pour
-        un set COMPLET (x6) — comportement de compatibilite pour l'audit et
-        les confrontations, qui ne construisent pas un set reel et n'ont pas
-        a choisir. Avec une repartition, seul le compte de pieces de CE poids
-        s'applique (somme des trois <= 6 pour un set complet, mais rien
-        n'empeche un compte partiel si toutes les pieces ne sont pas visees).
+        `poids_par_emplacement` : {armure: {emplacement: poids}}, un poids
+        (light/medium/heavy) par emplacement (helm/shoulders/chest/gloves/
+        legs/boots) — meme forme que le picker JSX (readArmorWeightCounts
+        travaille sur la meme donnee). Un emplacement absent vaut "light" par
+        defaut, jamais "aucune piece". Pour chaque emplacement, le cout brut
+        est cherche a la cle exacte `{armure}__piece_{poids}_{emplacement}` :
+        il varie par POIDS ET par EMPLACEMENT (confirme le 10/09/2026 —
+        Wargreaves lourd/bottes et Legplates lourd/jambieres n'ont pas le
+        meme compte de marque), jamais interpole entre cellules voisines.
 
         `detail=True` rend aussi la part APPORTEE PAR LA CHAINE, seule facon de
         savoir ou une cle a plat peut ceder la place sans perdre son cout. Les
@@ -263,22 +264,24 @@ class Modele:
         oubliait la contribution des choix.
         """
         armure = cible in ARMURES
-        rp = (repartition_poids or {}).get(cible)
+        pw = (poids_par_emplacement or {}).get(cible) or {}
         t: dict[str, float] = {}
         for cid, c in self.composants.items():
             q = c.qty
             for suf, mult in SUFFIXES:
-                if suf in ("__per_piece", "__per_piece_light", "__per_piece_medium",
-                           "__per_piece_heavy", "__full_set") and not armure:
+                if suf in ("__per_piece", "__full_set") and not armure:
                     continue
-                if rp is not None and suf.startswith("__per_piece_"):
-                    poids = suf.removeprefix("__per_piece_")
-                    mult = rp.get(poids, 0)
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
                     t[cid] = t.get(cid, 0) + v * mult
                     if surcouts and suf == "":
                         t[cid] += self._surcout(c, cible, collections_faites)
+            if armure:
+                for slot in ARMOR_SLOTS:
+                    poids = pw.get(slot, "light")
+                    v = q.get(f"{cible}__piece_{poids}_{slot}")
+                    if isinstance(v, (int, float)) and not isinstance(v, bool):
+                        t[cid] = t.get(cid, 0) + v
         for ch in self.choix.values():
             if cible in ch.cibles:
                 o = ch.retenue(cible, selection)

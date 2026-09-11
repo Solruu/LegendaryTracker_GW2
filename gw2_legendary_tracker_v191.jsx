@@ -2046,22 +2046,20 @@ const ARMOR_SLOT_LABEL = {
   legs: { fr: "Jambières", en: "Legs" },
   boots: { fr: "Bottes", en: "Boots" },
 };
-// Lit la repartition choisie pour UNE armure : {light: n, medium: n, heavy: n}.
-// Chaque emplacement sans choix explicite compte "light" par defaut (premiere
+// Lit le poids choisi PAR EMPLACEMENT pour une armure : {helm: "light", ...}.
+// Chaque emplacement sans choix explicite vaut "light" par defaut (premiere
 // piece capturee pour Ardent Glorious/Triumphant Hero) — pas "aucune piece",
 // pour que le total ne tombe jamais silencieusement a zero avant que
-// l'utilisateur touche le picker.
-function readArmorWeightCounts(armorId) {
+// l'utilisateur touche le picker. Meme forme que cote Python
+// (poids_par_emplacement) : la conformite compare les deux telles quelles.
+function readArmorWeightBySlot(armorId) {
   let all = {};
   try { all = JSON.parse(localStorage.getItem(ARMOR_WEIGHT_KEY) ?? "null") ?? {}; }
   catch (_) { all = {}; }
   const bySlot = all[armorId] ?? {};
-  const counts = { light: 0, medium: 0, heavy: 0 };
-  for (const slot of ARMOR_SLOTS) {
-    const w = bySlot[slot] ?? "light";
-    counts[w] = (counts[w] ?? 0) + 1;
-  }
-  return counts;
+  const out = {};
+  for (const slot of ARMOR_SLOTS) out[slot] = bySlot[slot] ?? "light";
+  return out;
 }
 
 // ── Farm type → couleur badge ─────────────────────────────────
@@ -2295,12 +2293,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
           }
         }
       }
-      // Armor sets : __per_piece × 6 (le materiau ne varie pas par poids), ou
-      // une des trois variantes de poids quand le cout brut ascended varie
-      // (Ascended Shard of Glory, marque Grandmaster) -- confirme sur Ardent
-      // Glorious (Crown leger vs Legplates lourd, 10/09/2026). Chaque poids
-      // compte pour le nombre d'EMPLACEMENTS choisis a ce poids dans le
-      // picker (readArmorWeightCounts), pas pour un set complet fixe.
+      // Armor sets : __per_piece × 6 (materiau identique quel que soit poids/
+      // emplacement : les 3 Gifts, Shard of Glory). Le cout brut ascended qui
+      // varie PAR POIDS ET PAR EMPLACEMENT (Ascended Shard of Glory, marque
+      // Grandmaster, WvW Skirmish Claim Ticket -- confirme le 10/09/2026 :
+      // Wargreaves lourd/bottes et Legplates lourd/jambieres n'ont pas le
+      // meme compte) se cherche a la cle exacte __piece_{poids}_{emplacement},
+      // jamais interpole entre cellules voisines.
       const pieceKey = legId + "__per_piece";
       if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
         const val = qty[pieceKey];
@@ -2309,12 +2308,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
         }
       }
       if (ARMOR_IDS.includes(legId)) {
-        const counts = readArmorWeightCounts(legId);
-        for (const poids of ["light", "medium", "heavy"]) {
-          const wKey = legId + "__per_piece_" + poids;
-          const val = qty[wKey];
+        const bySlot = readArmorWeightBySlot(legId);
+        for (const slot of ARMOR_SLOTS) {
+          const poids = bySlot[slot];
+          const sKey = `${legId}__piece_${poids}_${slot}`;
+          const val = qty[sKey];
           if (typeof val === "number") {
-            totals[compId] = (totals[compId] ?? 0) + val * (counts[poids] ?? 0);
+            totals[compId] = (totals[compId] ?? 0) + val;
           }
         }
       }
@@ -7248,8 +7248,10 @@ export default function GW2LegendaryTracker() {
         // Sets d'armure : le total est deja pose par piece dans qty, il reste a
         // le multiplier par les pieces restantes.
         const perPiece = COMMON_MATS.some(m =>
-          m.compId && ["__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy"]
-            .some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined));
+          m.compId && (
+            ["__per_piece"].some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined) ||
+            Object.keys(cc[m.compId]?.qty ?? {}).some(k => k.startsWith(selectedLeg + "__piece_"))
+          ));
         const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
         const mats = COMMON_MATS
           .map(m => ({ ...m, req: totalsLeg[m.compId] }))

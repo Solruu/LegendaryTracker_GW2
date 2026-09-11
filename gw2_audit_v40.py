@@ -1004,10 +1004,15 @@ def check_tab_contract(data, errors, warnings):
 
 # Suffixes de cle admis dans qty. Les deux premiers sont lus par le JSX ; les
 # deux suivants sont declares mais pas encore branches, et l'audit le rappelle.
-QTY_SUFFIXES = ("__per_piece", "__per_piece_light", "__per_piece_medium", "__per_piece_heavy",
-                "__full_set", "__per_unit", "__onetime")
-QTY_SUFFIXES_RENDUS = ("__per_piece", "__per_piece_light", "__per_piece_medium",
-                       "__per_piece_heavy", "__full_set")
+# Suffixes de cle admis dans qty. Le premier est lu par le JSX (per_piece) ;
+# les 18 combinaisons poids x emplacement (__piece_light_helm ... __piece_
+# heavy_boots) le sont aussi, generees plutot qu'ecrites a la main -- une
+# valeur PAR PIECE REELLEMENT confirmee, jamais un set complet ni interpolee.
+_ARMOR_POIDS = ("light", "medium", "heavy")
+_ARMOR_SLOTS = ("helm", "shoulders", "chest", "gloves", "legs", "boots")
+QTY_SUFFIXES = (("__per_piece", "__full_set", "__per_unit", "__onetime")
+                + tuple(f"__piece_{p}_{s}" for p in _ARMOR_POIDS for s in _ARMOR_SLOTS))
+QTY_SUFFIXES_RENDUS = ("__per_piece", "__full_set") + QTY_SUFFIXES[4:]
 
 
 def check_qty_levels(data, errors, warnings):
