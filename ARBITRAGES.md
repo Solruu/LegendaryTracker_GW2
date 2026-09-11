@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v275.json` — 88 desaccords sur 22 composants.
+Source : `gw2_sources_v275.json` — 86 desaccords sur 22 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -20,7 +20,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
 | `obsidian_shard` — Obsidian Shard | 1 | 228 | deja compte par cascade x1 |
 | `branded_mass` — Branded Mass | 1 | 160 | deja compte par cascade x1 |
-| `mystic_clover` — Mystic Clover | 3 | 90 | cout vendeur x2, deja compte par cascade x1 |
+| `mystic_clover` — Mystic Clover | 1 | 8 | deja compte par cascade x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 | `airship_part` — Airship Part | 16 | 0 | deja compte par cascade x16 |
 | `exquisite_serpentite_jewel` — Exquisite Serpentite Jewel | 1 | 0 | deja compte par cascade x1 |
@@ -75,7 +75,7 @@ recalcule en relancant le script.
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_frostfang` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_incinerator` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_rodgort` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
-| `mystic_clover` — Mystic Clover | `orrax_manifested` | 38 | 30 | 8 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
+| `mystic_clover` — Mystic Clover | `orrax_manifested` | 38 | 30 | 8 | gift_of_the_side_course (recette) |
 | `airship_part` — Airship Part | `gen2_astralaria` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
 | `airship_part` — Airship Part | `gen2_chuka_and_champawat` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
 | `airship_part` — Airship Part | `gen2_claw_of_the_khan_ur` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_itzel (vendeur) |
@@ -115,7 +115,7 @@ recalcule en relancant le script.
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_astralaria` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_exalted (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_chuka_and_champawat` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_exalted (vendeur) |
 
-## COUT VENDEUR — 8 cas
+## COUT VENDEUR — 6 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
@@ -126,7 +126,5 @@ regardant si le vendeur propose un choix ou une liste.
 | `trade_contract` — Trade Contract | `vision` | 0 | 500 | 500 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `coalescence` | 0 | 250 | 250 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `vision` | 0 | 100 | 100 | funerary_incense (vendeur) |
-| `mystic_clover` — Mystic Clover | `obsidian` | 0 | 90 | 90 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
-| `mystic_clover` — Mystic Clover | `perfected_envoy` | 0 | 15 | 15 | gift_of_prosperity (table), gift_of_the_side_course (recette) |
 | `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur), unbound_wings (recette) |
 | `vision_crystal` — Vision Crystal | `ad_infinitum` | 0 | 1 | 1 | gift_of_adventure (vendeur), unbound_wings (recette) |

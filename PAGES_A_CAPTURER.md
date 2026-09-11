@@ -17,7 +17,7 @@ existante. A regler avant de capturer quoi que ce soit pour elles.
 
 - `gen3`
 
-## 0 — 5 trous de l'arbre — LA PRIORITÉ
+## 0 — 6 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -29,6 +29,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
+| `Gift of Magical / Mighty Prosperity` | 1 |
 | `Olmakhan Bandolier` | 1 |
 | `Perfect Mist Core` | 1 |
 

@@ -32,7 +32,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `conflux` | 15 | 7780 |
 | `warbringer` | 11 | 6681 |
 | `transcendence` | 22 | 6101 |
-| `obsidian` | 3 | 5136 |
+| `obsidian` | 3 | 5154 |
 | `the_ascension` | 12 | 3781 |
 | `stella_radians` | 5 | 3498 |
 | `coalescence` | 11 | 3251 |
@@ -52,7 +52,7 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen1_the_bifrost` | 1 | 500 |
 | `gen1_the_dreamer` | 1 | 500 |
 | `gen1_the_minstrel` | 1 | 500 |
-| `perfected_envoy` | 7 | 411 |
+| `perfected_envoy` | 7 | 426 |
 | `gen3_aurene_s_fang` | 2 | 289 |
 | `gen3_aurene_s_flight` | 2 | 289 |
 | `gen3_aurene_s_tail` | 2 | 289 |
@@ -91,81 +91,81 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 |---|---|---:|---:|---:|
 | `ad_infinitum` | `fractal_relic` — Fractal Relic | 4650 | 500 | -4150 |
 | `obsidian` | `glob_of_ectoplasm` — Glob of Ectoplasm | 7200 | 3600 | -3600 |
-| `gen2_the_binding_of_ipos` | `mithril_ingot` — Mithril Ingot | 3500 | 7000 | +3500 |
 | `gen2_the_binding_of_ipos` | `large_bone` — Large Bone | 4000 | 7500 | +3500 |
+| `gen2_the_binding_of_ipos` | `mithril_ingot` — Mithril Ingot | 3500 | 7000 | +3500 |
 | `gen2_the_binding_of_ipos` | `volatile_magic` — Volatile Magic | 1000 | 4000 | +3000 |
-| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
 | `klobjarne_geirr` | `dragonite_ore` — Dragonite Ore | 6000 | 3000 | -3000 |
+| `klobjarne_geirr` | `empyreal_fragment` — Empyreal Fragment | 6000 | 3000 | -3000 |
 | `klobjarne_geirr` | `bloodstone_dust` — Pile of Bloodstone Dust | 6000 | 3000 | -3000 |
-| `gen2_pharus` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_pharus` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_pharus` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_pharus` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
-| `gen2_sharur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_sharur` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_sharur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_sharur` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
-| `gen2_the_binding_of_ipos` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_the_binding_of_ipos` | `airship_part` — Airship Part | 800 | 3600 | +2800 |
+| `gen2_the_binding_of_ipos` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3600 | +2800 |
 | `gen2_the_binding_of_ipos` | `ley_line_crystal` — Ley Line Crystal | 800 | 3600 | +2800 |
 | `stella_radians` | `research_note` — Research Note | 52500 | 50000 | -2500 |
-| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_claw_of_the_khan_ur` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_claw_of_the_khan_ur` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_claw_of_the_khan_ur` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
-| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_eureka` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_eureka` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_eureka` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
-| `gen2_the_shining_blade` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_the_shining_blade` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_the_shining_blade` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_the_shining_blade` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
-| `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_xiuquatl` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
+| `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
 | `gen2_xiuquatl` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
-| `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
+| `conflux` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
-| `gen2_pharus` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
 | `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_pharus` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
-| `gen2_sharur` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_pharus` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
 | `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_sharur` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
-| `gen2_the_binding_of_ipos` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `gen2_sharur` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
 | `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `gen2_the_binding_of_ipos` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
+| `gen2_the_binding_of_ipos` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | -2000 |
 | `warbringer` | `empyreal_fragment` — Empyreal Fragment | 3250 | 1250 | -2000 |
-| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 3250 | 1250 | -2000 |
-| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 3250 | 1250 | -2000 |
 | `gen2_flames_of_war` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
+| `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
-| `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
+| `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
 | `klobjarne_geirr` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 3730 | 1930 | -1800 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
-| `gen2_claw_of_the_khan_ur` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_eureka` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_claw_of_the_khan_ur` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
 | `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_eureka` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_the_shining_blade` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_eureka` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
 | `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_the_shining_blade` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
-| `gen2_xiuquatl` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
+| `gen2_the_shining_blade` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
 | `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_xiuquatl` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
+| `gen2_xiuquatl` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
 | `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
 | `coalescence` | `trade_contract` — Trade Contract | 0 | 1250 | +1250 |
 | `orrax_manifested` | `glob_of_ectoplasm` — Glob of Ectoplasm | 3520 | 2400 | -1120 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
-| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
 | `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
-| `gen2_flames_of_war` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
 | `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_flames_of_war` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
-| `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
+| `gen2_flames_of_war` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
 | `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_shooshadoo` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
+| `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
 | `the_ascension` | `empyreal_fragment` — Empyreal Fragment | 2000 | 1000 | -1000 |
