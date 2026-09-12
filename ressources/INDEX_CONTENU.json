@@ -4603,6 +4603,48 @@
   "aretes_table": []
  },
  {
+  "page": "bolt_of_cotton",
+  "titre": "Bolt of Cotton",
+  "api_id": 19742,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Scribe Tailor",
+    "rating": "150",
+    "ingredients": [
+     [
+      "Cotton_Scrap",
+      2
+     ]
+    ],
+    "produit": "Bolt of Cotton"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Bolt_of_Wool",
+      250
+     ],
+     [
+      "Pile_of_Radiant_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      4
+     ]
+    ],
+    "produit": "Bolt of Cotton"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bolt_of_empowered_silk",
   "titre": "Bolt of Empowered Silk",
   "api_id": 80686,
@@ -4673,6 +4715,132 @@
      ]
     ],
     "produit": "Bolt of Gossamer"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bolt_of_linen",
+  "titre": "Bolt of Linen",
+  "api_id": 19744,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Scribe Tailor",
+    "rating": "225",
+    "ingredients": [
+     [
+      "Linen_Scrap",
+      2
+     ]
+    ],
+    "produit": "Bolt of Linen"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Bolt_of_Cotton",
+      250
+     ],
+     [
+      "Pile_of_Radiant_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      6
+     ]
+    ],
+    "produit": "Bolt of Linen"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bolt_of_silk",
+  "titre": "Bolt of Silk",
+  "api_id": 19747,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Scribe Tailor",
+    "rating": "300",
+    "ingredients": [
+     [
+      "Silk_Scrap",
+      3
+     ]
+    ],
+    "produit": "Bolt of Silk"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Bolt_of_Linen",
+      250
+     ],
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      8
+     ]
+    ],
+    "produit": "Bolt of Silk"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bolt_of_wool",
+  "titre": "Bolt of Wool",
+  "api_id": 19740,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Scribe Tailor",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Wool_Scrap",
+      2
+     ]
+    ],
+    "produit": "Bolt of Wool"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Bolt_of_Jute",
+      250
+     ],
+     [
+      "Pile_of_Shimmering_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      2
+     ]
+    ],
+    "produit": "Bolt of Wool"
    }
   ],
   "couts_vendeur": [],
@@ -6354,6 +6522,48 @@
   "aretes_table": []
  },
  {
+  "page": "cured_coarse_leather_square",
+  "titre": "Cured Coarse Leather Square",
+  "api_id": 19734,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Scribe Tailor Weaponsmith",
+    "rating": "150",
+    "ingredients": [
+     [
+      "Coarse_Leather_Section",
+      2
+     ]
+    ],
+    "produit": "Cured Coarse Leather Square"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Cured_Thin_Leather_Square",
+      250
+     ],
+     [
+      "Pile_of_Radiant_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      4
+     ]
+    ],
+    "produit": "Cured Coarse Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "cured_hardened_leather_square",
   "titre": "Cured Hardened Leather Square",
   "api_id": 19737,
@@ -6390,6 +6600,132 @@
      ]
     ],
     "produit": "Cured Hardened Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "cured_rugged_leather_square",
+  "titre": "Cured Rugged Leather Square",
+  "api_id": 19736,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Scribe Tailor Weaponsmith",
+    "rating": "225",
+    "ingredients": [
+     [
+      "Rugged_Leather_Section",
+      2
+     ]
+    ],
+    "produit": "Cured Rugged Leather Square"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Cured_Coarse_Leather_Square",
+      250
+     ],
+     [
+      "Pile_of_Radiant_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      6
+     ]
+    ],
+    "produit": "Cured Rugged Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "cured_thick_leather_square",
+  "titre": "Cured Thick Leather Square",
+  "api_id": 19735,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Scribe Tailor Weaponsmith",
+    "rating": "300",
+    "ingredients": [
+     [
+      "Thick_Leather_Section",
+      4
+     ]
+    ],
+    "produit": "Cured Thick Leather Square"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Cured_Rugged_Leather_Square",
+      250
+     ],
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      8
+     ]
+    ],
+    "produit": "Cured Thick Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "cured_thin_leather_square",
+  "titre": "Cured Thin Leather Square",
+  "api_id": 19733,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Scribe Tailor Weaponsmith",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Thin_Leather_Section",
+      2
+     ]
+    ],
+    "produit": "Cured Thin Leather Square"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Stretched_Rawhide_Leather_Square",
+      250
+     ],
+     [
+      "Pile_of_Shimmering_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      2
+     ]
+    ],
+    "produit": "Cured Thin Leather Square"
    }
   ],
   "couts_vendeur": [],
@@ -16031,6 +16367,15 @@
   "aretes_table": []
  },
  {
+  "page": "glob_of_dark_matter",
+  "titre": "Glob of Dark Matter",
+  "api_id": 46681,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "glob_of_ectoplasm",
   "titre": "Glob of Ectoplasm",
   "api_id": 19721,
@@ -17115,6 +17460,48 @@
      ]
     ],
     "produit": "Intricate Totem"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "iron_ingot",
+  "titre": "Iron Ingot",
+  "api_id": 19683,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Leatherworker Scribe Tailor Weaponsmith",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Iron_Ore",
+      3
+     ]
+    ],
+    "produit": "Iron Ingot"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Bronze_Ingot",
+      250
+     ],
+     [
+      "Pile_of_Shimmering_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      2
+     ]
+    ],
+    "produit": "Iron Ingot"
    }
   ],
   "couts_vendeur": [],
@@ -25272,6 +25659,66 @@
   "aretes_table": []
  },
  {
+  "page": "spool_of_silk_weaving_thread",
+  "titre": "Spool of Silk Weaving Thread",
+  "api_id": 46740,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Tailor Leatherworker Armorsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Bolt_of_Silk",
+      100
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Spool_of_Gossamer_Thread",
+      25
+     ]
+    ],
+    "produit": "Spool of Silk Weaving Thread"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spool_of_thick_elonian_cord",
+  "titre": "Spool of Thick Elonian Cord",
+  "api_id": 46745,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman Leatherworker Tailor Armorsmith Artificer Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Cured_Thick_Leather_Square",
+      50
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Spool of Thick Elonian Cord"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "sprouting_the_druid_stone",
   "titre": "Sprouting the Druid Stone",
   "api_id": null,
@@ -30806,6 +31253,74 @@
     "qty": 250
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "vial_of_magic",
+  "titre": "Vial of Magic",
+  "api_id": 80728,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor Artificer Weaponsmith Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Vial_of_Powerful_Blood",
+      1
+     ],
+     [
+      "Powerful_Venom_Sac",
+      1
+     ],
+     [
+      "Elaborate_Totem",
+      1
+     ],
+     [
+      "Pile_of_Crystalline_Dust",
+      1
+     ]
+    ],
+    "produit": "Vial of Magic"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "vial_of_might",
+  "titre": "Vial of Might",
+  "api_id": 80764,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor Artificer Weaponsmith Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Vicious_Fang",
+      1
+     ],
+     [
+      "Armored_Scale",
+      1
+     ],
+     [
+      "Vicious_Claw",
+      1
+     ],
+     [
+      "Ancient_Bone",
+      1
+     ]
+    ],
+    "produit": "Vial of Might"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
