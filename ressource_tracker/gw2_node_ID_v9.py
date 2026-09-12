@@ -95,6 +95,7 @@ NODE_TYPES_LIST = [
     ("cayenne_pepper", "Vegetal", "Cayenne Pepper", False),
     ("clam", "Vegetal", "Clam", False),
     ("coral", "Vegetal", "Coral", False),
+    ("desert_vegetables", "Vegetal", "Desert Vegetables", True),
     ("flax", "Vegetal", "Flax", False),
     ("ghost_pepper", "Vegetal", "Ghost Pepper", False),
     ("grapes", "Vegetal", "Grapes", True),

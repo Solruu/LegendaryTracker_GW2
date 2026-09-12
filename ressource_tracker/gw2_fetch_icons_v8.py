@@ -140,6 +140,7 @@ SLUG_TO_ITEM_ID = {
 FALLBACK_SLUGS = [
     "varietal_mint",  # chance sur mature_herbs/verdant_herbs, pas de sortie garantie
     "coral",
+    "desert_vegetables",
     "flax",
     "fulgurite",
     "haresfoot",

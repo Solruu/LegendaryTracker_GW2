@@ -111,7 +111,7 @@ TYPE_ORDER = {
         "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid",
         "hatched_chili", "black_crocus", "clam", "herb_patch",
         "mixed_harvesting", "sunflower", "toxic_seedling",
-        "truffle", "varietal_mint", "vegetal_unknown",
+        "truffle", "varietal_mint", "vegetal_unknown", "desert_vegetables",
     ],
     "Special": [
         "quartz_formation",

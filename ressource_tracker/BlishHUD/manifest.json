@@ -1,0 +1,17 @@
+{
+  "name": "GW2 Node Tracker",
+  "version": "0.1.0",
+  "namespace": "GW2_NodeTracker",
+  "package": "GW2_NodeTracker.dll",
+  "manifest_version": 1,
+
+  "description": "Capture de nodes de récolte filtrée par map courante, pour Antoine. Usage personnel, non publié au répertoire officiel Blish HUD.",
+  "dependencies": {
+    "bh.blishhud": ">=1.3.0"
+  },
+  "contributors": [
+    {
+      "name": "LocAdmin"
+    }
+  ]
+}
