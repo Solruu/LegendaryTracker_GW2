@@ -70956,10 +70956,13 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
     })
     .filter(r => filterFarm === "all" || r.farmLabel === filterFarm)
     .sort((a, b) => {
-      // Priorité : items avec missing > 0 en premier, triés par missing desc
-      const ma = a.missing ?? a.qty;
-      const mb = b.missing ?? b.qty;
-      return mb - ma;
+      // Niveau 1 : à farmer avant déjà acquis (stock connu et suffisant).
+      // Niveau 2 : alphabétique sur le nom (toujours une chaîne simple,
+      // meme nom technique quelle que soit la langue de l'UI).
+      const acquisA = a.owned !== null && a.missing === 0;
+      const acquisB = b.owned !== null && b.missing === 0;
+      if (acquisA !== acquisB) return acquisA ? 1 : -1;
+      return a.name.localeCompare(b.name, "fr", { sensitivity: "base" });
     });
 
   const farmTypes = ["all", "PvE", "WvW", "PvP", "Fractals", "Mixte"];
