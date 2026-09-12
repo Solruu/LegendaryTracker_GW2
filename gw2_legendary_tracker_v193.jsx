@@ -7385,6 +7385,11 @@ export default function GW2LegendaryTracker() {
                             <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.45)", lineHeight: 1.45 }}>{NX(srcs[0].tip)}</div>
                           )}
                           {C.tradeoff && renderTradeoff(C.tradeoff)}
+                          {C.recipe && (
+                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)", lineHeight: 1.45 }}>
+                              <span style={{ color: "rgba(226,201,126,0.4)", fontWeight: 600 }}>{NX({ fr: "Recette : ", en: "Recipe: " })}</span>{NX(C.recipe)}
+                            </div>
+                          )}
                           {open && (
                             <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }}>
                               {subs.map(([sk, sv]) => {
