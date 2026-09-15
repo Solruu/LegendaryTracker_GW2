@@ -1,0 +1,22 @@
+# Sorties de build et cache Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Paquets NuGet : restaures par Visual Studio depuis packages.config
+packages/
+
+# Binaires copies a la racine du projet par la restauration NuGet
+# (MonoGame / SharpDX / BlishHUD). Regeneres au build.
+# Si un clone neuf ne compile pas, c'est cette section qu'il faut retirer.
+CppNet.dll
+libmojoshader_64.dll
+mgfxc.*
+SharpDX*.dll
+SharpDX*.xml
+ref/
+
+# Module compile
+*.bhm
