@@ -6725,7 +6725,14 @@ export default function GW2LegendaryTracker() {
             // l'affichage ne depend plus du balayage runtime de l'API, qui
             // laissait « Chargement des definitions d'etapes… » indefiniment
             // tant qu'il n'avait pas ete lance a la main.
-            const def = a.steps
+            // [].map(...) reste un tableau, donc VRAI au sens JS : une collection
+            // metaSubs (pas de `items` dans les sources, ex. les 5 maitrises
+            // d'episode de Vision) prenait quand meme cette branche avec un
+            // stub bits/subs vides au lieu du repli sur achBitsDefs -- et
+            // s'affichait comme un simple tiret "-", sans liste. Corrige : ne
+            // prendre la branche sources que si elle porte reellement des
+            // etapes.
+            const def = (a.steps && a.steps.length > 0)
               ? { bits: a.steps, tierMax: a.steps.length, subs: [], fromSources: true }
               : achBitsDefs[String(a.achievementId)];
             const doneBits = new Set(st.bits ?? []);
