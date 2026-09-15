@@ -114,10 +114,31 @@ namespace GW2_NodeTracker
             ["black_crocus"] = 12547,
             ["quartz_formation"] = 43773,
             ["snow_cherry"] = 19726,
+            // -- ajouts 15/09/2026 : nodes mono-produit (IDs verifies contre
+            //    gw2_materials_ref.json du projet)
+            ["rich_vesperite"] = 19700,        // Mithril Ore
+            ["rich_somnorite"] = 19701,        // Orichalcum Ore
+            ["rich_quartz_formation"] = 43773, // Quartz Crystal
+            ["blooming_passiflora"] = 36731,   // Passion Fruit
+            ["winterberry"] = 79899,           // Fresh Winterberry
+            ["eternal_ice"] = 92272,           // Eternal Ice Shard
+            ["candy_corn"] = 36041,            // Piece of Candy Corn
+            ["rich_candy_corn"] = 36041,       // Piece of Candy Corn
+            ["sprocket_generator"] = 44941,    // Watchwork Sprocket
+            ["petrified_stump"] = 79469,       // Petrified Wood
+            ["mistonium"] = 88955,             // Lump of Mistonium
+            ["brandstone"] = 86069,            // Kralkatite Ore
+            ["dragon_crystal"] = 89537,        // Branded Mass
+            ["mistborn_mote"] = 90783,         // Mistborn Mote
+            ["bloodstone_crystals"] = 46731,   // Pile of Bloodstone Dust
         };
 
         public static readonly string[] FallbackSlugs = {
+            "variegated_taproot",
             "varietal_mint",
+            "cactus",
+            "cluster_desert_herbs",
+            "cluster_herbs",
             "coral",
             "flax",
             "fulgurite",
@@ -126,6 +147,8 @@ namespace GW2_NodeTracker
             "herb_patch",
             "herb_seedlings",
             "herb_sprouts",
+            "desert_vegetables",
+            "jungle_plants",
             "lentils",
             "mature_herbs",
             "mixed_harvesting",
@@ -134,7 +157,7 @@ namespace GW2_NodeTracker
             "root_vegetables",
             "shing_jea_orchid",
             "sunflower",
-            "taproot",
+            "taproots",
             "toxic_seedling",
             "truffle",
             "vegetal_unknown",
