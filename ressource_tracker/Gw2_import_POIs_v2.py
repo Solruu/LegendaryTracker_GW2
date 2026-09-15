@@ -102,8 +102,8 @@ LABEL_MAP = {
     "blackberry":          ("blackberries",     "Vegetal"),
     "sugar pumpkin":       ("sugar_pumpkin",    "Vegetal"),
     "cauliflower":         ("cauliflower",      "Vegetal"),
-    "taproot":             ("taproot",          "Vegetal"),
-    "variegated taproot":  ("taproot",          "Vegetal"),
+    "taproot":             ("variegated_taproot", "Vegetal"),
+    "variegated taproot":  ("variegated_taproot", "Vegetal"),
     # Végétaux tier 5
     "verdant herbs":       ("verdant_herbs",    "Vegetal"),
     "leeks":               ("leeks",            "Vegetal"),
@@ -215,7 +215,7 @@ LABEL_DISPLAY = {
     "blackberries":      "Blackberries",
     "sugar_pumpkin":     "Sugar Pumpkin",
     "cauliflower":       "Cauliflower",
-    "taproot":           "Variegated Taproot",
+    "variegated_taproot": "Variegated Taproots",
     # Végétaux tier 5
     "verdant_herbs":     "Verdant Herbs",
     "leeks":             "Leeks",

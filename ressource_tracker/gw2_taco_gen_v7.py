@@ -63,7 +63,7 @@ MAP_NAMES = {
     # étaient fausses -- jamais vérifiées, corrigées le 03/09/2026.
 }
 
-GROUP_ORDER = ["Minerai", "Bois", "Vegetal", "Special"]
+GROUP_ORDER = ["Minerai", "Bois", "Vegetal", "Special", "Festival"]
 
 # Ordre explicite des slugs par groupe pour le tri dans le XML
 # Les rich veins sont placées juste après leur minerai de base
@@ -76,7 +76,8 @@ TYPE_ORDER = {
         "mithril", "rich_mithril",
         "orichalcum", "rich_orichalcum",
         "quartz", "fulgurite", "difluorite",
-        "jade", "prismaticite", "somnorite", "vesperite",
+        "jade", "prismaticite",
+        "somnorite", "rich_somnorite", "vesperite", "rich_vesperite",
     ],
     "Bois": [
         "green_wood", "soft_wood", "seasoned_wood", "hard_wood",
@@ -94,18 +95,19 @@ TYPE_ORDER = {
         "blueberry", "mushroom_button", "carrot", "herb_seedlings",
         "onion", "potato", "lettuce",
         # Tier 2
-        "strawberry", "herb_sprouts", "spinach", "grapes", "cabbage",
+        "strawberry", "herb_sprouts", "spinach", "taproots", "grapes", "cabbage",
         # Tier 3
         "young_herbs", "zucchini", "root_vegetables", "kale", "mushroom_varied",
         # Tier 4
         "mature_herbs", "scallions", "portobello", "blackberries",
-        "sugar_pumpkin", "cauliflower", "taproot",
+        "sugar_pumpkin", "cauliflower", "variegated_taproot",
         # Tier 5
         "verdant_herbs", "leeks", "winter_root", "raspberries",
         "asparagus", "cayenne_pepper", "butternut", "artichoke",
+        "cluster_herbs", "cluster_desert_herbs", "blooming_passiflora",
         # Tier 6
         "lotus", "omnomberry", "orrian_truffle", "snow_truffle",
-        "ghost_pepper", "mussel", "seaweed",
+        "ghost_pepper", "mussel", "seaweed", "cactus", "jungle_plants",
         # Extensions
         "flax", "sawgill", "lentils", "passiflora", "orrian_oyster",
         "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid",
@@ -114,7 +116,14 @@ TYPE_ORDER = {
         "truffle", "varietal_mint", "vegetal_unknown", "desert_vegetables",
     ],
     "Special": [
-        "quartz_formation",
+        "quartz_formation", "rich_quartz_formation",
+        "sprocket_generator", "aurillium", "bloodstone_crystals",
+        "petrified_stump", "winterberry", "brandstone", "mistonium",
+        "dragon_crystal", "mistborn_mote", "eternal_ice",
+    ],
+    # Nodes saisonniers : categorie TacO distincte, desactivable independamment
+    "Festival": [
+        "candy_corn", "rich_candy_corn", "bauble",
     ],
 }
 
