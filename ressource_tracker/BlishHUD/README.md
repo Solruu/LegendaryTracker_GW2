@@ -1,51 +1,47 @@
-# BlishHUD
+# BlishHUD — GW2 Node Tracker
 
-Module Blish HUD (C#/.NET) pour la capture de nodes, en remplacement de
-`gw2_node_ID_v9.py` (usage perso, pas de publication au répertoire officiel
-Blish HUD).
+Module Blish HUD (C#/.NET Framework 4.8) pour la capture de nodes de récolte
+Guild Wars 2. Usage perso, pas de publication au répertoire officiel Blish HUD.
 
-## Statut (11/09/2026) : fonctionnel, confirmé en jeu
+## Statut (15/09/2026) : fonctionnel, confirmé en jeu
 
 Compile et tourne contre BlishHUD 1.3.0. Testé en conditions réelles par
-Antoine (capture, filtre par map, panneau cliquable, régénération .taco,
-téléchargement d'icônes, reload Pathing) -- confirmé "bullseye" après la
-dernière série de correctifs.
+Antoine : capture, filtre par map, panneau cliquable, régénération `.taco`,
+téléchargement d'icônes, reload Pathing.
+
+**Ce module est la source de vérité du projet.** Les scripts Python d'origine
+sont conservés dans `../archives/` : ils restent autonomes et fonctionnels,
+mais ne pilotent plus rien. Toute modification de la liste des types ou de
+l'ordre des catégories se fait ici, en C#.
 
 ## Fichiers
 
-- `NodeType.cs` -- 109 types, généré mécaniquement depuis `NODE_TYPES_LIST`
-  de `gw2_node_ID_v9.py`
-- `GatheredNode.cs` -- même schéma JSON que `gw2_nodes.json`
-- `TacoGenerator.cs` -- génère le `.taco` (XML + zip) directement en C#,
-  port fidèle de `gw2_taco_gen_v6.py`. Écrit en place (pas de delete+rename)
-  pour rester compatible avec un éventuel observateur de fichiers côté Pathing.
-- `IconFetcher.cs` -- télécharge les icônes manquantes (ou toutes, en mode
-  forcé) depuis l'API GW2 + repli wiki. Téléchargements en parallèle
-  (max 6), User-Agent requis pour wiki.guildwars2.com.
-- `Module.cs` -- logique complète : filtre par map, panneau catégorisé
-  (en-têtes de groupe), seuil de fusion 5m sur les nodes Vegetal, capture
-  F12, cycle T, panneau L, refresh forcé des icônes I.
-- `manifest.json` -- dépendance `bh.blishhud >=1.3.0`
+### Sources
+- `NodeType.cs` — 131 types de nodes (slug, groupe, libellé, sortie variable).
+  Groupes : Minerai, Bois, Vegetal, Special, Festival.
+- `GatheredNode.cs` — schéma JSON de `../gw2_nodes.json`
+- `TacoGenerator.cs` — génère le `.taco` (XML + zip). `GroupOrder` et
+  `TypeOrder` doivent couvrir tous les slugs de `NodeType.All`, sinon les
+  marqueurs concernés sont absents du pack.
+- `IconFetcher.cs` — icônes depuis l'API GW2, repli sur les icônes de carte
+  Plante/Minerai du wiki pour les nodes à sortie variable
+- `Module.cs` — logique complète : filtre par map, panneau catégorisé,
+  capture, régénération du pack
 
-## Réglages du module (en jeu)
+### Projet Visual Studio
+- `GW2_NodeTracker.slnx` — solution (format XML, VS 2026)
+- `GW2_NodeTracker.csproj` — projet, cible net48, plateforme x64
+- `packages.config` — dépendances NuGet (BlishHUD 1.3.0, Gw2Sharp 1.7.4,
+  MonoGame 3.8, SharpDX 4.0.1, Newtonsoft.Json 13.0.1)
+- `App.config` — redirections de liaison d'assembly
+- `manifest.json` — manifeste du module Blish HUD
 
-- Chemin de `gw2_nodes.json`, chemin de sortie du `.taco`, dossier `icons/`
-- Régénération auto du `.taco` après chaque capture (activable/désactivable)
-- Notifications détaillées (désactivées par défaut -- seules capture/type
-  restent visibles à l'écran)
+## Build
 
-## Bugs corrigés pendant le développement (pour référence)
+Ouvrir `GW2_NodeTracker.slnx` dans Visual Studio, restaurer les paquets NuGet,
+compiler en x64. Le `.bhm` produit va dans
+`Documents\Guild Wars 2\addons\blishhud\modules\`.
 
-- Course entre chargement JSON async et premier changement de map détecté
-  (filtre par map bloqué sur "liste complète")
-- Chemins de settings pollués par des guillemets ("Copier en tant que
-  chemin d'accès" Windows) -- nettoyage automatique à la lecture
-- Écritures `.taco` concurrentes non sérialisées (icônes/contenu incohérents
-  d'une régénération à l'autre) -- verrou ajouté
-- **Axes Y/Z inversés à la capture** : `GameService.Gw2Mumble.PlayerCharacter.Position`
-  a Z=altitude (pas Y comme le reste du pipeline/JSON) -- confirmé le
-  10/09/2026 par comparaison directe jeu/JSON. Remappé à la capture ET dans
-  le calcul de distance du seuil de fusion.
-- Sélection réinitialisée au premier élément de la liste à chaque capture
-  (RefreshFilteredTypes remettait `_selectedType` à zéro même hors
-  changement de map réel)
+Les dossiers `bin/`, `obj/`, `packages/`, `ref/`, `Content/` et les binaires
+restaurés à la racine (SharpDX, CppNet, mgfxc, libmojoshader) sont exclus du
+dépôt : ils sont régénérés par la restauration NuGet et le build.
