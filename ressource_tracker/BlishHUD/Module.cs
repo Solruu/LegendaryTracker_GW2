@@ -21,7 +21,13 @@ namespace GW2_NodeTracker
     {
         private static readonly Logger Logger = Logger.GetLogger<Module>();
 
-        private const double UpsertThresholdMeters = 5.0;
+        // Rayon par défaut du "node le plus proche" (correction, suppression,
+        // upsert à la capture). 3 m et non 5 : sur les clusters denses, 5 m
+        // attrapait le voisin et corrigeait le mauvais node.
+        private const float DefaultUpsertRadiusMeters = 3.0f;
+        private const float MinUpsertRadiusMeters = 0.5f;
+        private const float MaxUpsertRadiusMeters = 20.0f;
+        private const double DeleteConfirmSeconds = 3.0;
         private const int ButtonHeight = 26;
         private const int PanelWidth = 260;
 
@@ -37,6 +43,11 @@ namespace GW2_NodeTracker
         private SettingEntry<KeyBinding> _cycleTypeKey;
         private SettingEntry<KeyBinding> _togglePanelKey;
         private SettingEntry<KeyBinding> _forceIconRefreshKey;
+        private SettingEntry<KeyBinding> _correctKey;
+        private SettingEntry<KeyBinding> _deleteKey;
+        private SettingEntry<KeyBinding> _undoKey;
+        private SettingEntry<float> _upsertRadius;
+        private SettingEntry<bool> _autoUpsertOnCapture;
         private SettingEntry<string> _nodesFilePath;
         private SettingEntry<bool> _verboseNotifications;
 
@@ -50,6 +61,18 @@ namespace GW2_NodeTracker
         private NodeType? _selectedType = null;
         private int _lastKnownMapId = -1;
         private bool _nodesLoaded = false;
+
+        // Annulation : un seul niveau, sur la dernière action destructrice
+        // ou modificatrice. Suffit pour rattraper une fausse manip de touche.
+        private enum LastActionKind { None, Added, Corrected, Deleted }
+        private LastActionKind _lastActionKind = LastActionKind.None;
+        private GatheredNode _lastActionNode;
+        private string _prevType, _prevGroup, _prevLabel, _prevUpdatedAt;
+        private int _lastDeletedIndex = -1;
+
+        // Suppression : première pression = demande, seconde = exécution.
+        private GatheredNode _pendingDelete;
+        private DateTime _pendingDeleteAt = DateTime.MinValue;
 
         private Panel _selectionPanel;
         private bool _showingFullList = false;
@@ -89,6 +112,36 @@ namespace GW2_NodeTracker
                 new KeyBinding(Keys.I),
                 () => "Forcer le re-téléchargement des icônes",
                 () => "Re-télécharge TOUTES les icônes utilisées (pas seulement celles manquantes), même si le fichier existe déjà. Utile si une icône existante est fausse.");
+
+            _correctKey = settings.DefineSetting(
+                "CorrectKey",
+                new KeyBinding(Keys.C),
+                () => "Corriger le node le plus proche",
+                () => "Applique le type sélectionné au node le plus proche dans le rayon, tous groupes confondus. Geste explicite : contrairement à la capture, ne crée jamais de node.");
+
+            _deleteKey = settings.DefineSetting(
+                "DeleteKey",
+                new KeyBinding(Keys.Delete),
+                () => "Supprimer le node le plus proche",
+                () => "Deux pressions : la première demande confirmation, la seconde supprime. La demande expire au bout de 3 secondes.");
+
+            _undoKey = settings.DefineSetting(
+                "UndoKey",
+                new KeyBinding(Keys.Z),
+                () => "Annuler la dernière action",
+                () => "Annule le dernier ajout, la dernière correction ou la dernière suppression. Un seul niveau.");
+
+            _upsertRadius = settings.DefineSetting(
+                "UpsertRadiusMeters",
+                DefaultUpsertRadiusMeters,
+                () => "Rayon du node le plus proche (m)",
+                () => "Distance en dessous de laquelle un node existant est considéré comme étant celui que tu vises. Baisse-le sur les clusters denses, monte-le si tu corriges de loin. Borné entre 0,5 et 20 m.");
+
+            _autoUpsertOnCapture = settings.DefineSetting(
+                "AutoUpsertOnCapture",
+                true,
+                () => "Réétiqueter au lieu d'ajouter (végétaux)",
+                () => "À la capture, si un node végétal existe déjà dans le rayon, le réétiqueter au lieu d'en créer un second. Désactive-le si tu préfères piloter les corrections uniquement avec la touche dédiée.");
 
             _nodesFilePath = settings.DefineSetting(
                 "NodesFilePath",
@@ -136,6 +189,15 @@ namespace GW2_NodeTracker
 
             _forceIconRefreshKey.Value.Enabled = true;
             _forceIconRefreshKey.Value.Activated += OnForceIconRefreshKeyActivated;
+
+            _correctKey.Value.Enabled = true;
+            _correctKey.Value.Activated += OnCorrectKeyActivated;
+
+            _deleteKey.Value.Enabled = true;
+            _deleteKey.Value.Activated += OnDeleteKeyActivated;
+
+            _undoKey.Value.Enabled = true;
+            _undoKey.Value.Activated += OnUndoKeyActivated;
         }
 
         protected override async Task LoadAsync()
@@ -183,6 +245,12 @@ namespace GW2_NodeTracker
                 _togglePanelKey.Value.Activated -= OnTogglePanelKeyActivated;
             if (_forceIconRefreshKey?.Value != null)
                 _forceIconRefreshKey.Value.Activated -= OnForceIconRefreshKeyActivated;
+            if (_correctKey?.Value != null)
+                _correctKey.Value.Activated -= OnCorrectKeyActivated;
+            if (_deleteKey?.Value != null)
+                _deleteKey.Value.Activated -= OnDeleteKeyActivated;
+            if (_undoKey?.Value != null)
+                _undoKey.Value.Activated -= OnUndoKeyActivated;
 
             _selectionPanel?.Dispose();
             _selectionPanel = null;
@@ -553,17 +621,13 @@ namespace GW2_NodeTracker
             Vector3 pos = GameService.Gw2Mumble.PlayerCharacter.Position;
 
             GatheredNode nearby = null;
-            if (selected.Group == "Vegetal")
-            {
-                nearby = _nodes
-                    .Where(n => n.MapId == mapId && n.Group == "Vegetal")
-                    .OrderBy(n => n.DistanceTo(pos.X, pos.Z, pos.Y))
-                    .FirstOrDefault(n => n.DistanceTo(pos.X, pos.Z, pos.Y) < UpsertThresholdMeters);
-            }
+            if (_autoUpsertOnCapture.Value && selected.Group == "Vegetal")
+                nearby = NearestNode(mapId, pos, n => n.Group == "Vegetal");
 
             if (nearby != null)
             {
                 string oldLabel = nearby.Label;
+                RememberCorrection(nearby);
                 nearby.Type = selected.Slug;
                 nearby.Group = selected.Group;
                 nearby.Label = selected.Label;
@@ -572,7 +636,7 @@ namespace GW2_NodeTracker
             }
             else
             {
-                _nodes.Add(new GatheredNode
+                var added = new GatheredNode
                 {
                     Type = selected.Slug,
                     Group = selected.Group,
@@ -586,7 +650,10 @@ namespace GW2_NodeTracker
                     Y = Math.Round(pos.Z, 4),
                     Z = Math.Round(pos.Y, 4),
                     CapturedAt = DateTime.Now.ToString("o"),
-                });
+                };
+                _nodes.Add(added);
+                _lastActionKind = LastActionKind.Added;
+                _lastActionNode = added;
                 ShowNotification($"✅ [{selected.Label}]  (total: {_nodes.Count})");
             }
 
@@ -594,6 +661,178 @@ namespace GW2_NodeTracker
             TriggerTacoRegeneration(); // relit le disque, pas _nodes -- cf. commentaire de la méthode
             RefreshFilteredTypes(mapId, resetSelection: false); // le nouveau type capturé doit apparaître dans le filtre tout de suite,
                                                                 // pas seulement au prochain changement de map
+        }
+
+        // -------------------------------------------------------------
+        // Correction / suppression / annulation
+        // -------------------------------------------------------------
+
+        /// <summary>Rayon courant, borné -- le champ de settings est libre.</summary>
+        private float CurrentRadius =>
+            Math.Min(MaxUpsertRadiusMeters, Math.Max(MinUpsertRadiusMeters, _upsertRadius.Value));
+
+        /// <summary>
+        /// Node le plus proche de pos sur la map courante, dans le rayon.
+        /// filter null = tous groupes confondus.
+        /// </summary>
+        private GatheredNode NearestNode(int mapId, Vector3 pos, Func<GatheredNode, bool> filter = null)
+        {
+            double radius = CurrentRadius;
+            return _nodes
+                .Where(n => n.MapId == mapId && (filter == null || filter(n)))
+                .OrderBy(n => n.DistanceTo(pos.X, pos.Z, pos.Y))
+                .FirstOrDefault(n => n.DistanceTo(pos.X, pos.Z, pos.Y) < radius);
+        }
+
+        private bool CanAct()
+        {
+            if (!GameService.GameIntegration.Gw2Instance.IsInGame || GameService.Gw2Mumble.UI.IsMapOpen)
+            {
+                Logger.Debug("Action ignorée -- pas en jeu ou carte plein écran ouverte.");
+                return false;
+            }
+            return true;
+        }
+
+        private void RememberCorrection(GatheredNode n)
+        {
+            _lastActionKind = LastActionKind.Corrected;
+            _lastActionNode = n;
+            _prevType = n.Type;
+            _prevGroup = n.Group;
+            _prevLabel = n.Label;
+            _prevUpdatedAt = n.UpdatedAt;
+        }
+
+        /// <summary>Écrit sur disque, régénère le pack et rafraîchit le filtre.</summary>
+        private void PersistAndRefresh(int mapId)
+        {
+            SaveNodes();
+            TriggerTacoRegeneration();
+            RefreshFilteredTypes(mapId, resetSelection: false);
+        }
+
+        private void OnCorrectKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            if (!_selectedType.HasValue)
+            {
+                ShowNotification("Aucun type sélectionné.");
+                return;
+            }
+
+            NodeType selected = _selectedType.Value;
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+            Vector3 pos = GameService.Gw2Mumble.PlayerCharacter.Position;
+
+            // Tous groupes confondus : l'intention est explicite, contrairement
+            // à l'upsert de la capture qui reste limité aux végétaux.
+            GatheredNode target = NearestNode(mapId, pos);
+            if (target == null)
+            {
+                ShowNotification($"Aucun node à moins de {CurrentRadius:0.#} m.");
+                return;
+            }
+
+            if (target.Type == selected.Slug)
+            {
+                ShowNotification($"Déjà [{selected.Label}], rien à corriger.");
+                return;
+            }
+
+            string oldLabel = target.Label;
+            RememberCorrection(target);
+            target.Type = selected.Slug;
+            target.Group = selected.Group;
+            target.Label = selected.Label;
+            target.UpdatedAt = DateTime.Now.ToString("o");
+
+            ShowNotification($"🔄 [{oldLabel}] → [{selected.Label}]");
+            PersistAndRefresh(mapId);
+        }
+
+        private void OnDeleteKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+            Vector3 pos = GameService.Gw2Mumble.PlayerCharacter.Position;
+
+            GatheredNode target = NearestNode(mapId, pos);
+            if (target == null)
+            {
+                ShowNotification($"Aucun node à moins de {CurrentRadius:0.#} m.");
+                _pendingDelete = null;
+                return;
+            }
+
+            bool confirmed = ReferenceEquals(_pendingDelete, target)
+                && (DateTime.Now - _pendingDeleteAt).TotalSeconds <= DeleteConfirmSeconds;
+
+            if (!confirmed)
+            {
+                _pendingDelete = target;
+                _pendingDeleteAt = DateTime.Now;
+                ShowNotification($"⚠️ Supprimer [{target.Label}] ? Appuie à nouveau sous {DeleteConfirmSeconds:0} s.");
+                return;
+            }
+
+            _lastDeletedIndex = _nodes.IndexOf(target);
+            _nodes.Remove(target);
+            _lastActionKind = LastActionKind.Deleted;
+            _lastActionNode = target;
+            _pendingDelete = null;
+
+            ShowNotification($"🗑️ [{target.Label}] supprimé  (total: {_nodes.Count})");
+            PersistAndRefresh(mapId);
+        }
+
+        private void OnUndoKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            if (_lastActionKind == LastActionKind.None || _lastActionNode == null)
+            {
+                ShowNotification("Rien à annuler.");
+                return;
+            }
+
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+            string label = _lastActionNode.Label;
+
+            switch (_lastActionKind)
+            {
+                case LastActionKind.Added:
+                    _nodes.Remove(_lastActionNode);
+                    ShowNotification($"↩️ Ajout annulé : [{label}] retiré  (total: {_nodes.Count})");
+                    break;
+
+                case LastActionKind.Corrected:
+                    _lastActionNode.Type = _prevType;
+                    _lastActionNode.Group = _prevGroup;
+                    _lastActionNode.Label = _prevLabel;
+                    _lastActionNode.UpdatedAt = _prevUpdatedAt;
+                    ShowNotification($"↩️ Correction annulée : [{label}] → [{_prevLabel}]");
+                    break;
+
+                case LastActionKind.Deleted:
+                    // Réinsertion à sa place d'origine quand elle est encore
+                    // valide -- l'ordre du JSON reste ainsi inchangé.
+                    if (_lastDeletedIndex >= 0 && _lastDeletedIndex <= _nodes.Count)
+                        _nodes.Insert(_lastDeletedIndex, _lastActionNode);
+                    else
+                        _nodes.Add(_lastActionNode);
+                    ShowNotification($"↩️ Suppression annulée : [{label}] restauré  (total: {_nodes.Count})");
+                    break;
+            }
+
+            _lastActionKind = LastActionKind.None;
+            _lastActionNode = null;
+            _lastDeletedIndex = -1;
+            _pendingDelete = null;
+
+            PersistAndRefresh(mapId);
         }
 
         // -------------------------------------------------------------
