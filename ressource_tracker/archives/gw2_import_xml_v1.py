@@ -24,7 +24,9 @@ from datetime import datetime
 # Fichiers
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-NODES_FILE = os.path.join(SCRIPT_DIR, "gw2_nodes.json")
+# Script archive : les donnees restent dans le dossier parent (ressource_tracker/).
+_PARENT = os.path.dirname(SCRIPT_DIR)
+NODES_FILE = os.path.join(_PARENT, "gw2_nodes.json")
 
 def resolve_xml_files():
     """Retourne la liste des fichiers XML à parser selon les arguments."""

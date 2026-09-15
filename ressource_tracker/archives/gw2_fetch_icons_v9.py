@@ -28,6 +28,9 @@ import urllib.error
 # Mapping slug → item_id GW2 API
 # Source : https://api.guildwars2.com/v2/items?ids=...
 # ---------------------------------------------------------------------------
+# Script archive : les donnees restent dans le dossier parent (ressource_tracker/).
+_PARENT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 SLUG_TO_ITEM_ID = {
     # ── Minerais standards ────────────────────────────────────────────────────
     "copper": 19697,
@@ -257,7 +260,7 @@ def download_icon(icon_url, dest_path, size):
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(description="Télécharge les icônes GW2 pour le pack .taco")
-    parser.add_argument("--output", default="icons", help="Dossier de sortie (défaut: icons/)")
+    parser.add_argument("--output", default=os.path.join(_PARENT, "icons"), help="Dossier de sortie (défaut: icons/)")
     parser.add_argument("--size",   default=32, type=int, choices=[16, 32, 64],
                         help="Taille cible en px (défaut: 32) — informatif, le CDN renvoie du 64x64")
     parser.add_argument("--force",  action="store_true",

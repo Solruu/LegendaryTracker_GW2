@@ -249,7 +249,9 @@ LABEL_DISPLAY = {
     "quartz_formation":  "Quartz Crystal Formation",
 }
 
-NODES_FILE  = "gw2_nodes.json"
+# Script archive : les donnees restent dans le dossier parent (ressource_tracker/).
+_PARENT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+NODES_FILE  = os.path.join(_PARENT, "gw2_nodes.json")
 INPUT_FILE  = "import_pois.txt"
 
 POI_RE = re.compile(

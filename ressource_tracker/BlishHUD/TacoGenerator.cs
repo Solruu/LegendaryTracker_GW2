@@ -20,14 +20,17 @@ namespace GW2_NodeTracker
             "Bois",
             "Vegetal",
             "Special",
+            "Festival",
         };
 
         public static readonly Dictionary<string, string[]> TypeOrder = new Dictionary<string, string[]>
         {
-            ["Minerai"] = new[] { "copper", "rich_copper", "iron", "rich_iron", "silver", "rich_silver", "gold", "rich_gold", "platinum", "rich_platinum", "darksteel", "mithril", "rich_mithril", "orichalcum", "rich_orichalcum", "quartz", "fulgurite", "difluorite", "jade", "prismaticite", "somnorite", "vesperite" },
+            ["Minerai"] = new[] { "copper", "rich_copper", "iron", "rich_iron", "silver", "rich_silver", "gold", "rich_gold", "platinum", "rich_platinum", "darksteel", "mithril", "rich_mithril", "orichalcum", "rich_orichalcum", "quartz", "fulgurite", "difluorite", "jade", "prismaticite", "somnorite", "rich_somnorite", "vesperite", "rich_vesperite" },
             ["Bois"] = new[] { "green_wood", "soft_wood", "seasoned_wood", "hard_wood", "elder_wood", "ancient_wood", "aspen", "ekku", "kertch", "gummo", "mimosa", "snow_cherry", "fir", "tukawa", "pine", "banyan", "inglewood", "cypress", "palm", "red_oak", "baoba", "mebahya", "spiderknot_tree", "ancient_sapling", "ancient_spiderknot_tree", "orrian_sapling", "petrified" },
-            ["Vegetal"] = new[] { "blueberry", "mushroom_button", "carrot", "herb_seedlings", "onion", "potato", "lettuce", "strawberry", "herb_sprouts", "spinach", "grapes", "cabbage", "young_herbs", "zucchini", "root_vegetables", "kale", "mushroom_varied", "mature_herbs", "scallions", "portobello", "blackberries", "sugar_pumpkin", "cauliflower", "taproot", "verdant_herbs", "leeks", "winter_root", "raspberries", "asparagus", "cayenne_pepper", "butternut", "artichoke", "lotus", "omnomberry", "orrian_truffle", "snow_truffle", "ghost_pepper", "mussel", "seaweed", "flax", "sawgill", "lentils", "passiflora", "orrian_oyster", "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid", "hatched_chili", "black_crocus", "clam", "herb_patch", "mixed_harvesting", "sunflower", "toxic_seedling", "truffle", "varietal_mint", "vegetal_unknown", "desert_vegetables" },
-            ["Special"] = new[] { "quartz_formation" },
+            ["Vegetal"] = new[] { "blueberry", "mushroom_button", "carrot", "herb_seedlings", "onion", "potato", "lettuce", "strawberry", "herb_sprouts", "spinach", "taproots", "grapes", "cabbage", "young_herbs", "zucchini", "root_vegetables", "kale", "mushroom_varied", "mature_herbs", "scallions", "portobello", "blackberries", "sugar_pumpkin", "cauliflower", "variegated_taproot", "verdant_herbs", "leeks", "winter_root", "raspberries", "asparagus", "cayenne_pepper", "butternut", "artichoke", "cluster_herbs", "cluster_desert_herbs", "blooming_passiflora", "lotus", "omnomberry", "orrian_truffle", "snow_truffle", "ghost_pepper", "mussel", "seaweed", "cactus", "jungle_plants", "flax", "sawgill", "lentils", "passiflora", "orrian_oyster", "haresfoot", "coral", "shing_jea_orchid", "primordial_orchid", "hatched_chili", "black_crocus", "clam", "herb_patch", "mixed_harvesting", "sunflower", "toxic_seedling", "truffle", "varietal_mint", "vegetal_unknown", "desert_vegetables" },
+            ["Special"] = new[] { "quartz_formation", "rich_quartz_formation", "sprocket_generator", "aurillium", "bloodstone_crystals", "petrified_stump", "winterberry", "brandstone", "mistonium", "dragon_crystal", "mistborn_mote", "eternal_ice" },
+            // Catégorie TacO distincte : désactivable indépendamment hors événement
+            ["Festival"] = new[] { "candy_corn", "rich_candy_corn", "bauble" },
         };
 
         public static readonly Dictionary<int, string> MapNames = new Dictionary<int, string>

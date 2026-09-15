@@ -197,7 +197,10 @@ class MumbleLink:
 # ---------------------------------------------------------------------------
 # Nodes JSON
 # ---------------------------------------------------------------------------
-NODES_FILE = "gw2_nodes.json"
+
+# Script archive : les donnees restent dans le dossier parent (ressource_tracker/).
+_PARENT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+NODES_FILE = os.path.join(_PARENT, "gw2_nodes.json")
 UPSERT_THRESHOLD = 5.0
 
 def load_nodes():

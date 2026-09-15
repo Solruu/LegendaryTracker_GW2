@@ -10,7 +10,7 @@ namespace GW2_NodeTracker
     public readonly struct NodeType
     {
         public readonly string Slug;
-        public readonly string Group;   // "Minerai" | "Bois" | "Vegetal" | "Special"
+        public readonly string Group;   // "Minerai" | "Bois" | "Vegetal" | "Special" | "Festival"
         public readonly string Label;
         public readonly bool Rand;      // sortie variable (affichée avec un tag [variable])
 
@@ -23,7 +23,8 @@ namespace GW2_NodeTracker
         }
 
         // ---------------------------------------------------------------
-        // Généré depuis gw2_node_ID_v9.py (NODE_TYPES_LIST) -- 109 entrées
+        // Source de vérité du module (les scripts Python sont archivés) -- 131 entrées.
+        // +22 types ajoutés depuis wiki.guildwars2.com/wiki/Gathering (15/09/2026).
         // ---------------------------------------------------------------
         public static readonly NodeType[] All = {
             new NodeType("copper", "Minerai", "Copper Ore", false),
@@ -46,7 +47,9 @@ namespace GW2_NodeTracker
             new NodeType("rich_platinum", "Minerai", "Rich Platinum Vein", false),
             new NodeType("rich_silver", "Minerai", "Rich Silver Vein", false),
             new NodeType("silver", "Minerai", "Silver Ore", false),
+            new NodeType("rich_somnorite", "Minerai", "Rich Somnorite Vein", false),
             new NodeType("somnorite", "Minerai", "Somnorite Ore", false),
+            new NodeType("rich_vesperite", "Minerai", "Rich Vesperite Vein", false),
             new NodeType("vesperite", "Minerai", "Vesperite Ore", false),
             new NodeType("ancient_sapling", "Bois", "Ancient Sapling", false),
             new NodeType("ancient_spiderknot_tree", "Bois", "Ancient Spiderknot Tree", false),
@@ -86,7 +89,11 @@ namespace GW2_NodeTracker
             new NodeType("carrot", "Vegetal", "Carrots", true),
             new NodeType("cauliflower", "Vegetal", "Cauliflower", true),
             new NodeType("cayenne_pepper", "Vegetal", "Cayenne Pepper", false),
+            new NodeType("blooming_passiflora", "Vegetal", "Blooming Passiflora", false),
+            new NodeType("cactus", "Vegetal", "Cactus", true),
             new NodeType("clam", "Vegetal", "Clam", false),
+            new NodeType("cluster_desert_herbs", "Vegetal", "Cluster of Desert Herbs", true),
+            new NodeType("cluster_herbs", "Vegetal", "Cluster of Herbs", true),
             new NodeType("coral", "Vegetal", "Coral", false),
             new NodeType("desert_vegetables", "Vegetal", "Desert Vegetables", true),
             new NodeType("flax", "Vegetal", "Flax", false),
@@ -97,6 +104,7 @@ namespace GW2_NodeTracker
             new NodeType("herb_patch", "Vegetal", "Herb Patch", true),
             new NodeType("herb_seedlings", "Vegetal", "Herb Seedlings", true),
             new NodeType("herb_sprouts", "Vegetal", "Herb Sprouts", true),
+            new NodeType("jungle_plants", "Vegetal", "Jungle Plants", true),
             new NodeType("kale", "Vegetal", "Kale", true),
             new NodeType("leeks", "Vegetal", "Leeks", true),
             new NodeType("lentils", "Vegetal", "Lentils", true),
@@ -127,14 +135,30 @@ namespace GW2_NodeTracker
             new NodeType("toxic_seedling", "Vegetal", "Toxic Seedling", false),
             new NodeType("truffle", "Vegetal", "Truffle", false),
             new NodeType("mushroom_varied", "Vegetal", "Varied Mushrooms", true),
-            new NodeType("taproot", "Vegetal", "Variegated Taproot", true),
+            new NodeType("variegated_taproot", "Vegetal", "Variegated Taproots", true),
+            new NodeType("taproots", "Vegetal", "Taproots", true),
             new NodeType("varietal_mint", "Vegetal", "Varietal Mint Seed", true),
             new NodeType("verdant_herbs", "Vegetal", "Verdant Herbs", true),
             new NodeType("vegetal_unknown", "Vegetal", "Végétal (type variable)", true),
             new NodeType("winter_root", "Vegetal", "Winter Root Vegetables", true),
             new NodeType("young_herbs", "Vegetal", "Young Herbs", true),
             new NodeType("zucchini", "Vegetal", "Zucchini", true),
+            new NodeType("aurillium", "Special", "Aurillium Node", false),
+            new NodeType("bloodstone_crystals", "Special", "Bloodstone Crystals", false),
+            new NodeType("brandstone", "Special", "Brandstone", false),
+            new NodeType("dragon_crystal", "Special", "Dragon Crystal Node", false),
+            new NodeType("eternal_ice", "Special", "Eternal Ice", false),
+            new NodeType("mistborn_mote", "Special", "Mistborn Mote", false),
+            new NodeType("mistonium", "Special", "Mistonium", false),
+            new NodeType("petrified_stump", "Special", "Petrified Stump", false),
             new NodeType("quartz_formation", "Special", "Quartz Crystal Formation", false),
+            new NodeType("rich_quartz_formation", "Special", "Rich Quartz Crystal Formation", false),
+            new NodeType("sprocket_generator", "Special", "Sprocket Generator", false),
+            new NodeType("winterberry", "Special", "Winterberry Bush", false),
+            // Festival : nodes saisonniers, présents uniquement pendant l'événement
+            new NodeType("bauble", "Festival", "Bauble", false),
+            new NodeType("candy_corn", "Festival", "Raw Candy Corn", false),
+            new NodeType("rich_candy_corn", "Festival", "Rich Candy Corn Vein", false),
         };
 
         public static NodeType? BySlug(string slug) =>

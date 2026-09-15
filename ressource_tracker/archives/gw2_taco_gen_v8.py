@@ -26,6 +26,9 @@ from collections import defaultdict
 # Icônes réelles GW2 — chargées depuis le dossier icons/ (produit par
 # gw2_fetch_icons_v4.py). Plus de génération de pastilles colorées.
 # ---------------------------------------------------------------------------
+# Script archive : les donnees restent dans le dossier parent (ressource_tracker/).
+_PARENT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def load_icon_bytes(slug, icons_dir):
     """Retourne les bytes du PNG icons/<slug>.png, ou None si absent."""
     path = os.path.join(icons_dir, f"{slug}.png")
@@ -264,9 +267,9 @@ def generate_taco(input_file, output_file, icons_dir):
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Génère un pack .taco depuis gw2_nodes.json")
-    parser.add_argument("--input",  default="gw2_nodes.json", help="Fichier JSON source")
-    parser.add_argument("--output", default="gw2_farm.taco",   help="Fichier .taco de sortie")
-    parser.add_argument("--icons",  default="icons",           help="Dossier des icônes PNG (défaut: icons/)")
+    parser.add_argument("--input",  default=os.path.join(_PARENT, "gw2_nodes.json"), help="Fichier JSON source")
+    parser.add_argument("--output", default=os.path.join(_PARENT, "gw2_farm.taco"),   help="Fichier .taco de sortie")
+    parser.add_argument("--icons",  default=os.path.join(_PARENT, "icons"),           help="Dossier des icônes PNG (défaut: icons/)")
     args = parser.parse_args()
 
     if not os.path.exists(args.input):
