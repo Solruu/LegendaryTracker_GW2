@@ -19,152 +19,209 @@ namespace GW2_NodeTracker
         private static readonly Logger Logger = Logger.GetLogger<Module>();
 
         private const string ApiItemsUrl = "https://api.guildwars2.com/v2/items";
-        // Icônes génériques par groupe pour les slugs à sortie multiple --
-        // celles validées dès le début de la session (capture d'écran
-        // d'Antoine), pas "Unidentified Gear" qui ne convient pas
-        // sémantiquement (ce sont des types de nodes connus, pas des
-        // items non identifiés).
-        private const string PlantResourceIconUrl = "https://wiki.guildwars2.com/images/2/2d/Plant_resource_%28map_icon%29.png";
-        private const string MineResourceIconUrl = "https://wiki.guildwars2.com/images/3/34/Mine_resource_%28map_icon%29.png";
+        // Icônes de node génériques, par outil de récolte. Le choix se fait
+        // par slug via IconSource.Generic(NodeTool), pas d'après le groupe :
+        // les groupes Special et Festival mélangent les trois outils.
+        private const string SickleIconUrl = "https://wiki.guildwars2.com/images/2/2d/Plant_resource_%28map_icon%29.png";
+        private const string AxeIconUrl    = "https://wiki.guildwars2.com/images/f/f1/Wood_resource_%28map_icon%29.png";
+        private const string PickIconUrl   = "https://wiki.guildwars2.com/images/3/34/Mine_resource_%28map_icon%29.png";
         private const int BatchSize = 50;
 
-        public static readonly Dictionary<string, int> SlugToItemId = new Dictionary<string, int>
+        public enum NodeTool { Pick, Axe, Sickle }
+
+        /// <summary>
+        /// D'où vient l'icône d'un slug : l'objet récolté (nodes mono-produit),
+        /// une icône de node générique par outil (nodes multi-produit), ou une
+        /// URL fixée à la main pour les cas particuliers.
+        /// </summary>
+        public readonly struct IconSource
         {
-            ["copper"] = 19697,
-            ["iron"] = 19699,
-            ["silver"] = 19703,
-            ["gold"] = 19698,
-            ["platinum"] = 19702,
-            ["darksteel"] = 19702,
-            ["mithril"] = 19700,
-            ["orichalcum"] = 19701,
-            ["quartz"] = 43773,
-            ["difluorite"] = 86977,
-            ["jade"] = 97102,
-            ["prismaticite"] = 94163,
-            ["somnorite"] = 19701,
-            ["vesperite"] = 19700,
-            ["rich_iron"] = 19699,
-            ["rich_silver"] = 19703,
-            ["rich_gold"] = 19698,
-            ["rich_mithril"] = 19700,
-            ["rich_orichalcum"] = 19701,
-            ["rich_copper"] = 19697,
-            ["rich_platinum"] = 19702,
-            ["green_wood"] = 19723,
-            ["soft_wood"] = 19726,
-            ["seasoned_wood"] = 19727,
-            ["hard_wood"] = 19724,
-            ["elder_wood"] = 19722,
-            ["ancient_wood"] = 19725,
-            ["sawgill"] = 73504,
-            ["aspen"] = 19723,
-            ["ekku"] = 19723,
-            ["kertch"] = 19723,
-            ["gummo"] = 19726,
-            ["mimosa"] = 19726,
-            ["fir"] = 19727,
-            ["tukawa"] = 19727,
-            ["pine"] = 19724,
-            ["banyan"] = 19724,
-            ["inglewood"] = 19724,
-            ["cypress"] = 19722,
-            ["palm"] = 19722,
-            ["red_oak"] = 19722,
-            ["baoba"] = 19722,
-            ["mebahya"] = 19722,
-            ["spiderknot_tree"] = 19722,
-            ["ancient_sapling"] = 19725,
-            ["ancient_spiderknot_tree"] = 19725,
-            ["orrian_sapling"] = 19725,
-            ["petrified"] = 96471,
-            ["blueberry"] = 12255,
-            ["mushroom_button"] = 12147,
-            ["carrot"] = 12134,
-            ["onion"] = 12142,
-            ["potato"] = 12135,
-            ["lettuce"] = 12238,
-            ["strawberry"] = 12253,
-            ["spinach"] = 12241,
-            ["grapes"] = 12341,
-            ["cabbage"] = 12332,
-            ["zucchini"] = 12330,
-            ["kale"] = 12333,
-            ["portobello"] = 12334,
-            ["blackberries"] = 12537,
-            ["sugar_pumpkin"] = 12538,
-            ["cauliflower"] = 12532,
-            ["leeks"] = 12508,
-            ["raspberries"] = 12254,
-            ["asparagus"] = 12505,
-            ["cayenne_pepper"] = 12504,
-            ["butternut"] = 12511,
-            ["artichoke"] = 12512,
-            ["lotus"] = 12510,
-            ["omnomberry"] = 12128,
-            ["orrian_truffle"] = 12545,
-            ["snow_truffle"] = 12144,
-            ["ghost_pepper"] = 12544,
-            ["mussel"] = 74266,
-            ["seaweed"] = 12509,
-            ["scallions"] = 12533,
-            ["clam"] = 12327,
-            ["orrian_oyster"] = 81837,
-            ["passiflora"] = 36731,
-            ["black_crocus"] = 12547,
-            ["quartz_formation"] = 43773,
-            ["snow_cherry"] = 19726,
-            // -- ajouts 15/09/2026 : nodes mono-produit (IDs verifies contre
-            //    gw2_materials_ref.json du projet)
-            ["rich_vesperite"] = 19700,        // Mithril Ore
-            ["rich_somnorite"] = 19701,        // Orichalcum Ore
-            ["rich_quartz_formation"] = 43773, // Quartz Crystal
-            ["blooming_passiflora"] = 36731,   // Passion Fruit
-            ["winterberry"] = 79899,           // Fresh Winterberry
-            ["eternal_ice"] = 92272,           // Eternal Ice Shard
-            ["candy_corn"] = 36041,            // Piece of Candy Corn
-            ["rich_candy_corn"] = 36041,       // Piece of Candy Corn
-            ["sprocket_generator"] = 44941,    // Watchwork Sprocket
-            ["petrified_stump"] = 79469,       // Petrified Wood
-            ["mistonium"] = 88955,             // Lump of Mistonium
-            ["brandstone"] = 86069,            // Kralkatite Ore
-            ["dragon_crystal"] = 89537,        // Branded Mass
-            ["mistborn_mote"] = 90783,         // Mistborn Mote
-            ["bloodstone_crystals"] = 46731,   // Pile of Bloodstone Dust
+            public enum SourceKind { Item, Generic, Url }
+
+            public readonly SourceKind Kind;
+            public readonly int ItemId;
+            public readonly NodeTool Tool;
+            public readonly string DirectUrl;
+
+            private IconSource(SourceKind kind, int itemId, NodeTool tool, string url)
+            {
+                Kind = kind; ItemId = itemId; Tool = tool; DirectUrl = url;
+            }
+
+            public static IconSource Item(int itemId) =>
+                new IconSource(SourceKind.Item, itemId, default, null);
+
+            public static IconSource Generic(NodeTool tool) =>
+                new IconSource(SourceKind.Generic, 0, tool, null);
+
+            public static IconSource Url(string url) =>
+                new IconSource(SourceKind.Url, 0, default, url);
+        }
+
+        /// <summary>
+        /// Une entrée par slug de NodeType.All. Table unique : pas de
+        /// dictionnaire de repli parallèle à tenir en cohérence.
+        /// Vérifiable par ValidateCoverage().
+        /// </summary>
+        public static readonly Dictionary<string, IconSource> Sources = new Dictionary<string, IconSource>
+        {
+            // -- Minerai -------------------------------------------------
+            ["copper"] = IconSource.Item(19697),
+            ["darksteel"] = IconSource.Item(19702),
+            ["difluorite"] = IconSource.Item(86977),
+            ["fulgurite"] = IconSource.Generic(NodeTool.Pick),
+            ["gold"] = IconSource.Item(19698),
+            ["iron"] = IconSource.Item(19699),
+            ["jade"] = IconSource.Item(97102),
+            ["mithril"] = IconSource.Item(19700),
+            ["orichalcum"] = IconSource.Item(19701),
+            ["platinum"] = IconSource.Item(19702),
+            ["prismaticite"] = IconSource.Item(94163),
+            ["quartz"] = IconSource.Item(43773),
+            ["rich_copper"] = IconSource.Item(19697),
+            ["rich_gold"] = IconSource.Item(19698),
+            ["rich_iron"] = IconSource.Item(19699),
+            ["rich_mithril"] = IconSource.Item(19700),
+            ["rich_orichalcum"] = IconSource.Item(19701),
+            ["rich_platinum"] = IconSource.Item(19702),
+            ["rich_silver"] = IconSource.Item(19703),
+            ["silver"] = IconSource.Item(19703),
+            ["rich_somnorite"] = IconSource.Item(19701),
+            ["somnorite"] = IconSource.Item(19701),
+            ["rich_vesperite"] = IconSource.Item(19700),
+            ["vesperite"] = IconSource.Item(19700),
+
+            // -- Bois ----------------------------------------------------
+            ["ancient_sapling"] = IconSource.Item(19725),
+            ["ancient_spiderknot_tree"] = IconSource.Item(19725),
+            ["ancient_wood"] = IconSource.Item(19725),
+            ["aspen"] = IconSource.Item(19723),
+            ["banyan"] = IconSource.Item(19724),
+            ["baoba"] = IconSource.Item(19722),
+            ["cypress"] = IconSource.Item(19722),
+            ["ekku"] = IconSource.Item(19723),
+            ["elder_wood"] = IconSource.Item(19722),
+            ["fir"] = IconSource.Item(19727),
+            ["green_wood"] = IconSource.Item(19723),
+            ["gummo"] = IconSource.Item(19726),
+            ["hard_wood"] = IconSource.Item(19724),
+            ["inglewood"] = IconSource.Item(19724),
+            ["kertch"] = IconSource.Item(19723),
+            ["mebahya"] = IconSource.Item(19722),
+            ["mimosa"] = IconSource.Item(19726),
+            ["orrian_sapling"] = IconSource.Item(19725),
+            ["palm"] = IconSource.Item(19722),
+            ["petrified"] = IconSource.Item(96471),
+            ["pine"] = IconSource.Item(19724),
+            ["red_oak"] = IconSource.Item(19722),
+            ["seasoned_wood"] = IconSource.Item(19727),
+            ["snow_cherry"] = IconSource.Item(19726),
+            ["soft_wood"] = IconSource.Item(19726),
+            ["spiderknot_tree"] = IconSource.Item(19722),
+            ["tukawa"] = IconSource.Item(19727),
+
+            // -- Vegetal -------------------------------------------------
+            ["artichoke"] = IconSource.Item(12512),
+            ["asparagus"] = IconSource.Item(12505),
+            ["black_crocus"] = IconSource.Item(12547),
+            ["blackberries"] = IconSource.Item(12537),
+            ["blueberry"] = IconSource.Item(12255),
+            ["butternut"] = IconSource.Item(12511),
+            ["mushroom_button"] = IconSource.Item(12147),
+            ["cabbage"] = IconSource.Item(12332),
+            ["carrot"] = IconSource.Item(12134),
+            ["cauliflower"] = IconSource.Item(12532),
+            ["cayenne_pepper"] = IconSource.Item(12504),
+            ["blooming_passiflora"] = IconSource.Item(36731),
+            ["cactus"] = IconSource.Generic(NodeTool.Sickle),
+            ["clam"] = IconSource.Item(12327),
+            ["cluster_desert_herbs"] = IconSource.Generic(NodeTool.Sickle),
+            ["cluster_herbs"] = IconSource.Generic(NodeTool.Sickle),
+            ["coral"] = IconSource.Generic(NodeTool.Sickle),
+            ["desert_vegetables"] = IconSource.Generic(NodeTool.Sickle),
+            ["flax"] = IconSource.Generic(NodeTool.Sickle),
+            ["ghost_pepper"] = IconSource.Item(12544),
+            ["grapes"] = IconSource.Item(12341),
+            ["haresfoot"] = IconSource.Generic(NodeTool.Sickle),
+            ["hatched_chili"] = IconSource.Generic(NodeTool.Sickle),
+            ["herb_patch"] = IconSource.Generic(NodeTool.Sickle),
+            ["herb_seedlings"] = IconSource.Generic(NodeTool.Sickle),
+            ["herb_sprouts"] = IconSource.Generic(NodeTool.Sickle),
+            ["jungle_plants"] = IconSource.Generic(NodeTool.Sickle),
+            ["kale"] = IconSource.Item(12333),
+            ["leeks"] = IconSource.Item(12508),
+            ["lentils"] = IconSource.Generic(NodeTool.Sickle),
+            ["lettuce"] = IconSource.Item(12238),
+            ["lotus"] = IconSource.Item(12510),
+            ["mature_herbs"] = IconSource.Generic(NodeTool.Sickle),
+            ["mixed_harvesting"] = IconSource.Generic(NodeTool.Sickle),
+            ["mussel"] = IconSource.Item(74266),
+            ["omnomberry"] = IconSource.Item(12128),
+            ["onion"] = IconSource.Item(12142),
+            ["orrian_oyster"] = IconSource.Item(81837),
+            ["orrian_truffle"] = IconSource.Item(12545),
+            ["passiflora"] = IconSource.Item(36731),
+            ["portobello"] = IconSource.Item(12334),
+            ["potato"] = IconSource.Item(12135),
+            ["primordial_orchid"] = IconSource.Generic(NodeTool.Axe),
+            ["raspberries"] = IconSource.Item(12254),
+            ["root_vegetables"] = IconSource.Generic(NodeTool.Sickle),
+            ["sawgill"] = IconSource.Item(73504),
+            ["scallions"] = IconSource.Item(12533),
+            ["seaweed"] = IconSource.Item(12509),
+            ["shing_jea_orchid"] = IconSource.Generic(NodeTool.Sickle),
+            ["snow_truffle"] = IconSource.Item(12144),
+            ["spinach"] = IconSource.Item(12241),
+            ["strawberry"] = IconSource.Item(12253),
+            ["sugar_pumpkin"] = IconSource.Item(12538),
+            ["sunflower"] = IconSource.Generic(NodeTool.Sickle),
+            ["toxic_seedling"] = IconSource.Generic(NodeTool.Sickle),
+            ["truffle"] = IconSource.Generic(NodeTool.Sickle),
+            ["mushroom_varied"] = IconSource.Generic(NodeTool.Sickle),
+            ["variegated_taproot"] = IconSource.Generic(NodeTool.Sickle),
+            ["taproots"] = IconSource.Generic(NodeTool.Sickle),
+            ["varietal_mint"] = IconSource.Generic(NodeTool.Sickle),
+            ["verdant_herbs"] = IconSource.Generic(NodeTool.Sickle),
+            ["vegetal_unknown"] = IconSource.Generic(NodeTool.Sickle),
+            ["winter_root"] = IconSource.Generic(NodeTool.Sickle),
+            ["young_herbs"] = IconSource.Generic(NodeTool.Sickle),
+            ["zucchini"] = IconSource.Item(12330),
+
+            // -- Special -------------------------------------------------
+            ["aurillium"] = IconSource.Generic(NodeTool.Pick),
+            ["bloodstone_crystals"] = IconSource.Item(46731),
+            ["brandstone"] = IconSource.Item(86069),
+            ["dragon_crystal"] = IconSource.Item(89537),
+            ["eternal_ice"] = IconSource.Item(92272),
+            ["mistborn_mote"] = IconSource.Item(90783),
+            ["mistonium"] = IconSource.Item(88955),
+            ["petrified_stump"] = IconSource.Item(79469),
+            ["quartz_formation"] = IconSource.Item(43773),
+            ["rich_quartz_formation"] = IconSource.Item(43773),
+            ["sprocket_generator"] = IconSource.Item(44941),
+            ["winterberry"] = IconSource.Item(79899),
+
+            // -- Festival ------------------------------------------------
+            ["bauble"] = IconSource.Generic(NodeTool.Pick),
+            ["candy_corn"] = IconSource.Item(36041),
+            ["rich_candy_corn"] = IconSource.Item(36041),
         };
 
-        public static readonly string[] FallbackSlugs = {
-            "variegated_taproot",
-            "varietal_mint",
-            "cactus",
-            "cluster_desert_herbs",
-            "cluster_herbs",
-            "coral",
-            "flax",
-            "fulgurite",
-            "haresfoot",
-            "hatched_chili",
-            "herb_patch",
-            "herb_seedlings",
-            "herb_sprouts",
-            "desert_vegetables",
-            "jungle_plants",
-            "lentils",
-            "mature_herbs",
-            "mixed_harvesting",
-            "mushroom_varied",
-            "primordial_orchid",
-            "root_vegetables",
-            "shing_jea_orchid",
-            "sunflower",
-            "taproots",
-            "toxic_seedling",
-            "truffle",
-            "vegetal_unknown",
-            "verdant_herbs",
-            "winter_root",
-            "young_herbs",
-        };
+        /// <summary>
+        /// Slugs de NodeType.All sans entrée dans Sources. Doit être vide.
+        /// </summary>
+        public static List<string> ValidateCoverage() =>
+            NodeType.All.Select(t => t.Slug).Where(s => !Sources.ContainsKey(s)).ToList();
+
+        private static string GenericUrl(NodeTool tool)
+        {
+            switch (tool)
+            {
+                case NodeTool.Pick: return PickIconUrl;
+                case NodeTool.Axe: return AxeIconUrl;
+                default: return SickleIconUrl;
+            }
+        }
 
         private class ApiItem
         {
@@ -199,8 +256,11 @@ namespace GW2_NodeTracker
                 http.DefaultRequestHeaders.UserAgent.ParseAdd("GW2_NodeTracker/1.0 (Blish HUD module)");
 
                 // 1 -- Slugs avec un vrai item_id connu -> résolution batch via l'API GW2
-                var withRealId = toFetch.Where(s => SlugToItemId.ContainsKey(s)).ToList();
-                var itemIds = withRealId.Select(s => SlugToItemId[s]).Distinct().ToList();
+                var itemIds = toFetch
+                    .Where(s => Sources.TryGetValue(s, out var src) && src.Kind == IconSource.SourceKind.Item)
+                    .Select(s => Sources[s].ItemId)
+                    .Distinct()
+                    .ToList();
 
                 var iconUrlByItemId = new Dictionary<int, string>();
 
@@ -228,12 +288,23 @@ namespace GW2_NodeTracker
                 var downloadTasks = toFetch.Select(async slug =>
                 {
                     string url = null;
-                    if (SlugToItemId.TryGetValue(slug, out int itemId) && iconUrlByItemId.TryGetValue(itemId, out string realUrl))
-                        url = realUrl;
-                    else if (FallbackSlugs.Contains(slug))
-                        url = NodeType.BySlug(slug)?.Group == "Minerai" ? MineResourceIconUrl : PlantResourceIconUrl;
+                    if (Sources.TryGetValue(slug, out IconSource source))
+                    {
+                        switch (source.Kind)
+                        {
+                            case IconSource.SourceKind.Item:
+                                iconUrlByItemId.TryGetValue(source.ItemId, out url);
+                                break;
+                            case IconSource.SourceKind.Generic:
+                                url = GenericUrl(source.Tool);
+                                break;
+                            case IconSource.SourceKind.Url:
+                                url = source.DirectUrl;
+                                break;
+                        }
+                    }
 
-                    if (url == null) return false; // ni item_id connu ni slug de repli -- rien à faire
+                    if (url == null) return false; // slug inconnu, ou item non résolu par l'API
 
                     Logger.Debug("Téléchargement icône {0} <- {1}", slug, url);
 
