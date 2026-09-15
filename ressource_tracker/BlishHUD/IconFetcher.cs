@@ -1,3 +1,4 @@
+﻿using Blish_HUD;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,13 @@ namespace GW2_NodeTracker
         private static readonly Logger Logger = Logger.GetLogger<Module>();
 
         private const string ApiItemsUrl = "https://api.guildwars2.com/v2/items";
-        private const string FallbackIconUrl = "https://wiki.guildwars2.com/images/9/9b/Piece_of_Common_Unidentified_Gear.png";
+        // Icônes génériques par groupe pour les slugs à sortie multiple --
+        // celles validées dès le début de la session (capture d'écran
+        // d'Antoine), pas "Unidentified Gear" qui ne convient pas
+        // sémantiquement (ce sont des types de nodes connus, pas des
+        // items non identifiés).
+        private const string PlantResourceIconUrl = "https://wiki.guildwars2.com/images/2/2d/Plant_resource_%28map_icon%29.png";
+        private const string MineResourceIconUrl = "https://wiki.guildwars2.com/images/3/34/Mine_resource_%28map_icon%29.png";
         private const int BatchSize = 50;
 
         public static readonly Dictionary<string, int> SlugToItemId = new Dictionary<string, int>
@@ -165,12 +172,13 @@ namespace GW2_NodeTracker
                 http.Timeout = TimeSpan.FromSeconds(15);
                 // wiki.guildwars2.com renvoie 403 sans User-Agent -- traité
                 // comme du scraping sans lui. Nécessaire au moins pour
-                // FallbackIconUrl (les 24 slugs FALLBACK_SLUGS).
+                // Nécessaire pour les icônes Plant/Mine resource (wiki).
                 http.DefaultRequestHeaders.UserAgent.ParseAdd("GW2_NodeTracker/1.0 (Blish HUD module)");
 
                 // 1 -- Slugs avec un vrai item_id connu -> résolution batch via l'API GW2
                 var withRealId = toFetch.Where(s => SlugToItemId.ContainsKey(s)).ToList();
                 var itemIds = withRealId.Select(s => SlugToItemId[s]).Distinct().ToList();
+
                 var iconUrlByItemId = new Dictionary<int, string>();
 
                 for (int i = 0; i < itemIds.Count; i += BatchSize)
@@ -200,7 +208,7 @@ namespace GW2_NodeTracker
                     if (SlugToItemId.TryGetValue(slug, out int itemId) && iconUrlByItemId.TryGetValue(itemId, out string realUrl))
                         url = realUrl;
                     else if (FallbackSlugs.Contains(slug))
-                        url = FallbackIconUrl;
+                        url = NodeType.BySlug(slug)?.Group == "Minerai" ? MineResourceIconUrl : PlantResourceIconUrl;
 
                     if (url == null) return false; // ni item_id connu ni slug de repli -- rien à faire
 

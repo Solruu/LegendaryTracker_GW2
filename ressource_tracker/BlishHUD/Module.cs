@@ -1,4 +1,4 @@
-using Blish_HUD;
+﻿using Blish_HUD;
 using Blish_HUD.Controls;
 using Blish_HUD.Input;
 using Blish_HUD.Modules;
@@ -593,7 +593,7 @@ namespace GW2_NodeTracker
             SaveNodes();
             TriggerTacoRegeneration(); // relit le disque, pas _nodes -- cf. commentaire de la méthode
             RefreshFilteredTypes(mapId, resetSelection: false); // le nouveau type capturé doit apparaître dans le filtre tout de suite,
-                                          // pas seulement au prochain changement de map
+                                                                // pas seulement au prochain changement de map
         }
 
         // -------------------------------------------------------------
