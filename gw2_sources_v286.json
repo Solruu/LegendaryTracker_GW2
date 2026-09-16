@@ -2172,8 +2172,6 @@
     "glob_of_coagulated_mists_essence",
     "klobjarne_geirr",
     "large_spiritwood_haft",
-    "orrax_manifested",
-    "strife_unending",
     "vial_of_magic"
    ],
    "farmable": true,
@@ -2226,8 +2224,6 @@
     "gift_of_dust": 100,
     "gift_of_magic": 250,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "gift_of_energy": 250,
     "gift_of_color": 250,
     "gift_of_history": 250,
@@ -2351,8 +2347,7 @@
    "needed_for": [
     "armor_perfected_envoy",
     "cube_stabilized_dark_energy",
-    "gift_of_compassion",
-    "strife_unending"
+    "gift_of_compassion"
    ],
    "farmable": true,
    "sources": [
@@ -2369,8 +2364,7 @@
    "qty": {
     "perfected_envoy__per_piece": 1,
     "cube_stabilized_dark_energy": 1,
-    "gift_of_compassion": 6,
-    "strife_unending": 2
+    "gift_of_compassion": 6
    },
    "note_obsidian": "1/pièce via Cube of Stabilized Dark Energy (+ 75 Stabilizing Matrices).",
    "kind": "acquire",
@@ -2531,10 +2525,6 @@
     }
    ],
    "qty": {
-    "gen2_eureka": 1,
-    "gen2_shooshadoo": 1,
-    "gen2_exordium": 1,
-    "gen2_xiuquatl": 1,
     "the_ascension": 1,
     "ad_infinitum": 1,
     "gift_of_arid_mastery": 1,
@@ -2551,12 +2541,6 @@
    },
    "kind": "acquire",
    "flat_removed_ref": "aurora, vision et coalescence portaient 1 a plat EN PLUS du don de maitrise qui l'exige deja : total de 2 pour 1 requis. Arbre GW2Efficiency : Vision 1 <- Gift of Arid Mastery, Coalescence 1 <- Gift of Desert Mastery. Corrige le 27/08/2026.",
-   "qty_overlap_verified": [
-    "gen2_eureka",
-    "gen2_exordium",
-    "gen2_shooshadoo",
-    "gen2_xiuquatl"
-   ],
    "note": {
     "fr": "Tables gen2 : ces douze armes portent les DEUX maitrises, Maguuma et Desert. L'eclat et le lingot y figurent donc deux fois, une par branche.",
     "en": null
@@ -4739,10 +4723,7 @@
    "note": {
     "fr": "Aucun lien reel avec les legendaires. La page wiki 'Magnetite Shard/Used in' (capture Antoine 08/09/2026) liste tous les consommateurs de l'objet : uniquement des trophees Handiworker/Homestead (Cairn, Cardinal Adina, Cardinal Sabir, Decima, Deimos, Dhuum, Ether Djinn, Gorseval, Greer, Keep Construct, Mursaat Overseer, Qadim, River of Souls, Sabetha, Samarog, Siege the Stronghold, Slothasor, Statue of Grenth, Twin Largos, Ura, Vale Guardian, White Mantle Abomination, Xera, Ura's Token). Aucune legendaire, aucun Gift. Les cles coalescence (350), gift_of_patience (100) et gift_of_complex_emotions (100) etaient fabriquees — retirees le 2026-09-08. Coherent avec la Full material list de Coalescence elle-meme, qui ne mentionne 'Magnetite Shard' nulle part et montre Gift of Patience/Gift of Complex Emotions obtenus par succes de scenario (Coalescence II/III, 10 PR chacun), pas par artisanat.",
     "en": "No real link to any legendary. The 'Magnetite Shard/Used in' wiki page (capture Antoine 08/09/2026) lists every consumer of the item: Handiworker/Homestead trophies only (Cairn, Cardinal Adina, Cardinal Sabir, Decima, Deimos, Dhuum, Ether Djinn, Gorseval, Greer, Keep Construct, Mursaat Overseer, Qadim, River of Souls, Sabetha, Samarog, Siege the Stronghold, Slothasor, Statue of Grenth, Twin Largos, Ura, Vale Guardian, White Mantle Abomination, Xera, Ura's Token). No legendary, no Gift. The coalescence (350), gift_of_patience (100) and gift_of_complex_emotions (100) keys were fabricated - removed 2026-09-08. Consistent with Coalescence's own Full material list, which never mentions 'Magnetite Shard' and shows Gift of Patience/Gift of Complex Emotions obtained via story achievements (Coalescence II/III, 10 AP each), not crafting."
-   },
-   "qty_overlap_verified": [
-    "coalescence"
-   ]
+   }
   },
   "gift_of_the_desert": {
    "name": "Gift of the Desert",
@@ -5452,13 +5433,11 @@
    "needed_for": [
     "aetheric_anchor",
     "gift_of_research",
-    "klobjarne_geirr",
     "selachimorpha",
     "stella_radians"
    ],
    "qty": {
     "aetheric_anchor": 500,
-    "klobjarne_geirr": 250,
     "selachimorpha": 1000,
     "stella_radians": 500,
     "gift_of_research": 250
@@ -5484,16 +5463,12 @@
     "checked": "2026-08-13",
     "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
     "verified": true
-   },
-   "qty_overlap_verified": [
-    "klobjarne_geirr"
-   ]
+   }
   },
   "thermocatalytic_reagent": {
    "name": "Thermocatalytic Reagent",
    "apiId": 46747,
    "needed_for": [
-    "aetheric_anchor",
     "deldrimor_steel_spear_head",
     "gift_of_research",
     "klobjarne_geirr",
@@ -5501,7 +5476,6 @@
     "lump_of_mithrillium",
     "pristine_mist_essence",
     "selachimorpha",
-    "stella_radians",
     "bloodstone_brick",
     "dragonite_ingot",
     "empyreal_star",
@@ -5510,10 +5484,8 @@
    "qty": {
     "vision": 360,
     "ad_infinitum": 580,
-    "aetheric_anchor": 250,
     "klobjarne_geirr": 1080,
     "selachimorpha": 800,
-    "stella_radians": 250,
     "gift_of_research": 250,
     "deldrimor_steel_spear_head": 50,
     "large_spiritwood_haft": 50,
@@ -6010,7 +5982,6 @@
     "gen3_aurenes_wisdom": 39,
     "gen3_aurenes_breath": 39,
     "perfected_envoy__per_piece": 15,
-    "aetheric_anchor": 100,
     "obsidian__per_piece": 9,
     "endless_summer": 10,
     "orrax_manifested": 30,
@@ -8859,46 +8830,12 @@
    "name": "Amalgamated Draconic Lodestone",
    "apiId": 92687,
    "needed_for": [
-    "aetheric_anchor",
     "draconic_tribute",
-    "gift_of_insight",
-    "gen3_aurene_s_fang",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
-    "gen3_aurenes_argument",
-    "gen3_aurenes_bite",
-    "gen3_aurenes_breath",
-    "gen3_aurenes_claw",
-    "gen3_aurenes_gaze",
-    "gen3_aurenes_insight",
-    "gen3_aurenes_persuasion",
-    "gen3_aurenes_rending",
-    "gen3_aurenes_scale",
-    "gen3_aurenes_voice",
-    "gen3_aurenes_weight",
-    "gen3_aurenes_wisdom"
+    "gift_of_insight"
    ],
    "qty": {
-    "aetheric_anchor": 55,
     "draconic_tribute": 5,
-    "gift_of_insight": 55,
-    "gen3_aurene_s_fang": 5,
-    "gen3_aurene_s_flight": 5,
-    "gen3_aurene_s_tail": 5,
-    "gen3_aurene_s_wing": 5,
-    "gen3_aurenes_argument": 5,
-    "gen3_aurenes_bite": 5,
-    "gen3_aurenes_breath": 5,
-    "gen3_aurenes_claw": 5,
-    "gen3_aurenes_gaze": 5,
-    "gen3_aurenes_insight": 5,
-    "gen3_aurenes_persuasion": 5,
-    "gen3_aurenes_rending": 5,
-    "gen3_aurenes_scale": 5,
-    "gen3_aurenes_voice": 5,
-    "gen3_aurenes_weight": 5,
-    "gen3_aurenes_wisdom": 5
+    "gift_of_insight": 55
    },
    "farmable": true,
    "sources": [
@@ -9802,7 +9739,6 @@
     "discounted_shard_of_mistburned_barrens",
     "gift_of_infused_gems",
     "klobjarne_geirr",
-    "orrax_manifested",
     "shard_of_bava_nisos",
     "funerary_incense"
    ],
@@ -9863,7 +9799,6 @@
    "qty": {
     "endless_summer": 250,
     "klobjarne_geirr": 275,
-    "orrax_manifested": 100,
     "crystalline_ingot": 1,
     "discounted_shard_of_janthir_syntri": 1,
     "discounted_shard_of_lowland_shore": 1,
@@ -9873,10 +9808,7 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-   "qty_overlap_verified": [
-    "orrax_manifested"
-   ]
+   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
   },
   "gift_of_warfare": {
    "name": "Gift of Warfare",
@@ -10686,10 +10618,7 @@
    "qty_note": {
     "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
     "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
-   },
-   "qty_overlap_verified": [
-    "warbringer"
-   ]
+   }
   },
   "testimony_of_jade_heroics": {
    "name": "Testimony of Jade Heroics",
@@ -11193,8 +11122,6 @@
     "gift_of_venom": 100,
     "gift_of_magic": 250,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "vial_of_magic": 1
    },
    "farmable": true,
@@ -11251,8 +11178,6 @@
     "gift_of_magic",
     "gift_of_venom",
     "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending",
     "vial_of_magic"
    ],
    "tier": "T6"
@@ -11266,8 +11191,6 @@
     "gift_of_might": 250,
     "mystic_essence_of_carnage": 20,
     "endless_summer": 200,
-    "orrax_manifested": 200,
-    "strife_unending": 300,
     "transcendence": 20,
     "eel_statue": 250,
     "shark_statue": 250,
@@ -11329,9 +11252,7 @@
     "gift_of_scales",
     "klobjarne_geirr",
     "mystic_essence_of_carnage",
-    "orrax_manifested",
     "shark_statue",
-    "strife_unending",
     "transcendence",
     "vial_of_might"
    ],
@@ -11353,8 +11274,6 @@
     "gift_of_magic": 250,
     "mystic_essence_of_strategy": 20,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "transcendence": 20,
     "shark_statue": 250,
     "vial_of_magic": 1
@@ -11414,9 +11333,7 @@
     "gift_of_magic",
     "klobjarne_geirr",
     "mystic_essence_of_strategy",
-    "orrax_manifested",
     "shark_statue",
-    "strife_unending",
     "transcendence",
     "vial_of_magic"
    ],
@@ -11441,8 +11358,6 @@
     "gift_of_totems": 100,
     "gift_of_magic": 250,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "vial_of_magic": 1
    },
    "farmable": true,
@@ -11499,8 +11414,6 @@
     "gift_of_magic",
     "gift_of_totems",
     "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending",
     "vial_of_magic"
    ],
    "tier": "T6"
@@ -11514,8 +11427,6 @@
     "gift_of_might": 250,
     "mystic_essence_of_annihilation": 20,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "transcendence": 20,
     "vial_of_might": 1
    },
@@ -11574,8 +11485,6 @@
     "gift_of_might",
     "klobjarne_geirr",
     "mystic_essence_of_annihilation",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence",
     "vial_of_might"
    ],
@@ -11596,8 +11505,6 @@
     "gift_of_fangs": 100,
     "gift_of_might": 250,
     "endless_summer": 200,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "wolf_statue": 250,
     "vial_of_might": 1
    },
@@ -11655,8 +11562,6 @@
     "gift_of_fangs",
     "gift_of_might",
     "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending",
     "wolf_statue",
     "vial_of_might"
    ],
@@ -11671,9 +11576,6 @@
     "gift_of_might": 250,
     "mystic_essence_of_animosity": 20,
     "endless_summer": 200,
-    "klobjarne_geirr": 100,
-    "orrax_manifested": 100,
-    "strife_unending": 300,
     "transcendence": 20,
     "vial_of_might": 1
    },
@@ -11730,16 +11632,12 @@
     "endless_summer",
     "gift_of_bones",
     "gift_of_might",
-    "klobjarne_geirr",
     "mystic_essence_of_animosity",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence",
     "vial_of_might"
    ],
    "tier": "T6",
    "qty_overlap_verified": [
-    "klobjarne_geirr",
     "transcendence"
    ],
    "note": {
@@ -11942,8 +11840,6 @@
     "gift_of_blood": 250,
     "mystic_essence_of_strategy": 50,
     "endless_summer": 500,
-    "orrax_manifested": 250,
-    "strife_unending": 750,
     "transcendence": 50
    },
    "needed_for": [
@@ -11951,8 +11847,6 @@
     "gift_of_blood",
     "klobjarne_geirr",
     "mystic_essence_of_strategy",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence"
    ],
    "sources": [
@@ -12019,16 +11913,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_blood": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_blood",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12075,16 +11965,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_blood": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_blood",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12156,16 +12042,12 @@
    "tier": "T5",
    "qty": {
     "gift_of_venom": 250,
-    "endless_summer": 500,
-    "orrax_manifested": 250,
-    "strife_unending": 750
+    "endless_summer": 500
    },
    "needed_for": [
     "endless_summer",
     "gift_of_venom",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12224,16 +12106,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_venom": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_venom",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12280,16 +12158,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_venom": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_venom",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12361,16 +12235,12 @@
    "tier": "T5",
    "qty": {
     "gift_of_totems": 250,
-    "endless_summer": 500,
-    "orrax_manifested": 250,
-    "strife_unending": 750
+    "endless_summer": 500
    },
    "needed_for": [
     "endless_summer",
     "gift_of_totems",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12429,16 +12299,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_totems": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_totems",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12485,16 +12351,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_totems": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_totems",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12603,8 +12465,6 @@
     "gift_of_claws": 250,
     "mystic_essence_of_annihilation": 50,
     "endless_summer": 500,
-    "orrax_manifested": 250,
-    "strife_unending": 750,
     "transcendence": 50
    },
    "needed_for": [
@@ -12612,8 +12472,6 @@
     "gift_of_claws",
     "klobjarne_geirr",
     "mystic_essence_of_annihilation",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence"
    ],
    "sources": [
@@ -12680,16 +12538,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_claws": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_claws",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12736,16 +12590,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_claws": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_claws",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12821,8 +12671,6 @@
     "gift_of_scales": 250,
     "mystic_essence_of_carnage": 50,
     "endless_summer": 500,
-    "orrax_manifested": 500,
-    "strife_unending": 750,
     "transcendence": 50
    },
    "needed_for": [
@@ -12830,8 +12678,6 @@
     "gift_of_scales",
     "klobjarne_geirr",
     "mystic_essence_of_carnage",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence"
    ],
    "sources": [
@@ -12898,16 +12744,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_scales": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 100,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_scales",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -12954,16 +12796,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_scales": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 100,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_scales",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -13037,18 +12875,12 @@
     "gift_of_bones": 250,
     "mystic_essence_of_animosity": 50,
     "endless_summer": 500,
-    "klobjarne_geirr": 250,
-    "orrax_manifested": 250,
-    "strife_unending": 750,
     "transcendence": 50
    },
    "needed_for": [
     "endless_summer",
     "gift_of_bones",
-    "klobjarne_geirr",
     "mystic_essence_of_animosity",
-    "orrax_manifested",
-    "strife_unending",
     "transcendence"
    ],
    "sources": [
@@ -13100,7 +12932,6 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency, recalcul avec l'algorithme reel de computeGrandTotal (22/08/2026)",
    "qty_overlap_verified": [
-    "klobjarne_geirr",
     "transcendence"
    ],
    "note": {
@@ -13116,17 +12947,11 @@
    "tier": "T4",
    "qty": {
     "gift_of_bones": 50,
-    "endless_summer": 100,
-    "klobjarne_geirr": 50,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
-    "gift_of_bones",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "gift_of_bones"
    ],
    "sources": [
     {
@@ -13163,10 +12988,7 @@
    ],
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)",
-   "qty_overlap_verified": [
-    "klobjarne_geirr"
-   ]
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
   },
   "bone": {
    "name": "Bone",
@@ -13176,17 +12998,11 @@
    "tier": "T3",
    "qty": {
     "gift_of_bones": 50,
-    "endless_summer": 100,
-    "klobjarne_geirr": 50,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
-    "gift_of_bones",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "gift_of_bones"
    ],
    "sources": [
     {
@@ -13213,10 +13029,7 @@
    ],
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)",
-   "qty_overlap_verified": [
-    "klobjarne_geirr"
-   ]
+   "ref": "gw2_materials_ref + wiki:Gift_of_Bones (tempo 100/250/50/50)"
   },
   "gift_of_fangs": {
    "name": "Gift of Fangs",
@@ -13261,16 +13074,12 @@
    "tier": "T5",
    "qty": {
     "gift_of_fangs": 250,
-    "endless_summer": 500,
-    "orrax_manifested": 250,
-    "strife_unending": 750
+    "endless_summer": 500
    },
    "needed_for": [
     "endless_summer",
     "gift_of_fangs",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -13329,16 +13138,12 @@
    "tier": "T4",
    "qty": {
     "gift_of_fangs": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_fangs",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -13385,16 +13190,12 @@
    "tier": "T3",
    "qty": {
     "gift_of_fangs": 50,
-    "endless_summer": 100,
-    "orrax_manifested": 50,
-    "strife_unending": 150
+    "endless_summer": 100
    },
    "needed_for": [
     "endless_summer",
     "gift_of_fangs",
-    "klobjarne_geirr",
-    "orrax_manifested",
-    "strife_unending"
+    "klobjarne_geirr"
    ],
    "sources": [
     {
@@ -15624,7 +15425,6 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "orrax_manifested": 100,
     "gift_of_darkness": 100,
     "gift_of_history": 100,
     "gift_of_stealth": 100
@@ -15680,8 +15480,7 @@
    "needed_for": [
     "gift_of_darkness",
     "gift_of_history",
-    "gift_of_stealth",
-    "orrax_manifested"
+    "gift_of_stealth"
    ],
    "apiId": 24310
   },
@@ -15994,10 +15793,6 @@
     "gen3_aurene_s_wing"
    ],
    "qty": {
-    "gen2_eureka": 250,
-    "gen2_shooshadoo": 250,
-    "gen2_exordium": 250,
-    "gen2_xiuquatl": 250,
     "gen3_aurenes_claw": 250,
     "gen3_aurenes_bite": 250,
     "gen3_aurenes_weight": 250,
@@ -16041,12 +15836,6 @@
     "ref": "wiki:Crystalline_Ingot — recette craft 500, quatre materiaux HoT"
    },
    "free_via_ingredients": true,
-   "qty_overlap_verified": [
-    "gen2_eureka",
-    "gen2_exordium",
-    "gen2_shooshadoo",
-    "gen2_xiuquatl"
-   ],
    "note": {
     "fr": "Tables gen2 : ces douze armes portent les DEUX maitrises, Maguuma et Desert. L'eclat et le lingot y figurent donc deux fois, une par branche.",
     "en": null
