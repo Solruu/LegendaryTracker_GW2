@@ -4357,7 +4357,25 @@ export default function GW2LegendaryTracker() {
   // Clé API : conservée en mémoire uniquement (jamais persistée — à ressaisir par session)
   const [gtApiKey, setGtApiKey] = useState("");
   useEffect(() => { try { localStorage.removeItem("gw2_gt_apikey"); } catch (_) {} }, []); // purge de l'ancien stockage
-  const [gtOwnedIds, setGtOwnedIds] = useState(new Set());
+  // armoryRaw (les id API bruts) se restaure depuis localStorage au montage,
+  // mais gtOwnedIds (le meme ensemble, projete sur les legIds via
+  // armory_apiid_to_legid) partait vide et le restait jusqu'au prochain clic
+  // sur Detecter -- une legendaire deja synchronisee la session precedente ne
+  // se marquait donc plus "deja obtenue" a l'ouverture, seul le clic droit
+  // manuel (deja persiste) survivait au rechargement. Reconstruit la meme
+  // projection que detectGtArmory, a partir du meme armoryRaw persiste.
+  const [gtOwnedIds, setGtOwnedIds] = useState(() => {
+    try {
+      const raw = new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]"));
+      const reverseMap = SOURCES_DB?._meta?.armory_apiid_to_legid ?? {};
+      const s = new Set();
+      for (const id of raw) {
+        const legIds = reverseMap[String(id)] ?? [];
+        for (const lid of legIds) s.add(lid);
+      }
+      return s;
+    } catch { return new Set(); }
+  });
   const [gtManualOwnedIds, setGtManualOwnedIds] = useState(() => {
     try { return new Set(JSON.parse(localStorage.getItem("gw2_gt_manual_owned") ?? "[]")); } catch { return new Set(); }
   });
