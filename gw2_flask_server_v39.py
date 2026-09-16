@@ -1695,7 +1695,11 @@ def _annonce_identite_cle():
         info = r.json()
         perms = set(info.get("permissions") or [])
         print(f"[GW2] Cle « {info.get('name')} » — scopes : {', '.join(sorted(perms))}")
-        requis = {"account", "progression", "inventories"}
+        # /v2/account/legendaryarmory exige account + unlocks + inventories
+        # (wiki API:2/account/legendaryarmory). 'unlocks' manquait ici : une cle
+        # portant inventories passait le controle et prenait quand meme un 403
+        # sur l'armurerie, sans que rien ne l'annonce.
+        requis = {"account", "progression", "inventories", "unlocks"}
         manquants = requis - perms
         if manquants:
             print(f"[GW2] ATTENTION : scope(s) manquant(s) : {', '.join(sorted(manquants))} "
