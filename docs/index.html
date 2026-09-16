@@ -71178,7 +71178,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
               />
               <button
                 onClick={() => onDetect && onDetect(apiKey)}
-                disabled={apiStatus === "loading" || !apiKey.trim()}
+                disabled={apiStatus === "loading"}
                 style={{
                   background: apiStatus === "loading" ? D+"0.04)" : "rgba(74,222,128,0.08)",
                   border: "1px solid rgba(74,222,128,0.25)", borderRadius: 4,
@@ -72538,6 +72538,17 @@ function GW2LegendaryTracker() {
       }
     }
 
+    if (data === null) {
+      // Ni Flask (pas actif, ou actif mais sans cle -- ni tapee ni en .env cote
+      // serveur) ni appel direct (pas de cle tapee) n'ont pu repondre. Le dire
+      // plutot que rapporter "ok" avec un ensemble vide, indiscernable d'un
+      // compte reellement sans legendaire.
+      setGtApiStatus("error");
+      setGtApiError(usedFlask
+        ? "Flask actif mais sans clé (ni tapée, ni GW2_API_KEY côté serveur)"
+        : "Flask indisponible et aucune clé saisie");
+      return;
+    }
     const ownedSet = new Set();
     for (const item of (Array.isArray(data) ? data : [])) {
       const legIds = reverseMap[String(item.id)] ?? [];
