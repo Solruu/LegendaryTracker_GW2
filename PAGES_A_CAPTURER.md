@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v290.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v291.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 9 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -21,8 +21,11 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
 | `Gift of Magical / Mighty Prosperity` | 1 |
+| `Mystic Aspect` | 1 |
+| `Mystic Mote` | 1 |
 | `Olmakhan Bandolier` | 1 |
 | `Perfect Mist Core` | 1 |
+| `Spark of Sentience` | 1 |
 
 ## 1 — 3 tables « Full material list » manquantes
 

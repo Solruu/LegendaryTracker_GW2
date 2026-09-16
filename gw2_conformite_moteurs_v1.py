@@ -61,6 +61,7 @@ const ARMOR_WEIGHT_KEY = "gw2_armor_weights_v1";
 const localStorage = { getItem: () => null, setItem: () => {} };
 const ALT_KEY = "gw2_cad_alt_v1";
 const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
+const SOURCES_ALIAS = { prismatic: "prismatic_champions_regalia", upgrades: "upgrades_combined" };
 %s
 %s
 const cibles = CIBLES;

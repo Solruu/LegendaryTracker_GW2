@@ -263,6 +263,23 @@ class Modele:
         appelants la recalculaient chacun de leur cote, et pas pareil : l'un
         oubliait la contribution des choix.
         """
+        # Une cible COMPOSEE ne possede aucun composant en propre : elle vaut N
+        # exemplaires d'autres cibles. `upgrades_combined` est la seule pour
+        # l'instant -- 6 runes, 2 cachets, 1 relique. Avant, son total valait
+        # zero et le JSX codait les cinq monnaies en dur a cote : une table
+        # parallele que rien ne tenait a jour. La composition est declaree dans
+        # les donnees, les deux moteurs la lisent.
+        compo = (self.legendaires[cible].brut.get("composition")
+                 if cible in self.legendaires else None)
+        if compo:
+            t: dict[str, float] = {}
+            for sous, n in compo.items():
+                for cid, v in self.totaux(sous, selection, False, surcouts,
+                                          collections_faites,
+                                          poids_par_emplacement).items():
+                    t[cid] = t.get(cid, 0) + v * n
+            return (t, {}) if detail else t
+
         armure = cible in ARMURES
         pw = (poids_par_emplacement or {}).get(cible) or {}
         t: dict[str, float] = {}

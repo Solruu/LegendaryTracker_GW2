@@ -1,7 +1,7 @@
 # Dette — arbre de craft chiffre
 
-**Etat courant : 3 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v289.json`,
-controle `check_needed_for_chiffre` (audit v42). Le detail est en section L, en bas.
+**Etat courant : 3 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v291.json`,
+controle `check_needed_for_chiffre` (audit v43). Le detail est en section M, en bas.
 
 Mesure d'origine du 05/09/2026 sur `gw2_sources_v203.json` (audit v29) : 100 aretes.
 Les sections A a J ci-dessous sont le journal de la reduction et restent telles
@@ -647,3 +647,65 @@ du raid, je ne sais pas lequel des deux chiffres est le sien.
   rattacher.
 - `curious_mursaat_remnant` (passe precedente) : `qty` vide, apiId 104800
   introuvable dans tout le corpus.
+
+
+## M — 16/09/2026, troisieme passe : 8 -> 1 arete
+
+Feu vert d'Antoine sur les arbitrages en attente.
+
+**`gift_of_insight` fusionne.** La capture du lot 19 annonce API 105875, soit
+l'identifiant exact de `gift_of_insight_voe` : meme objet. L'entree sans apiId
+portait les ingredients, celle avec portait la source vendeur ; les deux
+declaraient `aetheric_anchor: 1`, donc Aetheric Anchor comptait DEUX dons au
+lieu d'un. Fusionnees sur `gift_of_insight`.
+
+**Aurora : le 0 explicite etait un oubli, pas une decision.** `qty.aurora`
+valait 0 sur `xunlai_electrum_ingot`, ce qui rendait invisibles les 21 lingots
+de la collection Aurora II *et toute leur chaine*. Remplace par
+`spark_of_sentience: 21` : Aurora gagne 21 lingots, 21 lingots de mithrillium,
+1050 lingots de mithril, 420 de platine, 210 reactifs thermocatalytiques et
+21 ectos qui n'apparaissaient nulle part.
+
+**L'arete Lyhr retiree.** `glob_of_ectoplasm -> gift_of_research` n'etait pas
+un ingredient. Le parseur de couts vendeur sort le meme « Glob_of_Ectoplasm,
+10 » sur `bloodstone_brick`, `gift_of_blood`, `gift_of_condensed_magic` et une
+dizaine d'autres : c'est le tarif fixe du service de forge de Lyhr, lu sur la
+ligne « Sold by », pas une recette. La divergence 10/6 signalee sur les Gifts
+of Condensed venait de la meme lecture.
+
+**Deux orphelins supprimes** : `testimony_of_jade_heroics` et
+`curious_mursaat_remnant`, tous deux avec `qty` et `needed_for` vides apres les
+passes precedentes. `testimony_of_heroics` est CONSERVE : il porte encore
+`warbringer: 250`, la seule valeur de cette famille que je n'aie pas su
+rattacher a une contrepartie Castoran. Le supprimer aurait fait disparaitre un
+cout sans savoir ce qu'il payait.
+
+### Les upgrades ne pesent plus zero
+
+`upgrades_combined` n'avait AUCUN composant : son total valait zero dans le
+grand total, pendant que le JSX affichait cinq monnaies codees en dur a cote,
+sans rien pour les tenir a jour. La structure n'avait pas de forme pour « cette
+cible vaut N exemplaires d'autres cibles » : c'est `composition`, declaree dans
+`legendaries.upgrades_combined` et lue a l'identique par les deux moteurs.
+6 runes + 2 cachets + 1 relique, l'objectif confort deja affiche -- les 7 runes
+et 8 cachets cites ailleurs dans le meme bloc sont les caps d'armurerie
+(6 armure + 1 respirateur ; toutes armes terrestres et aquatiques), pas une
+cible.
+
+Il manquait un maillon pour que la chaine reproduise la table : `Mystic Aspect`
+et `Mystic Mote` consomment 10 Piles of Lucent Crystal chacun, ce que leur
+`recipe` disait sans que `pile_of_lucent_crystal` le porte. Chaine posee. La
+cible calcule maintenant 23 250 piles, 205 trefles, 1 050 ectos et 450 eclats
+d'obsidienne -- exactement la table supprimee, mais derivee.
+
+### Ce qui reste
+
+| arete | quantite lisible | ce qui bloque |
+|---|---|---|
+| `gift_of_craftsmanship -> gift_of_prosperity` | 1 | l'entite `gift_of_prosperity` cote raid reste a trancher |
+
+Et un trou hors compteur : `provisioner_token` declare
+`needed_for: [upgrades_combined]` sans quantite. La table supprimee disait 450,
+soit 50 par Gift of Craftsmanship (9 exemplaires pour 6r/2s/1rel) -- mais
+`gift_of_craftsmanship` n'a **pas de capture**, donc cette division est une
+deduction, pas une source. La page est dans la file.

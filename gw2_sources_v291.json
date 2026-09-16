@@ -5738,7 +5738,6 @@
     "endless_summer",
     "gift_of_fortune",
     "gift_of_relics",
-    "gift_of_research",
     "gift_of_runes",
     "gift_of_sigils",
     "gift_of_souls",
@@ -8494,24 +8493,6 @@
    },
    "kind": "advanced_craft"
   },
-  "curious_mursaat_remnant": {
-   "name": "Curious Mursaat Remnant",
-   "apiId": 104800,
-   "needed_for": [],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "map_events",
-     "map": "Bava Nisos / Mistburned Barrens",
-     "tip": {
-      "fr": "Drop des events de Bava Nisos et des Landes de Feu-de-Brume (JW). Aussi via les récompenses de succès JW.",
-      "en": "Drops from Bava Nisos and Mistburned Barrens events (JW). Also JW achievement rewards."
-     }
-    }
-   ],
-   "qty": {},
-   "kind": "acquire"
-  },
   "vial_of_titan_melted_obsidian": {
    "name": "Vial of Titan Melted Liquid Obsidian",
    "apiId": 104229,
@@ -8867,30 +8848,6 @@
    ],
    "kind": "acquire"
   },
-  "gift_of_insight_voe": {
-   "name": "Gift of Insight (VoE)",
-   "apiId": 105875,
-   "needed_for": [
-    "aetheric_anchor"
-   ],
-   "farmable": false,
-   "sources": [
-    {
-     "type": "vendor",
-     "npc": "Magister Sirkk",
-     "map": "Crumbling Precipice — Starlit Weald (VoE)",
-     "tip": {
-      "fr": "Achat : 100× Mystic Clovers + 55× Amalgamated Draconic Lodestone + 4× Gift of Condensed Might + 4× Gift of Condensed Magic. ⚠️ NON craftable en MF — mettre ces composants en MF produit un Draconic Tribute à la place.",
-      "en": "Purchase: 100× Mystic Clovers + 55× Amalgamated Draconic Lodestone + 4× Gift of Condensed Might + 4× Gift of Condensed Magic. ⚠️ NOT craftable in MF — putting these components in MF produces a Draconic Tribute instead."
-     }
-    }
-   ],
-   "qty": {
-    "aetheric_anchor": 1
-   },
-   "warning": "DO NOT put in Mystic Forge — vendor purchase only.",
-   "kind": "advanced_craft"
-  },
   "gift_of_the_elders": {
    "name": "Gift of the Elders",
    "apiId": 106632,
@@ -9076,7 +9033,9 @@
     "legendary_relic",
     "legendary_rune",
     "legendary_sigil",
-    "mystic_facet"
+    "mystic_aspect",
+    "mystic_facet",
+    "mystic_mote"
    ],
    "farmable": true,
    "sources": [
@@ -9099,7 +9058,9 @@
    ],
    "qty": {
     "legendary_relic": 12500,
-    "mystic_facet": 250
+    "mystic_facet": 250,
+    "mystic_aspect": 10,
+    "mystic_mote": 10
    },
    "kind": "acquire",
    "best": "tp",
@@ -9218,7 +9179,7 @@
    ],
    "qty": {
     "memory_essence_encapsulator": 3,
-    "aurora": 0
+    "spark_of_sentience": 21
    },
    "farmable": true,
    "craft": {
@@ -10641,31 +10602,6 @@
      }
     ]
    }
-  },
-  "testimony_of_jade_heroics": {
-   "name": "Testimony of Jade Heroics",
-   "apiId": 65,
-   "kind": "currency",
-   "qty": {},
-   "farmable": true,
-   "sources": [
-    {
-     "type": "wvw",
-     "tip": {
-      "fr": "Se gagne en jouant le McM : événements, captures et coffres d'escarmouche. Aucune dépense d'or.",
-      "en": "Earned by playing WvW: events, captures and skirmish chests. No gold spent."
-     },
-     "free_repeatable": true,
-     "cadence": "à volonté",
-     "verified": true,
-     "checked": "2026-08-13",
-     "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
-    }
-   ],
-   "verified": true,
-   "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
-   "needed_for": []
   },
   "testimony_of_castoran_heroics": {
    "name": "Testimony of Castoran Heroics",
@@ -18551,13 +18487,17 @@
    ],
    "sources": [
     {
-     "type": "craft",
+     "type": "vendor",
+     "npc": "Magister Sirkk",
+     "map": "Crumbling Precipice — Starlit Weald (VoE)",
      "tip": {
-      "fr": null,
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+      "fr": "Achat : 100× Mystic Clovers + 55× Amalgamated Draconic Lodestone + 4× Gift of Condensed Might + 4× Gift of Condensed Magic. ⚠️ NON craftable en MF — mettre ces composants en MF produit un Draconic Tribute à la place.",
+      "en": "Purchase: 100× Mystic Clovers + 55× Amalgamated Draconic Lodestone + 4× Gift of Condensed Might + 4× Gift of Condensed Magic. ⚠️ NOT craftable in MF — putting these components in MF produces a Draconic Tribute instead."
      }
     }
-   ]
+   ],
+   "apiId": 105875,
+   "warning": "DO NOT put in Mystic Forge — vendor purchase only."
   },
   "gift_of_magical_prosperity": {
    "name": "Gift of Magical Prosperity",
@@ -60988,17 +60928,6 @@
      "max": 1
     }
    },
-   "totals_comfort_6r_2s_1rel": {
-    "provisioner_tokens": 450,
-    "piles_lucent_crystal": 23250,
-    "charms_each_type": 300,
-    "symbols_each_type": 150,
-    "mystic_clovers": 205,
-    "ectos": 1050,
-    "obsidian_shards": 450,
-    "exotic_relics_consumed": 25,
-    "note": "6×(500 piles + 50 charms/type + 20 clovers + 100 ectos + 50 shards) + 2×(750 piles + 75 symbols/type + 30 clovers + 150 ectos + 75 shards) + relique (18750 piles + 25 reliques exo + 25 clovers + 150 ectos). Hors T6 Condensed Magic/Might (×9 paires) et Gift of Research (relique)."
-   },
    "collections": {
     "rune_collector": {
      "id": 7796,
@@ -61367,7 +61296,12 @@
    "cadence_ref": [
     "mystic_clover",
     "provisioner_token"
-   ]
+   ],
+   "composition": {
+    "legendary_rune": 6,
+    "legendary_sigil": 2,
+    "legendary_relic": 1
+   }
   },
   "weapons_tracker": {
    "name": "Legendary Weapons (tracker)",

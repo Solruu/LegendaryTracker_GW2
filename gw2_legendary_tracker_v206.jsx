@@ -2234,6 +2234,36 @@ const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
 
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
+  // Une cible COMPOSEE ne possede aucun composant en propre : elle vaut N
+  // exemplaires d'autres cibles. « upgrades » etait dans ce cas et pesait ZERO
+  // dans le grand total -- aucune cle qty ne le visait, et les cinq monnaies
+  // affichees dans son onglet etaient codees en dur a cote, sans rien pour les
+  // tenir a jour. La composition (6 runes, 2 cachets, 1 relique) est declaree
+  // dans les donnees et lue a l'identique par le moteur Python.
+  const composes = [];
+  const plats = [];
+  for (const id of (selectedIds ?? [])) {
+    const cible = SOURCES_ALIAS?.[id] ?? id;
+    const compo = SOURCES_DB?.legendaries?.[cible]?.composition;
+    if (compo) composes.push(compo); else plats.push(id);
+  }
+  if (composes.length) {
+    const totals = {};
+    const variable = {};
+    const fusion = (part, n) => {
+      for (const [cid, v] of Object.entries(part?.totals ?? {})) {
+        if (typeof v === "number") totals[cid] = (totals[cid] ?? 0) + v * n;
+      }
+      for (const cid of Object.keys(part?.variable ?? {})) variable[cid] = true;
+    };
+    if (plats.length) fusion(computeGrandTotal(plats, collectionsByLeg), 1);
+    for (const compo of composes) {
+      for (const [sous, n] of Object.entries(compo)) {
+        fusion(computeGrandTotal([sous], collectionsByLeg), n);
+      }
+    }
+    return { totals, variable };
+  }
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
   // legendaire. Sans cet appel, le grand total affichait un nombre fige qui
   // ignorait les etapes deja validees.
