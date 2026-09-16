@@ -120,17 +120,7 @@ const I18N = {
     obs_boss: "Boss: {b}",
 
     // Grand Total
-    gt_detecting: "⟳ Detecting…",
-    gt_autodetect: "🔑 Auto-detect via GW2 API key",
-    gt_detected: "✓ {n} in armory + {m} manual",
-    gt_apikey_pre: "API key (scope ",
-    gt_apikey_post: ") — stored locally.",
-    gt_apikey_flasknote: "If local Flask is active, the key is passed through it to stay server-side.",
-    gt_detect_btn: "Detect",
-    gt_syncing: "⟳ Syncing…",
-    gt_synced: "✓ {n} items synced",
     gt_stock_diag: "Stock sync returned {f} of {a} resources (source: {s}). A zero here is not an empty inventory.",
-    gt_sync_btn: "⟳ Sync stocks",
     gt_legs_to_craft: "Legendaries to craft — {n} selected",
     gt_owned_hint_pre: "· Right-click or ",
     gt_owned_hint_post: " = mark as already owned",
@@ -352,17 +342,7 @@ const I18N = {
     obs_gift_mighty: "Don de prospérité puissante",
     obs_boss: "Boss : {b}",
 
-    gt_detecting: "⟳ Détection en cours…",
-    gt_autodetect: "🔑 Détection automatique via clé API GW2",
-    gt_detected: "✓ {n} en armory + {m} manuel(s)",
-    gt_apikey_pre: "Clé API (scope ",
-    gt_apikey_post: ") — mémorisée localement.",
-    gt_apikey_flasknote: "Si Flask local actif, la clé est transmise via lui pour rester côté machine.",
-    gt_detect_btn: "Détecter",
-    gt_syncing: "⟳ Synchro en cours…",
-    gt_synced: "✓ {n} items synchronisés",
     gt_stock_diag: "La synchro a renvoyé {f} ressources sur {a} demandées (source : {s}). Un zéro ici n'est pas un inventaire vide.",
-    gt_sync_btn: "⟳ Synchroniser les stocks",
     gt_legs_to_craft: "Légendaires à crafter — {n} sélectionné(s)",
     gt_owned_hint_pre: "· Clic droit ou ",
     gt_owned_hint_post: " = marquer déjà possédé",
@@ -3254,7 +3234,7 @@ function AltGroupsPicker({ selectedIds = [], totals = {} }) {
   );
 }
 
-function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, apiKey = "", setApiKey, apiStatus = "idle", apiError = "", onDetect, stocks = {}, stockStatus = "idle", stockError = "", onFetchStocks, onSetStockManual }) {
+function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, stocks = {}, onSetStockManual }) {
   const t = useT();
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
@@ -3262,7 +3242,6 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   // Choix un-parmi-N : deplace dans AltGroupsPicker (etat et rendu partages
   // avec l'onglet Materiaux d'un legendaire).
   const [showVariables, setShowVariables] = useState(false);
-  const [showApiInput, setShowApiInput] = useState(false);
   const [editingComp, setEditingComp] = useState(null); // compId en cours d'édition manuelle
   const [editVal, setEditVal] = useState("");
 
@@ -3343,92 +3322,13 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   return (
     <div style={{ paddingBottom: 40 }}>
 
-      {/* ── API KEY DÉTECTION ── */}
-      <div style={{ margin: "10px 14px 0" }}>
-        <button
-          onClick={() => setShowApiInput(!showApiInput)}
-          style={{
-            background: apiStatus === "ok" ? "rgba(74,222,128,0.06)" : "rgba(226,201,126,0.04)",
-            border: `1px solid ${apiStatus === "ok" ? "rgba(74,222,128,0.25)" : D+"0.15)"}`,
-            borderRadius: 6, padding: "7px 12px",
-            color: apiStatus === "ok" ? "#4ade80" : apiStatus === "error" ? "#f87171" : D+"0.6)",
-            fontFamily: "'Cinzel', serif", fontSize: 10, cursor: "pointer",
-            letterSpacing: "0.08em", width: "100%", textAlign: "left",
-            display: "flex", alignItems: "center", justifyContent: "space-between"
-          }}>
-          <span>
-            {apiStatus === "ok" ? t("gt_detected", { n: ownedIds.size, m: manualOwnedIds.size }) :
-             apiStatus === "loading" ? t("gt_detecting") :
-             apiStatus === "error" ? `✗ ${apiError}` :
-             t("gt_autodetect")}
-          </span>
-          <span style={{ opacity: 0.4 }}>{showApiInput ? "▲" : "▼"}</span>
-        </button>
-
-        {showApiInput && (
-          <div style={{ marginTop: 6, padding: "10px 12px", background: "rgba(255,255,255,0.02)", border: `1px solid ${D}0.1)`, borderRadius: 6 }}>
-            <div style={{ fontSize: 10, color: D+"0.4)", fontFamily: "'Crimson Text', serif", marginBottom: 6 }}>
-              {t("gt_apikey_pre")}<code style={{ color: D+"0.6)" }}>inventories</code>{t("gt_apikey_post")}
-              {" "}{t("gt_apikey_flasknote")}
-            </div>
-            <div style={{ display: "flex", gap: 6 }}>
-              <input
-                type="password"
-                value={apiKey}
-                onChange={e => setApiKey && setApiKey(e.target.value)}
-                placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-                style={{
-                  flex: 1, background: "rgba(255,255,255,0.04)", border: `1px solid ${D}0.2)`,
-                  borderRadius: 4, padding: "5px 8px", color: C,
-                  fontFamily: "monospace", fontSize: 11, outline: "none"
-                }}
-              />
-              <button
-                onClick={() => onDetect && onDetect(apiKey)}
-                disabled={apiStatus === "loading"}
-                style={{
-                  background: apiStatus === "loading" ? D+"0.04)" : "rgba(74,222,128,0.08)",
-                  border: "1px solid rgba(74,222,128,0.25)", borderRadius: 4,
-                  padding: "5px 12px", color: "#4ade80",
-                  fontFamily: "'Cinzel', serif", fontSize: 10, cursor: "pointer", letterSpacing: "0.05em"
-                }}>
-                {apiStatus === "loading" ? "⟳" : t("gt_detect_btn")}
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* ── SYNC STOCKS ── */}
-      <div style={{ margin: "10px 14px 0", display: "flex", gap: 6, alignItems: "center" }}>
-        <button
-          onClick={() => onFetchStocks && onFetchStocks(apiKey)}
-          disabled={stockStatus === "loading"}
-          style={{
-            flex: 1, padding: "7px 12px", borderRadius: 6, cursor: apiKey.trim() ? "pointer" : "default",
-            fontFamily: "'Cinzel', serif", fontSize: 10, letterSpacing: "0.06em",
-            border: `1px solid ${stockStatus === "ok" ? "rgba(74,222,128,0.25)" : stockStatus === "error" ? "rgba(248,113,113,0.25)" : "rgba(226,201,126,0.15)"}`,
-            background: stockStatus === "ok" ? "rgba(74,222,128,0.06)" : stockStatus === "error" ? "rgba(248,113,113,0.06)" : "rgba(226,201,126,0.04)",
-            color: stockStatus === "ok" ? "#4ade80" : stockStatus === "error" ? "#f87171" : "rgba(226,201,126,0.6)",
-          }}>
-          {stockStatus === "loading" ? t("gt_syncing") :
-           stockStatus === "ok" ? t("gt_synced", { n: Object.keys(stocks).filter(k => !k.startsWith("_")).length }) :
-           stockStatus === "error" ? `✗ ${stockError}` :
-           t("gt_sync_btn")}
-        </button>
-        {(stocks._errors?.length > 0 || stocks._found === 0) && (
-          <div style={{ margin: "6px 0", padding: "7px 10px", background: "rgba(248,113,113,0.06)", border: "1px solid rgba(248,113,113,0.25)", borderRadius: 6, fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(248,113,113,0.85)", lineHeight: 1.5 }}>
-            {t("gt_stock_diag", { f: stocks._found ?? 0, a: stocks._asked ?? 0, s: stocks._sync_source ?? "?" })}
-            {(stocks._errors ?? []).map((e, i) => <div key={i} style={{ marginTop: 2 }}>· {e}</div>)}
-          </div>
-        )}
-        {stocks._synced_at && (
-          <div style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif", flexShrink: 0, textAlign: "right" }}>
-            {stocks._sync_source === "manual" ? "📦 Local" : "🔗 API"}<br/>
-            {new Date(stocks._synced_at * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-          </div>
-        )}
-      </div>
+      {/* Detection Armory et sync stocks : un seul point d'entree desormais,
+          le bouton "API" de l'en-tete (isGrandTotal, plus haut dans l'arbre).
+          Ce bloc dedoublait le geste et pouvait diverger de l'etat reel --
+          retire au profit d'une seule mecanique : Flask d'abord, repli sur
+          la cle saisie ensuite, erreur sinon, et les erreurs remontent a
+          l'en-tete quel que soit le chemin emprunte (voir gtApiError /
+          gtStockError / gtStocks._errors plus bas dans le rendu). */}
 
       {/* ── SÉLECTEUR LÉGENDAIRES PAR GROUPE ── */}
       <div style={{ margin: "10px 14px 0" }}>
@@ -4588,8 +4488,8 @@ export default function GW2LegendaryTracker() {
       // grand total. Il n'existe plus de synchro separee : le bouton API remplit
       // les deux, comme il aurait toujours du.
       if (data.stocks && Object.keys(data.stocks).length > 0) {
-        // Meme trou que fetchGtStocks, meme raison : l'agregation cote Flask
-        // (comme l'API GW2 elle-meme) omet tout item a 0 -- son absence ici,
+        // L'agregation cote Flask (comme l'API GW2 elle-meme) omet tout item
+        // a 0 -- son absence ici,
         // apres une synchro reussie, est un stock confirme a 0, pas un stock
         // inconnu. Sans ce remplissage, un materiau simplement epuise
         // affichait "stock unknown" au lieu de "0".
@@ -4722,6 +4622,11 @@ export default function GW2LegendaryTracker() {
     } catch (e) {
       setApiStatus("error");
       setApiError(e.message);
+      // gtStockStatus ne bougeait pas ici : un echec total de la synchro
+      // laissait l'indicateur de stock bloque sur son dernier etat "ok",
+      // laissant croire a un inventaire encore frais.
+      setGtStockStatus("error");
+      setGtStockError(e.message);
     }
   }, [selectedLeg, gtApiKey, buildDirectProgressionData]);
 
@@ -4784,127 +4689,6 @@ export default function GW2LegendaryTracker() {
     // (clé volontairement non persistée)
   }, [gtApiKey]);
 
-  // ── Grand Total : fetch stocks bulk ─────────────────────────────────────────
-  const fetchGtStocks = useCallback(async (keyOverride) => {
-    const key = (keyOverride ?? gtApiKey ?? "").trim();
-    // Pas de clé → on essaie quand même Flask (qui utilisera son .env)
-    // Si Flask absent ET pas de clé → erreur
-    setGtStockStatus("loading");
-    setGtStockError("");
-
-    // Collecter tous les apiIds valides depuis craft_components
-    const cc = SOURCES_DB?.craft_components ?? {};
-    const apiIds = [...new Set(
-      Object.values(cc)
-        .map(c => c.apiId)
-        .filter(id => id && typeof id === "number")
-    )];
-
-    let data = null;
-    let flaskErr = null;
-
-    // 1. Flask, via la MEME route que tout le reste. L'ancienne route dediee était
-    // un POST JSON avec en-tête personnalisé, donc soumise à un preflight CORS, et
-    // surtout elle constituait un second système de stock pour un même joueur et
-    // une même clé. /api/progression agrège désormais les cinq emplacements et
-    // renvoie un inventaire unique : un GET simple, aucun preflight.
-    try {
-      const resp = await fetch(
-        `http://127.0.0.1:5000/api/progression?lang=${langRef.current}`,
-        { signal: AbortSignal.timeout(120000) }
-      );
-      if (resp.ok) {
-        const prog = await resp.json();
-        if (prog.stocks && Object.keys(prog.stocks).length > 0) {
-          const stocks = {};
-          for (const id of apiIds) {
-            const v = prog.stocks[String(id)];
-            if (v !== undefined) stocks[String(id)] = v;
-          }
-          data = { stocks, synced_at: Math.floor(Date.now() / 1000), errors: prog.errors ?? [] };
-        } else {
-          flaskErr = "Flask ne renvoie pas d'inventaire agrégé — serveur antérieur à la v32";
-        }
-      } else {
-        const errBody = await resp.json().catch(() => ({}));
-        flaskErr = `Flask HTTP ${resp.status}: ${errBody.error ?? ""}`;
-      }
-    } catch (e) { flaskErr = `Flask injoignable : ${e.message}`; }
-
-    if (flaskErr) console.warn("[GT Stocks]", flaskErr);
-
-    // 2. Fallback direct GW2 API — uniquement si clé disponible
-    if (!data && key) {
-      try {
-        // access_token en paramètre : le header Authorization fait échouer le
-        // preflight CORS sur mobile — c'est pourquoi la synchro des stocks ne
-        // passait pas alors que celle des succès fonctionnait.
-        const tk = `access_token=${encodeURIComponent(key.trim())}`;
-        const [wResp, mResp, bResp, sResp] = await Promise.all([
-          fetch(`https://api.guildwars2.com/v2/account/wallet?${tk}`),
-          fetch(`https://api.guildwars2.com/v2/account/materials?${tk}`),
-          fetch(`https://api.guildwars2.com/v2/account/bank?${tk}`),
-          fetch(`https://api.guildwars2.com/v2/account/inventory?${tk}`),
-        ]);
-        const [wallet, mats, bank, shared] = await Promise.all([
-          wResp.ok ? wResp.json() : [],
-          mResp.ok ? mResp.json() : [],
-          bResp.ok ? bResp.json() : [],
-          sResp.ok ? sResp.json() : [],
-        ]);
-        const bags2 = await readCharacterBags(tk);
-        const reqSet = new Set(apiIds);
-        const stocks = {};
-        for (const e of (wallet ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.value ?? 0);
-        for (const e of (mats ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
-        for (const e of (bank ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
-        for (const e of (shared ?? [])) if (e && reqSet.has(e.id)) stocks[String(e.id)] = (stocks[String(e.id)] ?? 0) + (e.count ?? 0);
-        for (const [id3, n3] of Object.entries(bags2.counts)) if (reqSet.has(Number(id3))) stocks[id3] = (stocks[id3] ?? 0) + n3;
-        data = { stocks, synced_at: Math.floor(Date.now() / 1000), errors: [], bags_ok: bags2.ok };
-      } catch (e) {
-        setGtStockStatus("error");
-        setGtStockError(e.message);
-        return;
-      }
-    }
-
-    if (!data) {
-      setGtStockStatus("error");
-      setGtStockError(key ? "Flask unreachable and direct API failed" : "Flask unreachable — no API key entered");
-      return;
-    }
-
-    // Flask renvoie deja une liste d'erreurs par source et un compte de trouves ;
-    // tout etait jete. Un stock a zero pouvait donc signifier « inventaire vide »
-    // ou « les quatre appels ont echoue », sans moyen de distinguer.
-    const found = Object.keys(data.stocks ?? {}).length;
-    // Materiaux/banque/inventaire n'enumerent jamais un item a 0 -- son absence
-    // ici, APRES une synchro globalement reussie, est un stock de 0 confirme,
-    // pas un stock inconnu. Sans ce remplissage, un materiau simplement epuise
-    // (ex. Pile of Radiant Dust a 0) affichait "stock unknown" comme si la
-    // synchro n'avait jamais eu lieu. `found` reste calcule sur data.stocks brut
-    // au-dessus : le remplissage ne doit jamais masquer un echec reel (found=0).
-    const stocksFilled = { ...data.stocks };
-    for (const id of apiIds) {
-      if (stocksFilled[String(id)] === undefined) stocksFilled[String(id)] = 0;
-    }
-    const merged = {
-      ...stocksFilled,
-      _synced_at: data.synced_at,
-      _sync_source: data._direct ? "api" : "flask",
-      _bags_ok: data.bags_ok !== false,
-      _errors: Array.isArray(data.errors) ? data.errors : [],
-      _found: found,
-      _asked: apiIds.length,
-    };
-    if (found === 0) {
-      setGtStockStatus("error");
-      setGtStockError((data.errors ?? []).join(" · ") || "0 ressource retournée sur " + apiIds.length + " demandées");
-    }
-    setGtStocks(merged);
-    try { localStorage.setItem("gw2_gt_stocks", JSON.stringify(merged)); } catch (_) {}
-    setGtStockStatus("ok");
-  }, [gtApiKey]);
 
   // Manuel : mettre à jour un stock individuel
   const setGtStockManual = useCallback((apiId, qty) => {
@@ -5352,7 +5136,7 @@ export default function GW2LegendaryTracker() {
               // Il fallait deplier "Auto-detect via GW2 API key" plus bas et
               // cliquer SON propre Detecter pour ca, ce que rien ici ne
               // laissait deviner. Un clic declenche desormais les trois.
-              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); detectGtArmory(); }}
+              onClick={() => { fetchFromFlask(); detectGtArmory(); }}
               disabled={apiStatus === "loading"}
               style={{
                 background: apiStatus === "ok" ? "rgba(74,222,128,0.1)" : apiStatus === "error" ? "rgba(248,113,113,0.1)" : "rgba(226,201,126,0.06)",
@@ -5373,6 +5157,21 @@ export default function GW2LegendaryTracker() {
           )}
           {apiStatus === "error" && apiError && (
             <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>{apiError}</div>
+          )}
+          {/* Armory : meme mecanique que stocks/apiStatus ci-dessus, meme
+              remontee -- un seul geste (le bouton API), toute erreur visible
+              ici quelle que soit la fonction qui a echoue. */}
+          {gtApiStatus === "error" && gtApiError && (
+            <div style={{ width: "100%", fontSize: "9px", color: "#f87171", fontFamily: "'Crimson Text', serif" }}>armory : {gtApiError}</div>
+          )}
+          {/* Diagnostic fin : une synchro qui "reussit" globalement peut quand
+              meme avoir rate certaines sources cote Flask (prog.errors). Sans
+              ca, un ecart de compte partiel se serait tu. */}
+          {(gtStocks._errors?.length > 0 || gtStocks._found === 0) && (
+            <div style={{ width: "100%", marginTop: 3, fontSize: "9px", color: "rgba(248,113,113,0.85)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
+              {t("gt_stock_diag", { f: gtStocks._found ?? 0, a: gtStocks._asked ?? 0, s: gtStocks._sync_source ?? "?" })}
+              {(gtStocks._errors ?? []).map((e, i) => <div key={i} style={{ marginTop: 1 }}>· {e}</div>)}
+            </div>
           )}
         </div>
       )}
@@ -5502,15 +5301,7 @@ export default function GW2LegendaryTracker() {
           ownedIds={gtOwnedIds}
           manualOwnedIds={gtManualOwnedIds}
           onToggleManual={toggleGtManualOwned}
-          apiKey={gtApiKey}
-          setApiKey={setGtApiKey}
-          apiStatus={gtApiStatus}
-          apiError={gtApiError}
-          onDetect={detectGtArmory}
           stocks={gtStocks}
-          stockStatus={gtStockStatus}
-          stockError={gtStockError}
-          onFetchStocks={fetchGtStocks}
           onSetStockManual={setGtStockManual}
         />
       )}
