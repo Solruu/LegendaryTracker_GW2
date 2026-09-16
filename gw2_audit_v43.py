@@ -1576,6 +1576,70 @@ def check_api_id_unique(data, errors, warnings):
             )
 
 
+def check_api_id_contre_capture(data, errors, warnings):
+    """L'apiId d'un composant doit valoir celui que sa propre page wiki annonce.
+
+    Chaque page d'objet du wiki porte, en bas, un lien « API <id> ». Quand une
+    capture de cette page existe dans ressources/wiki/, elle tranche : le wiki
+    n'est jamais faux, notre lecture l'est.
+
+    Ce controle est arrive apres coup, et il aurait attrape d'un coup les 22
+    ecarts trouves le 16/09/2026 -- dont sept ou l'entree portait l'identifiant
+    d'un AUTRE objet capture : essence_of_annihilation portait celui de Mystic
+    Essence of Annihilation, gift_of_battle celui de Gift of Quip, gift_of_war
+    celui de The Moot, nyr_hrammr celui de Klobjarne Geirr, orrax_contained
+    celui d'Orrax Manifested. Un apiId faux ne fausse aucun total, mais il fait
+    lire le stock du mauvais objet : le tracker annonce alors « 0 en stock »
+    sur un materiau qu'on possede, ou l'inverse.
+
+    check_api_id_unique ne les voyait pas : chacun de ces identifiants restait
+    unique dans la base, il designait simplement le mauvais objet.
+
+    L'identifiant est lu dans le lien « API » de la page elle-meme.
+
+    Exception : les identifiants de MONNAIE vivent dans un autre espace que les
+    identifiants d'objet. La page wiki d'un jeton de portefeuille affiche l'id
+    de l'OBJET consommable qui le donne, pas celui de la monnaie ; comparer les
+    deux inventerait des ecarts. Les composants marques kind == "currency", ou
+    portant un apiIdNote qui documente le choix, sont donc exclus.
+    """
+    import re as _re
+    from pathlib import Path as _Path
+
+    cc = data.get("craft_components", {})
+    # Lu directement dans les captures, pas dans un dump intermediaire : un
+    # fichier derive se perimerait des le lot suivant, et c'est precisement le
+    # genre de table parallele que ce projet s'interdit.
+    dossier = _Path(__file__).resolve().parent / "ressources" / "wiki"
+    if not dossier.is_dir():
+        return
+    captures = {}
+    motif = _re.compile(r'api\.guildwars2\.com/v2/items\?ids=(\d+)')
+    for page in dossier.glob("*.html"):
+        trouve = motif.search(page.read_text(encoding="utf-8", errors="ignore"))
+        if trouve:
+            captures[page.stem] = int(trouve.group(1))
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        attendu = captures.get(cid)
+        if attendu is None:
+            continue
+        if comp.get("kind") == "currency" or "apiIdNote" in comp:
+            continue
+        actuel = comp.get("apiId")
+        if actuel is None:
+            warnings.append(
+                f"craft_components/{cid} : pas d'apiId alors que sa capture wiki "
+                f"annonce API {attendu} — le stock de cet objet ne peut pas etre lu"
+            )
+        elif actuel != attendu:
+            errors.append(
+                f"craft_components/{cid} : apiId = {actuel} alors que sa page wiki "
+                f"annonce API {attendu} — le tracker lit le stock du mauvais objet"
+            )
+
+
 def check_nom_pluriel_double(data, errors, warnings):
     """Deux composants dont les noms ne different que par des « s ».
 
@@ -1831,6 +1895,9 @@ def main() -> int:
 
     # 31. Un apiId = un objet = un composant
     check_api_id_unique(data, errors, warnings)
+
+    # 31b. ... et c'est l'objet que sa propre page wiki designe
+    check_api_id_contre_capture(data, errors, warnings)
 
     # 32. Un nom au pluriel face a son singulier est presque toujours une invention
     check_nom_pluriel_double(data, errors, warnings)

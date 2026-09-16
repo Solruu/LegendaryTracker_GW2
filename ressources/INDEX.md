@@ -856,6 +856,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `vial_of_magic.html` | Vial of Magic | article complet | 2026-09-12 |
 | `vial_of_might.html` | Vial of Might | article complet | 2026-09-12 |
 | `prismatic_champions_regalia.html` | Prismatic Champion's Regalia | article complet | 2026-09-16 |
+| `essence_of_annihilation.html` | Essence of Annihilation | article complet | 2026-09-16 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

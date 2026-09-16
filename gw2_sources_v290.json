@@ -2415,7 +2415,7 @@
   },
   "gift_of_battle": {
    "name": "Gift of Battle",
-   "apiId": 19651,
+   "apiId": 19678,
    "needed_for": [
     "gift_of_conquering",
     "gift_of_mastery",
@@ -2445,7 +2445,6 @@
   },
   "gift_of_glory": {
    "name": "Gift of Glory",
-   "apiId": 19652,
    "needed_for": [
     "gift_of_the_mists"
    ],
@@ -2462,11 +2461,15 @@
    "qty": {
     "gift_of_the_mists": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "apiIdNote": {
+    "fr": "apiId retire le 16/09/2026 : le 19652 qu'il portait est celui de Gift of Meteorlogicus, atteste par la page wiki de cet objet. Le vrai identifiant reste inconnu — page a capturer.",
+    "en": "apiId removed 2026-09-16: the 19652 it carried belongs to Gift of Meteorlogicus, attested by that item's own wiki page. The real id is still unknown — page to capture."
+   }
   },
   "gift_of_war": {
    "name": "Gift of War",
-   "apiId": 19650,
+   "apiId": 71008,
    "needed_for": [
     "gift_of_the_mists"
    ],
@@ -4076,7 +4079,7 @@
   },
   "essence_of_strategy": {
    "name": "Essence of Strategy",
-   "apiId": 81319,
+   "apiId": 81326,
    "needed_for": [
     "mystic_essence_of_strategy"
    ],
@@ -4134,7 +4137,7 @@
   },
   "essence_of_carnage": {
    "name": "Essence of Carnage",
-   "apiId": 81449,
+   "apiId": 81469,
    "needed_for": [
     "mystic_essence_of_carnage"
    ],
@@ -4163,7 +4166,7 @@
   },
   "essence_of_annihilation": {
    "name": "Essence of Annihilation",
-   "apiId": 81407,
+   "apiId": 81320,
    "needed_for": [
     "mystic_essence_of_annihilation"
    ],
@@ -4178,7 +4181,7 @@
      "tip": "Purchase for 350 WvW Skirmish Claim Tickets.",
      "verified": true,
      "checked": "2026-09-16",
-     "ref": "wiki Warbringer — « Essence of Annihilation (costs: WvW Skirmish Claim Ticket x350) »"
+     "ref": "wiki Essence of Annihilation (capture lot 19) — deux vendeurs disponibles a 350 WvW Skirmish Claim Ticket"
     }
    ],
    "kind": "intermediate",
@@ -4281,7 +4284,7 @@
   },
   "certificate_of_honor": {
    "name": "Certificate of Honor",
-   "apiId": 81384,
+   "apiId": 83620,
    "needed_for": [
     "gift_of_war_dedication"
    ],
@@ -4808,7 +4811,7 @@
   },
   "recruits_wings_of_war": {
    "name": "Recruit's Wings of War",
-   "apiId": 81330,
+   "apiId": 81455,
    "needed_for": [
     "warcry"
    ],
@@ -4830,7 +4833,7 @@
   },
   "soldiers_wings_of_war": {
    "name": "Soldier's Wings of War",
-   "apiId": 81416,
+   "apiId": 81356,
    "needed_for": [
     "warcry"
    ],
@@ -4852,7 +4855,7 @@
   },
   "generals_wings_of_war": {
    "name": "General's Wings of War",
-   "apiId": 81367,
+   "apiId": 81288,
    "needed_for": [
     "warcry"
    ],
@@ -4874,7 +4877,7 @@
   },
   "commanders_wings_of_war": {
    "name": "Commander's Wings of War",
-   "apiId": 81432,
+   "apiId": 81294,
    "needed_for": [
     "warcry"
    ],
@@ -5100,7 +5103,6 @@
   },
   "gift_of_exploration": {
    "name": "Gift of Exploration",
-   "apiId": 19646,
    "needed_for": [
     "gift_of_mastery"
    ],
@@ -5123,7 +5125,11 @@
      }
     }
    ],
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "apiIdNote": {
+    "fr": "apiId retire le 16/09/2026 : le 19646 qu'il portait est celui de Gift of The Minstrel, atteste par la page wiki de cet objet. Le vrai identifiant reste inconnu — page a capturer.",
+    "en": "apiId removed 2026-09-16: the 19646 it carried belongs to Gift of The Minstrel, attested by that item's own wiki page. The real id is still unknown — page to capture."
+   }
   },
   "gift_of_metal": {
    "name": "Gift of Metal",
@@ -6294,7 +6300,7 @@
   },
   "gift_of_condensed_magic": {
    "name": "Gift of Condensed Magic",
-   "apiId": 68553,
+   "apiId": 76530,
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
@@ -6347,7 +6353,7 @@
   },
   "gift_of_condensed_might": {
    "name": "Gift of Condensed Might",
-   "apiId": 68552,
+   "apiId": 70867,
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
@@ -6502,7 +6508,7 @@
   },
   "airship_part": {
    "name": "Airship Part",
-   "apiId": null,
+   "apiId": 74494,
    "type": "map_currency",
    "needed_for": [
     "gift_of_the_pact",
@@ -6560,7 +6566,7 @@
   },
   "lump_of_aurillium": {
    "name": "Lump of Aurillium",
-   "apiId": null,
+   "apiId": 75012,
    "type": "map_currency",
    "needed_for": [
     "gift_of_the_pact",
@@ -6661,7 +6667,7 @@
   },
   "gift_of_gliding": {
    "name": "Gift of Gliding",
-   "apiId": null,
+   "apiId": 71311,
    "needed_for": [
     "gift_of_insights"
    ],
@@ -6705,7 +6711,7 @@
   },
   "gift_of_maguuma": {
    "name": "Gift of Maguuma",
-   "apiId": null,
+   "apiId": 74927,
    "needed_for": [
     "gift_of_maguuma_mastery"
    ],
@@ -7680,7 +7686,7 @@
   },
   "gift_of_competitive_dedication": {
    "name": "Gift of Competitive Dedication",
-   "apiId": null,
+   "apiId": 84203,
    "needed_for": [
     "gift_of_the_champion",
     "ardent_glorious"
@@ -7726,7 +7732,7 @@
   },
   "gift_of_skirmishing": {
    "name": "Gift of Skirmishing",
-   "apiId": 77226,
+   "apiId": 77485,
    "needed_for": [
     "the_ascension",
     "transcendence"
@@ -7767,7 +7773,7 @@
   },
   "gift_of_the_competitor": {
    "name": "Gift of the Competitor",
-   "apiId": 77225,
+   "apiId": 77509,
    "needed_for": [
     "the_ascension"
    ],
@@ -8336,7 +8342,7 @@
   },
   "gift_of_rays": {
    "name": "Gift of Rays",
-   "apiId": 107029,
+   "apiId": 107040,
    "needed_for": [
     "endless_summer"
    ],
@@ -8354,7 +8360,7 @@
   },
   "gift_of_the_survivors": {
    "name": "Gift of the Survivors",
-   "apiId": 107033,
+   "apiId": 106712,
    "needed_for": [
     "aetheric_anchor",
     "endless_summer"
@@ -8378,7 +8384,7 @@
   },
   "gift_of_the_people": {
    "name": "Gift of the People",
-   "apiId": 107034,
+   "apiId": 105804,
    "needed_for": [
     "aetheric_anchor",
     "endless_summer"
@@ -8423,7 +8429,7 @@
   },
   "vial_of_liquid_shadowstone": {
    "name": "Vial of Liquid Shadowstone",
-   "apiId": 107060,
+   "apiId": 109391,
    "needed_for": [
     "stella_radians"
    ],
@@ -8444,7 +8450,7 @@
   },
   "gift_of_shadowstones": {
    "name": "Gift of Shadowstones",
-   "apiId": 107061,
+   "apiId": 109161,
    "needed_for": [
     "stella_radians"
    ],
@@ -8467,7 +8473,7 @@
   },
   "gift_of_galdra": {
    "name": "Gift of Galdra",
-   "apiId": 107062,
+   "apiId": 109469,
    "needed_for": [
     "stella_radians"
    ],
@@ -8656,7 +8662,7 @@
   },
   "orrax_contained": {
    "name": "Orrax Contained",
-   "apiId": 104857,
+   "apiId": 104690,
    "needed_for": [
     "orrax_manifested"
    ],
@@ -8778,7 +8784,8 @@
    "apiIdNote": {
     "fr": "Identifiant a verifier : 102515 appartient a Gift of Gatherer of the Hunt, doublement atteste sur sa page wiki. Aucune page pour le Homesteader.",
     "en": null
-   }
+   },
+   "apiId": 102376
   },
   "gift_of_klobjarne_geirr": {
    "name": "Gift of Klobjarne Geirr",
@@ -8800,7 +8807,7 @@
   },
   "nyr_hrammr": {
    "name": "Nyr Hrammr",
-   "apiId": 103815,
+   "apiId": 103973,
    "needed_for": [
     "klobjarne_geirr"
    ],
@@ -9534,7 +9541,7 @@
   },
   "gift_of_the_astral_ward": {
    "name": "Gift of the Astral Ward",
-   "apiId": null,
+   "apiId": 100466,
    "needed_for": [
     "gift_of_stormy_skies"
    ],
@@ -9563,7 +9570,7 @@
   },
   "case_of_captured_lightning": {
    "name": "Case of Captured Lightning",
-   "apiId": null,
+   "apiId": 100267,
    "needed_for": [
     "gift_of_stormy_skies"
    ],
@@ -9582,7 +9589,7 @@
   },
   "pouch_of_stardust": {
    "name": "Pouch of Stardust",
-   "apiId": null,
+   "apiId": 99964,
    "needed_for": [
     "gift_of_stormy_skies"
    ],
@@ -9601,7 +9608,7 @@
   },
   "clot_of_congealed_screams": {
    "name": "Clot of Congealed Screams",
-   "apiId": null,
+   "apiId": 100098,
    "needed_for": [
     "gift_of_stormy_skies"
    ],
@@ -9737,7 +9744,8 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)",
+   "apiId": 91041
   },
   "amalgamated_gemstone": {
    "name": "Amalgamated Gemstone",
@@ -9852,7 +9860,8 @@
    "note": {
     "fr": "⚡ C'est le maillon qui expliquait trois anomalies : les +20 trophées T6 sur le sang, les os, les écailles et les griffes, les 350 tickets d'escarmouche manquants, et les écarts sur les insignes, les témoignages et les mémoires de bataille.",
     "en": "⚡ This is the link that explained three anomalies: the +20 T6 trophies on blood, bones, scales and claws, the 350 missing skirmish tickets, and the gaps on badges, testimonies and memories of battle."
-   }
+   },
+   "apiId": 81478
   },
   "glob_of_coagulated_mists_essence": {
    "name": "Glob of Coagulated Mists Essence",
@@ -9871,7 +9880,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "apiId": 38023
   },
   "spinal_blade_perfected": {
    "name": "Spinal Blade Back Pack (Perfected)",
@@ -9907,7 +9917,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "apiId": 86010
   },
   "gift_of_souls": {
    "name": "Gift of Souls",
@@ -9925,7 +9936,8 @@
      }
     }
    ],
-   "qty": {}
+   "qty": {},
+   "apiId": 36072
   },
   "spark_of_sentience": {
    "name": "Spark of Sentience",
@@ -9985,7 +9997,8 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
+   "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)",
+   "apiId": 81861
   },
   "hateful_sworl": {
    "name": "Hateful Sworl",
@@ -10439,7 +10452,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 89696
   },
   "antiquated_ducat": {
    "name": "Antiquated Ducat",
@@ -10574,8 +10588,8 @@
    ],
    "timegate": true,
    "timegate_note": {
-    "fr": "Max 365/sem (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Si les deux : ~4300 tickets cumulés (~12 sem). Armor WvW=7880 tickets (~22 semaines cumul).",
-    "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux=1850 tickets, Warbringer=2450 tickets. Both: ~4300 cumulative tickets (~12 wks). WvW Armor=7880 tickets (~22 cumulative weeks)."
+    "fr": "Max 365/sem (piste d'escarmouche) + ~90 hebdomadaires. Conflux = 2 200 tickets, Warbringer = 2 800. Les deux : ~5 000 tickets cumulés (~11 semaines). Armure McM = 7 880 tickets (~18 semaines cumulées).",
+    "en": "Max 365/wk (Skirmish track) + ~90 weeklies. Conflux = 2,200 tickets, Warbringer = 2,800. Both: ~5,000 cumulative tickets (~11 wks). WvW Armor = 7,880 tickets (~18 cumulative weeks)."
    },
    "best": "wvw_skirmish",
    "cadence": {
@@ -10626,10 +10640,6 @@
       "ref": "wiki:WvW_Skirmish_Claim_Ticket"
      }
     ]
-   },
-   "qty_note": {
-    "fr": "⚠ L'arbre de Warbringer totalise 2 800 tickets, quand la chaîne n'en porte que 2 450 par le précurseur Warcry. Les 350 manquants viennent d'un poste non modélisé — probablement un achat de Gift of Battle ou un composant McM intermédiaire. À retrouver avant de compléter.",
-    "en": "⚠ Warbringer's tree totals 2,800 tickets, while the chain only carries 2,450 through the Warcry precursor. The missing 350 come from an unmodelled step — likely a Gift of Battle purchase or an intermediate WvW component. To be found before completing."
    }
   },
   "testimony_of_jade_heroics": {
@@ -11834,7 +11844,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 71655
   },
   "vial_of_potent_blood": {
    "name": "Vial of Potent Blood",
@@ -12038,7 +12049,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 71787
   },
   "potent_venom_sac": {
    "name": "Potent Venom Sac",
@@ -12231,7 +12243,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 73236
   },
   "intricate_totem": {
    "name": "Intricate Totem",
@@ -12424,7 +12437,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 73196
   },
   "gift_of_claws": {
    "name": "Gift of Claws",
@@ -12459,7 +12473,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 70801
   },
   "large_claw": {
    "name": "Large Claw",
@@ -12665,7 +12680,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 75299
   },
   "large_scale": {
    "name": "Large Scale",
@@ -12869,7 +12885,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 71123
   },
   "large_bone": {
    "name": "Large Bone",
@@ -13070,7 +13087,8 @@
      "checked": "2026-08-22",
      "ref": "recette declaree sur le composant"
     }
-   ]
+   ],
+   "apiId": 75744
   },
   "large_fang": {
    "name": "Large Fang",
@@ -13366,7 +13384,8 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)",
+   "apiId": 91112
   },
   "gift_of_crystalline_magic": {
    "name": "Gift of Crystalline Magic",
@@ -13397,7 +13416,8 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)"
+   "ref": "wiki:Funerary_Incense section « Used in » + wiki:Coalescence, liste complete (captures Antoine 22/08/2026)",
+   "apiId": 91124
   },
   "gift_of_magic": {
    "name": "Gift of Magic",
@@ -13432,7 +13452,8 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+   "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)",
+   "apiId": 19673
   },
   "gift_of_might": {
    "name": "Gift of Might",
@@ -13467,7 +13488,8 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)"
+   "ref": "wiki:Gift_of_Fortune + wiki:Gift_of_Might (verifie 22/08/2026)",
+   "apiId": 19672
   },
   "gift_of_sentience": {
    "name": "Gift of Sentience",
@@ -13835,7 +13857,8 @@
    ],
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)"
+   "ref": "arbres de recette GW2Efficiency (captures Antoine 22/08/2026)",
+   "apiId": 91225
   },
   "gift_of_bloodstone_magic": {
    "name": "Gift of Bloodstone Magic",
@@ -13866,7 +13889,8 @@
      "checked": "2026-08-22",
      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 81815
   },
   "gift_of_dragon_magic": {
    "name": "Gift of Dragon Magic",
@@ -13897,7 +13921,8 @@
      "checked": "2026-08-22",
      "ref": "arbre de recette GW2Efficiency d'Aurora (captures Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 82036
   },
   "war_commendation": {
    "name": "War Commendation",
@@ -13960,7 +13985,8 @@
      "checked": "2026-08-22",
      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 81319
   },
   "mystic_essence_of_animosity": {
    "name": "Mystic Essence of Animosity",
@@ -13991,7 +14017,8 @@
      "checked": "2026-08-22",
      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 81494
   },
   "mystic_essence_of_carnage": {
    "name": "Mystic Essence of Carnage",
@@ -14022,7 +14049,8 @@
      "checked": "2026-08-22",
      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 81449
   },
   "mystic_essence_of_annihilation": {
    "name": "Mystic Essence of Annihilation",
@@ -14053,7 +14081,8 @@
      "checked": "2026-08-22",
      "ref": "arbre GW2Efficiency de Conflux, hierarchie complete (export Antoine 22/08/2026)"
     }
-   ]
+   ],
+   "apiId": 81407
   },
   "gift_of_war_dedication": {
    "name": "Gift of War Dedication",
@@ -14846,7 +14875,8 @@
    "recipe": {
     "fr": "Conteneur : rend 1 Shard of Lowland Shore. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
     "en": "Container: yields 1 Shard of Lowland Shore. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
-   }
+   },
+   "apiId": 103991
   },
   "shard_of_janthir_syntri": {
    "name": "Shard of Janthir Syntri",
@@ -14951,7 +14981,8 @@
    "recipe": {
     "fr": "Conteneur : rend 1 Shard of Janthir Syntri. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
     "en": "Container: yields 1 Shard of Janthir Syntri. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
-   }
+   },
+   "apiId": 103846
   },
   "mursaat_runestone": {
    "name": "Mursaat Runestone",
@@ -15355,7 +15386,8 @@
    "recipe": {
     "fr": "Conteneur : rend 1 Shard of Mistburned Barrens. Version à prix réduit, achetée chez les mêmes vendeurs de cœurs une fois le cœur complété. ⚠ Le plafond hebdomadaire est PARTAGÉ avec le shard normal du même vendeur : acheter l'un consomme le quota de l'autre.",
     "en": "Container: yields 1 Shard of Mistburned Barrens. Discounted version, bought from the same heart vendors once the heart is complete. ⚠ The weekly cap is SHARED with the regular shard from that vendor: buying one consumes the other's quota."
-   }
+   },
+   "apiId": 104433
   },
   "shard_of_bava_nisos": {
    "name": "Shard of Bava Nisos",
@@ -15859,7 +15891,8 @@
    },
    "verified": true,
    "checked": "2026-08-27",
-   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+   "apiId": 89735
   },
   "banner_of_the_commander": {
    "name": "Banner of the Commander",
@@ -15891,7 +15924,8 @@
    },
    "verified": true,
    "checked": "2026-08-27",
-   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+   "apiId": 87668
   },
   "banner_pennon": {
    "name": "Banner Pennon",
@@ -15905,7 +15939,8 @@
    },
    "verified": true,
    "checked": "2026-08-27",
-   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+   "apiId": 87925
   },
   "olmakhan_bandolier_chain": {
    "name": "Olmakhan Bandolier (chaîne)",
@@ -16157,7 +16192,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19642
   },
   "elder_wood_plank": {
    "name": "Elder Wood Plank",
@@ -16644,7 +16680,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19655
   },
   "gift_of_chuka_and_champawat": {
    "name": "Gift of Chuka and Champawat",
@@ -16685,7 +16722,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19638
   },
   "gift_of_darkness": {
    "name": "Gift of Darkness",
@@ -16707,7 +16745,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19631
   },
   "gift_of_divinity": {
    "name": "Gift of Divinity",
@@ -16750,7 +16789,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19635
   },
   "gift_of_eureka": {
    "name": "Gift of Eureka",
@@ -16812,7 +16852,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 78344
   },
   "gift_of_frenzy": {
    "name": "Gift of Frenzy",
@@ -16832,7 +16873,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19659
   },
   "gift_of_frostfang": {
    "name": "Gift of Frostfang",
@@ -16852,7 +16894,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19625
   },
   "gift_of_hope": {
    "name": "Gift of HOPE",
@@ -16893,7 +16936,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19629
   },
   "gift_of_howler": {
    "name": "Gift of Howler",
@@ -16913,7 +16957,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19662
   },
   "gift_of_ice": {
    "name": "Gift of Ice",
@@ -16933,7 +16978,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19624
   },
   "gift_of_incinerator": {
    "name": "Gift of Incinerator",
@@ -16953,7 +16999,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19645
   },
   "gift_of_kamohoali_i_kotaki": {
    "name": "Gift of Kamohoali'i Kotaki",
@@ -16993,7 +17040,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19658
   },
   "gift_of_kudzu": {
    "name": "Gift of Kudzu",
@@ -17013,7 +17061,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19644
   },
   "gift_of_light": {
    "name": "Gift of Light",
@@ -17033,7 +17082,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19632
   },
   "gift_of_lightning": {
    "name": "Gift of Lightning",
@@ -17053,7 +17103,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19639
   },
   "gift_of_meteorlogicus": {
    "name": "Gift of Meteorlogicus",
@@ -17073,7 +17124,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19652
   },
   "gift_of_music": {
    "name": "Gift of Music",
@@ -17093,7 +17145,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19630
   },
   "gift_of_nature": {
    "name": "Gift of Nature",
@@ -17113,7 +17166,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19627
   },
   "gift_of_nevermore": {
    "name": "Gift of Nevermore",
@@ -17175,7 +17229,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19651
   },
   "gift_of_rodgort": {
    "name": "Gift of Rodgort",
@@ -17195,7 +17250,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19656
   },
   "gift_of_shooshadoo": {
    "name": "Gift of Shooshadoo",
@@ -17236,7 +17292,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19647
   },
   "gift_of_the_bifrost": {
    "name": "Gift of The Bifrost",
@@ -17256,7 +17313,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19654
   },
   "gift_of_the_dreamer": {
    "name": "Gift of The Dreamer",
@@ -17276,7 +17334,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19660
   },
   "gift_of_the_flameseeker_prophecies": {
    "name": "Gift of The Flameseeker Prophecies",
@@ -17296,7 +17355,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19653
   },
   "gift_of_the_juggernaut": {
    "name": "Gift of The Juggernaut",
@@ -17316,7 +17376,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19649
   },
   "gift_of_the_minstrel": {
    "name": "Gift of The Minstrel",
@@ -17336,7 +17397,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19646
   },
   "gift_of_the_moot": {
    "name": "Gift of The Moot",
@@ -17356,7 +17418,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19650
   },
   "gift_of_twilight": {
    "name": "Gift of Twilight",
@@ -17376,7 +17439,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19648
   },
   "gift_of_verdarach": {
    "name": "Gift of Verdarach",
@@ -17417,7 +17481,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19643
   },
   "gift_of_weather": {
    "name": "Gift of Weather",
@@ -17437,7 +17502,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19637
   },
   "gift_of_wood": {
    "name": "Gift of Wood",
@@ -17481,7 +17547,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19622
   },
   "gift_of_xiuquatl": {
    "name": "Gift of Xiuquatl",
@@ -17543,7 +17610,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 76442
   },
   "gift_of_the_cosmos": {
    "name": "Gift of the Cosmos",
@@ -17563,7 +17631,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 72083
   },
   "gift_of_the_four_legions": {
    "name": "Gift of the Four Legions",
@@ -17604,7 +17673,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 71173
   },
   "glacial_lodestone": {
    "name": "Glacial Lodestone",
@@ -17913,7 +17983,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19641
   },
   "silver_doubloon": {
    "name": "Silver Doubloon",
@@ -17979,7 +18050,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19628
   },
   "vial_of_liquid_flame": {
    "name": "Vial of Liquid Flame",
@@ -18001,7 +18073,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19634
   },
   "vial_of_quicksilver": {
    "name": "Vial of Quicksilver",
@@ -18021,7 +18094,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19633
   },
   "wolf_statue": {
    "name": "Wolf Statue",
@@ -18041,7 +18115,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19640
   },
   "certificate_of_support": {
    "name": "Certificate of Support",
@@ -18061,7 +18136,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77486
   },
   "gift_of_embracing_refuge": {
    "name": "Gift of Embracing Refuge",
@@ -18081,7 +18157,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 103242
   },
   "gift_of_recollector_of_memories": {
    "name": "Gift of Recollector of Memories",
@@ -18101,7 +18178,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 102342
   },
   "gift_of_sharpened_tip": {
    "name": "Gift of Sharpened Tip",
@@ -18121,7 +18199,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 103308
   },
   "perfect_mist_core": {
    "name": "Perfect Mist Core",
@@ -18141,7 +18220,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77520
   },
   "standing_stones_timepiece": {
    "name": "Standing Stones Timepiece",
@@ -18201,7 +18281,8 @@
       "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
      }
     }
-   ]
+   ],
+   "apiId": 45853
   },
   "large_spiritwood_haft": {
    "name": "Large Spiritwood Haft",
@@ -18221,7 +18302,8 @@
       "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
      }
     }
-   ]
+   ],
+   "apiId": 45849
   },
   "deldrimor_steel_ingot": {
    "name": "Deldrimor Steel Ingot",
@@ -18243,7 +18325,8 @@
       "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
      }
     }
-   ]
+   ],
+   "apiId": 46738
   },
   "spiritwood_plank": {
    "name": "Spiritwood Plank",
@@ -18265,7 +18348,8 @@
       "en": "Table « Full material list » de Klobjarne Geirr, branche Nyr Hrammr."
      }
     }
-   ]
+   ],
+   "apiId": 46736
   },
   "concentrated_chromatic_sap": {
    "name": "Concentrated Chromatic Sap",
@@ -18285,7 +18369,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 105848
   },
   "emblem_of_the_avenger": {
    "name": "Emblem of the Avenger",
@@ -18307,7 +18392,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 93075
   },
   "emerald_orb": {
    "name": "Emerald Orb",
@@ -18325,7 +18411,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 24515
   },
   "fractalline_dust": {
    "name": "Fractalline Dust",
@@ -18345,7 +18432,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 105336
   },
   "fractalline_spark": {
    "name": "Fractalline Spark",
@@ -18365,7 +18453,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 105196
   },
   "gift_of_adventure": {
    "name": "Gift of Adventure",
@@ -18385,7 +18474,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 105979
   },
   "gift_of_complex_emotions": {
    "name": "Gift of Complex Emotions",
@@ -18405,7 +18495,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 88909
   },
   "gift_of_dedication": {
    "name": "Gift of Dedication",
@@ -18425,7 +18516,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 78936
   },
   "gift_of_eternity_s_garden_exploration": {
    "name": "Gift of Eternity's Garden Exploration",
@@ -18531,7 +18623,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 78989
   },
   "gift_of_regrowth": {
    "name": "Gift of Regrowth",
@@ -18551,7 +18644,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109361
   },
   "gift_of_restoration": {
    "name": "Gift of Restoration",
@@ -18571,7 +18665,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109489
   },
   "gift_of_shipwreck_strand_exploration": {
    "name": "Gift of Shipwreck Strand Exploration",
@@ -18591,7 +18686,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 106467
   },
   "gift_of_starlit_weald_exploration": {
    "name": "Gift of Starlit Weald Exploration",
@@ -18611,7 +18707,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 106672
   },
   "gift_of_valor": {
    "name": "Gift of Valor",
@@ -18631,7 +18728,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 82008
   },
   "gift_of_war_prosperity": {
    "name": "Gift of War Prosperity",
@@ -18653,7 +18751,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 82746
   },
   "gift_of_the_mist_warrior": {
    "name": "Gift of the Mist Warrior",
@@ -18673,7 +18772,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109686
   },
   "gift_of_the_mistwalker": {
    "name": "Gift of the Mistwalker",
@@ -18693,7 +18793,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109618
   },
   "gift_of_the_pact": {
    "name": "Gift of the Pact",
@@ -18713,7 +18814,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 78793
   },
   "gift_of_the_warclaw": {
    "name": "Gift of the Warclaw",
@@ -18733,7 +18835,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109363
   },
   "grandmaster_mark_shard": {
    "name": "Grandmaster Mark Shard",
@@ -18753,7 +18856,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 87557
   },
   "hymn_of_glory": {
    "name": "Hymn of Glory",
@@ -18773,7 +18877,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77548
   },
   "mistwalker_infusion": {
    "name": "Mistwalker Infusion",
@@ -18813,7 +18918,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77538
   },
   "patron_of_the_magical_arts_plaque": {
    "name": "Patron of the Magical Arts Plaque",
@@ -18833,7 +18939,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 105933
   },
   "pile_of_recycled_siege_equipment": {
    "name": "Pile of Recycled Siege Equipment",
@@ -18853,7 +18960,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 103913
   },
   "preserved_eidolon_hide": {
    "name": "Preserved Eidolon Hide",
@@ -18873,7 +18981,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109141
   },
   "pristine_mist_essence": {
    "name": "Pristine Mist Essence",
@@ -18893,7 +19002,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 75781
   },
   "refined_envoy_armor": {
    "name": "Refined Envoy armor",
@@ -18931,7 +19041,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 24508
   },
   "sapphire_orb": {
    "name": "Sapphire Orb",
@@ -18949,7 +19060,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 24516
   },
   "seer_wreath_of_service": {
    "name": "Seer Wreath of Service",
@@ -18969,7 +19081,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 106627
   },
   "shadowstone_containment_frame": {
    "name": "Shadowstone Containment Frame",
@@ -18989,7 +19102,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109715
   },
   "shadowstone_orb": {
    "name": "Shadowstone Orb",
@@ -19009,7 +19123,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109274
   },
   "shattered_gift_of_prescience": {
    "name": "Shattered Gift of Prescience",
@@ -19029,7 +19144,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 91010
   },
   "so_it_is_written": {
    "name": "So It Is Written",
@@ -19069,7 +19185,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 75469
   },
   "survivor_s_enchanted_compass": {
    "name": "Survivor's Enchanted Compass",
@@ -19109,7 +19226,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77497
   },
   "the_thrill_of_battle": {
    "name": "The Thrill of Battle",
@@ -19129,7 +19247,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 77493
   },
   "third_order_mist_frame": {
    "name": "Third Order Mist Frame",
@@ -19149,7 +19268,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 71885
   },
   "unbound": {
    "name": "Unbound",
@@ -19189,7 +19309,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 72613
   },
   "gift_of_janthir_wanderlust": {
    "name": "Gift of Janthir Wanderlust",
@@ -19209,7 +19330,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104699
   },
   "gift_of_stealth": {
    "name": "Gift of Stealth",
@@ -19229,7 +19351,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19636
   },
   "gift_of_the_predator": {
    "name": "Gift of The Predator",
@@ -19249,7 +19372,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 19661
   },
   "gift_of_titan_understanding": {
    "name": "Gift of Titan Understanding",
@@ -19269,7 +19393,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104791
   },
   "gift_of_the_appetizer": {
    "name": "Gift of the Appetizer",
@@ -19289,7 +19414,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104965
   },
   "gift_of_the_dessert": {
    "name": "Gift of the Dessert",
@@ -19330,7 +19456,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104763
   },
   "gift_of_the_side_course": {
    "name": "Gift of the Side Course",
@@ -19350,7 +19477,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104839
   },
   "orrian_truffle": {
    "name": "Orrian Truffle",
@@ -19370,7 +19498,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 12545
   },
   "gift_of_the_entree": {
    "name": "Gift of the Entrée",
@@ -19390,7 +19519,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 104932
   },
   "beryl_orb": {
    "name": "Beryl Orb",
@@ -19407,7 +19537,8 @@
       "en": "Core game gemstone — crafted by jewelers or bought on the Trading Post, like the five other orbs."
      }
     }
-   ]
+   ],
+   "apiId": 24520
   },
   "shard_of_arah": {
    "name": "Shard of Arah",
@@ -19429,7 +19560,8 @@
    ],
    "ref": "table « Full material list » — Gift of Arah → 100 Shard of Arah",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 82069
   },
   "shard_of_call_of_the_void": {
    "name": "Shard of Call of the Void",
@@ -19451,7 +19583,8 @@
    ],
    "ref": "table « Full material list » — Gift of Verdarach → 100 Shard of Call of the Void",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 87711
   },
   "shard_of_endeavor": {
    "name": "Shard of Endeavor",
@@ -19473,7 +19606,8 @@
    ],
    "ref": "table « Full material list » — Gift of Eureka → 100 Shard of Endeavor",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 79445
   },
   "shard_of_exitare": {
    "name": "Shard of Exitare",
@@ -19495,7 +19629,8 @@
    ],
    "ref": "table « Full material list » — Gift of Exordium → 100 Shard of Exitare",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 90390
   },
   "shard_of_friendship": {
    "name": "Shard of Friendship",
@@ -19517,7 +19652,8 @@
    ],
    "ref": "table « Full material list » — Gift of Shooshadoo → 100 Shard of Friendship",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 79784
   },
   "shard_of_liturgy": {
    "name": "Shard of Liturgy",
@@ -19539,7 +19675,8 @@
    ],
    "ref": "table « Full material list » — Gift of Balthazar → 100 Shard of Liturgy",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 81051
   },
   "shard_of_resolution": {
    "name": "Shard of Resolution",
@@ -19561,7 +19698,8 @@
    ],
    "ref": "table « Full material list » — Gift of the Four Legions → 100 Shard of Resolution",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 87031
   },
   "shard_of_spero": {
    "name": "Shard of Spero",
@@ -19583,7 +19721,8 @@
    ],
    "ref": "table « Full material list » — Gift of Pharus → 100 Shard of Spero",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 89947
   },
   "shard_of_tlehco": {
    "name": "Shard of Tlehco",
@@ -19605,7 +19744,8 @@
    ],
    "ref": "table « Full material list » — Gift of Xiuquatl → 100 Shard of Tlehco",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 88738
   },
   "shard_of_the_crown": {
    "name": "Shard of the Crown",
@@ -19627,7 +19767,8 @@
    ],
    "ref": "table « Full material list » — Gift of the Blade → 100 Shard of the Crown",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 81961
   },
   "shard_of_the_dark_arts": {
    "name": "Shard of the Dark Arts",
@@ -19649,7 +19790,8 @@
    ],
    "ref": "table « Full material list » — Gift of Ipos → 100 Shard of the Dark Arts",
    "checked": "2026-09-08",
-   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2"
+   "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
+   "apiId": 86120
   },
   "mystic_curio": {
    "name": "Mystic Curio",
@@ -19691,7 +19833,8 @@
    ],
    "ref": "wiki Mystic Curio — sept boîtes Recipe, une par trophée T5",
    "checked": "2026-09-08",
-   "verified": "sept recettes capturées, ingrédients communs identiques"
+   "verified": "sept recettes capturées, ingrédients communs identiques",
+   "apiId": 79410
   },
   "tribute_to_arah": {
    "name": "Tribute to Arah",
@@ -19713,7 +19856,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Arah",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 81871
   },
   "tribute_to_call_of_the_void": {
    "name": "Tribute to Call of the Void",
@@ -19757,7 +19901,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Endeavor",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 79453
   },
   "tribute_to_exitare": {
    "name": "Tribute to Exitare",
@@ -19801,7 +19946,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Friendship",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 79845
   },
   "tribute_to_liturgy": {
    "name": "Tribute to Liturgy",
@@ -19823,7 +19969,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Liturgy",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 81163
   },
   "tribute_to_resolution": {
    "name": "Tribute to Resolution",
@@ -19845,7 +19992,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Resolution",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 87165
   },
   "tribute_to_spero": {
    "name": "Tribute to Spero",
@@ -19867,7 +20015,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Spero",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 89478
   },
   "tribute_to_the_dark_arts": {
    "name": "Tribute to the Dark Arts",
@@ -19889,7 +20038,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of the Dark Arts",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 86266
   },
   "tribute_to_tlehco": {
    "name": "Tribute to Tlehco",
@@ -19911,7 +20061,8 @@
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Tlehco",
    "checked": "2026-09-08",
-   "verified": "exigence sourcée, coût inconnu"
+   "verified": "exigence sourcée, coût inconnu",
+   "apiId": 88756
   },
   "philosophers_stone": {
    "name": "Philosopher's Stone",
@@ -19929,7 +20080,8 @@
    ],
    "ref": "wiki Mystic Clover — section Acquisition",
    "checked": "2026-09-08",
-   "verified": "cite par la page, cout non chiffre"
+   "verified": "cite par la page, cout non chiffre",
+   "apiId": 20796
   },
   "astral_acclaim": {
    "name": "Astral Acclaim",
@@ -19989,7 +20141,8 @@
    ],
    "verified": true,
    "checked": "2026-09-09",
-   "ref": "tribute_to_the_queen.html (lot 8) -- corrige le nom invente 'tribute_to_the_crown'"
+   "ref": "tribute_to_the_queen.html (lot 8) -- corrige le nom invente 'tribute_to_the_crown'",
+   "apiId": 81974
   },
   "gift_of_war_prowess": {
    "name": "Gift of War Prowess",
@@ -20018,7 +20171,8 @@
    "recipe": {
     "fr": "MF : 1x legendary_war_insight + 1x eldritch_scroll + 50x obsidian_shard + 1x cube_of_stabilized_dark_energy.",
     "en": "MF: 1x legendary_war_insight + 1x eldritch_scroll + 50x obsidian_shard + 1x cube_of_stabilized_dark_energy."
-   }
+   },
+   "apiId": 84168
   },
   "grandmaster_tailors_mark": {
    "name": "Grandmaster Tailor's Mark",
@@ -20057,7 +20211,8 @@
    "recipe": {
     "fr": "Fabrication (rating 500). Ingredients : 1x carbonized_mithrillium_ingot, 2x square_of_vabbian_silk, 1x blended_leather_sheet, 1x bolt_of_empowered_silk.",
     "en": "Crafted (rating 500). Ingredients: 1x carbonized_mithrillium_ingot, 2x square_of_vabbian_silk, 1x blended_leather_sheet, 1x bolt_of_empowered_silk."
-   }
+   },
+   "apiId": 80857
   },
   "gift_of_competitive_prosperity": {
    "name": "Gift of Competitive Prosperity",
@@ -20086,7 +20241,8 @@
    "recipe": {
     "fr": "MF : 1x mist_core_fragment + 15x mystic_clover + 1x gift_of_condensed_might + 1x gift_of_condensed_magic.",
     "en": "MF: 1x mist_core_fragment + 15x mystic_clover + 1x gift_of_condensed_might + 1x gift_of_condensed_magic."
-   }
+   },
+   "apiId": 84174
   },
   "gift_of_competitive_prowess": {
    "name": "Gift of Competitive Prowess",
@@ -20115,7 +20271,8 @@
    "recipe": {
     "fr": "MF : 1x record_of_league_victories + 1x eldritch_scroll + 50x obsidian_shard + 1x cube_of_stabilized_dark_energy.",
     "en": "MF: 1x record_of_league_victories + 1x eldritch_scroll + 50x obsidian_shard + 1x cube_of_stabilized_dark_energy."
-   }
+   },
+   "apiId": 82350
   },
   "grandmaster_armorsmiths_mark": {
    "name": "Grandmaster Armorsmith's Mark",
@@ -20164,7 +20321,8 @@
    "recipe": {
     "fr": "Fabrication (rating 500). Ingredients : 2x carbonized_mithrillium_ingot, 1x square_of_vabbian_silk, 1x blended_leather_sheet, 1x empowered_mithril_ingot.",
     "en": "Crafted (rating 500). Ingredients: 2x carbonized_mithrillium_ingot, 1x square_of_vabbian_silk, 1x blended_leather_sheet, 1x empowered_mithril_ingot."
-   }
+   },
+   "apiId": 80685
   },
   "grandmaster_leatherworkers_mark": {
    "name": "Grandmaster Leatherworker's Mark",
@@ -20213,7 +20371,8 @@
    "recipe": {
     "fr": "Fabrication (rating 500). Ingredients : 1x carbonized_mithrillium_ingot, 1x square_of_vabbian_silk, 1x blended_leather_sheet, 1x empowered_cured_thick_leather_square.",
     "en": "Crafted (rating 500). Ingredients: 1x carbonized_mithrillium_ingot, 1x square_of_vabbian_silk, 1x blended_leather_sheet, 1x empowered_cured_thick_leather_square."
-   }
+   },
+   "apiId": 80799
   },
   "carbonized_mithrillium_ingot": {
    "name": "Carbonized Mithrillium Ingot",
@@ -20244,7 +20403,8 @@
    "recipe": {
     "fr": "Fabrication (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients : 10x iron_ingot, 5x steel_ingot, 10x darksteel_ingot, 1x lump_of_mithrillium.",
     "en": "Crafted (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients: 10x iron_ingot, 5x steel_ingot, 10x darksteel_ingot, 1x lump_of_mithrillium."
-   }
+   },
+   "apiId": 80714
   },
   "square_of_vabbian_silk": {
    "name": "Square Of Vabbian Silk",
@@ -20275,7 +20435,8 @@
    "recipe": {
     "fr": "Fabrication (Leatherworker/Armorsmith/Tailor, rating 500). Ingredients : 10x bolt_of_wool, 5x bolt_of_cotton, 10x bolt_of_linen, 1x spool_of_silk_weaving_thread.",
     "en": "Crafted (Leatherworker/Armorsmith/Tailor, rating 500). Ingredients: 10x bolt_of_wool, 5x bolt_of_cotton, 10x bolt_of_linen, 1x spool_of_silk_weaving_thread."
-   }
+   },
+   "apiId": 80775
   },
   "blended_leather_sheet": {
    "name": "Blended Leather Sheet",
@@ -20306,7 +20467,8 @@
    "recipe": {
     "fr": "Fabrication (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients : 10x cured_thin_leather_square, 5x cured_coarse_leather_square, 10x cured_rugged_leather_square, 1x spool_of_thick_elonian_cord.",
     "en": "Crafted (Leatherworker/Armorsmith/Tailor/Artificer/Weaponsmith/Huntsman, rating 500). Ingredients: 10x cured_thin_leather_square, 5x cured_coarse_leather_square, 10x cured_rugged_leather_square, 1x spool_of_thick_elonian_cord."
-   }
+   },
+   "apiId": 80723
   },
   "empowered_mithril_ingot": {
    "name": "Empowered Mithril Ingot",
@@ -20333,7 +20495,8 @@
    "recipe": {
     "fr": "Fabrication (Armorsmith, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x mithril_ingot.",
     "en": "Crafted (Armorsmith, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x mithril_ingot."
-   }
+   },
+   "apiId": 80831
   },
   "empowered_cured_thick_leather_square": {
    "name": "Empowered Cured Thick Leather Square",
@@ -20360,7 +20523,8 @@
    "recipe": {
     "fr": "Fabrication (Leatherworker, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 65x cured_thick_leather_square.",
     "en": "Crafted (Leatherworker, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 65x cured_thick_leather_square."
-   }
+   },
+   "apiId": 80743
   },
   "bolt_of_empowered_silk": {
    "name": "Bolt Of Empowered Silk",
@@ -20387,7 +20551,8 @@
    "recipe": {
     "fr": "Fabrication (Tailor, rating 500). Ingredients : 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x bolt_of_silk.",
     "en": "Crafted (Tailor, rating 500). Ingredients: 1x glob_of_dark_matter, 1x vial_of_might, 1x vial_of_magic, 150x bolt_of_silk."
-   }
+   },
+   "apiId": 80686
   },
   "record_of_league_victories": {
    "name": "Record of League Victories",
@@ -20414,7 +20579,8 @@
    "recipe": {
     "fr": "Forge Mystique / conversion. Ingredients : 30x pvp_league_ticket.",
     "en": "Mystic Forge / conversion. Ingredients: 30x pvp_league_ticket."
-   }
+   },
+   "apiId": 82700
   },
   "iron_ingot": {
    "name": "Iron Ingot",
