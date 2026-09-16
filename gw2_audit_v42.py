@@ -1495,12 +1495,29 @@ def check_needed_for_chiffre(data, errors, warnings):
     passera en erreur.
     """
     cc = data.get("craft_components", {})
+    # Une arete couverte par un alt_group N'EST PAS une arete sans quantite : sa
+    # quantite est portee par alt_groups[gid].qty, une seule fois pour les N
+    # options. Le JSX l'exige meme -- computeGrandTotal ne compte que l'option
+    # choisie, et les options ne doivent porter AUCUNE cle qty sur ces cibles,
+    # sinon l'option non retenue serait comptee quand meme. Chercher la quantite
+    # dans qty pour ces aretes reclamait donc exactement ce que le calcul
+    # interdit. Les six orbes de gift_of_infused_gems sont dans ce cas.
+    couvertes_alt = set()
+    for groupe in (data.get("alt_groups") or {}).values():
+        if not isinstance(groupe, dict):
+            continue
+        for cible in (groupe.get("targets") or []):
+            for option in (groupe.get("options") or []):
+                couvertes_alt.add((option, cible))
     manquantes = []
     inverses = []
     for cid, comp in sorted(cc.items()):
         if not isinstance(comp, dict):
             continue
-        declares = {p for p in (comp.get("needed_for") or []) if p in cc}
+        declares = {
+            p for p in (comp.get("needed_for") or [])
+            if p in cc and (cid, p) not in couvertes_alt
+        }
         chiffres = {
             str(k).split("__")[0]
             for k in (comp.get("qty") or {})

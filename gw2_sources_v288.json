@@ -4764,10 +4764,16 @@
       "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
       "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Trade Contracts. No limit."
      },
-     "cost_trade_contracts": 300
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Trade Contracts)"
     }
    ],
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Contrats commerciaux, sans limite.",
+    "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Trade Contracts, no cap."
+   }
   },
   "trade_contract": {
    "name": "Trade Contract",
@@ -4775,7 +4781,9 @@
    "needed_for": [
     "gift_of_the_rider"
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_the_rider": 300
+   },
    "farmable": true,
    "sources": [
     {
@@ -8318,15 +8326,22 @@
     {
      "type": "mystic_forge",
      "tip": {
-      "fr": "MF : Amalgamated Gemstones + Purified Rift Essence + autres matériaux. Voir wiki Endless Summer.",
-      "en": "MF: Amalgamated Gemstones + Purified Rift Essence + other materials. See the Endless Summer wiki."
-     }
+      "fr": "MF (six recettes, une par gemme de base) : 250 Éclats d'obsidienne + 250 orbes (béryl, chrysocolle, émeraude, opale, rubis ou saphir) + 1 Éclat de pierre de sang + 100 Pierres runiques mystiques.",
+      "en": "MF (six recipes, one per core gemstone): 250 Obsidian Shards + 250 orbs (beryl, chrysocola, emerald, opal, ruby or sapphire) + 1 Bloodstone Shard + 100 Mystic Runestones."
+     },
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "wiki Gift of Infused Gems — six boites Recipe"
     }
    ],
    "qty": {
     "gift_of_rays": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF (six recettes, une par gemme de base) : 250 Éclats d'obsidienne + 250 orbes (béryl, chrysocolle, émeraude, opale, rubis ou saphir) + 1 Éclat de pierre de sang + 100 Pierres runiques mystiques.",
+    "en": "MF (six recipes, one per core gemstone): 250 Obsidian Shards + 250 orbs (beryl, chrysocola, emerald, opal, ruby or sapphire) + 1 Bloodstone Shard + 100 Mystic Runestones."
+   }
   },
   "gift_of_rays": {
    "name": "Gift of Rays",
@@ -8485,9 +8500,7 @@
   "curious_mursaat_remnant": {
    "name": "Curious Mursaat Remnant",
    "apiId": 104800,
-   "needed_for": [
-    "gift_of_the_mistburned_isles"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
@@ -8558,13 +8571,23 @@
    "sources": [
     {
      "type": "mystic_forge",
-     "tip": "MF : 100× Vials of Titan Melted Liquid Obsidian + 50× Mists Gate Residues + 100× Shards of Mistburned Barrens + 100× Shards of Bava Nisos."
+     "tip": {
+      "fr": "MF : 1 Don des ruines mursaat + 1 Don de l'errance de Janthir + 250 Pierres runiques mursaat + 250 Pierres runiques mystiques.",
+      "en": "MF: 1 Gift of the Mursaat Ruins + 1 Gift of Janthir Wanderlust + 250 Mursaat Runestones + 250 Mystic Runestones."
+     },
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "wiki Gift of the Mistburned Isles — boite Recipe"
     }
    ],
    "qty": {
     "orrax_manifested": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "MF : 1 Don des ruines mursaat + 1 Don de l'errance de Janthir + 250 Pierres runiques mursaat + 250 Pierres runiques mystiques.",
+    "en": "MF: 1 Gift of the Mursaat Ruins + 1 Gift of Janthir Wanderlust + 250 Mursaat Runestones + 250 Mystic Runestones."
+   }
   },
   "gift_of_shadows_orrax": {
    "name": "Gift of Shadows",
@@ -9737,7 +9760,6 @@
     "discounted_shard_of_janthir_syntri",
     "discounted_shard_of_lowland_shore",
     "discounted_shard_of_mistburned_barrens",
-    "gift_of_infused_gems",
     "klobjarne_geirr",
     "shard_of_bava_nisos",
     "funerary_incense"
@@ -10067,7 +10089,7 @@
    "apiId": 46752,
    "qty": {
     "lesser_vision_crystal": 1,
-    "vision_crystal": 2
+    "vision_crystal": 1
    },
    "kind": "purchase",
    "farmable": true,
@@ -10104,7 +10126,7 @@
    "apiId": 46732,
    "qty": {
     "lesser_vision_crystal": 2,
-    "vision_crystal": 10
+    "vision_crystal": 5
    },
    "kind": "refined",
    "farmable": true,
@@ -10134,7 +10156,7 @@
    "apiId": 46734,
    "qty": {
     "lesser_vision_crystal": 2,
-    "vision_crystal": 10
+    "vision_crystal": 5
    },
    "kind": "refined",
    "farmable": true,
@@ -10164,7 +10186,7 @@
    "apiId": 46730,
    "qty": {
     "lesser_vision_crystal": 2,
-    "vision_crystal": 10
+    "vision_crystal": 5
    },
    "kind": "refined",
    "farmable": true,
@@ -67400,7 +67422,9 @@
     "fr": "La recette de la Forge mystique demande un seul don de maîtrise. Astralaria, HOPE, Nevermore et Chuka and Champawat n'acceptent que Maguuma ; les douze autres laissent le choix.",
     "en": "The Mystic Forge recipe asks for a single mastery gift. Astralaria, HOPE, Nevermore and Chuka and Champawat only accept Maguuma; the other twelve leave the choice open."
    },
-   "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme"
+   "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme",
+   "verified": true,
+   "checked": "2026-09-16"
   },
   "gemmes_infusees": {
    "qty": 250,
@@ -67424,7 +67448,9 @@
     "fr": "La page indique que n'importe quelle gemme du jeu de base convient : six recettes, une par couleur. Choisis celle que tu as en stock ou la moins chère au comptoir.",
     "en": "The page states any core game gemstone works: six recipes, one per colour. Pick whichever you have in stock, or the cheapest on the Trading Post."
    },
-   "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes"
+   "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes",
+   "verified": true,
+   "checked": "2026-09-16"
   },
   "trophee_mystic_curio": {
    "qty": 35,
@@ -67449,7 +67475,9 @@
     "fr": "Sept recettes, une par trophée de palier 5. Prends celui dont tu as le plus en stock : c'est le même prix ailleurs.",
     "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
    },
-   "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
+   "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée",
+   "verified": true,
+   "checked": "2026-09-16"
   },
   "tribut_20": {
    "qty": 20,
