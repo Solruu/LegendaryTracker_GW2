@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v288.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v289.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 7 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -19,6 +19,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 |---|---:|
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
+| `Essence of Annihilation` | 1 |
 | `Fractalline Spark` | 1 |
 | `Gift of Magical / Mighty Prosperity` | 1 |
 | `Olmakhan Bandolier` | 1 |
@@ -32,9 +33,9 @@ ignore ce que la cible contient réellement.
 
 | page wiki | coûts à plat concernés |
 |---|---:|
-| `Obsidian armor` | 15 |
 | `Ardent Glorious armor` | 10 |
 | `Triumphant Hero's armor` | 10 |
+| `Obsidian armor` | 8 |
 
 ## 2 — 0 composants en arbitrage sans page au dépôt
 

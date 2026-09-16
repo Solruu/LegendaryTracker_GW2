@@ -1,7 +1,7 @@
 # Dette — arbre de craft chiffre
 
-**Etat courant : 8 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v288.json`,
-controle `check_needed_for_chiffre` (audit v42). Le detail est en section K, en bas.
+**Etat courant : 3 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v289.json`,
+controle `check_needed_for_chiffre` (audit v42). Le detail est en section L, en bas.
 
 Mesure d'origine du 05/09/2026 sur `gw2_sources_v203.json` (audit v29) : 100 aretes.
 Les sections A a J ci-dessous sont le journal de la reduction et restent telles
@@ -584,3 +584,66 @@ laissee en place tant que la voie Lyhr est decrite dans les sources.
    `gw2_material_lists_v1.json`.
 8. `recipe` ne conserve que ce qui n'est pas chiffrable : voies alternatives de
    la Forge mystique.
+
+
+## L — 16/09/2026, seconde passe : 8 -> 3 aretes
+
+**Les trois essences de faille, invariance exacte.** La boite Recipe donne
+250 Fine + 100 Masterwork + 50 Rare + 50 Ecto par Amalgamated Rift Essence.
+Les valeurs a plat d'Orrax (27 ARE), Klobjarne (12) et Obsidian (72, soit 12
+par piece) valaient EXACTEMENT ARE x ce nombre : 6750/2700/1350,
+3000/1200/600, 18000/7200/3600. Plats retires, aretes posees, **aucun total
+ne bouge**. Endless Summer garde ses plats : sa chaine ne contient aucune ARE,
+et ses 2500/1000/500 correspondraient a 10 ARE que rien ne declare — arete
+manquante, pas doublon.
+
+**Essence of Annihilation = 350 tickets d'escarmouche**, atteste noir sur
+blanc par la page Warbringer (« Essence of Annihilation (costs: WvW Skirmish
+Claim Ticket x350) »). Aucun plat ne la concurrencait : Warbringer passe de
+2450 a 2800 tickets, Conflux de 1850 a 2200. Les `required` codes en dur du
+JSX ont ete alignes (l'audit bloquait sinon).
+
+**Le meme achat facture dans trois devises.** `testimony_of_jade_heroics`
+(apiId 65) et `testimony_of_heroics` (26464) portaient des plats qui doublaient
+la chaine Castoran : Warbringer affichait 500 Castoran + 500 Jade + 250
+Heroics, Conflux 750 + 250 + 500, Triumphant Hero 1500 + 1500. Or les deux
+pages concernees (Essence of Animosity, Certificate of Heroics) n'ont plus que
+DEUX lignes de vendeur disponibles, toutes deux en Testimony of **Castoran**
+Heroics ; les lignes Jade et Desert y sont marquees « item currently
+unavailable ». Une devise retiree du jeu ne s'additionne pas a celle qui la
+remplace. Plats retires, la chaine Castoran les portait deja.
+
+### Ce qui reste
+
+| arete | quantite lisible | ce qui bloque |
+|---|---|---|
+| `gift_of_craftsmanship -> gift_of_prosperity` | 1 | l'entite `gift_of_prosperity` reste a trancher |
+| `xunlai_electrum_ingot -> spark_of_sentience` | 21 | `qty.aurora` vaut un 0 explicite, pose deliberement |
+| `glob_of_ectoplasm -> gift_of_research` | 10 | surcout de la voie Lyhr, pas un ingredient |
+
+**`gift_of_prosperity` : moitie du probleme reglee.** Le wiki le tranche pour
+l'armure Obsidienne : chaque piece consomme un Gift of **Magical** Prosperity
+(torse, tete, epaules) ou **Mighty** (jambes, gants, bottes), a 9 trefles
+chacun — 3 + 3 par set. `gift_of_prosperity`, lui, porte 15 trefles : c'est la
+variante raid, pas celle d'Obsidienne. Obsidienne etait donc facturee deux
+fois, a deux tarifs differents : 54 trefles par la cle a plat **et** 90 par le
+mauvais don. Le lien Obsidienne -> `gift_of_prosperity` est retire, les vrais
+dons sont chaines, et les plats devenus doublons (`gift_of_craftsmanship`,
+`gift_of_research`, `gift_of_condensed_magic`/`_might`, `mystic_clover`)
+retires. Obsidienne passe de **144 a 54 trefles mystiques** ; tout le reste est
+invariant.
+
+Il reste le versant Perfected Envoy, ou `gift_of_prosperity` se contredit
+lui-meme : son nom dit « Magical / Mighty », sa prose de recette annonce 9
+trefles, et `mystic_clover` lui en declare 15. Sans capture de la page du don
+du raid, je ne sais pas lequel des deux chiffres est le sien.
+
+
+### Orphelins crees par cette passe, a trancher
+
+- `testimony_of_jade_heroics` : `qty` et `needed_for` vides.
+- `testimony_of_heroics` : il ne reste que `warbringer: 250`, sans contrepartie
+  Castoran identifiee — seule valeur de cette famille que je n'ai pas su
+  rattacher.
+- `curious_mursaat_remnant` (passe precedente) : `qty` vide, apiId 104800
+  introuvable dans tout le corpus.

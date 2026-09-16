@@ -1206,9 +1206,8 @@ const LEGENDARIES = {
     description: { fr: "Anneau légendaire — exclusif Monde contre Monde", en: "Legendary Ring — World vs World exclusive" },
     resetType: "weekly",
     currencies: [
-      { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 },
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 2200, icon: "SK", apiId: 26 },
       { id: "memory", name: "Memory of Battle", required: 1750, icon: "MB", apiId: 71581 },
-      { id: "jade",     name: "Testimony of Jade Heroics",     required: 250, icon: "JH", apiId: 65 },
       { id: "castoran", name: "Testimony of Castoran Heroics", required: 750, icon: "CH", apiId: 82 },
       { id: "badges", name: "Badge of Honor", required: 4000, icon: "BH", apiId: 15 },
     ],
@@ -1243,10 +1242,9 @@ const LEGENDARIES = {
     resetType: "weekly",
     requirementNoteKey: "wb_req_note",
     currencies: [
-      { id: "tickets", name: "Skirmish Claim Tickets", required: 2450, icon: "SK", apiId: 26 },
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 2800, icon: "SK", apiId: 26 },
       { id: "memory",  name: "Memory of Battle",       required: 750,  icon: "MB", apiId: 71581 },
       { id: "badges",  name: "Badge of Honor",         required: 3250, icon: "BH", apiId: 15 },
-      { id: "jade",     name: "Testimony of Jade Heroics",     required: 500, icon: "JH", apiId: 65 },
       { id: "castoran", name: "Testimony of Castoran Heroics", required: 500, icon: "CH", apiId: 82 },
     ],
     currencyNote: { fr: "⚠ Testimonies : les Jade (ère EoD) ne sont PLUS obtenables depuis VoE — les rank-ups McM donnent des Castoran, mais les vendeurs (Dugan, War Razor) exigent encore des Jade (incohérence signalée aux forums depuis fév. 2026, non corrigée en avril). Les deux compteurs sont suivis : si ArenaNet aligne la recette sur Castoran, le second prend le relais. Badge of Honor corrigé 1250→3250 (11/09/2026) : Gift of Battle (4x) porte 500 Badge of Honor chacun, non compté avant que sa page ne soit capturée.", en: "⚠ Testimonies: Jade (EoD era) can NO LONGER be obtained since VoE — WvW rank-ups grant Castoran, but vendors (Dugan, War Razor) still demand Jade (inconsistency reported on the forums since Feb 2026, unfixed as of April). Both counters are tracked: if ArenaNet aligns the recipe to Castoran, the second one takes over. Badge of Honor corrected 1250→3250 (09/11/2026): Gift of Battle (4x) carries 500 Badge of Honor each, uncounted before its page was captured." },

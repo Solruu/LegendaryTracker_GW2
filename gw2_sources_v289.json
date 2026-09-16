@@ -4175,7 +4175,10 @@
     {
      "type": "wvw_vendor",
      "npc": "Skirmish Supervisor (WvW maps)",
-     "tip": "Purchase for 350 WvW Skirmish Claim Tickets."
+     "tip": "Purchase for 350 WvW Skirmish Claim Tickets.",
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "wiki Warbringer — « Essence of Annihilation (costs: WvW Skirmish Claim Ticket x350) »"
     }
    ],
    "kind": "intermediate",
@@ -4403,7 +4406,6 @@
     "warbringer"
    ],
    "qty": {
-    "conflux": 500,
     "warbringer": 250
    },
    "farmable": true,
@@ -5189,10 +5191,8 @@
     "orrax_manifested"
    ],
    "qty": {
-    "obsidian__per_piece": 3000,
     "endless_summer": 2500,
-    "klobjarne_geirr": 3000,
-    "orrax_manifested": 6750
+    "amalgamated_rift_essence": 250
    },
    "farmable": true,
    "sources": [
@@ -5253,10 +5253,8 @@
     "orrax_manifested"
    ],
    "qty": {
-    "obsidian__per_piece": 1200,
     "endless_summer": 1000,
-    "klobjarne_geirr": 1200,
-    "orrax_manifested": 2700
+    "amalgamated_rift_essence": 100
    },
    "farmable": true,
    "sources": [
@@ -5291,10 +5289,8 @@
     "orrax_manifested"
    ],
    "qty": {
-    "obsidian__per_piece": 600,
     "endless_summer": 500,
-    "klobjarne_geirr": 600,
-    "orrax_manifested": 1350
+    "amalgamated_rift_essence": 50
    },
    "farmable": true,
    "sources": [
@@ -5392,7 +5388,6 @@
     "gift_of_the_elders"
    ],
    "qty": {
-    "obsidian__per_piece": 1,
     "gift_of_aurene_s_argument": 1,
     "gift_of_aurene_s_bite": 1,
     "gift_of_aurene_s_breath": 1,
@@ -5990,7 +5985,6 @@
     "gen3_aurenes_wisdom": 39,
     "gen3_aurenes_breath": 39,
     "perfected_envoy__per_piece": 15,
-    "obsidian__per_piece": 9,
     "endless_summer": 10,
     "orrax_manifested": 30,
     "triumphant_hero__per_piece": 15,
@@ -6293,7 +6287,6 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
-    "obsidian__per_piece": 1,
     "gift_of_magical_prosperity": 1,
     "gift_of_mighty_prosperity": 1
    },
@@ -6331,7 +6324,6 @@
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__full_set": 3,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
     "gift_of_the_homesteader": 1,
@@ -6385,7 +6377,6 @@
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "selachimorpha": 2,
-    "obsidian__full_set": 3,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
     "gift_of_the_homesteader": 1,
@@ -9631,11 +9622,9 @@
    "name": "Gift of Magical / Mighty Prosperity",
    "apiId": null,
    "needed_for": [
-    "armor_obsidian_per_piece",
     "perfected_envoy"
    ],
    "qty": {
-    "obsidian__per_piece": 1,
     "perfected_envoy": 1
    },
    "farmable": true,
@@ -10517,7 +10506,8 @@
     "triumphant_hero__piece_heavy_shoulders": 175,
     "triumphant_hero__piece_heavy_chest": 350,
     "triumphant_hero__piece_heavy_gloves": 175,
-    "triumphant_hero__piece_heavy_legs": 260
+    "triumphant_hero__piece_heavy_legs": 260,
+    "essence_of_annihilation": 350
    },
    "farmable": true,
    "sources": [
@@ -10646,10 +10636,7 @@
    "name": "Testimony of Jade Heroics",
    "apiId": 65,
    "kind": "currency",
-   "qty": {
-    "warbringer": 500,
-    "certificate_of_heroics": 250
-   },
+   "qty": {},
    "farmable": true,
    "sources": [
     {
@@ -10668,10 +10655,7 @@
    "verified": true,
    "checked": "2026-08-13",
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
-   "needed_for": [
-    "certificate_of_heroics",
-    "essence_of_animosity"
-   ]
+   "needed_for": []
   },
   "testimony_of_castoran_heroics": {
    "name": "Testimony of Castoran Heroics",
@@ -18489,9 +18473,11 @@
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "eikasia": 1
+    "eikasia": 1,
+    "obsidian__full_set": 3
    },
    "needed_for": [
+    "armor_obsidian_full_set",
     "eikasia"
    ],
    "sources": [
@@ -18510,9 +18496,11 @@
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "eikasia": 1
+    "eikasia": 1,
+    "obsidian__full_set": 3
    },
    "needed_for": [
+    "armor_obsidian_full_set",
     "eikasia"
    ],
    "sources": [
