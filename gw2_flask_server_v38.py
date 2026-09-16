@@ -1676,18 +1676,66 @@ def validate_key():
 
 # ─── Entrypoint ──────────────────────────────────────────────────────────────
 
+def _annonce_identite_cle():
+    """Dit a qui appartient la cle reellement utilisee, et ce qu'elle permet.
+
+    Sans ca, une cle valide mais sous-portee echoue en 403 sur les endpoints
+    qui exigent 'inventories' (legendaryarmory, bank, materials) pendant que
+    /api/progression repond 200 en mode degrade -- panne quasi invisible.
+    """
+    cle = os.environ.get("GW2_API_KEY")
+    if not cle:
+        return
+    try:
+        r = requests.get(f"{GW2_API_BASE}/tokeninfo",
+                         headers={"Authorization": f"Bearer {cle}"}, timeout=5)
+        if r.status_code != 200:
+            print(f"[GW2] ATTENTION : la cle du .env est refusee (HTTP {r.status_code})")
+            return
+        info = r.json()
+        perms = set(info.get("permissions") or [])
+        print(f"[GW2] Cle « {info.get('name')} » — scopes : {', '.join(sorted(perms))}")
+        requis = {"account", "progression", "inventories"}
+        manquants = requis - perms
+        if manquants:
+            print(f"[GW2] ATTENTION : scope(s) manquant(s) : {', '.join(sorted(manquants))} "
+                  f"— l'armurerie et les stocks (banque/materiaux) repondront 403")
+    except Exception as e:
+        print(f"[GW2] Identite de la cle non verifiee ({type(e).__name__})")
+
+
 def load_env():
     """Charge automatiquement le .env depuis le dossier du .exe ou du script."""
     base = os.path.dirname(sys.executable if getattr(sys, 'frozen', False) else os.path.abspath(__file__))
     env_path = os.path.join(base, ".env")
     if os.path.exists(env_path):
+        # setdefault etait applique DANS la boucle : la PREMIERE occurrence
+        # d'une cle gagnait, et toute ligne corrigee ajoutee plus bas dans le
+        # meme fichier etait ignoree en silence. On lit le fichier d'abord
+        # (derniere occurrence gagnante, comme tout .env), on signale les
+        # doublons, puis on applique -- setdefault ne joue plus qu'entre le
+        # fichier et l'environnement systeme, ce qui reste le comportement
+        # voulu.
+        valeurs, doublons = {}, []
         with open(env_path) as f:
             for line in f:
                 line = line.strip()
                 if line and not line.startswith("#") and "=" in line:
                     k, v = line.split("=", 1)
-                    os.environ.setdefault(k.strip(), v.strip())
+                    k, v = k.strip(), v.strip()
+                    if k in valeurs and valeurs[k] != v:
+                        doublons.append(k)
+                    valeurs[k] = v
+        for k, v in valeurs.items():
+            if os.environ.get(k) and os.environ[k] != v:
+                print(f"[GW2] ATTENTION : {k} existe deja dans l'environnement "
+                      f"systeme — c'est CETTE valeur qui est utilisee, pas celle du .env")
+            os.environ.setdefault(k, v)
+        for k in dict.fromkeys(doublons):
+            print(f"[GW2] ATTENTION : {k} est defini plusieurs fois dans le .env "
+                  f"avec des valeurs differentes — la DERNIERE est retenue")
         print(f"[GW2] Cle API chargee depuis {env_path}")
+        _annonce_identite_cle()
     else:
         print(f"[GW2] Pas de .env trouve — cle API a passer via le tracker")
 
