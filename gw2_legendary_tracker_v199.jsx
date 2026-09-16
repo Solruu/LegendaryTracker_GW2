@@ -5346,7 +5346,13 @@ export default function GW2LegendaryTracker() {
                 style={{ width: 140, fontSize: 10, padding: "4px 7px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(226,201,126,0.2)", borderRadius: 6, color: "#e2c97e" }} />
             )}
             <button
-              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); }}
+              // Ce bouton synchronisait le stock (gtStockStatus, "146 stocks")
+              // mais jamais l'Armory (gtApiStatus, les legendaires "deja
+              // obtenues") -- deux etats distincts, un seul geste attendu.
+              // Il fallait deplier "Auto-detect via GW2 API key" plus bas et
+              // cliquer SON propre Detecter pour ca, ce que rien ici ne
+              // laissait deviner. Un clic declenche desormais les trois.
+              onClick={() => { fetchFromFlask(); if (gtApiKey) fetchGtStocks(); detectGtArmory(); }}
               disabled={apiStatus === "loading"}
               style={{
                 background: apiStatus === "ok" ? "rgba(74,222,128,0.1)" : apiStatus === "error" ? "rgba(248,113,113,0.1)" : "rgba(226,201,126,0.06)",
