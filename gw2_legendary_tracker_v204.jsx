@@ -624,16 +624,31 @@ async function fetchPairs(endpoint, ids) {
     }
   }
 }
-// onPartial(m) : appelé après chaque phase — persistance progressive (tolérance aux pannes partielles)
-async function fetchFrLegNames(onPartial) {
-  const stats = { legs: 0, items: 0, currencies: 0, achievements: 0, fails: [] };
+// apiId (chaine) -> [legId]. DEUX sources se completent et aucune ne suffit :
+// _meta.armory_apiid_to_legid porte les legendaires eclates en plusieurs ids
+// (les 18 pieces d'un set), legendaries[].armory_api_id porte l'id unique des
+// autres. L'i18n fusionnait deja les deux ; la detection d'armurerie ne lisait
+// que _meta, et manquait donc fractal_capacitor (74155) et
+// gen2_the_binding_of_ipos (91048), presents seulement dans legendaries. Deux
+// lectures de la meme information divergeaient : une seule construction,
+// partagee par tous les appelants.
+function armoryReverseMap() {
   const map = {};
   for (const [apiId, legIds] of Object.entries(SOURCES_DB?._meta?.armory_apiid_to_legid ?? {})) {
     map[apiId] = [...(map[apiId] ?? []), ...legIds];
   }
   for (const [legId, e] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
-    if (e?.armory_api_id) map[String(e.armory_api_id)] = [...(map[String(e.armory_api_id)] ?? []), legId];
+    if (e?.armory_api_id) {
+      const k = String(e.armory_api_id);
+      if (!(map[k] ?? []).includes(legId)) map[k] = [...(map[k] ?? []), legId];
+    }
   }
+  return map;
+}
+// onPartial(m) : appelé après chaque phase — persistance progressive (tolérance aux pannes partielles)
+async function fetchFrLegNames(onPartial) {
+  const stats = { legs: 0, items: 0, currencies: 0, achievements: 0, fails: [] };
+  const map = armoryReverseMap();
   const ids = Object.keys(map);
   const legs = {};
   const legTermBlocklist = new Set(["Vision"]); // « Vision » = substring de noms d'items (Lesser Vision Crystal…)
@@ -773,12 +788,19 @@ function RequirementsBlocks({ requirements, apiAch, currencies }) {
 }
 
 // ── TrinketGuide : fiche guide détaillée d'un colifichet (données SOURCES_DB) ──
-function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSteps, toggleStep }) {
+function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, armoryRaw = new Set(), trinketSteps, toggleStep }) {
   const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
   const T = DB[curKey];
   if (!T) return <div style={{ padding: 20, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>SOURCES_DB indisponible — rebuild requis.</div>;
   const armoryId = T.armory_api_id;
-  const owned = !!armoryId && (gtOwnedIds.has(armoryId) || gtManualOwnedIds.has(armoryId));
+  // gtOwnedIds et gtManualOwnedIds contiennent des legId ("conflux"), PAS des
+  // apiId : la detection projette les ids bruts de l'armurerie sur les legId
+  // via armoryReverseMap, et le clic droit du grand total enregistre un legId.
+  // Interroger ces ensembles avec un apiId ne trouvait donc jamais rien et le
+  // badge restait « Non possede » meme apres une synchro reussie. Les ids
+  // bruts, eux, vivent dans armoryRaw -- c'est ce que lisent deja les onglets
+  // Obsidian et Armes.
+  const owned = gtOwnedIds.has(curKey) || gtManualOwnedIds.has(curKey);
   const achOf = (k) => ((apiAch ?? {})[k] ?? null);
   const badge = (txt, color) => (
     <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, border: `1px solid ${color}`, color, letterSpacing: "0.05em", fontFamily: "'Cinzel', serif", whiteSpace: "nowrap" }}>{txt}</span>
@@ -800,7 +822,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
             if (LE?.isArmorSet || T.slot === "armor_set") {
               const sIds = LE?.armoryApiIds ?? null;
               if (sIds) {
-                const nOwned = sIds.filter(x => gtOwnedIds.has(x) || gtManualOwnedIds.has(x)).length;
+                const nOwned = sIds.filter(x => armoryRaw.has(x)).length;
                 return badge(NX({ fr: `${nOwned}/${sIds.length} pièces — onglet Pièces`, en: `${nOwned}/${sIds.length} pieces — Pieces tab` }), nOwned > 0 ? "#4ade80" : "rgba(226,201,126,0.35)");
               }
               return badge(NX({ fr: "Détection par nom — onglet Pièces", en: "Name-based detection — Pieces tab" }), "rgba(94,234,212,0.55)");
@@ -4272,7 +4294,7 @@ export default function GW2LegendaryTracker() {
   const [gtOwnedIds, setGtOwnedIds] = useState(() => {
     try {
       const raw = new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]"));
-      const reverseMap = SOURCES_DB?._meta?.armory_apiid_to_legid ?? {};
+      const reverseMap = armoryReverseMap();
       const s = new Set();
       for (const id of raw) {
         const legIds = reverseMap[String(id)] ?? [];
@@ -4641,7 +4663,7 @@ export default function GW2LegendaryTracker() {
     setGtApiStatus("loading");
     setGtApiError("");
 
-    const reverseMap = SOURCES_DB?._meta?.armory_apiid_to_legid ?? {};
+    const reverseMap = armoryReverseMap();
 
     // 1. Essayer Flask (clé déjà stockée côté serveur)
     let data = null;
@@ -5353,8 +5375,9 @@ export default function GW2LegendaryTracker() {
             const rich = TRINKET_RICH.includes(k);
             const e = rich ? LEGENDARIES[k] : null;
             const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB.legendaries?.[k] : null);
-            const aid = S?.armory_api_id;
-            const kOwned = !!aid && (gtOwnedIds.has(aid) || gtManualOwnedIds.has(aid));
+            // Meme correction que dans TrinketGuide : ces deux ensembles sont
+            // indexes par legId, pas par apiId.
+            const kOwned = gtOwnedIds.has(k) || gtManualOwnedIds.has(k);
             const active = rich ? (selectedLeg === k) : (selectedLeg === "trinkets" && selTrinket === k);
             return (
               <button key={k}
@@ -7120,6 +7143,7 @@ export default function GW2LegendaryTracker() {
         <TrinketGuide
           curKey={(leg.trinketKeys ?? []).includes(selTrinket) ? selTrinket : (leg.trinketKeys ?? [])[0]}
           apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          armoryRaw={armoryRaw}
           trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
       )}
 
@@ -7127,6 +7151,7 @@ export default function GW2LegendaryTracker() {
         <TrinketGuide
           curKey={selectedLeg}
           apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          armoryRaw={armoryRaw}
           trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
       )}
 

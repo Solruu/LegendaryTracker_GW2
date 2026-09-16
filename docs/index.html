@@ -687,16 +687,31 @@ async function fetchPairs(endpoint, ids) {
     }
   }
 }
-// onPartial(m) : appelé après chaque phase — persistance progressive (tolérance aux pannes partielles)
-async function fetchFrLegNames(onPartial) {
-  const stats = { legs: 0, items: 0, currencies: 0, achievements: 0, fails: [] };
+// apiId (chaine) -> [legId]. DEUX sources se completent et aucune ne suffit :
+// _meta.armory_apiid_to_legid porte les legendaires eclates en plusieurs ids
+// (les 18 pieces d'un set), legendaries[].armory_api_id porte l'id unique des
+// autres. L'i18n fusionnait deja les deux ; la detection d'armurerie ne lisait
+// que _meta, et manquait donc fractal_capacitor (74155) et
+// gen2_the_binding_of_ipos (91048), presents seulement dans legendaries. Deux
+// lectures de la meme information divergeaient : une seule construction,
+// partagee par tous les appelants.
+function armoryReverseMap() {
   const map = {};
   for (const [apiId, legIds] of Object.entries(SOURCES_DB?._meta?.armory_apiid_to_legid ?? {})) {
     map[apiId] = [...(map[apiId] ?? []), ...legIds];
   }
   for (const [legId, e] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
-    if (e?.armory_api_id) map[String(e.armory_api_id)] = [...(map[String(e.armory_api_id)] ?? []), legId];
+    if (e?.armory_api_id) {
+      const k = String(e.armory_api_id);
+      if (!(map[k] ?? []).includes(legId)) map[k] = [...(map[k] ?? []), legId];
+    }
   }
+  return map;
+}
+// onPartial(m) : appelé après chaque phase — persistance progressive (tolérance aux pannes partielles)
+async function fetchFrLegNames(onPartial) {
+  const stats = { legs: 0, items: 0, currencies: 0, achievements: 0, fails: [] };
+  const map = armoryReverseMap();
   const ids = Object.keys(map);
   const legs = {};
   const legTermBlocklist = new Set(["Vision"]); // « Vision » = substring de noms d'items (Lesser Vision Crystal…)
@@ -5529,10 +5544,16 @@ const SOURCES_DB = {
             "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
             "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Trade Contracts. No limit."
           },
-          "cost_trade_contracts": 300
+          "verified": true,
+          "checked": "2026-09-16",
+          "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Trade Contracts)"
         }
       ],
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "recipe": {
+        "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Contrats commerciaux, sans limite.",
+        "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Trade Contracts, no cap."
+      }
     },
     "trade_contract": {
       "name": "Trade Contract",
@@ -5540,7 +5561,9 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_the_rider"
       ],
-      "qty": {},
+      "qty": {
+        "gift_of_the_rider": 300
+      },
       "farmable": true,
       "sources": [
         {
@@ -9083,15 +9106,22 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "MF : Amalgamated Gemstones + Purified Rift Essence + autres matériaux. Voir wiki Endless Summer.",
-            "en": "MF: Amalgamated Gemstones + Purified Rift Essence + other materials. See the Endless Summer wiki."
-          }
+            "fr": "MF (six recettes, une par gemme de base) : 250 Éclats d'obsidienne + 250 orbes (béryl, chrysocolle, émeraude, opale, rubis ou saphir) + 1 Éclat de pierre de sang + 100 Pierres runiques mystiques.",
+            "en": "MF (six recipes, one per core gemstone): 250 Obsidian Shards + 250 orbs (beryl, chrysocola, emerald, opal, ruby or sapphire) + 1 Bloodstone Shard + 100 Mystic Runestones."
+          },
+          "verified": true,
+          "checked": "2026-09-16",
+          "ref": "wiki Gift of Infused Gems — six boites Recipe"
         }
       ],
       "qty": {
         "gift_of_rays": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "recipe": {
+        "fr": "MF (six recettes, une par gemme de base) : 250 Éclats d'obsidienne + 250 orbes (béryl, chrysocolle, émeraude, opale, rubis ou saphir) + 1 Éclat de pierre de sang + 100 Pierres runiques mystiques.",
+        "en": "MF (six recipes, one per core gemstone): 250 Obsidian Shards + 250 orbs (beryl, chrysocola, emerald, opal, ruby or sapphire) + 1 Bloodstone Shard + 100 Mystic Runestones."
+      }
     },
     "gift_of_rays": {
       "name": "Gift of Rays",
@@ -9250,9 +9280,7 @@ const SOURCES_DB = {
     "curious_mursaat_remnant": {
       "name": "Curious Mursaat Remnant",
       "apiId": 104800,
-      "needed_for": [
-        "gift_of_the_mistburned_isles"
-      ],
+      "needed_for": [],
       "farmable": true,
       "sources": [
         {
@@ -9323,13 +9351,23 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "mystic_forge",
-          "tip": "MF : 100× Vials of Titan Melted Liquid Obsidian + 50× Mists Gate Residues + 100× Shards of Mistburned Barrens + 100× Shards of Bava Nisos."
+          "tip": {
+            "fr": "MF : 1 Don des ruines mursaat + 1 Don de l'errance de Janthir + 250 Pierres runiques mursaat + 250 Pierres runiques mystiques.",
+            "en": "MF: 1 Gift of the Mursaat Ruins + 1 Gift of Janthir Wanderlust + 250 Mursaat Runestones + 250 Mystic Runestones."
+          },
+          "verified": true,
+          "checked": "2026-09-16",
+          "ref": "wiki Gift of the Mistburned Isles — boite Recipe"
         }
       ],
       "qty": {
         "orrax_manifested": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "recipe": {
+        "fr": "MF : 1 Don des ruines mursaat + 1 Don de l'errance de Janthir + 250 Pierres runiques mursaat + 250 Pierres runiques mystiques.",
+        "en": "MF: 1 Gift of the Mursaat Ruins + 1 Gift of Janthir Wanderlust + 250 Mursaat Runestones + 250 Mystic Runestones."
+      }
     },
     "gift_of_shadows_orrax": {
       "name": "Gift of Shadows",
@@ -10502,7 +10540,6 @@ const SOURCES_DB = {
         "discounted_shard_of_janthir_syntri",
         "discounted_shard_of_lowland_shore",
         "discounted_shard_of_mistburned_barrens",
-        "gift_of_infused_gems",
         "klobjarne_geirr",
         "shard_of_bava_nisos",
         "funerary_incense"
@@ -10832,7 +10869,7 @@ const SOURCES_DB = {
       "apiId": 46752,
       "qty": {
         "lesser_vision_crystal": 1,
-        "vision_crystal": 2
+        "vision_crystal": 1
       },
       "kind": "purchase",
       "farmable": true,
@@ -10869,7 +10906,7 @@ const SOURCES_DB = {
       "apiId": 46732,
       "qty": {
         "lesser_vision_crystal": 2,
-        "vision_crystal": 10
+        "vision_crystal": 5
       },
       "kind": "refined",
       "farmable": true,
@@ -10899,7 +10936,7 @@ const SOURCES_DB = {
       "apiId": 46734,
       "qty": {
         "lesser_vision_crystal": 2,
-        "vision_crystal": 10
+        "vision_crystal": 5
       },
       "kind": "refined",
       "farmable": true,
@@ -10929,7 +10966,7 @@ const SOURCES_DB = {
       "apiId": 46730,
       "qty": {
         "lesser_vision_crystal": 2,
-        "vision_crystal": 10
+        "vision_crystal": 5
       },
       "kind": "refined",
       "farmable": true,
@@ -68165,7 +68202,9 @@ const SOURCES_DB = {
         "fr": "La recette de la Forge mystique demande un seul don de maîtrise. Astralaria, HOPE, Nevermore et Chuka and Champawat n'acceptent que Maguuma ; les douze autres laissent le choix.",
         "en": "The Mystic Forge recipe asks for a single mastery gift. Astralaria, HOPE, Nevermore and Chuka and Champawat only accept Maguuma; the other twelve leave the choice open."
       },
-      "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme"
+      "ref": "gift_of_maguuma_mastery.interchangeable_note (verifie) + boites Recipe des pages d'armes gen2, deux recettes par arme",
+      "verified": true,
+      "checked": "2026-09-16"
     },
     "gemmes_infusees": {
       "qty": 250,
@@ -68189,7 +68228,9 @@ const SOURCES_DB = {
         "fr": "La page indique que n'importe quelle gemme du jeu de base convient : six recettes, une par couleur. Choisis celle que tu as en stock ou la moins chère au comptoir.",
         "en": "The page states any core game gemstone works: six recipes, one per colour. Pick whichever you have in stock, or the cheapest on the Trading Post."
       },
-      "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes"
+      "ref": "wiki Gift of Infused Gems — six boites Recipe sous « any core game gemstones can be used in these recipes » ; wiki Gift of Rays — 1 Gift of Infused Gems, pas quatre orbes",
+      "verified": true,
+      "checked": "2026-09-16"
     },
     "trophee_mystic_curio": {
       "qty": 35,
@@ -68214,7 +68255,9 @@ const SOURCES_DB = {
         "fr": "Sept recettes, une par trophée de palier 5. Prends celui dont tu as le plus en stock : c'est le même prix ailleurs.",
         "en": "Seven recipes, one per tier-5 trophy. Use whichever you hold most of; the rest of the cost is identical."
       },
-      "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée"
+      "ref": "wiki Mystic Curio — sept boîtes Recipe ne différant que par le trophée",
+      "verified": true,
+      "checked": "2026-09-16"
     },
     "tribut_20": {
       "qty": 20,
@@ -68376,12 +68419,19 @@ function RequirementsBlocks({ requirements, apiAch, currencies }) {
 }
 
 // ── TrinketGuide : fiche guide détaillée d'un colifichet (données SOURCES_DB) ──
-function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSteps, toggleStep }) {
+function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, armoryRaw = new Set(), trinketSteps, toggleStep }) {
   const DB = (typeof SOURCES_DB !== "undefined" ? (SOURCES_DB.legendaries ?? {}) : {});
   const T = DB[curKey];
   if (!T) return <div style={{ padding: 20, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>SOURCES_DB indisponible — rebuild requis.</div>;
   const armoryId = T.armory_api_id;
-  const owned = !!armoryId && (gtOwnedIds.has(armoryId) || gtManualOwnedIds.has(armoryId));
+  // gtOwnedIds et gtManualOwnedIds contiennent des legId ("conflux"), PAS des
+  // apiId : la detection projette les ids bruts de l'armurerie sur les legId
+  // via armoryReverseMap, et le clic droit du grand total enregistre un legId.
+  // Interroger ces ensembles avec un apiId ne trouvait donc jamais rien et le
+  // badge restait « Non possede » meme apres une synchro reussie. Les ids
+  // bruts, eux, vivent dans armoryRaw -- c'est ce que lisent deja les onglets
+  // Obsidian et Armes.
+  const owned = gtOwnedIds.has(curKey) || gtManualOwnedIds.has(curKey);
   const achOf = (k) => ((apiAch ?? {})[k] ?? null);
   const badge = (txt, color) => (
     <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, border: `1px solid ${color}`, color, letterSpacing: "0.05em", fontFamily: "'Cinzel', serif", whiteSpace: "nowrap" }}>{txt}</span>
@@ -68403,7 +68453,7 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, trinketSte
             if (LE?.isArmorSet || T.slot === "armor_set") {
               const sIds = LE?.armoryApiIds ?? null;
               if (sIds) {
-                const nOwned = sIds.filter(x => gtOwnedIds.has(x) || gtManualOwnedIds.has(x)).length;
+                const nOwned = sIds.filter(x => armoryRaw.has(x)).length;
                 return badge(NX({ fr: `${nOwned}/${sIds.length} pièces — onglet Pièces`, en: `${nOwned}/${sIds.length} pieces — Pieces tab` }), nOwned > 0 ? "#4ade80" : "rgba(226,201,126,0.35)");
               }
               return badge(NX({ fr: "Détection par nom — onglet Pièces", en: "Name-based detection — Pieces tab" }), "rgba(94,234,212,0.55)");
@@ -71869,7 +71919,7 @@ function GW2LegendaryTracker() {
   const [gtOwnedIds, setGtOwnedIds] = useState(() => {
     try {
       const raw = new Set(JSON.parse(localStorage.getItem("gw2_armory_raw_v1") ?? "[]"));
-      const reverseMap = SOURCES_DB?._meta?.armory_apiid_to_legid ?? {};
+      const reverseMap = armoryReverseMap();
       const s = new Set();
       for (const id of raw) {
         const legIds = reverseMap[String(id)] ?? [];
@@ -72238,7 +72288,7 @@ function GW2LegendaryTracker() {
     setGtApiStatus("loading");
     setGtApiError("");
 
-    const reverseMap = SOURCES_DB?._meta?.armory_apiid_to_legid ?? {};
+    const reverseMap = armoryReverseMap();
 
     // 1. Essayer Flask (clé déjà stockée côté serveur)
     let data = null;
@@ -72950,8 +73000,9 @@ function GW2LegendaryTracker() {
             const rich = TRINKET_RICH.includes(k);
             const e = rich ? LEGENDARIES[k] : null;
             const S = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB.legendaries?.[k] : null);
-            const aid = S?.armory_api_id;
-            const kOwned = !!aid && (gtOwnedIds.has(aid) || gtManualOwnedIds.has(aid));
+            // Meme correction que dans TrinketGuide : ces deux ensembles sont
+            // indexes par legId, pas par apiId.
+            const kOwned = gtOwnedIds.has(k) || gtManualOwnedIds.has(k);
             const active = rich ? (selectedLeg === k) : (selectedLeg === "trinkets" && selTrinket === k);
             return (
               <button key={k}
@@ -74717,6 +74768,7 @@ function GW2LegendaryTracker() {
         <TrinketGuide
           curKey={(leg.trinketKeys ?? []).includes(selTrinket) ? selTrinket : (leg.trinketKeys ?? [])[0]}
           apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          armoryRaw={armoryRaw}
           trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
       )}
 
@@ -74724,6 +74776,7 @@ function GW2LegendaryTracker() {
         <TrinketGuide
           curKey={selectedLeg}
           apiAch={apiAch} gtOwnedIds={gtOwnedIds} gtManualOwnedIds={gtManualOwnedIds}
+          armoryRaw={armoryRaw}
           trinketSteps={trinketSteps} toggleStep={toggleTrinketStep} />
       )}
 
