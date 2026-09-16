@@ -4588,8 +4588,22 @@ export default function GW2LegendaryTracker() {
       // grand total. Il n'existe plus de synchro separee : le bouton API remplit
       // les deux, comme il aurait toujours du.
       if (data.stocks && Object.keys(data.stocks).length > 0) {
+        // Meme trou que fetchGtStocks, meme raison : l'agregation cote Flask
+        // (comme l'API GW2 elle-meme) omet tout item a 0 -- son absence ici,
+        // apres une synchro reussie, est un stock confirme a 0, pas un stock
+        // inconnu. Sans ce remplissage, un materiau simplement epuise
+        // affichait "stock unknown" au lieu de "0".
+        const knownIds = [...new Set(
+          Object.values(SOURCES_DB?.craft_components ?? {})
+            .map(c => c.apiId)
+            .filter(id => id && typeof id === "number")
+        )];
+        const stocksFilled = { ...data.stocks };
+        for (const id of knownIds) {
+          if (stocksFilled[String(id)] === undefined) stocksFilled[String(id)] = 0;
+        }
         const merged = {
-          ...data.stocks,
+          ...stocksFilled,
           _synced_at: Math.floor(Date.now() / 1000),
           _sync_source: data._direct ? "api" : "flask",
           _errors: Array.isArray(data.errors) ? data.errors : [],
@@ -4864,8 +4878,18 @@ export default function GW2LegendaryTracker() {
     // tout etait jete. Un stock a zero pouvait donc signifier « inventaire vide »
     // ou « les quatre appels ont echoue », sans moyen de distinguer.
     const found = Object.keys(data.stocks ?? {}).length;
+    // Materiaux/banque/inventaire n'enumerent jamais un item a 0 -- son absence
+    // ici, APRES une synchro globalement reussie, est un stock de 0 confirme,
+    // pas un stock inconnu. Sans ce remplissage, un materiau simplement epuise
+    // (ex. Pile of Radiant Dust a 0) affichait "stock unknown" comme si la
+    // synchro n'avait jamais eu lieu. `found` reste calcule sur data.stocks brut
+    // au-dessus : le remplissage ne doit jamais masquer un echec reel (found=0).
+    const stocksFilled = { ...data.stocks };
+    for (const id of apiIds) {
+      if (stocksFilled[String(id)] === undefined) stocksFilled[String(id)] = 0;
+    }
     const merged = {
-      ...data.stocks,
+      ...stocksFilled,
       _synced_at: data.synced_at,
       _sync_source: data._direct ? "api" : "flask",
       _bags_ok: data.bags_ok !== false,
