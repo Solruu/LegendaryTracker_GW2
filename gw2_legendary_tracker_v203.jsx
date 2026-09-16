@@ -1544,6 +1544,11 @@ const LEGENDARIES = {
     description: { fr: "Armure légendaire — PvP (ligues classées). Timegate saisonnier : ~3 saisons au cap.", en: "Legendary Armor — PvP (ranked leagues). Seasonal timegate: ~3 seasons at cap." },
     resetType: "weekly",
     isArmorSet: true,
+    // 18 pieces = 6 emplacements x 3 poids, apiId de chaque page wiki
+    // deja au depot. Meme champ que perfected_envoy / obsidian /
+    // triumphant_hero : le comptage par piece (x/6) passe par la
+    // mecanique existante, aucun chemin parallele.
+    armoryApiIds: [67141, 67156, 67145, 67152, 67158, 67147, 67118, 67115, 67143, 67117, 67131, 67144, 67151, 67157, 67146, 67148, 67128, 67142],
     pieces: 6,
     armoryNamePrefix: "Ardent Glorious", // 18 IDs découverts au runtime (/v2/legendaryarmory + /v2/items)
     slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],

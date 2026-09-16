@@ -1040,6 +1040,18 @@ const SOURCES_DB = {
       ],
       "76158": [
         "gen2_astralaria"
+      ],
+      "81908": [
+        "aurora"
+      ],
+      "91048": [
+        "vision"
+      ],
+      "109070": [
+        "stella_radians"
+      ],
+      "109012": [
+        "strife_unending"
       ]
     },
     "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -69342,6 +69354,11 @@ const LEGENDARIES = {
     description: { fr: "Armure légendaire — PvP (ligues classées). Timegate saisonnier : ~3 saisons au cap.", en: "Legendary Armor — PvP (ranked leagues). Seasonal timegate: ~3 seasons at cap." },
     resetType: "weekly",
     isArmorSet: true,
+    // 18 pieces = 6 emplacements x 3 poids, apiId de chaque page wiki
+    // deja au depot. Meme champ que perfected_envoy / obsidian /
+    // triumphant_hero : le comptage par piece (x/6) passe par la
+    // mecanique existante, aucun chemin parallele.
+    armoryApiIds: [67141, 67156, 67145, 67152, 67158, 67147, 67118, 67115, 67143, 67117, 67131, 67144, 67151, 67157, 67146, 67148, 67128, 67142],
     pieces: 6,
     armoryNamePrefix: "Ardent Glorious", // 18 IDs découverts au runtime (/v2/legendaryarmory + /v2/items)
     slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
