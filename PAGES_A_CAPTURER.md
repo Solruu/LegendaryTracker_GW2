@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v281.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v282.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -45,7 +45,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 6 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -55,7 +55,6 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Gift of Magical / Mighty Prosperity` |
 | `Olmakhan Bandolier` |
 | `Spinal Blade Back Pack (Perfected)` |
-| `Spool of Gossamer Thread` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |

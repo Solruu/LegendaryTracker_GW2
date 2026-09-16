@@ -753,6 +753,108 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `vial_of_liquid_shadowstone.html` | Vial of Liquid Shadowstone | article complet | 2026-09-08 |
 | `vision_crystal.html` | Vision Crystal | article complet | 2026-09-08 |
 | `xunlai_electrum_ingot.html` | Xunlai Electrum Ingot | article complet | 2026-09-08 |
+| `ardent_glorious_armguards.html` | Ardent Glorious Armguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_breastplate.html` | Ardent Glorious Breastplate | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_brigandine.html` | Ardent Glorious Brigandine | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_cap.html` | Ardent Glorious Cap | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_crown.html` | Ardent Glorious Crown | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_epaulets.html` | Ardent Glorious Epaulets | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_footgear.html` | Ardent Glorious Footgear | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_gauntlets.html` | Ardent Glorious Gauntlets | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_leggings.html` | Ardent Glorious Leggings | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_legguards.html` | Ardent Glorious Legguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_legplates.html` | Ardent Glorious Legplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_pauldrons.html` | Ardent Glorious Pauldrons | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_plate_helm.html` | Ardent Glorious Plate Helm | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_raiment.html` | Ardent Glorious Raiment | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_shinplates.html` | Ardent Glorious Shinplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_shoulderguards.html` | Ardent Glorious Shoulderguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_wargreaves.html` | Ardent Glorious Wargreaves | article complet moins « Available prefixes » | 2026-09-11 |
+| `ardent_glorious_wristplates.html` | Ardent Glorious Wristplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `astral_acclaim.html` | Astral Acclaim | article complet | 2026-09-09 |
+| `blended_leather_sheet.html` | Blended Leather Sheet | article complet | 2026-09-11 |
+| `bolt_of_cotton.html` | Bolt of Cotton | article complet | 2026-09-12 |
+| `bolt_of_empowered_silk.html` | Bolt of Empowered Silk | article complet | 2026-09-11 |
+| `bolt_of_linen.html` | Bolt of Linen | article complet | 2026-09-12 |
+| `bolt_of_silk.html` | Bolt of Silk | article complet | 2026-09-12 |
+| `bolt_of_wool.html` | Bolt of Wool | article complet | 2026-09-12 |
+| `carbonized_mithrillium_ingot.html` | Carbonized Mithrillium Ingot | article complet | 2026-09-11 |
+| `champions_wings_of_glory.html` | Champion's Wings of Glory | article complet | 2026-09-10 |
+| `commanders_wings_of_war.html` | Commander's Wings of War | article complet | 2026-09-09 |
+| `cured_coarse_leather_square.html` | Cured Coarse Leather Square | article complet | 2026-09-12 |
+| `cured_rugged_leather_square.html` | Cured Rugged Leather Square | article complet | 2026-09-12 |
+| `cured_thick_leather_square.html` | Cured Thick Leather Square | article complet | 2026-09-12 |
+| `cured_thin_leather_square.html` | Cured Thin Leather Square | article complet | 2026-09-12 |
+| `elites_wings_of_glory.html` | Elite's Wings of Glory | article complet | 2026-09-10 |
+| `empowered_cured_thick_leather_square.html` | Empowered Cured Thick Leather Square | article complet | 2026-09-11 |
+| `empowered_mithril_ingot.html` | Empowered Mithril Ingot | article complet | 2026-09-11 |
+| `generals_wings_of_war.html` | General's Wings of War | article complet | 2026-09-09 |
+| `gift_of_competitive_prosperity.html` | Gift of Competitive Prosperity | article complet | 2026-09-11 |
+| `gift_of_competitive_prowess.html` | Gift of Competitive Prowess | article complet | 2026-09-11 |
+| `gift_of_war_prowess.html` | Gift of War Prowess | article complet | 2026-09-11 |
+| `glob_of_dark_matter.html` | Glob of Dark Matter | article complet | 2026-09-12 |
+| `grandmaster_armorsmiths_mark.html` | Grandmaster Armorsmith's Mark | article complet | 2026-09-11 |
+| `grandmaster_leatherworkers_mark.html` | Grandmaster Leatherworker's Mark | article complet | 2026-09-11 |
+| `grandmaster_tailors_mark.html` | Grandmaster Tailor's Mark | article complet | 2026-09-11 |
+| `handwoven_olmakhan_bandolier.html` | Handwoven Olmakhan Bandolier | article complet | 2026-09-10 |
+| `iron_ingot.html` | Iron Ingot | article complet | 2026-09-12 |
+| `mystic_facet.html` | Mystic Facet | article complet | 2026-09-09 |
+| `philosophers_stone.html` | Philosopher's Stone | article complet | 2026-09-09 |
+| `pocketed_olmakhan_bandolier.html` | Pocketed Olmakhan Bandolier | article complet | 2026-09-10 |
+| `record_of_league_victories.html` | Record of League Victories | article complet | 2026-09-11 |
+| `recruits_wings_of_glory.html` | Recruit's Wings of Glory | article complet | 2026-09-10 |
+| `recruits_wings_of_war.html` | Recruit's Wings of War | article complet | 2026-09-09 |
+| `reinforced_olmakhan_bandolier.html` | Reinforced Olmakhan Bandolier | article complet | 2026-09-10 |
+| `shard_of_arah.html` | Shard of Arah | article complet | 2026-09-09 |
+| `shard_of_call_of_the_void.html` | Shard of Call of the Void | article complet | 2026-09-09 |
+| `shard_of_endeavor.html` | Shard of Endeavor | article complet | 2026-09-09 |
+| `shard_of_exitare.html` | Shard of Exitare | article complet | 2026-09-09 |
+| `shard_of_friendship.html` | Shard of Friendship | article complet | 2026-09-09 |
+| `shard_of_liturgy.html` | Shard of Liturgy | article complet | 2026-09-09 |
+| `shard_of_resolution.html` | Shard of Resolution | article complet | 2026-09-09 |
+| `shard_of_spero.html` | Shard of Spero | article complet | 2026-09-09 |
+| `shard_of_the_crown.html` | Shard of the Crown | article complet | 2026-09-09 |
+| `shard_of_the_dark_arts.html` | Shard of the Dark Arts | article complet | 2026-09-09 |
+| `shard_of_tlehco.html` | Shard of Tlehco | article complet | 2026-09-09 |
+| `soldiers_wings_of_war.html` | Soldier's Wings of War | article complet | 2026-09-09 |
+| `spool_of_gossamer_thread.html` | Spool of Gossamer Thread | article complet | 2026-09-16 |
+| `spool_of_silk_weaving_thread.html` | Spool of Silk Weaving Thread | article complet | 2026-09-12 |
+| `spool_of_thick_elonian_cord.html` | Spool of Thick Elonian Cord | article complet | 2026-09-12 |
+| `square_of_vabbian_silk.html` | Square of Vabbian Silk | article complet | 2026-09-11 |
+| `trade_contract.html` | Trade Contract | article complet | 2026-09-10 |
+| `tribute_to_arah.html` | Tribute to Arah | article complet | 2026-09-09 |
+| `tribute_to_endeavor.html` | Tribute to Endeavor | article complet | 2026-09-09 |
+| `tribute_to_friendship.html` | Tribute to Friendship | article complet | 2026-09-09 |
+| `tribute_to_liturgy.html` | Tribute to Liturgy | article complet | 2026-09-09 |
+| `tribute_to_resolution.html` | Tribute to Resolution | article complet | 2026-09-09 |
+| `tribute_to_spero.html` | Tribute to Spero | article complet | 2026-09-09 |
+| `tribute_to_the_call_of_the_void.html` | Tribute to the Call of the Void | article complet | 2026-09-09 |
+| `tribute_to_the_dark_arts.html` | Tribute to the Dark Arts | article complet | 2026-09-09 |
+| `tribute_to_the_exitare.html` | Tribute to the Exitare | article complet | 2026-09-09 |
+| `tribute_to_the_queen.html` | Tribute to the Queen | article complet | 2026-09-10 |
+| `tribute_to_tlehco.html` | Tribute to Tlehco | article complet | 2026-09-09 |
+| `triumphant_heros_armguards.html` | Triumphant Hero's Armguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_breastplate.html` | Triumphant Hero's Breastplate | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_brigandine.html` | Triumphant Hero's Brigandine | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_epaulets.html` | Triumphant Hero's Epaulets | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_faceguard.html` | Triumphant Hero's Faceguard | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_footgear.html` | Triumphant Hero's Footgear | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_gauntlets.html` | Triumphant Hero's Gauntlets | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_leggings.html` | Triumphant Hero's Leggings | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_legguards.html` | Triumphant Hero's Legguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_legplates.html` | Triumphant Hero's Legplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_masque.html` | Triumphant Hero's Masque | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_pauldrons.html` | Triumphant Hero's Pauldrons | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_raiment.html` | Triumphant Hero's Raiment | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_shinplates.html` | Triumphant Hero's Shinplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_shoulderguards.html` | Triumphant Hero's Shoulderguards | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_wargreaves.html` | Triumphant Hero's Wargreaves | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_warhelm.html` | Triumphant Hero's Warhelm | article complet moins « Available prefixes » | 2026-09-11 |
+| `triumphant_heros_wristplates.html` | Triumphant Hero's Wristplates | article complet moins « Available prefixes » | 2026-09-11 |
+| `unbound_magic.html` | Unbound Magic | article complet | 2026-09-10 |
+| `veterans_wings_of_glory.html` | Veteran's Wings of Glory | article complet | 2026-09-10 |
+| `vial_of_magic.html` | Vial of Magic | article complet | 2026-09-12 |
+| `vial_of_might.html` | Vial of Might | article complet | 2026-09-12 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

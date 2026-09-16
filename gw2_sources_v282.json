@@ -21025,13 +21025,19 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "merchant",
      "tip": {
-      "fr": "Recette non capturée -- ingrédient de base, pas encore tracé individuellement.",
-      "en": "Recipe not captured -- base ingredient, not individually tracked yet."
-     }
+      "fr": "Achat marchand (Abram, Promenade du District, Divinity's Reach ; Aluta, Forum d'Ashford, Plaines d'Ashford) : 10 pour 6 pa 40 pc.",
+      "en": "Merchant purchase (Abram, District Promenade, Divinity's Reach; Aluta, Ashford Forum, Plains of Ashford): 10 for 6s40c."
+     },
+     "free_repeatable": true,
+     "cadence": "à volonté",
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "spool_of_gossamer_thread.html, section Acquisition"
     }
-   ]
+   ],
+   "apiId": 19790
   }
  },
  "enchaînements_recommandés": {
