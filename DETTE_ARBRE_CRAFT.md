@@ -1,6 +1,12 @@
 # Dette — arbre de craft chiffre
 
-Mesure du 05/09/2026 sur `gw2_sources_v203.json`, controle `check_needed_for_chiffre` (audit v29).
+**Etat courant : 8 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v288.json`,
+controle `check_needed_for_chiffre` (audit v42). Le detail est en section K, en bas.
+
+Mesure d'origine du 05/09/2026 sur `gw2_sources_v203.json` (audit v29) : 100 aretes.
+Les sections A a J ci-dessous sont le journal de la reduction et restent telles
+qu'elles ont ete ecrites — elles decrivent l'etat du jour ou elles datent, pas
+l'etat courant.
 
 ## Le constat
 
@@ -482,19 +488,99 @@ transitent — un don de maitrise par extension, la ou une seule page couvre
 souvent seize legendaires.
 
 
+## K — 16/09/2026 : les 8 aretes restantes (v288, audit v42)
+
+Trois passes ont fait tomber la liste de 17 a 8. Deux n'ont chiffre aucune
+quantite : les aretes concernees n'etaient pas des trous.
+
+**Six orbes sortis par correction de la regle, pas des donnees.** Les six
+options de `alt_groups.gemmes_infusees` (beryl, chrysocolle, emeraude, opale,
+rubis, saphir vers `gift_of_infused_gems`) portent leur quantite dans
+`alt_groups[gid].qty` — 250, une seule fois pour les six. Le JSX **interdit**
+qu'une option porte une cle `qty` sur la cible du groupe : `computeGrandTotal`
+ne compte que l'option choisie, et une cle `qty` ferait compter l'option non
+retenue en plus. La regle reclamait donc exactement ce que le calcul interdit.
+Exemption ajoutee en audit v42.
+
+**Deux aretes retirees comme fausses**, contredites par la boite Recipe de leur
+parent : `amalgamated_gemstone -> gift_of_infused_gems` (les six recettes
+demandent 250 eclats d'obsidienne + 250 orbes + 1 eclat de pierre de sang +
+100 pierres runiques mystiques, aucune gemme amalgamee) et
+`curious_mursaat_remnant -> gift_of_the_mistburned_isles` (la recette est
+1 Don des ruines mursaat + 1 Don de l'errance de Janthir + 250 pierres runiques
+mursaat + 250 mystiques). Dans les deux cas le `tip` de la source portait une
+recette inexistante — celle de `gift_of_the_mursaat_ruins` pour la seconde,
+decalee d'un cran. Les deux tips ont ete remplaces par la recette reelle.
+
+**Une arete chiffree : `trade_contract -> gift_of_the_rider` = 300.** Aucune
+valeur a plat ne la concurrencait (`trade_contract.qty` etait vide), et trois
+sources concordent : la boite Recipe du don (4 esprits de monture), la page de
+chaque esprit (75 contrats commerciaux), et le champ `cost_trade_contracts: 300`
+que la source portait deja. Ce champ portait la meme information en parallele :
+il a ete retire, la chaine la porte maintenant. Le tracker affichait zero
+contrat commercial pour Coalescence et pour les douze gen2 en voie Desert.
+
+### Ce qui reste, et pourquoi
+
+| arete | quantite lisible | ce qui bloque |
+|---|---|---|
+| `fine_rift_essence -> amalgamated_rift_essence` | 250 | double comptage |
+| `masterwork_rift_essence -> amalgamated_rift_essence` | 100 | double comptage |
+| `rare_rift_essence -> amalgamated_rift_essence` | 50 | double comptage |
+| `testimony_of_jade_heroics -> essence_of_animosity` | 500 | double comptage |
+| `skirmish_claim_ticket -> essence_of_annihilation` | 350 | double comptage |
+| `xunlai_electrum_ingot -> spark_of_sentience` | 21 | `qty.aurora` vaut un 0 explicite, pose deliberement |
+| `gift_of_craftsmanship -> gift_of_prosperity` | 1 | doublon d'entite a trancher |
+| `glob_of_ectoplasm -> gift_of_research` | 10 | surcout de voie, pas un ingredient |
+
+**Cinq sur huit ont leur quantite disponible et ne sont pas chiffrables pour
+autant.** Le chiffre existe — boite Recipe pour les trois essences de faille
+(250/100/50/50 ecto, craft 400) et pour `essence_of_animosity` (500), prose
+sourcee pour les autres. Mais l'enfant porte deja, sur le legendaire racine,
+une valeur a plat qui couvre le meme besoin : `fine_rift_essence` vaut 3000
+pour `obsidian__per_piece` et 6750 pour `orrax_manifested`. Brancher l'arete
+sans retirer le plat correspondant double la depense — exactement le motif des
+94 doublons retires en v286. Chaque cas demande donc de confronter le plat au
+produit de la chaine et de ne retirer que si les deux disent la meme chose ;
+la ou ils different (2500 pour Endless Summer contre 12 x 250 = 3000), aucune
+des deux valeurs ne fait autorite sans une table wiki qui tranche.
+
+`gift_of_craftsmanship -> gift_of_prosperity` est un cas a part :
+`gift_of_prosperity` coexiste avec `gift_of_magical_prosperity` et
+`gift_of_mighty_prosperity`, et `gift_of_craftsmanship` est deja chaine sur les
+deux seconds **et** sur `perfected_envoy__per_piece`. C'est une suppression
+d'entite a arbitrer, pas une quantite a poser.
+
+`xunlai_electrum_ingot -> spark_of_sentience` porte un `qty.aurora` a **0
+explicite**, pas absent. La collection Aurora II demande bien 21 lingots, et la
+prose de la source le dit ; mais un zero pose a la main est une decision, pas
+un trou, et la remplacer par 21 deplace un chiffre affiche sans savoir ce que
+ce zero voulait dire. A trancher.
+
+`glob_of_ectoplasm -> gift_of_research` n'est pas un ingredient : la recette de
+la Forge est 500 hydrocatalytique + 250 thermocatalytique + 250 essence de
+chance exotique, sans ecto. Les 10 ectos sont le surcout du craft assiste par
+Lyhr, une voie alternative. L'arete elle-meme est donc discutable ; elle est
+laissee en place tant que la voie Lyhr est decrite dans les sources.
+
+
 ## Suite
 
-1. Deplier les 100 aretes aplatie, par famille, en verifiant l'invariance des
-   totaux a chaque etape.
-2. Chiffrer les 4 vrais trous du bloc C3.
-3. Capturer les pages du bloc B restantes.
-4. Supprimer `needed_for` des sources, index inverse calcule cote JSX, regle
+1. Les 5 aretes a double comptage : confronter plat et chaine cas par cas,
+   retirer le plat quand les deux coincident, documenter l'ecart sinon.
+2. Arbitrer le triplet `gift_of_prosperity` / `_magical_` / `_mighty_`.
+3. Brancher `upgrades_combined` sur la chaine unitaire
+   (`legendary_rune`/`_sigil`/`_relic`) et supprimer la table codee en dur du
+   JSX — bloque sur le choix de la cible de confort (6r/2s/1rel contre les
+   7r/8s affiches par ailleurs dans le meme bloc).
+4. Capturer les pages du bloc B restantes.
+5. Supprimer `needed_for` des sources, index inverse calcule cote JSX, regle
    d'audit en erreur.
-5. Rendu recursif n niveaux dans l'onglet Composants, chaque noeud affichant
+6. Rendu recursif n niveaux dans l'onglet Composants, chaque noeud affichant
    besoin / stock / manque — le calcul existe deja (`totals[compId]` +
    `gtStocks[apiId]`).
-6. Integrer les 231 cibles absentes (branche propre a chaque arme : Gift of
+7. Integrer les 231 cibles absentes (branche propre a chaque arme : Gift of
    Metal, Gift of Wood, lingots, tissus, pierres) depuis
    `gw2_material_lists_v1.json`.
-7. `recipe` ne conserve que ce qui n'est pas chiffrable : voies alternatives de
+8. `recipe` ne conserve que ce qui n'est pas chiffrable : voies alternatives de
    la Forge mystique.
