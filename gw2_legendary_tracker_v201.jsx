@@ -4641,12 +4641,26 @@ export default function GW2LegendaryTracker() {
     // 1. Essayer Flask (clé déjà stockée côté serveur)
     let data = null;
     let usedFlask = false;
+    let flaskErr = null;
     try {
+      // En-tete X-API-Key pose UNIQUEMENT si une cle existe : un header vide
+      // declenche quand meme un preflight CORS (OPTIONS) pour rien, et Flask
+      // se rabat de toute facon sur GW2_API_KEY de son .env.
       const flaskResp = await fetch(
         `http://127.0.0.1:5000/api/legendaryarmory?lang=${langRef.current}`,
-        { headers: { "X-API-Key": key }, signal: AbortSignal.timeout(3000) }
+        { ...(key ? { headers: { "X-API-Key": key } } : {}), signal: AbortSignal.timeout(3000) }
       );
       if (flaskResp.ok) { data = await flaskResp.json(); usedFlask = true; }
+      else {
+        // Flask a REPONDU, en erreur : son corps porte la cause exacte
+        // (cle invalide, scope 'inventories' manquant, API GW2 HS...). Elle
+        // etait jetee, et l'echec finissait en "Flask actif mais sans cle" --
+        // un diagnostic faux quand Flask a bien une cle mais que l'appel
+        // amont echoue.
+        usedFlask = true;
+        const j = await flaskResp.json().catch(() => ({}));
+        flaskErr = j.error ?? `Flask HTTP ${flaskResp.status}`;
+      }
     } catch (_) { /* Flask absent, continuer */ }
 
     // 2. Fallback : appel direct GW2 API — uniquement si clé disponible
@@ -4670,9 +4684,11 @@ export default function GW2LegendaryTracker() {
       // plutot que rapporter "ok" avec un ensemble vide, indiscernable d'un
       // compte reellement sans legendaire.
       setGtApiStatus("error");
-      setGtApiError(usedFlask
-        ? "Flask actif mais sans clé (ni tapée, ni GW2_API_KEY côté serveur)"
-        : "Flask indisponible et aucune clé saisie");
+      setGtApiError(flaskErr
+        ? `armory via Flask : ${flaskErr}${key ? "" : " — aucune clé saisie côté page pour tenter l'appel direct"}`
+        : usedFlask
+          ? "Flask actif mais sans clé (ni tapée, ni GW2_API_KEY côté serveur)"
+          : "Flask indisponible et aucune clé saisie");
       return;
     }
     const ownedSet = new Set();
