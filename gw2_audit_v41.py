@@ -1151,7 +1151,16 @@ def check_qty_levels(data, errors, warnings):
             porteurs = [c for c, comp in comps.items()
                         if isinstance(comp.get("qty"), dict)
                         and any(k.endswith(suffix) for k in comp["qty"])]
-            if porteurs and suffix not in text:
+            # Une cle peut etre lue sans jamais apparaitre en toutes lettres :
+            # les __piece_{poids}_{emplacement} sont bati(e)s en template
+            # (`${legId}__piece_${poids}_${slot}`) et comptees dans
+            # computeGrandTotal. Chercher la chaine litterale produisait 17
+            # faux positifs annoncant « comptees nulle part » des exigences
+            # qui le sont bel et bien. On accepte donc aussi la racine du
+            # suffixe suivie d'une interpolation.
+            racine = "__" + suffix.lstrip("_").split("_")[0]
+            lu = suffix in text or f"{racine}_${{" in text
+            if porteurs and not lu:
                 warnings.append(
                     f"suffixe de qty '{suffix}' : {len(porteurs)} composant(s) l'utilisent "
                     f"(ex. {porteurs[0]}), aucune lecture dans {jsx[-1].name} — ces exigences "
