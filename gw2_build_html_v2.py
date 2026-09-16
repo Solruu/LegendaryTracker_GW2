@@ -40,7 +40,7 @@ HTML_HEAD = """\
 window.onerror = function(msg, src, line, col) {
   var d = document.createElement('div');
   d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#b91c1c;color:#fff;padding:10px 14px;font:12px monospace;white-space:pre-wrap;word-break:break-all;';
-  d.textContent = 'ERREUR: ' + msg + '\n' + (src||'') + ' L' + line + ':' + col;
+  d.textContent = 'ERREUR: ' + msg + '\\n' + (src||'') + ' L' + line + ':' + col;
   document.body.appendChild(d);
 };
 </script>

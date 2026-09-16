@@ -11,8 +11,7 @@
 window.onerror = function(msg, src, line, col) {
   var d = document.createElement('div');
   d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#b91c1c;color:#fff;padding:10px 14px;font:12px monospace;white-space:pre-wrap;word-break:break-all;';
-  d.textContent = 'ERREUR: ' + msg + '
-' + (src||'') + ' L' + line + ':' + col;
+  d.textContent = 'ERREUR: ' + msg + '\n' + (src||'') + ' L' + line + ':' + col;
   document.body.appendChild(d);
 };
 </script>
@@ -72441,7 +72440,12 @@ function GW2LegendaryTracker() {
       // se rabat de toute facon sur GW2_API_KEY de son .env.
       const flaskResp = await fetch(
         `http://127.0.0.1:5000/api/legendaryarmory?lang=${langRef.current}`,
-        { ...(key ? { headers: { "X-API-Key": key } } : {}), signal: AbortSignal.timeout(3000) }
+        // 3 s etait beaucoup trop court : cet appel traverse Flask JUSQU'A
+        // l'API GW2 (gw2_get a lui-meme 10 s de timeout), et /api/progression
+        // s'accorde 120 s pour le meme genre de trajet -- dans le log fourni
+        // il mettait 11 s. Un compte un peu lent depassait donc les 3 s, le
+        // fetch etait avorte, et l'abort tombait dans le catch "Flask absent".
+        { ...(key ? { headers: { "X-API-Key": key } } : {}), signal: AbortSignal.timeout(30000) }
       );
       if (flaskResp.ok) { data = await flaskResp.json(); usedFlask = true; }
       else {
@@ -72454,7 +72458,17 @@ function GW2LegendaryTracker() {
         const j = await flaskResp.json().catch(() => ({}));
         flaskErr = j.error ?? `Flask HTTP ${flaskResp.status}`;
       }
-    } catch (_) { /* Flask absent, continuer */ }
+    } catch (e) {
+      // Ce catch rapportait toujours "Flask absent". Or il attrape aussi
+      // l'abort du timeout ci-dessus et toute erreur reseau/CORS -- trois
+      // causes distinctes, un seul message, et donc un diagnostic faux des
+      // que Flask repond mais lentement. On garde la cause.
+      flaskErr = (e && e.name === "TimeoutError")
+        ? "Flask n'a pas répondu en 30 s (appel GW2 trop lent ?)"
+        : (e && e.name === "AbortError")
+          ? "requête interrompue"
+          : null; // vraie absence de serveur : on laisse le message historique
+    }
 
     // 2. Fallback : appel direct GW2 API — uniquement si clé disponible
     if (!data && key) {
