@@ -220,12 +220,17 @@ namespace GW2_NodeTracker
                     // l'absence d'erreur visible.
                     string groupColor = GroupTrailColors.TryGetValue(grp, out string gc) ? gc : "ffffffff";
 
+                    // defaulttoggle=1 : une catégorie n'existe qu'à partir du
+                    // moment où elle a du contenu. « Chemin parcouru » apparaît
+                    // donc au premier tronçon corrigé -- si elle naissait
+                    // décochée, le tronçon disparaîtrait au moment même où il
+                    // est corrigé.
                     sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{groupColor}\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{groupColor}\" animSpeed=\"0\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"0\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("      </MarkerCategory>");
                 }
 
