@@ -39,6 +39,8 @@ namespace GW2_NodeTracker
         private const float DefaultTeleportThreshold = 50.0f;
         private const float DefaultRouteSnapRadius = 12.0f;
         private const int PanelWidth = 260;
+        private const int PanelMaxHeight = 600;
+        private const int ScrollbarWidth = 20;
 
         #region Service Managers
         internal SettingsManager SettingsManager => this.ModuleParameters.SettingsManager;
@@ -591,12 +593,12 @@ namespace GW2_NodeTracker
 
             int headerRows = 2; // Fermer + bascule filtré/complet
             int totalRows = headerRows + groupHeaderCount + displayList.Count;
-            int height = Math.Min(totalRows * ButtonHeight + 10, 600);
+            int contentHeight = totalRows * ButtonHeight + 10;
 
             _selectionPanel = new Panel
             {
                 Parent = GameService.Graphics.SpriteScreen,
-                Size = new Point(PanelWidth, height),
+                Size = new Point(PanelWidth, PanelMaxHeight),
                 Location = new Point(100, 150),
                 Title = "GW2 Node Tracker",
                 ShowBorder = true,
@@ -604,10 +606,29 @@ namespace GW2_NodeTracker
                 Visible = wasVisible,
             };
 
+            // La barre de titre et la bordure ne font pas partie de la zone
+            // utile : ContentRegion est plus petit que Size. Dimensionner le
+            // panneau sur la hauteur du contenu sans en tenir compte coupait
+            // les dernières lignes et faisait apparaître un ascenseur alors
+            // que tout aurait dû tenir. On mesure l'écart plutôt que de le
+            // deviner -- si Blish renvoie un ContentRegion égal à Size, les
+            // écarts valent zéro et le comportement reste l'ancien.
+            int chromeY = Math.Max(0, _selectionPanel.Size.Y - _selectionPanel.ContentRegion.Height);
+            int chromeX = Math.Max(0, _selectionPanel.Size.X - _selectionPanel.ContentRegion.Width);
+
+            int visibleHeight = Math.Min(contentHeight, PanelMaxHeight - chromeY);
+            bool willScroll = contentHeight > visibleHeight;
+
+            _selectionPanel.Size = new Point(PanelWidth + chromeX, visibleHeight + chromeY);
+
+            // Quand l'ascenseur est là, il mord sur la droite de la zone
+            // utile : les boutons pleine largeur passaient dessous.
+            int buttonWidth = PanelWidth - 20 - (willScroll ? ScrollbarWidth : 0);
+
             var closeButton = new StandardButton
             {
                 Text = "✕ Fermer",
-                Size = new Point(PanelWidth - 20, ButtonHeight - 2),
+                Size = new Point(buttonWidth, ButtonHeight - 2),
                 Location = new Point(10, 5),
                 Parent = _selectionPanel,
             };
@@ -618,7 +639,7 @@ namespace GW2_NodeTracker
                 Text = _showingFullList
                     ? $"↩ Revenir au filtre ({_filteredTypes.Count})"
                     : $"⊞ Voir tout ({NodeType.All.Length})",
-                Size = new Point(PanelWidth - 20, ButtonHeight - 2),
+                Size = new Point(buttonWidth, ButtonHeight - 2),
                 Location = new Point(10, ButtonHeight + 5),
                 Parent = _selectionPanel,
             };
@@ -642,7 +663,7 @@ namespace GW2_NodeTracker
                     var groupHeader = new StandardButton
                     {
                         Text = $"── {type.Group.ToUpperInvariant()} ──",
-                        Size = new Point(PanelWidth - 20, ButtonHeight - 2),
+                        Size = new Point(buttonWidth, ButtonHeight - 2),
                         Location = new Point(10, row * ButtonHeight + 5),
                         Parent = _selectionPanel,
                         Enabled = false, // en-tête, pas un vrai bouton
@@ -655,7 +676,7 @@ namespace GW2_NodeTracker
                 var button = new StandardButton
                 {
                     Text = $"{type.Label}{tag}",
-                    Size = new Point(PanelWidth - 20, ButtonHeight - 2),
+                    Size = new Point(buttonWidth, ButtonHeight - 2),
                     Location = new Point(10, row * ButtonHeight + 5),
                     Parent = _selectionPanel,
                 };
