@@ -78,7 +78,7 @@ l'achat est la seule voie documentee, donc c'est l'arete.
 
 v8 : LA DIVISION EST FAITE PAR LE PARSEUR, PLUS ICI.
 
-`gw2_parse_material_list_v2.aretes_unitaires()` la porte desormais pour tous
+`gw2_parse_material_list_v3.aretes_unitaires()` la porte desormais pour tous
 les consommateurs, avec le meme traitement des refus et des ambiguites. Ce
 fichier ne fait plus que consommer le resultat. Le pourquoi ci-dessous reste
 la trace de l'erreur.
@@ -270,7 +270,7 @@ for r in WIKI_VENDOR_COSTS:
             if edges[p][c][0]!=q: conflits.append((p,c,edges[p][c],q))
         else: edges[p][c]=(q,'vendeur')
 # --- troisieme source : tables « Full material list » ---
-import gw2_parse_material_list_v2 as _P
+import gw2_parse_material_list_v3 as _P
 _sous_groupe = {o for g in (d.get('alt_groups') or {}).values()
                 for o in (g.get('options') or [])}
 _tab = 0

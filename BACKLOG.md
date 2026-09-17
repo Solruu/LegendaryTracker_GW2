@@ -1253,7 +1253,7 @@ contredisent. Ces cas ne sont **pas** des trous : la donnée reste à plat et le
 total affiché ne bouge pas tant que l'arbitrage n'est pas fait.
 
 Le détail est dans **`ARBITRAGES.md`**, régénérable par
-`python3 gw2_edges_wiki_v9.py && python3 gw2_arbitrages_v6.py`.
+`python3 gw2_edges_wiki_v11.py && python3 gw2_arbitrages_v6.py`.
 
 Trois familles, qui ne se tranchent pas de la même façon :
 

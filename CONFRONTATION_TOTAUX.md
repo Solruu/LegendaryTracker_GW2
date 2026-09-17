@@ -7,11 +7,11 @@ legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **834 accords** — le nombre affiche est celui de la table.
-- **31 trous** — l'affichage est SOUS le plancher. Certains.
+- **857 accords** — le nombre affiche est celui de la table.
+- **7 trous** — l'affichage est SOUS le plancher. Certains.
 - **40 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir.
-- **22 excedents nus** — rien dans la donnee ne les explique : soit
+- **23 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -21,40 +21,17 @@ plus. **Son total est donc un plancher, pas une egalite.**
 |---|---|---:|---:|---:|
 | `gen2_the_hms_divinity` | `mithril_ingot` — Mithril Ingot | 0 | 4000 | -4000 |
 | `gen2_the_hms_divinity` | `elder_wood_plank` — Elder Wood Plank | 250 | 3250 | -3000 |
-| `stella_radians` | `seer_runestone` — Seer Runestone | 200 | 800 | -600 |
-| `gen3_aurene_s_fang` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
-| `gen3_aurene_s_flight` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
-| `gen3_aurene_s_tail` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
-| `gen3_aurene_s_wing` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
-| `legendary_relic` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
 | `gen2_the_hms_divinity` | `mystic_curio` — Mystic Curio | 0 | 100 | -100 |
-| `strife_unending` | `gift_of_war_prosperity` — Gift of War Prosperity | 3 | 30 | -27 |
-| `aetheric_anchor` | `gift_of_condensed_magic` — Gift of Condensed Magic | 4 | 16 | -12 |
-| `aetheric_anchor` | `gift_of_condensed_might` — Gift of Condensed Might | 4 | 16 | -12 |
 | `gen3_aurene_s_fang` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_flight` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_tail` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_wing` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
-| `aurora` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `aurora` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
-| `coalescence` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `coalescence` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
-| `conflux` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `conflux` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
-| `conflux` | `vision_crystal` — Vision Crystal | 2 | 8 | -6 |
-| `stella_radians` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `stella_radians` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
-| `strife_unending` | `gift_of_the_mists` — Gift of the Mists | 2 | 8 | -6 |
-| `transcendence` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `transcendence` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
-| `transcendence` | `vision_crystal` — Vision Crystal | 2 | 8 | -6 |
-| `vision` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
-| `vision` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
 
 ## Excedents nus — a expliquer ou a corriger
 
 | legendaire | composant | affiche | table | excedent |
 |---|---|---:|---:|---:|
+| `legendary_relic` | `pile_of_lucent_crystal` — Pile of Lucent Crystal | 18750 | 6250 | +12500 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | +2000 |
 | `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | +350 |
 | `perfected_envoy` | `obsidian_shard` — Obsidian Shard | 300 | 50 | +250 |

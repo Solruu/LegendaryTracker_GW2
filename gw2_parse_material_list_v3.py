@@ -57,9 +57,9 @@ divise pas et le cas est rendu a l'appelant. Une division non entiere est
 refusee, jamais arrondie.
 
 Usage :
-    python3 gw2_parse_material_list_v2.py                 # toutes les pages
-    python3 gw2_parse_material_list_v2.py bolt frostfang  # une selection
-    python3 gw2_parse_material_list_v2.py --json out.json
+    python3 gw2_parse_material_list_v3.py                 # toutes les pages
+    python3 gw2_parse_material_list_v3.py bolt frostfang  # une selection
+    python3 gw2_parse_material_list_v3.py --json out.json
 """
 import json
 import re
@@ -186,7 +186,23 @@ def aretes(chemin):
             for petit, pq in _sous_items(rang[2]):
                 if petit != enfant:
                     out.append((enfant, petit, pq))
-    return out
+    # v3 : une cellule qui couvre plusieurs lignes (rowspan) sortait une fois
+    # PAR LIGNE couverte. « Gift of Condensed Might » ouvre quatre sous-dons
+    # dans la table de Vision, donc l'arete Mystic Tribute -> Gift of Condensed
+    # Might sortait quatre fois, et tout consommateur qui SOMME les lignes
+    # lisait 8 la ou le wiki ecrit 2. Le meme triplet repete est le meme fait.
+    #
+    # main() dedupliquait deja, par son dictionnaire (parent, enfant) : le
+    # fichier JSON produit etait donc juste, et les consommateurs qui passent
+    # par aretes() directement, faux. Un seul des deux chemins etait correct,
+    # ce qui est la pire des situations — la deduplication remonte ici.
+    vus, net = set(), []
+    for t in out:
+        if t in vus:
+            continue
+        vus.add(t)
+        net.append(t)
+    return net
 
 
 def aretes_unitaires(chemin):

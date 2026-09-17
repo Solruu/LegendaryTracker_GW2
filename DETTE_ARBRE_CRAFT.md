@@ -860,3 +860,52 @@ Corrige au passage sur la meme arme : son champ `wiki` pointait vers
 Audit v45 : 0 erreur, 56 avertissements (64 avant, dont 10 faux leves et 3 vrais
 ajoutes par la nouvelle regle). Moteurs confrontes : 84 cibles, 4 994 totaux,
 aucun ecart.
+
+## P — 17/09/2026 : le parseur de tables lisait quatre fois le meme fait
+
+Toujours aucune capture nouvelle. Ce coup-ci c'est le parseur qui se trompait,
+et il se trompait depuis assez longtemps pour que 24 des 31 « trous » du
+rapport de confrontation soient de son fait.
+
+**Une cellule qui couvre plusieurs lignes sortait une fois par ligne
+couverte.** Dans la table de Vision, « Gift of Condensed Might » ouvre quatre
+sous-dons — Claws, Scales, Bones, Fangs. La cellule porte donc `rowspan=4`, et
+`aretes()` rendait quatre fois le triplet
+`(Mystic Tribute, Gift of Condensed Might, 2)`. Tout consommateur qui SOMME les
+lignes lisait 8 la ou le wiki ecrit 2.
+
+C'est ce qui produisait le bloc le plus visible du rapport : onze legendaires
+annonces a 2 dons condenses contre 8 « au wiki », Aetheric Anchor a 4 contre 16,
+les cristaux de vision de Conflux et Transcendence a 2 contre 8, et les 250
+reactifs hydrocatalytiques contre 500 sur les quatre gen3 et la relique
+legendaire. Vingt-quatre lignes, un seul defaut, et toutes accusaient la donnee.
+**Le wiki n'est jamais faux, notre lecture l'est** — la regle a encore eu raison.
+
+Le detail qui aggrave le cas : `main()` du parseur dedupliquait DEJA, par son
+dictionnaire `(parent, enfant)`. Le fichier JSON qu'il produit etait donc juste,
+et les consommateurs qui appellent `aretes()` directement, faux. Un seul des
+deux chemins etait correct, ce qui est la pire des situations : le rapport
+disait une chose, l'export une autre, et rien ne les confrontait. La
+deduplication remonte dans `aretes()`, ou les deux chemins la partagent.
+
+Effet mesure sur `CONFRONTATION_TOTAUX.md` :
+
+| | avant | apres |
+|---|---:|---:|
+| accords | 834 | **857** |
+| trous | 31 | **7** |
+| excedents nus | 22 | 23 |
+
+Les sept trous restants sont de vrais trous : la branche de tesson de
+The HMS Divinity (4 000 lingots de mithril, 3 250 planches, 100 Mystic Curio)
+n'est pas modelisee, et les quatre gen3 en `gen3_aurene_s_*` ne portent pas
+leurs 10 Tale of Adventure. L'excedent nu supplementaire etait masque par le
+bruit.
+
+Sept fichiers ont suivi la version du parseur, un par consommateur :
+`gw2_confronte_tables_v3`, `gw2_confronte_totaux_v3`, `gw2_edges_wiki_v11`,
+`gw2_index_contenu_v4`, `gw2_index_wiki_v2`, `gw2_integre_branche_arme_v3`,
+`gw2_tessons_gen2_v3`.
+
+Ni les sources ni le JSX ne bougent : aucun total affiche ne change. C'est le
+rapport qui disait faux, pas le tracker.

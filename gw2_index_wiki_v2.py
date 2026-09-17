@@ -20,7 +20,7 @@ mecaniquement sur : les lignes absentes.
 
 Trois colonnes deduites, aucune inventee :
 - titre  : `<h1 id="firstHeading">` lu dans la capture, comme
-           `gw2_index_contenu_v3.py` ;
+           `gw2_index_contenu_v4.py` ;
 - portee : « article complet », sauf commentaire de filtrage
            `<!-- section « X » retiree a l'extraction ... -->` laisse par
            l'extraction, qui donne « article complet moins « X » ». Un suffixe
@@ -33,8 +33,8 @@ Les lignes orphelines (une ligne sans fichier) sont signalees, jamais
 supprimees : un fichier peut avoir ete renomme, c'est un arbitrage humain.
 
 Usage :
-    python3 gw2_index_wiki_v1.py            # simulation
-    python3 gw2_index_wiki_v1.py --ecrire   # applique
+    python3 gw2_index_wiki_v2.py            # simulation
+    python3 gw2_index_wiki_v2.py --ecrire   # applique
 """
 import datetime
 import html as _html
