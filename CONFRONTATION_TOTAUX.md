@@ -1,17 +1,17 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v249.json`, 926 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v294.json`, 927 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **832 accords** — le nombre affiche est celui de la table.
+- **834 accords** — le nombre affiche est celui de la table.
 - **31 trous** — l'affichage est SOUS le plancher. Certains.
 - **40 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir.
-- **23 excedents nus** — rien dans la donnee ne les explique : soit
+- **22 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -29,12 +29,12 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `legendary_relic` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 250 | 500 | -250 |
 | `gen2_the_hms_divinity` | `mystic_curio` — Mystic Curio | 0 | 100 | -100 |
 | `strife_unending` | `gift_of_war_prosperity` — Gift of War Prosperity | 3 | 30 | -27 |
+| `aetheric_anchor` | `gift_of_condensed_magic` — Gift of Condensed Magic | 4 | 16 | -12 |
+| `aetheric_anchor` | `gift_of_condensed_might` — Gift of Condensed Might | 4 | 16 | -12 |
 | `gen3_aurene_s_fang` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_flight` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_tail` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 | `gen3_aurene_s_wing` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
-| `aetheric_anchor` | `gift_of_condensed_magic` — Gift of Condensed Magic | 8 | 16 | -8 |
-| `aetheric_anchor` | `gift_of_condensed_might` — Gift of Condensed Might | 8 | 16 | -8 |
 | `aurora` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
 | `aurora` | `gift_of_condensed_magic` — Gift of Condensed Magic | 2 | 8 | -6 |
 | `coalescence` | `gift_of_condensed_might` — Gift of Condensed Might | 2 | 8 | -6 |
@@ -64,20 +64,19 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `transcendence` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
 | `vision` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
 | `selachimorpha` | `obsidian_shard` — Obsidian Shard | 488 | 250 | +238 |
-| `aetheric_anchor` | `mystic_clover` — Mystic Clover | 200 | 100 | +100 |
+| `gen3_aurene_s_fang` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
+| `gen3_aurene_s_flight` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
+| `gen3_aurene_s_tail` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
+| `gen3_aurene_s_wing` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
+| `the_ascension` | `pvp_league_ticket` — PvP League Ticket | 225 | 125 | +100 |
 | `perfected_envoy` | `mystic_clover` — Mystic Clover | 90 | 15 | +75 |
-| `aetheric_anchor` | `amalgamated_draconic_lodestone` — Amalgamated Draconic Lodestone | 110 | 55 | +55 |
+| `gen3_aurene_s_fang` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
+| `gen3_aurene_s_flight` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
+| `gen3_aurene_s_tail` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
+| `gen3_aurene_s_wing` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
 | `perfected_envoy` | `auric_ingot` — Auric Ingot | 30 | 5 | +25 |
 | `perfected_envoy` | `reclaimed_metal_plate` — Reclaimed Metal Plate | 30 | 5 | +25 |
 | `perfected_envoy` | `chak_egg` — Chak Egg | 30 | 5 | +25 |
-| `the_ascension` | `dragonite_ingot` — Dragonite Ingot | 20 | 10 | +10 |
-| `the_ascension` | `empyreal_star` — Empyreal Star | 20 | 10 | +10 |
-| `the_ascension` | `bloodstone_brick` — Bloodstone Brick | 20 | 10 | +10 |
-| `warbringer` | `dragonite_ingot` — Dragonite Ingot | 20 | 10 | +10 |
-| `warbringer` | `empyreal_star` — Empyreal Star | 20 | 10 | +10 |
-| `warbringer` | `bloodstone_brick` — Bloodstone Brick | 20 | 10 | +10 |
-| `the_ascension` | `augurs_stone` — Augur's Stone | 4 | 2 | +2 |
-| `warbringer` | `augurs_stone` — Augur's Stone | 4 | 2 | +2 |
 
 ## Excedents expliques par une branche fermee de la table
 

@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v276.json` — 86 desaccords sur 22 composants.
+Source : `gw2_sources_v294.json` — 84 desaccords sur 20 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -11,14 +11,12 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
-| `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x12, ecart de compte x1 |
-| `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
+| `dust_crystalline` — Pile of Crystalline Dust | 13 | 1250 | deja compte par cascade x13 |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | 2 | 1050 | deja compte par cascade x2 |
+| `trade_contract` — Trade Contract | 2 | 950 | deja compte par cascade x1, cout vendeur x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `dust_incandescent` — Pile of Incandescent Dust | 3 | 250 | deja compte par cascade x3 |
 | `orichalcum_ingot` — Orichalcum Ingot | 2 | 250 | deja compte par cascade x2 |
-| `testimony_of_jade_heroics` — Testimony of Jade Heroics | 1 | 250 | deja compte par cascade x1 |
-| `obsidian_shard` — Obsidian Shard | 1 | 228 | deja compte par cascade x1 |
 | `branded_mass` — Branded Mass | 1 | 160 | deja compte par cascade x1 |
 | `mystic_clover` — Mystic Clover | 1 | 8 | deja compte par cascade x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
@@ -32,15 +30,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `shard_of_mistburned_barrens` — Shard of Mistburned Barrens | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_the_dark_arts` — Shard of the Dark Arts | 1 | 0 | deja compte par cascade x1 |
 | `vial_of_titan_melted_obsidian` — Vial of Titan Melted Liquid Obsidian | 1 | 0 | deja compte par cascade x1 |
-
-## ECART DE COMPTE — 1 cas
-
-La cle a plat et l'arete donnent deux nombres differents : l'un des deux
-est faux. Se tranche sur la page du PARENT, boite Recipe.
-
-| composant | legendaire | donnee | wiki | ecart | parents proposes |
-|---|---|---:|---:|---:|---|
-| `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 350 | 250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 
 ## DEJA COMPTE PAR CASCADE — 79 cas
 
@@ -57,19 +46,19 @@ recalcule en relancant le script.
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
 | `dust_crystalline` — Pile of Crystalline Dust | `aetheric_anchor` | 400 | 1650 | 1250 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `orrax_manifested` | 1500 | 450 | 1050 | unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
+| `trade_contract` — Trade Contract | `coalescence` | 300 | 1250 | 950 | funerary_incense (vendeur) |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_meteorlogicus` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_flameseeker_prophecies` | 500 | 100 | 400 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_bifrost` | 250 | 500 | 250 | opal_orb (recette) |
 | `dust_incandescent` — Pile of Incandescent Dust | `gen1_the_minstrel` | 250 | 500 | 250 | opal_orb (recette) |
 | `orichalcum_ingot` — Orichalcum Ingot | `klobjarne_geirr` | 250 | 500 | 250 | neutralized_titan_alloy (recette) |
-| `testimony_of_jade_heroics` — Testimony of Jade Heroics | `conflux` | 250 | 500 | 250 | essence_of_animosity (recette) |
-| `obsidian_shard` — Obsidian Shard | `obsidian` | 72 | 300 | 228 | gift_of_expertise (recette), gift_of_prowess (recette) |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 250 | 25 | 225 | unbound_wings (recette), vial_of_titan_melted_obsidian (recette) |
 | `branded_mass` — Branded Mass | `vision` | 460 | 300 | 160 | diviners_orichalcum_imbued_inscription (recette) |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_bolt` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_sunrise` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_predator` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_twilight` | 250 | 100 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
+| `dust_crystalline` — Pile of Crystalline Dust | `orrax_manifested` | 100 | 250 | 150 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_the_juggernaut` | 250 | 150 | 100 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_frenzy` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
 | `dust_crystalline` — Pile of Crystalline Dust | `gen1_frostfang` | 250 | 200 | 50 | charged_lodestone (recette), corrupted_lodestone (recette), crystal_lodestone (recette) +4 autres |
@@ -115,14 +104,13 @@ recalcule en relancant le script.
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_astralaria` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_exalted (vendeur) |
 | `lump_of_aurillium` — Lump of Aurillium | `gen2_chuka_and_champawat` | 800 | 800 | 0 | gift_of_gliding (vendeur), gift_of_the_exalted (vendeur) |
 
-## COUT VENDEUR — 6 cas
+## COUT VENDEUR — 5 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `trade_contract` — Trade Contract | `coalescence` | 0 | 1250 | 1250 | funerary_incense (vendeur) |
 | `trade_contract` — Trade Contract | `vision` | 0 | 500 | 500 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `coalescence` | 0 | 250 | 250 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `vision` | 0 | 100 | 100 | funerary_incense (vendeur) |

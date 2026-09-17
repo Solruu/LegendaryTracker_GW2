@@ -186,6 +186,52 @@ def check_free_sources(data, errors, warnings):
         )
 
 
+def _composant_par_api_jsx(comps):
+    """Resout un identifiant du bloc `currencies` du JSX vers un composant.
+
+    Deux espaces d'identifiants cohabitent dans ces blocs : les objets, dont
+    l'id est celui de /v2/items et vit dans `craft_components[].apiId`, et les
+    MONNAIES de portefeuille, dont l'id vient de /v2/currencies et ne figure
+    nulle part dans les composants. Le Jeton de fournisseur est declare 29 cote
+    JSX (la monnaie) et 88926 cote sources (l'objet consommable qui la donne) :
+    deux identifiants justes, du meme objet, dans deux espaces differents.
+
+    Faute de cette traduction, la ligne ne se resolvait pas : check_qty_vs_jsx
+    la sautait en silence et check_missing_qty l'annoncait « hors du grand
+    total ». Les 450 jetons, donnes pour confirmes le 17/09, n'avaient donc en
+    realite jamais ete confrontes a la chaine.
+
+    La traduction passe par le NOM, lu dans gw2_currencies_ref.json qui est
+    deja au depot : aucun champ nouveau, aucune table de correspondance a tenir
+    a jour a cote — le jour ou le nom d'une monnaie change, il change dans le
+    referentiel et la resolution suit.
+    """
+    par_api = {}
+    for cid, comp in comps.items():
+        if isinstance(comp, dict) and isinstance(comp.get("apiId"), int):
+            par_api.setdefault(comp["apiId"], cid)
+    ref = HERE / "gw2_currencies_ref.json"
+    if not ref.is_file():
+        return par_api
+    try:
+        monnaies = json.loads(ref.read_text(encoding="utf-8")).get("all") or []
+    except (ValueError, OSError):
+        return par_api
+    par_nom = {}
+    for cid, comp in comps.items():
+        if not isinstance(comp, dict):
+            continue
+        n = comp.get("name")
+        n = (n.get("en") or n.get("fr")) if isinstance(n, dict) else n
+        if isinstance(n, str):
+            par_nom.setdefault(n.strip().lower(), cid)
+    for m in monnaies:
+        mid, nom = m.get("id"), (m.get("name") or "").strip().lower()
+        if isinstance(mid, int) and mid not in par_api and nom in par_nom:
+            par_api[mid] = par_nom[nom]
+    return par_api
+
+
 def check_missing_qty(data, errors, warnings):
     """Une monnaie declaree pour un legendaire doit avoir une qty pour lui.
 
@@ -200,14 +246,20 @@ def check_missing_qty(data, errors, warnings):
     )
     if not jsx:
         return
-    per_leg = _jsx_currency_blocks(jsx[-1].read_text(encoding="utf-8"))
+    src = jsx[-1].read_text(encoding="utf-8")
+    per_leg = _jsx_currency_blocks(src)
+    # v45 : meme traduction que check_qty_vs_jsx. Le bloc de monnaies s'appelle
+    # « upgrades », la cible du calcul « upgrades_combined ». Sans elle, les cinq
+    # monnaies des ameliorations legendaires etaient declarees invisibles du
+    # grand total alors qu'elles y sont — cinq faux avertissements permanents.
+    # La regle de l'alias avait ete posee la veille sur l'autre controle et pas
+    # sur celui-ci : une transversale ne vaut que si elle couvre tous ses cas.
+    alias = _jsx_alias(src)
     comps = data.get("craft_components", {})
-    by_api = {}
-    for cid, comp in comps.items():
-        if isinstance(comp.get("apiId"), int):
-            by_api.setdefault(comp["apiId"], cid)
+    by_api = _composant_par_api_jsx(comps)
 
     for legid, currencies in sorted(per_leg.items()):
+        cible = alias.get(legid, legid)
         for api in sorted(currencies):
             cid = by_api.get(api)
             if cid is None:
@@ -221,7 +273,7 @@ def check_missing_qty(data, errors, warnings):
             # of Bloodstone Magic et le Gift of Dragon Magic. La regle datait
             # d'un temps ou tout etait a plat ; exiger une cle directe
             # signalerait comme invisible ce que la cascade voit tres bien.
-            if not _atteint(cid, legid, comps):
+            if not _atteint(cid, cible, comps):
                 warnings.append(
                     f"craft_components/{cid} : declare pour '{legid}' cote JSX, et ni son qty "
                     "ni aucune chaine ne le relie a ce legendaire — invisible du grand total"
@@ -289,25 +341,38 @@ def check_unrendered_fields(data, errors, warnings):
             )
 
 
+_DATA_COURANTE = None
+_CACHE_TOTAUX = {}
+
+
+def _totaux_caches(legid):
+    """Les totaux d'une cible, calcules une fois. Le moteur coute ~1 ms."""
+    if legid not in _CACHE_TOTAUX:
+        _CACHE_TOTAUX[legid] = (
+            _totaux_legendaire(_DATA_COURANTE, legid) if _DATA_COURANTE else {}
+        )
+    return _CACHE_TOTAUX[legid]
+
+
 def _atteint(cid, legid, comps, profondeur=0):
     """Le composant atteint-il ce legendaire, en direct ou par la cascade ?
 
     On remonte de parent en parent : si un maillon de la chaine porte le
     legendaire dans son qty, le composant est bien compte. La profondeur est
     bornee pour qu'une reference circulaire ne boucle pas.
+
+    v45 : cette remontee a la main etait la onzieme implementation de la
+    cascade, et elle avait deja diverge. `upgrades_combined` n'est la cle qty
+    d'aucun composant : la cible se COMPOSE de six runes, deux cachets et une
+    relique, par le champ `composition` que les deux moteurs lisent depuis le
+    16/09. Le marcheur ne le connaissait pas, donc il declarait les cinq
+    monnaies des ameliorations legendaires invisibles du grand total alors
+    qu'elles y sont — et il l'aurait fait pour toute cible composee a venir.
+
+    On interroge donc le moteur, seul detenteur du calcul : un composant
+    atteint la cible s'il figure a son total.
     """
-    if profondeur > 8:
-        return False
-    qty = (comps.get(cid) or {}).get("qty")
-    if not isinstance(qty, dict):
-        return False
-    for cle in qty:
-        base = cle.split("__")[0]
-        if base == legid:
-            return True
-        if cle in comps and _atteint(cle, legid, comps, profondeur + 1):
-            return True
-    return False
+    return bool(_totaux_caches(legid).get(cid))
 
 
 # La cascade n'est plus ecrite ici. Elle vivait dans dix fichiers, dont deux
@@ -365,10 +430,7 @@ def check_qty_vs_jsx(data, errors, warnings):
     per_leg = _jsx_currency_blocks(src)
     alias = _jsx_alias(src)
     comps = data.get("craft_components", {})
-    par_api = {}
-    for cid, comp in comps.items():
-        if isinstance(comp.get("apiId"), int):
-            par_api.setdefault(comp["apiId"], cid)
+    par_api = _composant_par_api_jsx(comps)
     for legid, reqs in per_leg.items():
         totaux = _totaux_legendaire(data, alias.get(legid, legid))
         for api, req in reqs.items():
@@ -1694,8 +1756,27 @@ def check_nom_pluriel_double(data, errors, warnings):
             continue
         cle = re.sub(r"[^a-z0-9]", "", n.lower()).replace("s", "")
         familles.setdefault(cle, []).append((cid, n))
+    # v45 : quand chaque membre de la famille a SA PROPRE capture wiki et que
+    # ces captures annoncent des identifiants API differents, le couple n'est
+    # pas une coquille de pluriel : ce sont deux objets du jeu. Gift of the
+    # Desert et Gift of the Dessert sont deux dons reels, l'un du Desert de
+    # Cristal, l'autre du festin d'Orrax. Le wiki tranche ; sans cette lecture
+    # l'avertissement revenait a chaque passe et on rouvrait les memes pages.
+    dossier = HERE / "ressources" / "wiki"
+    motif = re.compile(r'api\.guildwars2\.com/v2/items\?ids=(\d+)')
+
+    def _api_capture(cid):
+        f = dossier / f"{cid}.html"
+        if not f.is_file():
+            return None
+        t = motif.search(f.read_text(encoding="utf-8", errors="ignore"))
+        return int(t.group(1)) if t else None
+
     for cle, liste in sorted(familles.items()):
         if len(liste) > 1:
+            ids = [_api_capture(cid) for cid, _ in liste]
+            if len(ids) == len(set(ids)) and all(i is not None for i in ids):
+                continue
             warnings.append(
                 "noms ne differant que par des « s » : "
                 + ", ".join(f"{cid} ({n})" for cid, n in liste)
@@ -1771,6 +1852,92 @@ def check_alt_groups(data, errors, warnings):
             warnings.append(f"{label} : sans `ref`, l'arbitrage n'est pas tracable")
 
 
+def _recette_capture(page):
+    """Les quantites de la boite Recipe d'une capture : {nom normalise: qty}.
+
+    Rend None quand la page n'est pas au depot ou ne porte pas de boite.
+    """
+    import urllib.parse as _up
+    chemin = HERE / "ressources" / "wiki" / f"{page}.html"
+    if not chemin.is_file():
+        return None
+    try:
+        import gw2_parse_wiki_recipe_v1 as _rec
+        lu = _rec.lire(str(chemin))
+    except Exception:
+        return None
+    recettes = (lu or {}).get("recettes") or []
+    if not recettes:
+        return None
+    out = {}
+    for r in recettes:
+        for nom, q in r.get("ingredients") or []:
+            if not isinstance(q, int):
+                continue
+            cle = re.sub(r"[^a-z0-9]", "", _up.unquote(str(nom)).lower())
+            # Plusieurs recettes (disciplines) donnent les memes ingredients ;
+            # on garde la plus exigeante plutot que la derniere lue.
+            out[cle] = max(out.get(cle, 0), q)
+    return out
+
+
+def check_fratrie_incomplete(data, errors, warnings):
+    """Un legendaire qui ne porte pas ce que toute sa generation porte.
+
+    Les seize armes gen3 se fabriquent sur la meme recette — don d'arme,
+    precurseur, Gift of Jade Mastery, Draconic Tribute — et leurs tables de
+    materiaux ne different que par le nom de l'objet propre a l'arme. Quand
+    quinze d'entre elles portent une exigence et que la seizieme ne la porte
+    pas, ce n'est pas une particularite du jeu : c'est une saisie oubliee.
+
+    Aurene's Rending ne portait que trois des six clés de ses soeurs. Rien ne
+    le signalait : elle affichait simplement moins, et un total trop bas ne
+    ressemble a rien.
+
+    La regle NE REMPLIT PAS le trou. Le patron generationnel s'est revele faux
+    quatre fois dans ce projet — Eternity, douze gen3, Shooshadoo, Xiuquatl —
+    et les chiffres manquants ne figurent dans aucune table : ils viennent de
+    saisies a plat, sans provenance. Elle rend le trou visible, la source le
+    comblera.
+
+    Les entrees `*_weapon_generic` sont des gabarits, pas des armes : exclues.
+    La tolerance est de deux membres manquants, ce qui evite de transformer une
+    exigence minoritaire en anomalie.
+    """
+    cc = data.get("craft_components", {})
+    legs = data.get("legendaries", {})
+    groupes = {}
+    for lid, leg in legs.items():
+        if not isinstance(leg, dict) or lid.endswith("_weapon_generic"):
+            continue
+        gen = leg.get("gen")
+        if gen:
+            groupes.setdefault(gen, []).append(lid)
+    porte = {}
+    for cid, comp in cc.items():
+        if not isinstance(comp, dict):
+            continue
+        for cle in comp.get("qty") or {}:
+            porte.setdefault(cle.split("__")[0], set()).add(cid)
+    for gen, membres in sorted(groupes.items()):
+        if len(membres) < 5:
+            continue
+        compte = {}
+        for m in membres:
+            for cid in porte.get(m, ()):
+                compte[cid] = compte.get(cid, 0) + 1
+        for cid, n in sorted(compte.items()):
+            if not len(membres) - 2 <= n < len(membres):
+                continue
+            manquants = sorted(m for m in membres if cid not in porte.get(m, ()))
+            warnings.append(
+                f"fratrie {gen} : {cid} est porte par {n} des {len(membres)} armes, "
+                f"mais pas par {', '.join(manquants)} — meme recette, meme table, "
+                "donc probablement une saisie oubliee ; a lire sur la page de "
+                "l'arme avant de completer"
+            )
+
+
 def check_lecture_colonne3(data, errors, warnings):
     """Un enfant ne doit pas couter plus cher que son parent ne le justifie.
 
@@ -1800,15 +1967,37 @@ def check_lecture_colonne3(data, errors, warnings):
             if p not in cc or not isinstance(q, int) or q < 2:
                 continue
             for grand, qg in sorted((cc[p].get("qty") or {}).items()):
-                if grand.split("__")[0] in cc and qg == q:
-                    warnings.append(
-                        f"lecture colonne 3 a verifier : {cid} -> {p} = {q}, "
-                        f"et {p} -> {grand.split('__')[0]} = {qg}. Le meme nombre "
-                        "a deux crans est le symptome d'une quantite agregee lue "
-                        "comme unitaire — confronter a la boite Recipe de "
-                        f"{p}, pas a une table d'arme"
+                if grand.split("__")[0] not in cc or qg != q:
+                    continue
+                # v45 : le controle fait lui-meme la confrontation qu'il
+                # reclamait. La boite Recipe de la page du parent donne la
+                # quantite unitaire ; la coincidence numerique existe (deux
+                # eclats d'obsidienne par brique de pierre de sang ET deux
+                # briques par cristal de vision mineur, les deux justes). Sans
+                # cette lecture, quatre avertissements revenaient a chaque
+                # passe et il fallait rouvrir les memes pages pour rien.
+                boite = _recette_capture(p)
+                nom = cc[cid].get("name")
+                nom = (nom.get("en") or nom.get("fr")) if isinstance(nom, dict) else nom
+                cle = re.sub(r"[^a-z0-9]", "", str(nom or cid).lower())
+                attendu = (boite or {}).get(cle)
+                if attendu == q:
+                    break  # la page du parent confirme : rien a signaler
+                if attendu is not None:
+                    errors.append(
+                        f"craft_components/{cid} : qty[{p}] = {q} alors que la boite "
+                        f"Recipe de {p} en demande {attendu} — quantite agregee lue "
+                        "comme unitaire"
                     )
                     break
+                warnings.append(
+                    f"lecture colonne 3 a verifier : {cid} -> {p} = {q}, "
+                    f"et {p} -> {grand.split('__')[0]} = {qg}. Le meme nombre "
+                    "a deux crans est le symptome d'une quantite agregee lue "
+                    "comme unitaire — confronter a la boite Recipe de "
+                    f"{p}, pas a une table d'arme"
+                )
+                break
 
 
 def _lbl(line):
@@ -1830,6 +2019,8 @@ def walk(node, path, hits):
 def main() -> int:
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else latest_sources()
     data = json.loads(path.read_text(encoding="utf-8"))
+    global _DATA_COURANTE
+    _DATA_COURANTE = data
     names = load_ref()
     errors, warnings = [], []
 
@@ -1924,6 +2115,7 @@ def main() -> int:
     check_nom_pluriel_double(data, errors, warnings)
 
     # 33. Le meme nombre a deux crans : quantite agregee lue comme unitaire
+    check_fratrie_incomplete(data, errors, warnings)
     check_lecture_colonne3(data, errors, warnings)
 
     # 34. alt_groups : un choix un-parmi-N ne doit jamais compter deux fois

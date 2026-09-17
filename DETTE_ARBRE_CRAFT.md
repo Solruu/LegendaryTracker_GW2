@@ -775,3 +775,88 @@ Ce qui subsiste ailleurs, et n'appartient pas a ce document :
   Castoran identifiee.
 - `endless_summer` garde ses plats d'essences de faille : 2 500/1 000/500
   correspondraient a 10 Amalgamated Rift Essence que rien ne declare.
+
+## O — 17/09/2026 : deux verrous transversaux qui ne couvraient pas leur cas
+
+Aucune capture nouvelle. Cette passe corrige des controles qui se croyaient
+poses et ne l'etaient pas.
+
+**Le bloc des ameliorations legendaires n'etait toujours pas confronte**, la
+veille de l'avoir declare tel. Deux causes empilees.
+
+La premiere est l'alias : `check_qty_vs_jsx` traduisait `upgrades` en
+`upgrades_combined`, `check_missing_qty` non. Une transversale posee sur un
+seul de ses appelants n'est pas posee.
+
+La seconde est plus grave. `_atteint()` — la fonction qui decide si un
+composant remonte jusqu'a un legendaire — etait une ONZIEME implementation de
+la cascade, ecrite a la main, qui remontait de cle `qty` en cle `qty`. Or
+`upgrades_combined` n'est la cle `qty` d'aucun composant : la cible se COMPOSE
+de six runes, deux cachets et une relique, par le champ `composition` que les
+deux moteurs lisent depuis le 16/09. Le marcheur ne le connaissait pas. Il
+declarait donc les cinq monnaies « invisibles du grand total » alors qu'elles
+y sont — et il l'aurait fait pour toute cible composee a venir. Remplace par un
+appel au moteur, avec cache.
+
+**Et les 450 jetons de fournisseur n'avaient jamais ete verifies**, contre ce
+qu'annonce la section N. Le JSX declare `apiId: 29` pour ce poste : c'est
+l'identifiant de MONNAIE du portefeuille. Le composant porte 88926, celui de
+l'OBJET consommable qui la donne. Deux identifiants justes, du meme objet, dans
+deux espaces differents — et aucune traduction entre les deux, donc la ligne ne
+se resolvait a rien et l'audit la sautait en silence. La resolution passe
+desormais par le NOM, lu dans `gw2_currencies_ref.json` deja au depot : aucun
+champ nouveau, aucune table a tenir a jour a cote. Garde-fou teste en le faisant
+echouer — 459 au lieu de 450 fait tomber l'audit en erreur. Le 450 est
+maintenant confirme identique a la chaine, pour de bon.
+
+**`check_lecture_colonne3` fait enfin la confrontation qu'elle reclamait.** Elle
+disait « confronter a la boite Recipe du parent » et laissait l'humain le faire ;
+quatre avertissements revenaient donc a chaque passe et il fallait rouvrir les
+memes pages. Elle lit maintenant cette boite dans la capture. Les quatre cas
+sont de vraies coincidences, confirmees page par page : deux eclats d'obsidienne
+par Bloodstone Brick ET deux briques par Lesser Vision Crystal, meme motif pour
+Dragonite Ingot et Empyreal Star, et cinq tickets PvP par Certificate of Support
+ET cinq certificats par Gift of Skirmishing. Le controle devient bloquant quand
+la boite contredit — teste dans les deux sens.
+
+**Le couple pluriel se leve sur preuve.** Quand chaque membre d'une famille de
+noms a sa propre capture et que ces captures annoncent des identifiants API
+differents, ce sont deux objets du jeu, pas une coquille. `gift_of_insight` /
+`gift_of_insights` sort ainsi du rapport. `gift_of_the_desert` /
+`gift_of_the_dessert` y reste : le premier n'a pas de capture, et c'est
+exactement ce que l'avertissement doit dire.
+
+### Ce que la passe a fait sortir, et qu'elle ne comble pas
+
+**Aurene's Rending ne porte que trois des six clés de ses quinze soeurs** : il
+lui manque `mystic_clover: 39`, `mystic_coin: 250` et `crystalline_ingot: 250`.
+Sa table de materiaux est structurellement identique aux quinze autres, au nom
+de l'objet propre a l'arme pres. Rien ne le signalait : l'arme affichait
+simplement moins, et un total trop bas ne ressemble a rien.
+
+Les trois valeurs ne sont ecrites dans AUCUNE table — les tables gen3 donnent
+38 trefles via le Draconic Tribute et s'arretent la. Elles viennent de saisies a
+plat par legendaire, sans provenance. Les completer serait une deduction par
+patron generationnel, et ce patron s'est revele faux quatre fois ici : Eternity,
+douze gen3, Shooshadoo, Xiuquatl. Elles restent donc vides.
+
+`check_fratrie_incomplete` rend le trou visible : un composant porte par au
+moins n-2 membres d'une generation et absent d'un membre est signale. Mesuree
+sur tout le fichier, gabarits `*_weapon_generic` exclus, elle ne designe que ce
+cas — zero bruit.
+
+Corrige au passage sur la meme arme : son champ `wiki` pointait vers
+`Aurene%27s_Fang`, la page d'une AUTRE arme.
+
+### Deux restes de fusion
+
+- `aetheric_anchor.components` citait encore `gift_of_insight_voe`, supprime par
+  la fusion du 17/09. Seule occurrence restante dans le fichier.
+- `mystic_clover.qty_overlap_verified` declarait le chevauchement trefle/tribut
+  draconique pour onze gen3 sur quinze. Les quatre manquantes sont celles
+  ecrites sous l'autre convention d'apostrophe (`gen3_aurene_s_*`) : meme cle
+  39, meme `draconic_tribute` 1, meme table. Ajoutees.
+
+Audit v45 : 0 erreur, 56 avertissements (64 avant, dont 10 faux leves et 3 vrais
+ajoutes par la nouvelle regle). Moteurs confrontes : 84 cibles, 4 994 totaux,
+aucun ecart.
