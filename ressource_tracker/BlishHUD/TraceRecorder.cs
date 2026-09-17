@@ -167,10 +167,16 @@ namespace GW2_NodeTracker
         // -------------------------------------------------------------
 
         /// <summary>
-        /// Cherche, dans les traces de la map, le sous-trajet allant de
-        /// <paramref name="from"/> à <paramref name="to"/> : dernière sortie
+        /// Cherche, dans les traces de la map, le sous-trajet reliant
+        /// <paramref name="from"/> et <paramref name="to"/> : dernière sortie
         /// du rayon d'accroche de l'un, première entrée dans celui de
         /// l'autre, sans jamais franchir une rupture de segment.
+        ///
+        /// La recherche se fait DANS LES DEUX SENS. Une route est une boucle
+        /// orientée, mais Antoine ne farme pas en suivant son ordre : un
+        /// tronçon parcouru à l'envers est le même chemin, et le refuser
+        /// laissait des tronçons rouges alors qu'ils venaient d'être faits.
+        /// Le trajet retour est simplement retourné avant d'être retenu.
         ///
         /// Départage : la trace la plus récente gagne, puis la plus courte.
         /// Un trajet plus de 4 fois plus long que la ligne droite est rejeté
@@ -183,10 +189,26 @@ namespace GW2_NodeTracker
         {
             if (_points.Count == 0) return null;
 
-            double straight = from.DistanceTo(to);
-            double maxAcceptable = straight * 4.0 + 100.0;
+            double maxAcceptable = from.DistanceTo(to) * 4.0 + 100.0;
 
+            TraceMatch forward = FindOneWay(mapId, from, to, snapRadius, maxAcceptable);
+            TraceMatch backward = FindOneWay(mapId, to, from, snapRadius, maxAcceptable);
+
+            if (backward != null)
+            {
+                // Même chemin, lu dans l'autre sens.
+                backward.Points = Enumerable.Reverse(backward.Points).ToList();
+            }
+
+            return IsBetter(forward, backward) ? forward : backward;
+        }
+
+        /// <summary>Recherche dans un seul sens, de a vers b.</summary>
+        private TraceMatch FindOneWay(int mapId, RoutePoint a, RoutePoint b,
+                                      double snapRadius, double maxAcceptable)
+        {
             TraceMatch best = null;
+            RoutePoint from = a, to = b;
 
             foreach (var seg in _points.Where(p => p.MapId == mapId)
                                        .GroupBy(p => p.Segment))
@@ -230,6 +252,7 @@ namespace GW2_NodeTracker
 
         private static bool IsBetter(TraceMatch candidate, TraceMatch current)
         {
+            if (candidate == null) return false;
             if (current == null) return true;
 
             // La plus récente l'emporte : si Antoine refait le trajet
