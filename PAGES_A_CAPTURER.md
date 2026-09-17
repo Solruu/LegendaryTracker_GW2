@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v292.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v293.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -62,7 +62,7 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
 
-## 4 — 32 collections incomplètes — RIEN À CAPTURER
+## 4 — 28 collections incomplètes — RIEN À CAPTURER
 
 Ces succès n'ont pas d'article à eux : « Incursive Investigation:
 Infinite Recursion » est une ligne de la page de catégorie, « Helping
@@ -90,10 +90,10 @@ colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
 | ○ | `Return to Living World` | Prismatic Champion's Regalia | 5790 | sans etapes, sans unlock | `Prismatic Champion's Regalia` |
 | ○ | `Shipwreck Strand Mastery` | Selachimorpha | 8880 | sans etapes, sans unlock | `Selachimorpha` |
 | ○ | `Starlit Weald Mastery` | Selachimorpha | 9057 | sans etapes, sans unlock | `Selachimorpha` |
-| ○ | `Path of the Ascension I: The Thrill of Battle` | The Ascension | 2738 | sans etapes, sans unlock | `The Ascension` |
-| ○ | `Path of the Ascension II: Tapestry of Sacrifice` | The Ascension | 2752 | sans etapes, sans unlock | `The Ascension` |
-| ○ | `Path of the Ascension III: Monument of Legends` | The Ascension | 2725 | sans etapes, sans unlock | `The Ascension` |
-| ○ | `Path of the Ascension IV: Hymn of Glory` | The Ascension | 2715 | sans etapes, sans unlock | `The Ascension` |
+| ○ | `Path of the Ascension I: The Thrill of Battle` | The Ascension | 2738 | sans etapes | `The Ascension` |
+| ○ | `Path of the Ascension II: Tapestry of Sacrifice` | The Ascension | 2752 | sans etapes | `The Ascension` |
+| ○ | `Path of the Ascension III: Monument of Legends` | The Ascension | 2725 | sans etapes | `The Ascension` |
+| ○ | `Path of the Ascension IV: Hymn of Glory` | The Ascension | 2715 | sans etapes | `The Ascension` |
 | ○ | `"A Bug in the System" Mastery` | Vision | 4093 | sans etapes, sans unlock | `Vision` |
 | ○ | `"A Star to Guide Us" Mastery` | Vision | 4359 | sans etapes, sans unlock | `Vision` |
 | ○ | `"All or Nothing" Mastery` | Vision | 4544 | sans etapes, sans unlock | `Vision` |
@@ -101,7 +101,3 @@ colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
 | ○ | `"War Eternal" Mastery` | Vision | 4689 | sans etapes, sans unlock | `Vision` |
 | ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans etapes, sans unlock | — |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
-| ● | `Forge Guard's Armor Collection` | Stella Radians | 9330 | sans unlock | — |
-| ● | `Glimmering Resin Weapon Collector` | Stella Radians | 9344 | sans unlock | — |
-| ● | `Vision I: Awakening` | Vision | 4762 | sans unlock | — |
-| ● | `Vision II: Farsight` | Vision | 4771 | sans unlock | — |
