@@ -33,6 +33,27 @@ namespace GW2_NodeTracker
             ["Festival"] = new[] { "candy_corn", "rich_candy_corn", "bauble" },
         };
 
+        /// <summary>
+        /// Couleur du ruban par groupe, au format TacO AARRGGBB.
+        ///
+        /// La couleur porte l'identité du groupe, pas l'état du tronçon : les
+        /// lignes droites non vérifiées restent rouges quel que soit le
+        /// groupe, parce que c'est un avertissement, pas une catégorie. Une
+        /// route rouge veut dire « ça traverse peut-être le décor », et ça
+        /// doit se lire pareil sur du minerai et sur du bois.
+        /// </summary>
+        public static readonly Dictionary<string, string> GroupTrailColors = new Dictionary<string, string>
+        {
+            ["Minerai"] = "ff4d9de0",   // bleu acier
+            ["Bois"] = "ffc98b3a",      // brun
+            ["Vegetal"] = "ff5cc45c",   // vert
+            ["Special"] = "ffb05ce0",   // violet
+            ["Festival"] = "ffe05ca8",  // magenta
+        };
+
+        /// <summary>Rouge d'avertissement des tronçons non vérifiés, commun à tous les groupes.</summary>
+        public const string UnverifiedTrailColor = "ffcc3333";
+
         public static readonly Dictionary<int, string> MapNames = new Dictionary<int, string>
         {
             [15] = "Queensdale",
@@ -197,12 +218,14 @@ namespace GW2_NodeTracker
                     // catégorie se coche dans le menu mais aucun ruban n'est
                     // dessiné. TacO, lui, fournit une texture par défaut, d'où
                     // l'absence d'erreur visible.
+                    string groupColor = GroupTrailColors.TryGetValue(grp, out string gc) ? gc : "ffffffff";
+
                     sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  "color=\"ff33cc33\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{groupColor}\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  "color=\"ffcc3333\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("      </MarkerCategory>");
                 }
 
