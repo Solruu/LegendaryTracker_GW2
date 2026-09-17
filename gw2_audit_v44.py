@@ -318,6 +318,25 @@ _sys.path.insert(0, str(HERE))
 from gw2_moteur_v1 import Modele as _Modele  # noqa: E402
 
 
+def _jsx_alias(src):
+    """Les alias de cible declares par le JSX : {id d'onglet: id de calcul}.
+
+    Le bloc de monnaies s'appelle « upgrades », la cible du calcul
+    « upgrades_combined ». Sans cette traduction, _totaux_legendaire rendait un
+    dictionnaire VIDE, le total valait 0, et tout le bloc sortait par la porte
+    « cout que l'arbre ne porte pas encore » : les cinq monnaies des
+    ameliorations legendaires n'etaient confrontees a rien du tout. C'est
+    precisement le bloc qui a vecu le plus longtemps code en dur.
+
+    L'alias est lu dans le JSX plutot que recopie ici : une troisieme copie se
+    serait desynchronisee comme les autres.
+    """
+    bloc = re.search(r"const SOURCES_ALIAS\s*=\s*\{([^}]*)\}", src)
+    if not bloc:
+        return {}
+    return dict(re.findall(r"(\w+)\s*:\s*\"([\w_]+)\"", bloc.group(1)))
+
+
 def _totaux_legendaire(data, legid):
     return _Modele.depuis(data).totaux(legid)
 
@@ -342,14 +361,16 @@ def check_qty_vs_jsx(data, errors, warnings):
     )
     if not jsx:
         return
-    per_leg = _jsx_currency_blocks(jsx[-1].read_text(encoding="utf-8"))
+    src = jsx[-1].read_text(encoding="utf-8")
+    per_leg = _jsx_currency_blocks(src)
+    alias = _jsx_alias(src)
     comps = data.get("craft_components", {})
     par_api = {}
     for cid, comp in comps.items():
         if isinstance(comp.get("apiId"), int):
             par_api.setdefault(comp["apiId"], cid)
     for legid, reqs in per_leg.items():
-        totaux = _totaux_legendaire(data, legid)
+        totaux = _totaux_legendaire(data, alias.get(legid, legid))
         for api, req in reqs.items():
             cid = par_api.get(api)
             if cid is None:

@@ -759,11 +759,18 @@ elle-meme.
 
 Ce qui subsiste ailleurs, et n'appartient pas a ce document :
 
-- Les cinq monnaies de l'onglet `upgrades` restent codees en dur cote JSX. La
-  chaine reproduit maintenant les cinq a l'identique (450 jetons, 23 250 piles,
-  205 trefles, 1 050 ectos, 450 eclats), donc la table peut ceder — mais
-  `check_qty_vs_jsx` ne sait pas encore controler une cible composee, et
-  supprimer le tableau sans ce garde-fou rendrait l'ecart invisible.
+- **Regle le 17/09/2026 (audit v44).** Les cinq monnaies de l'onglet `upgrades`
+  n'etaient confrontees a RIEN : `check_qty_vs_jsx` cherchait les totaux de la
+  cible « upgrades », qui n'existe pas — la cible du calcul s'appelle
+  `upgrades_combined`, le JSX passant par `SOURCES_ALIAS`. Le dictionnaire rendu
+  etait vide, le total valait 0, et tout le bloc sortait par la porte « cout que
+  l'arbre ne porte pas encore ». Le seul bloc de monnaies du fichier qui n'avait
+  jamais ete verifie etait donc celui qui restait code en dur le plus longtemps.
+  L'alias est desormais lu dans le JSX lui-meme — pas recopie dans l'audit, une
+  troisieme copie se serait desynchronisee comme les autres — et les cinq
+  valeurs sont confirmees identiques a la chaine (450 jetons, 23 250 piles,
+  205 trefles, 1 050 ectos, 450 eclats). Garde-fou teste en le faisant echouer :
+  205 change en 204 fait tomber l'audit en erreur.
 - `testimony_of_heroics` porte toujours `warbringer: 250` sans contrepartie
   Castoran identifiee.
 - `endless_summer` garde ses plats d'essences de faille : 2 500/1 000/500
