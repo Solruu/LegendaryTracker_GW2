@@ -193,9 +193,15 @@ namespace GW2_NodeTracker
                 foreach (string grp in trailGroups)
                 {
                     sb.AppendLine($"      <MarkerCategory name=\"{grp.ToLowerInvariant()}\" DisplayName=\"{grp}\">");
+                    // texture= est OBLIGATOIRE pour Pathing : sans elle, la
+                    // catégorie se coche dans le menu mais aucun ruban n'est
+                    // dessiné. TacO, lui, fournit une texture par défaut, d'où
+                    // l'absence d'erreur visible.
                     sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
+                                  $"texture=\"{TrailTexture.PackPath}\" " +
                                   "color=\"ff33cc33\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
+                                  $"texture=\"{TrailTexture.PackPath}\" " +
                                   "color=\"ffcc3333\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("      </MarkerCategory>");
                 }
@@ -294,6 +300,14 @@ namespace GW2_NodeTracker
                     var entry = zip.CreateEntry(t.FileName);
                     using (var stream = entry.Open())
                         stream.Write(t.Data, 0, t.Data.Length);
+                }
+
+                if (trails.Count > 0)
+                {
+                    byte[] trailPng = TrailTexture.BuildPng();
+                    var texEntry = zip.CreateEntry(TrailTexture.PackPath);
+                    using (var stream = texEntry.Open())
+                        stream.Write(trailPng, 0, trailPng.Length);
                 }
             }
 

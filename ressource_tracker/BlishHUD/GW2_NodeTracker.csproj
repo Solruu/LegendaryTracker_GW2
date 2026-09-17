@@ -153,6 +153,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="GatheredNode.cs" />
     <Compile Include="IconFetcher.cs" />
     <Compile Include="Module.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="TacoGenerator.cs" />
     <Compile Include="TracePoint.cs" />
     <Compile Include="TraceRecorder.cs" />
+    <Compile Include="TrailTexture.cs" />
     <Compile Include="TrlWriter.cs" />
   </ItemGroup>
   <ItemGroup>
