@@ -1,17 +1,18 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v294.json`, 927 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v295.json`, 1105 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **857 accords** — le nombre affiche est celui de la table.
-- **7 trous** — l'affichage est SOUS le plancher. Certains.
-- **40 excedents expliques** — le surplus vient d'une branche
-  que la table cite sans l'ouvrir.
-- **23 excedents nus** — rien dans la donnee ne les explique : soit
+- **1038 accords** — le nombre affiche est celui de la table.
+- **0 trous** — l'affichage est SOUS le plancher. Certains.
+- **66 excedents expliques** — le surplus vient d'une branche
+  que la table cite sans l'ouvrir, ou d'un chevauchement declare en
+  `qty_overlap_verified`.
+- **1 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -19,46 +20,19 @@ plus. **Son total est donc un plancher, pas une egalite.**
 
 | legendaire | composant | affiche | table | manque |
 |---|---|---:|---:|---:|
-| `gen2_the_hms_divinity` | `mithril_ingot` — Mithril Ingot | 0 | 4000 | -4000 |
-| `gen2_the_hms_divinity` | `elder_wood_plank` — Elder Wood Plank | 250 | 3250 | -3000 |
-| `gen2_the_hms_divinity` | `mystic_curio` — Mystic Curio | 0 | 100 | -100 |
-| `gen3_aurene_s_fang` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
-| `gen3_aurene_s_flight` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
-| `gen3_aurene_s_tail` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
-| `gen3_aurene_s_wing` | `tale_of_adventure` — Tale of Adventure | 0 | 10 | -10 |
 
 ## Excedents nus — a expliquer ou a corriger
 
 | legendaire | composant | affiche | table | excedent |
 |---|---|---:|---:|---:|
-| `legendary_relic` | `pile_of_lucent_crystal` — Pile of Lucent Crystal | 18750 | 6250 | +12500 |
-| `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 250 | +2000 |
 | `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | +350 |
-| `perfected_envoy` | `obsidian_shard` — Obsidian Shard | 300 | 50 | +250 |
-| `coalescence` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
-| `conflux` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
-| `stella_radians` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
-| `transcendence` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
-| `vision` | `mystic_coin` — Mystic Coin | 499 | 250 | +249 |
-| `selachimorpha` | `obsidian_shard` — Obsidian Shard | 488 | 250 | +238 |
-| `gen3_aurene_s_fang` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
-| `gen3_aurene_s_flight` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
-| `gen3_aurene_s_tail` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
-| `gen3_aurene_s_wing` | `antique_summoning_stone` — Antique Summoning Stone | 200 | 100 | +100 |
-| `the_ascension` | `pvp_league_ticket` — PvP League Ticket | 225 | 125 | +100 |
-| `perfected_envoy` | `mystic_clover` — Mystic Clover | 90 | 15 | +75 |
-| `gen3_aurene_s_fang` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
-| `gen3_aurene_s_flight` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
-| `gen3_aurene_s_tail` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
-| `gen3_aurene_s_wing` | `mystic_clover` — Mystic Clover | 77 | 38 | +39 |
-| `perfected_envoy` | `auric_ingot` — Auric Ingot | 30 | 5 | +25 |
-| `perfected_envoy` | `reclaimed_metal_plate` — Reclaimed Metal Plate | 30 | 5 | +25 |
-| `perfected_envoy` | `chak_egg` — Chak Egg | 30 | 5 | +25 |
 
 ## Excedents expliques par une branche fermee de la table
 
 | legendaire | composant | affiche | table | par |
 |---|---|---:|---:|---|
+| `legendary_relic` | `pile_of_lucent_crystal` | 18750 | 6250 | `qty_overlap_verified` |
+| `transcendence` | `shard_of_glory` | 2250 | 250 | `qty_overlap_verified` |
 | `gen2_claw_of_the_khan_ur` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
 | `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_war_dedication` |
 | `gen2_eureka` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
@@ -68,6 +42,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_sharur` | `mithril_ingot` | 5750 | 4250 | `mystic_curio` |
 | `gen2_shooshadoo` | `mithril_ingot` | 3750 | 2250 | `mystic_curio` |
 | `gen2_the_binding_of_ipos` | `mithril_ingot` | 3500 | 2000 | `mystic_curio` |
+| `gen2_the_hms_divinity` | `mithril_ingot` | 5500 | 4000 | `mystic_curio` |
 | `gen2_the_shining_blade` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
 | `gen2_verdarach` | `mithril_ingot` | 3500 | 2000 | `mystic_curio` |
 | `gen2_xiuquatl` | `mithril_ingot` | 4500 | 3000 | `mystic_curio` |
@@ -79,23 +54,20 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_sharur` | `elder_wood_plank` | 4000 | 3000 | `mystic_curio` |
 | `gen2_shooshadoo` | `elder_wood_plank` | 2000 | 1000 | `mystic_curio` |
 | `gen2_the_binding_of_ipos` | `elder_wood_plank` | 2000 | 1000 | `mystic_curio` |
+| `gen2_the_hms_divinity` | `elder_wood_plank` | 4250 | 3250 | `mystic_curio` |
 | `gen2_the_shining_blade` | `elder_wood_plank` | 3000 | 2000 | `mystic_curio` |
 | `gen2_verdarach` | `elder_wood_plank` | 2250 | 1250 | `mystic_curio` |
 | `gen2_xiuquatl` | `elder_wood_plank` | 3000 | 2000 | `mystic_curio` |
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
+| `coalescence` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
+| `conflux` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
+| `stella_radians` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
+| `transcendence` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
+| `vision` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
+| `selachimorpha` | `obsidian_shard` | 488 | 250 | `qty_overlap_verified` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_nevermore` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
-| `gen2_nevermore` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
-| `gen2_the_binding_of_ipos` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
-| `gen2_the_binding_of_ipos` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
-| `gen2_xiuquatl` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
-| `gen2_xiuquatl` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
-| `warbringer` | `vial_of_powerful_blood` | 270 | 250 | `mystic_essence_of_strategy` |
-| `warbringer` | `armored_scale` | 270 | 250 | `mystic_essence_of_carnage` |
-| `warbringer` | `vicious_claw` | 270 | 250 | `mystic_essence_of_annihilation` |
-| `warbringer` | `ancient_bone` | 270 | 250 | `mystic_essence_of_animosity` |
-| `conflux` | `gift_of_battle` | 5 | 4 | `gift_of_the_mists` |

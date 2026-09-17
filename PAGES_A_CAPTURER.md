@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v294.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v295.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 — 8 trous de l'arbre — LA PRIORITÉ
+## 0 — 25 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,6 +17,23 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Shard o' War` | 4 |
+| `Poem_on_Axes` | 2 |
+| `Poem_on_Daggers` | 2 |
+| `Poem_on_Foci` | 2 |
+| `Poem_on_Greatswords` | 2 |
+| `Poem_on_Hammers` | 2 |
+| `Poem_on_Longbows` | 2 |
+| `Poem_on_Maces` | 2 |
+| `Poem_on_Pistols` | 2 |
+| `Poem_on_Rifles` | 2 |
+| `Poem_on_Scepters` | 2 |
+| `Poem_on_Shields` | 2 |
+| `Poem_on_Short_Bows` | 2 |
+| `Poem_on_Staves` | 2 |
+| `Poem_on_Swords` | 2 |
+| `Poem_on_Torches` | 2 |
+| `Poem_on_Warhorns` | 2 |
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
@@ -47,7 +64,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 26 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -56,10 +73,29 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 |---|
 | `Gift of Exploration` |
 | `Gift of Glory` |
+| `Lamplighter's Badge` |
 | `Olmakhan Bandolier` |
+| `Poem_on_Axes` |
+| `Poem_on_Daggers` |
+| `Poem_on_Foci` |
+| `Poem_on_Greatswords` |
+| `Poem_on_Hammers` |
+| `Poem_on_Longbows` |
+| `Poem_on_Maces` |
+| `Poem_on_Pistols` |
+| `Poem_on_Rifles` |
+| `Poem_on_Scepters` |
+| `Poem_on_Shields` |
+| `Poem_on_Short_Bows` |
+| `Poem_on_Staves` |
+| `Poem_on_Swords` |
+| `Poem_on_Torches` |
+| `Poem_on_Warhorns` |
+| `Shard o' War` |
 | `Spinal Blade Back Pack (Perfected)` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
+| `Tribute to the Man o' War` |
 | `Valkyrie Bearkin War Helm` |
 
 ## 4 — 28 collections incomplètes — RIEN À CAPTURER

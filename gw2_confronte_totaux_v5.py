@@ -29,6 +29,7 @@ et nomme, pour le troisieme, les composants de la donnee dont le parent est
 cite par la table sans etre developpe.
 """
 import collections
+from urllib.parse import unquote as _unquote
 import json
 import sys
 from pathlib import Path
@@ -47,7 +48,13 @@ SUF = (("", 1), ("__per_piece", 6), ("__onetime", 1), ("__per_unit", 1), ("__ful
 
 
 def norm(s):
-    return "".join(ch for ch in str(s).lower() if ch.isalnum())
+    # v4 : le champ `wiki` est percent-encode (« Aurene%27s_Claw ») tandis que
+    # le nom de fichier de la capture ne l'est pas (« aurenes_claw.html »).
+    # Sans decodage, « %27 » laissait un « 27 » dans la forme normalisee et
+    # DOUZE des seize tables gen3 ne se rattachaient a aucun legendaire : elles
+    # n'etaient pas confrontees du tout. Le rapport n'annoncait quatre ecarts
+    # sur les gen3 que parce que quatre entrees portaient l'autre convention.
+    return "".join(ch for ch in _unquote(str(s)).lower() if ch.isalnum())
 
 
 def nom(cid):
@@ -137,9 +144,16 @@ for page in sorted(P.WIKI.glob("*.html")):
     # pas — elle ne dit rien de plus que « il en faut ».
     ecrit = collections.defaultdict(int)
     ouverts = {t for t, _e, _q in brut}
+    # Une table d'ARMURE est ecrite POUR UNE PIECE : le Gift of Prosperity y
+    # coute 15 trefles, et il en faut un par piece. Le tracker, lui, totalise
+    # le set de six. Sans cette echelle, les cinq postes de l'Envoy parfait
+    # sortaient en excedent a exactement six fois le nombre ecrit — un artefact
+    # d'unite, pas un double compte. ARMOR et SUF existaient deja pour dire
+    # cela et n'etaient branches nulle part.
+    echelle = dict(SUF)["__per_piece"] if leg in ARMOR else 1
     for _t, e, q in brut:
         if q is not None:
-            ecrit[e] += q
+            ecrit[e] += q * echelle
     T = totaux(leg)
     # Les branches que la table cite sans les ouvrir : leurs enfants a nous
     # expliquent legitimement un excedent.
@@ -158,6 +172,14 @@ for page in sorted(P.WIKI.glob("*.html")):
             # l'excedent vient-il d'un parent que la table n'ouvre pas ?
             via = sorted(p for p in (cc[cid].get("qty") or {})
                          if p in fermes and T.get(p, 0))
+            # v5 : un chevauchement DECLARE et VERIFIE n'est pas un excedent
+            # nu. `qty_overlap_verified` dit, legendaire par legendaire, que
+            # l'exigence directe et la chaine sont toutes deux reelles — c'est
+            # la structure posee pour Vision le 22/08. Seize gen3 le portaient
+            # sur le trefle mystique et remplissaient quand meme la colonne
+            # « rien ne l'explique », ce qui noyait les vrais cas.
+            if not via and leg in (cc[cid].get("qty_overlap_verified") or []):
+                via = ["qty_overlap_verified"]
             excedents.append((aff - tot_table, leg, cid, aff, tot_table, via))
 
 trous.sort(key=lambda x: -x[0])
@@ -175,7 +197,8 @@ out = ["# Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la ta
        f"- **{len(accords)} accords** — le nombre affiche est celui de la table.",
        f"- **{len(trous)} trous** — l'affichage est SOUS le plancher. Certains.",
        f"- **{len(explique)} excedents expliques** — le surplus vient d'une branche",
-       "  que la table cite sans l'ouvrir.",
+       "  que la table cite sans l'ouvrir, ou d'un chevauchement declare en",
+       "  `qty_overlap_verified`.",
        f"- **{len(nu)} excedents nus** — rien dans la donnee ne les explique : soit",
        "  un double comptage, soit une branche legitime qu'il faut nommer.\n",
        "\n## Trous — le total affiche est inferieur a celui de la table\n",

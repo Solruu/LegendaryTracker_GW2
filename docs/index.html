@@ -8111,8 +8111,7 @@ const SOURCES_DB = {
       "name": "Antique Summoning Stone",
       "apiId": 96978,
       "needed_for": [
-        "gift_of_jade_mastery",
-        "gift_of_the_dragon_empire"
+        "gift_of_jade_mastery"
       ],
       "farmable": true,
       "sources": [
@@ -8160,8 +8159,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_jade_mastery": 100,
-        "gift_of_the_dragon_empire": 100
+        "gift_of_jade_mastery": 100
       },
       "timegate": true,
       "timegate_note": {
@@ -8257,7 +8255,10 @@ const SOURCES_DB = {
       "note": {
         "fr": "17 pierres/semaine au plafond : 7 via Trépas du dragon (1/jour, seule méta concernée), 5 chez Leivas (maîtrise Globalization) et 5 via les strikes EoD en Challenge Mode. Une arme gen3 en demande 100 : ~6 semaines en cumulant les trois, 20 semaines chez Leivas seul. C'est le principal timegate des gen3. Les 5 succès Revenge s'y ajoutent une seule fois.",
         "en": "17 stones/week at cap: 7 from Dragon's End (1/day, the only meta involved), 5 from Leivas (Globalization mastery) and 5 from EoD strike missions in Challenge Mode. A gen3 weapon needs 100: ~6 weeks stacking all three, 20 weeks from Leivas alone. This is the main gen3 timegate. The 5 Revenge achievements add to it once."
-      }
+      },
+      "ref": "boite Recipe de Gift of Jade Mastery (100 Antique Summoning Stone) ; celle de Gift of the Dragon Empire n'en demande aucune",
+      "checked": "2026-09-17",
+      "verified": "deux boites Recipe confrontees le 17/09/2026 : Gift of Jade Mastery en demande 100, Gift of the Dragon Empire aucune"
     },
     "jade_runestone": {
       "name": "Jade Runestone",
@@ -16337,7 +16338,23 @@ const SOURCES_DB = {
       "farmable": true,
       "qty": {
         "gift_of_recollector_of_memories": 25,
-        "gift_of_adventure": 100
+        "gift_of_adventure": 100,
+        "poem_on_poem_on_pistols": 10,
+        "poem_on_poem_on_greatswords": 10,
+        "poem_on_poem_on_torches": 10,
+        "poem_on_poem_on_daggers": 10,
+        "poem_on_poem_on_swords": 10,
+        "poem_on_poem_on_longbows": 10,
+        "poem_on_poem_on_foci": 10,
+        "poem_on_poem_on_staves": 10,
+        "poem_on_poem_on_rifles": 10,
+        "poem_on_poem_on_axes": 10,
+        "poem_on_poem_on_shields": 10,
+        "poem_on_poem_on_maces": 10,
+        "poem_on_poem_on_warhorns": 10,
+        "poem_on_poem_on_hammers": 10,
+        "poem_on_poem_on_short_bows": 10,
+        "poem_on_poem_on_scepters": 10
       },
       "sources": [
         {
@@ -16369,6 +16386,22 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_adventure",
         "gift_of_recollector_of_memories",
+        "poem_on_poem_on_axes",
+        "poem_on_poem_on_daggers",
+        "poem_on_poem_on_foci",
+        "poem_on_poem_on_greatswords",
+        "poem_on_poem_on_hammers",
+        "poem_on_poem_on_longbows",
+        "poem_on_poem_on_maces",
+        "poem_on_poem_on_pistols",
+        "poem_on_poem_on_rifles",
+        "poem_on_poem_on_scepters",
+        "poem_on_poem_on_shields",
+        "poem_on_poem_on_short_bows",
+        "poem_on_poem_on_staves",
+        "poem_on_poem_on_swords",
+        "poem_on_poem_on_torches",
+        "poem_on_poem_on_warhorns",
         "selachimorpha"
       ],
       "note": {
@@ -16949,12 +16982,14 @@ const SOURCES_DB = {
         "shard_of_tlehco": 20,
         "shard_of_the_crown": 20,
         "shard_of_the_dark_arts": 10,
-        "mystic_curio": 10
+        "mystic_curio": 10,
+        "shard_o_war": 30
       },
       "needed_for": [
         "gift_of_wood",
         "mystic_curio",
         "shadowstone_containment_frame",
+        "shard_o_war",
         "shard_of_arah",
         "shard_of_call_of_the_void",
         "shard_of_endeavor",
@@ -18501,13 +18536,16 @@ const SOURCES_DB = {
         "shard_of_the_crown": 30,
         "shard_of_the_dark_arts": 20,
         "mystic_curio": 15,
-        "empowered_mithril_ingot": 150
+        "empowered_mithril_ingot": 150,
+        "shard_o_war": 40
       },
       "needed_for": [
+        "empowered_mithril_ingot",
         "gift_of_metal",
         "lump_of_mithrillium",
         "mystic_curio",
         "shadowstone_containment_frame",
+        "shard_o_war",
         "shard_of_arah",
         "shard_of_call_of_the_void",
         "shard_of_endeavor",
@@ -18518,8 +18556,7 @@ const SOURCES_DB = {
         "shard_of_spero",
         "shard_of_the_crown",
         "shard_of_the_dark_arts",
-        "shard_of_tlehco",
-        "empowered_mithril_ingot"
+        "shard_of_tlehco"
       ],
       "sources": [
         {
@@ -19239,7 +19276,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": false,
       "qty": {
-        "perfected_envoy": 1
+        "perfected_envoy__per_piece": 1
       },
       "needed_for": [
         "perfected_envoy"
@@ -19253,7 +19290,10 @@ const SOURCES_DB = {
           }
         }
       ],
-      "apiId": 78936
+      "apiId": 78936,
+      "ref": "table « Full material list » de Perfected Envoy armor — ecrite POUR UNE PIECE, comme le Gift of Prosperity a cote",
+      "checked": "2026-09-17",
+      "verified": "les trois dons de l'Envoy sont par piece ; seul le Gift of Prosperity l'etait dans la donnee"
     },
     "gift_of_eternity_s_garden_exploration": {
       "name": "Gift of Eternity's Garden Exploration",
@@ -19350,7 +19390,7 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": false,
       "qty": {
-        "perfected_envoy": 1
+        "perfected_envoy__per_piece": 1
       },
       "needed_for": [
         "perfected_envoy"
@@ -19364,7 +19404,10 @@ const SOURCES_DB = {
           }
         }
       ],
-      "apiId": 78989
+      "apiId": 78989,
+      "ref": "table « Full material list » de Perfected Envoy armor — ecrite POUR UNE PIECE, comme le Gift of Prosperity a cote",
+      "checked": "2026-09-17",
+      "verified": "les trois dons de l'Envoy sont par piece ; seul le Gift of Prosperity l'etait dans la donnee"
     },
     "gift_of_regrowth": {
       "name": "Gift of Regrowth",
@@ -20539,6 +20582,7 @@ const SOURCES_DB = {
       "name": "Mystic Curio",
       "kind": "advanced_craft",
       "needed_for": [
+        "shard_o_war",
         "shard_of_arah",
         "shard_of_call_of_the_void",
         "shard_of_endeavor",
@@ -20562,7 +20606,8 @@ const SOURCES_DB = {
         "shard_of_spero": 1,
         "shard_of_the_crown": 1,
         "shard_of_the_dark_arts": 1,
-        "shard_of_tlehco": 1
+        "shard_of_tlehco": 1,
+        "shard_o_war": 1
       },
       "sources": [
         {
@@ -21761,6 +21806,455 @@ const SOURCES_DB = {
         }
       ],
       "apiId": 19790
+    },
+    "shard_o_war": {
+      "name": "Shard o' War",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_divinity"
+      ],
+      "qty": {
+        "gift_of_divinity": 100
+      },
+      "sources": [
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Tesson de précurseur, propre à The HMS Divinity. 100 exemplaires pour le Gift of Divinity.",
+            "en": "Precursor shard, specific to The HMS Divinity. 100 needed for the Gift of Divinity."
+          }
+        }
+      ],
+      "ref": "boite Recipe de Gift of Divinity (100 Shard o' War) et table « Full material list » de The HMS Divinity",
+      "checked": "2026-09-17",
+      "verified": "deux sources concordantes : la boite Recipe du Gift of Divinity et la table de l'arme"
+    },
+    "tribute_to_the_man_o_war": {
+      "name": "Tribute to the Man o' War",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "shard_o_war"
+      ],
+      "qty": {
+        "shard_o_war": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
+            "en": "Recipe not captured — the material table states one per shard without detailing its cost."
+          }
+        }
+      ],
+      "ref": "table « Full material list » — 1 Tribute par Shard o' War",
+      "checked": "2026-09-17",
+      "verified": "exigence sourcée, coût inconnu"
+    },
+    "lamplighters_badge": {
+      "name": "Lamplighter's Badge",
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "poem_on_poem_on_axes",
+        "poem_on_poem_on_daggers",
+        "poem_on_poem_on_foci",
+        "poem_on_poem_on_greatswords",
+        "poem_on_poem_on_hammers",
+        "poem_on_poem_on_longbows",
+        "poem_on_poem_on_maces",
+        "poem_on_poem_on_pistols",
+        "poem_on_poem_on_rifles",
+        "poem_on_poem_on_scepters",
+        "poem_on_poem_on_shields",
+        "poem_on_poem_on_short_bows",
+        "poem_on_poem_on_staves",
+        "poem_on_poem_on_swords",
+        "poem_on_poem_on_torches",
+        "poem_on_poem_on_warhorns"
+      ],
+      "qty": {
+        "poem_on_poem_on_axes": 10,
+        "poem_on_poem_on_daggers": 10,
+        "poem_on_poem_on_foci": 10,
+        "poem_on_poem_on_greatswords": 10,
+        "poem_on_poem_on_hammers": 10,
+        "poem_on_poem_on_longbows": 10,
+        "poem_on_poem_on_maces": 10,
+        "poem_on_poem_on_pistols": 10,
+        "poem_on_poem_on_rifles": 10,
+        "poem_on_poem_on_scepters": 10,
+        "poem_on_poem_on_shields": 10,
+        "poem_on_poem_on_short_bows": 10,
+        "poem_on_poem_on_staves": 10,
+        "poem_on_poem_on_swords": 10,
+        "poem_on_poem_on_torches": 10,
+        "poem_on_poem_on_warhorns": 10
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Recette non capturée — la table de matériaux des seize armes gen3 en donne 10 par Poème, sans détailler sa provenance.",
+            "en": "Page not captured — the sixteen gen3 material tables each give 10 per Poem without detailing where it comes from."
+          }
+        }
+      ],
+      "ref": "tables « Full material list » des seize armes gen3 — 10 par Poem on <type>",
+      "checked": "2026-09-17",
+      "verified": "exigence sourcée sur seize tables concordantes, provenance inconnue"
+    },
+    "poem_on_poem_on_pistols": {
+      "name": "Poem_on_Pistols",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_argument"
+      ],
+      "qty": {
+        "gift_of_aurene_s_argument": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Argument.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Argument."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Argument — Gift of Aurene's Argument → Poem_on_Pistols",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_greatswords": {
+      "name": "Poem_on_Greatswords",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_bite"
+      ],
+      "qty": {
+        "gift_of_aurene_s_bite": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Bite.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Bite."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Bite — Gift of Aurene's Bite → Poem_on_Greatswords",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_torches": {
+      "name": "Poem_on_Torches",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_breath"
+      ],
+      "qty": {
+        "gift_of_aurene_s_breath": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Breath.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Breath."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Breath — Gift of Aurene's Breath → Poem_on_Torches",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_daggers": {
+      "name": "Poem_on_Daggers",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_claw"
+      ],
+      "qty": {
+        "gift_of_aurene_s_claw": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Claw.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Claw."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Claw — Gift of Aurene's Claw → Poem_on_Daggers",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_swords": {
+      "name": "Poem_on_Swords",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_fang"
+      ],
+      "qty": {
+        "gift_of_aurene_s_fang": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Fang.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Fang."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Fang — Gift of Aurene's Fang → Poem_on_Swords",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_longbows": {
+      "name": "Poem_on_Longbows",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_flight"
+      ],
+      "qty": {
+        "gift_of_aurene_s_flight": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Flight.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Flight."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Flight — Gift of Aurene's Flight → Poem_on_Longbows",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_foci": {
+      "name": "Poem_on_Foci",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_gaze"
+      ],
+      "qty": {
+        "gift_of_aurene_s_gaze": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Gaze.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Gaze."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Gaze — Gift of Aurene's Gaze → Poem_on_Foci",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_staves": {
+      "name": "Poem_on_Staves",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_insight"
+      ],
+      "qty": {
+        "gift_of_aurene_s_insight": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Insight.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Insight."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Insight — Gift of Aurene's Insight → Poem_on_Staves",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_rifles": {
+      "name": "Poem_on_Rifles",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_persuasion"
+      ],
+      "qty": {
+        "gift_of_aurene_s_persuasion": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Persuasion.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Persuasion."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Persuasion — Gift of Aurene's Persuasion → Poem_on_Rifles",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_axes": {
+      "name": "Poem_on_Axes",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_rending"
+      ],
+      "qty": {
+        "gift_of_aurene_s_rending": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Rending.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Rending."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Rending — Gift of Aurene's Rending → Poem_on_Axes",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_shields": {
+      "name": "Poem_on_Shields",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_scale"
+      ],
+      "qty": {
+        "gift_of_aurene_s_scale": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Scale.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Scale."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Scale — Gift of Aurene's Scale → Poem_on_Shields",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_maces": {
+      "name": "Poem_on_Maces",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_tail"
+      ],
+      "qty": {
+        "gift_of_aurene_s_tail": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Tail.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Tail."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Tail — Gift of Aurene's Tail → Poem_on_Maces",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_warhorns": {
+      "name": "Poem_on_Warhorns",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_horn"
+      ],
+      "qty": {
+        "gift_of_aurene_s_horn": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Horn.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Horn."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Voice — Gift of Aurene's Horn → Poem_on_Warhorns",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_hammers": {
+      "name": "Poem_on_Hammers",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_weight"
+      ],
+      "qty": {
+        "gift_of_aurene_s_weight": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Weight.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Weight."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Weight — Gift of Aurene's Weight → Poem_on_Hammers",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_short_bows": {
+      "name": "Poem_on_Short_Bows",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_wing"
+      ],
+      "qty": {
+        "gift_of_aurene_s_wing": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Wing.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Wing."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Wing — Gift of Aurene's Wing → Poem_on_Short_Bows",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
+    },
+    "poem_on_poem_on_scepters": {
+      "name": "Poem_on_Scepters",
+      "kind": "advanced_craft",
+      "needed_for": [
+        "gift_of_aurene_s_wisdom"
+      ],
+      "qty": {
+        "gift_of_aurene_s_wisdom": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Poème propre à un type d'arme. 1 exemplaire pour Gift of Aurene's Wisdom.",
+            "en": "Poem specific to one weapon type. 1 needed for Gift of Aurene's Wisdom."
+          }
+        }
+      ],
+      "ref": "table « Full material list » de Aurene's Wisdom — Gift of Aurene's Wisdom → Poem_on_Scepters",
+      "checked": "2026-09-17",
+      "verified": "seize tables gen3 concordantes, meme structure sur chacune"
     }
   },
   "enchaînements_recommandés": {
@@ -62510,7 +63004,7 @@ const SOURCES_DB = {
         "t2": "—"
       },
       "expansion": "EoD",
-      "wiki": "Aurene's Fang",
+      "wiki": "Aurene%27s_Fang",
       "recipe": {
         "fr": "Forge mystique : 1 Gift of Aurene's Fang + 1 Dragon's Fang + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Fang + 1 Dragon's Fang + 1 Gift of Jade Mastery + 1 Draconic Tribute"
@@ -62542,7 +63036,7 @@ const SOURCES_DB = {
         "t2": "—"
       },
       "expansion": "EoD",
-      "wiki": "Aurene's Flight",
+      "wiki": "Aurene%27s_Flight",
       "recipe": {
         "fr": "Forge mystique : 1 Gift of Aurene's Flight + 1 Dragon's Flight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Flight + 1 Dragon's Flight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
@@ -62574,7 +63068,7 @@ const SOURCES_DB = {
         "t2": "—"
       },
       "expansion": "EoD",
-      "wiki": "Aurene's Tail",
+      "wiki": "Aurene%27s_Tail",
       "recipe": {
         "fr": "Forge mystique : 1 Gift of Aurene's Tail + 1 Dragon's Tail + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Tail + 1 Dragon's Tail + 1 Gift of Jade Mastery + 1 Draconic Tribute"
@@ -62606,7 +63100,7 @@ const SOURCES_DB = {
         "t2": "—"
       },
       "expansion": "EoD",
-      "wiki": "Aurene's Wing",
+      "wiki": "Aurene%27s_Wing",
       "recipe": {
         "fr": "Forge mystique : 1 Gift of Aurene's Wing + 1 Dragon's Wing + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Wing + 1 Dragon's Wing + 1 Gift of Jade Mastery + 1 Draconic Tribute"

@@ -909,3 +909,73 @@ Sept fichiers ont suivi la version du parseur, un par consommateur :
 
 Ni les sources ni le JSX ne bougent : aucun total affiche ne change. C'est le
 rapport qui disait faux, pas le tracker.
+
+## Q — 17/09/2026 : les trous du rapport tombent a zero
+
+Suite directe de la section P. Toujours aucune capture nouvelle : tout ce qui
+suit se lit dans le depot.
+
+**Douze des seize tables gen3 n'etaient confrontees a rien.** Le champ `wiki`
+est percent-encode — `Aurene%27s_Claw` — et le rattachement page → legendaire
+normalisait sans decoder : le `%27` laissait un « 27 » dans la forme comparee,
+qui ne tombait jamais sur `aurenes_claw.html`. Le rapport ne montrait quatre
+ecarts gen3 que parce que quatre entrees portaient l'AUTRE convention,
+`Aurene's Fang` — avec apostrophe litterale et un ESPACE, donc une URL cassee
+pour qui s'en sert pour batir une adresse. Les quatre sont ramenees a la
+convention percent-encodee, et le rattachement decode desormais. Tables
+orphelines : **17 → 4**, et les quatre restantes sont des composants, pas des
+legendaires — les quatre dons du festin d'Orrax.
+
+**Le douzieme tesson gen2 manquait.** Les onze crees le 08/09 laissaient de
+cote `Shard o' War`, celui de The HMS Divinity — encore l'apostrophe, encodee
+`Shard_o%27_War` dans la table. Deux sources concordantes le posent : la boite
+Recipe du Gift of Divinity (100 Shard o' War) et la table de l'arme (1 Tribute
+to the Man o' War + 1 Mystic Curio + 40 lingots de mithril + 30 planches de
+bois ancien par tesson). Cree avec son tribut, cout inconnu comme les onze
+autres. C'est ce qui manquait aux 4 000 lingots, 3 000 planches et 100 Mystic
+Curio annonces en trou depuis le debut.
+
+**La chaine des Poemes des seize gen3 n'existait pas.** Chaque
+`Gift of Aurene's X` consomme un `Poem on <type d'arme>`, qui coute 10 Tale of
+Adventure et 10 Lamplighter's Badge. Seize tables le disent a l'identique.
+Seize poemes crees, plus `lamplighters_badge` — dont la provenance reste
+inconnue, la table ne donnant que la quantite. Au passage la table confirme la
+singularite deja notee : Aurene's Voice passe par le `Gift of Aurene's Horn`.
+
+**Un doublon non source sur les seize gen3.** `antique_summoning_stone`
+portait 100 vers `gift_of_jade_mastery` ET 100 vers `gift_of_the_dragon_empire`.
+Les deux boites Recipe tranchent : le Gift of the Dragon Empire demande 100
+runestones de jade, 200 blocs de jade pur, 100 d'ambre gris et 5 benedictions,
+et **aucune pierre d'invocation**. La seconde arete est retiree, les seize
+armes passent de 200 a 100.
+
+**Une table d'armure est ecrite POUR UNE PIECE, et rien ne le disait a l'outil.**
+`ARMOR` et `SUF` existaient dans `gw2_confronte_totaux` depuis longtemps et
+n'etaient branches nulle part : les cinq postes de l'Envoy parfait sortaient
+donc en excedent a exactement six fois le nombre ecrit — un artefact d'unite.
+L'echelle branchee, un vrai trou apparait dessous : **les Legendary Insight
+etaient comptes 25 pour le set entier au lieu de 150.** Le Gift of Prosperity
+etait chaine par piece (`perfected_envoy__per_piece`), le Gift of Prowess et le
+Gift of Dedication au niveau du set. Les trois sont par piece au wiki ; les
+deux retardataires suivent. **125 LI manquaient a l'affichage.**
+
+**Le chevauchement declare n'est plus un excedent nu.**
+`qty_overlap_verified` dit, legendaire par legendaire, que l'exigence directe
+et la chaine sont toutes deux reelles. L'outil ne lisait pas ce champ : seize
+gen3 remplissaient la colonne « rien ne l'explique » sur le trefle mystique,
+ce qui noyait les vrais cas.
+
+### Etat du rapport
+
+| | debut de journee | fin |
+|---|---:|---:|
+| accords | 834 | **1 038** |
+| trous | 31 | **0** |
+| excedents nus | 22 | **1** |
+| tables orphelines | 17 | **4** |
+
+Le seul excedent restant est Warbringer, +350 tickets d'escarmouche : c'est
+l'Essence of Annihilation confirmee le 17/09, que la table du precurseur
+n'inclut pas. Connue, datee, chiffree.
+
+Audit v45 : 0 erreur, 56 avertissements. Moteurs confrontes : aucun ecart.
