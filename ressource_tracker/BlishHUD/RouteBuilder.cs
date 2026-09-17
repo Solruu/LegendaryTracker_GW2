@@ -242,18 +242,25 @@ namespace GW2_NodeTracker
 
         /// <summary>
         /// Remplace les tronçons en ligne droite par le trajet réellement
-        /// parcouru, simplifié à epsilon près. Retourne le nombre de tronçons
-        /// mis à jour.
+        /// parcouru, simplifié à epsilon près.
+        ///
+        /// Retourne deux compteurs distincts : les tronçons qui passent pour
+        /// la PREMIÈRE fois en vérifié, et ceux qui étaient déjà vérifiés et
+        /// dont on vient de reprendre un passage plus récent. Le second cas
+        /// n'est pas une correction, c'est une reconfirmation -- les
+        /// confondre donnerait l'impression que la route bouge encore alors
+        /// qu'elle ne fait que se rafraîchir.
         ///
         /// Un tronçon déjà vérifié n'est réécrit que si la trace trouvée est
         /// PLUS RÉCENTE que celle qui l'avait produit : refaire le trajet
         /// autrement corrige la route, le relire ne la dégrade pas.
         /// </summary>
-        public static int Refine(Route route, TraceRecorder traces, double epsilon, double snapRadius)
+        public static (int added, int refreshed) Refine(Route route, TraceRecorder traces, double epsilon, double snapRadius)
         {
-            if (route == null || traces == null || route.Stops.Count < 2) return 0;
+            if (route == null || traces == null || route.Stops.Count < 2) return (0, 0);
 
-            int updated = 0;
+            int added = 0;
+            int refreshed = 0;
 
             for (int i = 0; i < route.Legs.Count; i++)
             {
@@ -283,14 +290,17 @@ namespace GW2_NodeTracker
                 points.AddRange(interior);
                 points.Add(to);
 
+                bool wasVerified = leg.Verified;
+
                 leg.Points = points;
                 leg.Verified = true;
                 leg.Mount = match.Mount;
                 leg.TraceAt = match.RecordedAt;
-                updated++;
+
+                if (wasVerified) refreshed++; else added++;
             }
 
-            return updated;
+            return (added, refreshed);
         }
 
         // -------------------------------------------------------------

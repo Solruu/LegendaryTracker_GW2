@@ -1186,17 +1186,30 @@ namespace GW2_NodeTracker
             {
                 try
                 {
-                    int updated = 0;
+                    int added = 0, refreshed = 0;
                     foreach (var route in _routes.Where(r => r.MapId == mapId).ToList())
-                        updated += RouteBuilder.Refine(route, _traces, epsilon, snap);
+                    {
+                        var res = RouteBuilder.Refine(route, _traces, epsilon, snap);
+                        added += res.added;
+                        refreshed += res.refreshed;
+                    }
 
-                    if (updated > 0)
+                    if (added + refreshed > 0)
                     {
                         SaveRoutes();
                         TriggerTacoRegeneration();
+
                         if (notify || _verboseNotifications.Value)
-                            _pendingNotifications.Enqueue($"🧭 {updated} troncon(s) corrige(s) par le trajet parcouru");
-                        Logger.Info("Affinage : {0} tronçon(s) mis à jour sur la map {1}.", updated, mapId);
+                        {
+                            string msg = added > 0 && refreshed > 0
+                                ? $"🧭 {added} troncon(s) corrige(s), {refreshed} reconfirme(s)"
+                                : added > 0
+                                    ? $"🧭 {added} troncon(s) corrige(s) par le trajet parcouru"
+                                    : $"🧭 {refreshed} troncon(s) reconfirme(s)";
+                            _pendingNotifications.Enqueue(msg);
+                        }
+
+                        Logger.Info("Affinage map {0} : {1} nouveau(x), {2} reconfirme(s).", mapId, added, refreshed);
                     }
                     else if (notify)
                     {
