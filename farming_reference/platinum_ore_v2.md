@@ -36,27 +36,28 @@ Rich veins garantis (permanents) annoncés par le wiki :
 - **Bloodtide Coast** — Mole's Head, via la zone verte au sud.
 
 ## Croisement avec les captures perso
-`gw2_nodes.json` (captures en jeu, 2026-05 → 2026-09) :
+`gw2_nodes.json` (captures en jeu, 2026-05 → 2026-09, relevé du 17/09/2026) :
 
 | Map (map_id) | platinum | rich_platinum |
 |---|---|---|
-| Iron Marches (25) | 20 | 3 |
-| Timberline Falls (29) | 14 | 1 |
+| Iron Marches (25) | 45 | 4 |
+| Timberline Falls (29) | 20 | 1 |
+| Mount Maelstrom (39) | 3 | 0 |
 | Fireheart Rise (22) | 2 | 0 |
-| Mount Maelstrom (39) | 2 | 0 |
 | Sparkfly Fen (53) | 2 | 0 |
 | Bloodtide Coast (73) | 1 | 0 |
 | map 1310 (probablement Bjora Marches, ID non vérifié) | 1 | 0 |
 
 **Biais de couverture à garder en tête** : les captures ne sont pas exhaustives.
-Iron Marches (122 captures tous types) et Timberline Falls ont été balayées, pas
-Fireheart Rise (64), Mount Maelstrom ni Sparkfly Fen. Les 2 nodes relevés sur ces
-trois maps ne contredisent pas le wiki, ils reflètent un passage partiel.
+Iron Marches (190 captures tous types) et Timberline Falls (73) ont été balayées,
+Sparkfly Fen presque pas (10). Les 2 à 3 nodes relevés sur Fireheart Rise, Mount
+Maelstrom et Sparkfly Fen ne contredisent pas le wiki : ils reflètent un passage
+partiel.
 
 ## Boucle retenue
 1. **Iron Marches** — meilleur rapport densité/temps : le plus de zones à rich vein
    du jeu (6), 2 rich garantis, et c'est la seule map où les captures perso
-   confirment la densité sur le terrain (20 nodes + 3 rich).
+   confirment la densité sur le terrain (45 nodes + 4 rich).
 2. **Fireheart Rise** — enchaîne directement (même région, Ascalon). Note wiki :
    plusieurs nodes spawnent ensemble sur l'île au sud-ouest de Pig Iron Waypoint
    (Pig Iron Mine).

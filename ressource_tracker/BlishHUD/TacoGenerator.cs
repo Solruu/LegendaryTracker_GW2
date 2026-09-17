@@ -55,6 +55,74 @@ namespace GW2_NodeTracker
             [34] = "Caledon Forest",
         };
 
+        /// <summary>
+        /// Un fichier .trl prêt à être zippé, avec la catégorie TacO dans
+        /// laquelle il doit s'afficher.
+        /// </summary>
+        public class TrailFile
+        {
+            public string FileName { get; set; }   // ex. "trails/r25_minerai_0.trl"
+            public string Group { get; set; }      // Minerai / Bois / Vegetal
+            public string Kind { get; set; }       // "verifie" ou "direct"
+            public byte[] Data { get; set; }
+        }
+
+        /// <summary>
+        /// Découpe chaque route en suites de tronçons de même nature
+        /// (vérifié / ligne droite) et produit un .trl par suite.
+        ///
+        /// Le regroupement par suite, plutôt qu'un fichier par tronçon, évite
+        /// de multiplier les fichiers tout en gardant les deux natures dans
+        /// des catégories distinctes : Antoine voit d'un coup d'œil, en jeu,
+        /// ce qui est un chemin réellement parcouru et ce qui est encore une
+        /// ligne droite à travers le décor.
+        /// </summary>
+        public static List<TrailFile> BuildTrails(List<Route> routes)
+        {
+            var trails = new List<TrailFile>();
+            if (routes == null) return trails;
+
+            foreach (var route in routes)
+            {
+                if (route.Legs == null || route.Legs.Count == 0) continue;
+
+                string grpSafe = (route.Group ?? "").ToLowerInvariant();
+                int fileIdx = 0;
+                int i = 0;
+
+                while (i < route.Legs.Count)
+                {
+                    bool kind = route.Legs[i].Verified;
+                    var points = new List<RoutePoint>();
+
+                    while (i < route.Legs.Count && route.Legs[i].Verified == kind)
+                    {
+                        var legPoints = route.Legs[i].Points;
+                        for (int k = 0; k < legPoints.Count; k++)
+                        {
+                            // On ne réécrit pas le point de jonction déjà posé
+                            // par le tronçon précédent.
+                            if (points.Count > 0 && k == 0) continue;
+                            points.Add(legPoints[k]);
+                        }
+                        i++;
+                    }
+
+                    if (points.Count < 2) continue;
+
+                    trails.Add(new TrailFile
+                    {
+                        FileName = $"trails/r{route.MapId}_{grpSafe}_{fileIdx++}.trl",
+                        Group = route.Group,
+                        Kind = kind ? "verifie" : "direct",
+                        Data = TrlWriter.Build(route.MapId, points),
+                    });
+                }
+            }
+
+            return trails;
+        }
+
         private static int TypeSortKey(string slug, string group)
         {
             if (TypeOrder.TryGetValue(group, out string[] order))
@@ -87,7 +155,8 @@ namespace GW2_NodeTracker
         }
 
         /// <summary>Port fidèle de generate_xml().</summary>
-        public static string GenerateXml(List<GatheredNode> nodes, HashSet<string> availableIcons)
+        public static string GenerateXml(List<GatheredNode> nodes, HashSet<string> availableIcons,
+                                         List<TrailFile> trails = null)
         {
             var grouped = GroupNodes(nodes);
             var sb = new StringBuilder();
@@ -110,6 +179,27 @@ namespace GW2_NodeTracker
                         $"      <MarkerCategory name=\"{slug}\" DisplayName=\"{label}\" " +
                         $"{iconAttr}fadeNear=\"3000\" fadeFar=\"5000\" minSize=\"20\" maxSize=\"30\"/>");
                 }
+                sb.AppendLine("    </MarkerCategory>");
+            }
+
+            if (trails != null && trails.Count > 0)
+            {
+                sb.AppendLine("    <MarkerCategory name=\"routes\" DisplayName=\"Routes\">");
+
+                var trailGroups = trails.Select(t => t.Group)
+                                        .Distinct()
+                                        .OrderBy(g => { int i = Array.IndexOf(GroupOrder, g); return i >= 0 ? i : 99; });
+
+                foreach (string grp in trailGroups)
+                {
+                    sb.AppendLine($"      <MarkerCategory name=\"{grp.ToLowerInvariant()}\" DisplayName=\"{grp}\">");
+                    sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
+                                  "color=\"ff33cc33\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                    sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
+                                  "color=\"ffcc3333\" animSpeed=\"0\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                    sb.AppendLine("      </MarkerCategory>");
+                }
+
                 sb.AppendLine("    </MarkerCategory>");
             }
 
@@ -139,6 +229,16 @@ namespace GW2_NodeTracker
                 }
             }
 
+            if (trails != null && trails.Count > 0)
+            {
+                sb.AppendLine("    <!-- Routes de farm -->");
+                foreach (var t in trails)
+                {
+                    string cat = $"gw2farm.routes.{(t.Group ?? "").ToLowerInvariant()}.{t.Kind}";
+                    sb.AppendLine($"    <Trail trailData=\"{t.FileName}\" type=\"{cat}\"/>");
+                }
+            }
+
             sb.AppendLine("  </POIs>");
             sb.AppendLine("</OverlayData>");
             return sb.ToString();
@@ -149,8 +249,10 @@ namespace GW2_NodeTracker
         /// Retourne (icônes trouvées, slugs manquants) pour info/log côté appelant.
         /// </summary>
         public static (int foundIcons, List<string> missingSlugs) Generate(
-            List<GatheredNode> nodes, string outputPath, string iconsDir)
+            List<GatheredNode> nodes, string outputPath, string iconsDir, List<Route> routes = null)
         {
+            var trails = BuildTrails(routes);
+
             var grouped = GroupNodes(nodes);
             var usedSlugs = grouped.Values.SelectMany(byType => byType.Keys).Distinct().ToList();
 
@@ -165,7 +267,7 @@ namespace GW2_NodeTracker
                     missing.Add(slug);
             }
 
-            string xml = GenerateXml(nodes, new HashSet<string>(icons.Keys));
+            string xml = GenerateXml(nodes, new HashSet<string>(icons.Keys), trails);
 
             // On écrit dans un fichier temporaire puis on remplace -- évite
             // de livrer un .taco à moitié écrit si Blish HUD le relit pile
@@ -185,6 +287,13 @@ namespace GW2_NodeTracker
                     var entry = zip.CreateEntry($"icons/{kv.Key}.png");
                     using (var stream = entry.Open())
                         stream.Write(kv.Value, 0, kv.Value.Length);
+                }
+
+                foreach (var t in trails)
+                {
+                    var entry = zip.CreateEntry(t.FileName);
+                    using (var stream = entry.Open())
+                        stream.Write(t.Data, 0, t.Data.Length);
                 }
             }
 

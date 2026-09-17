@@ -157,7 +157,12 @@
     <Compile Include="IconFetcher.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="NodeType.cs" />
+    <Compile Include="RouteBuilder.cs" />
+    <Compile Include="RouteModels.cs" />
     <Compile Include="TacoGenerator.cs" />
+    <Compile Include="TracePoint.cs" />
+    <Compile Include="TraceRecorder.cs" />
+    <Compile Include="TrlWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AsyncClipboardService, Version=1.7.1.0, Culture=neutral, processorArchitecture=MSIL">

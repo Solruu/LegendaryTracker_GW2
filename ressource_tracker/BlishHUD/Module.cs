@@ -29,6 +29,15 @@ namespace GW2_NodeTracker
         private const float MaxUpsertRadiusMeters = 20.0f;
         private const double DeleteConfirmSeconds = 3.0;
         private const int ButtonHeight = 26;
+
+        // Correction de chemin / routes
+        private const double SampleIntervalMs = 200.0;        // 5 Hz -- suffisant à la vitesse de course
+        private const double TraceSaveIntervalMs = 30000.0;   // écriture disque périodique
+        private const double AutoRefineIntervalMs = 60000.0;  // réaffinage automatique des tronçons
+        private const float DefaultSimplifyTolerance = 8.0f;
+        private const float DefaultTraceMinStep = 3.0f;
+        private const float DefaultTeleportThreshold = 50.0f;
+        private const float DefaultRouteSnapRadius = 12.0f;
         private const int PanelWidth = 260;
 
         #region Service Managers
@@ -54,6 +63,15 @@ namespace GW2_NodeTracker
         private SettingEntry<bool> _autoRegenerateTaco;
         private SettingEntry<string> _tacoOutputPath;
         private SettingEntry<string> _iconsFolderPath;
+
+        private SettingEntry<bool> _pathCorrectionEnabled;
+        private SettingEntry<KeyBinding> _buildRouteKey;
+        private SettingEntry<float> _simplifyTolerance;
+        private SettingEntry<float> _traceMinStep;
+        private SettingEntry<float> _traceTeleportThreshold;
+        private SettingEntry<float> _routeSnapRadius;
+        private SettingEntry<string> _tracesFilePath;
+        private SettingEntry<string> _routesFilePath;
         #endregion
 
         private List<GatheredNode> _nodes = new List<GatheredNode>();
@@ -61,6 +79,13 @@ namespace GW2_NodeTracker
         private NodeType? _selectedType = null;
         private int _lastKnownMapId = -1;
         private bool _nodesLoaded = false;
+
+        private readonly TraceRecorder _traces = new TraceRecorder();
+        private List<Route> _routes = new List<Route>();
+        private double _sampleAccumMs = 0;
+        private double _saveAccumMs = 0;
+        private double _refineAccumMs = 0;
+        private int _refineBusy = 0; // 0/1 via Interlocked -- un seul affinage à la fois
 
         // Annulation : un seul niveau, sur la dernière action destructrice
         // ou modificatrice. Suffit pour rattraper une fausse manip de touche.
@@ -174,6 +199,56 @@ namespace GW2_NodeTracker
                 "",
                 () => "Dossier icons/",
                 () => "Chemin complet vers le dossier icons/ produit par gw2_fetch_icons_v4.py.");
+
+            var routeSettings = settings.AddSubCollection("Routes et correction de chemin", true, false);
+
+            _pathCorrectionEnabled = routeSettings.DefineSetting(
+                "PathCorrectionEnabled",
+                false,
+                () => "Correction de chemin active",
+                () => "Enregistre ton déplacement et remplace les lignes droites des routes par le trajet réellement parcouru. Désactivé : rien n'est enregistré, les routes existantes restent telles quelles. Coupe-le dès que tu ne fais pas une route, sinon tu enregistres n'importe quoi.");
+
+            _buildRouteKey = routeSettings.DefineSetting(
+                "BuildRouteKey",
+                new KeyBinding(Keys.R),
+                () => "Construire les routes de la map",
+                () => "(Re)calcule l'ordre de passage pour chaque groupe présent sur la map courante, puis applique les chemins connus. Écrase les routes existantes de cette map -- les traces, elles, ne sont jamais perdues.");
+
+            _simplifyTolerance = routeSettings.DefineSetting(
+                "SimplifyToleranceMeters",
+                DefaultSimplifyTolerance,
+                () => "Tolérance de simplification (m)",
+                () => "Écart maximal garanti entre ton trajet réel et le tracé affiché. 8 m est un compromis : plus haut, le tracé coupe les virages et peut passer dans le vide sur une corniche ; plus bas, il garde plus de points.");
+
+            _traceMinStep = routeSettings.DefineSetting(
+                "TraceMinStepMeters",
+                DefaultTraceMinStep,
+                () => "Pas minimum entre deux points (m)",
+                () => "En dessous, l'échantillon est ignoré. Évite d'enregistrer des milliers de points en restant immobile.");
+
+            _traceTeleportThreshold = routeSettings.DefineSetting(
+                "TeleportThresholdMeters",
+                DefaultTeleportThreshold,
+                () => "Seuil de téléportation (m)",
+                () => "Écart entre deux échantillons au-delà duquel on considère que tu n'as pas parcouru la distance (waypoint, écran de chargement) : la trace est coupée et les deux points ne seront jamais reliés.");
+
+            _routeSnapRadius = routeSettings.DefineSetting(
+                "RouteSnapRadiusMeters",
+                DefaultRouteSnapRadius,
+                () => "Rayon d'accroche node/trace (m)",
+                () => "Distance en dessous de laquelle un point de trace compte comme un passage sur un node. Trop petit, aucun tronçon ne se vérifie ; trop grand, des tronçons se vérifient avec un trajet qui ne passait pas vraiment par le node.");
+
+            _tracesFilePath = routeSettings.DefineSetting(
+                "TracesFilePath",
+                "",
+                () => "Chemin de gw2_traces.json",
+                () => "Fichier des déplacements enregistrés. Distinct de gw2_nodes.json : un node est un gisement, une trace est un passage.");
+
+            _routesFilePath = routeSettings.DefineSetting(
+                "RoutesFilePath",
+                "",
+                () => "Chemin de gw2_routes.json",
+                () => "Fichier des routes calculées (ordre de passage + géométrie des tronçons).");
         }
 
         protected override void Initialize()
@@ -198,11 +273,16 @@ namespace GW2_NodeTracker
 
             _undoKey.Value.Enabled = true;
             _undoKey.Value.Activated += OnUndoKeyActivated;
+
+            _buildRouteKey.Value.Enabled = true;
+            _buildRouteKey.Value.Activated += OnBuildRouteKeyActivated;
         }
 
         protected override async Task LoadAsync()
         {
             await LoadNodesAsync();
+            _traces.Load(CleanPath(_tracesFilePath.Value));
+            _routes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
             _nodesLoaded = true; // débloque Update() -- évite la course avec le premier changement de map détecté
 
             // Passe de précaution au démarrage : régénère le .taco et va
@@ -232,6 +312,60 @@ namespace GW2_NodeTracker
             {
                 _lastKnownMapId = currentMapId;
                 RefreshFilteredTypes(currentMapId);
+                _traces.CutSegment(); // on ne relie jamais deux maps
+            }
+
+            UpdatePathCorrection(gameTime, currentMapId);
+        }
+
+        // -------------------------------------------------------------
+        // Enregistrement du déplacement -- entièrement conditionné au
+        // réglage "Correction de chemin active". Coupé, ce bloc ne fait
+        // rien du tout : pas d'échantillon, pas d'écriture, pas
+        // d'affinage. Les routes déjà calculées restent affichées telles
+        // quelles.
+        // -------------------------------------------------------------
+        private void UpdatePathCorrection(GameTime gameTime, int mapId)
+        {
+            if (!_pathCorrectionEnabled.Value)
+            {
+                _traces.CutSegment(); // reprise = nouveau segment, jamais de raccord
+                return;
+            }
+
+            if (!GameService.GameIntegration.Gw2Instance.IsInGame) return;
+
+            double elapsed = gameTime.ElapsedGameTime.TotalMilliseconds;
+            _sampleAccumMs += elapsed;
+            _saveAccumMs += elapsed;
+            _refineAccumMs += elapsed;
+
+            if (_sampleAccumMs >= SampleIntervalMs)
+            {
+                _sampleAccumMs = 0;
+
+                Vector3 pos = GameService.Gw2Mumble.PlayerCharacter.Position;
+                string mount = GameService.Gw2Mumble.PlayerCharacter.CurrentMount.ToString();
+
+                // Même remappage qu'à la capture : y = altitude.
+                _traces.Sample(mapId, pos.X, pos.Z, pos.Y, mount,
+                               _traceMinStep.Value, _traceTeleportThreshold.Value);
+            }
+
+            if (_saveAccumMs >= TraceSaveIntervalMs)
+            {
+                _saveAccumMs = 0;
+                if (_traces.Dirty)
+                {
+                    string path = CleanPath(_tracesFilePath.Value);
+                    Task.Run(() => _traces.Save(path));
+                }
+            }
+
+            if (_refineAccumMs >= AutoRefineIntervalMs)
+            {
+                _refineAccumMs = 0;
+                TriggerRefine(mapId, notify: false);
             }
         }
 
@@ -251,6 +385,13 @@ namespace GW2_NodeTracker
                 _deleteKey.Value.Activated -= OnDeleteKeyActivated;
             if (_undoKey?.Value != null)
                 _undoKey.Value.Activated -= OnUndoKeyActivated;
+            if (_buildRouteKey?.Value != null)
+                _buildRouteKey.Value.Activated -= OnBuildRouteKeyActivated;
+
+            // Dernière écriture avant déchargement -- sinon jusqu'à 30 s de
+            // déplacement enregistré seraient perdues.
+            if (_traces.Dirty)
+                _traces.Save(CleanPath(_tracesFilePath.Value));
 
             _selectionPanel?.Dispose();
             _selectionPanel = null;
@@ -344,6 +485,8 @@ namespace GW2_NodeTracker
                 try
                 {
                     // Relecture fraîche depuis le disque, indépendante de _nodes.
+                    // Idem pour les routes : le pack doit refléter le disque.
+                    List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
                     string json = File.ReadAllText(nodesPath);
                     List<GatheredNode> freshNodes = JsonConvert.DeserializeObject<List<GatheredNode>>(json)
                                                      ?? new List<GatheredNode>();
@@ -354,7 +497,7 @@ namespace GW2_NodeTracker
                         return;
                     }
 
-                    var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir);
+                    var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
 
                     Logger.Info(
                         "Pack .taco régénéré : {0} nodes, {1} icônes trouvées, {2} manquantes.",
@@ -369,7 +512,7 @@ namespace GW2_NodeTracker
                         {
                             // Icônes obtenues -- deuxième passe pour les inclure sans attendre
                             // la prochaine capture.
-                            var (foundIcons2, stillMissing2) = TacoGenerator.Generate(freshNodes, output, iconsDir);
+                            var (foundIcons2, stillMissing2) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
                             if (_verboseNotifications.Value)
                                 _pendingNotifications.Enqueue(
                                     $"📦 .taco régénéré ({freshNodes.Count} nodes, {foundIcons2} icônes, {fetched} icône(s) téléchargée(s))");
@@ -567,7 +710,10 @@ namespace GW2_NodeTracker
                     List<string> usedSlugs = freshNodes.Select(n => n.Type).Distinct().ToList();
                     int fetched = await IconFetcher.FetchMissingAsync(usedSlugs, iconsDir, force: true);
 
-                    var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir);
+                    // Les routes repassent aussi : sans elles, le refresh forcé
+                    // des icônes retirerait les trails du pack.
+                    List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
+                    var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
                     _pendingNotifications.Enqueue(
                         $"📦 Refresh forcé terminé : {fetched} icône(s) re-téléchargée(s), {foundIcons} au total, {missing.Count} toujours manquantes.");
                 }
@@ -652,6 +798,7 @@ namespace GW2_NodeTracker
                     CapturedAt = DateTime.Now.ToString("o"),
                 };
                 _nodes.Add(added);
+                InsertIntoRoutes(added);
                 _lastActionKind = LastActionKind.Added;
                 _lastActionNode = added;
                 ShowNotification($"✅ [{selected.Label}]  (total: {_nodes.Count})");
@@ -780,6 +927,7 @@ namespace GW2_NodeTracker
 
             _lastDeletedIndex = _nodes.IndexOf(target);
             _nodes.Remove(target);
+            RemoveFromRoutes(target);
             _lastActionKind = LastActionKind.Deleted;
             _lastActionNode = target;
             _pendingDelete = null;
@@ -805,6 +953,7 @@ namespace GW2_NodeTracker
             {
                 case LastActionKind.Added:
                     _nodes.Remove(_lastActionNode);
+                    RemoveFromRoutes(_lastActionNode);
                     ShowNotification($"↩️ Ajout annulé : [{label}] retiré  (total: {_nodes.Count})");
                     break;
 
@@ -823,6 +972,7 @@ namespace GW2_NodeTracker
                         _nodes.Insert(_lastDeletedIndex, _lastActionNode);
                     else
                         _nodes.Add(_lastActionNode);
+                    InsertIntoRoutes(_lastActionNode);
                     ShowNotification($"↩️ Suppression annulée : [{label}] restauré  (total: {_nodes.Count})");
                     break;
             }
@@ -833,6 +983,141 @@ namespace GW2_NodeTracker
             _pendingDelete = null;
 
             PersistAndRefresh(mapId);
+        }
+
+        // -------------------------------------------------------------
+        // Routes
+        // -------------------------------------------------------------
+
+        private Route FindRoute(int mapId, string group) =>
+            _routes.FirstOrDefault(r => r.MapId == mapId && r.Group == group);
+
+        private void SaveRoutes() => RouteBuilder.Save(_routes, CleanPath(_routesFilePath.Value));
+
+        /// <summary>
+        /// Un node vient d'être créé : s'il existe déjà une route pour sa map
+        /// et son groupe, il s'y insère au moindre détour plutôt que de
+        /// déclencher un recalcul complet. Sans route existante, on ne fait
+        /// rien -- on n'en crée pas une dans le dos d'Antoine.
+        /// </summary>
+        private void InsertIntoRoutes(GatheredNode n)
+        {
+            if (n == null) return;
+
+            var route = FindRoute(n.MapId, n.Group);
+            if (route == null) return;
+
+            if (RouteBuilder.Insert(route, RoutePoint.FromNode(n)))
+            {
+                SaveRoutes();
+                Logger.Debug("Node inséré dans la route {0}/{1} ({2} arrêts).", n.MapId, n.Group, route.Stops.Count);
+            }
+        }
+
+        private void RemoveFromRoutes(GatheredNode n)
+        {
+            if (n == null) return;
+
+            var route = FindRoute(n.MapId, n.Group);
+            if (route == null) return;
+
+            if (RouteBuilder.Remove(route, RoutePoint.FromNode(n), CurrentRadius))
+            {
+                SaveRoutes();
+                Logger.Debug("Node retiré de la route {0}/{1} ({2} arrêts).", n.MapId, n.Group, route.Stops.Count);
+            }
+        }
+
+        /// <summary>
+        /// (Re)construit une route par groupe présent sur la map courante,
+        /// puis y applique immédiatement les chemins déjà connus.
+        /// </summary>
+        private void OnBuildRouteKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+
+            var groups = _nodes.Where(n => n.MapId == mapId)
+                               .Select(n => n.Group)
+                               .Distinct()
+                               .ToList();
+
+            if (groups.Count == 0)
+            {
+                ShowNotification("Aucun node sur cette map -- rien à router.");
+                return;
+            }
+
+            _routes.RemoveAll(r => r.MapId == mapId);
+
+            int stops = 0;
+            double totalLength = 0;
+            foreach (string group in groups)
+            {
+                var route = RouteBuilder.Build(_nodes, mapId, group);
+                if (route.Stops.Count < 2) continue;
+
+                // Le réglage coupé, on construit quand même la route : le
+                // calcul de l'ordre ne dépend pas des traces, seule la
+                // géométrie des tronçons en dépend.
+                if (_pathCorrectionEnabled.Value)
+                    RouteBuilder.Refine(route, _traces, _simplifyTolerance.Value, _routeSnapRadius.Value);
+
+                _routes.Add(route);
+                stops += route.Stops.Count;
+                totalLength += route.Length();
+            }
+
+            SaveRoutes();
+            TriggerTacoRegeneration();
+
+            int verified = _routes.Where(r => r.MapId == mapId).Sum(r => r.VerifiedCount());
+            int legs = _routes.Where(r => r.MapId == mapId).Sum(r => r.Legs.Count);
+
+            ShowNotification(
+                $"🧭 {groups.Count} route(s), {stops} arrets, {totalLength / 1000.0:0.0} km -- {verified}/{legs} troncons verifies");
+        }
+
+        /// <summary>
+        /// Réaffinage en tâche de fond : cherche, pour chaque tronçon des
+        /// routes de la map courante, un trajet réel plus récent que celui
+        /// déjà retenu. Ne touche jamais à l'ordre de passage.
+        /// </summary>
+        private void TriggerRefine(int mapId, bool notify)
+        {
+            if (System.Threading.Interlocked.CompareExchange(ref _refineBusy, 1, 0) != 0)
+                return; // affinage déjà en cours
+
+            float epsilon = _simplifyTolerance.Value;
+            float snap = _routeSnapRadius.Value;
+
+            Task.Run(() =>
+            {
+                try
+                {
+                    int updated = 0;
+                    foreach (var route in _routes.Where(r => r.MapId == mapId).ToList())
+                        updated += RouteBuilder.Refine(route, _traces, epsilon, snap);
+
+                    if (updated > 0)
+                    {
+                        SaveRoutes();
+                        TriggerTacoRegeneration();
+                        if (notify || _verboseNotifications.Value)
+                            _pendingNotifications.Enqueue($"🧭 {updated} troncon(s) corrige(s) par le trajet parcouru");
+                        Logger.Info("Affinage : {0} tronçon(s) mis à jour sur la map {1}.", updated, mapId);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "Échec de l'affinage des routes.");
+                }
+                finally
+                {
+                    System.Threading.Interlocked.Exchange(ref _refineBusy, 0);
+                }
+            });
         }
 
         // -------------------------------------------------------------
