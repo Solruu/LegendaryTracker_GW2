@@ -3,6 +3,9 @@ bin/
 obj/
 .vs/
 *.user
+# Exception assumee : depot mono-poste, ce fichier porte le lancement externe
+# de Blish HUD et les arguments de debogage. Le perdre casse F5.
+!GW2_NodeTracker.csproj.user
 *.suo
 
 # Paquets NuGet : restaures par Visual Studio depuis packages.config

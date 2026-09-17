@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Réglages de débogage, normalement propres à la machine et donc exclus des
+    dépôts. Versionnés ici volontairement : dépôt mono-poste, et ce fichier
+    avait été perdu au passage de VisualStudioProjects\GW2_NodeTracker au
+    clone Git, ce qui casse F5 (« un projet avec un type de sortie
+    bibliothèque de classes ne peut pas être démarré directement »).
+  -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Users\LocAdmin\Documents\GameDocs\GW2\Blish HUD\Blish HUD.exe</StartProgram>
+    <StartWorkingDirectory>C:\Users\LocAdmin\Documents\GameDocs\GW2\Blish HUD</StartWorkingDirectory>
+    <StartArguments>--debug --module "C:\Users\LocAdmin\Documents\VisualStudioProjects\LegendaryTracker_GW2\ressource_tracker\BlishHUD\bin\x64\Debug\GW2_NodeTracker.bhm"</StartArguments>
+  </PropertyGroup>
+</Project>
