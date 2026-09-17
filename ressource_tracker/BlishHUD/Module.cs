@@ -68,6 +68,7 @@ namespace GW2_NodeTracker
 
         private SettingEntry<bool> _pathCorrectionEnabled;
         private SettingEntry<KeyBinding> _buildRouteKey;
+        private SettingEntry<KeyBinding> _refinePathKey;
         private SettingEntry<float> _simplifyTolerance;
         private SettingEntry<float> _traceMinStep;
         private SettingEntry<float> _traceTeleportThreshold;
@@ -216,6 +217,12 @@ namespace GW2_NodeTracker
                 () => "Construire les routes de la map",
                 () => "(Re)calcule l'ordre de passage pour chaque groupe présent sur la map courante, puis applique les chemins connus. Écrase les routes existantes de cette map -- les traces, elles, ne sont jamais perdues.");
 
+            _refinePathKey = routeSettings.DefineSetting(
+                "RefinePathKey",
+                new KeyBinding(Keys.P),
+                () => "Appliquer les chemins parcourus",
+                () => "Force tout de suite la reprise des tronçons par le trajet réellement parcouru, sans attendre la passe automatique. Ne touche jamais à l'ordre de passage, contrairement à la construction.");
+
             _simplifyTolerance = routeSettings.DefineSetting(
                 "SimplifyToleranceMeters",
                 DefaultSimplifyTolerance,
@@ -278,6 +285,9 @@ namespace GW2_NodeTracker
 
             _buildRouteKey.Value.Enabled = true;
             _buildRouteKey.Value.Activated += OnBuildRouteKeyActivated;
+
+            _refinePathKey.Value.Enabled = true;
+            _refinePathKey.Value.Activated += OnRefinePathKeyActivated;
         }
 
         protected override async Task LoadAsync()
@@ -367,7 +377,7 @@ namespace GW2_NodeTracker
             if (_refineAccumMs >= AutoRefineIntervalMs)
             {
                 _refineAccumMs = 0;
-                TriggerRefine(mapId, notify: false);
+                TriggerRefine(mapId, notify: true);
             }
         }
 
@@ -389,6 +399,8 @@ namespace GW2_NodeTracker
                 _undoKey.Value.Activated -= OnUndoKeyActivated;
             if (_buildRouteKey?.Value != null)
                 _buildRouteKey.Value.Activated -= OnBuildRouteKeyActivated;
+            if (_refinePathKey?.Value != null)
+                _refinePathKey.Value.Activated -= OnRefinePathKeyActivated;
 
             // Dernière écriture avant déchargement -- sinon jusqu'à 30 s de
             // déplacement enregistré seraient perdues.
@@ -1100,6 +1112,19 @@ namespace GW2_NodeTracker
                 $"🧭 {groups.Count} route(s), {stops} arrets, {totalLength / 1000.0:0.0} km -- {verified}/{legs} troncons verifies");
         }
 
+        private void OnRefinePathKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            if (!_pathCorrectionEnabled.Value)
+            {
+                ShowNotification("Correction de chemin désactivée -- rien à appliquer.");
+                return;
+            }
+
+            TriggerRefine(GameService.Gw2Mumble.CurrentMap.Id, notify: true);
+        }
+
         /// <summary>
         /// Réaffinage en tâche de fond : cherche, pour chaque tronçon des
         /// routes de la map courante, un trajet réel plus récent que celui
@@ -1128,6 +1153,13 @@ namespace GW2_NodeTracker
                         if (notify || _verboseNotifications.Value)
                             _pendingNotifications.Enqueue($"🧭 {updated} troncon(s) corrige(s) par le trajet parcouru");
                         Logger.Info("Affinage : {0} tronçon(s) mis à jour sur la map {1}.", updated, mapId);
+                    }
+                    else if (notify)
+                    {
+                        // Sur demande explicite, le silence serait ambigu : on
+                        // ne saurait pas distinguer « rien de neuf » de « la
+                        // touche n'a rien déclenché ».
+                        _pendingNotifications.Enqueue("🧭 Aucun nouveau troncon a corriger.");
                     }
                 }
                 catch (Exception ex)
