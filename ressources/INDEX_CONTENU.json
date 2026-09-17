@@ -11110,6 +11110,20 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_craftsmanship",
+  "titre": "Gift of Craftsmanship",
+  "api_id": 77451,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Provisioner_Token",
+    "qty": 50
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_crystalline_magic",
   "titre": "Gift of Crystalline Magic",
   "api_id": 91124,
@@ -13307,6 +13321,40 @@
      ]
     ],
     "produit": "Gift of Prescience"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_prosperity",
+  "titre": "Gift of Prosperity",
+  "api_id": 78866,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Craftsmanship",
+      1
+     ],
+     [
+      "Mystic_Clover",
+      15
+     ],
+     [
+      "Gift_of_Condensed_Magic",
+      1
+     ],
+     [
+      "Gift_of_Condensed_Might",
+      1
+     ]
+    ],
+    "produit": "Gift of Prosperity"
    }
   ],
   "couts_vendeur": [],

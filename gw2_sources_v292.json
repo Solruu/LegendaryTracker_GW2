@@ -5989,7 +5989,6 @@
     "gen3_aurenes_scale": 39,
     "gen3_aurenes_wisdom": 39,
     "gen3_aurenes_breath": 39,
-    "perfected_envoy__per_piece": 15,
     "endless_summer": 10,
     "orrax_manifested": 30,
     "triumphant_hero__per_piece": 15,
@@ -6270,7 +6269,7 @@
   },
   "gift_of_craftsmanship": {
    "name": "Gift of Craftsmanship",
-   "apiId": 68551,
+   "apiId": 77451,
    "needed_for": [
     "armor_perfected_envoy",
     "gift_of_magical_prosperity",
@@ -6288,12 +6287,12 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
     "gift_of_magical_prosperity": 1,
-    "gift_of_mighty_prosperity": 1
+    "gift_of_mighty_prosperity": 1,
+    "gift_of_prosperity": 1
    },
    "kind": "advanced_craft"
   },
@@ -6303,12 +6302,13 @@
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
+    "gift_of_competitive_prosperity",
     "gift_of_insight",
     "gift_of_magical_prosperity",
+    "gift_of_prosperity",
     "gift_of_the_homesteader",
-    "mystic_tribute",
     "gift_of_war_prosperity",
-    "gift_of_competitive_prosperity"
+    "mystic_tribute"
    ],
    "farmable": true,
    "sources": [
@@ -6324,7 +6324,6 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
@@ -6335,7 +6334,8 @@
     "gift_of_insight": 4,
     "gift_of_magical_prosperity": 1,
     "gift_of_war_prosperity": 1,
-    "gift_of_competitive_prosperity": 1
+    "gift_of_competitive_prosperity": 1,
+    "gift_of_prosperity": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -6356,12 +6356,13 @@
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
+    "gift_of_competitive_prosperity",
     "gift_of_insight",
     "gift_of_mighty_prosperity",
+    "gift_of_prosperity",
     "gift_of_the_homesteader",
-    "mystic_tribute",
     "gift_of_war_prosperity",
-    "gift_of_competitive_prosperity"
+    "mystic_tribute"
    ],
    "farmable": true,
    "sources": [
@@ -6377,7 +6378,6 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1,
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
@@ -6388,7 +6388,8 @@
     "gift_of_insight": 4,
     "gift_of_mighty_prosperity": 1,
     "gift_of_war_prosperity": 1,
-    "gift_of_competitive_prosperity": 1
+    "gift_of_competitive_prosperity": 1,
+    "gift_of_prosperity": 1
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -9365,9 +9366,11 @@
    "kind": "acquire",
    "farmable": true,
    "needed_for": [
-    "upgrades_combined"
+    "gift_of_craftsmanship"
    ],
-   "qty": {},
+   "qty": {
+    "gift_of_craftsmanship": 50
+   },
    "sources": [
     {
      "type": "vendor",
@@ -9587,20 +9590,29 @@
    "kind": "acquire"
   },
   "gift_of_prosperity": {
-   "name": "Gift of Magical / Mighty Prosperity",
-   "apiId": null,
+   "name": "Gift of Prosperity",
+   "apiId": 78866,
    "needed_for": [
     "perfected_envoy"
    ],
    "qty": {
-    "perfected_envoy": 1
+    "perfected_envoy__per_piece": 1
    },
    "farmable": true,
-   "recipe": "MF : 1× Gift of Craftsmanship + 9× Mystic Clover + 1× Gift of Condensed Magic (tête/épaules/torse) ou Might (gants/jambes/bottes) + 1× Gift of Research",
+   "recipe": {
+    "fr": "MF : 1 Don d'artisanat + 15 Trèfles mystiques + 1 Don de magie condensée + 1 Don de puissance condensée. Un par pièce d'armure Perfected Envoy.",
+    "en": "MF: 1 Gift of Craftsmanship + 15 Mystic Clovers + 1 Gift of Condensed Magic + 1 Gift of Condensed Might. One per Perfected Envoy piece."
+   },
    "sources": [
     {
      "type": "mystic_forge",
-     "tip": "Magical → Headgear/Shoulders/Chest · Mighty → Gloves/Leggings/Boots. Ou craft assisté Lyhr (+10 Ectos)."
+     "tip": {
+      "fr": "MF : 1 Don d'artisanat + 15 Trèfles mystiques + 1 Don de magie condensée + 1 Don de puissance condensée. Un par pièce d'armure Perfected Envoy.",
+      "en": "MF: 1 Gift of Craftsmanship + 15 Mystic Clovers + 1 Gift of Condensed Magic + 1 Gift of Condensed Might. One per Perfected Envoy piece."
+     },
+     "verified": true,
+     "checked": "2026-09-16",
+     "ref": "wiki Gift of Prosperity — boite Recipe + section Used in (une par piece Perfected Envoy)"
     }
    ],
    "kind": "advanced_craft"
@@ -9981,7 +9993,8 @@
    "qty": {
     "coalescence": 1,
     "coalescence_ring": 1
-   }
+   },
+   "apiId": 86104
   },
   "gift_of_patience": {
    "name": "Gift of Patience",
@@ -10024,7 +10037,8 @@
    ],
    "qty": {
     "gen2_the_binding_of_ipos": 1
-   }
+   },
+   "apiId": 86097
   },
   "gift_of_ipos": {
    "name": "Gift of Ipos",
@@ -15846,7 +15860,8 @@
    },
    "verified": true,
    "checked": "2026-08-27",
-   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
+   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+   "apiId": 88057
   },
   "lacquered_banner_pole": {
    "name": "Lacquered Banner Pole",
@@ -18177,7 +18192,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 103578
   },
   "valkyrie_bearkin_war_helm": {
    "name": "Valkyrie Bearkin War Helm",
@@ -18838,7 +18854,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 99790
   },
   "monument_of_legends": {
    "name": "Monument of Legends",
@@ -19229,7 +19246,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 72309
   },
   "unbound_wings": {
    "name": "Unbound Wings",

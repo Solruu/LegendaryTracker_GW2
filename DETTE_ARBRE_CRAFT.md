@@ -1,7 +1,8 @@
 # Dette — arbre de craft chiffre
 
-**Etat courant : 3 aretes.** Derniere mesure le 16/09/2026 sur `gw2_sources_v291.json`,
-controle `check_needed_for_chiffre` (audit v43). Le detail est en section M, en bas.
+**Etat courant : 3 aretes.** Derniere mesure le 17/09/2026 sur `gw2_sources_v292.json`,
+controle `check_needed_for_chiffre` (audit v43) : **plus aucune arete declaree
+sans quantite**. La section N raconte la derniere.
 
 Mesure d'origine du 05/09/2026 sur `gw2_sources_v203.json` (audit v29) : 100 aretes.
 Les sections A a J ci-dessous sont le journal de la reduction et restent telles
@@ -709,3 +710,61 @@ Et un trou hors compteur : `provisioner_token` declare
 soit 50 par Gift of Craftsmanship (9 exemplaires pour 6r/2s/1rel) -- mais
 `gift_of_craftsmanship` n'a **pas de capture**, donc cette division est une
 deduction, pas une source. La page est dans la file.
+
+
+## N — 17/09/2026 : la derniere arete, et la fin de la dette
+
+Antoine a capture les deux pages manquantes. Elles ont tranche trois choses
+d'un coup.
+
+**`gift_of_prosperity` n'est pas ce que la base croyait.** Elle l'appelait
+« Gift of Magical / Mighty Prosperity », sans apiId, avec une recette en prose
+annoncant 9 trefles et un Gift of Research. La page dit : objet a part entiere,
+API 78866, et la recette est **1 Don d'artisanat + 15 Trefles + 1 Don de magie
+condensee + 1 Don de puissance condensee** — pas de Gift of Research, et 15
+trefles, pas 9. C'est la contradiction interne signalee en section L : c'est
+bien la variante raid, et `mystic_clover` avait raison contre la prose.
+
+**Et il s'en consomme SIX, pas un.** La section « Used in » de la page liste
+Perfected Envoy Boots, Breastplate, Cowl... — un par piece. La base portait
+`perfected_envoy: 1`, pour le set entier. Les ingredients, eux, etaient
+factures a plat par piece : Perfected Envoy payait donc 6 jeux d'ingredients
+PLUS un septieme don complet. Corrige : le don est chaine par piece, les
+plats devenus doublons sont retires, et Perfected Envoy passe de **105 a 90
+trefles**.
+
+**Les 450 jetons de ravitaillement sont confirmes.** Le Gift of Craftsmanship
+se vend **50 Provisioner Tokens** chez une trentaine de PNJ. Neuf dons pour
+6 runes + 2 cachets + 1 relique : 450. C'est exactement ce qu'annoncait la
+table parallele supprimee en section M — sauf que la valeur est maintenant
+derivee, et qu'elle remonte partout ou le don apparait : 300 jetons pour
+Perfected Envoy, 300 pour l'Obsidienne, 100 pour Eikasia, qui n'en affichaient
+aucun.
+
+Sa page donne aussi son identifiant : **API 77451**, quand la base portait
+68551. La regle `check_api_id_contre_capture` posee la veille l'a signale des
+que la capture est arrivee.
+
+Six derniers apiId poses au passage (`ars_goetia`, `banner_of_the_commander`,
+`hateful_sworl`, `mistwalker_infusion`, `standing_stones_timepiece`,
+`unbound`) : leur page n'a pas d'infobox « Item type », ce qui les avait fait
+ecarter du lot precedent par prudence. Le titre de chaque page correspond au
+nom du composant, l'identifiant est lu dans les liens externes de la page
+elle-meme.
+
+### Il ne reste rien dans ce compteur
+
+`check_needed_for_chiffre` ne signale plus aucune arete. La dette ouverte le
+05/09/2026 a 100 aretes est soldee.
+
+Ce qui subsiste ailleurs, et n'appartient pas a ce document :
+
+- Les cinq monnaies de l'onglet `upgrades` restent codees en dur cote JSX. La
+  chaine reproduit maintenant les cinq a l'identique (450 jetons, 23 250 piles,
+  205 trefles, 1 050 ectos, 450 eclats), donc la table peut ceder — mais
+  `check_qty_vs_jsx` ne sait pas encore controler une cible composee, et
+  supprimer le tableau sans ce garde-fou rendrait l'ecart invisible.
+- `testimony_of_heroics` porte toujours `warbringer: 250` sans contrepartie
+  Castoran identifiee.
+- `endless_summer` garde ses plats d'essences de faille : 2 500/1 000/500
+  correspondraient a 10 Amalgamated Rift Essence que rien ne declare.
