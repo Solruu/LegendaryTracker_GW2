@@ -69,6 +69,7 @@ namespace GW2_NodeTracker
         private SettingEntry<bool> _pathCorrectionEnabled;
         private SettingEntry<KeyBinding> _buildRouteKey;
         private SettingEntry<KeyBinding> _refinePathKey;
+        private SettingEntry<KeyBinding> _togglePathCorrectionKey;
         private SettingEntry<float> _simplifyTolerance;
         private SettingEntry<float> _traceMinStep;
         private SettingEntry<float> _traceTeleportThreshold;
@@ -217,6 +218,12 @@ namespace GW2_NodeTracker
                 () => "Construire les routes de la map",
                 () => "(Re)calcule l'ordre de passage pour chaque groupe présent sur la map courante, puis applique les chemins connus. Écrase les routes existantes de cette map -- les traces, elles, ne sont jamais perdues.");
 
+            _togglePathCorrectionKey = routeSettings.DefineSetting(
+                "TogglePathCorrectionKey",
+                new KeyBinding(Keys.O),
+                () => "Correction de chemin : activer/désactiver",
+                () => "Bascule le réglage ci-dessus sans passer par le menu. Coupe le segment en cours à l'extinction et écrit les traces sur disque immédiatement.");
+
             _refinePathKey = routeSettings.DefineSetting(
                 "RefinePathKey",
                 new KeyBinding(Keys.P),
@@ -288,6 +295,9 @@ namespace GW2_NodeTracker
 
             _refinePathKey.Value.Enabled = true;
             _refinePathKey.Value.Activated += OnRefinePathKeyActivated;
+
+            _togglePathCorrectionKey.Value.Enabled = true;
+            _togglePathCorrectionKey.Value.Activated += OnTogglePathCorrectionKeyActivated;
         }
 
         protected override async Task LoadAsync()
@@ -401,6 +411,8 @@ namespace GW2_NodeTracker
                 _buildRouteKey.Value.Activated -= OnBuildRouteKeyActivated;
             if (_refinePathKey?.Value != null)
                 _refinePathKey.Value.Activated -= OnRefinePathKeyActivated;
+            if (_togglePathCorrectionKey?.Value != null)
+                _togglePathCorrectionKey.Value.Activated -= OnTogglePathCorrectionKeyActivated;
 
             // Dernière écriture avant déchargement -- sinon jusqu'à 30 s de
             // déplacement enregistré seraient perdues.
@@ -1112,13 +1124,45 @@ namespace GW2_NodeTracker
                 $"🧭 {groups.Count} route(s), {stops} arrets, {totalLength / 1000.0:0.0} km -- {verified}/{legs} troncons verifies");
         }
 
+        /// <summary>
+        /// Bascule l'enregistrement sans passer par le menu. C'est un geste de
+        /// terrain : on l'allume en partant faire un tour, on l'éteint en
+        /// arrivant, sans lâcher le jeu.
+        /// </summary>
+        private void OnTogglePathCorrectionKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            bool enabled = !_pathCorrectionEnabled.Value;
+            _pathCorrectionEnabled.Value = enabled;
+
+            if (enabled)
+            {
+                // Reprise : nouveau segment, jamais de raccord avec ce qui
+                // précède l'extinction.
+                _traces.CutSegment();
+                _sampleAccumMs = 0;
+                ShowNotification("🧭 Correction de chemin ACTIVEE -- enregistrement en cours");
+            }
+            else
+            {
+                _traces.CutSegment();
+                if (_traces.Dirty)
+                {
+                    string path = CleanPath(_tracesFilePath.Value);
+                    Task.Run(() => _traces.Save(path));
+                }
+                ShowNotification($"🧭 Correction de chemin coupee ({_traces.Count} points enregistres)");
+            }
+        }
+
         private void OnRefinePathKeyActivated(object sender, EventArgs e)
         {
             if (!CanAct()) return;
 
             if (!_pathCorrectionEnabled.Value)
             {
-                ShowNotification("Correction de chemin désactivée -- rien à appliquer.");
+                ShowNotification("Correction de chemin désactivée -- active-la d'abord (touche dédiée).");
                 return;
             }
 
