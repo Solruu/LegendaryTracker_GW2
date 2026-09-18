@@ -32,7 +32,10 @@ namespace GW2_NodeTracker
         /// n'est pas documenté : si les flèches pointent à contresens en jeu,
         /// basculer ce booléen suffit, rien d'autre ne change.
         /// </summary>
-        private const bool FlipArrows = false;
+        /// static readonly et non const : avec une constante, le compilateur
+        /// replie le test et signale la ligne d'inversion comme code mort
+        /// (CS0162). Le comportement est identique, l'avertissement disparaît.
+        private static readonly bool FlipArrows = false;
 
         private const double StrokeHalfWidth = 0.085; // demi-épaisseur du trait
         private const double Feather = 0.075;         // adoucissement des bords
