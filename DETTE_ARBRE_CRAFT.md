@@ -1110,3 +1110,37 @@ armures en section Q, `qty_extras` aujourd'hui. Le `required: 0` du JSX est
 correct — le karma d'Aurora n'a pas de socle, seulement des surcouts.
 
 Audit v46 : 0 erreur, 54 avertissements. Moteurs confrontes : aucun ecart.
+
+## T — 18/09/2026 : les etapes de collection deviennent cliquables
+
+« Sold by BUY-2046 PFR in the Mistlock Observatory for 20 Pristine Fractal
+Relic » : la description d'une etape repond rarement a la question qu'on se pose
+devant elle. La page de l'objet, si.
+
+**Le lien n'est pas construit, il est lu.** La capture d'une page de collection
+porte, pour chaque case, un bloc `data-id="achievement<id>-bit<n>"` contenant
+l'icone de l'objet et son lien. `gw2_liens_collection_v1.py` l'extrait et le
+pose dans le champ `wiki` de l'etape — le meme champ que portent deja les
+legendaires et les composants, a la meme forme percent-encodee. Aucun champ
+parallele, aucune URL devinee : une page absente du depot ne donne pas de lien,
+et c'est preferable a un lien mort.
+
+**2 376 etapes sur 2 504 recoivent leur lien.** Les 128 restantes n'ont pas
+d'icone d'objet dans leur case.
+
+### Le filtre qui a evite 382 liens inutiles
+
+La premiere version prenait le premier lien de la case. Sur les collections a
+etapes — « Parler au chaman hylek », « Vaincre Tequatl le Sans-Soleil » — ce
+premier lien est ce que la description cite au passage : un point de passage,
+une espece. Dix-neuf des vingt cases de Sungod's Shard pointaient vers
+« Waypoint ». Le lien n'est desormais pris que dans l'icone d'objet du widget.
+
+Des 267 divergences nom/page restantes, l'echantillon lu est legitime :
+`Prototype Fractal Capacitor` pointe vers `Prototype_Fractal_Capacitor_(skin)`
+(homonymie wiki), `Beta Fractal Capacitor (Infused)` vers la page de base
+(redirection), et `Amalgamated Rift Essence` vers `Amalgamated_Kryptis_Essence`
+(l'objet a ete renomme en jeu). Ce sont les liens que le wiki lui-meme rend.
+
+Cote JSX, un seul composant `NomEtape` sert les trois endroits qui affichent un
+nom d'etape. Sans lien, il rend le nom tel quel.

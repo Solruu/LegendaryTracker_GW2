@@ -2151,7 +2151,7 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}><NomEtape item={item} NX={NX} /></span>
                 <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
                 {item.wp_order && orderLabel && (
                   <span style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
@@ -2185,6 +2185,28 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
 // qui fait disparaitre le PNJ. Les deux ont ete confrontes un a un le
 // 01/09/2026 : similarite mediane 0,34, et les 11 vraies redites supprimees.
 // Ce qui reste ne fait pas doublon et restait invisible faute de rendu.
+// Nom d'une etape de collection, cliquable quand le wiki a une page pour elle.
+// La description d'une etape repond rarement a la question qu'on se pose
+// devant elle ; la page de l'objet, si. Le lien n'est pas construit a partir
+// du nom : il est lu dans la capture de la page de collection, ou chaque case
+// porte le lien de son objet. Pas de page, pas de lien — un lien mort serait
+// pire que pas de lien du tout.
+function NomEtape({ item, NX }) {
+  const nom = NX(item.name);
+  if (!item.wiki) return nom;
+  return (
+    <a
+      href={`https://wiki.guildwars2.com/wiki/${item.wiki}`}
+      target="_blank"
+      rel="noreferrer"
+      title="wiki"
+      style={{ color: "inherit", textDecoration: "underline", textDecorationColor: "rgba(94,234,212,0.45)", textUnderlineOffset: 2 }}
+    >
+      {nom}
+    </a>
+  );
+}
+
 function FieldTip({ tip, NX }) {
   if (!tip) return null;
   const txt = NX(tip);
@@ -6020,7 +6042,7 @@ export default function GW2LegendaryTracker() {
                               {itemDone ? <span style={{ fontSize: 8, color: "#4ade80" }}>✓</span> : <span style={{ fontSize: 8, color: "rgba(251,146,60,0.7)" }}>✗</span>}
                             </div>
                             <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}>{NX(item.name)}</div>
+                              <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}><NomEtape item={item} NX={NX} /></div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
                               {missing && <FieldTip tip={item.how_jsx} NX={NX} />}
                               {/* Prérequis chiffrés : total + restant selon les étapes déjà validées */}
@@ -6330,7 +6352,7 @@ export default function GW2LegendaryTracker() {
                         </div>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                            <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}>{NX(item.name)}</span>
+                            <span style={{ fontSize: 11, fontWeight: 600, color: done ? "#4ade80" : "rgba(226,201,126,0.8)" }}><NomEtape item={item} NX={NX} /></span>
                             <span style={{ fontSize: 9, color: "rgba(226,201,126,0.3)", background: "rgba(226,201,126,0.05)", border: "1px solid rgba(226,201,126,0.1)", borderRadius: 3, padding: "1px 5px" }}>{NX(item.map)}</span>
                             {item.wp_order && (
                               <span title={t("wp_order_title")} style={{ fontSize: 9, color: "rgba(251,220,80,0.75)", background: "rgba(251,220,80,0.07)", border: "1px solid rgba(251,220,80,0.22)", borderRadius: 3, padding: "1px 5px" }}>
