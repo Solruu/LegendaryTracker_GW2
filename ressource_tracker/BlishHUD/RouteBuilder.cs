@@ -32,17 +32,52 @@ namespace GW2_NodeTracker
         // Construction
         // -------------------------------------------------------------
 
-        public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, string group)
+        /// <summary>
+        /// Toutes les combinaisons non vides des groupes fournis, triées par
+        /// l'ordre canonique puis par taille. Trois groupes donnent sept
+        /// routes ; au-delà de MaxGroupsForFullCombinations, on se limite aux
+        /// groupes seuls plus la route complète, sinon le nombre de routes
+        /// double à chaque groupe ajouté.
+        /// </summary>
+        public const int MaxGroupsForFullCombinations = 3;
+
+        public static List<List<string>> Combinations(IList<string> groups)
         {
+            var result = new List<List<string>>();
+            if (groups == null || groups.Count == 0) return result;
+
+            if (groups.Count > MaxGroupsForFullCombinations)
+            {
+                foreach (string g in groups) result.Add(new List<string> { g });
+                result.Add(new List<string>(groups));
+                return result;
+            }
+
+            int total = 1 << groups.Count;
+            for (int mask = 1; mask < total; mask++)
+            {
+                var combo = new List<string>();
+                for (int i = 0; i < groups.Count; i++)
+                    if ((mask & (1 << i)) != 0) combo.Add(groups[i]);
+                result.Add(combo);
+            }
+
+            return result.OrderBy(c => c.Count).ToList();
+        }
+
+        public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, IList<string> groups)
+        {
+            var wanted = new HashSet<string>(groups);
+
             var stops = nodes
-                .Where(n => n.MapId == mapId && n.Group == group)
+                .Where(n => n.MapId == mapId && wanted.Contains(n.Group))
                 .Select(RoutePoint.FromNode)
                 .ToList();
 
             var route = new Route
             {
                 MapId = mapId,
-                Group = group,
+                Groups = new List<string>(groups),
                 BuiltAt = DateTime.Now.ToString("o"),
                 Stops = stops,
             };

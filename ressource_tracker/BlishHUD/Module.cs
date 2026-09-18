@@ -1034,8 +1034,13 @@ namespace GW2_NodeTracker
         // Routes
         // -------------------------------------------------------------
 
-        private Route FindRoute(int mapId, string group) =>
-            _routes.FirstOrDefault(r => r.MapId == mapId && r.Group == group);
+        /// <summary>
+        /// Toutes les routes de la map qui couvrent ce groupe. Un node bois
+        /// appartient à la route Bois, à Minerai+Bois, à Bois+Vegetal et à la
+        /// route complète : il doit entrer dans les quatre.
+        /// </summary>
+        private List<Route> RoutesCovering(int mapId, string group) =>
+            _routes.Where(r => r.MapId == mapId && r.Covers(group)).ToList();
 
         private void SaveRoutes() => RouteBuilder.Save(_routes, CleanPath(_routesFilePath.Value));
 
@@ -1049,13 +1054,17 @@ namespace GW2_NodeTracker
         {
             if (n == null) return;
 
-            var route = FindRoute(n.MapId, n.Group);
-            if (route == null) return;
+            var routes = RoutesCovering(n.MapId, n.Group);
+            if (routes.Count == 0) return;
 
-            if (RouteBuilder.Insert(route, RoutePoint.FromNode(n)))
+            int touched = 0;
+            foreach (var route in routes)
+                if (RouteBuilder.Insert(route, RoutePoint.FromNode(n))) touched++;
+
+            if (touched > 0)
             {
                 SaveRoutes();
-                Logger.Debug("Node inséré dans la route {0}/{1} ({2} arrêts).", n.MapId, n.Group, route.Stops.Count);
+                Logger.Debug("Node insere dans {0} route(s) de la map {1}.", touched, n.MapId);
             }
         }
 
@@ -1063,13 +1072,17 @@ namespace GW2_NodeTracker
         {
             if (n == null) return;
 
-            var route = FindRoute(n.MapId, n.Group);
-            if (route == null) return;
+            var routes = RoutesCovering(n.MapId, n.Group);
+            if (routes.Count == 0) return;
 
-            if (RouteBuilder.Remove(route, RoutePoint.FromNode(n), CurrentRadius))
+            int touched = 0;
+            foreach (var route in routes)
+                if (RouteBuilder.Remove(route, RoutePoint.FromNode(n), CurrentRadius)) touched++;
+
+            if (touched > 0)
             {
                 SaveRoutes();
-                Logger.Debug("Node retiré de la route {0}/{1} ({2} arrêts).", n.MapId, n.Group, route.Stops.Count);
+                Logger.Debug("Node retire de {0} route(s) de la map {1}.", touched, n.MapId);
             }
         }
 
@@ -1086,6 +1099,7 @@ namespace GW2_NodeTracker
             var groups = _nodes.Where(n => n.MapId == mapId)
                                .Select(n => n.Group)
                                .Distinct()
+                               .OrderBy(g => { int i = Array.IndexOf(TacoGenerator.GroupOrder, g); return i >= 0 ? i : 99; })
                                .ToList();
 
             if (groups.Count == 0)
@@ -1096,11 +1110,16 @@ namespace GW2_NodeTracker
 
             _routes.RemoveAll(r => r.MapId == mapId);
 
+            // Toutes les combinaisons sont construites d'un coup, une bonne
+            // fois pour la map. C'est ce qui permet de basculer de « Minerai »
+            // à « Minerai + Bois » depuis le menu sans jamais relancer un
+            // calcul -- et donc sans jamais perdre une vérification acquise.
+            var combos = RouteBuilder.Combinations(groups);
+
             int stops = 0;
-            double totalLength = 0;
-            foreach (string group in groups)
+            foreach (var combo in combos)
             {
-                var route = RouteBuilder.Build(_nodes, mapId, group);
+                var route = RouteBuilder.Build(_nodes, mapId, combo);
                 if (route.Stops.Count < 2) continue;
 
                 // Le réglage coupé, on construit quand même la route : le
@@ -1111,17 +1130,17 @@ namespace GW2_NodeTracker
 
                 _routes.Add(route);
                 stops += route.Stops.Count;
-                totalLength += route.Length();
             }
 
             SaveRoutes();
             TriggerTacoRegeneration();
 
-            int verified = _routes.Where(r => r.MapId == mapId).Sum(r => r.VerifiedCount());
-            int legs = _routes.Where(r => r.MapId == mapId).Sum(r => r.Legs.Count);
+            var built = _routes.Where(r => r.MapId == mapId).ToList();
+            int verified = built.Sum(r => r.VerifiedCount());
+            int legs = built.Sum(r => r.Legs.Count);
 
             ShowNotification(
-                $"🧭 {groups.Count} route(s), {stops} arrets, {totalLength / 1000.0:0.0} km -- {verified}/{legs} troncons verifies");
+                $"🧭 {built.Count} composition(s), {stops} arrets -- {verified}/{legs} troncons verifies");
         }
 
         /// <summary>

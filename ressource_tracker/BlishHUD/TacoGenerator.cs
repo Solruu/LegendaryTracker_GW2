@@ -44,12 +44,18 @@ namespace GW2_NodeTracker
         /// </summary>
         public static readonly Dictionary<string, string> GroupTrailColors = new Dictionary<string, string>
         {
-            ["Minerai"] = "ff4d9de0",   // bleu acier
+            ["Minerai"] = "ffb0b7bd",   // gris acier
             ["Bois"] = "ffc98b3a",      // brun
             ["Vegetal"] = "ff5cc45c",   // vert
             ["Special"] = "ffb05ce0",   // violet
             ["Festival"] = "ffe05ca8",  // magenta
         };
+
+        /// <summary>
+        /// Couleur des routes multi-groupes : aucun groupe ne domine, donc une
+        /// teinte à part plutôt qu'un choix arbitraire parmi les siens.
+        /// </summary>
+        public const string MixedTrailColor = "ff4d9de0";  // bleu
 
         /// <summary>Rouge d'avertissement des tronçons non vérifiés, commun à tous les groupes.</summary>
         public const string UnverifiedTrailColor = "ffcc3333";
@@ -82,10 +88,111 @@ namespace GW2_NodeTracker
         /// </summary>
         public class TrailFile
         {
-            public string FileName { get; set; }   // ex. "trails/r25_minerai_0.trl"
-            public string Group { get; set; }      // Minerai / Bois / Vegetal
+            public string FileName { get; set; }   // ex. "trails/r25_minerai_bois_0.trl"
+            public string Slug { get; set; }       // "minerai", "minerai_bois", ...
+            public string Label { get; set; }      // "Minerai", "Minerai + Bois", ...
+            public string Color { get; set; }      // couleur du ruban vérifié
+            public int Rank { get; set; }          // ordre d'affichage dans le menu
             public string Kind { get; set; }       // "verifie" ou "direct"
             public byte[] Data { get; set; }
+        }
+
+        /// <summary>Couleur d'une route : celle du groupe si elle est seule, la teinte mixte sinon.</summary>
+        public static string ColorFor(Route route)
+        {
+            if (route.Groups.Count == 1
+                && GroupTrailColors.TryGetValue(route.Groups[0], out string c))
+                return c;
+            return MixedTrailColor;
+        }
+
+        public const string PackLuaPath = "pack.lua";
+        public const string RoutesLuaPath = "scripts/routes.lua";
+
+        /// <summary>
+        /// Point d'entrée des scripts du pack. Pathing charge `pack.lua` à la
+        /// racine et c'est lui qui déclare les scripts à exécuter.
+        /// </summary>
+        public static string BuildPackLua() =>
+            "-- Genere par GW2 Node Tracker. Ne pas editer a la main.\n" +
+            "Pack:Require(\"scripts/routes\")\n";
+
+        /// <summary>
+        /// Trois cases à cocher dans le menu de Pathing (une par groupe) qui
+        /// composent la route affichée.
+        ///
+        /// Le format de pack ne sait pas rendre deux catégories mutuellement
+        /// exclusives : c'est le script qui le fait, en appelant Show() sur la
+        /// composition correspondant aux cases cochées et Hide() sur les
+        /// autres. Toutes les compositions existent déjà dans le pack, donc
+        /// basculer de l'une à l'autre n'est qu'un changement d'affichage --
+        /// aucun recalcul, aucune vérification perdue.
+        ///
+        /// Si le script échoue à charger, rien n'est cassé : les catégories
+        /// restent cochables une par une dans le menu normal.
+        /// </summary>
+        public static string BuildRoutesLua(List<Route> routes)
+        {
+            var groups = routes.SelectMany(r => r.Groups)
+                               .Distinct()
+                               .OrderBy(g => { int i = Array.IndexOf(GroupOrder, g); return i >= 0 ? i : 99; })
+                               .ToList();
+
+            var slugs = routes.Select(r => r.Slug()).Distinct().ToList();
+
+            var sb = new StringBuilder();
+            sb.AppendLine("-- Genere par GW2 Node Tracker. Ne pas editer a la main.");
+            sb.AppendLine("local GROUPS = {");
+            foreach (string g in groups)
+                sb.AppendLine($"  {{ name = \"{g}\", slug = \"{g.ToLowerInvariant()}\" }},");
+            sb.AppendLine("}");
+            sb.AppendLine();
+            sb.AppendLine("local COMPOSITIONS = {");
+            foreach (string slug in slugs)
+                sb.AppendLine($"  \"{slug}\",");
+            sb.AppendLine("}");
+            sb.AppendLine(@"
+local state = {}
+for _, g in ipairs(GROUPS) do state[g.slug] = false end
+
+-- Le slug d'une composition est la concatenation des groupes coches, dans
+-- l'ordre canonique : il doit correspondre exactement a celui calcule cote
+-- module (Route.Slug).
+local function wantedSlug()
+  local parts = {}
+  for _, g in ipairs(GROUPS) do
+    if state[g.slug] then parts[#parts + 1] = g.slug end
+  end
+  return table.concat(parts, ""_"")
+end
+
+local function apply()
+  local wanted = wantedSlug()
+  for _, slug in ipairs(COMPOSITIONS) do
+    local cat = Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
+    if slug == wanted then cat:Show() else cat:Hide() end
+  end
+end
+
+local root = Menu:Add(""Composition de route"", nil, false, false,
+                      ""Coche les types de ressources : la route correspondante s'affiche."")
+
+for _, g in ipairs(GROUPS) do
+  local slug = g.slug
+  root:Add(g.name, function(m) state[slug] = m.Checked; apply() end, true, false,
+           ""Inclure "" .. g.name .. "" dans la route affichee"")
+end
+
+apply()");
+            return sb.ToString();
+        }
+
+        /// <summary>Ordre d'affichage : les routes simples d'abord, puis les combinaisons par taille.</summary>
+        private static int RankFor(Route route)
+        {
+            int first = route.Groups.Count == 0 ? 99 : Array.IndexOf(GroupOrder, route.Groups[0]);
+            if (first < 0) first = 90;
+            return route.Groups.Count * 100 + first;
         }
 
         /// <summary>
@@ -107,7 +214,10 @@ namespace GW2_NodeTracker
             {
                 if (route.Legs == null || route.Legs.Count == 0) continue;
 
-                string grpSafe = (route.Group ?? "").ToLowerInvariant();
+                string slug = route.Slug();
+                string label = route.Label();
+                string color = ColorFor(route);
+                int rank = RankFor(route);
                 int fileIdx = 0;
                 int i = 0;
 
@@ -133,8 +243,11 @@ namespace GW2_NodeTracker
 
                     trails.Add(new TrailFile
                     {
-                        FileName = $"trails/r{route.MapId}_{grpSafe}_{fileIdx++}.trl",
-                        Group = route.Group,
+                        FileName = $"trails/r{route.MapId}_{slug}_{fileIdx++}.trl",
+                        Slug = slug,
+                        Label = label,
+                        Color = color,
+                        Rank = rank,
                         Kind = kind ? "verifie" : "direct",
                         Data = TrlWriter.Build(route.MapId, points),
                     });
@@ -142,6 +255,16 @@ namespace GW2_NodeTracker
             }
 
             return trails;
+        }
+
+        private static void WriteText(ZipArchive zip, string path, string content)
+        {
+            var entry = zip.CreateEntry(path);
+            using (var stream = entry.Open())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(content);
+                stream.Write(bytes, 0, bytes.Length);
+            }
         }
 
         private static int TypeSortKey(string slug, string group)
@@ -207,30 +330,31 @@ namespace GW2_NodeTracker
             {
                 sb.AppendLine("    <MarkerCategory name=\"routes\" DisplayName=\"Routes\">");
 
-                var trailGroups = trails.Select(t => t.Group)
-                                        .Distinct()
-                                        .OrderBy(g => { int i = Array.IndexOf(GroupOrder, g); return i >= 0 ? i : 99; });
+                // Une catégorie par COMPOSITION (minerai, minerai_bois, ...).
+                // Elles coexistent : basculer de l'une à l'autre dans le menu
+                // ne recalcule rien et ne perd aucune vérification.
+                var compositions = trails
+                    .GroupBy(t => t.Slug)
+                    .Select(g => g.First())
+                    .OrderBy(t => t.Rank);
 
-                foreach (string grp in trailGroups)
+                foreach (var comp in compositions)
                 {
-                    sb.AppendLine($"      <MarkerCategory name=\"{grp.ToLowerInvariant()}\" DisplayName=\"{grp}\">");
+                    sb.AppendLine($"      <MarkerCategory name=\"{comp.Slug}\" DisplayName=\"{comp.Label}\">");
+
                     // texture= est OBLIGATOIRE pour Pathing : sans elle, la
                     // catégorie se coche dans le menu mais aucun ruban n'est
-                    // dessiné. TacO, lui, fournit une texture par défaut, d'où
-                    // l'absence d'erreur visible.
-                    string groupColor = GroupTrailColors.TryGetValue(grp, out string gc) ? gc : "ffffffff";
-
-                    // defaulttoggle=1 : une catégorie n'existe qu'à partir du
-                    // moment où elle a du contenu. « Chemin parcouru » apparaît
-                    // donc au premier tronçon corrigé -- si elle naissait
-                    // décochée, le tronçon disparaîtrait au moment même où il
-                    // est corrigé.
+                    // dessiné. animSpeed fait défiler les chevrons, ce qui
+                    // donne son sens de parcours à la route.
+                    // defaulttoggle=1 : « Chemin parcouru » n'existe qu'au
+                    // premier tronçon corrigé ; si elle naissait décochée, le
+                    // tronçon disparaîtrait au moment même où il est corrigé.
                     sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{groupColor}\" animSpeed=\"0\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{comp.Color}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"0\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("      </MarkerCategory>");
                 }
 
@@ -268,7 +392,7 @@ namespace GW2_NodeTracker
                 sb.AppendLine("    <!-- Routes de farm -->");
                 foreach (var t in trails)
                 {
-                    string cat = $"gw2farm.routes.{(t.Group ?? "").ToLowerInvariant()}.{t.Kind}";
+                    string cat = $"gw2farm.routes.{t.Slug}.{t.Kind}";
                     sb.AppendLine($"    <Trail trailData=\"{t.FileName}\" type=\"{cat}\"/>");
                 }
             }
@@ -336,6 +460,9 @@ namespace GW2_NodeTracker
                     var texEntry = zip.CreateEntry(TrailTexture.PackPath);
                     using (var stream = texEntry.Open())
                         stream.Write(trailPng, 0, trailPng.Length);
+
+                    WriteText(zip, PackLuaPath, BuildPackLua());
+                    WriteText(zip, RoutesLuaPath, BuildRoutesLua(routes));
                 }
             }
 

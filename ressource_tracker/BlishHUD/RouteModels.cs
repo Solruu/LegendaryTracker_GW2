@@ -62,7 +62,7 @@ namespace GW2_NodeTracker
     }
 
     /// <summary>
-    /// Une route fermée sur une map et un groupe (Minerai / Bois / Vegetal).
+    /// Une route fermée sur une map et un ENSEMBLE de groupes.
     ///
     /// Les arrêts sont stockés en coordonnées, pas en référence vers un node :
     /// GatheredNode n'a pas d'identifiant et on n'en ajoute pas un pour ça. Le
@@ -73,8 +73,24 @@ namespace GW2_NodeTracker
         [JsonProperty("map_id")]
         public int MapId { get; set; }
 
-        [JsonProperty("group")]
-        public string Group { get; set; }
+        /// <summary>
+        /// Les groupes couverts, triés selon l'ordre canonique. Une liste et
+        /// non une chaîne : une route « Minerai + Bois » est une route comme
+        /// une autre, pas un cas particulier encodé dans un nom. Toutes les
+        /// combinaisons d'une map coexistent, ce qui permet de basculer de
+        /// l'une à l'autre sans rien recalculer ni perdre de vérification.
+        /// </summary>
+        [JsonProperty("groups")]
+        public List<string> Groups { get; set; } = new List<string>();
+
+        /// <summary>Identifiant stable, utilisé pour les catégories TacO et les noms de .trl.</summary>
+        public string Slug() => string.Join("_", Groups).ToLowerInvariant();
+
+        /// <summary>Libellé affiché dans le menu Pathing.</summary>
+        public string Label() => Groups.Count == 0 ? "(vide)" : string.Join(" + ", Groups);
+
+        /// <summary>Vrai si la route couvre ce groupe.</summary>
+        public bool Covers(string group) => Groups.Contains(group);
 
         [JsonProperty("built_at")]
         public string BuiltAt { get; set; }
