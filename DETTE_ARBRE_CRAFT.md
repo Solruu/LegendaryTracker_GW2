@@ -1250,3 +1250,44 @@ son propre feu vert.
 Aucune regle d'audit ne peut le detecter seule : le tableau `currencies` est une
 selection editoriale, et un detecteur naif sort les materiaux T6 de tout le
 depot — mesure, il crie sur 70 legendaires.
+
+## W — 18/09/2026 : les quatre blocs restants, apres trois ratages
+
+La passe precedente avait echoue trois fois de suite : mes inserts atterrissaient
+dans le bloc du voisin — `triumphant_hero` au lieu de `perfected_envoy`,
+`trinkets` au lieu d'Orrax. Cause : je reperais un legendaire par l'indentation
+de sa cle, `\n  <leg>: {`, alors que les definitions sont imbriquees a des
+profondeurs variables. **L'audit avait attrape le premier jet** — « airship_part
+declare pour triumphant_hero, invisible du grand total ».
+
+Le repere juste est le marqueur `id: "<leg>"` du bloc lui-meme, avec le bloc
+suivant pour borne, et une verification apres coup que chaque ligne ajoutee est
+bien tombee entre ces bornes.
+
+Quatre blocs, sept entrees :
+
+| legendaire | monnaie | requis | carte |
+|---|---|---:|---|
+| Orrax Manifested | Ancient Coin | 50 000 | Janthir Wilds |
+| Orrax Manifested | Mursaat Obsidian Chunk | 750 | Mistburned Barrens |
+| Orrax Manifested | Titan Heatstone | 750 | Mistburned Barrens |
+| Orrax Manifested | Curious Mursaat Remnants | 725 | Bava Nisos |
+| Perfected Envoy | Airship Part | 250/piece | Verdant Brink |
+| Perfected Envoy | Lump of Aurillium | 250/piece | Auric Basin |
+| Selachimorpha | Antiquated Ducat | 500 | Castora |
+| Stella Radians | Shadowstone Fragment | 500 | Eternity's Garden |
+
+**Perfected Envoy ne compte pas comme les autres** : son tableau s'appelle
+`currenciesPerPiece` et porte `perPiece`, pas `required`. Ses 1 500 pieces
+d'aeronef et 1 500 lingots d'aurillium s'y ecrivent 250 par piece — l'echelle par
+six, encore elle, deja croisee en section Q sur la table wiki.
+
+### Le chiffre annonce etait faux
+
+J'avais dit « une trentaine de blocs ». Mesure au critere large — un apiId deja
+reconnu comme monnaie ailleurs et present au total d'un autre legendaire —
+**1 155 entrees sur 70 legendaires**, parce que le critere ramasse les T6, les
+ectoplasmes et les pieces mystiques, qui relevent du grand total et pas de la
+bande de monnaies. Restreint aux vraies monnaies de carte ou d'extension, avec un
+plancher a 100 : 167 entrees sur 37 legendaires, dont 33 sans bloc propre. D'ou
+ces quatre-la seulement, et le reste au backlog.

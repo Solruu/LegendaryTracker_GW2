@@ -1403,3 +1403,53 @@ faut un par tesson, aucune page n'est au dépôt, et rien ne détaille leur
 recette. L'exigence est sourcée, le coût ne l'est pas. Ils sont désormais en
 section 3 de `PAGES_A_CAPTURER.md`, ce qui est le point : un manque qu'on voit
 vaut mieux qu'un manque caché dans une phrase de `sources`.
+
+## Ouvert au 18/09/2026
+
+### 1. Les monnaies de carte du groupe d'armes (gen2, gen3, Klobjarne Geirr)
+
+Trente-trois legendaires n'ont **aucun bloc `currencies` propre** : les seize
+gen2, les seize gen3 et Klobjarne Geirr passent par le groupe d'armes, avec
+decouverte a l'execution. Leur onglet Composants ne peut donc pas recevoir de
+monnaie de carte par simple insertion de lignes — c'est le rendu du groupe qu'il
+faut faire parler.
+
+Ce qui leur manque, mesure sur la chaine :
+
+- **Klobjarne Geirr : 20 250 pieces anciennes** et 250 eclats du Foyer. Le cas le
+  plus gros de la liste.
+- les 16 gen2 : 800 pieces d'aeronef, 800 lingots d'aurillium, plus les quatre
+  monnaies de HoT a 250 (minerai cristallin, huile d'aeronef, poussiere aurique,
+  etincelle de ligne de force).
+- les 16 gen3 : les memes quatre monnaies de HoT a 250.
+
+`ley_line_crystal` est ecarte de toute facon : le composant n'a pas d'apiId, donc
+son stock ne peut pas etre lu. A capturer avant de pouvoir l'afficher.
+
+### 2. Marquer « fait » ce que la synchro montre deja consomme
+
+Demande d'Antoine du 18/09. Quand une etape de collection est validee — bit a 1,
+collection en vert — ce qu'elle coutait n'est plus a farmer. Six armes Astral
+terminees, et ni le kralkatite ni le quartz ne servent plus. Aujourd'hui l'onglet
+continue de reclamer 3 000 de chaque, sans stock en face, ce qui est decourageant
+et faux.
+
+**Le mecanisme existe deja** : `qty_extras` porte des surcouts conditionnels lies
+a un bit, que les deux moteurs neutralisent des que l'etape est validee. C'est
+exactement la forme voulue, il suffit de la renseigner. Le travail est de
+decomposer chaque cout entre son socle et sa part conditionnelle :
+
+| monnaie | socle | conditionnel | etape |
+|---|---:|---:|---|
+| Kralkatite Ore | 100 (Gift of Crystalline Magic) | 3 000 | vis_istan bit5 |
+| Powdered Rose Quartz | 0 | 3 000 | vis_istan bit5 |
+| Branded Mass | 100 (Gift of Ephemeral Magic) | 360 | vis_thunderhead bit5 |
+| Exquisite Serpentite Jewel | 0 | 18 | vis_thunderhead bit5 |
+
+Le socle reste en `required`, la part conditionnelle passe en `qty_extras` avec
+son `legendary`, son `sub` et son `bit` — comme le karma d'Aurora le fait deja
+sur neuf entrees. `check_qty_vs_jsx` continuera de confronter le tout a la
+chaine, donc la decomposition ne peut pas deriver en silence.
+
+A etendre ensuite aux autres legendaires dont un cout est adosse a une
+collection, pas seulement Vision.

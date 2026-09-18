@@ -1329,6 +1329,11 @@ const LEGENDARIES = {
       { id: "notes",   name: "Research Note",  required: 5000, icon: "RN", apiId: 61 },
       { id: "clovers", name: "Mystic Clover",  required: 55,   icon: "MC", apiId: 19675 },
       { id: "shards",  name: "Obsidian Shard", required: 488,  icon: "OS", apiId: 19925 },
+      // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
+      // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
+      // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
+      // refuse toute divergence.
+      { id: "ducat", name: "Antiquated Ducat", required: 500, icon: "DU", apiId: 81, mapNote: "Castora" },
     ],
     collectionNoteKeys: ["sel_note1", "sel_note2"],
     metas: [],
@@ -1498,6 +1503,12 @@ const LEGENDARIES = {
       { id: "shards",      name: "Obsidian Shard",    perPiece: 50, icon: "OS", apiId: 19925 },
       { id: "clovers",     name: "Mystic Clover",     perPiece: 15, icon: "MC", apiId: 19675 },
       { id: "provisioner", name: "Provisioner Token", perPiece: 50, icon: "PT", apiId: 29 },
+      // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
+      // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
+      // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
+      // refuse toute divergence.
+      { id: "airship", name: "Airship Part", perPiece: 250, icon: "AP", apiId: 74494, mapNote: "Verdant Brink" },
+      { id: "aurillium", name: "Lump of Aurillium", perPiece: 250, icon: "LA", apiId: 75012, mapNote: "Auric Basin" },
     ],
     currencies: [],
     requirements: {
@@ -1770,6 +1781,11 @@ const LEGENDARIES = {
       { id: "karma",   name: "Karma",         required: 7000000, icon: "KA", apiId: 2 },
       { id: "coins",   name: "Mystic Coin",   required: 499,     icon: "MO", apiId: 19976 },
       { id: "clovers", name: "Mystic Clover", required: 77,      icon: "MC", apiId: 19675 },
+      // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
+      // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
+      // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
+      // refuse toute divergence.
+      { id: "shadowstone", name: "Shadowstone Fragment", required: 500, icon: "SF", apiId: 109459, mapNote: "Eternity's Garden" },
     ],
     metas: [
       { id: "shackles", name: { fr: "Entraves des Anciens", en: "Shackles of the Ancients" }, subname: { fr: "Eternity's Garden", en: "Eternity's Garden" }, expansion: "VoE", icon: "SA",
@@ -1794,6 +1810,14 @@ const LEGENDARIES = {
       { id: "tales",   name: "Tales of Dungeon Delving", required: 500, icon: "TD", apiId: 69 },
       { id: "clovers", name: "Mystic Clover",            required: 68,  icon: "MC", apiId: 19675 },
       { id: "oblige",  name: "Ursus Oblige",             required: 1250, icon: "UO", apiId: 76 },
+      // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
+      // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
+      // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
+      // refuse toute divergence.
+      { id: "ancient_coin", name: "Ancient Coin", required: 50000, icon: "AC", apiId: 100477, mapNote: "Janthir Wilds" },
+      { id: "mursaat_obsidian", name: "Mursaat Obsidian Chunk", required: 750, icon: "MO", apiId: 103427, mapNote: "Mistburned Barrens" },
+      { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
+      { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
     ],
     metas: [
       { id: "titanic", name: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, subname: { fr: "Bava Nisos", en: "Bava Nisos" }, expansion: "JW", icon: "TV",
