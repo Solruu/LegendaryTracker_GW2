@@ -117,6 +117,13 @@ namespace GW2_NodeTracker
         // avec un résultat corrompu selon qui écrit en dernier.
         private readonly System.Threading.SemaphoreSlim _regenLock = new System.Threading.SemaphoreSlim(1, 1);
 
+        // Regroupement des régénérations : capturer quatre nodes d'affilée
+        // réécrivait le pack quatre fois pour rien, puisque Pathing ne relit
+        // pas le fichier de lui-même. On attend que ça se calme.
+        private const double RegenDebounceMs = 4000.0;
+        private double _regenPendingMs = -1;
+        private int _regenRequests = 0;
+
         [ImportingConstructor]
         public Module([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) { }
 
@@ -333,7 +340,7 @@ namespace GW2_NodeTracker
             // chercher les icônes manquantes historiques, même si aucune
             // capture n'a lieu cette session -- le .taco doit refléter le
             // JSON existant dès le chargement, pas seulement après un F12.
-            TriggerTacoRegeneration();
+            RequestTacoRegeneration();
         }
 
         protected override void OnModuleLoaded(EventArgs e)
@@ -360,6 +367,7 @@ namespace GW2_NodeTracker
             }
 
             UpdatePathCorrection(gameTime, currentMapId);
+            UpdateTacoDebounce(gameTime);
         }
 
         // -------------------------------------------------------------
@@ -512,6 +520,36 @@ namespace GW2_NodeTracker
         // son contenu, pas seulement ce que ce module connaît en RAM.
         // Tâche de fond, ne bloque jamais la capture.
         // -------------------------------------------------------------
+        /// <summary>
+        /// Demande une régénération. Les demandes rapprochées sont fusionnées
+        /// et la réécriture n'a lieu qu'après RegenDebounceMs sans nouvelle
+        /// demande.
+        /// </summary>
+        private void RequestTacoRegeneration()
+        {
+            if (!_autoRegenerateTaco.Value) return;
+
+            _regenRequests++;
+            _regenPendingMs = 0;
+        }
+
+        private void UpdateTacoDebounce(GameTime gameTime)
+        {
+            if (_regenPendingMs < 0) return;
+
+            _regenPendingMs += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (_regenPendingMs < RegenDebounceMs) return;
+
+            int merged = _regenRequests;
+            _regenPendingMs = -1;
+            _regenRequests = 0;
+
+            if (merged > 1)
+                Logger.Debug("{0} demandes de regeneration fusionnees.", merged);
+
+            TriggerTacoRegeneration();
+        }
+
         private void TriggerTacoRegeneration()
         {
             if (!_autoRegenerateTaco.Value) return;
@@ -876,7 +914,7 @@ namespace GW2_NodeTracker
             }
 
             SaveNodes();
-            TriggerTacoRegeneration(); // relit le disque, pas _nodes -- cf. commentaire de la méthode
+            RequestTacoRegeneration(); // relit le disque, pas _nodes -- cf. commentaire de la méthode
             RefreshFilteredTypes(mapId, resetSelection: false); // le nouveau type capturé doit apparaître dans le filtre tout de suite,
                                                                 // pas seulement au prochain changement de map
         }
@@ -926,7 +964,7 @@ namespace GW2_NodeTracker
         private void PersistAndRefresh(int mapId)
         {
             SaveNodes();
-            TriggerTacoRegeneration();
+            RequestTacoRegeneration();
             RefreshFilteredTypes(mapId, resetSelection: false);
         }
 
@@ -1159,7 +1197,7 @@ namespace GW2_NodeTracker
             }
 
             SaveRoutes();
-            TriggerTacoRegeneration();
+            RequestTacoRegeneration();
 
             var built = _routes.Where(r => r.MapId == mapId).ToList();
             int verified = built.Sum(r => r.VerifiedCount());
@@ -1215,7 +1253,7 @@ namespace GW2_NodeTracker
 
             RouteBuilder.Invalidate(bestRoute, bestLeg);
             SaveRoutes();
-            TriggerTacoRegeneration();
+            RequestTacoRegeneration();
 
             ShowNotification($"🧭 Troncon rejete sur {bestRoute.Label()} ({bestDist:0} m) -- refais le trajet pour le revalider");
         }
@@ -1317,7 +1355,7 @@ namespace GW2_NodeTracker
                     if (added + refreshed > 0)
                     {
                         SaveRoutes();
-                        TriggerTacoRegeneration();
+                        RequestTacoRegeneration();
 
                         if (notify || _verboseNotifications.Value)
                         {
