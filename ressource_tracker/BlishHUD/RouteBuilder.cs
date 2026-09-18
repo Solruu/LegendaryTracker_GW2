@@ -290,7 +290,7 @@ namespace GW2_NodeTracker
         /// PLUS RÉCENTE que celle qui l'avait produit : refaire le trajet
         /// autrement corrige la route, le relire ne la dégrade pas.
         /// </summary>
-        public static (int added, int refreshed) Refine(Route route, TraceRecorder traces, double epsilon, double snapRadius)
+        public static (int added, int refreshed) Refine(Route route, TraceRecorder traces, double epsilon, double snapRadius, double detourFactor)
         {
             if (route == null || traces == null || route.Stops.Count < 2) return (0, 0);
 
@@ -303,7 +303,7 @@ namespace GW2_NodeTracker
                 var to = route.Stops[(i + 1) % route.Stops.Count];
                 var leg = route.Legs[i];
 
-                var match = traces.FindLeg(route.MapId, from, to, snapRadius);
+                var match = traces.FindLeg(route.MapId, from, to, snapRadius, detourFactor);
                 if (match == null) continue;
 
                 // Le filigrane s'applique que le tronçon soit vérifié ou

@@ -38,6 +38,7 @@ namespace GW2_NodeTracker
         private const float DefaultTraceMinStep = 3.0f;
         private const float DefaultTeleportThreshold = 50.0f;
         private const float DefaultRouteSnapRadius = 12.0f;
+        private const float DefaultDetourFactor = 4.0f;
         private const double PurgeRadiusMeters = 30.0;   // rayon d'oubli des traces autour du joueur
         private const double LegPickRadiusMeters = 40.0; // au-delà, on considère qu'aucun tronçon n'est visé
         private const int PanelWidth = 260;
@@ -78,6 +79,7 @@ namespace GW2_NodeTracker
         private SettingEntry<float> _traceMinStep;
         private SettingEntry<float> _traceTeleportThreshold;
         private SettingEntry<float> _routeSnapRadius;
+        private SettingEntry<float> _detourFactor;
         private SettingEntry<string> _tracesFilePath;
         private SettingEntry<string> _routesFilePath;
         #endregion
@@ -276,6 +278,12 @@ namespace GW2_NodeTracker
                 DefaultRouteSnapRadius,
                 () => "Rayon d'accroche node/trace (m)",
                 () => "Distance en dessous de laquelle un point de trace compte comme un passage sur un node. Trop petit, aucun tronçon ne se vérifie ; trop grand, des tronçons se vérifient avec un trajet qui ne passait pas vraiment par le node.");
+
+            _detourFactor = routeSettings.DefineSetting(
+                "DetourFactor",
+                DefaultDetourFactor,
+                () => "Détour maximal accepté (x la ligne droite)",
+                () => "Un trajet plus long que ce multiple de la distance à vol d'oiseau est rejeté comme déambulation. Monte-le quand deux nodes voisins ne sont reliés que par une grotte ou un passage sous l'eau : le vrai chemin peut faire dix fois la ligne droite.");
 
             _tracesFilePath = routeSettings.DefineSetting(
                 "TracesFilePath",
@@ -1190,7 +1198,7 @@ namespace GW2_NodeTracker
                 // calcul de l'ordre ne dépend pas des traces, seule la
                 // géométrie des tronçons en dépend.
                 if (_pathCorrectionEnabled.Value)
-                    RouteBuilder.Refine(route, _traces, _simplifyTolerance.Value, _routeSnapRadius.Value);
+                    RouteBuilder.Refine(route, _traces, _simplifyTolerance.Value, _routeSnapRadius.Value, _detourFactor.Value);
 
                 _routes.Add(route);
                 stops += route.Stops.Count;
@@ -1339,6 +1347,7 @@ namespace GW2_NodeTracker
 
             float epsilon = _simplifyTolerance.Value;
             float snap = _routeSnapRadius.Value;
+            float detour = _detourFactor.Value;
 
             Task.Run(() =>
             {
@@ -1347,7 +1356,7 @@ namespace GW2_NodeTracker
                     int added = 0, refreshed = 0;
                     foreach (var route in _routes.Where(r => r.MapId == mapId).ToList())
                     {
-                        var res = RouteBuilder.Refine(route, _traces, epsilon, snap);
+                        var res = RouteBuilder.Refine(route, _traces, epsilon, snap, detour);
                         added += res.added;
                         refreshed += res.refreshed;
                     }

@@ -288,16 +288,22 @@ namespace GW2_NodeTracker
         /// Retourne null si aucune trace ne couvre le tronçon : le tronçon
         /// reste alors en ligne droite et non vérifié.
         /// </summary>
-        public TraceMatch FindLeg(int mapId, RoutePoint from, RoutePoint to, double snapRadius)
+        public TraceMatch FindLeg(int mapId, RoutePoint from, RoutePoint to,
+                                  double snapRadius, double detourFactor)
         {
-            lock (_sync) { return FindLegLocked(mapId, from, to, snapRadius); }
+            lock (_sync) { return FindLegLocked(mapId, from, to, snapRadius, detourFactor); }
         }
 
-        private TraceMatch FindLegLocked(int mapId, RoutePoint from, RoutePoint to, double snapRadius)
+        private TraceMatch FindLegLocked(int mapId, RoutePoint from, RoutePoint to,
+                                         double snapRadius, double detourFactor)
         {
             if (_points.Count == 0) return null;
 
-            double maxAcceptable = from.DistanceTo(to) * 4.0 + 100.0;
+            // Deux nodes peuvent être voisins à vol d'oiseau et n'être reliés
+            // que par un long détour -- une grotte, un passage sous l'eau. Le
+            // facteur borne ce qu'on accepte comme chemin plutôt que comme
+            // déambulation ; trop bas, ces accès-là ne se vérifient jamais.
+            double maxAcceptable = from.DistanceTo(to) * detourFactor + 100.0;
 
             TraceMatch forward = FindOneWay(mapId, from, to, snapRadius, maxAcceptable);
             TraceMatch backward = FindOneWay(mapId, to, from, snapRadius, maxAcceptable);

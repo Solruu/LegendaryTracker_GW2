@@ -115,7 +115,11 @@ namespace GW2_NodeTracker
         /// </summary>
         public static string BuildPackLua() =>
             "-- Genere par GW2 Node Tracker. Ne pas editer a la main.\n" +
-            "Pack:Require(\"scripts/routes\")\n";
+            "Debug:Print(\"GW2 Node Tracker : chargement du menu de composition...\")\n" +
+            // Le chemin porte l'extension .lua : c'est la forme qu'utilisent
+            // les packs qui fonctionnent, et sans elle le require echoue en
+            // silence.
+            "Pack:Require(\"scripts/routes.lua\")\n";
 
         /// <summary>
         /// Trois cases à cocher dans le menu de Pathing (une par groupe) qui
@@ -142,6 +146,7 @@ namespace GW2_NodeTracker
 
             var sb = new StringBuilder();
             sb.AppendLine("-- Genere par GW2 Node Tracker. Ne pas editer a la main.");
+            sb.AppendLine("Debug:Print(\"GW2 Node Tracker : menu de composition actif.\")");
             sb.AppendLine("local GROUPS = {");
             foreach (string g in groups)
                 sb.AppendLine($"  {{ name = \"{g}\", slug = \"{g.ToLowerInvariant()}\" }},");
