@@ -349,12 +349,20 @@ apply()");
                     // defaulttoggle=1 : « Chemin parcouru » n'existe qu'au
                     // premier tronçon corrigé ; si elle naissait décochée, le
                     // tronçon disparaîtrait au moment même où il est corrigé.
+                    // Les trois visibilites sont explicites : un trail n'est
+                    // dessine sur la carte et la minicarte que si on le
+                    // demande. Sans elles, la route n'existe qu'en 3D et le
+                    // menu laisse croire qu'elle est affichee partout.
+                    const string vis = "ingameVisibility=\"1\" mapVisibility=\"1\" minimapVisibility=\"1\"";
+
                     sb.AppendLine("        <MarkerCategory name=\"verifie\" DisplayName=\"Chemin parcouru\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{comp.Color}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{comp.Color}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" " +
+                                  $"{vis} fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("        <MarkerCategory name=\"direct\" DisplayName=\"Ligne droite (non vérifiée)\" " +
                                   $"texture=\"{TrailTexture.PackPath}\" " +
-                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" fadeNear=\"3000\" fadeFar=\"8000\"/>");
+                                  $"color=\"{UnverifiedTrailColor}\" animSpeed=\"1\" trailScale=\"1\" defaulttoggle=\"1\" " +
+                                  $"{vis} fadeNear=\"3000\" fadeFar=\"8000\"/>");
                     sb.AppendLine("      </MarkerCategory>");
                 }
 
