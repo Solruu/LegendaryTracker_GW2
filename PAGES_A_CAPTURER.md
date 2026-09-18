@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v301.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v302.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -47,7 +47,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 |---|---:|
 | `Volatile Magic` | 2 |
 
-## 3 — 23 composants sans apiId ni page
+## 3 — 24 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -77,6 +77,7 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
+| `Vial of Awakened Blood` |
 
 ## 4 — 28 collections incomplètes — RIEN À CAPTURER
 

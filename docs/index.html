@@ -3718,7 +3718,8 @@ const SOURCES_DB = {
       "name": "Inscribed Shard",
       "apiId": 87645,
       "needed_for": [
-        "gift_of_crystalline_magic"
+        "gift_of_crystalline_magic",
+        "lacquered_banner_pole"
       ],
       "farmable": true,
       "sources": [
@@ -3741,7 +3742,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_crystalline_magic": 100
+        "gift_of_crystalline_magic": 100,
+        "lacquered_banner_pole": 100
       },
       "kind": "acquire",
       "cadence": {
@@ -16707,9 +16709,9 @@ const SOURCES_DB = {
       "qty": {
         "banner_of_the_commander": 1
       },
-      "verified": true,
-      "checked": "2026-08-27",
-      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+      "verified": "tableau vendeur lu le 18/09/2026",
+      "checked": "2026-09-18",
+      "ref": "tableau vendeur de sa page (Lady Camilla, Domaine de Kourna) : 1 Vial of Awakened Blood + 10 Ancient Wood Log + 10 Glob of Ectoplasm + 100 Inscribed Shard",
       "apiId": 87668
     },
     "banner_pennon": {
@@ -22735,6 +22737,53 @@ const SOURCES_DB = {
       "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
       "checked": "2026-09-18",
       "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur"
+    },
+    "vial_of_awakened_blood": {
+      "name": "Vial of Awakened Blood",
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "lacquered_banner_pole"
+      ],
+      "qty": {
+        "lacquered_banner_pole": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Page non capturée — seule son exigence pour la hampe laquée est sourcée.",
+            "en": "Page not captured — only its requirement for the Lacquered Banner Pole is sourced."
+          }
+        }
+      ],
+      "ref": "tableau vendeur de Lacquered Banner Pole (Lady Camilla, Domaine de Kourna)",
+      "checked": "2026-09-18",
+      "verified": "exigence sourcee, provenance inconnue"
+    },
+    "ancient_wood_log": {
+      "name": "Ancient Wood Log",
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "lacquered_banner_pole"
+      ],
+      "qty": {
+        "lacquered_banner_pole": 10
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Page non capturée — seule son exigence pour la hampe laquée est sourcée.",
+            "en": "Page not captured — only its requirement for the Lacquered Banner Pole is sourced."
+          }
+        }
+      ],
+      "ref": "tableau vendeur de Lacquered Banner Pole (Lady Camilla, Domaine de Kourna)",
+      "checked": "2026-09-18",
+      "verified": "exigence sourcee, provenance inconnue",
+      "apiId": 19725
     }
   },
   "enchaînements_recommandés": {
@@ -62821,7 +62870,7 @@ const SOURCES_DB = {
                 "en": "Hint: Complete the The Convergence of Sorrow I: Elegy achievement, and then speak with Amira"
               },
               "how_verified": true,
-              "how_ref": "wiki, tableau « Collection items » — ressources/wiki/visions_of_jahai.html",
+              "how_ref": "page de l'objet (apiId 91082) : achete 80 pieces de cuivre chez Amira, Refuge du Soleil, apres The Convergence of Sorrow I: Elegy",
               "how_jsx": {
                 "fr": "Terminer le succès « The Convergence of Sorrow I: Elegy », puis parler à Amira. 💡 Ce succès est déjà suivi séparément dans le tracker.",
                 "en": "Complete 'The Convergence of Sorrow I: Elegy', then speak with Amira. 💡 That achievement is already tracked separately here."
@@ -72097,7 +72146,7 @@ const LEGENDARIES = {
         aside: { fr: "Autant que le minerai : 10 par lingot de kralkatite. Récolte sur les Brandstones, instance personnelle comprise.", en: "As much as the ore: 10 per Kralkatite Ingot. Harvested from Brandstones, personal instance included." } },
       { id: "branded_mass", name: "Branded Mass", required: 460, icon: "BM", apiId: 89537, mapNote: "Thunderhead Peaks",
         aside: { fr: "360 pour les six armes de sang de dragon (60 chacune), 100 pour le Gift of Ephemeral Magic.", en: "360 for the six Dragonsblood weapons (60 each), 100 for the Gift of Ephemeral Magic." } },
-      { id: "inscribed_shard", name: "Inscribed Shard", required: 100, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna" },
+      { id: "inscribed_shard", name: "Inscribed Shard", required: 200, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna" },
       { id: "difluorite", name: "Difluorite Crystal", required: 100, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },
       { id: "mistonium", name: "Lump of Mistonium", required: 100, icon: "LM", apiId: 88955, mapNote: "Jahai Bluffs" },
       { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },

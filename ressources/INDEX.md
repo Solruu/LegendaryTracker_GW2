@@ -898,6 +898,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `gift_of_aurenes_weight.html` | Gift of Aurene's Weight | article complet | 2026-09-18 |
 | `gift_of_aurenes_wing.html` | Gift of Aurene's Wing | article complet | 2026-09-18 |
 | `gift_of_aurenes_wisdom.html` | Gift of Aurene's Wisdom | article complet | 2026-09-18 |
+| `diviners_mist_shard_shoulders.html` | Diviner's Mist Shard Shoulders | article complet | 2026-09-18 |
+| `elegy_mosaic.html` | Elegy Mosaic | article complet | 2026-09-18 |
+| `mist_shard_armor.html` | Mist Shard armor | article complet | 2026-09-18 |
+| `vision_of_equipment_elegy_armor.html` | Vision of Equipment: Elegy Armor | article complet | 2026-09-18 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

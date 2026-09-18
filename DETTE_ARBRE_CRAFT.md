@@ -1291,3 +1291,59 @@ ectoplasmes et les pieces mystiques, qui relevent du grand total et pas de la
 bande de monnaies. Restreint aux vraies monnaies de carte ou d'extension, avec un
 plancher a 100 : 167 entrees sur 37 legendaires, dont 33 sans bloc propre. D'ou
 ces quatre-la seulement, et le reste au backlog.
+
+## X — 18/09/2026 : les 200 ressources de Kourna trouvees, le cout retroactif bloque
+
+Six captures integrees et indexees. Deux remplacent des pages deja au depot
+(`lacquered_banner_pole`, `the_convergence_of_sorrow_i_elegy`), quatre sont
+nouvelles.
+
+**Tes « 200 ressources de carte pour Kourna » existent, et les voici.** La hampe
+laquee ne se fabrique pas : elle s'ACHETE chez Lady Camilla, au Domaine de
+Kourna, contre 1 Vial of Awakened Blood, 10 Ancient Wood Log, 10 Globes
+d'ectoplasme et **100 Inscribed Shard**. Le fanion en demande vraisemblablement
+autant — sa page manque encore. Chaine posee, et le total d'eclats graves de
+Vision passe de 100 a **200**, exactement ton chiffre.
+
+L'audit a arrete au passage un apiId invente : j'avais ecrit 19726 pour l'Ancient
+Wood Log, le referentiel donne 19725. Deux regles ont crie en meme temps, celle
+du referentiel et celle de la capture.
+
+**L'etape Elegy Armor de Jahai ne coute aucun materiau** : l'objet s'achete 80
+pieces de cuivre chez Amira, au Refuge du Soleil, une fois la collection The
+Convergence of Sorrow I: Elegy terminee. Le cout est la collection, pas la
+matiere. Reference posee sur l'etape.
+
+**L'armure Mist Shard de Chute draconique non plus, ou presque** : un set entier
+se gagne en recompense de six succes. Les pieces supplementaires coutent 25
+Mistborn Mote chacune, mais l'etape ne demande qu'un poids de rang 1, donc rien
+a farmer si les succes sont faits.
+
+### Le cout retroactif ne rentre pas dans la structure actuelle
+
+Ta demande — qu'un cout disparaisse quand son etape est validee — est la bonne,
+et le mecanisme `qty_extras` semblait fait pour elle. Il ne l'est pas, pour deux
+raisons lues dans le moteur :
+
+1. **Il n'AJOUTE que.** `add += x["amount"]` tant que l'etape n'est pas faite. Il
+   n'y a pas de decompte.
+2. **Il ne s'applique qu'aux cles a plat.** « Il ne s'ajoute QUE la ou le
+   composant porte une cle a plat pour la cible » — or le kralkatite arrive par
+   la cascade, minerai → lingot → armes Astral → Vision. Un surcout ne peut pas
+   le toucher.
+
+Pour que tes six armes Astral fassent tomber les 3 000 minerais et les 3 000
+poudres, il faudrait recopier toute la branche a plat sur Vision — donc detruire
+le palier `astral_weapons` pose en section U et remettre une table parallele.
+C'est exactement ce que la regle du projet interdit.
+
+**La voie propre existe et tient en une phrase** : une etape de collection qui
+pointe vers un composant, et qui est validee, satisfait ce composant — sa
+quantite tombe a zero, et toute sa sous-chaine avec elle. La donnee est deja la,
+c'est le champ `component` pose en section U sur les quatre etapes « Vision of
+Equipment ». La regle serait generale, pas propre a Vision, et vaudrait pour
+toute etape reliee a un composant.
+
+Ce n'est pas une insertion : c'est une regle de calcul nouvelle, a poser dans les
+deux moteurs et a couvrir par le test de conformite, et elle deplace des nombres
+affiches. Elle attend ton feu vert.

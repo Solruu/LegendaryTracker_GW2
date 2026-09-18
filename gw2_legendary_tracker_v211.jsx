@@ -939,7 +939,7 @@ const LEGENDARIES = {
         aside: { fr: "Autant que le minerai : 10 par lingot de kralkatite. Récolte sur les Brandstones, instance personnelle comprise.", en: "As much as the ore: 10 per Kralkatite Ingot. Harvested from Brandstones, personal instance included." } },
       { id: "branded_mass", name: "Branded Mass", required: 460, icon: "BM", apiId: 89537, mapNote: "Thunderhead Peaks",
         aside: { fr: "360 pour les six armes de sang de dragon (60 chacune), 100 pour le Gift of Ephemeral Magic.", en: "360 for the six Dragonsblood weapons (60 each), 100 for the Gift of Ephemeral Magic." } },
-      { id: "inscribed_shard", name: "Inscribed Shard", required: 100, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna" },
+      { id: "inscribed_shard", name: "Inscribed Shard", required: 200, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna" },
       { id: "difluorite", name: "Difluorite Crystal", required: 100, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },
       { id: "mistonium", name: "Lump of Mistonium", required: 100, icon: "LM", apiId: 88955, mapNote: "Jahai Bluffs" },
       { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },
