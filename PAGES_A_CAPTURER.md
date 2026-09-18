@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v298.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v299.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
 pages en URLs brutes, une par ligne, pour l'automatisation.
 
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 7 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,6 +17,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Astral Weapons` | 1 |
 | `Augur's Stone` | 1 |
 | `Bloodstone Shard` | 1 |
 | `Fractalline Spark` | 1 |
@@ -46,13 +47,14 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 |---|---:|
 | `Volatile Magic` | 2 |
 
-## 3 — 22 composants sans apiId ni page
+## 3 — 23 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Astral Weapons` |
 | `Deldrimor Steel Axe Blade` |
 | `Deldrimor Steel Dagger Blade` |
 | `Deldrimor Steel Greatsword Blade` |

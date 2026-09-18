@@ -14012,10 +14012,10 @@ const SOURCES_DB = {
       "kind": "intermediate",
       "farmable": true,
       "qty": {
-        "vision": 300
+        "astral_weapons": 50
       },
       "needed_for": [
-        "vision"
+        "astral_weapons"
       ],
       "recipe": {
         "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur) : 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 Globe d'ectoplasme. 50 lingots par arme Astral, 6 armes pour l'étape « Vision of Equipment: Astral Weapons » — soit 300 lingots.",
@@ -22702,6 +22702,24 @@ const SOURCES_DB = {
       "ref": "boites Recipe des seize Poems du lot 20",
       "checked": "2026-09-18",
       "verified": "exigence sourcee, cout de fabrication inconnu"
+    },
+    "astral_weapons": {
+      "name": "Astral Weapons",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "vision"
+      ],
+      "qty": {
+        "vision": 6
+      },
+      "note": {
+        "fr": "Six armes Astral différentes, exigées par l'étape « Vision of Equipment » de Visions of Istan. L'objet de collection s'achète ensuite chez Yasna, une fois les six terminées. 50 lingots de kralkatite par arme.",
+        "en": "Six different Astral weapons, required by the 'Vision of Equipment' step of Visions of Istan. The collection item is then bought from Yasna once all six are done. 50 Kralkatite Ingots per weapon."
+      },
+      "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
+      "checked": "2026-09-18",
+      "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur"
     }
   },
   "enchaînements_recommandés": {
@@ -62518,7 +62536,8 @@ const SOURCES_DB = {
                 "en": "⏳ Vision's REAL wall - eight times the Dragonsblood branch. 6 Astral or Stellar weapons. Prerequisite: 'Brandstone Research' below (7-day timegate). Per weapon: 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 orichalcum components. One ingot = 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 ectoplasm, so 500 + 500 per weapon: 3,000 ore, 3,000 powder and 300 ectoplasm for all 6. 💡 The 3 heart vendors give 75 ore per character per day, free: the only workable lever, and it scales with alts."
               },
               "how_fr_missing": true,
-              "wiki": "Vision_of_Equipment:_Astral_Weapons"
+              "wiki": "Vision_of_Equipment:_Astral_Weapons",
+              "component": "astral_weapons"
             },
             {
               "bit": 6,
@@ -62932,7 +62951,8 @@ const SOURCES_DB = {
                 "en": "Acquire the Reinforced Olmakhan Bandolier. ⚠ Retroactive credit is not guaranteed: if the step does not tick by itself once you have it, buy the 'Vision of Equipment: Olmakhan Bandolier' item from Ethall."
               },
               "how_fr_missing": true,
-              "wiki": "Vision_of_Equipment:_Olmakhan_Bandolier"
+              "wiki": "Vision_of_Equipment:_Olmakhan_Bandolier",
+              "component": "olmakhan_bandolier_chain"
             },
             {
               "bit": 6,
@@ -63071,7 +63091,8 @@ const SOURCES_DB = {
                 "en": "Craft six different Dragonsblood weapons, then buy the collection item from Forge Master Hilina. ⚠ By far the most expensive step in all of Vision: 360 Branded Mass and 18 Exquisite Serpentite Jewels. Add the 300 Branded Mass already required by the Gift of Ephemeral Magic — 660 in total, which the Grand Total tab now shows."
               },
               "how_fr_missing": true,
-              "wiki": "Vision_of_Equipment:_Dragonsblood_Weapons"
+              "wiki": "Vision_of_Equipment:_Dragonsblood_Weapons",
+              "component": "dragonsblood_weapons"
             },
             {
               "bit": 6,
@@ -73307,6 +73328,41 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
 // du nom : il est lu dans la capture de la page de collection, ou chaque case
 // porte le lien de son objet. Pas de page, pas de lien — un lien mort serait
 // pire que pas de lien du tout.
+// Ce que coute, en materiaux, l'etape d'une collection qui pointe vers un
+// composant. Une etape « Vision of Equipment » dit « apres avoir fabrique six
+// armes Astral » et s'arrete la : les 300 lingots de kralkatite, donc 3 000
+// minerais et 3 000 poudres de quartz rose, se decouvrent en jeu. Au moins une
+// etape par carte de LW4 est dans ce cas.
+//
+// La facture n'est PAS recopiee ici : on relit les composants dont une cle
+// `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
+// a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
+// chaine change, cette ligne change avec elle.
+function FactureEtape({ cid, NX }) {
+  if (!cid) return null;
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const lignes = [];
+  for (const [autre, comp] of Object.entries(cc)) {
+    const n = comp?.qty?.[cid];
+    if (typeof n === "number" && n > 0) {
+      lignes.push({ id: autre, n, nom: comp.name });
+    }
+  }
+  if (!lignes.length) return null;
+  lignes.sort((a, b) => b.n - a.n);
+  return (
+    <div style={{ margin: "1px 0 3px 18px", fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,191,36,0.55)", lineHeight: 1.45 }}>
+      {NX({ fr: "Coût : ", en: "Cost: " })}
+      {lignes.map((l, k) => (
+        <span key={l.id}>
+          {k > 0 ? " · " : ""}
+          {l.n.toLocaleString()} {NX(l.nom) ?? l.id}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function NomEtape({ item, NX }) {
   const nom = NX(item.name);
   if (!item.wiki) return nom;
@@ -78087,8 +78143,13 @@ function GW2LegendaryTracker() {
                               ?? csrc?.tip
                               ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
-                            return btip ? (
-                              <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
+                            return (btip || cid) ? (
+                              <>
+                                {btip && (
+                                  <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
+                                )}
+                                <FactureEtape cid={cid} NX={NX} />
+                              </>
                             ) : null;
                           })()}
                         </div>

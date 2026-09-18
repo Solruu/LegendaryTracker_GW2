@@ -13232,10 +13232,10 @@
    "kind": "intermediate",
    "farmable": true,
    "qty": {
-    "vision": 300
+    "astral_weapons": 50
    },
    "needed_for": [
-    "vision"
+    "astral_weapons"
    ],
    "recipe": {
     "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur) : 10 Kralkatite Ore + 10 Poudre de quartz rose + 1 Globe d'ectoplasme. 50 lingots par arme Astral, 6 armes pour l'étape « Vision of Equipment: Astral Weapons » — soit 300 lingots.",
@@ -21922,6 +21922,24 @@
    "ref": "boites Recipe des seize Poems du lot 20",
    "checked": "2026-09-18",
    "verified": "exigence sourcee, cout de fabrication inconnu"
+  },
+  "astral_weapons": {
+   "name": "Astral Weapons",
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "vision"
+   ],
+   "qty": {
+    "vision": 6
+   },
+   "note": {
+    "fr": "Six armes Astral différentes, exigées par l'étape « Vision of Equipment » de Visions of Istan. L'objet de collection s'achète ensuite chez Yasna, une fois les six terminées. 50 lingots de kralkatite par arme.",
+    "en": "Six different Astral weapons, required by the 'Vision of Equipment' step of Visions of Istan. The collection item is then bought from Yasna once all six are done. 50 Kralkatite Ingots per weapon."
+   },
+   "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
+   "checked": "2026-09-18",
+   "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur"
   }
  },
  "enchaînements_recommandés": {
@@ -61738,7 +61756,8 @@
         "en": "⏳ Vision's REAL wall - eight times the Dragonsblood branch. 6 Astral or Stellar weapons. Prerequisite: 'Brandstone Research' below (7-day timegate). Per weapon: 1 Inscription of the Spearmarshal + 50 Kralkatite Ingots + 2 orichalcum components. One ingot = 10 Kralkatite Ore + 10 Powdered Rose Quartz + 1 ectoplasm, so 500 + 500 per weapon: 3,000 ore, 3,000 powder and 300 ectoplasm for all 6. 💡 The 3 heart vendors give 75 ore per character per day, free: the only workable lever, and it scales with alts."
        },
        "how_fr_missing": true,
-       "wiki": "Vision_of_Equipment:_Astral_Weapons"
+       "wiki": "Vision_of_Equipment:_Astral_Weapons",
+       "component": "astral_weapons"
       },
       {
        "bit": 6,
@@ -62152,7 +62171,8 @@
         "en": "Acquire the Reinforced Olmakhan Bandolier. ⚠ Retroactive credit is not guaranteed: if the step does not tick by itself once you have it, buy the 'Vision of Equipment: Olmakhan Bandolier' item from Ethall."
        },
        "how_fr_missing": true,
-       "wiki": "Vision_of_Equipment:_Olmakhan_Bandolier"
+       "wiki": "Vision_of_Equipment:_Olmakhan_Bandolier",
+       "component": "olmakhan_bandolier_chain"
       },
       {
        "bit": 6,
@@ -62291,7 +62311,8 @@
         "en": "Craft six different Dragonsblood weapons, then buy the collection item from Forge Master Hilina. ⚠ By far the most expensive step in all of Vision: 360 Branded Mass and 18 Exquisite Serpentite Jewels. Add the 300 Branded Mass already required by the Gift of Ephemeral Magic — 660 in total, which the Grand Total tab now shows."
        },
        "how_fr_missing": true,
-       "wiki": "Vision_of_Equipment:_Dragonsblood_Weapons"
+       "wiki": "Vision_of_Equipment:_Dragonsblood_Weapons",
+       "component": "dragonsblood_weapons"
       },
       {
        "bit": 6,

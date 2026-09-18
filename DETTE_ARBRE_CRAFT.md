@@ -1144,3 +1144,46 @@ Des 267 divergences nom/page restantes, l'echantillon lu est legitime :
 
 Cote JSX, un seul composant `NomEtape` sert les trois endroits qui affichent un
 nom d'etape. Sans lien, il rend le nom tel quel.
+
+## U — 18/09/2026 : Vision — les couts etaient la, l'etape ne les disait pas
+
+Ton impression de « decouvrir » ces couts est exacte, mais pas pour la raison
+attendue : **ils etaient deja dans l'arbre**. Vision compte 3 100 minerais de
+kralkatite, 3 000 poudres de quartz rose, 460 masses marquees, 18 joyaux de
+serpentite, 300 mosaiques d'elegie. Rien ne manquait au grand total.
+
+Ce qui manquait, c'est le LIEN entre l'etape et son cout. Une etape « Vision of
+Equipment » affichait « Purchased from Yasna for 5 after crafting 6 Astral
+weapons » et s'arretait la. Les 300 lingots derriere — donc 3 000 minerais et
+3 000 poudres — vivaient dans le grand total, sans rien pour dire d'ou ils
+venaient. On les decouvre donc en jeu, ce qui est exactement ce qu'un tracker
+doit eviter.
+
+Le champ existait pourtant : `component` sur une etape, deja pose sur la seule
+Banner of the Commander de Kourna. Trois autres le recoivent — Istan, Ventesable,
+Chef-Tonnerre.
+
+**Les armes Astral n'avaient aucun palier.** Leur cout pendait en direct sur
+Vision (300 lingots), sans porteur. Un composant `astral_weapons` est cree sur
+le modele exact de son jumeau `dragonsblood_weapons` de Chef-Tonnerre, et les
+lingots s'y accrochent : 50 par arme, six armes. **Totaux inchanges** — 3 100
+minerais, 3 000 poudres, 300 lingots avant comme apres. Le cout change de
+porteur, pas de valeur.
+
+Cote JSX, `FactureEtape` lit la facture DANS la chaine : les composants dont une
+cle `qty` vise celui de l'etape. **Un cran, pas de recursion** — la cascade a son
+moteur, et ce projet a deja paye cher ses reimplementations a la main. Rien
+n'est recopie : le jour ou la chaine change, la ligne change avec elle.
+
+### Ce qui reste a capturer sur Vision
+
+Deux etapes « Vision of Equipment » sur six n'ont aucun palier, et aucune page
+au depot :
+
+- **Jahai — Elegy Armor.** L'etape renvoie a la collection The Convergence of
+  Sorrow I: Elegy, dont le cout en mosaiques d'elegie n'est rattache a rien.
+- **Chute draconique — Mist Shard armor de rang 1.** Absent de l'arbre.
+
+Et une troisieme zone d'ombre : les 200 ressources de carte que tu cites pour
+Kourna n'apparaissent nulle part dans la chaine de la Banner of the Commander,
+qui ne montre que 25 lingots d'orichalque, 1 hampe laquee et 1 fanion.

@@ -2191,6 +2191,41 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel }) {
 // du nom : il est lu dans la capture de la page de collection, ou chaque case
 // porte le lien de son objet. Pas de page, pas de lien — un lien mort serait
 // pire que pas de lien du tout.
+// Ce que coute, en materiaux, l'etape d'une collection qui pointe vers un
+// composant. Une etape « Vision of Equipment » dit « apres avoir fabrique six
+// armes Astral » et s'arrete la : les 300 lingots de kralkatite, donc 3 000
+// minerais et 3 000 poudres de quartz rose, se decouvrent en jeu. Au moins une
+// etape par carte de LW4 est dans ce cas.
+//
+// La facture n'est PAS recopiee ici : on relit les composants dont une cle
+// `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
+// a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
+// chaine change, cette ligne change avec elle.
+function FactureEtape({ cid, NX }) {
+  if (!cid) return null;
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const lignes = [];
+  for (const [autre, comp] of Object.entries(cc)) {
+    const n = comp?.qty?.[cid];
+    if (typeof n === "number" && n > 0) {
+      lignes.push({ id: autre, n, nom: comp.name });
+    }
+  }
+  if (!lignes.length) return null;
+  lignes.sort((a, b) => b.n - a.n);
+  return (
+    <div style={{ margin: "1px 0 3px 18px", fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,191,36,0.55)", lineHeight: 1.45 }}>
+      {NX({ fr: "Coût : ", en: "Cost: " })}
+      {lignes.map((l, k) => (
+        <span key={l.id}>
+          {k > 0 ? " · " : ""}
+          {l.n.toLocaleString()} {NX(l.nom) ?? l.id}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function NomEtape({ item, NX }) {
   const nom = NX(item.name);
   if (!item.wiki) return nom;
@@ -6971,8 +7006,13 @@ export default function GW2LegendaryTracker() {
                               ?? csrc?.tip
                               ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
-                            return btip ? (
-                              <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
+                            return (btip || cid) ? (
+                              <>
+                                {btip && (
+                                  <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
+                                )}
+                                <FactureEtape cid={cid} NX={NX} />
+                              </>
                             ) : null;
                           })()}
                         </div>
