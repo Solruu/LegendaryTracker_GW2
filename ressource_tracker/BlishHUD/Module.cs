@@ -38,6 +38,8 @@ namespace GW2_NodeTracker
         private const float DefaultTraceMinStep = 3.0f;
         private const float DefaultTeleportThreshold = 50.0f;
         private const float DefaultRouteSnapRadius = 12.0f;
+        private const double PurgeRadiusMeters = 30.0;   // rayon d'oubli des traces autour du joueur
+        private const double LegPickRadiusMeters = 40.0; // au-delà, on considère qu'aucun tronçon n'est visé
         private const int PanelWidth = 260;
         private const int PanelMaxHeight = 600;
         private const int ScrollbarWidth = 20;
@@ -70,6 +72,8 @@ namespace GW2_NodeTracker
         private SettingEntry<KeyBinding> _buildRouteKey;
         private SettingEntry<KeyBinding> _refinePathKey;
         private SettingEntry<KeyBinding> _togglePathCorrectionKey;
+        private SettingEntry<KeyBinding> _invalidateLegKey;
+        private SettingEntry<KeyBinding> _purgeTracesKey;
         private SettingEntry<float> _simplifyTolerance;
         private SettingEntry<float> _traceMinStep;
         private SettingEntry<float> _traceTeleportThreshold;
@@ -230,6 +234,18 @@ namespace GW2_NodeTracker
                 () => "Appliquer les chemins parcourus",
                 () => "Force tout de suite la reprise des tronçons par le trajet réellement parcouru, sans attendre la passe automatique. Ne touche jamais à l'ordre de passage, contrairement à la construction.");
 
+            _invalidateLegKey = routeSettings.DefineSetting(
+                "InvalidateLegKey",
+                new KeyBinding(Keys.I),
+                () => "Rejeter le tronçon où je me tiens",
+                () => "Remet en ligne droite le tronçon le plus proche et refuse la trace qui l'avait produit. Seul un passage PLUS RÉCENT pourra le revérifier : refais le trajet correctement juste après.");
+
+            _purgeTracesKey = routeSettings.DefineSetting(
+                "PurgeTracesKey",
+                new KeyBinding(Keys.K),
+                () => "Oublier les traces autour de moi",
+                () => "Supprime les points enregistrés dans un rayon de 30 m. À utiliser quand un passage a été fait n'importe comment (chute, skyscale, détour) : le reste de l'historique n'est pas touché.");
+
             _simplifyTolerance = routeSettings.DefineSetting(
                 "SimplifyToleranceMeters",
                 DefaultSimplifyTolerance,
@@ -298,6 +314,12 @@ namespace GW2_NodeTracker
 
             _togglePathCorrectionKey.Value.Enabled = true;
             _togglePathCorrectionKey.Value.Activated += OnTogglePathCorrectionKeyActivated;
+
+            _invalidateLegKey.Value.Enabled = true;
+            _invalidateLegKey.Value.Activated += OnInvalidateLegKeyActivated;
+
+            _purgeTracesKey.Value.Enabled = true;
+            _purgeTracesKey.Value.Activated += OnPurgeTracesKeyActivated;
         }
 
         protected override async Task LoadAsync()
@@ -413,6 +435,10 @@ namespace GW2_NodeTracker
                 _refinePathKey.Value.Activated -= OnRefinePathKeyActivated;
             if (_togglePathCorrectionKey?.Value != null)
                 _togglePathCorrectionKey.Value.Activated -= OnTogglePathCorrectionKeyActivated;
+            if (_invalidateLegKey?.Value != null)
+                _invalidateLegKey.Value.Activated -= OnInvalidateLegKeyActivated;
+            if (_purgeTracesKey?.Value != null)
+                _purgeTracesKey.Value.Activated -= OnPurgeTracesKeyActivated;
 
             // Dernière écriture avant déchargement -- sinon jusqu'à 30 s de
             // déplacement enregistré seraient perdues.
@@ -1141,6 +1167,81 @@ namespace GW2_NodeTracker
 
             ShowNotification(
                 $"🧭 {built.Count} composition(s), {stops} arrets -- {verified}/{legs} troncons verifies");
+        }
+
+        /// <summary>
+        /// Position du joueur dans la convention de stockage (y = altitude).
+        /// </summary>
+        private static RoutePoint PlayerPoint()
+        {
+            Vector3 pos = GameService.Gw2Mumble.PlayerCharacter.Position;
+            return new RoutePoint(pos.X, pos.Z, pos.Y);
+        }
+
+        /// <summary>
+        /// Rejette le tronçon sur lequel le joueur se tient.
+        ///
+        /// C'est la réponse au « comment je corrige une donnée fausse » : on
+        /// ne touche pas au JSON, on se place sur le tronçon fautif et on
+        /// appuie. Aucune coordonnée à lire, aucun identifiant à retrouver.
+        /// </summary>
+        private void OnInvalidateLegKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+            var me = PlayerPoint();
+
+            Route bestRoute = null;
+            int bestLeg = -1;
+            double bestDist = LegPickRadiusMeters;
+
+            foreach (var route in _routes.Where(r => r.MapId == mapId))
+            {
+                for (int i = 0; i < route.Legs.Count; i++)
+                {
+                    if (!route.Legs[i].Verified) continue; // rien à rejeter sur une ligne droite
+
+                    double d = RouteBuilder.DistanceToLeg(route.Legs[i], me);
+                    if (d < bestDist) { bestDist = d; bestRoute = route; bestLeg = i; }
+                }
+            }
+
+            if (bestRoute == null)
+            {
+                ShowNotification("Aucun troncon verifie a moins de 40 m.");
+                return;
+            }
+
+            RouteBuilder.Invalidate(bestRoute, bestLeg);
+            SaveRoutes();
+            TriggerTacoRegeneration();
+
+            ShowNotification($"🧭 Troncon rejete sur {bestRoute.Label()} ({bestDist:0} m) -- refais le trajet pour le revalider");
+        }
+
+        /// <summary>
+        /// Oublie les traces autour du joueur. Le pendant du rejet de
+        /// tronçon : l'un annule une conclusion, l'autre efface la preuve qui
+        /// y menait.
+        /// </summary>
+        private void OnPurgeTracesKeyActivated(object sender, EventArgs e)
+        {
+            if (!CanAct()) return;
+
+            int mapId = GameService.Gw2Mumble.CurrentMap.Id;
+            int removed = _traces.PurgeNear(mapId, PlayerPoint(), PurgeRadiusMeters);
+
+            if (removed == 0)
+            {
+                ShowNotification("Aucun point de trace a moins de 30 m.");
+                return;
+            }
+
+            string path = CleanPath(_tracesFilePath.Value);
+            Task.Run(() => _traces.Save(path));
+
+            ShowNotification($"🧭 {removed} point(s) de trace oublie(s) dans un rayon de 30 m");
         }
 
         /// <summary>

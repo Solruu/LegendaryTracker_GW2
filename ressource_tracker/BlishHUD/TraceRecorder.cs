@@ -148,6 +148,61 @@ namespace GW2_NodeTracker
             return true;
         }
 
+        /// <summary>
+        /// Oublie les points enregistrés autour d'un endroit de la map.
+        /// Retourne le nombre de points supprimés.
+        ///
+        /// Les morceaux de segment qui subsistent de part et d'autre du trou
+        /// reçoivent des identifiants distincts : sans ça, le point d'avant et
+        /// le point d'après se retrouveraient consécutifs dans le même
+        /// segment, et la recherche les relierait comme si le trajet avait été
+        /// parcouru d'un trait.
+        /// </summary>
+        public int PurgeNear(int mapId, RoutePoint center, double radius)
+        {
+            lock (_sync)
+            {
+                var kept = new List<TracePoint>();
+                int removed = 0;
+                int nextSegment = _points.Count == 0 ? 0 : _points.Max(p => p.Segment);
+
+                foreach (var group in _points.GroupBy(p => p.Segment))
+                {
+                    bool cut = false;
+                    int currentSegment = group.Key;
+
+                    foreach (var p in group)
+                    {
+                        bool drop = p.MapId == mapId
+                                    && p.DistanceTo(center.X, center.Y, center.Z) <= radius;
+
+                        if (drop) { removed++; cut = true; continue; }
+
+                        if (cut)
+                        {
+                            currentSegment = ++nextSegment;
+                            cut = false;
+                        }
+
+                        p.Segment = currentSegment;
+                        kept.Add(p);
+                    }
+                }
+
+                if (removed > 0)
+                {
+                    _points.Clear();
+                    _points.AddRange(kept.OrderBy(p => p.RecordedAt, StringComparer.Ordinal));
+                    _currentSegment = Math.Max(_currentSegment, nextSegment);
+                    _last = null;          // on ne raccroche pas au trou
+                    _dirty = true;
+                    _indexDirty = true;
+                }
+
+                return removed;
+            }
+        }
+
         // -------------------------------------------------------------
         // Persistance
         // -------------------------------------------------------------

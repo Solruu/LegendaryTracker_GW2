@@ -306,7 +306,10 @@ namespace GW2_NodeTracker
                 var match = traces.FindLeg(route.MapId, from, to, snapRadius);
                 if (match == null) continue;
 
-                if (leg.Verified && !string.IsNullOrEmpty(leg.TraceAt)
+                // Le filigrane s'applique que le tronçon soit vérifié ou
+                // rejeté : dans les deux cas, seule une trace plus récente
+                // peut le réécrire.
+                if (!string.IsNullOrEmpty(leg.TraceAt)
                     && string.CompareOrdinal(match.RecordedAt ?? "", leg.TraceAt) <= 0)
                     continue; // rien de plus récent
 
@@ -381,6 +384,46 @@ namespace GW2_NodeTracker
             keep[maxIdx] = true;
             SimplifySegment(pts, first, maxIdx, epsilon, keep);
             SimplifySegment(pts, maxIdx, last, epsilon, keep);
+        }
+
+        /// <summary>
+        /// Distance d'un point à la géométrie d'un tronçon. Sert à désigner
+        /// « le tronçon où je me tiens » sans qu'Antoine ait à lire la moindre
+        /// coordonnée.
+        /// </summary>
+        public static double DistanceToLeg(RouteLeg leg, RoutePoint p)
+        {
+            if (leg == null || leg.Points == null || leg.Points.Count == 0) return double.MaxValue;
+            if (leg.Points.Count == 1) return p.DistanceTo(leg.Points[0]);
+
+            double best = double.MaxValue;
+            for (int i = 0; i + 1 < leg.Points.Count; i++)
+            {
+                double d = PerpendicularDistance(p, leg.Points[i], leg.Points[i + 1]);
+                if (d < best) best = d;
+            }
+            return best;
+        }
+
+        /// <summary>
+        /// Rejette la géométrie d'un tronçon et le remet en ligne droite.
+        ///
+        /// TraceAt est CONSERVÉ comme filigrane : l'affinage ne reprendra ce
+        /// tronçon qu'avec une trace strictement plus récente. Sans ça, la
+        /// passe suivante retrouverait le même mauvais trajet et annulerait le
+        /// rejet dans la minute.
+        /// </summary>
+        public static void Invalidate(Route route, int legIndex)
+        {
+            if (route == null || legIndex < 0 || legIndex >= route.Legs.Count) return;
+
+            var from = route.Stops[legIndex];
+            var to = route.Stops[(legIndex + 1) % route.Stops.Count];
+            var leg = route.Legs[legIndex];
+
+            leg.Verified = false;
+            leg.Mount = null;
+            leg.Points = new List<RoutePoint> { from, to };
         }
 
         /// <summary>Distance 3D d'un point au segment [a, b].</summary>
