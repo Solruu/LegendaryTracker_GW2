@@ -115,7 +115,7 @@ def nom(cid):
 
 import sys as _sys  # noqa: E402
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gw2_moteur_v1 import Modele  # noqa: E402
+from gw2_moteur_v2 import Modele  # noqa: E402
 
 # LA CASCADE ECRITE ICI IGNORAIT `alt_groups`. Le rapport classait donc des
 # ecarts en « deja compte par cascade » sur des totaux qui ne tenaient aucun

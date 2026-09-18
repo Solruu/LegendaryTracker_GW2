@@ -1347,3 +1347,58 @@ toute etape reliee a un composant.
 Ce n'est pas une insertion : c'est une regle de calcul nouvelle, a poser dans les
 deux moteurs et a couvrir par le test de conformite, et elle deplace des nombres
 affiches. Elle attend ton feu vert.
+
+## Y — 18/09/2026 : une etape validee satisfait son composant
+
+La regle proposee en section X est posee, dans les deux moteurs.
+
+**Enonce** : quand une etape de collection pointe vers un composant — champ
+`component` — et que cette etape est cochee, ce composant est fabrique. Sa
+quantite tombe a zero, et toute sa sous-chaine avec elle.
+
+Ce que cela donne sur Vision, etapes « Vision of Equipment » d'Istan et de
+Chef-Tonnerre validees :
+
+| | avant | apres |
+|---|---:|---:|
+| Kralkatite Ore | 3 100 | **100** |
+| Powdered Rose Quartz | 3 000 | **0** |
+| Branded Mass | 460 | **100** |
+| Exquisite Serpentite Jewel | 18 | **0** |
+| Globe d'ectoplasme | 1 017 | 687 |
+
+Les restes ne sont pas des oublis : les 100 minerais du Gift of Crystalline
+Magic et les 100 masses du Gift of Ephemeral Magic ne passent pas par les armes,
+donc ils restent dus. C'est precisement ce qu'on veut lire.
+
+**Pourquoi pas `qty_extras`**, qui semblait fait pour : il n'AJOUTE que
+(`add += x["amount"]`), et seulement la ou le composant porte une cle a plat
+pour la cible. Le kralkatite arrive par la cascade — minerai, lingot, armes
+Astral, Vision — donc aucun surcout ne peut l'atteindre. Le neutraliser par ce
+biais aurait demande de recopier la branche a plat sur Vision, c'est-a-dire de
+reconstruire la table parallele que le palier `astral_weapons` venait de
+supprimer.
+
+**La regle ne concerne pas que Vision.** Le garde-fou, teste en retirant la
+regle du seul cote JSX, a fait tomber le test sur les armes gen1 : leurs etapes
+de collection pointent deja vers `gift_of_mastery` et `gift_of_fortune`. La
+regle les couvre du meme coup, sans rien ajouter aux donnees.
+
+### Le test de conformite ne voyait pas ce genre de regle
+
+Il ne comparait les deux moteurs que sur des collections VIERGES. Deux moteurs
+d'accord sur zero et en desaccord des la premiere case cochee auraient passe.
+Il rejoue desormais tout le jeu de cibles une seconde fois, **toutes les etapes
+portant `component` validees** : 5 114 totaux dans la premiere situation,
+4 548 dans la seconde — le nombre baisse parce que des composants disparaissent,
+ce qui est la preuve que la regle a joue. Aucun ecart dans les deux.
+
+Sept fichiers suivent la version du moteur : `gw2_arbitrages_v7`,
+`gw2_audit_v47`, `gw2_conformite_moteurs_v2`, `gw2_confronte_totaux_v6`,
+`gw2_confronte_v3`, `gw2_deplie_wiki_v12`.
+
+**Un rebut supprime au passage** : `gw2_confronte_totaux_v6.py` etait entre dans
+le depot au commit precedent par ma faute — un reste de la tentative de parseur
+v4 abandonnee en section S. Il importait `gw2_parse_material_list_v4`, qui
+n'existe pas : le fichier ne pouvait pas tourner. Le v6 porte desormais la vraie
+suite du v5.

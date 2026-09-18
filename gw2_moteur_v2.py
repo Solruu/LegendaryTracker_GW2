@@ -239,6 +239,41 @@ class Modele:
                 add += x.get("amount", 0)
         return add
 
+    def _satisfaits(self, cible, faites):
+        """Les composants qu'une etape DEJA VALIDEE rend inutiles.
+
+        Quand une etape de collection pointe vers un composant — champ
+        `component`, pose sur les etapes « Vision of Equipment » — et que cette
+        etape est cochee, ce composant est fabrique : il ne reste rien a
+        farmer, ni lui ni ce qui le compose. Six armes Astral terminees, et les
+        3 000 minerais de kralkatite comme les 3 000 poudres de quartz rose
+        n'ont plus lieu d'etre reclames.
+
+        `qty_extras` ne pouvait pas porter cela : il n'AJOUTE que, et seulement
+        sur les cles a plat, alors que le kralkatite arrive par la cascade —
+        minerai, lingot, armes Astral, Vision. Le neutraliser par un surcout
+        aurait demande de recopier la branche a plat, donc de reconstruire la
+        table parallele que le palier `astral_weapons` venait de supprimer.
+
+        La regle est generale : elle vaut pour toute etape reliee a un
+        composant, sur n'importe quelle cible.
+        """
+        if not faites or cible not in self.legendaires:
+            return frozenset()
+        out = set()
+        for cle, col in (self.legendaires[cible].brut.get("collections")
+                         or {}).items():
+            if not isinstance(col, dict):
+                continue
+            sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
+            entier = bool(sc.get("done"))
+            bits = sc.get("bits") or []
+            for item in col.get("items") or []:
+                cid = isinstance(item, dict) and item.get("component")
+                if cid and (entier or item.get("bit") in bits):
+                    out.add(cid)
+        return frozenset(out)
+
     def totaux(self, cible: str, selection: dict | None = None,
                detail: bool = False, surcouts: bool = False,
                collections_faites: dict | None = None,
@@ -282,8 +317,11 @@ class Modele:
 
         armure = cible in ARMURES
         pw = (poids_par_emplacement or {}).get(cible) or {}
+        satisfaits = self._satisfaits(cible, collections_faites)
         t: dict[str, float] = {}
         for cid, c in self.composants.items():
+            if cid in satisfaits:
+                continue
             q = c.qty
             for suf, mult in SUFFIXES:
                 if suf in ("__per_piece", "__full_set") and not armure:
@@ -302,13 +340,16 @@ class Modele:
         for ch in self.choix.values():
             if cible in ch.cibles:
                 o = ch.retenue(cible, selection)
-                t[o] = t.get(o, 0) + ch.qty
+                if o not in satisfaits:
+                    t[o] = t.get(o, 0) + ch.qty
         # Les apports de la cascade sont REMPLACES a chaque tour, jamais
         # cumules : les additionner ferait grossir un total a chaque passe.
         pose: dict[str, float] = {}
         for _ in range(PROFONDEUR):
             apport: dict[str, float] = {}
             for cid, c in self.composants.items():
+                if cid in satisfaits:
+                    continue
                 for k, v in c.qty.items():
                     if isinstance(v, (int, float)) and not isinstance(v, bool) \
                             and k in self.composants and t.get(k, 0) > 0:
@@ -317,6 +358,8 @@ class Modele:
                 for x in ch.cibles:
                     if x in self.composants and t.get(x, 0):
                         o = ch.retenue(x, selection)
+                        if o in satisfaits:
+                            continue
                         apport[o] = apport.get(o, 0) + ch.qty * t[x]
             bouge = False
             for cid, v in apport.items():

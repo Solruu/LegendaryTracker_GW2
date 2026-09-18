@@ -34,7 +34,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from gw2_moteur_v1 import Modele  # noqa: E402
+from gw2_moteur_v2 import Modele  # noqa: E402
 
 JSX = max(HERE.glob("gw2_legendary_tracker_v*.jsx"),
           key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))
@@ -48,9 +48,50 @@ def decouper(nom: str) -> str:
     return txt[i:j]
 
 
+def situations(m):
+    """Les etats de collections a confronter.
+
+    v2 : la regle « une etape validee satisfait son composant » ne se voit que
+    si on COCHE des etapes. Le test ne comparait que des collections vierges,
+    donc il aurait laisse passer deux moteurs d'accord sur zero et en desaccord
+    des la premiere case cochee. On rejoue donc tout le jeu de cibles une
+    seconde fois, toutes les etapes portant `component` validees.
+    """
+    faites = {}
+    for leg in m.legendaires.values():
+        for cle, col in (leg.brut.get("collections") or {}).items():
+            bits = [it.get("bit") for it in (col.get("items") or [])
+                    if isinstance(it, dict) and it.get("component")
+                    and it.get("bit") is not None]
+            if bits:
+                faites[cle] = {"bits": sorted(bits)}
+    return [("collections vierges", {}),
+            ("etapes reliees a un composant validees", faites)]
+
+
 def main() -> int:
     m = Modele.dernier(HERE)
     sources = json.loads(m.chemin.read_text(encoding="utf-8"))
+    total_compares, total_ecarts = 0, []
+    for nom, faites in situations(m):
+        n, e = une_passe(m, sources, faites)
+        print(f"  {nom} : {n} totaux compares, {len(e)} ecart(s)")
+        total_compares += n
+        total_ecarts += [(nom,) + x for x in e]
+    print(f"moteur Python : {m.chemin.name} | moteur JSX : {JSX.name}")
+    print(f"{len(m.cibles)} cibles, {total_compares} totaux compares")
+    print("surcouts conditionnels : calcules des deux cotes, aucun neutralise")
+    if not total_ecarts:
+        print("AUCUN ECART — les deux moteurs disent le meme nombre partout.")
+        return 0
+    print(f"\nECARTS : {len(total_ecarts)}")
+    for nom, cible, cid, a, b in sorted(total_ecarts,
+                                        key=lambda x: -abs(x[3] - x[4]))[:40]:
+        print(f"   [{nom}] {cible:28} {cid:26} python {a:>10}  js {b:>10}")
+    return 1
+
+
+def une_passe(m, sources, faites) -> tuple:
 
     harnais = """
 const SOURCES_DB = SOURCES;
@@ -66,14 +107,15 @@ const SOURCES_ALIAS = { prismatic: "prismatic_champions_regalia", upgrades: "upg
 %s
 const cibles = CIBLES;
 const out = {};
-for (const c of cibles) out[c] = computeGrandTotal([c], {}).totals;
+for (const c of cibles) out[c] = computeGrandTotal([c], COLLS).totals;
 console.log(JSON.stringify(out));
 """ % (decouper("readArmorWeightBySlot"), decouper("computeGrandTotal"))
 
     script = HERE / ".conformite.mjs"
     script.write_text(
         f"const SOURCES = {json.dumps(sources)};\n"
-        f"const CIBLES = {json.dumps(m.cibles)};\n" + harnais, encoding="utf-8")
+        f"const CIBLES = {json.dumps(m.cibles)};\n"
+        f"const COLLS = {json.dumps(faites)};\n" + harnais, encoding="utf-8")
     try:
         r = subprocess.run(["node", str(script)], capture_output=True, text=True)
     finally:
@@ -81,7 +123,7 @@ console.log(JSON.stringify(out));
     if r.returncode:
         print("le moteur JSX n'a pas tourne :")
         print(r.stderr[-2000:])
-        return 2
+        return 0, [("node", "n/a", 0, 0)]
     cote_js = json.loads(r.stdout)
 
     # Les surcouts conditionnels sont desormais dans le moteur Python, avec la
@@ -101,7 +143,9 @@ console.log(JSON.stringify(out));
                               ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
     ecarts, compares = [], 0
     for cible in m.cibles:
-        py = m.totaux(cible, surcouts=True, poids_par_emplacement=poids_par_emplacement)
+        py = m.totaux(cible, surcouts=True,
+                      collections_faites=faites,
+                      poids_par_emplacement=poids_par_emplacement)
         js = dict(cote_js.get(cible) or {})
         for cid in set(py) | set(js):
             a, b = py.get(cid, 0), js.get(cid, 0)
@@ -109,16 +153,7 @@ console.log(JSON.stringify(out));
             if abs(a - b) > 1e-9:
                 ecarts.append((cible, cid, a, b))
 
-    print(f"moteur Python : {m.chemin.name} | moteur JSX : {JSX.name}")
-    print(f"{len(m.cibles)} cibles, {compares} totaux compares")
-    print("surcouts conditionnels : calcules des deux cotes, aucun neutralise")
-    if not ecarts:
-        print("AUCUN ECART — les deux moteurs disent le meme nombre partout.")
-        return 0
-    print(f"\nECARTS : {len(ecarts)}")
-    for cible, cid, a, b in sorted(ecarts, key=lambda x: -abs(x[2] - x[3]))[:40]:
-        print(f"   {cible:32} {cid:28} python {a:>10}  js {b:>10}")
-    return 1
+    return compares, ecarts
 
 
 if __name__ == "__main__":

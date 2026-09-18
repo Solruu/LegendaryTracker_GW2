@@ -73590,6 +73590,33 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   // a reclamer deux dons la ou la Forge en demande un. Seule l'option CHOISIE
   // est comptee, et les options ne portent aucune cle qty sur ces cibles —
   // l'audit le verifie.
+  // Une etape de collection DEJA VALIDEE qui pointe vers un composant rend ce
+  // composant inutile : il est fabrique, il ne reste rien a farmer, ni lui ni
+  // ce qui le compose. Six armes Astral terminees, et les 3 000 minerais de
+  // kralkatite comme les 3 000 poudres de quartz rose disparaissent du total.
+  //
+  // `qty_extras` ne pouvait pas porter cela : il n'AJOUTE que, et seulement
+  // sur les cles a plat, alors que le kralkatite arrive par la cascade —
+  // minerai, lingot, armes Astral, Vision. Le neutraliser par un surcout
+  // aurait demande de recopier la branche a plat, donc de reconstruire la
+  // table parallele que le palier `astral_weapons` venait de supprimer.
+  //
+  // La regle est generale : elle vaut pour toute etape portant `component`,
+  // sur n'importe quelle cible. Le moteur Python applique la meme, et le test
+  // de conformite compare les deux.
+  const satisfaits = new Set();
+  for (const legId of (selectedIds ?? [])) {
+    const cible = SOURCES_ALIAS?.[legId] ?? legId;
+    for (const [cle, col] of Object.entries(SOURCES_DB?.legendaries?.[cible]?.collections ?? {})) {
+      const sc = colls[cle] ?? colls[String(col?.id)];
+      if (!sc) continue;
+      const entier = sc.done ?? false;
+      const bits = sc.bits ?? [];
+      for (const item of (col?.items ?? [])) {
+        if (item?.component && (entier || bits.includes(item.bit))) satisfaits.add(item.component);
+      }
+    }
+  }
   const altGroups = SOURCES_DB?.alt_groups ?? {};
   const altSel = (() => {
     try { return JSON.parse(localStorage.getItem(ALT_KEY) ?? "null") ?? {}; }
@@ -73613,6 +73640,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   const variable = []; // composants non chiffrables
 
   for (const [compId, comp] of Object.entries(cc)) {
+    if (satisfaits.has(compId)) continue;
     const qty = comp.qty ?? {};
     for (const legId of selectedIds) {
       // Armes normales
@@ -73679,7 +73707,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     for (const t of (g.targets ?? [])) {
       if (!selectedIds.includes(t)) continue;
       const opt = altPick(gid, t);
-      if (opt) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0);
+      if (opt && !satisfaits.has(opt)) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0);
     }
   }
 
@@ -73695,6 +73723,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   for (let pass = 0; pass < 6; pass++) {
     const add = {};
     for (const [compId, comp] of Object.entries(cc)) {
+      if (satisfaits.has(compId)) continue;
       for (const [key, val] of Object.entries(comp?.qty ?? {})) {
         if (typeof val !== "number" || !cc[key]) continue;
         const parent = totals[key] ?? 0;
@@ -73710,7 +73739,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
         const n = totals[t] ?? 0;
         if (!n) continue;
         const opt = altPick(gid, t);
-        if (opt) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
+        if (opt && !satisfaits.has(opt)) add[opt] = (add[opt] ?? 0) + (g.qty ?? 0) * n;
       }
     }
     let changed = false;
