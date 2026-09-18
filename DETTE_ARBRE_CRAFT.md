@@ -1029,3 +1029,84 @@ supprimee sans ton accord.**
 - **`karma` porte `aurora: 0`.** Un zero n'est pas une quantite ; le JSX declare
   pourtant le karma pour Aurora, donc l'audit le signale invisible du grand
   total. Le vrai nombre n'est nulle part au depot.
+
+## S — 18/09/2026 : l'apostrophe tranchee, le Gift of Glory branche
+
+### La convention est fixee : le « s » colle a son proprietaire
+
+`Aurene's Claw` donne `aurenes_claw`, jamais `aurene_s_claw`. Les deux formes
+cohabitaient et ont coute cher en trois jours : douze tables gen3 ne se
+rattachaient a aucun legendaire, un composant s'est cree en double sur le
+Lamplighter's Badge, et la capture en double de ce badge dormait au depot depuis
+le lot 7.
+
+Deux cent une occurrences corrigees dans les sources, seize captures renommees,
+la capture en double supprimee. La regle ne touche QUE le possessif :
+`box_o_fun`, `shard_o_war` et `tribute_to_the_man_o_war` contractent un « of »,
+pas un « 's », et gardent leur forme.
+
+**Le renommage a decouvert deux apiId qui n'avaient jamais pu etre lus.**
+`gift_of_eternitys_garden_exploration` (109114) et `survivors_enchanted_compass`
+(106370) avaient leur capture au depot sous la forme contractee et leur
+composant sous la forme eclatee : le controle qui rapproche les deux ne tombait
+jamais dessus. Ils sont poses.
+
+`check_apostrophe_contractee` rend la derive BLOQUANTE, pas seulement signalee.
+
+### Le Gift of Glory descend enfin la chaine
+
+Sa boite Recipe demande 250 Shard of Glory, exactement comme le Gift of War
+demande 250 Memory of Battle. Le Memory of Battle etait chaine ; le Shard of
+Glory, non — ses 250 etaient recopies a la main sur cinq legendaires. Asymetrie
+pure, dans deux branches voisines du meme Gift of the Mists.
+
+Branchement verifie a totaux constants : les cinq cles directes retirees et la
+chaine posee, conflux (420), vision, aetheric_anchor, klobjarne_geirr et
+strife_unending (500) ne bougent pas d'une unite. **Et trente-trois legendaires
+gagnent les 250 qui leur manquaient** — les seize gen3, seize gen2, Aurora.
+Transcendence passe de 2 250 a 2 500 : ses 2 000 couvrent les essences du Mist
+Pendant, le Gift of the Mists loge dans son Gift of the Champion et n'avait
+jamais ete compte.
+
+### Une fausse piste, et ce qu'elle a coute
+
+En cherchant un detecteur general — confronter chaque boite Recipe capturee a
+la chaine — j'ai cru trouver trois ecarts. Deux etaient des erreurs de mon
+propre detecteur : `gw2_parse_wiki_recipe_v1` additionne les nombres qui
+trainent apres la liste d'ingredients (prix, section « Used in »), d'ou un
+Mystic Facet a 750 cristaux au lieu de 250 et un Gift of Research a 500 reactifs
+au lieu de 250.
+
+**L'audit a arrete le mauvais chiffre**, `check_qty_vs_jsx` refusant 35 750
+cristaux la ou le JSX en declare 23 250. Sans lui, la valeur passait.
+
+Au passage j'ai failli casser la deduplication de la section P : la table
+d'Aurene's Rending liste bien deux fois le reactif hydrocatalytique a 250, et
+j'ai cru a deux exigences reelles. La page de l'objet, elle, ne la liste qu'une
+fois. **La page de l'objet prime sur la liste agregee d'une arme** — la
+deduplication reste globale, comme en v3.
+
+Le seul vrai ecart des trois tient : `unbound` demande **5** Pristine Mist
+Essence, pas 1. Ad Infinitum suivait.
+
+Le detecteur general n'est pas ajoute : sur les 162 « manques » qu'il sort, la
+quasi-totalite sont des recettes de raffinage volontairement non decomposees.
+Il faudrait d'abord fiabiliser la lecture des boites.
+
+### Le karma d'Aurora etait la depuis le debut
+
+Ta lecture etait la bonne. Le karma n'est pas absent d'Aurora : il y est comme
+**monnaie d'echange**, et il y est deja modelise — neuf entrees `qty_extras`
+couvrant la Plage des sirenes, le Lac Doric, la Baie des braises, les Confins de
+Givramer et le Mont Draconis, plus deux routes d'achat sur la chaine elle-meme
+(eclat d'obsidienne a 2 100 karma piece au Temple de Balthazar, perles orriennes
+a 2 688 le lot de trois).
+
+Ce qui manquait, c'est que le controle ne regardait que les totaux et ignorait
+les surcouts conditionnels : il declarait donc le karma « invisible du grand
+total » alors qu'il est declare neuf fois. **Troisieme fois que cette meme
+transversale rate un cas** : `composition` en section O, l'echelle par piece des
+armures en section Q, `qty_extras` aujourd'hui. Le `required: 0` du JSX est
+correct — le karma d'Aurora n'a pas de socle, seulement des surcouts.
+
+Audit v46 : 0 erreur, 54 avertissements. Moteurs confrontes : aucun ecart.

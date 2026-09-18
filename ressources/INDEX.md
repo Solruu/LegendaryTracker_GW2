@@ -882,6 +882,22 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `poem_on_warhorns.html` | Poem on Warhorns | article complet | 2026-09-18 |
 | `shard_o_war.html` | Shard o' War | article complet | 2026-09-18 |
 | `tribute_to_the_man_o_war.html` | Tribute to the Man o' War | article complet | 2026-09-18 |
+| `gift_of_aurenes_argument.html` | Gift of Aurene's Argument | article complet | 2026-09-18 |
+| `gift_of_aurenes_bite.html` | Gift of Aurene's Bite | article complet | 2026-09-18 |
+| `gift_of_aurenes_breath.html` | Gift of Aurene's Breath | article complet | 2026-09-18 |
+| `gift_of_aurenes_claw.html` | Gift of Aurene's Claw | article complet | 2026-09-18 |
+| `gift_of_aurenes_fang.html` | Gift of Aurene's Fang | article complet | 2026-09-18 |
+| `gift_of_aurenes_flight.html` | Gift of Aurene's Flight | article complet | 2026-09-18 |
+| `gift_of_aurenes_gaze.html` | Gift of Aurene's Gaze | article complet | 2026-09-18 |
+| `gift_of_aurenes_horn.html` | Gift of Aurene's Horn | article complet | 2026-09-18 |
+| `gift_of_aurenes_insight.html` | Gift of Aurene's Insight | article complet | 2026-09-18 |
+| `gift_of_aurenes_persuasion.html` | Gift of Aurene's Persuasion | article complet | 2026-09-18 |
+| `gift_of_aurenes_rending.html` | Gift of Aurene's Rending | article complet | 2026-09-18 |
+| `gift_of_aurenes_scale.html` | Gift of Aurene's Scale | article complet | 2026-09-18 |
+| `gift_of_aurenes_tail.html` | Gift of Aurene's Tail | article complet | 2026-09-18 |
+| `gift_of_aurenes_weight.html` | Gift of Aurene's Weight | article complet | 2026-09-18 |
+| `gift_of_aurenes_wing.html` | Gift of Aurene's Wing | article complet | 2026-09-18 |
+| `gift_of_aurenes_wisdom.html` | Gift of Aurene's Wisdom | article complet | 2026-09-18 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

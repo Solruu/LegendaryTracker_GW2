@@ -232,6 +232,36 @@ def _composant_par_api_jsx(comps):
     return par_api
 
 
+def check_apostrophe_contractee(data, errors, warnings):
+    """L'apostrophe se contracte : le « s » colle a son proprietaire.
+
+    `Aurene's Claw` donne `aurenes_claw`, jamais `aurene_s_claw`. Les deux
+    conventions ont cohabite et ont coute cher : douze tables gen3 ne se
+    rattachaient a aucun legendaire, un composant s'est cree en double sur le
+    Lamplighter's Badge, et deux apiId — Gift of Eternity's Garden Exploration
+    et Survivor's Enchanted Compass — n'ont jamais pu etre lus parce que la
+    capture portait la forme contractee et le composant la forme eclatee.
+
+    La regle ne s'applique qu'au possessif : `box_o_fun`, `shard_o_war` et
+    `tribute_to_the_man_o_war` contractent un « of », pas un « 's », et gardent
+    leur forme.
+    """
+    motif = re.compile(r"_s_|_s$")
+    for section in ("craft_components", "legendaries"):
+        for cle, val in sorted((data.get(section) or {}).items()):
+            if not motif.search(cle):
+                continue
+            nom = (val or {}).get("name") if isinstance(val, dict) else None
+            nom = (nom.get("en") or nom.get("fr")) if isinstance(nom, dict) else nom
+            if not isinstance(nom, str) or "'s" not in nom:
+                continue
+            errors.append(
+                f"{section}/{cle} : apostrophe eclatee. « {nom} » se contracte en "
+                f"« {motif.sub(lambda m: 's_' if m.group(0) == '_s_' else 's', cle)} » "
+                "— le « s » colle a son proprietaire, capture comprise"
+            )
+
+
 def check_missing_qty(data, errors, warnings):
     """Une monnaie declaree pour un legendaire doit avoir une qty pour lui.
 
@@ -372,7 +402,21 @@ def _atteint(cid, legid, comps, profondeur=0):
     On interroge donc le moteur, seul detenteur du calcul : un composant
     atteint la cible s'il figure a son total.
     """
-    return bool(_totaux_caches(legid).get(cid))
+    if _totaux_caches(legid).get(cid):
+        return True
+    # v46 : un surcout conditionnel RELIE bel et bien le composant a la cible,
+    # meme quand il vaut zero tant que les etapes de collection ne sont pas
+    # cochees. Le karma d'Aurora est declare en neuf entrees `qty_extras` —
+    # Plage des sirenes, Lac Doric, Baie des braises, Confins de Givramer, Mont
+    # Draconis — et le controle le disait quand meme « invisible du grand
+    # total » parce qu'il ne regardait que les totaux. Troisieme fois que la
+    # meme transversale rate un cas : d'abord `composition`, puis l'echelle par
+    # piece des armures, maintenant `qty_extras`.
+    comp = comps.get(cid) or {}
+    for x in comp.get("qty_extras") or []:
+        if isinstance(x, dict) and x.get("legendary") == legid:
+            return True
+    return False
 
 
 # La cascade n'est plus ecrite ici. Elle vivait dans dix fichiers, dont deux
@@ -2115,6 +2159,7 @@ def main() -> int:
     check_nom_pluriel_double(data, errors, warnings)
 
     # 33. Le meme nombre a deux crans : quantite agregee lue comme unitaire
+    check_apostrophe_contractee(data, errors, warnings)
     check_fratrie_incomplete(data, errors, warnings)
     check_lecture_colonne3(data, errors, warnings)
 

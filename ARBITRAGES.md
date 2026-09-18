@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v296.json` — 88 desaccords sur 23 composants.
+Source : `gw2_sources_v297.json` — 87 desaccords sur 22 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -29,19 +29,18 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `gift_of_bones` — Gift of Bones | 1 | 0 | deja compte par cascade x1 |
 | `inscribed_shard` — Inscribed Shard | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_bava_nisos` — Shard of Bava Nisos | 1 | 0 | deja compte par cascade x1 |
-| `shard_of_glory` — Shard of Glory | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_mistburned_barrens` — Shard of Mistburned Barrens | 1 | 0 | deja compte par cascade x1 |
 | `shard_of_the_dark_arts` — Shard of the Dark Arts | 1 | 0 | deja compte par cascade x1 |
 | `vial_of_titan_melted_obsidian` — Vial of Titan Melted Liquid Obsidian | 1 | 0 | deja compte par cascade x1 |
 
-## DEJA COMPTE PAR CASCADE — 80 cas
+## DEJA COMPTE PAR CASCADE — 79 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
 soit les deux sont reels et le chevauchement se declare dans
 `qty_overlap_verified`.
 
-Les 60 plus gros ecarts sur 80. Le reste se
+Les 60 plus gros ecarts sur 79. Le reste se
 recalcule en relancant le script.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |

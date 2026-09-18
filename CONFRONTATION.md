@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v296.json`. 289 ecarts sur 67 legendaires.
+Source : `gw2_sources_v297.json`. 255 ecarts sur 67 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -16,17 +16,17 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 
 | legendaire | composants en ecart | somme des ecarts |
 |---|---:|---:|
-| `gen2_the_binding_of_ipos` | 14 | 24951 |
-| `gen2_pharus` | 7 | 14650 |
-| `gen2_sharur` | 7 | 14650 |
-| `gen2_the_hms_divinity` | 7 | 14650 |
-| `gen2_claw_of_the_khan_ur` | 7 | 11650 |
-| `gen2_eureka` | 7 | 11650 |
-| `gen2_the_shining_blade` | 7 | 11650 |
-| `gen2_xiuquatl` | 7 | 11650 |
-| `ad_infinitum` | 20 | 9189 |
-| `gen2_flames_of_war` | 7 | 8650 |
-| `gen2_shooshadoo` | 7 | 8650 |
+| `gen2_the_binding_of_ipos` | 13 | 24701 |
+| `gen2_pharus` | 6 | 14400 |
+| `gen2_sharur` | 6 | 14400 |
+| `gen2_the_hms_divinity` | 6 | 14400 |
+| `gen2_claw_of_the_khan_ur` | 6 | 11400 |
+| `gen2_eureka` | 6 | 11400 |
+| `gen2_the_shining_blade` | 6 | 11400 |
+| `gen2_xiuquatl` | 6 | 11400 |
+| `ad_infinitum` | 19 | 9225 |
+| `gen2_flames_of_war` | 6 | 8400 |
+| `gen2_shooshadoo` | 6 | 8400 |
 | `obsidian` | 3 | 5400 |
 | `orrax_manifested` | 12 | 4320 |
 | `klobjarne_geirr` | 14 | 4302 |
@@ -35,39 +35,39 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `warbringer` | 4 | 3249 |
 | `stella_radians` | 4 | 3248 |
 | `vision` | 16 | 2697 |
-| `gen2_astralaria` | 4 | 2650 |
-| `gen2_chuka_and_champawat` | 4 | 2650 |
-| `gen2_exordium` | 4 | 2650 |
-| `gen2_hope` | 4 | 2650 |
-| `gen2_nevermore` | 4 | 2650 |
-| `gen2_verdarach` | 4 | 2650 |
-| `transcendence` | 12 | 2419 |
+| `transcendence` | 12 | 2669 |
+| `gen2_astralaria` | 3 | 2400 |
+| `gen2_chuka_and_champawat` | 3 | 2400 |
+| `gen2_exordium` | 3 | 2400 |
+| `gen2_hope` | 3 | 2400 |
+| `gen2_nevermore` | 3 | 2400 |
+| `gen2_verdarach` | 3 | 2400 |
 | `aetheric_anchor` | 2 | 1900 |
 | `triumphant_hero` | 3 | 1596 |
 | `ardent_glorious` | 2 | 990 |
 | `selachimorpha` | 8 | 752 |
-| `aurora` | 3 | 750 |
-| `gen3_aurene_s_fang` | 3 | 539 |
-| `gen3_aurene_s_flight` | 3 | 539 |
-| `gen3_aurene_s_tail` | 3 | 539 |
-| `gen3_aurene_s_wing` | 3 | 539 |
-| `gen3_aurenes_argument` | 3 | 539 |
-| `gen3_aurenes_bite` | 3 | 539 |
-| `gen3_aurenes_breath` | 3 | 539 |
-| `gen3_aurenes_claw` | 3 | 539 |
-| `gen3_aurenes_gaze` | 3 | 539 |
-| `gen3_aurenes_insight` | 3 | 539 |
-| `gen3_aurenes_persuasion` | 3 | 539 |
-| `gen3_aurenes_scale` | 3 | 539 |
-| `gen3_aurenes_voice` | 3 | 539 |
-| `gen3_aurenes_weight` | 3 | 539 |
-| `gen3_aurenes_wisdom` | 3 | 539 |
+| `aurora` | 2 | 500 |
 | `eikasia` | 1 | 500 |
 | `gen1_the_bifrost` | 1 | 500 |
 | `gen1_the_dreamer` | 1 | 500 |
 | `gen1_the_minstrel` | 1 | 500 |
-| `gen3_aurenes_rending` | 2 | 500 |
 | `the_ascension` | 2 | 349 |
+| `gen3_aurenes_argument` | 2 | 289 |
+| `gen3_aurenes_bite` | 2 | 289 |
+| `gen3_aurenes_breath` | 2 | 289 |
+| `gen3_aurenes_claw` | 2 | 289 |
+| `gen3_aurenes_fang` | 2 | 289 |
+| `gen3_aurenes_flight` | 2 | 289 |
+| `gen3_aurenes_gaze` | 2 | 289 |
+| `gen3_aurenes_insight` | 2 | 289 |
+| `gen3_aurenes_persuasion` | 2 | 289 |
+| `gen3_aurenes_scale` | 2 | 289 |
+| `gen3_aurenes_tail` | 2 | 289 |
+| `gen3_aurenes_voice` | 2 | 289 |
+| `gen3_aurenes_weight` | 2 | 289 |
+| `gen3_aurenes_wing` | 2 | 289 |
+| `gen3_aurenes_wisdom` | 2 | 289 |
+| `gen3_aurenes_rending` | 1 | 250 |
 | `legendary_relic` | 1 | 250 |
 | `gen1_frenzy` | 1 | 200 |
 | `gen1_frostfang` | 1 | 200 |
@@ -130,13 +130,13 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_the_hms_divinity` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `gen2_the_hms_divinity` | `volatile_magic` — Volatile Magic | 0 | 2000 | +2000 |
 | `gen2_the_hms_divinity` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
+| `transcendence` | `shard_of_glory` — Shard of Glory | 2500 | 500 | -2000 |
 | `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
 | `gen2_flames_of_war` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `gen2_flames_of_war` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
-| `transcendence` | `shard_of_glory` — Shard of Glory | 2250 | 500 | -1750 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
 | `gen2_claw_of_the_khan_ur` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
@@ -154,9 +154,9 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
 | `coalescence` | `trade_contract` — Trade Contract | 300 | 1550 | +1250 |
 | `orrax_manifested` | `glob_of_ectoplasm` — Glob of Ectoplasm | 3520 | 2400 | -1120 |
-| `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
 | `ad_infinitum` | `empyreal_fragment` — Empyreal Fragment | 1500 | 500 | -1000 |
 | `ad_infinitum` | `dragonite_ore` — Dragonite Ore | 1500 | 500 | -1000 |
+| `ad_infinitum` | `bloodstone_dust` — Pile of Bloodstone Dust | 1500 | 500 | -1000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 2250 | 1250 | -1000 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 2250 | 1250 | -1000 |
 | `conflux` | `dragonite_ore` — Dragonite Ore | 2250 | 1250 | -1000 |
@@ -166,5 +166,5 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_shooshadoo` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
 | `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
-| `warbringer` | `bloodstone_dust` — Pile of Bloodstone Dust | 2250 | 1250 | -1000 |
 | `warbringer` | `empyreal_fragment` — Empyreal Fragment | 2250 | 1250 | -1000 |
+| `warbringer` | `dragonite_ore` — Dragonite Ore | 2250 | 1250 | -1000 |

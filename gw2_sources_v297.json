@@ -942,8 +942,8 @@
   "changelog_v201": "Deux corrections, dont une des miennes. 1) Le champ pool_a_modeliser pose en v200 sur Vision II est RETIRE : il etait faux. J'avais annonce que les 24 sanctuaires n'avaient pas de structure d'accueil ; ils etaient deja la, sur vision_2, avec carte, point de passage et code de discussion. Je regardais l'entree vide du doublon. 2) Ce doublon est la vraie trouvaille. Vision portait DEUX entrees par succes : vision_1 et vis_meta_1 sur le 4762, vision_2 et vis_meta_2 sur le 4771. Les premieres avaient les champs editoriaux — note de deblocage, recompense, sous-collections, les 24 sanctuaires ; les secondes n'avaient que les bits de l'API et le total. Aucun conflit de valeur, donc rien ne se contredisait : la moitie de l'information etait juste rattachee a l'entree que personne ne lisait. Fusionnees, les pauvres supprimees. Regle d'audit v28 : deux collections d'une meme legendaire ne partagent pas un identifiant. C'est le motif de common_required et des listes plates d'armes, une troisieme fois. RESTE, ET C'EST DU JSX : Vision porte une TROISIEME copie de ses donnees editoriales, codee en dur dans le tracker ligne 1077 — collections.vision_1, collections.vision_2 et le tableau VISIONS_OF. L'onglet Vision rend cette copie, pas les sources. Les six collections Visions of documentees en passe 3, 42 etapes avec leurs conseils wiki, ne s'affichent donc nulle part. C'est le premier point de la passe JSX finale. PASSE JSX FAITE — tracker v179. Quatre points. 1) Composant FieldTip : les 259 how_jsx s'affichent enfin, en italique sous le conseil wiki, aux trois endroits ou une etape est rendue. L'avertissement « champ editorial jamais rendu » de l'audit a disparu. 2) progress se greffe sur counterNoSteps, le mecanisme qui existait deja : au lieu d'alerter « compteur sans liste d'etapes, a signaler », le tracker dit ce qui se compte — 150 poussieres fractallines, 25 krait — et precise que le surplus d'Infinite Recursion est perdu. Meme chemin, pas de branche. 3) VISIONS_OF n'est plus code en dur : le tableau ne garde que la cle de progression, qui vient de la synchro API et n'a pas d'equivalent cote sources, et l'id du succes qui fait le pont. Les six collections deviennent depliables et montrent leurs 42 etapes avec conseils wiki et conseils de terrain. 4) LEGENDARIES.vision.collections est vide de son contenu editorial, la troisieme copie. La cle elle-meme est CONSERVEE : elle sert de drapeau ligne 856, « !T.collections » masque la liste generique de succes. La supprimer aurait fait reapparaitre un doublon d'affichage. A renommer un jour, mais la condition touche d'autres legendaires. meta_eligible n'a rien demande : il etait deja cable et generique, les quatre Path of the Ascension sont reprises telles quelles, et la signature de donnees du cache invalide toute seule.",
   "changelog_v202": "Trois correctifs apres validation d'Antoine dans l'interface. 1) L'onglet T6 plantait des qu'on depliait une ligne : « .includes is not a function ». farm_hubs.hubs[].lines est un objet indexe par palier depuis la refonte des foyers ({t5:[...], t6:[...]}) et le code le lisait encore comme un tableau plat. Corrige par un aplatissement explicite. Au meme endroit, no_hub est une LISTE et le code faisait no_hub.line === ... sur elle : l'avertissement « aucun foyer ne sert cette ligne » ne s'est jamais affiche depuis la refonte. Corrige aussi. 2) Eikasia n'affichait qu'un tiret la ou progress devait parler. Le bloc etait bien lu, mais servi depuis un cache d'avant : ACH_DEFS_SCHEMA n'avait pas ete incremente alors que la FORME de la charge changeait, et la signature de donnees ne couvre que meta_eligible et achievement_notes. Schema porte a 18, et les blocs progress entrent desormais dans la signature pour que le piege ne se represente pas. Le commentaire du fichier decrivait exactement cette erreur ; je l'ai commise quand meme. 3) Vision s'affichait en double. La cause immediate est de moi : en fusionnant les doublons en v201 j'ai aligne les cles de vision_1 et vision_2, or `key` est le discriminant qui decide si une collection alimente le rendu generique. Vision ayant son propre onglet, elle passait dans les deux. Les cles repassent a nul. RESTE : les huit collections vis_* portent des cles depuis leur migration et s'affichent donc elles aussi deux fois — cela precede mon intervention. Le doublon demande un arbitrage, decrit dans BACKLOG.md.",
   "changelog_v203": "Vision ne s'affiche plus qu'une fois. L'onglet dedie rendait a la main ce que le bloc generique rend deja depuis les sources : Vision I et ses six sous-collections, Vision II et les deux Convergence of Sorrow. Les deux versions coexistaient, et la moins riche etait la faite main — cases a cocher a 0/6 la ou le generique montre la progression API, les blocs de deblocage et les etapes nommees. Les deux sections faites main sont retirees, avec les variables devenues mortes. Il reste dans l'onglet dedie les deux choses que le generique ne porte pas : le craft du Memory Essence Encapsulator, et les six Requiem Experiments avec leur compteur d'Elegy Mosaics. Les cles de vision_1 et vision_2 sont retablies — elles avaient ete mises a nul hier pour couper le doublon par le mauvais bout. Maintenant que le dedie ne rend plus rien de tout cela, la cle reprend son role : faire entrer la collection dans le rendu generique. RESTE EN DUR, ET C'EST UNE DONNEE MANQUANTE : les six Requiem Experiments vivent dans le JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant qu'elles n'y sont pas, elles ne peuvent pas passer par le rendu generique comme le reste.",
-  "changelog_v204": "Douze cibles fantomes supprimees (huit gen2 : Tigris, Caladbolg, Eordas Grip, Itzel's Boon, Hope Scepter, Lorekeeper, Elegy, Reaver of the Mists — des noms de paliers de collection deja retires de legendaries en v182 mais dont les residus trainaient dans legendary_ids, armory_apiid_to_legid (7 IDs API orphelins) et les qty de gift_of_battle/gift_of_maguuma_mastery/mystic_tribute ; quatre gen3 aurenes_guard/wrath/reckoning/tenderness, jamais confirmees en jeu, residus dans mystic_clover/mystic_coin/gift_of_jade_mastery/draconic_tribute/crystalline_ingot). Confirme par Antoine : liste canonique de 16 armes Aurene's, toutes deja 16/16 en base. gen3_aurenes_fang fusionnee dans gen3_aurene_s_fang (meme arme, cle orpheline) : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 recuperes, cohérents avec les 11 autres gen3. Son gift_of_battle: 1 n'a pas de pareil sur les 15 autres gen3 et n'est pas repris, en attente d'arbitrage.",
-  "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurene_s_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source.",
+  "changelog_v204": "Douze cibles fantomes supprimees (huit gen2 : Tigris, Caladbolg, Eordas Grip, Itzel's Boon, Hope Scepter, Lorekeeper, Elegy, Reaver of the Mists — des noms de paliers de collection deja retires de legendaries en v182 mais dont les residus trainaient dans legendary_ids, armory_apiid_to_legid (7 IDs API orphelins) et les qty de gift_of_battle/gift_of_maguuma_mastery/mystic_tribute ; quatre gen3 aurenes_guard/wrath/reckoning/tenderness, jamais confirmees en jeu, residus dans mystic_clover/mystic_coin/gift_of_jade_mastery/draconic_tribute/crystalline_ingot). Confirme par Antoine : liste canonique de 16 armes Aurene's, toutes deja 16/16 en base. gen3_aurenes_fang fusionnee dans gen3_aurenes_fang (meme arme, cle orpheline) : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 recuperes, cohérents avec les 11 autres gen3. Son gift_of_battle: 1 n'a pas de pareil sur les 15 autres gen3 et n'est pas repris, en attente d'arbitrage.",
+  "changelog_v205": "Flight/Tail/Wing completes : mystic_clover 39, mystic_coin 250, crystalline_ingot 250 ajoutes, sources sur les Full material list wiki (aurenes_flight.html, aurenes_tail.html, aurenes_wing.html), identiques structurellement a celles de Fang et des 10 autres gen3 du meme gabarit (meme ordre de lignes, memes items). Aucun gift_of_battle direct ajoute, meme raison qu'en v204 : deja compte via Gift of the Mists -> Gift of Aurene's X -> l'arme. Note de gen3_aurenes_fang (v204) corrigee : la raison du rejet de gift_of_battle n'etait pas une 'contamination probable' mais un evitement de double-compte, desormais verifie sur source.",
   "changelog_v206": "Cause reelle du sous-comptage thermocatalytic_reagent / sur-comptage obsidian_shard sur Conflux, Transcendence, Warbringer, The Ascension : bloodstone_brick / dragonite_ingot / empyreal_star n'avaient AUCUNE arete vers thermocatalytic_reagent/obsidian_shard, alors que leurs propres pages wiki donnent chacune 10 Thermocatalytic Reagent + 2 Obsidian Shard par unite (verifie sur bloodstone_brick.html, dragonite_ingot.html, empyreal_star.html, recipe-box). Aretes ajoutees une seule fois au niveau des trois lingots (source unique) ; la cascade existante (lingots -> vision_crystal:10 chacun -> Gift of Conquering/Gift of Skirmishing:2 -> les 4 legendaires) calcule desormais 600 thermocatalytic_reagent et 120 obsidian_shard, conforme a CONFRONTATION.md. Les cles a plat directes (300 / 309) sont retirees pour ces 4 cibles, devenues redondantes. CORRECTIF EN COURS DE ROUTE : un premier essai avait ajoute vision_crystal en arete DIRECTE sur les 4 legendaires — faux, ca doublait Gift of Conquering/Gift of Skirmishing qui portaient deja vision_crystal:2 chacun (source : recette propre de Gift of Conquering, verifiee sur gift_of_conquering.html — 1 Legendary Spike + 4 Gift of Battle + 250 Memory of Battle + 2 Vision Crystal). Corrige avant commit, jamais pousse. 6 avertissements 'lecture colonne 3' attendus et verifies a la main (10 thermocatalytic / 2 obsidian par lingot ET 10 lingots / vision_crystal sont deux faits reels, coincidence de nombre, pas une erreur).",
   "changelog_v207": "Funerary Incense : route par defaut posee au niveau de la source (Intendant primitif, Mosaiques d'elegie, 3/encens) plutot qu'au niveau de chaque legendaire — seule route sans plafond journalier ('voie de volume', deja documentee comme telle dans funerary_incense.cadence). elegy_mosaic.qty['funerary_incense']=3 pose ; les cles a plat coalescence (300) et vision (300) retirees, remplacees par la cascade existante funerary_incense(250/vision:100) -> gift_of_desert_mastery/gift_of_arid_mastery -> gift_of_compassion -> coalescence/vision. Resultat : coalescence passe de 300 a 750 mosaiques (conforme a CONFRONTATION.md) ; vision reste a 300 (la cascade retombe exactement sur l'ancien flat, donc aucun changement de chiffre affiche pour vision, juste une source unique au lieu de deux). trade_contract.qty['coalescence']=300 retire (route non retenue par defaut, restait un vestige d'un ancien partage arbitraire entre les deux monnaies) ; l'alternative Contrat commercial reste documentee dans funerary_incense.cadence.sources pour qui prefere farmer cette voie plutot que la carte source des mosaiques.",
   "changelog_v208": "magnetite_shard : les trois cles fabriquees (coalescence 350, gift_of_patience 100, gift_of_complex_emotions 100 - total 550 sur Coalescence) sont retirees. Source : page wiki 'Magnetite Shard/Used in', qui liste tous les consommateurs reels de l'objet - exclusivement des trophees Handiworker/Homestead, aucune legendaire. Confirme par la Full material list de Coalescence elle-meme (Gift of Patience/Gift of Complex Emotions obtenus par succes de scenario, pas par artisanat).",
@@ -4541,25 +4541,19 @@
    "name": "Shard of Glory",
    "apiId": 70820,
    "needed_for": [
-    "aetheric_anchor",
     "ardent_glorious",
+    "gift_of_glory",
     "gift_of_skirmishing",
-    "klobjarne_geirr",
     "mist_band_infused",
-    "strife_unending",
     "the_ascension",
     "transcendence"
    ],
    "qty": {
-    "conflux": 250,
-    "vision": 250,
-    "aetheric_anchor": 250,
-    "klobjarne_geirr": 250,
-    "strife_unending": 500,
     "transcendence": 2000,
     "mist_band_infused": 170,
     "gift_of_skirmishing": 250,
-    "ardent_glorious__per_piece": 250
+    "ardent_glorious__per_piece": 250,
+    "gift_of_glory": 250
    },
    "farmable": true,
    "sources": [
@@ -4595,9 +4589,9 @@
     "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
     "verified": true
    },
-   "verified": true,
-   "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+   "verified": "branchement verifie a totaux constants sur les cinq legendaires qui portaient la cle en direct",
+   "checked": "2026-09-18",
+   "ref": "boite Recipe de Gift of Glory (250 Shard of Glory), symetrique de Gift of War -> 250 Memory of Battle",
    "qty_overlap_verified": [
     "transcendence"
    ]
@@ -5372,22 +5366,22 @@
    "apiId": 97655,
    "needed_for": [
     "armor_obsidian_per_piece",
-    "gift_of_aurene_s_argument",
-    "gift_of_aurene_s_bite",
-    "gift_of_aurene_s_breath",
-    "gift_of_aurene_s_claw",
-    "gift_of_aurene_s_fang",
-    "gift_of_aurene_s_flight",
-    "gift_of_aurene_s_gaze",
-    "gift_of_aurene_s_horn",
-    "gift_of_aurene_s_insight",
-    "gift_of_aurene_s_persuasion",
-    "gift_of_aurene_s_rending",
-    "gift_of_aurene_s_scale",
-    "gift_of_aurene_s_tail",
-    "gift_of_aurene_s_weight",
-    "gift_of_aurene_s_wing",
-    "gift_of_aurene_s_wisdom",
+    "gift_of_aurenes_argument",
+    "gift_of_aurenes_bite",
+    "gift_of_aurenes_breath",
+    "gift_of_aurenes_claw",
+    "gift_of_aurenes_fang",
+    "gift_of_aurenes_flight",
+    "gift_of_aurenes_gaze",
+    "gift_of_aurenes_horn",
+    "gift_of_aurenes_insight",
+    "gift_of_aurenes_persuasion",
+    "gift_of_aurenes_rending",
+    "gift_of_aurenes_scale",
+    "gift_of_aurenes_tail",
+    "gift_of_aurenes_weight",
+    "gift_of_aurenes_wing",
+    "gift_of_aurenes_wisdom",
     "gift_of_galdra",
     "gift_of_klobjarne_geirr",
     "gift_of_magical_prosperity",
@@ -5396,22 +5390,22 @@
     "gift_of_the_elders"
    ],
    "qty": {
-    "gift_of_aurene_s_argument": 1,
-    "gift_of_aurene_s_bite": 1,
-    "gift_of_aurene_s_breath": 1,
-    "gift_of_aurene_s_claw": 1,
-    "gift_of_aurene_s_fang": 1,
-    "gift_of_aurene_s_flight": 1,
-    "gift_of_aurene_s_gaze": 1,
-    "gift_of_aurene_s_horn": 1,
-    "gift_of_aurene_s_insight": 1,
-    "gift_of_aurene_s_persuasion": 1,
-    "gift_of_aurene_s_rending": 1,
-    "gift_of_aurene_s_scale": 1,
-    "gift_of_aurene_s_tail": 1,
-    "gift_of_aurene_s_weight": 1,
-    "gift_of_aurene_s_wing": 1,
-    "gift_of_aurene_s_wisdom": 1,
+    "gift_of_aurenes_argument": 1,
+    "gift_of_aurenes_bite": 1,
+    "gift_of_aurenes_breath": 1,
+    "gift_of_aurenes_claw": 1,
+    "gift_of_aurenes_fang": 1,
+    "gift_of_aurenes_flight": 1,
+    "gift_of_aurenes_gaze": 1,
+    "gift_of_aurenes_horn": 1,
+    "gift_of_aurenes_insight": 1,
+    "gift_of_aurenes_persuasion": 1,
+    "gift_of_aurenes_rending": 1,
+    "gift_of_aurenes_scale": 1,
+    "gift_of_aurenes_tail": 1,
+    "gift_of_aurenes_weight": 1,
+    "gift_of_aurenes_wing": 1,
+    "gift_of_aurenes_wisdom": 1,
     "gift_of_klobjarne_geirr": 1,
     "gift_of_galdra": 1,
     "gift_of_magical_prosperity": 1,
@@ -5474,7 +5468,10 @@
     "checked": "2026-08-13",
     "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
     "verified": true
-   }
+   },
+   "ref": "boite Recipe de Gift of Research : 250 Thermocatalytic + 250 Hydrocatalytic + 250 Exotic Essence of Luck (la table d'arme duplique la ligne, la page de l'objet non)",
+   "checked": "2026-09-18",
+   "verified": "boite Recipe relue a la main le 18/09/2026 ; la duplication vue dans les tables d'armes est un artefact de la liste agregee"
   },
   "thermocatalytic_reagent": {
    "name": "Thermocatalytic Reagent",
@@ -5843,9 +5840,9 @@
    "needed_for": [
     "armor_perfected_envoy",
     "draconic_tribute",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "gift_of_adventure",
     "gift_of_competitive_prosperity",
     "gift_of_fortune",
@@ -6007,10 +6004,10 @@
     "gift_of_war_prosperity": 15,
     "mystic_tribute": 77,
     "draconic_tribute": 38,
-    "gen3_aurene_s_fang": 39,
-    "gen3_aurene_s_flight": 39,
-    "gen3_aurene_s_tail": 39,
-    "gen3_aurene_s_wing": 39,
+    "gen3_aurenes_fang": 39,
+    "gen3_aurenes_flight": 39,
+    "gen3_aurenes_tail": 39,
+    "gen3_aurenes_wing": 39,
     "gift_of_competitive_prosperity": 15,
     "gift_of_prosperity": 15
    },
@@ -6179,10 +6176,10 @@
     }
    },
    "qty_overlap_verified": [
-    "gen3_aurene_s_fang",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_fang",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "gen3_aurenes_argument",
     "gen3_aurenes_bite",
     "gen3_aurenes_breath",
@@ -6878,9 +6875,9 @@
    "apiId": 19976,
    "needed_for": [
     "aetheric_anchor",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "glob_of_coagulated_mists_essence",
     "klobjarne_geirr",
     "mystic_tribute",
@@ -7011,10 +7008,10 @@
     "strife_unending": 146,
     "glob_of_coagulated_mists_essence": 1,
     "mystic_tribute": 250,
-    "gen3_aurene_s_fang": 250,
-    "gen3_aurene_s_flight": 250,
-    "gen3_aurene_s_tail": 250,
-    "gen3_aurene_s_wing": 250
+    "gen3_aurenes_fang": 250,
+    "gen3_aurenes_flight": 250,
+    "gen3_aurenes_tail": 250,
+    "gen3_aurenes_wing": 250
    },
    "kind": "acquire",
    "best": "vendor",
@@ -7174,22 +7171,22 @@
     "endless_summer",
     "gen2_gift_unique",
     "gift_of_arah",
-    "gift_of_aurene_s_argument",
-    "gift_of_aurene_s_bite",
-    "gift_of_aurene_s_breath",
-    "gift_of_aurene_s_claw",
-    "gift_of_aurene_s_fang",
-    "gift_of_aurene_s_flight",
-    "gift_of_aurene_s_gaze",
-    "gift_of_aurene_s_horn",
-    "gift_of_aurene_s_insight",
-    "gift_of_aurene_s_persuasion",
-    "gift_of_aurene_s_rending",
-    "gift_of_aurene_s_scale",
-    "gift_of_aurene_s_tail",
-    "gift_of_aurene_s_weight",
-    "gift_of_aurene_s_wing",
-    "gift_of_aurene_s_wisdom",
+    "gift_of_aurenes_argument",
+    "gift_of_aurenes_bite",
+    "gift_of_aurenes_breath",
+    "gift_of_aurenes_claw",
+    "gift_of_aurenes_fang",
+    "gift_of_aurenes_flight",
+    "gift_of_aurenes_gaze",
+    "gift_of_aurenes_horn",
+    "gift_of_aurenes_insight",
+    "gift_of_aurenes_persuasion",
+    "gift_of_aurenes_rending",
+    "gift_of_aurenes_scale",
+    "gift_of_aurenes_tail",
+    "gift_of_aurenes_weight",
+    "gift_of_aurenes_wing",
+    "gift_of_aurenes_wisdom",
     "gift_of_balthazar",
     "gift_of_divinity",
     "gift_of_eureka",
@@ -7261,22 +7258,22 @@
    ],
    "qty": {
     "gift_of_arah": 100,
-    "gift_of_aurene_s_argument": 100,
-    "gift_of_aurene_s_bite": 100,
-    "gift_of_aurene_s_breath": 100,
-    "gift_of_aurene_s_claw": 100,
-    "gift_of_aurene_s_fang": 100,
-    "gift_of_aurene_s_flight": 100,
-    "gift_of_aurene_s_gaze": 100,
-    "gift_of_aurene_s_horn": 100,
-    "gift_of_aurene_s_insight": 100,
-    "gift_of_aurene_s_persuasion": 100,
-    "gift_of_aurene_s_rending": 100,
-    "gift_of_aurene_s_scale": 100,
-    "gift_of_aurene_s_tail": 100,
-    "gift_of_aurene_s_weight": 100,
-    "gift_of_aurene_s_wing": 100,
-    "gift_of_aurene_s_wisdom": 100,
+    "gift_of_aurenes_argument": 100,
+    "gift_of_aurenes_bite": 100,
+    "gift_of_aurenes_breath": 100,
+    "gift_of_aurenes_claw": 100,
+    "gift_of_aurenes_fang": 100,
+    "gift_of_aurenes_flight": 100,
+    "gift_of_aurenes_gaze": 100,
+    "gift_of_aurenes_horn": 100,
+    "gift_of_aurenes_insight": 100,
+    "gift_of_aurenes_persuasion": 100,
+    "gift_of_aurenes_rending": 100,
+    "gift_of_aurenes_scale": 100,
+    "gift_of_aurenes_tail": 100,
+    "gift_of_aurenes_weight": 100,
+    "gift_of_aurenes_wing": 100,
+    "gift_of_aurenes_wisdom": 100,
     "gift_of_balthazar": 100,
     "gift_of_divinity": 100,
     "gift_of_eureka": 100,
@@ -7537,10 +7534,10 @@
    "apiId": 96033,
    "needed_for": [
     "gen3_all",
-    "gen3_aurene_s_fang",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_fang",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "gen3_aurenes_rending"
    ],
    "farmable": true,
@@ -7565,11 +7562,11 @@
     "gen3_aurenes_scale": 1,
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
-    "gen3_aurene_s_fang": 1,
-    "gen3_aurene_s_flight": 1,
+    "gen3_aurenes_fang": 1,
+    "gen3_aurenes_flight": 1,
     "gen3_aurenes_rending": 1,
-    "gen3_aurene_s_tail": 1,
-    "gen3_aurene_s_wing": 1
+    "gen3_aurenes_tail": 1,
+    "gen3_aurenes_wing": 1
    },
    "kind": "advanced_craft"
   },
@@ -7578,10 +7575,10 @@
    "apiId": 96137,
    "needed_for": [
     "gen3_all",
-    "gen3_aurene_s_fang",
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_fang",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "gen3_aurenes_rending",
     "orrax_contained"
    ],
@@ -7607,11 +7604,11 @@
     "gen3_aurenes_scale": 1,
     "gen3_aurenes_wisdom": 1,
     "gen3_aurenes_breath": 1,
-    "gen3_aurene_s_fang": 1,
-    "gen3_aurene_s_flight": 1,
+    "gen3_aurenes_fang": 1,
+    "gen3_aurenes_flight": 1,
     "gen3_aurenes_rending": 1,
-    "gen3_aurene_s_tail": 1,
-    "gen3_aurene_s_wing": 1,
+    "gen3_aurenes_tail": 1,
+    "gen3_aurenes_wing": 1,
     "orrax_contained": 1
    },
    "note": {
@@ -9078,7 +9075,10 @@
    },
    "qty_overlap_verified": [
     "legendary_relic"
-   ]
+   ],
+   "ref": "boite Recipe de Mystic Facet : 1 Relic + 250 Pile of Lucent Crystal",
+   "checked": "2026-09-18",
+   "verified": "boite Recipe relue a la main le 18/09/2026 ; le JSX confirme 23250 pour les ameliorations legendaires"
   },
   "mystic_facet": {
    "name": "Mystic Facet",
@@ -13574,22 +13574,22 @@
     "gift_of_the_world": 1,
     "gift_of_arah": 1,
     "gift_of_astralaria": 1,
-    "gift_of_aurene_s_argument": 1,
-    "gift_of_aurene_s_bite": 1,
-    "gift_of_aurene_s_breath": 1,
-    "gift_of_aurene_s_claw": 1,
-    "gift_of_aurene_s_fang": 1,
-    "gift_of_aurene_s_flight": 1,
-    "gift_of_aurene_s_gaze": 1,
-    "gift_of_aurene_s_horn": 1,
-    "gift_of_aurene_s_insight": 1,
-    "gift_of_aurene_s_persuasion": 1,
-    "gift_of_aurene_s_rending": 1,
-    "gift_of_aurene_s_scale": 1,
-    "gift_of_aurene_s_tail": 1,
-    "gift_of_aurene_s_weight": 1,
-    "gift_of_aurene_s_wing": 1,
-    "gift_of_aurene_s_wisdom": 1,
+    "gift_of_aurenes_argument": 1,
+    "gift_of_aurenes_bite": 1,
+    "gift_of_aurenes_breath": 1,
+    "gift_of_aurenes_claw": 1,
+    "gift_of_aurenes_fang": 1,
+    "gift_of_aurenes_flight": 1,
+    "gift_of_aurenes_gaze": 1,
+    "gift_of_aurenes_horn": 1,
+    "gift_of_aurenes_insight": 1,
+    "gift_of_aurenes_persuasion": 1,
+    "gift_of_aurenes_rending": 1,
+    "gift_of_aurenes_scale": 1,
+    "gift_of_aurenes_tail": 1,
+    "gift_of_aurenes_weight": 1,
+    "gift_of_aurenes_wing": 1,
+    "gift_of_aurenes_wisdom": 1,
     "gift_of_balthazar": 1,
     "gift_of_chuka_and_champawat": 1,
     "gift_of_divinity": 1,
@@ -13612,22 +13612,22 @@
    "needed_for": [
     "gift_of_arah",
     "gift_of_astralaria",
-    "gift_of_aurene_s_argument",
-    "gift_of_aurene_s_bite",
-    "gift_of_aurene_s_breath",
-    "gift_of_aurene_s_claw",
-    "gift_of_aurene_s_fang",
-    "gift_of_aurene_s_flight",
-    "gift_of_aurene_s_gaze",
-    "gift_of_aurene_s_horn",
-    "gift_of_aurene_s_insight",
-    "gift_of_aurene_s_persuasion",
-    "gift_of_aurene_s_rending",
-    "gift_of_aurene_s_scale",
-    "gift_of_aurene_s_tail",
-    "gift_of_aurene_s_weight",
-    "gift_of_aurene_s_wing",
-    "gift_of_aurene_s_wisdom",
+    "gift_of_aurenes_argument",
+    "gift_of_aurenes_bite",
+    "gift_of_aurenes_breath",
+    "gift_of_aurenes_claw",
+    "gift_of_aurenes_fang",
+    "gift_of_aurenes_flight",
+    "gift_of_aurenes_gaze",
+    "gift_of_aurenes_horn",
+    "gift_of_aurenes_insight",
+    "gift_of_aurenes_persuasion",
+    "gift_of_aurenes_rending",
+    "gift_of_aurenes_scale",
+    "gift_of_aurenes_tail",
+    "gift_of_aurenes_weight",
+    "gift_of_aurenes_wing",
+    "gift_of_aurenes_wisdom",
     "gift_of_balthazar",
     "gift_of_chuka_and_champawat",
     "gift_of_divinity",
@@ -15813,9 +15813,9 @@
    "kind": "intermediate",
    "farmable": false,
    "needed_for": [
-    "gen3_aurene_s_flight",
-    "gen3_aurene_s_tail",
-    "gen3_aurene_s_wing",
+    "gen3_aurenes_flight",
+    "gen3_aurenes_tail",
+    "gen3_aurenes_wing",
     "gift_of_draconic_mastery",
     "gift_of_maguuma_mastery"
    ],
@@ -15833,10 +15833,10 @@
     "gen3_aurenes_breath": 250,
     "gift_of_draconic_mastery": 1,
     "gift_of_maguuma_mastery": 250,
-    "gen3_aurene_s_fang": 250,
-    "gen3_aurene_s_flight": 250,
-    "gen3_aurene_s_tail": 250,
-    "gen3_aurene_s_wing": 250
+    "gen3_aurenes_fang": 250,
+    "gen3_aurenes_flight": 250,
+    "gen3_aurenes_tail": 250,
+    "gen3_aurenes_wing": 250
    },
    "verified": true,
    "checked": "2026-08-27",
@@ -16297,7 +16297,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_argument": {
+  "gift_of_aurenes_argument": {
    "name": "Gift of Aurene's Argument",
    "apiId": 96493,
    "kind": "advanced_craft",
@@ -16318,7 +16318,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_bite": {
+  "gift_of_aurenes_bite": {
    "name": "Gift of Aurene's Bite",
    "apiId": 97027,
    "kind": "advanced_craft",
@@ -16339,7 +16339,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_breath": {
+  "gift_of_aurenes_breath": {
    "name": "Gift of Aurene's Breath",
    "apiId": 95922,
    "kind": "advanced_craft",
@@ -16360,7 +16360,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_claw": {
+  "gift_of_aurenes_claw": {
    "name": "Gift of Aurene's Claw",
    "apiId": 97066,
    "kind": "advanced_craft",
@@ -16381,16 +16381,16 @@
     }
    ]
   },
-  "gift_of_aurene_s_fang": {
+  "gift_of_aurenes_fang": {
    "name": "Gift of Aurene's Fang",
    "apiId": 96790,
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gen3_aurene_s_fang": 1
+    "gen3_aurenes_fang": 1
    },
    "needed_for": [
-    "gen3_aurene_s_fang"
+    "gen3_aurenes_fang"
    ],
    "sources": [
     {
@@ -16402,16 +16402,16 @@
     }
    ]
   },
-  "gift_of_aurene_s_flight": {
+  "gift_of_aurenes_flight": {
    "name": "Gift of Aurene's Flight",
    "apiId": 95777,
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gen3_aurene_s_flight": 1
+    "gen3_aurenes_flight": 1
    },
    "needed_for": [
-    "gen3_aurene_s_flight"
+    "gen3_aurenes_flight"
    ],
    "sources": [
     {
@@ -16423,7 +16423,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_gaze": {
+  "gift_of_aurenes_gaze": {
    "name": "Gift of Aurene's Gaze",
    "apiId": 97088,
    "kind": "advanced_craft",
@@ -16444,7 +16444,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_horn": {
+  "gift_of_aurenes_horn": {
    "name": "Gift of Aurene's Horn",
    "apiId": 96354,
    "kind": "advanced_craft",
@@ -16465,7 +16465,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_insight": {
+  "gift_of_aurenes_insight": {
    "name": "Gift of Aurene's Insight",
    "apiId": 97281,
    "kind": "advanced_craft",
@@ -16486,7 +16486,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_persuasion": {
+  "gift_of_aurenes_persuasion": {
    "name": "Gift of Aurene's Persuasion",
    "apiId": 97412,
    "kind": "advanced_craft",
@@ -16507,7 +16507,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_rending": {
+  "gift_of_aurenes_rending": {
    "name": "Gift of Aurene's Rending",
    "apiId": 97804,
    "kind": "advanced_craft",
@@ -16528,7 +16528,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_scale": {
+  "gift_of_aurenes_scale": {
    "name": "Gift of Aurene's Scale",
    "apiId": 96073,
    "kind": "advanced_craft",
@@ -16549,16 +16549,16 @@
     }
    ]
   },
-  "gift_of_aurene_s_tail": {
+  "gift_of_aurenes_tail": {
    "name": "Gift of Aurene's Tail",
    "apiId": 95846,
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gen3_aurene_s_tail": 1
+    "gen3_aurenes_tail": 1
    },
    "needed_for": [
-    "gen3_aurene_s_tail"
+    "gen3_aurenes_tail"
    ],
    "sources": [
     {
@@ -16570,7 +16570,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_weight": {
+  "gift_of_aurenes_weight": {
    "name": "Gift of Aurene's Weight",
    "apiId": 96161,
    "kind": "advanced_craft",
@@ -16591,16 +16591,16 @@
     }
    ]
   },
-  "gift_of_aurene_s_wing": {
+  "gift_of_aurenes_wing": {
    "name": "Gift of Aurene's Wing",
    "apiId": 96015,
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gen3_aurene_s_wing": 1
+    "gen3_aurenes_wing": 1
    },
    "needed_for": [
-    "gen3_aurene_s_wing"
+    "gen3_aurenes_wing"
    ],
    "sources": [
     {
@@ -16612,7 +16612,7 @@
     }
    ]
   },
-  "gift_of_aurene_s_wisdom": {
+  "gift_of_aurenes_wisdom": {
    "name": "Gift of Aurene's Wisdom",
    "apiId": 97552,
    "kind": "advanced_craft",
@@ -18517,7 +18517,7 @@
    "checked": "2026-09-17",
    "verified": "les trois dons de l'Envoy sont par piece ; seul le Gift of Prosperity l'etait dans la donnee"
   },
-  "gift_of_eternity_s_garden_exploration": {
+  "gift_of_eternitys_garden_exploration": {
    "name": "Gift of Eternity's Garden Exploration",
    "kind": "advanced_craft",
    "farmable": false,
@@ -18535,7 +18535,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 109114
   },
   "gift_of_insight": {
    "name": "Gift of Insight",
@@ -18995,7 +18996,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "unbound": 1
+    "unbound": 5
    },
    "needed_for": [
     "unbound"
@@ -19009,7 +19010,10 @@
      }
     }
    ],
-   "apiId": 75781
+   "apiId": 75781,
+   "ref": "boite Recipe de Unbound : 1 Solution: Unbound + 5 Pristine Mist Essence + 1 Unbound Wings + 1 Third Order Mist Frame",
+   "checked": "2026-09-18",
+   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1"
   },
   "refined_envoy_armor": {
    "name": "Refined Envoy armor",
@@ -19194,7 +19198,7 @@
    ],
    "apiId": 75469
   },
-  "survivor_s_enchanted_compass": {
+  "survivors_enchanted_compass": {
    "name": "Survivor's Enchanted Compass",
    "kind": "acquire",
    "farmable": true,
@@ -19212,7 +19216,8 @@
       "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
      }
     }
-   ]
+   ],
+   "apiId": 106370
   },
   "tapestry_of_sacrifice": {
    "name": "Tapestry of Sacrifice",
@@ -21133,10 +21138,10 @@
    "name": "Poem on Pistols",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_argument"
+    "gift_of_aurenes_argument"
    ],
    "qty": {
-    "gift_of_aurene_s_argument": 1
+    "gift_of_aurenes_argument": 1
    },
    "sources": [
     {
@@ -21156,10 +21161,10 @@
    "name": "Poem on Greatswords",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_bite"
+    "gift_of_aurenes_bite"
    ],
    "qty": {
-    "gift_of_aurene_s_bite": 1
+    "gift_of_aurenes_bite": 1
    },
    "sources": [
     {
@@ -21179,10 +21184,10 @@
    "name": "Poem on Torches",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_breath"
+    "gift_of_aurenes_breath"
    ],
    "qty": {
-    "gift_of_aurene_s_breath": 1
+    "gift_of_aurenes_breath": 1
    },
    "sources": [
     {
@@ -21202,10 +21207,10 @@
    "name": "Poem on Daggers",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_claw"
+    "gift_of_aurenes_claw"
    ],
    "qty": {
-    "gift_of_aurene_s_claw": 1
+    "gift_of_aurenes_claw": 1
    },
    "sources": [
     {
@@ -21225,10 +21230,10 @@
    "name": "Poem on Swords",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_fang"
+    "gift_of_aurenes_fang"
    ],
    "qty": {
-    "gift_of_aurene_s_fang": 1
+    "gift_of_aurenes_fang": 1
    },
    "sources": [
     {
@@ -21248,10 +21253,10 @@
    "name": "Poem on Longbows",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_flight"
+    "gift_of_aurenes_flight"
    ],
    "qty": {
-    "gift_of_aurene_s_flight": 1
+    "gift_of_aurenes_flight": 1
    },
    "sources": [
     {
@@ -21271,10 +21276,10 @@
    "name": "Poem on Foci",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_gaze"
+    "gift_of_aurenes_gaze"
    ],
    "qty": {
-    "gift_of_aurene_s_gaze": 1
+    "gift_of_aurenes_gaze": 1
    },
    "sources": [
     {
@@ -21294,10 +21299,10 @@
    "name": "Poem on Staves",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_insight"
+    "gift_of_aurenes_insight"
    ],
    "qty": {
-    "gift_of_aurene_s_insight": 1
+    "gift_of_aurenes_insight": 1
    },
    "sources": [
     {
@@ -21317,10 +21322,10 @@
    "name": "Poem on Rifles",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_persuasion"
+    "gift_of_aurenes_persuasion"
    ],
    "qty": {
-    "gift_of_aurene_s_persuasion": 1
+    "gift_of_aurenes_persuasion": 1
    },
    "sources": [
     {
@@ -21340,10 +21345,10 @@
    "name": "Poem on Axes",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_rending"
+    "gift_of_aurenes_rending"
    ],
    "qty": {
-    "gift_of_aurene_s_rending": 1
+    "gift_of_aurenes_rending": 1
    },
    "sources": [
     {
@@ -21363,10 +21368,10 @@
    "name": "Poem on Shields",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_scale"
+    "gift_of_aurenes_scale"
    ],
    "qty": {
-    "gift_of_aurene_s_scale": 1
+    "gift_of_aurenes_scale": 1
    },
    "sources": [
     {
@@ -21386,10 +21391,10 @@
    "name": "Poem on Maces",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_tail"
+    "gift_of_aurenes_tail"
    ],
    "qty": {
-    "gift_of_aurene_s_tail": 1
+    "gift_of_aurenes_tail": 1
    },
    "sources": [
     {
@@ -21409,10 +21414,10 @@
    "name": "Poem on Warhorns",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_horn"
+    "gift_of_aurenes_horn"
    ],
    "qty": {
-    "gift_of_aurene_s_horn": 1
+    "gift_of_aurenes_horn": 1
    },
    "sources": [
     {
@@ -21432,10 +21437,10 @@
    "name": "Poem on Hammers",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_weight"
+    "gift_of_aurenes_weight"
    ],
    "qty": {
-    "gift_of_aurene_s_weight": 1
+    "gift_of_aurenes_weight": 1
    },
    "sources": [
     {
@@ -21455,10 +21460,10 @@
    "name": "Poem on Short Bows",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_wing"
+    "gift_of_aurenes_wing"
    ],
    "qty": {
-    "gift_of_aurene_s_wing": 1
+    "gift_of_aurenes_wing": 1
    },
    "sources": [
     {
@@ -21478,10 +21483,10 @@
    "name": "Poem on Scepters",
    "kind": "advanced_craft",
    "needed_for": [
-    "gift_of_aurene_s_wisdom"
+    "gift_of_aurenes_wisdom"
    ],
    "qty": {
-    "gift_of_aurene_s_wisdom": 1
+    "gift_of_aurenes_wisdom": 1
    },
    "sources": [
     {
@@ -62656,7 +62661,7 @@
    "gift_unique": "Gift of Verdarach",
    "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme"
   },
-  "gen3_aurene_s_fang": {
+  "gen3_aurenes_fang": {
    "name": "Aurene's Fang",
    "slot": "weapon (Sword)",
    "gen": "gen3",
@@ -62688,7 +62693,7 @@
    "gift_unique": "Gift of Aurene's Fang",
    "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
   },
-  "gen3_aurene_s_flight": {
+  "gen3_aurenes_flight": {
    "name": "Aurene's Flight",
    "slot": "weapon (Longbow)",
    "gen": "gen3",
@@ -62720,7 +62725,7 @@
    "gift_unique": "Gift of Aurene's Flight",
    "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
   },
-  "gen3_aurene_s_tail": {
+  "gen3_aurenes_tail": {
    "name": "Aurene's Tail",
    "slot": "weapon (Mace)",
    "gen": "gen3",
@@ -62752,7 +62757,7 @@
    "gift_unique": "Gift of Aurene's Tail",
    "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme — ressources/wiki/aurenes_*.html"
   },
-  "gen3_aurene_s_wing": {
+  "gen3_aurenes_wing": {
    "name": "Aurene's Wing",
    "slot": "weapon (Short bow)",
    "gen": "gen3",

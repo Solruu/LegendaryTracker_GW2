@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v296.json`, 1105 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v297.json`, 1105 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -32,7 +32,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | legendaire | composant | affiche | table | par |
 |---|---|---:|---:|---|
 | `legendary_relic` | `pile_of_lucent_crystal` | 18750 | 6250 | `qty_overlap_verified` |
-| `transcendence` | `shard_of_glory` | 2250 | 250 | `qty_overlap_verified` |
+| `transcendence` | `shard_of_glory` | 2500 | 250 | `qty_overlap_verified` |
 | `gen2_claw_of_the_khan_ur` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
 | `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_war_dedication` |
 | `gen2_eureka` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |

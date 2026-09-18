@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v296.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v297.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -36,7 +36,7 @@ ignore ce que la cible contient réellement.
 | `Triumphant Hero's armor` | 10 |
 | `Obsidian armor` | 8 |
 
-## 2 — 2 composants en arbitrage sans page au dépôt
+## 2 — 1 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -45,7 +45,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 | `Volatile Magic` | 2 |
-| `Shard of Glory` | 1 |
 
 ## 3 — 22 composants sans apiId ni page
 
