@@ -411,7 +411,19 @@ namespace GW2_NodeTracker
 
             try
             {
-                return JsonConvert.DeserializeObject<List<Route>>(File.ReadAllText(path)) ?? new List<Route>();
+                var loaded = JsonConvert.DeserializeObject<List<Route>>(File.ReadAllText(path))
+                             ?? new List<Route>();
+
+                // Les fichiers écrits avant le passage aux compositions
+                // portaient un champ "group" unique : désérialisés, ils
+                // arrivent sans aucun groupe. Une route sans groupe n'a ni
+                // identité ni catégorie, elle produirait un namespace TacO
+                // vide. On la jette, R la reconstruira.
+                int stale = loaded.RemoveAll(r => r.Groups == null || r.Groups.Count == 0);
+                if (stale > 0)
+                    Logger.Info("{0} route(s) a l'ancien format ignoree(s) : relance la construction (R) sur ces maps.", stale);
+
+                return loaded;
             }
             catch (Exception ex)
             {
