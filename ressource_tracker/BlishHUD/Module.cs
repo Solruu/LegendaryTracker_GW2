@@ -123,44 +123,44 @@ namespace GW2_NodeTracker
         protected override void DefineSettings(SettingCollection settings)
         {
             _captureKey = settings.DefineSetting(
-                "CaptureKey",
-                new KeyBinding(Keys.F12),
+                "CaptureKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.F12),
                 () => "Capturer un node",
                 () => "Enregistre un node du type sélectionné à ta position actuelle.");
 
             _cycleTypeKey = settings.DefineSetting(
-                "CycleTypeKey",
-                new KeyBinding(Keys.T),
+                "CycleTypeKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.T),
                 () => "Changer de type (cycle)",
                 () => "Passe au type suivant dans la liste filtrée par map courante.");
 
             _togglePanelKey = settings.DefineSetting(
-                "TogglePanelKey",
-                new KeyBinding(Keys.L),
+                "TogglePanelKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.L),
                 () => "Afficher/masquer la liste",
                 () => "Ouvre un panneau cliquable listant les types filtrés par map courante.");
 
             _forceIconRefreshKey = settings.DefineSetting(
-                "ForceIconRefreshKey",
-                new KeyBinding(Keys.I),
+                "ForceIconRefreshKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.F),
                 () => "Forcer le re-téléchargement des icônes",
                 () => "Re-télécharge TOUTES les icônes utilisées (pas seulement celles manquantes), même si le fichier existe déjà. Utile si une icône existante est fausse.");
 
             _correctKey = settings.DefineSetting(
-                "CorrectKey",
-                new KeyBinding(Keys.C),
+                "CorrectKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.C),
                 () => "Corriger le node le plus proche",
                 () => "Applique le type sélectionné au node le plus proche dans le rayon, tous groupes confondus. Geste explicite : contrairement à la capture, ne crée jamais de node.");
 
             _deleteKey = settings.DefineSetting(
-                "DeleteKey",
-                new KeyBinding(Keys.Delete),
+                "DeleteKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.S),
                 () => "Supprimer le node le plus proche",
                 () => "Deux pressions : la première demande confirmation, la seconde supprime. La demande expire au bout de 3 secondes.");
 
             _undoKey = settings.DefineSetting(
-                "UndoKey",
-                new KeyBinding(Keys.Z),
+                "UndoKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.U),
                 () => "Annuler la dernière action",
                 () => "Annule le dernier ajout, la dernière correction ou la dernière suppression. Un seul niveau.");
 
@@ -217,32 +217,32 @@ namespace GW2_NodeTracker
                 () => "Enregistre ton déplacement et remplace les lignes droites des routes par le trajet réellement parcouru. Désactivé : rien n'est enregistré, les routes existantes restent telles quelles. Coupe-le dès que tu ne fais pas une route, sinon tu enregistres n'importe quoi.");
 
             _buildRouteKey = routeSettings.DefineSetting(
-                "BuildRouteKey",
-                new KeyBinding(Keys.R),
+                "BuildRouteKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.R),
                 () => "Construire les routes de la map",
                 () => "(Re)calcule l'ordre de passage pour chaque groupe présent sur la map courante, puis applique les chemins connus. Écrase les routes existantes de cette map -- les traces, elles, ne sont jamais perdues.");
 
             _togglePathCorrectionKey = routeSettings.DefineSetting(
-                "TogglePathCorrectionKey",
-                new KeyBinding(Keys.O),
+                "TogglePathCorrectionKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.O),
                 () => "Correction de chemin : activer/désactiver",
                 () => "Bascule le réglage ci-dessus sans passer par le menu. Coupe le segment en cours à l'extinction et écrit les traces sur disque immédiatement.");
 
             _refinePathKey = routeSettings.DefineSetting(
-                "RefinePathKey",
-                new KeyBinding(Keys.P),
+                "RefinePathKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.V),
                 () => "Appliquer les chemins parcourus",
                 () => "Force tout de suite la reprise des tronçons par le trajet réellement parcouru, sans attendre la passe automatique. Ne touche jamais à l'ordre de passage, contrairement à la construction.");
 
             _invalidateLegKey = routeSettings.DefineSetting(
-                "InvalidateLegKey",
-                new KeyBinding(Keys.I),
+                "InvalidateLegKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.X),
                 () => "Rejeter le tronçon où je me tiens",
                 () => "Remet en ligne droite le tronçon le plus proche et refuse la trace qui l'avait produit. Seul un passage PLUS RÉCENT pourra le revérifier : refais le trajet correctement juste après.");
 
             _purgeTracesKey = routeSettings.DefineSetting(
-                "PurgeTracesKey",
-                new KeyBinding(Keys.K),
+                "PurgeTracesKey2",
+                new KeyBinding(ModifierKeys.Ctrl | ModifierKeys.Alt, Keys.K),
                 () => "Oublier les traces autour de moi",
                 () => "Supprime les points enregistrés dans un rayon de 30 m. À utiliser quand un passage a été fait n'importe comment (chute, skyscale, détour) : le reste de l'historique n'est pas touché.");
 
