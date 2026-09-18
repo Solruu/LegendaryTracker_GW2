@@ -1439,8 +1439,15 @@ const SOURCES_DB = {
           "sym_pain": 89182
         },
         "vision": {
+          "branded_mass": 89537,
+          "difluorite": 86977,
           "elegy": 35,
           "gems": 68063,
+          "incense": 86093,
+          "inscribed_shard": 87645,
+          "kralkatite": 86069,
+          "mistonium": 88955,
+          "rose_quartz": 86269,
           "vm": 45
         },
         "warbringer": {
@@ -72070,6 +72077,22 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Désert de Cristal", en: "Legendary Accessory — Crystal Desert" },
     resetType: "daily",
     currencies: [
+      // Les six monnaies de carte de LW4. Elles manquaient : l'onglet Composants
+      // n'affichait qu'elegie, gemmes et magie volatile, alors qu'Aurora y liste
+      // depuis toujours les six monnaies de LW3. Les couts etaient dans l'arbre
+      // et dans le grand total, mais invisibles la ou on les cherche — d'ou
+      // l'impression de les decouvrir en jeu. Chaque `required` est le total que
+      // le moteur calcule ; check_qty_vs_jsx refuse desormais toute divergence.
+      { id: "kralkatite", name: "Kralkatite Ore", required: 3100, icon: "KO", apiId: 86069, mapNote: "Domain of Istan",
+        aside: { fr: "Le gros du budget : 300 lingots pour les six armes Astral (10 minerais chacun) plus 100 pour le Gift of Crystalline Magic. Nœuds, événements et métas d'Istan.", en: "The bulk of the budget: 300 ingots for the six Astral weapons (10 ore each) plus 100 for the Gift of Crystalline Magic. Istan nodes, events and metas." } },
+      { id: "rose_quartz", name: "Powdered Rose Quartz", required: 3000, icon: "RQ", apiId: 86269, mapNote: "Domain of Istan",
+        aside: { fr: "Autant que le minerai : 10 par lingot de kralkatite. Récolte sur les Brandstones, instance personnelle comprise.", en: "As much as the ore: 10 per Kralkatite Ingot. Harvested from Brandstones, personal instance included." } },
+      { id: "branded_mass", name: "Branded Mass", required: 460, icon: "BM", apiId: 89537, mapNote: "Thunderhead Peaks",
+        aside: { fr: "360 pour les six armes de sang de dragon (60 chacune), 100 pour le Gift of Ephemeral Magic.", en: "360 for the six Dragonsblood weapons (60 each), 100 for the Gift of Ephemeral Magic." } },
+      { id: "inscribed_shard", name: "Inscribed Shard", required: 100, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna" },
+      { id: "difluorite", name: "Difluorite Crystal", required: 100, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },
+      { id: "mistonium", name: "Lump of Mistonium", required: 100, icon: "LM", apiId: 88955, mapNote: "Jahai Bluffs" },
+      { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },
       { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35 },
       { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: 68063 },
       { id: "vm", name: "Volatile Magic", required: 1000, icon: "EL", apiId: 45 },

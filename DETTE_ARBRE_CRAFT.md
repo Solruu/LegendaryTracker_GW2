@@ -1187,3 +1187,66 @@ au depot :
 Et une troisieme zone d'ombre : les 200 ressources de carte que tu cites pour
 Kourna n'apparaissent nulle part dans la chaine de la Banner of the Commander,
 qui ne montre que 25 lingots d'orichalque, 1 hampe laquee et 1 fanion.
+
+## V — 18/09/2026 : l'onglet Composants de Vision etait vide de ses cartes
+
+Correction de la section U, qui n'avait vu que la moitie du probleme. J'avais
+rattache les etapes de collection a leur composant ; tu cherchais les couts dans
+l'onglet **Composants**, et ils n'y etaient pas.
+
+**Ils n'y etaient pas parce que cet onglet ne rend PAS l'arbre de craft.** Il
+rend le tableau `currencies` declare dans le JSX, legendaire par legendaire.
+Aurora y liste ses six monnaies de LW3 — rubis de sang, baie d'hiver, bois
+petrifie, eclat de jade, fleur d'orchidee, perle orrienne. Vision n'en listait
+QUE trois : mosaique d'elegie, gemme amalgamee, magie volatile. Les six monnaies
+de LW4 n'y figuraient pas.
+
+D'ou l'impression exacte de decouvrir ces couts : ils etaient dans l'arbre,
+dans le grand total, et invisibles a l'endroit ou on les cherche.
+
+Sept entrees ajoutees, chacune au total que le moteur calcule :
+
+| monnaie | requis | carte |
+|---|---:|---|
+| Kralkatite Ore | 3 100 | Domain of Istan |
+| Powdered Rose Quartz | 3 000 | Domain of Istan |
+| Branded Mass | 460 | Thunderhead Peaks |
+| Inscribed Shard | 100 | Domain of Kourna |
+| Difluorite Crystal | 100 | Sandswept Isles |
+| Lump of Mistonium | 100 | Jahai Bluffs |
+| Funerary Incense | 100 | cartes de Path of Fire |
+
+Les cartes ne sont pas devinees : elles sont lues dans le champ `map` des
+sources de chaque composant. Ta lecture inversait difluorite et mistonium — le
+difluorite est de Ventesable, le mistonium de Jahai.
+
+**L'audit a refuse le premier jet**, et il avait raison : sept erreurs, une par
+monnaie, parce qu'un apiId declare cote JSX doit figurer dans
+`_meta.direct_sync.leg_currency_ids`. Sans cela l'onglet aurait affiche sept
+lignes a zero possede, sans jamais lire le stock.
+
+### Ce n'est pas propre a Vision
+
+La meme lacune court sur **presque tout le depot** :
+
+- les 16 gen2 : 800 pieces d'aeronef, 800 cristaux de ligne de force, 800
+  lingots d'aurillium, plus les quatre monnaies de HoT a 250, aucune declaree ;
+- les 16 gen3 : minerai cristallin, huile d'aeronef, poussiere aurique, etincelle
+  de ligne de force, 250 chacune ;
+- **Klobjarne Geirr : 20 250 pieces anciennes** et 250 eclats du Foyer ;
+- **Orrax Manifested : 50 000 pieces anciennes**, 750 blocs d'obsidienne mursaat,
+  750 pierres de chaleur de titan, 725 vestiges mursaat ;
+- Perfected Envoy : les trois monnaies de HoT a 1 500 ;
+- Selachimorpha et Aetheric Anchor : 500 ducats antiques ;
+- Stella Radians : 500 fragments de pierre d'ombre.
+
+Toutes sont dans l'arbre et dans le grand total, aucune dans son onglet
+Composants. Le correctif est mecanique — `required` vaut le total du moteur,
+l'apiId vient du composant, la carte de son champ `map` — et
+`check_qty_vs_jsx` refuse toute divergence. Il n'est pas applique ici : tu as
+demande de concentrer sur Vision, et une trentaine de blocs en une passe merite
+son propre feu vert.
+
+Aucune regle d'audit ne peut le detecter seule : le tableau `currencies` est une
+selection editoriale, et un detecteur naif sort les materiaux T6 de tout le
+depot — mesure, il crie sur 70 legendaires.

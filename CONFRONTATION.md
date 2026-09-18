@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v299.json`. 255 ecarts sur 67 legendaires.
+Source : `gw2_sources_v300.json`. 255 ecarts sur 67 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -118,18 +118,18 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_xiuquatl` | `ley_line_crystal` — Ley Line Crystal | 800 | 3100 | +2300 |
 | `gen2_xiuquatl` | `airship_part` — Airship Part | 800 | 3100 | +2300 |
 | `gen2_xiuquatl` | `lump_of_aurillium` — Lump of Aurillium | 800 | 3100 | +2300 |
+| `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_pharus` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `gen2_pharus` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
-| `gen2_pharus` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
+| `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
 | `gen2_sharur` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `gen2_sharur` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
-| `gen2_sharur` | `volatile_magic` — Volatile Magic | 2000 | 4000 | +2000 |
+| `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
 | `gen2_the_binding_of_ipos` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `gen2_the_binding_of_ipos` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
-| `gen2_the_binding_of_ipos` | `elder_wood_plank` — Elder Wood Plank | 2000 | 4000 | +2000 |
+| `gen2_the_hms_divinity` | `volatile_magic` — Volatile Magic | 0 | 2000 | +2000 |
 | `gen2_the_hms_divinity` | `unbound_magic` — Unbound Magic | 0 | 2000 | +2000 |
 | `gen2_the_hms_divinity` | `trade_contract` — Trade Contract | 0 | 2000 | +2000 |
-| `gen2_the_hms_divinity` | `volatile_magic` — Volatile Magic | 0 | 2000 | +2000 |
 | `transcendence` | `shard_of_glory` — Shard of Glory | 2500 | 500 | -2000 |
 | `gen2_flames_of_war` | `ley_line_crystal` — Ley Line Crystal | 800 | 2600 | +1800 |
 | `gen2_flames_of_war` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
@@ -138,18 +138,18 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `gen2_shooshadoo` | `airship_part` — Airship Part | 800 | 2600 | +1800 |
 | `gen2_shooshadoo` | `lump_of_aurillium` — Lump of Aurillium | 800 | 2600 | +1800 |
 | `aetheric_anchor` | `dust_crystalline` — Pile of Crystalline Dust | 400 | 2050 | +1650 |
+| `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `gen2_claw_of_the_khan_ur` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
-| `gen2_claw_of_the_khan_ur` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_eureka` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `gen2_eureka` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
-| `gen2_eureka` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_the_shining_blade` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `gen2_the_shining_blade` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
-| `gen2_the_shining_blade` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
+| `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `gen2_xiuquatl` | `unbound_magic` — Unbound Magic | 0 | 1500 | +1500 |
 | `gen2_xiuquatl` | `trade_contract` — Trade Contract | 0 | 1500 | +1500 |
-| `gen2_xiuquatl` | `volatile_magic` — Volatile Magic | 1500 | 3000 | +1500 |
 | `obsidian` | `hydrocatalytic_reagent` — Hydrocatalytic Reagent | 1500 | 3000 | +1500 |
 | `triumphant_hero` | `memory_of_battle` — Memory of Battle | 3000 | 1500 | -1500 |
 | `coalescence` | `trade_contract` — Trade Contract | 300 | 1550 | +1250 |
@@ -160,11 +160,11 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `conflux` | `dragonite_ore` — Dragonite Ore | 2250 | 1250 | -1000 |
 | `conflux` | `empyreal_fragment` — Empyreal Fragment | 2250 | 1250 | -1000 |
 | `conflux` | `bloodstone_dust` — Pile of Bloodstone Dust | 2250 | 1250 | -1000 |
+| `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_flames_of_war` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
 | `gen2_flames_of_war` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
-| `gen2_flames_of_war` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
+| `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `gen2_shooshadoo` | `unbound_magic` — Unbound Magic | 0 | 1000 | +1000 |
 | `gen2_shooshadoo` | `trade_contract` — Trade Contract | 0 | 1000 | +1000 |
-| `gen2_shooshadoo` | `volatile_magic` — Volatile Magic | 1000 | 2000 | +1000 |
 | `warbringer` | `dragonite_ore` — Dragonite Ore | 2250 | 1250 | -1000 |
 | `warbringer` | `empyreal_fragment` — Empyreal Fragment | 2250 | 1250 | -1000 |
