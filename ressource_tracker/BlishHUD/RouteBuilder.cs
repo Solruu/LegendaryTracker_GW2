@@ -65,7 +65,73 @@ namespace GW2_NodeTracker
             return result.OrderBy(c => c.Count).ToList();
         }
 
-        public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, IList<string> groups)
+        /// <summary>
+        /// Longueurs RÉELLES des tronçons déjà parcourus, indexées par couple
+        /// d'arrêts.
+        ///
+        /// C'est ce qui corrige le défaut de fond de l'optimisation : jusqu'ici
+        /// l'ordre de passage se calculait sur des distances à vol d'oiseau,
+        /// donc optimal sur une carte sans relief. Deux nodes séparés de 20 m
+        /// mais reliés par un détour sous l'eau de 300 m étaient traités comme
+        /// voisins immédiats. Dès qu'un tronçon a été parcouru, on connaît son
+        /// vrai coût et on s'en sert.
+        /// </summary>
+        public class EdgeCosts
+        {
+            private readonly Dictionary<string, double> _costs = new Dictionary<string, double>();
+
+            public int Count => _costs.Count;
+
+            private static string Key(RoutePoint a, RoutePoint b)
+            {
+                string ka = $"{a.X:0.0}|{a.Y:0.0}|{a.Z:0.0}";
+                string kb = $"{b.X:0.0}|{b.Y:0.0}|{b.Z:0.0}";
+                // Couple non orienté : un chemin vaut le même prix dans les
+                // deux sens.
+                return string.CompareOrdinal(ka, kb) <= 0 ? ka + "->" + kb : kb + "->" + ka;
+            }
+
+            public void Add(RoutePoint a, RoutePoint b, double length)
+            {
+                string k = Key(a, b);
+                // À égalité de couple, on garde le trajet le plus court connu :
+                // c'est le meilleur chemin qu'Antoine ait trouvé jusque-là.
+                if (!_costs.TryGetValue(k, out double existing) || length < existing)
+                    _costs[k] = length;
+            }
+
+            public double Between(RoutePoint a, RoutePoint b)
+            {
+                if (_costs.TryGetValue(Key(a, b), out double c)) return c;
+                return a.DistanceTo(b); // jamais parcouru : on retombe sur la ligne droite
+            }
+        }
+
+        /// <summary>Relève les coûts réels dans les tronçons vérifiés des routes existantes.</summary>
+        public static EdgeCosts CollectEdgeCosts(IEnumerable<Route> routes)
+        {
+            var costs = new EdgeCosts();
+            if (routes == null) return costs;
+
+            foreach (var route in routes)
+            {
+                if (route.Legs == null) continue;
+                for (int i = 0; i < route.Legs.Count && i < route.Stops.Count; i++)
+                {
+                    var leg = route.Legs[i];
+                    if (!leg.Verified) continue;
+
+                    var a = route.Stops[i];
+                    var b = route.Stops[(i + 1) % route.Stops.Count];
+                    costs.Add(a, b, leg.Length());
+                }
+            }
+
+            return costs;
+        }
+
+        public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, IList<string> groups,
+                                  EdgeCosts costs = null)
         {
             var wanted = new HashSet<string>(groups);
 
@@ -88,13 +154,14 @@ namespace GW2_NodeTracker
                 return route;
             }
 
-            route.Stops = TwoOpt(NearestNeighbour(stops));
+            costs = costs ?? new EdgeCosts();
+            route.Stops = TwoOpt(NearestNeighbour(stops, costs), costs);
             route.Legs = DirectLegs(route.Stops);
             return route;
         }
 
         /// <summary>Ordre initial : plus proche voisin depuis le premier arrêt.</summary>
-        private static List<RoutePoint> NearestNeighbour(List<RoutePoint> stops)
+        private static List<RoutePoint> NearestNeighbour(List<RoutePoint> stops, EdgeCosts costs)
         {
             var remaining = new List<RoutePoint>(stops);
             var order = new List<RoutePoint>();
@@ -109,7 +176,7 @@ namespace GW2_NodeTracker
                 double bestDist = double.MaxValue;
                 for (int i = 0; i < remaining.Count; i++)
                 {
-                    double d = current.DistanceTo(remaining[i]);
+                    double d = costs.Between(current, remaining[i]);
                     if (d < bestDist) { bestDist = d; bestIdx = i; }
                 }
                 current = remaining[bestIdx];
@@ -125,7 +192,7 @@ namespace GW2_NodeTracker
         /// raccourcit le tour, on l'inverse. Gain typique de 8 à 11 % sur les
         /// routes d'Iron Marches, pour un coût négligeable à n &lt; 200.
         /// </summary>
-        private static List<RoutePoint> TwoOpt(List<RoutePoint> tour)
+        private static List<RoutePoint> TwoOpt(List<RoutePoint> tour, EdgeCosts costs)
         {
             int n = tour.Count;
             if (n < 4) return tour;
@@ -149,8 +216,8 @@ namespace GW2_NodeTracker
 
                         if (ReferenceEquals(a, c) || ReferenceEquals(b, d)) continue;
 
-                        double before = a.DistanceTo(b) + c.DistanceTo(d);
-                        double after = a.DistanceTo(c) + b.DistanceTo(d);
+                        double before = costs.Between(a, b) + costs.Between(c, d);
+                        double after = costs.Between(a, c) + costs.Between(b, d);
 
                         if (after + 1e-9 < before)
                         {

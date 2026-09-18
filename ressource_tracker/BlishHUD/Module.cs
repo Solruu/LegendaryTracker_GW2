@@ -1180,6 +1180,11 @@ namespace GW2_NodeTracker
                 return;
             }
 
+            // Relevé AVANT de jeter les anciennes routes : leurs tronçons
+            // vérifiés portent les seules longueurs réelles qu'on connaisse,
+            // et c'est sur elles que le nouvel ordre va se calculer.
+            var costs = RouteBuilder.CollectEdgeCosts(_routes.Where(r => r.MapId == mapId));
+
             _routes.RemoveAll(r => r.MapId == mapId);
 
             // Toutes les combinaisons sont construites d'un coup, une bonne
@@ -1191,7 +1196,7 @@ namespace GW2_NodeTracker
             int stops = 0;
             foreach (var combo in combos)
             {
-                var route = RouteBuilder.Build(_nodes, mapId, combo);
+                var route = RouteBuilder.Build(_nodes, mapId, combo, costs);
                 if (route.Stops.Count < 2) continue;
 
                 // Le réglage coupé, on construit quand même la route : le
@@ -1212,7 +1217,7 @@ namespace GW2_NodeTracker
             int legs = built.Sum(r => r.Legs.Count);
 
             ShowNotification(
-                $"🧭 {built.Count} composition(s), {stops} arrets -- {verified}/{legs} troncons verifies");
+                $"🧭 {built.Count} composition(s), {stops} arrets -- {verified}/{legs} verifies, {costs.Count} cout(s) reel(s)");
         }
 
         /// <summary>
