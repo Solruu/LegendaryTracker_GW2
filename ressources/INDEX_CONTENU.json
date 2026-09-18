@@ -11244,6 +11244,15 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_exploration",
+  "titre": "Gift of Exploration",
+  "api_id": 19677,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_family",
   "titre": "Gift of Family",
   "api_id": 78344,
@@ -11508,6 +11517,33 @@
    {
     "objet": "Lump_of_Aurillium",
     "qty": 300
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_glory",
+  "titre": "Gift of Glory",
+  "api_id": 70528,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Shard_of_Glory",
+      250
+     ]
+    ],
+    "produit": "Gift of Glory"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Shard_of_Glory",
+    "qty": 250
    }
   ],
   "aretes_table": []
@@ -17741,6 +17777,15 @@
   "aretes_table": []
  },
  {
+  "page": "lamplighters_badge",
+  "titre": "Lamplighter's Badge",
+  "api_id": 97790,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "large_bone",
   "titre": "Large Bone",
   "api_id": 24341,
@@ -19831,6 +19876,40 @@
   "aretes_table": []
  },
  {
+  "page": "mystic_aspect",
+  "titre": "Mystic Aspect",
+  "api_id": 89105,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charm_of_Brilliance",
+      1
+     ],
+     [
+      "Charm_of_Potence",
+      1
+     ],
+     [
+      "Charm_of_Skill",
+      1
+     ]
+    ],
+    "produit": "Mystic Aspect"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "mystic_clover",
   "titre": "Mystic Clover",
   "api_id": 19675,
@@ -20298,6 +20377,40 @@
      ]
     ],
     "produit": "Mystic Facet"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "mystic_mote",
+  "titre": "Mystic Mote",
+  "api_id": 89133,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      1
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ],
+     [
+      "Symbol_of_Pain",
+      1
+     ]
+    ],
+    "produit": "Mystic Mote (Rare)"
    }
   ],
   "couts_vendeur": [],
@@ -22010,6 +22123,550 @@
   "aretes_table": []
  },
  {
+  "page": "poem_on_axes",
+  "titre": "Poem on Axes",
+  "api_id": 97160,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Axe_Blade",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Axes"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_daggers",
+  "titre": "Poem on Daggers",
+  "api_id": 96187,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Dagger_Blade",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Daggers"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_foci",
+  "titre": "Poem on Foci",
+  "api_id": 96951,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Spiritwood_Focus_Core",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Foci"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_greatswords",
+  "titre": "Poem on Greatswords",
+  "api_id": 96036,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Greatsword_Blade",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Greatswords"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_hammers",
+  "titre": "Poem on Hammers",
+  "api_id": 97082,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Hammer_Head",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Hammers"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_longbows",
+  "titre": "Poem on Longbows",
+  "api_id": 97800,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Spiritwood_Longbow_Stave",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Longbows"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_maces",
+  "titre": "Poem on Maces",
+  "api_id": 96035,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Mace_Head",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Maces"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_pistols",
+  "titre": "Poem on Pistols",
+  "api_id": 95809,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Pistol_Barrel",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Pistols"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_rifles",
+  "titre": "Poem on Rifles",
+  "api_id": 97201,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Rifle_Barrel",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Rifles"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_scepters",
+  "titre": "Poem on Scepters",
+  "api_id": 96173,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Spiritwood_Scepter_Core",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Scepters"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_shields",
+  "titre": "Poem on Shields",
+  "api_id": 95740,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Shield_Boss",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Shields"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_short_bows",
+  "titre": "Poem on Short Bows",
+  "api_id": 96849,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Spiritwood_Short-Bow_Stave",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Short Bows"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_staves",
+  "titre": "Poem on Staves",
+  "api_id": 95962,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Spiritwood_Staff_Head",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Staves"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_swords",
+  "titre": "Poem on Swords",
+  "api_id": 97335,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Sword_Blade",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Swords"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_torches",
+  "titre": "Poem on Torches",
+  "api_id": 97257,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Torch_Head",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Torches"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "poem_on_warhorns",
+  "titre": "Poem on Warhorns",
+  "api_id": 96341,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Tale_of_Adventure",
+      10
+     ],
+     [
+      "Lamplighter%27s_Badge",
+      10
+     ],
+     [
+      "Deldrimor_Steel_Horn",
+      1
+     ],
+     [
+      "Sheet_of_Premium_Paper",
+      1
+     ]
+    ],
+    "produit": "Poem on Warhorns"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "potent_venom_sac",
   "titre": "Potent Venom Sac",
   "api_id": 24282,
@@ -23084,6 +23741,40 @@
     "qty": 500
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "shard_o_war",
+  "titre": "Shard o' War",
+  "api_id": 80380,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Tribute_to_the_Man_o%27_War",
+      1
+     ],
+     [
+      "Mystic_Curio",
+      1
+     ],
+     [
+      "Mithril_Ingot",
+      40
+     ],
+     [
+      "Elder_Wood_Plank",
+      30
+     ]
+    ],
+    "produit": "Shard o&#39; War"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -28253,6 +28944,40 @@
   "page": "tribute_to_the_exitare",
   "titre": "Tribute to the Exitare",
   "api_id": 90776,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Airship_Part",
+    "qty": 20
+   },
+   {
+    "objet": "Ley_Line_Crystal",
+    "qty": 20
+   },
+   {
+    "objet": "Lump_of_Aurillium",
+    "qty": 20
+   },
+   {
+    "objet": "Trade_Contract",
+    "qty": 20
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 20
+   },
+   {
+    "objet": "Volatile_Magic",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "tribute_to_the_man_o_war",
+  "titre": "Tribute to the Man o' War",
+  "api_id": 80201,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [

@@ -859,6 +859,29 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `essence_of_annihilation.html` | Essence of Annihilation | article complet | 2026-09-16 |
 | `gift_of_craftsmanship.html` | Gift of Craftsmanship | article complet | 2026-09-17 |
 | `gift_of_prosperity.html` | Gift of Prosperity | article complet | 2026-09-17 |
+| `gift_of_exploration.html` | Gift of Exploration | article complet | 2026-09-18 |
+| `gift_of_glory.html` | Gift of Glory | article complet | 2026-09-18 |
+| `lamplighters_badge.html` | Lamplighter's Badge | article complet | 2026-09-18 |
+| `mystic_aspect.html` | Mystic Aspect | article complet | 2026-09-18 |
+| `mystic_mote.html` | Mystic Mote | article complet | 2026-09-18 |
+| `poem_on_axes.html` | Poem on Axes | article complet | 2026-09-18 |
+| `poem_on_daggers.html` | Poem on Daggers | article complet | 2026-09-18 |
+| `poem_on_foci.html` | Poem on Foci | article complet | 2026-09-18 |
+| `poem_on_greatswords.html` | Poem on Greatswords | article complet | 2026-09-18 |
+| `poem_on_hammers.html` | Poem on Hammers | article complet | 2026-09-18 |
+| `poem_on_longbows.html` | Poem on Longbows | article complet | 2026-09-18 |
+| `poem_on_maces.html` | Poem on Maces | article complet | 2026-09-18 |
+| `poem_on_pistols.html` | Poem on Pistols | article complet | 2026-09-18 |
+| `poem_on_rifles.html` | Poem on Rifles | article complet | 2026-09-18 |
+| `poem_on_scepters.html` | Poem on Scepters | article complet | 2026-09-18 |
+| `poem_on_shields.html` | Poem on Shields | article complet | 2026-09-18 |
+| `poem_on_short_bows.html` | Poem on Short Bows | article complet | 2026-09-18 |
+| `poem_on_staves.html` | Poem on Staves | article complet | 2026-09-18 |
+| `poem_on_swords.html` | Poem on Swords | article complet | 2026-09-18 |
+| `poem_on_torches.html` | Poem on Torches | article complet | 2026-09-18 |
+| `poem_on_warhorns.html` | Poem on Warhorns | article complet | 2026-09-18 |
+| `shard_o_war.html` | Shard o' War | article complet | 2026-09-18 |
+| `tribute_to_the_man_o_war.html` | Tribute to the Man o' War | article complet | 2026-09-18 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

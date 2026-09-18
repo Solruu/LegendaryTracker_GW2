@@ -979,3 +979,53 @@ l'Essence of Annihilation confirmee le 17/09, que la table du precurseur
 n'inclut pas. Connue, datee, chiffree.
 
 Audit v45 : 0 erreur, 56 avertissements. Moteurs confrontes : aucun ecart.
+
+## R — 18/09/2026 : lot 20, la chaine des Poemes se ferme
+
+Vingt-quatre captures, exactement celles qui manquaient a la section Q.
+
+**Les seize Poemes portaient un identifiant bricole.** Faute de page, ils
+avaient ete nommes depuis le lien de la table — `Poem_on_Pistols`, underscores
+compris — d'ou des identifiants en `poem_on_poem_on_pistols` et un `name` qui
+n'etait pas le nom de l'objet. Chaque page du lot donne son titre et son apiId :
+les seize sont renommes et identifies.
+
+**Les recettes completent la chaine.** Chaque Poeme coute, en plus des 10 Tale
+of Adventure et 10 Lamplighter's Badge deja poses hier, une piece d'arme et une
+Sheet of Premium Paper. Onze pieces en acier de Deldrimor pour les armes de
+metal, cinq en bois d'esprit pour les armes de bois — Spiritwood Focus Core,
+Longbow Stave, Scepter Core, Short-Bow Stave, Staff Head. Dix-huit composants
+crees, exigence sourcee, cout de fabrication inconnu faute de page.
+
+**Cinq apiId poses** : Lamplighter's Badge 97790, Shard o' War 80380, Tribute to
+the Man o' War 80201, et surtout `gift_of_exploration` 19677 et `gift_of_glory`
+70528, en attente depuis le 17/09.
+
+**La recette du Shard o' War confirme la saisie d'hier au chiffre pres** : 1
+Tribute to the Man o' War, 1 Mystic Curio, 40 lingots de mithril, 30 planches de
+bois ancien, Huntsman 450. Elle avait ete posee sur la seule table de l'arme et
+la boite Recipe du Gift of Divinity ; sa propre page les rejoint.
+
+### Encore l'apostrophe
+
+Deux fois dans la meme passe.
+
+Le slug tire de `Lamplighter%27s_Badge` donne `lamplighter_s_badge`, quand la
+capture s'appelle `lamplighters_badge` : un composant en double s'est cree avant
+d'etre fusionne. Et la page etait **deja au depot depuis le lot 7**, sous
+`lamplighter_s_badge.html` — le composant, lui, n'existait pas. Le depot porte
+donc maintenant deux fichiers pour la meme page wiki. Rien ne les compte deux
+fois, aucune des deux ne porte de table, mais `INDEX_CONTENU` les signale et
+c'est le genre de doublon qui trompe une lecture future. **Aucune n'est
+supprimee sans ton accord.**
+
+### Deux choses vues et laissees
+
+- **`gift_of_glory` coute 250 Shard of Glory**, sa page le dit. La chaine ne le
+  porte pas : les 250 sont ecrits en direct sur chaque legendaire qui prend le
+  Gift of the Mists. Brancher la chaine sans retirer les cles directes
+  doublerait tout. C'est le bon modele — l'information doit descendre la
+  chaine — mais c'est un refactor structurel qui deplace des totaux affiches.
+- **`karma` porte `aurora: 0`.** Un zero n'est pas une quantite ; le JSX declare
+  pourtant le karma pour Aurora, donc l'audit le signale invisible du grand
+  total. Le vrai nombre n'est nulle part au depot.
