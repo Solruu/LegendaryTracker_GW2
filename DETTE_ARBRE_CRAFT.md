@@ -1502,3 +1502,32 @@ tableaux ayant disparu, ils ne ramenaient plus rien — le stock des monnaies
 d'armes n'aurait plus ete lu du tout, et toutes les lignes auraient affiche zero
 possede. Ils lisent desormais le catalogue. Un `grep` des deux anciens noms ne
 laisse plus qu'une occurrence, dans le commentaire qui raconte leur suppression.
+
+## AB — 18/09/2026 : la regle de la section Y s'applique a 56 etapes de plus
+
+La regle « une etape validee satisfait son composant » ne servait qu'aux
+etapes qui portaient deja le champ `component` : les quatre « Vision of
+Equipment » posees en section U, et celles des armes gen1 que le garde-fou
+avait revelees. Une regle generale branchee sur une poignee de cas.
+
+**Cinquante-six etapes de plus sont rattachees**, par identite de nom : une
+etape appelee « Gift of Frostfang » EST le composant `gift_of_frostfang`. Le
+rapprochement se fait sur le nom normalise, et un garde-fou refuse le lien si
+l'etape et le composant portent des liens wiki differents — aucun homonyme n'a
+eu a etre ecarte, mais la porte est fermee.
+
+Ce que cela donne, en cochant « Gift of Ice » sur Frostfang :
+
+| | avant | apres |
+|---|---:|---:|
+| Corrupted Lodestone | 100 | **0** |
+| Glacial Lodestone | 100 | **0** |
+| Orichalcum Ingot | 500 | **250** |
+
+**Les totaux a collections vierges ne bougent pas d'une unite** — verifie sur
+les 84 cibles avant ecriture. Le lien ne cree aucun cout : il dit seulement a
+quoi une etape correspond.
+
+Les 2 173 etapes restantes sans correspondance sont normales : ce sont des
+etapes d'action (« Vaincre Tequatl », « Parler au chaman hylek »), pas des
+objets de l'arbre de craft.
