@@ -1444,3 +1444,54 @@ C'est un remplacement de mecanisme, pas une insertion. Il attend un feu vert.
 **`ley_line_crystal` manque partout** : 800 par arme gen2 selon la chaine, mais
 son composant n'a pas d'apiId, donc son stock ne peut pas etre lu et l'audit
 refuserait la ligne. Sa page est a capturer.
+
+## AA — 18/09/2026 : le suivi d'armes lit le moteur, deux tables parallelles en moins
+
+### Le pont manquait
+
+Le suivi d'armes raisonne en identifiants d'objets de l'API, decouverts via
+`/v2/legendaryarmory`. Le moteur raisonne en cles de legendaires. Rien ne
+traduisait les uns en les autres : **trois legendaires sur 84 portaient un
+apiId**. Ni Astralaria, ni Aurene's Claw, ni Klobjarne Geirr.
+
+**Soixante-huit apiId poses**, tous lus dans la propre capture wiki du
+legendaire, aucun devine. Les dix qui restent sans sont les quatre sets
+d'armure, Eikasia, Selachimorpha, le Fractal Capacitor et les trois pseudo-
+cibles (`t6_tracker`, `upgrades_combined`, `weapons_tracker`) : aucune arme ne
+manque a l'appel.
+
+### La mecanique
+
+`currenciesPerWeapon` et `currenciesPerWeaponByGen` portaient des `perUnit`
+ecrits a la main. Table parallele, avec sa derive possible et son angle mort :
+les 20 250 pieces anciennes de Klobjarne Geirr etaient introuvables parce qu'il
+tombait dans le seau « other », partage avec les autres armes hors generation,
+et qu'il est le seul a porter cette monnaie — y ecrire son chiffre aurait fait
+mentir les autres.
+
+Les deux tableaux sont remplaces par un `currencyCatalog` **sans aucun nombre** :
+nom, icone, apiId, composant, carte. De quoi AFFICHER une ligne. Ce qu'elle vaut,
+le moteur le dit, pour les armes reellement ciblees et non possedees, via
+`computeGrandTotal` — le meme moteur que le grand total et que le confrontateur
+Python. Une monnaie que les armes ciblees ne demandent pas ne s'affiche pas.
+
+Effet immediat :
+
+| | avant | apres |
+|---|---|---|
+| Klobjarne Geirr | rien | **20 250 pieces anciennes**, 250 eclats du Foyer, 38 trefles |
+| Astralaria | 800 + 800 ecrits a la main | 800 + 800 calcules |
+| une gen3 non ciblee | lignes a zero | rien |
+
+Et `check_qty_vs_jsx` n'a plus rien a surveiller de ce cote : il n'y a plus de
+nombre ecrit a la main pour les armes.
+
+### Deux apiId que j'avais inventes
+
+J'avais ecrit 103351 pour la piece ancienne et 102952 pour l'eclat du Foyer, de
+memoire. Les composants disent 100477 et 103587. **Corriges depuis la donnee, pas
+depuis ma memoire** — c'est la troisieme fois cette semaine qu'un identifiant
+invente se fait prendre, apres l'Ancient Wood Log en section X.
+
+Reste a capturer : `Ley_Line_Crystal`, 800 par arme gen2 selon la chaine, dont le
+composant n'a pas d'apiId — sa ligne ne peut donc pas s'afficher.

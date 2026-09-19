@@ -1434,53 +1434,38 @@ const LEGENDARIES = {
     resetType: "weekly",
     isWeaponTracker: true,
     // IDs découverts au runtime via /v2/legendaryarmory (les 96937-96952 "consécutifs" étaient faux — seul 96937 existait)
-    currenciesPerWeapon: [
-      // Monnaies de carte ajoutees le 18/09/2026. Elles etaient dans
-      // l'arbre et dans le grand total, mais l'onglet Composants du groupe
-      // d'armes ne les montrait pas : seize gen2 et seize gen3 reclamaient
-      // en silence des ressources de HoT. Chaque `perUnit` est le total que
-      // le moteur calcule pour UNE arme, identique sur les seize de la
-      // generation. Ley Line Crystal manque a l'appel : son composant n'a
-      // pas d'apiId, donc son stock ne peut pas etre lu. A capturer.
-      { id: "crystalline", name: "Crystalline Ore",         perUnit: 250, icon: "CO", apiId: 46682, mapNote: "Dragon's Stand" },
-      { id: "airship_oil", name: "Bottle of Airship Oil",   perUnit: 250, icon: "AO", apiId: 69434, mapNote: "Verdant Brink" },
-      { id: "auric_dust",  name: "Pile of Auric Dust",      perUnit: 250, icon: "AD", apiId: 69432, mapNote: "Auric Basin" },
-      { id: "ley_spark",   name: "Ley Line Spark",          perUnit: 250, icon: "LS", apiId: 69392, mapNote: "Tangled Depths" },
-      { id: "antique",    name: "Antique Summoning Stone",         perUnit: 100,  icon: "AS", apiId: 96978 },
-      { id: "runestones", name: "Jade Runestone",                  perUnit: 100,  icon: "JR", apiId: 96722 },
-      { id: "clovers",    name: "Mystic Clover",                   perUnit: 38,   icon: "MC", apiId: 19675 },
-      { id: "lodestones", name: "Amalgamated Draconic Lodestone",  perUnit: 5,    icon: "DL", apiId: 92687 },
-      { id: "notes",      name: "Research Note",                   perUnit: 3000, icon: "RN", apiId: 61 },
+    // CATALOGUE D'AFFICHAGE — aucun nombre ici. Les quantites viennent du
+    // moteur, pour les armes reellement ciblees.
+    //
+    // Avant, deux tableaux portaient des `perUnit` ecrits a la main :
+    // `currenciesPerWeapon` et `currenciesPerWeaponByGen`. C'etait une table
+    // parallele, avec ce que cela suppose de derive — et un angle mort : les
+    // 20 250 pieces anciennes de Klobjarne Geirr etaient introuvables, parce
+    // qu'il tombait dans le seau « other », partage avec les autres armes hors
+    // generation, et qu'il est le seul a porter cette monnaie. Y ecrire son
+    // chiffre aurait fait mentir les autres.
+    //
+    // Ne restent ici que le nom, l'icone, l'apiId et la carte : de quoi
+    // AFFICHER une ligne. Ce qu'elle vaut, le moteur le dit. Une monnaie que
+    // les armes ciblees ne demandent pas ne s'affiche pas.
+    currencyCatalog: [
+      { id: "clovers",     name: "Mystic Clover",                  icon: "MC", apiId: 19675, comp: "mystic_clover" },
+      { id: "coins",       name: "Mystic Coin",                    icon: "MO", apiId: 19976, comp: "mystic_coin" },
+      { id: "ectos",       name: "Glob of Ectoplasm",              icon: "EC", apiId: 19721, comp: "glob_of_ectoplasm" },
+      { id: "obsidian",    name: "Obsidian Shard",                 icon: "OS", apiId: 19925, comp: "obsidian_shard" },
+      { id: "antique",     name: "Antique Summoning Stone",        icon: "AS", apiId: 96978, comp: "antique_summoning_stone" },
+      { id: "runestones",  name: "Jade Runestone",                 icon: "JR", apiId: 96722, comp: "jade_runestone" },
+      { id: "lodestones",  name: "Amalgamated Draconic Lodestone", icon: "DL", apiId: 92687, comp: "amalgamated_draconic_lodestone" },
+      { id: "notes",       name: "Research Note",                  icon: "RN", apiId: 61,    comp: "research_note" },
+      { id: "airship",     name: "Airship Part",                   icon: "AP", apiId: 74494, comp: "airship_part",        mapNote: "Verdant Brink" },
+      { id: "aurillium",   name: "Lump of Aurillium",              icon: "LA", apiId: 75012, comp: "lump_of_aurillium",   mapNote: "Auric Basin" },
+      { id: "crystalline", name: "Crystalline Ore",                icon: "CO", apiId: 46682, comp: "crystalline_ore",     mapNote: "Dragon's Stand" },
+      { id: "airship_oil", name: "Bottle of Airship Oil",          icon: "AO", apiId: 69434, comp: "bottle_airship_oil",  mapNote: "Verdant Brink" },
+      { id: "auric_dust",  name: "Pile of Auric Dust",             icon: "AD", apiId: 69432, comp: "pile_auric_dust",     mapNote: "Auric Basin" },
+      { id: "ley_spark",   name: "Ley Line Spark",                 icon: "LS", apiId: 69392, comp: "ley_line_spark",      mapNote: "Tangled Depths" },
+      { id: "ancient_coin", name: "Ancient Coin",                  icon: "AC", apiId: 100477, comp: "ancient_coin",       mapNote: "Janthir Wilds" },
+      { id: "homestead",   name: "Shard of the Homestead",         icon: "SH", apiId: 103587, comp: "shard_of_the_homestead", mapNote: "Janthir Wilds" },
     ],
-    // Coûts unitaires par génération (Gift of Fortune gen1 / Mystic Tribute gen2 / gen3 = currenciesPerWeapon)
-    currenciesPerWeaponByGen: {
-      gen1: [
-        { id: "clovers",  name: "Mystic Clover",     perUnit: 77,  icon: "MC", apiId: 19675 },
-        { id: "ectos",    name: "Glob of Ectoplasm", perUnit: 250, icon: "EC", apiId: 19721 },
-        { id: "obsidian", name: "Obsidian Shard",    perUnit: 250, icon: "OS", apiId: 19925 },
-      ],
-      gen2: [
-        { id: "clovers",  name: "Mystic Clover",     perUnit: 77,  icon: "MC", apiId: 19675 },
-        { id: "coins",    name: "Mystic Coin",       perUnit: 250, icon: "MO", apiId: 19976 },
-        // Monnaies de carte ajoutees le 18/09/2026. Elles etaient dans
-        // l'arbre et dans le grand total, mais l'onglet Composants du groupe
-        // d'armes ne les montrait pas : seize gen2 et seize gen3 reclamaient
-        // en silence des ressources de HoT. Chaque `perUnit` est le total que
-        // le moteur calcule pour UNE arme, identique sur les seize de la
-        // generation. Ley Line Crystal manque a l'appel : son composant n'a
-        // pas d'apiId, donc son stock ne peut pas etre lu. A capturer.
-        { id: "airship",     name: "Airship Part",            perUnit: 800, icon: "AP", apiId: 74494, mapNote: "Verdant Brink" },
-        { id: "aurillium",   name: "Lump of Aurillium",       perUnit: 800, icon: "LA", apiId: 75012, mapNote: "Auric Basin" },
-        { id: "crystalline", name: "Crystalline Ore",         perUnit: 250, icon: "CO", apiId: 46682, mapNote: "Dragon's Stand" },
-        { id: "airship_oil", name: "Bottle of Airship Oil",   perUnit: 250, icon: "AO", apiId: 69434, mapNote: "Verdant Brink" },
-        { id: "auric_dust",  name: "Pile of Auric Dust",      perUnit: 250, icon: "AD", apiId: 69432, mapNote: "Auric Basin" },
-        { id: "ley_spark",   name: "Ley Line Spark",          perUnit: 250, icon: "LS", apiId: 69392, mapNote: "Tangled Depths" },
-        { id: "obsidian", name: "Obsidian Shard",    perUnit: 250, icon: "OS", apiId: 19925 },
-      ],
-      other: [
-        { id: "clovers",  name: "Mystic Clover",     perUnit: 38,  icon: "MC", apiId: 19675 },
-      ],
-    },
     currencies: [],
     collectionNoteKeys: ["wpn_note1", "wpn_note2"],
     metas: [],
@@ -5106,11 +5091,41 @@ export default function GW2LegendaryTracker() {
   const wpnGenCount = (g) => wpnIdsAll.filter(id => (((wpnItems ?? {})[String(id)] ?? {}).gen ?? "") === g).length;
   const wpnGenOwned = (g) => wpnIdsAll.filter(id => (((wpnItems ?? {})[String(id)] ?? {}).gen ?? "") === g && armoryRaw.has(id)).length;
 
+  // ── Armes : la facture vient du moteur, plus d'un tableau ecrit a la main ──
+  // On traduit les armes CIBLEES ET NON POSSEDEES en cles de legendaires, par
+  // leur apiId, puis on demande leur total a `computeGrandTotal` — le meme
+  // moteur que le grand total et que le confrontateur Python. Une seule source
+  // de verite, donc plus rien a tenir en phase.
+  //
+  // Le pont apiId → cle de legendaire n'existait pas : trois legendaires sur
+  // 84 portaient un apiId. Les 68 poses le 18/09 viennent tous de leur propre
+  // capture wiki.
+  const LEG_BY_API = React.useMemo(() => {
+    const m = new Map();
+    for (const [lid, l] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
+      if (typeof l?.apiId === "number") m.set(l.apiId, lid);
+    }
+    return m;
+  }, []);
+  const wpnLegIds = React.useMemo(
+    () => [...new Set(wpnTargetGen.filter(id => !wpnOwnedSet.has(id))
+      .map(id => LEG_BY_API.get(id)).filter(Boolean))],
+    [wpnTargetGen.join(","), wpnOwnedSet.size, LEG_BY_API]);
+  const wpnCurrencies = React.useMemo(() => {
+    if (!isWeapons || wpnLegIds.length === 0) return [];
+    let totals = {};
+    try { totals = computeGrandTotal(wpnLegIds, auroraCollections)?.totals ?? {}; }
+    catch (_) { return []; }
+    return (leg?.currencyCatalog ?? [])
+      .map(c => ({ ...c, required: Math.round(totals[c.comp] ?? 0) }))
+      .filter(c => c.required > 0);
+  }, [isWeapons, wpnLegIds.join(","), auroraCollections, leg]);
+
   // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
   const legCurrencies = isGrandTotal ? [] : (isArmorSet
     ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
     : (isWeapons
-      ? ((((leg?.currenciesPerWeaponByGen ?? {})[wpnGen]) ?? (leg?.currenciesPerWeapon ?? []))).map(c => ({ ...c, required: c.perUnit * wpnRemainingCount }))
+      ? wpnCurrencies
       : (leg?.currencies ?? [])));
   // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
   // que tant que l'étape correspondante n'est pas validée (v107).
