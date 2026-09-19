@@ -1495,3 +1495,10 @@ invente se fait prendre, apres l'Ancient Wood Log en section X.
 
 Reste a capturer : `Ley_Line_Crystal`, 800 par arme gen2 selon la chaine, dont le
 composant n'a pas d'apiId — sa ligne ne peut donc pas s'afficher.
+
+**Rattrapage immediat (JSX v215)** : deux endroits collectaient encore les apiId
+a synchroniser depuis `currenciesPerWeapon` et `currenciesPerWeaponByGen`. Les
+tableaux ayant disparu, ils ne ramenaient plus rien — le stock des monnaies
+d'armes n'aurait plus ete lu du tout, et toutes les lignes auraient affiche zero
+possede. Ils lisent desormais le catalogue. Un `grep` des deux anciens noms ne
+laisse plus qu'une occurrence, dans le commentaire qui raconte leur suppression.

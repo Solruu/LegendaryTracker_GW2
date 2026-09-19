@@ -4539,8 +4539,10 @@ export default function GW2LegendaryTracker() {
       const descs = [
         ...(l.currencies ?? []),
         ...(l.currenciesPerPiece ?? []),
-        ...(l.currenciesPerWeapon ?? []),
-        ...Object.values(l.currenciesPerWeaponByGen ?? {}).flat(),
+        // v215 : ces deux tableaux ont disparu avec le passage au moteur. Les
+        // apiId a synchroniser viennent desormais du catalogue d'affichage —
+        // sans quoi le stock des monnaies d'armes n'etait plus lu du tout.
+        ...(l.currencyCatalog ?? []),
       ];
       for (const c of descs) if (c.apiId && !(c.id in d2)) d2[c.id] = val(c.apiId);
       if (Object.keys(d2).length > 0) currencies[l.id] = d2;
@@ -4668,8 +4670,7 @@ export default function GW2LegendaryTracker() {
         const declared = [
           ...(L?.currencies ?? []),
           ...(L?.currenciesPerPiece ?? []),
-          ...(L?.currenciesPerWeapon ?? []),
-          ...Object.values(L?.currenciesPerWeaponByGen ?? {}).flat(),
+          ...(L?.currencyCatalog ?? []),
         ].map(c => c.id);
         const notSent = declared.filter(cid => !(cid in vals));
         await storeSet(getCurrencyKey(legId), { ...cur, ...vals, __notSent: notSent, __syncedAt: Date.now() });
