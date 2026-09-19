@@ -1402,3 +1402,45 @@ le depot au commit precedent par ma faute — un reste de la tentative de parseu
 v4 abandonnee en section S. Il importait `gw2_parse_material_list_v4`, qui
 n'existe pas : le fichier ne pouvait pas tourner. Le v6 porte desormais la vraie
 suite du v5.
+
+## Z — 18/09/2026 : le groupe d'armes montre enfin ses monnaies de carte
+
+Point 2 du backlog. Seize gen2 et seize gen3 reclamaient en silence des
+ressources de Heart of Thorns : elles etaient dans l'arbre et dans le grand
+total, absentes de l'onglet Composants du groupe d'armes.
+
+Le groupe ne se declare pas comme les autres : pas de bloc `currencies`, mais
+`currenciesPerWeaponByGen`, un cout UNITAIRE par generation multiplie par le
+nombre d'armes restantes. Et une subtilite qui m'a coute deux tentatives : **il
+n'y a pas de cle `gen3`**. Le commentaire du fichier le dit — « gen3 =
+currenciesPerWeapon » — la generation 3 retombe sur la liste par defaut.
+
+Six entrees pour la gen2 (800 pieces d'aeronef, 800 lingots d'aurillium, et les
+quatre monnaies de HoT a 250), quatre pour la gen3 (les memes quatre a 250).
+Chaque `perUnit` est le total que le moteur calcule pour UNE arme, identique sur
+les seize de la generation.
+
+**L'audit a refuse le premier jet**, quatre erreurs, une par monnaie absente de
+`_meta.direct_sync.leg_currency_ids`. Meme garde-fou qu'en section V : sans lui,
+l'onglet aurait affiche des lignes a zero possede sans jamais lire le stock.
+
+### Ce qui reste, et pourquoi je ne l'ai pas force
+
+**Klobjarne Geirr et ses 20 250 pieces anciennes restent invisibles.** Il tombe
+dans le seau `other` du groupe d'armes, partage avec les autres armes hors
+generation — or il est le seul a porter cette monnaie. Y ecrire 20 250 les
+ferait toutes mentir.
+
+La bonne forme n'est pas un tableau de plus indexe par arme : ce serait une
+table parallele de plus, et c'est precisement ce que la regle du projet
+interdit. La chaine sait deja tout. La voie propre est de faire lire au groupe
+d'armes le total du moteur pour l'arme selectionnee, au lieu d'une liste ecrite
+a la main par generation — ce qui supprimerait du meme coup
+`currenciesPerWeapon`, `currenciesPerWeaponByGen` et le risque de derive que
+`check_qty_vs_jsx` doit surveiller aujourd'hui.
+
+C'est un remplacement de mecanisme, pas une insertion. Il attend un feu vert.
+
+**`ley_line_crystal` manque partout** : 800 par arme gen2 selon la chaine, mais
+son composant n'a pas d'apiId, donc son stock ne peut pas etre lu et l'audit
+refuserait la ligne. Sa page est a capturer.

@@ -1435,6 +1435,17 @@ const LEGENDARIES = {
     isWeaponTracker: true,
     // IDs découverts au runtime via /v2/legendaryarmory (les 96937-96952 "consécutifs" étaient faux — seul 96937 existait)
     currenciesPerWeapon: [
+      // Monnaies de carte ajoutees le 18/09/2026. Elles etaient dans
+      // l'arbre et dans le grand total, mais l'onglet Composants du groupe
+      // d'armes ne les montrait pas : seize gen2 et seize gen3 reclamaient
+      // en silence des ressources de HoT. Chaque `perUnit` est le total que
+      // le moteur calcule pour UNE arme, identique sur les seize de la
+      // generation. Ley Line Crystal manque a l'appel : son composant n'a
+      // pas d'apiId, donc son stock ne peut pas etre lu. A capturer.
+      { id: "crystalline", name: "Crystalline Ore",         perUnit: 250, icon: "CO", apiId: 46682, mapNote: "Dragon's Stand" },
+      { id: "airship_oil", name: "Bottle of Airship Oil",   perUnit: 250, icon: "AO", apiId: 69434, mapNote: "Verdant Brink" },
+      { id: "auric_dust",  name: "Pile of Auric Dust",      perUnit: 250, icon: "AD", apiId: 69432, mapNote: "Auric Basin" },
+      { id: "ley_spark",   name: "Ley Line Spark",          perUnit: 250, icon: "LS", apiId: 69392, mapNote: "Tangled Depths" },
       { id: "antique",    name: "Antique Summoning Stone",         perUnit: 100,  icon: "AS", apiId: 96978 },
       { id: "runestones", name: "Jade Runestone",                  perUnit: 100,  icon: "JR", apiId: 96722 },
       { id: "clovers",    name: "Mystic Clover",                   perUnit: 38,   icon: "MC", apiId: 19675 },
@@ -1451,6 +1462,19 @@ const LEGENDARIES = {
       gen2: [
         { id: "clovers",  name: "Mystic Clover",     perUnit: 77,  icon: "MC", apiId: 19675 },
         { id: "coins",    name: "Mystic Coin",       perUnit: 250, icon: "MO", apiId: 19976 },
+        // Monnaies de carte ajoutees le 18/09/2026. Elles etaient dans
+        // l'arbre et dans le grand total, mais l'onglet Composants du groupe
+        // d'armes ne les montrait pas : seize gen2 et seize gen3 reclamaient
+        // en silence des ressources de HoT. Chaque `perUnit` est le total que
+        // le moteur calcule pour UNE arme, identique sur les seize de la
+        // generation. Ley Line Crystal manque a l'appel : son composant n'a
+        // pas d'apiId, donc son stock ne peut pas etre lu. A capturer.
+        { id: "airship",     name: "Airship Part",            perUnit: 800, icon: "AP", apiId: 74494, mapNote: "Verdant Brink" },
+        { id: "aurillium",   name: "Lump of Aurillium",       perUnit: 800, icon: "LA", apiId: 75012, mapNote: "Auric Basin" },
+        { id: "crystalline", name: "Crystalline Ore",         perUnit: 250, icon: "CO", apiId: 46682, mapNote: "Dragon's Stand" },
+        { id: "airship_oil", name: "Bottle of Airship Oil",   perUnit: 250, icon: "AO", apiId: 69434, mapNote: "Verdant Brink" },
+        { id: "auric_dust",  name: "Pile of Auric Dust",      perUnit: 250, icon: "AD", apiId: 69432, mapNote: "Auric Basin" },
+        { id: "ley_spark",   name: "Ley Line Spark",          perUnit: 250, icon: "LS", apiId: 69392, mapNote: "Tangled Depths" },
         { id: "obsidian", name: "Obsidian Shard",    perUnit: 250, icon: "OS", apiId: 19925 },
       ],
       other: [
