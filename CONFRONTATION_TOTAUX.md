@@ -9,10 +9,10 @@ plus. **Son total est donc un plancher, pas une egalite.**
 
 - **1022 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **66 excedents expliques** — le surplus vient d'une branche
+- **67 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
-- **17 excedents nus** — rien dans la donnee ne les explique : soit
+- **16 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -25,7 +25,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 
 | legendaire | composant | affiche | table | excedent |
 |---|---|---:|---:|---:|
-| `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | +350 |
 | `gen3_aurenes_argument` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
 | `gen3_aurenes_bite` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
 | `gen3_aurenes_breath` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
@@ -48,9 +47,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | legendaire | composant | affiche | table | par |
 |---|---|---:|---:|---|
 | `legendary_relic` | `pile_of_lucent_crystal` | 18750 | 6250 | `qty_overlap_verified` |
-| `transcendence` | `shard_of_glory` | 2500 | 250 | `qty_overlap_verified` |
+| `transcendence` | `shard_of_glory` | 2500 | 250 | `gift_of_the_mists` |
 | `gen2_claw_of_the_khan_ur` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
-| `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_war_dedication` |
+| `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_the_mists`, `gift_of_war_dedication`, `war_commendation` |
 | `gen2_eureka` | `mithril_ingot` | 4750 | 3250 | `mystic_curio` |
 | `gen2_exordium` | `mithril_ingot` | 5750 | 4250 | `mystic_curio` |
 | `gen2_flames_of_war` | `mithril_ingot` | 3500 | 2000 | `mystic_curio` |
@@ -77,6 +76,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
+| `warbringer` | `skirmish_claim_ticket` | 2800 | 2450 | `mystic_essence_of_annihilation` |
 | `coalescence` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
 | `conflux` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
 | `stella_radians` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
@@ -86,4 +86,3 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
-| `gen2_nevermore` | `dust_luminous` | 350 | 250 | `gift_of_dust` |

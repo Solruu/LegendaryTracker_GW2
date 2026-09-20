@@ -57,6 +57,41 @@ def norm(s):
     return "".join(ch for ch in _unquote(str(s)).lower() if ch.isalnum())
 
 
+def _remonte_vers_ferme(cid, cc, fermes, T, profondeur=6):
+    """Les branches fermees de la table qui expliquent un excedent sur `cid`.
+
+    v7 : la recherche ne regardait qu'UN cran — les parents directs de `cid`.
+    Elle ratait donc tout ce qui pend a deux crans ou plus d'une branche que la
+    table cite sans l'ouvrir.
+
+    Cas qui l'a revele, le 20/09 : les seize gen3 sortent a 300 reactifs
+    thermocatalytiques contre 250 au tableau. Les 50 d'ecart sont justes, ils
+    viennent de la piece d'arme du Poeme — 50 par lame ou par fut, leur boite
+    Recipe le dit. Mais le reactif pend sous la LAME, la lame sous le POEME, et
+    seul le Poeme figure dans les branches fermees du tableau. Seize lignes
+    tombaient donc en « rien ne l'explique » alors qu'une remontee de deux
+    crans repondait.
+
+    On remonte de parent en parent, borne pour qu'un cycle ne boucle pas, et on
+    ne retient qu'un ancetre ferme REELLEMENT demande par la cible (T > 0) :
+    une branche que le legendaire ne prend pas n'explique rien.
+    """
+    trouves, vus, pile = set(), {cid}, [(cid, 0)]
+    while pile:
+        courant, d = pile.pop()
+        if d >= profondeur:
+            continue
+        for parent in (cc.get(courant, {}).get("qty") or {}):
+            base = parent.split("__")[0]
+            if base in fermes and T.get(base, 0):
+                trouves.add(base)
+                continue
+            if base in cc and base not in vus:
+                vus.add(base)
+                pile.append((base, d + 1))
+    return trouves
+
+
 def nom(cid):
     n = (cc.get(cid) or {}).get("name")
     return (n.get("en") or n.get("fr")) if isinstance(n, dict) else (n or cid)
@@ -170,8 +205,7 @@ for page in sorted(P.WIKI.glob("*.html")):
             trous.append((tot_table - aff, leg, cid, aff, tot_table))
         else:
             # l'excedent vient-il d'un parent que la table n'ouvre pas ?
-            via = sorted(p for p in (cc[cid].get("qty") or {})
-                         if p in fermes and T.get(p, 0))
+            via = sorted(_remonte_vers_ferme(cid, cc, fermes, T))
             # v5 : un chevauchement DECLARE et VERIFIE n'est pas un excedent
             # nu. `qty_overlap_verified` dit, legendaire par legendaire, que
             # l'exigence directe et la chaine sont toutes deux reelles — c'est

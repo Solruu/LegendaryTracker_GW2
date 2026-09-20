@@ -1595,3 +1595,35 @@ Apres purge : **834 lignes pour 834 fichiers, zero orpheline, zero manquante.**
 **`PAGES_A_CAPTURER.md` se disait genere par `gw2_pages_a_capturer_v1.py`.** Le
 script s'ecrit son propre nom dans l'entete, et ce nom n'avait pas suivi son
 passage en v2. Corrige en v3, ou il se nomme juste.
+
+## AE — 20/09/2026 : la recherche de branche fermee ne regardait qu'un cran
+
+`gw2_confronte_totaux` expliquait un excedent en cherchant, parmi les PARENTS
+DIRECTS du composant, une branche que la table cite sans l'ouvrir. Un cran,
+donc aveugle a tout ce qui pend deux crans plus bas.
+
+`v7` remonte la chaine de parent en parent, bornee a six crans pour qu'un cycle
+ne boucle pas, et ne retient qu'un ancetre ferme que la cible demande vraiment.
+
+Effet : **Warbringer quitte la colonne des excedents nus.** Ses +350 tickets
+d'escarmouche pendaient sous l'Essence of Annihilation, elle-meme sous une
+branche fermee — la remontee d'un cran ne les atteignait pas. C'etait le dernier
+excedent nu connu avant le lot 21.
+
+### Les seize gen3 restent nus, et ce n'est pas le meme probleme
+
+Je pensais que la meme correction reglerait les seize reactifs thermocatalytiques
+a +50. Non, et la raison est instructive : **la table de l'arme ne cite pas du
+tout la piece d'arme du Poeme.** Elle ouvre le Poeme et n'y liste que ses 10
+Tale of Adventure et ses 10 Lamplighter's Badge ; la lame et la feuille de papier
+premium n'y figurent pas. Il n'y a donc aucune branche fermee a trouver, a un
+cran comme a six.
+
+Nos 300 sont justes : la boite Recipe de chaque lame demande 50 reactifs, et le
+principe pose en section S tranche — **la page de l'objet prime sur la liste
+agregee d'une arme**. C'est la table qui est incomplete.
+
+Declarer ces seize-la demanderait un champ nouveau : `qty_overlap_verified` dit
+autre chose (l'exigence directe ET la chaine sont toutes deux reelles), et s'en
+servir ici serait detourner sa semantique. Je ne l'ai pas fait. Seize lignes
+uniformes, sourcees et expliquees ici valent mieux qu'un champ bricole.
