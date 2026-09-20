@@ -902,6 +902,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `elegy_mosaic.html` | Elegy Mosaic | article complet | 2026-09-18 |
 | `mist_shard_armor.html` | Mist Shard armor | article complet | 2026-09-18 |
 | `vision_of_equipment_elegy_armor.html` | Vision of Equipment: Elegy Armor | article complet | 2026-09-18 |
+| `astral_weapons.html` | Astral weapons | article complet | 2026-09-20 |
+| `deldrimor_steel_axe_blade.html` | Deldrimor Steel Axe Blade | article complet | 2026-09-20 |
+| `deldrimor_steel_dagger_blade.html` | Deldrimor Steel Dagger Blade | article complet | 2026-09-20 |
+| `deldrimor_steel_greatsword_blade.html` | Deldrimor Steel Greatsword Blade | article complet | 2026-09-20 |
+| `deldrimor_steel_hammer_head.html` | Deldrimor Steel Hammer Head | article complet | 2026-09-20 |
+| `deldrimor_steel_horn.html` | Deldrimor Steel Horn | article complet | 2026-09-20 |
+| `deldrimor_steel_mace_head.html` | Deldrimor Steel Mace Head | article complet | 2026-09-20 |
+| `deldrimor_steel_pistol_barrel.html` | Deldrimor Steel Pistol Barrel | article complet | 2026-09-20 |
+| `deldrimor_steel_rifle_barrel.html` | Deldrimor Steel Rifle Barrel | article complet | 2026-09-20 |
+| `deldrimor_steel_shield_boss.html` | Deldrimor Steel Shield Boss | article complet | 2026-09-20 |
+| `deldrimor_steel_sword_blade.html` | Deldrimor Steel Sword Blade | article complet | 2026-09-20 |
+| `deldrimor_steel_torch_head.html` | Deldrimor Steel Torch Head | article complet | 2026-09-20 |
+| `sheet_of_premium_paper.html` | Sheet of Premium Paper | article complet | 2026-09-20 |
+| `spiritwood_focus_core.html` | Spiritwood Focus Core | article complet | 2026-09-20 |
+| `spiritwood_longbow_stave.html` | Spiritwood Longbow Stave | article complet | 2026-09-20 |
+| `spiritwood_scepter_core.html` | Spiritwood Scepter Core | article complet | 2026-09-20 |
+| `spiritwood_short_bow_stave.html` | Spiritwood Short-Bow Stave | article complet | 2026-09-20 |
+| `spiritwood_staff_head.html` | Spiritwood Staff Head | article complet | 2026-09-20 |
+| `vial_of_awakened_blood.html` | Vial of Awakened Blood | article complet | 2026-09-20 |
+| `volatile_magic.html` | Volatile Magic | article complet | 2026-09-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

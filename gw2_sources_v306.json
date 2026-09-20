@@ -2187,7 +2187,18 @@
    "name": "Pile of Crystalline Dust",
    "apiId": 24277,
    "needed_for": [
+    "deldrimor_steel_axe_blade",
+    "deldrimor_steel_dagger_blade",
+    "deldrimor_steel_greatsword_blade",
+    "deldrimor_steel_hammer_head",
+    "deldrimor_steel_horn",
+    "deldrimor_steel_mace_head",
+    "deldrimor_steel_pistol_barrel",
+    "deldrimor_steel_rifle_barrel",
+    "deldrimor_steel_shield_boss",
     "deldrimor_steel_spear_head",
+    "deldrimor_steel_sword_blade",
+    "deldrimor_steel_torch_head",
     "endless_summer",
     "gen1_eternity",
     "gift_of_color",
@@ -2198,6 +2209,11 @@
     "glob_of_coagulated_mists_essence",
     "klobjarne_geirr",
     "large_spiritwood_haft",
+    "spiritwood_focus_core",
+    "spiritwood_longbow_stave",
+    "spiritwood_scepter_core",
+    "spiritwood_short_bow_stave",
+    "spiritwood_staff_head",
     "vial_of_magic"
    ],
    "farmable": true,
@@ -2257,7 +2273,23 @@
     "large_spiritwood_haft": 5,
     "glob_of_coagulated_mists_essence": 1,
     "gen1_eternity": 5,
-    "vial_of_magic": 1
+    "vial_of_magic": 1,
+    "deldrimor_steel_axe_blade": 5,
+    "deldrimor_steel_dagger_blade": 5,
+    "deldrimor_steel_greatsword_blade": 5,
+    "deldrimor_steel_hammer_head": 5,
+    "deldrimor_steel_horn": 5,
+    "deldrimor_steel_mace_head": 5,
+    "deldrimor_steel_pistol_barrel": 5,
+    "deldrimor_steel_rifle_barrel": 5,
+    "deldrimor_steel_shield_boss": 5,
+    "deldrimor_steel_sword_blade": 5,
+    "deldrimor_steel_torch_head": 5,
+    "spiritwood_focus_core": 5,
+    "spiritwood_longbow_stave": 5,
+    "spiritwood_scepter_core": 5,
+    "spiritwood_short_bow_stave": 5,
+    "spiritwood_staff_head": 5
    },
    "kind": "acquire",
    "best": "drop",
@@ -5506,7 +5538,18 @@
    "apiId": 46747,
    "needed_for": [
     "bloodstone_brick",
+    "deldrimor_steel_axe_blade",
+    "deldrimor_steel_dagger_blade",
+    "deldrimor_steel_greatsword_blade",
+    "deldrimor_steel_hammer_head",
+    "deldrimor_steel_horn",
+    "deldrimor_steel_mace_head",
+    "deldrimor_steel_pistol_barrel",
+    "deldrimor_steel_rifle_barrel",
+    "deldrimor_steel_shield_boss",
     "deldrimor_steel_spear_head",
+    "deldrimor_steel_sword_blade",
+    "deldrimor_steel_torch_head",
     "dragonite_ingot",
     "empyreal_star",
     "gift_of_research",
@@ -5515,6 +5558,11 @@
     "lump_of_mithrillium",
     "pristine_mist_essence",
     "selachimorpha",
+    "spiritwood_focus_core",
+    "spiritwood_longbow_stave",
+    "spiritwood_scepter_core",
+    "spiritwood_short_bow_stave",
+    "spiritwood_staff_head",
     "spool_of_thick_elonian_cord"
    ],
    "qty": {
@@ -5530,7 +5578,23 @@
     "bloodstone_brick": 10,
     "dragonite_ingot": 10,
     "empyreal_star": 10,
-    "spool_of_thick_elonian_cord": 10
+    "spool_of_thick_elonian_cord": 10,
+    "deldrimor_steel_axe_blade": 50,
+    "deldrimor_steel_dagger_blade": 50,
+    "deldrimor_steel_greatsword_blade": 50,
+    "deldrimor_steel_hammer_head": 50,
+    "deldrimor_steel_horn": 50,
+    "deldrimor_steel_mace_head": 50,
+    "deldrimor_steel_pistol_barrel": 50,
+    "deldrimor_steel_rifle_barrel": 50,
+    "deldrimor_steel_shield_boss": 50,
+    "deldrimor_steel_sword_blade": 50,
+    "deldrimor_steel_torch_head": 50,
+    "spiritwood_focus_core": 50,
+    "spiritwood_longbow_stave": 50,
+    "spiritwood_scepter_core": 50,
+    "spiritwood_short_bow_stave": 50,
+    "spiritwood_staff_head": 50
    },
    "farmable": true,
    "sources": [
@@ -16033,13 +16097,15 @@
     "gift_of_entertainment": 250,
     "gift_of_lightning": 250,
     "gift_of_music": 250,
-    "banner_pennon": 5
+    "banner_pennon": 5,
+    "sheet_of_premium_paper": 1
    },
    "needed_for": [
     "banner_pennon",
     "gift_of_entertainment",
     "gift_of_lightning",
-    "gift_of_music"
+    "gift_of_music",
+    "sheet_of_premium_paper"
    ],
    "sources": [
     {
@@ -18334,10 +18400,32 @@
    "farmable": true,
    "qty": {
     "deldrimor_steel_spear_head": 3,
-    "third_order_mist_frame": 5
+    "third_order_mist_frame": 5,
+    "deldrimor_steel_axe_blade": 3,
+    "deldrimor_steel_dagger_blade": 3,
+    "deldrimor_steel_greatsword_blade": 3,
+    "deldrimor_steel_hammer_head": 3,
+    "deldrimor_steel_horn": 1,
+    "deldrimor_steel_mace_head": 3,
+    "deldrimor_steel_pistol_barrel": 3,
+    "deldrimor_steel_rifle_barrel": 3,
+    "deldrimor_steel_shield_boss": 2,
+    "deldrimor_steel_sword_blade": 3,
+    "deldrimor_steel_torch_head": 2
    },
    "needed_for": [
+    "deldrimor_steel_axe_blade",
+    "deldrimor_steel_dagger_blade",
+    "deldrimor_steel_greatsword_blade",
+    "deldrimor_steel_hammer_head",
+    "deldrimor_steel_horn",
+    "deldrimor_steel_mace_head",
+    "deldrimor_steel_pistol_barrel",
+    "deldrimor_steel_rifle_barrel",
+    "deldrimor_steel_shield_boss",
     "deldrimor_steel_spear_head",
+    "deldrimor_steel_sword_blade",
+    "deldrimor_steel_torch_head",
     "third_order_mist_frame"
    ],
    "sources": [
@@ -18357,10 +18445,22 @@
    "farmable": true,
    "qty": {
     "large_spiritwood_haft": 2,
-    "third_order_mist_frame": 5
+    "third_order_mist_frame": 5,
+    "deldrimor_steel_horn": 2,
+    "spiritwood_focus_core": 2,
+    "spiritwood_longbow_stave": 4,
+    "spiritwood_scepter_core": 2,
+    "spiritwood_short_bow_stave": 4,
+    "spiritwood_staff_head": 2
    },
    "needed_for": [
+    "deldrimor_steel_horn",
     "large_spiritwood_haft",
+    "spiritwood_focus_core",
+    "spiritwood_longbow_stave",
+    "spiritwood_scepter_core",
+    "spiritwood_short_bow_stave",
+    "spiritwood_staff_head",
     "third_order_mist_frame"
    ],
    "sources": [
@@ -21549,9 +21649,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45845
   },
   "sheet_of_premium_paper": {
    "name": "Sheet of Premium Paper",
@@ -21602,9 +21703,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Scribe 400)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 71148
   },
   "deldrimor_steel_dagger_blade": {
    "name": "Deldrimor Steel Dagger Blade",
@@ -21625,9 +21727,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45846
   },
   "spiritwood_focus_core": {
    "name": "Spiritwood Focus Core",
@@ -21648,9 +21751,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Artificer 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45884
   },
   "deldrimor_steel_greatsword_blade": {
    "name": "Deldrimor Steel Greatsword Blade",
@@ -21671,9 +21775,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45847
   },
   "deldrimor_steel_hammer_head": {
    "name": "Deldrimor Steel Hammer Head",
@@ -21694,9 +21799,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45851
   },
   "spiritwood_longbow_stave": {
    "name": "Spiritwood Longbow Stave",
@@ -21717,9 +21823,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45841
   },
   "deldrimor_steel_mace_head": {
    "name": "Deldrimor Steel Mace Head",
@@ -21740,9 +21847,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45852
   },
   "deldrimor_steel_pistol_barrel": {
    "name": "Deldrimor Steel Pistol Barrel",
@@ -21763,9 +21871,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45833
   },
   "deldrimor_steel_rifle_barrel": {
    "name": "Deldrimor Steel Rifle Barrel",
@@ -21786,9 +21895,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45834
   },
   "spiritwood_scepter_core": {
    "name": "Spiritwood Scepter Core",
@@ -21809,9 +21919,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Artificer 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45885
   },
   "deldrimor_steel_shield_boss": {
    "name": "Deldrimor Steel Shield Boss",
@@ -21832,9 +21943,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45858
   },
   "spiritwood_short_bow_stave": {
    "name": "Spiritwood Short-Bow Stave",
@@ -21855,9 +21967,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45842
   },
   "spiritwood_staff_head": {
    "name": "Spiritwood Staff Head",
@@ -21878,9 +21991,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Artificer 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45887
   },
   "deldrimor_steel_sword_blade": {
    "name": "Deldrimor Steel Sword Blade",
@@ -21901,9 +22015,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Weaponsmith 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45848
   },
   "deldrimor_steel_torch_head": {
    "name": "Deldrimor Steel Torch Head",
@@ -21924,9 +22039,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45838
   },
   "deldrimor_steel_horn": {
    "name": "Deldrimor Steel Horn",
@@ -21947,9 +22063,10 @@
      }
     }
    ],
-   "ref": "boites Recipe des seize Poems du lot 20",
-   "checked": "2026-09-18",
-   "verified": "exigence sourcee, cout de fabrication inconnu"
+   "ref": "boite Recipe de sa page (Huntsman 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "apiId": 45839
   },
   "astral_weapons": {
    "name": "Astral Weapons",
@@ -21967,7 +22084,8 @@
    },
    "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
    "checked": "2026-09-18",
-   "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur"
+   "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur",
+   "apiId": 85760
   },
   "vial_of_awakened_blood": {
    "name": "Vial of Awakened Blood",
@@ -21990,7 +22108,8 @@
    ],
    "ref": "tableau vendeur de Lacquered Banner Pole (Lady Camilla, Domaine de Kourna)",
    "checked": "2026-09-18",
-   "verified": "exigence sourcee, provenance inconnue"
+   "verified": "exigence sourcee, provenance inconnue",
+   "apiId": 88023
   },
   "ancient_wood_log": {
    "name": "Ancient Wood Log",
@@ -22015,6 +22134,52 @@
    "checked": "2026-09-18",
    "verified": "exigence sourcee, provenance inconnue",
    "apiId": 19725
+  },
+  "ancient_wood_pulp": {
+   "name": "Ancient Wood Pulp",
+   "kind": "acquire",
+   "farmable": true,
+   "needed_for": [
+    "sheet_of_premium_paper"
+   ],
+   "qty": {
+    "sheet_of_premium_paper": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Page non capturée — seule son exigence pour la pièce d'arme est sourcée.",
+      "en": "Page not captured — only its requirement for the weapon part is sourced."
+     }
+    }
+   ],
+   "ref": "boite Recipe de Sheet of Premium Paper (lot 21)",
+   "checked": "2026-09-20",
+   "verified": "exigence sourcee, provenance inconnue"
+  },
+  "jug_of_water": {
+   "name": "Jug of Water",
+   "kind": "acquire",
+   "farmable": true,
+   "needed_for": [
+    "sheet_of_premium_paper"
+   ],
+   "qty": {
+    "sheet_of_premium_paper": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Page non capturée — seule son exigence pour la pièce d'arme est sourcée.",
+      "en": "Page not captured — only its requirement for the weapon part is sourced."
+     }
+    }
+   ],
+   "ref": "boite Recipe de Sheet of Premium Paper (lot 21)",
+   "checked": "2026-09-20",
+   "verified": "exigence sourcee, provenance inconnue"
   }
  },
  "enchaînements_recommandés": {

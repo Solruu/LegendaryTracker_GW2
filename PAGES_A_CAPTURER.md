@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v305.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v306.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v1.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -37,7 +37,7 @@ ignore ce que la cible contient réellement.
 | `Triumphant Hero's armor` | 10 |
 | `Obsidian armor` | 8 |
 
-## 2 — 1 composants en arbitrage sans page au dépôt
+## 2 — 0 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -45,39 +45,21 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
-| `Volatile Magic` | 2 |
 
-## 3 — 24 composants sans apiId ni page
+## 3 — 7 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Astral Weapons` |
-| `Deldrimor Steel Axe Blade` |
-| `Deldrimor Steel Dagger Blade` |
-| `Deldrimor Steel Greatsword Blade` |
-| `Deldrimor Steel Hammer Head` |
-| `Deldrimor Steel Horn` |
-| `Deldrimor Steel Mace Head` |
-| `Deldrimor Steel Pistol Barrel` |
-| `Deldrimor Steel Rifle Barrel` |
-| `Deldrimor Steel Shield Boss` |
-| `Deldrimor Steel Sword Blade` |
-| `Deldrimor Steel Torch Head` |
+| `Ancient Wood Pulp` |
+| `Jug of Water` |
 | `Olmakhan Bandolier` |
-| `Sheet of Premium Paper` |
 | `Spinal Blade Back Pack (Perfected)` |
-| `Spiritwood Focus Core` |
-| `Spiritwood Longbow Stave` |
-| `Spiritwood Scepter Core` |
-| `Spiritwood Short-Bow Stave` |
-| `Spiritwood Staff Head` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
-| `Vial of Awakened Blood` |
 
 ## 4 — 28 collections incomplètes — RIEN À CAPTURER
 

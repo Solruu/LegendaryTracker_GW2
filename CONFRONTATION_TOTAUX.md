@@ -1,18 +1,18 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v305.json`, 1105 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v306.json`, 1105 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **1038 accords** — le nombre affiche est celui de la table.
+- **1022 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
 - **66 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
-- **1 excedents nus** — rien dans la donnee ne les explique : soit
+- **17 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -26,6 +26,22 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | legendaire | composant | affiche | table | excedent |
 |---|---|---:|---:|---:|
 | `warbringer` | `skirmish_claim_ticket` — WvW Skirmish Claim Ticket | 2800 | 2450 | +350 |
+| `gen3_aurenes_argument` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_bite` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_breath` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_claw` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_fang` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_flight` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_gaze` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_insight` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_persuasion` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_rending` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_scale` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_tail` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_voice` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_weight` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_wing` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
+| `gen3_aurenes_wisdom` | `thermocatalytic_reagent` — Thermocatalytic Reagent | 300 | 250 | +50 |
 
 ## Excedents expliques par une branche fermee de la table
 

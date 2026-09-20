@@ -1531,3 +1531,39 @@ quoi une etape correspond.
 Les 2 173 etapes restantes sans correspondance sont normales : ce sont des
 etapes d'action (« Vaincre Tequatl », « Parler au chaman hylek »), pas des
 objets de l'arbre de craft.
+
+## AC — 20/09/2026 : lot 21, la branche des Poemes descend jusqu'au bout
+
+Vingt captures, exactement les composants poses a nu en section R : les onze
+pieces en acier de Deldrimor, les cinq en bois d'esprit, la Sheet of Premium
+Paper, les armes Astral, le Vial of Awakened Blood et la magie volatile.
+
+**Dix-neuf apiId poses, cinquante-deux aretes chiffrees.** Les pieces d'arme
+n'etaient plus des culs-de-sac : chacune coute 5 poudres cristallines, du
+lingot d'acier de Deldrimor ou de la planche de bois d'esprit, et 50 reactifs
+thermocatalytiques. La feuille de papier premium descend sur pulpe de bois
+ancien, cruche d'eau et rouleau de gossamer.
+
+Deux composants crees au passage — `ancient_wood_pulp` et `jug_of_water` —
+et `Pile of Crystalline Dust` reconnue comme la `dust_crystalline` deja au
+depot, sans doublon.
+
+**131 totaux augmentent**, tous sur les seize gen3 : c'est du cout reel qui
+manquait, pas une derive. Les deux moteurs restent d'accord partout.
+
+### Un excedent uniforme, sourcé, que l'outil ne sait pas encore expliquer
+
+Les seize gen3 sortent desormais a 300 reactifs thermocatalytiques contre 250
+au tableau. Les 50 d'ecart sont ceux de la piece d'arme du Poeme, et ils sont
+justes : la boite Recipe de chaque lame ou de chaque fut les demande.
+
+Le tableau de l'arme cite le Poeme sans l'ouvrir — branche fermee — donc
+l'ecart devrait tomber dans « excedents expliques ». Il n'y tombe pas parce que
+`gw2_confronte_totaux` ne regarde qu'UN cran : le reactif pend sous la lame, la
+lame sous le Poeme, et le Poeme seul figure dans les branches fermees du
+tableau. Approfondir la recherche a la sous-chaine entiere reglerait les seize
+d'un coup. Non fait ici.
+
+`accords 1038 -> 1022`, `excedents nus 1 -> 17`. La baisse des accords et la
+hausse des excedents disent la meme chose : l'arbre en sait maintenant plus que
+la table agregee de l'arme.
