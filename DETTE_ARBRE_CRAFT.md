@@ -1567,3 +1567,31 @@ d'un coup. Non fait ici.
 `accords 1038 -> 1022`, `excedents nus 1 -> 17`. La baisse des accords et la
 hausse des excedents disent la meme chose : l'arbre en sait maintenant plus que
 la table agregee de l'arme.
+
+## AD — 20/09/2026 : l'index decrivait des fichiers disparus
+
+Deux defauts, tous deux invisibles tant qu'on ne les cherchait pas.
+
+**`ressources/INDEX.md` portait dix-sept lignes orphelines.** Les seize captures
+`gift_of_aurene_s_*` renommees a la contraction de l'apostrophe, plus
+`lamplighter_s_badge.html` supprimee comme doublon. Leurs nouvelles lignes
+s'etaient ajoutees, les anciennes etaient restees : pendant deux jours l'index a
+decrit des fichiers qui n'existaient plus, en double de ceux qui existaient.
+
+La cause est dans l'outil. Il DETECTAIT les orphelines — il les listait meme —
+mais les annoncait « NON retirees, a trancher a la main », et surtout il ne
+reecrivait le fichier que s'il manquait des lignes. Aucune ligne manquante,
+donc « Tableau complet », donc aucune ecriture, donc les orphelines eternelles.
+
+`gw2_index_wiki_v3` les retire. Une ligne dont le fichier n'est plus la ne
+decrit plus rien : la supprimer n'est pas reecrire une ligne existante, c'est la
+supprimer avec son sujet. Les tableaux des autres sources ne sont pas touches —
+le calcul des orphelines ne regarde que le bloc `wiki/`, et les deux lignes
+`gw2efficiency/` qui semblaient orphelines pointent bien vers des fichiers
+presents dans leur propre dossier.
+
+Apres purge : **834 lignes pour 834 fichiers, zero orpheline, zero manquante.**
+
+**`PAGES_A_CAPTURER.md` se disait genere par `gw2_pages_a_capturer_v1.py`.** Le
+script s'ecrit son propre nom dans l'entete, et ce nom n'avait pas suivi son
+passage en v2. Corrige en v3, ou il se nomme juste.

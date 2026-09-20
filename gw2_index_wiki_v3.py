@@ -20,7 +20,7 @@ mecaniquement sur : les lignes absentes.
 
 Trois colonnes deduites, aucune inventee :
 - titre  : `<h1 id="firstHeading">` lu dans la capture, comme
-           `gw2_index_contenu_v5.py` ;
+           `gw2_index_contenu_v4.py` ;
 - portee : « article complet », sauf commentaire de filtrage
            `<!-- section « X » retiree a l'extraction ... -->` laisse par
            l'extraction, qui donne « article complet moins « X » ». Un suffixe
@@ -92,23 +92,44 @@ def main():
     if len(manquants) > 8:
         print(f"    ... {len(manquants) - 8} autre(s)")
     if orphelines:
-        print(f"  lignes sans fichier (NON retirees, a trancher a la main) : "
-              f"{len(orphelines)}")
+        print(f"  lignes sans fichier, retirees : {len(orphelines)}")
         for n in orphelines:
             print("   ", n)
 
-    if not manquants:
+    if not manquants and not orphelines:
         print("Tableau complet.")
         return 0
     if "--ecrire" not in sys.argv:
         print("\nSimulation. Relancer avec --ecrire pour appliquer.")
         return 0
 
+    # v3 : les orphelines sont RETIREES, plus seulement signalees.
+    #
+    # La v2 les listait en disant « a trancher a la main », et ne reecrivait
+    # le fichier que s'il manquait des lignes. Resultat : quand les seize
+    # captures `gift_of_aurene_s_*` ont ete renommees a la contraction de
+    # l'apostrophe, leurs nouvelles lignes se sont ajoutees et les anciennes
+    # sont restees — l'index a decrit pendant deux jours des fichiers qui
+    # n'existaient plus, en double de ceux qui existaient.
+    #
+    # Une ligne dont le fichier n'est plus la ne decrit plus rien. La retirer
+    # n'est pas reecrire une ligne existante, c'est la supprimer avec son
+    # sujet. Les tableaux des AUTRES sources ne sont pas touches : `orphelines`
+    # ne regarde que le bloc wiki/.
+    garde = []
+    for ligne in md[i:j].splitlines():
+        m = LIGNE.search(ligne)
+        if m and m.group(1) in orphelines:
+            continue
+        garde.append(ligne)
+    neuf = "\n".join(garde).rstrip("\n")
     lignes = [f"| `{n}` | {titre(fichiers[n])} | {portee(fichiers[n])} | "
               f"{date_ajout(fichiers[n])} |" for n in manquants]
-    INDEX.write_text(md[:j].rstrip("\n") + "\n" + "\n".join(lignes) + md[j:],
-                     encoding="utf-8")
-    print(f"\n{len(lignes)} ligne(s) ajoutee(s) a {INDEX.relative_to(HERE)}")
+    if lignes:
+        neuf = neuf + "\n" + "\n".join(lignes)
+    INDEX.write_text(md[:i] + neuf + md[j:], encoding="utf-8")
+    print(f"\n{len(lignes)} ligne(s) ajoutee(s), {len(orphelines)} retiree(s) "
+          f"dans {INDEX.relative_to(HERE)}")
     return 0
 
 

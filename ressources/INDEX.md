@@ -435,22 +435,6 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `ghost_pepper.html` | Ghost Pepper | article complet | 2026-09-05 |
 | `gift_of_arah.html` | Gift of Arah | article complet | 2026-09-05 |
 | `gift_of_astralaria.html` | Gift of Astralaria | article complet | 2026-09-05 |
-| `gift_of_aurene_s_argument.html` | Gift of Aurene's Argument | article complet | 2026-09-05 |
-| `gift_of_aurene_s_bite.html` | Gift of Aurene's Bite | article complet | 2026-09-05 |
-| `gift_of_aurene_s_breath.html` | Gift of Aurene's Breath | article complet | 2026-09-05 |
-| `gift_of_aurene_s_claw.html` | Gift of Aurene's Claw | article complet | 2026-09-05 |
-| `gift_of_aurene_s_fang.html` | Gift of Aurene's Fang | article complet | 2026-09-05 |
-| `gift_of_aurene_s_flight.html` | Gift of Aurene's Flight | article complet | 2026-09-05 |
-| `gift_of_aurene_s_gaze.html` | Gift of Aurene's Gaze | article complet | 2026-09-05 |
-| `gift_of_aurene_s_horn.html` | Gift of Aurene's Horn | article complet | 2026-09-05 |
-| `gift_of_aurene_s_insight.html` | Gift of Aurene's Insight | article complet | 2026-09-05 |
-| `gift_of_aurene_s_persuasion.html` | Gift of Aurene's Persuasion | article complet | 2026-09-05 |
-| `gift_of_aurene_s_rending.html` | Gift of Aurene's Rending | article complet | 2026-09-05 |
-| `gift_of_aurene_s_scale.html` | Gift of Aurene's Scale | article complet | 2026-09-05 |
-| `gift_of_aurene_s_tail.html` | Gift of Aurene's Tail | article complet | 2026-09-05 |
-| `gift_of_aurene_s_weight.html` | Gift of Aurene's Weight | article complet | 2026-09-05 |
-| `gift_of_aurene_s_wing.html` | Gift of Aurene's Wing | article complet | 2026-09-05 |
-| `gift_of_aurene_s_wisdom.html` | Gift of Aurene's Wisdom | article complet | 2026-09-05 |
 | `gift_of_balthazar.html` | Gift of Balthazar | article complet | 2026-09-05 |
 | `gift_of_castoran_mastery.html` | Gift of Castoran Mastery | article complet | 2026-09-05 |
 | `gift_of_chuka_and_champawat.html` | Gift of Chuka and Champawat | article complet | 2026-09-05 |
@@ -498,7 +482,6 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `gift_of_xiuquatl.html` | Gift of Xiuquatl | article complet | 2026-09-05 |
 | `hard_wood_plank.html` | Hard Wood Plank | article complet | 2026-09-05 |
 | `hardened_leather_section.html` | Hardened Leather Section | article complet | 2026-09-05 |
-| `lamplighter_s_badge.html` | Lamplighter's Badge | article complet | 2026-09-05 |
 | `mist_band_infused.html` | Mist Band (Infused) | article complet | 2026-09-05 |
 | `mist_enhanced_mithril.html` | Mist-Enhanced Mithril | article complet | 2026-09-05 |
 | `mist_pearl.html` | Mist Pearl | article complet | 2026-09-05 |
