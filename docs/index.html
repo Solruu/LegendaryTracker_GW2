@@ -7412,7 +7412,7 @@ const SOURCES_DB = {
     },
     "ley_line_crystal": {
       "name": "Ley Line Crystal",
-      "apiId": null,
+      "apiId": 20,
       "type": "map_currency",
       "needed_for": [
         "gift_of_insights",
@@ -7437,7 +7437,10 @@ const SOURCES_DB = {
         "gift_of_insights": 800
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
-      "kind": "acquire"
+      "kind": "acquire",
+      "ref": "page wiki : monnaie du portefeuille, aucun identifiant d'objet ; id 20 dans gw2_currencies_ref.json",
+      "checked": "2026-09-20",
+      "verified": "monnaie de portefeuille, lue sur sa page et dans le referentiel"
     },
     "lump_of_aurillium": {
       "name": "Lump of Aurillium",
@@ -16799,9 +16802,9 @@ const SOURCES_DB = {
       "qty": {
         "banner_of_the_commander": 1
       },
-      "verified": true,
-      "checked": "2026-08-27",
-      "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026",
+      "verified": "boite Recipe lue le 20/09/2026",
+      "checked": "2026-09-20",
+      "ref": "boite Recipe de sa page : 5 Bolt of Gossamer, 100 Spool of Gossamer Thread, 5 Glob of Ectoplasm, 5 Olmakhan Latigo Strap",
       "apiId": 87925
     },
     "olmakhan_bandolier_chain": {
@@ -21920,9 +21923,11 @@ const SOURCES_DB = {
       "name": "Spool of Gossamer Thread",
       "kind": "acquire",
       "qty": {
-        "spool_of_silk_weaving_thread": 25
+        "spool_of_silk_weaving_thread": 25,
+        "banner_pennon": 100
       },
       "needed_for": [
+        "banner_pennon",
         "spool_of_silk_weaving_thread"
       ],
       "farmable": true,
@@ -22958,6 +22963,29 @@ const SOURCES_DB = {
         }
       ],
       "ref": "boite Recipe de Sheet of Premium Paper (lot 21)",
+      "checked": "2026-09-20",
+      "verified": "exigence sourcee, provenance inconnue"
+    },
+    "olmakhan_latigo_strap": {
+      "name": "Olmakhan Latigo Strap",
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "banner_pennon"
+      ],
+      "qty": {
+        "banner_pennon": 5
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Page non capturée — seule son exigence pour le fanion est sourcée.",
+            "en": "Page not captured — only its requirement for the Banner Pennon is sourced."
+          }
+        }
+      ],
+      "ref": "boite Recipe de Banner Pennon",
       "checked": "2026-09-20",
       "verified": "exigence sourcee, provenance inconnue"
     }

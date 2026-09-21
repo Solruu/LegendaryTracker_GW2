@@ -1,11 +1,11 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v306.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v3.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v307.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
-interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes
-pages en URLs brutes, une par ligne, pour l'automatisation.
+interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
+avec son URL, dans la section « URLs » en fin de fichier.
 
 
 ## 0 — 7 trous de l'arbre — LA PRIORITÉ
@@ -17,13 +17,20 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Astral Weapons` | 1 |
-| `Augur's Stone` | 1 |
-| `Bloodstone Shard` | 1 |
-| `Fractalline Spark` | 1 |
 | `Olmakhan Bandolier` | 1 |
-| `Perfect Mist Core` | 1 |
-| `Spark of Sentience` | 1 |
+
+### 0 ter — 6 trous dont la page est DÉJÀ au dépôt
+
+Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
+page de catégorie, de monnaie, ou objet non fabricable. Aucune
+capture n'y changera rien — le trou se règle dans la donnée.
+
+- `Astral Weapons`
+- `Augur's Stone`
+- `Bloodstone Shard`
+- `Fractalline Spark`
+- `Perfect Mist Core`
+- `Spark of Sentience`
 
 ## 1 — 3 tables « Full material list » manquantes
 
@@ -46,7 +53,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 8 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -56,10 +63,24 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Ancient Wood Pulp` |
 | `Jug of Water` |
 | `Olmakhan Bandolier` |
+| `Olmakhan Latigo Strap` |
 | `Spinal Blade Back Pack (Perfected)` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
+
+## 3 bis — 5 composants dont le coût d'obtention est inconnu
+
+Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
+faut, pas comment on les obtient.
+
+| page wiki |
+|---|
+| `Ancient Wood Pulp` |
+| `Jug of Water` |
+| `Olmakhan Latigo Strap` |
+| `Tribute to Call of the Void` |
+| `Tribute to Exitare` |
 
 ## 4 — 28 collections incomplètes — RIEN À CAPTURER
 
@@ -68,7 +89,7 @@ Infinite Recursion » est une ligne de la page de catégorie, « Helping
 Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils
 vivent dans le méta global. La liste reste parce qu'elle est utile ; la
 colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
-`PAGES_A_CAPTURER.txt`.
+la section « URLs ».
 
 | | succès | légendaire | id | ce qui manque | où le lire |
 |---|---|---|---:|---|---|
@@ -100,3 +121,19 @@ colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
 | ○ | `"War Eternal" Mastery` | Vision | 4689 | sans etapes, sans unlock | `Vision` |
 | ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans etapes, sans unlock | — |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
+
+## URLs — 11 pages à capturer
+
+```
+https://wiki.guildwars2.com/wiki/Olmakhan_Bandolier
+https://wiki.guildwars2.com/wiki/Ardent_Glorious_armor
+https://wiki.guildwars2.com/wiki/Triumphant_Hero%27s_armor
+https://wiki.guildwars2.com/wiki/Obsidian_armor
+https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
+https://wiki.guildwars2.com/wiki/Jug_of_Water
+https://wiki.guildwars2.com/wiki/Olmakhan_Latigo_Strap
+https://wiki.guildwars2.com/wiki/Spinal_Blade_Back_Pack_(Perfected)
+https://wiki.guildwars2.com/wiki/Tribute_to_Call_of_the_Void
+https://wiki.guildwars2.com/wiki/Tribute_to_Exitare
+https://wiki.guildwars2.com/wiki/Valkyrie_Bearkin_War_Helm
+```

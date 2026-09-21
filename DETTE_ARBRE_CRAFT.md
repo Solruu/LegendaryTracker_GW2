@@ -1627,3 +1627,52 @@ Declarer ces seize-la demanderait un champ nouveau : `qty_overlap_verified` dit
 autre chose (l'exigence directe ET la chaine sont toutes deux reelles), et s'en
 servir ici serait detourner sa semantique. Je ne l'ai pas fait. Seize lignes
 uniformes, sourcees et expliquees ici valent mieux qu'un champ bricole.
+
+## AF — 20/09/2026 : la file de captures redemandait ce qui etait deja la
+
+Tu avais raison de trouver `PAGES_A_CAPTURER.md` faux, et c'etait pire que perime.
+
+**Il redemandait des pages deja au depot.** Astral Weapons, Augur's Stone,
+Bloodstone Shard, Spark of Sentience : leur capture dormait dans
+`ressources/wiki/`, mais comme leur page ne porte ni boite Recipe ni cout
+vendeur — page de categorie, de monnaie, objet non fabricable — la section
+« trous de l'arbre » les re-reclamait a chaque generation. Aucune capture ne
+pouvait jamais y ajouter une recette : la demande ne pouvait pas aboutir. Ils
+passent dans une sous-section « 0 ter », sans URL.
+
+**Et moi je redemandais deux pages que tu m'avais donnees.** Depuis trois passes
+je reclamais `Ley_Line_Crystal` et `Banner_Pennon` comme manquantes. Les deux
+etaient au depot. Je n'avais pas interroge `INDEX_CONTENU.json` avant de les
+declarer absentes — exactement l'erreur que le projet note deja dans ses
+principes. Lues aujourd'hui :
+
+- **Ley Line Crystal est une monnaie de portefeuille**, pas un objet : sa page le
+  dit (« stored in the Account Wallet ») et ne porte aucun identifiant d'objet.
+  D'ou l'apiId introuvable. Id 20 pose, lu dans le referentiel des monnaies.
+- **Banner Pennon se fabrique** : 5 Bolt of Gossamer, 100 Spool of Gossamer
+  Thread, 5 Globes d'ectoplasme, 5 Olmakhan Latigo Strap. **Aucun eclat grave** :
+  tes 200 ressources de Kourna sont bien les 100 du Gift of Crystalline Magic et
+  les 100 de la hampe, deja comptes.
+
+**Une categorie manquait.** Ni les trous (il faut des enfants) ni la section 3 (il
+faut ne pas avoir d'apiId) ne voyaient un composant FEUILLE, identifie, dont on
+ignore comment il s'obtient. Section « 3 bis » ajoutee : cinq composants.
+
+**`PAGES_A_CAPTURER.txt` est supprime**, et le generateur ne l'ecrit plus. Il
+repetait les memes pages en URLs brutes : une redondance a tenir en phase. Les
+URLs vivent desormais dans le dernier bloc du `.md`, une fois.
+
+File : **11 URLs**, contre 16 avant — et toutes reellement absentes du depot.
+
+Deux choses que je n'ai PAS reglees et que je signale :
+
+- `Olmakhan_Bandolier` reste demande, et ne sera sans doute jamais trouve : la
+  chaine s'appelle ainsi dans la donnee, mais le wiki n'a que les quatre paliers
+  (Simple, Handwoven, Pocketed, Reinforced), deja au depot. C'est un nom de
+  composant qui ne correspond a aucune page.
+- **Airship Part et Lump of Aurillium sont AUSSI des monnaies de portefeuille**
+  (ids 19 et 22 au referentiel), mais les composants portent les ids d'objet
+  74494 et 75012 — que leurs pages wiki affichent bien. Les deux formes existent.
+  Si ton stock vit dans le portefeuille, le tracker lit l'objet et affiche zero.
+  Je ne sais pas lequel des deux porte ton stock : c'est a verifier en jeu avant
+  de toucher.

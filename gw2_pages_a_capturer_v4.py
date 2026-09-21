@@ -39,8 +39,8 @@ Cinq familles, dans l'ordre de ce qu'elles debloquent :
    collections incompletes est utile ; mais elle ne demande plus rien a
    capturer, elle dit ou lire.
 
-Sortie double : `PAGES_A_CAPTURER.md` pour la lecture, `PAGES_A_CAPTURER.txt`
-pour l'automatisation — une URL par ligne, rien d'autre, aucun en-tete.
+Sortie unique : `PAGES_A_CAPTURER.md`. Les URLs brutes, une par ligne, sont
+dans son dernier bloc. Le `.txt` qui les dupliquait a ete supprime en v4.
 """
 import json
 import re
@@ -200,10 +200,10 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v3.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
-out.append("interrogé avant toute ligne. `PAGES_A_CAPTURER.txt` porte les mêmes")
-out.append("pages en URLs brutes, une par ligne, pour l'automatisation.\n")
+out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
+out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
 
 if INCONNUES:
     out.append(f"\n## 0 bis — {len(INCONNUES)} cibles citees par l'arbre sans entree connue\n")
@@ -221,10 +221,25 @@ out.append("pas avec quoi. Tant qu'ils manquent, le calcul de bas en haut s'arr�
 out.append("et les totaux restent tributaires des coûts recopiés à plat.\n")
 out.append("| page wiki | composants qui en dépendent |")
 out.append("|---|---:|")
+# v4 : un trou dont la page EST au depot n'est pas une page a capturer.
+# Astral Weapons, Spark of Sentience et d'autres etaient redemandes a chaque
+# generation alors que leur capture dormait dans ressources/wiki/ : leur page
+# est une page de categorie ou de monnaie, sans boite Recipe ni cout vendeur,
+# et aucune nouvelle capture n'y en ajoutera. Les redemander ne pouvait
+# jamais aboutir. Ils sortent de la file et passent dans la liste suivante.
+deja_la = [c for c in trous if capturee(titre_composant(c))]
+trous = [c for c in trous if c not in deja_la]
 for _c in sorted(trous, key=lambda x: (-len(enfants.get(x, ())), x)):
     _t = titre_composant(_c)
     urls.append(url(_t))
     out.append(f"| `{_t}` | {len(enfants.get(_c, ()))} |")
+if deja_la:
+    out.append(f"\n### 0 ter — {len(deja_la)} trous dont la page est DÉJÀ au dépôt\n")
+    out.append("Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :")
+    out.append("page de catégorie, de monnaie, ou objet non fabricable. Aucune")
+    out.append("capture n'y changera rien — le trou se règle dans la donnée.\n")
+    for _c in sorted(deja_la):
+        out.append(f"- `{titre_composant(_c)}`")
 
 out.append(f"\n## 1 — {len(tables)} tables « Full material list » manquantes\n")
 out.append("Ces cibles portent des coûts à plat mais leur page n'est pas capturée avec")
@@ -258,6 +273,26 @@ for c in sans_id:
     urls.append(url(ti))
     out.append(f"| `{ti}` |")
 
+# --- 3 bis. feuilles dont le cout d'acquisition est inconnu -------------------
+# v4 : ni les trous (il faut des enfants), ni la section 3 (il faut ne pas
+# avoir d'apiId) ne voyaient un composant FEUILLE, identifie, dont on ne sait
+# pas comment il s'obtient. Gift of the Desert en est le cas type : apiId
+# connu, exige par l'arbre, et aucune page pour dire ce qu'il coute.
+inconnus = sorted(cid for cid, c in cc.items()
+                  if not enfants.get(cid)
+                  and any(isinstance(x, dict) and x.get("type") == "unknown"
+                          for x in (c.get("sources") or []))
+                  and not capturee(titre_composant(cid)))
+out.append(f"\n## 3 bis — {len(inconnus)} composants dont le coût d'obtention est inconnu\n")
+out.append("Exigés par l'arbre, identifiés, mais sans page : on sait combien il en")
+out.append("faut, pas comment on les obtient.\n")
+out.append("| page wiki |")
+out.append("|---|")
+for c in inconnus:
+    ti = titre_composant(c)
+    urls.append(url(ti))
+    out.append(f"| `{ti}` |")
+
 manquantes = [x for x in collections_vides if not x[4]]
 out.append(f"\n## 4 — {len(collections_vides)} collections incomplètes — "
            f"RIEN À CAPTURER\n")
@@ -266,7 +301,7 @@ out.append("Infinite Recursion » est une ligne de la page de catégorie, « Hel
 out.append("Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils")
 out.append("vivent dans le méta global. La liste reste parce qu'elle est utile ; la")
 out.append("colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans")
-out.append("`PAGES_A_CAPTURER.txt`.\n")
+out.append("la section « URLs ».\n")
 out.append("| | succès | légendaire | id | ce qui manque | où le lire |")
 out.append("|---|---|---|---:|---|---|")
 renvois = {}
@@ -284,17 +319,23 @@ for t, leg, aid, manque, cap in collections_vides:
                f"{'—' if cap else '`' + cible + '`'} |")
 # Volontairement aucune URL : voir l'en-tete. Ces succes n'ont pas d'article.
 
-(HERE / "PAGES_A_CAPTURER.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 vus, propres = set(), []
 for u in urls:
     if u not in vus:
         vus.add(u)
         propres.append(u)
-(HERE / "PAGES_A_CAPTURER.txt").write_text("\n".join(propres) + "\n", encoding="utf-8")
+# v4 : plus de PAGES_A_CAPTURER.txt. Il repetait les memes pages en URLs
+# brutes, une redondance a tenir en phase ; la liste vit ici, une fois.
+out.append(f"\n## URLs — {len(propres)} pages à capturer\n")
+out.append("```")
+out.extend(propres)
+out.append("```")
+(HERE / "PAGES_A_CAPTURER.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 print(f"0 — TROUS DE L'ARBRE                 : {len(trous)}")
 print(f"1 — tables materiaux manquantes      : {len(tables)}")
 print(f"2 — composants en arbitrage sans page: {len(en_arbitrage)}")
 print(f"3 — composants sans apiId ni page    : {len(sans_id)}")
 print(f"4 — collections incompletes          : {len(collections_vides)} ({len(manquantes)} sans capture)")
-print(f"PAGES_A_CAPTURER.md et .txt ecrits — {len(propres)} URLs uniques")
+print(f"3 bis — cout d'obtention inconnu        : {len(inconnus)}")
+print(f"PAGES_A_CAPTURER.md ecrit — {len(propres)} URLs uniques")
