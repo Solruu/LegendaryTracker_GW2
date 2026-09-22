@@ -172,8 +172,13 @@ end
 local function apply()
   local wanted = wantedSlug()
   for _, slug in ipairs(COMPOSITIONS) do
-    local cat = Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
-    if slug == wanted then cat:Show() else cat:Hide() end
+    -- World:CategoryByType est la bonne porte d'entree. Category est un
+    -- TYPE dans l'API de Pathing, pas un objet global : l'appeler
+    -- directement levait une exception et faisait echouer le clic.
+    local cat = World:CategoryByType(""gw2farm.routes."" .. slug)
+    if cat then
+      if slug == wanted then cat:Show() else cat:Hide() end
+    end
   end
 end
 
