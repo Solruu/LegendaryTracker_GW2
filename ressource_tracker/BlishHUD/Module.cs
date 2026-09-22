@@ -451,7 +451,7 @@ namespace GW2_NodeTracker
             if (_refineAccumMs < AutoRefineIntervalMs) return;
 
             _refineAccumMs = 0;
-            TriggerRefine(mapId, notify: true);
+            TriggerRefine(mapId, notify: true, reportNothing: false);
         }
 
         protected override void Unload()
@@ -1356,7 +1356,7 @@ namespace GW2_NodeTracker
         {
             if (!CanAct()) return;
 
-            TriggerRefine(GameService.Gw2Mumble.CurrentMap.Id, notify: true);
+            TriggerRefine(GameService.Gw2Mumble.CurrentMap.Id, notify: true, reportNothing: true);
         }
 
         /// <summary>
@@ -1364,7 +1364,12 @@ namespace GW2_NodeTracker
         /// routes de la map courante, un trajet réel plus récent que celui
         /// déjà retenu. Ne touche jamais à l'ordre de passage.
         /// </summary>
-        private void TriggerRefine(int mapId, bool notify)
+        /// <param name="reportNothing">
+        /// Annoncer « rien de nouveau ». Vrai sur demande explicite, faux pour
+        /// la passe automatique : sinon elle répète toutes les minutes qu'elle
+        /// n'a rien trouvé, ce qui est du bruit pur.
+        /// </param>
+        private void TriggerRefine(int mapId, bool notify, bool reportNothing)
         {
             if (System.Threading.Interlocked.CompareExchange(ref _refineBusy, 1, 0) != 0)
                 return; // affinage déjà en cours
@@ -1402,7 +1407,7 @@ namespace GW2_NodeTracker
 
                         Logger.Info("Affinage map {0} : {1} nouveau(x), {2} reconfirme(s).", mapId, added, refreshed);
                     }
-                    else if (notify)
+                    else if (notify && reportNothing)
                     {
                         // Sur demande explicite, le silence serait ambigu : on
                         // ne saurait pas distinguer « rien de neuf » de « la
