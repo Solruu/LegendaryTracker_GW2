@@ -107,103 +107,6 @@ namespace GW2_NodeTracker
             return MixedTrailColor;
         }
 
-        public const string PackLuaPath = "pack.lua";
-        public const string RoutesLuaPath = "scripts/routes.lua";
-
-        /// <summary>
-        /// Point d'entrée des scripts du pack. Pathing charge `pack.lua` à la
-        /// racine et c'est lui qui déclare les scripts à exécuter.
-        /// </summary>
-        public static string BuildPackLua() =>
-            "-- Genere par GW2 Node Tracker. Ne pas editer a la main.\n" +
-            "Debug:Print(\"GW2 Node Tracker : chargement du menu de composition...\")\n" +
-            // Le chemin porte l'extension .lua : c'est la forme qu'utilisent
-            // les packs qui fonctionnent, et sans elle le require echoue en
-            // silence.
-            "Pack:Require(\"scripts/routes.lua\")\n";
-
-        /// <summary>
-        /// Trois cases à cocher dans le menu de Pathing (une par groupe) qui
-        /// composent la route affichée.
-        ///
-        /// Le format de pack ne sait pas rendre deux catégories mutuellement
-        /// exclusives : c'est le script qui le fait, en appelant Show() sur la
-        /// composition correspondant aux cases cochées et Hide() sur les
-        /// autres. Toutes les compositions existent déjà dans le pack, donc
-        /// basculer de l'une à l'autre n'est qu'un changement d'affichage --
-        /// aucun recalcul, aucune vérification perdue.
-        ///
-        /// Si le script échoue à charger, rien n'est cassé : les catégories
-        /// restent cochables une par une dans le menu normal.
-        /// </summary>
-        public static string BuildRoutesLua(List<Route> routes)
-        {
-            var groups = routes.SelectMany(r => r.Groups)
-                               .Distinct()
-                               .OrderBy(g => { int i = Array.IndexOf(GroupOrder, g); return i >= 0 ? i : 99; })
-                               .ToList();
-
-            var slugs = routes.Select(r => r.Slug()).Distinct().ToList();
-
-            var sb = new StringBuilder();
-            sb.AppendLine("-- Genere par GW2 Node Tracker. Ne pas editer a la main.");
-            sb.AppendLine("Debug:Print(\"GW2 Node Tracker : menu de composition actif.\")");
-            sb.AppendLine("local GROUPS = {");
-            foreach (string g in groups)
-                sb.AppendLine($"  {{ name = \"{g}\", slug = \"{g.ToLowerInvariant()}\" }},");
-            sb.AppendLine("}");
-            sb.AppendLine();
-            sb.AppendLine("local COMPOSITIONS = {");
-            foreach (string slug in slugs)
-                sb.AppendLine($"  \"{slug}\",");
-            sb.AppendLine("}");
-            sb.AppendLine(@"
-local state = {}
-for _, g in ipairs(GROUPS) do state[g.slug] = false end
-
-local function wantedSlug()
-  local parts = {}
-  for _, g in ipairs(GROUPS) do
-    if state[g.slug] then parts[#parts + 1] = g.slug end
-  end
-  return table.concat(parts, ""_"")
-end
-
-local function apply()
-  local wanted = wantedSlug()
-  for _, slug in ipairs(COMPOSITIONS) do
-    -- World:CategoryByType est la bonne porte d'entree. Category est un
-    -- TYPE dans l'API de Pathing, pas un objet global : l'appeler
-    -- directement levait une exception et faisait echouer le clic.
-    local cat = World:CategoryByType(""gw2farm.routes."" .. slug)
-    if cat then
-      if slug == wanted then cat:Show() else cat:Hide() end
-    end
-  end
-end
-
-local root = Menu:Add(""Composition de route"", nil, false, false,
-                      ""Coche les types de ressources : la route correspondante s'affiche."")
-
--- Construction volontairement minimale et identique aux packs qui
--- fonctionnent : un pcall ou une closure de trop ici, et Pathing
--- n'ajoute aucun enfant au menu.
-for _, g in ipairs(GROUPS) do
-  local slug = g.slug
-  -- On LIT l'etat reel de la case (Menu.Checked) au lieu de basculer un
-  -- etat interne : Pathing coche la case de son cote, et deux compteurs
-  -- independants finissaient par diverger -- d'ou des routes affichees
-  -- sans rapport avec les cases visibles.
-  root:Add(g.name, function(m)
-    state[slug] = m.Checked
-    apply()
-  end, true, false, ""Inclure "" .. g.name)
-end
-
-apply()");
-            return sb.ToString();
-        }
-
         /// <summary>Ordre d'affichage : les routes simples d'abord, puis les combinaisons par taille.</summary>
         private static int RankFor(Route route)
         {
@@ -497,8 +400,6 @@ apply()");
                     using (var stream = texEntry.Open())
                         stream.Write(trailPng, 0, trailPng.Length);
 
-                    WriteText(zip, PackLuaPath, BuildPackLua());
-                    WriteText(zip, RoutesLuaPath, BuildRoutesLua(routes));
                 }
             }
 
