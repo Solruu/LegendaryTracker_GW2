@@ -282,9 +282,9 @@ namespace GW2_NodeTracker
 
             _publishedComposition = routeSettings.DefineSetting(
                 "PublishedComposition",
-                "",
+                "*",
                 () => "Composition affichée",
-                () => "Quelle route est écrite dans le pack. Vide = la plus complète de la map. \"*\" = toutes (elles se superposent). Sinon une liste de groupes séparés par + : Minerai+Bois, Bois, Vegetal... Les sept restent calculées, seule la publication change.");
+                () => "Quelle route est écrite dans le pack. \"*\" (défaut) = toutes, tu choisis dans le menu Pathing. Vide = seulement la plus complète. Sinon une liste de groupes séparés par + : Minerai+Bois, Bois... Sert uniquement à alléger le pack, le menu reste le moyen normal de choisir.");
 
             _detourFactor = routeSettings.DefineSetting(
                 "DetourFactor",
