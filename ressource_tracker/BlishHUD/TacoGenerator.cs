@@ -93,6 +93,7 @@ namespace GW2_NodeTracker
             public string Label { get; set; }      // "Minerai", "Minerai + Bois", ...
             public string Color { get; set; }      // couleur du ruban vérifié
             public int Rank { get; set; }          // ordre d'affichage dans le menu
+            public int GroupCount { get; set; }    // nombre de groupes couverts
             public string Kind { get; set; }       // "verifie" ou "direct"
             public byte[] Data { get; set; }
         }
@@ -253,6 +254,7 @@ apply()");
                         Label = label,
                         Color = color,
                         Rank = rank,
+                        GroupCount = route.Groups.Count,
                         Kind = kind ? "verifie" : "direct",
                         Data = TrlWriter.Build(route.MapId, points),
                     });
@@ -341,11 +343,21 @@ apply()");
                 var compositions = trails
                     .GroupBy(t => t.Slug)
                     .Select(g => g.First())
-                    .OrderBy(t => t.Rank);
+                    .OrderBy(t => t.Rank)
+                    .ToList();
+
+                // UNE SEULE composition est visible par défaut : la plus
+                // complète. Les sept se superposent sur le terrain -- elles
+                // partagent la plupart de leurs nodes -- et chaque boucle a sa
+                // propre orientation, donc tout affichier donnait des rubans
+                // doublés, fléchés en sens contraires, illisibles. Les autres
+                // restent à un clic dans le menu.
+                int fullest = compositions.Max(c => c.GroupCount);
 
                 foreach (var comp in compositions)
                 {
-                    sb.AppendLine($"      <MarkerCategory name=\"{comp.Slug}\" DisplayName=\"{comp.Label}\">");
+                    string shown = comp.GroupCount == fullest ? "1" : "0";
+                    sb.AppendLine($"      <MarkerCategory name=\"{comp.Slug}\" DisplayName=\"{comp.Label}\" defaulttoggle=\"{shown}\">");
 
                     // texture= est OBLIGATOIRE pour Pathing : sans elle, la
                     // catégorie se coche dans le menu mais aucun ruban n'est
