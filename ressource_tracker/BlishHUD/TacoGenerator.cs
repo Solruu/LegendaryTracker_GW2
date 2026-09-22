@@ -161,9 +161,6 @@ namespace GW2_NodeTracker
 local state = {}
 for _, g in ipairs(GROUPS) do state[g.slug] = false end
 
--- Le slug d'une composition est la concatenation des groupes coches, dans
--- l'ordre canonique : il doit correspondre exactement a celui calcule cote
--- module (Route.Slug).
 local function wantedSlug()
   local parts = {}
   for _, g in ipairs(GROUPS) do
@@ -175,39 +172,26 @@ end
 local function apply()
   local wanted = wantedSlug()
   for _, slug in ipairs(COMPOSITIONS) do
-    local ok, cat = pcall(function()
-      return Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
-    end)
-    if ok and cat then
-      if slug == wanted then pcall(function() cat:Show() end)
-      else pcall(function() cat:Hide() end) end
-    else
-      Debug:Print(""routes: categorie introuvable "" .. slug)
-    end
+    local cat = Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
+    if slug == wanted then cat:Show() else cat:Hide() end
   end
 end
 
 local root = Menu:Add(""Composition de route"", nil, false, false,
                       ""Coche les types de ressources : la route correspondante s'affiche."")
 
+-- Construction volontairement minimale et identique aux packs qui
+-- fonctionnent : un pcall ou une closure de trop ici, et Pathing
+-- n'ajoute aucun enfant au menu.
 for _, g in ipairs(GROUPS) do
   local slug = g.slug
-  -- On bascule NOTRE etat plutot que de lire une propriete de l'objet menu :
-  -- son nom n'est pas garanti, et une erreur dans le delegue fait echouer
-  -- tout le clic (Failed to invoke menu delegate).
-  -- Le delegue DOIT prendre le parametre menu, meme inutilise : Pathing le
-  -- convertit en Action<Menu> et une fonction sans parametre echoue a
-  -- l'invocation (Failed to invoke menu delegate), avant meme d'executer la
-  -- moindre ligne de notre code.
-  root:Add(g.name, function(menu)
+  root:Add(g.name, function(m)
     state[slug] = not state[slug]
-    local ok, err = pcall(apply)
-    if not ok then Debug:Print(""routes: "" .. tostring(err)) end
-  end, true, false,
-  ""Inclure "" .. g.name .. "" dans la route affichee"")
+    apply()
+  end, true, false, ""Inclure "" .. g.name)
 end
 
-pcall(apply)");
+apply()");
             return sb.ToString();
         }
 
