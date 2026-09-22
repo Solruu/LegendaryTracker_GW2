@@ -190,8 +190,12 @@ local root = Menu:Add(""Composition de route"", nil, false, false,
 -- n'ajoute aucun enfant au menu.
 for _, g in ipairs(GROUPS) do
   local slug = g.slug
+  -- On LIT l'etat reel de la case (Menu.Checked) au lieu de basculer un
+  -- etat interne : Pathing coche la case de son cote, et deux compteurs
+  -- independants finissaient par diverger -- d'ou des routes affichees
+  -- sans rapport avec les cases visibles.
   root:Add(g.name, function(m)
-    state[slug] = not state[slug]
+    state[slug] = m.Checked
     apply()
   end, true, false, ""Inclure "" .. g.name)
 end
