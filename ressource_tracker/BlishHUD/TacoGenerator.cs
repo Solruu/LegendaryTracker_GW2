@@ -195,7 +195,11 @@ for _, g in ipairs(GROUPS) do
   -- On bascule NOTRE etat plutot que de lire une propriete de l'objet menu :
   -- son nom n'est pas garanti, et une erreur dans le delegue fait echouer
   -- tout le clic (Failed to invoke menu delegate).
-  root:Add(g.name, function()
+  -- Le delegue DOIT prendre le parametre menu, meme inutilise : Pathing le
+  -- convertit en Action<Menu> et une fonction sans parametre echoue a
+  -- l'invocation (Failed to invoke menu delegate), avant meme d'executer la
+  -- moindre ligne de notre code.
+  root:Add(g.name, function(menu)
     state[slug] = not state[slug]
     local ok, err = pcall(apply)
     if not ok then Debug:Print(""routes: "" .. tostring(err)) end
