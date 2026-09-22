@@ -130,6 +130,36 @@ namespace GW2_NodeTracker
             return costs;
         }
 
+        public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, IList<string> groups,
+                                  EdgeCosts costs = null)
+        {
+            var wanted = new HashSet<string>(groups);
+
+            var stops = nodes
+                .Where(n => n.MapId == mapId && wanted.Contains(n.Group))
+                .Select(RoutePoint.FromNode)
+                .ToList();
+
+            var route = new Route
+            {
+                MapId = mapId,
+                Groups = new List<string>(groups),
+                BuiltAt = DateTime.Now.ToString("o"),
+                Stops = stops,
+            };
+
+            if (stops.Count < 2)
+            {
+                route.Legs = new List<RouteLeg>();
+                return route;
+            }
+
+            costs = costs ?? new EdgeCosts();
+            route.Stops = TwoOpt(NearestNeighbour(stops, costs), costs);
+            route.Legs = DirectLegs(route.Stops);
+            return route;
+        }
+
         /// <summary>Ordre initial : plus proche voisin depuis le premier arrêt.</summary>
         private static List<RoutePoint> NearestNeighbour(List<RoutePoint> stops, EdgeCosts costs)
         {
