@@ -175,8 +175,15 @@ end
 local function apply()
   local wanted = wantedSlug()
   for _, slug in ipairs(COMPOSITIONS) do
-    local cat = Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
-    if slug == wanted then cat:Show() else cat:Hide() end
+    local ok, cat = pcall(function()
+      return Category:GetOrAddCategoryFromNamespace(""gw2farm.routes."" .. slug)
+    end)
+    if ok and cat then
+      if slug == wanted then pcall(function() cat:Show() end)
+      else pcall(function() cat:Hide() end) end
+    else
+      Debug:Print(""routes: categorie introuvable "" .. slug)
+    end
   end
 end
 
@@ -185,11 +192,18 @@ local root = Menu:Add(""Composition de route"", nil, false, false,
 
 for _, g in ipairs(GROUPS) do
   local slug = g.slug
-  root:Add(g.name, function(m) state[slug] = m.Checked; apply() end, true, false,
-           ""Inclure "" .. g.name .. "" dans la route affichee"")
+  -- On bascule NOTRE etat plutot que de lire une propriete de l'objet menu :
+  -- son nom n'est pas garanti, et une erreur dans le delegue fait echouer
+  -- tout le clic (Failed to invoke menu delegate).
+  root:Add(g.name, function()
+    state[slug] = not state[slug]
+    local ok, err = pcall(apply)
+    if not ok then Debug:Print(""routes: "" .. tostring(err)) end
+  end, true, false,
+  ""Inclure "" .. g.name .. "" dans la route affichee"")
 end
 
-apply()");
+pcall(apply)");
             return sb.ToString();
         }
 
