@@ -130,6 +130,49 @@ namespace GW2_NodeTracker
             return costs;
         }
 
+        /// <summary>
+        /// Filtre les routes à publier dans le pack.
+        ///
+        /// Pathing MÉMORISE l'état des cases du joueur : une catégorie déjà
+        /// vue reste cochée même si le pack la déclare décochée. Le seul
+        /// moyen fiable de ne pas superposer sept boucles est donc de ne pas
+        /// les publier du tout. C'est aussi, en attendant le menu Lua, le
+        /// sélecteur de composition : on change ce réglage, le pack est
+        /// réécrit avec la seule composition demandée.
+        ///
+        /// spec : vide ou "auto" = la composition la plus complète de chaque
+        /// map ; "*" = toutes ; sinon une liste de groupes séparés par "+"
+        /// (par exemple "Minerai+Bois").
+        /// </summary>
+        public static List<Route> SelectPublished(List<Route> routes, string spec)
+        {
+            if (routes == null || routes.Count == 0) return new List<Route>();
+
+            spec = (spec ?? "").Trim();
+            if (spec == "*") return routes;
+
+            if (spec.Length > 0 && !spec.Equals("auto", StringComparison.OrdinalIgnoreCase))
+            {
+                var wanted = spec.Split('+')
+                                 .Select(g => g.Trim().ToLowerInvariant())
+                                 .Where(g => g.Length > 0)
+                                 .OrderBy(g => g)
+                                 .ToList();
+
+                var matched = routes.Where(r =>
+                    r.Groups.Select(g => g.ToLowerInvariant()).OrderBy(g => g).SequenceEqual(wanted)).ToList();
+
+                // Une composition qui n'existe pas sur cette map ne doit pas
+                // vider le pack : on retombe sur la plus complète.
+                if (matched.Count > 0) return matched;
+            }
+
+            // Par map, la route qui couvre le plus de groupes.
+            return routes.GroupBy(r => r.MapId)
+                         .Select(g => g.OrderByDescending(r => r.Groups.Count).First())
+                         .ToList();
+        }
+
         public static Route Build(IEnumerable<GatheredNode> nodes, int mapId, IList<string> groups,
                                   EdgeCosts costs = null)
         {

@@ -80,6 +80,7 @@ namespace GW2_NodeTracker
         private SettingEntry<float> _traceTeleportThreshold;
         private SettingEntry<float> _routeSnapRadius;
         private SettingEntry<float> _detourFactor;
+        private SettingEntry<string> _publishedComposition;
         private SettingEntry<string> _tracesFilePath;
         private SettingEntry<string> _routesFilePath;
         #endregion
@@ -279,6 +280,12 @@ namespace GW2_NodeTracker
                 () => "Rayon d'accroche node/trace (m)",
                 () => "Distance en dessous de laquelle un point de trace compte comme un passage sur un node. Trop petit, aucun tronçon ne se vérifie ; trop grand, des tronçons se vérifient avec un trajet qui ne passait pas vraiment par le node.");
 
+            _publishedComposition = routeSettings.DefineSetting(
+                "PublishedComposition",
+                "",
+                () => "Composition affichée",
+                () => "Quelle route est écrite dans le pack. Vide = la plus complète de la map. \"*\" = toutes (elles se superposent). Sinon une liste de groupes séparés par + : Minerai+Bois, Bois, Vegetal... Les sept restent calculées, seule la publication change.");
+
             _detourFactor = routeSettings.DefineSetting(
                 "DetourFactor",
                 DefaultDetourFactor,
@@ -320,6 +327,10 @@ namespace GW2_NodeTracker
 
             _undoKey.Value.Enabled = true;
             _undoKey.Value.Activated += OnUndoKeyActivated;
+
+            // Changer la composition affichée réécrit le pack tout de suite :
+            // sans ça, le réglage n'aurait d'effet qu'à la prochaine capture.
+            _publishedComposition.SettingChanged += (s2, e2) => RequestTacoRegeneration();
 
             _buildRouteKey.Value.Enabled = true;
             _buildRouteKey.Value.Activated += OnBuildRouteKeyActivated;
@@ -584,7 +595,8 @@ namespace GW2_NodeTracker
                 {
                     // Relecture fraîche depuis le disque, indépendante de _nodes.
                     // Idem pour les routes : le pack doit refléter le disque.
-                    List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
+                    List<Route> freshRoutes = RouteBuilder.SelectPublished(
+                        RouteBuilder.Load(CleanPath(_routesFilePath.Value)), _publishedComposition.Value);
                     string json = File.ReadAllText(nodesPath);
                     List<GatheredNode> freshNodes = JsonConvert.DeserializeObject<List<GatheredNode>>(json)
                                                      ?? new List<GatheredNode>();
@@ -829,7 +841,8 @@ namespace GW2_NodeTracker
 
                     // Les routes repassent aussi : sans elles, le refresh forcé
                     // des icônes retirerait les trails du pack.
-                    List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
+                    List<Route> freshRoutes = RouteBuilder.SelectPublished(
+                        RouteBuilder.Load(CleanPath(_routesFilePath.Value)), _publishedComposition.Value);
                     var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
                     _pendingNotifications.Enqueue(
                         $"📦 Refresh forcé terminé : {fetched} icône(s) re-téléchargée(s), {foundIcons} au total, {missing.Count} toujours manquantes.");
