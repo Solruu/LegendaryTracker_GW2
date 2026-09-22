@@ -386,6 +386,7 @@ namespace GW2_NodeTracker
             }
 
             UpdatePathCorrection(gameTime, currentMapId);
+            UpdateRefineTimer(gameTime, currentMapId);
             UpdateTacoDebounce(gameTime);
         }
 
@@ -409,7 +410,6 @@ namespace GW2_NodeTracker
             double elapsed = gameTime.ElapsedGameTime.TotalMilliseconds;
             _sampleAccumMs += elapsed;
             _saveAccumMs += elapsed;
-            _refineAccumMs += elapsed;
 
             if (_sampleAccumMs >= SampleIntervalMs)
             {
@@ -433,11 +433,25 @@ namespace GW2_NodeTracker
                 }
             }
 
-            if (_refineAccumMs >= AutoRefineIntervalMs)
-            {
-                _refineAccumMs = 0;
-                TriggerRefine(mapId, notify: true);
-            }
+        }
+
+        /// <summary>
+        /// Affinage périodique. Volontairement HORS du bloc d'enregistrement :
+        /// affiner ne capture rien, ça relit seulement les traces déjà sur
+        /// disque. Le conditionner au réglage d'enregistrement faisait qu'une
+        /// map parcourue puis routée correction coupée restait entièrement
+        /// rouge, alors que les traces contenaient de quoi valider la moitié
+        /// des tronçons.
+        /// </summary>
+        private void UpdateRefineTimer(GameTime gameTime, int mapId)
+        {
+            if (_routes.Count == 0) return;
+
+            _refineAccumMs += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (_refineAccumMs < AutoRefineIntervalMs) return;
+
+            _refineAccumMs = 0;
+            TriggerRefine(mapId, notify: true);
         }
 
         protected override void Unload()
@@ -1212,11 +1226,9 @@ namespace GW2_NodeTracker
                 var route = RouteBuilder.Build(_nodes, mapId, combo, costs);
                 if (route.Stops.Count < 2) continue;
 
-                // Le réglage coupé, on construit quand même la route : le
-                // calcul de l'ordre ne dépend pas des traces, seule la
-                // géométrie des tronçons en dépend.
-                if (_pathCorrectionEnabled.Value)
-                    RouteBuilder.Refine(route, _traces, _simplifyTolerance.Value, _routeSnapRadius.Value, _detourFactor.Value);
+                // Toujours, indépendamment du réglage d'enregistrement : les
+                // traces existent déjà, autant s'en servir tout de suite.
+                RouteBuilder.Refine(route, _traces, _simplifyTolerance.Value, _routeSnapRadius.Value, _detourFactor.Value);
 
                 _routes.Add(route);
                 stops += route.Stops.Count;
@@ -1343,12 +1355,6 @@ namespace GW2_NodeTracker
         private void OnRefinePathKeyActivated(object sender, EventArgs e)
         {
             if (!CanAct()) return;
-
-            if (!_pathCorrectionEnabled.Value)
-            {
-                ShowNotification("Correction de chemin désactivée -- active-la d'abord (touche dédiée).");
-                return;
-            }
 
             TriggerRefine(GameService.Gw2Mumble.CurrentMap.Id, notify: true);
         }
