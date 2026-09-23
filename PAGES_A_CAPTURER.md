@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v308.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v309.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -86,7 +86,7 @@ faut, pas comment on les obtient.
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 
-## 4 — 28 collections incomplètes — RIEN À CAPTURER
+## 4 — 31 collections incomplètes — RIEN À CAPTURER
 
 Ces succès n'ont pas d'article à eux : « Incursive Investigation:
 Infinite Recursion » est une ligne de la page de catégorie, « Helping
@@ -125,6 +125,9 @@ la section « URLs ».
 | ○ | `"War Eternal" Mastery` | Vision | 4689 | sans etapes, sans unlock | `Vision` |
 | ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans etapes, sans unlock | — |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
+| ● | `Lasting Bonds: What Comes Next` | Vision | 4112 | sans unlock | — |
+| ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
+| ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
 ## URLs — 13 pages à capturer
 

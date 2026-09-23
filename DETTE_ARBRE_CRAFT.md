@@ -1736,3 +1736,47 @@ Reste a faire, que je ne fais pas ici : rattacher les trois collections a la
 donnee (achievements 4144, 4106, 4112) pour que la regle « une etape validee
 satisfait son composant » les couvre. Elles ne sont pas dans les collections de
 Vision : ce sont des succes de A Bug in the System, prerequis de l'etape.
+
+## AH — 20/09/2026 : les trois Lasting Bonds rejoignent la donnee
+
+Les trois collections prerequises de l'etape « Vision of Equipment: Olmakhan
+Bandolier » entrent dans `vision.collections` : `lb_where_we_come_from` (succes
+4144, 6 etapes), `lb_what_we_do_here` (4106, 9) et `lb_what_comes_next` (4112,
+8).
+
+**Aucune regle nouvelle n'a ete necessaire.** La premiere etape de chaque
+collection EST le palier de bandoulier qu'Efi donne : bit 0 de 4144 est le
+Simple, bit 0 de 4106 le Handwoven, bit 0 de 4112 le Pocketed. Le rattachement
+par identite de nom — celui pose le 18/09 — les relie tout seul, et la regle
+« une etape validee satisfait son composant » fait le reste.
+
+Cocher le bit 0 de « What Comes Next », c'est-a-dire posseder le bandoulier a
+poches :
+
+| | avant | apres |
+|---|---:|---:|
+| Simple Olmakhan Bandolier | 2 | 0 |
+| Handwoven | 1 | 0 |
+| Pocketed | 1 | 0 |
+| Olmakhan Charm | 5 | **1** |
+| Olmakhan Latigo Strap | 17 | **9** |
+| Supreme Rune of Holding | 18 | **12** |
+| Bolt of Gossamer | 25 | **5** |
+
+Ne reste que le dernier palier : 4 sangles, 12 runes supremes, 1 charme. C'est
+exactement ce qu'on veut lire quand on a deja les trois quarts du travail.
+
+**Totaux a collections vierges inchanges**, verifie sur les 84 cibles avant
+ecriture.
+
+### Deux pieges de lecture dans les captures
+
+Chaque case de collection est rendue DEUX fois dans la page — une fois en icone,
+une fois en ligne — donc une lecture naive doublait chaque etape : 12 au lieu de
+6, 18 au lieu de 9. Deduplique par numero de bit.
+
+Et la page de « What Comes Next » porte le widget d'une AUTRE collection, le
+renvoi vers Visions of Sandswept Isles (succes 4774). Une premiere passe a donc
+donne l'identifiant 4774 a `lb_what_comes_next` — le meme que `vis_sandswept`,
+deja dans la donnee. L'audit a refuse. On ne garde desormais que les cases du
+succes de la page.
