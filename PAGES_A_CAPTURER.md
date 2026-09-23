@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v307.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v308.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 7 trous de l'arbre — LA PRIORITÉ
+## 0 — 6 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,7 +17,6 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Olmakhan Bandolier` | 1 |
 
 ### 0 ter — 6 trous dont la page est DÉJÀ au dépôt
 
@@ -53,7 +52,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 8 composants sans apiId ni page
+## 3 — 10 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -62,14 +61,16 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 |---|
 | `Ancient Wood Pulp` |
 | `Jug of Water` |
-| `Olmakhan Bandolier` |
+| `Olmakhan Charm` |
 | `Olmakhan Latigo Strap` |
 | `Spinal Blade Back Pack (Perfected)` |
+| `Superior Rune of Holding` |
+| `Supreme Rune of Holding` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
 
-## 3 bis — 5 composants dont le coût d'obtention est inconnu
+## 3 bis — 8 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
@@ -78,7 +79,10 @@ faut, pas comment on les obtient.
 |---|
 | `Ancient Wood Pulp` |
 | `Jug of Water` |
+| `Olmakhan Charm` |
 | `Olmakhan Latigo Strap` |
+| `Superior Rune of Holding` |
+| `Supreme Rune of Holding` |
 | `Tribute to Call of the Void` |
 | `Tribute to Exitare` |
 
@@ -122,17 +126,19 @@ la section « URLs ».
 | ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans etapes, sans unlock | — |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
 
-## URLs — 11 pages à capturer
+## URLs — 13 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Olmakhan_Bandolier
 https://wiki.guildwars2.com/wiki/Ardent_Glorious_armor
 https://wiki.guildwars2.com/wiki/Triumphant_Hero%27s_armor
 https://wiki.guildwars2.com/wiki/Obsidian_armor
 https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
 https://wiki.guildwars2.com/wiki/Jug_of_Water
+https://wiki.guildwars2.com/wiki/Olmakhan_Charm
 https://wiki.guildwars2.com/wiki/Olmakhan_Latigo_Strap
 https://wiki.guildwars2.com/wiki/Spinal_Blade_Back_Pack_(Perfected)
+https://wiki.guildwars2.com/wiki/Superior_Rune_of_Holding
+https://wiki.guildwars2.com/wiki/Supreme_Rune_of_Holding
 https://wiki.guildwars2.com/wiki/Tribute_to_Call_of_the_Void
 https://wiki.guildwars2.com/wiki/Tribute_to_Exitare
 https://wiki.guildwars2.com/wiki/Valkyrie_Bearkin_War_Helm

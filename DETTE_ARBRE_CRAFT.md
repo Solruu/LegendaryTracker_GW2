@@ -1676,3 +1676,63 @@ Deux choses que je n'ai PAS reglees et que je signale :
   Si ton stock vit dans le portefeuille, le tracker lit l'objet et affiche zero.
   Je ne sais pas lequel des deux porte ton stock : c'est a verifier en jeu avant
   de toucher.
+
+## AG — 20/09/2026 : l'Olmakhan Bandolier, ou j'ai confondu un defaut de donnee avec une fatalite
+
+### Ce qui a merde
+
+`olmakhan_bandolier_chain` etait un **agregat synthetique** : un composant
+invente, nomme « Olmakhan Bandolier (chaîne) », avec `qty: {vision: 5}`, une
+note disant « 5 charmes, 1 ectoplasme chacun », et pour toute reference
+« arbre GW2Efficiency (Vision) ». Aucune page wiki ne porte ce nom, et pour
+cause : il n'existe pas dans le jeu.
+
+Le generateur de file en derivait un titre de page — « Olmakhan Bandolier » —
+et le redemandait a chaque passe. Jusque-la, c'est une consequence mecanique.
+
+**L'erreur est ce que j'en ai conclu.** J'avais liste les quatre vraies pages
+deux messages plus tot — Simple, Handwoven, Pocketed, Reinforced, toutes au
+depot depuis longtemps. Et j'ai ecrit « ne sera sans doute jamais trouve : le
+wiki n'a que les quatre paliers ». La bonne conclusion etait l'inverse exact :
+**les quatre pages existent, donc l'agregat synthetique doit disparaitre.** J'ai
+classe en fatalite de nommage ce qui etait un defaut de modelisation, et je l'ai
+range dans la colonne « signale, non regle » au lieu de le corriger.
+
+Le principe du projet le disait deja, noir sur blanc : *les arbres GW2Efficiency
+sont des plans d'achat, pas des nomenclatures*. Un composant dont la seule
+reference est un arbre GW2Efficiency aurait du me sauter aux yeux.
+
+### La vraie chaine
+
+Les quatre boites Recipe la donnent entierement :
+
+| palier | recette |
+|---|---|
+| Simple | 10 Bolt of Gossamer + 1 Superior Rune of Holding + 1 Olmakhan Charm |
+| Handwoven | **2 Simple** + 4 Latigo Strap + 1 Supreme Rune of Holding + 1 Charm |
+| Pocketed | 1 Handwoven + 4 Latigo Strap + 5 Supreme Rune + 1 Charm |
+| Reinforced | 1 Pocketed + 4 Latigo Strap + 12 Supreme Rune + 1 Charm |
+
+Deplie : **5 Olmakhan Charms** — exactement ce que l'ancienne note annoncait, ce
+qui confirme que le chiffre etait juste et seule la structure etait fausse. Et
+17 sangles, 18 runes supremes, 25 rouleaux de gossamer, qui n'apparaissaient
+nulle part.
+
+Les 5 ectoplasmes, eux, disparaissent : **aucune des quatre recettes n'en
+demande**. Ils venaient du plan d'achat, pas du jeu.
+
+### Ce que les trois succes ajoutent
+
+Les captures de `Lasting Bonds: Where We Come From`, `What We Do Here` et
+`What Comes Next` sont sans equivoque : **Efi DONNE les bandouliers** pour
+chaque collection terminee, la suivante etant debloquee par la precedente. Le
+palier renforce s'obtient donc gratuitement au bout des trois collections.
+
+La chaine artisanale reste modelisee — elle existe, ses recettes sont reelles —
+et la voie par collection est notee dans `sources`. **Laquelle prendre est une
+decision de jeu, pas une donnee** : je ne tranche pas, les deux sont visibles.
+
+Reste a faire, que je ne fais pas ici : rattacher les trois collections a la
+donnee (achievements 4144, 4106, 4112) pour que la regle « une etape validee
+satisfait son composant » les couvre. Elles ne sont pas dans les collections de
+Vision : ce sont des succes de A Bug in the System, prerequis de l'etape.

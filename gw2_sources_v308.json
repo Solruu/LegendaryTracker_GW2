@@ -5840,7 +5840,6 @@
     "lump_of_mithrillium",
     "memory_essence_encapsulator",
     "neutralized_titan_alloy",
-    "olmakhan_bandolier_chain",
     "orrax_manifested",
     "seer_runestone",
     "selachimorpha",
@@ -5892,7 +5891,6 @@
     "diviners_orichalcum_imbued_inscription": 5,
     "lacquered_banner_pole": 10,
     "banner_pennon": 5,
-    "olmakhan_bandolier_chain": 1,
     "gift_of_relics": 150,
     "gift_of_runes": 100,
     "gift_of_sigils": 150,
@@ -16027,24 +16025,6 @@
    "ref": "boite Recipe de sa page : 5 Bolt of Gossamer, 100 Spool of Gossamer Thread, 5 Glob of Ectoplasm, 5 Olmakhan Latigo Strap",
    "apiId": 87925
   },
-  "olmakhan_bandolier_chain": {
-   "name": "Olmakhan Bandolier (chaîne)",
-   "kind": "intermediate",
-   "farmable": false,
-   "needed_for": [
-    "vision"
-   ],
-   "qty": {
-    "vision": 5
-   },
-   "note": {
-    "fr": "Chaîne gigogne Simple → Tissée → À poches → Renforcée : 5 charmes olmakhan au total, 1 ectoplasme chacun.",
-    "en": "Nested chain Simple → Handwoven → Pocketed → Reinforced: 5 Olmakhan Charms in total, 1 ectoplasm each."
-   },
-   "verified": true,
-   "checked": "2026-08-27",
-   "ref": "arbre GW2Efficiency (Vision), lu par gw2_parse_recipe_tree_v2.py — profondeur reelle, 27/08/2026"
-  },
   "ancient_wood_plank": {
    "name": "Ancient Wood Plank",
    "apiId": 19712,
@@ -16101,14 +16081,16 @@
     "gift_of_lightning": 250,
     "gift_of_music": 250,
     "banner_pennon": 5,
-    "sheet_of_premium_paper": 1
+    "sheet_of_premium_paper": 1,
+    "simple_olmakhan_bandolier": 10
    },
    "needed_for": [
     "banner_pennon",
     "gift_of_entertainment",
     "gift_of_lightning",
     "gift_of_music",
-    "sheet_of_premium_paper"
+    "sheet_of_premium_paper",
+    "simple_olmakhan_bandolier"
    ],
    "sources": [
     {
@@ -22191,10 +22173,16 @@
    "kind": "acquire",
    "farmable": true,
    "needed_for": [
-    "banner_pennon"
+    "banner_pennon",
+    "handwoven_olmakhan_bandolier",
+    "pocketed_olmakhan_bandolier",
+    "reinforced_olmakhan_bandolier"
    ],
    "qty": {
-    "banner_pennon": 5
+    "banner_pennon": 5,
+    "handwoven_olmakhan_bandolier": 4,
+    "pocketed_olmakhan_bandolier": 4,
+    "reinforced_olmakhan_bandolier": 4
    },
    "sources": [
     {
@@ -22208,6 +22196,158 @@
    "ref": "boite Recipe de Banner Pennon",
    "checked": "2026-09-20",
    "verified": "exigence sourcee, provenance inconnue"
+  },
+  "simple_olmakhan_bandolier": {
+   "name": "Simple Olmakhan Bandolier",
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "handwoven_olmakhan_bandolier"
+   ],
+   "qty": {
+    "handwoven_olmakhan_bandolier": 2
+   },
+   "apiId": 87038,
+   "ref": "boite Recipe de sa page (Tailor 400)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "note": {
+    "fr": "3 recettes selon la discipline ; seule la première est chaînée.",
+    "en": "3 recipes depending on discipline; only the first is chained."
+   }
+  },
+  "superior_rune_of_holding": {
+   "name": "Superior Rune of Holding",
+   "kind": "acquire",
+   "farmable": true,
+   "needed_for": [
+    "simple_olmakhan_bandolier"
+   ],
+   "qty": {
+    "simple_olmakhan_bandolier": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Page non capturée — seule son exigence pour le bandoulier est sourcée.",
+      "en": "Page not captured — only its requirement for the bandolier is sourced."
+     }
+    }
+   ],
+   "ref": "boite Recipe de Simple Olmakhan Bandolier",
+   "checked": "2026-09-20",
+   "verified": "exigence sourcee, provenance inconnue"
+  },
+  "olmakhan_charm": {
+   "name": "Olmakhan Charm",
+   "kind": "acquire",
+   "farmable": true,
+   "needed_for": [
+    "handwoven_olmakhan_bandolier",
+    "pocketed_olmakhan_bandolier",
+    "reinforced_olmakhan_bandolier",
+    "simple_olmakhan_bandolier"
+   ],
+   "qty": {
+    "simple_olmakhan_bandolier": 1,
+    "handwoven_olmakhan_bandolier": 1,
+    "pocketed_olmakhan_bandolier": 1,
+    "reinforced_olmakhan_bandolier": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Page non capturée — seule son exigence pour le bandoulier est sourcée.",
+      "en": "Page not captured — only its requirement for the bandolier is sourced."
+     }
+    }
+   ],
+   "ref": "boite Recipe de Simple Olmakhan Bandolier",
+   "checked": "2026-09-20",
+   "verified": "exigence sourcee, provenance inconnue"
+  },
+  "handwoven_olmakhan_bandolier": {
+   "name": "Handwoven Olmakhan Bandolier",
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "pocketed_olmakhan_bandolier"
+   ],
+   "qty": {
+    "pocketed_olmakhan_bandolier": 1
+   },
+   "apiId": 87217,
+   "ref": "boite Recipe de sa page (Armorsmith Leatherworker Tailor 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026"
+  },
+  "supreme_rune_of_holding": {
+   "name": "Supreme Rune of Holding",
+   "kind": "acquire",
+   "farmable": true,
+   "needed_for": [
+    "handwoven_olmakhan_bandolier",
+    "pocketed_olmakhan_bandolier",
+    "reinforced_olmakhan_bandolier"
+   ],
+   "qty": {
+    "handwoven_olmakhan_bandolier": 1,
+    "pocketed_olmakhan_bandolier": 5,
+    "reinforced_olmakhan_bandolier": 12
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Page non capturée — seule son exigence pour le bandoulier est sourcée.",
+      "en": "Page not captured — only its requirement for the bandolier is sourced."
+     }
+    }
+   ],
+   "ref": "boite Recipe de Handwoven Olmakhan Bandolier",
+   "checked": "2026-09-20",
+   "verified": "exigence sourcee, provenance inconnue"
+  },
+  "pocketed_olmakhan_bandolier": {
+   "name": "Pocketed Olmakhan Bandolier",
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "reinforced_olmakhan_bandolier"
+   ],
+   "qty": {
+    "reinforced_olmakhan_bandolier": 1
+   },
+   "apiId": 86993,
+   "ref": "boite Recipe de sa page (Armorsmith Leatherworker Tailor 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026"
+  },
+  "reinforced_olmakhan_bandolier": {
+   "name": "Reinforced Olmakhan Bandolier",
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "vision"
+   ],
+   "qty": {
+    "vision": 1
+   },
+   "apiId": 87225,
+   "ref": "boite Recipe de sa page (Armorsmith Leatherworker Tailor 500)",
+   "checked": "2026-09-20",
+   "verified": "boite Recipe lue le 20/09/2026",
+   "sources": [
+    {
+     "type": "achievement",
+     "tip": {
+      "fr": "Efi le donne pour la collection « Lasting Bonds: What Comes Next », troisième des trois collections de A Bug in the System. Il est aussi fabricable — la chaîne ci-dessous est la voie artisanale.",
+      "en": "Efi gives it for the 'Lasting Bonds: What Comes Next' collection, third of the three A Bug in the System collections. It is also craftable — the chain below is the crafting route."
+     }
+    }
+   ]
   }
  },
  "enchaînements_recommandés": {
@@ -62547,7 +62687,7 @@
        },
        "how_fr_missing": true,
        "wiki": "Vision_of_Equipment:_Olmakhan_Bandolier",
-       "component": "olmakhan_bandolier_chain"
+       "component": "reinforced_olmakhan_bandolier"
       },
       {
        "bit": 6,
