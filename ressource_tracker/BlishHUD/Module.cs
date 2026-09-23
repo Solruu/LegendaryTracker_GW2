@@ -123,8 +123,18 @@ namespace GW2_NodeTracker
         // réécrivait le pack quatre fois pour rien, puisque Pathing ne relit
         // pas le fichier de lui-même. On attend que ça se calme.
         private const double RegenDebounceMs = 4000.0;
+
+        // Plafond d'attente au dechargement : au-dela, on rend la main a
+        // Blish plutot que de faire trainer la fermeture.
+        private const int UnloadFlushTimeoutMs = 5000;
         private double _regenPendingMs = -1;
         private int _regenRequests = 0;
+
+        // Le pack sur disque est-il en retard sur le JSON ? Mis a vrai par
+        // toute demande de regeneration, remis a faux apres une ecriture
+        // reussie. Sert au dechargement : c'est la seule occasion d'ecrire
+        // AVANT que Pathing ne relise le pack au demarrage suivant.
+        private volatile bool _tacoDirty = false;
 
         [ImportingConstructor]
         public Module([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) { }
@@ -475,6 +485,11 @@ namespace GW2_NodeTracker
             if (_traces.Dirty)
                 _traces.Save(CleanPath(_tracesFilePath.Value));
 
+            // Puis le pack, une fois traces et routes fixées sur disque :
+            // c'est ce fichier que Pathing relira au prochain démarrage,
+            // avant que ce module n'ait eu le temps de se recharger.
+            FlushTacoOnUnload();
+
             _selectionPanel?.Dispose();
             _selectionPanel = null;
         }
@@ -551,6 +566,7 @@ namespace GW2_NodeTracker
         {
             if (!_autoRegenerateTaco.Value) return;
 
+            _tacoDirty = true;
             _regenRequests++;
             _regenPendingMs = 0;
         }
@@ -572,62 +588,96 @@ namespace GW2_NodeTracker
             TriggerTacoRegeneration();
         }
 
-        private void TriggerTacoRegeneration()
+        /// <summary>
+        /// Resout les trois chemins necessaires a une ecriture de pack et
+        /// verifie qu'ils sont exploitables. Faux = rien a tenter.
+        /// </summary>
+        private bool TryResolveTacoPaths(out string nodesPath, out string output, out string iconsDir)
         {
-            if (!_autoRegenerateTaco.Value) return;
-
-            string nodesPath = CleanPath(_nodesFilePath.Value);
-            string output = CleanPath(_tacoOutputPath.Value);
-            string iconsDir = CleanPath(_iconsFolderPath.Value);
+            nodesPath = CleanPath(_nodesFilePath.Value);
+            output = CleanPath(_tacoOutputPath.Value);
+            iconsDir = CleanPath(_iconsFolderPath.Value);
 
             if (string.IsNullOrWhiteSpace(output))
             {
                 Logger.Warn("TacoOutputPath non défini -- régénération ignorée.");
-                return;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(nodesPath) || !File.Exists(nodesPath))
             {
                 Logger.Warn("NodesFilePath introuvable ({0}) -- régénération ignorée.", nodesPath);
-                return;
+                return false;
             }
+            return true;
+        }
+
+        /// <summary>
+        /// Une passe d'ecriture, synchrone et sans reseau : relecture du JSON
+        /// et des routes depuis le disque, puis generation du pack. C'est
+        /// l'unique endroit qui ecrit le .taco -- le chemin de fond comme
+        /// celui du dechargement passent tous les deux par ici.
+        /// </summary>
+        private bool WriteTacoPass(string nodesPath, string output, string iconsDir,
+                                   out int nodeCount, out int foundIcons, out List<string> missing)
+        {
+            nodeCount = 0;
+            foundIcons = 0;
+            missing = new List<string>();
+
+            // Relecture fraîche depuis le disque, indépendante de _nodes.
+            // Idem pour les routes : le pack doit refléter le disque.
+            List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
+            string json = File.ReadAllText(nodesPath);
+            List<GatheredNode> freshNodes = JsonConvert.DeserializeObject<List<GatheredNode>>(json)
+                                             ?? new List<GatheredNode>();
+
+            if (freshNodes.Count == 0)
+            {
+                Logger.Warn("Aucun node dans {0} -- régénération ignorée.", nodesPath);
+                return false;
+            }
+
+            var result = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
+            nodeCount = freshNodes.Count;
+            foundIcons = result.Item1;
+            missing = result.Item2;
+            return true;
+        }
+
+        private void TriggerTacoRegeneration()
+        {
+            if (!_autoRegenerateTaco.Value) return;
+            if (!TryResolveTacoPaths(out string nodesPath, out string output, out string iconsDir)) return;
 
             Task.Run(async () =>
             {
-                await _regenLock.WaitAsync(); // une seule régénération à la fois
+                await _regenLock.WaitAsync().ConfigureAwait(false); // une seule régénération à la fois
                 try
                 {
-                    // Relecture fraîche depuis le disque, indépendante de _nodes.
-                    // Idem pour les routes : le pack doit refléter le disque.
-                    List<Route> freshRoutes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
-                    string json = File.ReadAllText(nodesPath);
-                    List<GatheredNode> freshNodes = JsonConvert.DeserializeObject<List<GatheredNode>>(json)
-                                                     ?? new List<GatheredNode>();
-
-                    if (freshNodes.Count == 0)
-                    {
-                        Logger.Warn("Aucun node dans {0} -- régénération ignorée.", nodesPath);
+                    if (!WriteTacoPass(nodesPath, output, iconsDir,
+                                       out int nodeCount, out int foundIcons, out List<string> missing))
                         return;
-                    }
 
-                    var (foundIcons, missing) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
+                    _tacoDirty = false;
 
                     Logger.Info(
                         "Pack .taco régénéré : {0} nodes, {1} icônes trouvées, {2} manquantes.",
-                        freshNodes.Count, foundIcons, missing.Count);
+                        nodeCount, foundIcons, missing.Count);
 
                     if (missing.Count > 0)
                     {
                         Logger.Debug("Icônes manquantes : {0}", string.Join(", ", missing));
 
-                        int fetched = await IconFetcher.FetchMissingAsync(missing, iconsDir);
+                        int fetched = await IconFetcher.FetchMissingAsync(missing, iconsDir).ConfigureAwait(false);
                         if (fetched > 0)
                         {
                             // Icônes obtenues -- deuxième passe pour les inclure sans attendre
                             // la prochaine capture.
-                            var (foundIcons2, stillMissing2) = TacoGenerator.Generate(freshNodes, output, iconsDir, freshRoutes);
+                            WriteTacoPass(nodesPath, output, iconsDir,
+                                          out int nodeCount2, out int foundIcons2, out List<string> stillMissing2);
                             if (_verboseNotifications.Value)
                                 _pendingNotifications.Enqueue(
-                                    $"📦 .taco régénéré ({freshNodes.Count} nodes, {foundIcons2} icônes, {fetched} icône(s) téléchargée(s))");
+                                    $"📦 .taco régénéré ({nodeCount2} nodes, {foundIcons2} icônes, {fetched} icône(s) téléchargée(s))");
                             if (stillMissing2.Count > 0)
                                 Logger.Debug("Toujours manquantes après téléchargement : {0}", string.Join(", ", stillMissing2));
                             return;
@@ -635,7 +685,7 @@ namespace GW2_NodeTracker
                     }
 
                     if (_verboseNotifications.Value)
-                        _pendingNotifications.Enqueue($"📦 .taco régénéré ({freshNodes.Count} nodes, {foundIcons} icônes)");
+                        _pendingNotifications.Enqueue($"📦 .taco régénéré ({nodeCount} nodes, {foundIcons} icônes)");
                 }
                 catch (Exception ex)
                 {
@@ -647,6 +697,56 @@ namespace GW2_NodeTracker
                     _regenLock.Release();
                 }
             });
+        }
+
+        /// <summary>
+        /// Ecriture de dernier recours, au dechargement du module. Sans elle,
+        /// Pathing lit au demarrage suivant le pack de la session d'AVANT :
+        /// il charge son pack quelques secondes avant que LoadAsync ne
+        /// reecrive le fichier, donc ce qui s'affiche au premier lancement
+        /// n'est jamais l'etat courant. En ecrivant ici, le fichier est deja
+        /// a jour quand Pathing le lit.
+        ///
+        /// Synchrone et volontairement sans telechargement d'icones : on
+        /// bloque le thread principal de Blish pendant la fermeture, ce n'est
+        /// pas le moment de partir sur le reseau. Les icones manquantes
+        /// seront recuperees a la passe de demarrage suivante.
+        /// </summary>
+        private void FlushTacoOnUnload()
+        {
+            if (!_autoRegenerateTaco.Value) return;
+            if (!_tacoDirty) return; // le disque est deja a jour
+            if (!TryResolveTacoPaths(out string nodesPath, out string output, out string iconsDir)) return;
+
+            // Une regeneration de fond peut etre en cours : on l'attend, mais
+            // pas indefiniment -- un dechargement ne doit jamais rester bloque.
+            if (!_regenLock.Wait(UnloadFlushTimeoutMs))
+            {
+                Logger.Warn("Régénération en cours au déchargement -- écriture finale abandonnée après {0} ms.",
+                            UnloadFlushTimeoutMs);
+                return;
+            }
+
+            try
+            {
+                if (!_tacoDirty) return; // la regeneration qu'on vient d'attendre a fait le travail
+
+                if (WriteTacoPass(nodesPath, output, iconsDir,
+                                  out int nodeCount, out int foundIcons, out List<string> missing))
+                {
+                    _tacoDirty = false;
+                    Logger.Info("Pack .taco écrit au déchargement : {0} nodes, {1} icônes, {2} manquantes.",
+                                nodeCount, foundIcons, missing.Count);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Échec de l'écriture du .taco au déchargement");
+            }
+            finally
+            {
+                _regenLock.Release();
+            }
         }
 
         // -------------------------------------------------------------
