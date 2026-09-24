@@ -2291,7 +2291,7 @@ function FactureEtape({ cid, NX }) {
 // La pertinence n'est pas une liste ecrite a la main — elle se DEDUIT : la
 // feuille concerne cette legendaire si le don qu'elle enseigne figure a son
 // total. Le jour ou une recette change, l'affichage suit tout seul.
-function AchatsUniques({ totals, NX, acquises, setAcquises }) {
+function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, recetteParDon }) {
   const cc = SOURCES_DB?.craft_components ?? {};
   const utiles = Object.entries(cc)
     .filter(([, c]) => c?.kind === "account_unlock" && c?.enseigne)
@@ -2302,10 +2302,18 @@ function AchatsUniques({ totals, NX, acquises, setAcquises }) {
                           // compendium de commandant demande 250 insignes
                           // d'honneur en plus de ses 300 po.
                           monnaie: Object.entries(c.prix_monnaie ?? {})
-                            .map(([m, n]) => `${n.toLocaleString()} ${NX(cc[m]?.name) ?? m}`) }))
+                            .map(([m, n]) => `${n.toLocaleString()} ${NX(cc[m]?.name) ?? m}`),
+                          // Detectee comme apprise : le compte connait une des
+                          // recettes qui produisent ce don.
+                          auto: (() => {
+                            const don = cc[c.enseigne]?.apiId;
+                            const rec = recetteParDon?.[String(don)];
+                            if (!recettesCompte || !Array.isArray(rec) || !rec.length) return false;
+                            return rec.some(r => recettesCompte.has(r));
+                          })() }))
     .sort((a, b) => String(a.nom).localeCompare(String(b.nom)));
   if (!utiles.length) return null;
-  const reste = utiles.filter(f => !acquises[f.cid]);
+  const reste = utiles.filter(f => !(acquises[f.cid] ?? f.auto));
   const du = reste.reduce((n, f) => n + f.prix, 0);
   return (
     <div style={{ margin: "14px 14px 6px", padding: "12px 14px", background: "rgba(251,191,36,0.04)", border: "1px solid rgba(251,191,36,0.18)", borderRadius: 8 }}>
@@ -2319,7 +2327,8 @@ function AchatsUniques({ totals, NX, acquises, setAcquises }) {
                  en: `${reste.length} of ${utiles.length} still to buy — ${du}g. Each is paid once and serves every legendary that needs it.` })}
       </div>
       {utiles.map(f => {
-        const ok = !!acquises[f.cid];
+        // La detection l'emporte, sauf si la case a ete cochee a la main.
+        const ok = acquises[f.cid] ?? f.auto;
         return (
           <div key={f.cid} onClick={() => setAcquises(a => ({ ...a, [f.cid]: !a[f.cid] }))}
                style={{ display: "flex", alignItems: "center", gap: 8, padding: "3px 0", cursor: "pointer", opacity: ok ? 0.45 : 1 }}>
@@ -4426,6 +4435,51 @@ export default function GW2LegendaryTracker() {
     try { return JSON.parse(localStorage.getItem("gw2_aurora_collections") ?? "null") ?? {}; } catch { return {}; }
   });
   // Aurora — expanded sous-collection dans l'onglet collections
+  // Recettes debloquees sur le compte, pour cocher les feuilles toutes seules.
+  //
+  // Le pont manquait : la capture d'une feuille ne porte que l'identifiant de
+  // l'OBJET (75645 pour Gift of Blood), alors que /v2/account/recipes rend des
+  // identifiants de RECETTES. Les deux espaces ne se croisent pas.
+  //
+  // /v2/recipes/search?output=<id du don> fait la jonction : il rend les
+  // recettes qui produisent ce don, qu'on confronte aux recettes du compte.
+  // C'est une donnee statique, donc mise en cache — une seule requete par don,
+  // jamais rejouee.
+  //
+  // Limite connue et volontaire : les recettes de la Forge mystique ne sont PAS
+  // dans l'API. Une recherche vide laisse donc la case en manuel, ce qui est le
+  // bon comportement — le compendium de commandant, qui n'est pas une recette,
+  // reste coche a la main.
+  const [recettesCompte, setRecettesCompte] = useState(null);
+  const [recetteParDon, setRecetteParDon] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_recette_par_don") ?? "null") ?? {}; } catch { return {}; }
+  });
+  useEffect(() => {
+    const cc = SOURCES_DB?.craft_components ?? {};
+    const dons = Object.values(cc)
+      .filter(c => c?.kind === "account_unlock" && c?.enseigne)
+      .map(c => cc[c.enseigne]?.apiId)
+      .filter(id => typeof id === "number" && !(String(id) in recetteParDon));
+    if (!dons.length) return;
+    let vivant = true;
+    (async () => {
+      const trouve = {};
+      for (const id of dons) {
+        try {
+          const r = await fetch(`https://api.guildwars2.com/v2/recipes/search?output=${id}`);
+          trouve[String(id)] = r.ok ? (await r.json()) : [];
+        } catch (_) { return; }
+      }
+      if (!vivant) return;
+      setRecetteParDon(prev => {
+        const suite = { ...prev, ...trouve };
+        try { localStorage.setItem("gw2_recette_par_don", JSON.stringify(suite)); } catch {}
+        return suite;
+      });
+    })();
+    return () => { vivant = false; };
+  }, [recetteParDon]);
+
   // Feuilles de recette acquises — etat PAR COMPTE, pas par legendaire. Une
   // feuille achetee une fois sert a toutes les armes qui demandent son don :
   // elle se coche ici et se voit cochee partout, sans etre comptee deux fois.
@@ -4518,6 +4572,23 @@ export default function GW2LegendaryTracker() {
   // Grand Total
   // Clé API : conservée en mémoire uniquement (jamais persistée — à ressaisir par session)
   const [gtApiKey, setGtApiKey] = useState("");
+  // Les recettes du compte se lisent avec la cle detenue par le client. Elle
+  // est declaree ici, donc l'effet vit ici — pas plus haut, ou elle n'existe
+  // pas encore. Sans cle (passage par Flask), les cases restent manuelles.
+  useEffect(() => {
+    const key = (gtApiKey ?? "").trim();
+    if (!key) return;
+    let vivant = true;
+    (async () => {
+      try {
+        const r = await fetch(`https://api.guildwars2.com/v2/account/recipes?access_token=${encodeURIComponent(key)}`);
+        if (!r.ok) return;
+        const ids = await r.json();
+        if (vivant && Array.isArray(ids)) setRecettesCompte(new Set(ids));
+      } catch (_) { /* hors ligne : les cases restent manuelles */ }
+    })();
+    return () => { vivant = false; };
+  }, [gtApiKey]);
   useEffect(() => { try { localStorage.removeItem("gw2_gt_apikey"); } catch (_) {} }, []); // purge de l'ancien stockage
   // armoryRaw (les id API bruts) se restaure depuis localStorage au montage,
   // mais gtOwnedIds (le meme ensemble, projete sur les legIds via
@@ -7450,7 +7521,8 @@ export default function GW2LegendaryTracker() {
           ))}
           <AchatsUniques
             totals={legTotals} NX={NX}
-            acquises={feuillesAcquises} setAcquises={setFeuillesAcquises} />
+            acquises={feuillesAcquises} setAcquises={setFeuillesAcquises}
+            recettesCompte={recettesCompte} recetteParDon={recetteParDon} />
           <div className="reset-info" style={{ marginTop: "8px" }}>{t("reset_info_progress")}</div>
         </div>
       )}

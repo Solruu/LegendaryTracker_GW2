@@ -2145,3 +2145,28 @@ existe cote API : `/v2/recipes/search?output=<id du don>` donne la recette qui
 produit ce don, qu'on confronte ensuite aux recettes debloquees du compte.
 Aucune donnee nouvelle a saisir — mais une requete de plus par feuille, et une
 gestion d'echec reseau. Non fait ici.
+
+## AQ — 24/09/2026 : les feuilles se cochent toutes seules
+
+Le pont manquait entre deux espaces d'identifiants. La capture d'une feuille ne
+porte que celui de l'**objet** — 75645 pour Recipe: Gift of Blood — alors que
+`/v2/account/recipes` rend des identifiants de **recettes**. Les deux ne se
+croisent jamais. C'est le meme motif que le Jeton de fournisseur en section O :
+deux identifiants justes, du meme objet, dans deux espaces differents.
+
+`/v2/recipes/search?output=<id du don>` fait la jonction : il rend les recettes
+qui produisent ce don, qu'on confronte aux recettes debloquees du compte. La
+correspondance est statique, donc mise en cache sous `gw2_recette_par_don` —
+une requete par don, jamais rejouee.
+
+Verifie avant d'ecrire : la page d'une feuille annonce « Recipe sheet,
+Disciplines 400 ». C'est une recette d'artisanat, donc presente dans l'API.
+
+**Limite connue et voulue** : les recettes de la Forge mystique ne sont PAS dans
+l'API. Une recherche vide laisse la case en manuel, ce qui est le bon
+comportement — le compendium de commandant, qui n'est pas une recette, reste
+coche a la main.
+
+La detection l'emporte, sauf si la case a ete cochee a la main : `acquises[cid]
+?? auto`. Sans cle API — chez qui passe par Flask — tout reste manuel comme
+avant.
