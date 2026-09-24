@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v309.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v310.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -52,7 +52,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 10 composants sans apiId ni page
+## 3 — 7 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
@@ -63,14 +63,11 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Jug of Water` |
 | `Olmakhan Charm` |
 | `Olmakhan Latigo Strap` |
-| `Spinal Blade Back Pack (Perfected)` |
 | `Superior Rune of Holding` |
 | `Supreme Rune of Holding` |
-| `Tribute to Call of the Void` |
-| `Tribute to Exitare` |
 | `Valkyrie Bearkin War Helm` |
 
-## 3 bis — 8 composants dont le coût d'obtention est inconnu
+## 3 bis — 6 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
@@ -83,8 +80,6 @@ faut, pas comment on les obtient.
 | `Olmakhan Latigo Strap` |
 | `Superior Rune of Holding` |
 | `Supreme Rune of Holding` |
-| `Tribute to Call of the Void` |
-| `Tribute to Exitare` |
 
 ## 4 — 31 collections incomplètes — RIEN À CAPTURER
 
@@ -129,7 +124,7 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 13 pages à capturer
+## URLs — 10 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Ardent_Glorious_armor
@@ -139,10 +134,7 @@ https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
 https://wiki.guildwars2.com/wiki/Jug_of_Water
 https://wiki.guildwars2.com/wiki/Olmakhan_Charm
 https://wiki.guildwars2.com/wiki/Olmakhan_Latigo_Strap
-https://wiki.guildwars2.com/wiki/Spinal_Blade_Back_Pack_(Perfected)
 https://wiki.guildwars2.com/wiki/Superior_Rune_of_Holding
 https://wiki.guildwars2.com/wiki/Supreme_Rune_of_Holding
-https://wiki.guildwars2.com/wiki/Tribute_to_Call_of_the_Void
-https://wiki.guildwars2.com/wiki/Tribute_to_Exitare
 https://wiki.guildwars2.com/wiki/Valkyrie_Bearkin_War_Helm
 ```

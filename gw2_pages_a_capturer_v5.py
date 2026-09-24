@@ -111,9 +111,22 @@ def titre_cible(cle):
     return titre_composant(cle)
 
 
+# v5 : index secondaire par TITRE de page. Le nom d'un composant n'est pas
+# toujours celui de sa page : « Spinal Blade Back Pack (Perfected) » se lit
+# « Spinal Blade Pack » au wiki, « Tribute to Exitare » s'y appelle « Tribute to
+# the Exitare ». Ces trois pages dormaient au depot sous leur vrai titre, et la
+# file les reclamait quand meme — avec des URLs en 404, puisque le titre
+# demande n'existe pas. Chercher aussi par titre ferme cette porte.
+par_titre = {}
+for _r in idx.values():
+    _t = _r.get("titre")
+    if _t:
+        par_titre.setdefault(slug(_t), _r)
+
+
 def capturee(titre, avec_table=False):
     p = slug(titre)
-    r = idx.get(p)
+    r = idx.get(p) or par_titre.get(p)
     if r is None:
         return False
     return bool(r["table_materiaux"]) if avec_table else True
@@ -200,7 +213,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v4.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")

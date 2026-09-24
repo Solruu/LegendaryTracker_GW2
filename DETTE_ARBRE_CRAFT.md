@@ -1780,3 +1780,29 @@ renvoi vers Visions of Sandswept Isles (succes 4774). Une premiere passe a donc
 donne l'identifiant 4774 a `lb_what_comes_next` — le meme que `vis_sandswept`,
 deja dans la donnee. L'audit a refuse. On ne garde desormais que les cases du
 succes de la page.
+
+## AI — 20/09/2026 : trois pages reclamees en 404, toutes trois au depot
+
+Le nom d'un composant n'est pas toujours celui de sa page. Trois cas :
+
+| composant | titre reclame | vrai titre wiki |
+|---|---|---|
+| `spinal_blade_perfected` | Spinal Blade Back Pack (Perfected) | **Spinal Blade Pack** |
+| `tribute_to_call_of_the_void` | Tribute to Call of the Void | **Tribute to the Call of the Void** |
+| `tribute_to_exitare` | Tribute to Exitare | **Tribute to the Exitare** |
+
+Les trois pages etaient au depot sous leur vrai titre. Les URLs reclamees
+pointaient dans le vide — un 404 a chaque fois qu'on les suivait.
+
+**La cause est un champ absent.** Ces trois composants n'avaient pas de `wiki`,
+donc le titre de page etait DERIVE de leur nom. Le champ est pose, avec les
+apiId que leurs pages donnent — 50060, 87627 et 90776, qu'aucun des trois ne
+portait.
+
+**Et un garde-fou, parce que la donnee seule ne suffit pas.** Le generateur ne
+cherchait une capture que par le slug du titre demande. Il cherche desormais
+aussi par le TITRE des pages indexees : une page presente sous un autre nom de
+fichier ou un autre libelle est reconnue. Sans ce second index, le prochain
+composant mal nomme repartirait en 404 sans que rien ne le dise.
+
+File : **10 URLs**, contre 13.
