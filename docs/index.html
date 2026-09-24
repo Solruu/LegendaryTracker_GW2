@@ -4157,15 +4157,15 @@ const SOURCES_DB = {
       "farmable": false,
       "sources": [
         {
+          "type": "vendor",
+          "tip": "Vendors PoF (Crystal Oasis, etc.)."
+        },
+        {
           "type": "tp",
           "tip": {
             "fr": "Achat au TP — très bon marché (~1-2 pa).",
             "en": "Buy on TP — very cheap (~1-2s)."
           }
-        },
-        {
-          "type": "vendor",
-          "tip": "Vendors PoF (Crystal Oasis, etc.)."
         }
       ],
       "qty": {
@@ -5193,15 +5193,15 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "tp",
-          "tip": "Buy on TP."
-        },
-        {
           "type": "drop",
           "tip": {
             "fr": "Drop McM (rare). Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
             "en": "Drop WvW (rare). Non-exhaustive: the wiki table is long and alphabetically sorted."
           }
+        },
+        {
+          "type": "tp",
+          "tip": "Buy on TP."
         }
       ],
       "kind": "acquire",
@@ -7384,7 +7384,8 @@ const SOURCES_DB = {
       "apiId": 74494,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_insights",
+        "gift_of_gliding",
+        "gift_of_the_itzel",
         "gift_of_the_pact"
       ],
       "farmable": true,
@@ -7403,7 +7404,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_the_pact": 250,
-        "gift_of_insights": 800
+        "gift_of_the_itzel": 500,
+        "gift_of_gliding": 300
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7413,7 +7415,8 @@ const SOURCES_DB = {
       "apiId": 20,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_insights",
+        "gift_of_gliding",
+        "gift_of_the_nuhoch",
         "gift_of_the_pact"
       ],
       "farmable": true,
@@ -7432,7 +7435,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_the_pact": 250,
-        "gift_of_insights": 800
+        "gift_of_the_nuhoch": 500,
+        "gift_of_gliding": 300
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire",
@@ -7445,7 +7449,8 @@ const SOURCES_DB = {
       "apiId": 75012,
       "type": "map_currency",
       "needed_for": [
-        "gift_of_insights",
+        "gift_of_gliding",
+        "gift_of_the_exalted",
         "gift_of_the_pact"
       ],
       "farmable": true,
@@ -7464,7 +7469,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_the_pact": 250,
-        "gift_of_insights": 800
+        "gift_of_the_exalted": 500,
+        "gift_of_gliding": 300
       },
       "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
       "kind": "acquire"
@@ -7479,12 +7485,13 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Itzel Mastery Vendor",
-          "map": {
-            "fr": "Orée d'émeraude",
-            "en": "Verdant Brink"
+          "tip": {
+            "fr": "500 Airship Part + 1 po chez le vendeur de maîtrise. Maîtrise de langue requise.",
+            "en": "500 Airship Part + 1 gold from the mastery vendor. Language mastery required."
           },
-          "tip": "150 Airship Parts + 3g. Requires Itzel Language mastery."
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "wiki Gift of the Itzel — table Acquisition (icônes Airship Part + Gold coin)"
         }
       ],
       "qty": {
@@ -7502,12 +7509,13 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Nuhoch Mastery Vendor",
-          "map": {
-            "fr": "Profondeurs verdoyantes",
-            "en": "Tangled Depths"
+          "tip": {
+            "fr": "500 Ley Line Crystal + 1 po chez le vendeur de maîtrise. Maîtrise de langue requise.",
+            "en": "500 Ley Line Crystal + 1 gold from the mastery vendor. Language mastery required."
           },
-          "tip": "150 Ley Line Crystals + 3g. Requires Nuhoch Language mastery."
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "wiki Gift of the Nuhoch — table Acquisition (icônes Ley Line Crystal + Gold coin)"
         }
       ],
       "qty": {
@@ -7525,15 +7533,13 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Exalted Mastery Vendor",
-          "map": {
-            "fr": "Bassin aurique",
-            "en": "Auric Basin"
-          },
           "tip": {
-            "fr": "150 Lumps of Aurillium + 3 po. Requiert la maîtrise Exalted Acceptance.",
-            "en": "150 Lumps of Aurillium + 3g. Requires Exalted Acceptance mastery."
-          }
+            "fr": "500 Lump of Aurillium + 1 po chez le vendeur de maîtrise. Maîtrise de langue requise.",
+            "en": "500 Lump of Aurillium + 1 gold from the mastery vendor. Language mastery required."
+          },
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "wiki Gift of the Exalted — table Acquisition (icônes Lump of Aurillium + Gold coin)"
         }
       ],
       "qty": {
@@ -7551,12 +7557,14 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "npc": "Itzel/Nuhoch/Exalted Mastery Vendor",
-          "map": "HoT maps",
+          "npc": "Miyani / Mystic Forge Attendant / Mystic Forge Keeper",
           "tip": {
-            "fr": "Obtenu en maximisant la maîtrise Deltaplane (HoT). Achat chez les vendeurs de maîtrise HoT.",
-            "en": "Obtained by maxing Gliding mastery (HoT). Purchase from HoT mastery vendors."
-          }
+            "fr": "300 Airship Parts + 300 Ley Line Crystals + 300 Lumps of Aurillium. Maîtrise Vol plané sur ligne de force requise. Aucun or.",
+            "en": "300 Airship Parts + 300 Ley Line Crystals + 300 Lumps of Aurillium. Requires Ley Line Gliding mastery. No gold."
+          },
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "wiki Gift of Gliding — table Acquisition"
         }
       ],
       "qty": {
@@ -7575,9 +7583,12 @@ const SOURCES_DB = {
         {
           "type": "mystic_forge",
           "tip": {
-            "fr": "MF : 1× Gift of the Itzel + 1× Gift of the Nuhoch + 1× Gift of the Exalted + 1× Gift of Gliding. Requiert 800 de chaque currency de map HoT (Airship Parts / Ley Line Crystals / Lumps of Aurillium) + 3 po chacune.",
-            "en": "MF: 1× Gift of the Itzel + 1× Gift of the Nuhoch + 1× Gift of the Exalted + 1× Gift of Gliding. Requires 800 of each HoT map currency (Airship Parts / Ley Line Crystals / Lumps of Aurillium) + 3g each."
-          }
+            "fr": "MF : 1 Gift of the Itzel + 1 Gift of the Nuhoch + 1 Gift of the Exalted + 1 Gift of Gliding. Soit 800 de chaque monnaie de carte HoT (500 par don de maîtrise + 300 pour le Gift of Gliding) et 3 po au total.",
+            "en": "MF: 1 Gift of the Itzel + 1 Gift of the Nuhoch + 1 Gift of the Exalted + 1 Gift of Gliding. That is 800 of each HoT map currency (500 per mastery gift + 300 for the Gift of Gliding) and 3 gold in total."
+          },
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "wiki Gift of the Itzel / Nuhoch / Exalted / Gliding — tables Acquisition"
         }
       ],
       "qty": {
@@ -23135,6 +23146,106 @@ const SOURCES_DB = {
             "fr": "Efi le donne pour la collection « Lasting Bonds: What Comes Next », troisième des trois collections de A Bug in the System. Il est aussi fabricable — la chaîne ci-dessous est la voie artisanale.",
             "en": "Efi gives it for the 'Lasting Bonds: What Comes Next' collection, third of the three A Bug in the System collections. It is also craftable — the chain below is the crafting route."
           }
+        }
+      ]
+    },
+    "gold_coin": {
+      "name": "Gold coin",
+      "apiId": 1,
+      "kind": "currency",
+      "farmable": true,
+      "qty": {
+        "gift_of_the_itzel": 1,
+        "gift_of_the_nuhoch": 1,
+        "gift_of_the_exalted": 1,
+        "ardent_glorious__piece_heavy_boots": 2,
+        "ardent_glorious__piece_heavy_chest": 3,
+        "ardent_glorious__piece_heavy_gloves": 2,
+        "ardent_glorious__piece_heavy_helm": 2,
+        "ardent_glorious__piece_heavy_legs": 2,
+        "ardent_glorious__piece_heavy_shoulders": 2,
+        "ardent_glorious__piece_light_boots": 2,
+        "ardent_glorious__piece_light_chest": 3,
+        "ardent_glorious__piece_light_gloves": 2,
+        "ardent_glorious__piece_light_helm": 2,
+        "ardent_glorious__piece_light_legs": 2,
+        "ardent_glorious__piece_light_shoulders": 2,
+        "ardent_glorious__piece_medium_boots": 2,
+        "ardent_glorious__piece_medium_chest": 3,
+        "ardent_glorious__piece_medium_gloves": 2,
+        "ardent_glorious__piece_medium_helm": 2,
+        "ardent_glorious__piece_medium_legs": 2,
+        "ardent_glorious__piece_medium_shoulders": 2,
+        "triumphant_hero__piece_heavy_boots": 2,
+        "triumphant_hero__piece_heavy_chest": 3,
+        "triumphant_hero__piece_heavy_gloves": 2,
+        "triumphant_hero__piece_heavy_helm": 2,
+        "triumphant_hero__piece_heavy_legs": 2,
+        "triumphant_hero__piece_heavy_shoulders": 2,
+        "triumphant_hero__piece_light_boots": 2,
+        "triumphant_hero__piece_light_chest": 3,
+        "triumphant_hero__piece_light_gloves": 2,
+        "triumphant_hero__piece_light_helm": 2,
+        "triumphant_hero__piece_light_legs": 2,
+        "triumphant_hero__piece_light_shoulders": 2,
+        "triumphant_hero__piece_medium_boots": 2,
+        "triumphant_hero__piece_medium_chest": 3,
+        "triumphant_hero__piece_medium_gloves": 2,
+        "triumphant_hero__piece_medium_helm": 2,
+        "triumphant_hero__piece_medium_legs": 2,
+        "triumphant_hero__piece_medium_shoulders": 2
+      },
+      "needed_for": [
+        "ardent_glorious__piece_heavy_boots",
+        "ardent_glorious__piece_heavy_chest",
+        "ardent_glorious__piece_heavy_gloves",
+        "ardent_glorious__piece_heavy_helm",
+        "ardent_glorious__piece_heavy_legs",
+        "ardent_glorious__piece_heavy_shoulders",
+        "ardent_glorious__piece_light_boots",
+        "ardent_glorious__piece_light_chest",
+        "ardent_glorious__piece_light_gloves",
+        "ardent_glorious__piece_light_helm",
+        "ardent_glorious__piece_light_legs",
+        "ardent_glorious__piece_light_shoulders",
+        "ardent_glorious__piece_medium_boots",
+        "ardent_glorious__piece_medium_chest",
+        "ardent_glorious__piece_medium_gloves",
+        "ardent_glorious__piece_medium_helm",
+        "ardent_glorious__piece_medium_legs",
+        "ardent_glorious__piece_medium_shoulders",
+        "gift_of_the_exalted",
+        "gift_of_the_itzel",
+        "gift_of_the_nuhoch",
+        "triumphant_hero__piece_heavy_boots",
+        "triumphant_hero__piece_heavy_chest",
+        "triumphant_hero__piece_heavy_gloves",
+        "triumphant_hero__piece_heavy_helm",
+        "triumphant_hero__piece_heavy_legs",
+        "triumphant_hero__piece_heavy_shoulders",
+        "triumphant_hero__piece_light_boots",
+        "triumphant_hero__piece_light_chest",
+        "triumphant_hero__piece_light_gloves",
+        "triumphant_hero__piece_light_helm",
+        "triumphant_hero__piece_light_legs",
+        "triumphant_hero__piece_light_shoulders",
+        "triumphant_hero__piece_medium_boots",
+        "triumphant_hero__piece_medium_chest",
+        "triumphant_hero__piece_medium_gloves",
+        "triumphant_hero__piece_medium_helm",
+        "triumphant_hero__piece_medium_legs",
+        "triumphant_hero__piece_medium_shoulders"
+      ],
+      "sources": [
+        {
+          "type": "account",
+          "tip": {
+            "fr": "Monnaie de base de Tyrie. Seuls les postes d'or INCONTOURNABLES sont chaînés ici : un achat vendeur sans autre voie. L'or qui ne fait qu'accélérer une source farmable reste décrit dans les sources alternatives du composant concerné, et n'est jamais additionné au total.",
+            "en": "Tyria's base currency. Only UNAVOIDABLE gold lines are chained here: a vendor purchase with no other route. Gold that merely accelerates a farmable source stays in that component's alternative sources and is never summed into the total."
+          },
+          "verified": true,
+          "checked": "2026-09-24",
+          "ref": "gw2_currencies_ref.json — /v2/currencies id 1 « Coin »"
         }
       ]
     }

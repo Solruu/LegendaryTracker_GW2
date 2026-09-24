@@ -146,6 +146,40 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "total_unknown_ref", "how_ref", "cadence_ref_note"}
 
 
+def check_source_gratuite_en_premier(data, errors, warnings):
+    """Quand une voie gratuite existe, le comptoir ne passe pas devant.
+
+    Regle posee par Antoine le 24/09/2026, en meme temps que l'entree de la
+    piece d'or dans l'arbre : l'or qui ACHETE un materiau par ailleurs farmable
+    est un accelerateur, pas un ingredient. Il reste decrit, jamais additionne
+    au total -- et, dans la liste des sources, il ne s'affiche pas en premier,
+    sinon l'interface suggere de payer ce qui se ramasse.
+
+    C'est exactement la distinction que GW2Efficiency ne fait PAS : il price
+    tout au comptoir et laisse l'or se substituer a n'importe quel sous-arbre.
+    Utile pour valoriser, faux comme nomenclature.
+
+    Le controle porte sur le TYPE de source, pas sur la prose : un tip peut
+    citer un prix en or tout en decrivant une contrepartie hebdomadaire parmi
+    cinq (antique_summoning_stone), ce qui n'est pas un achat au comptoir.
+    """
+    cc = data.get("craft_components", {})
+    COMPTOIR = {"tp", "trading_post"}
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        srcs = [s for s in (comp.get("sources") or []) if isinstance(s, dict)]
+        if len(srcs) < 2:
+            continue
+        if srcs[0].get("type") in COMPTOIR:
+            autres = [s.get("type") for s in srcs[1:]]
+            warnings.append(
+                f"craft_components/{cid} : la source comptoir est listee en "
+                f"premier alors que {autres} existent — une voie gratuite ou "
+                "farmable passe devant l'accelerateur payant"
+            )
+
+
 def check_free_sources(data, errors, warnings):
     """Un composant reellement exige devrait avoir une source gratuite repetable.
 
@@ -2165,6 +2199,9 @@ def main() -> int:
 
     # 34. alt_groups : un choix un-parmi-N ne doit jamais compter deux fois
     check_alt_groups(data, errors, warnings)
+
+    # Une voie gratuite passe devant l'accelerateur paye au comptoir
+    check_source_gratuite_en_premier(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})
