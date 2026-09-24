@@ -1995,3 +1995,57 @@ depot, et declarer l'Olmakhan Bandolier introuvable.
 **La regle a appliquer avant d'annoncer un trou** : chercher le composant par
 son apiId ou par sous-chaine, jamais par le nom exact suppose. Un `in cc` qui
 rend False n'est pas une preuve d'absence.
+
+## AN — 24/09/2026 : les feuilles de recette, vues partout, comptees une fois
+
+Les 23 feuilles `Recipe: Gift of <nom>` entrent dans la donnee. Chacune coute
+10 po et se paie **une fois pour le compte** : la deuxieme arme qui demande le
+meme don ne la repaie pas.
+
+### La forme : aucun `qty`
+
+Un composant `recipe_gift_of_*` de genre `account_unlock`, **sans la moindre
+cle `qty`**. N'etant l'enfant d'aucune cible, il ne peut pas entrer dans un
+total par legendaire. **Pas de duplication par precaution : par construction.**
+Verifie — aucune feuille n'apparait dans les 116 composants du total de Vision.
+
+C'etait le point dur. Les chainer naivement les aurait comptees autant de fois
+qu'il y a de cibles, et huit d'entre elles servent a **52 legendaires**.
+
+### La pertinence se deduit, elle ne s'ecrit pas
+
+Chaque feuille porte `enseigne`, le don qu'elle debloque. Elle concerne une
+legendaire si et seulement si ce don figure a son total. Aucune liste de cibles
+a tenir a jour — la lecon des monnaies de carte, ou les listes ecrites a la main
+avaient un angle mort sur Klobjarne.
+
+Ce que ca donne, sans qu'une seule association ait ete ecrite :
+
+| legendaire | feuilles | cout |
+|---|---:|---:|
+| `gen1_frostfang` | 2 — ice, metal | 20 po |
+| `gen1_the_bifrost` | 2 — color, energy | 20 po |
+| `gen3_aurenes_claw` | 8 — les dons condenses | 80 po |
+| `vision` | 9 — + energy | 90 po |
+| `orrax_manifested` | 9 — + darkness | 90 po |
+
+Le partage mesure : huit feuilles pour 52 legendaires, `metal` pour 17, `wood`
+pour 13, `energy` pour 9, `darkness` et `entertainment` pour 2, et dix feuilles
+pour une seule arme chacune.
+
+### L'affichage
+
+Une section dediee en bas de l'onglet Composants, qui ne liste que les feuilles
+utiles a la cible affichee, avec le reste a payer. L'etat est **par compte**,
+persiste sous `gw2_feuilles_acquises` : cocher une feuille la montre cochee sur
+les 52 armes concernees, et le compte ne la retire qu'une fois.
+
+Le prix vient de la table « Acquisition » de chaque page — `data-sort-value`
+100000 cuivre, identique sur les 23. **Ne pas lire l'infobox** : elle donne la
+valeur de revente, 1 po 25 s sur 22 des 23.
+
+### Ce qui reste
+
+Le Commander Tag — 250 Badge of Honor + 300 po, prerequis de
+`commanders_wings_of_war` — n'est pas pose. Meme forme a prevoir, mais il n'est
+rattache a aucun don : sa pertinence ne se deduit pas, elle se declare.

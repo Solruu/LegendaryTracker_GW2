@@ -2275,6 +2275,60 @@ function FactureEtape({ cid, NX }) {
   );
 }
 
+// Les feuilles de recette : un achat UNIQUE POUR LE COMPTE, affiche partout ou
+// il sert, compte une seule fois.
+//
+// Chaque « Gift of … » a une feuille a 10 po. Elle se paie une fois : la
+// deuxieme arme qui demande le meme don ne la repaie pas. Les chainer sur
+// chaque legendaire les aurait comptees autant de fois qu'il y a de cibles —
+// huit d'entre elles servent a 52 legendaires.
+//
+// D'ou la forme : le composant `recipe_gift_of_*` n'a AUCUN `qty`. N'etant
+// l'enfant d'aucune cible, il ne peut pas entrer dans un total. Pas de
+// duplication par precaution : par construction.
+//
+// La pertinence n'est pas une liste ecrite a la main — elle se DEDUIT : la
+// feuille concerne cette legendaire si le don qu'elle enseigne figure a son
+// total. Le jour ou une recette change, l'affichage suit tout seul.
+function FeuillesDeRecette({ totals, NX, acquises, setAcquises }) {
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const utiles = Object.entries(cc)
+    .filter(([, c]) => c?.kind === "account_unlock" && c?.enseigne)
+    .filter(([, c]) => (totals?.[c.enseigne] ?? 0) > 0)
+    .map(([cid, c]) => ({ cid, nom: c.name, don: cc[c.enseigne]?.name ?? c.enseigne,
+                          prix: (c.prix_cuivre ?? 0) / 10000 }))
+    .sort((a, b) => String(a.nom).localeCompare(String(b.nom)));
+  if (!utiles.length) return null;
+  const reste = utiles.filter(f => !acquises[f.cid]);
+  const du = reste.reduce((n, f) => n + f.prix, 0);
+  return (
+    <div style={{ margin: "14px 14px 6px", padding: "12px 14px", background: "rgba(251,191,36,0.04)", border: "1px solid rgba(251,191,36,0.18)", borderRadius: 8 }}>
+      <div style={{ fontSize: 12, fontWeight: 600, color: "rgba(251,191,36,0.85)", marginBottom: 2 }}>
+        {NX({ fr: "Feuilles de recette — achat unique par compte", en: "Recipe sheets — one-time account purchase" })}
+      </div>
+      <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 8 }}>
+        {reste.length === 0
+          ? NX({ fr: "Toutes acquises — rien à racheter pour cette légendaire.", en: "All owned — nothing to buy again for this legendary." })
+          : NX({ fr: `${reste.length} sur ${utiles.length} à acheter, soit ${du} po. Chacune ne se paie qu'une fois, pour toutes les légendaires qui demandent le même don.`,
+                 en: `${reste.length} of ${utiles.length} still to buy — ${du}g. Each is paid once, for every legendary needing the same gift.` })}
+      </div>
+      {utiles.map(f => {
+        const ok = !!acquises[f.cid];
+        return (
+          <div key={f.cid} onClick={() => setAcquises(a => ({ ...a, [f.cid]: !a[f.cid] }))}
+               style={{ display: "flex", alignItems: "center", gap: 8, padding: "3px 0", cursor: "pointer", opacity: ok ? 0.45 : 1 }}>
+            <span style={{ fontSize: 12, width: 14, color: ok ? "#4ade80" : "rgba(226,201,126,0.3)" }}>{ok ? "✔" : "○"}</span>
+            <span style={{ fontSize: 11, textDecoration: ok ? "line-through" : "none" }}>{NX(f.nom)}</span>
+            <span style={{ fontSize: 10, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginLeft: "auto" }}>
+              {f.prix} {NX({ fr: "po", en: "g" })}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function NomEtape({ item, NX }) {
   const nom = NX(item.name);
   if (!item.wiki) return nom;
@@ -4363,6 +4417,15 @@ export default function GW2LegendaryTracker() {
     try { return JSON.parse(localStorage.getItem("gw2_aurora_collections") ?? "null") ?? {}; } catch { return {}; }
   });
   // Aurora — expanded sous-collection dans l'onglet collections
+  // Feuilles de recette acquises — etat PAR COMPTE, pas par legendaire. Une
+  // feuille achetee une fois sert a toutes les armes qui demandent son don :
+  // elle se coche ici et se voit cochee partout, sans etre comptee deux fois.
+  const [feuillesAcquises, setFeuillesAcquises] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_feuilles_acquises") ?? "null") ?? {}; } catch { return {}; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem("gw2_feuilles_acquises", JSON.stringify(feuillesAcquises)); } catch {}
+  }, [feuillesAcquises]);
   const [auroraSubExpanded, setAuroraSubExpanded] = useState(null);
   const [masteryStepsOpen, setMasteryStepsOpen] = useState(null);
   const [copiedCode, setCopiedCode] = useState(null);
@@ -5112,6 +5175,15 @@ export default function GW2LegendaryTracker() {
     () => [...new Set(wpnTargetGen.filter(id => !wpnOwnedSet.has(id))
       .map(id => LEG_BY_API.get(id)).filter(Boolean))],
     [wpnTargetGen.join(","), wpnOwnedSet.size, LEG_BY_API]);
+  // Totaux de la cible affichee, pour savoir quelles feuilles de recette la
+  // concernent. Meme moteur que le grand total : rien de recalcule a la main.
+  const legTotals = React.useMemo(() => {
+    const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
+    if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return {};
+    try { return computeGrandTotal([cible], auroraCollections)?.totals ?? {}; }
+    catch (_) { return {}; }
+  }, [selectedLeg, auroraCollections]);
+
   const wpnCurrencies = React.useMemo(() => {
     if (!isWeapons || wpnLegIds.length === 0) return [];
     let totals = {};
@@ -7331,6 +7403,9 @@ export default function GW2LegendaryTracker() {
               </div>
             </div>
           ))}
+          <FeuillesDeRecette
+            totals={legTotals} NX={NX}
+            acquises={feuillesAcquises} setAcquises={setFeuillesAcquises} />
           <div className="reset-info" style={{ marginTop: "8px" }}>{t("reset_info_progress")}</div>
         </div>
       )}
