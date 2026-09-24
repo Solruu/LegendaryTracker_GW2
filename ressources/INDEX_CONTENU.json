@@ -4910,6 +4910,20 @@
   "aretes_table": []
  },
  {
+  "page": "catmanders_compendium",
+  "titre": "Catmander's Compendium",
+  "api_id": 83739,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Badge_of_Honor",
+    "qty": 250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "certificate_of_heroics",
   "titre": "Certificate of Heroics",
   "api_id": 84099,
@@ -5896,6 +5910,20 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "commanders_compendium",
+  "titre": "Commander's Compendium",
+  "api_id": 67335,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Badge_of_Honor",
+    "qty": 250
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -15525,6 +15553,61 @@
   ]
  },
  {
+  "page": "gift_of_the_sun",
+  "titre": "Gift of the Sun",
+  "api_id": 107136,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_Light",
+      2
+     ],
+     [
+      "Gift_of_Condensed_Might",
+      2
+     ],
+     [
+      "Gift_of_Condensed_Magic",
+      2
+     ],
+     [
+      "Sun_Beads",
+      250
+     ]
+    ],
+    "produit": "Gift of the Sun"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Gift_of_Condensed_Magic",
+    "qty": 2
+   },
+   {
+    "objet": "Gift_of_Condensed_Might",
+    "qty": 2
+   },
+   {
+    "objet": "Gift_of_Light",
+    "qty": 2
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Sun_Bead",
+    "qty": 250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_survivors",
   "titre": "Gift of the Survivors",
   "api_id": 106712,
@@ -23616,6 +23699,213 @@
   "aretes_table": []
  },
  {
+  "page": "recipe_gift_of_blood",
+  "titre": "Recipe: Gift of Blood",
+  "api_id": 75645,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_bones",
+  "titre": "Recipe: Gift of Bones",
+  "api_id": 73366,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_claws",
+  "titre": "Recipe: Gift of Claws",
+  "api_id": 75071,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_color",
+  "titre": "Recipe: Gift of Color",
+  "api_id": 9632,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_darkness",
+  "titre": "Recipe: Gift of Darkness",
+  "api_id": 9625,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_dust",
+  "titre": "Recipe: Gift of Dust",
+  "api_id": 70646,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_energy",
+  "titre": "Recipe: Gift of Energy",
+  "api_id": 9618,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_entertainment",
+  "titre": "Recipe: Gift of Entertainment",
+  "api_id": 9628,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_fangs",
+  "titre": "Recipe: Gift of Fangs",
+  "api_id": 74882,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_history",
+  "titre": "Recipe: Gift of History",
+  "api_id": 9623,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_ice",
+  "titre": "Recipe: Gift of Ice",
+  "api_id": 9616,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_light",
+  "titre": "Recipe: Gift of Light",
+  "api_id": 9626,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_lightning",
+  "titre": "Recipe: Gift of Lightning",
+  "api_id": 9633,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_metal",
+  "titre": "Recipe: Gift of Metal",
+  "api_id": 9615,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_music",
+  "titre": "Recipe: Gift of Music",
+  "api_id": 9624,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_nature",
+  "titre": "Recipe: Gift of Nature",
+  "api_id": 9621,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_scales",
+  "titre": "Recipe: Gift of Scales",
+  "api_id": 76121,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_stealth",
+  "titre": "Recipe: Gift of Stealth",
+  "api_id": 9629,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_totems",
+  "titre": "Recipe: Gift of Totems",
+  "api_id": 75337,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_venom",
+  "titre": "Recipe: Gift of Venom",
+  "api_id": 73389,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_water",
+  "titre": "Recipe: Gift of Water",
+  "api_id": 9637,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_weather",
+  "titre": "Recipe: Gift of Weather",
+  "api_id": 9630,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_gift_of_wood",
+  "titre": "Recipe: Gift of Wood",
+  "api_id": 9617,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "record_of_league_victories",
   "titre": "Record of League Victories",
   "api_id": 82700,
@@ -26412,6 +26702,15 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "sun_bead",
+  "titre": "Sun Bead",
+  "api_id": 19717,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
  },
  {
   "page": "sunrise",

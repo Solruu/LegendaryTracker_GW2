@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v310.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v313.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 9 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,6 +17,9 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Gift of the Desert` | 1 |
+| `Icy Runestone` | 1 |
+| `Mystic Runestone` | 1 |
 
 ### 0 ter — 6 trous dont la page est DÉJÀ au dépôt
 
@@ -121,9 +124,12 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 7 pages à capturer
+## URLs — 10 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Gift_of_the_Desert
+https://wiki.guildwars2.com/wiki/Icy_Runestone
+https://wiki.guildwars2.com/wiki/Mystic_Runestone
 https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
 https://wiki.guildwars2.com/wiki/Jug_of_Water
 https://wiki.guildwars2.com/wiki/Olmakhan_Charm

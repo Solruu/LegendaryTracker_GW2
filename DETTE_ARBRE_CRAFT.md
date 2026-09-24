@@ -1806,3 +1806,48 @@ fichier ou un autre libelle est reconnue. Sans ce second index, le prochain
 composant mal nomme repartirait en 404 sans que rien ne le dise.
 
 File : **10 URLs**, contre 13.
+
+## AJ — 24/09/2026 : la livraison cowork rejoint le depot
+
+Quatre archives, dont deux redondantes : `gw2_X.zip` porte la livraison
+complete (documents, index, captures) et `gw2_wiki_X.zip` les memes captures
+seules. **Vingt-sept captures, toutes nouvelles** — aucune n'etait deja au
+depot : les 23 feuilles `Recipe: Gift of <nom>`, `gift_of_the_sun`, `sun_bead`,
+`commanders_compendium` et `catmanders_compendium`.
+
+`ACHATS_UNIQUES.md` passe de la v1 du depot (65 lignes) a la v3 de la session
+cowork (112 lignes). Les index et la file de captures de l'archive n'ont PAS
+ete repris : ils ont ete regeneres ici par les outils du depot, plus recents.
+
+### La correction que la session avait laissee non appliquee
+
+`gift_of_the_sun` portait l'apiId **107030**, qui est le **Relic of Fog** :
+la colonne « possede » de ce don lisait le stock d'un objet sans rapport. Sa
+page, capturee le 24/09, n'annonce qu'un identifiant, **107136**. L'audit l'a
+refuse des que la capture est entree au depot — c'etait le blocage decrit en fin
+de la v3. Corrige.
+
+La session avait raison de ne pas l'appliquer de son cote : elle changeait un
+chiffre affiche. Elle avait la source qui tranche, elle l'a documentee, et la
+correction s'applique ici en une ligne.
+
+### Ce que la v3 etablit, et qui ne rentre pas encore dans l'arbre
+
+- **Les 23 feuilles de recette a 10 po**, soit 230 po, payees une fois pour le
+  compte. Le suffixe `__onetime` existe deja mais il est indexe sur une CIBLE :
+  « une fois pour cette armure », pas « une fois pour le compte ». Il manque un
+  etat par compte, du meme genre que « collection faite ».
+- **Le Commander Tag a 250 Badge of Honor + 300 po**, sans alternative : le
+  Catmander coute le meme prix, et la ligne a 150 po est une remise croisee qui
+  exige de posseder deja l'autre compendium.
+- **`gift_of_the_sun` n'a pas de feuille** : les deux pages `Recipe:` renvoient
+  404. Les « 10 po » de la v1 venaient soit du « + 10 » de la ligne vendeur, qui
+  est 10 ectoplasmes, soit du `Recipe: Gift of Light` un cran plus bas.
+
+### Un point de coordination a surveiller
+
+La session cowork a fait avancer les outils de son cote — le depot porte
+`gw2_audit_v49`, `gw2_index_contenu_v5`, `gw2_pages_a_capturer_v6`. Les archives
+ne contiennent aucun `.py` : seuls les documents et les captures voyagent. Les
+deux cotes numerotent donc les memes fichiers sans se voir. Ici, j'ai relance
+les versions du depot, pas celles de l'archive.

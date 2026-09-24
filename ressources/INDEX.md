@@ -912,6 +912,33 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `legendary_trunk.html` | Legendary Trunk | article complet | 2026-09-24 |
 | `shard_of_glory.html` | Shard of Glory | article complet | 2026-09-24 |
 | `wvw_skirmish_claim_ticket.html` | WvW Skirmish Claim Ticket | article complet | 2026-09-24 |
+| `catmanders_compendium.html` | Catmander's Compendium | article complet | 2026-09-24 |
+| `commanders_compendium.html` | Commander's Compendium | article complet | 2026-09-24 |
+| `gift_of_the_sun.html` | Gift of the Sun | article complet | 2026-09-24 |
+| `recipe_gift_of_blood.html` | Recipe: Gift of Blood | article complet | 2026-09-24 |
+| `recipe_gift_of_bones.html` | Recipe: Gift of Bones | article complet | 2026-09-24 |
+| `recipe_gift_of_claws.html` | Recipe: Gift of Claws | article complet | 2026-09-24 |
+| `recipe_gift_of_color.html` | Recipe: Gift of Color | article complet | 2026-09-24 |
+| `recipe_gift_of_darkness.html` | Recipe: Gift of Darkness | article complet | 2026-09-24 |
+| `recipe_gift_of_dust.html` | Recipe: Gift of Dust | article complet | 2026-09-24 |
+| `recipe_gift_of_energy.html` | Recipe: Gift of Energy | article complet | 2026-09-24 |
+| `recipe_gift_of_entertainment.html` | Recipe: Gift of Entertainment | article complet | 2026-09-24 |
+| `recipe_gift_of_fangs.html` | Recipe: Gift of Fangs | article complet | 2026-09-24 |
+| `recipe_gift_of_history.html` | Recipe: Gift of History | article complet | 2026-09-24 |
+| `recipe_gift_of_ice.html` | Recipe: Gift of Ice | article complet | 2026-09-24 |
+| `recipe_gift_of_light.html` | Recipe: Gift of Light | article complet | 2026-09-24 |
+| `recipe_gift_of_lightning.html` | Recipe: Gift of Lightning | article complet | 2026-09-24 |
+| `recipe_gift_of_metal.html` | Recipe: Gift of Metal | article complet | 2026-09-24 |
+| `recipe_gift_of_music.html` | Recipe: Gift of Music | article complet | 2026-09-24 |
+| `recipe_gift_of_nature.html` | Recipe: Gift of Nature | article complet | 2026-09-24 |
+| `recipe_gift_of_scales.html` | Recipe: Gift of Scales | article complet | 2026-09-24 |
+| `recipe_gift_of_stealth.html` | Recipe: Gift of Stealth | article complet | 2026-09-24 |
+| `recipe_gift_of_totems.html` | Recipe: Gift of Totems | article complet | 2026-09-24 |
+| `recipe_gift_of_venom.html` | Recipe: Gift of Venom | article complet | 2026-09-24 |
+| `recipe_gift_of_water.html` | Recipe: Gift of Water | article complet | 2026-09-24 |
+| `recipe_gift_of_weather.html` | Recipe: Gift of Weather | article complet | 2026-09-24 |
+| `recipe_gift_of_wood.html` | Recipe: Gift of Wood | article complet | 2026-09-24 |
+| `sun_bead.html` | Sun Bead | article complet | 2026-09-24 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
