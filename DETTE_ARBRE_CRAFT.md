@@ -1851,3 +1851,47 @@ La session cowork a fait avancer les outils de son cote — le depot porte
 ne contiennent aucun `.py` : seuls les documents et les captures voyagent. Les
 deux cotes numerotent donc les memes fichiers sans se voir. Ici, j'ai relance
 les versions du depot, pas celles de l'archive.
+
+## AK — 24/09/2026 : un garde-fou de concurrence, et ce qu'il trouve du premier coup
+
+Plusieurs conversations travaillent sur ce depot en parallele. Le 24/09, trois
+commits d'une autre session se sont intercales entre deux passes de celle-ci,
+en vingt minutes. Git protege du pire — un push non force est refuse quand
+l'historique a avance — mais pas du travail ecrit entre-temps sur une base
+perimee.
+
+`gw2_garde_concurrence_v1.py` se lance deux fois, juste apres le clone et juste
+avant le push. Il ne modifie rien et sort en 1 quand il faut s'arreter :
+
+- **retard** : des commits sont arrives depuis le clone. Recloner et rejouer,
+  jamais fusionner — un merge melerait deux lignees de versions.
+- **divergence** : chaque cote a des commits propres. Recloner, jamais forcer.
+- **collision de numerotation** : une famille versionnee est plus avancee en
+  amont qu'ici.
+- **doublon** : une famille porte plusieurs fichiers.
+
+### Ce qu'il signale des le premier passage
+
+Six familles portent deux fichiers a la fois. La plus grave :
+
+| famille | versions | cite par |
+|---|---|---|
+| `gw2_parse_material_list` | **v3 et v4** | 6 fichiers / 5 fichiers |
+| `gw2_confronte_tables` | v3 et v4 | 1 / 0 |
+| `gw2_index_contenu` | v4 et v5 | 1 / 0 |
+| `gw2_edges_wiki` | v11 et v12 | 0 / 0 |
+| `gw2_integre_branche_arme` | v3 et v4 | 0 / 0 |
+| `gw2_tessons_gen2` | v3 et v4 | 0 / 0 |
+
+**Le parseur de tables vit en deux exemplaires, tous deux utilises.** Six outils
+lisent la v3, cinq la v4. Or ces deux versions ne dedupliquent pas pareil : la
+section S a montre que la v3 collapse les sous-items repetes d'une meme cellule
+— ce qui donne 250 reactifs hydrocatalytiques pour le Gift of Research — tandis
+que la piste v4, ouverte puis abandonnee ici le 18/09, les gardait et donnait
+500. Deux outils du meme depot peuvent donc rendre deux nombres differents sur
+la meme page.
+
+**Rien n'est supprime.** Trancher demande de savoir laquelle des deux lignees
+fait foi, et cette decision appartient a Antoine. Les quatre familles sans
+aucun appelant sont du code mort des deux cotes ; les deux autres sont a
+arbitrer.
