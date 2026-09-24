@@ -77094,6 +77094,13 @@ function GW2LegendaryTracker() {
       fetch(`https://api.guildwars2.com/v2/account/masteries?${tk}`),
     ]);
     const bags = await readCharacterBags(tk);
+    // Recettes debloquees : Flask les rend sous `_recipes` depuis la v40, la
+    // synchro directe doit rendre la meme chose.
+    let recipesDirect = [];
+    try {
+      const rr = await fetch(`https://api.guildwars2.com/v2/account/recipes?${tk}`);
+      if (rr.ok) { const j = await rr.json(); if (Array.isArray(j)) recipesDirect = j; }
+    } catch (_) { /* la detection retombe en manuel */ }
     if (!ra.ok) throw new Error(`achievements HTTP ${ra.status}${ra.status === 401 || ra.status === 403 ? " (clé invalide ou permission 'progression' manquante)" : ""}`);
     if (!rw.ok) throw new Error(`wallet HTTP ${rw.status}`);
     const achList = await ra.json();
@@ -77213,7 +77220,7 @@ function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -77325,6 +77332,11 @@ function GW2LegendaryTracker() {
       }
       // Portes d'eligibilite renvoyees par Flask. On persiste, pour que la
       // page reponde encore apres un rechargement sans synchro.
+      // Quel que soit le chemin — Flask ou direct — les recettes du compte
+      // alimentent la detection des feuilles achetees.
+      if (Array.isArray(data._recipes) && data._recipes.length) {
+        setRecettesCompte(new Set(data._recipes));
+      }
       if (data._gates) {
         try { localStorage.setItem("gw2_gates", JSON.stringify(data._gates)); } catch (_) {}
         setAcctGates(data._gates);

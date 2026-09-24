@@ -425,3 +425,18 @@ réseau : céder à la résistance et livrer quelque chose qui marche en apparen
   dans un objet mis en cache doit être **hachée dans la clé de cache**, jamais
   laissée à un numéro qu'on pense à incrémenter. Vérification : après une passe
   de données, la clé de cache doit avoir changé.
+
+## `_recipes` — recettes débloquées du compte (v40)
+
+`/api/progression` rend désormais `_recipes`, la liste brute de
+`/v2/account/recipes`. Le front s'en sert pour cocher tout seul les feuilles
+« Recipe: Gift of … », achetées une fois pour le compte : il confronte cette
+liste aux recettes que `/v2/recipes/search?output=<don>` associe à chaque don.
+
+Ajouté des deux côtés le même jour. La synchro directe navigateur pose le même
+champ, conformément à la règle : **toute donnée ajoutée à un chemin de synchro
+doit l'être à l'autre**. Sans cela la détection marchait en synchro directe et
+pas en Flask, dont la clé vit dans le `.env` et non dans l'interface.
+
+Une erreur sur cet appel n'est pas bloquante : `_recipes` vaut `[]`, les cases
+restent manuelles, et rien d'autre n'est affecté.

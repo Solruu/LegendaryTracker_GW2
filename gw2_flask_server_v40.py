@@ -993,6 +993,14 @@ def progression():
     else:
         mat_dict = parse_materials(materials_raw)
 
+    # ── Recettes debloquees (pour les feuilles achetees une fois par compte)
+    recipes_raw, err = gw2_get("account/recipes", api_key)
+    if err:
+        errors.append(f"recipes: {err}")
+        recipes_list = []
+    else:
+        recipes_list = recipes_raw if isinstance(recipes_raw, list) else []
+
     # ── Achievements
     achievements_raw, err = gw2_get("account/achievements", api_key)
     if err:
@@ -1392,6 +1400,17 @@ def progression():
         # Portes lisibles par le front : il compare gate.value au palier de
         # fractale, gate.name aux maitrises, gate.name aux extensions.
         "_gates": gates,
+        # Recettes debloquees sur le compte. Elles servent a cocher toutes
+        # seules les feuilles « Recipe: Gift of … », achetees une fois pour le
+        # compte : le front confronte cette liste aux recettes que
+        # /v2/recipes/search associe a chaque don.
+        #
+        # Ajoute ici parce que les deux chemins de synchro doivent rendre la
+        # meme chose (ROUTES.md). Le front sait le faire seul depuis la v220,
+        # mais avec la cle qu'il detient — or elle est vide chez qui passe par
+        # Flask, dont la cle vit dans le .env. Sans cette ligne, la detection
+        # marchait en synchro directe et pas en Flask.
+        "_recipes": recipes_list,
     }
 
     return jsonify(result)
