@@ -908,6 +908,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `lasting_bonds_what_comes_next.html` | Lasting Bonds: What Comes Next | article complet | 2026-09-23 |
 | `lasting_bonds_what_we_do_here.html` | Lasting Bonds: What We Do Here | article complet | 2026-09-23 |
 | `lasting_bonds_where_we_come_from.html` | Lasting Bonds: Where We Come From | article complet | 2026-09-23 |
+| `legendary_mistforged_trunk.html` | Legendary Mistforged Trunk | article complet | 2026-09-24 |
+| `legendary_trunk.html` | Legendary Trunk | article complet | 2026-09-24 |
+| `shard_of_glory.html` | Shard of Glory | article complet | 2026-09-24 |
+| `wvw_skirmish_claim_ticket.html` | WvW Skirmish Claim Ticket | article complet | 2026-09-24 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

@@ -166,6 +166,20 @@ trous = sorted(cid for cid in cc if enfants.get(cid) and not voie_connue(cid))
 plat = {}
 for cid, c in cc.items():
     for k in (c.get("qty") or {}):
+        # Une cle SUFFIXEE n'est pas un cout a plat : le suffixe dit deja
+        # comment le cout se rattache a la cible — __per_piece pour un cout par
+        # piece, __piece_light_chest pour une piece nommee. C'est exactement ce
+        # qu'une table de materiaux apprendrait ; l'arbre sait donc deja ce que
+        # la cible contient. Seule une cle NUE est un bloc inexplique.
+        #
+        # Sans cette distinction, la section reclamait la table de « Ardent
+        # Glorious armor » et de « Triumphant Hero's armor » alors que leurs 36
+        # pieces sont decomposees une a une depuis v3xx, et que ces deux pages
+        # n'ont structurellement pas de table « Full material list » — quatre
+        # recaptures l'ont confirme. Trois fausses alertes que rien ne pouvait
+        # satisfaire.
+        if "__" in k:
+            continue
         base = k.split("__")[0]
         if base not in cc:
             plat.setdefault(base, set()).add(cid)

@@ -31,7 +31,7 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Perfect Mist Core`
 - `Spark of Sentience`
 
-## 1 — 3 tables « Full material list » manquantes
+## 1 — 0 tables « Full material list » manquantes
 
 Ces cibles portent des coûts à plat mais leur page n'est pas capturée avec
 sa table de matériaux. Sans elle, l'arbre ne peut pas se déplier : il
@@ -39,9 +39,6 @@ ignore ce que la cible contient réellement.
 
 | page wiki | coûts à plat concernés |
 |---|---:|
-| `Ardent Glorious armor` | 10 |
-| `Triumphant Hero's armor` | 10 |
-| `Obsidian armor` | 8 |
 
 ## 2 — 0 composants en arbitrage sans page au dépôt
 
@@ -124,12 +121,9 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 10 pages à capturer
+## URLs — 7 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Ardent_Glorious_armor
-https://wiki.guildwars2.com/wiki/Triumphant_Hero%27s_armor
-https://wiki.guildwars2.com/wiki/Obsidian_armor
 https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
 https://wiki.guildwars2.com/wiki/Jug_of_Water
 https://wiki.guildwars2.com/wiki/Olmakhan_Charm
