@@ -2275,8 +2275,9 @@ function FactureEtape({ cid, NX }) {
   );
 }
 
-// Les feuilles de recette : un achat UNIQUE POUR LE COMPTE, affiche partout ou
-// il sert, compte une seule fois.
+// Les achats UNIQUES POUR LE COMPTE : affiches partout ou ils servent,
+// comptes une seule fois. Feuilles de recette a 10 po, compendium de
+// commandant a 250 insignes + 300 po — meme nature, meme traitement.
 //
 // Chaque « Gift of … » a une feuille a 10 po. Elle se paie une fois : la
 // deuxieme arme qui demande le meme don ne la repaie pas. Les chainer sur
@@ -2290,13 +2291,18 @@ function FactureEtape({ cid, NX }) {
 // La pertinence n'est pas une liste ecrite a la main — elle se DEDUIT : la
 // feuille concerne cette legendaire si le don qu'elle enseigne figure a son
 // total. Le jour ou une recette change, l'affichage suit tout seul.
-function FeuillesDeRecette({ totals, NX, acquises, setAcquises }) {
+function AchatsUniques({ totals, NX, acquises, setAcquises }) {
   const cc = SOURCES_DB?.craft_components ?? {};
   const utiles = Object.entries(cc)
     .filter(([, c]) => c?.kind === "account_unlock" && c?.enseigne)
     .filter(([, c]) => (totals?.[c.enseigne] ?? 0) > 0)
     .map(([cid, c]) => ({ cid, nom: c.name, don: cc[c.enseigne]?.name ?? c.enseigne,
-                          prix: (c.prix_cuivre ?? 0) / 10000 }))
+                          prix: (c.prix_cuivre ?? 0) / 10000,
+                          // Un deblocage peut aussi coûter une monnaie : le
+                          // compendium de commandant demande 250 insignes
+                          // d'honneur en plus de ses 300 po.
+                          monnaie: Object.entries(c.prix_monnaie ?? {})
+                            .map(([m, n]) => `${n.toLocaleString()} ${NX(cc[m]?.name) ?? m}`) }))
     .sort((a, b) => String(a.nom).localeCompare(String(b.nom)));
   if (!utiles.length) return null;
   const reste = utiles.filter(f => !acquises[f.cid]);
@@ -2304,13 +2310,13 @@ function FeuillesDeRecette({ totals, NX, acquises, setAcquises }) {
   return (
     <div style={{ margin: "14px 14px 6px", padding: "12px 14px", background: "rgba(251,191,36,0.04)", border: "1px solid rgba(251,191,36,0.18)", borderRadius: 8 }}>
       <div style={{ fontSize: 12, fontWeight: 600, color: "rgba(251,191,36,0.85)", marginBottom: 2 }}>
-        {NX({ fr: "Feuilles de recette — achat unique par compte", en: "Recipe sheets — one-time account purchase" })}
+        {NX({ fr: "Achats uniques par compte", en: "One-time account purchases" })}
       </div>
       <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", marginBottom: 8 }}>
         {reste.length === 0
-          ? NX({ fr: "Toutes acquises — rien à racheter pour cette légendaire.", en: "All owned — nothing to buy again for this legendary." })
-          : NX({ fr: `${reste.length} sur ${utiles.length} à acheter, soit ${du} po. Chacune ne se paie qu'une fois, pour toutes les légendaires qui demandent le même don.`,
-                 en: `${reste.length} of ${utiles.length} still to buy — ${du}g. Each is paid once, for every legendary needing the same gift.` })}
+          ? NX({ fr: "Tout acquis — rien à racheter pour cette légendaire.", en: "All owned — nothing to buy again for this legendary." })
+          : NX({ fr: `${reste.length} sur ${utiles.length} à acheter, soit ${du} po. Chacun ne se paie qu'une fois, et sert à toutes les légendaires concernées.`,
+                 en: `${reste.length} of ${utiles.length} still to buy — ${du}g. Each is paid once and serves every legendary that needs it.` })}
       </div>
       {utiles.map(f => {
         const ok = !!acquises[f.cid];
@@ -2319,8 +2325,11 @@ function FeuillesDeRecette({ totals, NX, acquises, setAcquises }) {
                style={{ display: "flex", alignItems: "center", gap: 8, padding: "3px 0", cursor: "pointer", opacity: ok ? 0.45 : 1 }}>
             <span style={{ fontSize: 12, width: 14, color: ok ? "#4ade80" : "rgba(226,201,126,0.3)" }}>{ok ? "✔" : "○"}</span>
             <span style={{ fontSize: 11, textDecoration: ok ? "line-through" : "none" }}>{NX(f.nom)}</span>
-            <span style={{ fontSize: 10, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginLeft: "auto" }}>
+            <span style={{ fontSize: 10, color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginLeft: "auto", textAlign: "right" }}>
               {f.prix} {NX({ fr: "po", en: "g" })}
+              {f.monnaie.map((m, mi) => (
+                <span key={mi} style={{ display: "block", fontSize: 9, color: "rgba(226,201,126,0.3)" }}>+ {m}</span>
+              ))}
             </span>
           </div>
         );
@@ -7403,7 +7412,7 @@ export default function GW2LegendaryTracker() {
               </div>
             </div>
           ))}
-          <FeuillesDeRecette
+          <AchatsUniques
             totals={legTotals} NX={NX}
             acquises={feuillesAcquises} setAcquises={setFeuillesAcquises} />
           <div className="reset-info" style={{ marginTop: "8px" }}>{t("reset_info_progress")}</div>

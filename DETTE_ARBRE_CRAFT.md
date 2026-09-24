@@ -2049,3 +2049,50 @@ valeur de revente, 1 po 25 s sur 22 des 23.
 Le Commander Tag — 250 Badge of Honor + 300 po, prerequis de
 `commanders_wings_of_war` — n'est pas pose. Meme forme a prevoir, mais il n'est
 rattache a aucun don : sa pertinence ne se deduit pas, elle se declare.
+
+## AO — 24/09/2026 : le compendium de commandant n'est pas un cas a part
+
+J'avais ecrit en fin de section AN que le Commander Tag demanderait un autre
+traitement, « parce qu'il n'est rattache a aucun don : sa pertinence ne se
+deduit pas, elle se declare ». **C'est faux, et l'erreur est dans ma lecture de
+mon propre champ.**
+
+`enseigne` ne veut pas dire « le don que la feuille apprend ». Il veut dire
+**« le composant que ce deblocage rend accessible »**. Le compendium debloque
+les `Commander's Wings of War`, qui remontent a `warcry`, qui remonte a
+`warbringer`. La pertinence se deduit donc exactement comme pour les feuilles,
+sans rien declarer — et le moteur confirme : le tag ne s'affiche que sur
+Warbringer, sur les 81 cibles.
+
+Aucun mecanisme nouveau. Un `account_unlock` de plus, 300 po, `enseigne`
+pointant sur les Wings.
+
+### Une seule addition : le prix en monnaie
+
+Le compendium coute **250 insignes d'honneur EN PLUS de ses 300 po**.
+`prix_monnaie` rejoint `prix_cuivre` — meme nature, ce que coute le deblocage,
+une fois. La section affiche la ligne « + 250 Insigne d'honneur » sous le prix
+en or, et reste vide pour les 23 feuilles qui n'ont pas de monnaie.
+
+La section s'appelle desormais **« Achats uniques par compte »** et non plus
+« Feuilles de recette » : elle n'est plus reservee a une famille.
+
+### Verification
+
+| legendaire | achats uniques |
+|---|---|
+| `warbringer` | compendium — 300 po + 250 insignes |
+| `gen1_frostfang` | ice, metal — 20 po |
+| `vision` | les huit dons condenses + energy — 90 po |
+
+Et la propriete qui compte : **aucun de ces composants n'apparait dans un total
+par legendaire**. Verifie sur Warbringer apres ajout.
+
+### Ce que ca m'apprend
+
+J'ai invente une difficulte en relisant mon propre champ a travers l'exemple
+qui l'avait fait naitre. Les 23 premiers `account_unlock` etaient des feuilles
+enseignant un don, donc j'ai lu `enseigne` comme « le don » au lieu de « ce que
+ca debloque » — et conclu a un cas particulier la ou il n'y avait qu'une
+instance de plus. Quand un champ semble ne pas couvrir un cas, relire sa
+definition avant de conclure.
