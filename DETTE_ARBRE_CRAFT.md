@@ -1954,3 +1954,44 @@ ne signale plus rien.
   rattache qu'a quatre armes gen2, `gift_of_desert_mastery` a un seul don. La
   branche des maitrises gen2 est incomplete — a reprendre page par page, ce que
   je n'ai pas fait ici.
+
+## AM — 24/09/2026 : les deux « surprises » de la section AL n'existent pas
+
+Verification page par page des seize armes gen2. **Les deux trous annonces en
+fin de section AL sont faux, et les deux viennent de mes propres recherches.**
+
+### « Les douze gen2 ne totalisent qu'un Bloodstone Shard »
+
+Elles en demandent bien un seul. Leur page porte **deux recettes**, pas deux
+exigences :
+
+| arme | recettes de la Forge mystique |
+|---|---|
+| Verdarach | Call of the Void + Gift of Verdarach + Mystic Tribute + **Gift of Maguuma Mastery** |
+| — ou — | Call of the Void + Gift of Verdarach + Mystic Tribute + **Gift of Desert Mastery** |
+
+Un don de maitrise **au choix**. La table agregee rend les deux branches, d'ou
+les deux Bloodstone Shards que j'ai pris pour deux exigences. Les quatre armes
+de Heart of Thorns — Astralaria, HOPE, Nevermore, Chuka and Champawat — n'ont
+que la variante Maguuma, ce qui explique l'asymetrie que j'avais relevee.
+
+Et c'est **deja modelise** : `alt_groups.gen2_mastery` porte les deux options,
+les douze cibles concernees, et Maguuma par defaut. Rien a corriger.
+
+### « `spirit_shards` n'existe pas comme composant »
+
+Le composant s'appelle **`spirit_shard`**, au singulier. J'ai cherche le
+pluriel, que la table du wiki affiche (`Spirit_Shards`), et conclu a un trou. Il
+est chaine depuis toujours : 200 par Bloodstone Shard, 20 par Augur's Stone, et
+les totaux affichent bien 200 eclats spirituels sur chaque arme gen2 et gen3.
+
+### Ce que ca dit
+
+Deux fausses alertes dans le meme message, et la meme cause : j'ai cherche un
+nom que je supposais au lieu du nom qui existe. C'est exactement ce qui m'avait
+fait reclamer `Ley_Line_Crystal` et `Banner_Pennon` alors qu'ils etaient au
+depot, et declarer l'Olmakhan Bandolier introuvable.
+
+**La regle a appliquer avant d'annoncer un trou** : chercher le composant par
+son apiId ou par sous-chaine, jamais par le nom exact suppose. Un `in cc` qui
+rend False n'est pas une preuve d'absence.
