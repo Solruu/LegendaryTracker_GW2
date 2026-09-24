@@ -146,6 +146,37 @@ NOT_FOR_DISPLAY = {"_note", "note_schema", "qty_schema_note", "notes",
                    "total_unknown_ref", "how_ref", "cadence_ref_note"}
 
 
+def check_pas_de_cost_parallele(data, errors, warnings):
+    """Un cout se declare dans la chaine, pas dans un champ cost_* de la source.
+
+    Six champs cost_silver / cost_karma / cost_spirit_shards /
+    cost_ascended_shards / cost_memory_of_battle / cost_shards_glory vivaient
+    sur cinq sources, et le JSX n'en lisait AUCUN. Notation morte : quatre
+    doublonnaient exactement une arete existante, un cinquieme (93 324 karma
+    pour le Gift of the Desert) n'avait jamais rejoint la chaine et ne
+    s'affichait donc nulle part -- Coalescence ignorait ce cout.
+
+    Deux ecritures pour un meme fait, dont une invisible : c'est la table
+    parallele que ce projet s'interdit. Les monnaies concernees sont deja des
+    composants (karma, spirit_shard, memory_of_battle...), donc la chaine sait
+    les porter.
+    """
+    cc = data.get("craft_components", {})
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        for src in (comp.get("sources") or []):
+            if not isinstance(src, dict):
+                continue
+            for champ in sorted(src):
+                if champ.startswith("cost_"):
+                    errors.append(
+                        f"craft_components/{cid} : la source porte {champ} = "
+                        f"{src[champ]} — un cout se declare dans qty, pas dans "
+                        "un champ que rien ne lit ni ne verifie"
+                    )
+
+
 def check_source_gratuite_en_premier(data, errors, warnings):
     """Quand une voie gratuite existe, le comptoir ne passe pas devant.
 
@@ -2202,6 +2233,9 @@ def main() -> int:
 
     # Une voie gratuite passe devant l'accelerateur paye au comptoir
     check_source_gratuite_en_premier(data, errors, warnings)
+
+    # Aucun cout ne vit dans un champ cost_* que rien ne lit
+    check_pas_de_cost_parallele(data, errors, warnings)
 
     # 21. Integrite de chaque entree de meta_eligible
     metas = data.get("meta_eligible", {})

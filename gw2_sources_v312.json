@@ -2358,10 +2358,9 @@
      "map": "Frostgorge Sound",
      "wpCode": "[&BNABAAA=]",
      "tip": {
-      "fr": "Disponible après avoir tué la Claw of Jormag (event toutes les 3h). ~2 pa pièce.",
-      "en": "Available after killing the Claw of Jormag (event every 3h). ~2s each."
-     },
-     "cost_silver": 2
+      "fr": "Disponible après avoir tué la Claw of Jormag (event toutes les 3h). ⚠ Un relevé ancien annonçait ~2 pa pièce : rien ne le confirme aujourd'hui et le prix retenu est celui de la Forge mystique, 1 po.",
+      "en": "Available after killing the Claw of Jormag (event every 3h). ⚠ An old note claimed ~2s each: nothing confirms it today, and the price used is the Mystic Forge one, 1 gold."
+     }
     }
    ],
    "qty": {
@@ -2541,8 +2540,7 @@
      "tip": {
       "fr": "Achat pour 250× Memory of Battle.",
       "en": "Purchase for 250× Memory of Battle."
-     },
-     "cost_memory_of_battle": 250
+     }
     }
    ],
    "qty": {
@@ -2582,8 +2580,7 @@
      "tip": {
       "fr": "Achat contre des Spirit Shards. Les Spirit Shards s'accumulent via connexions, maîtrises, etc.",
       "en": "Purchase for Spirit Shards. Spirit Shards accumulate via login rewards, masteries, etc."
-     },
-     "cost_spirit_shards": 200
+     }
     }
    ],
    "qty": {
@@ -4446,9 +4443,7 @@
      "tip": {
       "fr": "Achat pour 150 Ascended Shards of Glory + 170 Shards of Glory. Source PvP — meilleure option si vous préférez le PvP au McM.",
       "en": "Purchase for 150 Ascended Shards of Glory + 170 Shards of Glory. PvP source — best option if you prefer PvP over WvW."
-     },
-     "cost_ascended_shards": 150,
-     "cost_shards_glory": 170
+     }
     },
     {
      "type": "fractals_vendor",
@@ -4801,8 +4796,7 @@
      "tip": {
       "fr": "Acheté aux vendeurs de complétion de map PoF — Oasis de cristal, Hautes-terres du désert, Rives de l'Elon, La Désolation. Chaque sous-gift coûte ~23 331 karma. Une fois par personnage.",
       "en": "Purchased from PoF map completion vendors — Crystal Oasis, Desert Highlands, Elon Riverlands, The Desolation. Each sub-gift costs ~23,331 karma. Once per character."
-     },
-     "cost_karma": 93324
+     }
     }
    ],
    "kind": "advanced_craft"
@@ -11045,7 +11039,8 @@
    "kind": "currency",
    "qty": {
     "aurora": 0,
-    "stella_radians": 7000000
+    "stella_radians": 7000000,
+    "gift_of_the_desert": 93324
    },
    "farmable": true,
    "sources": [
@@ -11194,6 +11189,9 @@
      "amountPer": 7000,
      "estimated": true
     }
+   ],
+   "needed_for": [
+    "gift_of_the_desert"
    ]
   },
   "powerful_venom_sac": {
@@ -22413,7 +22411,9 @@
     "triumphant_hero__piece_medium_gloves": 2,
     "triumphant_hero__piece_medium_helm": 2,
     "triumphant_hero__piece_medium_legs": 2,
-    "triumphant_hero__piece_medium_shoulders": 2
+    "triumphant_hero__piece_medium_shoulders": 2,
+    "icy_runestone": 1,
+    "mystic_runestone": 1
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -22437,6 +22437,8 @@
     "gift_of_the_exalted",
     "gift_of_the_itzel",
     "gift_of_the_nuhoch",
+    "icy_runestone",
+    "mystic_runestone",
     "triumphant_hero__piece_heavy_boots",
     "triumphant_hero__piece_heavy_chest",
     "triumphant_hero__piece_heavy_gloves",
