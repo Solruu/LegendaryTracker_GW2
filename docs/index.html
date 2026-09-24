@@ -77626,29 +77626,65 @@ function GW2LegendaryTracker() {
     [wpnTargetGen.join(","), wpnOwnedSet.size, LEG_BY_API]);
   // Totaux de la cible affichee, pour savoir quelles feuilles de recette la
   // concernent. Meme moteur que le grand total : rien de recalcule a la main.
+  // apiId -> identifiant de composant, pour relier une ligne du bloc
+  // `currencies` a ce que le moteur en dit.
+  const compByApi = React.useMemo(() => {
+    const m = new Map();
+    for (const [cid, c] of Object.entries(SOURCES_DB?.craft_components ?? {})) {
+      if (typeof c?.apiId === "number" && !m.has(c.apiId)) m.set(c.apiId, cid);
+    }
+    return m;
+  }, []);
+
+  // La progression des collections vit dans DEUX etats : `auroraCollections`
+  // pour la plupart des cibles, `visionCollections` pour l'onglet Vision. Le
+  // moteur ne lisait que le premier — donc cocher « Vision of Equipment:
+  // Astral Weapons » ne retirait pas les 3 000 minerais de kralkatite, alors
+  // que la regle du 18/09 etait en place et correcte. Les deux espaces de cles
+  // sont disjoints (`vis_*` d'un cote), la fusion est sans ambiguite.
+  const toutesCollections = React.useMemo(
+    () => ({ ...(auroraCollections ?? {}), ...(visionCollections ?? {}) }),
+    [auroraCollections, visionCollections]);
+
   const legTotals = React.useMemo(() => {
     const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
     if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return {};
-    try { return computeGrandTotal([cible], auroraCollections)?.totals ?? {}; }
+    try { return computeGrandTotal([cible], toutesCollections)?.totals ?? {}; }
     catch (_) { return {}; }
-  }, [selectedLeg, auroraCollections]);
+  }, [selectedLeg, toutesCollections]);
 
   const wpnCurrencies = React.useMemo(() => {
     if (!isWeapons || wpnLegIds.length === 0) return [];
     let totals = {};
-    try { totals = computeGrandTotal(wpnLegIds, auroraCollections)?.totals ?? {}; }
+    try { totals = computeGrandTotal(wpnLegIds, toutesCollections)?.totals ?? {}; }
     catch (_) { return []; }
     return (leg?.currencyCatalog ?? [])
       .map(c => ({ ...c, required: Math.round(totals[c.comp] ?? 0) }))
       .filter(c => c.required > 0);
-  }, [isWeapons, wpnLegIds.join(","), auroraCollections, leg]);
+  }, [isWeapons, wpnLegIds.join(","), toutesCollections, leg]);
 
   // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
   const legCurrencies = isGrandTotal ? [] : (isArmorSet
     ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
     : (isWeapons
       ? wpnCurrencies
-      : (leg?.currencies ?? [])));
+      : (leg?.currencies ?? []).map(c => {
+          // v218 : le `required` vient du MOTEUR, plus du nombre ecrit a la
+          // main dans le bloc `currencies`.
+          //
+          // Sans cela, la regle « une etape validee satisfait son composant »
+          // ne pouvait pas atteindre cet affichage : Antoine avait termine les
+          // six armes Astral et lisait toujours « Kralkatite Ore, requis
+          // 3 100 » alors que le moteur, lui, disait 100. Le grand total
+          // obeissait a la regle, la colonne par legendaire non.
+          //
+          // Les deux valeurs etaient deja prouvees egales a collections
+          // vierges — c'est ce que `check_qty_vs_jsx` verifie a chaque audit.
+          // Le nombre ecrit a la main ne servait donc qu'a figer un etat.
+          const cid = compByApi.get(c.apiId);
+          const n = cid ? legTotals[cid] : undefined;
+          return typeof n === "number" ? { ...c, required: Math.round(n) } : c;
+        })));
   // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
   // que tant que l'étape correspondante n'est pas validée (v107).
   // Un extra peut viser une étape unique (bit + amount) ou un lot d'étapes

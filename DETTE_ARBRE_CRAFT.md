@@ -2096,3 +2096,52 @@ enseignant un don, donc j'ai lu `enseigne` comme « le don » au lieu de « ce q
 ca debloque » — et conclu a un cas particulier la ou il n'y avait qu'une
 instance de plus. Quand un champ semble ne pas couvrir un cas, relire sa
 definition avant de conclure.
+
+## AP — 24/09/2026 : la regle etait juste, l'affichage ne l'ecoutait pas
+
+Antoine a termine les six armes Astral et lisait toujours « Kralkatite Ore,
+requis 3 100 » dans l'onglet Composants de Vision. Le moteur, lui, disait 100.
+**Deux defauts empiles, aucun dans la regle elle-meme.**
+
+### 1. Le requis etait ecrit a la main
+
+Le bloc `currencies` d'un legendaire portait ses `required` en dur — 3 100 pour
+le minerai de kralkatite. La regle « une etape validee satisfait son composant »
+n'avait aucun moyen de les atteindre : le grand total obeissait, la colonne par
+legendaire non.
+
+Les deux valeurs etaient pourtant **deja prouvees egales** a collections
+vierges : c'est exactement ce que `check_qty_vs_jsx` verifie a chaque audit. Le
+nombre ecrit a la main ne servait donc qu'a figer un etat. Il vient desormais du
+moteur, via un index `apiId → composant`, comme le groupe d'armes depuis le
+22/09.
+
+### 2. Les collections de Vision n'arrivaient pas au moteur
+
+La progression vit dans **deux** etats : `auroraCollections`
+(`gw2_aurora_collections`) pour la plupart des cibles, `visionCollections`
+(`gw2_vision_collections`) pour l'onglet Vision, qui a son rendu propre. Le
+moteur ne lisait que le premier.
+
+Cocher « Vision of Equipment: Astral Weapons » n'avait donc aucun effet, meme
+apres le premier correctif. Les deux espaces de cles sont disjoints — celles de
+Vision sont en `vis_*` — donc la fusion est sans ambiguite. `legTotals` et le
+groupe d'armes lisent maintenant les deux.
+
+### Ce que ca dit du 18/09
+
+La regle posee ce jour-la etait correcte, et le test de conformite la couvrait
+des deux cotes. Mais il compare **moteur contre moteur** : il ne pouvait pas
+voir qu'un troisieme chemin — le bloc `currencies` ecrit a la main — ignorait
+les deux. Un test qui compare deux implementations ne dit rien d'une valeur qui
+n'en traverse aucune.
+
+### Reste : cocher les feuilles automatiquement
+
+Les 23 feuilles ne se cochent pas toutes seules. La capture ne porte que
+l'identifiant d'OBJET de la feuille (75645 pour Gift of Blood), pas celui de la
+RECETTE, et `/v2/account/recipes` rend des identifiants de recettes. Le pont
+existe cote API : `/v2/recipes/search?output=<id du don>` donne la recette qui
+produit ce don, qu'on confronte ensuite aux recettes debloquees du compte.
+Aucune donnee nouvelle a saisir — mais une requete de plus par feuille, et une
+gestion d'echec reseau. Non fait ici.
