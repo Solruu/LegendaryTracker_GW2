@@ -1,20 +1,21 @@
 # Confrontation aux tables « Full material list »
 
-Source : `gw2_sources_v313.json` contre les 77 tables capturées, arête par arête.
+Source : `gw2_sources_v314.json` contre les 77 tables capturées, arête par arête.
 
-- **340 accords** — la table et `qty` disent le même nombre.
+- **339 accords** — la table et `qty` disent le même nombre.
 - **9 arêtes absentes** de `qty` — un coût manquant, pas un désaccord.
-- **5 désaccords** — les deux se prononcent et divergent.
+- **6 désaccords** — les deux se prononcent et divergent.
 
 Les quantités de troisième colonne sont divisées par celles de la deuxième :
 le wiki les agrège. Une division qui ne tombe pas juste est signalée, pas
 arrondie. Les arêtes sans nombre écrit sont ignorées.
 
 
-## Désaccords — 5
+## Désaccords — 6
 
 | composant | parent | `qty` | table |
 |---|---|---:|---:|
+| `hydrocatalytic_reagent` | `gift_of_research` | 500 | 250 |
 | `pvp_league_ticket` | `certificate_of_support` | 5 | 25 |
 | `bloodstone_brick` | `vision_crystal` | 5 | 10 |
 | `dragonite_ingot` | `vision_crystal` | 5 | 10 |

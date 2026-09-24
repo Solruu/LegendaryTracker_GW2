@@ -3,7 +3,7 @@
 """Confronte le TOTAL affiche par legendaire au total ecrit dans sa table.
 
 Les deux confrontations existantes comparent des ARETES : `gw2_confronte_v1`
-oppose l'etat actuel a une lecture de bas en haut, `gw2_confronte_tables_v3`
+oppose l'etat actuel a une lecture de bas en haut, `gw2_confronte_tables_v4`
 oppose chaque arete de `qty` a la ligne correspondante du wiki. Aucune ne
 regarde le nombre que le joueur lit en haut de l'ecran.
 
@@ -36,7 +36,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import gw2_parse_material_list_v3 as P  # noqa: E402
+import gw2_parse_material_list_v4 as P  # noqa: E402
 
 SRC = max(HERE.glob("gw2_sources_v*.json"), key=lambda p: int(p.stem.split("_v")[-1]))
 d = json.load(open(SRC, encoding="utf-8"))

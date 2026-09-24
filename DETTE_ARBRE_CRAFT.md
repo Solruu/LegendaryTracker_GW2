@@ -1895,3 +1895,62 @@ la meme page.
 fait foi, et cette decision appartient a Antoine. Les quatre familles sans
 aucun appelant sont du code mort des deux cotes ; les deux autres sont a
 arbitrer.
+
+## AL — 24/09/2026 : la v3 du parseur avait tort, et moi avec
+
+Le garde-fou de concurrence avait trouve deux lignees du parseur de tables,
+toutes deux utilisees. Verification faite, **c'est la v4 qui a raison** — celle
+que j'avais ouverte puis abandonnee le 18/09 en section S.
+
+### La difference
+
+- **v3** : toute repetition d'un triplet (parent, enfant, quantite) est un
+  doublon de lecture, et elle l'ecrase.
+- **v4** : seule l'arete de tete est dedupliquee ; les sous-items d'une cellule
+  sont gardes tels quels, meme repetes.
+
+Sur 77 pages a table, elles ne divergent que sur trois familles de cas. Les
+trois ont ete verifiees a la source, et les trois donnent raison a la v4.
+
+**1. Gift of Research → reactif hydrocatalytique, sur 17 pages.** Sa page le
+liste DEUX fois a 250 :
+
+> Ingredients 250 Thermocatalytic Reagent **250 Hydrocatalytic Reagent
+> 250 Hydrocatalytic Reagent** 250 Exotic Essence of Luck
+> Notes: *The Hydrocatalytic Reagents cost a total of 2,500.*
+
+2 500 pieces d'argent a 5 l'unite : **500 reactifs**, pas 250. La note de prix
+tranche arithmetiquement.
+
+Mon erreur du 18/09 : j'avais compte les occurrences de nombres dans le HTML
+avec une expression reguliere grossiere, vu « trois 250 », conclu « trois
+ingredients ». Je n'avais lu ni le texte rendu, qui liste le reactif deux fois,
+ni la note de prix. Sur cette base j'ai annule le parseur v4 et ses sept
+consommateurs. `hydrocatalytic_reagent → gift_of_research` passe de 250 a 500.
+
+**2. Bloodstone Shard → 200 Spirit Shards, sur 12 pages gen2.** Ce n'est pas une
+repetition du tout : l'eclat apparait sous DEUX parents differents —
+`Gift of Maguuma Mastery` et `Gift of Desert Mastery` — chacun avec son propre
+cout. Deux exigences distinctes que la v3 fusionnait en une.
+
+**3. Gift of Metal → les quatre lingots, sur la page d'Eternity.** Eternity,
+c'est Sunrise ET Twilight : chacune apporte son Gift of Metal. Le doublement est
+juste, et `DOUBLES` traite deja cette page a part.
+
+### Consolidation
+
+La lignee v4 avait deja son jumeau pour chaque outil sauf un. `gw2_confronte_
+totaux` passe en v8 et rejoint la v4 ; les sept fichiers de la lignee v3 sont
+supprimes. **44 familles versionnees, une seule version chacune** — le garde-fou
+ne signale plus rien.
+
+### Deux surprises, non corrigees
+
+- **`spirit_shards` n'existe pas comme composant.** Les 200 eclats spirituels par
+  Bloodstone Shard ne sont nulle part dans l'arbre, alors que douze pages gen2 en
+  demandent 400 chacune. Trou complet.
+- **Les douze gen2 ne totalisent qu'UN Bloodstone Shard** alors que leur table en
+  montre deux, un par don de maitrise. Et `gift_of_maguuma_mastery` n'est
+  rattache qu'a quatre armes gen2, `gift_of_desert_mastery` a un seul don. La
+  branche des maitrises gen2 est incomplete — a reprendre page par page, ce que
+  je n'ai pas fait ici.

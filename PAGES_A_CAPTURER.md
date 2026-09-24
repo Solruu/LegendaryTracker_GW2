@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v313.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v314.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
