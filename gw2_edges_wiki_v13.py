@@ -113,6 +113,7 @@ composant direct et comme cout d'un intermediaire.
 """
 import json, re, collections, sys
 from pathlib import Path
+import gw2_parse_vendor_cost_v1 as _V
 # Le fichier de sources est resolu au plus haut _vN plutot que code en dur :
 # une version figee ici devient introuvable des la passe suivante.
 SRC = max(Path(__file__).resolve().parent.glob('gw2_sources_v*.json'),
@@ -254,13 +255,71 @@ def autre_voie(page):
     return any(f'id="{s}"' in seg for s in LIBRE)
 
 
+def achat_au_choix(page):
+    """Vrai si la meme table vendeur propose aussi un prix qui n'est PAS un objet.
+
+    Le wiki n'est pas faux, notre lecture l'etait. Rojan the Penitent vend
+    l'Icy Runestone 1 or OU 1 Mystic Runestone ; Miyani et les preposes de la
+    Forge vendent le Mystic Runestone 1 or OU 1 Icy Runestone. Lu ligne a
+    ligne, chacun coute l'autre : un cycle, que rien ne peut resoudre.
+
+    Ce n'est pas la section « Currency for » lue a l'envers -- le parseur borne
+    deja son scan a « Acquisition ». Ce sont deux echanges reels, poses dans la
+    table d'acquisition de chaque page.
+
+    L'erreur est ailleurs : les lignes payees en or sont filtrees (HORS_ARBRE),
+    donc un achat qui a une alternative en or ressemble a un achat a prix
+    unique, et son prix en objet devient une exigence. Poser cette arete
+    ferait dependre de l'Icy Runestone les cent Mystic Runestones de chaque don
+    gen2 -- alors qu'on peut simplement les acheter.
+
+    Meme principe que les deux gardes voisines : une autre voie existe, donc la
+    recette d'achat n'est pas obligatoire. Dix pages melangent les deux formes
+    de prix, huit tombaient deja sous `autre_voie` ou `_voies_multiples` ; les
+    deux dernieres tombent ici, mystic_runestone et philosophers_stone.
+    """
+    f = Path("ressources/wiki") / f"{page}.html"
+    if not f.exists():
+        return False
+    txt = f.read_text(encoding="utf-8", errors="ignore")
+    i = txt.find('id="Acquisition"')
+    if i < 0:
+        return False
+    fin = re.search(r'<h2>.*?id="(?!Acquisition)[A-Za-z_]+"', txt[i + 1:], re.S)
+    seg = txt[i:i + 1 + fin.start()] if fin else txt[i:]
+    avec = sans = 0
+    for tbl in re.findall(r"<table[^>]*>(.*?)</table>", seg, re.S):
+        entete = None
+        for ligne in re.findall(r"<tr[^>]*>(.*?)</tr>", tbl, re.S):
+            cells = re.findall(r"<t([dh])\b[^>]*>(.*?)</t\1>", ligne, re.S)
+            if not cells:
+                continue
+            if cells[0][0] == "h":
+                entete = [re.sub(r"<[^>]+>", "", c[1]).strip().lower() for c in cells]
+                continue
+            if not entete or "cost" not in entete:
+                continue
+            k = entete.index("cost")
+            if k >= len(cells):
+                continue
+            if _V._cout_cellule(cells[k][1]):
+                avec += 1
+            else:
+                sans += 1
+    return avec > 0 and sans > 0
+
+
 vendeurs_ecartes = []
+prix_au_choix = []
 for r in WIKI_VENDOR_COSTS:
     if not r['couts']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
     if not p: continue
     if p in variantes or autre_voie(r['page']):
         vendeurs_ecartes.append(p)
+        continue
+    if achat_au_choix(r['page']):
+        prix_au_choix.append(p)
         continue
     for cible,q in r['couts']:
         if cible in alternatifs_de.get(p, set()): continue
@@ -302,6 +361,7 @@ print('pages a voies alternatives:',len(ecartes_alt))
 for x in ecartes_alt: print('   ',x[0],f'({x[1]} recettes) ingredients non communs:',x[2])
 for x in promotions: print('   ',x[0],'<-',x[2],f"(sortie {x[1]})")
 print('pages dont le vendeur est ecarte (autre voie documentee):',len(vendeurs_ecartes))
+print('prix en objet ecarte car une alternative en or existe:',sorted(set(prix_au_choix)))
 print('parents chiffres:',len(edges),'| conflits recette/vendeur:',len(conflits))
 for x in conflits: print('   ',x)
 print('ambiguites restantes:',sorted(AMBIG))

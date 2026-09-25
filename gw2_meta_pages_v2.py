@@ -22,7 +22,7 @@ Le nom n'est jamais reecrit : si la capture nomme l'objectif autrement que la
 liste curee, on le signale et on laisse la source en place — c'est une lecture
 a reprendre a la main, pas une correction automatique.
 
-Usage : python3 gw2_meta_pages_v1.py [--ecrire]
+Usage : python3 gw2_meta_pages_v2.py [--ecrire]
 Sans --ecrire, le script mesure et ne touche a rien.
 """
 import argparse
@@ -35,6 +35,19 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent
 CAPTURES = RACINE / "ressources" / "wiki"
 ANCRE = re.compile(r'href="/wiki/([^"#]+)#achievement(\d+)"[^>]*>([^<]{1,120})</a>')
+
+
+def _cle(x):
+    """Forme comparable d'un libelle : casse et espaces.
+
+    Le wiki titre ses liens en capitales de titre — « Broodmother Down By The
+    Bay » la ou l'API nomme le succes « Broodmother Down by the Bay ». Ce n'est
+    pas une divergence, c'est une convention de titrage : l'appariement se fait
+    sur l'id de toute facon, et le nom stocke reste celui du referentiel API,
+    seul a faire foi pour un nom de succes. On ne compare donc que ce qui
+    distinguerait vraiment deux objectifs.
+    """
+    return re.sub(r"\s+", " ", x).strip().casefold()
 
 
 def derniere(motif):
@@ -72,7 +85,7 @@ def main():
         sys.exit("meta_eligible absent")
 
     poses = deja = sans_capture = sans_ancre = 0
-    divergences, manquantes = [], []
+    divergences, manquantes, casse = [], [], []
 
     for mid, entree in metas.items():
         capture = fichier_capture(entree.get("source", ""))
@@ -95,9 +108,11 @@ def main():
             if not hit:
                 continue
             page, libelle = hit
-            if libelle and libelle != nom:
+            if libelle and _cle(libelle) != _cle(nom):
                 divergences.append((mid, aid, nom, libelle))
                 continue
+            if libelle and libelle != nom:
+                casse.append((mid, aid, nom, libelle))
             lignes[i] = [aid, nom, f"{page}#achievement{aid}"]
             poses += 1
 
@@ -112,6 +127,10 @@ def main():
         print(f"  capture manquante : meta {mid} {nom} — {source}")
     for mid, aid, nom, libelle in divergences:
         print(f"  NOM DIVERGENT meta {mid} id {aid} : sources '{nom}' vs capture '{libelle}' — non pose")
+    if casse:
+        print(f"  {len(casse)} libelle(s) en capitales de titre cote wiki — page posee, nom API conserve")
+        for mid, aid, nom, libelle in casse[:5]:
+            print(f"    meta {mid} id {aid} : '{nom}' / '{libelle}'")
 
     if not args.ecrire:
         print("(lecture seule — relancer avec --ecrire)")

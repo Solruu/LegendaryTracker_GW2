@@ -9,6 +9,15 @@
   "aretes_table": []
  },
  {
+  "page": "a_crack_in_the_ice_achievements",
+  "titre": "A Crack in the Ice (achievements)",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "a_henge_away_from_home",
   "titre": "A Henge Away from Home",
   "api_id": null,
@@ -497,6 +506,28 @@
      ]
     ],
     "produit": "Ancient Wood Plank"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "ancient_wood_pulp",
+  "titre": "Ancient Wood Pulp",
+  "api_id": 74681,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Scribe",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Ancient_Wood_Plank",
+      1
+     ]
+    ],
+    "produit": "Ancient Wood Pulp"
    }
   ],
   "couts_vendeur": [],
@@ -9240,6 +9271,15 @@
   ]
  },
  {
+  "page": "flashpoint_achievements",
+  "titre": "Flashpoint (achievements)",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "forge_guards_armor_collection",
   "titre": "Forge Guard's Armor Collection",
   "api_id": null,
@@ -14624,6 +14664,40 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_desert",
+  "titre": "Gift of the Desert",
+  "api_id": 85631,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Gift_of_the_Oasis",
+      1
+     ],
+     [
+      "Gift_of_the_Highlands",
+      1
+     ],
+     [
+      "Gift_of_the_Riverlands",
+      1
+     ],
+     [
+      "Gift_of_the_Desolation",
+      1
+     ]
+    ],
+    "produit": "Gift of the Desert"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_desolation",
   "titre": "Gift of the Desolation",
   "api_id": 86010,
@@ -17189,6 +17263,20 @@
   "aretes_table": []
  },
  {
+  "page": "icy_runestone",
+  "titre": "Icy Runestone",
+  "api_id": 19676,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Mystic_Runestone",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "incinerator",
   "titre": "Incinerator",
   "api_id": 30687,
@@ -17561,6 +17649,15 @@
   "page": "journeyman_of_the_forge",
   "titre": "Journeyman of the Forge",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "jug_of_water",
+  "titre": "Jug of Water",
+  "api_id": 12156,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -21062,6 +21159,20 @@
   "aretes_table": []
  },
  {
+  "page": "mystic_runestone",
+  "titre": "Mystic Runestone",
+  "api_id": 79418,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Icy_Runestone",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "mystic_tribute",
   "titre": "Mystic Tribute",
   "api_id": 71820,
@@ -21600,9 +21711,66 @@
   "aretes_table": []
  },
  {
+  "page": "olmakhan_charm",
+  "titre": "Olmakhan Charm",
+  "api_id": 87150,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Ley-Infused_Sand",
+      50
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Foxfire_Cluster",
+      100
+     ],
+     [
+      "Fury-Scorched_Stone",
+      10
+     ]
+    ],
+    "produit": "Olmakhan Charm"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "olmakhan_latigo_strap",
+  "titre": "Olmakhan Latigo Strap",
+  "api_id": 87153,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Volatile_Magic",
+    "qty": 250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "omnomberry",
   "titre": "Omnomberry",
   "api_id": 12128,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "one_path_ends_achievements",
+  "titre": "One Path Ends (achievements)",
+  "api_id": null,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -21973,6 +22141,15 @@
   "page": "orrian_truffle",
   "titre": "Orrian Truffle",
   "api_id": 12545,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "out_of_the_shadows_achievements",
+  "titre": "Out of the Shadows (achievements)",
+  "api_id": null,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -24078,6 +24255,15 @@
  {
   "page": "rich_silver_vein",
   "titre": "Rich Silver Vein",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "rising_flames_achievements",
+  "titre": "Rising Flames (achievements)",
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
@@ -26915,6 +27101,24 @@
   "aretes_table": []
  },
  {
+  "page": "superior_rune_of_holding",
+  "titre": "Superior Rune of Holding",
+  "api_id": 13009,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "supreme_rune_of_holding",
+  "titre": "Supreme Rune of Holding",
+  "api_id": 83410,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "survivors_enchanted_compass",
   "titre": "Survivor's Enchanted Compass",
   "api_id": 106370,
@@ -28080,6 +28284,15 @@
  {
   "page": "the_flameseeker_prophecies_iii_the_chosen",
   "titre": "The Flameseeker Prophecies III: The Chosen",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_head_of_the_snake_achievements",
+  "titre": "The Head of the Snake (achievements)",
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],

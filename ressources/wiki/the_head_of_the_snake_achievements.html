@@ -1,0 +1,1120 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2015-10-23_hot_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns content"><img alt="Guild Wars 2: Heart of Thorns content" src="/images/thumb/1/19/HoT_Texture_Trans.png/35px-HoT_Texture_Trans.png" decoding="async" width="35" height="28" srcset="/images/thumb/1/19/HoT_Texture_Trans.png/53px-HoT_Texture_Trans.png 1.5x, /images/thumb/1/19/HoT_Texture_Trans.png/70px-HoT_Texture_Trans.png 2x" data-file-width="3000" data-file-height="2368" /></a></div></div>
+				<div id="mw-indicator-2016-07-26_lws3_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Living_World_Season_3" title="Living World Season 3 content"><img alt="Living World Season 3 content" src="/images/thumb/c/ca/Living_World_Season_3_logo.png/35px-Living_World_Season_3_logo.png" decoding="async" width="35" height="24" srcset="/images/thumb/c/ca/Living_World_Season_3_logo.png/53px-Living_World_Season_3_logo.png 1.5x, /images/thumb/c/ca/Living_World_Season_3_logo.png/70px-Living_World_Season_3_logo.png 2x" data-file-width="1306" data-file-height="895" /></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">The Head of the Snake (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub" ></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190" /> <i>This article is about the achievement category.  For the release, see <a href="/wiki/The_Head_of_the_Snake" title="The Head of the Snake">The Head of the Snake</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">The Head of the Snake (achievements)</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned during the <a href="/wiki/The_Head_of_the_Snake" title="The Head of the Snake">The Head of the Snake</a> story and within <a href="/wiki/Lake_Doric" title="Lake Doric">Lake Doric</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:The_Head_of_the_Snake.png" class="image"><img alt="The Head of the Snake.png" src="/images/thumb/4/4d/The_Head_of_the_Snake.png/48px-The_Head_of_the_Snake.png" decoding="async" width="48" height="48" srcset="/images/4/4d/The_Head_of_the_Snake.png 1.5x" data-file-width="64" data-file-height="64" /></a></div> The Head of the Snake <small>(Story Journal)</small>
+</th>
+<th>Total achievements: 41
+</th>
+<th style="text-align: right; border-left-width: 0;">9&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 97<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr id="achievement3348" class="widget-account-achievement line" data-id="achievement3348">
+<th id=".22The&#95;Head&#95;of&#95;the&#95;Snake.22&#95;Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32" /><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> "The Head of the Snake" Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">21<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3348">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Complete all 28 "The Head of the Snake" achievements.<dl><dd><b>Prerequisite:</b> The Head of the Snake</dd><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/White_Mantle_Elite_Guard_Mask_Box" title="White Mantle Elite Guard Mask Box"><img alt="Bloodstone Crown Box.png" src="/images/thumb/d/dc/Bloodstone_Crown_Box.png/20px-Bloodstone_Crown_Box.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/d/dc/Bloodstone_Crown_Box.png/30px-Bloodstone_Crown_Box.png 1.5x, /images/thumb/d/dc/Bloodstone_Crown_Box.png/40px-Bloodstone_Crown_Box.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/White_Mantle_Elite_Guard_Mask_Box" title="White Mantle Elite Guard Mask Box">White Mantle Elite Guard Mask Box</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">39 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3294" title="The Head of the Snake (achievements)">A Meeting of Ministers</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3285" title="The Head of the Snake (achievements)">Eyes on Lake Doric</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3301" title="The Head of the Snake (achievements)">Sabotage Fort Evennia</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3372" title="The Head of the Snake (achievements)">Breaking the Siege</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3317" title="The Head of the Snake (achievements)">Regrouping with the Queen</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3340" title="The Head of the Snake (achievements)">Confessor's End</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3333" title="The Head of the Snake (achievements)">Those Giant Hands</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3343" title="The Head of the Snake (achievements)">Chum Chucker</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3282" title="The Head of the Snake (achievements)">Tree-Hugger Hugger</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3286" title="The Head of the Snake (achievements)">Moonlighting</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3351" title="The Head of the Snake (achievements)">Not All Who Wander Are Lost</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3365" title="The Head of the Snake (achievements)">Holding Back the Tide</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3306" title="The Head of the Snake (achievements)">Fire Brigade</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3361" title="The Head of the Snake (achievements)">A Good Use</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3311" title="The Head of the Snake (achievements)">A Fish, A Fishy</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3323" title="The Head of the Snake (achievements)">Honorary Crew Member</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3326" title="The Head of the Snake (achievements)">Perfect Execution</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3379" title="The Head of the Snake (achievements)">It's a Sabotage</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3344" title="The Head of the Snake (achievements)">A Fly in the Ointment</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3322" title="The Head of the Snake (achievements)">Paying Respects</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3367" title="The Head of the Snake (achievements)">Friend of the Forest</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3288" title="The Head of the Snake (achievements)">It's a Trap</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3320" title="The Head of the Snake (achievements)">Dance Club</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3315" title="The Head of the Snake (achievements)">Well Fare</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3314" title="The Head of the Snake (achievements)">Gems of the Beach City</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3329" title="The Head of the Snake (achievements)">Upper City Security Chief</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3330" title="The Head of the Snake (achievements)">Sacrificial Lambs</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3338" title="The Head of the Snake (achievements)">Shadow in the Shadows</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3380" title="The Head of the Snake (achievements)">Courtly Discourtesy</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3354" title="The Head of the Snake (achievements)">Illuminating</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3309" title="The Head of the Snake (achievements)">Master of Puppets</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3381" title="The Head of the Snake (achievements)">Riddle Me This</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3374" title="The Head of the Snake (achievements)">The Whispers Way</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3308" title="The Head of the Snake (achievements)">The Vigil Way</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3377" title="The Head of the Snake (achievements)">Lake Doric Insight: Melandru's Flourish</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3350" title="The Head of the Snake (achievements)">Lake Doric Insight: Watcher's Hollow</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3358" title="The Head of the Snake (achievements)">Lake Doric Insight: Lakeside Bazaar</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3284" title="The Head of the Snake (achievements)">Lake Doric Insight: Melandru's Refuge</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/The_Head_of_the_Snake_(achievements)#achievement3383" title="The Head of the Snake (achievements)">Cin Business</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Head of the Snake Achievement
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3348">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 7 Head of the Snake Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3348">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 14 Head of the Snake Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3348">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 21 Head of the Snake Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3348">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 28 Head of the Snake Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3311" class="widget-account-achievement line" data-id="achievement3311">
+<th id="A&#95;Fish,&#95;A&#95;Fishy" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> A Fish, A Fishy
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3311">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring <a href="/wiki/Ishoonoo" title="Ishoonoo">Ishoonoo</a> a <a href="/wiki/Quaggan" title="Quaggan">quaggan</a> delicacy.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Delicacy Delivered to Ishoonoo
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3344" class="widget-account-achievement line" data-id="achievement3344">
+<th id="A&#95;Fly&#95;in&#95;the&#95;Ointment" style="text-align:left">A Fly in the Ointment
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3344">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Interfere with the White Mantle in Fort Evennia 10 times without fleeing or getting caught.<span style="color:#686868; display: block;"><i>Welcome to the party, pal.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Performed 10 Consecutive Acts of Sabotage Inside Fort Evennia
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3361" class="widget-account-achievement line" data-id="achievement3361">
+<th id="A&#95;Good&#95;Use" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/A_Good_Use" title="A Good Use">A Good Use</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3361">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Collect fish from Lake Doric near Saidra's Haven and put them to good use.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Put 4 Different Fish to Good Use
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3294" class="widget-account-achievement line" data-id="achievement3294">
+<th id="A&#95;Meeting&#95;of&#95;Ministers" style="text-align:left"><a href="/wiki/A_Meeting_of_Ministers" title="A Meeting of Ministers">A Meeting of Ministers</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3294">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Accompany <a href="/wiki/Queen_Jennah" title="Queen Jennah">Queen Jennah</a> to her gathering of the Ministry.<span style="color:#686868; display: block;"><i>Journal: A Meeting of Ministers Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed A Meeting of Ministers
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3372" class="widget-account-achievement line" data-id="achievement3372">
+<th id="Breaking&#95;the&#95;Siege" style="text-align:left"><a href="/wiki/Breaking_the_Siege" title="Breaking the Siege">Breaking the Siege</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3372">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Assist the Seraph and the people of <a href="/wiki/Lake_Doric" title="Lake Doric">Lake Doric</a>.<span style="color:#686868; display: block;"><i>Journal: Breaking the Siege Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Breaking the Siege
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3343" class="widget-account-achievement line" data-id="achievement3343">
+<th id="Chum&#95;Chucker" style="text-align:left">Chum Chucker
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3343">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Take chum from buckets in <a href="/wiki/New_Loamhurst" title="New Loamhurst">New Loamhurst</a> and hurl it at the <a href="/wiki/White_Mantle" title="White Mantle">White Mantle</a> invaders.<span style="color:#686868; display: block;"><i>It takes guts.</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Threw Chum on 15 White Mantle Forces
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3383" class="widget-account-achievement line" data-id="achievement3383">
+<th id="Cin&#95;Business" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Cin_Business" title="Cin Business">Cin Business</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3383">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find goods that might interest Cin—some that he lost, some that he wants to sell.<span style="color:#686868; display: block;"><i>"What have you got for ol' Cin, eh?"</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Sentient_Oddity" title="Sentient Oddity"><img alt="Sentient Oddity.png" src="/images/thumb/9/99/Sentient_Oddity.png/20px-Sentient_Oddity.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/9/99/Sentient_Oddity.png/30px-Sentient_Oddity.png 1.5x, /images/thumb/9/99/Sentient_Oddity.png/40px-Sentient_Oddity.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Sentient_Oddity" title="Sentient Oddity">Sentient Oddity</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3383-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Shipping_Orders" title="Shipping Orders"><img alt="Dredge Tank Blueprint.png" src="/images/2/27/Dredge_Tank_Blueprint.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/White_Mantle_Rations" title="White Mantle Rations"><img alt="Plate of Truffle Steak.png" src="/images/4/4c/Plate_of_Truffle_Steak.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Warm_Animal_Pelt" title="Warm Animal Pelt"><img alt="Tattered Pelt.png" src="/images/1/1a/Tattered_Pelt.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Tower_Shard" title="Tower Shard"><img alt="Compact Hardened Sharpening Stone.png" src="/images/1/1f/Compact_Hardened_Sharpening_Stone.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Cord_of_Stolen_Wood" title="Cord of Stolen Wood"><img alt="Hard Wood Log.png" src="/images/4/4e/Hard_Wood_Log.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Quaggan_Food" title="Quaggan Food"><img alt="Raven Offering.png" src="/images/c/c4/Raven_Offering.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Fancy_Greatsword" title="Fancy Greatsword"><img alt="Krytan Greatsword.png" src="/images/e/e0/Krytan_Greatsword.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Fishing_Supplies_(trophy)" title="Fishing Supplies (trophy)"><img alt="Fishing Supplies (trophy).png" src="/images/8/89/Fishing_Supplies_%28trophy%29.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Lost_Locket" title="Lost Locket"><img alt="Enscribed Vollym Forget-Me-Not.png" src="/images/9/98/Enscribed_Vollym_Forget-Me-Not.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Magic-Imbued_Peach_Core" title="Magic-Imbued Peach Core"><img alt="Magic-Imbued Peach Core.png" src="/images/e/e8/Magic-Imbued_Peach_Core.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Pearl_Shell_(trophy)" title="Pearl Shell (trophy)"><img alt="Quaggan&#39;s Pearl.png" src="/images/1/1b/Quaggan%27s_Pearl.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bloodstone-Infused_Toadstool" title="Bloodstone-Infused Toadstool"><img alt="Marinated Mushroom.png" src="/images/3/36/Marinated_Mushroom.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Pinkeens%27s_Sextant" title="Pinkeens&#39;s Sextant"><img alt="Inquest Targeting Reticle.png" src="/images/a/a4/Inquest_Targeting_Reticle.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Mystic_Cloth" title="Mystic Cloth"><img alt="Mystic Cloth.png" src="/images/6/6a/Mystic_Cloth.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Queenslayer_Jade_Chunk" title="Queenslayer Jade Chunk"><img alt="Bloodstone Visage.png" src="/images/4/4d/Bloodstone_Visage.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Stolen_Flank_Steak" title="Stolen Flank Steak"><img alt="Spicy Flank Steak.png" src="/images/3/35/Spicy_Flank_Steak.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Bottle_of_White_Mantle_Red_Wine" title="Bottle of White Mantle Red Wine"><img alt="Courage.png" src="/images/2/25/Courage.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3383-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Doric_Dam_Splinter" title="Doric Dam Splinter"><img alt="Green Wood Plank.png" src="/images/1/11/Green_Wood_Plank.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Found 18 of Cin's Goods
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3340" class="widget-account-achievement line" data-id="achievement3340">
+<th id="Confessor&#39;s&#95;End" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Confessor%27s_End" title="Confessor&#39;s End">Confessor's End</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3340">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring a decisive end to the Confessor's ambitions.<span style="color:#686868; display: block;"><i>Journal: Confessor's End Completed</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Caudecus%27s_Mask_Box" title="Caudecus&#39;s Mask Box"><img alt="Bloodstone Crown Box.png" src="/images/thumb/d/dc/Bloodstone_Crown_Box.png/20px-Bloodstone_Crown_Box.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/d/dc/Bloodstone_Crown_Box.png/30px-Bloodstone_Crown_Box.png 1.5x, /images/thumb/d/dc/Bloodstone_Crown_Box.png/40px-Bloodstone_Crown_Box.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Caudecus%27s_Mask_Box" title="Caudecus&#39;s Mask Box">Caudecus's Mask Box</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Confessor's End
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3380" class="widget-account-achievement line" data-id="achievement3380">
+<th id="Courtly&#95;Discourtesy" style="text-align:left"><a href="/wiki/Regrouping_with_the_Queen#Achievements" title="Regrouping with the Queen">Courtly Discourtesy</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3380">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring some life to the throne room by interacting with its denizens.<span style="color:#686868; display: block;"><i>Story Instance: Regrouping with the Queen<br /><br />"You can't play in here! This is the throne room!"</i></span><dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Salute the aspiring young Shining Blade guard.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Dig for gossip with each of the ladies-in-waiting.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Make a guard laugh by misbehaving (glide, swim, pet).</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Discovered 3 Interesting Tidbits in the Throne Room
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3320" class="widget-account-achievement line" data-id="achievement3320">
+<th id="Dance&#95;Club" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> Dance Club
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3320">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Dance in <a href="/wiki/One-Drink_Drake" title="One-Drink Drake">One-Drink Drake</a>'s clubhouse.<span style="color:#686868; display: block;"><i>It was all a blur to him, though.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Danced with Drake
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3285" class="widget-account-achievement line" data-id="achievement3285">
+<th id="Eyes&#95;on&#95;Lake&#95;Doric" style="text-align:left"><a href="/wiki/Eyes_on_Lake_Doric" title="Eyes on Lake Doric">Eyes on Lake Doric</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3285">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help <a href="/wiki/Logan_Thackeray" title="Logan Thackeray">Captain Thackeray</a> and the <a href="/wiki/Seraph" title="Seraph">Seraph</a> assess the situation.<span style="color:#686868; display: block;"><i>Journal: Eyes on Lake Doric Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Eyes on Lake Doric
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3306" class="widget-account-achievement line" data-id="achievement3306">
+<th id="Fire&#95;Brigade" style="text-align:left">Fire Brigade
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3306">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Put out fires left burning around Lake Doric after the White Mantle's assault.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Put Out 15 Fires
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3367" class="widget-account-achievement line" data-id="achievement3367">
+<th id="Friend&#95;of&#95;the&#95;Forest" style="text-align:left"><a href="/wiki/Investigate_the_rising_paranormal_activity_in_the_Harvest_Cascades" title="Investigate the rising paranormal activity in the Harvest Cascades">Friend of the Forest</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3367">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Help spirits roaming the <a href="/wiki/Harvest_Cascades" title="Harvest Cascades">Harvest Cascades</a> forest peacefully reach the Mists.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Eased 15 Spirits into the Mists
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3314" class="widget-account-achievement line" data-id="achievement3314">
+<th id="Gems&#95;of&#95;the&#95;Beach&#95;City" style="text-align:left"><a href="/wiki/Bagran_the_Pearl_Merchant" title="Bagran the Pearl Merchant">Gems of the Beach City</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3314">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring 10 pearls to the <a href="/wiki/Bagran_the_Pearl_Merchant" title="Bagran the Pearl Merchant">merchant</a> in the <a href="/wiki/Lakeside_Bazaar" title="Lakeside Bazaar">Lakeside Bazaar</a>.<span style="color:#686868; display: block;"><i>These would look great with some rose quartz.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Brought 10 Pearls to the Merchants in the Bazaar
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3365" class="widget-account-achievement line" data-id="achievement3365">
+<th id="Holding&#95;Back&#95;the&#95;Tide" style="text-align:left">Holding Back the Tide
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3365">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defend key areas of <a href="/wiki/Doric%27s_Landing" title="Doric&#39;s Landing">Doric's Landing</a> from White Mantle attackers.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">3 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Saidra's Haven</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>New Loamhurst</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Harvest Cascades</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defended 3 Key locations
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3323" class="widget-account-achievement line" data-id="achievement3323">
+<th id="Honorary&#95;Crew&#95;Member" style="text-align:left">Honorary Crew Member
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3323">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Prevent skritt and White Mantle looters from getting away with any supplies stolen from the SS Pinkeens.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">2 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Stop_the_skritt_from_looting_the_SS_Pinkeens%27s_supplies" title="Stop the skritt from looting the SS Pinkeens&#39;s supplies">Stop the skritt</a>.</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Protect_the_SS_Pinkeens_from_the_White_Mantle_looters" title="Protect the SS Pinkeens from the White Mantle looters">Stop the White Mantle</a>.</li></ul></td></tr></tbody></table></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Protected the SS Pinkeens from 1 Looting Group
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3354" class="widget-account-achievement line" data-id="achievement3354">
+<th id="Illuminating" style="text-align:left">Illuminating
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3354">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Drop a chandelier on a certain unsuspecting foe.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's End<br /><br />"Bringing down the house."</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Dropped a Chandelier on Caudecus's Head
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3379" class="widget-account-achievement line" data-id="achievement3379">
+<th id="It&#39;s&#95;a&#95;Sabotage" style="text-align:left">It's a Sabotage
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3379">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Sabotage the White Mantle stationed inside Fort Evennia.<span style="color:#686868; display: block;"><i>Then you're out and you're gone.</i></span>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Performed 5 Acts of Sabotage Inside Fort Evennia
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3379">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Performed 15 Acts of Sabotage Inside Fort Evennia
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3379">
+<td style="width:220px; vertical-align:top;" class="offwhite">Performed 25 Acts of Sabotage Inside Fort Evennia
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3288" class="widget-account-achievement line" data-id="achievement3288">
+<th id="It&#39;s&#95;a&#95;Trap" style="text-align:left"><a href="/wiki/Noran%27s_Safe_Room" title="Noran&#39;s Safe Room">It's a Trap</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3288">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Navigate Noran's secret trap maze and reach the treasure room.<span style="color:#686868; display: block;"><i>Your feet can't repel spikes of that magnitude!</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Reached Noran's Treasure Room
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3358" class="widget-account-achievement line" data-id="achievement3358">
+<th id="Lake&#95;Doric&#95;Insight:&#95;Lakeside&#95;Bazaar" style="text-align:left"><a href="/wiki/Lake_Doric_Insight:_Lakeside_Bazaar" title="Lake Doric Insight: Lakeside Bazaar">Lake Doric Insight: Lakeside Bazaar</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3358">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this Maguuma Mastery Insight in Lake Doric.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3377" class="widget-account-achievement line" data-id="achievement3377">
+<th id="Lake&#95;Doric&#95;Insight:&#95;Melandru&#39;s&#95;Flourish" style="text-align:left"><a href="/wiki/Lake_Doric_Insight:_Melandru%27s_Flourish" title="Lake Doric Insight: Melandru&#39;s Flourish">Lake Doric Insight: Melandru's Flourish</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3377">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this Maguuma Mastery Insight in Lake Doric.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3284" class="widget-account-achievement line" data-id="achievement3284">
+<th id="Lake&#95;Doric&#95;Insight:&#95;Melandru&#39;s&#95;Refuge" style="text-align:left"><a href="/wiki/Lake_Doric_Insight:_Melandru%27s_Refuge" title="Lake Doric Insight: Melandru&#39;s Refuge">Lake Doric Insight: Melandru's Refuge</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3284">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this Maguuma Mastery Insight in Lake Doric.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3350" class="widget-account-achievement line" data-id="achievement3350">
+<th id="Lake&#95;Doric&#95;Insight:&#95;Watcher&#39;s&#95;Hollow" style="text-align:left"><a href="/wiki/Lake_Doric_Insight:_Watcher%27s_Hollow" title="Lake Doric Insight: Watcher&#39;s Hollow">Lake Doric Insight: Watcher's Hollow</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3350">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this Maguuma Mastery Insight in Lake Doric.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3300" class="widget-account-achievement line" data-id="achievement3300">
+<th id="Letters&#95;from&#95;E" style="text-align:left"><a href="/wiki/Letters_from_E" title="Letters from E">Letters from E</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3300">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find the letters scattered around Lake Doric from E.<dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3300-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_First_Letter" title="E&#39;s First Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Second_Letter" title="E&#39;s Second Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Third_Letter" title="E&#39;s Third Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Fourth_Letter" title="E&#39;s Fourth Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Fifth_Letter" title="E&#39;s Fifth Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Sixth_Letter" title="E&#39;s Sixth Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Seventh_Letter" title="E&#39;s Seventh Letter"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3300-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/E%27s_Correspondence" title="E&#39;s Correspondence"><img alt="Guide to Waterproofing.png" src="/images/8/87/Guide_to_Waterproofing.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 8 Items of E's
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3309" class="widget-account-achievement line" data-id="achievement3309">
+<th id="Master&#95;of&#95;Puppets" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Master_of_Puppets" title="Master of Puppets">Master of Puppets</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">8<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3309">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Collect private letters scattered about Beetlestone Manor.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's End</i></span><dl><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3309-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Concerning_Convert" title="Concerning Convert"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Purged_by_Fire" title="Purged by Fire"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Falcon_Company_(trophy)" title="Falcon Company (trophy)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/A_Timely_Promotion" title="A Timely Promotion"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Flea-Bitten_Bedfellows" title="Flea-Bitten Bedfellows"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/He_lives..." title="He lives..."><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Unrefined,_Yet_Effective" title="Unrefined, Yet Effective"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/A_New_Prot%C3%A9g%C3%A9" title="A New Protégé"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Sacrifices_Must_Be_Made" title="Sacrifices Must Be Made"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/The_Curtain_Falls" title="The Curtain Falls"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/A_Minor_Setback" title="A Minor Setback"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/The_Enemies_of_My_Enemy" title="The Enemies of My Enemy"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Under_New_Management_(trophy)" title="Under New Management (trophy)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Old_Friends,_Older_Enemies" title="Old Friends, Older Enemies"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Trouble_at_Home" title="Trouble at Home"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit15" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Pirates_Really" title="Pirates Really"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit16" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/A_Wi_Problem" title="A Wi Problem"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit17" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Eye_for_an_Eye,_Child_for_a_Child" title="Eye for an Eye, Child for a Child"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit18" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Yet_Another_New_Prot%C3%A9g%C3%A9" title="Yet Another New Protégé"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit19" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/And_Stay_Dead" title="And Stay Dead"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3309-bit20" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Caudecus%27s_Correspondence_(Incomplete)" title="Caudecus&#39;s Correspondence (Incomplete)"><img alt="Guide to Waterproofing.png" src="/images/8/87/Guide_to_Waterproofing.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Found 1 of Caudecus's Letters
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3309">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Found 10 of Caudecus's Letters
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3309">
+<td style="width:220px; vertical-align:top;" class="offwhite">Found 21 of Caudecus's Letters
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3286" class="widget-account-achievement line" data-id="achievement3286">
+<th id="Moonlighting" style="text-align:left"><a href="/wiki/Solve_the_mysterious_happenings_frightening_Seraph_lumber_workers" title="Solve the mysterious happenings frightening Seraph lumber workers">Moonlighting</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3286">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Stop the bandit spirits from making off with any lumber from the lumber camp.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Stopped Bandit Spirits from Stealing Lumber
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3351" class="widget-account-achievement line" data-id="achievement3351">
+<th id="Not&#95;All&#95;Who&#95;Wander&#95;Are&#95;Lost" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Not_All_Who_Wander_Are_Lost" title="Not All Who Wander Are Lost">Not All Who Wander Are Lost</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3351">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Solve the <a href="/wiki/Not_All_Who_Wander_Are_Lost" title="Not All Who Wander Are Lost">long-dead mysteries</a> of the swamp in <a href="/wiki/Melandru%27s_Refuge" title="Melandru&#39;s Refuge">Melandru's Refuge</a>.<span style="color:#686868; display: block;"><i>Some just need a light to find the way.</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Jade_Shard" title="Jade Shard"><img alt="Jade Shard.png" src="/images/thumb/1/11/Jade_Shard.png/20px-Jade_Shard.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/1/11/Jade_Shard.png/30px-Jade_Shard.png 1.5x, /images/thumb/1/11/Jade_Shard.png/40px-Jade_Shard.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Jade_Shard" title="Jade Shard">Jade Shard</a> (5)</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Uncovered Secrets of the Swamp
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3322" class="widget-account-achievement line" data-id="achievement3322">
+<th id="Paying&#95;Respects" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> Paying Respects
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3322">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Pay your respects to Noran's fallen family.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Knelt at the Gravestones of Noran's Family
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3326" class="widget-account-achievement line" data-id="achievement3326">
+<th id="Perfect&#95;Execution" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> Perfect Execution
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3326">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Defeat_the_White_Mantle_and_save_the_villager_from_burning" title="Defeat the White Mantle and save the villager from burning">Rescue villagers set by the White Mantle to burn at the stake</a> or <a href="/wiki/Escort_the_quaggan_refugees_to_their_destinations" title="Escort the quaggan refugees to their destinations">escort quaggans</a> near Saidra's Haven.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Rescued 1 Villager around Saidra's Haven
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3317" class="widget-account-achievement line" data-id="achievement3317">
+<th id="Regrouping&#95;with&#95;the&#95;Queen" style="text-align:left"><a href="/wiki/Regrouping_with_the_Queen" title="Regrouping with the Queen">Regrouping with the Queen</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3317">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Head to the throne room for updated orders from Queen Jennah.<span style="color:#686868; display: block;"><i>Journal: Regrouping with the Queen Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Regrouping with the Queen
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3381" class="widget-account-achievement line" data-id="achievement3381">
+<th id="Riddle&#95;Me&#95;This" style="text-align:left">Riddle Me This
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3381">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete Confessor's End without answering any riddle question incorrectly.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's End<br /><br />"And be ready with your favorite color."</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Solved All Riddles without a Mistake
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3301" class="widget-account-achievement line" data-id="achievement3301">
+<th id="Sabotage&#95;Fort&#95;Evennia" style="text-align:left"><a href="/wiki/Sabotage_Fort_Evennia" title="Sabotage Fort Evennia">Sabotage Fort Evennia</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3301">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Infiltrate and sabotage operations in <a href="/wiki/Fort_Evennia" title="Fort Evennia">Fort Evennia</a>.<span style="color:#686868; display: block;"><i>Journal: Sabotage Fort Evennia Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Sabotage Fort Evennia
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3330" class="widget-account-achievement line" data-id="achievement3330">
+<th id="Sacrificial&#95;Lambs" style="text-align:left">Sacrificial Lambs
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3330">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Save all of the hostages in the Upper City.<span style="color:#686868; display: block;"><i>Story Instance: A Meeting of Ministers</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Saved the Hostages
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3338" class="widget-account-achievement line" data-id="achievement3338">
+<th id="Shadow&#95;in&#95;the&#95;Shadows" style="text-align:left">Shadow in the Shadows
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3338">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find Queen Jennah's escaped cat, <a href="/wiki/Shadow" title="Shadow">Shadow</a>.<span style="color:#686868; display: block;"><i>Story Instance: A Meeting of Ministers</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Found Shadow
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3308" class="widget-account-achievement line" data-id="achievement3308">
+<th id="The&#95;Vigil&#95;Way" style="text-align:left">The Vigil Way
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3308">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Instead of avoiding them, kill both jade construct sentries.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's End<br /><br />"For those who prefer a straight fight to all this sneakin' around."</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Killed the Jade Construct Sentries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3374" class="widget-account-achievement line" data-id="achievement3374">
+<th id="The&#95;Whispers&#95;Way" style="text-align:left">The Whispers Way
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3374">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Instead of killing them, avoid both jade construct sentries.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's End<br /><br />"For those who prefer to do it real quiet-like."</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Snuck Past the Jade Construct Sentries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3333" class="widget-account-achievement line" data-id="achievement3333">
+<th id="Those&#95;Giant&#95;Hands" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Defeat_the_massive_earth_elemental_and_stop_the_Harathi_High_Sage" title="Defeat the massive earth elemental and stop the Harathi High Sage">Those Giant Hands</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3333">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the <a href="/wiki/Champion_Crazed_Harathi_High_Sage" title="Champion Crazed Harathi High Sage">Harathi High Sage</a> and the massive earth elemental it summons.<span style="color:#686868; display: block;"><i>Is it dead yet? You think it's going to explode?</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Magic-Warped_Packet" title="Magic-Warped Packet"><img alt="Magic-Warped Packet.png" src="/images/thumb/f/fa/Magic-Warped_Packet.png/20px-Magic-Warped_Packet.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/f/fa/Magic-Warped_Packet.png/30px-Magic-Warped_Packet.png 1.5x, /images/thumb/f/fa/Magic-Warped_Packet.png/40px-Magic-Warped_Packet.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Magic-Warped_Packet" title="Magic-Warped Packet">Magic-Warped Packet</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated the Harathi High Sage
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3282" class="widget-account-achievement line" data-id="achievement3282">
+<th id="Tree-Hugger&#95;Hugger" style="text-align:left">Tree-Hugger Hugger
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3282">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Keep the <a href="/wiki/Villager_(Melandru%27s_Refuge)" title="Villager (Melandru&#39;s Refuge)">tree-bound villager</a> fed.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Fed the Villager on 4 Different Days
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3329" class="widget-account-achievement line" data-id="achievement3329">
+<th id="Upper&#95;City&#95;Security&#95;Chief" style="text-align:left">Upper City Security Chief
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3329">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Revive guards in <a href="/wiki/The_Upper_City" title="The Upper City">the Upper City</a>.<span style="color:#686868; display: block;"><i>Story Instance: A Meeting of Ministers</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Revived 5 Guards
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3315" class="widget-account-achievement line" data-id="achievement3315">
+<th id="Well&#95;Fare" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> Well Fare
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3315">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring food to <a href="/wiki/Blaine" title="Blaine">Blaine</a> at the bottom of the well.<span style="color:#686868; display: block;"><i>And maybe some for Mr. Nibbles, too.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Fed Blaine
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=The_Head_of_the_Snake_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite&#95;note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>Chum Chucker</b>: Take Chum from the Chum Bucket to the northwest of the <a href="/wiki/Restore_normalcy_in_New_Loamhurst" title="Restore normalcy in New Loamhurst">Restore normalcy in New Loamhurst</a> heart, or grab a Rotten Fish found west of New Loamhurst near the shore, and hurl them at any White Mantle around New Loamhurst. (White Mantle enemies during the <a href="/wiki/Defeat_the_White_Mantle_attacking_Seraph_troops" title="Defeat the White Mantle attacking Seraph troops">Defeat the White Mantle attacking Seraph troops</a> or <a href="/wiki/Destroy_the_Jade_Cannon" title="Destroy the Jade Cannon">Destroy the Jade Cannon</a> events will work.)</span>
+</li>
+<li id="cite&#95;note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Honorary Crew Member</b>: Originally players needed both the White Mantle and Skritt events of defending the SS Pinkeens events to succeed without losing any cargo to obtain the achievement. While was later changed to only require one to be completed without losing cargo, however the text was not updated to reflect the change.</span>
+</li>
+<li id="cite&#95;note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Paying Respects</b>: Go to <a href="/wiki/Soren%27s_Rest" title="Soren&#39;s Rest">Soren's Rest</a> and kneel in front of the graves.</span>
+</li>
+<li id="cite&#95;note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>The Vigil Way</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/The_Vigil_Way" title="The Vigil Way"><img alt="Fade to Black.png" src="/images/thumb/f/fb/Fade_to_Black.png/20px-Fade_to_Black.png" decoding="async" width="20" height="20" srcset="/images/thumb/f/fb/Fade_to_Black.png/30px-Fade_to_Black.png 1.5x, /images/thumb/f/fb/Fade_to_Black.png/40px-Fade_to_Black.png 2x" data-file-width="128" data-file-height="128" /></a></span>&#160;<a href="/wiki/The_Vigil_Way" title="The Vigil Way">The Vigil Way</a>.</span>
+</li>
+<li id="cite&#95;note-5"><b><a href="#cite_ref-5">^</a></b> <span class="reference-text"><b>The Whispers Way</b>: Achievement eligibility tracked by the effect <span class="inline-icon effect"><a href="/wiki/The_Whispers_Way" title="The Whispers Way"><img alt="Furtive Glance.png" src="/images/thumb/3/3a/Furtive_Glance.png/20px-Furtive_Glance.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/3a/Furtive_Glance.png/30px-Furtive_Glance.png 1.5x, /images/thumb/3/3a/Furtive_Glance.png/40px-Furtive_Glance.png 2x" data-file-width="128" data-file-height="128" /></a></span>&#160;<a href="/wiki/The_Whispers_Way" title="The Whispers Way">The Whispers Way</a>.</span>
+</li>
+</ol></div>
+<div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><b>Anomaly</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div><b>Under Siege</b>: The completion description references "Siege of Lake Doric" rather than the <a href="/wiki/Eyes_on_Lake_Doric" title="Eyes on Lake Doric">Eyes on Lake Doric</a> mission.</div></div>
+</div>
+<div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><b>Anomaly</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div><b>Chum Chucker</b>: Throwing chum buckets or rotten fish at Hermit Crabs, Crab critters, or hostile mobs spawned by Fishing Cages will also progress the achievement.</div></div>
+</div>
+<h2><span class="mw-headline" id="Trivia">Trivia</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=The_Head_of_the_Snake_(achievements)&amp;action=edit&amp;section=2" title="Edit section: Trivia">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>The achievement name "It's a Trap" is the well-known single line by the Star Wars series' Admiral Akbar, which later became an internet meme. The flavor text also references another line spoken by the same character.</li>
+<li>The achievement name "Riddle Me This" is in reference to the same introductory phrase of the Riddler villain in the Batman series.
+<ul><li>The flavor text on "Riddle Me This" is in reference to a well known line from Monty Python and the Holy Grail, where the third question before being allowed to pass was "What is your favorite color?", which was still somehow answered incorrectly by one of the characters.</li></ul></li>
+<li>The achievement name "Gems of the Beach City", as well as its description, are direct references to the setting and characters of the cartoon Steven Universe.</li>
+<li>The achievement name "Not All Who Wander Are Lost" is probably referencing a poem by J.R.R. Tolkien form <i>The Fellowship of the Ring</i> called <a href="https://en.wikipedia.org/wiki/The_Riddle_of_Strider" class="extiw" title="w:The Riddle of Strider">The Riddle of Strider</a>, where it says "<i>Not all those who wander are lost;</i>".</li>
+<li>The flavor text on "Those Giant Hands" references the line spoken by <a href="/wiki/Logan_Thackeray" title="Logan Thackeray">Logan Thackeray</a> during <a href="/wiki/Defending_Shaemoor" title="Defending Shaemoor">Defending Shaemoor</a> right after defeating the earth elemental in that instance</li>
+<li>The achievement name "It's a Sabotage" and its description are references to the Beastie Boys song <a href="https://en.wikipedia.org/wiki/Sabotage_(song)" class="extiw" title="w:Sabotage (song)">Sabotage</a>.</li>
+<li>The flavor text on "A Fly in the Ointment" references a spoken line by John McClane in the movie <a href="https://en.wikipedia.org/wiki/Die_Hard" class="extiw" title="w:Die Hard">Die Hard</a>.</li>
+<li>The flavor text on "Courtly Discourtesy" is a play on a line from <a href="https://en.wikipedia.org/wiki/Dr._Strangelove" class="extiw" title="w:Dr. Strangelove">Dr. Strangelove</a> (Gentlemen, you can't fight in here! This is the War Room!)</li></ul>
+<hr style="margin: 1em 0em; clear: both;" />
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Visions_of_Eternity" title="Guild Wars 2: Visions of Eternity">Visions of Eternity</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Code_of_Creation_(achievements)" title="Code of Creation (achievements)">Code of Creation</a></li>
+<li><a href="/wiki/The_Only_Way_(achievements)" title="The Only Way (achievements)">The Only Way</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_1" title="Visions of Eternity: Act 1">Visions of Eternity: Act 1</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_2" title="Visions of Eternity: Act 2">Visions of Eternity: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Janthir_Wilds" title="Guild Wars 2: Janthir Wilds">Janthir Wilds</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Absolution_(achievements)" title="Absolution (achievements)">Absolution</a></li>
+<li><a href="/wiki/Repentance_(achievements)" title="Repentance (achievements)">Repentance</a></li>
+<li><a href="/wiki/Godspawn_(achievements)" title="Godspawn (achievements)">Godspawn</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_1" title="Janthir Wilds: Act 1">Janthir Wilds: Act 1</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_2" title="Janthir Wilds: Act 2">Janthir Wilds: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Secrets_of_the_Obscure" title="Guild Wars 2: Secrets of the Obscure">Secrets of the Obscure</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Midnight_King_(achievements)" title="The Midnight King (achievements)">The Midnight King</a></li>
+<li><a href="/wiki/The_Realm_of_Dreams_(achievements)" title="The Realm of Dreams (achievements)">The Realm of Dreams</a></li>
+<li><a href="/wiki/Through_the_Veil_(achievements)" title="Through the Veil (achievements)">Through the Veil</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_1" title="Secrets of the Obscure: Act 1">Secrets of the Obscure: Act 1</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_2" title="Secrets of the Obscure: Act 2">Secrets of the Obscure: Act 2</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_3" title="Secrets of the Obscure: Act 3">Secrets of the Obscure: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_End_of_Dragons" title="Guild Wars 2: End of Dragons">End of Dragons</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/End_of_Dragons:_Interlude_(achievements)" title="End of Dragons: Interlude (achievements)">End of Dragons: Interlude</a></li>
+<li><a href="/wiki/What_Lies_Within_(achievements)" title="What Lies Within (achievements)">What Lies Within</a></li>
+<li><a href="/wiki/Delve_into_the_Haze" title="Delve into the Haze">Delve into the Haze</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_1" title="End of Dragons: Act 1">End of Dragons: Act 1</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_2" title="End of Dragons: Act 2">End of Dragons: Act 2</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_3" title="End of Dragons: Act 3">End of Dragons: Act 3</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_4" title="End of Dragons: Act 4">End of Dragons: Act 4</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_5" title="End of Dragons: Act 5">End of Dragons: Act 5</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/The_Icebrood_Saga" title="The Icebrood Saga">The Icebrood Saga</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Champions_(achievements)" title="Champions (achievements)">Champions</a></li>
+<li><a href="/wiki/Jormag_Rising_(achievements)" title="Jormag Rising (achievements)">Jormag Rising</a></li>
+<li><a href="/wiki/No_Quarter_(achievements)" title="No Quarter (achievements)">No Quarter</a></li>
+<li><a href="/wiki/Visions_of_the_Past:_Steel_and_Fire_(achievements)" title="Visions of the Past: Steel and Fire (achievements)">Visions of the Past: Steel and Fire</a></li>
+<li><a href="/wiki/Shadow_in_the_Ice_(achievements)" title="Shadow in the Ice (achievements)">Shadow in the Ice</a></li>
+<li><a href="/wiki/Whisper_in_the_Dark_(achievements)" title="Whisper in the Dark (achievements)">Whisper in the Dark</a></li>
+<li><a href="/wiki/Prologue:_Bound_by_Blood_(achievements)" title="Prologue: Bound by Blood (achievements)">Prologue: Bound by Blood</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_4" title="Living World Season 4">Living World Season 4</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/War_Eternal_(achievements)" title="War Eternal (achievements)">War Eternal</a></li>
+<li><a href="/wiki/All_or_Nothing_(achievements)" title="All or Nothing (achievements)">All or Nothing</a></li>
+<li><a href="/wiki/A_Star_to_Guide_Us_(achievements)" title="A Star to Guide Us (achievements)">A Star to Guide Us</a></li>
+<li><a href="/wiki/Long_Live_the_Lich_(achievements)" title="Long Live the Lich (achievements)">Long Live the Lich</a></li>
+<li><a href="/wiki/A_Bug_in_the_System_(achievements)" title="A Bug in the System (achievements)">A Bug in the System</a></li>
+<li><a href="/wiki/Daybreak_(achievements)" title="Daybreak (achievements)">Daybreak</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Path_of_Fire" title="Guild Wars 2: Path of Fire">Path of Fire</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Path_of_Fire:_Act_1" title="Path of Fire: Act 1">Path of Fire: Act 1</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_2" title="Path of Fire: Act 2">Path of Fire: Act 2</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_3" title="Path of Fire: Act 3">Path of Fire: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_3" title="Living World Season 3">Living World Season 3</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/One_Path_Ends_(achievements)" title="One Path Ends (achievements)">One Path Ends</a></li>
+<li><a href="/wiki/Flashpoint_(achievements)" title="Flashpoint (achievements)">Flashpoint</a></li>
+<li><a class="mw-selflink selflink">The Head of the Snake</a></li>
+<li><a href="/wiki/A_Crack_in_the_Ice_(achievements)" title="A Crack in the Ice (achievements)">A Crack in the Ice</a></li>
+<li><a href="/wiki/Rising_Flames_(achievements)" title="Rising Flames (achievements)">Rising Flames</a></li>
+<li><a href="/wiki/Out_of_the_Shadows_(achievements)" title="Out of the Shadows (achievements)">Out of the Shadows</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns">Heart of Thorns</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Heart_of_Thorns:_Act_1" title="Heart of Thorns: Act 1">Heart of Thorns: Act 1</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_2" title="Heart of Thorns: Act 2">Heart of Thorns: Act 2</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_3" title="Heart of Thorns: Act 3">Heart of Thorns: Act 3</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_4" title="Heart of Thorns: Act 4">Heart of Thorns: Act 4</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_2" title="Living World Season 2">Living World Season 2</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Point_of_No_Return_(achievements)" title="Point of No Return (achievements)">Point of No Return</a></li>
+<li><a href="/wiki/Seeds_of_Truth_(achievements)" title="Seeds of Truth (achievements)">Seeds of Truth</a></li>
+<li><a href="/wiki/Tangled_Paths_(achievements)" title="Tangled Paths (achievements)">Tangled Paths</a></li>
+<li><a href="/wiki/Echoes_of_the_Past_(achievements)" title="Echoes of the Past (achievements)">Echoes of the Past</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_2_(achievements)" title="The Dragon&#39;s Reach, Part 2 (achievements)">The Dragon's Reach, Part 2</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_1_(achievements)" title="The Dragon&#39;s Reach, Part 1 (achievements)">The Dragon's Reach, Part 1</a></li>
+<li><a href="/wiki/Entanglement_(achievements)" title="Entanglement (achievements)">Entanglement</a></li>
+<li><a href="/wiki/Gates_of_Maguuma_(achievements)" title="Gates of Maguuma (achievements)">Gates of Maguuma</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_1" title="Living World Season 1">Living World Season 1</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Battle_for_Lion%27s_Arch_(achievements)" title="The Battle for Lion&#39;s Arch (achievements)">The Battle for Lion's Arch</a></li>
+<li><a href="/wiki/Escape_from_Lion%27s_Arch_(achievements)" title="Escape from Lion&#39;s Arch (achievements)">Escape from Lion's Arch</a></li>
+<li><a href="/wiki/The_Nightmare_Is_Over" title="The Nightmare Is Over">The Nightmare Is Over</a></li>
+<li><a href="/wiki/The_Nightmares_Within_(achievements)" title="The Nightmares Within (achievements)">The Nightmares Within</a></li>
+<li><a href="/wiki/Tower_of_Nightmares_(achievements)" title="Tower of Nightmares (achievements)">Tower of Nightmares</a></li>
+<li><a href="/wiki/Emissary_Vorpp%27s_Field_Assistant" title="Emissary Vorpp&#39;s Field Assistant">Emissary Vorpp's Field Assistant</a></li>
+<li><a href="/wiki/Clockwork_Chaos_(achievements)" title="Clockwork Chaos (achievements)">Clockwork Chaos</a></li>
+<li><a href="/wiki/Sky_Pirates_(achievements)" title="Sky Pirates (achievements)">Sky Pirates</a></li>
+<li><a href="/wiki/Flame_and_Frost_(achievements)" title="Flame and Frost (achievements)">Flame and Frost</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260924165723
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 1.089 seconds
+Real time usage: 1.540 seconds
+Preprocessor visited node count: 23153/1000000
+Post‐expand include size: 306301/2097152 bytes
+Template argument size: 65621/2097152 bytes
+Highest expansion depth: 17/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2838/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1310.683      1 -total
+ 82.01% 1074.854     41 Template:Achievement_table_row
+ 37.97%  497.674     47 Template:Item_icon_without_name
+  9.54%  125.041      1 Template:Achievement_nav
+  6.24%   81.766      1 Template:Achievement_category_infobox
+  2.12%   27.723     21 Template:Ifexists
+  1.97%   25.845      2 Template:Effect
+  1.62%   21.171     66 Template:Achievement_nav_result_format
+  1.34%   17.548      2 Template:Effect_icon
+  1.31%   17.106      1 Template:Achievement_table_header
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:198789-0!dateformat=default and timestamp 20260924165722 and revision id 3161933.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=The_Head_of_the_Snake_(achievements)&amp;oldid=3161933">https://wiki.guildwars2.com/index.php?title=The_Head_of_the_Snake_(achievements)&amp;oldid=3161933</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Living_World_Season_3_content" title="Category:Living World Season 3 content">Living World Season 3 content</a></li><li><a href="/wiki/Category:Heart_of_Thorns_content" title="Category:Heart of Thorns content">Heart of Thorns content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li><li><a href="/wiki/Category:Anomalies" title="Category:Anomalies">Anomalies</a></li><li><a href="/wiki/Category:The_Head_of_the_Snake" title="Category:The Head of the Snake">The Head of the Snake</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		

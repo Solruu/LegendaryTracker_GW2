@@ -1,0 +1,899 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2015-10-23_hot_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns content"><img alt="Guild Wars 2: Heart of Thorns content" src="/images/thumb/1/19/HoT_Texture_Trans.png/35px-HoT_Texture_Trans.png" decoding="async" width="35" height="28" srcset="/images/thumb/1/19/HoT_Texture_Trans.png/53px-HoT_Texture_Trans.png 1.5x, /images/thumb/1/19/HoT_Texture_Trans.png/70px-HoT_Texture_Trans.png 2x" data-file-width="3000" data-file-height="2368" /></a></div></div>
+				<div id="mw-indicator-2016-07-26_lws3_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Living_World_Season_3" title="Living World Season 3 content"><img alt="Living World Season 3 content" src="/images/thumb/c/ca/Living_World_Season_3_logo.png/35px-Living_World_Season_3_logo.png" decoding="async" width="35" height="24" srcset="/images/thumb/c/ca/Living_World_Season_3_logo.png/53px-Living_World_Season_3_logo.png 1.5x, /images/thumb/c/ca/Living_World_Season_3_logo.png/70px-Living_World_Season_3_logo.png 2x" data-file-width="1306" data-file-height="895" /></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Out of the Shadows (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub" ></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190" /> <i>This article is about the achievement category.  For the release, see <a href="/wiki/Out_of_the_Shadows" title="Out of the Shadows">Out of the Shadows</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">Out of the Shadows</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned during the <a href="/wiki/Out_of_the_Shadows" title="Out of the Shadows">Out of the Shadows</a> story and within <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:Out_of_the_Shadows.png" class="image"><img alt="Out of the Shadows.png" src="/images/thumb/e/e1/Out_of_the_Shadows.png/48px-Out_of_the_Shadows.png" decoding="async" width="48" height="48" srcset="/images/e/e1/Out_of_the_Shadows.png 1.5x" data-file-width="64" data-file-height="64" /></a></div> Out of the Shadows <small>(Story Journal)</small>
+</th>
+<th>Total achievements: 28
+</th>
+<th style="text-align: right; border-left-width: 0;">6&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 73<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr id="achievement3050" class="widget-account-achievement line" data-id="achievement3050">
+<th id=".22Out&#95;of&#95;the&#95;Shadows.22&#95;Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32" /><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> "Out of the Shadows" Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">23<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3050">
+<td rowspan="4" style="vertical-align:top; min-width:530px;" class="white">Complete all 18 "Out of the Shadows" achievements.<dl><dd><b>Prerequisite:</b> Out of the Shadows</dd><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Bloodstone_Crown_Box" title="Bloodstone Crown Box"><img alt="Bloodstone Crown Box.png" src="/images/thumb/d/dc/Bloodstone_Crown_Box.png/20px-Bloodstone_Crown_Box.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/d/dc/Bloodstone_Crown_Box.png/30px-Bloodstone_Crown_Box.png 1.5x, /images/thumb/d/dc/Bloodstone_Crown_Box.png/40px-Bloodstone_Crown_Box.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Bloodstone_Crown_Box" title="Bloodstone Crown Box">Bloodstone Crown Box</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">19 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3042" title="Out of the Shadows (achievements)">Eir's Memorial in Hoelbrak</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3054" title="Out of the Shadows (achievements)">Research in Rata Novus</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3056" title="Out of the Shadows (achievements)">Blood and Stone</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3059" title="Out of the Shadows (achievements)">Reaper of Magic</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3074" title="Out of the Shadows (achievements)">A Shadow's Deeds</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3065" title="Out of the Shadows (achievements)">Confessor's Stronghold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3082" title="Out of the Shadows (achievements)">The Sky Is Falling</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3064" title="Out of the Shadows (achievements)">Ain't Got Time for This</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3077" title="Out of the Shadows (achievements)">Was It Blue or Red?</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3062" title="Out of the Shadows (achievements)">Dive Master: Just Dropping By</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3049" title="Out of the Shadows (achievements)">Grief Counseling</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3081" title="Out of the Shadows (achievements)">Magic Unbound: The Gathering</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3040" title="Out of the Shadows (achievements)">Reversal of Fortune</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3070" title="Out of the Shadows (achievements)">Lost Souls</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3073" title="Out of the Shadows (achievements)">This Time, Stay Dead</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3072" title="Out of the Shadows (achievements)">Mantle Pieces</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3053" title="Out of the Shadows (achievements)">Conspiracy of Dunces</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3076" title="Out of the Shadows (achievements)">Jade Carving</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Out_of_the_Shadows_(achievements)#achievement3088" title="Out of the Shadows (achievements)">Available Guardian</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Out of the Shadows achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3050">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 5 Out of the Shadows achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3050">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 10 Out of the Shadows achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">8<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3050">
+<td style="width:220px; vertical-align:top;" class="white">Completed 18 Out of the Shadows achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3074" class="widget-account-achievement line" data-id="achievement3074">
+<th id="A&#95;Shadow&#39;s&#95;Deeds" style="text-align:left"><a href="/wiki/A_Shadow%27s_Deeds" title="A Shadow&#39;s Deeds">A Shadow's Deeds</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3074">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Journey to the <a href="/wiki/Cavern_of_Unseen_Lights" title="Cavern of Unseen Lights">Cavern of Unseen Lights</a> and seek any clues as to the source of the explosion.<span style="color:#686868; display: block;"><i>Journal: A Shadow's Deeds Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed A Shadow's Deeds
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3064" class="widget-account-achievement line" data-id="achievement3064">
+<th id="Ain&#39;t&#95;Got&#95;Time&#95;for&#95;This" style="text-align:left"><a href="/wiki/Research_in_Rata_Novus" title="Research in Rata Novus">Ain't Got Time for This</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3064">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the <a href="/wiki/Sentry_Golem" title="Sentry Golem">sentry golems</a>.<span style="color:#686868; display: block;"><i>Story Instance: Research in Rata Novus</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Bypassed the Magical Puzzle by Destroying the Sentry Golems
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3075" class="widget-account-achievement line" data-id="achievement3075">
+<th id="Apprentice&#95;Kasandra&#39;s&#95;Notebook" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Apprentice_Kasandra%27s_Notebook" title="Apprentice Kasandra&#39;s Notebook">Apprentice Kasandra's Notebook</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3075">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Find the <a href="/wiki/Scrap_of_Paper" title="Scrap of Paper">scattered pages</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Apprentice_Kasandra%27s_Diary" title="Apprentice Kasandra&#39;s Diary"><img alt="Guide to Waterproofing.png" src="/images/thumb/8/87/Guide_to_Waterproofing.png/20px-Guide_to_Waterproofing.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/8/87/Guide_to_Waterproofing.png/30px-Guide_to_Waterproofing.png 1.5x, /images/thumb/8/87/Guide_to_Waterproofing.png/40px-Guide_to_Waterproofing.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Apprentice_Kasandra%27s_Diary" title="Apprentice Kasandra&#39;s Diary">Apprentice Kasandra's Diary</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3075-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Apprentice_Kasandra%27s_Diary_(Incomplete)" title="Apprentice Kasandra&#39;s Diary (Incomplete)"><img alt="Guide to Waterproofing.png" src="/images/8/87/Guide_to_Waterproofing.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/12_Phoenix,_1325_AE" title="12 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/16_Phoenix,_1325_AE" title="16 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/26_Phoenix,_1325_AE" title="26 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/42_Phoenix,_1325_AE" title="42 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/2_Scion,_1325_AE" title="2 Scion, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/7_Scion,_1325_AE" title="7 Scion, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/63_Scion,_1325_AE" title="63 Scion, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/27_Phoenix,_1326_AE" title="27 Phoenix, 1326 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/65_Scion,_1326_AE_(Kasandra)" title="65 Scion, 1326 AE (Kasandra)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/52_Phoenix,_1327_AE" title="52 Phoenix, 1327 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/12_Colossus,_1327_AE" title="12 Colossus, 1327 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/83_Zephyr,_1328_AE" title="83 Zephyr, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/73_Phoenix,_1328_AE" title="73 Phoenix, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3075-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/13_Zephyr,_1329_AE_(Kasandra)" title="13 Zephyr, 1329 AE (Kasandra)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Notebook Pages
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3075">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 7 Notebook Pages
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3075">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 15 Notebook Pages
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3088" class="widget-account-achievement line" data-id="achievement3088">
+<th id="Available&#95;Guardian" style="text-align:left">Available Guardian
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3088">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the <a href="/wiki/Legendary_Unbound_Guardian" title="Legendary Unbound Guardian">Unbound Guardian</a> deep within the <a href="/wiki/Cavern_of_Unseen_Lights" title="Cavern of Unseen Lights">Cavern of Unseen Lights</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated the Unbound Guardian
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3056" class="widget-account-achievement line" data-id="achievement3056">
+<th id="Blood&#95;and&#95;Stone" style="text-align:left"><a href="/wiki/Blood_and_Stone" title="Blood and Stone">Blood and Stone</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3056">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find <a href="/wiki/Squad_Leader_Bennett" title="Squad Leader Bennett">Bennett</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.<span style="color:#686868; display: block;"><i>Journal: Blood and Stone</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Blood and Stone
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3078" class="widget-account-achievement line" data-id="achievement3078">
+<th id="Bloodstone&#95;Fen&#95;Insight:&#95;Fragmented&#95;Wastes" style="text-align:left"><a href="/wiki/Bloodstone_Fen_Insight:_Fragmented_Wastes" title="Bloodstone Fen Insight: Fragmented Wastes">Bloodstone Fen Insight: Fragmented Wastes</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3078">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this <a href="/wiki/Maguuma_Mastery_Insight" class="mw-redirect" title="Maguuma Mastery Insight">Maguuma Mastery Insight</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3061" class="widget-account-achievement line" data-id="achievement3061">
+<th id="Bloodstone&#95;Fen&#95;Insight:&#95;Temple&#95;of&#95;Renewal" style="text-align:left"><a href="/wiki/Bloodstone_Fen_Insight:_Temple_of_Renewal" title="Bloodstone Fen Insight: Temple of Renewal">Bloodstone Fen Insight: Temple of Renewal</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3061">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this <a href="/wiki/Maguuma_Mastery_Insight" class="mw-redirect" title="Maguuma Mastery Insight">Maguuma Mastery Insight</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3043" class="widget-account-achievement line" data-id="achievement3043">
+<th id="Bloodstone&#95;Magic,&#95;Not&#95;Even&#95;Once" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Confessor%27s_Stronghold" title="Confessor&#39;s Stronghold">Bloodstone Magic, Not Even Once</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3043">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Stop <a href="/wiki/Justiciar_Adrienne" title="Justiciar Adrienne">Justiciar Adrienne</a> from drawing a full circle.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's Stronghold Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Stopped Justiciar Adrienne from Drawing a Full Circle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3065" class="widget-account-achievement line" data-id="achievement3065">
+<th id="Confessor&#39;s&#95;Stronghold" style="text-align:left"><a href="/wiki/Confessor%27s_Stronghold" title="Confessor&#39;s Stronghold">Confessor's Stronghold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3065">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Pursue and capture <a href="/wiki/Minister_Caudecus" title="Minister Caudecus">Lord Caudecus Beetlestone</a>.<span style="color:#686868; display: block;"><i>Journal: Confessor's Stronghold Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Confessor's Stronghold
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3053" class="widget-account-achievement line" data-id="achievement3053">
+<th id="Conspiracy&#95;of&#95;Dunces" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Conspiracy_of_Dunces" title="Conspiracy of Dunces">Conspiracy of Dunces</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3053">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find the <a href="/wiki/Scrap_of_Paper" title="Scrap of Paper">journals</a> chronicling the <a href="/wiki/White_Mantle" title="White Mantle">White Mantle</a>'s plans.<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Sentient_Anomaly" title="Sentient Anomaly"><img alt="Sentient Anomaly.png" src="/images/thumb/9/94/Sentient_Anomaly.png/20px-Sentient_Anomaly.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/9/94/Sentient_Anomaly.png/30px-Sentient_Anomaly.png 1.5x, /images/thumb/9/94/Sentient_Anomaly.png/40px-Sentient_Anomaly.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Sentient_Anomaly" title="Sentient Anomaly">Sentient Anomaly</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">3 Journals Fully Recovered
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3062" class="widget-account-achievement line" data-id="achievement3062">
+<th id="Dive&#95;Master:&#95;Just&#95;Dropping&#95;By" style="text-align:left">Dive Master: Just Dropping By
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3062">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Use the <a href="/wiki/Diving_goggles" class="mw-redirect" title="Diving goggles">diving goggles</a> near the highest floating island.<span style="color:#686868; display: block;"><i>Boldly dived into certain...doom?</i></span>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Used the Diving Goggles
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3066" class="widget-account-achievement line" data-id="achievement3066">
+<th id="Don&#39;t&#95;Cross&#95;the&#95;Streams" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> Don't Cross the Streams
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3066">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Use <a href="/wiki/Ride_the_Ley_Line" title="Ride the Ley Line">ley-line magic</a> in the middle of a ley line.<span style="color:#686868; display: block;"><i>Every molecule in your body exploded at the speed of light.</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Invoked Ley-Line Magic in the Middle of a Ley Line
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3042" class="widget-account-achievement line" data-id="achievement3042">
+<th id="Eir&#39;s&#95;Memorial&#95;in&#95;Hoelbrak" style="text-align:left"><a href="/wiki/Eir%27s_Memorial_in_Hoelbrak" title="Eir&#39;s Memorial in Hoelbrak">Eir's Memorial in Hoelbrak</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3042">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Visit Eir's Homestead in <a href="/wiki/Hoelbrak" title="Hoelbrak">Hoelbrak</a> to pay respects to a <a href="/wiki/Eir" class="mw-redirect" title="Eir">dear friend</a>.<span style="color:#686868; display: block;"><i>Journal: Eir's Memorial in Hoelbrak Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Eir's Memorial in Hoelbrak
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3060" class="widget-account-achievement line" data-id="achievement3060">
+<th id="Grand&#95;Savant&#95;Valis&#95;the&#95;Learned&#39;s&#95;Research&#95;Journal" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Grand_Savant_Valis_the_Learned%27s_Research_Journal_(achievement)" title="Grand Savant Valis the Learned&#39;s Research Journal (achievement)">Grand Savant Valis the Learned's Research Journal</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3060">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Find the <a href="/wiki/Scrap_of_Paper" title="Scrap of Paper">scattered journal entries</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Grand_Savant_Valis_the_Learned%27s_Research_Journal" title="Grand Savant Valis the Learned&#39;s Research Journal"><img alt="Guide to Waterproofing.png" src="/images/thumb/8/87/Guide_to_Waterproofing.png/20px-Guide_to_Waterproofing.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/8/87/Guide_to_Waterproofing.png/30px-Guide_to_Waterproofing.png 1.5x, /images/thumb/8/87/Guide_to_Waterproofing.png/40px-Guide_to_Waterproofing.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Grand_Savant_Valis_the_Learned%27s_Research_Journal" title="Grand Savant Valis the Learned&#39;s Research Journal">Grand Savant Valis the Learned's Research Journal</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3060-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Grand_Savant_Valis_the_Learned%27s_Research_Journal_(Incomplete)" title="Grand Savant Valis the Learned&#39;s Research Journal (Incomplete)"><img alt="Caudecus&#39;s Journal.png" src="/images/9/97/Caudecus%27s_Journal.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/86_Zephyr,_1325_AE" title="86 Zephyr, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/14_Phoenix,_1325_AE" title="14 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/25_Phoenix,_1325_AE" title="25 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/60_Phoenix,_1325_AE" title="60 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/5_Scion,_1325_AE" title="5 Scion, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/40_Scion,_1325_AE" title="40 Scion, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/60_Zephyr,_1326_AE" title="60 Zephyr, 1326 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/24_Scion,_1326_AE" title="24 Scion, 1326 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/65_Scion,_1326_AE" title="65 Scion, 1326 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/45_Phoenix,_1327_AE" title="45 Phoenix, 1327 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/2_Phoenix,_1328_AE" title="2 Phoenix, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/70_Phoenix,_1328_AE" title="70 Phoenix, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/13_Zephyr,_1329_AE" title="13 Zephyr, 1329 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3060-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/17_Zephyr,_1329_AE" title="17 Zephyr, 1329 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3060">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 7 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3060">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 15 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3049" class="widget-account-achievement line" data-id="achievement3049">
+<th id="Grief&#95;Counseling" style="text-align:left">Grief Counseling
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3049">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white"><a href="/wiki/Emote" title="Emote">Emote</a> yes to <a href="/wiki/Alari_Doubleblade" title="Alari Doubleblade">Alari</a> when she reaches her existential crisis.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Helped Alari Move On to the Mists
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3076" class="widget-account-achievement line" data-id="achievement3076">
+<th id="Jade&#95;Carving" style="text-align:left">Jade Carving
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3076">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Defeat a <a href="/wiki/Jade_construct" class="mw-redirect" title="Jade construct">jade construct</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Defeated a Jade Construct
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3076">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">3 Defeated a Jade Construct
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3076">
+<td style="width:220px; vertical-align:top;" class="offwhite">10 Defeated a Jade Construct
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3070" class="widget-account-achievement line" data-id="achievement3070">
+<th id="Lost&#95;Souls" style="text-align:left"><a href="/wiki/The_spirits_mostly_come_out_at_night._Mostly..." title="The spirits mostly come out at night. Mostly...">Lost Souls</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3070">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Find and defeat the four <a href="/wiki/Bloodstone_ghost" title="Bloodstone ghost">ghostly</a> champions wandering <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">4 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Savant_Ehrin" title="Savant Ehrin">Savant Ehrin</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Nyle_the_Compassionate" title="Nyle the Compassionate">Nyle the Compassionate</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Ritualist_Josa" title="Ritualist Josa">Ritualist Josa</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/Thief_Lloyd" title="Thief Lloyd">Thief Lloyd</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Ghostly Champions Defeated
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3070">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">2 Ghostly Champions Defeated
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3070">
+<td style="width:220px; vertical-align:top;" class="offwhite">4 Ghostly Champions Defeated
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3081" class="widget-account-achievement line" data-id="achievement3081">
+<th id="Magic&#95;Unbound:&#95;The&#95;Gathering" style="text-align:left">Magic Unbound: The Gathering
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3081">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Collect 10 units of floating <a href="/wiki/Unbound_Magic_(object)" title="Unbound Magic (object)">unbound magic</a> in 60 seconds.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected Tremendous Unbound Magic Very Quickly
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3072" class="widget-account-achievement line" data-id="achievement3072">
+<th id="Mantle&#95;Pieces" style="text-align:left">Mantle Pieces
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3072">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Defeat <a href="/wiki/Bloodstone_Crazed" title="Bloodstone Crazed">bloodstone-crazed</a> <a href="/wiki/White_Mantle" title="White Mantle">White Mantle</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Defeated 5 Bloodstone-Crazed White Mantle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3072">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Defeated 50 Bloodstone-Crazed White Mantle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3072">
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated 200 Bloodstone-Crazed White Mantle
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3059" class="widget-account-achievement line" data-id="achievement3059">
+<th id="Reaper&#95;of&#95;Magic" style="text-align:left"><a href="/wiki/Reaper_of_Magic" title="Reaper of Magic">Reaper of Magic</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3059">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Journey through <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a> seeking the secrets of <a href="/wiki/Unbound_Magic_(object)" title="Unbound Magic (object)">Unbound Magic</a>.<span style="color:#686868; display: block;"><i>Journal: Reaper of Magic Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Reaper of Magic
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3054" class="widget-account-achievement line" data-id="achievement3054">
+<th id="Research&#95;in&#95;Rata&#95;Novus" style="text-align:left"><a href="/wiki/Research_in_Rata_Novus" title="Research in Rata Novus">Research in Rata Novus</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3054">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Visit <a href="/wiki/Taimi" title="Taimi">Taimi</a> in <a href="/wiki/Rata_Novus" title="Rata Novus">Rata Novus</a>, as requested.<span style="color:#686868; display: block;"><i>Journal: Research in Rata Novus Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Research in Rata Novus
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3040" class="widget-account-achievement line" data-id="achievement3040">
+<th id="Reversal&#95;of&#95;Fortune" style="text-align:left">Reversal of Fortune
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3040">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Hit the <a href="/wiki/Ghostly_Justiciar_Hablion" title="Ghostly Justiciar Hablion">ghostly justiciar</a> with <a href="/wiki/Gliding#List_of_gliding_skills" title="Gliding">aerial attacks</a> when he portals you into the air.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Used the Justiciar's Tactics against Him
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3084" class="widget-account-achievement line" data-id="achievement3084">
+<th id="Take&#95;It&#95;Down&#95;a&#95;Notch" style="text-align:left"><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Confessor%27s_Stronghold" title="Confessor&#39;s Stronghold">Take It Down a Notch</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3084">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat a <a href="/wiki/White_Mantle_Knight" title="White Mantle Knight">White Mantle knight</a> in celebration.<span style="color:#686868; display: block;"><i>Story Instance: Confessor's Stronghold</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated a White Mantle Knight Who Was Celebrating Too Soon
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3071" class="widget-account-achievement line" data-id="achievement3071">
+<th id="The&#95;Memoirs&#95;of&#95;Justiciar&#95;Bauer" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /><a href="/wiki/List_of_hidden_achievements" title="This achievement requires at least one completed objective to become visible."><img alt="This achievement requires at least one completed objective to become visible." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/The_Memoirs_of_Justiciar_Bauer" title="The Memoirs of Justiciar Bauer">The Memoirs of Justiciar Bauer</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">4<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3071">
+<td rowspan="3" style="vertical-align:top; min-width:530px;" class="white">Find the <a href="/wiki/Scrap_of_Paper" title="Scrap of Paper">scattered pages</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.<span style="color:#686868; display: block;"><i>The ninth of his name.</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Justiciar_Bauer%27s_Memoirs" title="Justiciar Bauer&#39;s Memoirs"><img alt="Guide to Waterproofing.png" src="/images/thumb/8/87/Guide_to_Waterproofing.png/20px-Guide_to_Waterproofing.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/8/87/Guide_to_Waterproofing.png/30px-Guide_to_Waterproofing.png 1.5x, /images/thumb/8/87/Guide_to_Waterproofing.png/40px-Guide_to_Waterproofing.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Justiciar_Bauer%27s_Memoirs" title="Justiciar Bauer&#39;s Memoirs">Justiciar Bauer's Memoirs</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3071-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Justiciar_Bauer%27s_Memoirs_(Incomplete)" title="Justiciar Bauer&#39;s Memoirs (Incomplete)"><img alt="Operative&#39;s Creed.png" src="/images/6/63/Operative%27s_Creed.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/75_Zephyr,_1325_AE" title="75 Zephyr, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/86_Zephyr,_1325_AE_(Bauer)" title="86 Zephyr, 1325 AE (Bauer)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/24_Phoenix,_1325_AE" title="24 Phoenix, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/42_Phoenix,_1325_AE_(Bauer)" title="42 Phoenix, 1325 AE (Bauer)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/7_Scion,_1325" title="7 Scion, 1325"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/12_Colossus,_1325_AE" title="12 Colossus, 1325 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/82_Phoenix,_1326_AE" title="82 Phoenix, 1326 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit8" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/65_Scion,_1326_AE_(Bauer)" title="65 Scion, 1326 AE (Bauer)"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit9" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/72_Phoenix,_1328_AE" title="72 Phoenix, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit10" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/48_Phoenix,_1327_AE" title="48 Phoenix, 1327 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit11" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/31_Zephyr,_1328_AE" title="31 Zephyr, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit12" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/74_Zephyr,_1328_AE" title="74 Zephyr, 1328 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit13" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/2_Zephyr,_1329_AE" title="2 Zephyr, 1329 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3071-bit14" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/14_Zephyr,_1329_AE" title="14 Zephyr, 1329 AE"><img alt="Donation Packaging.png" src="/images/d/d5/Donation_Packaging.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Collected 1 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3071">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Collected 7 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3071">
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 15 Journal Entries
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3082" class="widget-account-achievement line" data-id="achievement3082">
+<th id="The&#95;Sky&#95;Is&#95;Falling" style="text-align:left"><a href="/wiki/A_Shadow%27s_Deeds" title="A Shadow&#39;s Deeds">The Sky Is Falling</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3082">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Complete the instance without being damaged by falling bloodstone shards or their explosions.<span style="color:#686868; display: block;"><i>Story Instance: A Shadow's Deeds</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Avoided All Falling Shards While Investigating the Source of the Explosion
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3073" class="widget-account-achievement line" data-id="achievement3073">
+<th id="This&#95;Time,&#95;Stay&#95;Dead" style="text-align:left">This Time, Stay Dead
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3073">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the <a href="/wiki/Ghostly_Justiciar_Hablion" title="Ghostly Justiciar Hablion">Ghostly Justiciar</a> in the <a href="/wiki/Colosseum_of_the_Faithful" title="Colosseum of the Faithful">Colosseum of the Faithful</a>, located above <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeated the Ghostly Justiciar
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3077" class="widget-account-achievement line" data-id="achievement3077">
+<th id="Was&#95;It&#95;Blue&#95;or&#95;Red?" style="text-align:left"><a href="/wiki/Research_in_Rata_Novus" title="Research in Rata Novus">Was It Blue or Red?</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3077">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Solve the entry puzzle.<span style="color:#686868; display: block;"><i>Story Instance: Research in Rata Novus</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed the Puzzle to Enter Taimi's Laboratory
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Out_of_the_Shadows_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite&#95;note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>Dive Master: Just Dropping By</b>: The simplest way to reach the island with the goggles is to begin from <span class="inline-icon"><a href="/wiki/Waypoint" title="Waypoint"><img alt="Waypoint (map icon).png" src="/images/thumb/d/d2/Waypoint_%28map_icon%29.png/20px-Waypoint_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/d/d2/Waypoint_%28map_icon%29.png/30px-Waypoint_%28map_icon%29.png 1.5x, /images/thumb/d/d2/Waypoint_%28map_icon%29.png/40px-Waypoint_%28map_icon%29.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Fragmented_Wastes#Zealot&#39;s_Overlook_Waypoint" title="Fragmented Wastes">Zealot's Overlook Waypoint</a><span> — </span><span class="gamelink" id="gamelink-1" data-type="map" data-id="2382" title="2382"></span><script>!function(){const t=document.getElementById('gamelink-1');if(!t)return;const e=function(t,e){if(!t)return"invalid type (blank)";const n={item:2,text:3,map:4,skill:6,trait:7,recipe:9,skin:10,outfit:11}[t.trim().toLowerCase()]||0;if(!n)return"invalid type";let i=+e;const l=[];for(;i>0;)l.push(255&i),i>>=8;for(;l.length<4||l.length%2!=0;)l.push(0);2==n&&l.unshift(1),l.unshift(n);let r="";for(let t=0;t<l.length;t++)r+=String.fromCharCode(l[t]);return"[&"+btoa(r)+"]"}(t.getAttribute("data-type"),t.getAttribute("data-id")),n=document.createElement("input");n.className="chatlink",n.type="text",n.value=e,n.readOnly=!0,n.spellcheck=!1,t.appendChild(document.createTextNode(e)),t.parentNode.insertBefore(n,t),t.addEventListener("click",function(){t.style.visibility="hidden",n.style.display="inline-block",n.focus(),n.select(),document.execCommand("Copy")},!1),n.addEventListener("blur",function(){n.style.display=null,t.style.visibility=null},!1)}();</script> and glide into the nearby ley-line. Once you reach the top, take the updraft to your right.<br />There is no pool at the bottom of this dive; instead, a portal will spawn once you approach the ground, which will teleport you back up to the goggles.</span>
+</li>
+<li id="cite&#95;note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Jade Carving</b>: Defeat any <a href="/wiki/Jade_construct" class="mw-redirect" title="Jade construct">jade constructs</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a>. Constructs which spawn during <a href="/wiki/Out_of_the_Shadows" title="Out of the Shadows">Out of the Shadows</a> missions also count.</span>
+</li>
+<li id="cite&#95;note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Magic Unbound: The Gathering</b>: Jumping off the ledge with the diving goggles (see above) is an easy way to complete this achievement.</span>
+</li>
+<li id="cite&#95;note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>Mantle Pieces</b>: Any <a href="/wiki/White_Mantle" title="White Mantle">White Mantle</a> in <a href="/wiki/Bloodstone_Fen" title="Bloodstone Fen">Bloodstone Fen</a> count towards this achievement.</span>
+</li>
+</ol></div>
+<hr style="margin: 1em 0em; clear: both;" />
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Visions_of_Eternity" title="Guild Wars 2: Visions of Eternity">Visions of Eternity</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Code_of_Creation_(achievements)" title="Code of Creation (achievements)">Code of Creation</a></li>
+<li><a href="/wiki/The_Only_Way_(achievements)" title="The Only Way (achievements)">The Only Way</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_1" title="Visions of Eternity: Act 1">Visions of Eternity: Act 1</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_2" title="Visions of Eternity: Act 2">Visions of Eternity: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Janthir_Wilds" title="Guild Wars 2: Janthir Wilds">Janthir Wilds</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Absolution_(achievements)" title="Absolution (achievements)">Absolution</a></li>
+<li><a href="/wiki/Repentance_(achievements)" title="Repentance (achievements)">Repentance</a></li>
+<li><a href="/wiki/Godspawn_(achievements)" title="Godspawn (achievements)">Godspawn</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_1" title="Janthir Wilds: Act 1">Janthir Wilds: Act 1</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_2" title="Janthir Wilds: Act 2">Janthir Wilds: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Secrets_of_the_Obscure" title="Guild Wars 2: Secrets of the Obscure">Secrets of the Obscure</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Midnight_King_(achievements)" title="The Midnight King (achievements)">The Midnight King</a></li>
+<li><a href="/wiki/The_Realm_of_Dreams_(achievements)" title="The Realm of Dreams (achievements)">The Realm of Dreams</a></li>
+<li><a href="/wiki/Through_the_Veil_(achievements)" title="Through the Veil (achievements)">Through the Veil</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_1" title="Secrets of the Obscure: Act 1">Secrets of the Obscure: Act 1</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_2" title="Secrets of the Obscure: Act 2">Secrets of the Obscure: Act 2</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_3" title="Secrets of the Obscure: Act 3">Secrets of the Obscure: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_End_of_Dragons" title="Guild Wars 2: End of Dragons">End of Dragons</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/End_of_Dragons:_Interlude_(achievements)" title="End of Dragons: Interlude (achievements)">End of Dragons: Interlude</a></li>
+<li><a href="/wiki/What_Lies_Within_(achievements)" title="What Lies Within (achievements)">What Lies Within</a></li>
+<li><a href="/wiki/Delve_into_the_Haze" title="Delve into the Haze">Delve into the Haze</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_1" title="End of Dragons: Act 1">End of Dragons: Act 1</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_2" title="End of Dragons: Act 2">End of Dragons: Act 2</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_3" title="End of Dragons: Act 3">End of Dragons: Act 3</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_4" title="End of Dragons: Act 4">End of Dragons: Act 4</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_5" title="End of Dragons: Act 5">End of Dragons: Act 5</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/The_Icebrood_Saga" title="The Icebrood Saga">The Icebrood Saga</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Champions_(achievements)" title="Champions (achievements)">Champions</a></li>
+<li><a href="/wiki/Jormag_Rising_(achievements)" title="Jormag Rising (achievements)">Jormag Rising</a></li>
+<li><a href="/wiki/No_Quarter_(achievements)" title="No Quarter (achievements)">No Quarter</a></li>
+<li><a href="/wiki/Visions_of_the_Past:_Steel_and_Fire_(achievements)" title="Visions of the Past: Steel and Fire (achievements)">Visions of the Past: Steel and Fire</a></li>
+<li><a href="/wiki/Shadow_in_the_Ice_(achievements)" title="Shadow in the Ice (achievements)">Shadow in the Ice</a></li>
+<li><a href="/wiki/Whisper_in_the_Dark_(achievements)" title="Whisper in the Dark (achievements)">Whisper in the Dark</a></li>
+<li><a href="/wiki/Prologue:_Bound_by_Blood_(achievements)" title="Prologue: Bound by Blood (achievements)">Prologue: Bound by Blood</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_4" title="Living World Season 4">Living World Season 4</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/War_Eternal_(achievements)" title="War Eternal (achievements)">War Eternal</a></li>
+<li><a href="/wiki/All_or_Nothing_(achievements)" title="All or Nothing (achievements)">All or Nothing</a></li>
+<li><a href="/wiki/A_Star_to_Guide_Us_(achievements)" title="A Star to Guide Us (achievements)">A Star to Guide Us</a></li>
+<li><a href="/wiki/Long_Live_the_Lich_(achievements)" title="Long Live the Lich (achievements)">Long Live the Lich</a></li>
+<li><a href="/wiki/A_Bug_in_the_System_(achievements)" title="A Bug in the System (achievements)">A Bug in the System</a></li>
+<li><a href="/wiki/Daybreak_(achievements)" title="Daybreak (achievements)">Daybreak</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Path_of_Fire" title="Guild Wars 2: Path of Fire">Path of Fire</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Path_of_Fire:_Act_1" title="Path of Fire: Act 1">Path of Fire: Act 1</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_2" title="Path of Fire: Act 2">Path of Fire: Act 2</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_3" title="Path of Fire: Act 3">Path of Fire: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_3" title="Living World Season 3">Living World Season 3</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/One_Path_Ends_(achievements)" title="One Path Ends (achievements)">One Path Ends</a></li>
+<li><a href="/wiki/Flashpoint_(achievements)" title="Flashpoint (achievements)">Flashpoint</a></li>
+<li><a href="/wiki/The_Head_of_the_Snake_(achievements)" title="The Head of the Snake (achievements)">The Head of the Snake</a></li>
+<li><a href="/wiki/A_Crack_in_the_Ice_(achievements)" title="A Crack in the Ice (achievements)">A Crack in the Ice</a></li>
+<li><a href="/wiki/Rising_Flames_(achievements)" title="Rising Flames (achievements)">Rising Flames</a></li>
+<li><a class="mw-selflink selflink">Out of the Shadows</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns">Heart of Thorns</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Heart_of_Thorns:_Act_1" title="Heart of Thorns: Act 1">Heart of Thorns: Act 1</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_2" title="Heart of Thorns: Act 2">Heart of Thorns: Act 2</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_3" title="Heart of Thorns: Act 3">Heart of Thorns: Act 3</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_4" title="Heart of Thorns: Act 4">Heart of Thorns: Act 4</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_2" title="Living World Season 2">Living World Season 2</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Point_of_No_Return_(achievements)" title="Point of No Return (achievements)">Point of No Return</a></li>
+<li><a href="/wiki/Seeds_of_Truth_(achievements)" title="Seeds of Truth (achievements)">Seeds of Truth</a></li>
+<li><a href="/wiki/Tangled_Paths_(achievements)" title="Tangled Paths (achievements)">Tangled Paths</a></li>
+<li><a href="/wiki/Echoes_of_the_Past_(achievements)" title="Echoes of the Past (achievements)">Echoes of the Past</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_2_(achievements)" title="The Dragon&#39;s Reach, Part 2 (achievements)">The Dragon's Reach, Part 2</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_1_(achievements)" title="The Dragon&#39;s Reach, Part 1 (achievements)">The Dragon's Reach, Part 1</a></li>
+<li><a href="/wiki/Entanglement_(achievements)" title="Entanglement (achievements)">Entanglement</a></li>
+<li><a href="/wiki/Gates_of_Maguuma_(achievements)" title="Gates of Maguuma (achievements)">Gates of Maguuma</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_1" title="Living World Season 1">Living World Season 1</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Battle_for_Lion%27s_Arch_(achievements)" title="The Battle for Lion&#39;s Arch (achievements)">The Battle for Lion's Arch</a></li>
+<li><a href="/wiki/Escape_from_Lion%27s_Arch_(achievements)" title="Escape from Lion&#39;s Arch (achievements)">Escape from Lion's Arch</a></li>
+<li><a href="/wiki/The_Nightmare_Is_Over" title="The Nightmare Is Over">The Nightmare Is Over</a></li>
+<li><a href="/wiki/The_Nightmares_Within_(achievements)" title="The Nightmares Within (achievements)">The Nightmares Within</a></li>
+<li><a href="/wiki/Tower_of_Nightmares_(achievements)" title="Tower of Nightmares (achievements)">Tower of Nightmares</a></li>
+<li><a href="/wiki/Emissary_Vorpp%27s_Field_Assistant" title="Emissary Vorpp&#39;s Field Assistant">Emissary Vorpp's Field Assistant</a></li>
+<li><a href="/wiki/Clockwork_Chaos_(achievements)" title="Clockwork Chaos (achievements)">Clockwork Chaos</a></li>
+<li><a href="/wiki/Sky_Pirates_(achievements)" title="Sky Pirates (achievements)">Sky Pirates</a></li>
+<li><a href="/wiki/Flame_and_Frost_(achievements)" title="Flame and Frost (achievements)">Flame and Frost</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260924155401
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.891 seconds
+Real time usage: 1.281 seconds
+Preprocessor visited node count: 17765/1000000
+Post‐expand include size: 251600/2097152 bytes
+Template argument size: 50344/2097152 bytes
+Highest expansion depth: 16/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2138/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1090.117      1 -total
+ 76.83%  837.486     28 Template:Achievement_table_row
+ 36.83%  401.516     45 Template:Item_icon_without_name
+ 11.16%  121.632      1 Template:Achievement_nav
+  9.24%  100.710      1 Template:Achievement_category_infobox
+  2.54%   27.645      1 Template:Waypoint
+  2.35%   25.591     21 Template:Ifexists
+  1.84%   20.058      1 Template:Achievement_table_header
+  1.80%   19.655      1 Template:Infobox_requires
+  1.35%   14.709     66 Template:Achievement_nav_result_format
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:186299-0!dateformat=default and timestamp 20260924155359 and revision id 2871367.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Out_of_the_Shadows_(achievements)&amp;oldid=2871367">https://wiki.guildwars2.com/index.php?title=Out_of_the_Shadows_(achievements)&amp;oldid=2871367</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Living_World_Season_3_content" title="Category:Living World Season 3 content">Living World Season 3 content</a></li><li><a href="/wiki/Category:Heart_of_Thorns_content" title="Category:Heart of Thorns content">Heart of Thorns content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li><li><a href="/wiki/Category:Out_of_the_Shadows" title="Category:Out of the Shadows">Out of the Shadows</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		

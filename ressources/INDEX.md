@@ -939,6 +939,21 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `recipe_gift_of_weather.html` | Recipe: Gift of Weather | article complet | 2026-09-24 |
 | `recipe_gift_of_wood.html` | Recipe: Gift of Wood | article complet | 2026-09-24 |
 | `sun_bead.html` | Sun Bead | article complet | 2026-09-24 |
+| `a_crack_in_the_ice_achievements.html` | A Crack in the Ice (achievements) | article complet | 2026-09-25 |
+| `ancient_wood_pulp.html` | Ancient Wood Pulp | article complet | 2026-09-25 |
+| `flashpoint_achievements.html` | Flashpoint (achievements) | article complet | 2026-09-25 |
+| `gift_of_the_desert.html` | Gift of the Desert | article complet | 2026-09-25 |
+| `icy_runestone.html` | Icy Runestone | article complet | 2026-09-25 |
+| `jug_of_water.html` | Jug of Water | article complet | 2026-09-25 |
+| `mystic_runestone.html` | Mystic Runestone | article complet | 2026-09-25 |
+| `olmakhan_charm.html` | Olmakhan Charm | article complet | 2026-09-25 |
+| `olmakhan_latigo_strap.html` | Olmakhan Latigo Strap | article complet | 2026-09-25 |
+| `one_path_ends_achievements.html` | One Path Ends (achievements) | article complet | 2026-09-25 |
+| `out_of_the_shadows_achievements.html` | Out of the Shadows (achievements) | article complet | 2026-09-25 |
+| `rising_flames_achievements.html` | Rising Flames (achievements) | article complet | 2026-09-25 |
+| `superior_rune_of_holding.html` | Superior Rune of Holding | article complet | 2026-09-25 |
+| `supreme_rune_of_holding.html` | Supreme Rune of Holding | article complet | 2026-09-25 |
+| `the_head_of_the_snake_achievements.html` | The Head of the Snake (achievements) | article complet | 2026-09-25 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

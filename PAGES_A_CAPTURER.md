@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v314.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v319.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 9 trous de l'arbre — LA PRIORITÉ
+## 0 — 6 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,9 +17,6 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Gift of the Desert` | 1 |
-| `Icy Runestone` | 1 |
-| `Mystic Runestone` | 1 |
 
 ### 0 ter — 6 trous dont la page est DÉJÀ au dépôt
 
@@ -52,34 +49,21 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 7 composants sans apiId ni page
+## 3 — 0 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Ancient Wood Pulp` |
-| `Jug of Water` |
-| `Olmakhan Charm` |
-| `Olmakhan Latigo Strap` |
-| `Superior Rune of Holding` |
-| `Supreme Rune of Holding` |
-| `Valkyrie Bearkin War Helm` |
 
-## 3 bis — 6 composants dont le coût d'obtention est inconnu
+## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Ancient Wood Pulp` |
-| `Jug of Water` |
-| `Olmakhan Charm` |
-| `Olmakhan Latigo Strap` |
-| `Superior Rune of Holding` |
-| `Supreme Rune of Holding` |
 
 ## 4 — 31 collections incomplètes — RIEN À CAPTURER
 
@@ -124,36 +108,7 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 10 pages à capturer
+## URLs — 0 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Gift_of_the_Desert
-https://wiki.guildwars2.com/wiki/Icy_Runestone
-https://wiki.guildwars2.com/wiki/Mystic_Runestone
-https://wiki.guildwars2.com/wiki/Ancient_Wood_Pulp
-https://wiki.guildwars2.com/wiki/Jug_of_Water
-https://wiki.guildwars2.com/wiki/Olmakhan_Charm
-https://wiki.guildwars2.com/wiki/Olmakhan_Latigo_Strap
-https://wiki.guildwars2.com/wiki/Superior_Rune_of_Holding
-https://wiki.guildwars2.com/wiki/Supreme_Rune_of_Holding
-https://wiki.guildwars2.com/wiki/Valkyrie_Bearkin_War_Helm
 ```
-
-## Metas LW3 sans capture — pages wiki des objectifs (25/09/2026)
-
-`gw2_meta_pages_v1.py` pose la page de chaque objectif de meta depuis la capture
-du meta lui-meme (ancre `#achievementNNNN`). Six metas n'ont pas leur capture au
-depot, leurs 183 objectifs restent donc sans lien :
-
-```
-https://wiki.guildwars2.com/wiki/One_Path_Ends_Mastery
-https://wiki.guildwars2.com/wiki/Out_of_the_Shadows_(achievements)
-https://wiki.guildwars2.com/wiki/Rising_Flames_(achievements)
-https://wiki.guildwars2.com/wiki/A_Crack_in_the_Ice_(achievements)
-https://wiki.guildwars2.com/wiki/The_Head_of_the_Snake_(achievements)
-https://wiki.guildwars2.com/wiki/Flashpoint_(achievements)
-```
-
-Trois captures presentes n'ont pas d'ancre par succes (mise en page differente) :
-Year of the Ascension parties II, III et IV. Leurs 36 objectifs restent en couple
-[id, nom], ce que l'audit accepte — a reprendre si la page change de forme.

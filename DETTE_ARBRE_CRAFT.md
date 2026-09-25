@@ -2323,3 +2323,72 @@ Transversal verifie, pas seulement l'affichage :
   page depuis `WIKI_PAR_BIT`, la ou cette table a un sens.
 - Audit v51 : le triplet est accepte, la page doit etre une chaine non vide et
   sans espace. L'absence de 3e element reste valide (capture sans ancre).
+
+## AU — 25/09/2026 : trois lectures, dont une ou le wiki avait raison deux fois
+
+### 1. Le meta 3516 cherchait une page qui n'existe pas
+
+`gw2_meta_pages_v1.py` derive le nom de la capture du champ `source`. Celui du
+meta « One Path Ends » disait `wiki:One_Path_Ends_Mastery` — un titre qui
+redirige. La capture, nommee d'apres le titre ATTEINT comme le veut la
+convention du depot, s'appelle `one_path_ends_achievements.html` : le script
+declarait « capture manquante » alors que la page etait la.
+
+Corrige dans la table, pas dans une capture : `source` devient
+`wiki:One_Path_Ends_(achievements)`. Un titre stocke doit etre celui d'arrivee,
+jamais celui de depart — une redirection est un alias, pas une adresse.
+
+### 2. Icy / Mystic Runestone : ni cycle faux, ni « Currency for » a l'envers
+
+La piste etait la section « Currency for » lue dans le mauvais sens. Elle ne
+tient pas : `gw2_parse_vendor_cost_v1.py` borne deja son scan au premier H2
+apres `Acquisition`, precisement pour ca (cf. emblem_of_the_avenger).
+
+Les deux echanges sont REELS et tous deux dans les tables d'acquisition. Rojan
+the Penitent vend l'Icy Runestone **1 or OU 1 Mystic Runestone**. Miyani, le
+prepose et le gardien de la Forge vendent le Mystic Runestone **1 or OU
+1 Icy Runestone**. Le wiki ne se contredit pas : il decrit une conversion a
+double sens, chaque item ayant par ailleurs son propre prix en or.
+
+Notre lecture, elle, etait fausse : les lignes payees en or sont filtrees
+(`HORS_ARBRE`), donc un achat qui a une alternative en or ressemble a un achat
+a prix unique — et son prix en objet devient une EXIGENCE. `gw2_edges_wiki_v12`
+proposait bien l'arete `mystic_runestone -> icy_runestone`, ce qui aurait fait
+dependre de l'Icy Runestone les cent Mystic Runestones de chaque don gen2.
+
+`gw2_edges_wiki_v13.py` ajoute la garde `achat_au_choix()`, de meme nature que
+les deux voisines (`autre_voie`, `_voies_multiples`) : si la table d'acquisition
+melange des lignes chiffrees en objet et des lignes chiffrees en or, le prix en
+objet est une option, pas une exigence. Dix pages melangent les deux formes,
+huit tombaient deja sous les gardes existantes ; **deux restaient**,
+`mystic_runestone` et `philosophers_stone`. 1 066 aretes -> 1 065, une seule
+retiree : le cycle.
+
+### 3. Le nom en capitales de titre n'est pas une divergence
+
+`Broodmother Down By The Bay` au wiki, `Broodmother Down by the Bay` a l'API.
+L'appariement se fait sur l'id de l'ancre, le nom stocke reste celui du
+referentiel API — seul a faire foi pour un nom de succes.
+`gw2_meta_pages_v2.py` compare desormais casse et espaces normalises, signale
+ces cas a part, et garde le refus strict pour une vraie divergence.
+
+### Resultat
+
+Pages posees 367 -> **550 sur 586**. Les 36 restantes sont Year of the Ascension
+II a IV, dont les captures n'ont pas d'ancre par succes (mise en page
+differente) — a reprendre si la page change de forme.
+
+Sept apiId poses depuis les captures (ancient_wood_pulp 74681, jug_of_water
+12156, olmakhan_charm 87150, olmakhan_latigo_strap 87153,
+superior_rune_of_holding 13009, supreme_rune_of_holding 83410,
+valkyrie_bearkin_war_helm 103257). Avertissements 59 -> 53, file de capture a
+**0 URL**.
+
+### Reste a trancher
+
+La capture `gift_of_the_desert` apporte une recette — les quatre dons regionaux
+(Oasis, Highlands, Riverlands, Desolation), 1 chacun. Trois ne sont pas des
+composants, donc l'arete proposee est partielle : `gift_of_the_desert ->
+gift_of_the_desolation` seul, ce qui serait pire que rien. Les creer decomposera
+un achat aujourd'hui decrit par un `tip` karma (~23 331 par sous-don). Decision
+de modelisation, non prise ici.

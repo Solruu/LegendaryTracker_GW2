@@ -1,0 +1,942 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+				<div id="mw-indicator-2015-10-23_hot_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns content"><img alt="Guild Wars 2: Heart of Thorns content" src="/images/thumb/1/19/HoT_Texture_Trans.png/35px-HoT_Texture_Trans.png" decoding="async" width="35" height="28" srcset="/images/thumb/1/19/HoT_Texture_Trans.png/53px-HoT_Texture_Trans.png 1.5x, /images/thumb/1/19/HoT_Texture_Trans.png/70px-HoT_Texture_Trans.png 2x" data-file-width="3000" data-file-height="2368" /></a></div></div>
+				<div id="mw-indicator-2016-07-26_lws3_icon" class="mw-indicator"><div class="mw-parser-output"><a href="/wiki/Living_World_Season_3" title="Living World Season 3 content"><img alt="Living World Season 3 content" src="/images/thumb/c/ca/Living_World_Season_3_logo.png/35px-Living_World_Season_3_logo.png" decoding="async" width="35" height="24" srcset="/images/thumb/c/ca/Living_World_Season_3_logo.png/53px-Living_World_Season_3_logo.png 1.5x, /images/thumb/c/ca/Living_World_Season_3_logo.png/70px-Living_World_Season_3_logo.png 2x" data-file-width="1306" data-file-height="895" /></a></div></div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">A Crack in the Ice (achievements)</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub" ></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><div class="noexcerpt"><div style="margin-left:1.6em;"><img alt="Disambig icon.png" src="/images/thumb/6/67/Disambig_icon.png/19px-Disambig_icon.png" decoding="async" width="19" height="16" srcset="/images/thumb/6/67/Disambig_icon.png/29px-Disambig_icon.png 1.5x, /images/thumb/6/67/Disambig_icon.png/38px-Disambig_icon.png 2x" data-file-width="225" data-file-height="190" /> <i>This article is about the achievement category.  For the release, see <a href="/wiki/A_Crack_in_the_Ice" title="A Crack in the Ice">A Crack in the Ice</a>.  </i></div></div>
+<p>
+<a class="mw-selflink selflink">A Crack in the Ice</a> is an <a href="/wiki/Achievement" title="Achievement">achievement</a> category for achievements earned during the <a href="/wiki/A_Crack_in_the_Ice" title="A Crack in the Ice">A Crack in the Ice</a> story and within <a href="/wiki/Bitterfrost_Frontier" title="Bitterfrost Frontier">Bitterfrost Frontier</a>.
+</p>
+<div id="achievementcontrol"></div><p><style>
+.tokenvalid { color: darkgreen !important; background-color: #D7FFD7 !important; }
+.tokenerror { color: red !important; background-color: #FFD7D7 !important; }
+</style><script>/* GUILD WARS 2 OFFICIAL WIKI -- Widget:Account achievements */
+
+// Verify this is the first time this script is being loaded.
+if (typeof widget_AccountAchievements_counter === 'undefined') {
+    var widget_AccountAchievements_counter = 1;
+    
+    (function() {
+    
+        // Main widget code here
+        // DEFER LOADING SCRIPT UNTIL JQUERY IS READY. WAIT 40MS BETWEEN ATTEMPTS.
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 40);
+            }
+        }
+        
+        // INITIALISATION
+        defer(function findAchievements() {
+        
+        var widgetName = 'WidgetAccountAchievements';
+        var widgetControls = widgetName + '-controls';
+        var widgetRef = '#' + widgetControls;
+        var apiKeyCookieName = 'widgetAPIKeyProgression';
+        var subtokenCookieName = widgetName + "Subtoken";
+        var apiKeyOrSubtokenPattern = /^([0-9A-F]{8}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{20}(?:[-]{1}[0-9A-F]{4}){3}[-]{1}[0-9A-F]{12})|(?:(?:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)[.]{1}[0-9a-zA-Z_-]{146,}[.]{1}[0-9a-zA-Z_-]{43})$/;
+        
+        // Cookie management
+        function deleteCookie(name) {
+          document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict';
+        }
+        function getCookie(k) {
+          var v = document.cookie.match('(^|;) ?' + k + '=([^;]*)(;|$)');
+          return v ? v[2] : null
+        }
+        
+        // Removes duplicates. Usage: a.unique()
+        Array.prototype.unique = function() {
+            return this.filter(function (el, i, self) {
+                return self.indexOf(el) === i;
+            });
+        };
+        
+        // Function that produces field for API key, and a button to fetch API account data.
+            var displaySettingsLegend = $('<fieldset class="widget" id="'+widgetControls+'"><legend>Optional: API settings</legend></fieldset>');
+            displaySettingsLegend.append($('<span>Applying an API key here will grey out achievements that you have already obtained for your account.</span><br>'));
+            displaySettingsLegend.append($('<input class="apikey" type="text" placeholder="Paste your API key here. (needs progression permissions)" style="margin-right:0.5em; width:600px; font-family:monospace;"></input>'));
+            displaySettingsLegend.append($('<input class="find-button mw-ui-button" type="button" value="Apply" style="margin-right:0.5em;" title="Process API key, store for later visits, and apply formatting to owned achievements"></input>'));
+            displaySettingsLegend.append($('<input class="reset-button mw-ui-button" type="button" value="Reset" style="margin-right:0.5em;" title="Remove applied formatting"></input>'));
+            displaySettingsLegend.append($('<input class="forget-button mw-ui-button" type="button" value="Forget stored key" style="margin-right:0.5em;" title="Forget currently stored API key"></input>'));
+            displaySettingsLegend.append($('<span>See <b><a href="/wiki/API:API_key" title="API:API key (wiki documentation)">API key documentation</a></b> for help.</span>'));
+            $('#achievementcontrol').append(displaySettingsLegend);
+        
+            // Check for previous cookies and if present get the value for use with localStorage. Subsequently delete the cookies.
+            var cookie = getCookie(apiKeyCookieName) || getCookie(subtokenCookieName);
+            deleteCookie(apiKeyCookieName);
+            deleteCookie(subtokenCookieName);
+            if (cookie) {
+                var match = apiKeyOrSubtokenPattern.exec(cookie);
+                var isSubtoken = !match[1];
+                localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, cookie);
+            }
+        
+            // Check if a relevant token exists, if so add it to the user interface
+            var token = cookie || localStorage.getItem(apiKeyCookieName) || localStorage.getItem(subtokenCookieName);
+            if (token) {
+                $('.apikey', widgetRef).val(token);
+            }
+        
+            // Wait for user prompt
+            $('.find-button', widgetRef).click(function(){
+                // Declaring this section after the button has been clicked guarantees any further templates positioned after the widget has been called will be included
+                // Determine ids present on the page.
+                var idPrefix = 'achievement';
+                var classPattern = 'widget-account-achievement';
+                var elements = document.getElementsByClassName(classPattern);
+                var relevantIds = [];
+                for (var i=0; i < elements.length; i++) {
+                    var match = elements[i].dataset.id;
+                    if (match) {
+                        relevantIds.push( parseInt(match.replace(idPrefix,''), 10) );
+                    }
+                }
+                
+                // Very likely some duplicates in there.
+                relevantIds = relevantIds.unique();
+        
+        
+                $('.apikey', widgetRef).removeClass('tokenerror');
+                var token = $('.apikey', widgetRef).val();
+                var match = apiKeyOrSubtokenPattern.exec(token);
+                if (!match) {
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                    return;
+                }
+                var isSubtoken = !match[1];
+                $.getJSON('https://api.guildwars2.com/v2/account/achievements?access_token=' + token + '&wiki=1&lang=en')
+                .done(function(data) {
+                    $('.apikey', widgetRef).addClass('tokenvalid');
+        
+                    // Add CSS sheet to gray out appropriate elements, or bits
+                    var csselementids = $.map(data, function(val){
+                        if (relevantIds.indexOf(val.id) != -1) {
+                            if (val.done == true) {
+                                if ('bits' in val) {
+                                    return ['[data-id="achievement' + val.id + '"]', '[data-id*="achievement' + val.id + '-bit"]'].join(',');
+                                } else {
+                                    return ['[data-id="achievement' + val.id + '"]'];
+                                }
+                            } else if('bits' in val && val.bits.length > 0) {
+                                return $.map(val.bits, function(bit){
+                                    return ['[data-id="achievement' + val.id + '-bit' + bit + '"]']
+                                }).join(',');
+                            }
+                        }
+                    });
+                    $('#hideachievements').remove();
+                    $('head').append('<style id="hideachievements" type="text/css" >'
+                                   + (csselementids.length > 0 ? (csselementids.join(',') + ' { opacity: 0.2; }') : '')
+                                   + '</style>');
+        
+                    // Store API key for later
+                    localStorage.setItem(isSubtoken ? subtokenCookieName : apiKeyCookieName, token);
+                })
+                .fail( function(d, textStatus, error) {
+                    console.error("Account/achievements API getJSON failed, status: " + textStatus + ", error: "+error);
+                    $('.apikey', widgetRef).addClass('tokenerror');
+                });
+            });
+            $('.reset-button', widgetRef).click(function(){
+                $('#hideachievements').remove();
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+            // Give users the option to delete their API key cookie
+            $('.forget-button').click(function() {
+                localStorage.removeItem(apiKeyCookieName);
+                localStorage.removeItem(subtokenCookieName);
+                $('.apikey', widgetRef).val('');
+                $('.apikey', widgetRef).removeClass('tokenerror').removeClass('tokenvalid');
+            });
+        });
+    })();
+
+} else {
+    console.log('Only one instance of [[Widget:Account achievements]] can be called per page. Further occurrences have been ignored.');
+}
+</script>
+</p><table class="mech1 no-odd-even table" style="display:table;">
+<tbody><tr>
+<th style="font-size:large; padding-left:55px; position:relative;"><div style="position:absolute; top:0; left:5px;"><a href="/wiki/File:A_Crack_in_the_Ice.png" class="image"><img alt="A Crack in the Ice.png" src="/images/thumb/4/44/A_Crack_in_the_Ice.png/48px-A_Crack_in_the_Ice.png" decoding="async" width="48" height="48" srcset="/images/4/44/A_Crack_in_the_Ice.png 1.5x" data-file-width="64" data-file-height="64" /></a></div> A Crack in the Ice <small>(Story Journal)</small>
+</th>
+<th>Total achievements: 25
+</th>
+<th style="text-align: right; border-left-width: 0;">5&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 83<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr id="achievement3171" class="widget-account-achievement line" data-id="achievement3171">
+<th id=".22A&#95;Crack&#95;in&#95;the&#95;Ice.22&#95;Mastery" style="text-align:left"><img alt="This is a meta achievement." src="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/20px-Tournament_Master_%28map_icon%29.png" decoding="async" title="This is a meta achievement." width="20" height="20" srcset="/images/thumb/2/2c/Tournament_Master_%28map_icon%29.png/30px-Tournament_Master_%28map_icon%29.png 1.5x, /images/2/2c/Tournament_Master_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32" /><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> "A Crack in the Ice" Mastery
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">21<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3171">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Complete all 21 achievements for "A Crack in the Ice."<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Glacial_Gauntlets_Box" title="Glacial Gauntlets Box"><img alt="Bloodstone Crown Box.png" src="/images/thumb/d/dc/Bloodstone_Crown_Box.png/20px-Bloodstone_Crown_Box.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/d/dc/Bloodstone_Crown_Box.png/30px-Bloodstone_Crown_Box.png 1.5x, /images/thumb/d/dc/Bloodstone_Crown_Box.png/40px-Bloodstone_Crown_Box.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Glacial_Gauntlets_Box" title="Glacial Gauntlets Box">Glacial Gauntlets Box</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">21 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3221" title="A Crack in the Ice (achievements)">Playing Chicken</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3191" title="A Crack in the Ice (achievements)">Delicious Desserts</a></li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3206" title="A Crack in the Ice (achievements)">Codex: Kodan</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3173" title="A Crack in the Ice (achievements)">Dive Master: Cold Feet</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3212" title="A Crack in the Ice (achievements)">Thorough Sampling</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3214" title="A Crack in the Ice (achievements)">Quirky Quaggan Quest</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3240" title="A Crack in the Ice (achievements)">Bitterfrost Frontier Insight: Griffin Old Growth</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3174" title="A Crack in the Ice (achievements)">Bitterfrost Frontier Insight: The Bitter Cold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3217" title="A Crack in the Ice (achievements)">Bitterfrost Frontier Insight: The Svanir Hive</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3188" title="A Crack in the Ice (achievements)">Stay Unfrosty</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3179" title="A Crack in the Ice (achievements)">Larva Conservationist</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3186" title="A Crack in the Ice (achievements)">Vigilant</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3231" title="A Crack in the Ice (achievements)">New in Box</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3195" title="A Crack in the Ice (achievements)">Beasts Slain Quick</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3216" title="A Crack in the Ice (achievements)">Precocious Aurene</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3193" title="A Crack in the Ice (achievements)">Frozen in Ice</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3224" title="A Crack in the Ice (achievements)">Frozen Out</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3210" title="A Crack in the Ice (achievements)">The Bitter Cold</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3227" title="A Crack in the Ice (achievements)">Journey to Bitterfrost Frontier</a></li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3182" title="A Crack in the Ice (achievements)">Elixir Recipe</a></li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li><a href="/wiki/A_Crack_in_the_Ice_(achievements)#achievement3207" title="A Crack in the Ice (achievements)">Elixir Cookin'</a></li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 1 Achievement
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3171">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 5 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">2<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3171">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">Completed 10 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3171">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">Completed 15 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3171">
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed 21 Achievements
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">10<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3195" class="widget-account-achievement line" data-id="achievement3195">
+<th id="Beasts&#95;Slain&#95;Quick" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Frozen_Out" title="Frozen Out">Beasts Slain Quick</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3195">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the ice beast in under 5 minutes.<span style="color:#686868; display: block;"><i>Story Instance: Frozen Out</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment"><img alt="Frozen Exotic Weapon Fragment.png" src="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/20px-Frozen_Exotic_Weapon_Fragment.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/30px-Frozen_Exotic_Weapon_Fragment.png 1.5x, /images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/40px-Frozen_Exotic_Weapon_Fragment.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment">Frozen Exotic Weapon Fragment</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Beat the Ice Beast in Under 5 Minutes
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3240" class="widget-account-achievement line" data-id="achievement3240">
+<th id="Bitterfrost&#95;Frontier&#95;Insight:&#95;Griffin&#95;Old&#95;Growth" style="text-align:left"><a href="/wiki/Bitterfrost_Frontier_Insight:_Griffin_Old_Growth" title="Bitterfrost Frontier Insight: Griffin Old Growth">Bitterfrost Frontier Insight: Griffin Old Growth</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3240">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this <a href="/wiki/Maguuma_Mastery_Insight" class="mw-redirect" title="Maguuma Mastery Insight">Maguuma Mastery Insight</a> in <a href="/wiki/Bitterfrost_Frontier" title="Bitterfrost Frontier">Bitterfrost Frontier</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3174" class="widget-account-achievement line" data-id="achievement3174">
+<th id="Bitterfrost&#95;Frontier&#95;Insight:&#95;The&#95;Bitter&#95;Cold" style="text-align:left"><a href="/wiki/Bitterfrost_Frontier_Insight:_The_Bitter_Cold" title="Bitterfrost Frontier Insight: The Bitter Cold">Bitterfrost Frontier Insight: The Bitter Cold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3174">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this <a href="/wiki/Maguuma_Mastery_Insight" class="mw-redirect" title="Maguuma Mastery Insight">Maguuma Mastery Insight</a> in <a href="/wiki/Bitterfrost_Frontier" title="Bitterfrost Frontier">Bitterfrost Frontier</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3217" class="widget-account-achievement line" data-id="achievement3217">
+<th id="Bitterfrost&#95;Frontier&#95;Insight:&#95;The&#95;Svanir&#95;Hive" style="text-align:left"><a href="/wiki/Bitterfrost_Frontier_Insight:_The_Svanir_Hive" title="Bitterfrost Frontier Insight: The Svanir Hive">Bitterfrost Frontier Insight: The Svanir Hive</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3217">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Discover this <a href="/wiki/Maguuma_Mastery_Insight" class="mw-redirect" title="Maguuma Mastery Insight">Maguuma Mastery Insight</a> in <a href="/wiki/Bitterfrost_Frontier" title="Bitterfrost Frontier">Bitterfrost Frontier</a>.
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">1 Mastery Insight
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3206" class="widget-account-achievement line" data-id="achievement3206">
+<th id="Codex:&#95;Kodan" style="text-align:left">Codex: Kodan
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3206">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Acquire the <a href="/wiki/Koda%27s_Flame" title="Koda&#39;s Flame">Koda's Flame</a> skills and speak with a <a href="/wiki/Flamebearer" title="Flamebearer">Flamebearer</a> to learn their history.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;">
+
+<tbody><tr>
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;padding-right:.5em;">5 objectives in total</small>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Origin of the Flame</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Rage of the Flame</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Shelter of the Flame</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Wisdom of the Flame</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Spirit of the Flame</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">5 Lessons Learned
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3235" class="widget-account-achievement line" data-id="achievement3235">
+<th id="Cultural&#95;Attaché" style="text-align:left"><img alt="This achievement does not count towards the category&#39;s meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category&#39;s meta achievement." width="20" height="20" data-file-width="20" data-file-height="20" /> <a href="/wiki/Cultural_Attach%C3%A9" title="Cultural Attaché">Cultural Attaché</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3235">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Bring Aurene souvenirs from around Tyria to teach her about the cultures of the world.<span style="color:#686868; display: block;"><i>Required Instance: Precocious Aurene</i></span><dl><dd><b>Prerequisite:</b> Precocious Aurene</dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3235-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Watchknight_Statue" title="Watchknight Statue"><img alt="Mini Watchknight.png" src="/images/a/ac/Mini_Watchknight.png" decoding="async" width="128" height="128" style="vertical-align: bottom" data-file-width="128" data-file-height="128" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Small_Charr_Car" title="Small Charr Car"><img alt="Mini Charr Car.png" src="/images/f/f9/Mini_Charr_Car.png" decoding="async" width="128" height="128" style="vertical-align: bottom" data-file-width="128" data-file-height="128" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Souvenir_Eir_Statue" title="Souvenir Eir Statue"><img alt="Mini Eir Stegalkin.png" src="/images/3/3a/Mini_Eir_Stegalkin.png" decoding="async" width="128" height="128" style="vertical-align: bottom" data-file-width="128" data-file-height="128" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Model_Asura_Gates" title="Model Asura Gates"><img alt="Maintenance Oil Station.png" src="/images/b/bc/Maintenance_Oil_Station.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Sylvari_Potted_Plant" title="Sylvari Potted Plant"><img alt="Alpine Lily (trophy).png" src="/images/e/e5/Alpine_Lily_%28trophy%29.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Caged_Orrian_Chicken" title="Caged Orrian Chicken"><img alt="Mini Orrian Baby Chicken.png" src="/images/4/40/Mini_Orrian_Baby_Chicken.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3235-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Model_Zephyr_Sanctum" title="Model Zephyr Sanctum"><img alt="Zephyr Sanctum Model.png" src="/images/b/b3/Zephyr_Sanctum_Model.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 7 Souvenirs
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3191" class="widget-account-achievement line" data-id="achievement3191">
+<th id="Delicious&#95;Desserts" style="text-align:left">Delicious Desserts
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3191">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Give a <a href="/wiki/Koollan_the_Little_Builder" title="Koollan the Little Builder">little quaggan</a> <a href="/wiki/Winterberry_Sorbet" title="Winterberry Sorbet">sweets</a> to annoy its parents.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Brought Desserts from the Bitter Cold to the Quaggan Tads of Sorrow's Eclipse
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3173" class="widget-account-achievement line" data-id="achievement3173">
+<th id="Dive&#95;Master:&#95;Cold&#95;Feet" style="text-align:left">Dive Master: Cold Feet
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3173">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find and use a diving location in <a href="/wiki/The_Bitter_Cold#Notes" title="The Bitter Cold">the Bitter Cold</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Used a Diving Location in the Bitter Cold
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3207" class="widget-account-achievement line" data-id="achievement3207">
+<th id="Elixir&#95;Cookin&#39;" style="text-align:left">Elixir Cookin'
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3207">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Do what's necessary to make the thaw elixir.<span style="color:#686868; display: block;"><i>Journal: Elixir Cookin' Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Elixir Cookin'
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3182" class="widget-account-achievement line" data-id="achievement3182">
+<th id="Elixir&#95;Recipe" style="text-align:left">Elixir Recipe
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3182">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Collect all items on the ingredient list for the elixir.<span style="color:#686868; display: block;"><i>Journal: Elixir Recipe Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Elixir Recipe
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3224" class="widget-account-achievement line" data-id="achievement3224">
+<th id="Frozen&#95;Out" style="text-align:left"><a href="/wiki/Frozen_Out" title="Frozen Out">Frozen Out</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3224">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Join Rox and Braham in the ice caverns.<span style="color:#686868; display: block;"><i>Journal: Frozen Out Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Frozen Out
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3193" class="widget-account-achievement line" data-id="achievement3193">
+<th id="Frozen&#95;in&#95;Ice" style="text-align:left">Frozen in Ice
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3193">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Infiltrate the Svanir to discover how they survive Jormag's bitter cold.<span style="color:#686868; display: block;"><i>Journal: Frozen in Ice Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Frozen in Ice
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3178" class="widget-account-achievement line" data-id="achievement3178">
+<th id="Gift&#95;of&#95;Aurene" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /><img alt="This achievement does not count towards the category&#39;s meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category&#39;s meta achievement." width="20" height="20" data-file-width="20" data-file-height="20" /> <a href="/wiki/Gift_of_Aurene" title="Gift of Aurene">Gift of Aurene</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3178">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Collect the 8 parts to create an Aurene mini.<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Mini_Aurene" title="Mini Aurene"><img alt="Mini Aurene.png" src="/images/thumb/6/6f/Mini_Aurene.png/20px-Mini_Aurene.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/6/6f/Mini_Aurene.png/30px-Mini_Aurene.png 1.5x, /images/thumb/6/6f/Mini_Aurene.png/40px-Mini_Aurene.png 2x" data-file-width="128" data-file-height="128" /></a></span>&#160;<a href="/wiki/Mini_Aurene" title="Mini Aurene">Mini Aurene</a> </dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><b>Collection</b></dd>
+<dd><div style="max-width: 280px;"><div class="widget-account-achievement" data-id="achievement3178-bit0" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Token_of_Affection" title="Token of Affection"><img alt="Token of Affection.png" src="/images/7/7b/Token_of_Affection.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit1" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragon_Hatchling_Doll_Frame" title="Dragon Hatchling Doll Frame"><img alt="Dragon Hatchling Doll Frame.png" src="/images/b/b8/Dragon_Hatchling_Doll_Frame.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit2" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Gossamer_Stuffing" title="Gossamer Stuffing"><img alt="Gossamer Stuffing.png" src="/images/d/d5/Gossamer_Stuffing.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit3" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragon_Hatchling_Doll_Hide" title="Dragon Hatchling Doll Hide"><img alt="Dragon Hatchling Doll Hide.png" src="/images/b/b6/Dragon_Hatchling_Doll_Hide.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit4" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragon_Hatchling_Doll_Eye" title="Dragon Hatchling Doll Eye"><img alt="Dragon Hatchling Doll Eye.png" src="/images/e/e4/Dragon_Hatchling_Doll_Eye.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit5" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragon_Hatchling_Doll_Adornments" title="Dragon Hatchling Doll Adornments"><img alt="Dragon Hatchling Doll Adornments.png" src="/images/7/7e/Dragon_Hatchling_Doll_Adornments.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit6" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Dragon_Hatchling_Doll" title="Dragon Hatchling Doll"><img alt="Dragon Hatchling Doll.png" src="/images/1/1b/Dragon_Hatchling_Doll.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div><div class="widget-account-achievement" data-id="achievement3178-bit7" style="display:inline-block;margin:2px"> <span class="medium item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Aurenic_Essence" title="Aurenic Essence"><img alt="Aurenic Essence.png" src="/images/8/81/Aurenic_Essence.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span> </div>
+</div></dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Collected 8 Parts
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3242" class="widget-account-achievement line" data-id="achievement3242">
+<th id="Heart,&#95;Moxie,&#95;and&#95;Many&#95;Sweaters" style="text-align:left"><img alt="This achievement does not count towards the category&#39;s meta achievement." src="/images/0/09/Icon_No_ingame.png" decoding="async" title="This achievement does not count towards the category&#39;s meta achievement." width="20" height="20" data-file-width="20" data-file-height="20" /> Heart, Moxie, and Many Sweaters
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3242">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Survive 20 stacks of <a href="/wiki/Bitter_Cold" title="Bitter Cold">Bitter Cold</a>.
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Survived 20 Stacks of Bitter Cold
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3227" class="widget-account-achievement line" data-id="achievement3227">
+<th id="Journey&#95;to&#95;Bitterfrost&#95;Frontier" style="text-align:left">Journey to Bitterfrost Frontier
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3227">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Travel to the Bitterfrost Frontier to find Braham and the abomination for Taimi's sample.<span style="color:#686868; display: block;"><i>Journal: Journey to Bitterfrost Frontier Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Journey to Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3179" class="widget-account-achievement line" data-id="achievement3179">
+<th id="Larva&#95;Conservationist" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> Larva Conservationist
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3179">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Defeat the Unstable Abomination while inflicting a minimum of mayhem on the surrounding larvae.<span style="color:#686868; display: block;"><i>Story Instance: The Bitter Cold</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Magic-Warped_Bundle" title="Magic-Warped Bundle"><img alt="Magic-Warped Bundle.png" src="/images/thumb/f/ff/Magic-Warped_Bundle.png/20px-Magic-Warped_Bundle.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/f/ff/Magic-Warped_Bundle.png/30px-Magic-Warped_Bundle.png 1.5x, /images/thumb/f/ff/Magic-Warped_Bundle.png/40px-Magic-Warped_Bundle.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Magic-Warped_Bundle" title="Magic-Warped Bundle">Magic-Warped Bundle</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Defeat the Unstable Abomination with Two or More Larvae Groups Alive
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3231" class="widget-account-achievement line" data-id="achievement3231">
+<th id="New&#95;in&#95;Box" style="text-align:left">New in Box
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3231">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Deliver a <a href="/wiki/Bundle_of_Children%27s_Toys" title="Bundle of Children&#39;s Toys">bundle of toys</a> to the Priory arcanist.<span style="color:#686868; display: block;"><i>Story Instance: Precocious Aurene</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Delivered Toys to the Priory Arcanist
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3221" class="widget-account-achievement line" data-id="achievement3221">
+<th id="Playing&#95;Chicken" style="text-align:left"><a href="/wiki/Title" title="This achievement rewards a title."><img alt="This achievement rewards a title." src="/images/thumb/2/25/Title_icon.png/20px-Title_icon.png" decoding="async" width="20" height="20" srcset="/images/2/25/Title_icon.png 1.5x" data-file-width="22" data-file-height="22" /></a> Playing Chicken
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3221">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Push a chicken to its limits.<dl><dd><b>Title:</b> Chicken Chaser</dd></dl>
+<p><i><small>Additional notes on this achievement available below.</small></i><sup id="cite&#95;ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup>
+</p>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Beaten by an Apoplectic Chicken
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3216" class="widget-account-achievement line" data-id="achievement3216">
+<th id="Precocious&#95;Aurene" style="text-align:left"><a href="/wiki/Precocious_Aurene" title="Precocious Aurene">Precocious Aurene</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3216">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Train Aurene to be a well-behaved young dragon.<span style="color:#686868; display: block;"><i>Journal: Precocious Aurene Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed Precocious Aurene
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3214" class="widget-account-achievement line" data-id="achievement3214">
+<th id="Quirky&#95;Quaggan&#95;Quest" style="text-align:left"><a href="/wiki/Quirky_Quaggan_Quest" title="Quirky Quaggan Quest">Quirky Quaggan Quest</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">1&#160;<span class="inline-icon"><a href="/wiki/Mastery_point" title="Heart of Thorns mastery point"><img alt="Heart of Thorns mastery point" src="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/20px-Mastery_point_%28Heart_of_Thorns%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/30px-Mastery_point_%28Heart_of_Thorns%29.png 1.5x, /images/thumb/8/84/Mastery_point_%28Heart_of_Thorns%29.png/40px-Mastery_point_%28Heart_of_Thorns%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> 5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3214">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Find all seven stanzas of the quaggan epic poem.<dl><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">7 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the First Stanza</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the Second Stanza</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the Third Stanza</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the Fourth Stanza</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the Fifth Stanza</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Found the Sixth Stanza</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Delivered All Lost Stanzas to Neekoolaa and Obtained the Seventh Stanza</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">7 Stanzas Obtained
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3188" class="widget-account-achievement line" data-id="achievement3188">
+<th id="Stay&#95;Unfrosty" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> Stay Unfrosty
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3188">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Battle the ice beast without being frozen.<span style="color:#686868; display: block;"><i>Story Instance: Frozen Out</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Magic-Warped_Packet" title="Magic-Warped Packet"><img alt="Magic-Warped Packet.png" src="/images/thumb/f/fa/Magic-Warped_Packet.png/20px-Magic-Warped_Packet.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/f/fa/Magic-Warped_Packet.png/30px-Magic-Warped_Packet.png 1.5x, /images/thumb/f/fa/Magic-Warped_Packet.png/40px-Magic-Warped_Packet.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Magic-Warped_Packet" title="Magic-Warped Packet">Magic-Warped Packet</a> </dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Withstood the Ice Beast Without Being Frozen
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3210" class="widget-account-achievement line" data-id="achievement3210">
+<th id="The&#95;Bitter&#95;Cold" style="text-align:left"><a href="/wiki/The_Bitter_Cold_(story)" title="The Bitter Cold (story)">The Bitter Cold</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3210">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Enter the Bitter Cold, and then find and kill the abomination for Taimi's sample.<span style="color:#686868; display: block;"><i>Journal: The Bitter Cold Completed</i></span>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Completed The Bitter Cold
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">0<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3212" class="widget-account-achievement line" data-id="achievement3212">
+<th id="Thorough&#95;Sampling" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> <a href="/wiki/Thorough_Sampling" title="Thorough Sampling">Thorough Sampling</a>
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">7<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3212">
+<td rowspan="5" style="vertical-align:top; min-width:530px;" class="white">Find each of the special chests hidden around <a href="/wiki/Bitterfrost_Frontier" title="Bitterfrost Frontier">Bitterfrost Frontier</a>.<dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment"><img alt="Frozen Exotic Weapon Fragment.png" src="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/20px-Frozen_Exotic_Weapon_Fragment.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/30px-Frozen_Exotic_Weapon_Fragment.png 1.5x, /images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/40px-Frozen_Exotic_Weapon_Fragment.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment">Frozen Exotic Weapon Fragment</a> (3)</dd><dd><hr style="margin: .5em 2.5em .5em 0; clear: both;" /></dd><dd><table style="width: 95%; margin-bottom: 0.75em; border-spacing: 0px; border-style: hidden;" class="collapsible">
+
+<tbody><tr class="expandable">
+<td style="padding:0;border-style: hidden;"><b>Objectives:</b> <small style="float:right;">19 objectives in total</small>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Svanir Supplies</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Hot Springs Depths</li></ul>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Hurler's Hoard</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Woomulla's Cache</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Eagle Flight's Gear</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Woomulla's Supplies</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Frozen Falls Stockpile</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Grawl Supplies</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Firestone Reserves</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Kodan Nest Egg</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Bedside Dresser</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Dangerous Bridge Stock</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Steam Crate</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Mushroom Trio Stash</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Unstable Remains</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Diving Trunk</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Frozen Ledge Package</li></ul>
+</td></tr>
+<tr>
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Frozen Bridge Case</li></ul>
+</td></tr>
+<tr class="collapse-reverse nomobile">
+<td style="padding-left:1.6em;"><b>...</b>
+</td></tr>
+<tr style="display:table-row">
+<td style="padding:0;border-style: hidden;"><ul style="margin-top:0;margin-bottom:0;"><li>Frozen Peak Chest</li></ul></td></tr></tbody></table></dd></dl>
+</td>
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">1 Special Chest found in Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3212">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">5 Special Chests found in Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3212">
+<td style="width:220px; vertical-align:top; height:1em;" class="offwhite">10 Special Chests found in Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3212">
+<td style="width:220px; vertical-align:top; height:1em;" class="white">15 Special Chests found in Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="white">1<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr class="widget-account-achievement" data-id="achievement3212">
+<td style="width:220px; vertical-align:top;" class="offwhite">19 Special Chests found in Bitterfrost Frontier
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">3<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr>
+<tr id="achievement3186" class="widget-account-achievement line" data-id="achievement3186">
+<th id="Vigilant" style="text-align:left"><img alt="This achievement rewards items." src="/images/thumb/4/4e/Chest_icon.png/20px-Chest_icon.png" decoding="async" title="This achievement rewards items." width="20" height="20" srcset="/images/thumb/4/4e/Chest_icon.png/30px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /> Vigilant
+</th>
+<th colspan="2" style="text-align: right; vertical-align: top;">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</th></tr>
+<tr class="widget-account-achievement" data-id="achievement3186">
+<td rowspan="1" style="vertical-align:top; min-width:530px;" class="white">Get all the wounded Vigil to safety without having to revive any of them.<span style="color:#686868; display: block;"><i>Story Instance: Precocious Aurene</i></span><dl><dd><b>Reward:</b> &#8201;<span class="item-icon thumb-icon"><a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment"><img alt="Frozen Exotic Weapon Fragment.png" src="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/20px-Frozen_Exotic_Weapon_Fragment.png" decoding="async" width="20" height="20" style="vertical-align: bottom" srcset="/images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/30px-Frozen_Exotic_Weapon_Fragment.png 1.5x, /images/thumb/e/e6/Frozen_Exotic_Weapon_Fragment.png/40px-Frozen_Exotic_Weapon_Fragment.png 2x" data-file-width="64" data-file-height="64" /></a></span>&#160;<a href="/wiki/Frozen_Exotic_Weapon_Fragment" title="Frozen Exotic Weapon Fragment">Frozen Exotic Weapon Fragment</a> (2)</dd></dl>
+</td>
+<td style="width:220px; vertical-align:top;" class="offwhite">Saved All the Vigil
+</td>
+<td style="width:100px; text-align:right; vertical-align:top; white-space: nowrap;" class="offwhite">5<span class="inline-icon"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_Crack_in_the_Ice_(achievements)&amp;action=edit&amp;section=1" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite&#95;note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><b>Delicious Desserts</b>: Purchase a <span class="small item-icon thumb-icon" style="padding-right: 0.25em;"><a href="/wiki/Winterberry_Sorbet" title="Winterberry Sorbet"><img alt="Bowl of Prickly Pear Sorbet.png" src="/images/f/f0/Bowl_of_Prickly_Pear_Sorbet.png" decoding="async" width="64" height="64" style="vertical-align: bottom" data-file-width="64" data-file-height="64" /></a></span><a href="/wiki/Winterberry_Sorbet" title="Winterberry Sorbet">Winterberry Sorbet</a> from <span class="inline-icon"><a href="/wiki/Renown_Heart_NPC" title="Renown Heart NPC"><img alt="Renown heart NPC repeatable.png" src="/images/thumb/2/2e/Renown_heart_NPC_repeatable.png/20px-Renown_heart_NPC_repeatable.png" decoding="async" width="20" height="16" srcset="/images/thumb/2/2e/Renown_heart_NPC_repeatable.png/30px-Renown_heart_NPC_repeatable.png 1.5x, /images/thumb/2/2e/Renown_heart_NPC_repeatable.png/40px-Renown_heart_NPC_repeatable.png 2x" data-file-width="125" data-file-height="100" /></a></span> <a href="/wiki/Farmer_Simooba" title="Farmer Simooba">Farmer Simooba</a> at <span class="inline-icon"><a href="/wiki/Point_of_Interest" title="Point of Interest"><img alt="Point of interest (map icon).png" src="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/20px-Point_of_interest_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/30px-Point_of_interest_%28map_icon%29.png 1.5x, /images/7/70/Point_of_interest_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a></span>&#160;<a href="/wiki/Whorl_Lagoon" title="Whorl Lagoon">Whorl Lagoon</a> — <span class="gamelink" id="gamelink-1" data-type="map" data-id="2430" title="2430"></span><script>!function(){const t=document.getElementById('gamelink-1');if(!t)return;const e=function(t,e){if(!t)return"invalid type (blank)";const n={item:2,text:3,map:4,skill:6,trait:7,recipe:9,skin:10,outfit:11}[t.trim().toLowerCase()]||0;if(!n)return"invalid type";let i=+e;const l=[];for(;i>0;)l.push(255&i),i>>=8;for(;l.length<4||l.length%2!=0;)l.push(0);2==n&&l.unshift(1),l.unshift(n);let r="";for(let t=0;t<l.length;t++)r+=String.fromCharCode(l[t]);return"[&"+btoa(r)+"]"}(t.getAttribute("data-type"),t.getAttribute("data-id")),n=document.createElement("input");n.className="chatlink",n.type="text",n.value=e,n.readOnly=!0,n.spellcheck=!1,t.appendChild(document.createTextNode(e)),t.parentNode.insertBefore(n,t),t.addEventListener("click",function(){t.style.visibility="hidden",n.style.display="inline-block",n.focus(),n.select(),document.execCommand("Copy")},!1),n.addEventListener("blur",function(){n.style.display=null,t.style.visibility=null},!1)}();</script> in the southeast (or from the TP), and give it to <a href="/wiki/Koollan_the_Little_Builder" title="Koollan the Little Builder">Koollan the Little Builder</a> living with his parents in <span class="inline-icon"><a href="/wiki/Point_of_Interest" title="Point of Interest"><img alt="Point of interest (map icon).png" src="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/20px-Point_of_interest_%28map_icon%29.png" decoding="async" width="20" height="20" srcset="/images/thumb/7/70/Point_of_interest_%28map_icon%29.png/30px-Point_of_interest_%28map_icon%29.png 1.5x, /images/7/70/Point_of_interest_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></a></span>&#160;<a href="/wiki/Gooloopa_Deeps" title="Gooloopa Deeps">Gooloopa Deeps</a> — <span class="gamelink" id="gamelink-2" data-type="map" data-id="2434" title="2434"></span><script>!function(){const t=document.getElementById('gamelink-2');if(!t)return;const e=function(t,e){if(!t)return"invalid type (blank)";const n={item:2,text:3,map:4,skill:6,trait:7,recipe:9,skin:10,outfit:11}[t.trim().toLowerCase()]||0;if(!n)return"invalid type";let i=+e;const l=[];for(;i>0;)l.push(255&i),i>>=8;for(;l.length<4||l.length%2!=0;)l.push(0);2==n&&l.unshift(1),l.unshift(n);let r="";for(let t=0;t<l.length;t++)r+=String.fromCharCode(l[t]);return"[&"+btoa(r)+"]"}(t.getAttribute("data-type"),t.getAttribute("data-id")),n=document.createElement("input");n.className="chatlink",n.type="text",n.value=e,n.readOnly=!0,n.spellcheck=!1,t.appendChild(document.createTextNode(e)),t.parentNode.insertBefore(n,t),t.addEventListener("click",function(){t.style.visibility="hidden",n.style.display="inline-block",n.focus(),n.select(),document.execCommand("Copy")},!1),n.addEventListener("blur",function(){n.style.display=null,t.style.visibility=null},!1)}();</script>.
+<div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><b>Anomaly</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div>The dessert is not acquired from <a href="/wiki/The_Bitter_Cold" title="The Bitter Cold">The Bitter Cold</a> despite the achievement's description.</div></div>
+</div></span>
+</li>
+<li id="cite&#95;note-2"><b><a href="#cite_ref-2">^</a></b> <span class="reference-text"><b>Dive Master: Cold Feet</b>: There are several <a href="/wiki/Diving_Goggles" title="Diving Goggles">Diving Goggles</a> placed around <a href="/wiki/The_Bitter_Cold" title="The Bitter Cold">the Bitter Cold</a> area. All of them are placed above solid ice. To be successful, you must use the highest one, in the southeastern corner of the area. There are three goggles close together in this area: one on a pillar, on on a ledge at the same height as the pillar, and the third on another ledge above the second goggles. This third one will allow you to safely break through the ice to the water below; aim for the obvious patch of ice. There is also an <a href="/wiki/Icebound_Chest" title="Icebound Chest">Icebound Chest</a> in the water below the dive point. Using any of the other dive points will result in the ice not breaking and you taking falling damage.
+<div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><img alt="Bug" src="/images/thumb/e/e9/Game_bug.png/18px-Game_bug.png" decoding="async" width="18" height="18" srcset="/images/thumb/e/e9/Game_bug.png/27px-Game_bug.png 1.5x, /images/e/e9/Game_bug.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Bug" title="Bug"><b>Bug</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div>After using the highest goggles to dive and break through the ice, the impact may still kill you in the water, and you will not receive the achievement. If this occurs, a workaround is to break the ice first with a mount to take the fall damage, or by bringing somebody else, before diving into the water. Breaking the ice patches will reveal some mobs which you will need to kill. The hole in the water will become very obvious after breaking the ice patches.</div></div>
+</div></span>
+</li>
+<li id="cite&#95;note-3"><b><a href="#cite_ref-3">^</a></b> <span class="reference-text"><b>Gift of Aurene</b>: Components for the <a href="/wiki/Gift_of_Aurene" title="Gift of Aurene">Gift of Aurene</a> collection can be bought and sold on the <a href="/wiki/Trading_Post" title="Trading Post">Trading Post</a>. Each part can only be crafted once per day per account, on the standard <a href="/wiki/Server_reset#Daily_reset" title="Server reset">daily reset</a>. The parts are tradable, but the complete doll is account-bound.</span>
+</li>
+<li id="cite&#95;note-4"><b><a href="#cite_ref-4">^</a></b> <span class="reference-text"><b>Heart, Moxie, and Many Sweaters</b>: <div style="margin: 1em 0.5em; border: solid silver; border-width: 1px 0px; padding: 2px 0; overflow: hidden;">
+<div class="hiddenlinks" style="float: left; margin: 0 0 0 .2em; color: #900;"><a href="/wiki/Bug" title="Bug"><img alt="Bug" src="/images/thumb/e/e9/Game_bug.png/18px-Game_bug.png" decoding="async" width="18" height="18" srcset="/images/thumb/e/e9/Game_bug.png/27px-Game_bug.png 1.5x, /images/e/e9/Game_bug.png 2x" data-file-width="32" data-file-height="32" /></a> <a href="/wiki/Bug" title="Bug"><b>Bug</b>:</a></div>
+<div class="buglist" style="display: table; padding: 0 0 0 .5em;"><div>Heart, Moxie, and Many Sweaters does not require the player to be alive when they have 20 stacks of <a href="/wiki/Bitter_Cold" title="Bitter Cold">Bitter Cold</a>. Bitter Cold accumulates even when <a href="/wiki/Defeated" title="Defeated">defeated</a>, so simply being in a Bitter Cold area long enough will grant the achievement. Player tested on 11/28/22: This seems to have been patched, but you can still die and accumulate 20 stacks, then use a <a href="/wiki/Revive_Orb" title="Revive Orb">Revive Orb</a> to get the achievement. Alternately, <b>Bitter Cold</b> will also need to whittle through a mount's lifebar if you enter while mounted, which can be used to extend your own exposure time to hopefully accumulate enough stacks. Update 31/05/2025: With the ability to mount Skyscale or Warclaw in combat, you can switch to either when you are dropped, making it easy to achieve the achievement.</div></div>
+</div></span>
+</li>
+<li id="cite&#95;note-5"><b><a href="#cite_ref-5">^</a></b> <span class="reference-text"><b>Playing Chicken</b>: The achievement can be completed by kicking a chicken until it explodes. Chickens can be found in the grawl encampment near the <a href="/wiki/Chokocooka%27s_Throne" title="Chokocooka&#39;s Throne">Chokocooka's Throne</a> POI.</span>
+</li>
+</ol></div>
+<h2><span class="mw-headline" id="Trivia">Trivia</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_Crack_in_the_Ice_(achievements)&amp;action=edit&amp;section=2" title="Edit section: Trivia">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>The "Playing Chicken" achievement, specifically the title 'Chicken Chaser' is likely a reference to the <a href="https://en.wikipedia.org/wiki/Fable_(video_game_series)" class="extiw" title="w:Fable (video game series)">Fable video game series</a>, in which the protagonist is given the derisive nickname "Chicken Chaser" by the townsfolk. This could also be a reference to the <a href="https://en.wikipedia.org/wiki/Legend_of_Zelda" class="extiw" title="w:Legend of Zelda">Legend of Zelda video game series</a>, where repeatedly attacking a cucco (that game's version of chicken) has them attack Link.</li></ul>
+<hr style="margin: 1em 0em; clear: both;" />
+<div class="nav mech1 wide">
+<div class="box">
+<div class="heading"><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal achievements</a></div>
+<div class="wrapper" style="padding: 0;">
+<table class="hlist" style="width:100%">
+
+
+<tbody><tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Visions_of_Eternity" title="Guild Wars 2: Visions of Eternity">Visions of Eternity</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Code_of_Creation_(achievements)" title="Code of Creation (achievements)">Code of Creation</a></li>
+<li><a href="/wiki/The_Only_Way_(achievements)" title="The Only Way (achievements)">The Only Way</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_1" title="Visions of Eternity: Act 1">Visions of Eternity: Act 1</a></li>
+<li><a href="/wiki/Visions_of_Eternity:_Act_2" title="Visions of Eternity: Act 2">Visions of Eternity: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Janthir_Wilds" title="Guild Wars 2: Janthir Wilds">Janthir Wilds</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Absolution_(achievements)" title="Absolution (achievements)">Absolution</a></li>
+<li><a href="/wiki/Repentance_(achievements)" title="Repentance (achievements)">Repentance</a></li>
+<li><a href="/wiki/Godspawn_(achievements)" title="Godspawn (achievements)">Godspawn</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_1" title="Janthir Wilds: Act 1">Janthir Wilds: Act 1</a></li>
+<li><a href="/wiki/Janthir_Wilds:_Act_2" title="Janthir Wilds: Act 2">Janthir Wilds: Act 2</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Secrets_of_the_Obscure" title="Guild Wars 2: Secrets of the Obscure">Secrets of the Obscure</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Midnight_King_(achievements)" title="The Midnight King (achievements)">The Midnight King</a></li>
+<li><a href="/wiki/The_Realm_of_Dreams_(achievements)" title="The Realm of Dreams (achievements)">The Realm of Dreams</a></li>
+<li><a href="/wiki/Through_the_Veil_(achievements)" title="Through the Veil (achievements)">Through the Veil</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_1" title="Secrets of the Obscure: Act 1">Secrets of the Obscure: Act 1</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_2" title="Secrets of the Obscure: Act 2">Secrets of the Obscure: Act 2</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure:_Act_3" title="Secrets of the Obscure: Act 3">Secrets of the Obscure: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_End_of_Dragons" title="Guild Wars 2: End of Dragons">End of Dragons</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/End_of_Dragons:_Interlude_(achievements)" title="End of Dragons: Interlude (achievements)">End of Dragons: Interlude</a></li>
+<li><a href="/wiki/What_Lies_Within_(achievements)" title="What Lies Within (achievements)">What Lies Within</a></li>
+<li><a href="/wiki/Delve_into_the_Haze" title="Delve into the Haze">Delve into the Haze</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_1" title="End of Dragons: Act 1">End of Dragons: Act 1</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_2" title="End of Dragons: Act 2">End of Dragons: Act 2</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_3" title="End of Dragons: Act 3">End of Dragons: Act 3</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_4" title="End of Dragons: Act 4">End of Dragons: Act 4</a></li>
+<li><a href="/wiki/End_of_Dragons:_Act_5" title="End of Dragons: Act 5">End of Dragons: Act 5</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/The_Icebrood_Saga" title="The Icebrood Saga">The Icebrood Saga</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Champions_(achievements)" title="Champions (achievements)">Champions</a></li>
+<li><a href="/wiki/Jormag_Rising_(achievements)" title="Jormag Rising (achievements)">Jormag Rising</a></li>
+<li><a href="/wiki/No_Quarter_(achievements)" title="No Quarter (achievements)">No Quarter</a></li>
+<li><a href="/wiki/Visions_of_the_Past:_Steel_and_Fire_(achievements)" title="Visions of the Past: Steel and Fire (achievements)">Visions of the Past: Steel and Fire</a></li>
+<li><a href="/wiki/Shadow_in_the_Ice_(achievements)" title="Shadow in the Ice (achievements)">Shadow in the Ice</a></li>
+<li><a href="/wiki/Whisper_in_the_Dark_(achievements)" title="Whisper in the Dark (achievements)">Whisper in the Dark</a></li>
+<li><a href="/wiki/Prologue:_Bound_by_Blood_(achievements)" title="Prologue: Bound by Blood (achievements)">Prologue: Bound by Blood</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_4" title="Living World Season 4">Living World Season 4</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/War_Eternal_(achievements)" title="War Eternal (achievements)">War Eternal</a></li>
+<li><a href="/wiki/All_or_Nothing_(achievements)" title="All or Nothing (achievements)">All or Nothing</a></li>
+<li><a href="/wiki/A_Star_to_Guide_Us_(achievements)" title="A Star to Guide Us (achievements)">A Star to Guide Us</a></li>
+<li><a href="/wiki/Long_Live_the_Lich_(achievements)" title="Long Live the Lich (achievements)">Long Live the Lich</a></li>
+<li><a href="/wiki/A_Bug_in_the_System_(achievements)" title="A Bug in the System (achievements)">A Bug in the System</a></li>
+<li><a href="/wiki/Daybreak_(achievements)" title="Daybreak (achievements)">Daybreak</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Path_of_Fire" title="Guild Wars 2: Path of Fire">Path of Fire</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Path_of_Fire:_Act_1" title="Path of Fire: Act 1">Path of Fire: Act 1</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_2" title="Path of Fire: Act 2">Path of Fire: Act 2</a></li>
+<li><a href="/wiki/Path_of_Fire:_Act_3" title="Path of Fire: Act 3">Path of Fire: Act 3</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_3" title="Living World Season 3">Living World Season 3</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/One_Path_Ends_(achievements)" title="One Path Ends (achievements)">One Path Ends</a></li>
+<li><a href="/wiki/Flashpoint_(achievements)" title="Flashpoint (achievements)">Flashpoint</a></li>
+<li><a href="/wiki/The_Head_of_the_Snake_(achievements)" title="The Head of the Snake (achievements)">The Head of the Snake</a></li>
+<li><a class="mw-selflink selflink">A Crack in the Ice</a></li>
+<li><a href="/wiki/Rising_Flames_(achievements)" title="Rising Flames (achievements)">Rising Flames</a></li>
+<li><a href="/wiki/Out_of_the_Shadows_(achievements)" title="Out of the Shadows (achievements)">Out of the Shadows</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Guild_Wars_2:_Heart_of_Thorns" title="Guild Wars 2: Heart of Thorns">Heart of Thorns</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Heart_of_Thorns:_Act_1" title="Heart of Thorns: Act 1">Heart of Thorns: Act 1</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_2" title="Heart of Thorns: Act 2">Heart of Thorns: Act 2</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_3" title="Heart of Thorns: Act 3">Heart of Thorns: Act 3</a></li>
+<li><a href="/wiki/Heart_of_Thorns:_Act_4" title="Heart of Thorns: Act 4">Heart of Thorns: Act 4</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_2" title="Living World Season 2">Living World Season 2</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/Point_of_No_Return_(achievements)" title="Point of No Return (achievements)">Point of No Return</a></li>
+<li><a href="/wiki/Seeds_of_Truth_(achievements)" title="Seeds of Truth (achievements)">Seeds of Truth</a></li>
+<li><a href="/wiki/Tangled_Paths_(achievements)" title="Tangled Paths (achievements)">Tangled Paths</a></li>
+<li><a href="/wiki/Echoes_of_the_Past_(achievements)" title="Echoes of the Past (achievements)">Echoes of the Past</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_2_(achievements)" title="The Dragon&#39;s Reach, Part 2 (achievements)">The Dragon's Reach, Part 2</a></li>
+<li><a href="/wiki/The_Dragon%27s_Reach,_Part_1_(achievements)" title="The Dragon&#39;s Reach, Part 1 (achievements)">The Dragon's Reach, Part 1</a></li>
+<li><a href="/wiki/Entanglement_(achievements)" title="Entanglement (achievements)">Entanglement</a></li>
+<li><a href="/wiki/Gates_of_Maguuma_(achievements)" title="Gates of Maguuma (achievements)">Gates of Maguuma</a></li></ul>
+</td></tr>
+<tr>
+<th style="width: 9.3em; border-right-width: 2px; padding-left: 1em;"><a href="/wiki/Living_World_Season_1" title="Living World Season 1">Living World Season 1</a>
+</th>
+<td style="padding-right: 2em;">
+<ul><li><a href="/wiki/The_Battle_for_Lion%27s_Arch_(achievements)" title="The Battle for Lion&#39;s Arch (achievements)">The Battle for Lion's Arch</a></li>
+<li><a href="/wiki/Escape_from_Lion%27s_Arch_(achievements)" title="Escape from Lion&#39;s Arch (achievements)">Escape from Lion's Arch</a></li>
+<li><a href="/wiki/The_Nightmare_Is_Over" title="The Nightmare Is Over">The Nightmare Is Over</a></li>
+<li><a href="/wiki/The_Nightmares_Within_(achievements)" title="The Nightmares Within (achievements)">The Nightmares Within</a></li>
+<li><a href="/wiki/Tower_of_Nightmares_(achievements)" title="Tower of Nightmares (achievements)">Tower of Nightmares</a></li>
+<li><a href="/wiki/Emissary_Vorpp%27s_Field_Assistant" title="Emissary Vorpp&#39;s Field Assistant">Emissary Vorpp's Field Assistant</a></li>
+<li><a href="/wiki/Clockwork_Chaos_(achievements)" title="Clockwork Chaos (achievements)">Clockwork Chaos</a></li>
+<li><a href="/wiki/Sky_Pirates_(achievements)" title="Sky Pirates (achievements)">Sky Pirates</a></li>
+<li><a href="/wiki/Flame_and_Frost_(achievements)" title="Flame and Frost (achievements)">Flame and Frost</a></li></ul>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<th class="subheading mech1" style="text-align: center; vertical-align: middle; height: 2em; border-top-width: 1px; border-top-style: solid; border-right: 0px" colspan="2"><div style="margin: 0px auto; width: 20em;"><a href="/wiki/Achievement#Categories" title="Achievement">Other achievement groups</a></div>
+</th></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td>
+</td></tr>
+<tr>
+<td style="text-align: center; padding: 0em 2em;" colspan="2">
+<ul><li><a href="/wiki/Daily" title="Daily">Daily</a></li>
+<li><a href="/wiki/Character_Adventure_Guide" title="Character Adventure Guide">Character Adventure Guide</a></li>
+<li><a href="/wiki/Bonus_Events" title="Bonus Events">Bonus Events</a></li>
+<li><a href="/wiki/Festivals_(achievement_group)" title="Festivals (achievement group)">Festivals</a></li>
+<li><a href="/wiki/Story_Journal_(achievement_group)" title="Story Journal (achievement group)">Story Journal</a></li>
+<li><a href="/wiki/General" title="General">General</a></li>
+<li><a href="/wiki/World_vs._World_(achievement_group)" title="World vs. World (achievement group)">World vs. World</a></li>
+<li><a href="/wiki/Visions_of_Eternity_(achievement_group)" title="Visions of Eternity (achievement group)">Visions of Eternity</a></li>
+<li><a href="/wiki/Janthir_Wilds_(achievement_group)" title="Janthir Wilds (achievement group)">Janthir Wilds</a></li>
+<li><a href="/wiki/Secrets_of_the_Obscure_(achievement_group)" title="Secrets of the Obscure (achievement group)">Secrets of the Obscure</a></li>
+<li><a href="/wiki/End_of_Dragons_(achievement_group)" title="End of Dragons (achievement group)">End of Dragons</a></li>
+<li><a href="/wiki/Path_of_Fire_(achievement_group)" title="Path of Fire (achievement group)">Path of Fire</a></li>
+<li><a href="/wiki/Heart_of_Thorns_(achievement_group)" title="Heart of Thorns (achievement group)">Heart of Thorns</a></li>
+<li><a href="/wiki/Side_Stories" title="Side Stories">Side Stories</a></li>
+<li><a href="/wiki/Player_vs._Player_(achievement_group)" title="Player vs. Player (achievement group)">Player vs. Player</a></li>
+<li><a href="/wiki/Raids_(achievement_group)" title="Raids (achievement group)">Raids</a></li>
+<li><a href="/wiki/Fractals_of_the_Mists_(achievement_group)" title="Fractals of the Mists (achievement group)">Fractals of the Mists</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
+<li><a href="/wiki/Strike_Missions_(achievement_group)" title="Strike Missions (achievement group)">Strike Missions</a></li>
+<li><a href="/wiki/Historical" title="Historical">Historical</a></li></ul>
+</td></tr></tbody></table>
+</div>
+</div>
+</div>
+<!-- 
+NewPP limit report
+Cached time: 20260924155714
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.001 seconds
+CPU time usage: 0.691 seconds
+Real time usage: 0.990 seconds
+Preprocessor visited node count: 15703/1000000
+Post‐expand include size: 218156/2097152 bytes
+Template argument size: 57002/2097152 bytes
+Highest expansion depth: 15/100
+Expensive parser function count: 20/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 7403/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  821.209      1 -total
+ 70.86%  581.877     25 Template:Achievement_table_row
+ 18.20%  149.430     15 Template:Item_icon_without_name
+ 14.82%  121.693      1 Template:Achievement_nav
+ 10.08%   82.793      1 Template:Achievement_category_infobox
+  5.04%   41.392      2 Template:Poi
+  3.16%   25.913     21 Template:Ifexists
+  2.27%   18.673      1 Template:Achievement_table_header
+  1.81%   14.881      1 Template:Infobox_requires
+  1.81%   14.834     66 Template:Achievement_nav_result_format
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:idhash:194199-0!dateformat=default and timestamp 20260924155713 and revision id 3138225.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=A_Crack_in_the_Ice_(achievements)&amp;oldid=3138225">https://wiki.guildwars2.com/index.php?title=A_Crack_in_the_Ice_(achievements)&amp;oldid=3138225</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Anomalies" title="Category:Anomalies">Anomalies</a></li><li><a href="/wiki/Category:Bugs" title="Category:Bugs">Bugs</a></li><li><a href="/wiki/Category:Living_World_Season_3_content" title="Category:Living World Season 3 content">Living World Season 3 content</a></li><li><a href="/wiki/Category:Heart_of_Thorns_content" title="Category:Heart of Thorns content">Heart of Thorns content</a></li><li><a href="/wiki/Category:Achievement_categories" title="Category:Achievement categories">Achievement categories</a></li><li><a href="/wiki/Category:Uses_API_key_for_achievements" title="Category:Uses API key for achievements">Uses API key for achievements</a></li><li><a href="/wiki/Category:A_Crack_in_the_Ice" title="Category:A Crack in the Ice">A Crack in the Ice</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Pages_with_non-numeric_formatnum_arguments" title="Category:Pages with non-numeric formatnum arguments">Pages with non-numeric formatnum arguments</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		
