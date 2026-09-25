@@ -2288,3 +2288,38 @@ juste avant le repli. Les sept « STEP n » redeviennent des noms.
 La seconde capture montre le comportement attendu ailleurs : la meta « All or
 Nothing » affiche de vrais noms **sans lien**, parce que `vis_ep_allornothing`
 n'a aucun `items` dans les sources. Pas de page, pas de lien — comme voulu.
+
+## AT — 25/09/2026 : les liens wiki des metas ne passaient pas par WIKI_PAR_BIT
+
+Les cinq `vis_ep_*` de Vision ont leur capture au depot et zero `items`. Le
+reflexe etait d'alimenter `WIKI_PAR_BIT` / `NOM_PAR_BIT`, qui couvrent deja
+2 399 etapes. **Ces deux tables ne pouvaient pas servir ici** : elles sont
+indexees par `(id de succes, numero de case)`, et l'API n'expose aucun bit pour
+ces metas — le rendu prend la branche `def.subs`, jamais la branche `def.bits`.
+Les y ecrire aurait construit une table que personne n'interroge.
+
+La liste d'objectifs vit dans `meta_eligible`, en couples `[id, nom]`. La page
+est une donnee de meme nature que le nom, pour le meme objectif : elle rejoint
+la meme ligne, qui devient `[id, nom, page]`. Rien a resynchroniser, pas de
+seconde liste.
+
+**Indexe par id de succes enfant, jamais par nom.** La capture du meta pointe
+chaque objectif par une ancre `/wiki/PAGE#achievementNNNN` ou NNNN est l'id :
+l'appariement est exact par construction. Un appariement par nom aurait casse au
+premier renommage wiki, et `Domain of Kourna Griffon Expert: Gold` et `: Silver`
+partagent deja leur page.
+
+`gw2_meta_pages_v1.py` : 367 pages posees sur 586 objectifs, 11 metas sur 20
+couvertes a 100 %, zero nom divergent. Le nom n'est jamais reecrit — une
+divergence se signale et laisse la source en place.
+
+Transversal verifie, pas seulement l'affichage :
+- `ACH_DEFS_SCHEMA` 18 -> 19 : la forme de `out` change, sans quoi le cache
+  localStorage aurait resservi des subs sans page.
+- Le scoring (volume / prerequis / AP) enrichit les subs par spread : `wiki`
+  survit.
+- Les DEUX rendus qui affichent des subs sont branches — le generique (Vision)
+  et celui des masteries d'Aurora. La branche `bits` des masteries recoit sa
+  page depuis `WIKI_PAR_BIT`, la ou cette table a un sens.
+- Audit v51 : le triplet est accepte, la page doit etre une chaine non vide et
+  sans espace. L'absence de 3e element reste valide (capture sans ancre).

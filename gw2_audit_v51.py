@@ -2322,9 +2322,18 @@ def main() -> int:
 
         ids = []
         for row in achievements:
-            if not (isinstance(row, list) and len(row) == 2 and isinstance(row[0], int)):
-                errors.append(f"{label} : entree mal formee {row!r}, attendu [id, nom]")
+            # [id, nom] ou [id, nom, page] : la page est l'ancre wiki de l'objectif,
+            # posee par gw2_meta_pages_v1.py depuis la capture du meta et indexee par
+            # id de succes enfant. Elle est facultative — une capture sans ancre
+            # (Year of the Ascension II a IV) laisse le couple tel quel.
+            if not (isinstance(row, list) and len(row) in (2, 3) and isinstance(row[0], int)):
+                errors.append(f"{label} : entree mal formee {row!r}, attendu [id, nom] ou [id, nom, page]")
                 continue
+            if len(row) == 3 and not (isinstance(row[2], str) and row[2].strip()):
+                errors.append(f"{label} : id {row[0]} ({row[1]}) — 3e element attendu page wiki non vide, recu {row[2]!r}")
+                continue
+            if len(row) == 3 and " " in row[2]:
+                errors.append(f"{label} : id {row[0]} — page wiki '{row[2]}' contient un espace (attendu des underscores)")
             ids.append(row[0])
             if names is not None and row[0] not in names:
                 errors.append(f"{label} : id {row[0]} ({row[1]}) absent du referentiel")

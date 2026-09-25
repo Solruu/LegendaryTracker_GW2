@@ -4102,7 +4102,8 @@ export default function GW2LegendaryTracker() {
     // un cache d'avant la curation. D'où la signature de données ci-dessous, qui rend
     // l'oubli impossible : toute retouche des blocs éditoriaux change la clé.
     // La signature des IDs ne suffit pas : le code peut évoluer à liste constante.
-    const ACH_DEFS_SCHEMA = 18; // 18 : `progress` ajouté à la charge — sans cette incrémentation,
+    const ACH_DEFS_SCHEMA = 19; // 19 : `wiki` porté par chaque sub curé (page de l'objectif).
+    // 18 : `progress` ajouté à la charge — sans cette incrémentation,
                             // les compteurs d'Eikasia restaient servis depuis un cache d'avant
                             // et n'affichaient qu'un tiret. La signature de données ne couvre
                             // que meta_eligible et achievement_notes : un bloc `progress` ajouté
@@ -4228,7 +4229,11 @@ export default function GW2LegendaryTracker() {
         for (const d of defs) {
           const cu = curated[String(d.id)];
           if (!cu || !(cu.achievements ?? []).length) continue;
-          out[String(d.id)].subs = cu.achievements.map(([id2, n2]) => ({ id: id2, name: n2 }));
+          // [id, nom, page] : la page est l'ancre wiki de l'objectif, posee depuis la
+          // capture du meta et indexee par id de succes enfant. Elle voyage avec le nom,
+          // dans le meme objet — WIKI_PAR_BIT ne pouvait pas servir ici : elle est indexee
+          // par numero de case, et ces metas n'ont aucun bit cote API.
+          out[String(d.id)].subs = cu.achievements.map(([id2, n2, w2]) => ({ id: id2, name: n2, wiki: w2 ?? null }));
           out[String(d.id)].subsSource = "wiki";
           out[String(d.id)].subsVerified = cu.verified ?? "";
           if (cu.threshold) out[String(d.id)].tierMax = cu.threshold;
@@ -6547,7 +6552,8 @@ export default function GW2LegendaryTracker() {
                                     const bitAch = mDef?.bitAch ?? {};
                                     const steps = subs.length > 0
                                       ? subs.map((c, ci) => ({ i: ci, ...c }))
-                                      : bits.map((b, bi) => ({ i: bi, name: b.text ?? "", id: bitAch[bi] ?? null })).filter(st => st.name);
+                                      : bits.map((b, bi) => ({ i: bi, name: b.text ?? "", id: bitAch[bi] ?? null,
+                                          wiki: WIKI_PAR_BIT.get(`${masteryId}-${bi}`) ?? null })).filter(st => st.name);
                                     const curated = mDef?.subsSource === "wiki" ? subs : [];
                                     if (steps.length === 0) {
                                       return apiReq > 1 ? (
@@ -6612,7 +6618,7 @@ export default function GW2LegendaryTracker() {
                                                         {x.tier === "easy" ? "⚡" : x.tier === "med" ? "◐" : "▲"}{" "}
                                                       </span>
                                                     )}
-                                                    {x.name}
+                                                    <LienWiki page={x.wiki}>{x.name}</LienWiki>
                                                   </span>
                                                   {!d2 && pr && (pr.max ?? 0) > 1 && (
                                                     <span style={{ color: "rgba(251,146,60,0.55)", flexShrink: 0 }}>{pr.current}/{pr.max}</span>
@@ -7274,7 +7280,7 @@ export default function GW2LegendaryTracker() {
                                       {s.tier === "easy" ? "⚡" : s.tier === "med" ? "◐" : "▲"}
                                     </span>
                                   )}
-                                  <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}>{s.name}{!sDone && ss.max > 1 ? ` (${ss.current ?? 0}/${ss.max})` : ""}</span>
+                                  <span style={{ textDecoration: sDone ? "line-through" : "none", opacity: sDone ? 0.7 : 1 }}><LienWiki page={s.wiki}>{s.name}</LienWiki>{!sDone && ss.max > 1 ? ` (${ss.current ?? 0}/${ss.max})` : ""}</span>
                                 </div>
                                 {noApi && (
                                   <div style={{ margin: "1px 0 2px 30px", fontSize: "10px", color: "rgba(251,146,60,0.6)", fontStyle: "italic" }}>{t("bits_no_api")}</div>

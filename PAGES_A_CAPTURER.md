@@ -138,3 +138,22 @@ https://wiki.guildwars2.com/wiki/Superior_Rune_of_Holding
 https://wiki.guildwars2.com/wiki/Supreme_Rune_of_Holding
 https://wiki.guildwars2.com/wiki/Valkyrie_Bearkin_War_Helm
 ```
+
+## Metas LW3 sans capture — pages wiki des objectifs (25/09/2026)
+
+`gw2_meta_pages_v1.py` pose la page de chaque objectif de meta depuis la capture
+du meta lui-meme (ancre `#achievementNNNN`). Six metas n'ont pas leur capture au
+depot, leurs 183 objectifs restent donc sans lien :
+
+```
+https://wiki.guildwars2.com/wiki/One_Path_Ends_Mastery
+https://wiki.guildwars2.com/wiki/Out_of_the_Shadows_(achievements)
+https://wiki.guildwars2.com/wiki/Rising_Flames_(achievements)
+https://wiki.guildwars2.com/wiki/A_Crack_in_the_Ice_(achievements)
+https://wiki.guildwars2.com/wiki/The_Head_of_the_Snake_(achievements)
+https://wiki.guildwars2.com/wiki/Flashpoint_(achievements)
+```
+
+Trois captures presentes n'ont pas d'ancre par succes (mise en page differente) :
+Year of the Ascension parties II, III et IV. Leurs 36 objectifs restent en couple
+[id, nom], ce que l'audit accepte — a reprendre si la page change de forme.
