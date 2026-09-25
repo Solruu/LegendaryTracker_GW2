@@ -440,3 +440,17 @@ pas en Flask, dont la clé vit dans le `.env` et non dans l'interface.
 
 Une erreur sur cet appel n'est pas bloquante : `_recipes` vaut `[]`, les cases
 restent manuelles, et rien d'autre n'est affecté.
+
+## Contrôle de symétrie des deux synchros
+
+`gw2_conformite_synchro_v1.py` compare les clés de premier niveau posées par
+Flask et par la synchro directe. Il ne lance rien et n'appelle aucune API : il
+lit les deux sources. Une clé présente d'un seul côté sort en 1.
+
+Il existe parce que rien ne vérifiait la règle ci-dessus. Le 24/09 la détection
+des feuilles de recette a été posée du seul côté navigateur et personne ne l'a
+vu — le test de conformité compare moteur contre moteur, pas chemin contre
+chemin.
+
+Limite assumée : il compare la **forme**, pas le contenu. Deux côtés peuvent
+poser `_recipes` et le remplir différemment ; seul un appel réel le dirait.

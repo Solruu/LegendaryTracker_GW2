@@ -1404,6 +1404,64 @@ recette. L'exigence est sourcée, le coût ne l'est pas. Ils sont désormais en
 section 3 de `PAGES_A_CAPTURER.md`, ce qui est le point : un manque qu'on voit
 vaut mieux qu'un manque caché dans une phrase de `sources`.
 
+## Ouvert au 24/09/2026
+
+Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
+d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
+retroactif des etapes validees (sections Y et AB).
+
+### 1. Captures manquantes — 10 URLs dans `PAGES_A_CAPTURER.md`
+
+Quatre achevent la branche Olmakhan, ouverte le 20/09 : `Olmakhan_Charm`,
+`Olmakhan_Latigo_Strap`, `Superior_Rune_of_Holding`, `Supreme_Rune_of_Holding`.
+Leurs quantites sont sourcees, leur cout d'obtention non.
+
+Trois tables d'armure bloquent le plus vieux point du backlog : `Obsidian_armor`,
+`Triumphant_Hero's_armor`, `Ardent_Glorious_armor`.
+
+Trois feuilles : `Ancient_Wood_Pulp`, `Jug_of_Water`,
+`Valkyrie_Bearkin_War_Helm`.
+
+### 2. Les trois valeurs d'Aurene's Rending
+
+`mystic_clover 39`, `mystic_coin 250`, `crystalline_ingot 250` : la seizieme
+gen3 ne les porte pas quand ses quinze soeurs les portent. Elles ne figurent
+dans AUCUNE table — les tables gen3 s'arretent a 38 trefles via le Draconic
+Tribute. Les completer serait une deduction par patron generationnel, et ce
+patron s'est revele faux quatre fois ici. **Demande une lecture en jeu.**
+
+### 3. Six doubles comptes qu'aucune capture ne tranche
+
+`stabilizing_matrix` sur Klobjarne Geirr, `shard_of_glory` sur Conflux, et
+quatre autres. L'audit les signale, le depot ne contient pas de quoi decider.
+
+### 4. Seize excedents uniformes, sourcés, non declarables
+
+Les seize gen3 sortent a 300 reactifs thermocatalytiques contre 250 au tableau.
+Les 50 d'ecart viennent de la piece d'arme du Poeme et sont justes, mais la
+table de l'arme ne cite pas cette piece : il n'y a aucune branche fermee a
+trouver, a un cran comme a six. Les declarer demanderait un champ nouveau —
+`qty_overlap_verified` dit autre chose. **Decision a prendre.**
+
+### 5. Verifications qui demandent le jeu ou le reseau
+
+- Les 23 feuilles se cochent-elles vraiment ? Le pont
+  `/v2/recipes/search` → `/v2/account/recipes` est ecrit et teste
+  syntaxiquement, jamais appele — le bac a sable n'atteint pas l'API GW2. Le
+  scope `unlocks` est requis.
+- Flask v40 rend-il bien `_recipes` apres redemarrage ?
+- Airship Part et Lump of Aurillium existent comme objets (74494, 75012) ET
+  comme monnaies de portefeuille (19, 22). Les composants portent les ids
+  d'objet, que les pages wiki affichent. Si le stock vit au portefeuille,
+  l'affichage montrera zero possede. **A regarder en jeu.**
+
+### 6. Coordination entre sessions
+
+`gw2_garde_concurrence_v1.py` se lance apres le clone et avant le push. Les
+sessions cowork ne peuvent pas pousser — proxy 403, bug produit ouvert sans
+contournement dans l'interface. Leur livraison passe par zip, qui ne transporte
+aucun `.py` : les deux cotes numerotent les memes outils sans se voir.
+
 ## Ouvert au 18/09/2026
 
 ### 1. Les monnaies de carte du groupe d'armes (gen2, gen3, Klobjarne Geirr)
