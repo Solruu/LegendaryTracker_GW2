@@ -209,11 +209,21 @@ sans_id = sorted(cid for cid, c in cc.items()
                  if not c.get("apiId") and not capturee(titre_composant(cid)))
 
 # --- 4. collections sans etapes -------------------------------------------------
+# Une collection metaSubs ne porte pas ses etapes dans `items` : elles vivent
+# dans `meta_eligible`, indexees par l'id du meta, parce que l'API n'expose ni
+# bits ni liste d'enfants pour ces succes. Les compter "sans etapes" faisait
+# reclamer une capture pour des pages deja lues, deja posees et deja rendues --
+# 14 des 31 lignes de la section 4 etaient ce faux manque.
+META_AVEC_ETAPES = {
+    int(mid) for mid, e in (d.get("meta_eligible") or {}).items()
+    if (e or {}).get("achievements")
+}
+
 collections_vides = []
 for lk, lv in legs.items():
     for ck, cv in (lv.get("collections") or {}).items():
         manque = []
-        if not cv.get("items"):
+        if not cv.get("items") and cv.get("id") not in META_AVEC_ETAPES:
             manque.append("sans etapes")
         if not cv.get("unlock"):
             manque.append("sans unlock")
@@ -227,7 +237,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v7.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")

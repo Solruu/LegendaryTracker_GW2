@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
 Calculé depuis `gw2_sources_v320.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
+`gw2_pages_a_capturer_v7.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -69,7 +69,7 @@ faut, pas comment on les obtient.
 | page wiki |
 |---|
 
-## 4 — 31 collections incomplètes — RIEN À CAPTURER
+## 4 — 27 collections incomplètes — RIEN À CAPTURER
 
 Ces succès n'ont pas d'article à eux : « Incursive Investigation:
 Infinite Recursion » est une ligne de la page de catégorie, « Helping
@@ -87,26 +87,22 @@ la section « URLs ».
 | ○ | `Incursive Investigation: Third Recursion` | Eikasia, Mists-Grasper | 8835 | sans etapes, sans unlock | `Eikasia, Mists-Grasper` |
 | ○ | `Incursive Investigation: Working Together` | Eikasia, Mists-Grasper | 8830 | sans unlock | `Eikasia, Mists-Grasper` |
 | ○ | `Helping Hylek: Kill Krait` | Endless Summer | 9180 | sans etapes, sans unlock | `Endless Summer` |
-| ○ | `Shipwreck Strand Mastery` | Endless Summer | 8880 | sans etapes, sans unlock | `Endless Summer` |
-| ○ | `Starlit Weald Mastery` | Endless Summer | 9057 | sans etapes, sans unlock | `Endless Summer` |
+| ○ | `Shipwreck Strand Mastery` | Endless Summer | 8880 | sans unlock | `Endless Summer` |
+| ○ | `Starlit Weald Mastery` | Endless Summer | 9057 | sans unlock | `Endless Summer` |
 | ○ | `Legendary Rune Collector` | Legendary Upgrades | 7796 | sans etapes, sans unlock | `Legendary Upgrades` |
 | ○ | `Legendary Sigil Collector` | Legendary Upgrades | 7788 | sans etapes, sans unlock | `Legendary Upgrades` |
-| ○ | `Bava Nisos Mastery` | Orrax Manifested | 8769 | sans etapes, sans unlock | `Orrax Manifested` |
+| ○ | `Bava Nisos Mastery` | Orrax Manifested | 8769 | sans unlock | `Orrax Manifested` |
 | ○ | `Legendary Backpack and Glider: Orrax` | Orrax Manifested | 8714 | sans unlock | `Orrax Manifested` |
-| ○ | `Mistburned Barrens Mastery` | Orrax Manifested | 8582 | sans etapes, sans unlock | `Orrax Manifested` |
+| ○ | `Mistburned Barrens Mastery` | Orrax Manifested | 8582 | sans unlock | `Orrax Manifested` |
 | ○ | `Return to Living World` | Prismatic Champion's Regalia | 5790 | sans etapes, sans unlock | `Prismatic Champion's Regalia` |
-| ○ | `Shipwreck Strand Mastery` | Selachimorpha | 8880 | sans etapes, sans unlock | `Selachimorpha` |
-| ○ | `Starlit Weald Mastery` | Selachimorpha | 9057 | sans etapes, sans unlock | `Selachimorpha` |
-| ○ | `Path of the Ascension I: The Thrill of Battle` | The Ascension | 2738 | sans etapes | `The Ascension` |
-| ○ | `Path of the Ascension II: Tapestry of Sacrifice` | The Ascension | 2752 | sans etapes | `The Ascension` |
-| ○ | `Path of the Ascension III: Monument of Legends` | The Ascension | 2725 | sans etapes | `The Ascension` |
-| ○ | `Path of the Ascension IV: Hymn of Glory` | The Ascension | 2715 | sans etapes | `The Ascension` |
-| ○ | `"A Bug in the System" Mastery` | Vision | 4093 | sans etapes, sans unlock | `Vision` |
-| ○ | `"A Star to Guide Us" Mastery` | Vision | 4359 | sans etapes, sans unlock | `Vision` |
-| ○ | `"All or Nothing" Mastery` | Vision | 4544 | sans etapes, sans unlock | `Vision` |
-| ○ | `"Long Live the Lich" Mastery` | Vision | 4195 | sans etapes, sans unlock | `Vision` |
-| ○ | `"War Eternal" Mastery` | Vision | 4689 | sans etapes, sans unlock | `Vision` |
-| ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans etapes, sans unlock | — |
+| ○ | `Shipwreck Strand Mastery` | Selachimorpha | 8880 | sans unlock | `Selachimorpha` |
+| ○ | `Starlit Weald Mastery` | Selachimorpha | 9057 | sans unlock | `Selachimorpha` |
+| ○ | `"A Bug in the System" Mastery` | Vision | 4093 | sans unlock | `Vision` |
+| ○ | `"A Star to Guide Us" Mastery` | Vision | 4359 | sans unlock | `Vision` |
+| ○ | `"All or Nothing" Mastery` | Vision | 4544 | sans unlock | `Vision` |
+| ○ | `"Long Live the Lich" Mastery` | Vision | 4195 | sans unlock | `Vision` |
+| ○ | `"War Eternal" Mastery` | Vision | 4689 | sans unlock | `Vision` |
+| ● | `Incursive Investigation` | Eikasia, Mists-Grasper | 8826 | sans unlock | — |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
 | ● | `Lasting Bonds: What Comes Next` | Vision | 4112 | sans unlock | — |
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |

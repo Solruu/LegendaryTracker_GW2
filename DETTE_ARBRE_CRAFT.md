@@ -2466,3 +2466,33 @@ Les `ref` passent de « lecture en ligne » a « captures Antoine 25/09/2026 » 
 source citee est celle du depot, pas une page consultee une fois.
 
 File de capture a **0 URL**, sections 0 a 3 bis toutes a zero.
+
+## AX — 25/09/2026 : la section 4 reclamait des captures deja lues
+
+`gw2_pages_a_capturer_v6.py` declarait « sans etapes » toute collection dont
+`items` est vide. Or une collection `metaSubs` ne porte PAS ses etapes dans
+`items` : elles vivent dans `meta_eligible`, indexees par l'id du meta, parce
+que l'API n'expose ni bits ni liste d'enfants pour ces succes (cf. AT).
+
+Resultat : 14 des 31 lignes reclamaient une lecture pour des pages deja
+capturees, deja posees — 550 objectifs avec leur page wiki — et deja rendues
+dans l'appli. Les quatre « Path of the Ascension » disparaissent entierement de
+la liste, les dix autres ne gardent que leur vrai manque.
+
+`gw2_pages_a_capturer_v7.py` : une collection est « sans etapes » seulement si
+`items` est vide ET que son id n'est pas un meta a objectifs. **31 -> 27
+lignes.**
+
+### Ce que les 27 restantes ont en commun
+
+Toutes manquent d'`unlock`, et seulement d'`unlock`. Mais la lecture des
+captures montre que ce manque n'est pas toujours reel non plus. Les six
+`Incursive Investigation` d'Eikasia sont des compteurs : « gagner 150 poussieres
+fractalines », « 300 », etc. Aucun PNJ declencheur, aucun objet de deblocage,
+aucun prerequis — le modele Ad Infinitum (`prerequisite` / `unlock_item` /
+`reward`) n'a rien a decrire la.
+
+Il manque donc une facon d'ecrire « ce succes ne se debloque pas », distincte de
+« on n'a pas encore lu ». Sans elle, la section 4 restera peuplee de lignes que
+personne ne peut fermer. A trancher avant de capturer quoi que ce soit pour
+elles.
