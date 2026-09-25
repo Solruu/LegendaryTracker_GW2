@@ -223,13 +223,19 @@ collections_vides = []
 for lk, lv in legs.items():
     for ck, cv in (lv.get("collections") or {}).items():
         manque = []
-        if not cv.get("items") and cv.get("id") not in META_AVEC_ETAPES:
+        # absences_ref declare, capture a l'appui, qu'il n'y a rien a decrire :
+        # un compteur n'a pas d'etapes, un meta de categorie ne se debloque pas.
+        # Reclamer une lecture pour eux, c'est demander une lecture qui ne peut
+        # rien trouver.
+        absences = cv.get("absences_ref") or {}
+        if (not cv.get("items") and cv.get("id") not in META_AVEC_ETAPES
+                and not absences.get("items")):
             manque.append("sans etapes")
         # unlock_none_ref declare, capture a l'appui, que ce succes n'a pas de
         # chaine de deblocage a decrire : un compteur, ou le meta de sa
         # categorie. Reclamer un bloc `unlock` pour eux revenait a demander une
         # lecture qui ne peut rien trouver.
-        if not cv.get("unlock") and not cv.get("unlock_none_ref"):
+        if not cv.get("unlock") and not absences.get("unlock"):
             manque.append("sans unlock")
         if manque:
             t = en(cv.get("name")) or ck
@@ -241,7 +247,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v8.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v9.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")

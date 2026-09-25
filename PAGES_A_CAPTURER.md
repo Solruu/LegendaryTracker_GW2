@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v321.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v8.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v322.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v9.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -69,7 +69,7 @@ faut, pas comment on les obtient.
 | page wiki |
 |---|
 
-## 4 — 11 collections incomplètes — RIEN À CAPTURER
+## 4 — 4 collections incomplètes — RIEN À CAPTURER
 
 Ces succès n'ont pas d'article à eux : « Incursive Investigation:
 Infinite Recursion » est une ligne de la page de catégorie, « Helping
@@ -80,14 +80,7 @@ la section « URLs ».
 
 | | succès | légendaire | id | ce qui manque | où le lire |
 |---|---|---|---:|---|---|
-| ○ | `Incursive Investigation: First Recursion` | Eikasia, Mists-Grasper | 8840 | sans etapes | `Eikasia, Mists-Grasper` |
-| ○ | `Incursive Investigation: Infinite Recursion` | Eikasia, Mists-Grasper | 8814 | sans etapes | `Eikasia, Mists-Grasper` |
-| ○ | `Incursive Investigation: Relic in the Mists` | Eikasia, Mists-Grasper | 8823 | sans etapes | `Eikasia, Mists-Grasper` |
-| ○ | `Incursive Investigation: Second Recursion` | Eikasia, Mists-Grasper | 8841 | sans etapes | `Eikasia, Mists-Grasper` |
-| ○ | `Incursive Investigation: Third Recursion` | Eikasia, Mists-Grasper | 8835 | sans etapes | `Eikasia, Mists-Grasper` |
 | ○ | `Helping Hylek: Kill Krait` | Endless Summer | 9180 | sans etapes, sans unlock | `Endless Summer` |
-| ○ | `Legendary Rune Collector` | Legendary Upgrades | 7796 | sans etapes | `Legendary Upgrades` |
-| ○ | `Legendary Sigil Collector` | Legendary Upgrades | 7788 | sans etapes | `Legendary Upgrades` |
 | ○ | `Legendary Backpack and Glider: Orrax` | Orrax Manifested | 8714 | sans unlock | `Orrax Manifested` |
 | ○ | `Return to Living World` | Prismatic Champion's Regalia | 5790 | sans etapes, sans unlock | `Prismatic Champion's Regalia` |
 | ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |

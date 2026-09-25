@@ -2535,3 +2535,36 @@ memes compteurs : un objectif numerique unique, aucune etape a lister. C'est le
 symetrique exact de ce qui vient d'etre regle, et le meme drapeau resoudrait le
 reste de la liste. Forme non tranchee : second champ (`items_none_ref`) ou un
 drapeau unique couvrant les deux absences.
+
+## AZ — 25/09/2026 : `absences_ref` — un drapeau, deux faits
+
+J'avais propose « un drapeau unique couvrant les deux absences ». En
+l'implementant : **faux**. Les treize masteries n'ont pas de deblocage ET ont
+des etapes — elles vivent dans `meta_eligible`. Un drapeau unique les aurait
+declarees sans etapes alors qu'elles en portent 550 a elles toutes.
+
+Donc un seul mecanisme, deux faits nommes separement :
+
+```json
+"absences_ref": {
+  "unlock": "wiki:Incursive_Investigation",
+  "items":  "wiki:Incursive_Investigation"
+}
+```
+
+`unlock_none_ref` (pose une heure plus tot) est migre et supprime : deux champs
+pour la meme idee, c'est exactement la table parallele qu'on s'interdit.
+
+Audit v54 verifie, pour chaque absence declaree : la cle est dans
+`{unlock, items}`, la valeur a la forme `wiki:Titre`, la capture est au depot,
+et l'entite ne porte pas ce qu'elle nie — `unlock` avec `absences_ref.unlock`,
+ou dix etapes avec `absences_ref.items`. Teste en negatif sur les trois cas.
+
+Les sept `items` absents sont des compteurs a objectif unique, verifies un par
+un dans leur capture : « gagner 150 poussieres fractalines » (puis 300, puis
+Infinite), « decouvrir les Agony-Torn Gloves », « lier 7 runes legendaires »,
+« lier 8 cachets legendaires ». Aucun n'a de liste a afficher.
+
+**Section 4 : 11 -> 4.** Les quatre restants sont de vrais trous, pas des
+artefacts de lecture : `Helping Hylek: Kill Krait`, `Legendary Backpack and
+Glider: Orrax`, `Return to Living World`, `Legendary Weapon: Eternity`.

@@ -999,21 +999,30 @@ UNLOCK_FIELDS = {"legendary", "key", "text", "gate", "cadence_ref",
 
 
 
-def check_unlock_none(data, errors, warnings):
-    """`unlock_none_ref` dit « ce succes ne se debloque pas », et le prouve.
+ABSENCE_KINDS = {"unlock", "items"}
 
-    La section 4 de la file de capture reclamait un bloc `unlock` pour 27
-    collections. La lecture des captures montre que beaucoup n'en ont pas a
-    avoir : les six Incursive Investigation sont des compteurs (« gagner 150
-    poussieres fractalines »), les masteries de meta sont le meta de leur
-    categorie. Le modele Ad Infinitum -- prerequis, objet declencheur,
-    recompense -- n'a rien a y decrire.
+
+def check_absences_ref(data, errors, warnings):
+    """`absences_ref` dit qu'il n'y a rien a decrire, et le prouve.
+
+    La file de capture reclamait un bloc `unlock` pour 27 collections et des
+    `items` pour sept d'entre elles. La lecture des captures montre que ce
+    manque n'existe pas : les six Incursive Investigation sont des compteurs a
+    objectif unique (« gagner 150 poussieres fractalines », « lier 7 runes
+    legendaires »), les masteries sont le meta de leur categorie. Le modele
+    Ad Infinitum -- prerequis, objet declencheur, recompense -- n'a rien a y
+    decrire, et un compteur n'a pas d'etapes a lister.
 
     Sans facon d'ecrire cette absence, la file gardait des lignes que personne
-    ne pouvait fermer, et la seule sortie etait d'inventer un bloc vide. D'ou ce
-    drapeau. Mais une absence affirmee sans preuve vaut l'invention qu'elle
-    remplace : le drapeau porte donc la capture qui l'etablit, et elle doit
-    exister au depot. C'est le meme marche que `cadence_ref`.
+    ne pouvait fermer, et la seule sortie etait d'inventer un bloc vide. Mais
+    une absence affirmee sans preuve vaut l'invention qu'elle remplace : chaque
+    absence porte la capture qui l'etablit, et elle doit exister au depot.
+    Meme marche que `cadence_ref`.
+
+    UN drapeau, mais DEUX faits distincts, parce qu'ils ne vont pas ensemble :
+    les treize masteries n'ont pas de deblocage ET ont des etapes -- elles
+    vivent dans `meta_eligible`. Les confondre aurait declare sans etapes
+    treize collections qui en ont 550 a elles toutes.
     """
     for lk, lv in sorted(data.get("legendaries", {}).items()):
         if not isinstance(lv, dict):
@@ -1021,28 +1030,44 @@ def check_unlock_none(data, errors, warnings):
         for ck, cv in sorted((lv.get("collections") or {}).items()):
             if not isinstance(cv, dict):
                 continue
-            ref = cv.get("unlock_none_ref")
-            if ref is None:
+            abs_ = cv.get("absences_ref")
+            if abs_ is None:
                 continue
             label = f"legendaries/{lk}/collections/{ck}"
-            if not (isinstance(ref, str) and ref.startswith("wiki:") and ref[5:].strip()):
-                errors.append(
-                    f"{label} : unlock_none_ref doit nommer une page, "
-                    f"sous la forme 'wiki:Titre' — recu {ref!r}"
-                )
+            if not isinstance(abs_, dict) or not abs_:
+                errors.append(f"{label} : absences_ref doit etre un objet non vide, recu {abs_!r}")
                 continue
-            if cv.get("unlock"):
+            inconnus = sorted(set(abs_) - ABSENCE_KINDS)
+            if inconnus:
                 errors.append(
-                    f"{label} : porte a la fois unlock et unlock_none_ref — "
-                    "l'un dit comment ca se debloque, l'autre que ca ne se debloque pas"
+                    f"{label} : absences_ref declare {inconnus}, hors de {sorted(ABSENCE_KINDS)}"
                 )
-            page = ref.split("wiki:", 1)[1].split(" ")[0]
-            slug = re.sub(r"[^a-z0-9]+", "_", page.lower()).strip("_") + ".html"
-            if not (HERE / "ressources" / "wiki" / slug).exists():
-                errors.append(
-                    f"{label} : unlock_none_ref pointe '{page}', dont la capture "
-                    f"({slug}) n'est pas au depot — une absence affirmee sans preuve"
-                )
+            for quoi, ref in sorted(abs_.items()):
+                if quoi not in ABSENCE_KINDS:
+                    continue
+                if not (isinstance(ref, str) and ref.startswith("wiki:") and ref[5:].strip()):
+                    errors.append(
+                        f"{label} : absences_ref.{quoi} doit nommer une page, "
+                        f"sous la forme 'wiki:Titre' — recu {ref!r}"
+                    )
+                    continue
+                if quoi == "unlock" and cv.get("unlock"):
+                    errors.append(
+                        f"{label} : porte a la fois unlock et absences_ref.unlock — "
+                        "l'un dit comment ca se debloque, l'autre que ca ne se debloque pas"
+                    )
+                if quoi == "items" and cv.get("items"):
+                    errors.append(
+                        f"{label} : porte {len(cv['items'])} etapes et absences_ref.items, "
+                        "qui affirme qu'il n'y en a pas"
+                    )
+                page = ref.split("wiki:", 1)[1].split(" ")[0]
+                slug = re.sub(r"[^a-z0-9]+", "_", page.lower()).strip("_") + ".html"
+                if not (HERE / "ressources" / "wiki" / slug).exists():
+                    errors.append(
+                        f"{label} : absences_ref.{quoi} pointe '{page}', dont la capture "
+                        f"({slug}) n'est pas au depot — une absence affirmee sans preuve"
+                    )
 
 def check_collection_unlocks(data, errors, warnings):
     """Le deblocage des collections : prose exacte, porte testable.
@@ -2304,7 +2329,7 @@ def main() -> int:
     check_cadence_flags(data, errors, warnings)
 
     # 13. Deblocage des collections : prose complete, portes testables
-    check_unlock_none(data, errors, warnings)
+    check_absences_ref(data, errors, warnings)
     check_collection_unlocks(data, errors, warnings)
 
     # 14. Guides ecrits et guides affiches : meme ensemble
