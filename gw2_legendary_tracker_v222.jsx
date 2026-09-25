@@ -1457,13 +1457,13 @@ const LEGENDARIES = {
       { id: "runestones",  name: "Jade Runestone",                 icon: "JR", apiId: 96722, comp: "jade_runestone" },
       { id: "lodestones",  name: "Amalgamated Draconic Lodestone", icon: "DL", apiId: 92687, comp: "amalgamated_draconic_lodestone" },
       { id: "notes",       name: "Research Note",                  icon: "RN", apiId: 61,    comp: "research_note" },
-      { id: "airship",     name: "Airship Part",                   icon: "AP", apiId: 74494, comp: "airship_part",        mapNote: "Verdant Brink" },
-      { id: "aurillium",   name: "Lump of Aurillium",              icon: "LA", apiId: 75012, comp: "lump_of_aurillium",   mapNote: "Auric Basin" },
+      { id: "airship",     name: "Airship Part",                   icon: "AP", apiId: 19, comp: "airship_part",        mapNote: "Verdant Brink" },
+      { id: "aurillium",   name: "Lump of Aurillium",              icon: "LA", apiId: 22, comp: "lump_of_aurillium",   mapNote: "Auric Basin" },
       { id: "crystalline", name: "Crystalline Ore",                icon: "CO", apiId: 46682, comp: "crystalline_ore",     mapNote: "Dragon's Stand" },
       { id: "airship_oil", name: "Bottle of Airship Oil",          icon: "AO", apiId: 69434, comp: "bottle_airship_oil",  mapNote: "Verdant Brink" },
       { id: "auric_dust",  name: "Pile of Auric Dust",             icon: "AD", apiId: 69432, comp: "pile_auric_dust",     mapNote: "Auric Basin" },
       { id: "ley_spark",   name: "Ley Line Spark",                 icon: "LS", apiId: 69392, comp: "ley_line_spark",      mapNote: "Tangled Depths" },
-      { id: "ancient_coin", name: "Ancient Coin",                  icon: "AC", apiId: 100477, comp: "ancient_coin",       mapNote: "Janthir Wilds" },
+      { id: "ancient_coin", name: "Ancient Coin",                  icon: "AC", apiId: 66, comp: "ancient_coin",       mapNote: "Janthir Wilds" },
       { id: "homestead",   name: "Shard of the Homestead",         icon: "SH", apiId: 103587, comp: "shard_of_the_homestead", mapNote: "Janthir Wilds" },
     ],
     currencies: [],
@@ -1516,8 +1516,8 @@ const LEGENDARIES = {
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
       // refuse toute divergence.
-      { id: "airship", name: "Airship Part", perPiece: 250, icon: "AP", apiId: 74494, mapNote: "Verdant Brink" },
-      { id: "aurillium", name: "Lump of Aurillium", perPiece: 250, icon: "LA", apiId: 75012, mapNote: "Auric Basin" },
+      { id: "airship", name: "Airship Part", perPiece: 250, icon: "AP", apiId: 19, mapNote: "Verdant Brink" },
+      { id: "aurillium", name: "Lump of Aurillium", perPiece: 250, icon: "LA", apiId: 22, mapNote: "Auric Basin" },
     ],
     currencies: [],
     requirements: {
@@ -1823,7 +1823,7 @@ const LEGENDARIES = {
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
       // refuse toute divergence.
-      { id: "ancient_coin", name: "Ancient Coin", required: 50000, icon: "AC", apiId: 100477, mapNote: "Janthir Wilds" },
+      { id: "ancient_coin", name: "Ancient Coin", required: 50000, icon: "AC", apiId: 66, mapNote: "Janthir Wilds" },
       { id: "mursaat_obsidian", name: "Mursaat Obsidian Chunk", required: 750, icon: "MO", apiId: 103427, mapNote: "Mistburned Barrens" },
       { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
       { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },

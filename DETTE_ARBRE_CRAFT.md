@@ -2170,3 +2170,61 @@ coche a la main.
 La detection l'emporte, sauf si la case a ete cochee a la main : `acquises[cid]
 ?? auto`. Sans cle API — chez qui passe par Flask — tout reste manuel comme
 avant.
+
+## AR — 25/09/2026 : « Item type: Service », ou lire zero a vie
+
+Antoine : « je suis certain de n'avoir jamais eu de Airship Part dans mon
+inventaire ». Il avait raison, et ma regle etait fausse.
+
+Ces pages portent bien un identifiant d'objet — 74494 pour Airship Part — mais
+elles disent aussi **« Item type: Service »** et **« Takes effect immediately
+upon receipt »**. L'objet se convertit a la reception : il ne sejourne JAMAIS en
+inventaire. Le stock vit au portefeuille, sous un identifiant de MONNAIE.
+
+Ma regle « l'apiId de la page fait foi » confondait deux choses : **l'identifiant
+d'une page designe SON SUJET, pas l'endroit ou le stock se trouve.**
+
+Cinq composants etaient dans ce cas :
+
+| composant | lu | reel |
+|---|---:|---:|
+| `airship_part` | 74494 | **19** |
+| `lump_of_aurillium` | 75012 | **22** |
+| `provisioner_token` | 88926 | **29** |
+| `ancient_coin` | 100477 | **66** |
+| `unusual_coin` | 96046 | **62** |
+
+`ancient_coin` est le plus couteux : il cachait les **20 250 de Klobjarne Geirr**
+et les **50 000 d'Orrax Manifested**, les deux plus gros nombres du depot,
+affiches a zero possede quoi qu'il arrive.
+
+Deux autres pages de type Service portaient deja le bon identifiant —
+`magnetite_shard` 28 et `research_note` 61 — ce qui explique que le defaut soit
+passe inapercu : il n'etait pas systematique.
+
+### Ce que ca dit de la section O
+
+Le 17/09 j'avais decouvert que le Jeton de fournisseur portait 88926 cote
+sources et 29 cote JSX. J'ai conclu « deux identifiants justes, du meme objet,
+dans deux espaces differents » et **construit un pont par le nom** dans l'audit
+pour accommoder les deux. C'etait traiter le symptome : un seul des deux lisait
+le stock, et ce n'etait pas celui des sources. Le pont reste utile — le JSX
+declare bien des monnaies — mais la donnee porte desormais le bon identifiant.
+
+`apiId_objet` conserve celui de la page pour que le lien reste tracable.
+
+### Le garde-fou
+
+`check_service_vers_portefeuille` croise trois choses : la page dit « Item type
+Service », le nom correspond a une monnaie du referentiel, et l'apiId n'est pas
+celui de cette monnaie. Bloquant. Teste en remettant 74494 : il crie.
+
+Et `check_api_id_contre_capture` sait desormais lire `apiId_objet` au lieu de
+crier sur une divergence voulue.
+
+### Reste : le compendium de commandant
+
+Il ne se coche pas tout seul, et c'est attendu — ce n'est pas une recette, donc
+`/v2/recipes/search` rend vide. Mais une meilleure voie existe : **`/v2/account`
+rend un booleen `commander`**, vrai des qu'un tag est achete. Scope `account`,
+que la cle d'Antoine porte deja. Non fait ici.

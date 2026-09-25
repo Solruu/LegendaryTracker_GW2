@@ -297,6 +297,49 @@ def _composant_par_api_jsx(comps):
     return par_api
 
 
+def check_service_vers_portefeuille(data, errors, warnings):
+    """Un objet de type « Service » dont le stock vit au portefeuille.
+
+    « Item type: Service » et « Takes effect immediately upon receipt » vont
+    ensemble : l'objet se convertit a la reception, il n'apparait jamais en
+    inventaire. Si son nom correspond a une monnaie du referentiel, c'est cet
+    identifiant-la qui porte le stock, et lire celui de l'objet rend zero a vie.
+
+    Cinq composants etaient dans ce cas le 25/09/2026, dont l'Ancient Coin, qui
+    cachait les 20 250 de Klobjarne Geirr et les 50 000 d'Orrax Manifested.
+    """
+    cc = data.get("craft_components", {})
+    dossier = HERE / "ressources" / "wiki"
+    ref = HERE / "gw2_currencies_ref.json"
+    if not ref.is_file():
+        return
+    try:
+        monnaies = {(m.get("name") or "").strip().lower(): m.get("id")
+                    for m in json.loads(ref.read_text(encoding="utf-8")).get("all") or []}
+    except (ValueError, OSError):
+        return
+    for cid, comp in sorted(cc.items()):
+        if not isinstance(comp, dict):
+            continue
+        f = dossier / f"{cid}.html"
+        if not f.is_file():
+            continue
+        brut = f.read_text(encoding="utf-8", errors="ignore")[:9000]
+        texte = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", brut))
+        if "Item type Service" not in texte:
+            continue
+        nom = comp.get("name")
+        nom = (nom.get("en") or nom.get("fr")) if isinstance(nom, dict) else nom
+        mid = monnaies.get(str(nom or "").strip().lower())
+        if mid is None or comp.get("apiId") == mid:
+            continue
+        errors.append(
+            f"craft_components/{cid} : sa page dit « Item type: Service » — l'objet "
+            f"se convertit a la reception et ne sejourne pas en inventaire. Le stock "
+            f"vit au portefeuille sous la monnaie {mid}, or apiId = {comp.get('apiId')}"
+        )
+
+
 def check_apostrophe_contractee(data, errors, warnings):
     """L'apostrophe se contracte : le « s » colle a son proprietaire.
 
@@ -1819,6 +1862,26 @@ def check_api_id_contre_capture(data, errors, warnings):
             continue
         if comp.get("kind") == "currency" or "apiIdNote" in comp:
             continue
+        # v50 : les objets « Item type: Service ».
+        #
+        # Airship Part, Lump of Aurillium, Ancient Coin, Unusual Coin et le
+        # Jeton de fournisseur portent un identifiant d'OBJET sur leur page,
+        # mais leur description dit « Takes effect immediately upon receipt » :
+        # l'objet se convertit a la reception et ne sejourne JAMAIS en
+        # inventaire. Le stock vit au portefeuille, sous un identifiant de
+        # MONNAIE — 19, 22, 66, 62, 29.
+        #
+        # Lire l'identifiant d'objet, c'est lire zero a vie. Antoine l'a vu :
+        # « je suis certain de n'avoir jamais eu de Airship Part dans mon
+        # inventaire ». Sur l'Ancient Coin, cela cachait les 20 250 de Klobjarne
+        # Geirr et les 50 000 d'Orrax.
+        #
+        # Ma regle « l'apiId de la page fait foi » confondait deux choses :
+        # l'identifiant de la page designe SON SUJET, pas l'endroit ou le stock
+        # se trouve. `apiId_objet` conserve celui de la page pour que le lien
+        # reste tracable.
+        if comp.get("apiId_objet") == attendu:
+            continue
         actuel = comp.get("apiId")
         if actuel is None:
             warnings.append(
@@ -2224,6 +2287,7 @@ def main() -> int:
     check_nom_pluriel_double(data, errors, warnings)
 
     # 33. Le meme nombre a deux crans : quantite agregee lue comme unitaire
+    check_service_vers_portefeuille(data, errors, warnings)
     check_apostrophe_contractee(data, errors, warnings)
     check_fratrie_incomplete(data, errors, warnings)
     check_lecture_colonne3(data, errors, warnings)
