@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 6 trous de l'arbre — LA PRIORITÉ
+## 0 — 10 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,8 +17,11 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Gift of the Highlands` | 1 |
+| `Gift of the Oasis` | 1 |
+| `Gift of the Riverlands` | 1 |
 
-### 0 ter — 6 trous dont la page est DÉJÀ au dépôt
+### 0 ter — 7 trous dont la page est DÉJÀ au dépôt
 
 Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
 page de catégorie, de monnaie, ou objet non fabricable. Aucune
@@ -28,6 +31,7 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Augur's Stone`
 - `Bloodstone Shard`
 - `Fractalline Spark`
+- `Gift of the Desolation`
 - `Perfect Mist Core`
 - `Spark of Sentience`
 
@@ -49,13 +53,16 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 0 composants sans apiId ni page
+## 3 — 3 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Gift of the Highlands` |
+| `Gift of the Oasis` |
+| `Gift of the Riverlands` |
 
 ## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
@@ -108,7 +115,10 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 0 pages à capturer
+## URLs — 3 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Gift_of_the_Highlands
+https://wiki.guildwars2.com/wiki/Gift_of_the_Oasis
+https://wiki.guildwars2.com/wiki/Gift_of_the_Riverlands
 ```

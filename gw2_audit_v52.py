@@ -909,6 +909,12 @@ def check_orphan_caps(data, errors, warnings):
 # Drapeaux portes par cadence.sources[] : ce sont des booleens, donc invisibles
 # du controle des champs bilingues. Un drapeau que le JSX ne lit pas modifie une
 # projection sans que rien ne le montre — le pire des silences.
+# Periodes que la projection du JSX sait lire. "character" est un achat unique
+# par personnage : aucun debit, donc rien dans perWeek, mais une case qui ne se
+# decoche jamais. Une valeur hors de cette liste tomberait dans le seau saison
+# sans le dire.
+CADENCE_PERIODS = {"day", "week", "season", "character"}
+
 CADENCE_SOURCE_FIELDS = {
     "label", "period", "cap", "cost", "verified", "checked", "ref",
     "rng", "per_character",
@@ -933,6 +939,13 @@ def check_cadence_flags(data, errors, warnings):
             if not isinstance(src_, dict):
                 errors.append(f"craft_components/{cid} : cadence.sources[{i}] n'est pas un objet")
                 continue
+            per = src_.get("period")
+            if per is not None and per not in CADENCE_PERIODS:
+                errors.append(
+                    f"craft_components/{cid} : cadence.sources[{i}] period '{per}' inconnue — "
+                    f"le JSX ne sait projeter que {sorted(CADENCE_PERIODS)}, une periode "
+                    "non reconnue se dilue en zero sans rien dire"
+                )
             if "period" not in src_ or "cap" not in src_:
                 errors.append(
                     f"craft_components/{cid} : cadence.sources[{i}] sans period ou sans cap — "

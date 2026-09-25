@@ -4792,14 +4792,21 @@
    "farmable": true,
    "sources": [
     {
-     "type": "vendor",
+     "type": "mystic_forge",
      "tip": {
-      "fr": "Acheté aux vendeurs de complétion de map PoF — Oasis de cristal, Hautes-terres du désert, Rives de l'Elon, La Désolation. Chaque sous-gift coûte ~23 331 karma. Une fois par personnage.",
-      "en": "Purchased from PoF map completion vendors — Crystal Oasis, Desert Highlands, Elon Riverlands, The Desolation. Each sub-gift costs ~23,331 karma. Once per character."
-     }
+      "fr": "Se fabrique, ne se trouve pas. Le coût réel est celui des quatre sous-dons, désormais décomposés.",
+      "en": "Crafted, not found. The real cost is that of the four sub-gifts, now decomposed."
+     },
+     "verified": true,
+     "checked": "2026-09-25",
+     "ref": "wiki:Gift_of_the_Desert boite de recette (capture Antoine 25/09/2026)"
     }
    ],
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "recipe": {
+    "fr": "Forge mystique : 1 Gift of the Oasis + 1 Gift of the Highlands + 1 Gift of the Riverlands + 1 Gift of the Desolation.",
+    "en": "Mystic Forge: 1 Gift of the Oasis + 1 Gift of the Highlands + 1 Gift of the Riverlands + 1 Gift of the Desolation."
+   }
   },
   "gift_of_the_rider": {
    "name": "Gift of the Rider",
@@ -9998,22 +10005,51 @@
   },
   "gift_of_the_desolation": {
    "name": "Gift of the Desolation",
-   "kind": "advanced_craft",
+   "kind": "acquire",
    "needed_for": [
-    "gen2_the_binding_of_ipos"
+    "gift_of_the_desert"
    ],
    "farmable": true,
    "sources": [
     {
-     "type": "mystic_forge",
+     "type": "vendor",
+     "map": {
+      "fr": "La Désolation",
+      "en": "The Desolation"
+     },
      "tip": {
-      "fr": "MF : composants de la Désolation (Sand Blasted Antiquity, Branded Mass…) — voir la fiche wiki.",
-      "en": "MF: Desolation components (Sand Blasted Antiquity, Branded Mass…) — see the wiki page."
-     }
+      "fr": "23 331 karma chez Kisha Odili (The Bonestrand). ⚠ Deux verrous : complétion de map (La Désolation) et cœur de renom terminé — le cœur se réinitialise chaque jour, il doit être refait LE JOUR de l'achat. Limite 1 par personnage.",
+      "en": "23,331 karma from Kisha Odili (The Bonestrand). ⚠ Two gates: map completion (The Desolation) and a completed renown heart — hearts reset daily, so it must be redone ON the day of purchase. Limit 1 per character."
+     },
+     "verified": true,
+     "checked": "2026-09-25",
+     "ref": "wiki:Gift_of_the_Desolation section Acquisition (capture au depot)"
     }
    ],
-   "qty": {},
-   "apiId": 86010
+   "qty": {
+    "gift_of_the_desert": 1
+   },
+   "apiId": 86010,
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeur de cœur de renom",
+       "en": "Renown heart vendor"
+      },
+      "period": "character",
+      "cap": 1,
+      "per_character": true,
+      "cost": {
+       "fr": "23 331 karma. Un seul par personnage, définitivement — et le cœur doit être refait le jour de l'achat.",
+       "en": "23,331 karma. One per character, permanently — and the heart must be redone on the day of purchase."
+      },
+      "verified": true,
+      "checked": "2026-09-25",
+      "ref": "wiki:Gift_of_the_Desolation section Acquisition"
+     }
+    ]
+   }
   },
   "gift_of_souls": {
    "name": "Gift of Souls",
@@ -11052,7 +11088,10 @@
    "qty": {
     "aurora": 0,
     "stella_radians": 7000000,
-    "gift_of_the_desert": 93324
+    "gift_of_the_oasis": 23331,
+    "gift_of_the_highlands": 23331,
+    "gift_of_the_riverlands": 23331,
+    "gift_of_the_desolation": 23331
    },
    "farmable": true,
    "sources": [
@@ -11203,7 +11242,10 @@
     }
    ],
    "needed_for": [
-    "gift_of_the_desert"
+    "gift_of_the_oasis",
+    "gift_of_the_highlands",
+    "gift_of_the_riverlands",
+    "gift_of_the_desolation"
    ]
   },
   "powerful_venom_sac": {
@@ -22974,6 +23016,147 @@
    "ref": "pages Commander's Compendium et Catmander's Compendium capturees le 24/09 : meme prix, la ligne a 150 po exige l'autre compendium",
    "checked": "2026-09-24",
    "verified": "les deux pages confrontees le 24/09/2026"
+  },
+  "gift_of_the_oasis": {
+   "name": "Gift of the Oasis",
+   "needed_for": [
+    "gift_of_the_desert"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "vendor",
+     "map": {
+      "fr": "Oasis de cristal",
+      "en": "Crystal Oasis"
+     },
+     "tip": {
+      "fr": "23 331 karma chez le vendeur de cœur d'Amnoon Farms. ⚠ Deux verrous : complétion de map (Oasis de cristal) et cœur de renom terminé — le cœur se réinitialise chaque jour, il doit être refait LE JOUR de l'achat. Limite 1 par personnage.",
+      "en": "23,331 karma from the Amnoon Farms heart vendor. ⚠ Two gates: map completion (Crystal Oasis) and a completed renown heart — hearts reset daily, so it must be redone ON the day of purchase. Limit 1 per character."
+     },
+     "verified": true,
+     "checked": "2026-09-25",
+     "ref": "wiki:Gift_of_the_Oasis / Gift_of_the_Highlands / Gift_of_the_Riverlands, section Acquisition (lecture 25/09/2026) ; cadence du coeur confirmee en jeu par Antoine"
+    }
+   ],
+   "qty": {
+    "gift_of_the_desert": 1
+   },
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeur de cœur de renom",
+       "en": "Renown heart vendor"
+      },
+      "period": "character",
+      "cap": 1,
+      "per_character": true,
+      "cost": {
+       "fr": "23 331 karma. Un seul par personnage, définitivement — et le cœur doit être refait le jour de l'achat.",
+       "en": "23,331 karma. One per character, permanently — and the heart must be redone on the day of purchase."
+      },
+      "verified": true,
+      "checked": "2026-09-25",
+      "ref": "wiki:Gift_of_the_Oasis section Acquisition"
+     }
+    ]
+   }
+  },
+  "gift_of_the_highlands": {
+   "name": "Gift of the Highlands",
+   "needed_for": [
+    "gift_of_the_desert"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "vendor",
+     "map": {
+      "fr": "Hautes-terres du désert",
+      "en": "Desert Highlands"
+     },
+     "tip": {
+      "fr": "23 331 karma chez Melilla (Stampede Uplands) ou Tendaji (Diviner's Reach) — 1 seul par personnage quel que soit le vendeur. ⚠ Deux verrous : complétion de map (Hautes-terres du désert) et cœur de renom terminé — le cœur se réinitialise chaque jour, il doit être refait LE JOUR de l'achat. Limite 1 par personnage.",
+      "en": "23,331 karma from Melilla (Stampede Uplands) or Tendaji (Diviner's Reach) — only 1 per character whichever vendor. ⚠ Two gates: map completion (Desert Highlands) and a completed renown heart — hearts reset daily, so it must be redone ON the day of purchase. Limit 1 per character."
+     },
+     "verified": true,
+     "checked": "2026-09-25",
+     "ref": "wiki:Gift_of_the_Oasis / Gift_of_the_Highlands / Gift_of_the_Riverlands, section Acquisition (lecture 25/09/2026) ; cadence du coeur confirmee en jeu par Antoine"
+    }
+   ],
+   "qty": {
+    "gift_of_the_desert": 1
+   },
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeur de cœur de renom",
+       "en": "Renown heart vendor"
+      },
+      "period": "character",
+      "cap": 1,
+      "per_character": true,
+      "cost": {
+       "fr": "23 331 karma. Un seul par personnage, définitivement — et le cœur doit être refait le jour de l'achat.",
+       "en": "23,331 karma. One per character, permanently — and the heart must be redone on the day of purchase."
+      },
+      "verified": true,
+      "checked": "2026-09-25",
+      "ref": "wiki:Gift_of_the_Highlands section Acquisition"
+     }
+    ]
+   }
+  },
+  "gift_of_the_riverlands": {
+   "name": "Gift of the Riverlands",
+   "needed_for": [
+    "gift_of_the_desert"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "vendor",
+     "map": {
+      "fr": "Rives de l'Elon",
+      "en": "Elon Riverlands"
+     },
+     "tip": {
+      "fr": "23 331 karma chez Follower Xunn (Skyward Reach). ⚠ Deux verrous : complétion de map (Rives de l'Elon) et cœur de renom terminé — le cœur se réinitialise chaque jour, il doit être refait LE JOUR de l'achat. Limite 1 par personnage.",
+      "en": "23,331 karma from Follower Xunn (Skyward Reach). ⚠ Two gates: map completion (Elon Riverlands) and a completed renown heart — hearts reset daily, so it must be redone ON the day of purchase. Limit 1 per character."
+     },
+     "verified": true,
+     "checked": "2026-09-25",
+     "ref": "wiki:Gift_of_the_Oasis / Gift_of_the_Highlands / Gift_of_the_Riverlands, section Acquisition (lecture 25/09/2026) ; cadence du coeur confirmee en jeu par Antoine"
+    }
+   ],
+   "qty": {
+    "gift_of_the_desert": 1
+   },
+   "kind": "acquire",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeur de cœur de renom",
+       "en": "Renown heart vendor"
+      },
+      "period": "character",
+      "cap": 1,
+      "per_character": true,
+      "cost": {
+       "fr": "23 331 karma. Un seul par personnage, définitivement — et le cœur doit être refait le jour de l'achat.",
+       "en": "23,331 karma. One per character, permanently — and the heart must be redone on the day of purchase."
+      },
+      "verified": true,
+      "checked": "2026-09-25",
+      "ref": "wiki:Gift_of_the_Riverlands section Acquisition"
+     }
+    ]
+   }
   }
  },
  "enchaînements_recommandés": {

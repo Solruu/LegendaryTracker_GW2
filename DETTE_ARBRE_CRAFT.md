@@ -2392,3 +2392,60 @@ composants, donc l'arete proposee est partielle : `gift_of_the_desert ->
 gift_of_the_desolation` seul, ce qui serait pire que rien. Les creer decomposera
 un achat aujourd'hui decrit par un `tip` karma (~23 331 par sous-don). Decision
 de modelisation, non prise ici.
+
+## AV — 25/09/2026 : le Gift of the Desert decompose, et une periode qui manquait
+
+J'avais pose la question au lieu de faire le travail. Antoine : « je ne comprends
+pas le blocage ? Je me serais attendu a "donne-moi les pages des sous-gift pour
+que je lise et integre les couts" ». Il a raison : un composant qu'on decouvre a
+l'analyse change les couts, c'est le principe meme de l'analyse.
+
+### Les quatre sous-dons
+
+`Gift of the Desert` n'est pas un achat, c'est une Forge mystique : 1 Oasis +
+1 Highlands + 1 Riverlands + 1 Desolation. Trois n'existaient pas en composants,
+le quatrieme (`gift_of_the_desolation`) etait rattache directement a
+`gen2_the_binding_of_ipos` — un raccourci : la recette d'Ipos ne le cite pas,
+elle passe par `Gift of Desert Mastery`, donc par le Gift of the Desert.
+
+Pire, sa source disait « Forge mystique, composants de la Desolation » alors que
+sa propre capture au depot dit : Kisha Odili, The Bonestrand, 23 331 karma,
+completion de carte requise, 1 par personnage. Corrige.
+
+Les quatre, tous identiques dans leur forme : 23 331 karma chez un vendeur de
+coeur, completion de la carte exigee, **coeur a refaire le jour de l'achat**,
+un seul par personnage. Highlands a deux vendeurs (Melilla, Stampede Uplands ;
+Tendaji, Diviner's Reach) pour un seul achat.
+
+### Le total ne bouge pas d'un karma
+
+`karma.qty` portait `gift_of_the_desert: 93 324` — un bloc pose sur le don final.
+Il se repartit en quatre fois 23 331, sur les sous-dons qui le paient vraiment.
+**93 324 des deux cotes** : la decomposition n'ajoute pas de cout, elle dit ou il
+se paie. Ce qu'elle ajoute, c'est ce qu'on ne voyait pas : quatre completions de
+carte et quatre coeurs.
+
+### Une periode manquait : `character`
+
+L'audit a bloque, a raison : « Limite 1 » ecrit en prose sans cadence
+structuree. Mais aucune des trois periodes (`day`, `week`, `season`) ne dit
+« une fois par personnage, definitivement ». Le drapeau `per_character` existait
+deja, il CORRIGE une cadence, il n'en tient pas lieu.
+
+JSX v226 ajoute `period: "character"` :
+- la cle de case devient `once` — sans elle le plafond tombait dans le seau
+  `season` et la case se serait decochee a la saison suivante, alors qu'un achat
+  unique ne se refait jamais ;
+- la projection l'ignore par une branche EXPLICITE (aucun debit), pas par chute
+  silencieuse ;
+- i18n des deux cotes.
+
+Audit v52 refuse desormais toute `period` hors des quatre que le JSX sait lire :
+une periode inconnue se diluait en zero sans rien dire.
+
+### File de capture
+
+Remonte a 3 URLs — les trois sous-dons, qui n'ont pas de capture et donc pas
+d'apiId. Les valeurs ci-dessus sont lues sur le wiki en ligne le 25/09 ; la
+capture reste a faire pour l'apiId (lecture de stock) et pour que les parseurs
+travaillent sur la source du depot.

@@ -64,6 +64,7 @@ const I18N = {
     cad_per_day: "day",
     cad_per_week: "week",
     cad_per_season: "season",
+    cad_per_character: "character",
     cad_empty: "Pick your target legendaries above to compute needs and delays.",
     cad_clear: "Clear selection",
     arb_title: "Magnetite arbitration",
@@ -293,6 +294,7 @@ const I18N = {
     cad_per_day: "jour",
     cad_per_week: "sem",
     cad_per_season: "saison",
+    cad_per_character: "personnage",
     cad_empty: "Sélectionne tes légendaires cibles ci-dessus pour calculer besoins et délais.",
     cad_clear: "Vider la sélection",
     arb_title: "Arbitrage Magnetite",
@@ -3086,7 +3088,10 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
   // Une case cochée est valable pour sa période : la clé porte l'identifiant
   // de période, donc une case d'hier n'est plus lue aujourd'hui.
   const ckey = (compId, idx, period) =>
-    `${compId}|${idx}|${period === "day" ? P.dayId : period === "week" ? P.weekId : "season"}`;
+    // Un plafond par personnage ne se reinitialise jamais : sa case doit
+    // survivre au changement de jour, de semaine et de saison. Sans cle propre
+    // elle tombait dans le seau "season" et se decochait a la saison suivante.
+    `${compId}|${idx}|${period === "day" ? P.dayId : period === "week" ? P.weekId : period === "character" ? "once" : "season"}`;
   const isChecked = (compId, idx, period) => !!checks[ckey(compId, idx, period)];
   const toggleCheck = (compId, idx, period) => setChecks(prev => {
     const k = ckey(compId, idx, period), next = { ...prev };
@@ -3151,6 +3156,10 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
         // Une saison PvP dure une poignée de semaines et les intersaisons ne
         // produisent rien : on ne lisse pas, on signale.
         else if (f.period === "season") hasSeason = true;
+        // Un achat unique par personnage n'a pas de debit : il n'ajoute rien a
+        // perWeek. Branche explicite plutot que chute silencieuse — une periode
+        // inconnue doit se voir, pas se diluer dans zero.
+        else if (f.period === "character") { /* un seul, jamais renouvele */ }
       }
       const weeks = missing !== null && perWeek > 0 ? Math.ceil(missing / perWeek) : null;
       const nSrc = cad.sources.length, nVer = cad.sources.filter(f => f.verified).length;
