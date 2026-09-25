@@ -2266,3 +2266,25 @@ booleen `commander`**, vrai des qu'un tag est achete, sous le scope `account`.
 Pose des DEUX cotes le meme jour, comme l'exige ROUTES.md : Flask v41 rend
 `_commander`, la synchro directe aussi, et `null` quand l'appel echoue — une
 porte inconnue n'est pas une porte fermee. Le controle de symetrie valide.
+
+## AT — 25/09/2026 : les liens marchaient, ce sont les noms qui manquaient
+
+Non, les liens ne demandent aucun serveur : `WIKI_PAR_BIT` est batie depuis
+`SOURCES_DB`, embarque dans le HTML. Et la capture d'Antoine le montre — les
+sept etapes de Chef-Tonnerre sont bien **soulignees, donc cliquables**.
+
+Le probleme est ailleurs : elles s'appellent « STEP 1 » a « STEP 7 ». Un lien
+dont le libelle ne dit rien ne ressemble pas a un lien vers quelque chose.
+
+Le rendu generique tire ses libelles de la definition de succes de l'API. Quand
+elle n'en donne pas — cas des collections de Vision — il retombait sur
+`t("bits_step")`, alors que **nos sources portent le vrai nom de chaque case** :
+« Vision of Equipment: Dragonsblood Weapons », « Vision of Allies: Caithe »…
+Les noms etaient la, personne ne les lisait.
+
+`NOM_PAR_BIT`, batie dans la meme passe que `WIKI_PAR_BIT`, est interrogee
+juste avant le repli. Les sept « STEP n » redeviennent des noms.
+
+La seconde capture montre le comportement attendu ailleurs : la meta « All or
+Nothing » affiche de vrais noms **sans lien**, parce que `vis_ep_allornothing`
+n'a aucun `items` dans les sources. Pas de page, pas de lien — comme voulu.

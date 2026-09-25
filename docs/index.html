@@ -74810,17 +74810,25 @@ function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, rece
 // donc jamais : non pas casses, jamais branches.
 //
 // D'ou cette table, batie une fois : (id de succes, numero de case) -> page.
-const WIKI_PAR_BIT = (() => {
-  const m = new Map();
+const WIKI_PAR_BIT = new Map();
+// Meme table pour les NOMS. Le rendu generique tire ses libelles de la
+// definition de succes de l'API ; quand elle n'en donne pas, il retombait sur
+// « STEP 1 », « STEP 2 »… alors que nos sources portent le vrai nom de chaque
+// case. Chef-Tonnerre affichait sept « STEP n » cliquables, ce qui ne dit rien
+// de ce qu'on va ouvrir.
+const NOM_PAR_BIT = new Map();
+(() => {
   for (const leg of Object.values(SOURCES_DB?.legendaries ?? {})) {
     for (const col of Object.values(leg?.collections ?? {})) {
       if (!col?.id) continue;
       for (const it of (col.items ?? [])) {
-        if (it?.wiki && typeof it.bit === "number") m.set(`${col.id}-${it.bit}`, it.wiki);
+        if (typeof it?.bit !== "number") continue;
+        const cle = `${col.id}-${it.bit}`;
+        if (it.wiki) WIKI_PAR_BIT.set(cle, it.wiki);
+        if (it.name) NOM_PAR_BIT.set(cle, it.name);
       }
     }
   }
-  return m;
 })();
 
 function LienWiki({ page, children }) {
@@ -79770,6 +79778,12 @@ function GW2LegendaryTracker() {
                       else if (b.type === "Skin" && b.id) { const s = def.names?.["s" + String(b.id)]; label = s ? `${s} (skin)` : null; }
                       else if (b.type === "Minipet" && b.id) { const m = def.names?.["m" + String(b.id)]; label = m ? `${m} (mini)` : null; }
                       if (!label && a.bitNames && a.bitNames[i]) label = NX(a.bitNames[i]);
+                      // Nos sources avant le repli « STEP n » : elles portent
+                      // le vrai nom de la case quand l'API n'en donne pas.
+                      if (!label) {
+                        const n = NOM_PAR_BIT.get(`${a.achievementId}-${i}`);
+                        if (n) label = NX(n);
+                      }
                       let unnamed = false;
                       if (!label) { label = t("bits_step", { n: i + 1 }); unnamed = true; }
                       return (
