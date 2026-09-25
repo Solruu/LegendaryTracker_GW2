@@ -2228,3 +2228,41 @@ Il ne se coche pas tout seul, et c'est attendu — ce n'est pas une recette, don
 `/v2/recipes/search` rend vide. Mais une meilleure voie existe : **`/v2/account`
 rend un booleen `commander`**, vrai des qu'un tag est achete. Scope `account`,
 que la cle d'Antoine porte deja. Non fait ici.
+
+## AS — 25/09/2026 : les liens wiki n'etaient pas casses, ils n'etaient jamais branches
+
+Antoine : « soit je n'ai pas compris comment tu l'as implemente, soit c'est
+casse ». Ni l'un ni l'autre : **ils n'apparaissaient que sur Aurora.**
+
+`NomEtape`, pose le 18/09, servait les TROIS rendus qui lisent leurs etapes
+dans `SOURCES_DB` — les deux collections d'Aurora et un bloc voisin. Or le rendu
+GENERIQUE, celui de Vision et de toutes les autres cibles, construit ses
+libelles depuis la **definition de succes de l'API** : il n'a pas d'objet
+`item`, donc pas de champ `wiki`. J'avais verifie que les trois occurrences de
+`{NX(item.name)}` etaient couvertes, et conclu que tous les rendus l'etaient.
+Elles l'etaient ; il existait un quatrieme chemin qui n'affiche pas
+`item.name` du tout.
+
+Les 2 399 liens etaient donc invisibles partout sauf sur une cible.
+
+`WIKI_PAR_BIT` fait la jonction : une table batie une fois,
+**(id de succes, numero de case) → page**, que le rendu generique interroge avec
+`a.achievementId` et l'indice de la case. Le lien s'affiche desormais sur
+toutes les cibles.
+
+Deux corrections au passage :
+
+- `LienWiki` remplace le `<a>` ecrit deux fois. Il porte un
+  `stopPropagation` : dans les rendus ou la ligne est cliquable, cliquer le nom
+  cochait l'etape au lieu d'ouvrir le wiki.
+- Une page absente laisse le libelle tel quel, sans lien mort.
+
+### Le tag de commandant se coche tout seul
+
+`/v2/recipes/search` rend vide pour lui — ce n'est pas une recette — donc la
+detection des feuilles ne pouvait pas l'atteindre. **`/v2/account` porte un
+booleen `commander`**, vrai des qu'un tag est achete, sous le scope `account`.
+
+Pose des DEUX cotes le meme jour, comme l'exige ROUTES.md : Flask v41 rend
+`_commander`, la synchro directe aussi, et `null` quand l'appel echoue — une
+porte inconnue n'est pas une porte fermee. Le controle de symetrie valide.

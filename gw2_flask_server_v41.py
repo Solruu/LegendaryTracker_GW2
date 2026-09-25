@@ -993,6 +993,15 @@ def progression():
     else:
         mat_dict = parse_materials(materials_raw)
 
+    # ── Compte : le booleen `commander` dit si un tag a ete achete. Le
+    # compendium n'etant pas une recette, c'est le seul signal disponible.
+    compte_raw, err = gw2_get("account", api_key)
+    commander = None
+    if err:
+        errors.append(f"account: {err}")
+    elif isinstance(compte_raw, dict) and isinstance(compte_raw.get("commander"), bool):
+        commander = compte_raw["commander"]
+
     # ── Recettes debloquees (pour les feuilles achetees une fois par compte)
     recipes_raw, err = gw2_get("account/recipes", api_key)
     if err:
@@ -1411,6 +1420,9 @@ def progression():
         # Flask, dont la cle vit dans le .env. Sans cette ligne, la detection
         # marchait en synchro directe et pas en Flask.
         "_recipes": recipes_list,
+        # Tag de commandant achete ? `null` quand l'appel echoue : une porte
+        # inconnue n'est pas une porte fermee (ROUTES.md).
+        "_commander": commander,
     }
 
     return jsonify(result)

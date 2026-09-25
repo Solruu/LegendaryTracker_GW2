@@ -74742,7 +74742,7 @@ function FactureEtape({ cid, NX }) {
 // La pertinence n'est pas une liste ecrite a la main — elle se DEDUIT : la
 // feuille concerne cette legendaire si le don qu'elle enseigne figure a son
 // total. Le jour ou une recette change, l'affichage suit tout seul.
-function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, recetteParDon }) {
+function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, recetteParDon, commander }) {
   const cc = SOURCES_DB?.craft_components ?? {};
   const utiles = Object.entries(cc)
     .filter(([, c]) => c?.kind === "account_unlock" && c?.enseigne)
@@ -74757,6 +74757,9 @@ function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, rece
                           // Detectee comme apprise : le compte connait une des
                           // recettes qui produisent ce don.
                           auto: (() => {
+                            // Le tag de commandant se lit sur le compte, pas
+                            // dans les recettes : il n'en est pas une.
+                            if (cid === "commanders_compendium") return commander === true;
                             const don = cc[c.enseigne]?.apiId;
                             const rec = recetteParDon?.[String(don)];
                             if (!recettesCompte || !Array.isArray(rec) || !rec.length) return false;
@@ -74798,20 +74801,41 @@ function AchatsUniques({ totals, NX, acquises, setAcquises, recettesCompte, rece
   );
 }
 
-function NomEtape({ item, NX }) {
-  const nom = NX(item.name);
-  if (!item.wiki) return nom;
+// Lien wiki d'une etape, indexe par (succes, numero de case).
+//
+// `NomEtape` ne servait que les trois rendus d'Aurora, qui lisent leurs etapes
+// dans SOURCES_DB. Le rendu GENERIQUE — celui de Vision et de toutes les autres
+// cibles — construit ses libelles depuis la definition de succes de l'API, ou
+// `item.wiki` n'existe pas. Les 2 399 liens poses le 18/09 n'y apparaissaient
+// donc jamais : non pas casses, jamais branches.
+//
+// D'ou cette table, batie une fois : (id de succes, numero de case) -> page.
+const WIKI_PAR_BIT = (() => {
+  const m = new Map();
+  for (const leg of Object.values(SOURCES_DB?.legendaries ?? {})) {
+    for (const col of Object.values(leg?.collections ?? {})) {
+      if (!col?.id) continue;
+      for (const it of (col.items ?? [])) {
+        if (it?.wiki && typeof it.bit === "number") m.set(`${col.id}-${it.bit}`, it.wiki);
+      }
+    }
+  }
+  return m;
+})();
+
+function LienWiki({ page, children }) {
+  if (!page) return children;
   return (
-    <a
-      href={`https://wiki.guildwars2.com/wiki/${item.wiki}`}
-      target="_blank"
-      rel="noreferrer"
-      title="wiki"
-      style={{ color: "inherit", textDecoration: "underline", textDecorationColor: "rgba(94,234,212,0.45)", textUnderlineOffset: 2 }}
-    >
-      {nom}
+    <a href={`https://wiki.guildwars2.com/wiki/${page}`} target="_blank" rel="noreferrer"
+       title="wiki" onClick={e => e.stopPropagation()}
+       style={{ color: "inherit", textDecoration: "underline", textDecorationColor: "rgba(94,234,212,0.45)", textUnderlineOffset: 2 }}>
+      {children}
     </a>
   );
+}
+
+function NomEtape({ item, NX }) {
+  return <LienWiki page={item.wiki}>{NX(item.name)}</LienWiki>;
 }
 
 function FieldTip({ tip, NX }) {
@@ -76902,6 +76926,7 @@ function GW2LegendaryTracker() {
   // bon comportement — le compendium de commandant, qui n'est pas une recette,
   // reste coche a la main.
   const [recettesCompte, setRecettesCompte] = useState(null);
+  const [commander, setCommander] = useState(null);
   const [recetteParDon, setRecetteParDon] = useState(() => {
     try { return JSON.parse(localStorage.getItem("gw2_recette_par_don") ?? "null") ?? {}; } catch { return {}; }
   });
@@ -77107,6 +77132,11 @@ function GW2LegendaryTracker() {
     const bags = await readCharacterBags(tk);
     // Recettes debloquees : Flask les rend sous `_recipes` depuis la v40, la
     // synchro directe doit rendre la meme chose.
+    let commanderDirect = null;
+    try {
+      const ar = await fetch(`https://api.guildwars2.com/v2/account?${tk}`);
+      if (ar.ok) { const j = await ar.json(); if (typeof j?.commander === "boolean") commanderDirect = j.commander; }
+    } catch (_) { /* inconnu, pas ferme */ }
     let recipesDirect = [];
     try {
       const rr = await fetch(`https://api.guildwars2.com/v2/account/recipes?${tk}`);
@@ -77231,7 +77261,7 @@ function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -77348,6 +77378,10 @@ function GW2LegendaryTracker() {
       if (Array.isArray(data._recipes) && data._recipes.length) {
         setRecettesCompte(new Set(data._recipes));
       }
+      // Le compendium de commandant n'est pas une recette : /v2/recipes/search
+      // rend vide pour lui, il restait donc a cocher a la main. /v2/account
+      // porte un booleen `commander`, vrai des qu'un tag est achete.
+      if (typeof data._commander === "boolean") setCommander(data._commander);
       if (data._gates) {
         try { localStorage.setItem("gw2_gates", JSON.stringify(data._gates)); } catch (_) {}
         setAcctGates(data._gates);
@@ -79742,7 +79776,9 @@ function GW2LegendaryTracker() {
                         <div key={i} style={{ padding: "2px 0" }}>
                           <div style={{ display: "flex", alignItems: "baseline", gap: "6px", fontSize: "11px", color: stepDone ? "#4ade80" : "rgba(226,201,126,0.6)" }}>
                             <span style={{ fontSize: "10px", width: 12, flexShrink: 0 }}>{stepDone ? "✓" : "○"}</span>
-                            <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>{label}</span>
+                            <span style={{ textDecoration: stepDone ? "line-through" : "none", opacity: stepDone ? 0.7 : 1 }}>
+                              <LienWiki page={WIKI_PAR_BIT.get(`${a.achievementId}-${i}`)}>{label}</LienWiki>
+                            </span>
                             {!stepDone && childSt && childSt.max > 1 && (
                               <span style={{ fontSize: "10px", color: legColor, opacity: 0.75, flexShrink: 0 }}>{childSt.current ?? 0}/{childSt.max}</span>
                             )}
@@ -79985,7 +80021,8 @@ function GW2LegendaryTracker() {
           <AchatsUniques
             totals={legTotals} NX={NX}
             acquises={feuillesAcquises} setAcquises={setFeuillesAcquises}
-            recettesCompte={recettesCompte} recetteParDon={recetteParDon} />
+            recettesCompte={recettesCompte} recetteParDon={recetteParDon}
+            commander={commander} />
           <div className="reset-info" style={{ marginTop: "8px" }}>{t("reset_info_progress")}</div>
         </div>
       )}
