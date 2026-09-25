@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v319.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v320.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v5.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -17,11 +17,8 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Gift of the Highlands` | 1 |
-| `Gift of the Oasis` | 1 |
-| `Gift of the Riverlands` | 1 |
 
-### 0 ter — 7 trous dont la page est DÉJÀ au dépôt
+### 0 ter — 10 trous dont la page est DÉJÀ au dépôt
 
 Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
 page de catégorie, de monnaie, ou objet non fabricable. Aucune
@@ -32,6 +29,9 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Bloodstone Shard`
 - `Fractalline Spark`
 - `Gift of the Desolation`
+- `Gift of the Highlands`
+- `Gift of the Oasis`
+- `Gift of the Riverlands`
 - `Perfect Mist Core`
 - `Spark of Sentience`
 
@@ -53,16 +53,13 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 3 composants sans apiId ni page
+## 3 — 0 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
-| `Gift of the Highlands` |
-| `Gift of the Oasis` |
-| `Gift of the Riverlands` |
 
 ## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
@@ -115,10 +112,7 @@ la section « URLs ».
 | ● | `Lasting Bonds: What We Do Here` | Vision | 4106 | sans unlock | — |
 | ● | `Lasting Bonds: Where We Come From` | Vision | 4144 | sans unlock | — |
 
-## URLs — 3 pages à capturer
+## URLs — 0 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Gift_of_the_Highlands
-https://wiki.guildwars2.com/wiki/Gift_of_the_Oasis
-https://wiki.guildwars2.com/wiki/Gift_of_the_Riverlands
 ```

@@ -2449,3 +2449,20 @@ Remonte a 3 URLs — les trois sous-dons, qui n'ont pas de capture et donc pas
 d'apiId. Les valeurs ci-dessus sont lues sur le wiki en ligne le 25/09 ; la
 capture reste a faire pour l'apiId (lecture de stock) et pour que les parseurs
 travaillent sur la source du depot.
+
+## AW — 25/09/2026 : les trois captures confirment la lecture en ligne
+
+Les trois sous-dons sont au depot. Confrontation avec ce qui avait ete lu sur le
+wiki en ligne le meme jour : **aucun ecart**. 23 331 karma, completion de carte,
+1 par personnage, et les memes vendeurs — Melilla et Tendaji pour Highlands,
+Follower Xunn pour Riverlands.
+
+Un seul apport : la lecture en ligne masquait le vendeur de l'Oasis derriere une
+image, la capture le nomme — **Priestess Karima** (Amnoon Farms). Et les trois
+apiId, que seule la capture porte : Oasis 85961, Highlands 86018, Riverlands
+86241. Le stock des trois est desormais lisible.
+
+Les `ref` passent de « lecture en ligne » a « captures Antoine 25/09/2026 » : la
+source citee est celle du depot, pas une page consultee une fois.
+
+File de capture a **0 URL**, sections 0 a 3 bis toutes a zero.

@@ -954,6 +954,9 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `superior_rune_of_holding.html` | Superior Rune of Holding | article complet | 2026-09-25 |
 | `supreme_rune_of_holding.html` | Supreme Rune of Holding | article complet | 2026-09-25 |
 | `the_head_of_the_snake_achievements.html` | The Head of the Snake (achievements) | article complet | 2026-09-25 |
+| `gift_of_the_highlands.html` | Gift of the Highlands | article complet | 2026-09-25 |
+| `gift_of_the_oasis.html` | Gift of the Oasis | article complet | 2026-09-25 |
+| `gift_of_the_riverlands.html` | Gift of the Riverlands | article complet | 2026-09-25 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
