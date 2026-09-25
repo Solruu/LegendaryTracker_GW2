@@ -998,6 +998,52 @@ UNLOCK_FIELDS = {"legendary", "key", "text", "gate", "cadence_ref",
                  "verified", "checked", "ref"}
 
 
+
+def check_unlock_none(data, errors, warnings):
+    """`unlock_none_ref` dit « ce succes ne se debloque pas », et le prouve.
+
+    La section 4 de la file de capture reclamait un bloc `unlock` pour 27
+    collections. La lecture des captures montre que beaucoup n'en ont pas a
+    avoir : les six Incursive Investigation sont des compteurs (« gagner 150
+    poussieres fractalines »), les masteries de meta sont le meta de leur
+    categorie. Le modele Ad Infinitum -- prerequis, objet declencheur,
+    recompense -- n'a rien a y decrire.
+
+    Sans facon d'ecrire cette absence, la file gardait des lignes que personne
+    ne pouvait fermer, et la seule sortie etait d'inventer un bloc vide. D'ou ce
+    drapeau. Mais une absence affirmee sans preuve vaut l'invention qu'elle
+    remplace : le drapeau porte donc la capture qui l'etablit, et elle doit
+    exister au depot. C'est le meme marche que `cadence_ref`.
+    """
+    for lk, lv in sorted(data.get("legendaries", {}).items()):
+        if not isinstance(lv, dict):
+            continue
+        for ck, cv in sorted((lv.get("collections") or {}).items()):
+            if not isinstance(cv, dict):
+                continue
+            ref = cv.get("unlock_none_ref")
+            if ref is None:
+                continue
+            label = f"legendaries/{lk}/collections/{ck}"
+            if not (isinstance(ref, str) and ref.startswith("wiki:") and ref[5:].strip()):
+                errors.append(
+                    f"{label} : unlock_none_ref doit nommer une page, "
+                    f"sous la forme 'wiki:Titre' — recu {ref!r}"
+                )
+                continue
+            if cv.get("unlock"):
+                errors.append(
+                    f"{label} : porte a la fois unlock et unlock_none_ref — "
+                    "l'un dit comment ca se debloque, l'autre que ca ne se debloque pas"
+                )
+            page = ref.split("wiki:", 1)[1].split(" ")[0]
+            slug = re.sub(r"[^a-z0-9]+", "_", page.lower()).strip("_") + ".html"
+            if not (HERE / "ressources" / "wiki" / slug).exists():
+                errors.append(
+                    f"{label} : unlock_none_ref pointe '{page}', dont la capture "
+                    f"({slug}) n'est pas au depot — une absence affirmee sans preuve"
+                )
+
 def check_collection_unlocks(data, errors, warnings):
     """Le deblocage des collections : prose exacte, porte testable.
 
@@ -2258,6 +2304,7 @@ def main() -> int:
     check_cadence_flags(data, errors, warnings)
 
     # 13. Deblocage des collections : prose complete, portes testables
+    check_unlock_none(data, errors, warnings)
     check_collection_unlocks(data, errors, warnings)
 
     # 14. Guides ecrits et guides affiches : meme ensemble

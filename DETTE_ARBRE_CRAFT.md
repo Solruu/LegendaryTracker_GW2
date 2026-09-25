@@ -2496,3 +2496,42 @@ Il manque donc une facon d'ecrire « ce succes ne se debloque pas », distincte 
 « on n'a pas encore lu ». Sans elle, la section 4 restera peuplee de lignes que
 personne ne peut fermer. A trancher avant de capturer quoi que ce soit pour
 elles.
+
+## AY — 25/09/2026 : `unlock_none_ref`, ou comment ecrire une absence sans l'inventer
+
+La section 4 reclamait un bloc `unlock` pour 27 collections. Le modele Ad
+Infinitum — `prerequisite` / `unlock_item` / `reward` — n'a rien a y decrire
+pour beaucoup d'entre elles : les six `Incursive Investigation` sont des
+compteurs (« gagner 150 poussieres fractalines », puis 300), les masteries sont
+le meta de leur categorie, `Legendary Rune Collector` demande de lier 7 runes.
+Rien ne les debloque.
+
+Sans facon d'ecrire cette absence, la file gardait des lignes que personne ne
+pouvait fermer, et la seule sortie etait d'inventer un bloc vide. Mais une
+absence affirmee sans preuve vaut l'invention qu'elle remplace : le drapeau
+porte donc la capture qui l'etablit, et l'audit verifie qu'elle est au depot.
+Meme marche que `cadence_ref`.
+
+- `unlock_none_ref: "wiki:<Titre>"` sur la collection ;
+- audit v53 : forme `wiki:Titre`, capture presente au depot, et interdiction de
+  porter `unlock` ET `unlock_none_ref` — l'un dit comment ca se debloque,
+  l'autre que ca ne se debloque pas. Teste en negatif : un titre bidon echoue ;
+- `gw2_pages_a_capturer_v8.py` compte la ligne comme fermee.
+
+**20 collections flaguees, 3 vrais `unlock` poses.** Les trois Lasting Bonds
+avaient bien une chaine, lisible dans leurs captures : `Where We Come From`
+exige le chapitre « The Charge » et rend la Handwoven Olmakhan Bandolier ;
+`What We Do Here` rend la Pocketed ; `What Comes Next` rend la Reinforced. Pour
+ces deux dernieres, seule la recompense est ecrite : le bandoulier precedent
+ouvre visiblement la suivante, mais la capture ne le DIT pas, donc on ne
+l'ecrit pas.
+
+Section 4 : **27 -> 11**.
+
+### La meme question se repose pour `items`
+
+Sur les 11 restantes, 7 sont marquees « sans etapes » et sont exactement les
+memes compteurs : un objectif numerique unique, aucune etape a lister. C'est le
+symetrique exact de ce qui vient d'etre regle, et le meme drapeau resoudrait le
+reste de la liste. Forme non tranchee : second champ (`items_none_ref`) ou un
+drapeau unique couvrant les deux absences.
