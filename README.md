@@ -17,6 +17,7 @@ Tracker personnel de craft d'objets légendaires Guild Wars 2 — 13 onglets cou
 | `gw2_refresh_refs_v2.py` | **Régénération des référentiels** depuis l'API publique | `gw2_currencies_ref.json`, `gw2_materials_ref.json`, `gw2_achievements_ref.json` |
 | `gw2_dump_bits_v3.py` | **Collecte de données éditoriales** : dump des bits ordonnés / tiers / points des achievements, pour rédiger les `bitTips` au bon index et repérer les compteurs sans étapes | `gw2_bits_dump.json` (jetable, non consommé par l'app) |
 | `gw2_meta_pages_v2.py` | **Pages wiki des objectifs de méta** : lit l'ancre `#achievementNNNN` de chaque capture de méta et pose `[id, nom, page]` dans `meta_eligible`. Sans `--ecrire`, mesure seulement | `gw2_sources_vN+1.json` |
+| `gw2_relecture_recettes_v1.py` | **Relecture des recettes par légendaire** : descend depuis chaque cible et compare, à chaque nœud, les enfants déclarés à la recette de sa capture. Appariement par apiId. Ne modifie rien | `RELECTURE_RECETTES_vN.md` |
 
 Les trois s'exécutent **en local** : `api.guildwars2.com` n'est pas joignable depuis l'environnement de développement assisté.
 

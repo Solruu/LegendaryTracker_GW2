@@ -2750,3 +2750,60 @@ avec des pincettes — le rapprochement se fait par slug, donc les pluriels
 (`Philosopher%27s_Stone`) comptent a tort. Il faut un vrai appariement, par
 apiId quand il existe, avant d'en faire une section de la file. A faire, pas
 fait ici.
+
+## BF — 25/09/2026 : la relecture des recettes, par legendaire
+
+Remarque d'Antoine : cette relecture aurait du etre la base du travail. Elle
+l'est maintenant. `gw2_relecture_recettes_v1.py` descend depuis chaque
+legendaire et compare, a chaque noeud, les enfants declares a la recette lue
+sur sa capture. Il ne modifie rien.
+
+### Pourquoi la mesure a plat ne valait rien
+
+196 composants en defaut, 171 ingredients absents : chiffre obtenu en
+comparant des slugs. Il comptait `Obsidian_Shards` contre `obsidian_shard`,
+`Philosopher%27s_Stone` contre `philosophers_stone`, et ignorait qu'un
+ingredient peut etre un legendaire (Eternity coute Sunrise et Twilight).
+
+L'appariement se fait donc par **apiId** d'abord — 591 des 601 composants en
+portent un, 635 des 886 pages aussi — puis par nom, puis par titre de page.
+Deux formes de pluriel sont rattrapees, le mot entier et la tete d'un groupe
+`X of Y` (`Piles_of_Bloodstone_Dust` -> `pile_of_bloodstone_dust`), et un
+appariement obtenu ainsi est **signale comme a confirmer** plutot que compte
+pour acquis.
+
+### Quatre defauts, qui ne coutent pas la meme chose
+
+| defaut | distincts | ce que ca coute |
+|---|---:|---|
+| MANQUANT | 128 | la recette cite un ingredient absent de l'arbre : le cout n'existe nulle part |
+| NON_RELIE | 33 | l'ingredient EXISTE mais aucune arete `qty` ne le rattache — le cout existe et ne remonte pas. **Le plus sournois** : l'inventaire semble complet, seule la cascade est fausse |
+| EN_TROP | 15 | enfant declare hors recette ; souvent legitime |
+| NON_DECOMPOSE | 53 | recette lue, aucun enfant : feuille assumee, decision a revoir |
+
+### Deux choix qui font tenir le rapport
+
+Un composant est une unite de craft, pas une ligne par cible : chaque defaut
+est compte **une fois**, avec la liste des legendaires qui le rencontrent.
+1 847 lignes brutes deviennent **229 decisions**. `mystic_clover` est atteint
+par 80 cibles et n'a qu'un seul defaut.
+
+Un noeud sans AUCUN enfant est une feuille assumee, pas un bug : une ligne, pas
+une par ingredient. `obsidian_shard` et `mystic_clover` produisaient a eux
+seuls huit lignes pour une seule decision de modelisation. Et la racine d'un
+legendaire porte en plus les totaux agreges de sa « Full material list » : ses
+enfants depassent legitimement sa recette de Forge, on ne les compte pas en
+trop.
+
+### Ce que ca sort deja
+
+`spiritwood_plank` manque Soft Wood Plank et Glob of Elder Spirit Residue, et
+il est atteint par huit legendaires. `certificate_of_heroics` et
+`essence_of_animosity` reclament un `Testimony_of_Jade_Heroics` qui a sa
+capture au depot mais aucun composant — a ne pas confondre avec
+`testimony_of_heroics`, qui existe et est un autre objet.
+`deldrimor_steel_ingot` a ses enfants a moitie poses. `gen1_eternity` ne
+declare ni Sunrise ni Twilight.
+
+Le rapport n'est pas branche sur l'audit : 229 defauts bloqueraient tout push.
+Il se lit, se travaille, et l'audit prendra le relais famille par famille.
