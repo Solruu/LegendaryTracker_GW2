@@ -2687,3 +2687,31 @@ change une progression affichee. Le repli du JSX (bit brut) masque l'erreur si
 detail « x/y » de cette ligne. A confirmer sur le compte d'Antoine, qui
 tranchera mieux que le wiki : si 5748 ne renvoie rien alors que la ligne est
 faite, c'est 9991.
+
+## BD — 25/09/2026 : le bit_map confronte au wiki, et une regle pour qu'il y reste
+
+Regle d'Antoine, tranchee : **si une source wiki donne un identifiant, c'est le
+bon.** Les 24 bits de `bit_map` sont donc confrontes aux ancres
+`#achievementNNNN` des captures. Resultat : 21 exacts, 1 ecart, 2 noms a
+reprendre, 1 bit legitimement sans identifiant.
+
+- bit 9 « Return to Siren's Landing » : **5748 -> 9991**. `bit_map` vient de
+  l'ancien serveur Flask, pas d'une lecture du wiki, et il avait derive.
+  L'erreur etait invisible a l'usage — sans reponse de l'API, le JSX se replie
+  sur le bit brut du compte — mais faussait le detail « x/y » de la ligne.
+- bit 11 : « Return to the Sandswept Isles » -> « Return to Sandswept Isles » ;
+  bit 19 : « Return to the Eye of the North » -> « Return to Eye of the
+  North ». Le wiki fait autorite sur le nom comme sur l'identifiant.
+- bit 23 reste `null` : « Return to Champions » est la collection, pas un
+  succes (cf. BC). La regle ne confronte pas un bit sans identifiant.
+
+Ce que la confrontation revele en passant : la page d'un « Return to » porte le
+nom de l'EPISODE, pas de la carte. `Return to Siren's Landing` vit sur
+`Return_to_One_Path_Ends`, `Return to Sandswept Isles` sur
+`Return_to_A_Bug_in_the_System`. Chercher ces succes par leur nom de carte ne
+donne rien — c'est la meme famille d'erreur que les deux 404 de BB.
+
+Audit v55 : la regle tourne a chaque passe, sur tout bloc `direct_sync` portant
+un `bit_map`. Un nom qu'aucune capture n'ancre devient un avertissement
+(identifiant inverifiable), un nom ancre sur un autre identifiant devient une
+erreur. Teste en negatif : remettre 5748 fait echouer l'audit.

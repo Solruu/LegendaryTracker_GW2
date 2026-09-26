@@ -23,6 +23,7 @@ Usage :
     python3 gw2_audit_v1.py            # prend le gw2_sources_v*.json le plus recent
 """
 import json
+import html
 import re
 import sys
 from pathlib import Path
@@ -1000,6 +1001,56 @@ UNLOCK_FIELDS = {"legendary", "key", "text", "gate", "cadence_ref",
 
 
 ABSENCE_KINDS = {"unlock", "items"}
+
+
+
+def check_bit_map(data, errors, warnings):
+    """Un identifiant donne par le wiki est le bon. Regle d'Antoine, appliquee ici.
+
+    `bit_map` associe chaque bit du succes 5790 a son « Return to... ». Il vient
+    de l'ancien serveur Flask, pas d'une lecture du wiki, et il avait derive :
+    le bit 9 portait 5748 la ou la capture ancre le meme nom sur 9991. L'erreur
+    etait invisible a l'usage -- sans reponse de l'API, le JSX se replie sur le
+    bit brut du compte -- mais faussait le detail « x/y » de cette ligne.
+
+    On confronte donc chaque nom du `bit_map` aux ancres `#achievementNNNN` des
+    captures : si le wiki donne un autre identifiant pour ce nom, c'est le
+    wiki qui a raison. Un bit sans identifiant est legitime (le bit 23 est la
+    collection « Return to Champions », pas un succes) et n'est pas confronte.
+    """
+    blocs = ((data.get("_meta") or {}).get("direct_sync") or {})
+    par_nom = {}
+    for f in sorted((HERE / "ressources" / "wiki").glob("*.html")):
+        txt = f.read_text(encoding="utf-8", errors="ignore")
+        for aid, libelle in re.findall(
+                r'href="[^"]*#achievement(\d+)"[^>]*>([^<]{1,80})</a>', txt):
+            cle = re.sub(r"\s+", " ", html.unescape(libelle)).strip().casefold()
+            par_nom.setdefault(cle, (int(aid), f.stem))
+    for nom_bloc, bloc in sorted(blocs.items()):
+        if not (isinstance(bloc, dict) and bloc.get("bit_map")):
+            continue
+        for entree in bloc["bit_map"]:
+            if not (isinstance(entree, list) and len(entree) == 3):
+                errors.append(
+                    f"_meta/direct_sync/{nom_bloc}/bit_map : entree mal formee "
+                    f"{entree!r}, attendu [bit, id, nom]"
+                )
+                continue
+            bit, aid, nom = entree
+            if aid is None:
+                continue
+            hit = par_nom.get(re.sub(r"\s+", " ", str(nom)).strip().casefold())
+            if not hit:
+                warnings.append(
+                    f"_meta/direct_sync/{nom_bloc}/bit_map bit {bit} ({nom}) : "
+                    "aucune capture n'ancre ce nom — identifiant invérifiable"
+                )
+            elif hit[0] != aid:
+                errors.append(
+                    f"_meta/direct_sync/{nom_bloc}/bit_map bit {bit} ({nom}) : "
+                    f"porte {aid}, la capture {hit[1]}.html ancre ce nom sur "
+                    f"{hit[0]} — un identifiant donne par le wiki est le bon"
+                )
 
 
 def check_absences_ref(data, errors, warnings):
@@ -2330,6 +2381,7 @@ def main() -> int:
 
     # 13. Deblocage des collections : prose complete, portes testables
     check_absences_ref(data, errors, warnings)
+    check_bit_map(data, errors, warnings)
     check_collection_unlocks(data, errors, warnings)
 
     # 14. Guides ecrits et guides affiches : meme ensemble
