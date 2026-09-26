@@ -2646,3 +2646,44 @@ Les deux lectures posees dans la foulee, depuis les captures existantes :
 
 **Section 4 : 3 -> 1**, et 0 URL. Le dernier est le succes 5790, dont les
 etapes attendent le 24e meta-succes Return manquant a l'appel.
+
+## BC — 25/09/2026 : le 24e bit de Prismatic, et la section 4 a zero
+
+Antoine se souvenait bien : **le 24e bit n'est pas un succes « Return to »**.
+`_meta.direct_sync.prismatic.bit_map` le dit depuis le debut —
+
+```
+[22, 5861, "Return to the Dragonstorm"]
+[23, null, "Return to Champions"]
+```
+
+Bit 23 n'a pas d'identifiant de succes parce qu'il n'en a pas : « Return to
+Champions » est la COLLECTION qui heberge les autres, pas un succes de plus.
+C'est pour ca que la capture n'ancre que 23 enfants alors que le texte en
+annonce 24, et le JSX le sait deja : sans `achId`, il lit le bit brut du compte
+(`bits.includes(bit)`) au lieu d'interroger un succes.
+
+Il ne manquait donc rien a chercher. Ce qui manquait, c'est que la file le
+sache.
+
+### Les etapes de Prismatic vivent dans `bit_map`
+
+Comme celles des metaSubs vivent dans `meta_eligible`. `bit_map` est la table
+que lit la synchro du compte : recopier ses 24 noms dans `items` creerait deux
+listes a tenir en phase pour un seul fait — exactement la table parallele qu'on
+s'interdit. `gw2_pages_a_capturer_v12.py` reconnait les deux hebergements.
+
+**Section 4 : 1 -> 0.** Les cinq sections de la file sont a zero.
+
+### Un ecart a trancher, non corrige
+
+`bit_map` donne `[9, 5748, "Return to Siren's Landing"]`. La capture
+`living_world_return.html` ancre ce meme nom sur **9991**, sur la page
+`Return_to_One_Path_Ends`. L'un des deux identifiants est perime.
+
+Non corrige ici : `bit_map` pilote la lecture du compte, et changer un id
+change une progression affichee. Le repli du JSX (bit brut) masque l'erreur si
+5748 ne repond pas, ce qui rend l'ecart invisible a l'usage — mais fausse le
+detail « x/y » de cette ligne. A confirmer sur le compte d'Antoine, qui
+tranchera mieux que le wiki : si 5748 ne renvoie rien alors que la ligne est
+faite, c'est 9991.

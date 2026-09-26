@@ -214,10 +214,23 @@ sans_id = sorted(cid for cid, c in cc.items()
 # bits ni liste d'enfants pour ces succes. Les compter "sans etapes" faisait
 # reclamer une capture pour des pages deja lues, deja posees et deja rendues --
 # 14 des 31 lignes de la section 4 etaient ce faux manque.
+# Les etapes d'une collection ne vivent pas toujours dans ses `items`.
+#   - metaSubs  : dans `meta_eligible`, indexe par l'id du meta, parce que
+#     l'API n'expose ni bits ni liste d'enfants pour ces succes ;
+#   - Prismatic : dans `_meta.direct_sync.prismatic.bit_map`, qui associe
+#     chaque bit du succes 5790 a son « Return to... ». C'est la table que lit
+#     la synchro du compte : recopier ces 24 noms dans `items` creerait deux
+#     listes a tenir en phase pour un seul fait.
+# Les reclamer dans la section 4 revient a demander une lecture deja faite.
 META_AVEC_ETAPES = {
     int(mid) for mid, e in (d.get("meta_eligible") or {}).items()
     if (e or {}).get("achievements")
 }
+_ds = (d.get("_meta") or {}).get("direct_sync") or {}
+_cles = _ds.get("achievement_key_ids") or {}
+for _nom, _bloc in _ds.items():
+    if isinstance(_bloc, dict) and _bloc.get("bit_map") and _cles.get(_nom):
+        META_AVEC_ETAPES.add(int(_cles[_nom]))
 
 collections_vides = []
 for lk, lv in legs.items():
@@ -247,7 +260,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v11.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v12.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
