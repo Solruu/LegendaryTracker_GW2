@@ -247,7 +247,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v10.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v11.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
@@ -340,40 +340,70 @@ for c in inconnus:
     urls.append(url(ti))
     out.append(f"| `{ti}` |")
 
-# Un succes se lit dans la capture qui porte SON bloc, pas dans celle du
-# legendaire qui le cite. v9 renvoyait a la page du legendaire sans verifier
-# qu'elle contenait quoi que ce soit : les trois derniers trous pointaient
-# `Endless Summer`, `Orrax Manifested` et `Prismatic Champion's Regalia`, ou
-# aucun des trois blocs ne figure. Un renvoi qu'on ne peut pas suivre vaut une
-# ligne vide. On cherche donc l'ancre `id="achievementNNNN"` dans le depot.
-BLOCS_AU_DEPOT = {}
+# Ou se lit un succes. v10 ne cherchait qu'une chose, l'ancre `id="achievementN"`
+# qui marque le bloc lui-meme, et concluait « a capturer » des qu'elle manquait.
+# Deux lignes ont bascule dans les URLs pour rien : leurs pages n'existent pas
+# (404 sur les deux), et leur contenu etait au depot depuis le debut. La
+# section 4 disait « RIEN À CAPTURER » avec un bon argument -- ce ne sont pas
+# des articles, ce sont des LIGNES d'une collection -- et v10 l'a perdu.
+#
+# Trois facons de retrouver un succes, de la plus sure a la plus faible :
+#   1. `id="achievementN"`   le bloc lui-meme ;
+#   2. `href=...#achievementN` la page le cite avec son identifiant ;
+#   3. son titre exact       la page le cite par son nom, sans ancre -- c'est
+#      le cas de `Legendary Backpack and Glider: Orrax` dans orrax_manifested,
+#      et la meme mise en page sans ancre que Year of the Ascension II a IV.
+# Une absence d'ancre ne vaut pas une absence de contenu.
+PAR_ANCRE, PAR_LIEN, PAR_TITRE = {}, {}, {}
+_titres = {t: aid for t, _leg, aid, _m, _c in collections_vides}
 for _f in sorted((HERE / "ressources" / "wiki").glob("*.html")):
-    for _aid in set(re.findall(r'id="achievement(\d+)"',
-                               _f.read_text(encoding="utf-8", errors="ignore"))):
-        BLOCS_AU_DEPOT.setdefault(int(_aid), _f.stem)
+    _t = _f.read_text(encoding="utf-8", errors="ignore")
+    for _aid in set(re.findall(r'id="achievement(\d+)"', _t)):
+        PAR_ANCRE.setdefault(int(_aid), _f.stem)
+    for _aid in set(re.findall(r'href="[^"]*#achievement(\d+)"', _t)):
+        PAR_LIEN.setdefault(int(_aid), _f.stem)
+    for _titre, _aid in _titres.items():
+        if _titre in _t:
+            PAR_TITRE.setdefault(_aid, _f.stem)
 
-lisibles, a_lire = [], []
+
+def ou_se_lit(aid):
+    """(capture, mode) ou (None, None) : d'ou vient l'information, et comment."""
+    for table, mode in ((PAR_ANCRE, "bloc"), (PAR_LIEN, "cité"), (PAR_TITRE, "nommé")):
+        if aid in table:
+            return table[aid], mode
+    return None, None
+
+
+lisibles, introuvables = [], []
 for t, leg, aid, manque, cap in collections_vides:
-    ou = BLOCS_AU_DEPOT.get(aid)
-    (lisibles if ou else a_lire).append((t, leg, aid, manque, ou))
+    ou, mode = ou_se_lit(aid)
+    (lisibles if ou else introuvables).append((t, leg, aid, manque, ou, mode))
 
 out.append(f"\n## 4 — {len(collections_vides)} collections incomplètes — "
-           f"{len(a_lire)} à capturer\n")
+           f"{len(introuvables)} introuvables au dépôt\n")
 out.append("Une collection est incomplète tant qu'elle n'a ni ses étapes ni sa chaîne")
 out.append("de déblocage, et qu'elle ne déclare pas leur absence avec `absences_ref`")
 out.append("— drapeau qui exige la capture prouvant qu'il n'y a rien à décrire.")
 out.append("")
-out.append("La colonne « où le lire » nomme la capture qui porte le bloc du succès,")
-out.append("vérifiée par son ancre `#achievementNNNN`. Les lignes sans capture sont")
-out.append("reprises dans la section « URLs » : leur page n'est pas au dépôt.\n")
-out.append("| | succès | légendaire | id | ce qui manque | où le lire |")
-out.append("|---|---|---|---:|---|---|")
-for t, leg, aid, manque, ou in lisibles:
-    out.append(f"| ● | `{t}` | {leg} | {aid} | {manque} | `{ou}.html` |")
-for t, leg, aid, manque, _ in a_lire:
-    urls.append(url(t))
-    out.append(f"| ○ | `{t}` | {leg} | {aid} | {manque} | — |")
-manquantes = a_lire
+out.append("La colonne « où le lire » nomme la capture qui porte l'information, et")
+out.append("comment elle s'y trouve : `bloc` pour l'ancre `#achievementNNNN`, `cité`")
+out.append("pour un lien vers cette ancre, `nommé` pour une page qui en parle sans")
+out.append("ancre. Beaucoup de ces succès sont des LIGNES d'une collection, pas des")
+out.append("articles : leur titre n'est pas une URL, et les chercher sur le wiki")
+out.append("renvoie 404. Rien ici ne part dans la section « URLs ».\n")
+out.append("| | succès | légendaire | id | ce qui manque | où le lire | comment |")
+out.append("|---|---|---|---:|---|---|---|")
+for t, leg, aid, manque, ou, mode in lisibles:
+    out.append(f"| ● | `{t}` | {leg} | {aid} | {manque} | `{ou}.html` | {mode} |")
+for t, leg, aid, manque, _ou, _m in introuvables:
+    out.append(f"| ○ | `{t}` | {leg} | {aid} | {manque} | — | — |")
+if introuvables:
+    out.append("")
+    out.append("Les lignes ○ n'ont aucune trace au dépôt. **Vérifier que la page existe**")
+    out.append("avant d'en demander la capture : si le succès est une ligne de collection,")
+    out.append("c'est la page de la collection qu'il faut, pas son titre.")
+manquantes = introuvables
 
 vus, propres = set(), []
 for u in urls:

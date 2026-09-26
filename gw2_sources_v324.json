@@ -24746,7 +24746,11 @@
       }
      },
      "progress_ref": "wiki : compteur de victimes, pas une liste d'objets ; le seuil vit dans total",
-     "progress_verified": true
+     "progress_verified": true,
+     "absences_ref": {
+      "unlock": "wiki:Radiance_of_the_Sun_God",
+      "items": "wiki:Radiance_of_the_Sun_God"
+     }
     },
     "summer_sungod": {
      "id": 9183,
@@ -26937,7 +26941,14 @@
        "how_ref": "migre depuis raidAchievements[] du JSX v170 le 27/08/2026 — conseils editoriaux, non reverifies etape par etape"
       }
      ],
-     "total_ref": "compte des bits exposes par /v2/achievements"
+     "total_ref": "compte des bits exposes par /v2/achievements",
+     "unlock": {
+      "achievement": "Legendary Backpack and Glider: Orrax",
+      "prerequisite": {
+       "name": "Salvation's Cost",
+       "wiki": "Salvation's Cost"
+      }
+     }
     }
    },
    "apiId": 104857

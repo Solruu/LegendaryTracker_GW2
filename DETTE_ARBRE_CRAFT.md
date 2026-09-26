@@ -2608,3 +2608,41 @@ Ses etapes existent et sont extractibles : la capture ancre 23 succes enfants
 `Return to ...`, exactement la forme de `meta_eligible`. Mais le texte dit
 « completer les 24 meta-succes Return » — il en manque donc un a l'appel. On ne
 pose pas une liste dont on sait qu'elle est incomplete.
+
+## BB — 25/09/2026 : une absence d'ancre n'est pas une absence de contenu
+
+Le correctif precedent est alle un cran trop loin. v10 ne cherchait qu'une
+chose, l'ancre `id="achievementNNNN"` qui marque le bloc, et concluait « a
+capturer » des qu'elle manquait. Deux lignes ont bascule dans les URLs pour
+rien : **les deux pages renvoient 404**, et leur contenu etait au depot depuis
+le debut. L'ancien en-tete « RIEN À CAPTURER » avait le bon argument — ce ne
+sont pas des articles, ce sont des LIGNES d'une collection — et v10 l'a perdu
+en meme temps qu'il corrigeait le vrai defaut.
+
+`gw2_pages_a_capturer_v11.py` cherche trois formes, de la plus sure a la plus
+faible, et dit laquelle a repondu :
+
+| mode | ce qu'on a trouve |
+|---|---|
+| `bloc` | `id="achievementNNNN"` — le bloc lui-meme |
+| `cité` | `href=...#achievementNNNN` — la page le cite avec son identifiant |
+| `nommé` | son titre exact, sans ancre |
+
+`Helping Hylek: Kill Krait` etait `cité` dans `radiance_of_the_sun_god.html` —
+v10 ratait cette forme alors que l'identifiant y figure noir sur blanc.
+`Legendary Backpack and Glider: Orrax` est `nommé` dans `orrax_manifested.html`,
+sans ancre, comme Year of the Ascension II a IV.
+
+Une ligne sans aucune des trois traces n'est plus envoyee en URLs : elle part
+dans un encadre qui demande de VERIFIER que la page existe avant d'en reclamer
+la capture. Un titre de ligne de collection n'est pas une URL.
+
+Les deux lectures posees dans la foulee, depuis les captures existantes :
+- 9180 : « Defeat krait at Nonmoa Lake », objectif unique avec son waypoint,
+  aucune chaine de deblocage — `absences_ref` sur les deux ;
+- 8714 : la page le dit en toutes lettres, il faut d'abord finir le
+  pre-succes « Salvation's Cost », le chapitre d'histoire du 3 juin 2025.
+  C'est un vrai `unlock`, avec son prerequis.
+
+**Section 4 : 3 -> 1**, et 0 URL. Le dernier est le succes 5790, dont les
+etapes attendent le 24e meta-succes Return manquant a l'appel.
