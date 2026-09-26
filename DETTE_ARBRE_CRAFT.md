@@ -2841,3 +2841,29 @@ ses bits. Une liste partielle masquerait des etapes ; mieux vaut la redite que
 le trou. Quatre collections portent une liste de lieux et la passent toutes :
 `vision_2` (24), `selachi_agaleus` (24), `aurora_2` (21), `summer_sungod` (20).
 Les trois autres gagnent la synchronisation au passage.
+
+## BH — 25/09/2026 : le correctif deploye partout, et une copie manuelle retiree
+
+Trois endroits rendaient une liste d'etapes. `WaypointList` (le composant),
+les sous-collections d'Aurora I (avec leurs barres de maitrise — un autre
+widget, laisse tel quel), et **une copie manuelle de `WaypointList` pour
+aurora_2 dans l'onglet Aurora** : memes champs, meme mise en forme, meme
+markup, ecrit une seconde fois.
+
+Elle etait synchronisee, mais **a l'index** (`bits2.has(i)`) au lieu du `bit`
+que chaque etape porte. Tant que la liste est dans l'ordre des bits, personne
+ne voit rien ; le jour ou une etape est retiree ou reordonnee, les coches
+glissent d'un cran. C'est le meme defaut que Vision II, un cran plus discret.
+
+Remplacee par `<WaypointList>`, qui lit `item.bit ?? i`.
+
+Deux pertes evitees au passage :
+- le badge de trajet portait une infobulle (`wp_order_title`) que le composant
+  n'avait pas : ajoutee en prop `orderTitle` plutot que perdue ;
+- la carte generique n'affichait aucun badge de trajet faute de passer
+  `orderLabel`. `aurora_2` est la seule collection a porter des `wp_order`, et
+  elle s'affiche aux DEUX endroits : le trajet le moins couteux etait donc
+  visible dans l'onglet Aurora et invisible dans la carte. Corrige.
+
+Il ne reste qu'un rendu de liste d'etapes generique, et un widget dedie aux
+maitrises d'Aurora I qui, lui, affiche autre chose.
