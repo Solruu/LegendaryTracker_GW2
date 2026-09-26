@@ -2910,3 +2910,60 @@ Le corriger demande qu'une legendaire puisse etre l'enfant d'une autre. **Aucune
 ne l'est aujourd'hui** — verifie, la liste est vide — donc le moteur n'a jamais
 eu a le faire, et rien ne dit qu'il le ferait juste. Ce n'est pas une arete a
 poser, c'est une capacite a ajouter et a tester des deux cotes. Laisse ouvert.
+
+## BJ — 25/09/2026 : les 128 manquants poses, et une apostrophe qui cachait 17 recettes
+
+Objectif : avoir l'ensemble des couts. Un ingredient qu'aucun composant ne
+represente, c'est un cout qui n'existe nulle part — un Sunrise sans Dawn, un
+`spiritwood_plank` sans Soft Wood Plank.
+
+### Ce qui est ecrit, et d'ou ca vient
+
+Trois choses seulement, chacune sourcee. **La quantite**, lue dans la recette
+capturee du parent : c'est elle qui fait remonter le cout, et la seule qui
+compte pour les totaux. **Le nom**, le titre wiki que cette meme recette donne
+a l'ingredient. **L'apiId**, quand une capture au depot ou
+`gw2_materials_ref.json` (genere depuis /v2/materials et /v2/items) porte un
+objet de ce nom — 20 des 124.
+
+Ce qui n'est PAS ecrit : la voie d'obtention. Chaque composant cree porte une
+source `unknown` qui dit ou sa quantite a ete lue et que sa page manque. Il part
+alors en file par le mecanisme normal. **Le cout remonte des aujourd'hui, la
+decomposition suivra.**
+
+`gw2_completion_arbre_v1.py` : **124 composants, 140 aretes**. MANQUANT
+128 -> **0**.
+
+### Une apostrophe cachait dix-sept recettes entieres
+
+En corrigeant les slugs (`Rodgort's Flame` -> `rodgorts_flame`, la convention du
+depot que l'audit exige deja), le nombre de manquants a AUGMENTE : 109 -> 125.
+Ce n'etait pas une regression. La relecture derivait le nom de page d'un
+legendaire de son champ `wiki` : `Aurene%27s_Argument` donnait
+`aurene_s_argument`, une page qui n'existe pas. **Les dix-sept armes gen3
+n'avaient donc jamais eu leur recette lue** — leurs precurseurs (Dragon's
+Argument, Dragon's Bite, Dragon's Voice…) n'etaient reclames par personne parce
+que personne ne lisait la recette qui les reclame.
+
+### Deux doublons evites, l'audit ayant attrape le premier
+
+`Piles of Bloodstone Dust` allait devenir un composant alors que
+`bloodstone_dust` porte deja l'apiId 46731 : **l'audit a refuse**, un objet ne
+peut pas avoir deux entrees sans compter son cout deux fois. `Fruit of the
+Shadow` allait doubler `Fruits of the Shadow` (104820) au pluriel pres.
+
+Les deux resolutions sont desormais dans le resolveur — apiId via le
+referentiel des materiaux, nom insensible au pluriel du mot de tete — ET en
+garde dans l'outil de completion, qui refuse de creer et dit pourquoi. Une
+correction dans le detecteur seul aurait laisse l'outil libre de recommencer.
+
+### Ou en est la file
+
+Section 3 (sans apiId ni page) : 107. Section 3 bis (cout d'obtention inconnu) :
+123. **126 URLs.** Le chiffre a explose et c'est le but : il mesure enfin ce qui
+manque vraiment, et non ce qui manquait a l'arbre qu'on avait sous les yeux.
+
+Les familles, pour capturer par lots : ~34 precurseurs gen1/gen2/gen3, 16 sigils
+superieurs, 11 dons, 11 plats et ingredients de cuisine, 4 Spirit of the *,
+3 Refined Homestead *, 3 Memory of the Bearkin's *, et le reste en materiaux
+isoles.

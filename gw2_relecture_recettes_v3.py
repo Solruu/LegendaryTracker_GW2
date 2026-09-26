@@ -32,8 +32,8 @@ Trois defauts distincts, qui n'appellent pas le meme travail :
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-Usage : python3 gw2_relecture_recettes_v2.py [--rapport RELECTURE_RECETTES_v1.md]
-        python3 gw2_relecture_recettes_v2.py --legendaire ad_infinitum
+Usage : python3 gw2_relecture_recettes_v3.py [--rapport RELECTURE_RECETTES_v1.md]
+        python3 gw2_relecture_recettes_v3.py --legendaire ad_infinitum
 """
 import argparse
 import json
@@ -59,6 +59,9 @@ def slugifie(titre):
     """Titre wiki -> slug du depot. `Philosopher%27s_Stone` -> philosophers_stone."""
     t = unquote(str(titre))
     t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode()
+    # « Rodgort's Flame » -> rodgorts_flame : le « s » colle a son proprietaire,
+    # comme le veut la convention du depot, et comme l'audit l'exige.
+    t = re.sub(r"'s\b", "s", t).replace("'", "")
     return re.sub(r"[^a-z0-9]+", "_", t.lower()).strip("_")
 
 
@@ -66,11 +69,35 @@ def clef_nom(x):
     return re.sub(r"\s+", " ", unquote(str(x)).replace("_", " ")).strip().casefold()
 
 
+def clef_nom_sing(x):
+    """Clef de nom insensible au pluriel du mot de tete.
+
+    Le wiki cite « Fruit of the Shadow », le depot stocke « Fruits of the
+    Shadow » (apiId 104820). Comparer les noms tels quels faisait creer un
+    doublon — l'audit l'a vu, mais il ne fallait pas en arriver la. On ramene
+    les deux cotes au singulier du premier mot.
+    """
+    n = clef_nom(x)
+    tete, _, reste = n.partition(" ")
+    if tete.endswith("s") and len(tete) > 3:
+        tete = tete[:-1]
+    return (tete + " " + reste).strip()
+
+
 class Resolveur:
     """Titre d'ingredient -> composant, par apiId d'abord, par nom en dernier."""
 
-    def __init__(self, cc, index, legs=None):
+    def __init__(self, cc, index, legs=None, materiaux=None):
         self.cc = cc
+        # Un composant peut porter un nom different de sa page wiki :
+        # `bloodstone_dust` pour « Piles of Bloodstone Dust ». Le referentiel
+        # des materiaux, genere depuis /v2/items, donne l'apiId du nom cite, et
+        # l'apiId ne ment pas. Sans ce chemin, la relecture reclamait la
+        # creation d'un doublon — l'audit l'a refuse, mais il ne fallait pas en
+        # arriver la.
+        self.mat_par_nom = {}
+        for ident, nom in ((materiaux or {}).get("flat") or {}).items():
+            self.mat_par_nom.setdefault(str(nom).strip().casefold(), int(ident))
         self.legs = {}
         for lk, lv in (legs or {}).items():
             if not isinstance(lv, dict):
@@ -83,6 +110,7 @@ class Resolveur:
         self.par_page = {e["page"]: e for e in index}
         self.par_api = {}
         self.par_nom = {}
+        self.par_nom_sing = {}
         self.par_slug = {}
         for cid, c in cc.items():
             self.par_slug[cid] = cid
@@ -90,6 +118,7 @@ class Resolveur:
                 self.par_api.setdefault(c["apiId"], cid)
             if c.get("name"):
                 self.par_nom.setdefault(clef_nom(c["name"]), cid)
+                self.par_nom_sing.setdefault(clef_nom_sing(c["name"]), cid)
 
     def resoudre(self, titre):
         """(composant, comment) ; comment vaut None si rien ne repond."""
@@ -104,6 +133,13 @@ class Resolveur:
             return self.par_nom[n], "nom"
         if page and page.get("titre") and clef_nom(page["titre"]) in self.par_nom:
             return self.par_nom[clef_nom(page["titre"])], "titre de page"
+        ns = clef_nom_sing(titre)
+        if ns in self.par_nom_sing:
+            return self.par_nom_sing[ns], "nom (pluriel toléré)"
+        for essai in (n, re.sub(r"^piles of ", "pile of ", n), n[:-1] if n.endswith("s") else n):
+            aid = self.mat_par_nom.get(essai)
+            if aid is not None and aid in self.par_api:
+                return self.par_api[aid], "apiId (référentiel matériaux)"
         # Un ingredient peut etre un LEGENDAIRE : Eternity coute Sunrise et
         # Twilight, qui sont des cibles a part entiere, pas des composants.
         for cle in (s, n):
@@ -152,7 +188,8 @@ def main():
     cc = data["craft_components"]
     index = json.loads((HERE / "ressources" / "INDEX_CONTENU.json").read_text(encoding="utf-8"))
     par_page = {e["page"]: e for e in index}
-    res = Resolveur(cc, index, data.get("legendaries"))
+    materiaux = json.loads((HERE / "gw2_materials_ref.json").read_text(encoding="utf-8"))
+    res = Resolveur(cc, index, data.get("legendaries"), materiaux)
 
     legs = data["legendaries"]
     cibles = [args.legendaire] if args.legendaire else sorted(legs)
@@ -280,7 +317,7 @@ def main():
     compte = {k: sum(1 for c in global_ if c[0] == k) for k in ORDRE}
 
     lignes = ["# Relecture des recettes, légendaire par légendaire", "",
-              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v2.py`.",
+              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v3.py`.",
               "L'outil descend depuis chaque légendaire et compare, à chaque nœud, les",
               "enfants déclarés à la recette lue sur sa capture. Appariement par apiId",
               "d'abord (591 composants sur 601 en portent un), par nom en dernier recours,",

@@ -1410,7 +1410,14 @@ Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
 d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
 retroactif des etapes validees (sections Y et AB).
 
-### 1. Captures manquantes — 3 URLs dans `PAGES_A_CAPTURER.md`
+### 1. Captures manquantes — 126 URLs dans `PAGES_A_CAPTURER.md`
+
+**Le chiffre a explosé le 25/09, et c'est une bonne nouvelle** : la complétion
+de l'arbre a créé les 124 composants que les recettes réclamaient sans qu'ils
+existent. Leur quantité est sourcée, leur voie d'obtention non — d'où la file.
+Elle mesure enfin ce qui manque vraiment, et non ce qui manquait à l'arbre
+qu'on avait sous les yeux. Voir DETTE_ARBRE_CRAFT.md § BJ.
+
 
 Les dix URLs de cette entree sont livrees et integrees (lots des 24 et
 25/09) : branche Olmakhan, tables d'armure, feuilles. `Valkyrie_Bearkin_War_Helm`
