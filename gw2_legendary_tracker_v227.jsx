@@ -7096,6 +7096,21 @@ export default function GW2LegendaryTracker() {
               ? { bits: a.steps, tierMax: a.steps.length, subs: [], fromSources: true }
               : achBitsDefs[String(a.achievementId)];
             const doneBits = new Set(st.bits ?? []);
+            // Vision II affichait ses 24 sanctuaires DEUX fois : la liste de
+            // lieux, avec ses points de passage et ses codes de chat, puis la
+            // liste brute des bits juste en dessous. La premiere ne recevait
+            // aucun `isDone`, donc ses cases restaient vides quoi qu'il arrive ;
+            // la seconde etait synchronisee mais sans aucune des informations
+            // qui rendent la liste utilisable. Deux chemins de rendu pour une
+            // seule liste, et chacun la moitie de ce qu'il faut.
+            // On la calcule ici, une fois, pour les deux.
+            const SDB_WL = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
+            let listeLieux = null;
+            for (const leg of Object.values(SDB_WL?.legendaries ?? {})) {
+              for (const col of Object.values(leg?.collections ?? {})) {
+                if (col?.id === a.achievementId && Array.isArray(col.items) && col.items.some(x => x.waypoint)) listeLieux = col;
+              }
+            }
             return (
               <div key={a.key}
                 onClick={() => setExpandedAch(isOpen ? null : a.key)}
@@ -7189,13 +7204,7 @@ export default function GW2LegendaryTracker() {
                 {isOpen && (() => {
                   // Une collection peut porter, cote sources, une liste de lieux a
                   // visiter indexee par son achievementId. Meme rendu qu'Aurora II.
-                  const SDB = typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {};
-                  let wl = null;
-                  for (const leg of Object.values(SDB?.legendaries ?? {})) {
-                    for (const col of Object.values(leg?.collections ?? {})) {
-                      if (col?.id === a.achievementId && Array.isArray(col.items) && col.items.some(x => x.waypoint)) wl = col;
-                    }
-                  }
+                  const wl = listeLieux;
                   if (!wl) return null;
                   return (
                     <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }} onClick={e => e.stopPropagation()}>
@@ -7206,7 +7215,8 @@ export default function GW2LegendaryTracker() {
                         <div style={{ fontSize: 10, color: "rgba(251,146,60,0.75)", fontFamily: "'Crimson Text', serif", marginBottom: 6, lineHeight: 1.5 }}>{NX(wl.requirements)}</div>
                       )}
                       <EditorialNotes obj={wl} compact />
-                      <WaypointList items={wl.items} copied={copiedCode} onCopy={setCopiedCode} />
+                      <WaypointList items={wl.items} copied={copiedCode} onCopy={setCopiedCode}
+                        isDone={i => done || doneBits.has(wl.items[i]?.bit ?? i)} />
                     </div>
                   );
                 })()}
@@ -7332,7 +7342,10 @@ export default function GW2LegendaryTracker() {
                         {!done && cur < mx ? " " + t("bits_meta_left", { n: mx - cur }) : ""}
                       </div>
                     )}
-                    {def.bits.map((b, i) => {
+                    {/* La liste de lieux ne remplace la liste brute que si elle
+                        couvre tous ses bits. Une liste partielle masquerait des
+                        etapes : mieux vaut la redite que le trou. */}
+                    {(listeLieux && listeLieux.items.length >= def.bits.length) ? null : def.bits.map((b, i) => {
                       const stepDone = done || doneBits.has(i);
                       const childId = def.bitAch?.[i];
                       const childSt = childId !== undefined ? (achSubStatus[String(childId)] ?? {}) : null;

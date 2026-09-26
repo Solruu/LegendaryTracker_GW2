@@ -2807,3 +2807,37 @@ declare ni Sunrise ni Twilight.
 
 Le rapport n'est pas branche sur l'audit : 229 defauts bloqueraient tout push.
 Il se lit, se travaille, et l'audit prendra le relais famille par famille.
+
+## BG — 25/09/2026 : Vision II rendait sa liste deux fois, chacune a moitie
+
+Constat d'Antoine : deux tableaux pour les memes 24 sanctuaires. Le premier
+joli — points de passage, codes de chat copiables, conseils de terrain, cartes
+— mais dont les cases restent vides quoi qu'on fasse. Le second synchronise
+avec le compte, et sans rien de tout cela.
+
+Ce n'etait pas lie a la relecture des recettes. C'est un chemin de rendu
+parallele, exactement ce que le projet s'interdit.
+
+`WaypointList` accepte depuis toujours un `isDone(i)`. **Le site d'appel ne le
+passait pas.** Les cases n'etaient donc pas des cases a cocher qui ne
+sauvegardent pas : elles affichaient un etat que personne ne leur donnait,
+toujours faux. En dessous, le rendu generique des bits refaisait la liste avec
+le bon etat et aucune information.
+
+Correction en trois points, JSX v227 :
+
+1. la liste de lieux est calculee **une fois**, au niveau de la carte, au lieu
+   d'etre cherchee dans une IIFE que le second bloc ne voyait pas ;
+2. elle recoit `isDone={i => done || doneBits.has(items[i].bit ?? i)}` — l'etat
+   vient du compte, indexe par le `bit` que chaque etape porte deja, pas par sa
+   position dans la liste ;
+3. la liste brute ne se repete plus sous elle.
+
+Le bandeau de seuil reste — « 20 requis sur 24 objectifs eligibles » est une
+information du meta, pas une repetition de la liste.
+
+**Garde** : la liste brute n'est masquee que si la liste de lieux couvre tous
+ses bits. Une liste partielle masquerait des etapes ; mieux vaut la redite que
+le trou. Quatre collections portent une liste de lieux et la passent toutes :
+`vision_2` (24), `selachi_agaleus` (24), `aurora_2` (21), `summer_sungod` (20).
+Les trois autres gagnent la synchronisation au passage.
