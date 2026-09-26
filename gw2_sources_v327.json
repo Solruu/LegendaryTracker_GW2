@@ -9586,7 +9586,8 @@
     "gift_of_prowess",
     "gift_of_research",
     "gift_of_the_mists",
-    "gift_of_war_prowess"
+    "gift_of_war_prowess",
+    "pristine_mist_essence"
    ],
    "qty": {
     "gift_of_the_mists": 1,
@@ -9594,7 +9595,8 @@
     "gift_of_research": 1,
     "gift_of_prowess": 1,
     "gift_of_competitive_prowess": 1,
-    "gift_of_war_prowess": 1
+    "gift_of_war_prowess": 1,
+    "pristine_mist_essence": 1
    },
    "farmable": true,
    "recipe": {
@@ -15908,11 +15910,13 @@
    "farmable": false,
    "needed_for": [
     "carbonized_mithrillium_ingot",
-    "xunlai_electrum_ingot"
+    "xunlai_electrum_ingot",
+    "deldrimor_steel_ingot"
    ],
    "qty": {
     "xunlai_electrum_ingot": 1,
-    "carbonized_mithrillium_ingot": 1
+    "carbonized_mithrillium_ingot": 1,
+    "deldrimor_steel_ingot": 1
    },
    "craft": {
     "profession": "Jeweler",
@@ -20273,8 +20277,12 @@
   "philosophers_stone": {
    "name": "Philosopher's Stone",
    "kind": "currency",
-   "needed_for": [],
-   "qty": {},
+   "needed_for": [
+    "gen1_eternity"
+   ],
+   "qty": {
+    "gen1_eternity": 10
+   },
    "sources": [
     {
      "type": "vendor",
@@ -20792,10 +20800,12 @@
    "name": "Iron Ingot",
    "kind": "refined",
    "qty": {
-    "carbonized_mithrillium_ingot": 10
+    "carbonized_mithrillium_ingot": 10,
+    "deldrimor_steel_ingot": 20
    },
    "needed_for": [
-    "carbonized_mithrillium_ingot"
+    "carbonized_mithrillium_ingot",
+    "deldrimor_steel_ingot"
    ],
    "farmable": true,
    "sources": [

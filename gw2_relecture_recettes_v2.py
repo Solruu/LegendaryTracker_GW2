@@ -32,8 +32,8 @@ Trois defauts distincts, qui n'appellent pas le meme travail :
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-Usage : python3 gw2_relecture_recettes_v1.py [--rapport RELECTURE_RECETTES_v1.md]
-        python3 gw2_relecture_recettes_v1.py --legendaire ad_infinitum
+Usage : python3 gw2_relecture_recettes_v2.py [--rapport RELECTURE_RECETTES_v1.md]
+        python3 gw2_relecture_recettes_v2.py --legendaire ad_infinitum
 """
 import argparse
 import json
@@ -168,6 +168,26 @@ def main():
             return None, (page or {}).get("page")
         return page["recettes"][0].get("ingredients") or [], page["page"]
 
+    # Un ingredient peut etre legitimement absent des enfants d'un noeud pour
+    # deux raisons, et aucune n'est un defaut :
+    #
+    #   - un CHOIX. `alt_groups.gen2_mastery` offre Maguuma OU Desert aux douze
+    #     armes gen2 ; la recette capturee ne montre que la premiere variante,
+    #     et l'arbre porte le choix, pas l'option. Douze des trente-trois « non
+    #     relies » etaient cela.
+    #   - une PLACE differente. Le cout d'`eldritch_scroll` pour
+    #     `gift_of_prowess` est rattache a `perfected_envoy__per_piece` : six
+    #     pieces, six exemplaires, meme total. C'est un arbitrage deja rendu
+    #     (ARBITRAGES.md, « deja compte par cascade »), pas un oubli.
+    #
+    # Le premier cas disparait, le second devient AILLEURS : le total est
+    # probablement juste, mais l'arbre ne suit pas la forme de la recette.
+    alt_par_cible = defaultdict(set)
+    for gk, g in (data.get("alt_groups") or {}).items():
+        for cible in (g.get("targets") or []):
+            for opt in (g.get("options") or []):
+                alt_par_cible[cible].add(opt)
+
     total = defaultdict(int)
     par_leg = {}
     ing_manquants = defaultdict(set)
@@ -214,7 +234,18 @@ def main():
                     total["manquant"] += 1
                     continue
                 attendus[cid] = (qte, comment)
-                if cid not in enfants:
+                if cid in enfants:
+                    continue
+                if cid in alt_par_cible.get(node, ()):
+                    total["choix"] += 1
+                    continue
+                ailleurs = [p for p in (cc.get(cid, {}).get("qty") or {})
+                            if p.split("__")[0] in vus or p.split("__")[0] == lk]
+                if ailleurs:
+                    defauts.append(("AILLEURS", node, titre, qte, page,
+                                    "rattaché à " + ", ".join(sorted(ailleurs)[:2])))
+                    total["ailleurs"] += 1
+                else:
                     defauts.append(("NON_RELIE", node, titre, qte, page, comment))
                     total["non_relie"] += 1
             # La racine d'un legendaire porte en plus les totaux agreges de la
@@ -240,15 +271,16 @@ def main():
                                          "legs": set()})
             e["legs"].add(lk)
 
-    ORDRE = {"MANQUANT": 0, "NON_RELIE": 1, "EN_TROP": 2, "NON_DECOMPOSE": 3}
+    ORDRE = {"MANQUANT": 0, "NON_RELIE": 1, "AILLEURS": 2, "EN_TROP": 3, "NON_DECOMPOSE": 4}
     TITRES = {"MANQUANT": "Ingrédients qu'aucun composant ne représente",
               "NON_RELIE": "Ingrédients présents dans l'arbre mais non rattachés au parent",
               "EN_TROP": "Enfants déclarés que la recette ne cite pas",
+              "AILLEURS": "Ingrédients rattachés ailleurs sous le même légendaire",
               "NON_DECOMPOSE": "Nœuds ayant une recette et aucun enfant (feuilles assumées)"}
     compte = {k: sum(1 for c in global_ if c[0] == k) for k in ORDRE}
 
     lignes = ["# Relecture des recettes, légendaire par légendaire", "",
-              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v1.py`.",
+              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v2.py`.",
               "L'outil descend depuis chaque légendaire et compare, à chaque nœud, les",
               "enfants déclarés à la recette lue sur sa capture. Appariement par apiId",
               "d'abord (591 composants sur 601 en portent un), par nom en dernier recours,",
@@ -263,8 +295,12 @@ def main():
               f"existe et ne remonte pas — le plus sournois | {compte['NON_RELIE']} |",
               "| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, "
               f"coût d'acquisition) | {compte['EN_TROP']} |",
+              "| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le "
+              f"total est probablement juste, la forme ne suit pas la recette | {compte['AILLEURS']} |",
               "| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, "
-              f"pas un bug | {compte['NON_DECOMPOSE']} |", ""]
+              f"pas un bug | {compte['NON_DECOMPOSE']} |", "",
+              f"Écartés sans être comptés : {total['choix']} options d'`alt_groups` — un choix, "
+              "pas un oubli.", ""]
 
     for kind in sorted(ORDRE, key=lambda k: ORDRE[k]):
         cles = [c for c in global_ if c[0] == kind]

@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v326.json` — généré par `gw2_relecture_recettes_v1.py`.
+Source : `gw2_sources_v327.json` — généré par `gw2_relecture_recettes_v2.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -12,9 +12,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 128 |
-| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 33 |
+| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 15 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 53 |
+| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 13 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 54 |
+
+Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
 ## Ingrédients qu'aucun composant ne représente — 128
 
@@ -149,43 +152,30 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `vial_of_quicksilver` | `Gift_of_the_Forgeman` | 1 | `vial_of_quicksilver` | — | `gen1_the_juggernaut` |
 | `wolf_statue` | `Gift_of_Thorns` | 1 | `wolf_statue` | — | `gen1_howler` |
 
-## Ingrédients présents dans l'arbre mais non rattachés au parent — 33
+## Ingrédients présents dans l'arbre mais non rattachés au parent — 2
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
-| `deldrimor_steel_ingot` | `Iron_Ingot` | 20 | `deldrimor_steel_ingot` | apiId | `ad_infinitum`, `gen3_aurenes_argument`, `gen3_aurenes_bite` … (+10) |
-| `deldrimor_steel_ingot` | `Lump_of_Mithrillium` | 1 | `deldrimor_steel_ingot` | apiId | `ad_infinitum`, `gen3_aurenes_argument`, `gen3_aurenes_bite` … (+10) |
-| `mystic_curio` | `Potent_Venom_Sac` | 35 | `mystic_curio` | apiId | `gen2_claw_of_the_khan_ur`, `gen2_eureka`, `gen2_exordium` … (+9) |
-| `neutralized_titan_alloy` | `Orichalcum_Ingot` | 5 | `neutralized_titan_alloy` | apiId | `klobjarne_geirr`, `orrax_manifested` |
-| `diviners_orichalcum_imbued_inscription` | `Branded_Mass` | 50 | `diviners_orichalcum_imbued_inscription` | apiId | `vision` |
-| `diviners_orichalcum_imbued_inscription` | `Exquisite_Serpentite_Jewel` | 3 | `diviners_orichalcum_imbued_inscription` | apiId | `vision` |
-| `gen1_eternity` | `Philosopher's_Stone` | 10 | `eternity` | nom | `gen1_eternity` |
 | `gen1_eternity` | `Sunrise` | 1 | `eternity` | légendaire | `gen1_eternity` |
 | `gen1_eternity` | `Twilight` | 1 | `eternity` | légendaire | `gen1_eternity` |
-| `gen2_claw_of_the_khan_ur` | `Gift_of_Maguuma_Mastery` | 1 | `claw_of_the_khan_ur` | apiId | `gen2_claw_of_the_khan_ur` |
-| `gen2_eureka` | `Gift_of_Maguuma_Mastery` | 1 | `eureka` | apiId | `gen2_eureka` |
-| `gen2_exordium` | `Gift_of_Maguuma_Mastery` | 1 | `exordium` | apiId | `gen2_exordium` |
-| `gen2_flames_of_war` | `Gift_of_Maguuma_Mastery` | 1 | `flames_of_war` | apiId | `gen2_flames_of_war` |
-| `gen2_pharus` | `Gift_of_Maguuma_Mastery` | 1 | `pharus` | apiId | `gen2_pharus` |
-| `gen2_sharur` | `Gift_of_Maguuma_Mastery` | 1 | `sharur` | apiId | `gen2_sharur` |
-| `gen2_shooshadoo` | `Gift_of_Maguuma_Mastery` | 1 | `shooshadoo` | apiId | `gen2_shooshadoo` |
-| `gen2_the_binding_of_ipos` | `Gift_of_Maguuma_Mastery` | 1 | `the_binding_of_ipos` | apiId | `gen2_the_binding_of_ipos` |
-| `gen2_the_hms_divinity` | `Gift_of_Maguuma_Mastery` | 1 | `the_hms_divinity` | apiId | `gen2_the_hms_divinity` |
-| `gen2_the_shining_blade` | `Gift_of_Maguuma_Mastery` | 1 | `the_shining_blade` | apiId | `gen2_the_shining_blade` |
-| `gen2_verdarach` | `Gift_of_Maguuma_Mastery` | 1 | `verdarach` | apiId | `gen2_verdarach` |
-| `gen2_xiuquatl` | `Gift_of_Maguuma_Mastery` | 1 | `xiuquatl` | apiId | `gen2_xiuquatl` |
-| `gift_of_dedication` | `Auric_Ingot` | 5 | `gift_of_dedication` | slug | `perfected_envoy` |
-| `gift_of_dedication` | `Chak_Egg` | 5 | `gift_of_dedication` | slug | `perfected_envoy` |
-| `gift_of_dedication` | `Reclaimed_Metal_Plate` | 5 | `gift_of_dedication` | slug | `perfected_envoy` |
-| `gift_of_infused_gems` | `Beryl_Orb` | 250 | `gift_of_infused_gems` | apiId | `endless_summer` |
-| `gift_of_prowess` | `Eldritch_Scroll` | 1 | `gift_of_prowess` | slug | `perfected_envoy` |
-| `gift_of_prowess` | `Obsidian_Shard` | 50 | `gift_of_prowess` | apiId | `perfected_envoy` |
-| `gift_of_recollector_of_memories` | `Gift_of_Bones` | 1 | `gift_of_recollector_of_memories` | apiId | `klobjarne_geirr` |
-| `gift_of_the_mursaat_ruins` | `Shard_of_Bava_Nisos` | 100 | `gift_of_the_mursaat_ruins` | apiId | `orrax_manifested` |
-| `gift_of_the_mursaat_ruins` | `Shard_of_Mistburned_Barrens` | 100 | `gift_of_the_mursaat_ruins` | apiId | `orrax_manifested` |
-| `gift_of_the_mursaat_ruins` | `Vial_of_Titan_Melted_Liquid_Obsidian` | 100 | `gift_of_the_mursaat_ruins` | apiId | `orrax_manifested` |
-| `gift_of_the_side_course` | `Mystic_Clovers` | 30 | `gift_of_the_side_course` | singulier (à confirmer) | `orrax_manifested` |
-| `pristine_mist_essence` | `Cube_of_Stabilized_Dark_Energy` | 1 | `pristine_mist_essence` | apiId | `ad_infinitum` |
+
+## Ingrédients rattachés ailleurs sous le même légendaire — 13
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `neutralized_titan_alloy` | `Orichalcum_Ingot` | 5 | `neutralized_titan_alloy` | rattaché à gift_of_metal | `klobjarne_geirr`, `orrax_manifested` |
+| `diviners_orichalcum_imbued_inscription` | `Branded_Mass` | 50 | `diviners_orichalcum_imbued_inscription` | rattaché à dragonsblood_weapons, gift_of_ephemeral_magic | `vision` |
+| `diviners_orichalcum_imbued_inscription` | `Exquisite_Serpentite_Jewel` | 3 | `diviners_orichalcum_imbued_inscription` | rattaché à dragonsblood_weapons | `vision` |
+| `gift_of_dedication` | `Auric_Ingot` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_dedication` | `Chak_Egg` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_dedication` | `Reclaimed_Metal_Plate` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_prowess` | `Eldritch_Scroll` | 1 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_prowess` | `Obsidian_Shard` | 50 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_recollector_of_memories` | `Gift_of_Bones` | 1 | `gift_of_recollector_of_memories` | rattaché à gift_of_condensed_might | `klobjarne_geirr` |
+| `gift_of_the_mursaat_ruins` | `Shard_of_Bava_Nisos` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_mursaat_ruins` | `Shard_of_Mistburned_Barrens` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_mursaat_ruins` | `Vial_of_Titan_Melted_Liquid_Obsidian` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_side_course` | `Mystic_Clovers` | 30 | `gift_of_the_side_course` | rattaché à orrax_manifested | `orrax_manifested` |
 
 ## Enfants déclarés que la recette ne cite pas — 15
 
@@ -207,7 +197,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_rider` | `trade_contract` | 300 | `gift_of_the_rider` | direct | `coalescence` |
 | `gift_of_the_side_course` | `fruits_of_the_shadow` | 5 | `gift_of_the_side_course` | direct | `orrax_manifested` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 53
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 54
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -234,9 +224,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_sac` | `3 ingrédients` |  | `venom_sac` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_blood` | `3 ingrédients` |  | `vial_of_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_thick_blood` | `3 ingrédients` |  | `vial_of_thick_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `aurora`, `gen1_bolt` … (+35) |
 | `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+26) |
 | `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frenzy`, `gen1_frostfang` … (+24) |
-| `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+23) |
 | `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+19) |
 | `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_minstrel` … (+18) |
 | `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+18) |
@@ -245,6 +235,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
 | `ancient_wood_plank` | `1 ingrédients` |  | `ancient_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+11) |
 | `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen3_aurenes_argument` … (+11) |
+| `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen3_aurenes_argument`, `gen3_aurenes_bite` … (+10) |
 | `hardened_leather_section` | `3 ingrédients` |  | `hardened_leather_section` | feuille assumée | `gen1_howler`, `gen1_kraitkin`, `gen1_kudzu` … (+5) |
 | `charged_lodestone` | `4 ingrédients` |  | `charged_lodestone` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
 | `destroyer_lodestone` | `4 ingrédients` |  | `destroyer_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |

@@ -2867,3 +2867,46 @@ Deux pertes evitees au passage :
 
 Il ne reste qu'un rendu de liste d'etapes generique, et un widget dedie aux
 maitrises d'Aurora I qui, lui, affiche autre chose.
+
+## BI — 25/09/2026 : les 33 « non relies » etaient 6, et 4 sont corriges
+
+Avant de poser la moindre arete, il fallait savoir lesquelles manquaient
+vraiment. Sur 33 signalements, **27 n'en etaient pas** :
+
+- **14 sont un CHOIX.** `alt_groups.gen2_mastery` offre Maguuma OU Desert aux
+  douze armes gen2. La capture ne montre que la premiere variante de recette,
+  et l'arbre porte le choix, pas l'option. Le detecteur ignore desormais un
+  ingredient qui est une option d'un `alt_group` dont la cible est ce noeud.
+- **13 sont une PLACE differente.** Le cout d'`eldritch_scroll` pour
+  `gift_of_prowess` est rattache a `perfected_envoy__per_piece` : six pieces,
+  six exemplaires, meme total. C'est un arbitrage deja rendu (ARBITRAGES.md,
+  « deja compte par cascade »), pas un oubli. Nouvelle categorie **AILLEURS** :
+  le total est probablement juste, la forme ne suit pas la recette. A relire un
+  jour, pas a corriger a l'aveugle.
+
+`gw2_relecture_recettes_v2.py` porte ces deux distinctions.
+
+### Les 4 aretes posees
+
+| enfant | parent | qte | ce qui manquait |
+|---|---|---:|---|
+| `iron_ingot` | `deldrimor_steel_ingot` | 20 | la recette en cite quatre, l'arbre en portait deux |
+| `lump_of_mithrillium` | `deldrimor_steel_ingot` | 1 | idem |
+| `cube_stabilized_dark_energy` | `pristine_mist_essence` | 1 | l'arbre ne portait que le reactif thermocatalytique |
+| `philosophers_stone` | `gen1_eternity` | 10 | `philosophers_stone` n'avait AUCUN parent |
+
+Portee reelle : `deldrimor_steel_ingot` est consomme par treize pieces d'armes,
+elles-memes atteintes par treize legendaires. Le cout existait et ne remontait
+pas — c'est tout l'interet de cette categorie.
+
+### Les 2 qui restent, et pourquoi je n'y ai pas touche
+
+`gen1_eternity` doit couter **un Sunrise ET un Twilight**. L'arbre lui donne a
+la place les enfants d'UNE arme gen1 (5 poussieres cristallines, Don de
+Maitrise, Don de Fortune, 250 pieces mystiques) : il sous-compte a peu pres une
+legendaire entiere.
+
+Le corriger demande qu'une legendaire puisse etre l'enfant d'une autre. **Aucune
+ne l'est aujourd'hui** — verifie, la liste est vide — donc le moteur n'a jamais
+eu a le faire, et rien ne dit qu'il le ferait juste. Ce n'est pas une arete a
+poser, c'est une capacite a ajouter et a tester des deux cotes. Laisse ouvert.
