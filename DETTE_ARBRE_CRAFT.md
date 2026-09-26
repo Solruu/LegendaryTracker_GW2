@@ -2568,3 +2568,43 @@ Infinite), « decouvrir les Agony-Torn Gloves », « lier 7 runes legendaires »
 **Section 4 : 11 -> 4.** Les quatre restants sont de vrais trous, pas des
 artefacts de lecture : `Helping Hylek: Kill Krait`, `Legendary Backpack and
 Glider: Orrax`, `Return to Living World`, `Legendary Weapon: Eternity`.
+
+## BA — 25/09/2026 : la liste ne demandait rien, et renvoyait ou il n'y a rien
+
+Deux defauts dans la section 4, invisibles tant qu'elle etait pleine de faux
+manques :
+
+**Elle ne demandait aucune capture.** L'en-tete disait « RIEN À CAPTURER » et
+citait en exemple « Incursive Investigation: Infinite Recursion » et « Helping
+Hylek: Kill Krait » comme des succes sans article a eux. C'etait vrai quand la
+liste comptait 31 lignes dont la plupart n'en avaient effectivement pas. Une
+fois les faux manques regles, les lignes restantes SONT de vraies pages a
+capturer — et la section les gardait hors de la liste d'URLs.
+
+**Elle renvoyait a la page du legendaire, sans verifier.** Les trois derniers
+trous pointaient `Endless Summer`, `Orrax Manifested` et `Prismatic Champion's
+Regalia`. Aucune des trois captures ne contient le bloc du succes concerne. Un
+renvoi qu'on ne peut pas suivre vaut une ligne vide.
+
+`gw2_pages_a_capturer_v10.py` indexe les ancres `#achievementNNNN` de tout le
+depot et nomme la capture qui porte VRAIMENT le bloc. Ce que ca revele
+aussitot : `Return to Living World` etait lisible depuis le debut, dans
+`living_world_return.html`. Les lignes sans bloc au depot passent en URLs.
+
+Deux absences posees, prouvees par leur capture : `Legendary Weapon: Eternity`
+(7250) est une collection de quatre objets sans chaine de deblocage, et le
+succes 5790 est un evenement courant « disponible en permanence une fois
+introduit ».
+
+**Section 4 : 4 -> 3, dont 2 a capturer.**
+
+### Deux choses vues sur le succes 5790, non tranchees
+
+Les sources l'appellent `Return to Living World`. Le wiki nomme le succes 5790
+**« Seasons of the Dragons »**, categorie Current Events, titre « Returning
+Champion ». Le nom stocke est a reprendre sur le referentiel.
+
+Ses etapes existent et sont extractibles : la capture ancre 23 succes enfants
+`Return to ...`, exactement la forme de `meta_eligible`. Mais le texte dit
+« completer les 24 meta-succes Return » — il en manque donc un a l'appel. On ne
+pose pas une liste dont on sait qu'elle est incomplete.

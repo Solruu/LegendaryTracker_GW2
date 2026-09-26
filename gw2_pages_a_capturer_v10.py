@@ -247,7 +247,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v9.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v10.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
@@ -340,31 +340,40 @@ for c in inconnus:
     urls.append(url(ti))
     out.append(f"| `{ti}` |")
 
-manquantes = [x for x in collections_vides if not x[4]]
+# Un succes se lit dans la capture qui porte SON bloc, pas dans celle du
+# legendaire qui le cite. v9 renvoyait a la page du legendaire sans verifier
+# qu'elle contenait quoi que ce soit : les trois derniers trous pointaient
+# `Endless Summer`, `Orrax Manifested` et `Prismatic Champion's Regalia`, ou
+# aucun des trois blocs ne figure. Un renvoi qu'on ne peut pas suivre vaut une
+# ligne vide. On cherche donc l'ancre `id="achievementNNNN"` dans le depot.
+BLOCS_AU_DEPOT = {}
+for _f in sorted((HERE / "ressources" / "wiki").glob("*.html")):
+    for _aid in set(re.findall(r'id="achievement(\d+)"',
+                               _f.read_text(encoding="utf-8", errors="ignore"))):
+        BLOCS_AU_DEPOT.setdefault(int(_aid), _f.stem)
+
+lisibles, a_lire = [], []
+for t, leg, aid, manque, cap in collections_vides:
+    ou = BLOCS_AU_DEPOT.get(aid)
+    (lisibles if ou else a_lire).append((t, leg, aid, manque, ou))
+
 out.append(f"\n## 4 — {len(collections_vides)} collections incomplètes — "
-           f"RIEN À CAPTURER\n")
-out.append("Ces succès n'ont pas d'article à eux : « Incursive Investigation:")
-out.append("Infinite Recursion » est une ligne de la page de catégorie, « Helping")
-out.append("Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils")
-out.append("vivent dans le méta global. La liste reste parce qu'elle est utile ; la")
-out.append("colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans")
-out.append("la section « URLs ».\n")
+           f"{len(a_lire)} à capturer\n")
+out.append("Une collection est incomplète tant qu'elle n'a ni ses étapes ni sa chaîne")
+out.append("de déblocage, et qu'elle ne déclare pas leur absence avec `absences_ref`")
+out.append("— drapeau qui exige la capture prouvant qu'il n'y a rien à décrire.")
+out.append("")
+out.append("La colonne « où le lire » nomme la capture qui porte le bloc du succès,")
+out.append("vérifiée par son ancre `#achievementNNNN`. Les lignes sans capture sont")
+out.append("reprises dans la section « URLs » : leur page n'est pas au dépôt.\n")
 out.append("| | succès | légendaire | id | ce qui manque | où le lire |")
 out.append("|---|---|---|---:|---|---|")
-renvois = {}
-for t, leg, aid, manque, cap in collections_vides:
-    if cap:
-        cible = t
-    else:
-        # Pas d'article a ce nom : on renvoie a la page du legendaire, qui
-        # porte le tableau de ses collections. Une seule URL par legendaire.
-        cible = titre_cible(next((k for k, v in legs.items()
-                                  if (en(v.get("name")) or k) == leg), leg))
-        renvois.setdefault(cible, 0)
-        renvois[cible] += 1
-    out.append(f"| {'●' if cap else '○'} | `{t}` | {leg} | {aid} | {manque} | "
-               f"{'—' if cap else '`' + cible + '`'} |")
-# Volontairement aucune URL : voir l'en-tete. Ces succes n'ont pas d'article.
+for t, leg, aid, manque, ou in lisibles:
+    out.append(f"| ● | `{t}` | {leg} | {aid} | {manque} | `{ou}.html` |")
+for t, leg, aid, manque, _ in a_lire:
+    urls.append(url(t))
+    out.append(f"| ○ | `{t}` | {leg} | {aid} | {manque} | — |")
+manquantes = a_lire
 
 vus, propres = set(), []
 for u in urls:

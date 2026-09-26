@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v322.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v9.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v323.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v10.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -69,23 +69,25 @@ faut, pas comment on les obtient.
 | page wiki |
 |---|
 
-## 4 — 4 collections incomplètes — RIEN À CAPTURER
+## 4 — 3 collections incomplètes — 2 à capturer
 
-Ces succès n'ont pas d'article à eux : « Incursive Investigation:
-Infinite Recursion » est une ligne de la page de catégorie, « Helping
-Hylek: Kill Krait » est un compteur de kills sans étapes par nature. Ils
-vivent dans le méta global. La liste reste parce qu'elle est utile ; la
-colonne « où le lire » dit où regarder. Aucune de ces lignes n'est dans
-la section « URLs ».
+Une collection est incomplète tant qu'elle n'a ni ses étapes ni sa chaîne
+de déblocage, et qu'elle ne déclare pas leur absence avec `absences_ref`
+— drapeau qui exige la capture prouvant qu'il n'y a rien à décrire.
+
+La colonne « où le lire » nomme la capture qui porte le bloc du succès,
+vérifiée par son ancre `#achievementNNNN`. Les lignes sans capture sont
+reprises dans la section « URLs » : leur page n'est pas au dépôt.
 
 | | succès | légendaire | id | ce qui manque | où le lire |
 |---|---|---|---:|---|---|
-| ○ | `Helping Hylek: Kill Krait` | Endless Summer | 9180 | sans etapes, sans unlock | `Endless Summer` |
-| ○ | `Legendary Backpack and Glider: Orrax` | Orrax Manifested | 8714 | sans unlock | `Orrax Manifested` |
-| ○ | `Return to Living World` | Prismatic Champion's Regalia | 5790 | sans etapes, sans unlock | `Prismatic Champion's Regalia` |
-| ● | `Legendary Weapon: Eternity` | Eternity | 7250 | sans unlock | — |
+| ● | `Return to Living World` | Prismatic Champion's Regalia | 5790 | sans etapes | `living_world_return.html` |
+| ○ | `Helping Hylek: Kill Krait` | Endless Summer | 9180 | sans etapes, sans unlock | — |
+| ○ | `Legendary Backpack and Glider: Orrax` | Orrax Manifested | 8714 | sans unlock | — |
 
-## URLs — 0 pages à capturer
+## URLs — 2 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Helping_Hylek:_Kill_Krait
+https://wiki.guildwars2.com/wiki/Legendary_Backpack_and_Glider:_Orrax
 ```
