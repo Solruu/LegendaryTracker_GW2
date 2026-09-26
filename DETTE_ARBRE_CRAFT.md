@@ -2715,3 +2715,38 @@ Audit v55 : la regle tourne a chaque passe, sur tout bloc `direct_sync` portant
 un `bit_map`. Un nom qu'aucune capture n'ancre devient un avertissement
 (identifiant inverifiable), un nom ancre sur un autre identifiant devient une
 erreur. Teste en negatif : remettre 5748 fait echouer l'audit.
+
+## BE — 25/09/2026 : Ardent Glorious n'etait plus bloque, et un vrai trou a cote
+
+Question posee : ajouter les pieces d'Ardent Glorious a la file. Reponse :
+**non, et il ne faut pas.** Les dix-neuf pages de pieces sont au depot, les
+dix-neuf de Triumphant Hero aussi, et les deux sets sont decomposes depuis un
+moment : trois dons chacun, poses en `__per_piece`, recettes et enfants
+compris. `Gift of War Prowess` a sa recette. Le point « Ardent Glorious bloque,
+il faut une page de piece individuelle » etait perime — et il n'y a jamais eu
+de piece individuelle a modeliser, puisqu'une piece coute les memes trois dons
+quel que soit son emplacement. C'est exactement ce que dit `__per_piece`.
+
+### Le vrai trou etait a cote
+
+`gift_of_competitive_dedication` portait `recipe: null` et un seul enfant sur
+quatre. Sa capture donne la recette complete : 1 Record of League Participation
++ 1 Star of Glory + 1 Glob of Condensed Spirit Energy + 1 Jar of Distilled
+Glory. **Trois ingredients sur quatre n'existaient pas dans l'arbre.** Poses en
+feuilles, recette ecrite, et leurs trois pages partent en file par le mecanisme
+normal (section 3 : sans apiId ni page).
+
+### Ce que ca revele, et qui depasse cette passe
+
+La file ne detecte pas cette classe de trou. Section 0 affichait 0 pendant que
+quatre ingredients manquaient, parce qu'elle part des composants presents et de
+leurs aretes, jamais des recettes lues dans `INDEX_CONTENU` pour un composant
+dont le champ `recipe` est vide.
+
+Mesure brute : **196 composants dont la recette capturee cite au moins un
+ingredient absent de l'arbre, 171 ingredients distincts**. Chiffre a prendre
+avec des pincettes — le rapprochement se fait par slug, donc les pluriels
+(`Obsidian_Shards`, `Mystic_Clovers`) et les apostrophes encodees
+(`Philosopher%27s_Stone`) comptent a tort. Il faut un vrai appariement, par
+apiId quand il existe, avant d'en faire une section de la file. A faire, pas
+fait ici.

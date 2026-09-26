@@ -1410,17 +1410,27 @@ Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
 d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
 retroactif des etapes validees (sections Y et AB).
 
-### 1. Captures manquantes — 10 URLs dans `PAGES_A_CAPTURER.md`
+### 1. Captures manquantes — 3 URLs dans `PAGES_A_CAPTURER.md`
 
-Quatre achevent la branche Olmakhan, ouverte le 20/09 : `Olmakhan_Charm`,
-`Olmakhan_Latigo_Strap`, `Superior_Rune_of_Holding`, `Supreme_Rune_of_Holding`.
-Leurs quantites sont sourcees, leur cout d'obtention non.
+Les dix URLs de cette entree sont livrees et integrees (lots des 24 et
+25/09) : branche Olmakhan, tables d'armure, feuilles. `Valkyrie_Bearkin_War_Helm`
+n'a jamais eu besoin de capture — son apiId (103257) se lit sur
+`Valkyrie_Bearkin_War_Helm_(heavy)`, deja au depot ; l'ecart etait un titre de
+redirection, pas un manque.
 
-Trois tables d'armure bloquent le plus vieux point du backlog : `Obsidian_armor`,
-`Triumphant_Hero's_armor`, `Ardent_Glorious_armor`.
+**Les deux armures competitives ne sont plus bloquees, et ne l'etaient plus
+depuis un moment.** Les dix-neuf pages de pieces d'`Ardent_Glorious` et les
+dix-neuf de `Triumphant_Hero's` sont au depot, et les deux sets sont decomposes :
+trois dons chacun, poses en `__per_piece`, avec leurs recettes et leurs enfants.
+`Gift of War Prowess` a sa recette (1 legendary_war_insight + 1 eldritch_scroll
++ 50 obsidian_shard + 1 cube_of_stabilized_dark_energy). Il n'y a pas de piece
+individuelle a modeliser : une piece coute les memes trois dons quel que soit
+son emplacement, ce que le suffixe `__per_piece` dit deja.
 
-Trois feuilles : `Ancient_Wood_Pulp`, `Jug_of_Water`,
-`Valkyrie_Bearkin_War_Helm`.
+Les 3 URLs restantes sortent de la decomposition du 25/09 :
+`Record_of_League_Participation`, `Star_of_Glory`, `Jar_of_Distilled_Glory` —
+les trois ingredients du `Gift of Competitive Dedication` qui manquaient a
+l'arbre.
 
 ### 2. Les trois valeurs d'Aurene's Rending
 

@@ -8604,7 +8604,11 @@ const SOURCES_DB = {
         "gift_of_the_champion": 1,
         "ardent_glorious__per_piece": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "recipe": {
+        "fr": "MF : 1x record_of_league_participation + 1x star_of_glory + 1x glob_condensed_spirit_energy + 1x jar_of_distilled_glory.",
+        "en": "MF: 1x record_of_league_participation + 1x star_of_glory + 1x glob_condensed_spirit_energy + 1x jar_of_distilled_glory."
+      }
     },
     "mist_pendant": {
       "name": "Mist Pendant",
@@ -23941,6 +23945,75 @@ const SOURCES_DB = {
             "ref": "wiki:Gift_of_the_Riverlands section Acquisition"
           }
         ]
+      }
+    },
+    "record_of_league_participation": {
+      "name": "Record of League Participation",
+      "kind": "acquire",
+      "needed_for": [
+        "gift_of_competitive_dedication"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "pvp_achievement",
+          "tip": {
+            "fr": "Ingrédient de la Forge mystique du Gift of Competitive Dedication. Sa propre voie d'obtention reste à lire : sa page n'est pas au dépôt.",
+            "en": "Mystic Forge ingredient of the Gift of Competitive Dedication. Its own acquisition path is still to be read: its page is not in the repo."
+          },
+          "verified": false,
+          "checked": "2026-09-25",
+          "ref": "gift_of_competitive_dedication.html, section Acquisition (Forge mystique)"
+        }
+      ],
+      "qty": {
+        "gift_of_competitive_dedication": 1
+      }
+    },
+    "star_of_glory": {
+      "name": "Star of Glory",
+      "kind": "acquire",
+      "needed_for": [
+        "gift_of_competitive_dedication"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "pvp_achievement",
+          "tip": {
+            "fr": "Ingrédient de la Forge mystique du Gift of Competitive Dedication. Sa propre voie d'obtention reste à lire : sa page n'est pas au dépôt.",
+            "en": "Mystic Forge ingredient of the Gift of Competitive Dedication. Its own acquisition path is still to be read: its page is not in the repo."
+          },
+          "verified": false,
+          "checked": "2026-09-25",
+          "ref": "gift_of_competitive_dedication.html, section Acquisition (Forge mystique)"
+        }
+      ],
+      "qty": {
+        "gift_of_competitive_dedication": 1
+      }
+    },
+    "jar_of_distilled_glory": {
+      "name": "Jar of Distilled Glory",
+      "kind": "acquire",
+      "needed_for": [
+        "gift_of_competitive_dedication"
+      ],
+      "farmable": true,
+      "sources": [
+        {
+          "type": "pvp_achievement",
+          "tip": {
+            "fr": "Ingrédient de la Forge mystique du Gift of Competitive Dedication. Sa propre voie d'obtention reste à lire : sa page n'est pas au dépôt.",
+            "en": "Mystic Forge ingredient of the Gift of Competitive Dedication. Its own acquisition path is still to be read: its page is not in the repo."
+          },
+          "verified": false,
+          "checked": "2026-09-25",
+          "ref": "gift_of_competitive_dedication.html, section Acquisition (Forge mystique)"
+        }
+      ],
+      "qty": {
+        "gift_of_competitive_dedication": 1
       }
     }
   },
