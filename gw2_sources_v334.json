@@ -16080,11 +16080,18 @@
     "sources": [
      {
       "label": {
-       "fr": "Raffinement quotidien (joaillerie 400) — 1 par COMPTE et par jour, reset quotidien standard. Le plafond est partagé entre l'achat chez un vendeur et le craft : acheter n'en débloque pas un second.",
-       "en": "Daily refinement (Jeweler 400) — 1 per ACCOUNT per day, standard daily reset. The cap is shared between vendor purchase and crafting: buying does not unlock a second one."
+       "fr": "Craft à porte quotidienne",
+       "en": "Daily time-gated craft"
       },
       "period": "day",
-      "cap": 1
+      "cap": 1,
+      "cost": {
+       "fr": "1 par jour et par COMPTE, pas par personnage : la porte est posée sur le compte, changer de personnage ne la rouvre pas.",
+       "en": "1 per day per ACCOUNT, not per character: the gate is account-wide, switching characters does not reopen it."
+      },
+      "verified": true,
+      "checked": "2026-09-27",
+      "ref": "/v2/dailycrafting (liste publique des recettes a porte quotidienne, sans cle) ; etat du jour lisible sur /v2/account/dailycrafting, portee compte"
      }
     ],
     "verified": true,
@@ -21166,6 +21173,25 @@
    "recipe": {
     "fr": "Fabrication (rating 450). Ingrédients : 50x cured_thick_leather_square, 1x glob_of_ectoplasm, 10x thermocatalytic_reagent.",
     "en": "Crafted (rating 450). Ingredients: 50x cured_thick_leather_square, 1x glob_of_ectoplasm, 10x thermocatalytic_reagent."
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Craft à porte quotidienne",
+       "en": "Daily time-gated craft"
+      },
+      "period": "day",
+      "cap": 1,
+      "cost": {
+       "fr": "1 par jour et par COMPTE, pas par personnage : la porte est posée sur le compte, changer de personnage ne la rouvre pas.",
+       "en": "1 per day per ACCOUNT, not per character: the gate is account-wide, switching characters does not reopen it."
+      },
+      "verified": true,
+      "checked": "2026-09-27",
+      "ref": "/v2/dailycrafting (liste publique des recettes a porte quotidienne, sans cle) ; etat du jour lisible sur /v2/account/dailycrafting, portee compte"
+     }
+    ]
    }
   },
   "glob_of_dark_matter": {
@@ -21451,6 +21477,25 @@
    "recipe": {
     "fr": "Fabrication (rating 450). Ingrédients : 100x bolt_of_silk, 1x glob_of_ectoplasm, 25x spool_of_gossamer_thread.",
     "en": "Crafted (rating 450). Ingredients: 100x bolt_of_silk, 1x glob_of_ectoplasm, 25x spool_of_gossamer_thread."
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Craft à porte quotidienne",
+       "en": "Daily time-gated craft"
+      },
+      "period": "day",
+      "cap": 1,
+      "cost": {
+       "fr": "1 par jour et par COMPTE, pas par personnage : la porte est posée sur le compte, changer de personnage ne la rouvre pas.",
+       "en": "1 per day per ACCOUNT, not per character: the gate is account-wide, switching characters does not reopen it."
+      },
+      "verified": true,
+      "checked": "2026-09-27",
+      "ref": "/v2/dailycrafting (liste publique des recettes a porte quotidienne, sans cle) ; etat du jour lisible sur /v2/account/dailycrafting, portee compte"
+     }
+    ]
    }
   },
   "spool_of_gossamer_thread": {
@@ -24738,6 +24783,25 @@
    ],
    "qty": {
     "spiritwood_plank": 1
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Craft à porte quotidienne",
+       "en": "Daily time-gated craft"
+      },
+      "period": "day",
+      "cap": 1,
+      "cost": {
+       "fr": "1 par jour et par COMPTE, pas par personnage : la porte est posée sur le compte, changer de personnage ne la rouvre pas.",
+       "en": "1 per day per ACCOUNT, not per character: the gate is account-wide, switching characters does not reopen it."
+      },
+      "verified": true,
+      "checked": "2026-09-27",
+      "ref": "/v2/dailycrafting (liste publique des recettes a porte quotidienne, sans cle) ; etat du jour lisible sur /v2/account/dailycrafting, portee compte"
+     }
+    ]
    }
   },
   "gold_ingot": {

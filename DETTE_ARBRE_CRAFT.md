@@ -3073,3 +3073,64 @@ Rappel de ce qui justifie cette branche : Orrax Manifested reclame un Gift of
 the Feast, soit quatre dons de service, soit **1 252 plats**. C'est le plus gros
 bloc de craft d'une legendaire du depot, et sans decomposition ces 1 252 plats
 etaient des objets sans cout.
+
+## BM — 27/09/2026 : d'où viennent les cadences, et ce que l'API en dit
+
+Question d'Antoine : comment les « timers » sont attribués, et peut-on les lire
+depuis l'API.
+
+### Comment ils sont attribues aujourd'hui
+
+Chaque composant peut porter un bloc `cadence.sources[]`, ou chaque source dit
+`period` (day / week / season / character), `cap`, `per_character`, `rng`,
+`cost`, et sa `ref`. **Tout est saisi a la main**, depuis une capture wiki ou
+une observation en jeu d'Antoine. Aucun outil ne les deduit.
+
+Le JSX en tire un debit : il additionne les `cap` de toutes les sources
+plafonnees, exclut celles sans plafond et les RNG (leur plafond borne les
+tentatives, pas les gains), projette sur UN personnage meme quand le plafond est
+par personnage, et signale les saisons au lieu de les lisser.
+
+**C'est la que se trouve la fragilite** : additionner les sources suppose qu'on
+les farme toutes le meme jour. Pour `difluorite_crystal`, 21/jour/perso +
+44/jour/perso + 5/jour font 70/jour, soit 490/semaine — un plafond theorique
+que personne n'atteint. Le delai affiche est donc un plancher optimiste, pas une
+estimation. A trancher : additionner, prendre la meilleure source, ou demander
+au joueur laquelle il emprunte.
+
+### Ce que l'API donne, et ce qu'elle ne donne pas
+
+**Elle donne la liste des crafts a porte quotidienne**, et c'est tout ce qu'elle
+donne en matiere de cadence :
+
+- `/v2/dailycrafting` — public, sans cle : les cinq recettes a porte
+  quotidienne (`charged_quartz_crystal`, `glob_of_elder_spirit_residue`,
+  `lump_of_mithrilium`, `spool_of_silk_weaving_thread`,
+  `spool_of_thick_elonian_cord`) ;
+- `/v2/account/dailycrafting` — avec cle, portee `progression` : celles deja
+  faites depuis le reset. De quoi cocher la case du jour automatiquement.
+
+**Elle ne donne pas** les plafonds vendeur (75 Kralkatite/jour au Bundle), les
+plafonds de piste de recompense, ni ceux des trefles et pieces mystiques.
+Aucun endpoint ne publie de metadonnee de cadence : ces valeurs restent
+wiki-sourcees, et le resteront.
+
+Pour les activites, trois endpoints disent « fait ce reset » sans dire le
+plafond : `/v2/account/raids` (hebdomadaire), `/v2/account/mapchests` et
+`/v2/account/worldbosses` (quotidiens).
+
+### Ce que la verification a trouve
+
+Des cinq crafts a porte quotidienne que l'API atteste, **un seul portait une
+cadence** — `lump_of_mithrillium`, et sans `ref`. Trois n'en avaient aucune :
+`glob_of_elder_spirit_residue`, `spool_of_thick_elonian_cord`,
+`spool_of_silk_weaving_thread`. Le cinquieme, `charged_quartz_crystal`, n'est
+pas un composant du depot (aucune recette lue ne le reclame).
+
+Les trois cadences sont posees, 1 par jour et **par compte** — la porte est
+posee sur le compte, changer de personnage ne la rouvre pas — et
+`lump_of_mithrillium` recoit enfin la source qui l'etablit.
+
+Portee : ces trois portes commandent Bolt of Damask, Elonian Leather Square et
+Spiritwood Plank, donc tout ce qui passe par un tissu, un cuir ou un bois
+ascendus. **Pas Vision**, qui n'en consomme aucun — son delai vient d'ailleurs.
