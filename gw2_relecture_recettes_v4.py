@@ -32,8 +32,8 @@ Trois defauts distincts, qui n'appellent pas le meme travail :
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-Usage : python3 gw2_relecture_recettes_v3.py [--rapport RELECTURE_RECETTES_v1.md]
-        python3 gw2_relecture_recettes_v3.py --legendaire ad_infinitum
+Usage : python3 gw2_relecture_recettes_v4.py [--rapport RELECTURE_RECETTES_v1.md]
+        python3 gw2_relecture_recettes_v4.py --legendaire ad_infinitum
 """
 import argparse
 import json
@@ -116,6 +116,14 @@ class Resolveur:
             self.par_slug[cid] = cid
             if isinstance(c.get("apiId"), int):
                 self.par_api.setdefault(c["apiId"], cid)
+            # Une recette peut citer un titre qui redirige : la boite de
+            # `mystic_essence_of_annihilation` pointe « Dark Matter », le wiki
+            # renvoie « Glob of Dark Matter ». On ne peut pas corriger la
+            # recette, alors le composant declare les titres par lesquels on
+            # l'atteint. Meme principe que le titre d'arrivee du meta 3516.
+            for red in (c.get("wiki_redirects") or []):
+                self.par_slug.setdefault(slugifie(red), cid)
+                self.par_nom.setdefault(clef_nom(red), cid)
             if c.get("name"):
                 self.par_nom.setdefault(clef_nom(c["name"]), cid)
                 self.par_nom_sing.setdefault(clef_nom_sing(c["name"]), cid)
@@ -228,6 +236,7 @@ def main():
     total = defaultdict(int)
     par_leg = {}
     ing_manquants = defaultdict(set)
+    ing_palier = defaultdict(set)
 
     for lk in cibles:
         lv = legs[lk]
@@ -258,9 +267,22 @@ def main():
             # a eux seuls produisaient huit lignes pour une seule decision.
             # Une ligne, et on passe.
             if not enfants:
+                # Une feuille assumee donne UNE ligne, pas une par ingredient.
+                # Mais le raccourci cachait quelque chose : les ingredients de
+                # cette recette ne sont pas verifies, donc ceux qui n'existent
+                # pas restaient invisibles. Cinquante recettes du lot du 27/09
+                # en reclamaient 181 sans que le rapport en dise un mot. On les
+                # compte a part : ce n'est pas un defaut de la feuille, c'est le
+                # palier suivant de l'arbre.
+                absents = [t for t, _q in ing if res.resoudre(t)[0] is None]
                 defauts.append(("NON_DECOMPOSE", node, f"{len(ing)} ingrédients",
                                 "", page, "feuille assumée"))
                 total["non_decompose"] += 1
+                for t in absents:
+                    defauts.append(("PALIER_SUIVANT", node, t, "", page,
+                                    "sous une feuille"))
+                    ing_palier[unquote(str(t))].add(node)
+                    total["palier"] += 1
                 continue
             attendus = {}
             for titre, qte in ing:
@@ -308,16 +330,18 @@ def main():
                                          "legs": set()})
             e["legs"].add(lk)
 
-    ORDRE = {"MANQUANT": 0, "NON_RELIE": 1, "AILLEURS": 2, "EN_TROP": 3, "NON_DECOMPOSE": 4}
+    ORDRE = {"MANQUANT": 0, "NON_RELIE": 1, "AILLEURS": 2, "EN_TROP": 3,
+             "PALIER_SUIVANT": 4, "NON_DECOMPOSE": 5}
     TITRES = {"MANQUANT": "Ingrédients qu'aucun composant ne représente",
               "NON_RELIE": "Ingrédients présents dans l'arbre mais non rattachés au parent",
               "EN_TROP": "Enfants déclarés que la recette ne cite pas",
               "AILLEURS": "Ingrédients rattachés ailleurs sous le même légendaire",
+              "PALIER_SUIVANT": "Ingrédients absents, cités par la recette d'une feuille",
               "NON_DECOMPOSE": "Nœuds ayant une recette et aucun enfant (feuilles assumées)"}
     compte = {k: sum(1 for c in global_ if c[0] == k) for k in ORDRE}
 
     lignes = ["# Relecture des recettes, légendaire par légendaire", "",
-              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v3.py`.",
+              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v4.py`.",
               "L'outil descend depuis chaque légendaire et compare, à chaque nœud, les",
               "enfants déclarés à la recette lue sur sa capture. Appariement par apiId",
               "d'abord (591 composants sur 601 en portent un), par nom en dernier recours,",
@@ -334,6 +358,8 @@ def main():
               f"coût d'acquisition) | {compte['EN_TROP']} |",
               "| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le "
               f"total est probablement juste, la forme ne suit pas la recette | {compte['AILLEURS']} |",
+              "| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | "
+              f"le palier d'en dessous, à créer si on veut descendre | {compte['PALIER_SUIVANT']} |",
               "| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, "
               f"pas un bug | {compte['NON_DECOMPOSE']} |", "",
               f"Écartés sans être comptés : {total['choix']} options d'`alt_groups` — un choix, "
@@ -354,6 +380,12 @@ def main():
                 qui += f" … (+{len(legs_) - 3})"
             lignes.append(f"| `{cle[1]}` | `{unquote(cle[2])}` | {e['qte']} | `{e['page']}` | "
                           f"{e['comment'] or '—'} | {qui} |")
+        lignes.append("")
+
+    if ing_palier:
+        lignes.append(f"## Palier suivant — {len(ing_palier)} ingrédients, et qui les réclame\n")
+        for ing, parents in sorted(ing_palier.items()):
+            lignes.append(f"- `{ing}` — réclamé par {', '.join('`%s`' % p for p in sorted(parents))}")
         lignes.append("")
 
     if ing_manquants:

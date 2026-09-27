@@ -1378,6 +1378,15 @@
   "aretes_table": []
  },
  {
+  "page": "askur_camping_cookout_backpiece",
+  "titre": "Askur Camping Cookout Backpiece",
+  "api_id": 104704,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "aspen_sapling",
   "titre": "Aspen Sapling",
   "api_id": null,
@@ -4212,6 +4221,20 @@
   "aretes_table": []
  },
  {
+  "page": "binding_of_the_dragon",
+  "titre": "Binding of the Dragon",
+  "api_id": 104777,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Dragonite_Ore",
+    "qty": 25
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "blended_leather_sheet",
   "titre": "Blended Leather Sheet",
   "api_id": 80723,
@@ -4580,6 +4603,40 @@
   "aretes_table": []
  },
  {
+  "page": "bolt_of_damask",
+  "titre": "Bolt of Damask",
+  "api_id": 46741,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Leatherworker Tailor",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Bolt_of_Wool",
+      20
+     ],
+     [
+      "Bolt_of_Cotton",
+      10
+     ],
+     [
+      "Bolt_of_Linen",
+      20
+     ],
+     [
+      "Spool_of_Silk_Weaving_Thread",
+      1
+     ]
+    ],
+    "produit": "Bolt of Damask"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bolt_of_empowered_silk",
   "titre": "Bolt of Empowered Silk",
   "api_id": 80686,
@@ -4812,6 +4869,134 @@
   "aretes_table": []
  },
  {
+  "page": "bowl_of_black_pepper_cactus_salad",
+  "titre": "Bowl of Black Pepper Cactus Salad",
+  "api_id": 66529,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Nopal",
+      5
+     ],
+     [
+      "Avocado",
+      1
+     ],
+     [
+      "Black_Peppercorn",
+      5
+     ],
+     [
+      "Bowl_of_Ascalonian_Salad",
+      3
+     ]
+    ],
+    "produit": "Bowl of Black Pepper Cactus Salad"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bowl_of_passion_fruit_tapioca_pudding",
+  "titre": "Bowl of Passion Fruit Tapioca Pudding",
+  "api_id": 71826,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Bowl_of_Tapioca_Pudding",
+      1
+     ],
+     [
+      "Raspberry_Passion_Fruit_Compote",
+      1
+     ]
+    ],
+    "produit": "Bowl of Passion Fruit Tapioca Pudding"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bowl_of_poultry_satay",
+  "titre": "Bowl of Poultry Satay",
+  "api_id": 87076,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Jar_of_Red_Curry_Paste",
+      2
+     ],
+     [
+      "Pile_of_Tangy_Seasoning",
+      1
+     ],
+     [
+      "Bottle_of_Coconut_Milk",
+      1
+     ],
+     [
+      "Slab_of_Poultry_Meat",
+      3
+     ]
+    ],
+    "produit": "Bowl of Poultry Satay"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bowl_of_prickly_pear_sorbet",
+  "titre": "Bowl of Prickly Pear Sorbet",
+  "api_id": 66539,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Prickly_Pear",
+      5
+     ],
+     [
+      "Bowl_of_Ice_Cream_Base",
+      1
+     ],
+     [
+      "Glacial_Shard",
+      1
+     ],
+     [
+      "Lime",
+      1
+     ]
+    ],
+    "produit": "Bowl of Prickly Pear Sorbet"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "box_o_fun",
   "titre": "Box o' Fun",
   "api_id": 20000,
@@ -4877,6 +5062,40 @@
   "aretes_table": []
  },
  {
+  "page": "call_of_the_void",
+  "titre": "Call of the Void",
+  "api_id": 87764,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Call_of_the_Void",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Horn",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Warhorn_Mouthpiece",
+      1
+     ]
+    ],
+    "produit": "Call of the Void"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "carbonized_mithrillium_ingot",
   "titre": "Carbonized Mithrillium Ingot",
   "api_id": 80714,
@@ -4905,6 +5124,40 @@
      ]
     ],
     "produit": "Carbonized Mithrillium Ingot"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "carcharias",
+  "titre": "Carcharias",
+  "api_id": 29171,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Diving",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Spear",
+      1
+     ],
+     [
+      "Shark_Figurine",
+      1
+     ],
+     [
+      "Serrated_Harpoon",
+      1
+     ]
+    ],
+    "produit": "Carcharias"
    }
   ],
   "couts_vendeur": [],
@@ -5062,6 +5315,40 @@
   "aretes_table": []
  },
  {
+  "page": "chaos_gun",
+  "titre": "Chaos Gun",
+  "api_id": 29174,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Mischief",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Pistol",
+      1
+     ],
+     [
+      "Ornate_Pistol_Frame",
+      1
+     ],
+     [
+      "Confetti_Bullets",
+      1
+     ]
+    ],
+    "produit": "Chaos Gun"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "charged_lodestone",
   "titre": "Charged Lodestone",
   "api_id": 24305,
@@ -5120,6 +5407,182 @@
   "aretes_table": []
  },
  {
+  "page": "charged_titan_ore",
+  "titre": "Charged Titan Ore",
+  "api_id": 103279,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Bava_Nisos:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Convergence:_Mount_Balrior_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Convergences:_Mount_Balrior_Wayfinder%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Curious_Mursaat_Remnants",
+    "qty": 12
+   },
+   {
+    "objet": "Curious_Mursaat_Ruin_Shard",
+    "qty": 8
+   },
+   {
+    "objet": "Janthir_Syntri:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Janthiri_Renown_Chest",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "charm_of_brilliance",
+  "titre": "Charm of Brilliance",
+  "api_id": 89103,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Charm_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Charm of Brilliance"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charm_of_Potence",
+      1
+     ],
+     [
+      "Charm_of_Skill",
+      1
+     ]
+    ],
+    "produit": "Random Superior Rune"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "charm_of_potence",
+  "titre": "Charm of Potence",
+  "api_id": 89258,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Charm_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Charm of Potence"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charm_of_Brilliance",
+      1
+     ],
+     [
+      "Charm_of_Skill",
+      1
+     ]
+    ],
+    "produit": "Random Superior Rune"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "charm_of_skill",
+  "titre": "Charm of Skill",
+  "api_id": 89216,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Charm_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Charm of Skill"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charm_of_Brilliance",
+      1
+     ],
+     [
+      "Charm_of_Potence",
+      1
+     ]
+    ],
+    "produit": "Random Superior Rune"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "chromatic_sap",
   "titre": "Chromatic Sap",
   "api_id": 106385,
@@ -5135,6 +5598,32 @@
     "qty": 1
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "chrysocola_crystal",
+  "titre": "Chrysocola Crystal",
+  "api_id": 24511,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "275",
+    "ingredients": [
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Chrysocola_Shard",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Chrysocola Crystal"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -5502,6 +5991,40 @@
      ]
     ],
     "produit": "Claw"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "claw_of_resolution",
+  "titre": "Claw of Resolution",
+  "api_id": 87037,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Resolution",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Dagger_Hilt",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Dagger_Blade",
+      1
+     ]
+    ],
+    "produit": "Claw of Resolution"
    }
   ],
   "couts_vendeur": [],
@@ -6701,6 +7224,40 @@
   "aretes_table": []
  },
  {
+  "page": "dawn",
+  "titre": "Dawn",
+  "api_id": 29169,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Illumination",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Daysword",
+      1
+     ],
+     [
+      "Mirror_(item)",
+      1
+     ],
+     [
+      "Dimensional_Destabilizer",
+      1
+     ]
+    ],
+    "produit": "Dawn"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "deldrimor_steel_axe_blade",
   "titre": "Deldrimor Steel Axe Blade",
   "api_id": 45845,
@@ -7414,6 +7971,550 @@
   "aretes_table": []
  },
  {
+  "page": "dragons_argument",
+  "titre": "Dragon's Argument",
+  "api_id": 96915,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Pistol_Barrel",
+      1
+     ],
+     [
+      "Fortified_Precursor_Pistol_Frame",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Argument"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_bite",
+  "titre": "Dragon's Bite",
+  "api_id": 96357,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Greatsword_Blade",
+      1
+     ],
+     [
+      "Fortified_Precursor_Greatsword_Hilt",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Bite"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_breath",
+  "titre": "Dragon's Breath",
+  "api_id": 96925,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Torch_Head",
+      1
+     ],
+     [
+      "Fortified_Precursor_Torch_Handle",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Breath"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_claw_weapon",
+  "titre": "Dragon's Claw (weapon)",
+  "api_id": 95967,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Dagger_Blade",
+      1
+     ],
+     [
+      "Fortified_Precursor_Dagger_Hilt",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Claw (weapon)"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_fang",
+  "titre": "Dragon's Fang",
+  "api_id": 95994,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Sword_Blade",
+      1
+     ],
+     [
+      "Fortified_Precursor_Sword_Hilt",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Fang"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_flight",
+  "titre": "Dragon's Flight",
+  "api_id": 95834,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Longbow_Stave",
+      1
+     ],
+     [
+      "Fortified_Precursor_String",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Flight"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_gaze",
+  "titre": "Dragon's Gaze",
+  "api_id": 96303,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Focus_Core",
+      1
+     ],
+     [
+      "Fortified_Precursor_Focus_Casing",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Gaze"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_insight",
+  "titre": "Dragon's Insight",
+  "api_id": 95814,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Staff_Head",
+      1
+     ],
+     [
+      "Fortified_Precursor_Staff_Shaft",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Insight"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_persuasion",
+  "titre": "Dragon's Persuasion",
+  "api_id": 97267,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Rifle_Barrel",
+      1
+     ],
+     [
+      "Fortified_Precursor_Rifle_Stock",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Persuasion"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_rending",
+  "titre": "Dragon's Rending",
+  "api_id": 97449,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Axe_Head",
+      1
+     ],
+     [
+      "Small_Fortified_Precursor_Haft",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Rending"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_scale",
+  "titre": "Dragon's Scale",
+  "api_id": 97691,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Shield_Boss",
+      1
+     ],
+     [
+      "Fortified_Precursor_Shield_Backing",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Scale"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_tail",
+  "titre": "Dragon's Tail",
+  "api_id": 96827,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Mace_Head",
+      1
+     ],
+     [
+      "Small_Fortified_Precursor_Haft",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Tail"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_voice",
+  "titre": "Dragon's Voice",
+  "api_id": 97513,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Horn",
+      1
+     ],
+     [
+      "Fortified_Precursor_Warhorn_Mouthpiece",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Voice"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_weight",
+  "titre": "Dragon's Weight",
+  "api_id": 95920,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Hammer_Head",
+      1
+     ],
+     [
+      "Large_Fortified_Precursor_Haft",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Weight"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_wing",
+  "titre": "Dragon's Wing",
+  "api_id": 96330,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Short_Bow_Stave",
+      1
+     ],
+     [
+      "Fortified_Precursor_String",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Wing"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "dragons_wisdom",
+  "titre": "Dragon's Wisdom",
+  "api_id": 96193,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Fortified_Precursor_Scepter_Core",
+      1
+     ],
+     [
+      "Fortified_Precursor_Scepter_Rod",
+      1
+     ],
+     [
+      "Transcendent_Crystal",
+      1
+     ],
+     [
+      "Memory_of_Aurene",
+      100
+     ]
+    ],
+    "produit": "Dragon&#39;s Wisdom"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "dragonsblood_weapons",
   "titre": "Dragonsblood weapons",
   "api_id": null,
@@ -7429,6 +8530,40 @@
     "qty": 500
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "dusk",
+  "titre": "Dusk",
+  "api_id": 29185,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Gloom",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Nightsword",
+      1
+     ],
+     [
+      "Mirror_(item)",
+      1
+     ],
+     [
+      "Dimensional_Destabilizer",
+      1
+     ]
+    ],
+    "produit": "Dusk"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -7656,6 +8791,40 @@
   "aretes_table": []
  },
  {
+  "page": "elonian_leather_square",
+  "titre": "Elonian Leather Square",
+  "api_id": 46739,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman Leatherworker Tailor Armorsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Cured_Thin_Leather_Square",
+      20
+     ],
+     [
+      "Cured_Coarse_Leather_Square",
+      10
+     ],
+     [
+      "Cured_Rugged_Leather_Square",
+      20
+     ],
+     [
+      "Spool_of_Thick_Elonian_Cord",
+      1
+     ]
+    ],
+    "produit": "Elonian Leather Square"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "emblem_of_the_avenger",
   "titre": "Emblem of the Avenger",
   "api_id": 93075,
@@ -7832,6 +9001,40 @@
     "qty": 10
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "endeavor",
+  "titre": "Endeavor",
+  "api_id": 79570,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Endeavor",
+      100
+     ],
+     [
+      "Small_Spiritwood_Haft",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Mace_Head",
+      1
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ]
+    ],
+    "produit": "Endeavor"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -8631,6 +9834,40 @@
   "api_id": 68942,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "exitare",
+  "titre": "Exitare",
+  "api_id": 90883,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Exitare",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Greatsword_Hilt",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Greatsword_Blade",
+      1
+     ]
+    ],
+    "produit": "Exitare"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -9518,6 +10755,40 @@
   "aretes_table": []
  },
  {
+  "page": "friendship",
+  "titre": "Friendship",
+  "api_id": 79836,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Shard_of_Friendship",
+      100
+     ],
+     [
+      "Deldrimor_Steel_Shield_Backing",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Shield_Boss",
+      1
+     ]
+    ],
+    "produit": "Friendship"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "frostfang",
   "titre": "Frostfang",
   "api_id": 30684,
@@ -9945,6 +11216,24 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_ascalon",
+  "titre": "Gift of Ascalon",
+  "api_id": 19664,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ascalonian_Tear",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -10541,6 +11830,24 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_baelfire",
+  "titre": "Gift of Baelfire",
+  "api_id": 19668,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Flame_Legion_Charr_Carving",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -12612,6 +13919,32 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_janthir_syntri",
+  "titre": "Gift of Janthir Syntri",
+  "api_id": 102958,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Coin",
+    "qty": 250
+   },
+   {
+    "objet": "Curious_Mursaat_Currency",
+    "qty": 100
+   },
+   {
+    "objet": "Janthir_Syntri_Renown_Token",
+    "qty": 15
+   },
+   {
+    "objet": "Ursus_Oblige",
+    "qty": 2000
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_janthir_wanderlust",
   "titre": "Gift of Janthir Wanderlust",
   "api_id": 104699,
@@ -12790,6 +14123,24 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_knowledge",
+  "titre": "Gift of Knowledge",
+  "api_id": 19671,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Knowledge_Crystal",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_kraitkin",
   "titre": "Gift of Kraitkin",
   "api_id": 19658,
@@ -12923,6 +14274,32 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_lowland_shore",
+  "titre": "Gift of Lowland Shore",
+  "api_id": 102929,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Coin",
+    "qty": 250
+   },
+   {
+    "objet": "Curious_Lowland_Honeycomb",
+    "qty": 100
+   },
+   {
+    "objet": "Lowland_Shore_Renown_Token",
+    "qty": 15
+   },
+   {
+    "objet": "Ursus_Oblige",
+    "qty": 2000
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -15033,6 +16410,24 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_forgeman",
+  "titre": "Gift of the Forgeman",
+  "api_id": 19666,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Manifesto_of_the_Moletariate",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_four_legions",
   "titre": "Gift of the Four Legions",
   "api_id": 87115,
@@ -15422,6 +16817,24 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_nobleman",
+  "titre": "Gift of the Nobleman",
+  "api_id": 19665,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Seal_of_Beetletun",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_nuhoch",
   "titre": "Gift of the Nuhoch",
   "api_id": 76767,
@@ -15576,6 +16989,24 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_the_sanctuary",
+  "titre": "Gift of the Sanctuary",
+  "api_id": 19670,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Symbol_of_Koda",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -15735,6 +17166,32 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_ursus",
+  "titre": "Gift of the Ursus",
+  "api_id": 103236,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Coin",
+    "qty": 250
+   },
+   {
+    "objet": "Curious_Lowland_Honeycomb",
+    "qty": 25
+   },
+   {
+    "objet": "Curious_Mursaat_Currency",
+    "qty": 25
+   },
+   {
+    "objet": "Ursus_Oblige",
+    "qty": 1250
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_warclaw",
   "titre": "Gift of the Warclaw",
   "api_id": 109363,
@@ -15775,6 +17232,24 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_thorns",
+  "titre": "Gift of Thorns",
+  "api_id": 19667,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Deadly_Bloom",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -16345,6 +17820,24 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_zhaitan",
+  "titre": "Gift of Zhaitan",
+  "api_id": 19669,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Shard_of_Zhaitan",
+    "qty": 500
+   },
+   {
+    "objet": "Tale_of_Dungeon_Delving",
+    "qty": 500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "glacial_lodestone",
   "titre": "Glacial Lodestone",
   "api_id": 24320,
@@ -16507,6 +18000,78 @@
     "qty": 1
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "glob_of_elder_spirit_residue",
+  "titre": "Glob of Elder Spirit Residue",
+  "api_id": 46744,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "450",
+    "ingredients": [
+     [
+      "Elder_Wood_Plank",
+      50
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      10
+     ]
+    ],
+    "produit": "Glob of Elder Spirit Residue"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "gold_ingot",
+  "titre": "Gold Ingot",
+  "api_id": 19682,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler Scribe",
+    "rating": "150",
+    "ingredients": [
+     [
+      "Gold_Ore",
+      2
+     ]
+    ],
+    "produit": "Gold Ingot"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Silver_Ingot",
+      250
+     ],
+     [
+      "Pile_of_Radiant_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      4
+     ]
+    ],
+    "produit": "Gold Ingot"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -17075,6 +18640,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "howl",
+  "titre": "Howl",
+  "api_id": 29184,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Spirit",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Warhorn",
+      1
+     ],
+     [
+      "Wolf_Statue_(exotic)",
+      1
+     ],
+     [
+      "Mithril_Snake",
+      1
+     ]
+    ],
+    "produit": "Howl"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -17670,6 +19269,33 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "jar_of_distilled_glory",
+  "titre": "Jar of Distilled Glory",
+  "api_id": 82926,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Shard_of_Glory",
+      1000
+     ]
+    ],
+    "produit": "Jar of Distilled Glory"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Shard_of_Glory",
+    "qty": 1000
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -18698,6 +20324,40 @@
   "aretes_table": []
  },
  {
+  "page": "leaf_of_kudzu",
+  "titre": "Leaf of Kudzu",
+  "api_id": 29172,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_the_Garden",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Longbow",
+      1
+     ],
+     [
+      "Lattice_(component)",
+      1
+     ],
+     [
+      "Pruning_Shears",
+      1
+     ]
+    ],
+    "produit": "Leaf of Kudzu"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "legendary_armor_achievements",
   "titre": "Legendary Armor (achievements)",
   "api_id": null,
@@ -18710,6 +20370,15 @@
   "page": "legendary_backpack_ad_infinitum",
   "titre": "Legendary Backpack: Ad Infinitum",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "legendary_insight_consumable",
+  "titre": "Legendary Insight (consumable)",
+  "api_id": 77302,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -19855,6 +21524,40 @@
   "aretes_table": []
  },
  {
+  "page": "liturgy",
+  "titre": "Liturgy",
+  "api_id": 81022,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Shard_of_Liturgy",
+      100
+     ],
+     [
+      "Deldrimor_Steel_Torch_Head",
+      1
+     ],
+     [
+      "Spiritwood_Torch_Handle",
+      1
+     ]
+    ],
+    "produit": "Liturgy"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "living_world_return",
   "titre": "Living World Return",
   "api_id": null,
@@ -19950,11 +21653,79 @@
   "aretes_table": []
  },
  {
+  "page": "man_o_war",
+  "titre": "Man o' War",
+  "api_id": 80135,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Shard_o%27_War",
+      100
+     ],
+     [
+      "Deldrimor_Steel_Rifle_Barrel",
+      1
+     ],
+     [
+      "Spiritwood_Rifle_Stock",
+      1
+     ]
+    ],
+    "produit": "Man o&#39; War"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "master_diver",
   "titre": "Master Diver",
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "meaty_asparagus_skewer",
+  "titre": "Meaty Asparagus Skewer",
+  "api_id": 95942,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Slab_of_Red_Meat",
+      1
+     ],
+     [
+      "Asparagus_Spear",
+      2
+     ],
+     [
+      "Bottle_of_Rice_Wine",
+      1
+     ],
+     [
+      "Bottle_of_Soy_Sauce",
+      1
+     ]
+    ],
+    "produit": "Meaty Asparagus Skewer"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -20013,6 +21784,33 @@
     "qty": 100
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "memory_of_bearkins_adversaries",
+  "titre": "Memory of Bearkin's Adversaries",
+  "api_id": 103793,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "memory_of_the_bearkins_hunts",
+  "titre": "Memory of the Bearkin's Hunts",
+  "api_id": 103766,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "memory_of_the_bearkins_victories",
+  "titre": "Memory of the Bearkin's Victories",
+  "api_id": 103833,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -20223,6 +22021,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "might_of_arah",
+  "titre": "Might of Arah",
+  "api_id": 81634,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Arah",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Hammer_Head",
+      1
+     ],
+     [
+      "Large_Spiritwood_Haft",
+      1
+     ]
+    ],
+    "produit": "Might of Arah"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -21978,6 +23810,32 @@
   "aretes_table": []
  },
  {
+  "page": "orichalcum_plated_dowel",
+  "titre": "Orichalcum Plated Dowel",
+  "api_id": 12988,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Scribe Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      3
+     ],
+     [
+      "Ancient_Wood_Plank",
+      2
+     ]
+    ],
+    "produit": "Orichalcum Plated Dowel"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "orrax_contained",
   "titre": "Orrax Contained",
   "api_id": 104690,
@@ -22842,6 +24700,100 @@
   "aretes_table": []
  },
  {
+  "page": "plate_of_orrian_steak_frittes",
+  "titre": "Plate of Orrian Steak Frittes",
+  "api_id": 12468,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Cup_of_Lotus_Fries",
+      1
+     ],
+     [
+      "Slab_of_Red_Meat",
+      1
+     ]
+    ],
+    "produit": "Plate of Orrian Steak Frittes"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "plate_of_spicy_herbed_chicken",
+  "titre": "Plate of Spicy Herbed Chicken",
+  "api_id": 41567,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Bowl_of_Fancy_Tangy_Sautee_Mix",
+      1
+     ],
+     [
+      "Ghost_Pepper",
+      5
+     ],
+     [
+      "Slab_of_Poultry_Meat",
+      3
+     ],
+     [
+      "Pile_of_Zesty_Herbs",
+      1
+     ]
+    ],
+    "produit": "Plate of Spicy Herbed Chicken"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "plate_of_truffle_steak",
+  "titre": "Plate of Truffle Steak",
+  "api_id": 12467,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Stick_of_Butter",
+      1
+     ],
+     [
+      "Snow_Truffle",
+      1
+     ],
+     [
+      "Orrian_Truffle",
+      1
+     ],
+     [
+      "Slab_of_Red_Meat",
+      1
+     ]
+    ],
+    "produit": "Plate of Truffle Steak"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "platinum_ingot",
   "titre": "Platinum Ingot",
   "api_id": 19686,
@@ -23656,6 +25608,40 @@
   "aretes_table": []
  },
  {
+  "page": "prototype",
+  "titre": "Prototype",
+  "api_id": 76399,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Anomaly",
+      1
+     ],
+     [
+      "Spirit_of_Development",
+      1
+     ],
+     [
+      "Finely_Tuned_Firing_Pin",
+      1
+     ],
+     [
+      "Advanced_Ammunition_Cylinder",
+      1
+     ]
+    ],
+    "produit": "Prototype"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "provisioner_token",
   "titre": "Provisioner Token",
   "api_id": 88926,
@@ -23885,6 +25871,71 @@
   "aretes_table": []
  },
  {
+  "page": "rage_weapon",
+  "titre": "Rage (weapon)",
+  "api_id": 29179,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Quaggan_Friendship",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Harpoon_Gun",
+      1
+     ],
+     [
+      "Fish_Figurine",
+      1
+     ],
+     [
+      "Aerator",
+      1
+     ]
+    ],
+    "produit": "Rage (weapon)"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "rare_essence_of_luck",
+  "titre": "Rare Essence of Luck",
+  "api_id": 45177,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "0",
+    "ingredients": [
+     [
+      "Masterwork_Essence_of_Luck",
+      2
+     ]
+    ],
+    "produit": "Rare Essence of Luck"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 1
+   },
+   {
+    "objet": "Masterwork_Essence_of_Luck",
+    "qty": 100
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "raw_enchanting_stone",
   "titre": "Raw Enchanting Stone",
   "api_id": 105686,
@@ -24110,6 +26161,33 @@
   "aretes_table": []
  },
  {
+  "page": "record_of_league_participation",
+  "titre": "Record of League Participation",
+  "api_id": 82471,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "PvP_League_Ticket",
+      20
+     ]
+    ],
+    "produit": "Record of League Participation"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "PvP_League_Ticket",
+    "qty": 20
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "record_of_league_victories",
   "titre": "Record of League Victories",
   "api_id": 82700,
@@ -24165,6 +26243,40 @@
   "aretes_table": []
  },
  {
+  "page": "red_lentil_saobosa",
+  "titre": "Red-Lentil Saobosa",
+  "api_id": 84550,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Handful_of_Red_Lentils",
+      1
+     ],
+     [
+      "Ball_of_Dough",
+      2
+     ],
+     [
+      "Jug_of_Water",
+      2
+     ],
+     [
+      "Jar_of_Vegetable_Oil",
+      3
+     ]
+    ],
+    "produit": "Red-Lentil Saobosa"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "red_oak_sapling",
   "titre": "Red Oak Sapling",
   "api_id": null,
@@ -24180,6 +26292,324 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "refined_homestead_fiber",
+  "titre": "Refined Homestead Fiber",
+  "api_id": 102306,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Artichoke",
+    "qty": 14
+   },
+   {
+    "objet": "Asparagus_Spear",
+    "qty": 2
+   },
+   {
+    "objet": "Bay_Leaf",
+    "qty": 8
+   },
+   {
+    "objet": "Beet",
+    "qty": 15
+   },
+   {
+    "objet": "Black_Peppercorn",
+    "qty": 2
+   },
+   {
+    "objet": "Blackberry",
+    "qty": 2
+   },
+   {
+    "objet": "Blueberry",
+    "qty": 2
+   },
+   {
+    "objet": "Butternut_Squash",
+    "qty": 14
+   },
+   {
+    "objet": "Carrot",
+    "qty": 1
+   },
+   {
+    "objet": "Cassava_Root",
+    "qty": 2
+   },
+   {
+    "objet": "Cayenne_Pepper",
+    "qty": 2
+   },
+   {
+    "objet": "Chili_Pepper",
+    "qty": 2
+   },
+   {
+    "objet": "Clove",
+    "qty": 2
+   },
+   {
+    "objet": "Dill_Sprig",
+    "qty": 10
+   },
+   {
+    "objet": "Ghost_Pepper",
+    "qty": 2
+   },
+   {
+    "objet": "Grape",
+    "qty": 8
+   },
+   {
+    "objet": "Green_Onion",
+    "qty": 12
+   },
+   {
+    "objet": "Handful_of_Red_Lentils",
+    "qty": 2
+   },
+   {
+    "objet": "Head_of_Cabbage",
+    "qty": 10
+   },
+   {
+    "objet": "Head_of_Cauliflower",
+    "qty": 16
+   },
+   {
+    "objet": "Head_of_Garlic",
+    "qty": 1
+   },
+   {
+    "objet": "Head_of_Lettuce",
+    "qty": 2
+   },
+   {
+    "objet": "Kale_Leaf",
+    "qty": 1
+   },
+   {
+    "objet": "Leek",
+    "qty": 14
+   },
+   {
+    "objet": "Lemongrass",
+    "qty": 8
+   },
+   {
+    "objet": "Lotus_Root",
+    "qty": 8
+   },
+   {
+    "objet": "Mint_Leaf",
+    "qty": 14
+   },
+   {
+    "objet": "Mushroom",
+    "qty": 1
+   },
+   {
+    "objet": "Nopal",
+    "qty": 12
+   },
+   {
+    "objet": "Omnomberry",
+    "qty": 2
+   },
+   {
+    "objet": "Onion",
+    "qty": 4
+   },
+   {
+    "objet": "Oregano_Leaf",
+    "qty": 10
+   },
+   {
+    "objet": "Orrian_Truffle",
+    "qty": 1
+   },
+   {
+    "objet": "Parsley_Leaf",
+    "qty": 1
+   },
+   {
+    "objet": "Parsnip",
+    "qty": 14
+   },
+   {
+    "objet": "Passion_Fruit",
+    "qty": 10
+   },
+   {
+    "objet": "Pile_of_Allspice_Berries",
+    "qty": 2
+   },
+   {
+    "objet": "Pile_of_Flax_Seeds",
+    "qty": 1
+   },
+   {
+    "objet": "Portobello_Mushroom",
+    "qty": 3
+   },
+   {
+    "objet": "Potato",
+    "qty": 4
+   },
+   {
+    "objet": "Prickly_Pear",
+    "qty": 12
+   },
+   {
+    "objet": "Raspberry",
+    "qty": 1
+   },
+   {
+    "objet": "Rosemary_Sprig",
+    "qty": 2
+   },
+   {
+    "objet": "Rutabaga",
+    "qty": 2
+   },
+   {
+    "objet": "Saffron_Thread",
+    "qty": 1
+   },
+   {
+    "objet": "Sage_Leaf",
+    "qty": 2
+   },
+   {
+    "objet": "Sawgill_Mushroom",
+    "qty": 12
+   },
+   {
+    "objet": "Seaweed",
+    "qty": 1
+   },
+   {
+    "objet": "Sesame_Seed",
+    "qty": 4
+   },
+   {
+    "objet": "Snow_Truffle",
+    "qty": 4
+   },
+   {
+    "objet": "Spinach_Leaf",
+    "qty": 1
+   },
+   {
+    "objet": "Strawberry",
+    "qty": 1
+   },
+   {
+    "objet": "Sugar_Pumpkin",
+    "qty": 16
+   },
+   {
+    "objet": "Tarragon_Leaves",
+    "qty": 2
+   },
+   {
+    "objet": "Thyme_Leaf",
+    "qty": 1
+   },
+   {
+    "objet": "Turnip",
+    "qty": 12
+   },
+   {
+    "objet": "Vanilla_Bean",
+    "qty": 2
+   },
+   {
+    "objet": "Yam",
+    "qty": 8
+   },
+   {
+    "objet": "Zucchini",
+    "qty": 4
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "refined_homestead_metal",
+  "titre": "Refined Homestead Metal",
+  "api_id": 102205,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Copper_Ore",
+    "qty": 2
+   },
+   {
+    "objet": "Gold_Ore",
+    "qty": 2
+   },
+   {
+    "objet": "Iron_Ore",
+    "qty": 1
+   },
+   {
+    "objet": "Mithril_Ore",
+    "qty": 1
+   },
+   {
+    "objet": "Orichalcum_Ore",
+    "qty": 1
+   },
+   {
+    "objet": "Platinum_Ore",
+    "qty": 1
+   },
+   {
+    "objet": "Silver_Ore",
+    "qty": 10
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "refined_homestead_wood",
+  "titre": "Refined Homestead Wood",
+  "api_id": 103049,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Wood_Log",
+    "qty": 1
+   },
+   {
+    "objet": "Elder_Wood_Log",
+    "qty": 2
+   },
+   {
+    "objet": "Green_Wood_Log",
+    "qty": 5
+   },
+   {
+    "objet": "Hard_Wood_Log",
+    "qty": 2
+   },
+   {
+    "objet": "Seasoned_Wood_Log",
+    "qty": 2
+   },
+   {
+    "objet": "Soft_Wood_Log",
+    "qty": 12
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -24213,6 +26643,15 @@
     "produit": "Reinforced Olmakhan Bandolier"
    }
   ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "relic",
+  "titre": "Relic",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -24500,6 +26939,78 @@
   "aretes_table": []
  },
  {
+  "page": "rodgorts_flame",
+  "titre": "Rodgort's Flame",
+  "api_id": 29182,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Burning",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Torch",
+      1
+     ],
+     [
+      "Everburning_Flame",
+      1
+     ],
+     [
+      "Dragon_Statue",
+      1
+     ]
+    ],
+    "produit": "Rodgort&#39;s Flame"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "rotted_titan_amber",
+  "titre": "Rotted Titan Amber",
+  "api_id": 102255,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Bava_Nisos:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Convergence:_Mount_Balrior_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Convergences:_Mount_Balrior_Wayfinder%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Curious_Mursaat_Remnants",
+    "qty": 12
+   },
+   {
+    "objet": "Curious_Mursaat_Ruin_Shard",
+    "qty": 8
+   },
+   {
+    "objet": "Janthir_Syntri:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Janthiri_Renown_Chest",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "ruby_orb",
   "titre": "Ruby Orb",
   "api_id": 24508,
@@ -24526,6 +27037,15 @@
   "aretes_table": []
  },
  {
+  "page": "salmon_of_knowledge_backpiece",
+  "titre": "Salmon of Knowledge Backpiece",
+  "api_id": 102367,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "sapphire_orb",
   "titre": "Sapphire Orb",
   "api_id": 24516,
@@ -24546,6 +27066,40 @@
      ]
     ],
     "produit": "Transmogrify Sapphire Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "save_the_queen",
+  "titre": "Save the Queen",
+  "api_id": 81812,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_the_Crown",
+      100
+     ],
+     [
+      "Deldrimor_Steel_Sword_Hilt",
+      1
+     ],
+     [
+      "Deldrimor_Steel_Sword_Blade",
+      1
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ]
+    ],
+    "produit": "Save the Queen"
    }
   ],
   "couts_vendeur": [],
@@ -26099,6 +28653,48 @@
   "aretes_table": []
  },
  {
+  "page": "silver_ingot",
+  "titre": "Silver Ingot",
+  "api_id": 19687,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler Scribe",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Silver_Ore",
+      2
+     ]
+    ],
+    "produit": "Silver Ingot"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Copper_Ingot",
+      250
+     ],
+     [
+      "Pile_of_Shimmering_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      2
+     ]
+    ],
+    "produit": "Silver Ingot"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "silver_ore",
   "titre": "Silver Ore",
   "api_id": 19703,
@@ -26265,6 +28861,48 @@
   "aretes_table": []
  },
  {
+  "page": "soft_wood_plank",
+  "titre": "Soft Wood Plank",
+  "api_id": 19713,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Scribe Weaponsmith",
+    "rating": "75",
+    "ingredients": [
+     [
+      "Soft_Wood_Log",
+      2
+     ]
+    ],
+    "produit": "Soft Wood Plank"
+   },
+   {
+    "sortie": 40,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Green_Wood_Plank",
+      250
+     ],
+     [
+      "Pile_of_Shimmering_Dust",
+      5
+     ],
+     [
+      "Philosopher%27s_Stone",
+      2
+     ]
+    ],
+    "produit": "Soft Wood Plank"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "soldiers_wings_of_war",
   "titre": "Soldier's Wings of War",
   "api_id": 81356,
@@ -26307,6 +28945,108 @@
   "api_id": 81729,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spark_weapon",
+  "titre": "Spark (weapon)",
+  "api_id": 29167,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Chemistry",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Dagger",
+      1
+     ],
+     [
+      "Fuel_Cannister",
+      1
+     ],
+     [
+      "Regulator_Nozzle",
+      1
+     ]
+    ],
+    "produit": "Spark"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spero",
+  "titre": "Spero",
+  "api_id": 89886,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Spero",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Spiritwood_Longbow_Stave",
+      1
+     ],
+     [
+      "Elonian_String",
+      1
+     ]
+    ],
+    "produit": "Spero"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spicy_marinated_mushroom",
+  "titre": "Spicy Marinated Mushroom",
+  "api_id": 41563,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Grilled_Mushroom",
+      5
+     ],
+     [
+      "Grilled_Portobello_Mushroom",
+      10
+     ],
+     [
+      "Cayenne_Pepper",
+      3
+     ],
+     [
+      "Ghost_Pepper",
+      5
+     ]
+    ],
+    "produit": "Spicy Marinated Mushroom"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -26354,6 +29094,62 @@
    {
     "objet": "Black_Lion_Commemorative_Sprocket",
     "qty": 5
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "spirit_of_the_jackal",
+  "titre": "Spirit of the Jackal",
+  "api_id": 86177,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Elegy_Mosaic",
+    "qty": 75
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "spirit_of_the_raptor",
+  "titre": "Spirit of the Raptor",
+  "api_id": 85707,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Elegy_Mosaic",
+    "qty": 75
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "spirit_of_the_skimmer",
+  "titre": "Spirit of the Skimmer",
+  "api_id": 86115,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Elegy_Mosaic",
+    "qty": 75
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "spirit_of_the_springer",
+  "titre": "Spirit of the Springer",
+  "api_id": 85681,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Elegy_Mosaic",
+    "qty": 75
    }
   ],
   "aretes_table": []
@@ -26694,6 +29490,33 @@
   "aretes_table": []
  },
  {
+  "page": "star_of_glory",
+  "titre": "Star of Glory",
+  "api_id": 83872,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Ascended_Shard_of_Glory",
+      400
+     ]
+    ],
+    "produit": "Star of Glory"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Ascended_Shard_of_Glory",
+    "qty": 400
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "starlit_weald_achievements",
   "titre": "Starlit Weald (achievements)",
   "api_id": null,
@@ -26847,6 +29670,40 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "storm",
+  "titre": "Storm",
+  "api_id": 29176,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Control",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Scepter",
+      1
+     ],
+     [
+      "Globe",
+      1
+     ],
+     [
+      "Spinning_Mechanism",
+      1
+     ]
+    ],
+    "produit": "Storm"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
  },
  {
   "page": "strife_unending",
@@ -27137,6 +29994,610 @@
   "aretes_table": []
  },
  {
+  "page": "superior_sigil_of_accuracy",
+  "titre": "Superior Sigil of Accuracy",
+  "api_id": 24618,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charged_Fossil",
+      1
+     ],
+     [
+      "Symbol_of_Enhancement",
+      2
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Accuracy"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_air",
+  "titre": "Superior Sigil of Air",
+  "api_id": 24554,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman Artificer Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      15
+     ],
+     [
+      "Beryl_Orb",
+      5
+     ],
+     [
+      "Symbol_of_Pain",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Air"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_battle",
+  "titre": "Superior Sigil of Battle",
+  "api_id": 24601,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Bolt_of_Gossamer",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Battle"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_benevolence",
+  "titre": "Superior Sigil of Benevolence",
+  "api_id": 24584,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Crystal_Lodestone",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ],
+     [
+      "Symbol_of_Enhancement",
+      2
+     ]
+    ],
+    "produit": "Superior Sigil of Benevolence"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Crystal_Lodestone",
+      1
+     ]
+    ],
+    "produit": "Superior Sigil of Benevolence"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_blood",
+  "titre": "Superior Sigil of Blood",
+  "api_id": 24570,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Charged_Thorn",
+      1
+     ],
+     [
+      "Symbol_of_Control",
+      2
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Blood"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_celerity",
+  "titre": "Superior Sigil of Celerity",
+  "api_id": 24865,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Pile_of_Putrid_Essence",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      3
+     ]
+    ],
+    "produit": "Superior Sigil of Celerity"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Pile_of_Putrid_Essence",
+      1
+     ]
+    ],
+    "produit": "Superior Sigil of Celerity"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_energy",
+  "titre": "Superior Sigil of Energy",
+  "api_id": 24607,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Eye_of_Kormir",
+      100
+     ],
+     [
+      "Symbol_of_Control",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Energy"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_fire",
+  "titre": "Superior Sigil of Fire",
+  "api_id": 24548,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman Artificer Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Ruby_Orb",
+      5
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ],
+     [
+      "Symbol_of_Pain",
+      2
+     ]
+    ],
+    "produit": "Superior Sigil of Fire"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_force",
+  "titre": "Superior Sigil of Force",
+  "api_id": 24615,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Giant_Eye",
+      5
+     ],
+     [
+      "Symbol_of_Enhancement",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Force"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_ice",
+  "titre": "Superior Sigil of Ice",
+  "api_id": 24555,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Azurite_Orb",
+      5
+     ],
+     [
+      "Symbol_of_Control",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Ice"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_nullification",
+  "titre": "Superior Sigil of Nullification",
+  "api_id": 24572,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman Artificer Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Elaborate_Totem",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      2
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Nullification"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_purity",
+  "titre": "Superior Sigil of Purity",
+  "api_id": 24571,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      15
+     ],
+     [
+      "Chrysocola_Orb",
+      5
+     ],
+     [
+      "Symbol_of_Control",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Purity"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_rage",
+  "titre": "Superior Sigil of Rage",
+  "api_id": 24561,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Exquisite_Passion_Flower",
+      5
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Rage"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_stamina",
+  "titre": "Superior Sigil of Stamina",
+  "api_id": 24592,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      5
+     ],
+     [
+      "Vicious_Claw",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Stamina"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_strength",
+  "titre": "Superior Sigil of Strength",
+  "api_id": 24562,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      15
+     ],
+     [
+      "Onyx_Lodestone",
+      2
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ]
+    ],
+    "produit": "Superior Sigil of Strength"
+   },
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Ingot",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Onyx_Lodestone",
+      2
+     ]
+    ],
+    "produit": "Superior Sigil of Strength"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "superior_sigil_of_venom",
+  "titre": "Superior Sigil of Venom",
+  "api_id": 24632,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      15
+     ],
+     [
+      "Emerald_Orb",
+      5
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ]
+    ],
+    "produit": "Superior Sigil of Venom"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "supreme_rune_of_holding",
   "titre": "Supreme Rune of Holding",
   "api_id": 83410,
@@ -27151,6 +30612,195 @@
   "api_id": 106370,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "sweet_treated_pine_plank",
+  "titre": "Sweet-Treated Pine Plank",
+  "api_id": 103103,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Armorsmith Artificer Huntsman Jeweler Leatherworker Tailor Weaponsmith",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Honey_Flower",
+      5
+     ],
+     [
+      "Lowland_Pine_Log",
+      5
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      3
+     ],
+     [
+      "Orichalcum_Ingot",
+      5
+     ]
+    ],
+    "produit": "Sweet-Treated Pine Plank"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 4
+   },
+   {
+    "objet": "Honey_Flower",
+    "qty": 7
+   },
+   {
+    "objet": "Lowland_Pine_Log",
+    "qty": 7
+   },
+   {
+    "objet": "Orichalcum_Ingot",
+    "qty": 6
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "symbol_of_control",
+  "titre": "Symbol of Control",
+  "api_id": 89098,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Symbol_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Symbol of Control"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ],
+     [
+      "Symbol_of_Pain",
+      1
+     ]
+    ],
+    "produit": "Random Superior Sigil"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "symbol_of_enhancement",
+  "titre": "Symbol of Enhancement",
+  "api_id": 89141,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Symbol_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Symbol of Enhancement"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      1
+     ],
+     [
+      "Symbol_of_Pain",
+      1
+     ]
+    ],
+    "produit": "Random Superior Sigil"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "symbol_of_pain",
+  "titre": "Symbol of Pain",
+  "api_id": 89182,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Symbol_(ingredient)",
+      3
+     ],
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Symbol of Pain"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      10
+     ],
+     [
+      "Symbol_of_Control",
+      1
+     ],
+     [
+      "Symbol_of_Enhancement",
+      1
+     ]
+    ],
+    "produit": "Random Superior Sigil"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -27398,6 +31048,40 @@
     "qty": 40
    }
   ]
+ },
+ {
+  "page": "the_bard",
+  "titre": "The Bard",
+  "api_id": 29168,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Performance",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Focus",
+      1
+     ],
+     [
+      "Harp",
+      1
+     ],
+     [
+      "Rooster_Statues",
+      1
+     ]
+    ],
+    "produit": "The Bard (Exotic)"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
  },
  {
   "page": "the_bifrost",
@@ -27896,6 +31580,74 @@
   ]
  },
  {
+  "page": "the_chosen",
+  "titre": "The Chosen",
+  "api_id": 29177,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Heroes",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Shield",
+      1
+     ],
+     [
+      "Tome_of_Heroes",
+      1
+     ],
+     [
+      "Shield_of_Legend",
+      1
+     ]
+    ],
+    "produit": "The Chosen"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_colossus",
+  "titre": "The Colossus",
+  "api_id": 29170,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_the_Ooze",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Hammer",
+      1
+     ],
+     [
+      "Ooze_Reservoir",
+      1
+     ],
+     [
+      "Colossus_Statue",
+      1
+     ]
+    ],
+    "produit": "The Colossus"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "the_convergence_of_sorrow_i_elegy",
   "titre": "The Convergence of Sorrow I: Elegy",
   "api_id": null,
@@ -28112,6 +31864,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_energizer",
+  "titre": "The Energizer",
+  "api_id": 29173,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_the_Celebration",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Mace",
+      1
+     ],
+     [
+      "Party_Ball",
+      1
+     ],
+     [
+      "Party_Stick",
+      1
+     ]
+    ],
+    "produit": "The Energizer"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -28621,6 +32407,40 @@
   ]
  },
  {
+  "page": "the_hunter",
+  "titre": "The Hunter",
+  "api_id": 29175,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Bounty_Hunting",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Rifle",
+      1
+     ],
+     [
+      "Living_Flame",
+      1
+     ],
+     [
+      "Scope",
+      1
+     ]
+    ],
+    "produit": "The Hunter"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "the_juggernaut",
   "titre": "The Juggernaut",
   "api_id": 30690,
@@ -28819,6 +32639,108 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_legend",
+  "titre": "The Legend",
+  "api_id": 29180,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Rainbows",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Staff",
+      1
+     ],
+     [
+      "Carved_Tear_Drop",
+      1
+     ],
+     [
+      "Carved_Beam",
+      1
+     ]
+    ],
+    "produit": "The Legend"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_lover",
+  "titre": "The Lover",
+  "api_id": 29178,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Dreams",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Short_Bow",
+      1
+     ],
+     [
+      "Horse_Figure",
+      1
+     ],
+     [
+      "Bow_Wings",
+      1
+     ]
+    ],
+    "produit": "The Lover"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "the_mechanism",
+  "titre": "The Mechanism",
+  "api_id": 71426,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Time_and_Space",
+      1
+     ],
+     [
+      "Spirit_of_The_Apparatus",
+      1
+     ],
+     [
+      "Balanced_Counterweight",
+      1
+     ],
+     [
+      "Engraver%27s_Tools",
+      1
+     ]
+    ],
+    "produit": "The Mechanism (Ascended)"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -29429,6 +33351,40 @@
   "aretes_table": []
  },
  {
+  "page": "the_raven_staff",
+  "titre": "The Raven Staff",
+  "api_id": 74068,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_the_Wild_Spirit",
+      1
+     ],
+     [
+      "Spirit_of_the_Ravenswood_Staff",
+      1
+     ],
+     [
+      "Raven_Statue_(Legendary_Component)",
+      1
+     ],
+     [
+      "Rune_Carving_Tools",
+      1
+     ]
+    ],
+    "produit": "The Raven Staff"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "the_shining_blade",
   "titre": "The Shining Blade",
   "api_id": 81957,
@@ -29805,6 +33761,40 @@
   "aretes_table": []
  },
  {
+  "page": "tigris",
+  "titre": "Tigris",
+  "api_id": 78425,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Spirit_of_the_Tiger",
+      1
+     ],
+     [
+      "Spirit_of_the_Ambush",
+      1
+     ],
+     [
+      "Visage_of_Chuka",
+      1
+     ],
+     [
+      "Visage_of_Champawat",
+      1
+     ]
+    ],
+    "produit": "Tigris"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "titan_heatstone",
   "titre": "Titan Heatstone",
   "api_id": 102655,
@@ -29828,6 +33818,74 @@
     "qty": 1
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "tlehco",
+  "titre": "Tlehco",
+  "api_id": 88851,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Shard_of_Tlehco",
+      100
+     ],
+     [
+      "Visionary_Inscription",
+      1
+     ],
+     [
+      "Spiritwood_Scepter_Core",
+      1
+     ],
+     [
+      "Spiritwood_Scepter_Rod",
+      1
+     ]
+    ],
+    "produit": "Tlehco"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "tooth_of_frostfang",
+  "titre": "Tooth of Frostfang",
+  "api_id": 29166,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Freezing",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Axe",
+      1
+     ],
+     [
+      "Freezing_Core",
+      1
+     ],
+     [
+      "Dragon_Mold",
+      1
+     ]
+    ],
+    "produit": "Tooth of Frostfang"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -31507,6 +35565,24 @@
   "aretes_table": []
  },
  {
+  "page": "unidentified_dye",
+  "titre": "Unidentified Dye",
+  "api_id": 20323,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Mordrem_Bloom",
+    "qty": 25
+   },
+   {
+    "objet": "Skirmish_Chest",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "unidentified_gear",
   "titre": "Unidentified Gear",
   "api_id": null,
@@ -31603,6 +35679,40 @@
      ]
     ],
     "produit": "Venom Sac"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "venom_weapon",
+  "titre": "Venom (weapon)",
+  "api_id": 29183,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_the_Krait",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Trident",
+      1
+     ],
+     [
+      "Snake_Statue",
+      1
+     ],
+     [
+      "Congealed_Water",
+      1
+     ]
+    ],
+    "produit": "Venom"
    }
   ],
   "couts_vendeur": [],
@@ -33220,6 +37330,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "zap",
+  "titre": "Zap",
+  "api_id": 29181,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Essence_of_Energy",
+      1
+     ],
+     [
+      "Spirit_of_the_Perfected_Sword",
+      1
+     ],
+     [
+      "Engraver%27s_Tools",
+      1
+     ],
+     [
+      "Energy_Source",
+      1
+     ]
+    ],
+    "produit": "Zap"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  }

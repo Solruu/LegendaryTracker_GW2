@@ -1,0 +1,631 @@
+# Relecture des recettes, légendaire par légendaire
+
+Source : `gw2_sources_v331.json` — généré par `gw2_relecture_recettes_v4.py`.
+L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
+enfants déclarés à la recette lue sur sa capture. Appariement par apiId
+d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
+un appariement au singulier étant signalé comme à confirmer.
+
+Chaque défaut est compté **une fois**, avec la liste des légendaires qui le
+rencontrent : un composant est une unité de craft, pas une ligne par cible.
+
+| défaut | ce que ça veut dire | ce que ça coûte | nombre |
+|---|---|---|---:|
+| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 0 |
+| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 3 |
+| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 11 |
+| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 13 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 243 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 113 |
+
+Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
+
+## Ingrédients présents dans l'arbre mais non rattachés au parent — 3
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `mystic_essence_of_annihilation` | `Dark_Matter` | 10 | `mystic_essence_of_annihilation` | slug | `conflux`, `warbringer` |
+| `gen1_eternity` | `Sunrise` | 1 | `eternity` | légendaire | `gen1_eternity` |
+| `gen1_eternity` | `Twilight` | 1 | `eternity` | légendaire | `gen1_eternity` |
+
+## Ingrédients rattachés ailleurs sous le même légendaire — 13
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `neutralized_titan_alloy` | `Orichalcum_Ingot` | 5 | `neutralized_titan_alloy` | rattaché à gift_of_metal | `klobjarne_geirr`, `orrax_manifested` |
+| `diviners_orichalcum_imbued_inscription` | `Branded_Mass` | 50 | `diviners_orichalcum_imbued_inscription` | rattaché à dragonsblood_weapons, gift_of_ephemeral_magic | `vision` |
+| `diviners_orichalcum_imbued_inscription` | `Exquisite_Serpentite_Jewel` | 3 | `diviners_orichalcum_imbued_inscription` | rattaché à dragonsblood_weapons | `vision` |
+| `gift_of_dedication` | `Auric_Ingot` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_dedication` | `Chak_Egg` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_dedication` | `Reclaimed_Metal_Plate` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_prowess` | `Eldritch_Scroll` | 1 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_prowess` | `Obsidian_Shard` | 50 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
+| `gift_of_recollector_of_memories` | `Gift_of_Bones` | 1 | `gift_of_recollector_of_memories` | rattaché à gift_of_condensed_might | `klobjarne_geirr` |
+| `gift_of_the_mursaat_ruins` | `Shard_of_Bava_Nisos` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_mursaat_ruins` | `Shard_of_Mistburned_Barrens` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_mursaat_ruins` | `Vial_of_Titan_Melted_Liquid_Obsidian` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
+| `gift_of_the_side_course` | `Mystic_Clovers` | 30 | `gift_of_the_side_course` | rattaché à orrax_manifested | `orrax_manifested` |
+
+## Enfants déclarés que la recette ne cite pas — 11
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `gift_of_research` | `cube_stabilized_dark_energy` | 1 | `gift_of_research` | direct | `aetheric_anchor`, `eikasia`, `gen3_aurenes_argument` … (+19) |
+| `certificate_of_heroics` | `testimony_of_castoran_heroics` | 250 | `certificate_of_heroics` | direct | `conflux`, `triumphant_hero` |
+| `essence_of_animosity` | `testimony_of_castoran_heroics` | 500 | `essence_of_animosity` | direct | `conflux`, `warbringer` |
+| `mystic_essence_of_annihilation` | `glob_of_dark_matter` | 10 | `mystic_essence_of_annihilation` | direct | `conflux`, `warbringer` |
+| `gift_of_castoran_mastery` | `gift_of_adventure_voe` | 1 | `gift_of_castoran_mastery` | direct | `selachimorpha` |
+| `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
+| `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
+| `gift_of_the_mistburned_isles` | `shard_of_bava_nisos` | 100 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
+| `gift_of_the_mistburned_isles` | `shard_of_mistburned_barrens` | 100 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
+| `gift_of_the_mistburned_isles` | `vial_of_titan_melted_obsidian` | 150 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
+| `gift_of_the_rider` | `trade_contract` | 300 | `gift_of_the_rider` | direct | `coalescence` |
+
+## Ingrédients absents, cités par la recette d'une feuille — 243
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `obsidian_shard` | `Mini_Risen_Priest_of_Balthazar` |  | `obsidian_shard` | sous une feuille | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+58) |
+| `bone` | `Bone_Shard` |  | `bone` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `claw` | `Small_Claw` |  | `claw` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `fang` | `Small_Fang` |  | `fang` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `scale` | `Small_Scale` |  | `scale` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `totem` | `Small_Totem` |  | `totem` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `venom_sac` | `Small_Venom_Sac` |  | `venom_sac` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `vial_of_blood` | `Vial_of_Thin_Blood` |  | `vial_of_blood` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `mithril_ingot` | `Mithril_Ore` |  | `mithril_ingot` | sous une feuille | `ad_infinitum`, `aurora`, `gen1_bolt` … (+35) |
+| `darksteel_ingot` | `Lump_of_Primordium` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
+| `darksteel_ingot` | `Platinum_Ore` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
+| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
+| `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `gen1_bolt`, `gen1_frenzy`, `gen1_frostfang` … (+24) |
+| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `steel_ingot` | `Iron_Ore` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
+| `steel_ingot` | `Lump_of_Coal` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
+| `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
+| `iron_ingot` | `Iron_Ore` |  | `iron_ingot` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
+| `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
+| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_pharus`, `gen2_sharur` … (+9) |
+| `hardened_leather_section` | `Thick_Leather_Section` |  | `hardened_leather_section` | sous une feuille | `gen1_howler`, `gen1_kraitkin`, `gen1_kudzu` … (+5) |
+| `onyx_lodestone` | `Mystic_Crystal` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
+| `onyx_lodestone` | `Onyx_Core` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
+| `charged_lodestone` | `Charged_Core` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
+| `charged_lodestone` | `Mystic_Crystal` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
+| `destroyer_lodestone` | `Destroyer_Core` |  | `destroyer_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `destroyer_lodestone` | `Mystic_Crystal` |  | `destroyer_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `gift_of_maguuma` | `Gift_of_Tarir` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
+| `gift_of_maguuma` | `Gift_of_the_Chak` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
+| `gift_of_maguuma` | `Gift_of_the_Fleet` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
+| `gift_of_maguuma` | `Gift_of_the_Jungle` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
+| `molten_lodestone` | `Molten_Core` |  | `molten_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `molten_lodestone` | `Mystic_Crystal` |  | `molten_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `corrupted_lodestone` | `Corrupted_Core` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
+| `corrupted_lodestone` | `Mystic_Crystal` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
+| `crystal_lodestone` | `Crystal_Core` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
+| `crystal_lodestone` | `Mystic_Crystal` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
+| `opal_orb` | `Opal_Crystal` |  | `opal_orb` | sous une feuille | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
+| `bolt_of_silk` | `Silk_Scrap` |  | `bolt_of_silk` | sous une feuille | `ad_infinitum`, `stella_radians` |
+| `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `stella_radians` |
+| `glacial_lodestone` | `Glacial_Core` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
+| `glacial_lodestone` | `Mystic_Crystal` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
+| `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `aurora`, `vision` |
+| `silver_ingot` | `Silver_Ore` |  | `silver_ingot` | sous une feuille | `aurora`, `vision` |
+| `ancient_wood_log` | `Elder_Wood_Log` |  | `ancient_wood_log` | sous une feuille | `vision` |
+| `ars_goetia` | `Spiritwood_Focus_Casing` |  | `ars_goetia` | sous une feuille | `gen2_the_binding_of_ipos` |
+| `bolt_of_cotton` | `Cotton_Scrap` |  | `bolt_of_cotton` | sous une feuille | `ad_infinitum` |
+| `bolt_of_linen` | `Linen_Scrap` |  | `bolt_of_linen` | sous une feuille | `ad_infinitum` |
+| `bolt_of_wool` | `Wool_Scrap` |  | `bolt_of_wool` | sous une feuille | `ad_infinitum` |
+| `bowl_of_black_pepper_cactus_salad` | `Avocado` |  | `bowl_of_black_pepper_cactus_salad` | sous une feuille | `orrax_manifested` |
+| `bowl_of_black_pepper_cactus_salad` | `Black_Peppercorn` |  | `bowl_of_black_pepper_cactus_salad` | sous une feuille | `orrax_manifested` |
+| `bowl_of_black_pepper_cactus_salad` | `Bowl_of_Ascalonian_Salad` |  | `bowl_of_black_pepper_cactus_salad` | sous une feuille | `orrax_manifested` |
+| `bowl_of_black_pepper_cactus_salad` | `Nopal` |  | `bowl_of_black_pepper_cactus_salad` | sous une feuille | `orrax_manifested` |
+| `bowl_of_passion_fruit_tapioca_pudding` | `Bowl_of_Tapioca_Pudding` |  | `bowl_of_passion_fruit_tapioca_pudding` | sous une feuille | `orrax_manifested` |
+| `bowl_of_passion_fruit_tapioca_pudding` | `Raspberry_Passion_Fruit_Compote` |  | `bowl_of_passion_fruit_tapioca_pudding` | sous une feuille | `orrax_manifested` |
+| `bowl_of_poultry_satay` | `Bottle_of_Coconut_Milk` |  | `bowl_of_poultry_satay` | sous une feuille | `orrax_manifested` |
+| `bowl_of_poultry_satay` | `Jar_of_Red_Curry_Paste` |  | `bowl_of_poultry_satay` | sous une feuille | `orrax_manifested` |
+| `bowl_of_poultry_satay` | `Pile_of_Tangy_Seasoning` |  | `bowl_of_poultry_satay` | sous une feuille | `orrax_manifested` |
+| `bowl_of_prickly_pear_sorbet` | `Bowl_of_Ice_Cream_Base` |  | `bowl_of_prickly_pear_sorbet` | sous une feuille | `orrax_manifested` |
+| `bowl_of_prickly_pear_sorbet` | `Glacial_Shard` |  | `bowl_of_prickly_pear_sorbet` | sous une feuille | `orrax_manifested` |
+| `bowl_of_prickly_pear_sorbet` | `Lime` |  | `bowl_of_prickly_pear_sorbet` | sous une feuille | `orrax_manifested` |
+| `bowl_of_prickly_pear_sorbet` | `Prickly_Pear` |  | `bowl_of_prickly_pear_sorbet` | sous une feuille | `orrax_manifested` |
+| `carcharias` | `Essence_of_Diving` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
+| `carcharias` | `Serrated_Harpoon` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
+| `carcharias` | `Shark_Figurine` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
+| `carcharias` | `Spirit_of_the_Perfected_Spear` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
+| `chaos_gun` | `Confetti_Bullets` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `chaos_gun` | `Essence_of_Mischief` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `chaos_gun` | `Ornate_Pistol_Frame` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `chaos_gun` | `Spirit_of_the_Perfected_Pistol` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum` |
+| `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum` |
+| `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum` |
+| `dawn` | `Dimensional_Destabilizer` |  | `dawn` | sous une feuille | `gen1_sunrise` |
+| `dawn` | `Essence_of_Illumination` |  | `dawn` | sous une feuille | `gen1_sunrise` |
+| `dawn` | `Mirror_(item)` |  | `dawn` | sous une feuille | `gen1_sunrise` |
+| `dawn` | `Spirit_of_the_Perfected_Daysword` |  | `dawn` | sous une feuille | `gen1_sunrise` |
+| `dragons_argument` | `Fortified_Precursor_Pistol_Barrel` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
+| `dragons_argument` | `Fortified_Precursor_Pistol_Frame` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
+| `dragons_argument` | `Memory_of_Aurene` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
+| `dragons_argument` | `Transcendent_Crystal` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
+| `dragons_bite` | `Fortified_Precursor_Greatsword_Blade` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
+| `dragons_bite` | `Fortified_Precursor_Greatsword_Hilt` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
+| `dragons_bite` | `Memory_of_Aurene` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
+| `dragons_bite` | `Transcendent_Crystal` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
+| `dragons_breath` | `Fortified_Precursor_Torch_Handle` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
+| `dragons_breath` | `Fortified_Precursor_Torch_Head` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
+| `dragons_breath` | `Memory_of_Aurene` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
+| `dragons_breath` | `Transcendent_Crystal` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
+| `dragons_claw_weapon` | `Fortified_Precursor_Dagger_Blade` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
+| `dragons_claw_weapon` | `Fortified_Precursor_Dagger_Hilt` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
+| `dragons_claw_weapon` | `Memory_of_Aurene` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
+| `dragons_claw_weapon` | `Transcendent_Crystal` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
+| `dragons_fang` | `Fortified_Precursor_Sword_Blade` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
+| `dragons_fang` | `Fortified_Precursor_Sword_Hilt` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
+| `dragons_fang` | `Memory_of_Aurene` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
+| `dragons_fang` | `Transcendent_Crystal` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
+| `dragons_flight` | `Fortified_Precursor_Longbow_Stave` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
+| `dragons_flight` | `Fortified_Precursor_String` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
+| `dragons_flight` | `Memory_of_Aurene` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
+| `dragons_flight` | `Transcendent_Crystal` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
+| `dragons_gaze` | `Fortified_Precursor_Focus_Casing` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
+| `dragons_gaze` | `Fortified_Precursor_Focus_Core` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
+| `dragons_gaze` | `Memory_of_Aurene` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
+| `dragons_gaze` | `Transcendent_Crystal` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
+| `dragons_insight` | `Fortified_Precursor_Staff_Head` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
+| `dragons_insight` | `Fortified_Precursor_Staff_Shaft` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
+| `dragons_insight` | `Memory_of_Aurene` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
+| `dragons_insight` | `Transcendent_Crystal` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
+| `dragons_persuasion` | `Fortified_Precursor_Rifle_Barrel` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
+| `dragons_persuasion` | `Fortified_Precursor_Rifle_Stock` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
+| `dragons_persuasion` | `Memory_of_Aurene` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
+| `dragons_persuasion` | `Transcendent_Crystal` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
+| `dragons_rending` | `Fortified_Precursor_Axe_Head` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
+| `dragons_rending` | `Memory_of_Aurene` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
+| `dragons_rending` | `Small_Fortified_Precursor_Haft` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
+| `dragons_rending` | `Transcendent_Crystal` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
+| `dragons_scale` | `Fortified_Precursor_Shield_Backing` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
+| `dragons_scale` | `Fortified_Precursor_Shield_Boss` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
+| `dragons_scale` | `Memory_of_Aurene` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
+| `dragons_scale` | `Transcendent_Crystal` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
+| `dragons_tail` | `Fortified_Precursor_Mace_Head` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
+| `dragons_tail` | `Memory_of_Aurene` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
+| `dragons_tail` | `Small_Fortified_Precursor_Haft` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
+| `dragons_tail` | `Transcendent_Crystal` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
+| `dragons_voice` | `Fortified_Precursor_Horn` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
+| `dragons_voice` | `Fortified_Precursor_Warhorn_Mouthpiece` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
+| `dragons_voice` | `Memory_of_Aurene` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
+| `dragons_voice` | `Transcendent_Crystal` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
+| `dragons_weight` | `Fortified_Precursor_Hammer_Head` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
+| `dragons_weight` | `Large_Fortified_Precursor_Haft` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
+| `dragons_weight` | `Memory_of_Aurene` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
+| `dragons_weight` | `Transcendent_Crystal` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
+| `dragons_wing` | `Fortified_Precursor_Short_Bow_Stave` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
+| `dragons_wing` | `Fortified_Precursor_String` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
+| `dragons_wing` | `Memory_of_Aurene` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
+| `dragons_wing` | `Transcendent_Crystal` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
+| `dragons_wisdom` | `Fortified_Precursor_Scepter_Core` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
+| `dragons_wisdom` | `Fortified_Precursor_Scepter_Rod` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
+| `dragons_wisdom` | `Memory_of_Aurene` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
+| `dragons_wisdom` | `Transcendent_Crystal` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
+| `dusk` | `Dimensional_Destabilizer` |  | `dusk` | sous une feuille | `gen1_twilight` |
+| `dusk` | `Essence_of_Gloom` |  | `dusk` | sous une feuille | `gen1_twilight` |
+| `dusk` | `Mirror_(item)` |  | `dusk` | sous une feuille | `gen1_twilight` |
+| `dusk` | `Spirit_of_the_Perfected_Nightsword` |  | `dusk` | sous une feuille | `gen1_twilight` |
+| `gift_of_janthir_wanderlust` | `Gift_of_Bava_Nisos` |  | `gift_of_janthir_wanderlust` | sous une feuille | `orrax_manifested` |
+| `gift_of_janthir_wanderlust` | `Gift_of_Mistburned_Barrens` |  | `gift_of_janthir_wanderlust` | sous une feuille | `orrax_manifested` |
+| `gift_of_the_astral_ward` | `Gift_of_Amnytas` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `gift_of_the_astral_ward` | `Gift_of_Inner_Nayos` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `gift_of_the_astral_ward` | `Gift_of_Persistence` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `gift_of_the_astral_ward` | `Gift_of_Skywatch_Archipelago` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `gift_of_the_sun` | `Sun_Beads` |  | `gift_of_the_sun` | sous une feuille | `endless_summer` |
+| `howl` | `Essence_of_Spirit` |  | `howl` | sous une feuille | `gen1_howler` |
+| `howl` | `Mithril_Snake` |  | `howl` | sous une feuille | `gen1_howler` |
+| `howl` | `Spirit_of_the_Perfected_Warhorn` |  | `howl` | sous une feuille | `gen1_howler` |
+| `howl` | `Wolf_Statue_(exotic)` |  | `howl` | sous une feuille | `gen1_howler` |
+| `leaf_of_kudzu` | `Essence_of_the_Garden` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
+| `leaf_of_kudzu` | `Lattice_(component)` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
+| `leaf_of_kudzu` | `Pruning_Shears` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
+| `leaf_of_kudzu` | `Spirit_of_the_Perfected_Longbow` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
+| `meaty_asparagus_skewer` | `Asparagus_Spear` |  | `meaty_asparagus_skewer` | sous une feuille | `orrax_manifested` |
+| `meaty_asparagus_skewer` | `Bottle_of_Rice_Wine` |  | `meaty_asparagus_skewer` | sous une feuille | `orrax_manifested` |
+| `meaty_asparagus_skewer` | `Bottle_of_Soy_Sauce` |  | `meaty_asparagus_skewer` | sous une feuille | `orrax_manifested` |
+| `olmakhan_charm` | `Foxfire_Cluster` |  | `olmakhan_charm` | sous une feuille | `vision` |
+| `olmakhan_charm` | `Fury-Scorched_Stone` |  | `olmakhan_charm` | sous une feuille | `vision` |
+| `olmakhan_charm` | `Ley-Infused_Sand` |  | `olmakhan_charm` | sous une feuille | `vision` |
+| `plate_of_orrian_steak_frittes` | `Cup_of_Lotus_Fries` |  | `plate_of_orrian_steak_frittes` | sous une feuille | `orrax_manifested` |
+| `prototype` | `Advanced_Ammunition_Cylinder` |  | `prototype` | sous une feuille | `gen2_hope` |
+| `prototype` | `Essence_of_Anomaly` |  | `prototype` | sous une feuille | `gen2_hope` |
+| `prototype` | `Finely_Tuned_Firing_Pin` |  | `prototype` | sous une feuille | `gen2_hope` |
+| `prototype` | `Spirit_of_Development` |  | `prototype` | sous une feuille | `gen2_hope` |
+| `rage_weapon` | `Aerator` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
+| `rage_weapon` | `Essence_of_Quaggan_Friendship` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
+| `rage_weapon` | `Fish_Figurine` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
+| `rage_weapon` | `Spirit_of_the_Perfected_Harpoon_Gun` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
+| `rare_essence_of_luck` | `Masterwork_Essence_of_Luck` |  | `rare_essence_of_luck` | sous une feuille | `ad_infinitum` |
+| `rodgorts_flame` | `Dragon_Statue` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
+| `rodgorts_flame` | `Essence_of_Burning` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
+| `rodgorts_flame` | `Everburning_Flame` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
+| `rodgorts_flame` | `Spirit_of_the_Perfected_Torch` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
+| `spark_weapon` | `Essence_of_Chemistry` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
+| `spark_weapon` | `Fuel_Cannister` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
+| `spark_weapon` | `Regulator_Nozzle` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
+| `spark_weapon` | `Spirit_of_the_Perfected_Dagger` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
+| `storm` | `Essence_of_Control` |  | `storm` | sous une feuille | `gen1_meteorlogicus` |
+| `storm` | `Globe` |  | `storm` | sous une feuille | `gen1_meteorlogicus` |
+| `storm` | `Spinning_Mechanism` |  | `storm` | sous une feuille | `gen1_meteorlogicus` |
+| `storm` | `Spirit_of_the_Perfected_Scepter` |  | `storm` | sous une feuille | `gen1_meteorlogicus` |
+| `the_bard` | `Essence_of_Performance` |  | `the_bard` | sous une feuille | `gen1_the_minstrel` |
+| `the_bard` | `Harp` |  | `the_bard` | sous une feuille | `gen1_the_minstrel` |
+| `the_bard` | `Rooster_Statues` |  | `the_bard` | sous une feuille | `gen1_the_minstrel` |
+| `the_bard` | `Spirit_of_the_Perfected_Focus` |  | `the_bard` | sous une feuille | `gen1_the_minstrel` |
+| `the_chosen` | `Essence_of_Heroes` |  | `the_chosen` | sous une feuille | `gen1_the_flameseeker_prophecies` |
+| `the_chosen` | `Shield_of_Legend` |  | `the_chosen` | sous une feuille | `gen1_the_flameseeker_prophecies` |
+| `the_chosen` | `Spirit_of_the_Perfected_Shield` |  | `the_chosen` | sous une feuille | `gen1_the_flameseeker_prophecies` |
+| `the_chosen` | `Tome_of_Heroes` |  | `the_chosen` | sous une feuille | `gen1_the_flameseeker_prophecies` |
+| `the_colossus` | `Colossus_Statue` |  | `the_colossus` | sous une feuille | `gen1_the_juggernaut` |
+| `the_colossus` | `Essence_of_the_Ooze` |  | `the_colossus` | sous une feuille | `gen1_the_juggernaut` |
+| `the_colossus` | `Ooze_Reservoir` |  | `the_colossus` | sous une feuille | `gen1_the_juggernaut` |
+| `the_colossus` | `Spirit_of_the_Perfected_Hammer` |  | `the_colossus` | sous une feuille | `gen1_the_juggernaut` |
+| `the_energizer` | `Essence_of_the_Celebration` |  | `the_energizer` | sous une feuille | `gen1_the_moot` |
+| `the_energizer` | `Party_Ball` |  | `the_energizer` | sous une feuille | `gen1_the_moot` |
+| `the_energizer` | `Party_Stick` |  | `the_energizer` | sous une feuille | `gen1_the_moot` |
+| `the_energizer` | `Spirit_of_the_Perfected_Mace` |  | `the_energizer` | sous une feuille | `gen1_the_moot` |
+| `the_hunter` | `Essence_of_Bounty_Hunting` |  | `the_hunter` | sous une feuille | `gen1_the_predator` |
+| `the_hunter` | `Living_Flame` |  | `the_hunter` | sous une feuille | `gen1_the_predator` |
+| `the_hunter` | `Scope` |  | `the_hunter` | sous une feuille | `gen1_the_predator` |
+| `the_hunter` | `Spirit_of_the_Perfected_Rifle` |  | `the_hunter` | sous une feuille | `gen1_the_predator` |
+| `the_legend` | `Carved_Beam` |  | `the_legend` | sous une feuille | `gen1_the_bifrost` |
+| `the_legend` | `Carved_Tear_Drop` |  | `the_legend` | sous une feuille | `gen1_the_bifrost` |
+| `the_legend` | `Essence_of_Rainbows` |  | `the_legend` | sous une feuille | `gen1_the_bifrost` |
+| `the_legend` | `Spirit_of_the_Perfected_Staff` |  | `the_legend` | sous une feuille | `gen1_the_bifrost` |
+| `the_lover` | `Bow_Wings` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
+| `the_lover` | `Essence_of_Dreams` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
+| `the_lover` | `Horse_Figure` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
+| `the_lover` | `Spirit_of_the_Perfected_Short_Bow` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
+| `the_mechanism` | `Balanced_Counterweight` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
+| `the_mechanism` | `Engraver's_Tools` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
+| `the_mechanism` | `Essence_of_Time_and_Space` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
+| `the_mechanism` | `Spirit_of_The_Apparatus` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
+| `the_raven_staff` | `Essence_of_the_Wild_Spirit` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
+| `the_raven_staff` | `Raven_Statue_(Legendary_Component)` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
+| `the_raven_staff` | `Rune_Carving_Tools` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
+| `the_raven_staff` | `Spirit_of_the_Ravenswood_Staff` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
+| `tigris` | `Spirit_of_the_Ambush` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
+| `tigris` | `Spirit_of_the_Tiger` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
+| `tigris` | `Visage_of_Champawat` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
+| `tigris` | `Visage_of_Chuka` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
+| `tooth_of_frostfang` | `Dragon_Mold` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
+| `tooth_of_frostfang` | `Essence_of_Freezing` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
+| `tooth_of_frostfang` | `Freezing_Core` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
+| `tooth_of_frostfang` | `Spirit_of_the_Perfected_Axe` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
+| `unbound_wings` | `Shard_of_Crystallized_Mists_Essence` |  | `unbound_wings` | sous une feuille | `ad_infinitum` |
+| `unbound_wings` | `Spirit_of_the_Upper_Bound` |  | `unbound_wings` | sous une feuille | `ad_infinitum` |
+| `venom_weapon` | `Congealed_Water` |  | `venom_weapon` | sous une feuille | `gen1_kraitkin` |
+| `venom_weapon` | `Essence_of_the_Krait` |  | `venom_weapon` | sous une feuille | `gen1_kraitkin` |
+| `venom_weapon` | `Snake_Statue` |  | `venom_weapon` | sous une feuille | `gen1_kraitkin` |
+| `venom_weapon` | `Spirit_of_the_Perfected_Trident` |  | `venom_weapon` | sous une feuille | `gen1_kraitkin` |
+| `zap` | `Energy_Source` |  | `zap` | sous une feuille | `gen1_bolt` |
+| `zap` | `Engraver's_Tools` |  | `zap` | sous une feuille | `gen1_bolt` |
+| `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
+| `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
+
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 113
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `mystic_clover` | `4 ingrédients` |  | `mystic_clover` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+73) |
+| `obsidian_shard` | `3 ingrédients` |  | `obsidian_shard` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+58) |
+| `large_bone` | `3 ingrédients` |  | `large_bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
+| `large_claw` | `3 ingrédients` |  | `large_claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
+| `large_scale` | `3 ingrédients` |  | `large_scale` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
+| `vial_of_potent_blood` | `3 ingrédients` |  | `vial_of_potent_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
+| `bone` | `3 ingrédients` |  | `bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `claw` | `3 ingrédients` |  | `claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `engraved_totem` | `3 ingrédients` |  | `engraved_totem` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `fang` | `3 ingrédients` |  | `fang` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `full_venom_sac` | `3 ingrédients` |  | `full_venom_sac` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `heavy_bone` | `3 ingrédients` |  | `heavy_bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `intricate_totem` | `3 ingrédients` |  | `intricate_totem` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `large_fang` | `3 ingrédients` |  | `large_fang` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `potent_venom_sac` | `3 ingrédients` |  | `potent_venom_sac` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `scale` | `3 ingrédients` |  | `scale` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `sharp_claw` | `3 ingrédients` |  | `sharp_claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `sharp_fang` | `3 ingrédients` |  | `sharp_fang` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `smooth_scale` | `3 ingrédients` |  | `smooth_scale` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `totem` | `3 ingrédients` |  | `totem` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `venom_sac` | `3 ingrédients` |  | `venom_sac` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `vial_of_blood` | `3 ingrédients` |  | `vial_of_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `vial_of_thick_blood` | `3 ingrédients` |  | `vial_of_thick_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
+| `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `aurora`, `gen1_bolt` … (+35) |
+| `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
+| `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
+| `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frenzy`, `gen1_frostfang` … (+24) |
+| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
+| `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
+| `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
+| `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
+| `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
+| `ancient_wood_plank` | `1 ingrédients` |  | `ancient_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+12) |
+| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_pharus`, `gen2_sharur` … (+9) |
+| `hardened_leather_section` | `3 ingrédients` |  | `hardened_leather_section` | feuille assumée | `gen1_howler`, `gen1_kraitkin`, `gen1_kudzu` … (+5) |
+| `onyx_lodestone` | `4 ingrédients` |  | `onyx_lodestone` | feuille assumée | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
+| `charged_lodestone` | `4 ingrédients` |  | `charged_lodestone` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
+| `destroyer_lodestone` | `4 ingrédients` |  | `destroyer_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `gift_of_maguuma` | `4 ingrédients` |  | `gift_of_maguuma` | feuille assumée | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
+| `molten_lodestone` | `4 ingrédients` |  | `molten_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
+| `corrupted_lodestone` | `4 ingrédients` |  | `corrupted_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
+| `crystal_lodestone` | `4 ingrédients` |  | `crystal_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
+| `opal_orb` | `2 ingrédients` |  | `opal_orb` | feuille assumée | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
+| `bolt_of_silk` | `1 ingrédients` |  | `bolt_of_silk` | feuille assumée | `ad_infinitum`, `stella_radians` |
+| `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `stella_radians` |
+| `glacial_lodestone` | `4 ingrédients` |  | `glacial_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_frostfang` |
+| `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `aurora`, `vision` |
+| `jar_of_distilled_glory` | `1 ingrédients` |  | `jar_of_distilled_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
+| `record_of_league_participation` | `1 ingrédients` |  | `record_of_league_participation` | feuille assumée | `ardent_glorious`, `transcendence` |
+| `silver_ingot` | `1 ingrédients` |  | `silver_ingot` | feuille assumée | `aurora`, `vision` |
+| `star_of_glory` | `1 ingrédients` |  | `star_of_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
+| `ancient_wood_log` | `3 ingrédients` |  | `ancient_wood_log` | feuille assumée | `vision` |
+| `ars_goetia` | `4 ingrédients` |  | `ars_goetia` | feuille assumée | `gen2_the_binding_of_ipos` |
+| `bolt_of_cotton` | `1 ingrédients` |  | `bolt_of_cotton` | feuille assumée | `ad_infinitum` |
+| `bolt_of_linen` | `1 ingrédients` |  | `bolt_of_linen` | feuille assumée | `ad_infinitum` |
+| `bolt_of_wool` | `1 ingrédients` |  | `bolt_of_wool` | feuille assumée | `ad_infinitum` |
+| `bowl_of_black_pepper_cactus_salad` | `4 ingrédients` |  | `bowl_of_black_pepper_cactus_salad` | feuille assumée | `orrax_manifested` |
+| `bowl_of_passion_fruit_tapioca_pudding` | `2 ingrédients` |  | `bowl_of_passion_fruit_tapioca_pudding` | feuille assumée | `orrax_manifested` |
+| `bowl_of_poultry_satay` | `4 ingrédients` |  | `bowl_of_poultry_satay` | feuille assumée | `orrax_manifested` |
+| `bowl_of_prickly_pear_sorbet` | `4 ingrédients` |  | `bowl_of_prickly_pear_sorbet` | feuille assumée | `orrax_manifested` |
+| `carcharias` | `4 ingrédients` |  | `carcharias` | feuille assumée | `gen1_kamohoalii_kotaki` |
+| `chaos_gun` | `4 ingrédients` |  | `chaos_gun` | feuille assumée | `gen1_quip` |
+| `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum` |
+| `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum` |
+| `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum` |
+| `dawn` | `4 ingrédients` |  | `dawn` | feuille assumée | `gen1_sunrise` |
+| `dragons_argument` | `4 ingrédients` |  | `dragons_argument` | feuille assumée | `gen3_aurenes_argument` |
+| `dragons_bite` | `4 ingrédients` |  | `dragons_bite` | feuille assumée | `gen3_aurenes_bite` |
+| `dragons_breath` | `4 ingrédients` |  | `dragons_breath` | feuille assumée | `gen3_aurenes_breath` |
+| `dragons_claw_weapon` | `4 ingrédients` |  | `dragons_claw_weapon` | feuille assumée | `gen3_aurenes_claw` |
+| `dragons_fang` | `4 ingrédients` |  | `dragons_fang` | feuille assumée | `gen3_aurenes_fang` |
+| `dragons_flight` | `4 ingrédients` |  | `dragons_flight` | feuille assumée | `gen3_aurenes_flight` |
+| `dragons_gaze` | `4 ingrédients` |  | `dragons_gaze` | feuille assumée | `gen3_aurenes_gaze` |
+| `dragons_insight` | `4 ingrédients` |  | `dragons_insight` | feuille assumée | `gen3_aurenes_insight` |
+| `dragons_persuasion` | `4 ingrédients` |  | `dragons_persuasion` | feuille assumée | `gen3_aurenes_persuasion` |
+| `dragons_rending` | `4 ingrédients` |  | `dragons_rending` | feuille assumée | `gen3_aurenes_rending` |
+| `dragons_scale` | `4 ingrédients` |  | `dragons_scale` | feuille assumée | `gen3_aurenes_scale` |
+| `dragons_tail` | `4 ingrédients` |  | `dragons_tail` | feuille assumée | `gen3_aurenes_tail` |
+| `dragons_voice` | `4 ingrédients` |  | `dragons_voice` | feuille assumée | `gen3_aurenes_voice` |
+| `dragons_weight` | `4 ingrédients` |  | `dragons_weight` | feuille assumée | `gen3_aurenes_weight` |
+| `dragons_wing` | `4 ingrédients` |  | `dragons_wing` | feuille assumée | `gen3_aurenes_wing` |
+| `dragons_wisdom` | `4 ingrédients` |  | `dragons_wisdom` | feuille assumée | `gen3_aurenes_wisdom` |
+| `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
+| `gift_of_janthir_wanderlust` | `4 ingrédients` |  | `gift_of_janthir_wanderlust` | feuille assumée | `orrax_manifested` |
+| `gift_of_the_astral_ward` | `4 ingrédients` |  | `gift_of_the_astral_ward` | feuille assumée | `obsidian` |
+| `gift_of_the_sun` | `4 ingrédients` |  | `gift_of_the_sun` | feuille assumée | `endless_summer` |
+| `howl` | `4 ingrédients` |  | `howl` | feuille assumée | `gen1_howler` |
+| `leaf_of_kudzu` | `4 ingrédients` |  | `leaf_of_kudzu` | feuille assumée | `gen1_kudzu` |
+| `meaty_asparagus_skewer` | `4 ingrédients` |  | `meaty_asparagus_skewer` | feuille assumée | `orrax_manifested` |
+| `olmakhan_charm` | `4 ingrédients` |  | `olmakhan_charm` | feuille assumée | `vision` |
+| `plate_of_orrian_steak_frittes` | `2 ingrédients` |  | `plate_of_orrian_steak_frittes` | feuille assumée | `orrax_manifested` |
+| `prototype` | `4 ingrédients` |  | `prototype` | feuille assumée | `gen2_hope` |
+| `rage_weapon` | `4 ingrédients` |  | `rage_weapon` | feuille assumée | `gen1_frenzy` |
+| `rare_essence_of_luck` | `1 ingrédients` |  | `rare_essence_of_luck` | feuille assumée | `ad_infinitum` |
+| `rodgorts_flame` | `4 ingrédients` |  | `rodgorts_flame` | feuille assumée | `gen1_rodgort` |
+| `spark_weapon` | `4 ingrédients` |  | `spark_weapon` | feuille assumée | `gen1_incinerator` |
+| `storm` | `4 ingrédients` |  | `storm` | feuille assumée | `gen1_meteorlogicus` |
+| `the_bard` | `4 ingrédients` |  | `the_bard` | feuille assumée | `gen1_the_minstrel` |
+| `the_chosen` | `4 ingrédients` |  | `the_chosen` | feuille assumée | `gen1_the_flameseeker_prophecies` |
+| `the_colossus` | `4 ingrédients` |  | `the_colossus` | feuille assumée | `gen1_the_juggernaut` |
+| `the_energizer` | `4 ingrédients` |  | `the_energizer` | feuille assumée | `gen1_the_moot` |
+| `the_hunter` | `4 ingrédients` |  | `the_hunter` | feuille assumée | `gen1_the_predator` |
+| `the_legend` | `4 ingrédients` |  | `the_legend` | feuille assumée | `gen1_the_bifrost` |
+| `the_lover` | `4 ingrédients` |  | `the_lover` | feuille assumée | `gen1_the_dreamer` |
+| `the_mechanism` | `4 ingrédients` |  | `the_mechanism` | feuille assumée | `gen2_astralaria` |
+| `the_raven_staff` | `4 ingrédients` |  | `the_raven_staff` | feuille assumée | `gen2_nevermore` |
+| `tigris` | `4 ingrédients` |  | `tigris` | feuille assumée | `gen2_chuka_and_champawat` |
+| `tooth_of_frostfang` | `4 ingrédients` |  | `tooth_of_frostfang` | feuille assumée | `gen1_frostfang` |
+| `unbound_wings` | `4 ingrédients` |  | `unbound_wings` | feuille assumée | `ad_infinitum` |
+| `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
+| `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
+
+## Palier suivant — 198 ingrédients, et qui les réclame
+
+- `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
+- `Aerator` — réclamé par `rage_weapon`
+- `Asparagus_Spear` — réclamé par `meaty_asparagus_skewer`
+- `Avocado` — réclamé par `bowl_of_black_pepper_cactus_salad`
+- `Balanced_Counterweight` — réclamé par `the_mechanism`
+- `Black_Peppercorn` — réclamé par `bowl_of_black_pepper_cactus_salad`
+- `Bone_Shard` — réclamé par `bone`
+- `Bottle_of_Coconut_Milk` — réclamé par `bowl_of_poultry_satay`
+- `Bottle_of_Rice_Wine` — réclamé par `meaty_asparagus_skewer`
+- `Bottle_of_Soy_Sauce` — réclamé par `meaty_asparagus_skewer`
+- `Bow_Wings` — réclamé par `the_lover`
+- `Bowl_of_Ascalonian_Salad` — réclamé par `bowl_of_black_pepper_cactus_salad`
+- `Bowl_of_Ice_Cream_Base` — réclamé par `bowl_of_prickly_pear_sorbet`
+- `Bowl_of_Tapioca_Pudding` — réclamé par `bowl_of_passion_fruit_tapioca_pudding`
+- `Carved_Beam` — réclamé par `the_legend`
+- `Carved_Tear_Drop` — réclamé par `the_legend`
+- `Charged_Core` — réclamé par `charged_lodestone`
+- `Coarse_Leather_Section` — réclamé par `cured_coarse_leather_square`
+- `Colossus_Statue` — réclamé par `the_colossus`
+- `Confetti_Bullets` — réclamé par `chaos_gun`
+- `Congealed_Water` — réclamé par `venom_weapon`
+- `Corrupted_Core` — réclamé par `corrupted_lodestone`
+- `Cotton_Scrap` — réclamé par `bolt_of_cotton`
+- `Crystal_Core` — réclamé par `crystal_lodestone`
+- `Cup_of_Lotus_Fries` — réclamé par `plate_of_orrian_steak_frittes`
+- `Destroyer_Core` — réclamé par `destroyer_lodestone`
+- `Dimensional_Destabilizer` — réclamé par `dawn`, `dusk`
+- `Dragon_Mold` — réclamé par `tooth_of_frostfang`
+- `Dragon_Statue` — réclamé par `rodgorts_flame`
+- `Elder_Wood_Log` — réclamé par `ancient_wood_log`, `elder_wood_plank`
+- `Energy_Source` — réclamé par `zap`
+- `Engraver's_Tools` — réclamé par `the_mechanism`, `zap`
+- `Essence_of_Anomaly` — réclamé par `prototype`
+- `Essence_of_Bounty_Hunting` — réclamé par `the_hunter`
+- `Essence_of_Burning` — réclamé par `rodgorts_flame`
+- `Essence_of_Chemistry` — réclamé par `spark_weapon`
+- `Essence_of_Control` — réclamé par `storm`
+- `Essence_of_Diving` — réclamé par `carcharias`
+- `Essence_of_Dreams` — réclamé par `the_lover`
+- `Essence_of_Energy` — réclamé par `zap`
+- `Essence_of_Freezing` — réclamé par `tooth_of_frostfang`
+- `Essence_of_Gloom` — réclamé par `dusk`
+- `Essence_of_Heroes` — réclamé par `the_chosen`
+- `Essence_of_Illumination` — réclamé par `dawn`
+- `Essence_of_Mischief` — réclamé par `chaos_gun`
+- `Essence_of_Performance` — réclamé par `the_bard`
+- `Essence_of_Quaggan_Friendship` — réclamé par `rage_weapon`
+- `Essence_of_Rainbows` — réclamé par `the_legend`
+- `Essence_of_Spirit` — réclamé par `howl`
+- `Essence_of_Time_and_Space` — réclamé par `the_mechanism`
+- `Essence_of_the_Celebration` — réclamé par `the_energizer`
+- `Essence_of_the_Garden` — réclamé par `leaf_of_kudzu`
+- `Essence_of_the_Krait` — réclamé par `venom_weapon`
+- `Essence_of_the_Ooze` — réclamé par `the_colossus`
+- `Essence_of_the_Wild_Spirit` — réclamé par `the_raven_staff`
+- `Everburning_Flame` — réclamé par `rodgorts_flame`
+- `Finely_Tuned_Firing_Pin` — réclamé par `prototype`
+- `Fish_Figurine` — réclamé par `rage_weapon`
+- `Fortified_Precursor_Axe_Head` — réclamé par `dragons_rending`
+- `Fortified_Precursor_Dagger_Blade` — réclamé par `dragons_claw_weapon`
+- `Fortified_Precursor_Dagger_Hilt` — réclamé par `dragons_claw_weapon`
+- `Fortified_Precursor_Focus_Casing` — réclamé par `dragons_gaze`
+- `Fortified_Precursor_Focus_Core` — réclamé par `dragons_gaze`
+- `Fortified_Precursor_Greatsword_Blade` — réclamé par `dragons_bite`
+- `Fortified_Precursor_Greatsword_Hilt` — réclamé par `dragons_bite`
+- `Fortified_Precursor_Hammer_Head` — réclamé par `dragons_weight`
+- `Fortified_Precursor_Horn` — réclamé par `dragons_voice`
+- `Fortified_Precursor_Longbow_Stave` — réclamé par `dragons_flight`
+- `Fortified_Precursor_Mace_Head` — réclamé par `dragons_tail`
+- `Fortified_Precursor_Pistol_Barrel` — réclamé par `dragons_argument`
+- `Fortified_Precursor_Pistol_Frame` — réclamé par `dragons_argument`
+- `Fortified_Precursor_Rifle_Barrel` — réclamé par `dragons_persuasion`
+- `Fortified_Precursor_Rifle_Stock` — réclamé par `dragons_persuasion`
+- `Fortified_Precursor_Scepter_Core` — réclamé par `dragons_wisdom`
+- `Fortified_Precursor_Scepter_Rod` — réclamé par `dragons_wisdom`
+- `Fortified_Precursor_Shield_Backing` — réclamé par `dragons_scale`
+- `Fortified_Precursor_Shield_Boss` — réclamé par `dragons_scale`
+- `Fortified_Precursor_Short_Bow_Stave` — réclamé par `dragons_wing`
+- `Fortified_Precursor_Staff_Head` — réclamé par `dragons_insight`
+- `Fortified_Precursor_Staff_Shaft` — réclamé par `dragons_insight`
+- `Fortified_Precursor_String` — réclamé par `dragons_flight`, `dragons_wing`
+- `Fortified_Precursor_Sword_Blade` — réclamé par `dragons_fang`
+- `Fortified_Precursor_Sword_Hilt` — réclamé par `dragons_fang`
+- `Fortified_Precursor_Torch_Handle` — réclamé par `dragons_breath`
+- `Fortified_Precursor_Torch_Head` — réclamé par `dragons_breath`
+- `Fortified_Precursor_Warhorn_Mouthpiece` — réclamé par `dragons_voice`
+- `Foxfire_Cluster` — réclamé par `olmakhan_charm`
+- `Freezing_Core` — réclamé par `tooth_of_frostfang`
+- `Fuel_Cannister` — réclamé par `spark_weapon`
+- `Fury-Scorched_Stone` — réclamé par `olmakhan_charm`
+- `Gift_of_Amnytas` — réclamé par `gift_of_the_astral_ward`
+- `Gift_of_Bava_Nisos` — réclamé par `gift_of_janthir_wanderlust`
+- `Gift_of_Inner_Nayos` — réclamé par `gift_of_the_astral_ward`
+- `Gift_of_Mistburned_Barrens` — réclamé par `gift_of_janthir_wanderlust`
+- `Gift_of_Persistence` — réclamé par `gift_of_the_astral_ward`
+- `Gift_of_Skywatch_Archipelago` — réclamé par `gift_of_the_astral_ward`
+- `Gift_of_Tarir` — réclamé par `gift_of_maguuma`
+- `Gift_of_the_Chak` — réclamé par `gift_of_maguuma`
+- `Gift_of_the_Fleet` — réclamé par `gift_of_maguuma`
+- `Gift_of_the_Jungle` — réclamé par `gift_of_maguuma`
+- `Glacial_Core` — réclamé par `glacial_lodestone`
+- `Glacial_Shard` — réclamé par `bowl_of_prickly_pear_sorbet`
+- `Globe` — réclamé par `storm`
+- `Gold_Ore` — réclamé par `gold_ingot`
+- `Gossamer_Scrap` — réclamé par `bolt_of_gossamer`
+- `Hard_Wood_Log` — réclamé par `hard_wood_plank`
+- `Harp` — réclamé par `the_bard`
+- `Horse_Figure` — réclamé par `the_lover`
+- `Iron_Ore` — réclamé par `iron_ingot`, `steel_ingot`
+- `Jar_of_Red_Curry_Paste` — réclamé par `bowl_of_poultry_satay`
+- `Large_Fortified_Precursor_Haft` — réclamé par `dragons_weight`
+- `Lattice_(component)` — réclamé par `leaf_of_kudzu`
+- `Ley-Infused_Sand` — réclamé par `olmakhan_charm`
+- `Lime` — réclamé par `bowl_of_prickly_pear_sorbet`
+- `Linen_Scrap` — réclamé par `bolt_of_linen`
+- `Living_Flame` — réclamé par `the_hunter`
+- `Lump_of_Coal` — réclamé par `steel_ingot`
+- `Lump_of_Primordium` — réclamé par `darksteel_ingot`
+- `Masterwork_Essence_of_Luck` — réclamé par `rare_essence_of_luck`
+- `Memory_of_Aurene` — réclamé par `dragons_argument`, `dragons_bite`, `dragons_breath`, `dragons_claw_weapon`, `dragons_fang`, `dragons_flight`, `dragons_gaze`, `dragons_insight`, `dragons_persuasion`, `dragons_rending`, `dragons_scale`, `dragons_tail`, `dragons_voice`, `dragons_weight`, `dragons_wing`, `dragons_wisdom`
+- `Mini_Risen_Priest_of_Balthazar` — réclamé par `obsidian_shard`
+- `Mirror_(item)` — réclamé par `dawn`, `dusk`
+- `Mithril_Ore` — réclamé par `mithril_ingot`
+- `Mithril_Snake` — réclamé par `howl`
+- `Molten_Core` — réclamé par `molten_lodestone`
+- `Mystic_Crystal` — réclamé par `charged_lodestone`, `corrupted_lodestone`, `crystal_lodestone`, `destroyer_lodestone`, `glacial_lodestone`, `molten_lodestone`, `onyx_lodestone`
+- `Nopal` — réclamé par `bowl_of_black_pepper_cactus_salad`
+- `Onyx_Core` — réclamé par `onyx_lodestone`
+- `Ooze_Reservoir` — réclamé par `the_colossus`
+- `Opal_Crystal` — réclamé par `opal_orb`
+- `Orichalcum_Ore` — réclamé par `orichalcum_ingot`
+- `Ornate_Pistol_Frame` — réclamé par `chaos_gun`
+- `Party_Ball` — réclamé par `the_energizer`
+- `Party_Stick` — réclamé par `the_energizer`
+- `Pile_of_Tangy_Seasoning` — réclamé par `bowl_of_poultry_satay`
+- `Platinum_Ore` — réclamé par `darksteel_ingot`, `platinum_ingot`
+- `Prickly_Pear` — réclamé par `bowl_of_prickly_pear_sorbet`
+- `Pruning_Shears` — réclamé par `leaf_of_kudzu`
+- `Raspberry_Passion_Fruit_Compote` — réclamé par `bowl_of_passion_fruit_tapioca_pudding`
+- `Raven_Statue_(Legendary_Component)` — réclamé par `the_raven_staff`
+- `Regulator_Nozzle` — réclamé par `spark_weapon`
+- `Rooster_Statues` — réclamé par `the_bard`
+- `Rugged_Leather_Section` — réclamé par `cured_rugged_leather_square`
+- `Rune_Carving_Tools` — réclamé par `the_raven_staff`
+- `Scope` — réclamé par `the_hunter`
+- `Seasoned_Wood_Log` — réclamé par `seasoned_wood_plank`
+- `Serrated_Harpoon` — réclamé par `carcharias`
+- `Shard_of_Crystallized_Mists_Essence` — réclamé par `unbound_wings`
+- `Shark_Figurine` — réclamé par `carcharias`
+- `Shield_of_Legend` — réclamé par `the_chosen`
+- `Silk_Scrap` — réclamé par `bolt_of_silk`
+- `Silver_Ore` — réclamé par `silver_ingot`
+- `Small_Claw` — réclamé par `claw`
+- `Small_Fang` — réclamé par `fang`
+- `Small_Fortified_Precursor_Haft` — réclamé par `dragons_rending`, `dragons_tail`
+- `Small_Scale` — réclamé par `scale`
+- `Small_Totem` — réclamé par `totem`
+- `Small_Venom_Sac` — réclamé par `venom_sac`
+- `Snake_Statue` — réclamé par `venom_weapon`
+- `Soft_Wood_Log` — réclamé par `soft_wood_plank`
+- `Spinning_Mechanism` — réclamé par `storm`
+- `Spirit_of_Development` — réclamé par `prototype`
+- `Spirit_of_The_Apparatus` — réclamé par `the_mechanism`
+- `Spirit_of_the_Ambush` — réclamé par `tigris`
+- `Spirit_of_the_Perfected_Axe` — réclamé par `tooth_of_frostfang`
+- `Spirit_of_the_Perfected_Dagger` — réclamé par `spark_weapon`
+- `Spirit_of_the_Perfected_Daysword` — réclamé par `dawn`
+- `Spirit_of_the_Perfected_Focus` — réclamé par `the_bard`
+- `Spirit_of_the_Perfected_Hammer` — réclamé par `the_colossus`
+- `Spirit_of_the_Perfected_Harpoon_Gun` — réclamé par `rage_weapon`
+- `Spirit_of_the_Perfected_Longbow` — réclamé par `leaf_of_kudzu`
+- `Spirit_of_the_Perfected_Mace` — réclamé par `the_energizer`
+- `Spirit_of_the_Perfected_Nightsword` — réclamé par `dusk`
+- `Spirit_of_the_Perfected_Pistol` — réclamé par `chaos_gun`
+- `Spirit_of_the_Perfected_Rifle` — réclamé par `the_hunter`
+- `Spirit_of_the_Perfected_Scepter` — réclamé par `storm`
+- `Spirit_of_the_Perfected_Shield` — réclamé par `the_chosen`
+- `Spirit_of_the_Perfected_Short_Bow` — réclamé par `the_lover`
+- `Spirit_of_the_Perfected_Spear` — réclamé par `carcharias`
+- `Spirit_of_the_Perfected_Staff` — réclamé par `the_legend`
+- `Spirit_of_the_Perfected_Sword` — réclamé par `zap`
+- `Spirit_of_the_Perfected_Torch` — réclamé par `rodgorts_flame`
+- `Spirit_of_the_Perfected_Trident` — réclamé par `venom_weapon`
+- `Spirit_of_the_Perfected_Warhorn` — réclamé par `howl`
+- `Spirit_of_the_Ravenswood_Staff` — réclamé par `the_raven_staff`
+- `Spirit_of_the_Tiger` — réclamé par `tigris`
+- `Spirit_of_the_Upper_Bound` — réclamé par `unbound_wings`
+- `Spiritwood_Focus_Casing` — réclamé par `ars_goetia`
+- `Sun_Beads` — réclamé par `gift_of_the_sun`
+- `Thick_Leather_Section` — réclamé par `cured_thick_leather_square`, `hardened_leather_section`
+- `Thin_Leather_Section` — réclamé par `cured_thin_leather_square`
+- `Tome_of_Heroes` — réclamé par `the_chosen`
+- `Transcendent_Crystal` — réclamé par `dragons_argument`, `dragons_bite`, `dragons_breath`, `dragons_claw_weapon`, `dragons_fang`, `dragons_flight`, `dragons_gaze`, `dragons_insight`, `dragons_persuasion`, `dragons_rending`, `dragons_scale`, `dragons_tail`, `dragons_voice`, `dragons_weight`, `dragons_wing`, `dragons_wisdom`
+- `Vial_of_Thin_Blood` — réclamé par `vial_of_blood`
+- `Visage_of_Champawat` — réclamé par `tigris`
+- `Visage_of_Chuka` — réclamé par `tigris`
+- `Wolf_Statue_(exotic)` — réclamé par `howl`
+- `Wool_Scrap` — réclamé par `bolt_of_wool`
+

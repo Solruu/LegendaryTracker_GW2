@@ -2967,3 +2967,67 @@ Les familles, pour capturer par lots : ~34 precurseurs gen1/gen2/gen3, 16 sigils
 superieurs, 11 dons, 11 plats et ingredients de cuisine, 4 Spirit of the *,
 3 Refined Homestead *, 3 Memory of the Bearkin's *, et le reste en materiaux
 isoles.
+
+## BK — 27/09/2026 : les 126 captures integrees, et le palier suivant rendu visible
+
+Lot de 126 pages, aucune 404. Integration, index regeneres, puis trois choses.
+
+### 105 apiId poses
+
+Chaque capture annonce l'identifiant de son objet ; 105 composants n'en avaient
+pas. Poses en confrontant capture et composant, zero conflit. Les 105
+avertissements « la capture annonce API xxx, le composant n'en a pas »
+disparaissent : 172 -> 67.
+
+### Dark Matter : un titre qui redirige, et un doublon evite
+
+`Dark_Matter` renvoie vers `Glob of Dark Matter`, au depot depuis le 12/09.
+Le composant `dark_matter` que la passe precedente avait cree etait donc un
+doublon : fusionne dans `glob_of_dark_matter`, avec sa quantite (10 pour
+`mystic_essence_of_annihilation`). Son nom reprend le titre du wiki — « Glob of
+Dark Matter », pas « Glob Of Dark Matter ».
+
+Reste le probleme de fond : la recette CITE « Dark Matter », et on ne peut pas
+corriger une boite de recette. Le composant declare donc
+`wiki_redirects: ["Dark_Matter"]` — les titres par lesquels on l'atteint. Meme
+principe que le titre d'arrivee du meta 3516 (§ BB). Sans lui, cette ligne
+serait restee dans la file pour toujours.
+
+### 43 composants decomposes, 106 aretes
+
+Les composants poses le 25/09 disaient « voie d'obtention non lue : la page
+n'est pas au depot ». Elle y est. Leur recette se lit, leurs ingredients
+existent : 43 ont ete decomposes, 106 aretes posees, et le tip corrige — il ne
+pouvait plus dire l'inverse de la realite.
+
+Restreint aux composants que cette chaine a crees, reconnus a leur source
+`unknown`. `mystic_clover` a une recette et reste une feuille : c'est une
+decision de modelisation, la defaire a l'aveugle changerait des totaux que
+personne n'a demande de changer.
+
+**Un seul resolveur pour toute la chaine**, celui de la relecture. Le premier
+jet de `--relier` en avait un second, plus faible : il ratait cinquante
+decompositions. Deux resolveurs qui repondent differemment sur le meme titre,
+c'est le chemin parallele qu'on s'interdit.
+
+### Ce que le raccourci « feuille assumee » cachait
+
+Une feuille donne UNE ligne au lieu d'une par ingredient — bon pour la
+lisibilite, mais ses ingredients n'etaient pas verifies. **Cinquante recettes du
+lot en reclamaient 181 sans que le rapport en dise un mot.**
+
+`gw2_relecture_recettes_v4.py` ajoute la categorie **PALIER_SUIVANT** : un
+ingredient absent, cite par la recette d'une feuille. Ce n'est pas un defaut de
+la feuille, c'est l'etage d'en dessous. **243 aujourd'hui.**
+
+### Ou en est l'arbre
+
+601 -> **762 composants**. MANQUANT **0**. La file demande **38 pages**, le
+palier d'en dessous des 38 composants poses dans la foulee. Sections 0, 1, 2 et
+4 a zero.
+
+Le compte des composants va continuer de monter tant qu'on descendra : les
+chaines de cuisine (Nopal, Avocado, Bowl of Ascalonian Salad…) sont profondes.
+**Jusqu'ou descendre est une decision de modelisation, pas une question de
+donnees** — les couts du palier courant sont complets et remontent des
+maintenant.

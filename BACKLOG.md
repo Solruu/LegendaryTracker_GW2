@@ -1410,7 +1410,7 @@ Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
 d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
 retroactif des etapes validees (sections Y et AB).
 
-### 1. Captures manquantes — 126 URLs dans `PAGES_A_CAPTURER.md`
+### 1. Captures manquantes — 38 URLs dans `PAGES_A_CAPTURER.md`
 
 **Le chiffre a explosé le 25/09, et c'est une bonne nouvelle** : la complétion
 de l'arbre a créé les 124 composants que les recettes réclamaient sans qu'ils

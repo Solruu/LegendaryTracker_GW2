@@ -957,6 +957,131 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `gift_of_the_highlands.html` | Gift of the Highlands | article complet | 2026-09-25 |
 | `gift_of_the_oasis.html` | Gift of the Oasis | article complet | 2026-09-25 |
 | `gift_of_the_riverlands.html` | Gift of the Riverlands | article complet | 2026-09-25 |
+| `askur_camping_cookout_backpiece.html` | Askur Camping Cookout Backpiece | article complet moins « Available prefixes » | 2026-09-27 |
+| `binding_of_the_dragon.html` | Binding of the Dragon | article complet | 2026-09-27 |
+| `bolt_of_damask.html` | Bolt of Damask | article complet | 2026-09-27 |
+| `bowl_of_black_pepper_cactus_salad.html` | Bowl of Black Pepper Cactus Salad | article complet | 2026-09-27 |
+| `bowl_of_passion_fruit_tapioca_pudding.html` | Bowl of Passion Fruit Tapioca Pudding | article complet | 2026-09-27 |
+| `bowl_of_poultry_satay.html` | Bowl of Poultry Satay | article complet | 2026-09-27 |
+| `bowl_of_prickly_pear_sorbet.html` | Bowl of Prickly Pear Sorbet | article complet | 2026-09-27 |
+| `call_of_the_void.html` | Call of the Void | article complet moins « Available prefixes » | 2026-09-27 |
+| `carcharias.html` | Carcharias | article complet | 2026-09-27 |
+| `chaos_gun.html` | Chaos Gun | article complet | 2026-09-27 |
+| `charged_titan_ore.html` | Charged Titan Ore | article complet | 2026-09-27 |
+| `charm_of_brilliance.html` | Charm of Brilliance | article complet | 2026-09-27 |
+| `charm_of_potence.html` | Charm of Potence | article complet | 2026-09-27 |
+| `charm_of_skill.html` | Charm of Skill | article complet | 2026-09-27 |
+| `chrysocola_crystal.html` | Chrysocola Crystal | article complet | 2026-09-27 |
+| `claw_of_resolution.html` | Claw of Resolution | article complet moins « Available prefixes » | 2026-09-27 |
+| `dawn.html` | Dawn | article complet | 2026-09-27 |
+| `dragons_argument.html` | Dragon's Argument | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_bite.html` | Dragon's Bite | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_breath.html` | Dragon's Breath | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_claw_weapon.html` | Dragon's Claw (weapon) | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_fang.html` | Dragon's Fang | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_flight.html` | Dragon's Flight | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_gaze.html` | Dragon's Gaze | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_insight.html` | Dragon's Insight | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_persuasion.html` | Dragon's Persuasion | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_rending.html` | Dragon's Rending | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_scale.html` | Dragon's Scale | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_tail.html` | Dragon's Tail | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_voice.html` | Dragon's Voice | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_weight.html` | Dragon's Weight | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_wing.html` | Dragon's Wing | article complet moins « Available prefixes » | 2026-09-27 |
+| `dragons_wisdom.html` | Dragon's Wisdom | article complet moins « Available prefixes » | 2026-09-27 |
+| `dusk.html` | Dusk | article complet | 2026-09-27 |
+| `elonian_leather_square.html` | Elonian Leather Square | article complet | 2026-09-27 |
+| `endeavor.html` | Endeavor | article complet moins « Available prefixes » | 2026-09-27 |
+| `exitare.html` | Exitare | article complet moins « Available prefixes » | 2026-09-27 |
+| `friendship.html` | Friendship | article complet moins « Available prefixes » | 2026-09-27 |
+| `gift_of_ascalon.html` | Gift of Ascalon | article complet | 2026-09-27 |
+| `gift_of_baelfire.html` | Gift of Baelfire | article complet | 2026-09-27 |
+| `gift_of_janthir_syntri.html` | Gift of Janthir Syntri | article complet | 2026-09-27 |
+| `gift_of_knowledge.html` | Gift of Knowledge | article complet | 2026-09-27 |
+| `gift_of_lowland_shore.html` | Gift of Lowland Shore | article complet | 2026-09-27 |
+| `gift_of_the_forgeman.html` | Gift of the Forgeman | article complet | 2026-09-27 |
+| `gift_of_the_nobleman.html` | Gift of the Nobleman | article complet | 2026-09-27 |
+| `gift_of_the_sanctuary.html` | Gift of the Sanctuary | article complet | 2026-09-27 |
+| `gift_of_the_ursus.html` | Gift of the Ursus | article complet | 2026-09-27 |
+| `gift_of_thorns.html` | Gift of Thorns | article complet | 2026-09-27 |
+| `gift_of_zhaitan.html` | Gift of Zhaitan | article complet | 2026-09-27 |
+| `glob_of_elder_spirit_residue.html` | Glob of Elder Spirit Residue | article complet | 2026-09-27 |
+| `gold_ingot.html` | Gold Ingot | article complet | 2026-09-27 |
+| `howl.html` | Howl | article complet | 2026-09-27 |
+| `jar_of_distilled_glory.html` | Jar of Distilled Glory | article complet | 2026-09-27 |
+| `leaf_of_kudzu.html` | Leaf of Kudzu | article complet | 2026-09-27 |
+| `legendary_insight_consumable.html` | Legendary Insight (consumable) | article complet | 2026-09-27 |
+| `liturgy.html` | Liturgy | article complet moins « Available prefixes » | 2026-09-27 |
+| `man_o_war.html` | Man o' War | article complet moins « Available prefixes » | 2026-09-27 |
+| `meaty_asparagus_skewer.html` | Meaty Asparagus Skewer | article complet | 2026-09-27 |
+| `memory_of_bearkins_adversaries.html` | Memory of Bearkin's Adversaries | article complet | 2026-09-27 |
+| `memory_of_the_bearkins_hunts.html` | Memory of the Bearkin's Hunts | article complet | 2026-09-27 |
+| `memory_of_the_bearkins_victories.html` | Memory of the Bearkin's Victories | article complet | 2026-09-27 |
+| `might_of_arah.html` | Might of Arah | article complet moins « Available prefixes » | 2026-09-27 |
+| `orichalcum_plated_dowel.html` | Orichalcum Plated Dowel | article complet | 2026-09-27 |
+| `plate_of_orrian_steak_frittes.html` | Plate of Orrian Steak Frittes | article complet | 2026-09-27 |
+| `plate_of_spicy_herbed_chicken.html` | Plate of Spicy Herbed Chicken | article complet | 2026-09-27 |
+| `plate_of_truffle_steak.html` | Plate of Truffle Steak | article complet | 2026-09-27 |
+| `prototype.html` | Prototype | article complet moins « Available prefixes » | 2026-09-27 |
+| `rage_weapon.html` | Rage (weapon) | article complet | 2026-09-27 |
+| `rare_essence_of_luck.html` | Rare Essence of Luck | article complet | 2026-09-27 |
+| `record_of_league_participation.html` | Record of League Participation | article complet | 2026-09-27 |
+| `red_lentil_saobosa.html` | Red-Lentil Saobosa | article complet | 2026-09-27 |
+| `refined_homestead_fiber.html` | Refined Homestead Fiber | article complet | 2026-09-27 |
+| `refined_homestead_metal.html` | Refined Homestead Metal | article complet | 2026-09-27 |
+| `refined_homestead_wood.html` | Refined Homestead Wood | article complet | 2026-09-27 |
+| `relic.html` | Relic | article complet | 2026-09-27 |
+| `rodgorts_flame.html` | Rodgort's Flame | article complet | 2026-09-27 |
+| `rotted_titan_amber.html` | Rotted Titan Amber | article complet | 2026-09-27 |
+| `salmon_of_knowledge_backpiece.html` | Salmon of Knowledge Backpiece | article complet moins « Available prefixes » | 2026-09-27 |
+| `save_the_queen.html` | Save the Queen | article complet moins « Available prefixes » | 2026-09-27 |
+| `silver_ingot.html` | Silver Ingot | article complet | 2026-09-27 |
+| `soft_wood_plank.html` | Soft Wood Plank | article complet | 2026-09-27 |
+| `spark_weapon.html` | Spark (weapon) | article complet | 2026-09-27 |
+| `spero.html` | Spero | article complet moins « Available prefixes » | 2026-09-27 |
+| `spicy_marinated_mushroom.html` | Spicy Marinated Mushroom | article complet | 2026-09-27 |
+| `spirit_of_the_jackal.html` | Spirit of the Jackal | article complet | 2026-09-27 |
+| `spirit_of_the_raptor.html` | Spirit of the Raptor | article complet | 2026-09-27 |
+| `spirit_of_the_skimmer.html` | Spirit of the Skimmer | article complet | 2026-09-27 |
+| `spirit_of_the_springer.html` | Spirit of the Springer | article complet | 2026-09-27 |
+| `star_of_glory.html` | Star of Glory | article complet | 2026-09-27 |
+| `storm.html` | Storm | article complet | 2026-09-27 |
+| `superior_sigil_of_accuracy.html` | Superior Sigil of Accuracy | article complet | 2026-09-27 |
+| `superior_sigil_of_air.html` | Superior Sigil of Air | article complet | 2026-09-27 |
+| `superior_sigil_of_battle.html` | Superior Sigil of Battle | article complet | 2026-09-27 |
+| `superior_sigil_of_benevolence.html` | Superior Sigil of Benevolence | article complet | 2026-09-27 |
+| `superior_sigil_of_blood.html` | Superior Sigil of Blood | article complet | 2026-09-27 |
+| `superior_sigil_of_celerity.html` | Superior Sigil of Celerity | article complet | 2026-09-27 |
+| `superior_sigil_of_energy.html` | Superior Sigil of Energy | article complet | 2026-09-27 |
+| `superior_sigil_of_fire.html` | Superior Sigil of Fire | article complet | 2026-09-27 |
+| `superior_sigil_of_force.html` | Superior Sigil of Force | article complet | 2026-09-27 |
+| `superior_sigil_of_ice.html` | Superior Sigil of Ice | article complet | 2026-09-27 |
+| `superior_sigil_of_nullification.html` | Superior Sigil of Nullification | article complet | 2026-09-27 |
+| `superior_sigil_of_purity.html` | Superior Sigil of Purity | article complet | 2026-09-27 |
+| `superior_sigil_of_rage.html` | Superior Sigil of Rage | article complet | 2026-09-27 |
+| `superior_sigil_of_stamina.html` | Superior Sigil of Stamina | article complet | 2026-09-27 |
+| `superior_sigil_of_strength.html` | Superior Sigil of Strength | article complet | 2026-09-27 |
+| `superior_sigil_of_venom.html` | Superior Sigil of Venom | article complet | 2026-09-27 |
+| `sweet_treated_pine_plank.html` | Sweet-Treated Pine Plank | article complet | 2026-09-27 |
+| `symbol_of_control.html` | Symbol of Control | article complet | 2026-09-27 |
+| `symbol_of_enhancement.html` | Symbol of Enhancement | article complet | 2026-09-27 |
+| `symbol_of_pain.html` | Symbol of Pain | article complet | 2026-09-27 |
+| `the_bard.html` | The Bard | article complet | 2026-09-27 |
+| `the_chosen.html` | The Chosen | article complet | 2026-09-27 |
+| `the_colossus.html` | The Colossus | article complet | 2026-09-27 |
+| `the_energizer.html` | The Energizer | article complet | 2026-09-27 |
+| `the_hunter.html` | The Hunter | article complet | 2026-09-27 |
+| `the_legend.html` | The Legend | article complet | 2026-09-27 |
+| `the_lover.html` | The Lover | article complet | 2026-09-27 |
+| `the_mechanism.html` | The Mechanism | article complet moins « Available prefixes » | 2026-09-27 |
+| `the_raven_staff.html` | The Raven Staff | article complet moins « Available prefixes » | 2026-09-27 |
+| `tigris.html` | Tigris | article complet moins « Available prefixes » | 2026-09-27 |
+| `tlehco.html` | Tlehco | article complet moins « Available prefixes » | 2026-09-27 |
+| `tooth_of_frostfang.html` | Tooth of Frostfang | article complet | 2026-09-27 |
+| `unidentified_dye.html` | Unidentified Dye | article complet | 2026-09-27 |
+| `venom_weapon.html` | Venom (weapon) | article complet | 2026-09-27 |
+| `zap.html` | Zap | article complet | 2026-09-27 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

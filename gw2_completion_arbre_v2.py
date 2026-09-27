@@ -24,7 +24,7 @@ source `unknown` qui dit ou sa quantite a ete lue et que sa page manque. Il
 part alors en file de capture par le mecanisme normal, et sa decomposition
 suivra.
 
-Usage : python3 gw2_completion_arbre_v1.py [--ecrire]
+Usage : python3 gw2_completion_arbre_v2.py [--ecrire]
 Sans --ecrire, le script mesure et ne touche a rien.
 """
 import argparse
@@ -71,6 +71,9 @@ def lisible(titre):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ecrire", action="store_true")
+    ap.add_argument("--relier", action="store_true",
+                    help="decomposer les composants poses par une passe precedente, "
+                         "maintenant que leur capture est au depot")
     args = ap.parse_args()
 
     src = derniere("gw2_sources_v*.json")
@@ -79,13 +82,13 @@ def main():
     legs = data["legendaries"]
 
     rapport = derniere("RELECTURE_RECETTES_v*.md").read_text(encoding="utf-8")
+    # Plus rien a creer est un resultat, pas une panne : la table disparait du
+    # rapport quand elle est vide, et `--relier` reste a faire.
     bloc = rapport.split("## Ingrédients qu'aucun composant ne représente", 1)
-    if len(bloc) < 2:
-        sys.exit("le rapport ne contient pas la table des manquants")
-    table = bloc[1].split("\n## ", 1)[0]
-    lignes = re.findall(r"^\| `([^`]+)` \| `([^`]+)` \| (\d+) \| `([^`]+)` \|", table, re.M)
-    if not lignes:
-        sys.exit("aucune ligne MANQUANT lue dans le rapport")
+    lignes = []
+    if len(bloc) > 1:
+        table = bloc[1].split("\n## ", 1)[0]
+        lignes = re.findall(r"^\| `([^`]+)` \| `([^`]+)` \| (\d+) \| `([^`]+)` \|", table, re.M)
 
     mat = json.loads((HERE / "gw2_materials_ref.json").read_text(encoding="utf-8"))
     par_nom = {}
@@ -175,6 +178,69 @@ def main():
         crees += 1
         aretes += len(reclamations)
         apercu.append((cid, nom, aid, c["kind"], len(reclamations)))
+
+    # Deuxieme temps, une fois les captures arrivees. Un composant pose par la
+    # passe precedente portait « voie d'obtention non lue : la page n'est pas au
+    # depot ». Elle y est maintenant : sa recette se lit, ses ingredients
+    # existent tous (la relecture ne signale plus aucun manquant), il ne reste
+    # qu'a poser les aretes.
+    #
+    # Restreint aux composants que CETTE chaine a crees, reconnus a leur source
+    # `unknown` : un noeud sans enfants n'est pas forcement un oubli.
+    # `mystic_clover` a une recette et reste une feuille, c'est une decision de
+    # modelisation, et la defaire a l'aveugle changerait des totaux sans que
+    # personne ne l'ait demande.
+    # Un seul resolveur pour toute la chaine : celui de la relecture. En ecrire
+    # un second, plus faible, faisait rater cinquante decompositions -- et deux
+    # resolveurs qui repondent differemment sur le meme titre, c'est le chemin
+    # parallele qu'on s'interdit.
+    import importlib.util as _ilu
+    _sp = _ilu.spec_from_file_location("relecture", HERE / "gw2_relecture_recettes_v4.py")
+    _rel = _ilu.module_from_spec(_sp)
+    _sp.loader.exec_module(_rel)
+    resolveur = _rel.Resolveur(cc, json.loads(
+        (HERE / "ressources" / "INDEX_CONTENU.json").read_text(encoding="utf-8")),
+        legs, json.loads((HERE / "gw2_materials_ref.json").read_text(encoding="utf-8")))
+
+    relies = aretes_relies = 0
+    if args.relier:
+        par_page_r = {e["page"]: e for e in json.loads(
+            (HERE / "ressources" / "INDEX_CONTENU.json").read_text(encoding="utf-8"))}
+        for cid, c in list(cc.items()):
+            srcs = c.get("sources") or []
+            if not any(sc.get("type") == "unknown" and "non lue" in ((sc.get("tip") or {}).get("fr") or "")
+                       for sc in srcs):
+                continue
+            page = par_page_r.get(cid)
+            enfants = {x for x, v in cc.items() if cid in (v.get("qty") or {})}
+            if page and page.get("recettes") and not enfants:
+                pose = 0
+                for titre, qte in (page["recettes"][0].get("ingredients") or []):
+                    enf, _comment = resolveur.resoudre(titre)
+                    if not enf or enf == cid or enf not in cc:
+                        continue
+                    q = cc[enf].setdefault("qty", OrderedDict())
+                    if cid in q:
+                        continue
+                    q[cid] = int(qte)
+                    nf = cc[enf].setdefault("needed_for", [])
+                    if cid not in nf:
+                        nf.append(cid)
+                    pose += 1
+                if pose:
+                    relies += 1
+                    aretes_relies += pose
+            # La page est la, quoi qu'il en soit : le tip ne peut plus dire
+            # l'inverse.
+            for sc in srcs:
+                if sc.get("type") == "unknown" and "non lue" in ((sc.get("tip") or {}).get("fr") or ""):
+                    sc["tip"] = {
+                        "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : "
+                              "recette posée si la capture en porte une, sinon à reprendre à la main.",
+                        "en": "Page in the repo since the 27/09 batch. Acquisition path to read: "
+                              "recipe posted if the capture carries one, otherwise to be done by hand.",
+                    }
+        print(f"composants decomposes {relies} | aretes posees {aretes_relies}")
 
     print(f"composants a creer {crees} | aretes {aretes} | avec apiId {avec_api}")
     for ing, cid, pourquoi in doublons:
