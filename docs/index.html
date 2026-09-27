@@ -82693,6 +82693,13 @@ function GW2LegendaryTracker() {
     try { return JSON.parse(localStorage.getItem("gw2_vision_collections") ?? "null") ?? {}; } catch { return {}; }
   });
   const [visionSubExpanded, setVisionSubExpanded] = useState(null);
+  // Statuts de collection de TOUTES les cibles, derives des sources par la
+  // synchro. Aurora et Vision gardent leur magasin propre (leur onglet s'en
+  // sert), celui-ci sert au calcul, qui concerne toutes les legendaires.
+  const [allCollections, setAllCollections] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_all_collections") ?? "null") ?? {}; }
+    catch { return {}; }
+  });
 
   // ── Obsidian Armor : objectif par pièce, items résolus, armory brut, achievements ──
   const [obsTarget, setObsTarget] = useState(() => {
@@ -82926,6 +82933,29 @@ function GW2LegendaryTracker() {
       for (const [k3, id3] of Object.entries(kmap)) out[k3] = norm(byId[id3]);
       colls[grp] = out;
     }
+    // `collection_key_ids` est VIDE dans les sources — la table n'a jamais ete
+    // remplie. Tout ce qui la lisait recevait donc un objet vide, et la regle
+    // « une etape validee satisfait son composant » ne pouvait rien satisfaire :
+    // Antoine lisait « Kralkatite Ore requis 3 100 » avec ses six armes Astral
+    // terminees et sa collection marquee faite, parce que l'onglet Collections
+    // affiche `_sub_status` (indexe par id de succes) tandis que le calcul lisait
+    // `_collections` (indexe par cle, et vide).
+    //
+    // On ne remplit pas la table a la main : le lien cle -> id est DEJA dans les
+    // sources, sur chaque collection. On le derive, pour toutes les cibles a la
+    // fois et non pour les trois qui avaient leur endpoint Flask. Les deux
+    // indexations sont posees, par cle et par id, parce que `satisfaits` essaie
+    // l'une puis l'autre.
+    const toutes = {};
+    for (const leg of Object.values(SOURCES_DB?.legendaries ?? {})) {
+      for (const [k4, col] of Object.entries(leg?.collections ?? {})) {
+        if (col?.id == null || !byId[col.id]) continue;
+        const st = norm(byId[col.id]);
+        toutes[k4] = st;
+        toutes[String(col.id)] = st;
+      }
+    }
+    colls.all = toutes;
     // Meme inventaire agrege que celui renvoye par Flask, pour que les deux
     // chemins alimentent le grand total a l'identique.
     const stocksAll = {};
@@ -83143,6 +83173,10 @@ function GW2LegendaryTracker() {
           localStorage.setItem("gw2_vision_collections", JSON.stringify(data._collections.vision));
           setVisionCollections(data._collections.vision);
         }
+      }
+      if (data._collections?.all) {
+        localStorage.setItem("gw2_all_collections", JSON.stringify(data._collections.all));
+        setAllCollections(data._collections.all);
       }
       // Fetch Obsidian achievements en parallèle
       try {
@@ -83487,8 +83521,8 @@ function GW2LegendaryTracker() {
   // que la regle du 18/09 etait en place et correcte. Les deux espaces de cles
   // sont disjoints (`vis_*` d'un cote), la fusion est sans ambiguite.
   const toutesCollections = React.useMemo(
-    () => ({ ...(auroraCollections ?? {}), ...(visionCollections ?? {}) }),
-    [auroraCollections, visionCollections]);
+    () => ({ ...(allCollections ?? {}), ...(auroraCollections ?? {}), ...(visionCollections ?? {}) }),
+    [allCollections, auroraCollections, visionCollections]);
 
   const legTotals = React.useMemo(() => {
     const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;

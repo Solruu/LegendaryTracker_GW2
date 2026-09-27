@@ -3134,3 +3134,35 @@ posee sur le compte, changer de personnage ne la rouvre pas — et
 Portee : ces trois portes commandent Bolt of Damask, Elonian Leather Square et
 Spiritwood Plank, donc tout ce qui passe par un tissu, un cuir ou un bois
 ascendus. **Pas Vision**, qui n'en consomme aucun — son delai vient d'ailleurs.
+
+## BN — 27/09/2026 : deux magasins pour un seul fait, et une table jamais remplie
+
+Antoine : six armes Astral terminees, collection marquee faite, synchro OK, et
+l'onglet Vision affichant toujours « Kralkatite Ore requis 3 100 ». Le
+mecanisme etait pourtant branche — `vis_istan` bit 5 porte
+`component: astral_weapons`, et depuis la v218 le `required` vient du moteur.
+
+**La cause est en amont : `_meta.collection_key_ids` est vide.** La synchro
+construisait les statuts de collection en parcourant cette table, donc ne
+construisait rien. `satisfaits` restait vide, et rien n'etait jamais deduit.
+
+Ce qui rendait le symptome trompeur : l'onglet Collections lit `_sub_status`,
+indexe par id de succes, et le calcul lisait `_collections`, indexe par cle et
+vide. **L'etape s'affichait faite pendant que le moteur ne la voyait pas** —
+deux magasins pour un seul fait, la meme maladie que les deux tables de metas
+et que la liste de Vision II.
+
+### La correction ne remplit pas la table, elle la remplace
+
+Le lien cle -> id de succes est DEJA dans les sources, sur chaque collection.
+La v229 le derive au lieu de le recopier, et pour toutes les cibles — pas
+seulement Aurora, Vision et Obsidian, les trois qui avaient jadis leur endpoint
+Flask. Les deux indexations sont posees, par cle et par id, parce que
+`satisfaits` essaie l'une puis l'autre.
+
+Portee reelle : la regle « une etape validee satisfait son composant » n'avait
+jamais rien satisfait nulle part. Orrax porte 20 etapes avec `component`, elles
+non plus n'etaient pas comptees.
+
+`collection_key_ids` devient mort. Il n'est pas supprime tout de suite : tant
+que la derivation n'est pas verifiee en jeu, le chemin de repli reste.

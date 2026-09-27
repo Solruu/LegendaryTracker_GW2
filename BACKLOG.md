@@ -1502,34 +1502,33 @@ Rien n'est corrigé pour l'instant : arbitrer sans source, ou fusionner deux
 tables sans savoir laquelle fait foi, changerait tous les horaires affichés sur
 un coup de dé.
 
-## 12 ter. Vision affiche 3 100 kralkatite au lieu de 100 (27/09/2026)
+## 12 ter. Vision affichait 3 100 kralkatite — ✅ **RÉSOLU le 27/09/2026**
 
-Antoine a terminé les six armes Astral ; il ne lui reste que le don. L'onglet
-Vision affiche toujours **Kralkatite Ore requis 3 100**, alors que 3 000 de ces
-minerais servaient aux six armes (300 lingots × 10) et 100 seulement au Gift of
-Crystalline Magic.
+Antoine : collection terminée, synchro OK, étape marquée faite, et le total
+disait toujours 3 100. C'était donc bien notre bug.
 
-**Le mécanisme qui doit faire fondre ces 3 000 existe et est branché.** Une
-étape de collection portant `component` rend ce composant inutile une fois
-validée ; `vis_istan` bit 5 « Vision of Equipment: Astral Weapons » porte bien
-`component: astral_weapons` ; et depuis la v218 le `required` de la colonne par
-légendaire vient du moteur et non du nombre écrit à la main. Le commentaire du
-code décrit d'ailleurs exactement ce symptôme comme corrigé.
+**Cause : `_meta.collection_key_ids` est vide.** La synchro construisait les
+statuts de collection en parcourant cette table — donc elle ne construisait
+rien. Tout ce qui la lisait recevait un objet vide, et la règle « une étape
+validée satisfait son composant » ne pouvait rien satisfaire.
 
-**Donc le compte y est, ou la case ne l'est pas.** Deux cas, et un seul test
-pour les séparer : ouvrir la collection « Visions of Istan » dans l'onglet et
-regarder l'étape « Vision of Equipment: Astral Weapons ».
+Ce qui rendait le symptôme trompeur : l'onglet Collections affiche
+`_sub_status`, indexé par id de succès, tandis que le calcul lisait
+`_collections`, indexé par clé — **et vide**. L'étape s'affichait donc faite
+pendant que le moteur ne la voyait pas. Deux magasins pour un seul fait.
 
-- Elle s'affiche **faite** et le total dit toujours 3 100 → c'est notre bug, et
-  il est dans l'appariement entre l'étape et le composant, ou dans les clés de
-  `toutesCollections`. À reprendre côté code.
-- Elle s'affiche **non faite** → le moteur a raison : l'objectif du succès
-  n'est pas validé côté compte, même si les six armes sont fabriquées. Rien à
-  corriger dans le tracker ; c'est l'objectif de succès qu'il faut valider en
-  jeu.
+**Correction, JSX v229** : le lien clé → id est déjà dans les sources, sur
+chaque collection. On le dérive au lieu de le recopier — et pour TOUTES les
+cibles, pas seulement les trois qui avaient jadis un endpoint Flask dédié. Les
+deux indexations sont posées, par clé et par id, parce que `satisfaits` essaie
+l'une puis l'autre.
 
-Non tranché ici : ça demande de lire l'état du compte d'Antoine, que le dépôt
-ne contient pas.
+Portée : la règle s'applique désormais partout où une étape porte `component`.
+Orrax en porte 20, qui n'étaient jamais pris en compte non plus.
+
+`collection_key_ids` devient mort. À supprimer une fois la v229 vérifiée en
+jeu — pas avant, pour garder le chemin de repli si la dérivation se comporte
+autrement que prévu.
 
 ## 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
 
