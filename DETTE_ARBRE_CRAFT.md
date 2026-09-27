@@ -3191,3 +3191,48 @@ C'est la meme faute de lecture que partout cette semaine : une valeur absente
 lue comme une absence d'information. Une ancre manquante n'etait pas une absence
 de contenu (§ BB), une table vide n'etait pas un compte a jour (§ BN), et un
 total absent n'est pas un total inconnu.
+
+## BP — 27/09/2026 : le Flask portait la QUATRIÈME table de clés
+
+Question d'Antoine : le Flask a-t-il ete mis a jour, la v41 ne synchronise plus
+rien. **Non, il n'a pas ete touche** — et il portait sa propre liste
+cle -> id de succes, ecrite a la main, jamais rapprochee des sources.
+
+Quatre listes pour un seul fait :
+
+| ou | etat |
+|---|---|
+| `collections[*].id` dans les sources | fait foi |
+| `_meta.collection_key_ids` | **vide** (§ BN) |
+| table `metas`/collections du JSX | derivee depuis la v229 |
+| `*_ACHIEVEMENT_IDS` du Flask | ecrite a la main, derivee |
+
+La derive mesuree : **2 cles communes avec les sources pour Vision** (16 contre
+20), 2 pour Aurora (18 contre 6), **aucune pour Obsidian**. Le Flask nommait
+`vision_istan` ce que les sources appellent `vis_istan`. Rien ne pouvait
+s'apparier.
+
+### v42 : derivation, repli, et double indexation
+
+Les trois tables sont derivees des sources au demarrage. Elles ne sont pas
+supprimees : elles gardent ce que les sources n'ont pas — les Requiem
+Experiments, les Arcanum d'Obsidienne — et servent de repli si le fichier de
+sources est introuvable. En cas de conflit sur une cle, les sources gagnent.
+Vision passe de 16 a 34 cles.
+
+La reponse porte desormais chaque statut **sous sa cle ET sous `str(id)`**. Le
+consommateur cherche par cle puis par id : lui donner les deux evite qu'un
+renommage casse a nouveau l'appariement en silence. C'est la meme double
+indexation que la v229 pose cote synchro directe.
+
+Teste hors ligne — chargement des sources, derivation, double indexation —
+mais **pas en service** : il faut une cle API et le reseau GW2, que le conteneur
+n'a pas.
+
+### Ce qui reste a verifier avec Antoine
+
+Sur GitHub Pages, `127.0.0.1:5000` est injoignable : les trois `fetch` echouent
+et le code retombe sur `data._collections`, produit par la synchro directe.
+**Le Flask n'intervient pas depuis un telephone.** Si « ca ne synchronise sur
+rien » se voit aussi sur mobile, la cause est ailleurs que dans le Flask — et la
+v229 plus la v230 viennent de corriger deux causes de ce genre.

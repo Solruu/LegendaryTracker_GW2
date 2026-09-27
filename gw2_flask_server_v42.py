@@ -13,6 +13,7 @@ Usage :
 import argparse
 import json
 import os
+import re
 import sys
 import requests
 from flask import Flask, jsonify, request
@@ -207,6 +208,72 @@ OBSIDIAN_ACHIEVEMENT_IDS = {
     "quality_armor":     7802,   # That's Quality Armor (18 skins)
     "suffused_t2":       8064,   # Tier 2 Legendary Armor: Suffused Obsidian
 }
+
+
+# ── Les cles de collection viennent des sources, plus d'une table tenue a la main
+#
+# Ces trois tables etaient la QUATRIEME liste cle -> id de succes du projet, a
+# cote de `_meta.collection_key_ids` (vide), des `collections[*].id` des sources,
+# et de celle du JSX. Elles avaient derive au point de n'avoir plus que deux
+# cles communes avec les sources pour Vision, deux pour Aurora, AUCUNE pour
+# Obsidian -- d'ou une synchro qui ne reconnaissait plus rien.
+#
+# On les derive donc des sources, qui font foi. Les tables ci-dessus ne sont pas
+# supprimees : elles gardent ce que les sources n'ont pas (les Requiem
+# Experiments, les Arcanum d'Obsidienne), et servent de repli si le fichier de
+# sources est introuvable. En cas de conflit sur une cle, les sources gagnent.
+#
+# La reponse porte AUSSI chaque statut sous `str(id)`. Le consommateur cherche
+# par cle puis par id : lui donner les deux evite qu'un renommage de cle casse
+# a nouveau l'appariement, silencieusement.
+
+def _sources_les_plus_recentes():
+    ici = os.path.dirname(os.path.abspath(__file__))
+    fichiers = [f for f in os.listdir(ici)
+                if re.match(r"gw2_sources_v\d+\.json$", f)]
+    if not fichiers:
+        return None
+    dernier = max(fichiers, key=lambda f: int(re.search(r"_v(\d+)", f).group(1)))
+    try:
+        with open(os.path.join(ici, dernier), encoding="utf-8") as fh:
+            return json.load(fh)
+    except Exception as exc:  # pragma: no cover
+        app.logger.warning("sources illisibles (%s) : %s", dernier, exc)
+        return None
+
+
+def _cles_depuis_sources(cible, defaut):
+    """cle -> id de succes pour une cible, depuis les sources ; defaut en repli."""
+    data = _SOURCES_CACHE
+    if not data:
+        return dict(defaut)
+    cols = ((data.get("legendaries") or {}).get(cible) or {}).get("collections") or {}
+    fusion = dict(defaut)
+    for cle, col in cols.items():
+        if isinstance(col, dict) and isinstance(col.get("id"), int):
+            fusion[cle] = col["id"]
+    return fusion
+
+
+def _par_cle_et_par_id(table, ach_index):
+    """Statuts indexes par cle ET par id, pour que les deux appariements marchent."""
+    vide = {"done": False, "current": 0, "max": 0, "bits": []}
+    out = {}
+    for cle, ach_id in table.items():
+        e = ach_index.get(ach_id)
+        st = {
+            "done": bool(e.get("done", False)) if e else False,
+            "current": e.get("current", 0) if e else 0,
+            "max": e.get("max", 0) if e else 0,
+            "bits": e.get("bits", []) if e else [],
+        } if e else dict(vide)
+        out[cle] = st
+        out[str(ach_id)] = st
+    return out
+
+
+_SOURCES_CACHE = None
+_SOURCES_CACHE = _sources_les_plus_recentes()
 
 
 # ─── App Flask ────────────────────────────────────────────────────────────────
@@ -1548,17 +1615,7 @@ def aurora_achievements():
         ach_index[entry["id"]] = entry
 
     result = {}
-    for key, ach_id in AURORA_ACHIEVEMENT_IDS.items():
-        entry = ach_index.get(ach_id)
-        if entry:
-            result[key] = {
-                "done":    entry.get("done", False),
-                "current": entry.get("current", 0),
-                "max":     entry.get("max", 0),
-                "bits":    entry.get("bits", []),
-            }
-        else:
-            result[key] = {"done": False, "current": 0, "max": 0, "bits": []}
+    result = _par_cle_et_par_id(_cles_depuis_sources("aurora", AURORA_ACHIEVEMENT_IDS), ach_index)
 
     return jsonify(result)
 
@@ -1585,17 +1642,7 @@ def vision_achievements():
         ach_index[entry["id"]] = entry
 
     result = {}
-    for key, ach_id in VISION_ACHIEVEMENT_IDS.items():
-        entry = ach_index.get(ach_id)
-        if entry:
-            result[key] = {
-                "done":    entry.get("done", False),
-                "current": entry.get("current", 0),
-                "max":     entry.get("max", 0),
-                "bits":    entry.get("bits", []),
-            }
-        else:
-            result[key] = {"done": False, "current": 0, "max": 0, "bits": []}
+    result = _par_cle_et_par_id(_cles_depuis_sources("vision", VISION_ACHIEVEMENT_IDS), ach_index)
 
     return jsonify(result)
 
@@ -1622,17 +1669,7 @@ def obsidian_achievements():
         ach_index[entry["id"]] = entry
 
     result = {}
-    for key, ach_id in OBSIDIAN_ACHIEVEMENT_IDS.items():
-        entry = ach_index.get(ach_id)
-        if entry:
-            result[key] = {
-                "done":    entry.get("done", False),
-                "current": entry.get("current", 0),
-                "max":     entry.get("max", 0),
-                "bits":    entry.get("bits", []),
-            }
-        else:
-            result[key] = {"done": False, "current": 0, "max": 0, "bits": []}
+    result = _par_cle_et_par_id(_cles_depuis_sources("obsidian", OBSIDIAN_ACHIEVEMENT_IDS), ach_index)
 
     return jsonify(result)
 
