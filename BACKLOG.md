@@ -1464,6 +1464,31 @@ vingt qui ne soit pas un multiple de 5 — à vérifier en priorité.
 Les notes heures paires/impaires (`sp`, `nk`, `ew`, `de2`) sont, elles,
 cohérentes avec leurs offsets : 90 → 01:30, 0 → 00:00, 100 → 01:40, 60 → 01:00.
 
+### Pourquoi ces métas-là : la réponse est « elles donnent une gemme »
+
+Question d'Antoine : quelles métas ont été sélectionnées, et pourquoi.
+
+**Les 20 de `meta_events` portent toutes `rewards: ["amalgamated_gemstone"]`,
+et rien d'autre.** Le critère de sélection est donc explicite dans la donnée :
+ce sont les métas dont le Hero's Choice Chest rend une Gemme amalgamée. Sa
+lecture est confirmée.
+
+**La table du JSX, elle, ne porte AUCUN champ de récompense** — zéro occurrence
+de `rewards`. Et elle contient des métas qui ne donnent pas de gemme :
+`di` Palawadan (kralkatite), `lw4_istan`, `lw4_dragonfall`, `bf`, `eb`, `dm`,
+`ld`, `sl`. C'est ce qui a coûté une session à Antoine : il a fait Palawadan en
+attendant une gemme, et Palawadan donne de la kralkatite.
+
+Les deux tables ne mélangent donc pas seulement des horaires, elles mélangent
+deux CRITÈRES : l'une liste les métas à gemme, l'autre y ajoute les métas de
+ressource de carte, sans dire laquelle donne quoi.
+
+**Demande d'Antoine, à instruire avec la fusion** : chaque méta doit identifier
+la ressource qu'elle rend, et l'affichage doit pouvoir filtrer dessus — une
+méta dont la ressource n'est plus nécessaire disparaît de la liste. Le champ
+`rewards` existe déjà côté sources et doit devenir le seul, porté par la table
+unique. Il faudra le remplir pour les 15 entrées que le JSX ajoute.
+
 ### Ordre des travaux, quand les captures seront là
 
 1. capturer Event timers + les pages de méta concernées ;
@@ -1477,7 +1502,36 @@ Rien n'est corrigé pour l'instant : arbitrer sans source, ou fusionner deux
 tables sans savoir laquelle fait foi, changerait tous les horaires affichés sur
 un coup de dé.
 
-## 12 bis. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
+## 12 ter. Vision affiche 3 100 kralkatite au lieu de 100 (27/09/2026)
+
+Antoine a terminé les six armes Astral ; il ne lui reste que le don. L'onglet
+Vision affiche toujours **Kralkatite Ore requis 3 100**, alors que 3 000 de ces
+minerais servaient aux six armes (300 lingots × 10) et 100 seulement au Gift of
+Crystalline Magic.
+
+**Le mécanisme qui doit faire fondre ces 3 000 existe et est branché.** Une
+étape de collection portant `component` rend ce composant inutile une fois
+validée ; `vis_istan` bit 5 « Vision of Equipment: Astral Weapons » porte bien
+`component: astral_weapons` ; et depuis la v218 le `required` de la colonne par
+légendaire vient du moteur et non du nombre écrit à la main. Le commentaire du
+code décrit d'ailleurs exactement ce symptôme comme corrigé.
+
+**Donc le compte y est, ou la case ne l'est pas.** Deux cas, et un seul test
+pour les séparer : ouvrir la collection « Visions of Istan » dans l'onglet et
+regarder l'étape « Vision of Equipment: Astral Weapons ».
+
+- Elle s'affiche **faite** et le total dit toujours 3 100 → c'est notre bug, et
+  il est dans l'appariement entre l'étape et le composant, ou dans les clés de
+  `toutesCollections`. À reprendre côté code.
+- Elle s'affiche **non faite** → le moteur a raison : l'objectif du succès
+  n'est pas validé côté compte, même si les six armes sont fabriquées. Rien à
+  corriger dans le tracker ; c'est l'objectif de succès qu'il faut valider en
+  jeu.
+
+Non tranché ici : ça demande de lire l'état du compte d'Antoine, que le dépôt
+ne contient pas.
+
+## 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
 
 Deuxième point d'Antoine, non instruit : une question sur les sélections d'une
 liste, « faite il y a looongtemps ». Reste à savoir de quelle liste il s'agit et
