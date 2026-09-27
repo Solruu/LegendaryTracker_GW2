@@ -3166,3 +3166,28 @@ non plus n'etaient pas comptees.
 
 `collection_key_ids` devient mort. Il n'est pas supprime tout de suite : tant
 que la derivation n'est pas verifiee en jeu, le chemin de repli reste.
+
+## BO — 27/09/2026 : zéro est une réponse
+
+Suite de BN. Apres la v229, le kralkatite tombait bien de 3 100 a 100 — il lui
+restait les 100 du Gift of Crystalline Magic — mais **la poudre de quartz rose
+restait a 3 000**.
+
+Elle ne sert QU'aux armes Astral : 10 par lingot, 300 lingots. Les armes
+terminees, son total tombe a zero. Et un total a zero **disparait de la table**
+— il n'y a pas de cle a zero dans `totals`. La ligne
+`typeof n === "number" ? { ...c, required: n } : c` retombait donc sur le nombre
+ecrit a la main, et le 3 000 reprenait sa place.
+
+Le composant est pourtant CONNU : son apiId resout vers `powdered_rose_quartz`.
+Absent de la table veut dire zero, pas « inconnu ».
+
+La v230 distingue les deux cas la ou il le faut : `legTotals` vaut `null` quand
+le moteur n'a pas tourne, et une table quand il a tourne. Si le moteur a repondu
+et que le composant est identifie, `legTotals[cid] ?? 0` fait foi — zero
+compris. Sinon, et seulement sinon, le nombre ecrit a la main reste.
+
+C'est la meme faute de lecture que partout cette semaine : une valeur absente
+lue comme une absence d'information. Une ancre manquante n'etait pas une absence
+de contenu (§ BB), une table vide n'etait pas un compte a jour (§ BN), et un
+total absent n'est pas un total inconnu.

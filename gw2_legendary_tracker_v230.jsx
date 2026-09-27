@@ -5380,11 +5380,15 @@ export default function GW2LegendaryTracker() {
     () => ({ ...(allCollections ?? {}), ...(auroraCollections ?? {}), ...(visionCollections ?? {}) }),
     [allCollections, auroraCollections, visionCollections]);
 
+  // `null` quand le moteur n'a pas tourne, `{}` quand il a tourne et n'a rien
+  // trouve. La distinction compte : un total tombe a zero DISPARAIT de la table
+  // (il n'y a pas de cle a zero), et sans elle on ne peut pas faire la
+  // difference entre « le moteur dit zero » et « le moteur n'a pas repondu ».
   const legTotals = React.useMemo(() => {
     const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
-    if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return {};
-    try { return computeGrandTotal([cible], toutesCollections)?.totals ?? {}; }
-    catch (_) { return {}; }
+    if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return null;
+    try { return computeGrandTotal([cible], toutesCollections)?.totals ?? null; }
+    catch (_) { return null; }
   }, [selectedLeg, toutesCollections]);
 
   const wpnCurrencies = React.useMemo(() => {
@@ -5415,9 +5419,15 @@ export default function GW2LegendaryTracker() {
           // Les deux valeurs etaient deja prouvees egales a collections
           // vierges — c'est ce que `check_qty_vs_jsx` verifie a chaque audit.
           // Le nombre ecrit a la main ne servait donc qu'a figer un etat.
+          // Zero est une reponse. Les six armes Astral terminees, le
+          // kralkatite tombait bien de 3 100 a 100 — il lui restait les 100 du
+          // Gift of Crystalline Magic — mais la poudre de quartz rose, qui ne
+          // sert QU'aux armes, tombait a zero, disparaissait de `totals`, et le
+          // 3 000 ecrit a la main reprenait sa place. Le composant est connu :
+          // absent de la table veut dire zero, pas « inconnu ».
           const cid = compByApi.get(c.apiId);
-          const n = cid ? legTotals[cid] : undefined;
-          return typeof n === "number" ? { ...c, required: Math.round(n) } : c;
+          if (!legTotals || !cid) return c;
+          return { ...c, required: Math.round(legTotals[cid] ?? 0) };
         })));
   // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
   // que tant que l'étape correspondante n'est pas validée (v107).
@@ -7632,7 +7642,7 @@ export default function GW2LegendaryTracker() {
             </div>
           ))}
           <AchatsUniques
-            totals={legTotals} NX={NX}
+            totals={legTotals ?? {}} NX={NX}
             acquises={feuillesAcquises} setAcquises={setFeuillesAcquises}
             recettesCompte={recettesCompte} recetteParDon={recetteParDon}
             commander={commander} />
