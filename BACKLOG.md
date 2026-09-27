@@ -1410,7 +1410,30 @@ Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
 d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
 retroactif des etapes validees (sections Y et AB).
 
-### 1. Captures manquantes — 38 URLs dans `PAGES_A_CAPTURER.md`
+## 4. Activités par légendaire — OUVERT, en attente de précisions (27/09/2026)
+
+Sujet ouvert par Antoine le 27/09. Deux points, notés tels qu'il les a énoncés :
+
+1. **Un décalage de tiers.** Constaté, non localisé ici. Reste à savoir de quel
+   tiers il s'agit — tiers de matériau (fin/rare/exotique…), palier d'un
+   succès à tiers, ou position dans la cascade — et où il se voit : un écran,
+   un total, une ligne de collection.
+2. **Une question sur les sélections de la liste**, faite il y a longtemps.
+   Quelles sélections, dans quelle liste, et ce qui les avait décidées à
+   l'époque : c'est ce qu'il faudra retrouver avant de toucher à quoi que ce
+   soit.
+
+**Rien n'est instruit et rien ne doit l'être à l'aveugle.** Les deux constats
+viennent de l'usage en jeu, qu'aucun outil du dépôt ne reproduit : deviner ce
+qu'ils désignent reviendrait à corriger un symptôme choisi au hasard. La
+première action est de faire préciser, pas de chercher.
+
+Une fois précisé, l'entrée dira ce que « activités par légendaire » recouvre :
+vraisemblablement la vue qui associe à chaque légendaire les activités de jeu
+qu'elle impose (métas, fractales, raids, WvW, PvP, cuisine…), mais cette
+lecture est une hypothèse, pas un compte rendu.
+
+### 1. Captures manquantes — 19 URLs dans `PAGES_A_CAPTURER.md`
 
 **Le chiffre a explosé le 25/09, et c'est une bonne nouvelle** : la complétion
 de l'arbre a créé les 124 composants que les recettes réclamaient sans qu'ils

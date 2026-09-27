@@ -1082,6 +1082,44 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `unidentified_dye.html` | Unidentified Dye | article complet | 2026-09-27 |
 | `venom_weapon.html` | Venom (weapon) | article complet | 2026-09-27 |
 | `zap.html` | Zap | article complet | 2026-09-27 |
+| `azurite_orb.html` | Azurite Orb | article complet | 2026-09-27 |
+| `ball_of_dough.html` | Ball of Dough | article complet | 2026-09-27 |
+| `beryl_crystal.html` | Beryl Crystal | article complet | 2026-09-27 |
+| `bowl_of_fancy_tangy_sautee_mix.html` | Bowl of Fancy Tangy Sautee Mix | article complet | 2026-09-27 |
+| `cayenne_pepper.html` | Cayenne Pepper | article complet | 2026-09-27 |
+| `charged_fossil.html` | Charged Fossil | article complet | 2026-09-27 |
+| `charged_thorn.html` | Charged Thorn | article complet | 2026-09-27 |
+| `charm_ingredient.html` | Charm (ingredient) | article complet | 2026-09-27 |
+| `chrysocola_shard.html` | Chrysocola Shard | article complet | 2026-09-27 |
+| `deldrimor_steel_dagger_hilt.html` | Deldrimor Steel Dagger Hilt | article complet | 2026-09-27 |
+| `deldrimor_steel_greatsword_hilt.html` | Deldrimor Steel Greatsword Hilt | article complet | 2026-09-27 |
+| `deldrimor_steel_shield_backing.html` | Deldrimor Steel Shield Backing | article complet | 2026-09-27 |
+| `deldrimor_steel_sword_hilt.html` | Deldrimor Steel Sword Hilt | article complet | 2026-09-27 |
+| `deldrimor_steel_warhorn_mouthpiece.html` | Deldrimor Steel Warhorn Mouthpiece | article complet | 2026-09-27 |
+| `elonian_string.html` | Elonian String | article complet | 2026-09-27 |
+| `emerald_crystal.html` | Emerald Crystal | article complet | 2026-09-27 |
+| `exquisite_passion_flower.html` | Exquisite Passion Flower | article complet | 2026-09-27 |
+| `eye_of_kormir.html` | Eye of Kormir | article complet | 2026-09-27 |
+| `giant_eye.html` | Giant Eye | article complet | 2026-09-27 |
+| `grilled_mushroom.html` | Grilled Mushroom | article complet | 2026-09-27 |
+| `grilled_portobello_mushroom.html` | Grilled Portobello Mushroom | article complet | 2026-09-27 |
+| `handful_of_red_lentils.html` | Handful of Red Lentils | article complet | 2026-09-27 |
+| `honey_flower.html` | Honey Flower | article complet | 2026-09-27 |
+| `jar_of_vegetable_oil.html` | Jar of Vegetable Oil | article complet | 2026-09-27 |
+| `lowland_pine_log.html` | Lowland Pine Log | article complet | 2026-09-27 |
+| `pile_of_putrid_essence.html` | Pile of Putrid Essence | article complet | 2026-09-27 |
+| `pile_of_zesty_herbs.html` | Pile of Zesty Herbs | article complet | 2026-09-27 |
+| `ruby_crystal.html` | Ruby Crystal | article complet | 2026-09-27 |
+| `slab_of_poultry_meat.html` | Slab of Poultry Meat | article complet | 2026-09-27 |
+| `slab_of_red_meat.html` | Slab of Red Meat | article complet | 2026-09-27 |
+| `small_spiritwood_haft.html` | Small Spiritwood Haft | article complet | 2026-09-27 |
+| `snow_truffle.html` | Snow Truffle | article complet | 2026-09-27 |
+| `spiritwood_rifle_stock.html` | Spiritwood Rifle Stock | article complet | 2026-09-27 |
+| `spiritwood_scepter_rod.html` | Spiritwood Scepter Rod | article complet | 2026-09-27 |
+| `spiritwood_torch_handle.html` | Spiritwood Torch Handle | article complet | 2026-09-27 |
+| `stick_of_butter.html` | Stick of Butter | article complet | 2026-09-27 |
+| `symbol_ingredient.html` | Symbol (ingredient) | article complet | 2026-09-27 |
+| `visionary_inscription.html` | Visionary Inscription | article complet | 2026-09-27 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

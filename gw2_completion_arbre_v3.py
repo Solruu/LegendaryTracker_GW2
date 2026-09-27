@@ -24,7 +24,7 @@ source `unknown` qui dit ou sa quantite a ete lue et que sa page manque. Il
 part alors en file de capture par le mecanisme normal, et sa decomposition
 suivra.
 
-Usage : python3 gw2_completion_arbre_v2.py [--ecrire]
+Usage : python3 gw2_completion_arbre_v3.py [--ecrire]
 Sans --ecrire, le script mesure et ne touche a rien.
 """
 import argparse
@@ -71,6 +71,8 @@ def lisible(titre):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ecrire", action="store_true")
+    ap.add_argument("--apiids", action="store_true",
+                    help="reporter dans les sources les apiId que les captures annoncent")
     ap.add_argument("--relier", action="store_true",
                     help="decomposer les composants poses par une passe precedente, "
                          "maintenant que leur capture est au depot")
@@ -201,6 +203,41 @@ def main():
     resolveur = _rel.Resolveur(cc, json.loads(
         (HERE / "ressources" / "INDEX_CONTENU.json").read_text(encoding="utf-8")),
         legs, json.loads((HERE / "gw2_materials_ref.json").read_text(encoding="utf-8")))
+
+    # Chaque lot de captures laissait le meme reste : des avertissements « la
+    # capture annonce API xxx, le composant n'en a pas ». C'etait 105 apres le
+    # lot du 25/09, 16 apres celui du 27 — un report a la main a chaque fois,
+    # donc une occasion de se tromper a chaque fois. Il se fait ici.
+    #
+    # La garde est la meme que pour la creation : un apiId deja porte par un
+    # autre composant n'est pas repose, il est signale. Deux entrees pour un
+    # objet, c'est son cout compte deux fois.
+    poses_api, conflits_api = 0, []
+    if args.apiids:
+        par_page_a = {e["page"]: e for e in json.loads(
+            (HERE / "ressources" / "INDEX_CONTENU.json").read_text(encoding="utf-8"))}
+        deja = {c["apiId"]: cid for cid, c in cc.items() if isinstance(c.get("apiId"), int)}
+        for cid, c in list(cc.items()):
+            if isinstance(c.get("apiId"), int):
+                continue
+            page = par_page_a.get(cid)
+            if not page or not isinstance(page.get("api_id"), int):
+                continue
+            aid = page["api_id"]
+            if aid in deja:
+                conflits_api.append((cid, aid, deja[aid]))
+                continue
+            neuf = OrderedDict()
+            for k, v in c.items():
+                neuf[k] = v
+                if k == "name":
+                    neuf["apiId"] = aid
+            cc[cid] = neuf
+            deja[aid] = cid
+            poses_api += 1
+        print(f"apiId poses {poses_api} | conflits {len(conflits_api)}")
+        for cid, aid, autre in conflits_api:
+            print(f"   CONFLIT : {cid} voudrait l'apiId {aid}, deja porte par {autre}")
 
     relies = aretes_relies = 0
     if args.relier:

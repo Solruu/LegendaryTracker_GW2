@@ -4100,6 +4100,62 @@
   "aretes_table": []
  },
  {
+  "page": "azurite_orb",
+  "titre": "Azurite Orb",
+  "api_id": 42010,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Azurite_Crystal",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Azurite Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "ball_of_dough",
+  "titre": "Ball of Dough",
+  "api_id": 12166,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "0",
+    "ingredients": [
+     [
+      "Bag_of_Flour",
+      1
+     ],
+     [
+      "Stick_of_Butter",
+      1
+     ],
+     [
+      "Jug_of_Water",
+      1
+     ]
+    ],
+    "produit": "Ball of Dough"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "banner_of_the_commander",
   "titre": "Banner of the Commander",
   "api_id": 88057,
@@ -4191,6 +4247,32 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "beryl_crystal",
+  "titre": "Beryl Crystal",
+  "api_id": 24519,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "275",
+    "ingredients": [
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Beryl_Shard",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Beryl Crystal"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -4903,6 +4985,40 @@
   "aretes_table": []
  },
  {
+  "page": "bowl_of_fancy_tangy_sautee_mix",
+  "titre": "Bowl of Fancy Tangy Sautee Mix",
+  "api_id": 12528,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "275",
+    "ingredients": [
+     [
+      "Onion",
+      1
+     ],
+     [
+      "Jar_of_Vegetable_Oil",
+      1
+     ],
+     [
+      "Head_of_Garlic",
+      1
+     ],
+     [
+      "Shallot",
+      1
+     ]
+    ],
+    "produit": "Bowl of Fancy Tangy Sautee Mix"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bowl_of_passion_fruit_tapioca_pudding",
   "titre": "Bowl of Passion Fruit Tapioca Pudding",
   "api_id": 71826,
@@ -5208,6 +5324,15 @@
   "aretes_table": []
  },
  {
+  "page": "cayenne_pepper",
+  "titre": "Cayenne Pepper",
+  "api_id": 12504,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "certificate_of_heroics",
   "titre": "Certificate of Heroics",
   "api_id": 84099,
@@ -5349,6 +5474,32 @@
   "aretes_table": []
  },
  {
+  "page": "charged_fossil",
+  "titre": "Charged Fossil",
+  "api_id": 70851,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler Weaponsmith Armorsmith Artificer Tailor Huntsman Leatherworker",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Leaf_Fossil",
+      50
+     ],
+     [
+      "Charged_Quartz_Crystal",
+      1
+     ]
+    ],
+    "produit": "Charged Fossil"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "charged_lodestone",
   "titre": "Charged Lodestone",
   "api_id": 24305,
@@ -5407,6 +5558,32 @@
   "aretes_table": []
  },
  {
+  "page": "charged_thorn",
+  "titre": "Charged Thorn",
+  "api_id": 75322,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler Weaponsmith Armorsmith Artificer Tailor Huntsman Leatherworker",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Barbed_Thorn",
+      50
+     ],
+     [
+      "Charged_Quartz_Crystal",
+      1
+     ]
+    ],
+    "produit": "Charged Thorn"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "charged_titan_ore",
   "titre": "Charged Titan Ore",
   "api_id": 103279,
@@ -5442,6 +5619,28 @@
     "qty": 1
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "charm_ingredient",
+  "titre": "Charm (ingredient)",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Philosopher%27s_Stone",
+      1
+     ]
+    ],
+    "produit": "Charm (ingredient)"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -5647,6 +5846,32 @@
      ]
     ],
     "produit": "Transmogrify Chrysocola Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "chrysocola_shard",
+  "titre": "Chrysocola Shard",
+  "api_id": 24870,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "200",
+    "ingredients": [
+     [
+      "Pile_of_Radiant_Dust",
+      1
+     ],
+     [
+      "Amethyst_Lump",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Chrysocola Shard"
    }
   ],
   "couts_vendeur": [],
@@ -7318,6 +7543,36 @@
   "aretes_table": []
  },
  {
+  "page": "deldrimor_steel_dagger_hilt",
+  "titre": "Deldrimor Steel Dagger Hilt",
+  "api_id": 45854,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Deldrimor_Steel_Ingot",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Deldrimor Steel Dagger Hilt"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "deldrimor_steel_greatsword_blade",
   "titre": "Deldrimor Steel Greatsword Blade",
   "api_id": 45847,
@@ -7342,6 +7597,36 @@
      ]
     ],
     "produit": "Deldrimor Steel Greatsword Blade"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "deldrimor_steel_greatsword_hilt",
+  "titre": "Deldrimor Steel Greatsword Hilt",
+  "api_id": 45855,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Deldrimor_Steel_Ingot",
+      3
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Deldrimor Steel Greatsword Hilt"
    }
   ],
   "couts_vendeur": [],
@@ -7557,6 +7842,36 @@
   "aretes_table": []
  },
  {
+  "page": "deldrimor_steel_shield_backing",
+  "titre": "Deldrimor Steel Shield Backing",
+  "api_id": 45857,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Deldrimor_Steel_Ingot",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Deldrimor Steel Shield Backing"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "deldrimor_steel_shield_boss",
   "titre": "Deldrimor Steel Shield Boss",
   "api_id": 45858,
@@ -7664,6 +7979,36 @@
   "aretes_table": []
  },
  {
+  "page": "deldrimor_steel_sword_hilt",
+  "titre": "Deldrimor Steel Sword Hilt",
+  "api_id": 45856,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Deldrimor_Steel_Ingot",
+      3
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Deldrimor Steel Sword Hilt"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "deldrimor_steel_torch_head",
   "titre": "Deldrimor Steel Torch Head",
   "api_id": 45838,
@@ -7688,6 +8033,36 @@
      ]
     ],
     "produit": "Deldrimor Steel Torch Head"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "deldrimor_steel_warhorn_mouthpiece",
+  "titre": "Deldrimor Steel Warhorn Mouthpiece",
+  "api_id": 45840,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Deldrimor_Steel_Ingot",
+      1
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Deldrimor Steel Warhorn Mouthpiece"
    }
   ],
   "couts_vendeur": [],
@@ -8825,6 +9200,36 @@
   "aretes_table": []
  },
  {
+  "page": "elonian_string",
+  "titre": "Elonian String",
+  "api_id": 45844,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Elonian_Leather_Square",
+      3
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Elonian String"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "emblem_of_the_avenger",
   "titre": "Emblem of the Avenger",
   "api_id": 93075,
@@ -8839,6 +9244,32 @@
   "api_id": 93146,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "emerald_crystal",
+  "titre": "Emerald Crystal",
+  "api_id": 24473,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "275",
+    "ingredients": [
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Emerald_Shard",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Emerald Crystal"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -10166,9 +10597,48 @@
   ]
  },
  {
+  "page": "exquisite_passion_flower",
+  "titre": "Exquisite Passion Flower",
+  "api_id": 37906,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Orichalcum_Filigree",
+      1
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      1
+     ],
+     [
+      "Passion_Flower",
+      15
+     ]
+    ],
+    "produit": "Exquisite Passion Flower"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "exquisite_serpentite_jewel",
   "titre": "Exquisite Serpentite Jewel",
   "api_id": 89696,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "eye_of_kormir",
+  "titre": "Eye of Kormir",
+  "api_id": 83103,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -11119,6 +11589,15 @@
   "page": "ghost_pepper",
   "titre": "Ghost Pepper",
   "api_id": 12544,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "giant_eye",
+  "titre": "Giant Eye",
+  "api_id": 24370,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -18239,9 +18718,78 @@
   "aretes_table": []
  },
  {
+  "page": "grilled_mushroom",
+  "titre": "Grilled Mushroom",
+  "api_id": 12279,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "0",
+    "ingredients": [
+     [
+      "Mushroom",
+      3
+     ],
+     [
+      "Packet_of_Salt",
+      1
+     ],
+     [
+      "Jar_of_Vegetable_Oil",
+      1
+     ]
+    ],
+    "produit": "Grilled Mushroom"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "grilled_portobello_mushroom",
+  "titre": "Grilled Portobello Mushroom",
+  "api_id": 12283,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "150",
+    "ingredients": [
+     [
+      "Jar_of_Vegetable_Oil",
+      1
+     ],
+     [
+      "Pile_of_Salt_and_Pepper",
+      1
+     ],
+     [
+      "Portobello_Mushroom",
+      1
+     ]
+    ],
+    "produit": "Grilled Portobello Mushroom"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "gummo_sapling",
   "titre": "Gummo Sapling",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "handful_of_red_lentils",
+  "titre": "Handful of Red Lentils",
+  "api_id": 82866,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -18420,6 +18968,32 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "honey_flower",
+  "titre": "Honey Flower",
+  "api_id": 102558,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Curious_Mursaat_Remnants",
+    "qty": 12
+   },
+   {
+    "objet": "Curious_Mursaat_Ruin_Shard",
+    "qty": 8
+   },
+   {
+    "objet": "Janthir_Syntri:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Janthiri_Renown_Chest",
+    "qty": 1
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -19296,6 +19870,15 @@
     "qty": 1000
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "jar_of_vegetable_oil",
+  "titre": "Jar of Vegetable Oil",
+  "api_id": 12158,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -21582,6 +22165,32 @@
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "lowland_pine_log",
+  "titre": "Lowland Pine Log",
+  "api_id": 102503,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Curious_Mursaat_Remnants",
+    "qty": 12
+   },
+   {
+    "objet": "Curious_Mursaat_Ruin_Shard",
+    "qty": 8
+   },
+   {
+    "objet": "Janthir_Syntri:_Commander%27s_Choice_Chest",
+    "qty": 1
+   },
+   {
+    "objet": "Janthiri_Renown_Chest",
+    "qty": 1
+   }
+  ],
   "aretes_table": []
  },
  {
@@ -24619,6 +25228,64 @@
   "aretes_table": []
  },
  {
+  "page": "pile_of_putrid_essence",
+  "titre": "Pile of Putrid Essence",
+  "api_id": 24335,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Vile_Essence",
+      2
+     ],
+     [
+      "Bottle_of_Elonian_Wine",
+      1
+     ],
+     [
+      "Pile_of_Crystalline_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Pile of Putrid Essence"
+   },
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Vile_Essence",
+      2
+     ],
+     [
+      "Mystic_Binding_Agent",
+      1
+     ],
+     [
+      "Pile_of_Crystalline_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Pile of Putrid Essence"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "pile_of_radiant_dust",
   "titre": "Pile of Radiant Dust",
   "api_id": 24274,
@@ -24688,6 +25355,40 @@
     "qty": 250
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "pile_of_zesty_herbs",
+  "titre": "Pile of Zesty Herbs",
+  "api_id": 41572,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Head_of_Garlic",
+      5
+     ],
+     [
+      "Pile_of_Ascalonian_Herbs",
+      1
+     ],
+     [
+      "Cayenne_Pepper",
+      1
+     ],
+     [
+      "Saffron_Thread",
+      5
+     ]
+    ],
+    "produit": "Pile of Zesty Herbs"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -27011,6 +27712,32 @@
   "aretes_table": []
  },
  {
+  "page": "ruby_crystal",
+  "titre": "Ruby Crystal",
+  "api_id": 24474,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "275",
+    "ingredients": [
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Ruby_Shard",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Ruby Crystal"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "ruby_orb",
   "titre": "Ruby Orb",
   "api_id": 24508,
@@ -28783,6 +29510,54 @@
   "aretes_table": []
  },
  {
+  "page": "slab_of_poultry_meat",
+  "titre": "Slab of Poultry Meat",
+  "api_id": 24360,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "slab_of_red_meat",
+  "titre": "Slab of Red Meat",
+  "api_id": 24359,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "small_spiritwood_haft",
+  "titre": "Small Spiritwood Haft",
+  "api_id": 45850,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Spiritwood_Plank",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Small Spiritwood Haft"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "smooth_scale",
   "titre": "Smooth Scale",
   "api_id": 24287,
@@ -28816,6 +29591,15 @@
   "page": "snow_cherry_sapling",
   "titre": "Snow Cherry Sapling",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "snow_truffle",
+  "titre": "Snow Truffle",
+  "api_id": 12144,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -29279,6 +30063,36 @@
   "aretes_table": []
  },
  {
+  "page": "spiritwood_rifle_stock",
+  "titre": "Spiritwood Rifle Stock",
+  "api_id": 45843,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Spiritwood_Plank",
+      3
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Spiritwood Rifle Stock"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "spiritwood_scepter_core",
   "titre": "Spiritwood Scepter Core",
   "api_id": 45885,
@@ -29303,6 +30117,36 @@
      ]
     ],
     "produit": "Spiritwood Scepter Core"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spiritwood_scepter_rod",
+  "titre": "Spiritwood Scepter Rod",
+  "api_id": 45886,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Spiritwood_Plank",
+      3
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Spiritwood Scepter Rod"
    }
   ],
   "couts_vendeur": [],
@@ -29363,6 +30207,36 @@
      ]
     ],
     "produit": "Spiritwood Staff Head"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "spiritwood_torch_handle",
+  "titre": "Spiritwood Torch Handle",
+  "api_id": 45836,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Pile_of_Crystalline_Dust",
+      5
+     ],
+     [
+      "Spiritwood_Plank",
+      2
+     ],
+     [
+      "Thermocatalytic_Reagent",
+      50
+     ]
+    ],
+    "produit": "Spiritwood Torch Handle"
    }
   ],
   "couts_vendeur": [],
@@ -29670,6 +30544,15 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "stick_of_butter",
+  "titre": "Stick of Butter",
+  "api_id": 12138,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
  },
  {
   "page": "storm",
@@ -30664,6 +31547,15 @@
     "qty": 6
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "symbol_ingredient",
+  "titre": "Symbol (ingredient)",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -36545,6 +37437,32 @@
   "api_id": 91082,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "visionary_inscription",
+  "titre": "Visionary Inscription",
+  "api_id": 80503,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Weaponsmith Huntsman",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Legendary_Inscription",
+      1
+     ],
+     [
+      "Vision_Crystal",
+      1
+     ]
+    ],
+    "produit": "Visionary Inscription"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },

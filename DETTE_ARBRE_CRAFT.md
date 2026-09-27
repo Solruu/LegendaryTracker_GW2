@@ -3031,3 +3031,45 @@ chaines de cuisine (Nopal, Avocado, Bowl of Ascalonian Salad…) sont profondes.
 **Jusqu'ou descendre est une decision de modelisation, pas une question de
 donnees** — les couts du palier courant sont complets et remontent des
 maintenant.
+
+## BL — 27/09/2026 : le lot des 38, et le report des apiId enfin automatise
+
+### Le seul reste systematique de chaque lot
+
+Chaque livraison laissait la meme trainee : des avertissements « la capture
+annonce API xxx, le composant n'en a pas ». 105 apres le lot des 126, 16 apres
+celui des 38. Un report a la main a chaque fois, donc une occasion de se
+tromper a chaque fois.
+
+`gw2_completion_arbre_v3.py --apiids` le fait, avec la meme garde que la
+creation : un apiId deja porte par un autre composant n'est pas repose, il est
+signale. Deux entrees pour un objet, c'est son cout compte deux fois — c'est
+comme ca que `Piles of Bloodstone Dust` avait failli passer. **16 poses, zero
+conflit**, audit 84 -> 68.
+
+La chaine se lance maintenant d'un trait :
+`--apiids --relier --ecrire`, puis une seconde passe pour creer le palier
+decouvert.
+
+### Ce que le lot a ouvert
+
+24 composants decomposes, 47 aretes : les plats du festin d'Orrax descendent
+maintenant vers leurs bases (Bowl of Ascalonian Salad, Jar of Red Curry Paste,
+Ball of Dough, Slab of Poultry Meat…).
+
+19 nouveaux composants poses dans la foulee, dont **16 identifies par le
+referentiel des materiaux** — ce qui dit ou on en est : Onion, Mushroom, Head
+of Garlic, Bag of Flour, Packet of Salt, Shallot, Saffron Thread. **On touche
+le fond de la chaine de cuisine** : ce sont les ingredients bruts, achetes au
+marchand ou recoltes.
+
+### Ou en est l'arbre
+
+762 -> **781 composants**. MANQUANT **0**. PALIER_SUIVANT 243 -> **240**, et il
+baisse pour la premiere fois : chaque palier pose en resout plus qu'il n'en
+ouvre, desormais. File : **19 pages**, toutes des matieres premieres.
+
+Rappel de ce qui justifie cette branche : Orrax Manifested reclame un Gift of
+the Feast, soit quatre dons de service, soit **1 252 plats**. C'est le plus gros
+bloc de craft d'une legendaire du depot, et sans decomposition ces 1 252 plats
+etaient des objets sans cout.

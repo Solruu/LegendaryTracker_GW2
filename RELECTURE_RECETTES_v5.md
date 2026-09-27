@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v331.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v333.json` — généré par `gw2_relecture_recettes_v4.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,8 +15,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 3 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 11 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 13 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 243 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 113 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 240 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 115 |
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -62,11 +62,11 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_mistburned_isles` | `vial_of_titan_melted_obsidian` | 150 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
 | `gift_of_the_rider` | `trade_contract` | 300 | `gift_of_the_rider` | direct | `coalescence` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 243
+## Ingrédients absents, cités par la recette d'une feuille — 240
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
-| `obsidian_shard` | `Mini_Risen_Priest_of_Balthazar` |  | `obsidian_shard` | sous une feuille | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+58) |
+| `obsidian_shard` | `Mini_Risen_Priest_of_Balthazar` |  | `obsidian_shard` | sous une feuille | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+69) |
 | `bone` | `Bone_Shard` |  | `bone` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `claw` | `Small_Claw` |  | `claw` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `fang` | `Small_Fang` |  | `fang` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
@@ -79,36 +79,32 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `darksteel_ingot` | `Platinum_Ore` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
 | `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `gen1_bolt`, `gen1_frenzy`, `gen1_frostfang` … (+24) |
-| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
-| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+21) |
+| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+21) |
 | `steel_ingot` | `Iron_Ore` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `steel_ingot` | `Lump_of_Coal` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `Iron_Ore` |  | `iron_ingot` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
 | `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
-| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_pharus`, `gen2_sharur` … (+9) |
+| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+12) |
 | `hardened_leather_section` | `Thick_Leather_Section` |  | `hardened_leather_section` | sous une feuille | `gen1_howler`, `gen1_kraitkin`, `gen1_kudzu` … (+5) |
-| `onyx_lodestone` | `Mystic_Crystal` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `onyx_lodestone` | `Onyx_Core` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `charged_lodestone` | `Charged_Core` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
-| `charged_lodestone` | `Mystic_Crystal` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
 | `destroyer_lodestone` | `Destroyer_Core` |  | `destroyer_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
-| `destroyer_lodestone` | `Mystic_Crystal` |  | `destroyer_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
 | `gift_of_maguuma` | `Gift_of_Tarir` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Chak` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Fleet` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Jungle` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `molten_lodestone` | `Molten_Core` |  | `molten_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
-| `molten_lodestone` | `Mystic_Crystal` |  | `molten_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
 | `corrupted_lodestone` | `Corrupted_Core` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
-| `corrupted_lodestone` | `Mystic_Crystal` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
 | `crystal_lodestone` | `Crystal_Core` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
-| `crystal_lodestone` | `Mystic_Crystal` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
+| `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_pharus`, `stella_radians` |
 | `opal_orb` | `Opal_Crystal` |  | `opal_orb` | sous une feuille | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
 | `bolt_of_silk` | `Silk_Scrap` |  | `bolt_of_silk` | sous une feuille | `ad_infinitum`, `stella_radians` |
-| `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `stella_radians` |
+| `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_pharus` |
+| `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum`, `gen2_pharus` |
+| `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum`, `gen2_pharus` |
 | `glacial_lodestone` | `Glacial_Core` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
-| `glacial_lodestone` | `Mystic_Crystal` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
 | `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `aurora`, `vision` |
 | `silver_ingot` | `Silver_Ore` |  | `silver_ingot` | sous une feuille | `aurora`, `vision` |
 | `ancient_wood_log` | `Elder_Wood_Log` |  | `ancient_wood_log` | sous une feuille | `vision` |
@@ -137,9 +133,10 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `chaos_gun` | `Essence_of_Mischief` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Ornate_Pistol_Frame` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Spirit_of_the_Perfected_Pistol` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
-| `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum` |
-| `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum` |
-| `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum` |
+| `charged_fossil` | `Charged_Quartz_Crystal` |  | `charged_fossil` | sous une feuille | `gen1_howler` |
+| `charged_fossil` | `Leaf_Fossil` |  | `charged_fossil` | sous une feuille | `gen1_howler` |
+| `charged_thorn` | `Barbed_Thorn` |  | `charged_thorn` | sous une feuille | `gen1_twilight` |
+| `charged_thorn` | `Charged_Quartz_Crystal` |  | `charged_thorn` | sous une feuille | `gen1_twilight` |
 | `dawn` | `Dimensional_Destabilizer` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Essence_of_Illumination` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Mirror_(item)` |  | `dawn` | sous une feuille | `gen1_sunrise` |
@@ -310,12 +307,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 113
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 115
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `mystic_clover` | `4 ingrédients` |  | `mystic_clover` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+73) |
-| `obsidian_shard` | `3 ingrédients` |  | `obsidian_shard` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+58) |
+| `obsidian_shard` | `3 ingrédients` |  | `obsidian_shard` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+69) |
 | `large_bone` | `3 ingrédients` |  | `large_bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
 | `large_claw` | `3 ingrédients` |  | `large_claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
 | `large_scale` | `3 ingrédients` |  | `large_scale` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
@@ -341,15 +338,15 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
 | `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frenzy`, `gen1_frostfang` … (+24) |
-| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
-| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+20) |
+| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+21) |
+| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+21) |
 | `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
 | `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
 | `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
 | `ancient_wood_plank` | `1 ingrédients` |  | `ancient_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+12) |
-| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_pharus`, `gen2_sharur` … (+9) |
+| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+12) |
 | `hardened_leather_section` | `3 ingrédients` |  | `hardened_leather_section` | feuille assumée | `gen1_howler`, `gen1_kraitkin`, `gen1_kudzu` … (+5) |
 | `onyx_lodestone` | `4 ingrédients` |  | `onyx_lodestone` | feuille assumée | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `charged_lodestone` | `4 ingrédients` |  | `charged_lodestone` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
@@ -358,9 +355,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `molten_lodestone` | `4 ingrédients` |  | `molten_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
 | `corrupted_lodestone` | `4 ingrédients` |  | `corrupted_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
 | `crystal_lodestone` | `4 ingrédients` |  | `crystal_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
+| `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `gen2_pharus`, `stella_radians` |
 | `opal_orb` | `2 ingrédients` |  | `opal_orb` | feuille assumée | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
 | `bolt_of_silk` | `1 ingrédients` |  | `bolt_of_silk` | feuille assumée | `ad_infinitum`, `stella_radians` |
-| `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `stella_radians` |
+| `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum`, `gen2_pharus` |
+| `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum`, `gen2_pharus` |
+| `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum`, `gen2_pharus` |
 | `glacial_lodestone` | `4 ingrédients` |  | `glacial_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_frostfang` |
 | `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `aurora`, `vision` |
 | `jar_of_distilled_glory` | `1 ingrédients` |  | `jar_of_distilled_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
@@ -378,9 +378,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bowl_of_prickly_pear_sorbet` | `4 ingrédients` |  | `bowl_of_prickly_pear_sorbet` | feuille assumée | `orrax_manifested` |
 | `carcharias` | `4 ingrédients` |  | `carcharias` | feuille assumée | `gen1_kamohoalii_kotaki` |
 | `chaos_gun` | `4 ingrédients` |  | `chaos_gun` | feuille assumée | `gen1_quip` |
-| `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum` |
-| `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum` |
-| `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum` |
+| `charged_fossil` | `2 ingrédients` |  | `charged_fossil` | feuille assumée | `gen1_howler` |
+| `charged_thorn` | `2 ingrédients` |  | `charged_thorn` | feuille assumée | `gen1_twilight` |
 | `dawn` | `4 ingrédients` |  | `dawn` | feuille assumée | `gen1_sunrise` |
 | `dragons_argument` | `4 ingrédients` |  | `dragons_argument` | feuille assumée | `gen3_aurenes_argument` |
 | `dragons_bite` | `4 ingrédients` |  | `dragons_bite` | feuille assumée | `gen3_aurenes_bite` |
@@ -428,13 +427,14 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 198 ingrédients, et qui les réclame
+## Palier suivant — 200 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
 - `Asparagus_Spear` — réclamé par `meaty_asparagus_skewer`
 - `Avocado` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Balanced_Counterweight` — réclamé par `the_mechanism`
+- `Barbed_Thorn` — réclamé par `charged_thorn`
 - `Black_Peppercorn` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Bone_Shard` — réclamé par `bone`
 - `Bottle_of_Coconut_Milk` — réclamé par `bowl_of_poultry_satay`
@@ -447,6 +447,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Carved_Beam` — réclamé par `the_legend`
 - `Carved_Tear_Drop` — réclamé par `the_legend`
 - `Charged_Core` — réclamé par `charged_lodestone`
+- `Charged_Quartz_Crystal` — réclamé par `charged_fossil`, `charged_thorn`
 - `Coarse_Leather_Section` — réclamé par `cured_coarse_leather_square`
 - `Colossus_Statue` — réclamé par `the_colossus`
 - `Confetti_Bullets` — réclamé par `chaos_gun`
@@ -542,6 +543,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Jar_of_Red_Curry_Paste` — réclamé par `bowl_of_poultry_satay`
 - `Large_Fortified_Precursor_Haft` — réclamé par `dragons_weight`
 - `Lattice_(component)` — réclamé par `leaf_of_kudzu`
+- `Leaf_Fossil` — réclamé par `charged_fossil`
 - `Ley-Infused_Sand` — réclamé par `olmakhan_charm`
 - `Lime` — réclamé par `bowl_of_prickly_pear_sorbet`
 - `Linen_Scrap` — réclamé par `bolt_of_linen`
@@ -555,7 +557,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Mithril_Ore` — réclamé par `mithril_ingot`
 - `Mithril_Snake` — réclamé par `howl`
 - `Molten_Core` — réclamé par `molten_lodestone`
-- `Mystic_Crystal` — réclamé par `charged_lodestone`, `corrupted_lodestone`, `crystal_lodestone`, `destroyer_lodestone`, `glacial_lodestone`, `molten_lodestone`, `onyx_lodestone`
 - `Nopal` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Onyx_Core` — réclamé par `onyx_lodestone`
 - `Ooze_Reservoir` — réclamé par `the_colossus`
