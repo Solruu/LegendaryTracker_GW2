@@ -1410,28 +1410,79 @@ Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
 d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
 retroactif des etapes validees (sections Y et AB).
 
-## 4. Activités par légendaire — OUVERT, en attente de précisions (27/09/2026)
+## 12. Activités par légendaire — les horaires de métas vivent DEUX fois (27/09/2026)
 
-Sujet ouvert par Antoine le 27/09. Deux points, notés tels qu'il les a énoncés :
+Sujet ouvert par Antoine : décalage sur les horaires de certaines métas de
+Vision, vieux sujet, onglet « Activités ».
 
-1. **Un décalage de tiers.** Constaté, non localisé ici. Reste à savoir de quel
-   tiers il s'agit — tiers de matériau (fin/rare/exotique…), palier d'un
-   succès à tiers, ou position dans la cascade — et où il se voit : un écran,
-   un total, une ligne de collection.
-2. **Une question sur les sélections de la liste**, faite il y a longtemps.
-   Quelles sélections, dans quelle liste, et ce qui les avait décidées à
-   l'époque : c'est ce qu'il faudra retrouver avant de toucher à quoi que ce
-   soit.
+### Ce que la vérification a trouvé : deux tables, aucune synchronisation
 
-**Rien n'est instruit et rien ne doit l'être à l'aveugle.** Les deux constats
-viennent de l'usage en jeu, qu'aucun outil du dépôt ne reproduit : deviner ce
-qu'ils désignent reviendrait à corriger un symptôme choisi au hasard. La
-première action est de faire préciser, pas de chercher.
+Les horaires existent à **deux endroits indépendants** :
 
-Une fois précisé, l'entrée dira ce que « activités par légendaire » recouvre :
-vraisemblablement la vue qui associe à chaque légendaire les activités de jeu
-qu'elle impose (métas, fractales, raids, WvW, PvP, cuisine…), mais cette
-lecture est une hypothèse, pas un compte rendu.
+- `meta_events` dans les sources — **20 entrées**, clés `vb`, `td`, `ab`, `co`,
+  `conv`… avec `offsetUTC` (minutes depuis minuit UTC), `intervalMin`,
+  `durationMin`, plus `efficience`, `population`, `waypoint`, `next` ;
+- un tableau `metas: [...]` **écrit en dur dans le JSX** — **35 entrées**, clés
+  `vm`, `di`, `obs_sw`, `obs_conv_on`, `weald`, `hammerhart`… mêmes champs
+  d'horaire, conventions de nommage inversées (les sources mettent la méta dans
+  `name` et le lieu dans `subname`, le JSX l'inverse).
+
+**C'est l'onglet qui affiche la table du JSX.** Corriger `meta_events` ne
+change donc rien à l'écran, et rien ne vérifie que les deux disent la même
+chose. C'est exactement la table parallèle que le projet s'interdit, et c'est la
+cause structurelle du décalage : deux listes tenues à la main finissent
+toujours par diverger.
+
+Écart déjà visible : **Convergence Outer Nayos** — JSX `obs_conv_on` offset 30,
+sources `conv` offset **90**. Une heure d'écart. Laquelle est juste, seul le
+wiki le dit.
+
+### Ce que l'API ne donnera pas
+
+**Aucun endpoint ne publie les horaires de métas.** `/v1/events` a été désactivé
+lors du passage aux mégaserveurs, et la v2 n'a jamais eu d'équivalent — le seul
+`timers` de la v2 est `/v2/wvw/timers`, qui concerne le McM. Les outils de la
+communauté (timer du wiki, gw2timer) calculent tous depuis des cycles fixes,
+exactement comme nous.
+
+La seule autorité est donc la page **Event timers** du wiki, et les pages de
+chaque méta. **Il faut les capturer** : sans elles, aucun horaire du dépôt n'est
+arbitrable.
+
+### État des 20 entrées des sources
+
+**Aucune ne porte de `ref`.** Un drapeau `needs_verification` existe, à `true`
+sur deux seulement (`gy` Ravenous Wanderer, `zak` Citadel of Zakiros).
+
+Trois entrées n'ont pas d'horaire exploitable : `gy` (`offsetUTC: null`), `in`
+et `zak` (`offsetUTC` ET `intervalMin` nuls — métas conditionnelles, pilotées
+par la progression de carte, pas par l'horloge).
+
+Une valeur détonne : `co` Casino Blitz, offset **21**. C'est le seul offset des
+vingt qui ne soit pas un multiple de 5 — à vérifier en priorité.
+
+Les notes heures paires/impaires (`sp`, `nk`, `ew`, `de2`) sont, elles,
+cohérentes avec leurs offsets : 90 → 01:30, 0 → 00:00, 100 → 01:40, 60 → 01:00.
+
+### Ordre des travaux, quand les captures seront là
+
+1. capturer Event timers + les pages de méta concernées ;
+2. arbitrer les 35 horaires du JSX contre elles, et poser un `ref` sur chacun ;
+3. **supprimer une des deux tables** — la chaîne doit porter l'information une
+   fois. Tant que les deux existent, la correction se perdra ;
+4. ajouter au conformité-test la comparaison JSX ↔ sources, pour que la
+   divergence ne puisse pas revenir.
+
+Rien n'est corrigé pour l'instant : arbitrer sans source, ou fusionner deux
+tables sans savoir laquelle fait foi, changerait tous les horaires affichés sur
+un coup de dé.
+
+## 12 bis. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
+
+Deuxième point d'Antoine, non instruit : une question sur les sélections d'une
+liste, « faite il y a looongtemps ». Reste à savoir de quelle liste il s'agit et
+ce qui est en cause. Le nom de l'écran suffira à retrouver ce qui les avait
+décidées.
 
 ### 1. Captures manquantes — 19 URLs dans `PAGES_A_CAPTURER.md`
 

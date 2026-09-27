@@ -130,3 +130,20 @@ https://wiki.guildwars2.com/wiki/Ruby_Shard
 https://wiki.guildwars2.com/wiki/Saffron_Thread
 https://wiki.guildwars2.com/wiki/Shallot
 ```
+
+## Horaires de métas — à capturer (27/09/2026)
+
+Aucun endpoint de l'API ne publie les horaires de métas : `/v1/events` a été
+désactivé aux mégaserveurs, la v2 n'a jamais eu d'équivalent. Le wiki est la
+seule autorité, et aucune des 20 entrées de `meta_events` ne porte de `ref`.
+
+```
+https://wiki.guildwars2.com/wiki/Event_timers
+https://wiki.guildwars2.com/wiki/Event_timers/API
+https://wiki.guildwars2.com/wiki/Casino_Blitz
+https://wiki.guildwars2.com/wiki/Convergence
+```
+
+Priorité : `Casino Blitz` (offset 21, seul des vingt à ne pas être un multiple
+de 5) et `Convergence` (Outer Nayos — le JSX dit 30, les sources 90, une heure
+d'écart). Voir BACKLOG.md § 12.
