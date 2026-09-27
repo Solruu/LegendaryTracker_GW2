@@ -1525,6 +1525,34 @@ des métas à gemme. La table qui sert vraiment, c'est celle du JSX.
 5. **Conformité** : comparer JSX ↔ sources pendant la transition, puis
    supprimer la table du JSX. Tant que les deux existent, la correction se perd.
 
+### Deux choses vues en répondant à Antoine (27/09)
+
+**Palawadan ne donne pas de difluorite.** L'exemple « kralkatite ou difluorite »
+donné plus haut dans un échange était faux : la difluorite est aux Îles
+balayées, Palawadan au Domaine d'Istan, et les deux ne partagent aucune méta.
+L'exemple correct de double ressource est `lw4_istan` — les nœuds de Brandstone
+rendent kralkatite **et** magie volatile. C'est là que « au moins une encore
+utile » a un sens.
+
+**La table du JSX mélange deux natures d'entrée.** À côté des métas à horaire,
+elle porte des entrées `isTimeless: true` dont `offsetUTC`, `intervalMin` et
+`durationMin` valent zéro : `lw4_istan`, `bf`, `eb`, `dm`, `ld`, `sl`,
+`obs_spider`… Ce sont des farms de nœuds ou de vendeurs. Elles n'ont pas
+d'horaire du tout — elles ont un soft-reset quotidien et un `farmType`
+(`per_char`, `per_account`).
+
+Conséquences sur le plan :
+
+- l'invariant `offsetUTC ∈ [0, intervalMin[` ne vaut que pour les entrées à
+  horaire ; pour les autres, l'audit doit exiger `isTimeless` **et** l'absence
+  d'horaire, pas un horaire nul ;
+- `ref` ne désigne pas la même source des deux côtés : la page Event timers ne
+  dira rien des nœuds, qui relèvent des pages de carte et de vendeur.
+
+Au passage : `meta_events.in` porte `rewards: ["amalgamated_gemstone",
+"amalgamated_gemstone"]` — la même ressource deux fois. À corriger au moment du
+catalogue.
+
 ### Ce qu'il faut pour commencer
 
 - La capture de **`Event_timers`**, qui porte tous les horaires dans une seule
