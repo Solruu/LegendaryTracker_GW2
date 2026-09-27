@@ -1489,18 +1489,52 @@ méta dont la ressource n'est plus nécessaire disparaît de la liste. Le champ
 `rewards` existe déjà côté sources et doit devenir le seul, porté par la table
 unique. Il faudra le remplir pour les 15 entrées que le JSX ajoute.
 
-### Ordre des travaux, quand les captures seront là
+### La mesure exacte, avant de toucher à quoi que ce soit (27/09)
 
-1. capturer Event timers + les pages de méta concernées ;
-2. arbitrer les 35 horaires du JSX contre elles, et poser un `ref` sur chacun ;
-3. **supprimer une des deux tables** — la chaîne doit porter l'information une
-   fois. Tant que les deux existent, la correction se perdra ;
-4. ajouter au conformité-test la comparaison JSX ↔ sources, pour que la
-   divergence ne puisse pas revenir.
+Ce n'est pas « une table dans les sources contre une dans le JSX ». Le JSX porte
+**20 blocs `metas:`, un par onglet de légendaire**, pour **77 entrées** décrivant
+**62 métas distinctes**. Chaque entrée recopie l'horaire complet.
 
-Rien n'est corrigé pour l'instant : arbitrer sans source, ou fusionner deux
-tables sans savoir laquelle fait foi, changerait tous les horaires affichés sur
-un coup de dé.
+- 17 de ces 62 sont aussi dans `meta_events` ; **45 n'existent que dans le JSX** ;
+  3 n'existent que dans les sources (`gy`, `in`, `zak`).
+- 35 métas sont déclarées plusieurs fois, une par légendaire concernée.
+- Bonne nouvelle : **aucune de ces copies ne se contredit** — les 35 doublons
+  portent le même horaire. La dérive n'est donc pas interne, elle est entre le
+  JSX et la réalité, faute de source.
+
+`meta_events` n'est pas la table de référence : c'est un sous-ensemble, celui
+des métas à gemme. La table qui sert vraiment, c'est celle du JSX.
+
+### Comment on implémente
+
+1. **Un catalogue unique, dans les sources.** `meta_events` accueille les 62
+   métas, avec leurs champs actuels plus deux ajouts : `rewards` — la ou les
+   ressources rendues, en clés de `craft_components` — et `ref`, la capture qui
+   établit l'horaire.
+2. **Chaque légendaire ne déclare plus qu'une liste de clés** :
+   `metas: ["vb", "td", …]`. 77 copies deviennent 20 listes courtes. L'horaire
+   n'existe plus qu'une fois, donc il ne peut plus diverger.
+3. **Le filtre d'Antoine** : une méta s'affiche tant qu'au moins une de ses
+   `rewards` est encore nécessaire, c'est-à-dire `legTotals[reward] > 0`. Elle
+   disparaît d'elle-même quand la ressource est finie. Ça réutilise le moteur
+   qu'on vient de corriger — « zéro est une réponse » (§ BO) est exactement ce
+   qui rend ce filtre possible.
+4. **Audit v56** : toute clé de méta citée par un légendaire existe au
+   catalogue ; toute `rewards` est une vraie clé de composant ; tout horaire
+   porte un `ref` ; `offsetUTC` est dans `[0, intervalMin[`.
+5. **Conformité** : comparer JSX ↔ sources pendant la transition, puis
+   supprimer la table du JSX. Tant que les deux existent, la correction se perd.
+
+### Ce qu'il faut pour commencer
+
+- La capture de **`Event_timers`**, qui porte tous les horaires dans une seule
+  page — c'est ce qui permet d'arbitrer les 62 d'un coup et de poser les `ref`.
+  Risque à vérifier : cette page est peut-être rendue côté client.
+- `Casino_Blitz` et `Convergence`, les deux suspects nommés.
+- Deux décisions d'Antoine : que faire d'une méta **sans ressource** (affichée
+  toujours ? rattachée à l'étape de collection qu'elle sert ?), et confirmation
+  que le filtre est bien « au moins une ressource encore utile » et non
+  « toutes ».
 
 ## 12 ter. Vision affichait 3 100 kralkatite — ✅ **RÉSOLU le 27/09/2026**
 
