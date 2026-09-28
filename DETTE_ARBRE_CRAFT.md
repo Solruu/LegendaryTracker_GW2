@@ -3370,3 +3370,52 @@ collection a moitie faite se juge bit par bit.
 cle ET par id, bits compris — derivees des sources comme cote JSX. Vision et
 Aurora marchaient deja par leur route dediee ; c'est Orrax et les autres qui
 gagnent la regle.
+
+## BT — 28/09/2026 : j'ai vérifié la pièce et conclu sur l'ensemble
+
+Antoine : il en faut **300**, pas 200 — 200 pour la bannière, 100 pour le Gift
+of Crystalline Magic. Il a raison, et la preuve était au dépôt.
+
+`vision_i_awakening.html` écrit noir sur blanc : « Banner of the Commander,
+crafted using recipe from Lady Camilla, which requires **Inscribed Shard x 200**,
+Orichalcum Ingot x 25, Unidentified Dye x 20, Glob of Ectoplasm x 15, Ancient
+Wood Log x 10, Bolt of Gossamer x 5, Spool of Gossamer Thread… ». Les autres
+quantités de cette liste tombent juste avec l'arbre — ectoplasme 10 + 5 = 15,
+bois ancien 10, gossamer 5. **Seuls les éclats sont à moitié.**
+
+### Comment j'en suis arrivé là
+
+J'ai lu la recette du `Gift of Crystalline Magic` sur sa capture, vérifié qu'elle
+portait bien ses quatre ingrédients, puis lu `inscribed_shard.qty` dans l'arbre :
+100 pour le don, 100 pour le mât. J'ai additionné et répondu « 200, la recette
+est complète ».
+
+**J'ai vérifié la pièce qu'on me montrait et conclu sur l'ensemble.** La question
+portait sur un total, et un total ne se vérifie pas en relisant un de ses
+termes. La page qui donne l'agrégat était au dépôt depuis le début.
+
+### Ce qui manque, et pourquoi je ne l'écris pas
+
+Le `Lacquered Banner Pole` coûte 100 éclats chez Lady Camilla — sourcé. Le
+`Banner Pennon` se fabrique, et sa boîte Recipe ne contient aucun éclat —
+sourcé. Le candidat pour les 100 restants est la **feuille de recette**, achetée
+chez la même vendeuse, dont la page n'est pas au dépôt. Ni celle de Lady
+Camilla.
+
+Les deux URLs sont en file. Tant qu'elles manquent, l'arbre compte 200 là où le
+wiki annonce 300 : le manque est documenté, pas comblé. Écrire la ligne pour
+faire coller le total serait inventer un coût qu'aucune page ne porte.
+
+### Le trou d'outillage que ça révèle
+
+Rien dans la chaîne ne pouvait attraper ça. La relecture des recettes compare
+**nœud par nœud** : les enfants de `banner_of_the_commander` correspondent
+exactement à sa boîte Recipe — mât, pennon, orichalque, teinture — donc aucun
+défaut. L'achat manquant n'est dans aucune boîte de recette, il est dans un
+agrégat rédigé en prose sur une page de collection.
+
+`gw2_confronte_totaux_v8.py` confronte bien des totaux, mais seulement les
+tables « Full material list ». `vision_i_awakening` n'en est pas une : zéro
+mention des éclats inscrits dans son rapport. **Les agrégats en prose des pages
+de collection ne sont lus par personne.** C'est une famille de contrôle à
+écrire, et elle aurait attrapé celui-ci.
