@@ -1592,6 +1592,35 @@ Orrax en porte 20, qui n'étaient jamais pris en compte non plus.
 jeu — pas avant, pour garder le chemin de repli si la dérivation se comporte
 autrement que prévu.
 
+## 12 quinquies. La clé API voyage dans l'URL (28/09/2026)
+
+Le client appelle Flask avec `?key=...`. Werkzeug journalise la ligne de requête
+entière : la clé finit en clair dans les logs, d'où un partage d'écran ou un
+copier-coller de terminal peut l'emporter.
+
+`gw2_flask_server_v44.py` masque `key`, `access_token` et `token` dans tout ce
+que le serveur journalise. **C'est un pansement** : la clé continue de voyager
+dans l'URL, donc dans l'historique du navigateur, dans un éventuel proxy, et
+dans tout journal que ce filtre ne couvre pas.
+
+À faire : passer la clé en en-tête (`X-API-Key` ou `Authorization`), côté client
+comme côté Flask, et refuser le paramètre d'URL une fois la bascule faite.
+Les deux chemins doivent bouger ensemble, sinon la synchro casse.
+
+## 12 sexies. Manuel et synchronisé partagent un magasin (28/09/2026)
+
+`gw2_<leg>_currencies` reçoit à la fois ce que la synchro rend et ce que les
+boutons -10/+50 écrivent. La persistance fait `{ ...cur, ...vals }` : une
+monnaie que la charge ne porte plus **garde sa dernière valeur indéfiniment**,
+et rien ne distingue un vieux nombre d'un nombre frais. C'est ce qui a figé
+l'éclat inscrit à 10 pendant que le Flask ne l'envoyait pas.
+
+On ne peut pas simplement effacer les monnaies non envoyées : ce serait
+détruire un comptage tenu à la main, qui est l'usage prévu pour ce que l'API ne
+rend pas. Il faut deux espaces distincts — `synced` et `manuel` — et un
+affichage qui dise lequel parle. `__notSent` et `__syncedAt` existent déjà et
+serviront de base.
+
 ## 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
 
 Deuxième point d'Antoine, non instruit : une question sur les sélections d'une

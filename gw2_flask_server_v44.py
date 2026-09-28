@@ -12,6 +12,7 @@ Usage :
 
 import argparse
 import json
+import logging
 import os
 import re
 import sys
@@ -285,6 +286,54 @@ app = Flask(__name__)
 # de surface d'attaque, et evite de maintenir une liste (file://, claude.ai,
 # GitHub Pages, serveur local de test...).
 CORS(app, origins="*", supports_credentials=False)
+
+
+# ── La cle API ne doit jamais atterrir dans un journal ────────────────────────
+#
+# Antoine l'a vu : la cle complete s'affichait en clair dans les logs du serveur.
+# Werkzeug journalise la ligne de requete entiere, chaine de requete comprise, et
+# le client appelle `/api/achievements/obsidian?key=...`. Il suffit d'un partage
+# d'ecran, d'un copier-coller de terminal ou d'un fichier de log pour que la cle
+# parte avec.
+#
+# Deux temps. Le filtre ci-dessous masque `key`, `access_token` et `token` dans
+# TOUT ce que le serveur journalise, y compris les traces d'exception qui
+# recopient parfois l'URL. Il ne garde que les huit premiers caracteres, assez
+# pour reconnaitre quelle cle a servi, pas assez pour s'en servir.
+#
+# Il masque, il ne corrige pas : la vraie correction est que la cle cesse de
+# voyager dans l'URL. Elle a sa place dans un en-tete, qui ne se journalise pas,
+# et c'est au client de la poser la -- note au backlog.
+
+_MOTIF_SECRET = re.compile(
+    r"((?:access_token|key|token)=)([^&\s\"']{9,})", re.IGNORECASE)
+
+
+def _masque_secrets(texte):
+    return _MOTIF_SECRET.sub(lambda m: f"{m.group(1)}{m.group(2)[:8]}\u2026[masque]", str(texte))
+
+
+class _FiltreCleApi(logging.Filter):
+    def filter(self, record):
+        try:
+            if isinstance(record.msg, str):
+                record.msg = _masque_secrets(record.msg)
+            if record.args:
+                if isinstance(record.args, dict):
+                    record.args = {k: _masque_secrets(v) if isinstance(v, str) else v
+                                   for k, v in record.args.items()}
+                else:
+                    record.args = tuple(_masque_secrets(a) if isinstance(a, str) else a
+                                        for a in record.args)
+        except Exception:  # un filtre de log ne doit jamais faire tomber le serveur
+            pass
+        return True
+
+
+_FILTRE_CLE = _FiltreCleApi()
+for _nom in ("werkzeug", "gw2", None):
+    logging.getLogger(_nom).addFilter(_FILTRE_CLE)
+app.logger.addFilter(_FILTRE_CLE)
 
 
 @app.after_request

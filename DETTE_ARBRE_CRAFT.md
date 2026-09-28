@@ -3290,3 +3290,46 @@ comme unitaire en fabriquait une.
 L'audit v56 divise par `sortie` avant de comparer, et se tait si la division ne
 tombe pas juste plutot que de deviner. J'avais commence par « corriger » la
 donnee vers 4 : c'etait suivre l'outil contre la source.
+
+## BR — 28/09/2026 : la clé API dans les journaux, et pourquoi le 10 était figé
+
+### La clé en clair
+
+Antoine : « l'utilisation de l'API directe web, alors que le Flask est allumé,
+envoie dans les logs la clé complète, en clair ». C'est exact, et la cause n'est
+pas celle qu'on croit.
+
+**Avec Flask allumé, l'API directe n'est pas empruntee.** Le client appelle
+Flask d'abord et ne bascule en direct que s'il est injoignable. Les URL
+appelees portent la cle en clair — `/api/achievements/obsidian?key=...` — et
+Werkzeug journalise la ligne de requete entiere, chaine de requete comprise.
+
+`gw2_flask_server_v44.py` filtre `key`, `access_token` et `token` dans TOUT ce
+que le serveur journalise, traces d'exception comprises. Huit caracteres
+restent, assez pour reconnaitre quelle cle a servi, pas assez pour s'en servir.
+
+**Ce filtre masque, il ne corrige pas.** La vraie correction est que la cle
+cesse de voyager dans l'URL : sa place est dans un en-tete, qui ne se
+journalise pas. C'est un changement cote client, porte au backlog.
+
+### Pourquoi le compteur restait a 10
+
+La persistance des monnaies fait `{ ...cur, ...vals }` : **une monnaie que la
+charge ne porte plus garde sa derniere valeur, indefiniment**. Le Flask
+n'envoyait pas `inscribed_shard` (§ BQ), donc rien ne venait ecraser le 10 pose
+un jour par une autre synchro. Zero aurait au moins ete visible ; un vieux
+nombre ne se distingue pas d'un nombre frais.
+
+Le marqueur existe pourtant — `__notSent` liste les monnaies declarees que la
+synchro n'a pas rendues, et la carte affiche `cur_not_sent` en rouge. Il
+dependait que `declared` soit non vide, ce qui est le cas pour Vision.
+
+Le melange n'est pas supprime : **manuel et synchronise partagent le meme
+magasin**, et les boutons -10/+50 ecrivent au meme endroit. Effacer une monnaie
+non envoyee detruirait un comptage tenu a la main — qui est justement l'usage
+prevu pour ce que l'API ne rend pas. La vraie sortie est de separer les deux,
+au backlog.
+
+Ce qui se verifie des maintenant : avec le Flask v43, `inscribed_shard` est
+envoye. Si le compteur reste a 10 apres une synchro sur v43+, la cause est
+ailleurs et il faudra lire `__syncedAt` et `__notSent` du magasin.
