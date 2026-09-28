@@ -3419,3 +3419,44 @@ tables « Full material list ». `vision_i_awakening` n'en est pas une : zéro
 mention des éclats inscrits dans son rapport. **Les agrégats en prose des pages
 de collection ne sont lus par personne.** C'est une famille de contrôle à
 écrire, et elle aurait attrapé celui-ci.
+
+## BU — 28/09/2026 : la famille de contrôle qui manquait, et sa première prise
+
+`gw2_confronte_agregats_v1.py` lit la troisieme forme d'agregat du wiki, celle
+que personne ne lisait : les listes de courses **redigees en prose** sur les
+pages de collection. Les deux autres sont deja couvertes — tables « Full
+material list » par `gw2_confronte_totaux_v8.py`, boites Recipe noeud par noeud
+par `gw2_relecture_recettes_v4.py`.
+
+Quatre pages en portent : `warbringer`, `vision_i_awakening`, `ad_infinitum`,
+`the_ascension`. **56 quantites confrontees, 1 depassement, 51 accords.**
+
+Deux signaux, de force inegale, et l'outil le dit : **DEPASSE** — une occurrence
+seule exige plus que le total de la cible, une partie ne peut pas exceder le
+tout ; **SOMME** — le cumul depasse, a arbitrer, parce que deux agregats peuvent
+se recouvrir.
+
+### Sa prise : 3 000 magies volatiles contre 1 000
+
+`vision_i_awakening` ecrit : « Exquisite Serpentite Jewel x 18, Glob of
+Ectoplasm x 30, Laurel x 30 **and Volatile Magic x 3000 in total for weapon
+recipes** ». L'arbre porte `volatile_magic: 1000` sur Vision, et **le laurier
+n'est pas un composant du tout**.
+
+Ce sont les recettes des six armes de sang de dragon, achetees aux lauriers et a
+la magie volatile. A arbitrer avant de toucher : un achat de recette est unique
+par compte, et le depot a deja un mecanisme pour ca (`recettesCompte`, les
+feuilles « Recipe: Gift of … » cochees automatiquement). Il se peut que le 1 000
+soit deliberement autre chose. **Non corrige.**
+
+### Ce que l'outil N'a PAS attrape
+
+Le cas qui l'a fait ecrire. Sur `vision_i_awakening`, la banniere annonce
+200 eclats et l'arbre en totalise 200 pour Vision : egalite, donc aucun signal.
+Les 100 du Gift of Crystalline Magic ne figurent pas en prose sur cette page, le
+cumul ne se forme jamais.
+
+Autrement dit : cet outil couvre une famille reelle, il en a sorti un defaut des
+sa premiere passe, et il **ne remplace pas** la lecture des agregats page par
+page. Le dire evite de croire la chaine complete parce qu'un rapport de plus
+affiche zero.
