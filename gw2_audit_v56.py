@@ -2178,13 +2178,23 @@ def _recette_capture(page):
         return None
     out = {}
     for r in recettes:
+        # Une boite Recipe chiffre son LOT, pas l'unite. Pile of Vile Essence a
+        # deux variantes : 2 Filthy pour 1 essence, et 4 Filthy pour 2. C'est le
+        # meme ratio, mais lire le 4 tel quel faisait reclamer le double. On
+        # ramene donc a l'unite avant de comparer -- sans quoi ce controle,
+        # ecrit pour attraper une quantite agregee lue comme unitaire, en
+        # inventait une.
+        sortie = r.get("sortie")
+        sortie = sortie if isinstance(sortie, int) and sortie > 0 else 1
         for nom, q in r.get("ingredients") or []:
             if not isinstance(q, int):
                 continue
+            if q % sortie:
+                continue  # pas divisible : on ne devine pas, on se tait
             cle = re.sub(r"[^a-z0-9]", "", _up.unquote(str(nom)).lower())
             # Plusieurs recettes (disciplines) donnent les memes ingredients ;
             # on garde la plus exigeante plutot que la derniere lue.
-            out[cle] = max(out.get(cle, 0), q)
+            out[cle] = max(out.get(cle, 0), q // sortie)
     return out
 
 

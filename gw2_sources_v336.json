@@ -1130,7 +1130,7 @@
     "en": "Crystal Oasis"
    },
    "expansion": "PoF",
-   "offsetUTC": 21,
+   "offsetUTC": 5,
    "intervalMin": 120,
    "durationMin": 10,
    "efficience": "S",
@@ -1148,7 +1148,8 @@
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "ref": "wiki:Casino_Blitz — « It starts at 00:05, and every two hours after that »"
   },
   "er": {
    "name": {
@@ -1545,9 +1546,9 @@
     "en": "The Wizard's Tower"
    },
    "expansion": "SotO",
-   "offsetUTC": 90,
+   "offsetUTC": 30,
    "intervalMin": 180,
-   "durationMin": 20,
+   "durationMin": 10,
    "efficience": "S",
    "population": "public",
    "waypoint": "Rift Hunter Lounge",
@@ -1561,7 +1562,8 @@
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "ref": "wiki:Convergence:_Outer_Nayos — « Public instance opens every 3 hours at XX:30, starting from 01:30, for 10 minutes until XX:40 »"
   },
   "mb": {
    "name": {
@@ -2030,7 +2032,10 @@
    "needed_for": [
     "gift_of_dust",
     "gift_of_energy",
-    "chrysocola_shard"
+    "chrysocola_shard",
+    "beryl_shard",
+    "emerald_shard",
+    "ruby_shard"
    ],
    "farmable": true,
    "sources": [
@@ -2059,7 +2064,10 @@
    "qty": {
     "gift_of_dust": 50,
     "gift_of_energy": 250,
-    "chrysocola_shard": 1
+    "chrysocola_shard": 1,
+    "beryl_shard": 1,
+    "emerald_shard": 1,
+    "ruby_shard": 1
    },
    "kind": "acquire",
    "best": "drop",
@@ -2133,7 +2141,8 @@
     "gift_of_energy",
     "ruby_orb",
     "sapphire_orb",
-    "azurite_orb"
+    "azurite_orb",
+    "pile_of_vile_essence"
    ],
    "farmable": true,
    "sources": [
@@ -2189,7 +2198,8 @@
     "emerald_orb": 5,
     "ruby_orb": 5,
     "sapphire_orb": 5,
-    "azurite_orb": 5
+    "azurite_orb": 5,
+    "pile_of_vile_essence": 1
    },
    "kind": "acquire",
    "best": "drop",
@@ -2237,7 +2247,8 @@
     "small_spiritwood_haft",
     "spiritwood_rifle_stock",
     "spiritwood_scepter_rod",
-    "spiritwood_torch_handle"
+    "spiritwood_torch_handle",
+    "legendary_inscription"
    ],
    "farmable": true,
    "sources": [
@@ -2323,7 +2334,8 @@
     "small_spiritwood_haft": 5,
     "spiritwood_rifle_stock": 5,
     "spiritwood_scepter_rod": 5,
-    "spiritwood_torch_handle": 5
+    "spiritwood_torch_handle": 5,
+    "legendary_inscription": 5
    },
    "kind": "acquire",
    "best": "drop",
@@ -3404,7 +3416,8 @@
    "needed_for": [
     "gift_of_crystalline_magic",
     "gift_of_ephemeral_magic",
-    "pile_of_putrid_essence"
+    "pile_of_putrid_essence",
+    "pile_of_vile_essence"
    ],
    "farmable": false,
    "sources": [
@@ -3423,7 +3436,8 @@
    "qty": {
     "gift_of_ephemeral_magic": 1,
     "gift_of_crystalline_magic": 1,
-    "pile_of_putrid_essence": 1
+    "pile_of_putrid_essence": 1,
+    "pile_of_vile_essence": 1
    },
    "kind": "acquire",
    "best": "vendor",
@@ -5928,7 +5942,8 @@
     "superior_sigil_of_strength",
     "superior_sigil_of_venom",
     "sweet_treated_pine_plank",
-    "exquisite_passion_flower"
+    "exquisite_passion_flower",
+    "legendary_inscription"
    ],
    "farmable": true,
    "sources": [
@@ -6001,7 +6016,8 @@
     "superior_sigil_of_strength": 10,
     "superior_sigil_of_venom": 10,
     "sweet_treated_pine_plank": 3,
-    "exquisite_passion_flower": 1
+    "exquisite_passion_flower": 1,
+    "legendary_inscription": 10
    },
    "kind": "acquire",
    "best": "salvage",
@@ -24385,7 +24401,8 @@
    "kind": "material",
    "needed_for": [
     "third_order_mist_frame",
-    "elonian_string"
+    "elonian_string",
+    "legendary_inscription"
    ],
    "farmable": true,
    "sources": [
@@ -24402,7 +24419,8 @@
    ],
    "qty": {
     "third_order_mist_frame": 5,
-    "elonian_string": 3
+    "elonian_string": 3,
+    "legendary_inscription": 10
    }
   },
   "endeavor": {
@@ -25075,7 +25093,8 @@
    "apiId": 12988,
    "kind": "acquire",
    "needed_for": [
-    "diviners_orichalcum_imbued_inscription"
+    "diviners_orichalcum_imbued_inscription",
+    "legendary_inscription"
    ],
    "farmable": true,
    "sources": [
@@ -25091,7 +25110,8 @@
     }
    ],
    "qty": {
-    "diviners_orichalcum_imbued_inscription": 5
+    "diviners_orichalcum_imbued_inscription": 5,
+    "legendary_inscription": 1
    }
   },
   "plate_of_orrian_steak_frittes": {
@@ -27559,8 +27579,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de chrysocola_shard.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on chrysocola_shard."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27583,8 +27603,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de azurite_orb.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on azurite_orb."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27607,8 +27627,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de ball_of_dough.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on ball_of_dough."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27631,8 +27651,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de beryl_crystal.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on beryl_crystal."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27655,8 +27675,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de emerald_crystal.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on emerald_crystal."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27680,8 +27700,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de bowl_of_fancy_tangy_sautee_mix, pile_of_zesty_herbs.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on bowl_of_fancy_tangy_sautee_mix, pile_of_zesty_herbs."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27695,6 +27715,7 @@
   },
   "legendary_inscription": {
    "name": "Legendary Inscription",
+   "apiId": 72261,
    "kind": "acquire",
    "needed_for": [
     "visionary_inscription"
@@ -27704,8 +27725,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de visionary_inscription.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on visionary_inscription."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27728,8 +27749,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de grilled_mushroom.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on grilled_mushroom."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27742,17 +27763,19 @@
   },
   "mystic_crystal": {
    "name": "Mystic Crystal",
+   "apiId": 20799,
    "kind": "acquire",
    "needed_for": [
-    "pile_of_putrid_essence"
+    "pile_of_putrid_essence",
+    "pile_of_vile_essence"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_putrid_essence.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_putrid_essence."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27760,7 +27783,8 @@
     }
    ],
    "qty": {
-    "pile_of_putrid_essence": 1
+    "pile_of_putrid_essence": 1,
+    "pile_of_vile_essence": 1
    }
   },
   "onion": {
@@ -27775,8 +27799,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de bowl_of_fancy_tangy_sautee_mix.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on bowl_of_fancy_tangy_sautee_mix."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27792,15 +27816,16 @@
    "apiId": 12153,
    "kind": "material",
    "needed_for": [
-    "grilled_mushroom"
+    "grilled_mushroom",
+    "pile_of_salt_and_pepper"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de grilled_mushroom.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on grilled_mushroom."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27808,7 +27833,8 @@
     }
    ],
    "qty": {
-    "grilled_mushroom": 1
+    "grilled_mushroom": 1,
+    "pile_of_salt_and_pepper": 1
    }
   },
   "passion_flower": {
@@ -27823,8 +27849,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de exquisite_passion_flower.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on exquisite_passion_flower."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27837,6 +27863,7 @@
   },
   "pile_of_ascalonian_herbs": {
    "name": "Pile of Ascalonian Herbs",
+   "apiId": 12180,
    "kind": "acquire",
    "needed_for": [
     "pile_of_zesty_herbs"
@@ -27846,8 +27873,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_zesty_herbs.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_zesty_herbs."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27870,8 +27897,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de grilled_portobello_mushroom.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on grilled_portobello_mushroom."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27894,8 +27921,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_putrid_essence.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_putrid_essence."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27918,8 +27945,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de grilled_portobello_mushroom.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on grilled_portobello_mushroom."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27942,8 +27969,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de ruby_crystal.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on ruby_crystal."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27966,8 +27993,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_zesty_herbs.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_zesty_herbs."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -27990,8 +28017,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de bowl_of_fancy_tangy_sautee_mix.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on bowl_of_fancy_tangy_sautee_mix."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28000,6 +28027,128 @@
    ],
    "qty": {
     "bowl_of_fancy_tangy_sautee_mix": 1
+   }
+  },
+  "black_peppercorn": {
+   "name": "Black Peppercorn",
+   "apiId": 12236,
+   "kind": "material",
+   "needed_for": [
+    "pile_of_salt_and_pepper"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_salt_and_pepper.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_salt_and_pepper."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de pile_of_salt_and_pepper.html ; identite depuis gw2_materials_ref.json (apiId 12236)"
+    }
+   ],
+   "qty": {
+    "pile_of_salt_and_pepper": 1
+   }
+  },
+  "carnelian_lump": {
+   "name": "Carnelian Lump",
+   "apiId": 24472,
+   "kind": "material",
+   "needed_for": [
+    "ruby_shard"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de ruby_shard.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on ruby_shard."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de ruby_shard.html ; identite depuis gw2_materials_ref.json (apiId 24472)"
+    }
+   ],
+   "qty": {
+    "ruby_shard": 2
+   }
+  },
+  "lapis_lump": {
+   "name": "Lapis Lump",
+   "apiId": 24507,
+   "kind": "material",
+   "needed_for": [
+    "beryl_shard"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de beryl_shard.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on beryl_shard."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de beryl_shard.html ; identite depuis gw2_materials_ref.json (apiId 24507)"
+    }
+   ],
+   "qty": {
+    "beryl_shard": 1
+   }
+  },
+  "peridot_lump": {
+   "name": "Peridot Lump",
+   "apiId": 24504,
+   "kind": "material",
+   "needed_for": [
+    "beryl_shard",
+    "emerald_shard"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de beryl_shard, emerald_shard.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on beryl_shard, emerald_shard."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de beryl_shard.html, emerald_shard.html ; identite depuis gw2_materials_ref.json (apiId 24504)"
+    }
+   ],
+   "qty": {
+    "beryl_shard": 1,
+    "emerald_shard": 2
+   }
+  },
+  "pile_of_filthy_essence": {
+   "name": "Pile of Filthy Essence",
+   "apiId": 24333,
+   "kind": "material",
+   "needed_for": [
+    "pile_of_vile_essence"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_vile_essence.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_vile_essence."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de pile_of_vile_essence.html ; identite depuis gw2_materials_ref.json (apiId 24333)"
+    }
+   ],
+   "qty": {
+    "pile_of_vile_essence": 2
    }
   }
  },

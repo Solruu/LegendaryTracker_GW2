@@ -1120,6 +1120,28 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `stick_of_butter.html` | Stick of Butter | article complet | 2026-09-27 |
 | `symbol_ingredient.html` | Symbol (ingredient) | article complet | 2026-09-27 |
 | `visionary_inscription.html` | Visionary Inscription | article complet | 2026-09-27 |
+| `amethyst_lump.html` | Amethyst Lump | article complet | 2026-09-28 |
+| `azurite_crystal.html` | Azurite Crystal | article complet | 2026-09-28 |
+| `bag_of_flour.html` | Bag of Flour | article complet | 2026-09-28 |
+| `beryl_shard.html` | Beryl Shard | article complet | 2026-09-28 |
+| `casino_blitz.html` | Casino Blitz | article complet | 2026-09-28 |
+| `convergence_outer_nayos.html` | Convergence: Outer Nayos | article complet | 2026-09-28 |
+| `emerald_shard.html` | Emerald Shard | article complet | 2026-09-28 |
+| `event_timers.html` | Event timers | article complet | 2026-09-28 |
+| `head_of_garlic.html` | Head of Garlic | article complet | 2026-09-28 |
+| `legendary_inscription.html` | Legendary Inscription | article complet | 2026-09-28 |
+| `mushroom.html` | Mushroom | article complet | 2026-09-28 |
+| `mystic_crystal.html` | Mystic Crystal | article complet | 2026-09-28 |
+| `onion.html` | Onion | article complet | 2026-09-28 |
+| `packet_of_salt.html` | Packet of Salt | article complet | 2026-09-28 |
+| `passion_flower.html` | Passion Flower | article complet | 2026-09-28 |
+| `pile_of_ascalonian_herbs.html` | Pile of Ascalonian Herbs | article complet | 2026-09-28 |
+| `pile_of_salt_and_pepper.html` | Pile of Salt and Pepper | article complet | 2026-09-28 |
+| `pile_of_vile_essence.html` | Pile of Vile Essence | article complet | 2026-09-28 |
+| `portobello_mushroom.html` | Portobello Mushroom | article complet | 2026-09-28 |
+| `ruby_shard.html` | Ruby Shard | article complet | 2026-09-28 |
+| `saffron_thread.html` | Saffron Thread | article complet | 2026-09-28 |
+| `shallot.html` | Shallot | article complet | 2026-09-28 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

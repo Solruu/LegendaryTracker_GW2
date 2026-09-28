@@ -3236,3 +3236,57 @@ et le code retombe sur `data._collections`, produit par la synchro directe.
 **Le Flask n'intervient pas depuis un telephone.** Si « ca ne synchronise sur
 rien » se voit aussi sur mobile, la cause est ailleurs que dans le Flask — et la
 v229 plus la v230 viennent de corriger deux causes de ce genre.
+
+## BQ — 28/09/2026 : les deux horaires tranchés, et une cinquième table de clés
+
+### Les horaires
+
+`Casino Blitz` : la page dit 00:05 puis toutes les deux heures. **Offset 21 ->
+5.** L'anomalie que j'avais signalee — « le seul offset qui ne soit pas un
+multiple de 5 » — disparait : c'etait la faute elle-meme, pas son indice.
+
+`Convergence: Outer Nayos` : XX:30 toutes les 3 h depuis 01:30, pendant
+10 minutes. **Offset 90 -> 30 cote sources, duree 20 -> 10 des deux cotes.** Le
+JSX avait raison sur l'heure, tort sur la duree ; les sources avaient tort sur
+les deux. Les deux tables sont corrigees, avec leur `ref`.
+
+Ce que ca dit du plan § 12 : corriger une table sur deux n'aurait rien change a
+l'ecran pour l'heure, et rien change du tout pour la duree.
+
+`Event_timers` ne servira pas : la page est rendue par un widget Lua, son HTML
+ne contient ni « Casino Blitz » ni « Convergence ». La capture est versee pour
+que le constat soit tracable. Les 18 horaires restants se prendront page par
+page, en visant le titre precis — `Convergence` seul redirige vers `Public
+instance`, et il existe aussi Mount Balrior et Nexus of Eternity.
+
+### La cinquieme table : les monnaies du Flask
+
+`_meta.direct_sync.leg_currency_ids` porte, pour dix-huit cibles, la liste
+complete cle -> identifiant. Le chemin direct du JSX s'en sert deja. **Les blocs
+du Flask, eux, etaient ecrits a la main et incomplets** : Vision n'avait que
+trois entrees — `elegy`, `gems`, `vm` — sur les DIX que les sources declarent.
+L'eclat inscrit, la difluorite, le mistonium, la kralkatite, la masse marquee,
+le quartz et l'encens n'avaient **aucune valeur** par ce chemin.
+
+C'est le contexte du compteur a 10 signale par Antoine avec plus de 60 eclats
+inscrits en poche. L'identifiant 87645 est bon, verifie contre
+`gw2_materials_ref`, et les deux chemins agregent bien les cinq emplacements —
+portefeuille, stockage, banque, inventaire partage, sacs. Ce qui manquait,
+c'etait la cle elle-meme.
+
+`gw2_flask_server_v43.py` derive les seize blocs des sources ; ce qui etait
+ecrit a la main ne sert plus que de complement, et les sources tranchent en cas
+de conflit. Meme correction que pour les cles de collection en v42, sur la
+table d'a cote.
+
+### Et une regle d'audit qui inventait une erreur
+
+La regle 33 confronte une arete a la boite Recipe du parent. Mais **une boite
+chiffre son LOT, pas l'unite** : Pile of Vile Essence a deux variantes, 2 Filthy
+pour 1 essence et 4 Filthy pour 2. Meme ratio. Lire le 4 tel quel faisait
+reclamer le double — le controle ecrit pour attraper une quantite agregee lue
+comme unitaire en fabriquait une.
+
+L'audit v56 divise par `sortie` avant de comparer, et se tait si la division ne
+tombe pas juste plutot que de deviner. J'avais commence par « corriger » la
+donnee vers 4 : c'etait suivre l'outil contre la source.

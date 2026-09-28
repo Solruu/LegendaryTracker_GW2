@@ -1144,14 +1144,37 @@ def progression():
     # ── Construction de la reponse normalisee
 
     # Currencies Vision
-    vision = {
+    # Les monnaies par legendaire viennent des sources, plus d'une table ecrite ici
+    #
+    # `_meta.direct_sync.leg_currency_ids` porte, pour dix-huit cibles, la liste
+    # complete cle -> identifiant. Le chemin direct du JSX s'en sert deja ; ici
+    # les blocs etaient ecrits a la main et incomplets. Vision n'avait que trois
+    # entrees — elegy, gems, vm — sur les DIX que les sources declarent :
+    # l'eclat inscrit, la difluorite, le mistonium, la kralkatite, la masse
+    # marquee, le quartz et l'encens n'avaient aucune valeur par ce chemin.
+    #
+    # On derive donc, cible par cible, et les blocs ecrits a la main ne servent
+    # plus que de complement pour ce que les sources ne declarent pas encore.
+    # Une cle presente des deux cotes est tranchee par les sources.
+    def _monnaies(cible, ecrit_a_la_main):
+        ids = ((_SOURCES_CACHE or {}).get("_meta", {})
+               .get("direct_sync", {}).get("leg_currency_ids", {}) or {}).get(cible) or {}
+        out = dict(ecrit_a_la_main)
+        for cle, ident in ids.items():
+            if not isinstance(ident, int):
+                continue
+            # Sous 1000 c'est une monnaie de portefeuille, au-dessus un objet.
+            out[cle] = (wallet_dict if ident < 1000 else mat_dict).get(ident, 0)
+        return out
+
+    vision = _monnaies("vision", {
         "elegy": wallet_dict.get(35, 0),
         "gems":  mat_dict.get(68063, 0),
         "vm":    wallet_dict.get(45, 0),
-    }
+    })
 
     # Currencies Aurora (LW3 — dans les materials)
-    aurora = {
+    aurora = _monnaies("aurora", {
         "karma":        wallet_dict.get(2, 0),      # Wayfarer's Henge : 4 200/pierre
         "unbound":      wallet_dict.get(32, 0),     # Unbound Magic : 1 000/pierre
         "gold":         wallet_dict.get(1, 0),      # 1 po/pierre
@@ -1161,16 +1184,16 @@ def progression():
         "jade":         mat_dict.get(80332, 0),
         "fire_orchid":  mat_dict.get(81127, 0),
         "orrian":       mat_dict.get(81706, 0),
-    }
+    })
 
     # Currencies Conflux (WvW)
-    conflux = {
+    conflux = _monnaies("conflux", {
         "tickets":   wallet_dict.get(26, 0),
         "memory":    mat_dict.get(71581, 0),   # Memory of Battle — material ID 71581
         "jade":      wallet_dict.get(65, 0),   # Testimony of Jade Heroics — recette actuelle (v50 : était 82 par erreur)
         "castoran":  wallet_dict.get(82, 0),   # Testimony of Castoran Heroics — veille patch d'alignement
         "badges":    wallet_dict.get(15, 0),
-    }
+    })
 
     # Mats communs — banque + material storage pour les 4
     # (les inventaires de personnages ne sont pas comptés : 1 appel API/perso, hors périmètre)
@@ -1203,83 +1226,83 @@ def progression():
             achievements[key] = {"done": False, "current": 0, "max": 0, "bits": []}
 
     # Currencies Warbringer (WvW — mêmes sources que Conflux)
-    warbringer = {
+    warbringer = _monnaies("warbringer", {
         "tickets": wallet_dict.get(26, 0),
         "memory":  mat_dict.get(71581, 0),
         "badges":  wallet_dict.get(15, 0),
         "jade":     wallet_dict.get(65, 0),   # Testimony of Jade Heroics (recette actuelle) — plus obtenable depuis VoE
         "castoran": wallet_dict.get(82, 0),   # Testimony of Castoran Heroics — veille patch d'alignement
-    }
+    })
 
     # Currencies Strife Unending (WvW — accessoire VoE)
-    strife_unending = {
+    strife_unending = _monnaies("strife_unending", {
         "tickets": wallet_dict.get(26, 0),     # Skirmish Claim Tickets (objectif 3000)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (objectif 45)
         "memory":  mat_dict.get(71581, 0),     # Memory of Battle
-    }
+    })
 
     # Currencies Endless Summer (anneau VoE — monnaies de carte Castora)
-    endless_summer = {
+    endless_summer = _monnaies("endless_summer", {
         "sap":     wallet_dict.get(83, 0),     # Aether-Rich Sap (Shipwreck Strand) — objectif 500
         "ducat":   wallet_dict.get(81, 0),     # Antiquated Ducat (Starlit Weald) — objectif 500
         "obsidian": mat_dict.get(19925, 0),    # Obsidian Shard (Gift of Infused Gems ×250)
         "gems":    mat_dict.get(68063, 0),     # Amalgamated Gemstone (×250)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Purified Rift Essences ×10)
-    }
+    })
 
     # Currencies Stella Radians (accessoire VoE — karma-intensif)
-    stella_radians = {
+    stella_radians = _monnaies("stella_radians", {
         "karma":   wallet_dict.get(2, 0),      # Karma — budget ~7M
         "coins":   mat_dict.get(19976, 0),     # Mystic Coin (Mystic Tribute ×250)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Mystic Tribute ×77)
-    }
+    })
 
     # Currencies Orrax Manifested (dos JW)
-    orrax_manifested = {
+    orrax_manifested = _monnaies("orrax_manifested", {
         "tales":   wallet_dict.get(69, 0),     # Tales of Dungeon Delving (Gift of Ascalon ×500)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (Draconic Tribute ×38)
         "oblige":  wallet_dict.get(76, 0),     # Ursus Oblige (achats vendeurs JW — indicatif)
-    }
+    })
 
     # Currencies Ad Infinitum (dos fractales)
-    ad_infinitum = {
+    ad_infinitum = _monnaies("ad_infinitum", {
         "pages":    mat_dict.get(73834, 0),    # Fractal Research Page (28/collection, 112 au total)
         "energy":   mat_dict.get(71994, 0),    # Ball of Dark Energy
         "relics":   wallet_dict.get(7, 0),     # Fractal Relic (Gift of Ascension ×500 + achats collections)
         "pristine": wallet_dict.get(24, 0),    # Pristine Fractal Relic (achats BUY-2046 ×50)
         "clovers":  mat_dict.get(19675, 0),    # Mystic Clover (Gift of Fortune ×77)
         "coins":    mat_dict.get(19976, 0),    # Mystic Coin (Gift of Fortune ×250)
-    }
+    })
 
     # Currencies Perfected Envoy (armure raids — coûts par pièce dynamiques côté front)
-    perfected_envoy = {
+    perfected_envoy = _monnaies("perfected_envoy", {
         "li":          wallet_dict.get(70, 0),   # Legendary Insight (25/pièce, +25 Insignia sets suivants)
         "shards":      mat_dict.get(19925, 0),   # Obsidian Shard (50/pièce)
         "clovers":     mat_dict.get(19675, 0),   # Mystic Clover (15/pièce)
         "provisioner": wallet_dict.get(29, 0),   # Provisioner Token (50/pièce)
-    }
+    })
 
     # Currencies Triumphant Hero (armure McM — coûts par pièce dynamiques côté front)
-    triumphant_hero = {
+    triumphant_hero = _monnaies("triumphant_hero", {
         "tickets": wallet_dict.get(26, 0),     # Skirmish Claim Tickets (~1313/pièce, 7880/set)
         "memory":  mat_dict.get(71581, 0),     # Memory of Battle (500/pièce, 3000/set)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (15/pièce)
-    }
+    })
 
     # Currencies Ardent Glorious (armure PvP — coûts par pièce dynamiques côté front)
-    ardent_glorious = {
+    ardent_glorious = _monnaies("ardent_glorious", {
         "shards":  wallet_dict.get(33, 0),     # Ascended Shards of Glory (3200/set)
         "tickets": wallet_dict.get(30, 0),     # PvP League Ticket (300/set, cap ~120/saison)
         "clovers": mat_dict.get(19675, 0),     # Mystic Clover (15/pièce)
-    }
+    })
 
     # Currencies Coalescence (Raids)
-    coalescence = {
+    coalescence = _monnaies("coalescence", {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
         "magnetite": wallet_dict.get(28, 0),   # Magnetite Shard (W1-4)
         "gaeting":   wallet_dict.get(39, 0),   # Gaeting Crystal PoF (W5-7) — 20=Ley Line Crystal était FAUX, 77=Gaeting Janthir
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
-    }
+    })
 
     # Currencies T6 (onglet Matériaux T6)
     t6 = {
@@ -1305,7 +1328,7 @@ def progression():
     }
 
     # Currencies Upgrades légendaires (runes/sigils/relique)
-    upgrades = {
+    upgrades = _monnaies("upgrades", {
         "provisioner": wallet_dict.get(29, 0),
         "lucent":      mat_dict.get(89140, 0),   # Lucent Mote
         "lucent_pile": mat_dict.get(89271, 0),   # Pile of Lucent Crystal
@@ -1317,18 +1340,18 @@ def progression():
         "sym_ctrl":    mat_dict.get(89098, 0),   # Symbol of Control (75/sigil)
         "sym_enh":     mat_dict.get(89141, 0),   # Symbol of Enhancement (75/sigil)
         "sym_pain":    mat_dict.get(89182, 0),   # Symbol of Pain (75/sigil)
-    }
+    })
 
     # Currencies Selachimorpha (VoE)
-    selachimorpha = {
+    selachimorpha = _monnaies("selachimorpha", {
         "notes":   wallet_dict.get(61, 0),   # Research Note (wallet)
         "unusual": wallet_dict.get(62, 0),   # Unusual Coin (monnaie maps VoE)
         "clovers": mat_dict.get(19675, 0),
         "shards":  mat_dict.get(19925, 0) + obsidian_bank,
-    }
+    })
 
     # Currencies Obsidian Armor (SotO — essences Rift converties wallet juin 2025)
-    obsidian_armor = {
+    obsidian_armor = _monnaies("obsidian", {
         "fine":        wallet_dict.get(78, 0),   # Fine Rift Essence — wallet ID 78
         "masterwork":  wallet_dict.get(80, 0),   # Masterwork Rift Essence — wallet ID 80 (79=Rare !)
         "rare":        wallet_dict.get(79, 0),   # Rare Rift Essence — wallet ID 79
@@ -1337,7 +1360,7 @@ def progression():
         "clovers":     mat_dict.get(19675, 0),
         "shards":      mat_dict.get(19925, 0) + obsidian_bank,
         "ectos":       mat_dict.get(19721, 0),
-    }
+    })
 
     # Prismatic — progression achievement Seasons of the Dragons
     # Mapping exact : bit → achievement ID de la map correspondante
