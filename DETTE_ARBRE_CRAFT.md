@@ -3333,3 +3333,40 @@ au backlog.
 Ce qui se verifie des maintenant : avec le Flask v43, `inscribed_shard` est
 envoye. Si le compteur reste a 10 apres une synchro sur v43+, la cause est
 ailleurs et il faudra lire `__syncedAt` et `__notSent` du magasin.
+
+## BS — 28/09/2026 : la recette est complète, et le 200 se lit en deux moitiés
+
+Antoine : « j'en ai encore besoin de 100 pour le Gift of Crystalline Magic, donc
+cette recette n'est pas totalement traitee ? ». Elle l'est.
+
+`Gift of Crystalline Magic` = 100 Kralkatite + 100 Difluorite + **100 Eclats
+inscrits** + 1 Bouteille de vin elonien. L'arbre porte les quatre, la capture
+les confirme, aucun ecart.
+
+**Le 200 affiche est la somme de deux besoins distincts** : 100 pour ce don, et
+100 pour le `Lacquered Banner Pole`, qui fait la `Banner of the Commander` que
+reclame la collection « Visions of Kourna ». La difluorite, elle, n'a qu'un
+consommateur — d'ou 100. Rien ne manque : deux moities, une seule affichee comme
+un total.
+
+Et la moitie « banniere » est deja cablee : `vis_kourna` bit 5 porte
+`component: banner_of_the_commander`. Une fois cette etape validee, ses 100
+eclats disparaissent, exactement comme les 3 000 kralkatite des armes Astral.
+**Si Antoine n'a plus besoin que de 100, c'est que cette etape est faite** — et
+le 200 encore affiche voudrait dire que son statut ne remonte pas au calcul.
+
+### D'ou une lacune trouvee en verifiant
+
+La regle « une etape validee satisfait son composant » a deux chemins
+d'alimentation, et **un seul la connaissait**. Le chemin direct derive la table
+des sources depuis la v229. Par Flask, elle n'existait pas : seules Aurora,
+Vision et Obsidian ont une route dediee, donc **les vingt etapes d'Orrax qui
+portent un `component` ne rendaient jamais rien**.
+
+`_sub_status` ne pouvait pas y suppleer : il laisse tomber les `bits`, et une
+collection a moitie faite se juge bit par bit.
+
+`gw2_flask_server_v45.py` renvoie `_collections.all` — 340 entrees, indexees par
+cle ET par id, bits compris — derivees des sources comme cote JSX. Vision et
+Aurora marchaient deja par leur route dediee ; c'est Orrax et les autres qui
+gagnent la regle.

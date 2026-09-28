@@ -1598,7 +1598,7 @@ Le client appelle Flask avec `?key=...`. Werkzeug journalise la ligne de requêt
 entière : la clé finit en clair dans les logs, d'où un partage d'écran ou un
 copier-coller de terminal peut l'emporter.
 
-`gw2_flask_server_v44.py` masque `key`, `access_token` et `token` dans tout ce
+`gw2_flask_server_v45.py` masque `key`, `access_token` et `token` dans tout ce
 que le serveur journalise. **C'est un pansement** : la clé continue de voyager
 dans l'URL, donc dans l'historique du navigateur, dans un éventuel proxy, et
 dans tout journal que ce filtre ne couvre pas.

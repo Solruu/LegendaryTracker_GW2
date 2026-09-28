@@ -256,6 +256,23 @@ def _cles_depuis_sources(cible, defaut):
     return fusion
 
 
+def _toutes_collections(ach_list):
+    """Statuts de collection de toutes les cibles des sources, cle et id."""
+    data = _SOURCES_CACHE or {}
+    index = {}
+    for e in (ach_list or []):
+        if isinstance(e, dict) and isinstance(e.get("id"), int):
+            index[e["id"]] = e
+    table = {}
+    for leg in (data.get("legendaries") or {}).values():
+        if not isinstance(leg, dict):
+            continue
+        for cle, col in (leg.get("collections") or {}).items():
+            if isinstance(col, dict) and isinstance(col.get("id"), int):
+                table[cle] = col["id"]
+    return _par_cle_et_par_id(table, index)
+
+
 def _par_cle_et_par_id(table, ach_index):
     """Statuts indexes par cle ET par id, pour que les deux appariements marchent."""
     vide = {"done": False, "current": 0, "max": 0, "bits": []}
@@ -1545,6 +1562,20 @@ def progression():
             # ach_list, et non ach_raw : ce dernier appartient a une autre route.
             for e in (ach_list or [])
         },
+        # Statuts de collection de TOUTES les cibles, indexes par cle ET par id.
+        #
+        # Le front s'en sert pour une regle simple : une etape de collection qui
+        # porte un `component` rend ce composant inutile une fois validee -- les
+        # six armes Astral faites, leurs 3 000 kralkatite disparaissent du total.
+        # Par le chemin direct, cette table est derivee des sources depuis la
+        # v229 du JSX. Par Flask, elle n'existait pas : seules Aurora, Vision et
+        # Obsidian avaient leur route dediee, donc les vingt etapes d'Orrax qui
+        # portent un `component` ne rendaient jamais rien. Meme regle, deux
+        # chemins, un seul des deux la connaissait.
+        #
+        # `_sub_status` ne pouvait pas servir : il laisse tomber les `bits`, et
+        # une collection partiellement faite se juge bit par bit.
+        "_collections": {"all": _toutes_collections(ach_list)},
         # Portes lisibles par le front : il compare gate.value au palier de
         # fractale, gate.name aux maitrises, gate.name aux extensions.
         "_gates": gates,
