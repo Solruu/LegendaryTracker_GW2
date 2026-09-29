@@ -3558,3 +3558,52 @@ horaire de meta — n'y apparaitra jamais toute seule.
 que `gw2_pages_a_capturer_v13.py` fusionne dans la sortie. Editer la sortie ne
 sert a rien ; editer l'entree marche. La file passe a 7 URLs, les deux pages de
 la banniere comprises.
+
+## BX — 29/09/2026 : le bon nœud était le pennon, pas la bannière
+
+J'avais ecrit, noir sur blanc, ce que je ferais quand la page arriverait :
+`recipe_banner_of_the_commander` portant 100 eclats inscrits. **C'etait faux.**
+La table vendeur de Lady Camilla le dit :
+
+| objet | cout |
+|---|---|
+| Lacquered Banner Pole | 1 Vial of Awakened Blood + 10 Ectoplasme + 10 Bois ancien + **100 Eclats** |
+| **Recipe: Banner Pennon** | **100 Eclats** |
+| Recipe: Banner of the Commander | **1 po**, zero eclat |
+
+Les 200 annonces par `vision_i_awakening` se decomposent en 100 (le mat) +
+100 (**la feuille du pennon**) — le pennon que j'avais classe « n'en demande
+aucun » apres avoir lu sa seule boite Recipe, sans chercher si sa RECETTE
+s'achetait.
+
+Mon erreur d'origine n'etait donc pas de reclamer une capture : c'etait de
+deduire QUELLE page reclamer a partir d'une elimination incomplete. J'avais
+deux candidats, j'en ai elimine un sur une lecture partielle, et j'ai designe
+l'autre par defaut.
+
+### Ce qui est pose
+
+- `recipe_banner_pennon` (apiId 87988), enfant `inscribed_shard: 100`, parent
+  `banner_pennon`. Le parseur vendeur en tirait deja la ligne.
+- `recipe_banner_of_the_commander` (apiId 87865), `account_unlock`,
+  `prix_cuivre: 10000` — meme famille que les 23 feuilles a 10 po
+  d'ACHATS_UNIQUES. Un poste en or, pas en eclats.
+- L'arete directe `vision__onetime: 100` est retiree. Les trois exigences
+  passent desormais toutes par des parents, **et l'avertissement de double
+  comptage s'est eteint sans qu'on lui ait rien declare** — c'est ce qui etait
+  annonce, pour une raison qui ne l'etait pas.
+
+Total Vision : **300 eclats**, inchange. 100 pour le Gift of Crystalline Magic —
+qu'Antoine maintient et que l'arbre porte depuis le debut —, 100 pour le mat,
+100 pour la feuille du pennon.
+
+### La liste manuelle n'etait pas verifiee
+
+`PAGES_MANUELLES.md` fusionnait ses URL sans consulter l'index de contenu,
+contrairement a toutes les sections calculees. Resultat : une page capturee
+restait dans la file et la redemandait indefiniment. **Une entree tenue a la
+main n'a pas le droit d'etre moins verifiee qu'une entree deduite.**
+
+`gw2_pages_a_capturer_v14.py` la filtre par `capturee()`, et signale en fin de
+passe les URL devenues inutiles pour qu'on les efface de l'entree. Les deux de
+la banniere sont sorties ainsi. Le piege attendait les 18 horaires de meta.

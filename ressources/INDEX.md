@@ -1142,6 +1142,14 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `ruby_shard.html` | Ruby Shard | article complet | 2026-09-28 |
 | `saffron_thread.html` | Saffron Thread | article complet | 2026-09-28 |
 | `shallot.html` | Shallot | article complet | 2026-09-28 |
+| `black_peppercorn.html` | Black Peppercorn | article complet | 2026-09-29 |
+| `carnelian_lump.html` | Carnelian Lump | article complet | 2026-09-29 |
+| `lady_camilla.html` | Lady Camilla | article complet | 2026-09-29 |
+| `lapis_lump.html` | Lapis Lump | article complet | 2026-09-29 |
+| `peridot_lump.html` | Peridot Lump | article complet | 2026-09-29 |
+| `pile_of_filthy_essence.html` | Pile of Filthy Essence | article complet | 2026-09-29 |
+| `recipe_banner_of_the_commander.html` | Recipe: Banner of the Commander | article complet | 2026-09-29 |
+| `recipe_banner_pennon.html` | Recipe: Banner Pennon | article complet | 2026-09-29 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

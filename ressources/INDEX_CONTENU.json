@@ -4391,6 +4391,15 @@
   "aretes_table": []
  },
  {
+  "page": "black_peppercorn",
+  "titre": "Black Peppercorn",
+  "api_id": 12236,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "blended_leather_sheet",
   "titre": "Blended Leather Sheet",
   "api_id": 80723,
@@ -5348,6 +5357,32 @@
      ]
     ],
     "produit": "Carcharias"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "carnelian_lump",
+  "titre": "Carnelian Lump",
+  "api_id": 24472,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "125",
+    "ingredients": [
+     [
+      "Pile_of_Shimmering_Dust",
+      1
+     ],
+     [
+      "Carnelian_Nugget",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Carnelian Lump"
    }
   ],
   "couts_vendeur": [],
@@ -20822,11 +20857,46 @@
   "aretes_table": []
  },
  {
+  "page": "lady_camilla",
+  "titre": "Lady Camilla",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "lamplighters_badge",
   "titre": "Lamplighter's Badge",
   "api_id": 97790,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "lapis_lump",
+  "titre": "Lapis Lump",
+  "api_id": 24507,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "125",
+    "ingredients": [
+     [
+      "Pile_of_Shimmering_Dust",
+      1
+     ],
+     [
+      "Lapis_Nugget",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Lapis Lump"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -24977,6 +25047,32 @@
   ]
  },
  {
+  "page": "peridot_lump",
+  "titre": "Peridot Lump",
+  "api_id": 24504,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "125",
+    "ingredients": [
+     [
+      "Pile_of_Shimmering_Dust",
+      1
+     ],
+     [
+      "Peridot_Nugget",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Peridot Lump"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "petrified_echovald_sapling",
   "titre": "Petrified Echovald Sapling",
   "api_id": null,
@@ -25404,6 +25500,64 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "pile_of_filthy_essence",
+  "titre": "Pile of Filthy Essence",
+  "api_id": 24333,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Foul_Essence",
+      2
+     ],
+     [
+      "Bottle_of_Elonian_Wine",
+      1
+     ],
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Pile of Filthy Essence"
+   },
+   {
+    "sortie": 3,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Foul_Essence",
+      6
+     ],
+     [
+      "Mystic_Binding_Agent",
+      1
+     ],
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Pile of Filthy Essence"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -26997,6 +27151,29 @@
    {
     "objet": "Castora:_Hero%27s_Choice_Chest",
     "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_banner_of_the_commander",
+  "titre": "Recipe: Banner of the Commander",
+  "api_id": 87865,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "recipe_banner_pennon",
+  "titre": "Recipe: Banner Pennon",
+  "api_id": 87988,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Inscribed_Shard",
+    "qty": 100
    }
   ],
   "aretes_table": []

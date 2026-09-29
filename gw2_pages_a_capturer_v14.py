@@ -43,6 +43,7 @@ Sortie unique : `PAGES_A_CAPTURER.md`. Les URLs brutes, une par ligne, sont
 dans son dernier bloc. Le `.txt` qui les dupliquait a ete supprime en v4.
 """
 import json
+import urllib.parse as _up
 import re
 import unicodedata
 from urllib.parse import quote, unquote
@@ -260,7 +261,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v13.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
@@ -429,12 +430,22 @@ manquantes = introuvables
 # Elle vit donc dans `ressources/PAGES_MANUELLES.md`, une ligne par URL,
 # `#` pour un commentaire. Le generateur la lit et la fusionne. Editer la
 # sortie ne sert a rien ; editer l'entree marche.
-MANUELLES = []
+# La liste manuelle est filtree par l'index de contenu, comme les sections
+# calculees. Sans ce filtre, une URL y reste apres la capture et redemande
+# indefiniment une page deja au depot -- ce qui est exactement le reproche que
+# la file fait aux autres. Une entree tenue a la main n'a pas le droit d'etre
+# moins verifiee qu'une entree deduite.
+MANUELLES, _manu_servies = [], []
 _fman = HERE / "ressources" / "PAGES_MANUELLES.md"
 if _fman.exists():
     for _l in _fman.read_text(encoding="utf-8").splitlines():
         _l = _l.strip()
-        if _l.startswith("http"):
+        if not _l.startswith("http"):
+            continue
+        _titre = _up.unquote(_l.rsplit("/", 1)[-1])
+        if capturee(_titre):
+            _manu_servies.append(_l)
+        else:
             MANUELLES.append(_l)
 urls.extend(MANUELLES)
 
@@ -458,3 +469,8 @@ print(f"3 — composants sans apiId ni page    : {len(sans_id)}")
 print(f"4 — collections incompletes          : {len(collections_vides)} ({len(manquantes)} sans capture)")
 print(f"3 bis — cout d'obtention inconnu        : {len(inconnus)}")
 print(f"PAGES_A_CAPTURER.md ecrit — {len(propres)} URLs uniques")
+if _manu_servies:
+    print(f"  liste manuelle : {len(_manu_servies)} URL(s) desormais au depot, retirees de la "
+          f"sortie — a effacer de ressources/PAGES_MANUELLES.md")
+    for _u in _manu_servies:
+        print(f"    {_u}")

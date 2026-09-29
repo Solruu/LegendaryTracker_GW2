@@ -3809,7 +3809,7 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_crystalline_magic",
         "lacquered_banner_pole",
-        "vision"
+        "recipe_banner_pennon"
       ],
       "farmable": true,
       "sources": [
@@ -3834,7 +3834,7 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_crystalline_magic": 100,
         "lacquered_banner_pole": 100,
-        "vision__onetime": 100
+        "recipe_banner_pennon": 100
       },
       "kind": "acquire",
       "cadence": {
@@ -3904,8 +3904,8 @@ const SOURCES_DB = {
       },
       "timegate": true,
       "verified": true,
-      "checked": "2026-09-28",
-      "ref": "wiki:Vision_I:_Awakening annonce Inscribed Shard x 200 pour la Banner of the Commander ; la page du Lacquered Banner Pole en source 100 chez Lady Camilla et celle du Banner Pennon aucun. Les 100 restants sont la feuille de recette, achetee chez la meme vendeuse — decomposition de l'agregat, confirmee en jeu par Antoine",
+      "checked": "2026-09-29",
+      "ref": "page du Lacquered Banner Pole (100 chez Lady Camilla) et page de Recipe: Banner Pennon (100, table vendeur) ; l'agregat de Vision I annonce 200 pour la banniere, les deux feuilles s'additionnent",
       "qty_overlap_verified": [
         "vision"
       ]
@@ -28965,6 +28965,54 @@ const SOURCES_DB = {
       "qty": {
         "vision__onetime": 30
       }
+    },
+    "recipe_banner_pennon": {
+      "name": "Recipe: Banner Pennon",
+      "apiId": 87988,
+      "kind": "intermediate",
+      "needed_for": [
+        "banner_pennon"
+      ],
+      "farmable": false,
+      "sources": [
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "100 éclats inscrits chez Lady Camilla (Campement allié, Domaine de Kourna). Feuille de recette : achetée une seule fois pour le compte.",
+            "en": "100 Inscribed Shards from Lady Camilla (Allied Encampment, Domain of Kourna). Recipe sheet: bought once per account."
+          },
+          "verified": true,
+          "checked": "2026-09-29",
+          "ref": "table vendeur de sa page, section « Domain of Kourna items » de Lady Camilla"
+        }
+      ],
+      "qty": {
+        "banner_pennon": 1
+      },
+      "note": {
+        "fr": "Feuille de recette : un seul achat pour le compte. Elle n'apparaît qu'une fois parce que la bannière elle-même n'est demandée qu'une fois.",
+        "en": "Recipe sheet: a single purchase per account. It appears once because the banner itself is only required once."
+      }
+    },
+    "recipe_banner_of_the_commander": {
+      "name": "Recipe: Banner of the Commander",
+      "apiId": 87865,
+      "kind": "account_unlock",
+      "enseigne": "banner_of_the_commander",
+      "prix_cuivre": 10000,
+      "needed_for": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "1 po chez Lady Camilla (Domaine de Kourna). Payée une seule fois pour le compte, aucun éclat inscrit.",
+            "en": "1g from Lady Camilla (Domain of Kourna). Bought once per account, no Inscribed Shards."
+          }
+        }
+      ],
+      "ref": "section « Domain of Kourna items » de Lady Camilla : data-sort-value 10000 cuivre",
+      "checked": "2026-09-29",
+      "verified": "prix lu dans la table vendeur le 29/09/2026"
     }
   },
   "enchaînements_recommandés": {

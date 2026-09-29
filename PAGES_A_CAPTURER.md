@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v338.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v13.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v339.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -61,18 +61,13 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 5 composants dont le coût d'obtention est inconnu
+## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Black Peppercorn` |
-| `Carnelian Lump` |
-| `Lapis Lump` |
-| `Peridot Lump` |
-| `Pile of Filthy Essence` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -90,14 +85,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 7 pages à capturer
+## URLs — 0 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Black_Peppercorn
-https://wiki.guildwars2.com/wiki/Carnelian_Lump
-https://wiki.guildwars2.com/wiki/Lapis_Lump
-https://wiki.guildwars2.com/wiki/Peridot_Lump
-https://wiki.guildwars2.com/wiki/Pile_of_Filthy_Essence
-https://wiki.guildwars2.com/wiki/Recipe:_Banner_of_the_Commander
-https://wiki.guildwars2.com/wiki/Lady_Camilla
 ```
