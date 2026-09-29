@@ -85,7 +85,22 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 0 pages à capturer
+## URLs — 15 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Octovine
+https://wiki.guildwars2.com/wiki/Night_and_the_Enemy
+https://wiki.guildwars2.com/wiki/Chak_Gerent
+https://wiki.guildwars2.com/wiki/Aetherblade_Assault
+https://wiki.guildwars2.com/wiki/Kaineng_Blackout
+https://wiki.guildwars2.com/wiki/Gang_War
+https://wiki.guildwars2.com/wiki/Junundu_Rising
+https://wiki.guildwars2.com/wiki/Forged_with_Fire
+https://wiki.guildwars2.com/wiki/Doppelganger
+https://wiki.guildwars2.com/wiki/Palawadan
+https://wiki.guildwars2.com/wiki/The_Battle_for_the_Jade_Sea
+https://wiki.guildwars2.com/wiki/Defense_of_Amnytas
+https://wiki.guildwars2.com/wiki/Convergence:_Mount_Balrior
+https://wiki.guildwars2.com/wiki/Unlocking_the_Wizard%27s_Tower
+https://wiki.guildwars2.com/wiki/Frozen_Maw
 ```

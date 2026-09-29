@@ -3607,3 +3607,31 @@ main n'a pas le droit d'etre moins verifiee qu'une entree deduite.**
 `gw2_pages_a_capturer_v14.py` la filtre par `capturee()`, et signale en fin de
 passe les URL devenues inutiles pour qu'on les efface de l'entree. Les deux de
 la banniere sont sorties ainsi. Le piege attendait les 18 horaires de meta.
+
+## BY — 29/09/2026 : la file à zéro pendant qu'il manque 33 sources
+
+Antoine : « s'il attend les pages, et que les URLs de capture sont à 0… on fait
+quoi ? ». Rien, tant que la file ne les demande pas.
+
+Le § 12 attend les horaires de meta depuis deux jours, et la file affichait 0.
+Elle ne pouvait pas faire autrement : **elle deduit ses lignes de l'arbre**, et
+aucun composant ne reclame la page d'un horaire. Un besoin reel restait
+invisible a l'outil cense le rendre visible — et je venais de construire
+l'entree qui sert exactement a ca sans y mettre le besoin qui l'avait motivee.
+
+`ressources/PAGES_MANUELLES.md` porte donc les 33 entrees a horaire sans `ref`,
+en trois groupes, parce qu'elles ne demandent pas le meme travail :
+
+- **15 URLs posees.** Les titres sont DEDUITS du nom de la meta. Deux 404 et une
+  redirection ont deja coute une passe : ils sont annonces comme deduits, pas
+  comme verifies.
+- **7 metas dont je ne sais pas nommer la page.** Leur libelle au depot est une
+  description — « Full meta », « Public Instance », « Nodes LW3 + vendor » — pas
+  un titre. Les inventer produirait exactement les 404 d'avant-hier. Elles sont
+  listees en clair, avec les deux sens du couple `name`/`subname` puisque la
+  convention s'inverse d'une entree a l'autre.
+- **16 entrees `isTimeless`.** Fermes de noeuds ou de vendeurs : aucun horaire a
+  sourcer, leur source est une page de carte ou de vendeur. Elles n'ont rien a
+  faire dans une file d'horaires, et c'etait le piege signale hier.
+
+File : 0 -> **15 URLs**.
