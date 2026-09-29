@@ -1,7 +1,7 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v336.json` et `ressources/INDEX_CONTENU.json` par
-`gw2_pages_a_capturer_v12.py`. **Ne pas éditer à la main** : régénérer.
+Calculé depuis `gw2_sources_v338.json` et `ressources/INDEX_CONTENU.json` par
+`gw2_pages_a_capturer_v13.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
 interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
@@ -90,7 +90,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 5 pages à capturer
+## URLs — 7 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Black_Peppercorn
@@ -98,23 +98,6 @@ https://wiki.guildwars2.com/wiki/Carnelian_Lump
 https://wiki.guildwars2.com/wiki/Lapis_Lump
 https://wiki.guildwars2.com/wiki/Peridot_Lump
 https://wiki.guildwars2.com/wiki/Pile_of_Filthy_Essence
-```
-
-## Le second 100 d'éclats inscrits — à capturer (28/09/2026)
-
-`vision_i_awakening.html` dit, en toutes lettres, que la Banner of the Commander
-demande **200 éclats inscrits**. Les pages que nous avons n'en justifient que
-100, au `Lacquered Banner Pole` chez Lady Camilla. Le `Banner Pennon` se
-fabrique et n'en demande aucun.
-
-Le candidat pour les 100 manquants est la feuille de recette, achetée chez la
-même vendeuse. Aucune de ces deux pages n'est au dépôt :
-
-```
 https://wiki.guildwars2.com/wiki/Recipe:_Banner_of_the_Commander
 https://wiki.guildwars2.com/wiki/Lady_Camilla
 ```
-
-Tant qu'elles manquent, l'arbre compte 200 éclats pour Vision là où le wiki en
-annonce 300. Le manque est documenté, pas comblé : inventer la ligne reviendrait
-à faire coller un total en écrivant un coût qu'aucune page ne porte.

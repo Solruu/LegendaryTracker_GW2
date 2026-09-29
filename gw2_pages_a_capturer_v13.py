@@ -260,7 +260,7 @@ collections_vides.sort(key=lambda x: (x[4], x[1], x[0]))
 urls, out = [], []
 out.append("# Pages wiki à capturer\n")
 out.append(f"Calculé depuis `{SRC.name}` et `ressources/INDEX_CONTENU.json` par")
-out.append("`gw2_pages_a_capturer_v12.py`. **Ne pas éditer à la main** : régénérer.\n")
+out.append("`gw2_pages_a_capturer_v13.py`. **Ne pas éditer à la main** : régénérer.\n")
 out.append("Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est")
 out.append("interrogé avant toute ligne. Chaque page à capturer figure une seule fois,")
 out.append("avec son URL, dans la section « URLs » en fin de fichier.\n")
@@ -417,6 +417,26 @@ if introuvables:
     out.append("avant d'en demander la capture : si le succès est une ligne de collection,")
     out.append("c'est la page de la collection qu'il faut, pas son titre.")
 manquantes = introuvables
+
+# Une liste tenue a la main, a cote de celle que l'arbre deduit.
+#
+# Ce fichier est REGENERE a chaque passe : deux sections ajoutees a la main y
+# ont ete ecrites, puis effacees sans un mot a la regeneration suivante. Une
+# page qu'aucun composant ne reclame — la feuille de recette d'une banniere,
+# l'horaire d'une meta — n'a aucune chance d'apparaitre toute seule, et elle
+# n'a pas a etre recopiee dans le fichier de sortie.
+#
+# Elle vit donc dans `ressources/PAGES_MANUELLES.md`, une ligne par URL,
+# `#` pour un commentaire. Le generateur la lit et la fusionne. Editer la
+# sortie ne sert a rien ; editer l'entree marche.
+MANUELLES = []
+_fman = HERE / "ressources" / "PAGES_MANUELLES.md"
+if _fman.exists():
+    for _l in _fman.read_text(encoding="utf-8").splitlines():
+        _l = _l.strip()
+        if _l.startswith("http"):
+            MANUELLES.append(_l)
+urls.extend(MANUELLES)
 
 vus, propres = set(), []
 for u in urls:

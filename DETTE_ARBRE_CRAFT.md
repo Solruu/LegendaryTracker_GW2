@@ -3510,3 +3510,51 @@ cascades, donc « risque d'etre compte deux fois ». Ici c'est faux : ce sont
 trois exigences distinctes, le don, le mat et la feuille. La regle ne peut pas
 le savoir sans qu'on le lui dise, et l'affaiblir pour faire taire un cas juste
 lui ferait rater les vrais. On garde l'avertissement.
+
+## BW — 28/09/2026 : la bonne page, et ce que l'avertissement disait vraiment
+
+Antoine : « si l'audit couine, quelle sera ta réaction dans 2 h ? » — puis
+« ajoute simplement la bonne page au dépôt, elle passera avec le reste ».
+
+Les deux remarques se rejoignent, et elles ont raison contre ma reponse
+precedente.
+
+### L'avertissement n'etait pas du bruit
+
+J'avais ecrit qu'on le gardait parce qu'il etait faux ici. C'est la reponse qui
+use un signal : dans deux heures, sur une autre section, je l'aurais lu comme
+« connu, accepte ».
+
+Le depot a pourtant une declaration prevue pour ca — `qty_overlap_verified`,
+utilisee par `emblem_of_the_conqueror` pour Conflux. **Je ne l'emploie pas
+ici**, et c'est le fond de l'affaire : l'avertissement ne signale pas un
+chevauchement legitime, il signale une **modelisation raccourcie**. Les
+100 eclats de la feuille de recette pendent directement a `vision__onetime`
+parce que le noeud qui devrait les porter n'existe pas.
+
+Declarer le chevauchement aurait fige le raccourci. Poser la page le supprime.
+
+### Ce que je ferai quand la page arrivera
+
+`recipe_banner_of_the_commander`, achat unique pour le compte, enfant
+`inscribed_shard: 100`, rattache a `banner_of_the_commander`. L'arete directe
+`vision__onetime` disparait, les trois exigences repassent toutes par des
+parents, **et l'avertissement s'eteint sans qu'on lui ait rien dit**. Le total
+reste 300.
+
+Meme traitement pour les 3 000 magies volatiles et les 30 lauriers : ils
+pendent aussi a `vision__onetime` faute d'un noeud « les six recettes d'armes ».
+Ils ne declenchent rien aujourd'hui — aucune cascade concurrente — mais c'est le
+meme raccourci.
+
+### Et un defaut de ma main, corrige
+
+J'ai ajoute deux fois une section a la main dans `PAGES_A_CAPTURER.md`. C'est un
+fichier **genere** : les deux ont ete effacees a la regeneration suivante, sans
+un mot. Une page qu'aucun composant ne reclame — une feuille de recette, un
+horaire de meta — n'y apparaitra jamais toute seule.
+
+`ressources/PAGES_MANUELLES.md` est l'entree tenue a la main, une ligne par URL,
+que `gw2_pages_a_capturer_v13.py` fusionne dans la sortie. Editer la sortie ne
+sert a rien ; editer l'entree marche. La file passe a 7 URLs, les deux pages de
+la banniere comprises.
