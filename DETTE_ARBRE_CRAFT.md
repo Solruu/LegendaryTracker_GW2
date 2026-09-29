@@ -3460,3 +3460,53 @@ Autrement dit : cet outil couvre une famille reelle, il en a sorti un defaut des
 sa premiere passe, et il **ne remplace pas** la lecture des agregats page par
 page. Le dire evite de croire la chaine complete parce qu'un rapport de plus
 affiche zero.
+
+## BV — 28/09/2026 : décomposer ce qu'on a, au lieu de réclamer ce qu'on n'a pas
+
+Antoine : « une page ne sert qu'une fois lue. Ne peux-tu pas rajouter un "une
+fois par compte" pour les recettes, en décomposant CE QUE TU AS DÉJÀ AU WIKI ? »
+
+Il a raison, et mon refus etait mal place. Je tenais a la capture de la feuille
+de recette alors que l'agregat qui donne son cout etait deja au depot. **Une
+soustraction entre deux valeurs sourcees n'est pas une invention.**
+
+### Les éclats : 200 annoncés − 100 sourcés = 100
+
+`vision_i_awakening` annonce 200 eclats pour la Banner of the Commander. La page
+du `Lacquered Banner Pole` en source 100 chez Lady Camilla, celle du
+`Banner Pennon` aucun. Les 100 restants sont la feuille de recette, achetee chez
+la meme vendeuse — et elle s'achete **une fois pour le compte**.
+
+`inscribed_shard.qty` recoit `vision__onetime: 100`, a cote de ses deux aretes
+en cascade. Total Vision : **300**, comme Antoine le disait.
+
+### Les recettes d'armes : 3 000 et non 1 000
+
+La meme page ecrit « Any six Dragonsblood weapons, requiring a minimum of …
+Laurel x 30 **and Volatile Magic x 3000 in total for weapon recipes** ». L'arbre
+portait `volatile_magic: {vision: 1000}` — un nombre qu'aucune page ne soutient
+— et **le laurier n'existait pas**.
+
+Les deux passent en `vision__onetime` : 3 000 magies volatiles et 30 lauriers,
+une seule fois pour le compte. Le suffixe existait deja (`obsidian__onetime`),
+aucun champ nouveau.
+
+### Ce que ca a demande autour
+
+- `laurel` cree, apiId 3, monnaie de portefeuille ;
+- `_meta.direct_sync.leg_currency_ids.vision` le declare, sans quoi l'audit
+  refuse une carte que la synchro ne sait pas remplir ;
+- trois cartes du JSX mises d'accord avec l'arbre — 300, 3 000, et une carte
+  laurier — chacune avec l'`aside` qui dit d'ou vient le nombre. L'audit avait
+  bloque sur les deux premieres : la table ecrite a la main doit suivre.
+
+**`gw2_confronte_agregats_v1.py` passe de 1 depassement a 0.** Le controle ecrit
+hier pour cette famille valide aujourd'hui sa propre correction.
+
+### Un avertissement attendu, qu'on garde
+
+L'audit signale que `inscribed_shard` atteint Vision en direct ET par deux
+cascades, donc « risque d'etre compte deux fois ». Ici c'est faux : ce sont
+trois exigences distinctes, le don, le mat et la feuille. La regle ne peut pas
+le savoir sans qu'on le lui dise, et l'affaiblir pour faire taire un cas juste
+lui ferait rater les vrais. On garde l'avertissement.

@@ -674,6 +674,7 @@
      "incense": 86093,
      "inscribed_shard": 87645,
      "kralkatite": 86069,
+     "laurel": 3,
      "mistonium": 88955,
      "rose_quartz": 86269,
      "vm": 45
@@ -3025,7 +3026,8 @@
    "apiId": 87645,
    "needed_for": [
     "gift_of_crystalline_magic",
-    "lacquered_banner_pole"
+    "lacquered_banner_pole",
+    "vision"
    ],
    "farmable": true,
    "sources": [
@@ -3049,7 +3051,8 @@
    ],
    "qty": {
     "gift_of_crystalline_magic": 100,
-    "lacquered_banner_pole": 100
+    "lacquered_banner_pole": 100,
+    "vision__onetime": 100
    },
    "kind": "acquire",
    "cadence": {
@@ -3119,8 +3122,8 @@
    },
    "timegate": true,
    "verified": true,
-   "checked": "2026-08-22",
-   "ref": "wiki:Inscribed_Shard (capture Antoine 22/08/2026)"
+   "checked": "2026-09-28",
+   "ref": "wiki:Vision_I:_Awakening annonce Inscribed Shard x 200 pour la Banner of the Commander ; la page du Lacquered Banner Pole en source 100 chez Lady Camilla et celle du Banner Pennon aucun. Les 100 restants sont la feuille de recette, achetee chez la meme vendeuse — decomposition de l'agregat, confirmee en jeu par Antoine"
   },
   "lump_of_mistonium": {
    "name": "Lump of Mistonium",
@@ -11133,7 +11136,7 @@
    "apiId": 45,
    "kind": "currency",
    "qty": {
-    "vision": 1000
+    "vision__onetime": 3000
    },
    "farmable": true,
    "sources": [
@@ -11151,8 +11154,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
+   "checked": "2026-09-28",
+   "ref": "wiki:Vision_I:_Awakening, bloc « Any six Dragonsblood weapons, requiring a minimum of … Laurel x 30 and Volatile Magic x 3000 in total for weapon recipes »",
    "cadence": {
     "sources": [
      {
@@ -11202,7 +11205,10 @@
      }
     ]
    },
-   "timegate": true
+   "timegate": true,
+   "needed_for": [
+    "vision"
+   ]
   },
   "aether_rich_sap": {
    "name": "Aether-Rich Sap",
@@ -28149,6 +28155,30 @@
    ],
    "qty": {
     "pile_of_vile_essence": 2
+   }
+  },
+  "laurel": {
+   "name": "Laurel",
+   "apiId": 3,
+   "kind": "acquire",
+   "needed_for": [
+    "vision"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Monnaie de portefeuille (coffre du Magicien). Sert ici aux six recettes d'armes de sang de dragon : 30 en tout, une seule fois pour le compte.",
+      "en": "Wallet currency (Wizard's Vault). Used here for the six Dragonsblood weapon recipes: 30 in total, once per account."
+     },
+     "verified": true,
+     "checked": "2026-09-28",
+     "ref": "wiki:Vision_I:_Awakening, bloc « Any six Dragonsblood weapons, requiring a minimum of … Laurel x 30 and Volatile Magic x 3000 in total for weapon recipes »"
+    }
+   ],
+   "qty": {
+    "vision__onetime": 30
    }
   }
  },
