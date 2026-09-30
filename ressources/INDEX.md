@@ -18,12 +18,17 @@ que le parseur a laissé tomber.
 
 ## Portée des captures
 
-Deux profondeurs coexistent, à connaître avant de parser :
+Trois profondeurs coexistent, à connaître avant de parser :
 
 | profondeur | contenu | fichiers concernés |
 |---|---|---|
-| article complet | `#bodyContent` entier : encadré d'objet, acquisition, utilisations, notes | toutes les pages `wiki/` sans suffixe |
-| section seule | le tableau `NPC \| Level \| Rank \| Locations \| Quantity` uniquement | les trois `__dropped_by` |
+| article complet | innerHTML de `<div id="content">` : `a#top`, `#siteNotice`, `#firstHeading`, puis `#bodyContent` entier — encadré d'objet, acquisition, utilisations, notes | la majorité des pages `wiki/` |
+| article filtré | idem, **moins une section nommée**, remplacée sur place par un commentaire HTML qui nomme la section, la date et le nombre d'octets coupés | 70 fichiers, tous « Available prefixes » |
+| section seule | le tableau `NPC \| Level \| Rank \| Locations \| Quantity` uniquement | les 12 `__dropped_by`, dont 4 suffixés `_p2` (débordement de la table) |
+
+La portée était `#bodyContent` jusqu'au lot 7 (05/09/2026) ; elle est passée à
+`<div id="content">` ensuite. Les captures antérieures n'ont pas été reprises :
+un `#firstHeading` absent n'est donc pas une anomalie de page.
 
 ## Les huit lignes de trophées, tous paliers
 
@@ -1150,6 +1155,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `pile_of_filthy_essence.html` | Pile of Filthy Essence | article complet | 2026-09-29 |
 | `recipe_banner_of_the_commander.html` | Recipe: Banner of the Commander | article complet | 2026-09-29 |
 | `recipe_banner_pennon.html` | Recipe: Banner Pennon | article complet | 2026-09-29 |
+| `controls.html` | Controls | article complet | 2026-09-18 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
