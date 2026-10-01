@@ -1692,7 +1692,7 @@ trouver, a un cran comme a six. Les declarer demanderait un champ nouveau —
 
 ### 6. Coordination entre sessions
 
-`gw2_garde_concurrence_v1.py` se lance apres le clone et avant le push. Les
+`gw2_garde_concurrence_v2.py` se lance apres le clone et avant le push. Les
 sessions cowork ne peuvent pas pousser — proxy 403, bug produit ouvert sans
 contournement dans l'interface. Leur livraison passe par zip, qui ne transporte
 aucun `.py` : les deux cotes numerotent les memes outils sans se voir.

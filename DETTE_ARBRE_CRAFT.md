@@ -3635,3 +3635,50 @@ en trois groupes, parce qu'elles ne demandent pas le meme travail :
   faire dans une file d'horaires, et c'etait le piege signale hier.
 
 File : 0 -> **15 URLs**.
+
+## BZ — 30/09/2026 : les horaires ne sont pas dans le HTML, sauf un
+
+20 pages capturees. **Une seule porte son horaire** : `The Frozen Maw`, dont le
+tableau est ecrit en wikitexte — les heures vivent dans des attributs
+`data-time-hh` / `data-time-mm`. Les dix-neuf autres affichent leur section
+« Event schedule » par **le meme widget Lua qu'`Event_timers`** : le HTML ne
+contient que la feuille de style, aucune heure.
+
+Capturer les pages de meta une par une ne donne donc pas les horaires. C'est le
+meme mur qu'avant-hier, un cran plus loin : on a change de page, pas de
+mecanisme de rendu.
+
+### Ce que ca a quand meme donne
+
+`bf_meta`, le Frozen Maw : le JSX disait offset **0**, le wiki dit **15**.
+Corrige — « toutes les deux heures a partir de 00:15 », douze departs listes,
+ecart constant de 120 minutes. Premier horaire du depot a etre sourcé.
+
+### Quatre captures qui ne servent pas a ca
+
+Quatre titres de ma liste du 29/09 pointaient le mauvais TYPE de page : un boss
+ou une carte, pas la meta. `Octovine` et `Legendary Chak Gerent` sont des
+creatures, `Palawadan, Jewel of Istan` et `Dragon's Stand` des lieux. Elles
+repondent 200, elles n'ont pas de section horaire du tout. Elles restent au
+depot — elles ne servent juste pas a ca, et `PAGES_MANUELLES.md` le dit
+desormais pour qu'on ne les redemande pas.
+
+### Avant d'en redemander
+
+La question a trancher n'est pas « quelle page », c'est **si le harnais peut
+enregistrer le DOM APRES execution du widget**. Antoine a mentionne un
+classificateur qui autorise l'execution JS : si la capture se fait avant que le
+widget ait tourne, une attente suffirait. Sinon cette voie est fermee et il faut
+une autre source. Rien n'est remis en file tant que ce point n'est pas regle.
+
+### Un effet du rangement, corrige
+
+Le deplacement des outils dans `scripts_tracker/<domaine>/` a rendu la garde de
+concurrence **decorative sans rien dire** : elle parcourait la racine sans
+descendre, et `ls-tree` sans `-r` ne rend que le premier niveau. Elle annoncait
+« 3 familles versionnees » au lieu de 52 — donc elle ne surveillait plus ni les
+doublons de version ni les collisions de numerotation sur quarante-neuf
+familles.
+
+`gw2_garde_concurrence_v2.py` descend des deux cotes. **52 familles**, une seule
+version chacune.

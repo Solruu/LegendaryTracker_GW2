@@ -1156,6 +1156,26 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `recipe_banner_of_the_commander.html` | Recipe: Banner of the Commander | article complet | 2026-09-29 |
 | `recipe_banner_pennon.html` | Recipe: Banner Pennon | article complet | 2026-09-29 |
 | `controls.html` | Controls | article complet | 2026-09-18 |
+| `a_titanic_voyage.html` | A Titanic Voyage | article complet | 2026-10-01 |
+| `aetherblade_assault.html` | Aetherblade Assault | article complet | 2026-10-01 |
+| `convergence_mount_balrior.html` | Convergence: Mount Balrior | article complet | 2026-10-01 |
+| `dragons_stand.html` | Dragon's Stand | article complet | 2026-10-01 |
+| `forged_with_fire.html` | Forged with Fire | article complet | 2026-10-01 |
+| `hammerhart_rumble.html` | Hammerhart Rumble! | article complet | 2026-10-01 |
+| `junundu_rising.html` | Junundu Rising | article complet | 2026-10-01 |
+| `kaineng_blackout.html` | Kaineng Blackout | article complet | 2026-10-01 |
+| `legendary_chak_gerent.html` | Legendary Chak Gerent | article complet | 2026-10-01 |
+| `night_and_the_enemy.html` | Night and the Enemy | article complet | 2026-10-01 |
+| `octovine.html` | Octovine | article complet | 2026-10-01 |
+| `palawadan_jewel_of_istan.html` | Palawadan, Jewel of Istan | article complet | 2026-10-01 |
+| `secrets_of_the_weald.html` | Secrets of the Weald | article complet | 2026-10-01 |
+| `shackles_of_the_ancients.html` | Shackles of the Ancients | article complet | 2026-10-01 |
+| `the_battle_for_the_jade_sea.html` | The Battle for the Jade Sea | article complet | 2026-10-01 |
+| `the_defense_of_amnytas.html` | The Defense of Amnytas | article complet | 2026-10-01 |
+| `the_frozen_maw.html` | The Frozen Maw | article complet | 2026-10-01 |
+| `the_gang_war_of_echovald.html` | The Gang War of Echovald | article complet | 2026-10-01 |
+| `the_path_to_ascension.html` | The Path to Ascension | article complet | 2026-10-01 |
+| `unlocking_the_wizards_tower.html` | Unlocking the Wizard's Tower | article complet | 2026-10-01 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
