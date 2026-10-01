@@ -139,16 +139,16 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `nevermore_ii_ravenswood_staff.html` | Nevermore II: Ravenswood Staff | collection, 14 objets | 2026-09-01 |
 | `nevermore_iii_the_raven_staff.html` | Nevermore III: The Raven Staff | collection, 34 objets | 2026-09-01 |
 | `nevermore_iv_the_raven_spirit.html` | Nevermore IV: The Raven Spirit | collection, 63 objets | 2026-09-01 |
-| `chuka_i_hunters_journal.html` | Chuka and Champawat I: Hunter's Journal | collection, 20 objets | 2026-09-01 |
-| `chuka_i_the_hunt.html` | Chuka and Champawat I: The Hunt | collection, 7 objets | 2026-09-01 |
-| `chuka_ii_ambush.html` | Chuka and Champawat II: Ambush | collection, 16 objets | 2026-09-01 |
-| `chuka_iii_tigris.html` | Chuka and Champawat III: Tigris | collection, 20 objets | 2026-09-01 |
-| `chuka_iv_a_nontraditional_family.html` | Chuka and Champawat IV: A Nontraditional Family | collection, 9 objets | 2026-09-01 |
+| `chuka_and_champawat_i_hunters_journal.html` | Chuka and Champawat I: Hunter's Journal | collection, 20 objets | 2026-09-01 |
+| `chuka_and_champawat_i_the_hunt.html` | Chuka and Champawat I: The Hunt | collection, 7 objets | 2026-09-01 |
+| `chuka_and_champawat_ii_ambush.html` | Chuka and Champawat II: Ambush | collection, 16 objets | 2026-09-01 |
+| `chuka_and_champawat_iii_tigris.html` | Chuka and Champawat III: Tigris | collection, 20 objets | 2026-09-01 |
+| `chuka_and_champawat_iv_a_nontraditional_family.html` | Chuka and Champawat IV: A Nontraditional Family | collection, 9 objets | 2026-09-01 |
 | `chuka_and_champawat.html` | Chuka and Champawat | article complet — table de recette en cascade | 2026-09-01 |
-| `chuka_iii_naturalists_journal.html` | Chuka and Champawat III: Naturalist's Journal | collection, 16 objets | 2026-09-01 |
-| `chuka_iv_baby_book.html` | Chuka and Champawat IV: Baby Book | collection, 15 objets | 2026-09-01 |
-| `chuka_iv_secluded_tour.html` | Chuka and Champawat IV: Secluded Tour | collection, 10 objets | 2026-09-01 |
-| `chuka_iv_tiger_training_guide.html` | Chuka and Champawat IV: Tiger Training Guide | collection, 14 objets | 2026-09-01 |
+| `chuka_and_champawat_iii_naturalists_journal.html` | Chuka and Champawat III: Naturalist's Journal | collection, 16 objets | 2026-09-01 |
+| `chuka_and_champawat_iv_baby_book.html` | Chuka and Champawat IV: Baby Book | collection, 15 objets | 2026-09-01 |
+| `chuka_and_champawat_iv_secluded_tour.html` | Chuka and Champawat IV: Secluded Tour | collection, 10 objets | 2026-09-01 |
+| `chuka_and_champawat_iv_tiger_training_guide.html` | Chuka and Champawat IV: Tiger Training Guide | collection, 14 objets | 2026-09-01 |
 | `spirit_of_the_tiger_achievement.html` | Spirit of the Tiger (achievement) | succès Explorateur, 11 tanières — source du how de l'étape Mini Tiger Spirit | 2026-09-01 |
 | `sunrise.html` | Sunrise | article complet — table de recette en cascade | 2026-09-01 |
 | `sunrise_i_the_experimental_daysword.html` | Sunrise I: The Experimental Daysword | collection, 15 objets | 2026-09-01 |
@@ -499,7 +499,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `platinum_ingot.html` | Platinum Ingot | article complet | 2026-09-05 |
 | `seasoned_wood_plank.html` | Seasoned Wood Plank | article complet | 2026-09-05 |
 | `silver_doubloon.html` | Silver Doubloon | article complet | 2026-09-05 |
-| `spark_of_sentience.html` | Spark of Sentience | article complet | 2026-09-05 |
+| `spark_of_sentience.html` | Spark of Sentience | article complet moins « Available prefixes » | 2026-09-18 |
 | `steel_ingot.html` | Steel Ingot | article complet | 2026-09-05 |
 | `war_commendation.html` | War Commendation | article complet | 2026-09-05 |
 | `warcry.html` | Warcry | article complet | 2026-09-05 |

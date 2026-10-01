@@ -5,7 +5,7 @@ echo ================================================
 echo.
 
 REM Resolution de la derniere version du serveur (numerique, pas alphabetique)
-for /f "delims=" %%f in ('python -c "import glob,re;print(max(glob.glob('gw2_flask_server_v*.py'),key=lambda p:int(re.search(r'_v(\d+)\.py$',p).group(1))))"') do set SERVER=%%f
+for /f "delims=" %%f in ('python -c "import glob,re;print(max(glob.glob('scripts_tracker/serveur/gw2_flask_server_v*.py'),key=lambda p:int(re.search(r'_v(\d+)\.py$',p).group(1))))"') do set SERVER=%%f
 if not defined SERVER (
     echo [ERREUR] Aucun gw2_flask_server_v*.py trouve dans ce dossier.
     pause
