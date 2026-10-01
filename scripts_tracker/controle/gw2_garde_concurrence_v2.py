@@ -12,8 +12,8 @@ entiere ecrite sur une base perimee, a refaire.
 
 Ce script se lance DEUX FOIS :
 
-    python3 gw2_garde_concurrence_v1.py            # juste apres le clone
-    python3 gw2_garde_concurrence_v1.py --avant-push   # juste avant de pousser
+    python3 gw2_garde_concurrence_v2.py            # juste apres le clone
+    python3 gw2_garde_concurrence_v2.py --avant-push   # juste avant de pousser
 
 Il ne modifie rien. Il sort en 1 quand il faut s'arreter.
 """
@@ -35,13 +35,18 @@ def git(*args):
 
 def versions(ref=None):
     """{famille: (numero, nom)} pour le repertoire courant ou une reference git."""
+    # Recursif des deux cotes depuis le rangement du 30/09 : les outils sont
+    # dans scripts_tracker/<domaine>/, et `ls-tree` sans -r ne rend que le
+    # premier niveau. Comparer un niveau ici a un niveau en amont ne comparait
+    # plus rien.
     if ref is None:
-        noms = [p.name for p in HERE.iterdir() if p.is_file()]
+        noms = [p.name for p in HERE.rglob("*")
+                if p.is_file() and ".git" not in p.relative_to(HERE).parts]
     else:
-        code, out, _ = git("ls-tree", "--name-only", ref)
+        code, out, _ = git("ls-tree", "-r", "--name-only", ref)
         if code:
             return {}
-        noms = out.splitlines()
+        noms = [l.rsplit("/", 1)[-1] for l in out.splitlines()]
     out = {}
     for n in noms:
         m = FAMILLES.match(n)
@@ -88,11 +93,21 @@ def main():
         if fam in amont and amont[fam][0] > num:
             print(f"COLLISION : {fam} est en v{num} ici et v{amont[fam][0]} en amont.")
             souci += 1
+    # Depuis le rangement du 30/09, les outils versionnes vivent dans
+    # scripts_tracker/<domaine>/. Un parcours non recursif de la racine ne
+    # voyait plus que trois familles sur cinquante : la garde contre le doublon
+    # de version etait devenue decorative sans rien dire. On descend donc dans
+    # l'arborescence, en ecartant ce qui n'est pas du code du depot.
+    IGNORES = {".git", "docs", "node_modules", "__pycache__"}
     doublons = {}
-    for p in HERE.iterdir():
-        m = FAMILLES.match(p.name) if p.is_file() else None
+    for p in HERE.rglob("*"):
+        if not p.is_file():
+            continue
+        if any(part in IGNORES for part in p.relative_to(HERE).parts):
+            continue
+        m = FAMILLES.match(p.name)
         if m:
-            doublons.setdefault(m.group(1), []).append(p.name)
+            doublons.setdefault(m.group(1), []).append(str(p.relative_to(HERE)))
     for fam, noms in sorted(doublons.items()):
         if len(noms) > 1:
             print(f"DOUBLON : {fam} porte {len(noms)} fichiers — {', '.join(sorted(noms))}")
