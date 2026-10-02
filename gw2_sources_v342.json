@@ -1153,7 +1153,9 @@
    ],
    "needs_verification": false,
    "ref": "wiki:Casino_Blitz — « It starts at 00:05, and every two hours after that »",
-   "playtimeMin": 10
+   "playtimeMin": 10,
+   "verified": true,
+   "checked": "2026-10-01"
   },
   "er": {
    "name": {
@@ -1571,7 +1573,9 @@
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
-   "ref": "wiki:Convergence:_Outer_Nayos — « Public instance opens every 3 hours at XX:30, starting from 01:30, for 10 minutes until XX:40 »"
+   "ref": "wiki:Convergence:_Outer_Nayos — « Public instance opens every 3 hours at XX:30, starting from 01:30, for 10 minutes until XX:40 »",
+   "verified": true,
+   "checked": "2026-10-01"
   },
   "mb": {
    "name": {
@@ -1627,6 +1631,163 @@
     "amalgamated_gemstone"
    ],
    "needs_verification": false
+  },
+  "di": {
+   "name": {
+    "fr": "Domaine d'Istan",
+    "en": "Domain of Istan"
+   },
+   "map": {
+    "fr": "Domain of Istan",
+    "en": "Domain of Istan"
+   },
+   "subname": "Palawadan",
+   "offsetUTC": 105,
+   "intervalMin": 120,
+   "durationMin": 30,
+   "playtimeMin": 20,
+   "ref": "Widget:Event timer/data.json — lws4-di, segment « Palawadan » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "obs_sw": {
+   "name": "Skywatch Archipelago",
+   "map": {
+    "fr": "Skywatch Archipelago",
+    "en": "Skywatch Archipelago"
+   },
+   "subname": "Unlocking the Wizard's Tower",
+   "offsetUTC": 60,
+   "intervalMin": 120,
+   "durationMin": 25,
+   "ref": "Widget:Event timer/data.json — soto-sa, segment « Unlocking the Wizard's Tower » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "obs_am": {
+   "name": "Amnytas",
+   "map": {
+    "fr": "Amnytas",
+    "en": "Amnytas"
+   },
+   "subname": "The Defense of Amnytas",
+   "offsetUTC": 0,
+   "intervalMin": 120,
+   "durationMin": 25,
+   "ref": "Widget:Event timer/data.json — soto-am, segment « Defense of Amnytas » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "obs_conv_mb": {
+   "name": "Convergence",
+   "map": {
+    "fr": "Convergence",
+    "en": "Convergence"
+   },
+   "subname": "Mount Balrior (public)",
+   "offsetUTC": 0,
+   "intervalMin": 180,
+   "durationMin": 10,
+   "playtimeMin": 20,
+   "ref": "Widget:Event timer/data.json — public-con, segment « Mount Balrior » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "obs_conv_on": {
+   "name": "Convergence",
+   "map": {
+    "fr": "Convergence",
+    "en": "Convergence"
+   },
+   "subname": "Outer Nayos (public)",
+   "offsetUTC": 90,
+   "intervalMin": 180,
+   "durationMin": 10,
+   "ref": "Widget:Event timer/data.json — public-con, segment « Outer Nayos » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "hammerhart": {
+   "name": {
+    "fr": "Shipwreck Strand",
+    "en": "Shipwreck Strand"
+   },
+   "map": {
+    "fr": "Shipwreck Strand",
+    "en": "Shipwreck Strand"
+   },
+   "subname": {
+    "fr": "Rixe des Hammerhart !",
+    "en": "Hammerhart Rumble!"
+   },
+   "offsetUTC": 40,
+   "intervalMin": 120,
+   "durationMin": 20,
+   "ref": "Widget:Event timer/data.json — voe-ss, segment « Hammerhart Rumble! » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "weald": {
+   "name": {
+    "fr": "Starlit Weald",
+    "en": "Starlit Weald"
+   },
+   "map": {
+    "fr": "Starlit Weald",
+    "en": "Starlit Weald"
+   },
+   "subname": {
+    "fr": "Secrets de la sylve",
+    "en": "Secrets of the Weald"
+   },
+   "offsetUTC": 100,
+   "intervalMin": 120,
+   "durationMin": 35,
+   "playtimeMin": 25,
+   "ref": "Widget:Event timer/data.json — voe-sw, segment « Secrets of the Weald » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "shackles": {
+   "name": {
+    "fr": "Eternity's Garden",
+    "en": "Eternity's Garden"
+   },
+   "map": {
+    "fr": "Eternity's Garden",
+    "en": "Eternity's Garden"
+   },
+   "subname": {
+    "fr": "Entraves des Anciens",
+    "en": "Shackles of the Ancients"
+   },
+   "offsetUTC": 75,
+   "intervalMin": 120,
+   "durationMin": 25,
+   "playtimeMin": 50,
+   "ref": "Widget:Event timer/data.json — voe-eg, segment « Shackles of the Ancients » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
+  },
+  "titanic": {
+   "name": {
+    "fr": "Bava Nisos",
+    "en": "Bava Nisos"
+   },
+   "map": {
+    "fr": "Bava Nisos",
+    "en": "Bava Nisos"
+   },
+   "subname": {
+    "fr": "Un voyage titanesque",
+    "en": "A Titanic Voyage"
+   },
+   "offsetUTC": 80,
+   "intervalMin": 120,
+   "durationMin": 25,
+   "ref": "Widget:Event timer/data.json — jw-bn, segment « A Titanic Voyage » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true
   }
  },
  "resources": {

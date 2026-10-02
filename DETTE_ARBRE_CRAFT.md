@@ -3795,3 +3795,60 @@ disparaitre `vb` du lot.
 Confrontation : **0 ecart de decalage, 0 ecart de fenetre, 0 desaccord entre les
 deux tables.** Les 18 cles du JSX hors base restent non confrontees — c'est la
 fusion du § 12 qui les ouvrira, et le widget les porte deja.
+
+## CC — 01/10/2026 : § 12, premier pas — et la table n'était pas ce que je disais
+
+### Ce que la mesure a corrigé d'abord
+
+J'ai decrit le tableau `metas:` du JSX comme « une seconde table d'horaires ».
+C'est faux. C'est une liste d'**activites par legendaire** : 112 entrees,
+78 cles distinctes, trois natures melangees.
+
+| nature | nombre | ce que c'est |
+|---|---:|---|
+| metas a horaire | **27** | un `offsetUTC` reel |
+| fermes `isTimeless` | 12 | noeuds, vendeurs — pas d'horaire |
+| postes de farm | 38 | `clovers`, `ectos`, `tier1`, `lodestones`, `provisioner`… |
+
+Fusionner les 78 dans `meta_events` aurait melange trois choses. Seules les 27
+relevent d'un catalogue d'horaires — dix-sept y etaient deja, **dix n'y
+etaient pas**.
+
+### Les dix, posées avec leur source
+
+`gw2_catalogue_metas_v1.py` les ajoute a `meta_events`, horaire lu dans le
+widget via l'appariement partage. Neuf sur dix trouvent leur segment ; seul
+`bf_meta` n'en a pas, le Frozen Maw etant un boss de monde — son horaire reste
+celui de sa page, deja sourcé.
+
+Ce que ca a corrige, et qu'aucun outil ne regardait :
+
+- **`di` Palawadan : decalage 0 -> 105.** Palawadan part a 01:45, pas a minuit.
+  Une heure quarante-cinq d'erreur sur une meta qu'Antoine farme.
+- `di` fenetre 20 -> 30, `obs_conv_mb` 20 -> 10, `weald` 25 -> 35,
+  `shackles` 50 -> 25.
+
+La confrontation passe de 17 a **26 accords**, et le desaccord JSX/base retombe
+a zero.
+
+### Deux pièges du côté des noms
+
+`apparie` cherche la carte dans `map`. Les entrees venues du JSX n'en avaient
+pas : il a fallu leur poser la carte du widget, sans quoi les neuf nouvelles
+redevenaient invisibles a la confrontation **apres** y etre entrees.
+
+Et la convention `name`/`subname` s'inverse d'une entree a l'autre : Starlit
+Weald, Eternity's Garden et Shipwreck Strand sont des CARTES rangees en
+`subname`, leurs metas etant « Secrets of the Weald », « Shackles of the
+Ancients », « Hammerhart Rumble! ». L'outil tente donc les deux sens — cinq
+appariements sur dix en dependaient.
+
+### Ce qui reste du § 12
+
+1. **14 cles du JSX restent hors base** — les 12 `isTimeless` et deux autres.
+   Elles n'ont pas d'horaire, donc pas leur place ici ; leur sort se decide avec
+   le filtre par ressource, pas avec le catalogue.
+2. **Le JSX porte toujours sa table.** Le catalogue existe et concorde, mais
+   l'affichage lit encore ses propres valeurs. Tant que les deux existent, la
+   confrontation est le seul garde-fou — et c'est un rapport, pas un audit.
+3. **`rewards` et le filtre** ne sont pas commences.
