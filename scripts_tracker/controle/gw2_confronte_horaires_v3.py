@@ -73,6 +73,49 @@ def frise(ev):
     return out
 
 
+def apparie(metas, events, par_carte):
+    """{cle meta: (evenement, ref segment, segment, (dec, inter, fenetre))}.
+
+    L'appariement etait enferme dans `main()`. Un second outil en a ecrit un
+    autre, plus simple -- par (decalage, intervalle) -- et il a joint `er` a
+    « Defending Tarir (Pylons) » et la monnaie `karma` au Death-Branded
+    Shatterer : des dizaines d'evenements partagent le meme couple. Un seul
+    appariement, celui qui a ete valide par 17 accords, et il s'appelle d'ici.
+    """
+    out = {}
+    for mk, m in metas.items():
+        if not isinstance(m, dict):
+            continue
+        carte, sous = norm(en(m.get("map"))), norm(en(m.get("subname")))
+        nom = norm(en(m.get("name")))
+        trouve = None
+        if mk in CORRESPONDANCES:
+            pose = CORRESPONDANCES[mk]
+            if pose is None:
+                out[mk] = None
+                continue
+            k, r = pose
+            ev = events.get(k)
+            if ev:
+                seg = (ev.get("segments") or {}).get(r) or {}
+                trouve = (k, r, seg, frise(ev).get(str(r)))
+        for k, ev in ([] if trouve else par_carte.get(carte, [])):
+            f = frise(ev)
+            for r, seg in (ev.get("segments") or {}).items():
+                ns = norm(seg.get("name"))
+                if not ns:
+                    continue
+                if sous and (ns == sous or sous in ns or ns in sous):
+                    trouve = (k, r, seg, f.get(str(r)))
+                    break
+                if nom and (ns == nom or nom in ns):
+                    trouve = (k, r, seg, f.get(str(r)))
+            if trouve:
+                break
+        out[mk] = trouve
+    return out
+
+
 def main():
     w = json.load(open(WIDGET, encoding="utf-8"))
     events = w["events"]

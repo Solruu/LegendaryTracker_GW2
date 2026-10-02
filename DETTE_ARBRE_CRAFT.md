@@ -3737,3 +3737,61 @@ metas que le JSX porte seul : Starlit Weald, Eternity's Garden, Shipwreck
 Strand, Domain of Istan, Lake Doric, Wizard's Tower, Eye of the North, Janthir
 Syntri. **La fusion des deux tables sourcerait d'un coup une dizaine
 d'horaires de plus**, sans une capture supplementaire.
+
+## CB — 01/10/2026 : la fenêtre et le temps de jeu sont deux choses
+
+Antoine a tranche : `durationMin` doit dire **combien de temps la fenetre reste
+ouverte**, pas combien de temps la meta prend. Le raisonnement tient tout seul —
+une meta finie en quinze minutes ne raccourcit pas sa fenetre, et c'est la
+fenetre qui fixe le depart de la suivante. Un `durationMin` qui vaudrait le
+temps de jeu fausserait tout enchainement, et l'enchainement est **le besoin** :
+combien de metas tenir dans deux heures pour maximiser les gemmes.
+
+Les huit valeurs passent donc a celles du widget. **Et on ne jette pas les
+anciennes** : ce sont la seule estimation de temps de jeu qu'on ait, et Antoine
+la veut pour planifier. Elles vivent en `playtimeMin`, annoncees pour ce
+qu'elles sont — editoriales, non sourcees.
+
+| cle | fenetre | temps de jeu garde |
+|---|---:|---:|
+| vb | 15 -> **25** | 15 |
+| ds | 60 -> **120** | 60 |
+| co | 10 -> **16** | 10 |
+| er | 15 -> **25** | 15 |
+| dv | 20 -> **30** | 20 |
+| ew | 35 -> **20** | 35 |
+| de2 | 45 -> **60** | 45 |
+| mb | 20 -> **10** | 20 |
+
+`ew` etait le cas qui m'avait fait hesiter : 35 chez nous pour une fenetre de 20.
+Avec la distinction, il n'a plus rien d'etrange — c'est une estimation de temps
+de jeu qui depassait la fenetre, donc fausse comme fenetre et discutable comme
+estimation. Elle est conservee telle quelle, a reprendre.
+
+L'affichage dit maintenant « ⏱ 25 min · ~15 min de jeu », sans le `~` sur la
+fenetre, qui n'est plus une approximation.
+
+### Un appariement, pas deux
+
+Mon premier jet de `gw2_fenetres_metas_v1.py` avait son propre appariement
+meta → segment, par couple (decalage, intervalle). **Des dizaines d'evenements
+partagent ce couple** : il a joint `er` a « Defending Tarir (Pylons) », `nk` a
+« Shards and Construct », et la monnaie `karma` au Death-Branded Shatterer. Les
+25 « corrections » qu'il proposait auraient ecrit n'importe quoi.
+
+L'appariement valide existait — celui de la confrontation, 17 accords. Il etait
+enferme dans son `main()`. Il en sort en `apparie()` (v3) et les deux outils
+l'appellent. Meme faute que le resolveur de la relecture il y a trois jours,
+meme correction.
+
+Deux gardes posees au passage : le JSX n'est touche que pour les cles que la
+base editoriale porte deja — les 18 cles qu'il porte seul n'ont pas
+d'appariement valide et restent intactes — et le decoupage du JSX se fait par
+entree, parce qu'un `finditer` non gourmand avalait l'entree suivante et faisait
+disparaitre `vb` du lot.
+
+### Etat
+
+Confrontation : **0 ecart de decalage, 0 ecart de fenetre, 0 desaccord entre les
+deux tables.** Les 18 cles du JSX hors base restent non confrontees — c'est la
+fusion du § 12 qui les ouvrira, et le widget les porte deja.
