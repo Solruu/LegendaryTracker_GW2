@@ -3737,3 +3737,174 @@ metas que le JSX porte seul : Starlit Weald, Eternity's Garden, Shipwreck
 Strand, Domain of Istan, Lake Doric, Wizard's Tower, Eye of the North, Janthir
 Syntri. **La fusion des deux tables sourcerait d'un coup une dizaine
 d'horaires de plus**, sans une capture supplementaire.
+
+## CB — 01/10/2026 : la fenêtre et le temps de jeu sont deux choses
+
+Antoine a tranche : `durationMin` doit dire **combien de temps la fenetre reste
+ouverte**, pas combien de temps la meta prend. Le raisonnement tient tout seul —
+une meta finie en quinze minutes ne raccourcit pas sa fenetre, et c'est la
+fenetre qui fixe le depart de la suivante. Un `durationMin` qui vaudrait le
+temps de jeu fausserait tout enchainement, et l'enchainement est **le besoin** :
+combien de metas tenir dans deux heures pour maximiser les gemmes.
+
+Les huit valeurs passent donc a celles du widget. **Et on ne jette pas les
+anciennes** : ce sont la seule estimation de temps de jeu qu'on ait, et Antoine
+la veut pour planifier. Elles vivent en `playtimeMin`, annoncees pour ce
+qu'elles sont — editoriales, non sourcees.
+
+| cle | fenetre | temps de jeu garde |
+|---|---:|---:|
+| vb | 15 -> **25** | 15 |
+| ds | 60 -> **120** | 60 |
+| co | 10 -> **16** | 10 |
+| er | 15 -> **25** | 15 |
+| dv | 20 -> **30** | 20 |
+| ew | 35 -> **20** | 35 |
+| de2 | 45 -> **60** | 45 |
+| mb | 20 -> **10** | 20 |
+
+`ew` etait le cas qui m'avait fait hesiter : 35 chez nous pour une fenetre de 20.
+Avec la distinction, il n'a plus rien d'etrange — c'est une estimation de temps
+de jeu qui depassait la fenetre, donc fausse comme fenetre et discutable comme
+estimation. Elle est conservee telle quelle, a reprendre.
+
+L'affichage dit maintenant « ⏱ 25 min · ~15 min de jeu », sans le `~` sur la
+fenetre, qui n'est plus une approximation.
+
+### Un appariement, pas deux
+
+Mon premier jet de `gw2_fenetres_metas_v1.py` avait son propre appariement
+meta → segment, par couple (decalage, intervalle). **Des dizaines d'evenements
+partagent ce couple** : il a joint `er` a « Defending Tarir (Pylons) », `nk` a
+« Shards and Construct », et la monnaie `karma` au Death-Branded Shatterer. Les
+25 « corrections » qu'il proposait auraient ecrit n'importe quoi.
+
+L'appariement valide existait — celui de la confrontation, 17 accords. Il etait
+enferme dans son `main()`. Il en sort en `apparie()` (v3) et les deux outils
+l'appellent. Meme faute que le resolveur de la relecture il y a trois jours,
+meme correction.
+
+Deux gardes posees au passage : le JSX n'est touche que pour les cles que la
+base editoriale porte deja — les 18 cles qu'il porte seul n'ont pas
+d'appariement valide et restent intactes — et le decoupage du JSX se fait par
+entree, parce qu'un `finditer` non gourmand avalait l'entree suivante et faisait
+disparaitre `vb` du lot.
+
+### Etat
+
+Confrontation : **0 ecart de decalage, 0 ecart de fenetre, 0 desaccord entre les
+deux tables.** Les 18 cles du JSX hors base restent non confrontees — c'est la
+fusion du § 12 qui les ouvrira, et le widget les porte deja.
+
+## CC — 01/10/2026 : § 12, premier pas — et la table n'était pas ce que je disais
+
+### Ce que la mesure a corrigé d'abord
+
+J'ai decrit le tableau `metas:` du JSX comme « une seconde table d'horaires ».
+C'est faux. C'est une liste d'**activites par legendaire** : 112 entrees,
+78 cles distinctes, trois natures melangees.
+
+| nature | nombre | ce que c'est |
+|---|---:|---|
+| metas a horaire | **27** | un `offsetUTC` reel |
+| fermes `isTimeless` | 12 | noeuds, vendeurs — pas d'horaire |
+| postes de farm | 38 | `clovers`, `ectos`, `tier1`, `lodestones`, `provisioner`… |
+
+Fusionner les 78 dans `meta_events` aurait melange trois choses. Seules les 27
+relevent d'un catalogue d'horaires — dix-sept y etaient deja, **dix n'y
+etaient pas**.
+
+### Les dix, posées avec leur source
+
+`gw2_catalogue_metas_v1.py` les ajoute a `meta_events`, horaire lu dans le
+widget via l'appariement partage. Neuf sur dix trouvent leur segment ; seul
+`bf_meta` n'en a pas, le Frozen Maw etant un boss de monde — son horaire reste
+celui de sa page, deja sourcé.
+
+Ce que ca a corrige, et qu'aucun outil ne regardait :
+
+- **`di` Palawadan : decalage 0 -> 105.** Palawadan part a 01:45, pas a minuit.
+  Une heure quarante-cinq d'erreur sur une meta qu'Antoine farme.
+- `di` fenetre 20 -> 30, `obs_conv_mb` 20 -> 10, `weald` 25 -> 35,
+  `shackles` 50 -> 25.
+
+La confrontation passe de 17 a **26 accords**, et le desaccord JSX/base retombe
+a zero.
+
+### Deux pièges du côté des noms
+
+`apparie` cherche la carte dans `map`. Les entrees venues du JSX n'en avaient
+pas : il a fallu leur poser la carte du widget, sans quoi les neuf nouvelles
+redevenaient invisibles a la confrontation **apres** y etre entrees.
+
+Et la convention `name`/`subname` s'inverse d'une entree a l'autre : Starlit
+Weald, Eternity's Garden et Shipwreck Strand sont des CARTES rangees en
+`subname`, leurs metas etant « Secrets of the Weald », « Shackles of the
+Ancients », « Hammerhart Rumble! ». L'outil tente donc les deux sens — cinq
+appariements sur dix en dependaient.
+
+### Ce qui reste du § 12
+
+1. **14 cles du JSX restent hors base** — les 12 `isTimeless` et deux autres.
+   Elles n'ont pas d'horaire, donc pas leur place ici ; leur sort se decide avec
+   le filtre par ressource, pas avec le catalogue.
+2. **Le JSX porte toujours sa table.** Le catalogue existe et concorde, mais
+   l'affichage lit encore ses propres valeurs. Tant que les deux existent, la
+   confrontation est le seul garde-fou — et c'est un rapport, pas un audit.
+3. **`rewards` et le filtre** ne sont pas commences.
+
+## CD — 01/10/2026 : vingt coffres, pas dix — et je m'étais trompé de liste
+
+Antoine veut le croisement pour **toutes** les ressources de l'arbre, pas les
+seules gemmes, avec mention explicite de quelle meta sert a quoi et pour quelle
+cible.
+
+### D'abord, une correction de ma main
+
+J'ai annonce hier que dix coffres rendaient une gemme amalgamee, et j'ai conclu
+de cette liste que `de` (Junundu Rising, The Desolation) declarait une gemme a
+tort — en disant qu'Antoine soupconnait justement les vers geants.
+
+**La liste etait tronquee.** Je l'avais lue sur 9 000 caracteres a partir d'une
+ancre ; la section « Contained in » est plus longue. Elle en compte **vingt**,
+et **The Desolation y figure**. Le soupcon ne tient pas, et notre `rewards`
+etait juste.
+
+> Amnytas · Auric Basin · Citadel of Zakiros · Convergence · Crystal Oasis ·
+> Domain of Vabbi · Dragon's End · Dragon's Stand · Echovald Wilds ·
+> Elon Riverlands · Gyala Delve · Inner Nayos · New Kaineng City ·
+> Seitung Province · Skywatch Archipelago · Tangled Depths · The Desolation ·
+> Verdant Brink · Janthir Syntri · Castora
+
+Et Castora y est : les metas VoE **donnent** bien une gemme. L'exclusion de
+depart tombe entierement.
+
+### Le croisement, pose
+
+`gw2_metas_ressources_v1.py` croise dans les deux sens — la capture d'une meta
+nomme ses coffres, celle d'une ressource nomme les coffres qui la contiennent —
+puis l'arbre dit quelles cibles la reclament encore. **10 metas documentees,
+22 coffres connus, 19 metas encore muettes.**
+
+Trois pieges rencontres, tous de lecture :
+
+- **Une mention n'est pas une appartenance.** Sans bornage, la page de la gemme
+  rendait des coffres cites ailleurs que dans « Contained in ».
+- **Le sommaire cite les titres avant les sections.** Partir de la premiere
+  occurrence de « Acquisition » decoupait le sommaire, 195 caracteres, zero
+  resultat. On prend la derniere.
+- **« Prioritaire » ne veut pas dire « sans source ».** La gemme est
+  `free_repeatable` — parce que la meta la rend. Le critere retenu : **toutes
+  ses voies renouvelables sont des metas**. Si tu sautes la meta, il ne reste
+  que la forge, au cout prohibitif. Huit ressources sortent prioritaires.
+
+### Ce qui manque pour que ce soit utilisable
+
+19 metas sans ressource identifiee, pour deux raisons distinctes que le rapport
+separe : **six n'ont pas de capture** sous un nom qu'on sache deduire
+(`am`, `de2`, `di`, `ds`, `er`, `ew`…), et les autres ont leur capture mais ne
+citent aucun coffre — leur page nomme la recompense autrement.
+
+C'est la prochaine passe : elargir la lecture cote meta au-dela du seul mot
+« Hero's Choice Chest », et rattacher les six captures manquantes par leur titre
+reel plutot que par deduction.

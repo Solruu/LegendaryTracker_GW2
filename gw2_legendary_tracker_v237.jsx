@@ -959,7 +959,7 @@ const LEGENDARIES = {
     raidTabLabel: { fr: "🔭 Visions of…", en: "🔭 Visions of…" },
     metas: [
       { id: "vb", name: { fr: "Orée d'émeraude", en: "Verdant Brink" }, subname: { fr: "La nuit et l'ennemi", en: "Night and the Enemy" }, expansion: "HoT", icon: "VB",
-        offsetUTC: 105, intervalMin: 120, durationMin: 15,
+        offsetUTC: 105, intervalMin: 120, durationMin: 25, playtimeMin: 15,
         efficience: "A", population: "LFG", next: "td", nextDelayMin: 45,
         waypoint: "Pact Encampment Waypoint", wpCode: "[&BAgIAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
@@ -977,19 +977,19 @@ const LEGENDARIES = {
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "4 lanes simultanées, stack sur la lane la plus peuplée. Coffre : hard-reset à 01h.", en: "4 simultaneous lanes, stack on the most populated one. Chest: hard-reset at 01h." } },
       { id: "ds", name: { fr: "Repli du dragon", en: "Dragon's Stand" }, subname: { fr: "Meta complète", en: "Full meta" }, expansion: "HoT", icon: "DS",
-        offsetUTC: 90, intervalMin: 120, durationMin: 60,
+        offsetUTC: 90, intervalMin: 120, durationMin: 120, playtimeMin: 60,
         efficience: "B", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Mordremoth's Bane Waypoint", wpCode: "[&BNMHAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Longue (~1h). Bonne source de drops en parallèle. Difficile d'enchaîner après.", en: "Long (~1h). Good source of drops in parallel. Hard to chain afterwards." } },
       { id: "co", name: { fr: "Oasis de cristal", en: "Crystal Oasis" }, subname: { fr: "Casino express", en: "Casino Blitz" }, expansion: "PoF", icon: "CO",
-        offsetUTC: 5, intervalMin: 120, durationMin: 10,
+        offsetUTC: 5, intervalMin: 120, durationMin: 16, playtimeMin: 10,
         efficience: "S", population: "moyen", next: "er", nextDelayMin: 39,
         waypoint: "Amnoon Waypoint", wpCode: "[&BLIGAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.", en: "~10 min, do not miss the start. The most efficient of all — absolute priority." } },
       { id: "er", name: { fr: "Rives de l'Elon", en: "Elon Riverlands" }, subname: { fr: "Le chemin de l'Ascension", en: "Doppelganger" }, expansion: "PoF", icon: "ER",
-        offsetUTC: 90, intervalMin: 120, durationMin: 15,
+        offsetUTC: 90, intervalMin: 120, durationMin: 25, playtimeMin: 15,
         efficience: "A", population: "moyen", next: "de", nextDelayMin: 30,
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
@@ -1001,13 +1001,13 @@ const LEGENDARIES = {
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "Monture Junundu requise. Skimmer utile pour les zones de soufre. Coffre : hard-reset à 01h.", en: "Junundu mount required. Skimmer useful for sulfur areas. Chest: hard-reset at 01h." } },
       { id: "dv", name: { fr: "Domaine de Vabbi", en: "Domain of Vabbi" }, subname: { fr: "Forgé par le feu", en: "Forged with Fire" }, expansion: "PoF", icon: "FW",
-        offsetUTC: 60, intervalMin: 120, durationMin: 20,
+        offsetUTC: 60, intervalMin: 120, durationMin: 30, playtimeMin: 20,
         efficience: "A", population: "moyen", next: "co", nextDelayMin: 21,
         waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         tip: { fr: "La meta PoF la plus simple, peu de coordination requise. Coffre : hard-reset à 01h.", en: "Easiest PoF meta, little coordination required. Chest: hard-reset at 01h." } },
       { id: "di", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: "Palawadan", expansion: "LW4", icon: "DI",
-        offsetUTC: 0, intervalMin: 120, durationMin: 20,
+        offsetUTC: 105, intervalMin: 120, durationMin: 30,
         efficience: "A", population: "LFG", next: null, nextDelayMin: null,
         waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
@@ -1039,14 +1039,14 @@ const LEGENDARIES = {
         timerNote: "Heures paires : 00:00 / 02:00...",
         tip: { fr: "⚠ Population quasi-inexistante hors Wizard's Vault. Opportuniste uniquement.", en: "⚠ Nearly nonexistent population outside Wizard's Vault. Opportunistic only." } },
       { id: "ew", name: { fr: "Terres sauvages d'Echovald", en: "Echovald Wilds" }, subname: { fr: "La guerre des gangs d'Echovald", en: "Gang War" }, expansion: "EoD", icon: "EW",
-        offsetUTC: 100, intervalMin: 120, durationMin: 35,
+        offsetUTC: 100, intervalMin: 120, durationMin: 20, playtimeMin: 35,
         efficience: "B", population: "moyen", next: null, nextDelayMin: null,
         waypoint: "Arborstone Waypoint", wpCode: "[&BLsNAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
         timerNote: "Heures paires : 01:40 / 03:40...",
         tip: { fr: "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung.", en: "2 phases: Gang War then Junkyard. Chains from Seitung." } },
       { id: "de2", name: { fr: "Trépas du dragon", en: "Dragon's End" }, subname: { fr: "La Bataille de la Mer de Jade", en: "Battle for Jade Sea" }, expansion: "EoD", icon: "DE2",
-        offsetUTC: 60, intervalMin: 120, durationMin: 45,
+        offsetUTC: 60, intervalMin: 120, durationMin: 60, playtimeMin: 45,
         efficience: "C", population: "variable", next: null, nextDelayMin: null,
         waypoint: "The Jade Flats Waypoint", wpCode: "[&BNMMAAA=]",
         resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
@@ -1059,7 +1059,7 @@ const LEGENDARIES = {
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
         tip: { fr: "Toutes les 3h à XX:30 UTC. Fenêtre de 10 min. Portail dans Rift Hunter Lounge au Wizard's Tower.", en: "Every 3h at XX:30 UTC. 10 min window. Portal in the Rift Hunter Lounge at the Wizard's Tower." } },
       { id: "mb", name: { fr: "Convergence : Mont Balrior", en: "Convergence Mount Balrior" }, subname: "Public Instance", expansion: "JW", icon: "MB",
-        offsetUTC: 0, intervalMin: 180, durationMin: 20,
+        offsetUTC: 0, intervalMin: 180, durationMin: 10, playtimeMin: 20,
         efficience: "S", population: "public", next: "conv", nextDelayMin: 90,
         waypoint: "Harvest Den Waypoint", wpCode: "[&BK4OAAA=]",
         resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
@@ -1682,7 +1682,7 @@ const LEGENDARIES = {
         resetNote: "Conditionnel — pas de timer fixe",
         tip: "Meta conditionnelle : Road to Heitor + Fangs That Gnash doivent être complétées sur la map. Citadel of Zakiros: Hero's Choice Chest → Case/Clot/Pouch au choix." },
       { id: "obs_conv_mb", name: "Convergence", subname: "Mount Balrior (public)", expansion: "JW", icon: "CV",
-        offsetUTC: 0, intervalMin: 180, durationMin: 20,
+        offsetUTC: 0, intervalMin: 180, durationMin: 10,
         efficience: "S", population: "bon", next: "obs_conv_on", nextDelayMin: 30,
         waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
         resetNote: "Coffre daily par type d'instance",
@@ -1778,7 +1778,7 @@ const LEGENDARIES = {
         waypoint: "Hammerhart Battery", wpCode: "[&BHUPAAA=]",
         tip: { fr: "World boss de Shipwreck Strand (Twisting Hollows). Accès rapide : téléporteur « Found » au Pub Canach. CC obligatoire pour percer le dôme initial ; boss jumeaux à barre de vie partagée. Source d'Aether-Rich Sap.", en: "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source." } },
       { id: "weald", name: { fr: "Secrets de la sylve", en: "Secrets of the Weald" }, subname: { fr: "Starlit Weald", en: "Starlit Weald" }, expansion: "VoE", icon: "SW",
-        offsetUTC: 100, intervalMin: 120, durationMin: 25,
+        offsetUTC: 100, intervalMin: 120, durationMin: 35,
         efficience: "A", population: "LFG",
         waypoint: "Consecrated Piazza", wpCode: "[&BG8PAAA=]",
         tip: { fr: "Méta de Starlit Weald (Cloister of Stars) : 3 excavateurs simultanés puis Gwyllian. Maîtrise des lignes de force requise (planeur/monture). Source d'Antiquated Ducats.", en: "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source." } },
@@ -6009,7 +6009,12 @@ export default function GW2LegendaryTracker() {
                           {t("next_meta", { meta: m.bestNext.meta.name, sub: m.bestNext.meta.subname, time: formatLocalTime(m.bestNext.date) })}
                         </div>
                       )}
-                      ⏱ ~{m.durationMin} min · {NX(m.tip)}
+                      {/* `durationMin` est la FENETRE, pas le temps de jeu : une
+                          meta finie en quinze minutes laisse sa fenetre courir, et
+                          c'est elle qui fixe le depart de la suivante. Le temps de
+                          jeu, quand on l'a, est une estimation et s'annonce comme
+                          telle. */}
+                      ⏱ {m.durationMin} min{m.playtimeMin ? ` · ~${m.playtimeMin} min de jeu` : ""} · {NX(m.tip)}
                     </div>
                   )}
                 </div>

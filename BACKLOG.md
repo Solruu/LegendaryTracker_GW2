@@ -1564,6 +1564,60 @@ catalogue.
   que le filtre est bien « au moins une ressource encore utile » et non
   « toutes ».
 
+## 12 octies. Quelles métas valent le détour — la trace existe (01/10/2026)
+
+Antoine corrige le postulat de depart : on avait mutualise les métas par zone et
+extension du legendaire. Mais ce qui compte, c'est **ce que la méta rend**, et
+certaines ne rendent rien d'utile.
+
+### Le critère est traçable, en deux crans
+
+**Cran 1 — la méta donne-t-elle un coffre ?** Les captures le disent, avec leur
+cadence : « The Desolation: Hero's Choice Chest (guaranteed) (once a day per
+account, shared daily limit with… ) ». **43 captures du dépôt** portent cette
+mention.
+
+**Cran 2 — ce coffre contient-il la ressource ?** La page `Amalgamated Gemstone`
+liste, dans son « Contained in », les dix coffres qui en rendent une :
+
+> Amnytas · Auric Basin · Citadel of Zakiros · Convergence · Crystal Oasis ·
+> Domain of Vabbi · Dragon's End · Dragon's Stand · Echovald Wilds ·
+> Elon Riverlands
+
+Le croisement est mécanique : nom du coffre cité par la capture de la méta ×
+liste de la page de la ressource. **Rien à capturer de plus.**
+
+### Ce que ça contredit déjà
+
+- **« toutes les métas VoE sont exclues » est trop large.** `secrets_of_the_weald`
+  et `hammerhart_rumble` donnent bien un coffre Castora, « guaranteed, once per
+  day per account ». Reste à voir ce que le coffre Castora contient — il n'est
+  pas dans la liste des dix, donc **pas de gemme**, mais peut-être autre chose
+  d'utile (`chromatic_sap` et `raw_enchanting_stone` le citent).
+- **Nos 20 `rewards` ne sont pas sourcés.** Aucun ne porte de `ref`, et certains
+  sont probablement faux : `de` (Junundu Rising, The Desolation) et `er`
+  (Elon Riverlands) declarent une gemme, mais The Desolation n'est **pas** dans
+  les dix. Antoine soupçonnait justement les vers géants.
+- Les 9 métas entrées au catalogue le 01/10 n'ont pas encore de `rewards`.
+
+### Point 2 — lire les extensions depuis l'API : oui, en partie
+
+`/v2/account` rend un champ **`access`** : `GuildWars2`, `HeartOfThorns`,
+`PathOfFire`, `EndOfDragons`, `SecretsOfTheObscure`, `JanthirWilds`, et
+`PlayForFree`. `PathOfFire` implique `HeartOfThorns`. **Le dépôt appelle déjà
+cet endpoint** — `commander` en vient — donc c'est un champ à lire, pas un appel
+à ajouter.
+
+**Ce que l'API ne dit PAS : les épisodes de Living World.** LW2, LW3, LW4 et
+l'Icebrood Saga se débloquent épisode par épisode, et aucun endpoint ne les
+expose. Or une bonne part des métas à gemme en dépend.
+
+Donc hybride, et c'est la seule forme honnête : les extensions viennent de
+`access`, en lecture seule et non modifiables à la main ; les épisodes LW
+viennent d'une case à cocher locale, par défaut **tout décoché** — supposer
+qu'Antoine possède un épisode lui ferait planifier une méta inaccessible, ce qui
+coûte plus cher que l'inverse.
+
 ## 12 ter. Vision affichait 3 100 kralkatite — ✅ **RÉSOLU le 27/09/2026**
 
 Antoine : collection terminée, synchro OK, étape marquée faite, et le total
