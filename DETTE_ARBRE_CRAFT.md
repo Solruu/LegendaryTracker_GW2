@@ -3852,3 +3852,59 @@ appariements sur dix en dependaient.
    l'affichage lit encore ses propres valeurs. Tant que les deux existent, la
    confrontation est le seul garde-fou — et c'est un rapport, pas un audit.
 3. **`rewards` et le filtre** ne sont pas commences.
+
+## CD — 01/10/2026 : vingt coffres, pas dix — et je m'étais trompé de liste
+
+Antoine veut le croisement pour **toutes** les ressources de l'arbre, pas les
+seules gemmes, avec mention explicite de quelle meta sert a quoi et pour quelle
+cible.
+
+### D'abord, une correction de ma main
+
+J'ai annonce hier que dix coffres rendaient une gemme amalgamee, et j'ai conclu
+de cette liste que `de` (Junundu Rising, The Desolation) declarait une gemme a
+tort — en disant qu'Antoine soupconnait justement les vers geants.
+
+**La liste etait tronquee.** Je l'avais lue sur 9 000 caracteres a partir d'une
+ancre ; la section « Contained in » est plus longue. Elle en compte **vingt**,
+et **The Desolation y figure**. Le soupcon ne tient pas, et notre `rewards`
+etait juste.
+
+> Amnytas · Auric Basin · Citadel of Zakiros · Convergence · Crystal Oasis ·
+> Domain of Vabbi · Dragon's End · Dragon's Stand · Echovald Wilds ·
+> Elon Riverlands · Gyala Delve · Inner Nayos · New Kaineng City ·
+> Seitung Province · Skywatch Archipelago · Tangled Depths · The Desolation ·
+> Verdant Brink · Janthir Syntri · Castora
+
+Et Castora y est : les metas VoE **donnent** bien une gemme. L'exclusion de
+depart tombe entierement.
+
+### Le croisement, pose
+
+`gw2_metas_ressources_v1.py` croise dans les deux sens — la capture d'une meta
+nomme ses coffres, celle d'une ressource nomme les coffres qui la contiennent —
+puis l'arbre dit quelles cibles la reclament encore. **10 metas documentees,
+22 coffres connus, 19 metas encore muettes.**
+
+Trois pieges rencontres, tous de lecture :
+
+- **Une mention n'est pas une appartenance.** Sans bornage, la page de la gemme
+  rendait des coffres cites ailleurs que dans « Contained in ».
+- **Le sommaire cite les titres avant les sections.** Partir de la premiere
+  occurrence de « Acquisition » decoupait le sommaire, 195 caracteres, zero
+  resultat. On prend la derniere.
+- **« Prioritaire » ne veut pas dire « sans source ».** La gemme est
+  `free_repeatable` — parce que la meta la rend. Le critere retenu : **toutes
+  ses voies renouvelables sont des metas**. Si tu sautes la meta, il ne reste
+  que la forge, au cout prohibitif. Huit ressources sortent prioritaires.
+
+### Ce qui manque pour que ce soit utilisable
+
+19 metas sans ressource identifiee, pour deux raisons distinctes que le rapport
+separe : **six n'ont pas de capture** sous un nom qu'on sache deduire
+(`am`, `de2`, `di`, `ds`, `er`, `ew`…), et les autres ont leur capture mais ne
+citent aucun coffre — leur page nomme la recompense autrement.
+
+C'est la prochaine passe : elargir la lecture cote meta au-dela du seul mot
+« Hero's Choice Chest », et rattacher les six captures manquantes par leur titre
+reel plutot que par deduction.
