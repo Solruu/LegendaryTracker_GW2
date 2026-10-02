@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v339.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v342.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -85,7 +85,22 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 0 pages à capturer
+## URLs — 15 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Kralkatite_Ore
+https://wiki.guildwars2.com/wiki/Difluorite_Crystal
+https://wiki.guildwars2.com/wiki/Lump_of_Mistonium
+https://wiki.guildwars2.com/wiki/Blood_Ruby
+https://wiki.guildwars2.com/wiki/Petrified_Wood
+https://wiki.guildwars2.com/wiki/Fresh_Winterberry
+https://wiki.guildwars2.com/wiki/Jade_Shard
+https://wiki.guildwars2.com/wiki/Fire_Orchid_Blossom
+https://wiki.guildwars2.com/wiki/Orrian_Pearl
+https://wiki.guildwars2.com/wiki/Crystalline_Ore
+https://wiki.guildwars2.com/wiki/Dragonite_Ore
+https://wiki.guildwars2.com/wiki/Chak_Egg
+https://wiki.guildwars2.com/wiki/Reclaimed_Metal_Plate
+https://wiki.guildwars2.com/wiki/Antique_Summoning_Stone
+https://wiki.guildwars2.com/wiki/Bottle_of_Airship_Oil
 ```

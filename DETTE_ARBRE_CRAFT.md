@@ -3952,3 +3952,59 @@ La capture etait versee sous `amalgamated_gemstone_events_reward_wiki.html`. Le
 titre de la page est `Amalgamated Gemstone/Events and Timers`, donc la
 convention du depot — le slug du titre atteint — donne
 `amalgamated_gemstone_events_and_timers.html`. Renommee.
+
+## CF — 01/10/2026 : la liste des sous-pages, et le garde-fou qui manquait
+
+### Ce qui est factuellement verifiable, et ce qui ne l'est pas
+
+Antoine demande la liste **exhaustive et verifiee** des autres sous-pages
+`<Ressource>/Events and Timers`. Je ne peux pas l'etablir : enumerer les
+sous-pages d'un wiki demande de l'interroger, et le conteneur n'y a pas acces.
+Ce que je peux verifier, je l'ai verifie :
+
+- sur les **690 composants captures**, **une seule** page renvoie vers une
+  sous-page de ce type — `Amalgamated Gemstone` ;
+- c'est la page de la ressource qui porte le lien quand la sous-page existe.
+  Le test est donc local, une fois la page au depot.
+
+Donc la liste exhaustive ne se demande pas au wiki par deduction : **elle se
+lit sur les pages des ressources concernees**, et onze d'entre elles manquent.
+
+### Les ressources concernees
+
+27 ressources encore demandees par l'arbre sont rendues par une meta. Seize ont
+leur page au depot et **aucune ne porte de sous-page** — branded_mass,
+inscribed_shard, mystic_coin, obsidian_shard, chromatic_sap,
+raw_enchanting_stone, titan_heatstone, shard_of_bava_nisos, pouch_of_stardust,
+clot_of_congealed_screams, case_of_captured_lightning, shadowstone_fragment,
+mursaat_obsidian_chunk, mystic_runestone, charged_lodestone.
+
+Onze n'ont pas de page : kralkatite_ore, difluorite_crystal, lump_of_mistonium,
+blood_ruby, crystalline_ore, dragonite_ore, chak_egg, orrian_pearl_lw3,
+reclaimed_metal_plate, antique_summoning_stone, bottle_airship_oil. **Ce sont
+elles qu'il faut capturer** — avec quelques voisines des memes familles, quinze
+URLs en file.
+
+### Le garde-fou — ce qui a produit deux listes fausses
+
+Les deux erreurs ont la meme forme, et ce n'est pas un hasard : **elles
+viennent toutes deux d'une commande jetable**, tapee dans le terminal, dont la
+sortie a servi d'argument sans etre relue. Troncature a 9 000 caracteres la
+premiere fois, articles en tete d'item la seconde.
+
+Les outils **commites** du depot n'ont jamais produit cette classe d'erreur, et
+la raison est mecanique : ils sont relus, relances, et leur sortie est
+confrontee a autre chose. `gw2_confronte_horaires` a 26 accords ; la relecture
+des recettes a trouve ses propres faux positifs. Un script jetable n'a ni
+relecture, ni confrontation, ni trace.
+
+**Regle que je m'applique a partir d'ici** : une liste qui sert a affirmer un
+fait ou a justifier une modification de donnee ne vient pas d'une commande
+jetable. Elle vient d'un script commite, et elle est confrontee a une seconde
+source avant d'etre annoncee. Si les deux ne concordent pas, c'est le desaccord
+qu'on annonce, pas une des deux listes.
+
+Et un reflexe de verification, celui qui aurait suffi deux fois : **regarder la
+forme des elements extraits avant leur contenu**. « the Janthir Syntri » et
+« and Castora » n'ont pas la forme d'un nom de carte. Une liste dont un element
+commence par un article est une liste mal extraite, quel que soit son contenu.
