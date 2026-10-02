@@ -1177,6 +1177,21 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `the_path_to_ascension.html` | The Path to Ascension | article complet | 2026-10-01 |
 | `unlocking_the_wizards_tower.html` | Unlocking the Wizard's Tower | article complet | 2026-10-01 |
 | `amalgamated_gemstone_events_and_timers.html` | Amalgamated Gemstone/Events and Timers | article complet | 2026-10-02 |
+| `antique_summoning_stone.html` | Antique Summoning Stone | article complet | 2026-10-02 |
+| `blood_ruby.html` | Blood Ruby | article complet | 2026-10-02 |
+| `bottle_of_airship_oil.html` | Bottle of Airship Oil | article complet | 2026-10-02 |
+| `chak_egg.html` | Chak Egg | article complet | 2026-10-02 |
+| `crystalline_ore.html` | Crystalline Ore | article complet | 2026-10-02 |
+| `difluorite_crystal.html` | Difluorite Crystal | article complet | 2026-10-02 |
+| `dragonite_ore.html` | Dragonite Ore | article complet | 2026-10-02 |
+| `fire_orchid_blossom.html` | Fire Orchid Blossom | article complet | 2026-10-02 |
+| `fresh_winterberry.html` | Fresh Winterberry | article complet | 2026-10-02 |
+| `jade_shard.html` | Jade Shard | article complet | 2026-10-02 |
+| `kralkatite_ore.html` | Kralkatite Ore | article complet | 2026-10-02 |
+| `lump_of_mistonium.html` | Lump of Mistonium | article complet | 2026-10-02 |
+| `orrian_pearl.html` | Orrian Pearl | article complet | 2026-10-02 |
+| `petrified_wood.html` | Petrified Wood | article complet | 2026-10-02 |
+| `reclaimed_metal_plate.html` | Reclaimed Metal Plate | article complet | 2026-10-02 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

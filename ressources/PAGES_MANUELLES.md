@@ -10,30 +10,11 @@
 # Une ligne par URL. `#` pour un commentaire.
 
 
-# ── Ressources à récompense de méta, page absente du dépôt (01/10/2026) ──────
+# ── Servies le 02/10/2026, retirées ──────────────────────────────────────────
 #
-# Onze ressources que l'arbre réclame encore sont rendues par une méta, et leur
-# page n'est pas au dépôt. On ne peut donc pas savoir laquelle porte une
-# sous-page « /Events and Timers » comme la gemme amalgamée — c'est la page
-# elle-même qui y renvoie quand elle existe.
-#
-# Vérifié : sur les 690 composants capturés, UNE SEULE porte ce lien.
-
-https://wiki.guildwars2.com/wiki/Kralkatite_Ore
-https://wiki.guildwars2.com/wiki/Difluorite_Crystal
-https://wiki.guildwars2.com/wiki/Lump_of_Mistonium
-https://wiki.guildwars2.com/wiki/Blood_Ruby
-https://wiki.guildwars2.com/wiki/Petrified_Wood
-https://wiki.guildwars2.com/wiki/Fresh_Winterberry
-https://wiki.guildwars2.com/wiki/Jade_Shard
-https://wiki.guildwars2.com/wiki/Fire_Orchid_Blossom
-https://wiki.guildwars2.com/wiki/Orrian_Pearl
-https://wiki.guildwars2.com/wiki/Crystalline_Ore
-https://wiki.guildwars2.com/wiki/Dragonite_Ore
-https://wiki.guildwars2.com/wiki/Chak_Egg
-https://wiki.guildwars2.com/wiki/Reclaimed_Metal_Plate
-https://wiki.guildwars2.com/wiki/Antique_Summoning_Stone
-https://wiki.guildwars2.com/wiki/Bottle_of_Airship_Oil
+# Les quinze ressources à récompense de méta sont au dépôt. Verdict : AUCUNE ne
+# porte de sous-page « /Events and Timers ». Sur 705 composants capturés, une
+# seule en a une, la gemme amalgamée. La question est close.
 
 # ── Captures inutiles, à ne pas redemander ───────────────────────────────────
 #

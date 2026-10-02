@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v336.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v344.json` — généré par `gw2_relecture_recettes_v4.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -13,10 +13,10 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 |---|---|---|---:|
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 0 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 3 |
-| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 11 |
+| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 12 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 13 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 245 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 117 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 251 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 120 |
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -46,7 +46,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_mursaat_ruins` | `Vial_of_Titan_Melted_Liquid_Obsidian` | 100 | `gift_of_the_mursaat_ruins` | rattaché à gift_of_the_mistburned_isles | `orrax_manifested` |
 | `gift_of_the_side_course` | `Mystic_Clovers` | 30 | `gift_of_the_side_course` | rattaché à orrax_manifested | `orrax_manifested` |
 
-## Enfants déclarés que la recette ne cite pas — 11
+## Enfants déclarés que la recette ne cite pas — 12
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -54,6 +54,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `certificate_of_heroics` | `testimony_of_castoran_heroics` | 250 | `certificate_of_heroics` | direct | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `testimony_of_castoran_heroics` | 500 | `essence_of_animosity` | direct | `conflux`, `warbringer` |
 | `mystic_essence_of_annihilation` | `glob_of_dark_matter` | 10 | `mystic_essence_of_annihilation` | direct | `conflux`, `warbringer` |
+| `banner_pennon` | `recipe_banner_pennon` | 1 | `banner_pennon` | direct | `vision` |
 | `gift_of_castoran_mastery` | `gift_of_adventure_voe` | 1 | `gift_of_castoran_mastery` | direct | `selachimorpha` |
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
@@ -62,7 +63,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_mistburned_isles` | `vial_of_titan_melted_obsidian` | 150 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
 | `gift_of_the_rider` | `trade_contract` | 300 | `gift_of_the_rider` | direct | `coalescence` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 245
+## Ingrédients absents, cités par la recette d'une feuille — 251
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -103,9 +104,15 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `corrupted_lodestone` | `Corrupted_Core` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
 | `crystal_lodestone` | `Crystal_Core` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
 | `opal_orb` | `Opal_Crystal` |  | `opal_orb` | sous une feuille | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
+| `peridot_lump` | `Peridot_Nugget` |  | `peridot_lump` | sous une feuille | `gen1_bolt`, `gen1_kraitkin`, `gen1_meteorlogicus` |
+| `peridot_lump` | `Pile_of_Shimmering_Dust` |  | `peridot_lump` | sous une feuille | `gen1_bolt`, `gen1_kraitkin`, `gen1_meteorlogicus` |
 | `bolt_of_silk` | `Silk_Scrap` |  | `bolt_of_silk` | sous une feuille | `ad_infinitum`, `stella_radians` |
+| `carnelian_lump` | `Carnelian_Nugget` |  | `carnelian_lump` | sous une feuille | `gen1_incinerator`, `gen1_rodgort` |
+| `carnelian_lump` | `Pile_of_Shimmering_Dust` |  | `carnelian_lump` | sous une feuille | `gen1_incinerator`, `gen1_rodgort` |
 | `glacial_lodestone` | `Glacial_Core` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
 | `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `aurora`, `vision` |
+| `lapis_lump` | `Lapis_Nugget` |  | `lapis_lump` | sous une feuille | `gen1_bolt`, `gen1_meteorlogicus` |
+| `lapis_lump` | `Pile_of_Shimmering_Dust` |  | `lapis_lump` | sous une feuille | `gen1_bolt`, `gen1_meteorlogicus` |
 | `silver_ingot` | `Silver_Ore` |  | `silver_ingot` | sous une feuille | `aurora`, `vision` |
 | `amethyst_lump` | `Amethyst_Nugget` |  | `amethyst_lump` | sous une feuille | `gen1_the_dreamer` |
 | `amethyst_lump` | `Pile_of_Shimmering_Dust` |  | `amethyst_lump` | sous une feuille | `gen1_the_dreamer` |
@@ -312,7 +319,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 117
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 120
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -365,10 +372,13 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `corrupted_lodestone` | `4 ingrédients` |  | `corrupted_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
 | `crystal_lodestone` | `4 ingrédients` |  | `crystal_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
 | `opal_orb` | `2 ingrédients` |  | `opal_orb` | feuille assumée | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
+| `peridot_lump` | `2 ingrédients` |  | `peridot_lump` | feuille assumée | `gen1_bolt`, `gen1_kraitkin`, `gen1_meteorlogicus` |
 | `bolt_of_silk` | `1 ingrédients` |  | `bolt_of_silk` | feuille assumée | `ad_infinitum`, `stella_radians` |
+| `carnelian_lump` | `2 ingrédients` |  | `carnelian_lump` | feuille assumée | `gen1_incinerator`, `gen1_rodgort` |
 | `glacial_lodestone` | `4 ingrédients` |  | `glacial_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_frostfang` |
 | `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `aurora`, `vision` |
 | `jar_of_distilled_glory` | `1 ingrédients` |  | `jar_of_distilled_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
+| `lapis_lump` | `2 ingrédients` |  | `lapis_lump` | feuille assumée | `gen1_bolt`, `gen1_meteorlogicus` |
 | `record_of_league_participation` | `1 ingrédients` |  | `record_of_league_participation` | feuille assumée | `ardent_glorious`, `transcendence` |
 | `silver_ingot` | `1 ingrédients` |  | `silver_ingot` | feuille assumée | `aurora`, `vision` |
 | `star_of_glory` | `1 ingrédients` |  | `star_of_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
@@ -434,7 +444,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 205 ingrédients, et qui les réclame
+## Palier suivant — 208 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -452,6 +462,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Bowl_of_Ascalonian_Salad` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Bowl_of_Ice_Cream_Base` — réclamé par `bowl_of_prickly_pear_sorbet`
 - `Bowl_of_Tapioca_Pudding` — réclamé par `bowl_of_passion_fruit_tapioca_pudding`
+- `Carnelian_Nugget` — réclamé par `carnelian_lump`
 - `Carved_Beam` — réclamé par `the_legend`
 - `Carved_Tear_Drop` — réclamé par `the_legend`
 - `Charged_Core` — réclamé par `charged_lodestone`
@@ -549,6 +560,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Horse_Figure` — réclamé par `the_lover`
 - `Iron_Ore` — réclamé par `iron_ingot`, `steel_ingot`
 - `Jar_of_Red_Curry_Paste` — réclamé par `bowl_of_poultry_satay`
+- `Lapis_Nugget` — réclamé par `lapis_lump`
 - `Large_Fortified_Precursor_Haft` — réclamé par `dragons_weight`
 - `Lattice_(component)` — réclamé par `leaf_of_kudzu`
 - `Leaf_Fossil` — réclamé par `charged_fossil`
@@ -575,7 +587,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Parsley_Leaf` — réclamé par `pile_of_ascalonian_herbs`
 - `Party_Ball` — réclamé par `the_energizer`
 - `Party_Stick` — réclamé par `the_energizer`
-- `Pile_of_Shimmering_Dust` — réclamé par `amethyst_lump`
+- `Peridot_Nugget` — réclamé par `peridot_lump`
+- `Pile_of_Shimmering_Dust` — réclamé par `amethyst_lump`, `carnelian_lump`, `lapis_lump`, `peridot_lump`
 - `Pile_of_Tangy_Seasoning` — réclamé par `bowl_of_poultry_satay`
 - `Platinum_Ore` — réclamé par `darksteel_ingot`, `platinum_ingot`
 - `Prickly_Pear` — réclamé par `bowl_of_prickly_pear_sorbet`

@@ -4008,3 +4008,29 @@ Et un reflexe de verification, celui qui aurait suffi deux fois : **regarder la
 forme des elements extraits avant leur contenu**. « the Janthir Syntri » et
 « and Castora » n'ont pas la forme d'un nom de carte. Une liste dont un element
 commence par un article est une liste mal extraite, quel que soit son contenu.
+
+## CG — 02/10/2026 : la question des sous-pages est close
+
+Les quinze ressources a recompense de meta sont au depot. Verdict, verifie sur
+chacune : **aucune ne porte de sous-page « /Events and Timers »**.
+
+Sur **705 composants captures, une seule en a une** — la gemme amalgamee. Ce
+n'est donc pas un patron du wiki qu'il faudrait suivre ressource par ressource :
+c'est une page unique, faite pour celle-la. La question posee le 01/10 est
+close, et la reponse est « il n'y en a pas d'autres a demander ».
+
+### Ce que le lot a apporte par ailleurs
+
+Zero apiId a poser — les quinze etaient deja identifiees. Un composant
+decompose, trois aretes, puis `pile_of_foul_essence` pose au palier suivant.
+Relecture a **0 manquant**, file a **1 URL**.
+
+### Un avertissement d'Antoine qui evite un faux diagnostic
+
+Trois des quinze pages n'ont **aucun `data-sort-value`** —
+`antique_summoning_stone`, `bottle_of_airship_oil`, `fresh_winterberry` : leur
+acquisition est decrite en texte, pas en table chiffree. Le parseur de couts
+vendeur ne rendra donc rien sur elles, et ce n'est pas une panne. Sans cette
+precision, le `couts_vendeur: []` aurait ete lu comme un defaut d'extraction —
+exactement la confusion « absence de donnee / absence d'information » qui a
+coute quatre passes cette semaine.
