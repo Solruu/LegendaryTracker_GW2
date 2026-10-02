@@ -1176,6 +1176,7 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `the_gang_war_of_echovald.html` | The Gang War of Echovald | article complet | 2026-10-01 |
 | `the_path_to_ascension.html` | The Path to Ascension | article complet | 2026-10-01 |
 | `unlocking_the_wizards_tower.html` | Unlocking the Wizard's Tower | article complet | 2026-10-01 |
+| `amalgamated_gemstone_events_and_timers.html` | Amalgamated Gemstone/Events and Timers | article complet | 2026-10-02 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

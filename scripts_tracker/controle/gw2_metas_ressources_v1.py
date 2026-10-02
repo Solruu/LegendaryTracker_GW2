@@ -71,7 +71,13 @@ def coffres(page, borner=False):
         if i >= 0:
             j = t.find("Used in", i)
             t = t[i:j if j > i else i + 9000]
-    return {c.strip() for c in COFFRE.findall(t)}
+    # Un nom de carte commence par une majuscule. Sans ce filtre, la phrase
+    # « ...shared daily limit with the Janthir Syntri and Castora: Hero's
+    # Choice Chest » rendait « the Janthir Syntri » et « and Castora » comme
+    # s'ils contenaient la ressource. J'ai publie cette liste sans voir les
+    # articles en tete : Castora n'a jamais rendu de gemme.
+    return {c.strip() for c in COFFRE.findall(t)
+            if c.strip() and c.strip()[0].isupper()}
 
 
 def cibles_de(cc, legs, compo):

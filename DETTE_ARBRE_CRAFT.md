@@ -3908,3 +3908,47 @@ citent aucun coffre — leur page nomme la recompense autrement.
 C'est la prochaine passe : elargir la lecture cote meta au-dela du seul mot
 « Hero's Choice Chest », et rattacher les six captures manquantes par leur titre
 reel plutot que par deduction.
+
+## CE — 01/10/2026 : Castora n'a jamais rendu de gemme, c'était mon regex
+
+Antoine : « c'est faux, aucune source liee aux metas de VoE ». Il a raison, et
+la faute est dans ma lecture, pas dans le wiki.
+
+Ma liste de vingt comportait **« the Janthir Syntri »** et **« and Castora »**.
+Les articles en tete etaient le signe, et je les ai publies sans les voir : ils
+viennent d'une phrase sur les plafonds partages — « shared daily limit with the
+Janthir Syntri and Castora: Hero's Choice Chest » — ou le nom qui precede les
+deux points n'est pas celui d'un coffre contenant la ressource.
+
+Un nom de carte commence par une majuscule. Le filtre tient en une ligne ; la
+liste tombe a **dix-huit**, et ni Castora ni Janthir Syntri n'y sont.
+
+J'ai donc produit deux listes fausses de suite sur la meme question : dix par
+troncature, vingt par artefact. Dans les deux cas j'ai conclu avant de regarder
+ce que la liste contenait vraiment.
+
+### L'autorite, maintenant au depot
+
+`Amalgamated Gemstone/Events and Timers` est une **sous-page dediee du wiki**,
+et elle repond directement a la question. Sa section « Event timers » cite
+quinze entrees :
+
+> **HoT** Verdant Brink · Auric Basin · Tangled Depths · Dragon's Stand —
+> **PoF** Crystal Oasis · Elon Riverlands · The Desolation · **Domain of
+> Vabbi** — **EoD** Seitung Province · New Kaineng City · The Echovald Wilds ·
+> Dragon's End — **SotO** Skywatch Archipelago · Amnytas — **Janthir** Bava
+> Nisos — plus **Convergence**
+
+Sa section « Events » ajoute les evenements **sans timer** : Gyala Delve
+(Destroy the ravenous wanderer) et Inner Nayos (The Road to Heitor, The Fangs
+That Gnash, Defeat Eparch). Aucun VoE, comme annonce.
+
+**Une seule difference avec la liste recopiee a la main : `Domain of Vabbi`**,
+que la page cite (Forged with Fire, Serpents' Ire) et que la recopie a sautee.
+
+### Le nom du fichier
+
+La capture etait versee sous `amalgamated_gemstone_events_reward_wiki.html`. Le
+titre de la page est `Amalgamated Gemstone/Events and Timers`, donc la
+convention du depot — le slug du titre atteint — donne
+`amalgamated_gemstone_events_and_timers.html`. Renommee.
