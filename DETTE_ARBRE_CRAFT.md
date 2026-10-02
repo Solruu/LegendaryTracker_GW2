@@ -4082,3 +4082,56 @@ La sous-page n'existe que pour la gemme. Pour les 26 autres ressources a
 recompense de meta, il n'y a pas d'equivalent — verifie sur les 705 captures.
 Leur tagage demandera une autre methode, et le croisement par coffre reste
 disponible pour ca, avec ses limites connues.
+
+## CI — 02/10/2026 : les autres ressources, et la moitié du filtre d'extensions
+
+### Les 26 autres ressources — 14 rattachements, 12 composants
+
+La sous-page n'existe que pour la gemme. Pour les autres, la seule trace est la
+mention « <Carte>: Hero's Choice Chest » dans leur section d'acquisition. Les
+deux memes filtres qu'ailleurs, et pour les memes raisons : **majuscule en
+tete** — sans quoi une phrase sur les plafonds partages rend « and Castora » —
+et **la carte doit exister dans le widget**, qui sert de seconde source.
+
+Douze composants passent les deux filtres, pour **14 rattachements** : trade
+contract sur quatre cartes PoF, chunk of pure jade sur deux cartes EoD, pouch of
+stardust, case of captured lightning, chak egg, reclaimed metal plate, antique
+summoning stone, chunk of ancient ambergris. Chacun avec son `rewards_refs`
+nommant la page et la carte.
+
+**25 metas sur 29 portent desormais au moins une ressource** ; treize en
+portent deux ou trois. Les quatre sans sont `di` Palawadan et les trois VoE.
+
+### Le filtre d'extensions — la moitié qui est de l'ordre du fait
+
+**`categorie` et `acces` poses sur 26 metas**, depuis le champ `category` du
+widget : quatre HoT, quatre PoF, quatre EoD, quatre SotO, trois VoE, deux
+Janthir, une LW4, et le reste.
+
+La traduction en condition d'acces est directe quand la categorie est une
+extension — `HeartOfThorns`, `PathOfFire`, `EndOfDragons`,
+`SecretsOfTheObscure`, `JanthirWilds`, `VisionsOfEternity` sont exactement les
+valeurs que `/v2/account.access` rend.
+
+**Quatre entrees sont marquees `a_preciser`** : les instances publiques. Leur
+condition depend de la convergence — Mount Balrior tient de Janthir, Outer Nayos
+de SotO, Nexus of Eternity de VoE — et la categorie du widget ne les distingue
+pas. Les trancher au jugé serait filtrer sur une supposition.
+
+Trois metas restent sans categorie : `gy`, `in`, `zak`, les conditionnelles sans
+horaire, que le widget ne porte pas.
+
+### `access` est lu et conserve, rien ne le consomme encore
+
+Le JSX lit `access` dans `/v2/account` — l'appel existait deja, `commander` en
+vient — et le persiste. **Aucun affichage ne s'en sert** : le filtre n'est pas
+ecrit. Il est conserve quand meme, parce qu'une synchro qui passe sans rien
+garder oblige a en relancer une pour une donnee qu'on avait deja eue.
+
+### Ce qui reste, et pourquoi je m'arrête là
+
+Le filtre lui-meme — masquer les metas dont l'extension manque — touche
+l'affichage. Les cases a cocher des episodes de Living World aussi : nouveau
+sous-menu, nouvel etat persistant, et un defaut « tout decoche » a assumer. Ce
+sont des choix d'interface, et les faire de nuit sans retour d'Antoine
+produirait un ecran qu'il faudrait defaire.

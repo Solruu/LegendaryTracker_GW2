@@ -4718,10 +4718,19 @@ export default function GW2LegendaryTracker() {
     const bags = await readCharacterBags(tk);
     // Recettes debloquees : Flask les rend sous `_recipes` depuis la v40, la
     // synchro directe doit rendre la meme chose.
+    // `/v2/account` porte aussi `access` : la liste des extensions du compte,
+    // en lecture seule. C'est la seule partie du filtre d'extensions que l'API
+    // sache repondre -- les EPISODES de Living World ne sont exposes par aucun
+    // endpoint, et devront rester une case a cocher locale.
+    let accessDirect = null;
     let commanderDirect = null;
     try {
       const ar = await fetch(`https://api.guildwars2.com/v2/account?${tk}`);
-      if (ar.ok) { const j = await ar.json(); if (typeof j?.commander === "boolean") commanderDirect = j.commander; }
+      if (ar.ok) {
+        const j = await ar.json();
+        if (typeof j?.commander === "boolean") commanderDirect = j.commander;
+        if (Array.isArray(j?.access)) accessDirect = j.access;
+      }
     } catch (_) { /* inconnu, pas ferme */ }
     let recipesDirect = [];
     try {
@@ -4870,7 +4879,7 @@ export default function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -4991,6 +5000,12 @@ export default function GW2LegendaryTracker() {
       // rend vide pour lui, il restait donc a cocher a la main. /v2/account
       // porte un booleen `commander`, vrai des qu'un tag est achete.
       if (typeof data._commander === "boolean") setCommander(data._commander);
+      // Rien ne le consomme encore : le filtre par extension n'est pas ecrit.
+      // On le persiste quand meme, parce qu'une synchro qui passe et ne garde
+      // rien oblige a en relancer une pour une donnee qu'on avait deja eue.
+      if (Array.isArray(data._access)) {
+        try { localStorage.setItem("gw2_access", JSON.stringify(data._access)); } catch (_) {}
+      }
       if (data._gates) {
         try { localStorage.setItem("gw2_gates", JSON.stringify(data._gates)); } catch (_) {}
         setAcctGates(data._gates);

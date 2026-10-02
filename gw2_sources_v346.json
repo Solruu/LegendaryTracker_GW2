@@ -1025,11 +1025,21 @@
    ],
    "nextDelayMin": 45,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "reclaimed_metal_plate"
    ],
    "needs_verification": false,
    "playtimeMin": 15,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Verdant Brink »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Verdant Brink »",
+   "rewards_refs": {
+    "reclaimed_metal_plate": "wiki:reclaimed_metal_plate — sa section d'acquisition cite « Verdant Brink: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "td": {
    "name": {
@@ -1058,10 +1068,20 @@
    ],
    "nextDelayMin": 15,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chak_egg"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Tangled Depths »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Tangled Depths »",
+   "rewards_refs": {
+    "chak_egg": "wiki:chak_egg — sa section d'acquisition cite « Tangled Depths: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "ab": {
    "name": {
@@ -1093,7 +1113,13 @@
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Auric Basin »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Auric Basin »",
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "ds": {
    "name": {
@@ -1124,7 +1150,13 @@
    ],
    "needs_verification": false,
    "playtimeMin": 60,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's Stand »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's Stand »",
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "co": {
    "name": {
@@ -1153,14 +1185,24 @@
    ],
    "nextDelayMin": 39,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
    "ref": "wiki:Casino_Blitz — « It starts at 00:05, and every two hours after that »",
    "playtimeMin": 10,
    "verified": true,
    "checked": "2026-10-01",
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Crystal Oasis »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Crystal Oasis »",
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Crystal Oasis: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "er": {
    "name": {
@@ -1189,11 +1231,21 @@
    ],
    "nextDelayMin": 30,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
    "playtimeMin": 15,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Elon Riverlands »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Elon Riverlands »",
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Elon Riverlands: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "de": {
    "name": {
@@ -1222,10 +1274,20 @@
    ],
    "nextDelayMin": 30,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Desolation »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Desolation »",
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « The Desolation: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "dv": {
    "name": {
@@ -1254,11 +1316,21 @@
    ],
    "nextDelayMin": 21,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
    "playtimeMin": 20,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Domain of Vabbi »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Domain of Vabbi »",
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Domain of Vabbi: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "sp": {
    "name": {
@@ -1290,11 +1362,21 @@
    ],
    "nextDelayMin": 10,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chunk_of_ancient_ambergris"
    ],
    "needs_verification": false,
    "timer_notes": "Heures impaires uniquement : 01:30 / 03:30 / 05:30... UTC",
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Seitung Province »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Seitung Province »",
+   "rewards_refs": {
+    "chunk_of_ancient_ambergris": "wiki:chunk_of_ancient_ambergris — sa section d'acquisition cite « Seitung Province: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "nk": {
    "name": "Kaineng Blackout",
@@ -1323,11 +1405,21 @@
    ],
    "nextDelayMin": 40,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chunk_of_pure_jade"
    ],
    "needs_verification": false,
    "timer_notes": "Heures paires : 00:00 / 02:00 / 04:00... UTC",
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « New Kaineng City »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « New Kaineng City »",
+   "rewards_refs": {
+    "chunk_of_pure_jade": "wiki:chunk_of_pure_jade — sa section d'acquisition cite « New Kaineng City: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "ew": {
    "name": {
@@ -1359,7 +1451,13 @@
    "needs_verification": false,
    "timer_notes": "Heures paires : 01:40 / 03:40 / 05:40... UTC",
    "playtimeMin": 35,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Echovald Wilds »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Echovald Wilds »",
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "de2": {
    "name": {
@@ -1386,7 +1484,9 @@
    "next": [],
    "nextDelayMin": null,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "antique_summoning_stone",
+    "chunk_of_pure_jade"
    ],
    "needs_verification": false,
    "timer_notes": {
@@ -1394,7 +1494,17 @@
     "en": "Odd hours: 01:00 / 03:00 / 05:00... UTC. Jade Maw (separate event) can pollute the wiki timer."
    },
    "playtimeMin": 45,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's End »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's End »",
+   "rewards_refs": {
+    "antique_summoning_stone": "wiki:antique_summoning_stone — sa section d'acquisition cite « Dragon's End: Hero's Choice Chest », carte confirmee par le widget",
+    "chunk_of_pure_jade": "wiki:chunk_of_pure_jade — sa section d'acquisition cite « Dragon's End: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "gy": {
    "name": {
@@ -1460,10 +1570,20 @@
    ],
    "nextDelayMin": 60,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "case_of_captured_lightning"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Skywatch Archipelago »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Skywatch Archipelago »",
+   "rewards_refs": {
+    "case_of_captured_lightning": "wiki:case_of_captured_lightning — sa section d'acquisition cite « Skywatch Archipelago: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "am": {
    "name": {
@@ -1489,10 +1609,20 @@
    ],
    "nextDelayMin": 60,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "pouch_of_stardust"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Amnytas »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Amnytas »",
+   "rewards_refs": {
+    "pouch_of_stardust": "wiki:pouch_of_stardust — sa section d'acquisition cite « Amnytas: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "in": {
    "name": {
@@ -1592,7 +1722,13 @@
    "ref": "wiki:Convergence:_Outer_Nayos — « Public instance opens every 3 hours at XX:30, starting from 01:30, for 10 minutes until XX:40 »",
    "verified": true,
    "checked": "2026-10-01",
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »",
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "a_preciser",
+    "note": "Instance publique : la condition depend de la convergence (Mount Balrior, Outer Nayos, Nexus of Eternity), que la categorie du widget ne distingue pas. A trancher avant de filtrer dessus."
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "mb": {
    "name": {
@@ -1622,7 +1758,13 @@
    ],
    "needs_verification": false,
    "playtimeMin": 20,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »",
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "a_preciser",
+    "note": "Instance publique : la condition depend de la convergence (Mount Balrior, Outer Nayos, Nexus of Eternity), que la categorie du widget ne distingue pas. A trancher avant de filtrer dessus."
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "bn": {
    "name": {
@@ -1649,7 +1791,13 @@
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Bava Nisos »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Bava Nisos »",
+   "categorie": "Janthir Wilds",
+   "acces": {
+    "type": "expansion",
+    "access": "JanthirWilds"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "di": {
    "name": {
@@ -1668,7 +1816,13 @@
    "ref": "Widget:Event timer/data.json — lws4-di, segment « Palawadan » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": []
+   "rewards": [],
+   "categorie": "Living World Season 4",
+   "acces": {
+    "type": "living_world",
+    "note": "Living World Season 4"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "obs_sw": {
    "name": "Skywatch Archipelago",
@@ -1684,9 +1838,19 @@
    "checked": "2026-10-01",
    "verified": true,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "case_of_captured_lightning"
    ],
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Skywatch Archipelago »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Skywatch Archipelago »",
+   "rewards_refs": {
+    "case_of_captured_lightning": "wiki:case_of_captured_lightning — sa section d'acquisition cite « Skywatch Archipelago: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "obs_am": {
    "name": "Amnytas",
@@ -1702,9 +1866,19 @@
    "checked": "2026-10-01",
    "verified": true,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "pouch_of_stardust"
    ],
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Amnytas »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Amnytas »",
+   "rewards_refs": {
+    "pouch_of_stardust": "wiki:pouch_of_stardust — sa section d'acquisition cite « Amnytas: Hero's Choice Chest », carte confirmee par le widget"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "obs_conv_mb": {
    "name": "Convergence",
@@ -1723,7 +1897,13 @@
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »",
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "a_preciser",
+    "note": "Instance publique : la condition depend de la convergence (Mount Balrior, Outer Nayos, Nexus of Eternity), que la categorie du widget ne distingue pas. A trancher avant de filtrer dessus."
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "obs_conv_on": {
    "name": "Convergence",
@@ -1741,7 +1921,13 @@
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »",
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "a_preciser",
+    "note": "Instance publique : la condition depend de la convergence (Mount Balrior, Outer Nayos, Nexus of Eternity), que la categorie du widget ne distingue pas. A trancher avant de filtrer dessus."
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "hammerhart": {
    "name": {
@@ -1762,7 +1948,13 @@
    "ref": "Widget:Event timer/data.json — voe-ss, segment « Hammerhart Rumble! » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": []
+   "rewards": [],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "weald": {
    "name": {
@@ -1784,7 +1976,13 @@
    "ref": "Widget:Event timer/data.json — voe-sw, segment « Secrets of the Weald » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": []
+   "rewards": [],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "shackles": {
    "name": {
@@ -1806,7 +2004,13 @@
    "ref": "Widget:Event timer/data.json — voe-eg, segment « Shackles of the Ancients » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": []
+   "rewards": [],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   },
   "titanic": {
    "name": {
@@ -1830,7 +2034,13 @@
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Bava Nisos »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Bava Nisos »",
+   "categorie": "Janthir Wilds",
+   "acces": {
+    "type": "expansion",
+    "access": "JanthirWilds"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement"
   }
  },
  "resources": {

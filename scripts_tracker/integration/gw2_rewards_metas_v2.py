@@ -19,8 +19,8 @@ Un nom retenu doit exister des deux cotes. Un nom qui n'apparait que dans la
 prose de la sous-page — « the Janthir Syntri », « and Castora » — ne passe pas
 le second filtre, et c'est precisement ce qui manquait a mes deux listes.
 
-    python scripts_tracker/integration/gw2_rewards_metas_v1.py
-    python scripts_tracker/integration/gw2_rewards_metas_v1.py --ecrire
+    python scripts_tracker/integration/gw2_rewards_metas_v2.py
+    python scripts_tracker/integration/gw2_rewards_metas_v2.py --ecrire
 """
 import argparse
 import importlib.util
@@ -72,6 +72,43 @@ def cartes_a_gemme(events):
         sans_timer = [t for t in re.findall(r'title="([^"]{3,50})"', raw[j:i])
                       if t and t[0].isupper() and not t.startswith("Edit ")]
     return vus, sans_timer, hors
+
+
+COFFRE = re.compile(r"([A-Za-z'\u2019\-\. ]{3,34}): Hero's Choice Chest")
+
+
+def section_acquisition(page):
+    """Texte de la section d'acquisition d'une page, sommaire exclu."""
+    f = RACINE / "ressources" / "wiki" / f"{page}.html"
+    if not f.exists():
+        return ""
+    t = re.sub(r"<[^>]+>", " ", f.read_text(encoding="utf-8", errors="ignore"))
+    i = max(t.rfind("Contained in"), t.rfind("Acquisition"))
+    if i < 0:
+        return ""
+    j = t.find("Used in", i)
+    return t[i:j if j > i else i + 9000]
+
+
+def coffres_par_composant(cc, events):
+    """{composant: {cartes}} — le coffre nomme sa carte, le widget la confirme.
+
+    La sous-page « Events and Timers » n'existe que pour la gemme. Pour les
+    autres ressources, la seule trace est la mention « <Carte>: Hero's Choice
+    Chest » dans leur section d'acquisition. Deux filtres, les memes qu'ailleurs
+    et pour les memes raisons : le nom doit commencer par une majuscule — sans
+    quoi une phrase sur les plafonds partages rend « and Castora » — et la carte
+    doit exister dans le widget, qui sert de seconde source.
+    """
+    connus = {_cf.norm(ev.get("name")): ev.get("name") for ev in events.values()}
+    out = {}
+    for cid in cc:
+        noms = {n.strip() for n in COFFRE.findall(section_acquisition(cid))
+                if n.strip() and n.strip()[0].isupper()}
+        cartes = {connus[_cf.norm(n)] for n in noms if _cf.norm(n) in connus}
+        if cartes:
+            out[cid] = cartes
+    return out
 
 
 def main():
@@ -139,6 +176,34 @@ def main():
                                 f"« {section} » — carte « {carte} »")
         else:
             m.pop("rewards_ref", None)
+
+    # ── Les autres ressources, par le coffre de leur page
+    autres = coffres_par_composant(data["craft_components"], events)
+    autres.pop("amalgamated_gemstone", None)
+    poses_autres = []
+    for cle, m in metas.items():
+        if not isinstance(m, dict):
+            continue
+        pose = paires.get(cle)
+        carte = (events.get(pose[0]) or {}).get("name") if pose else None
+        if not carte:
+            continue
+        for cid, cartes in autres.items():
+            if carte not in cartes:
+                continue
+            rew = list(m.get("rewards") or [])
+            if cid in rew:
+                continue
+            rew.append(cid)
+            m["rewards"] = sorted(set(rew))
+            refs = m.setdefault("rewards_refs", {})
+            refs[cid] = (f"wiki:{cid} — sa section d'acquisition cite « {carte}: "
+                         "Hero's Choice Chest », carte confirmee par le widget")
+            poses_autres.append((cle, cid, carte))
+    print(f"\nautres ressources posees : {len(poses_autres)} "
+          f"(sur {len(autres)} composants a coffre)")
+    for cle, cid, carte in sorted(poses_autres):
+        print(f"   {cle:14} {cid:28} {carte}")
 
     print(f"\najouts {len(ajouts)} | retraits {len(retraits)} | "
           f"inchanges {len(inchanges)} | sans carte {len(indecis)}")
