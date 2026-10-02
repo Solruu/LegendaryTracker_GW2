@@ -101,4 +101,4 @@ n'est pas une commodité, c'est la seule voie raisonnable.
 | `vb` | Wyvern Matriarch | oui | — |
 | `zak` | Citadel of Zakiros | **non** | — |
 
-Composants sans coffre cité dans leur capture : 773 sur 789. Le coffre n'est qu'une voie parmi d'autres — ce rapport ne couvre que celle-la.
+Composants sans coffre cité dans leur capture : 774 sur 790. Le coffre n'est qu'une voie parmi d'autres — ce rapport ne couvre que celle-la.

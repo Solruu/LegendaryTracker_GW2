@@ -4034,3 +4034,51 @@ vendeur ne rendra donc rien sur elles, et ce n'est pas une panne. Sans cette
 precision, le `couts_vendeur: []` aurait ete lu comme un defaut d'extraction —
 exactement la confusion « absence de donnee / absence d'information » qui a
 coute quatre passes cette semaine.
+
+## CH — 02/10/2026 : les 19 métas muettes, réglées par la source, pas par le croisement
+
+Le croisement par coffre plafonnait a 10 metas sur 29 et m'a fait publier deux
+listes fausses. **La bonne source etait unique et deja au depot** :
+`Amalgamated Gemstone/Events and Timers`.
+
+`gw2_rewards_metas_v1.py` l'exploite, avec la confrontation que la regle du
+01/10 impose : un nom retenu doit figurer **dans la sous-page ET dans le
+widget**. Les 104 titres que la sous-page cite sans que le widget les connaisse
+— liens de navigation, objets, phrases — tombent d'eux-memes. C'est le filtre
+qui manquait a mes deux listes.
+
+**Seize cartes retenues**, exactement celles qu'Antoine avait recopiees, Domain
+of Vabbi compris :
+
+> Verdant Brink · Auric Basin · Tangled Depths · Dragon's Stand · Crystal Oasis ·
+> Elon Riverlands · The Desolation · Domain of Vabbi · Seitung Province ·
+> New Kaineng City · The Echovald Wilds · Dragon's End · Skywatch Archipelago ·
+> Amnytas · Bava Nisos · Convergence
+
+### Une exception assumee
+
+Les evenements **sans timer** — Gyala Delve, Inner Nayos — ne peuvent pas etre
+confirmes par le widget : par definition il ne liste que ce qui a un horaire.
+Exiger cette confirmation reviendrait a demander une preuve que la nature du cas
+interdit. Leur seconde source est notre propre base, qui les porte en metas
+conditionnelles (`offsetUTC: null`). `gy`, `in` et `zak` sont rattaches par leur
+carte, avec un `rewards_ref` qui dit « section Events (sans timer) ».
+
+### Resultat
+
+**25 metas sur 29 rendent une gemme**, chacune avec son `rewards_ref`.
+Cinq ajouts — `obs_sw`, `obs_am`, `obs_conv_mb`, `obs_conv_on`, `titanic` — et
+**zero retrait** : aucune des vingt d'origine n'etait mal taguee. Mon soupcon
+sur `de` (Junundu Rising) etait infonde, et je l'avais presente comme confirmant
+celui d'Antoine.
+
+Les quatre sans gemme : `di` Palawadan, et les trois VoE `hammerhart`, `weald`,
+`shackles`. L'exclusion VoE d'Antoine etait donc juste **sauf pour les
+Convergences**, qui en rendent.
+
+### Ce que ca ne couvre pas
+
+La sous-page n'existe que pour la gemme. Pour les 26 autres ressources a
+recompense de meta, il n'y a pas d'equivalent — verifie sur les 705 captures.
+Leur tagage demandera une autre methode, et le croisement par coffre reste
+disponible pour ca, avec ses limites connues.
