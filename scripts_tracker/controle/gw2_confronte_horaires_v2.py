@@ -48,7 +48,12 @@ def en(v):
 
 
 def frise(ev):
-    """{ref segment: (decalage, intervalle)} en minutes, depuis 00:00 UTC."""
+    """{ref segment: (decalage, intervalle, duree)} en minutes, depuis 00:00 UTC.
+
+    La duree etait jetee en v1 : seuls le decalage et l'intervalle etaient
+    confrontes. Elle manquait -- `conv` portait 20 minutes cote JSX quand le
+    widget en annonce 10, et personne ne le voyait.
+    """
     seq = ev.get("sequences") or {}
     partial = seq.get("partial") or []
     pattern = seq.get("pattern") or []
@@ -59,11 +64,12 @@ def frise(ev):
     for x in pattern:
         r = str(x.get("r"))
         if r not in out:
-            out[r] = (curseur % interval if interval else curseur, interval)
+            out[r] = (curseur % interval if interval else curseur, interval,
+                      x.get("d"))
         curseur += x.get("d", 0)
     # un segment qui n'apparait que dans `partial` n'a pas d'horaire stable
     for x in partial:
-        out.setdefault(str(x.get("r")), (None, interval))
+        out.setdefault(str(x.get("r")), (None, interval, None))
     return out
 
 
@@ -84,7 +90,7 @@ def main():
             continue
         par_carte.setdefault(norm(ev["name"]), []).append((k, ev))
 
-    accords, ecarts, introuvables = [], [], []
+    accords, ecarts, introuvables, durees = [], [], [], []
     for mk, m in sorted(metas.items()):
         if not isinstance(m, dict):
             continue
@@ -122,13 +128,36 @@ def main():
                                  m.get("offsetUTC"), m.get("intervalMin")))
             continue
         k, ev, r, seg, fi = trouve
-        dec, inter = fi if fi else (None, None)
+        dec, inter, duree = fi if fi else (None, None, None)
+        if duree is not None and m.get("durationMin") != duree:
+            durees.append((mk, en(seg.get("name")), m.get("durationMin"), duree))
         ligne = (mk, k, en(seg.get("name")), m.get("offsetUTC"), dec,
                  m.get("intervalMin"), inter, seg.get("link"), seg.get("chatlink"))
         if m.get("offsetUTC") == dec and m.get("intervalMin") == inter:
             accords.append(ligne)
         else:
             ecarts.append(ligne)
+
+    # Le JSX porte sa propre table d'horaires, trente-six decalages en dur, et
+    # rien ne la comparait a la base editoriale. Les deux peuvent donc dire des
+    # choses differentes sur la meme meta sans que personne ne l'apprenne.
+    jsx_f = sorted(RACINE.glob("gw2_legendary_tracker_v*.jsx"),
+                   key=lambda q: int(re.search(r"_v(\d+)", q.name).group(1)))
+    desaccords_jsx, jsx_seuls = [], []
+    if jsx_f:
+        texte = jsx_f[-1].read_text(encoding="utf-8")
+        for cle, o, i2, du in re.findall(
+                r'\{ id: "([a-z0-9_]+)",.{0,600}?offsetUTC: (-?\d+|null), '
+                r'intervalMin: (\d+|null), durationMin: (\d+)', texte, re.S):
+            m = metas.get(cle)
+            if not isinstance(m, dict):
+                jsx_seuls.append((cle, o, i2, du))
+                continue
+            if (o, i2, du) != (str(m.get("offsetUTC")), str(m.get("intervalMin")),
+                               str(m.get("durationMin"))):
+                desaccords_jsx.append((cle, (o, i2, du),
+                                       (str(m.get("offsetUTC")), str(m.get("intervalMin")),
+                                        str(m.get("durationMin")))))
 
     def bloc(titre, lignes):
         print(f"== {titre} ({len(lignes)})")
@@ -151,6 +180,20 @@ def main():
 
     # ce que le widget offre et que nous n'avons pas
     vus = {l[1] for l in accords + ecarts}
+    print(f"== DUREES — le widget contredit nos valeurs ({len(durees)})")
+    for mk, nom, nous, lui in sorted(durees):
+        print(f"   {mk:6} {str(nom)[:38]:40} nous {nous} → widget {lui}")
+    if not durees:
+        print("   (aucune)")
+
+    print(f"\n== JSX CONTRE BASE EDITORIALE ({len(desaccords_jsx)})")
+    for cle, j, src in sorted(desaccords_jsx):
+        print(f"   {cle:12} JSX {j}  base {src}")
+    if not desaccords_jsx:
+        print("   (aucun)")
+    print(f"\n== CLES DU JSX ABSENTES DE meta_events ({len(jsx_seuls)}) — non confrontees")
+    print("   " + ", ".join(sorted(c for c, *_ in jsx_seuls)))
+
     print("== EVENEMENTS DU WIDGET NON RATTACHES")
     for k, ev in sorted(events.items()):
         if not isinstance(ev, dict) or not ev.get("name") or k in vus:

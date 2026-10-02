@@ -3682,3 +3682,58 @@ familles.
 
 `gw2_garde_concurrence_v2.py` descend des deux cotes. **52 familles**, une seule
 version chacune.
+
+## CA — 01/10/2026 : la méthode des horaires tient, son périmètre non
+
+La methode trouvee en cowork est bonne et je la reformule pour qu'elle survive a
+cette session : **`Widget:Event timer/data.json` est une page du wiki, pas un
+rendu**. C'est la table que le widget lit pour dessiner la frise. Elle donne,
+pour chaque evenement, la suite de ses phases avec leur duree ; le decalage d'un
+segment se **calcule** — on additionne les durees qui le precedent, modulo
+l'intervalle. Les horaires n'etaient pas lisibles, ils sont deductibles.
+
+Verifie : 17 accords, **zero ecart** sur les 20 metas de `meta_events`. La
+methode est juste.
+
+### Ce qu'elle a corrige chez moi
+
+`conv` : j'avais ramene l'offset de 90 a 30 le 28/09 en lisant « opens every
+3 hours at XX:30, starting from **01:30** ». 01:30, c'est **90 minutes**, pas 30.
+J'ai lu les minutes de l'heure affichee comme un decalage. Le widget redonne 90,
+et le JSX l'avait depuis toujours.
+
+### Les incoherences qui restent
+
+**1. Le perimetre.** La confrontation couvre les 20 metas de `meta_events`. Le
+JSX en porte **35**, dont **19 que rien ne confronte** — et elles cachent de
+vraies erreurs :
+
+- `obs_conv_on` portait 30 pour Outer Nayos quand `conv`, la MEME meta,
+  portait 90. Deux entrees, deux horaires, aucune comparaison. **30 -> 90.**
+- `shackles` portait 70 ; le widget dit **75** pour « Shackles of the Ancients »
+  dans `voe-eg`. **70 -> 75.**
+
+**2. Les durees n'etaient pas confrontees.** La v1 jetait le `d` de chaque
+segment. `gw2_confronte_horaires_v2.py` le garde, et sort **huit desaccords** :
+co 10/16, de2 45/60, ds 60/120, dv 20/30, er 15/25, ew 35/20, mb 20/10,
+vb 15/25.
+
+**A NE PAS CORRIGER EN BLOC.** La duree du widget est la longueur de la PHASE
+dans la frise ; la notre semble etre la fenetre utile au joueur. Ce ne sont
+peut-etre pas la meme grandeur — `ew` est d'ailleurs plus long chez nous que
+chez le widget, ce qu'une simple sous-estimation n'expliquerait pas. A trancher
+avant de toucher. Seul `conv` est corrige, parce que la base editoriale et le
+widget disaient tous deux 10 et que seul le JSX portait 20.
+
+**3. Rien dans l'audit ne compare les deux tables.** La v2 le fait et sort
+aujourd'hui zero desaccord, mais c'est un rapport, pas un garde-fou : la
+divergence peut revenir sans bloquer un push. A brancher sur l'audit quand les
+deux tables auront fusionne (§ 12).
+
+### Ce que le widget donne et qu'on n'exploite pas
+
+28 evenements du widget ne sont rattaches a rien chez nous, dont exactement les
+metas que le JSX porte seul : Starlit Weald, Eternity's Garden, Shipwreck
+Strand, Domain of Istan, Lake Doric, Wizard's Tower, Eye of the North, Janthir
+Syntri. **La fusion des deux tables sourcerait d'un coup une dizaine
+d'horaires de plus**, sans une capture supplementaire.
