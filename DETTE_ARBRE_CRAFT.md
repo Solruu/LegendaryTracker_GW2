@@ -4275,3 +4275,40 @@ soir au chemin direct, n'existait pas cote Flask. Avec le serveur allume, le
 filtre d'extensions n'aurait rien recu. `gw2_flask_server_v46.py` le pose aussi.
 J'avais lance ce test hier — il est passe parce que je l'avais lance avant
 d'ajouter le champ, pas apres.
+
+## CM — 02/10/2026 : les fleurs assimilées, les accès complets, et les ressources enfin visibles
+
+### Fire Orchids = Fire Orchid Blossom
+
+Antoine confirme que c'est le meme objet, nomme autrement. `gw2_pose_couts_etapes_v2`
+porte une table `SYNONYMES`, chaque entree disant qui l'a confirmee : un synonyme
+ne se devine pas. Les quatre bouquets d'orage se posent entierement — 10 fleurs
+et 5 magnetites chacun. Aurora : **286 -> 326** Fire Orchid Blossoms.
+
+### Les trois métas sans timer ont leur accès
+
+`gw2_acces_metas_v2` porte une table `SANS_TIMER`, lue par la carte puisque le
+widget ignore ces metas : **Gyala Delve -> End of Dragons**, **Inner Nayos ->
+Secrets of the Obscure**. La seconde est notee « il me semble » par Antoine, et
+la nuance est gardee : `verified: false`, reference qui le dit. On sait ainsi a
+quelle confiance on filtrera. **29 metas sur 29 ont desormais une condition
+d'acces.**
+
+### Ce qu'une méta rend, sur sa carte
+
+Chaque carte de meta de l'onglet Activites affiche sous son nom **les ressources
+qu'elle rend**, avec le besoin restant pour la legendaire affichee :
+
+- ★ et liseré dore : **prioritaire** — toutes les voies renouvelables de la
+  ressource sont des metas, sauter la meta c'est payer la forge ;
+- besoin a zero : la ressource reste affichee, **estompee**. La masquer ferait
+  croire que la meta ne rend rien ;
+- tri : ce qui sert encore passe devant, la priorite ensuite.
+
+Teste sur les vraies donnees : Verdant Brink rend une gemme ★ et une Reclaimed
+Metal Plate ★, Casino Blitz une gemme ★ et un Trade Contract non prioritaire
+(il a une source vendeur), Palawadan rien. Textes passes par les cles i18n du
+projet, pas en dur.
+
+Rien n'est encore masque ni filtre : c'est l'affichage, pas le tri. Le filtre
+par extension s'ajoutera par-dessus quand le menu existera.

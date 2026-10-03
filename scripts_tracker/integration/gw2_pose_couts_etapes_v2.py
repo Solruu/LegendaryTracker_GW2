@@ -18,8 +18,8 @@ Un nom doit correspondre EXACTEMENT a un composant de l'arbre, pluriel toléré.
 Un texte qui ne se resout pas entierement n'est pas pose a moitie : l'etape est
 listee, a lire.
 
-    python scripts_tracker/integration/gw2_pose_couts_etapes_v1.py
-    python scripts_tracker/integration/gw2_pose_couts_etapes_v1.py --ecrire
+    python scripts_tracker/integration/gw2_pose_couts_etapes_v2.py
+    python scripts_tracker/integration/gw2_pose_couts_etapes_v2.py --ecrire
 """
 import argparse
 import json
@@ -29,6 +29,16 @@ from collections import OrderedDict
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[2]
+
+
+# Noms d'usage -> composant. « Fire Orchid » est le nom courant de la Fire Orchid
+# Blossom : les quatre bouquets de Draconis Mons ecrivent « 10 Fire Orchids »
+# quand leurs etapes soeurs ecrivent « Fire Orchid Blossoms ». Sans ce synonyme,
+# ces quatre etapes restaient non posees — volontairement, puisqu'on ne pose pas
+# un cout a moitie.
+SYNONYMES = {
+    "Fire Orchid": ("fire_orchid_blossom", "Antoine, 02/10/2026 : meme objet, nomme differemment"),
+}
 
 
 def derniere(motif):
@@ -46,9 +56,12 @@ def main():
     cc = data["craft_components"]
 
     # Les noms les plus longs d'abord : « Charged Lodestone » avant « Lodestone ».
-    noms = sorted(((str(c.get("name") or "").strip(), cid) for cid, c in cc.items()
-                   if len(str(c.get("name") or "").strip()) >= 4),
-                  key=lambda x: -len(x[0]))
+    noms = [(str(c.get("name") or "").strip(), cid) for cid, c in cc.items()
+            if len(str(c.get("name") or "").strip()) >= 4]
+    # Un meme objet peut etre nomme autrement dans le texte d'une etape. Ces
+    # synonymes ne se devinent pas : chacun est confirme et dit par qui.
+    noms += [(alias, cid) for alias, (cid, _qui) in SYNONYMES.items() if cid in cc]
+    noms.sort(key=lambda x: -len(x[0]))
 
     poses, partiels = [], []
     for lk, lv in data["legendaries"].items():

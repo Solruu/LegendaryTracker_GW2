@@ -1541,7 +1541,16 @@
     "fr": "Timer UTC exact non confirmé — needs_verification",
     "en": "Exact UTC timer not confirmed - needs_verification"
    },
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Gyala Delve »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Gyala Delve »",
+   "categorie": "Gyala Delve",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons",
+    "ref": "Antoine, 02/10/2026",
+    "verified": true,
+    "checked": "2026-10-02"
+   }
   },
   "sw": {
    "name": {
@@ -1658,7 +1667,16 @@
     "fr": "Event-based — surveiller le LFG ou la progression de map",
     "en": "Event-based - watch LFG or map progression"
    },
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »",
+   "categorie": "Inner Nayos",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure",
+    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
+    "verified": false,
+    "checked": "2026-10-02"
+   }
   },
   "zak": {
    "name": "Into the Spider's Lair",
@@ -1689,7 +1707,16 @@
     "fr": "Event-based — conditionnel aux deux metas précédentes d'Inner Nayos",
     "en": "Event-based - conditional on the two previous Inner Nayos metas"
    },
-   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
+   "rewards_ref": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »",
+   "categorie": "Inner Nayos",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure",
+    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
+    "verified": false,
+    "checked": "2026-10-02"
+   }
   },
   "conv": {
    "name": {
@@ -67815,7 +67842,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Storm_Bouquet_for_Kodama"
+       "wiki": "A_Storm_Bouquet_for_Kodama",
+       "cost": {
+        "charged_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 20,
@@ -67828,7 +67860,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Frozen_Bouquet_for_Liriodendron"
+       "wiki": "A_Frozen_Bouquet_for_Liriodendron",
+       "cost": {
+        "glacial_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 21,
@@ -67841,7 +67878,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Earthen_Bouquet_for_Broadleaf"
+       "wiki": "An_Earthen_Bouquet_for_Broadleaf",
+       "cost": {
+        "onyx_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 22,
@@ -67854,7 +67896,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Infernal_Bouquet_for_Rosewood"
+       "wiki": "An_Infernal_Bouquet_for_Rosewood",
+       "cost": {
+        "molten_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 23,

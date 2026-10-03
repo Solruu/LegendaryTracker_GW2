@@ -137,6 +137,8 @@ const I18N = {
     farm_perchar: "×char",
     farm_perchar_hearts: "×char (hearts required)",
     farm_account: "×account",
+    meta_res_need: "{n} still needed for this legendary",
+    meta_res_done: "No longer needed for this legendary",
     next_meta: "→ Next: {meta} ({sub}) at {time}",
     btn_done: "Done",
     btn_done_checked: "✓ Done",
@@ -359,6 +361,8 @@ const I18N = {
     farm_perchar: "×perso",
     farm_perchar_hearts: "×perso (hearts requis)",
     farm_account: "×compte",
+    meta_res_need: "Encore {n} pour cette légendaire",
+    meta_res_done: "Plus nécessaire pour cette légendaire",
     next_meta: "→ Ensuite : {meta} ({sub}) à {time}",
     btn_done: "Fait",
     btn_done_checked: "✓ Fait",
@@ -1148,9 +1152,9 @@ const LEGENDARIES = {
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899, mapNote: "Bitterfrost Frontier" },
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay + Draconis Mons" },
       { id: "jade", name: "Jade Shard", required: 250, icon: "JS", apiId: 80332, mapNote: "Lake Doric", },
-      { id: "fire_orchid", name: "Fire Orchid Blossom", required: 286, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
-        aside: { fr: "250 pour la recette, et 36 apportés aux quatre druides de Draconis Mons — fleur, bouquet, bouquet chargé. Les bouquets à 10 « Fire Orchids » ne sont pas encore comptés.",
-                 en: "250 for the recipe, plus 36 brought to the four druids of Draconis Mons — flower, bouquet, charged bouquet. The 10-'Fire Orchids' bouquets are not counted yet." } },
+      { id: "fire_orchid", name: "Fire Orchid Blossom", required: 326, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
+        aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides de Draconis Mons au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",
+                 en: "250 for the recipe, plus 76 brought to the four druids of Draconis Mons across the bouquets — flower, bouquet, charged bouquet, storm bouquet. Each one drops when its step is done." } },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." }, mapNote: "Siren's Landing",
         heartNote: { fr: "Circuit gratuit, par personnage et par jour : ~20 nœuds d'huîtres qui apparaissent sur les 23-25 emplacements fixes, 1 perle garantie chacun, plus 7 perles sur trois nommés quotidiens (Wyverne libérée 3, Illusion horrible 2, Larve gargantuesque 2). Les coffres engloutis ajoutent 1-2 perles au hasard. Faucille d'orichalque conseillée. En option payante : les 5 vendeurs de cœur, 3 perles chacun pour 13 440 karma au total.", en: "Free route, per character per day: ~20 oyster nodes spawning across the 23-25 fixed spots, 1 guaranteed pearl each, plus 7 pearls from three daily named foes (Unchained Wyvern 3, Horrid Illusion 2, Gargantuan Grub 2). Waterlogged Chests add a random 1-2. Orichalcum sickle recommended. Paid option: the 5 heart vendors, 3 pearls each for 13,440 karma total." } },
@@ -3967,6 +3971,33 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 }
 
 
+// ── Ce qu'une meta rend, et si la legendaire affichee en a encore besoin ──────
+//
+// Le croisement meta -> ressource est pose dans les sources (`rewards`, avec sa
+// reference). Il restait a le montrer : sans ca, une carte de meta donnait
+// l'heure et le point de passage, pas la raison d'y aller. Une ressource dont le
+// besoin est retombe a zero reste affichee, estompee — la masquer ferait croire
+// que la meta ne rend rien.
+//
+// PRIORITAIRE : toutes les voies renouvelables de la ressource sont des metas.
+// La gemme amalgamee en est l'exemple : sa seule autre voie est la forge
+// mystique, au cout prohibitif. Sauter la meta, c'est payer ce cout.
+function ressourcesDeMeta(metaId, totals) {
+  const meta = SOURCES_DB?.meta_events?.[metaId];
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const out = [];
+  for (const cid of (meta?.rewards ?? [])) {
+    const comp = cc[cid];
+    if (!comp) continue;
+    const renouv = (comp.sources ?? []).filter(s => s?.free_repeatable ||
+      ["vendor", "farm", "gathering", "salvage", "reward_track", "meta_drop"].includes(s?.type));
+    const prioritaire = renouv.length > 0 && renouv.every(s => s?.type === "meta_drop");
+    out.push({ cid, nom: comp.name ?? cid, besoin: Math.round(totals?.[cid] ?? 0), prioritaire });
+  }
+  // Le besoin d'abord, puis la priorite : ce qui sert encore passe devant.
+  return out.sort((x, y) => (y.besoin > 0) - (x.besoin > 0) || y.prioritaire - x.prioritaire);
+}
+
 export default function GW2LegendaryTracker() {
   const [lang, setLang] = useState(() => {
     try { return localStorage.getItem("gw2_lang") || "en"; } catch (_) { return "en"; }
@@ -6008,6 +6039,25 @@ export default function GW2LegendaryTracker() {
                         )}
                       </div>
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</div>
+                      {(() => {
+                        const res = ressourcesDeMeta(m.id, legTotals);
+                        if (!res.length) return null;
+                        return (
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginTop: "3px" }}>
+                            {res.map(r => (
+                              <span key={r.cid}
+                                title={r.besoin > 0 ? t("meta_res_need", { n: r.besoin }) : t("meta_res_done")}
+                                style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px",
+                                  fontFamily: "'Crimson Text', serif",
+                                  opacity: r.besoin > 0 ? 1 : 0.35,
+                                  color: r.prioritaire ? "#fbbf24" : "rgba(226,201,126,0.75)",
+                                  border: `1px solid ${r.prioritaire ? "rgba(251,191,36,0.5)" : "rgba(226,201,126,0.2)"}` }}>
+                                {r.prioritaire ? "★ " : ""}{r.nom}{r.besoin > 0 ? ` · ${r.besoin}` : ""}
+                              </span>
+                            ))}
+                          </div>
+                        );
+                      })()}
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
                           → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}

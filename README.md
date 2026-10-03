@@ -20,7 +20,7 @@ Tracker personnel de craft d'objets légendaires Guild Wars 2 — 13 onglets cou
 | `gw2_relecture_recettes_v4.py` | **Relecture des recettes par légendaire** : descend depuis chaque cible et compare, à chaque nœud, les enfants déclarés à la recette de sa capture. Appariement par apiId. Ne modifie rien | `RELECTURE_RECETTES_vN.md` |
 | `gw2_confronte_agregats_v1.py` | **Confrontation des agrégats en prose** : lit les listes de courses rédigées dans le texte des pages de collection et les compare aux totaux de l'arbre. Signale un dépassement (erreur) et une somme excédentaire (à arbitrer). Ne modifie rien | `CONFRONTATION_AGREGATS_vN.md` |
 | `gw2_completion_arbre_v3.py` | **Complétion de l'arbre** : crée les composants que les recettes relues réclament, avec la quantité lue sur la capture du parent et l'apiId du référentiel matériaux. Deux gardes anti-doublon (apiId, nom au pluriel près). Avec `--relier`, décompose les composants posés dès que leur capture arrive. Ne pose aucune voie d'obtention | `gw2_sources_vN+1.json` |
-| `gw2_acces_metas_v1.py` | **Condition d'accès des métas** : dérive l'extension requise depuis la catégorie du widget, et applique la table `CONVERGENCES` pour les instances publiques que le widget ne distingue pas. Remplace les champs posés le 02/10 par une commande jetable | `gw2_sources_vN+1.json` |
+| `gw2_acces_metas_v2.py` | **Condition d'accès des métas** : dérive l'extension requise depuis la catégorie du widget, et applique la table `CONVERGENCES` pour les instances publiques que le widget ne distingue pas. Remplace les champs posés le 02/10 par une commande jetable | `gw2_sources_vN+1.json` |
 
 Les trois s'exécutent **en local** : `api.guildwars2.com` n'est pas joignable depuis l'environnement de développement assisté.
 
@@ -38,4 +38,4 @@ Chaque fichier modifié est renommé avec un suffixe `_vX` incrémenté, l'ancie
 
 | `gw2_couts_etapes_v1.py` | **Coûts d'étapes non comptés** : repère les étapes de collection dont le texte cite une quantité d'une ressource de l'arbre. Signal à lire, pas un total : il compte aussi les recettes décrites d'objets déjà comptés | rapport en console |
 
-| `gw2_pose_couts_etapes_v1.py` | **Coûts des étapes de collection** : pose `cost` sur les étapes dont le texte apporte des matériaux (« Bring … »), et seulement celles qui se résolvent entièrement. Les deux moteurs les comptent tant que l'étape n'est pas validée | `gw2_sources_vN+1.json` |
+| `gw2_pose_couts_etapes_v2.py` | **Coûts des étapes de collection** : pose `cost` sur les étapes dont le texte apporte des matériaux (« Bring … »), et seulement celles qui se résolvent entièrement. Les deux moteurs les comptent tant que l'étape n'est pas validée | `gw2_sources_vN+1.json` |

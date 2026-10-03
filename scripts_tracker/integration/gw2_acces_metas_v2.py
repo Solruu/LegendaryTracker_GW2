@@ -22,8 +22,8 @@ Deux sources, dans cet ordre :
    `CONVERGENCES` ci-dessous le dit, segment par segment, et c'est elle qui
    perennise la reponse : relancer ce script la reapplique.
 
-    python scripts_tracker/integration/gw2_acces_metas_v1.py
-    python scripts_tracker/integration/gw2_acces_metas_v1.py --ecrire
+    python scripts_tracker/integration/gw2_acces_metas_v2.py
+    python scripts_tracker/integration/gw2_acces_metas_v2.py --ecrire
 """
 import argparse
 import importlib.util
@@ -68,6 +68,16 @@ CONVERGENCES = {
     "Outer Nayos": "SecretsOfTheObscure",
     "Nexus of Eternity": "VisionsOfEternity",
 }
+# Les metas SANS timer ne sont pas dans le widget : leur extension ne peut pas
+# se lire dans sa categorie. Elle se lit par la carte qui les porte.
+# Gyala Delve : End of Dragons, affirme par Antoine. Inner Nayos : Secrets of the
+# Obscure, « il me semble » — la nuance est gardee dans la reference, pour qu'on
+# sache a quelle confiance on filtre.
+SANS_TIMER = {
+    "Gyala Delve": ("EndOfDragons", "Antoine, 02/10/2026"),
+    "Inner Nayos": ("SecretsOfTheObscure", "Antoine, 02/10/2026, « il me semble » — a confirmer"),
+}
+
 REF_CONVERGENCES = ("entree sur une carte d'extension, pas d'acces sans elle — "
                     "confirme en jeu par Antoine le 02/10/2026")
 
@@ -99,6 +109,18 @@ def main():
             continue
         pose = paires.get(cle)
         if not pose:
+            carte = m.get("map")
+            carte = carte.get("en") if isinstance(carte, dict) else carte
+            if carte in SANS_TIMER:
+                acc, qui = SANS_TIMER[carte]
+                m["categorie"] = carte
+                m["categorie_ref"] = "meta sans timer : absente du widget, lue par sa carte"
+                m["acces"] = OrderedDict([("type", "expansion"), ("access", acc),
+                                          ("ref", qui), ("verified", "confirme" not in qui
+                                                          and "semble" not in qui),
+                                          ("checked", "2026-10-02")])
+                bilan["sans_timer"] += 1
+                continue
             sans.append(cle)
             for champ in ("categorie", "acces", "categorie_ref"):
                 m.pop(champ, None)
