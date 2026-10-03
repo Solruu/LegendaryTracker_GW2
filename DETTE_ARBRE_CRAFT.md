@@ -4176,3 +4176,49 @@ depot ne dit leur extension. Pas devine.
 
 `di` Palawadan est la **seule meta Living World** du catalogue (LW4). Toutes les
 autres metas a horaire dependent d'une extension, que `access` sait dire.
+
+## CK — 02/10/2026 : les étapes de collection consomment, et personne ne le compte
+
+Question d'Antoine : « si une etape active demande encore des ressources de
+carte, est-ce qu'elles sont prises en compte ? » **Non.**
+
+Une etape de collection porte son mode d'obtention en **texte libre** (`how`).
+Sept seulement portent un `component`, et il sert a l'inverse : rendre un
+composant inutile une fois l'etape validee. Rien, nulle part, ne dit qu'une
+etape non faite **consomme** des materiaux.
+
+### L'exemple le plus net : les miroirs de Vision
+
+`vis_astral_purif` — **sept** miroirs, chacun « Bring 10 Orichalcum Ingots, 10
+Powdered Rose Quartz, 5 Glob of Ectoplasm and 3 <type> Lodestones ». Soit, pour
+la collection : **70 lingots d'orichalque, 70 poudres de quartz rose, 35
+ectoplasmes, 21 magnetites** de sept sortes. Aucun n'est dans le total de
+Vision. (J'avais d'abord ecrit « huit » de memoire ; le controle en compte sept
+— corrige avant publication.)
+
+Meme famille cote Aurora : les bouquets de Draconis Mons demandent des Fire
+Orchid Blossoms et des magnetites par dizaines, a des etapes que l'arbre ne voit
+pas.
+
+### Le contrôle, et ce qu'il ne faut PAS lui faire dire
+
+`gw2_couts_etapes_v1.py` repere les etapes sans `component` dont le texte cite
+une quantite d'une ressource de l'arbre : **114 etapes**.
+
+**Son cumul n'est pas un manque a additionner.** Il est gonfle par les etapes
+qui DECRIVENT la recette d'un objet deja compte ailleurs — d'ou « 2 400
+obsidian shards » ou « 10 000 tales of dungeon delving », qui sont les recettes
+des dons gen1, deja dans l'arbre. Il signale, la lecture tranche, et c'est ecrit
+en tete du script. J'ai failli publier ce cumul comme un trou.
+
+Il sous-compte aussi : « 10 Fire Orchids » ne correspond pas au nom
+« Fire Orchid Blossom ». Une premiere version, qui capturait « nombre + mots »,
+s'arretait au premier mot et ne trouvait rien du tout.
+
+### La correction a faire — décision de structure, non prise
+
+Il faut a l'etape un champ symetrique de `component` : `cost`, une table
+`{composant: quantite}` que le moteur compte **tant que l'etape n'est pas
+validee**, et qui disparait quand elle l'est. Ca change des totaux partout ou des
+etapes coutent, et la regle de satisfaction existante doit etre etendue des deux
+cotes (direct et Flask). A instruire avec Antoine.
