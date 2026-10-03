@@ -342,6 +342,26 @@ class Modele:
                 o = ch.retenue(cible, selection)
                 if o not in satisfaits:
                     t[o] = t.get(o, 0) + ch.qty
+        # Ce qu'une etape de collection CONSOMME tant qu'elle n'est pas faite —
+        # le sens direct que `component` ne portait pas. Meme regle que le JSX,
+        # au meme endroit : avant la cascade, et sans statut l'etape est reputee
+        # non faite. Le test de conformite compare les deux.
+        if cible in self.legendaires:
+            faites = collections_faites or {}
+            for cle, col in (self.legendaires[cible].brut.get("collections") or {}).items():
+                if not isinstance(col, dict):
+                    continue
+                sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
+                entier = bool(sc.get("done"))
+                bits = sc.get("bits") or []
+                for item in col.get("items") or []:
+                    cout = isinstance(item, dict) and item.get("cost")
+                    if not cout or entier or item.get("bit") in bits:
+                        continue
+                    for cid, n in cout.items():
+                        if isinstance(n, (int, float)) and not isinstance(n, bool) \
+                                and cid not in satisfaits:
+                            t[cid] = t.get(cid, 0) + n
         # Les apports de la cascade sont REMPLACES a chaque tour, jamais
         # cumules : les additionner ferait grossir un total a chaque passe.
         pose: dict[str, float] = {}

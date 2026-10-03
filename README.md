@@ -37,3 +37,5 @@ python3 gw2_build_html_v2.py --jsx gw2_legendary_tracker_v98.jsx --out docs/inde
 Chaque fichier modifié est renommé avec un suffixe `_vX` incrémenté, l'ancienne version étant retirée via `git rm`. `docs/index.html` est rebuildé à chaque push.
 
 | `gw2_couts_etapes_v1.py` | **Coûts d'étapes non comptés** : repère les étapes de collection dont le texte cite une quantité d'une ressource de l'arbre. Signal à lire, pas un total : il compte aussi les recettes décrites d'objets déjà comptés | rapport en console |
+
+| `gw2_pose_couts_etapes_v1.py` | **Coûts des étapes de collection** : pose `cost` sur les étapes dont le texte apporte des matériaux (« Bring … »), et seulement celles qui se résolvent entièrement. Les deux moteurs les comptent tant que l'étape n'est pas validée | `gw2_sources_vN+1.json` |

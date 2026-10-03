@@ -34,7 +34,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[2]  # racine du depot
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v2 import Modele  # noqa: E402
+from moteur.gw2_moteur_v3 import Modele  # noqa: E402
 
 JSX = max(HERE.glob("gw2_legendary_tracker_v*.jsx"),
           key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))

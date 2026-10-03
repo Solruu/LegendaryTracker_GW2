@@ -1134,6 +1134,13 @@ def progression():
         errors.append(f"account: {err}")
     elif isinstance(compte_raw, dict) and isinstance(compte_raw.get("commander"), bool):
         commander = compte_raw["commander"]
+    # `access` : les extensions du compte. Le chemin direct le lit depuis le
+    # JSX v238 ; ici il manquait, et le test de symetrie des synchros l'a vu —
+    # une donnee posee par un seul chemin, c'est un filtre qui marche ou pas
+    # selon que le serveur tourne.
+    access = (compte_raw.get("access")
+              if isinstance(compte_raw, dict) and isinstance(compte_raw.get("access"), list)
+              else None)
 
     # ── Recettes debloquees (pour les feuilles achetees une fois par compte)
     recipes_raw, err = gw2_get("account/recipes", api_key)
@@ -1593,6 +1600,7 @@ def progression():
         # Tag de commandant achete ? `null` quand l'appel echoue : une porte
         # inconnue n'est pas une porte fermee (ROUTES.md).
         "_commander": commander,
+        "_access": access,
     }
 
     return jsonify(result)

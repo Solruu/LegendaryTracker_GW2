@@ -530,10 +530,10 @@ def _atteint(cid, legid, comps, profondeur=0):
 
 # La cascade n'est plus ecrite ici. Elle vivait dans dix fichiers, dont deux
 # avaient deja diverge sans que rien ne le signale. Un seul moteur desormais :
-# gw2_moteur_v2.Modele.
+# gw2_moteur_v3.Modele.
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v2 import Modele as _Modele  # noqa: E402
+from moteur.gw2_moteur_v3 import Modele as _Modele  # noqa: E402
 
 
 def _jsx_alias(src):

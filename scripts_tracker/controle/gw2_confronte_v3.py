@@ -77,7 +77,7 @@ def nom(cid):
 
 import sys as _sys  # noqa: E402
 _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v2 import Modele  # noqa: E402
+from moteur.gw2_moteur_v3 import Modele  # noqa: E402
 
 # La cascade n'est plus ecrite ici. Deux modeles : l'etat actuel, et le meme ou
 # toutes les aretes proposees par les captures sont posees. Le second se

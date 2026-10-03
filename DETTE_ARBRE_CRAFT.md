@@ -3366,7 +3366,7 @@ portent un `component` ne rendaient jamais rien**.
 `_sub_status` ne pouvait pas y suppleer : il laisse tomber les `bits`, et une
 collection a moitie faite se juge bit par bit.
 
-`gw2_flask_server_v45.py` renvoie `_collections.all` — 340 entrees, indexees par
+`gw2_flask_server_v46.py` renvoie `_collections.all` — 340 entrees, indexees par
 cle ET par id, bits compris — derivees des sources comme cote JSX. Vision et
 Aurora marchaient deja par leur route dediee ; c'est Orrax et les autres qui
 gagnent la regle.
@@ -4222,3 +4222,56 @@ Il faut a l'etape un champ symetrique de `component` : `cost`, une table
 validee**, et qui disparait quand elle l'est. Ca change des totaux partout ou des
 etapes coutent, et la regle de satisfaction existante doit etre etendue des deux
 cotes (direct et Flask). A instruire avec Antoine.
+
+## CL — 02/10/2026 : `cost`, le sens direct que `component` ne portait pas
+
+Antoine a donne son accord. Une etape de collection porte desormais, quand elle
+consomme des materiaux, un champ **`cost`** : `{composant: quantite}`, compte
+**tant que l'etape n'est pas validee**, et qui tombe a la validation.
+
+C'est le symetrique exact de `component`. L'un dit « cette etape faite rend ce
+composant inutile », l'autre « cette etape non faite reclame ces materiaux ».
+
+### Dans les deux moteurs, au même endroit
+
+JSX v239 et `gw2_moteur_v3.py` posent la regle **apres les choix, avant la
+cascade** : un lingot d'orichalque apporte a un miroir se developpe ensuite en
+minerai comme n'importe quel autre besoin. Sans statut connu, l'etape est
+reputee non faite — compter trop vaut mieux que promettre un total trop bas.
+Le test de conformite compare les deux : **aucun ecart**, coûts reels compris.
+
+### Ce qui est posé, et seulement ça
+
+`gw2_pose_couts_etapes_v1.py` ne retient qu'une forme de texte : celle ou
+l'etape **apporte** quelque chose (« Bring … »). Les recettes decrites — « Created
+by a master craftsman with 100 Crystalline Ingots » — ne sont pas des
+consommations, et c'est ce qui gonflait le cumul du controle a 2 400 obsidian
+shards. Un nom doit correspondre exactement a un composant.
+
+**21 etapes chiffrees** :
+
+- les **sept miroirs** de `vis_astral_purif` : 10 orichalque, 10 quartz rose,
+  5 ectoplasmes, 3 magnetites chacun ;
+- **quatorze etapes d'Aurora** : fleurs, bouquets et bouquets charges des
+  druides de Draconis Mons, la Druid Runestone, le Vision Crystal.
+
+Effet mesure : Vision **3 000 -> 3 070** poudres de quartz rose, Aurora
+**250 -> 286** Fire Orchid Blossoms. Les cartes du JSX suivent, avec un `aside`
+qui dit d'ou viennent les nombres.
+
+### Ce qui reste, non posé à moitié
+
+Quatre bouquets d'Aurora disent « Bring 10 **Fire Orchids** and 5 Charged
+Lodestones ». « Fire Orchids » n'est pas le nom du composant, « Fire Orchid
+Blossom ». C'est vraisemblablement le meme objet — les etapes soeurs disent
+« Blossoms » — mais **un texte qui ne se resout pas entierement n'est pas pose
+a moitie** : il aurait compte les magnetites et oublie les fleurs. Listees, a
+trancher. Soit 40 fleurs et 20 magnetites encore hors du total.
+
+### Et une asymétrie de ma main, attrapée par le test
+
+Le test de symetrie des synchros a refuse le passage : `_access`, ajoute hier
+soir au chemin direct, n'existait pas cote Flask. Avec le serveur allume, le
+filtre d'extensions n'aurait rien recu. `gw2_flask_server_v46.py` le pose aussi.
+J'avais lance ce test hier — il est passe parce que je l'avais lance avant
+d'ajouter le champ, pas apres.

@@ -66899,7 +66899,11 @@
         "en": "Kodama is inside Druid's Grotto [&BMUJAAA=], Savage Rise."
        },
        "how_fr_missing": true,
-       "wiki": "The_Druid%27s_Story"
+       "wiki": "The_Druid%27s_Story",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 3,
@@ -66912,7 +66916,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Kodama"
+       "wiki": "A_Flower_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 4,
@@ -66925,7 +66933,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Liriodendron"
+       "wiki": "A_Flower_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 5,
@@ -66938,7 +66950,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Broadleaf"
+       "wiki": "A_Flower_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 6,
@@ -66951,7 +66967,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Rosewood"
+       "wiki": "A_Flower_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
@@ -67119,7 +67139,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Kodama"
+       "wiki": "A_Bouquet_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 11,
@@ -67136,7 +67160,11 @@
         "en": "Liriodendron: Peace Grounds [&BMkJAAA=], Savage Rise."
        },
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Liriodendron"
+       "wiki": "A_Bouquet_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 12,
@@ -67149,7 +67177,11 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
        "name_api": "A Bouquet for Broadleaf — 3 blossoms",
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Broadleaf"
+       "wiki": "A_Bouquet_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 13,
@@ -67166,7 +67198,11 @@
         "en": "Rosewood: rock bridge above Ancient Hollow Waypoint [&BNUJAAA=]."
        },
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Rosewood"
+       "wiki": "A_Bouquet_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
@@ -67415,7 +67451,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Charged_Bouquet_for_Kodama"
+       "wiki": "A_Charged_Bouquet_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "charged_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 17,
@@ -67428,7 +67469,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Glacial_Bouquet_for_Liriodendron"
+       "wiki": "A_Glacial_Bouquet_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "glacial_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 18,
@@ -67441,7 +67487,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Onyx_Bouquet_for_Broadleaf"
+       "wiki": "An_Onyx_Bouquet_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "onyx_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 19,
@@ -67454,7 +67505,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Molten_Bouquet_for_Rosewood"
+       "wiki": "A_Molten_Bouquet_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "molten_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 20,
@@ -67742,7 +67798,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "Druid%27s_Vision"
+       "wiki": "Druid%27s_Vision",
+       "cost": {
+        "vision_crystal": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 19,
@@ -69580,7 +69640,14 @@
         "en": "Unlocks when you craft your FIRST Astral weapon: open your mail and give the 'Note from Yasna' to Ouissal. Reward: an Irradiated Vision Crystal — the main ingredient of a Stellar weapon, i.e. a whole Astral weapon's worth of materials saved (500 Kralkatite Ore + 500 Powdered Rose Quartz)."
        },
        "how_fr_missing": true,
-       "wiki": "Charged_Mirror"
+       "wiki": "Charged_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "charged_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 1,
@@ -69593,7 +69660,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Corrupted_Mirror"
+       "wiki": "Corrupted_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "corrupted_lodestone": 3,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 2,
@@ -69606,7 +69680,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Crystal_Mirror"
+       "wiki": "Crystal_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "crystal_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 3,
@@ -69619,7 +69700,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Glacial_Mirror"
+       "wiki": "Glacial_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "glacial_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 4,
@@ -69632,7 +69720,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Destroyer_Mirror"
+       "wiki": "Destroyer_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "destroyer_lodestone": 3,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 5,
@@ -69645,7 +69740,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Molten_Mirror"
+       "wiki": "Molten_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "molten_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 6,
@@ -69658,7 +69760,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Onyx_Mirror"
+       "wiki": "Onyx_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10,
+        "onyx_lodestone": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 7,
