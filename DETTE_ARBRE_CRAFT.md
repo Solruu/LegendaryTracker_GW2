@@ -4135,3 +4135,44 @@ l'affichage. Les cases a cocher des episodes de Living World aussi : nouveau
 sous-menu, nouvel etat persistant, et un defaut « tout decoche » a assumer. Ce
 sont des choix d'interface, et les faire de nuit sans retour d'Antoine
 produirait un ecran qu'il faudrait defaire.
+
+## CJ — 02/10/2026 : les convergences pérennisées, et une règle que je venais d'enfreindre
+
+### Les convergences
+
+Antoine confirme ce que j'avais avance sans le poser : **chaque convergence
+s'ouvre depuis une carte d'extension**, donc pas d'acces sans elle. Mount
+Balrior tient de Janthir Wilds, Outer Nayos de Secrets of the Obscure, Nexus of
+Eternity de Visions of Eternity.
+
+Il demande que ce soit **perenne**. La reponse tient en une table,
+`CONVERGENCES`, dans `gw2_acces_metas_v1.py`, avec sa source : le widget range
+toutes les instances publiques sous « Public Instances » sans distinguer
+l'extension, et c'est cette table qui comble le trou. Relancer le script la
+reapplique ; une quatrieme convergence ajoutee au jeu ressortirait
+`a_preciser` jusqu'a ce qu'on l'y inscrive. **Zero `a_preciser` aujourd'hui.**
+
+### La règle que je venais d'enfreindre
+
+Les champs `categorie` et `acces` avaient ete poses hier soir par **une commande
+jetable** — la classe exacte d'operation que je m'etais interdite le 01/10, deux
+entrees plus haut dans ce meme fichier. Ils n'etaient ni reproductibles ni
+relisibles : si les convergences avaient ete corrigees a la main par-dessus, la
+correction aurait ete perdue au prochain passage.
+
+`gw2_acces_metas_v1.py` les **remplace et les regenere**. C'est aussi ce qui rend
+la correction des convergences perenne : sans script, il n'y avait rien ou la
+poser.
+
+Et l'audit l'a rappele au passage : la provenance d'un `acces` sourcé exige
+`verified` et `checked`. Ajoutes **dans le script**, pas a la main sur le
+fichier produit — sinon la regeneration suivante les aurait perdus.
+
+### Ce qui reste sans condition
+
+`gy`, `in`, `zak` : les metas conditionnelles, sans horaire, que le widget ne
+porte pas. Leurs cartes sont connues — Gyala Delve, Inner Nayos — mais rien au
+depot ne dit leur extension. Pas devine.
+
+`di` Palawadan est la **seule meta Living World** du catalogue (LW4). Toutes les
+autres metas a horaire dependent d'une extension, que `access` sait dire.
