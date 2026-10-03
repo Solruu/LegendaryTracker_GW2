@@ -1807,11 +1807,19 @@ collection, pas seulement Vision.
   dernier est le code de Gyala Delve, indice de copie. A verifier en jeu.
 - `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
   `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
-- `nk -> ew` (40 min) : chainage retire en attendant Antoine.
-- Vendeurs LW3 (`eb`, `dm`, `ld`) a 5/jour/perso : cadence non sourcee, posee
-  sur la ferme. A sourcer puis deplacer sur le composant.
 - 12 metas a horaire sans `ref`, toutes confirmees par le widget : poser la
   reference (`gw2_acces_metas` sait deja ecrire `categorie_ref`, meme forme).
 - Depliage LW par episode : aucune capture ne liste les episodes.
 - Fermes `isTimeless` sans condition d'acces : rien au depot ne dit la saison
   de leur carte.
+- `dm` : le conseil dit « Fire Orchid + Petrified Wood via nodes », mais la page
+  Draconis Mons ne cite que Fire Orchid. Petrified Wood non ajoute aux
+  recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
+- `nextDelayMin` n'est plus lu par aucun code depuis la fusion : le chainage
+  affiche se calcule sur la prochaine occurrence. Champ mort a supprimer, avec
+  l'accord d'Antoine.
+- Provenance des recompenses sur DEUX champs : `rewards_ref` (texte, pour la
+  gemme amalgamee) et `rewards_refs` (par recompense). A fusionner sur
+  `rewards_refs` — refactor de gw2_rewards_metas.
+- `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
+  point de passage d'Ember Bay reste a poser.

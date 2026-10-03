@@ -1189,8 +1189,8 @@
       "waypoint": "Amnoon Waypoint",
       "wpCode": "[&BLIGAAA=]",
       "tip": {
-        "fr": "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.",
-        "en": "~10 min, do not miss the start. The most efficient of all - absolute priority."
+        "fr": "~10 min, ne pas rater le départ. La plus efficiente de toutes.",
+        "en": "~10 min, do not miss the start. The most efficient of all."
       },
       "next": [
         "er"
@@ -1426,8 +1426,10 @@
         "fr": "Population quasi nulle hors rotation Wizard's Vault. Ne pas planifier autour — opportuniste uniquement si la map est active.",
         "en": "Near-empty population outside Wizard's Vault rotation. Don't plan around it — opportunistic only if the map is active."
       },
-      "next": [],
-      "nextDelayMin": null,
+      "next": [
+        "ew"
+      ],
+      "nextDelayMin": 40,
       "rewards": [
         "amalgamated_gemstone",
         "chunk_of_pure_jade"
@@ -1946,7 +1948,9 @@
       "ref": "Widget:Event timer/data.json — voe-ss, segment « Hammerhart Rumble! » : decalage calcule depuis la frise",
       "checked": "2026-10-01",
       "verified": true,
-      "rewards": [],
+      "rewards": [
+        "aether_rich_sap"
+      ],
       "categorie": "Visions of Eternity",
       "acces": {
         "type": "expansion",
@@ -1962,6 +1966,9 @@
       "tip": {
         "fr": "World boss de Shipwreck Strand (Twisting Hollows). Accès rapide : téléporteur « Found » au Pub Canach. CC obligatoire pour percer le dôme initial ; boss jumeaux à barre de vie partagée. Source d'Aether-Rich Sap.",
         "en": "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source."
+      },
+      "rewards_refs": {
+        "aether_rich_sap": "ressources/wiki/aether_rich_sap.html — obtenue en completant les evenements de Shipwreck Strand"
       }
     },
     "weald": {
@@ -1980,7 +1987,9 @@
       "ref": "Widget:Event timer/data.json — voe-sw, segment « Secrets of the Weald » : decalage calcule depuis la frise",
       "checked": "2026-10-01",
       "verified": true,
-      "rewards": [],
+      "rewards": [
+        "antiquated_ducat"
+      ],
       "categorie": "Visions of Eternity",
       "acces": {
         "type": "expansion",
@@ -1996,6 +2005,9 @@
       "tip": {
         "fr": "Méta de Starlit Weald (Cloister of Stars) : 3 excavateurs simultanés puis Gwyllian. Maîtrise des lignes de force requise (planeur/monture). Source d'Antiquated Ducats.",
         "en": "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source."
+      },
+      "rewards_refs": {
+        "antiquated_ducat": "ressources/wiki/antiquated_ducat.html — obtenue en completant les evenements de Starlit Weald"
       }
     },
     "shackles": {
@@ -2059,7 +2071,15 @@
         "en": "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM."
       },
       "isTimeless": true,
-      "cadence_ref": "volatile_magic"
+      "cadence_ref": "volatile_magic",
+      "rewards": [
+        "volatile_magic",
+        "kralkatite_ore"
+      ],
+      "rewards_refs": {
+        "volatile_magic": "cadence de volatile_magic (noeuds LW4, 50/compte/jour), deja verifiee",
+        "kralkatite_ore": "wiki:Bundle_of_Kralkatite — 3 vendeurs de coeur du Domaine d'Istan"
+      }
     },
     "lw4_dragonfall": {
       "name": {
@@ -2088,7 +2108,13 @@
         "en": "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)."
       },
       "isTimeless": true,
-      "cadence_ref": "mistborn_mote"
+      "cadence_ref": "mistborn_mote",
+      "rewards": [
+        "mistborn_mote"
+      ],
+      "rewards_refs": {
+        "mistborn_mote": "cadence de mistborn_mote (noeuds de Dragonfall), deja verifiee"
+      }
     },
     "bf": {
       "name": {
@@ -2122,7 +2148,7 @@
       },
       "expansion": "LW3",
       "icon": "EB",
-      "farmType": "per_account",
+      "farmType": "per_char_hearts",
       "waypoint": "Savage Rise Waypoint",
       "wpCode": "[&BNMJAAA=]",
       "resetNote": {
@@ -2130,30 +2156,20 @@
         "en": "daily soft-reset 01h UTC+1"
       },
       "vendor": {
-        "fr": "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma",
-        "en": "Seimur Oxbone — sells Fire Orchid Blossom and Petrified Wood for karma"
+        "fr": "5 vendeurs de cœur — ballot de 3 Petrified Wood contre karma, 1/jour/perso",
+        "en": "5 renown heart vendors — bundle of 3 Petrified Wood for karma, 1/day/character"
       },
-      "vendorWp": "Savage Rise Waypoint [&BNMJAAA=]",
       "tip": {
-        "fr": "~40 Lava Drops + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Le vendeur Seimur Oxbone sur place vend la currency contre karma (5/jour/perso — léger potentiel alt-swap).",
-        "en": "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)."
+        "fr": "~40 Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Les 5 vendeurs de cœur vendent chacun un ballot de 3 Petrified Wood contre karma, une fois par jour et par personnage une fois le cœur fait : 15/perso/jour, à démultiplier avec les alts.",
+        "en": "~40 Petrified Wood/account/day via nodes. Soft reset at 01h. The 5 renown heart vendors each sell a bundle of 3 Petrified Wood for karma, once per day per character once the heart is done: 15/character/day, multiplied by alts."
       },
       "isTimeless": true,
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Vendeur Seimur Oxbone — contre karma",
-              "en": "Vendor Seimur Oxbone — for karma"
-            },
-            "period": "day",
-            "cap": 5,
-            "per_character": true,
-            "ref": "conseil editorial du JSX v241, remonte tel quel — non source",
-            "verified": false,
-            "checked": "2026-10-03"
-          }
-        ]
+      "cadence_ref": "petrified_wood_lw3",
+      "rewards": [
+        "petrified_wood_lw3"
+      ],
+      "rewards_refs": {
+        "petrified_wood_lw3": "wiki:Ember_Bay — Map resources"
       }
     },
     "dm": {
@@ -2164,7 +2180,7 @@
       },
       "expansion": "LW3",
       "icon": "DM",
-      "farmType": "per_account",
+      "farmType": "per_char_hearts",
       "waypoint": "Heathen's Hold Waypoint",
       "wpCode": "[&BOMJAAA=]",
       "resetNote": {
@@ -2172,30 +2188,21 @@
         "en": "daily soft-reset 01h UTC+1"
       },
       "vendor": {
-        "fr": "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma",
-        "en": "Nesa — sells Fire Orchid Blossom and Petrified Wood for karma"
+        "fr": "4 vendeurs de cœur (dont Tactician Tunelle) — ballot de 3 Fire Orchid Blossom contre karma, 1/jour/perso",
+        "en": "4 renown heart vendors (incl. Tactician Tunelle) — bundle of 3 Fire Orchid Blossom for karma, 1/day/character"
       },
       "vendorWp": "Heathen's Hold Waypoint [&BOMJAAA=]",
       "tip": {
-        "fr": "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Vendeuse Nesa sur place (5/jour/perso — léger potentiel alt-swap).",
-        "en": "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)."
+        "fr": "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Les 4 vendeurs de cœur vendent chacun un ballot de 3 Fire Orchid Blossom contre karma, une fois par jour et par personnage une fois le cœur fait : 12/perso/jour, à démultiplier avec les alts.",
+        "en": "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft reset at 01h. Springer required for some nodes. The 4 renown heart vendors each sell a bundle of 3 Fire Orchid Blossom for karma, once per day per character once the heart is done: 12/character/day, multiplied by alts."
       },
       "isTimeless": true,
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Vendeur Nesa — contre karma",
-              "en": "Vendor Nesa — for karma"
-            },
-            "period": "day",
-            "cap": 5,
-            "per_character": true,
-            "ref": "conseil editorial du JSX v241, remonte tel quel — non source",
-            "verified": false,
-            "checked": "2026-10-03"
-          }
-        ]
+      "cadence_ref": "fire_orchid_blossom",
+      "rewards": [
+        "fire_orchid_blossom"
+      ],
+      "rewards_refs": {
+        "fire_orchid_blossom": "wiki:Draconis_Mons — Map resources"
       }
     },
     "ld": {
@@ -2206,7 +2213,7 @@
       },
       "expansion": "LW3",
       "icon": "LD",
-      "farmType": "per_account",
+      "farmType": "per_char_hearts",
       "waypoint": "Noran's Homestead Waypoint",
       "wpCode": "[&BNQJAAA=]",
       "resetNote": {
@@ -2214,30 +2221,21 @@
         "en": "daily soft-reset 01h UTC+1"
       },
       "vendor": {
-        "fr": "Noran — vend Jade Shard contre karma",
-        "en": "Noran — sells Jade Shard for karma"
+        "fr": "6 vendeurs de cœur (dont Noran) — ballot de 3 Jade Shard contre karma, 1/jour/perso",
+        "en": "6 renown heart vendors (incl. Noran) — bundle of 3 Jade Shard for karma, 1/day/character"
       },
       "vendorWp": "Noran's Homestead Waypoint [&BNQJAAA=]",
       "tip": {
-        "fr": "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Vendeur Noran sur place (5/jour/perso). Alt-swap minimal possible via le vendeur.",
-        "en": "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor."
+        "fr": "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Les 6 vendeurs de cœur vendent chacun un ballot de 3 Jade Shard contre karma, une fois par jour et par personnage une fois le cœur fait : 18/perso/jour, à démultiplier avec les alts.",
+        "en": "~40 Jade Shards/account/day via nodes. Soft reset at 01h. The 6 renown heart vendors each sell a bundle of 3 Jade Shard for karma, once per day per character once the heart is done: 18/character/day, multiplied by alts."
       },
       "isTimeless": true,
-      "cadence": {
-        "sources": [
-          {
-            "label": {
-              "fr": "Vendeur Noran — contre karma",
-              "en": "Vendor Noran — for karma"
-            },
-            "period": "day",
-            "cap": 5,
-            "per_character": true,
-            "ref": "conseil editorial du JSX v241, remonte tel quel — non source",
-            "verified": false,
-            "checked": "2026-10-03"
-          }
-        ]
+      "cadence_ref": "jade_shard_lw3",
+      "rewards": [
+        "jade_shard_lw3"
+      ],
+      "rewards_refs": {
+        "jade_shard_lw3": "wiki:Lake_Doric — Map resources"
       }
     },
     "sl": {
@@ -4328,6 +4326,22 @@
             "verified": true,
             "checked": "2026-08-20",
             "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+          },
+          {
+            "label": {
+              "fr": "Ballots — 6 vendeurs de cœur, Lake Doric",
+              "en": "Bundles — 6 renown heart vendors, Lake Doric"
+            },
+            "period": "day",
+            "cap": 18,
+            "per_character": true,
+            "cost": {
+              "fr": "3 Jade Shard par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 6 cœurs, donc 18 par personnage et par jour. Se démultiplie avec les alts.",
+              "en": "3 Jade Shard per bundle, 1 bundle per vendor per character per day, once the heart is done. 6 hearts, so 18 per character per day. Scales with alts."
+            },
+            "verified": true,
+            "checked": "2026-10-03",
+            "ref": "wiki:Bundle_of_Jade_Shards ; mecanisme confirme par Antoine le 03/10/2026"
           }
         ]
       }
@@ -4544,6 +4558,22 @@
             "verified": true,
             "checked": "2026-08-20",
             "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+          },
+          {
+            "label": {
+              "fr": "Ballots — 4 vendeurs de cœur, Draconis Mons",
+              "en": "Bundles — 4 renown heart vendors, Draconis Mons"
+            },
+            "period": "day",
+            "cap": 12,
+            "per_character": true,
+            "cost": {
+              "fr": "3 Fire Orchid Blossom par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 4 cœurs, donc 12 par personnage et par jour. Se démultiplie avec les alts.",
+              "en": "3 Fire Orchid Blossom per bundle, 1 bundle per vendor per character per day, once the heart is done. 4 hearts, so 12 per character per day. Scales with alts."
+            },
+            "verified": true,
+            "checked": "2026-10-03",
+            "ref": "wiki:Draconis_Mons — Map resources ; wiki:Tactician_Tunelle ; mecanisme confirme par Antoine le 03/10/2026"
           }
         ]
       }
@@ -4661,6 +4691,22 @@
             "verified": true,
             "checked": "2026-08-20",
             "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+          },
+          {
+            "label": {
+              "fr": "Ballots — 5 vendeurs de cœur, Ember Bay",
+              "en": "Bundles — 5 renown heart vendors, Ember Bay"
+            },
+            "period": "day",
+            "cap": 15,
+            "per_character": true,
+            "cost": {
+              "fr": "3 Petrified Wood par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 5 cœurs, donc 15 par personnage et par jour. Se démultiplie avec les alts.",
+              "en": "3 Petrified Wood per bundle, 1 bundle per vendor per character per day, once the heart is done. 5 hearts, so 15 per character per day. Scales with alts."
+            },
+            "verified": true,
+            "checked": "2026-10-03",
+            "ref": "wiki:Ember_Bay — Map resources ; mecanisme confirme par Antoine le 03/10/2026"
           }
         ]
       }

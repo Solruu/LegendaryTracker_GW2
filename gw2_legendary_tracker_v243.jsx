@@ -3819,6 +3819,31 @@ function metaAccessible(metaId, ext, lw) {
 // PRIORITAIRE : toutes les voies renouvelables de la ressource sont des metas.
 // La gemme amalgamee en est l'exemple : sa seule autre voie est la forge
 // mystique, au cout prohibitif. Sauter la meta, c'est payer ce cout.
+// Puces « ce que rend cette meta » : une seule fonction de rendu pour les
+// metas a horaire ET les fermes. Depuis le 03/10 les fermes declarent leur
+// ressource (`rewards`) ; sans ce composant partage, elles auraient eu un
+// second rendu ou pas de puce du tout.
+function PucesRessources({ metaId, totals }) {
+  const t = useT();
+  const res = ressourcesDeMeta(metaId, totals);
+  if (!res.length) return null;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginTop: "3px" }}>
+      {res.map(r => (
+        <span key={r.cid}
+          title={r.besoin > 0 ? t("meta_res_need", { n: r.besoin }) : t("meta_res_done")}
+          style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px",
+            fontFamily: "'Crimson Text', serif",
+            opacity: r.besoin > 0 ? 1 : 0.35,
+            color: r.prioritaire ? "#fbbf24" : "rgba(226,201,126,0.75)",
+            border: `1px solid ${r.prioritaire ? "rgba(251,191,36,0.5)" : "rgba(226,201,126,0.2)"}` }}>
+          {r.prioritaire ? "★ " : ""}{NX(r.nom)}{r.besoin > 0 ? ` · ${r.besoin}` : ""}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function ressourcesDeMeta(metaId, totals) {
   const meta = SOURCES_DB?.meta_events?.[metaId];
   const cc = SOURCES_DB?.craft_components ?? {};
@@ -5977,25 +6002,7 @@ export default function GW2LegendaryTracker() {
                         )}
                       </div>
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</div>
-                      {(() => {
-                        const res = ressourcesDeMeta(m.id, legTotals);
-                        if (!res.length) return null;
-                        return (
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginTop: "3px" }}>
-                            {res.map(r => (
-                              <span key={r.cid}
-                                title={r.besoin > 0 ? t("meta_res_need", { n: r.besoin }) : t("meta_res_done")}
-                                style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px",
-                                  fontFamily: "'Crimson Text', serif",
-                                  opacity: r.besoin > 0 ? 1 : 0.35,
-                                  color: r.prioritaire ? "#fbbf24" : "rgba(226,201,126,0.75)",
-                                  border: `1px solid ${r.prioritaire ? "rgba(251,191,36,0.5)" : "rgba(226,201,126,0.2)"}` }}>
-                                {r.prioritaire ? "★ " : ""}{r.nom}{r.besoin > 0 ? ` · ${r.besoin}` : ""}
-                              </span>
-                            ))}
-                          </div>
-                        );
-                      })()}
+                      <PucesRessources metaId={m.id} totals={legTotals} />
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
                           → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
@@ -6075,6 +6082,7 @@ export default function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
+                      <PucesRessources metaId={m.id} totals={legTotals} />
                     </div>
                     <button className={`check-btn ${dailyChecked[m.id] ? "done" : ""}`}
                       onClick={e => { e.stopPropagation(); toggleDaily(m.id); }}>

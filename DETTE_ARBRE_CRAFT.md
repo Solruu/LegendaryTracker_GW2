@@ -4419,3 +4419,45 @@ garde son texte (plus complet) et ses champs, la copie comble ses trous.
 - 80 avertissements contre 68 : les 12 nouveaux sont « horaire sans `ref` »
   (vb, td, ab…) — vrais, ces horaires sont confirmes par la confrontation mais
   ne citent pas leur source.
+
+## CP — 03/10/2026 : vendeurs de cœur LW3, et conseils contre champs
+
+Antoine confirme le mecanisme : ballots de la ressource de la carte, coeur
+fini, par personnage. Le wiki donne les nombres — et le « 5/jour/perso » des
+conseils etait faux : 5 etait le nombre de vendeurs d'Ember Bay.
+
+| carte | coeurs | ballot | par perso et par jour | source |
+|---|---:|---:|---:|---|
+| Ember Bay | 5 | 3 Petrified Wood | 15 | wiki:Ember_Bay |
+| Draconis Mons | 4 | 3 Fire Orchid Blossom | 12 | wiki:Draconis_Mons, Tactician_Tunelle |
+| Lake Doric | 6 | 3 Jade Shard | 18 | wiki:Bundle_of_Jade_Shards |
+
+Ces sources rejoignent la cadence des composants (`per_character`, format de
+la kralkatite) : **les delais projetes changent**, sur un personnage. La
+cadence provisoire des fermes disparait (`cadence_ref`). Le wiki corrige aussi
+les conseils : « Seimur Oxbone » est le sous-chef de Grawnk Munch, Ember Bay ne
+vend pas de Fire Orchid, « Savage Rise » est a Draconis Mons. Les trois fermes
+passent en `per_char_hearts`.
+
+### Coherence conseils / champs
+
+Nouveau controle `gw2_coherence_conseils_metas_v1` (horaire, chainage, acces,
+ressource, priorite). Premiere passe : **9 constats**, horaires et chainages
+tous coherents. Tous des ressources nommees dans le texte et absentes de
+`rewards` — la puce de priorite ne pouvait pas les voir :
+
+- fermes LW3, Istan (Magie volatile, et la kralkatite des trois coeurs),
+  Dragonfall : ajoutees, chacune avec sa source ;
+- Hammerhart, Weald : monnaies de carte de Castora, la capture dit « par les
+  evenements de la carte » ;
+- reste 1 : Petrified Wood a Draconis Mons, que le wiki ne confirme pas.
+
+`co` disait « priorite absolue » en dur ; la priorite affichee se calcule sur
+ce qu'il reste a farmer. Retire, l'efficience S porte deja l'information.
+`nk -> ew` restitue.
+
+Transversal : les fermes declarant maintenant leur ressource, leurs cartes
+affichent les puces. Le rendu des puces devient un composant unique
+(`PucesRessources`), utilise par les deux cartes, et le nom passe par `NX`
+(il s'affichait en anglais cote francais). rewards_metas et acces_metas
+relances a blanc : rien a changer.
