@@ -1807,13 +1807,14 @@ collection, pas seulement Vision.
   dernier est le code de Gyala Delve, indice de copie. A verifier en jeu.
 - `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
   `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
-- 12 metas a horaire sans `ref`, toutes confirmees par le widget : poser la
-  reference (`gw2_acces_metas` sait deja ecrire `categorie_ref`, meme forme).
 - Depliage LW par episode : aucune capture ne liste les episodes.
-- Fermes `isTimeless` sans condition d'acces : rien au depot ne dit la saison
-  de leur carte.
 - `dm` : le conseil dit « Fire Orchid + Petrified Wood via nodes », mais la page
   Draconis Mons ne cite que Fire Orchid. Petrified Wood non ajoute aux
   recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
 - `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
   point de passage d'Ember Bay reste a poser.
+- `bf_meta` : carte Bitterfrost Frontier (LW3) contre horaire de « The Frozen
+  Maw » (Wayfarer Foothills, base). Laquelle est la bonne ? Sans reponse, pas de
+  condition d'acces ni de `ref`.
+- Codes de point de passage partages (COHERENCE_CONSEILS_METAS, regle W) :
+  `[&BNMMAAA=]` sur sp / de2 / gy, `[&BDQOAAA=]` sur am / in. A relever en jeu.

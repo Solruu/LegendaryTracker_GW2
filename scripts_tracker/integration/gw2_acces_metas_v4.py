@@ -22,8 +22,8 @@ Deux sources, dans cet ordre :
    `CONVERGENCES` ci-dessous le dit, segment par segment, et c'est elle qui
    perennise la reponse : relancer ce script la reapplique.
 
-    python scripts_tracker/integration/gw2_acces_metas_v3.py
-    python scripts_tracker/integration/gw2_acces_metas_v3.py --ecrire
+    python scripts_tracker/integration/gw2_acces_metas_v4.py
+    python scripts_tracker/integration/gw2_acces_metas_v4.py --ecrire
 """
 import argparse
 import importlib.util
@@ -78,6 +78,40 @@ SANS_TIMER = {
     "Inner Nayos": ("SecretsOfTheObscure", "Antoine, 02/10/2026, « il me semble » — a confirmer"),
 }
 
+# v4 (03/10/2026) : les FERMES et les metas sans segment au widget. Leur
+# condition se lit sur la page de leur carte (« X is a zone available via
+# Living World Season N episode … »), relue le 03/10. Sans elle, le filtre
+# Living World ne masquait que Palawadan.
+REF_LW = "wiki:{page} — « zone available via Living World Season {n} episode {ep} », lu le 03/10/2026"
+CARTES = {
+    "Ember Bay": ("living_world", "LW3", REF_LW.format(page="Ember_Bay", n=3, ep="Rising Flames")),
+    "Bitterfrost Frontier": ("living_world", "LW3", REF_LW.format(page="Bitterfrost_Frontier", n=3, ep="A Crack in the Ice")),
+    "Lake Doric": ("living_world", "LW3", REF_LW.format(page="Lake_Doric", n=3, ep="The Head of the Snake")),
+    "Draconis Mons": ("living_world", "LW3", REF_LW.format(page="Draconis_Mons", n=3, ep="Flashpoint")),
+    "Siren's Landing": ("living_world", "LW3", REF_LW.format(page="Siren's_Landing", n=3, ep="One Path Ends")),
+    "Domain of Istan": ("living_world", "LW4", REF_LW.format(page="Domain_of_Istan", n=4, ep="Daybreak")),
+    "Dragonfall": ("living_world", "LW4", REF_LW.format(page="Dragonfall", n=4, ep="War Eternal")),
+}
+# Sans `map` (le nom porte la carte) : par cle.
+METAS = {
+    "mistburned": ("expansion", "JanthirWilds",
+                   "wiki:Alliance_Staging_Ground — zone Mistburned Barrens, contenu Janthir Wilds ; "
+                   "guildwars2.com « Repentance Is Now Live » (11/03/2025), lu le 03/10/2026"),
+}
+
+# Exclues de la lecture par carte : la carte ecrite contredit la source de
+# l'horaire. `bf_meta` est rangee a Bitterfrost Frontier (LW3), mais son horaire
+# vient de la page « The Frozen Maw », boss de monde de Wayfarer Foothills
+# (contenu de base). Tant qu'Antoine n'a pas dit laquelle est la bonne, la
+# condition est INCONNUE : la marquer LW3 la masquerait peut-etre a tort.
+EXCLUES = {"bf_meta"}
+
+
+def acces_lu(t, v, ref):
+    cle = "saison" if t == "living_world" else "access"
+    return OrderedDict([("type", t), (cle, v), ("ref", ref), ("verified", True), ("checked", "2026-10-03")])
+
+
 REF_CONVERGENCES = ("entree sur une carte d'extension, pas d'acces sans elle — "
                     "confirme en jeu par Antoine le 02/10/2026")
 
@@ -120,6 +154,13 @@ def main():
                                                           and "semble" not in qui),
                                           ("checked", "2026-10-02")])
                 bilan["sans_timer"] += 1
+                continue
+            lu = None if cle in EXCLUES else (CARTES.get(carte) or METAS.get(cle))
+            if lu:
+                m["acces"] = acces_lu(*lu)
+                m.pop("categorie", None)
+                m.pop("categorie_ref", None)
+                bilan[lu[0] + "_par_page"] += 1
                 continue
             sans.append(cle)
             for champ in ("categorie", "acces", "categorie_ref"):

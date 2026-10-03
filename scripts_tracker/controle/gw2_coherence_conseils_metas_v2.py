@@ -14,6 +14,7 @@ contredisent :
                alors que celle-ci reste visible
   R  ressource— un composant nomme dans le conseil, absent de `rewards` :
                la puce de priorite ne le verra jamais
+  W  point de passage — un meme code sur deux cartes (v2)
   P  priorite — superlatif dans le texte, efficience qui dit autre chose ;
                ou efficience S sans aucune recompense declaree
 
@@ -105,11 +106,24 @@ def main():
             lignes.append(("P", "efficience S sans aucune recompense declaree"))
         if lignes:
             out[k] = lignes
+    # W (v2) : un meme code de point de passage sur deux cartes differentes.
+    # Un code designe UN point de passage : l'un des deux est une copie.
+    par_code = {}
+    for k, m in me.items():
+        c = m.get("wpCode")
+        if c:
+            par_code.setdefault(c, []).append((k, (m.get("map") or {}).get("en") if isinstance(m.get("map"), dict) else m.get("map")))
+    for c, us in par_code.items():
+        cartes = {carte for _, carte in us if carte}
+        if len(cartes) > 1:
+            for k, carte in us:
+                out.setdefault(k, []).append(("W", f"code {c} partage avec " + ", ".join(
+                    f"`{k2}` ({c2})" for k2, c2 in us if k2 != k)))
     nums = [int(re.search(r"_v(\d+)", p).group(1)) for p in glob.glob(str(RACINE / "COHERENCE_CONSEILS_METAS_v*.md"))]
     dest = RACINE / f"COHERENCE_CONSEILS_METAS_v{(max(nums) if nums else 0) + 1}.md"
     L = [f"# Cohérence conseils / champs des métas — {Path(src).name}", "",
-         "Généré par `scripts_tracker/controle/gw2_coherence_conseils_metas_v1.py`. "
-         "H horaire · N chaînage · A accès · R ressource · P priorité.", ""]
+         "Généré par `scripts_tracker/controle/gw2_coherence_conseils_metas_v2.py`. "
+         "H horaire · N chaînage · A accès · R ressource · P priorité · W point de passage.", ""]
     total = 0
     for k, ls in out.items():
         L.append(f"## `{k}`")

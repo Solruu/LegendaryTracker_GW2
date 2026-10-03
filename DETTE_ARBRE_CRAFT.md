@@ -4478,3 +4478,35 @@ Accord d'Antoine sur les deux.
   **v58** en fait une erreur, et refuse le retour des deux champs. Teste en
   negatif sur les trois regles.
 - `gw2_vendeurs_coeurs_lw3_v2` ne pose plus `nextDelayMin`.
+
+## CR — 03/10/2026 : accès des fermes, références d'horaire, points de passage
+
+**Accès des fermes** (`gw2_acces_metas_v4`). Les fermes `isTimeless` n'avaient
+aucune condition : le filtre Living World ne masquait que Palawadan. Leur
+condition se lit sur la page de leur carte (« zone available via Living World
+Season N episode … »), relue sur le wiki le 03/10 :
+
+- LW3 : Ember Bay, Bitterfrost Frontier, Lake Doric, Draconis Mons, Siren's Landing ;
+- LW4 : Domain of Istan, Dragonfall ;
+- Janthir Wilds : Mistburned Barrens (zone de l'extension, mise a jour Repentance).
+
+Le panneau d'acces derive maintenant **LW3 et LW4**. Les trois entrees
+d'Ad Infinitum (fractales) restent sans condition : contenu de base.
+
+**`bf_meta` exclue volontairement.** Elle est rangee a Bitterfrost Frontier,
+mais son horaire vient de la page « The Frozen Maw » — boss de monde de
+Wayfarer Foothills, contenu de base (DETTE § BZ). La carte et la source se
+contredisent : la marquer LW3 la masquerait peut-etre a tort. A trancher par
+Antoine.
+
+**References d'horaire** (`gw2_refs_horaires_v1`). Les 11 metas en accord avec
+le widget citent maintenant leur segment, avec `checked` et `verified` : 80 -> 69
+avertissements. Seule `bf_meta` reste sans reference (pas de segment).
+
+**Points de passage** (`gw2_coherence_conseils_metas_v2`, regle W : un meme code
+sur deux cartes). Trois metas partagent `[&BNMMAAA=]` (Seitung Province,
+Dragon's End, Gyala Delve) — le code que portait deja `ew` a tort ; `am` et `in`
+partagent `[&BDQOAAA=]` (Amnytas, Inner Nayos). Au moins quatre de ces cinq codes
+sont faux. Le wiki n'expose pas les codes de lien dans son texte (rendus par
+script) : verification en jeu necessaire. Le nom aussi : le wiki dit
+« Monastery Waypoint », pas « Shing Jea Monastery Waypoint ».
