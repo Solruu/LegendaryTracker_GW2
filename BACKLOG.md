@@ -1815,11 +1815,5 @@ collection, pas seulement Vision.
 - `dm` : le conseil dit « Fire Orchid + Petrified Wood via nodes », mais la page
   Draconis Mons ne cite que Fire Orchid. Petrified Wood non ajoute aux
   recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
-- `nextDelayMin` n'est plus lu par aucun code depuis la fusion : le chainage
-  affiche se calcule sur la prochaine occurrence. Champ mort a supprimer, avec
-  l'accord d'Antoine.
-- Provenance des recompenses sur DEUX champs : `rewards_ref` (texte, pour la
-  gemme amalgamee) et `rewards_refs` (par recompense). A fusionner sur
-  `rewards_refs` — refactor de gw2_rewards_metas.
 - `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
   point de passage d'Ember Bay reste a poser.

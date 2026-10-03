@@ -4461,3 +4461,20 @@ affichent les puces. Le rendu des puces devient un composant unique
 (`PucesRessources`), utilise par les deux cartes, et le nom passe par `NX`
 (il s'affichait en anglais cote francais). rewards_metas et acces_metas
 relances a blanc : rien a changer.
+
+## CQ — 03/10/2026 : un champ mort, une provenance en double
+
+Accord d'Antoine sur les deux.
+
+- **`nextDelayMin` supprime** des 21 metas qui le portaient
+  (`gw2_purge_next_delay_v1`). Rien ne le lisait depuis la fusion ; `nk` en
+  portait deja un faux (40 min pour un ecart de 60).
+- **`rewards_ref` fondu dans `rewards_refs`** : la provenance de la gemme
+  amalgamee devient `rewards_refs["amalgamated_gemstone"]`, comme celle de
+  toute autre recompense. Fait par `gw2_rewards_metas_v4`, qui l'ecrit
+  desormais la ; verifie sans perte (chaque ancienne reference retrouvee mot
+  pour mot, aucune recompense modifiee, rien hors `meta_events` n'a bouge).
+- Toutes les recompenses du catalogue ont maintenant une provenance : l'audit
+  **v58** en fait une erreur, et refuse le retour des deux champs. Teste en
+  negatif sur les trois regles.
+- `gw2_vendeurs_coeurs_lw3_v2` ne pose plus `nextDelayMin`.

@@ -19,8 +19,8 @@ Un nom retenu doit exister des deux cotes. Un nom qui n'apparait que dans la
 prose de la sous-page — « the Janthir Syntri », « and Castora » — ne passe pas
 le second filtre, et c'est precisement ce qui manquait a mes deux listes.
 
-    python scripts_tracker/integration/gw2_rewards_metas_v3.py
-    python scripts_tracker/integration/gw2_rewards_metas_v3.py --ecrire
+    python scripts_tracker/integration/gw2_rewards_metas_v4.py
+    python scripts_tracker/integration/gw2_rewards_metas_v4.py --ecrire
 """
 import argparse
 import importlib.util
@@ -170,12 +170,23 @@ def main():
         if doit:
             rew.append("amalgamated_gemstone")
         m["rewards"] = sorted(set(rew))
+        # v4 (03/10/2026, accord d'Antoine) : la provenance de CHAQUE recompense
+        # vit dans `rewards_refs`, la gemme comprise. L'ancien `rewards_ref`
+        # (texte unique, pour la gemme seule) disparait a la premiere passe.
+        legacy = m.pop("rewards_ref", None)
+        refs = m.get("rewards_refs") if isinstance(m.get("rewards_refs"), dict) else {}
         if doit:
             section = ("Event timers" if carte in cartes else "Events (sans timer)")
-            m["rewards_ref"] = ("wiki:Amalgamated_Gemstone/Events_and_Timers, section "
-                                f"« {section} » — carte « {carte} »")
+            refs["amalgamated_gemstone"] = ("wiki:Amalgamated_Gemstone/Events_and_Timers, section "
+                                            f"« {section} » — carte « {carte} »")
         else:
-            m.pop("rewards_ref", None)
+            refs.pop("amalgamated_gemstone", None)
+        if refs:
+            m["rewards_refs"] = refs
+        else:
+            m.pop("rewards_refs", None)
+        if legacy and not doit:
+            print(f"   ! {cle} : rewards_ref sans gemme, retire : {legacy}")
 
     # ── Les autres ressources, par le coffre de leur page
     autres = coffres_par_composant(data["craft_components"], events)

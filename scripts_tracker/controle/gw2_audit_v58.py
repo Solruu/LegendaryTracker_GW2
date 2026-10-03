@@ -2260,6 +2260,8 @@ def check_fratrie_incomplete(data, errors, warnings):
 
 def check_catalogue_metas(data, errors, warnings):
     """v57 — le catalogue des metas est la SEULE table (fusion du 03/10/2026).
+    v58 — chaque recompense a sa provenance dans `rewards_refs` ; `rewards_ref`
+    et `nextDelayMin` ne reviennent pas.
 
     Le JSX ne porte plus que des listes de cles (`metas: ["vb", …]`). Ce controle
     tient les trois promesses de cette fusion :
@@ -2310,6 +2312,23 @@ def check_catalogue_metas(data, errors, warnings):
                 errors.append(f"catalogue metas : `{k}`.rewards -> `{r}` n'est pas un composant")
         if len(set(m.get("rewards") or [])) != len(m.get("rewards") or []):
             errors.append(f"catalogue metas : `{k}`.rewards porte un doublon")
+        # v58 (03/10/2026) : une seule table de provenance, et plus de delai
+        # stocke que rien ne lit.
+        for mort in ("rewards_ref", "nextDelayMin"):
+            if mort in m:
+                errors.append(f"catalogue metas : `{k}` porte `{mort}`, retire le 03/10 — "
+                              + ("la provenance va dans rewards_refs[<composant>]" if mort == "rewards_ref"
+                                 else "le chainage se calcule, il ne se stocke pas"))
+        refs = m.get("rewards_refs") or {}
+        if not isinstance(refs, dict):
+            errors.append(f"catalogue metas : `{k}`.rewards_refs n'est pas un objet composant -> source")
+            refs = {}
+        for r in (m.get("rewards") or []):
+            if not refs.get(r):
+                errors.append(f"catalogue metas : `{k}` declare `{r}` sans provenance dans rewards_refs")
+        for r in refs:
+            if r not in (m.get("rewards") or []):
+                errors.append(f"catalogue metas : `{k}`.rewards_refs source `{r}`, absent de rewards")
 
 
 def check_lecture_colonne3(data, errors, warnings):

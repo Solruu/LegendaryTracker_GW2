@@ -31,7 +31,7 @@ Coherence conseils / champs (gw2_coherence_conseils_metas_v1) :
   de priorite ne pouvait pas la voir. Ajoutee quand une source la tient ;
 - `co` : « priorite absolue » en dur, alors que la priorite affichee se calcule
   sur ce qu'il reste a farmer. Retire ; l'efficience S dit deja la meme chose ;
-- `nk -> ew` 40 min : restitue (Antoine, 03/10 : « oui pourquoi pas »).
+- `nk -> ew` : restitue (v2 : sans `nextDelayMin`, retire du catalogue le 03/10) (Antoine, 03/10 : « oui pourquoi pas »).
 """
 import argparse, json
 from collections import OrderedDict
@@ -116,7 +116,7 @@ def main():
         rw = m.get("rewards") or []
         if cid not in rw:
             m["rewards"] = rw + [cid]
-        m.setdefault("rewards_refs", {})
+        m.setdefault("rewards_refs", {})  # seule table de provenance (v2)
         if not isinstance(m["rewards_refs"], dict):
             m["rewards_refs"] = {}
         m["rewards_refs"].setdefault(cid, ref)
@@ -127,7 +127,6 @@ def main():
         co["tip"][lg] = t.replace(" — priorité absolue.", ".").replace(" - absolute priority.", ".")
 
     me["nk"]["next"] = ["ew"]
-    me["nk"]["nextDelayMin"] = 40
 
     for k, m in me.items():
         for f in ("cadence",):
@@ -137,7 +136,7 @@ def main():
         (RACINE / a.out).write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print("ecrit", a.out)
     for k in list(VENDEURS) + ["co", "nk"]:
-        print(k, json.dumps({f: me[k].get(f) for f in ("rewards", "cadence_ref", "next", "nextDelayMin")}, ensure_ascii=False))
+        print(k, json.dumps({f: me[k].get(f) for f in ("rewards", "cadence_ref", "next")}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
