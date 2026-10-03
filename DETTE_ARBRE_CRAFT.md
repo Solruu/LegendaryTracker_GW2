@@ -4312,3 +4312,52 @@ projet, pas en dur.
 
 Rien n'est encore masque ni filtre : c'est l'affichage, pas le tri. Le filtre
 par extension s'ajoutera par-dessus quand le menu existera.
+
+## CN — 03/10/2026 : le filtre d'accès, et pourquoi le catalogue attend
+
+### Le panneau « Accès au contenu »
+
+En tete de l'onglet Activites, un bouton ⚙ ouvre le panneau convenu le 02/10 :
+
+- **Extensions** : lues sur le compte (`/v2/account.access`) quand l'API a
+  repondu — affichees, non modifiables. Sinon modifiables a la main, avec la
+  mention de la provenance. Si l'API repond apres une saisie manuelle, elle
+  l'emporte et l'ecart est affiche.
+- **Living World** : par saison, toujours a la main (l'API ne l'expose pas),
+  defaut decoche, bouton « Je possede toutes les saisons ».
+- Les deux listes se **derivent du catalogue** (`meta_events[*].acces`) : aucune
+  extension ni saison ecrite a la main dans le JSX. Aujourd'hui : six
+  extensions, une saison (LW4, pour Palawadan).
+
+**Inconnu n'est pas « non possede ».** Sans API et sans aucune declaration, les
+extensions ne filtrent rien — sinon un premier lancement masquerait tout le
+contenu d'extension. Une meta sans `acces` (les 12 fermes `isTimeless`,
+`bf_meta`) n'est jamais masquee.
+
+Le filtre est pose au point d'entree des calculs (`allTimedMetas`,
+`timelessMetas`) : le chainage `getBestNext` et la liste « a venir » en heritent,
+donc une meta masquee ne reapparait pas comme « suivante ». Le nombre de metas
+masquees est affiche, leurs noms en infobulle.
+
+Non fait : le depliage **par episode** — aucune capture au depot ne liste les
+episodes, et aucune donnee ne porte une condition plus fine que la saison.
+
+### Le catalogue : la mesure contredit « 0 desaccord »
+
+Avant de remplacer les 20 tableaux `metas:` du JSX, confrontation champ par
+champ des 26 entrees communes. Le JSX en porte **39** (une par cle, aucun
+doublon entre legendaires) : 26 au catalogue, `bf_meta`, 12 fermes sans horaire.
+
+La confrontation des horaires disait zero ecart ; elle ne regardait que les
+horaires appaires au widget. Champ par champ :
+
+| champ | ecarts | nature |
+|---|---:|---|
+| `name` / `subname` | 18 / 21 | conventions inversees, et le `subname` des sources est un LIEU (« Wyvern Matriarch », « Grand Sahil Casino », « 4 lanes ») |
+| `tip` | 17 | deux redactions du meme conseil |
+| `next` | 17 | forme (chaine contre liste) ; une vraie divergence : `nk` -> `ew` cote sources, rien cote JSX |
+| `durationMin` | 1 | `shackles` : JSX 50, sources **25** (widget) — l'ecran affiche faux |
+| `wpCode` | 1 | `ew` : JSX `[&BLsNAAA=]`, sources `[&BNMMAAA=]` |
+
+La fusion n'est donc pas mecanique : elle choisit des valeurs affichees. En
+attente d'arbitrage.

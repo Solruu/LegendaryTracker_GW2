@@ -139,6 +139,21 @@ const I18N = {
     farm_account: "×account",
     meta_res_need: "{n} still needed for this legendary",
     meta_res_done: "No longer needed for this legendary",
+    acces_titre: "Content access",
+    acces_masquees: "{n} meta(s) hidden — content not owned",
+    acces_extensions: "Expansions",
+    acces_source_api: "read from the account (API), read-only",
+    acces_source_manuel: "declared by hand",
+    acces_source_inconnu: "unknown: sync, or tick what you own — nothing is hidden until then",
+    acces_ecart_api: "The API overrode your manual declaration for: {liste}",
+    acces_lw: "Living World",
+    acces_lw_tout: "I own every season",
+    acces_ext_HeartOfThorns: "Heart of Thorns",
+    acces_ext_PathOfFire: "Path of Fire",
+    acces_ext_EndOfDragons: "End of Dragons",
+    acces_ext_SecretsOfTheObscure: "Secrets of the Obscure",
+    acces_ext_JanthirWilds: "Janthir Wilds",
+    acces_ext_VisionsOfEternity: "Visions of Eternity",
     next_meta: "→ Next: {meta} ({sub}) at {time}",
     btn_done: "Done",
     btn_done_checked: "✓ Done",
@@ -363,6 +378,21 @@ const I18N = {
     farm_account: "×compte",
     meta_res_need: "Encore {n} pour cette légendaire",
     meta_res_done: "Plus nécessaire pour cette légendaire",
+    acces_titre: "Accès au contenu",
+    acces_masquees: "{n} méta(s) masquée(s) — contenu non possédé",
+    acces_extensions: "Extensions",
+    acces_source_api: "lu sur le compte (API), non modifiable",
+    acces_source_manuel: "déclaré à la main",
+    acces_source_inconnu: "inconnues : synchronise, ou coche ce que tu possèdes — rien n'est masqué d'ici là",
+    acces_ecart_api: "L'API a remplacé ta déclaration manuelle pour : {liste}",
+    acces_lw: "Living World",
+    acces_lw_tout: "Je possède toutes les saisons",
+    acces_ext_HeartOfThorns: "Heart of Thorns",
+    acces_ext_PathOfFire: "Path of Fire",
+    acces_ext_EndOfDragons: "End of Dragons",
+    acces_ext_SecretsOfTheObscure: "Secrets of the Obscure",
+    acces_ext_JanthirWilds: "Janthir Wilds",
+    acces_ext_VisionsOfEternity: "Visions of Eternity",
     next_meta: "→ Ensuite : {meta} ({sub}) à {time}",
     btn_done: "Fait",
     btn_done_checked: "✓ Fait",
@@ -3971,6 +4001,35 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 }
 
 
+// ── Acces au contenu : quelle meta le compte peut-il lancer ? ────────────────
+//
+// La condition vit dans le catalogue (`meta_events[id].acces`, posee par
+// gw2_acces_metas). Les listes proposees a l'ecran se DERIVENT de ce qu'il
+// contient : aucune extension ni saison n'est ecrite ici a la main.
+// Une meta sans condition connue n'est jamais masquee — inconnu n'est pas
+// « non possede ».
+function accesDeMeta(metaId) {
+  return SOURCES_DB?.meta_events?.[metaId]?.acces ?? null;
+}
+function accesConnus() {
+  const ext = new Set(), lw = new Set();
+  for (const m of Object.values(SOURCES_DB?.meta_events ?? {})) {
+    const a = m?.acces;
+    if (a?.type === "expansion" && a.access) ext.add(a.access);
+    if (a?.type === "living_world" && a.saison) lw.add(a.saison);
+  }
+  return { ext: [...ext], lw: [...lw].sort() };
+}
+// `ext` : Set des extensions possedees (API, sinon declaration manuelle).
+// `lw`  : objet saison -> booleen, declare a la main (l'API ne le dit pas).
+function metaAccessible(metaId, ext, lw) {
+  const a = accesDeMeta(metaId);
+  if (!a) return true;
+  if (a.type === "expansion") return ext.has(a.access);
+  if (a.type === "living_world") return Boolean(lw?.[a.saison]);
+  return true;
+}
+
 // ── Ce qu'une meta rend, et si la legendaire affichee en a encore besoin ──────
 //
 // Le croisement meta -> ressource est pose dans les sources (`rewards`, avec sa
@@ -4562,6 +4621,21 @@ export default function GW2LegendaryTracker() {
   // reste coche a la main.
   const [recettesCompte, setRecettesCompte] = useState(null);
   const [commander, setCommander] = useState(null);
+  // Extensions lues sur le compte (/v2/account.access). null = jamais lues.
+  const [accesApi, setAccesApi] = useState(() => {
+    try { const v = JSON.parse(localStorage.getItem("gw2_access") ?? "null"); return Array.isArray(v) ? v : null; } catch { return null; }
+  });
+  // Ce que le joueur declare a la main : les extensions quand l'API ne repond
+  // pas, et les saisons de Living World, que l'API n'expose jamais.
+  // Defaut : rien de coche — planifier une meta inaccessible coute plus cher
+  // que d'en masquer une qu'on possede.
+  const [accesManuel, setAccesManuel] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_access_manuel") ?? "null") ?? { ext: {}, lw: {} }; } catch { return { ext: {}, lw: {} }; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem("gw2_access_manuel", JSON.stringify(accesManuel)); } catch {}
+  }, [accesManuel]);
+  const [showAcces, setShowAcces] = useState(false);
   const [recetteParDon, setRecetteParDon] = useState(() => {
     try { return JSON.parse(localStorage.getItem("gw2_recette_par_don") ?? "null") ?? {}; } catch { return {}; }
   });
@@ -5056,11 +5130,11 @@ export default function GW2LegendaryTracker() {
       // rend vide pour lui, il restait donc a cocher a la main. /v2/account
       // porte un booleen `commander`, vrai des qu'un tag est achete.
       if (typeof data._commander === "boolean") setCommander(data._commander);
-      // Rien ne le consomme encore : le filtre par extension n'est pas ecrit.
-      // On le persiste quand meme, parce qu'une synchro qui passe et ne garde
-      // rien oblige a en relancer une pour une donnee qu'on avait deja eue.
+      // Les extensions du compte : quand l'API les rend, elles font foi et
+      // remplacent toute declaration manuelle (l'ecart est signale a l'ecran).
       if (Array.isArray(data._access)) {
         try { localStorage.setItem("gw2_access", JSON.stringify(data._access)); } catch (_) {}
+        setAccesApi(data._access);
       }
       if (data._gates) {
         try { localStorage.setItem("gw2_gates", JSON.stringify(data._gates)); } catch (_) {}
@@ -5344,7 +5418,23 @@ export default function GW2LegendaryTracker() {
 
   // ── Calculs metas
   // ── Calculs leg-dépendants (sautés en mode Grand Total) ──────
-  const allTimedMetas = isGrandTotal ? [] : (leg.metas ?? []).filter(m => !m.isTimeless);
+  // Filtre d'acces, pose ICI pour que tout ce qui suit en herite : le chainage
+  // (getBestNext), la liste « a venir », les cartes. Une meta masquee ne doit
+  // pas reapparaitre comme « suivante » d'une autre.
+  // Sans API et sans aucune declaration, les extensions sont INCONNUES : on ne
+  // filtre pas dessus. Masquer tout le contenu d'extension a qui n'a pas encore
+  // synchronise lirait une absence d'information comme une absence d'acces.
+  const extInconnues = !Array.isArray(accesApi) && Object.keys(accesManuel.ext ?? {}).length === 0;
+  const extPossedees = new Set(accesApi ?? Object.keys(accesManuel.ext ?? {}).filter(k => accesManuel.ext[k]));
+  const accessible = (id) => {
+    const a = accesDeMeta(id);
+    if (extInconnues && a?.type === "expansion") return true;
+    return metaAccessible(id, extPossedees, accesManuel.lw);
+  };
+  const metasLeg = isGrandTotal ? [] : (leg.metas ?? []);
+  const metasMasquees = metasLeg.filter(m => !accessible(m.id));
+  const metasVisibles = metasLeg.filter(m => accessible(m.id));
+  const allTimedMetas = metasVisibles.filter(m => !m.isTimeless);
   const metasWithTiming = isGrandTotal ? [] : allTimedMetas
     .map(m => {
       const nextDate = getNextMetaOccurrence(m, now);
@@ -5354,7 +5444,7 @@ export default function GW2LegendaryTracker() {
     })
     .sort((a, b) => (a.ms ?? 99999999) - (b.ms ?? 99999999));
 
-  const timelessMetas = isGrandTotal ? [] : (leg.metas ?? []).filter(m => m.isTimeless);
+  const timelessMetas = metasVisibles.filter(m => m.isTimeless);
   const upcoming = isGrandTotal ? [] : metasWithTiming.filter(m => !m.checked).slice(0, 3);
   const dailyCount = Object.keys(dailyChecked).length;
   const weeklyCount = Object.keys(weeklyChecked).length;
@@ -5978,6 +6068,76 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {activeTab === "activities" && (leg?.metas?.length ?? 0) > 0 && (
         <div>
+          {(() => {
+            const { ext, lw } = accesConnus();
+            const viaApi = Array.isArray(accesApi);
+            // Ecart entre la declaration manuelle et ce que l'API a rendu :
+            // l'API l'emporte, mais le joueur doit le voir.
+            const ecarts = viaApi ? ext.filter(e => (accesManuel.ext?.[e] ?? false) !== accesApi.includes(e) && accesManuel.ext?.[e] !== undefined) : [];
+            const chip = (on) => ({ fontSize: "10px", padding: "2px 7px", borderRadius: "3px", fontFamily: "'Crimson Text', serif",
+              border: `1px solid ${on ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.18)"}`, color: on ? "#4ade80" : "rgba(226,201,126,0.5)",
+              background: "transparent" });
+            return (
+              <div style={{ marginBottom: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                  <button className="adj-btn" style={{ fontSize: "10px", padding: "3px 8px" }} onClick={() => setShowAcces(v => !v)}>
+                    ⚙ {t("acces_titre")}
+                  </button>
+                  {metasMasquees.length > 0 && (
+                    <span title={metasMasquees.map(m => NX(m.name)).join(", ")}
+                      style={{ fontSize: "10px", color: "rgba(226,201,126,0.5)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("acces_masquees", { n: metasMasquees.length })}
+                    </span>
+                  )}
+                </div>
+                {showAcces && (
+                  <div style={{ marginTop: "6px", padding: "8px 10px", border: "1px solid rgba(226,201,126,0.12)", borderRadius: "6px", background: "rgba(226,201,126,0.02)" }}>
+                    <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.6)", marginBottom: "4px", fontFamily: "'Cinzel', serif" }}>
+                      {t("acces_extensions")} — {viaApi ? t("acces_source_api") : extInconnues ? t("acces_source_inconnu") : t("acces_source_manuel")}
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                      {ext.map(e => {
+                        const on = viaApi ? accesApi.includes(e) : Boolean(accesManuel.ext?.[e]);
+                        return (
+                          <button key={e} disabled={viaApi} style={{ ...chip(on), cursor: viaApi ? "default" : "pointer", opacity: viaApi ? 0.85 : 1 }}
+                            onClick={() => setAccesManuel(a => ({ ...a, ext: { ...(a.ext ?? {}), [e]: !on } }))}>
+                            {on ? "☑" : "☐"} {t(`acces_ext_${e}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {ecarts.length > 0 && (
+                      <div style={{ fontSize: "9px", color: "#fbbf24", marginTop: "4px", fontFamily: "'Crimson Text', serif" }}>
+                        {t("acces_ecart_api", { liste: ecarts.map(e => t(`acces_ext_${e}`)).join(", ") })}
+                      </div>
+                    )}
+                    {lw.length > 0 && (
+                      <>
+                        <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.6)", margin: "8px 0 4px", fontFamily: "'Cinzel', serif" }}>
+                          {t("acces_lw")} — {t("acces_source_manuel")}
+                        </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", alignItems: "center" }}>
+                          {lw.map(sn => {
+                            const on = Boolean(accesManuel.lw?.[sn]);
+                            return (
+                              <button key={sn} style={{ ...chip(on), cursor: "pointer" }}
+                                onClick={() => setAccesManuel(a => ({ ...a, lw: { ...(a.lw ?? {}), [sn]: !on } }))}>
+                                {on ? "☑" : "☐"} {sn}
+                              </button>
+                            );
+                          })}
+                          <button className="adj-btn" style={{ fontSize: "9px", padding: "2px 7px" }}
+                            onClick={() => setAccesManuel(a => ({ ...a, lw: Object.fromEntries(lw.map(sn => [sn, true])) }))}>
+                            {t("acces_lw_tout")}
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
           {/* Upcoming chains */}
           {upcoming.length > 0 && (
             <>
