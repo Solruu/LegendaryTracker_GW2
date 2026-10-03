@@ -4361,3 +4361,61 @@ horaires appaires au widget. Champ par champ :
 
 La fusion n'est donc pas mecanique : elle choisit des valeurs affichees. En
 attente d'arbitrage.
+
+## CO — 03/10/2026 : le catalogue des métas est la seule table
+
+Arbitrages d'Antoine du 03/10 : `map` + `name`, conseils des sources, `wpCode`
+de `ew` au backlog, `shackles` a 25. `gw2_fusion_catalogue_metas_v1.py` fait la
+passe ; le JSX v242 ne declare plus que des cles (`metas: ["vb", "td", …]`), et
+`metaDuCatalogue()` donne au rendu son titre (`map`) et son sous-titre (`name`).
+
+**Six metas avaient deux cles**, une par legendaire : `obs_sw`/`sw`,
+`obs_am`/`am`, `obs_conv_mb`/`mb`, `obs_conv_on`/`conv`, `titanic`/`bn`,
+`obs_spider`/`zak`. Horaires identiques, verifies avant fusion ; la canonique
+garde son texte (plus complet) et ses champs, la copie comble ses trous.
+**36 metas** au catalogue : 24 a horaire, 12 sans (`isTimeless`).
+
+### Ce qui change a l'ecran (76 champs, mesures par `metaDuCatalogue`)
+
+- titres/sous-titres harmonises — les convergences s'affichent sous leur carte
+  d'entree (La Tour du sorcier, Lowland Shore) ;
+- `shackles` : fenetre 50 -> **25**, et 50 passe en temps de jeu ;
+- temps de jeu affiche la ou le catalogue en portait (Palawadan, convergences,
+  Weald) ;
+- copies des onglets Obsidienne et Orrax alignees sur la canonique :
+  Titanic Voyage efficience B -> A, population LFG -> bon ; convergences avec
+  leur vrai point de passage et code au lieu d'un code vide ;
+- les trois entrees d'Ad Infinitum et Mistburned sans carte : le rendement
+  (« ~3 pages/jour ») rejoint le nom.
+
+### Retire, a restituer si besoin
+
+- `ew.wpCode` = `[&BNMMAAA=]` (sources). **Indice** : c'est exactement le code
+  de `gy`, Gyala Delve — probablement une copie, ce qui donnerait raison au JSX.
+- `zak` : `Citadel of Zakiros Waypoint` / `[&BHMMAAA=]` (sources) ; garde la
+  valeur affichee de l'onglet Obsidienne, `[&BHYOAAA=]`. A verifier en jeu.
+- `nk.next` = `["ew"]`, `nextDelayMin` 40 — en attente d'Antoine.
+
+### Transversal
+
+- **Confrontation des horaires v4** : un seul appariement (`main()` en portait
+  une copie), plus de section JSX, plus de `subname`. `er` epingle sur son
+  segment, son nom anglais etant devenu « Doppelganger ». **21 accords, 0 ecart,
+  0 duree contredite** ; 3 sans segment (`bf_meta`, `gy`, `in`), 12 sans horaire.
+- `gw2_acces_metas_v3`, `gw2_rewards_metas_v3`, `gw2_metas_ressources_v2` : chemin
+  de la confrontation et `subname` retires. Relances a blanc : **aucun
+  changement** des acces ni des recompenses.
+- **Audit v57** : `check_catalogue_metas` (cle citee absente, `subname`,
+  decalage hors intervalle, horaire sur une ferme, `next`/`rewards` inconnus) —
+  teste en negatif. Et `meta_events` rejoint les familles de la regle des
+  plafonds en prose : les conseils des fermes, invisibles a l'audit tant qu'ils
+  vivaient dans le JSX, sont lus. Elle a sorti quatre cas :
+  - `lw4_istan`, `lw4_dragonfall` : « 50 noeuds/compte/jour », deja structure
+    sur `volatile_magic` et `mistborn_mote` -> `cadence_ref` ;
+  - `eb`, `dm`, `ld` : « vendeur 5/jour/perso », structure **nulle part**. Le
+    poser sur le composant changerait les delais projetes sans source : remonte
+    en cadence sur la ferme, ou aucun calcul ne le lit, `verified: false`.
+    A trancher.
+- 80 avertissements contre 68 : les 12 nouveaux sont « horaire sans `ref` »
+  (vb, td, ab…) — vrais, ces horaires sont confirmes par la confrontation mais
+  ne citent pas leur source.

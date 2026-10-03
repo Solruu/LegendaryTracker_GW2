@@ -1800,3 +1800,18 @@ chaine, donc la decomposition ne peut pas deriver en silence.
 
 A etendre ensuite aux autres legendaires dont un cout est adosse a une
 collection, pas seulement Vision.
+
+## 12 nonies. Restes de la fusion du catalogue (03/10/2026)
+
+- `ew.wpCode` : JSX `[&BLsNAAA=]` (garde) contre sources `[&BNMMAAA=]` — ce
+  dernier est le code de Gyala Delve, indice de copie. A verifier en jeu.
+- `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
+  `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
+- `nk -> ew` (40 min) : chainage retire en attendant Antoine.
+- Vendeurs LW3 (`eb`, `dm`, `ld`) a 5/jour/perso : cadence non sourcee, posee
+  sur la ferme. A sourcer puis deplacer sur le composant.
+- 12 metas a horaire sans `ref`, toutes confirmees par le widget : poser la
+  reference (`gw2_acces_metas` sait deja ecrire `categorie_ref`, meme forme).
+- Depliage LW par episode : aucune capture ne liste les episodes.
+- Fermes `isTimeless` sans condition d'acces : rien au depot ne dit la saison
+  de leur carte.

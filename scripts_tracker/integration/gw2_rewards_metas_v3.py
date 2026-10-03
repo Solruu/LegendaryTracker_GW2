@@ -19,8 +19,8 @@ Un nom retenu doit exister des deux cotes. Un nom qui n'apparait que dans la
 prose de la sous-page — « the Janthir Syntri », « and Castora » — ne passe pas
 le second filtre, et c'est precisement ce qui manquait a mes deux listes.
 
-    python scripts_tracker/integration/gw2_rewards_metas_v2.py
-    python scripts_tracker/integration/gw2_rewards_metas_v2.py --ecrire
+    python scripts_tracker/integration/gw2_rewards_metas_v3.py
+    python scripts_tracker/integration/gw2_rewards_metas_v3.py --ecrire
 """
 import argparse
 import importlib.util
@@ -34,7 +34,7 @@ RACINE = Path(__file__).resolve().parents[2]
 SOUSPAGE = RACINE / "ressources" / "wiki" / "amalgamated_gemstone_events_and_timers.html"
 
 _sp = importlib.util.spec_from_file_location(
-    "confronte", RACINE / "scripts_tracker" / "controle" / "gw2_confronte_horaires_v3.py")
+    "confronte", RACINE / "scripts_tracker" / "controle" / "gw2_confronte_horaires_v4.py")
 _cf = importlib.util.module_from_spec(_sp)
 _sp.loader.exec_module(_cf)
 
@@ -149,7 +149,7 @@ def main():
         if carte is None:
             # Meta conditionnelle, sans horaire : on la rapproche de la section
             # « Events » de la sous-page, par le nom de sa carte.
-            for champ in ("map", "name", "subname"):
+            for champ in ("map", "name"):
                 v = m.get(champ)
                 v = v.get("en") if isinstance(v, dict) else v
                 if v and any(_cf.norm(v) == _cf.norm(t) for t in sans_timer):

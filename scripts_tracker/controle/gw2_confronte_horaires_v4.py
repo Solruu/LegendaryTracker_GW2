@@ -25,6 +25,9 @@ WIDGET = RACINE / "ressources" / "widget" / "event_timer_data.json"
 # `None` = le widget ne porte pas cet evenement, et ne le portera pas.
 CORRESPONDANCES = {
     "co": ("pof-co", "1"),        # Rounds 1 to 3 -> Casino Blitz
+    # Depuis la fusion du 03/10 le nom anglais d'`er` est « Doppelganger » (le
+    # boss final), segment voisin du sien : l'appariement par nom tombait a 115.
+    "er": ("pof-er", "1"),        # The Path to Ascension: Augury Rock
     "conv": ("public-con", "2"),  # Outer Nayos, la convergence SotO
     "de2": ("eod-de", "3"),       # The Battle for the Jade Sea
     "ds": ("hot-ds", "1"),        # Start advancing on the Blighting Towers
@@ -86,8 +89,13 @@ def apparie(metas, events, par_carte):
     for mk, m in metas.items():
         if not isinstance(m, dict):
             continue
-        carte, sous = norm(en(m.get("map"))), norm(en(m.get("subname")))
-        nom = norm(en(m.get("name")))
+        if m.get("isTimeless"):
+            out[mk] = None
+            continue
+        # Depuis la fusion du 03/10 : `map` (ou) et `name` (quoi). Plus de
+        # `subname`, dont les deux usages se contredisaient.
+        carte = norm(en(m.get("map")))
+        nom = sous = norm(en(m.get("name")))
         trouve = None
         if mk in CORRESPONDANCES:
             pose = CORRESPONDANCES[mk]
@@ -134,42 +142,21 @@ def main():
         par_carte.setdefault(norm(ev["name"]), []).append((k, ev))
 
     accords, ecarts, introuvables, durees = [], [], [], []
+    # UN appariement, celui d'`apparie` : main() en portait une copie, et deux
+    # copies finissent par repondre differemment.
+    paires = apparie(metas, events, par_carte)
+    sans_horaire = sorted(k for k, m in metas.items() if isinstance(m, dict) and m.get("isTimeless"))
     for mk, m in sorted(metas.items()):
-        if not isinstance(m, dict):
+        if not isinstance(m, dict) or m.get("isTimeless"):
             continue
-        carte, sous = norm(en(m.get("map"))), norm(en(m.get("subname")))
-        nom = norm(en(m.get("name")))
-        trouve = None
-
-        if mk in CORRESPONDANCES:
-            pose = CORRESPONDANCES[mk]
-            if pose is None:
-                introuvables.append((mk, en(m.get("map")), en(m.get("subname")),
-                                     m.get("offsetUTC"), m.get("intervalMin")))
-                continue
-            k, r = pose
-            ev = events.get(k)
-            if ev:
-                seg = (ev.get("segments") or {}).get(r) or {}
-                trouve = (k, ev, r, seg, frise(ev).get(str(r)))
-
-        for k, ev in ([] if trouve else par_carte.get(carte, [])):
-            f = frise(ev)
-            for r, seg in (ev.get("segments") or {}).items():
-                ns = norm(seg.get("name"))
-                if not ns:
-                    continue
-                if sous and (ns == sous or sous in ns or ns in sous):
-                    trouve = (k, ev, r, seg, f.get(str(r)))
-                    break
-                if nom and (ns == nom or nom in ns):
-                    trouve = (k, ev, r, seg, f.get(str(r)))
-            if trouve:
-                break
-        if not trouve:
-            introuvables.append((mk, en(m.get("map")), en(m.get("subname")),
+        p = paires.get(mk)
+        if not p:
+            introuvables.append((mk, en(m.get("map")), en(m.get("name")),
                                  m.get("offsetUTC"), m.get("intervalMin")))
             continue
+        k, r, seg, fi = p
+        ev = events.get(k)
+        trouve = (k, ev, r, seg, fi)
         k, ev, r, seg, fi = trouve
         dec, inter, duree = fi if fi else (None, None, None)
         if duree is not None and m.get("durationMin") != duree:
@@ -180,27 +167,6 @@ def main():
             accords.append(ligne)
         else:
             ecarts.append(ligne)
-
-    # Le JSX porte sa propre table d'horaires, trente-six decalages en dur, et
-    # rien ne la comparait a la base editoriale. Les deux peuvent donc dire des
-    # choses differentes sur la meme meta sans que personne ne l'apprenne.
-    jsx_f = sorted(RACINE.glob("gw2_legendary_tracker_v*.jsx"),
-                   key=lambda q: int(re.search(r"_v(\d+)", q.name).group(1)))
-    desaccords_jsx, jsx_seuls = [], []
-    if jsx_f:
-        texte = jsx_f[-1].read_text(encoding="utf-8")
-        for cle, o, i2, du in re.findall(
-                r'\{ id: "([a-z0-9_]+)",.{0,600}?offsetUTC: (-?\d+|null), '
-                r'intervalMin: (\d+|null), durationMin: (\d+)', texte, re.S):
-            m = metas.get(cle)
-            if not isinstance(m, dict):
-                jsx_seuls.append((cle, o, i2, du))
-                continue
-            if (o, i2, du) != (str(m.get("offsetUTC")), str(m.get("intervalMin")),
-                               str(m.get("durationMin"))):
-                desaccords_jsx.append((cle, (o, i2, du),
-                                       (str(m.get("offsetUTC")), str(m.get("intervalMin")),
-                                        str(m.get("durationMin")))))
 
     def bloc(titre, lignes):
         print(f"== {titre} ({len(lignes)})")
@@ -229,14 +195,10 @@ def main():
     if not durees:
         print("   (aucune)")
 
-    print(f"\n== JSX CONTRE BASE EDITORIALE ({len(desaccords_jsx)})")
-    for cle, j, src in sorted(desaccords_jsx):
-        print(f"   {cle:12} JSX {j}  base {src}")
-    if not desaccords_jsx:
-        print("   (aucun)")
-    print(f"\n== CLES DU JSX ABSENTES DE meta_events ({len(jsx_seuls)}) — non confrontees")
-    print("   " + ", ".join(sorted(c for c, *_ in jsx_seuls)))
-
+    print(f"\n== SANS HORAIRE (isTimeless) — non confrontees ({len(sans_horaire)})")
+    print("   " + ", ".join(sans_horaire))
+    print("   Le JSX ne porte plus de table d'horaires depuis le 03/10 : le catalogue")
+    print("   est la seule, il n'y a plus rien a confronter de ce cote.\n")
     print("== EVENEMENTS DU WIDGET NON RATTACHES")
     for k, ev in sorted(events.items()):
         if not isinstance(ev, dict) or not ev.get("name") or k in vus:

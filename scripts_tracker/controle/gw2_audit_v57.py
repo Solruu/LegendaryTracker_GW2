@@ -753,7 +753,10 @@ def _cap_hit(text):
 
 # Familles ou une prose appartient a une entite identifiable, qui peut donc
 # porter une cadence ou un cadence_ref.
-CAP_FAMILIES = ("craft_components", "legendaries", "armor_sets", "collection_unlocks")
+# v57 : meta_events rejoint les familles. Depuis la fusion du 03/10, les conseils
+# des fermes vivent au catalogue : leurs plafonds en prose doivent repondre
+# entite par entite, comme ceux des composants.
+CAP_FAMILIES = ("craft_components", "legendaries", "armor_sets", "collection_unlocks", "meta_events")
 
 
 def _cap_owner(path):
@@ -2255,6 +2258,60 @@ def check_fratrie_incomplete(data, errors, warnings):
             )
 
 
+def check_catalogue_metas(data, errors, warnings):
+    """v57 — le catalogue des metas est la SEULE table (fusion du 03/10/2026).
+
+    Le JSX ne porte plus que des listes de cles (`metas: ["vb", …]`). Ce controle
+    tient les trois promesses de cette fusion :
+
+    - toute cle citee par une legendaire existe au catalogue — sinon la meta
+      disparait de l'ecran sans un mot ;
+    - plus de `subname` : `map` dit ou, `name` dit quoi. Le champ revenant,
+      ses deux usages contradictoires reviendraient avec lui ;
+    - une meta a horaire a un decalage dans [0, intervalle[ et une reference ;
+      une meta `isTimeless` n'a PAS d'horaire (un horaire a zero n'est pas une
+      absence d'horaire) ;
+    - `next` et `rewards` designent des cles qui existent.
+    """
+    me = data.get("meta_events") or {}
+    cc = data.get("craft_components") or {}
+    jsx = sorted(HERE.glob("gw2_legendary_tracker_v*.jsx"),
+                 key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))
+    if jsx:
+        src = jsx[-1].read_text(encoding="utf-8")
+        if re.search(r"\bmetas: \[\s*\{", src):
+            errors.append("catalogue metas : le JSX porte de nouveau un tableau d'objets `metas:` — "
+                          "une meta se declare au catalogue, la legendaire n'en cite que la cle")
+        for liste in re.findall(r"\bmetas: \[([^\]]*)\]", src):
+            for cle in re.findall(r'"([^"]+)"', liste):
+                if cle not in me:
+                    errors.append(f"catalogue metas : `{cle}` citee par une legendaire, absente de meta_events")
+    for k, m in me.items():
+        if not isinstance(m, dict):
+            continue
+        if "subname" in m:
+            errors.append(f"catalogue metas : `{k}` porte `subname` — utiliser `map` (ou) et `name` (quoi)")
+        if not m.get("name"):
+            errors.append(f"catalogue metas : `{k}` sans `name`")
+        o, i = m.get("offsetUTC"), m.get("intervalMin")
+        if m.get("isTimeless"):
+            if any(m.get(f) not in (None,) for f in ("offsetUTC", "intervalMin", "durationMin")):
+                errors.append(f"catalogue metas : `{k}` isTimeless porte un horaire")
+        elif isinstance(o, int) and isinstance(i, int) and i > 0:
+            if not (0 <= o < i):
+                errors.append(f"catalogue metas : `{k}` decalage {o} hors de [0, {i}[")
+            if not m.get("ref"):
+                warnings.append(f"catalogue metas : `{k}` a un horaire sans `ref`")
+        for n in (m.get("next") or []):
+            if n not in me:
+                errors.append(f"catalogue metas : `{k}`.next -> `{n}` inconnue")
+        for r in (m.get("rewards") or []):
+            if r not in cc:
+                errors.append(f"catalogue metas : `{k}`.rewards -> `{r}` n'est pas un composant")
+        if len(set(m.get("rewards") or [])) != len(m.get("rewards") or []):
+            errors.append(f"catalogue metas : `{k}`.rewards porte un doublon")
+
+
 def check_lecture_colonne3(data, errors, warnings):
     """Un enfant ne doit pas couter plus cher que son parent ne le justifie.
 
@@ -2438,6 +2495,9 @@ def main() -> int:
     check_apostrophe_contractee(data, errors, warnings)
     check_fratrie_incomplete(data, errors, warnings)
     check_lecture_colonne3(data, errors, warnings)
+
+    # 35. v57 : le catalogue des metas est la seule table
+    check_catalogue_metas(data, errors, warnings)
 
     # 34. alt_groups : un choix un-parmi-N ne doit jamais compter deux fois
     check_alt_groups(data, errors, warnings)

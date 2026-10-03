@@ -22,8 +22,8 @@ Deux sources, dans cet ordre :
    `CONVERGENCES` ci-dessous le dit, segment par segment, et c'est elle qui
    perennise la reponse : relancer ce script la reapplique.
 
-    python scripts_tracker/integration/gw2_acces_metas_v2.py
-    python scripts_tracker/integration/gw2_acces_metas_v2.py --ecrire
+    python scripts_tracker/integration/gw2_acces_metas_v3.py
+    python scripts_tracker/integration/gw2_acces_metas_v3.py --ecrire
 """
 import argparse
 import importlib.util
@@ -36,7 +36,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parents[2]
 
 _sp = importlib.util.spec_from_file_location(
-    "confronte", RACINE / "scripts_tracker" / "controle" / "gw2_confronte_horaires_v3.py")
+    "confronte", RACINE / "scripts_tracker" / "controle" / "gw2_confronte_horaires_v4.py")
 _cf = importlib.util.module_from_spec(_sp)
 _sp.loader.exec_module(_cf)
 
