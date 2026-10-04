@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v356.json` — 35 desaccords sur 12 composants.
+Source : `gw2_sources_v357.json` — 33 desaccords sur 10 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,7 +10,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
-| `ancient_coin` — Ancient Coin | 1 | 20000 | ecart de compte x1 |
 | `volatile_magic` — Volatile Magic | 1 | 4250 | cout vendeur x1 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
@@ -18,21 +17,18 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `tales_of_dungeon_delving` — Tales of Dungeon Delving | 20 | 500 | cout vendeur x20 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `ascended_shard_of_glory` — Ascended Shards of Glory | 1 | 100 | ecart de compte x1 |
-| `curious_mursaat_currency` — Curious Mursaat Currency | 1 | 100 | ecart de compte x1 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 60 | deja compte par cascade x2 |
 | `dragonite_ore` — Dragonite Ore | 1 | 25 | cout vendeur x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
 
-## ECART DE COMPTE — 3 cas
+## ECART DE COMPTE — 1 cas
 
 La cle a plat et l'arete donnent deux nombres differents : l'un des deux
 est faux. Se tranche sur la page du PARENT, boite Recipe.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `ancient_coin` — Ancient Coin | `klobjarne_geirr` | 20250 | 250 | 20000 | gift_of_the_ursus (vendeur) |
 | `ascended_shard_of_glory` — Ascended Shards of Glory | `transcendence` | 500 | 400 | 100 | star_of_glory (recette) |
-| `curious_mursaat_currency` — Curious Mursaat Currency | `klobjarne_geirr` | 125 | 25 | 100 | gift_of_the_ursus (vendeur) |
 
 ## DEJA COMPTE PAR CASCADE — 4 cas
 

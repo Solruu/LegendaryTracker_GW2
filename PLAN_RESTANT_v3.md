@@ -16,7 +16,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 
 | rapport | outil | chiffre |
 |---|---|---|
-| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **35 desaccords / 12 composants** apres C1 (v356) : 4 « deja compte par cascade », 28 « cout vendeur », 3 « ecart de compte » |
+| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **33 desaccords** apres C1-C2 (v357) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v3` ~~370~~ → **248 ecarts** apres C1 (166 hausses, 82 baisses) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
@@ -136,9 +136,16 @@ cas n'etait un double compte :
       poivre d'Orrax 1 000 contre 1 500 a la table (piles de l'Entree et du
       Side Course non reliees) ; +100 Ipos du precurseur, absent de la table
 
-### C2 — « Ecart de compte » (3 cas) · C
-`ancient_coin` (20 000), `ascended_shard_of_glory` (100),
-`curious_mursaat_currency` (100). Relire la capture, decomposer la difference.
+### C2 — « Ecart de compte » · C — ✅ 2 sur 3 le 04/10 (sources v357)
+`integration/gw2_arbitrage_compte_v1`, aucun total ne bouge :
+- [x] `ancient_coin` : 20 250 (Klobjarne) = 250 Gift of the Ursus + 100 Mursaat
+      Runestones a 200 ; les 50 000 d'Orrax = 250 runestones. Deux aretes
+      remplacent les deux cles.
+- [x] `curious_mursaat_currency` : 125 = 25 Ursus (arete) + 100 Shards of
+      Janthir Syntri (cle) ; chevauchement declare, deux noeuds a la table.
+- [ ] `ascended_shard_of_glory` / Transcendence via Star of Glory : passe par
+      Gift of Competitive Dedication, donc par Ardent Glorious — meme blocage
+      que les deux restes de C1.
 
 ### C3 — Confrontation des totaux, 370 ecarts · C
 Par legendaire, du plus expose au moins : Klobjarne Geirr (15 composants,
@@ -193,7 +200,7 @@ faits). `note_alt` d'Ad Infinitum n'est toujours pas rendu.
 
 ## Ordre propose
 
-1. ~~C1~~ fait, **C2** (autonome) — en parallele **W1, W2,
+1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,
    W3** cote captures et **A1, A2** cote Antoine.
 2. **W4** puis C sur les 31 couts vendeur.
 3. **C3, C4** par groupes de legendaires.
