@@ -18,7 +18,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
-| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
+| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v9` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
@@ -294,9 +294,21 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       la regle « fratrie » exclut un legendaire forge d'autres legendaires
       (`collections.*.items[].legendary`), sinon elle reclamait le patron.
 
-### C4 — Excedents nus (71) et relecture des recettes · C
-71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non
-relies et 36 en trop (`RELECTURE_RECETTES_v8.md`).
+### C4 — Excedents nus et relecture des recettes · C
+- [x] **Excedents nus : 76 → 0** (04/10, `controle/gw2_confronte_totaux_v9`,
+      aucune donnee touchee). Trois defauts de l'outil, pas de la donnee :
+      - branche fermee = sans enfant chiffre, tetes comprises : le precurseur
+        gen2 (« Endeavor — Requires 500 Weaponsmith ») passait pour ouvert ;
+        58 lignes (tessons, tributs, curios, sigils gen1...) ;
+      - `alt_groups` par cible : `opal_orb` etait coupe sous le Gift of Color
+        du Bifrost ; 2 lignes, +21 accords, et 3 faux trous evites sur Endless
+        Summer (orbes rangees a cote de leur cible) ;
+      - branche omise sourcee : la table ouvre le Poeme gen3 mais tait la
+        piece d'arme ; admise seulement si l'arete est proposee par une
+        capture (`/tmp/edges2.json`) — 16 lignes, une piece par arme.
+      Resultat : 969 accords, 0 trou, 166 expliques, 0 nu. Listes non
+      tronquees.
+- [ ] 4 ingredients non relies et 36 en trop (`RELECTURE_RECETTES_v8.md`).
 
 ### C5 — Bits de collection · C
 `qty_extras` ne retranche les etapes validees que sur 5 composants. Generaliser

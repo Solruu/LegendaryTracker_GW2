@@ -57,7 +57,7 @@ def norm(s):
     return "".join(ch for ch in _unquote(str(s)).lower() if ch.isalnum())
 
 
-def _remonte_vers_ferme(cid, cc, fermes, T, profondeur=6):
+def _remonte_vers_ferme(cid, cc, fermes, T, profondeur=6, cites=frozenset()):
     """Les branches fermees de la table qui expliquent un excedent sur `cid`.
 
     v7 : la recherche ne regardait qu'UN cran — les parents directs de `cid`.
@@ -85,6 +85,17 @@ def _remonte_vers_ferme(cid, cc, fermes, T, profondeur=6):
             base = parent.split("__")[0]
             if base in fermes and T.get(base, 0):
                 trouves.add(base)
+                continue
+            # v9 : BRANCHE OMISE. La table ouvre le Poeme des gen3 (10 Tales,
+            # 10 Badges) mais tait la piece d'arme, 50 reactifs et ses planches.
+            # Le Poeme n'est donc pas ferme, et pourtant le surplus est juste :
+            # la recette capturee du Poeme cite la piece. On l'admet SEULEMENT si
+            # l'arete parent <- courant est proposee par une capture : sans
+            # cette condition, une arete inventee (le cube sous le Gift of
+            # Research, C3) redeviendrait invisible.
+            if (base in cites and courant not in cites and T.get(base, 0)
+                    and f"{base}|{courant}" in SOURCEES):
+                trouves.add(f"{base} (omis : {courant})")
                 continue
             if base in cc and base not in vus:
                 vus.add(base)
@@ -126,8 +137,21 @@ from moteur.gw2_moteur_v3 import Modele  # noqa: E402
 
 # Les options d'un choix que le calcul ne retient pas : la table les ecrit
 # toutes, le tracker n'en compte qu'une.
-non_defaut = {o for g in (d.get("alt_groups") or {}).values()
-              for o in (g.get("options") or []) if o != g.get("default")}
+# v9 : PAR CIBLE. Un choix ne vaut que sous ses `targets` — principe deja tenu
+# par le moteur. La v8 ecartait l'option partout : `opal_orb`, option non
+# retenue des gemmes infusees (cible `gift_of_infused_gems`), etait aussi
+# coupee sous le Gift of Color du Bifrost, ou elle est une exigence fixe ; ses
+# 500 poussieres incandescentes sortaient alors en excedent nu.
+non_defaut = collections.defaultdict(set)
+for g in (d.get("alt_groups") or {}).values():
+    for o in (g.get("options") or []):
+        if o != g.get("default"):
+            non_defaut[o].update(g.get("targets") or [])
+
+# v9 : aretes que les captures proposent (recette, vendeur, table), ecrites par
+# parseurs/gw2_edges_wiki. Sert a reconnaitre une branche que la table OMET.
+_E = Path("/tmp/edges2.json")
+SOURCEES = set(json.load(open(_E))) if _E.exists() else set()
 
 # La cascade n'est plus ecrite ici : un seul moteur pour tous les outils.
 _M = Modele.depuis(d, SRC)
@@ -162,11 +186,20 @@ for page in sorted(P.WIKI.glob("*.html")):
     # L'option ecartee est souvent une TETE de la table — Gift of Desert Mastery
     # ouvre la colonne 1 et n'apparait jamais comme enfant. Amorcer la coupe sur
     # les seuls enfants ne coupait donc rien.
+    tetes = {t for t, _e, _q in brut} - {e for _t, e, _q in brut}
+    # La table range parfois les options a cote de leur cible plutot que
+    # dessous : Endless Summer ecrit les quatre orbes sous Gift of Rays, a cote
+    # du Gift of Infused Gems qu'elles composent. Le parent d'une cible vaut
+    # donc la cible.
     for _t, _e, _q in brut:
-        for n in (_t, _e):
-            cid = to_id(n)
-            if cid and cid in non_defaut:
-                pile.append(n)
+        cid = to_id(_e)
+        if cid in non_defaut:
+            cibles = non_defaut[cid]
+            if to_id(_t) in cibles or any(t2 == _t and to_id(e2) in cibles for t2, e2, _q2 in brut):
+                pile.append(_e)
+        cid = to_id(_t)
+        if _t in tetes and cid in non_defaut and leg in non_defaut[cid]:
+            pile.append(_t)
     while pile:
         n = pile.pop()
         if n in coupes:
@@ -178,7 +211,14 @@ for page in sorted(P.WIKI.glob("*.html")):
     # ligne sans nombre vaut 1 par convention du wiki, mais on ne l'additionne
     # pas — elle ne dit rien de plus que « il en faut ».
     ecrit = collections.defaultdict(int)
-    ouverts = {t for t, _e, _q in brut}
+    # v9 : une branche n'est OUVERTE que si la table chiffre au moins un de ses
+    # enfants. Le precurseur des gen2 (Endeavor sous Eureka) est une tete de la
+    # table : la v8 le croyait ouvert parce que sa note cite, sans nombre, les
+    # recettes et le Shard of Endeavor. Il etait donc hors des « fermes » (tete,
+    # jamais enfant) — et les 100 tessons, 100 tributs, 100 curios du
+    # precurseur tombaient en « excedent nu » sur les douze gen2, alors que la
+    # page ecrit « Endeavor — Requires 500 Weaponsmith » sans rien chiffrer.
+    ouverts = {t for t, _e, q in brut if q is not None}
     # Une table d'ARMURE est ecrite POUR UNE PIECE : le Gift of Prosperity y
     # coute 15 trefles, et il en faut un par piece. Le tracker, lui, totalise
     # le set de six. Sans cette echelle, les cinq postes de l'Envoy parfait
@@ -192,7 +232,8 @@ for page in sorted(P.WIKI.glob("*.html")):
     T = totaux(leg)
     # Les branches que la table cite sans les ouvrir : leurs enfants a nous
     # expliquent legitimement un excedent.
-    fermes = {to_id(e) for _t, e, _q in brut if e not in ouverts}
+    fermes = {to_id(n) for t, e, _q in brut for n in (t, e) if n not in ouverts}
+    cites = {to_id(n) for t, e, _q in brut for n in (t, e)} - {None}
     fermes.discard(None)
     for item, tot_table in ecrit.items():
         cid = to_id(item)
@@ -205,7 +246,7 @@ for page in sorted(P.WIKI.glob("*.html")):
             trous.append((tot_table - aff, leg, cid, aff, tot_table))
         else:
             # l'excedent vient-il d'un parent que la table n'ouvre pas ?
-            via = sorted(_remonte_vers_ferme(cid, cc, fermes, T))
+            via = sorted(_remonte_vers_ferme(cid, cc, fermes, T, cites=cites))
             # v5 : un chevauchement DECLARE et VERIFIE n'est pas un excedent
             # nu. `qty_overlap_verified` dit, legendaire par legendaire, que
             # l'exigence directe et la chaine sont toutes deux reelles — c'est
@@ -237,19 +278,19 @@ out = ["# Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la ta
        "  un double comptage, soit une branche legitime qu'il faut nommer.\n",
        "\n## Trous — le total affiche est inferieur a celui de la table\n",
        "| legendaire | composant | affiche | table | manque |", "|---|---|---:|---:|---:|"]
-for e, leg, cid, a, b in trous[:60]:
+for e, leg, cid, a, b in trous:
     out.append(f"| `{leg}` | `{cid}` — {nom(cid)} | {a} | {b} | -{e} |")
 
 out.append("\n## Excedents nus — a expliquer ou a corriger\n")
 out.append("| legendaire | composant | affiche | table | excedent |")
 out.append("|---|---|---:|---:|---:|")
-for e, leg, cid, a, b, _v in nu[:60]:
+for e, leg, cid, a, b, _v in nu:
     out.append(f"| `{leg}` | `{cid}` — {nom(cid)} | {a} | {b} | +{e} |")
 
 out.append("\n## Excedents expliques par une branche fermee de la table\n")
 out.append("| legendaire | composant | affiche | table | par |")
 out.append("|---|---|---:|---:|---|")
-for e, leg, cid, a, b, via in explique[:40]:
+for e, leg, cid, a, b, via in explique:
     out.append(f"| `{leg}` | `{cid}` | {a} | {b} | {', '.join(f'`{x}`' for x in via)} |")
 
 Path(HERE / "CONFRONTATION_TOTAUX.md").write_text("\n".join(out) + "\n", encoding="utf-8")
