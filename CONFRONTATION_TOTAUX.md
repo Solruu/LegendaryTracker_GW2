@@ -1,15 +1,15 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v365.json`, 1113 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v366.json`, 1113 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **943 accords** — le nombre affiche est celui de la table.
+- **948 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **94 excedents expliques** — le surplus vient d'une branche
+- **89 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **76 excedents nus** — rien dans la donnee ne les explique : soit
@@ -120,13 +120,13 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_the_binding_of_ipos` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `warbringer` | `skirmish_claim_ticket` | 2800 | 2450 | `mystic_essence_of_annihilation` |
-| `coalescence` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
-| `conflux` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
-| `stella_radians` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
-| `transcendence` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
-| `vision` | `mystic_coin` | 499 | 250 | `qty_overlap_verified` |
-| `selachimorpha` | `obsidian_shard` | 488 | 250 | `qty_overlap_verified` |
 | `gen2_xiuquatl` | `dust_crystalline` | 465 | 250 | `gift_of_dust` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_nevermore` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
+| `gen2_nevermore` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
+| `the_ascension` | `pvp_league_ticket` | 225 | 125 | `qty_overlap_verified` |
+| `gen2_the_binding_of_ipos` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
+| `gen2_the_binding_of_ipos` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
+| `gen2_xiuquatl` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
+| `gen2_xiuquatl` | `dust_radiant` | 350 | 250 | `gift_of_dust` |

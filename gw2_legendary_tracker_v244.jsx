@@ -1182,7 +1182,7 @@ const LEGENDARIES = {
       { id: "insights",  name: "Legendary Insight", required: 150, icon: "LI", apiId: 70 },
       { id: "gaeting",   name: "Gaeting Crystal",   required: 100, icon: "GC", apiId: 39 },
       { id: "clovers",   name: "Mystic Clover",     required: 77,  icon: "MC", apiId: 19675 },
-      { id: "coins",     name: "Mystic Coin",       required: 499, icon: "MN", apiId: 19976 },
+      { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
     ],
     collectionNoteKeys: ["raids_li_note", "raids_wings_note"],
     metas: [],
@@ -1202,7 +1202,7 @@ const LEGENDARIES = {
     currencies: [
       { id: "notes",   name: "Research Note",  required: 5000, icon: "RN", apiId: 61 },
       { id: "clovers", name: "Mystic Clover",  required: 55,   icon: "MC", apiId: 19675 },
-      { id: "shards",  name: "Obsidian Shard", required: 488,  icon: "OS", apiId: 19925 },
+      { id: "shards",  name: "Obsidian Shard", required: 310,  icon: "OS", apiId: 19925 },
       // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
@@ -1602,7 +1602,7 @@ const LEGENDARIES = {
     currencies: [
       { id: "sap",      name: "Aether-Rich Sap",      required: 500, icon: "AS", apiId: 83 },
       { id: "ducat",    name: "Antiquated Ducat",     required: 500, icon: "AD", apiId: 81 },
-      { id: "obsidian", name: "Obsidian Shard",       required: 283, icon: "OS", apiId: 19925 },
+      { id: "obsidian", name: "Obsidian Shard",       required: 250, icon: "OS", apiId: 19925 },
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
       { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
     ],
@@ -1621,7 +1621,7 @@ const LEGENDARIES = {
     resetType: "daily",
     currencies: [
       { id: "karma",   name: "Karma",         required: 7000000, icon: "KA", apiId: 2 },
-      { id: "coins",   name: "Mystic Coin",   required: 499,     icon: "MO", apiId: 19976 },
+      { id: "coins",   name: "Mystic Coin",   required: 250,     icon: "MO", apiId: 19976 },
       { id: "clovers", name: "Mystic Clover", required: 77,      icon: "MC", apiId: 19675 },
       // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
@@ -1672,7 +1672,6 @@ const LEGENDARIES = {
       { id: "relics",   name: "Fractal Relic",          required: 4650, icon: "FR", apiId: 7 },
       { id: "pristine", name: "Pristine Fractal Relic", required: 140, icon: "PF", apiId: 24 },
       { id: "clovers",  name: "Mystic Clover",          required: 77,  icon: "MC", apiId: 19675 },
-      { id: "coins",    name: "Mystic Coin",            required: 249, icon: "MO", apiId: 19976 },
     ],
     requirements: {
       unit: { fr: "collection", en: "collection" },

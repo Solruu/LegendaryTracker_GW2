@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v365.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v366.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -25,7 +25,7 @@ rien dire.
 | ok | `cube_stabilized_dark_energy` | 5 | 5 | 8 |
 | ok | `deldrimor_steel_ingot` | 5 | 5 | 5 |
 | ok | `elonian_leather_square` | 5 | 5 | 5 |
-| ok | `glob_of_ectoplasm` | 25 + 250 | 275 | 1054 |
+| ok | `glob_of_ectoplasm` | 25 + 250 | 275 | 805 |
 | ok | `mystic_clover` | 77 | 77 | 77 |
 | ok | `pristine_mist_essence` | 5 | 5 | 8 |
 | ok | `rare_essence_of_luck` | 50 | 50 | 80 |
@@ -37,7 +37,7 @@ rien dire.
 | verdict | composant | prose | somme | arbre |
 |---|---|---|---:|---:|
 | ok | `certificate_of_support` | 5 | 5 | 5 |
-| ok | `glob_of_ectoplasm` | 250 | 250 | 499 |
+| ok | `glob_of_ectoplasm` | 250 | 250 | 250 |
 | ok | `mystic_clover` | 77 | 77 | 77 |
 | ok | `shard_of_glory` | 250 | 250 | 250 |
 | ok | `vision_crystal` | 2 | 2 | 2 |
@@ -51,7 +51,7 @@ rien dire.
 | ok | `branded_mass` | 360 | 360 | 460 |
 | ok | `exquisite_serpentite_jewel` | 18 | 18 | 18 |
 | ok | `eye_of_kormir` | 300 | 300 | 0 |
-| ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 1052 |
+| ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 803 |
 | ok | `inscribed_shard` | 200 | 200 | 300 |
 | ok | `kralkatite_ore` | 3 | 3 | 3100 |
 | ok | `laurel` | 30 | 30 | 30 |
@@ -77,7 +77,7 @@ rien dire.
 | ok | `empyreal_fragment` | 250 | 250 | 1250 |
 | ok | `gift_of_battle` | 4 | 4 | 4 |
 | ok | `glob_of_dark_matter` | 10 | 10 | 10 |
-| ok | `glob_of_ectoplasm` | 250 | 250 | 499 |
+| ok | `glob_of_ectoplasm` | 250 | 250 | 250 |
 | ok | `large_bone` | 50 | 50 | 50 |
 | ok | `large_claw` | 50 | 50 | 50 |
 | ok | `large_scale` | 50 | 50 | 50 |

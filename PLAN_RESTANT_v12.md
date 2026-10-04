@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v365) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v366) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -107,21 +107,15 @@ Shield.
 ## Lots en jeu et decisions (A)
 
 ### A1 — Decisions en attente
-- [ ] **Cout des trefles mystiques — convention a trancher (structurel).**
-      Releve sur v365, 79 legendaires portant des trefles :
-      - 15 trinkets/armes (Vision, Coalescence, Aurora, Conflux, Stella,
-        Klobjarne...) portent une cle a plat « trefles » sur ecto,
-        obsidienne et/ou pieces (249 pour 77, valeur des arbres) — pas toujours
-        les trois (Conflux, Ascension, Transcendence, Warbringer : sans
-        obsidienne ; Aurora : sans pieces) et jamais les eclats d'esprit ;
-      - 16 gen2, armures, reliques, runes, sigils : rien ;
-      - gen1 et gen3 : 250 pieces a plat (a verifier : trefles ou recette).
-      Or `parseurs/gw2_edges_wiki` (v9/v10) refuse expressement de poser la
-      recette du trefle en arete : son acquisition est un choix (pistes,
-      vendeurs, Forge). Deux voies : (a) retirer toutes les cles « trefles »
-      (le trefle reste l'exigence, son cout depend de la voie choisie) ;
-      (b) les generaliser a tous les legendaires, avec les quatre
-      ingredients. Les deux changent des chiffres affiches.
+- [x] **Cout des trefles mystiques** — tranche le 04/10 par Antoine : voie
+      par defaut = pistes de recompenses PvP / McM + Wizard's Vault ; la
+      Forge est une alternative. Les cles a plat ne portent plus le cout de
+      Forge (`integration/gw2_cout_trefles_v1`, sources v366, JSX v244) :
+      15 legendaires a arbre (part « trefles » lue dans l'arbre, reste de la
+      cle conserve), 35 armes gen1/gen3 (250 pieces = « ~250 Mystic Coins »
+      de la prose). Apres retrait, tracker = arbre - trefles partout ou ils
+      etaient egaux. Reste : Eikasia, 80 ectos pour 18 trefles (pas de page
+      ni d'arbre au depot) → W.
 - [x] Neutralized Titan Alloy (Klobjarne) : ferme le 04/10, pas de choix.
       Recette (artisan 400) 3 ectos + 5 minerai + 5 ambre + 5 lingots ;
       vendeur 4 + 7 + 7 + 6 — plus cher sur chaque ingredient. La chaine
