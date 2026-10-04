@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v344.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v355.json` — généré par `gw2_relecture_recettes_v4.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,

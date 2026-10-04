@@ -1,11 +1,11 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v336.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v355.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
 material list ») ni par la relecture des recettes (qui compare nœud par nœud).
-**4 pages confrontées — 1 dépassements, 0 sommes à arbitrer, 51 accords.**
+**4 pages confrontées — 0 dépassements, 0 sommes à arbitrer, 53 accords.**
 
 C'est là qu'un achat a échappé à tout : 200 éclats inscrits annoncés pour la
 Banner of the Commander, 100 seulement justifiés par les pages.
@@ -42,7 +42,7 @@ rien dire.
 | ok | `shard_of_glory` | 250 | 250 | 250 |
 | ok | `vision_crystal` | 2 | 2 | 2 |
 
-## vision_i_awakening → `vision` — 17 objets
+## vision_i_awakening → `vision` — 18 objets
 
 | verdict | composant | prose | somme | arbre |
 |---|---|---|---:|---:|
@@ -52,8 +52,9 @@ rien dire.
 | ok | `exquisite_serpentite_jewel` | 18 | 18 | 18 |
 | ok | `eye_of_kormir` | 300 | 300 | 0 |
 | ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 1012 |
-| ok | `inscribed_shard` | 200 | 200 | 200 |
+| ok | `inscribed_shard` | 200 | 200 | 300 |
 | ok | `kralkatite_ore` | 3 | 3 | 3100 |
+| ok | `laurel` | 30 | 30 | 30 |
 | ok | `lesser_vision_crystal` | 6 | 6 | 6 |
 | ok | `olmakhan_latigo_strap` | 5 | 5 | 17 |
 | ok | `orichalcum_filigree` | 60 | 60 | 60 |
@@ -61,7 +62,7 @@ rien dire.
 | ok | `powdered_rose_quartz` | 3 | 3 | 3000 |
 | ok | `spool_of_gossamer_thread` | 100 | 100 | 100 |
 | ok | `unidentified_dye` | 20 | 20 | 20 |
-| **DÉPASSE** | `volatile_magic` | 3000 | 3000 | 1000 |
+| ok | `volatile_magic` | 3000 | 3000 | 3000 |
 | ok | `xunlai_electrum_ingot` | 18 | 18 | 18 |
 
 ## warbringer → `warbringer` — 20 objets

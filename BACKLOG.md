@@ -1,3 +1,5 @@
+> **Plan du restant** : `PLAN_RESTANT_v1.md` (04/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+
 # Backlog
 
 ## 0. Etat du 08/09/2026 — le depliage est repartis
@@ -694,7 +696,7 @@ tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
 
 **Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).
 
-## Migration vers collections{} — Ad Infinitum validé, 10 restants
+## Migration vers collections{} — ✅ TERMINÉE sauf l'Obsidienne (constat du 04/10/2026, voir PLAN_RESTANT)
 
 **Ad Infinitum migré le 27/08/2026**, forme validée avant de généraliser :
 4 collections, **46 étapes nommées, 46 `how`**, totaux comptés sur les bits du
