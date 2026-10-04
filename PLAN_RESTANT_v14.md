@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v367) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v368) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -116,6 +116,14 @@ Shield.
       de la prose). Apres retrait, tracker = arbre - trefles partout ou ils
       etaient egaux. Eikasia : ses 80 ectos n'etaient pas des trefles mais le
       surcout de Lyhr (ci-dessous).
+- [x] **Conseils du trefle alignes** (regle confirmee le 04/10 : trop
+      couteux, l'alternative est proposee mais jamais par defaut, preferer la
+      timegate). `best` vendor → reward_track, conseils Lyhr / Forge /
+      `cap_note` / `note` / `free_sources_note` reecrits, aucune quantite
+      (`integration/gw2_trefles_voie_defaut_v1`, v368).
+      Reste ouvert : l'onglet Timegates projette les semaines sur les vendeurs
+      plafonnes payants (45/sem) ; les pistes, sans plafond chiffrable, en
+      sont exclues. Changer la projection change un chiffre affiche → A1.
 - [x] **Gifts Blood/Bones/.../Venom : voie par defaut = recette en or**
       (decision du 04/10). Recettes 10 or chacune, une fois par compte,
       artisan 400 ; Lyhr = +10 ectos par Gift, 80 par poids. Les 80 ectos
