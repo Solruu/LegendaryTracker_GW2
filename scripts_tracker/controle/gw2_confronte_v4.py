@@ -64,9 +64,19 @@ d = json.load(open(SRC, encoding="utf-8"))
 cc = d["craft_components"]
 groupes = d.get("alt_groups") or {}
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
+# v4 : LES OPTIONS D'UN CHOIX NE S'ADDITIONNENT PAS. La page d'un Tribute to X
+# liste six monnaies au meme prix ; la v3 posait les six aretes et annoncait
+# 4 000 de chacune sur les gen2, soit 60 « ecarts » qui n'etaient que les cinq
+# options non choisies. Meme regle que gw2_arbitrages : une arete proposee
+# entre une option et une cible de son alt_groups est ecartee, le moteur
+# appliquant deja le choix par defaut.
+_ALT = collections.defaultdict(set)
+for _g in groupes.values():
+    for _o in (_g.get("options") or []):
+        _ALT[_o].update(_g.get("targets") or [])
 proposees = collections.defaultdict(dict)
 for (p, e), (q, _org) in E.items():
-    if p in cc and e in cc and p != e:
+    if p in cc and e in cc and p != e and p not in _ALT.get(e, ()):
         proposees[e][p] = q
 
 

@@ -16,7 +16,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 
 | rapport | outil | chiffre |
 |---|---|---|
-| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **33 desaccords** apres C1-C2 (v357) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
+| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v3` ~~370~~ → **248 ecarts** apres C1 (166 hausses, 82 baisses) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
@@ -147,11 +147,30 @@ cas n'etait un double compte :
       Gift of Competitive Dedication, donc par Ardent Glorious — meme blocage
       que les deux restes de C1.
 
-### C3 — Confrontation des totaux, 370 ecarts · C
-Par legendaire, du plus expose au moins : Klobjarne Geirr (15 composants,
-26 822), Binding of Ipos (43, 25 458), Pharus / HMS Divinity (24 756 chacun),
-Sharur, Claw of the Khan-Ur, Eureka… Les gen2 partagent le meme motif : traiter
-le groupe d'un coup. La colonne wiki n'est qu'un indice.
+### C3 — Confrontation des totaux · C — 1re passe faite le 04/10 (sources v358)
+247 → **158 ecarts**. `controle/gw2_confronte_v4` applique enfin `alt_groups`
+(la v3 additionnait les six monnaies des tributs : 60 faux ecarts gen2), et
+`integration/gw2_confrontation_c3_v1` tranche sur pages et arbres lus en
+hierarchie :
+- [x] 8 dons de donjon gen1 a 500 Tales (liste, pas choix) : +500 sur les 21
+      gen1 ; la cle d'Orrax (500) devient l'arete Gift of Ascalon
+- [x] Conflux / Warbringer : dragonite, poussiere et fragment 2 250 → 1 250
+      (cle a plat en troisieme noeud, chevauchement retire)
+- [x] hydrocatalytique d'Aetheric Anchor et Stella 1 000 → 500 ;
+      thermocatalytique de Klobjarne 3 130 → 2 050
+- [x] Transcendence : Shard of Glory 2 500 → 2 250, Ascended 500 → 900
+- [x] Memory of Battle de Triumphant Hero : chevauchement declare (2 noeuds)
+- [ ] **reste, pour la suite** : Ad Infinitum (dragonite/poussiere/fragment
+      1 500, matrices 975 contre 675 a l'arbre, ecto) — l'arbre est commun avec
+      Coalescence et Vision, `--racine` du parseur ne separe pas les racines,
+      a corriger d'abord ; ecto d'Obsidienne par piece (7 200 : cle 600 +
+      chaine 600, l'arbre de la cuirasse dit ~738 par piece, une seule piece
+      lue — pas d'extrapolation) ; ecto de Klobjarne (1 971 contre 1 230) ;
+      Endless Summer (cuir, orichalque : matieres premieres, `raw_materials_scope`)
+- [ ] beaucoup d'ecarts restants sont des artefacts de l'outil : la colonne
+      « recettes » ignore la cle a plat des qu'une arete existe, meme quand la
+      cle porte un noeud distinct (Selachimorpha 800, notes de Stella 52 500 =
+      arbre). A traiter dans l'outil (respecter `qty_overlap_verified`).
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non
