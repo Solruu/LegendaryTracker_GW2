@@ -25,7 +25,7 @@ commodite, c'est la seule voie raisonnable.
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-    python scripts_tracker/controle/gw2_metas_ressources_v1.py
+    python scripts_tracker/controle/gw2_metas_ressources_v2.py
 """
 import argparse
 import json
@@ -131,7 +131,7 @@ def main():
     #    `ref`, puis le sous-nom, puis la carte.
     def pages_de(m):
         out = []
-        for v in (m.get("ref"), m.get("subname"), m.get("name"), m.get("map")):
+        for v in (m.get("ref"), m.get("name"), m.get("map")):
             v = v.get("en") if isinstance(v, dict) else v
             if not v:
                 continue
@@ -159,7 +159,7 @@ def main():
                 cibles = cibles_de(cc, legs, cid)
                 if cibles:
                     ressources[cid] = (c, cibles)
-        sn = m.get("subname")
+        sn = m.get("name")
         sn = sn.get("en") if isinstance(sn, dict) else sn
         if not ressources:
             muets.append((mk, str(sn), bool(pages), sorted(trouves)))

@@ -1,18 +1,18 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v336.json`, 1113 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v364.json`, 1113 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **948 accords** — le nombre affiche est celui de la table.
+- **943 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
 - **94 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
-- **71 excedents nus** — rien dans la donnee ne les explique : soit
+- **76 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
 
@@ -25,6 +25,8 @@ plus. **Son total est donc un plancher, pas une egalite.**
 
 | legendaire | composant | affiche | table | excedent |
 |---|---|---:|---:|---:|
+| `gen1_the_bifrost` | `dust_incandescent` — Pile of Incandescent Dust | 750 | 250 | +500 |
+| `gen1_the_minstrel` | `dust_incandescent` — Pile of Incandescent Dust | 750 | 250 | +500 |
 | `gen2_exordium` | `darksteel_ingot` — Darksteel Ingot | 370 | 250 | +120 |
 | `gen2_the_shining_blade` | `darksteel_ingot` — Darksteel Ingot | 370 | 250 | +120 |
 | `gen2_claw_of_the_khan_ur` | `shard_of_resolution` — Shard of Resolution | 200 | 100 | +100 |
@@ -48,6 +50,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_shooshadoo` | `shard_of_friendship` — Shard of Friendship | 200 | 100 | +100 |
 | `gen2_shooshadoo` | `tribute_to_friendship` — Tribute to Friendship | 200 | 100 | +100 |
 | `gen2_shooshadoo` | `mystic_curio` — Mystic Curio | 200 | 100 | +100 |
+| `gen2_the_binding_of_ipos` | `shard_of_the_dark_arts` — Shard of the Dark Arts | 200 | 100 | +100 |
+| `gen2_the_binding_of_ipos` | `tribute_to_the_dark_arts` — Tribute to the Dark Arts | 200 | 100 | +100 |
+| `gen2_the_binding_of_ipos` | `mystic_curio` — Mystic Curio | 200 | 100 | +100 |
 | `gen2_the_hms_divinity` | `shard_o_war` — Shard o' War | 200 | 100 | +100 |
 | `gen2_the_hms_divinity` | `tribute_to_the_man_o_war` — Tribute to the Man o' War | 200 | 100 | +100 |
 | `gen2_the_hms_divinity` | `mystic_curio` — Mystic Curio | 200 | 100 | +100 |
@@ -80,11 +85,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_eureka` | `darksteel_ingot` — Darksteel Ingot | 310 | 250 | +60 |
 | `gen2_sharur` | `darksteel_ingot` — Darksteel Ingot | 310 | 250 | +60 |
 | `gen2_the_hms_divinity` | `hard_wood_plank` — Hard Wood Plank | 310 | 250 | +60 |
-| `gen2_flames_of_war` | `hard_wood_plank` — Hard Wood Plank | 290 | 250 | +40 |
-| `gen2_pharus` | `seasoned_wood_plank` — Seasoned Wood Plank | 290 | 250 | +40 |
-| `gen2_verdarach` | `hard_wood_plank` — Hard Wood Plank | 290 | 250 | +40 |
-| `gen2_the_hms_divinity` | `seasoned_wood_plank` — Seasoned Wood Plank | 280 | 250 | +30 |
-| `gen2_flames_of_war` | `seasoned_wood_plank` — Seasoned Wood Plank | 270 | 250 | +20 |
 
 ## Excedents expliques par une branche fermee de la table
 
@@ -105,6 +105,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_sharur` | `elder_wood_plank` | 8100 | 3000 | `mystic_curio` |
 | `gen2_verdarach` | `mithril_ingot` | 7100 | 2000 | `mystic_curio` |
 | `gen2_exordium` | `elder_wood_plank` | 8000 | 3000 | `mystic_curio` |
+| `gen2_the_binding_of_ipos` | `mithril_ingot` | 7000 | 2000 | `mystic_curio` |
 | `gen2_xiuquatl` | `elder_wood_plank` | 6250 | 2000 | `mystic_curio` |
 | `gen2_eureka` | `elder_wood_plank` | 6100 | 2000 | `mystic_curio` |
 | `gen2_claw_of_the_khan_ur` | `elder_wood_plank` | 6000 | 2000 | `mystic_curio` |
@@ -112,10 +113,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_flames_of_war` | `elder_wood_plank` | 4350 | 1250 | `mystic_curio` |
 | `gen2_verdarach` | `elder_wood_plank` | 4350 | 1250 | `mystic_curio` |
 | `gen2_shooshadoo` | `elder_wood_plank` | 4000 | 1000 | `mystic_curio` |
-| `transcendence` | `shard_of_glory` | 2500 | 250 | `gift_of_the_mists` |
+| `gen2_the_binding_of_ipos` | `elder_wood_plank` | 4000 | 1000 | `mystic_curio` |
+| `transcendence` | `shard_of_glory` | 2250 | 250 | `gift_of_the_mists` |
 | `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_the_mists`, `gift_of_war_dedication`, `war_commendation` |
-| `gen2_the_binding_of_ipos` | `mithril_ingot` | 3500 | 2000 | `mystic_curio` |
-| `gen2_the_binding_of_ipos` | `elder_wood_plank` | 2000 | 1000 | `mystic_curio` |
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_the_binding_of_ipos` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |

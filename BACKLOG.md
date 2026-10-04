@@ -1,3 +1,5 @@
+> **Plan du restant** : `PLAN_RESTANT_v9.md` (04/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+
 # Backlog
 
 ## 0. Etat du 08/09/2026 — le depliage est repartis
@@ -694,7 +696,7 @@ tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
 
 **Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).
 
-## Migration vers collections{} — Ad Infinitum validé, 10 restants
+## Migration vers collections{} — ✅ TERMINÉE sauf l'Obsidienne (constat du 04/10/2026, voir PLAN_RESTANT)
 
 **Ad Infinitum migré le 27/08/2026**, forme validée avant de généraliser :
 4 collections, **46 étapes nommées, 46 `how`**, totaux comptés sur les bits du
@@ -1652,7 +1654,7 @@ Le client appelle Flask avec `?key=...`. Werkzeug journalise la ligne de requêt
 entière : la clé finit en clair dans les logs, d'où un partage d'écran ou un
 copier-coller de terminal peut l'emporter.
 
-`gw2_flask_server_v45.py` masque `key`, `access_token` et `token` dans tout ce
+`gw2_flask_server_v46.py` masque `key`, `access_token` et `token` dans tout ce
 que le serveur journalise. **C'est un pansement** : la clé continue de voyager
 dans l'URL, donc dans l'historique du navigateur, dans un éventuel proxy, et
 dans tout journal que ce filtre ne couvre pas.
@@ -1800,3 +1802,21 @@ chaine, donc la decomposition ne peut pas deriver en silence.
 
 A etendre ensuite aux autres legendaires dont un cout est adosse a une
 collection, pas seulement Vision.
+
+## 12 nonies. Restes de la fusion du catalogue (03/10/2026)
+
+- `ew.wpCode` : JSX `[&BLsNAAA=]` (garde) contre sources `[&BNMMAAA=]` — ce
+  dernier est le code de Gyala Delve, indice de copie. A verifier en jeu.
+- `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
+  `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
+- Depliage LW par episode : aucune capture ne liste les episodes.
+- `dm` : le conseil dit « Fire Orchid + Petrified Wood via nodes », mais la page
+  Draconis Mons ne cite que Fire Orchid. Petrified Wood non ajoute aux
+  recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
+- `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
+  point de passage d'Ember Bay reste a poser.
+- `bf_meta` : carte Bitterfrost Frontier (LW3) contre horaire de « The Frozen
+  Maw » (Wayfarer Foothills, base). Laquelle est la bonne ? Sans reponse, pas de
+  condition d'acces ni de `ref`.
+- Codes de point de passage partages (COHERENCE_CONSEILS_METAS, regle W) :
+  `[&BNMMAAA=]` sur sp / de2 / gy, `[&BDQOAAA=]` sur am / in. A relever en jeu.

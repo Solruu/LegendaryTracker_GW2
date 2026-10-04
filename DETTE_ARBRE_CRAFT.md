@@ -3366,7 +3366,7 @@ portent un `component` ne rendaient jamais rien**.
 `_sub_status` ne pouvait pas y suppleer : il laisse tomber les `bits`, et une
 collection a moitie faite se juge bit par bit.
 
-`gw2_flask_server_v45.py` renvoie `_collections.all` — 340 entrees, indexees par
+`gw2_flask_server_v46.py` renvoie `_collections.all` — 340 entrees, indexees par
 cle ET par id, bits compris — derivees des sources comme cote JSX. Vision et
 Aurora marchaient deja par leur route dediee ; c'est Orrax et les autres qui
 gagnent la regle.
@@ -4008,3 +4008,505 @@ Et un reflexe de verification, celui qui aurait suffi deux fois : **regarder la
 forme des elements extraits avant leur contenu**. « the Janthir Syntri » et
 « and Castora » n'ont pas la forme d'un nom de carte. Une liste dont un element
 commence par un article est une liste mal extraite, quel que soit son contenu.
+
+## CG — 02/10/2026 : la question des sous-pages est close
+
+Les quinze ressources a recompense de meta sont au depot. Verdict, verifie sur
+chacune : **aucune ne porte de sous-page « /Events and Timers »**.
+
+Sur **705 composants captures, une seule en a une** — la gemme amalgamee. Ce
+n'est donc pas un patron du wiki qu'il faudrait suivre ressource par ressource :
+c'est une page unique, faite pour celle-la. La question posee le 01/10 est
+close, et la reponse est « il n'y en a pas d'autres a demander ».
+
+### Ce que le lot a apporte par ailleurs
+
+Zero apiId a poser — les quinze etaient deja identifiees. Un composant
+decompose, trois aretes, puis `pile_of_foul_essence` pose au palier suivant.
+Relecture a **0 manquant**, file a **1 URL**.
+
+### Un avertissement d'Antoine qui evite un faux diagnostic
+
+Trois des quinze pages n'ont **aucun `data-sort-value`** —
+`antique_summoning_stone`, `bottle_of_airship_oil`, `fresh_winterberry` : leur
+acquisition est decrite en texte, pas en table chiffree. Le parseur de couts
+vendeur ne rendra donc rien sur elles, et ce n'est pas une panne. Sans cette
+precision, le `couts_vendeur: []` aurait ete lu comme un defaut d'extraction —
+exactement la confusion « absence de donnee / absence d'information » qui a
+coute quatre passes cette semaine.
+
+## CH — 02/10/2026 : les 19 métas muettes, réglées par la source, pas par le croisement
+
+Le croisement par coffre plafonnait a 10 metas sur 29 et m'a fait publier deux
+listes fausses. **La bonne source etait unique et deja au depot** :
+`Amalgamated Gemstone/Events and Timers`.
+
+`gw2_rewards_metas_v1.py` l'exploite, avec la confrontation que la regle du
+01/10 impose : un nom retenu doit figurer **dans la sous-page ET dans le
+widget**. Les 104 titres que la sous-page cite sans que le widget les connaisse
+— liens de navigation, objets, phrases — tombent d'eux-memes. C'est le filtre
+qui manquait a mes deux listes.
+
+**Seize cartes retenues**, exactement celles qu'Antoine avait recopiees, Domain
+of Vabbi compris :
+
+> Verdant Brink · Auric Basin · Tangled Depths · Dragon's Stand · Crystal Oasis ·
+> Elon Riverlands · The Desolation · Domain of Vabbi · Seitung Province ·
+> New Kaineng City · The Echovald Wilds · Dragon's End · Skywatch Archipelago ·
+> Amnytas · Bava Nisos · Convergence
+
+### Une exception assumee
+
+Les evenements **sans timer** — Gyala Delve, Inner Nayos — ne peuvent pas etre
+confirmes par le widget : par definition il ne liste que ce qui a un horaire.
+Exiger cette confirmation reviendrait a demander une preuve que la nature du cas
+interdit. Leur seconde source est notre propre base, qui les porte en metas
+conditionnelles (`offsetUTC: null`). `gy`, `in` et `zak` sont rattaches par leur
+carte, avec un `rewards_ref` qui dit « section Events (sans timer) ».
+
+### Resultat
+
+**25 metas sur 29 rendent une gemme**, chacune avec son `rewards_ref`.
+Cinq ajouts — `obs_sw`, `obs_am`, `obs_conv_mb`, `obs_conv_on`, `titanic` — et
+**zero retrait** : aucune des vingt d'origine n'etait mal taguee. Mon soupcon
+sur `de` (Junundu Rising) etait infonde, et je l'avais presente comme confirmant
+celui d'Antoine.
+
+Les quatre sans gemme : `di` Palawadan, et les trois VoE `hammerhart`, `weald`,
+`shackles`. L'exclusion VoE d'Antoine etait donc juste **sauf pour les
+Convergences**, qui en rendent.
+
+### Ce que ca ne couvre pas
+
+La sous-page n'existe que pour la gemme. Pour les 26 autres ressources a
+recompense de meta, il n'y a pas d'equivalent — verifie sur les 705 captures.
+Leur tagage demandera une autre methode, et le croisement par coffre reste
+disponible pour ca, avec ses limites connues.
+
+## CI — 02/10/2026 : les autres ressources, et la moitié du filtre d'extensions
+
+### Les 26 autres ressources — 14 rattachements, 12 composants
+
+La sous-page n'existe que pour la gemme. Pour les autres, la seule trace est la
+mention « <Carte>: Hero's Choice Chest » dans leur section d'acquisition. Les
+deux memes filtres qu'ailleurs, et pour les memes raisons : **majuscule en
+tete** — sans quoi une phrase sur les plafonds partages rend « and Castora » —
+et **la carte doit exister dans le widget**, qui sert de seconde source.
+
+Douze composants passent les deux filtres, pour **14 rattachements** : trade
+contract sur quatre cartes PoF, chunk of pure jade sur deux cartes EoD, pouch of
+stardust, case of captured lightning, chak egg, reclaimed metal plate, antique
+summoning stone, chunk of ancient ambergris. Chacun avec son `rewards_refs`
+nommant la page et la carte.
+
+**25 metas sur 29 portent desormais au moins une ressource** ; treize en
+portent deux ou trois. Les quatre sans sont `di` Palawadan et les trois VoE.
+
+### Le filtre d'extensions — la moitié qui est de l'ordre du fait
+
+**`categorie` et `acces` poses sur 26 metas**, depuis le champ `category` du
+widget : quatre HoT, quatre PoF, quatre EoD, quatre SotO, trois VoE, deux
+Janthir, une LW4, et le reste.
+
+La traduction en condition d'acces est directe quand la categorie est une
+extension — `HeartOfThorns`, `PathOfFire`, `EndOfDragons`,
+`SecretsOfTheObscure`, `JanthirWilds`, `VisionsOfEternity` sont exactement les
+valeurs que `/v2/account.access` rend.
+
+**Quatre entrees sont marquees `a_preciser`** : les instances publiques. Leur
+condition depend de la convergence — Mount Balrior tient de Janthir, Outer Nayos
+de SotO, Nexus of Eternity de VoE — et la categorie du widget ne les distingue
+pas. Les trancher au jugé serait filtrer sur une supposition.
+
+Trois metas restent sans categorie : `gy`, `in`, `zak`, les conditionnelles sans
+horaire, que le widget ne porte pas.
+
+### `access` est lu et conserve, rien ne le consomme encore
+
+Le JSX lit `access` dans `/v2/account` — l'appel existait deja, `commander` en
+vient — et le persiste. **Aucun affichage ne s'en sert** : le filtre n'est pas
+ecrit. Il est conserve quand meme, parce qu'une synchro qui passe sans rien
+garder oblige a en relancer une pour une donnee qu'on avait deja eue.
+
+### Ce qui reste, et pourquoi je m'arrête là
+
+Le filtre lui-meme — masquer les metas dont l'extension manque — touche
+l'affichage. Les cases a cocher des episodes de Living World aussi : nouveau
+sous-menu, nouvel etat persistant, et un defaut « tout decoche » a assumer. Ce
+sont des choix d'interface, et les faire de nuit sans retour d'Antoine
+produirait un ecran qu'il faudrait defaire.
+
+## CJ — 02/10/2026 : les convergences pérennisées, et une règle que je venais d'enfreindre
+
+### Les convergences
+
+Antoine confirme ce que j'avais avance sans le poser : **chaque convergence
+s'ouvre depuis une carte d'extension**, donc pas d'acces sans elle. Mount
+Balrior tient de Janthir Wilds, Outer Nayos de Secrets of the Obscure, Nexus of
+Eternity de Visions of Eternity.
+
+Il demande que ce soit **perenne**. La reponse tient en une table,
+`CONVERGENCES`, dans `gw2_acces_metas_v1.py`, avec sa source : le widget range
+toutes les instances publiques sous « Public Instances » sans distinguer
+l'extension, et c'est cette table qui comble le trou. Relancer le script la
+reapplique ; une quatrieme convergence ajoutee au jeu ressortirait
+`a_preciser` jusqu'a ce qu'on l'y inscrive. **Zero `a_preciser` aujourd'hui.**
+
+### La règle que je venais d'enfreindre
+
+Les champs `categorie` et `acces` avaient ete poses hier soir par **une commande
+jetable** — la classe exacte d'operation que je m'etais interdite le 01/10, deux
+entrees plus haut dans ce meme fichier. Ils n'etaient ni reproductibles ni
+relisibles : si les convergences avaient ete corrigees a la main par-dessus, la
+correction aurait ete perdue au prochain passage.
+
+`gw2_acces_metas_v1.py` les **remplace et les regenere**. C'est aussi ce qui rend
+la correction des convergences perenne : sans script, il n'y avait rien ou la
+poser.
+
+Et l'audit l'a rappele au passage : la provenance d'un `acces` sourcé exige
+`verified` et `checked`. Ajoutes **dans le script**, pas a la main sur le
+fichier produit — sinon la regeneration suivante les aurait perdus.
+
+### Ce qui reste sans condition
+
+`gy`, `in`, `zak` : les metas conditionnelles, sans horaire, que le widget ne
+porte pas. Leurs cartes sont connues — Gyala Delve, Inner Nayos — mais rien au
+depot ne dit leur extension. Pas devine.
+
+`di` Palawadan est la **seule meta Living World** du catalogue (LW4). Toutes les
+autres metas a horaire dependent d'une extension, que `access` sait dire.
+
+## CK — 02/10/2026 : les étapes de collection consomment, et personne ne le compte
+
+Question d'Antoine : « si une etape active demande encore des ressources de
+carte, est-ce qu'elles sont prises en compte ? » **Non.**
+
+Une etape de collection porte son mode d'obtention en **texte libre** (`how`).
+Sept seulement portent un `component`, et il sert a l'inverse : rendre un
+composant inutile une fois l'etape validee. Rien, nulle part, ne dit qu'une
+etape non faite **consomme** des materiaux.
+
+### L'exemple le plus net : les miroirs de Vision
+
+`vis_astral_purif` — **sept** miroirs, chacun « Bring 10 Orichalcum Ingots, 10
+Powdered Rose Quartz, 5 Glob of Ectoplasm and 3 <type> Lodestones ». Soit, pour
+la collection : **70 lingots d'orichalque, 70 poudres de quartz rose, 35
+ectoplasmes, 21 magnetites** de sept sortes. Aucun n'est dans le total de
+Vision. (J'avais d'abord ecrit « huit » de memoire ; le controle en compte sept
+— corrige avant publication.)
+
+Meme famille cote Aurora : les bouquets de Draconis Mons demandent des Fire
+Orchid Blossoms et des magnetites par dizaines, a des etapes que l'arbre ne voit
+pas.
+
+### Le contrôle, et ce qu'il ne faut PAS lui faire dire
+
+`gw2_couts_etapes_v1.py` repere les etapes sans `component` dont le texte cite
+une quantite d'une ressource de l'arbre : **114 etapes**.
+
+**Son cumul n'est pas un manque a additionner.** Il est gonfle par les etapes
+qui DECRIVENT la recette d'un objet deja compte ailleurs — d'ou « 2 400
+obsidian shards » ou « 10 000 tales of dungeon delving », qui sont les recettes
+des dons gen1, deja dans l'arbre. Il signale, la lecture tranche, et c'est ecrit
+en tete du script. J'ai failli publier ce cumul comme un trou.
+
+Il sous-compte aussi : « 10 Fire Orchids » ne correspond pas au nom
+« Fire Orchid Blossom ». Une premiere version, qui capturait « nombre + mots »,
+s'arretait au premier mot et ne trouvait rien du tout.
+
+### La correction a faire — décision de structure, non prise
+
+Il faut a l'etape un champ symetrique de `component` : `cost`, une table
+`{composant: quantite}` que le moteur compte **tant que l'etape n'est pas
+validee**, et qui disparait quand elle l'est. Ca change des totaux partout ou des
+etapes coutent, et la regle de satisfaction existante doit etre etendue des deux
+cotes (direct et Flask). A instruire avec Antoine.
+
+## CL — 02/10/2026 : `cost`, le sens direct que `component` ne portait pas
+
+Antoine a donne son accord. Une etape de collection porte desormais, quand elle
+consomme des materiaux, un champ **`cost`** : `{composant: quantite}`, compte
+**tant que l'etape n'est pas validee**, et qui tombe a la validation.
+
+C'est le symetrique exact de `component`. L'un dit « cette etape faite rend ce
+composant inutile », l'autre « cette etape non faite reclame ces materiaux ».
+
+### Dans les deux moteurs, au même endroit
+
+JSX v239 et `gw2_moteur_v3.py` posent la regle **apres les choix, avant la
+cascade** : un lingot d'orichalque apporte a un miroir se developpe ensuite en
+minerai comme n'importe quel autre besoin. Sans statut connu, l'etape est
+reputee non faite — compter trop vaut mieux que promettre un total trop bas.
+Le test de conformite compare les deux : **aucun ecart**, coûts reels compris.
+
+### Ce qui est posé, et seulement ça
+
+`gw2_pose_couts_etapes_v1.py` ne retient qu'une forme de texte : celle ou
+l'etape **apporte** quelque chose (« Bring … »). Les recettes decrites — « Created
+by a master craftsman with 100 Crystalline Ingots » — ne sont pas des
+consommations, et c'est ce qui gonflait le cumul du controle a 2 400 obsidian
+shards. Un nom doit correspondre exactement a un composant.
+
+**21 etapes chiffrees** :
+
+- les **sept miroirs** de `vis_astral_purif` : 10 orichalque, 10 quartz rose,
+  5 ectoplasmes, 3 magnetites chacun ;
+- **quatorze etapes d'Aurora** : fleurs, bouquets et bouquets charges des
+  druides de Draconis Mons, la Druid Runestone, le Vision Crystal.
+
+Effet mesure : Vision **3 000 -> 3 070** poudres de quartz rose, Aurora
+**250 -> 286** Fire Orchid Blossoms. Les cartes du JSX suivent, avec un `aside`
+qui dit d'ou viennent les nombres.
+
+### Ce qui reste, non posé à moitié
+
+Quatre bouquets d'Aurora disent « Bring 10 **Fire Orchids** and 5 Charged
+Lodestones ». « Fire Orchids » n'est pas le nom du composant, « Fire Orchid
+Blossom ». C'est vraisemblablement le meme objet — les etapes soeurs disent
+« Blossoms » — mais **un texte qui ne se resout pas entierement n'est pas pose
+a moitie** : il aurait compte les magnetites et oublie les fleurs. Listees, a
+trancher. Soit 40 fleurs et 20 magnetites encore hors du total.
+
+### Et une asymétrie de ma main, attrapée par le test
+
+Le test de symetrie des synchros a refuse le passage : `_access`, ajoute hier
+soir au chemin direct, n'existait pas cote Flask. Avec le serveur allume, le
+filtre d'extensions n'aurait rien recu. `gw2_flask_server_v46.py` le pose aussi.
+J'avais lance ce test hier — il est passe parce que je l'avais lance avant
+d'ajouter le champ, pas apres.
+
+## CM — 02/10/2026 : les fleurs assimilées, les accès complets, et les ressources enfin visibles
+
+### Fire Orchids = Fire Orchid Blossom
+
+Antoine confirme que c'est le meme objet, nomme autrement. `gw2_pose_couts_etapes_v2`
+porte une table `SYNONYMES`, chaque entree disant qui l'a confirmee : un synonyme
+ne se devine pas. Les quatre bouquets d'orage se posent entierement — 10 fleurs
+et 5 magnetites chacun. Aurora : **286 -> 326** Fire Orchid Blossoms.
+
+### Les trois métas sans timer ont leur accès
+
+`gw2_acces_metas_v2` porte une table `SANS_TIMER`, lue par la carte puisque le
+widget ignore ces metas : **Gyala Delve -> End of Dragons**, **Inner Nayos ->
+Secrets of the Obscure**. La seconde est notee « il me semble » par Antoine, et
+la nuance est gardee : `verified: false`, reference qui le dit. On sait ainsi a
+quelle confiance on filtrera. **29 metas sur 29 ont desormais une condition
+d'acces.**
+
+### Ce qu'une méta rend, sur sa carte
+
+Chaque carte de meta de l'onglet Activites affiche sous son nom **les ressources
+qu'elle rend**, avec le besoin restant pour la legendaire affichee :
+
+- ★ et liseré dore : **prioritaire** — toutes les voies renouvelables de la
+  ressource sont des metas, sauter la meta c'est payer la forge ;
+- besoin a zero : la ressource reste affichee, **estompee**. La masquer ferait
+  croire que la meta ne rend rien ;
+- tri : ce qui sert encore passe devant, la priorite ensuite.
+
+Teste sur les vraies donnees : Verdant Brink rend une gemme ★ et une Reclaimed
+Metal Plate ★, Casino Blitz une gemme ★ et un Trade Contract non prioritaire
+(il a une source vendeur), Palawadan rien. Textes passes par les cles i18n du
+projet, pas en dur.
+
+Rien n'est encore masque ni filtre : c'est l'affichage, pas le tri. Le filtre
+par extension s'ajoutera par-dessus quand le menu existera.
+
+## CN — 03/10/2026 : le filtre d'accès, et pourquoi le catalogue attend
+
+### Le panneau « Accès au contenu »
+
+En tete de l'onglet Activites, un bouton ⚙ ouvre le panneau convenu le 02/10 :
+
+- **Extensions** : lues sur le compte (`/v2/account.access`) quand l'API a
+  repondu — affichees, non modifiables. Sinon modifiables a la main, avec la
+  mention de la provenance. Si l'API repond apres une saisie manuelle, elle
+  l'emporte et l'ecart est affiche.
+- **Living World** : par saison, toujours a la main (l'API ne l'expose pas),
+  defaut decoche, bouton « Je possede toutes les saisons ».
+- Les deux listes se **derivent du catalogue** (`meta_events[*].acces`) : aucune
+  extension ni saison ecrite a la main dans le JSX. Aujourd'hui : six
+  extensions, une saison (LW4, pour Palawadan).
+
+**Inconnu n'est pas « non possede ».** Sans API et sans aucune declaration, les
+extensions ne filtrent rien — sinon un premier lancement masquerait tout le
+contenu d'extension. Une meta sans `acces` (les 12 fermes `isTimeless`,
+`bf_meta`) n'est jamais masquee.
+
+Le filtre est pose au point d'entree des calculs (`allTimedMetas`,
+`timelessMetas`) : le chainage `getBestNext` et la liste « a venir » en heritent,
+donc une meta masquee ne reapparait pas comme « suivante ». Le nombre de metas
+masquees est affiche, leurs noms en infobulle.
+
+Non fait : le depliage **par episode** — aucune capture au depot ne liste les
+episodes, et aucune donnee ne porte une condition plus fine que la saison.
+
+### Le catalogue : la mesure contredit « 0 desaccord »
+
+Avant de remplacer les 20 tableaux `metas:` du JSX, confrontation champ par
+champ des 26 entrees communes. Le JSX en porte **39** (une par cle, aucun
+doublon entre legendaires) : 26 au catalogue, `bf_meta`, 12 fermes sans horaire.
+
+La confrontation des horaires disait zero ecart ; elle ne regardait que les
+horaires appaires au widget. Champ par champ :
+
+| champ | ecarts | nature |
+|---|---:|---|
+| `name` / `subname` | 18 / 21 | conventions inversees, et le `subname` des sources est un LIEU (« Wyvern Matriarch », « Grand Sahil Casino », « 4 lanes ») |
+| `tip` | 17 | deux redactions du meme conseil |
+| `next` | 17 | forme (chaine contre liste) ; une vraie divergence : `nk` -> `ew` cote sources, rien cote JSX |
+| `durationMin` | 1 | `shackles` : JSX 50, sources **25** (widget) — l'ecran affiche faux |
+| `wpCode` | 1 | `ew` : JSX `[&BLsNAAA=]`, sources `[&BNMMAAA=]` |
+
+La fusion n'est donc pas mecanique : elle choisit des valeurs affichees. En
+attente d'arbitrage.
+
+## CO — 03/10/2026 : le catalogue des métas est la seule table
+
+Arbitrages d'Antoine du 03/10 : `map` + `name`, conseils des sources, `wpCode`
+de `ew` au backlog, `shackles` a 25. `gw2_fusion_catalogue_metas_v1.py` fait la
+passe ; le JSX v242 ne declare plus que des cles (`metas: ["vb", "td", …]`), et
+`metaDuCatalogue()` donne au rendu son titre (`map`) et son sous-titre (`name`).
+
+**Six metas avaient deux cles**, une par legendaire : `obs_sw`/`sw`,
+`obs_am`/`am`, `obs_conv_mb`/`mb`, `obs_conv_on`/`conv`, `titanic`/`bn`,
+`obs_spider`/`zak`. Horaires identiques, verifies avant fusion ; la canonique
+garde son texte (plus complet) et ses champs, la copie comble ses trous.
+**36 metas** au catalogue : 24 a horaire, 12 sans (`isTimeless`).
+
+### Ce qui change a l'ecran (76 champs, mesures par `metaDuCatalogue`)
+
+- titres/sous-titres harmonises — les convergences s'affichent sous leur carte
+  d'entree (La Tour du sorcier, Lowland Shore) ;
+- `shackles` : fenetre 50 -> **25**, et 50 passe en temps de jeu ;
+- temps de jeu affiche la ou le catalogue en portait (Palawadan, convergences,
+  Weald) ;
+- copies des onglets Obsidienne et Orrax alignees sur la canonique :
+  Titanic Voyage efficience B -> A, population LFG -> bon ; convergences avec
+  leur vrai point de passage et code au lieu d'un code vide ;
+- les trois entrees d'Ad Infinitum et Mistburned sans carte : le rendement
+  (« ~3 pages/jour ») rejoint le nom.
+
+### Retire, a restituer si besoin
+
+- `ew.wpCode` = `[&BNMMAAA=]` (sources). **Indice** : c'est exactement le code
+  de `gy`, Gyala Delve — probablement une copie, ce qui donnerait raison au JSX.
+- `zak` : `Citadel of Zakiros Waypoint` / `[&BHMMAAA=]` (sources) ; garde la
+  valeur affichee de l'onglet Obsidienne, `[&BHYOAAA=]`. A verifier en jeu.
+- `nk.next` = `["ew"]`, `nextDelayMin` 40 — en attente d'Antoine.
+
+### Transversal
+
+- **Confrontation des horaires v4** : un seul appariement (`main()` en portait
+  une copie), plus de section JSX, plus de `subname`. `er` epingle sur son
+  segment, son nom anglais etant devenu « Doppelganger ». **21 accords, 0 ecart,
+  0 duree contredite** ; 3 sans segment (`bf_meta`, `gy`, `in`), 12 sans horaire.
+- `gw2_acces_metas_v3`, `gw2_rewards_metas_v3`, `gw2_metas_ressources_v2` : chemin
+  de la confrontation et `subname` retires. Relances a blanc : **aucun
+  changement** des acces ni des recompenses.
+- **Audit v57** : `check_catalogue_metas` (cle citee absente, `subname`,
+  decalage hors intervalle, horaire sur une ferme, `next`/`rewards` inconnus) —
+  teste en negatif. Et `meta_events` rejoint les familles de la regle des
+  plafonds en prose : les conseils des fermes, invisibles a l'audit tant qu'ils
+  vivaient dans le JSX, sont lus. Elle a sorti quatre cas :
+  - `lw4_istan`, `lw4_dragonfall` : « 50 noeuds/compte/jour », deja structure
+    sur `volatile_magic` et `mistborn_mote` -> `cadence_ref` ;
+  - `eb`, `dm`, `ld` : « vendeur 5/jour/perso », structure **nulle part**. Le
+    poser sur le composant changerait les delais projetes sans source : remonte
+    en cadence sur la ferme, ou aucun calcul ne le lit, `verified: false`.
+    A trancher.
+- 80 avertissements contre 68 : les 12 nouveaux sont « horaire sans `ref` »
+  (vb, td, ab…) — vrais, ces horaires sont confirmes par la confrontation mais
+  ne citent pas leur source.
+
+## CP — 03/10/2026 : vendeurs de cœur LW3, et conseils contre champs
+
+Antoine confirme le mecanisme : ballots de la ressource de la carte, coeur
+fini, par personnage. Le wiki donne les nombres — et le « 5/jour/perso » des
+conseils etait faux : 5 etait le nombre de vendeurs d'Ember Bay.
+
+| carte | coeurs | ballot | par perso et par jour | source |
+|---|---:|---:|---:|---|
+| Ember Bay | 5 | 3 Petrified Wood | 15 | wiki:Ember_Bay |
+| Draconis Mons | 4 | 3 Fire Orchid Blossom | 12 | wiki:Draconis_Mons, Tactician_Tunelle |
+| Lake Doric | 6 | 3 Jade Shard | 18 | wiki:Bundle_of_Jade_Shards |
+
+Ces sources rejoignent la cadence des composants (`per_character`, format de
+la kralkatite) : **les delais projetes changent**, sur un personnage. La
+cadence provisoire des fermes disparait (`cadence_ref`). Le wiki corrige aussi
+les conseils : « Seimur Oxbone » est le sous-chef de Grawnk Munch, Ember Bay ne
+vend pas de Fire Orchid, « Savage Rise » est a Draconis Mons. Les trois fermes
+passent en `per_char_hearts`.
+
+### Coherence conseils / champs
+
+Nouveau controle `gw2_coherence_conseils_metas_v1` (horaire, chainage, acces,
+ressource, priorite). Premiere passe : **9 constats**, horaires et chainages
+tous coherents. Tous des ressources nommees dans le texte et absentes de
+`rewards` — la puce de priorite ne pouvait pas les voir :
+
+- fermes LW3, Istan (Magie volatile, et la kralkatite des trois coeurs),
+  Dragonfall : ajoutees, chacune avec sa source ;
+- Hammerhart, Weald : monnaies de carte de Castora, la capture dit « par les
+  evenements de la carte » ;
+- reste 1 : Petrified Wood a Draconis Mons, que le wiki ne confirme pas.
+
+`co` disait « priorite absolue » en dur ; la priorite affichee se calcule sur
+ce qu'il reste a farmer. Retire, l'efficience S porte deja l'information.
+`nk -> ew` restitue.
+
+Transversal : les fermes declarant maintenant leur ressource, leurs cartes
+affichent les puces. Le rendu des puces devient un composant unique
+(`PucesRessources`), utilise par les deux cartes, et le nom passe par `NX`
+(il s'affichait en anglais cote francais). rewards_metas et acces_metas
+relances a blanc : rien a changer.
+
+## CQ — 03/10/2026 : un champ mort, une provenance en double
+
+Accord d'Antoine sur les deux.
+
+- **`nextDelayMin` supprime** des 21 metas qui le portaient
+  (`gw2_purge_next_delay_v1`). Rien ne le lisait depuis la fusion ; `nk` en
+  portait deja un faux (40 min pour un ecart de 60).
+- **`rewards_ref` fondu dans `rewards_refs`** : la provenance de la gemme
+  amalgamee devient `rewards_refs["amalgamated_gemstone"]`, comme celle de
+  toute autre recompense. Fait par `gw2_rewards_metas_v4`, qui l'ecrit
+  desormais la ; verifie sans perte (chaque ancienne reference retrouvee mot
+  pour mot, aucune recompense modifiee, rien hors `meta_events` n'a bouge).
+- Toutes les recompenses du catalogue ont maintenant une provenance : l'audit
+  **v58** en fait une erreur, et refuse le retour des deux champs. Teste en
+  negatif sur les trois regles.
+- `gw2_vendeurs_coeurs_lw3_v2` ne pose plus `nextDelayMin`.
+
+## CR — 03/10/2026 : accès des fermes, références d'horaire, points de passage
+
+**Accès des fermes** (`gw2_acces_metas_v4`). Les fermes `isTimeless` n'avaient
+aucune condition : le filtre Living World ne masquait que Palawadan. Leur
+condition se lit sur la page de leur carte (« zone available via Living World
+Season N episode … »), relue sur le wiki le 03/10 :
+
+- LW3 : Ember Bay, Bitterfrost Frontier, Lake Doric, Draconis Mons, Siren's Landing ;
+- LW4 : Domain of Istan, Dragonfall ;
+- Janthir Wilds : Mistburned Barrens (zone de l'extension, mise a jour Repentance).
+
+Le panneau d'acces derive maintenant **LW3 et LW4**. Les trois entrees
+d'Ad Infinitum (fractales) restent sans condition : contenu de base.
+
+**`bf_meta` exclue volontairement.** Elle est rangee a Bitterfrost Frontier,
+mais son horaire vient de la page « The Frozen Maw » — boss de monde de
+Wayfarer Foothills, contenu de base (DETTE § BZ). La carte et la source se
+contredisent : la marquer LW3 la masquerait peut-etre a tort. A trancher par
+Antoine.
+
+**References d'horaire** (`gw2_refs_horaires_v1`). Les 11 metas en accord avec
+le widget citent maintenant leur segment, avec `checked` et `verified` : 80 -> 69
+avertissements. Seule `bf_meta` reste sans reference (pas de segment).
+
+**Points de passage** (`gw2_coherence_conseils_metas_v2`, regle W : un meme code
+sur deux cartes). Trois metas partagent `[&BNMMAAA=]` (Seitung Province,
+Dragon's End, Gyala Delve) — le code que portait deja `ew` a tort ; `am` et `in`
+partagent `[&BDQOAAA=]` (Amnytas, Inner Nayos). Au moins quatre de ces cinq codes
+sont faux. Le wiki n'expose pas les codes de lien dans son texte (rendus par
+script) : verification en jeu necessaire. Le nom aussi : le wiki dit
+« Monastery Waypoint », pas « Shing Jea Monastery Waypoint ».

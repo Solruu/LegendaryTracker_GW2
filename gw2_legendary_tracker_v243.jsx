@@ -137,6 +137,23 @@ const I18N = {
     farm_perchar: "×char",
     farm_perchar_hearts: "×char (hearts required)",
     farm_account: "×account",
+    meta_res_need: "{n} still needed for this legendary",
+    meta_res_done: "No longer needed for this legendary",
+    acces_titre: "Content access",
+    acces_masquees: "{n} meta(s) hidden — content not owned",
+    acces_extensions: "Expansions",
+    acces_source_api: "read from the account (API), read-only",
+    acces_source_manuel: "declared by hand",
+    acces_source_inconnu: "unknown: sync, or tick what you own — nothing is hidden until then",
+    acces_ecart_api: "The API overrode your manual declaration for: {liste}",
+    acces_lw: "Living World",
+    acces_lw_tout: "I own every season",
+    acces_ext_HeartOfThorns: "Heart of Thorns",
+    acces_ext_PathOfFire: "Path of Fire",
+    acces_ext_EndOfDragons: "End of Dragons",
+    acces_ext_SecretsOfTheObscure: "Secrets of the Obscure",
+    acces_ext_JanthirWilds: "Janthir Wilds",
+    acces_ext_VisionsOfEternity: "Visions of Eternity",
     next_meta: "→ Next: {meta} ({sub}) at {time}",
     btn_done: "Done",
     btn_done_checked: "✓ Done",
@@ -359,6 +376,23 @@ const I18N = {
     farm_perchar: "×perso",
     farm_perchar_hearts: "×perso (hearts requis)",
     farm_account: "×compte",
+    meta_res_need: "Encore {n} pour cette légendaire",
+    meta_res_done: "Plus nécessaire pour cette légendaire",
+    acces_titre: "Accès au contenu",
+    acces_masquees: "{n} méta(s) masquée(s) — contenu non possédé",
+    acces_extensions: "Extensions",
+    acces_source_api: "lu sur le compte (API), non modifiable",
+    acces_source_manuel: "déclaré à la main",
+    acces_source_inconnu: "inconnues : synchronise, ou coche ce que tu possèdes — rien n'est masqué d'ici là",
+    acces_ecart_api: "L'API a remplacé ta déclaration manuelle pour : {liste}",
+    acces_lw: "Living World",
+    acces_lw_tout: "Je possède toutes les saisons",
+    acces_ext_HeartOfThorns: "Heart of Thorns",
+    acces_ext_PathOfFire: "Path of Fire",
+    acces_ext_EndOfDragons: "End of Dragons",
+    acces_ext_SecretsOfTheObscure: "Secrets of the Obscure",
+    acces_ext_JanthirWilds: "Janthir Wilds",
+    acces_ext_VisionsOfEternity: "Visions of Eternity",
     next_meta: "→ Ensuite : {meta} ({sub}) à {time}",
     btn_done: "Fait",
     btn_done_checked: "✓ Fait",
@@ -937,8 +971,8 @@ const LEGENDARIES = {
       // le moteur calcule ; check_qty_vs_jsx refuse desormais toute divergence.
       { id: "kralkatite", name: "Kralkatite Ore", required: 3100, icon: "KO", apiId: 86069, mapNote: "Domain of Istan",
         aside: { fr: "Le gros du budget : 300 lingots pour les six armes Astral (10 minerais chacun) plus 100 pour le Gift of Crystalline Magic. Nœuds, événements et métas d'Istan.", en: "The bulk of the budget: 300 ingots for the six Astral weapons (10 ore each) plus 100 for the Gift of Crystalline Magic. Istan nodes, events and metas." } },
-      { id: "rose_quartz", name: "Powdered Rose Quartz", required: 3000, icon: "RQ", apiId: 86269, mapNote: "Domain of Istan",
-        aside: { fr: "Autant que le minerai : 10 par lingot de kralkatite. Récolte sur les Brandstones, instance personnelle comprise.", en: "As much as the ore: 10 per Kralkatite Ingot. Harvested from Brandstones, personal instance included." } },
+      { id: "rose_quartz", name: "Powdered Rose Quartz", required: 3070, icon: "RQ", apiId: 86269, mapNote: "Domain of Istan",
+        aside: { fr: "3 000 pour les lingots de kralkatite (10 par lingot), et 70 apportés aux sept miroirs d'Astral Purification — 10 chacun, comptés tant que le miroir n'est pas fait.", en: "3,000 for the Kralkatite Ingots (10 per ingot), plus 70 brought to the seven Astral Purification mirrors — 10 each, counted until the mirror is done." } },
       { id: "branded_mass", name: "Branded Mass", required: 460, icon: "BM", apiId: 89537, mapNote: "Thunderhead Peaks",
         aside: { fr: "360 pour les six armes de sang de dragon (60 chacune), 100 pour le Gift of Ephemeral Magic.", en: "360 for the six Dragonsblood weapons (60 each), 100 for the Gift of Ephemeral Magic." } },
       { id: "inscribed_shard", name: "Inscribed Shard", required: 300, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna",
@@ -957,135 +991,7 @@ const LEGENDARIES = {
                  en: "The same six weapon recipes: 30 laurels in total, once per account." } },
     ],
     raidTabLabel: { fr: "🔭 Visions of…", en: "🔭 Visions of…" },
-    metas: [
-      { id: "vb", name: { fr: "Orée d'émeraude", en: "Verdant Brink" }, subname: { fr: "La nuit et l'ennemi", en: "Night and the Enemy" }, expansion: "HoT", icon: "VB",
-        offsetUTC: 105, intervalMin: 120, durationMin: 25, playtimeMin: 15,
-        efficience: "A", population: "LFG", next: "td", nextDelayMin: 45,
-        waypoint: "Pact Encampment Waypoint", wpCode: "[&BAgIAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Prendre le Pact Chopper → Wyvern Matriarch uniquement. Coffre : hard-reset à 01h (reset fixe, pas de timer 24h tournant).", en: "Take the Pact Chopper → Wyvern Matriarch only. Chest: hard-reset at 01h (fixed reset, no rolling 24h timer)." } },
-      { id: "td", name: { fr: "Profondeurs verdoyantes", en: "Tangled Depths" }, subname: { fr: "Roi de la jungle", en: "Chak Gerent" }, expansion: "HoT", icon: "TD",
-        offsetUTC: 30, intervalMin: 120, durationMin: 20,
-        efficience: "A", population: "LFG", next: "ab", nextDelayMin: 15,
-        waypoint: "Ley-Line Confluence Waypoint", wpCode: "[&BPUHAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Hub central des 4 lanes. Taxi LFG, arriver 20 min avant. Coffre : hard-reset à 01h.", en: "Central hub of the 4 lanes. LFG taxi, arrive 20 min early. Chest: hard-reset at 01h." } },
-      { id: "ab", name: { fr: "Bassin aurique", en: "Auric Basin" }, subname: { fr: "Bataille de Tarir", en: "Octovine" }, expansion: "HoT", icon: "AB",
-        offsetUTC: 60, intervalMin: 120, durationMin: 20,
-        efficience: "A", population: "LFG", next: "ds", nextDelayMin: 0,
-        waypoint: "Forgotten City Waypoint", wpCode: "[&BNcHAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "4 lanes simultanées, stack sur la lane la plus peuplée. Coffre : hard-reset à 01h.", en: "4 simultaneous lanes, stack on the most populated one. Chest: hard-reset at 01h." } },
-      { id: "ds", name: { fr: "Repli du dragon", en: "Dragon's Stand" }, subname: { fr: "Meta complète", en: "Full meta" }, expansion: "HoT", icon: "DS",
-        offsetUTC: 90, intervalMin: 120, durationMin: 120, playtimeMin: 60,
-        efficience: "B", population: "LFG", next: null, nextDelayMin: null,
-        waypoint: "Mordremoth's Bane Waypoint", wpCode: "[&BNMHAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Longue (~1h). Bonne source de drops en parallèle. Difficile d'enchaîner après.", en: "Long (~1h). Good source of drops in parallel. Hard to chain afterwards." } },
-      { id: "co", name: { fr: "Oasis de cristal", en: "Crystal Oasis" }, subname: { fr: "Casino express", en: "Casino Blitz" }, expansion: "PoF", icon: "CO",
-        offsetUTC: 5, intervalMin: 120, durationMin: 16, playtimeMin: 10,
-        efficience: "S", population: "moyen", next: "er", nextDelayMin: 39,
-        waypoint: "Amnoon Waypoint", wpCode: "[&BLIGAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.", en: "~10 min, do not miss the start. The most efficient of all — absolute priority." } },
-      { id: "er", name: { fr: "Rives de l'Elon", en: "Elon Riverlands" }, subname: { fr: "Le chemin de l'Ascension", en: "Doppelganger" }, expansion: "PoF", icon: "ER",
-        offsetUTC: 90, intervalMin: 120, durationMin: 25, playtimeMin: 15,
-        efficience: "A", population: "moyen", next: "de", nextDelayMin: 30,
-        waypoint: "Augury's Shadow Waypoint", wpCode: "[&BLIKAAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Faire les pré-events 'Disperse wild magic'. Coffre : hard-reset à 01h.", en: "Do the 'Disperse wild magic' pre-events. Chest: hard-reset at 01h." } },
-      { id: "de", name: { fr: "La Désolation", en: "The Desolation" }, subname: { fr: "Le soulèvement des junundus", en: "Junundu Rising" }, expansion: "PoF", icon: "DE",
-        offsetUTC: 90, intervalMin: 120, durationMin: 20,
-        efficience: "A", population: "moyen", next: "dv", nextDelayMin: 30,
-        waypoint: "Shattered Ravines Waypoint", wpCode: "[&BLMKAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Monture Junundu requise. Skimmer utile pour les zones de soufre. Coffre : hard-reset à 01h.", en: "Junundu mount required. Skimmer useful for sulfur areas. Chest: hard-reset at 01h." } },
-      { id: "dv", name: { fr: "Domaine de Vabbi", en: "Domain of Vabbi" }, subname: { fr: "Forgé par le feu", en: "Forged with Fire" }, expansion: "PoF", icon: "FW",
-        offsetUTC: 60, intervalMin: 120, durationMin: 30, playtimeMin: 20,
-        efficience: "A", population: "moyen", next: "co", nextDelayMin: 21,
-        waypoint: "Vehjin Palace Waypoint", wpCode: "[&BA8KAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "La meta PoF la plus simple, peu de coordination requise. Coffre : hard-reset à 01h.", en: "Easiest PoF meta, little coordination required. Chest: hard-reset at 01h." } },
-      { id: "di", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: "Palawadan", expansion: "LW4", icon: "DI",
-        offsetUTC: 105, intervalMin: 120, durationMin: 30,
-        efficience: "A", population: "LFG", next: null, nextDelayMin: null,
-        waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h.", en: "Very popular, easy LFG taxi. Chest: hard-reset at 01h." } },
-      { id: "sw", name: { fr: "Archipel de l'observatoire céleste", en: "Skywatch Archipelago" }, subname: { fr: "Déverrouiller la Tour du sorcier", en: "Unlocking the Wizard's Tower" }, expansion: "SotO", icon: "SW",
-        offsetUTC: 60, intervalMin: 120, durationMin: 25,
-        efficience: "A", population: "bon", next: "am", nextDelayMin: 60,
-        waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "1h après le reset. Monture volante requise. Bien peuplé.", en: "1h after reset. Flying mount required. Well-populated." } },
-      { id: "am", name: "Amnytas", subname: { fr: "La défense d'Amnytas", en: "Defense of Amnytas" }, expansion: "SotO", icon: "AM",
-        offsetUTC: 0, intervalMin: 120, durationMin: 25,
-        efficience: "A", population: "bon", next: "sw", nextDelayMin: 60,
-        waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Au reset. Bien peuplé. S'enchaîne avec Skywatch 60 min après.", en: "At reset. Well populated. Chains with Skywatch 60 min later." } },
-      { id: "sp", name: { fr: "Province de Seitung", en: "Seitung Province" }, subname: { fr: "Assaut étherlame", en: "Aetherblade Assault" }, expansion: "EoD", icon: "SP",
-        offsetUTC: 90, intervalMin: 120, durationMin: 30,
-        efficience: "B", population: "moyen", next: "ew", nextDelayMin: 10,
-        waypoint: "Shing Jea Monastery Waypoint", wpCode: "[&BNMMAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        timerNote: "Heures impaires uniquement : 01:30 / 03:30...",
-        tip: { fr: "Démarre à XX:30 heures impaires UTC. S'enchaîne naturellement avec Echovald.", en: "Starts at XX:30 odd hours UTC. Chains naturally with Echovald." } },
-      { id: "nk", name: { fr: "Néo-Kaineng", en: "New Kaineng City" }, subname: "Kaineng Blackout", expansion: "EoD", icon: "NK",
-        offsetUTC: 0, intervalMin: 120, durationMin: 40,
-        efficience: "C", population: "morte", next: null, nextDelayMin: null,
-        waypoint: "Lutgardis Conservatory Waypoint", wpCode: "[&BNQMAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        timerNote: "Heures paires : 00:00 / 02:00...",
-        tip: { fr: "⚠ Population quasi-inexistante hors Wizard's Vault. Opportuniste uniquement.", en: "⚠ Nearly nonexistent population outside Wizard's Vault. Opportunistic only." } },
-      { id: "ew", name: { fr: "Terres sauvages d'Echovald", en: "Echovald Wilds" }, subname: { fr: "La guerre des gangs d'Echovald", en: "Gang War" }, expansion: "EoD", icon: "EW",
-        offsetUTC: 100, intervalMin: 120, durationMin: 20, playtimeMin: 35,
-        efficience: "B", population: "moyen", next: null, nextDelayMin: null,
-        waypoint: "Arborstone Waypoint", wpCode: "[&BLsNAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        timerNote: "Heures paires : 01:40 / 03:40...",
-        tip: { fr: "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung.", en: "2 phases: Gang War then Junkyard. Chains from Seitung." } },
-      { id: "de2", name: { fr: "Trépas du dragon", en: "Dragon's End" }, subname: { fr: "La Bataille de la Mer de Jade", en: "Battle for Jade Sea" }, expansion: "EoD", icon: "DE2",
-        offsetUTC: 60, intervalMin: 120, durationMin: 60, playtimeMin: 45,
-        efficience: "C", population: "variable", next: null, nextDelayMin: null,
-        waypoint: "The Jade Flats Waypoint", wpCode: "[&BNMMAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        timerNote: "Heures impaires : 01:00 / 03:00...",
-        tip: { fr: "Prépa (14 min) → bataille (~30 min). Prépa ne garantit pas la bataille. Long + coordination + risque d'échec.", en: "Prep (14 min) → battle (~30 min). Prep does not guarantee the battle. Long + coordination + failure risk." } },
-      { id: "conv", name: { fr: "Convergence : Nayos extérieur", en: "Convergence Outer Nayos" }, subname: "Public Instance", expansion: "SotO", icon: "CV",
-        offsetUTC: 90, intervalMin: 180, durationMin: 10,
-        efficience: "S", population: "public", next: null, nextDelayMin: null,
-        waypoint: "Rift Hunter Lounge", wpCode: "[&BOgNAAA=]",
-        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
-        tip: { fr: "Toutes les 3h à XX:30 UTC. Fenêtre de 10 min. Portail dans Rift Hunter Lounge au Wizard's Tower.", en: "Every 3h at XX:30 UTC. 10 min window. Portal in the Rift Hunter Lounge at the Wizard's Tower." } },
-      { id: "mb", name: { fr: "Convergence : Mont Balrior", en: "Convergence Mount Balrior" }, subname: "Public Instance", expansion: "JW", icon: "MB",
-        offsetUTC: 0, intervalMin: 180, durationMin: 10, playtimeMin: 20,
-        efficience: "S", population: "public", next: "conv", nextDelayMin: 90,
-        waypoint: "Harvest Den Waypoint", wpCode: "[&BK4OAAA=]",
-        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
-        tip: { fr: "Toutes les 3h à XX:00 UTC. Fenêtre de 10 min. Portail dans Harvest Den, Lowland Shore. → Outer Nayos 90 min après.", en: "Every 3h at XX:00 UTC. 10 min window. Portal in Harvest Den, Lowland Shore. → Outer Nayos 90 min later." } },
-      { id: "bn", name: "Bava Nisos", subname: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, expansion: "JW", icon: "BN",
-        offsetUTC: 80, intervalMin: 120, durationMin: 25,
-        efficience: "A", population: "bon", next: null, nextDelayMin: null,
-        waypoint: "Mantle's Arrival Waypoint", wpCode: "[&BGEPAAA=]",
-        resetNote: { fr: "Commander's Choice Chest : hard-reset daily 01h UTC+1", en: "Commander's Choice Chest: daily hard-reset 01h UTC+1" },
-        tip: { fr: "Toutes les 2h à XX:20 UTC. Parler à Livia pour lancer. CC requis sur le boss.", en: "Every 2h at XX:20 UTC. Talk to Livia to start. CC required on the boss." } },
-      // ── Nodes LW4 — Vision (Volatile Magic + Mistborn Mote)
-      { id: "lw4_istan", name: { fr: "Domaine d'Istan", en: "Domain of Istan" }, subname: { fr: "Nodes de Brandstone + VM", en: "Brandstone nodes + VM" }, expansion: "LW4", icon: "OP",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Chalon Docks Waypoint", wpCode: "[&BAkLAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
-        vendor: { fr: "Traveling Elonian Trader (Chute draconique) — 5 Kralkatite/jour/compte contre VM", en: "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM" },
-        vendorWp: "Pact Command Waypoint [&BOAKAAA=] — Dragonfall",
-        tip: { fr: "Nodes de Brandstone → Volatile Magic. Soft-reset à 01h (attendre 5-15h après récolte). Cap 50 nodes/compte/jour. Vendeur Dragonfall : 5 Kralkatite/jour contre VM.", en: "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM." } },
-      { id: "lw4_dragonfall", name: { fr: "Chute draconique", en: "Dragonfall" }, subname: { fr: "Nodes de Mistborn Mote", en: "Mistborn Mote nodes" }, expansion: "LW4", icon: "DF",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Pact Command Waypoint", wpCode: "[&BOAKAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)" },
-        vendor: { fr: "Crystal Bloom Quartermaster — Mistborn Mote contre karma (Chute draconique)", en: "Crystal Bloom Quartermaster — Mistborn Mote for karma (Dragonfall)" },
-        vendorWp: "Pact Command Waypoint [&BOAKAAA=]",
-        tip: { fr: "Max 50 nodes de Mistborn Mote/compte/jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place vend des Mistborn Motes contre karma (5/jour — léger potentiel alt-swap).", en: "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)." } },
-    ],
+    metas: ["vb", "td", "ab", "ds", "co", "er", "de", "dv", "di", "sw", "am", "sp", "nk", "ew", "de2", "conv", "mb", "bn", "lw4_istan", "lw4_dragonfall"],
     bounties: [
       { id: "bt_co", map: { fr: "Oasis de cristal", en: "Crystal Oasis" }, target: "Corrupted Facet", icon: "BT",
         waypoint: "Destiny's Gorge Waypoint", wpCode: "[&BLsKAAA=]",
@@ -1148,7 +1054,9 @@ const LEGENDARIES = {
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899, mapNote: "Bitterfrost Frontier" },
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay + Draconis Mons" },
       { id: "jade", name: "Jade Shard", required: 250, icon: "JS", apiId: 80332, mapNote: "Lake Doric", },
-      { id: "fire_orchid", name: "Fire Orchid Blossom", required: 250, icon: "FO", apiId: 81127, mapNote: "Draconis Mons" },
+      { id: "fire_orchid", name: "Fire Orchid Blossom", required: 326, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
+        aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides de Draconis Mons au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",
+                 en: "250 for the recipe, plus 76 brought to the four druids of Draconis Mons across the bouquets — flower, bouquet, charged bouquet, storm bouquet. Each one drops when its step is done." } },
       { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." }, mapNote: "Siren's Landing",
         heartNote: { fr: "Circuit gratuit, par personnage et par jour : ~20 nœuds d'huîtres qui apparaissent sur les 23-25 emplacements fixes, 1 perle garantie chacun, plus 7 perles sur trois nommés quotidiens (Wyverne libérée 3, Illusion horrible 2, Larve gargantuesque 2). Les coffres engloutis ajoutent 1-2 perles au hasard. Faucille d'orichalque conseillée. En option payante : les 5 vendeurs de cœur, 3 perles chacun pour 13 440 karma au total.", en: "Free route, per character per day: ~20 oyster nodes spawning across the 23-25 fixed spots, 1 guaranteed pearl each, plus 7 pearls from three daily named foes (Unchained Wyvern 3, Horrid Illusion 2, Gargantuan Grub 2). Waterlogged Chests add a random 1-2. Orichalcum sickle recommended. Paid option: the 5 heart vendors, 3 pearls each for 13,440 karma total." } },
@@ -1173,50 +1081,7 @@ const LEGENDARIES = {
         { icon: "⏳", label: { fr: "Jours (plafond quotidien)", en: "Days (daily cap)" }, perUnit: 1 },
       ],
     },
-    metas: [
-      { id: "bf", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: { fr: "Nodes de Fresh Winterberry", en: "Fresh Winterberry nodes" }, expansion: "LW3", icon: "BF",
-        farmType: "per_char",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1 (min. 5-15h après dernière récolte)", en: "daily soft-reset 01h UTC+1 (min. 5-15h after last harvest)" },
-        tip: { fr: "~50-80 Winterberries par perso et par jour — 21 nodes sur la map. Thaw Elixir requis pour la zone froide. Reset : soft-reset à 01h, mais attendre 5-15h après la dernière récolte avant d'y retourner.", en: "~50-80 Winterberries per character per day — 21 nodes on the map. Thaw Elixir required for the cold zone. Reset: soft-reset at 01h, but wait 5-15h after your last harvest before returning." } },
-      { id: "eb", name: { fr: "Baie des braises", en: "Ember Bay" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "EB",
-        farmType: "per_account",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Savage Rise Waypoint", wpCode: "[&BNMJAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: { fr: "Seimur Oxbone — vend Fire Orchid Blossom et Petrified Wood contre karma", en: "Seimur Oxbone — sells Fire Orchid Blossom and Petrified Wood for karma" },
-        vendorWp: "Savage Rise Waypoint [&BNMJAAA=]",
-        tip: { fr: "~40 Lava Drops + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Le vendeur Seimur Oxbone sur place vend la currency contre karma (5/jour/perso — léger potentiel alt-swap).", en: "~40 Lava Drops + Petrified Wood/account/day via nodes. Soft-reset at 01h. Vendor Seimur Oxbone on-site sells currency for karma (5/day/character — slight alt-swap potential)." } },
-      { id: "dm", name: { fr: "Mont Draconis", en: "Draconis Mons" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "DM",
-        farmType: "per_account",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Heathen's Hold Waypoint", wpCode: "[&BOMJAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: { fr: "Nesa — vend Fire Orchid Blossom et Petrified Wood contre karma", en: "Nesa — sells Fire Orchid Blossom and Petrified Wood for karma" },
-        vendorWp: "Heathen's Hold Waypoint [&BOMJAAA=]",
-        tip: { fr: "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Vendeuse Nesa sur place (5/jour/perso — léger potentiel alt-swap).", en: "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft-reset at 01h. Springer required for some nodes. Vendor Nesa on-site (5/day/character — slight alt-swap potential)." } },
-      { id: "ld", name: { fr: "Lac Doric", en: "Lake Doric" }, subname: "Nodes LW3 + vendor", expansion: "LW3", icon: "LD",
-        farmType: "per_account",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Noran's Homestead Waypoint", wpCode: "[&BNQJAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        vendor: { fr: "Noran — vend Jade Shard contre karma", en: "Noran — sells Jade Shard for karma" },
-        vendorWp: "Noran's Homestead Waypoint [&BNQJAAA=]",
-        tip: { fr: "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Vendeur Noran sur place (5/jour/perso). Alt-swap minimal possible via le vendeur.", en: "~40 Jade Shards/account/day via nodes. Soft-reset at 01h. Vendor Noran on-site (5/day/character). Minimal alt-swap possible via vendor." } },
-      { id: "sl", name: { fr: "Plage des sirènes", en: "Siren's Landing" }, subname: "Hidden Reliquary Chests", expansion: "LW3", icon: "SL",
-        farmType: "per_char_hearts",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Camp Reclamation Waypoint", wpCode: "[&BO8JAAA=]",
-        resetNote: { fr: "soft-reset daily 01h UTC+1", en: "daily soft-reset 01h UTC+1" },
-        tip: { fr: "1 coffre gratuit + 1 payant (1,5po) par perso/jour. Les 5 hearts sont à refaire par perso avant l'accès (~20-30 min). Soft-reset à 01h. Alt-swap possible mais coûteux en temps.", en: "1 free chest + 1 paid (1.5g) per character/day. The 5 hearts must be redone per character before access (~20-30 min). Soft-reset at 01h. Alt-swap possible but time-costly." } },
-      { id: "bf_meta", name: { fr: "Confins de Givramer", en: "Bitterfrost Frontier" }, subname: "Frozen Maw Meta", expansion: "LW3", icon: "BM",
-        farmType: "per_account",
-        offsetUTC: 15, intervalMin: 120, durationMin: 20,
-        waypoint: "Sorrow's Eclipse Waypoint", wpCode: "[&BH0JAAA=]",
-        resetNote: { fr: "Hero's Choice Chest : hard-reset quotidien 01h UTC+1", en: "Hero's Choice Chest: hard-reset daily 01h UTC+1" },
-        tip: { fr: "Meta toutes les 2h — Hero's Choice Chest (1/compte/jour, hard-reset à 01h) + Winterberries bonus post-meta. Bonne densité de loot.", en: "Meta every 2h — Hero's Choice Chest (1/account/day, hard-reset at 01h) + bonus Winterberries post-meta. Good loot density." } },
-    ],
+    metas: ["bf", "eb", "dm", "ld", "sl", "bf_meta"],
     bounties: [],
   },
 
@@ -1663,37 +1528,7 @@ const LEGENDARIES = {
       { id: "ectos",       name: "Glob of Ectoplasm",        perPiece: 600,  icon: "EC", apiId: 19721 },
     ],
     currencies: [],
-    metas: [
-      { id: "obs_sw", name: "Skywatch Archipelago", subname: "Unlocking the Wizard's Tower", expansion: "SotO", icon: "SW",
-        offsetUTC: 60, intervalMin: 120, durationMin: 25,
-        efficience: "A", population: "bon", next: "obs_am", nextDelayMin: 60,
-        waypoint: "Droknar's Light Waypoint", wpCode: "[&BL4NAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Hero's Choice Chest → Case of Captured Lightning. Complétion de carte → Gift of Skywatch (repeatable)." },
-      { id: "obs_am", name: "Amnytas", subname: "The Defense of Amnytas", expansion: "SotO", icon: "AM",
-        offsetUTC: 0, intervalMin: 120, durationMin: 25,
-        efficience: "A", population: "bon", next: "obs_sw", nextDelayMin: 60,
-        waypoint: "Bastion of the Natural Waypoint", wpCode: "[&BDQOAAA=]",
-        resetNote: "Hero's Choice Chest: hard-reset daily 01h UTC+1",
-        tip: "Hero's Choice Chest → Pouch of Stardust. Complétion de carte → Gift of Amnytas (repeatable)." },
-      { id: "obs_spider", name: "Inner Nayos", subname: "Into the Spider's Lair", expansion: "SotO", icon: "SL",
-        offsetUTC: 0, intervalMin: 0, durationMin: 0, isTimeless: true,
-        waypoint: "Citadel of Zakiros — Forward Bivouac Waypoint", wpCode: "[&BHYOAAA=]",
-        resetNote: "Conditionnel — pas de timer fixe",
-        tip: "Meta conditionnelle : Road to Heitor + Fangs That Gnash doivent être complétées sur la map. Citadel of Zakiros: Hero's Choice Chest → Case/Clot/Pouch au choix." },
-      { id: "obs_conv_mb", name: "Convergence", subname: "Mount Balrior (public)", expansion: "JW", icon: "CV",
-        offsetUTC: 0, intervalMin: 180, durationMin: 10,
-        efficience: "S", population: "bon", next: "obs_conv_on", nextDelayMin: 30,
-        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
-        resetNote: "Coffre daily par type d'instance",
-        tip: "Toutes les 3h à XX:00 UTC. Grosse source d'essences Rift gratuites (12-25/run)." },
-      { id: "obs_conv_on", name: "Convergence", subname: "Outer Nayos (public)", expansion: "SotO", icon: "CV",
-        offsetUTC: 90, intervalMin: 180, durationMin: 10,
-        efficience: "S", population: "bon", next: "obs_conv_mb", nextDelayMin: 150,
-        waypoint: "Wizard's Tower — portail Convergences", wpCode: "",
-        resetNote: "Coffre daily par type d'instance",
-        tip: "Toutes les 3h à XX:30 UTC (90 min après Balrior). Essences Rift gratuites + progression Suffused T2." },
-    ],
+    metas: ["sw", "am", "zak", "mb", "conv"],
     bounties: [],
   },
 
@@ -1771,18 +1606,7 @@ const LEGENDARIES = {
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
       { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
     ],
-    metas: [
-      { id: "hammerhart", name: { fr: "Rixe des Hammerhart !", en: "Hammerhart Rumble!" }, subname: { fr: "Shipwreck Strand", en: "Shipwreck Strand" }, expansion: "VoE", icon: "HR",
-        offsetUTC: 40, intervalMin: 120, durationMin: 20,
-        efficience: "A", population: "LFG",
-        waypoint: "Hammerhart Battery", wpCode: "[&BHUPAAA=]",
-        tip: { fr: "World boss de Shipwreck Strand (Twisting Hollows). Accès rapide : téléporteur « Found » au Pub Canach. CC obligatoire pour percer le dôme initial ; boss jumeaux à barre de vie partagée. Source d'Aether-Rich Sap.", en: "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source." } },
-      { id: "weald", name: { fr: "Secrets de la sylve", en: "Secrets of the Weald" }, subname: { fr: "Starlit Weald", en: "Starlit Weald" }, expansion: "VoE", icon: "SW",
-        offsetUTC: 100, intervalMin: 120, durationMin: 35,
-        efficience: "A", population: "LFG",
-        waypoint: "Consecrated Piazza", wpCode: "[&BG8PAAA=]",
-        tip: { fr: "Méta de Starlit Weald (Cloister of Stars) : 3 excavateurs simultanés puis Gwyllian. Maîtrise des lignes de force requise (planeur/monture). Source d'Antiquated Ducats.", en: "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source." } },
-    ],
+    metas: ["hammerhart", "weald"],
     bounties: [],
   },
   stella_radians: {
@@ -1805,13 +1629,7 @@ const LEGENDARIES = {
       // refuse toute divergence.
       { id: "shadowstone", name: "Shadowstone Fragment", required: 500, icon: "SF", apiId: 109459, mapNote: "Eternity's Garden" },
     ],
-    metas: [
-      { id: "shackles", name: { fr: "Entraves des Anciens", en: "Shackles of the Ancients" }, subname: { fr: "Eternity's Garden", en: "Eternity's Garden" }, expansion: "VoE", icon: "SA",
-        offsetUTC: 75, intervalMin: 120, durationMin: 50,
-        efficience: "A", population: "LFG",
-        waypoint: "Pilgrim's Rest", wpCode: "[&BPwPAAA=]",
-        tip: { fr: "Méta d'Eternity's Garden (heures impaires UTC) : rassemblement à Pilgrim's Rest dès xx:00, lancement xx:10. 3 phases ~15 min : capturer les 3 chambres de la Forge, réparer les conduits, puis Kela et l'All Seer (~xx:35). Boucle de farm principale de la carte (horaire confirmé wiki).", en: "Eternity's Garden meta (odd UTC hours): gather at Pilgrim's Rest from xx:00, starts xx:10. 3 ~15-min phases: capture the 3 Forge chambers, repair the conduits, then Kela and the All Seer (~xx:35). The map's main farm loop (schedule confirmed via wiki)." } },
-    ],
+    metas: ["shackles"],
     bounties: [],
   },
   orrax_manifested: {
@@ -1837,17 +1655,7 @@ const LEGENDARIES = {
       { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
       { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
     ],
-    metas: [
-      { id: "titanic", name: { fr: "Un voyage titanesque", en: "A Titanic Voyage" }, subname: { fr: "Bava Nisos", en: "Bava Nisos" }, expansion: "JW", icon: "TV",
-        offsetUTC: 80, intervalMin: 120, durationMin: 25,
-        efficience: "B", population: "LFG",
-        waypoint: "Mantle's Arrival", wpCode: "[&BGEPAAA=]",
-        tip: { fr: "Méta de Bava Nisos (heures impaires UTC + 20 min). Source de Bava Nisos Shards et progression de la Bava Nisos Mastery. Jorvik Jorundsson (départ des collections Orrax) est au camp de l'Alliance, au NO du waypoint.", en: "Bava Nisos meta (odd UTC hours + 20 min). Bava Nisos Shards source and Bava Nisos Mastery progression. Jorvik Jorundsson (Orrax collections start) is at the Alliance camp, NW of the waypoint." } },
-      { id: "mistburned", name: { fr: "Événements Mistburned Barrens", en: "Mistburned Barrens events" }, subname: { fr: "Shards & coffres Mursaat", en: "Shards & Mursaat caches" }, expansion: "JW", icon: "MB",
-        isTimeless: true,
-        waypoint: "Alliance Staging Ground", wpCode: "[&BFAPAAA=]",
-        tip: { fr: "Boucle libre : événements éclair (batterie de la collection, très fréquents au NE du waypoint), coffres Mursaat Ruins (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 Shards de carte. Progresse aussi la Mistburned Mastery.", en: "Free loop: lightning events (collection battery, very frequent NE of the waypoint), Mursaat Ruins caches (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 map Shards. Also progresses the Mistburned Mastery." } },
-    ],
+    metas: ["bn", "mistburned"],
     bounties: [],
   },
   ad_infinitum: {
@@ -1881,20 +1689,7 @@ const LEGENDARIES = {
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
     },
-    metas: [
-      { id: "adinf_dailies", name: { fr: "Dailies fractales recommandées", en: "Recommended fractal dailies" }, subname: { fr: "~3 Research Pages/jour", en: "~3 Research Pages/day" }, expansion: "Core", icon: "FD",
-        isTimeless: true,
-        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
-        tip: { fr: "Le timegate central : chaque Fractal Journal = 28 Research Pages, 4 journaux requis. ~3 pages/jour via les dailies recommandées → ~10 jours par collection.", en: "The core timegate: each Fractal Journal = 28 Research Pages, 4 journals required. ~3 pages/day via recommended dailies → ~10 days per collection." } },
-      { id: "adinf_cms", name: { fr: "CM Sunqua / Nightmare / Shattered", en: "Sunqua / Nightmare / Shattered CMs" }, subname: { fr: "+1 page chacun", en: "+1 page each" }, expansion: "Core", icon: "CM",
-        isTimeless: true,
-        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
-        tip: { fr: "Chaque Challenge Mote quotidien rapporte +1 Research Page → jusqu'à 6 pages/jour au total, soit ~5 jours par collection au lieu de 10.", en: "Each daily Challenge Mote grants +1 Research Page → up to 6 pages/day total, i.e. ~5 days per collection instead of 10." } },
-      { id: "adinf_kelvei", name: { fr: "Kelvei — débloquer la collection suivante", en: "Kelvei — unlock the next collection" }, subname: { fr: "Mistlock Observatory", en: "Mistlock Observatory" }, expansion: "Core", icon: "KV",
-        isTimeless: true,
-        waypoint: "Mistlock Observatory", wpCode: "[&BEwGAAA=]",
-        tip: { fr: "Après chaque craft de dos (Finite Result → Upper Bound → Unbound), parler à Kelvei pour recevoir la « Theory of… » suivante. Recycler l'ancien dos pour les Balls of Dark Energy (5 puis 9).", en: "After each back craft (Finite Result → Upper Bound → Unbound), talk to Kelvei to receive the next 'Theory of…'. Salvage the old back for Balls of Dark Energy (5 then 9)." } },
-    ],
+    metas: ["adinf_dailies", "adinf_cms", "adinf_kelvei"],
     bounties: [],
   },
   strife_unending: {
@@ -2630,6 +2425,29 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       if (!selectedIds.includes(t)) continue;
       const opt = altPick(gid, t);
       if (opt && !satisfaits.has(opt)) totals[opt] = (totals[opt] ?? 0) + (g.qty ?? 0);
+    }
+  }
+
+  // Ce qu'une etape de collection CONSOMME tant qu'elle n'est pas faite.
+  // `component` dit l'inverse — une etape validee rend un composant inutile.
+  // Il manquait le sens direct : les sept miroirs de Vision demandent chacun
+  // 10 orichalque, 10 quartz rose, 5 ectoplasmes et 3 magnetites, et rien ne
+  // les comptait. `cost` les pose, et ils tombent a la validation de l'etape.
+  // Pose AVANT la cascade : un lingot d'orichalque se developpe ensuite en
+  // minerai comme n'importe quel autre besoin. Sans statut connu, l'etape est
+  // reputee non faite — compter trop vaut mieux que promettre un total trop bas.
+  for (const legId of (selectedIds ?? [])) {
+    const cible = SOURCES_ALIAS?.[legId] ?? legId;
+    for (const [cle, col] of Object.entries(SOURCES_DB?.legendaries?.[cible]?.collections ?? {})) {
+      const sc = colls[cle] ?? colls[String(col?.id)] ?? {};
+      const entier = sc.done ?? false;
+      const bits = sc.bits ?? [];
+      for (const item of (col?.items ?? [])) {
+        if (!item?.cost || entier || bits.includes(item.bit)) continue;
+        for (const [cid, n] of Object.entries(item.cost)) {
+          if (typeof n === "number" && !satisfaits.has(cid)) totals[cid] = (totals[cid] ?? 0) + n;
+        }
+      }
     }
   }
 
@@ -3942,6 +3760,106 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 }
 
 
+// ── Acces au contenu : quelle meta le compte peut-il lancer ? ────────────────
+//
+// La condition vit dans le catalogue (`meta_events[id].acces`, posee par
+// gw2_acces_metas). Les listes proposees a l'ecran se DERIVENT de ce qu'il
+// contient : aucune extension ni saison n'est ecrite ici a la main.
+// Une meta sans condition connue n'est jamais masquee — inconnu n'est pas
+// « non possede ».
+// ── Le catalogue des metas : la seule table ───────────────────────────────────
+//
+// Chaque legendaire ne declare plus que des CLES (`metas: ["vb", "td", …]`).
+// Horaire, point de passage, conseil, recompenses et acces vivent une fois,
+// dans `meta_events` (fusion du 03/10, gw2_fusion_catalogue_metas_v1). Le rendu
+// lit `name` comme titre et `subname` comme sous-titre : on les lui donne ici,
+// depuis `map` (ou) et `name` (quoi), sans rien stocker deux fois.
+function metaDuCatalogue(cle) {
+  const c = SOURCES_DB?.meta_events?.[cle];
+  if (!c) return null;
+  return {
+    ...c, id: cle,
+    name: c.map ?? c.name,
+    subname: c.map ? c.name : null,
+    next: (c.next ?? [])[0] ?? null,
+    timerNote: c.timer_notes ?? null,
+  };
+}
+
+function accesDeMeta(metaId) {
+  return SOURCES_DB?.meta_events?.[metaId]?.acces ?? null;
+}
+function accesConnus() {
+  const ext = new Set(), lw = new Set();
+  for (const m of Object.values(SOURCES_DB?.meta_events ?? {})) {
+    const a = m?.acces;
+    if (a?.type === "expansion" && a.access) ext.add(a.access);
+    if (a?.type === "living_world" && a.saison) lw.add(a.saison);
+  }
+  return { ext: [...ext], lw: [...lw].sort() };
+}
+// `ext` : Set des extensions possedees (API, sinon declaration manuelle).
+// `lw`  : objet saison -> booleen, declare a la main (l'API ne le dit pas).
+function metaAccessible(metaId, ext, lw) {
+  const a = accesDeMeta(metaId);
+  if (!a) return true;
+  if (a.type === "expansion") return ext.has(a.access);
+  if (a.type === "living_world") return Boolean(lw?.[a.saison]);
+  return true;
+}
+
+// ── Ce qu'une meta rend, et si la legendaire affichee en a encore besoin ──────
+//
+// Le croisement meta -> ressource est pose dans les sources (`rewards`, avec sa
+// reference). Il restait a le montrer : sans ca, une carte de meta donnait
+// l'heure et le point de passage, pas la raison d'y aller. Une ressource dont le
+// besoin est retombe a zero reste affichee, estompee — la masquer ferait croire
+// que la meta ne rend rien.
+//
+// PRIORITAIRE : toutes les voies renouvelables de la ressource sont des metas.
+// La gemme amalgamee en est l'exemple : sa seule autre voie est la forge
+// mystique, au cout prohibitif. Sauter la meta, c'est payer ce cout.
+// Puces « ce que rend cette meta » : une seule fonction de rendu pour les
+// metas a horaire ET les fermes. Depuis le 03/10 les fermes declarent leur
+// ressource (`rewards`) ; sans ce composant partage, elles auraient eu un
+// second rendu ou pas de puce du tout.
+function PucesRessources({ metaId, totals }) {
+  const t = useT();
+  const res = ressourcesDeMeta(metaId, totals);
+  if (!res.length) return null;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginTop: "3px" }}>
+      {res.map(r => (
+        <span key={r.cid}
+          title={r.besoin > 0 ? t("meta_res_need", { n: r.besoin }) : t("meta_res_done")}
+          style={{ fontSize: "9px", padding: "1px 6px", borderRadius: "3px",
+            fontFamily: "'Crimson Text', serif",
+            opacity: r.besoin > 0 ? 1 : 0.35,
+            color: r.prioritaire ? "#fbbf24" : "rgba(226,201,126,0.75)",
+            border: `1px solid ${r.prioritaire ? "rgba(251,191,36,0.5)" : "rgba(226,201,126,0.2)"}` }}>
+          {r.prioritaire ? "★ " : ""}{NX(r.nom)}{r.besoin > 0 ? ` · ${r.besoin}` : ""}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ressourcesDeMeta(metaId, totals) {
+  const meta = SOURCES_DB?.meta_events?.[metaId];
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const out = [];
+  for (const cid of (meta?.rewards ?? [])) {
+    const comp = cc[cid];
+    if (!comp) continue;
+    const renouv = (comp.sources ?? []).filter(s => s?.free_repeatable ||
+      ["vendor", "farm", "gathering", "salvage", "reward_track", "meta_drop"].includes(s?.type));
+    const prioritaire = renouv.length > 0 && renouv.every(s => s?.type === "meta_drop");
+    out.push({ cid, nom: comp.name ?? cid, besoin: Math.round(totals?.[cid] ?? 0), prioritaire });
+  }
+  // Le besoin d'abord, puis la priorite : ce qui sert encore passe devant.
+  return out.sort((x, y) => (y.besoin > 0) - (x.besoin > 0) || y.prioritaire - x.prioritaire);
+}
+
 export default function GW2LegendaryTracker() {
   const [lang, setLang] = useState(() => {
     try { return localStorage.getItem("gw2_lang") || "en"; } catch (_) { return "en"; }
@@ -4506,6 +4424,21 @@ export default function GW2LegendaryTracker() {
   // reste coche a la main.
   const [recettesCompte, setRecettesCompte] = useState(null);
   const [commander, setCommander] = useState(null);
+  // Extensions lues sur le compte (/v2/account.access). null = jamais lues.
+  const [accesApi, setAccesApi] = useState(() => {
+    try { const v = JSON.parse(localStorage.getItem("gw2_access") ?? "null"); return Array.isArray(v) ? v : null; } catch { return null; }
+  });
+  // Ce que le joueur declare a la main : les extensions quand l'API ne repond
+  // pas, et les saisons de Living World, que l'API n'expose jamais.
+  // Defaut : rien de coche — planifier une meta inaccessible coute plus cher
+  // que d'en masquer une qu'on possede.
+  const [accesManuel, setAccesManuel] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("gw2_access_manuel") ?? "null") ?? { ext: {}, lw: {} }; } catch { return { ext: {}, lw: {} }; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem("gw2_access_manuel", JSON.stringify(accesManuel)); } catch {}
+  }, [accesManuel]);
+  const [showAcces, setShowAcces] = useState(false);
   const [recetteParDon, setRecetteParDon] = useState(() => {
     try { return JSON.parse(localStorage.getItem("gw2_recette_par_don") ?? "null") ?? {}; } catch { return {}; }
   });
@@ -4718,10 +4651,19 @@ export default function GW2LegendaryTracker() {
     const bags = await readCharacterBags(tk);
     // Recettes debloquees : Flask les rend sous `_recipes` depuis la v40, la
     // synchro directe doit rendre la meme chose.
+    // `/v2/account` porte aussi `access` : la liste des extensions du compte,
+    // en lecture seule. C'est la seule partie du filtre d'extensions que l'API
+    // sache repondre -- les EPISODES de Living World ne sont exposes par aucun
+    // endpoint, et devront rester une case a cocher locale.
+    let accessDirect = null;
     let commanderDirect = null;
     try {
       const ar = await fetch(`https://api.guildwars2.com/v2/account?${tk}`);
-      if (ar.ok) { const j = await ar.json(); if (typeof j?.commander === "boolean") commanderDirect = j.commander; }
+      if (ar.ok) {
+        const j = await ar.json();
+        if (typeof j?.commander === "boolean") commanderDirect = j.commander;
+        if (Array.isArray(j?.access)) accessDirect = j.access;
+      }
     } catch (_) { /* inconnu, pas ferme */ }
     let recipesDirect = [];
     try {
@@ -4870,7 +4812,7 @@ export default function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -4991,6 +4933,12 @@ export default function GW2LegendaryTracker() {
       // rend vide pour lui, il restait donc a cocher a la main. /v2/account
       // porte un booleen `commander`, vrai des qu'un tag est achete.
       if (typeof data._commander === "boolean") setCommander(data._commander);
+      // Les extensions du compte : quand l'API les rend, elles font foi et
+      // remplacent toute declaration manuelle (l'ecart est signale a l'ecran).
+      if (Array.isArray(data._access)) {
+        try { localStorage.setItem("gw2_access", JSON.stringify(data._access)); } catch (_) {}
+        setAccesApi(data._access);
+      }
       if (data._gates) {
         try { localStorage.setItem("gw2_gates", JSON.stringify(data._gates)); } catch (_) {}
         setAcctGates(data._gates);
@@ -5273,7 +5221,23 @@ export default function GW2LegendaryTracker() {
 
   // ── Calculs metas
   // ── Calculs leg-dépendants (sautés en mode Grand Total) ──────
-  const allTimedMetas = isGrandTotal ? [] : (leg.metas ?? []).filter(m => !m.isTimeless);
+  // Filtre d'acces, pose ICI pour que tout ce qui suit en herite : le chainage
+  // (getBestNext), la liste « a venir », les cartes. Une meta masquee ne doit
+  // pas reapparaitre comme « suivante » d'une autre.
+  // Sans API et sans aucune declaration, les extensions sont INCONNUES : on ne
+  // filtre pas dessus. Masquer tout le contenu d'extension a qui n'a pas encore
+  // synchronise lirait une absence d'information comme une absence d'acces.
+  const extInconnues = !Array.isArray(accesApi) && Object.keys(accesManuel.ext ?? {}).length === 0;
+  const extPossedees = new Set(accesApi ?? Object.keys(accesManuel.ext ?? {}).filter(k => accesManuel.ext[k]));
+  const accessible = (id) => {
+    const a = accesDeMeta(id);
+    if (extInconnues && a?.type === "expansion") return true;
+    return metaAccessible(id, extPossedees, accesManuel.lw);
+  };
+  const metasLeg = isGrandTotal ? [] : (leg.metas ?? []).map(metaDuCatalogue).filter(Boolean);
+  const metasMasquees = metasLeg.filter(m => !accessible(m.id));
+  const metasVisibles = metasLeg.filter(m => accessible(m.id));
+  const allTimedMetas = metasVisibles.filter(m => !m.isTimeless);
   const metasWithTiming = isGrandTotal ? [] : allTimedMetas
     .map(m => {
       const nextDate = getNextMetaOccurrence(m, now);
@@ -5283,7 +5247,7 @@ export default function GW2LegendaryTracker() {
     })
     .sort((a, b) => (a.ms ?? 99999999) - (b.ms ?? 99999999));
 
-  const timelessMetas = isGrandTotal ? [] : (leg.metas ?? []).filter(m => m.isTimeless);
+  const timelessMetas = metasVisibles.filter(m => m.isTimeless);
   const upcoming = isGrandTotal ? [] : metasWithTiming.filter(m => !m.checked).slice(0, 3);
   const dailyCount = Object.keys(dailyChecked).length;
   const weeklyCount = Object.keys(weeklyChecked).length;
@@ -5907,6 +5871,76 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {activeTab === "activities" && (leg?.metas?.length ?? 0) > 0 && (
         <div>
+          {(() => {
+            const { ext, lw } = accesConnus();
+            const viaApi = Array.isArray(accesApi);
+            // Ecart entre la declaration manuelle et ce que l'API a rendu :
+            // l'API l'emporte, mais le joueur doit le voir.
+            const ecarts = viaApi ? ext.filter(e => (accesManuel.ext?.[e] ?? false) !== accesApi.includes(e) && accesManuel.ext?.[e] !== undefined) : [];
+            const chip = (on) => ({ fontSize: "10px", padding: "2px 7px", borderRadius: "3px", fontFamily: "'Crimson Text', serif",
+              border: `1px solid ${on ? "rgba(74,222,128,0.4)" : "rgba(226,201,126,0.18)"}`, color: on ? "#4ade80" : "rgba(226,201,126,0.5)",
+              background: "transparent" });
+            return (
+              <div style={{ marginBottom: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                  <button className="adj-btn" style={{ fontSize: "10px", padding: "3px 8px" }} onClick={() => setShowAcces(v => !v)}>
+                    ⚙ {t("acces_titre")}
+                  </button>
+                  {metasMasquees.length > 0 && (
+                    <span title={metasMasquees.map(m => NX(m.name)).join(", ")}
+                      style={{ fontSize: "10px", color: "rgba(226,201,126,0.5)", fontFamily: "'Crimson Text', serif" }}>
+                      {t("acces_masquees", { n: metasMasquees.length })}
+                    </span>
+                  )}
+                </div>
+                {showAcces && (
+                  <div style={{ marginTop: "6px", padding: "8px 10px", border: "1px solid rgba(226,201,126,0.12)", borderRadius: "6px", background: "rgba(226,201,126,0.02)" }}>
+                    <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.6)", marginBottom: "4px", fontFamily: "'Cinzel', serif" }}>
+                      {t("acces_extensions")} — {viaApi ? t("acces_source_api") : extInconnues ? t("acces_source_inconnu") : t("acces_source_manuel")}
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                      {ext.map(e => {
+                        const on = viaApi ? accesApi.includes(e) : Boolean(accesManuel.ext?.[e]);
+                        return (
+                          <button key={e} disabled={viaApi} style={{ ...chip(on), cursor: viaApi ? "default" : "pointer", opacity: viaApi ? 0.85 : 1 }}
+                            onClick={() => setAccesManuel(a => ({ ...a, ext: { ...(a.ext ?? {}), [e]: !on } }))}>
+                            {on ? "☑" : "☐"} {t(`acces_ext_${e}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {ecarts.length > 0 && (
+                      <div style={{ fontSize: "9px", color: "#fbbf24", marginTop: "4px", fontFamily: "'Crimson Text', serif" }}>
+                        {t("acces_ecart_api", { liste: ecarts.map(e => t(`acces_ext_${e}`)).join(", ") })}
+                      </div>
+                    )}
+                    {lw.length > 0 && (
+                      <>
+                        <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.6)", margin: "8px 0 4px", fontFamily: "'Cinzel', serif" }}>
+                          {t("acces_lw")} — {t("acces_source_manuel")}
+                        </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", alignItems: "center" }}>
+                          {lw.map(sn => {
+                            const on = Boolean(accesManuel.lw?.[sn]);
+                            return (
+                              <button key={sn} style={{ ...chip(on), cursor: "pointer" }}
+                                onClick={() => setAccesManuel(a => ({ ...a, lw: { ...(a.lw ?? {}), [sn]: !on } }))}>
+                                {on ? "☑" : "☐"} {sn}
+                              </button>
+                            );
+                          })}
+                          <button className="adj-btn" style={{ fontSize: "9px", padding: "2px 7px" }}
+                            onClick={() => setAccesManuel(a => ({ ...a, lw: Object.fromEntries(lw.map(sn => [sn, true])) }))}>
+                            {t("acces_lw_tout")}
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
           {/* Upcoming chains */}
           {upcoming.length > 0 && (
             <>
@@ -5968,6 +6002,7 @@ export default function GW2LegendaryTracker() {
                         )}
                       </div>
                       <div style={{ fontSize: "10px", color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif" }}>{NX(m.subname)}</div>
+                      <PucesRessources metaId={m.id} totals={legTotals} />
                       {m.bestNext && !m.checked && m.bestNext.ms < 45 * 60000 && (
                         <div style={{ fontSize: "10px", color: "rgba(74,222,128,0.65)", fontFamily: "'Crimson Text', serif", marginTop: "2px" }}>
                           → {NX(m.bestNext.meta.name)} {t("word_in")} {formatCountdown(m.bestNext.ms)}
@@ -5996,7 +6031,7 @@ export default function GW2LegendaryTracker() {
                       </div>
                       {m.timerNote && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(226,201,126,0.5)", marginBottom: "5px" }}>
-                          🕐 {m.timerNote}
+                          🕐 {NX(m.timerNote)}
                         </div>
                       )}
                       {m.resetNote && (
@@ -6006,7 +6041,7 @@ export default function GW2LegendaryTracker() {
                       )}
                       {m.bestNext && (
                         <div style={{ fontStyle: "normal", fontSize: "11px", color: "rgba(74,222,128,0.7)", marginBottom: "5px" }}>
-                          {t("next_meta", { meta: m.bestNext.meta.name, sub: m.bestNext.meta.subname, time: formatLocalTime(m.bestNext.date) })}
+                          {t("next_meta", { meta: NX(m.bestNext.meta.name), sub: NX(m.bestNext.meta.subname), time: formatLocalTime(m.bestNext.date) })}
                         </div>
                       )}
                       {/* `durationMin` est la FENETRE, pas le temps de jeu : une
@@ -6047,6 +6082,7 @@ export default function GW2LegendaryTracker() {
                           </span>
                         )}
                       </div>
+                      <PucesRessources metaId={m.id} totals={legTotals} />
                     </div>
                     <button className={`check-btn ${dailyChecked[m.id] ? "done" : ""}`}
                       onClick={e => { e.stopPropagation(); toggleDaily(m.id); }}>

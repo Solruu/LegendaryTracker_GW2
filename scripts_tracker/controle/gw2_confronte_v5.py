@@ -64,9 +64,19 @@ d = json.load(open(SRC, encoding="utf-8"))
 cc = d["craft_components"]
 groupes = d.get("alt_groups") or {}
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
+# v4 : LES OPTIONS D'UN CHOIX NE S'ADDITIONNENT PAS. La page d'un Tribute to X
+# liste six monnaies au meme prix ; la v3 posait les six aretes et annoncait
+# 4 000 de chacune sur les gen2, soit 60 « ecarts » qui n'etaient que les cinq
+# options non choisies. Meme regle que gw2_arbitrages : une arete proposee
+# entre une option et une cible de son alt_groups est ecartee, le moteur
+# appliquant deja le choix par defaut.
+_ALT = collections.defaultdict(set)
+for _g in groupes.values():
+    for _o in (_g.get("options") or []):
+        _ALT[_o].update(_g.get("targets") or [])
 proposees = collections.defaultdict(dict)
 for (p, e), (q, _org) in E.items():
-    if p in cc and e in cc and p != e:
+    if p in cc and e in cc and p != e and p not in _ALT.get(e, ()):
         proposees[e][p] = q
 
 
@@ -77,7 +87,7 @@ def nom(cid):
 
 import sys as _sys  # noqa: E402
 _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v2 import Modele  # noqa: E402
+from moteur.gw2_moteur_v3 import Modele  # noqa: E402
 
 # La cascade n'est plus ecrite ici. Deux modeles : l'etat actuel, et le meme ou
 # toutes les aretes proposees par les captures sont posees. Le second se
@@ -100,7 +110,14 @@ def totaux(leg, recettes=False):
     if not recettes:
         return _ACTUEL.totaux(leg)
     t, base = _RECETTES.totaux(leg, detail=True)
-    return {cid: (base[cid] if base.get(cid, 0) > 0 else v) for cid, v in t.items()}
+    # v5 : UN CHEVAUCHEMENT DECLARE N'EST PAS UNE CLE A IGNORER. Quand
+    # `qty_overlap_verified` cite ce legendaire, la cle a plat porte un noeud
+    # distinct de ceux de la chaine (Selachimorpha 800, notes de Stella 52 500,
+    # essences d'Ad Infinitum) : la v4 la retirait et annoncait un trou.
+    def _ignore(cid):
+        return leg not in ((cc.get(cid) or {}).get("qty_overlap_verified") or ())
+    return {cid: (base[cid] if base.get(cid, 0) > 0 and _ignore(cid) else v)
+            for cid, v in t.items()}
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})

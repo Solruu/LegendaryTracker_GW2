@@ -18,8 +18,13 @@ Tracker personnel de craft d'objets légendaires Guild Wars 2 — 13 onglets cou
 | `gw2_dump_bits_v3.py` | **Collecte de données éditoriales** : dump des bits ordonnés / tiers / points des achievements, pour rédiger les `bitTips` au bon index et repérer les compteurs sans étapes | `gw2_bits_dump.json` (jetable, non consommé par l'app) |
 | `gw2_meta_pages_v2.py` | **Pages wiki des objectifs de méta** : lit l'ancre `#achievementNNNN` de chaque capture de méta et pose `[id, nom, page]` dans `meta_eligible`. Sans `--ecrire`, mesure seulement | `gw2_sources_vN+1.json` |
 | `gw2_relecture_recettes_v4.py` | **Relecture des recettes par légendaire** : descend depuis chaque cible et compare, à chaque nœud, les enfants déclarés à la recette de sa capture. Appariement par apiId. Ne modifie rien | `RELECTURE_RECETTES_vN.md` |
-| `gw2_confronte_agregats_v1.py` | **Confrontation des agrégats en prose** : lit les listes de courses rédigées dans le texte des pages de collection et les compare aux totaux de l'arbre. Signale un dépassement (erreur) et une somme excédentaire (à arbitrer). Ne modifie rien | `CONFRONTATION_AGREGATS_vN.md` |
+| `gw2_confronte_agregats_v2.py` | **Confrontation des agrégats en prose** : lit les listes de courses rédigées dans le texte des pages de collection et les compare aux totaux de l'arbre. Signale un dépassement (erreur) et une somme excédentaire (à arbitrer). Ne modifie rien | `CONFRONTATION_AGREGATS_vN.md` |
 | `gw2_completion_arbre_v3.py` | **Complétion de l'arbre** : crée les composants que les recettes relues réclament, avec la quantité lue sur la capture du parent et l'apiId du référentiel matériaux. Deux gardes anti-doublon (apiId, nom au pluriel près). Avec `--relier`, décompose les composants posés dès que leur capture arrive. Ne pose aucune voie d'obtention | `gw2_sources_vN+1.json` |
+| `gw2_acces_metas_v4.py` | **Condition d'accès des métas** : dérive l'extension requise depuis la catégorie du widget, et applique la table `CONVERGENCES` pour les instances publiques que le widget ne distingue pas. Remplace les champs posés le 02/10 par une commande jetable | `gw2_sources_vN+1.json` |
+| `gw2_fusion_catalogue_metas_v1.py` | **Fusion du catalogue des métas** (03/10/2026, passe unique) : les 39 entrées `metas:` du JSX v241 rejoignent `meta_events`, les légendaires ne citent plus que des clés. Remplace `gw2_catalogue_metas_v1`, `gw2_fenetres_metas_v1` et `gw2_horaires_metas_v1`, qui écrivaient dans la table du JSX disparue | `gw2_sources_vN+1.json`, JSX |
+| `gw2_vendeurs_coeurs_lw3_v2.py` | **Vendeurs de cœur LW3** (03/10/2026) : ballots par personnage d'Ember Bay, Draconis Mons et Lake Doric dans la cadence des composants (sources wiki), conseils et récompenses des fermes remis d'accord | `gw2_sources_vN+1.json` |
+| `gw2_refs_horaires_v1.py` | **Références d'horaire** : écrit la `ref` des métas que le widget confirme (accord exigé, jamais une ref existante écrasée) | `gw2_sources_vN+1.json` |
+| `controle/gw2_coherence_conseils_metas_v2.py` | **Cohérence conseils / champs** : horaire, chaînage, accès, ressources et priorité écrits dans le texte, confrontés aux champs que le filtre et les puces lisent. Lecture seule | `COHERENCE_CONSEILS_METAS_vN.md` |
 
 Les trois s'exécutent **en local** : `api.guildwars2.com` n'est pas joignable depuis l'environnement de développement assisté.
 
@@ -34,3 +39,7 @@ python3 gw2_build_html_v2.py --jsx gw2_legendary_tracker_v98.jsx --out docs/inde
 
 ## Convention de versions
 Chaque fichier modifié est renommé avec un suffixe `_vX` incrémenté, l'ancienne version étant retirée via `git rm`. `docs/index.html` est rebuildé à chaque push.
+
+| `gw2_couts_etapes_v1.py` | **Coûts d'étapes non comptés** : repère les étapes de collection dont le texte cite une quantité d'une ressource de l'arbre. Signal à lire, pas un total : il compte aussi les recettes décrites d'objets déjà comptés | rapport en console |
+
+| `gw2_pose_couts_etapes_v2.py` | **Coûts des étapes de collection** : pose `cost` sur les étapes dont le texte apporte des matériaux (« Bring … »), et seulement celles qui se résolvent entièrement. Les deux moteurs les comptent tant que l'étape n'est pas validée | `gw2_sources_vN+1.json` |

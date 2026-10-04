@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v249",
-  "last_updated": "2026-09-08",
+  "last_updated": "2026-10-04",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -1000,10 +1000,6 @@
     "fr": "La nuit et l'ennemi",
     "en": "Night and the Enemy"
    },
-   "subname": {
-    "fr": "Matriarche vouivre",
-    "en": "Wyvern Matriarch"
-   },
    "map": {
     "fr": "Orée d'émeraude",
     "en": "Verdant Brink"
@@ -1023,19 +1019,36 @@
    "next": [
     "td"
    ],
-   "nextDelayMin": 45,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "reclaimed_metal_plate"
    ],
    "needs_verification": false,
-   "playtimeMin": 15
+   "playtimeMin": 15,
+   "rewards_refs": {
+    "reclaimed_metal_plate": "wiki:reclaimed_metal_plate — sa section d'acquisition cite « Verdant Brink: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Verdant Brink »"
+   },
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "VB",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — hot-vb, segment « Night: Night and the Enemy » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "td": {
    "name": {
     "fr": "Roi de la jungle",
     "en": "Chak Gerent"
    },
-   "subname": "4 lanes",
    "map": {
     "fr": "Profondeurs verdoyantes",
     "en": "Tangled Depths"
@@ -1055,18 +1068,35 @@
    "next": [
     "ab"
    ],
-   "nextDelayMin": 15,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chak_egg"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "rewards_refs": {
+    "chak_egg": "wiki:chak_egg — sa section d'acquisition cite « Tangled Depths: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Tangled Depths »"
+   },
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "TD",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — hot-td, segment « King of the Jungle (Chak Gerent) » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "ab": {
    "name": {
     "fr": "Bataille de Tarir",
     "en": "Octovine"
    },
-   "subname": "4 lanes simultanées",
    "map": {
     "fr": "Bassin aurique",
     "en": "Auric Basin"
@@ -1086,18 +1116,33 @@
    "next": [
     "ds"
    ],
-   "nextDelayMin": 0,
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "AB",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Auric Basin »"
+   },
+   "ref": "Widget:Event timer/data.json — hot-ab, segment « Battle in Tarir (Octovine) » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "ds": {
    "name": {
-    "fr": "Repli du dragon",
-    "en": "Dragon's Stand"
+    "fr": "Meta complète",
+    "en": "Full meta"
    },
-   "subname": "Meta complète",
    "map": {
     "fr": "Repli du dragon",
     "en": "Dragon's Stand"
@@ -1115,19 +1160,34 @@
     "en": "Long (~1h) but well populated. Good source of drops in parallel. Not easily chainable afterwards."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
-   "playtimeMin": 60
+   "playtimeMin": 60,
+   "categorie": "Heart of Thorns",
+   "acces": {
+    "type": "expansion",
+    "access": "HeartOfThorns"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "DS",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's Stand »"
+   },
+   "ref": "Widget:Event timer/data.json — hot-ds, segment « Start advancing on the Blighting Towers » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "co": {
    "name": {
     "fr": "Casino express",
     "en": "Casino Blitz"
    },
-   "subname": "Grand Sahil Casino",
    "map": {
     "fr": "Oasis de cristal",
     "en": "Crystal Oasis"
@@ -1141,28 +1201,42 @@
    "waypoint": "Amnoon Waypoint",
    "wpCode": "[&BLIGAAA=]",
    "tip": {
-    "fr": "~10 min, ne pas rater le départ. La plus efficiente de toutes — priorité absolue.",
-    "en": "~10 min, do not miss the start. The most efficient of all - absolute priority."
+    "fr": "~10 min, ne pas rater le départ. La plus efficiente de toutes.",
+    "en": "~10 min, do not miss the start. The most efficient of all."
    },
    "next": [
     "er"
    ],
-   "nextDelayMin": 39,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
    "ref": "wiki:Casino_Blitz — « It starts at 00:05, and every two hours after that »",
    "playtimeMin": 10,
    "verified": true,
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Crystal Oasis: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Crystal Oasis »"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "CO",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   }
   },
   "er": {
    "name": {
     "fr": "Le chemin de l'Ascension",
     "en": "Doppelganger"
    },
-   "subname": "Augury Rock",
    "map": {
     "fr": "Rives de l'Elon",
     "en": "Elon Riverlands"
@@ -1182,19 +1256,36 @@
    "next": [
     "de"
    ],
-   "nextDelayMin": 30,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
-   "playtimeMin": 15
+   "playtimeMin": 15,
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Elon Riverlands: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Elon Riverlands »"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "ER",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — pof-er, segment « The Path to Ascension: Augury Rock » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "de": {
    "name": {
     "fr": "Le soulèvement des junundus",
     "en": "Junundu Rising"
    },
-   "subname": "Shattered Ravines",
    "map": {
     "fr": "La Désolation",
     "en": "The Desolation"
@@ -1214,18 +1305,35 @@
    "next": [
     "dv"
    ],
-   "nextDelayMin": 30,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « The Desolation: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Desolation »"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "DE",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — pof-td, segment « Junundu Rising » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "dv": {
    "name": {
     "fr": "Forgé par le feu",
     "en": "Forged with Fire"
    },
-   "subname": "Vehjin Palace",
    "map": {
     "fr": "Domaine de Vabbi",
     "en": "Domain of Vabbi"
@@ -1245,21 +1353,35 @@
    "next": [
     "co"
    ],
-   "nextDelayMin": 21,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "trade_contract"
    ],
    "needs_verification": false,
-   "playtimeMin": 20
+   "playtimeMin": 20,
+   "rewards_refs": {
+    "trade_contract": "wiki:trade_contract — sa section d'acquisition cite « Domain of Vabbi: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Domain of Vabbi »"
+   },
+   "categorie": "Path of Fire",
+   "acces": {
+    "type": "expansion",
+    "access": "PathOfFire"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "FW",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — pof-dv, segment « Forged with Fire » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "sp": {
    "name": {
     "fr": "Assaut étherlame",
     "en": "Aetherblade Assault"
-   },
-   "subname": {
-    "fr": "Monastère de Shing Jea",
-    "en": "Shing Jea Monastery"
    },
    "map": {
     "fr": "Province de Seitung",
@@ -1280,19 +1402,33 @@
    "next": [
     "ew"
    ],
-   "nextDelayMin": 10,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chunk_of_ancient_ambergris"
    ],
    "needs_verification": false,
-   "timer_notes": "Heures impaires uniquement : 01:30 / 03:30 / 05:30... UTC"
+   "timer_notes": "Heures impaires uniquement : 01:30 / 03:30 / 05:30... UTC",
+   "rewards_refs": {
+    "chunk_of_ancient_ambergris": "wiki:chunk_of_ancient_ambergris — sa section d'acquisition cite « Seitung Province: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Seitung Province »"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "SP",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — eod-sp, segment « Aetherblade Assault » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "nk": {
    "name": "Kaineng Blackout",
-   "subname": {
-    "fr": "Néo-Kaineng",
-    "en": "New Kaineng City"
-   },
    "map": {
     "fr": "Néo-Kaineng",
     "en": "New Kaineng City"
@@ -1312,19 +1448,36 @@
    "next": [
     "ew"
    ],
-   "nextDelayMin": 40,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "chunk_of_pure_jade"
    ],
    "needs_verification": false,
-   "timer_notes": "Heures paires : 00:00 / 02:00 / 04:00... UTC"
+   "timer_notes": "Heures paires : 00:00 / 02:00 / 04:00... UTC",
+   "rewards_refs": {
+    "chunk_of_pure_jade": "wiki:chunk_of_pure_jade — sa section d'acquisition cite « New Kaineng City: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « New Kaineng City »"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "NK",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — eod-nkc, segment « Kaineng Blackout » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "ew": {
    "name": {
     "fr": "La guerre des gangs d'Echovald",
     "en": "Gang War"
    },
-   "subname": "Echovald Wilds + Junkyard",
    "map": {
     "fr": "Terres sauvages d'Echovald",
     "en": "Echovald Wilds"
@@ -1336,26 +1489,41 @@
    "efficience": "B",
    "population": "moyen",
    "waypoint": "Arborstone Waypoint",
-   "wpCode": "[&BNMMAAA=]",
+   "wpCode": "[&BLsNAAA=]",
    "tip": {
     "fr": "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung. Population correcte.",
     "en": "2 phases: Gang War then Junkyard. Chains from Seitung. Decent population."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
    "timer_notes": "Heures paires : 01:40 / 03:40 / 05:40... UTC",
-   "playtimeMin": 35
+   "playtimeMin": 35,
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "EW",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Echovald Wilds »"
+   },
+   "ref": "Widget:Event timer/data.json — eod-ew, segment « Aspenwood » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "de2": {
    "name": {
     "fr": "La Bataille de la Mer de Jade",
     "en": "Battle for Jade Sea"
    },
-   "subname": "Dragon's End — prépa + bataille",
    "map": {
     "fr": "Trépas du dragon",
     "en": "Dragon's End"
@@ -1373,25 +1541,41 @@
     "en": "Prep phase (14 min) then battle (~30 min). Prep doesn't guarantee the battle. Long, coordination required, risk of failure. Poor gemstone efficiency for the effort. Worth it if you enjoy the content."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "antique_summoning_stone",
+    "chunk_of_pure_jade"
    ],
    "needs_verification": false,
    "timer_notes": {
     "fr": "Heures impaires : 01:00 / 03:00 / 05:00... UTC. Jade Maw (event distinct) peut polluer le timer wiki.",
     "en": "Odd hours: 01:00 / 03:00 / 05:00... UTC. Jade Maw (separate event) can pollute the wiki timer."
    },
-   "playtimeMin": 45
+   "playtimeMin": 45,
+   "rewards_refs": {
+    "antique_summoning_stone": "wiki:antique_summoning_stone — sa section d'acquisition cite « Dragon's End: Hero's Choice Chest », carte confirmee par le widget",
+    "chunk_of_pure_jade": "wiki:chunk_of_pure_jade — sa section d'acquisition cite « Dragon's End: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Dragon's End »"
+   },
+   "categorie": "End of Dragons",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "DE2",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "ref": "Widget:Event timer/data.json — eod-de, segment « The Battle for the Jade Sea » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "checked": "2026-10-03",
+   "verified": true
   },
   "gy": {
    "name": {
     "fr": "Détruire le voyageur vorace",
     "en": "Ravenous Wanderer"
-   },
-   "subname": {
-    "fr": "Fosse de Gyala",
-    "en": "Gyala Delve"
    },
    "map": {
     "fr": "Fosse de Gyala",
@@ -1410,7 +1594,6 @@
     "en": "Dead population outside Wizard's Vault rotation. Minimum players required to trigger the meta. Opportunistic only."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
@@ -1418,6 +1601,18 @@
    "timer_notes": {
     "fr": "Timer UTC exact non confirmé — needs_verification",
     "en": "Exact UTC timer not confirmed - needs_verification"
+   },
+   "categorie": "Gyala Delve",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "EndOfDragons",
+    "ref": "Antoine, 02/10/2026",
+    "verified": true,
+    "checked": "2026-10-02"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Gyala Delve »"
    }
   },
   "sw": {
@@ -1425,7 +1620,6 @@
     "fr": "Déverrouiller la Tour du sorcier",
     "en": "Unlocking the Wizard's Tower"
    },
-   "subname": "Droknar's Light",
    "map": {
     "fr": "Archipel de l'observatoire céleste",
     "en": "Skywatch Archipelago"
@@ -1445,18 +1639,35 @@
    "next": [
     "am"
    ],
-   "nextDelayMin": 60,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "case_of_captured_lightning"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "rewards_refs": {
+    "case_of_captured_lightning": "wiki:case_of_captured_lightning — sa section d'acquisition cite « Skywatch Archipelago: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Skywatch Archipelago »"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "ref": "Widget:Event timer/data.json — soto-sa, segment « Unlocking the Wizard's Tower » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true,
+   "icon": "SW",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   }
   },
   "am": {
    "name": {
     "fr": "La défense d'Amnytas",
     "en": "Defense of Amnytas"
    },
-   "subname": "Bastion of the Natural",
    "map": "Amnytas",
    "expansion": "SotO",
    "offsetUTC": 0,
@@ -1473,18 +1684,35 @@
    "next": [
     "sw"
    ],
-   "nextDelayMin": 60,
    "rewards": [
-    "amalgamated_gemstone"
+    "amalgamated_gemstone",
+    "pouch_of_stardust"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "rewards_refs": {
+    "pouch_of_stardust": "wiki:pouch_of_stardust — sa section d'acquisition cite « Amnytas: Hero's Choice Chest », carte confirmee par le widget",
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Amnytas »"
+   },
+   "categorie": "Secrets of the Obscure",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "ref": "Widget:Event timer/data.json — soto-am, segment « Defense of Amnytas » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true,
+   "icon": "AM",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   }
   },
   "in": {
    "name": {
-    "fr": "Chemin vers Heitor + Les crocs qui grincent",
-    "en": "Road to Heitor + Fangs That Gnash"
+    "fr": "Chemin vers Heitor + Les crocs qui grincent — Map Readiness",
+    "en": "Road to Heitor + Fangs That Gnash — Map Readiness"
    },
-   "subname": "Inner Nayos — Map Readiness",
    "map": {
     "fr": "Nayos intérieur",
     "en": "Inner Nayos"
@@ -1504,38 +1732,43 @@
    "next": [
     "zak"
    ],
-   "nextDelayMin": 0,
    "rewards": [
-    "amalgamated_gemstone",
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
    "timer_notes": {
     "fr": "Event-based — surveiller le LFG ou la progression de map",
     "en": "Event-based - watch LFG or map progression"
+   },
+   "categorie": "Inner Nayos",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure",
+    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
+    "verified": false,
+    "checked": "2026-10-02"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
    }
   },
   "zak": {
    "name": "Into the Spider's Lair",
-   "subname": "Citadel of Zakiros",
    "map": {
     "fr": "Nayos intérieur",
     "en": "Inner Nayos"
    },
    "expansion": "SotO",
-   "offsetUTC": null,
-   "intervalMin": null,
-   "durationMin": 20,
    "efficience": "B",
    "population": "inconnu",
-   "waypoint": "Citadel of Zakiros Waypoint",
-   "wpCode": "[&BHMMAAA=]",
+   "waypoint": "Citadel of Zakiros — Forward Bivouac Waypoint",
+   "wpCode": "[&BHYOAAA=]",
    "tip": {
     "fr": "Conditionnel : ne démarre que si Chemin vers Heitor ET Les crocs qui grincent sont complétés. Population non confirmée.",
     "en": "Conditional: only starts if Road to Heitor AND Fangs That Gnash are completed. Population unconfirmed."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
@@ -1543,6 +1776,21 @@
    "timer_notes": {
     "fr": "Event-based — conditionnel aux deux metas précédentes d'Inner Nayos",
     "en": "Event-based - conditional on the two previous Inner Nayos metas"
+   },
+   "categorie": "Inner Nayos",
+   "categorie_ref": "meta sans timer : absente du widget, lue par sa carte",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure",
+    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
+    "verified": false,
+    "checked": "2026-10-02"
+   },
+   "icon": "SL",
+   "resetNote": "Conditionnel — pas de timer fixe",
+   "isTimeless": true,
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
    }
   },
   "conv": {
@@ -1550,7 +1798,6 @@
     "fr": "Convergence : Nayos extérieur",
     "en": "Convergence Outer Nayos"
    },
-   "subname": "Public Instance — SotO",
    "map": {
     "fr": "La Tour du sorcier",
     "en": "The Wizard's Tower"
@@ -1568,21 +1815,36 @@
     "en": "Every 3h at XX:30 UTC (01:30 / 04:30 / 07:30...). 10-min window. Portal in the Rift Hunter Lounge at Wizard's Tower."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
    "ref": "wiki:Convergence:_Outer_Nayos — « Public instance opens every 3 hours at XX:30, starting from 01:30, for 10 minutes until XX:40 »",
    "verified": true,
-   "checked": "2026-10-01"
+   "checked": "2026-10-01",
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "expansion",
+    "access": "SecretsOfTheObscure",
+    "ref": "entree sur une carte d'extension, pas d'acces sans elle — confirme en jeu par Antoine le 02/10/2026",
+    "verified": true,
+    "checked": "2026-10-02"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "icon": "CV",
+   "resetNote": {
+    "fr": "Commander's Choice Chest : hard-reset daily 01h UTC+1",
+    "en": "Commander's Choice Chest: daily hard-reset 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   }
   },
   "mb": {
    "name": {
     "fr": "Convergence : Mont Balrior",
     "en": "Convergence Mount Balrior"
    },
-   "subname": "Public Instance — JW",
    "map": "Lowland Shore",
    "expansion": "JW",
    "offsetUTC": 0,
@@ -1599,19 +1861,37 @@
    "next": [
     "conv"
    ],
-   "nextDelayMin": 90,
    "rewards": [
     "amalgamated_gemstone"
    ],
    "needs_verification": false,
-   "playtimeMin": 20
+   "playtimeMin": 20,
+   "categorie": "Public Instances",
+   "acces": {
+    "type": "expansion",
+    "access": "JanthirWilds",
+    "ref": "entree sur une carte d'extension, pas d'acces sans elle — confirme en jeu par Antoine le 02/10/2026",
+    "verified": true,
+    "checked": "2026-10-02"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "ref": "Widget:Event timer/data.json — public-con, segment « Mount Balrior » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true,
+   "icon": "MB",
+   "resetNote": {
+    "fr": "Commander's Choice Chest : hard-reset daily 01h UTC+1",
+    "en": "Commander's Choice Chest: daily hard-reset 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Convergence »"
+   }
   },
   "bn": {
    "name": {
     "fr": "Un voyage titanesque",
     "en": "A Titanic Voyage"
    },
-   "subname": "Lextalion the Merciless",
    "map": "Bava Nisos",
    "expansion": "JW",
    "offsetUTC": 80,
@@ -1626,119 +1906,109 @@
     "en": "Every 2h at XX:20 UTC. Direct Commander's Choice Chest. Talk to Livia to start the event. CC required on the boss."
    },
    "next": [],
-   "nextDelayMin": null,
    "rewards": [
     "amalgamated_gemstone"
    ],
-   "needs_verification": false
+   "needs_verification": false,
+   "categorie": "Janthir Wilds",
+   "acces": {
+    "type": "expansion",
+    "access": "JanthirWilds"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "ref": "Widget:Event timer/data.json — jw-bn, segment « A Titanic Voyage » : decalage calcule depuis la frise",
+   "checked": "2026-10-01",
+   "verified": true,
+   "icon": "BN",
+   "resetNote": {
+    "fr": "Commander's Choice Chest : hard-reset daily 01h UTC+1",
+    "en": "Commander's Choice Chest: daily hard-reset 01h UTC+1"
+   },
+   "rewards_refs": {
+    "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « Bava Nisos »"
+   }
   },
   "di": {
-   "name": {
+   "name": "Palawadan",
+   "map": {
     "fr": "Domaine d'Istan",
     "en": "Domain of Istan"
    },
-   "map": {
-    "fr": "Domain of Istan",
-    "en": "Domain of Istan"
-   },
-   "subname": "Palawadan",
    "offsetUTC": 105,
    "intervalMin": 120,
    "durationMin": 30,
    "playtimeMin": 20,
    "ref": "Widget:Event timer/data.json — lws4-di, segment « Palawadan » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
-   "verified": true
-  },
-  "obs_sw": {
-   "name": "Skywatch Archipelago",
-   "map": {
-    "fr": "Skywatch Archipelago",
-    "en": "Skywatch Archipelago"
+   "verified": true,
+   "rewards": [],
+   "categorie": "Living World Season 4",
+   "acces": {
+    "type": "living_world",
+    "saison": "LW4"
    },
-   "subname": "Unlocking the Wizard's Tower",
-   "offsetUTC": 60,
-   "intervalMin": 120,
-   "durationMin": 25,
-   "ref": "Widget:Event timer/data.json — soto-sa, segment « Unlocking the Wizard's Tower » : decalage calcule depuis la frise",
-   "checked": "2026-10-01",
-   "verified": true
-  },
-  "obs_am": {
-   "name": "Amnytas",
-   "map": {
-    "fr": "Amnytas",
-    "en": "Amnytas"
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "expansion": "LW4",
+   "icon": "DI",
+   "efficience": "A",
+   "population": "LFG",
+   "waypoint": "Chalon Docks Waypoint",
+   "wpCode": "[&BAkLAAA=]",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
    },
-   "subname": "The Defense of Amnytas",
-   "offsetUTC": 0,
-   "intervalMin": 120,
-   "durationMin": 25,
-   "ref": "Widget:Event timer/data.json — soto-am, segment « Defense of Amnytas » : decalage calcule depuis la frise",
-   "checked": "2026-10-01",
-   "verified": true
-  },
-  "obs_conv_mb": {
-   "name": "Convergence",
-   "map": {
-    "fr": "Convergence",
-    "en": "Convergence"
-   },
-   "subname": "Mount Balrior (public)",
-   "offsetUTC": 0,
-   "intervalMin": 180,
-   "durationMin": 10,
-   "playtimeMin": 20,
-   "ref": "Widget:Event timer/data.json — public-con, segment « Mount Balrior » : decalage calcule depuis la frise",
-   "checked": "2026-10-01",
-   "verified": true
-  },
-  "obs_conv_on": {
-   "name": "Convergence",
-   "map": {
-    "fr": "Convergence",
-    "en": "Convergence"
-   },
-   "subname": "Outer Nayos (public)",
-   "offsetUTC": 90,
-   "intervalMin": 180,
-   "durationMin": 10,
-   "ref": "Widget:Event timer/data.json — public-con, segment « Outer Nayos » : decalage calcule depuis la frise",
-   "checked": "2026-10-01",
-   "verified": true
+   "tip": {
+    "fr": "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h.",
+    "en": "Very popular, easy LFG taxi. Chest: hard-reset at 01h."
+   }
   },
   "hammerhart": {
    "name": {
-    "fr": "Shipwreck Strand",
-    "en": "Shipwreck Strand"
+    "fr": "Rixe des Hammerhart !",
+    "en": "Hammerhart Rumble!"
    },
    "map": {
     "fr": "Shipwreck Strand",
     "en": "Shipwreck Strand"
-   },
-   "subname": {
-    "fr": "Rixe des Hammerhart !",
-    "en": "Hammerhart Rumble!"
    },
    "offsetUTC": 40,
    "intervalMin": 120,
    "durationMin": 20,
    "ref": "Widget:Event timer/data.json — voe-ss, segment « Hammerhart Rumble! » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
-   "verified": true
+   "verified": true,
+   "rewards": [
+    "aether_rich_sap"
+   ],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "expansion": "VoE",
+   "icon": "HR",
+   "efficience": "A",
+   "population": "LFG",
+   "waypoint": "Hammerhart Battery",
+   "wpCode": "[&BHUPAAA=]",
+   "tip": {
+    "fr": "World boss de Shipwreck Strand (Twisting Hollows). Accès rapide : téléporteur « Found » au Pub Canach. CC obligatoire pour percer le dôme initial ; boss jumeaux à barre de vie partagée. Source d'Aether-Rich Sap.",
+    "en": "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source."
+   },
+   "rewards_refs": {
+    "aether_rich_sap": "ressources/wiki/aether_rich_sap.html — obtenue en completant les evenements de Shipwreck Strand"
+   }
   },
   "weald": {
    "name": {
-    "fr": "Starlit Weald",
-    "en": "Starlit Weald"
+    "fr": "Secrets de la sylve",
+    "en": "Secrets of the Weald"
    },
    "map": {
     "fr": "Starlit Weald",
     "en": "Starlit Weald"
-   },
-   "subname": {
-    "fr": "Secrets de la sylve",
-    "en": "Secrets of the Weald"
    },
    "offsetUTC": 100,
    "intervalMin": 120,
@@ -1746,20 +2016,38 @@
    "playtimeMin": 25,
    "ref": "Widget:Event timer/data.json — voe-sw, segment « Secrets of the Weald » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
-   "verified": true
+   "verified": true,
+   "rewards": [
+    "antiquated_ducat"
+   ],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "expansion": "VoE",
+   "icon": "SW",
+   "efficience": "A",
+   "population": "LFG",
+   "waypoint": "Consecrated Piazza",
+   "wpCode": "[&BG8PAAA=]",
+   "tip": {
+    "fr": "Méta de Starlit Weald (Cloister of Stars) : 3 excavateurs simultanés puis Gwyllian. Maîtrise des lignes de force requise (planeur/monture). Source d'Antiquated Ducats.",
+    "en": "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source."
+   },
+   "rewards_refs": {
+    "antiquated_ducat": "ressources/wiki/antiquated_ducat.html — obtenue en completant les evenements de Starlit Weald"
+   }
   },
   "shackles": {
    "name": {
-    "fr": "Eternity's Garden",
-    "en": "Eternity's Garden"
+    "fr": "Entraves des Anciens",
+    "en": "Shackles of the Ancients"
    },
    "map": {
     "fr": "Eternity's Garden",
     "en": "Eternity's Garden"
-   },
-   "subname": {
-    "fr": "Entraves des Anciens",
-    "en": "Shackles of the Ancients"
    },
    "offsetUTC": 75,
    "intervalMin": 120,
@@ -1767,27 +2055,382 @@
    "playtimeMin": 50,
    "ref": "Widget:Event timer/data.json — voe-eg, segment « Shackles of the Ancients » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
-   "verified": true
+   "verified": true,
+   "rewards": [],
+   "categorie": "Visions of Eternity",
+   "acces": {
+    "type": "expansion",
+    "access": "VisionsOfEternity"
+   },
+   "categorie_ref": "Widget:Event timer/data.json — champ `category` de son evenement",
+   "expansion": "VoE",
+   "icon": "SA",
+   "efficience": "A",
+   "population": "LFG",
+   "waypoint": "Pilgrim's Rest",
+   "wpCode": "[&BPwPAAA=]",
+   "tip": {
+    "fr": "Méta d'Eternity's Garden (heures impaires UTC) : rassemblement à Pilgrim's Rest dès xx:00, lancement xx:10. 3 phases ~15 min : capturer les 3 chambres de la Forge, réparer les conduits, puis Kela et l'All Seer (~xx:35). Boucle de farm principale de la carte (horaire confirmé wiki).",
+    "en": "Eternity's Garden meta (odd UTC hours): gather at Pilgrim's Rest from xx:00, starts xx:10. 3 ~15-min phases: capture the 3 Forge chambers, repair the conduits, then Kela and the All Seer (~xx:35). The map's main farm loop (schedule confirmed via wiki)."
+   }
   },
-  "titanic": {
+  "lw4_istan": {
    "name": {
-    "fr": "Bava Nisos",
-    "en": "Bava Nisos"
+    "fr": "Nodes de Brandstone + VM",
+    "en": "Brandstone nodes + VM"
    },
    "map": {
-    "fr": "Bava Nisos",
-    "en": "Bava Nisos"
+    "fr": "Domaine d'Istan",
+    "en": "Domain of Istan"
    },
-   "subname": {
-    "fr": "Un voyage titanesque",
-    "en": "A Titanic Voyage"
+   "expansion": "LW4",
+   "icon": "OP",
+   "waypoint": "Chalon Docks Waypoint",
+   "wpCode": "[&BAkLAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)",
+    "en": "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)"
    },
-   "offsetUTC": 80,
+   "vendor": {
+    "fr": "Traveling Elonian Trader (Chute draconique) — 5 Kralkatite/jour/compte contre VM",
+    "en": "Traveling Elonian Trader (Dragonfall) — 5 Kralkatite/day/account for VM"
+   },
+   "vendorWp": "Pact Command Waypoint [&BOAKAAA=] — Dragonfall",
+   "tip": {
+    "fr": "Nodes de Brandstone → Volatile Magic. Soft-reset à 01h (attendre 5-15h après récolte). Cap 50 nodes/compte/jour. Vendeur Dragonfall : 5 Kralkatite/jour contre VM.",
+    "en": "Brandstone nodes → Volatile Magic. Soft-reset at 01h (wait 5-15h after harvest). Cap 50 nodes/account/day. Dragonfall vendor: 5 Kralkatite/day for VM."
+   },
+   "isTimeless": true,
+   "cadence_ref": "volatile_magic",
+   "rewards": [
+    "volatile_magic",
+    "kralkatite_ore"
+   ],
+   "rewards_refs": {
+    "volatile_magic": "cadence de volatile_magic (noeuds LW4, 50/compte/jour), deja verifiee",
+    "kralkatite_ore": "wiki:Bundle_of_Kralkatite — 3 vendeurs de coeur du Domaine d'Istan"
+   },
+   "acces": {
+    "type": "living_world",
+    "saison": "LW4",
+    "ref": "wiki:Domain_of_Istan — « zone available via Living World Season 4 episode Daybreak », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "lw4_dragonfall": {
+   "name": {
+    "fr": "Nodes de Mistborn Mote",
+    "en": "Mistborn Mote nodes"
+   },
+   "map": {
+    "fr": "Chute draconique",
+    "en": "Dragonfall"
+   },
+   "expansion": "LW4",
+   "icon": "DF",
+   "waypoint": "Pact Command Waypoint",
+   "wpCode": "[&BOAKAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1 (min. 5-15h après récolte)",
+    "en": "daily soft-reset 01h UTC+1 (min. 5-15h after harvest)"
+   },
+   "vendor": {
+    "fr": "Crystal Bloom Quartermaster — Mistborn Mote contre karma (Chute draconique)",
+    "en": "Crystal Bloom Quartermaster — Mistborn Mote for karma (Dragonfall)"
+   },
+   "vendorWp": "Pact Command Waypoint [&BOAKAAA=]",
+   "tip": {
+    "fr": "Max 50 nodes de Mistborn Mote/compte/jour. Soft-reset à 01h. Le Crystal Bloom Quartermaster sur place vend des Mistborn Motes contre karma (5/jour — léger potentiel alt-swap).",
+    "en": "Max 50 Mistborn Mote nodes/account/day. Soft-reset at 01h. Crystal Bloom Quartermaster on-site sells Mistborn Mote for karma (5/day — slight alt-swap potential)."
+   },
+   "isTimeless": true,
+   "cadence_ref": "mistborn_mote",
+   "rewards": [
+    "mistborn_mote"
+   ],
+   "rewards_refs": {
+    "mistborn_mote": "cadence de mistborn_mote (noeuds de Dragonfall), deja verifiee"
+   },
+   "acces": {
+    "type": "living_world",
+    "saison": "LW4",
+    "ref": "wiki:Dragonfall — « zone available via Living World Season 4 episode War Eternal », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "bf": {
+   "name": {
+    "fr": "Nodes de Fresh Winterberry",
+    "en": "Fresh Winterberry nodes"
+   },
+   "map": {
+    "fr": "Confins de Givramer",
+    "en": "Bitterfrost Frontier"
+   },
+   "expansion": "LW3",
+   "icon": "BF",
+   "farmType": "per_char",
+   "waypoint": "Sorrow's Eclipse Waypoint",
+   "wpCode": "[&BH0JAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1 (min. 5-15h après dernière récolte)",
+    "en": "daily soft-reset 01h UTC+1 (min. 5-15h after last harvest)"
+   },
+   "tip": {
+    "fr": "~50-80 Winterberries par perso et par jour — 21 nodes sur la map. Thaw Elixir requis pour la zone froide. Reset : soft-reset à 01h, mais attendre 5-15h après la dernière récolte avant d'y retourner.",
+    "en": "~50-80 Winterberries per character per day — 21 nodes on the map. Thaw Elixir required for the cold zone. Reset: soft-reset at 01h, but wait 5-15h after your last harvest before returning."
+   },
+   "isTimeless": true,
+   "acces": {
+    "type": "living_world",
+    "saison": "LW3",
+    "ref": "wiki:Bitterfrost_Frontier — « zone available via Living World Season 3 episode A Crack in the Ice », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "eb": {
+   "name": "Nodes LW3 + vendor",
+   "map": {
+    "fr": "Baie des braises",
+    "en": "Ember Bay"
+   },
+   "expansion": "LW3",
+   "icon": "EB",
+   "farmType": "per_char_hearts",
+   "waypoint": "Savage Rise Waypoint",
+   "wpCode": "[&BNMJAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1",
+    "en": "daily soft-reset 01h UTC+1"
+   },
+   "vendor": {
+    "fr": "5 vendeurs de cœur — ballot de 3 Petrified Wood contre karma, 1/jour/perso",
+    "en": "5 renown heart vendors — bundle of 3 Petrified Wood for karma, 1/day/character"
+   },
+   "tip": {
+    "fr": "~40 Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Les 5 vendeurs de cœur vendent chacun un ballot de 3 Petrified Wood contre karma, une fois par jour et par personnage une fois le cœur fait : 15/perso/jour, à démultiplier avec les alts.",
+    "en": "~40 Petrified Wood/account/day via nodes. Soft reset at 01h. The 5 renown heart vendors each sell a bundle of 3 Petrified Wood for karma, once per day per character once the heart is done: 15/character/day, multiplied by alts."
+   },
+   "isTimeless": true,
+   "cadence_ref": "petrified_wood_lw3",
+   "rewards": [
+    "petrified_wood_lw3"
+   ],
+   "rewards_refs": {
+    "petrified_wood_lw3": "wiki:Ember_Bay — Map resources"
+   },
+   "acces": {
+    "type": "living_world",
+    "saison": "LW3",
+    "ref": "wiki:Ember_Bay — « zone available via Living World Season 3 episode Rising Flames », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "dm": {
+   "name": "Nodes LW3 + vendor",
+   "map": {
+    "fr": "Mont Draconis",
+    "en": "Draconis Mons"
+   },
+   "expansion": "LW3",
+   "icon": "DM",
+   "farmType": "per_char_hearts",
+   "waypoint": "Heathen's Hold Waypoint",
+   "wpCode": "[&BOMJAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1",
+    "en": "daily soft-reset 01h UTC+1"
+   },
+   "vendor": {
+    "fr": "4 vendeurs de cœur (dont Tactician Tunelle) — ballot de 3 Fire Orchid Blossom contre karma, 1/jour/perso",
+    "en": "4 renown heart vendors (incl. Tactician Tunelle) — bundle of 3 Fire Orchid Blossom for karma, 1/day/character"
+   },
+   "vendorWp": "Heathen's Hold Waypoint [&BOMJAAA=]",
+   "tip": {
+    "fr": "~40 Fire Orchid + Petrified Wood/compte/jour via nodes. Soft-reset à 01h. Springer requis pour certains nodes. Les 4 vendeurs de cœur vendent chacun un ballot de 3 Fire Orchid Blossom contre karma, une fois par jour et par personnage une fois le cœur fait : 12/perso/jour, à démultiplier avec les alts.",
+    "en": "~40 Fire Orchid + Petrified Wood/account/day via nodes. Soft reset at 01h. Springer required for some nodes. The 4 renown heart vendors each sell a bundle of 3 Fire Orchid Blossom for karma, once per day per character once the heart is done: 12/character/day, multiplied by alts."
+   },
+   "isTimeless": true,
+   "cadence_ref": "fire_orchid_blossom",
+   "rewards": [
+    "fire_orchid_blossom"
+   ],
+   "rewards_refs": {
+    "fire_orchid_blossom": "wiki:Draconis_Mons — Map resources"
+   },
+   "acces": {
+    "type": "living_world",
+    "saison": "LW3",
+    "ref": "wiki:Draconis_Mons — « zone available via Living World Season 3 episode Flashpoint », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "ld": {
+   "name": "Nodes LW3 + vendor",
+   "map": {
+    "fr": "Lac Doric",
+    "en": "Lake Doric"
+   },
+   "expansion": "LW3",
+   "icon": "LD",
+   "farmType": "per_char_hearts",
+   "waypoint": "Noran's Homestead Waypoint",
+   "wpCode": "[&BNQJAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1",
+    "en": "daily soft-reset 01h UTC+1"
+   },
+   "vendor": {
+    "fr": "6 vendeurs de cœur (dont Noran) — ballot de 3 Jade Shard contre karma, 1/jour/perso",
+    "en": "6 renown heart vendors (incl. Noran) — bundle of 3 Jade Shard for karma, 1/day/character"
+   },
+   "vendorWp": "Noran's Homestead Waypoint [&BNQJAAA=]",
+   "tip": {
+    "fr": "~40 Jade Shards/compte/jour via nodes. Soft-reset à 01h. Les 6 vendeurs de cœur vendent chacun un ballot de 3 Jade Shard contre karma, une fois par jour et par personnage une fois le cœur fait : 18/perso/jour, à démultiplier avec les alts.",
+    "en": "~40 Jade Shards/account/day via nodes. Soft reset at 01h. The 6 renown heart vendors each sell a bundle of 3 Jade Shard for karma, once per day per character once the heart is done: 18/character/day, multiplied by alts."
+   },
+   "isTimeless": true,
+   "cadence_ref": "jade_shard_lw3",
+   "rewards": [
+    "jade_shard_lw3"
+   ],
+   "rewards_refs": {
+    "jade_shard_lw3": "wiki:Lake_Doric — Map resources"
+   },
+   "acces": {
+    "type": "living_world",
+    "saison": "LW3",
+    "ref": "wiki:Lake_Doric — « zone available via Living World Season 3 episode The Head of the Snake », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "sl": {
+   "name": "Hidden Reliquary Chests",
+   "map": {
+    "fr": "Plage des sirènes",
+    "en": "Siren's Landing"
+   },
+   "expansion": "LW3",
+   "icon": "SL",
+   "farmType": "per_char_hearts",
+   "waypoint": "Camp Reclamation Waypoint",
+   "wpCode": "[&BO8JAAA=]",
+   "resetNote": {
+    "fr": "soft-reset daily 01h UTC+1",
+    "en": "daily soft-reset 01h UTC+1"
+   },
+   "tip": {
+    "fr": "1 coffre gratuit + 1 payant (1,5po) par perso/jour. Les 5 hearts sont à refaire par perso avant l'accès (~20-30 min). Soft-reset à 01h. Alt-swap possible mais coûteux en temps.",
+    "en": "1 free chest + 1 paid (1.5g) per character/day. The 5 hearts must be redone per character before access (~20-30 min). Soft-reset at 01h. Alt-swap possible but time-costly."
+   },
+   "isTimeless": true,
+   "acces": {
+    "type": "living_world",
+    "saison": "LW3",
+    "ref": "wiki:Siren's_Landing — « zone available via Living World Season 3 episode One Path Ends », lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "bf_meta": {
+   "name": "Frozen Maw Meta",
+   "map": {
+    "fr": "Confins de Givramer",
+    "en": "Bitterfrost Frontier"
+   },
+   "expansion": "LW3",
+   "icon": "BM",
+   "farmType": "per_account",
+   "offsetUTC": 15,
    "intervalMin": 120,
-   "durationMin": 25,
-   "ref": "Widget:Event timer/data.json — jw-bn, segment « A Titanic Voyage » : decalage calcule depuis la frise",
-   "checked": "2026-10-01",
-   "verified": true
+   "durationMin": 20,
+   "waypoint": "Sorrow's Eclipse Waypoint",
+   "wpCode": "[&BH0JAAA=]",
+   "resetNote": {
+    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
+    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
+   },
+   "tip": {
+    "fr": "Meta toutes les 2h — Hero's Choice Chest (1/compte/jour, hard-reset à 01h) + Winterberries bonus post-meta. Bonne densité de loot.",
+    "en": "Meta every 2h — Hero's Choice Chest (1/account/day, hard-reset at 01h) + bonus Winterberries post-meta. Good loot density."
+   }
+  },
+  "mistburned": {
+   "name": {
+    "fr": "Événements Mistburned Barrens — Shards & coffres Mursaat",
+    "en": "Mistburned Barrens events — Shards & Mursaat caches"
+   },
+   "expansion": "JW",
+   "icon": "MB",
+   "waypoint": "Alliance Staging Ground",
+   "wpCode": "[&BFAPAAA=]",
+   "tip": {
+    "fr": "Boucle libre : événements éclair (batterie de la collection, très fréquents au NE du waypoint), coffres Mursaat Ruins (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 Shards de carte. Progresse aussi la Mistburned Mastery.",
+    "en": "Free loop: lightning events (collection battery, very frequent NE of the waypoint), Mursaat Ruins caches (→ Mist Gate Residues), Vials of Titan Melted Liquid Obsidian, 100 map Shards. Also progresses the Mistburned Mastery."
+   },
+   "isTimeless": true,
+   "acces": {
+    "type": "expansion",
+    "access": "JanthirWilds",
+    "ref": "wiki:Alliance_Staging_Ground — zone Mistburned Barrens, contenu Janthir Wilds ; guildwars2.com « Repentance Is Now Live » (11/03/2025), lu le 03/10/2026",
+    "verified": true,
+    "checked": "2026-10-03"
+   }
+  },
+  "adinf_dailies": {
+   "name": {
+    "fr": "Dailies fractales recommandées — ~3 Research Pages/jour",
+    "en": "Recommended fractal dailies — ~3 Research Pages/day"
+   },
+   "expansion": "Core",
+   "icon": "FD",
+   "waypoint": "Mistlock Observatory",
+   "wpCode": "[&BEwGAAA=]",
+   "tip": {
+    "fr": "Le timegate central : chaque Fractal Journal = 28 Research Pages, 4 journaux requis. ~3 pages/jour via les dailies recommandées → ~10 jours par collection.",
+    "en": "The core timegate: each Fractal Journal = 28 Research Pages, 4 journals required. ~3 pages/day via recommended dailies → ~10 days per collection."
+   },
+   "isTimeless": true
+  },
+  "adinf_cms": {
+   "name": {
+    "fr": "CM Sunqua / Nightmare / Shattered — +1 page chacun",
+    "en": "Sunqua / Nightmare / Shattered CMs — +1 page each"
+   },
+   "expansion": "Core",
+   "icon": "CM",
+   "waypoint": "Mistlock Observatory",
+   "wpCode": "[&BEwGAAA=]",
+   "tip": {
+    "fr": "Chaque Challenge Mote quotidien rapporte +1 Research Page → jusqu'à 6 pages/jour au total, soit ~5 jours par collection au lieu de 10.",
+    "en": "Each daily Challenge Mote grants +1 Research Page → up to 6 pages/day total, i.e. ~5 days per collection instead of 10."
+   },
+   "isTimeless": true
+  },
+  "adinf_kelvei": {
+   "name": {
+    "fr": "Kelvei — débloquer la collection suivante",
+    "en": "Kelvei — unlock the next collection"
+   },
+   "map": {
+    "fr": "Mistlock Observatory",
+    "en": "Mistlock Observatory"
+   },
+   "expansion": "Core",
+   "icon": "KV",
+   "waypoint": "Mistlock Observatory",
+   "wpCode": "[&BEwGAAA=]",
+   "tip": {
+    "fr": "Après chaque craft de dos (Finite Result → Upper Bound → Unbound), parler à Kelvei pour recevoir la « Theory of… » suivante. Recycler l'ancien dos pour les Balls of Dark Energy (5 puis 9).",
+    "en": "After each back craft (Finite Result → Upper Bound → Unbound), talk to Kelvei to receive the next 'Theory of…'. Salvage the old back for Balls of Dark Energy (5 then 9)."
+   },
+   "isTimeless": true
   }
  },
  "resources": {
@@ -2252,7 +2895,8 @@
     "chrysocola_crystal",
     "beryl_crystal",
     "emerald_crystal",
-    "ruby_crystal"
+    "ruby_crystal",
+    "pile_of_filthy_essence"
    ],
    "farmable": true,
    "sources": [
@@ -2294,7 +2938,8 @@
     "chrysocola_crystal": 1,
     "beryl_crystal": 1,
     "emerald_crystal": 1,
-    "ruby_crystal": 1
+    "ruby_crystal": 1,
+    "pile_of_filthy_essence": 1
    },
    "kind": "acquire",
    "best": "drop",
@@ -2304,15 +2949,16 @@
    "name": "Pile of Incandescent Dust",
    "apiId": 24276,
    "needed_for": [
+    "azurite_orb",
     "beryl_orb",
     "chrysocola_orb",
     "emerald_orb",
     "gift_of_dust",
     "gift_of_energy",
+    "opal_orb",
+    "pile_of_vile_essence",
     "ruby_orb",
-    "sapphire_orb",
-    "azurite_orb",
-    "pile_of_vile_essence"
+    "sapphire_orb"
    ],
    "farmable": true,
    "sources": [
@@ -2369,7 +3015,8 @@
     "ruby_orb": 5,
     "sapphire_orb": 5,
     "azurite_orb": 5,
-    "pile_of_vile_essence": 1
+    "pile_of_vile_essence": 1,
+    "opal_orb": 5
    },
    "kind": "acquire",
    "best": "drop",
@@ -2469,7 +3116,6 @@
    "qty": {
     "gift_of_dust": 100,
     "gift_of_magic": 250,
-    "endless_summer": 200,
     "gift_of_energy": 250,
     "gift_of_color": 250,
     "gift_of_history": 250,
@@ -2669,9 +3315,7 @@
    ],
    "qty": {
     "cube_stabilized_dark_energy": 75,
-    "ad_infinitum": 600,
-    "klobjarne_geirr": 150,
-    "transcendence": 95
+    "transcendence": 20
    },
    "farmable": true,
    "sources": [
@@ -2684,7 +3328,14 @@
    "verified": true,
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-   "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece"
+   "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece",
+   "qty_overlap_verified": [
+    "transcendence"
+   ],
+   "qty_overlap_note": {
+    "fr": "Transcendence : 75 par le cube du Gift of the Mists (arête) + 20 pour les 2 Integrated Fractal Matrix (clé à plat) — arbre gw2efficiency, 95.",
+    "en": "Transcendence: 75 through the Gift of the Mists cube (edge) + 20 for the 2 Integrated Fractal Matrix (flat key) — gw2efficiency tree, 95."
+   }
   },
   "gift_of_battle": {
    "name": "Gift of Battle",
@@ -3432,6 +4083,7 @@
    "name": "Branded Mass",
    "apiId": 89537,
    "needed_for": [
+    "diviners_orichalcum_imbued_inscription",
     "dragonsblood_weapons",
     "gift_of_ephemeral_magic"
    ],
@@ -3456,8 +4108,9 @@
     }
    ],
    "qty": {
-    "dragonsblood_weapons": 60,
-    "gift_of_ephemeral_magic": 100
+    "dragonsblood_weapons": 10,
+    "gift_of_ephemeral_magic": 100,
+    "diviners_orichalcum_imbued_inscription": 50
    },
    "kind": "acquire",
    "cadence": {
@@ -3592,7 +4245,8 @@
     "gift_of_crystalline_magic",
     "gift_of_ephemeral_magic",
     "pile_of_putrid_essence",
-    "pile_of_vile_essence"
+    "pile_of_vile_essence",
+    "pile_of_filthy_essence"
    ],
    "farmable": false,
    "sources": [
@@ -3612,7 +4266,8 @@
     "gift_of_ephemeral_magic": 1,
     "gift_of_crystalline_magic": 1,
     "pile_of_putrid_essence": 1,
-    "pile_of_vile_essence": 1
+    "pile_of_vile_essence": 1,
+    "pile_of_filthy_essence": 1
    },
    "kind": "acquire",
    "best": "vendor",
@@ -3765,6 +4420,22 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     },
+     {
+      "label": {
+       "fr": "Ballots — 6 vendeurs de cœur, Lake Doric",
+       "en": "Bundles — 6 renown heart vendors, Lake Doric"
+      },
+      "period": "day",
+      "cap": 18,
+      "per_character": true,
+      "cost": {
+       "fr": "3 Jade Shard par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 6 cœurs, donc 18 par personnage et par jour. Se démultiplie avec les alts.",
+       "en": "3 Jade Shard per bundle, 1 bundle per vendor per character per day, once the heart is done. 6 hearts, so 18 per character per day. Scales with alts."
+      },
+      "verified": true,
+      "checked": "2026-10-03",
+      "ref": "wiki:Bundle_of_Jade_Shards ; mecanisme confirme par Antoine le 03/10/2026"
      }
     ]
    }
@@ -3981,6 +4652,22 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     },
+     {
+      "label": {
+       "fr": "Ballots — 4 vendeurs de cœur, Draconis Mons",
+       "en": "Bundles — 4 renown heart vendors, Draconis Mons"
+      },
+      "period": "day",
+      "cap": 12,
+      "per_character": true,
+      "cost": {
+       "fr": "3 Fire Orchid Blossom par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 4 cœurs, donc 12 par personnage et par jour. Se démultiplie avec les alts.",
+       "en": "3 Fire Orchid Blossom per bundle, 1 bundle per vendor per character per day, once the heart is done. 4 hearts, so 12 per character per day. Scales with alts."
+      },
+      "verified": true,
+      "checked": "2026-10-03",
+      "ref": "wiki:Draconis_Mons — Map resources ; wiki:Tactician_Tunelle ; mecanisme confirme par Antoine le 03/10/2026"
      }
     ]
    }
@@ -4098,6 +4785,22 @@
       "verified": true,
       "checked": "2026-08-20",
       "ref": "gw2_legendary_tracker_v150 onglet Persos (LEGENDARIES.aurora.currencies)"
+     },
+     {
+      "label": {
+       "fr": "Ballots — 5 vendeurs de cœur, Ember Bay",
+       "en": "Bundles — 5 renown heart vendors, Ember Bay"
+      },
+      "period": "day",
+      "cap": 15,
+      "per_character": true,
+      "cost": {
+       "fr": "3 Petrified Wood par ballot, 1 ballot par vendeur, par personnage et par jour, une fois le cœur fait. 5 cœurs, donc 15 par personnage et par jour. Se démultiplie avec les alts.",
+       "en": "3 Petrified Wood per bundle, 1 bundle per vendor per character per day, once the heart is done. 5 hearts, so 15 per character per day. Scales with alts."
+      },
+      "verified": true,
+      "checked": "2026-10-03",
+      "ref": "wiki:Ember_Bay — Map resources ; mecanisme confirme par Antoine le 03/10/2026"
      }
     ]
    }
@@ -4324,6 +5027,13 @@
      "checked": "2026-08-22",
      "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
     }
+   },
+   "qty_overlap_verified": [
+    "triumphant_hero"
+   ],
+   "qty_overlap_note": {
+    "fr": "Triumphant Hero : 250 par pièce au vendeur de la pièce élevée (triumphant_heros_masque.html) et 250 dans le Gift of War Dedication — deux nœuds distincts.",
+    "en": "Triumphant Hero: 250 per piece at the ascended piece vendor (triumphant_heros_masque.html) and 250 in the Gift of War Dedication — two distinct nodes."
    }
   },
   "vision_crystal": {
@@ -4749,7 +5459,7 @@
     "transcendence"
    ],
    "qty": {
-    "transcendence": 500,
+    "transcendence": 900,
     "the_ascension": 250,
     "mist_band_infused": 150,
     "ardent_glorious__piece_light_helm": 100,
@@ -4817,6 +5527,10 @@
    "note": {
     "fr": "⏳ 900 pour Transcendence, et AUCUNE voie hors PvP structuré : ni Comptoir, ni craft, ni conversion. Une saison complète rend 400 sur ses paliers non répétables, donc il faut soit plus de deux saisons, soit farmer le palier Byzantium répétable à 100 l'unité. C'est le poste le plus fermé du fichier — tout le reste de Transcendence peut avancer en parallèle, celui-ci ne dépend que du calendrier des ligues.",
     "en": "⏳ 900 for Transcendence, and NO route outside structured PvP: no Trading Post, no crafting, no conversion. A full season yields 400 across its non-repeatable tiers, so it takes either more than two seasons or farming the repeatable Byzantium tier at 100 each. The most closed line in the file — everything else in Transcendence can progress in parallel, this one only follows the league calendar."
+   },
+   "qty_note": {
+    "fr": "Transcendence : 900 à l'arbre gw2efficiency — Star of Glory 400, Mist Diamond 250, Mist-Enhanced Orichalcum 250. La Star of Glory reste à plat tant qu'Ardent Glorious est bloqué.",
+    "en": null
    }
   },
   "shard_of_glory": {
@@ -4831,7 +5545,7 @@
     "transcendence"
    ],
    "qty": {
-    "transcendence": 2000,
+    "transcendence": 1750,
     "mist_band_infused": 170,
     "gift_of_skirmishing": 250,
     "ardent_glorious__per_piece": 250,
@@ -4876,7 +5590,11 @@
    "ref": "boite Recipe de Gift of Glory (250 Shard of Glory), symetrique de Gift of War -> 250 Memory of Battle",
    "qty_overlap_verified": [
     "transcendence"
-   ]
+   ],
+   "qty_note": {
+    "fr": "Transcendence : 2 250 à l'arbre gw2efficiency — 250 Gift of Glory et 250 Gift of Skirmishing par la chaîne, 1 750 à plat (Jar of Distilled Glory 1 000, essences 250, Mist Diamond 250, Mist-Enhanced Orichalcum 250).",
+    "en": null
+   }
   },
   "legendary_insight": {
    "name": "Legendary Insight",
@@ -5049,29 +5767,25 @@
     {
      "type": "vendor_mf",
      "tip": {
-      "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
-      "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Trade Contracts. No limit."
+      "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Elegy Mosaic. Sans limite.",
+      "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Elegy Mosaic. No limit."
      },
      "verified": true,
-     "checked": "2026-09-16",
-     "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Trade Contracts)"
+     "checked": "2026-10-04",
+     "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Elegy Mosaic, captures du 27/09)"
     }
    ],
    "kind": "advanced_craft",
    "recipe": {
-    "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Contrats commerciaux, sans limite.",
-    "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Trade Contracts, no cap."
+    "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Mosaiques d'elegie, sans limite.",
+    "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Elegy Mosaic, no cap."
    }
   },
   "trade_contract": {
    "name": "Trade Contract",
    "apiId": 87064,
-   "needed_for": [
-    "gift_of_the_rider"
-   ],
-   "qty": {
-    "gift_of_the_rider": 300
-   },
+   "needed_for": [],
+   "qty": {},
    "farmable": true,
    "sources": [
     {
@@ -5199,7 +5913,6 @@
     "gen1_howler": 1,
     "gen1_sunrise": 1,
     "gen1_twilight": 1,
-    "gen1_eternity": 1,
     "gen1_the_juggernaut": 1,
     "gen1_frenzy": 1,
     "gen1_kamohoalii_kotaki": 1,
@@ -5730,9 +6443,7 @@
     "stella_radians"
    ],
    "qty": {
-    "aetheric_anchor": 500,
     "selachimorpha": 1000,
-    "stella_radians": 500,
     "gift_of_research": 500
    },
    "farmable": true,
@@ -5806,8 +6517,7 @@
    ],
    "qty": {
     "vision": 360,
-    "ad_infinitum": 580,
-    "klobjarne_geirr": 1080,
+    "ad_infinitum": 460,
     "selachimorpha": 800,
     "gift_of_research": 250,
     "deldrimor_steel_spear_head": 50,
@@ -5884,7 +6594,6 @@
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "qty_overlap_verified": [
     "ad_infinitum",
-    "klobjarne_geirr",
     "vision"
    ]
   },
@@ -6077,6 +6786,7 @@
     "crystalline_ingot",
     "diviners_orichalcum_imbued_inscription",
     "endless_summer",
+    "exquisite_passion_flower",
     "funerary_incense",
     "gift_of_fortune",
     "gift_of_relics",
@@ -6084,12 +6794,15 @@
     "gift_of_sigils",
     "gift_of_souls",
     "glob_of_coagulated_mists_essence",
+    "glob_of_elder_spirit_residue",
     "klobjarne_geirr",
     "kralkatite_ingot",
     "lacquered_banner_pole",
+    "legendary_inscription",
     "lump_of_mithrillium",
     "memory_essence_encapsulator",
     "neutralized_titan_alloy",
+    "olmakhan_charm",
     "orrax_manifested",
     "seer_runestone",
     "selachimorpha",
@@ -6097,9 +6810,6 @@
     "spool_of_thick_elonian_cord",
     "stella_radians",
     "strife_unending",
-    "the_ascension",
-    "transcendence",
-    "glob_of_elder_spirit_residue",
     "superior_sigil_of_accuracy",
     "superior_sigil_of_air",
     "superior_sigil_of_battle",
@@ -6117,8 +6827,10 @@
     "superior_sigil_of_strength",
     "superior_sigil_of_venom",
     "sweet_treated_pine_plank",
-    "exquisite_passion_flower",
-    "legendary_inscription"
+    "the_ascension",
+    "transcendence",
+    "unbound_wings",
+    "vial_of_titan_melted_obsidian"
    ],
    "farmable": true,
    "sources": [
@@ -6139,7 +6851,7 @@
    "qty": {
     "obsidian__per_piece": 600,
     "the_ascension": 249,
-    "ad_infinitum": 789,
+    "ad_infinitum": 759,
     "memory_essence_encapsulator": 50,
     "vision": 249,
     "aurora": 250,
@@ -6151,8 +6863,8 @@
     "kralkatite_ingot": 1,
     "aetheric_anchor": 323,
     "endless_summer": 548,
-    "klobjarne_geirr": 741,
-    "orrax_manifested": 2020,
+    "klobjarne_geirr": 123,
+    "orrax_manifested": 220,
     "selachimorpha": 178,
     "stella_radians": 249,
     "strife_unending": 146,
@@ -6192,7 +6904,10 @@
     "superior_sigil_of_venom": 10,
     "sweet_treated_pine_plank": 3,
     "exquisite_passion_flower": 1,
-    "legendary_inscription": 10
+    "legendary_inscription": 10,
+    "vial_of_titan_melted_obsidian": 3,
+    "unbound_wings": 25,
+    "olmakhan_charm": 1
    },
    "kind": "acquire",
    "best": "salvage",
@@ -6212,7 +6927,14 @@
    "note": {
     "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon. Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par le lingot cristallin.",
     "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
-   }
+   },
+   "qty_note": {
+    "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé.",
+    "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged."
+   },
+   "wiki_redirects": [
+    "Ectoplasm"
+   ]
   },
   "mystic_clover": {
    "name": "Mystic Clover",
@@ -6234,6 +6956,7 @@
     "gift_of_runes",
     "gift_of_sigils",
     "gift_of_the_homesteader",
+    "gift_of_the_side_course",
     "gift_of_war_prosperity",
     "mystic_tribute",
     "orrax_manifested",
@@ -6369,7 +7092,6 @@
     "gen3_aurenes_wisdom": 39,
     "gen3_aurenes_breath": 39,
     "endless_summer": 10,
-    "orrax_manifested": 30,
     "triumphant_hero__per_piece": 15,
     "ardent_glorious__per_piece": 15,
     "gift_of_the_homesteader": 38,
@@ -6389,7 +7111,8 @@
     "gen3_aurenes_tail": 39,
     "gen3_aurenes_wing": 39,
     "gift_of_competitive_prosperity": 15,
-    "gift_of_prosperity": 15
+    "gift_of_prosperity": 15,
+    "gift_of_the_side_course": 30
    },
    "kind": "acquire",
    "best": "vendor",
@@ -6570,8 +7293,7 @@
     "gen3_aurenes_scale",
     "gen3_aurenes_voice",
     "gen3_aurenes_weight",
-    "gen3_aurenes_wisdom",
-    "orrax_manifested"
+    "gen3_aurenes_wisdom"
    ]
   },
   "gift_of_fortune": {
@@ -6603,7 +7325,6 @@
     "gen1_howler": 1,
     "gen1_sunrise": 1,
     "gen1_twilight": 1,
-    "gen1_eternity": 1,
     "gen1_the_juggernaut": 1,
     "gen1_frenzy": 1,
     "gen1_kamohoalii_kotaki": 1,
@@ -6690,6 +7411,7 @@
     "gift_of_magical_prosperity",
     "gift_of_prosperity",
     "gift_of_the_homesteader",
+    "gift_of_the_sun",
     "gift_of_war_prosperity",
     "mystic_tribute"
    ],
@@ -6718,7 +7440,8 @@
     "gift_of_magical_prosperity": 1,
     "gift_of_war_prosperity": 1,
     "gift_of_competitive_prosperity": 1,
-    "gift_of_prosperity": 1
+    "gift_of_prosperity": 1,
+    "gift_of_the_sun": 2
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -6744,6 +7467,7 @@
     "gift_of_mighty_prosperity",
     "gift_of_prosperity",
     "gift_of_the_homesteader",
+    "gift_of_the_sun",
     "gift_of_war_prosperity",
     "mystic_tribute"
    ],
@@ -6772,7 +7496,8 @@
     "gift_of_mighty_prosperity": 1,
     "gift_of_war_prosperity": 1,
     "gift_of_competitive_prosperity": 1,
-    "gift_of_prosperity": 1
+    "gift_of_prosperity": 1,
+    "gift_of_the_sun": 2
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -7375,7 +8100,6 @@
     "gen1_howler": 250,
     "gen1_sunrise": 250,
     "gen1_twilight": 250,
-    "gen1_eternity": 250,
     "gen1_the_juggernaut": 250,
     "gen1_frenzy": 250,
     "gen1_kamohoalii_kotaki": 250,
@@ -8911,7 +9635,8 @@
    "name": "Vial of Titan Melted Liquid Obsidian",
    "apiId": 104229,
    "needed_for": [
-    "gift_of_the_mistburned_isles",
+    "gift_of_the_mursaat_ruins",
+    "mists_gate_residue",
     "orrax_manifested"
    ],
    "farmable": true,
@@ -8934,7 +9659,8 @@
     }
    ],
    "qty": {
-    "gift_of_the_mistburned_isles": 150
+    "gift_of_the_mursaat_ruins": 100,
+    "mists_gate_residue": 1
    },
    "kind": "craftable",
    "best": "vendor",
@@ -9285,9 +10011,7 @@
   "gift_of_adventure_voe": {
    "name": "Gift of Adventure (VoE)",
    "apiId": 106700,
-   "needed_for": [
-    "gift_of_castoran_mastery"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
@@ -9298,9 +10022,7 @@
      }
     }
    ],
-   "qty": {
-    "gift_of_castoran_mastery": 1
-   },
+   "qty": {},
    "kind": "advanced_craft"
   },
   "gift_of_the_seas": {
@@ -9907,7 +10629,6 @@
     "gift_of_competitive_prowess",
     "gift_of_expertise",
     "gift_of_prowess",
-    "gift_of_research",
     "gift_of_the_mists",
     "gift_of_war_prowess",
     "pristine_mist_essence"
@@ -9915,7 +10636,6 @@
    "qty": {
     "gift_of_the_mists": 1,
     "gift_of_expertise": 1,
-    "gift_of_research": 1,
     "gift_of_prowess": 1,
     "gift_of_competitive_prowess": 1,
     "gift_of_war_prowess": 1,
@@ -10680,8 +11400,6 @@
    "apiId": 46733,
    "qty": {
     "dragonite_ingot": 100,
-    "conflux": 1000,
-    "warbringer": 1000,
     "mystic_essence_of_carnage": 250,
     "ad_infinitum": 1500,
     "selachimorpha": 1000
@@ -10717,10 +11435,6 @@
     "mystic_essence_of_carnage",
     "selachimorpha"
    ],
-   "qty_overlap_verified": [
-    "conflux",
-    "warbringer"
-   ],
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
     "en": null
@@ -10731,8 +11445,6 @@
    "apiId": 46735,
    "qty": {
     "empyreal_star": 100,
-    "conflux": 1000,
-    "warbringer": 1000,
     "mystic_essence_of_animosity": 250,
     "ad_infinitum": 1500,
     "selachimorpha": 1000
@@ -10768,10 +11480,6 @@
     "mystic_essence_of_animosity",
     "selachimorpha"
    ],
-   "qty_overlap_verified": [
-    "conflux",
-    "warbringer"
-   ],
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
     "en": null
@@ -10782,8 +11490,6 @@
    "apiId": 46731,
    "qty": {
     "bloodstone_brick": 100,
-    "conflux": 1000,
-    "warbringer": 1000,
     "mystic_essence_of_strategy": 250,
     "ad_infinitum": 1500,
     "selachimorpha": 1000
@@ -10818,10 +11524,6 @@
     "bloodstone_brick",
     "mystic_essence_of_strategy",
     "selachimorpha"
-   ],
-   "qty_overlap_verified": [
-    "conflux",
-    "warbringer"
    ],
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
@@ -10890,7 +11592,7 @@
    "name": "Exquisite Serpentite Jewel",
    "kind": "craftable",
    "qty": {
-    "dragonsblood_weapons": 3
+    "diviners_orichalcum_imbued_inscription": 3
    },
    "note": {
     "fr": "18 au total pour les six armes de sang de dragon.",
@@ -10900,7 +11602,7 @@
    "checked": "2026-08-13",
    "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
    "needed_for": [
-    "dragonsblood_weapons"
+    "diviners_orichalcum_imbued_inscription"
    ],
    "sources": [
     {
@@ -11169,8 +11871,14 @@
    "apiId": 69,
    "kind": "currency",
    "qty": {
-    "orrax_manifested": 500,
-    "endless_summer": 1000
+    "gift_of_ascalon": 500,
+    "gift_of_baelfire": 500,
+    "gift_of_knowledge": 500,
+    "gift_of_the_forgeman": 500,
+    "gift_of_the_nobleman": 500,
+    "gift_of_the_sanctuary": 500,
+    "gift_of_thorns": 500,
+    "gift_of_zhaitan": 500
    },
    "farmable": true,
    "sources": [
@@ -11191,7 +11899,15 @@
    "checked": "2026-08-13",
    "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
    "needed_for": [
-    "endless_summer"
+    "endless_summer",
+    "gift_of_ascalon",
+    "gift_of_baelfire",
+    "gift_of_knowledge",
+    "gift_of_the_forgeman",
+    "gift_of_the_nobleman",
+    "gift_of_the_sanctuary",
+    "gift_of_thorns",
+    "gift_of_zhaitan"
    ]
   },
   "ursus_oblige": {
@@ -11279,7 +11995,11 @@
    "apiId": 35,
    "kind": "currency",
    "qty": {
-    "funerary_incense": 3
+    "funerary_incense": 3,
+    "spirit_of_the_raptor": 75,
+    "spirit_of_the_springer": 75,
+    "spirit_of_the_skimmer": 75,
+    "spirit_of_the_jackal": 75
    },
    "farmable": true,
    "sources": [
@@ -11300,7 +12020,11 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "needed_for": [
-    "funerary_incense"
+    "funerary_incense",
+    "spirit_of_the_jackal",
+    "spirit_of_the_raptor",
+    "spirit_of_the_skimmer",
+    "spirit_of_the_springer"
    ]
   },
   "volatile_magic": {
@@ -11587,7 +12311,6 @@
    "qty": {
     "gift_of_venom": 100,
     "gift_of_magic": 250,
-    "endless_summer": 200,
     "vial_of_magic": 1
    },
    "farmable": true,
@@ -11656,7 +12379,6 @@
     "gift_of_scales": 100,
     "gift_of_might": 250,
     "mystic_essence_of_carnage": 20,
-    "endless_summer": 200,
     "transcendence": 20,
     "eel_statue": 250,
     "shark_statue": 250,
@@ -11739,7 +12461,6 @@
     "gift_of_blood": 100,
     "gift_of_magic": 250,
     "mystic_essence_of_strategy": 20,
-    "endless_summer": 200,
     "transcendence": 20,
     "shark_statue": 250,
     "vial_of_magic": 1
@@ -11823,7 +12544,6 @@
    "qty": {
     "gift_of_totems": 100,
     "gift_of_magic": 250,
-    "endless_summer": 200,
     "vial_of_magic": 1,
     "superior_sigil_of_nullification": 10
    },
@@ -11894,7 +12614,6 @@
     "gift_of_claws": 100,
     "gift_of_might": 250,
     "mystic_essence_of_annihilation": 20,
-    "endless_summer": 200,
     "transcendence": 20,
     "vial_of_might": 1,
     "superior_sigil_of_stamina": 10
@@ -11974,7 +12693,6 @@
    "qty": {
     "gift_of_fangs": 100,
     "gift_of_might": 250,
-    "endless_summer": 200,
     "wolf_statue": 250,
     "vial_of_might": 1
    },
@@ -12045,7 +12763,6 @@
     "gift_of_bones": 100,
     "gift_of_might": 250,
     "mystic_essence_of_animosity": 20,
-    "endless_summer": 200,
     "transcendence": 20,
     "vial_of_might": 1
    },
@@ -12310,7 +13027,6 @@
    "qty": {
     "gift_of_blood": 250,
     "mystic_essence_of_strategy": 50,
-    "endless_summer": 500,
     "transcendence": 50
    },
    "needed_for": [
@@ -12383,8 +13099,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_blood": 50,
-    "endless_summer": 100
+    "gift_of_blood": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12435,8 +13150,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_blood": 50,
-    "endless_summer": 100
+    "gift_of_blood": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12513,8 +13227,7 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_venom": 250,
-    "endless_summer": 500
+    "gift_of_venom": 250
    },
    "needed_for": [
     "endless_summer",
@@ -12577,8 +13290,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_venom": 50,
-    "endless_summer": 100
+    "gift_of_venom": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12629,8 +13341,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_venom": 50,
-    "endless_summer": 100
+    "gift_of_venom": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12707,8 +13418,7 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_totems": 250,
-    "endless_summer": 500
+    "gift_of_totems": 250
    },
    "needed_for": [
     "endless_summer",
@@ -12771,8 +13481,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_totems": 50,
-    "endless_summer": 100
+    "gift_of_totems": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12823,8 +13532,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_totems": 50,
-    "endless_summer": 100
+    "gift_of_totems": 50
    },
    "needed_for": [
     "endless_summer",
@@ -12939,7 +13647,6 @@
    "qty": {
     "gift_of_claws": 250,
     "mystic_essence_of_annihilation": 50,
-    "endless_summer": 500,
     "transcendence": 50
    },
    "needed_for": [
@@ -13012,8 +13719,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_claws": 50,
-    "endless_summer": 100
+    "gift_of_claws": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13064,8 +13770,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_claws": 50,
-    "endless_summer": 100
+    "gift_of_claws": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13146,7 +13851,6 @@
    "qty": {
     "gift_of_scales": 250,
     "mystic_essence_of_carnage": 50,
-    "endless_summer": 500,
     "transcendence": 50
    },
    "needed_for": [
@@ -13219,8 +13923,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_scales": 50,
-    "endless_summer": 100
+    "gift_of_scales": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13271,8 +13974,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_scales": 50,
-    "endless_summer": 100
+    "gift_of_scales": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13311,10 +14013,12 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 1,
+    "gift_of_recollector_of_memories": 1
    },
    "needed_for": [
-    "gift_of_condensed_might"
+    "gift_of_condensed_might",
+    "gift_of_recollector_of_memories"
    ],
    "recipe": {
     "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Ancient Bone + 250× Large Bone + 50× Heavy Bone + 50× Bone.",
@@ -13351,7 +14055,6 @@
    "qty": {
     "gift_of_bones": 250,
     "mystic_essence_of_animosity": 50,
-    "endless_summer": 500,
     "transcendence": 50
    },
    "needed_for": [
@@ -13423,8 +14126,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_bones": 50,
-    "endless_summer": 100
+    "gift_of_bones": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13474,8 +14176,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_bones": 50,
-    "endless_summer": 100
+    "gift_of_bones": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13551,8 +14252,7 @@
    "farmable": true,
    "tier": "T5",
    "qty": {
-    "gift_of_fangs": 250,
-    "endless_summer": 500
+    "gift_of_fangs": 250
    },
    "needed_for": [
     "endless_summer",
@@ -13615,8 +14315,7 @@
    "farmable": true,
    "tier": "T4",
    "qty": {
-    "gift_of_fangs": 50,
-    "endless_summer": 100
+    "gift_of_fangs": 50
    },
    "needed_for": [
     "endless_summer",
@@ -13667,8 +14366,7 @@
    "farmable": true,
    "tier": "T3",
    "qty": {
-    "gift_of_fangs": 50,
-    "endless_summer": 100
+    "gift_of_fangs": 50
    },
    "needed_for": [
     "endless_summer",
@@ -14993,7 +15691,6 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "endless_summer": 200,
     "gift_of_light": 100,
     "gift_of_lightning": 100,
     "gift_of_weather": 100
@@ -15063,8 +15760,8 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "klobjarne_geirr": 20250,
-    "orrax_manifested": 50000
+    "gift_of_the_ursus": 250,
+    "mursaat_runestone": 200
    },
    "sources": [
     {
@@ -15107,7 +15804,9 @@
    "checked": "2026-09-25",
    "ref": "page wiki : « Item type Service », l'objet se convertit a la reception. Stock au portefeuille, monnaie 66 ; l'objet 100477 n'y sejourne jamais",
    "needed_for": [
+    "gift_of_the_ursus",
     "klobjarne_geirr",
+    "mursaat_runestone",
     "orrax_manifested"
    ],
    "note": {
@@ -15154,8 +15853,9 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "klobjarne_geirr": 125,
-    "discounted_shard_of_janthir_syntri": 1
+    "klobjarne_geirr": 100,
+    "discounted_shard_of_janthir_syntri": 1,
+    "gift_of_the_ursus": 25
    },
    "sources": [
     {
@@ -15187,9 +15887,21 @@
    "ref": "wiki, fiches individuelles Janthir Wilds (exports Antoine 25/08/2026)",
    "needed_for": [
     "discounted_shard_of_janthir_syntri",
+    "gift_of_the_ursus",
     "klobjarne_geirr"
    ],
-   "apiId": 102494
+   "apiId": 102494,
+   "qty_overlap_verified": [
+    "klobjarne_geirr"
+   ],
+   "qty_overlap_note": {
+    "fr": "Table de Klobjarne Geirr : deux nœuds distincts, 100 sous les Shards of Janthir Syntri et 25 sous le Gift of the Ursus.",
+    "en": "Klobjarne Geirr table: two distinct nodes, 100 under the Shards of Janthir Syntri and 25 under the Gift of the Ursus."
+   },
+   "qty_note": {
+    "fr": "Klobjarne : 100 à plat pour les Shards of Janthir Syntri (version à prix réduit), les 25 du Gift of the Ursus passent par l'arête.",
+    "en": "Klobjarne: 100 flat for the Shards of Janthir Syntri (discounted version), the 25 from the Gift of the Ursus go through the edge."
+   }
   },
   "neutralized_titan_alloy": {
    "name": "Neutralized Titan Alloy",
@@ -15751,7 +16463,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_mistburned_isles": 100
+    "gift_of_the_mursaat_ruins": 100
    },
    "sources": [
     {
@@ -15788,7 +16500,7 @@
    "checked": "2026-08-26",
    "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
    "needed_for": [
-    "gift_of_the_mistburned_isles"
+    "gift_of_the_mursaat_ruins"
    ],
    "note": {
     "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
@@ -15851,7 +16563,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_mistburned_isles": 100
+    "gift_of_the_mursaat_ruins": 100
    },
    "sources": [
     {
@@ -15887,7 +16599,7 @@
    "checked": "2026-08-26",
    "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
-    "gift_of_the_mistburned_isles"
+    "gift_of_the_mursaat_ruins"
    ],
    "cadence": {
     "sources": [
@@ -17571,10 +18283,12 @@
    "kind": "advanced_craft",
    "farmable": false,
    "qty": {
-    "gift_of_sunrise": 1
+    "gift_of_sunrise": 1,
+    "gift_of_the_sun": 2
    },
    "needed_for": [
-    "gift_of_sunrise"
+    "gift_of_sunrise",
+    "gift_of_the_sun"
    ],
    "sources": [
     {
@@ -18395,7 +19109,8 @@
     "banner_of_the_commander": 25,
     "gift_of_souls": 250,
     "orichalcum_plated_dowel": 3,
-    "sweet_treated_pine_plank": 5
+    "sweet_treated_pine_plank": 5,
+    "neutralized_titan_alloy": 5
    },
    "needed_for": [
     "banner_of_the_commander",
@@ -18411,11 +19126,12 @@
     "gift_of_stealth",
     "gift_of_water",
     "gift_of_weather",
-    "shark_statue",
-    "unicorn_statue",
-    "wolf_statue",
+    "neutralized_titan_alloy",
     "orichalcum_plated_dowel",
-    "sweet_treated_pine_plank"
+    "shark_statue",
+    "sweet_treated_pine_plank",
+    "unicorn_statue",
+    "wolf_statue"
    ],
    "sources": [
     {
@@ -19568,7 +20284,8 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "unbound": 5
+    "unbound": 5,
+    "ad_infinitum": 3
    },
    "needed_for": [
     "unbound"
@@ -19585,7 +20302,14 @@
    "apiId": 75781,
    "ref": "boite Recipe de Unbound : 1 Solution: Unbound + 5 Pristine Mist Essence + 1 Unbound Wings + 1 Third Order Mist Frame",
    "checked": "2026-09-18",
-   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1"
+   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1",
+   "qty_overlap_verified": [
+    "ad_infinitum"
+   ],
+   "qty_overlap_note": {
+    "fr": "Ad Infinitum : 5 sous Unbound (arête) + 2 sous Upper Bound + 1 sous Finite Result (clé à plat, précurseurs absents du tracker) — arbre gw2efficiency, 8 au total.",
+    "en": "Ad Infinitum: 5 under Unbound (edge) + 2 under Upper Bound + 1 under Finite Result (flat key, precursors not in the tracker) — gw2efficiency tree, 8 in total."
+   }
   },
   "refined_envoy_armor": {
    "name": "Refined Envoy armor",
@@ -20387,10 +21111,12 @@
    "name": "Shard of the Dark Arts",
    "kind": "advanced_craft",
    "needed_for": [
+    "ars_goetia",
     "gift_of_ipos"
    ],
    "qty": {
-    "gift_of_ipos": 100
+    "gift_of_ipos": 100,
+    "ars_goetia": 100
    },
    "sources": [
     {
@@ -20462,11 +21188,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_arah.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Arah",
@@ -20485,11 +21214,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_call_of_the_void.html, table Acquisition"
     }
    ],
    "ref": "page wiki « Tribute to the Call of the Void » (deja au depot) ; le nom du composant en differe",
@@ -20509,11 +21241,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_endeavor.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Endeavor",
@@ -20532,11 +21267,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_exitare.html, table Acquisition"
     }
    ],
    "ref": "page wiki « Tribute to the Exitare » (deja au depot) ; le nom du composant en differe",
@@ -20556,11 +21294,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_friendship.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Friendship",
@@ -20579,11 +21320,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_liturgy.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Liturgy",
@@ -20602,11 +21346,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_resolution.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Resolution",
@@ -20625,11 +21372,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_spero.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Spero",
@@ -20648,11 +21398,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_the_dark_arts.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of the Dark Arts",
@@ -20671,11 +21424,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_tlehco.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Tlehco",
@@ -21756,11 +22512,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_the_man_o_war.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard o' War",
@@ -24686,14 +25445,14 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Ascalonian Catacombs.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Ascalonian Catacombs."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_darkness.html, gift_of_history.html, gift_of_light.html, gift_of_lightning.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_ascalon.html, table Acquisition"
     }
    ],
    "qty": {
@@ -24701,7 +25460,10 @@
     "gift_of_history": 1,
     "gift_of_light": 1,
     "gift_of_lightning": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_ascalon.html"
   },
   "gift_of_baelfire": {
    "name": "Gift of Baelfire",
@@ -24713,19 +25475,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Citadel of Flame.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Citadel of Flame."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de vial_of_liquid_flame.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_baelfire.html, table Acquisition"
     }
    ],
    "qty": {
     "vial_of_liquid_flame": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_baelfire.html"
   },
   "gift_of_janthir_syntri": {
    "name": "Gift of Janthir Syntri",
@@ -24762,20 +25527,23 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Crucible of Eternity.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Crucible of Eternity."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_stealth.html, gift_of_weather.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_knowledge.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_stealth": 1,
     "gift_of_weather": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_knowledge.html"
   },
   "gift_of_lowland_shore": {
    "name": "Gift of Lowland Shore",
@@ -24813,21 +25581,24 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Twilight Arbor.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Twilight Arbor."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_nature.html, unicorn_statue.html, wolf_statue.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_thorns.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_nature": 1,
     "unicorn_statue": 1,
     "wolf_statue": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_thorns.html"
   },
   "gift_of_zhaitan": {
    "name": "Gift of Zhaitan",
@@ -24840,20 +25611,23 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de The Ruined City of Arah.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of The Ruined City of Arah."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_color.html, shark_statue.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_zhaitan.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_color": 1,
     "shark_statue": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_zhaitan.html"
   },
   "gift_of_the_forgeman": {
    "name": "Gift of the Forgeman",
@@ -24866,20 +25640,23 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Sorrow's Embrace.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Sorrow's Embrace."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de eel_statue.html, vial_of_quicksilver.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_the_forgeman.html, table Acquisition"
     }
    ],
    "qty": {
     "eel_statue": 1,
     "vial_of_quicksilver": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_the_forgeman.html"
   },
   "gift_of_the_nobleman": {
    "name": "Gift of the Nobleman",
@@ -24892,20 +25669,23 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Caudecus's Manor.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Caudecus's Manor."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_entertainment.html, gift_of_music.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_the_nobleman.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_entertainment": 1,
     "gift_of_music": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_the_nobleman.html"
   },
   "gift_of_the_sanctuary": {
    "name": "Gift of the Sanctuary",
@@ -24918,20 +25698,23 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 500 Tales of Dungeon Delving chez les marchands de donjon, après 5 explorations de Honor of the Waves.",
+      "en": "Bought for 500 Tales of Dungeon Delving from dungeon merchants, after 5 explorable runs of Honor of the Waves."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_ice.html, gift_of_water.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "gift_of_the_sanctuary.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_ice": 1,
     "gift_of_water": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "gift_of_the_sanctuary.html"
   },
   "gift_of_the_ursus": {
    "name": "Gift of the Ursus",
@@ -25465,7 +26248,8 @@
    "apiId": 102306,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -25481,7 +26265,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "refined_homestead_metal": {
@@ -25489,7 +26274,8 @@
    "apiId": 102205,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -25505,7 +26291,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "refined_homestead_wood": {
@@ -25513,7 +26300,8 @@
    "apiId": 103049,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -25529,7 +26317,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "relic": {
@@ -25781,19 +26570,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_jackal.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_jackal.html"
   },
   "spirit_of_the_raptor": {
    "name": "Spirit of the Raptor",
@@ -25805,19 +26597,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_raptor.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_raptor.html"
   },
   "spirit_of_the_skimmer": {
    "name": "Spirit of the Skimmer",
@@ -25829,19 +26624,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_skimmer.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_skimmer.html"
   },
   "spirit_of_the_springer": {
    "name": "Spirit of the Springer",
@@ -25853,19 +26651,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_springer.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_springer.html"
   },
   "storm": {
    "name": "Storm",
@@ -26286,7 +27087,8 @@
    "apiId": 103103,
    "kind": "material",
    "needed_for": [
-    "gift_of_gatherer_of_the_hunt"
+    "gift_of_gatherer_of_the_hunt",
+    "mists_gate_residue"
    ],
    "farmable": true,
    "sources": [
@@ -26302,7 +27104,8 @@
     }
    ],
    "qty": {
-    "gift_of_gatherer_of_the_hunt": 100
+    "gift_of_gatherer_of_the_hunt": 100,
+    "mists_gate_residue": 1
    }
   },
   "symbol_of_control": {
@@ -26413,10 +27216,7 @@
    "name": "Testimony of Jade Heroics",
    "apiId": 97457,
    "kind": "material",
-   "needed_for": [
-    "certificate_of_heroics",
-    "essence_of_animosity"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
@@ -26430,10 +27230,7 @@
      "ref": "recette de certificate_of_heroics.html, essence_of_animosity.html ; identite depuis gw2_materials_ref.json (apiId 97457)"
     }
    ],
-   "qty": {
-    "certificate_of_heroics": 250,
-    "essence_of_animosity": 500
-   }
+   "qty": {}
   },
   "the_bard": {
    "name": "The Bard",
@@ -27485,6 +28282,7 @@
    "apiId": 24360,
    "kind": "material",
    "needed_for": [
+    "bowl_of_poultry_satay",
     "plate_of_spicy_herbed_chicken"
    ],
    "farmable": true,
@@ -27501,7 +28299,8 @@
     }
    ],
    "qty": {
-    "plate_of_spicy_herbed_chicken": 3
+    "plate_of_spicy_herbed_chicken": 3,
+    "bowl_of_poultry_satay": 3
    }
   },
   "slab_of_red_meat": {
@@ -27509,6 +28308,8 @@
    "apiId": 24359,
    "kind": "material",
    "needed_for": [
+    "meaty_asparagus_skewer",
+    "plate_of_orrian_steak_frittes",
     "plate_of_truffle_steak"
    ],
    "farmable": true,
@@ -27525,7 +28326,9 @@
     }
    ],
    "qty": {
-    "plate_of_truffle_steak": 1
+    "plate_of_truffle_steak": 1,
+    "meaty_asparagus_skewer": 1,
+    "plate_of_orrian_steak_frittes": 1
    }
   },
   "small_spiritwood_haft": {
@@ -27945,7 +28748,8 @@
    "kind": "acquire",
    "needed_for": [
     "pile_of_putrid_essence",
-    "pile_of_vile_essence"
+    "pile_of_vile_essence",
+    "pile_of_filthy_essence"
    ],
    "farmable": true,
    "sources": [
@@ -27962,7 +28766,8 @@
    ],
    "qty": {
     "pile_of_putrid_essence": 1,
-    "pile_of_vile_essence": 1
+    "pile_of_vile_essence": 1,
+    "pile_of_filthy_essence": 1
    }
   },
   "onion": {
@@ -28212,6 +29017,7 @@
    "apiId": 12236,
    "kind": "material",
    "needed_for": [
+    "bowl_of_black_pepper_cactus_salad",
     "pile_of_salt_and_pepper"
    ],
    "farmable": true,
@@ -28219,8 +29025,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_salt_and_pepper.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_salt_and_pepper."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28228,7 +29034,8 @@
     }
    ],
    "qty": {
-    "pile_of_salt_and_pepper": 1
+    "pile_of_salt_and_pepper": 1,
+    "bowl_of_black_pepper_cactus_salad": 5
    }
   },
   "carnelian_lump": {
@@ -28243,8 +29050,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de ruby_shard.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on ruby_shard."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28267,8 +29074,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de beryl_shard.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on beryl_shard."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28292,8 +29099,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de beryl_shard, emerald_shard.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on beryl_shard, emerald_shard."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28317,8 +29124,8 @@
     {
      "type": "unknown",
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_vile_essence.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_vile_essence."
+      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
+      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
      },
      "verified": false,
      "checked": "2026-09-25",
@@ -28400,6 +29207,30 @@
    "ref": "section « Domain of Kourna items » de Lady Camilla : data-sort-value 10000 cuivre",
    "checked": "2026-09-29",
    "verified": "prix lu dans la table vendeur le 29/09/2026"
+  },
+  "pile_of_foul_essence": {
+   "name": "Pile of Foul Essence",
+   "apiId": 24332,
+   "kind": "material",
+   "needed_for": [
+    "pile_of_filthy_essence"
+   ],
+   "farmable": true,
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_filthy_essence.",
+      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_filthy_essence."
+     },
+     "verified": false,
+     "checked": "2026-09-25",
+     "ref": "recette de pile_of_filthy_essence.html ; identite depuis gw2_materials_ref.json (apiId 24332)"
+    }
+   ],
+   "qty": {
+    "pile_of_filthy_essence": 2
+   }
   }
  },
  "enchaînements_recommandés": {
@@ -66604,7 +67435,11 @@
         "en": "Kodama is inside Druid's Grotto [&BMUJAAA=], Savage Rise."
        },
        "how_fr_missing": true,
-       "wiki": "The_Druid%27s_Story"
+       "wiki": "The_Druid%27s_Story",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 3,
@@ -66617,7 +67452,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Kodama"
+       "wiki": "A_Flower_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 4,
@@ -66630,7 +67469,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Liriodendron"
+       "wiki": "A_Flower_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 5,
@@ -66643,7 +67486,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Broadleaf"
+       "wiki": "A_Flower_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 6,
@@ -66656,7 +67503,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Flower_for_Rosewood"
+       "wiki": "A_Flower_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
@@ -66824,7 +67675,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Kodama"
+       "wiki": "A_Bouquet_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 11,
@@ -66841,7 +67696,11 @@
         "en": "Liriodendron: Peace Grounds [&BMkJAAA=], Savage Rise."
        },
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Liriodendron"
+       "wiki": "A_Bouquet_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 12,
@@ -66854,7 +67713,11 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/awakening_the_druid_stone.html",
        "name_api": "A Bouquet for Broadleaf — 3 blossoms",
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Broadleaf"
+       "wiki": "A_Bouquet_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 13,
@@ -66871,7 +67734,11 @@
         "en": "Rosewood: rock bridge above Ancient Hollow Waypoint [&BNUJAAA=]."
        },
        "how_fr_missing": true,
-       "wiki": "A_Bouquet_for_Rosewood"
+       "wiki": "A_Bouquet_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",
@@ -67120,7 +67987,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Charged_Bouquet_for_Kodama"
+       "wiki": "A_Charged_Bouquet_for_Kodama",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "charged_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 17,
@@ -67133,7 +68005,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Glacial_Bouquet_for_Liriodendron"
+       "wiki": "A_Glacial_Bouquet_for_Liriodendron",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "glacial_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 18,
@@ -67146,7 +68023,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Onyx_Bouquet_for_Broadleaf"
+       "wiki": "An_Onyx_Bouquet_for_Broadleaf",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "onyx_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 19,
@@ -67159,7 +68041,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Molten_Bouquet_for_Rosewood"
+       "wiki": "A_Molten_Bouquet_for_Rosewood",
+       "cost": {
+        "fire_orchid_blossom": 5,
+        "molten_lodestone": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 20,
@@ -67447,7 +68334,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "Druid%27s_Vision"
+       "wiki": "Druid%27s_Vision",
+       "cost": {
+        "vision_crystal": 1
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 19,
@@ -67460,7 +68351,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Storm_Bouquet_for_Kodama"
+       "wiki": "A_Storm_Bouquet_for_Kodama",
+       "cost": {
+        "charged_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 20,
@@ -67473,7 +68369,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "A_Frozen_Bouquet_for_Liriodendron"
+       "wiki": "A_Frozen_Bouquet_for_Liriodendron",
+       "cost": {
+        "glacial_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 21,
@@ -67486,7 +68387,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Earthen_Bouquet_for_Broadleaf"
+       "wiki": "An_Earthen_Bouquet_for_Broadleaf",
+       "cost": {
+        "onyx_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 22,
@@ -67499,7 +68405,12 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
        "how_fr_missing": true,
-       "wiki": "An_Infernal_Bouquet_for_Rosewood"
+       "wiki": "An_Infernal_Bouquet_for_Rosewood",
+       "cost": {
+        "molten_lodestone": 5,
+        "fire_orchid_blossom": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 23,
@@ -69285,7 +70196,14 @@
         "en": "Unlocks when you craft your FIRST Astral weapon: open your mail and give the 'Note from Yasna' to Ouissal. Reward: an Irradiated Vision Crystal — the main ingredient of a Stellar weapon, i.e. a whole Astral weapon's worth of materials saved (500 Kralkatite Ore + 500 Powdered Rose Quartz)."
        },
        "how_fr_missing": true,
-       "wiki": "Charged_Mirror"
+       "wiki": "Charged_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "charged_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 1,
@@ -69298,7 +70216,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Corrupted_Mirror"
+       "wiki": "Corrupted_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "corrupted_lodestone": 3,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 2,
@@ -69311,7 +70236,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Crystal_Mirror"
+       "wiki": "Crystal_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "crystal_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 3,
@@ -69324,7 +70256,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Glacial_Mirror"
+       "wiki": "Glacial_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "glacial_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 4,
@@ -69337,7 +70276,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Destroyer_Mirror"
+       "wiki": "Destroyer_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "destroyer_lodestone": 3,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 5,
@@ -69350,7 +70296,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Molten_Mirror"
+       "wiki": "Molten_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "molten_lodestone": 3,
+        "orichalcum_ingot": 10
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 6,
@@ -69363,7 +70316,14 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — parse par gw2_parse_collection_v2.py",
        "how_fr_missing": true,
-       "wiki": "Onyx_Mirror"
+       "wiki": "Onyx_Mirror",
+       "cost": {
+        "powdered_rose_quartz": 10,
+        "glob_of_ectoplasm": 5,
+        "orichalcum_ingot": 10,
+        "onyx_lodestone": 3
+       },
+       "cost_ref": "texte « how » de l'etape, phrase d'apport (Bring …)"
       },
       {
        "bit": 7,
@@ -78411,7 +79371,8 @@
    "targets": [
     "tribute_to_arah",
     "tribute_to_spero",
-    "tribute_to_exitare"
+    "tribute_to_exitare",
+    "tribute_to_the_man_o_war"
    ],
    "label": {
     "fr": "Tribute to X — une seule des six monnaies (20)",
@@ -78421,7 +79382,7 @@
     "fr": "Chaque Tribute to X s'achete indifferemment contre l'une de six monnaies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), meme quantite pour les six. Volatile Magic retenu par defaut (meta EoD, cout marginal nul) ; bascule vers une autre monnaie possible si tu veux accelerer avec des ressources deja en stock.",
     "en": "Each Tribute to X is bought with any one of six currencies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), same quantity for all six. Volatile Magic kept as default (free EoD meta); switch to another currency to speed up using stock you already have."
    },
-   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
+   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies ; tribute_to_the_man_o_war.html (meme table, 04/10/2026)",
    "verified": true,
    "checked": "2026-09-09"
   },
