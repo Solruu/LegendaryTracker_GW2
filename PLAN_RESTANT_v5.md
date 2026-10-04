@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v359) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -17,7 +17,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | rapport | outil | chiffre |
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v3` ~~370~~ → **248 ecarts** apres C1 (166 hausses, 82 baisses) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → **116 ecarts** apres C3 2e passe (93 hausses, 23 baisses) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v2.md` | `controle/gw2_confronte_agregats_v1` | 53 accords, 0 depassement |
@@ -147,7 +147,7 @@ cas n'etait un double compte :
       Gift of Competitive Dedication, donc par Ardent Glorious — meme blocage
       que les deux restes de C1.
 
-### C3 — Confrontation des totaux · C — 1re passe faite le 04/10 (sources v358)
+### C3 — Confrontation des totaux · C — 2 passes faites le 04/10 (sources v358, v359)
 247 → **158 ecarts**. `controle/gw2_confronte_v4` applique enfin `alt_groups`
 (la v3 additionnait les six monnaies des tributs : 60 faux ecarts gen2), et
 `integration/gw2_confrontation_c3_v1` tranche sur pages et arbres lus en
@@ -160,17 +160,26 @@ hierarchie :
       thermocatalytique de Klobjarne 3 130 → 2 050
 - [x] Transcendence : Shard of Glory 2 500 → 2 250, Ascended 500 → 900
 - [x] Memory of Battle de Triumphant Hero : chevauchement declare (2 noeuds)
-- [ ] **reste, pour la suite** : Ad Infinitum (dragonite/poussiere/fragment
-      1 500, matrices 975 contre 675 a l'arbre, ecto) — l'arbre est commun avec
-      Coalescence et Vision, `--racine` du parseur ne separe pas les racines,
-      a corriger d'abord ; ecto d'Obsidienne par piece (7 200 : cle 600 +
-      chaine 600, l'arbre de la cuirasse dit ~738 par piece, une seule piece
-      lue — pas d'extrapolation) ; ecto de Klobjarne (1 971 contre 1 230) ;
-      Endless Summer (cuir, orichalque : matieres premieres, `raw_materials_scope`)
-- [ ] beaucoup d'ecarts restants sont des artefacts de l'outil : la colonne
-      « recettes » ignore la cle a plat des qu'une arete existe, meme quand la
-      cle porte un noeud distinct (Selachimorpha 800, notes de Stella 52 500 =
-      arbre). A traiter dans l'outil (respecter `qty_overlap_verified`).
+- [x] **2e passe (v359)** : Ad Infinitum. Le decoupage `--racine` du parseur
+      FONCTIONNAIT (note precedente fausse). L'arbre porte 8 Pristine Mist
+      Essence (5 Unbound + 2 Upper Bound + 1 Finite Result), la chaine 5 ;
+      les 3 manquantes deviennent une cle a plat de l'essence (chevauchement
+      declare). Matrices 975 → 600, reactif 780 → 690, ecto 1 059 → 1 054,
+      cubes/balles 5 → 8, Rare Essence of Luck 50 → 80 — tous = arbre, sauf
+      +15 ectos / +100 reactifs voulus (Damask, Elonian Leather, Spiritwood
+      decomposes par leurs recettes, feuilles dans l'arbre).
+      `integration/gw2_confrontation_c3_v2`.
+- [x] **outil** : `controle/gw2_confronte_v5` respecte `qty_overlap_verified`
+      dans la colonne « recettes » (la v4 retirait la cle d'un noeud distinct).
+      158 → 116.
+- [ ] **reste** : Ad Infinitum, 9 Ball of Dark Energy sous les objets de
+      collection Aetherblade (17 a l'arbre, 8 en chaine) → C5 ; dragonite /
+      fragment / poussiere / reliques fractales (1 500, 4 650 = arbre) restent
+      en ecart dans le rapport : les aretes Vision Crystal / Gift of Ascension
+      ne sont pas proposees par les captures pour Ad Infinitum, ecart d'outil,
+      pas de donnee. Ecto d'Obsidienne par piece (une seule piece lue, pas
+      d'extrapolation) ; ecto de Klobjarne (1 971 contre 1 230) ; Endless
+      Summer (matieres premieres, `raw_materials_scope`).
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non

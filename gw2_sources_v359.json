@@ -3316,7 +3316,6 @@
    ],
    "qty": {
     "cube_stabilized_dark_energy": 75,
-    "ad_infinitum": 600,
     "klobjarne_geirr": 150,
     "transcendence": 95
    },
@@ -6514,7 +6513,7 @@
    ],
    "qty": {
     "vision": 360,
-    "ad_infinitum": 580,
+    "ad_infinitum": 460,
     "selachimorpha": 800,
     "gift_of_research": 250,
     "deldrimor_steel_spear_head": 50,
@@ -6848,7 +6847,7 @@
    "qty": {
     "obsidian__per_piece": 600,
     "the_ascension": 249,
-    "ad_infinitum": 764,
+    "ad_infinitum": 759,
     "memory_essence_encapsulator": 50,
     "vision": 249,
     "aurora": 250,
@@ -20310,7 +20309,8 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "unbound": 5
+    "unbound": 5,
+    "ad_infinitum": 3
    },
    "needed_for": [
     "unbound"
@@ -20327,7 +20327,14 @@
    "apiId": 75781,
    "ref": "boite Recipe de Unbound : 1 Solution: Unbound + 5 Pristine Mist Essence + 1 Unbound Wings + 1 Third Order Mist Frame",
    "checked": "2026-09-18",
-   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1"
+   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1",
+   "qty_overlap_verified": [
+    "ad_infinitum"
+   ],
+   "qty_overlap_note": {
+    "fr": "Ad Infinitum : 5 sous Unbound (arête) + 2 sous Upper Bound + 1 sous Finite Result (clé à plat, précurseurs absents du tracker) — arbre gw2efficiency, 8 au total.",
+    "en": "Ad Infinitum: 5 under Unbound (edge) + 2 under Upper Bound + 1 under Finite Result (flat key, precursors not in the tracker) — gw2efficiency tree, 8 in total."
+   }
   },
   "refined_envoy_armor": {
    "name": "Refined Envoy armor",

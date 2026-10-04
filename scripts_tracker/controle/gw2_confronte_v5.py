@@ -110,7 +110,14 @@ def totaux(leg, recettes=False):
     if not recettes:
         return _ACTUEL.totaux(leg)
     t, base = _RECETTES.totaux(leg, detail=True)
-    return {cid: (base[cid] if base.get(cid, 0) > 0 else v) for cid, v in t.items()}
+    # v5 : UN CHEVAUCHEMENT DECLARE N'EST PAS UNE CLE A IGNORER. Quand
+    # `qty_overlap_verified` cite ce legendaire, la cle a plat porte un noeud
+    # distinct de ceux de la chaine (Selachimorpha 800, notes de Stella 52 500,
+    # essences d'Ad Infinitum) : la v4 la retirait et annoncait un trou.
+    def _ignore(cid):
+        return leg not in ((cc.get(cid) or {}).get("qty_overlap_verified") or ())
+    return {cid: (base[cid] if base.get(cid, 0) > 0 and _ignore(cid) else v)
+            for cid, v in t.items()}
 
 
 cibles = sorted({k.split("__")[0] for c in cc.values() for k in (c.get("qty") or {})
