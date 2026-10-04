@@ -22,5 +22,5 @@ Deux ancrages cohabitent dans ces fichiers, à ne pas confondre en les éditant 
 - `parents[1]` — la racine de `scripts_tracker/`, posée sur `sys.path` pour les
   imports croisés, qui sont qualifiés : `from moteur.gw2_moteur_v3 import Modele`.
 
-`gw2_edges_wiki_v14.py` importe ses voisins de `parseurs/` sans qualifier :
+`gw2_edges_wiki_v15.py` importe ses voisins de `parseurs/` sans qualifier :
 Python met le dossier du script sur `sys.path`, et il y est lui-même.

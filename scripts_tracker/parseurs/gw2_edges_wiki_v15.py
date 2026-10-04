@@ -178,8 +178,24 @@ for cid in cc:
         by[norm(g.strip())].add(cid); by[norm(dd.strip())].add(cid)
         mots=g.strip().split()
         if len(mots)>1: by[norm(' '.join(mots[:-1])+' '+dd.strip())].add(cid)
+# v15 : LES CHAMPS `wiki` ET `wiki_redirects` DE LA DONNEE SONT DES NOMS.
+# La relecture des recettes les lisait deja, pas ce script : le lien
+# « Dark_Matter » de Mystic Essence of Annihilation (redirection declaree sur
+# glob_of_dark_matter) ne se resolvait pas, et l'arete juste figurait dans
+# ARETES_NON_SOURCEES comme non proposee. Meme ambiguite qu'ailleurs : une
+# collision est signalee, jamais devinee.
+for cid in cc:
+    for v in [cc[cid].get('wiki') or ''] + list(cc[cid].get('wiki_redirects') or []):
+        if v:
+            by[norm(clean(v))].add(cid)
+            by[sans_pluriel(norm(clean(v)))].add(cid)
 AMBIG=set()
+NON_RESOLUS=collections.Counter()
 def to_id(t,page=None):
+    r=_to_id(t,page)
+    if r is None: NON_RESOLUS[t]+=1
+    return r
+def _to_id(t,page=None):
     base=norm(clean(t))
     for k in (base, base.rstrip('s'), base+'s', sans_pluriel(base)):
         s=by.get(k)
@@ -393,4 +409,5 @@ print('prix en objet ecarte car une alternative en or existe:',sorted(set(prix_a
 print('parents chiffres:',len(edges),'| conflits recette/vendeur:',len(conflits))
 for x in conflits: print('   ',x)
 print('ambiguites restantes:',sorted(AMBIG))
+print('noms non resolus:',len(NON_RESOLUS)); print('   ',sorted(NON_RESOLUS.items(), key=lambda x:-x[1])[:60])
 json.dump({f'{p}|{c}':v for p,dd in edges.items() for c,v in dd.items()}, open('/tmp/edges2.json','w'))

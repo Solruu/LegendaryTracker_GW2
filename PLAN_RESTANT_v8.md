@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v361) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v363) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -17,15 +17,15 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | rapport | outil | chiffre |
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → **96 ecarts** apres C3 3e passe (75 hausses, 21 baisses) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → **99 ecarts** apres C6 (dont 3 Jade attendus, voir C6) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
-| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v1` (apres `parseurs/gw2_edges_wiki_v14`) | **29 aretes**, toutes expliquees (C6) |
+| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v2` (apres `parseurs/gw2_edges_wiki_v14`) | **25 aretes**, toutes expliquees (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v361) |
+| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v363) |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -120,7 +120,7 @@ Shield.
 ## Lots Claude (C) — rapprochement
 
 ### C1 — « Deja compte par cascade » · C — ✅ FAIT le 04/10 (sources v356, 47 → 4)
-`integration/gw2_arbitrage_cascade_v1` ; detail dans sa docstring. Presque aucun
+`integration/gw2_arbitrage_cascade_v2` ; detail dans sa docstring. Presque aucun
 cas n'etait un double compte :
 - [x] groupe de choix incomplet : Tribute to the Man o' War entre dans `tribut_20`
 - [x] arete fausse : les esprits du Gift of the Rider coutent 75 **Elegy Mosaic**
@@ -206,8 +206,8 @@ hierarchie :
   - Ecto d'Obsidienne par piece : une seule piece lue, pas d'extrapolation → W.
   - Controle transversal : fait, lot C6.
 
-### C6 — Aretes non sourcees · C — ✅ outil et premier tri le 04/10 (sources v361)
-`controle/gw2_aretes_non_sourcees_v1` liste toute arete de la donnee vers un
+### C6 — Aretes non sourcees · C — ✅ outil, deux passes le 04/10 (sources v361, v363)
+`controle/gw2_aretes_non_sourcees_v2` liste toute arete de la donnee vers un
 parent dont les captures lisent la composition sans la proposer. Ne du cas
 cube <- Gift of Research (C3). 30 lignes au premier passage :
 - [x] **1 fausse** : `gift_of_adventure_voe` -> Gift of Castoran Mastery (la
@@ -225,12 +225,32 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
     `legendary_insight` contre `legendary_insight_consumable` (Gift of
     Compassion, Gift of Prowess), Gift of Adventure (ambiguite listee par le
     parseur) ;
-  - monnaie remplacee : Testimony of Jade Heroics -> Castoran Heroics
-    (certificate, essence of animosity), Badge of Honor des Commander's Wings ;
+  - Castoran Heroics (certificate, essence of animosity) : juste, voie
+    vendeur active ; la capture ne propose que la recette Jade (voir 2e
+    passe). Badge of Honor des Commander's Wings ;
   - or (`gold_coin`), feuilles de recette, objets de collection (Nyr Hrammr,
     Orrax Contained), tributs Exitare / Call of the Void.
-- [ ] corriger `to_id` sur les noms ci-dessus ferait tomber une dizaine de
-      lignes et ajouterait des propositions justes aux autres rapports.
+- [x] **2e passe** : `parseurs/gw2_edges_wiki_v15` lit les champs `wiki` et
+      `wiki_redirects` de la donnee (la relecture des recettes les lisait
+      deja) et liste les noms non resolus (317, surtout des objets hors
+      tracker). `integration/gw2_redirections_wiki_v1` : glob_of_ectoplasm
+      <- « Ectoplasm » (href/title prouves sur 9 pages). 17 propositions
+      nouvelles (tributs Exitare / Call of the Void, Dark Matter, Spinal
+      Blade), aucun nouveau desaccord. 30 → 25 lignes.
+- [x] **double monnaie** (`integration/gw2_aretes_fausses_v2`) : Certificate
+      of Heroics et Essence of Animosity portaient la voie vendeur (Castoran)
+      ET la recette (Jade), chacune a pleine quantite. Jade retiree :
+      inobtenable depuis VoE, echangeable 1:1 contre Castoran ; Conflux et
+      les arbres ne comptent que Castoran. Conflux -750, Triumphant Hero
+      -1 500, Warbringer -500 Jade. Les 3 lignes « Jade manquante » de
+      CONFRONTATION sont attendues (la capture lit la recette).
+- [ ] `gift_of_castoran_mastery -> gift_of_adventure` restera liste tant que
+      le composant `_voe` existe (ambiguite de nom) : suppression en A1.
+- [ ] lecon : une arete juste peut cacher sa jumelle fausse. Le controle
+      ne voit que ce que les captures ne proposent pas ; deux voies d'un
+      meme parent comptees ensemble lui echappent. Piste : signaler un
+      parent dont la donnee porte deux monnaies (ou deux objets) de meme
+      famille a quantite egale.
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Lot C1 du PLAN_RESTANT : les 47 cas « deja compte par cascade » d'ARBITRAGES.
 
-Usage : python3 scripts_tracker/integration/gw2_arbitrage_cascade_v1.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_arbitrage_cascade_v2.py SRC DST
 
 Relus un par un sur les captures. La famille melangeait cinq situations, et
 presque aucune n'etait un double compte.
@@ -54,7 +54,7 @@ presque aucune n'etait un double compte.
    sa cle (249 = trefles seuls).
 
 Laisses ouverts, documentes dans ARBITRAGES : les lodestones et le raffinage
-(regle d'extraction, gw2_edges_wiki_v14), Memory of Battle / Mist Band
+(regle d'extraction, gw2_edges_wiki_v15), Memory of Battle / Mist Band
 (choix vendeur), et les deux cas qui passent par Gift of Competitive
 Dedication — tickets PvP et Shard of Glory — tant qu'Ardent Glorious est
 bloque : poser l'arete y ajouterait 6 000 tessons sans source.

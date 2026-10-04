@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """Aretes de la donnee qu'aucune capture ne propose. Lecture seule.
 
-Usage : python3 scripts_tracker/parseurs/gw2_edges_wiki_v14.py  (ecrit /tmp/edges2.json)
-        python3 scripts_tracker/controle/gw2_aretes_non_sourcees_v1.py
+Usage : python3 scripts_tracker/parseurs/gw2_edges_wiki_v15.py  (ecrit /tmp/edges2.json)
+        python3 scripts_tracker/controle/gw2_aretes_non_sourcees_v2.py
 
 Ne de C3 (04/10/2026) : `cube_stabilized_dark_energy <- gift_of_research`
 etait posee depuis des semaines alors que la recette du Gift of Research n'a
