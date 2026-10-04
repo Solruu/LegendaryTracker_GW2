@@ -107,9 +107,26 @@ Shield.
 ## Lots en jeu et decisions (A)
 
 ### A1 — Decisions en attente
-- [ ] Neutralized Titan Alloy (Klobjarne) : vendeur ou recette (3 ectos) ; la
-      chaine compte la recette (+300 ectos sur l'arbre). Ouvrir un choix
-      `alt_groups` (recette / vendeur) ?
+- [ ] **Cout des trefles mystiques — convention a trancher (structurel).**
+      Releve sur v365, 79 legendaires portant des trefles :
+      - 15 trinkets/armes (Vision, Coalescence, Aurora, Conflux, Stella,
+        Klobjarne...) portent une cle a plat « trefles » sur ecto,
+        obsidienne et/ou pieces (249 pour 77, valeur des arbres) — pas toujours
+        les trois (Conflux, Ascension, Transcendence, Warbringer : sans
+        obsidienne ; Aurora : sans pieces) et jamais les eclats d'esprit ;
+      - 16 gen2, armures, reliques, runes, sigils : rien ;
+      - gen1 et gen3 : 250 pieces a plat (a verifier : trefles ou recette).
+      Or `parseurs/gw2_edges_wiki` (v9/v10) refuse expressement de poser la
+      recette du trefle en arete : son acquisition est un choix (pistes,
+      vendeurs, Forge). Deux voies : (a) retirer toutes les cles « trefles »
+      (le trefle reste l'exigence, son cout depend de la voie choisie) ;
+      (b) les generaliser a tous les legendaires, avec les quatre
+      ingredients. Les deux changent des chiffres affiches.
+- [x] Neutralized Titan Alloy (Klobjarne) : ferme le 04/10, pas de choix.
+      Recette (artisan 400) 3 ectos + 5 minerai + 5 ambre + 5 lingots ;
+      vendeur 4 + 7 + 7 + 6 — plus cher sur chaque ingredient. La chaine
+      compte la recette, c'est le minimum. L'arbre gw2efficiency traite
+      l'alliage en feuille (inventaire ou achat), d'ou son ecart.
 - [x] `gift_of_adventure_voe` et `testimony_of_jade_heroics` supprimes
       (accord du 04/10, `integration/gw2_suppressions_v1`).
 - [ ] `bf_meta` : meta de Bitterfrost Frontier, ou Frozen Maw (Wayfarer
@@ -208,9 +225,8 @@ hierarchie :
     (17 a l'arbre, 8 en chaine) → C5. Dragonite / fragment / poussiere /
     reliques fractales egalent l'arbre ; l'ecart du rapport est d'outil
     (aretes Vision Crystal / Gift of Ascension non proposees par les captures).
-  - Klobjarne : Neutralized Titan Alloy, vendeur ou recette (3 ectos) — la
-    chaine compte la recette (+300 ectos). Choix a ouvrir en `alt_groups` ?
-    → A1.
+  - Klobjarne : Neutralized Titan Alloy — ferme (A1), la recette est le
+    minimum.
   - Endless Summer : orbe du Gift of Infused Gems (une recette par orbe,
     l'arbre prend Emerald, le tracker Ruby) et Gift of the Beach (Coral Orb,
     page non capturee) → W. Sun Bead absent du tracker.
