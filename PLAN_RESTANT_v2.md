@@ -16,9 +16,9 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 
 | rapport | outil | chiffre |
 |---|---|---|
-| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v13`) | **81 desaccords / 37 composants** : 47 « deja compte par cascade », 31 « cout vendeur », 3 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v3` | **370 ecarts / 69 legendaires** (288 hausses, 82 baisses) — colonne « wiki » indicative, pas verite |
-| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` | 948 accords, 0 trou, 94 excedents expliques, **71 excedents nus** |
+| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **35 desaccords / 12 composants** apres C1 (v356) : 4 « deja compte par cascade », 28 « cout vendeur », 3 « ecart de compte » |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v3` ~~370~~ → **248 ecarts** apres C1 (166 hausses, 82 baisses) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v2.md` | `controle/gw2_confronte_agregats_v1` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
@@ -57,7 +57,7 @@ Debloque la derniere migration `collections{}`. Pages de collection (tableau
 - [ ] `Draconis_Mons` section « Map resources » complete : Petrified Wood y est-il ?
 - [ ] point de passage d'Ember Bay pour la ferme `eb` (le champ a ete retire, faux)
 
-### W4 — Arbitrages « cout vendeur » (31 cas) · W puis C
+### W4 — Arbitrages « cout vendeur » (28 cas apres C1) · W puis C
 Les pages de vendeur (cout HTML non standard) qui tranchent chaque cas.
 Composants : `tales_of_dungeon_delving` (20), `volatile_magic` (2),
 `trade_contract` (2), `crystalline_ingot` (2), `unbound_magic`,
@@ -113,13 +113,28 @@ Shield.
 
 ## Lots Claude (C) — rapprochement
 
-### C1 — « Deja compte par cascade » (47 cas) · C
-Meme famille que les 90 cas clos en septembre : une meme quantite comptee a deux
-niveaux. Methode etablie : `integration/gw2_arbitrage_chevauchements_v1` —
-declarer `qty_overlap_verified` UNIQUEMENT si une capture montre deux noeuds
-distincts ; sinon retirer le double. Les plus gros : `dust_crystalline` (15),
-`glob_of_ectoplasm` (3), `dust_incandescent` (3), `airship_part`,
-`ley_line_crystal`, `lump_of_aurillium` (3 200 chacun).
+### C1 — « Deja compte par cascade » · C — ✅ FAIT le 04/10 (sources v356, 47 → 4)
+`integration/gw2_arbitrage_cascade_v1` ; detail dans sa docstring. Presque aucun
+cas n'etait un double compte :
+- [x] groupe de choix incomplet : Tribute to the Man o' War entre dans `tribut_20`
+- [x] arete fausse : les esprits du Gift of the Rider coutent 75 **Elegy Mosaic**
+      (pas des Trade Contracts) — Coalescence : 300 contrats → 300 mosaiques
+- [x] aretes accrochees au grand-parent, total inchange : tessons et fioles de
+      Mursaat Ruins, joyau et masse de l'inscription de Diviner, trefles d'Orrax
+- [x] deux noeuds distincts (hausses sourcees) : Refined Homestead, alliage titan,
+      Ars Goetia, Gift of Bones, nourriture d'Orrax, orbe d'opale, planche du
+      Mists Gate Residue
+- [x] ecto d'Orrax : 1 350 comptes deux fois (cle a plat + essences amalgamees),
+      3 520 → 2 320, arbre gw2efficiency lu en hierarchie
+- [x] lodestones (15) et raffinage a un ingredient : regle d'extraction
+      (`parseurs/gw2_edges_wiki_v14`), aucun chiffre ne bouge
+- [ ] **reste 4** : Memory of Battle / Mist Band de Conflux (choix vendeur a
+      trois voies, a classer avec W4) ; tickets PvP et Shard of Glory via Gift
+      of Competitive Dedication — poser l'arete toucherait Ardent Glorious
+      (+6 000 tessons), bloque tant que ses pieces ne sont pas capturees
+- [ ] decouverts en route, pour C4 : `opal_crystal` n'est pas un composant ;
+      poivre d'Orrax 1 000 contre 1 500 a la table (piles de l'Entree et du
+      Side Course non reliees) ; +100 Ipos du precurseur, absent de la table
 
 ### C2 — « Ecart de compte » (3 cas) · C
 `ancient_coin` (20 000), `ascended_shard_of_glory` (100),
@@ -178,7 +193,7 @@ faits). `note_alt` d'Ad Infinitum n'est toujours pas rendu.
 
 ## Ordre propose
 
-1. **C1, C2** (autonome, reduit ARBITRAGES de 50 cas) — en parallele **W1, W2,
+1. ~~C1~~ fait, **C2** (autonome) — en parallele **W1, W2,
    W3** cote captures et **A1, A2** cote Antoine.
 2. **W4** puis C sur les 31 couts vendeur.
 3. **C3, C4** par groupes de legendaires.

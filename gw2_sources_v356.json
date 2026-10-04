@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v249",
-  "last_updated": "2026-09-08",
+  "last_updated": "2026-10-04",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -2949,15 +2949,16 @@
    "name": "Pile of Incandescent Dust",
    "apiId": 24276,
    "needed_for": [
+    "azurite_orb",
     "beryl_orb",
     "chrysocola_orb",
     "emerald_orb",
     "gift_of_dust",
     "gift_of_energy",
+    "opal_orb",
+    "pile_of_vile_essence",
     "ruby_orb",
-    "sapphire_orb",
-    "azurite_orb",
-    "pile_of_vile_essence"
+    "sapphire_orb"
    ],
    "farmable": true,
    "sources": [
@@ -3014,7 +3015,8 @@
     "ruby_orb": 5,
     "sapphire_orb": 5,
     "azurite_orb": 5,
-    "pile_of_vile_essence": 1
+    "pile_of_vile_essence": 1,
+    "opal_orb": 5
    },
    "kind": "acquire",
    "best": "drop",
@@ -4077,6 +4079,7 @@
    "name": "Branded Mass",
    "apiId": 89537,
    "needed_for": [
+    "diviners_orichalcum_imbued_inscription",
     "dragonsblood_weapons",
     "gift_of_ephemeral_magic"
    ],
@@ -4101,8 +4104,9 @@
     }
    ],
    "qty": {
-    "dragonsblood_weapons": 60,
-    "gift_of_ephemeral_magic": 100
+    "dragonsblood_weapons": 10,
+    "gift_of_ephemeral_magic": 100,
+    "diviners_orichalcum_imbued_inscription": 50
    },
    "kind": "acquire",
    "cadence": {
@@ -5744,29 +5748,25 @@
     {
      "type": "vendor_mf",
      "tip": {
-      "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Trade Contracts. Sans limite.",
-      "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Trade Contracts. No limit."
+      "fr": "MF : 4 Spirits de montures (Raptor/Springer/Skimmer/Jackal). Chaque Spirit coûte 75 Elegy Mosaic. Sans limite.",
+      "en": "MF: 4 mount Spirits (Raptor/Springer/Skimmer/Jackal). Each Spirit costs 75 Elegy Mosaic. No limit."
      },
      "verified": true,
-     "checked": "2026-09-16",
-     "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Trade Contracts)"
+     "checked": "2026-10-04",
+     "ref": "wiki Gift of the Rider — boite Recipe (4 esprits) + page de chaque esprit (75 Elegy Mosaic, captures du 27/09)"
     }
    ],
    "kind": "advanced_craft",
    "recipe": {
-    "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Contrats commerciaux, sans limite.",
-    "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Trade Contracts, no cap."
+    "fr": "MF : 1 Esprit du raptor + 1 Esprit du sauteur + 1 Esprit du raieon + 1 Esprit du chacal. Chaque esprit s'achete 75 Mosaiques d'elegie, sans limite.",
+    "en": "MF: 1 Spirit of the Raptor + 1 Spirit of the Springer + 1 Spirit of the Skimmer + 1 Spirit of the Jackal. Each spirit costs 75 Elegy Mosaic, no cap."
    }
   },
   "trade_contract": {
    "name": "Trade Contract",
    "apiId": 87064,
-   "needed_for": [
-    "gift_of_the_rider"
-   ],
-   "qty": {
-    "gift_of_the_rider": 300
-   },
+   "needed_for": [],
+   "qty": {},
    "farmable": true,
    "sources": [
     {
@@ -6772,6 +6772,7 @@
     "crystalline_ingot",
     "diviners_orichalcum_imbued_inscription",
     "endless_summer",
+    "exquisite_passion_flower",
     "funerary_incense",
     "gift_of_fortune",
     "gift_of_relics",
@@ -6779,12 +6780,15 @@
     "gift_of_sigils",
     "gift_of_souls",
     "glob_of_coagulated_mists_essence",
+    "glob_of_elder_spirit_residue",
     "klobjarne_geirr",
     "kralkatite_ingot",
     "lacquered_banner_pole",
+    "legendary_inscription",
     "lump_of_mithrillium",
     "memory_essence_encapsulator",
     "neutralized_titan_alloy",
+    "olmakhan_charm",
     "orrax_manifested",
     "seer_runestone",
     "selachimorpha",
@@ -6792,9 +6796,6 @@
     "spool_of_thick_elonian_cord",
     "stella_radians",
     "strife_unending",
-    "the_ascension",
-    "transcendence",
-    "glob_of_elder_spirit_residue",
     "superior_sigil_of_accuracy",
     "superior_sigil_of_air",
     "superior_sigil_of_battle",
@@ -6812,8 +6813,10 @@
     "superior_sigil_of_strength",
     "superior_sigil_of_venom",
     "sweet_treated_pine_plank",
-    "exquisite_passion_flower",
-    "legendary_inscription"
+    "the_ascension",
+    "transcendence",
+    "unbound_wings",
+    "vial_of_titan_melted_obsidian"
    ],
    "farmable": true,
    "sources": [
@@ -6834,7 +6837,7 @@
    "qty": {
     "obsidian__per_piece": 600,
     "the_ascension": 249,
-    "ad_infinitum": 789,
+    "ad_infinitum": 764,
     "memory_essence_encapsulator": 50,
     "vision": 249,
     "aurora": 250,
@@ -6847,7 +6850,7 @@
     "aetheric_anchor": 323,
     "endless_summer": 548,
     "klobjarne_geirr": 741,
-    "orrax_manifested": 2020,
+    "orrax_manifested": 220,
     "selachimorpha": 178,
     "stella_radians": 249,
     "strife_unending": 146,
@@ -6887,7 +6890,10 @@
     "superior_sigil_of_venom": 10,
     "sweet_treated_pine_plank": 3,
     "exquisite_passion_flower": 1,
-    "legendary_inscription": 10
+    "legendary_inscription": 10,
+    "vial_of_titan_melted_obsidian": 3,
+    "unbound_wings": 25,
+    "olmakhan_charm": 1
    },
    "kind": "acquire",
    "best": "salvage",
@@ -6907,6 +6913,10 @@
    "note": {
     "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon. Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par le lingot cristallin.",
     "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
+   },
+   "qty_note": {
+    "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé.",
+    "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged."
    }
   },
   "mystic_clover": {
@@ -6929,6 +6939,7 @@
     "gift_of_runes",
     "gift_of_sigils",
     "gift_of_the_homesteader",
+    "gift_of_the_side_course",
     "gift_of_war_prosperity",
     "mystic_tribute",
     "orrax_manifested",
@@ -7064,7 +7075,6 @@
     "gen3_aurenes_wisdom": 39,
     "gen3_aurenes_breath": 39,
     "endless_summer": 10,
-    "orrax_manifested": 30,
     "triumphant_hero__per_piece": 15,
     "ardent_glorious__per_piece": 15,
     "gift_of_the_homesteader": 38,
@@ -7084,7 +7094,8 @@
     "gen3_aurenes_tail": 39,
     "gen3_aurenes_wing": 39,
     "gift_of_competitive_prosperity": 15,
-    "gift_of_prosperity": 15
+    "gift_of_prosperity": 15,
+    "gift_of_the_side_course": 30
    },
    "kind": "acquire",
    "best": "vendor",
@@ -7265,8 +7276,7 @@
     "gen3_aurenes_scale",
     "gen3_aurenes_voice",
     "gen3_aurenes_weight",
-    "gen3_aurenes_wisdom",
-    "orrax_manifested"
+    "gen3_aurenes_wisdom"
    ]
   },
   "gift_of_fortune": {
@@ -9606,7 +9616,8 @@
    "name": "Vial of Titan Melted Liquid Obsidian",
    "apiId": 104229,
    "needed_for": [
-    "gift_of_the_mistburned_isles",
+    "gift_of_the_mursaat_ruins",
+    "mists_gate_residue",
     "orrax_manifested"
    ],
    "farmable": true,
@@ -9629,7 +9640,8 @@
     }
    ],
    "qty": {
-    "gift_of_the_mistburned_isles": 150
+    "gift_of_the_mursaat_ruins": 100,
+    "mists_gate_residue": 1
    },
    "kind": "craftable",
    "best": "vendor",
@@ -11585,7 +11597,7 @@
    "name": "Exquisite Serpentite Jewel",
    "kind": "craftable",
    "qty": {
-    "dragonsblood_weapons": 3
+    "diviners_orichalcum_imbued_inscription": 3
    },
    "note": {
     "fr": "18 au total pour les six armes de sang de dragon.",
@@ -11595,7 +11607,7 @@
    "checked": "2026-08-13",
    "ref": "wiki:Visions_of_Thunderhead_Peaks — colonne Notes (capture Antoine 13/08/2026)",
    "needed_for": [
-    "dragonsblood_weapons"
+    "diviners_orichalcum_imbued_inscription"
    ],
    "sources": [
     {
@@ -11974,7 +11986,11 @@
    "apiId": 35,
    "kind": "currency",
    "qty": {
-    "funerary_incense": 3
+    "funerary_incense": 3,
+    "spirit_of_the_raptor": 75,
+    "spirit_of_the_springer": 75,
+    "spirit_of_the_skimmer": 75,
+    "spirit_of_the_jackal": 75
    },
    "farmable": true,
    "sources": [
@@ -11995,7 +12011,11 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "needed_for": [
-    "funerary_incense"
+    "funerary_incense",
+    "spirit_of_the_jackal",
+    "spirit_of_the_raptor",
+    "spirit_of_the_skimmer",
+    "spirit_of_the_springer"
    ]
   },
   "volatile_magic": {
@@ -14006,10 +14026,12 @@
    "kind": "advanced_craft",
    "farmable": true,
    "qty": {
-    "gift_of_condensed_might": 1
+    "gift_of_condensed_might": 1,
+    "gift_of_recollector_of_memories": 1
    },
    "needed_for": [
-    "gift_of_condensed_might"
+    "gift_of_condensed_might",
+    "gift_of_recollector_of_memories"
    ],
    "recipe": {
     "fr": "Artisanat 400 (artificier, forgeron d'armes ou chasseur), recette achetee chez Miyani : 100× Ancient Bone + 250× Large Bone + 50× Heavy Bone + 50× Bone.",
@@ -16446,7 +16468,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_mistburned_isles": 100
+    "gift_of_the_mursaat_ruins": 100
    },
    "sources": [
     {
@@ -16483,7 +16505,7 @@
    "checked": "2026-08-26",
    "ref": "wiki:Shard_of_Mistburned_Barrens + Tale_of_Adventure + Unusual_Coin (exports Antoine 26/08/2026)",
    "needed_for": [
-    "gift_of_the_mistburned_isles"
+    "gift_of_the_mursaat_ruins"
    ],
    "note": {
     "fr": "⚠ Ne suit PAS le modèle de ses deux jumeaux, contrairement à ce que la symétrie laissait croire : un seul vendeur au lieu de trois, aucun plafond hebdomadaire, et cœur à laisser INCOMPLET. Les 100 requis n'ont donc aucun timegate — mais il faut penser à ne pas terminer le cœur.",
@@ -16546,7 +16568,7 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_mistburned_isles": 100
+    "gift_of_the_mursaat_ruins": 100
    },
    "sources": [
     {
@@ -16582,7 +16604,7 @@
    "checked": "2026-08-26",
    "ref": "wiki:Seer_Runestone + Shard_of_Bava_Nisos + Curious_Mursaat_Ruin_Shard + Mist_Gate_Residue (exports Antoine 26/08/2026)",
    "needed_for": [
-    "gift_of_the_mistburned_isles"
+    "gift_of_the_mursaat_ruins"
    ],
    "cadence": {
     "sources": [
@@ -19090,7 +19112,8 @@
     "banner_of_the_commander": 25,
     "gift_of_souls": 250,
     "orichalcum_plated_dowel": 3,
-    "sweet_treated_pine_plank": 5
+    "sweet_treated_pine_plank": 5,
+    "neutralized_titan_alloy": 5
    },
    "needed_for": [
     "banner_of_the_commander",
@@ -19106,11 +19129,12 @@
     "gift_of_stealth",
     "gift_of_water",
     "gift_of_weather",
-    "shark_statue",
-    "unicorn_statue",
-    "wolf_statue",
+    "neutralized_titan_alloy",
     "orichalcum_plated_dowel",
-    "sweet_treated_pine_plank"
+    "shark_statue",
+    "sweet_treated_pine_plank",
+    "unicorn_statue",
+    "wolf_statue"
    ],
    "sources": [
     {
@@ -21082,10 +21106,12 @@
    "name": "Shard of the Dark Arts",
    "kind": "advanced_craft",
    "needed_for": [
+    "ars_goetia",
     "gift_of_ipos"
    ],
    "qty": {
-    "gift_of_ipos": 100
+    "gift_of_ipos": 100,
+    "ars_goetia": 100
    },
    "sources": [
     {
@@ -21157,11 +21183,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_arah.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Arah",
@@ -21180,11 +21209,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_call_of_the_void.html, table Acquisition"
     }
    ],
    "ref": "page wiki « Tribute to the Call of the Void » (deja au depot) ; le nom du composant en differe",
@@ -21204,11 +21236,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_endeavor.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Endeavor",
@@ -21227,11 +21262,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_exitare.html, table Acquisition"
     }
    ],
    "ref": "page wiki « Tribute to the Exitare » (deja au depot) ; le nom du composant en differe",
@@ -21251,11 +21289,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_friendship.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Friendship",
@@ -21274,11 +21315,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_liturgy.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Liturgy",
@@ -21297,11 +21341,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_resolution.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Resolution",
@@ -21320,11 +21367,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_spero.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Spero",
@@ -21343,11 +21393,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 10 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_10).",
+      "en": "Purchase for 10 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_10)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_the_dark_arts.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of the Dark Arts",
@@ -21366,11 +21419,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 15 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_15).",
+      "en": "Purchase for 15 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_15)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_tlehco.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard of Tlehco",
@@ -22451,11 +22507,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Recette non capturée — la table de matériaux dit qu'il en faut un par tesson, sans détailler son coût.",
-      "en": "Recipe not captured — the material table states one per shard without detailing its cost."
-     }
+      "fr": "Achat pour 20 au choix de six monnaies identiques aux autres Tribute to X (voir alt_groups tribut_20).",
+      "en": "Purchase for 20 of any of six currencies, same as the other Tribute to X (see alt_groups tribut_20)."
+     },
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "tribute_to_the_man_o_war.html, table Acquisition"
     }
    ],
    "ref": "table « Full material list » — 1 Tribute par Shard o' War",
@@ -26160,7 +26219,8 @@
    "apiId": 102306,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -26176,7 +26236,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "refined_homestead_metal": {
@@ -26184,7 +26245,8 @@
    "apiId": 102205,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -26200,7 +26262,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "refined_homestead_wood": {
@@ -26208,7 +26271,8 @@
    "apiId": 103049,
    "kind": "material",
    "needed_for": [
-    "gift_of_embracing_refuge"
+    "gift_of_embracing_refuge",
+    "shard_of_the_homestead"
    ],
    "farmable": true,
    "sources": [
@@ -26224,7 +26288,8 @@
     }
    ],
    "qty": {
-    "gift_of_embracing_refuge": 250
+    "gift_of_embracing_refuge": 250,
+    "shard_of_the_homestead": 5
    }
   },
   "relic": {
@@ -26476,19 +26541,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_jackal.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_jackal.html"
   },
   "spirit_of_the_raptor": {
    "name": "Spirit of the Raptor",
@@ -26500,19 +26568,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_raptor.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_raptor.html"
   },
   "spirit_of_the_skimmer": {
    "name": "Spirit of the Skimmer",
@@ -26524,19 +26595,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_skimmer.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_skimmer.html"
   },
   "spirit_of_the_springer": {
    "name": "Spirit of the Springer",
@@ -26548,19 +26622,22 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Achat 75 Elegy Mosaic, une fois la maîtrise de la monture montée au maximum.",
+      "en": "Bought for 75 Elegy Mosaic once the mount mastery is maxed."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_the_rider.html"
+     "verified": true,
+     "checked": "2026-10-04",
+     "ref": "spirit_of_the_springer.html, table Acquisition"
     }
    ],
    "qty": {
     "gift_of_the_rider": 1
-   }
+   },
+   "verified": true,
+   "checked": "2026-10-04",
+   "ref": "spirit_of_the_springer.html"
   },
   "storm": {
    "name": "Storm",
@@ -26981,7 +27058,8 @@
    "apiId": 103103,
    "kind": "material",
    "needed_for": [
-    "gift_of_gatherer_of_the_hunt"
+    "gift_of_gatherer_of_the_hunt",
+    "mists_gate_residue"
    ],
    "farmable": true,
    "sources": [
@@ -26997,7 +27075,8 @@
     }
    ],
    "qty": {
-    "gift_of_gatherer_of_the_hunt": 100
+    "gift_of_gatherer_of_the_hunt": 100,
+    "mists_gate_residue": 1
    }
   },
   "symbol_of_control": {
@@ -28180,6 +28259,7 @@
    "apiId": 24360,
    "kind": "material",
    "needed_for": [
+    "bowl_of_poultry_satay",
     "plate_of_spicy_herbed_chicken"
    ],
    "farmable": true,
@@ -28196,7 +28276,8 @@
     }
    ],
    "qty": {
-    "plate_of_spicy_herbed_chicken": 3
+    "plate_of_spicy_herbed_chicken": 3,
+    "bowl_of_poultry_satay": 3
    }
   },
   "slab_of_red_meat": {
@@ -28204,6 +28285,8 @@
    "apiId": 24359,
    "kind": "material",
    "needed_for": [
+    "meaty_asparagus_skewer",
+    "plate_of_orrian_steak_frittes",
     "plate_of_truffle_steak"
    ],
    "farmable": true,
@@ -28220,7 +28303,9 @@
     }
    ],
    "qty": {
-    "plate_of_truffle_steak": 1
+    "plate_of_truffle_steak": 1,
+    "meaty_asparagus_skewer": 1,
+    "plate_of_orrian_steak_frittes": 1
    }
   },
   "small_spiritwood_haft": {
@@ -28909,6 +28994,7 @@
    "apiId": 12236,
    "kind": "material",
    "needed_for": [
+    "bowl_of_black_pepper_cactus_salad",
     "pile_of_salt_and_pepper"
    ],
    "farmable": true,
@@ -28925,7 +29011,8 @@
     }
    ],
    "qty": {
-    "pile_of_salt_and_pepper": 1
+    "pile_of_salt_and_pepper": 1,
+    "bowl_of_black_pepper_cactus_salad": 5
    }
   },
   "carnelian_lump": {
@@ -79261,7 +79348,8 @@
    "targets": [
     "tribute_to_arah",
     "tribute_to_spero",
-    "tribute_to_exitare"
+    "tribute_to_exitare",
+    "tribute_to_the_man_o_war"
    ],
    "label": {
     "fr": "Tribute to X — une seule des six monnaies (20)",
@@ -79271,7 +79359,7 @@
     "fr": "Chaque Tribute to X s'achete indifferemment contre l'une de six monnaies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), meme quantite pour les six. Volatile Magic retenu par defaut (meta EoD, cout marginal nul) ; bascule vers une autre monnaie possible si tu veux accelerer avec des ressources deja en stock.",
     "en": "Each Tribute to X is bought with any one of six currencies (Volatile Magic / Unbound Magic / Airship Part / Ley Line Crystal / Lump of Aurillium / Trade Contract), same quantity for all six. Volatile Magic kept as default (free EoD meta); switch to another currency to speed up using stock you already have."
    },
-   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
+   "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies ; tribute_to_the_man_o_war.html (meme table, 04/10/2026)",
    "verified": true,
    "checked": "2026-09-09"
   },

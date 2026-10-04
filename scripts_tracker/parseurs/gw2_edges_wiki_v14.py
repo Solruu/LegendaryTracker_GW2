@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 """Extrait les aretes de l'arbre de craft depuis les captures wiki.
 
+v14 : DEUX CONVERSIONS DE PALIER QUE LE SIGNAL « SORTIE > 1 » NE VOYAIT PAS.
+
+- Noyau -> lodestone. 2 noyaux + vin elonien ou agent liant + poussiere
+  cristalline + cristal mystique donnent UNE pierre : sortie 1, la regle v3
+  la laissait passer. C'est pourtant une promotion au sens exact — palier
+  inferieur vers palier superieur — et le projet a tranche que les lodestones
+  sont des feuilles (BACKLOG, § alt_groups : « les lodestones tombent »). La
+  poussiere cristalline de quinze legendaires sortait en « deja compte par
+  cascade » par ce seul chemin.
+- Raffinage a un seul ingredient. « 3 Ancient Wood Log -> 1 Ancient Wood
+  Plank », boite de Type Refinement : le raffinage des matieres premieres
+  generiques est volontairement non decompose (_meta.raw_materials_scope).
+  Seules les boites a UN ingredient sont visees : les orbes (cristal +
+  poussiere), dont cinq aretes sont posees, ne sont pas touchees.
+
+Les deux sont comptees et listees avec les promotions.
+
 v3 : ECARTE LES RECETTES DE PROMOTION.
 
 Une recette de promotion transforme en masse un materiau en son palier
@@ -213,6 +230,14 @@ def _voies_multiples(page):
     return 'id="Overview"' in seg and ('id="Recipes"' in seg or 'id="Recipe"' in seg)
 
 
+def _raffinage(page):
+    f = Path("ressources/wiki") / f"{page}.html"
+    if not f.exists():
+        return False
+    t = re.sub(r"<[^>]+>", " ", f.read_text(encoding="utf-8", errors="ignore"))
+    return re.search(r"Type\s+Refinement", re.sub(r"\s+", " ", t)) is not None
+
+
 for r in WIKI_RECIPES:
     if not r['recettes']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
@@ -221,7 +246,10 @@ for r in WIKI_RECIPES:
         cibles_de_choix_ecartees.append(p)
         continue
     for rc in r['recettes']:
-        if rc['sortie'] > 1:
+        _ing = [k for k, _ in rc['ingredients']]
+        if (rc['sortie'] > 1
+                or (p.endswith('lodestone') and any(k.endswith('_Core') for k in _ing))
+                or (len(_ing) == 1 and _raffinage(r['page']))):
             # Promotion : voie d'acquisition alternative, pas une exigence.
             promotions.append((r['page'], rc['sortie'], rc['ingredients'][0][0]))
             continue
