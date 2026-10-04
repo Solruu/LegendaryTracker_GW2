@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v360) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v361) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -23,8 +23,9 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
+| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v1` (apres `parseurs/gw2_edges_wiki_v14`) | **29 aretes**, toutes expliquees (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v360) |
+| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v361) |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -95,6 +96,11 @@ Shield.
 ## Lots en jeu et decisions (A)
 
 ### A1 — Decisions en attente
+- [ ] Neutralized Titan Alloy (Klobjarne) : vendeur ou recette (3 ectos) ; la
+      chaine compte la recette (+300 ectos sur l'arbre). Ouvrir un choix
+      `alt_groups` (recette / vendeur) ?
+- [ ] `gift_of_adventure_voe` (106700) : sans page, sans enfant, sans
+      consommateur depuis C6 — supprimer le composant ?
 - [ ] `bf_meta` : meta de Bitterfrost Frontier, ou Frozen Maw (Wayfarer
       Foothills) ? Conditionne son acces et sa `ref`.
 - [ ] § 12 quater : « selections de la liste » — nom de l'ecran.
@@ -198,9 +204,33 @@ hierarchie :
     l'arbre prend Emerald, le tracker Ruby) et Gift of the Beach (Coral Orb,
     page non capturee) → W. Sun Bead absent du tracker.
   - Ecto d'Obsidienne par piece : une seule piece lue, pas d'extrapolation → W.
-  - Controle transversal a envisager : une arete de la donnee qu'aucune
-    capture ne propose, alors que les deux pages sont au depot (le cas du
-    cube l'aurait attrape).
+  - Controle transversal : fait, lot C6.
+
+### C6 — Aretes non sourcees · C — ✅ outil et premier tri le 04/10 (sources v361)
+`controle/gw2_aretes_non_sourcees_v1` liste toute arete de la donnee vers un
+parent dont les captures lisent la composition sans la proposer. Ne du cas
+cube <- Gift of Research (C3). 30 lignes au premier passage :
+- [x] **1 fausse** : `gift_of_adventure_voe` -> Gift of Castoran Mastery (la
+      recette demande UN Gift of Adventure, id 105979 = `gift_of_adventure`).
+      Retiree par `integration/gw2_aretes_fausses_v1` ; seul effet, le don
+      fantome sort de Selachimorpha. Suppression du composant : A1.
+- [x] **29 justes**, raison par famille — a relire si le chiffre bouge :
+  - seconde recette ou voie au choix, le parseur ne garde que les
+    ingredients communs : 3 Superior Sigils (recette actuelle 15 lucent +
+    2 lodestones + 10 ectos + 1 symbole ; « historique » a l'orichalque),
+    Simple Olmakhan Bandolier (gossamer / cuir / orichalque), Pile of
+    Putrid Essence (vin / Mystic Binding Agent) ;
+  - nom que `to_id` ne resout pas : Memory Essence Encapsulator (lien
+    « Ectoplasm »), Mystic Essence of Annihilation (Glob of Dark Matter),
+    `legendary_insight` contre `legendary_insight_consumable` (Gift of
+    Compassion, Gift of Prowess), Gift of Adventure (ambiguite listee par le
+    parseur) ;
+  - monnaie remplacee : Testimony of Jade Heroics -> Castoran Heroics
+    (certificate, essence of animosity), Badge of Honor des Commander's Wings ;
+  - or (`gold_coin`), feuilles de recette, objets de collection (Nyr Hrammr,
+    Orrax Contained), tributs Exitare / Call of the Void.
+- [ ] corriger `to_id` sur les noms ci-dessus ferait tomber une dizaine de
+      lignes et ajouterait des propositions justes aux autres rapports.
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non
