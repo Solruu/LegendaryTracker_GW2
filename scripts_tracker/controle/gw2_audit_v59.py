@@ -2221,6 +2221,14 @@ def check_fratrie_incomplete(data, errors, warnings):
     comblera.
 
     Les entrees `*_weapon_generic` sont des gabarits, pas des armes : exclues.
+
+    v59 : un legendaire FORGE A PARTIR D'AUTRES LEGENDAIRES n'est pas un
+    membre de la fratrie. Eternity (1 Sunrise + 1 Twilight + 5 poussieres +
+    10 pierres) portait, depuis l'import initial, une troisieme copie du
+    patron gen1 — Gift of Mastery, Gift of Fortune, 250 pieces ; une fois
+    retiree (sources v364), cette regle reclamait de la remettre. Le signal
+    est dans la donnee : une etape de collection qui designe une autre
+    legendaire (`items[].legendary`), la forme deja utilisee par le JSX.
     La tolerance est de deux membres manquants, ce qui evite de transformer une
     exigence minoritaire en anomalie.
     """
@@ -2231,7 +2239,9 @@ def check_fratrie_incomplete(data, errors, warnings):
         if not isinstance(leg, dict) or lid.endswith("_weapon_generic"):
             continue
         gen = leg.get("gen")
-        if gen:
+        compose = any(i.get("legendary") for c in (leg.get("collections") or {}).values()
+                      if isinstance(c, dict) for i in (c.get("items") or []) if isinstance(i, dict))
+        if gen and not compose:
             groupes.setdefault(gen, []).append(lid)
     porte = {}
     for cid, comp in cc.items():

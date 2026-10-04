@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v363) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v364) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -17,15 +17,15 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | rapport | outil | chiffre |
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → **99 ecarts** apres C6 (dont 3 Jade attendus, voir C6) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → **98 ecarts** (v364, dont 3 Jade attendus, voir C6) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
-| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v2` (apres `parseurs/gw2_edges_wiki_v14`) | **25 aretes**, toutes expliquees (C6) |
+| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **25 aretes**, toutes expliquees (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v363) |
+| audit | `controle/gw2_audit_v59` | 0 erreur, 64 avertissements (v364) |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -71,9 +71,13 @@ jamais faux, notre lecture l'est ».
       gen3 (BACKLOG Ouvert 24/09 §2). Sans elle, rien n'est pose : deduire du
       patron generationnel est interdit.
 
-### W6 — Six doubles comptes · W
-- [ ] captures qui tranchent `stabilizing_matrix`/Klobjarne Geirr,
-      `shard_of_glory`/Conflux et les quatre autres (liste par l'audit).
+### W6 — Doubles comptes signales par l'audit · W
+- [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
+      tranches le 04/10 par arbre ou recette.
+- [ ] Aurora, ecto et obsidienne : cle a plat 250 + chaine (Mithrillium,
+      lingots, briques, etoiles). La page ne donne qu'un « total of about
+      250 » en prose, pas de table : capture ou arbre gw2efficiency d'Aurora
+      necessaire.
 
 ### W7 — Noms francais des sous-zones de farm (56) · W
 Source acceptable : wiki FR ou client du jeu. Jamais une traduction de tete.
@@ -207,7 +211,7 @@ hierarchie :
   - Controle transversal : fait, lot C6.
 
 ### C6 — Aretes non sourcees · C — ✅ outil, deux passes le 04/10 (sources v361, v363)
-`controle/gw2_aretes_non_sourcees_v2` liste toute arete de la donnee vers un
+`controle/gw2_aretes_non_sourcees_v3` liste toute arete de la donnee vers un
 parent dont les captures lisent la composition sans la proposer. Ne du cas
 cube <- Gift of Research (C3). 30 lignes au premier passage :
 - [x] **1 fausse** : `gift_of_adventure_voe` -> Gift of Castoran Mastery (la
@@ -246,11 +250,18 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       CONFRONTATION sont attendues (la capture lit la recette).
 - [ ] `gift_of_castoran_mastery -> gift_of_adventure` restera liste tant que
       le composant `_voe` existe (ambiguite de nom) : suppression en A1.
-- [ ] lecon : une arete juste peut cacher sa jumelle fausse. Le controle
-      ne voit que ce que les captures ne proposent pas ; deux voies d'un
-      meme parent comptees ensemble lui echappent. Piste : signaler un
-      parent dont la donnee porte deux monnaies (ou deux objets) de meme
-      famille a quantite egale.
+- [x] **voies concurrentes** (`controle/gw2_aretes_non_sourcees_v3`) : arete
+      non proposee dont un frere du meme parent l'est, a quantite egale, nom
+      a un mot pres. Mesure : les 2 lignes Jade sur v361, 0 sur v364 (la
+      regle sans condition « proposee » en donnait 130). Sortie 1 si > 0.
+- [x] **Eternity** (`integration/gw2_aretes_fausses_v3`, v364) : troisieme
+      copie du patron gen1 depuis l'import initial (Gift of Mastery, Gift of
+      Fortune, 250 pieces), deja portee par Sunrise et Twilight. Recette
+      wiki : 2 legendaires + 5 poussieres + 10 pierres. Eternity perd 21
+      lignes (ectos 250, trefles 77, T6 250 x 7...). Trouve par l'audit
+      (poussiere en direct et via Gift of Magic). `controle/gw2_audit_v59` :
+      la regle « fratrie » exclut un legendaire forge d'autres legendaires
+      (`collections.*.items[].legendary`), sinon elle reclamait le patron.
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non
@@ -292,6 +303,9 @@ faits). `note_alt` d'Ad Infinitum n'est toujours pas rendu.
 ### S7 — Hygiene
 - [ ] trier `BACKLOG.md` : sections closes et ouvertes melees, titres perimes
       (« 10 restants » de la migration, par exemple)
+- [ ] `shared_components` des fiches legendaires : lu par aucun outil ni
+      par le JSX, et faux pour Eternity (liste le patron gen1) — retirer le
+      champ partout ?
 - [ ] `RELECTURE_RECETTES` : le script numerotait sa sortie `_v1` au lieu de
       reprendre la suite — corrige a la main le 04/10, script a corriger
 

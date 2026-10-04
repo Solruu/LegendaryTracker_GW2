@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v363.json`. **25 aretes** sur 17 parents dont les captures lisent la composition,
+Source : `gw2_sources_v364.json`. **25 aretes** sur 17 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -32,3 +32,10 @@ Research, retire le 04/10).
 | `superior_sigil_of_strength` | `glob_of_ectoplasm` | 10 | onyx_lodestone 2 |
 | `superior_sigil_of_strength` | `pile_of_lucent_crystal` | 15 | onyx_lodestone 2 |
 | `superior_sigil_of_strength` | `symbol_of_enhancement` | 1 | onyx_lodestone 2 |
+
+## Voies concurrentes — 0
+
+Arete non proposee dont un frere du meme parent l'est, a quantite egale,
+nom a un mot pres : deux voies d'acquisition comptees ensemble (le cas
+Jade / Castoran Heroics, v361). Doit rester a zero.
+
