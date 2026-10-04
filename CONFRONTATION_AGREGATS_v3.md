@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v355.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v360.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -22,15 +22,15 @@ rien dire.
 | verdict | composant | prose | somme | arbre |
 |---|---|---|---:|---:|
 | ok | `bolt_of_damask` | 5 | 5 | 5 |
-| ok | `cube_stabilized_dark_energy` | 5 | 5 | 5 |
+| ok | `cube_stabilized_dark_energy` | 5 | 5 | 8 |
 | ok | `deldrimor_steel_ingot` | 5 | 5 | 5 |
 | ok | `elonian_leather_square` | 5 | 5 | 5 |
-| ok | `glob_of_ectoplasm` | 25 + 250 | 275 | 1059 |
+| ok | `glob_of_ectoplasm` | 25 + 250 | 275 | 1054 |
 | ok | `mystic_clover` | 77 | 77 | 77 |
-| ok | `pristine_mist_essence` | 5 | 5 | 5 |
-| ok | `rare_essence_of_luck` | 50 | 50 | 50 |
+| ok | `pristine_mist_essence` | 5 | 5 | 8 |
+| ok | `rare_essence_of_luck` | 50 | 50 | 80 |
 | ok | `spiritwood_plank` | 5 | 5 | 5 |
-| ok | `thermocatalytic_reagent` | 50 | 50 | 780 |
+| ok | `thermocatalytic_reagent` | 50 | 50 | 690 |
 
 ## the_ascension → `the_ascension` — 5 objets
 
@@ -51,15 +51,15 @@ rien dire.
 | ok | `branded_mass` | 360 | 360 | 460 |
 | ok | `exquisite_serpentite_jewel` | 18 | 18 | 18 |
 | ok | `eye_of_kormir` | 300 | 300 | 0 |
-| ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 1012 |
+| ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 1052 |
 | ok | `inscribed_shard` | 200 | 200 | 300 |
 | ok | `kralkatite_ore` | 3 | 3 | 3100 |
 | ok | `laurel` | 30 | 30 | 30 |
 | ok | `lesser_vision_crystal` | 6 | 6 | 6 |
 | ok | `olmakhan_latigo_strap` | 5 | 5 | 17 |
 | ok | `orichalcum_filigree` | 60 | 60 | 60 |
-| ok | `orichalcum_ingot` | 25 | 25 | 115 |
-| ok | `powdered_rose_quartz` | 3 | 3 | 3000 |
+| ok | `orichalcum_ingot` | 25 | 25 | 185 |
+| ok | `powdered_rose_quartz` | 3 | 3 | 3070 |
 | ok | `spool_of_gossamer_thread` | 100 | 100 | 100 |
 | ok | `unidentified_dye` | 20 | 20 | 20 |
 | ok | `volatile_magic` | 3000 | 3000 | 3000 |
@@ -72,9 +72,9 @@ rien dire.
 | ok | `ancient_bone` | 20 | 20 | 270 |
 | ok | `armored_scale` | 20 | 20 | 270 |
 | ok | `badge_of_honor` | 250 + 1000 | 1250 | 3250 |
-| ok | `bloodstone_dust` | 250 | 250 | 2250 |
-| ok | `dragonite_ore` | 250 | 250 | 2250 |
-| ok | `empyreal_fragment` | 250 | 250 | 2250 |
+| ok | `bloodstone_dust` | 250 | 250 | 1250 |
+| ok | `dragonite_ore` | 250 | 250 | 1250 |
+| ok | `empyreal_fragment` | 250 | 250 | 1250 |
 | ok | `gift_of_battle` | 4 | 4 | 4 |
 | ok | `glob_of_dark_matter` | 10 | 10 | 10 |
 | ok | `glob_of_ectoplasm` | 250 | 250 | 499 |

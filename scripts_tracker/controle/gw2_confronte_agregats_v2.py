@@ -69,27 +69,15 @@ def charge_relecture():
 
 
 def total_sous(cc, cible, quoi):
-    """Quantite de `quoi` requise par `cible`, en remontant les aretes qty."""
-    vus = set()
-    total = 0
+    """Quantite de `quoi` requise par `cible` : le total du MOTEUR.
 
-    def descend(node, mult):
-        nonlocal total
-        for cid, comp in cc.items():
-            q = comp.get("qty") or {}
-            for suffixe, facteur in (("", 1), ("__per_piece", 6),
-                                     ("__full_set", 1), ("__onetime", 1)):
-                if node + suffixe not in q:
-                    continue
-                n = q[node + suffixe] * facteur * mult
-                if cid == quoi:
-                    total += n
-                if cid not in vus:
-                    vus.add(cid)
-                    descend(cid, n)
-
-    descend(cible, 1)
-    return total
+    v2 : la v1 refaisait sa propre cascade et ne visitait chaque composant
+    qu'une fois (`vus`). Un composant atteint par deux chemins — la Pristine
+    Mist Essence d'Ad Infinitum, cle a plat 3 ET arete Unbound 5 — ne
+    transmettait a ses descendants que le premier : 3 cubes au lieu de 8, et
+    deux faux « DEPASSE ». Le moteur est la seule source des totaux.
+    """
+    return _MODELE.totaux(cible).get(quoi, 0)
 
 
 def main():
@@ -99,6 +87,11 @@ def main():
 
     src = derniere("gw2_sources_v*.json")
     data = json.loads(src.read_text(encoding="utf-8"))
+    global _MODELE
+    import sys as _s
+    _s.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from moteur.gw2_moteur_v3 import Modele
+    _MODELE = Modele.depuis(data, src)
     cc = data["craft_components"]
     legs = data["legendaries"]
     rel = charge_relecture()
@@ -175,9 +168,10 @@ def main():
                      f"{n_somme} sommes à arbitrer, {n_ok} accords.**\n")
     dest = args.rapport
     if not dest:
-        n = 1
-        while (HERE / f"CONFRONTATION_AGREGATS_v{n}.md").exists():
-            n += 1
+        # v2 : suite de la numerotation existante, pas le premier trou.
+        nums = [int(re.search(r"_v(\d+)\.md$", f.name).group(1))
+                for f in HERE.glob("CONFRONTATION_AGREGATS_v*.md")]
+        n = max(nums, default=0) + 1
         dest = f"CONFRONTATION_AGREGATS_v{n}.md"
     (HERE / dest).write_text("\n".join(lignes) + "\n", encoding="utf-8")
     print(f"pages {n_pages} | depassements {n_depasse} | sommes a arbitrer {n_somme} | "

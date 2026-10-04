@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v359) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v360) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -17,14 +17,14 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | rapport | outil | chiffre |
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → **116 ecarts** apres C3 2e passe (93 hausses, 23 baisses) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → **96 ecarts** apres C3 3e passe (75 hausses, 21 baisses) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v2.md` | `controle/gw2_confronte_agregats_v1` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v58` | 0 erreur, 69 avertissements |
+| audit | `controle/gw2_audit_v58` | 0 erreur, 66 avertissements (v360) |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -147,7 +147,7 @@ cas n'etait un double compte :
       Gift of Competitive Dedication, donc par Ardent Glorious — meme blocage
       que les deux restes de C1.
 
-### C3 — Confrontation des totaux · C — 2 passes faites le 04/10 (sources v358, v359)
+### C3 — Confrontation des totaux · C — 3 passes faites le 04/10 (sources v358 a v360)
 247 → **158 ecarts**. `controle/gw2_confronte_v4` applique enfin `alt_groups`
 (la v3 additionnait les six monnaies des tributs : 60 faux ecarts gen2), et
 `integration/gw2_confrontation_c3_v1` tranche sur pages et arbres lus en
@@ -172,14 +172,35 @@ hierarchie :
 - [x] **outil** : `controle/gw2_confronte_v5` respecte `qty_overlap_verified`
       dans la colonne « recettes » (la v4 retirait la cle d'un noeud distinct).
       158 → 116.
-- [ ] **reste** : Ad Infinitum, 9 Ball of Dark Energy sous les objets de
-      collection Aetherblade (17 a l'arbre, 8 en chaine) → C5 ; dragonite /
-      fragment / poussiere / reliques fractales (1 500, 4 650 = arbre) restent
-      en ecart dans le rapport : les aretes Vision Crystal / Gift of Ascension
-      ne sont pas proposees par les captures pour Ad Infinitum, ecart d'outil,
-      pas de donnee. Ecto d'Obsidienne par piece (une seule piece lue, pas
-      d'extrapolation) ; ecto de Klobjarne (1 971 contre 1 230) ; Endless
-      Summer (matieres premieres, `raw_materials_scope`).
+- [x] **3e passe (v360)**, `integration/gw2_confrontation_c3_v3` :
+      arete fausse `cube_stabilized_dark_energy <- gift_of_research` retiree
+      (recette du Gift of Research sans cube ; la page du cube ne le cite qu'en
+      navbox ; arbres AA 1, Stella 0, Klobjarne 2) — 23 legendaires perdent
+      1 cube, 1 balle, 75 matrices. Klobjarne : matrices 375 → 150, ecto
+      1 971 → 1 353 (= arbre + 300 alliage titan par recette + 12 residu).
+      Endless Summer : Gift of the Sun relie a ses 3 dons (2 Light, 2
+      Condensed Might, 2 Condensed Magic), 31 cles a plat echangees a total
+      egal, + poussieres 500/100/100, orichalque 500, cuir 500 (= arbre).
+      Transcendence : matrices 170 → 95 (cle 95 → 20, chevauchement declare).
+- [x] **outil** : `controle/gw2_confronte_agregats_v2` lit les totaux du
+      moteur (la v1 avait sa propre cascade, un composant a deux chemins ne
+      transmettait que le premier : 2 faux « DEPASSE ») et reprend la suite
+      de numerotation au lieu du premier trou.
+- [ ] **reste** :
+  - Ad Infinitum : 9 Ball of Dark Energy des objets de collection Aetherblade
+    (17 a l'arbre, 8 en chaine) → C5. Dragonite / fragment / poussiere /
+    reliques fractales egalent l'arbre ; l'ecart du rapport est d'outil
+    (aretes Vision Crystal / Gift of Ascension non proposees par les captures).
+  - Klobjarne : Neutralized Titan Alloy, vendeur ou recette (3 ectos) — la
+    chaine compte la recette (+300 ectos). Choix a ouvrir en `alt_groups` ?
+    → A1.
+  - Endless Summer : orbe du Gift of Infused Gems (une recette par orbe,
+    l'arbre prend Emerald, le tracker Ruby) et Gift of the Beach (Coral Orb,
+    page non capturee) → W. Sun Bead absent du tracker.
+  - Ecto d'Obsidienne par piece : une seule piece lue, pas d'extrapolation → W.
+  - Controle transversal a envisager : une arete de la donnee qu'aucune
+    capture ne propose, alors que les deux pages sont au depot (le cas du
+    cube l'aurait attrape).
 
 ### C4 — Excedents nus (71) et relecture des recettes · C
 71 excedents sans explication (`CONFRONTATION_TOTAUX.md`) ; 4 ingredients non
