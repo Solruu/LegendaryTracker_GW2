@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v366) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v367) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -114,8 +114,14 @@ Shield.
       15 legendaires a arbre (part « trefles » lue dans l'arbre, reste de la
       cle conserve), 35 armes gen1/gen3 (250 pieces = « ~250 Mystic Coins »
       de la prose). Apres retrait, tracker = arbre - trefles partout ou ils
-      etaient egaux. Reste : Eikasia, 80 ectos pour 18 trefles (pas de page
-      ni d'arbre au depot) → W.
+      etaient egaux. Eikasia : ses 80 ectos n'etaient pas des trefles mais le
+      surcout de Lyhr (ci-dessous).
+- [x] **Gifts Blood/Bones/.../Venom : voie par defaut = recette en or**
+      (decision du 04/10). Recettes 10 or chacune, une fois par compte,
+      artisan 400 ; Lyhr = +10 ectos par Gift, 80 par poids. Les 80 ectos
+      Lyhr d'Eikasia retires (`integration/gw2_surcout_lyhr_v1`, v367) ; la
+      voie recette est deja affichee par les `recipe_gift_*`
+      (`account_unlock`). Obsidienne ne comptait pas de surcout Lyhr.
 - [x] Neutralized Titan Alloy (Klobjarne) : ferme le 04/10, pas de choix.
       Recette (artisan 400) 3 ectos + 5 minerai + 5 ambre + 5 lingots ;
       vendeur 4 + 7 + 7 + 6 — plus cher sur chaque ingredient. La chaine
