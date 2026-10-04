@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v364) / `gw2_legendary_tracker_v243.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v365) / `gw2_legendary_tracker_v243.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -17,15 +17,15 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | rapport | outil | chiffre |
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
-| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → **98 ecarts** (v364, dont 3 Jade attendus, voir C6) — colonne « wiki » indicative, pas verite |
+| `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v8` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
-| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **25 aretes**, toutes expliquees (C6) |
+| `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v59` | 0 erreur, 64 avertissements (v364) |
+| audit | `controle/gw2_audit_v59` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -74,10 +74,17 @@ jamais faux, notre lecture l'est ».
 ### W6 — Doubles comptes signales par l'audit · W
 - [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
       tranches le 04/10 par arbre ou recette.
-- [ ] Aurora, ecto et obsidienne : cle a plat 250 + chaine (Mithrillium,
-      lingots, briques, etoiles). La page ne donne qu'un « total of about
-      250 » en prose, pas de table : capture ou arbre gw2efficiency d'Aurora
-      necessaire.
+- [x] Aurora (arbre ajoute le 04/10) : la cle 250 est l'estimation des 77
+      trefles du Mystic Tribute, distincte de la chaine ; 250 → 249 (arbre,
+      comme Vision et Coalescence), chevauchement declare.
+- [x] Klobjarne, obsidienne (revele une fois Aurora levee) : cle 50 = Gift of
+      Expertise deja chaine, trefles absents ; 50 → 123, total 280 → 353 =
+      arbre. `integration/gw2_confrontation_c3_v4`.
+- [ ] Aurora, reste a l'arbre : pieces (249) et eclats d'esprit des trefles
+      non comptes (convention des autres legendaires a verifier : seuls
+      ecto/obsidienne ont une cle « trefles ») ; Gossamer Stuffing et Dragon
+      Hatchling Doll Eye (25 ectos chacun, collection → C5) ; Vision Crystal
+      present au tracker, absent de l'arbre (30 obsidiennes, 500 dragonite...).
 
 ### W7 — Noms francais des sous-zones de farm (56) · W
 Source acceptable : wiki FR ou client du jeu. Jamais une traduction de tete.
@@ -103,8 +110,8 @@ Shield.
 - [ ] Neutralized Titan Alloy (Klobjarne) : vendeur ou recette (3 ectos) ; la
       chaine compte la recette (+300 ectos sur l'arbre). Ouvrir un choix
       `alt_groups` (recette / vendeur) ?
-- [ ] `gift_of_adventure_voe` (106700) : sans page, sans enfant, sans
-      consommateur depuis C6 — supprimer le composant ?
+- [x] `gift_of_adventure_voe` et `testimony_of_jade_heroics` supprimes
+      (accord du 04/10, `integration/gw2_suppressions_v1`).
 - [ ] `bf_meta` : meta de Bitterfrost Frontier, ou Frozen Maw (Wayfarer
       Foothills) ? Conditionne son acces et sa `ref`.
 - [ ] § 12 quater : « selections de la liste » — nom de l'ecran.
@@ -248,8 +255,8 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       les arbres ne comptent que Castoran. Conflux -750, Triumphant Hero
       -1 500, Warbringer -500 Jade. Les 3 lignes « Jade manquante » de
       CONFRONTATION sont attendues (la capture lit la recette).
-- [ ] `gift_of_castoran_mastery -> gift_of_adventure` restera liste tant que
-      le composant `_voe` existe (ambiguite de nom) : suppression en A1.
+- [x] `gift_of_castoran_mastery -> gift_of_adventure` : resolue par la
+      suppression du composant `_voe`.
 - [x] **voies concurrentes** (`controle/gw2_aretes_non_sourcees_v3`) : arete
       non proposee dont un frere du meme parent l'est, a quantite egale, nom
       a un mot pres. Mesure : les 2 lignes Jade sur v361, 0 sur v364 (la
@@ -303,9 +310,7 @@ faits). `note_alt` d'Ad Infinitum n'est toujours pas rendu.
 ### S7 — Hygiene
 - [ ] trier `BACKLOG.md` : sections closes et ouvertes melees, titres perimes
       (« 10 restants » de la migration, par exemple)
-- [ ] `shared_components` des fiches legendaires : lu par aucun outil ni
-      par le JSX, et faux pour Eternity (liste le patron gen1) — retirer le
-      champ partout ?
+- [x] `shared_components` retire des 44 fiches (accord du 04/10).
 - [ ] `RELECTURE_RECETTES` : le script numerotait sa sortie `_v1` au lieu de
       reprendre la suite — corrige a la main le 04/10, script a corriger
 

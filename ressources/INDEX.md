@@ -1201,6 +1201,7 @@ collection**. Ne jamais en déduire qu'une étape de collection n'existe pas.
 | fichier | cible | versé le |
 |---|---|---|
 | `aetheric_anchor.html` | Aetheric Anchor | 2026-08-27 |
+| `aurora.html` | Aurora | 2026-10-04 |
 | `coalescence_vision_ad_infinitum.html` | Coalescence + Vision + Ad Infinitum | 2026-08-27 |
 | `conflux.html` | Conflux, arbre complet | 2026-08-27 |
 | `endless_summer.html` | Endless Summer | 2026-08-27 |

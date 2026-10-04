@@ -6780,10 +6780,10 @@ const SOURCES_DB = {
         "obsidian__per_piece": 50,
         "endless_summer": 33,
         "vision": 321,
-        "aurora": 250,
+        "aurora": 249,
         "coalescence": 249,
         "aetheric_anchor": 323,
-        "klobjarne_geirr": 50,
+        "klobjarne_geirr": 123,
         "orrax_manifested": 220,
         "stella_radians": 249,
         "strife_unending": 146,
@@ -6903,14 +6903,20 @@ const SOURCES_DB = {
         }
       },
       "qty_overlap_verified": [
+        "aurora",
         "coalescence",
         "endless_summer",
+        "klobjarne_geirr",
         "selachimorpha",
         "vision"
       ],
       "note": {
         "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
         "en": null
+      },
+      "qty_overlap_note": {
+        "fr": "Aurora : 249 pour les 77 Mystic Clovers du Mystic Tribute (clé à plat) + Fulgurite et la chaîne du Vision Crystal (arêtes) — arbre gw2efficiency. Klobjarne Geirr : 123 pour les 38 Mystic Clovers (clé à plat) + Gift of Expertise et 30 lingots, étoiles, briques (arêtes) — arbre gw2efficiency, 353.",
+        "en": "Aurora: 249 for the Mystic Tribute's 77 Mystic Clovers (flat key) + Fulgurite and the Vision Crystal chain (edges) — gw2efficiency tree. Klobjarne Geirr: 123 for the 38 Mystic Clovers (flat key) + Gift of Expertise and 30 ingots, stars, bricks (edges) — gw2efficiency tree, 353."
       }
     },
     "gift_of_exploration": {
@@ -7670,7 +7676,7 @@ const SOURCES_DB = {
         "ad_infinitum": 759,
         "memory_essence_encapsulator": 50,
         "vision": 249,
-        "aurora": 250,
+        "aurora": 249,
         "conflux": 249,
         "warbringer": 249,
         "coalescence": 249,
@@ -7732,6 +7738,7 @@ const SOURCES_DB = {
       "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
       "qty_overlap_verified": [
         "ad_infinitum",
+        "aurora",
         "coalescence",
         "klobjarne_geirr",
         "orrax_manifested",
@@ -7750,7 +7757,11 @@ const SOURCES_DB = {
       },
       "wiki_redirects": [
         "Ectoplasm"
-      ]
+      ],
+      "qty_overlap_note": {
+        "fr": "Aurora : 249 pour les 77 Mystic Clovers du Mystic Tribute (clé à plat) + Lump of Mithrillium et Crystalline Ingot (arêtes) — arbre gw2efficiency.",
+        "en": "Aurora: 249 for the Mystic Tribute's 77 Mystic Clovers (flat key) + Lump of Mithrillium and Crystalline Ingot (edges) — gw2efficiency tree."
+      }
     },
     "mystic_clover": {
       "name": "Mystic Clover",
@@ -10822,23 +10833,6 @@ const SOURCES_DB = {
       "qty": {
         "aetheric_anchor": 1
       },
-      "kind": "advanced_craft"
-    },
-    "gift_of_adventure_voe": {
-      "name": "Gift of Adventure (VoE)",
-      "apiId": 106700,
-      "needed_for": [],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "mystic_forge",
-          "tip": {
-            "fr": "MF : map completion VoE (Shipwreck Strand + Starlit Weald exploration gifts) + autres matériaux VoE. Similaire au Gift of Exploration gen1 mais pour VoE.",
-            "en": "MF: VoE map completion (Shipwreck Strand + Starlit Weald exploration gifts) + other VoE materials. Similar to the gen1 Gift of Exploration but for VoE."
-          }
-        }
-      ],
-      "qty": {},
       "kind": "advanced_craft"
     },
     "gift_of_the_seas": {
@@ -28028,26 +28022,6 @@ const SOURCES_DB = {
         "superior_sigil_of_fire": 2
       }
     },
-    "testimony_of_jade_heroics": {
-      "name": "Testimony of Jade Heroics",
-      "apiId": 97457,
-      "kind": "material",
-      "needed_for": [],
-      "farmable": true,
-      "sources": [
-        {
-          "type": "unknown",
-          "tip": {
-            "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-            "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
-          },
-          "verified": false,
-          "checked": "2026-09-25",
-          "ref": "recette de certificate_of_heroics.html, essence_of_animosity.html ; identite depuis gw2_materials_ref.json (apiId 97457)"
-        }
-      ],
-      "qty": {}
-    },
     "the_bard": {
       "name": "The Bard",
       "apiId": 29168,
@@ -35606,15 +35580,6 @@ const SOURCES_DB = {
         "fr": "MF : Précurseur + Gift of Fortune + Gift of Mastery + Gift of [Weapon]",
         "en": "MF: Precursor + Gift of Fortune + Gift of Mastery + Gift of [Weapon]"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "gen": "gen1",
       "weapons": [
         "Frostfang",
@@ -35656,24 +35621,6 @@ const SOURCES_DB = {
         "fr": "MF : Précurseur + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute",
         "en": "MF: Precursor + Gift of [Weapon] + Gift of Maguuma/Desert Mastery + Mystic Tribute"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "mystic_runestone",
-        "legendary_shard_gen2"
-      ],
       "gen": "gen2",
       "weapons": [
         "Astralaria",
@@ -35710,17 +35657,6 @@ const SOURCES_DB = {
         "fr": "MF : Précurseur + Gift of Aurene's Weapon + Gift of Jade Mastery + Draconic Tribute",
         "en": "MF: Precursor + Gift of Aurene's Weapon + Gift of Jade Mastery + Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "gen": "gen3",
       "weapons": [
         "Aurene's Fang",
@@ -35757,15 +35693,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Tooth of Frostfang + 1 Gift of Frostfang + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Tooth of Frostfang + 1 Gift of Frostfang + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Tooth of Frostfang",
       "gift_unique": "Gift of Frostfang",
       "gen": "gen1",
@@ -36910,15 +36837,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Spark + 1 Gift of Incinerator + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Spark + 1 Gift of Incinerator + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Spark",
       "gift_unique": "Gift of Incinerator",
       "gen": "gen1",
@@ -38011,15 +37929,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Energizer + 1 Gift of The Moot + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Energizer + 1 Gift of The Moot + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Energizer",
       "gift_unique": "Gift of The Moot",
       "gen": "gen1",
@@ -39189,15 +39098,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Chaos Gun + 1 Gift of Quip + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Chaos Gun + 1 Gift of Quip + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Chaos Gun",
       "gift_unique": "Gift of Quip",
       "gen": "gen1",
@@ -40378,15 +40278,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Storm + 1 Gift of Meteorlogicus + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Storm + 1 Gift of Meteorlogicus + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Storm",
       "gift_unique": "Gift of Meteorlogicus",
       "gen": "gen1",
@@ -41452,15 +41343,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Zap + 1 Gift of Bolt + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Zap + 1 Gift of Bolt + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Zap",
       "gift_unique": "Gift of Bolt",
       "gen": "gen1",
@@ -42638,15 +42520,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Bard + 1 Gift of The Minstrel + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Bard + 1 Gift of The Minstrel + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Bard",
       "gift_unique": "Gift of The Minstrel",
       "gen": "gen1",
@@ -43777,15 +43650,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Chosen + 1 Gift of The Flameseeker Prophecies + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Chosen + 1 Gift of The Flameseeker Prophecies + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Chosen",
       "gift_unique": "Gift of The Flameseeker Prophecies",
       "gen": "gen1",
@@ -44903,15 +44767,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Rodgort's Flame + 1 Gift of Rodgort + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Rodgort's Flame + 1 Gift of Rodgort + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Rodgort's Flame",
       "gift_unique": "Gift of Rodgort",
       "gen": "gen1",
@@ -45963,15 +45818,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Howl + 1 Gift of Howler + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Howl + 1 Gift of Howler + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Howl",
       "gift_unique": "Gift of Howler",
       "gen": "gen1",
@@ -47231,15 +47077,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Dawn + 1 Gift of Sunrise + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Dawn + 1 Gift of Sunrise + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Dawn",
       "gift_unique": "Gift of Sunrise",
       "gen": "gen1",
@@ -48448,15 +48285,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Dusk + 1 Gift of Twilight + 1 Gift of Mastery + 1 Gift of Fortune",
         "en": "Mystic Forge: 1 Dusk + 1 Gift of Twilight + 1 Gift of Mastery + 1 Gift of Fortune"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Dusk",
       "gift_unique": "Gift of Twilight",
       "gen": "gen1",
@@ -49600,15 +49428,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Sunrise + 1 Twilight + 5 Pile of Crystalline Dust + 10 Philosopher's Stone. Variante mémoire : Memory of Sunrise + Memory of Twilight, mêmes appoints.",
         "en": "Mystic Forge: 1 Sunrise + 1 Twilight + 5 Piles of Crystalline Dust + 10 Philosopher's Stones. Memory variant: Memory of Sunrise + Memory of Twilight, same top-ups."
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Sunrise + Twilight",
       "gift_unique": "N/A — MF direct",
       "gen": "gen1",
@@ -49679,15 +49498,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Colossus + 1 Gift of The Juggernaut + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Colossus + 1 Gift of The Juggernaut + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Colossus",
       "gift_unique": "Gift of The Juggernaut",
       "gen": "gen1",
@@ -51078,15 +50888,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Rage + 1 Gift of Frenzy + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Rage + 1 Gift of Frenzy + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Rage",
       "gift_unique": "Gift of Frenzy",
       "gen": "gen1",
@@ -51839,15 +51640,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Carcharias + 1 Gift of Kamohoali'i Kotaki + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Carcharias + 1 Gift of Kamohoali'i Kotaki + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Carcharias",
       "gift_unique": "Gift of Kamohoali'i Kotaki",
       "gen": "gen1",
@@ -52731,15 +52523,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Leaf of Kudzu + 1 Gift of Kudzu + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Leaf of Kudzu + 1 Gift of Kudzu + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Leaf of Kudzu",
       "gift_unique": "Gift of Kudzu",
       "gen": "gen1",
@@ -53842,15 +53625,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Lover + 1 Gift of The Dreamer + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Lover + 1 Gift of The Dreamer + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Lover",
       "gift_unique": "Gift of The Dreamer",
       "gen": "gen1",
@@ -54980,15 +54754,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Legend + 1 Gift of The Bifrost + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Legend + 1 Gift of The Bifrost + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Legend",
       "gift_unique": "Gift of The Bifrost",
       "gen": "gen1",
@@ -56145,15 +55910,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Venom + 1 Gift of Kraitkin + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 Venom + 1 Gift of Kraitkin + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "Venom",
       "gift_unique": "Gift of Kraitkin",
       "gen": "gen1",
@@ -56984,15 +56740,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Hunter + 1 Gift of The Predator + 1 Gift of Fortune + 1 Gift of Mastery",
         "en": "Mystic Forge: 1 The Hunter + 1 Gift of The Predator + 1 Gift of Fortune + 1 Gift of Mastery"
       },
-      "shared_components": [
-        "gift_of_battle",
-        "bloodstone_shard",
-        "gift_of_mastery",
-        "obsidian_shard",
-        "gift_of_exploration",
-        "gift_of_metal",
-        "gift_of_fortune"
-      ],
       "precursor": "The Hunter",
       "gift_unique": "Gift of The Predator",
       "gen": "gen1",
@@ -58056,24 +57803,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Mechanism + 1 Mystic Tribute + 1 Gift of Astralaria + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
         "en": "Mystic Forge: 1 The Mechanism + 1 Mystic Tribute + 1 Gift of Astralaria + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "icy_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "The Mechanism",
       "gift_unique": "Gift of Astralaria",
       "collection": true,
@@ -59783,24 +59512,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Prototype + 1 Mystic Tribute + 1 Gift of HOPE + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
         "en": "Mystic Forge: 1 Prototype + 1 Mystic Tribute + 1 Gift of HOPE + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "icy_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Prototype",
       "gift_unique": "Gift of HOPE",
       "collection": true,
@@ -61558,24 +61269,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 The Raven Staff + 1 Mystic Tribute + 1 Gift of Nevermore + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
         "en": "Mystic Forge: 1 The Raven Staff + 1 Mystic Tribute + 1 Gift of Nevermore + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "icy_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "The Raven Staff",
       "gift_unique": "Gift of Nevermore",
       "collection": true,
@@ -63347,24 +63040,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Tigris + 1 Mystic Tribute + 1 Gift of Chuka and Champawat + 1 Gift of Maguuma Mastery (Gift of Desert Mastery au lieu de Maguuma dans la recette alternative)",
         "en": "Mystic Forge: 1 Tigris + 1 Mystic Tribute + 1 Gift of Chuka and Champawat + 1 Gift of Maguuma Mastery (Gift of Desert Mastery instead of Maguuma in the alternative recipe)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "icy_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Tigris",
       "gift_unique": "Gift of Chuka and Champawat",
       "collection": true,
@@ -65301,24 +64976,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
         "en": "Mystic Forge: 1 Endeavor + 1 Gift of Eureka + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "mystic_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Endeavor",
       "gift_unique": "Gift of Eureka",
       "collection": false,
@@ -65346,24 +65003,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Friendship + 1 Gift of Shooshadoo + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
         "en": "Mystic Forge: 1 Friendship + 1 Gift of Shooshadoo + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "mystic_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Friendship",
       "gift_unique": "Gift of Shooshadoo",
       "collection": false,
@@ -65393,24 +65032,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
         "en": "Mystic Forge: 1 Exitare + 1 Gift of Exordium + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "mystic_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Exitare",
       "gift_unique": "Gift of Exordium",
       "collection": false,
@@ -65438,24 +65059,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Tlehco + 1 Gift of Xiuquatl + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (ou Gift of Desert Mastery, les deux recettes existent)",
         "en": "Mystic Forge: 1 Tlehco + 1 Gift of Xiuquatl + 1 Mystic Tribute + 1 Gift of Maguuma Mastery (or Gift of Desert Mastery — both recipes exist)"
       },
-      "shared_components": [
-        "airship_part",
-        "ley_line_crystal",
-        "lump_of_aurillium",
-        "gift_of_the_itzel",
-        "gift_of_the_nuhoch",
-        "gift_of_the_exalted",
-        "gift_of_gliding",
-        "gift_of_insights",
-        "gift_of_maguuma",
-        "crystalline_ingot",
-        "gift_of_maguuma_mastery",
-        "gift_of_desert_mastery",
-        "mystic_tribute",
-        "mystic_coin",
-        "mystic_runestone",
-        "legendary_shard_gen2"
-      ],
       "precursor": "Tlehco",
       "gift_unique": "Gift of Xiuquatl",
       "collection": false,
@@ -65483,17 +65086,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Claw + 1 Dragon's Claw + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Claw + 1 Dragon's Claw + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Claw",
       "gift_unique": "Gift of Aurene's Claw",
       "gen": "gen3",
@@ -65524,17 +65116,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Bite + 1 Dragon's Bite + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Bite + 1 Dragon's Bite + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Bite",
       "gift_unique": "Gift of Aurene's Bite",
       "gen": "gen3",
@@ -65567,17 +65148,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Weight + 1 Dragon's Weight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Weight + 1 Dragon's Weight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Weight",
       "gift_unique": "Gift of Aurene's Weight",
       "gen": "gen3",
@@ -65610,17 +65180,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Gaze + 1 Dragon's Gaze + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Gaze + 1 Dragon's Gaze + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Gaze",
       "gift_unique": "Gift of Aurene's Gaze",
       "gen": "gen3",
@@ -65653,17 +65212,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Insight + 1 Dragon's Insight + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Insight + 1 Dragon's Insight + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Insight",
       "gift_unique": "Gift of Aurene's Insight",
       "gen": "gen3",
@@ -65696,17 +65244,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Argument + 1 Dragon's Argument + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Argument + 1 Dragon's Argument + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Argument",
       "gift_unique": "Gift of Aurene's Argument",
       "gen": "gen3",
@@ -65739,17 +65276,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Persuasion + 1 Dragon's Persuasion + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Persuasion + 1 Dragon's Persuasion + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Persuasion",
       "gift_unique": "Gift of Aurene's Persuasion",
       "gen": "gen3",
@@ -65782,17 +65308,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Horn + 1 Dragon's Voice + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Horn + 1 Dragon's Voice + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Voice",
       "gift_unique": "Gift of Aurene's Horn",
       "gen": "gen3",
@@ -65823,17 +65338,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Scale + 1 Dragon's Scale + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Scale + 1 Dragon's Scale + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Scale",
       "gift_unique": "Gift of Aurene's Scale",
       "gen": "gen3",
@@ -65866,17 +65370,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Wisdom + 1 Dragon's Wisdom + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Wisdom + 1 Dragon's Wisdom + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Wisdom",
       "gift_unique": "Gift of Aurene's Wisdom",
       "gen": "gen3",
@@ -65909,17 +65402,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Breath + 1 Dragon's Breath + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Breath + 1 Dragon's Breath + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Breath",
       "gift_unique": "Gift of Aurene's Breath",
       "gen": "gen3",
@@ -73371,17 +72853,6 @@ const SOURCES_DB = {
         "fr": "Forge mystique : 1 Gift of Aurene's Rending + 1 Dragon's Rending + 1 Gift of Jade Mastery + 1 Draconic Tribute",
         "en": "Mystic Forge: 1 Gift of Aurene's Rending + 1 Dragon's Rending + 1 Gift of Jade Mastery + 1 Draconic Tribute"
       },
-      "shared_components": [
-        "mystic_coin",
-        "gift_of_cantha",
-        "antique_summoning_stone",
-        "jade_runestone",
-        "gift_of_the_dragon_empire",
-        "gift_of_jade_mastery",
-        "draconic_tribute",
-        "memories_of_aurene",
-        "legendary_shard_gen3"
-      ],
       "precursor": "Dragon's Rending",
       "gift_unique": "Gift of Aurene's Rending",
       "gen": "gen3",
