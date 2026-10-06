@@ -7750,17 +7750,17 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "vendor",
-          "npc": "Lyhr / Tisseuse de garde Lucirae",
-          "map": "Tour du sorcier / Rive des basses-terres",
+          "type": "reward_track",
           "tip": {
-            "fr": "Alternative, jamais la voie par défaut. 3 écus mystiques + 3 éclats d'obsidienne + 3 éclats spirituels + 5 ectoplasmes par trèfle. Sans plafond, et hors du quota de Miyani malgré un coût identique : c'est la seule voie illimitée, mais elle se paie très cher.",
-            "en": "Alternative, never the default route. 3 Mystic Coins + 3 Obsidian Shards + 3 Spirit Shards + 5 Globs of Ectoplasm per clover. No cap, and outside Miyani's limit despite an identical cost: the only unlimited route, but a very expensive one."
+            "fr": "Voie par défaut. Pistes de récompense PvP et McM : 2 trèfles pour une piste répétable, 7 pour la plupart des pistes non répétables de Monde vivant et d'extension. Gratuit, sans plafond autre que le temps de jeu.",
+            "en": "Default route. PvP and WvW reward tracks: 2 clovers for a repeatable track, 7 for most non-repeatable Living World and expansion tracks. Free, no cap beyond playtime."
           },
           "weekly_cap": null,
           "verified": true,
           "checked": "2026-08-13",
-          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues.",
+          "free_repeatable": true,
+          "cadence": "à volonté"
         },
         {
           "type": "vendor",
@@ -7840,6 +7840,19 @@ const SOURCES_DB = {
           "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
         },
         {
+          "type": "vendor",
+          "npc": "Lyhr / Tisseuse de garde Lucirae",
+          "map": "Tour du sorcier / Rive des basses-terres",
+          "tip": {
+            "fr": "Alternative, jamais la voie par défaut. 3 écus mystiques + 3 éclats d'obsidienne + 3 éclats spirituels + 5 ectoplasmes par trèfle. Sans plafond, et hors du quota de Miyani malgré un coût identique : c'est la seule voie illimitée, mais elle se paie très cher.",
+            "en": "Alternative, never the default route. 3 Mystic Coins + 3 Obsidian Shards + 3 Spirit Shards + 5 Globs of Ectoplasm per clover. No cap, and outside Miyani's limit despite an identical cost: the only unlimited route, but a very expensive one."
+          },
+          "weekly_cap": null,
+          "verified": true,
+          "checked": "2026-08-13",
+          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
+        },
+        {
           "type": "mystic_forge",
           "tip": {
             "fr": "Alternative coûteuse. Recette Forge mystique, sans plafond : ~31 % de chance par tentative selon les relevés communautaires. Le reste du temps elle rend des matériaux T5/T6. Rentable seulement si tu as des écus mystiques à revendre.",
@@ -7849,19 +7862,6 @@ const SOURCES_DB = {
           "verified": true,
           "checked": "2026-08-13",
           "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues."
-        },
-        {
-          "type": "reward_track",
-          "tip": {
-            "fr": "Voie par défaut. Pistes de récompense PvP et McM : 2 trèfles pour une piste répétable, 7 pour la plupart des pistes non répétables de Monde vivant et d'extension. Gratuit, sans plafond autre que le temps de jeu.",
-            "en": "Default route. PvP and WvW reward tracks: 2 clovers for a repeatable track, 7 for most non-repeatable Living World and expansion tracks. Free, no cap beyond playtime."
-          },
-          "weekly_cap": null,
-          "verified": true,
-          "checked": "2026-08-13",
-          "ref": "wiki:Mystic_Clover#Acquisition, tableau « Sold by » (captures Antoine 13/08/2026). Lignes grisees = vendeurs retires, exclues.",
-          "free_repeatable": true,
-          "cadence": "à volonté"
         }
       ],
       "qty": {
@@ -7909,17 +7909,17 @@ const SOURCES_DB = {
         "sources": [
           {
             "label": {
-              "fr": "Coffre du Sorcier",
-              "en": "Wizard's Vault"
+              "fr": "Pistes de récompense PvP / McM (voie principale)",
+              "en": "PvP / WvW reward tracks (main route)"
             },
-            "period": "season",
-            "cap": 20,
+            "period": "week",
+            "cap": null,
             "cost": {
-              "fr": "60 AA",
-              "en": "60 AA"
+              "fr": "gratuit : 2 par piste répétable, 7 pour la plupart des pistes non répétables",
+              "en": "free: 2 per repeatable track, 7 for most non-repeatable tracks"
             },
             "verified": true,
-            "checked": "2026-08-11",
+            "checked": "2026-10-06",
             "ref": "wiki:Mystic_Clover"
           },
           {
@@ -7937,51 +7937,6 @@ const SOURCES_DB = {
             "checked": "2026-08-11",
             "ref": "wiki:Mystic_Clover",
             "magnetite": 30
-          },
-          {
-            "label": {
-              "fr": "Dugan (McM)",
-              "en": "Dugan (WvW)"
-            },
-            "period": "week",
-            "cap": 5,
-            "cost": {
-              "fr": "10 + 20 devise McM",
-              "en": "10 + 20 WvW currency"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Clover"
-          },
-          {
-            "label": {
-              "fr": "Vendeur de ligue PvP",
-              "en": "PvP league vendor"
-            },
-            "period": "week",
-            "cap": 5,
-            "cost": {
-              "fr": "cumulé avec Emblem",
-              "en": "combined with Emblem"
-            },
-            "verified": true,
-            "checked": "2026-08-11",
-            "ref": "wiki:Mystic_Clover"
-          },
-          {
-            "label": {
-              "fr": "Mystic Forge",
-              "en": "Mystic Forge"
-            },
-            "period": "week",
-            "cap": null,
-            "cost": {
-              "fr": "1 écu + 1 ectoplasme + 1 éclat d'obsidienne + 6 pierres philosophales par TENTATIVE, et 31 % de réussite — soit 3,23 tentatives par trèfle (recette « Average » du wiki)",
-              "en": "1 coin + 1 ectoplasm + 1 obsidian shard + 6 philosopher's stones per ATTEMPT, 31% success — 3.23 attempts per clover (the wiki's own \"Average\" recipe)"
-            },
-            "verified": true,
-            "checked": "2026-09-08",
-            "ref": "wiki:Mystic_Clover"
           },
           {
             "label": {
@@ -8015,6 +7970,51 @@ const SOURCES_DB = {
           },
           {
             "label": {
+              "fr": "Dugan (McM)",
+              "en": "Dugan (WvW)"
+            },
+            "period": "week",
+            "cap": 5,
+            "cost": {
+              "fr": "10 + 20 devise McM",
+              "en": "10 + 20 WvW currency"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
+              "fr": "Vendeur de ligue PvP",
+              "en": "PvP league vendor"
+            },
+            "period": "week",
+            "cap": 5,
+            "cost": {
+              "fr": "cumulé avec Emblem",
+              "en": "combined with Emblem"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
+              "fr": "Coffre du Sorcier",
+              "en": "Wizard's Vault"
+            },
+            "period": "season",
+            "cap": 20,
+            "cost": {
+              "fr": "60 AA",
+              "en": "60 AA"
+            },
+            "verified": true,
+            "checked": "2026-08-11",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
               "fr": "Nouvel An lunaire",
               "en": "Lunar New Year"
             },
@@ -8023,6 +8023,21 @@ const SOURCES_DB = {
             "cost": {
               "fr": "10 essences de chance exotiques, et rien d'autre",
               "en": "10 Exotic Essences of Luck, nothing else"
+            },
+            "verified": true,
+            "checked": "2026-09-08",
+            "ref": "wiki:Mystic_Clover"
+          },
+          {
+            "label": {
+              "fr": "Mystic Forge",
+              "en": "Mystic Forge"
+            },
+            "period": "week",
+            "cap": null,
+            "cost": {
+              "fr": "1 écu + 1 ectoplasme + 1 éclat d'obsidienne + 6 pierres philosophales par TENTATIVE, et 31 % de réussite — soit 3,23 tentatives par trèfle (recette « Average » du wiki)",
+              "en": "1 coin + 1 ectoplasm + 1 obsidian shard + 6 philosopher's stones per ATTEMPT, 31% success — 3.23 attempts per clover (the wiki's own \"Average\" recipe)"
             },
             "verified": true,
             "checked": "2026-09-08",
@@ -29946,12 +29961,16 @@ const SOURCES_DB = {
           "map": "Forelands, Sparkfly Fen",
           "paid_repeatable": true,
           "tip": {
-            "fr": "Vendu par Cuadinti Astrozintli (Forelands, Sparkfly Fen) : 21 l'unité ou 525 le lot de 25. Monnaie non lue sur la capture (icône) : à confirmer.",
-            "en": "Sold by Cuadinti Astrozintli (Forelands, Sparkfly Fen): 21 each or 525 per 25. Currency not readable on the capture (icon): to confirm."
+            "fr": "Vendu par Cuadinti Astrozintli (Forelands, Sparkfly Fen) : 21 karma l'unité, ou 525 karma le lot de 25.",
+            "en": "Sold by Cuadinti Astrozintli (Forelands, Sparkfly Fen): 21 karma each, or 525 karma per 25."
           },
-          "verified": false,
-          "checked": "2026-10-04",
-          "ref": "ressources/wiki/sun_bead.html, Acquisition"
+          "verified": true,
+          "checked": "2026-10-06",
+          "ref": "ressources/wiki/sun_bead.html, Acquisition",
+          "cost": {
+            "fr": "21 karma",
+            "en": "21 karma"
+          }
         }
       ],
       "qty": {
@@ -30109,13 +30128,17 @@ const SOURCES_DB = {
           "npc": "INFUZ-5959",
           "map": "Mistlock Sanctuary",
           "paid_repeatable": true,
-          "verified": false,
+          "verified": true,
           "tip": {
-            "fr": "Vendu par INFUZ-5959 (Mistlock Observatory), avec la maîtrise Follows Advice. Monnaies affichées en icônes sur la capture : montants à confirmer.",
-            "en": "Sold by INFUZ-5959 (Mistlock Observatory), requires the Follows Advice mastery. Currencies shown as icons on the capture: amounts to confirm."
+            "fr": "Vendu par INFUZ-5959 (Mistlock Observatory) pour 300 reliques fractales + 2 po 88 pa, avec la maîtrise Follows Advice.",
+            "en": "Sold by INFUZ-5959 (Mistlock Observatory) for 300 Fractal Relics + 2g 88s, requires the Follows Advice mastery."
           },
           "ref": "ressources/wiki/shard_of_crystallized_mists_essence.html, Acquisition (capture du 06/10/2026)",
-          "checked": "2026-10-06"
+          "checked": "2026-10-06",
+          "cost": {
+            "fr": "300 Fractal Relic + 2 po 88 pa",
+            "en": "300 Fractal Relics + 2g 88s"
+          }
         },
         {
           "type": "mystic_forge",
