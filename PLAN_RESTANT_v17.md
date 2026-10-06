@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v369) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v370) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -316,6 +316,12 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       Fury-Scorched Stone par Olmakhan Charm (Vision : +250 / +500 / +50),
       5 Shard of Crystallized Mists Essence (Ad Infinitum). Monnaie du vendeur
       de Sun Bead illisible sur la capture → a confirmer.
+- [x] **Captures du 06/10 integrees** (`integration/gw2_acquisitions_c4_v1`,
+      v370) : voies d'obtention de Foxfire Cluster, Fury-Scorched Stone,
+      Ley-Infused Sand, Opal Crystal, Shard of Crystallized Mists Essence,
+      Pile of Foul Essence. `ascended_shard_of_glory.name` au titre reel
+      (singulier) : la file le renvoyait vers une redirection. Monnaies du
+      vendeur INFUZ-5959 illisibles → `verified: false`.
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

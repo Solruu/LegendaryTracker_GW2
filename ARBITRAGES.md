@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v369.json` — 13 desaccords sur 9 composants.
+Source : `gw2_sources_v370.json` — 13 desaccords sur 9 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -13,7 +13,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `volatile_magic` — Volatile Magic | 1 | 4250 | cout vendeur x1 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
-| `ascended_shard_of_glory` — Ascended Shards of Glory | 1 | 500 | ecart de compte x1 |
+| `ascended_shard_of_glory` — Ascended Shard of Glory | 1 | 500 | ecart de compte x1 |
 | `shard_of_glory` — Shard of Glory | 1 | 500 | deja compte par cascade x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 60 | deja compte par cascade x2 |
@@ -27,7 +27,7 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `ascended_shard_of_glory` — Ascended Shards of Glory | `transcendence` | 900 | 400 | 500 | star_of_glory (recette) |
+| `ascended_shard_of_glory` — Ascended Shard of Glory | `transcendence` | 900 | 400 | 500 | star_of_glory (recette) |
 
 ## DEJA COMPTE PAR CASCADE — 4 cas
 

@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v249",
-  "last_updated": "2026-10-04",
+  "last_updated": "2026-10-06",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -5451,7 +5451,7 @@
    ]
   },
   "ascended_shard_of_glory": {
-   "name": "Ascended Shards of Glory",
+   "name": "Ascended Shard of Glory",
    "apiId": 33,
    "needed_for": [
     "armor_pvp",
@@ -29100,14 +29100,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Voie d'obtention non lue : la page de cet objet n'est pas au dépôt. Seule sa quantité est sourcée, depuis la recette de pile_of_filthy_essence.",
-      "en": "Acquisition path unread: this item's page is not in the repo. Only its quantity is sourced, from the recipe on pile_of_filthy_essence."
+      "fr": "Butin des Risen Thrall (Orr, Timberline Falls) et, par chance, de nombreux sacs et boîtes.",
+      "en": "Dropped by Risen Thralls (Orr, Timberline Falls) and, by chance, many bags and boxes."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de pile_of_filthy_essence.html ; identite depuis gw2_materials_ref.json (apiId 24332)"
+     "ref": "ressources/wiki/pile_of_foul_essence.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
@@ -29154,11 +29155,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du parent (C4, 04/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the parent's recipe (C4, 04/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Par chance dans de nombreux coffres de méta et de boss (Karka Queen, Tequatl, Shatterer, Dragon's End, Cantha...) et les caches de minage.",
+      "en": "By chance from many meta and boss chests (Karka Queen, Tequatl, Shatterer, Dragon's End, Cantha...) and mining caches."
+     },
+     "ref": "ressources/wiki/opal_crystal.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
@@ -29178,11 +29183,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du parent (C4, 04/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the parent's recipe (C4, 04/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Primes et Dust Mites du Désert de cristal ; garanti dans plusieurs coffres de collection (Bounty Hunter, Legendary Belongings of the Great Zehtuka : 50).",
+      "en": "Bounties and Crystal Desert Dust Mites; guaranteed in several collection chests (Bounty Hunter, Legendary Belongings of the Great Zehtuka: 50)."
+     },
+     "ref": "ressources/wiki/ley_infused_sand.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
@@ -29202,11 +29211,26 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du parent (C4, 04/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the parent's recipe (C4, 04/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte, par chance, sur les jeunes arbres de nombreuses cartes (Ancient, Baoba, Cypress, Orrian, Palm, Red Oak...) et le bois flotté sinistre. Aucun vendeur ni coût trié sur la page.",
+      "en": "Harvested, by chance, from saplings on many maps (Ancient, Baoba, Cypress, Orrian, Palm, Red Oak...) and Eerie Driftwood. No vendor or sorted cost on the page."
+     },
+     "ref": "ressources/wiki/foxfire_cluster.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
+    },
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin des Mordrem Husk champions et élites (Silverwastes, Verdant Brink, Dragon's Stand) et des Dust Mites du Désert de cristal.",
+      "en": "Dropped by champion and elite Mordrem Husks (Silverwastes, Verdant Brink, Dragon's Stand) and Crystal Desert Dust Mites."
+     },
+     "ref": "ressources/wiki/foxfire_cluster.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
@@ -29226,11 +29250,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "event",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du parent (C4, 04/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the parent's recipe (C4, 04/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Trophée : événements de la méta Gathering Storms (LW4), rarement les primes. Aucune table vendeur.",
+      "en": "Trophy: events of the Gathering Storms meta (LW4), rarely bounties. No vendor table."
+     },
+     "ref": "ressources/wiki/fury_scorched_stone.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
@@ -29250,11 +29278,38 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du parent (C4, 04/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the parent's recipe (C4, 04/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Fractales niveau 51-100 : chance sur tout ennemi ; récompense possible des modes défi Nightmare et Shattered Observatory.",
+      "en": "Fractals scale 51-100: chance from any enemy; possible reward from the Nightmare and Shattered Observatory challenge modes."
+     },
+     "ref": "ressources/wiki/shard_of_crystallized_mists_essence.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
+    },
+    {
+     "type": "vendor",
+     "npc": "INFUZ-5959",
+     "map": "Mistlock Sanctuary",
+     "paid_repeatable": true,
+     "verified": false,
+     "tip": {
+      "fr": "Vendu par INFUZ-5959 (Mistlock Observatory), avec la maîtrise Follows Advice. Monnaies affichées en icônes sur la capture : montants à confirmer.",
+      "en": "Sold by INFUZ-5959 (Mistlock Observatory), requires the Follows Advice mastery. Currencies shown as icons on the capture: amounts to confirm."
+     },
+     "ref": "ressources/wiki/shard_of_crystallized_mists_essence.html, Acquisition (capture du 06/10/2026)",
+     "checked": "2026-10-06"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Promotion en Forge : 5 Glob of Coagulated Mists Essence + 1 ecto + 1 écu mystique + 1 poussière cristalline.",
+      "en": "Forge promotion: 5 Glob of Coagulated Mists Essence + 1 ecto + 1 Mystic Coin + 1 Pile of Crystalline Dust."
+     },
+     "ref": "ressources/wiki/shard_of_crystallized_mists_essence.html, Acquisition (capture du 06/10/2026)",
+     "verified": true,
+     "checked": "2026-10-06"
     }
    ],
    "qty": {
