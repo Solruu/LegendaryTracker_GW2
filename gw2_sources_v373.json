@@ -29352,11 +29352,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du plat (06/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the dish's recipe (06/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les cactus (1-2, par chance) et les cactus de domaine. Garanti par 5 dans les Store of Edible Cactus.",
+      "en": "Harvested from cacti (1-2, by chance) and homestead cacti. 5 guaranteed in Store of Edible Cactus."
+     },
+     "verified": true,
+     "checked": "2026-10-06",
+     "ref": "ressources/wiki/nopal.html, Acquisition (capture du 06/10/2026)"
     }
    ],
    "qty": {
@@ -29376,11 +29380,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du plat (06/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the dish's recipe (06/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Conteneurs : Avocados in Bulk (25 garantis), Fluctuating / Volatile Mass, Mystery Cooking Ingredient Box. Pas de récolte.",
+      "en": "Containers: Avocados in Bulk (25 guaranteed), Fluctuating / Volatile Mass, Mystery Cooking Ingredient Box. Not harvested."
+     },
+     "verified": true,
+     "checked": "2026-10-06",
+     "ref": "ressources/wiki/avocado.html, Acquisition (capture du 06/10/2026)"
     }
    ],
    "qty": {
@@ -29400,11 +29408,15 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du plat (06/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the dish's recipe (06/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les pieds d'asperge (par chance) ; 2 garanties sur l'asperge de domaine.",
+      "en": "Harvested from asparagus (by chance); 2 guaranteed from homegrown asparagus."
+     },
+     "verified": true,
+     "checked": "2026-10-06",
+     "ref": "ressources/wiki/asparagus_spear.html, Acquisition (capture du 06/10/2026)"
     }
    ],
    "qty": {
@@ -29421,14 +29433,23 @@
    "needed_for": [
     "meaty_asparagus_skewer"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "npc": "marchands de cuisine (Chef, Apprentice...)",
+     "paid_repeatable": true,
+     "cost": {
+      "fr": "80 cuivre les 10",
+      "en": "80 copper per 10"
+     },
      "tip": {
-      "fr": "Ingrédient posé depuis la recette du plat (06/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from the dish's recipe (06/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Vendue par les marchands de cuisine des capitales et de nombreuses cartes : 80 cuivre les 10. Négligeable en or.",
+      "en": "Sold by cooking vendors in capitals and many maps: 80 copper per 10. Negligible in gold."
+     },
+     "verified": true,
+     "checked": "2026-10-06",
+     "ref": "ressources/wiki/bottle_of_soy_sauce.html, Acquisition (capture du 06/10/2026)"
     }
    ],
    "qty": {
