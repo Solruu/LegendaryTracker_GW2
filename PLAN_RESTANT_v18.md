@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v370) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v372) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -322,6 +322,23 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       Pile of Foul Essence. `ascended_shard_of_glory.name` au titre reel
       (singulier) : la file le renvoyait vers une redirection. Monnaies du
       vendeur INFUZ-5959 illisibles → `verified: false`.
+- [x] **Trefles dans l'ordre d'Antoine + monnaies lues dans les icones**
+      (v371, `integration/gw2_trefles_ordre_monnaies_v1`) : pistes PvP/McM en
+      tete, vendeurs hebdo, Coffre, festival, Forge en dernier ; Sun Bead =
+      21 karma, INFUZ-5959 = 300 reliques + 2 po 88 pa (attribut `alt` des
+      icones). Les cases cochees de l'onglet Timegates, indexees par
+      position, se decalent une fois.
+- [x] **Plats d'Orrax, premier niveau** (decision d'Antoine : decomposer ;
+      v372, `integration/gw2_orrax_plats_v1`) : Nopal 500, Avocado 100,
+      Asparagus Spear 400, Soy Sauce 200 sur Orrax Manifested — volume non
+      negligeable. Reste : 6 intermediaires cuisines a capturer (Bowl of
+      Ascalonian Salad, Jar of Red Curry Paste, Pile of Tangy Seasoning,
+      Bottle of Coconut Milk, Bottle of Rice Wine, Cup of Lotus Fries).
+- [ ] **Eternity** : la recette accepte Memory of Sunrise / Memory of
+      Twilight (jetons recus en ajoutant l'epee a l'Armurerie) ; rien n'est
+      perdu. Modele propose a Antoine : Eternity = Sunrise + Twilight +
+      5 poussieres cristallines + 10 pierres philosophales, une epee deja en
+      Armurerie comptant comme acquise → A1.
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

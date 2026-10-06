@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v370.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v372.json` — généré par `gw2_relecture_recettes_v4.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -11,7 +11,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
-| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 14 |
+| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 10 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 6 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 6 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
@@ -20,22 +20,18 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
-## Ingrédients qu'aucun composant ne représente — 14
+## Ingrédients qu'aucun composant ne représente — 10
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
 | `ars_goetia` | `Spiritwood_Focus_Casing` | 1 | `ars_goetia` | — | `gen2_the_binding_of_ipos` |
-| `bowl_of_black_pepper_cactus_salad` | `Avocado` | 1 | `bowl_of_black_pepper_cactus_salad` | — | `orrax_manifested` |
 | `bowl_of_black_pepper_cactus_salad` | `Bowl_of_Ascalonian_Salad` | 3 | `bowl_of_black_pepper_cactus_salad` | — | `orrax_manifested` |
-| `bowl_of_black_pepper_cactus_salad` | `Nopal` | 5 | `bowl_of_black_pepper_cactus_salad` | — | `orrax_manifested` |
 | `bowl_of_poultry_satay` | `Bottle_of_Coconut_Milk` | 1 | `bowl_of_poultry_satay` | — | `orrax_manifested` |
 | `bowl_of_poultry_satay` | `Jar_of_Red_Curry_Paste` | 2 | `bowl_of_poultry_satay` | — | `orrax_manifested` |
 | `bowl_of_poultry_satay` | `Pile_of_Tangy_Seasoning` | 1 | `bowl_of_poultry_satay` | — | `orrax_manifested` |
-| `meaty_asparagus_skewer` | `Asparagus_Spear` | 2 | `meaty_asparagus_skewer` | — | `orrax_manifested` |
 | `meaty_asparagus_skewer` | `Bottle_of_Rice_Wine` | 1 | `meaty_asparagus_skewer` | — | `orrax_manifested` |
-| `meaty_asparagus_skewer` | `Bottle_of_Soy_Sauce` | 1 | `meaty_asparagus_skewer` | — | `orrax_manifested` |
 | `plate_of_orrian_steak_frittes` | `Cup_of_Lotus_Fries` | 1 | `plate_of_orrian_steak_frittes` | — | `orrax_manifested` |
 | `unbound_wings` | `Spirit_of_the_Upper_Bound` | 1 | `unbound_wings` | — | `ad_infinitum` |
 
@@ -620,15 +616,11 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 ## Ingrédients à créer, et qui les réclame
 
-- `Asparagus_Spear` — réclamé par `meaty_asparagus_skewer`
-- `Avocado` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Bottle_of_Coconut_Milk` — réclamé par `bowl_of_poultry_satay`
 - `Bottle_of_Rice_Wine` — réclamé par `meaty_asparagus_skewer`
-- `Bottle_of_Soy_Sauce` — réclamé par `meaty_asparagus_skewer`
 - `Bowl_of_Ascalonian_Salad` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Cup_of_Lotus_Fries` — réclamé par `plate_of_orrian_steak_frittes`
 - `Jar_of_Red_Curry_Paste` — réclamé par `bowl_of_poultry_satay`
-- `Nopal` — réclamé par `bowl_of_black_pepper_cactus_salad`
 - `Pile_of_Tangy_Seasoning` — réclamé par `bowl_of_poultry_satay`
 - `Spirit_of_the_Upper_Bound` — réclamé par `unbound_wings`
 - `Spiritwood_Focus_Casing` — réclamé par `ars_goetia`
