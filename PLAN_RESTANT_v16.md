@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v368) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v369) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -308,7 +308,26 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         capture (`/tmp/edges2.json`) — 16 lignes, une piece par arme.
       Resultat : 969 accords, 0 trou, 166 expliques, 0 nu. Listes non
       tronquees.
-- [ ] 4 ingredients non relies et 36 en trop (`RELECTURE_RECETTES_v8.md`).
+- [x] **Relecture des recettes relancee sur v368** (`RELECTURE_RECETTES_v9`,
+      le v8 datait de v355) : 20 MANQUANTS, 6 non relies, 6 en trop.
+      6 ingredients sources poses (`integration/gw2_ingredients_manquants_v1`,
+      v369) : 250 Sun Bead (Endless Summer), 2 Opal Crystal par Opal Orb
+      (Bifrost, Dreamer, Minstrel : +200), Ley-Infused Sand / Foxfire Cluster /
+      Fury-Scorched Stone par Olmakhan Charm (Vision : +250 / +500 / +50),
+      5 Shard of Crystallized Mists Essence (Ad Infinitum). Monnaie du vendeur
+      de Sun Bead illisible sur la capture → a confirmer.
+- [ ] **Reste de la relecture** (W ou A1) :
+      - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
+        Bound (Unbound Wings) — ni page ni apiId ;
+      - non relies Spiritwood Focus Core + Visionary Inscription sous Ars
+        Goetia (precurseur d'Ipos, recette lue) : a relier avec le Casing ;
+        Vision Crystal sous Unbound Wings ; Sunrise/Twilight sous Eternity
+        (legendaires composes, modele a decider) ;
+      - plats d'Orrax (4 plats, 12 ingredients dont 6 intermediaires
+        cuisines sans page) : decomposer ou laisser en feuilles → A1 ;
+      - faux positifs de l'outil : `Dark_Matter` / `glob_of_dark_matter`
+        (meme objet, appariement par slug) ; Castoran, recettes de
+        banniere, Legendary Insight = couts d'acquisition legitimes.
 
 ### C5 — Bits de collection · C
 `qty_extras` ne retranche les etapes validees que sur 5 composants. Generaliser
