@@ -817,7 +817,7 @@ function useT() {
 const SOURCES_DB = {
   "_meta": {
     "version": "v249",
-    "last_updated": "2026-10-06",
+    "last_updated": "2026-10-07",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -3881,7 +3881,8 @@ const SOURCES_DB = {
         "spiritwood_rifle_stock",
         "spiritwood_scepter_rod",
         "spiritwood_torch_handle",
-        "legendary_inscription"
+        "legendary_inscription",
+        "spiritwood_focus_casing"
       ],
       "farmable": true,
       "sources": [
@@ -3967,7 +3968,8 @@ const SOURCES_DB = {
         "spiritwood_rifle_stock": 5,
         "spiritwood_scepter_rod": 5,
         "spiritwood_torch_handle": 5,
-        "legendary_inscription": 5
+        "legendary_inscription": 5,
+        "spiritwood_focus_casing": 5
       },
       "kind": "acquire",
       "best": "drop",
@@ -4538,7 +4540,8 @@ const SOURCES_DB = {
       "name": "Difluorite Crystal",
       "apiId": 86977,
       "needed_for": [
-        "gift_of_crystalline_magic"
+        "gift_of_crystalline_magic",
+        "bottle_of_coconut_milk"
       ],
       "farmable": true,
       "sources": [
@@ -4561,7 +4564,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_crystalline_magic": 100
+        "gift_of_crystalline_magic": 100,
+        "bottle_of_coconut_milk": 1
       },
       "kind": "acquire",
       "cadence": {
@@ -7319,7 +7323,8 @@ const SOURCES_DB = {
         "small_spiritwood_haft",
         "spiritwood_rifle_stock",
         "spiritwood_scepter_rod",
-        "spiritwood_torch_handle"
+        "spiritwood_torch_handle",
+        "spiritwood_focus_casing"
       ],
       "qty": {
         "vision": 360,
@@ -7360,7 +7365,8 @@ const SOURCES_DB = {
         "small_spiritwood_haft": 50,
         "spiritwood_rifle_stock": 50,
         "spiritwood_scepter_rod": 50,
-        "spiritwood_torch_handle": 50
+        "spiritwood_torch_handle": 50,
+        "spiritwood_focus_casing": 50
       },
       "farmable": true,
       "sources": [
@@ -12880,7 +12886,9 @@ const SOURCES_DB = {
         "gift_of_the_oasis": 23331,
         "gift_of_the_highlands": 23331,
         "gift_of_the_riverlands": 23331,
-        "gift_of_the_desolation": 23331
+        "gift_of_the_desolation": 23331,
+        "bottle_of_coconut_milk": 249,
+        "sun_bead": 21
       },
       "farmable": true,
       "sources": [
@@ -13034,7 +13042,9 @@ const SOURCES_DB = {
         "gift_of_the_oasis",
         "gift_of_the_highlands",
         "gift_of_the_riverlands",
-        "gift_of_the_desolation"
+        "gift_of_the_desolation",
+        "bottle_of_coconut_milk",
+        "sun_bead"
       ]
     },
     "powerful_venom_sac": {
@@ -20337,7 +20347,8 @@ const SOURCES_DB = {
         "small_spiritwood_haft": 2,
         "spiritwood_rifle_stock": 3,
         "spiritwood_scepter_rod": 3,
-        "spiritwood_torch_handle": 2
+        "spiritwood_torch_handle": 2,
+        "spiritwood_focus_casing": 3
       },
       "needed_for": [
         "deldrimor_steel_horn",
@@ -20351,7 +20362,8 @@ const SOURCES_DB = {
         "small_spiritwood_haft",
         "spiritwood_rifle_stock",
         "spiritwood_scepter_rod",
-        "spiritwood_torch_handle"
+        "spiritwood_torch_handle",
+        "spiritwood_focus_casing"
       ],
       "sources": [
         {
@@ -23791,10 +23803,12 @@ const SOURCES_DB = {
       "kind": "advanced_craft",
       "farmable": false,
       "needed_for": [
-        "poem_on_foci"
+        "poem_on_foci",
+        "ars_goetia"
       ],
       "qty": {
-        "poem_on_foci": 1
+        "poem_on_foci": 1,
+        "ars_goetia": 1
       },
       "sources": [
         {
@@ -28409,7 +28423,8 @@ const SOURCES_DB = {
       "kind": "material",
       "needed_for": [
         "spicy_marinated_mushroom",
-        "pile_of_zesty_herbs"
+        "pile_of_zesty_herbs",
+        "jar_of_red_curry_paste"
       ],
       "farmable": true,
       "sources": [
@@ -28426,7 +28441,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "spicy_marinated_mushroom": 3,
-        "pile_of_zesty_herbs": 1
+        "pile_of_zesty_herbs": 1,
+        "jar_of_red_curry_paste": 1
       }
     },
     "charged_fossil": {
@@ -28872,7 +28888,8 @@ const SOURCES_DB = {
         "red_lentil_saobosa",
         "bowl_of_fancy_tangy_sautee_mix",
         "grilled_mushroom",
-        "grilled_portobello_mushroom"
+        "grilled_portobello_mushroom",
+        "cup_of_lotus_fries"
       ],
       "farmable": true,
       "sources": [
@@ -28891,7 +28908,8 @@ const SOURCES_DB = {
         "red_lentil_saobosa": 3,
         "bowl_of_fancy_tangy_sautee_mix": 1,
         "grilled_mushroom": 1,
-        "grilled_portobello_mushroom": 1
+        "grilled_portobello_mushroom": 1,
+        "cup_of_lotus_fries": 1
       }
     },
     "lowland_pine_log": {
@@ -29232,7 +29250,8 @@ const SOURCES_DB = {
         "might_of_arah",
         "save_the_queen",
         "spero",
-        "tlehco"
+        "tlehco",
+        "ars_goetia"
       ],
       "farmable": true,
       "sources": [
@@ -29258,7 +29277,8 @@ const SOURCES_DB = {
         "might_of_arah": 1,
         "save_the_queen": 1,
         "spero": 1,
-        "tlehco": 1
+        "tlehco": 1,
+        "ars_goetia": 1
       }
     },
     "amethyst_lump": {
@@ -29387,7 +29407,8 @@ const SOURCES_DB = {
       "kind": "material",
       "needed_for": [
         "bowl_of_fancy_tangy_sautee_mix",
-        "pile_of_zesty_herbs"
+        "pile_of_zesty_herbs",
+        "pile_of_tangy_seasoning"
       ],
       "farmable": true,
       "sources": [
@@ -29404,7 +29425,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "bowl_of_fancy_tangy_sautee_mix": 1,
-        "pile_of_zesty_herbs": 5
+        "pile_of_zesty_herbs": 5,
+        "pile_of_tangy_seasoning": 2
       }
     },
     "legendary_inscription": {
@@ -29488,7 +29510,8 @@ const SOURCES_DB = {
       "apiId": 12142,
       "kind": "material",
       "needed_for": [
-        "bowl_of_fancy_tangy_sautee_mix"
+        "bowl_of_fancy_tangy_sautee_mix",
+        "pile_of_tangy_seasoning"
       ],
       "farmable": true,
       "sources": [
@@ -29504,7 +29527,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "bowl_of_fancy_tangy_sautee_mix": 1
+        "bowl_of_fancy_tangy_sautee_mix": 1,
+        "pile_of_tangy_seasoning": 2
       }
     },
     "packet_of_salt": {
@@ -29513,7 +29537,8 @@ const SOURCES_DB = {
       "kind": "material",
       "needed_for": [
         "grilled_mushroom",
-        "pile_of_salt_and_pepper"
+        "pile_of_salt_and_pepper",
+        "pile_of_tangy_seasoning"
       ],
       "farmable": true,
       "sources": [
@@ -29530,7 +29555,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "grilled_mushroom": 1,
-        "pile_of_salt_and_pepper": 1
+        "pile_of_salt_and_pepper": 1,
+        "pile_of_tangy_seasoning": 1
       }
     },
     "passion_flower": {
@@ -29586,7 +29612,8 @@ const SOURCES_DB = {
       "apiId": 12178,
       "kind": "material",
       "needed_for": [
-        "grilled_portobello_mushroom"
+        "grilled_portobello_mushroom",
+        "cup_of_lotus_fries"
       ],
       "farmable": true,
       "sources": [
@@ -29602,7 +29629,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "grilled_portobello_mushroom": 1
+        "grilled_portobello_mushroom": 1,
+        "cup_of_lotus_fries": 1
       }
     },
     "pile_of_vile_essence": {
@@ -30274,6 +30302,379 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-10-06",
       "ref": "boite Recipe de meaty_asparagus_skewer (ressources/wiki)"
+    },
+    "bowl_of_ascalonian_salad": {
+      "name": "Bowl of Ascalonian Salad",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_black_pepper_cactus_salad"
+      ],
+      "qty": {
+        "bowl_of_black_pepper_cactus_salad": 3
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 125). Recette lue sur sa page.",
+            "en": "Cooking (Chef 125). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/bowl_of_ascalonian_salad.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/bowl_of_ascalonian_salad.html (capture du 07/10/2026)",
+      "apiId": 12196
+    },
+    "jar_of_red_curry_paste": {
+      "name": "Jar of Red Curry Paste",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_poultry_satay"
+      ],
+      "qty": {
+        "bowl_of_poultry_satay": 2
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 400). Recette lue sur sa page.",
+            "en": "Cooking (Chef 400). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/jar_of_red_curry_paste.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/jar_of_red_curry_paste.html (capture du 07/10/2026)",
+      "apiId": 12542
+    },
+    "pile_of_tangy_seasoning": {
+      "name": "Pile of Tangy Seasoning",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_poultry_satay"
+      ],
+      "qty": {
+        "bowl_of_poultry_satay": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 100). Recette lue sur sa page.",
+            "en": "Cooking (Chef 100). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/pile_of_tangy_seasoning.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/pile_of_tangy_seasoning.html (capture du 07/10/2026)",
+      "apiId": 12181
+    },
+    "cup_of_lotus_fries": {
+      "name": "Cup of Lotus Fries",
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "plate_of_orrian_steak_frittes"
+      ],
+      "qty": {
+        "plate_of_orrian_steak_frittes": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 400). Recette lue sur sa page.",
+            "en": "Cooking (Chef 400). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/cup_of_lotus_fries.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/cup_of_lotus_fries.html (capture du 07/10/2026)",
+      "apiId": 12472
+    },
+    "bottle_of_coconut_milk": {
+      "name": "Bottle of Coconut Milk",
+      "kind": "acquire",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_poultry_satay"
+      ],
+      "qty": {
+        "bowl_of_poultry_satay": 1
+      },
+      "sources": [
+        {
+          "type": "vendor",
+          "npc": "Malor",
+          "map": "The Ruined Paths, Sandswept Isles",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "1 Difluorite Crystal + 249 karma",
+            "en": "1 Difluorite Crystal + 249 karma"
+          },
+          "tip": {
+            "fr": "Seule voie : Malor (Sandswept Isles), 1 cristal de difluorite + 249 karma l'unité.",
+            "en": "Only route: Malor (Sandswept Isles), 1 Difluorite Crystal + 249 karma each."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/bottle_of_coconut_milk.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/bottle_of_coconut_milk.html (capture du 07/10/2026)",
+      "apiId": 87289
+    },
+    "bottle_of_rice_wine": {
+      "name": "Bottle of Rice Wine",
+      "kind": "acquire",
+      "farmable": false,
+      "needed_for": [
+        "meaty_asparagus_skewer"
+      ],
+      "qty": {
+        "meaty_asparagus_skewer": 1
+      },
+      "sources": [
+        {
+          "type": "vendor",
+          "npc": "taverniers (Bartender, Barkeep...)",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "16 cuivre",
+            "en": "16 copper"
+          },
+          "tip": {
+            "fr": "Vendue par les taverniers des capitales et de nombreuses cartes : 16 cuivre. Négligeable en or.",
+            "en": "Sold by bartenders in capitals and many maps: 16 copper. Negligible in gold."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/bottle_of_rice_wine.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/bottle_of_rice_wine.html (capture du 07/10/2026)",
+      "apiId": 8576
+    },
+    "head_of_lettuce": {
+      "name": "Head of Lettuce",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ascalonian_salad"
+      ],
+      "qty": {
+        "bowl_of_ascalonian_salad": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de bowl_of_ascalonian_salad (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12238
+    },
+    "beet": {
+      "name": "Beet",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ascalonian_salad"
+      ],
+      "qty": {
+        "bowl_of_ascalonian_salad": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de bowl_of_ascalonian_salad (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12161
+    },
+    "lime": {
+      "name": "Lime",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "jar_of_red_curry_paste"
+      ],
+      "qty": {
+        "jar_of_red_curry_paste": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de jar_of_red_curry_paste (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12339
+    },
+    "pile_of_stirfry_spice_mix": {
+      "name": "Pile of Stirfry Spice Mix",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "jar_of_red_curry_paste"
+      ],
+      "qty": {
+        "jar_of_red_curry_paste": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de jar_of_red_curry_paste (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12496
+    },
+    "lemongrass": {
+      "name": "Lemongrass",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "jar_of_red_curry_paste"
+      ],
+      "qty": {
+        "jar_of_red_curry_paste": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de jar_of_red_curry_paste (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12546
+    },
+    "lotus_root": {
+      "name": "Lotus Root",
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "cup_of_lotus_fries"
+      ],
+      "qty": {
+        "cup_of_lotus_fries": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de cup_of_lotus_fries (ressources/wiki, capture du 07/10/2026)",
+      "apiId": 12510
+    },
+    "spiritwood_focus_casing": {
+      "name": "Spiritwood Focus Casing",
+      "kind": "advanced_craft",
+      "farmable": false,
+      "needed_for": [
+        "ars_goetia"
+      ],
+      "qty": {
+        "ars_goetia": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Artificier 500, appris automatiquement.",
+            "en": "Artificer 500, learned automatically."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/spiritwood_focus_casing.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/spiritwood_focus_casing.html (capture du 07/10/2026)",
+      "apiId": 45883
+    },
+    "spirit_of_the_upper_bound": {
+      "name": "Spirit of the Upper Bound",
+      "kind": "acquire",
+      "farmable": false,
+      "needed_for": [
+        "unbound_wings"
+      ],
+      "qty": {
+        "unbound_wings": 1
+      },
+      "sources": [
+        {
+          "type": "salvage",
+          "tip": {
+            "fr": "Récupéré en recyclant Upper Bound (seule voie lue sur la page).",
+            "en": "Salvaged from Upper Bound (only route on the page)."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/spirit_of_the_upper_bound.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/spirit_of_the_upper_bound.html (capture du 07/10/2026)",
+      "apiId": 70642
     }
   },
   "enchaînements_recommandés": {

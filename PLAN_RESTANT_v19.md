@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v373) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v374) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -334,11 +334,24 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       negligeable. Reste : 6 intermediaires cuisines a capturer (Bowl of
       Ascalonian Salad, Jar of Red Curry Paste, Pile of Tangy Seasoning,
       Bottle of Coconut Milk, Bottle of Rice Wine, Cup of Lotus Fries).
-- [ ] **Eternity** : la recette accepte Memory of Sunrise / Memory of
-      Twilight (jetons recus en ajoutant l'epee a l'Armurerie) ; rien n'est
-      perdu. Modele propose a Antoine : Eternity = Sunrise + Twilight +
-      5 poussieres cristallines + 10 pierres philosophales, une epee deja en
-      Armurerie comptant comme acquise → A1.
+- [x] **Eternity : rien a modeliser.** `gen1_eternity` porte deja ses
+      appoints (5 poussieres, 10 pierres philosophales) et `precursor:
+      Sunrise + Twilight`, deux legendaires suivis a part. Le craft ne
+      consomme pas l'Armurerie (jetons Memory of). Les lignes Sunrise /
+      Twilight de la relecture sont des faux positifs.
+- [x] **Captures du 07/10** (`integration/gw2_captures_0710_v1`, v374) :
+      Orrax 2e niveau (6 intermediaires) et 3e niveau partiel ; Ars Goetia
+      complete (Casing, Core, Inscription — aligne sur ses freres gen2) ;
+      Spirit of the Upper Bound ; karma du Sun Bead et de la noix de coco en
+      aretes (structure `karma`). Orrax : +49 800 karma, +200 difluorite.
+- [ ] **Vision Crystal sous Unbound Wings, non relie** : les aretes plates
+      d'Ad Infinitum (bloodstone / dragonite / empyreal 1500, obsidienne 90,
+      GW2Efficiency) portent deja ses 500 ; le relier double-compte (audit).
+      A faire en decomposant ces aretes plates → A1 (change la forme, pas le
+      total, si la lecture tient).
+- [ ] **Orrax 3e niveau, a capturer** : Lime, Beet, Head of Lettuce,
+      Lemongrass, Lotus Root, Pile of Stirfry Spice Mix (file) + Bottle of
+      Ascalonian Dressing (hors file : pas d'apiId).
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

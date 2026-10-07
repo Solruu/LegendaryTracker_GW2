@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v373.json`, 1135 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v374.json`, 1135 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -50,10 +50,10 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_eureka` | `elder_wood_plank` | 6100 | 2000 | `endeavor`, `mystic_curio` |
 | `gen2_claw_of_the_khan_ur` | `elder_wood_plank` | 6000 | 2000 | `claw_of_resolution`, `mystic_curio` |
 | `gen2_the_shining_blade` | `elder_wood_plank` | 6000 | 2000 | `mystic_curio`, `save_the_queen` |
+| `gen2_the_binding_of_ipos` | `elder_wood_plank` | 4250 | 1000 | `ars_goetia`, `mystic_curio` |
 | `gen2_flames_of_war` | `elder_wood_plank` | 4350 | 1250 | `liturgy`, `mystic_curio` |
 | `gen2_verdarach` | `elder_wood_plank` | 4350 | 1250 | `call_of_the_void`, `mystic_curio` |
 | `gen2_shooshadoo` | `elder_wood_plank` | 4000 | 1000 | `friendship`, `mystic_curio` |
-| `gen2_the_binding_of_ipos` | `elder_wood_plank` | 4000 | 1000 | `ars_goetia`, `mystic_curio` |
 | `transcendence` | `shard_of_glory` | 2250 | 250 | `gift_of_the_mists` |
 | `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_the_mists`, `gift_of_war_dedication`, `war_commendation` |
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
@@ -62,9 +62,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen1_the_minstrel` | `dust_incandescent` | 750 | 250 | `opal_orb` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `warbringer` | `skirmish_claim_ticket` | 2800 | 2450 | `mystic_essence_of_annihilation`, `warcry` |
+| `gen2_the_binding_of_ipos` | `dust_crystalline` | 465 | 250 | `ars_goetia`, `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_crystalline` | 465 | 250 | `gift_of_dust`, `tlehco` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
-| `gen2_the_binding_of_ipos` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
 | `gen2_exordium` | `darksteel_ingot` | 370 | 250 | `exitare` |
 | `gen2_the_shining_blade` | `darksteel_ingot` | 370 | 250 | `save_the_queen` |
 | `gen2_claw_of_the_khan_ur` | `shard_of_resolution` | 200 | 100 | `claw_of_resolution` |

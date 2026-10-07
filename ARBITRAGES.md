@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v373.json` — 13 desaccords sur 9 composants.
+Source : `gw2_sources_v374.json` — 14 desaccords sur 10 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -16,6 +16,7 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `ascended_shard_of_glory` — Ascended Shard of Glory | 1 | 500 | ecart de compte x1 |
 | `shard_of_glory` — Shard of Glory | 1 | 500 | deja compte par cascade x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
+| `lime` — Lime | 1 | 200 | deja compte par cascade x1 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 60 | deja compte par cascade x2 |
 | `dragonite_ore` — Dragonite Ore | 1 | 25 | cout vendeur x1 |
 | `vision_crystal` — Vision Crystal | 2 | 2 | cout vendeur x2 |
@@ -29,7 +30,7 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `ascended_shard_of_glory` — Ascended Shard of Glory | `transcendence` | 900 | 400 | 500 | star_of_glory (recette) |
 
-## DEJA COMPTE PAR CASCADE — 4 cas
+## DEJA COMPTE PAR CASCADE — 5 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
@@ -40,6 +41,7 @@ soit les deux sont reels et le chevauchement se declare dans
 |---|---|---:|---:|---:|---|
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
 | `shard_of_glory` — Shard of Glory | `transcendence` | 500 | 1000 | 500 | jar_of_distilled_glory (recette) |
+| `lime` — Lime | `orrax_manifested` | 400 | 200 | 200 | bowl_of_prickly_pear_sorbet (recette) |
 | `pvp_league_ticket` — PvP League Ticket | `ardent_glorious` | 180 | 120 | 60 | record_of_league_participation (recette) |
 | `pvp_league_ticket` — PvP League Ticket | `transcendence` | 25 | 20 | 5 | record_of_league_participation (recette) |
 

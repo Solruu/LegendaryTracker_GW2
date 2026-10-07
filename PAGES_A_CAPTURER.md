@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v373.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v374.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 10 trous de l'arbre — LA PRIORITÉ
+## 0 — 11 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -18,7 +18,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | page wiki | composants qui en dépendent |
 |---|---:|
 
-### 0 ter — 10 trous dont la page est DÉJÀ au dépôt
+### 0 ter — 11 trous dont la page est DÉJÀ au dépôt
 
 Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
 page de catégorie, de monnaie, ou objet non fabricable. Aucune
@@ -34,6 +34,7 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Gift of the Riverlands`
 - `Perfect Mist Core`
 - `Spark of Sentience`
+- `Sun Bead`
 
 ## 1 — 0 tables « Full material list » manquantes
 
@@ -44,7 +45,7 @@ ignore ce que la cible contient réellement.
 | page wiki | coûts à plat concernés |
 |---|---:|
 
-## 2 — 0 composants en arbitrage sans page au dépôt
+## 2 — 1 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -52,6 +53,7 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
+| `Lime` | 2 |
 
 ## 3 — 0 composants sans apiId ni page
 
@@ -61,13 +63,19 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 0 composants dont le coût d'obtention est inconnu
+## 3 bis — 6 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
+| `Beet` |
+| `Head of Lettuce` |
+| `Lemongrass` |
+| `Lime` |
+| `Lotus Root` |
+| `Pile of Stirfry Spice Mix` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -85,7 +93,13 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 0 pages à capturer
+## URLs — 6 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Lime
+https://wiki.guildwars2.com/wiki/Beet
+https://wiki.guildwars2.com/wiki/Head_of_Lettuce
+https://wiki.guildwars2.com/wiki/Lemongrass
+https://wiki.guildwars2.com/wiki/Lotus_Root
+https://wiki.guildwars2.com/wiki/Pile_of_Stirfry_Spice_Mix
 ```
