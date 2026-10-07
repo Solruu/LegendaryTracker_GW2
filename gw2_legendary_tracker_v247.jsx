@@ -5512,11 +5512,22 @@ export default function GW2LegendaryTracker() {
     return { checked: ids.length, gaps, counters };
   }, [lang]);
 
-  const mainProgress = isGrandTotal ? [] : withExtras.map(cur => ({
+  // v247 : un legendaire POSSEDE (Armurerie synchronisee, ou clic droit du
+  // grand total) n'a plus de besoins dans son propre onglet. Le grand total
+  // l'excluait deja, mais l'onglet affichait toujours la recette complete
+  // moins le stock — et le stock venait d'etre consomme par la Forge : Aurora
+  // fabriquee affichait des manques. Un bandeau le dit, et les besoins tombent
+  // a zero ; les etapes de collection restent consultables.
+  const legObtenu = !isGrandTotal && (gtOwnedIds.has(selectedLeg) || gtManualOwnedIds.has(selectedLeg)
+    || gtOwnedIds.has(SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg));
+  const legObtenuApi = legObtenu && gtOwnedIds.has(selectedLeg);
+  const mainProgress = isGrandTotal ? [] : withExtras.map(cur => legObtenu
+    ? { ...cur, required: 0, extrasPending: [], owned: currencies[cur.id] ?? 0, pct: 100 }
+    : {
     ...cur,
     owned: currencies[cur.id] ?? 0,
     pct: cur.required > 0 ? Math.min(100, ((currencies[cur.id] ?? 0) / cur.required) * 100) : 100,
-  }));
+  });
 
   const legColor = isGrandTotal ? "#f472b6" : (leg?.color ?? "#e2c97e");
   const legColorDim = isGrandTotal ? "rgba(244,114,182,0.15)" : (leg?.colorDim ?? "rgba(226,201,126,0.15)");
@@ -5878,6 +5889,20 @@ export default function GW2LegendaryTracker() {
           </button>
         ))}
       </div>
+      {legObtenu && (
+        <div style={{ margin: "10px 14px 0", padding: "10px 13px", background: "rgba(74,222,128,0.06)", border: "1px solid rgba(74,222,128,0.35)", borderRadius: 8, fontFamily: "'Crimson Text', serif" }}>
+          <div style={{ fontFamily: "'Cinzel', serif", fontSize: 12, fontWeight: 700, color: "#4ade80", letterSpacing: "0.04em" }}>
+            {NX({ fr: "✓ Obtenu", en: "✓ Obtained" })}
+          </div>
+          <div style={{ fontSize: 11, color: "rgba(74,222,128,0.7)", lineHeight: 1.5, marginTop: 2 }}>
+            {legObtenuApi
+              ? NX({ fr: "Présent dans ton Armurerie légendaire : plus aucun besoin n'est compté pour lui, ici comme au grand total. Les étapes restent consultables.",
+                     en: "In your Legendary Armory: no need is counted for it any more, here or in the grand total. Steps remain viewable." })
+              : NX({ fr: "Marqué obtenu à la main (clic droit dans le grand total) : plus aucun besoin n'est compté pour lui. Synchronise l'Armurerie pour le confirmer.",
+                     en: "Marked obtained by hand (right-click in the grand total): no need is counted for it any more. Sync the Armory to confirm." })}
+          </div>
+        </div>
+      )}
 
       {/* ══════════════════════════════════ */}
       {/* ONGLET METAS (Vision / Aurora)    */}
@@ -7740,7 +7765,7 @@ export default function GW2LegendaryTracker() {
         // Vision quand la chaine en demande 421, et appliquait un gabarit
         // generique de 250/250/250/77 a des legendaires qui n'ont pas ces
         // exigences. Une seule source desormais.
-        const totalsLeg = computeGrandTotal([selectedLeg]).totals ?? {};
+        const totalsLeg = legObtenu ? {} : (computeGrandTotal([selectedLeg]).totals ?? {});
         // Sets d'armure : le total est deja pose par piece dans qty, il reste a
         // le multiplier par les pieces restantes.
         const perPiece = COMMON_MATS.some(m =>

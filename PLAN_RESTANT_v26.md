@@ -384,6 +384,13 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         (meme objet, appariement par slug) ; Castoran, recettes de
         banniere, Legendary Insight = couts d'acquisition legitimes.
 
+### Bandeau « Obtenu » — ✅ 07/10 (JSX v247, accord d'Antoine)
+Un legendaire possede (Armurerie synchronisee ou clic droit du grand total)
+affiche un bandeau dans ses onglets et n'y compte plus aucun besoin. Constat
+d'Antoine : Aurora fabriquee montrait encore des manques (stock consomme par
+la Forge, onglet aveugle a la possession). L'Armurerie ne voit l'objet
+qu'une fois depose ou equipe.
+
 ### C5 — Bits de collection · C — ✅ structure unifiee le 07/10 (sources v380, JSX v246)
 Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
 - [x] `qty_extras` (5 composants) et `karma_budget` (Aurora I) migres en
